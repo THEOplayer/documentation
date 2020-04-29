@@ -1,6 +1,6 @@
 # Introduction
 
-### HELLO TEST VIDEO TRUE
+# some test
 
 The articles in this section describe how to implement common use-cases related to advertisements. These use-cases can range from customizing the UX during advertisements, to detecting ad blockers.
 
