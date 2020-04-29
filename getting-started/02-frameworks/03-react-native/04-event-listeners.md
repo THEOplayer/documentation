@@ -1,0 +1,666 @@
+# Event Listeners and React Native
+
+> *Disclaimer: THEO Technologies does not provide THEOplayer ReactNative components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in ReactNative Bridges. The sample ReactNative bridge code is provided AS-IS without any explicit nor implicit guarantees. The ReactNative bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.* 
+
+This how-to guide describes how to add and manage event listeners of THEOplayer in React Native application.
+
+## General Information
+
+### Android
+
+The below code is tested with following versions:
+
+- Yarn 1.19.1
+- React Native 0.61.2
+- Android studio 3.5.1
+- THEOplayer Android SDK 2.59.0
+- JAVA 11.0.4
+
+The THEOplayer Android SDK can be used for Android devices using Android 5.0+ (minSdkVersion 21)
+
+### iOS
+
+The below code is tested with following versions:
+
+- Yarn 1.19.1
+- React Native 0.61.2
+- Xcode 11.1
+- THEOplayer 2.64.0
+- Swift 5.1.
+
+The THEOplayer iOS SDK can be used for iOS devices using iOS 10.0+ and Swift 5.0+
+
+## Lifecycle Event Listener Implementation
+
+### Android
+
+This subsection implements lifecycle events listener – called when the host activity receive events.
+
+The following example shows implementations and calls to destroy a player object.
+
+Firstly in module view manager file (`TheoPlayerViewManager.java`) add to class implementation of LifecycleEventListener:
+
+```java
+import com.facebook.react.bridge.LifecycleEventListener;
+    
+public class TheoPlayerViewManager extends SimpleViewManager<THEOplayerView> implements LifecycleEventListener {
+...
+```
+
+Then add lifecycle event listeners to the React context and override lifecycle events:
+
+```java
+...
+@Override
+protected THEOplayerView createViewInstance(final ThemedReactContext reactContext) {
+    playerView = new THEOplayerView(reactContext.getCurrentActivity());
+    playerView.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
+    
+    // Add lifecycle event listener to react context
+    reactContext.addLifecycleEventListener(this);
+    
+    return playerView;
+}
+    
+@Override
+public void onHostDestroy() {
+    playerView.onDestroy();
+}
+...
+```
+
+Secondly in native view module file (`TheoPlayerViewModule.java`) add React method to call on destroy.
+
+```java
+import com.facebook.react.bridge.ReactMethod;
+    
+public class ...
+...
+@ReactMethod
+public void destroy() {
+    theoPlayerViewManager.playerView.onDestroy();
+}
+...
+```
+
+Finally use the call in JavaScript (`TheoPlayerViewScreen.js`):
+
+```java
+import { NativeModules, ... } from 'react-native';
+    
+export default class ...
+...
+componentWillUnmount() {
+    NativeModules.THEOplayerViewManager.destroy();
+}
+...
+```
+
+### iOS
+
+Nothing needs to be done on iOS.
+
+
+## Player Event Listener Logic Implementation
+
+### Android
+
+Firstly declare a property change listener in `THEOplayerViewManager.java`, as method prop set React context. Add event listener on video play by override handle play event:
+
+```java
+private void addPropertyChangeListeners(final ThemedReactContext reactContext) {
+    // Add listener on video play
+    playerView.getPlayer().addEventListener(PlayerEventTypes.PLAY, new EventListener<PlayEvent>() {
+        @Override
+        public void handleEvent(final PlayEvent playEvent) {
+            WritableMap event = Arguments.createMap();
+    
+            // Local property change
+            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+                playerView.getId(),
+                InternalAndGlobalEventPair.onPlay.internalEvent,
+                event);
+        }
+    });
+    
+}
+```
+
+Now we need internal and global event pair write it manually or add class enum:
+
+```java
+...
+private enum InternalAndGlobalEventPair {
+    onPlay("onPlayEventInternal", "onPlay");
+    
+    String internalEvent;
+    String globalEvent;
+    
+    InternalAndGlobalEventPair(String internalEvent, String globalEvent) {
+        this.internalEvent = internalEvent;
+        this.globalEvent = globalEvent;
+    }
+}
+...
+```
+
+And finally call it in createViewInstance:
+
+```java
+...
+private enum InternalAndGlobalEventPair {
+    onPlay("onPlayEventInternal", "onPlay");
+    
+    String internalEvent;
+    String globalEvent;
+    
+    InternalAndGlobalEventPair(String internalEvent, String globalEvent) {
+        this.internalEvent = internalEvent;
+        this.globalEvent = globalEvent;
+    }
+}
+...
+```
+
+And one last thing, add map builder:
+
+```java
+...
+@Override
+public Map getExportedCustomBubblingEventTypeConstants() {
+    return MapBuilder.builder()
+        .put(
+            InternalAndGlobalEventPair.onPlay.internalEvent,
+            MapBuilder.of(
+                "phasedRegistrationNames",
+                MapBuilder.of("bubbled", InternalAndGlobalEventPair.onPlay.globalEvent)))
+        .build();
+}
+...
+```
+
+### iOS
+
+Firstly declare Player event and listeners list in view(`THEOplayerView.swift`):
+
+```swift
+...
+class THEOplayerView: UIView {
+    var player: THEOplayer
+    // Declarate onPlay
+    var onPlay: RCTBubblingEventBlock?
+    
+    // Declarate listeners
+    private var listeners: [String: EventListener] = [:]
+...
+```
+
+In class init register player on event emitter(event emitter class will be described at the next section) and set play listener:
+
+```swift
+...
+init() {
+    ...
+    // Register player on event emitter
+    EventEmitter.sharedInstance.registerPlayer(player: player)
+    
+    // Set listener
+    let playListener = player.addEventListener(type: PlayerEventTypes.PLAY) { [unowned self] event in
+        print("Received \(event.type) event at \(event.currentTime)")
+        guard self.onPlay != nil else {
+        return
+        }
+    
+        self.onPlay!([:])
+    }
+    listeners[PlayerEventTypes.PLAY.name] = playListener
+...
+```
+
+Next add view property:
+
+```swift
+...
+// View property to listen event play
+@objc(setOnPlay:) func setOnPlay(play: @escaping RCTBubblingEventBlock) {
+    onPlay = play
+}
+...
+```
+
+At the end de-init listeners:
+
+```swift
+...
+// De-init listeners
+deinit {
+    for (eventName, listener) in listeners {
+    switch eventName {
+    case "play":
+        player.removeEventListener(type: PlayerEventTypes.PLAY, listener: listener)
+    default:
+        break
+    }
+    }
+}
+...
+```
+
+Finally set bridge in `THEOplayerViewBridge.m`:
+
+```swift
+...
+RCT_EXPORT_VIEW_PROPERTY(onPlay, RCTBubblingEventBlock);
+...
+```
+
+## Declare EventListener Helper
+
+### Android
+
+In native module we have declared communication between java THEOplayer library and react native, so now we need to declare manually new EventListeners or better dynamically.
+
+- Add new Java class inside `android/app/src/main/java/com/<your-app-name>/` e.g. `ReactNativeEventEmitterHelper.java` and declare class, which will extends react context module:
+
+```java
+//android/app/src/main/java/com/theoplayerreactnative/ReactNativeEventEmitterHelper.java
+package com.theoplayerreactnative;
+    
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.theoplayer.android.api.event.EventListener;
+import com.theoplayer.android.api.event.player.DurationChangeEvent;
+import com.theoplayer.android.api.event.player.PlayEvent;
+import com.theoplayer.android.api.event.player.PlayerEventTypes;
+import com.theoplayer.android.api.event.player.PresentationModeChange;
+import com.theoplayer.android.api.event.player.TimeUpdateEvent;
+    
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+    
+/**
+    * Helper class to handle the dynamic event registration.
+    * On iOS it can happen on the emitter itself
+    */
+public class ReactNativeEventEmitterHelper extends ReactContextBaseJavaModule {
+    
+    //static
+    public static final String RCT_MODULE_NAME = "ReactNativeEventEmitterHelper";
+    private static final String TAG = ReactNativeEventEmitter.class.getSimpleName();
+    
+    private class Events {
+        static final String PLAY = "play";
+    }
+    
+    private TheoPlayerViewManager theoPlayerViewManager;
+    
+    // Event listener scheduling
+    private Set<String> lateInitEventListeners = Collections.synchronizedSet(new TreeSet<String>());
+    private final ScheduledExecutorService eventListenerScheduler = Executors.newScheduledThreadPool(1);
+    private ScheduledFuture scheduledFutureTaskForEventRegistration;
+    
+    protected HashMap<String, EventListener> listeners = new HashMap<String, EventListener>();
+    
+    public ReactNativeEventEmitterHelper(ReactApplicationContext reactContext, TheoPlayerViewManager theoPlayerViewManager) {
+        super(reactContext);
+        this.theoPlayerViewManager = theoPlayerViewManager;
+    }
+    
+    @Override
+    public String getName() {
+        return RCT_MODULE_NAME;
+    }
+    
+    @ReactMethod
+    public void registerListenerForEvent(final String event) {
+        if (listeners.containsKey(event)) {
+            return;
+        }
+    
+        if (theoPlayerViewManager.playerView == null) {
+            // If the view is null, the player is not yet ready, so store the event and reschedule the event listener registration
+            lateInitEventListeners.add(event);
+            scheduledFutureTaskForEventRegistration = eventListenerScheduler.schedule(new Runnable() {
+                @Override
+                public void run() {
+                    registerListenerForEvent(event);
+                }
+            }, 1000, TimeUnit.MILLISECONDS);
+            return;
+        }
+    
+        // Else cancel the rescheduling
+        if (scheduledFutureTaskForEventRegistration != null) {
+            scheduledFutureTaskForEventRegistration.cancel(false);
+            scheduledFutureTaskForEventRegistration = null;
+        }
+    
+        // Maybe a registration event came earlier then the reschedule timer, so make sure this also will be initialised
+        if (!lateInitEventListeners.contains(event)) {
+            lateInitEventListeners.add(event);
+        }
+        // And init the stored event listeners
+        if (!lateInitEventListeners.isEmpty()) {
+            for (String eventName : lateInitEventListeners) {
+                initEventListener(eventName);
+            }
+            lateInitEventListeners.clear();
+        }
+    }
+    
+    private void initEventListener(String event) {
+        switch (event) {
+            case Events.PLAY :
+    
+                final EventListener playListener = new EventListener<PlayEvent>() {
+                    @Override
+                    public void handleEvent(final PlayEvent playEvent) {
+                        // Emit global event
+                        WritableMap eventGlobal = Arguments.createMap(); //new map, because the other one get consumed!
+                        sendEvent(getReactApplicationContext(), Events.PLAY, eventGlobal);
+                    }
+                };
+                listeners.put(Events.PLAY, playListener);
+                theoPlayerViewManager.playerView.getPlayer().addEventListener(PlayerEventTypes.PLAY, playListener);
+    
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
+    // Emit
+    private void sendEvent(ReactContext reactContext,
+                            String eventName,
+                            @javax.annotation.Nullable WritableMap params) {
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
+    }
+    
+    
+}
+```
+
+- Add next new Java class inside `android/app/src/main/java/com/<your-app-name>/` e.g. `ReactNativeEventEmitter.java` and declare interface for events emitter:
+
+```java
+//android/app/src/main/java/com/theoplayerreactnative/ReactNativeEventEmitter.java
+package com.theoplayerreactnative;
+    
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+    
+import javax.annotation.Nullable;
+    
+public interface ReactNativeEventEmitter extends DeviceEventManagerModule.RCTDeviceEventEmitter {
+    @Override
+    public void emit(String eventName, @Nullable Object data);
+}
+
+- Add event listener helper to player package on creation of native modules inside `android/app/src/main/java/com/<your-app-name>/<theo-player-package>`:
+
+...
+@Override
+public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+    return Arrays.<NativeModule>asList(
+            new TheoPlayerViewModule(reactContext, theoPlayerViewManager),
+            new ReactNativeEventEmitterHelper(reactContext, theoPlayerViewManager)
+    );
+}
+...
+```
+
+### iOS
+
+In native module we have declared communication between java THEOplayer library and react native, so now we need to declare manually new EventListeners or better dynamically.
+
+- Add new swift class inside `ios/` e.g. `ReactNativeEventEmitter.swift` and declare class, which will extends react context module:
+
+```swift
+import Foundation
+    
+@objc(ReactNativeEventEmitter)
+class ReactNativeEventEmitter: RCTEventEmitter {
+    
+    var hasListeners : Bool = false
+    
+    // All Events which must be support by React Native.
+    var allEvents: [String] = []
+    
+    override init() {
+    super.init()
+    print("ReactNativeEventEmitter init")
+    EventEmitter.sharedInstance.registerEventEmitter(eventEmitter: self)
+    }
+    
+    // Override implementation of queue setup
+    // - Returns: when true class initialized on the main thread,
+    //            when false class initialized on a background thread
+    @objc
+    override static func requiresMainQueueSetup() -> Bool {
+    return true;
+    }
+    
+    // Base override for RCTEventEmitter.
+    //
+    // - Returns: all supported events
+    @objc open override func supportedEvents() -> [String] {
+    return allEvents
+    }
+    
+    // Will be called when this module's first listener is added.
+    override func startObserving() {
+    print("ReactNativeEventEmitter startObserving")
+    
+    hasListeners = true
+    
+    super.startObserving()
+    
+    }
+    
+    // Will be called when this module's last listener is removed, or on dealloc.
+    override func stopObserving() {
+    print("ReactNativeEventEmitter stopObserving")
+    
+    hasListeners = false
+    
+    EventEmitter.sharedInstance.removeAllEventListeners()
+    allEvents = []
+    
+    super.stopObserving()
+    
+    }
+    
+    override func addListener(_ eventName: String!) {
+    print("ReactNativeEventEmitter addListener: ", eventName)
+    
+    if EventEmitter.sharedInstance.addEventListener(eventName: eventName) {
+        allEvents.append(eventName)
+    }
+    
+    super.addListener(eventName)
+    }
+    
+}
+```
+
+- Add next new swift class inside `ios/` e.g. `EventEmitter.swift` and declare interface for events emitter:
+
+```swift
+import Foundation
+import THEOplayerSDK
+    
+class EventEmitter {
+    
+    /// Shared Instance.
+    public static var sharedInstance = EventEmitter()
+    
+    // ReactNativeEventEmitter is instantiated by React Native with the bridge.
+    private static var eventEmitter: ReactNativeEventEmitter!
+    private static var player: THEOplayer!
+    
+    private var listeners: [String: EventListener] = [:]
+    
+    private init() {}
+    
+    // When React Native instantiates the emitter it is registered here.
+    func registerEventEmitter(eventEmitter: ReactNativeEventEmitter) {
+    EventEmitter.eventEmitter = eventEmitter
+    }
+    
+    func registerPlayer(player: THEOplayer) {
+    EventEmitter.player = player
+    }
+    
+    // Dispatch one event
+    func dispatch(name: String, body: Any?) {
+    EventEmitter.eventEmitter.sendEvent(withName: name, body: body)
+    }
+    
+    // Dispatch event to all listeners
+    func dispatchToAll(body: Any?) {
+    for event in EventEmitter.eventEmitter.allEvents {
+        EventEmitter.eventEmitter.sendEvent(withName: event, body: body)
+    }
+    }
+    
+    func addEventListener(eventName : String) -> Bool {
+    
+    if listeners[eventName] != nil {
+        return true
+    }
+    
+    switch eventName {
+        case "play":
+        listeners[eventName] = EventEmitter.player.addEventListener(type: PlayerEventTypes.PLAY) { event in
+            print("Received \(event.type) event at \(event.currentTime)")
+            EventEmitter.sharedInstance.dispatch(name: event.type, body: ["currentTime": event.currentTime])
+        }
+        default:
+        return false
+    }
+    
+    return true
+    }
+    
+    func removeAllEventListeners() {
+    for (eventName, listener) in listeners {
+        switch eventName {
+        case "play":
+        EventEmitter.player.removeEventListener(type: PlayerEventTypes.PLAY, listener: listener)
+        default:
+        break
+        }
+    }
+    listeners = [:]
+    }
+}
+```
+
+- Declare EventListener in new Object-C class inside `ios/` e.g. `ReactNativeEventEmitter.m`:
+
+```swift
+#import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
+    
+@interface RCT_EXTERN_MODULE(ReactNativeEventEmitter, RCTEventEmitter)
+    
+RCT_EXTERN_METHOD(supportedEvents)
+    
+@end
+```
+
+- Import RTC event emitter in birdge inside `ios/TheoPlayerReactNative-Bridging-Header.h`:
+
+```swift
+...
+#import <React/RCTEventEmitter.h>
+...
+```
+
+## React Listener Implementation
+
+Now we can use THEOplayer events in React Native:
+
+1. In constructor declare listeners object in `TheoPlayerViewScreen.js`: 
+
+```js
+...
+constructor(props) {
+    super(props);
+    
+    this.listeners = {}; // Declarate listeners
+}
+...
+```
+
+2. On component unmount remove all declared listeners in `TheoPlayerViewScreen.js`:
+
+```js
+...
+componentWillUnmount() {
+    Object.keys(this.listeners).forEach(key => {
+        this.listeners[key].remove();
+    });
+}
+...
+```
+
+3. Use previously declared listener in native module and add listeners manually or declare manager in `TheoEventEmitter.js`:
+
+```js
+import { NativeEventEmitter, NativeModules, Platform } from 'react-native';
+    
+const { ReactNativeEventEmitter, ReactNativeEventEmitterHelper } = NativeModules;
+const theoEventEmitter = new NativeEventEmitter(ReactNativeEventEmitter);
+    
+export default class TheoEventEmitter {
+    addListener(eventType, listener) {
+        if (Platform.OS === 'android') {
+            ReactNativeEventEmitterHelper.registerListenerForEvent(eventType);
+        }
+        return theoEventEmitter.addListener(eventType, listener);
+    }
+}
+```
+
+4. Import TheoEventEmitter & create instance of THEOplayer event emitter object in `THEOplayerView.js`:
+
+```js
+import THEOeventEmitter from './TheoEventEmitter';
+    
+const theoEventEmitter = new THEOeventEmitter(); // Create instance of theoplayer event emitter object
+...
+```
+
+5. Declare e.g. react native button and on press add listener in `TheoPlayerViewScreen.js`:
+
+```js
+...
+onPressAddEventListener = () => {
+    if (!this.listeners['play']) {
+        this.listeners['play'] = theoEventEmitter.addListener(
+            'play',
+            (event) => Alert.alert('Play event')
+        );
+    }
+}
+...
+```
+
+## Remarks
+
+- **Note:** There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in React Native](./03-fixing-fullscreen-issue.md)

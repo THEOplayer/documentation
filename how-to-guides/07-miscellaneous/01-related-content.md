@@ -1,0 +1,99 @@
+# Related Content
+
+The article in this section describes how to implement common use-cases related to the Related Content feature.
+
+The Related Content feature adds a component to the UI which enables viewers to navigate to related content.
+
+The Related Content feature exposes the Related API. This API allows developers to configure the related content.
+
+![Related Content](../../assets/img/related-content.PNG "Related Content")
+
+## SDKs
+
+| Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
+| :-----: | :---------: | :-----: | :--: | :------------: | :------------: |
+|   Yes   |     No     |   Yes   | No  |      No      |      N/A       |
+
+The Related Content API is a UI feature. It's currently unavailable on the Android (TV) SDK because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it on the Android (TV) SDK by following the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+
+## Code examples
+
+##### Web SDK
+
+The Related Content API was first released on THEO's Web SDK.
+
+- Reference API: [Related-Content API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.relatedcontent.md)
+- Online demo: [https://demo.theoplayer.com/related-content](https://demo.theoplayer.com/related-content)
+
+```js
+player.related.sources = [
+    {
+        image : '//cdn.theoplayer.com/video/vr/poster.jpg',
+        title : 'Experience true 360/VR in THEOplayer',
+        duration : '2:14',
+        link : '//demo.theoplayer.com/vr-and-360'
+    }, {
+        image : '//cdn2.hubspot.net/hubfs/2163521/Demo_zone/CaminandesLlamaDramaPoster.jpg',
+        title : "4K Streaming with THEOplayer",
+        duration : '1:30',
+        link : '//demo.theoplayer.com/4k'
+    }, {
+        image : '//cdn.theoplayer.com/video/sintel/poster.jpg',
+        title : "Optimally present your content with chapter markers",
+        duration : '1:30',
+        link : '//demo.theoplayer.com/chapters'
+    }, {
+        image : '//localhost/server/azure.jpg',
+        title : "Keep THEOplayer visible with picture-in-picture",
+        duration : '1:30',
+        link : '//demo.theoplayer.com/chapters'
+    }, {
+        image : "//cdn.theoplayer.com/video/big_buck_bunny/poster.jpg",
+        title : "THEOplayer 2.X: Advertisements Tester (VAST, VPAID, VMAP)",
+        duration : '9:57',
+        link : '//demo.theoplayer.com/chapters'
+    }, {
+        image : "//cdn2.hubspot.net/hubfs/2163521/Demo_zone/tears_of_steel_poster.jpg",
+        title : "CEA Closed Captions and Subtitles With THEOplayer",
+        duration : '12:14',
+        link : '//demo.theoplayer.com/closed-captions-subtitles'
+    }, {
+        title : "Go Big Screen With THEOplayer and Chromecast",
+        link : '//demo.theoplayer.com/chromecast',
+        duration : '9:57',
+        image : "//cdn.theoplayer.com/video/big_buck_bunny/poster-alt1.jpg"
+    }, {
+        title : "Effortless casting with THEOplayer and AirPlay",
+        link : '//demo.theoplayer.com/airplay',
+        duration : '9:57',
+        image : "//cdn.theoplayer.com/video/big_buck_bunny/poster-alt2.jpg"
+    }, {
+        title : "DRM and AES-128 content protection with THEOplayer",
+        link : '//demo.theoplayer.com/drm-aes-128-encryption',
+        duration : 'LIVE',
+        image : "//cdn.theoplayer.com/video/big_buck_bunny/poster-alt3.jpg"
+    }
+];
+
+player.addEventListener('ended', function() {
+    if (!player.related.showing) {
+        setTimeout(function() {
+            player.related.show();
+        }, 1000);
+    }
+});
+```
+
+##### Android (TV) SDK
+
+This API is currently not available on the Android (TV) SDK.
+
+##### iOS SDK
+
+The Related Content API is available on the iOS SDK, but not on the tvOS SDK.
+
+- Reference API: [https://cdn.theoplayer.com/doc/ios/2.55.1/Related%20Content%20API.html](https://cdn.theoplayer.com/doc/ios/2.55.1/Related%20Content%20API.html)
+
+## Related articles
+
+- Page: [Why does the network API not work on iOS devices?](../../faq/05-why-does-network-api-not-work-on-ios-devices.md)
