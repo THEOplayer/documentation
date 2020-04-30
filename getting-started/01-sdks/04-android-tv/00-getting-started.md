@@ -2,7 +2,7 @@
 
 This guide will help you to integrate the THEOplayer Android TV SDK into your project
 
-[Test relative link](#Using-the-player)
+[Test relative link](#using-the-player)
 
 ## System requirements
 The THEOplayer Android TV SDK can be used for Android TV devices using Android 5.0+ (minSdkVersion 21).
