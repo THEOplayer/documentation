@@ -1,4 +1,4 @@
-# Which error related events does the player expose?
+# Which error related events does the player expose
 
 | API | Event | Use | Example/how to trigger |
 | :-: | :---: | :-: | :--------------------: |

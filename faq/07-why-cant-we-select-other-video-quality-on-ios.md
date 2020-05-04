@@ -1,4 +1,4 @@
-# Why can't I select another video quality on iOS?
+# Why can't I select another video quality on iOS
 
 **In short**: Apple technically restricts video players from doing this, and there is no workaround.
 

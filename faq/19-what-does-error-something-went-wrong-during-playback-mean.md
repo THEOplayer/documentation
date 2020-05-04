@@ -1,4 +1,4 @@
-# What does the error message 'Something went wrong with Native playback' mean?
+# What does the error message 'Something went wrong with Native playback' mean
 
 This error, "Something went wrong with Native playback", occurs whenever the player struggles on the native rendering pipeline of the browser in use. The error code itself can be different, and it reflects the HTML5 MediaError interface. 
 

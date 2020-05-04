@@ -1,4 +1,4 @@
-# How does Media Engagement Index (MEI) affect Autoplay on Chrome?
+# How does Media Engagement Index (MEI) affect Autoplay on Chrome
 
 The question above is related to the following questions:
 

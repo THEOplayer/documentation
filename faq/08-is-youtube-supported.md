@@ -1,4 +1,4 @@
-# Is YouTube supported?
+# Is YouTube supported
 
 This question above is typically asked by customers who have experience with the YouTube embedded player. It's also related to the following questions:
 

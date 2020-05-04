@@ -1,4 +1,4 @@
-# Why the visibility API does not work through an iframe on Safari and IE11?
+# Why the visibility API does not work through an iframe on Safari and IE11
 
 This question may be asked when you observe a different behaviour of the visibility API on different browsers.
 

@@ -1,4 +1,4 @@
-# Why does the network API not work on iOS devices?
+# Why does the network API not work on iOS devices
 
 Most Network API capabilities are not available on iOS devices. Generally speaking, video playback on iOS behaves like a black box. This black box handles the requests (and responses) related to video manifests and segments, which makes them impossible to intercept. This limits the possible uses of the Network API on such devices.
 

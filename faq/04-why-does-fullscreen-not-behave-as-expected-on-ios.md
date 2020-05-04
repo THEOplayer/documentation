@@ -1,4 +1,4 @@
-# Why does fullscreen not behave as expected on iOS?
+# Why does fullscreen not behave as expected on iOS
 
 One of the most frequently encountered issues on iOS devices is unexpected behaviour concerning fullscreen playback.
 

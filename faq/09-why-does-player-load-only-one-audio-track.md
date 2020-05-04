@@ -1,4 +1,4 @@
-# Why does the player load only one audio track (even though there are several in the manifest)?
+# Why does the player load only one audio track (even though there are several in the manifest)
 
 You may be asking this question if you notice a discrepancy in the number of audio tracks present in the manifest and the audio tracks that you can select from the player UI.
 

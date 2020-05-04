@@ -1,4 +1,4 @@
-# Why does the currentTime seem off in my livestream & what can I do about it?
+# Why does the currentTime seem off in my livestream & what can I do about it
 
 THEOplayer has a currentTime property, which returns you the current playback position in the video (in seconds). For VOD this works as you would expect. If you have a video, let it play for 30 seconds and query the currentTime, the player will report 30 seconds. However, if you start watching a livestream and query the currentTime after 30 seconds, you won't get 30 seconds reported. Nor will you get the time that would have elapsed if you watched the segments in the most recent manifest file until the point where you queried the currentTime. This might seem odd, but there's a very good reason for this, which we'll explain in a bit, along with some workarounds if you do want to use one of the aforementioned definitions of currentTime in a live streaming context.
 

@@ -1,4 +1,4 @@
-# How to know whether a live stream is playing?
+# How to know whether a live stream is playing
 
 The question is related to knowing if a stream is live or on-demand.
 

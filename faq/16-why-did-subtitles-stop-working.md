@@ -1,4 +1,4 @@
-# Why did my subtitles stop working?
+# Why did my subtitles stop working
 
 This question is occasionally asked by developers who've configured the latest release of THEOplayer.
 

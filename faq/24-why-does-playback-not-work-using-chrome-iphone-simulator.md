@@ -1,4 +1,4 @@
-# Why does the playback not work when using the Chrome iPhone/iPad simulator?
+# Why does the playback not work when using the Chrome iPhone/iPad simulator
 
 You might need an answer to this question if you are testing your page using the Chrome iPhone/iPad simulator and notice that, reloading the page, the video player stops working (even though the ads, if any, are displayed correctly) and some errors are displayed in the console.
 

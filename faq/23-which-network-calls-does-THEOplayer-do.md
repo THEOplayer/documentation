@@ -1,4 +1,4 @@
-# Which network calls (or requests) does THEOplayer do?
+# Which network calls (or requests) does THEOplayer do
 
 The question above is related to the following questions:
 

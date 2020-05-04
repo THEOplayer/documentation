@@ -1,4 +1,4 @@
-# What is an impression?
+# What is an impression
 
 This article explains what an impression is and how THEOplayer calculates impressions.
 

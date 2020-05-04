@@ -1,4 +1,4 @@
-# How to do error handling?
+# How to do error handling
 
 Error handling comes in different sizes and shapes due to different needs:
 

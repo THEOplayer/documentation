@@ -1,4 +1,4 @@
-# Why are not all response headers exposed?
+# Why are not all response headers exposed
 
 You may ask this question if, for example, you are trying to intercept a certain XHR response to use data contained in custom headers but you don't find these among the exposed headers (see documentation below regarding network interceptors).
 
