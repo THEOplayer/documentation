@@ -2,6 +2,9 @@
 
 The articles in this section describe how to implement common use-cases related to advertisements. These use-cases can range from customizing the UX during advertisements, to detecting ad blockers.
 
+## 2nd Introduction
+This subsection is about Advertisement
+
 ### Table of Contents
 
 - [Adblock Detection](../../how-to-guides/01-ads/01-block-detection.md)
