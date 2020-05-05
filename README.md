@@ -1,2 +1,2 @@
 # documentation
-This repository contain all articles on how to use THEOplayer
+This repository contains all articles on how to use THEOplayer
