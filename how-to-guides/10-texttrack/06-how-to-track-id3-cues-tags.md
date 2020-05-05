@@ -9,6 +9,16 @@ Thequestion above is commonly asked by the developers who want to introduce a c
 [ID3](https://en.wikipedia.org/wiki/ID3) is a type of metadata which can be inserted in HTTP livestreams. Once an ID3 cue is inserted, it'll be added to a THEOplayer [TextTrack](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.texttrack.md).
 The demo at [https://demo.theoplayer.com/audio-id3-metadata](https://demo.theoplayer.com/audio-id3-metadata) demonstrates a usage of ID3 metadata. Just before the song changes, an `exit` event will be dispatched, the song information (title, album, etc.) is contained within this `exit` event, and can be used to update the UI.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Tracking ID3](#tracking-id3)
+- [Code examples](#code-examples)
+  - [Listening for timed metadata events](#listening-for-timed-metadata-events)
+  - [Track the exit event](#track-the-exit-event)
+- [Sample application](#sample-application)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -142,11 +152,7 @@ The demo below illustrates the use of ID3 in production.
 
 ## Resources
 
-- [ID3 Timed Metadata](/wiki/spaces/THEOSD/pages/1399128130/ID3+Timed+Metadata): Information page
-
 - [Reference API - TextTrack](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.texttrack.md)
-
 - [http://id3.org/](http://id3.org/): ID3.org Home
-
 - [https://en.wikipedia.org/wiki/ID3](https://en.wikipedia.org/wiki/ID3): Wikipedia - ID3
 - [https://dev.w3.org/html5/html-sourcing-inband-tracks/](https://dev.w3.org/html5/html-sourcing-inband-tracks/): External resource - Sourcing In-band Media Resource Tracks from Media Containers into HTML

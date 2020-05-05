@@ -4,6 +4,14 @@ This article will explain how to send data to an active receiver and how to resp
 
 **This is currently not working on the Web SDK, even though it's documented below.**
 
+### Table of Contents
+- [Send data to the receiver](#send-data-to-the-receiver)
+- [Receive data from the receiver](#receive-data-from-the-receiver)
+- [Receive data on the receiver](#receive-data-on-the-receiver)
+- [Send data from the receiver](#send-data-from-the-receiver)
+- [Related articles](#related-articles)
+
+
 ## Send data to the receiver
 
 The Google Cast SDK has a global object that everyone can access. This global object is also being used by THEOplayer. The general idea is to retrieve the current active cast session and send a message on a specific namespace.
@@ -157,29 +165,12 @@ Reference:
 - [https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#broadcast](https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#broadcast)
 - [https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#send](https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#send)
 
-<!-- ## Related articles
+## Related articles
 
-- 
-Page:
+- [Pass subtitle selection on to Chromecast](05-pass-subtitle-section-on-to-chromecast.md)
 
-[Pass subtitle selection on to Chromecast](/wiki/spaces/THEOSD/pages/1244365085/Pass+subtitle+selection+on+to+Chromecast)
+- [Chromecast SDK Setup](../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)
 
-- 
-Page:
+- [How to configure a different stream to Chromecast](03-how-to-configure-to-a-different-stream.md)
 
-[Chromecast SDK Setup](/wiki/spaces/THEOSD/pages/325648385/Chromecast+SDK+Setup)
-
-- 
-Page:
-
-[How to configure a different stream to Chromecast](/wiki/spaces/THEOSD/pages/830668924/How+to+configure+a+different+stream+to+Chromecast)
-
-- 
-Page:
-
-[Chromecast on my webplayer does not work any longer despite no change in my implementation](/wiki/spaces/THEOSD/pages/1147568148/Chromecast+on+my+webplayer+does+not+work+any+longer+despite+no+change+in+my+implementation)
-
-- 
-Page:
-
-[Connecting from custom Sender applications](/wiki/spaces/THEOSD/pages/325681203/Connecting+from+custom+Sender+applications) -->
+- [Connecting from custom Sender applications](01-connecting-from-custom-sender-applications.md)

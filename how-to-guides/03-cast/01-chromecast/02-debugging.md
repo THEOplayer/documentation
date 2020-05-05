@@ -17,30 +17,13 @@ This how-to guide describes how to debug a Chromecast Receiver application using
 ![Chromecast debugging 3](../../../assets/img/chromecast_debugging_3.PNG "Chromecast debugging 3")
 9. You should now have access to the Chrome Developer Tools of your Chromecast Receiver application. If you are familiar with debugging through Chrome's Developer Tools, you can look into issues, try out new CSS styles and monitor network traffic.
 ![Chromecast debugging 4](../../../assets/img/chromecast_debugging_4.PNG "Chromecast debugging 4")
-<!-- ## Related articles
 
-- 
-Page:
+## Related articles
 
-[Pass subtitle selection on to Chromecast](/wiki/spaces/THEOSD/pages/1244365085/Pass+subtitle+selection+on+to+Chromecast)
+- [Pass subtitle selection on to Chromecast](05-pass-subtitle-section-on-to-chromecast.md)
 
-- 
-Page:
+- [Chromecast SDK Setup](../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)
 
-[Chromecast SDK Setup](/wiki/spaces/THEOSD/pages/325648385/Chromecast+SDK+Setup)
+- [How to configure a different stream to Chromecast](03-how-to-configure-to-a-different-stream.md)
 
-- 
-Page:
 
-[How to investigate (or debug) a ticket (or issue)](/wiki/spaces/THEOSD/pages/1193934925)
-
-- 
-Page:
-
-[How to configure a different stream to Chromecast](/wiki/spaces/THEOSD/pages/830668924/How+to+configure+a+different+stream+to+Chromecast)
-
-- 
-Page:
-
-[Chromecast on my webplayer does not work any longer despite no change in my implementation](/wiki/spaces/THEOSD/pages/1147568148/Chromecast+on+my+webplayer+does+not+work+any+longer+despite+no+change+in+my+implementation)
- -->

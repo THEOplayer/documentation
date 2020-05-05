@@ -5,6 +5,11 @@ This articles provides information on how developers can add custom buttons to T
 THEOplayer's default UI is based on VideoJS. A WebView is used on the iOS and Android (TV) SDK. HTML, CSS and JavaScript is used to insert a button.
 When using the Android (TV) or iOS SDK, THEOplayer exposes a system to include JavaScript and CSS files (as described at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md). This system allows developers to re-use their code-logic.
 
+### Table of Contents
+- [Code example](#code-example)
+- [Sample resources](#sample-resources)
+
+
 ## Code example
 
 This code example adds 2 time-jump buttons to the control bar. A button to go back 10 seconds in time should be positioned to the left of the play-button, and a button to go forward 10 seconds in time should be positioned to the right of the play-button.

@@ -2,6 +2,13 @@
 
 This article explains how to use the Verizon Media's Ads API exposed by THEOplayer. This API allows developers to manipulate the ad-related UX and UI.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Global Configuration](#global-configuration)
+- [Verizon Media Ads API](#verizon-media-ads-api)
+- [Related articles](#related-articles)
+
+
 ## SDKs 
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -233,3 +240,8 @@ let adBreakArrayListener = { (event: VerizonMediaAddAdBreakEvent) in
          
 let adBreakArrayListenerRef = player.verizonMedia.ads.adBreaks.addEventListener(type: VerizonMediaAdBreakArrayEventTypes.ADD_AD_BREAK, listener: adBreakArrayListener)
 ```
+
+## Related articles
+
+- [Verizon Media - Preplay](../../../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md)
+- [Verizon Media - Ping](../../../how-to-guides/07-miscellaneous/02-verizon-media/03-ping.md)

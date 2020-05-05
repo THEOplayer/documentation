@@ -8,6 +8,15 @@ The Up Next feature exposes the Up Next API. This API allows developers to confi
 
 ![Up Next](../../assets/img/up-next.PNG "Up Next")
 
+### Table of Contents
+- [SDKs](#sdks)
+- [How to use the Up Next API](#how-to-use-the-up-next-api)
+- [Code Examples](#code-examples)
+- [Sample Applications](#sample-applications)
+- [Remarks](#remarks)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -62,3 +71,8 @@ The following remarks can help:
 
 - The Up Next API is currently unavailable on all SDKs except the Web SDK, because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it using the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
 
+## Resources
+
+The following resources provide more information:
+
+- [Up Next API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.upnext.md)

@@ -10,6 +10,10 @@ Similar questions may be:
 
 Showing visual cues indicating the moment in which the ads will start is certainly useful. **This is not (yet) a THEOplayer standard feature, but what follows is a first step in that direction**. Please keep in mind that this solution is still in development and has to date several limitations.
 
+### Table of Contents
+- [Prerequisites and limitations](#prerequisites-and-limitations)
+- [The code](#the-code)
+
 ## Prerequisites and limitations
 
 - It only works for THEOplayer ad integration

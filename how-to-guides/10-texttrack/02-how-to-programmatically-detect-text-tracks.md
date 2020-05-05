@@ -5,6 +5,12 @@ This article describes how you can use the API to detect text tracks, which can 
 The TextTrack API can be used to implement this functionality. 
 Implementing this functionality is a common use-case for developers who want to build their own UI to visualize the available text languages.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code examples](#code-examples)
+- [Remarks](#remarks)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

@@ -4,6 +4,19 @@ This how-to guide describes how to implement playback of downloadable content-pr
 
 *Currently, Widevine and Fairplay (respectively for Android SDK and iOS SDK) are each supported together with the Uplynk-Verizon, Azure DRM and DRMToday integrations. *
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Prerequirements](#prerequirements)
+- [Code examples](#code-examples)
+  - [Download](#download)
+  - [Playback](#playback)
+  - [Pause and restart](#pause-and-restart)
+  - [Check size and progression](#check-size-and-progression)
+  - [Listing and restarting caching tasks](#listing-and-restarting-caching-tasks)
+  - [Delete](#delete)
+  - [Renew a DRM license](#renew-a-drm-license)
+  - [Handle redirected manifest](#handle-redirected-manifest)
+  - [Sample Apps for Offline Playback](#sample-apps-for-offline-playback)
 
 ## SDKs
 

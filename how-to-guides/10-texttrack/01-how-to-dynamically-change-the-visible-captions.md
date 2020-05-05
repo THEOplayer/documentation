@@ -4,6 +4,12 @@ When working with the captions / text-track options, you can dynamically change 
 
 This method assumes that you are using text-tracks that are loaded with the manifest. If you add the text-track separately, you can just use this API: [TextTrackDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.texttrackdescription.md)
 
+### Table of Contents
+- [Step-by-step guide](#step-by-step-guide)
+  - [1. Create a new function inside the browser](#1-create-a-new-function-inside-the-browser)
+  - [2. Call the function using the language label (or 3-letter-language code if you change x.label to x.language)](#2-call-the-function-using-the-language-label-or-3-letter-language-code-if-you-change-xlabel-to-xlanguage)
+- [Related articles](#related-articles)
+  
 ## Step-by-step guide
 
 ### 1. Create a new function inside the browser
@@ -39,3 +45,9 @@ WIP
 
 ### 2. Call the function using the language label (or 3-letter-language code if you change x.label to x.language)
 
+## Related articles
+- [How to dynamically change the visible captions?](01-how-to-dynamically-change-the-visible-captions.md)
+- [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+- [Web SDK](../../getting-started/01-sdks/01-web/00-getting-started.md)
+- [Android (Mobile) SDK](../../getting-started/01-sdks/02-android/00-getting-started.md)
+- [Chromecast Receiver SDK](../../getting-started/01-sdks/06-chromecast/00-getting-started.md)

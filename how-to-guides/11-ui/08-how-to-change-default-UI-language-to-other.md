@@ -6,6 +6,12 @@ The UIConfiguration Object uses a property *language *&* languages *to change 
 
 When this configuration is set, the labels and tooltips in the UI will be replaced by their translated version from the language. If no translation is found for a label or tooltip, the original English version will be used instead.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Prerequisites](#prerequisites)
+- [Code examples](#code-examples)
+- [Reference Material](#reference-material)
+  
 ## SDKs
 
 | Web SDK |           Android SDK            |             iOS SDK              | tvOS SDK| Android TV SDK | Chromecast SDK |

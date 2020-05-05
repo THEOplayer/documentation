@@ -2,6 +2,15 @@
 
 THEOplayer supports playing only a selected part of a video-on-demand stream, rather than playing it from start to finish. This can be used for example to watch a single game-changing event from a sports match, highlight an important part of a long video presentation, or skip straight to the best part of a song's video clip.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [How to use the Clip API](#how-to-use-the-clip-api)
+- [Code Examples](#code-examples)
+- [Sample application](#sample-application)
+- [Remarks](#remarks)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -58,3 +67,9 @@ The demo below illustrates the Up Next API in production.
 ## Remarks
 
 - The event listener in the provided code sample is not strictly necessary, but it ensures that the clipping is applied after the source is set. If your source has not been set or is being set but the process is not complete, clipping will not have any effect.   
+
+## Resources
+
+- [Clip API Reference](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.clip.md/)
+- [Blog article](https://www.theoplayer.com/blog/frame-accurate-clipping-in-hls)
+- [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)

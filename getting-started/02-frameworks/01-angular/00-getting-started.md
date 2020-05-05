@@ -84,4 +84,4 @@ will make sure to get everything needed from our sdk.
 
 ## Related articles
 
-https://angular.io/guide/quickstart
+- https://angular.io/guide/quickstart

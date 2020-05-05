@@ -6,6 +6,11 @@ This question is asked by developers who want to alter how a video should be res
 - Cuts out content outside of the box.
 - Or deforms the content, and causing misalignment with the aspect-ratio.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code example](#code-example)
+
+
 ## SDKs
 
 | Web SDK |                 Android SDK                 |                   iOS SDK                   | tvOS SDK|               Android TV SDK                | Chromecast SDK |

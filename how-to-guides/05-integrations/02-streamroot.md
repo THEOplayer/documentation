@@ -4,6 +4,15 @@ This guide explains how to set up THEOplayer in combination with Streamroot, the
 
 Boosting your video workflow with Streamroot DNA technology is easy as pie. In fact, it is so easy that you could, in most cases, be up and running in under 20 minutes.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [How to set up THEOplayer with Streamroot](#how-to-set-up-theoplayer-with-streamroot)
+  - [Prerequisites](#prerequisites)
+  - [Integrating Streamroot - Code examples](#integrating-streamroot---code-examples)
+- [Conclusion](#conclusion)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

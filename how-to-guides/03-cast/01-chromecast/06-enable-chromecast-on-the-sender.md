@@ -2,6 +2,11 @@
 
 This article explains how to enable the Chromecast Sender Capabilities on the Web SDK, iOS SDK and Android SDK.
 
+### Table of Contents
+- [Prerequirements](#prerequirements)
+- [Import Chromecast SDK](#import-chromecast-sdk)
+- [Chromecast Receiver app](#chromecast-receiver-app)
+
 ## Prerequirements
 
 THEOplayer is built in a modular way, and a THEOplayer library has a set of features enabled (e.g. HLS playback, MPEG-DASH playback, advertisements, etc.).

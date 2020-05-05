@@ -2,6 +2,13 @@
 
 Conviva is an analytics service. THEOplayer offers a pre-integration for this solution. A demo can be found at [http://demo.theoplayer.com/conviva-analytics-test-page-20171024](http://demo.theoplayer.com/conviva-analytics-test-page-20171024).
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code example](#code-example)
+  - [Pre-requirements](#pre-requirements)
+  - [Configuration](#configuration)
+- [Related links:](#related-links)
+  
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -131,7 +138,7 @@ let sourceDescription = SourceDescription(
 )
 ```
 
-<!-- ## Related links:
+## Related links:
 
 - Demo page: [http://demo.theoplayer.com/conviva-analytics-test-page-20171024](http://demo.theoplayer.com/conviva-analytics-test-page-20171024)
-- Analytics API Web SDK: [https://support.theoplayer.com/hc/en-us/articles/115003779985-Analytics-API#ConvivaConfiguration](https://support.theoplayer.com/hc/en-us/articles/115003779985-Analytics-API#ConvivaConfiguration) -->
+- [Analytics API Web SDK](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.analytics.md)

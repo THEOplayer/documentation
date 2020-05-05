@@ -4,11 +4,21 @@ THEOplayer makes a number of network requests and receives responses while playi
 
 This guide explains how you set-up THEOplayer to add and remove request/response interceptors. This document guides you through setting up a demo just like the one that's showcased in our [Demo Zone](https://www.theoplayer.com/demo-zone).
 
-## 1\. Prerequirements
+### Table of Contents
+- [1. Prerequirements](#1-prerequirements)
+- [2. Starting Template](#2-starting-template)
+- [3. Adding and removing Request Interceptors](#3adding-and-removing-request-interceptors)
+- [4. Adding and removing Response Interceptors](#4adding-and-removing-response-interceptors)
+- [5. Adding a waitUntil in Request and Response Interceptors](#5adding-a-waituntil-in-request-and-response-interceptors)
+- [6. HTTP Errors](#6-http-errors)
+- [7. Adding and Removing Event Listeners](#7-adding-and-removing-event-listeners)
+
+
+## 1. Prerequirements
 
 This guide expects that you have a THEOplayer license. If you aren't using THEOplayer yet, you can start by registering at THEOportal [here](https://portal.theoplayer.com) to get access to THEOplayer. Be sure to have THEOplayer version 2.21.0 or higher.
 
-## 2\. Starting Template
+## 2. Starting Template
 
 The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md).
 
@@ -86,7 +96,7 @@ This snippet initializes your player, including an HLS source.
 </script>
 ```
 
-## 3\. Adding and removing Request Interceptors
+## 3. Adding and removing Request Interceptors
 
 Starting from the basic template above, you need to add a `RequestInterceptor` on the network object's addRequestInterceptor method. By adding a request interceptor, the original request made by HTTP can be modified so that specific properties of the original request can be altered to contain the necessary information, before it is sent to the server. The interceptors are added in a stack and the last interceptor to be added is the first one to intercept the original request.
 
@@ -138,7 +148,7 @@ Interceptors can be removed in a similar manner as follows:
 player.network.removeRequestInterceptor(interceptor);
 ```
 
-## 4\. Adding and removing Response Interceptors
+## 4. Adding and removing Response Interceptors
 
 A `ResponseInterceptor` responds with the given response for the original request.
 
@@ -170,7 +180,7 @@ Interceptors can be removed in a similar manner as follows:
 player.network.removeResponseInterceptor(interceptor);
 ```
 
-## 5\. Adding a waitUntil in Request and Response Interceptors
+## 5. Adding a waitUntil in Request and Response Interceptors
 
 The `waitUntil` method can be used to execute synchronous and asynchronous processes before the `request` or the `response` can be closed. A waitUntil method can throw an error if, for a single Interceptor, a request or a response was already closed.
 
@@ -248,13 +258,13 @@ var interceptor = function (request) {\
 
 The code sample above waits until the modifyRequestHeaders promise is resolved and then the redirect method is executed which means that the request can now be closed.
 
-## 6\. HTTP Errors
+## 6. HTTP Errors
 
 If the status code is set to a code between 200-299, the player responds with a successful response, in any other cases the player will respond with an HTTP error.
 
 If the player originally responded with an HTTP error, the interceptor can change the response to a successful response and vice versa.
 
-## 7\. Adding and Removing Event Listeners
+## 7. Adding and Removing Event Listeners
 
 The 'online' and 'offline' events can be added to the network as follows:
 

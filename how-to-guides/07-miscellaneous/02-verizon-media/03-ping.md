@@ -2,6 +2,14 @@
 
 This article explains how to use the Verizon Media's Ping API.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Configuring Ping](#configuring-ping)
+- [Ping requests](#ping-requests)
+- [Ping Response](#ping-response)
+- [Related articles](#related-articles)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -178,3 +186,6 @@ let pingConfiguration = VerizonMediaPingConfiguration(
 let verizonMediaSource = VerizonMediaSource(assetId: "assetID", ping: pingConfiguration)
 ```
 
+## Related articles
+- [Verizon Media - Preplay](../../../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md)
+- [Verizon Media - Ads](../../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md)

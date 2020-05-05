@@ -2,6 +2,13 @@
 
 This article explains how to use the Verizon Media's Preplay API. This API allows developers to pre-integrate with Verizon's Preplay service.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Stream Configuration (without ads)](#stream-configuration-without-ads)
+- [Stream Configuration (with ads)](#stream-configuration-with-ads)
+- [Preplay Response](#preplay-response)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -242,3 +249,8 @@ let eventListener = self.theoplayer.verizonMedia.addEventListener(type: VerizonM
     // do something with the preplay response           
 }
 ```
+
+# Related articles
+
+- [Verizon Media - Ads](../../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md)
+- [Verizon Media - Ping](../../../how-to-guides/07-miscellaneous/02-verizon-media/03-ping.md)

@@ -20,6 +20,11 @@ Google Analytics (GA) is used as an example, due to its widespread use for analy
 
 A custom integration for the systems above is most likely not needed. We constantly validate our pre-integrations, ensuring you that they are up-to-standard and up-to-date.
 
+### Table of Contents
+- [Prerequirements](#prerequirements)
+- [Integrating Google Analytics](#integrating-google-analytics)
+- [Conclusion](#conclusion)
+  
 ## Prerequirements
 
 There are two prerequirements in order to continue with this guide:
@@ -141,13 +146,8 @@ Remember that not every event is accessible through the player property. For exa
 
 A custom analytics integration gives you full control over your code, and the data you want to submit to your analytics system. This data is exposed through the THEOplayer API, and allows you to subscribe to events such as the [start of an ad](https://support.theoplayer.com/hc/en-us/articles/115000275789-Ads-API), or a [direction change event in 360/VR](https://support.theoplayer.com/hc/en-us/articles/115003088225-360-Video-and-VR-API) playback.
 
-<!-- Extra resources:
+Extra resources:
 
-1. 
-[THEOplayer API](https://support.theoplayer.com/hc/en-us/sections/203124169-Javascript-API-2-x)
+1. [THEOplayer API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.md)
 
-2. 
-[THEOplayer Getting Started Guide](https://support.theoplayer.com/hc/en-us/articles/115001933305-Getting-Started-with-THEOplayer-2-X)
-
-3. 
-[Examples of using 2.X events](http://demo.theoplayer.com/using-events-examples) -->
+2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)

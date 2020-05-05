@@ -2,6 +2,11 @@
 
 [Mux /data](https://mux.com/data/) is a video analytics service. is currently the maintainer of the Mux-THEOplayer pre-integration.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Connecting Mux to THEOplayer](#connecting-mux-to-theoplayer)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

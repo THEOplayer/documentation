@@ -4,6 +4,11 @@ The THEOplayer Ads API allows developers to detect adblockers, and react accordi
 
 ![Add block detection](../../assets/img/image-15.png "Adblock detection")
 
+### Table of Contents
+- [SDKs](#sdks)
+- [API](#api)
+- [Code examples](#code-examples)
+- [Resources](#resources)
 
 ## SDKs
 
@@ -52,3 +57,11 @@ player.source = {
 ```
 
 Note that `blockContentIfAdError` only works when you use the default advertisement integration. If you'd use [Google IMA](../../how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md) (or any other integration), you'll have to use the `aderror` event to halt playback.
+
+## Resources
+
+Below are some resources on ad-block detection through the Ads API:
+
+- Reference API: https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.md/
+- Online demo: https://demo.theoplayer.com/adblock-detection
+- [Advertisement guide](../../knowledge-base/01-advertisement/01-user-guide.md)

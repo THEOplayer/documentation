@@ -2,6 +2,13 @@
 
 Moat is an analytics service maintained by Oracle. THEOplayer offers a pre-integration for this solution. A demo can be found at [https://demo.theoplayer.com/moat-analytics-pre-integration](https://demo.theoplayer.com/moat-analytics-pre-integration).
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code example](#code-example)
+  - [Pre-requirements](#pre-requirements)
+  - [Configuration](#configuration)
+- [Related links:](#related-links)
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -121,8 +128,8 @@ public static var moatPreroll : SourceDescription {
 }
 ```
 
-<!-- ## Related links:
+## Related links:
 
 - Demo page: [https://demo.theoplayer.com/moat-analytics-pre-integration](https://demo.theoplayer.com/moat-analytics-pre-integration)
-- Analytics API Web SDK: [https://support.theoplayer.com/hc/en-us/articles/115003779985-Analytics-API#MoatConfiguration](https://support.theoplayer.com/hc/en-us/articles/115003779985-Analytics-API#MoatConfiguration)
-- Analytics API Android SDK: [https://support.theoplayer.com/hc/en-us/articles/115005662145-Android-SDK-Analytics](https://support.theoplayer.com/hc/en-us/articles/115005662145-Android-SDK-Analytics) -->
+- [Analytics API Web SDK](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.analytics.md)
+- [Analytics API Android SDK](https://cdn.theoplayer.com/doc/android/2.55.1/com/theoplayer/android/api/source/analytics/package-summary.html)

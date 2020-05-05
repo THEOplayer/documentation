@@ -2,6 +2,14 @@
 
 YoSpace is a Server-Side Ad-Insertion solution. A demo can be found at [http://demo.theoplayer.com/ssai](http://demo.theoplayer.com/ssai).
 
+
+### Table of Contents
+- [SDKs](#sdks)
+- [Pre-requirements](#pre-requirements)
+- [Starting Template](#starting-template)
+- [Integrating Yospace](#integrating-yospace)
+- [Conclusion](#conclusion)
+  
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -274,16 +282,12 @@ THEOplayer partnered with Yospace to fully pre-integrate their Server-Side Ad In
 
 This partnership means that we are compatible with each other: THEOplayer has a long history with and is optimized to play Yospace streams. We regularly validate our integration and are the first to know about changes to the Yospace infrastructure.
 
-<!-- Extra resources:
+Extra resources:
 
-1. [Server-Side Ad Insertion Pre-Integration API](https://support.theoplayer.com/hc/en-us/articles/THEOplayer%20partnered%20with%20Yospace%20to%20fully%20pre-integrate%20their%20Server-Side%20Ad%20Insertion%20solution,%20allowing%20you%20to%20play%20their%20streams%20in%20a%20breeze.%20%20This%20partnership%20means%20that%20we%20are%20compatible%20with%20each%20other:%20THEOplayer%20has%20a%20long%20history%20with%20and%20is%20optimized%20to%20play%20Yospace%20streams.%20We%20regularly%20validate%20our%20integration%20and%20are%20the%20first%20to%20know%20about%20changes%20to%20the%20Yospace%20infrastructure.)
-2. [THEOplayer Getting Started Guide](https://support.theoplayer.com/hc/en-us/articles/115001933305-Getting-Started-with-THEOplayer-2-X)
+1. [Server-Side Ad Insertion Pre-Integration API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer-serversideadinsertionconfiguration)
+2. [THEOplayer Getting Started Guide](web/../../../getting-started/01-sdks/01-web/00-getting-started.md)
 3. [Yospace website](http://www.yospace.com/)
 
 Related articles
 
-- [https://support.theoplayer.com/hc/en-us/articles/115003194409-How-to-use-THEOplayer-with-Yospace-Ad-Insertion](https://support.theoplayer.com/hc/en-us/articles/115003194409-How-to-use-THEOplayer-with-Yospace-Ad-Insertion)
-- [https://support.theoplayer.com/hc/en-us/articles/115003195505](https://support.theoplayer.com/hc/en-us/articles/115003195505)
-- [https://support.theoplayer.com/hc/en-us/articles/115003828129-Yospace-API](https://support.theoplayer.com/hc/en-us/articles/115003828129-Yospace-API)
-- [https://support.theoplayer.com/hc/en-us/articles/115003721005-Android-SDK-Ads](https://support.theoplayer.com/hc/en-us/articles/115003721005-Android-SDK-Ads)
-- [https://support.theoplayer.com/hc/en-us/articles/115003723485-iOS-SDK-Ads](https://support.theoplayer.com/hc/en-us/articles/115003723485-iOS-SDK-Ads) -->
+- [Yospace API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer-yospace)

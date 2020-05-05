@@ -6,6 +6,10 @@ Please note that this article isn't final.
 
 ![Align timeline middle](../../assets/img/align-timeline-middle.PNG "Align timeline middle")
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Approach #1](#approach-1)
+  
 ## SDKs
 
 | Web SDK |           Android SDK            |             iOS SDK              | tvOS SDK| Android TV SDK | Chromecast SDK |

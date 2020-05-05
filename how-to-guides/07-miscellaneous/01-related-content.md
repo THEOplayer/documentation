@@ -8,6 +8,12 @@ The Related Content feature exposes the Related API. This API allows developers 
 
 ![Related Content](../../assets/img/related-content.PNG "Related Content")
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code examples](#code-examples)
+- [Related articles](#related-articles)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

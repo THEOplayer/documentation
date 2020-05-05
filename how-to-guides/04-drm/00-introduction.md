@@ -4,6 +4,12 @@ THEOplayer supports Fairplay, PlayReady and Widevine by default. To connect to s
 However, more often than not, developers are working with a multi-DRM vendor. These vendors take care of their DRM needs. The last challenge for developers is to integrate the provided DRM solution in a video player.
 THEOplayer is partnered with many multi-DRM vendors to lighten this burden. In our partnerships, we validate the compatibly and often provide integrations.
 
+### Table of Contents
+- [Pre-integrations](#pre-integrations)
+- [Custom configuration](#custom-configuration)
+- [Altering requests and responses](#altering-requests-and-responses)
+
+
 ## Pre-integrations
 
 THEOplayer is pre-integrated with a number of commercial multi-DRM vendors.
@@ -123,13 +129,13 @@ It's possible that requests and responses to/from license key URLs, or certifica
 The Network API can be used to alter requests and responses related to DRM, even on iOS Safari.
 
 - [Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.network.md)
-- [Guide](https://support.theoplayer.com/hc/en-us/articles/115005135529)
+- [Guide](../08-network/00-introduction.md)
 - [Demo](https://demo.theoplayer.com/networkapi)
 
 Although this being a JavaScript API, it can also be ported to the iOS and Android (TV) SDK. Please refer to one of our guides on this topic.
 
 - [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
-- [https://support.theoplayer.com/hc/en-us/articles/115003723445-iOS-SDK-Customization](https://support.theoplayer.com/hc/en-us/articles/115003723445-iOS-SDK-Customization)
-- [https://support.theoplayer.com/hc/en-us/articles/115003727289-Android-SDK-Customization](https://support.theoplayer.com/hc/en-us/articles/115003727289-Android-SDK-Customization)
+- [iOS SDK Customization](../../getting-started/01-sdks/03-ios/01-ios-sdk-customization.md)
+- [Android SDK Customization](../../getting-started/01-sdks/02-android/01-android-sdk-customization.md)
 
 Headers can be added in a simpler fashion, as demonstrated above, so it's encouraged not to resort to the Network API if headers need to be added.

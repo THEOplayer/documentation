@@ -4,6 +4,13 @@ This article explains how to enable the DateRange feature, so that a text track 
 
 The EXT-X-DATERANGE tag associates a Date Range (i.e., a range of time defined by a starting and ending date) with a set of attribute/value pairs
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Instructions](#instructions)
+- [Using and interacting with date-range variables](#using-and-interacting-with-date-range-variables)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

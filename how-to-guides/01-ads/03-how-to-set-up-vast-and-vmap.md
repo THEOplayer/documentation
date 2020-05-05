@@ -2,6 +2,15 @@
 
 This article explains how to integrate a VAST and VMAP through THEOplayer's own Advertisement system, as well as through Google IMA.
 
+### Table of Contents
+- [Prerequirements](#prerequirements)
+- [VAST](#vast)
+- [VMAP](#vmap)
+- [Google IMA](#google-ima)
+  - [Pre-requirements](#pre-requirements)
+- [Details](#details)
+
+
 ## Prerequirements
 
 ##### Android SDK
@@ -175,4 +184,4 @@ instead of
 
 `let ad = THEOAdDescription(src : vmapSource)`
 
-## Related articles
+

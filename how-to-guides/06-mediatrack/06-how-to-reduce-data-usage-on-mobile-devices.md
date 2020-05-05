@@ -7,6 +7,15 @@ You can combat this by leveraging the [ABR API](https://docs.portal.theoplayer.
 1. ABR API: you can set a `player.abr.targetBuffer` property, which allows you to configure the amount of seconds to buffer ahead of the current playback position. The standard buffer time is 20 seconds. These 20 seconds are also employed when preloading content.
 2. MediaTrack API: you can use the targetQuality property to configure the set of qualities THEOplayer exercises its ABR algorithm on. For example, you could configure that THEOplayer should only do ABR on the lowest two qualities.
 
+### Table of Contents
+- [Step-by-step guide](#step-by-step-guide)
+  - [1. To leverage the **ABR API**](#1to-leverage-the-abr-api)
+  - [2. Set the ABR targetDuration property to lower number of seconds. (e.g. 6 seconds)](#2-set-the-abr-targetduration-property-to-lower-number-of-seconds-eg-6-seconds)
+  - [3. If necessary add a mobile check like this:](#3-if-necessary-add-a-mobile-check-like-this)
+  - [4. Enable preloading](#4-enable-preloading)
+- [Related articles](#related-articles)
+
+
 ## Step-by-step guide
 
 ### 1. To leverage the **ABR API**
@@ -64,3 +73,11 @@ Enable preloading: `theoplayer.getPlayer().setPreload(PreloadType.AUTO);`
 2. To leverage the **MediaTrack API**, and limit the amount of bitrates which THEOplayer can select from, please refer to the article at [How to start with a specific quality?](../../how-to-guides/06-mediatrack/05-how-to-start-with-specific-quality).
 
 These two strategies can reduce the data usage on (mobile) devices drastically.
+
+## Related articles
+
+- [How to start with a specific quality?](05-how-to-start-with-specific-quality.md)
+- [Customize UI during ad playback](../11-ui/09-customize-ui-during-playback.md)
+- [React](../../getting-started/02-frameworks/02-react/00-getting-started.md)
+- [How to reduce data usage on mobile devices on mobile web](06-how-to-reduce-data-usage-on-mobile-devices.md)
+- [How to implement Keyboard Hotkeys](../../getting-started/01-sdks/01-web/02-how-to-implement-hotkeys.md)

@@ -2,7 +2,7 @@
 
 You might need an answer to this question if the customer asks to disable the right click.
 
-**The simple answer is to disable the feature context menu in the licence build.**
+**The simple answer is to disable the feature context menu in the license build.**
 
 If the customer insists on not updating the licence, please provide this alternative.
 

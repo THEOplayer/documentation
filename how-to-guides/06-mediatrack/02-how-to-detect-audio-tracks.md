@@ -5,6 +5,13 @@ This article describes how you can use the API to detect audio tracks.
 The AudioTrack API, which is a sub-API of the MediaTrack API, can be used to implement this functionality. 
 Implementing this functionality is a common use-case for developers who want to build their own UI to visualize the available audio languages.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code examples](#code-examples)
+- [Remarks](#remarks)
+- [Related articles](#related-articles)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -56,3 +63,9 @@ self.theoplayer.audioTracks.addEventListener(type: AudioTrackListEventTypes.ADD_
 
 - A related article on building a Chromeless UI is located at [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md).
 
+## Related articles
+
+- [How to programmatically detect video track qualities](04-how-to-detect-video-track-qualities.md)
+- [How to programmatically detect video track quality changes](07-how-to-detect-video-track-quality-changes.md)
+- [How to programmatically enable or disable audio tracks](01-how-to-enable-disable-audio-tracks.md)
+- [How to programmatically select a video track quality](03-how-to-select-video-track-quality.md)

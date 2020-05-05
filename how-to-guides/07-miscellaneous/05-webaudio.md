@@ -4,6 +4,13 @@ THEOplayer provides a [Web Audio API](https://developer.mozilla.org/en-US/docs/
 
 To use this API, be sure to have THEOplayer version 2.19.4 or higher with the Web Audio module enabled.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [How to use the Web Audio API](#how-to-use-the-web-audio-api)
+- [Code Examples](#code-examples)
+- [Sample Applications](#sample-applications)
+- [Remarks](#remarks)
+- [Resources](#resources)
 
 ## SDKs
 
@@ -165,3 +172,7 @@ The following remarks can help:
 
 - If you’re use case would require this feature to work on the Chromecast SDK, let us know and we’ll look into customising a receiver in order to enable Web Audio on it.
 
+## Resources
+The following resources provide more information:
+
+- [Basic Guide to Web Audio API](../../knowledge-base/03-playback/05-basic-guide-web-audio-api.md)

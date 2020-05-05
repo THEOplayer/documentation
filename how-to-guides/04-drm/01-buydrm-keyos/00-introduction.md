@@ -4,6 +4,11 @@ This article describes how to configure BuyDRM KeyOS DRM with THEOplayer.
 
 Head to our page on [DRM](../../../how-to-guides/04-drm/00-introduction.md) for more general information.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code Examples](#code-examples)
+- [Resources](#resources)
+  
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -89,5 +94,6 @@ public static var buyDRMkeyOS: SourceDescription {
 
 ## Resources
 
-- [https://www.buydrm.com/webinar/buydrm_theoplayer](https://www.buydrm.com/webinar/buydrm_theoplayer), [https://www.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf](https://www.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf)
+- [https://www.buydrm.com/webinar/buydrm_theoplayer](https://www.buydrm.com/webinar/buydrm_theoplayer)
+- [https://www.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf](https://www.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf)
 - [How to use THEOplayer with KeyOS BuyDRM](../../../how-to-guides/04-drm/01-buydrm-keyos/01-how-to-use-with-theoplayer.md)

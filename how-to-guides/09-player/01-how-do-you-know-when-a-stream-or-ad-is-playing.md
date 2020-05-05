@@ -7,6 +7,14 @@ The question above is related to the following questions:
 - How do you know when a video plays?
 - How do I know whether the playing event is triggered for an advertisement, or for the main content/stream?
 
+### Table of Contents
+- [SDKs](#sdks)
+- [How to detect an ad playing](#how-to-detect-an-ad-playing)
+  - [Code examples](#code-examples)
+- [Remarks](#remarks)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

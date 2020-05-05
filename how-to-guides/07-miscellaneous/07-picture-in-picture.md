@@ -6,6 +6,18 @@ The Picture-in-Picture feature allows developers to create a floating player. Th
 
 ![Picture-in-Picture](../../assets/img/picture-in-picture.PNG "Picture-in-Picture")
 
+### Table of Contents
+- [SDKs](#sdks)
+- [How to use Picture-in-Picture](#how-to-use-picture-in-picture)
+- [Code Examples](#code-examples)
+  - [Enable Picture-In-Picture mode](#enable-picture-in-picture-mode)
+  - [Configure the Picture-In-Picture mode](#configure-the-picture-in-picture-mode)
+  - [Observe when the Picture-In-Picture moves](#observe-when-the-picture-in-picture-moves)
+- [Sample applications](#sample-applications)
+- [Remarks](#remarks)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -112,3 +124,8 @@ The following remarks can help:
 
 - This feature is not completely the same on all SDKs, as the options may vary. For example, in the Web SDK it is not possible to drag and drop the floating player to a new position (PiP is not *movable*). 
 
+## Resources
+The following resources provide more information:
+
+- [PipConfiguration API Reference](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.pipconfiguration.md)
+- [PlayConfiguration API Reference](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md)

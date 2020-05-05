@@ -4,6 +4,12 @@ Currently it is intended behaviour that when you start casting the player to a c
 
 *PS: That might change in the future when Product decides it should be carried over.*
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Solution](#solution)
+- [Code Examples](#code-examples)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

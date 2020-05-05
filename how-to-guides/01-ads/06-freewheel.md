@@ -2,6 +2,13 @@
 
 This guide explains how to set up THEOplayer in combination with FreeWheel, an advertisement vendor.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Prerequirements](#prerequirements)
+- [How to integrate FreeWheel](#how-to-integrate-freewheel)
+  - [Code Examples](#code-examples)
+- [Resources](#resources)
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -70,15 +77,12 @@ This API is currently not available on the Android (TV) SDK.
 
 This API is currently not available on the iOS (/tvOS) SDK.
 
-<!-- # Resources
+## Resources
 
 The following resources provide more information:
 
-1. 
-[THEOplayer Getting Started Guide](https://support.theoplayer.com/hc/en-us/articles/115001933305-Getting-Started-with-THEOplayer-2-X)
+1. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)
 
-2. 
-[FreeWheelAdDescription](https://support.theoplayer.com/hc/en-us/articles/214350425#FreeWheelAdDescription)
+2. [FreeWheelAdDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.freewheeladdescription.md)
 
-3. 
-[FreeWheel website](https://freewheel.com) -->
+3. [FreeWheel website](https://freewheel.com)

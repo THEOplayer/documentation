@@ -6,6 +6,16 @@ On iOS browsers, the Network API can only be used to intercept and alter DRM-rel
 
 The technical documentation on the Network API can be found [here](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.network.md).
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Instructions](#instructions)
+  - [1. Add/use request interceptor](#1-adduse-request-interceptor)
+  - [2. Add/use response interceptor](#2-adduse-response-interceptor)
+- [HTTP Errors](#http-errors)
+- [Adding and Removing Event Listeners](#adding-and-removing-event-listeners)
+- [Related articles](#related-articles)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -95,3 +105,21 @@ Add the above JavaScript snippet to your Android (TV) SDK project as demonstrate
 ##### iOS SDK
 
 Add the above JavaScript snippet to your iOS SDK project as demonstrated at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+
+## HTTP Errors
+
+If the status code is set to a code between 200-299, the player responds with a successful response, in any other cases the player will respond with an HTTP error.
+
+If the player originally responded with an HTTP error, the interceptor can change the response to a successful response and vice versa.
+
+## Adding and Removing Event Listeners
+The 'online' and 'offline' events can be added to the network as follows:
+
+`player.network.addEventListener('online', handleOnlineEvent);`
+
+Events can be removed in a similar manner as follows:
+
+`player.network.removeEventListener('online', handleOnlineEvent);`
+
+## Related articles
+- [Why does the network API not work on iOS devices?](../../faq/05-why-does-network-api-not-work-on-ios-devices.md)

@@ -2,6 +2,10 @@
 
 Adobe Heartbeat, or [Adobe Analytics for Media](https://docs.adobe.com/content/help/en/media-analytics/using/media-overview.html), also known as Media Analytics, is a video analytics service. This service can be implemented on-top of THEOplayer.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Connecting Adobe Analytics to THEOplayer](#connecting-adobe-analytics-to-theoplayer)
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

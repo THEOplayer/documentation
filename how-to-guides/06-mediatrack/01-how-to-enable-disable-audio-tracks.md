@@ -5,6 +5,14 @@ This article describes how you can use the MediaTrack API to enable or disable a
 The AudioTrack API, which is a sub-API of the [MediaTrack API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.mediatrack.md), can be used to implement this functionality. 
 Implementing this functionality is a common use-case for developers who want to build their own UI to toggle audio languages on and off.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Using the AudioTrack API to enable different tracks](#using-the-audiotrack-api-to-enable-different-tracks)
+  - [Code examples](#code-examples)
+- [Remarks](#remarks)
+- [Resources](#resources)
+
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

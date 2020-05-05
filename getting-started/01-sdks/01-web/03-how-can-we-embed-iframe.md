@@ -38,3 +38,7 @@ When embedding a player, it is important to know about the restrictions an ifram
     allowfullscreen="">
 </iframe>
 ```
+
+## Resources
+
+- [Player API - PlayerConfiguration](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md)

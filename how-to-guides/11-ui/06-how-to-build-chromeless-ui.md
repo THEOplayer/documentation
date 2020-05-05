@@ -1,11 +1,33 @@
 # How to build a Chromeless UI
 
-## 1. Introduction
-
 This guide explains the components of a video player UI and demonstrates how to implement a UI on top a Chromeless THEOplayer.
 There's no UI when THEOplayer is Chromeless. The developer built a UI from scratch, and hooks their custom UI into the THEOplayer API.
 
-## 2. Components of a video player UI
+### Table of Contents
+- [Components of a video player UI](#components-of-a-video-player-ui)
+- [Video frame](#video-frame)
+  - [Relevant APIs](#relevant-apis)
+- [Control bar](#control-bar)
+  - [Sub-components](#sub-components)
+  - [Play / pause button](#play--pause-button)
+  - [Volume mute button](#volume-mute-button)
+  - [Volume increase slider](#volume-increase-slider)
+  - [Fullscreen / inline / picture-in-picture button](#fullscreen--inline--picture-in-picture-button)
+  - [Switch-video-quality button](#switch-video-quality-button)
+  - [Switch-audio-track button](#switch-audio-track-button)
+  - [Switch-subtitle-track button](#switch-subtitle-track-button)
+  - [Chromecast button](#chromecast-button)
+  - [Airplay button](#airplay-button)
+- [Timeline](#timeline)
+  - [Sub-components](#sub-components-1)
+  - [Playhead position](#playhead-position)
+  - [Duration](#duration)
+  - [Seekbar](#seekbar)
+  - [Buffered blocks](#buffered-blocks)
+- [UX Enhancements](#ux-enhancements)
+- [Error handling](#error-handling)
+- [Sample applications](#sample-applications)
+## Components of a video player UI
 
 A video player UI can be split in three main components:
 
@@ -27,7 +49,7 @@ This section demonstrates how to implement these 4 components in a Chromeless TH
 
 Regardless of which platform (Web, iOS/Xcode, Android, ...) you're targetting, you'll need to hook into the THEOplayer API, so we'll list which APIs are relevant per component.
 
-## 3.1. Video frame
+## Video frame
 
 The video frame is the container (or View) which renders the actual video content. The other two components are often children of this container.
 
@@ -82,7 +104,7 @@ You could run this on a local web server and open up through [http://localhost.
 
 ![Chromeless UI Layout](../../assets/img/chromeless-ui-2.PNG "Chromeless UI Layout")
 
-### 3.1.1. Relevant APIs
+### Relevant APIs
 
 To initialize a Chromeless video player instance and connect it with a container can be achieved with the APIs below.
 
@@ -90,7 +112,7 @@ To initialize a Chromeless video player instance and connect it with a container
 | :------------------------------------------ | :------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
 | Initialize a Chromeless THEOplayer instance | [Player API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.md) (`new THEOplayer.ChromelessPlayer(...)`) | [THEOplayerConfig API](https://cdn.theoplayer.com/doc/android/2.55.1/com/theoplayer/android/api/THEOplayerConfig.Builder.html)`(chromeless(true))` | [THEOplayerConfiguration](https://cdn.theoplayer.com/doc/ios/2.55.1/Classes/THEOplayerConfiguration.html#/) |
 
-## 3.2. Control bar
+## Control bar
 
 The control bar is the container which allows users to play and pause the video, to change the volume, to toggle fullscreen, and much more.
 
@@ -166,7 +188,7 @@ The image below demonstrates the expected result.
 As you can notice, there's a yellow container at the bottom which will contain the control bar controls.
 You can also subtly observe orange borders on the left and right side of the video frame. This is due to rendering the frame in a 500x280px container, which does not respect the video's aspect ratio of 16:9. THEOplayer will fill the void with the orange background color as expected.
 
-### 3.2.1. Sub-components
+### Sub-components
 
 A control bar usually contains the following sub-components:
 
@@ -182,7 +204,7 @@ A control bar usually contains the following sub-components:
 | Chromecast button                               | [Cast API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.cast.md) (e.g. `player.cast.chromecast.start()`)                                                        |                 | [Chromecast API](https://cdn.theoplayer.com/doc/ios/2.55.1/Protocols/Chromecast.html)                             |
 | Airplay button                                  | [Cast API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.cast.md) (e.g. `player.cast.airplay.start()`)                                                           |                 | _You need to build it yourself_                                                                                   |
 
-### 3.2.2. Play / pause button
+### Play / pause button
 
 To add a play / pause button to your UI, you need to hook your on-click (or on-touch or ...) behavior with the THEOplayer API. The THEOplayer API exposes a play() method to initiate playback and a pause() button to halt playback.
 
@@ -248,7 +270,7 @@ The snippet below adds a play and pause button to the UI. Only the pause button 
 The image below demonstrates the expected result.
 ![Chromeless UI Layout](../../assets/img/chromeless-ui-4.PNG "Chromeless UI Layout")
 
-### 3.2.3. Volume mute button
+### Volume mute button
 
 To add a mute / unmute button to your UI, you need to connect your on-click (or on-touch or ...) behavior with the THEOplayer API. The THEOplayer API exposes a muted property (or method) to (un)mute the player.
 
@@ -322,7 +344,7 @@ The snippet below adds a mute and unmute button. Only one button is shown, depen
 
 The image blow demonstrates the expected result.
 
-### 3.2.4. Volume increase slider
+### Volume increase slider
 
 To add a volume slider to your UI, you need to connect your on-click (or on-touch or ...) behavior with the THEOplayer API. The THEOplayer API exposes a volume property (or method) to adjust the player volume.
 
@@ -385,7 +407,7 @@ The snippet below implements a slider which allows the user to change the volume
 </html>
 ```
 
-### 3.2.5. Fullscreen / inline / picture-in-picture button
+### Fullscreen / inline / picture-in-picture button
 
 To add a fullscreen / inline / picture-in-picture button to your UI, you need to connect your on-click (or on-touch or ...) behavior with the platform-native API. (THEOplayer's Presentation API is naturally not available in Chromeless mode.)
 
@@ -523,7 +545,7 @@ The image below demonstrates the expected result.
 ![Chromeless UI Layout](../../assets/img/chromeless-ui-5.PNG "Chromeless UI Layout")
 
 
-### 3.2.6. Switch-video-quality button
+### Switch-video-quality button
 
 To add a switch-video-quality dropdown to your UI, you need to connect your on-change behavior with the THEOplayer VideoTrack API. The VideoTrack API exposes a targetQuality property (or method) to change the video quality.
 
@@ -743,7 +765,7 @@ The image below demonstrates the expected result.
 ![Chromeless UI Layout](../../assets/img/chromeless-ui-6.PNG "Chromeless UI Layout")
 
 
-### 3.2.7. Switch-audio-track button
+### Switch-audio-track button
 
 To add a switch-audio-track dropdown to your UI, you need to connect your on-change behavior with the THEOplayer AudioTrack API. The AudioTrack API exposes an `enabled` property (or method) to change the video quality.
 
@@ -996,7 +1018,7 @@ The snippet below adds a select-element which allows users to switch between aud
 </html>
 ```
 
-### 3.2.8. Switch-subtitle-track button
+### Switch-subtitle-track button
 
 To add a switch-video-quality dropdown to your UI, you need to connect your on-change behavior with the THEOplayer VideoTrack API. The VideoTrack API exposes a targetQuality property (or method) to change the video quality.
 
@@ -1290,23 +1312,23 @@ The image below demonstrates the expected result.
 ![Chromeless UI Layout](../../assets/img/chromeless-ui-7.PNG "Chromeless UI Layout")
 
 
-### 3.2.9. Chromecast button
+### Chromecast button
 
 _In progress ..._
 
 ##### Web SDK
 
-### 3.2.10. Airplay button
+### Airplay button
 
 _In progress ..._
 
 ##### Web SDK
 
-## 3.3.Timeline
+## Timeline
 
 The timeline consists of a set of controls which allow you to interpret and manipulate the playhead position of the video.
 
-### 3.3.1. Sub-components
+### Sub-components
 
 A timeline usually contains the following sub-components:
 
@@ -1317,7 +1339,7 @@ A timeline usually contains the following sub-components:
 | Seekbar: allows you to change the playhead position.                                  | [Player API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.md)(e.g.`player.currentTime`/`player.duration`) |                 | [Player API](https://cdn.theoplayer.com/doc/ios/2.55.1/Classes/THEOplayer.html) |
 | Buffered blocks: shows you which parts of the timeline have been added to the buffer. | [Player API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.md)(e.g.`player.buffered`)                      |                 | [Player API](https://cdn.theoplayer.com/doc/ios/2.55.1/Classes/THEOplayer.html) |
 
-### 3.3.2. Playhead position
+### Playhead position
 
 The current playhead position can be requested through the THEOplayer Player API. The Player API exposes a currentTime property (or method) to request the current playhead position.
 
@@ -1490,7 +1512,7 @@ A timeline-container has been added to the DOM through HTML, as well as a placeh
 </html>
 ```
 
-### 3.3.3. Duration
+### Duration
 
 The duration of the asset can be requested through the THEOplayer Player API. The Player API exposes a duration property (or method) to request the stream's duration.
 
@@ -1691,7 +1713,7 @@ The snippet above is very similar to the playhead-position snippet. We leverage 
 </html>
 ```
 
-### 3.3.4. Seekbar
+### Seekbar
 
 Your UI could also offer a seekbar which allows your viewers to navigate through the stream's timeline.You could visualize it with a slide-bar which has a minimum value and a maximum value. When the viewer selects a position between this range, the player should seek to this position.
 The THEOplayer Player API exposes a currentTime property (or method) to update the playhead position.
@@ -1955,7 +1977,7 @@ We also add some CSS.
 </html>
 ```
 
-### 3.3.5. Buffered blocks
+### Buffered blocks
 
 The pieces of content buffered by the player can be requested through THEOplayer Player API. The Player API exposes a buffered property (or method) to request this information.
 
@@ -2454,7 +2476,7 @@ On every `progress` event, we dynamically create a new 'buffered-block', but bef
 </html>
 ```
 
-## 3.4. UX Enhancements
+## UX Enhancements
 
 You can make your user-experience more appealing by reacting to certain player states. For example, when the player is out of video data and is waiting for additional content you could show a 'loading' indication.
 
@@ -2463,13 +2485,13 @@ This sub-section implements the following additions:
 1. Loading spinner: provide an indication when no video data is available.
 2. Poster: show a poster (thumbnail) before initial play-request, and when the video is complete.
 
-## 3.5. Error handling
+## Error handling
 
 A UI should also be capable of handling errors and informing the viewer.
 
 This sub-section describes which APIs you could leverage to catch errors, and how to inform the viewer.
 
-## 4. Sample applications
+## Sample applications
 
 Below is a collection of sample apps which implement a Chromeless THEOplayer instance.
 

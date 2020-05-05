@@ -2,6 +2,12 @@
 
 SpotX is a global video ad serving platform providing digital media owners with a solution that allows them to monetize their content with video advertising across desktop, mobile and connected devices.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Pre-requirements](#pre-requirements)
+- [Integrating SpotX](#integrating-spotx)
+
+
 ## SDKs
 
 The table shows the availability of SpotX on our different SDK

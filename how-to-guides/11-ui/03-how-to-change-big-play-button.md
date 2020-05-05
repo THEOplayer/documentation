@@ -2,6 +2,10 @@
 
 The question above is typically asked by developers who want to increase/decrease the size, set a different image instead, or introduce on-hover behavior.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code example](#code-example)
+
 ## SDKs
 
 | Web SDK |      Android SDK      |        iOS SDK        | tvOS SDK| Android TV SDK | Chromecast SDK |

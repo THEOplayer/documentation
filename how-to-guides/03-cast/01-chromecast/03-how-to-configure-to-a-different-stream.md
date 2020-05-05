@@ -8,6 +8,10 @@ On an iOS application, a FairPlay-protected HLS stream is playing on a sender de
 
 THEOplayer's Cast API allows you to configure a different SourceDescription for your Chromecast session.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code examples](#code-examples)
+  
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |

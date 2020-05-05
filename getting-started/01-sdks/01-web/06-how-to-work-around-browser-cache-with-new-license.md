@@ -54,3 +54,10 @@ var cachebuster = Math.round(new Date().getTime() / 1000);
 document.write('<scr'+'ipt type="text/javascript" src="external.js?cb=' +cachebuster+'"></scr' + 'ipt>');
 </script>
 ```
+
+## Related articles
+- [Customize UI during ad playback](../../../how-to-guides/11-ui/09-customize-ui-during-playback.md)
+- [React](../../02-frameworks/02-react/00-getting-started.md)
+- [How to update an SDK](../01-how-to-update-a-sdk.md)
+- [How to work around browser cache with a new license?](06-how-to-work-around-browser-cache-with-new-license.md)
+- [How to reduce data usage on mobile devices on mobile web](../../../how-to-guides/06-mediatrack/06-how-to-reduce-data-usage-on-mobile-devices.md)

@@ -255,29 +255,14 @@ Note that you should also adapt the contentID and contentType in the arguments f
 
 You have to use the Chromecast API to implement additional logic such as pausing the Chromecast Receiver application, fetching the video's progress, ...
 
-<!-- ## Related articles
+## Related articles
 
-- 
-Page:
+- [How can we track the first play(ing) event?](../../09-player/03-how-can-we-track-the-first-playing-event.md)
 
-[How can we track the first play(ing) event?](/wiki/spaces/THEOSD/pages/334266369)
+- [How to start with a specific quality?](../../06-mediatrack/05-how-to-start-with-specific-quality.md)
 
-- 
-Page:
+- [Pass subtitle selection on to Chromecast](05-pass-subtitle-section-on-to-chromecast.md)
 
-[How to start with a specific quality?](/wiki/spaces/THEOSD/pages/459997185)
+- [How to know whether a live stream is playing?](/wiki/spaces/THEOSD/pages/462422095)
 
-- 
-Page:
-
-[Pass subtitle selection on to Chromecast](/wiki/spaces/THEOSD/pages/1244365085/Pass+subtitle+selection+on+to+Chromecast)
-
-- 
-Page:
-
-[How to know whether a live stream is playing?](/wiki/spaces/THEOSD/pages/462422095)
-
-- 
-Page:
-
-[Chromecast SDK Setup](/wiki/spaces/THEOSD/pages/325648385/Chromecast+SDK+Setup) -->
+- [Chromecast SDK Setup](../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)

@@ -3,6 +3,12 @@
 This article is a good place to start if you are looking for information on how to configure the THEOplayer Youbora integration. The THEOplayer Youbora pre-integration is part of the [Analytics API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.youboraanalyticsintegrationid.md).
 On that page you will find detailed information on how to get started by setting up the Web SDK integration. An example implementation can be seen here: [http://demo.theoplayer.com/youbora-analytics-test-page-20171025](http://demo.theoplayer.com/youbora-analytics-test-page-20171025)
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code example](#code-example)
+- [Related links:](#related-links)
+- [Related articles](#related-articles)
+
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
@@ -99,36 +105,19 @@ youbora.put(key: "content.isLive", value: "false")
 let sourceDescription = SourceDescription(source : typedSource, analytics: [youbora])
 ```
 
-<!-- ## Related links:
+## Related links:
 
-- Analytics API: [https://support.theoplayer.com/hc/en-us/articles/115003779985-Analytics-API](https://support.theoplayer.com/hc/en-us/articles/115003779985-Analytics-API)
+- [Analytics API]: (https://docs.portal.theoplayer.com/api-reference/web/theoplayer.analytics.md)
 - Youbora demo page: [http://demo.theoplayer.com/youbora-analytics-test-page-20171025](http://demo.theoplayer.com/youbora-analytics-test-page-20171025)
 - Youbora documentation on NPAW's web site: [http://developer.nicepeopleatwork.com/plugins/general/setting-youbora-options/](http://developer.nicepeopleatwork.com/plugins/general/setting-youbora-options/) (login required)
 - NPAW's Youbora THEOplayer plugin: [http://developer.nicepeopleatwork.com/plugins/integration/js-browser/theo-player-2-v6/](http://developer.nicepeopleatwork.com/plugins/integration/js-browser/theo-player-2-v6/)
 
 ## Related articles
 
-- 
-Page:
+- [Customize UI during ad playback](../11-ui/09-customize-ui-during-playback.md)
 
-[Customize UI during ad playback](/wiki/spaces/THEOSD/pages/462323713/Customize+UI+during+ad+playback)
+- [Why does fullscreen not behave as expected on iOS browsers](../../faq/04-why-does-fullscreen-not-behave-as-expected-on-ios.md)
 
-- 
-Page:
+- [How to set up VAST and VMAP ads](../01-ads/03-how-to-set-up-vast-and-vmap.md)
 
-[Youbora](/wiki/spaces/THEOSD/pages/350126110/Youbora)
-
-- 
-Page:
-
-[Why does fullscreen not behave as expected on iOS browsers](/wiki/spaces/THEOSD/pages/371818499/Why+does+fullscreen+not+behave+as+expected+on+iOS+browsers)
-
-- 
-Page:
-
-[How to set up VAST and VMAP ads](/wiki/spaces/THEOSD/pages/517341194/How+to+set+up+VAST+and+VMAP+ads)
-
-- 
-Page:
-
-[Why doesn't Chromecast work when embedded in an iframe on iOS?](/wiki/spaces/THEOSD/pages/690913344) -->
+- [Why doesn't Chromecast work when embedded in an iframe on iOS?](../../faq/06-why-does-chromecast-not-work-in-embedded-iframe-ios.md)

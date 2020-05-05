@@ -47,3 +47,7 @@ This can be done through JavaScript injection: [How to add CSS or JavaScript fil
 ## Remarks
 
 With the same logic, slightly modified, you could also decide to show the frame number for that second instead of the milliseconds.
+
+## Resources
+
+- [API reference - player properties](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md)

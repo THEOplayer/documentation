@@ -8,6 +8,10 @@ The question above is commonly asked to assist with the use-cases where the firs
 
 Although we don't explicitly expose a `firstplay` event, you can implement it yourself, allowing you more control over its logic.
 
+### Table of Contents
+- [SDKs](#sdks)
+- [Code examples](#code-examples)
+- [Resources](#resources)
 
 ## SDKs
 
