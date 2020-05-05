@@ -1,6 +1,6 @@
 # Introduction
 
-This section allows you to learn everything about analytics!
+This section allows you to learn everything about advertisement!
 
 ### Table of Contents
 
