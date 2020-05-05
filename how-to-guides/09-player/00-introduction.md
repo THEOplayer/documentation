@@ -1,6 +1,6 @@
 # Introduction
 
-The Player API is the top-level API. This API exposes
+The Player API is the top-level API. This API exposes:
 
 - basic functions to manipulate video playback, such as start and pause;
 - properties to check states and values, such as the playhead position;
