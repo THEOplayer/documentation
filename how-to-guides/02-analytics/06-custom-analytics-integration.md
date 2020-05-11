@@ -39,7 +39,7 @@ This guide will not discuss how to set-up a basic template, and how to understan
 
 ##### Web SDK
 
-Google Analytics (GA) requires you to [load in the GA library](https://developers.google.com/analytics/devguides/collection/analyticsjs/) and configure it through JavaScript.
+Google Analytics (GA) requires you to [load in the GA library](https://developers.google.com/analytics/devguides/collection/analyticsjs/) and configure it through JavaScript. This script also sets up a default tracker for your tracking ID UA-XXXXX-Y.
 
 ```html
 <head>
@@ -49,44 +49,18 @@ Google Analytics (GA) requires you to [load in the GA library](https://develope
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-XXXXXXXX-XX', 'auto');
+    ga('create', 'UA-XXXXX-Y', 'auto');
     ga('send', 'pageview');
 ...
 </head>
 ```
 
-Secondly, you want to [set-up trackers](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers), which can store data and send it to Google Analytics.
+The easiest way to use Google Analytics with THEOplayer is by using this default tracker to track a lot of THEOplayer events:
 
 ```js
-var tracker = {
-    entries : [],
-    send : function (entry) {
-        this.entries.push(entry);
-    }
-};
-
-if (!window.GoogleAnalyticsObject || !window[window.GoogleAnalyticsObject]) {
-    // TODO: If code is set in configuration and no analytics initialised on page with said code -> initialise it
-    // There is no Google Analytics initiated on the web page - do nothing.
-    return;
-}
-
-ga(function() {
-    var t = ga.getAll()[0];
-
-    for (var i = 0; i < tracker.entries.length; i += 1) {
-        t.send(tracker.entries[i]);
-    }
-
-    tracker = t;
-});
-```
-
-The remaining part is to send relevant events to Google Analytics. The easiest method is to subscribe to a lot of THEOplayer events, and send them over through the tracker.
-
-```js
-player.addEventListener(['durationchange', 'stalled', 'ended', 'seeking', 'seeked', 'waiting', 'playing', 'pause', 'volumechange'], function (event) {
-    tracker.send({
+player.addEventListener(['durationchange', 'stalled', 'ended', 'seeking', 'seeked', 'waiting', 'playing', 'pause', 'volumechange'],
+function(event) {
+    ga('send', {
         hitType: 'event',
         eventCategory: 'video',
         eventAction: event.type,
@@ -95,6 +69,7 @@ player.addEventListener(['durationchange', 'stalled', 'ended', 'seeking', 'seeke
     });
 });
 ```
+For more advanced integrations, Google Analytics also allows you to [create multiple named trackers](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers).
 
 Of course, you control the code, so you could send custom "made-up" events. A useful example would be the firstplay event, which would map to the first play event for a session.
 
@@ -102,7 +77,7 @@ Of course, you control the code, so you could send custom "made-up" events. A us
 var firstplay = true;
 player.addEventListener('play', function (event) {
     if (firstplay) {
-        tracker.send({
+        ga('send', {
             hitType: 'event',
             eventCategory: 'video',
             eventAction: 'firstplay',
@@ -111,7 +86,7 @@ player.addEventListener('play', function (event) {
         });
         firstplay = false;
     }
-    tracker.send({
+    ga('send', {
         hitType: 'event',
         eventCategory: 'video',
         eventAction: event.type,
@@ -126,21 +101,21 @@ Keep in mind that it would be wise to set firstplay to true again when you chang
 Remember that not every event is accessible through the player property. For example, if you want to notify GA of a video quality change event, you have to subscribe to the correct video track.
 
 ```js
-    player.videoTracks.addEventListener('addtrack', function(e0) {
-        e0.track.addEventListener('activequalitychanged', function(e1) {
-            tracker.send({
-            hitType: 'event',
-            eventCategory: 'video',
-            eventAction: e1.type,
-            eventLabel: player.src,
-            eventValue: Math.floor(player.currentTime)
-        });
+player.videoTracks.addEventListener('addtrack', function(e0) {
+    e0.track.addEventListener('activequalitychanged', function(e1) {
+        ga('send', {
+        hitType: 'event',
+        eventCategory: 'video',
+        eventAction: e1.type,
+        eventLabel: player.src,
+        eventValue: Math.floor(player.currentTime)
     });
+});
 ```
 
-##### Android (/TV) SDK
+##### Android (/TV) SDK & iOS (/tvOS) SDK
+Refer to Google Analytics' documentation at https://developers.google.com/analytics/solutions/mobile if you’re interested in integrating Google Analytics on an Android or iOS-based platform. Similar to the Web SDK, developers would subscribe to events and properties emitted by THEOplayer and create a custom mapping to the Google Analytics library.
 
-##### iOS (/tvOS) SDK
 
 ## Conclusion
 

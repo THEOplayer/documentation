@@ -16,7 +16,6 @@ This how-to guide describes how to implement playback of downloadable content-pr
   - [Delete](#delete)
   - [Renew a DRM license](#renew-a-drm-license)
   - [Handle redirected manifest](#handle-redirected-manifest)
-  - [Sample Apps for Offline Playback](#sample-apps-for-offline-playback)
 
 ## SDKs
 
@@ -396,32 +395,3 @@ theoplayer.source = source
 theoplayer.play() 
 ```
     
-
-### Sample Apps for Offline Playback
-
-These are the sample Apps for Android and IOS: 
-
-##### Sample App Android
-
-This is a Sample Basic App - Android having following Capabilities:
-
-1. Online Playback of DRM Content 
-2. Download of DRM Content 
-3. Pause or Resume while Downloading of Video 
-4. List of Downloaded Videos 
-5. Delete Specific Video from Downloaded content
-
-Git Clone: [https://bitbucket.org/savdeepgandhi/theo-offline-android](https://bitbucket.org/savdeepgandhi/theo-offline-android)
-
-##### Sample App IOS
-
-This is a Sample Basic App - IOS having following Capabilities:
-
-1. Online Playback of DRM Content
-2. Download of DRM Content 
-3. Pause or Resume while Downloading of Video 
-4. List of Downloaded Videos 
-5. Delete Specific Video from Downloaded content.
-
-Git Clone: [https://bitbucket.org/savdeepgandhi/theo-offline-ios/](https://bitbucket.org/savdeepgandhi/theo-offline-ios/)
-
