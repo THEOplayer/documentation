@@ -125,6 +125,10 @@ In order to enable Chromecast, a few extra steps need to be taken.
 **iOS 12 Warning:** If developing using Xcode 10 and targeting iOS devices running iOS 12 or higher, the "Access WiFi Information" capability is required in order to discover and connect to Cast devices.
 
     https://developers.google.com/cast/docs/ios_sender_setup
+    
+**Static vs Dynamic Framework:** Because the THEOplayer iOS SDK is a Dynamic Framework, it should not include any dependency frameworks on which it relies (e.g. the Chromecast SDK). Instead, developers should include the dependencies on which THEOplayer relies.
+Therefore, using a Dynamic Framework ensures that there are no symbol clashes.
+More info can be found in this article: https://medium.com/onfido-tech/reusing-code-and-resources-with-swift-static-libraries-and-resource-bundles-d070e82d3b3d
 
 **Cocoapods setup**
 
