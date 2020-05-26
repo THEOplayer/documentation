@@ -96,10 +96,63 @@ This API is currently not available on the Android (TV) SDK.
 
 ##### iOS SDK
 
-The Related Content API is available on the iOS SDK, but not on the tvOS SDK.
+The Related Content API is available on the iOS SDK, but not on the tvOS SDK. This feature can be used as below:
 
-- Reference API: [https://cdn.theoplayer.com/doc/ios/2.55.1/Related%20Content%20API.html](https://cdn.theoplayer.com/doc/ios/2.55.1/Related%20Content%20API.html)
+```swift
+//Prerequisite: You would need THEOplayer iOS SDK enabled with Related Content feature. 
+
+//create a variable to decalare related content sources to the player. 
+var relatedContent = self.theoplayer?.related
+
+//Create an array variable with your related content sources. 
+var relatedSources = [RelatedContentSource]()
+                relatedSources.append(RelatedContentSource(image: "https://cdn.theoplayer.com/video/vr/poster.jpg", source: sampleSource1, title: "xxx"))
+                
+                relatedSources.append(RelatedContentSource(image: "https://cdn.theoplayer.com/video/sintel/poster.jpg", source: sampleSource2, title: "xxx"))
+
+                relatedSources.append(RelatedContentSource(image: "https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg", source: sampleSource3, title: "xxx"))
+
+                relatedSources.append(RelatedContentSource(image: "https://cdn2.hubspot.net/hubfs/2163521/Demo_zone/tears_of_steel_poster.jpg", source: sampleSource4, title: "xxx"))
+
+                relatedSources.append(RelatedContentSource(image: "https://cdn.theoplayer.com/video/vr/poster.jpg", source: sampleSource5, title: "xxx"))
+
+                relatedSources.append(RelatedContentSource(image: "https://cdn.theoplayer.com/video/vr/poster.jpg", source: sampleSource6, title: "xxx"))
+
+//Add the relatedSources array to the created relatedContent variable.
+relatedContent?.sources = relatedSources
+
+// Example of Source to the player defined in above relatedSources
+var sampleSource1: SourceDescription {    
+  let src = "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8"
+  let stream = "application/x-mpegurl"
+    return SourceDescription(
+            source: TypedSource(
+                src: src,
+                type: stream
+                
+            ))
+    }
+
+```
+- Reference DEMO APP: [iOS Related Content Demo APP](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Related-Content)
+- Reference API: [iOS Related Content API](https://cdn.theoplayer.com/doc/ios/2.69.2/Related%20Content%20API.html)
+
+## Important Note:
+
+The Related Content API is limited to show a maximum of 15 tiles only. By default it is set to show only 6 even if more than 6 are added to the player source. To show case more than 6 sources, below CSS code needs to be added to make the `<div>` scrollable. To add external CSS file to your iOS Project refer to the related artciles. 
+
+```css
+.theo-related-grid {
+    height: 100% !important;
+    overflow-y: scroll !important;
+}
+
+.theo-related-grid-tile {
+    display: block !important;
+}
+
+```  
 
 ## Related articles
 
-- Page: [Why does the network API not work on iOS devices?](../../faq/05-why-does-network-api-not-work-on-ios-devices.md)
+- Page: [how-to-add-css-or-javascript-files-to-an-androidios-project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
