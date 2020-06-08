@@ -38,7 +38,13 @@ player.source = {
         type : 'application/dash+xml',
         drm : {
                 integration : 'keyos',
-                customdata : 'PEtleU9T...blhNTD4='
+                customdata : 'PEtleU9T...blhNTD4=',
+                playready: {
+                 licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>'
+                },
+                 widevine: {
+                 licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>'
+                }
         }
     }
 }
@@ -72,7 +78,13 @@ Your updated starting template would now look like this:
         type : 'application/dash+xml',
         drm: {
             integration: 'keyos',
-            customdata: 'PEtleU9T...blhNTD4='
+            customdata: 'PEtleU9T...blhNTD4=',
+            playready: {
+                 licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>'
+            },
+                 widevine: {
+                 licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>'
+            }
         }
     }]
     };
@@ -85,7 +97,29 @@ Your updated starting template would now look like this:
 
 ##### iOS SDK
 
-There is currently no KeyOS DRM integration for iOS. Please make a request at Service Desk should this be a requirement for you.
+A KeyOS DRM integration is added to the source configuration by adding the keyOsDrm() parameter to drm as such:
+
+```swift
+public static var buyDRMkeyOS: SourceDescription {
+    let licenseAcquisitionURL: String = "<LICENSE_KEY_URL_FAIRPLAY>"
+    let certificateURL: String = "<CERTIFICATE_URL_FAIRPLAY>"
+    let token: String = "<TOKEN_FAIRPLAY>"
+    let type: String = "application/x-mpegURL"
+    let src = "<HLS_STREAM_URL>"
+    let drm: KeyOSDRMConfiguration = KeyOSDRMConfiguration(licenseAcquisitionURL: licenseAcquisitionURL, certificateURL: certificateURL, customdata: token)
+    let typedSource: TypedSource = TypedSource(src: src, type: type, drm: drm)
+    let source: SourceDescription = SourceDescription(source: typedSource)
+    return source
+}
+
+// Configure the player's source to initilaise playback
+        THEOplayer.source = buyDRMkeyOS
+
+``` 
+Where:
+`token` for customdata is the Authentication XML generated from the their platform.
+
+Note: BuyDRM KeyOS iOS Pre-integration is only available from version 2.64.0 and above
 
 ##### Android SDK
 
@@ -97,7 +131,7 @@ SourceDescription dashWithDRM = sourceDescription()
             typedSource("//sourceUrl")
                 .drm(
                         keyOsDrm()
-                            .customdata("//customData")
+                            .customdata("//token")
                             .playready("//playReadyKeyServer")
                             .widevine("//widevineKeyServer")
                             .build()
@@ -105,9 +139,8 @@ SourceDescription dashWithDRM = sourceDescription()
         ).build();
 ```
 
-with customData being the field to add your KeyOS customdata.
-
-We believe that a user-friendly, battle-tested pre-integration like this should be the de facto standard. Information on how you would set-up a more advanced integration can be found at the [DRM Pre-Integration API documentation pages](https://support.theoplayer.com/hc/en-us/articles/115002819629).
+Where:
+`token` for customdata is the Authentication XML generated from the their platform.
 
 ## Conclusion
 
