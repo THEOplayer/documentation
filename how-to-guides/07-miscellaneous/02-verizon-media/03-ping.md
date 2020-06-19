@@ -39,7 +39,7 @@ This feature currently excludes client-side ad tracking and VPAID support.
 
 The player allows specification of the desired features of the Ping API as listed[in the official Ping API documentation](https://docs.vdms.com/video/#Develop/Pingv3.htm#Features). 
 
-By default, thepingAPI is disabled for all sessions. To enable it, the`ad.cping=1`parameter must be added to your preplay request. If you attempt to call the API without passing in the ad.cpingparameter you can throw off the server's ability to make ad event calls correctly.
+By default, the ping API is disabled for all sessions. To enable it, the`ad.cping=1`parameter must be added to your preplay request. If you attempt to call the API without passing in the ad.cpingparameter you can throw off the server's ability to make ad event calls correctly.
 
 In addition to enabling the API, you must also notify the server of the features you want to support for this viewing session. To specify which features you'd like to enable, you add the`ad.pingf={some value} `parameter to the playback token. The value of the parameter is detailed in the official Ping Documentation.
 
@@ -126,19 +126,19 @@ Where:
 When performed correctly, a Ping request will return a JSON response. THEOplayer will interpret this response according to the following principles:
 
 - next\_time : A new beacon will be scheduled when the player's currentTime passes this value. In case the value is -1, no further beacons will be scheduled. 
-- currentBreakEnd : Will be used to update the end time of an ongoing ad-break in case the breakEnd was previously unknown. (Note VDMS by default requests 240s of ads in case the break length is unknown and will return all ads in the Ping response.)
-- ads : Will be interpreted in order to display markers in the timeline as well as expose ad information through the player.vdms.ads property.
+- currentBreakEnd : Will be used to update the end time of an ongoing ad-break in case the breakEnd was previously unknown. (Note Verizon Media by default requests 240s of ads in case the break length is unknown and will return all ads in the Ping response.)
+- ads : Will be interpreted in order to display markers in the timeline as well as expose ad information through the player.verizonMedia.ads property.
     *   ads.breaks.timeOffset will be used in order to determine the start time of the ad break (in seconds).
-    *   ads.breaks.ads will be looped in order to extract the ad information to be exposed in VdmsAd in the THEO API:
-        *   ad.duration will serve as duration in VdmsAd (in seconds)
-        *   ad.mimeType will serve as mimeType in VdmsAd
-        *   ad.apiFramework will serve as apiFramework in VdmsAd
-        *   ad.companions will serve as companions in VdmsAd
-        *   ad.creative will serve as creative in VdmsAd
-        *   ad.width will serve as width in VdmsAd
-        *   ad.height will serve as height in VdmsAd
-        *   ad.events will serve as events in VdmsAd
-        *   ad.fw\_parameters will serve as freeWheelParameters in VdmsAd
+    *   ads.breaks.ads will be looped in order to extract the ad information to be exposed in VerizonMediaAd in the THEO API:
+        *   ad.duration will serve as duration in VerizonMediaAd (in seconds)
+        *   ad.mimeType will serve as mimeType in VerizonMediaAd
+        *   ad.apiFramework will serve as apiFramework in VerizonMediaAd
+        *   ad.companions will serve as companions inVerizonMediaAd
+        *   ad.creative will serve as creative in VerizonMediaAd
+        *   ad.width will serve as width in VerizonMediaAd
+        *   ad.height will serve as height in VerizonMediaAd
+        *   ad.events will serve as events in VerizonMediaAd
+        *   ad.fw\_parameters will serve as freeWheelParameters in VerizonMediaAd
     *   ads.breaks.breakEnd will be used in order to determine the end of the ad break. Note that this property is optional, and the duration of an ad break can be unknown and updated at a later point.
     *   ads.breaks.duration will be ignored by the player.
 
@@ -151,13 +151,13 @@ The raw ping response can be retrieved by adding an event listener for the "ping
 
 |    Event      |    Description                          | Event object                                                            |
 | :-----------: | :------------------------------------:  | :----------------------------------------------------------------------:|
-| pingresponse  | Fired when a Ping response is received. | event.response will contain the raw JSON response from the Ping server. | 
+| pingresponse  | Fired when a Ping response is received. | event.response will contain the raw JSON response from the Ping server. |
 
 
 ##### Web SDK
 
 ```js
-player.vdms.addEventListener("pingresponse", function(event) {
+player.verizonMedia.addEventListener("pingresponse", function(event) {
     console.log(event.response); // Will print the raw Ping response.
 });
 ```

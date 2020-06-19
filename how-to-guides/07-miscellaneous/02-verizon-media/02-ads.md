@@ -1,4 +1,4 @@
-# Ads
+# Verizon Media Ads
 
 This article explains how to use the Verizon Media's Ads API exposed by THEOplayer. This API allows developers to manipulate the ad-related UX and UI.
 

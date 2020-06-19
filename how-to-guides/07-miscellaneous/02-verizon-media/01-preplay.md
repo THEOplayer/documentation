@@ -1,13 +1,13 @@
 # Preplay
 
-This article explains how to use the Verizon Media's Preplay API. This API allows developers to pre-integrate with Verizon's Preplay service.
+This article explains how to leverage the Verizon Media Preplay API through THEOplayer. This API allows developers to pre-integrate with Verizon's Preplay service.
 
 ### Table of Contents
 - [SDKs](#sdks)
 - [Stream Configuration (without ads)](#stream-configuration-without-ads)
 - [Stream Configuration (with ads)](#stream-configuration-with-ads)
 - [Preplay Response](#preplay-response)
-
+- [Using Tokens](#using-tokens)
 
 ## SDKs
 
@@ -15,13 +15,13 @@ This article explains how to use the Verizon Media's Preplay API. This API allow
 | :-----: | :---------: | :-----: | :--: | :------------: | :------------: |
 |   Yes (2.63.0)  |     Yes (2.66.0)     |   Yes (2.65.0)   | No  |      Yes (2.66.0)      |      No      |
 
-Verizon Media offers an API on their end to perform asset stitching and SSAI on content hosted on Verizon servers, and an API to retrieve information about the stream and spliced ads. This document describes the setting of a THEOplayer source for content on the Verizon servers. It also touches on asset stitching, which will be a precursor for doing SSAI.
+Verizon Media users can use an API (i.e. Preplay) to generate a streaming playlist given 1 or more assets or advertisements. The back-end of Verizon Media stitches the content together and allows for server-side ad-insertion (SSAI) when applicable. This document describes how THEOplayer users should configure their source to leverage this Preplay service.
 
-Assumptions
+Assumptions:
 
 - THEOplayer assumes the availability of the Preplay API and Verizon content servers to be 100%, since these identify and provide the necessary streams for playback with this feature.
-- THEOplayer assumes application developers have a notion of the Preplay API, namely any extra parameters to be appended to the requests to Verizon (e.g. for correct ad insertion). As documented in [https://docs.vdms.com/video/Content/Develop/Preplayv2.htm](https://docs.vdms.com/video/Content/Develop/Preplayv2.htm)
-- THEOplayer assumes application developers provide proper ID's of the Assets they want to play back, as well as the proper content protection level.
+- THEOplayer assumes that developers who are interested in this feature have a basic understanding of the Preplay API. Verizon Media documents this service at [https://docs.vdms.com/video/Content/Develop/Preplayv2.htm](https://docs.vdms.com/video/Content/Develop/Preplayv2.htm)
+- THEOplayer assumes that developers provide correct asset identifiers, as well as the proper content protection level.
 
 ## Stream Configuration (without ads)
 
@@ -67,20 +67,17 @@ player.source = {
 }
 ```
 
-The snippets above gives a quick overview of the structure of the Verizon Media-specific source. More information on certain properties:
+The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md). More information on certain properties:
 
-- `id`: The ID field can instead of an asset id as a single string also specify an array of asset ids as strings, which will be stitched into a continuous stream. The same goes for the`externalId`property in case an external ID is used in the source.
-- `parameters`: Optional, defaults to an empty object. The parameters specified here will be added as query parameters to the Preplay API call. ('`parameters`' is deprecated beyond 2.63.0 integration build)
-
+- `id`: The ID field identifies the asset. Instead of a single string, developres can also specify an array of asset IDs as strings, which will be stitched into a continuous stream. The same goes for the `externalId` property in case an external ID is used in the source.
 - `preplayParameters`: The `preplayParameters` object should have string-key-string-value combinations, which will be used as query parameters for the Preplay API call. Nested objects are not supported.
 
 - `contentProtected`: Boolean value which will internally set any necessary content-protection information. No content-protection details have to be specified by the customer.
 
 - **A Preplay request must include all parameters defined within the playback request, hence these parameters must be included in the THEOplayer source**. This request must also include adigital signatureif the 'Require a token for playback'option is enabled in the back-end on the corresponding live channel. (See also : [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2))
 - Verizon Media specific documentation on the available playback URL query parameters can be found on the Verizon Media documentation site under [Basic Setup > Playback URL's > Customizing Playback via Parameters](https://docs.vdms.com/video/index.html#Setup/Customizing-Playback.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____1)
-- Some parameters can be  excluded from the digital signature calculation. These parameters may enable certain use cases (e.g. DVR) and would for this reason be excluded from the digital signature.*What parameters are excluded needs to be documented by Verizon to ensure it is clear what query parameters can be used on the playback URL *that* is returned in the preplay request response. Until further notice there are no parameters that can be exposed **according** to **the** Verizon documentation.  *
+- Some parameters can be excluded from the digital signature calculation. These parameters may enable certain use cases (e.g. DVR) and would for this reason be excluded from the digital signature.
 
-- **Currently, the playback URL in the preplay response should not be modified. Also, do not depend on the format of this URL. Verizon Media reserves the right to change the format of this URL as needed**.*Only parameters that are *excluded* from the digital signature would enable the possibility to use those parameters for certain usecases whereby the playback URL in the preplay response can be 'tuned'  using these parameters as extra query parameters we can add to the actual playout URL issued by the player.  At this point in time there are no supported usecases that involve adding extra query parameters to the playback URL that is in the preplay request response. Future usecases that would have this requirement need to be handled as new features and THEOplayer will handle them as Change Requests. (e.g. DVR/Timeshift)*
 
 ##### Android (TV) SDK
 
@@ -120,9 +117,11 @@ SourceDescription mySourceDescription = SourceDescription.Builder.sourceDescript
 this.tpv.getPlayer().setSource(mySourceDescription);
 ```
 
+The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/android/latest/com/theoplayer/android/api/source/verizonmedia/VerizonMediaSource.html).
+
 ##### iOS (/tvOS) SDK
 
-```
+```swift
 // Swift examples
     
 let verizonMediaSource = VerizonMediaSource(
@@ -155,7 +154,7 @@ let sourceDescription = SourceDescription(VerizonMediaSource: verizonMediaSource
 self.theoplayer.source = sourceDescription
 ```
 
-The snippets above gives a quick overview of the structure of the Verizon Media-specific source. More information on certain properties:
+The snippets above gives a quick overview of the structure of the Verizon Media-specific source, also known as a VerizonMediaSource. More information on certain properties:
 
 - `id`: The ID field can instead of an asset id as a single string also specify an array of asset ids as strings, which will be stitched into a continuous stream. The same goes for the`externalId`property in case an external ID is used in the source.
 - `parameters`: Optional, defaults to an empty object. The parameters specified here will be added as query parameters to the Preplay API call.
@@ -166,13 +165,12 @@ The snippets above gives a quick overview of the structure of the Verizon Media-
 
 - **A Preplay request must include all parameters defined within the playback request, hence these parameters must be included in the THEOplayer source**. This request must also include adigital signatureif the 'Require a token for playback'option is enabled in the back-end on the corresponding live channel. (See also : [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2))
 - Verizon Mediaspecific documentation on the available playback URL query parameters can be found on the Verizon Mediadocumentation site under [Basic Setup > Playback URL's > Customizing Playback via Parameters](https://docs.vdms.com/video/index.html#Setup/Customizing-Playback.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____1)
-- Some parameters can be  excluded from the digital signature calculation. These parameters may enable certain use cases (e.g. DVR) and would, for this reason, be excluded from the digital signature.*What parameters are excluded needs to be documented by Verizon to ensure it is clear what query parameters can be used in the playback URL *that* is returned in the preplay request response. Until further notice there are no parameters that can be exposed **according** to **the** Verizon documentation.  *
+- Some parameters can be  excluded from the digital signature calculation. These parameters may enable certain use cases (e.g. DVR) and would, for this reason, be excluded from the digital signature.
 
-- **Currently, the playback URL in the preplay response should not be modified. Also, do not depend on the format of this URL. Verizon Mediareserves the right to change the format of this URL as needed**.*Only parameters that are *excluded* from the digital signature would enable the possibility to use those parameters for certain use cases whereby the playback URL in the preplay response can be 'tuned'  using these parameters as extra query parameters we can add to the actual playout URL issued by the player.  At this point in time, there are no supported use cases that involve adding extra query parameters to the playback URL that is in the preplay request response. Future use cases that would have this requirement need to be handled as new features and THEOplayer will handle them as Change Requests. (e.g. DVR/Timeshift)*
 
 ## Stream Configuration (with ads)
 
-The examples below demonstrate how to configure a stream with server-side ads through the Verizon Media pre-integration.
+The examples below demonstrate how to configure a stream with server-side ads through a [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
 
 ##### Web SDK
 
@@ -190,17 +188,14 @@ player.source = {
 }
 ```
 
-- `parameters`: Optional, defaults to an empty object. The parameters specified here will be added as query parameters to the Preplay API call. *('parameters' is deprecated beyond 2.63.0 integration build)*
-
 - `preplayParameters`: The `preplayParameters` object should have string-key-string-value combinations, which will be used as query parameters for the Preplay API call. Nested objects are not supported.
 
 - **A Preplay request must include all parameters defined within the playback request, hence these parameters must be included in the THEOplayer source**. This request must also include adigital signatureif the 'Require a token for playback'option is enabled in the back-end on the corresponding live channel. (See also : [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2))
 
 - Verizon Media specific documentation on the available playback URL query parameters can be found on the Verizon Media documentation site under [Basic Setup > Playback URL's > Customizing Playback via Parameters](https://docs.vdms.com/video/index.html#Setup/Customizing-Playback.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____1)
 
-- Some parameters can be  excluded from the digital signature calculation. These parameters may enable certain use cases (e.g. DVR) and would for this reason be excluded from the digital signature.*What parameters are excluded needs to be documented by Verizon to ensure it is clear what query parameters can be used on the playback URL *that* is returned in the preplay request response. Until further notice there are no parameters that can be exposed **according** to **the** Verizon documentation.  *
+- Some parameters can be excluded from the digital signature calculation. These parameters may enable certain use cases (e.g. DVR) and would for this reason be excluded from the digital signature.
 
-- **Currently, the playback URL in the preplay response should not be modified. Also, do not depend on the format of this URL. Verizon Media reserves the right to change the format of this URL as needed**.*Only parameters that are *excluded* from the digital signature would enable the possibility to use those parameters for certain usecases whereby the playback URL in the preplay response can be 'tuned'  using these parameters as extra query parameters we can add to the actual playout URL issued by the player.  At this point in time there are no supported usecases that involve adding extra query parameters to the playback URL that is in the preplay request response. Future usecases that would have this requirement need to be handled as new features and THEOplayer will handle them as Change Requests. (e.g. DVR/Timeshift)*
 
 ##### Android (TV) SDK
 
@@ -221,7 +216,7 @@ let verizonMediaSource = VerizonMediaSource(assetIds: ["verizonMedia_content_fir
 
 ## Preplay Response
 
-If the customer wants to perform their own operations with the Preplay API response, we expose those as events on our player API.
+THEOplayer automatically interprets the response returned by the Preplay service. However, if a developer wants to perform their own logic with the Preplay API response, then they can intercept the `preplayresponse` event.
 
 ##### Web SDK
 
@@ -249,6 +244,44 @@ let eventListener = self.theoplayer.verizonMedia.addEventListener(type: VerizonM
     // do something with the preplay response           
 }
 ```
+## Using Tokens
+Verizon Media users often leverage URL signatures (i.e. tokens) to further secure their content -- on top of AES-128 encryption or studio DRM. A token is (typically) generated on back-end using an API key and a set of parameters. (The documentation at [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2) describes this process.) This set of parameters should also be passed along to the `preplayParameters` in a [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md). If you do not configure the `preplayParameters` correctly in relation to your signature parameters, then the Preplay request made by THEOplayer will most likely return an invalid Preplay response, preventing THEOplayer from setting up your stream.
+
+Let's consider a set-up where a Verizon Media customer uses both URL signatures and multi-DRM. [When you do DRM, you must specify the `rmt` and `manifest` parameter](https://docs.vdms.com/video/index.html#Develop/Preplayv2.htm?Highlight=rmt). Thus, on your back-end, you must correctly calculate the value for `rmt` and `manifest` for the user-agent of your viewer. Then, you want to send all parameters which were used to generate your signature, including the generated signature, to your client-side where you set the [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
+
+So, let's say that you use the following parameters on your back-end to generate the signature when you detect that the viewer is on Chrome and requires Widevine DRM with MPEG-DASH.
+
+```js
+let params = {
+    'v': '2',
+    'tc': '1',
+    'exp': 36000,
+    'rn': 12345,
+    'ct': 'a',
+    'cid': '<CENSORED>',
+    "rmt": "wv",
+    "manifest": "mpd"
+};
+let query = Object.keys(params).map(key => key + '=' + params[key]).join('&');
+let sig = CryptoJS.HmacSHA256(query, "<API_SECRET>").toString();
+params['sig'] = sig;
+```
+
+Now you want to communicate this entire `params` object to your client-side, and set it as the value for `preplayParameters`:
+
+```js
+player.source = {
+	sources : {
+		integration: 'verizon-media',
+		id: '<CENSORED>',
+        preplayParameters: params,
+        assetType: 'asset',
+        contentProtected: true
+  	}
+}
+```
+
+When there's a mismatch between signature parameters and Preplay parameters, the Preplay response usually returns `Invalid token signature` and playback is not possible.
 
 # Related articles
 
