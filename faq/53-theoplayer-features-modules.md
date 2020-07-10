@@ -1,4 +1,4 @@
-# THEOplaeyer Features/Modules
+# THEOplayer Features/Modules
 
 THEOplayer is built in a modular manner. Per license, we can activate (or disable) certain features, such as the Cache API.
 Only a small subset of features are enabled by default. Commonly activated features are DASH, HLS, UI, Chromecast, Airplay, Ads, and Text Track Rendering. There are tens of features which aren't activated by default.
