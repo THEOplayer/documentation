@@ -1,10 +1,10 @@
 # Does THEOplayer support EXT-X-DATERANGE
 
-Yes, the HLS tag #EXT-X-DATERANGE is supported in THEOplayer as of 2.61.0. To enable it, hlsDateRange needs to be added to either the player configuration or the source description and be set to true. The date range metadata will be made available through the TextTrack API.
+Yes, the HLS tag `#EXT-X-DATERANGE` is supported in THEOplayer as of 2.61.0. To enable it, hlsDateRange needs to be added to either the player configuration or the source description and be set to true. The date range metadata will be made available through the TextTrack API.
 
-#EXT-X-DATERANGE is a way of providing timed metadata in an HLS manifest. It is used to define date range metadata in a media playlist. A possible use case is defining timed metadata for interstitial regions such as advertisements, but can be used to define any timed metadata needed by your stream.
+`#EXT-X-DATERANGE` is a way of providing timed metadata in an HLS manifest. It is used to define date range metadata in a media playlist. A possible use case is defining timed metadata for interstitial regions such as advertisements, but can be used to define any timed metadata needed by your stream.
 
-As indicated above, #EXT-X-DATERANGE is supported in THEOplayer as of 2.61.0. However, the feature is not enabled by default. To enable it, add hlsDateRange to the player configuration and set it to true. You can also choose (instead) to enable/disable the feature per source by adding the same option to a source in your source description.
+As indicated above, `#EXT-X-DATERANGE` is supported in THEOplayer as of 2.61.0. However, the feature is not enabled by default. To enable it, add hlsDateRange to the player configuration and set it to true. You can also choose (instead) to enable/disable the feature per source by adding the same option to a source in your source description.
 
 The TextTrack API is used to retrieve the timed metadata. A MetadataTextTrack will provide cues which contain the timed metadata and will dispatch an event when started and ended.
 
