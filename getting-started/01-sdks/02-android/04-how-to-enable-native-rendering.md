@@ -6,7 +6,7 @@ This how-to guide describes how to implement experimental native rendering using
 
 In order to enable native rendering on Android, make sure you are at least using version 2.42.2 or higher.
 
-Before you start, add the following transitive theoplayer dependency to the build.gradle file:
+Before you start, if you are using an sdk from version 2.42.2 up to 2.73.x, please add the following transitive theoplayer dependency to the build.gradle file:
 
 ```java
 dependencies {
@@ -15,15 +15,17 @@ dependencies {
 }
 ```
 
+If you are using an SDK from 2.74.0 or later, you don't need to add the dependency mentioned above.
+
 ## Code example
 
 The snippet below configures the THEOplayer a source description that will render the media natively
 
 ```java
-private void playSourceWithExperimentalRendering(String src) {
+private void playSourceWithNativeRendering(String src) {
     tpv.getPlayer().setSource(sourceDescription(
         typedSource(src)
-            .setExperimentalRenderingEnabled(true)
+            .setNativeRenderingEnabled(true)
             .build()
     ).build())
 }
