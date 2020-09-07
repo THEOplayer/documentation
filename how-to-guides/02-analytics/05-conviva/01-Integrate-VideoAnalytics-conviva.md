@@ -1,8 +1,10 @@
-# Conviva
+# Conviva Integration for VideoAnalytics
 
-Conviva is an analytics service. THEOplayer offers a pre-integration for this solution. A demo can be found at [http://demo.theoplayer.com/conviva-analytics-test-page-20171024](http://demo.theoplayer.com/conviva-analytics-test-page-20171024).
+This article describes on how to integrate Conviva pre-integration included inside THEOplayer SDK. A demo can be found at http://demo.theoplayer.com/conviva-analytics-test-page-20171024.
+
 
 ### Table of Contents
+
 - [SDKs](#sdks)
 - [Code example](#code-example)
   - [Pre-requirements](#pre-requirements)
@@ -24,9 +26,10 @@ Conviva is an analytics service. THEOplayer offers a pre-integration for this so
 1. Have a THEOplayer SDK with the Conviva module enabled.
 2. Include Conviva's SDK. For example,
 ```html
-//Recommended Conviva Library
-<script type="text/javascript"src="https://cdn.theoplayer.com/demos/conviva/2.151.0.37023.js"></script>
+//Latest Conviva Library
+<script type='text/javascript' src='//cdn.theoplayer.com/conviva/conviva-4.0.15.js'></script>
 ```
+* Note: You can download the latest conviva library from [Conviva Developer Community](https://community.conviva.com/site/global/home/p_home.gsp)
 
 ##### Android (TV) SDK
 
