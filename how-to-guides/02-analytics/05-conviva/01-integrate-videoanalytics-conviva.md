@@ -2,7 +2,6 @@
 
 This article describes on how to integrate Conviva pre-integration included inside THEOplayer SDK. A demo can be found at http://demo.theoplayer.com/conviva-analytics-test-page-20171024.
 
-
 ### Table of Contents
 
 - [SDKs](#sdks)
@@ -10,12 +9,12 @@ This article describes on how to integrate Conviva pre-integration included insi
   - [Pre-requirements](#pre-requirements)
   - [Configuration](#configuration)
 - [Related links:](#related-links)
-  
+
 ## SDKs
 
-| Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK |
-| :-----: | :---------: | :-----: | :--: | :------------: | :------------: |
-|   Yes   |     Yes     |   Yes   | No  |      Yes       |      Unverified       |
+| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
+| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
+|   Yes   |     Yes     |   Yes   |    No    |      Yes       |   Unverified   |
 
 ## Code example
 
@@ -25,11 +24,16 @@ This article describes on how to integrate Conviva pre-integration included insi
 
 1. Have a THEOplayer SDK with the Conviva module enabled.
 2. Include Conviva's SDK. For example,
+
 ```html
 //Latest Conviva Library
-<script type='text/javascript' src='//cdn.theoplayer.com/conviva/conviva-4.0.15.js'></script>
+<script
+  type="text/javascript"
+  src="//cdn.theoplayer.com/conviva/conviva-4.0.15.js"
+></script>
 ```
-* Note: You can download the latest conviva library from [Conviva Developer Community](https://community.conviva.com/site/global/home/p_home.gsp)
+
+- Note: You can download the latest conviva library from [Conviva Developer Community](https://community.conviva.com/site/global/home/p_home.gsp)
 
 ##### Android (TV) SDK
 
@@ -49,27 +53,27 @@ A code example can be found at [http://demo.theoplayer.com/conviva-analytics-te
 
 ```js
 var convivaConfiguration = {
-    "integration": "conviva",
-    "customerKey": "<CUSTOMER_KEY>",
-    "gatewayUrl": "<GATEWAY_URL>",
-    "contentMetadata": {
-        "assetName": "<ASSET_NAME>",
-        "live": isLive,
-        // "viewerId": "<VIEWER_ID>",
-        // "defaultBitRateKbps": "<DEFAULT_BITRATE_KBPS>",
-        // "defaultResource": "<DEFAULT_RESOURCE>",
-        // "duration": 1000,
-        // "encodedFrameRate": 30,
-        // "applicationName": "<APPLICATION_NAME>"
-        // "custom": {
-        // 	"<KEY>": "<VALUE>",
-        // }
-    }
+  integration: "conviva",
+  customerKey: "<CUSTOMER_KEY>",
+  gatewayUrl: "<GATEWAY_URL>",
+  contentMetadata: {
+    assetName: "<ASSET_NAME>",
+    live: isLive,
+    // "viewerId": "<VIEWER_ID>",
+    // "defaultBitRateKbps": "<DEFAULT_BITRATE_KBPS>",
+    // "defaultResource": "<DEFAULT_RESOURCE>",
+    // "duration": 1000,
+    // "encodedFrameRate": 30,
+    // "applicationName": "<APPLICATION_NAME>"
+    // "custom": {
+    // 	"<KEY>": "<VALUE>",
+    // }
+  },
 };
 player.source = {
-    "analytics": [convivaConfiguration],
-    "sources": [typedSource]
-}
+  analytics: [convivaConfiguration],
+  sources: [typedSource],
+};
 ```
 
 ##### Android (TV) SDK
@@ -100,7 +104,7 @@ ConvivaConfiguration convivaConfiguration = new ConvivaConfiguration.Builder("cu
     .heartbeatInterval(heartbeatInterval)
     .manualSessionControl(isManualSessionControl)
     .build();
-        
+
 SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
     .sources(typedSource)
     .analytics(convivaConfiguration)
@@ -110,6 +114,7 @@ SourceDescription sourceDescription = SourceDescription.Builder.sourceDescriptio
 ##### iOS (/tvOS) SDK
 
 The snippet below is an example configuration for Conviva.
+
 ```swift
 let isLive = false
 let contentMetadata = ConvivaContentMetadata(
