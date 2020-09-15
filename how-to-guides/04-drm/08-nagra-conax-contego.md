@@ -22,21 +22,43 @@ Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for m
 
 ```js
 if (HLS) {
-    let drmConfiguration = {
-        "integration": "conax",
-        "token": "<CONAX_TOKEN>",
-        "deviceId": "<DEVICE_ID>",
-        "fairplay": {
-            "licenseAcquisitionURL": "<LICENSE_KEY_URL_FAIRPLAY>",
-            "certificateURL": "CERTIFICATE_URL>"
-        }
-    };
-    player.source = {
-        "sources": {
-            "src": "<HLS_STREAM_URL>",
-            "type": "application/x-mpegurl",
-            "contentProtection": drmConfiguration
-        }
+    if (CLASSIC_MODEL) {
+        let drmConfiguration = {
+            "integration": "conax",
+            "token": "<CONAX_TOKEN>",
+            "deviceId": "<DEVICE_ID>",
+            "fairplay": {
+                "licenseAcquisitionURL": "<LICENSE_KEY_URL_FAIRPLAY>",
+                "certificateURL": "CERTIFICATE_URL>"
+            }
+        };
+        player.source = {
+            "sources": {
+                "src": "<HLS_STREAM_URL>",
+                "type": "application/x-mpegurl",
+                "contentProtection": drmConfiguration
+            }
+        };
+    } else if (UPFRONT_MODEL) {
+        let drmConfiguration = {
+            "integration": "conax",
+            "fairplay": {
+                "licenseAcquisitionURL": "<LICENSE_KEY_URL_FAIRPLAY>",
+                "certificateURL": "CERTIFICATE_URL>"
+            },
+            "headers": {
+                "PreAuthorization": "<CONAX_PREAUTHORIZATION_TOKEN>"
+            }
+        };
+        player.source = {
+            "sources": {
+                "src": "<HLS_STREAM_URL>",
+                "type": "application/x-mpegurl",
+                "contentProtection": drmConfiguration
+            }
+        };
+    } else {
+        // player throws an Invalid Conax configuration error
     }
 } else if (DASH) {
     let drmConfiguration = {
@@ -56,7 +78,7 @@ if (HLS) {
             "type": "application/dash+xml",
             "contentProtection": drmConfiguration
         }
-    }
+    };
 }
 ```
 
