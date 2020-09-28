@@ -63,19 +63,22 @@ Run Project:
 - open Xcode, add new project -> select workspace file in iOS folder generated after pod install,
 - click run project, project will start automatically -> terminal & emulator will start.
 
-## Getting Started with React Native with THEOplayer mobile SDK
+## Getting Started with React Native and THEOplayer SDK [Android [TV], iOS and tvOS]
 
 The following articles help you get started on React Native.
 
 - [How to get started with React Native](./01-how-to-get-started-with-theo.md)
+- [How to add tvOS project in React Native and THEOplayer](./02-add-tvos.md)
 - How to add features of THEOplayer in React Native:
-    - [DRM](./02-drm.md)
-    - [Advertisements](./05-advertisements.md)
-    - [Analytics](./08-analytics.md)
+    - [DRM](./03-drm.md)
+    - [Advertisements](./04-advertisements.md)
+    - [Analytics](./05-analytics.md)
+    - [Chromecast/Airplay](./06-chromecast.md)
 - How to use Event-handlers of THEOplayer in React Native:
-    - [EventListeners](./04-event-listeners.md)
-- [How to customise the UI of THEOplayer in React Native](./06-custom-ui.md)
-- [How to implement Chromecast using THEOplayer in React Native](./07-chromecast.md)
+    - [EventListeners](./07-event-listeners.md)
+    - [tvOS Remote Control Event Handlers](./08-add-tvos-remote-control-event-handlers.md)
+- [How to customise the UI of THEOplayer in React Native](./09-custom-ui.md)
+- [How to implement Chromeless (Without default UI) using THEOplayer in React Native](./10-how-to-implement-chromeless.md)
 
 
 ## Remarks

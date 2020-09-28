@@ -1,7 +1,5 @@
 # Fixing Fullscreen issue in React Native
 
-> *Disclaimer: THEO Technologies does not provide THEOplayer ReactNative components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in ReactNative Bridges. The sample ReactNative bridge code is provided AS-IS without any explicit nor implicit guarantees. The ReactNative bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.* 
-
 THEOplayer’s Android SDK may have a problem with video scaling when switching from fullscreen to normal view using the button (there is a problem with THEOplayer, aspectRatio and scrollView combination). This article describes how to solve the FullScreen issue using THEOplayer in React Native.
 
 ## Instructions

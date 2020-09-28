@@ -16,7 +16,7 @@ This article describes on how to integrate Conviva pre-integration for VideoAnal
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK| Android TV SDK | Chromecast SDK | Tizen | WebOS |
 | :-----: | :---------: | :-----: | :--: | :------------: | :------------: | :----: | :----: |
-|   Yes   |     No     |   No   | No  |      Yes       |      Unverified       |  Yes | Yes |
+|   Yes   |     No     |   No   | No  |      No       |      Unverified       |  Yes | Yes |
 
 ## Code example
 

@@ -1,7 +1,5 @@
 # Event Listeners and React Native
 
-> *Disclaimer: THEO Technologies does not provide THEOplayer ReactNative components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in ReactNative Bridges. The sample ReactNative bridge code is provided AS-IS without any explicit nor implicit guarantees. The ReactNative bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.* 
-
 This how-to guide describes how to add and manage event listeners of THEOplayer in React Native application.
 
 ## General Information
@@ -662,5 +660,6 @@ onPressAddEventListener = () => {
 ```
 
 ## Remarks
+- **Disclaimer:** THEO Technologies does not provide THEOplayer React Native components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in React Native Bridges. The sample React Native bridge code is provided AS-IS without any explicit nor implicit guarantees. The React Native bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.
 
-- **Note:** There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in React Native](./03-fixing-fullscreen-issue.md)
+- There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in reactNative](./11-fixing-fullscreen-issue.md)

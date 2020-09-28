@@ -1,10 +1,8 @@
 # Advertisements and React Native
 
-> *Disclaimer: THEO Technologies does not provide THEOplayer ReactNative components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in ReactNative Bridges. The sample ReactNative bridge code is provided AS-IS without any explicit nor implicit guarantees. The ReactNative bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.* 
-
 This how-to guide describes how to set-up the THEOplayer advertisement in React Native application.
 
-## Information 
+## General Information 
 
 ### Android
 
@@ -30,9 +28,19 @@ The below code is tested with following versions:
 
 *The THEOplayer iOS SDK can be used for iOS devices using iOS 10.0+ and Swift 5.0+*
 
+### tvOS 
+
+The below code is tested with following versions:
+
+- Yarn 1.19.1
+- React native TVOS 0.62.2-1
+- Xcode 11.3
+- Theoplayer TVOS 2.77.0
+- Swift 5.1.
+
 ## THEOplayer Advertisement Management Implementation
 
-### As default prop
+### As default property
 
 #### Android
 
@@ -534,14 +542,13 @@ init() {
     }
     
     /*
-    If you want to use Google Ima set googleIMA in theoplayer config(set true googleIMA in the line below) and add 'integration: "google-ima"' in js ads declaration
+    To activate the native Google IMA integration activate the native ima property in the player config. 
     */
     let playerConfig = THEOplayerConfiguration(
-    chromeless: false,
-    googleIMA: true
-    )
+        chromeless: false, 
+        ads: AdsConfiguration(showCountdown: true, preload: .MIDROLL_AND_POSTROLL, googleImaConfiguration: GoogleIMAConfiguration(useNativeIma: true))
+        )
     player = THEOplayer(configuration: playerConfig)
-    
     super.init(frame: .zero)
     player.addAsSubview(of: self)
 }
@@ -574,11 +581,119 @@ Next add integration type to main JavaScript file(e.g. `TheoPlayerViewScreen.js
 />
 ...
 ```
+### tvOS
 
-## Remarks
+In main JavaScript file(e.g. `TheoPlayerViewScreen.js`) where native module is implemented, add the advertisement descriptions in the source property:
 
-- There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article How to fix FullScreen issue of THEOplayer in reactNative
+```js
+...
+export default class TheoPlayerViewScreen extends React.Component {
+    return (
+          <BaseComponent style={styles.containerBase}>
+              <View style={styles.container}>
+                  <THEOplayerView
+                      style={playerStyle}
+                      autoplay={true}
+                      source={
+                        {
+                            sources: [{
+                                type: 'application/x-mpegurl',
+                                src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8',
+                            }],
+                            poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+                            ads: [
+                                {
+                                    sources: "https://cdn.theoplayer.com/demos/preroll.xml",
+                                    integration: "google-ima"
+                                }
+                            ]
+                        }
+                     }
+                  />
+              </View>
+          </BaseComponent>
+        );
+...
+```
+
+Declare Google IMA in the file `CommonRCTConvertExtension.swift` which is common for both iOS and tvOS:
+
+```swift
+...
+  @objc(AdDescription:)
+  class func adDescription(_ json: [String:AnyObject]) -> THEOAdDescription? {
+    guard let src = RCTConvert.nsString(json["sources"]) else {
+      return nil
+    }
+ 
+    return THEOAdDescription(
+      src: src,
+      timeOffset: RCTConvert.nsString(json["timeOffset"]),
+      skipOffset: RCTConvert.nsString(json["skipOffset"])
+    )
+  }
+ 
+   @objc(AdDescriptionArray:)
+   class func adDescriptionArray(_ json: [AnyObject]) -> [THEOAdDescription]? {
+       let sources = RCTConvertArrayValue(#selector(adDescription), json)
+           .compactMap { $0 as? THEOAdDescription }
+       return sources.count > 0 ? sources : nil
+   }
+...
+```
+
+Next add `Ad description` property to the source description decalred in file `RCTConvertExtension.swift` in `ios\TheoPlayerReactNative\tvOS\`:
+
+```swift
+...
+  @objc(SourceDescription:)
+  class func sourceDescription(_ json: [String:AnyObject]) -> SourceDescription? {
+    guard let sources = (json["sources"] as? [AnyObject]).flatMap(RCTConvert.typedSourceArray) else {
+      return nil
+    }
+     
+    return SourceDescription(
+      sources: sources,
+      ads: (json["ads"] as? [AnyObject]).flatMap(RCTConvert.adDescriptionArray),
+      textTracks: (json["textTracks"] as? [AnyObject]).flatMap(RCTConvert.textTrackArray),
+      poster: RCTConvert.nsString(json["poster"]),
+      metadata: nil
+    )
+  }
+...
+```
+
+Finally Google Native IMA needs to be set in THEOplayer configuration Object in file `THEOplayerView.swift`:
+
+```swift
+...
+@objc(THEOplayerView)
+class THEOplayerView: BaseTHEOplayerView {
+ 
+  init() {
+    let playerConfig = THEOplayerConfiguration(
+        chromeless: false,
+        ads:AdsConfiguration())
+    let player = THEOplayer(configuration: playerConfig)
+    super.init(player: player)
+  }
+  ...
+}
+```
+**Note**: `AdsConfiguration()` in the player config enables native implementations for Ads like Google IMA or SpotX. 
+
+## Additional Resources
 
 - THEOplayer currently supports two ad playback implementation:
     - THEOplayer (default)- VAST 3.0, VMAP & VPAID 2.0
     - Google IMA
+
+- Google IMA samples: https://developers.google.com/interactive-media-ads/docs/sdks/html5/tags
+- THEOplayer Github Sample Project : https://github.com/THEOplayer/samples-react-native
+
+## Remarks
+
+- **Disclaimer:** THEO Technologies does not provide THEOplayer React Native components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in React Native Bridges. The sample React Native bridge code is provided AS-IS without any explicit nor implicit guarantees. The React Native bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.
+
+- There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in React Native](./11-fixing-fullscreen-issue.md)
+

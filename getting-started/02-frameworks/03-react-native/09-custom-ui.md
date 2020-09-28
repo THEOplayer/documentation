@@ -1,10 +1,8 @@
 # Custom UI and React Native
 
-> *Disclaimer: THEO Technologies does not provide THEOplayer ReactNative components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in ReactNative Bridges. The sample ReactNative bridge code is provided AS-IS without any explicit nor implicit guarantees. The ReactNative bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.* 
+This how-to guide describes how to set-up the custom THEOplayer UI in React Native application.
 
-This how-to guide describes how to set-up the THEOplayer UI in React Native application.
-
-## Information 
+## General Information 
 
 ### Android
 
@@ -119,8 +117,6 @@ So now we have two new buttons but we need to add them to the THEOplayer - load 
 
 #### Android
 
-There are different ways of doing so in Android:
-
 - **Customisation inside java view manager:**
 
 In `createViewInstance `in `TheoPlayerViewManager.java` add paths to the files and evaluate javascript with player initialisation:
@@ -137,88 +133,6 @@ In `createViewInstance `in `TheoPlayerViewManager.java` add paths to the file
     playerView.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
     // Evaluate java script(init player)
     playerView.evaluateJavaScript("init({player: player})", null);
-...
-```
-
-- **Customisation by react props:**
-
-In `TheoPlayerViewManager.java` add new react props for `.js` and `.css` files:
-
-```java
-...
-    @ReactProp(name = "defaultCssPaths")
-    public void setDefaultCssPaths(View view, @Nullable ReadableArray defaultCssPaths) {
-        try {
-            Field declaredField = playerView.getClass().getDeclaredField("stateWrapper");
-            declaredField.setAccessible(true);
-            THEOplayerView.StateWrapper wrapper = (THEOplayerView.StateWrapper) declaredField.get(playerView);
-            THEOplayerConfig config = wrapper.config;
-            Field cssPathsField = config.getClass().getDeclaredField("cssPaths");
-            cssPathsField.setAccessible(true);
-            List<String> cssPaths = (List<String>) cssPathsField.get(config);
-    
-            for (Object o : defaultCssPaths.toArrayList()) {
-                cssPaths.add((String) o);
-            }
-    
-        } catch (Exception exception) {
-            Log.e("CSS PATHS", "Error: " + exception);
-        }
-    }
-    
-    @ReactProp(name = "defaultJsPaths")
-    public void setDefaultJsPaths(View view, @Nullable ReadableArray defaultJsPaths) {
-        try {
-            Field declaredField = playerView.getClass().getDeclaredField("stateWrapper");
-            declaredField.setAccessible(true);
-            THEOplayerView.StateWrapper wrapper = (THEOplayerView.StateWrapper) declaredField.get(playerView);
-            THEOplayerConfig config = wrapper.config;
-            Field jsPathsField = config.getClass().getDeclaredField("jsPaths");
-            jsPathsField.setAccessible(true);
-            List<String> jsPaths = (List<String>) jsPathsField.get(config);
-    
-            for (Object o : defaultJsPaths.toArrayList()) {
-                jsPaths.add((String) o);
-            }
-    
-            /*
-                Evaluate main script function declarated in theoplayer.js(custom js)
-                You can init pure js code without file by evaluateJavaScript.
-                */
-            playerView.evaluateJavaScript("init({player: player})", null);
-    
-        } catch (Exception exception) {
-            Log.e("JS PATHS", "Error: " + exception);
-        }
-    }
-...
-```
-
-Next in main JavaScript file(e.g. `TheoPlayerViewScreen.js`) where native module is implemented add paths to the player:
-
-```js
-...
-render() {
-    const jsPath = Platform.OS === 'android' ? ['file:///android_asset/js/theoplayer.js'] : [];
-    const cssPath = Platform.OS === 'android' ? ['file:///android_asset/css/theoplayer.css'] : [];
-    
-    return (
-        <View style={styles.container}>
-            <THEOplayerView
-                style={styles.player}
-                autoplay={true}
-                defaultCssPaths={cssPath}
-                defaultJsPaths={jsPath}
-                source={
-                    {
-                        sources: [{
-                            type: 'application/x-mpegurl',
-                            src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8',
-                        }],
-                        poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
-                    }
-                }
-            />
 ...
 ```
 
@@ -252,7 +166,16 @@ In `init` in `THEOplayerView.swift` add paths to the files and evaluate javasc
 ...
 ```
 
-**Things you should Know:**
+## Additional Resource
 
 - THEOplayer Custom UI: [http://demo.theoplayer.com/timejump-buttons](http://demo.theoplayer.com/timejump-buttons)
-- There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in reactNative](./03-fixing-fullscreen-issue.md)
+
+- [How to add CSS or JavaScript files to an Android/iOS project](https://docs.portal.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md/)
+
+## Remarks
+
+- **Disclaimer:** THEO Technologies does not provide THEOplayer React Native components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in React Native Bridges. The sample React Native bridge code is provided AS-IS without any explicit nor implicit guarantees. The React Native bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.
+
+- There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in reactNative](./11-fixing-fullscreen-issue.md)
+
+

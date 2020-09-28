@@ -1,10 +1,8 @@
 # Analtyics and React Native
 
-> *Disclaimer: THEO Technologies does not provide THEOplayer ReactNative components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in ReactNative Bridges. The sample ReactNative bridge code is provided AS-IS without any explicit nor implicit guarantees. The ReactNative bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.* 
-
 This how-to guide describes how to use analytics to the THEOplayer in React Native application.
 
-*Note: THEOplayer supports the following Analytics engines which are pre-integrated:*
+**Note:** THEOplayer supports the following Analytics engines which are pre-integrated:
 
 - Conviva 
 - Youbora
@@ -17,10 +15,10 @@ This how-to guide describes how to use analytics to the THEOplayer in React Nati
 
 - Examples and testings are only done with Youbora and Conviva at the moment. 
 - THEOplayer SDK should be pre-enabled with the feature of the analytics you would like to you use. 
-- The code must be run on a real device, without this analytics data will not be sent.
+- The code must be tested on a real device, without this analytics data will not be sent.
 
 
-## Information 
+## General Information 
 
 ### Android
 
@@ -225,4 +223,7 @@ In `THEOplayerView.swift` declare Conviva and add it to player settings config
 
 In configuration you can add additional Conviva options and meta data.
 
-There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in reactNative](./react-native-3-fixing-fullscreen-issue.md)
+## Remarks
+- **Disclaimer:** THEO Technologies does not provide THEOplayer React Native components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in React Native Bridges. The sample React Native bridge code is provided AS-IS without any explicit nor implicit guarantees. The React Native bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.
+
+- There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in reactNative](./11-fixing-fullscreen-issue.md)

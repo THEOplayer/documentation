@@ -1,12 +1,10 @@
 # Chromecast and React Native
 
-> *Disclaimer: THEO Technologies does not provide THEOplayer ReactNative components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in ReactNative Bridges. The sample ReactNative bridge code is provided AS-IS without any explicit nor implicit guarantees. The ReactNative bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.* 
-
-This how-to guide describes how to enable chromecast in the THEOplayer React Native application.
+This how-to guide describes how to integrate chromecast in the THEOplayer React Native application.
 
 **Note**: THEOplayer supports the Chromecast feature at SDK Level, so the feature needs to be pre-enable.
 
-## Information 
+## General Information 
 
 ### Android
 
@@ -120,8 +118,14 @@ After adding the Google Chromecast Framework to the project like THEOplayer SDK,
 
 Save changes and rebuild project.
 
-**Things you should Know:**
+## Additional Resources
 
 - Chromecast Framework: [https://developers.google.com/cast/docs/ios_sender/](https://developers.google.com/cast/docs/ios_sender/)
 
-There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in reactNative](./03-fixing-fullscreen-issue.md).
+- THEOplayer Chromecast Knowledgebase: https://docs.portal.theoplayer.com/how-to-guides/03-cast/01-chromecast/00-introduction.md
+
+## Remarks
+
+- **Disclaimer:** THEO Technologies does not provide THEOplayer React Native components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in React Native Bridges. The sample React Native bridge code is provided AS-IS without any explicit nor implicit guarantees. The React Native bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.
+
+- There is a know issue in THEOplayer Android SDK whereby scaling of Video (aspectRatio and scrollView combination) could be an issue while using Full Screen property. Please read the article [How to fix FullScreen issue of THEOplayer in reactNative](./11-fixing-fullscreen-issue.md)
