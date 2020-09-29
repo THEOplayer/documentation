@@ -12,7 +12,7 @@ For brevity, set-up is split up over multiple pages:
 
 ### Prerequisites
 * Generate a Tizen SDK build via the [https://portal.theoplayer.com/](THEOplayer portal).
-* Download the [reference app project](https://github.com/THEOplayer/tizen-app)
+* Download the [reference app project](https://github.com/THEOplayer/samples-tizen)
 * Read the README to get started. There is one at the root level and one in the two examples.
 * Import the project in Tizen Studio
 

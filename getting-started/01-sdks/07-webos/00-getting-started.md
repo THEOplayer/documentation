@@ -15,7 +15,7 @@ __Important Note__  If you require interactive debugging (even if you only use t
 
 # Download the starter files
 
-- Download the starter code from https://github.com/THEOplayer/webos-app
+- Download the starter code from https://github.com/THEOplayer/samples-webos
 - The folder contains all the necessary files to quickly deploy a THEOplayer solution to a WebOS device
 - The packager will use the ```app``` folder to build an IPK package
     - the ```app``` folder contains a crude solution with entry point ```index.html```; the only thing left is to put your THEOPlayer library files in the ```libs``` folder
