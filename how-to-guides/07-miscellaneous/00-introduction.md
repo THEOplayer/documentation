@@ -10,3 +10,6 @@
 - [Clipping](../../how-to-guides/07-miscellaneous/06-clipping.md)
 - [Picture-in-Picture](../../how-to-guides/07-miscellaneous/07-picture-in-picture.md)
 - [Using the hlsDateRange property](../../how-to-guides/07-miscellaneous/08-using-hlsdatarange-property.md)
+- [Preloading](../../how-to-guides/07-miscellaneous/09-preloading.md)
+- [Implement a basic latency manager](../../how-to-guides/07-miscellaneous/10-how-to-implement-a-basic-latency-manager.md)
+- [Configure low-latency HLS](../../how-to-guides/07-miscellaneous/11-configure-ll-hls.md)
