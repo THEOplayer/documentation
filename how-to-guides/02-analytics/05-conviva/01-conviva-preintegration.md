@@ -146,7 +146,14 @@ let sourceDescription = SourceDescription(
 )
 ```
 
+## Known Limitation: 
+
+The pre-integration inside the SDK has limited support for Video Anaytics Product only offered by Conviva. It is also not tested with every version of the conviva library released and thus could be broken with future releases. (Support only validated for library stated in the documentation)
+
 ## Related links:
 
 - Demo page: [http://demo.theoplayer.com/conviva-analytics-test-page-20171024](http://demo.theoplayer.com/conviva-analytics-test-page-20171024)
+
 - [Analytics API Web SDK](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.analytics.md)
+
+- More Informtaion about [Conviva Video Experience](https://www.conviva.com/experience-insights/)

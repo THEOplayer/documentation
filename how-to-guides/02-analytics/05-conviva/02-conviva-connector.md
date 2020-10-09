@@ -1,6 +1,6 @@
-# Conviva Integration for VideoAnalytics & AdsAnalytics
+# Conviva Connector for VideoAnalytics & AdsAnalytics
 
-This article describes on how to integrate Conviva pre-integration for VideoAnalytics and AdsAnalytics offered outside THEOplayer SDK. 
+This article describes on how to integrate Conviva pre-integration for Video Analytics and Ads Analytics offered as a connector with THEOplayer SDK. 
 
 - Demo Page: [https://cdn.theoplayer.com/conviva/conviva_test.html](https://cdn.theoplayer.com/conviva/conviva_test.html)
 - Github Link: [THEOplayer sample-conviva-analytics-html5-sdk](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)
@@ -29,10 +29,11 @@ This article describes on how to integrate Conviva pre-integration for VideoAnal
 3. Include Conviva's SDK. For example,
 
 ```html
-//Recommended Conviva Library
+//Conviva Library Example
 <script type='text/javascript' src='//cdn.theoplayer.com/conviva/conviva-4.0.15.js'></script>
 ```
 * Note: You can download the latest conviva library from [Conviva Developer Community](https://community.conviva.com/site/global/home/p_home.gsp)
+* You can use any version of Conviva library which support Video and Ads Analytics offering by Conviva. 
 
 ### Configuration
 
@@ -52,7 +53,7 @@ The snippets below explain how you can pass on Conviva settings to a THEOplayer 
         convivaConfigs[Conviva.Constants.CUSTOMER_KEY] = TEST_CUSTOMER_KEY;
 ```
 
-2. a. Initialise THEOplayer-conviva plugin with the parameters including any manual metatdata for that particular asset.
+2. a. Initialise THEOplayer-conviva plugin with the parameters including any manual metatdata for that particular asset. The below code can be used when you wish to pass manually different fields of metadata everytime associated with the source. 
 
 ```js
 //Include the Script - THEOplayer Integrated Module with Conviva (Without Content Metadata function)
@@ -75,11 +76,8 @@ contentInfo[ANY_TAG_KEY2] = "VALUE2";
 var integration = new NewConvivaIntegration(player,convivaConfigs,contentInfo);
 
 ```
-
-*  Points to Remember:
-    -  `player` in the `NewConvivaIntegration` is THEOplayer Object initialised on the web page. `convivaConfigs` are the details of the conviva and `contentMetadata` is the last parameter to add manually metadata associated to that content. All the params added to `contentInfo` should be a string.
  
-2. b. Initialise THEOplayer-conviva-metadata plugin with function MetatdataReciever for that asset.
+2. b. Initialise THEOplayer-conviva-metadata plugin with function MetatdataReciever for that asset. The below code can be used when you wish to pass a fixed fields of metadata everytime associated with the source. 
 
 ```js
 //Include the Script - THEOplayer Integrated Module with Conviva (With Content MetadataReciever function)
@@ -105,15 +103,35 @@ return contentInfo;
 var integration = new NewConvivaIntegration(player,convivaConfigs,contentMetadataReceiver);
 
 ```
-* Points to Remember: 
+
+*  Points to Remember:
+
+    -  `player` in the `NewConvivaIntegration` is THEOplayer Object which needs to be initialised before conviva connector is initialised. 
+
+    ```js
+    var player = new THEOplayer.Player(element, { // instantiates video player
+    libraryLocation : '/path/to/your-theoplayer-folder/' // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+    });
+    ```
+    
+    - `convivaConfigs` are the details of the conviva and `contentMetadata` is the last parameter to add manually metadata associated to that content. All the params added to `contentInfo` should be a string.
+
     - `contentMetadataReceiver` is `(source) => contentMetadata`, also it might be needed to `bind(this)` the function. This function is automatically called again when the source of the player is changed. 
 
 * Note:  You can also Clone the repo to have the local version of Plugin and include the file in the `script` tag. For debugging and development purposes, we have a debug version as well which can be used by replacing the URL with `conviva_theoplayer_metadata_plugin_debug.js`
 
+* Conviva Connector has full support for Video and Ad Analytics offered by Conviva. This connector can be maintained and managed by accross teams as it is built using all public api's of THEOplayer and conviva. Any new updates or changes can be easily modified and customised as per customer requirements. (There is no dependancy on the THEOplayer or Conviva library version)
+
 ## Related links:
 
 - Demo page: [Conviva Analytics Test Page](https://cdn.theoplayer.com/conviva/conviva_test.html).
+
 - Github Link: [THEOplayer sample-conviva-analytics-html5-sdk](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)
+
 - [Conviva SDK Documentation](https://cdn.theoplayer.com/conviva/Conviva_Documentation_4.0.14/index.html)
+
+- More Informtaion about [Conviva Video Experience](https://www.conviva.com/experience-insights/)
+
+- More Information about [Conviva Ad Insights](https://www.conviva.com/ad-insights/)
 
 
