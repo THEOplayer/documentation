@@ -543,8 +543,7 @@ import THEOplayerSDK
 }
 ```
 
-- If you want to use other methods like `EventListeners` check this article [Add EventListeners from THEOPlayer - React Native](https://docs.portal.theoplayer.com/getting-started/02-frameworks/03-react-native/04-event-listeners.md)
-
+- If you want to use other methods like `EventListeners` check this article [Add EventListeners from THEOPlayer - React Native](07-event-listeners.md)
 
 ## Player Module Registration 
 

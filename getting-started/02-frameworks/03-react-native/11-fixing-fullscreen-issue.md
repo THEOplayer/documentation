@@ -95,6 +95,40 @@ public class TheoPlayerViewManager extends SimpleViewManager<THEOplayerView> imp
 }
 ```
 
+## Additional Points to remember:
+
+- If you want the FullScreen of Android to be forced in `Landscape Orientation` then you also need to add new <activity> tag to `AndroidManifest.xml` and lock orientation also for `FullscreenActivity`, Example as below:
+
+```xml
+<application
+    android:name=".MainApplication"
+    android:allowBackup="false"
+    android:icon="@mipmap/ic_launcher"
+    android:label="THEOMaster"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:theme="@style/AppTheme">
+    <activity
+        android:name=".MainActivity"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+        android:label="THEOMaster"
+        android:screenOrientation="landscape"
+        android:windowSoftInputMode="adjustResize">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+    <!--Lock orientation in Fullscreen mode-->
+    <activity
+        android:name="com.theoplayer.android.api.fullscreen.FullScreenActivity"
+        android:screenOrientation="landscape" />
+</application>
+```
+
+## Additional Resource:
+- [Related Android FullScreen Issue](12-related-android-fullscreen-issue.md)
+
 ## Remarks
 
 - **Disclaimer**: THEO Technologies does not provide THEOplayer React Native components. This How-to-Article describes how our current THEOplayer iOS and Android SDKs can be wrapped in React Native Bridges. The sample React Native bridge code is provided AS-IS without any explicit nor implicit guarantees. The React Native bridge sample code only provides mapping for a number of commonly used THEOplayer APIs, it is the customer’s responsibility to further expand the mapping and subsequently maintain the code and ensure compatibility with future versions of THEOplayer SDKs.
