@@ -7,7 +7,7 @@ THEOplayer is partnered with many multi-DRM vendors to lighten this burden. In 
 ### Table of Contents
 - [Pre-integrations](#pre-integrations)
 - [Custom configuration](#custom-configuration)
-- [Altering requests and responses](#altering-requests-and-responses)
+- [Custom integration](#custom-integration)
 
 
 ## Pre-integrations
@@ -38,7 +38,7 @@ Developers can use the generic DRM-functionalities in case in-house DRM-solution
 
 ##### Web SDK
 
-To configure DRM on the Web SDK, developers can put a [ContentProtectionDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.sourcedescription.sources.md) inside a of a [SourceDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md).
+To configure DRM on the Web SDK, developers can put a [ContentProtectionDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.sourcedescription.sources.md) inside of a [SourceDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md).
 
 ```js
 if (HLS) {
@@ -83,7 +83,7 @@ if (HLS) {
 
 ##### Android SDK
 
-To configure DRM on the iOS SDK, developers can put a DRMConfiguration inside a of a SourceDescription.
+To configure DRM on the Android SDK, developers can put a DRMConfiguration inside of a SourceDescription.
 
 ```java
 // Map<String, String> headers =  new HashMap<String, String>();
@@ -108,7 +108,7 @@ theoplayer.getPlayer().setSource(sourceDescription);
 
 ##### iOS SDK
 
-To configure DRM on the iOS SDK, developers can put a FairPlayDRMConfiguration inside a of a SourceDescription.
+To configure DRM on the iOS SDK, developers can put a FairPlayDRMConfiguration inside of a SourceDescription.
 
 ```swift
 // let headers = [["<KEY>": "<VALUE>"]]
@@ -122,20 +122,9 @@ let sourceDescription = SourceDescription(source: typedSource)
 theoplayer.source = sourceDescription
 ```
 
-## Altering requests and responses
+## Custom Integration
 
-It's possible that requests and responses to/from license key URLs, or certificate URLs, need to be altered into a specific format (e.g. JSON).
+Developers can make their own custom DRM integration instead of using the pre-integrations offered by THEOplayer. 
+This can be done by making use of the [DRM integration API repository](https://github.com/THEOplayer/samples-drm-integration).
 
-The Network API can be used to alter requests and responses related to DRM, even on iOS Safari.
-
-- [Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.network.md)
-- [Guide](../08-network/00-introduction.md)
-- [Demo](https://demo.theoplayer.com/networkapi)
-
-Although this being a JavaScript API, it can also be ported to the iOS and Android (TV) SDK. Please refer to one of our guides on this topic.
-
-- [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
-- [iOS SDK Customization](../../getting-started/01-sdks/03-ios/01-ios-sdk-customization.md)
-- [Android SDK Customization](../../getting-started/01-sdks/02-android/01-android-sdk-customization.md)
-
-Headers can be added in a simpler fashion, as demonstrated above, so it's encouraged not to resort to the Network API if headers need to be added.
+A complete guide on how to create a new integration, and some example integrations can be found in the provided repository.
