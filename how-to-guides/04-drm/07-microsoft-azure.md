@@ -2,7 +2,7 @@
 
 This article describes how to configure Microsoft Azure DRM with THEOplayer.
 
-Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information or head to [Azure Media Services 3rd Party Player Samples - THEOplayer](https://azure.microsoft.com/en-us/blog/azure-media-services-announces-new-collaboration-with-theoplayer/) for an implementation reference sample 
+Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information or head to [Azure Media Services 3rd Party Player Samples - THEOplayer](https://github.com/Azure-Samples/media-services-3rdparty-player-samples/tree/master/docs/THEOplayer) for an implementation reference sample 
 
 ### Table of Contents
 - [SDKs](#sdks)
