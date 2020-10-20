@@ -17,7 +17,10 @@ This how-to-guide explains how to configure THEOplayer to play low-latency HLS (
 	* 6s segment
 	* 2s GOP
 	* preload hints and blocking playlist reload are enabled
-	* ensure the clock between your client and server are correctly synchronized as EXT-X-PROGRAM-DATE-TIME (inserted into the stream by your server clock) should match your client device clock
+	* ensure the clock between your client and server are correctly synchronized as EXT-X-PROGRAM-DATE-TIME (inserted into the stream by your server clock) should match your client device clock.
+
+	**It is strongly recommended setting your server clock to synchronise with an NTP server, to prevent time drift.**
+
 4. You would need a Web SDK of THEOplayer with the **LL-HLS** feature flag specified and a basic configuration to setup your environment. You can create an SDK by signing-in to the THEO Portal [Login Here](https://portal.theoplayer.com/login). Be sure to have THEOplayer version 2.65 or higher.
 5. Setup a basic HTML file and include the THEOplayer library and Low latency HLS stream. You can also check: [How to get started with THEOplayer Web SDK](../../getting-started/01-sdks/01-web/00-getting-started.md)
 
@@ -43,3 +46,4 @@ player.source = {
 
 ## Resources
 - [Getting started with the Web SDK](https://docs.portal.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
+- [Deliver Low-Latency HLS live streams using Wowza Streaming Engine and THEOplayer](../05-integrations/04-deliver-low-latency-hls-live-streams-with-wowza-streaming-engine.md)
