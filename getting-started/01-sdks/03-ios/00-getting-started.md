@@ -1,62 +1,106 @@
 # Getting started with the iOS SDK
 
-This page shows how to get THEOplayer running on iOS apps.
+This page is a step-by-step guide on how to get THEOplayer iOS SDK running on iOS apps.
+This example was made with Xcode version 12.0.1 (12A7300) and macOS Catalina version 10.15.7.
 
 ## Objectives
 
-*   Create a new iOS project
-*   Configure THEOplayer SDK framework
-*   Develop an app that uses the SDK
+*   Create a new iOS project in Xcode.
+*   Include and configure THEOplayer SDK framework for iOS.
+*   Develop an app that uses the SDK.
 
 ## Before you begin
 
-*   Make sure you have a valid THEOplayerSDK.framework
+*   Make sure you have a valid THEOplayerSDK.framework.
 
 ## Creating a new iOS project
 
-Steps for creating a new project
+Steps for creating a new project:
 
-- Create new project (cmd + shift + n)
-- Select Single View App, click 'next'
-- Enter project details, click 'next'
+1. Create new project (cmd + shift + n).
+2. Select new App and click 'next'.
+    
+![](../../../assets/img/getting-started-with-ios-sdk-01.png)
 
-After selecting the directory location, you should see something similar to the screenshot below
+3.  Enter project details, set interface to 'storyboard' and click 'next'.
 
-![](../../../assets/img/getting-started-ios-01.png)
+![](../../../assets/img/getting-started-with-ios-sdk-02.png)
+
+After selecting the directory location, you should see something similar to the screenshot below.
+
+![](../../../assets/img/getting-started-with-ios-sdk-03.png)
 
 ## Configure THEOplayer SDK framework
 
-Steps for adding a framework
+Steps for adding a framework:
 
-- Open finder and add your THEOplayerSDK.framework to the project directory
+Open finder and drag your THEOplayerSDK.framework into to the project directory.
 
-![](../../../assets/img/screenshot2.png)
+![](../../../assets/img/getting-started-with-ios-sdk-04.png)
 
-- Go to the project configuration (1), select the General tab (2), and finally scroll down to the Embedded Binaries section and click '+' (3)
+This screen pops up, make sure these settings are selected and click finish. 
 
-![](../../../assets/img/getting-started-ios-02.png)
+![](../../../assets/img/getting-started-with-ios-sdk-05.png)
 
-- A submenu will open, click 'Add Other...'
-- Select the previously added THEOplayerSDK.framework
-- A menu will open. They have sufficient defaults. Click 'Finish'
+Go to the project configuration (1), select the General tab (2), and make sure the THEOplayerSDK.framework is embeded and signed in.(3) Add it with the "+" if necessary.
 
-![](../../../assets/img/getting-started-ios-03.png)
+![](../../../assets/img/getting-started-with-ios-sdk-06.png)
 
-Validate that the framework will correctly be added during builds
+Validate that the framework will correctly be added during builds:
 
-- Go to the Build Phases tab in the project configuration, go to the Embed Frameworks section
-- Check that the THEOplayerSDK.framework is present
+Go to the Build Phases tab in the project configuration. Then, go to the Embed Frameworks section and check that the THEOplayerSDK.framework is present.
 
-![](../../../assets/img/getting-started-ios-04.png)
+![](../../../assets/img/getting-started-with-ios-sdk-07.png)
 
 ## Develop the app using the THEOplayer SDK
 
-Steps for a minimal app using THEOplayer
+Steps for a minimal app using THEOplayer:
 
-- Open the ViewController
-- Import THEOplayerSDK
-- Setup a player during `viewDidLoad()`, it is important to keep a reference to this instance
-- Set a source on the player
+1. Open the ViewController.
+    
+    The file should look like this:
+
+    ![](../../../assets/img/getting-started-with-ios-sdk-08.png)
+
+2. Import THEOplayerSDK.
+    ```swift
+        import THEOplayerSDK
+    ```
+3. Make the setupTheoPlayer() function:
+    
+    This function sets all the initial dimensions for the player and adds it to the view when called.
+   ```swift
+    func setupTheoPlayer() {
+        var frame: CGRect = UIScreen.main.bounds
+        frame.origin.y = 0
+        frame.size.height = frame.size.width * 9 / 16
+        
+        self.theoplayer = THEOplayer()
+        self.theoplayer.frame  = frame
+        self.theoplayer.addAsSubview(of: self.view)
+    }
+   ```
+   
+4. Define the sampleSource:
+   ```swift
+   var sampleSource: SourceDescription {
+        return SourceDescription(
+            source: TypedSource(
+            src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
+            type: "application/x-mpegurl"
+            )
+        )
+    }
+   ```
+5. Setup a player during `viewDidLoad()`, it is important to keep a reference to this instance
+   ```swift
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTheoPlayer()
+        self.theoplayer.source = sampleSource
+        /* Do any additional setup after loading the view.*/
+    }
+   ```
 
 The result is the following snippet:
 
@@ -94,21 +138,21 @@ class ViewController: UIViewController {
 }
 ```
 
-Steps for adding and removing event listeners
+## Steps for adding and removing event listeners.
 
-Use the THEOplayer API to add an eventlistener
-- Add `var listeners : [String: EventListener] = [:]` to ViewController
-- Use the THEOplayer API to add an event listener and handler
-- Add `attachEventListeners()` to the setup of THEOplayer
+1. Add `var listeners: [String: EventListener] = [:]` to ViewController
+  ```swift
+    var theoplayer: THEOplayer!
+    var listeners: [String: EventListener] = [:]
+  ```
 
-The result is the following snippet:
+2. Write the functions to create and delete the EventListeners on play and pause events.
 
 ```swift
-import Foundation
-import THEOplayerSDK
-
-extension ViewController {
+class ViewController: UIViewController {
     
+    ...
+
     func attachEventListeners() {
         self.listeners["play"] = self.theoplayer.addEventListener(type: PlayerEventTypes.PLAY, listener: onPlay)
         self.listeners["pause"] = self.theoplayer.addEventListener(type: PlayerEventTypes.PAUSE, listener: onPause)
@@ -129,7 +173,92 @@ extension ViewController {
 }
 ```
 
-Validate that the tutorial was completed succesfully
+3. Add `attachEventListeners()` to the setupTheoPlayer() function to create the EventListeners when the Theoplayer is initialized.
+ 
+ ```swift
+ func setupTheoPlayer() {
+        var frame: CGRect = UIScreen.main.bounds
+        frame.origin.y = 0
+        frame.size.height = frame.size.width * 9 / 16
+            
+        self.theoplayer = THEOplayer()
+        self.theoplayer.frame =  frame
+        self.theoplayer.addAsSubview(of: self.view)
+        
+        attachEventListeners()
+    }
+ ```
+ 4. Modify the `viewWillDisappear()` method to also delete the EventListeners we previously made when the current view is inactive.
+```swift
+override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear()
+    removeEventListeners()
+}
+ ``` 
 
-- Run the application, you can boot a similator or use your own device
-- Click the big play button
+
+
+## Full code overview:
+```swift
+import UIKit
+import THEOplayerSDK
+
+class ViewController: UIViewController {
+    var theoplayer: THEOplayer!
+    var listeners: [String: EventListener] = [:]
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTheoPlayer()
+        self.theoplayer.source = sampleSource
+    }
+        
+    func setupTheoPlayer() {
+        var frame: CGRect = UIScreen.main.bounds
+        frame.origin.y = 0
+        frame.size.height = frame.size.width * 9 / 16
+            
+        self.theoplayer = THEOplayer()
+        self.theoplayer.frame =  frame
+        self.theoplayer.addAsSubview(of: self.view)
+        
+        attachEventListeners()
+    }
+
+    var sampleSource: SourceDescription {
+        return SourceDescription(
+            source: TypedSource(
+            src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
+            type: "application/x-mpegurl"
+            )
+        )
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear()
+        removeEventListeners()
+    }
+
+    func attachEventListeners() {
+        self.listeners["play"] = self.theoplayer.addEventListener(type: PlayerEventTypes.PLAY, listener: onPlay)
+        self.listeners["pause"] = self.theoplayer.addEventListener(type: PlayerEventTypes.PAUSE, listener: onPause)
+    }
+    
+    func removeEventListeners() {
+        self.theoplayer.removeEventListener(type: PlayerEventTypes.PLAY, listener: listeners["play"]!)
+        self.theoplayer.removeEventListener(type: PlayerEventTypes.PAUSE, listener: listeners["pause"]!)
+    }
+
+    func onPlay(event: PlayEvent) {
+        print("Play event occured")
+    }
+    
+    func onPause(event: PauseEvent) {
+        print("Pause event occured")
+    }
+}
+
+```
+Validate that the tutorial was completed succesfully:
+
+- Run the application, you can boot a similator or use your own device.
+- Click the big play button.
