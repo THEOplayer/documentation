@@ -42,8 +42,8 @@ To deliver LL-HLS streams from Wowza Streaming Engine you have to manually enabl
 
 #### Configure the live application's setup in XML
 
-1. Navigate to **[install-dir]/conf/live** or **[install-dir]/conf/[custom live application]** and open the **Application.xml** file in a text editor.
-2. In the **<Streams>** container element, make sure the **StreamType** property is **live**. The XML looks like this:
+1. Navigate to `[install-dir]/conf/live` or `[install-dir]/conf/[custom live application]` and open the **Application.xml** file in a text editor.
+2. In the `<Streams>` container element, make sure the **StreamType** property is **live**. The XML looks like this:
 
 ```xml
 <Streams>
@@ -114,9 +114,9 @@ You can configure the following optional **HTTPStreamer** property to address ho
 
 Configure the optional low latency CMAF chunk properties and media playlist property by editing the **Application.xml** file for your LL-HLS live stream application.
 
-1. Navigate to the **Application.xml** file for your LL-HLS live stream. If you're using the default live application that installs with Wowza Streaming Engine, navigate to **[install-dir]/conf/live**.
+1. Navigate to the **Application.xml** file for your LL-HLS live stream. If you're using the default live application that installs with Wowza Streaming Engine, navigate to `[install-dir]/conf/live`.
 2. Open **Application.xml** in a text editor.
-3. In the **<LiveStreamPacketizer>** container element, add the desired property or properties, making sure to specify a name, value, and type for each one. The XML looks like this:
+3. In the `<LiveStreamPacketizer>` container element, add the desired property or properties, making sure to specify a name, value, and type for each one. The XML looks like this:
 
 ```xml
 <LiveStreamPacketizer>
@@ -135,7 +135,7 @@ Configure the optional low latency CMAF chunk properties and media playlist prop
 </LiveStreamPacketizer>
 ```
 
-4. In the **<HTTPStreamer>** container element, optionally add **cupertinoPartHoldBack**, making sure to specify a name, value, and type. The XML looks like this:
+4. In the `<HTTPStreamer>` container element, optionally add **cupertinoPartHoldBack**, making sure to specify a name, value, and type. The XML looks like this:
 
 ```xml
 <HTTPStreamer>
@@ -168,11 +168,11 @@ When the camera or encoder is connected and the live stream is active, preview L
 
 To test LL-HLS live streams when only **cmafstreamingpacketizer** is enabled, specify the stream playback URL using the format:
 
-https://[wowza-address]/[application]/[application-instance]/[stream-name]/playlist.m3u8
+`https://[wowza-address]/[application]/[application-instance]/[stream-name]/playlist.m3u8`
 
 If **cmafstreamingpacketizer** and **cupertinostreamingpacketizer** are enabled, use the format:
 
-https://[wowza-address]/[application]/[application-instance]/[stream-name]/playlist_sfm4s.m3u8
+`https://[wowza-address]/[application]/[application-instance]/[stream-name]/playlist_sfm4s.m3u8`
 
 Where:
 
@@ -182,17 +182,17 @@ Where:
 **[stream-name]** is the stream name
 
 So, for example, if only **cmafstreamingpacketizer** is enabled, the playlist URL for a LL-HLS stream that uses the address **mycompany.com**, the default **live** application, and the default stream name **myStream** is:
-https://mycompany.com/live/myStream/playlist.m3u8
+`https://mycompany.com/live/myStream/playlist.m3u8`
 
 If **cmafstreamingpacketizer** and **cupertinostreamingpacketizer** are both enabled, the LL-HLS playlist URL for the same example is:
-https://mycompany.com/live/myStream/playlist_sfm4s.m3u8
+`https://mycompany.com/live/myStream/playlist_sfm4s.m3u8`
 
 and the playback URL for the Cupertino HLS stream is either:
-https://mycompany.com/live/myStream/playlist.m3u8
 
+`https://mycompany.com/live/myStream/playlist.m3u8`
 or
 
-https://mycompany.com/live/myStream/playlist_sfts.m3u8
+`https://mycompany.com/live/myStream/playlist_sfts.m3u8`
 where **\_sfts** indicates that the media playlist contains .ts segments.
 
 ### Configure THEOplayer to play your LL-HLS stream
