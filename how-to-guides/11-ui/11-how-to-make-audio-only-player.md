@@ -13,13 +13,14 @@ to this 
 - [SDKs](#sdks)
 - [Making the audio player from the video player](#making-the-audio-player-from-the-video-player)
 - [Code examples](#code-examples)
-  - [1 -  Add a new class to 2 HTML elements in the player](#1---add-a-new-class-to-2-html-elements-in-the-player)
+  - [1 - Add a new class to 2 HTML elements in the player](#1---add-a-new-class-to-2-html-elements-in-the-player)
   - [2 - Hide unnecessary buttons from the control bar](#2---hide-unnecessary-buttons-from-the-control-bar)
   - [3 - Hide content that might appear above the control bar](#3---hide-content-that-might-appear-above-the-control-bar)
-  - [4- Decrease the player's height](#4-decrease-the-players-height)
-  - [5  Ensure the control bar is always visible](#5-ensure-the-control-bar-is-always-visible)
+  - [4 - Decrease the player's height](#4-decrease-the-players-height)
+  - [5 - Ensure the control bar is always visible](#5--ensure-the-control-bar-is-always-visible)
   - [6 - Rescale the loading spinner](#6---rescale-the-loading-spinner)
-  - [7 -  Change appearance for when the stream is not yet loaded](#7---change-appearance-for-when-the-stream-is-not-yet-loaded)
+  - [7 - Change appearance for when the stream is not yet loaded](#7---change-appearance-for-when-the-stream-is-not-yet-loaded)
+  - [8 - (Optional) Add the audioOnly flag](#8---optional-add-the-audioonly-flag)
   - [Result](#result)
 - [Sample application](#sample-application)
 - [Resources](#resources)
@@ -37,7 +38,7 @@ This section explains how to alter the default video player UI into the UI shown
 
 ![Audio Only](../../assets/img/audio-only-3.PNG "Audio Only")
 
-The alteration involves 7 steps:
+The alteration involves 8 steps:
 
 1. Add a new class to 2 HTML elements in the player (Javascript)
 2. Hide unnecessary buttons from the control bar (CSS)
@@ -46,6 +47,7 @@ The alteration involves 7 steps:
 5. Ensure the control bar is always visible (CSS)
 6. Rescale the loading spinner (CSS)
 7. Change appearance for when the stream is not yet loaded (CSS)
+8. (Optional) Add the audioOnly flag (Javascript)
 
 In the following, you can find a description and a code example for each step.
 
@@ -173,6 +175,18 @@ Should we stop here, the audio player would show 0:00 / 0:00 as time information
 ```
 
 Note: if you preload  the source (see *Resources*), hiding the time information before the player starts playing may not be needed, as the duration will be already available.
+
+### 8 - (Optional) Add the audioOnly flag
+
+Finally, we recommend you to set the audioOnly flag to true in the player configuration. In that case, the player will use an audio element instead of a video element for media playback. 
+This is only supported for HLS streams for now. Otherwise, the player uses a video element instead. 
+This plays without any issue on most platforms, however we have noticed that Firefox doesn’t handle video elements with height and width 0 well.
+
+```js
+const player = new THEOplayer.Player(element, {
+    audioOnly: true,
+});
+```
 
 ### Result
 
