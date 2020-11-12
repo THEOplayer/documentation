@@ -9,7 +9,7 @@ Low-Latency HLS streams conform to [Apple’s preliminary protocol extension to 
 - [SDKs](#sdks)
 - [How to set up THEOplayer with Wowza Streaming Engine For LL-HLS](#how-to-set-up-theoplayer-with-wowza-streaming-engine-for-ll-hls)
   - [Prerequisites](#prerequisites)
-  - [Configure a Wowza live application to deliver LL-HLS streams](#configure-a-wowza-live-application-to-deliver-ll-hls-streams)
+  - [Configure a live application to deliver LL-HLS streams](#configure-a-live-application-to-deliver-ll-hls-streams)
   - [Configure THEOplayer to play your LL-HLS stream](#configure-theoplayer-to-play-your-ll-hls-stream)
 - [Conclusion](#conclusion)
 - [Resources](#resources)
@@ -32,28 +32,26 @@ There are three prerequisites in order to continue with this guide:
 
 3. This guide expects that you are a Wowza Streaming Engine client and that you are integrated with their streaming infrastructure. Information on Wowza Streaming Engine can be found [here](https://www.wowza.com/docs/wowza-streaming-engine-product-articles/). Be sure to have Wowza Streaming Engine media server software version 4.7.8 or higher.
 
-### Configure a Wowza live application to deliver LL-HLS streams
+**Please Note:** Wowza occasionally update their documentation, which can be accessed [here](https://www.wowza.com/docs/deliver-apple-low-latency-hls-live-streams-using-wowza-streaming-engine).
 
-**Please Note:** Wowza occasionally updates their documentation, which is available [here](https://www.wowza.com/docs/deliver-apple-low-latency-hls-live-streams-using-wowza-streaming-engine).
+### Configure a live application to deliver LL-HLS streams
 
-Wowza Streaming Engine generates Low-Latency HLS streams using the CMAF packetizer, **cmafstreamingpacketizer**. The packetizer creates the partial segments needed for LL-HLS. The LL-HLS streams use the fMP4 container format.
+You can use the default **live** application that installs with Wowza Streaming Engine or create and use a new **Live** or **Live HTTP Origin** application. Use the **Live** application type for sending streams from Wowza Streaming Engine to clients or Wowza Streaming Engine edges. Use the **Live HTTP Origin** application type to connect to a CDN edge, such as the Fastly CDN, that can pull streams from the Wowza Streaming Engine origin application.
 
-To deliver LL-HLS streams from Wowza Streaming Engine you have to manually enable low latency CMAF packetization for live streaming, in the application, by editing the application's configuration in XML.
+The following steps use the default **live** application to enable LL-HLS live streaming by editing the **Application.xml** and **VHost.xml** configuration files.
 
-#### Configure the live application's setup in XML
+You can use the default live application that installs with Wowza Streaming Engine or create and use a new Live or Live HTTP Origin application. Use the Live application type for sending streams from Wowza Streaming Engine to clients or Wowza Streaming Engine edges. Use the Live HTTP Origin application type to connect to a CDN edge, such as the Fastly CDN, that can pull streams from the Wowza Streaming Engine origin application.
 
-1. Navigate to `[install-dir]/conf/live` or `[install-dir]/conf/[custom live application]` and open the **Application.xml** file in a text editor.
-2. In the `<Streams>` container element, make sure the **StreamType** property is **live**. The XML looks like this:
+The following steps use the default **live** application to enable LL-HLS live streaming by editing the **Application.xml** and **VHost.xml** configuration files.
 
-```xml
-<Streams>
-    ...
-    <StreamType>live</StreamType>
-    ...
-</Streams>
-```
+**Please Note:** If you're trying to use the CMAF packetizer to deliver LL-HLS and HLS or MPEG-DASH streams, you must use two separate live applications: one configured specifically for LL-HLS and another for CMAF-packetized HLS and MPEG-DASH.
 
-3. Add **cmafstreamingpacketizer** to the **LiveStreamPacketizers** property. You can add it to the prepopulated comma-separated list, or it can be the only packetizer specified. The XML looks like this:
+#### Enable LL-HLS in Wowza Streaming Engine XML
+
+The following steps enable transmuxing for CMAF packetization for LL-HLS delivery.
+
+1. Navigate to **[install-dir]/conf/live** or **[install-dir]/conf/[custom live application]** and open the **Application.xml** file in a text editor.
+2. Add **cmafstreamingpacketizer** to the **LiveStreamPacketizers** property. You can add it to the prepopulated comma-separated list, or it can be the only packetizer specified. The XML looks like this:
 
 ```xml
 <Streams>
@@ -63,7 +61,9 @@ To deliver LL-HLS streams from Wowza Streaming Engine you have to manually enabl
 </Streams>
 ```
 
-4. Add the **cmafLLEnableLowLatency** property to the **LiveStreamPacketizer** element and set it to **true**.
+**Please Note:** If you enable **cupertinostreamingpacketizer** and **cmafstreamingpacketizer**, Wowza Streaming Engine generates both MPEG-TS segments (using **cupertinostreamingpacketizer**) and fMP4 segments (using **cmafstreamingpacketizer**).
+
+3. Add the **cmafLLEnableLowLatency** property to the **LiveStreamPacketizer** container element and set it to true.
 
 ```xml
 <LiveStreamPacketizer>
@@ -77,123 +77,121 @@ To deliver LL-HLS streams from Wowza Streaming Engine you have to manually enabl
 </LiveStreamPacketizer>
 ```
 
-5. For the **HTTPStreamers** property, make sure HLS (**cupertinostreaming**) is specified. The XML looks like this:
+4. For the **HTTPStreamers** property, make sure HLS (**cupertinostreaming**) is specified. The XML looks like this:
 
 ```xml
 <HTTPStreamers>cupertinostreaming</HTTPStreamers>
 ```
 
-6. Save your changes.
+5. Go to **[install-dir]/conf/** and open the **VHost.xml** file in a text editor.
+
+6. Add the AllowHttp2 property to the <SSLConfig> container element in the <HostPort> you configured for SSL/TLS and set it to true.
+
+```xml
+<SSLConfig>
+    ...
+    <AllowHttp2>true</AllowHttp2>
+    ...
+</SSLConfig>
+```
+
+7. Save your changes.
 
 Your live application is now configured to deliver LL-HLS streams.
 
-If desired, you can edit optional CMAF packetization properties. For information, see [Configure CMAF live streaming packetization in Wowza Streaming Engine](https://www.wowza.com/docs/configure-cmaf-packetization-in-wowza-streaming-engine). You can also edit optional packetization properties to customize the low latency chunks generated by the **cmafstreamingpacketizer**, or you can edit an optional property to customize the media playlist.
-
 #### Configure optional low latency partial segment properties and media playlist property
+
+Configuring the following properties is optional as Wowza Streaming Engine will use the property's default value for any of the properties that you do not configure. You can configure the optional LL-HLS properties by editing the **Application.xml** file for your LL-HLS live stream application. For information about configuring custom (optional) properties, see [Add custom properties](https://www.wowza.com/docs/add-a-custom-property#add-custom-properties).
 
 ##### Low latency CMAF property reference
 
-You can configure any of these optional **LiveStreamPacketizer** properties for the low latency chunks. These chunks, generated by the **cmafstreamingpacketizer**, are used as partial segments in the LL-HLS streams.
+You can configure any of these optional **LiveStreamPacketizer** properties for the LL-HLS segments and video and audio partial segments (chunks) in the **Application/LiveStreamPacketizer/Properties** container element.
 
-| Name                                                                                                                                                          | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **cmafLLChunkingScheme**                                                                                                                                      | String  | A value that specifies the chunking scheme for low latency CMAF-packetized streams. Valid values are **byFrame** or **byDuration**. The default is **byFrame**. If the value is **byFrame**, packetization is configured using the **cmafLLChunkFrameCountTargetAudio** and **cmafLLChunkFrameCountTargetVideo** properties. If the value is **byDuration**, packetization is configured using the **cmafLLChunkDurationTargetAudio** and **cmafLLChunkDurationTargetVideo** properties. |
-| **cmafLLChunkFrameCountTargetAudio**                                                                                                                          | Integer | Specifies the number of audio frames to include in each low latency CMAF audio chunk. The default is **1**, but the value should be updated in production environments to reflect the expected audio sample rate of the source media and your desired CMAF audio chunk duration. This property is only enabled if **cmafLLChunkingScheme** is **byFrame**.                                                                                                                               |
-| **cmafLLChunkFrameCountTargetVideo**                                                                                                                          | Integer | Specifies the number of video frames to include in each low latency CMAF video chunk. The default is **1**, but the value should be updated in production environments to reflect the expected video frame rate of the source media and your desired CMAF video chunk duration. This property is only enabled if **cmafLLChunkingScheme** is **byFrame**.                                                                                                                                |
-| **cmafLLChunkDurationTargetAudio**                                                                                                                            | Integer | Specifies, in milliseconds, the duration of each low latency CMAF audio chunk. The default is **43**, but we recommend using a value between **300 - 500** in production workflows. The duration cannot exceed the [cmafSegmentDurationTarget](https://www.wowza.com/docs/configure-cmaf-packetization-in-wowza-streaming-engine#cmaf-live-packetization-property-reference) value. This property is only available if **cmafLLChunkingScheme** is **byDuration**.                       |
-| **cmafLLChunkDurationTargetVideo**                                                                                                                            | Integer | Specifies, in milliseconds, the duration of each low latency CMAF video chunk. The default is 43, but we recommend using a value between 300 - 500 in production workflows. The duration cannot exceed the [cmafSegmentDurationTarget](https://www.wowza.com/docs/configure-cmaf-packetization-in-wowza-streaming-engine#cmaf-live-packetization-property-reference) value. This property is only available if **cmafLLChunkingScheme** is **byDuration**.                               |
-| **[cmafSegmentDurationTarget](https://www.wowza.com/docs/configure-cmaf-packetization-in-wowza-streaming-engine#cmaf-live-packetization-property-reference)** | Integer | Specifies, in milliseconds, the duration of the fMP4 segments in the stream. The value must be greater than **0**. The default is **10000** (10 seconds), but we recommend a value around 3000 for Low-Latency HLS streaming. This property is only available if **cmafLLChunkingScheme** is **byDuration**.                                                                                                                                                                             |
+**Please Note:** If partial segments are too small, servers can become overloaded with frequent media playlist requests and cause playback to be less reliable.
 
-You can configure the following optional **HTTPStreamer** property to address how the media playlist is constructed for an LL-HLS stream.
+| Name                             | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|----------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **cmafLLChunkingScheme**             | String  | Specifies the chunking scheme for low latency CMAF-packetized streams. Valid values are **byFrame** or **byDuration**. The default is **byDuration**. If the value is **byDuration**, packetization is configured using the **cmafLLChunkDurationTargetAudio** and **cmafLLChunkDurationTargetVideo** properties. If the value is **byFrame**, packetization is configured using the **cmafLLChunkFrameCountTargetAudio** and **cmafLLChunkFrameCountTargetVideo** properties. |
+| **cmafLLChunkDurationTargetAudio** | Integer | Specifies, in milliseconds, the target duration of each low latency CMAF **audio** chunk. The default is **1000** and is recommended. The duration cannot exceed the [cmafSegmentDurationTarget](https://www.wowza.com/docs/deliver-apple-low-latency-hls-live-streams-using-wowza-streaming-engine#cmafsegmentdurationtarget) value. This property is only available if **cmafLLChunkingScheme** is **byDuration**.                                                                                                         |
+| **cmafLLChunkDurationTargetVideo** | Integer | Specifies, in milliseconds, the target duration of each low latency CMAF **video** chunk. The default is **1000** and is recommended. The duration cannot exceed the [cmafSegmentDurationTarget](https://www.wowza.com/docs/deliver-apple-low-latency-hls-live-streams-using-wowza-streaming-engine#cmafsegmentdurationtarget) value. This property is only available if **cmafLLChunkingScheme** is **byDuration**.                                                                                                          |
+| **cmafLLChunkFrameCountTargetAudio**   | Integer | Specifies the target number of audio frames to include in each low latency CMAF audio chunk. The default is **47** and is recommended. This property is only enabled if **cmafLLChunkingScheme** is **byFrame**.                                                                                                                                     |
+| **cmafLLChunkFrameCountTargetAudio**   | Integer | Specifies the target number of audio frames to include in each low latency CMAF audio chunk. The default is **30** and is recommended. This property is only enabled if **cmafLLChunkingScheme** is **byFrame**.                                                                                                                                     |
+| **[cmafSegmentDurationTarget](https://www.wowza.com/docs/configure-cmaf-packetization-in-wowza-streaming-engine#cmaf-live-packetization-property-reference)**        | Integer | Specifies, in milliseconds, the duration of the fMP4 segments in the stream. The default is **6000** (6 seconds) and is recommended. This property is configurable from the **CMAFStreamingPacketizer** properties section in Wowza Streaming Engine Manager.                                                                                                                                                           |
 
-| Name                  | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| --------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cupertinoPartHoldBack | Double | (Available from version 4.8.0) Specifies, in seconds, the server-recommended minimum distance from the live edge at which clients should begin to play or seek in a LL-HLS stream. If the **cmafLLChunkingScheme** is **byDuration**, the **cupertinoPartHoldBack** value must be greater than or equal to the value for **cmafLLChunkDurationTargetAudio** or **cmafLLChunkDurationTargetVideo**. If the **cmafLLChunkingScheme** is **byFrame**, the **cupertinoPartHoldBack** value must be greater than or equal to the calculated partial segment (chunk) duration. The default and recommended value is three times the partial segment (chunk) duration target. |
+##### Advanced LL-HLS property reference
 
-##### Configure properties
+For advanced tuning, you can configure the following optional **HTTPStreamer** property in the **Application/HTTPStreamer/Properties** container element.
 
-Configure the optional low latency CMAF chunk properties and media playlist property by editing the **Application.xml** file for your LL-HLS live stream application.
+| Name                  | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|-----------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| cupertinoPartHoldBack (4.8.0 and later) | Double | Specifies, in floating-point seconds, the server-recommended minimum distance from the live edge at which clients should begin to play or seek in a LL-HLS stream (the PART-HOLD-BACK attribute in media playlists). If you do not configure this property, Wowza Streaming Engine uses the default value, which is recommended. The default value is calculated as three times the maximum value of PART-TARGET out of all of a stream's variant media playlists. **Please Note:** PART-TARGET is an attribute of the EXT-X-PART-INF tag in media playlists and is based on the target values set with the **cmafLLChunkDurationTargetVideo** and **cmafLLChunkDurationTargetAudio** properties or the **cmafLLChunkFrameCountTargetVideo** and **cmafLLChunkFrameCountTargetAudio** properties. Wowza Streaming Engine will adjust the PART-HOLD-BACK value to be equal to the maximum value of PART-TARGET (across all variant media playlists) if you set this property to less than a partial segment duration. |
 
-1. Navigate to the **Application.xml** file for your LL-HLS live stream. If you're using the default live application that installs with Wowza Streaming Engine, navigate to `[install-dir]/conf/live`.
-2. Open **Application.xml** in a text editor.
-3. In the `<LiveStreamPacketizer>` container element, add the desired property or properties, making sure to specify a name, value, and type for each one. The XML looks like this:
+##### Transcoding considerations for LL-HLS
 
-```xml
-<LiveStreamPacketizer>
-    <Properties>
-        <Property>
-            <Name>...</Name>
-            <Value>...</Value>
-            <Type>...</Type>
-        </Property>
-        <Property>
-            <Name>...</Name>
-            <Value>...</Value>
-            <Type>...</Type>
-        </Property>
-    </Properties>
-</LiveStreamPacketizer>
-```
+To bypass encoding streams with Transcoder, source streams should meet the following encoding recommendations. Otherwise, transcoding is recommended. Although a small amount of latency is introduced with transcoding, if your source stream does not meet the encoding recommendations, transcoding will ultimately improve reliability of LL-HLS streaming.
 
-4. In the `<HTTPStreamer>` container element, optionally add **cupertinoPartHoldBack**, making sure to specify a name, value, and type. The XML looks like this:
+###### Encoding recommendations
 
-```xml
-<HTTPStreamer>
-    <Properties>
-        <Property>
-            <Name>...</Name>
-            <Value>...</Value>
-            <Type>...</Type>
-        </Property>
-    </Properties>
-</HTTPStreamer>
-```
+- CMAF-supported codecs (required)
 
-5. Save your changes and restart Wowza Streaming Engine.
+| Video                  | Audio                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| - H.264, H.265 | - AAC, AAC-LC, HE-AAC (AAC+ or aacPlus), <br>- HE-AACv2 (enhanced AAC+, aacPlus v2) - Dolby Digital 5.1 Surround Sound (AC-3) and Dolby Digital Plus (Enhanced AC-3 or E-AC-3) |
 
-After your live application is configured to deliver an LL-HLS stream, complete the stream setup by connecting a source encoder or IP camera to Wowza Streaming Engine and publishing the live source stream to the server. Although you enabled CMAF packetization in the **Application.xml** configuration file, your live application is available in Wowza Streaming Engine Manager, where you can establish a connection to a live source.
+- GOP size: 1 or 2 seconds
+- Closed GOPs
+- H.264 and H.265 byte streams contain metadata about the GOP structure
+- Constant frame rate video
 
-- In Wowza Streaming Engine Manager, click Applications in the menu bar and select your live application in the contents panel.
-- Click **Sources (Live)** in the contents panel.
-- Select the encoder or camera you want to use as your source. Click **Learn more** under any tile for detailed instructions on how to connect that encoder or camera, including how to configure source authentication.
+A stream configured for transcoding and LL-HLS delivery cannot use **Passthrough** for the **Video Codec** of a stream rendition but not other renditions of the same stream. If you use **Passthrough** to pass a video source through to output without making any changes for any **Video Codec** in a stream's renditions, all of the video codecs must be set to **Passthrough**.
 
-If your encoder or camera isn't listed, click **Other Encoders** or use the **Application Connection Settings** in the **Help** panel to publish the stream to Wowza Streaming Engine. For more information about how to enter the connection settings in your source encoder or camera, consult that device or software's documentation. These articles may also help:
+Stream name groups (NGRP) are not supported with LL-HLS. To group multiple stream renditions for LL-HLS, you need to create a SMIL file in accordance with CMAF HLS. See [Set up adaptive bitrate CMAF streaming](https://www.wowza.com/docs/create-adaptive-bitrate-cmaf-streams-using-wowza-streaming-engine#set-up-adaptive-bitrate-cmaf-streaming) for how to do this.
 
-[Connect a live source to Wowza Streaming Engine](https://www.wowza.com/docs/how-to-connect-a-publisher-to-wowza-streaming-engine)
-[Connect the Wowza GoCoder encoding app to Wowza Streaming Engine](https://www.wowza.com/docs/how-to-connect-the-wowza-gocoder-encoding-app-to-wowza-streaming-engine)
 
-When the camera or encoder is connected and the live stream is active, preview LL-HLS playback using THEOplayer.
+##### Scale LL-HLS with a CDN
+
+Optionally, with your own CDN account, you can scale LL-HLS delivery by connecting a Wowza Streaming Engine **Live HTTP Origin** application to a CDN edge that can pull streams from the Wowza Streaming Engine origin application, such as the Fastly CDN.
+
+To connect the **Live HTTP Origin** application to your CDN, provide the IP address or hostname of the Wowza Streaming Engine origin server in your CDN configuration. Also in your CDN configuration, enable connecting to the origin server over SSL/TLS using the port you configured for SSL/TLS in the Wowza Streaming Engine origin (default port 443).
+
 
 ##### Test stream playback
 
-To test LL-HLS live streams when only **cmafstreamingpacketizer** is enabled, specify the stream playback URL using the format:
+After your live application is configured to deliver an LL-HLS stream, complete the stream setup by connecting a source encoder or IP camera to Wowza Streaming Engine and publishing the live source stream to the server. When the camera or encoder is connected and the live stream is active, test LL-HLS playback using a supported test player.
 
-`https://[wowza-address]/[application]/[application-instance]/[stream-name]/playlist.m3u8`
+To test LL-HLS live streams when only **cmafstreamingpacketizer** is enabled, specify the stream playback URL using one of the following formats:
 
-If **cmafstreamingpacketizer** and **cupertinostreamingpacketizer** are enabled, use the format:
+**Single bitrate**
+https://[address]/[application]/[application-instance]/[stream-name]/playlist.m3u8
 
-`https://[wowza-address]/[application]/[application-instance]/[stream-name]/playlist_sfm4s.m3u8`
+If **cmafstreamingpacketizer** and **cupertinostreamingpacketizer** are enabled, specify the stream playback URL using one of the following formats:
+
+**Single bitrate**
+https://[address]/[application]/[application-instance]/[stream-name]/playlist_sfm4s.m3u8
 
 Where:
 
-**[wowza-address]** is the IP address or domain and port of Wowza Streaming Engine (default port 443)
+**[address]** is the IP address or domain and port (default port 443)
 **[application]** is the application name
-**[application-instance]** is the name of the application instance (if omitted, defaults to _definst_)
+**[application-instance]** is the name of the application instance (if omitted, defaults to **_definst_**)
 **[stream-name]** is the stream name
+So, for example, if only **cmafstreamingpacketizer** is enabled, the playlist URL for an adaptive bitrate LL-HLS stream that uses the address **example.com**, the default **live** application, and the default stream name **myStream** is:
 
-So, for example, if only **cmafstreamingpacketizer** is enabled, the playlist URL for a LL-HLS stream that uses the address **mycompany.com**, the default **live** application, and the default stream name **myStream** is:
-`https://mycompany.com/live/myStream/playlist.m3u8`
+https://example.com/live/smil:myStream.smil/playlist.m3u8
 
-If **cmafstreamingpacketizer** and **cupertinostreamingpacketizer** are both enabled, the LL-HLS playlist URL for the same example is:
-`https://mycompany.com/live/myStream/playlist_sfm4s.m3u8`
+If **cmafstreamingpacketizer** and **cupertinostreamingpacketizer** are both enabled, the adaptive bitrate LL-HLS playlist URL for the same example is:
+
+https://example.com/live/smil:myStream.smil/playlist_sfm4s.m3u8
 
 and the playback URL for the Cupertino HLS stream is either:
 
-`https://mycompany.com/live/myStream/playlist.m3u8`
+https://example.com/live/smil:myStream.smil/playlist.m3u8
+
 or
 
-`https://mycompany.com/live/myStream/playlist_sfts.m3u8`
-where **\_sfts** indicates that the media playlist contains .ts segments.
+https://example.com/live/smil:myStream.smil/playlist_sfts.m3u8
+
+where **_sfts** indicates that the media playlist contains .ts segments.
 
 ### Configure THEOplayer to play your LL-HLS stream
 

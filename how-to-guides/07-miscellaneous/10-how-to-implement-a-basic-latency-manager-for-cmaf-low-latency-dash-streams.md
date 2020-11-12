@@ -1,6 +1,6 @@
-# How to implement a basic latency manager
+# How to implement a basic latency manager for CMAF Low Latency DASH Streams
 
-This how-to-guide explains how to implement a basic latency manager for the THEOplayer sdk. This plugin is only valid for CMAF Low Latency DASH Streams. 
+This how-to-guide explains how to implement a basic latency manager for the THEOplayer SDK's. This plugin is only applicable for CMAF Low Latency DASH streams. 
 
 ## SDKs
 
@@ -12,15 +12,15 @@ This how-to-guide explains how to implement a basic latency manager for the THEO
 
 ##### Web SDK
 
-1. Setup a basic HTML file and include the THEOplayer library and Low latency DASH stream. You can also check: [How to get started with THEOplayer Web SDK](../../getting-started/01-sdks/01-web/00-getting-started.md)
+1. Setup a basic HTML file and include the THEOplayer library and Low latency DASH stream. You can also follow this guide: [How to get started with THEOplayer Web SDK](../../getting-started/01-sdks/01-web/00-getting-started.md).
 
-2. You would need a Web SDK of THEOplayer with basic configuration to setup your environment. You can create an SDK by signing-in to the THEO Portal [Login Here](https://portal.theoplayer.com/login)
+2. You would need a Web SDK of THEOplayer with basic configuration to setup your environment. You can create an SDK by logging into your [THEO Portal](https://portal.theoplayer.com/login) account.
 
 ##### Android [TV] SDK
 
-1. Setup a Android Project and include the THEOplayer library and Low latency DASH stream. You can also check: [How to get started with THEOplayer Android SDK](../../getting-started/01-sdks/02-android/00-getting-started.md)
+1. Setup a Android Project and include the THEOplayer library and Low latency DASH stream. You can also follow this guide: [How to get started with THEOplayer Android SDK](../../getting-started/01-sdks/02-android/00-getting-started.md).
 
-2. You would need a Android SDK of THEOplayer with basic configuration to setup your environment. You can create an SDK by signing-in to the THEO Portal [Login Here](https://portal.theoplayer.com/login)
+2. You would need a Android SDK of THEOplayer with basic configuration to setup your environment. You can create an SDK by logging into the your [THEO Portal](https://portal.theoplayer.com/login) account.
 
 ## Latency manager setup
 

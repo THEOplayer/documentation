@@ -11,5 +11,6 @@
 - [Picture-in-Picture](../../how-to-guides/07-miscellaneous/07-picture-in-picture.md)
 - [Using the hlsDateRange property](../../how-to-guides/07-miscellaneous/08-using-hlsdatarange-property.md)
 - [Preloading](../../how-to-guides/07-miscellaneous/09-preloading.md)
-- [Implement a basic latency manager](../../how-to-guides/07-miscellaneous/10-how-to-implement-a-basic-latency-manager.md)
+- [Implement a basic latency manager for CMAF low latency DASH streams](../../how-to-guides/07-miscellaneous/10-how-to-implement-a-basic-latency-manager-for-cmaf-low-latency-dash-streams.md)
 - [Configure low-latency HLS](../../how-to-guides/07-miscellaneous/11-configure-ll-hls.md)
+- [Implement a latency manager for LL-HLS streams](../../how-to-guides/07-miscellaneous/12-how-to-implement-a-latency-manager-for-ll-hls-streams.md)
