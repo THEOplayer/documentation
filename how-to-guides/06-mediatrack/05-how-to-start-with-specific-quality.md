@@ -49,8 +49,6 @@ When the `addtrack` event is dispatched, THEOplayer has not yet started buffered
 
 ##### Android SDK
 
-TO BE TESTED
-
 ```java
 private Player theoplayer;
 private TimeRanges buffered;
