@@ -140,7 +140,7 @@ export default class TheoPlayerViewScreen extends React.Component {
 ## Additional Resources
 
 - React Native tvOS Documentation: https://github.com/react-native-community/react-native-tvos
-- THEOplayer Event Listeners: [Documentation](https://docs.portal.theoplayer.com/getting-started/02-frameworks/03-react-native/07-event-listeners.md)
+- THEOplayer Event Listeners: [Documentation](https://docs.theoplayer.com/getting-started/02-frameworks/03-react-native/07-event-listeners.md)
 - THEOplayer Github Demo Project: https://github.com/THEOplayer/samples-react-native
 
 ## Remarks

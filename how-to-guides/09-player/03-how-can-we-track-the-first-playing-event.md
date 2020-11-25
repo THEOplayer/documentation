@@ -1,6 +1,6 @@
 # How can we track the first play(ing) event?
 
-The question above is commonly asked to assist with the use-cases where the first [`play`](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playereventmap.play.md) event thrown by THEOplayer for a specific stream needs to be detected. Similar questions are:
+The question above is commonly asked to assist with the use-cases where the first [`play`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#play) event thrown by THEOplayer for a specific stream needs to be detected. Similar questions are:
 
 - The developer wants to know when a new stream plays for the first time.
 - The developer wants to forward a `firstplay` event to an analytics backend.
@@ -73,4 +73,4 @@ tpv.getPlayer().addEventListener(PlayerEventTypes.LOADEDMETADATA, new EventListe
 
 ## Resources
 
-- [Reference API - play event](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playereventmap.play.md): 
+- [Reference API - play event](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#play): 

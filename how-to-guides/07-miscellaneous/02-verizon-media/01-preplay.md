@@ -67,7 +67,7 @@ player.source = {
 }
 ```
 
-The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md). More information on certain properties:
+The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md). More information on certain properties:
 
 - `id`: The ID field identifies the asset. Instead of a single string, developres can also specify an array of asset IDs as strings, which will be stitched into a continuous stream. The same goes for the `externalId` property in case an external ID is used in the source.
 - `preplayParameters`: The `preplayParameters` object should have string-key-string-value combinations, which will be used as query parameters for the Preplay API call. Nested objects are not supported.
@@ -170,7 +170,7 @@ The snippets above gives a quick overview of the structure of the Verizon Media-
 
 ## Stream Configuration (with ads)
 
-The examples below demonstrate how to configure a stream with server-side ads through a [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
+The examples below demonstrate how to configure a stream with server-side ads through a [VerizonMediaSource](https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
 
 ##### Web SDK
 
@@ -245,9 +245,9 @@ let eventListener = self.theoplayer.verizonMedia.addEventListener(type: VerizonM
 }
 ```
 ## Using Tokens
-Verizon Media users often leverage URL signatures (i.e. tokens) to further secure their content -- on top of AES-128 encryption or studio DRM. A token is (typically) generated on back-end using an API key and a set of parameters. (The documentation at [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2) describes this process.) This set of parameters should also be passed along to the `preplayParameters` in a [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md). If you do not configure the `preplayParameters` correctly in relation to your signature parameters, then the Preplay request made by THEOplayer will most likely return an invalid Preplay response, preventing THEOplayer from setting up your stream.
+Verizon Media users often leverage URL signatures (i.e. tokens) to further secure their content -- on top of AES-128 encryption or studio DRM. A token is (typically) generated on back-end using an API key and a set of parameters. (The documentation at [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2) describes this process.) This set of parameters should also be passed along to the `preplayParameters` in a [VerizonMediaSource](https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md). If you do not configure the `preplayParameters` correctly in relation to your signature parameters, then the Preplay request made by THEOplayer will most likely return an invalid Preplay response, preventing THEOplayer from setting up your stream.
 
-Let's consider a set-up where a Verizon Media customer uses both URL signatures and multi-DRM. [When you do DRM, you must specify the `rmt` and `manifest` parameter](https://docs.vdms.com/video/index.html#Develop/Preplayv2.htm?Highlight=rmt). Thus, on your back-end, you must correctly calculate the value for `rmt` and `manifest` for the user-agent of your viewer. Then, you want to send all parameters which were used to generate your signature, including the generated signature, to your client-side where you set the [VerizonMediaSource](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
+Let's consider a set-up where a Verizon Media customer uses both URL signatures and multi-DRM. [When you do DRM, you must specify the `rmt` and `manifest` parameter](https://docs.vdms.com/video/index.html#Develop/Preplayv2.htm?Highlight=rmt). Thus, on your back-end, you must correctly calculate the value for `rmt` and `manifest` for the user-agent of your viewer. Then, you want to send all parameters which were used to generate your signature, including the generated signature, to your client-side where you set the [VerizonMediaSource](https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
 
 So, let's say that you use the following parameters on your back-end to generate the signature when you detect that the viewer is on Chrome and requires Widevine DRM with MPEG-DASH.
 

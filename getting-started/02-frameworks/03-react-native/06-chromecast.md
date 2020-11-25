@@ -122,7 +122,7 @@ Save changes and rebuild project.
 
 - Chromecast Framework: [https://developers.google.com/cast/docs/ios_sender/](https://developers.google.com/cast/docs/ios_sender/)
 
-- THEOplayer Chromecast Knowledgebase: https://docs.portal.theoplayer.com/how-to-guides/03-cast/01-chromecast/00-introduction.md
+- THEOplayer Chromecast Knowledgebase: https://docs.theoplayer.com/how-to-guides/03-cast/01-chromecast/00-introduction.md
 
 ## Remarks
 

@@ -90,7 +90,7 @@ new THEOplayer.Player(containerElement, {
 );
 ```
 
-When you want to make use of moat for tracking advertisements, you should make use of the [GoogleImaAdDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.imaaddescription.md).
+When you want to make use of moat for tracking advertisements, you should make use of the [GoogleImaAdDescription](https://docs.theoplayer.com/api-reference/web/theoplayer.imaaddescription.md).
 
 ##### Android (TV) SDK
 
@@ -103,7 +103,7 @@ new THEOplayerConfig.Builder()
     .build();
 ```
 
-When you want to make use of moat for tracking advertisements, you should make use of the [GoogleImaAdDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.imaaddescription.md).
+When you want to make use of moat for tracking advertisements, you should make use of the [GoogleImaAdDescription](https://docs.theoplayer.com/api-reference/web/theoplayer.imaaddescription.md).
 
 ##### iOS (/tvOS) SDK
 
@@ -131,5 +131,5 @@ public static var moatPreroll : SourceDescription {
 ## Related links:
 
 - Demo page: [https://demo.theoplayer.com/moat-analytics-pre-integration](https://demo.theoplayer.com/moat-analytics-pre-integration)
-- [Analytics API Web SDK](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.analytics.md)
+- [Analytics API Web SDK](https://docs.theoplayer.com/api-reference/web/theoplayer.analytics.md)
 - [Analytics API Android SDK](https://cdn.theoplayer.com/doc/android/2.55.1/com/theoplayer/android/api/source/analytics/package-summary.html)

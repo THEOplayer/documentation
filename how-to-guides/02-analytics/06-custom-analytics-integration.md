@@ -31,7 +31,7 @@ There are two prerequirements in order to continue with this guide:
 
 1. You have a THEOplayer license. If you aren't using THEOplayer yet, you can start your free trial [here](https://portal.theoplayer.com).
 
-2. You have some [basic knowledge](../../getting-started/01-sdks/01-web/00-getting-started.md) on how to use THEOplayer, and can navigate comfortable through [the API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.md) to find [relevant events](http://demo.theoplayer.com/using-events-examples).
+2. You have some [basic knowledge](../../getting-started/01-sdks/01-web/00-getting-started.md) on how to use THEOplayer, and can navigate comfortable through [the API](https://docs.theoplayer.com/api-reference/web/theoplayer.md) to find [relevant events](http://demo.theoplayer.com/using-events-examples).
 
 This guide will not discuss how to set-up a basic template, and how to understand it. We dive in to the analytics code, which could be placed as mentioned in the code comment below. Please refer to this [guide for a starting template](../../getting-started/01-sdks/01-web/00-getting-started.md)
 
@@ -123,6 +123,6 @@ A custom analytics integration gives you full control over your code, and the da
 
 Extra resources:
 
-1. [THEOplayer API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.md)
+1. [THEOplayer API](https://docs.theoplayer.com/api-reference/web/theoplayer.md)
 
 2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)

@@ -121,4 +121,4 @@ Seamless video transitionExpand source
     </body>
     </html>
 ```
-The result on your page can also be improved implementing [cache](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.cache.md) for your videos.
+The result on your page can also be improved implementing [cache](https://docs.theoplayer.com/api-reference/web/theoplayer.cache.md) for your videos.

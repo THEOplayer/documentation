@@ -77,6 +77,6 @@ In previous versions of the player (1.X), this feature included the possibility 
 
 ## Resources
 - [What are the benefits of preloading?](../../faq/38-what-are-the-benefits-of-preloading.md)
-- [API reference](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.preloadtype.md)
+- [API reference](https://docs.theoplayer.com/api-reference/web/theoplayer.preloadtype.md)
 - https://www.w3.org/TR/html5/embedded-content-0.html#attr-media-preload: HTML5 specification
-- [API reference: Cache API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.cache.md)
+- [API reference: Cache API](https://docs.theoplayer.com/api-reference/web/theoplayer.cache.md)

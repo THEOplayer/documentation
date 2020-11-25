@@ -50,7 +50,7 @@ const player = new THEOplayer.Player(element, {
 });
 ```
 
-Refer to the documentation at https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmediaconfiguration.md for more information.
+Refer to the documentation at https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediaconfiguration.md for more information.
 
 
 ##### Android (TV) SDK

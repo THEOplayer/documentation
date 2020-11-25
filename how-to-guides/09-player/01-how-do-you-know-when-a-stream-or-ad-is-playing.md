@@ -27,7 +27,7 @@ There are certainly different ways to do so: it is enough to have a look at your
 
 ### Code examples
 
-You can use the `playing` event to know when content (or an ad) starts playing. Its event handler is the correct scope to check whether an advertisement is playing through the [`player.ads.playing`](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.playing.md) property.
+You can use the `playing` event to know when content (or an ad) starts playing. Its event handler is the correct scope to check whether an advertisement is playing through the [`player.ads.playing`](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md#playing) property.
 
 Let's see some code examples for the various SDKs.
 
@@ -76,5 +76,5 @@ self.eventListener = self.theoplayer.addEventListener(type: PlayerEventTypes.PLA
 
 ## Resources
 
-- [Reference API - Ads.playing property](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.playing.md)
-- [Reference API - playing property](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playereventmap.playing.md)
+- [Reference API - Ads.playing property](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md#playing)
+- [Reference API - playing property](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#playing)

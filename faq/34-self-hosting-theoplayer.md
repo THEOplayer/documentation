@@ -5,7 +5,7 @@ Your licensed THEOplayer can also be hosted on your own servers or CDN (this opt
 **Important notice:**
 When self-hosting THEOplayer, it is important you regularly update your self-hosted THEOplayer files in order to benefit from the latest improvements.
 
-In order to download the THEOplayer package and host it on your server, you will first have to determine which 2.X version of the player you want to use. Read up about version changes in the [changelog](https://docs.portal.theoplayer.com/changelog.md).
+In order to download the THEOplayer package and host it on your server, you will first have to determine which 2.X version of the player you want to use. Read up about version changes in the [changelog](https://docs.theoplayer.com/changelog.md).
 
 ## Configuring self-hosting
 

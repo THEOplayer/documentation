@@ -2,7 +2,7 @@
 
 This article provides a simple example of how to use Clear Key with THEOplayer.
 
-Usually, DRM systems require you to specify a *licenseAcquisitionURL* and additional optional data (e.g.: certificate, credentials, headers). Clear Key does not need a DRM provider: you can provide the key(s) directly to the player (hence "clear" key) through the *keys* property in its LicenseAcquisitionDescription (in fact, this property is only available for Clear Key). Alternatively, you can have the player fetch the keys from a "license server" (`licenseAcquisitionURL`), but really that just returns a JSON object containing the same keys. Please check also our related [API documentation](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md).
+Usually, DRM systems require you to specify a *licenseAcquisitionURL* and additional optional data (e.g.: certificate, credentials, headers). Clear Key does not need a DRM provider: you can provide the key(s) directly to the player (hence "clear" key) through the *keys* property in its LicenseAcquisitionDescription (in fact, this property is only available for Clear Key). Alternatively, you can have the player fetch the keys from a "license server" (`licenseAcquisitionURL`), but really that just returns a JSON object containing the same keys. Please check also our related [API documentation](https://docs.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md).
 
 ### Table of Contents
 - [SDKs](#sdks)
@@ -46,7 +46,7 @@ player.source = {
 
 ## Resources
 
-- [API Reference - ClearkeyDecryptionKey](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.clearkeydecryptionkey.md)
+- [API Reference - ClearkeyDecryptionKey](https://docs.theoplayer.com/api-reference/web/theoplayer.clearkeydecryptionkey.md)
 
 - [Generate MPEG DASH content encrypted with MPEG CENC ClearKey](https://github.com/Dash-Industry-Forum/dash.js/wiki/Generate-MPEG-DASH-content-encrypted-with-MPEG-CENC-ClearKey): DASH IF on GitHub
 - [Clear Key license format](https://w3c.github.io/encrypted-media/#clear-key-license-format): W3C - Encrypted Media Extensions

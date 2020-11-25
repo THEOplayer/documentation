@@ -44,6 +44,6 @@ The following resources provide more information:
 - https://support.apple.com/guide/safari/stop-autoplay-videos-ibrw29c6ecf8/mac
 - https://support.mozilla.org/en-US/kb/block-autoplay: 
 - [How does Media Engagement Index (MEI) affect Autoplay on Chrome?](17-how-does-mei-affect-autoplay-on-chrome.md)
-- [API reference - mutedAutoplay](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playerconfiguration-mutedautoplay.md)
+- [API reference - mutedAutoplay](https://docs.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md#mutedautoplay)
 - [How to combat autoplay policies](02-how-to-combat-autoplay-policies.md)
 - https://featurepolicy.info/policies/autoplay

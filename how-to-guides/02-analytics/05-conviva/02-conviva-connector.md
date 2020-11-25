@@ -25,7 +25,7 @@ This article describes on how to integrate Conviva pre-integration for Video Ana
 ##### Web SDK
 
 1. Have a THEOplayer SDK.
-2. Setup the [Basic Getting Started with THEOplayer](https://docs.portal.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md) 
+2. Setup the [Basic Getting Started with THEOplayer](https://docs.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md) 
 3. Include Conviva's SDK. For example,
 
 ```html

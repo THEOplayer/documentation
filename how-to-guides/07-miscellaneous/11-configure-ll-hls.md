@@ -45,5 +45,5 @@ player.source = {
 ```
 
 ## Resources
-- [Getting started with the Web SDK](https://docs.portal.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
+- [Getting started with the Web SDK](https://docs.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
 - [Deliver Low-Latency HLS live streams using Wowza Streaming Engine and THEOplayer](../05-integrations/04-deliver-low-latency-hls-live-streams-with-wowza-streaming-engine.md)

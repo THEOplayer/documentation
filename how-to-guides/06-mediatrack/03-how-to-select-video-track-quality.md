@@ -24,7 +24,7 @@ The code examples below show how to implement selecting video track qualities ac
 
 ##### Web SDK
 
-The Web SDK leverages the [MediaTrack API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.mediatrack.md).
+The Web SDK leverages the [MediaTrack API](https://docs.theoplayer.com/api-reference/web/theoplayer.mediatrack.md).
 
 ```js
 // enable a specific video track quality

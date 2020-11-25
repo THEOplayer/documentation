@@ -48,7 +48,7 @@ The Web SDK code should be included in your Android (TV) project. The article at
 
 ### Events
 
-The [Ads API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.md) exposes, among others, the following events:
+The [Ads API](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md) exposes, among others, the following events:
 
 - `adbegin`: dispatched when an ad starts
 - `adend`: dispatched when an ad ends

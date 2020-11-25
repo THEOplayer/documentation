@@ -23,7 +23,7 @@ The code examples below how to implement the detection of video track qualities 
 
 ##### Web SDK
 
-The Web SDK leverages the [MediaTrack API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.mediatrack.md).
+The Web SDK leverages the [MediaTrack API](https://docs.theoplayer.com/api-reference/web/theoplayer.mediatrack.md).
 
 ```js
 function handleAddTrackEvent(addTrackEvent) {

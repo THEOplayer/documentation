@@ -43,7 +43,7 @@ To get THEOplayer to work, you only need to do three things:
 
 1. Reference the THEOplayer JavaScript library (and optionally the default CSS styles).
 2. Add a container which can hold your video player with HTML.
-3. Create your player through JavaScript using our [API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.md).
+3. Create your player through JavaScript using our [API](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md).
 
 A basic HTML page with a working THEOplayer could like the following:
 ```html
@@ -225,7 +225,7 @@ Step 1.
 Download [Google-dai (Interactive Media Ads SDK) framework](https://developers.google.com/interactive-media-ads/docs/sdks/ios/dai/download)
 
 Step 2. 
-Check [How to Configure Framework Section to add Googel-dai Framework](https://docs.portal.theoplayer.com/getting-started/01-sdks/03-ios/00-getting-started.md)
+Check [How to Configure Framework Section to add Googel-dai Framework](https://docs.theoplayer.com/getting-started/01-sdks/03-ios/00-getting-started.md)
 
 
 Add a Google DAI ad configuration to the sources.
@@ -254,7 +254,7 @@ THEOplayer SDK and Google-DAI are fully pre-integrate to deliver Server-Side Ad 
 
 Extra resources:
 
-1. [Google DAI Pre-Integration API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.googledaiconfiguration.md)
+1. [Google DAI Pre-Integration API](https://docs.theoplayer.com/api-reference/web/theoplayer.googledaiconfiguration.md)
 2. [THEOplayer Getting Started Guide](web/../../../getting-started/01-sdks/01-web/00-getting-started.md)
 3. [Google DAI website](https://developers.google.com/interactive-media-ads)
 

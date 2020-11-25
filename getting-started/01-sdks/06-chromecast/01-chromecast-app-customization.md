@@ -87,7 +87,7 @@ Generally speaking, there are three types of user interfaces:
 ### Default UI
 THEOplayer automatically inserts a Chromecast button in its default video player UI if you are using THEOplayer's default UI.
 ![Chromecast button](../../../assets/img/chromecast-active.png "Chromecast button")
-The UI of this button changes when the [Chromecast state](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.caststate.md/#caststate-type) changes.
+The UI of this button changes when the [Chromecast state](https://docs.theoplayer.com/api-reference/web/theoplayer.caststate.md/#caststate-type) changes.
 Please see below if you want to alter this default UI. 
 
 ### Chromeless UI

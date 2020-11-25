@@ -85,26 +85,26 @@ THEOplayer provides several integrations to achieve CSAI, including its own inte
 #### THEOplayer
 The THEOplayer ad system is selected with the value 'theo'. As this ad system is the default one, you do not have to indicate this preference, and you can omit the integration property altogether. More information can be found at:
 
-- [Ads Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ad.md)
+- [Ads Reference API](https://docs.theoplayer.com/api-reference/web/theoplayer.ad.md)
 
 - [How to set up VAST and VMAP ads](../../how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md): this how-to guide contains information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 #### Google IMA
 Set the integration property to 'google-ima' to use the Google IMA integration. More information can be found at:
 
-- [Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.imaaddescription.md)
+- [Reference API](https://docs.theoplayer.com/api-reference/web/theoplayer.imaaddescription.md)
 - [How to set up VAST and VMAP ads](../../how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md): this how-to guide contains information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 #### SpotX
 Set the integration property to 'spotx' to configure SpotX ads. More information can be found at:
 
-- [Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.spotxaddescription.md)
+- [Reference API](https://docs.theoplayer.com/api-reference/web/theoplayer.spotxaddescription.md)
 - [SpotX](../../how-to-guides/01-ads/07-spotx.md): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 #### FreeWheel
 Set the integration property to 'freewheel' to configure Freewheel ads. Please note that, in this case, the adSource properties are different than for other ad integrations (e.g.: theo integration). More information can be found at:
 
-- [Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.freewheeladdescription.md)
+- [Reference API](https://docs.theoplayer.com/api-reference/web/theoplayer.freewheeladdescription.md)
 - [Freewheel](../../how-to-guides/01-ads/06-freewheel.md): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 ### Server Side Ad Intertion (SSAI)
@@ -115,12 +115,12 @@ THEOplayer pre-integrates with first-class Server-Side Ad Insertion(SSAI) provid
 #### Google Dynamic Ad Insertion (DAI)
 To use the Google DAI integration you have to set the integration key to 'google-dai'.
 
-- [Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.googledaiconfiguration.md)
+- [Reference API](https://docs.theoplayer.com/api-reference/web/theoplayer.googledaiconfiguration.md)
 
 #### Yospace
 To use the Google IMA integration you have to set the integration key to 'google-dai'.
 
-- [Reference API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.yospace.md)
+- [Reference API](https://docs.theoplayer.com/api-reference/web/theoplayer.yospace.md)
 - [Yospace](../../how-to-guides/01-ads/04-yospace.md): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 ## Ad Configuration
@@ -181,7 +181,7 @@ Our player provides VPAID 2.0 support via our Google IMA integration. This versi
 
 In [Basic Ad Configuration](#basic-ad-config), we learned how to statically add ads to THEOplayer on startup by specifying them in the configuration object. However, several interesting use cases exist that require on the fly ad injection, for example when VAST files should be added by a script provided by an external ad server.
 
-To dynamically add advertisements, you should use the [`player.ads.schedule(AdDescription)`](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.schedule.md) function which will add the given ad file as if it were specified in the initial configuration. The AdDescription - which you will pass as a parameter to the function - is the same object as previously discussed in [Basic Ad Configuration](#basic-ad-config).
+To dynamically add advertisements, you should use the [`player.ads.schedule(AdDescription)`](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md#schedule) function which will add the given ad file as if it were specified in the initial configuration. The AdDescription - which you will pass as a parameter to the function - is the same object as previously discussed in [Basic Ad Configuration](#basic-ad-config).
 
 NOTE: Please note that when adding a pre-roll when the original video is already playing (for example because of autoplay), the pre-roll cannot start playing. An advertisement with an offset of '0%' will always be able to play.
 

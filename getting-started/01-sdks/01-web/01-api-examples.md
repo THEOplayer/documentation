@@ -13,7 +13,7 @@ This page contains an overview of examples, demonstrating the capabilities of th
 The examples are sorted per subject, and a link can re-appear if it also relates to another subject.
 New examples will be added from time to time, when new use cases arise, or when new developments happen.
 
-If you are new to THEOplayer 2.X, please read our [Getting Started with the THEOplayer Web SDK](./00-getting-started)  or our [2.X API pages](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.md).
+If you are new to THEOplayer 2.X, please read our [Getting Started with the THEOplayer Web SDK](./00-getting-started.md)  or our [2.X API pages](https://docs.theoplayer.com/api-reference/web/theoplayer.md).
 
 ## Properties and methods
 

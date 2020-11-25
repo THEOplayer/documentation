@@ -77,7 +77,7 @@ This how-to-guide explains how to implement a basic latency manager for the THEO
 
 1. Download the [latency-manager js file (zipped)](https://cdn.theoplayer.com/LatencyManager.zip). Extract the zipped file and save it in the assests folder of the Android project. 
 
-2. Add the Custom JS code to the `theoplayerView`, You can also read the article [How to add CSS or JavaScript files to an Android/iOS project](https://docs.portal.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+2. Add the Custom JS code to the `theoplayerView`, You can also read the article [How to add CSS or JavaScript files to an Android/iOS project](https://docs.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 3. Add a new `LatencyManger`, `LatencyManagerConfiguration`, `LatencyManagerConfigurationBuilder` & `LatencyParameters` Java class and add repective code as like [demo project](https://github.com/THEOplayer/android-sdk-low-latency-project)
 
@@ -134,7 +134,7 @@ this.sync = true;
 ```
 
 ## Resources
-- [Getting started with the Web SDK](https://docs.portal.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
-- [How to get started with THEOplayer Android SDK](https://docs.portal.theoplayer.com/getting-started/01-sdks/02-android/00-getting-started.md)
-- [How to add CSS or JavaScript files to an Android/iOS project](https://docs.portal.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+- [Getting started with the Web SDK](https://docs.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
+- [How to get started with THEOplayer Android SDK](https://docs.theoplayer.com/getting-started/01-sdks/02-android/00-getting-started.md)
+- [How to add CSS or JavaScript files to an Android/iOS project](https://docs.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 - [Low Latency Android demo project](https://github.com/THEOplayer/android-sdk-low-latency-project)

@@ -100,7 +100,7 @@ Importing the THEOplayer SDK Library can be done in two ways.
 
 ### THEOPlayer Implementation 
 
-- For THEOplayer implementation in iOS : [Getting Started with THEOplayer Android/iOS in React Native](https://docs.portal.theoplayer.com/getting-started/02-frameworks/03-react-native/01-how-to-get-started-with-theo.md)
+- For THEOplayer implementation in iOS : [Getting Started with THEOplayer Android/iOS in React Native](https://docs.theoplayer.com/getting-started/02-frameworks/03-react-native/01-how-to-get-started-with-theo.md)
 
 - For THEOplayer implementation in tvOS :
 1. Create new swift class inside tvos/ e.g. `THEOplayerView.swift` for integrating in native modules. 

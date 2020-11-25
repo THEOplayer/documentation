@@ -16,4 +16,4 @@ The player events and <video> element events seeking and seeked should behave si
 ## Resources
 The following resources provide more information:
  - https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events: MDN reference
-- [Player API reference](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.md)
+- [Player API reference](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md)

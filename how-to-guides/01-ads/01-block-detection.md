@@ -22,7 +22,7 @@ Adblock detection is typically a challenge in browsers. Hence, SDKs besides the 
 
 Below are some resources on adblock detection through the Ads API:
 
-- API reference: [Ads API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.md)
+- API reference: [Ads API](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md)
 - Online demo: [Adblock Detection Demo](https://demo.theoplayer.com/adblock-detection)
 - Advertisement guide: [Advertising User Guide](../../knowledge-base/01-advertisement/01-user-guide.md) (mentions adblock detection)
 
@@ -62,6 +62,6 @@ Note that `blockContentIfAdError` only works when you use the default advertisem
 
 Below are some resources on ad-block detection through the Ads API:
 
-- Reference API: https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.md/
+- Reference API: https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md/
 - Online demo: https://demo.theoplayer.com/adblock-detection
 - [Advertisement guide](../../knowledge-base/01-advertisement/01-user-guide.md)

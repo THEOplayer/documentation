@@ -10,6 +10,6 @@ The following resources provide more information:
 - [Preloading - how to](../how-to-guides/07-miscellaneous/09-preloading.md)
 - [Demo page](https://demo.theoplayer.com/preloading-vod)
 - [What are the benefits of preloading](38-what-are-the-benefits-of-preloading.md)
-- [API reference - PreloadType](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.preloadtype.md)
+- [API reference - PreloadType](https://docs.theoplayer.com/api-reference/web/theoplayer.preloadtype.md)
 
  

@@ -28,7 +28,7 @@ The Social Sharing API is a UI feature. It's currently unavailable on all SDKs e
 
 The Social Sharing API is currently only available on the Web SDK.
 
-- Reference API: [Social Sharing API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.socialsharing.md)
+- Reference API: [Social Sharing API](https://docs.theoplayer.com/api-reference/web/theoplayer.socialsharing.md)
 - Online demo: [https://demo.theoplayer.com/social-sharing](https://demo.theoplayer.com/social-sharing)
 
 ```js

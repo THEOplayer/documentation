@@ -109,6 +109,6 @@ If you do not want to display the latency counter, change the ```<p>``` tag to *
 ```
 
 ## Resources
-- [Getting started with the Web SDK](https://docs.portal.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
+- [Getting started with the Web SDK](https://docs.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
 - [How to configure your THEOplayer web SDK for low-latency HLS](../../how-to-guides/07-miscellaneous/11-configure-ll-hls.md)
-- [How to add CSS or JavaScript files to an Android/iOS project](https://docs.portal.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+- [How to add CSS or JavaScript files to an Android/iOS project](https://docs.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)

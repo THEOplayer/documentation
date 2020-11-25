@@ -54,7 +54,7 @@ When embedding THEOplayer through an `<iframe>` tag, you need to do a couple of 
 
 ### Allowing embedding
 
-You can easily allow embedding by setting the `isEmbeddable`-flag in the THEOplayer's [`PlayerConfiguration`](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md) to `true`, as demonstrated by the code snippet below.
+You can easily allow embedding by setting the `isEmbeddable`-flag in the THEOplayer's [`PlayerConfiguration`](https://docs.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md) to `true`, as demonstrated by the code snippet below.
 
 ```js
 let playerConfiguration = {
@@ -331,7 +331,7 @@ You can see the code of the iframe HTML page at [https://cdn.theoplayer.com/demo
 
 ## Resources
 
-* [Player API - PlayerConfiguration](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md)
+* [Player API - PlayerConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md)
 * [iframe demo code](https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8)
 * [AMP](../../02-frameworks/06-amp/00-getting-started.md) (consider translating your learning to the AMP framework)
 * [MDN: iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)

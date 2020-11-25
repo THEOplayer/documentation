@@ -36,7 +36,7 @@ This example explains how you do a basic implementation of the Up Next API.
 
 The Social Sharing API is currently only available on the Web SDK.
 
-- Reference API: [Up Next API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.upnext.md)
+- Reference API: [Up Next API](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md#upnext)
 - Online demo: [https://demo.theoplayer.com/up-next](https://demo.theoplayer.com/up-next)
 
 The snippet below demonstrates how you could configure the Up Next API.
@@ -75,4 +75,4 @@ The following remarks can help:
 
 The following resources provide more information:
 
-- [Up Next API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.upnext.md)
+- [Up Next API](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md#upnext)

@@ -154,6 +154,6 @@ The pre-integration inside the SDK has limited support for Video Anaytics Produc
 
 - Demo page: [http://demo.theoplayer.com/conviva-analytics-test-page-20171024](http://demo.theoplayer.com/conviva-analytics-test-page-20171024)
 
-- [Analytics API Web SDK](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.analytics.md)
+- [Analytics API Web SDK](https://docs.theoplayer.com/api-reference/web/theoplayer.analytics.md)
 
 - More Informtaion about [Conviva Video Experience](https://www.conviva.com/experience-insights/)

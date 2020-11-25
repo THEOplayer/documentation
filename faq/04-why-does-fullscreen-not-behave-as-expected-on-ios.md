@@ -8,7 +8,7 @@ THEOplayer's workaround involves playback in full-window , which sets THEOplayer
 
 Note that this solution keeps the THEOplayer UI intact, but doesn't get rid of the address bar as desired in some cases. 
 
-Alternatively, developers can use the `[allowNativeFullscreen](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.allownativefullscreen.md) property mentioned here, which pushes the video element to fullscreen as seen below.
+Alternatively, developers can use the [allowNativeFullscreen](https://docs.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md#allownativefullscreen) property mentioned here, which pushes the video element to fullscreen as seen below.
 
 ```js
 <script>

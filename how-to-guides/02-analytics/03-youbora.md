@@ -1,6 +1,6 @@
 # Youbora
 
-This article is a good place to start if you are looking for information on how to configure the THEOplayer Youbora integration. The THEOplayer Youbora pre-integration is part of the [Analytics API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.youboraanalyticsintegrationid.md).
+This article is a good place to start if you are looking for information on how to configure the THEOplayer Youbora integration. The THEOplayer Youbora pre-integration is part of the [Analytics API](https://docs.theoplayer.com/api-reference/web/theoplayer.youboraanalyticsintegrationid.md).
 On that page you will find detailed information on how to get started by setting up the Web SDK integration. An example implementation can be seen here: [http://demo.theoplayer.com/youbora-analytics-test-page-20171025](http://demo.theoplayer.com/youbora-analytics-test-page-20171025)
 
 ### Table of Contents
@@ -107,7 +107,7 @@ let sourceDescription = SourceDescription(source : typedSource, analytics: [youb
 
 ## Related links:
 
-- [Analytics API]: (https://docs.portal.theoplayer.com/api-reference/web/theoplayer.analytics.md)
+- [Analytics API]: (https://docs.theoplayer.com/api-reference/web/theoplayer.analytics.md)
 - Youbora demo page: [http://demo.theoplayer.com/youbora-analytics-test-page-20171025](http://demo.theoplayer.com/youbora-analytics-test-page-20171025)
 - Youbora documentation on NPAW's web site: [http://developer.nicepeopleatwork.com/plugins/general/setting-youbora-options/](http://developer.nicepeopleatwork.com/plugins/general/setting-youbora-options/) (login required)
 - NPAW's Youbora THEOplayer plugin: [http://developer.nicepeopleatwork.com/plugins/integration/js-browser/theo-player-2-v6/](http://developer.nicepeopleatwork.com/plugins/integration/js-browser/theo-player-2-v6/)

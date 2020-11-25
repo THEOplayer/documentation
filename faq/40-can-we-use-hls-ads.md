@@ -19,5 +19,5 @@ If your reason for doing HLS ads is the wish to use ABR to be more flexible rega
 The following resources provide more information:
 
 - [Digital Video In-Stream Ad Format Guidelines](https://www.iab.com/wp-content/uploads/2016/01/DVAFG_2015-01-08.pdf)
-- [API reference – Ads interface](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.ads.md)
+- [API reference – Ads interface](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md)
 - [THEOplayer Advertising User Guide](../knowledge-base/01-advertisement/01-user-guide.md)

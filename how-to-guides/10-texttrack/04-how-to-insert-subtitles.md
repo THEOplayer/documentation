@@ -32,7 +32,7 @@ The feature *texttrackrendering* must be active on your license.
 
 ##### Web SDK
 
-Each text track should be described as a [TextTrackDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.texttrackdescription.md).
+Each text track should be described as a [TextTrackDescription](https://docs.theoplayer.com/api-reference/web/theoplayer.texttrackdescription.md).
 
 ```js
 player.source = {

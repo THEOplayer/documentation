@@ -24,7 +24,7 @@ The below code examples demonstrate how you can configure a different SourceDesc
 
 ##### Web SDK
 
-The [Chromecast API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.chromecast.md) allows you to configure a different SourceDescription to be Chromecasted.
+The [Chromecast API](https://docs.theoplayer.com/api-reference/web/theoplayer.chromecast.md) allows you to configure a different SourceDescription to be Chromecasted.
 
 ```js
 player.cast.chromecast.source = sourceDescription;

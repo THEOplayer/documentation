@@ -2,7 +2,7 @@
 
 Customers that use THEOplayer in mobile web which leverage THEOplayer's preloading capabilities (`preload = "auto"`), or provide very high qualities, sometimes receive complaints about data usage.
 
-You can combat this by leveraging the [ABR API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.abrconfiguration.md) and the [MediaTrack API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.mediatrack.md). 
+You can combat this by leveraging the [ABR API](https://docs.theoplayer.com/api-reference/web/theoplayer.abrconfiguration.md) and the [MediaTrack API](https://docs.theoplayer.com/api-reference/web/theoplayer.mediatrack.md). 
 
 1. ABR API: you can set a `player.abr.targetBuffer` property, which allows you to configure the amount of seconds to buffer ahead of the current playback position. The standard buffer time is 20 seconds. These 20 seconds are also employed when preloading content.
 2. MediaTrack API: you can use the targetQuality property to configure the set of qualities THEOplayer exercises its ABR algorithm on. For example, you could configure that THEOplayer should only do ABR on the lowest two qualities.

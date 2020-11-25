@@ -83,7 +83,7 @@ Chinese: [http://cdn.theoplayer.com/demos/theoplayer/lang/zh-CN.js](http://cdn.
 
 ##### Web SDK
 
-Each language should be described as a [UIConfiguration](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.uiconfiguration.md)
+Each language should be described as a [UIConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.uiconfiguration.md)
 
 ```js
 player = new THEOplayer.Player(playerElement, {

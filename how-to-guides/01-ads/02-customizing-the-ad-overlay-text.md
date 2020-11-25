@@ -2,7 +2,7 @@
 
 This guide explains how to customize the overlay texts during an adbreak, if any. You may ask this question if you want to change the aspect or the content of the overlay displaying the countdown to content on top of the ads.
 
-This is done in two steps: the first is to customize the text, if you so desire. For this we will be leveraging the language localization mechanism. You can find further information on this regard at [UIConfiguration.language](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.uiconfiguration.language.md).
+This is done in two steps: the first is to customize the text, if you so desire. For this we will be leveraging the language localization mechanism. You can find further information on this regard at [UIConfiguration.language](https://docs.theoplayer.com/api-reference/web/theoplayer.uiconfiguration.md#language).
 
 The second step is to change the aspect of such text. This can be done via CSS. 
 
@@ -113,5 +113,5 @@ TheWeb SDKcode should be included in your iOS project. The article at [How to a
 ## Resources
 
 - [How to change the default UI language to other](../../how-to-guides/11-ui/08-how-to-change-default-UI-language-to-other.md)
-- [API Reference - UIConfiguration.language](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.uiconfiguration.language.md)
+- [API Reference - UIConfiguration.language](https://docs.theoplayer.com/api-reference/web/theoplayer.uiconfiguration.md#language)
 - [http://demo.theoplayer.com/language-localization](http://demo.theoplayer.com/language-localization)

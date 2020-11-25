@@ -6,7 +6,7 @@ but nowadays it's leveraged for all sorts of use-cases. It's not uncommon to wan
 This guide describes one approach to integrate the THEOplayer Web SDK in an open-source WordPress.org deployment by using _Custom Code Blocks_ and the _Code Editor_.
 As a developer, you can also opt for different approaches, as explained by [https://webdesign.tutsplus.com/tutorials/how-to-add-custom-javascript-to-your-wordpress-site--cms-34368](https://webdesign.tutsplus.com/tutorials/how-to-add-custom-javascript-to-your-wordpress-site--cms-34368) and [https://www.wpbeginner.com/wp-tutorials/how-to-easily-add-javascript-in-wordpress-pages-or-posts/](https://www.wpbeginner.com/wp-tutorials/how-to-easily-add-javascript-in-wordpress-pages-or-posts/).
 
-There's currently no official [THEOplayer WordPress plugin](https://wordpress.org/plugins/search/theoplayer/), so [reach out to us](https://www.theoplayer.com/contact) if you're interested in collaborating on this.
+Interested in our WordPress 5+ plugin? [Reach out to us](https://www.theoplayer.com/contact) if you want to evaluate this.
 
 ## Selected approach
 
@@ -29,7 +29,7 @@ but you typically still want to embed some unique JavaScript code per page to co
 
 #### \<iframe\>
 You can embed THEOplayer through an `<iframe>` instead of through JavaScript. 
-Please refer to "[How can we embed an iframe?](https://docs.portal.theoplayer.com/getting-started/01-sdks/01-web/03-how-can-we-embed-iframe.md)" for more information on setting up an iframe.
+Please refer to "[How can we embed an iframe?](https://docs.theoplayer.com/getting-started/01-sdks/01-web/03-how-can-we-embed-iframe.md)" for more information on setting up an iframe.
 
 ## Step-by-step guide
 

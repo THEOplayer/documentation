@@ -70,6 +70,6 @@ The demo below illustrates the Up Next API in production.
 
 ## Resources
 
-- [Clip API Reference](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.clip.md/)
+- [Clip API Reference](https://docs.theoplayer.com/api-reference/web/theoplayer.clip.md/)
 - [Blog article](https://www.theoplayer.com/blog/frame-accurate-clipping-in-hls)
 - [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)

@@ -2,7 +2,7 @@
 
 This article explains how to configure the license at runtime.
 A THEOplayer license is required to use the THEOplayer library for the desired domains. The licensing schema was previously based on the built-in license from the SDK build. THEOplayer now allows to update the license without rebuilding or re-integrating the player SDK.
-This guide builds upon the basic player setup, make sure you read our [getting-started guides](https://docs.portal.theoplayer.com/getting-started/01-sdks/00-introduction.md).
+This guide builds upon the basic player setup, make sure you read our [getting-started guides](https://docs.theoplayer.com/getting-started/01-sdks/00-introduction.md).
 
 ### Table of Contents
 - [SDKs](#sdks)

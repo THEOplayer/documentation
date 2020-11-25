@@ -83,6 +83,6 @@ The following resources provide more information:
 
 1. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)
 
-2. [FreeWheelAdDescription](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.freewheeladdescription.md)
+2. [FreeWheelAdDescription](https://docs.theoplayer.com/api-reference/web/theoplayer.freewheeladdescription.md)
 
 3. [FreeWheel website](https://freewheel.com)

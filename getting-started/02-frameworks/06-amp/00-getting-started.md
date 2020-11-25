@@ -10,7 +10,7 @@ Accelerated Mobile Pages (AMP) is an open-source HTML framework. More informatio
 ## Step-by-step guide:
 
 1. Have a [valid AMP page](https://validator.ampproject.org/). *(Let's call this page A.)*
-2. Prepare an embeddable page which can be served through an [`<amp-iframe>`](https://amp.dev/documentation/components/amp-iframe/?format=websites). *(Let's call this page B.)* Read more about THEOplayer and iframes at https://docs.portal.theoplayer.com/getting-started/01-sdks/01-web/03-how-can-we-embed-iframe.md. It's your responsibility to decide the most optimal approach for your use-case. You can use https://cdn.theoplayer.com/demos/iframe/iframe.html as a starting point to prepare your page.
+2. Prepare an embeddable page which can be served through an [`<amp-iframe>`](https://amp.dev/documentation/components/amp-iframe/?format=websites). *(Let's call this page B.)* Read more about THEOplayer and iframes at https://docs.theoplayer.com/getting-started/01-sdks/01-web/03-how-can-we-embed-iframe.md. It's your responsibility to decide the most optimal approach for your use-case. You can use https://cdn.theoplayer.com/demos/iframe/iframe.html as a starting point to prepare your page.
 3. Upload page B to a different (sub) domain than page A in order to adhere to the [iframe origin policy](https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md).
 4. Embed page B into page A by using an `<amp-iframe>`. It's your responsibility to decide the most optimal approach for your use-case. You can use the snippet below as an example.
 

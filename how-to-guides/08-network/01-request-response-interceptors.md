@@ -26,7 +26,7 @@ To get THEOplayer to work, you only need to do three things:
 
 1.  Reference the THEOplayer JavaScript library (and optionally the default CSS styles).
 2.  Add a container which can hold your video player with HTML.
-3.  Create your player through JavaScript using our [API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.player.md).
+3.  Create your player through JavaScript using our [API](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md).
 
 A basic HTML page with a working THEOplayer could look like the following:
 
@@ -100,7 +100,7 @@ This snippet initializes your player, including an HLS source.
 
 Starting from the basic template above, you need to add a `RequestInterceptor` on the network object's addRequestInterceptor method. By adding a request interceptor, the original request made by HTTP can be modified so that specific properties of the original request can be altered to contain the necessary information, before it is sent to the server. The interceptors are added in a stack and the last interceptor to be added is the first one to intercept the original request.
 
-A request interceptor can modify the request with a `[redirect](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.request.mdx)` or a `[respondWith](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.request.mdx)` method.
+A request interceptor can modify the request with a `[redirect](https://docs.theoplayer.com/api-reference/web/theoplayer.request.md)` or a `[respondWith](https://docs.theoplayer.com/api-reference/web/theoplayer.request.md)` method.
 
 ```js
 var interceptor = function(request) {\
@@ -154,7 +154,7 @@ A `ResponseInterceptor` responds with the given response for the original requ
 
 A `ResponseInterceptor` can be added on the network object's addResponseInterceptor method. By adding a response interceptor, the original response can be modified so that specific properties of the original response can be altered to contain the necessary information, before the server responds. The interceptors are added in a stack and the last interceptor to be added is the first one to intercept the original response.
 
-A ResponseInterceptor can modify the response with the `[respondWith](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.request.mdx)` method.
+A ResponseInterceptor can modify the response with the `[respondWith](https://docs.theoplayer.com/api-reference/web/theoplayer.request.md)` method.
 
 ```js
 var interceptor = function(response) {\
@@ -166,7 +166,7 @@ var interceptor = function(response) {\
 };
 ```
 
-The code sample above intercepts manifest responses received by the player and responds with a manifest containing a single segment. The `respondWith` method accepts a `[ResponseInit](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.request.mdx)` object as its argument.
+The code sample above intercepts manifest responses received by the player and responds with a manifest containing a single segment. The `respondWith` method accepts a `[ResponseInit](https://docs.theoplayer.com/api-reference/web/theoplayer.request.md)` object as its argument.
 
 The above defined interceptor can be added to the player as follows:
 

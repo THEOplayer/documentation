@@ -81,7 +81,7 @@ const player = new THEOplayer.Player(element, {...});
 });
 ```
 
-Refer to the documentation at https://docs.portal.theoplayer.com/api-reference/web/theoplayer.verizonmedia.md for more information. Additionally, reviewing https://github.com/THEOplayer/samples-html5-sdk/blob/master/reference-apps/verizon-media-app/src/player.js helps to understand the `VerizonMedia` interface.
+Refer to the documentation at https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmedia.md for more information. Additionally, reviewing https://github.com/THEOplayer/samples-html5-sdk/blob/master/reference-apps/verizon-media-app/src/player.js helps to understand the `VerizonMedia` interface.
 
 
 ##### Android (TV) SDK

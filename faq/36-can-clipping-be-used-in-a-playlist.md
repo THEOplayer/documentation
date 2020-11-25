@@ -90,7 +90,7 @@ Notes:
 ## Resources
 The following resources provide more information:
 
-https://docs.portal.theoplayer.com/api-reference/web/theoplayer-clip/: API reference - Clip API
+https://docs.theoplayer.com/api-reference/web/theoplayer-clip/: API reference - Clip API
 
 
 https://support.theoplayer.com/hc/en-us/articles/206773139-Video-Clipping-in-2-X: Video clipping in THEOplayer 2.X

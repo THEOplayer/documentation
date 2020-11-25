@@ -7,7 +7,7 @@ Wowza and THEOplayer are partners in the streaming industry. When developers use
 In this set-up, THEOplayer can play out the streams hosted by Wowza.
 
 ## Related Artciles 
-* [Integrate Wowza with THEOplayer](https://docs.portal.theoplayer.com/how-to-guides/05-integrations/03-wowza-streaming-engine-with-secure-token-version-2.md)
+* [Integrate Wowza with THEOplayer](https://docs.theoplayer.com/how-to-guides/05-integrations/03-wowza-streaming-engine-with-secure-token-version-2.md)
 * [Deliver Low-Latency HLS live streams using Wowza Streaming Engine and THEOplayer](../how-to-guides/07-miscellaneous/11-configure-ll-hls.md)
 
 ## Demo application

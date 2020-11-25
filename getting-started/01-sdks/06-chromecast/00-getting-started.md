@@ -148,7 +148,7 @@ You have to go through the following steps:
 
 ## Test it
 
-Once your application is published, you can start casting from your THEOplayer Web SDK, iOS SDK or Android SDK. You need to set the correct [appID](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.castconfiguration.md), enable Chromecast and press the Chromecast icon. Additionally, you can start casting through the [Cast API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.globalcast.md).
+Once your application is published, you can start casting from your THEOplayer Web SDK, iOS SDK or Android SDK. You need to set the correct [appID](https://docs.theoplayer.com/api-reference/web/theoplayer.castconfiguration.md), enable Chromecast and press the Chromecast icon. Additionally, you can start casting through the [Cast API](https://docs.theoplayer.com/api-reference/web/theoplayer.globalcast.md).
 
 ## Related articles
 - [Pass subtitle selection on to Chromecast](../../../how-to-guides/03-cast/01-chromecast/05-pass-subtitle-section-on-to-chromecast.md)

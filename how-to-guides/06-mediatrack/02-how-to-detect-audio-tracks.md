@@ -25,7 +25,7 @@ The code examples below how to implement the detection of audio tracks across SD
 
 ##### Web SDK
 
-The Web SDK leverages the [MediaTrack API](https://docs.portal.theoplayer.com/api-reference/web/theoplayer.mediatrack.md).
+The Web SDK leverages the [MediaTrack API](https://docs.theoplayer.com/api-reference/web/theoplayer.mediatrack.md).
 
 ```js
 function handleAddTrackEvent(addTrackEvent) {

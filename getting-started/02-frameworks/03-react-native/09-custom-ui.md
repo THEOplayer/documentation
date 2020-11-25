@@ -170,7 +170,7 @@ In `init` in `THEOplayerView.swift` add paths to the files and evaluate javasc
 
 - THEOplayer Custom UI: [http://demo.theoplayer.com/timejump-buttons](http://demo.theoplayer.com/timejump-buttons)
 
-- [How to add CSS or JavaScript files to an Android/iOS project](https://docs.portal.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md/)
+- [How to add CSS or JavaScript files to an Android/iOS project](https://docs.theoplayer.com/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md/)
 
 ## Remarks
 
