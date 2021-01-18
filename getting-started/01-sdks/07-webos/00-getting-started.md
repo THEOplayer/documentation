@@ -82,11 +82,11 @@ ares-install webos.theo_1.0.0_all.ipk  -d tv
 
 App id is by default *web.theo* (you can change this in ```appinfo.json```)
 ```
-ares-launch web.theo  -d tv
+ares-launch webos.theo  -d tv
 ```
 
 ### Debug
 
 ```
-ares-inspect web.theo -d tv --open
+ares-inspect webos.theo -d tv --open
 ```
