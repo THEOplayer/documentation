@@ -19,7 +19,7 @@ This method assumes that you are using text-tracks that are loaded with the mani
 ```js
 function setLanguage(player, language) {
         // Disable all text tracks that are currently active
-    player.textTracks.filter(function(x) { if (x.label !== 'disabled') { return x }}).forEach(function(x){x.mode='disabled';});
+    player.textTracks.filter(function(x) { if (x.mode !== 'disabled') { return x }}).forEach(function(x){x.mode='disabled';});
             // Enable the text track for a specific language. Note: here i searched on the label, you can also do x.language for the ISO 3 letter language code
     player.textTracks.filter(function(x) { if (x.label == language) { return x }})[0].mode = 'showing'
 }
