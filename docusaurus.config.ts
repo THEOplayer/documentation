@@ -3,20 +3,20 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'My Site',
+  title: 'THEOplayer Documentation',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://docs.theoplayer.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'THEOplayer', // Usually your GitHub org/user name.
+  projectName: 'documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -35,10 +35,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/THEOplayer/documentation/tree/main/',
         },
         blog: false,
         theme: {
@@ -65,7 +62,7 @@ const config: Config = {
           label: 'Tutorial',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/THEOplayer',
           label: 'GitHub',
           position: 'right',
         },
@@ -87,30 +84,21 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'GitHub',
+              href: 'https://github.com/THEOplayer',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/THEO_player',
             },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/company/theoplayer/',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} THEO Technologies`,
     },
     prism: {
       theme: prismThemes.github,
