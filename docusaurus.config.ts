@@ -79,6 +79,10 @@ const config: Config = {
               label: 'THEOplayer',
               to: '/theoplayer/',
             },
+            {
+              label: 'THEOlive',
+              href: 'https://developers.theo.live/',
+            },
           ],
         },
         {
@@ -89,7 +93,7 @@ const config: Config = {
               href: 'https://github.com/THEOplayer',
             },
             {
-              label: 'Twitter',
+              label: 'X (Twitter)',
               href: 'https://twitter.com/THEO_player',
             },
             {
