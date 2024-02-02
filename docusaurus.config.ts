@@ -34,6 +34,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/THEOplayer/documentation/tree/main/',
         },
@@ -57,15 +58,10 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'theoplayerSidebar',
+          label: 'THEOplayer',
           position: 'left',
-          label: 'Tutorial',
-        },
-        {
-          href: 'https://github.com/THEOplayer',
-          label: 'GitHub',
-          position: 'right',
-        },
+        }
       ],
     },
     footer: {
@@ -75,8 +71,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'THEOplayer',
+              to: '/theoplayer/',
             },
           ],
         },
