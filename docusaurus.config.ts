@@ -61,7 +61,12 @@ const config: Config = {
           sidebarId: 'theoplayerSidebar',
           label: 'THEOplayer',
           position: 'left',
-        }
+        },
+        {
+          label: 'THEOlive',
+          href: 'https://developers.theo.live/',
+          position: 'left',
+        },
       ],
     },
     footer: {
