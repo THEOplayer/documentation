@@ -54,6 +54,7 @@ const config: Config = {
       logo: {
         alt: 'THEO',
         src: 'img/logo.svg',
+        srcDark: 'img/logo_dark.svg',
       },
       items: [
         {
