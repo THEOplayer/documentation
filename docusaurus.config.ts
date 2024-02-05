@@ -37,6 +37,11 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/THEOplayer/documentation/tree/main/',
+          async sidebarItemsGenerator(args) {
+            const items = await args.defaultSidebarItemsGenerator(args);
+            // Remove "index" pages from auto-generated sidebars
+            return items.filter((item) => !(item.type === 'doc' && item.id.endsWith('/index')));
+          },
         },
         blog: false,
         theme: {
