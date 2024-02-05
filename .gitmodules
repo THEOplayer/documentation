@@ -1,0 +1,3 @@
+[submodule "docs/external/web-ui"]
+	path = docs/external/web-ui
+	url = https://github.com/THEOplayer/web-ui.git
