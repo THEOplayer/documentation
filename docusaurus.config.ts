@@ -36,7 +36,15 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/THEOplayer/documentation/tree/main/',
+          editUrl: ({ version, versionDocsDirPath, docPath, permalink, locale }) => {
+            if (docPath.startsWith('external')) {
+              // Edit docs in external project
+              const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
+              return `https://github.com/THEOplayer/${projectName}/tree/main/${externalDocPath}`;
+            }
+            // Edit docs in this project
+            return `https://github.com/THEOplayer/documentation/tree/main/${versionDocsDirPath}/${docPath}`;
+          },
           async sidebarItemsGenerator(args) {
             const items = await args.defaultSidebarItemsGenerator(args);
             // Remove "index" pages from auto-generated sidebars
