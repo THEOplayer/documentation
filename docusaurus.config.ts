@@ -138,6 +138,16 @@ const config: Config = {
           href: 'https://developers.theo.live/',
           position: 'left',
         },
+        {
+          type: 'docsVersionDropdown',
+          docsPluginId: 'theoplayer',
+          position: 'right',
+        },
+        {
+          type: 'docsVersionDropdown',
+          docsPluginId: 'open-video-ui',
+          position: 'right',
+        }
       ],
     },
     footer: {
