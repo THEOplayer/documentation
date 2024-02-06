@@ -1,0 +1,6 @@
+[submodule "docs/external/web-ui"]
+	path = docs/external/web-ui
+	url = https://github.com/THEOplayer/web-ui.git
+[submodule "docs/external/android-ui"]
+	path = docs/external/android-ui
+	url = https://github.com/THEOplayer/android-ui.git

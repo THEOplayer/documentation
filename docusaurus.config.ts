@@ -1,6 +1,9 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import path from 'path';
+
+const externalDocsDir = path.join(__dirname, 'docs/external');
 
 const config: Config = {
   title: 'THEOplayer Documentation',
@@ -36,11 +39,24 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/THEOplayer/documentation/tree/main/',
-          async sidebarItemsGenerator(args) {
-            const items = await args.defaultSidebarItemsGenerator(args);
-            // Remove "index" pages from auto-generated sidebars
-            return items.filter((item) => !(item.type === 'doc' && item.id.endsWith('/index')));
+          include: [
+            '**/*.{md,mdx}',
+            // Only include docs folder from external projects
+            '!external/**/*',
+            'external/*/docs/**/*.{md,mdx}',
+          ],
+          exclude: [
+            // Remove index pages from external projects, we'll generate our own instead
+            'external/*/docs/**/index.{md,mdx}',
+          ],
+          editUrl: ({ versionDocsDirPath, docPath }) => {
+            if (docPath.startsWith('external')) {
+              // Edit docs in external project
+              const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
+              return `https://github.com/THEOplayer/${projectName}/edit/main/${externalDocPath}`;
+            }
+            // Edit docs in this project
+            return `https://github.com/THEOplayer/documentation/edit/main/${versionDocsDirPath}/${docPath}`;
           },
         },
         blog: false,
@@ -50,6 +66,23 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  markdown: {
+    parseFrontMatter: async (params) => {
+      const frontMatter = await params.defaultParseFrontMatter(params);
+      const relativePath = path.relative(externalDocsDir, params.filePath).replaceAll(path.sep, '/');
+      if (!relativePath.startsWith('..')) {
+        // Add a slug to all external doc pages
+        frontMatter.frontMatter.slug ??= relativePath
+          // Remove extension
+          .replace(/\.mdx?$/, '')
+          // Map external projects to desired URLs
+          .replace('web-ui/docs/', '/open-video-ui/web/')
+          .replace('android-ui/docs/', '/open-video-ui/android/');
+      }
+      return frontMatter;
+    },
+  },
 
   themeConfig: {
     // Replace with your project's social card
@@ -64,8 +97,14 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'theoplayerSidebar',
+          sidebarId: 'theoplayer',
           label: 'THEOplayer',
+          position: 'left',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'openVideoUi',
+          label: 'Open Video UI',
           position: 'left',
         },
         {
@@ -84,6 +123,10 @@ const config: Config = {
             {
               label: 'THEOplayer',
               to: '/theoplayer/',
+            },
+            {
+              label: 'Open Video UI',
+              to: '/open-video-ui/',
             },
             {
               label: 'THEOlive',
