@@ -53,7 +53,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          label: 'API Reference',
+          label: 'API reference',
           href: 'https://theoplayer.github.io/web-ui/api/',
         },
       ],
@@ -74,7 +74,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          label: 'API Reference',
+          label: 'API reference',
           href: 'https://theoplayer.github.io/web-ui/react-api/',
         },
       ],
