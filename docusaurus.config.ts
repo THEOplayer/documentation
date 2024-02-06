@@ -73,15 +73,12 @@ const config: Config = {
       const relativePath = path.relative(externalDocsDir, params.filePath).replaceAll(path.sep, '/');
       if (!relativePath.startsWith('..')) {
         // Add a slug to all external doc pages
-        if (!frontMatter.frontMatter.slug) {
-          frontMatter.frontMatter.slug = relativePath
-            // Remove extension
-            .replace(/\.mdx?$/, '')
-            // Map /external/web-ui/ to /open-video-ui/web/
-            .replace('web-ui/docs/', '/open-video-ui/web/')
-            // Map /external/android-ui/ to /open-video-ui/android/
-            .replace('android-ui/docs/', '/open-video-ui/android/');
-        }
+        frontMatter.frontMatter.slug ??= relativePath
+          // Remove extension
+          .replace(/\.mdx?$/, '')
+          // Map external projects to desired URLs
+          .replace('web-ui/docs/', '/open-video-ui/web/')
+          .replace('android-ui/docs/', '/open-video-ui/android/');
       }
       return frontMatter;
     },
