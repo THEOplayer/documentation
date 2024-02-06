@@ -40,10 +40,10 @@ const config: Config = {
             if (docPath.startsWith('external')) {
               // Edit docs in external project
               const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
-              return `https://github.com/THEOplayer/${projectName}/tree/main/${externalDocPath}`;
+              return `https://github.com/THEOplayer/${projectName}/edit/main/${externalDocPath}`;
             }
             // Edit docs in this project
-            return `https://github.com/THEOplayer/documentation/tree/main/${versionDocsDirPath}/${docPath}`;
+            return `https://github.com/THEOplayer/documentation/edit/main/${versionDocsDirPath}/${docPath}`;
           },
           async sidebarItemsGenerator(args) {
             const items = await args.defaultSidebarItemsGenerator(args);
