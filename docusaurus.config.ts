@@ -78,7 +78,9 @@ const config: Config = {
             // Remove extension
             .replace(/\.mdx?$/, '')
             // Map /external/web-ui/ to /open-video-ui/web/
-            .replace('web-ui/docs/', '/open-video-ui/web/');
+            .replace('web-ui/docs/', '/open-video-ui/web/')
+            // Map /external/android-ui/ to /open-video-ui/android/
+            .replace('android-ui/docs/', '/open-video-ui/android/');
         }
       }
       return frontMatter;
