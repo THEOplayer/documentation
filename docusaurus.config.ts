@@ -1,9 +1,32 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import path from 'path';
 
 const externalDocsDir = path.join(__dirname, 'docs/external');
+
+const docsConfigBase = {
+  include: [
+    '**/*.{md,mdx}',
+    // Only include docs folder from external projects
+    '!external/**/*',
+    'external/*/docs/**/*.{md,mdx}',
+  ],
+  exclude: [
+    // Remove index pages from external projects, we'll generate our own instead
+    'external/*/docs/**/index.{md,mdx}',
+  ],
+  editUrl: ({ versionDocsDirPath, docPath }) => {
+    if (docPath.startsWith('external')) {
+      // Edit docs in external project
+      const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
+      return `https://github.com/THEOplayer/${projectName}/edit/main/${externalDocPath}`;
+    }
+    // Edit docs in this project
+    return `https://github.com/THEOplayer/documentation/edit/main/${versionDocsDirPath}/${docPath}`;
+  },
+} satisfies DocsPlugin.Options;
 
 const config: Config = {
   title: 'THEOplayer Documentation',
@@ -36,34 +59,35 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          routeBasePath: '/',
-          sidebarPath: './sidebars.ts',
-          include: [
-            '**/*.{md,mdx}',
-            // Only include docs folder from external projects
-            '!external/**/*',
-            'external/*/docs/**/*.{md,mdx}',
-          ],
-          exclude: [
-            // Remove index pages from external projects, we'll generate our own instead
-            'external/*/docs/**/index.{md,mdx}',
-          ],
-          editUrl: ({ versionDocsDirPath, docPath }) => {
-            if (docPath.startsWith('external')) {
-              // Edit docs in external project
-              const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
-              return `https://github.com/THEOplayer/${projectName}/edit/main/${externalDocPath}`;
-            }
-            // Edit docs in this project
-            return `https://github.com/THEOplayer/documentation/edit/main/${versionDocsDirPath}/${docPath}`;
-          },
-        },
+        docs: false,
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
+    ],
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'theoplayer',
+        path: 'theoplayer',
+        routeBasePath: '/theoplayer',
+        sidebarPath: './sidebarsTheoplayer.ts',
+      } satisfies DocsPlugin.Options,
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'open-video-ui',
+        path: 'open-video-ui',
+        routeBasePath: '/open-video-ui',
+        sidebarPath: './sidebarsOpenVideoUI.ts',
+      } satisfies DocsPlugin.Options,
     ],
   ],
 
@@ -98,12 +122,14 @@ const config: Config = {
         {
           type: 'docSidebar',
           sidebarId: 'theoplayer',
+          docsPluginId: 'theoplayer',
           label: 'THEOplayer',
           position: 'left',
         },
         {
           type: 'docSidebar',
           sidebarId: 'openVideoUi',
+          docsPluginId: 'open-video-ui',
           label: 'Open Video UI',
           position: 'left',
         },

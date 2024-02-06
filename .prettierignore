@@ -9,4 +9,5 @@
 .cache-loader
 
 # Submodules
-docs/external/
+theoplayer/external/
+open-video-ui/external/
