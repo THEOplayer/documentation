@@ -77,6 +77,12 @@ const config: Config = {
         path: 'theoplayer',
         routeBasePath: '/theoplayer',
         sidebarPath: './sidebarsTheoplayer.ts',
+        lastVersion: 'current',
+        versions: {
+          current: {
+            label: '6.x',
+          },
+        },
       } satisfies DocsPlugin.Options,
     ],
     [
