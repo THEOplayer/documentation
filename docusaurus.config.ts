@@ -4,8 +4,6 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import path from 'path';
 
-const externalDocsDir = path.join(__dirname, 'docs/external');
-
 const docsConfigBase = {
   include: [
     '**/*.{md,mdx}',
@@ -100,15 +98,15 @@ const config: Config = {
   markdown: {
     parseFrontMatter: async (params) => {
       const frontMatter = await params.defaultParseFrontMatter(params);
-      const relativePath = path.relative(externalDocsDir, params.filePath).replaceAll(path.sep, '/');
-      if (!relativePath.startsWith('..')) {
+      let externalDocPath = getExternalDocPath(params.filePath);
+      if (externalDocPath) {
         // Add a slug to all external doc pages
-        frontMatter.frontMatter.slug ??= relativePath
+        frontMatter.frontMatter.slug ??= externalDocPath
           // Remove extension
           .replace(/\.mdx?$/, '')
           // Map external projects to desired URLs
-          .replace('web-ui/docs/', '/open-video-ui/web/')
-          .replace('android-ui/docs/', '/open-video-ui/android/');
+          .replace('web-ui/docs/', '/web/')
+          .replace('android-ui/docs/', '/android/');
       }
       return frontMatter;
     },
@@ -202,5 +200,25 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 };
+
+function getExternalDocPath(filePath: string): string | undefined {
+  const parts = path.relative(__dirname, filePath).split(path.sep);
+  if (parts.length < 2) {
+    return;
+  }
+  if (/^([^_]+)_versioned_docs$/.test(parts[0])) {
+    // Versioned doc, remove first two directories (e.g. "theoplayer_versioned_docs/version_1.x")
+    parts.splice(0, 2);
+  } else {
+    // Current doc, remove first directory (e.g. "theoplayer")
+    parts.splice(0, 1);
+  }
+  const firstPart = parts.shift();
+  if (firstPart !== 'external') {
+    // Not an external doc
+    return;
+  }
+  return parts.join('/');
+}
 
 export default config;
