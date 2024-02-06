@@ -72,8 +72,14 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'theoplayerSidebar',
+          sidebarId: 'theoplayer',
           label: 'THEOplayer',
+          position: 'left',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'openVideoUi',
+          label: 'Open Video UI',
           position: 'left',
         },
         {
@@ -92,6 +98,10 @@ const config: Config = {
             {
               label: 'THEOplayer',
               to: '/theoplayer/',
+            },
+            {
+              label: 'Open Video UI',
+              to: '/open-video-ui/',
             },
             {
               label: 'THEOlive',
