@@ -4,28 +4,63 @@ sidebar_position: 1
 
 # Getting started
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Installation
 
-1. Create a new Jetpack Compose app or set up Compose in your existing Android app by following [the Compose quick start guide](https://developer.android.com/jetpack/compose/setup).
-2. Add the native THEOplayer Android SDK to your project by following [these installation instructions](https://github.com/THEOplayer/theoplayer-sdk-android#installation).
-3. Add the THEOplayer Maven repository to your project-level `settings.gradle` file:
-   ```groovy
-   dependencyResolutionManagement {
-       repositories {
-           google()
-           mavenCentral()
-           maven { url = uri("https://jitpack.io") }
-           maven { url = uri("https://maven.theoplayer.com/releases") }
-       }
-   }
-   ```
-4. Add Open Video UI as a dependency in your module-level `build.gradle` file:
-   ```groovy
-   dependencies {
-       implementation "com.theoplayer.theoplayer-sdk-android:core:5.+"
-       implementation "com.theoplayer.android-ui:android-ui:1.+"
-   }
-   ```
+1.  Create a new Jetpack Compose app or set up Compose in your existing Android app by following [the Compose quick start guide](https://developer.android.com/jetpack/compose/setup).
+2.  Add the native THEOplayer Android SDK to your project by following [these installation instructions](https://github.com/THEOplayer/theoplayer-sdk-android#installation).
+3.  Add the THEOplayer Maven repository to your project-level `settings.gradle` file:
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="groovy" label="Groovy">
+        ```groovy
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url "https://jitpack.io" }
+                maven { url "https://maven.theoplayer.com/releases" }
+            }
+        }
+        ```
+        </TabItem>
+        <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url = uri("https://jitpack.io") }
+                maven { url = uri("https://maven.theoplayer.com/releases") }
+            }
+        }
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
+4.  Add Open Video UI as a dependency in your module-level `build.gradle` file:
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="groovy" label="Groovy">
+        ```groovy
+        dependencies {
+            implementation "com.theoplayer.theoplayer-sdk-android:core:5.+"
+            implementation "com.theoplayer.android-ui:android-ui:1.+"
+        }
+        ```
+        </TabItem>
+        <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        dependencies {
+            implementation("com.theoplayer.theoplayer-sdk-android:core:5.+")
+            implementation("com.theoplayer.android-ui:android-ui:1.+")
+        }
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
 ## Usage
 
