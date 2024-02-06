@@ -49,7 +49,7 @@ const config: Config = {
             // Remove index pages from external projects, we'll generate our own instead
             'external/*/docs/**/index.{md,mdx}',
           ],
-          editUrl: ({ version, versionDocsDirPath, docPath, permalink, locale }) => {
+          editUrl: ({ versionDocsDirPath, docPath }) => {
             if (docPath.startsWith('external')) {
               // Edit docs in external project
               const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
