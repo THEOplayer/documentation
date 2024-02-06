@@ -1,6 +1,9 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import path from 'path';
+
+const externalDocsDir = path.join(__dirname, 'docs/external');
 
 const config: Config = {
   title: 'THEOplayer Documentation',
@@ -36,6 +39,16 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          include: [
+            '**/*.{md,mdx}',
+            // Only include docs folder from external projects
+            '!external/**/*',
+            'external/*/docs/**/*.{md,mdx}',
+          ],
+          exclude: [
+            // Remove index pages from external projects, we'll generate our own instead
+            'external/*/docs/**/index.{md,mdx}',
+          ],
           editUrl: ({ version, versionDocsDirPath, docPath, permalink, locale }) => {
             if (docPath.startsWith('external')) {
               // Edit docs in external project
@@ -58,6 +71,24 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  markdown: {
+    parseFrontMatter: async (params) => {
+      const frontMatter = await params.defaultParseFrontMatter(params);
+      const relativePath = path.relative(externalDocsDir, params.filePath).replaceAll(path.sep, '/');
+      if (!relativePath.startsWith('..')) {
+        // Add a slug to all external doc pages
+        if (!frontMatter.frontMatter.slug) {
+          frontMatter.frontMatter.slug = relativePath
+            // Remove extension
+            .replace(/\.mdx?$/, '')
+            // Map /external/web-ui/ to /open-video-ui/web/
+            .replace('web-ui/docs/', '/open-video-ui/web/');
+        }
+      }
+      return frontMatter;
+    },
+  },
 
   themeConfig: {
     // Replace with your project's social card
