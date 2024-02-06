@@ -149,11 +149,11 @@ const config: Config = {
           docsPluginId: 'theoplayer',
           position: 'right',
         },
-        {
-          type: 'docsVersionDropdown',
-          docsPluginId: 'open-video-ui',
-          position: 'right',
-        }
+        // {
+        //   type: 'docsVersionDropdown',
+        //   docsPluginId: 'open-video-ui',
+        //   position: 'right',
+        // }
       ],
     },
     footer: {
