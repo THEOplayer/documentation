@@ -28,7 +28,7 @@ const docsConfigBase = {
 
 const config: Config = {
   title: 'THEOplayer Documentation',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Your one-stop shop for everything THEOplayer.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

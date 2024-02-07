@@ -1,44 +1,53 @@
+import type { JSX } from 'react';
 import clsx from 'clsx';
-import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Svg?: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
+  to: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: <>Docusaurus was designed from the ground up to be easily installed and used to get your website up and running quickly.</>,
+    title: 'THEOplayer',
+    Svg: require('@site/static/img/theoplayer.svg').default,
+    description: <>Empowering the world's leading media and entertainment companies to deliver cutting-edge video, efficiently and on any device.</>,
+    to: '/theoplayer',
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Open Video UI',
+    // TODO Logo for Open Video UI?
+    Svg: undefined,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into the <code>docs</code> directory.
+        A comprehensive library of open-source UI components, making it easier to build and customize your video player UI to match your branding
+        style.
       </>
     ),
+    to: '/open-video-ui',
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: <>Extend or customize your website layout by reusing React. Docusaurus can be extended while reusing the same header and footer.</>,
+    title: 'THEOlive',
+    Svg: require('@site/static/img/theolive.svg').default,
+    description: <>High-quality real-time video at scale for providers of sports betting, iGaming and interactive entertainment.</>,
+    to: 'https://developers.theo.live/',
   },
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, Svg, description, to }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+      <div className={clsx('text--center', Svg && styles.featureHeadingWithSvg)}>
+        {Svg ? <Svg className={styles.featureSvg} role="img" /> : <h2 className={styles.featureTitle}>{title}</h2>}
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
         <p>{description}</p>
+        <Link className="button button--secondary button--lg" to={to}>
+          Get started
+        </Link>
       </div>
     </div>
   );

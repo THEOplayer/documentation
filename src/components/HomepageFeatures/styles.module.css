@@ -5,7 +5,19 @@
   width: 100%;
 }
 
+.featureHeadingWithSvg {
+  line-height: 0;
+}
+
 .featureSvg {
-  height: 200px;
+  height: 100px;
   width: 200px;
+}
+
+.featureTitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  margin: 0;
 }
