@@ -2,6 +2,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
+import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import path from 'path';
 
 const docsConfigBase = {
@@ -79,7 +80,7 @@ const config: Config = {
         lastVersion: 'current',
         versions: {
           current: {
-            label: '6.x',
+            label: '6.9.0', // TODO Retrieve automatically?
           },
         },
       } satisfies DocsPlugin.Options,
@@ -92,6 +93,11 @@ const config: Config = {
         path: 'open-video-ui',
         routeBasePath: '/open-video-ui',
         sidebarPath: './sidebarsOpenVideoUI.ts',
+        versions: {
+          current: {
+            label: webUiVersion,
+          },
+        },
       } satisfies DocsPlugin.Options,
     ],
   ],
