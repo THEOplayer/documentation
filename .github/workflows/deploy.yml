@@ -1,0 +1,40 @@
+name: Deploy to staging
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+concurrency:
+  group: staging
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Permissions needed to interact with GitHub's OIDC Token endpoint
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+      # Build the website
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      # Deploy to S3
+      # See https://github.com/aws-actions/configure-aws-credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::108977503313:role/github-documentation-dev
+          aws-region: eu-west-1
+      - name: Deploy to S3
+        run: |
+          aws s3 sync ./build s3://docs-portal-dev/docs
