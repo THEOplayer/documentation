@@ -105,11 +105,12 @@ const config: Config = {
 
   markdown: {
     parseFrontMatter: async (params) => {
-      const frontMatter = await params.defaultParseFrontMatter(params);
+      const result = await params.defaultParseFrontMatter(params);
+      const { frontMatter } = result;
       let externalDocPath = getExternalDocPath(params.filePath);
       if (externalDocPath) {
         // Add a slug to all external doc pages
-        frontMatter.frontMatter.slug ??= externalDocPath
+        frontMatter.slug ??= externalDocPath
           // Remove extension
           .replace(/\.mdx?$/, '')
           // Map external projects to desired URLs
@@ -119,7 +120,7 @@ const config: Config = {
           .replace('web-ui/react/CHANGELOG', '/react/changelog')
           .replace('android-ui/CHANGELOG', '/android/changelog');
       }
-      return frontMatter;
+      return result;
     },
   },
 
