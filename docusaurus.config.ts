@@ -10,7 +10,7 @@ const docsConfigBase = {
     '**/*.{md,mdx}',
     // Only include docs folder from external projects
     '!external/**/*',
-    'external/*/CHANGELOG.md',
+    'external/**/CHANGELOG.md',
     'external/*/docs/**/*.{md,mdx}',
   ],
   exclude: [
@@ -116,6 +116,7 @@ const config: Config = {
           .replace('web-ui/docs/', '/web/')
           .replace('android-ui/docs/', '/android/')
           .replace('web-ui/CHANGELOG', '/web/changelog')
+          .replace('web-ui/react/CHANGELOG', '/react/changelog')
           .replace('android-ui/CHANGELOG', '/android/changelog');
       }
       return frontMatter;

@@ -52,6 +52,7 @@ const sidebars: SidebarsConfig = {
           label: 'API reference',
           href: 'https://theoplayer.github.io/web-ui/react-api/',
         },
+        { type: 'doc', id: 'external/web-ui/react/CHANGELOG' },
       ],
     },
     {
