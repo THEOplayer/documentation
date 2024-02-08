@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
           label: 'API reference',
           href: 'https://theoplayer.github.io/web-ui/api/',
         },
+        { type: 'doc', id: 'external/web-ui/CHANGELOG' },
       ],
     },
     {
@@ -70,6 +71,7 @@ const sidebars: SidebarsConfig = {
           label: 'API reference',
           href: 'https://theoplayer.github.io/android-ui/api/',
         },
+        { type: 'doc', id: 'external/android-ui/CHANGELOG' },
       ],
     },
   ],
