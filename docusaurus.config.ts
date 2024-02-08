@@ -10,6 +10,7 @@ const docsConfigBase = {
     '**/*.{md,mdx}',
     // Only include docs folder from external projects
     '!external/**/*',
+    'external/**/CHANGELOG.md',
     'external/*/docs/**/*.{md,mdx}',
   ],
   exclude: [
@@ -104,18 +105,28 @@ const config: Config = {
 
   markdown: {
     parseFrontMatter: async (params) => {
-      const frontMatter = await params.defaultParseFrontMatter(params);
+      const result = await params.defaultParseFrontMatter(params);
+      const { frontMatter } = result;
       let externalDocPath = getExternalDocPath(params.filePath);
       if (externalDocPath) {
         // Add a slug to all external doc pages
-        frontMatter.frontMatter.slug ??= externalDocPath
+        frontMatter.slug ??= externalDocPath
           // Remove extension
           .replace(/\.mdx?$/, '')
           // Map external projects to desired URLs
           .replace('web-ui/docs/', '/web/')
-          .replace('android-ui/docs/', '/android/');
+          .replace('android-ui/docs/', '/android/')
+          .replace('web-ui/CHANGELOG', '/web/changelog')
+          .replace('web-ui/react/CHANGELOG', '/react/changelog')
+          .replace('android-ui/CHANGELOG', '/android/changelog');
       }
-      return frontMatter;
+      if (params.filePath.toLowerCase().endsWith('changelog.md')) {
+        frontMatter.title ??= 'Changelog';
+        // Don't show nested headings in table of contents for changelog
+        frontMatter.toc_min_heading_level = 2;
+        frontMatter.toc_max_heading_level = 2;
+      }
+      return result;
     },
   },
 
