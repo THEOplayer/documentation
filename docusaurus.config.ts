@@ -120,6 +120,12 @@ const config: Config = {
           .replace('web-ui/react/CHANGELOG', '/react/changelog')
           .replace('android-ui/CHANGELOG', '/android/changelog');
       }
+      if (params.filePath.toLowerCase().endsWith('changelog.md')) {
+        frontMatter.title ??= 'Changelog';
+        // Don't show nested headings in table of contents for changelog
+        frontMatter.toc_min_heading_level = 2;
+        frontMatter.toc_max_heading_level = 2;
+      }
       return result;
     },
   },
