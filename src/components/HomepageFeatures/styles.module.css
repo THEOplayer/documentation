@@ -5,11 +5,11 @@
   width: 100%;
 }
 
-.featureHeadingWithSvg {
+.featureHeadingWithImage {
   line-height: 0;
 }
 
-.featureSvg {
+.featureImage {
   height: 100px;
   width: 200px;
 }
