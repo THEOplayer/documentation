@@ -130,6 +130,16 @@ const config: Config = {
     },
   },
 
+  scripts: [
+    {
+      // HubSpot Analytics for theoplayer.com
+      src: '//js.hs-scripts.com/2163521.js',
+      id: 'hs-script-loader',
+      async: true,
+      defer: true,
+    },
+  ],
+
   themeConfig: {
     // TODO Replace with your project's social card
     // image: 'img/docusaurus-social-card.jpg',
