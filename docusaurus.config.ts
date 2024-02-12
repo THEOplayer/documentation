@@ -94,6 +94,7 @@ const config: Config = {
         path: 'open-video-ui',
         routeBasePath: '/open-video-ui',
         sidebarPath: './sidebarsOpenVideoUI.ts',
+        lastVersion: 'current',
         versions: {
           current: {
             label: webUiVersion,
