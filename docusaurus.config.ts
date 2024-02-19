@@ -27,10 +27,10 @@ const docsConfigBase = {
     if (docPath.startsWith('external')) {
       // Edit docs in external project
       const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
-      return `https://github.com/THEOplayer/${projectName}/edit/main/${externalDocPath}`;
+      return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
     }
     // Edit docs in this project
-    return `https://github.com/THEOplayer/documentation/edit/main/${versionDocsDirPath}/${docPath}`;
+    return `https://github.com/THEOplayer/documentation/blob/-/${versionDocsDirPath}/${docPath}`;
   },
 } satisfies DocsPlugin.Options;
 
