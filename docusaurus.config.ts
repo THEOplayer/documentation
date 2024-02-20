@@ -137,7 +137,7 @@ const config: Config = {
     },
   },
 
-  staticDirectories: ['static', 'theoplayer/static'],
+  staticDirectories: ['static', 'theoplayer/static', 'open-video-ui/external/web-ui/docs/static'],
 
   scripts: [
     {
