@@ -43,7 +43,13 @@ const server = http.createServer((req, res) => {
   };
 
   return serveHandler(req, res, {
-    cleanUrls: true,
+    cleanUrls: [
+      // Clean URLs ending in /index.html or /index
+      '/**/index.html',
+      '/**/index',
+      // Don't clean URLs ending in /some-page.html, since that breaks our demos
+      '!/**/*.html',
+    ],
     public: outDir,
     trailingSlash: true,
     directoryListing: false,
