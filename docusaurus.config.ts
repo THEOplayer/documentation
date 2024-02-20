@@ -1,9 +1,15 @@
+import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import path from 'path';
+import fs from 'fs';
+
+// THEOplayer license URL: /docs/theoplayer-license
+const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
+fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license'), theoplayerLicense);
 
 const docsConfigBase = {
   include: [
@@ -21,10 +27,10 @@ const docsConfigBase = {
     if (docPath.startsWith('external')) {
       // Edit docs in external project
       const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
-      return `https://github.com/THEOplayer/${projectName}/edit/main/${externalDocPath}`;
+      return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
     }
     // Edit docs in this project
-    return `https://github.com/THEOplayer/documentation/edit/main/${versionDocsDirPath}/${docPath}`;
+    return `https://github.com/THEOplayer/documentation/blob/-/${versionDocsDirPath}/${docPath}`;
   },
 } satisfies DocsPlugin.Options;
 
@@ -130,6 +136,8 @@ const config: Config = {
       return result;
     },
   },
+
+  staticDirectories: ['static', 'theoplayer/static', 'open-video-ui/external/web-ui/docs/static'],
 
   scripts: [
     {
