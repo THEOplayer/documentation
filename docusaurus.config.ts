@@ -1,9 +1,15 @@
+import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import path from 'path';
+import fs from 'fs';
+
+// THEOplayer license URL: /docs/theoplayer-license
+const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
+fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license'), theoplayerLicense);
 
 const docsConfigBase = {
   include: [
