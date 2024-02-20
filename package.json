@@ -9,7 +9,7 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
+    "serve": "node serve.js",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
@@ -30,6 +30,7 @@
     "@docusaurus/types": "3.1.1",
     "dotenv": "^16.4.4",
     "prettier": "^3.2.4",
+    "serve-handler": "^6.1.5",
     "typescript": "~5.3.3"
   },
   "browserslist": {
