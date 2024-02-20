@@ -137,6 +137,8 @@ const config: Config = {
     },
   },
 
+  staticDirectories: ['static', 'theoplayer/static'],
+
   scripts: [
     {
       // HubSpot Analytics for theoplayer.com
