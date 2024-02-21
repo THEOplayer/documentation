@@ -7,9 +7,9 @@ import { version as webUiVersion } from './open-video-ui/external/web-ui/package
 import path from 'path';
 import fs from 'fs';
 
-// THEOplayer license URL: /docs/theoplayer-license
+// THEOplayer license URL: /docs/theoplayer-license.txt
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
-fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license'), theoplayerLicense);
+fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplayerLicense);
 
 const docsConfigBase = {
   include: [

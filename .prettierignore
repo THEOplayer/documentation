@@ -10,7 +10,7 @@
 # Generated files
 .docusaurus
 .cache-loader
-static/theoplayer-license
+static/theoplayer-license.txt
 
 # Submodules
 theoplayer/external/
