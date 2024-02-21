@@ -28,6 +28,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+        env:
+          THEOPLAYER_LICENSE: ${{ vars.THEOPLAYER_LICENSE }}
       # Deploy to S3
       # See https://github.com/aws-actions/configure-aws-credentials
       - name: Configure AWS credentials
