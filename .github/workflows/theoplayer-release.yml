@@ -1,0 +1,21 @@
+name: Auto-open PRs for THEOplayer releases
+on:
+  push:
+    branches:
+      - 'release/theoplayer-**'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+      - name: Create pull request
+        run: |
+          theoplayer_version = $(<theoplayer/version.txt)
+          commit_msg = $(git log -1 --pretty=%s)
+          gh pr create --base main --title "THEOplayer ${theoplayer_version}" --body "This PR contains the new documentation and API references for THEOplayer version ${theoplayer_version}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
