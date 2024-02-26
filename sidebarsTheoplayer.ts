@@ -21,17 +21,17 @@ const sidebars: SidebarsConfig = {
         {
           type: 'link',
           label: 'Web',
-          href: 'https://docs.theoplayer.com/api-reference/web/theoplayer.md',
+          href: 'pathname:///theoplayer/v6/api-reference/web/',
         },
         {
           type: 'link',
           label: 'Android',
-          href: 'https://docs.theoplayer.com/api-reference/android/index.html',
+          href: 'pathname:///theoplayer/v6/api-reference/android/',
         },
         {
           type: 'link',
           label: 'iOS',
-          href: 'https://docs.theoplayer.com/api-reference/ios/index.html',
+          href: 'pathname:///theoplayer/v6/api-reference/ios/',
         },
       ],
     },
