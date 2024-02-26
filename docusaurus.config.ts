@@ -87,7 +87,7 @@ const config: Config = {
         lastVersion: 'current',
         versions: {
           current: {
-            label: '6.9.0', // TODO Retrieve automatically?
+            label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
           },
         },
       } satisfies DocsPlugin.Options,
