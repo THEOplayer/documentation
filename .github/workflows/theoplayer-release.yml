@@ -24,6 +24,9 @@ jobs:
         run: |
           theoplayer_version = $(<theoplayer/version.txt)
           commit_msg = $(git log -1 --pretty=%s)
-          gh pr create --base main --title "THEOplayer ${theoplayer_version}" --body "This PR contains the new documentation and API references for THEOplayer version ${theoplayer_version}"
+          gh pr create \
+            --base main \
+            --title "THEOplayer ${theoplayer_version}" \
+            --body "This PR contains the new documentation and API references for THEOplayer version ${theoplayer_version}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
