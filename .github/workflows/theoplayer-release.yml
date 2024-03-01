@@ -12,7 +12,15 @@ jobs:
         with:
           fetch-depth: 1
           submodules: true
+      - name: Check if pull request already exists
+        id: check_pr_exists
+        run: |
+          pr_exists = $(gh pr list --base main --head $GITHUB_REF --state open --limit 1 --json number --jq length)
+          echo "result=$pr_exists\n" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create pull request
+        if: ${{ steps.check_pr_exists.outputs.result == '0' }}
         run: |
           theoplayer_version = $(<theoplayer/version.txt)
           commit_msg = $(git log -1 --pretty=%s)
