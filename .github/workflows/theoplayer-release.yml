@@ -15,16 +15,19 @@ jobs:
         id: check_pr_exists
         shell: bash
         run: |
-          pr_exists=$(gh pr list --base main --head $GITHUB_REF --state open --limit 1 --json number --jq length)
-          echo "result=$pr_exists\n" >> $GITHUB_OUTPUT
+          pr_count=$(gh pr list --base main --head $GITHUB_REF --state open --limit 1 --json number --jq length)
+          if ((pr_count > 0)); then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create pull request
-        if: ${{ steps.check_pr_exists.outputs.result == '0' }}
+        if: ${{ !steps.check_pr_exists.outputs.exists }}
         run: |
           theoplayer_version = $(<theoplayer/version.txt)
           gh pr create \
             --base main \
+            --head $GITHUB_REF \
             --title "THEOplayer ${theoplayer_version}" \
             --body "This PR contains the new documentation and API references for THEOplayer version ${theoplayer_version}"
         env:
