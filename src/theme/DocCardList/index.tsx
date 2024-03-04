@@ -1,18 +1,20 @@
 import React from 'react';
 import clsx from 'clsx';
-import { useCurrentSidebarCategory, filterDocCardListItems } from '@docusaurus/theme-common';
+import { filterDocCardListItems, useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
+import type { Props } from '@theme/DocCardList';
 import DocCard from '@theme/DocCard';
 
-function DocCardListForCurrentSidebarCategory({ className }) {
+function DocCardListForCurrentSidebarCategory({ className }: Props) {
   const category = useCurrentSidebarCategory();
   return <DocCardList items={category.items} className={className} />;
 }
 
-function isIndexLink(item): boolean {
+function isIndexLink(item: PropSidebarItem): boolean {
   return item.type === 'link' && item.docId.endsWith('/index');
 }
 
-export default function DocCardList(props) {
+export default function DocCardList(props: Props) {
   const { items, className } = props;
   if (!items) {
     return <DocCardListForCurrentSidebarCategory {...props} />;

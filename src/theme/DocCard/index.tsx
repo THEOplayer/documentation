@@ -4,6 +4,8 @@ import Link from '@docusaurus/Link';
 import { findFirstSidebarItemLink, useDocById } from '@docusaurus/theme-common/internal';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import { translate } from '@docusaurus/Translate';
+import type { Props } from '@theme/DocCard';
+import type { PropSidebarItemCategory, PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
@@ -30,7 +32,7 @@ function CardLayout({ href, icon, title, description }) {
   );
 }
 
-function CardCategory({ item }) {
+function CardCategory({ item }: { item: PropSidebarItemCategory }) {
   const icon = item.customProps?.icon ?? '🗃️';
   const href = findFirstSidebarItemLink(item);
   // Unexpected: categories that don't have a link have been filtered upfront
@@ -57,13 +59,13 @@ function CardCategory({ item }) {
   );
 }
 
-function CardLink({ item }) {
+function CardLink({ item }: { item: PropSidebarItemLink }) {
   const icon = item.customProps?.icon ?? (isInternalUrl(item.href) ? '📄️' : '🔗');
   const doc = useDocById(item.docId ?? undefined);
   return <CardLayout href={item.href} icon={icon} title={item.label} description={item.description ?? doc?.description} />;
 }
 
-export default function DocCard({ item }) {
+export default function DocCard({ item }: Props) {
   switch (item.type) {
     case 'link':
       return <CardLink item={item} />;
