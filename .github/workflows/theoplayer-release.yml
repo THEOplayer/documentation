@@ -23,8 +23,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create pull request
         if: ${{ !steps.check_pr_exists.outputs.exists }}
+        shell: bash
         run: |
-          theoplayer_version = $(<theoplayer/version.txt)
+          theoplayer_version=$(<theoplayer/version.txt)
           gh pr create \
             --base main \
             --head $GITHUB_REF \
