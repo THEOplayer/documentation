@@ -149,6 +149,19 @@ const config: Config = {
     },
   ],
 
+  stylesheets: [
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.googleapis.com',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossOrigin: true,
+    },
+    'https://fonts.googleapis.com/css2?family=Francois+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap',
+  ],
+
   themeConfig: {
     // TODO Replace with your project's social card
     // image: 'img/docusaurus-social-card.jpg',
