@@ -8,12 +8,18 @@ function DocCardListForCurrentSidebarCategory({ className }) {
   return <DocCardList items={category.items} className={className} />;
 }
 
+function isIndexLink(item): boolean {
+  return item.type === 'link' && item.docId.endsWith('/index');
+}
+
 export default function DocCardList(props) {
   const { items, className } = props;
   if (!items) {
     return <DocCardListForCurrentSidebarCategory {...props} />;
   }
-  const filteredItems = filterDocCardListItems(items);
+  const filteredItems = filterDocCardListItems(items)
+    // Remove link to index page
+    .filter((item) => !isIndexLink(item));
   return (
     <section className={clsx('row', className)}>
       {filteredItems.map((item, index) => (
