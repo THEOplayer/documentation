@@ -21,16 +21,28 @@ const sidebars: SidebarsConfig = {
         {
           type: 'link',
           label: 'Web',
+          description: 'API references for the THEOplayer Web SDK',
+          customProps: {
+            icon: '🌐',
+          },
           href: 'pathname:///theoplayer/v6/api-reference/web/',
         },
         {
           type: 'link',
           label: 'Android',
+          description: 'API references for the THEOplayer Android SDK',
+          customProps: {
+            icon: '🤖',
+          },
           href: 'pathname:///theoplayer/v6/api-reference/android/',
         },
         {
           type: 'link',
           label: 'iOS',
+          description: 'API references for the THEOplayer iOS/tvOS SDK',
+          customProps: {
+            icon: '🍎',
+          },
           href: 'pathname:///theoplayer/v6/api-reference/ios/',
         },
       ],

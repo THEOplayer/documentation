@@ -31,6 +31,7 @@ function CardLayout({ href, icon, title, description }) {
 }
 
 function CardCategory({ item }) {
+  const icon = item.customProps?.icon ?? '🗃️';
   const href = findFirstSidebarItemLink(item);
   // Unexpected: categories that don't have a link have been filtered upfront
   if (!href) {
@@ -39,7 +40,7 @@ function CardCategory({ item }) {
   return (
     <CardLayout
       href={href}
-      icon="🗃️"
+      icon={icon}
       title={item.label}
       description={
         item.description ??
@@ -57,7 +58,7 @@ function CardCategory({ item }) {
 }
 
 function CardLink({ item }) {
-  const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
+  const icon = item.customProps?.icon ?? (isInternalUrl(item.href) ? '📄️' : '🔗');
   const doc = useDocById(item.docId ?? undefined);
   return <CardLayout href={item.href} icon={icon} title={item.label} description={item.description ?? doc?.description} />;
 }
