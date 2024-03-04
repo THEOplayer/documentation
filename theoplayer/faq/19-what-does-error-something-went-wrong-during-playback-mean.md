@@ -4,7 +4,7 @@ This error, "Something went wrong with Native playback", occurs whenever the pla
 
 "Something went wrong with Native playback" is a possible error message which can be exposed by THEOplayer. Although it sounds generic, it is related to native rendering, as explained above.
 
-**Native Rendering**
+## Native Rendering
 
 Native rendering is used when THEOplayer leverages the native media playback pipeline. Usually, THEOplayer leverages this when this pipeline is the only possible pipeline, for example when you can't use MSE.
 
@@ -22,6 +22,6 @@ The THEOplayer API can be used to access the MediaError code: `player.error.code
 
 This line will return the MediaError together with the specific code. This makes it easier to find out what the error exactly means, and allows developers to plan for further actions.
 
-Related articles
+## Related articles
 
 - https://developer.mozilla.org/en-US/docs/Web/API/MediaError
