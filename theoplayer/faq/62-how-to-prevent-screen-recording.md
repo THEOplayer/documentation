@@ -2,14 +2,6 @@
 
 This article explains what screen recording is, and how to counter it.
 
-**Table of Contents**
-
-1. [What is screen recording](#what-is-screen-recording)
-2. [How to counter screen recording](#how-to-counter-screen-recording)
-3. [Video players and screen recording](#video-players-and-screen-recording)
-   1. [THEOplayer and screen recording](#theoplayer-and-screen-recording)
-4. [Conclusion](#conclusion)
-
 ## What is screen recording
 
 We define "screen recording" (also known as "screen capturing") as the malpractice of illegally recording video streams on a website or application of a content provider.
