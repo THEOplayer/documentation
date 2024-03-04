@@ -8,5 +8,8 @@ Some implementations cannot or choose not to serve _wasm_, and we have a fallbac
 
 In other words, _wasm_ allows for better overall performance and the player will try to use this solution first. If this is not possible, it will use different logic, but this doesn't impact the end users. You can safely ignore this warning.
 
-**Note**
+:::important
+
 The *wasm* file must be served with the correct MIME type ('application/wasm'), otherwise the player will not recognise it properly and fall back onto the alternative (in this case, the warning will also be shown). If the file is served with the wrong MIME type (e.g.: text/html), this must be corrected on the server side.
+
+:::

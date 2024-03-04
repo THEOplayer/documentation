@@ -8,8 +8,11 @@ There are two approaches to download the THEOplayer SDK for self-hosting purpose
 1. Use [NPM](https://www.npmjs.com/package/theoplayer).
 2. Download the SDK through [https://portal.theoplayer.com](https://portal.theoplayer.com).
 
-**Important notice:**
+:::important
+
 When self-hosting THEOplayer, it is important you regularly update your self-hosted THEOplayer files in order to benefit from the latest improvements.
+
+:::
 
 In order to download the THEOplayer package and host it on your server, you will first have to determine which version of the player you want to use.
 Read up about version changes in the [changelog](https://docs.theoplayer.com/changelog.md).

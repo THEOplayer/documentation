@@ -2,11 +2,12 @@
 
 This guide describes how to add CSS or JavaScript files to an Android or iOS project, and manipulate the player using CSS and/or JavaScript. 
 
----
-**Note**
+:::important
+
 This is only an option with legacy mobile SDKs (up to v4.12.X). In the newer SDKs, no longer based on a webView, this is not possible.
 
----
+:::
+
 Including these files allows you to create a hybrid application to increase code re-usability:
 
 - You can build a UI for Web, and re-use it in your Android or iOS application.

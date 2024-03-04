@@ -4,8 +4,11 @@ The iPhone simulators on M1 MacBooks use the arm64 architecture, therefore any b
 
 Previous to writing this article (specifically with THEOplayer **versions 3.0.0 and below**), THEOplayer depended on few of these frameworks that lack the arm64 architecture, which in turn resulted in deciding to omit it. As of **version 3.1.0** and in part of our effort to optimize our modularization, the THEOplayer framework will be delivered with the arm64 architecture support as long as no feature is included that adds a dependency to an unsupported third party framework.
 
-**Important Note**
+:::important
+
 To include the new architecture, import the **.xcframework** package into your project instead of the **.framework** package. The **.framework** is a fat framework and cannot include two arm64 architectures for device and simulator.
+
+:::
 
 #### What are the features that lack arm64 simulator support?
 
