@@ -22,6 +22,5 @@ Some of these limitations include, but are not limited to, the following:
 <div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-radius: 5px 5px; margin-bottom: 20px;">
     <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">info</span> Does native Safari support it?</p>
     <p>When you want to know whether the native AirPlay video player supports a certain feature, you can compare the experience with the native Safari video player.</p>
-    <p>For example, if you want to know whether MPEG-DASH is supported, you can enter your MPEG-DASH URL in the address bar of Safari, hit enter, and observe the results. The same results are most likely true for the native AirPlay video player.
-</p>
+    <p>For example, if you want to know whether MPEG-DASH is supported, you can enter your MPEG-DASH URL in the address bar of Safari, hit enter, and observe the results. The same results are most likely true for the native AirPlay video player.</p>
 </div>
