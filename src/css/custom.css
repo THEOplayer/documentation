@@ -37,3 +37,13 @@
   --ifm-color-primary-lightest: #ffd960;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.hero--primary {
+  --ifm-hero-background-color: #9cb9c9;
+  --ifm-hero-text-color: #344a5e;
+}
+
+[data-theme='dark'] .hero--primary {
+  --ifm-hero-background-color: #445f6e;
+  --ifm-hero-text-color: var(--ifm-font-color-base);
+}
