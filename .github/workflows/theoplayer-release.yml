@@ -4,7 +4,7 @@ on:
     branches:
       - 'release/theoplayer-**'
 jobs:
-  deploy:
+  create-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,8 +13,9 @@ jobs:
           fetch-depth: 1
       - name: Check if pull request already exists
         id: check_pr_exists
+        shell: bash
         run: |
-          pr_exists = $(gh pr list --base main --head $GITHUB_REF --state open --limit 1 --json number --jq length)
+          pr_exists=$(gh pr list --base main --head $GITHUB_REF --state open --limit 1 --json number --jq length)
           echo "result=$pr_exists\n" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
