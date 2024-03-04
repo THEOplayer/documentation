@@ -16,4 +16,4 @@ Of course, you can also configure your container to respect any other aspect rat
 A demo is available at [https://cdn.theoplayer.com/demos/vertical/index.html](https://cdn.theoplayer.com/demos/vertical/index.html).
 This demo provides a sample implementation which allow you to switch between popular viewing modes. This demo is best viewed on a mobile browser.
 
-![Screenshot of Portrait Mode](../assets/img/screenshot_portrait_mode.png)
+![Screenshot of Portrait Mode](img/screenshot_portrait_mode.png)
