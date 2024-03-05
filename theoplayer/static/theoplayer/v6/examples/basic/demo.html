@@ -13,18 +13,18 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="https://unpkg.com/theoplayer@6/ui.css"/>
-    <script src="https://unpkg.com/theoplayer@6/THEOplayer.js"></script>
+    <link rel="stylesheet" href="https://cdn.theoplayer.com/dash/theoplayer/ui.css"/>
+    <script src="https://cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
 </head>
 <body>
 <div id="player" class="video-js theoplayer-skin vjs-16-9"></div>
 <script>
     var player = new THEOplayer.Player(document.querySelector('#player'), {
-        // For demonstration purposes, we use the free unpkg.com CDN.
+        // For demonstration purposes, we use the theoplayer.com CDN.
         // For production use, we recommend hosting THEOplayer yourself
         // and changing this (as well as the <script> and <link> tags above)
         // to point to THEOplayer's location on your own website.
-        libraryLocation: 'https://unpkg.com/theoplayer@6/',
+        libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
         // Change this property to point to your THEOplayer license file:
         licenseUrl: '/docs/theoplayer-license.txt',
         // Alternatively, uncomment this, change its value to your THEOplayer license, and remove "licenseUrl":
