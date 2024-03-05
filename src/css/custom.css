@@ -4,6 +4,12 @@
  * work well for content-centric websites.
  */
 
+:root {
+  --ifm-font-family-base: 'Open Sans', sans-serif;
+  --ifm-heading-font-family: 'Francois One', sans-serif;
+  --ifm-heading-font-weight: 400;
+}
+
 /*
  * Generated with https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima
  * Primary color (dark):  #ffc50f = hsl(46, 100%, 53%)
@@ -30,4 +36,14 @@
   --ifm-color-primary-lighter: #ffcf38;
   --ifm-color-primary-lightest: #ffd960;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.hero--primary {
+  --ifm-hero-background-color: #9cb9c9;
+  --ifm-hero-text-color: #344a5e;
+}
+
+[data-theme='dark'] .hero--primary {
+  --ifm-hero-background-color: #445f6e;
+  --ifm-hero-text-color: var(--ifm-font-color-base);
 }
