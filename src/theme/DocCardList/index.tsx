@@ -11,7 +11,7 @@ function DocCardListForCurrentSidebarCategory({ className }: Props) {
 }
 
 function isIndexLink(item: PropSidebarItem): boolean {
-  return item.type === 'link' && item.docId.endsWith('/index');
+  return item.type === 'link' && item.docId && item.docId.endsWith('/index');
 }
 
 export default function DocCardList(props: Props) {
