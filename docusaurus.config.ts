@@ -3,6 +3,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
+import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import path from 'path';
 import fs from 'fs';
@@ -108,6 +109,39 @@ const config: Config = {
         },
       } satisfies DocsPlugin.Options,
     ],
+    () => ({
+      name: 'webpack-plugin',
+      configureWebpack() {
+        return {
+          module: {
+            // https://github.com/WebCoder49/code-input only exports to the global scope.
+            // Insert some `import` and `export` statements where needed.
+            rules: [
+              {
+                test: require.resolve('@webcoder49/code-input/code-input'),
+                loader: 'exports-loader',
+                options: {
+                  type: 'commonjs',
+                  exports: 'single codeInput',
+                },
+              },
+              {
+                test: require.resolve('@webcoder49/code-input/plugins/indent'),
+                loader: 'imports-loader',
+                options: {
+                  type: 'commonjs',
+                  imports: {
+                    syntax: 'single',
+                    name: 'codeInput',
+                    moduleName: '@webcoder49/code-input/code-input',
+                  },
+                },
+              },
+            ],
+          },
+        } satisfies WebpackConfiguration;
+      },
+    }),
   ],
 
   markdown: {
