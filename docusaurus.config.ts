@@ -16,7 +16,8 @@ const docsConfigBase = {
     '**/*.{md,mdx}',
     // Only include docs folder from external projects
     '!external/**/*',
-    'external/**/CHANGELOG.md',
+    'external/*/CHANGELOG.md',
+    'external/*/*/CHANGELOG.md',
     'external/*/docs/**/*.{md,mdx}',
   ],
   exclude: [
