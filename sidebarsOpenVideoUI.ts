@@ -16,7 +16,15 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Web',
-      link: { type: 'generated-index', slug: 'web' },
+      description: 'Build an astonishing player UI with Web Components.',
+      customProps: {
+        icon: '🌐',
+      },
+      link: {
+        type: 'generated-index',
+        slug: 'web',
+        title: 'Open Video UI for Web',
+      },
       items: [
         { type: 'doc', id: 'web/getting-started' },
         {
@@ -42,7 +50,15 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'React',
-      link: { type: 'generated-index', slug: 'react' },
+      description: 'Build a stunning player UI with React components.',
+      customProps: {
+        icon: '⚛️',
+      },
+      link: {
+        type: 'generated-index',
+        slug: 'react',
+        title: 'Open Video UI for React',
+      },
       items: [
         { type: 'doc', id: 'react/getting-started' },
         {
@@ -64,7 +80,15 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Android',
-      link: { type: 'generated-index', slug: 'android' },
+      description: 'Build a mobile-first player UI for Android with Jetpack Compose.',
+      customProps: {
+        icon: '🤖',
+      },
+      link: {
+        type: 'generated-index',
+        slug: 'android',
+        title: 'Open Video UI for Android',
+      },
       items: [
         { type: 'doc', id: 'android/getting-started' },
         {
