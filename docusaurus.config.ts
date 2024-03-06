@@ -14,8 +14,7 @@ fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplay
 const docsConfigBase = {
   include: [
     '**/*.{md,mdx}',
-    // Only include docs folder from external projects
-    '!external/**/*',
+    // For external projects: include changelogs and /docs folder
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
     'external/*/docs/**/*.{md,mdx}',
@@ -23,6 +22,8 @@ const docsConfigBase = {
   exclude: [
     // Remove index pages from external projects, we'll generate our own instead
     'external/*/docs/**/index.{md,mdx}',
+    // Ignore node_modules
+    'external/**/node_modules/**/*',
   ],
   editUrl: ({ versionDocsDirPath, docPath }) => {
     if (docPath.startsWith('external')) {
