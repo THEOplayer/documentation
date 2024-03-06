@@ -7,15 +7,16 @@ However, support has been added for Widevine and PlayReady with AES-128 in `CBC`
 
 A multi-key HLS playlist could look like this:
 
-<pre><code>#EXTM3U
+```text {7-9}
+#EXTM3U
 #EXT-X-TARGETDURATION:6
 #EXT-X-VERSION:5
 #EXT-X-MEDIA-SEQUENCE:0
 #EXT-X-PLAYLIST-TYPE:VOD
 #EXT-X-INDEPENDENT-SEGMENTS
-<b>#EXT-X-KEY:METHOD=SAMPLE-AES,KEYFORMAT="urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed",KEYFORMATVERSIONS="1",URI="WIDEVINE_INIT_DATA_URL"</b>
-<b>#EXT-X-KEY:METHOD=SAMPLE-AES,KEYFORMAT="com.microsoft.playready",KEYFORMATVERSIONS="1",URI="PLAYREADY_INIT_DATA_URL"</b>
-<b>#EXT-X-KEY:METHOD=SAMPLE-AES,KEYFORMAT="com.apple.streamingkeydelivery",KEYFORMATVERSIONS="1",URI="FAIRPLAY_INIT_DATA_URL"</b>
+#EXT-X-KEY:METHOD=SAMPLE-AES,KEYFORMAT="urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed",KEYFORMATVERSIONS="1",URI="WIDEVINE_INIT_DATA_URL"
+#EXT-X-KEY:METHOD=SAMPLE-AES,KEYFORMAT="com.microsoft.playready",KEYFORMATVERSIONS="1",URI="PLAYREADY_INIT_DATA_URL"
+#EXT-X-KEY:METHOD=SAMPLE-AES,KEYFORMAT="com.apple.streamingkeydelivery",KEYFORMATVERSIONS="1",URI="FAIRPLAY_INIT_DATA_URL"
 #EXT-X-MAP:URI="init.mp4"
 #EXTINF:6,
 1.mp4
@@ -28,7 +29,7 @@ A multi-key HLS playlist could look like this:
 #EXTINF:6,
 5.mp4
 #EXT-X-ENDLIST
-</code></pre>
+```
 
 There is an `#EXT-X-KEY` tag for all the key systems which all have method `SAMPLE-AES`. The `KEYFORMAT` specifies the key system:
 

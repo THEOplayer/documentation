@@ -55,13 +55,14 @@ This guide tackles how to address an invalid license, for example by changing th
 
 This section explains how you create a THEOplayer SDK at <a href="https://portal.theoplayer.com" target="_blank">https://portal.theoplayer.com</a>, which is the THEOplayer Developer Portal.
 
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-radius: 5px 5px; margin-bottom: 20px;">
-    <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">info</span> This section may be optional to you.</p>
-    <ul style="padding-left: 0; color: #344a5e; margin-bottom: 0; font-size: 0.9em;">
-    <li>Skip to "<a href="#include-an-sdk">Include an SDK</a>" if you already have an SDK.</li>
-    <li>Skip to "<a href="#locate-sdks-and-initiate-sdk-creation">Locate SDKs and initiate SDK creation</a>" if you are signed in to the Portal, but do not know how to create an SDK.</li>
-    </ul>
-</div>
+:::info
+
+This section may be optional to you.
+
+* Skip to "<a href="#include-an-sdk">Include an SDK</a>" if you already have an SDK.
+* Skip to "<a href="#locate-sdks-and-initiate-sdk-creation">Locate SDKs and initiate SDK creation</a>" if you are signed in to the Portal, but do not know how to create an SDK.
+
+:::
 
 You create a Web SDK through the following steps on the Portal:
 
@@ -132,17 +133,18 @@ When you copy-paste the snippet above into JSFiddle, it should look similar to t
 
 <iframe class="box-shadow" width="100%" height="300" src="//jsfiddle.net/thijsl/zs39fgj5/1/embedded/result" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-<details><summary style="background: #f7f7f7; padding: 5px 5px 5px 10px; border-radius: 5px 5px;">Setting up a development environment</summary>
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-bottom-right-radius: 5px 5px;">
-<p>Consider one of two approaches to set up a development environment.
+<details>
+<summary>Setting up a development environment</summary>
+Consider one of two approaches to set up a development environment.
 
 1. Online. An online development environment runs in your browser. Popular online development environments include <a href="https://jsfiddle.net/" target="_blank">https://jsfiddle.net</a>,
    <a href="http://codepen.io/" target="_blank">http://codepen.io</a>, <a href="http://codesandbox.io" target="_blank">http://codesandbox.io</a>, and <a href="https://repl.it/" target="_blank">https://repl.it</a>.
    Take this approach for rapid testing.
 2. Local. A local development environment runs on your own machine. You use the IDE/HTML editor of your choice. We will not discuss setting up a local environment in this guide.
-</p></div></details>
-<details><summary style="background: #f7f7f7; padding: 5px 5px 5px 10px; border-radius: 5px 5px;">What is in the THEOplayer Web SDK?</summary>
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-bottom-right-radius: 5px 5px;">
+</details>
+
+<details>
+<summary>What is in the THEOplayer Web SDK?</summary>
 <a name="sdkcdn"></a>
 The THEOplayer Web SDK is a collection of library files hosted on a web server or CDN.
 The THEOplayer Developer Portal hosts these library files automatically on its CDN, as can be seen in the screenshot below.
@@ -164,20 +166,23 @@ Note that when you [configure features for your SDK](#build-configure-and-publis
 you may impact the above components. For example, if you disable the UI feature, you won't have `THEOplayer.js` and `ui.css`.
 Alternatively, when you disable the HLS feature,you won't have the helper files.
 
-</div></details>
+</details>
 
-<div style="background: #f1d2d2; padding: 5px 10px 5px 10px; border-radius: 5px 5px; color: #721c24; margin-bottom: 20px;" id="library-location-explanation">
-    <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">warning</span> Throughout this guide, you will often see <code class="language-text">SDK-LIBRARY-LOCATION</code> and <code class="language-text">YOUR-LICENSE</code>:</p>
-    <ul style="padding-left: 0; color: #344a5e; margin-bottom: 0; font-size: 0.9em;">
-    <li>Change the value of <code class="language-text">SDK-LIBRARY-LOCATION</code> to your actual CDN value. The <span style="border: 2px solid #1868ff; padding: 1px;">blue rectangle</span> in the screenshot below annotates an example <code class="language-text">SDK-LIBRARY-LOCATION</code> value.</li>
-    <li>Change the value of <code class="language-text">YOUR-LICENSE</code> to your actual license value. The <span style="border: 2px solid #5a8235; padding: 1px;">green rectangle</span> in the screenshot below annotates an example <code class="language-text">YOUR-LICENSE</code> value.</li>
-    </ul>
-    <p>Failing to replace these values results in errors as you'll be loading non-existent files.
-    Our advice is to copy-paste these two values in a text editor so that you can quickly access them for the remainder of this guide.</p>
-    <img src="../../../assets/img/getting-started-web-sdk/sdk-ready.png" alt="screenshot from the THEO portal SDK build page, highlighting various elements" />
-    <p>The blue rectangle in the above screenshot annotates the <code class="language-text" style="border: 2px solid #1868ff; padding: 1px;">SDK-LIBRARY-LOCATION</code>.
-    The green rectangle in the above screenshot annotates <code class="language-text" style="border: 2px solid green; padding: 1px;">YOUR-LICENSE</code>.</p>
-</div>
+:::warning
+
+Throughout this guide, you will often see `SDK-LIBRARY-LOCATION` and `YOUR-LICENSE`:
+
+- Change the value of `SDK-LIBRARY-LOCATION` to your actual CDN value. The <span style="border: 2px solid #1868ff; padding: 1px;">blue rectangle</span> in the screenshot below annotates an example `SDK-LIBRARY-LOCATION` value.
+- Change the value of `YOUR-LICENSE` to your actual license value. The <span style="border: 2px solid #5a8235; padding: 1px;">green rectangle</span> in the screenshot below annotates an example `YOUR-LICENSE` value.
+
+Failing to replace these values results in errors as you'll be loading non-existent files.
+Our advice is to copy-paste these two values in a text editor so that you can quickly access them for the remainder of this guide.
+<img src="../../../assets/img/getting-started-web-sdk/sdk-ready.png" alt="screenshot from the THEO portal SDK build page, highlighting various elements" />
+
+The blue rectangle in the above screenshot annotates the <code class="language-text" style="border: 2px solid #1868ff; padding: 1px;">SDK-LIBRARY-LOCATION</code>.
+The green rectangle in the above screenshot annotates <code class="language-text" style="border: 2px solid green; padding: 1px;">YOUR-LICENSE</code>.
+
+:::
 
 Including the THEOplayer Web SDK involves two steps.
 
@@ -219,12 +224,14 @@ The following code represents step-1, and includes the THEOplayer JavaScript lib
 
 Note that this step by itself doesn't initialize your video player. This step just makes the THEOplayer JavaScript API accessible.
 
-<details><summary style="background: #f7f7f7; padding: 5px 5px 5px 10px; border-radius: 5px 5px;">How to validate that you loaded the JavaScript?</summary>
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-bottom-right-radius: 5px 5px;">
-You can validate a successful load of the THEOplayer JavaScript library by typing <code>THEOplayer.version</code> and <code>THEOplayer.features</code> in the developer console of your browser,
+<details>
+<summary>How to validate that you loaded the JavaScript?</summary>
+
+You can validate a successful load of the THEOplayer JavaScript library by typing `THEOplayer.version` and `THEOplayer.features` in the developer console of your browser,
 as demonstrated in the screenshot below.
 <img src="../../../assets/img/getting-started-web-sdk/js-fiddle-step-1.png" alt="screenshot demonstrating logs of the player version and features to confirm it has been loaded correctly"/>
-</div></details>
+
+</details>
 
 ### Including the CSS
 
@@ -425,24 +432,25 @@ The following widget demonstrates a modified snippet in JSFiddle.
 
 <iframe class="box-shadow" width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/23yuvcjp/3/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-<details><summary style="background: #f7f7f7; padding: 5px 5px 5px 10px; border-radius: 5px 5px;">Setting the size of the container</summary>
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-bottom-right-radius: 5px 5px;">
-There are other approaches to setting the size of your container instead of using <code class="language-text">vjs-16-9</code>.
-For example, you could omit the <code class="language-text">vjs-16-9</code> class, and instead configure the width and height of container class through CSS,
+<details>
+<summary>Setting the size of the container</summary>
+There are other approaches to setting the size of your container instead of using `vjs-16-9`.
+For example, you could omit the `vjs-16-9` class, and instead configure the width and height of container class through CSS,
 as demonstrated in the screenshot below.
 <img src="../../../assets/img/getting-started-web-sdk/container-height-percent.png" alt="screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player" />
-Alternatively, you set your container to be responsive to its parent node by setting your configuration to <code class="language-text">"fluid: true"</code>,
+Alternatively, you set your container to be responsive to its parent node by setting your configuration to `"fluid: true"`,
 as demonstrated by the following screenshot.
 <img src="../../../assets/img/getting-started-web-sdk/container-height-fluid.png"  alt="screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size"/>
 There is no wrong or right. It's up to you to decide which approach is best for your use-case.
-</div></details>
+</details>
 
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-radius: 5px 5px; margin-bottom: 20px;">
-    <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">info</span> Video.js</p>
-    <p style="margin-bottom: 5px;">THEOplayer uses a modified version of Video.js v5 for its default styling.
-       You can leverage Video.js APIs to customize your video player.
-     <!--  (e.g. <a href="https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer" target="_blank">insert a custom button</a>)--></p>
-</div>
+:::info Video.js
+
+THEOplayer uses a modified version of Video.js v5 for its default styling.
+You can leverage Video.js APIs to customize your video player.
+<!--  (e.g. <a href="https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer" target="_blank">insert a custom button</a>)-->
+
+:::
 
 #### Configure library location
 
@@ -540,7 +548,7 @@ Clicking the big play button won't do anything, because you still need to associ
 ## Configure a video
 
 Configuring the video source of your video player is the last crucial step of this guide.
-You use the <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#source" target="_blank"><code class="language-text">source</code></a> property of your `player` instance to configure a video.
+You use the <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#source" target="_blank">`source`</a> property of your `player` instance to configure a video.
 The snippet below exemplifies how you could configure an HLS stream through `player.source`.
 
 ```javascript
@@ -618,8 +626,8 @@ The following widget demonstrates a successful configuration.
 
 <iframe class="box-shadow" width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/21fphaqL/5/embedded/result,html/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-<p><strong>Congratulations! 🎉 You now know how build a THEOplayer SDK, include it on your web page, configure a video player and play a stream.</strong><br />
-Go through the next section to learn more about THEOplayer, its API, and some use-cases.</p>
+**Congratulations! 🎉 You now know how build a THEOplayer SDK, include it on your web page, configure a video player and play a stream.**  
+Go through the next section to learn more about THEOplayer, its API, and some use-cases.
 
 ## Bonus: next steps
 
@@ -662,12 +670,12 @@ The top-level interface is the <a href="https://docs.theoplayer.com/api-referenc
 A <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md" target="_blank">map of events</a> is available in the Player API,
 such as the `playing` and `volumechange` event.
 
-<details><summary style="background: #f7f7f7; padding: 5px 5px 5px 10px; border-radius: 5px 5px;">HTML5 MediaElement interface</summary>
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-bottom-right-radius: 5px 5px;">
+<details>
+<summary>HTML5 MediaElement interface</summary>
 The THEOplayer interface mimics the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement" target="_blank">HTML5 MediaElement interface</a>. All commonly used properties,
 functions and events are available, allowing you to replace a standard HTML5 video element with THEOplayer.
 For more advanced features, it might be needed to use THEOplayer specific APIs.
-</div></details>
+</details>
 
 Let's explain four popular features of the THEOplayer API.
 
@@ -678,8 +686,8 @@ Let's explain four popular features of the THEOplayer API.
 
 #### Autoplay
 
-You add support for autoplay by setting <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md" target="_blank"><code class="language-text">player.autoplay = true</code></a>.
-Additionally, we set <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md" target="_blank"><code class="language-text">mutedAutoplay: "all"</code></a> in the player configuration, to <a href="https://docs.theoplayer.com/faq/02-how-to-combat-autoplay-policies.md" target="_blank">combat autoplay policies</a>.
+You add support for autoplay by setting <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md" target="_blank">`player.autoplay = true`</a>.
+Additionally, we set <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md" target="_blank">`mutedAutoplay: "all"`</a> in the player configuration, to <a href="https://docs.theoplayer.com/faq/02-how-to-combat-autoplay-policies.md" target="_blank">combat autoplay policies</a>.
 Combating autoplay policies through `mutedAutoplay: "all"` means: doing muted autoplay when unmuted autoplay isn't permitted.
 The following snippet adds support for the described autoplay.
 
@@ -766,7 +774,7 @@ player.source = {
 };
 ```
 
-Other valid values for type are <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.abrstrategytype.md#abrstrategytype-type" target="_blank"><code class="language-text">performance</code> and <code class="language-text">bandwidth</code></a>.
+Other valid values for type are <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.abrstrategytype.md#abrstrategytype-type" target="_blank">`performance` and `bandwidth`</a>.
 
 - `Performance` makes sense if you want your video to start as fast as possible, because it'll do startup with the lowest video quality.
 - `Bandwidth` is the default value and uses historical data to find an optimal ABR strategy.
@@ -809,12 +817,14 @@ Some quick notes:
 - You are responsible for building the entire UI and UX by leveraging the THEOplayer API as your building blocks.
   For example, you need to insert your own play button, and connect it with the `player.play()` API, through a combination of JavaScript/CSS/HTML.
 
-<details><summary style="background: #f7f7f7; padding: 5px 5px 5px 10px; border-radius: 5px 5px;">When to go Chromeless?</summary>
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-bottom-right-radius: 5px 5px;">
+<details>
+<summary>When to go Chromeless?</summary>
 You decide whether you want to modify the existing UI or build a new one. As a rule of thumb: go Chromeless...
-… if you need to implement a strict design which looks "really different" from THEOplayer's default skin;
-… if you are spending more time "hacking and reverse-engineering" the default skin, than actually making progress with the implementation of your design.
-</div></details>
+
+- … if you need to implement a strict design which looks "really different" from THEOplayer's default skin;
+- … if you are spending more time "hacking and reverse-engineering" the default skin, than actually making progress with the implementation of your design.
+
+</details>
 
 ### DRM
 

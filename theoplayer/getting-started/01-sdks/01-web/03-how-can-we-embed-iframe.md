@@ -28,7 +28,9 @@ An iframe is an HTML tag, the [`<iframe>`](https://developer.mozilla.org/en-US/d
 You come across iframes all the time when using the web.
 (_That YouTube video on that news website you just visited? That's an iframe. That Facebook or Twitter post which was embedded on that blog? That could also be an iframe. They are all HTML website pages which are embedded on another HTML website page._)
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/GrOJkhIXifc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GrOJkhIXifc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
 
 The code snippet above represent an actual `<iframe>` tag. Adding this code snippet to the HTML of your website would embed [https://www.youtube.com/embed/GrOJkhIXifc](https://www.youtube.com/embed/GrOJkhIXifc), which is a YouTube video.
 If you opened this link, you would see that it is a YouTube video which fits the entire size of your browser window.
@@ -232,7 +234,7 @@ The above snippet demonstrates a way to achieve this.
 - You want to remove all padding and margin, and give your document a `width` and `height` of 100%.
 - You want your video player container, the `<div>` in the above snippet, to fill the entire document by setting its `width` and `height` to %100.
 
-#### Communication parent page <-> embedded page
+#### Communication between parent page and embedded page
 
 You may have a need for messaging between your parent page and your embedded page.
 

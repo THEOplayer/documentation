@@ -221,13 +221,13 @@ a basic overview of many of the relevant interfaces and events.
 
 You should show your play button when you are in a paused state, as described in ["how to track player states"](../../how-to-guides/09-player/04-how-to-track-player-states.md).
 If a viewer clicks your play button, you should call the `play()` on your `player` instance as documented across our
-[Web](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#play), [Android](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/Player.html#play--) and [iOS]() documentation.
+[Web](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#play), [Android](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/Player.html#play--) and [iOS](https://docs.theoplayer.com/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)play) documentation.
 
 ### Pause button
 
 You should show your pause button when you are in a playing state, as described in ["how to track player states"](../../how-to-guides/09-player/04-how-to-track-player-states.md).
 If a viewer clicks your pause button, you should call the `pause()` on your `player` instance as documented across our
-[Web](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#pause), [Android](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/Player.html#pause--) and [iOS]() documentation.
+[Web](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#pause), [Android](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/Player.html#pause--) and [iOS](https://docs.theoplayer.com/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)pause) documentation.
 
 ### Volume mute button
 

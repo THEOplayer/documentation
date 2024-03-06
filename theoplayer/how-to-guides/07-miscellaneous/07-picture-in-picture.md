@@ -52,23 +52,24 @@ Note that in this SDK out-of-app Picture is (currently) not supported.
 
 The PiP configuration for this SDK includes 3 properties:
 
-- `position`: (optional, possible values: "top-left", "top-right", "bottom-left", "bottom-right")<br>The corner in which the player should be shown while in PiP mode. Defaults to the bottom right corner.
+- `position`: (optional, possible values: "top-left", "top-right", "bottom-left", "bottom-right")  
+  The corner in which the player should be shown while in PiP mode. Defaults to the bottom right corner.
 
-- `visibility`: (optional, a number from 0 to 1) <br>
+- `visibility`: (optional, a number from 0 to 1)  
   The maximum percentage of the original player position that should be visible to enable PiP automatically. If not configured, PiP can only be turned on by setting [presentationMode](https://docs.theoplayer.com/api-reference/web/theoplayer.presentationmode.md) to "picture-in-picture".
 
-- `retainPresentationModeOnSourceChange`: (optional, possible values: true or false) <br>
+- `retainPresentationModeOnSourceChange`: (optional, possible values: true or false)  
   If set to true, the previous [presentationMode](https://docs.theoplayer.com/api-reference/web/theoplayer.presentationmode.md) is retained even as the source changes. It is set to false by default.
 
 ```js
 var playerConfig = {
-                ...
-                pip: {
-                        visibility: 0.7,
-                        position: "bottom-left",
-                        retainPresentationModeOnSourceChange: true
-                        }
-                };
+    /* ... */
+    pip: {
+        visibility: 0.7,
+        position: "bottom-left",
+        retainPresentationModeOnSourceChange: true
+    }
+};
 ```
 
 ##### Android / Fire TV SDK

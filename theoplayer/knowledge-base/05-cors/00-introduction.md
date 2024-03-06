@@ -54,4 +54,4 @@ This ensures that requested HLS files have the required CORS header for domain \
 
 ## Other Resources
 
-Enabling CORS depends on the backend technology and on the used CDN. More information about CORS and how to enable it on a range of backend server technology can be found at <http://enable-cors.org/>
+Enabling CORS depends on the backend technology and on the used CDN. More information about CORS and how to enable it on a range of backend server technology can be found at http://enable-cors.org/

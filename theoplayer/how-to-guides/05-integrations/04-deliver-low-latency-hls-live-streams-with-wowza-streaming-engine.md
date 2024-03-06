@@ -83,9 +83,9 @@ The following steps enable transmuxing for CMAF packetization for LL-HLS deliver
 <HTTPStreamers>cupertinostreaming</HTTPStreamers>
 ```
 
-5. Go to **[install-dir]/conf/** and open the **VHost.xml** file in a text editor.
+5. Go to **\[install-dir]/conf/** and open the **VHost.xml** file in a text editor.
 
-6. Add the AllowHttp2 property to the <SSLConfig> container element in the <HostPort> you configured for SSL/TLS and set it to true.
+6. Add the `AllowHttp2` property to the `<SSLConfig>` container element in the `<HostPort>` you configured for SSL/TLS and set it to true.
 
 ```xml
 <SSLConfig>
@@ -134,9 +134,9 @@ To bypass encoding streams with Transcoder, source streams should meet the follo
 
 - CMAF-supported codecs (required)
 
-| Video          | Audio                                                                                                                                                                          |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - H.264, H.265 | - AAC, AAC-LC, HE-AAC (AAC+ or aacPlus), <br>- HE-AACv2 (enhanced AAC+, aacPlus v2) - Dolby Digital 5.1 Surround Sound (AC-3) and Dolby Digital Plus (Enhanced AC-3 or E-AC-3) |
+| Video          | Audio                                                                                                                                                                           |
+| -------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| - H.264, H.265 | - AAC, AAC-LC, HE-AAC (AAC+ or aacPlus), <br/>- HE-AACv2 (enhanced AAC+, aacPlus v2) - Dolby Digital 5.1 Surround Sound (AC-3) and Dolby Digital Plus (Enhanced AC-3 or E-AC-3) |
 
 - GOP size: 1 or 2 seconds
 - Closed GOPs

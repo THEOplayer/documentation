@@ -447,7 +447,7 @@ We have to configure our player instance in the **MainActivity** to react to ori
     }
 ```
 
-![](../../../assets/img/android_getting_started_21.png)
+![](../../../assets/img/android-getting-started-21.png)
 
 In the **AndroidManifest.xml** we can disable the default orientation behavior on our MainActivity and lock it in portrait.  
 Then, because we enabled fullscreen orientation coupling with the **setFullScreenOrientationCoupled(true)** method earlier, THEOplayer will take care of the support of seamless landscape activity transition at rotation.
