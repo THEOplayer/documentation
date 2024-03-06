@@ -3,10 +3,11 @@
 THEOplayer is the universal video player solution created by THEO Technologies.
 The THEOplayer HTML5/Tizen/webOS SDK offers support for HLS, MPEG-DASH, advertisements, DRM and much more.
 
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-radius: 5px 5px; margin-bottom: 20px;">
-    <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">info</span> NPM</p>
-    <p>THEOplayer v2.82.0 and above can be managed through NPM. Refer to <a href="https://www.npmjs.com/package/theoplayer" target="_blank">https://www.npmjs.com/package/theoplayer</a> for more information.</p>
-</div>
+:::info NPM
+
+THEOplayer v2.82.0 and above can be managed through NPM. Refer to https://www.npmjs.com/package/theoplayer for more information.
+
+:::
 
 This article is your starting point if you are using THEOplayer for the first time.
 It takes you through the required steps to achieve a basic manual implementation of the THEOplayer SDK on Web.
