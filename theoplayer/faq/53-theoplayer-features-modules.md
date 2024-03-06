@@ -11,7 +11,7 @@ This modular approach allows you to optimize the file size of your THEOplayer SD
 
 You can do this through our [Portal](https://portal.theoplayer.com/).
 
-![Portal: enabling features of a new SDK](img/portal-features-new-sdk.png)
+![Portal: enabling features of a new SDK](../assets/img/portal-features-new-sdk.png)
 
 - If you're creating a new SDK, you can enable (and disable) features.
 - If you want to toggle certain features for an existing SDK, you need to navigate to your SDK, update it, and re-publish it.
@@ -25,7 +25,7 @@ Many features sit behind this modular structure. For example, the VR API or Up N
 You can log in to [portal.theoplayer.com](https://portal.theoplayer.com/) and navigate to your account.
 Once you're there, you further navigate to your desired SDK and check how you've customized your features.
 
-![Portal: enabling features of a new SDK](img/portal-features-existing-sdk.png)
+![Portal: enabling features of a new SDK](../assets/img/portal-features-existing-sdk.png)
 
 If you're a developer (and you're only interested in this answer for the THEOplayer Web SDK),
 then you can also figure this out at runtime through JavaScript.
