@@ -18,7 +18,7 @@ Here's what you'll do:
 You'll work towards implementing and understanding the following code in nine steps.
 This code includes the THEOplayer SDK in an HTML page and configures a video player.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -111,7 +111,7 @@ This section explains how you include the THEOplayer Web SDK in a development en
 
 The code snippet below represents "step-0", and is your starting point. This snippet is a near-empty HTML5 page. You will expand this snippet throughout the next sections through a total of nine steps.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -190,7 +190,7 @@ To access the library, you need to include the JavaScript library of the THEOpla
 
 You include the THEOplayer JavaScript library file, THEOplayer.js, through the `<script>`-tag.
 
-```html{numberLines: true}
+```html showLineNumbers
 <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
 ```
 
@@ -201,7 +201,7 @@ There are two valid values for `SDK-LIBRARY-LOCATION`:
 
 The following code represents step-1, and includes the THEOplayer JavaScript library.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -232,13 +232,13 @@ This file is called ui.css, and is located at your library location.
 
 You include the CSS file through the `<link>`-tag.
 
-```html{numberLines: true}
+```html showLineNumbers
 <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
 ```
 
 The following code represents step-2, and includes the THEOplayer CSS file.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -288,13 +288,13 @@ A `<div>`-element represents this container in HTML.
 
 We set `theoplayer-container` as the initial class name of this `<div>`-element. Setting a class name allows you to configure specific (CSS) styling for your frame, and also allows you to reference the `<div>`-element through JavaScript.
 
-```html{numberLines: true}
+```html showLineNumbers
 <div class="theoplayer-container"></div>
 ```
 
 The following code represents step-3, and adds the div container to your HTML page.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -316,7 +316,7 @@ The following code represents step-3, and adds the div container to your HTML pa
 You'll now start using JavaScript. Include a JavaScript `<script>`-tag below your `<div>`-element, as this tag allows you to embed JavaScript code.
 The snippet below demonstrates how you can use the `document.querySelector` API to store a reference to your `<div>`-element (with the `theoplayer-container` class).
 
-```html{numberLines: true}
+```html showLineNumbers
 <script>
    var container = document.querySelector(".theoplayer-container");
 </script>
@@ -324,7 +324,7 @@ The snippet below demonstrates how you can use the `document.querySelector` API 
 
 The following code represents step-4, and creates the reference to your `<div>`-element.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -360,7 +360,7 @@ var player = new THEOplayer.Player(container, {});
 
 The following code represents step-5, and creates the initial THEOplayer instance.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -398,7 +398,7 @@ If you do not set a size (e.g. through the `vjs-16-9` class), your container wou
 
 The following code represents step-6, and configures the default skin.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -450,7 +450,7 @@ Having these helper files may be mandatory for your video streams. For example, 
 
 Until this step, you were configuring an empty player configuration object `{}` as the second parameter of your `new THEOplayer.Player` constructor.
 
-```javascript{numberLines: true}
+```javascript showLineNumbers
 var player = new THEOplayer.Player(container, {});
 ```
 
@@ -466,7 +466,7 @@ var player = new THEOplayer.Player(container, {
 
 The following code represents step-7, and sets your `libraryLocation`.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -507,7 +507,7 @@ The green rectangle in the following screenshot points out where you find the va
 
 The following code represents step-8, and sets your `license`.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -582,7 +582,7 @@ player.source = {
 
 The following code represents step-9, and configures an HLS stream.
 
-```html{numberLines: true}
+```html showLineNumbers
 <!DOCTYPE html>
 <html lang="en">
   <head>
