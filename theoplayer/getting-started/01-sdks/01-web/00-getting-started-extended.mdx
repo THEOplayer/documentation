@@ -1,5 +1,7 @@
 # Getting started on Web (Extended)
 
+import styles from './shared.module.css'
+
 This guide explains how to implement the THEOplayer <abbr title="A Software Development Kit (SDK) is a collection of (software) libraries. Often, you use an API to interact with an SDK.">SDK</abbr> in a web application.
 The THEOplayer Web SDK is a video player which adds support for adaptive video streaming protocols such as <abbr title="HTTP Live Streaming is an adapative video streaming protocol maintained by Apple.">HLS</abbr> and <abbr title="MPEG-DASH is an adaptive video streaming protocol maintained by DASH-IF.">MPEG-DASH</abbr> to your website or web app.
 You can complete this guide within 10 minutes, but we recommend you to take your time.
@@ -77,16 +79,16 @@ You sign in with your Github or Google account, or with your credentials, throug
 
 ### Locate SDKs and initiate SDK creation
 
-The THEOplayer Developer Portal is a dashboard with a <span style="border: 2px solid purple; padding: 1px">top navigation</span> panel, a <span style="border: 2px solid purple; padding: 1px">side navigation</span> panel and a <span style="border: 2px solid purple; padding: 1px">content panel</span>, as shown in the screenshot below.
-The content panel contains multiple sub-panels, with one of them being the <span style="border: 2px solid #e6b000; padding: 1px">SDKs</span> panel.
-Click the <span style="border: 2px solid red; padding: 1px">Create</span> button in the SDKs panel, as annotated with a red arrow in the following screenshot.
+The THEOplayer Developer Portal is a dashboard with a <span className={styles.borderPurple}>top navigation</span> panel, a <span className={styles.borderPurple}>side navigation</span> panel and a <span className={styles.borderPurple}>content panel</span>, as shown in the screenshot below.
+The content panel contains multiple sub-panels, with one of them being the <span className={styles.borderYellow}>SDKs</span> panel.
+Click the <span className={styles.borderRed}>Create</span> button in the SDKs panel, as annotated with a red arrow in the following screenshot.
 
 ![THEOplayer Developer Portal's dashboard](../../../assets/img/getting-started-web-sdk/dashboard-annotate.png)
 
 Alternatively, you create an SDK through the SDKs page.
 
-- You click the <span style="border: 2px dashed red; padding: 1px;">SDKs</span> item in the side navigation panel (annotated with a dashed red rectangle in the screenshot above) to navigate to the overview of your existing SDKs.
-- The content panel of the SDKs page presents action buttons. Click the <span style="border: 2px solid red; padding: 1px;">Create</span> button to initiate the SDK creation process, as highlighted in the screenshot below.
+- You click the <span className={styles.borderRedDashed}>SDKs</span> item in the side navigation panel (annotated with a dashed red rectangle in the screenshot above) to navigate to the overview of your existing SDKs.
+- The content panel of the SDKs page presents action buttons. Click the <span className={styles.borderRed}>Create</span> button to initiate the SDK creation process, as highlighted in the screenshot below.
 
 ![THEOplayer Developer Portal SDK Page](../../../assets/img/getting-started-web-sdk/sdks-page.png)
 
@@ -102,10 +104,10 @@ Building your Web SDK involves four steps.
 ![Build SDK](../../../assets/img/getting-started-web-sdk/build-sdk.png)
 
 After you complete the fourth step, "Review and Publish", it'll take the portal a couple of minutes to generate your unique SDK.
-Once you see the <span style="border: 2px solid red; padding: 1px;">Ready!</span> button, as the screenshot below highlights with the red rectangle, you know that your SDK is available.
+Once you see the <span className={styles.borderRed}>Ready!</span> button, as the screenshot below highlights with the red rectangle, you know that your SDK is available.
 
 ![SDK ready](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
-In the next section, you'll learn the importance of the <span style="border: 2px solid purple; padding: 1px;">"KEY"</span>, <span style="border: 2px solid green; padding: 1px;">"LICENSE"</span> and <span style="border: 2px solid #1868ff; padding: 1px;">"CDN"</span> values in the above screenshot, and how it relates to including an SDK and initializing a video player.
+In the next section, you'll learn the importance of the <span className={styles.borderPurple}>"KEY"</span>, <span className={styles.borderGreen}>"LICENSE"</span> and <span className={styles.borderBlue}>"CDN"</span> values in the above screenshot, and how it relates to including an SDK and initializing a video player.
 
 ## Include an SDK
 
@@ -172,15 +174,15 @@ Alternatively, when you disable the HLS feature,you won't have the helper files.
 
 Throughout this guide, you will often see `SDK-LIBRARY-LOCATION` and `YOUR-LICENSE`:
 
-- Change the value of `SDK-LIBRARY-LOCATION` to your actual CDN value. The <span style="border: 2px solid #1868ff; padding: 1px;">blue rectangle</span> in the screenshot below annotates an example `SDK-LIBRARY-LOCATION` value.
-- Change the value of `YOUR-LICENSE` to your actual license value. The <span style="border: 2px solid #5a8235; padding: 1px;">green rectangle</span> in the screenshot below annotates an example `YOUR-LICENSE` value.
+- Change the value of `SDK-LIBRARY-LOCATION` to your actual CDN value. The <span className={styles.borderBlue}>blue rectangle</span> in the screenshot below annotates an example `SDK-LIBRARY-LOCATION` value.
+- Change the value of `YOUR-LICENSE` to your actual license value. The <span className={styles.borderGreen}>green rectangle</span> in the screenshot below annotates an example `YOUR-LICENSE` value.
 
 Failing to replace these values results in errors as you'll be loading non-existent files.
 Our advice is to copy-paste these two values in a text editor so that you can quickly access them for the remainder of this guide.
 <img src="../../../assets/img/getting-started-web-sdk/sdk-ready.png" alt="screenshot from the THEO portal SDK build page, highlighting various elements" />
 
-The blue rectangle in the above screenshot annotates the <code class="language-text" style="border: 2px solid #1868ff; padding: 1px;">SDK-LIBRARY-LOCATION</code>.
-The green rectangle in the above screenshot annotates <code class="language-text" style="border: 2px solid green; padding: 1px;">YOUR-LICENSE</code>.
+The blue rectangle in the above screenshot annotates the <code className={styles.borderBlue}>SDK-LIBRARY-LOCATION</code>.
+The green rectangle in the above screenshot annotates <code className={styles.borderGreen}>YOUR-LICENSE</code>.
 
 :::
 
@@ -510,7 +512,7 @@ You set your license through the license key of your player configuration object
 If you don't set your license, you won't be able to authenticate your license with the SDK.
 This authentication is important for a number of use-cases, such as remotely configuring your whitelisted domains.
 
-The green rectangle in the following screenshot points out where you find the value of your <span style="border: 2px solid green; padding: 1px;">license</span> on the page of your SDK.
+The green rectangle in the following screenshot points out where you find the value of your <span className={styles.borderGreen}>license</span> on the page of your SDK.
 
 ![SDK License](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
 
