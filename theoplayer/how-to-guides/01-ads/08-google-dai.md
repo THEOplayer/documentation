@@ -345,7 +345,7 @@ THEOplayer SDK and Google DAI are fully pre-integrate to deliver Server-Side Ad 
 Extra resources:
 
 1. [Google DAI Pre-Integration API](https://docs.theoplayer.com/api-reference/web/theoplayer.googledaiconfiguration.md)
-2. [THEOplayer Getting Started Guide](web/../../../getting-started/01-sdks/01-web/00-getting-started.md)
+2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)
 3. [Google DAI website](https://developers.google.com/interactive-media-ads)
 
 Related articles
