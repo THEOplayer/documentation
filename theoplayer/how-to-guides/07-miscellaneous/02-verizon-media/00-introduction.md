@@ -2,11 +2,12 @@
 
 THEOplayer and Verizon Media are partners in the streaming industry. The [Verizon Media Platform](https://www.verizondigitalmedia.com/) offers services like encoding, transcoding, server-side ad-insertion, a CDN and more.
 
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-radius: 5px 5px; margin-bottom: 20px;">
-    <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">info</span>Edgio</p>
-    <p>Verizon Media is now called <a href="https://edg.io/" target="_blank"><strong>Edgio</strong></a>.
-    We continue to refer to Edgio as Verizon Media for the time being, but expect to update our API and documentation to reflect this change at some point.</p>
-</div>
+:::info Edgio
+
+Verizon Media is now called <a href="https://edg.io/" target="_blank"><strong>Edgio</strong></a>.
+We continue to refer to Edgio as Verizon Media for the time being, but expect to update our API and documentation to reflect this change at some point.
+
+:::
 
 Verizon Media offers services which can enhance the API, UI and UX of video players and applications. The most popular services are called Preplay, Ping and Asset Info. THEOplayer integrates these services so that developers and viewers can benefit from them.
 

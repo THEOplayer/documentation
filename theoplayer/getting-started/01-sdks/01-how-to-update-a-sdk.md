@@ -2,13 +2,13 @@
 
 This how-to guide describes how to update to a new version of the THEOplayer SDK.
 
----
+:::info
 
-ℹ️ Starting from version 2.79.0, you can make use of License as a Configuration with Web SDK. This allows you to reuse the same library when changing your license. It also allows you to make use of our NPM modules instead of using the THEOplayer zip-file. In order to use this functionality, there is a change needed in your THEOplayer integration. You can read more about this [here](../../how-to-guides/12-license/00-introduction.md).
+Starting from version 2.79.0, you can make use of License as a Configuration with Web SDK. This allows you to reuse the same library when changing your license. It also allows you to make use of our NPM modules instead of using the THEOplayer zip-file. In order to use this functionality, there is a change needed in your THEOplayer integration. You can read more about this [here](../../how-to-guides/12-license/00-introduction.md).
 
 We highly recommend using this new license system due to all the advantages it brings.
 
----
+:::
 
 ## Update Web SDK
 

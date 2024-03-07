@@ -2,11 +2,11 @@
 
 This how-to guide describes how to set up a Chromecast Receiver application using the THEOplayer SDK.
 
----
+:::info
 
-ℹ️ This guide is intended for developing a Chromecast Receiver application with Google Cast SDK v2. Since Google Cast SDK v2 is deprecated by Google, we highly recommend developing your Chromecast SDK with CAF instead of v2. You can find the THEOplayer Cast Receiver Reference app [here](https://github.com/THEOplayer/samples-google-cast-v3-receiver).
+This guide is intended for developing a Chromecast Receiver application with Google Cast SDK v2. Since Google Cast SDK v2 is deprecated by Google, we highly recommend developing your Chromecast SDK with CAF instead of v2. You can find the THEOplayer Cast Receiver Reference app [here](https://github.com/THEOplayer/samples-google-cast-v3-receiver).
 
----
+:::
 
 ## Prerequisite:
 

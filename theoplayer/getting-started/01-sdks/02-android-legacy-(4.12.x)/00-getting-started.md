@@ -87,10 +87,11 @@ When you select **Project** view, you can see a lot more files and directories. 
 
 ## Add THEOplayer library to your application ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/1ec4834a5de05115d81994aef4f24b7cd781ce0e?diff=unified))
 
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-radius: 5px 5px; margin-bottom: 20px;">
-    <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">info</span> Gradle / Maven / Jitpack</p>
-    <p>THEOplayer v2.83.0 and above can be managed through Jitpack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.</p>
-</div>
+:::info Gradle / Maven / Jitpack
+
+THEOplayer v2.83.0 and above can be managed through Jitpack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.
+
+:::
 
 You can manually configure your THEOplayer dependencies.
 When you create your THEOplayer Legacy Android SDK (4.12.x) through [https://portal.theoplayer.com](https://portal.theoplayer.com/login),

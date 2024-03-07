@@ -68,7 +68,9 @@ SourceDescription elephantsDream = SourceDescription.Builder
 tpv.getPlayer().setSource(elephantsDream);  
 ```
 
-ℹ️ Starting from Android SDK API 28, Google introduced some additional network security configurations. By default, http requests are blocked by the OS unless the application explicitly allows it.
+:::info
+
+Starting from Android SDK API 28, Google introduced some additional network security configurations. By default, http requests are blocked by the OS unless the application explicitly allows it.
 
 In order to allow http requests (and allow Youbora data to be sent to the dashboard), you should follow the instructions in their guide: [Network security configuration](https://developer.android.com/training/articles/security-config).
 
@@ -82,6 +84,8 @@ Basically there are 2 different ways to solve this on your app:
 <network-security-config>  
  <domain-config cleartextTrafficPermitted="true"> .... </domain-config> <base-config cleartextTrafficPermitted="false"/></network-security-config>  
 ``` 
+
+:::
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 

@@ -1,10 +1,12 @@
 # Getting started on Fire TV Legacy (4.12.x)
 
-<div style="background: #f7f7f7; padding: 5px 10px 5px 10px; border-radius: 5px 5px; margin-bottom: 20px;">
-    <p style="margin-bottom: 10px;"><span class="material-icons" style="font-size: 1em; position: relative; top: 2px;">info</span> Fire TV</p>
-    <p>The latest THEOplayer Android SDK (5.0.0+) is compatible both with Android mobile and Fire TV. We do not have a separate SDK for each platform.</p>
-    <p>You can follow the guide: <a href="https://docs.theoplayer.com/getting-started/01-sdks/02-android/00-getting-started.md" target="_blank">Getting started on Android</a>.</p>
-</div>
+:::info Fire TV
+
+The latest THEOplayer Android SDK (5.0.0+) is compatible both with Android mobile and Fire TV. We do not have a separate SDK for each platform.
+
+You can follow the guide: <a href="https://docs.theoplayer.com/getting-started/01-sdks/02-android/00-getting-started.md" target="_blank">Getting started on Android</a>.
+
+:::
 
 This guide will help you to integrate the THEOplayer Android SDK into your Fire TV project.
 
