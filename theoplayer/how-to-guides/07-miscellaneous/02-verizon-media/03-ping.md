@@ -125,22 +125,23 @@ If this configuration is not present, or none of the configuration options is ac
 ## Ping requests
 
 When the Ping API is enabled, THEOplayer will call the Ping URL located at:
-
-    {prefix}/session/ping/{sessionID}.json?v=3&pt={currentTime}&ev={event}&ft={freeWheelTime}
+```
+{prefix}/session/ping/{sessionID}.json?v=3&pt={currentTime}&ev={event}&ft={freeWheelTime}
+```
 
 Where:
 
-- {prefix}: Is the prefix URL from the Preplay response.
-- {sessionID}: Is the session ID from the Preplay response.
-- {currentTime}: Mandatory parameter. This is the current player time in seconds.
+- `{prefix}`: Is the prefix URL from the Preplay response.
+- `{sessionID}`: Is the session ID from the Preplay response.
+- `{currentTime}`: Mandatory parameter. This is the current player time in seconds.
 
-- {event}: Is the current Ping event. An event should only be passed when playback starts or when a viewer seeks to a new position.
+- `{event}`: Is the current Ping event. An event should only be passed when playback starts or when a viewer seeks to a new position.
   Valid values are:
 
   - **start**: Pass this event, along `withpt=0`, when the player starts playback. This lets the server know where playback starts and allows the server to fire start events as needed.
   - **seek**: Pass this event when a viewer seeks. This resets the timeline to prevent inadvertently firing events for skipped ads.
 
-- {freeWheelTime}: Indicates the playback position, in seconds, right before a viewer seeks to a different position in the timeline. This property is mandatory when the freeWheelVideoViews is used.
+- `{freeWheelTime}`: Indicates the playback position, in seconds, right before a viewer seeks to a different position in the timeline. This property is mandatory when the freeWheelVideoViews is used.
 
 ## Ping Response
 
