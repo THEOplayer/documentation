@@ -1,3 +1,7 @@
+---
+sidebar_position: 0.1
+---
+
 # How to update an SDK?
 
 This how-to guide describes how to update to a new version of the THEOplayer SDK.

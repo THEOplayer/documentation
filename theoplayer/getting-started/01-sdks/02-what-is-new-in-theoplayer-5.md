@@ -1,3 +1,7 @@
+---
+sidebar_position: 0.2
+---
+
 # THEOplayer 5.0 - Native Mobile iOS/tvOS and Android SDKs
 
 Version 5.0 is a major upgrade in our THEOplayer SDK line-up.

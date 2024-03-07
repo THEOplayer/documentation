@@ -1,3 +1,7 @@
+---
+sidebar_position: 0.0
+---
+
 # Introduction
 
 THEOplayer provides a set of feature-rich video player software development kits (SDKs).
