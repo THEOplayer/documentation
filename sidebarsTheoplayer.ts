@@ -25,7 +25,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Guides',
+      label: 'How-to guides',
       description: 'Learn how to implement our rich set of features and integrations.',
       customProps: {
         icon: '📖',
