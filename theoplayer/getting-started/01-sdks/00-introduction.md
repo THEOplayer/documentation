@@ -38,7 +38,7 @@ THEOplayer offers the following SDKs. (Clicking the link takes you to the respec
 
 - Roku SDK
 
-  - [Roku](./09-roku/00-getting-started.md) targets Roku apps.
+  - [Roku](./09-roku/00-getting-started.mdx) targets Roku apps.
 
 - [React Native](../02-frameworks/03-react-native/00-getting-started.md) SDK
 
