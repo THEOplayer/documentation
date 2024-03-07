@@ -83,5 +83,5 @@ Here's an example on how to dynamically generate such a cachebuster variable in 
 ## Related articles
 
 - [How to update an SDK](../01-how-to-update-a-sdk.md)
-- [License](https://docs.theoplayer.com/how-to-guides/12-license/00-introduction.md)
+- [License](../../../how-to-guides/12-license/00-introduction.md)
 - [How to reduce data usage on mobile devices on mobile web](../../../how-to-guides/06-mediatrack/06-how-to-reduce-data-usage-on-mobile-devices.md)

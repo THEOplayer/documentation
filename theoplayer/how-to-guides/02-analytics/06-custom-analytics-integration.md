@@ -86,14 +86,14 @@ Below is an (incomplete) list of some common interface event maps.
   - iOS: [AirPlay](pathname:///theoplayer/v6/api-reference/ios/Structs/AirPlayEventTypes.html) & [Chromecast](pathname:///theoplayer/v6/api-reference/ios/Structs/ChromecastEventTypes.html)
   - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/chromecast/package-summary.html)
 - Network is the interface that is used to intercept HTTP(S) requests and responses.
-  You should only use this API on the THEOplayer Web SDK, and only when you can't use [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) to accomplish the same. \* [Web](https://docs.theoplayer.com/how-to-guides/08-network/00-introduction.md)
+  You should only use this API on the THEOplayer Web SDK, and only when you can't use [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) to accomplish the same. \* [Web](../08-network/00-introduction.md)
 
 Note that maintaining the above list manually is unfortunately a no-go because our interfaces evolve.
 This means that you should research your events through our automatically managed API references at [https://docs.theoplayer.com/](https://docs.theoplayer.com/).
 For example, interfaces like VR, TextTrackCueList, VideoTrackList, Verizon Media and Yospace are omitted because manually maintaining this would be too challenging.
 
 When doing a custom analytics integration, you should also check our [Metrics](https://docs.theoplayer.com/api-reference/web/theoplayer.metrics.md) API,
-and our articles on [error handling](https://docs.theoplayer.com/how-to-guides/07-miscellaneous/04-error/00-introduction.md).
+and our articles on [error handling](../07-miscellaneous/04-error/00-introduction.md).
 
 ### Video analytics metrics and events
 

@@ -9,7 +9,7 @@ Another difference between the SDKs is that with Android SDK users will no longe
 This because the Android SDK works on Android mobile, Android TV and Fire TV devices with Android OS version 5.0+ (API level 21 and above).
 
 The Android SDK moves towards more modularized features, which means there is a base SDK that can handle basic playback and additional feature integrations are provided as separate modules that can be added as desired.
-This approach gives more flexibility and results in a reduced application size, since non-required parts are not included in the build of the application. You can read more about this [here](https://docs.theoplayer.com/getting-started/01-sdks/02-what-is-new-in-theoplayer-5.md).
+This approach gives more flexibility and results in a reduced application size, since non-required parts are not included in the build of the application. You can read more about this [here](../02-what-is-new-in-theoplayer-5.md).
 
 The Android SDK leverages Java 8 and Kotlin languages to provide safer and more concise code.
 
@@ -32,7 +32,7 @@ What features are covered already in THEOplayer Android SDK 5.0?
 - Google DAI integration
 - Google Cast (Chromecast) integration
 - MediaTailor integration
-- [Native picture-in-picture support](https://docs.theoplayer.com/how-to-guides/07-miscellaneous/07-picture-in-picture.md#android--fire-tv-sdk)
+- [Native picture-in-picture support](../../../how-to-guides/07-miscellaneous/07-picture-in-picture.md#android--fire-tv-sdk)
 - Fullscreen playback
 - Background audio playback
 
@@ -85,7 +85,7 @@ For these please consult with our [changelog](https://docs.theoplayer.com/change
 
 #### 2. The new integration-based architecture.
 
-You can read more about the new architecture [here](https://docs.theoplayer.com/getting-started/01-sdks/02-what-is-new-in-theoplayer-5.md).
+You can read more about the new architecture [here](../02-what-is-new-in-theoplayer-5.md).
 
 The module names are also updated.
 Therefore, to migrate each modularized feature refer to the following table to make the necessary changes:

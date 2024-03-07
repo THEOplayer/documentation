@@ -44,7 +44,7 @@ With Android THEOplayer SDK we currently support the following feature integrati
 
 | Feature         | Dependency                      | Release | Documentation                                                                                                                                 |
 | :-------------- | :------------------------------ | :-----: | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| Google IMA      | `integration-ads-ima:+`         | 3.1.0+  | [Google IMA Documentation](https://docs.theoplayer.com/how-to-guides/01-ads/10-google-ima.md/#unified-android-sdk)                            |
-| Chromecast      | `integration-cast:+`            | 3.4.0+  | [Chromecast Documentation](https://docs.theoplayer.com/how-to-guides/03-cast/01-chromecast/00-introduction.md#theoplayer-unified-android-sdk) |
-| AWS MediaTailor | `integration-ads-mediatailor:+` | 4.0.0+  | [AWS MediaTailor Documentation](https://docs.theoplayer.com/how-to-guides/05-integrations/05-mediatailor.md/#unified-android-sdk)             |
-| Google DAI      | `integration-ads-dai:+`         | 4.3.0+  | [Google DAI Documentation](https://docs.theoplayer.com/how-to-guides/01-ads/08-google-dai.md#theoplayer-unified-android-sdk)                  |
+| Google IMA      | `integration-ads-ima:+`         | 3.1.0+  | [Google IMA Documentation](../../../how-to-guides/01-ads/10-google-ima.md/#unified-android-sdk)                            |
+| Chromecast      | `integration-cast:+`            | 3.4.0+  | [Chromecast Documentation](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md#theoplayer-unified-android-sdk) |
+| AWS MediaTailor | `integration-ads-mediatailor:+` | 4.0.0+  | [AWS MediaTailor Documentation](../../../how-to-guides/05-integrations/05-mediatailor.md/#unified-android-sdk)             |
+| Google DAI      | `integration-ads-dai:+`         | 4.3.0+  | [Google DAI Documentation](../../../how-to-guides/01-ads/08-google-dai.md#theoplayer-unified-android-sdk)                  |

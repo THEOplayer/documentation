@@ -145,8 +145,8 @@ It is your decision whether you want to build a native UI or a WebView UI.
 That being said: any code related to iOS and Android outside this subsection assumes that you are building a native UI.
 
 When you want to use a WebView to implement a Chromeless UI, you must leverage
-[iOS customization](https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-ios-sdk-customization.md) and
-[Android customization](https://docs.theoplayer.com/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
+[iOS customization](../../getting-started/01-sdks/03-ios/01-ios-sdk-customization.md) and
+[Android customization](../../getting-started/01-sdks/02-android/01-android-sdk-customization.md).
 This customization approach allows you to insert custom JavaScript and CSS files that can hook into the THEOplayer API.
 To access the THEOplayer `player` variable through the inserted JavaScript file, you can invoke `THEOplayer.players[0]`.
 
@@ -434,11 +434,11 @@ This alternative makes you fully responsible for the rendering and styling, and 
 When playing back advertisements, you might want to overlay a countdown, show a skip button after some seconds,
 insert ad markers in the scrub bar, and achieve other use cases.
 
-If you use [Google IMA](https://docs.theoplayer.com/how-to-guides/01-ads/10-google-ima.md) for client-side ad-insertion,
+If you use [Google IMA](../01-ads/10-google-ima.md) for client-side ad-insertion,
 then this integration might already take care of some default UI customization.
 
-If you are using THEOplayer's [default ad integration](https://docs.theoplayer.com/how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md) for client-side ad-insertion,
-then you need to [subscribe to the appropriate ad events](https://docs.theoplayer.com/how-to-guides/01-ads/11-how-to-subscribe-to-ad-events.md),
+If you are using THEOplayer's [default ad integration](../01-ads/03-how-to-set-up-vast-and-vmap.md) for client-side ad-insertion,
+then you need to [subscribe to the appropriate ad events](../01-ads/11-how-to-subscribe-to-ad-events.md),
 and apply your UI and UX in the callbacks of these events.
 
 Similarly, if you're doing server-side ad-insertion, you also need to apply your UI and UX in the callbacks of your ad events.

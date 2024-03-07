@@ -13,7 +13,7 @@ Including these files allows you to create a hybrid application to increase code
 - You can build a UI for Web, and re-use it in your Android or iOS application.
 - You can add JavaScript logic, and re-use it in your Android or iOS application.
 
-Through JavaScript, you have access to some THEOplayer features which aren't exposed in the iOS or Android SDK, such as the [Network API](https://docs.theoplayer.com/how-to-guides/08-network/00-introduction.md).
+Through JavaScript, you have access to some THEOplayer features which aren't exposed in the iOS or Android SDK, such as the [Network API](../how-to-guides/08-network/00-introduction.md).
 
 How to communicate with messages between your Android/iOS application, and your JavaScript logic, will be discussed in a follow-up article.
 
@@ -40,7 +40,7 @@ player.source = {
 };
 ```
 
-Please note that it is not possible to inject JavaScript/CSS to [Android SDK 5.0+](https://docs.theoplayer.com/getting-started/01-sdks/02-android-unified/00-getting-started.md) with this method.
+Please note that it is not possible to inject JavaScript/CSS to [Android SDK 5.0+](../getting-started/01-sdks/02-android-unified/00-getting-started.md) with this method.
 
 ### iOS
 

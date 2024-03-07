@@ -4,7 +4,7 @@ When it comes to Picture-in-Picture (PiP), there are different options, each wit
 The following gives a short general description of the most commonly used options.
 
 ## THEOplayer PiP    
-[This guide](https://docs.theoplayer.com/how-to-guides/07-miscellaneous/07-picture-in-picture.md) will help you get started with THEOplayer PiP in your implementation.  
+[This guide](../how-to-guides/07-miscellaneous/07-picture-in-picture.md) will help you get started with THEOplayer PiP in your implementation.  
 Highlights:
 * <u>Pros</u>: easily configured within the playerConfig; it will automatically trigger when the visible video portion is below the declared threshold;    the pause/resume behaviour with a click on any part of the video is maintained;   CSAI ads and subtitles are correctly rendered in the floating window
 * <u>Cons</u>: the floating player can't be resized at runtime and it sticks to its predefined position;  it is in-app, meaning that it won't stay visible if you browse to other tabs or applications

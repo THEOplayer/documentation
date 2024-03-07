@@ -25,5 +25,5 @@ When multiple subtitles with mode `hidden` are configured, only one will fire it
 The following resources provide more information:
 
 - [HLS Specification - #EXT-X-STREAM-INF](https://datatracker.ietf.org/doc/html/rfc8216#section-4.3.4.2)
-- [THEOplayer introduction to subtitles and closed captions](https://docs.theoplayer.com/knowledge-base/03-playback/subtitles-and-closed-captions/00-introduction.md)
-- [THEOplayer introduction texttracks](https://docs.theoplayer.com/how-to-guides/10-texttrack/00-introduction.md)
+- [THEOplayer introduction to subtitles and closed captions](../knowledge-base/03-playback/subtitles-and-closed-captions/00-introduction.md)
+- [THEOplayer introduction texttracks](../how-to-guides/10-texttrack/00-introduction.md)

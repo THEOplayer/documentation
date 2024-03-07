@@ -202,8 +202,8 @@ THEOplayer is able to extract all applicable types of timed metadata across all 
 THEOplayer offers a number of pre-integrations to facilitate the implementation of relevant SSAI use-cases.
 Reach out to THEOplayer if your vendor is missing from the list below, because the list is incomplete.
 
-- [Google DAI](https://docs.theoplayer.com/how-to-guides/01-ads/08-google-dai.md)
-- [Yospace](https://docs.theoplayer.com/how-to-guides/01-ads/04-yospace.md)
+- [Google DAI](../../how-to-guides/01-ads/08-google-dai.md)
+- [Yospace](../../how-to-guides/01-ads/04-yospace.md)
 - [Verizon Media](../../how-to-guides/07-miscellaneous/02-verizon-media/00-introduction.md)
 
 THEOplayer offers features which might implement your desired use-case out-of-the-box:

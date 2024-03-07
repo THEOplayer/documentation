@@ -46,4 +46,4 @@ After optimizing your SDK, by enabling and disabling certain features, you might
 
 Note that optimizing a video player goes way beyond reducing your file size.
 As a developer, you could consider [async library loading](https://demo.theoplayer.com/async-library-loading), you could change your [ABR strategy](https://docs.theoplayer.com/api-reference/web/theoplayer.abrstrategytype.md) (as [demonstrated](https://demo.theoplayer.com/increase-viewer-experience-optimizing-video-abr)),
-you want to optimize your [time-to-first-frame](https://docs.theoplayer.com/how-to-guides/09-player/02-how-to-measure-time-to-first-frame.md), and much more!
+you want to optimize your [time-to-first-frame](../how-to-guides/09-player/02-how-to-measure-time-to-first-frame.md), and much more!

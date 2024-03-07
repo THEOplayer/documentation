@@ -2,7 +2,7 @@
 
 This article will show you how to play a VR source in THEOplayer using WebXR. If you are not familiar with
 THEOplayer, we strongly recommend reading
-the [getting started documentation for web](https://docs.theoplayer.com/getting-started/01-sdks/01-web/00-getting-started.md)
+the [getting started documentation for web](00-getting-started.md)
 first.
 
 ## SDKs

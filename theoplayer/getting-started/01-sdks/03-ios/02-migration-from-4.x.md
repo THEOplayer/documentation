@@ -10,7 +10,7 @@ Removing the WebView dependency will also allow us to move many of the APIs from
 
 The THEOplayer iOS/tvOS SDK 5.0+ moves towards more modularized features, which means there is a base SDK that can handle basic playback and additional feature integrations are provided as separate modules that can be added as desired.
 This approach gives more flexibility and results in a reduced application size, since non-required parts are not included in the build of the application.
-You can read more about this [here](https://docs.theoplayer.com/getting-started/01-sdks/02-what-is-new-in-theoplayer-5.md).
+You can read more about this [here](../02-what-is-new-in-theoplayer-5.md).
 
 Lastly, the THEOplayer iOS/tvOS SDK 5.0+ is released only on package managers (Cocoapods, and Swift packages later) which allow developers to easily fetch and implement the latest player into their app.
 
@@ -27,7 +27,7 @@ What features are covered already in THEOplayer iOS/tvOS SDK 5.0?
 - [Custom content protection integrations](https://github.com/THEOplayer/samples-drm-integration)
 - Google IMA integration
 - Google Cast (Chromecast) integration
-- [Native picture-in-picture support](https://docs.theoplayer.com/how-to-guides/07-miscellaneous/07-picture-in-picture.md#ios--tvos-sdk)
+- [Native picture-in-picture support](../../../how-to-guides/07-miscellaneous/07-picture-in-picture.md#ios--tvos-sdk)
 - Fullscreen playback
 - Airplay support
 - Background audio playback
@@ -69,7 +69,7 @@ For these ones please consult with our [changelog](https://docs.theoplayer.com/c
 
 #### 2. The new integration-based architecture.
 
-You can read more about the new architecture [here](https://docs.theoplayer.com/getting-started/01-sdks/02-what-is-new-in-theoplayer-5.md)
+You can read more about the new architecture [here](../02-what-is-new-in-theoplayer-5.md)
 
 Use the latest THEOplayer iOS/tvOS SDK Cocoapod in your Podfile.
 

@@ -10,7 +10,7 @@ On iOS browsers, THEOplayer has to use the native playback pipeline, instead of 
 
 When a FairPlay DRM protected stream is used, we are limited by the same scenario on macOS Safari since for DRM playback we rely on the native pipeline.
 
-The underlying AVFoundation stack on iOS/tvOS SDKs, which THEOplayer has to use, brings along the technical limitation that you cannot select a specific video quality. Instead, you can set a maximum resolution or bitrate as explained [here](https://docs.theoplayer.com/how-to-guides/06-mediatrack/03-how-to-select-video-track-quality.md#ios-tvos-sdk).
+The underlying AVFoundation stack on iOS/tvOS SDKs, which THEOplayer has to use, brings along the technical limitation that you cannot select a specific video quality. Instead, you can set a maximum resolution or bitrate as explained [here](../how-to-guides/06-mediatrack/03-how-to-select-video-track-quality.md#ios-tvos-sdk).
 
 In result, THEOplayer cannot offer functionality to developers and viewers to change qualities on these scenarios.
 
@@ -19,4 +19,4 @@ In result, THEOplayer cannot offer functionality to developers and viewers to ch
 The following resources provide more information:
 
 - https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API
-- [How to programmatically select a video track quality](https://docs.theoplayer.com/how-to-guides/06-mediatrack/03-how-to-select-video-track-quality.md#ios-tvos-sdk)
+- [How to programmatically select a video track quality](../how-to-guides/06-mediatrack/03-how-to-select-video-track-quality.md#ios-tvos-sdk)

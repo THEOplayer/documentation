@@ -588,4 +588,4 @@ Consider the following actions to improve your knowledge on the THEOplayer Roku 
 
 - Clone (or download) our sample Roku applications at [https://github.com/THEOplayer/samples-roku-sdk](https://github.com/THEOplayer/samples-roku-sdk). These applications provide an alternative perspective on using THEOplayer in Roku.
 - Go through the how-to guides at [https://docs.portal.theoplayer.com/](https://docs.portal.theoplayer.com/).
-  We try to provide the "Roku implementation" in as many articles as we can. (e.g. ["How to programmatically enable or disable text tracks"](https://docs.theoplayer.com/how-to-guides/10-texttrack/03-how-to-programmatically-disable-text-tracks.md))
+  We try to provide the "Roku implementation" in as many articles as we can. (e.g. ["How to programmatically enable or disable text tracks"](../../../how-to-guides/10-texttrack/03-how-to-programmatically-disable-text-tracks.md))

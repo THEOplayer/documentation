@@ -4,7 +4,7 @@ This article explains how to configure the license at runtime.
 
 A THEOplayer license is required to use the THEOplayer library for the desired domains. The licensing schema was previously based on the built-in license from the SDK build. THEOplayer now allows to update the license without rebuilding or re-integrating the player SDK.
 
-This guide builds upon the basic player setup, make sure you read our [getting-started guides](https://docs.theoplayer.com/getting-started/01-sdks/00-introduction.md).
+This guide builds upon the basic player setup, make sure you read our [getting-started guides](../../getting-started/01-sdks/00-introduction.md).
 
 ### Table of Contents
 
@@ -130,7 +130,7 @@ There are two important aspects which can introduce a dependency on THEOplayer s
 
 #####1. Loading a THEOplayer SDK from the THEOplayer CDN
 
-This issue is only relevant for the THEOplayer HTML5 / Tizen / webOS SDK. In order to avoid this dependency, we recommend to self-host your THEOplayer SDK. The easiest approach is to load the player through NPM, or download the player SDK as a zip-file from the developer portal. More information on how to self-host your player can be found [here](https://docs.theoplayer.com/faq/34-self-hosting-theoplayer.md).
+This issue is only relevant for the THEOplayer HTML5 / Tizen / webOS SDK. In order to avoid this dependency, we recommend to self-host your THEOplayer SDK. The easiest approach is to load the player through NPM, or download the player SDK as a zip-file from the developer portal. More information on how to self-host your player can be found [here](../../faq/34-self-hosting-theoplayer.md).
 
 #####2. Loading a THEOplayer license from the THEOplayer license system
 

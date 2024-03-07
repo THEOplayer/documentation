@@ -9,7 +9,7 @@ In this set-up, THEOplayer can play out the streams hosted by Wowza.
 
 ## Related Articles
 
-- [Integrate Wowza with THEOplayer](https://docs.theoplayer.com/how-to-guides/05-integrations/03-wowza-streaming-engine-with-secure-token-version-2.md)
+- [Integrate Wowza with THEOplayer](../how-to-guides/05-integrations/03-wowza-streaming-engine-with-secure-token-version-2.md)
 
 ## Demo application
 

@@ -8,4 +8,4 @@ Casting (Chromecast) is not supported on the iOS Chrome browser.
 
 :::
 
-You can still implement Chromecast inside a native iOS app following our guide [here](https://docs.theoplayer.com/how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md).
+You can still implement Chromecast inside a native iOS app following our guide [here](../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md).

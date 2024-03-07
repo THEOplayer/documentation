@@ -15,7 +15,7 @@ THEOplayer is built in a modular way, and a THEOplayer library has a set of feat
 
 ## Setup Chromecast SDK
 
-Please follow [our guide on how to setup the Google Cast SDK](https://docs.theoplayer.com/how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md#ios-sdk) in your application when using THEOplayer.
+Please follow [our guide on how to setup the Google Cast SDK](../../../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md#ios-sdk) in your application when using THEOplayer.
 
 ## Implement custom LNA screen
 

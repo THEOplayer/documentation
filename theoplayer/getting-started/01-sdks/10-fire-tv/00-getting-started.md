@@ -28,7 +28,7 @@ The THEOplayer Android SDK can be used for Fire TV devices using Android 5.0+ (m
 
 Enable the `ExoPlayer` but exclude the `Chromecast` feature flags.
 
-Clone the THEOplayer Android TV SDK - Starter project: https://github.com/THEOplayer/android-tv-sdk-starter-project or build your own, following [these guidelines](https://docs.theoplayer.com/getting-started/01-sdks/04-android-tv/00-getting-started.md).
+Clone the THEOplayer Android TV SDK - Starter project: https://github.com/THEOplayer/android-tv-sdk-starter-project or build your own, following [these guidelines](../04-android-tv/00-getting-started.md).
 
 Make sure `minSdkVersion` is set to 21 in `app/build.gradle`.
 

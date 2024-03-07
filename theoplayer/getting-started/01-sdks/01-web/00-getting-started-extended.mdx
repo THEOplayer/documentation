@@ -695,7 +695,7 @@ Let's explain four popular features of the THEOplayer API.
 #### Autoplay
 
 You add support for autoplay by setting [`player.autoplay = true`](https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md).
-Additionally, we set [`mutedAutoplay: "all"`](https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md) in the player configuration, to [combat autoplay policies](https://docs.theoplayer.com/faq/02-how-to-combat-autoplay-policies.md).
+Additionally, we set [`mutedAutoplay: "all"`](https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md) in the player configuration, to [combat autoplay policies](../../../faq/02-how-to-combat-autoplay-policies.md).
 Combating autoplay policies through `mutedAutoplay: "all"` means: doing muted autoplay when unmuted autoplay isn't permitted.
 The following snippet adds support for the described autoplay.
 
@@ -809,12 +809,12 @@ Consider the following resources for more information:
 
 <!-- * [Adding buttons and text to the default UI](https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer)-->
 
-- [Common UI-related inquiries](https://docs.theoplayer.com/how-to-guides/11-ui/00-introduction.md)
+- [Common UI-related inquiries](../../../how-to-guides/11-ui/00-introduction.md)
 
 #### Create new skin
 
 You are given the option to create a new skin through the Chromeless API.
-The article on "[How to build a Chromeless UI](https://docs.theoplayer.com/how-to-guides/11-ui/06-how-to-build-chromeless-ui.md)" helps you understand how to approach this.
+The article on "[How to build a Chromeless UI](../../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md)" helps you understand how to approach this.
 Some quick notes:
 
 - You'll include the Chromeless library through `SDK-LIBRARY-LOCATION/THEOplayer.chromeless.js` instead of `SDK-LIBRARY-LOCATION/THEOplayer.js`.
@@ -842,9 +842,9 @@ Check our [introduction on DRM](https://docs.portal.theoplayer.com/how-to-guides
 ### Advertising
 
 THEOplayer adds support for client-side and server-side advertising.
-Refer to our [advertisement guides](https://docs.theoplayer.com/how-to-guides/01-ads/00-introduction.md) to get started with concepts such as
-[mid-rolls](https://docs.theoplayer.com/how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#vast), [Google IMA](https://docs.theoplayer.com/how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#google-ima),
-[ad block detection](https://docs.theoplayer.com/how-to-guides/01-ads/01-block-detection.md), and others.
+Refer to our [advertisement guides](../../../how-to-guides/01-ads/00-introduction.md) to get started with concepts such as
+[mid-rolls](../../../how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#vast), [Google IMA](../../../how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#google-ima),
+[ad block detection](../../../how-to-guides/01-ads/01-block-detection.md), and others.
 
 Let's consider adding support for pre-rolls advertisements as a preview. Pre-roll advertisements play before the main video content.
 You add an `ads` key to the `player.source` object. This key holds a list of [ad descriptions](https://docs.theoplayer.com/api-reference/web/theoplayer.addescription.md). Each ad description is an advertisement.
@@ -878,7 +878,7 @@ Measuring video performance is a common requirement. Consider any of the followi
 
 1. Check whether a "connector" for your analytics vendor exists at [https://github.com/THEOplayer](https://github.com/THEOplayer), and, if so, leverage it.
    Connectors are premade integrations, but you can still modify them due to their open-source nature.
-2. Check whether a "pre-integration" exists at [https://docs.theoplayer.com/how-to-guides/02-analytics/00-introduction.md](https://docs.theoplayer.com/how-to-guides/02-analytics/00-introduction.md), and, if so, leverage it.
+2. Check whether a "pre-integration" exists at [../../../how-to-guides/02-analytics/00-introduction.md](../../../how-to-guides/02-analytics/00-introduction.md), and, if so, leverage it.
    (Note: we are in the process of refactoring closed-source "pre-integrations" into open-source "connectors".
    Hence, you should prefer connectors over pre-integrations.)
 3. Build your own integration by leveraging the THEOplayer API.
@@ -886,7 +886,7 @@ Measuring video performance is a common requirement. Consider any of the followi
 ### Frameworks
 
 THEOplayer can be integrated in frameworks such as React and Angular.
-Check our [getting started guides](https://docs.theoplayer.com/getting-started/02-frameworks/01-angular/00-getting-started.md),
+Check our [getting started guides](../../02-frameworks/01-angular/00-getting-started.md),
 or our [Github](https://github.com/THEOplayer), for examples.
 
 ### Support
