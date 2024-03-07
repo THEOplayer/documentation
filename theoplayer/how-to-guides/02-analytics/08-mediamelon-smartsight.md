@@ -20,7 +20,7 @@ MediaMelon SmartSight is an analytics service maintained by MediaMelon. THEOplay
 
 1. A valid THEOplayer license.
 2. A MediaMelon SDK `mmsmartstreaming-theo-sdk.js`.
-3. A MediaMelon Customer ID (**Note:** If you do not know your Customer ID contact MediaMelon at [support@mediamelon.com](support@mediamelon.com).
+3. A MediaMelon Customer ID (**Note:** If you do not know your Customer ID contact MediaMelon at [support@mediamelon.com](mailto:support@mediamelon.com).
 
 ## Connecting MediaMelon to THEOplayer
 
@@ -38,7 +38,7 @@ Include the following scripts in the web page (before THEOplayer.js files are lo
 ```
 
 **Step 2: Register and Initialize MediaMelon SDK**
-Note: `<customer_id>` is your MediaMelon-assigned Customer ID. If you do not know your Customer ID, contact MediaMelon at [support@mediamelon.com](support@mediamelon.com).
+Note: `<customer_id>` is your MediaMelon-assigned Customer ID. If you do not know your Customer ID, contact MediaMelon at [support@mediamelon.com](mailto:support@mediamelon.com).
 
 After the player instance has been created, create a new plugin object, register, report player Info and then initialize the plugin as shown below:
 
