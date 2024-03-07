@@ -24,4 +24,4 @@ To summarize, since this change from Google only affects the old CDM versions in
 
 - [How to update an SDK](../getting-started/01-sdks/01-how-to-update-a-sdk.md)
 - [THEOplayer Platform Support](https://www.theoplayer.com/platform-support)
-- [THEOplayer Changelog](https://docs.theoplayer.com/changelog.md)
+- [THEOplayer Changelog](../changelog.md)

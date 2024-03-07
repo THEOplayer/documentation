@@ -26,4 +26,4 @@ In case you require one of the features in the section above to be included in y
 
 #### What about the future?
 
-Whenever a third party dependency adds support to the architecture, we will address the situation and update our SDK framework. To stay up to date with changes related to our iOS SDK, check out our [CHANGELOG](https://docs.theoplayer.com/changelog.md) where we post new updates and features with every new release.
+Whenever a third party dependency adds support to the architecture, we will address the situation and update our SDK framework. To stay up to date with changes related to our iOS SDK, check out our [changelog](../changelog.md) where we post new updates and features with every new release.

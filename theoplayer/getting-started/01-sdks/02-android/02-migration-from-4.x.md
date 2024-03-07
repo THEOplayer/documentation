@@ -81,7 +81,7 @@ There are 2 main things you need to consider during migration:
 
 #### 1. The deprecated (and removed) APIs.
 
-For these please consult with our [changelog](https://docs.theoplayer.com/changelog.md)
+For these please consult with our [changelog](../../../changelog.md)
 
 #### 2. The new integration-based architecture.
 

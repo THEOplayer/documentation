@@ -15,7 +15,7 @@ When self-hosting THEOplayer, it is important you regularly update your self-hos
 :::
 
 In order to download the THEOplayer package and host it on your server, you will first have to determine which version of the player you want to use.
-Read up about version changes in the [changelog](https://docs.theoplayer.com/changelog.md).
+Read up about version changes in the [changelog](../changelog.md).
 
 ## Configuring self-hosting
 

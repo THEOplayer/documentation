@@ -1,6 +1,6 @@
 # Migration from THEOplayer iOS and tvOS SDK 4.x to THEOplayer iOS/tvOS SDK 5.0+
 
-Disclaimer: As this document is published at the date of releasing THEOplayer 5.0, it is not always accurate since the player regularly is updated with new supported features. Please refer to our [changelog](https://docs.theoplayer.com/changelog.md) for more up to date information.
+Disclaimer: As this document is published at the date of releasing THEOplayer 5.0, it is not always accurate since the player regularly is updated with new supported features. Please refer to our [changelog](../../../changelog.md) for more up to date information.
 
 ## What are the differences between 4.x and 5.0?
 
@@ -65,7 +65,7 @@ There are 2 main things you need to consider during migration:
 
 #### 1. The deprecated (and removed) APIs.
 
-For these ones please consult with our [changelog](https://docs.theoplayer.com/changelog.md)
+For these ones please consult with our [changelog](../../../changelog.md)
 
 #### 2. The new integration-based architecture.
 
