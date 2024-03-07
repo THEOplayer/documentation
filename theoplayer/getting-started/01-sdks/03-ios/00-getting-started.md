@@ -256,7 +256,7 @@ let typedSource = GoogleDAITypedSource(ssai: daiConfig)
 ```
 
 Additional DAI related APIs can be accessed via `theoplayer.ads.dai` or `imaIntegration.dai`.
-Ad events can be monitored via `theoplayer.ads.addEventListener`. For a list of event types, check the [AdsEventTypes](https://docs.theoplayer.com/api-reference/ios/Structs/AdsEventTypes.html).
+Ad events can be monitored via `theoplayer.ads.addEventListener`. For a list of event types, check the [AdsEventTypes](pathname:///theoplayer/v6/api-reference/ios/Structs/AdsEventTypes.html).
 
 ## Extending THEOplayer with GoogleCast
 
@@ -298,7 +298,7 @@ For more extensive example on how to implement GoogleCast with THEOplayer, pleas
 
 ## Useful links
 
-- [THEOplayer iOS SDK API reference](https://docs.theoplayer.com/api-reference/ios/index.html)
+- [THEOplayer iOS SDK API reference](pathname:///theoplayer/v6/api-reference/ios/index.html)
 - [THEOplayer iOS sample app with basic native playback](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Native-Basic)
 - [THEOplayer iOS sample app with native Google IMA integration](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Native-IMA)
 - [THEOplayer iOS sample app with native Google Cast playback](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Native-GoogleCast)

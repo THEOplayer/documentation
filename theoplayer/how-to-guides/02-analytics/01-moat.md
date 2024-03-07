@@ -134,5 +134,5 @@ public static var moatPreroll : SourceDescription {
 
 - Demo page: [https://demo.theoplayer.com/moat-analytics-pre-integration](https://demo.theoplayer.com/moat-analytics-pre-integration)
 - [Analytics API (Web SDK)](https://docs.theoplayer.com/api-reference/web/theoplayer.analytics.md)
-- [Analytics API (Android SDK)](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/source/analytics/package-summary.html)
-- [Analytics API (iOS SDK)](<https://docs.theoplayer.com/api-reference/ios/Analytics.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerAnalyticsDescription>)
+- [Analytics API (Android SDK)](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/analytics/package-summary.html)
+- [Analytics API (iOS SDK)](<pathname:///theoplayer/v6/api-reference/ios/Analytics.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerAnalyticsDescription>)

@@ -19,8 +19,8 @@ The Chromecast interface is a sub-interface of the Cast interface on THEOplayer 
 The API reference is available through the following links:
 
 - Web SDK: [https://docs.theoplayer.com/api-reference/web/theoplayer.chromecast.md](https://docs.theoplayer.com/api-reference/web/theoplayer.chromecast.md), which inherits from [https://docs.theoplayer.com/api-reference/web/theoplayer.vendorcast.md](https://docs.theoplayer.com/api-reference/web/theoplayer.vendorcast.md)
-- Android SDK: [https://docs.theoplayer.com/api-reference/android/index.html](https://docs.theoplayer.com/api-reference/android/index.html)
-- iOS SDK: [https://docs.theoplayer.com/api-reference/ios/Protocols/Chromecast.html](https://docs.theoplayer.com/api-reference/ios/Protocols/Chromecast.html)
+- Android SDK: [pathname:///theoplayer/v6/api-reference/android/index.html](pathname:///theoplayer/v6/api-reference/android/index.html)
+- iOS SDK: [pathname:///theoplayer/v6/api-reference/ios/Protocols/Chromecast.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/Chromecast.html)
 
 Use the API as demonstrated below:
 

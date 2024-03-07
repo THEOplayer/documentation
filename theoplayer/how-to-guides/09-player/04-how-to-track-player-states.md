@@ -84,8 +84,8 @@ The following code samples demonstrate how you track some of the 18 events relat
 All 18 events are dispatched by the `Player` interface.
 
 - Web SDK: [interface](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md) and [events](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md)
-- Android SDK: [interface](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/Player.html) and [events](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html)
-- iOS SDK: [interface](https://docs.theoplayer.com/api-reference/ios/Classes/THEOplayer.html) and [events](https://docs.theoplayer.com/api-reference/ios/Structs/PlayerEventTypes.html)
+- Android SDK: [interface](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html) and [events](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html)
+- iOS SDK: [interface](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html) and [events](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html)
 - Roku SDK
 
 #### Web SDK
@@ -107,7 +107,7 @@ player.addEventListener("ended", (event) => {
 #### Android SDK
 
 The snippet below demonstrates how you can track some of the related events through the THEOplayer Android SDK.
-All other events can be tracked similarly. You can find the event names at [https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html).
+All other events can be tracked similarly. You can find the event names at [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html).
 This approach is valid for all Android-based platforms, including Android TV and Fire TV.
 
 ```java
@@ -123,7 +123,7 @@ player.addEventListener(PlayerEventTypes.ENDED, event -> {
 #### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
 The snippet below demonstrates how you can track some of the related events through the THEOplayer iOS SDK.
-All other events can be tracked similarly. You can find the event names at [https://docs.theoplayer.com/api-reference/ios/Structs/PlayerEventTypes.html](https://docs.theoplayer.com/api-reference/ios/Structs/PlayerEventTypes.html).
+All other events can be tracked similarly. You can find the event names at [pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html).
 This approach is valid for all iOS-based platforms, including iPadOS and tvOS.
 
 ```swift

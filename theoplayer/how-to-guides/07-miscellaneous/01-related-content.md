@@ -141,7 +141,7 @@ var sampleSource1: SourceDescription {
 ```
 
 - Reference DEMO APP: [iOS Related Content Demo APP](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Related-Content)
-- Reference API: [iOS Related Content API](https://docs.theoplayer.com/api-reference/ios/Protocols/RelatedContent.html)
+- Reference API: [iOS Related Content API](pathname:///theoplayer/v6/api-reference/ios/Protocols/RelatedContent.html)
 
 ## Important Note
 

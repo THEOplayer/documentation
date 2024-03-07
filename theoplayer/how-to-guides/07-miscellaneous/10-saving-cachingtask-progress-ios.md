@@ -3,7 +3,7 @@
 This guide explains how to save the progress of an ongoing caching task and what the limitations of the iOS platform are.
 
 The THEOplayer iOS SDK provides the capability to pause an ongoing task. Doing so will store the file state of the partially downloaded stream to disk, and allow the task to be resumed even after the application runtime has been terminated.
-Note: See [CachingTask](https://docs.theoplayer.com/api-reference/ios/Protocols/CachingTask.html) for the `pause()` method.
+Note: See [CachingTask](pathname:///theoplayer/v6/api-reference/ios/Protocols/CachingTask.html) for the `pause()` method.
 
 ### Table of Contents
 

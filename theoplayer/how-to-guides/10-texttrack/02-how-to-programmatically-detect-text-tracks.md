@@ -34,7 +34,7 @@ player.textTracks.addEventListener("addtrack", handleAddTrackEvent);
 
 ##### Android (TV) SDK
 
-The Android SDK leverages the [TextTrack API](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html).
+The Android SDK leverages the [TextTrack API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html).
 
 ```java
 EventListener<AddTrackEvent> handleAudioTrackAdd = new EventListener<AddTrackEvent>() {
@@ -48,7 +48,7 @@ tpv.getPlayer().getTextTracks().addEventListener(TextTrackListEventTypes.ADDTRAC
 
 ##### iOS (/tvOS) SDK
 
-The iOS SDK leverages the [MediaTrack API](https://docs.theoplayer.com/api-reference/ios/Protocols/MediaTrackList.html).
+The iOS SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrackList.html).
 
 ```swift
 func handleAddTrackEvent(addTrackEvent : AddTrackEvent) {

@@ -160,7 +160,7 @@ let sourceDescription = SourceDescription(VerizonMediaSource: verizonMediaSource
 self.theoplayer.source = sourceDescription
 ```
 
-The snippets above gives a quick overview of the structure of the Verizon Media-specific source, also known as a [VerizonMediaSource](https://docs.theoplayer.com/api-reference/ios/Classes/VerizonMediaSource.html).
+The snippets above gives a quick overview of the structure of the Verizon Media-specific source, also known as a [VerizonMediaSource](pathname:///theoplayer/v6/api-reference/ios/Classes/VerizonMediaSource.html).
 More information on certain properties:
 
 - `id`: The ID field can instead of an asset id as a single string also specify an array of asset ids as strings, which will be stitched into a continuous stream. The same goes for the`externalId`property in case an external ID is used in the source.

@@ -132,5 +132,5 @@ Our APIs are continuously evolving, and so is our list of events.
 Refer to our API references of our SDKs to go through the latest sets of events:
 
 - Web SDK: https://docs.theoplayer.com/api-reference/web/theoplayer.md
-- iOS SDK: https://docs.theoplayer.com/api-reference/ios/index.html
-- Android SDK: https://docs.theoplayer.com/api-reference/android/index.html
+- iOS SDK: pathname:///theoplayer/v6/api-reference/ios/index.html
+- Android SDK: pathname:///theoplayer/v6/api-reference/android/index.html

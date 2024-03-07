@@ -206,8 +206,8 @@ theoPlayerView.getPlayer().addIntegration(daiIntegration);
 
 ##### 3. Using a Google DAI Source.
 
-Use a [GoogleDaiVodConfiguration](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
-or [GoogleDaiLiveConfiguration](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
+Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
+or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
 to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
 
 ```java
@@ -247,11 +247,11 @@ playerView.getPlayer().setSource(sourceDescription);
 The available ad events are different between the Android SDK and the Legacy Android SDK (4.12.x).
 More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
-The [GoogleDaiIntegration](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) instance exposes a number of methods. For example:
+The [GoogleDaiIntegration](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) instance exposes a number of methods. For example:
 
-- [requestStream(StreamRequest, AdsRenderingSettings)](<https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
-- [contentTimeForStreamTime(double)](<https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
-  / [streamTimeForContentTime(double)](<https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#streamTimeForContentTime(double)>) can be used to convert content time to stream time and vice versa.
+- [requestStream(StreamRequest, AdsRenderingSettings)](<pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
+- [contentTimeForStreamTime(double)](<pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
+  / [streamTimeForContentTime(double)](<pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#streamTimeForContentTime(double)>) can be used to convert content time to stream time and vice versa.
 
 #### Legacy Android SDK (4.12.x)
 
@@ -272,8 +272,8 @@ dependencies {
 
 ##### 2. Using a Google DAI Source.
 
-Use a [GoogleDaiVodConfiguration](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
-or [GoogleDaiLiveConfiguration](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
+Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
+or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
 to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
 
 ```java

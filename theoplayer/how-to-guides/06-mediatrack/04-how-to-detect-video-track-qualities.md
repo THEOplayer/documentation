@@ -35,7 +35,7 @@ player.videoTracks.addEventListener("addtrack", handleAddTrackEvent);
 
 ##### Android (TV) SDK
 
-The Android SDK leverages the [MediaTrack API](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
+The Android SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
 
 ```java
 EventListener<AddTrackEvent> handleAddTrackEvent = new EventListener<AddTrackEvent>() {

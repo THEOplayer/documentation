@@ -43,7 +43,7 @@ player.videoTracks[0].targetQuality = null;
 
 ##### Android (TV) SDK
 
-The Android SDK leverages the [MediaTrack API](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
+The Android SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
 
 ```java
 // enable a specific video track quality
@@ -61,7 +61,7 @@ theoplayer.getPlayer().getVideoTracks().getItem(0).setTargetQualities(Collection
 
 ##### iOS (/tvOS) SDK
 
-The iOS SDK leverages the [ABR API](https://docs.theoplayer.com/api-reference/ios/Protocols/ABRConfiguration.html). The underlying AVFoundation stack, which THEOplayer has to use, brings along the technical limitation that you cannot select a specific video quality. Instead, you can set a maximum resolution or bitrate.
+The iOS SDK leverages the [ABR API](pathname:///theoplayer/v6/api-reference/ios/Protocols/ABRConfiguration.html). The underlying AVFoundation stack, which THEOplayer has to use, brings along the technical limitation that you cannot select a specific video quality. Instead, you can set a maximum resolution or bitrate.
 
 ```swift
 // set preferred peak bitrate

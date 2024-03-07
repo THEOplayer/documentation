@@ -55,10 +55,10 @@ The properties of a text `track` (e.g. `mode`, `kind`) are described at [https:/
 
 The implementation of the Android SDK applies to all Android-based platforms, including Android TV and Fire TV.
 
-The Android SDK exposes the TextTrack API through [`player.getTextTracks()`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/Player.html#getTextTracks).
-This `getTextTracks()` method returns a [`TextTrackList`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html) that inherits from the [`TrackList`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/TrackList.html).
-This `TrackList` dispatches the events from the [`TextTrackListEventTypes`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html).
-The `TextTrackListEventTypes` contains the [`TRACKLISTCHANGE`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html#TRACKLISTCHANGE) event, as well as the `ADDTRACK` and `REMOVETRACK` event.
+The Android SDK exposes the TextTrack API through [`player.getTextTracks()`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#getTextTracks).
+This `getTextTracks()` method returns a [`TextTrackList`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/TrackList.html).
+This `TrackList` dispatches the events from the [`TextTrackListEventTypes`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html).
+The `TextTrackListEventTypes` contains the [`TRACKLISTCHANGE`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html#TRACKLISTCHANGE) event, as well as the `ADDTRACK` and `REMOVETRACK` event.
 
 The code below allows you to detect text track changes.
 
@@ -70,16 +70,16 @@ player.getTextTracks().addEventListener(TextTrackListEventTypes.TRACKLISTCHANGE,
 });
 ```
 
-The properties of a text `track` (e.g. `mode`, `kind`) are described at [https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html) and [https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/Track.html](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/Track.html).
+The properties of a text `track` (e.g. `mode`, `kind`) are described at [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html) and [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html).
 
 ### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
 The implementation of the iOS SDK applies to all iOS-based platforms, including iPadOS and tvOS.
 
-The iOS SDK exposes the TrackTrack API through [`player.textTracks`](https://docs.theoplayer.com/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C10textTracksAA13TextTrackList_pvp).
-This `textTracks` property is a [`TextTrackList`](https://docs.theoplayer.com/api-reference/ios/Protocols/TextTrackList.html).
-This `TextTrackList` dispatches the events from the [`TextTrackListEventTypes`](https://docs.theoplayer.com/api-reference/ios/Structs/TextTrackListEventTypes.html).
-The `TextTrackListEventTypes` contains the [`CHANGE`](https://docs.theoplayer.com/api-reference/ios/Structs/TextTrackListEventTypes.html#/s:13THEOplayerSDK23TextTrackListEventTypesV6CHANGEAA0F4TypeCyAA0d6ChangeF0CGvpZ) event, as well as the `ADD_TRACK` and `REMOVE_TRACK` event.
+The iOS SDK exposes the TrackTrack API through [`player.textTracks`](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C10textTracksAA13TextTrackList_pvp).
+This `textTracks` property is a [`TextTrackList`](pathname:///theoplayer/v6/api-reference/ios/Protocols/TextTrackList.html).
+This `TextTrackList` dispatches the events from the [`TextTrackListEventTypes`](pathname:///theoplayer/v6/api-reference/ios/Structs/TextTrackListEventTypes.html).
+The `TextTrackListEventTypes` contains the [`CHANGE`](pathname:///theoplayer/v6/api-reference/ios/Structs/TextTrackListEventTypes.html#/s:13THEOplayerSDK23TextTrackListEventTypesV6CHANGEAA0F4TypeCyAA0d6ChangeF0CGvpZ) event, as well as the `ADD_TRACK` and `REMOVE_TRACK` event.
 
 The code below allows you to detect text track changes.
 
@@ -91,7 +91,7 @@ player?.textTracks.addEventListener(type: TextTrackListEventTypes.CHANGE, listen
 })
 ```
 
-The properties of a text `track` (e.g. `mode`, `kind`) are described at [https://docs.theoplayer.com/api-reference/ios/Protocols/TextTrack.html](https://docs.theoplayer.com/api-reference/ios/Protocols/TextTrack.html) and [https://docs.theoplayer.com/api-reference/ios/Protocols/Track.html](https://docs.theoplayer.com/api-reference/ios/Protocols/Track.html).
+The properties of a text `track` (e.g. `mode`, `kind`) are described at [pathname:///theoplayer/v6/api-reference/ios/Protocols/TextTrack.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/TextTrack.html) and [pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html).
 
 ### Roku SDK
 

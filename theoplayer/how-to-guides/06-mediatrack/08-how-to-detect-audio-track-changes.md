@@ -55,10 +55,10 @@ The properties of a media `track` (e.g. `enabled`, `language`) are described at 
 
 The implementation of the Android SDK applies to all Android-based platforms, including Android TV and Fire TV.
 
-The Android SDK exposes the AudioTrack API through [`player.getAudioTracks()`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/Player.html#getAudioTracks--).
-This `getAudioTracks()` method returns a [`MediaTrackList`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html) that inherits from the [`TrackList`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/TrackList.html).
-This `TrackList` dispatches the events from the [`AudioTrackListEventTypes`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html).
-The `AudioTrackListEventTypes` contains the [`TRACKLISTCHANGE`](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html#TRACKLISTCHANGE) event, as well as the `ADDTRACK` and `REMOVETRACK` event.
+The Android SDK exposes the AudioTrack API through [`player.getAudioTracks()`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#getAudioTracks--).
+This `getAudioTracks()` method returns a [`MediaTrackList`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/TrackList.html).
+This `TrackList` dispatches the events from the [`AudioTrackListEventTypes`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html).
+The `AudioTrackListEventTypes` contains the [`TRACKLISTCHANGE`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html#TRACKLISTCHANGE) event, as well as the `ADDTRACK` and `REMOVETRACK` event.
 
 The code below allows you to detect audio track changes.
 
@@ -69,16 +69,16 @@ player.getAudioTracks().addEventListener(AudioTrackListEventTypes.TRACKLISTCHANG
 });
 ```
 
-The properties of a media `track` (e.g. `enabled`, `language`) are described at [https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html) and [https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/Track.html](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/player/track/Track.html).
+The properties of a media `track` (e.g. `enabled`, `language`) are described at [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html) and [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html).
 
 ### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
 The implementation of the iOS SDK applies to all iOS-based platforms, including iPadOS and tvOS.
 
-The iOS SDK exposes the AudioTrack API through [`player.audioTracks`](https://docs.theoplayer.com/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C11audioTracksAA14AudioTrackList_pvp).
-This `audioTracks` property is a [`MediaTrackList`](https://docs.theoplayer.com/api-reference/ios/Protocols/MediaTrackList.html).
-This `MediaTrackList` dispatches the events from the [`AudioTrackListEventTypes`](https://docs.theoplayer.com/api-reference/ios/Structs/AudioTrackListEventTypes.html).
-The `AudioTrackListEventTypes` contains the [`CHANGE`](https://docs.theoplayer.com/api-reference/ios/Structs/AudioTrackListEventTypes.html#/s:13THEOplayerSDK24AudioTrackListEventTypesV6CHANGEAA0F4TypeCyAA0d6ChangeF0CGvpZ) event, as well as the `ADD_TRACK` and `REMOVE_TRACK` event.
+The iOS SDK exposes the AudioTrack API through [`player.audioTracks`](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C11audioTracksAA14AudioTrackList_pvp).
+This `audioTracks` property is a [`MediaTrackList`](pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrackList.html).
+This `MediaTrackList` dispatches the events from the [`AudioTrackListEventTypes`](pathname:///theoplayer/v6/api-reference/ios/Structs/AudioTrackListEventTypes.html).
+The `AudioTrackListEventTypes` contains the [`CHANGE`](pathname:///theoplayer/v6/api-reference/ios/Structs/AudioTrackListEventTypes.html#/s:13THEOplayerSDK24AudioTrackListEventTypesV6CHANGEAA0F4TypeCyAA0d6ChangeF0CGvpZ) event, as well as the `ADD_TRACK` and `REMOVE_TRACK` event.
 
 The code below allows you to detect audio track changes.
 
@@ -89,7 +89,7 @@ player?.audioTracks.addEventListener(type: AudioTrackListEventTypes.CHANGE, list
 })
 ```
 
-The properties of a media `track` (e.g. `enabled`, `language`) are described at [https://docs.theoplayer.com/api-reference/ios/Protocols/MediaTrack.html](https://docs.theoplayer.com/api-reference/ios/Protocols/MediaTrack.html) and [https://docs.theoplayer.com/api-reference/ios/Protocols/Track.html](https://docs.theoplayer.com/api-reference/ios/Protocols/Track.html).
+The properties of a media `track` (e.g. `enabled`, `language`) are described at [pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrack.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrack.html) and [pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html).
 
 ### Roku SDK
 

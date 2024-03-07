@@ -32,7 +32,7 @@ In that case the default style can still be disabled by setting the `defaultCss`
 
 You can send messages from within a custom JavaScript file to the iOS SDK.
 
-1. Register a message listener in your native (e.g. Swift) code through [`addJavascriptMessageListener`](<https://docs.theoplayer.com/api-reference/ios/Classes/THEOplayer.html#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)addJavascriptMessageListenerWithName:listener:>), as demonstrated in the example below:
+1. Register a message listener in your native (e.g. Swift) code through [`addJavascriptMessageListener`](<pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)addJavascriptMessageListenerWithName:listener:>), as demonstrated in the example below:
 
 ```swift
 func onMessageReceived(message : [String:Any]) {
@@ -89,7 +89,7 @@ function foobar(value) {
 }
 ```
 
-2. Call your JavaScript function in your native code through [`theoplayer.evaluateJavaScript`](<https://docs.theoplayer.com/api-reference/ios/Classes/THEOplayer.html#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)evaluateJavaScript:completionHandler:>), as demonstrated in the example below:
+2. Call your JavaScript function in your native code through [`theoplayer.evaluateJavaScript`](<pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)evaluateJavaScript:completionHandler:>), as demonstrated in the example below:
 
 ```swift
 theoplayer.addEventListener(type: PlayerEventTypes.PAUSE) { event in

@@ -33,7 +33,7 @@ The below table makes a comparison of the available THEOplayer APIs specifically
 
 <sup>2</sup> While using out-of-app picture-in-picture, the visibility of the PiP windows is not contained to the inside of the app. It can remain visible while the user navigates to other views, pages or apps.
 
-<sup>3</sup> On Android/Fire TV SDK, there is no API to explicitly only allow in-app PiP. The existing [PiP API](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/pip/package-summary.html) activates both in and out of app PiP.
+<sup>3</sup> On Android/Fire TV SDK, there is no API to explicitly only allow in-app PiP. The existing [PiP API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/pip/package-summary.html) activates both in and out of app PiP.
 
 ## How to use Picture-in-Picture
 
@@ -234,7 +234,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(onPiPMoved), na
 ###### out-of-app Picture in Picture
 
 By using your own implementation of the [AVPictureinpictureControllerDelegate](https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate) you are able to listen to a number of events.
-These contain, but are not limited to, when the player will enter/exit PiP, has entered/exited PiP, ... To achieve this you just have to set your implementation of the delegate as the one of the [PictureInPictureController](https://docs.theoplayer.com/api-reference/ios/Protocols/PictureInPicture.html).
+These contain, but are not limited to, when the player will enter/exit PiP, has entered/exited PiP, ... To achieve this you just have to set your implementation of the delegate as the one of the [PictureInPictureController](pathname:///theoplayer/v6/api-reference/ios/Protocols/PictureInPicture.html).
 
 ```swift
 class CustomPiPDelegate: NSObject, AVPictureInPictureControllerDelegate {
@@ -296,10 +296,10 @@ The following resources provide more information:
 
 ##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-- [PipConfiguration API Reference](https://docs.theoplayer.com/api-reference/ios/Classes/PiPConfiguration.html)
-- [PictureInPicture API Reference](https://docs.theoplayer.com/api-reference/ios/Protocols/PictureInPicture.html)
+- [PipConfiguration API Reference](pathname:///theoplayer/v6/api-reference/ios/Classes/PiPConfiguration.html)
+- [PictureInPicture API Reference](pathname:///theoplayer/v6/api-reference/ios/Protocols/PictureInPicture.html)
 
 ##### Android SDK
 
-- [PipConfiguration API Reference](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/pip/PipConfiguration.Builder.html)
-- [PiPManager API Reference](https://docs.theoplayer.com/api-reference/android/com/theoplayer/android/api/pip/PiPManager.html)
+- [PipConfiguration API Reference](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/pip/PipConfiguration.Builder.html)
+- [PiPManager API Reference](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/pip/PiPManager.html)
