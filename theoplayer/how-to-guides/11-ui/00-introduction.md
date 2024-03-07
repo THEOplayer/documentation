@@ -83,7 +83,7 @@ The default UI on our iOS and Android SDK is the same UI as our Web SDK.
 This default UI is implemented by overlaying a WebView on top of the video player.
 
 In other words, to modify the default UI, you should use JavaScript and CSS,
-as explained in our customization articles for [Android Legacy (4.12.x)](<../../getting-started/01-sdks/02-android-legacy-v4/01-android-sdk-customization.md>) and [iOS](<../../getting-started/01-sdks/03-ios-legacy-v4/01-ios-sdk-customization.md>).
+as explained in our customization articles for [Android Legacy (4.12.x)](../../getting-started/01-sdks/02-android-legacy-v4/01-android-sdk-customization.md) and [iOS](../../getting-started/01-sdks/03-ios-legacy-v4/01-ios-sdk-customization.md).
 
 #### Related articles
 

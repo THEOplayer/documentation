@@ -42,7 +42,7 @@ You must have a valid WordPress.org deployment. We used WordPress version 5.5 in
 ### 2. THEOplayer SDK
 
 You must have the THEOplayer Web SDK library files (`THEOplayer.js`, `ui.css`, ...),
-or you must know how to refer to them and the `libraryLocation`. You've read through our [Web SDK Getting Started Guide](<(../../../getting-started/01-sdks/01-web/00-getting-started.md)>),
+or you must know how to refer to them and the `libraryLocation`. You've read through our [Web SDK Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.md),
 and you understand all of its content.
 
 ### 3. Locate post or page

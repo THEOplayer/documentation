@@ -23,7 +23,7 @@ THEOplayer offers the following SDKs. (Clicking the link takes you to the respec
 
 - Android/Android TV/Fire TV Legacy (4.12.x) SDK
 
-  - [Android](<02-android-legacy-v4/00-getting-started.md>) targets Android apps, and may be used for other Android-based platforms.
+  - [Android](02-android-legacy-v4/00-getting-started.md) targets Android apps, and may be used for other Android-based platforms.
   - [Android TV](./04-android-tv/00-getting-started.md) targets Android TV apps.
   - [Fire TV](./10-fire-tv/00-getting-started.md) targets Fire TV apps.
 
@@ -37,7 +37,7 @@ THEOplayer offers the following SDKs. (Clicking the link takes you to the respec
 
 - iOS/tvOS Legacy (4.12.x) SDK
 
-  - [iOS](<03-ios-legacy-v4/00-getting-started.md>) targets iOS and iPadOS apps.
+  - [iOS](03-ios-legacy-v4/00-getting-started.md) targets iOS and iPadOS apps.
   - [tvOS](./05-tvos/00-getting-started.md) targets tvOS (i.e. Apple TV) apps.
 
   &nbsp;
