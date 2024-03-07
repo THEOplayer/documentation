@@ -27,3 +27,19 @@
   border: 2px solid #1868ff;
   padding: 1px;
 }
+
+.player {
+  width: 100%;
+  /*
+   * Make the player slightly higher than necessary,
+   * to avoid scrollbars.
+   */
+  aspect-ratio: 16 / 9.1;
+}
+
+.boxShadow {
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 1.666rem;
+}

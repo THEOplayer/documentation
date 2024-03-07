@@ -133,7 +133,7 @@ Throughout this guide, you may copy-paste code snippets into your own developmen
 Owning a development environment can be as simple as opening <a href="https://jsfiddle.net/" target="_blank">https://jsfiddle.net/</a> in a browser tab.
 When you copy-paste the snippet above into JSFiddle, it should look similar to the result below.
 
-<iframe class="box-shadow" width="100%" height="300" src="//jsfiddle.net/thijsl/zs39fgj5/1/embedded/result" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe className={styles.boxShadow} width="100%" height="300" src="//jsfiddle.net/thijsl/zs39fgj5/1/embedded/result" allowFullScreen frameBorder="0"></iframe>
 
 <details>
 <summary>Setting up a development environment</summary>
@@ -394,7 +394,7 @@ The following code represents step-5, and creates the initial THEOplayer instanc
 The widget below demonstrates the output of a similar snippet in JSFiddle.
 (Remind yourself to update the value of [`SDK-LIBRARY-LOCATION`](#library-location-explanation) in the above snippet to your actual key value.)
 
-<iframe class="box-shadow" width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/uymLn9vj/50/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe className={styles.boxShadow} width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/uymLn9vj/50/embedded/result/" allowFullScreen frameBorder="0"></iframe>
 
 You currently have a THEOplayer instance, but the styling is off. You'll fix this by loading the default skin.
 
@@ -432,7 +432,7 @@ The following code represents step-6, and configures the default skin.
 Running this code in your developer environment gives you the first visual preview of what is to come.
 The following widget demonstrates a modified snippet in JSFiddle.
 
-<iframe class="box-shadow" width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/23yuvcjp/3/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe className={styles.boxShadow} width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/23yuvcjp/3/embedded/result/" allowFullScreen frameBorder="0"></iframe>
 
 <details>
 <summary>Setting the size of the container</summary>
@@ -626,7 +626,7 @@ The following code represents step-9, and configures an HLS stream.
 If you paste the snippet above into your development environment, and update the value of [`SDK-LIBRARY-LOCATION`](#library-location-explanation) and [`YOUR-LICENSE`](#library-location-explanation), you should be able to click the big play button.
 The following widget demonstrates a successful configuration.
 
-<iframe class="box-shadow" width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/21fphaqL/5/embedded/result,html/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe className={styles.boxShadow} width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/21fphaqL/5/embedded/result,html/" allowFullScreen frameBorder="0"></iframe>
 
 **Congratulations! 🎉 You now know how build a THEOplayer SDK, include it on your web page, configure a video player and play a stream.**  
 Go through the next section to learn more about THEOplayer, its API, and some use-cases.
@@ -796,9 +796,7 @@ If you want to change the color scheme of the default skin, you can use the skin
 This editor generates CSS which you can include in your web application.
 The following video demonstrates how you use this tool in combination with step-9.
 
-<div style="position:relative;padding-bottom:56.25%;margin-bottom:20px;">
-<iframe src="https://cdn.theoplayer.com/demos/getting-started/web-sdk/portal.html" title="Embedded THEOplayer" frameborder="0" scrolling="no" width="100%" height="100%" style="width:100%;height:100%;position:absolute;left:0;top:0;" allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-</div>
+<iframe className={styles.player} src="https://cdn.theoplayer.com/demos/getting-started/web-sdk/portal.html" title="Embedded THEOplayer" frameBorder="0" scrolling="no" width="100%" height="100%" allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
 You can also change the appearance of buttons in the default UI, add overlays and insert new elements.
 Consider the following resources for more information:
