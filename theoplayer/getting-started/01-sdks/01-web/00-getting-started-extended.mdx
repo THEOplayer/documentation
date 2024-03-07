@@ -154,7 +154,7 @@ The THEOplayer Web SDK is a collection of library files hosted on a web server o
 The THEOplayer Developer Portal hosts these library files automatically on its CDN, as can be seen in the screenshot below.
 You can find this view by navigating to your newly created Web SDK.
 
-<img src="../../../assets/img/getting-started-web-sdk/sdk-cdn.png" alt="screenshot from the THEO portal SDK build page, highlighting the CDN link" />
+![screenshot from the THEO portal SDK build page, highlighting the CDN link](../../../assets/img/getting-started-web-sdk/sdk-cdn.png)
 
 We use the terms "library location" and "CDN" interchangeably throughout this guide.
 During this guide, `SDK-LIBRARY-LOCATION` represents your library location, which is `https://cdn.myth.theoplayer.com/55d71743-4924-4d1b-8440-78f9cd103879` in the screenshot above.
@@ -181,7 +181,7 @@ Throughout this guide, you will often see `SDK-LIBRARY-LOCATION` and `YOUR-LICEN
 
 Failing to replace these values results in errors as you'll be loading non-existent files.
 Our advice is to copy-paste these two values in a text editor so that you can quickly access them for the remainder of this guide.
-<img src="../../../assets/img/getting-started-web-sdk/sdk-ready.png" alt="screenshot from the THEO portal SDK build page, highlighting various elements" />
+![screenshot from the THEO portal SDK build page, highlighting various elements](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
 
 The blue rectangle in the above screenshot annotates the <code className={styles.borderBlue}>SDK-LIBRARY-LOCATION</code>.
 The green rectangle in the above screenshot annotates <code className={styles.borderGreen}>YOUR-LICENSE</code>.
@@ -233,7 +233,7 @@ Note that this step by itself doesn't initialize your video player. This step ju
 
 You can validate a successful load of the THEOplayer JavaScript library by typing `THEOplayer.version` and `THEOplayer.features` in the developer console of your browser,
 as demonstrated in the screenshot below.
-<img src="../../../assets/img/getting-started-web-sdk/js-fiddle-step-1.png" alt="screenshot demonstrating logs of the player version and features to confirm it has been loaded correctly"/>
+![screenshot demonstrating logs of the player version and features to confirm it has been loaded correctly](../../../assets/img/getting-started-web-sdk/js-fiddle-step-1.png)
 
 </details>
 
@@ -442,10 +442,12 @@ The following widget demonstrates a modified snippet in JSFiddle.
 There are other approaches to setting the size of your container instead of using `vjs-16-9`.
 For example, you could omit the `vjs-16-9` class, and instead configure the width and height of container class through CSS,
 as demonstrated in the screenshot below.
-<img src="../../../assets/img/getting-started-web-sdk/container-height-percent.png" alt="screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player" />
+![screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player](../../../assets/img/getting-started-web-sdk/container-height-percent.png)
+
 Alternatively, you set your container to be responsive to its parent node by setting your configuration to `"fluid: true"`,
 as demonstrated by the following screenshot.
-<img src="../../../assets/img/getting-started-web-sdk/container-height-fluid.png"  alt="screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size"/>
+![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../assets/img/getting-started-web-sdk/container-height-fluid.png)
+
 There is no wrong or right. It's up to you to decide which approach is best for your use-case.
 </details>
 
