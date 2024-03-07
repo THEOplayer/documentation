@@ -1,6 +1,6 @@
 # Why is my PlayReady stream not working in Chromium Edge?
 
-If you are having problems playing PlayReady streams in Chromium Edge, this may be due to a conflict between player and browser, regarding the DRM system to use. If this is the case, you may solve the issue indicating Playready as your first option with the [_preferredKeySystems_ property](https://docs.theoplayer.com/api-reference/web/theoplayer.drmconfiguration.md#preferredkeysystems).
+If you are having problems playing PlayReady streams in Chromium Edge, this may be due to a conflict between player and browser, regarding the DRM system to use. If this is the case, you may solve the issue indicating Playready as your first option with the [_preferredKeySystems_ property](pathname:///theoplayer/v6/api-reference/web/interfaces/DRMConfiguration.html#preferredkeysystems).
 
 ## Long Answer
 

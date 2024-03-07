@@ -35,7 +35,7 @@ If you do not have this feature enabled in your SDK, or are unsure, please conta
 
 ##### Web SDK
 
-The player configuration should include the [AgamaPlayerConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.agamaplayerconfiguration.md) object.
+The player configuration should include the [AgamaPlayerConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/AgamaPlayerConfiguration.html) object.
 
 ```js
 var player = new THEOplayer.Player(element, {
@@ -52,7 +52,7 @@ var player = new THEOplayer.Player(element, {
 
 Once a player is configured, an Agama EMP client instance is created.
 
-The player's source configuration should include the [AgamaSourceConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.agamasourceconfiguration.md) object.
+The player's source configuration should include the [AgamaSourceConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/AgamaSourceConfiguration.html) object.
 
 ```js
 player.source = {
@@ -69,7 +69,7 @@ Once the player's source is set, a dynamic streaming session is started, and Aga
 
 ##### Android (TV) SDK
 
-The player configuration should include the [AgamaPlayerConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.agamaplayerconfiguration.md) object:
+The player configuration should include the [AgamaPlayerConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/AgamaPlayerConfiguration.html) object:
 
 ```java
 public THEOplayerConfig theoplayerConfig = new THEOplayerConfig.Builder()
@@ -89,7 +89,7 @@ public THEOplayerView tpv = new THEOplayerView(this, theoplayerConfig)
 ```
 
 Once the player is configured, an Agama EMP client is created.
-The player source configuration should include the [AgamaSourceConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.agamasourceconfiguration.md) object in the analytics tag while configuring the [SourceDescription](https://docs.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md):
+The player source configuration should include the [AgamaSourceConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/AgamaSourceConfiguration.html) object in the analytics tag while configuring the [SourceDescription](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html):
 
 ```java
 public SourceDescription sourceDescription =
@@ -150,7 +150,7 @@ tpv.getPlayer().setSource(agamaSourceDescription);
 
 ##### iOS (/tvOS) SDK
 
-The player configuration should include the [AgamaPlayerConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.agamaplayerconfiguration.md) object:
+The player configuration should include the [AgamaPlayerConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/AgamaPlayerConfiguration.html) object:
 
 ```swift
 let agamaPlayerConfiguration = AgamaPlayerConfiguration(
@@ -165,7 +165,7 @@ var theoplayer = THEOplayer(configuration: THEOplayerConfiguration(..., analytic
 ```
 
 Once the player is configured, an Agama EMP client is created.
-The player source configuration should include the [AgamaSourceConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.agamasourceconfiguration.md) object in the analytics tag:
+The player source configuration should include the [AgamaSourceConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/AgamaSourceConfiguration.html) object in the analytics tag:
 
 ```swift
 let agamaSourceConfiguration = AgamaSourceConfiguration(

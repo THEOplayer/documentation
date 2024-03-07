@@ -2,7 +2,7 @@
 
 This guide explains how you set up THEOplayer in combination with the [KeyOS BuyDRM](https://www.buydrm.com/keyosplayer), a partnered **multi-DRM vendor**. THEOplayer is pre-integrated with KeyOS and provides a user-friendly API to connect to their **Widevine** and **PlayReady** DRM solutions.
 
-If you are already comfortable with the THEOplayer API, you can go straight over to [DRM Pre-Integration API](https://docs.theoplayer.com/api-reference/web/theoplayer.drmconfiguration.md).
+If you are already comfortable with the THEOplayer API, you can go straight over to [DRM Pre-Integration API](pathname:///theoplayer/v6/api-reference/web/interfaces/DRMConfiguration.html).
 
 The following topics will be covered:
 
@@ -155,7 +155,7 @@ THEOplayer partnered with KeyOS to fully pre-integrate their BuyDRM solution, sa
 
 ## Extra resources:
 
-1. [DRM Pre-Integration API](https://docs.theoplayer.com/api-reference/web/theoplayer.drmconfiguration.md)
+1. [DRM Pre-Integration API](pathname:///theoplayer/v6/api-reference/web/interfaces/DRMConfiguration.html)
 
 2. [THEOplayer Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.md)
 

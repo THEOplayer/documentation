@@ -23,7 +23,7 @@ The code examples below showcase how to implement the detection of audio tracks 
 
 ##### Web SDK
 
-The Web SDK leverages the [TextTrack API](https://docs.theoplayer.com/api-reference/web/theoplayer.texttrack.md).
+The Web SDK leverages the [TextTrack API](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html).
 
 ```js
 function handleAddTrackEvent(addTrackEvent) {

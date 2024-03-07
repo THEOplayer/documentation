@@ -18,9 +18,9 @@ The Chromecast interface is a sub-interface of the Cast interface on THEOplayer 
 
 The API reference is available through the following links:
 
-- Web SDK: [https://docs.theoplayer.com/api-reference/web/theoplayer.chromecast.md](https://docs.theoplayer.com/api-reference/web/theoplayer.chromecast.md), which inherits from [https://docs.theoplayer.com/api-reference/web/theoplayer.vendorcast.md](https://docs.theoplayer.com/api-reference/web/theoplayer.vendorcast.md)
-- Android SDK: [pathname:///theoplayer/v6/api-reference/android/index.html](pathname:///theoplayer/v6/api-reference/android/index.html)
-- iOS SDK: [pathname:///theoplayer/v6/api-reference/ios/Protocols/Chromecast.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/Chromecast.html)
+- Web SDK: [Chromecast](pathname:///theoplayer/v6/api-reference/web/interfaces/Chromecast.html), which inherits from [VendorCast](pathname:///theoplayer/v6/api-reference/web/interfaces/VendorCast.html)
+- Android SDK: [Chromecast](pathname:///theoplayer/v6/api-reference/android/api/cast/chromecast/Chromecast.html)
+- iOS SDK: [Chromecast](pathname:///theoplayer/v6/api-reference/ios/Protocols/Chromecast.html)
 
 Use the API as demonstrated below:
 
@@ -28,7 +28,7 @@ Use the API as demonstrated below:
 
 ```javascript
 // const player = new THEOplayer.Player(...)
-const chromecastState = player.cast.chromecast.state; // https://docs.theoplayer.com/api-reference/web/theoplayer.caststate.md
+const chromecastState = player.cast.chromecast.state; // pathname:///theoplayer/v6/api-reference/web/types/CastState.html
 const isCasting = player.cast.chromecast.casting; // true or false
 // ...
 // if (want to start Chromecast)

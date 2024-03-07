@@ -33,11 +33,11 @@ then you use the `Ads` interface to detect ad events throughout the Web, Android
 
 #### Web SDK
 
-The `Player` API exposes an [`ads`](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#ads) property which belongs to the [`Ads`](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md) interface.
-Because this [`Ads`](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md) interface inherits from [`EventDispatcher<AdsEventMap>`](https://docs.theoplayer.com/api-reference/web/theoplayer.adseventmap.md),
+The `Player` API exposes an [`ads`](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#ads) property which belongs to the [`Ads`](pathname:///theoplayer/v6/api-reference/web/interfaces/Ads.html) interface.
+Because this [`Ads`](pathname:///theoplayer/v6/api-reference/web/interfaces/Ads.html) interface inherits from [`EventDispatcher<AdsEventMap>`](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsEventMap.html),
 you can leverage event listeners in this interface.
 
-The ad-related events are documented at [https://docs.theoplayer.com/api-reference/web/theoplayer.adseventmap.md](https://docs.theoplayer.com/api-reference/web/theoplayer.adseventmap.md).
+The ad-related events are documented in [`AdsEventMap`](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsEventMap.html).
 To subscribe to an event, you select an event from this page, use the `Ads` interface,
 call the `addEventListener` method, and set the event as the first parameter, and the callback as the second parameter.
 

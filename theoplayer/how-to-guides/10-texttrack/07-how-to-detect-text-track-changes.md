@@ -34,10 +34,10 @@ The TextTrack API is available across all of our base SDKs. As described in the 
 
 The implementation of the Web SDK applies to all web-based platforms, including Tizen and webOS.
 
-The Web SDK exposes the TextTrack API through [`player.textTracks`](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#texttracks).
-This `textTracks` property is a [`TextTrackList`](https://docs.theoplayer.com/api-reference/web/theoplayer.texttrackslist.md) that inherits from the [`TrackList`](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklist.md).
-This `TrackList` dispatches the events from the [`TrackListEventMap`](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklisteventmap.md).
-This `TrackListEventMap` contains the [`change`](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklisteventmap.md#change) event, as well as the `addtrack` and `removetrack` event.
+The Web SDK exposes the TextTrack API through [`player.textTracks`](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#texttracks).
+This `textTracks` property is a [`TextTrackList`](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTracksList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackList.html).
+This `TrackList` dispatches the events from the [`TrackListEventMap`](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html).
+This `TrackListEventMap` contains the [`change`](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html#change) event, as well as the `addtrack` and `removetrack` event.
 
 The code below allows you to detect text track changes.
 
@@ -49,7 +49,7 @@ player.textTracks.addEventListener("change", function (event) {
 });
 ```
 
-The properties of a text `track` (e.g. `mode`, `kind`) are described at [https://docs.theoplayer.com/api-reference/web/theoplayer.texttrack.md](https://docs.theoplayer.com/api-reference/web/theoplayer.texttrack.md).
+The properties of a text `track` (e.g. `mode`, `kind`) are described at [pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html).
 
 ### Android SDK
 

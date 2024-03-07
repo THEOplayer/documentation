@@ -37,7 +37,7 @@ There are two prerequisites in order to continue with this guide:
 1. You have a THEOplayer license. You can grab a license at [https://portal.theoplayer.com](https://portal.theoplayer.com).
 
 2. You have some [basic knowledge](../../getting-started/01-sdks/01-web/00-getting-started.md) on how to use THEOplayer,
-   and can navigate comfortable through [the API](https://docs.theoplayer.com/api-reference/web/theoplayer.md) to find [relevant events](http://demo.theoplayer.com/using-events-examples).
+   and can navigate comfortable through [the API](pathname:///theoplayer/v6/api-reference/web/) to find [relevant events](http://demo.theoplayer.com/using-events-examples).
 
 Refer to our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md) before advancing
 to the code samples.
@@ -48,9 +48,9 @@ You can access the video data through the THEOplayer API. Through the API, you c
 For example, when the `ended` event is triggered (meaning: someone completely watched the video),
 your callback could be that when this happens, you do a request to a remote video analytics service.
 
-Events are organized across interfaces and subinterfaces, as illustrated by the image below. For example, the [`Player`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md) contains
+Events are organized across interfaces and subinterfaces, as illustrated by the image below. For example, the [`Player`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html) contains
 general video player events like `play`, `pause` and `ended`.
-The [`Ads`](https://docs.theoplayer.com/api-reference/web/theoplayer.adseventmap.md) interface contains events related to advertisements,
+The [`Ads`](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsEventMap.html) interface contains events related to advertisements,
 like `adbreakbegin` and `adend`.
 
 ![THEOplayer API Interfaces and Events](../../assets/img/analytics-events.png "THEOplayer API Interfaces and Events")
@@ -63,26 +63,26 @@ Below is an (incomplete) list of some common interface event maps.
 
 - Player is the interface the represents the video player instance.
   You use this interface to detect general video events, like a play, a pause, and so on.
-  _ [Web](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md)
+  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html)
   _ [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html) \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html)
 - Ads is the interface that represents the advertisements.
   You use this interface to detect when an ad starts and stops.
-  _ [Web](https://docs.theoplayer.com/api-reference/web/theoplayer.adseventmap.md)
+  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsEventMap.html)
   _ [iOS](pathname:///theoplayer/v6/api-reference/ios/Ads%20Events.html) \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/ads/AdsEventTypes.html)
 - AudioTrackList is the interface that represents the list of audio tracks.
   You use this interface to detect when a new audio track is added, or when another audio track becomes active.
-  _ [Web](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklisteventmap.md)
+  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html)
   _ [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/AudioTrackListEventTypes.html) \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html)
 - VideoTrack is the interface that represents a single video track containing one or more video qualities.
   You use this interface to detect when another video quality becomes active.
-  _ [Web](https://docs.theoplayer.com/api-reference/web/theoplayer.mediatrackeventmap.md)
+  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrackEventMap.html)
   _ iOS: unavailable due to Apple limitations \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/video/VideoTrackEventTypes.html)
 - TextTrackList is comparable AudioTrackList, but for subtitles, closed captions and metadata (e.g. id3, emsg, EventStream, EXT-X-DATERANGE).
-  - [Web](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklisteventmap.md)
+  - [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html)
   - [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/TextTrackListEventTypes.html)
   - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html)
 - Cast is the interface that is used to detect events related to Chromecast and AirPlay.
-  - [Web](https://docs.theoplayer.com/api-reference/web/theoplayer.vendorcasteventmap.md)
+  - [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/VendorCastEventMap.html)
   - iOS: [AirPlay](pathname:///theoplayer/v6/api-reference/ios/Structs/AirPlayEventTypes.html) & [Chromecast](pathname:///theoplayer/v6/api-reference/ios/Structs/ChromecastEventTypes.html)
   - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/chromecast/package-summary.html)
 - Network is the interface that is used to intercept HTTP(S) requests and responses.
@@ -92,7 +92,7 @@ Note that maintaining the above list manually is unfortunately a no-go because o
 This means that you should research your events through our automatically managed API references at [https://docs.theoplayer.com/](https://docs.theoplayer.com/).
 For example, interfaces like VR, TextTrackCueList, VideoTrackList, Verizon Media and Yospace are omitted because manually maintaining this would be too challenging.
 
-When doing a custom analytics integration, you should also check our [Metrics](https://docs.theoplayer.com/api-reference/web/theoplayer.metrics.md) API,
+When doing a custom analytics integration, you should also check our [Metrics](pathname:///theoplayer/v6/api-reference/web/interfaces/Metrics.html) API,
 and our articles on [error handling](../07-miscellaneous/04-error/00-introduction.md).
 
 ### Video analytics metrics and events
@@ -100,40 +100,40 @@ and our articles on [error handling](../07-miscellaneous/04-error/00-introductio
 Let's discuss some popular metrics, and how you could track it with a video player events.
 
 Plays (or Impressions). This metric represents the amount of plays.
-You can calculate this event by identifying the first [`playing`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#playing) event after every [`sourcechange`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#sourcechange) event.
+You can calculate this event by identifying the first [`playing`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#playing) event after every [`sourcechange`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#sourcechange) event.
 
 Video Startup Time (or Time-to-First-Frame or Join Latency). This metric represents the time it takes your video to start.
-You can calculate this event by calculating the difference between the timestamps of the first [`playing`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#playing) and the first [`play`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#play) event after every [`sourcechange`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#sourcechange) event.
+You can calculate this event by calculating the difference between the timestamps of the first [`playing`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#playing) and the first [`play`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#play) event after every [`sourcechange`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#sourcechange) event.
 
 Seek Time (or Seek Latency). This metric represents the time it takes for your video to resume when you scrub to another position.
-You can calculate this event by calculating the difference between the timestamps of the [`seeking`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#seeking) and the [`seeked`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#seeked) event.
+You can calculate this event by calculating the difference between the timestamps of the [`seeking`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#seeking) and the [`seeked`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#seeked) event.
 
 Watch Time. This metric represents how much time is spent watching content by your viewers.
-You calculate this value by tracking the [`playing`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#playing) event,
-and halting it when the [`waiting`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#waiting),
-[`pause`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#pause),
-[`ended`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#ended) or
-[`error`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#error) event occurs.
+You calculate this value by tracking the [`playing`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#playing) event,
+and halting it when the [`waiting`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#waiting),
+[`pause`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#pause),
+[`ended`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#ended) or
+[`error`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#error) event occurs.
 
 Rebuffer Ratio (or Stalls). This metric represents how often the viewer is watching the "spinner icon" versus the actual video.
 This metric is closely related to the Watch Time.
-You can calculate this event by tracking the [`waiting`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#waiting) event, which is triggered when the video starts to stall,
-and the [`playing`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#playing) event.
+You can calculate this event by tracking the [`waiting`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#waiting) event, which is triggered when the video starts to stall,
+and the [`playing`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#playing) event.
 
 Average Bitrate. This metric represents the average video quality that your viewers are watching.
-You can calculate this metric by tracking the [`activequalitychanged`](https://docs.theoplayer.com/api-reference/webos/theoplayer.mediatrackeventmap.md/#a-idactivequalitychangedaactivequalitychanged) event.
+You can calculate this metric by tracking the [`activequalitychanged`](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrackEventMap.html#activequalitychanged) event.
 
 Average % Complete (or Watched Ratio). This metric represents the relative completion rate of your videos.
 This metric is related to the Watch Time, and related in a similar fashion.
-You could also use the [`duration`](https://docs.theoplayer.com/api-reference/webos/theoplayer.chromelessplayer.md#duration) to determine the length of the asset.
+You could also use the [`duration`](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#duration) to determine the length of the asset.
 
 Exit Before Video Start. This metric represents how often your viewers aren't able to start the video, even though they had the intent to watch it.
-You can calculate this metric by tracking the first [`play`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#play) event,
-and it never getting to the [`playing`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#playing) event.
+You can calculate this metric by tracking the first [`play`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#play) event,
+and it never getting to the [`playing`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#playing) event.
 
 Video Playback Failure. This metric represents how often your viewers have a problem with playback once a video starts.
-You can calculate this metric by tracking the [`error`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#error) event
-after the first [`playing`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#playing) event.
+You can calculate this metric by tracking the [`error`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#error) event
+after the first [`playing`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#playing) event.
 
 Note that these proposed calculations are only loosely formulated to help you understand the relationship between video metrics and a video player API.
 
@@ -264,6 +264,6 @@ A custom analytics integration gives you full control over your code, and the da
 
 Extra resources:
 
-1. [THEOplayer API](https://docs.theoplayer.com/api-reference/web/theoplayer.md)
+1. [THEOplayer API](pathname:///theoplayer/v6/api-reference/web/)
 
 2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)

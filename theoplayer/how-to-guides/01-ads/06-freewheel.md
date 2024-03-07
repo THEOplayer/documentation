@@ -38,7 +38,7 @@ After setting up your basic page containing THEOplayer, you need to add the Free
 
 `<script type='text/javascript' src='https://mssl.fwmrm.net/libs/adm/6.xx.x/AdManager.js'></script>`
 
-Next, you add a [`FreeWheelAdDescription`](https://docs.theoplayer.com/api-reference/web/theoplayer.freewheeladdescription.md) to your source that specifies the FreeWheel tokens. An example sourceDescription could look like this:
+Next, you add a [`FreeWheelAdDescription`](pathname:///theoplayer/v6/api-reference/web/interfaces/FreeWheelAdDescription.html) to your source that specifies the FreeWheel tokens. An example sourceDescription could look like this:
 
 ```html
 ...
@@ -70,6 +70,6 @@ The following resources provide more information:
 
 1. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)
 
-2. [FreeWheelAdDescription](https://docs.theoplayer.com/api-reference/web/theoplayer.freewheeladdescription.md)
+2. [FreeWheelAdDescription](pathname:///theoplayer/v6/api-reference/web/interfaces/FreeWheelAdDescription.html)
 
 3. [FreeWheel website](https://freewheel.com)

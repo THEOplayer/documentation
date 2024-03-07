@@ -88,7 +88,7 @@ Notes:
 
 The following resources provide more information:
 
-API reference - [Clip API](https://docs.theoplayer.com/api-reference/web/theoplayer.clip.md)
+API reference - [Clip API](pathname:///theoplayer/v6/api-reference/web/interfaces/Clip.html)
 
 <!-- https://demo.theoplayer.com/playlist: Demo page - Playlist -->
 

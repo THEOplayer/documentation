@@ -83,7 +83,7 @@ The following code samples demonstrate how you track some of the 18 events relat
 
 All 18 events are dispatched by the `Player` interface.
 
-- Web SDK: [interface](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md) and [events](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md)
+- Web SDK: [interface](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html) and [events](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html)
 - Android SDK: [interface](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html) and [events](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html)
 - iOS SDK: [interface](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html) and [events](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html)
 - Roku SDK
@@ -91,7 +91,7 @@ All 18 events are dispatched by the `Player` interface.
 #### Web SDK
 
 The snippet below demonstrates how you can track some of the related events through the THEOplayer Web SDK.
-All other events can be tracked similarly. You can find the event names at [https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md).
+All other events can be tracked similarly. You can find the event names at [pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html).
 This approach is valid for all web-based platforms, including Tizen and webOS.
 
 ```javascript

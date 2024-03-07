@@ -4,7 +4,7 @@ THEOplayer supports playing only a selected part of a video-on-demand stream, ra
 
 ## API
 
-The start and end of the clipping window can be controlled through the [Clip API](https://docs.theoplayer.com/api-reference/web/theoplayer.clip.md):
+The start and end of the clipping window can be controlled through the [Clip API](pathname:///theoplayer/v6/api-reference/web/interfaces/Clip.html):
 
 - `startTime` and `endTime`, expressed in seconds
 

@@ -35,7 +35,7 @@ This example explains how you do a basic implementation of the Up Next API.
 
 The Up Next API is currently only available on the Web SDK.
 
-- Reference API: [Up Next API](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md#upnext)
+- Reference API: [Up Next API](pathname:///theoplayer/v6/api-reference/web/classes/Player.html#upnext)
 - Online demo: [Up Next Demo](https://www.theoplayer.com/theoplayer-demo-up-next)
 
 The snippet below demonstrates how you could configure the Up Next API.
@@ -72,4 +72,4 @@ The Up Next API is currently unavailable on all SDKs except the Web SDK, because
 
 The following resources provide more information:
 
-- [Up Next API](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md#upnext)
+- [Up Next API](pathname:///theoplayer/v6/api-reference/web/classes/Player.html#upnext)

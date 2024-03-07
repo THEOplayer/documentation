@@ -59,13 +59,13 @@ For example, on the Web SDK, you can access this through `THEOplayer.ErrorCatego
 Relevant API references:
 
 - Web SDK
-  - [`ErrorCategory`](https://docs.theoplayer.com/api-reference/web/theoplayer.errorcategory.md)
-  - [`ErrorCategory.fromCode()`](https://docs.theoplayer.com/api-reference/web/theoplayer.errorcategory.namespace.fromcode.md)
+  - [`ErrorCategory`](pathname:///theoplayer/v6/api-reference/web/enums/ErrorCategory.html)
+  - [`ErrorCategory.fromCode()`](pathname:///theoplayer/v6/api-reference/web/functions/ErrorCategory-1.fromCode.html)
 - Android SDK
-  - [`ErrorCategory`](https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/android/latest/com/theoplayer/android/api/error/ErrorCategory.html)
-  - [`ErrorCategory.fromCode()`](https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/android/latest/com/theoplayer/android/api/error/ErrorCategory.html#fromCode-com.theoplayer.android.api.error.ErrorCode-)
+  - [`ErrorCategory`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/error/ErrorCategory.html)
+  - [`ErrorCategory.fromCode()`](<pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/error/ErrorCategory.html#fromCode(ErrorCode)>)
 - iOS SDK
-  - `ErrorCategory`
+  - [`ErrorCategory`](pathname:///theoplayer/v6/api-reference/ios/Enums/ErrorCategory.html)
 
 ## Codes
 
@@ -82,8 +82,8 @@ as illustrated by the screenshot below.
 Relevant API references:
 
 - Web SDK
-  - [`ErrorCode`](https://docs.theoplayer.com/api-reference/web/theoplayer.errorcode.md)
+  - [`ErrorCode`](pathname:///theoplayer/v6/api-reference/web/enums/ErrorCode.html)
 - Android SDK
-  - [`ErrorCode`](https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/android/latest/com/theoplayer/android/api/error/ErrorCode.html)
+  - [`ErrorCode`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/error/ErrorCode.html)
 - iOS SDK
   - `THEOErrorCode`

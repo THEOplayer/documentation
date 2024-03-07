@@ -10,5 +10,5 @@ This is done by setting the value of the countdownDuration property of your UpNe
 
 The following resources provide more information:
 
-- [API reference](https://docs.theoplayer.com/api-reference/web/theoplayer.upnextpanel.md#countdownduration)
+- [API reference](pathname:///theoplayer/v6/api-reference/web/interfaces/UpNextPanel.html#countdownDuration)
 - [Demo page – Up Next](https://www.theoplayer.com/theoplayer-demo-up-next)

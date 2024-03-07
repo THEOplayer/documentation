@@ -52,7 +52,7 @@ The following snippets demonstrate how to schedule a single pre-roll.
 
 #### Web SDK
 
-You configure one [`AdDescription`](https://docs.theoplayer.com/api-reference/web/theoplayer.addescription.md) in the `ads` property of your [`SourceConfiguration`](https://docs.theoplayer.com/api-reference/web/theoplayer.sourceconfiguration.md).
+You configure one [`AdDescription`](pathname:///theoplayer/v6/api-reference/web/interfaces/AdDescription.html) in the `ads` property of your [`SourceConfiguration`](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceConfiguration.html).
 In this `AdDescription`,
 
 - you set the value of `sources` to your ad tag URL.

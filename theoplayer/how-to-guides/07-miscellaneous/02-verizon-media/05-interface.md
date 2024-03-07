@@ -81,7 +81,7 @@ const player = new THEOplayer.Player(element, {...});
 });
 ```
 
-Refer to the documentation at https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmedia.md for more information. Additionally, reviewing https://github.com/THEOplayer/samples-html5-sdk/blob/master/reference-apps/verizon-media-app/src/player.js helps to understand the `VerizonMedia` interface.
+Refer to the [VerizonMedia API reference](pathname:///theoplayer/v6/api-reference/web/interfaces/VerizonMedia.html) for more information. Additionally, reviewing https://github.com/THEOplayer/samples-html5-sdk/blob/master/reference-apps/verizon-media-app/src/player.js helps to understand the `VerizonMedia` interface.
 
 ##### Legacy Android SDK (4.12.x)
 
@@ -114,7 +114,7 @@ player.getVerizonMedia().getAds().getAdBreaks().addEventListener(VerizonMediaAdB
 player.getVerizonMedia().getAds().getAdBreaks().addEventListener(VerizonMediaAdBreakListEventTypes.REMOVE_ADBREAK, event -> Log.i(TAG, "Event: REMOVEADBREAK"))
 ```
 
-Refer to the documentation at https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/android/latest/com/theoplayer/android/api/verizonmedia/VerizonMedia.html for more information. Additionally, reviewing https://github.com/THEOplayer/samples-android-sdk/blob/master/Verizon-Media/app/src/main/java/com/theoplayer/sample/playback/verizonmedia/PlayerActivity.java helps to understand the `VerizonMedia` interface.
+Refer to the documentation at pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/verizonmedia/VerizonMedia.html for more information. Additionally, reviewing https://github.com/THEOplayer/samples-android-sdk/blob/master/Verizon-Media/app/src/main/java/com/theoplayer/sample/playback/verizonmedia/PlayerActivity.java helps to understand the `VerizonMedia` interface.
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 

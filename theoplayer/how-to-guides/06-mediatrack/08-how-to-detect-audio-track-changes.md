@@ -35,10 +35,10 @@ The AudioTrack API is available across all of our base SDKs. As described in the
 
 The implementation of the Web SDK applies to all web-based platforms, including Tizen and webOS.
 
-The Web SDK exposes the AudioTrack API through [`player.audioTracks`](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#audiotracks).
-This `audioTracks` property is a [`MediaTrackList`](https://docs.theoplayer.com/api-reference/web/theoplayer.mediatracklist.md) that inherits from the [`TrackList`](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklist.md).
-This `TrackList` dispatches the events from the [`TrackListEventMap`](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklisteventmap.md).
-This `TrackListEventMap` contains the [`change`](https://docs.theoplayer.com/api-reference/web/theoplayer.tracklisteventmap.md#change) event, as well as the `addtrack` and `removetrack` event.
+The Web SDK exposes the AudioTrack API through [`player.audioTracks`](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#audiotracks).
+This `audioTracks` property is a [`MediaTrackList`](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrackList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackList.html).
+This `TrackList` dispatches the events from the [`TrackListEventMap`](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html).
+This `TrackListEventMap` contains the [`change`](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html#change) event, as well as the `addtrack` and `removetrack` event.
 
 The code below allows you to detect text track changes.
 
@@ -49,7 +49,7 @@ player.audioTracks.addEventListener("change", function (event) {
 });
 ```
 
-The properties of a media `track` (e.g. `enabled`, `language`) are described at [https://docs.theoplayer.com/api-reference/web/theoplayer.mediatrack.md](https://docs.theoplayer.com/api-reference/web/theoplayer.mediatrack.md).
+The properties of a media `track` (e.g. `enabled`, `language`) are described at [pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html).
 
 ### Android SDK
 

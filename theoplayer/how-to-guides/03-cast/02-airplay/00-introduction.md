@@ -39,14 +39,14 @@ The AirPlay interface is a sub-interface of the Cast interface on both the THEOp
 
 The API reference is available through the following links:
 
-- Web SDK: [https://docs.theoplayer.com/api-reference/web/theoplayer.airplay.md](https://docs.theoplayer.com/api-reference/web/theoplayer.airplay.md), which inherits from [https://docs.theoplayer.com/api-reference/web/theoplayer.vendorcast.md](https://docs.theoplayer.com/api-reference/web/theoplayer.vendorcast.md)
-- iOS SDK: [pathname:///theoplayer/v6/api-reference/ios/Protocols/AirPlay.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/AirPlay.html)
+- Web SDK: [AirPlay](pathname:///theoplayer/v6/api-reference/web/interfaces/AirPlay.html), which inherits from [VendorCast](pathname:///theoplayer/v6/api-reference/web/interfaces/VendorCast.html)
+- iOS SDK: [AirPlay](pathname:///theoplayer/v6/api-reference/ios/Protocols/AirPlay.html)
 
 For the **THEOplayer Web SDK**, you could use the API as demonstrated below:
 
 ```javascript
 // const player = new THEOplayer.Player(...)
-const airPlayState = player.cast.airplay.state; // https://docs.theoplayer.com/api-reference/web/theoplayer.caststate.md
+const airPlayState = player.cast.airplay.state; // pathname:///theoplayer/v6/api-reference/web/types/CastState.html
 const isCasting = player.cast.airlay.casting; // true or false
 // ...
 // if (want to start AirPlay)

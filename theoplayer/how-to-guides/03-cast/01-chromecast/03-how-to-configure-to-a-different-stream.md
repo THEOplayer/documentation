@@ -28,12 +28,12 @@ You may also be interested in `onJoin` (i.e. joining an existing Chromecast sess
 
 #### Web SDK
 
-The snippet below has two [sources](https://docs.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md):
+The snippet below has two [sources](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html):
 
 1. `senderSource` is intended for playback on your sender device (i.e. your browser)
 2. `chromecastSource` is intended for playback on your Chromecast application
 
-The [`ChromecastConnectionCallback`](https://docs.theoplayer.com/api-reference/web/theoplayer.chromecastconnectioncallback.md) interface is used to:
+The [`ChromecastConnectionCallback`](pathname:///theoplayer/v6/api-reference/web/interfaces/ChromecastConnectionCallback.html) interface is used to:
 
 1. Set the `chromecastSource` when Chromecast playback starts through the `onStart` callback.
 2. Revert to the `senderSource` when Chromecast playback stops through the `onStop` callback.
@@ -129,7 +129,7 @@ This particular snippet has two [sources](pathname:///theoplayer/v6/api-referenc
 1. `senderSource` is intended for playback on your sender device (i.e. your iOS app)
 2. `chromecastSource` is intended for playback on your Chromecast application
 
-The [`ChromecastConnectionCallback`](https://docs.theoplayer.com/api-reference/web/theoplayer.chromecastconnectioncallback.md) interface is used to:
+The [`ChromecastConnectionCallback`](pathname:///theoplayer/v6/api-reference/web/interfaces/ChromecastConnectionCallback.html) interface is used to:
 
 1. Set the `chromecastSource` when Chromecast playback starts through the `onStart` callback.
 2. Revert to the `senderSource` when Chromecast playback stops through the `onStop` callback.
@@ -221,7 +221,7 @@ class PlayerViewController: UIViewController {
 
 ## Chromecast source API
 
-The Chromecast source API is a straightforward technique to configure a different [`source`](https://docs.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md) to be loaded for Chromecast playback.
+The Chromecast source API is a straightforward technique to configure a different [`source`](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html) to be loaded for Chromecast playback.
 
 This API is unmaintained (and deprecated) as of THEOplayer 2.90.0, and developers should use the [ChromecastConnection API](#chromecastconnection-api) instead.
 
@@ -233,7 +233,7 @@ This API is unmaintained (and deprecated) as of THEOplayer 2.90.0, and developer
 
 #### Web SDK
 
-The [Chromecast API](https://docs.theoplayer.com/api-reference/web/theoplayer.chromecast.md) allows you to configure a different source (i.e. [`SourceDescription`](https://docs.theoplayer.com/api-reference/web/theoplayer.sourcedescription.md)) to be Chromecasted.
+The [Chromecast API](pathname:///theoplayer/v6/api-reference/web/interfaces/Chromecast.html) allows you to configure a different source (i.e. [`SourceDescription`](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html)) to be Chromecasted.
 The snippet below demonstrates this API.
 
 ```js

@@ -39,9 +39,9 @@ Developers can subscribe to events and attach a callback function.
 This callback function implements the error handling.
 
 This section describes how to use event handlers for the "top-level", "generic", "player" `error` event.
-This is the [`error`](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md#error) event which is dispatched through the `Player` interface.
+This is the [`error`](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#error) event which is dispatched through the `Player` interface.
 This event is fatal and prevents playback.
-(There are also `error` events, for example the [`error`](https://docs.theoplayer.com/api-reference/web/theoplayer.chromecasteventmap.md#error) event which is dispatched through the `Chromecast` interface.
+(There are also `error` events, for example the [`error`](pathname:///theoplayer/v6/api-reference/web/interfaces/ChromecastEventMap.html#error) event which is dispatched through the `Chromecast` interface.
 You handle these `error` events in the same fashion.)
 
 #### Web

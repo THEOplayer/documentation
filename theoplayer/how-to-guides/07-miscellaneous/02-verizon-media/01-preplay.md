@@ -74,7 +74,7 @@ player.source = {
 };
 ```
 
-The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md). More information on certain properties:
+The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](pathname:///theoplayer/v6/api-reference/web/interfaces/VerizonMediaSource.html). More information on certain properties:
 
 - `id`: The ID field identifies the asset. Instead of a single string, developers can also specify an array of asset IDs as strings, which will be stitched into a continuous stream. The same goes for the `externalId` property in case an external ID is used in the source.
 - `preplayParameters`: The `preplayParameters` object should have string-key-string-value combinations, which will be used as query parameters for the Preplay API call. Nested objects are not supported.
@@ -123,7 +123,7 @@ SourceDescription mySourceDescription = SourceDescription.Builder.sourceDescript
 this.tpv.getPlayer().setSource(mySourceDescription);
 ```
 
-The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/android/latest/com/theoplayer/android/api/source/verizonmedia/VerizonMediaSource.html).
+The snippet above gives a quick overview of the structure of a Verizon Media-specific source, also known as a [VerizonMediaSource](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/verizonmedia/VerizonMediaSource.html).
 
 ##### iOS (/tvOS) SDK
 
@@ -210,7 +210,7 @@ m.player.source = {
 
 ## Stream Configuration (with ads)
 
-The examples below demonstrate how to configure a stream with server-side ads through a [VerizonMediaSource](https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
+The examples below demonstrate how to configure a stream with server-side ads through a [VerizonMediaSource](pathname:///theoplayer/v6/api-reference/web/interfaces/VerizonMediaSource.html).
 
 ##### Web SDK
 
@@ -318,7 +318,7 @@ let eventListener = self.theoplayer.verizonMedia.addEventListener(type: VerizonM
 
 Verizon Media users often leverage URL signatures (i.e. tokens) to further secure their content -- on top of AES-128 encryption or studio DRM.
 A token is (typically) generated on back-end using an API key and a set of parameters.
-(The documentation at [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2) describes this process.) This set of parameters should also be passed along to the `preplayParameters` in a [VerizonMediaSource](https://docs.theoplayer.com/api-reference/web/theoplayer.verizonmediasource.md).
+(The documentation at [Basic Setup > Playback URL's > Signing a Playback URL Tutorial](https://docs.vdms.com/video/index.html#Tutorials/Signed-Playback-URL-Tutorial.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____2) describes this process.) This set of parameters should also be passed along to the `preplayParameters` in a [VerizonMediaSource](pathname:///theoplayer/v6/api-reference/web/interfaces/VerizonMediaSource.html).
 If you do not configure the `preplayParameters` (or `orderedParameters`) correctly in relation to your signature parameters, then the Preplay request made by THEOplayer will most likely return an invalid Preplay response, preventing THEOplayer from setting up your stream.
 
 Let's consider a set-up where a Verizon Media customer uses both URL signatures and multi-DRM.

@@ -32,7 +32,7 @@ or either B) implement an error event handler to implement a custom behavior.
 
 ### Stream configuration
 
-When you set the `blockContentIfAdError` to `true` in your stream configuration (i.e. [SourceConfiguration](https://docs.theoplayer.com/api-reference/web/theoplayer.sourceconfiguration.md#blockcontentifaderror)),
+When you set the `blockContentIfAdError` to `true` in your stream configuration (i.e. [SourceConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceConfiguration.html#blockContentIfAdError)),
 then playback will be stopped, and a default error message will be shown.
 
 The snippet below demonstrates how you could implement this `blockContentIfAdError` property in a stream configuration.
@@ -132,6 +132,6 @@ player.ads.addEventListener("aderror", function (event) {
 
 Below are some resources on adblock detection through the Ads API:
 
-- API reference: [Ads API](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md)
+- API reference: [Ads API](pathname:///theoplayer/v6/api-reference/web/interfaces/Ads.html)
 - Online demo: [Adblock Detection Demo](https://demo.theoplayer.com/adblock-detection)
 - Advertisement guide: [Advertising User Guide](../../knowledge-base/01-advertisement/01-user-guide.md) (mentions adblock detection)

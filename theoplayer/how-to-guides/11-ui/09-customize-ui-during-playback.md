@@ -49,7 +49,7 @@ The Web SDK code should be included in your iOS project. The article at [How to 
 
 ### Events
 
-The [Ads API](https://docs.theoplayer.com/api-reference/web/theoplayer.ads.md) exposes, among others, the following events:
+The [Ads API](pathname:///theoplayer/v6/api-reference/web/interfaces/Ads.html) exposes, among others, the following events:
 
 - `adbegin`: dispatched when an ad starts
 - `adend`: dispatched when an ad ends

@@ -56,10 +56,10 @@ The PiP configuration for this SDK includes 3 properties:
   The corner in which the player should be shown while in PiP mode. Defaults to the bottom right corner.
 
 - `visibility`: (optional, a number from 0 to 1)  
-  The maximum percentage of the original player position that should be visible to enable PiP automatically. If not configured, PiP can only be turned on by setting [presentationMode](https://docs.theoplayer.com/api-reference/web/theoplayer.presentationmode.md) to "picture-in-picture".
+  The maximum percentage of the original player position that should be visible to enable PiP automatically. If not configured, PiP can only be turned on by setting [presentationMode](pathname:///theoplayer/v6/api-reference/web/types/PresentationMode.html) to "picture-in-picture".
 
 - `retainPresentationModeOnSourceChange`: (optional, possible values: true or false)  
-  If set to true, the previous [presentationMode](https://docs.theoplayer.com/api-reference/web/theoplayer.presentationmode.md) is retained even as the source changes. It is set to false by default.
+  If set to true, the previous [presentationMode](pathname:///theoplayer/v6/api-reference/web/types/PresentationMode.html) is retained even as the source changes. It is set to false by default.
 
 ```js
 var playerConfig = {
@@ -291,8 +291,8 @@ The following resources provide more information:
 
 ##### Web SDK
 
-- [PipConfiguration API Reference](https://docs.theoplayer.com/api-reference/web/theoplayer.pipconfiguration.md)
-- [PlayerConfiguration API Reference](https://docs.theoplayer.com/api-reference/web/theoplayer.playerconfiguration.md)
+- [PipConfiguration API Reference](pathname:///theoplayer/v6/api-reference/web/interfaces/PiPConfiguration.html)
+- [PlayerConfiguration API Reference](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerConfiguration.html)
 
 ##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 

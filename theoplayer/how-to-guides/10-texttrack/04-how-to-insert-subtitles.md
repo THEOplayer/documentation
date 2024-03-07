@@ -27,7 +27,7 @@ The _textTracks_ property and objects can also be used for other purposes, e.g.:
 
 ##### Web SDK
 
-Each text track should be described as a [TextTrackDescription](https://docs.theoplayer.com/api-reference/web/theoplayer.texttrackdescription.md).
+Each text track should be described as a [TextTrackDescription](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrackDescription.html).
 
 ```js
 player.source = {
