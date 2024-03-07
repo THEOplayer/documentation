@@ -141,7 +141,7 @@ async function setupYospaceConnector(player) {
 
 ### Prerequisites
 
-1. The THEOplayer Android SDK Conviva Connector requires the application to import the THEOplayer Android SDK since the connector relies on its public APIs. For more details, check out our [Getting started on Android](../../../getting-started/01-sdks/02-android/00-getting-started.md) or [Getting started on Legacy Android SDK (4.12.x)](<../../../getting-started/01-sdks/02-android-legacy-(4.12.x)/00-getting-started.md>) guide.
+1. The THEOplayer Android SDK Conviva Connector requires the application to import the THEOplayer Android SDK since the connector relies on its public APIs. For more details, check out our [Getting started on Android](../../../getting-started/01-sdks/02-android/00-getting-started.md) or [Getting started on Legacy Android SDK (4.12.x)](<../../../getting-started/01-sdks/02-android-legacy-v4/00-getting-started.md>) guide.
 2. For setting up a valid Conviva session, you must have access to a Conviva developer account with access to a debug or production key.
 
 ### Installation
