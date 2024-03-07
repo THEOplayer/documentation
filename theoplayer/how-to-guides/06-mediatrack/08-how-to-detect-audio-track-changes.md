@@ -49,7 +49,7 @@ player.audioTracks.addEventListener("change", function (event) {
 });
 ```
 
-The properties of a media `track` (e.g. `enabled`, `language`) are described at [pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html).
+The properties of a media `track` (e.g. `enabled`, `language`) are described in [the `MediaTrack` API reference](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html).
 
 ### Android SDK
 
@@ -69,7 +69,7 @@ player.getAudioTracks().addEventListener(AudioTrackListEventTypes.TRACKLISTCHANG
 });
 ```
 
-The properties of a media `track` (e.g. `enabled`, `language`) are described at [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html) and [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html).
+The properties of a media `track` (e.g. `enabled`, `language`) are described in the [`MediaTrack`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html) and [`Track`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html) API references.
 
 ### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
@@ -89,7 +89,7 @@ player?.audioTracks.addEventListener(type: AudioTrackListEventTypes.CHANGE, list
 })
 ```
 
-The properties of a media `track` (e.g. `enabled`, `language`) are described at [pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrack.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrack.html) and [pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html).
+The properties of a media `track` (e.g. `enabled`, `language`) are described in the [`MediaTrack`](pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrack.html) and [`Track`](pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html) API references.
 
 ### Roku SDK
 

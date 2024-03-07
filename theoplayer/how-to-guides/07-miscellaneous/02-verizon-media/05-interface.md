@@ -114,7 +114,7 @@ player.getVerizonMedia().getAds().getAdBreaks().addEventListener(VerizonMediaAdB
 player.getVerizonMedia().getAds().getAdBreaks().addEventListener(VerizonMediaAdBreakListEventTypes.REMOVE_ADBREAK, event -> Log.i(TAG, "Event: REMOVEADBREAK"))
 ```
 
-Refer to the documentation at pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/verizonmedia/VerizonMedia.html for more information. Additionally, reviewing https://github.com/THEOplayer/samples-android-sdk/blob/master/Verizon-Media/app/src/main/java/com/theoplayer/sample/playback/verizonmedia/PlayerActivity.java helps to understand the `VerizonMedia` interface.
+Refer to the documentation at [VerizonMedia](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/verizonmedia/VerizonMedia.html) for more information. Additionally, reviewing https://github.com/THEOplayer/samples-android-sdk/blob/master/Verizon-Media/app/src/main/java/com/theoplayer/sample/playback/verizonmedia/PlayerActivity.java helps to understand the `VerizonMedia` interface.
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
@@ -142,7 +142,7 @@ private func onAddAdbreak(event: VerizonMediaAddAdBreakEvent) {
 ...
 ```
 
-Refer to the documentation at https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/ios/latest/index.html for more information. Additionally, reviewing https://github.com/THEOplayer/samples-ios-sdk/blob/master/Verizon-Media/Verizon_Media/PlayerViewController.swift helps to understand the `VerizonMedia` interface.
+Refer to the documentation at [VerizonMedia](pathname:///theoplayer/v6/api-reference/ios/Protocols/VerizonMedia.html) for more information. Additionally, reviewing https://github.com/THEOplayer/samples-ios-sdk/blob/master/Verizon-Media/Verizon_Media/PlayerViewController.swift helps to understand the `VerizonMedia` interface.
 
 ## Related articles
 

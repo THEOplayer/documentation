@@ -91,7 +91,7 @@ All 18 events are dispatched by the `Player` interface.
 #### Web SDK
 
 The snippet below demonstrates how you can track some of the related events through the THEOplayer Web SDK.
-All other events can be tracked similarly. You can find the event names at [pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html).
+All other events can be tracked similarly. You can find the event names in [the `PlayerEventMap` API reference](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html).
 This approach is valid for all web-based platforms, including Tizen and webOS.
 
 ```javascript
@@ -107,7 +107,7 @@ player.addEventListener("ended", (event) => {
 #### Android SDK
 
 The snippet below demonstrates how you can track some of the related events through the THEOplayer Android SDK.
-All other events can be tracked similarly. You can find the event names at [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html).
+All other events can be tracked similarly. You can find the event names in [the `PlayerEventTypes` API reference](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html).
 This approach is valid for all Android-based platforms, including Android TV and Fire TV.
 
 ```java
@@ -123,7 +123,7 @@ player.addEventListener(PlayerEventTypes.ENDED, event -> {
 #### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
 The snippet below demonstrates how you can track some of the related events through the THEOplayer iOS SDK.
-All other events can be tracked similarly. You can find the event names at [pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html).
+All other events can be tracked similarly. You can find the event names in [the `PlayerEventTypes` API reference](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html).
 This approach is valid for all iOS-based platforms, including iPadOS and tvOS.
 
 ```swift

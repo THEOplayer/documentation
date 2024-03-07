@@ -103,8 +103,8 @@ Typically, you want to insert a Chromecast button, and connect that button with 
 (e.g. `player.cast.chromecast.start()`) and stop (`player.cast.chromecast.stop()`) a Chromecast session. Additionally, you might want to change the appearance of this
 button when the state of your casting session transitions (e.g. `player.cast.chromecast.addEventListener('statechange', function() {...});`).
 
-- Web: [Chromecast API](../../../api-reference/web/theoplayer.chromecast.md), [Cast API](../../../api-reference/web/theoplayer.vendorcast.md), [Cast Events API](../../../api-reference/web/theoplayer.vendorcasteventmap.md)
-- iOS: [Chromecast API](https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/ios/latest/Protocols/Chromecast.html), [Chromecast Events API](https://theoplayer-cdn.s3.eu-west-1.amazonaws.com/doc/ios/latest/ChromeCast%20Events.html#/s:13THEOplayerSDK16StateChangeEventC)
+- Web: [Chromecast API](pathname:///theoplayer/v6/api-reference/web/interfaces/Chromecast.html), [Cast API](pathname:///theoplayer/v6/api-reference/web/interfaces/VendorCast.html), [Cast Events API](pathname:///theoplayer/v6/api-reference/web/interfaces/VendorCastEventMap.html)
+- iOS: [Chromecast API](pathname:///theoplayer/v6/api-reference/ios/Protocols/Chromecast.html), [Chromecast Events API](pathname:///theoplayer/v6/api-reference/ios/ChromeCast%20Events.html#/s:13THEOplayerSDK16StateChangeEventC)
 - Android: [Chromecast API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/cast/chromecast/Chromecast.html), [Chromecast Events API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/chromecast/CastStateChangeEvent.html)
 
 Familiarize yourself with the above APIs if you want to change the appearance of your Chromeless UI and its relation to Chromecast.
@@ -122,7 +122,7 @@ a new one](../../../how-to-guides/11-ui/07-how-to-insert-a-button.md) instead. Y
 2. You connect with a custom Receiver application powered by the THEOplayer Chromecast Receiver SDK.
 3. You connect with a custom Receiver application which doesn't contain any THEOplayer SDK or code.
 
-You can provide Chromecast metadata in all three set-ups. Providing [Chromecast metadata](../../../api-reference/web/theoplayer.sourceconfiguration.md#metadata) will make your Receiver application show relevant info (e.g. a title, a thumbnail, ...) when
+You can provide Chromecast metadata in all three set-ups. Providing [Chromecast metadata](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html#metadata) will make your Receiver application show relevant info (e.g. a title, a thumbnail, ...) when
 your application is buffering or paused.
 
 ### Default Receiver application

@@ -72,7 +72,7 @@ The sample project at [How to insert a button](../../how-to-guides/11-ui/07-how-
 
 ### iOS (tvOS) SDK
 
-You can use the API described at pathname:///theoplayer/v6/api-reference/ios/Protocols/Fullscreen_Objc.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerFullscreen(im)setAspectRatioWithAspectRatio to set the [video gravity](https://developer.apple.com/documentation/avfoundation/avplayerlayer/1388915-videogravity) values.
+You can use the API described at [THEOplayerFullscreen](<pathname:///theoplayer/v6/api-reference/ios/Protocols/Fullscreen_Objc.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerFullscreen(im)setAspectRatioWithAspectRatio:>) to set the [video gravity](https://developer.apple.com/documentation/avfoundation/avplayerlayer/1388915-videogravity) values.
 
 The snippet below demonstrates how you could use this API:
 

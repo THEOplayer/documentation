@@ -39,7 +39,7 @@ This `player` variable is a "Chromeless" instance created through the THEOplayer
 
 #### Web SDK
 
-The API reference on creating a Chromeless player instance for the THEOplayer Web SDK is located at [pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#constructor](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#constructor).
+The API reference on creating a Chromeless player instance for the THEOplayer Web SDK is located at [ChromelessPlayer](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#constructor).
 
 When you're implementing a Chromeless UI, you don't need to include the THEOplayer CSS library (i.e. `ui.css`) mentioned in our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md),
 nor do you need to specify some default CSS classed.
@@ -103,7 +103,7 @@ Of course, you would still need to apply CSS to style your `theoplayer-container
 
 ##### Legacy Android SDK (4.12.x)
 
-The API reference on creating a Chromeless player instance for the THEOplayer Android SDK is located at [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/THEOplayerView.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/THEOplayerView.html).
+The API reference on creating a Chromeless player instance for the THEOplayer Android SDK is located at [THEOplayerView](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/THEOplayerView.html).
 
 When creating an instance, you need to provide a [`THEOplayerConfig`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/THEOplayerConfig.html),
 and set `chromeless` to `true`. The snippet below demonstrates how to create a Chromeless instance.
@@ -122,7 +122,7 @@ then you can specify `app:chromeless="true"` as implemented at [https://github.c
 
 #### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-The API reference on creating a Chromeless player instance for the THEOplayer iOS SDK is located at [pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html).
+The API reference on creating a Chromeless player instance for the THEOplayer iOS SDK is located at [THEOplayer](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html).
 
 When creating an instance, you need to [`THEOplayerConfig`](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayerConfiguration.html),
 and set `chromeless` to `true`. The snippet below demonstrates how to create a Chromeless instance.

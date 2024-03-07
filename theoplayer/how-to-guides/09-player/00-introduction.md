@@ -131,6 +131,6 @@ The table below gives an overview of a subset of the available events per interf
 Our APIs are continuously evolving, and so is our list of events.
 Refer to our API references of our SDKs to go through the latest sets of events:
 
-- Web SDK: [pathname:///theoplayer/v6/api-reference/web/]
-- iOS SDK: [pathname:///theoplayer/v6/api-reference/ios/]
-- Android SDK: [pathname:///theoplayer/v6/api-reference/android/]
+- [Web SDK](pathname:///theoplayer/v6/api-reference/web/)
+- [iOS SDK](pathname:///theoplayer/v6/api-reference/ios/)
+- [Android SDK](pathname:///theoplayer/v6/api-reference/android/)

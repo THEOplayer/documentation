@@ -49,7 +49,7 @@ player.textTracks.addEventListener("change", function (event) {
 });
 ```
 
-The properties of a text `track` (e.g. `mode`, `kind`) are described at [pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html).
+The properties of a text `track` (e.g. `mode`, `kind`) are described in [the `TextTrack` API reference](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html).
 
 ### Android SDK
 
@@ -70,7 +70,7 @@ player.getTextTracks().addEventListener(TextTrackListEventTypes.TRACKLISTCHANGE,
 });
 ```
 
-The properties of a text `track` (e.g. `mode`, `kind`) are described at [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html) and [pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html).
+The properties of a text `track` (e.g. `mode`, `kind`) are described in the [`TextTrack`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html) and [`Track`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/Track.html) API references.
 
 ### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
@@ -91,7 +91,7 @@ player?.textTracks.addEventListener(type: TextTrackListEventTypes.CHANGE, listen
 })
 ```
 
-The properties of a text `track` (e.g. `mode`, `kind`) are described at [pathname:///theoplayer/v6/api-reference/ios/Protocols/TextTrack.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/TextTrack.html) and [pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html](pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html).
+The properties of a text `track` (e.g. `mode`, `kind`) are described in the [`TextTrack`](pathname:///theoplayer/v6/api-reference/ios/Protocols/TextTrack.html) and [`Track`](pathname:///theoplayer/v6/api-reference/ios/Protocols/Track.html) API references.
 
 ### Roku SDK
 
