@@ -171,27 +171,21 @@ However, more common is to rely on responsive styling, and not knowing your spec
 Basically, you want your `<iframe>` container to automatically -and appropriately- scale when the size of your browser window changes.
 
 ```html
-<div style="position:relative;padding-bottom:56.25%;">
-  <iframe
-    src="player.html"
-    frameborder="0"
-    scrolling="no"
-    width="100%"
-    height="100%"
-    style="width:100%;height:100%;position:absolute;left:0;top:0;"
-  >
-  </iframe>
-</div>
+<iframe
+  src="player.html"
+  frameborder="0"
+  scrolling="no"
+  width="100%"
+  style="width:100%;aspect-ratio:16/9"
+>
+</iframe>
 ```
 
 The above snippet demonstrates how you can achieve this.
 
-- You want to use a wrapper element, which is the `<div>` container, and you want to give it a `relative` position and configure the aspect ratio in the `padding-bottom`.
-  We've set the value of `padding-bottom` to 56.25%, because to get to an aspect ratio of 16:9, you have to divide 9/16, which is 0.5625. If you want an aspect ratio of 3:4,
-  you would use 75%, because 4/3=0.75. (And so on.)
-- You want to set some styling on your `<iframe>` element. We've used `style="width:100%;height:100%;position:absolute;left:0px;top:0px;"` to make it fit in the wrapper.
+- You want to set an `aspect-ratio` in the `style` of your `<iframe>` element. We've used `16/9` for a 16:9 aspect ratio, but you can change this to e.g. `4/3` for a 4:3 video.
 - You want to disable the border around your iframe by specifying `frameborder="0"` and disable scrolling by specifying `scrolling="no"`.
-- You want to maximize the width and height of your iframe by specifying `width="100%"` and `height="100%"`.
+- You want to maximize the width of your iframe by specifying `width="100%"`. The height will be computed automatically based on the `aspect-ratio`.
 
 Of course, rather than using inline styling through the `style` attribute, you could also achieve the same through CSS.
 And, of course: this is not the only way to style your iframe element, but just one of the many ways.
@@ -251,27 +245,22 @@ You can achieve this with cross-document messaging and the `postMessage` API. Pl
 
 The video player below this paragraph is embedded through an `<iframe>` tag.
 
-<div style="position:relative;padding-bottom:56.25%;">
-<iframe src="https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8" title="Embedded THEOplayer" frameborder="0" scrolling="no" width="100%" height="100%" style="width:100%;height:100%;position:absolute;left:0;top:0;" allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-</div>
+<iframe src="https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8" title="Embedded THEOplayer" frameBorder="0" scrolling="no" width="100%" style={{width:'100%',aspectRatio:'16/9'}} allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
 We selected the "direct approach" by leveraging query parameters, as demonstrated by the code snippet below.
 
 ```html
-<div style="position:relative;padding-bottom:56.25%;">
-  <iframe
-    src="https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8"
-    title="Embedded THEOplayer"
-    frameborder="0"
-    scrolling="no"
-    width="100%"
-    height="100%"
-    style="width:100%;height:100%;position:absolute;left:0;top:0;"
-    allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
-    allowfullscreen=""
-  >
-  </iframe>
-</div>
+<iframe
+  src="https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8"
+  title="Embedded THEOplayer"
+  frameborder="0"
+  scrolling="no"
+  width="100%"
+  style="width:100%;aspect-ratio:16/9"
+  allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
+  allowfullscreen=""
+>
+</iframe>
 ```
 
 If we had configured a different `src`-value, like `https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8`, then it would have loaded a different video.
