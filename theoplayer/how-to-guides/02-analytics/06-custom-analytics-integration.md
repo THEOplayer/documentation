@@ -63,20 +63,24 @@ Below is an (incomplete) list of some common interface event maps.
 
 - Player is the interface the represents the video player instance.
   You use this interface to detect general video events, like a play, a pause, and so on.
-  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html)
-  _ [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html) \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html)
+  - [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html)
+  - [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html)
+  - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html)
 - Ads is the interface that represents the advertisements.
   You use this interface to detect when an ad starts and stops.
-  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsEventMap.html)
-  _ [iOS](pathname:///theoplayer/v6/api-reference/ios/Ads%20Events.html) \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/ads/AdsEventTypes.html)
+  - [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsEventMap.html)
+  - [iOS](pathname:///theoplayer/v6/api-reference/ios/Ads%20Events.html)
+  - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/ads/AdsEventTypes.html)
 - AudioTrackList is the interface that represents the list of audio tracks.
   You use this interface to detect when a new audio track is added, or when another audio track becomes active.
-  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html)
-  _ [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/AudioTrackListEventTypes.html) \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html)
+  - [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html)
+  - [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/AudioTrackListEventTypes.html)
+  - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html)
 - VideoTrack is the interface that represents a single video track containing one or more video qualities.
   You use this interface to detect when another video quality becomes active.
-  _ [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrackEventMap.html)
-  _ iOS: unavailable due to Apple limitations \* [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/video/VideoTrackEventTypes.html)
+  - [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrackEventMap.html)
+  - iOS: unavailable due to Apple limitations
+  - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/video/VideoTrackEventTypes.html)
 - TextTrackList is comparable AudioTrackList, but for subtitles, closed captions and metadata (e.g. id3, emsg, EventStream, EXT-X-DATERANGE).
   - [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/TrackListEventMap.html)
   - [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/TextTrackListEventTypes.html)
@@ -86,7 +90,8 @@ Below is an (incomplete) list of some common interface event maps.
   - iOS: [AirPlay](pathname:///theoplayer/v6/api-reference/ios/Structs/AirPlayEventTypes.html) & [Chromecast](pathname:///theoplayer/v6/api-reference/ios/Structs/ChromecastEventTypes.html)
   - [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/chromecast/package-summary.html)
 - Network is the interface that is used to intercept HTTP(S) requests and responses.
-  You should only use this API on the THEOplayer Web SDK, and only when you can't use [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) to accomplish the same. \* [Web](../08-network/00-introduction.md)
+  You should only use this API on the THEOplayer Web SDK, and only when you can't use [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) to accomplish the same.
+  - [Web](../08-network/00-introduction.md)
 
 Note that maintaining the above list manually is unfortunately a no-go because our interfaces evolve.
 This means that you should research your events through our automatically managed API references at [https://docs.theoplayer.com/](https://docs.theoplayer.com/).

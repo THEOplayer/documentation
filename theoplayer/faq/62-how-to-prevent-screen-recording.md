@@ -60,12 +60,14 @@ The following statements are generally true for multi-DRM:
 
 - You can prevent screen recordings on platforms which support hardware DRM.
   The list below represents a set of popular platforms which support hardware DRM:
-  _ Windows Edge
-  _ macOS Safari
-  _ iOS and iPadOS, both for apps and browsers
-  _ Android, but only for apps \* Chromecast
+  - Windows Edge
+  - macOS Safari
+  - iOS and iPadOS, both for apps and browsers
+  - Android, but only for apps
+  - Chromecast
 - You cannot prevent screen recordings on platforms which do not support hardware DRM.
-  The list below represents a set of popular platforms which do not support hardware DRM: \* Chrome browsers (neither Windows nor Apple), because this platform only supports Widevine L3 (and not Widevine L1)
+  The list below represents a set of popular platforms which do not support hardware DRM:
+  - Chrome browsers (neither Windows nor Apple), because this platform only supports Widevine L3 (and not Widevine L1)
 
 #### Restrict allowed platforms
 
