@@ -55,14 +55,14 @@ This guide tackles how to address an invalid license, for example by changing th
 
 ## Create an SDK
 
-This section explains how you create a THEOplayer SDK at <a href="https://portal.theoplayer.com" target="_blank">https://portal.theoplayer.com</a>, which is the THEOplayer Developer Portal.
+This section explains how you create a THEOplayer SDK at [https://portal.theoplayer.com](https://portal.theoplayer.com), which is the THEOplayer Developer Portal.
 
 :::info
 
 This section may be optional to you.
 
-* Skip to "<a href="#include-an-sdk">Include an SDK</a>" if you already have an SDK.
-* Skip to "<a href="#locate-sdks-and-initiate-sdk-creation">Locate SDKs and initiate SDK creation</a>" if you are signed in to the Portal, but do not know how to create an SDK.
+* Skip to "[Include an SDK](#include-an-sdk)" if you already have an SDK.
+* Skip to "[Locate SDKs and initiate SDK creation](#locate-sdks-and-initiate-sdk-creation)" if you are signed in to the Portal, but do not know how to create an SDK.
 
 :::
 
@@ -74,7 +74,7 @@ You create a Web SDK through the following steps on the Portal:
 
 ### Register and sign in
 
-You register with your Github or Google account through the <a href="https://portal.theoplayer.com/login" target="_blank">sign-in page</a>, or complete the <a href="https://portal.theoplayer.com/register" target="_blank">signup form</a>.
+You register with your Github or Google account through the [sign-in page](https://portal.theoplayer.com/login), or complete the [signup form](https://portal.theoplayer.com/register).
 You sign in with your Github or Google account, or with your credentials, through the sign-in page.
 
 ### Locate SDKs and initiate SDK creation
@@ -130,7 +130,7 @@ The code snippet below represents "step-0", and is your starting point. This sni
 ```
 
 Throughout this guide, you may copy-paste code snippets into your own development environment.
-Owning a development environment can be as simple as opening <a href="https://jsfiddle.net/" target="_blank">https://jsfiddle.net/</a> in a browser tab.
+Owning a development environment can be as simple as opening [https://jsfiddle.net/](https://jsfiddle.net/) in a browser tab.
 When you copy-paste the snippet above into JSFiddle, it should look similar to the result below.
 
 <iframe className={styles.boxShadow} width="100%" height="300" src="//jsfiddle.net/thijsl/zs39fgj5/1/embedded/result" allowFullScreen frameBorder="0"></iframe>
@@ -140,8 +140,8 @@ When you copy-paste the snippet above into JSFiddle, it should look similar to t
 
 Consider one of two approaches to set up a development environment.
 
-1. Online. An online development environment runs in your browser. Popular online development environments include <a href="https://jsfiddle.net/" target="_blank">https://jsfiddle.net</a>,
-   <a href="http://codepen.io/" target="_blank">http://codepen.io</a>, <a href="http://codesandbox.io" target="_blank">http://codesandbox.io</a>, and <a href="https://repl.it/" target="_blank">https://repl.it</a>.
+1. Online. An online development environment runs in your browser. Popular online development environments include [https://jsfiddle.net](https://jsfiddle.net/),
+   [http://codepen.io](http://codepen.io/), [http://codesandbox.io](http://codesandbox.io), and [https://repl.it](https://repl.it/).
    Take this approach for rapid testing.
 2. Local. A local development environment runs on your own machine. You use the IDE/HTML editor of your choice. We will not discuss setting up a local environment in this guide.
 </details>
@@ -207,7 +207,7 @@ You include the THEOplayer JavaScript library file, THEOplayer.js, through the `
 There are two valid values for `SDK-LIBRARY-LOCATION`:
 
 1. https://cdn.theoplayer.com/dash/theoplayer. This URL points to the generic THEOplayer SDK. This SDK is always the latest version, and contains all possible features.
-2. The specified value of <a href="#sdkcdn">"CDN" on your SDK page</a>.
+2. The specified value of ["CDN" on your SDK page](#sdkcdn).
 
 The following code represents step-1, and includes the THEOplayer JavaScript library.
 
@@ -360,7 +360,7 @@ You will use this reference in the next step when creating your THEOplayer insta
 
 #### Create THEOplayer instance
 
-Create a THEOplayer `"Player"` instance by using the <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.player.md#constructor" target="_blank">THEOplayer constructor API</a>.
+Create a THEOplayer `"Player"` instance by using the [THEOplayer constructor API](https://docs.theoplayer.com/api-reference/web/theoplayer.player.md#constructor).
 This is the first time you'll use the THEOplayer API.
 Pass along the reference to your container, and set an empty configuration object `{}`. You will update this configuration in a later step.
 
@@ -455,7 +455,7 @@ There is no wrong or right. It's up to you to decide which approach is best for 
 
 THEOplayer uses a modified version of Video.js v5 for its default styling.
 You can leverage Video.js APIs to customize your video player.
-<!--  (e.g. <a href="https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer" target="_blank">insert a custom button</a>)-->
+<!--  (e.g. [insert a custom button](https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer))-->
 
 :::
 
@@ -471,7 +471,7 @@ var player = new THEOplayer.Player(container, {});
 ```
 
 You configure the library location by setting `libraryLocation` as a key of this configuration object, and your actual library location as its value.
-A quick reminder: your library location is the same as the <a href="#sdk-cdn.png">CDN value on your SDK page</a>.
+A quick reminder: your library location is the same as the [CDN value on your SDK page](#sdk-cdn.png).
 The snippet below configures a library location - albeit an illegal one, due to [`SDK-LIBRARY-LOCATION`](#library-location-explanation) not being a valid URL.
 
 ```javascript
@@ -555,7 +555,7 @@ Clicking the big play button won't do anything, because you still need to associ
 ## Configure a video
 
 Configuring the video source of your video player is the last crucial step of this guide.
-You use the <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#source" target="_blank">`source`</a> property of your `player` instance to configure a video.
+You use the [`source`](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md#source) property of your `player` instance to configure a video.
 The snippet below exemplifies how you could configure an HLS stream through `player.source`.
 
 ```javascript
@@ -651,21 +651,21 @@ Next, you'll want to explore the following topics:
 
 You'll also want to get familiar with the following resources:
 
-- <a href="https://docs.theoplayer.com" target="_blank">https://docs.theoplayer.com</a>: documentation portal — use this to find documentation
-  - <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.md" target="_blank">https://docs.theoplayer.com/api-reference/web/theoplayer.md</a>: API Reference
-- <a href="https://github.com/THEOplayer" target="_blank">https://github.com/THEOplayer</a>: Github — use this to find code samples
-  - <a href="https://github.com/THEOplayer/samples-html5-sdk" target="_blank">https://github.com/THEOplayer/samples-html5-sdk</a>: samples
-    - <a href="https://codesandbox.io/s/github/THEOplayer/samples-web" target="_blank">https://codesandbox.io/s/github/THEOplayer/samples-web</a>: code preview of the above repository
-- <a href="https://www.theoplayer.com" target="_blank">https://www.theoplayer.com</a>: homepage — use this to find demos and product information
-  - <a href="https://www.theoplayer.com/theoplayer-demo-overview" target="_blank">https://www.theoplayer.com/theoplayer-demo-overview </a>: demos
-  - <a href="https://www.theoplayer.com/test-your-stream-hls-dash-hesp" target="_blank">https://www.theoplayer.com/test-your-stream-hls-dash-hesp</a>: stream tester
-- <a href="https://www.theoplayer.com/blog" target="_blank">https://www.theoplayer.com/blog</a>: blog
-- <a href="https://portal.theoplayer.com" target="_blank">https://portal.theoplayer.com</a>: developer portal — use this to manage your SDKs and monitor usage
+- [https://docs.theoplayer.com](https://docs.theoplayer.com): documentation portal — use this to find documentation
+  - [https://docs.theoplayer.com/api-reference/web/theoplayer.md](https://docs.theoplayer.com/api-reference/web/theoplayer.md): API Reference
+- [https://github.com/THEOplayer](https://github.com/THEOplayer): Github — use this to find code samples
+  - [https://github.com/THEOplayer/samples-html5-sdk](https://github.com/THEOplayer/samples-html5-sdk): samples
+    - [https://codesandbox.io/s/github/THEOplayer/samples-web](https://codesandbox.io/s/github/THEOplayer/samples-web): code preview of the above repository
+- [https://www.theoplayer.com](https://www.theoplayer.com): homepage — use this to find demos and product information
+  - [https://www.theoplayer.com/theoplayer-demo-overview ](https://www.theoplayer.com/theoplayer-demo-overview): demos
+  - [https://www.theoplayer.com/test-your-stream-hls-dash-hesp](https://www.theoplayer.com/test-your-stream-hls-dash-hesp): stream tester
+- [https://www.theoplayer.com/blog](https://www.theoplayer.com/blog): blog
+- [https://portal.theoplayer.com](https://portal.theoplayer.com): developer portal — use this to manage your SDKs and monitor usage
 
 ### API
 
-The API reference of the THEOplayer Web SDK is available at <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.md" target="_blank">https://docs.theoplayer.com/api-reference/web/theoplayer.md</a>.
-The API is also widely referred to in our guides at <a href="https://docs.theoplayer.com/" target="_blank">https://docs.theoplayer.com</a>.
+The API reference of the THEOplayer Web SDK is available at [https://docs.theoplayer.com/api-reference/web/theoplayer.md](https://docs.theoplayer.com/api-reference/web/theoplayer.md).
+The API is also widely referred to in our guides at [https://docs.theoplayer.com](https://docs.theoplayer.com/).
 The JavaScript API offers the following:
 
 - Constructors (e.g. `var player = new THEOplayer.Player(..)`)
@@ -673,14 +673,14 @@ The JavaScript API offers the following:
   - Event listeners (e.g. `player.addEventListener(‘play', console.log)`)
 - Getters (e.g. `player.muted`) and setters (e.g. `player.muted = true`)
 
-The top-level interface is the <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md" target="_blank">Player API</a>.
-A <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md" target="_blank">map of events</a> is available in the Player API,
+The top-level interface is the [Player API](https://docs.theoplayer.com/api-reference/web/theoplayer.chromelessplayer.md).
+A [map of events](https://docs.theoplayer.com/api-reference/web/theoplayer.playereventmap.md) is available in the Player API,
 such as the `playing` and `volumechange` event.
 
 <details>
 <summary>HTML5 MediaElement interface</summary>
 
-The THEOplayer interface mimics the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement" target="_blank">HTML5 MediaElement interface</a>. All commonly used properties,
+The THEOplayer interface mimics the [HTML5 MediaElement interface](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement). All commonly used properties,
 functions and events are available, allowing you to replace a standard HTML5 video element with THEOplayer.
 For more advanced features, it might be needed to use THEOplayer specific APIs.
 </details>
@@ -694,8 +694,8 @@ Let's explain four popular features of the THEOplayer API.
 
 #### Autoplay
 
-You add support for autoplay by setting <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md" target="_blank">`player.autoplay = true`</a>.
-Additionally, we set <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md" target="_blank">`mutedAutoplay: "all"`</a> in the player configuration, to <a href="https://docs.theoplayer.com/faq/02-how-to-combat-autoplay-policies.md" target="_blank">combat autoplay policies</a>.
+You add support for autoplay by setting [`player.autoplay = true`](https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md).
+Additionally, we set [`mutedAutoplay: "all"`](https://docs.theoplayer.com/api-reference/web/theoplayer.mutedautoplayconfiguration.md) in the player configuration, to [combat autoplay policies](https://docs.theoplayer.com/faq/02-how-to-combat-autoplay-policies.md).
 Combating autoplay policies through `mutedAutoplay: "all"` means: doing muted autoplay when unmuted autoplay isn't permitted.
 The following snippet adds support for the described autoplay.
 
@@ -756,7 +756,7 @@ player.source = {
 };
 ```
 
-<a href="https://docs.theoplayer.com/api-reference/web/theoplayer.preloadtype.md" target="_blank">Other valid preload values</a> are:
+[Other valid preload values](https://docs.theoplayer.com/api-reference/web/theoplayer.preloadtype.md) are:
 
 - `"metadata"` (which fetches some metadata, like its duration, but no actual segments)
 - `"none"` (which explicitly disables all forms of preloading)
@@ -782,7 +782,7 @@ player.source = {
 };
 ```
 
-Other valid values for type are <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.abrstrategytype.md#abrstrategytype-type" target="_blank">`performance` and `bandwidth`</a>.
+Other valid values for type are [`performance` and `bandwidth`](https://docs.theoplayer.com/api-reference/web/theoplayer.abrstrategytype.md#abrstrategytype-type).
 
 - `Performance` makes sense if you want your video to start as fast as possible, because it'll do startup with the lowest video quality.
 - `Bandwidth` is the default value and uses historical data to find an optimal ABR strategy.
@@ -807,14 +807,14 @@ The following video demonstrates how you use this tool in combination with step-
 You can also change the appearance of buttons in the default UI, add overlays and insert new elements.
 Consider the following resources for more information:
 
-<!-- * <a href="https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer" target="_blank">Adding buttons and text to the default UI</a>-->
+<!-- * [Adding buttons and text to the default UI](https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer)-->
 
-- <a href="https://docs.theoplayer.com/how-to-guides/11-ui/00-introduction.md" target="_blank">Common UI-related inquiries</a>
+- [Common UI-related inquiries](https://docs.theoplayer.com/how-to-guides/11-ui/00-introduction.md)
 
 #### Create new skin
 
 You are given the option to create a new skin through the Chromeless API.
-The article on "<a href="https://docs.theoplayer.com/how-to-guides/11-ui/06-how-to-build-chromeless-ui.md" target="_blank">How to build a Chromeless UI</a>" helps you understand how to approach this.
+The article on "[How to build a Chromeless UI](https://docs.theoplayer.com/how-to-guides/11-ui/06-how-to-build-chromeless-ui.md)" helps you understand how to approach this.
 Some quick notes:
 
 - You'll include the Chromeless library through `SDK-LIBRARY-LOCATION/THEOplayer.chromeless.js` instead of `SDK-LIBRARY-LOCATION/THEOplayer.js`.
@@ -837,17 +837,17 @@ You decide whether you want to modify the existing UI or build a new one. As a r
 
 Digital Rights Management (DRM in short) is a technology which adds a layer of security to your videos.
 Most of the time, configuring DRM means configuring Widevine, FairPlay and PlayReady.
-Check our <a href="https://docs.portal.theoplayer.com/how-to-guides/04-drm/00-introduction.md" target="_blank">introduction on DRM</a> and our <a href="https://github.com/THEOplayer/samples-drm-integration" target="_blank">Github repository on the DRM API</a> to learn more about setting up DRM.
+Check our [introduction on DRM](https://docs.portal.theoplayer.com/how-to-guides/04-drm/00-introduction.md) and our [Github repository on the DRM API](https://github.com/THEOplayer/samples-drm-integration) to learn more about setting up DRM.
 
 ### Advertising
 
 THEOplayer adds support for client-side and server-side advertising.
-Refer to our <a href="https://docs.theoplayer.com/how-to-guides/01-ads/00-introduction.md" target="_blank">advertisement guides</a> to get started with concepts such as
-<a href="https://docs.theoplayer.com/how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#vast" target="_blank">mid-rolls</a>, <a href="https://docs.theoplayer.com/how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#google-ima" target="_blank">Google IMA</a>,
-<a href="https://docs.theoplayer.com/how-to-guides/01-ads/01-block-detection.md" target="_blank">ad block detection</a>, and others.
+Refer to our [advertisement guides](https://docs.theoplayer.com/how-to-guides/01-ads/00-introduction.md) to get started with concepts such as
+[mid-rolls](https://docs.theoplayer.com/how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#vast), [Google IMA](https://docs.theoplayer.com/how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md#google-ima),
+[ad block detection](https://docs.theoplayer.com/how-to-guides/01-ads/01-block-detection.md), and others.
 
 Let's consider adding support for pre-rolls advertisements as a preview. Pre-roll advertisements play before the main video content.
-You add an `ads` key to the `player.source` object. This key holds a list of <a href="https://docs.theoplayer.com/api-reference/web/theoplayer.addescription.md" target="_blank">ad descriptions</a>. Each ad description is an advertisement.
+You add an `ads` key to the `player.source` object. This key holds a list of [ad descriptions](https://docs.theoplayer.com/api-reference/web/theoplayer.addescription.md). Each ad description is an advertisement.
 For each ad description, you configure its `sources` property (which is the link to the ad tag) and its `timeOffset` (which is the position of the advertisement).
 Set `timeOffset` to `start` to specify that it's a pre-roll. Set the `timeOffset` value to `end` to specify it's a post-roll, or set a timestamp (e.g. "00:00:15") to specify it's a mid-roll.
 
@@ -870,15 +870,15 @@ player.source = {
 };
 ```
 
-You may also find the advertisement tester at <a href="https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap" target="_blank">https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap</a> to be useful.
+You may also find the advertisement tester at [https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap](https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap) to be useful.
 
 ### Analytics
 
 Measuring video performance is a common requirement. Consider any of the following approaches to integrate an analytics service into THEOplayer:
 
-1. Check whether a "connector" for your analytics vendor exists at <a href="https://github.com/THEOplayer" target="_blank">https://github.com/THEOplayer</a>, and, if so, leverage it.
+1. Check whether a "connector" for your analytics vendor exists at [https://github.com/THEOplayer](https://github.com/THEOplayer), and, if so, leverage it.
    Connectors are premade integrations, but you can still modify them due to their open-source nature.
-2. Check whether a "pre-integration" exists at <a href="https://docs.theoplayer.com/how-to-guides/02-analytics/00-introduction.md" target="_blank">https://docs.theoplayer.com/how-to-guides/02-analytics/00-introduction.md</a>, and, if so, leverage it.
+2. Check whether a "pre-integration" exists at [https://docs.theoplayer.com/how-to-guides/02-analytics/00-introduction.md](https://docs.theoplayer.com/how-to-guides/02-analytics/00-introduction.md), and, if so, leverage it.
    (Note: we are in the process of refactoring closed-source "pre-integrations" into open-source "connectors".
    Hence, you should prefer connectors over pre-integrations.)
 3. Build your own integration by leveraging the THEOplayer API.
@@ -886,12 +886,12 @@ Measuring video performance is a common requirement. Consider any of the followi
 ### Frameworks
 
 THEOplayer can be integrated in frameworks such as React and Angular.
-Check our <a href="https://docs.theoplayer.com/getting-started/02-frameworks/01-angular/00-getting-started.md" target="_blank">getting started guides</a>,
-or our <a href="https://github.com/THEOplayer" target="_blank">Github</a>, for examples.
+Check our [getting started guides](https://docs.theoplayer.com/getting-started/02-frameworks/01-angular/00-getting-started.md),
+or our [Github](https://github.com/THEOplayer), for examples.
 
 ### Support
 
-Our <a href="https://docs.theoplayer.com/" target="_blank">documentation portal</a> contains many answers,
+Our [documentation portal](https://docs.theoplayer.com/) contains many answers,
 but you might get stuck on something regardless.
 You can request technical support through a Standard (or higher) support plan.
 Such plans give you access to the THEOplayer Service Desk, where you can ask for help, request features and raise issues.
@@ -901,4 +901,4 @@ The right window shows you what Service Desk looks like.
 
 ![Support](../../../assets/img/getting-started-web-sdk/support.png)
 
-<em>We hope that you enjoyed this Getting Started Guide! <a href="https://github.com/THEOplayer/documentation/issues" target="_blank">Let us know through Github</a> if you know how we could improve this introduction.</em>
+<em>We hope that you enjoyed this Getting Started Guide! [Let us know through Github](https://github.com/THEOplayer/documentation/issues) if you know how we could improve this introduction.</em>
