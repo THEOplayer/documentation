@@ -23,7 +23,7 @@ This article describes on how to integrate Conviva for Video Analytics and Ads A
 1. A THEOplayer build with a valid license is required. You can
    - either install the [THEOplayer SDK through NPM](https://www.npmjs.com/package/theoplayer),
    - or generate your custom THEOplayer SDK through the [THEOportal](https://portal.theoplayer.com/login) (this includes also a license).
-2. Follow the [Getting started on Web](../../getting-started/01-sdks/01-web/00-getting-started.md) guide to include your player on a simple HTML page.
+2. Follow the [Getting started on Web](../../../getting-started/01-sdks/01-web/00-getting-started.md) guide to include your player on a simple HTML page.
 3. For setting up a valid Conviva session, you must have access to a Conviva developer account with access to a debug or production key.
 
 ### Installation

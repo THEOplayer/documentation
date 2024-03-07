@@ -90,4 +90,4 @@ As far as the player is concerned, by leveraging its API as described you can fi
 - [How to start with a specific quality?](05-how-to-start-with-specific-quality.md)
 - [How to programmatically select a video track quality](03-how-to-select-video-track-quality.md)
 - [Web SDK API reference: restrictToPlayerSize](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceAbrConfiguration.html#restrictToPlayerSize)
-- [Preloading](.//07-miscellaneous/09-preloading.md)
+- [Preloading](../07-miscellaneous/09-preloading.md)

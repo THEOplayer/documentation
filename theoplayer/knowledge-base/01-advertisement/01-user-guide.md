@@ -151,7 +151,7 @@ You can refer to [our section on Verizon Media](../../how-to-guides/07-miscellan
 
 To use the MediaTailor integration you have to set the `integration` key to `'mediatailor'`.
 
-You can refer to [our MediaTailor guide](../../../how-to-guides/01-ads/12-mediatailor.md) to learn more about SSAI with MediaTailor.
+You can refer to [our MediaTailor guide](../../how-to-guides/01-ads/12-mediatailor.md) to learn more about SSAI with MediaTailor.
 
 ## Ad Configuration
 

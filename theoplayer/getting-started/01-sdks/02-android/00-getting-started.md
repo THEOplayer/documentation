@@ -335,7 +335,7 @@ public class MainActivity extends AppCompatActivity{
 
 ![](../../../assets/img/android-getting-started-22.png)
 
-If you would like to customize the Fullscreen Activity, you can follow our tutorial [here](./01-android-sdk-customization.md).
+If you would like to customize the Fullscreen Activity, you can follow our tutorial [here](../02-android-legacy-v4/01-android-sdk-customization.md).
 
 ## Run your application
 
