@@ -28,7 +28,7 @@ Use the API as demonstrated below:
 
 ```javascript
 // const player = new THEOplayer.Player(...)
-const chromecastState = player.cast.chromecast.state; // pathname:///theoplayer/v6/api-reference/web/types/CastState.html
+const chromecastState = player.cast.chromecast.state;
 const isCasting = player.cast.chromecast.casting; // true or false
 // ...
 // if (want to start Chromecast)

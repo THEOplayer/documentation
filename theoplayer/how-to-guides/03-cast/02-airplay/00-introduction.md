@@ -46,7 +46,7 @@ For the **THEOplayer Web SDK**, you could use the API as demonstrated below:
 
 ```javascript
 // const player = new THEOplayer.Player(...)
-const airPlayState = player.cast.airplay.state; // pathname:///theoplayer/v6/api-reference/web/types/CastState.html
+const airPlayState = player.cast.airplay.state;
 const isCasting = player.cast.airlay.casting; // true or false
 // ...
 // if (want to start AirPlay)
