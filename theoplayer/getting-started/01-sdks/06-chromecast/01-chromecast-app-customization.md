@@ -52,8 +52,7 @@ The THEOplayer Chromecast Receiver SDK fits in the category of a "Custom Receive
 
 ### Sender application vs Receiver application
 
-When talking about customizing a Chromecast application, one needs to make a distinction between customizing [a Sender
-application versus a Receiver application](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md).
+When talking about customizing a Chromecast application, one needs to make a distinction between customizing [a Sender application versus a Receiver application](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md).
 
 A **Chromecast Sender application** is the application on a "sender device" (e.g. smartphone, browser, ...) which initiates
 the Chromecast session. You use the Sender application to start (and stop) Chromecast playback, to pause the video or to mute it,
@@ -111,8 +110,7 @@ Familiarize yourself with the above APIs if you want to change the appearance of
 
 ### Altering Default UI
 
-If you are using THEOplayer's default UI, but want to use your own button instead, then you can hide THEO's default button, and [insert
-a new one](../../../how-to-guides/11-ui/07-how-to-insert-a-button.md) instead. You also need to use our Cast API described in the above "Chromeless UI" section.
+If you are using THEOplayer's default UI, but want to use your own button instead, then you can hide THEO's default button, and [insert a new one](../../../how-to-guides/11-ui/07-how-to-insert-a-button.md) instead. You also need to use our Cast API described in the above "Chromeless UI" section.
 
 ## Customizing a Receiver application
 
