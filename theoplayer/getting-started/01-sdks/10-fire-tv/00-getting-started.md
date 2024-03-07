@@ -4,7 +4,7 @@
 
 The latest THEOplayer Android SDK (5.0.0+) is compatible both with Android mobile and Fire TV. We do not have a separate SDK for each platform.
 
-You can follow the guide: <a href="https://docs.theoplayer.com/getting-started/01-sdks/02-android/00-getting-started.md" target="_blank">Getting started on Android</a>.
+You can follow the guide: [Getting started on Android](../02-android/00-getting-started.md).
 
 :::
 

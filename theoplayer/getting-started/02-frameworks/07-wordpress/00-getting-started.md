@@ -31,7 +31,7 @@ _We have no affiliation with these plugins or their creators. They were just the
 #### \<iframe\>
 
 You can embed THEOplayer through an `<iframe>` instead of through JavaScript.
-Please refer to "[How to embed an iframe](../../01-sdks/01-web/03-how-can-we-embed-iframe.md)" for more information on setting up an iframe.
+Please refer to "[How to embed an iframe](../../01-sdks/01-web/03-how-can-we-embed-iframe.mdx)" for more information on setting up an iframe.
 
 ## Step-by-step guide
 
