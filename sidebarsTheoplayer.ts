@@ -71,7 +71,7 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '*️⃣',
       },
-      link: { type: 'generated-index', slug: 'api' },
+      link: { type: 'generated-index', slug: 'api-reference' },
       items: [
         {
           type: 'link',
