@@ -1,6 +1,7 @@
 # Getting started on Web (Extended)
 
 import Heading from '@theme/Heading';
+import Admonition from '@theme/Admonition';
 import styles from './shared.module.css';
 
 This guide explains how to implement the THEOplayer <abbr title="A Software Development Kit (SDK) is a collection of (software) libraries. Often, you use an API to interact with an SDK.">SDK</abbr> in a web application.
@@ -172,7 +173,7 @@ Alternatively, when you disable the HLS feature,you won't have the helper files.
 
 </details>
 
-:::warning
+<Admonition type="warning" title={<Heading as="span" id="library-location-explanation">Library location and license</Heading>}>
 
 Throughout this guide, you will often see `SDK-LIBRARY-LOCATION` and `YOUR-LICENSE`:
 
@@ -186,7 +187,7 @@ Our advice is to copy-paste these two values in a text editor so that you can qu
 The blue rectangle in the above screenshot annotates the <code className={styles.borderBlue}>SDK-LIBRARY-LOCATION</code>.
 The green rectangle in the above screenshot annotates <code className={styles.borderGreen}>YOUR-LICENSE</code>.
 
-:::
+</Admonition>
 
 Including the THEOplayer Web SDK involves two steps.
 
