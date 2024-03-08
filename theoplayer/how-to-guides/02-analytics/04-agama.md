@@ -2,13 +2,6 @@
 
 Agama is an analytics solution maintained by [Agama Technologies](https://www.agama.tv/). THEOplayer offers a pre-integration for this service.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Prerequisites](#prerequisites)
-- [Documentation](#documentation)
-- [Related resources](#related-resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

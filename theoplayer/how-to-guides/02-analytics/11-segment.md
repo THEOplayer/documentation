@@ -14,11 +14,6 @@ Segment sets up "[Connections](https://segment.com/docs/connections/)" between "
 Segment can be implemented on top of THEOplayer.
 Refer to the article on [building a custom analytics integrations](06-custom-analytics-integration.md) for more information on how to build an integration on top of THEOplayer.
 
-**Table of Contents**
-
-- [SDKs](#sdks)
-- [Connecting Segment to THEOplayer](#connecting-segment-to-theoplayer)
-
 ## SDKs
 
 As a developer you'll have to [build a custom analytics integration](06-custom-analytics-integration.md) to support Segment through a THEOplayer SDK.

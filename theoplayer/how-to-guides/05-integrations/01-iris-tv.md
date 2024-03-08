@@ -4,18 +4,6 @@
 
 This guide describes how to do a [custom IrisTV integration](https://iristv.atlassian.net/wiki/spaces/API/pages/38567965/Custom+Adaptive+Plug-in+Integrations) in THEOplayer.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to integrate the player with Iris.TV](#how-to-integrate-the-player-with-iristv)
-  - [Prerequisites](#prerequisites)
-  - [Include the IrisTV SDK](#include-the-iristv-sdk)
-  - [Include the custom integration](#include-the-custom-integration)
-  - [Initialize THEOplayerIrisTv](#initialize-theoplayeriristv)
-- [Conclusion](#conclusion)
-- [Sample application](#sample-application)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK |                 Android SDK                 |                   iOS SDK                   | tvOS SDK |               Android TV SDK                | Chromecast SDK |

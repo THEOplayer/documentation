@@ -23,13 +23,6 @@ Keep in mind that GA is not the only analytics system out there. The APIs and co
 For example, you can easily swap out the Google Analytics example with something like [Nielsen](http://www.nielsen.com/eu/en/solutions/capabilities/media-analytics.html)
 or [Youbora](https://nicepeopleatwork.com/youbora/) (Nice People At Work), or even your own custom analytics back-end.
 
-**Table of Contents**
-
-- [Prerequisites](#prerequisites)
-- [API](#events)
-- [Integrating Google Analytics](#integrating-google-analytics)
-- [Conclusion](#conclusion)
-
 ## Prerequisites
 
 There are two prerequisites in order to continue with this guide:

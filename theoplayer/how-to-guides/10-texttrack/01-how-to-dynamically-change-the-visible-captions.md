@@ -4,19 +4,6 @@ When working with the captions / text-track options, you can dynamically change 
 
 This method assumes that you are using text-tracks that are loaded with the manifest. If you add the text-track separately, you can just use this API: [TextTrackDescription](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrackDescription.html)
 
-### Table of Contents
-
-- [How to dynamically change the visible captions?](#how-to-dynamically-change-the-visible-captions)
-  - [Table of Contents](#table-of-contents)
-  - [Step-by-step guide](#step-by-step-guide)
-    - [1. Create a new function inside the browser](#1-create-a-new-function-inside-the-browser)
-      - [Web SDK](#web-sdk)
-      - [iOS SDK](#iostvos-sdk-and-legacy-iostvos-sdk--412x-)
-      - [Android SDK](#android-sdk)
-      - [Roku SDK](#roku-sdk)
-    - [2. Call the function using the language label (or 3-letter-language code if you change x.label to x.language)](#2-call-the-function-using-the-language-label-or-3-letter-language-code-if-you-change-xlabel-to-xlanguage)
-  - [Related articles](#related-articles)
-
 ## Step-by-step guide
 
 ### 1. Create a new function inside the browser

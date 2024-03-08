@@ -2,11 +2,6 @@
 
 This article explains what is possible with a Verizon Media Configuration when setting up a THEOplayer instance.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Features](#features)
-
 ## SDKs
 
 |   Web SDK    | Android SDK  |   iOS SDK    | tvOS SDK | Android TV SDK | Chromecast SDK |

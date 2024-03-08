@@ -2,11 +2,6 @@
 
 The question above is typically asked by developers who want to be able to see the control bar at all times without having to continuously move the cursor over it (or tap the screen).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-
 ## SDKs
 
 | Web SDK |      Android SDK      |        iOS SDK        | tvOS SDK | Android TV SDK | Chromecast SDK | Roku SDK |

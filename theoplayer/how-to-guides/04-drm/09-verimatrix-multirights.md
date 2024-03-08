@@ -3,13 +3,6 @@
 This article describes how to configure Verimatrix MultiRights with THEOplayer. [MultiRights](https://www.verimatrix.com/solutions/multirights-ott) is a multi-DRM solution by [Verimatrix](https://www.verimatrix.com/).
 Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-- [Resources](#resources)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK |  tvOS SDK  | Android TV SDK | Chromecast SDK |

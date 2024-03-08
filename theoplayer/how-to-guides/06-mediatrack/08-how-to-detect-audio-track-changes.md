@@ -8,12 +8,6 @@ More specifically, as a developer, you'll subscribe to the `change` event in the
 
 Implementing this functionality is a common use-case for developers who want to build their own UI, and annotate the audio track that is currently active.
 
-**Table of Contents**
-
-- [SDKs](#sdks)
-- [Implementation](#implementation)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 THEOplayer allows you to track audio track changes on the following SDKs.

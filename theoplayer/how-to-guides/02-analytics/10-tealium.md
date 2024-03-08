@@ -7,11 +7,6 @@ and offers [integrations](https://tealium.com/integrations/) with [Google Analyt
 Tealium can be implemented on top of THEOplayer.
 Refer to the article on [building a custom analytics integrations](06-custom-analytics-integration.md) for more information on how to build an integration on top of THEOplayer.
 
-**Table of Contents**
-
-- [SDKs](#sdks)
-- [Connecting Tealium to THEOplayer](#connecting-tealium-to-theoplayer)
-
 ## SDKs
 
 As a developer you'll have to [build a custom analytics integration](06-custom-analytics-integration.md) to support Tealium through a THEOplayer SDK.

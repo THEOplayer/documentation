@@ -20,13 +20,6 @@ For example, if you use Google Ad Manager (i.e. DoubleClick), then this article 
 how to schedule VAST and VMAP ads, but you want to use the [Google IMA](../../how-to-guides/01-ads/10-google-ima.md) integration (and API)
 to actually implement it in your app.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [VAST](#vast)
-- [VMAP](#vmap)
-- [Dynamic scheduling](#dynamic-scheduling)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK | Roku SDK |

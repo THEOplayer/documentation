@@ -4,13 +4,6 @@ This article describes how to configure [Conax](https://dtv.nagra.com/scalable-s
 
 Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-- [Resources](#resources)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK |  iOS SDK   |  tvOS SDK  | Android TV SDK | Chromecast SDK |

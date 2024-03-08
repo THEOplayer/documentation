@@ -15,13 +15,6 @@ For example, error "2001" belong to category 2, and has sub-code 001.
 
 Refer to "[How to do error handling](01-how-to-do-error-handling.md)" to learn how to detect the "generic player error event".
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Categories](#categories)
-- [Codes](#codes)
-- [Remarks](#remarks)
-
 ## SDKs
 
 The "generic player error event" is available across platforms and SDKs.

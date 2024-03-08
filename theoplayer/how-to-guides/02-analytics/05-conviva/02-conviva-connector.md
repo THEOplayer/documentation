@@ -2,14 +2,6 @@
 
 This article describes on how to integrate Conviva for Video Analytics and Ads Analytics offered as a connector with THEOplayer SDK.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Web SDK](#web-sdk)
-- [Android SDK](#android-sdk)
-- [iOS SDK](#iostvos-sdk-and-legacy-iostvos-sdk--412x-)
-- [Related links](#related-links)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK |  tvOS SDK  | Android TV SDK | Chromecast SDK | Tizen | webOS |

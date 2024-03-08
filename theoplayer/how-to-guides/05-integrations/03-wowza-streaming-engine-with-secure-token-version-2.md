@@ -4,15 +4,6 @@ This guide explains how to set up THEOplayer with Wowza Streaming Engine™, usi
 
 An important aspect when generating the hash, is that the client web server should generate the hash when it generates the client webpage. The **client webpage should not** use JavaScript code to generate the hash, as the code is visible in the webpage source and would pose a potential security risk. As a result, our implementation is based on a node/express application to generate the hash.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to set up THEOplayer with Wowza Streaming Engine](#how-to-set-up-theoplayer-with-wowza-streaming-engine)
-  - [Prerequisites](#prerequisites)
-  - [Integrating THEOplayer with Wowza Streaming Engine](#integrating-theoplayer-with-wowza-streaming-engine)
-- [Conclusion](#conclusion)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK |                 Android SDK                 |                   iOS SDK                   | tvOS SDK |               Android TV SDK                | Chromecast SDK |

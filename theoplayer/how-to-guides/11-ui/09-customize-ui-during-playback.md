@@ -2,15 +2,6 @@
 
 This how-to guide describes how to customize the look and feel of the player when an advertisement is playing. We will be leveraging mainly some event listeners and CSS. In the section _Resources_, at the bottom of the page, you will also find links to the reference API and to a related how-to guide that explains when and how the texts displayed during ad playback (if any) may be changed.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to customize the ad playback UI](#how-to-customize-the-ad-playback-ui)
-  - [Detecting ad playback](#detecting-ad-playback)
-  - [Events](#events)
-  - [Displaying an advertisement label](#displaying-an-advertisement-label)
-  - [Adding a custom countdown](#adding-a-custom-countdown)
-
 ## SDKs
 
 | Web SDK |           Android SDK            |             iOS SDK              | tvOS SDK |          Android TV SDK          | Chromecast SDK |

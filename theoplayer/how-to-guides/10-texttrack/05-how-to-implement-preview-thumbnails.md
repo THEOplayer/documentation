@@ -2,11 +2,6 @@
 
 This article describes how to enable preview thumbnails. In THEOplayer this is done with the TextTrack API.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

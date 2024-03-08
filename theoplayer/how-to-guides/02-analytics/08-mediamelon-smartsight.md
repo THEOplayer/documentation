@@ -1,13 +1,6 @@
 # MediaMelon SmartSight
 MediaMelon SmartSight is an analytics service maintained by MediaMelon. THEOplayer offers a pre-integration for this solution.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Prerequisites](#prerequisites)
-- [Connecting MediaMelon to THEOplayer](#connecting-mediamelon-to-theoplayer)
-- [Related links](#related-links)
-
 ## SDKs
 
 | Web SDK |           Android SDK            |             iOS SDK              | tvOS SDK | Android TV SDK | Chromecast SDK |

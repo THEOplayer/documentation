@@ -2,14 +2,6 @@
 
 This guide explains how to set up THEOplayer in combination with FreeWheel, an advertisement vendor.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Prerequisites](#prerequisites)
-- [How to integrate FreeWheel](#how-to-integrate-freewheel)
-  - [Code Examples](#code-examples)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

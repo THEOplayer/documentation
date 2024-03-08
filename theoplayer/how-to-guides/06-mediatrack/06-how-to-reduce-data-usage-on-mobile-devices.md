@@ -4,14 +4,6 @@ Customers that use THEOplayer in mobile web which leverage THEOplayer's preloadi
 
 You can combat this by leveraging the [ABR API](pathname:///theoplayer/v6/api-reference/web/interfaces/ABRConfiguration.html) and the [MediaTrack API](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html).
 
-### Table of Contents
-
-- [Step-by-step guide](#step-by-step-guide)
-  - [1. Set the ABR targetBuffer property to lower number of seconds.](#1-set-the-abr-targetbuffer-property-to-lower-number-of-seconds)
-  - [2. Manage preloading](#2-manage-preloading)
-  - [3. Choose the renditions considered for ABR](#3-choose-the-renditions-considered-for-abr)
-- [Related articles](#related-articles)
-
 ## Step-by-step guide
 
 ### 1. Set the ABR targetBuffer property to lower number of seconds

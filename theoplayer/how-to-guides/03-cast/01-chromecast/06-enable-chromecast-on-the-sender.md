@@ -3,12 +3,6 @@
 This article explains how to enable the Chromecast Sender capabilities on the Web SDK, iOS SDK and Android SDK.
 This article also documents how you can connect with a customer Chromecast Receiver application.
 
-### Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Import Chromecast SDK](#import-chromecast-sdk)
-- [Connect with Chromecast Receiver application](#connect-with-custom-chromecast-receiver-application)
-
 ## Prerequisites
 
 1. The Chromecast feature needs to be enabled for your THEOplayer SDK.

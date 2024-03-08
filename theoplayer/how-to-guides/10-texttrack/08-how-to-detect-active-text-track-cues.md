@@ -9,12 +9,6 @@ Alternatively, you may require the access the active cues for analytics purposes
 
 Another common use-case is to detect the active text track cue of timed metadata. This article also discusses this use-case.
 
-**Table of Contents**
-
-- [SDKs](#sdks)
-- [Implementation for subtitles and closed captions](#implementation-for-subtitles-and-closed-captions)
-- [Implemented for timed medata](#implementation-for-timed-metadata)
-
 ## SDKs
 
 THEOplayer allows you to track text track changes on the following SDKs.

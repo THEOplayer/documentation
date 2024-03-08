@@ -6,16 +6,6 @@ On iOS browsers, the Network API can only be used to intercept and alter DRM-rel
 
 The technical documentation on the Network API can be found [here](pathname:///theoplayer/v6/api-reference/web/interfaces/Network.html).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Instructions](#instructions)
-  - [1. Add/use request interceptor](#1-adduse-request-interceptor)
-  - [2. Add/use response interceptor](#2-adduse-response-interceptor)
-- [HTTP Errors](#http-errors)
-- [Adding and Removing Event Listeners](#adding-and-removing-event-listeners)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK | Legacy iOS SDK (4.12.x) | tvOS SDK | Chromecast SDK |

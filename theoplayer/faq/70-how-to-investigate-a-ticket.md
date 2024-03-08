@@ -3,19 +3,6 @@
 This article describes how our team typically investigates an issue (i.e. bug) reported to us through a Service Desk ticket.
 We encourage you to go through these steps before creating a ticket, and to document your findings in your ticket.
 
-This article discusses the following topics:
-
-- [Prerequisites](#prerequisites)
-- [Guide](#guide)
-  - [Reproduce the issue](#reproduce-the-issue)
-  - [Check other versions](#check-other-versions)
-  - [Narrow the scope](#narrow-the-scope)
-    - [Scope affected platforms](#scope-affected-platforms)
-    - [Scope affected THEOplayer versions](#scope-affected-theoplayer-versions)
-    - [Scope affected video players](#scope-affected-video-players)
-  - [Investigation](#investigation)
-- [Remarks](#remarks)
-
 ## Prerequisites
 
 - The ticket is well-described and/or [C.R.U.S.P.](69-how-to-create-a-ticket.md#creating-a-great-ticket).

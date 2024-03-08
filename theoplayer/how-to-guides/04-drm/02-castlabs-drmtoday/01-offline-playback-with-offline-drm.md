@@ -2,11 +2,6 @@
 
 This how-to guide describes how to implement playback of downloadable content-protected HLS streams using the THEOplayer iOS SDK. Currently, FairPlay is supported together with the Irdeto and DRMToday integrations.
 
-### Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Code example](#code-example)
-
 ## Prerequisites
 
 In order to do offline DRM on iOS, your license key should be downloadable and cacheable. The SDK will not be able to decrypt your content if your key expired.

@@ -1,10 +1,5 @@
 # How to do offline DRM on iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-### Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Code example](#code-example)
-
 ## Prerequisites
 
 In order to do offline DRM on iOS, your license key should be downloadable and cacheable. The SDK will not be able to decrypt your content if your key expired.

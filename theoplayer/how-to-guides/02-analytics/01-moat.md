@@ -2,14 +2,6 @@
 
 Moat is an analytics service maintained by Oracle. THEOplayer offers a pre-integration for this solution. A demo can be found at [https://demo.theoplayer.com/moat-analytics-pre-integration](https://demo.theoplayer.com/moat-analytics-pre-integration).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code example](#code-example)
-  - [Prerequisites](#prerequisites)
-  - [Configuration](#configuration)
-- [Related links:](#related-links)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

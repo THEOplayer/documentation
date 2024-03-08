@@ -2,13 +2,6 @@
 
 In this section you will learn everything about how THEOplayer works with Chromecast.
 
-**Table of Contents**
-
-- [API](#api)
-- [Related articles](#related-articles)
-- [Sender Applications vs Receiver Applications](#sender-applications-vs-receiver-applications)
-- [Whitelisting Receiver Applications](#whitelisting-receiver-applications)
-
 ## API
 
 As a developer, you might need to use the THEOplayer Chromecast API to build a custom Chromecast UI and UX,

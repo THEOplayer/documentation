@@ -3,11 +3,6 @@
 In this guide, we will explore how to use the Objective-C APIs available in the THEOplayer iOS SDK.
 We will also dive into some of the changes made to the Swift APIs to accommodate the compatibility of the Objective-C APIs.
 
-### Table of Contents
-
-- [THEOplayer Objective-C API guide](#theoplayer-objective-c-api-guide)
-- [Changes to THEOplayer Swift API](#changes-to-theoplayer-swift-api)
-
 ## THEOplayer Objective-C API guide
 
 #### Getting started

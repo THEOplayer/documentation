@@ -5,13 +5,6 @@ This article describes how you can use the API to detect audio tracks.
 The AudioTrack API, which is a sub-API of the MediaTrack API, can be used to implement this functionality.
 Implementing this functionality is a common use-case for developers who want to build their own UI to visualize the available audio languages.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-- [Remarks](#remarks)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK | Roku SDK |

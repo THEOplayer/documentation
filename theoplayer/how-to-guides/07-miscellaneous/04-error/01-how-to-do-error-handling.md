@@ -11,13 +11,6 @@ As a developer, you could be interested in error handling for any of the followi
 
 THEOplayer exposes different types of errors, and they can be accessed and intercepted in different ways.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Intercepting errors](#intercepting-errors)
-- [Types of errors](#types-of-errors)
-- [Remarks](#remarks)
-
 ## SDKs
 
 Error handling is available across platforms and SDKs.

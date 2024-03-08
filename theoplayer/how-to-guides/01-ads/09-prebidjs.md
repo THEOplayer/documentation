@@ -5,13 +5,6 @@ Prebid.js is an open-source header bidding solution.
 On the client-side, you can request bids from multiple ad networks, take a winning bid and select its associated advertisement.
 You want to configure and play this selected advertisement in THEOplayer.
 
-**Table of Contents**
-
-- [SDKs](#sdks)
-- [Connecting Prebid.js and THEOplayer](#connecting-prebidjs-and-theoplayer)
-  - [Code Examples](#code-examples)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK | Roku SDK |

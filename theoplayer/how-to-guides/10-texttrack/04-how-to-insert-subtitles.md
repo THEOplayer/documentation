@@ -4,13 +4,6 @@ You may be asking this question if you need captions or subtitles on your video.
 
 The _textTracks_ property and objects can also be used for other purposes, e.g.: for including preview thumbnails and chapters. Please see linked documentation and article to find out more.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Related questions](#related-questions)
-- [Code examples](#code-examples)
-- [Subtitle styling](#subtitle-styling)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

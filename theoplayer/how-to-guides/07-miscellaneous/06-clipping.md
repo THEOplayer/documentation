@@ -2,15 +2,6 @@
 
 THEOplayer supports playing only a selected part of a video-on-demand stream, rather than playing it from start to finish. This can be used for example to watch a single game-changing event from a sports match, highlight an important part of a long video presentation, or skip straight to the best part of a song's video clip.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to use the Clip API](#how-to-use-the-clip-api)
-- [Code Examples](#code-examples)
-- [Sample application](#sample-application)
-- [Remarks](#remarks)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK |         Android SDK          |           iOS SDK            |           tvOS SDK           |        Android TV SDK        | Chromecast SDK |

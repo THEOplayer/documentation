@@ -6,14 +6,6 @@ A THEOplayer license is required to use the THEOplayer library for the desired d
 
 This guide builds upon the basic player setup, make sure you read our [getting-started guides](../../getting-started/01-sdks/00-introduction.md).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Web and Chromecast SDK](#web-and-chromecast-sdk)
-- [iOS and tvOS SDK](#ios-and-tvos-sdk)
-- [Android SDK](#android-sdk)
-- [FAQ](#faq)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | Android TV SDK | tvOS SDK | Chromecast SDK |

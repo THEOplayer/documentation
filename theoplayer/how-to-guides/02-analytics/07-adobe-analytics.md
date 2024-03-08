@@ -7,11 +7,6 @@ This product is formerly known as "Adobe Heartbeat", as this product uses "[hear
 Adobe Analytics for Streaming Media, or older iterations of this product, can be implemented on top of THEOplayer.
 Refer to the article on [building a custom analytics integrations](06-custom-analytics-integration.md) for more information on how to build an integration on top of THEOplayer.
 
-**Table of Contents**
-
-- [SDKs](#sdks)
-- [Connecting Adobe Analytics to THEOplayer](#connecting-adobe-analytics-to-theoplayer)
-
 ## SDKs
 As a developer you'll have to [build a custom analytics integration](06-custom-analytics-integration.md) to support Adobe Analytics through a THEOplayer SDK.
 

@@ -6,12 +6,6 @@ Usually, DRM systems require you to specify a `licenseAcquisitionURL` and additi
 
 Please check also our related [API documentation](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html) on how to set these.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to use Clear Key](#how-to-use-clear-key)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

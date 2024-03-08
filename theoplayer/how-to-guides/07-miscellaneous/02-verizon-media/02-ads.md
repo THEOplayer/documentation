@@ -5,13 +5,6 @@ Verizon Media offers support for [server-side ad-insertion](https://www.verizond
 This article explains how to use the Verizon Media's Ads API exposed by THEOplayer to hook into these SSAI advertisements.
 Additionally, this API allows developers to manipulate the ad-related UX and UI.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Global Configuration](#global-configuration)
-- [Verizon Media Ads API](#verizon-media-ads-api)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 |   Web SDK    | Android SDK  |   iOS SDK    | tvOS SDK | Android TV SDK | Chromecast SDK | Roku SDK |

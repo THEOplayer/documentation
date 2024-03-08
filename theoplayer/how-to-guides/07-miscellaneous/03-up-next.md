@@ -8,15 +8,6 @@ The Up Next feature exposes the Up Next API. This API allows developers to confi
 
 ![Up Next](../../assets/img/up-next.png "Up Next")
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to use the Up Next API](#how-to-use-the-up-next-api)
-- [Code Examples](#code-examples)
-- [Sample Application](#sample-application)
-- [Remarks](#remarks)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

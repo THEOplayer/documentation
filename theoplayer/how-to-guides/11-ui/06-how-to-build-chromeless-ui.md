@@ -21,17 +21,6 @@ if you want to go straight to completed code samples._
 
 You can create a Chromeless UI on all THEOplayer SDKs.
 
-**Table of Contents**
-
-1. [Creating a Chromeless player instance](#creating-a-chromeless-player-instance)
-2. [Using a WebView](#using-a-webview)
-3. [Tracking transitions between states](#tracking-transitions-between-states)
-4. [Mapping components](#mapping-components)
-5. [Sample code](#sample-code)
-6. [UX enhancements](#ux-enhancements)
-7. [Error handling](#error-handling)
-8. [Roku](#roku-sdk)
-
 ## Creating a Chromeless player instance
 
 The article will often mention `player` variable.

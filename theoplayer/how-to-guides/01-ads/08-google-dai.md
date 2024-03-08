@@ -2,14 +2,6 @@
 
 Google DAI is a Server-Side Ad-Insertion solution offered by Google where THEOplayer is pre-integrated and offers playback for HLS and DASH Streams. A demo can be found at [https://demo.theoplayer.com/google-dai](https://demo.theoplayer.com/google-dai).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Web SDK](#web-sdk)
-- [Android (TV) SDK](#android-sdk)
-- [iOS (tvOS) SDK](#iostvos-sdk-and-legacy-iostvos-sdk--412x-)
-- [Conclusion](#conclusion)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK |  tvOS SDK  | Android TV SDK | Chromecast SDK |

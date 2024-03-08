@@ -2,14 +2,6 @@
 
 THEOplayer allows you to style the player to your own needs. This guide will give an in-depth explanation of which colors can be changed and which parts of the player are affected. First it will explain how to change the skin of your player using 6 custom CSS classes. Afterwards, an overview follows explaining which parts of the players are affected by each class. If you don't already have an up-and-running version of THEOplayer, take a look at our [getting started guide](https://support.theoplayer.com/hc/en-us/articles/115001933305-Getting-Started-with-THEOplayer-2-X).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [CSS properties to override](#css-properties-to-override)
-- [Affected Components](#affected-components)
-- [Summary](#summary)
-- [Mobile](#mobile)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

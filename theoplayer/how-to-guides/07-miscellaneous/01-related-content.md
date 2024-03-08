@@ -4,12 +4,6 @@ The article in this section describes how to implement common use-cases related 
 
 ![Related Content](../../assets/img/related-content.png "Related Content")
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

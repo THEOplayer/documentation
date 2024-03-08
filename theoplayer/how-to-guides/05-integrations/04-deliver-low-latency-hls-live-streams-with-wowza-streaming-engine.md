@@ -4,16 +4,6 @@ Wowza Streaming Engine™ media server software version 4.7.8 and later together
 
 Low-Latency HLS streams conform to [Apple’s preliminary protocol extension to the HLS spec](https://developer.apple.com/documentation/http_live_streaming/protocol_extension_for_low-latency_hls_preliminary_specification?language=objc).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to set up THEOplayer with Wowza Streaming Engine For LL-HLS](#how-to-set-up-theoplayer-with-wowza-streaming-engine-for-ll-hls)
-  - [Prerequisites](#prerequisites)
-  - [Configure a live application to deliver LL-HLS streams](#configure-a-live-application-to-deliver-ll-hls-streams)
-  - [Configure THEOplayer to play your LL-HLS stream](#configure-theoplayer-to-play-your-ll-hls-stream)
-- [Conclusion](#conclusion)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

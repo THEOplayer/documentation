@@ -2,13 +2,6 @@
 
 This article is a good place to start if you are looking for information on how to configure the THEOplayer Youbora pre-integration, which is part of the [Analytics API](pathname:///theoplayer/v6/api-reference/web/types/YouboraAnalyticsIntegrationID.html).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code example](#code-example)
-- [Related links](#related-links)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

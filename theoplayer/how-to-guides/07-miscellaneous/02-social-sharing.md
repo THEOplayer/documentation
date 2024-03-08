@@ -8,12 +8,6 @@ The Social Sharing feature exposes the Social API. This API allows developers to
 
 ![Social Sharing](../../assets/img/social-sharing.png "Social Sharing")
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

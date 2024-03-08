@@ -11,20 +11,6 @@ In this article we use timed metadata and metadata interchangeably, and consider
 This article provides information on the different types of timed metadata and how you can leverage it in an application.
 The story is told in the reverse order: first we'll consider some use-cases (e.g. highlights), next we'll talk about the role of a video player versus the application, and finally we'll list the types of metadata (e.g. ID3) you can insert.
 
-- [Using Metadata](#using-metadata)
-  - [Use-Cases](#use-cases)
-  - [Technical Implementation](#technical-implementation)
-  - [Out-of-the-box Solutions](#out-of-the-box-solutions)
-- [Extracting Metadata](#extracting-metadata)
-- [Inserting Metadata](#inserting-metadata)
-  - [Segment Metadata](#segment-metadata)
-  - [Manifest Metadata](#manifest-metadata)
-  - [External Metadata](#external-metadata)
-  - [Timeline Metadata](#timeline-metadata)
-  - [Considerations](#considerations)
-- [THEOplayer and Timed Metadata](#theoplayer-and-timed-metadata)
-- [Resources](#resources)
-
 ## Using Metadata
 
 When using timed metadata, you are trying to achieve a [use-case](#use-cases) through a [technical implementation](#technical-implementation).

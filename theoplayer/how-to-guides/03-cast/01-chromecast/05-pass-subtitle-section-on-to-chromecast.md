@@ -2,12 +2,6 @@
 
 Currently, it is intended behavior that when you start casting the player to a Chromecast device the subtitle selection setting isn't carried over. A new player is generated with the `SourceConfiguration` of the sender, but not any adjustments.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Solution](#solution)
-- [Code Examples](#code-examples)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

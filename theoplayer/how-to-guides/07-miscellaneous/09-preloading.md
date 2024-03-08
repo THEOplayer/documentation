@@ -4,8 +4,6 @@ This article contains a description of the possible preloading settings and will
 
 At the bottom, you will be able to find interesting Resources on this topic.
 
-### Table of Contents
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

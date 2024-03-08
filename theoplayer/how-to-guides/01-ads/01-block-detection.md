@@ -8,14 +8,6 @@ The screenshot below illustrates the default error message.
 
 ![Ad block detection](../../assets/img/ad-blocker-detected-2021.png "Adblock detection")
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Usage](#code-examples)
-  - [Stream configuration](#stream-configuration)
-  - [Error event](#error-event)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

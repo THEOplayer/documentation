@@ -2,12 +2,6 @@
 
 This article explains how developers can hook into the Verizon Media Interface. This interface allows developers to query the available assets and ads in a Verizon Media stream, its properties, and subscribe to its events.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Using the Verizon Media Interface](#using-the-verizon-media-interface)
-- [Related articles](#related-articles)
-
 ## SDKs
 
 |   Web SDK    | Android SDK  |   iOS SDK    | tvOS SDK | Android TV SDK | Chromecast SDK |

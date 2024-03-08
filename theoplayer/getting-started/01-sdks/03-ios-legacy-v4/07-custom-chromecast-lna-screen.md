@@ -1,12 +1,5 @@
 # How to implement custom local network access (LNA) interstitial dialog for Chromecast
 
-### Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Setup Chromecast SDK](#setup-chromecast-sdk)
-- [Implement custom LNA screen](#custom-lna)
-- [Use custom LNA screen](#use-custom-lna)
-
 ## Prerequisites
 
 THEOplayer is built in a modular way, and a THEOplayer library has a set of features enabled (e.g. HLS playback, MPEG-DASH playback, advertisements, etc.).

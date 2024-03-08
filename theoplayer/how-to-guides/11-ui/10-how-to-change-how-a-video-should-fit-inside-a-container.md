@@ -8,11 +8,6 @@ By default, a video player respects the aspect ratio the video.
 - Cuts out content outside the box.
 - Or deforms the content, and causing misalignment with the aspect-ratio.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code example](#code-example)
-
 ## SDKs
 
 | Web SDK | Android SDK |                   iOS SDK                   | tvOS SDK | Android TV SDK |

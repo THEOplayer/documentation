@@ -2,14 +2,6 @@
 
 This article explains how to leverage the Verizon Media Preplay API through THEOplayer. This API allows developers to pre-integrate with Verizon's Preplay service.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Stream Configuration (without ads)](#stream-configuration-without-ads)
-- [Stream Configuration (with ads)](#stream-configuration-with-ads)
-- [Preplay Response](#preplay-response)
-- [Using Tokens](#using-tokens)
-
 ## SDKs
 
 |   Web SDK    | Android SDK  |   iOS SDK    | tvOS SDK | Android TV SDK | Chromecast SDK | Roku SDK |

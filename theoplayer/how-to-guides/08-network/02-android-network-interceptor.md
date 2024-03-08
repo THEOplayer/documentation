@@ -6,14 +6,6 @@ The Network API thus allows easy access to handle the network efficiently.
 
 This guide explains how you set up THEOplayer Android SDK to add and remove request/response interceptors.
 
-### Table of Contents
-
-1. [Prerequisites](#prerequisites)
-2. [Set up THEOplayer in your app](#set-up-theoplayer-in-your-app)
-3. [Adding and removing an interceptor](#adding-and-removing-an-interceptor)
-4. [Intercepting a request](#intercepting-a-request)
-5. [Intercepting a response](#intercepting-a-response)
-
 ## Prerequisites
 
 - This guide expects that you have a THEOplayer license. If you aren't using THEOplayer yet, you can start by registering at THEOportal [here](https://portal.theoplayer.com) to get access to THEOplayer.

@@ -6,16 +6,6 @@ This is done in two steps: the first is to customize the text, if you so desire.
 
 The second step is to change the aspect of such text. This can be done via CSS.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Changing the text](#changing-the-text)
-  - [Code examples](#code-examples)
-- [Changing the aspect](#changing-the-aspect)
-  - [Code examples](#code-examples-1)
-- [Remarks](#remarks)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

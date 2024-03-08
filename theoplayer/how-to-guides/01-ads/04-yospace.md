@@ -2,14 +2,6 @@
 
 Yospace is a Server-Side Ad Insertion solution. A demo for the Web SDK can be found [here](https://demo.theoplayer.com/ssai).
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Pre-requirements](#pre-requirements)
-- [Starting Template](#starting-template)
-- [Integrating Yospace](#integrating-yospace)
-- [Conclusion](#conclusion)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK |  tvOS SDK  | Android TV SDK | Chromecast SDK |

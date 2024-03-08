@@ -4,16 +4,6 @@ THEOplayer makes a number of network requests and receives responses while playi
 
 This guide explains how you set up THEOplayer to add and remove request/response interceptors. This document guides you through setting up a demo just like the one that's showcased in our [Demo Zone](https://www.theoplayer.com/demo-zone).
 
-### Table of Contents
-
-1. [Prerequisites](#prerequisites)
-2. [Starting Template](#starting-template)
-3. [Adding and removing Request Interceptors](#adding-and-removing-request-interceptors)
-4. [Adding and removing Response Interceptors](#adding-and-removing-response-interceptors)
-5. [Adding a waitUntil in Request and Response Interceptors](#adding-a-waituntil-in-request-and-response-interceptors)
-6. [HTTP Errors](#6-http-errors)
-7. [Adding and Removing Event Listeners](#adding-and-removing-event-listeners)
-
 ## Prerequisites
 
 This guide expects that you have a THEOplayer license. If you aren't using THEOplayer yet, you can start by registering at THEOportal [here](https://portal.theoplayer.com) to get access to THEOplayer. Be sure to have THEOplayer version 2.21.0 or higher.

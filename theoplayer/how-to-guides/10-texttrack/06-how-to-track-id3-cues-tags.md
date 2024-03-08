@@ -9,16 +9,6 @@ The question above is commonly asked by the developers who want to introduce a c
 [ID3](https://en.wikipedia.org/wiki/ID3) is a type of metadata which can be inserted in HTTP livestreams. Once an ID3 cue is inserted, it'll be added to a THEOplayer [TextTrack](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html).
 The demo at [https://demo.theoplayer.com/audio-id3-metadata](https://demo.theoplayer.com/audio-id3-metadata) demonstrates a usage of ID3 metadata. Just before the song changes, an `enter` event will be dispatched, the song information (title, album, etc.) is contained within this `enter` event, and can be used to update the UI.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Tracking ID3](#tracking-id3)
-- [Code examples](#code-examples)
-  - [Listening for timed metadata events](#listening-for-timed-metadata-events)
-  - [Track the enter event](#track-the-enter-event)
-- [Sample application](#sample-application)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

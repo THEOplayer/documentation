@@ -4,15 +4,6 @@ THEOplayer provides a [Web Audio API](https://developer.mozilla.org/en-US/docs/W
 
 To use this API, be sure to have the `webaudio` feature included in your THEOplayer SDK.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to use the Web Audio API](#how-to-use-the-web-audio-api)
-- [Code Examples](#code-examples)
-- [Sample Applications](#sample-applications)
-- [Remarks](#remarks)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

@@ -3,23 +3,6 @@
 This article provides information on how to customize the look and feel of a Chromecast [Sender application](https://developers.google.com/cast/glossary#sender) or a Chromecast [Receiver Application](https://developers.google.com/cast/glossary#receiver).
 ![Casting approaches](../../../assets/img/casting-approaches.png "Casting approaches")
 
-The following topics are discussed:
-
-1. [Background](#background)
-   1. [Google, Chromecast and THEOplayer](#google-chromecast-and-theoplayer)
-   2. [Sender application vs Receiver application](#sender-application-vs-receiver-application)
-2. [Customizing a Sender Application](#customizing-a-sender-application)
-   1. [Default UI](#default-ui)
-   2. [Chromeless UI](#chromeless-ui)
-   3. [Altering Default UI](#altering-default-ui)
-3. [Customizing a Receiver application](#customizing-a-receiver-application)
-   1. [Default Receiver application](#default-receiver-application)
-   2. [Custom Receiver application with THEOplayer Chromecast SDK](#custom-receiver-application-with-theoplayer-chromecast-sdk)
-   3. [Custom Receiver application without THEOplayer Chromecast SDK](#custom-receiver-application-without-theoplayer-chromecast-sdk)
-4. [Conclusion](#conclusion)
-5. [Notes](#notes)
-6. [Resources](#resources)
-
 ## Background
 
 This section provides background information on Google, THEOplayer SDKs, Sender apps and Receiver apps. Feel free to skip

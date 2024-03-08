@@ -8,18 +8,6 @@ The Picture-in-Picture feature allows developers to create a floating player. Th
 - The user sends the application to the background.
 - The user opens a new page within the same application.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [How to use Picture-in-Picture](#how-to-use-picture-in-picture)
-- [Code Examples](#code-examples)
-  - [Enable Picture-In-Picture mode](#enable-picture-in-picture-mode)
-  - [Observe events in Picture-In-Picture](#observe-events-in-picture-in-picture)
-- [Sample applications](#sample-applications)
-- [Remarks](#remarks)
-- [Known Limitations](#known-limitations)
-- [Resources](#resources)
-
 ## SDKs
 
 The below table makes a comparison of the available THEOplayer APIs specifically targeting in or out of app PiP use cases. This table does not represent the possibilities on the platforms with THEOplayer.

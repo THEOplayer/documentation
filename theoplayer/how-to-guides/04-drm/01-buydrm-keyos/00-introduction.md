@@ -4,12 +4,6 @@ This article describes how to configure BuyDRM KeyOS DRM with THEOplayer.
 
 Head to our page on [DRM](../../../how-to-guides/04-drm/00-introduction.md) for more general information.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code Examples](#code-examples)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

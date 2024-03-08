@@ -4,14 +4,6 @@ This article will explain how to send data to an active receiver and how to resp
 
 **On our Web SDK, this functionality was implemented from 2.79.0 onwards.**
 
-### Table of Contents
-
-- [Send data to the receiver](#send-data-to-the-receiver)
-- [Receive data from the receiver](#receive-data-from-the-receiver)
-- [Receive data on the receiver](#receive-data-on-the-receiver)
-- [Send data from the receiver](#send-data-from-the-receiver)
-- [Related articles](#related-articles)
-
 ## Send data to the receiver
 
 The Google Cast SDK has a global object that everyone can access. This global object is also being used by THEOplayer. The general idea is to retrieve the current active cast session and send a message on a specific namespace.

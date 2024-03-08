@@ -4,13 +4,6 @@ This article describes how to configure [PallyCon Multi-DRM](https://pallycon.co
 
 Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code Examples](#code-examples)
-- [Resources](#resources)
-- [Related Articles](#related-articles)
-
 ## SDKs
 
 | Web SDK | Android SDK |  iOS SDK   |  tvOS SDK  | Android TV SDK | Chromecast SDK |

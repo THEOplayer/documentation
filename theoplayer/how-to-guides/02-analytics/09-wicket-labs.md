@@ -8,12 +8,6 @@ Wicket Labs then pulls the data from the selected third-party database service, 
 
 THEOplayer and Wicket Labs publish [sample integrations on Github](https://github.com/THEOplayer/samples-wicket-labs-html5-sdk) to bootstrap developers.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Connecting Wicket Labs with THEOplayer](#connecting-wicket-labs-with-theoplayer)
-- [Related links](#related-links)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

@@ -7,14 +7,6 @@ Alternatively, when an ad error occurs, they want to log this to an analytics se
 
 This article explains how you can programmatically subscribe to ad-related events across different SDKs.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Subscribing to an event](#subscribing-to-an-event)
-- [Ad begin and end](#ad-begin-and-and)
-- [Ad error](#ad-error)
-- [Ad block detection](#ad-block-detection)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

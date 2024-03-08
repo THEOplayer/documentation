@@ -7,14 +7,6 @@ Scheduling and tracking ads through the Google IMA ad integration is similar to 
 
 The main difference with the default THEO ad integration is that you need to indicate through the API that you want to use Google IMA as the ad integration, and that you need to include the Google IMA SDK.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Web SDK](#web-sdk)
-- [Android (TV) SDK](#android-sdk)
-- [iOS (tvOS) SDK](#iostvos-sdk-and-legacy-iostvos-sdk--412x-)
-- [Remarks](#remarks)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

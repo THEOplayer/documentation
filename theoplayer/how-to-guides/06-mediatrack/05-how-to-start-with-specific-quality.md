@@ -2,13 +2,6 @@
 
 This question is typically asked because developers want their HLS or MPEG-DASH stream to start with a specific rendition of the manifest. They want to implement this use-case to speed up the time-to-first frame, or to serve a better quality to the customer, or to serve a different quality on different platforms.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-- [Remarks](#remarks)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |

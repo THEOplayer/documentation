@@ -6,13 +6,6 @@ If you are already comfortable with the THEOplayer API, you can go straight over
 
 The following topics will be covered:
 
-### Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Integrating KeyOS BuyDRM](#integrating-keyos-buydrm)
-- [Conclusion](#conclusion)
-- [Resources:](#resources)
-
 ## Prerequisites
 
 This guide expects you to:

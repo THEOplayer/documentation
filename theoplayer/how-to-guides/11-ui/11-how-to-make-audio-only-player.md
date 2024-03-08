@@ -9,23 +9,6 @@ to this
 
 ![Audio Only](../../assets/img/audio-only-2.png "Audio Only")
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Making the audio player from the video player](#making-the-audio-player-from-the-video-player)
-- [Code examples](#code-examples)
-  - [1 - Add a new class to 2 HTML elements in the player](#1---add-a-new-class-to-2-html-elements-in-the-player)
-  - [2 - Hide unnecessary buttons from the control bar](#2---hide-unnecessary-buttons-from-the-control-bar)
-  - [3 - Hide content that might appear above the control bar](#3---hide-content-that-might-appear-above-the-control-bar)
-  - [4 - Decrease the player's height](#4-decrease-the-players-height)
-  - [5 - Ensure the control bar is always visible](#5--ensure-the-control-bar-is-always-visible)
-  - [6 - Rescale the loading spinner](#6---rescale-the-loading-spinner)
-  - [7 - Change appearance for when the stream is not yet loaded](#7---change-appearance-for-when-the-stream-is-not-yet-loaded)
-  - [8 - (Optional) Add the audioOnly flag](#8---optional-add-the-audioonly-flag)
-  - [Result](#result)
-- [Sample application](#sample-application)
-- [Resources](#resources)
-
 ## SDKs
 
 | Web SDK |                    Android SDK                    |                      iOS SDK                      | tvOS SDK |                  Android TV SDK                   | Chromecast SDK |

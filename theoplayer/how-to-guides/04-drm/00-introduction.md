@@ -4,14 +4,6 @@ THEOplayer supports FairPlay, PlayReady and Widevine by default. To connect to s
 However, more often than not, developers are working with a multi-DRM vendor. These vendors take care of their DRM needs. The last challenge for developers is to integrate the provided DRM solution in a video player.
 THEOplayer is partnered with many multi-DRM vendors to lighten this burden. In our partnerships, we validate the compatibly and often provide integrations.
 
-### Table of Contents
-
-- [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
-  - [Pre-integrations](#pre-integrations)
-  - [Custom configuration](#custom-configuration) - [Web SDK](#web-sdk) - [Android SDK](#android-sdk) - [iOS SDK](#iostvos-sdk-and-legacy-iostvos-sdk--412x-) - [Roku SDK](#roku-sdk)
-  - [Custom Integration](#custom-integration)
-
 ## Pre-integrations
 
 THEOplayer is pre-integrated with a number of commercial multi-DRM vendors.

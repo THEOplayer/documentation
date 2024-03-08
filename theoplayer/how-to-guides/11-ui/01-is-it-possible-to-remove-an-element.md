@@ -10,11 +10,6 @@ There are three possible approaches to this:
 
 In the following we will briefly explore the last two possibilities.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Code examples](#code-examples)
-
 ## SDKs
 
 | Web SDK |           Android SDK            |             iOS SDK              | tvOS SDK | Android TV SDK | Chromecast SDK |

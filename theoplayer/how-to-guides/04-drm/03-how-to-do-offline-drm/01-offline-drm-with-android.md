@@ -2,12 +2,6 @@
 
 This how-to guide describes how to implement playback of downloadable content-protected MPEG-DASH using the THEOplayer Android SDK. Currently, Widevine is supported together with the Irdeto and DRMToday integrations.
 
-### Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Code example](#code-example)
-- [Listing and restarting caching tasks](#listing-and-restarting-caching-tasks)
-
 ## Prerequisites
 
 In order to do offline DRM on Android, your license key should be downloadable, and cacheable. The SDK will not be able to decrypt your content if your key expired.
