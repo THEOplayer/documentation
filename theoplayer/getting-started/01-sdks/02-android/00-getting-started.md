@@ -1,3 +1,7 @@
+---
+sidebar_position: 0.0
+---
+
 # Getting started on Android
 
 ## What are the differences between Android SDK and Legacy Android SDK (4.12.x)?
