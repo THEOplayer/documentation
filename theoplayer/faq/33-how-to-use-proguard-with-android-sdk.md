@@ -4,7 +4,7 @@ ProGuard is a popular tool to obfuscate and optimize Java code in Android projec
 
 Below, you can find a list of rules tested against THEOplayer Android SDK on 28 Nov 2018.
 
-```java
+```
 -keep class com.theoplayer.android.** {*;}
 -dontwarn com.theoplayer.android.**
 -keep public class com.google.android.gms.* { public *; }

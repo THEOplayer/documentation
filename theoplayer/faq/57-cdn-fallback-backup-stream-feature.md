@@ -20,7 +20,7 @@ MPEG-DASH allows you to define multiple `<BaseURL>` elements, which points towar
 
 As per HLS Specification for Apple Devices, playback on stream failover for a rendition is supported, if a redundant variant stream with a different URI is available in the manifest. A variant stream is considered to be redundant, if it has the exact same EXT-X-STREAM-INF tag as the original one. In case the first occurrence of the variant stream is unavailable or not reachable, player by default would use the redundant variant stream for continuing playback. An example of the manifest is like below:
 
-```javascript
+```
 #EXTM3U
 #EXT-X-VERSION:3
 #EXT-X-STREAM-INF:BANDWIDTH=2689440,CODECS="avc1.100.31,mp4a.40.2",RESOLUTION=1120x700
