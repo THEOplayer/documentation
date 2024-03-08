@@ -266,12 +266,12 @@ function mouseOutPlayer() {
 
 #### enableShortcuts()
 
-This function lets you choose between enabling the hotkeys site-wide with the [load()](#2.8-site-wide-hotkeys) function or only enabling them when the viewer's mouse is inside the player or the player is focused.
+This function lets you choose between enabling the hotkeys site-wide, or only enabling them when the viewer's mouse is inside the player or the player is focused.
 
 When calling this function you can use:
 
-1. enableShortcuts(); -To enable THEOplayer hotkeys site-wide.
-2. enableShortcuts('mouseOver'); -To enable THEOplayer hotkeys when the viewer's mouse is inside the specified area.
+1. `enableShortcuts();` -To enable THEOplayer hotkeys site-wide.
+2. `enableShortcuts('mouseOver');` -To enable THEOplayer hotkeys when the viewer's mouse is inside the specified area.
 
 ```javascript
 function enableShortcuts(method) {
