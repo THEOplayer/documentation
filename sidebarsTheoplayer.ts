@@ -16,6 +16,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Getting started',
+      collapsed: false,
       description: 'Set up your first THEOplayer in just a few minutes!',
       customProps: {
         icon: '🚀',
