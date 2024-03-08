@@ -22,7 +22,7 @@ The AudioTrack API is available across all of our base SDKs. As described in the
 
 - [Web SDK](#web-sdk)
 - [Android SDK](#android-sdk)
-- [iOS SDK](#iostvos-sdk-and-legacy-iostvos-sdk--412x-)
+- [iOS SDK](#iostvos-sdk-and-legacy-iostvos-sdk-412x)
 - [Roku SDK](#roku-sdk)
 
 ### Web SDK

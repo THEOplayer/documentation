@@ -203,7 +203,7 @@ In order to enable Chromecast on the iOS SDK:
 
    That's it. When Chromecast-enabled devices are discovered, the player will display a Chromecast button. The player also works nicely together with the Chromecast controls that are part of the Chromecast Framework, (e.g. [GCKUICastButton](https://developers.google.com/cast/docs/ios_sender_integrate#add_a_cast_button) or [the mini controller](https://developers.google.com/cast/docs/ios_sender_integrate#add_mini_controllers)).
 
-## Connect with custom Chromecast Receiver application
+## Connect with custom Chromecast Receiver application {#custom-receiver-app}
 
 The THEOplayer SDK on your Sender application connects with THEO Chromecast Receiver application by default,
 but you can connect it to a custom Chromecast Receiver application instead.

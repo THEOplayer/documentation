@@ -26,7 +26,7 @@ Go to the subsection on ["implementation for timed metadata"](#implementation-fo
 
 - [Web SDK](#web-sdk)
 - [Android SDK](#android-sdk)
-- [iOS SDK](#iostvos-sdk-and-legacy-iostvos-sdk--412x-)
+- [iOS SDK](#iostvos-sdk-and-legacy-iostvos-sdk-412x)
 - [Roku SDK](#roku-sdk)
 
 ### Web SDK

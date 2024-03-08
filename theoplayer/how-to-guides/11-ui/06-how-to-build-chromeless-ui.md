@@ -483,15 +483,8 @@ Refer to our [introduction on errors](../../how-to-guides/07-miscellaneous/04-er
 This subsection gets you started on implementing a Chromeless UI on our Roku SDK.
 
 - [Display Chromeless player](#display-chromeless-player)
-- [Control bar and Buttons](#control-bar-play,-pause,-stop-buttons)
+- [Control bar and Buttons](#control-bar-play-pause-stop-buttons)
 - [Switch Audio or Text Tracks](#control-bar-switch-audio-or-text-tracks)
-- [VerizonMedia](#verizonmedia)
-  - [Stream without ads](#stream-without-ads)
-  - [Stream with ads](#stream-with-ads)
-  - [Ads configuration](#ads-configuration)
-  - [Ads API](#ads-api)
-  - [Ping configuration](#ping-configuration)
-  - [Ping response](#ping-response)
 
 This section will give you an overview on how custom controls can be integrated with THEOplayer API and also a brief introduction to BrightScript and SceneGraph.
 We will create play, pause, stop buttons, add audio and text tracks management menu and create a simple timeline.
