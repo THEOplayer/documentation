@@ -2,6 +2,7 @@
   "position": 2,
   "label": "Frameworks",
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "slug": "getting-started/frameworks"
   }
 }
