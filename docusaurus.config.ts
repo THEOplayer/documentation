@@ -294,6 +294,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['java', 'groovy', 'objectivec']
     },
   } satisfies Preset.ThemeConfig,
 };
