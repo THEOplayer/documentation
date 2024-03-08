@@ -2,5 +2,9 @@
   "label": "Content protection",
   "customProps": {
     "icon": "🔐"
+  },
+  "link": {
+    "type": "doc",
+    "id": "knowledge-base/content-protection/introduction"
   }
 }

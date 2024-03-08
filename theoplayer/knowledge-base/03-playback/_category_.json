@@ -2,5 +2,9 @@
   "label": "Playback",
   "customProps": {
     "icon": "▶️"
+  },
+  "link": {
+    "type": "doc",
+    "id": "knowledge-base/playback/introduction"
   }
 }
