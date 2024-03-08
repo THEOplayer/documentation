@@ -3,6 +3,7 @@
   "customProps": {
     "icon": "💰"
   },
+  "position": 1,
   "link": {
     "type": "doc",
     "id": "knowledge-base/advertisement/introduction"

@@ -3,6 +3,7 @@
   "customProps": {
     "icon": "🎥"
   },
+  "position": 4,
   "link": {
     "type": "doc",
     "id": "knowledge-base/streaming/introduction"
