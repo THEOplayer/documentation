@@ -100,6 +100,7 @@ const sidebars: SidebarsConfig = {
           },
           href: 'pathname:///theoplayer/v6/api-reference/ios/',
         },
+        'api-reference/roku',
       ],
     },
   ],
