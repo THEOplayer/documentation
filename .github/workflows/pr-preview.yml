@@ -1,0 +1,44 @@
+name: Deploy pull request preview
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+concurrency: preview-${{ github.ref }}
+jobs:
+  pr-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+      # Build the website
+      - name: Use Node.js 20
+        if: github.event.action != 'closed'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Build
+        if: github.event.action != 'closed'
+        run: |
+          npm ci
+          npm run build
+        env:
+          THEOPLAYER_LICENSE: ${{ vars.THEOPLAYER_LICENSE }}
+          # Preview URLs look like this: https://[owner].github.io/[repo]/pr-preview/pr-[number]/
+          # https://github.com/marketplace/actions/deploy-pr-preview
+          DOCUSAURUS_BASE_URL: /${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.number }}/
+          # Prevent PR previews from being indexed by search engines
+          DOCUSAURUS_NO_INDEX: 1
+      # Deploy preview
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./build/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
