@@ -33,6 +33,8 @@ jobs:
           # Preview URLs look like this: https://[owner].github.io/[repo]/pr-preview/pr-[number]/
           # https://github.com/marketplace/actions/deploy-pr-preview
           DOCUSAURUS_BASE_URL: /${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.number }}/
+          # Prevent PR previews from being indexed by search engines
+          DOCUSAURUS_NO_INDEX: 1
       # Deploy preview
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
