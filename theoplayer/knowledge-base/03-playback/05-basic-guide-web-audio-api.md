@@ -6,7 +6,7 @@ This guide expects that you have a THEOplayer license. Be sure to have THEOplaye
 
 ## Getting started with THEOplayer
 
-The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md). In the following sections, we will assume that you have just created a THEOplayer instance and bound it to the variable 'player'.
+The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx). In the following sections, we will assume that you have just created a THEOplayer instance and bound it to the variable 'player'.
 
 ## A very basic Web Audio graph
 

@@ -24,7 +24,7 @@ There are two prerequisites in order to continue with this guide:
 
 ##### Web SDK
 
-[Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.md)
+[Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
 ##### Android Legacy (4.12.x) SDK
 
@@ -134,7 +134,7 @@ A live demo can be viewed at [https://cdn.theoplayer.com/demos/iristv/iristv.htm
 
 ## Resources
 
-- [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.md)
+- [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
 - [Getting started on Android Legacy (4.12.x)](../../getting-started/01-sdks/02-android-legacy-v4/00-getting-started.md)
 

@@ -19,7 +19,7 @@ smaller files, which load and execute faster on your viewer's devices.
 
 > **Note**
 > If you need to support older browsers (such as older smart TVs), you should stick with a classic `<script>`
-> tag. [See the getting started guide](./00-getting-started.md).
+> tag. [See the getting started guide](./00-getting-started.mdx).
 
 In this article, we will set up a simple web page using JavaScript modules with the THEOplayer SDK on Web.
 The outcome of this article is the template below.
@@ -59,7 +59,7 @@ The outcome of this article is the template below.
 
 ## Prerequisites
 
-See [the prerequisites in our getting started guide](./00-getting-started.md#prerequisites).
+See [the prerequisites in our getting started guide](./00-getting-started.mdx#prerequisites).
 
 ## Basic setup
 

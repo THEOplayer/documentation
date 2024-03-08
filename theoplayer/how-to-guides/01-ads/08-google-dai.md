@@ -17,7 +17,7 @@ Google DAI is a Server-Side Ad-Insertion solution offered by Google where THEOpl
 
 ### Starting Template
 
-The first thing you need is a valid THEOplayer setup. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md).
+The first thing you need is a valid THEOplayer setup. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx).
 
 To get THEOplayer to work, you only need to do three things:
 
@@ -337,7 +337,7 @@ THEOplayer SDK and Google DAI are fully pre-integrate to deliver Server-Side Ad 
 Extra resources:
 
 1. [Google DAI Pre-Integration API](pathname:///theoplayer/v6/api-reference/web/interfaces/GoogleDAIConfiguration.html)
-2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)
+2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 3. [Google DAI website](https://developers.google.com/interactive-media-ads)
 
 Related articles

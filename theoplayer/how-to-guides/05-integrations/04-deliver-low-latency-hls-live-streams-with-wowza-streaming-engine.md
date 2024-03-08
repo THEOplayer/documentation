@@ -185,7 +185,7 @@ where **\_sfts** indicates that the media playlist contains .ts segments.
 
 ##### Web SDK
 
-1. Setup a basic HTML file and include the THEOplayer library. You can check: [How to get started with THEOplayer Web SDK](../../getting-started/01-sdks/01-web/00-getting-started.md).
+1. Setup a basic HTML file and include the THEOplayer library. You can check: [How to get started with THEOplayer Web SDK](../../getting-started/01-sdks/01-web/00-getting-started.mdx).
 2. Specify the LL-HLS stream generated above, as the `src` parameter in your source configuration
 3. Set the flag `lowLatency` parameter to TRUE, in your source configuration
 
@@ -210,6 +210,6 @@ THEOplayer is partnered with Wowza Streaming Engine to fully implement low-laten
 
 ## Resources
 
-- [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.md)
+- [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
 - [Getting Started with Wowza Streaming Engine](https://www.wowza.com/docs/wowza-streaming-engine-product-articles/)

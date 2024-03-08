@@ -6,7 +6,7 @@ THEOplayer enables this feature by making use of the `EXT-X-PROGRAM-DATE-TIME` i
 
 ## API and usage
 
-Once the `EXT-X-PROGRAM-DATE-TIME` information is set in the HLS manifest, reading and setting the current program date time information on a THEOplayer instance is fairly straight forward. Start by [obtaining a reference to the THEOplayer instance](../../getting-started/01-sdks/01-web/00-getting-started.md):
+Once the `EXT-X-PROGRAM-DATE-TIME` information is set in the HLS manifest, reading and setting the current program date time information on a THEOplayer instance is fairly straight forward. Start by [obtaining a reference to the THEOplayer instance](../../getting-started/01-sdks/01-web/00-getting-started.mdx):
 
 ```js
 THEOplayer.players[identifier];

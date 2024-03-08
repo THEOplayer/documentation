@@ -29,7 +29,7 @@ Yospace is a Server-Side Ad Insertion solution. A demo for the Web SDK can be fo
 
 ##### Web SDK
 
-The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md).
+The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx).
 
 To get THEOplayer to work, you only need to do three things:
 
@@ -292,7 +292,7 @@ This partnership means that we are compatible with each other: THEOplayer has a 
 Extra resources:
 
 1. [Server-Side Ad Insertion Pre-Integration API](pathname:///theoplayer/v6/api-reference/web/interfaces/ServerSideAdInsertionConfiguration.html)
-2. [THEOplayer Getting Started Guide](web/../../../getting-started/01-sdks/01-web/00-getting-started.md)
+2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 3. [Yospace website](http://www.yospace.com/)
 
 Related articles

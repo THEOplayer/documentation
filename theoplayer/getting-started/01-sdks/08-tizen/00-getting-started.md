@@ -2,7 +2,7 @@
 
 This how-to guide describes how to set up a Tizen application using the THEOplayer SDK on Tizen.
 
-You may also find the [Getting Started on Web](../01-web/00-getting-started.md) to be useful.
+You may also find the [Getting Started on Web](../01-web/00-getting-started.mdx) to be useful.
 
 ## Set-up
 

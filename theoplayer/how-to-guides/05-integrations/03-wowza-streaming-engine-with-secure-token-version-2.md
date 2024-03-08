@@ -42,7 +42,7 @@ The application was saved and restarted.
 
 ##### Web SDK
 
-[Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.md)
+[Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
 #### Server-side hash generation code
 
@@ -237,7 +237,7 @@ In summary, to integrate Wowza Streaming Engine SecureToken version 2 module, in
 
 ## Resources
 
-- [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.md)
+- [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
 - [Getting Started with Wowza Streaming Engine](https://www.wowza.com/docs/wowza-streaming-engine-product-articles/)
 

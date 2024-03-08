@@ -6,7 +6,7 @@ Since webOS IDE is [no longer available](https://webostv.developer.lge.com/devel
 
 The focus of this article is using our [sample apps for webOS](https://github.com/THEOplayer/samples-webos).
 
-You may also find the [Getting Started on Web](../01-web/00-getting-started.md) guide useful.
+You may also find the [Getting Started on Web](../01-web/00-getting-started.mdx) guide useful.
 
 ## Prerequisites
 

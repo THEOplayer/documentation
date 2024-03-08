@@ -16,7 +16,7 @@ This guide expects you to:
 
 If you can place a checkmark next to these two fields, you are good to go.
 
-You will also need a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../../getting-started/01-sdks/01-web/00-getting-started.md).
+You will also need a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx).
 
 ## Integrating KeyOS BuyDRM
 
@@ -150,6 +150,6 @@ THEOplayer partnered with KeyOS to fully pre-integrate their BuyDRM solution, sa
 
 1. [DRM Pre-Integration API](pathname:///theoplayer/v6/api-reference/web/interfaces/DRMConfiguration.html)
 
-2. [THEOplayer Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.md)
+2. [THEOplayer Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
 3. [KeyOS BuyDRM](https://www.buydrm.com/keyosplayer)

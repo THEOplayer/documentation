@@ -16,7 +16,7 @@ This example explains how to customise quality selection & labels for MP4 assets
 
 ##### Web SDK
 
-First of all, we need to [set up the player](./00-getting-started.md) (don't forget to edit the placeholders to match your setup).
+First of all, we need to [set up the player](./00-getting-started.mdx) (don't forget to edit the placeholders to match your setup).
 
 Then, the different MP4 qualities of the same asset need to be stated, along with the corresponding resolutions:
 

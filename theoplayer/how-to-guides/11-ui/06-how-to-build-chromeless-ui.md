@@ -30,10 +30,10 @@ This `player` variable is a "Chromeless" instance created through the THEOplayer
 
 The API reference on creating a Chromeless player instance for the THEOplayer Web SDK is located at [ChromelessPlayer](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#constructor).
 
-When you're implementing a Chromeless UI, you don't need to include the THEOplayer CSS library (i.e. `ui.css`) mentioned in our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md),
+When you're implementing a Chromeless UI, you don't need to include the THEOplayer CSS library (i.e. `ui.css`) mentioned in our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx),
 nor do you need to specify some default CSS classed.
 
-Additionally, instead of including `THEOplayer.js` as mentioned in our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md),
+Additionally, instead of including `THEOplayer.js` as mentioned in our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx),
 you'll include `THEOplayer.chromeless.js`, as demonstrated by the snippet below.
 
 ```html
@@ -52,7 +52,7 @@ var player = new THEOplayer.ChromelessPlayer(element, {
 
 Notice how this snippet uses `ChromelessPlayer` instead of `Player`.
 The `element` variable refers to an existing DOM element.
-If we modified our template in the [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md) to be Chromeless,
+If we modified our template in the [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx) to be Chromeless,
 it would resemble the code below.
 
 ```html

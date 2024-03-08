@@ -10,7 +10,7 @@ This guide expects that you have a THEOplayer license. If you aren't using THEOp
 
 ## Starting Template
 
-The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md).
+The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx).
 
 To get THEOplayer to work, you only need to do three things:
 

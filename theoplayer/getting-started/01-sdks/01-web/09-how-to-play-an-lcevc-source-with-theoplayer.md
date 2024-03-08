@@ -1,7 +1,7 @@
 # How to play an LCEVC source with THEOplayer
 
 This article will show you how to play an LCEVC encoded source in THEOplayer. If you are not familiar with THEOplayer,
-we strongly recommend reading the [getting started documentation for web](00-getting-started.md)
+we strongly recommend reading the [getting started documentation for web](00-getting-started.mdx)
 first.
 
 ## SDKs

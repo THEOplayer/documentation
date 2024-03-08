@@ -29,10 +29,10 @@ There are two prerequisites in order to continue with this guide:
 
 1. You have a THEOplayer license. You can grab a license at [https://portal.theoplayer.com](https://portal.theoplayer.com).
 
-2. You have some [basic knowledge](../../getting-started/01-sdks/01-web/00-getting-started.md) on how to use THEOplayer,
+2. You have some [basic knowledge](../../getting-started/01-sdks/01-web/00-getting-started.mdx) on how to use THEOplayer,
    and can navigate comfortable through [the API](pathname:///theoplayer/v6/api-reference/web/) to find [relevant events](http://demo.theoplayer.com/using-events-examples).
 
-Refer to our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.md) before advancing
+Refer to our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx) before advancing
 to the code samples.
 
 ## API
@@ -264,4 +264,4 @@ Extra resources:
 
 1. [THEOplayer API](pathname:///theoplayer/v6/api-reference/web/)
 
-2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)
+2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx)

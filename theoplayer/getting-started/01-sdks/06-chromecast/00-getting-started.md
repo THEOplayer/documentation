@@ -52,7 +52,7 @@ By including the THEOplayer Chromecast Receiver SDK, you have access to the THEO
 
 ## Set up THEOplayer instance
 
-Setting up a THEOplayer instance in a Chromecast Receiver application is similar to our Web SDK. More information on setting up the THEOplayer Web SDK can be found at [Getting Started on Web](../01-web/00-getting-started.md).
+Setting up a THEOplayer instance in a Chromecast Receiver application is similar to our Web SDK. More information on setting up the THEOplayer Web SDK can be found at [Getting Started on Web](../01-web/00-getting-started.mdx).
 
 You need to add a DOM-element which will contain the user interface of THEOplayer, and you need to initialize the THEOplayer instance through JavaScript code.
 

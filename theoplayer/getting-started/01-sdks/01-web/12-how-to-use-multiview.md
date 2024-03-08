@@ -1,7 +1,7 @@
 # How to use MultiView
 
 This article will go over how to work with THEOplayer's MultiViewPlayer. As the setup is very similar to using
-normal THEOplayer, we strongly recommend reading the [getting started documentation for web](00-getting-started.md) first.
+normal THEOplayer, we strongly recommend reading the [getting started documentation for web](00-getting-started.mdx) first.
 
 ## SDKs
 

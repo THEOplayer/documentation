@@ -60,7 +60,7 @@ This API is currently not available on the iOS (/tvOS) SDK.
 
 The following resources provide more information:
 
-1. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.md)
+1. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
 2. [FreeWheelAdDescription](pathname:///theoplayer/v6/api-reference/web/interfaces/FreeWheelAdDescription.html)
 

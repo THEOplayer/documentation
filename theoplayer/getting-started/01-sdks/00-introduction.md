@@ -12,7 +12,7 @@ THEOplayer offers the following SDKs. (Clicking the link takes you to the respec
 
 - HTML5/Tizen/webOS SDK
 
-  - [Web](./01-web/00-getting-started.md) targets (desktop and mobile) browsers, HTML5-based smart TVs, progressive web apps, and other HTML5-based platforms.
+  - [Web](./01-web/00-getting-started.mdx) targets (desktop and mobile) browsers, HTML5-based smart TVs, progressive web apps, and other HTML5-based platforms.
   - [webOS](./07-webos/00-getting-started.md) targets LG webOS apps.
   - [Tizen](./08-tizen/00-getting-started.md) targets Samsung Tizen apps.
   - [Chromecast](./06-chromecast/00-getting-started.md) targets (custom) Chromecast apps.

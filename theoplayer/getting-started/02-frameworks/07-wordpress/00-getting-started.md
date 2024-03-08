@@ -42,7 +42,7 @@ You must have a valid WordPress.org deployment. We used WordPress version 5.5 in
 ### 2. THEOplayer SDK
 
 You must have the THEOplayer Web SDK library files (`THEOplayer.js`, `ui.css`, ...),
-or you must know how to refer to them and the `libraryLocation`. You've read through our [Web SDK Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.md),
+or you must know how to refer to them and the `libraryLocation`. You've read through our [Web SDK Getting Started Guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx),
 and you understand all of its content.
 
 ### 3. Locate post or page
@@ -137,4 +137,4 @@ All of this should result in a demo similar to the screenshot below.
 * A 4' video walk-through is available at [https://demo.theoplayer.com/test-your-stream-with-statistics?url=https://content.uplynk.com/98550a2350ee4bfa8eeea6d54e40e096.m3u8](https://demo.theoplayer.com/test-your-stream-with-statistics?url=https://content.uplynk.com/98550a2350ee4bfa8eeea6d54e40e096.m3u8).
 -->
 
-- Steps 4-6 are similar to our [Getting Started guide for Web SDK](../../../getting-started/01-sdks/01-web/00-getting-started.md) so you might want to consider checking out that article as well.
+- Steps 4-6 are similar to our [Getting Started guide for Web SDK](../../../getting-started/01-sdks/01-web/00-getting-started.mdx) so you might want to consider checking out that article as well.
