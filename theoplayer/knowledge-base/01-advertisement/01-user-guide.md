@@ -14,7 +14,7 @@ How to configure ads, code snippets and specific support and use for the various
 
 ## Feature Overview
 
-### <a name="overview-advertisement-tools"></a> An overview of THEOplayer's Advertisement tools
+### An overview of THEOplayer's Advertisement tools {#overview-advertisement-tools}
 
 THEOplayer offers an array of features that allow you to take total control over your online video content advertisement environment.
 
@@ -155,13 +155,13 @@ You can refer to [our MediaTailor guide](../../how-to-guides/01-ads/12-mediatail
 
 ## Ad Configuration
 
-### <a name="basic-ad-config"></a> Basic Ad Configuration
+### Basic Ad Configuration {#basic-ad-config}
 
 As we discussed in [An overview of THEOplayer's Advertisement tools](#overview-advertisement-tools), VAST gives instructions to the video player on how ads should be handled and displayed. This guide does not go into the details of how to create a VAST file. We only refer to the VAST specification, a good starting point if you want to learn the skill.
 
 Here, we will discuss how you can add existing VAST ads to THEOplayer - examples for all the features explained in this section can be found in the how-to guides linked below.
 
-#### <a name="adding-configuring-vast-ads"></a> Adding and configuring VAST ads
+#### Adding and configuring VAST ads {#adding-configuring-vast-ads}
 
 The player supports VAST by specifying a URL parameter to the VAST description in the player configuration. The player will automatically load this advertisement description and act accordingly.
 
