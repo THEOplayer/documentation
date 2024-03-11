@@ -15,7 +15,7 @@ Ensure that the `airplay` feature is enabled when you build a THEOplayer SDK thr
 as demonstrated by the screenshot below.
 Alternative, when someone shares the THEOplayer SDK with you, confirm that they enabled the `airplay` feature.
 
-![Enable Airplay](../../../assets/img/portal-airplay-enabled.png)
+![Enable Airplay](../../../../../theoplayer/assets/img/portal-airplay-enabled.png)
 
 If the `airplay` feature is enabled, the default THEOplayer UI should render the AirPlay icon in the control bar,
 as demonstrated by the screenshot below.
@@ -25,7 +25,7 @@ Ensure that an AirPlay-enabled receiver device is connected to your network, bec
 Additionally, note that AirPlay is only supported by Apple on a limited set of devices and browsers.
 For example, you cannot do AirPlay on a Chrome browser on a macOS device, even though it's an Apple device.
 
-![AirPlay demo](../../../assets/img/airplay-demo-theoplayer.png)
+![AirPlay demo](../../../../../theoplayer/assets/img/airplay-demo-theoplayer.png)
 
 If you have a custom ([Chromeless](../../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md)) THEOplayer UI,
 you need to build your own AirPlay UI and UX. You can use the THEOplayer AirPlay API to help achieve this, as discussed in the next section.

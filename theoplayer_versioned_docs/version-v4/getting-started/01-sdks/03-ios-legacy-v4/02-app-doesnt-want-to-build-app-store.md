@@ -35,4 +35,4 @@ done
 
 A potential symptom of the above issue is shown in the screenshot below.
 
-![iOS build app error](../../../assets/img/ios-build-app-error.png "iOS build app error")
+![iOS build app error](../../../../../theoplayer/assets/img/ios-build-app-error.png "iOS build app error")

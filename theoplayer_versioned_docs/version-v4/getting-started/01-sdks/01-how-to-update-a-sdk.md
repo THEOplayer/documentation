@@ -24,7 +24,7 @@ Typically, next to using [NPM](https://www.npmjs.com/package/theoplayer), you gr
 Configuring THEOplayer through the "Library Location" implies a **cloud-hosted (CDN)** approach.
 Downloading (and configuring) the ZIP (or using NPM) implies a **self-hosted (ZIP file)** approach.
 
-![Update SDK](../../assets/img/getting-started-web-sdk/update-sdk.png)
+![Update SDK](../../../../theoplayer/assets/img/getting-started-web-sdk/update-sdk.png)
 
 ### 1. Cloud-hosted
 
@@ -34,7 +34,7 @@ When you're doing cloud hosting, you're referring to THEOplayer's CDN to load th
 To change the version of this specific SDK, you use the GUI at [https://portal.theoplayer.com/](https://portal.theoplayer.com/) to change it to a different version,
 and hit the "Save & Publish" button after making your changes. Your video player will now automatically start using this new version, but do note that the CDN and browser cache might still be referring to your older version for a little while. If your browser is still not fetching the new JS libraries, try hard refreshing your browser tab first.
 
-![Save & Publish](../../assets/img/getting-started-web-sdk/republish.png)
+![Save & Publish](../../../../theoplayer/assets/img/getting-started-web-sdk/republish.png)
 
 ### 2. Self-hosted
 

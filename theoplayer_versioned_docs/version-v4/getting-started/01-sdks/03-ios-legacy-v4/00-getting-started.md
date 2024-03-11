@@ -30,15 +30,15 @@ Steps for creating a new project:
 1. Create new project (cmd + shift + n).
 2. Select new App and click 'next'.
 
-![](../../../assets/img/getting-started-with-ios-sdk-01.png)
+![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-01.png)
 
 3.  Enter project details, set interface to 'storyboard' and click 'next'.
 
-![](../../../assets/img/getting-started-with-ios-sdk-02.png)
+![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-02.png)
 
 After selecting the directory location, you should see something similar to the screenshot below.
 
-![](../../../assets/img/getting-started-with-ios-sdk-03.png)
+![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-03.png)
 
 ## Configure THEOplayer SDK framework
 
@@ -47,22 +47,22 @@ First, download your THEOplayer iOS SDK from [https://portal.theoplayer.com](htt
 
 Open "Finder" and drag your THEOplayerSDK.framework into to the project directory.
 
-![](../../../assets/img/getting-started-with-ios-sdk-04.png)
+![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-04.png)
 
 This screen pops up. Make sure these settings are selected, and click finish.
 
-![](../../../assets/img/getting-started-with-ios-sdk-05.png)
+![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-05.png)
 
 Go to the project configuration (1), select the General tab (2), and make sure the THEOplayerSDK.framework is embedded and signed in.
 (3) Add it with the "+" if necessary.
 
-![](../../../assets/img/getting-started-with-ios-sdk-06.png)
+![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-06.png)
 
 Validate that the framework will correctly be added during builds:
 
 Go to the Build Phases tab in the project configuration. Then, go to the Embed Frameworks section and check that the THEOplayerSDK.framework is present.
 
-![](../../../assets/img/getting-started-with-ios-sdk-07.png)
+![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-07.png)
 
 ## Develop the app using the THEOplayer SDK
 
@@ -72,7 +72,7 @@ Steps for a minimal app using THEOplayer:
 
    The file should look like this:
 
-   ![](../../../assets/img/getting-started-with-ios-sdk-08.png)
+   ![](../../../../../theoplayer/assets/img/getting-started-with-ios-sdk-08.png)
 
 2. Import THEOplayerSDK.
    ```swift

@@ -6,7 +6,7 @@ is detected, and show a default error message, or either B) detect an `aderror` 
 
 The screenshot below illustrates the default error message.
 
-![Ad block detection](../../assets/img/ad-blocker-detected-2021.png "Adblock detection")
+![Ad block detection](../../../../theoplayer/assets/img/ad-blocker-detected-2021.png "Adblock detection")
 
 ## SDKs
 

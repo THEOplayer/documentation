@@ -8,4 +8,4 @@ Building for iOS Simulator, but the linked and embedded framework ‘THEOplayerS
 
 You solve this issue by setting `Validate Workspace` to `Yes` in the `Build Settings` of XCode.
 
-![](../../../assets/img/validate-workspace.png)
+![](../../../../../theoplayer/assets/img/validate-workspace.png)

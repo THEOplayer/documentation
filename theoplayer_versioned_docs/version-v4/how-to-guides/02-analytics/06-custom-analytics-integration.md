@@ -46,7 +46,7 @@ general video player events like `play`, `pause` and `ended`.
 The [`Ads`](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsEventMap.html) interface contains events related to advertisements,
 like `adbreakbegin` and `adend`.
 
-![THEOplayer API Interfaces and Events](../../assets/img/analytics-events.png "THEOplayer API Interfaces and Events")
+![THEOplayer API Interfaces and Events](../../../../theoplayer/assets/img/analytics-events.png "THEOplayer API Interfaces and Events")
 
 When creating a custom analytics implementation, you must familiarize yourself with the relevant interfaces and events.
 Luckily, all information is available at [https://docs.theoplayer.com/](https://docs.theoplayer.com/),

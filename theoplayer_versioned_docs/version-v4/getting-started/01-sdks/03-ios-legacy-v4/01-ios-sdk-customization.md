@@ -16,7 +16,7 @@ Note that the snippet above implies that you've created `style.css` and `script.
 Ensure that these files are created and referenced correctly.
 The screenshot below demonstrates that these files are "discoverable" in our sample project because they appear in the left sidebar.
 
-![](../../../assets/img/ios-sdk-customization-sidebar.png)
+![](../../../../../theoplayer/assets/img/ios-sdk-customization-sidebar.png)
 
 #### Custom CSS and the Chromeless flag
 

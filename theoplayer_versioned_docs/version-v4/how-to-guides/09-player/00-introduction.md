@@ -22,7 +22,7 @@ to [implement a custom analytics integration](../../how-to-guides/02-analytics/0
 The THEOplayer API exposes many events across different interfaces, as can be seen in the graphic below.
 Furthermore, most events exist in all SDKs (Web, iOS-based, Android-based and Roku).
 
-![THEOplayer API Interfaces and Events](../../assets/img/analytics-events.png "THEOplayer API Interfaces and Events")
+![THEOplayer API Interfaces and Events](../../../../theoplayer/assets/img/analytics-events.png "THEOplayer API Interfaces and Events")
 
 The table below gives an overview of a subset of the available events per interface in the THEOplayer Web SDK.
 

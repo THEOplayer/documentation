@@ -23,14 +23,14 @@ Start with opening Android Studio.
 You will be greeted with a screen similar to the screenshot below.
 Choose the "**Start a new Android Studio project**" option to begin.
 
-![](../../../assets/img/android-getting-started-01.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-01.png)
 
 On the next screen we can choose from pre-built Activities.  
 An Activity is a screen of the application, it provides the window in which the app draws its UI. Because we want to show our THEOplayer on the Activity, we will select an empty one.
 
 So, select "**Empty Activity**" and press "**Next**".
 
-![](../../../assets/img/android-getting-started-02.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-02.png)
 
 THEOplayer supports Android devices with **Android version 4.1 (Jelly Bean - API 16)** so select your minimum SDK requirement (Only the phone and tablet option).
 
@@ -38,7 +38,7 @@ Choose your application name, domain and project location, then hit "**Next**".
 
 **Note the Package name as we will need this path later.**
 
-![](../../../assets/img/android-getting-started-03.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-03.png)
 
 We are now done with the setup of the new project.
 Android Studio will now download the basic dependencies, project requirements and index your files.
@@ -46,7 +46,7 @@ You can see the progress at the bottom of the window.
 
 Once this is done you will see the following screen:
 
-![](../../../assets/img/android-getting-started-04.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-04.png)
 
 ### Project structure
 
@@ -54,11 +54,11 @@ By default, Android Studio displays your project files in the **Android** view. 
 
 To see the actual file structure of the project, including all files hidden from the **Android** view, select **Project** from the dropdown at the top of the Project window.
 
-![](../../../assets/img/android-getting-started-05.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-05.png)
 
 When you select **Project** view, you can see a lot more files and directories. The most important of which are the following:
 
-![](../../../assets/img/android-getting-started-06.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-06.png)
 
 - **app/**
 
@@ -112,11 +112,11 @@ About the file extensions:
 
 First add your THEOplayer **minApi21** AAR file to "**app/libs"** folder (in our example project we call it **theoplayer.aar**)
 
-![](../../../assets/img/android-getting-started-06.5.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-06.5.png)
 
 Now we have to modify the **build.gradle** files to load "**theoplayer.aar"** library.
 
-![](../../../assets/img/android-getting-started-07.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-07.png)
 
 In your **top-level** (project) **build.gradle** file add the following lines to allow loading library files from the "**libs**" folder
 
@@ -136,12 +136,12 @@ allprojects {
 
 And your Gradle file now looks like this:
 
-![](../../../assets/img/android-getting-started-08.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-08.png)
 
 Next we need to edit the **Gradle file**
 on the **module-level**("**app/build.gradle**")
 
-![](../../../assets/img/android-getting-started-09.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-09.png)
 
 we need to specify for Gradle to load and compile our library from the libs folder.  
 THEOplayer SDK has an external dependency on [Gson](https://github.com/google/gson) from Google. We use this library to convert Java object to and from JSON representation.
@@ -163,7 +163,7 @@ dependencies {
 }
 ```
 
-![](../../../assets/img/android-getting-started-10.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-10.png)
 
 After the modification of the **.gradle** files, Android Studio asks you to sync with Gradle. Do so by pressing the "**Sync Now**" button on the top right of the window. (in the blue border)
 
@@ -171,7 +171,7 @@ After the modification of the **.gradle** files, Android Studio asks you to sync
 
 To play online videos with THEOplayer, you first need to add [**INTERNET**](https://developer.android.com/reference/android/Manifest.permission.html#INTERNET) permission into the **AndroidManifest.xml** file ("**app/src/main/AndroidManifest.xml"**):
 
-![](../../../assets/img/android-getting-started-11.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-11.png)
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -179,11 +179,11 @@ To play online videos with THEOplayer, you first need to add [**INTERNET**](http
 
 The manifest should look like:
 
-![](../../../assets/img/android-getting-started-12.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-12.png)
 
 You will add some code to the activity_main.xml file.
 
-![](../../../assets/img/android-getting-started-13.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-13.png)
 
 After you've added the **INTERNET** permission, you need to configure your [THEOplayer license string](../../../how-to-guides/12-license/00-introduction.md) in the same **AndroidManifest.xml** file.
 If you don't enter this license string, you might encounter licensing issues (e.g.: when trying to play non-whitelisted video streams).
@@ -223,7 +223,7 @@ The "**id**" is important, it is used to identify the view object in you **MainA
     </com.theoplayer.android.api.THEOplayerView>
 ```
 
-![](../../../assets/img/android-getting-started-14.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-14.png)
 
 Note: refer to [https://github.com/THEOplayer/theoplayer-sdk-android#b-using-the-constructor-api](https://github.com/THEOplayer/theoplayer-sdk-android#b-using-the-constructor-api)
 if you want to use approach B instead, and use the constructor API.
@@ -272,7 +272,7 @@ To play a video in THEOplayer, we need to **configure a source** for the player 
         theoPlayerView.getPlayer().setSource(sourceDescription);
 ```
 
-![](../../../assets/img/android-getting-started-15.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-15.png)
 
 #### 3. Control THEOplayer through the API ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/c9a2b448ef1a920dc6899bf0fb7aee6ac1e15e33?diff=unified))
 
@@ -291,7 +291,7 @@ First add the button to our **activity_main.xml** layout file
         app:layout_constraintRight_toRightOf="parent"/>
 ```
 
-![](../../../assets/img/android-getting-started-16.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-16.png)
 
 Navigate to the **MainActivity.java** file and import the android button functionality.
 
@@ -320,7 +320,7 @@ Button btnPlayPause;
         });
 ```
 
-![](../../../assets/img/android-getting-started-17.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-17.png)
 
 #### 4. Listen for THEOplayer events ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/52f4a46b6c856d402f2fa2dfca249779d2b22967?diff=unified))
 
@@ -361,7 +361,7 @@ Then import the following Android and THEOplayer libraries in the MainActivity f
     import com.theoplayer.android.api.event.player.TimeUpdateEvent;
 ```
 
-![](../../../assets/img/android-getting-started-18.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-18.png)
 
 We will now listen for "**PLAY**", "**PAUSE**" and "**TIMEUPDATE**" in this example.
 
@@ -395,7 +395,7 @@ TextView txtPlayStatus, txtTimeUpdate;
         });
 ```
 
-![](../../../assets/img/android-getting-started-19.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-19.png)
 
 When the events are triggered, we will update the **MainActivity** UI with the corresponding state.
 
@@ -448,7 +448,7 @@ We have to configure our player instance in the **MainActivity** to react to ori
     }
 ```
 
-![](../../../assets/img/android-getting-started-21.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-21.png)
 
 In the **AndroidManifest.xml** we can disable the default orientation behavior on our MainActivity and lock it in portrait.  
 Then, because we enabled fullscreen orientation coupling with the **setFullScreenOrientationCoupled(true)** method earlier, THEOplayer will take care of the support of seamless landscape activity transition at rotation.
@@ -469,7 +469,7 @@ Then, because we enabled fullscreen orientation coupling with the **setFullScree
 </manifest>
 ```
 
-![](../../../assets/img/android-getting-started-20.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-20.png)
 
 In order to work properly and in sync with the [Activity lifecycle changes](https://developer.android.com/guide/components/activities/activity-lifecycle) (e.g. when we rotate the device or start a new Activity or the app goes to background). We need to call the "**onResume"**, "**onPause"** and "**onDestroy"** methods of the **THEOplayerView** when the matching methods are called in the Activity.
 
@@ -502,7 +502,7 @@ public class MainActivity extends AppCompatActivity{
 
 ```
 
-![](../../../assets/img/android-getting-started-22.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-22.png)
 
 If you would like to customize the Fullscreen Activity, you can follow our tutorial [here](./01-android-sdk-customization.md).
 
@@ -523,19 +523,19 @@ Also keep in mind, on emulators which run Android 7.0 and above the video in THE
 
 And finally, here you have some screenshots from the running application:
 
-![](../../../assets/img/screenshot-1524665161199.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665161199.jpg)
 
 Start screen
 
-![](../../../assets/img/screenshot-1524665170079.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665170079.jpg)
 
 Playing screen
 
-![](../../../assets/img/screenshot-1524665175584.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665175584.jpg)
 
 Paused screen
 
-![](../../../assets/img/screenshot-1524665185023.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665185023.jpg)
 
 Rotated fullscreen
 
