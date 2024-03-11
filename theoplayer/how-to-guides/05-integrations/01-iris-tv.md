@@ -53,13 +53,13 @@ Include the script tag right before where you include the THEOplayer.js library:
 
 1. Download the JavaScript library available at [https://ovp.iris.tv/libs/adaptive/iris.adaptive.js](https://ovp.iris.tv/libs/adaptive/iris.adaptive.js)
 
-2. Follow these instructions and add it as a custom JS file in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+2. Follow these instructions and add it as a custom JS file in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
 1. Download the JavaScript library available at [https://ovp.iris.tv/libs/adaptive/iris.adaptive.js](https://ovp.iris.tv/libs/adaptive/iris.adaptive.js)
 
-2. Follow these instructions and add it as a custom JavaScript file in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+2. Follow these instructions and add it as a custom JavaScript file in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 ### Include the custom integration
 
@@ -87,7 +87,7 @@ You can also add extra styling on top of the IrisTV UI:
 
 1. Download the JavaScript library available at [https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.js](https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.js)
 
-2. Follow these instructions to add custom JavaScript files in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+2. Follow these instructions to add custom JavaScript files in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 3. You can also add extra styling on top of the IrisTV UI downloading the following file (and integrating it too as explained in the guide linked at step 2): [https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.css](https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.css)
 
@@ -95,7 +95,7 @@ You can also add extra styling on top of the IrisTV UI:
 
 1. Download the JavaScript library available at [https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.js](https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.js)
 
-2. Follow these instructions to add custom JavaScript files in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+2. Follow these instructions to add custom JavaScript files in your project: [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 3. You can also add extra styling on top of the IrisTV UI downloading the following file (and integrating it too as explained in the guide linked at step 2): [https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.css](https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.css)
 
@@ -118,11 +118,11 @@ To start displaying the IrisTV UI, you have to call THEOplayerIrisTv() (from THE
 
 ##### Legacy Android SDK (4.12.X)
 
-The Web SDK code should be included in your Android (TV) project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JS files to your project. The sample project at [How to insert a button](../../how-to-guides/11-ui/07-how-to-insert-a-button.md) demonstrates this.
+The Web SDK code should be included in your Android (TV) project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JS files to your project. The sample project at [How to insert a button](../../how-to-guides/11-ui/07-how-to-insert-a-button.md) demonstrates this.
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
-The Web SDK code should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project at [How to insert a button](../../how-to-guides/11-ui/07-how-to-insert-a-button.md) demonstrates this.
+The Web SDK code should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project at [How to insert a button](../../how-to-guides/11-ui/07-how-to-insert-a-button.md) demonstrates this.
 
 ## Conclusion
 
@@ -140,7 +140,7 @@ A live demo can be viewed at [https://cdn.theoplayer.com/demos/iristv/iristv.htm
 
 - [Getting started on iOS](../../getting-started/01-sdks/03-ios-legacy-v4/00-getting-started.md)
 
-- [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+- [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 - [https://iristv.atlassian.net/wiki/spaces/API/pages/263258113/THEO+Adaptive+Plugin](https://iristv.atlassian.net/wiki/spaces/API/pages/263258113/THEO+Adaptive+Plugin): [Iris.tv](http://Iris.tv) documentation - THEO adaptive plugin
 

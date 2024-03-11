@@ -4,7 +4,7 @@ This article provides information on how developers can add custom buttons to TH
 
 THEOplayer's default UI is based on VideoJS. A WebView is used on the legacy Android and iOS SDKs (4.12.x). HTML, CSS and JavaScript is used to insert a button.
 
-When using the legacy Android or iOS SDKs (4.12.x), THEOplayer exposes a system to include JavaScript and CSS files (as described at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)). This system allows developers to re-use their code-logic.
+When using the legacy Android or iOS SDKs (4.12.x), THEOplayer exposes a system to include JavaScript and CSS files (as described at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)). This system allows developers to re-use their code-logic.
 
 ## Code example
 
@@ -101,11 +101,11 @@ Finally, you can adjust the position of the custom buttons with the order attrib
 
 ##### Legacy Android SDK (4.12.x)
 
-The Web SDK code should be included in your Android (TV) project. [This article](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project below demonstrates a reference implementation.
+The Web SDK code should be included in your Android (TV) project. [This article](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project below demonstrates a reference implementation.
 
 ##### Legacy iOS SDK (4.12.x)
 
-The Web SDK code above should be included in your iOS project. [This article](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project below demonstrates a reference implementation.
+The Web SDK code above should be included in your iOS project. [This article](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project below demonstrates a reference implementation.
 
 ##### Android SDK
 

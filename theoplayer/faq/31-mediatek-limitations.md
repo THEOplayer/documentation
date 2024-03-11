@@ -26,7 +26,7 @@ If an implementer does not want the Surface to be destroyed when going fullscree
 A few things are needed for this:
 
 1. FullscreenCoupling needs to be disabled (with `getTPV().getSettings().setFullScreenOrientationCoupled(false)`).
-2. If the UI is enabled, the fullscreen button needs to be hidden or overwritten. This needs to be done with [custom CSS and/or custom JavaScript](01-how-to-add-css-or-javascript-files-to-android-ios.md).
+2. If the UI is enabled, the fullscreen button needs to be hidden or overwritten. This needs to be done with [custom CSS and/or custom JavaScript](../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
 3. Orientation needs to be handled in the Activity.
    3.1 To change the orientation of the Activity, [`setRequestedOrientation`](<https://developer.android.com/reference/android/app/Activity.html#setRequestedOrientation(int)>) has to be called on the Activity or the Activity needs to be allowed to rotate. Allowing the activity to rotate means that the android:screenOrientation property in the [manifest](https://developer.android.com/guide/topics/manifest/manifest-intro) needs to be set to multiple values or not set.
    3.2 To make sure that the Activity is not recreated on an orientationchange,android:configChanges field in the manifest need to include "orientation|screenSize".
