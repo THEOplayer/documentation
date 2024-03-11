@@ -40,7 +40,7 @@ player.source = {
 };
 ```
 
-Please note that it is not possible to inject JavaScript/CSS to [Android SDK 5.0+](../getting-started/01-sdks/02-android/00-getting-started.md) with this method.
+Please note that it is not possible to inject JavaScript/CSS to [Android SDK 5.0+](../../../theoplayer/getting-started/01-sdks/02-android/00-getting-started.md) with this method.
 
 ### iOS
 
