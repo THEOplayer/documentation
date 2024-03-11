@@ -63,7 +63,7 @@
       "customProps": {
         "icon": "❔"
       },
-      "href": "/theoplayer/faq/"
+      "href": "/theoplayer/v4/faq/"
     },
     {
       "type": "category",
@@ -131,7 +131,7 @@
     {
       "type": "link",
       "label": "« Back",
-      "href": "/theoplayer/"
+      "href": "/theoplayer/v4/"
     },
     {
       "type": "category",
