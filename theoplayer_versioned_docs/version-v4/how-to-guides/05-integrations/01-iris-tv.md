@@ -28,11 +28,11 @@ There are two prerequisites in order to continue with this guide:
 
 ##### Android Legacy (4.12.x) SDK
 
-[Getting started on Android Legacy (4.12.x)](../../getting-started/01-sdks/02-android-legacy-v4/00-getting-started.md)
+[Getting started on Android Legacy (4.12.x)](../../getting-started/01-sdks/02-android/00-getting-started.md)
 
 ##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-[Getting started on iOS](../../getting-started/01-sdks/03-ios-legacy-v4/00-getting-started.md)
+[Getting started on iOS](../../getting-started/01-sdks/03-ios/00-getting-started.md)
 
 ### Include the IrisTV SDK
 
@@ -136,9 +136,9 @@ A live demo can be viewed at [https://cdn.theoplayer.com/demos/iristv/iristv.htm
 
 - [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 
-- [Getting started on Android Legacy (4.12.x)](../../getting-started/01-sdks/02-android-legacy-v4/00-getting-started.md)
+- [Getting started on Android Legacy (4.12.x)](../../getting-started/01-sdks/02-android/00-getting-started.md)
 
-- [Getting started on iOS](../../getting-started/01-sdks/03-ios-legacy-v4/00-getting-started.md)
+- [Getting started on iOS](../../getting-started/01-sdks/03-ios/00-getting-started.md)
 
 - [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 

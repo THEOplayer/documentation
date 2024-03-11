@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity{
 
 ![](../../../assets/img/android-getting-started-22.png)
 
-If you would like to customize the Fullscreen Activity, you can follow our tutorial [here](../../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android-legacy-v4/01-android-sdk-customization.md).
+If you would like to customize the Fullscreen Activity, you can follow our tutorial [here](../../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
 
 ## Run your application
 

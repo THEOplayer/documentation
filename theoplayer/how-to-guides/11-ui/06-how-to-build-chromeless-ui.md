@@ -134,8 +134,8 @@ It is your decision whether you want to build a native UI or a WebView UI.
 That being said: any code related to iOS and Android outside this subsection assumes that you are building a native UI.
 
 When you want to use a WebView to implement a Chromeless UI, you must leverage
-[iOS customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/03-ios-legacy-v4/01-ios-sdk-customization.md) and
-[Android customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android-legacy-v4/01-android-sdk-customization.md).
+[iOS customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/03-ios/01-ios-sdk-customization.md) and
+[Android customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
 This customization approach allows you to insert custom JavaScript and CSS files that can hook into the THEOplayer API.
 To access the THEOplayer `player` variable through the inserted JavaScript file, you can invoke `THEOplayer.players[0]`.
 
