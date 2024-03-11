@@ -1,5 +1,5 @@
 ---
-sidebar_position: 0.2
+sidebar_position: 102
 ---
 
 # THEOplayer 5.0 - Native Mobile iOS/tvOS and Android SDKs
