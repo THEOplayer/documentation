@@ -112,7 +112,7 @@
           "customProps": {
             "icon": "🤖"
           },
-          "href": "pathname:///theoplayer/v6/api-reference/android/"
+          "href": "pathname:///theoplayer/v4/api-reference/android/"
         },
         {
           "type": "link",
@@ -121,7 +121,7 @@
           "customProps": {
             "icon": "🍎"
           },
-          "href": "pathname:///theoplayer/v6/api-reference/ios/"
+          "href": "pathname:///theoplayer/v4/api-reference/ios/"
         },
         "api-reference/roku"
       ]

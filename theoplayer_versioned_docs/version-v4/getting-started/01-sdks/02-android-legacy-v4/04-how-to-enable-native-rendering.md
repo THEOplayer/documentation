@@ -16,6 +16,6 @@ private void playSourceWithNativeRendering(String src) {
 }
 ```
 
-This is an experimental feature and it can only be used with DASH streams. You can find more information about the feature on our API docs [here](<pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html#setNativeRenderingEnabled(boolean)>).
+This is an experimental feature and it can only be used with DASH streams. You can find more information about the feature on our API docs [here](<pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html#setNativeRenderingEnabled(boolean)>).
 
 This API does not exist on the native Android SDK.

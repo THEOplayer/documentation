@@ -148,7 +148,7 @@ SourceDescription sourceDescription = SourceDescription.Builder
 tpv.getPlayer().setSource(sourceDescription);
 ```
 
-Notice how the `getPlayer()` method returns a [`Player`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html).
+Notice how the `getPlayer()` method returns a [`Player`](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html).
 You use the `Player` interface to set a video stream, attach event listeners, configure autoplay, etc.
 
 ### Adding a player event listener
