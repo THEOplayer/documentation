@@ -106,7 +106,7 @@ This approach also allows you to configure the "license string" through a progra
 
 You will add some code to the activity_main.xml file.
 
-![](../../../assets/img=/../img/android-getting-started-13.png)
+![](../../../assets/img/android-getting-started-13.png)
 
 You can add the **THEOplayerView** to the layout of the **MainActivity** with the snippet below.
 

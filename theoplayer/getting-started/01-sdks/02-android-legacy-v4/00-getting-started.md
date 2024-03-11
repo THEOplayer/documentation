@@ -171,7 +171,7 @@ After the modification of the **.gradle** files, Android Studio asks you to sync
 
 To play online videos with THEOplayer, you first need to add [**INTERNET**](https://developer.android.com/reference/android/Manifest.permission.html#INTERNET) permission into the **AndroidManifest.xml** file ("**app/src/main/AndroidManifest.xml"**):
 
-![](../../../assets/img=/../img/android-getting-started-11.png)
+![](../../../assets/img/android-getting-started-11.png)
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -179,11 +179,11 @@ To play online videos with THEOplayer, you first need to add [**INTERNET**](http
 
 The manifest should look like:
 
-![](../../../assets/img=/../img/android-getting-started-12.png)
+![](../../../assets/img/android-getting-started-12.png)
 
 You will add some code to the activity_main.xml file.
 
-![](../../../assets/img=/../img/android-getting-started-13.png)
+![](../../../assets/img/android-getting-started-13.png)
 
 After you've added the **INTERNET** permission, you need to configure your [THEOplayer license string](../../../how-to-guides/12-license/00-introduction.md) in the same **AndroidManifest.xml** file.
 If you don't enter this license string, you might encounter licensing issues (e.g.: when trying to play non-whitelisted video streams).
