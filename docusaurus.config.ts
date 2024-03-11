@@ -97,6 +97,7 @@ const config: Config = {
           v4: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v4/version.txt'), 'utf8').trim(),
             banner: 'unmaintained',
+            noIndex: true
           },
         },
       } satisfies DocsPlugin.Options,
