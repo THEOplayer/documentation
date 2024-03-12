@@ -96,7 +96,7 @@ const sidebars: SidebarsConfig = {
           label: 'iOS',
           description: 'API references for the THEOplayer iOS/tvOS SDK',
           customProps: {
-            icon: '🍎',
+            icon: 'apple',
           },
           href: 'pathname:///theoplayer/v6/api-reference/ios/',
         },

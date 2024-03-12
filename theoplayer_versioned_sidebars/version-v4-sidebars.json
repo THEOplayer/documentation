@@ -119,7 +119,7 @@
           "label": "iOS",
           "description": "API references for the THEOplayer iOS/tvOS SDK",
           "customProps": {
-            "icon": "🍎"
+            "icon": "apple"
           },
           "href": "pathname:///theoplayer/v4/api-reference/ios/"
         },
