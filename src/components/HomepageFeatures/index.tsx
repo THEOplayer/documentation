@@ -29,8 +29,15 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Open Video UI',
-    // TODO Logo for Open Video UI?
-    Image: undefined,
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/open-video-ui.svg'),
+          dark: useBaseUrl('/img/open-video-ui_dark.svg'),
+        }}
+      />
+    ),
     description: (
       <>
         A comprehensive library of open-source UI components, making it easier to build and customize your video player UI to match your branding
