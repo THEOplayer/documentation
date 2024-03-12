@@ -2,7 +2,7 @@
 
 This article describes how you can use the MediaTrack API to enable or disable audio tracks.
 
-The AudioTrack API, which is a sub-API of the [MediaTrack API](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html), can be used to implement this functionality.
+The AudioTrack API, which is a sub-API of the [MediaTrack API](pathname:///theoplayer/v4/api-reference/web/interfaces/MediaTrack.html), can be used to implement this functionality.
 Implementing this functionality is a common use-case for developers who want to build their own UI to toggle audio languages on and off.
 
 ## SDKs
@@ -86,5 +86,5 @@ The following remarks can help:
 
 The following resources provide more information:
 
-- [MediaTrack API Reference](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html)
+- [MediaTrack API Reference](pathname:///theoplayer/v4/api-reference/web/interfaces/MediaTrack.html)
 - [https://developer.mozilla.org/en-US/docs/Web/API/AudioTrack/enabled](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrack/enabled): the `enabled` property from the AudioTrack interface as documented by MDN.

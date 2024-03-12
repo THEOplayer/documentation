@@ -12,4 +12,4 @@ The following resources provide more information:
 
 - [Preloading - How to](../how-to-guides/07-miscellaneous/09-preloading.md)
 - [What are the benefits of preloading?](38-what-are-the-benefits-of-preloading.md)
-- [PreloadType API reference](pathname:///theoplayer/v6/api-reference/web/types/PreloadType.html)
+- [PreloadType API reference](pathname:///theoplayer/v4/api-reference/web/types/PreloadType.html)

@@ -41,7 +41,7 @@ Back to our specific use case, once you have determined that your mp4 returns a 
 
 The following resources provide more information:
 
-- [API reference - Network API events](pathname:///theoplayer/v6/api-reference/web/interfaces/NetworkEventMap.html)
+- [API reference - Network API events](pathname:///theoplayer/v4/api-reference/web/interfaces/NetworkEventMap.html)
 - [How to use Network API](../how-to-guides/08-network/00-introduction.md)
 - [What does the error message "Something went wrong with Native playback" mean?](19-what-does-error-something-went-wrong-during-playback-mean.md)
 - [Demo page - Adding buttons and text to the default UI](http://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer)

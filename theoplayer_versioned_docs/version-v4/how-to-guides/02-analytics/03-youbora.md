@@ -1,6 +1,6 @@
 # Youbora
 
-This article is a good place to start if you are looking for information on how to configure the THEOplayer Youbora pre-integration, which is part of the [Analytics API](pathname:///theoplayer/v6/api-reference/web/types/YouboraAnalyticsIntegrationID.html).
+This article is a good place to start if you are looking for information on how to configure the THEOplayer Youbora pre-integration, which is part of the [Analytics API](pathname:///theoplayer/v4/api-reference/web/types/YouboraAnalyticsIntegrationID.html).
 
 ## SDKs
 
@@ -104,7 +104,7 @@ let sourceDescription = SourceDescription(source : typedSource, analytics: [youb
 
 ## Related links
 
-- [Analytics API](pathname:///theoplayer/v6/api-reference/web/interfaces/Analytics.html)
+- [Analytics API](pathname:///theoplayer/v4/api-reference/web/interfaces/Analytics.html)
 - NPAW's own Youbora THEOplayer plugin: [Web](https://bitbucket.org/npaw/theoplayer2-adapter-js/src/master/), [iOS](https://bitbucket.org/npaw/theoplayer-adapter-ios/src/master/), [Android](https://bitbucket.org/npaw/theoplayer-adapter-android/src/master/)
 - Youbora documentation on NPAW's website: [Web](https://documentation.npaw.com/integration-docs/docs/theoplayer), [iOS](https://documentation.npaw.com/integration-docs/docs/theoplayer-ios), [Android](https://documentation.npaw.com/integration-docs/docs/theoplayer-android) (login required)
 

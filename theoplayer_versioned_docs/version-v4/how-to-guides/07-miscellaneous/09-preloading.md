@@ -71,6 +71,6 @@ Note that THEOplayer will always prefer downloading data for the currently playi
 ## Resources
 
 - [What are the benefits of preloading?](../../faq/38-what-are-the-benefits-of-preloading.md)
-- [API reference](pathname:///theoplayer/v6/api-reference/web/types/PreloadType.html)
+- [API reference](pathname:///theoplayer/v4/api-reference/web/types/PreloadType.html)
 - [HTML5 specification](https://www.w3.org/TR/html5/embedded-content-0.html#attr-media-preload)
-- [API reference: Cache API](pathname:///theoplayer/v6/api-reference/web/interfaces/Cache.html)
+- [API reference: Cache API](pathname:///theoplayer/v4/api-reference/web/interfaces/Cache.html)

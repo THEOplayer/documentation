@@ -63,7 +63,7 @@ player.source = {
 
 #### Limitations
 
-- There's a known issue within the IMA HTML5 SDK where it does not work well with multiple VPAID ads in a VMAP. More specifically when the `ImaSdkSetting` `vpaidMode` is set to `enabled` and the `AdsRenderingSetting` `enablePreloading` is set to `true`, it will not manage to play all ads (these are the default configurations when using the Google IMA integration in THEOplayer). The production IMA SDK doesn't throw any error in this scenario, the [debug SDK](https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js), however, prints `Vpaid Error: VPAID ad called play on video element before start was called on VPAID manager` in the console in this case. This can be resolved by either using `vpaidMode` `insecure` or by disabling preloading. Both can be achieved by specifying your preference in the [AdsConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/AdsConfiguration.html).
+- There's a known issue within the IMA HTML5 SDK where it does not work well with multiple VPAID ads in a VMAP. More specifically when the `ImaSdkSetting` `vpaidMode` is set to `enabled` and the `AdsRenderingSetting` `enablePreloading` is set to `true`, it will not manage to play all ads (these are the default configurations when using the Google IMA integration in THEOplayer). The production IMA SDK doesn't throw any error in this scenario, the [debug SDK](https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js), however, prints `Vpaid Error: VPAID ad called play on video element before start was called on VPAID manager` in the console in this case. This can be resolved by either using `vpaidMode` `insecure` or by disabling preloading. Both can be achieved by specifying your preference in the [AdsConfiguration](pathname:///theoplayer/v4/api-reference/web/interfaces/AdsConfiguration.html).
 
 ### Android SDK
 
@@ -106,7 +106,7 @@ theoPlayerView.getPlayer().addIntegration(imaIntegration);
 
 ##### Use a `GoogleImaAdDescription`
 
-Use a [`GoogleImaAdDescription`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.html) to schedule advertisements,
+Use a [`GoogleImaAdDescription`](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.html) to schedule advertisements,
 as demonstrated below:
 
 ```java
@@ -128,7 +128,7 @@ playerView.getPlayer().setSource(sourceDescription);
 
 The available ad events are different between the Android SDK and the Legacy Android SDK (4.12.x). More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
-The [`GoogleImaIntegration`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html) instance exposes a number of methods. For example, [`schedule()`](<pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#schedule(GoogleImaAdDescription)>) can be used to schedule ads dynamically, and [`requestAds()`](<pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#requestAds(AdsRequest,AdsRenderingSettings)>)
+The [`GoogleImaIntegration`](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html) instance exposes a number of methods. For example, [`schedule()`](<pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#schedule(GoogleImaAdDescription)>) can be used to schedule ads dynamically, and [`requestAds()`](<pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#requestAds(AdsRequest,AdsRenderingSettings)>)
 can be used to request ads through the native Google IMA API.
 
 When you add your THEOplayer IMA dependency to your module `build.gradle` file (i.e. `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:+'`), we will automatically add `com.google.ads.interactivemedia.v3:interactivemedia` with the version specified [here](https://github.com/THEOplayer/theoplayer-sdk-android/blob/master/app/build.gradle). You can overwrite this with a later version of the Google IMA SDK by adding this dependency to your module `build.gradle` file, but at your own risk.
@@ -153,7 +153,7 @@ implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.25.1'
 
 ##### Set useNativeIma to true
 
-Google IMA has to be enabled by setting the [useNativeIma](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/ads/AdsConfiguration.Builder.html) to `true`, as demonstrated by the snippet below.
+Google IMA has to be enabled by setting the [useNativeIma](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/ads/AdsConfiguration.Builder.html) to `true`, as demonstrated by the snippet below.
 
 ```java
 THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()

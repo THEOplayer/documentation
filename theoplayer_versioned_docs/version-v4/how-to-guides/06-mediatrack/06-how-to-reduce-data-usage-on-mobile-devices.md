@@ -2,7 +2,7 @@
 
 Customers that use THEOplayer in mobile web which leverage THEOplayer's preloading capabilities (`preload = "auto"`), or provide very high qualities, sometimes receive complaints about data usage.
 
-You can combat this by leveraging the [ABR API](pathname:///theoplayer/v6/api-reference/web/interfaces/ABRConfiguration.html) and the [MediaTrack API](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html).
+You can combat this by leveraging the [ABR API](pathname:///theoplayer/v4/api-reference/web/interfaces/ABRConfiguration.html) and the [MediaTrack API](pathname:///theoplayer/v4/api-reference/web/interfaces/MediaTrack.html).
 
 ## Step-by-step guide
 
@@ -81,5 +81,5 @@ As far as the player is concerned, by leveraging its API as described you can fi
 
 - [How to start with a specific quality?](05-how-to-start-with-specific-quality.md)
 - [How to programmatically select a video track quality](03-how-to-select-video-track-quality.md)
-- [Web SDK API reference: restrictToPlayerSize](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceAbrConfiguration.html#restrictToPlayerSize)
+- [Web SDK API reference: restrictToPlayerSize](pathname:///theoplayer/v4/api-reference/web/interfaces/SourceAbrConfiguration.html#restrictToPlayerSize)
 - [Preloading](../07-miscellaneous/09-preloading.md)

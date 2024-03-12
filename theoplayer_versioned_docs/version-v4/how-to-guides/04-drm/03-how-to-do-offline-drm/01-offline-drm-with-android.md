@@ -151,4 +151,4 @@ for (CachingTask cachedVideo : cache.getTasks()) {
 }
 ```
 
-For all possible API calls, we refer you to the JavaDoc available [here](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/cache/package-summary.html)
+For all possible API calls, we refer you to the JavaDoc available [here](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/cache/package-summary.html)

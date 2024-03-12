@@ -103,7 +103,7 @@
           "customProps": {
             "icon": "🌐"
           },
-          "href": "pathname:///theoplayer/v6/api-reference/web/"
+          "href": "pathname:///theoplayer/v4/api-reference/web/"
         },
         {
           "type": "link",

@@ -201,7 +201,7 @@ let element = document.querySelector(".theoplayer-container");
 #### Create THEOplayer instance
 
 The snippet below creates a THEOplayer instance for a container with a
-specific [Player Configuration](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerConfiguration.html).
+specific [Player Configuration](pathname:///theoplayer/v4/api-reference/web/interfaces/PlayerConfiguration.html).
 
 ```js
 let player = new THEOplayer.Player(element, {
@@ -289,5 +289,5 @@ We're done! Here's the complete code again, which you can put on your web server
 Ready to learn more?
 
 - Go through our [how-to guides](../../../how-to-guides/index.mdx) to learn about [UI customization](../../../how-to-guides/11-ui/00-introduction.md), [advertising](../../../how-to-guides/01-ads/00-introduction.md), [DRM](../../../how-to-guides/04-drm/00-introduction.md), [casting](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md), [analytics](../../../how-to-guides/02-analytics/00-introduction.md) and other topics.
-- Check out our [API reference](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html).
+- Check out our [API reference](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html).
 - Try out samples from our [GitHub](https://github.com/THEOplayer).

@@ -20,4 +20,4 @@ The TextTrack API is used to retrieve the timed metadata. A MetadataTextTrack wi
 The following resources provide more information:
 
 - [HLS Specification - #EXT-X-DATERANGE](https://tools.ietf.org/html/draft-pantos-hls-rfc8216bis-04#section-4.4.2.7)
-- [API reference - TextTrackType](pathname:///theoplayer/v6/api-reference/web/types/TextTrackType.html)
+- [API reference - TextTrackType](pathname:///theoplayer/v4/api-reference/web/types/TextTrackType.html)

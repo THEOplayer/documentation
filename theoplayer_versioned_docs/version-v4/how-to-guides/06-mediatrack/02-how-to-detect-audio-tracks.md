@@ -17,7 +17,7 @@ The code examples below how to implement the detection of audio tracks across SD
 
 ##### Web SDK
 
-The Web SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-reference/web/interfaces/MediaTrack.html).
+The Web SDK leverages the [MediaTrack API](pathname:///theoplayer/v4/api-reference/web/interfaces/MediaTrack.html).
 
 ```js
 function handleAddTrackEvent(addTrackEvent) {
@@ -28,7 +28,7 @@ player.audioTracks.addEventListener("addtrack", handleAddTrackEvent);
 
 ##### Android (TV) SDK
 
-The Android SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
+The Android SDK leverages the [MediaTrack API](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
 
 ```java
 EventListener<AddTrackEvent> handleAddTrackEvent= new EventListener<AddTrackEvent>() {
@@ -42,7 +42,7 @@ tpv.getPlayer().getAudioTracks().addEventListener(AudioTrackListEventTypes.ADDTR
 
 ##### iOS (/tvOS) SDK
 
-The iOS SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrackList.html).
+The iOS SDK leverages the [MediaTrack API](pathname:///theoplayer/v4/api-reference/ios/Protocols/MediaTrackList.html).
 
 ```swift
 func handleAddTrackEvent(addTrackEvent : AddTrackEvent) {

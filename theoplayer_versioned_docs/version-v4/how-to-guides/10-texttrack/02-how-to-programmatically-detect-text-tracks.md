@@ -17,7 +17,7 @@ The code examples below showcase how to implement the detection of audio tracks 
 
 ##### Web SDK
 
-The Web SDK leverages the [TextTrack API](pathname:///theoplayer/v6/api-reference/web/interfaces/TextTrack.html).
+The Web SDK leverages the [TextTrack API](pathname:///theoplayer/v4/api-reference/web/interfaces/TextTrack.html).
 
 ```js
 function handleAddTrackEvent(addTrackEvent) {
@@ -28,7 +28,7 @@ player.textTracks.addEventListener("addtrack", handleAddTrackEvent);
 
 ##### Android (TV) SDK
 
-The Android SDK leverages the [TextTrack API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html).
+The Android SDK leverages the [TextTrack API](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html).
 
 ```java
 EventListener<AddTrackEvent> handleAudioTrackAdd = new EventListener<AddTrackEvent>() {
@@ -42,7 +42,7 @@ tpv.getPlayer().getTextTracks().addEventListener(TextTrackListEventTypes.ADDTRAC
 
 ##### iOS (/tvOS) SDK
 
-The iOS SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-reference/ios/Protocols/MediaTrackList.html).
+The iOS SDK leverages the [MediaTrack API](pathname:///theoplayer/v4/api-reference/ios/Protocols/MediaTrackList.html).
 
 ```swift
 func handleAddTrackEvent(addTrackEvent : AddTrackEvent) {

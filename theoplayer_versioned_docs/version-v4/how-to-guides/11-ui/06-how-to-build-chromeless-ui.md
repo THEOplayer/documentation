@@ -28,7 +28,7 @@ This `player` variable is a "Chromeless" instance created through the THEOplayer
 
 #### Web SDK
 
-The API reference on creating a Chromeless player instance for the THEOplayer Web SDK is located at [ChromelessPlayer](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#constructor).
+The API reference on creating a Chromeless player instance for the THEOplayer Web SDK is located at [ChromelessPlayer](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#constructor).
 
 When you're implementing a Chromeless UI, you don't need to include the THEOplayer CSS library (i.e. `ui.css`) mentioned in our [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx),
 nor do you need to specify some default CSS classed.
@@ -92,9 +92,9 @@ Of course, you would still need to apply CSS to style your `theoplayer-container
 
 ##### Legacy Android SDK (4.12.x)
 
-The API reference on creating a Chromeless player instance for the THEOplayer Android SDK is located at [THEOplayerView](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/THEOplayerView.html).
+The API reference on creating a Chromeless player instance for the THEOplayer Android SDK is located at [THEOplayerView](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/THEOplayerView.html).
 
-When creating an instance, you need to provide a [`THEOplayerConfig`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/THEOplayerConfig.html),
+When creating an instance, you need to provide a [`THEOplayerConfig`](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/THEOplayerConfig.html),
 and set `chromeless` to `true`. The snippet below demonstrates how to create a Chromeless instance.
 
 ```java
@@ -111,9 +111,9 @@ then you can specify `app:chromeless="true"` as implemented at [https://github.c
 
 #### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-The API reference on creating a Chromeless player instance for the THEOplayer iOS SDK is located at [THEOplayer](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html).
+The API reference on creating a Chromeless player instance for the THEOplayer iOS SDK is located at [THEOplayer](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html).
 
-When creating an instance, you need to [`THEOplayerConfig`](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayerConfiguration.html),
+When creating an instance, you need to [`THEOplayerConfig`](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayerConfiguration.html),
 and set `chromeless` to `true`. The snippet below demonstrates how to create a Chromeless instance.
 
 ```swift
@@ -210,25 +210,25 @@ a basic overview of many of the relevant interfaces and events.
 
 You should show your play button when you are in a paused state, as described in ["how to track player states"](../../how-to-guides/09-player/04-how-to-track-player-states.md).
 If a viewer clicks your play button, you should call the `play()` on your `player` instance as documented across our
-[Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#play), [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#play--) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)play) documentation.
+[Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#play), [Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#play--) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)play) documentation.
 
 ### Pause button
 
 You should show your pause button when you are in a playing state, as described in ["how to track player states"](../../how-to-guides/09-player/04-how-to-track-player-states.md).
 If a viewer clicks your pause button, you should call the `pause()` on your `player` instance as documented across our
-[Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#pause), [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#pause--) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)pause) documentation.
+[Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#pause), [Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#pause--) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)pause) documentation.
 
 ### Volume mute button
 
 You can check whether your volume is muted through the `muted` property (or method) on your `player` instance as documented across
-our [Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#muted), Android ([isMuted()](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#isMuted--) and [setMuted()](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#setMuted-boolean-)) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C5mutedSbvp) documentation.
+our [Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#muted), Android ([isMuted()](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#isMuted--) and [setMuted()](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#setMuted-boolean-)) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C5mutedSbvp) documentation.
 You should consider showing a different button depending on whether `muted` returns `true` or `false`.
 If a viewer clicks your mute button, you should set `muted` to `!muted`.
 
 ### Volume change button
 
 You can get and set your volume level through the `volume` property (or method) on your `player` instance as documented across
-our [Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#volume), Android ([getVolume()](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#getVolume--) and [setVolume()](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#setVolume-double-)) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C6volumeSfvp) documentation.
+our [Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#volume), Android ([getVolume()](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#getVolume--) and [setVolume()](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#setVolume-double-)) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C6volumeSfvp) documentation.
 You should consider showing a different button depending on the volume level.
 
 Note that you cannot control the volume level on iOS- and Android-based SDKs as this is delegated to the hardware buttons.
@@ -237,8 +237,8 @@ You can only toggle the muted state on these SDKs.
 ### Current time text
 
 You can get the current time through the `currentTime` property (or method) on your `player` instance as documented across
-our [Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#currentTime), Android ([requestCurrentTime()](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#requestCurrentTime-com.theoplayer.android.api.player.RequestCallback-) and [setCurrentTime()](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#setCurrentTime-double-))
-and iOS ([requestCurrentTime()](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C18requestCurrentTime17completionHandleryySdSg_s5Error_pSgtc_tF) and [setCurrentTime()](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C14setCurrentTime_17completionHandlerySd_yypSg_s5Error_pSgtcSgtF)) documentation.
+our [Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#currentTime), Android ([requestCurrentTime()](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#requestCurrentTime-com.theoplayer.android.api.player.RequestCallback-) and [setCurrentTime()](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#setCurrentTime-double-))
+and iOS ([requestCurrentTime()](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C18requestCurrentTime17completionHandleryySdSg_s5Error_pSgtc_tF) and [setCurrentTime()](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C14setCurrentTime_17completionHandlerySd_yypSg_s5Error_pSgtcSgtF)) documentation.
 
 Note that `currentTime` returns a relative value in seconds.
 If you are dealing with live streams, you might want to use `currentProgramDateTime` instead, as this returns an absolute value like `"2022-04-01T13:37:42.666Z"`.
@@ -247,7 +247,7 @@ This property (or method) is especially useful when implementing an [EPG](https:
 ### Duration text
 
 You can get the duration of a stream through the `duration` property (or method) on your `player` instance as documented across our
-[Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#duration), [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#getDuration--) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C8durationSdSgvp) documentation.
+[Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#duration), [Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#getDuration--) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C8durationSdSgvp) documentation.
 
 The `duration` will return the duration in seconds for VOD streams, and `Infinity` for live streams.
 
@@ -260,18 +260,18 @@ you can seek to a different playhead position through the `currentTime` property
 Alternatively, for live streams, you may also use `currentProgramDateTime` to seek to absolute playhead positions.
 
 You can only seek to a playhead position that is within any of the time ranges of your `seekable` property (or method) of your `player` instance as documented across our
-[Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#seekable),
-[Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#requestSeekable-com.theoplayer.android.api.player.RequestCallback-) and
-[iOS](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C15requestSeekable17completionHandleryySayAA9TimeRangeCGSg_s5Error_pSgtc_tF) documentation.
+[Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#seekable),
+[Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#requestSeekable-com.theoplayer.android.api.player.RequestCallback-) and
+[iOS](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C15requestSeekable17completionHandleryySayAA9TimeRangeCGSg_s5Error_pSgtc_tF) documentation.
 For example, on the Web SDK, this means that you'll stay between `player.seekable.start(0)` and `player.seekable.end(player.seekable.length-1)`.
 
 You subscribe to the `timeupdate` event to periodically update your scrub bar bullet.
 This event is dispatched every ~200ms during playback.
-Refer to our [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#timeupdate), [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#TIMEUPDATE) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV11TIME_UPDATEAA0D4TypeCyAA010TimeUpdateD0CGvpZ) documentation for more info on this event.
+Refer to our [Web](pathname:///theoplayer/v4/api-reference/web/interfaces/PlayerEventMap.html#timeupdate), [Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#TIMEUPDATE) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV11TIME_UPDATEAA0D4TypeCyAA010TimeUpdateD0CGvpZ) documentation for more info on this event.
 
 A `seek` event is dispatched when you set a new value for `currentTime` or `currentProgramDateTime`.
 A `seeked` event is dispatched when the seek was successful.
-Refer to our [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#seeking), [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#SEEKING) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV7SEEKINGAA0D4TypeCyAA07SeekingD0CGvpZ) documentation for more info on these events.
+Refer to our [Web](pathname:///theoplayer/v4/api-reference/web/interfaces/PlayerEventMap.html#seeking), [Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#SEEKING) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV7SEEKINGAA0D4TypeCyAA07SeekingD0CGvpZ) documentation for more info on these events.
 You should consider displaying a "stalling icon" between these two events.
 
 #### Buffered blocks
@@ -280,11 +280,11 @@ You may also want to annotate parts of the scrub bar that have already been buff
 When the viewer seeks to a buffered block playback immediately starts.
 
 You can track information on what's being buffered through the `progress` event.
-Refer to our [Web](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html#progress), [Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#PROGRESS) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV8PROGRESSAA0D4TypeCyAA08ProgressD0CGvpZ) documentation for more info on this event.
+Refer to our [Web](pathname:///theoplayer/v4/api-reference/web/interfaces/PlayerEventMap.html#progress), [Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#PROGRESS) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV8PROGRESSAA0D4TypeCyAA08ProgressD0CGvpZ) documentation for more info on this event.
 In the callback of the `progress` event,
 you will want to query the `buffered` property (or method) to iterate through the available buffered time ranges.
-The `buffered` property (or method) is described in our [Web](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#buffered),
-[Android](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/player/Player.html#requestBuffered-com.theoplayer.android.api.player.RequestCallback-) and [iOS](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C15requestBuffered17completionHandleryySayAA9TimeRangeCGSg_s5Error_pSgtc_tF) documentation.
+The `buffered` property (or method) is described in our [Web](pathname:///theoplayer/v4/api-reference/web/classes/ChromelessPlayer.html#buffered),
+[Android](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/player/Player.html#requestBuffered-com.theoplayer.android.api.player.RequestCallback-) and [iOS](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C15requestBuffered17completionHandleryySayAA9TimeRangeCGSg_s5Error_pSgtc_tF) documentation.
 
 ### Live button
 
@@ -332,7 +332,7 @@ Getting your video player in and out fullscreen requires some getting used to, a
 
 #### Web SDK
 
-You cannot use our [`Presentation API`](pathname:///theoplayer/v6/api-reference/web/interfaces/Presentation.html) to switch between fullscreen, inline and picture-in-picture.
+You cannot use our [`Presentation API`](pathname:///theoplayer/v4/api-reference/web/interfaces/Presentation.html) to switch between fullscreen, inline and picture-in-picture.
 Instead, you need to implement your own fullscreen handling.
 
 One approach to achieve this is by using the `Fullscreen API` as described at [https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API).
@@ -341,7 +341,7 @@ or resize your video player container to a 100% width and height.
 
 #### Android SDK
 
-You cannot use our ['FullscreenManager API`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/fullscreen/FullScreenManager.html) to switch between
+You cannot use our ['FullscreenManager API`](pathname:///theoplayer/v4/api-reference/android/com/theoplayer/android/api/fullscreen/FullScreenManager.html) to switch between
 fullscreen and inline.
 Instead, you need to implement your own fullscreen handling, as well as any associated orientation changes.
 
@@ -349,7 +349,7 @@ Refer to [https://developer.android.com/training/system-ui/immersive](https://de
 
 #### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-You may use the [`presentationMode`](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C16presentationModeAA012PresentationD0Ovp) property of the `player` instance, as demonstrated in the snippet below.
+You may use the [`presentationMode`](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C16presentationModeAA012PresentationD0Ovp) property of the `player` instance, as demonstrated in the snippet below.
 
 ```swift
 if (player.presentationMode == PresentationMode.fullscreen) {
@@ -359,7 +359,7 @@ if (player.presentationMode == PresentationMode.fullscreen) {
 }
 ```
 
-You may also use [`fullscreenOrientationCoupling`](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C29fullscreenOrientationCouplingSbvp)
+You may also use [`fullscreenOrientationCoupling`](pathname:///theoplayer/v4/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C29fullscreenOrientationCouplingSbvp)
 to automatically enter fullscreen when the viewer goes into landscape mode.
 
 Forcing the video player to rotate into landscape when you hit the fullscreen button in portrait mode is something

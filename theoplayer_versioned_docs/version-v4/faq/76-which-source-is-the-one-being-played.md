@@ -4,7 +4,7 @@ In THEOplayer, `player.source.sources` can be used to provide alternative source
 
 The player will select the first source (top to bottom) of a type that is supported on the current platform and try to play it. The player will <u>not</u> automatically select a new source from the list if the current one is failing to play for any reason unrelated to platform support.
 
-You can also find out which the source is that the player selects with the `currentsourcechange` event ([documentation](pathname:///theoplayer/v6/api-reference/web/interfaces/CurrentSourceChangeEvent.html)).
+You can also find out which the source is that the player selects with the `currentsourcechange` event ([documentation](pathname:///theoplayer/v4/api-reference/web/interfaces/CurrentSourceChangeEvent.html)).
 
 A few additional notes:
 * It is of course possible to make the player attempt to play a different source if the one being played errors or never starts to play, but this is to be done in the implementation.

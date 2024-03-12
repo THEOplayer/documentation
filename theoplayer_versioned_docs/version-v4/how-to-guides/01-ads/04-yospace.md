@@ -35,7 +35,7 @@ To get THEOplayer to work, you only need to do three things:
 
 1. Reference the THEOplayer JavaScript library (and optionally the default CSS styles).
 2. Add a container which can hold your video player with HTML.
-3. Create your player through JavaScript using our [API](pathname:///theoplayer/v6/api-reference/web/classes/Player.html).
+3. Create your player through JavaScript using our [API](pathname:///theoplayer/v4/api-reference/web/classes/Player.html).
 
 A basic HTML page with a working THEOplayer could like the following:
 
@@ -291,10 +291,10 @@ This partnership means that we are compatible with each other: THEOplayer has a 
 
 Extra resources:
 
-1. [Server-Side Ad Insertion Pre-Integration API](pathname:///theoplayer/v6/api-reference/web/interfaces/ServerSideAdInsertionConfiguration.html)
+1. [Server-Side Ad Insertion Pre-Integration API](pathname:///theoplayer/v4/api-reference/web/interfaces/ServerSideAdInsertionConfiguration.html)
 2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 3. [Yospace website](http://www.yospace.com/)
 
 Related articles
 
-- [Yospace API](pathname:///theoplayer/v6/api-reference/web/interfaces/Yospace.html)
+- [Yospace API](pathname:///theoplayer/v4/api-reference/web/interfaces/Yospace.html)
