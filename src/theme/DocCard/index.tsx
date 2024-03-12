@@ -35,8 +35,16 @@ interface SidebarItemCustomProps {
   icon?: string;
 }
 
-function CardIcon({ item }: { item: PropSidebarItemCategory | PropSidebarItemLink }): JSX.Element | string | null {
+interface CardIconProps {
+  item: PropSidebarItemCategory | PropSidebarItemLink;
+  defaultIcon: string;
+}
+
+function CardIcon({ item, defaultIcon }: CardIconProps): JSX.Element | string | null {
   const icon = (item.customProps as SidebarItemCustomProps)?.icon;
+  if (!icon) {
+    return defaultIcon;
+  }
   switch (icon) {
     case 'android':
       return <AndroidIcon className={clsx(styles.cardIcon)} />;
@@ -45,12 +53,12 @@ function CardIcon({ item }: { item: PropSidebarItemCategory | PropSidebarItemLin
     case 'chromecast':
       return <ChromecastIcon className={clsx(styles.cardIcon)} />;
     default:
-      return icon ?? null;
+      return icon;
   }
 }
 
 function CardCategory({ item }: { item: PropSidebarItemCategory }) {
-  const icon = <CardIcon item={item} /> ?? '🗃️';
+  const icon = <CardIcon item={item} defaultIcon="🗃️" />;
   const href = findFirstSidebarItemLink(item);
   // Unexpected: categories that don't have a link have been filtered upfront
   if (!href) {
@@ -77,7 +85,7 @@ function CardCategory({ item }: { item: PropSidebarItemCategory }) {
 }
 
 function CardLink({ item }: { item: PropSidebarItemLink }) {
-  const icon = <CardIcon item={item} /> ?? (isInternalUrl(item.href) ? '📄️' : '🔗');
+  const icon = <CardIcon item={item} defaultIcon={isInternalUrl(item.href) ? '📄️' : '🔗'} />;
   const doc = useDocById(item.docId ?? undefined);
   return <CardLayout href={item.href} icon={icon} title={item.label} description={item.description ?? doc?.description} />;
 }
