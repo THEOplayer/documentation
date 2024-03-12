@@ -120,11 +120,11 @@ In order to provide THEOplayer insights if a stream can be played, it needs to h
 
 There are two important aspects which can introduce a dependency on THEOplayer servers:
 
-#####1. Loading a THEOplayer SDK from the THEOplayer CDN
+##### 1. Loading a THEOplayer SDK from the THEOplayer CDN
 
 This issue is only relevant for the THEOplayer HTML5 / Tizen / webOS SDK. In order to avoid this dependency, we recommend to self-host your THEOplayer SDK. The easiest approach is to load the player through NPM, or download the player SDK as a zip-file from the developer portal. More information on how to self-host your player can be found [here](../../faq/34-self-hosting-theoplayer.md).
 
-#####2. Loading a THEOplayer license from the THEOplayer license system
+##### 2. Loading a THEOplayer license from the THEOplayer license system
 
 In order to avoid this dependency, it is important to always keep your license up to date, either by configuring an updated license or by configuring your own license URL. When your THEOplayer license expires, a new player instance will actively check against THEOplayer’s license system if there is an updated license available. This system should however only serve as a fallback for applications which cannot be updated.
 
