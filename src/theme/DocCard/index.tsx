@@ -10,6 +10,7 @@ import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import AndroidIcon from '@site/static/img/android.svg';
 import AppleIcon from '@site/static/img/apple.svg';
+import ChromecastIcon from '@site/static/img/chromecast.svg';
 
 function CardContainer({ href, children }) {
   return (
@@ -41,6 +42,8 @@ function CardIcon({ item }: { item: PropSidebarItemCategory | PropSidebarItemLin
       return <AndroidIcon className={clsx(styles.cardIcon)} />;
     case 'apple':
       return <AppleIcon className={clsx(styles.cardIcon)} />;
+    case 'chromecast':
+      return <ChromecastIcon className={clsx(styles.cardIcon)} />;
     default:
       return icon ?? null;
   }
