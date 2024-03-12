@@ -5,19 +5,11 @@
   width: 100%;
 }
 
-.featureHeadingWithImage {
+.featureHeading {
   line-height: 0;
 }
 
 .featureImage {
   height: 100px;
   width: 200px;
-}
-
-.featureTitle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  margin: 0;
 }

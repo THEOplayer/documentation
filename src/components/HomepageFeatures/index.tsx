@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type FeatureItem = {
   title: string;
-  Image?: (props: Omit<Props, 'sources'>) => JSX.Element;
+  Image: (props: Omit<Props, 'sources'>) => JSX.Element;
   description: JSX.Element;
   to: string;
 };
@@ -29,8 +29,15 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Open Video UI',
-    // TODO Logo for Open Video UI?
-    Image: undefined,
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/open-video-ui.svg'),
+          dark: useBaseUrl('/img/open-video-ui_dark.svg'),
+        }}
+      />
+    ),
     description: (
       <>
         A comprehensive library of open-source UI components, making it easier to build and customize your video player UI to match your branding
@@ -58,8 +65,8 @@ const FeatureList: FeatureItem[] = [
 function Feature({ title, Image, description, to }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className={clsx('text--center', Image && styles.featureHeadingWithImage)}>
-        {Image ? <Image className={styles.featureImage} /> : <h2 className={styles.featureTitle}>{title}</h2>}
+      <div className={clsx('text--center', styles.featureHeading)}>
+        <Image className={styles.featureImage} title={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <p>{description}</p>
