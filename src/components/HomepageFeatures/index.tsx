@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type FeatureItem = {
   title: string;
-  Image?: (props: Omit<Props, 'sources'>) => JSX.Element;
+  Image: (props: Omit<Props, 'sources'>) => JSX.Element;
   description: JSX.Element;
   to: string;
 };
@@ -65,8 +65,8 @@ const FeatureList: FeatureItem[] = [
 function Feature({ title, Image, description, to }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className={clsx('text--center', Image && styles.featureHeadingWithImage)}>
-        {Image ? <Image className={styles.featureImage} /> : <h2 className={styles.featureTitle}>{title}</h2>}
+      <div className={clsx('text--center', styles.featureHeading)}>
+        <Image className={styles.featureImage} title={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <p>{description}</p>
