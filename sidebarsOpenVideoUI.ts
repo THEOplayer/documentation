@@ -52,7 +52,7 @@ const sidebars: SidebarsConfig = {
       label: 'React',
       description: 'Build a stunning player UI with React components.',
       customProps: {
-        icon: '⚛️',
+        icon: 'react',
       },
       link: {
         type: 'generated-index',
