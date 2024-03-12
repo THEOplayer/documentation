@@ -110,7 +110,7 @@
           "label": "Android",
           "description": "API references for the THEOplayer Android SDK",
           "customProps": {
-            "icon": "🤖"
+            "icon": "android"
           },
           "href": "pathname:///theoplayer/v4/api-reference/android/"
         },

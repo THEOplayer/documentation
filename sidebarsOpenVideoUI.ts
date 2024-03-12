@@ -82,7 +82,7 @@ const sidebars: SidebarsConfig = {
       label: 'Android',
       description: 'Build a mobile-first player UI for Android with Jetpack Compose.',
       customProps: {
-        icon: '🤖',
+        icon: 'android',
       },
       link: {
         type: 'generated-index',
