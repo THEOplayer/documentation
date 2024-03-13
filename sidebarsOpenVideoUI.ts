@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
         title: 'Open Video UI for Web',
       },
       items: [
-        { type: 'doc', id: 'web/getting-started' },
+        { type: 'doc', id: 'external/web-ui/docs/getting-started' },
         {
           type: 'category',
           label: 'How-to guides',
@@ -60,7 +60,7 @@ const sidebars: SidebarsConfig = {
         title: 'Open Video UI for React',
       },
       items: [
-        { type: 'doc', id: 'react/getting-started' },
+        { type: 'doc', id: 'external/web-ui/docs/react/getting-started' },
         {
           type: 'category',
           label: 'How-to guides',

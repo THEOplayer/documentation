@@ -97,7 +97,7 @@ const config: Config = {
           v4: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v4/version.txt'), 'utf8').trim(),
             banner: 'unmaintained',
-            noIndex: true
+            noIndex: true,
           },
         },
       } satisfies DocsPlugin.Options,
@@ -299,7 +299,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript'],
+      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'bash'],
     },
   } satisfies Preset.ThemeConfig,
 };
