@@ -117,8 +117,8 @@ var pathtoroot = "../../../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public interface <span class="typeNameLabel"><a href=TrackListEvent.html>TrackListEvent</a>&lt;E extends <a href=../../Event.html>Event</a>&lt;<a href=../../cache/task/CachingTaskEvent.html>E</a>&gt;, T extends <a href=../../../player/track/Track.html>Track</a>&gt;</span>
- implements <a href=../../Event.html>Event</a>&lt;<a href=../../cache/task/CachingTaskEvent.html>E</a>&gt;
+public interface <span class="typeNameLabel"><a href=TrackListEvent.html>TrackListEvent</a>&lt;E extends <a href=../../Event.html>Event</a>&lt;<a href=../TrackEvent.html>E</a>&gt;, T extends <a href=../../../player/track/Track.html>Track</a>&gt;</span>
+ implements <a href=../../Event.html>Event</a>&lt;<a href=../TrackEvent.html>E</a>&gt;
                     </pre>
                     <div class="block"><p>The TrackList Event.</p></div>
                 </li>
@@ -241,7 +241,7 @@ public interface <span class="typeNameLabel"><a href=TrackListEvent.html>TrackLi
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Iterable.html>T</a></code>
+                                            <td class="colFirst"><code>abstract <a href=TrackListEvent.html>T</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TrackListEvent.html#getTrack()>getTrack</a>() </code>
                                             </th>
@@ -306,7 +306,7 @@ public interface <span class="typeNameLabel"><a href=TrackListEvent.html>TrackLi
                                           >
                                     <li class="blockList">
                                         <h4>getTrack</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Iterable.html>T</a> <a href=TrackListEvent.html#getTrack()>getTrack</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=TrackListEvent.html>T</a> <a href=TrackListEvent.html#getTrack()>getTrack</a>()</pre>
                                         <div class="block"><p>The track for which there was an event in the track list. </p><ul><li>This Track can for example be a <a href=../../../player/track/mediatrack/MediaTrack.html>MediaTrack</a>. </li></ul></div>
                                         
                                         <!-- TODO missing return annotation -->

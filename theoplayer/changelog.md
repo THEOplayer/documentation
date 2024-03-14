@@ -1,3 +1,51 @@
+## 🚀 6.12.0 (2024/03/12)
+
+### General
+
+#### ⚡ Improvements
+
+- Improved the behaviour of the player when segments in a DASH stream are unavailable by marking the missing data as a gap.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player sometimes would download the wrong segment after a hard discontinuity switch.
+
+### Web
+
+#### ✨ Features
+
+- Added the option to localize the Google-IMA integration when using a `ChromelessPlayer` using `PlayerConfiguration.ads.googleIma.language`. Previously this was only possible using `PlayerConfiguration.ui.language`.
+
+#### 🐛 Issues
+
+- Fixed non-linear ads not showing.
+- Fixed an issue where the player could error with an out-of-bounds exception during the parsing of TextTrack cues.
+- Fixed an issue where the player would download HLS renditions and segments twice on certain streams containing combined audio/video segments.
+- Fixed an issue where Fairplay protected streams would not play on iOS 17.1+ devices when useManagedMediaSource was enabled.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where on audio-only HLS streams, the play() function needed to be called twice to initiate playback.
+- Fixed an issue where a crash occurred sometimes while accessing `player.metrics.getCurrentBandwidthEstimate()`.
+- Fixed an issue where MP3 streaming playback was broken.
+- Fixed a bug where sometimes last video frame was not cleared after calling `stop()` or source set to `null`.
+- Fixed an issue where the content of an EMSG metadata cue was not correctly formatted.
+
+### iOS
+
+#### ✨ Features
+
+- Make `THEOplayer.videoRect` property observable.
+- Introduce `AVPictureInPictureControllerDelegateExtended` protocol to help monitor changes to `isPictureInPicturePossible`.
+- Introduced `GoogleImaAdErrorEvent` in `THEOplayerGoogleIMAIntegration`. It can be cast from `AdErrorEvent` returned by the event listener of type `AdsEventTypes.AD_ERROR`.
+
+#### 🐛 Issues
+
+- Fixed an issue caused by IMASettings, where IMA ads would be incorrectly unmuted.
+- Added support for MP3 playback.
+
 ## 🚀 6.11.0 (2024/02/27)
 
 ### Web
