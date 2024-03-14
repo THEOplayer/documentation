@@ -35,6 +35,9 @@ jobs:
           DOCUSAURUS_BASE_URL: /${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.number }}/
           # Prevent PR previews from being indexed by search engines
           DOCUSAURUS_NO_INDEX: 1
+          # Add an announcement at the top to indicate that this is a preview
+          DOCUSAURUS_PR_NUMBER: ${{ github.event.number }}
+          DOCUSAURUS_PR_URL: ${{ github.event.pull_request.html_url }}
       # Deploy preview
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

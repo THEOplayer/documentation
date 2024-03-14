@@ -2,12 +2,17 @@ import React from 'react';
 import clsx from 'clsx';
 import { filterDocCardListItems, useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
+import { useDoc } from '@docusaurus/theme-common/internal';
 import type { Props } from '@theme/DocCardList';
 import DocCard from '@theme/DocCard';
 
 function DocCardListForCurrentSidebarCategory({ className }: Props) {
+  const doc = useDoc();
   const category = useCurrentSidebarCategory();
-  return <DocCardList items={category.items} className={className} />;
+  const filteredItems = category.items
+    // Hide the current doc page from list
+    .filter((item) => !(item.type === 'link' && item.docId === doc.metadata.id));
+  return <DocCardList items={filteredItems} className={className} />;
 }
 
 function isIndexLink(item: PropSidebarItem): boolean {

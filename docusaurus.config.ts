@@ -56,7 +56,8 @@ const config: Config = {
   projectName: 'documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenAnchors: 'throw',
+  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -202,6 +203,15 @@ const config: Config = {
   themeConfig: {
     // TODO Replace with your project's social card
     // image: 'img/docusaurus-social-card.jpg',
+    announcementBar: process.env.DOCUSAURUS_PR_NUMBER
+      ? {
+          id: 'pr_preview',
+          content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
+          backgroundColor: '#9cb9c9',
+          textColor: '#344a5e',
+          isCloseable: false,
+        }
+      : undefined,
     navbar: {
       title: 'Docs',
       logo: {
@@ -284,6 +294,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript']
     },
   } satisfies Preset.ThemeConfig,
 };
