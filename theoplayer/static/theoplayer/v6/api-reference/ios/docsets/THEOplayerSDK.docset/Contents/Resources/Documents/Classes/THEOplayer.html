@@ -1246,6 +1246,9 @@
             <a class="nav-group-name-link" href="../Other%20Protocols.html">Other Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AVPictureInPictureControllerDelegateExtended.html">AVPictureInPictureControllerDelegateExtended</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/AdBreak_Objc.html">AdBreak_Objc</a>
               </li>
               <li class="nav-group-task">
@@ -1804,6 +1807,11 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Returns the current size and position of the video image as displayed within the receiver&rsquo;s bounds.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This property is key-value observable.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1811,7 +1819,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">videoRect</span><span class="p">:</span> <span class="kt">CGRect</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+<span class="kd">dynamic</span> <span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">videoRect</span><span class="p">:</span> <span class="kt">CGRect</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -4326,7 +4334,7 @@ with the given <code><a href="../Enums/KeySystemId.html">KeySystemId</a></code>,
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">pip</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PictureInPicture.html">PictureInPicture</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">pip</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PictureInPicture.html">PictureInPicture</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
