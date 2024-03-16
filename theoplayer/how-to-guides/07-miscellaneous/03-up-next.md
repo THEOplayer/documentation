@@ -57,7 +57,7 @@ The demo below illustrates the Up Next API in production.
 
 ## Remarks
 
-The Up Next API is currently unavailable on all SDKs except the Web SDK, because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it using the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+The Up Next API is currently unavailable on all SDKs except the Web SDK, because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it using the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
 
 ## Resources
 

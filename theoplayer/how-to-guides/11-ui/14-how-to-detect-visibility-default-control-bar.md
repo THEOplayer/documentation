@@ -46,8 +46,8 @@ const controlBarVisible =
 This approach is also valid for our default UI on the iOS and Android SDK,
 because their default UI can be customized through the same JavaScript (and CSS) as explained at
 
-1. [iOS SDK Customization](../../getting-started/01-sdks/03-ios-legacy-v4/01-ios-sdk-customization.md) for the iOS SDK
-2. [Android Legacy (4.12.x) SDK Customization](../../getting-started/01-sdks/02-android-legacy-v4/01-android-sdk-customization.md) for the Android SDK
+1. [iOS SDK Customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/03-ios/01-ios-sdk-customization.md) for the iOS SDK
+2. [Android Legacy (4.12.x) SDK Customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md) for the Android SDK
 
 It should be noted that this approach does not take the opacity of the control bar into account.
 The default control bar UI has a "fade in" and "fade out" effect.
@@ -105,7 +105,7 @@ and verify the `{"controlBarVisible": true}` (or `{"controlBarVisible": false}`)
 You can leverage the approach of the Web SDK in your iOS project.
 
 Firstly, you'll need to set up your project to support communication between your native code and JavaScript.
-This flow is described at [iOS SDK Customization](../../getting-started/01-sdks/03-ios-legacy-v4/01-ios-sdk-customization.md).
+This flow is described at [iOS SDK Customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/03-ios/01-ios-sdk-customization.md).
 
 This means that your JavaScript code could resemble the snippet below:
 
@@ -160,7 +160,7 @@ You can now use this `onMessageReceived` callback to detect the visibility in yo
 ##### Legacy Android SDK (4.12.x)
 
 Adopt the above iOS approach to Android.
-The communication between native Android and JavaScript is documented at [Android Legacy (4.12.x) SDK Customization](../../getting-started/01-sdks/02-android-legacy-v4/01-android-sdk-customization.md).
+The communication between native Android and JavaScript is documented at [Android Legacy (4.12.x) SDK Customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
 
 ## Using CSS
 

@@ -181,11 +181,11 @@ You can further modify the audio player that you have at this point to better fi
 
 ##### Legacy Android SDK (4.12.x)
 
-The Web SDK code should be included in your Android (TV) project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)explains how you can add CSS and JavaScript files to your project.
+The Web SDK code should be included in your Android (TV) project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)explains how you can add CSS and JavaScript files to your project.
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
-The Web SDK code should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
+The Web SDK code should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
 
 ## Sample application
 
@@ -195,4 +195,4 @@ The demo below illustrates the transformation from video player to audio player.
 
 ## Resources
 
-- [How to add CSS or JavaScript files to an Android/iOS project](../../faq/01-how-to-add-css-or-javascript-files-to-android-ios.md): How-to guide
+- [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md): How-to guide

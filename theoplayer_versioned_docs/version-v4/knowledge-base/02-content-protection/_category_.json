@@ -1,0 +1,11 @@
+{
+  "label": "Content protection",
+  "customProps": {
+    "icon": "🔐"
+  },
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "knowledge-base/content-protection/introduction"
+  }
+}
