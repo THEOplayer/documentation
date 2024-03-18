@@ -277,8 +277,12 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'More',
           items: [
+            {
+              label: 'theoplayer.com',
+              href: 'https://www.theoplayer.com/',
+            },
             {
               label: 'GitHub',
               href: 'https://github.com/THEOplayer',
