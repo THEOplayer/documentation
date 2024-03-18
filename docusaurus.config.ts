@@ -248,12 +248,7 @@ const config: Config = {
           type: 'docsVersionDropdown',
           docsPluginId: 'theoplayer',
           position: 'right',
-        },
-        {
-          type: 'docsVersionDropdown',
-          docsPluginId: 'open-video-ui',
-          position: 'right',
-        },
+        }
       ],
     },
     footer: {
@@ -277,15 +272,15 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'More',
           items: [
+            {
+              label: 'theoplayer.com',
+              href: 'https://www.theoplayer.com/',
+            },
             {
               label: 'GitHub',
               href: 'https://github.com/THEOplayer',
-            },
-            {
-              label: 'X (Twitter)',
-              href: 'https://twitter.com/THEO_player',
             },
             {
               label: 'LinkedIn',
