@@ -284,10 +284,6 @@ const config: Config = {
               href: 'https://github.com/THEOplayer',
             },
             {
-              label: 'X (Twitter)',
-              href: 'https://twitter.com/THEO_player',
-            },
-            {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/theoplayer/',
             },
