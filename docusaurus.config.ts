@@ -248,12 +248,7 @@ const config: Config = {
           type: 'docsVersionDropdown',
           docsPluginId: 'theoplayer',
           position: 'right',
-        },
-        {
-          type: 'docsVersionDropdown',
-          docsPluginId: 'open-video-ui',
-          position: 'right',
-        },
+        }
       ],
     },
     footer: {
