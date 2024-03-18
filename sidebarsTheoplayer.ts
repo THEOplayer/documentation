@@ -87,7 +87,7 @@ const sidebars: SidebarsConfig = {
           label: 'Android',
           description: 'API references for the THEOplayer Android SDK',
           customProps: {
-            icon: '🤖',
+            icon: 'android',
           },
           href: 'pathname:///theoplayer/v6/api-reference/android/',
         },
@@ -96,7 +96,7 @@ const sidebars: SidebarsConfig = {
           label: 'iOS',
           description: 'API references for the THEOplayer iOS/tvOS SDK',
           customProps: {
-            icon: '🍎',
+            icon: 'apple',
           },
           href: 'pathname:///theoplayer/v6/api-reference/ios/',
         },
