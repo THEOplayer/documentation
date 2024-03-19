@@ -16,13 +16,12 @@ const docsConfigBase = {
   include: [
     '**/*.{md,mdx}',
     // For external projects: include changelogs and /docs folder
+    '!(external/**)',
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
     'external/*/docs/**/*.{md,mdx}',
   ],
   exclude: [
-    // Remove README and LICENSE pages from external projects
-    'external/**/{README,LICENSE}.md',
     // Remove index pages from external projects, we'll generate our own instead
     'external/*/docs/**/index.{md,mdx}',
     // Ignore node_modules
