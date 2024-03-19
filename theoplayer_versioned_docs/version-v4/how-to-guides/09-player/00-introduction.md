@@ -16,7 +16,7 @@ The list below overviews how-to articles related to the Player API.
 ## Events
 
 As a developer, you can programmatically attach event listeners to different APIs.
-Event listeners are often used to [implement a custom UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md) or
+Event listeners are often used to [implement a custom UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx) or
 to [implement a custom analytics integration](../../how-to-guides/02-analytics/06-custom-analytics-integration.md).
 
 The THEOplayer API exposes many events across different interfaces, as can be seen in the graphic below.

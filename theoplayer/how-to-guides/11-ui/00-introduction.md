@@ -108,7 +108,7 @@ Building a Chromeless UI may be daunting at first, but it's rewarding.
 A Chromeless UI gives you full control over your UI and UX,
 but you must understand the flow of a video, its API and its events.
 
-Refer to our article on [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md) for more information.
+Refer to our article on [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx) for more information.
 
 #### iOS and Android SDK
 

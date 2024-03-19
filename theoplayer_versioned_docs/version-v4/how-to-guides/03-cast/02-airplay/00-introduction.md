@@ -27,7 +27,7 @@ For example, you cannot do AirPlay on a Chrome browser on a macOS device, even t
 
 ![AirPlay demo](../../../../../theoplayer/assets/img/airplay-demo-theoplayer.png)
 
-If you have a custom ([Chromeless](../../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md)) THEOplayer UI,
+If you have a custom ([Chromeless](../../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx)) THEOplayer UI,
 you need to build your own AirPlay UI and UX. You can use the THEOplayer AirPlay API to help achieve this, as discussed in the next section.
 
 ## API
