@@ -14,7 +14,7 @@ This article discusses three approaches that allow you to detect whether the con
 ## Using a Chromeless UI
 
 Instead of making the default THEOplayer UI fit your use cases,
-it might make sense to opt for a [Chromeless UI](06-how-to-build-chromeless-ui.md).
+it might make sense to opt for a [Chromeless UI](06-how-to-build-chromeless-ui.mdx).
 When you use a Chromeless UI, you have full control over the UI and UX,
 and you are not restricted to the complexities of our default UI.
 

@@ -80,7 +80,7 @@ end function
 
 The following remarks can help:
 
-- A related article on building a Chromeless UI is located at [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md). This article can help understand why this type of usage of the API can be necessary.
+- A related article on building a Chromeless UI is located at [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx). This article can help understand why this type of usage of the API can be necessary.
 
 ## Resources
 

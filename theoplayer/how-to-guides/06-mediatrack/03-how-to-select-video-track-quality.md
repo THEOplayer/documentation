@@ -69,7 +69,7 @@ self.theoplayer.abr.preferredPeakBitRate = 200000
 
 ## Remarks
 
-- A related article on building a Chromeless UI is located at [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md).
+- A related article on building a Chromeless UI is located at [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx).
 
 ## Related articles
 

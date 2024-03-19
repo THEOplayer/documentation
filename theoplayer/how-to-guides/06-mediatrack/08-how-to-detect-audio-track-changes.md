@@ -98,6 +98,6 @@ Are you reading this article because you're interested in audio tracks? Continue
 
 Are you reading this article because you're implementing a custom UI? Then you'll find the following articles interesting:
 
-- [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.md)
+- [How to build a Chromeless UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx)
 - [How to detect video track quality changes](../../how-to-guides/06-mediatrack/07-how-to-detect-video-track-quality-changes.md)
 - [How to detect text track changes](../../how-to-guides/10-texttrack/07-how-to-detect-text-track-changes.md)
