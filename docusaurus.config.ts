@@ -21,6 +21,8 @@ const docsConfigBase = {
     'external/*/docs/**/*.{md,mdx}',
   ],
   exclude: [
+    // Remove README and LICENSE pages from external projects
+    'external/**/{README,LICENSE}.md',
     // Remove index pages from external projects, we'll generate our own instead
     'external/*/docs/**/index.{md,mdx}',
     // Ignore node_modules
@@ -248,7 +250,7 @@ const config: Config = {
           type: 'docsVersionDropdown',
           docsPluginId: 'theoplayer',
           position: 'right',
-        }
+        },
       ],
     },
     footer: {
