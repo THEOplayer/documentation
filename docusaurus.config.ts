@@ -16,6 +16,7 @@ const docsConfigBase = {
   include: [
     '**/*.{md,mdx}',
     // For external projects: include changelogs and /docs folder
+    '!(external/**)',
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
     'external/*/docs/**/*.{md,mdx}',
@@ -43,7 +44,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://theoplayer.prudentgiraffe.com/',
+  url: 'https://www.theoplayer.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.DOCUSAURUS_BASE_URL || '/docs/',
@@ -248,7 +249,7 @@ const config: Config = {
           type: 'docsVersionDropdown',
           docsPluginId: 'theoplayer',
           position: 'right',
-        }
+        },
       ],
     },
     footer: {
