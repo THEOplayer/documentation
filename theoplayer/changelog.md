@@ -1,3 +1,17 @@
+## 🚀 6.12.1 (2024/03/18)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where AdError object was not dispatched in case of AdErrorEvent in DAI.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where THEOplayerGoogleIMAIntegration reported compatibility issues during build time.
+
 ## 🚀 6.12.0 (2024/03/12)
 
 ### General

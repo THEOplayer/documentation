@@ -122,7 +122,7 @@ var pathtoroot = "../../../../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public interface <span class="typeNameLabel"><a href=QualityChangedEvent.html>QualityChangedEvent</a>&lt;Q extends <a href=../../../../player/track/mediatrack/quality/Quality.html>Quality</a>, E extends <a href=QualityChangedEvent.html>QualityChangedEvent</a>&lt;Q, E&gt;&gt;</span>
+public interface <span class="typeNameLabel"><a href=QualityChangedEvent.html>QualityChangedEvent</a>&lt;Q extends <a href=../../../../player/track/mediatrack/quality/Quality.html>Quality</a>, E extends <a href=QualityChangedEvent.html>QualityChangedEvent</a>&lt;<a href=../AbstractTargetQualityChangedEvent.html>Q</a>, E&gt;&gt;</span>
  implements <a href=../../TrackEvent.html>TrackEvent</a>&lt;E&gt;
                     </pre>
                     <div class="block"><p>The Quality changed Event.</p></div>
@@ -246,7 +246,7 @@ public interface <span class="typeNameLabel"><a href=QualityChangedEvent.html>Qu
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>abstract Q</code>
+                                            <td class="colFirst"><code>abstract <a href=../AbstractTargetQualityChangedEvent.html>Q</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=QualityChangedEvent.html#getQuality()>getQuality</a>() </code>
                                             </th>
@@ -311,7 +311,7 @@ public interface <span class="typeNameLabel"><a href=QualityChangedEvent.html>Qu
                                           >
                                     <li class="blockList">
                                         <h4>getQuality</h4>
-                                        <pre class="methodSignature"> abstract Q <a href=QualityChangedEvent.html#getQuality()>getQuality</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=../AbstractTargetQualityChangedEvent.html>Q</a> <a href=QualityChangedEvent.html#getQuality()>getQuality</a>()</pre>
                                         <div class="block"><p>The new quality of the track. </p><ul><li>This quality can be <a href=../../../../player/track/mediatrack/quality/VideoQuality.html>VideoQuality</a> or <a href=../../../../player/track/mediatrack/quality/AudioQuality.html>AudioQuality</a>. </li></ul></div>
                                         
                                         <!-- TODO missing return annotation -->
