@@ -1,5 +1,7 @@
 # How to build a Chromeless UI
 
+import styles from './shared.module.css';
+
 A Chromeless UI comes into play when your envisioned video player UI too different from the default [THEOplayer UI](00-introduction.md).
 
 Building a Chromeless UI means building a brand-new video player UI from scratch.
@@ -441,7 +443,15 @@ The following subsections help you get started on our SDKs.
 The sample code at [https://jsfiddle.net/thijsl/1xbk9csq/1/](https://jsfiddle.net/thijsl/1xbk9csq/1/) may help you get bootstrapped on our Web SDK.
 (Note that this sample code doesn't necessarily demonstrate best practices.)
 
-<iframe class="box-shadow" width="100%" height="400" src="//jsfiddle.net/thijsl/1xbk9csq/5/embedded/html,result/" allowfullscreen="allowfullscreen" allowpaymentrequest allow='autoplay;fullscreen;encrypted-media;gyroscope;picture-in-picture;accelerometer' frameborder="0"></iframe>
+<iframe
+  className={styles.boxShadow}
+  width="100%"
+  height="400"
+  src="//jsfiddle.net/thijsl/1xbk9csq/5/embedded/html,result/"
+  allowFullScreen
+  allow="autoplay;fullscreen;encrypted-media;gyroscope;picture-in-picture;accelerometer"
+  frameBorder="0"
+></iframe>
 
 ### Android SDK
 
