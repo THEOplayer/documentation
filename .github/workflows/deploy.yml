@@ -1,4 +1,4 @@
-name: Deploy to staging
+name: Deploy to production
 on:
   push:
     branches:
@@ -39,7 +39,7 @@ jobs:
           aws-region: eu-west-1
       - name: Deploy to S3
         run: |
-          aws s3 sync --delete ./build s3://docs-portal-dev/docs
+          aws s3 sync --delete ./build s3://www.theoplayer.com-docs/docs
       - name: Invalidate CloudFront
         run: |
           aws cloudfront create-invalidation --distribution-id E1IOJWYC9REF7X --paths '/docs/*'
