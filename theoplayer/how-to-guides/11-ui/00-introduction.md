@@ -45,13 +45,6 @@ So what to pick: modify the default UI or implement a Chromeless UI?
 If the envisioned design looks "quite different" from the default UI, we encourage people to implement a Chromeless UI.
 Alternatively, if that isn't an option, we advise people to compromise, and to adapt their envisioned design to look "quite similar" to the default UI.
 
-If you are targeting mobile applications through our iOS and Android SDK,
-you should consider the fact that you'll be using JavaScript and CSS to modify it.
-You may like this (because you can re-use it across iOS and Android), or you may dislike it because you have to operate
-outside your "native codebase".
-
-Furthermore, if you're using frameworks like React Native and Flutter, modifying a WebView contained by a native module might be another consideration.
-
 Our default UI is not optimized for big screen devices like Samsung Tizen, LG webOS and Android TV.
 If you're targeting those (and similar devices), you should consider implementing a Chromeless UI,
 as demonstrated on our [Tizen](https://github.com/THEOplayer/samples-tizen) and [webOS](https://github.com/THEOplayer/samples-webos)
@@ -79,11 +72,12 @@ Overlaying text and images is a matter of overlaying a custom `<div>` (or native
 
 #### iOS and Android SDK
 
-The default UI on our iOS and Android SDK is the same UI as our Web SDK.
-This default UI is implemented by overlaying a WebView on top of the video player.
+As of THEOplayer version 5, the iOS and Android SDKs no longer ship a default UI.
+We recommend switching to our [Open Video UI](/open-video-ui/android/) (for Android)
+or our [React Native UI](https://github.com/THEOplayer/react-native-theoplayer-ui) (for Android and iOS).
 
-In other words, to modify the default UI, you should use JavaScript and CSS,
-as explained in our customization articles for [Android Legacy (4.12.x)](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md) and [iOS](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/03-ios/01-ios-sdk-customization.md).
+For THEOplayer version 4 and lower, the default UI is the same UI as our Web SDK.
+See [our version 4 documentation](../../../theoplayer_versioned_docs/version-v4/how-to-guides/11-ui/00-introduction.md#ios-and-android-sdk) for more information.
 
 #### Related articles
 
@@ -114,6 +108,3 @@ Refer to our article on [How to build a Chromeless UI](../../how-to-guides/11-ui
 
 You can implement a Chromeless UI on iOS and Android completely on top of THEOplayer through the native technologies and programming languages.
 The THEOplayer API exposes all the events and properties that you need to implement a custom design.
-
-Alternatively, for these mobile SDKs, you may implement your Chromeless UI in our WebView,
-as this allows you to re-use your implementation across Android and iOS.
