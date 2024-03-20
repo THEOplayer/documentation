@@ -293,8 +293,8 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} THEO Technologies`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.oneLight,
+      darkTheme: prismThemes.oneDark,
       additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'bash'],
     },
   } satisfies Preset.ThemeConfig,
