@@ -77,6 +77,9 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+          filename: 'sitemap-docs.xml',
+        },
       } satisfies Preset.Options,
     ],
   ],
