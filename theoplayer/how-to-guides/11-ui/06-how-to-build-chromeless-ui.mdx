@@ -127,32 +127,12 @@ let config = THEOplayerConfiguration(
 let player = THEOplayer(configuration: config)
 ```
 
-## Using a WebView
+## Using a WebView in legacy Android/iOS SDKs (4.12.x)
 
-As mentioned in our [introduction](00-introduction.md), our default UI on the Android SDK and iOS SDK uses a WebView.
+As mentioned in our [introduction](00-introduction.md#ios-and-android-sdk), the legacy Android and iOS SDKs (4.12.x) use a WebView for their default UI.
 You may leverage this existing WebView to create a custom Chromeless UI for our Android and iOS SDK through a combination of JavaScript, CSS and HTML.
 
-It is your decision whether you want to build a native UI or a WebView UI.
-That being said: any code related to iOS and Android outside this subsection assumes that you are building a native UI.
-
-When you want to use a WebView to implement a Chromeless UI, you must leverage
-[iOS customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/03-ios/01-ios-sdk-customization.md) and
-[Android customization](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
-This customization approach allows you to insert custom JavaScript and CSS files that can hook into the THEOplayer API.
-To access the THEOplayer `player` variable through the inserted JavaScript file, you can invoke `THEOplayer.players[0]`.
-
-You may keep `chromeless` set to `true` if you are willing to implement your own fullscreen handler.
-
-If you don't want to implement your own fullscreen handler, you must set `chromeless` to `false`,
-and inject your custom components as children nodes of the `.theo-player-wrapper` node.
-You may also need to hide additional default components.
-For example, you could hide the default control bar through the CSS query below:
-
-```css
-.vjs-control-bar {
-  display: none !important;
-}
-```
+See [our version 4 documentation](../../../theoplayer_versioned_docs/version-v4/how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx#using-a-webview) for more information.
 
 ## Tracking transitions between states
 

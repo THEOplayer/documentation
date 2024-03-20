@@ -4,8 +4,6 @@ This guide explains how you set up THEOplayer in combination with the [KeyOS Buy
 
 If you are already comfortable with the THEOplayer API, you can go straight over to [DRM Pre-Integration API](pathname:///theoplayer/v6/api-reference/web/interfaces/DRMConfiguration.html).
 
-The following topics will be covered:
-
 ## Prerequisites
 
 This guide expects you to:
