@@ -99,14 +99,6 @@ Finally, you can adjust the position of the custom buttons with the order attrib
 }
 ```
 
-### Legacy Android SDK (4.12.x)
-
-The Web SDK code should be included in your Android (TV) project. [This article](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project below demonstrates a reference implementation.
-
-### Legacy iOS SDK (4.12.x)
-
-The Web SDK code above should be included in your iOS project. [This article](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project. The sample project below demonstrates a reference implementation.
-
 ### Android SDK
 
 Since JavaScript injection is not available on the native Android SDK, you can add a button in a native way to the platform and use THEOplayer APIs for its function.
@@ -115,14 +107,20 @@ Since JavaScript injection is not available on the native Android SDK, you can a
 
 Since JavaScript injection is not available on the native iOS SDK, you can add a button in a native way to the platform and use THEOplayer APIs for its function.
 
+### Legacy Android SDK (4.12.x)
+
+See [our version 4 documentation](../../../theoplayer_versioned_docs/version-v4/how-to-guides/11-ui/07-how-to-insert-a-button.md#android-sdk) for more information.
+
+### Legacy iOS SDK (4.12.x)
+
+See [our version 4 documentation](../../../theoplayer_versioned_docs/version-v4/how-to-guides/11-ui/07-how-to-insert-a-button.md#ios-sdk) for more information.
+
 ## Sample resources
 
 The pages or projects below demonstrate implementations of similar use cases.
 
 - Web SDK - Demo Page: https://www.theoplayer.com/theoplayer-demo-adding-buttons-to-the-ui-with-custom-logic
 - Web SDK - Sample App: https://github.com/THEOplayer/samples-html5-sdk/tree/master/reference-apps/ui-adding-buttons
-- Android SDK - Sample App: https://cdn.theoplayer.com/demos/android/sample-app/SampleAppCustomButtons.zip
-- iOS SDK - Sample App: https://cdn.theoplayer.com/demos/ios/sample-app/SampleAppCustomButtons.zip
 
 ## Other resources
 
