@@ -129,6 +129,21 @@ const config: Config = {
         sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'contribution-guidelines',
+        path: 'contribution-guidelines',
+        routeBasePath: '/contribution-guidelines',
+        sidebarPath: './sidebarsContributionGuidelines.ts',
+        versions: {
+          current: {
+            noIndex: true,
+          },
+        },
+      } satisfies DocsPlugin.Options,
+    ],
     () => ({
       name: 'webpack-plugin',
       configureWebpack() {
