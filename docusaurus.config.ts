@@ -302,6 +302,10 @@ const config: Config = {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/theoplayer/',
             },
+            {
+              label: 'Contribute',
+              to: '/contribution-guidelines/',
+            },
           ],
         },
       ],
