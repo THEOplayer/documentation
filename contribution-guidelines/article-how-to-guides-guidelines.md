@@ -27,8 +27,8 @@ The title of the article should be:
 
 **Examples**
 
-- [Up Next](../how-to-guides/07-miscellaneous/03-up-next.md)
-- [How to programmatically detect audio tracks](../how-to-guides/06-mediatrack/02-how-to-detect-audio-tracks.md)
+- [Up Next](/theoplayer/how-to-guides/miscellaneous/up-next)
+- [How to programmatically detect audio tracks](/theoplayer/how-to-guides/mediatrack/how-to-detect-audio-tracks)
 
 ### Body of the Article
 
@@ -127,12 +127,12 @@ The following resources provide more information:
 - https://developers.google.com/youtube/terms/developer-policies
 ````
 
-Markdown Template available [here](../contribution-guidelines/article-how-to-guides-template.md).
+Markdown Template available [here](article-how-to-guides-template.md).
 
 **Examples**
 
-- [Up Next](../how-to-guides/07-miscellaneous/03-up-next.md)
-- [How to programmatically detect audio tracks](../how-to-guides/06-mediatrack/02-how-to-detect-audio-tracks.md)
+- [Up Next](/theoplayer/how-to-guides/miscellaneous/up-next)
+- [How to programmatically detect audio tracks](/theoplayer/how-to-guides/mediatrack/how-to-detect-audio-tracks)
 
 ### Remarks
 

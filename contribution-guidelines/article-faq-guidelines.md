@@ -29,8 +29,8 @@ The title of the article should read like a question, but you need to omit the q
 
 **Examples**
 
-- [Why can't I select another video quality on iOS/tvOS?](../faq/07-why-cant-we-select-other-video-quality-on-ios-tvos.md)
-- [Is YouTube supported?](../faq/08-is-youtube-supported.md)
+- [Why can't I select another video quality on iOS/tvOS?](/theoplayer/faq/why-cant-we-select-other-video-quality-on-ios-tvos)
+- [Is YouTube supported?](/theoplayer/faq/is-youtube-supported)
 
 ### Body of the Article
 
@@ -60,12 +60,12 @@ The following resources provide more information:
 - https://developers.google.com/youtube/terms/developer-policies
 ```
 
-Markdown Template available [here](../contribution-guidelines/article-faq-template.md).
+Markdown Template available [here](article-faq-template.md).
 
 **Examples**
 
-- [Is YouTube supported?](../faq/faq-08-is-youtube-supported.md)
-- [Why can't I select another video quality on iOS/tvOS?](../faq/faq-07-why-cant-we-select-other-video-quality-on-ios-tvos.md)
+- [Is YouTube supported?](/theoplayer/faq/is-youtube-supported)
+- [Why can't I select another video quality on iOS/tvOS?](/theoplayer/faq/why-cant-we-select-other-video-quality-on-ios-tvos)
 
 ## Checklist
 

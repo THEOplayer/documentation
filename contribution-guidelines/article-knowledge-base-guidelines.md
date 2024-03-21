@@ -60,11 +60,11 @@ The following resources provide more information:
 - https://developers.google.com/youtube/terms/developer-policies
 ```
 
-Markdown Template available [here](../contribution-guidelines/article-knowledge-base-template.md).
+Markdown Template available [here](article-knowledge-base-template.md).
 
 **Examples**
 
-- [HTTP Live Streaming](../knowledge-base/04-streaming/01-http-live-streaming.md)
+- [HTTP Live Streaming](/theoplayer/knowledge-base/streaming/http-live-streaming)
 
 ## Checklist
 
