@@ -25,7 +25,7 @@ A FAQ can be about a certain platform or SDK, but it does not contain code. If c
 
 ### Title of the Article
 
-The title of the article should read like a question, but you need to omit the question mark <<?>>.
+The title of the article should read like a question, but you need to omit the question mark “?”.
 
 **Examples**
 

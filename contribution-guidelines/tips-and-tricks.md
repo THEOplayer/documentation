@@ -153,4 +153,4 @@ When you want to show code examples for different SDKs, make use of headings per
 
 Will result in
 
-![](../assets/img/example-code-render.png)
+![](assets/example-code-render.png)
