@@ -67,7 +67,7 @@ When linking to an **external page**:
 [link text](https://www.theoplayer.com)
 ```
 
-When using anchor links (to construct a Table of Contents for example): the link will look like `#title-of-section`. **Anchor links should always be in lower case!** (current Gatsby limitation)
+When using anchor links: the link will look like `#title-of-section`. **Anchor links should always be in lower case!** (current Gatsby limitation)
 
 **Example:** we want to link to the section which has as title `SDKs`, and one with title `Code Examples`:
 
