@@ -4,7 +4,7 @@ This article will provide some dos and don'ts and some general information on ho
 
 **A cheat sheet will all the Markdown features** can be found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
-If you're using Visual Code to write markdown files, install this **great extension**: https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one . It allows to use keyboard shortcuts, and lets you create the Table of Contents automatically.
+If you're using Visual Code to write markdown files, install this **great extension**: [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one).
 
 ## Naming convention directories and files
 
