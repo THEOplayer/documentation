@@ -1,3 +1,7 @@
+---
+title: FAQ - Template
+---
+
 # Title of the Article
 
 This is a short answer to the title.

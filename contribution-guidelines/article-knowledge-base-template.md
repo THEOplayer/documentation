@@ -1,3 +1,7 @@
+---
+title: Knowledge Base - Template
+---
+
 # Title of the Article
 
 ## Introduction

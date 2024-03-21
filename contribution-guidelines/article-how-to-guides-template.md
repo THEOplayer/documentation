@@ -1,3 +1,7 @@
+---
+title: How-to-Guides - Template
+---
+
 # Title of the Article
 
 The first paragraph of the body describes
