@@ -38,7 +38,7 @@ When using HTML tags like `<p>Some example</p>`, `<video>`, ... always surround 
 **Example:**
 
 ```markdown
-    `<p>Some example</p>`
+`<p>Some example</p>`
 ```
 
 ## Using links
@@ -102,53 +102,53 @@ An image will be shown below:
 
 When inserting a code block, always specify the language you're using so the code gets highlighted correctly.
 
-- For Web, use ```js
-- For Android, use ```java
-- For iOS, use ```swift
+- For Web, use <code>```js</code>
+- For Android, use <code>```java</code>
+- For iOS, use <code>```swift</code>
 
 When you want to show code examples for different SDKs, make use of headings per SDK. In Gatsby, we will render h5 headings differently so they will pop out. Therefor, use `##### SDK Type`.
 
 **Example**
 
 ````markdown
-    Let's see some code examples for the various SDKs.
+Let's see some code examples for the various SDKs.
 
-    ##### Web SDK
+##### Web SDK
 
-    ```js
-    function playingEventHandler(event) {
-        var adIsPlaying = player.ads.playing;
-        console.log("PLAYING", adIsPlaying ? "Advertisement" : "Content", event);
+```js
+function playingEventHandler(event) {
+    var adIsPlaying = player.ads.playing;
+    console.log("PLAYING", adIsPlaying ? "Advertisement" : "Content", event);
+}
+player.addEventListener('playing', playingEventHandler);
+```
+
+##### Android SDK
+
+```java
+final EventListener<PlayingEvent> playingEventHandler = new EventListener<PlayingEvent>() {
+    @Override
+    public void handleEvent(PlayingEvent playingEvent) {
+        tpv.getPlayer().getAds().requestPlaying( new RequestCallback<Boolean>() {
+            @Override
+            public void handleResult(Boolean adIsPlaying) {
+                System.out.println("PLAYING " + (adIsPlaying ? "Advertisement" : "Content"));
+            }
+        });
     }
-    player.addEventListener('playing', playingEventHandler);
-    ```
+};
+tpv.getPlayer().addEventListener(PlayerEventTypes.PLAYING, playingEventHandler);
+```
 
-    ##### Android SDK
+##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-    ```java
-    final EventListener<PlayingEvent> playingEventHandler = new EventListener<PlayingEvent>() {
-        @Override
-        public void handleEvent(PlayingEvent playingEvent) {
-            tpv.getPlayer().getAds().requestPlaying( new RequestCallback<Boolean>() {
-                @Override
-                public void handleResult(Boolean adIsPlaying) {
-                    System.out.println("PLAYING " + (adIsPlaying ? "Advertisement" : "Content"));
-                }
-            });
-        }
-    };
-    tpv.getPlayer().addEventListener(PlayerEventTypes.PLAYING, playingEventHandler);
-    ```
-
-    ##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
-
-    ```swift
-    self.eventListener = self.theoplayer.addEventListener(type: PlayerEventTypes.PLAYING) { [weak self] event in
-                                          self.theoplayer?.ads.requestPlaying() { (result, _) in
-                                          print("player.ads.playing = ", result!)
-                                          }
-                                  }
-    ```
+```swift
+self.eventListener = self.theoplayer.addEventListener(type: PlayerEventTypes.PLAYING) { [weak self] event in
+                                      self.theoplayer?.ads.requestPlaying() { (result, _) in
+                                      print("player.ads.playing = ", result!)
+                                      }
+                              }
+```
 ````
 
 Will result in
