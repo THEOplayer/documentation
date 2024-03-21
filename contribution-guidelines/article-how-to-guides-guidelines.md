@@ -34,16 +34,15 @@ The title of the article should be:
 
 1. The first paragraph of the body describes 1) what the article is about, 2) what you’ll be leveraging and 3) why it is relevant.
    - If the article is an application / use-case of a certain API (i.e. a child page), then refer to the parent page for more explanation on the parent API – do not repeat what you can do with the API.
-2. Secondly, a Table of Contents follows.
-3. Thirdly, you list the SDK table
-4. Fourthly, you provide more information on what you’ll be explaining. This can be a pseudo-repeat of the first paragraph.
+2. Next, you list the SDK table.
+3. Then you provide more information on what you’ll be explaining. This can be a pseudo-repeat of the first paragraph.
    - In this section, you also put a “Code Examples” sub-header, where you list the implementation per SDK. You must provide every implementation if it’s already in production.
    - _The reason you sort of rephrase what you’re doing, is because in some tutorials, you’re explaining multiple (sub) use-cases._
-5. Then a “Sample Applications” section follows, if applicable.
+4. Then a “Sample Applications” section follows, if applicable.
    - In this section you link to a code project / online demo page which further demonstrates the use-case.
-6. Then a “Remarks” section follows, if applicable.
+5. Then a “Remarks” section follows, if applicable.
    - This section can be used to inform the reader on interesting information, limitations, etc.
-7. Then a “Resources” section follows, if applicable.
+6. Then a “Resources” section follows, if applicable.
    - This section can be used to link to relevant blog posts, industry papers, etc.
 
 ### Template
@@ -56,15 +55,6 @@ The first paragraph of the body describes
 1. what the article is about,
 2. what you’ll be leveraging and
 3. why it is relevant.
-
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Alternative description for use-case](#alternative-description-for-use-case)
-- [Code Examples](#code-examples)
-- [Sample Applications](#sample-applications)
-- [Remarks](#remarks)
-- [Resources](#resources)
 
 _Don't forget to review links!:_ For links to other documents and assets, use relative links. For API references, use the absolute link to https://docs.theoplayer.com/api-reference/web/.
 

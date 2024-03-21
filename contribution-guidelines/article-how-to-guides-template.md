@@ -10,17 +10,6 @@ The first paragraph of the body describes
 2. what you’ll be leveraging and
 3. why it is relevant.
 
-### Table of Contents
-
-- [SDKs](#sdks)
-- [Alternative description for use-case](#alternative-description-for-use-case)
-- [Code Examples](#code-examples)
-- [Sample Applications](#sample-applications)
-- [Remarks](#remarks)
-- [Resources](#resources)
-
-_Don't forget to review links!_
-
 ## SDKs
 
 | Web SDK | Android SDK | iOS SDK | Android TV SDK | tvOS SDK | Chromecast SDK |
