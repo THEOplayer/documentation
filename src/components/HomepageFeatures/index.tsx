@@ -74,7 +74,7 @@ function Feature({ title, Image, description, to }: FeatureItem) {
     <div className={clsx('col col--4 margin-vert--md')}>
       <div className={clsx('card padding--lg margin-horiz--sm', styles.featureCard)}>
         <div className={clsx('card__header text--center', styles.featureHeading)}>
-          <Image className={styles.featureImage} title={title} />
+          <Image className={styles.featureImage} alt={title} />
         </div>
         <div className="card__body text--center">
           <p>{description}</p>
