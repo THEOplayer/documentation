@@ -39,8 +39,8 @@ const docsConfigBase = {
 } satisfies DocsPlugin.Options;
 
 const config: Config = {
-  title: 'THEOplayer Documentation',
-  tagline: 'Your one-stop shop for everything THEOplayer.',
+  title: 'THEOdocs',
+  tagline: 'Discover the latest developer documentation and samples for THEOplayer, Open Video UI and THEOlive.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
