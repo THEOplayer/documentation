@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.featureCard {
+  height: 100%;
+}
+
 .featureHeading {
   line-height: 0;
 }
