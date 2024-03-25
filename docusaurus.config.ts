@@ -219,9 +219,9 @@ const config: Config = {
         }
       : undefined,
     navbar: {
-      title: 'Docs',
+      title: null,
       logo: {
-        alt: 'THEO',
+        alt: 'THEOdocs',
         src: 'img/logo.svg',
         srcDark: 'img/logo_dark.svg',
       },
