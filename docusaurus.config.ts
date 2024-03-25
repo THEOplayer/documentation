@@ -254,42 +254,6 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'THEOplayer',
-              to: '/theoplayer/',
-            },
-            {
-              label: 'Open Video UI',
-              to: '/open-video-ui/',
-            },
-            {
-              label: 'THEOlive',
-              href: 'https://developers.theo.live/',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'theoplayer.com',
-              href: 'https://www.theoplayer.com/',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/THEOplayer',
-            },
-            {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/company/theoplayer/',
-            },
-          ],
-        },
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} THEO Technologies`,
     },
     prism: {
