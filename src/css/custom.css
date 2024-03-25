@@ -47,3 +47,7 @@
   --ifm-hero-background-color: #445f6e;
   --ifm-hero-text-color: var(--ifm-font-color-base);
 }
+
+.footer a {
+  --ifm-link-color: var(--ifm-footer-link-color);
+}

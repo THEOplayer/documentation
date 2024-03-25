@@ -253,8 +253,8 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} THEO Technologies`,
+      style: 'light',
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.theoplayer.com/">THEO Technologies</a>`,
     },
     prism: {
       theme: prismThemes.oneLight,
