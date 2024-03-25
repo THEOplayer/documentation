@@ -24,7 +24,12 @@ const FeatureList: FeatureItem[] = [
         }}
       />
     ),
-    description: <>Empowering the world's leading media and entertainment companies to deliver cutting-edge video, efficiently and on any device.</>,
+    description: (
+      <>
+        Deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming
+        consoles.
+      </>
+    ),
     to: '/theoplayer',
   },
   {
@@ -39,10 +44,7 @@ const FeatureList: FeatureItem[] = [
       />
     ),
     description: (
-      <>
-        A comprehensive library of open-source UI components, making it easier to build and customize your video player UI to match your branding
-        style.
-      </>
+      <>Easily build and customize your video player UI to match your branding style through a comprehensive library of open-source UI components.</>
     ),
     to: '/open-video-ui',
   },
@@ -57,7 +59,12 @@ const FeatureList: FeatureItem[] = [
         }}
       />
     ),
-    description: <>High-quality real-time video at scale for providers of sports betting, iGaming and interactive entertainment.</>,
+    description: (
+      <>
+        Stream real-time to any audience size with the best quality of experience, whether it’s for sports betting, iGaming or interactive
+        entertainment.
+      </>
+    ),
     to: 'https://developers.theo.live/',
   },
 ];
