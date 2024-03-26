@@ -39,8 +39,8 @@ const docsConfigBase = {
 } satisfies DocsPlugin.Options;
 
 const config: Config = {
-  title: 'THEOplayer Documentation',
-  tagline: 'Your one-stop shop for everything THEOplayer.',
+  title: 'THEOdocs',
+  tagline: 'Discover the latest developer documentation and samples for THEOplayer, Open Video UI and THEOlive.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -219,9 +219,9 @@ const config: Config = {
         }
       : undefined,
     navbar: {
-      title: 'Docs',
+      title: null,
       logo: {
-        alt: 'THEO',
+        alt: 'THEOdocs',
         src: 'img/logo.svg',
         srcDark: 'img/logo_dark.svg',
       },
@@ -253,44 +253,8 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'THEOplayer',
-              to: '/theoplayer/',
-            },
-            {
-              label: 'Open Video UI',
-              to: '/open-video-ui/',
-            },
-            {
-              label: 'THEOlive',
-              href: 'https://developers.theo.live/',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'theoplayer.com',
-              href: 'https://www.theoplayer.com/',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/THEOplayer',
-            },
-            {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/company/theoplayer/',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} THEO Technologies`,
+      style: 'light',
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.theoplayer.com/">THEO Technologies</a>`,
     },
     prism: {
       theme: prismThemes.oneLight,
