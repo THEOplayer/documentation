@@ -66,7 +66,8 @@ The demo below illustrates the Preload API in production.
 
 ## Remarks
 
-Note that THEOplayer will always prefer downloading data for the currently playing video over downloading data for a preloading video. Only when the currently playing video has enough data to play to the end of the video, will the player start preloading other videos.
+- THEOplayer will always prefer downloading data for the currently playing video over downloading data for a preloading video. Only when the currently playing video has enough data to play to the end of the video, will the player start preloading other videos.
+- When preloading the first segment(s) (preload 'auto)', the first frame of the video will be shown under the Big Play Button, if there is no poster.
 
 ## Resources
 
