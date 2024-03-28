@@ -19,11 +19,11 @@ const docsConfigBase = {
     '!(external/**)',
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
-    'external/*/docs/**/*.{md,mdx}',
+    'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
     // Remove index pages from external projects, we'll generate our own instead
-    'external/*/docs/**/index.{md,mdx}',
+    'external/*/{doc,docs}/**/index.{md,mdx}',
     // Ignore node_modules
     'external/**/node_modules/**/*',
   ],
@@ -169,7 +169,9 @@ const config: Config = {
           .replace('android-ui/docs/', '/android/')
           .replace('web-ui/CHANGELOG', '/web/changelog')
           .replace('web-ui/react/CHANGELOG', '/react/changelog')
-          .replace('android-ui/CHANGELOG', '/android/changelog');
+          .replace('android-ui/CHANGELOG', '/android/changelog')
+          .replace('react-native/CHANGELOG', '/getting-started/frameworks/react-native/changelog')
+          .replace('react-native/doc/', '/getting-started/frameworks/react-native/');
       }
       if (params.filePath.toLowerCase().endsWith('changelog.md')) {
         frontMatter.title ??= 'Changelog';

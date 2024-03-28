@@ -4,3 +4,6 @@
 [submodule "android-ui"]
 	path = open-video-ui/external/android-ui
 	url = https://github.com/THEOplayer/android-ui.git
+[submodule "react-native"]
+	path = theoplayer/external/react-native
+	url = https://github.com/THEOplayer/react-native-theoplayer.git
