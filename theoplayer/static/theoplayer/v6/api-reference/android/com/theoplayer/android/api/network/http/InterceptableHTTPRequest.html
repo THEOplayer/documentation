@@ -313,6 +313,38 @@ public interface <span class="typeNameLabel"><a href=InterceptableHTTPRequest.ht
                                         </tr>
                                         
                                         <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#getConnectTimeout()>getConnectTimeout</a>() </code>
+                                            </th>
+                                            <td class="colLast">The connection timeout in milliseconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#setConnectTimeout(Integer)>setConnectTimeout</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> connectTimeout) </code>
+                                            </th>
+                                            <td class="colLast">The connection timeout in milliseconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#getReadTimeout()>getReadTimeout</a>() </code>
+                                            </th>
+                                            <td class="colLast">The read timeout in milliseconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#setReadTimeout(Integer)>setReadTimeout</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> readTimeout) </code>
+                                            </th>
+                                            <td class="colLast">The read timeout in milliseconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i13" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=RequestType.html>RequestType</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#getType()>getType</a>() </code>
@@ -320,7 +352,7 @@ public interface <span class="typeNameLabel"><a href=InterceptableHTTPRequest.ht
                                             <td class="colLast">The request's type.</td>
                                         </tr>
                                         
-                                        <tr id="i10" class="altColor">
+                                        <tr id="i14" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=RequestSubType.html>RequestSubType</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#getSubType()>getSubType</a>() </code>
@@ -328,7 +360,7 @@ public interface <span class="typeNameLabel"><a href=InterceptableHTTPRequest.ht
                                             <td class="colLast">The request's subtype.</td>
                                         </tr>
                                         
-                                        <tr id="i11" class="rowColor">
+                                        <tr id="i15" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=RequestMediaType.html>RequestMediaType</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#getMediaType()>getMediaType</a>() </code>
@@ -336,7 +368,7 @@ public interface <span class="typeNameLabel"><a href=InterceptableHTTPRequest.ht
                                             <td class="colLast">The media's type.</td>
                                         </tr>
                                         
-                                        <tr id="i12" class="altColor">
+                                        <tr id="i16" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=ResponseType.html>ResponseType</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=InterceptableHTTPRequest.html#getResponseType()>getResponseType</a>() </code>
@@ -518,6 +550,66 @@ public interface <span class="typeNameLabel"><a href=InterceptableHTTPRequest.ht
                                         <h4>setBody</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InterceptableHTTPRequest.html#setBody(ByteArray)>setBody</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html>ByteArray</a> body)</pre>
                                         <div class="block"><p>The mutable request body to be used during a POST or PUT request.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getConnectTimeout()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getConnectTimeout</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=InterceptableHTTPRequest.html#getConnectTimeout()>getConnectTimeout</a>()</pre>
+                                        <div class="block"><p>The connection timeout in milliseconds. This timeout is used when establishing a connection to a remote server. If the connection cannot be established within this timeout period, a connection timeout error will be thrown.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setConnectTimeout(Integer)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setConnectTimeout</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InterceptableHTTPRequest.html#setConnectTimeout(Integer)>setConnectTimeout</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> connectTimeout)</pre>
+                                        <div class="block"><p>The connection timeout in milliseconds. This timeout is used when establishing a connection to a remote server. If the connection cannot be established within this timeout period, a connection timeout error will be thrown.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getReadTimeout()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getReadTimeout</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=InterceptableHTTPRequest.html#getReadTimeout()>getReadTimeout</a>()</pre>
+                                        <div class="block"><p>The read timeout in milliseconds. This timeout is used when reading data from an established connection with a remote server. If no data is received within this timeout period, a read timeout error will be thrown.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setReadTimeout(Integer)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setReadTimeout</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=InterceptableHTTPRequest.html#setReadTimeout(Integer)>setReadTimeout</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> readTimeout)</pre>
+                                        <div class="block"><p>The read timeout in milliseconds. This timeout is used when reading data from an established connection with a remote server. If no data is received within this timeout period, a read timeout error will be thrown.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

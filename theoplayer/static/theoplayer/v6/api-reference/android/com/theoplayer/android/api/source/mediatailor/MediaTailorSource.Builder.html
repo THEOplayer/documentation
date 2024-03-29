@@ -115,7 +115,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a></span>
-
+extends <a href=../TypedSource.Builder.html>TypedSource.Builder</a>
                     </pre>
                     <div class="block"><p>The builder for a MediaTailor source. </p><ul><li>The final URL will have the following format: '/v1/session/</li></ul></div>
                 </li>
@@ -187,6 +187,18 @@ public class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
 
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#MediaTailorSource.Builder()">MediaTailorSource.Builder</a></span>()</code></th>
+                                                <td class="colLast">Creates a builder for a simple MediaTailor object with an empty URL.</td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#MediaTailorSource.Builder(String)">MediaTailorSource.Builder</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> src)</code></th>
+                                                <td class="colLast">Creates a builder for a simple MediaTailor object containing the given URL as source.</td>
+                                            </tr>
                                         
 
                                         </tbody>
@@ -266,6 +278,12 @@ public class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>
                                 </div>
                                 <ul class="blockList">
                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.com.theoplayer.android.api.source.TypedSource.Builder">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.source.TypedSource.Builder</h3>
+                                            <code>dash, drm, hls, hlsDateRange, liveOffset, lowLatency, ssai, timeServer, type</code></li>
+                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
                                     </a>
@@ -292,6 +310,35 @@ public class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="MediaTailorSource.Builder()"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>MediaTailorSource.Builder</h4>
+                                        <pre>MediaTailorSource.Builder()</pre>
+                                        <div class="block">Creates a builder for a simple MediaTailor object with an empty URL.</div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="MediaTailorSource.Builder(String)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>MediaTailorSource.Builder</h4>
+                                        <pre>MediaTailorSource.Builder(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> src)</pre>
+                                        <div class="block">Creates a builder for a simple MediaTailor object containing the given URL as source.</div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>src</code> - the source URL</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                    </li>
+                                </ul>
+                                
                             </li>
                         </ul>
                     </section>
@@ -313,17 +360,8 @@ public class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>
                                           >
                                     <li class="blockList">
                                         <h4>src</h4>
-                                        <pre class="methodSignature"> <a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a> <a href=MediaTailorSource.Builder.html#src(String)>src</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> src)</pre>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>() <a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a> <a href=MediaTailorSource.Builder.html#src(String)>src</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> src)</pre>
                                         <div class="block"><p>Sets the MediaTailor source URL.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>src</code> - the source URL.</dd>
-                                            
-                                            
-                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -361,7 +399,7 @@ public class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>
                                           >
                                     <li class="blockList">
                                         <h4>build</h4>
-                                        <pre class="methodSignature"> <a href=MediaTailorSource.html>MediaTailorSource</a> <a href=MediaTailorSource.Builder.html#build()>build</a>()</pre>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=MediaTailorSource.html>MediaTailorSource</a> <a href=MediaTailorSource.Builder.html#build()>build</a>()</pre>
                                         <div class="block"><p>Builds the MediaTailor source.</p></div>
                                         
                                         <!-- TODO missing return annotation -->

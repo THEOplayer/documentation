@@ -301,6 +301,22 @@ public interface <span class="typeNameLabel"><a href=HTTPRequest.html>HTTPReques
                                             <td class="colLast">The expected type of the response body.</td>
                                         </tr>
                                         
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=HTTPRequest.html#getConnectTimeout()>getConnectTimeout</a>() </code>
+                                            </th>
+                                            <td class="colLast">The connection timeout in milliseconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=HTTPRequest.html#getReadTimeout()>getReadTimeout</a>() </code>
+                                            </th>
+                                            <td class="colLast">The read timeout in milliseconds.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -454,12 +470,42 @@ public interface <span class="typeNameLabel"><a href=HTTPRequest.html>HTTPReques
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getResponseType</h4>
                                         <pre class="methodSignature"> abstract <a href=ResponseType.html>ResponseType</a> <a href=HTTPRequest.html#getResponseType()>getResponseType</a>()</pre>
                                         <div class="block"><p>The expected type of the response body.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getConnectTimeout()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getConnectTimeout</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=HTTPRequest.html#getConnectTimeout()>getConnectTimeout</a>()</pre>
+                                        <div class="block"><p>The connection timeout in milliseconds. This timeout is used when establishing a connection to a remote server. If the connection cannot be established within this timeout period, a connection timeout error will be thrown.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getReadTimeout()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getReadTimeout</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=HTTPRequest.html#getReadTimeout()>getReadTimeout</a>()</pre>
+                                        <div class="block"><p>The read timeout in milliseconds. This timeout is used when reading data from an established connection with a remote server. If no data is received within this timeout period, a read timeout error will be thrown.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

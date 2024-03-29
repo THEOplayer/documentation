@@ -26,18 +26,18 @@
         
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="../search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
     </header>
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">THEOplayerSDK Reference</a>
-      <img class="carat" src="../img/carat.png" />
+      <img class="carat" src="../img/carat.png" alt=""/>
       THEOplayer Class Reference
     </p>
 
@@ -1218,6 +1218,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PlayerEvent.html">PlayerEvent</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -1411,6 +1414,7 @@
             <h1>THEOplayer</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">THEOplayer</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/EventDispatcherProtocol.html">EventDispatcherProtocol</a></span></code></pre>
 
@@ -1506,54 +1510,6 @@
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/init(appController:with:configuration:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(appController:<wbr>with:<wbr>configuration:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Create a new instance of THEOplayer with a frame.</p>
-<div class="aside aside-remark">
-    <p class="aside-title">Remark</p>
-    <p>This constructor is for the tvOS SDK only.</p>
-
-</div>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/prepare(withFirstViewController:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">prepare(withFirstViewController:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Prepares THEOplayer with the initial view controller.</p>
-<div class="aside aside-remark">
-    <p class="aside-title">Remark</p>
-    <p>If you are using the SDK in a <em>traditional app</em> (e.g. not a client/server app) you should call this function in the AppDelegate&rsquo;s application(_:didFinishLaunchingWithOptions:) method.</p>
-
-</div>
-
                       </div>
                     </section>
                   </div>
@@ -2287,7 +2243,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">preload</span><span class="p">:</span> <span class="kt"><a href="../Enums/Preload.html">Preload</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">preload</span><span class="p">:</span> <span class="kt"><a href="../Enums/Preload.html">Preload</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -2320,7 +2276,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">playbackRate</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">playbackRate</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -3121,7 +3077,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This method will be removed with the next major release. Please use the `preload` setter instead.")</span>
+<span class="kd">@objc</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">setPreload</span><span class="p">(</span><span class="n">_</span> <span class="nv">newValue</span><span class="p">:</span> <span class="kt"><a href="../Enums/Preload.html">Preload</a></span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Any</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -3287,7 +3244,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This method will be removed with the next major release. Please use the `playbackRate` setter instead.")</span>
+<span class="kd">@objc</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">setPlaybackRate</span><span class="p">(</span><span class="n">_</span> <span class="nv">newValue</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Any</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -4361,7 +4319,8 @@ with the given <code><a href="../Enums/KeySystemId.html">KeySystemId</a></code>,
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">related</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RelatedContent.html">RelatedContent</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="k">var</span> <span class="nv">related</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RelatedContent.html">RelatedContent</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -4424,7 +4383,8 @@ When using a custom JavaScript file, you can communicate to native code through 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This method will be removed with the next major release.")</span>
+<span class="kd">@objc</span>
 <span class="kd">func</span> <span class="nf">addJavascriptMessageListener</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">listener</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
 
                         </div>
@@ -4483,7 +4443,8 @@ When using a custom JavaScript file, you can communicate to native code through 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This method will be removed with the next major release.")</span>
+<span class="kd">@objc</span>
 <span class="kd">func</span> <span class="nf">removeJavascriptMessageListener</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -4531,7 +4492,8 @@ The method sends the result of the script evaluation (or an error) to the comple
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This method will be removed with the next major release.")</span>
+<span class="kd">@objc</span>
 <span class="kd">func</span> <span class="nf">evaluateJavaScript</span><span class="p">(</span><span class="n">_</span> <span class="nv">javaScriptString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Any</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -4573,33 +4535,6 @@ The method sends the result of the script evaluation (or an error) to the comple
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13THEOplayerSDK0A0C2vrAA2VR_pSgvp"></a>
-                    <a name="//apple_ref/swift/Property/vr" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13THEOplayerSDK0A0C2vrAA2VR_pSgvp">vr</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A VR object to access and control 360/VR playback.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">vr</span><span class="p">:</span> <span class="kt"><a href="../Protocols/VR.html">VR</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:13THEOplayerSDK0A0C5cacheAA5Cache_pvpZ"></a>
                     <a name="//apple_ref/swift/Variable/cache" class="dashAnchor"></a>
                     <a class="token" href="#/s:13THEOplayerSDK0A0C5cacheAA5Cache_pvpZ">cache</a>
@@ -4624,38 +4559,6 @@ The method sends the result of the script evaluation (or an error) to the comple
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13THEOplayerSDK0A0C12verizonMediaAA07VerizonD0_pvp"></a>
-                    <a name="//apple_ref/swift/Property/verizonMedia" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13THEOplayerSDK0A0C12verizonMediaAA07VerizonD0_pvp">verizonMedia</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The Verizon Media object to access the Verizon Media API.</p>
-<div class="aside aside-remark">
-    <p class="aside-title">Remark</p>
-    Only available on web pipeline.
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">verizonMedia</span><span class="p">:</span> <span class="kt"><a href="../Protocols/VerizonMedia.html">VerizonMedia</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
           </div>
@@ -4665,8 +4568,7 @@ The method sends the result of the script evaluation (or an error) to the comple
     </div>
     <section class="footer">
       <p>© 2021 THEOplayer</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>
