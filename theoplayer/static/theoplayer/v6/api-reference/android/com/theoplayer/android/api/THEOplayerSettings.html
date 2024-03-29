@@ -282,7 +282,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerSettings.html>THE
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerSettings.html#allowBackgroundPlayback()>allowBackgroundPlayback</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Whether the player continues play-out while the app goes to the background, defaults to `false`.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -337,7 +337,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerSettings.html>THE
                                           >
                                     <li class="blockList">
                                         <h4>isFullScreenOrientationCoupled</h4>
-                                        <pre class="methodSignature"> abstract boolean <a href=THEOplayerSettings.html#isFullScreenOrientationCoupled()>isFullScreenOrientationCoupled</a>()</pre>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>() abstract boolean <a href=THEOplayerSettings.html#isFullScreenOrientationCoupled()>isFullScreenOrientationCoupled</a>()</pre>
                                         <div class="block"><p>Returns whether fullscreen coupling is on.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -352,8 +352,8 @@ public interface <span class="typeNameLabel"><a href=THEOplayerSettings.html>THE
                                           >
                                     <li class="blockList">
                                         <h4>setFullScreenOrientationCoupled</h4>
-                                        <pre class="methodSignature"> abstract void <a href=THEOplayerSettings.html#setFullScreenOrientationCoupled(boolean)>setFullScreenOrientationCoupled</a>(boolean coupled)</pre>
-                                        <div class="block"><p>Sets whether the orientation of the device and the fullscreen state are coupled. </p><ul><li>When this option is set to true, the player will go fullscreen when the device is rotated to landscape and will also exit fullscreen when the device is rotated back to portrait.</li><li>Note that this has no relation to the orientation in which the player will be in fullscreen. For that, refer to <a href=THEOplayerSettings.html#setFullscreenOrientation(int)>setFullscreenOrientation</a></li></ul></div>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>() abstract void <a href=THEOplayerSettings.html#setFullScreenOrientationCoupled(boolean)>setFullScreenOrientationCoupled</a>(boolean coupled)</pre>
+                                        <div class="block"><p>Sets whether the orientation of the device and the fullscreen state are coupled.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
@@ -376,7 +376,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerSettings.html>THE
                                           >
                                     <li class="blockList">
                                         <h4>getFullscreenOrientation</h4>
-                                        <pre class="methodSignature"> abstract int <a href=THEOplayerSettings.html#getFullscreenOrientation()>getFullscreenOrientation</a>()</pre>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>() abstract int <a href=THEOplayerSettings.html#getFullscreenOrientation()>getFullscreenOrientation</a>()</pre>
                                         <div class="block"><p>Returns which orientation was configured to go to in fullscreen, defaults to ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -391,8 +391,8 @@ public interface <span class="typeNameLabel"><a href=THEOplayerSettings.html>THE
                                           >
                                     <li class="blockList">
                                         <h4>setFullscreenOrientation</h4>
-                                        <pre class="methodSignature"> abstract void <a href=THEOplayerSettings.html#setFullscreenOrientation(int)>setFullscreenOrientation</a>(int orientation)</pre>
-                                        <div class="block"><p>Sets in which ScreenOrientation the player should go into fullscreen. </p><ul><li>For values to which the orientation is limited, see ActivityInfo.SCREEN_ORIENTATION_*</li></ul></div>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>() abstract void <a href=THEOplayerSettings.html#setFullscreenOrientation(int)>setFullscreenOrientation</a>(int orientation)</pre>
+                                        <div class="block"><p>Sets in which ScreenOrientation the player should go into fullscreen.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
@@ -440,7 +440,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerSettings.html>THE
                                     <li class="blockList">
                                         <h4>allowBackgroundPlayback</h4>
                                         <pre class="methodSignature"> abstract boolean <a href=THEOplayerSettings.html#allowBackgroundPlayback()>allowBackgroundPlayback</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Whether the player continues play-out while the app goes to the background, defaults to `false`.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

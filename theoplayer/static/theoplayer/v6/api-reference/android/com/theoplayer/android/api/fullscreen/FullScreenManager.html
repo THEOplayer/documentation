@@ -240,12 +240,44 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
+                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#setFullScreenOrientationCoupled(boolean)>setFullScreenOrientationCoupled</a>(boolean coupled) </code>
+                                            </th>
+                                            <td class="colLast">Sets whether the orientation of the device and the fullscreen state are coupled.</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract boolean</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#isFullScreenOrientationCoupled()>isFullScreenOrientationCoupled</a>() </code>
+                                            </th>
+                                            <td class="colLast">Returns whether fullscreen coupling is on.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#setFullscreenOrientation(int)>setFullscreenOrientation</a>(int orientation) </code>
+                                            </th>
+                                            <td class="colLast">Sets in which ScreenOrientation the player should go into fullscreen.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract int</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#getFullscreenOrientation()>getFullscreenOrientation</a>() </code>
+                                            </th>
+                                            <td class="colLast">Returns which orientation was configured to go to in fullscreen, defaults to ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
                                             <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#requestFullScreen()>requestFullScreen</a>() </code>
                                             </th>
                                             <td class="colLast">Requests the THEOplayer to go fullscreen.</td>
                                         </tr>
                                         
-                                        <tr id="i1" class="rowColor">
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#exitFullScreen()>exitFullScreen</a>() </code>
@@ -253,7 +285,7 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                             <td class="colLast">requests the THEOplayer to exit fullscreen</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
+                                        <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#isFullScreen()>isFullScreen</a>() </code>
@@ -261,7 +293,7 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                             <td class="colLast">Returns whether the THEOplayerView is in fullscreen.</td>
                                         </tr>
                                         
-                                        <tr id="i3" class="rowColor">
+                                        <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#isFullScreenToggleInProgress()>isFullScreenToggleInProgress</a>() </code>
@@ -269,31 +301,7 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                             <td class="colLast">Returns whether a fullscreen change is still in progress.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>abstract void</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#removeFullScreenChangeListener(FullScreenChangeListener)>removeFullScreenChangeListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=FullScreenChangeListener.html>FullScreenChangeListener</a> fullScreenChangeListener) </code>
-                                            </th>
-                                            <td class="colLast">Removes the given fullscreenChangeListener.</td>
-                                        </tr>
-                                        
-                                        <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code>abstract void</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#addFullScreenChangeListener(FullScreenChangeListener)>addFullScreenChangeListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=FullScreenChangeListener.html>FullScreenChangeListener</a> fullScreenChangeListener) </code>
-                                            </th>
-                                            <td class="colLast">Adds the given FullScreenChangeListener which listens for fullscreen changes.</td>
-                                        </tr>
-                                        
-                                        <tr id="i6" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;out <a href=FullScreenActivity.html>FullScreenActivity</a>&gt;</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#getFullscreenActivity()>getFullscreenActivity</a>() </code>
-                                            </th>
-                                            <td class="colLast">The class which is set as the <a href=FullScreenActivity.html>FullScreenActivity</a> class.</td>
-                                        </tr>
-                                        
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#setFullscreenActivity(Class)>setFullscreenActivity</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;out <a href=FullScreenActivity.html>FullScreenActivity</a>&gt; fullscreenActivityClass) </code>
@@ -301,7 +309,31 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                             <td class="colLast">Sets the <a href=FullScreenActivity.html>FullScreenActivity</a> class to be used.</td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;out <a href=FullScreenActivity.html>FullScreenActivity</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#getFullscreenActivity()>getFullscreenActivity</a>() </code>
+                                            </th>
+                                            <td class="colLast">The class which is set as the <a href=FullScreenActivity.html>FullScreenActivity</a> class.</td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#addFullScreenChangeListener(FullScreenChangeListener)>addFullScreenChangeListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=FullScreenChangeListener.html>FullScreenChangeListener</a> fullScreenChangeListener) </code>
+                                            </th>
+                                            <td class="colLast">Adds the given FullScreenChangeListener which listens for fullscreen changes.</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#removeFullScreenChangeListener(FullScreenChangeListener)>removeFullScreenChangeListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=FullScreenChangeListener.html>FullScreenChangeListener</a> fullScreenChangeListener) </code>
+                                            </th>
+                                            <td class="colLast">Removes the given fullscreenChangeListener.</td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#addFullScreenIntentCreationListener(IntentCreationListener)>addFullScreenIntentCreationListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=IntentCreationListener.html>IntentCreationListener</a> intentCreationListener) </code>
@@ -309,7 +341,7 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                             <td class="colLast">Adds the given intentCreationListener which listens for the creation of the intent to start the fullscreen activity.</td>
                                         </tr>
                                         
-                                        <tr id="i9" class="rowColor">
+                                        <tr id="i13" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=FullScreenManager.html#removeFullScreenIntentCreationListener(IntentCreationListener)>removeFullScreenIntentCreationListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=IntentCreationListener.html>IntentCreationListener</a> intentCreationListener) </code>
@@ -360,6 +392,84 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                 <!--   -->
                             </a>
                                 <h3>Method Detail</h3>
+                                
+                                <a id="setFullScreenOrientationCoupled(boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setFullScreenOrientationCoupled</h4>
+                                        <pre class="methodSignature"> abstract void <a href=FullScreenManager.html#setFullScreenOrientationCoupled(boolean)>setFullScreenOrientationCoupled</a>(boolean coupled)</pre>
+                                        <div class="block"><p>Sets whether the orientation of the device and the fullscreen state are coupled. </p><ul><li>When this option is set to true, the player will go fullscreen when the device is rotated to landscape and will also exit fullscreen when the device is rotated back to portrait.</li><li>Note that this has no relation to the orientation in which the player will be in fullscreen. For that, refer to <a href=FullScreenManager.html#setFullscreenOrientation(int)>setFullscreenOrientation</a></li></ul></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>coupled</code> - Whether coupling is enabled.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isFullScreenOrientationCoupled()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isFullScreenOrientationCoupled</h4>
+                                        <pre class="methodSignature"> abstract boolean <a href=FullScreenManager.html#isFullScreenOrientationCoupled()>isFullScreenOrientationCoupled</a>()</pre>
+                                        <div class="block"><p>Returns whether fullscreen coupling is on.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setFullscreenOrientation(int)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setFullscreenOrientation</h4>
+                                        <pre class="methodSignature"> abstract void <a href=FullScreenManager.html#setFullscreenOrientation(int)>setFullscreenOrientation</a>(int orientation)</pre>
+                                        <div class="block"><p>Sets in which ScreenOrientation the player should go into fullscreen. </p><ul><li>For values to which the orientation is limited, see ActivityInfo.SCREEN_ORIENTATION_*</li></ul></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>orientation</code> - The targeted fullscreen orientation.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getFullscreenOrientation()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getFullscreenOrientation</h4>
+                                        <pre class="methodSignature"> abstract int <a href=FullScreenManager.html#getFullscreenOrientation()>getFullscreenOrientation</a>()</pre>
+                                        <div class="block"><p>Returns which orientation was configured to go to in fullscreen, defaults to ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
                                 
                                 <a id="requestFullScreen()">
                                     <!--   -->
@@ -421,25 +531,40 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                     </li>
                                 </ul>
                                 
-                                <a id="removeFullScreenChangeListener(FullScreenChangeListener)">
+                                <a id="setFullscreenActivity(Class)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>removeFullScreenChangeListener</h4>
-                                        <pre class="methodSignature"> abstract void <a href=FullScreenManager.html#removeFullScreenChangeListener(FullScreenChangeListener)>removeFullScreenChangeListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=FullScreenChangeListener.html>FullScreenChangeListener</a> fullScreenChangeListener)</pre>
-                                        <div class="block"><p>Removes the given fullscreenChangeListener.</p></div>
+                                        <h4>setFullscreenActivity</h4>
+                                        <pre class="methodSignature"> abstract void <a href=FullScreenManager.html#setFullscreenActivity(Class)>setFullscreenActivity</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;out <a href=FullScreenActivity.html>FullScreenActivity</a>&gt; fullscreenActivityClass)</pre>
+                                        <div class="block"><p>Sets the <a href=FullScreenActivity.html>FullScreenActivity</a> class to be used.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>fullScreenChangeListener</code> - The FullScreenChangeListener to remove.</dd>
+                                            <dd><code>fullscreenActivityClass</code> - The new <a href=FullScreenActivity.html>FullScreenActivity</a> class.</dd>
                                             
                                             
                                         </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getFullscreenActivity()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getFullscreenActivity</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;out <a href=FullScreenActivity.html>FullScreenActivity</a>&gt; <a href=FullScreenManager.html#getFullscreenActivity()>getFullscreenActivity</a>()</pre>
+                                        <div class="block"><p>The class which is set as the <a href=FullScreenActivity.html>FullScreenActivity</a> class. </p><p>Default: The <a href=FullScreenActivity.html>FullScreenActivity</a> class.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -469,37 +594,22 @@ public interface <span class="typeNameLabel"><a href=FullScreenManager.html>Full
                                     </li>
                                 </ul>
                                 
-                                <a id="getFullscreenActivity()">
+                                <a id="removeFullScreenChangeListener(FullScreenChangeListener)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getFullscreenActivity</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;out <a href=FullScreenActivity.html>FullScreenActivity</a>&gt; <a href=FullScreenManager.html#getFullscreenActivity()>getFullscreenActivity</a>()</pre>
-                                        <div class="block"><p>The class which is set as the <a href=FullScreenActivity.html>FullScreenActivity</a> class. </p><p>Default: The <a href=FullScreenActivity.html>FullScreenActivity</a> class.</p></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setFullscreenActivity(Class)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setFullscreenActivity</h4>
-                                        <pre class="methodSignature"> abstract void <a href=FullScreenManager.html#setFullscreenActivity(Class)>setFullscreenActivity</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/Class.html>Class</a>&lt;out <a href=FullScreenActivity.html>FullScreenActivity</a>&gt; fullscreenActivityClass)</pre>
-                                        <div class="block"><p>Sets the <a href=FullScreenActivity.html>FullScreenActivity</a> class to be used.</p></div>
+                                        <h4>removeFullScreenChangeListener</h4>
+                                        <pre class="methodSignature"> abstract void <a href=FullScreenManager.html#removeFullScreenChangeListener(FullScreenChangeListener)>removeFullScreenChangeListener</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=FullScreenChangeListener.html>FullScreenChangeListener</a> fullScreenChangeListener)</pre>
+                                        <div class="block"><p>Removes the given fullscreenChangeListener.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>fullscreenActivityClass</code> - The new <a href=FullScreenActivity.html>FullScreenActivity</a> class.</dd>
+                                            <dd><code>fullScreenChangeListener</code> - The FullScreenChangeListener to remove.</dd>
                                             
                                             
                                         </dl>

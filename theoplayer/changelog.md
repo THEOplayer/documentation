@@ -1,3 +1,81 @@
+## 🚀 6.13.0 (2024/03/28)
+
+### Web
+
+#### ✨ Features
+
+- For Google IMA, added the option to pass `uiElements` to the Google IMA SDK using `PlayerConfiguration.ads.googleIma.uiElements`.
+
+#### 🐛 Issues
+
+- Fixed an issue on smart TVs where switching to or from an opus audio track could cause playback issues.
+- Fixed an issue on Android devices where sometimes the gyroscope would not work immediately after playing a VR source inside an iframe.
+
+#### 👎 Deprecations
+
+- Deprecated `PlayerConfiguration.ads.showCountdown` in favor of `PlayerConfiguration.ads.googleIma.uiElements`.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where mediaTracks were not consistent between cast sender and receiver.
+- Fixed an issue where `MediaTailorSource.Builder#src(String)` did not have all setters as `TypedSource.Builder` has.
+- Fixed an issue where video playback was failing if network connection was too slow.
+- Fixed an issue where the player would not cancel request if they took too long, for example after a big network drop.
+
+#### 👎 Deprecations
+
+- Deprecated setter in `MediaTailorSource.Builder#src(String)` for source URL in favor of Builder with a parameter `MediaTailorSource.Builder#Builder(String)`
+- Deprecated `MediatailorSource.Builder()` default constructor in favor of constructor with a parameter `MediaTailorSource.Builder#Builder(String)`
+- Deprecated unused `RequestCallback` interface.
+- Deprecated asynchronous `Player` APIs in favor of the respective synchronous ones.
+- Deprecated `CastIntegrationFactory.createCastIntegration(THEOplayerView)` API in favor of `CastIntegrationFactory.createCastIntegration(THEOplayerView, CastConfiguration)`.
+- Deprecated `THEOplayerSettings#setFullScreenOrientationCoupled(boolean)` in favor of `FullScreenManager#setFullScreenOrientationCoupled(boolean)`.
+- Deprecated `THEOplayerSettings#isFullScreenOrientationCoupled()` in favor of `FullScreenManager#isFullScreenOrientationCoupled()`.
+- Deprecated `THEOplayerSettings#setFullscreenOrientation(@ScreenOrientation int)` in favor of `FullScreenManager#setFullscreenOrientation(@ScreenOrientation int)`.
+- Deprecated `THEOplayerSettings#getFullscreenOrientation()` in favor of `FullScreenManager#getFullscreenOrientation()`.
+- Deprecated `AdsConfiguration` in favor of integration specific configuration.
+
+### iOS
+
+#### ✨ Features
+
+- Added conformance to Apple's new privacy policy for API usage.
+
+#### 👎 Deprecations
+
+- Deprecated `AnalyticsDescription` and `AnalyticsIntegration` types.
+- Deprecated `setPreload` method in favor of `preload` property setter.
+- Deprecated `setPlaybackRate` method in favor of `playbackRate` property setter.
+- Deprecated Verizon Media related types.
+- Deprecated `GoogleIMAAdsConfiguration` & `GoogleIMAConfigurationBuilder`. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.
+- Deprecated `PiPConfiguration.init` methods in favor of `PiPConfigurationBuilder`. The `nativePictureInPicture` property in `PiPConfigurationBuilder` defaults to `true`.
+- Deprecated obsolete `EventDispatcher` class.
+- Deprecated Conviva related types. Conviva feature has moved to `THEOplayer-Connector-Conviva`.
+- Deprecated `AudioQuality` type.
+- Deprecated `UIConfiguration` type.
+- Deprecated `AdsConfiguration` type.
+- Deprecated `THEOplayerConfiguration.init` methods in favor of `THEOplayerConfigurationBuilder`.
+- Deprecated `chromeless`, `ads`, `ui`, `cssPaths`, `jsPaths`, `jsPathsPre`, `defaultCSS`, `pictureInPicture`, `analytics` and `cast` properties from `THEOplayerConfiguration`.
+- Deprecated SpotX related types.
+- Deprecated `THEOplayerCastHelper` in favor of `THEOplayerGoogleCastIntegration.CastIntegrationHelper`.
+- Deprecated `GoogleDAIAdsConfiguration` & `GoogleDAIAdsConfigurationBuilder`. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.
+- Deprecated `analytics` property from `SourceDescription` and `SourceDescription.init`.
+- Deprecated `vr` property from `SourceDescription` and `SourceDescription.init`, and `VRConfiguration` type.
+- Deprecated `THEOplayer.related` property, `RelatedContent` type, and all related RelatedContent types.
+- Deprecated `addJavascriptMessageListener`, `removeJavascriptMessageListener` and `evaluateJavaScript` methods from `THEOplayer`.
+- Deprecated `THEOAdDescription` type.
+- Deprecated `YouboraOptions` type.
+- Deprecated `AdPreloadType` type.
+
+### tvOS
+
+#### 👎 Deprecations
+
+- Deprecated tvOS specific `THEOplayer` initializers. Moving forward, iOS and tvOS `THEOplayer` initializers are unified.
+- Deprecated `MenuItem` and `MenuLayoutConfigurator` types.
+
 ## 🚀 6.12.1 (2024/03/18)
 
 ### Android

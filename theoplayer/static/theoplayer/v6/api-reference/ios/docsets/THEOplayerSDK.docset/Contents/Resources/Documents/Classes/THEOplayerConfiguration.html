@@ -26,18 +26,18 @@
         
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="../search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
     </header>
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">THEOplayerSDK Reference</a>
-      <img class="carat" src="../img/carat.png" />
+      <img class="carat" src="../img/carat.png" alt=""/>
       THEOplayerConfiguration Class Reference
     </p>
 
@@ -1218,6 +1218,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PlayerEvent.html">PlayerEvent</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -1411,6 +1414,7 @@
             <h1>THEOplayerConfiguration</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">THEOplayerConfiguration</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">Encodable</span></code></pre>
 
@@ -1450,7 +1454,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">chromeless</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">chromeless</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1504,7 +1509,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">ads</span><span class="p">:</span> <span class="kt"><a href="../Classes/AdsConfiguration.html">AdsConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">ads</span><span class="p">:</span> <span class="kt"><a href="../Classes/AdsConfiguration.html">AdsConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1531,7 +1537,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">verizonMedia</span><span class="p">:</span> <span class="kt"><a href="../Classes/VerizonMediaConfiguration.html">VerizonMediaConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">verizonMedia</span><span class="p">:</span> <span class="kt"><a href="../Classes/VerizonMediaConfiguration.html">VerizonMediaConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1639,7 +1646,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">ui</span><span class="p">:</span> <span class="kt"><a href="../Classes/UIConfiguration.html">UIConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">ui</span><span class="p">:</span> <span class="kt"><a href="../Classes/UIConfiguration.html">UIConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1693,7 +1701,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">cssPaths</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">cssPaths</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1720,7 +1729,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">jsPaths</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">jsPaths</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1747,7 +1757,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">jsPathsPre</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">jsPathsPre</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1774,7 +1785,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">defaultCSS</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">defaultCSS</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1801,7 +1813,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">pictureInPicture</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">pictureInPicture</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1833,7 +1846,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">analytics</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Analytics.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerAnalyticsDescription">AnalyticsDescription</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed with the next major release. Analytics will be moved to separate modules in the form of connectors. For more info check: https://github.com/THEOplayer/iOS-Connector")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">analytics</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Analytics.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerAnalyticsDescription">AnalyticsDescription</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1860,7 +1874,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">cast</span><span class="p">:</span> <span class="kt"><a href="../Classes/CastConfiguration.html">CastConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This property will be removed in future releases. To configure this into GoogleCast, `CastConfiguration` can be passed to `GoogleCastIntegrationFactory.createIntegration`.")</span>
+<span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">cast</span><span class="p">:</span> <span class="kt"><a href="../Classes/CastConfiguration.html">CastConfiguration</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1897,54 +1912,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/init(chromeless:ads:hlsDateRange:verizonMedia:license:licenseUrl:pip:ui:network:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(chromeless:<wbr>ads:<wbr>hlsDateRange:<wbr>verizonMedia:<wbr>license:<wbr>licenseUrl:<wbr>pip:<wbr>ui:<wbr>network:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Constructs a THEOplayerConfiguration.</p>
-
-<ul>
-<li>licenseUrl: The url to fetch the license for the player
-
-<ul>
-<li>pip: a PiPConfiguration. (picture-in-picture configuration)</li>
-<li>ui: a UIconfiguration, defaults to nil.</li>
-<li>network: The additional network configuration, defaults to nil.</li>
-</ul></li>
-</ul>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/">init()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Constructs a THEOplayerConfiguration.</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:13THEOplayerSDK0A13ConfigurationC10chromeless10defaultCSS8cssPaths02jsH00iH3Pre9analytics3pip3ads2ui4cast12hlsDateRange7license0S3Url12verizonMedia7networkACSb_SbSaySSGA2SSayAA20AnalyticsDescription_pGAA16PiPConfigurationCSgAA03AdsC0CSgAA15UIConfigurationCSgAA04CastC0CSgSbSgSSSgA7_AA07VerizonvC0CSgAA07NetworkC0CSgtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(chromeless:defaultCSS:cssPaths:jsPaths:jsPathsPre:analytics:pip:ads:ui:cast:hlsDateRange:license:licenseUrl:verizonMedia:network:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:13THEOplayerSDK0A13ConfigurationC10chromeless10defaultCSS8cssPaths02jsH00iH3Pre9analytics3pip3ads2ui4cast12hlsDateRange7license0S3Url12verizonMedia7networkACSb_SbSaySSGA2SSayAA20AnalyticsDescription_pGAA16PiPConfigurationCSgAA03AdsC0CSgAA15UIConfigurationCSgAA04CastC0CSgSbSgSSSgA7_AA07VerizonvC0CSgAA07NetworkC0CSgtcfc">init(chromeless:<wbr>defaultCSS:<wbr>cssPaths:<wbr>jsPaths:<wbr>jsPathsPre:<wbr>analytics:<wbr>pip:<wbr>ads:<wbr>ui:<wbr>cast:<wbr>hlsDateRange:<wbr>license:<wbr>licenseUrl:<wbr>verizonMedia:<wbr>network:<wbr>)</a>
@@ -1970,7 +1937,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.")</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
     <span class="nv">chromeless</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
     <span class="n"><a href="../Classes/THEOplayerConfiguration.html#/s:13THEOplayerSDK0A13ConfigurationC10defaultCSSSbvp">defaultCSS</a></span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nv">cssPaths</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
@@ -2176,7 +2144,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.")</span>
+<span class="kd">@objc</span>
 <span class="n">convenience</span> <span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
@@ -2220,8 +2189,7 @@
     </div>
     <section class="footer">
       <p>© 2021 THEOplayer</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>

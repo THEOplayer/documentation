@@ -26,18 +26,18 @@
         
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
     </header>
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">THEOplayerSDK Reference</a>
-      <img class="carat" src="img/carat.png" />
+      <img class="carat" src="img/carat.png" alt=""/>
       Other Classes  Reference
     </p>
 
@@ -1218,6 +1218,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/PlayerEvent.html">PlayerEvent</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -1439,7 +1442,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerGoogleIMAAdsConfiguration)</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This class will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.")</span>
+<span class="kd">@objc(THEOplayerGoogleIMAAdsConfiguration)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">GoogleIMAAdsConfiguration</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                         </div>
@@ -1468,7 +1472,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerGoogleIMAConfigurationBuilder)</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This class will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.")</span>
+<span class="kd">@objc(THEOplayerGoogleIMAConfigurationBuilder)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">GoogleIMAConfigurationBuilder</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
@@ -1616,7 +1621,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerAudioQuality)</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "This class will be removed with the next major release.")</span>
+<span class="kd">@objc(THEOplayerAudioQuality)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">AudioQuality</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
@@ -1678,6 +1684,35 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerNetworkConfigurationBuilder)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">NetworkConfigurationBuilder</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerConfigurationBuilder"></a>
+                    <a name="//apple_ref/swift/Class/THEOplayerConfigurationBuilder" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerConfigurationBuilder">THEOplayerConfigurationBuilder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Builder class for the <code><a href="Classes/THEOplayerConfiguration.html">THEOplayerConfiguration</a></code> object.</p>
+
+                        <a href="Classes/THEOplayerConfigurationBuilder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">THEOplayerConfigurationBuilder</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -1908,8 +1943,7 @@ Additionally, it is possible to control when and how the view controller is pres
     </div>
     <section class="footer">
       <p>© 2021 THEOplayer</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>
