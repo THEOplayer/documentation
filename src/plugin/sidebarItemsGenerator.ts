@@ -8,18 +8,15 @@ interface PostProcessArgs extends Omit<SidebarItemsGeneratorArgs, 'item'> {
   };
 }
 
-async function postProcess({ item, defaultSidebarItemsGenerator, ...args }: PostProcessArgs) {
+async function postProcess({ item, ...args }: PostProcessArgs) {
   if (item.type === 'category') {
     // Recurse through children
     for (const childItem of item.items) {
-      await postProcess({ item: childItem, defaultSidebarItemsGenerator, ...args });
+      await postProcess({ item: childItem, ...args });
     }
     // Add additional items
     if (item.customProps?.additionalItems) {
-      const additionalItems = [];
-      for (const additionalItem of item.customProps.additionalItems) {
-        item.items.push(...(await defaultSidebarItemsGenerator({ item: additionalItem, ...args })));
-      }
+      item.items.push(...item.customProps.additionalItems);
     }
   }
 }
