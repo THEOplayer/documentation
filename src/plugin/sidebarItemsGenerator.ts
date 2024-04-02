@@ -3,7 +3,11 @@ import type { NormalizedSidebarItem, SidebarItemConfig, SidebarItemsGeneratorArg
 interface PostProcessArgs extends Omit<SidebarItemsGeneratorArgs, 'item'> {
   item: NormalizedSidebarItem & {
     customProps?: {
-      additionalItems?: SidebarItemConfig[];
+      additionalItems?: Array<
+        SidebarItemConfig & {
+          position?: number;
+        }
+      >;
     };
   };
 }
@@ -16,7 +20,13 @@ async function postProcess({ item, ...args }: PostProcessArgs) {
     }
     // Add additional items
     if (item.customProps?.additionalItems) {
-      item.items.push(...item.customProps.additionalItems);
+      for (const { position, ...additionalItem } of item.customProps.additionalItems) {
+        if (position !== undefined) {
+          item.items.splice(position - 1, 0, additionalItem);
+        } else {
+          item.items.push(additionalItem);
+        }
+      }
     }
   }
 }
