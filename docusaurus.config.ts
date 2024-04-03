@@ -1,10 +1,12 @@
 import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
+import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
+import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import path from 'path';
 import fs from 'fs';
 
@@ -19,11 +21,12 @@ const docsConfigBase = {
     '!(external/**)',
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
-    'external/*/docs/**/*.{md,mdx}',
+    'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
+    ...GlobExcludeDefault,
     // Remove index pages from external projects, we'll generate our own instead
-    'external/*/docs/**/index.{md,mdx}',
+    'external/*/{doc,docs}/**/index.{md,mdx}',
     // Ignore node_modules
     'external/**/node_modules/**/*',
   ],
@@ -101,6 +104,7 @@ const config: Config = {
             noIndex: true,
           },
         },
+        sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
     [
@@ -117,6 +121,7 @@ const config: Config = {
             label: webUiVersion,
           },
         },
+        sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
     () => ({
@@ -169,7 +174,11 @@ const config: Config = {
           .replace('android-ui/docs/', '/android/')
           .replace('web-ui/CHANGELOG', '/web/changelog')
           .replace('web-ui/react/CHANGELOG', '/react/changelog')
-          .replace('android-ui/CHANGELOG', '/android/changelog');
+          .replace('android-ui/CHANGELOG', '/android/changelog')
+          .replace('react-native-theoplayer/CHANGELOG', '/getting-started/frameworks/react-native/changelog')
+          .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
+          .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
+          .replace('react-native-theoplayer-ui/doc/', '/react-native/');
       }
       if (params.filePath.toLowerCase().endsWith('changelog.md')) {
         frontMatter.title ??= 'Changelog';
