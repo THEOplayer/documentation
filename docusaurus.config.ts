@@ -175,8 +175,8 @@ const config: Config = {
           .replace('web-ui/CHANGELOG', '/web/changelog')
           .replace('web-ui/react/CHANGELOG', '/react/changelog')
           .replace('android-ui/CHANGELOG', '/android/changelog')
-          .replace('react-native/CHANGELOG', '/getting-started/frameworks/react-native/changelog')
-          .replace('react-native/doc/', '/getting-started/frameworks/react-native/');
+          .replace('react-native-theoplayer/CHANGELOG', '/getting-started/frameworks/react-native/changelog')
+          .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/');
       }
       if (params.filePath.toLowerCase().endsWith('changelog.md')) {
         frontMatter.title ??= 'Changelog';
