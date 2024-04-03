@@ -17,7 +17,7 @@
   "dependencies": {
     "@docusaurus/core": "^3.2.0",
     "@docusaurus/preset-classic": "^3.2.0",
-    "@mdx-js/react": "^3.0.0",
+    "@mdx-js/react": "^3.0.1",
     "@webcoder49/code-input": "^2.2.1",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
@@ -32,7 +32,7 @@
     "dotenv": "^16.4.4",
     "exports-loader": "^5.0.0",
     "imports-loader": "^5.0.0",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "raw-loader": "^4.0.2",
     "serve-handler": "^6.1.5",
     "typescript": "~5.3.3"
