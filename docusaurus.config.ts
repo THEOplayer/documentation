@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
+import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type { Configuration as WebpackConfiguration } from 'webpack';
@@ -23,6 +24,7 @@ const docsConfigBase = {
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
+    ...GlobExcludeDefault,
     // Remove index pages from external projects, we'll generate our own instead
     'external/*/{doc,docs}/**/index.{md,mdx}',
     // Ignore node_modules
