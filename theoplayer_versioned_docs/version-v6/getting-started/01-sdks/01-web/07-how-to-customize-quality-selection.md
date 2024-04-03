@@ -82,12 +82,12 @@ selectQuality(resolutions[0]);
 ##### Android SDK
 
 The above JavaScript code can be used for Android projects by injecting the JavaScript code.
-Documentation for: [Injecting CSS and JavaScript to Android/iOS](../../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+Documentation for: [Injecting CSS and JavaScript to Android/iOS](../../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
 The above JavaScript code can be used for Android projects by injecting the JavaScript code.
-Documentation for: [Injecting CSS and JavaScript to Android/iOS](../../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+Documentation for: [Injecting CSS and JavaScript to Android/iOS](../../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 
 You can now select multiple qualities of the same MP4 asset!
 
