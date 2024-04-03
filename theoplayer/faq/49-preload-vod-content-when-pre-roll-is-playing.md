@@ -11,4 +11,4 @@ The following resources provide more information:
 - [Preloading - how to](../how-to-guides/07-miscellaneous/09-preloading.md)
 - [Demo page](https://demo.theoplayer.com/preloading-vod)
 - [What are the benefits of preloading](38-what-are-the-benefits-of-preloading.md)
-- [API reference - PreloadType](pathname:///theoplayer/v6/api-reference/web/types/PreloadType.html)
+- [API reference - PreloadType](pathname:///theoplayer/v7/api-reference/web/types/PreloadType.html)

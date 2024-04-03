@@ -4,7 +4,7 @@ This article provides a simple example of how to use Clear Key with THEOplayer.
 
 Usually, DRM systems require you to specify a `licenseAcquisitionURL` and additional optional data (e.g.: certificate, credentials, headers). Clear Key does not need a DRM provider. You can provide the key(s) directly to the player (hence "clear" key) through the `keys` property in its `LicenseAcquisitionDescription` (in fact, this property is only available for Clear Key). Alternatively, you can have the player fetch the keys from a `licenseAcquisitionURL`, which returns a JSON object containing the same keys.
 
-Please check also our related [API documentation](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html) on how to set these.
+Please check also our related [API documentation](pathname:///theoplayer/v7/api-reference/web/interfaces/SourceDescription.html) on how to set these.
 
 ## SDKs
 
@@ -78,6 +78,6 @@ tpv.getPlayer().setSource(clearKey.build());
 
 ## Resources
 
-- [API Reference - ClearkeyDecryptionKey](pathname:///theoplayer/v6/api-reference/web/interfaces/ClearkeyDecryptionKey.html)
+- [API Reference - ClearkeyDecryptionKey](pathname:///theoplayer/v7/api-reference/web/interfaces/ClearkeyDecryptionKey.html)
 - [Generate MPEG DASH content encrypted with MPEG CENC ClearKey](https://github.com/Dash-Industry-Forum/dash.js/wiki/Generate-MPEG-DASH-content-encrypted-with-MPEG-CENC-ClearKey): DASH IF on GitHub
 - [Clear Key license format](https://w3c.github.io/encrypted-media/#clear-key-license-format): W3C - Encrypted Media Extensions

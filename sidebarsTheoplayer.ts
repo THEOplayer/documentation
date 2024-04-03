@@ -80,7 +80,7 @@ const sidebars: SidebarsConfig = {
           customProps: {
             icon: '🌐',
           },
-          href: 'pathname:///theoplayer/v6/api-reference/web/',
+          href: 'pathname:///theoplayer/v7/api-reference/web/',
         },
         {
           type: 'link',
@@ -89,7 +89,7 @@ const sidebars: SidebarsConfig = {
           customProps: {
             icon: 'android',
           },
-          href: 'pathname:///theoplayer/v6/api-reference/android/',
+          href: 'pathname:///theoplayer/v7/api-reference/android/',
         },
         {
           type: 'link',
@@ -98,7 +98,7 @@ const sidebars: SidebarsConfig = {
           customProps: {
             icon: 'apple',
           },
-          href: 'pathname:///theoplayer/v6/api-reference/ios/',
+          href: 'pathname:///theoplayer/v7/api-reference/ios/',
         },
         {
           type: 'link',
