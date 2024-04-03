@@ -1,3 +1,115 @@
+---
+description: Find out what's new in THEOplayer.
+---
+
+## 🚀 7.0.0 (2024/04/03)
+### Officially announcing THEOplayer 7.0
+Introducing a major version bump to THEOplayer 7.0. This version officially releases all the improvements and developments THEOplayer has achieved since version 6.0.
+
+THEOplayer 7.0 is **backwards compatible for most features but includes some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
+
+- Further improvements to accelerate monetization of your FAST/AVOD service by enabling seamless **THEO Ads integration on Chromecast CAF (v3) receivers**. (Currently available on Web)
+
+- A **smaller and more efficient Android and iOS player** thanks to refactorings and further modularization.
+
+- Added experimental support for using [`ManagedMediaSource` in iOS Safari](https://webkit.org/blog/14735/webkit-features-in-safari-17-1/). This brings **MPEG-DASH and HESP support to iOS**, along with manual quality selection for HLS streams. (Requires iOS 17.1 or higher.)
+
+- Added conformance to **Apple's new privacy policy for API usage**.
+
+- **Performance optimizations** to help our **React Native** and **Flutter SDK**s run smoothly on all devices.
+
+
+### General
+
+#### 💥 Breaking Changes
+
+- Changed the Chromecast default app ID on all platforms to our THEOplayer Chromecast CAF receiver with app ID `8E80B9CE`. If you prefer the previous default web behavior which uses our Chromecast V2 receiver, you can set the `ChromecastConfiguration.appID` to `1ADD53F3`. For our Android and iOS SDKs, we officially only support Chromecast CAF receivers. If you prefer to use the default Google Chromecast CAF receiver instead, you can set the app ID to `CC1AD845`.
+
+#### 🐛 Issues
+
+- Fixed an issue where setting `liveOffset` on a DASH source would be ignored if `suggestedPresentationDelay` was specified in the manifest.
+
+### Web
+
+#### ✨ Features
+
+- Added THEOlive support as a feature to THEOplayer.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- Removed unused `RequestCallback` interface.
+- Removed deprecated asynchronous `Player` APIs in favor of the respective synchronous ones.
+- Removed deprecated `GoogleImaIntegrationFactory#createGoogleImaIntegration` APIs.
+- Removed deprecated `GoogleDaiIntegrationFactory#createGoogleDaiIntegration` APIs.
+- Removed deprecated `CastIntegrationFactory#createCastIntegration` API.
+- Removed deprecated `THEOplayerSettings#isFullScreenOrientationCoupled()` in favor of `FullScreenManager#isFullScreenOrientationCoupled()`.
+- Removed deprecated `THEOplayerSettings#setFullscreenOrientation(@ScreenOrientation int)` in favor of `FullScreenManager#setFullscreenOrientation(@ScreenOrientation int)`.
+- Removed deprecated `THEOplayerSettings#getFullscreenOrientation()` in favor of `FullScreenManager#getFullscreenOrientation()`.
+- Removed deprecated `AdsConfiguration`.
+- Removed `THEOplayerGlobal#getSDKType()` API.
+- Align `LoadedDataEvent#getCurrentTime()` and `WaitingEvent#getCurrentTime()` APIs with the rest of Events to return `double` instead of `String`.
+- Applications using the Cache feature are now required to add `android.permission.FOREGROUND_SERVICE_DATA_SYNC` permission in their AndroidManifest.xml file.
+- Removed deprecated `THEOplayerView.getPlayerSuiteVersion()` and `THEOplayerGlobal.getPlayerSuiteVersion()` APIs.
+- Removed deprecated `MediaTailorSource.Builder` constructors.
+- Removed deprecated `SourceDescription.Builder#ads()` API.
+- Removed deprecated `KeySystemConfiguration.Builder#licenseType()` API.
+
+#### ⚡ Improvements
+
+- Updated the Gson dependency from 2.8.2 to 2.10.1.
+- Updated the Google Chromecast dependency from 21.3.0 to 21.4.0.
+- Updated the Google Mediarouter dependency from 1.2.6 to 1.7.0.
+- Updated the Google IMA dependency from 3.31.0 to 3.32.0.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- Removed deprecated bitcode compilation support.
+- Removed deprecated `THEOplayer.playerSuiteVersion` API.
+- Removed deprecated `THEOplayer.requestCurrentTime` API.
+- Removed deprecated `THEOplayer.requestVideoHeight` API.
+- Removed deprecated `THEOplayer.requestVideoWidth` API.
+- Removed deprecated `THEOplayer.requestCurrentProgramDateTime` API.
+- Removed deprecated `THEOplayer.requestBuffered` API.
+- Removed deprecated `THEOplayer.requestPlayed` API.
+- Removed deprecated `THEOplayer.requestMetrics` API.
+- Removed deprecated `THEOplayer.requestSeekable` API.
+- Removed deprecated `Ads.requestPlaying` API.
+- Removed deprecated `Ads.requestCurrentAds` API.
+- Removed deprecated `Ads.requestCurrentAdBreak` API.
+- Removed deprecated `Ads.requestScheduledAdBreaks` API.
+- Removed deprecated `Ads.requestScheduledAds` API.
+- Removed deprecated `GoogleDAI.requestSnapBack` API.
+- Removed deprecated `GoogleDAI.setSnapBack` API.
+- Removed deprecated Yospace related APIs.
+- Removed deprecated `FullscreenEventTypes.ASPECT_RATIO_CHANGE` API.
+- Removed deprecated `Fullscreen.aspectRatio` & `Fullscreen.setAspectRatio` APIs.
+- Removed deprecated Moat related APIs.
+- Removed deprecated Agama related APIs.
+- Removed deprecated Verizon Media related types.
+- Removed deprecated `EventDispatcher` class.
+- Removed deprecated Conviva related types.
+- Removed deprecated `AudioQuality` type.
+- Removed deprecated `chromeless`, `cssPaths`, `jsPaths`, `jsPathsPre`, `defaultCSS`, `pictureInPicture` and `analytics` properties from `THEOplayerConfiguration`.
+- Removed deprecated SpotX related types.
+- Removed deprecated `analytics` property from `SourceDescription` and `SourceDescription.init`.
+- Removed deprecated `AnalyticsDescription` and `AnalyticsIntegration` types.
+- Removed deprecated `YouboraOptions` type.
+- Removed deprecated `THEOAdDescription` type.
+- Remove deprecated `addJavascriptMessageListener`, `removeJavascriptMessageListener` and `evaluateJavaScript` methods from `THEOplayer`.
+- Removed deprecated `THEOplayer.related` property, `RelatedContent` type, and all related RelatedContent types.
+- Removed deprecated VR related APIs.
+
+### tvOS
+
+#### 💥 Breaking Changes
+
+- Removed deprecated tvOS specific `THEOplayer` initializers.
+- Removed deprecated `MenuItem` and `MenuLayoutConfigurator` types.
+
 ## 🚀 6.13.0 (2024/03/28)
 
 ### Web
@@ -416,7 +528,6 @@
 
 - Fixed an issue where providing the offset value for an AdDescription as a Timecode string (HH:mm:ss.SSS) was not supported.
 - Fixed an issue where the volume value in a VolumeChangeEvent would be incorrect.
-
 
 ### Chromecast
 
@@ -1556,7 +1667,6 @@ THEOplayer 5.0 is **backwards compatible for most features but includes some bre
 
 - Fixed an issue where the cached `SourceDescription` would lose DRM parameters.
 - Fixed an issue where the existing caching tasks would return incorrect state after app restart.
-
 
 ## 🚀 4.12.2 (2023/04/25)
 
@@ -3083,7 +3193,6 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 - Sub-second latency at scale.
 - Fast channel change, immediately at the live latency cross-platform.
 - Improved ABR.
-
 
 ### Web
 
@@ -4660,3 +4769,3066 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 #### ✨ Features
 
 - Add version and playerSuiteVersion API.
+
+## 🚀 2.71.0 (2020/05/26)
+
+### General
+
+#### ✨ Features
+
+- Added support for setting Server Certificates passed in through a SourceDescription.
+
+#### ⚡ Improvements
+
+- Added support for CMAF streams where `trun` atoms don't contain durations.
+
+#### 🐛 Issues
+
+- Fix an issue where subtitles could sometimes flicker, or appear a bit too late.
+- Fix an issue where Google IMA ads and content are playing at the same time.
+- Fix an issue where playback would sometimes stall on HLS discontinuities.
+- Fixed an issue where DASH adaptation sets with codecs `"vtt"` were not recognized as WebVTT.
+- Fixed various edge cases where the player would sometimes fail to switch to the next period in a multi-period DASH stream.
+
+### Web
+
+#### ✨ Features
+
+- Add support for Conax FPS `ContentId` flow
+- Add `allowedMimeTypes` to `AdsConfiguration`.
+
+#### 🐛 Issues
+
+- Fix an issue where no contentprotection error is thrown when HDCP input is too low
+- Fix an issue where a FreeWheel overlay ad would be obscured by another element.
+- Fix an issue where the player would sometimes stall indefinitely when seeking over a mid-roll ad in a Google DAI DASH stream.
+- Fix an issue where the player would crash if an IMA ad errors using `allowNativeFullscreen` on iOS devices.
+- Normalization of THEOplayerAdDescription with improved  handling of the ad source type
+
+### Android
+
+#### ✨ Features
+
+- Add 'Omid' and 'OmidFriendlyObstruction' to the ads API for registering video controls overlaying obstructions as friendly. 
+- Migrate from Android Support Libraries to Jetpack (AndroidX) Libraries.
+
+#### ⚡ Improvements
+
+- Make FullScreenActivity extend AppCompatActivity.
+
+#### 🐛 Issues
+
+- Fix an issue where Google DAI DASH streams would not play
+
+#### ⚠ Known Limitations
+
+- Using THEOplayer now requires the AndroidX package.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fix an issue where `THEOAdDescription` on a source was not handled properly
+
+## 🚀 2.70.3 (2020/05/26)
+
+### General
+
+#### 🐛 Issues
+
+- Fix an issue where DASH VOD stream will not play when the publish time is larger than the server time
+
+## 🚀 2.70.2 (2020/05/19)
+
+### iOS
+
+#### ⚡ Improvements
+
+- Update Youbora Analytics integration to version 6.5.5
+
+## 🚀 2.70.1 (2020/05/11)
+
+### iOS
+
+#### 🐛 Issues
+
+- Add parsing for unknown adtype GoogleIMA
+
+## 🚀 2.70.0 (2020/04/23)
+
+### General
+
+#### ✨ Features
+
+- Implemented http-direct schemes: `urn:mpeg:dash:utc:direct:2012` and `urn:mpeg:dash:utc:direct:2014` for the UTCTiming element in MPEG-DASH.
+- Added a flag `retainPlaybackRateOnSourceChange` to `PlayerConfiguration` that allows `playbackRate` to be preserved when changing the source.
+
+#### 🐛 Issues
+
+- Fix an issue where the player throws an exception when the lang = `und` on a CEA608 texttrack in DASH.
+- Fix an issue where a countdown of one second was shown for Verizon Media ads when the `defaultSkipOffset` was set to `0`.
+- Fix an issue where Google IMA ads with a percentage timeOffset would not play.
+- Fix an issue where the player could crash when passing empty VOD properties in a live Google DAI source.
+- Fix an issue where the content would not resume after a playback error occurred during a THEO advertisement.
+- Fix an issue where the player could crash on HLS streams with two consecutive MPEG-TS segments with overlapping decoding timestamps on Safari.
+- Fix an issue where `playbackRate` was not properly reset to 1 after a source change.
+
+### Web
+
+#### ⚡ Improvements
+
+- The player will now report a Video Playback Failure to Conviva on a `segmentnotfound` event.
+- The player will now report the buffer length to Conviva.
+
+#### 🐛 Issues
+
+- Fix an issue where the player would keep dispatching offline/online events for HLS while being offline.
+- Fix an issue in the FreeWheel integration where an uncaught exception was logged in the browser console.
+- Fix an issue where THEO ads would have an incorrect skipOffset.
+- Fix an issue where THEO companion ads were exposed incorrectly.
+- Fix an issue where THEO ads would not always expose its AdBreak.
+
+### Android
+
+#### 🐛 Issues
+
+- Fix an issue where DRM license was not renewed correctly.
+
+### iOS
+
+#### ✨ Features
+
+- Add support for Google DAI `adTagParameters` property.
+- Add `assetInfoResponse` event in Verizon Media pre-integration.
+- Add OMID API on `player.ads.omid` to help configure the ad viewability measurements.
+
+#### 🐛 Issues
+
+- Fix an issue where seeking to Infinity would not work correctly.
+- Fix an issue where Verizon Media preplay event response was missing.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix an issue where the `volume` and `muted` properties on the Chromecast receiver would report incorrect values.
+- Fix an issue where setting the `src` property on the Chromecast receiver would not work properly.
+- Fix an issue where calling `destroy` on the Chromecast receiver would not work properly.
+
+## 🚀 2.69.2 (2020/04/17)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fix an issue where building with Xcode 11.4 throws an error.
+
+## 🚀 2.69.1 (2020/04/02)
+
+### iOS
+
+#### ⚡ Improvements
+
+- Add a `PiPConfiguration` property to the THEOplayerConfiguration. The Boolean `pictureInPicture` property is deprecated in favor of this property in the THEOplayerConfiguration. The `PiPConfiguration` needs to be initialized with the Boolean `retainPresentationModeOnSourceChange` property.
+
+## 🚀 2.69.0 (2020/03/30)
+
+### General
+
+#### ⚡ Improvements
+
+- Updated support for Conviva SDK 2.151.0.37016 .
+
+#### 🐛 Issues
+
+- Fix an issue where the `muted`, `volume` and `playbackRate` properties were not preserved after setting a new DASH source.
+- Fix an issue where the resume tracking event is dispatched when an ad starts playing for the first time.
+- Fix an issue where the playback rate of Verizon Media advertisements would not always be set to 1.
+- Fix an issue where the Yospace session was still active after destroying the player.
+- Fix an issue where the player could stall indefinitely when a DASH live stream contains a period that is no longer available.
+- Fix an issue where the player could crash when playing a DASH live stream with many very short periods.
+- Fix an issue where an HLS stream that starts with a negative video decoding timestamp could stall after seeking.
+- Fix an issue where Titanium DRM license acquisition error message was inconsistent in Widevine and Playready.
+- Fix an issue where the displayed live offset (in mobile UI) would sometimes be a positive number.
+- Fix an issue where Verizon Media ads were not skipped when the skip button was clicked.
+
+### Web
+
+#### ✨ Features
+
+- ErrorEvent will now contain an optional errorObject, which is a THEOError containing more information about the error.
+
+#### 🐛 Issues
+
+- Fix an issue where text tracks with no cues were exposed on Safari when using native playback.
+
+### Android
+
+#### ✨ Features
+
+- Add a `nativeRenderingEnabled` flag to the TypedSource API to configure native video rendering. The experimentalRenderingEnabled property is deprecated in favor of this property.
+- Add a `nativeUiRenderingEnabled` flag to the TypedSource API to configure native UI rendering.
+
+### iOS
+
+#### ✨ Features
+
+- Add property `retainPresentationModeOnSourceChange` to the Picture-in-Picture API.
+- Add support for BuyDRM KeyOS Fairplay.
+- `ErrorEvent` will now contain an optional `errorObject`, containing more information about the error.
+- Add `player.network` API for fatal and non-fatal network related errors. Events that occur will be of type `NetworkErrorEvent` and contain a NetworkError as `error`.
+
+#### ⚡ Improvements
+
+- Adding a listener for 'error' on the player will now also show fatal network-related errors.
+
+#### 🐛 Issues
+
+- Fix an issue where passing GoogleDAI api key was not working.
+- Fix an issue where the verizon media notification bar would overlap the player seekbar.
+- Fix an issue where caching was not working for DRM protected streams.
+- Fix an issue where Picture-in-picture would have a gray overlay on top of the player view.
+- Fix an issue where Picture-in-picture would have a wrong visibility.
+- Fix an issue where Picture-in-picture would mask views and prevent tapping.
+- Fix an issue where Application would crash if THEOplayer is destroyed while Picture-in-picture is enabled.
+- Fix an issue where PROGRESS event comes before DURATION_CHANGE event.
+- Fix an issue where memory was not released when destroying THEOplayer.
+
+### tvOS
+
+#### ✨ Features
+
+- Add support for BuyDRM KeyOS Fairplay.
+- `ErrorEvent` will now contain an optional `errorObject`, containing more information about the error.
+- Add `player.network` API for fatal and non-fatal network related errors. Events that occur will be of type `NetworkErrorEvent` and contain a NetworkError as `error`.
+
+#### ⚡ Improvements
+
+- Adding a listener for 'error' on the player will now also show fatal network-related errors.
+
+#### 🐛 Issues
+
+- Fix an issue where PROGRESS event comes before DURATION_CHANGE event.
+
+## 🚀 2.68.1 (2020/03/20)
+
+### General
+
+#### 🐛 Issues
+
+- Fix an issue where an MPEG-DASH stream containing audio segments with a certain timescale failed to start playing.
+
+## 🚀 2.68.0 (2020/02/21)
+
+### General
+
+#### ✨ Features
+
+- Implemented `player.network.online` along with `online` and `offline` events for DASH live streams with updating manifests.
+- Add a flag for using native playback for HLS streams.
+
+#### ⚡ Improvements
+
+- When a DASH live stream becomes unavailable, the player will now always keep attempting to reconnect rather than halting after a certain amount of tries.
+- The player now lazily loads the segment indexes (signaled by an `indexRange` attribute) in an MPEG-DASH stream.
+- When the player fails to fetch an HLS manifest, it will no longer retry the request with "cache-busting" HTTP headers.
+
+#### 🐛 Issues
+
+- Fix an issue where the video playback error would not be reported to Conviva.
+- Fix an issue where the quality submenu would sometimes not expand completely.
+- Fix an issue where the position of settings menu is not changed when exiting the fullscreen mode.
+- Fix an issue where `player.source` would report an incorrect value when setting the source to `undefined`.
+- Fix an issue where `PersistVolume` configuration would not work.
+- Fix an issue where playback would no longer succeed after a source change when using Google IMA ads.
+- Fix an issue where the player would not respect a seek before the first play.
+- Fix an issue where a `loadeddata` event is dispatched for each period in a multi-period DASH stream.
+- Fix an issue where a Google IMA mid-roll ad would sometimes be played as a pre-roll ad after a source change.
+- Fix an issue where the player would sometimes try to fetch an segment before it is available in a low-latency MPEG-DASH stream.
+- Fix an issue where auto-playing an HLS event stream would sometimes not start at the live point.
+- Fix an issue where DRM streams would not resume after playing IMA ads in native fullscreen.
+- Fix an issue where returning from an IMA ad in `allowNativeFullscreen` would sometimes result in a seek to the start of a DVR-stream.
+- Fix an issue where HLS CMAF streams without a default sample duration for their AAC audio failed to play.
+- Fix an issue where a DASH live stream containing multiple audio tracks with different `SegmentTimeline`s would sometimes fail to play.
+- Fix an issue where HLS date range cues would sometimes have their start time set to `NaN`.
+- Fix an issue where the click-through link propagates to all FreeWheel ads.
+- Fix an issue where the playback speed different from the default value would not be restored after playing an IMA ad with nativeFullScreen.
+- Fix an issue where FreeWheel ads would start replaying in the background.
+- Fix an issue where seeking to the end of an MPEG-DASH period would result in a seek to the start of the period.
+
+### Web
+
+#### ✨ Features
+
+- Add support for exposing `admetadata` and `adbuffering` events in Google IMA integration.
+- Add `pingerror` event in Verizon Media pre-integration.
+- Add support to report `adStart` and `adEnd` to Conviva analytics.
+
+#### ⚡ Improvements
+
+- Use `SessionStorage` over `LocalStorage` for session data for improved GDPR compliance.
+- Remove fallback for cookies on platforms that do not support `LocalStorage` or `SessionStorage`
+
+#### 🐛 Issues
+
+- Fix an issue where seeking during AirPlay causes a brief seeking glitch.
+- Fix an issue where the player failed to load when `window.__esModule` was set by another script.
+- Fix an issue where the `adbreakbegin` event precedes the `play` event for pre-rolls in the THEO ad system.
+- Fix an issue where a `readystatechange` would not update the player state for Conviva analytics.
+- Fix an issue where DASH and HLS streams failed to play on older LG webOS smart TVs.
+- Fix an issue where the player would sometimes seek to the wrong frame after ending an AirPlay session.
+
+### Android
+
+#### ✨ Features
+
+- Add `pingerror` event in Verizon Media pre-integration.
+
+#### ⚡ Improvements
+
+- Set video Quality with the (getter) video Quality is now possible as they are of the same type.
+
+#### 🐛 Issues
+
+- Fix an issue where switching to automatic quality selection on a video track was not possible upon passing null.
+- Fix an issue where RemoveCue event did not have a Cue property.
+
+### iOS
+
+#### ✨ Features
+
+- Add AirPlay API.
+- Add `pingerror` event in Verizon Media pre-integration.
+
+#### 🐛 Issues
+
+- Fix an issue where THEOplayer was not aware of AirPlay state changes.
+- Fix an issue where playback on device resets/gives error after stopping AirPlay from TV.
+- Fix an issue where video playback was failing when passing an ad with timeOffset as integer.
+- Fix an issue where `WAITING` event was not dispatched correctly.
+- Fix an issue where `CANPLAY` and `CANPLAYTHROUGH` events were not dispatched correctly.
+- Fix an issue where playback rate goes back to normal after seeking or pausing.
+- Fix an issue where video playback stops after an IMA ad-roll.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix an issue where incorrect `currentTime` values caused UI and seeking issues while casting a live stream to Chromecast.
+
+#### ⚠ Known Limitations
+
+- THEOplayer pauses after playing a Google IMA advertisement.
+
+## 🚀 2.67.0 (2020/01/17)
+
+### General
+
+#### 🐛 Issues
+
+- Fix an issue where the player was not sized correctly for some customers.
+- Fix an issue where the player was not able to select audio track with `AUTOSELECT=YES` option.
+- Fix an issue where the player did not fall back to the default license acquisition URLs for VuDRM when playing PlayReady or Widevine protected content.
+- Fix an issue where the player would sometimes stay in paused state while clicking a paused IMA advertisement
+- Fix an issue where the player was not able to select an initial audio track when no `DEFAULT=YES` or `AUTOSELECT=YES` option was specified.
+- Fix an issue where setting a `targetQuality` would cause a duplicate item in the quality selector when switching to another period.
+- Fix an issue where text tracks would be duplicated for HLS streams with Google IMA ads and `allowNativeFullscreen` enabled.
+
+### Web
+
+#### ✨ Features
+
+- Add integration for Comcast Fairplay DRM
+- Add support for iOS native fullscreen for Google IMA advertisements when `allowNativeFullscreen` is configured.
+
+#### 🐛 Issues
+
+- Fix an issue where FreeWheel's video state is not always correctly reported.
+- Fix an issue in the THEO ad system where the clickthrough url did not change between successive VAST linear ads.
+
+#### ⚠ Known Limitations
+
+- Due to platform restrictions iPhone devices only show the limited native fullscreen UI, which excludes the IMA clickthrough button.
+
+### Android
+
+#### ✨ Features
+
+- Add support for Verizon Media Server-Side Ad Insertion.
+
+#### ⚡ Improvements
+
+- Improve accessibility of player for keyboard and screenreader users.
+
+### iOS
+
+#### ✨ Features
+
+- Add support for Verizon Media Server-Side Ad Insertion.
+
+## 🚀 2.66.0 (2019/12/09)
+
+### General
+
+#### ⚡ Improvements
+
+- Disabled native video element controls during playback of FreeWheel ads.
+- When playing a HLS stream with multiple tracks in the MPEG-TS segments, the player now selects the first track to align with the Apple reference implementation.
+- Improve DRM capability checking.
+- Minor improvements to AirPlayer.
+- Fix an issue where time-related properties were reported incorrectly for live streams while casting.
+- Fix an issue where the player would dispatch a `durationchange` event with value `NaN` when switching to Chromecast.
+- Improve dispatch of events while switching to Chromecast.
+
+#### 🐛 Issues
+
+- Fix an issue where the player unnecessarily switched to alternative quality renditions after manual quality switch.
+- Fix an issue where the player always started the next period in the lowest quality when playing a DASH stream on Android.
+- Fix an issue where start and end times for MP4-embedded WebVTT subtitles in multi-period DASH streams were miscalculated.
+- Fix an issue where the player selects the wrong quality to calculate the program date time.
+- Fix an issue where the player would briefly display a spinner while switching periods in a DASH stream.
+- Fix an issue where the player would sometimes stall indefinitely when switching periods in a DASH stream.
+
+### Web
+
+#### ✨ Features
+
+- Add `content-protection` type and sub-types in Network API's request object.
+- Add support for Google DAI DASH.
+- Add Google DAI stream request configuration options `adTagParameters`, `authToken` and `streamActivityMonitorID`.
+
+#### ⚡ Improvements
+
+- Dispatch an `updateadbreak` event in Google IMA integration to signal that the AdBreak's timeOffset has been updated. This is the case when an ad has been scheduled using percentages.
+
+#### 🐛 Issues
+
+- Fix an issue where using percentages for scheduling ads in Google IMA would not work.
+
+### Android
+
+#### ✨ Features
+
+- Add support for Google IMA Dynamic Ad Insertion (DAI).
+
+#### 🐛 Issues
+
+- Fix an issue where `NoClassDefFoundError` is thrown on devices with an API lower than 19.
+- Fix an issue where `ConcurrentModificationException` is thrown while casting to Chromecast.
+- Fix an issue where `requestCurrentProgramDateTime` crashes the application.
+
+#### ⚠ Known Limitations
+
+- When playing a Google DAI advertisement the THEOplayer UI is disabled.
+- When playing a Google DAI advertisement and the application goes to background and then to foreground, the advertisement automatically continues playing.
+
+### iOS
+
+#### ✨ Features
+
+- Add `CastStrategy.auto` to automatically connect to a Chromecast session when the device is connected.
+- Add support for Google IMA Dynamic Ad Insertion (DAI).
+
+#### 🐛 Issues
+
+- Fix a memory leak issue while casting to Chromecast.
+- Fix an issue where using the Reachability Module causes some interference with THEOplayer.
+- Fix an issue where `AdError` event was not triggered.
+
+#### ⚠ Known Limitations
+
+- THEOplayer has API limitations on iOS 10. For more information please contact our support team.
+- When playing a Google DAI advertisement the THEOplayer UI is disabled.
+- When playing a Google DAI advertisement and the application goes to background and then to foreground, the advertisement automatically continues playing.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix an issue where switching audio tracks while casting took a long time to take effect.
+
+## 🚀 2.65.1 (2019/11/17)
+
+### iOS
+
+#### ⚡ Improvements
+
+- Introduced module stability from Swift 5.1
+
+### tvOS
+
+#### ⚡ Improvements
+
+- Introduced module stability from Swift 5.1
+
+## 🚀 2.65.0 (2019/11/08)
+
+### General
+
+#### ✨ Features
+
+- Add support for CEA-608 captions in DASH streams.
+
+#### ⚡ Improvements
+
+- Ensure all analytics updates are sent before the page unloads.
+
+#### 🐛 Issues
+
+- Fix an issue where the Chromecast `statechange` event was dispatched too early when disconnecting from a receiver.
+
+### Web
+
+#### 🐛 Issues
+
+- Fix an issue where the `mediaUrl` of Google IMA ads is sometimes not exposed.
+- Fix an issue where DASH streams would sometimes not replay in Edge/IE.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix an issue where subtitle metadata that is too long would cover too much of the screen while casting.
+
+## 🚀 2.64.1 (2019/11/08)
+
+### General
+
+#### 🐛 Issues
+
+- Fix an issue where DASH streams would not play on Firefox.
+
+## 🚀 2.64.0 (2019/10/04)
+
+### General
+
+#### ✨ Features
+
+- Add support for alternative audio renditions without `URI` attribute in HLS.
+
+#### ⚡ Improvements
+
+- Do not create audio and video tracks for variant streams with unsupported codecs in HLS.
+
+#### 🐛 Issues
+
+- Fix an issue where track switches would not always work for multi-period DASH streams.
+- Fix an issue where ad-related UI elements would reappear in later ads.
+- Fix an issue where multi-audio HLS streams would sometimes fail to play.
+- Fix an issue where the UI would sometimes not show the buffered ranges correctly in the progress bar.
+- Fix an issue in the IMA integration where sequential ads can not always be paused.
+
+### Web
+
+#### ✨ Features
+
+- Add `content-protection` type and sub-types in Network API's request object.
+
+#### ⚠ Known Limitations
+
+- Setting IMA mid-roll using percentage does not work.
+
+### Android
+
+#### ✨ Features
+
+- Add a new strategy `CastStrategy.AUTO` which enable automatically casting a new source when the device is connected to Chromecast.
+
+#### 🐛 Issues
+
+- Fix an issue where a new player instance couldn't connect to an existing Chromecast session.
+
+#### ⚠ Known Limitations
+
+- Setting IMA mid-roll using percentage does not work.
+
+### iOS
+
+#### ✨ Features
+
+- Add support for versioning in the `THEOplayer.version` API.
+
+#### ⚡ Improvements
+
+- Removed default user-agent from SpotX integration to be compatible with iOS 13. If your implementation relies on this default behaviour, please follow our [workaround guide](https://docs.portal.theoplayer.com/docs/docs/getting-started/ios/ios-sdk-ads#spotx-pre-integration)
+
+#### 🐛 Issues
+
+- Fix an issue where seek did not work after the video has ended.
+- Fix an issue where IMA ad didn't play on iOS.
+
+#### ⚠ Known Limitations
+
+- Setting IMA mid-roll does not work.
+
+## 🚀 2.63.0 (2019/09/11)
+
+### General
+
+#### 🐛 Issues
+
+- Fix an issue where the player wouldn't throw an error when the status of a media session key would be `output-restricted` or `internal-error`.
+- Fix an issue in the THEO ad system where Tracking Events in the wrapper wouldn't fire for linear VAST ads.
+- Fix an issue where live DASH streams with unsupported representations would crash after a manifest update.
+- Fix an issue where playback would not be resumed at the correct position after seeking over an ad.
+- Fix consistency issues with UI tooltips.
+
+### Web
+
+#### ✨ Features
+
+- Add distinction between main and descriptions kind for HLS audio tracks.
+- Upgrade Yospace integration from 1.2.x to 1.7.9.
+- Add support for DASH with EMSG for the Yospace integration.
+- Add an ABR strategy which optimizes playback of low latency chunked streams. This can be enabled by adding `lowLatency` in [TypedSource](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-typedsource/).
+
+#### ⚡ Improvements
+
+- Improved behaviour when placing focus on the volume bar to improve keyboard accessibility.
+
+#### 🐛 Issues
+
+- Fix an issue where content would not play fullscreen after playing a pre-roll ad in fullscreen on iOS Safari.
+
+#### 👎 Deprecations
+
+- Removed pre-integration for MediaMelon QBR.
+
+### Android
+
+#### ✨ Features
+
+- Add support for `#EXT-X-DATERANGE` tags in HLS through the `player.textTracks` API.
+
+#### 🐛 Issues
+
+- Fix an issue where replay did not work while connected to Chromecast.
+- Fix an issue where seek paused the video while connected to Chromecast.
+- Fix an issue where the duration of the stream was not correct while connected to Chromecast.
+- Fix an issue where the application would crash when changing the Chromecast session.
+- Fix an issue on Edge and Internet Explorer where seeking to the end of a DASH stream or replaying it would not work correctly.
+
+#### ⚠ Known Limitations
+
+- Replay while connected to Chromecast does not work. [See workaround](https://support.theoplayer.com/hc/en-us/articles/360007668719#replay-while-connected-to-chromecast)
+
+### iOS
+
+#### ✨ Features
+
+- Add distinction between main and descriptions kind for HLS audio tracks.
+- Add support for native `UIGestureRecognizer` through `THEOplayer` API.
+- Add support for aspect ratio in the `THEOplayer.fullscreen` API.
+
+#### 🐛 Issues
+
+- Fix an issue where replay did not work while connected to Chromecast.
+- Fix an issue where seek paused the video while connected to Chromecast.
+- Fix an issue when selecting one audio track would disable all audio tracks.
+- Fix an issue where THEOplayer would deactivate `AVAudioSession` when the application goes to background.
+
+#### ⚠ Known Limitations
+
+- Replay while connected to Chromecast does not work. [See workaround](https://support.theoplayer.com/hc/en-us/articles/360007668719#replay-while-connected-to-chromecast)
+- Leaving a Chromecast session while playing a DASH stream causes an unrecoverable error. [See workaround](https://support.theoplayer.com/hc/en-us/articles/360007668719#leaving-chromecast-session-playing-DASH-stream)
+
+## 🚀 2.61.0 (2019/07/17)
+
+### Web
+
+#### ✨ Features
+
+- Add support for WebVTT subtitles embedded in ISOBMFF segments.
+- Add support for `#EXT-X-DATERANGE` tags in HLS through the `player.textTracks` API.
+
+#### ⚡ Improvements
+
+- Improve Agama integration by upgrading support to EMP Client version 3.7.
+- Improve Agama integration by suspending reporting on the sender side while the content is being cast.
+
+#### 🐛 Issues
+
+- Fix an issue where the ABR of the player would not always correctly switch when using response interceptors.
+- Fix an issue where the ABR of the player would not always correctly switch on streams with small segments.
+
+### Android
+
+#### ✨ Features
+
+- Add support for Agama analytics.
+- Add support for WebVTT subtitles embedded in ISOBMFF segments.
+
+#### 🐛 Issues
+
+- Fix an issue where requesting video width/height sometimes caused an exception.
+
+### iOS
+
+#### ✨ Features
+
+- Add support for Agama Analytics.
+
+#### 🐛 Issues
+
+- Fix an issue where device volume was not reported properly.
+- Fix an issue where advertisement volume was not reported properly.
+- Fix an issue where the ProgressEvent was not reported.
+
+### Chromecast
+
+#### ✨ Features
+
+- Add support for Agama analytics on Chromecast.
+
+## 🚀 2.60.0 (2019/07/01)
+
+### General
+
+#### ✨ Features
+
+- Add distinction between captions and subtitles kind of text tracks for DASH manifests.
+- Add distinction between captions and subtitles kind of text tracks for HLS manifests with `#EXT-X-MEDIA` tags.
+
+#### ⚡ Improvements
+
+- Improve buffer segment selection and fetching for DASH streams.
+
+#### 🐛 Issues
+
+- There are known major issues with the Chromecast feature in this release. These are planned to be fixed in 2.61.1.
+- Fix an issue where the player would sometimes hang on a discontinuity edge on Safari.
+- Fix an issue where the player would not dispatch an `adend` event when ending a non-linear ad.
+- Fix an issue where Conviva analytics would not work correctly if ads were configured in the source description.
+- Fix an issue where sometimes a TTML text track was created even when the stream does not contain TTML data.
+- Fix an issue where it was not possible to pause or play by clicking on the video area while casting to Chromecast.
+- Fix an issue where the direction indicator did not update when looking around in a VR video.
+- Fix an issue where the player sometimes leaked DRM key sessions after playing multiple DRM-protected streams.
+
+### Web
+
+#### ✨ Features
+
+- Add support for inspecting ads and ad breaks from Google IMA through the ads API. This also adds the following events to the ads API: `addad`, `updatead`, `addadbreak`, `removeadbreak`.
+- Add `systemCode` to `player.error` and `contentprotectionerror` event for key system specific error codes.
+
+#### ⚡ Improvements
+
+- Improve the startup time of the player when playing an IMA pre-roll advertisement.
+
+#### 🐛 Issues
+
+- Fix an issue where the fullscreen button tooltip did not change to 'Exit fullscreen' when in fullscreen mode.
+
+### Android
+
+#### ✨ Features
+
+- Add flag to `THEOplayerGlobal` to force use `customWebView` for minapi16
+- Add the ability to join a Chromecast session
+- Add support for offline Uplynk DRM
+- Add support for multi key session streams
+- Add support for manifest-only PSSH streams
+- Add support for offline multi key session streams
+
+#### 🐛 Issues
+
+- Fix an issue where Google IMA Ad events were not dispatched correctly.
+
+### iOS
+
+#### ✨ Features
+
+- Update iOS SDK to Swift 5.0
+- Add the ability to join a Chromecast session
+- Recognise TextTrack accessibility kind values
+
+#### 🐛 Issues
+
+- Fix an issue where leaving a Chromecast session, the channel was not cleared properly.
+- Fix an issue where Google IMA Ad events were not dispatched correctly.
+
+#### 👎 Deprecations
+
+- Objective-C is no longer supported. Please update to the Swift API. If you have questions, please contact our support team.
+
+### tvOS
+
+#### ✨ Features
+
+- Update tvOS SDK to Swift 5.0
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix an issue where it was not possible to set the target quality while casting.
+
+## 🚀 2.59.0 (2019/05/07)
+
+### General
+
+#### ✨ Features
+
+- Add support for rendering of sideloaded WebVTT text tracks in native fullscreen on iOS Safari.
+
+#### ⚡ Improvements
+
+- Improve scrubbing while casting to Chromecast.
+
+#### 🐛 Issues
+
+- Fix an issue where AES-128 encrypted HLS streams failed to play.
+- Fix an issue where certain HLS streams failed to play in some browsers when using `player.src`.
+- Fix an issue where certain HLS streams stalled near the end of the video.
+- Fix an issue where seeking after a stream ends restarts the media at the beginning.
+- Fix an issue where Chromecast sender had incorrect property values after media ended.
+- Fix an issue where Chromecast sender could not replay or seek after media ended.
+- Fix an issue where Chromecast sender could not manually switch audio or video.
+- Fix an issue where Chromecast receiver volume was set to sender volume.
+- Fix an issue with UI controls after starting a Chromecast session.
+- Fix a issue with HLS playback where incomplete audio frames are not always correctly silenced.
+- Fix an issue where `adbreakbegin` event would sometimes dispatch too often in the THEO ad system.
+- Fix an issue where the player would sometimes give double `ended` events after a Google IMA post-roll.
+- Fix an issue where the `played` property would sometimes return incorrect values for HLS streams.
+- Fix an issue where a clipped video would briefly show its unclipped duration in the controls.
+
+### Web
+
+#### 🐛 Issues
+
+- Fix an issue where images with parentheses in the URL did not render correctly.
+- Fix an issue where the AirPlay target selection menu would not show again after closing it previously.
+- Fix an issue where calling destroy on the player would not remove the global beforeunload event handler
+- Fix an issue where errors appeared in the browser console while playing an audio-only HLS stream.
+
+### Android
+
+#### 🐛 Issues
+
+- Fix an issue that caused crash when MOAT analytics was enabled but the ad did not support MOAT tracking
+- Fix an issue where inBandMetadataTrackDispatchType was missing when ADDTRACK event occurs
+
+### iOS
+
+#### 👎 Deprecations
+
+- Objective-C support is deprecated, and is scheduled to be removed in the next version (2.60.0). Please update to the Swift API. If you have questions, please contact our support team.
+
+#### 🐛 Issues
+
+- Fix an issue with playing VR/360 source.
+- Fix an issue where isDestroyed property was not correctly set.
+- Fix a Google IMA issue where "Learn More" (top right corner) and content countdown (bottom left corner) are partially hidden on iPhoneX(+).
+- Fix an issue where the UI sometimes showed an incorrect selected audio track.
+- Fix an issue that shows indefinite spinner when seeking while using Airplay.
+- Fix an issue when subtitle font size increased during scrubbing/seeking.
+- Fix an issue when player state was not properly synced with AirPlay state.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix an issue that prevented volumeChanged event from being triggered
+- Fix missing pause icon
+
+## 🚀 2.58.0 (2019/03/26)
+
+### General
+
+#### ⚡ Improvements
+
+- Improve internal asynchronous handling of synchronous API methods (setting source / reset / destroy)
+
+### Web
+
+#### ✨ Features
+
+- Add integration for Uplynk Fairplay DRM
+
+#### 🐛 Issues
+
+- Fix an issue where the player would show an incorrect buffering spinner when using Conviva analytics
+
+### iOS
+
+#### ✨ Features
+
+- Add integration for Uplynk Fairplay DRM
+
+### tvOS
+
+#### ✨ Features
+
+- Add integration for Uplynk Fairplay DRM
+
+## 🚀 2.57.0 (2019/03/11)
+
+### Web
+
+#### ✨ Features
+
+- Add integration for Azure Widevine DRM
+- Add integration for Verimatrix Fairplay DRM
+
+#### 🐛 Issues
+
+- Fix an issue where the UI sometimes did not display the available video qualities of a multi-audio HLS stream.
+- Fix an issue where HLS streams on Internet Explorer on Windows 7 would not play.
+- Fix an issue where up-next would keep redirecting on single-page web apps.
+- Fix an issue where up-next would appear during linear advertisements.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for Verimatrix MultiRights FairPlay DRM.
+
+#### 🐛 Issues
+
+- Fixed an issue where ad related events were not reported correctly.
+- Fixed an issue where setting the current time for Chromecast did not work.
+
+## 🚀 2.56.0 (2019/02/25)
+
+### Web
+
+#### 🐛 Issues
+
+- Fix an issue where the wrong content type was sent to the chromecast
+
+### Android
+
+#### ✨ Features
+
+- Added support for Axinom Widevine DRM.
+- Implement track switching for experimental rendering pipeline.
+
+#### ⚡ Improvements
+
+- Improve minapi16 variant to use the packaged WebView replacement in case an older WebView Chrome version is detected on the device.
+- Various improvements to experimental rendering pipeline.
+
+#### 🐛 Issues
+
+- Various fixes to experimental rendering pipeline.
+
+### Android TV
+
+#### ✨ Features
+
+- Added support for Axinom Widevine DRM.
+- Implement track switching for experimental rendering pipeline.
+
+#### ⚡ Improvements
+
+- Various improvements to experimental rendering pipeline.
+
+#### 🐛 Issues
+
+- Various fixes to experimental rendering pipeline.
+
+### iOS
+
+#### ✨ Features
+
+- Improved native playback logic.
+- Added support for Axinom FairPlay DRM.
+- Added support for offline Xstream FairPlay DRM.
+- Extend the ABR API with two new properties: preferredPeakBitRate and preferredMaximumResolution
+
+#### 🐛 Issues
+
+- Fixed an issue where Chromecast device selection was not visible.
+- Fixed an issue where device and statusbar orientation were not correct when caching was enabled.
+- Fixed an issue where a caching task did not transition to the error state
+- Fixed an issue where caching a DRMToday protected stream did not work
+- Removed SpotX Advertising Identifier for non-SpotX customers.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix an issue where the chromecast ended up in the pause state for mp4
+
+## 🚀 2.55.0 (2019/02/11)
+
+### Web
+
+#### 🐛 Issues
+
+- Fix an issue where sometimes HLS subtitle renditions with `DEFAULT=YES` were not automatically selected.
+- Fix an issue where TTML subtitles would sometimes get stuck.
+- Fix an issue where scheduling an ad would resume playback on a paused player.
+- Fix an issue where SpotX ads would not always be able to play.
+- Fix an issue where Picture-in-picture would not behave correctly in Safari.
+- Fix an issue where thumbnails would not behave correctly.
+
+## 🚀 2.54.0 (2019/01/28)
+
+### Web
+
+#### ✨ Features
+
+- Added integration with Axinom DRM
+
+#### 🐛 Issues
+
+- Fix an issue where Google IMA would not always correctly switch between two ads.
+- Fix an issue with seeking before the player is fully initialized.
+
+### iOS
+
+#### ✨ Features
+
+- Added license renewal for offline DRM streams.
+
+#### 🐛 Issues
+
+- Fixed an issue with Fairplay DRM protected streams.
+- Fixed issue when playing multiple DRM protected streams simultaneously.
+- Fixed an issue where Chromecast couldn't register a channel.
+- Fix an issue with scrubbing when DRM protected stream was played.
+
+## 🚀 2.53.0 (2019/01/15)
+
+### Web
+
+#### ✨ Features
+
+- Added support for Vimond FairPlay DRM.
+- Added support for CMAF segments in HLS.
+
+#### 🐛 Issues
+
+- Fix an issue where DASH livestreams would report seekable.start as zero incorrectly.
+- Fix an issue where streams using SIDX would not play.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for Vimond FairPlay DRM.
+
+## 🚀 2.52.0 (2019/01/02)
+
+### Web
+
+#### ✨ Features
+
+- Added the possibility to configure title attribute in the Now Playing section of the Control Center
+- Allow vmap/adrule to be scheduled dynamically (via `player.ads.schedule`) by addition of the `adSource` API.
+- Add PlayReady playback support for Tizen 3.0.
+
+#### 🐛 Issues
+
+- Fix an issue where a clip would sometimes play beyond its end time.
+- Fix an issue where some IMA ads using a custom timeOffset wouldn't play
+- Fix an issue where the player would sometimes accidentally seek back to the start of the stream
+
+### Android
+
+#### ✨ Features
+
+- Added license renewal for offline DRM streams.
+
+#### ⚡ Improvements
+
+- Improved concurrent offline license caching behaviour.
+
+### Android TV
+
+#### ✨ Features
+
+- Added license renewal for offline DRM streams.
+
+#### ⚡ Improvements
+
+- Improved concurrent offline license caching behaviour.
+
+### iOS
+
+#### ✨ Features
+
+- Added the possibility to configure title attribute in the Now Playing section of the Control Center
+- Extended caching API with the ability to pause and resume a caching task.
+- Extended caching API with the ability to select desired quality.
+- Extended caching API with the ability to see the total bytes cached.
+
+#### 🐛 Issues
+
+- Fixed an issue with caching DRM protected streams
+
+## 🚀 2.51.0 (2018/12/17)
+
+### Web
+
+#### 🐛 Issues
+
+- Fix an issue where some HLS streams using `#EXT-X-BYTERANGE` stall indefinitely.
+- Fix an issue where Conviva would not be notified that the manifest is unavailable if it was detected before session creation.
+- Fix an issue where subtitles UI cannot toggle when the `manifestMetadataTrack` property is set to true on iOS devices.
+- Fix an issue where Firefox on Android sometimes crashes when loading a HLS stream containing MP3 audio.
+
+### Android
+
+#### ✨ Features
+
+- Added playback of Xstream Widevine DRM streams.
+
+### Android TV
+
+#### ✨ Features
+
+- Added playback of Xstream Widevine DRM streams.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue with Airplay DRM protected streams
+- Fixed an issue when leaving fullscreen mode the orienation behaviour was incorrect
+
+## 🚀 2.50.0 (2018/12/04)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improve the interoperability of a player with a poster and a source with a poster.
+- Improved start-up time for MPEG-DASH streams using `SegmentBase@indexRange`.
+
+#### 🐛 Issues
+
+- Fix an issue with live HLS streams with manifest metadata tracks
+- Fix an issue where playback would sometimes not start at the live point in a HLS livestream with DVR.
+- Fix an issue where adend/adbreakend were not dispatched when the source changed while IMA was playing an ad.
+- Fix an issue where resuming a paused task would result in an incorrect size estimation.
+- Fix an issue where not all impression beacons would be tracked in the THEO ad system.
+- Fix an issue where audio track selection was unavailable when no audio stream was marked as default.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Extended Yospace API with access to the Yospace session
+
+## 🚀 2.49.0 (2018/11/20)
+
+### Web
+
+#### ✨ Features
+
+- Fix an issue where the seekable range of HLS streams with tag `#EXT-X-PLAYLIST-TYPE:EVENT` would not start at zero.
+
+#### 🐛 Issues
+
+- Fix an issue where CEA608 Captions would not always render.
+- Fix an issue where Google IMA would not always switch back to content on very slow internet connections.
+- Fix an issue in THEO ad system where ads would not start playing after an empty VAST had been scheduled.
+- Fix a regression where HLS streams sometimes fail to start on IE11 and Android.
+
+### Android
+
+#### ✨ Features
+
+- Extended the caching API with pause and resume functionality.
+- Extended the caching API with quality selection functionality.
+- Extended the caching API with task size estimation and actual task size.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue with DRM protected streams
+
+### tvOS
+
+#### ✨ Features
+
+- TvOS UI Integrated for TVML applications.
+
+## 🚀 2.48.0 (2018/11/06)
+
+### Web
+
+#### ⚡ Improvements
+
+- Fix an issue where the player would sometimes stall indefinitely on period switches in DASH streams.
+
+#### 🐛 Issues
+
+- Fix an issue with certain content security policy (CSP) directives.
+
+### Android
+
+#### ✨ Features
+
+- Extended the player with the metrics API
+
+### Android TV
+
+#### ✨ Features
+
+- Extended the player with the metrics API
+
+### iOS
+
+#### ✨ Features
+
+- Extended the player with the metrics API
+
+## 🚀 2.47.0 (2018/10/23)
+
+### Web
+
+#### ✨ Features
+
+- Added support for `UTCTiming` elements in `MediaPresentationDescription`s as defined in [DASH IF IOP v4.2, section 4.7.3](https://dashif.org/docs/DASH-IF-IOP-v4.2-clean.htm#_Ref263688476).
+- Added Xstream DRM pre-integration for Widevine and Playready.
+- Added support for AirPlay with FairPlay protected streams.
+
+#### ⚡ Improvements
+
+- Improved handling of DRM-protected content.
+- Added log level to Agama configuration
+
+#### 🐛 Issues
+
+- Fix an issue where Google DAI's and Google IMA's clickthrough were not clickable.
+- Fix an issue where text tracks were visible on the local player when casting.
+- Fix an issue where the player would sometimes stall indefinitely when some tracks had differing start times.
+- Fix an issue where the clickthrough for an ad was not clickable.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the layout was incorrect when embedding a player in a UIScrollView with content inset adjustment turned off.
+
+## 🚀 2.46.0 (2018/10/08)
+
+### Web
+
+#### ✨ Features
+
+- Added QoS `droppedVideoFrames` metrics
+- Added support for `availabilityTimeOffset` in `SegmentTemplate`-based DASH streams.
+- Added QoS `corruptedVideoFrames` metrics
+- Added `agama` integration
+
+#### ⚡ Improvements
+
+- Improved setting autoplay parameters for Google IMA Ad requests.
+- Improved error handling when worker files are unavailable due to CORS configuration.
+
+#### 🐛 Issues
+
+- Fix an issue where the player was not able to play a source which consisted solely of advertisements.
+- Fix an issue where the player fails to buffer when DASH segments are slightly misaligned.
+- Fix an issue where the StreamOne integration attempted to track an end of stream event, even if the integration was not enabled.
+- Fix an issue where SegmentList initialization segment urls were not always correctly resolved.
+- Fix an issue in the THEOplayer ad integration where specific ads would only play in the lowest quality on Safari.
+- Fix an issue where destroying a player instance caused the Chromecast session of another instance to end.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where multiple player instances contend for full-screen mode, causing glitchy behavior.
+
+## 🚀 2.45.0 (2018/09/10)
+
+### Web
+
+#### ✨ Features
+
+- Added `retainPresentationModeOnSourceChange` flag on the picture-in-picture configuration.
+- Added basic support for chunked CMAF in MPEG-DASH streams.
+
+#### 🐛 Issues
+
+- Fix an issue where playback would sometimes stop near a discontinuity for some HLS streams.
+- Fix an issue with DASH streams using SegmentBase.
+- Fix an issue where the `Referer` header was no longer set on HTTP requests.
+- Fix an issue where subtitles were automatically turned off after switching away from the main content - e.g. for advertisement or casting.
+- Fix an issue where the player sometimes stutters after appending a segment in DASH streams with a large timescale.
+- Fix an issue where segments were sometimes shifted by a frame, causing the player to stall.
+
+### Android
+
+#### ✨ Features
+
+- Integrated YoSpace Ad Management Android SDK
+
+### iOS
+
+#### ✨ Features
+
+- Integrated YoSpace Ad Management Android SDK
+
+## 🚀 2.44.0 (2018/08/27)
+
+### Web
+
+#### ✨ Features
+
+- Added support for legacy EME implementations.
+- Added support for in-stream DASH thumbnail tracks as defined in [DASH IF IOP v4.2, section 6.2.6](https://dashif.org/wp-content/uploads/2018/04/DASH-IF-IOP-v4.2-clean.htm#_Toc511040840).
+
+#### ⚡ Improvements
+
+- Improved dynamic sizing for thumbnails, e.g. in fullscreen mode.
+
+#### 🐛 Issues
+
+- Fix an issue where native fullscreen was not possible when using muted autoplay on iOS Safari.
+- Fix an issue where the player would seek indefinitely.
+- Fix an issue where the `bitrate` option in `player.abr.strategy.metadata` was incorrectly interpreted as bytes per second (instead of bits per second).
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue when playback was not started.
+- Fixed an issue when FairPlay stream was not started.
+- Fixed an issue where the player did not go to fullscreen.
+- Fixed an issue where some events were sending Infinity as currentTime
+
+### tvOS
+
+#### 🐛 Issues
+
+- Fixed an issue when playback was not started.
+- Fixed an issue when FairPlay stream was not started.
+- Fixed an issue where the player did not go to fullscreen.
+- Fixed an issue where some events were sending Infinity as currentTime
+
+## 🚀 2.43.0 (2018/08/10)
+
+### Web
+
+#### ✨ Features
+
+- Added active quality label to UI.
+- Added FreeWheel integration.
+- Added upcoming ad notification feature
+
+#### 🐛 Issues
+
+- Fix an issue where the player would stall indefinitely on some DASH live streams from Microsoft Azure.
+- Fixed an issue where ABR bandwith calculation was affected by network interceptors
+- Fix an issue where the player would not start playback on some DASH live streams.
+- Fix an issue where the Xstream ticket acquisition URL could not be specified through the API
+- Fix an issue where ended state could not always be reached for MPEG-DASH playback
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fix stuttering issue on Chromecast
+
+## 🚀 2.42.0 (2018/07/25)
+
+### Web
+
+#### ✨ Features
+
+- Add Xstream DRM pre-integration for FairPlay
+
+#### 🐛 Issues
+
+- Fix an issue where the duration of a DASH stream was not correctly calculated for SegmentBase-based timelines.
+- Fix an issue where playback rate does not update for DASH streams.
+
+### iOS
+
+#### ✨ Features
+
+- Add Xstream DRM pre-integration
+
+#### 🐛 Issues
+
+- Fixed an issue where subtitle track is being played/displayed several times
+
+### tvOS
+
+#### ✨ Features
+
+- Add Xstream DRM pre-integration
+
+## 🚀 2.41.0 (2018/07/17)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved detection of invalid libraryLocation configuration.
+- Improved handling of missing segments: when a segment is missing in one quality, the player will now also attempt downloading in other qualities.
+
+#### 🐛 Issues
+
+- Fix an issue where certain segments would not be downloaded in Firefox.
+- Improved robustness of player concerning dealing with failing to update a live DASH manifest
+- Fixed an issue with setting the targetQuality of a track to automatic.
+- Fixed an issue where manual quality switches in FireFox caused a glitch.
+
+### iOS
+
+#### ✨ Features
+
+- Added adaptive bitrate API.
+
+### tvOS
+
+#### ✨ Features
+
+- Added adaptive bitrate API.
+
+## 🚀 2.40.0 (2018/07/02)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved performance for DASH streams with a large number of Periods.
+- Added support for Titanium PlayReady version 3.
+- Added qualities property to targetqualitychanged event.
+
+#### 🐛 Issues
+
+- Fix an issue where preload of a live-stream would result in playback at the start of live window
+- Fix an issue where the error message is not properly cleared after changing the source.
+- Fix an issue where IMA ads unset picture-in-picture mode.
+- Fix an issue where DASH manifests without initialisation segment specifications were not handled correctly.
+- Fix an issue where some domains can't be whitelisted.
+- Fix an issue where the poster image was overlaying when setting it, now poster-images are reset when you set the source afterwards.
+
+### Android
+
+#### ✨ Features
+
+- Extended adaptive bitrate API with strategies
+
+#### 🐛 Issues
+
+- Fix a minor issue for certain DASH streams
+
+### Android TV
+
+#### ✨ Features
+
+- Extended adaptive bitrate API with strategies
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improve performance when multiple FairPlay keys are requested in parallel.
+
+### tvOS
+
+#### ⚡ Improvements
+
+- Improve performance when multiple FairPlay keys are requested in parallel.
+
+## 🚀 2.39.1 (2018/06/20)
+
+### Chromecast
+
+#### ✨ Features
+
+- Pre-integration with Adobe Heartbeat Analytics for Chromecast.
+
+## 🚀 2.39.0 (2018/06/18)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved DASH buffering logic to handle manifest inaccuracies better.
+
+#### 🐛 Issues
+
+- Fix an issue where DASH streams would not play back on IE11.
+- Fix bad performance when playing DASH streams with multiple Widevine DRM keys on Firefox.
+- Fix program date time when segments vary in duration.
+- Fix an issue in Edge where live streams using large timestamps would freeze.
+- Fix a small FairPlay bug on iOS 9.
+
+### Android
+
+#### 🐛 Issues
+
+- Fix an issue for issue for Android 4.1 devices
+
+#### ✨ Features
+
+- Added caching
+- Added offline license DRMtoday playback
+
+### iOS
+
+#### 🐛 Issues
+
+- Fix an issue with iOS 9
+
+### tvOS
+
+#### 🐛 Issues
+
+- Fix an issue when destroying a player.
+
+## 🚀 2.38.0 (2018/06/04)
+
+### Web
+
+#### ✨ Features
+
+- Add clipping support
+- Add looping support
+- Support extra query parameters in SpotX Ads
+
+#### 🐛 Issues
+
+- Fix an issue where the player would sometimes get stuck at the start of a live stream
+- Fix an issue where we do not dispatch a playing event after an Google IMA ad has already started
+- Fix an issue where the player would crash on a native Edge bug
+- Fixed an issue with rendering SMPTE-TT text tracks.
+
+### Android
+
+#### 🐛 Issues
+
+- Fix an issue for devices with Android 4.4 or older
+
+#### ✨ Features
+
+- Support extra query parameters for SpotX Ads
+
+### iOS
+
+#### ✨ Features
+
+- Allow automatically entering picture-in-picture mode when the player goes out of view.
+- Support for downloading and offline playback of FairPlay-protected content.
+- Support extra query parameters in SpotX Ads
+
+#### 🐛 Issues
+
+- Fixed an error where the timeupdate event was always sending Infinity when playing FairPlay streams
+- Support for SMPTE-TT subtitles.
+- Fixed some issues with FairPlay playback in chromeless mode.
+- Fix an issue with Irdeto FairPlay DRM integration.
+- Fixed a small full-screen orientation coupling bug.
+
+### tvOS
+
+#### 🐛 Issues
+
+- Fixed an error where the timeupdate event was always sending Infinity when playing FairPlay streams
+- Fixed some issues with FairPlay playback in chromeless mode.
+
+## 🚀 2.37.0 (2018/05/22)
+
+### Web
+
+#### ✨ Features
+
+- Added support for the Titanium DRM token-based authentication flow for Widevine and Fairplay.
+
+#### 🐛 Issues
+
+- Fix an issue where the viewport would jump down when a poster image larger than the viewport was set.
+- Fix an issue where IE11/W7 playback stalls after a discontinuity.
+- Fix an issue where WebVTT font size was too big in portrait fullscreen mode
+- Fix an issue where sometimes the wrong active quality is reported for HLS streams.
+- Fix an issue where player couldn't handle a non-linear ad set as a pre-roll
+- Fix an issue where the last scheduled advertisement was not being requested by IMA
+- Improved handling of different formats for timeOffset/skipOffset for all ad systems
+
+### Android
+
+#### ✨ Features
+
+- Expose the target buffer API.
+
+### iOS
+
+#### ✨ Features
+
+- Caching API: Offline playback of non-DRM protected streams.
+
+#### ⚡ Improvements
+
+- Various performance improvements.
+
+#### 🐛 Issues
+
+- Fixed a bug where certain VR streams could not load because of CORS issues.
+
+### tvOS
+
+#### ✨ Features
+
+- Support for SMPTE-TT subtitles.
+- Playback of FairPlay protected streams with DRMtoday and VUDRM.
+
+## 🚀 2.36.0 (2018/05/07)
+
+### Web
+
+#### ✨ Features
+
+- Added firstFrame property to quality
+- Added `update` event to `Quality` objects, dispatched when any property changes
+- Added support for SMPTE-TT subtitles embedded in ID3 metadata.
+- Provide ability to set target buffer duration.
+
+#### 🐛 Issues
+
+- Fix an issue where a failed segment download during caching logged a warning in the browser console.
+- Fix an issue where the player was not able to seek to the start of a stream due to a bug in Edge.
+- Fix an issue where the player would hang when playing CEA608 subtitles.
+- Fix an issue with multiple concurrent caching tasks.
+- Fix an issue where rounding errors in DASH segments would sometimes confuse the player's download logic.
+- Fix an issue in Chrome where content hangs after changing qualities.
+
+### Android
+
+#### ✨ Features
+
+- Added CastLabs DRMToday pre-integration.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Marked the THEOplayer class as open, so that it can be extended by integrators.
+
+#### 🐛 Issues
+
+- Fixed a bug where FairPlay videos would not render.
+
+### tvOS
+
+#### ⚡ Improvements
+
+- Marked the THEOplayer class as open, so that it can be extended by integrators.
+
+#### 🐛 Issues
+
+- Fixed a bug where FairPlay videos would not render.
+
+## 🚀 2.35.0 (2018/04/23)
+
+### Web
+
+#### ✨ Features
+
+- Added possibility to configure the time between the live point and the end of the manifest.
+- Added exposing Conviva client and session ID
+- Added Azure Media Services pre-integration for FairPlay DRM.
+
+#### 🐛 Issues
+
+- Fix an issue where seeking in an MPEG-DASH stream sometimes seeks to the wrong time.
+- Fix an issue with setting `preload` and then changing source to an MPEG-DASH stream.
+- Fix an issue where FairPlay-protected streams would fail to start.
+- Fix an issue where HLS streams would fail to start with an empty `contentProtection` configuration.
+- Fix an issue where side-loaded WebVTT text tracks with a UTF-8 BOM were not correctly recognized.
+- Fix an issue where seeking to the end of a DASH stream did not always load the last segment.
+- Fix an issue where caching tasks are incorrectly removed when offline
+- Fix an issue with the currentTime of DASH livestreams when chromecasting.
+
+### Android
+
+#### ✨ Features
+
+- Smaller library file size.
+
+### iOS
+
+#### ✨ Features
+
+- Added DRMToday and Vudrm pre-integrations for FairPlay DRM.
+
+#### ⚡ Improvements
+
+- Improved UI and UX for VR stereo mode.
+
+## 🚀 2.34.0 (2018/04/09)
+
+### Web
+
+#### ✨ Features
+
+- Added CastLabs DRMToday pre-integration.
+- Added MediaMelon SmartSight analytics pre-integration.
+
+#### ⚡ Improvements
+
+- [Related Content API](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-relatedcontent/): added `show` and `hide` events.
+- Google IMA integration: pause advertisement while visiting click through website.
+- Dispatch `destroy` event when `player.destroy()` is called.
+- Fall back to alternative sources in `SourceDescription` when DRM of initial source is not supported.
+
+#### 🐛 Issues
+
+- Fix an issue where an internal polyfill for `Array.prototype.includes` accidentally leaked to the global scope.
+- Fix an issue where sometimes Chrome would freeze on certain MPEG-DASH streams.
+- Fix an issue where an extraneous `seeking` event occurs before an HLS stream starts playing.
+- Fix an issue where player-level and source-level analytics configurations were not correctly combined.
+- Fix an issue where an empty captions text track is added on iOS for streams that don't contain captions.
+- Fix an issue with the ExpressPlay integration for Fairplay-protected streams.
+- Fix an issue where a mute toggle is displayed on environments that don't support programmatic muting.
+- Fix an issue with `preload` for HLS streams.
+- Fix an issue with seeking to live when the manifest reports starts of fragments that are slightly off.
+- Fix an issue where the player would detect too many audio tracks in some HLS streams on iOS.
+
+## 🚀 2.33.0 (2018/03/26)
+
+### Web
+
+#### ✨ Features
+
+- Added Chromecast global session sharing.
+
+#### ⚡ Improvements
+
+- [Network API](https://docs.portal.theoplayer.com/docs/docs/miscellaneous/miscellaneous-3-use-network-api): added `subtype` property to identify initialization segment requests.
+- [ABR API](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-abrconfiguration): added `bandwidth` strategy.
+
+#### 🐛 Issues
+
+- Fix an issue where the VR display is sized incorrectly on iPhone X.
+- Fix an issue with switching audio tracks in DRM-protected MPEG-DASH streams on Firefox.
+- Fix an issue where sometimes the wrong subtitles stay on the screen after seeking.
+- Fix an issue with StreamOne analytics.
+- Fix an issue with unsupported adaptation sets in MPEG-DASH streams.
+- Fix an issue with setting `vr.direction` before starting playback.
+- Fix an issue with HLS segments with missing audio frames.
+- Fix an issue with VR on Chrome 65 and higher.
+
+## 🚀 2.32.0 (2018/03/12)
+
+### Web
+
+#### ✨ Features
+
+- Added StreamOne analytics pre-integration.
+- Added ExpressPlay FairPlay DRM pre-integration.
+
+#### 🐛 Issues
+
+- Fix an issue where some ad error events were not reported for Google IMA.
+- Fix an issue where malformed MPEG-TS packets may crash the player.
+- Fix an issue where some streams repeatedly stall after every segment in IE11.
+- Fix an issue where segments starting with a B-frame sometimes cause stalls in Safari and Edge.
+- Fix an issue where FairPlay-protected streams would fail to start.
+
+## 🚀 2.31.0 (2018/02/26)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improve recovery when a segment in a HLS variant stream cannot be fetched.
+
+#### 🐛 Issues
+
+- Fix an issue where player sometimes crashes when rapidly switching between DRM-protected streams.
+- Fix an issue when seeking in a multi-period DASH live stream.
+- Fix an issue when combining VR content with Google IMA ads.
+- Fix an issue where credentials were not sent when requesting certain DASH segments.
+- Fix an issue where a pinch gesture activates native fullscreen on iOS.
+- Fix various issues with casting to Chromecast.
+
+## 🚀 2.30.1 (2018/02/14)
+
+### Web
+
+#### ✨ Features
+
+- Added Chromecast Receiver SDK.
+- Added [adaptive bitrate (ABR) API](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-abrconfiguration).
+- Added Castlabs DRMToday pre-integration.
+- Added optimal media file selection for linear advertisements.
+
+#### ⚡ Improvements
+
+- Improve advertisement error messages.
+- Improve automatic picture-in-picture to only activate when playback was previously started.
+
+#### 🐛 Issues
+
+- Fix an issue with 360 degrees videos sometimes glitching on iOS around quality switches.
+- Fix an issue with muted autoplay and Google IMA pre-rolls ads on mobile.
+- Fix an issue with Widevine DRM on Firefox 52 ESR.
+- Fix an issue with Irdeto FairPlay DRM.
+- Fix an issue with replaying an ended video on Internet Explorer 11.
+- Fix an issue with some video-only streams not starting.
+- Fix an issue with HLS streams containing MP3 audio not starting.
+- Fix an issue where scrubber sometimes goes outside of seekbar on some live streams.
+- Fix an issue where subtitles are sometimes displayed twice on iOS.
+- Fix an issue where subtitles are displayed too small.
+- Fix an issue with WebVTT subtitles embedded in MPEG-DASH stream.
+- Fix an issue where CEA-608 captions sometimes stop showing after switching to a different stream.
+- Fix various issues with advertisements.
+
+## 🚀 2.29.0 (2018/01/15)
+
+### Web
+
+#### ✨ Features
+
+- Allow moving the seek bar inside the control bar using the `theo-seekbar-inside-controls` CSS class.
+
+#### 🐛 Issues
+
+- Fix an issue preventing some HLS livestreams from starting playback.
+- Fix an issue with pre-roll advertisements on iOS 9.
+- Fix an issue with ID3 metadata on iOS.
+- Fix an issue causing the Chromecast button to sometimes disappear when using multiple players.
+
+## 🚀 2.28.0 (2018/01/03)
+
+### Web
+
+#### ✨ Features
+
+- Added support for loading THEOplayer from a cached Google page
+- Added THEOplayer.features property
+- Added CEA-608 text track styling
+
+#### ⚡ Improvements
+
+- Improve DASH gap handling
+
+#### 🐛 Issues
+
+- Fix an issue where ads did not play correctly when using muted autoplay and Google IMA
+- Make sure the ended event is dispatched with empty VAST postroll in Google IMA pre-integration
+
+## 🚀 2.27.0 (2017/12/15)
+
+### Web
+
+#### ✨ Features
+
+- [Moat analytics pre-integration](http://demo.theoplayer.com/moat-analytics-pre-integration)
+- Support [async loading](https://demo.theoplayer.com/async-library-loading) of THEOplayer library
+
+#### ⚡ Improvements
+
+- Improve CEA608 handling across quality switches
+- Internet explorer: use responseUrl from http response
+- Improve ABR for HLS streams on mobile
+- Improve handling of missing keyframes
+- MPEG-DASH stream dispatch only one error event on a load error
+
+#### 🐛 Issues
+
+- Fix an issue with ID3 on iOS not correctly activating
+- Fix issue with HLS packager
+- Solved an issue where last segment was not always packaged in HLS stream
+
+## 🚀 2.26.0 (2017/12/04)
+
+### Web
+
+#### ✨ Features
+
+- Set custom labels on qualities
+- Allow quality grouping with custom labels
+- [Destroy method](https://docs.portal.theoplayer.com/docs/docs/faq/using-player-api/using-player-api-0-introduction) on player
+- [Network API](https://docs.portal.theoplayer.com/docs/docs/miscellaneous/miscellaneous-3-use-network-api)
+
+#### ⚡ Improvements
+
+- Youbora Analytics also track advertisements
+- Improve error messages
+
+#### 🐛 Issues
+
+- Solved an issue with chromeless player and poster image
+
+## 🚀 2.25.0 (2017/11/20)
+
+### Web
+
+#### ✨ Features
+
+- [Easy UI skinning](https://demo.theoplayer.com/ui-skinning).
+
+#### ⚡ Improvements
+
+- Irdeto integration: minor update.
+- Prefill for SpotX device data.
+- Support for HLS current program date time on iOS.
+- Android SDK:
+- Google IMA: pass in custom IMA settings when scheduling an ad.
+- General UI improvements.
+
+#### 🐛 Issues
+
+- Solved an issue related to rendering of subtitles.
+- Solved an issue where iOS SDK would sometimes crash.
+- Solved an issue where video content started playing in the background when a video ad is playing on Safari.
+- Solved an issue where mute and unmute with video ad didn't work.
+
+## 🚀 2.24.0 (2017/11/15)
+
+### Web
+
+#### ✨ Features
+
+- Configure Google IMA ads UI language using [UIConfiguration.language](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-uiconfiguration)
+- Enable [configuration of ad preload type](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-adsconfiguration)
+
+#### ⚡ Improvements
+
+- Remove border around player on focus
+- Improve Google IMA ad playback on Safari 11
+
+## 🚀 2.23.0 (2017/11/07)
+
+### Web
+
+#### ✨ Features
+
+- Google IMA:
+
+#### ⚡ Improvements
+
+- Improved handling of text tracks
+
+## 🚀 2.22.0 (2017/10/23)
+
+### Web
+
+#### ✨ Features
+
+- Added MediaMelon [pre-integration](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-mediamelonconfiguration/)
+- Added [allowMixedContent](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-playerconfiguration) player configuration parameter
+- Added Youbora analytics pre-integration
+
+#### ⚡ Improvements
+
+- Improved [muted autoplay](https://docs.portal.theoplayer.com/docs/docs/faq/using-player-api/using-player-api-0-introduction)
+- Styling improvements for web and mobile
+
+#### 🐛 Issues
+
+- Google IMA: Improvements for non-linear ads and VPAID ads
+
+## 🚀 2.21.0 (2017/09/28)
+
+### Web
+
+#### ✨ Features
+
+- Added the [Network API](https://docs.portal.theoplayer.com/docs/docs/miscellaneous/miscellaneous-3-use-network-api)
+- Added [allowNativeFullscreen](https://docs.portal.theoplayer.com/docs/docs/faq/using-player-api/using-player-api-0-introduction) to the player configuration. This allows using fullscreen on the video element directly instead of on the whole player.
+- Added support for Conax FairPlay
+- Added a generic metadata property to [SourceDescription](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-sourcedescription/) to allow for more descriptive sources.
+- Added the [adskip](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-event) event to the Advertisement API to indicate ads that are being skipped
+- Added support for more timeOffset formats for [GoogleIMAAdDescriptions](https://docs.portal.theoplayer.com/docs/api-reference/theoplayer-googleimaad/) (scheduling ads without VMAP): timestamps, "start", "end" and percentages (for VOD)
+
+#### ⚡ Improvements
+
+- Improved the UI for the Up Next feature
+- Improved the handling of ID3 metadata on iOS
+- Improved the adskip button to feature the poster image
+
+#### 🐛 Issues
+
+- Solved an issue where muted autoplay on iOS could not be unmuted
+- Solved an issue where the ended event was not always dispatched when IMA ads were used
+- Solved an issue where tooltip for currentTime was not updating correctly on mobile web when switching to picture-in-picture
+
+## 🚀 2.20.0 (2017/09/12)
+
+### Web
+
+#### ✨ Features
+
+- Allow THEOplayer to be used as an Audio Node within the Web Audio API
+
+#### ⚡ Improvements
+
+- Improved the player's big play button
+- Improved the UI of Picture-in-Picture on the web
+- Improved the UI of the up-next panel
+- Various improvements to the player's internals
+- Improved the UI of the top control bar
+- Improved the player to play content as smoothly as possible
+
+#### 🐛 Issues
+
+- Solved an issue where a wrong play/pause icon would show on mobile platforms after returning from tab inactivity
+- Solved an issue where the player sometimes stalls when the PTS/DTS offset changes on a discontinuity edge
+- Solved a memory leak issue
+- Solved a freezing issue on Chrome/Opera
+- Solved an issue where sideloaded text tracks appear twice in the subtitle menu
+- Solved an issue where the player would not be correctly resized for 4:3 videos
+- Solved an issue with mouse behaviour when using 360/VR
+
+## 🚀 2.19.0 (2017/08/28)
+
+### Web
+
+#### ✨ Features
+
+- Added support for KeyOS Fairplay
+
+#### ⚡ Improvements
+
+- Improved the player's download prioritization
+- Improved handling of offline DASH manifests
+- Improved playback of multiple sequential advertisements
+- Various updates and improvements to the player's codebase
+
+#### 🐛 Issues
+
+- Solved an issue where playing certain DASH manifests could trigger a memory leak
+- Solved an issue where the player would stall playback on certain HLS live streams
+- Solved an issue where including the Google IMA script would cause the player to pause after a single tap on mobile devices
+- Solved an issue where the language selection menu was not always correctly updated
+- Solved an issue where the player's manifest downloads would not be correctly cleared after setting a new source
+- Solved an issue where the 'Up Next' UI did not always show at the end of a video
+
+## 🚀 2.18.0 (2017/08/18)
+
+### Web
+
+#### ✨ Features
+
+- Added support for DASH SegmentTemplate parameter prefix padding
+- Added support for setting a list of qualities as target qualities ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-mediatrack/))
+- Added a right-click menu to the player's UI
+- Added support for Irdeto Registered User Flows ([documentation](https://docs.portal.theoplayer.com/docs/docs/advanced-topics/content-protection/content-protection-2-multi-drm-partners/))
+
+#### ⚡ Improvements
+
+- Improved handling of unsupported DASH tracks
+- Various improvements to the player's internals
+- Improved handling of streams with empty or missing segments
+
+#### 🐛 Issues
+
+- Solved an issue where the player did not correctly recover from an unavailable Google IMA ad
+- Solved various minor issues with advertisement playback
+- Solved an issue where the useCredentials flag was not taken into account correctly
+- Solved an issue where ID3 cuechange events where not correctly fired on iOS
+- Solved an issue where multiple players on the same page would not share a Chromecast session correctly
+- Solved an issue where the player's bandwidth algorithm estimation gave bad results
+- Solved an issue where DASH emsg events were not correctly exposed
+
+#### API Updates
+
+- Removed all support for the previously deprecated drmController API
+
+## 🚀 2.17.0 (2017/07/28)
+
+### Web
+
+#### ✨ Features
+
+- Added support for Irdeto DRM ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-irdetodrmconfiguration/))
+- Added support for a countdown timer to the Up Next feature ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-upnext/))
+- Added player visibility detection API ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-visibility/))
+- Added localization support ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-uiconfiguration), [code example](https://demo.theoplayer.com/language-localization))
+
+#### ⚡ Improvements
+
+- Improved Conviva integration
+- Added support for a close button to skippable non-linear ads
+- Support passing Widevine certificate in SourceDescription ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-widevinekeysystemconfiguration/))
+- Postponed call to ad servers happen until a video play indication
+
+#### 🐛 Issues
+
+- Solved an issue where closing social sharing and recommended menus don't restore the previous playback state
+
+## 🚀 2.16.0 (2017/07/17)
+
+### Web
+
+#### ✨ Features
+
+- Added support for muted autoplay on specific mobile devices
+
+#### ⚡ Improvements
+
+- Improved the player's ABR on mobile devices
+- Improved the player's mobile UI
+- Various improvements to the player's internal buffering architecture
+- Improved support for advertisement scheduling in live streams
+
+#### 🐛 Issues
+
+- Solved an issue where the last segment of certain VOD HLS streams was never fetched
+- Solved an issue where cues for embedded text tracks where not updated correctly
+- Solved an issue where calling player.stop() caused an error in Edge
+
+## 🚀 2.15.0 (2017/07/05)
+
+### Web
+
+#### ✨ Features
+
+- Added up-next API ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-upnext/))
+- Added support for Titanium FairPlay
+- Added Yospace API ([documentation](https://docs.portal.theoplayer.com/docs/api-reference/theoplayer-yospace/))
+- Added related content API ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-relatedcontent/))
+- Added social sharing API ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-socialsharing/))
+- Added Conviva analytics pre-integration ([documentation](https://docs.portal.theoplayer.com/docs/api-reference/theoplayer-convivaconfiguration))
+
+#### ⚡ Improvements
+
+- Various improvements to the player's internal playback architecture
+
+## 🚀 2.14.0 (2017/06/09)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where track lists did not dispatch `change` events
+- Solved an issue where an error was thrown when calling `stop()`
+- Solved various minor issues with advertisements
+
+## 🚀 2.13.0 (2017/05/26)
+
+### Web
+
+#### ✨ Features
+
+- Added pre-integration for SpotX advertisements ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-spotxaddescription/))
+
+#### ⚡ Improvements
+
+- Various improvements to the player's internal playback architecture
+
+#### 🐛 Issues
+
+- Solved an issue where hovering the player in VR mode would sometimes trigger an error
+- Solved an issue where the player blocked playback on older versions of Chrome (< 52)
+- Solved an issue where an edge case would stall HLS playback
+- Solved an issue where sideloaded text tracks where not displayed in fullscreen mode on iPad
+
+## 🚀 2.12.1 (2017/05/22)
+
+### Web
+
+#### ✨ Features
+
+- Added the trackType, track and quality properties to the segmentnotfound event ([documentation](https://docs.portal.theoplayer.com/docs/docs/faq/using-player-api/using-player-api-0-introduction))
+
+## 🚀 2.12.0 (2017/05/11)
+
+### Web
+
+#### ✨ Features
+
+- Added support for 360° and VR videos ([documentation](https://docs.portal.theoplayer.com/docs/next/add-ons/playback/vr/vr-1-how-to-use/))
+- Added canvas API ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-canvas/))
+- Added pre-integration support for server-side ad insertion with Yospace ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-yospaceserversideadinsertionconfiguration/))
+
+#### ⚡ Improvements
+
+- Side-loaded text tracks are now lazy-loaded
+- Chromecast: various minor improvements
+
+#### 🐛 Issues
+
+- Solved an issue with autoplay and Fairplay content in Safari on macOS
+- Solved various minor issues
+
+## 🚀 2.11.0 (2017/04/27)
+
+### Web
+
+#### ✨ Features
+
+- Added support for chapters on the seek bar
+- Added support for preview thumbnails on the seek bar
+- Added pre-integration support for KeyOS DRM ([documentation](https://docs.portal.theoplayer.com/docs/next/api-reference/theoplayer-drmconfiguration/))
+
+#### ⚡ Improvements
+
+- UI: the mouse cursor is now hidden while the mouse is resting still above the player
+- UI: the control bar is now hidden immediately when the mouse moves outside of the player
+
+#### 🐛 Issues
+
+- Solved an issue where picture-in-picture mode would not re-activate automatically in some scenarios
+- Solved an issue where subtitles would not appear in some edge cases
+- Solved an issue with Internet Explorer 10 support
+- Solved various minor issues with DRM protected playback on Internet Explorer and Edge
+- Solved various minor issues with advertisements
+
+## 🚀 2.10.0 (2017/04/12)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where changing the audio track on a DASH source would sometimes freeze the player on Edge
+- Solved an issue where Airplay was sometimes marked as available when it really wasn't
+- Solved an issue with preloading while in fullscreen mode on iOS
+- Solved an issue where querying the played property lead to an error when no source was set
+- Solved various minor issues with advertisements
+
+## 🚀 2.9.11 (2017/04/07)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved player behavior for redirected manifests
+- Improved the player's playback behavior on Windows 7
+
+#### 🐛 Issues
+
+- Solved an issue where the Airplay overlay was not hidden correctly
+
+## 🚀 2.9.10 (2017/04/05)
+
+### Web
+
+#### ⚡ Improvements
+
+- Added support for SKD protocol for Fairplay license URLs
+- Improved the player to detect broken AAC frames and replace them with silent audio
+
+#### 🐛 Issues
+
+- Solved an issue where a DASH live stream with inconsistent segments timelines for audio and video would not start playing
+
+#### ✨ Features
+
+- Added support for Airplay playback on Mac OS and iOS
+
+## 🚀 2.9.9 (2017/04/03)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved advertisement viewing experience
+- Improved Segment packaging for HLS streams
+
+#### 🐛 Issues
+
+- Solved some issues with the Player UI's menus
+- Solved an issue with setting the player's currentTime before ads were completely loaded
+- Solved an issue with cues not being updated correctly for sideloaded text tracks
+- Solved an issue with handling different Fairplay formats
+
+## 🚀 2.9.8 (2017/03/28)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved the player's behavior when there is a 404 error on segments.
+
+## 🚀 2.9.7 (2017/03/27)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved some issues with the Player UI's menus
+
+## 🚀 2.9.6 (2017/03/27)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue that made the player pause when seeking.
+- Solved an issue with multiple identical content protection systems.
+
+## 🚀 2.9.5 (2017/03/23)
+
+### Web
+
+#### ✨ Features
+
+- Fallback to track.label as title for audio tracks with no specific language.
+- Improved scrubbing behaviour.
+
+#### 🐛 Issues
+
+- Solved an issue with subtitle selection on Chromecast
+- Solved an issue with quality selection on Chromecast
+
+## 🚀 2.9.4 (2017/03/17)
+
+### Web
+
+#### ✨ Features
+
+- Added compatibility with Chromecast Default Media Receiver.
+- Added support for setting the default selected sideloaded text track.
+
+#### 🐛 Issues
+
+- Solved an issue where text track labels were not shown.
+
+## 🚀 2.9.3 (2017/03/13)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where an empty DRM description prevented DASH streams from being played correctly.
+- Solved an issue with text track cues that were not being dispatched correctly.
+
+## 🚀 2.9.2 (2017/03/10)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved outline behavior in the THEOplayer UI quality selection menu.
+
+## 🚀 2.9.1 (2017/03/09)
+
+### Web
+
+#### ✨ Features
+
+- Added support for the poster property on Chromeless as well as UI players.
+- Added an optional poster property to SourceDescriptions.
+
+#### 🐛 Issues
+
+- Solved an issue where setting the preload property was not always correctly handled.
+- Solved an issue with the currentTime and duration displays in the THEOplayer UI.
+- Solved an issue where the fullscreen button was permanently hidden after casting to Chromecast.
+
+## 🚀 2.9.0 (2017/03/07)
+
+### Web
+
+#### ✨ Features
+
+- Added a crossOrigin property to the player
+- Added support for Picture-in-Picture (PIP)
+- Added support for ad-block detection
+
+#### ⚡ Improvements
+
+- Improved detection and handling of gaps in MPEG-DASH streams
+
+#### 🐛 Issues
+
+- Solved an issue where the loadedmetadata event was not always correctly dispatched
+- Solved multiple issues with the ready- and playback state of the player
+- Solved an issue where it was no longer possible to specify global DRM configurations in a SourceDescription
+
+## 🚀 2.8.6 (2017/03/02)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the player would often have to resync when it had to rebuffer
+- Solved an issue with Chromecast text tracks
+
+#### ⚡ Improvements
+
+- Improved track synchronization behavior
+
+## 🚀 2.8.5 (2017/02/24)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where content with persistent Playready licenses did not start playback correctly
+
+## 🚀 2.8.4 (2017/02/24)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the first cue of an SRT file was not parsed correctly
+
+## 🚀 2.8.3 (2017/02/24)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where activequalitychanged event wasn't dispatched for HLS tracks
+- Solved an issue which prevented the progress bar UI from resetting
+- Solved an issue related to post-rolls
+- Solved an issue with the spinner icon on source change
+- Solved an issue with playback of periods that are no longer part of a stream
+
+#### ⚡ Improvements
+
+- Improved id3 support
+- Improved THEOplayer events
+- Improved buffering approach
+
+## 🚀 2.8.2 (2017/02/14)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the player would sometimes miscalculate the end time of stream
+- Solved an issue on IE/Edge where DRM protected content did not always start playback
+- Solved an issue where the player kept waiting for a seeking event that would never occur
+
+#### ✨ Features
+
+- Improved mobile UI
+- Improved menu UI
+
+## 🚀 2.8.1 (2017/02/08)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue with the seekbar when using Google IMA
+- Solved an issue which didn't correctly dispatch events when using ads
+- Solved an issue with VuDRM
+
+#### ✨ Features
+
+- Updated menu UI
+
+#### ⚡ Improvements
+
+- Improved error message for missing ContentProtection tag
+
+## 🚀 2.8.0 (2017/01/31)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the readystate was not always updated correctly when using ads
+
+#### ✨ Features
+
+- Updated advertisement UI
+
+## 🚀 2.7.2 (2017/01/25)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where DRM protected content did not start playback on Edge
+- Solved an issue where errors from native playback were not dispatched correctly
+- Solved an issue where embedded text track segments were not being downloaded in a live stream
+
+#### ✨ Features
+
+- Added support for decryption of Clearkey-encrypted content through EME
+
+## 🚀 2.7.1 (2017/01/16)
+
+### Web
+
+#### ✨ Features
+
+- Added support for playback of advertisements via Google-IMA
+
+## 🚀 2.7.0 (2017/01/16)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the UI was not reset correctly when changing a source
+- Solved an issue where the player stayed in an indefinite seeking state
+- Solved an issue where casting to a Chromecast device occasionally failed on startup
+
+#### ✨ Features
+
+- Added support for playback of non-DASH media sources (e.g. regular MP4-files)
+- Updated the API to allow for per-source DRM configuration
+- Added support for playback of advertisements without requiring a main source
+- Added a ‘targetqualitychanged’ event to Audio and VideoTrack objects that is triggered when the target Quality of that track is set
+- Added an ‘activequalitychanged’ event to Audio and VideoTrack objects that is triggered when the active quality of that track changes
+
+## 🚀 2.6.1 (2016/01/16)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where text tracks where not switched correctly when changing the playback context e.g. to ChromeCast
+- Solved an issue where license errors were not handled correctly and lead to a nonsense trace in console
+
+## 🚀 2.6.0 (2016/12/26)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where ‘segmentnotfound’ events and errors were thrown multiple times for the same segment
+- Solved an issue where framerate was not exposed correctly
+
+#### ✨ Features
+
+- Added support for EventStream events
+- Added support for DVB Subs text tracks
+- Added support for casting via ChromeCast
+- Added support for scheduling and playback of VAST and VMAP advertisement files
+- Added support for scheduling and playback of custom advertisements
+
+## 🚀 2.5.10 (2016/12/22)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the player stopped playback at the end of the shortest track instead of playing all available content
+- Solved an issue where a timeline gap at the end of a stream caused the player to not finish playback of a Period
+- Solved an issue where ‘addtrack’ and ‘removetrack’ events were dispatched twice
+
+#### ⚡ Improvements
+
+- Improved the player to be able to handle broken segments more robustly
+- Various improvements to player’s internal architecture
+
+## 🚀 2.5.9 (2016/12/20)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where dispatching a seeking event too soon caused the player to remain in an eternal seeking state
+
+## 🚀 2.5.8 (2016/12/19)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where default PSSH information was not parsed from manifests correctly
+- Solved an issue where the player did not start playback when detecting a gap in a stream
+- Solved an issue where resetting the player would not always clean up the player’s playing state completely
+- Solved an issue where the player would detect a gap in a stream that wasn’t actually there
+- Solved an issue where seeking the player ahead one frame at a time was not working
+
+#### ⚡ Improvements
+
+- Various improvements to the internal seeking behavior of the player
+
+## 🚀 2.5.7 (2016/12/09)
+
+### Web
+
+#### ✨ Features
+
+- Added support for Advanced DRM Integration
+
+#### 🐛 Issues
+
+- Solved an issue where the last segment in a stream kept being downloaded endlessly
+- Solved an issue where ‘seeked’ events where being dispatched too early
+- Solved an issue where the duration, start and end times were being miscalculated for segments of SegmentTemplates with no explicit SegmentTimeline
+- Solved an issue where a SourceBuffer was not initialized with the right codecs
+
+#### ⚡ Improvements
+
+- Various minor improvements to the player codebase
+- Various improvements to the player’s UI stylesheets
+- Various improvements to the player’s API via SourceDescriptions (Section 4)
+
+## 🚀 2.5.6 (2016/12/01)
+
+### Web
+
+#### ✨ Features
+
+- Added support for the new Latens Titanium v2.5 error response format
+- Added a ‘source’ property to the player API which allows users to get and set the current SourceDescription. This deprecates the older player.setSource() method.
+
+#### 🐛 Issues
+
+- Solved an issue where segment timestamps in a multi-period manifest were not always calculated correctly
+
+#### ⚡ Improvements
+
+- Improved the player to handle some errors caused by invalid manifests more gracefully
+- Improved the estimate strategy in timeline searching algorithms
+- Various improvements to the internal DRM structure
+
+## 🚀 2.5.5 (2016/11/21)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where a bug in the transition from dynamic to static behavior caused an endless loop. This is turn caused webpages that contained a malfunctioning player to freeze
+
+## 🚀 2.5.4 (2016/11/18)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the complexity of algorithms that handle manifest updates put a drain on resources in Chrome, which caused the browser to drop video frames. This in turn caused stuttering playback
+
+#### ⚡ Improvements
+
+- Various improvements to the computational complexity of algorithms in the player
+- Improved player behavior for disabling and re-enabling audio and video tracks
+
+## 🚀 2.5.3 (2016/11/07)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where a segment timeline for dynamic manifests without explicit timeline information was not constructed correctly
+
+## 🚀 2.5.2 (2016/11/04)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the player would not reach the playing state after entering a waiting state twice, but leaving it only once
+- Solved an issue where the player would crash when setting its currentTime before the manifest finished loading
+- Solved an issue where manually switching an audio or video quality would sometimes leak an error to the console
+- Solved an issue where the activeQuality property of an audio or video track would always be undefined
+- Solved an issue where a gap at the start of a stream would sometimes prevent the player from reaching the ‘playing’ state
+
+#### ⚡ Improvements
+
+- Improved the player’s track switching algorithm
+- Improved the player’s manual quality switching algorithm
+
+## 🚀 2.5.1 (2016/10/26)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved the player to optimally handle 64-bit precision timestamps in manifests
+
+## 🚀 2.5.0 (2016/10/24)
+
+### Web
+
+#### ✨ Features
+
+- Added support for inband (‘emsg’) events
+
+## 🚀 2.4.5 (2016/10/21)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the player would stall indefinitely when a large gap would occur in audio or video data
+
+#### ⚡ Improvements
+
+- Improved the player’s ability to detect and handle data gaps in audio or video tracks
+- Improved the player’s synchronization algorithm
+
+## 🚀 2.4.4 (2016/10/06)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where resetting the player would cause IE11 on Windows 8.1 to crash
+- Solved an issue where an MPD error would cause an unhandled error to leak to the console
+
+## 🚀 2.4.3 (2016/09/28)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where a video Quality’s framerate was not exposed correctly
+
+#### ⚡ Improvements
+
+- Improved the player to detect and handle overlapping segments in a dynamic stream
+
+## 🚀 2.4.2 (2016/09/22)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue with indexes for SegmentList-based VOD content that prevented the content from being played
+- Solved an issue where the enabled state of an audio track was not correctly visualized initially
+- Solved an issue where text tracks that ended before audio or video tracks would prevent seeking beyond the end of that text track
+- Solved an issue where protected content would keep the player from reaching the ‘loadedmetadata’ state on Edge
+- Solved an issue where the player would leak an error to the console when a DRM problem occurred and ongoing license requests were not cancelled
+- Solved an issue where the player’s duration was not reset to NaN after resetting the source
+
+#### ⚡ Improvements
+
+- Improved the player to detect and handle missing frames in audio and video data
+
+## 🚀 2.4.1 (2016/09/16)
+
+### Web
+
+#### 🐛 Issues
+
+- Solved an issue where the initialization of persistent DRM failed because two initialization requests were ran in parallel
+- Solved an issue where the active video track would be unnecessarily synced when switching the active audio track
+
+## 🚀 2.4.0 (2016/09/08)
+
+### Web
+
+#### ✨ Features
+
+- Added support for playback of multi-period manifests
+- Added support for the WebVTT text track format
+- Added support for side-loaded text tracks
+- Added support for video tracks
+- Added support for manual quality or rendition switching and inspection of audio and video tracks
+
+#### 🐛 Issues
+
+- Solved an issue with buffering of embedded text tracks that prevented subtitles from being rendered
+- Fixed some typing errors throughout the API documentation
+- Solved an issue where a BaseURL pointing to ‘./’ was not being resolved correctly
+- Solved an issue where multiple occurrences of the same parameter in an URL template were not being resolved
+
+## 🚀 2.3.4 (2016/09/02)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved an issue where a call to stop, followed by a call to play, would cause an unrecoverable DRM error
+
+#### ⚡ Improvements
+
+- Various improvements to the player’s UI
+- Various improvements to the player’s internal structure
+
+## 🚀 2.3.3 (2016/08/31)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved an issue where the player was not able to switch content-protected audio tracks
+- Resolved an issue with the player’s volume
+- Resolved an issue where the player did not use the updated time at which a MPDs was last fetched
+- Resolved an issue where the player stuttered due to decoding delay of DRM streams
+- Resolved an issue where event listeners for external events were not always attached correctly
+
+#### ⚡ Improvements
+
+- Improved the player to ignore unplayable tracks instead of throwing an error
+- Improved various aspects of the player’s internal code
+- Improved the player’s synchronization algorithm
+- Improved the player to handle transit between internal and external events
+
+## 🚀 2.3.2 (2016/08/17)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved an issue where track lists did not dispatch ‘removetrack’ events when resetting the player
+- Resolved an issue where new segments’ numbers were wrongfully assigned when updating the manifest
+- Resolved an issue where the player’s error property was not set when dispatching an error event
+- Resolved an issue where the player allowed a user to seek outside of its seekable range
+- Resolved an issue where a period’s duration was not correctly detected
+
+#### ⚡ Improvements
+
+- Improved the player to detect between which codecs can be switched during Adaptive Bitrate Streaming
+- Improved the player to signal representation changes when they occur visually instead of when they start downloading
+- Improved the player to detect unsupported platforms to prevent bad User Experience on those platforms
+- Improved the player to retry downloading failed manifests on multiple locations- when possible
+- Improved the player’s error handling and made license errors more descriptive
+
+## 🚀 2.3.1 (2016/08/02)
+
+### Web
+
+#### ⚡ Improvements
+
+- Added support to detect and filter representations that can’t be played by the MediaSource environment
+- Improved the player’s behavior when switching between two tracks
+- Improved the player’s setCurrentTime functionality
+- Improved the player’s use of the presentationTimeOffset attribute
+
+## 🚀 2.3.0 (2016/07/20)
+
+### Web
+
+#### ✨ Features
+
+- Added support for the publishTime attribute in media presentation descriptions
+- Added support for playback on Chrome 52 on Android
+- Added support for saving and restoring state of volume and muted properties over multiple sessions
+- Added support for location elements in manifests
+- Added the currentProgramDateTime property to the player to indicate the player’s date time relative to a manifest’s publish time
+
+#### 🐛 Issues
+
+- Resolved an issue where the player stalled indefinitely upon switching representations
+- Resolved an issue causing the player to go in a waiting state when its ready state is higher than `HAVE_CURRENT_DATA`
+- Resolved an issue with asynchronous creation of audio tracks
+- Resolved an issue where the player stalled indefinitely after playing 3 segments
+- Resolved an issue for SegmentTimeline segments with a repeat count equal to -1
+- Resolved an issue where the player did not dispatch a waiting event when starting playback of a stream
+- Resolved an issue with BaseURL elements that point to root
+
+#### ⚡ Improvements
+
+- Improved the internal architecture for track-based playback
+- Improved support for default attributes in multiple levels of a manifest’s segment info hierarchy
+- Various small improvements in the player’s seeking behaviour
+
+## 🚀 2.2.1 (2016/06/16)
+
+### Web
+
+#### ✨ Features
+
+- Added support for the MPEG-DASH BaseURL element to the player
+- Reworked the players play() and pause() flow
+
+#### 🐛 Issues
+
+- Resolved an issue with UI display order on Firefox
+- Resolved an issue with UI handling durationchange events and displaying an incorrect duration
+- Resolved an issue with UI not displaying all buffered ranges correctly
+- Resolved an issue where the internal duration was not correctly reset after stopping the player
+- Resolved an issue in correctly resetting of media elements when a new data source is loaded
+- Resolved an issue with playbackRate of the player being reset to 1 when loading a new source
+- Resolved an issue with the player occasionally dispatching a timeupdate event despite being in a waiting state
+- Resolved an issue with the player dispatching a playing event before having a data source loaded
+- Resolved an issue with the player attempting to seek before having a data source loaded
+- Resolved an issue with the player getting in an eternal waiting state while buffering data
+
+#### ⚡ Improvements
+
+- Changed the readyState of the player and all internal components waiting for readyState to being dependent on DRM being complete
+- Further optimized the build pipeline of the player
+- Improved event flow related to subtitle tracks
+- Improved the players support for the MPEG-DASH SegmentTemplate element
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.2.0 (2016/05/30)
+
+### Web
+
+#### ✨ Features
+
+- The player now supports loading, parsing and rendering of TTML (Timed Text Markup Language) subtitles. More specifically it supports the Core Presentation Profile of the TTML specification
+- The player now has integration with a UI component
+
+#### 🐛 Issues
+
+- Resolved an issue that caused the player to repeatedly redownload a manifest file
+- Resolved an issue in correctly calculating the segment numbers in some manifest files
+
+#### ⚡ Improvements
+
+- Optimized the build pipeline of the player
+- Added a build target with build in user interface
+- Further optimized the calculation of time related ranges
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.1.5 (2016/05/17)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved an issue in correctly determining the end of stream and end of buffer
+- Resolved an issue in sometimes determining the duration of Period elements
+
+#### ⚡ Improvements
+
+- Optimized the build pipeline of the player
+- Added the videoWidth, videoHeight and error properties to the player
+- Improved the calculation of buffered, played, seekable properties
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.1.4 (2016/05/02)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved an issue in correctly determining that the end time of a media element had changed
+- Resolved an edge case that caused the player to repeatedly download the same segment
+- Resolved detecting that the player no longer was in sync with the available data in the manifest
+
+#### ⚡ Improvements
+
+- Improved buffer handling of the player
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.1.3 (2016/04/16)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved an issue that caused the player to not play when changing the source of the player while autoplay is enabled
+- Resolved an issue in correctly detecting the end of stream of the player
+- Resolved an issue in calculating the correct duration of some streams
+- Optimized the parsing of MPEG-DASH documents and removed blocking code
+
+#### ⚡ Improvements
+
+- Improved the memory usage of the MPEG-DASH document parser
+- Added missing documentation about the date attribute of some events that the player dispatches
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.1.2 (2016/03/29)
+
+### Web
+
+#### ✨ Features
+
+- A new buffering algorithm has been added to the player
+- Added the ‘played’ TimeRanges attribute to the player to indicate the played range
+
+#### 🐛 Issues
+
+- Resolved an issue where individual tracks started playback before all tracks are DRM decrypted
+- Resolved an issue in determining the content type of a representation for some manifests
+- Resolved an issue in correctly calculating the duration of time ranges
+- Resolved an issue where the player could go in a stalling state
+
+#### ⚡ Improvements
+
+- Improved the synchronization of the individual tracks
+- Ensured that the player never goes in a playing state before the ‘canplay’ event has been thrown by the player
+- Improved the memory handling of the player
+- Added more detailed documentation about the various events that the player dispatches
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.1.1 (2016/03/14)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved a reference error in relation to MSMediaKeys.isTypeSupported on Microsoft Edge
+- Resolved a reference error that occurred when reporting Titanium Widevine error messages
+
+#### ⚡ Improvements
+
+- Removed unnecessary debug messages being outputted to console in release versions
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.1.0 (2016/03/04)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved DRM errors not being thrown while the player is in some specific states
+- Resolved an error in ABR calculations while the player is in a waiting state
+
+#### ⚡ Improvements
+
+- Optimized the error handling of specific errors that previously leaked their error message to console
+- Improved the error event being thrown twice for the some errors
+- Improved the MPEG-DASH manifest parser to detect more defects in the manifests
+- Improved the segmentnotfound event to provide information on the number of retries
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.0.2 (2016/02/26)
+
+### Web
+
+#### ✨ Features
+
+- Content Protection error and success reporting and messages have been improved
+    - `contentprotectionerror` – event thrown when an error occurs during content protection
+    - `contentprotectionsuccess` – event thrown after content protection steps have been finalized and playback should start
+    - `mediaencryptionlicenseobtained` – event has been removed from the player
+
+#### 🐛 Issues
+
+- Resolved an issue in calculating the edges of the seekable range in closed, static content
+- Throw a durationchange event when the duration of a media asset changes during playback
+
+#### ⚡ Improvements
+
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.0.1 (2016/02/12)
+
+### Web
+
+#### 🐛 Issues
+
+- Resolved an inaccuracy in the seekable ranges of the player
+- The end time of the seekable range during playback of an open (type = ‘dynamic’) asset is now three target durations away from the loadable range/end of the data in the stream
+- Ensure that when the currentTime of the player is modified, the new value falls inside of the seekable range
+- Resolved an issue in open (type = ‘dynamic’) assets that caused the manifest to no longer to be reloaded
+
+#### ⚡ Improvements
+
+- Various small improvements in the flow and stability of the player
+- Updated the DRM error messages to more clearly represent the cause of the error
+
+## 🚀 2.0.0 (2016/02/05)
+
+### Web
+
+#### ✨ Features
+
+- Support for the Latens Titanium DRM system has been added for the IE11 and Edge browsers for the Windows 8, 8.1 and 10 platforms
+
+#### 🐛 Issues
+
+- Resolved a TypeError related to the code obfuscation occurring specifically on Edge causing the player not to start playback
+- Resolved an issue in cleaning up assets while unloading the player or changing source
+
+#### ⚡ Improvements
+
+- Various small improvements in the flow and stability of the player
+
+## 🚀 2.0.0-BETA.0 (2015/12/03)
+
+### Web
+
+#### ✨ Features
+
+- Added versioning support in THEOplayer.version
+- Support for the Latens Titanium DRM system has been added for the Chrome web browser
+- Updating the src attribute of the player now unloads the old and loads the new value of the attribute
+- Calling the stop method on the player now stops playback and destroys the player
+- Support for dynamic streams with a continually growing DVR window
+- Support for dynamic streams that transition to a static stream has been added to the player
+
+#### 🐛 Issues
+
+- When a 404 error occurs during the download of a media segment, the player will now try again after a short delay
+- Resolved a time and rounding issue that caused the player not to start playback of the specified asset
+- The player now recovers from situations where its playback buffer is not overlapping with the timeline of a dynamic stream
+- Resolved an issue on IE11 where media keys got attached to the media element while the media element was in an invalid readyState 0, `HAVE_NOTHING`
+- Clean up old media keys when stopping the player or when setting a new source on the player
+
+#### ⚡ Improvements
+
+- When present, PSSH headers now get read from the manifest in order to kick start the DRM flow
+- Support for the presentationTimeOffset MPEG-DASH MPD attribute has been added to the player
+- Various small improvements in the flow and stability of the player
