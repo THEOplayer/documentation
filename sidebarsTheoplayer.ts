@@ -100,6 +100,15 @@ const sidebars: SidebarsConfig = {
           },
           href: 'pathname:///theoplayer/v6/api-reference/ios/',
         },
+        {
+          type: 'link',
+          label: 'React Native',
+          description: 'API references for React Native THEOplayer',
+          customProps: {
+            icon: 'react',
+          },
+          href: 'https://theoplayer.github.io/react-native-theoplayer/api/',
+        },
         'api-reference/roku',
       ],
     },
