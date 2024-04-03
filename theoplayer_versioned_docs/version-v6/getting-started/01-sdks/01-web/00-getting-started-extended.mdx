@@ -89,14 +89,14 @@ The THEOplayer Developer Portal is a dashboard with a <span className={styles.bo
 The content panel contains multiple sub-panels, with one of them being the <span className={styles.borderYellow}>SDKs</span> panel.
 Click the <span className={styles.borderRed}>Create</span> button in the SDKs panel, as annotated with a red arrow in the following screenshot.
 
-![THEOplayer Developer Portal's dashboard](../../../assets/img/getting-started-web-sdk/dashboard-annotate.png)
+![THEOplayer Developer Portal's dashboard](../../../../../theoplayer/assets/img/getting-started-web-sdk/dashboard-annotate.png)
 
 Alternatively, you create an SDK through the SDKs page.
 
 - You click the <span className={styles.borderRedDashed}>SDKs</span> item in the side navigation panel (annotated with a dashed red rectangle in the screenshot above) to navigate to the overview of your existing SDKs.
 - The content panel of the SDKs page presents action buttons. Click the <span className={styles.borderRed}>Create</span> button to initiate the SDK creation process, as highlighted in the screenshot below.
 
-![THEOplayer Developer Portal SDK Page](../../../assets/img/getting-started-web-sdk/sdks-page.png)
+![THEOplayer Developer Portal SDK Page](../../../../../theoplayer/assets/img/getting-started-web-sdk/sdks-page.png)
 
 ### Build, configure and publish SDK
 
@@ -107,12 +107,12 @@ Building your Web SDK involves four steps.
 3. Select features – Enable certain features (e.g. HLS advertising) and disable others (e.g. Chromecast). You can also change the default colors of your player, and the setup of certain integrations.
 4. Review and publish – Validate your configuration and click "Publish", or go back.
 
-![Build SDK](../../../assets/img/getting-started-web-sdk/build-sdk.png)
+![Build SDK](../../../../../theoplayer/assets/img/getting-started-web-sdk/build-sdk.png)
 
 After you complete the fourth step, "Review and Publish", it'll take the portal a couple of minutes to generate your unique SDK.
 Once you see the <span className={styles.borderRed}>Ready!</span> button, as the screenshot below highlights with the red rectangle, you know that your SDK is available.
 
-![SDK ready](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
+![SDK ready](../../../../../theoplayer/assets/img/getting-started-web-sdk/sdk-ready.png)
 In the next section, you'll learn the importance of the <span className={styles.borderPurple}>"KEY"</span>, <span className={styles.borderGreen}>"LICENSE"</span> and <span className={styles.borderBlue}>"CDN"</span> values in the above screenshot, and how it relates to including an SDK and initializing a video player.
 
 ## Include an SDK
@@ -159,7 +159,7 @@ The THEOplayer Web SDK is a collection of library files hosted on a web server o
 The THEOplayer Developer Portal hosts these library files automatically on its CDN, as can be seen in the screenshot below.
 You can find this view by navigating to your newly created Web SDK.
 
-![screenshot from the THEO portal SDK build page, highlighting the CDN link](../../../assets/img/getting-started-web-sdk/sdk-cdn.png)
+![screenshot from the THEO portal SDK build page, highlighting the CDN link](../../../../../theoplayer/assets/img/getting-started-web-sdk/sdk-cdn.png)
 
 We use the terms "library location" and "CDN" interchangeably throughout this guide.
 During this guide, `SDK-LIBRARY-LOCATION` represents your library location, which is `https://cdn.myth.theoplayer.com/55d71743-4924-4d1b-8440-78f9cd103879` in the screenshot above.
@@ -186,7 +186,7 @@ Throughout this guide, you will often see `SDK-LIBRARY-LOCATION` and `YOUR-LICEN
 
 Failing to replace these values results in errors as you'll be loading non-existent files.
 Our advice is to copy-paste these two values in a text editor so that you can quickly access them for the remainder of this guide.
-![screenshot from the THEO portal SDK build page, highlighting various elements](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
+![screenshot from the THEO portal SDK build page, highlighting various elements](../../../../../theoplayer/assets/img/getting-started-web-sdk/sdk-ready.png)
 
 The blue rectangle in the above screenshot annotates the <code className={styles.borderBlue}>SDK-LIBRARY-LOCATION</code>.
 The green rectangle in the above screenshot annotates <code className={styles.borderGreen}>YOUR-LICENSE</code>.
@@ -238,7 +238,7 @@ Note that this step by itself doesn't initialize your video player. This step ju
 
 You can validate a successful load of the THEOplayer JavaScript library by typing `THEOplayer.version` and `THEOplayer.features` in the developer console of your browser,
 as demonstrated in the screenshot below.
-![screenshot demonstrating logs of the player version and features to confirm it has been loaded correctly](../../../assets/img/getting-started-web-sdk/js-fiddle-step-1.png)
+![screenshot demonstrating logs of the player version and features to confirm it has been loaded correctly](../../../../../theoplayer/assets/img/getting-started-web-sdk/js-fiddle-step-1.png)
 
 </details>
 
@@ -447,11 +447,11 @@ The following widget demonstrates a modified snippet in JSFiddle.
 There are other approaches to setting the size of your container instead of using `vjs-16-9`.
 For example, you could omit the `vjs-16-9` class, and instead configure the width and height of container class through CSS,
 as demonstrated in the screenshot below.
-![screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player](../../../assets/img/getting-started-web-sdk/container-height-percent.png)
+![screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player](../../../../../theoplayer/assets/img/getting-started-web-sdk/container-height-percent.png)
 
 Alternatively, you set your container to be responsive to its parent node by setting your configuration to `"fluid: true"`,
 as demonstrated by the following screenshot.
-![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../assets/img/getting-started-web-sdk/container-height-fluid.png)
+![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../../../theoplayer/assets/img/getting-started-web-sdk/container-height-fluid.png)
 
 There is no wrong or right. It's up to you to decide which approach is best for your use-case.
 </details>
@@ -524,7 +524,7 @@ This authentication is important for a number of use-cases, such as remotely con
 
 The green rectangle in the following screenshot points out where you find the value of your <span className={styles.borderGreen}>license</span> on the page of your SDK.
 
-![SDK License](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
+![SDK License](../../../../../theoplayer/assets/img/getting-started-web-sdk/sdk-ready.png)
 
 The following code represents step-8, and sets your `license`.
 
@@ -904,6 +904,6 @@ Such plans give you access to the THEOplayer Service Desk, where you can ask for
 The following screenshot shows you two windows. The left window shows you where to find the "Support plan" on the THEOplayer Developer Portal.
 The right window shows you what Service Desk looks like.
 
-![Support](../../../assets/img/getting-started-web-sdk/support.png)
+![Support](../../../../../theoplayer/assets/img/getting-started-web-sdk/support.png)
 
 <em>We hope that you enjoyed this Getting Started Guide! [Let us know through Github](https://github.com/THEOplayer/documentation/issues) if you know how we could improve this introduction.</em>

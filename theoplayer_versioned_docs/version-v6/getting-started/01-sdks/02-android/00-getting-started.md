@@ -25,7 +25,7 @@ We have to modify the **build.gradle** files to be able to fetch the Android SDK
 
 1. In your **top-level** (project) **build.gradle** file
 
-![](../../../assets/img/android-getting-started-07.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-07.png)
 
 1. a) Add JitPack as a repository.
 
@@ -51,7 +51,7 @@ buildscript {
 
 2. Next, we need to edit the **build.gradle** on the **module-level** (**app/build.gradle**)
 
-![](../../../assets/img/android-getting-started-09.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-09.png)
 
 We need to apply Kotlin as a plugin using by adding `apply plugin: 'kotlin-android'`.
 Then specify THEOplayer as a dependency for the app. So edit the Gradle file to contain:
@@ -106,7 +106,7 @@ This approach also allows you to configure the "license string" through a progra
 
 You will add some code to the activity_main.xml file.
 
-![](../../../assets/img/android-getting-started-13.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-13.png)
 
 You can add the **THEOplayerView** to the layout of the **MainActivity** with the snippet below.
 
@@ -123,7 +123,7 @@ The "**id**" is important because it is used to identify the view object in you 
 </com.theoplayer.android.api.THEOplayerView>
 ```
 
-![](../../../assets/img/android-getting-started-14.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-14.png)
 
 ## Use THEOplayer API in your application
 
@@ -182,7 +182,7 @@ First add the button to our **activity_main.xml** layout file
     app:layout_constraintRight_toRightOf="parent"/>
 ```
 
-![](../../../assets/img/android-getting-started-16.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-16.png)
 
 Then set an **OnClickListener()** on the button in our **MainActivity** code to trigger play and pause in the player.
 
@@ -202,7 +202,7 @@ Button btnPlayPause;
     });
 ```
 
-![](../../../assets/img/android-getting-started-17.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-17.png)
 
 #### 4. Listen for THEOplayer events ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/52f4a46b6c856d402f2fa2dfca249779d2b22967?diff=unified))
 
@@ -262,7 +262,7 @@ theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.TIMEUPDATE, new Eve
 });
 ```
 
-![](../../../assets/img/android-getting-started-19.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-19.png)
 
 When the events are triggered, we will update the **MainActivity** UI with the corresponding state.
 
@@ -286,7 +286,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-![](../../../assets/img/android-getting-started-21.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-21.png)
 
 In the **AndroidManifest.xml** we can disable the default orientation behavior on our MainActivity and lock it in portrait.  
 Then, because we enabled fullscreen orientation coupling with the **setFullScreenOrientationCoupled(true)** method earlier, THEOplayer will take care of the support of seamless landscape activity transition at rotation.
@@ -303,7 +303,7 @@ Then, because we enabled fullscreen orientation coupling with the **setFullScree
 </activity>
 ```
 
-![](../../../assets/img/android-getting-started-20.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-20.png)
 
 ## Couple THEOplayer with the lifecycle callbacks
 
@@ -337,7 +337,7 @@ public class MainActivity extends AppCompatActivity{
 }
 ```
 
-![](../../../assets/img/android-getting-started-22.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-22.png)
 
 If you would like to customize the Fullscreen Activity, you can follow our tutorial [here](../../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
 
@@ -347,19 +347,19 @@ Here you have some screenshots from the running application:
 
 ### Start screen
 
-![](../../../assets/img/screenshot-1524665161199.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665161199.jpg)
 
 ### Playing screen
 
-![](../../../assets/img/screenshot-1524665170079.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665170079.jpg)
 
 ### Paused screen
 
-![](../../../assets/img/screenshot-1524665175584.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665175584.jpg)
 
 ### Rotated fullscreen
 
-![](../../../assets/img/screenshot-1524665185023.jpg)
+![](../../../../../theoplayer/assets/img/screenshot-1524665185023.jpg)
 
 ## Summary
 

@@ -222,7 +222,7 @@ THEOplayer offers the option to block the player when an adblocker is detected. 
 
 The default message that is shown when ad-block is detected is depicted below.
 
-![Adblock detection](../../assets/img/adblock-detected.png)
+![Adblock detection](../../../../theoplayer/assets/img/adblock-detected.png)
 
 ## Demos and sample applications
 

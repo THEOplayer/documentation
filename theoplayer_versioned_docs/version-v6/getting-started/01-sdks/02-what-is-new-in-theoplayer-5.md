@@ -66,7 +66,7 @@ THEOplayer 5.0 has 3 main components:
 - Integrations
 - Connectors
 
-![](../../assets/img/theoplayer-5-architecture-00.png)
+![](../../../../theoplayer/assets/img/theoplayer-5-architecture-00.png)
 
 ### Core playback
 

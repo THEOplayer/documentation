@@ -2,7 +2,7 @@
 
 The article in this section describes how to implement common use-cases related to the Related Content feature. This feature adds a component to the UI which enables viewers to navigate to related content. Developers can configure the related content using the exposed Related API.
 
-![Related Content](../../assets/img/related-content.png "Related Content")
+![Related Content](../../../../theoplayer/assets/img/related-content.png "Related Content")
 
 ## SDKs
 
