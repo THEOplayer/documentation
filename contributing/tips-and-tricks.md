@@ -13,11 +13,13 @@ This article will provide some dos and don'ts and some general information on ho
 ## Markdown
 
 **A cheat sheet will all the Markdown features** can be
-found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). An overview of Markdown features \*
-\*specific to Docusaurus\*\* can be found [here](https://docusaurus.io/docs/markdown-features).
+found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+An overview of Markdown features **specific to Docusaurus** can be
+found [here](https://docusaurus.io/docs/markdown-features).
 
-If you're using Visual Code to write markdown files, install this **great extension
-**: [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one).
+If you're using Visual Code to write markdown files,
+install this **great extension**:
+[Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one).
 
 ## Naming convention directories and files
 
@@ -182,6 +184,7 @@ function playingEventHandler(event) {
   var adIsPlaying = player.ads.playing;
   console.log('PLAYING', adIsPlaying ? 'Advertisement' : 'Content', event);
 }
+
 player.addEventListener('playing', playingEventHandler);
 ```
 
@@ -226,6 +229,7 @@ function playingEventHandler(event) {
   var adIsPlaying = player.ads.playing;
   console.log('PLAYING', adIsPlaying ? 'Advertisement' : 'Content', event);
 }
+
 player.addEventListener('playing', playingEventHandler);
 ```
 
