@@ -51,7 +51,7 @@ This is a long answer to the title.
 With a lot of information.
 Or at least a bit more than in the opening paragraph.
 
-# Resources
+## Resources
 
 The following resources provide more information:
 

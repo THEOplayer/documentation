@@ -78,7 +78,7 @@ The code example below does X...
     // some code. Use java, swift, ... instead of js if needed.
     ```
 
-##### Web SDK
+### Web SDK
 
 Specific code for the Web SDK.
 
@@ -88,7 +88,7 @@ Specific code for the Web SDK.
 
 Note: we use 5 # here, it will have a different style on Gatsby so it pops out
 
-##### Android SDK
+### Android SDK
 
     ```java
     // Code Android

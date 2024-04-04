@@ -30,7 +30,7 @@ The code example below does X...
 // Example JS code
 ```
 
-##### Web SDK
+### Web SDK
 
 Some information about the piece of code (optional).
 
@@ -38,7 +38,7 @@ Some information about the piece of code (optional).
 // Specific code Web SDK
 ```
 
-##### Android SDK
+### Android SDK
 
 Some information about the piece of code (optional).
 
@@ -46,7 +46,7 @@ Some information about the piece of code (optional).
 // Specific code Android SDK
 ```
 
-##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
+### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
 Some information about the piece of code (optional).
 
