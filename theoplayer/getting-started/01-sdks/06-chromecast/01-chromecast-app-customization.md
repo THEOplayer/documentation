@@ -75,7 +75,7 @@ Generally speaking, there are three types of user interfaces:
 
 THEOplayer automatically inserts a Chromecast button in its default video player UI if you are using THEOplayer's default UI.
 ![Chromecast button](../../../assets/img/chromecast-active.png "Chromecast button")
-The UI of this button changes when the [Chromecast state](pathname:///theoplayer/v6/api-reference/web/types/CastState.html) changes.
+The UI of this button changes when the [Chromecast state](pathname:///theoplayer/v7/api-reference/web/types/CastState.html) changes.
 Please see below if you want to alter this default UI.
 
 ### Chromeless UI
@@ -85,9 +85,9 @@ Typically, you want to insert a Chromecast button, and connect that button with 
 (e.g. `player.cast.chromecast.start()`) and stop (`player.cast.chromecast.stop()`) a Chromecast session. Additionally, you might want to change the appearance of this
 button when the state of your casting session transitions (e.g. `player.cast.chromecast.addEventListener('statechange', function() {...});`).
 
-- Web: [Chromecast API](pathname:///theoplayer/v6/api-reference/web/interfaces/Chromecast.html), [Cast API](pathname:///theoplayer/v6/api-reference/web/interfaces/VendorCast.html), [Cast Events API](pathname:///theoplayer/v6/api-reference/web/interfaces/VendorCastEventMap.html)
-- iOS: [Chromecast API](pathname:///theoplayer/v6/api-reference/ios/Protocols/Chromecast.html), [Chromecast Events API](pathname:///theoplayer/v6/api-reference/ios/ChromeCast%20Events.html#/s:13THEOplayerSDK16StateChangeEventC)
-- Android: [Chromecast API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/cast/chromecast/Chromecast.html), [Chromecast Events API](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/event/chromecast/CastStateChangeEvent.html)
+- Web: [Chromecast API](pathname:///theoplayer/v7/api-reference/web/interfaces/Chromecast.html), [Cast API](pathname:///theoplayer/v7/api-reference/web/interfaces/VendorCast.html), [Cast Events API](pathname:///theoplayer/v7/api-reference/web/interfaces/VendorCastEventMap.html)
+- iOS: [Chromecast API](pathname:///theoplayer/v7/api-reference/ios/Protocols/Chromecast.html), [Chromecast Events API](pathname:///theoplayer/v7/api-reference/ios/ChromeCast%20Events.html#/s:13THEOplayerSDK16StateChangeEventC)
+- Android: [Chromecast API](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/cast/chromecast/Chromecast.html), [Chromecast Events API](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/event/chromecast/CastStateChangeEvent.html)
 
 Familiarize yourself with the above APIs if you want to change the appearance of your Chromeless UI and its relation to Chromecast.
 
@@ -103,7 +103,7 @@ If you are using THEOplayer's default UI, but want to use your own button instea
 2. You connect with a custom Receiver application powered by the THEOplayer Chromecast Receiver SDK.
 3. You connect with a custom Receiver application which doesn't contain any THEOplayer SDK or code.
 
-You can provide Chromecast metadata in all three set-ups. Providing [Chromecast metadata](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceDescription.html#metadata) will make your Receiver application show relevant info (e.g. a title, a thumbnail, ...) when
+You can provide Chromecast metadata in all three set-ups. Providing [Chromecast metadata](pathname:///theoplayer/v7/api-reference/web/interfaces/SourceDescription.html#metadata) will make your Receiver application show relevant info (e.g. a title, a thumbnail, ...) when
 your application is buffering or paused.
 
 ### Default Receiver application

@@ -98,6 +98,11 @@ const config: Config = {
           current: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
           },
+          v6: {
+            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v6/version.txt'), 'utf8').trim(),
+            banner: 'none',
+            noIndex: true,
+          },
           v4: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v4/version.txt'), 'utf8').trim(),
             banner: 'unmaintained',
@@ -122,6 +127,21 @@ const config: Config = {
           },
         },
         sidebarItemsGenerator,
+      } satisfies DocsPlugin.Options,
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'contributing',
+        path: 'contributing',
+        routeBasePath: '/contributing',
+        sidebarPath: './sidebarsContributing.ts',
+        versions: {
+          current: {
+            noIndex: true,
+          },
+        },
       } satisfies DocsPlugin.Options,
     ],
     () => ({
@@ -268,7 +288,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
-      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'bash'],
+      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'bash', 'diff'],
     },
     algolia: {
       appId: '7HRS9V6FEL',

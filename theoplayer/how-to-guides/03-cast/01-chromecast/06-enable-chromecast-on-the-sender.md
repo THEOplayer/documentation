@@ -210,7 +210,7 @@ but you can connect it to a custom Chromecast Receiver application instead.
 
 ### Web SDK
 
-If you have your own Receiver app, then you adjust the [PlayerConfiguration](pathname:///theoplayer/v6/api-reference/web/interfaces/CastConfiguration.html) to connect with a specific `appID` as demonstrated below.
+If you have your own Receiver app, then you adjust the [PlayerConfiguration](pathname:///theoplayer/v7/api-reference/web/interfaces/CastConfiguration.html) to connect with a specific `appID` as demonstrated below.
 
 ```javascript
 let customChromecastReceiverAppID = "8E80B9CE";
