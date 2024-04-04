@@ -133,10 +133,10 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
-        id: 'contribution-guidelines',
-        path: 'contribution-guidelines',
-        routeBasePath: '/contribution-guidelines',
-        sidebarPath: './sidebarsContributionGuidelines.ts',
+        id: 'contributing',
+        path: 'contributing',
+        routeBasePath: '/contributing',
+        sidebarPath: './sidebarsContributing.ts',
         versions: {
           current: {
             noIndex: true,
