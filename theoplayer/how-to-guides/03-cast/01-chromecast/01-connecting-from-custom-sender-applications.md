@@ -100,7 +100,7 @@ import java.util.List;
 
 public class THEOCastOptionsProvider implements OptionsProvider {
 
-    public static String DEFAULT_APP_ID = "1ADD53F3";
+    public static String DEFAULT_APP_ID = "8E80B9CE";
 
     @Override
     public CastOptions getCastOptions(Context context) {
@@ -232,7 +232,7 @@ This will start casting the source listed in the class to the Chromecast receive
 When launching your application, start your Google Cast context using the following snippet:
 
 ```swift
-let options = GCKCastOptions(receiverApplicationID: "1ADD53F3")
+let options = GCKCastOptions(receiverApplicationID: "8E80B9CE")
 GCKCastContext.setSharedInstanceWith(options)
 ```
 

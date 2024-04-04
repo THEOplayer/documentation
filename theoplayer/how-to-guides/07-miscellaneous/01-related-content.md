@@ -18,7 +18,7 @@ The Related Content API is a UI feature. It's currently unavailable on the Andro
 
 The Related Content API was first released on THEOplayer's Web SDK.
 
-- Reference API: [Related-Content API](pathname:///theoplayer/v6/api-reference/web/interfaces/RelatedContent.html)
+- Reference API: [Related-Content API](pathname:///theoplayer/v7/api-reference/web/interfaces/RelatedContent.html)
 - Online demo: [https://demo.theoplayer.com/related-content](https://demo.theoplayer.com/related-content)
 
 ```js
@@ -135,7 +135,7 @@ var sampleSource1: SourceDescription {
 ```
 
 - Reference DEMO APP: [iOS Related Content Demo APP](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Related-Content)
-- Reference API: [iOS Related Content API](pathname:///theoplayer/v6/api-reference/ios/Protocols/RelatedContent.html)
+- Reference API: [iOS Related Content API](pathname:///theoplayer/v7/api-reference/ios/Protocols/RelatedContent.html)
 
 ## Important Note
 

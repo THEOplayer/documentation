@@ -2,7 +2,7 @@
 
 It is possible to distinguish between when the quality is changed by ABR or by the user and, in the latter case, which quality has been selected.
 
-This can be easily achieved listening to the `targetqualitychanged` event ([documentation](pathname:///theoplayer/v6/api-reference/web/interfaces/TargetQualityChangedEvent.html)) such as in the snippet below:
+This can be easily achieved listening to the `targetqualitychanged` event ([documentation](pathname:///theoplayer/v7/api-reference/web/interfaces/TargetQualityChangedEvent.html)) such as in the snippet below:
 ```js   
 player.videoTracks[0].addEventListener('targetqualitychanged', (e)=>{  
  let selectedTrack = e.qualities[0];

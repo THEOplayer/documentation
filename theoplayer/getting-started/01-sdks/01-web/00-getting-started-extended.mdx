@@ -365,7 +365,7 @@ You will use this reference in the next step when creating your THEOplayer insta
 
 #### Create THEOplayer instance
 
-Create a THEOplayer `"Player"` instance by using the [THEOplayer constructor API](pathname:///theoplayer/v6/api-reference/web/classes/Player.html#constructor).
+Create a THEOplayer `"Player"` instance by using the [THEOplayer constructor API](pathname:///theoplayer/v7/api-reference/web/classes/Player.html#constructor).
 This is the first time you'll use the THEOplayer API.
 Pass along the reference to your container, and set an empty configuration object `{}`. You will update this configuration in a later step.
 
@@ -560,7 +560,7 @@ Clicking the big play button won't do anything, because you still need to associ
 ## Configure a video
 
 Configuring the video source of your video player is the last crucial step of this guide.
-You use the [`source`](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html#source) property of your `player` instance to configure a video.
+You use the [`source`](pathname:///theoplayer/v7/api-reference/web/classes/ChromelessPlayer.html#source) property of your `player` instance to configure a video.
 The snippet below exemplifies how you could configure an HLS stream through `player.source`.
 
 ```javascript
@@ -657,7 +657,7 @@ Next, you'll want to explore the following topics:
 You'll also want to get familiar with the following resources:
 
 - [https://docs.theoplayer.com](https://docs.theoplayer.com): documentation portal — use this to find documentation
-  - [http://www.theoplayer.com/docs/theoplayer/v6/api-reference/web/](pathname:///theoplayer/v6/api-reference/web/): API Reference
+  - [http://www.theoplayer.com/docs/theoplayer/v7/api-reference/web/](pathname:///theoplayer/v7/api-reference/web/): API Reference
 - [https://github.com/THEOplayer](https://github.com/THEOplayer): Github — use this to find code samples
   - [https://github.com/THEOplayer/samples-html5-sdk](https://github.com/THEOplayer/samples-html5-sdk): samples
     - [https://codesandbox.io/s/github/THEOplayer/samples-web](https://codesandbox.io/s/github/THEOplayer/samples-web): code preview of the above repository
@@ -669,7 +669,7 @@ You'll also want to get familiar with the following resources:
 
 ### API
 
-The API reference of the THEOplayer Web SDK is available at [http://www.theoplayer.com/docs/theoplayer/v6/api-reference/web/](pathname:///theoplayer/v6/api-reference/web/).
+The API reference of the THEOplayer Web SDK is available at [http://www.theoplayer.com/docs/theoplayer/v7/api-reference/web/](pathname:///theoplayer/v7/api-reference/web/).
 The API is also widely referred to in our guides at [https://docs.theoplayer.com](https://docs.theoplayer.com/).
 The JavaScript API offers the following:
 
@@ -678,8 +678,8 @@ The JavaScript API offers the following:
   - Event listeners (e.g. `player.addEventListener(‘play', console.log)`)
 - Getters (e.g. `player.muted`) and setters (e.g. `player.muted = true`)
 
-The top-level interface is the [Player API](pathname:///theoplayer/v6/api-reference/web/classes/ChromelessPlayer.html).
-A [map of events](pathname:///theoplayer/v6/api-reference/web/interfaces/PlayerEventMap.html) is available in the Player API,
+The top-level interface is the [Player API](pathname:///theoplayer/v7/api-reference/web/classes/ChromelessPlayer.html).
+A [map of events](pathname:///theoplayer/v7/api-reference/web/interfaces/PlayerEventMap.html) is available in the Player API,
 such as the `playing` and `volumechange` event.
 
 <details>
@@ -699,8 +699,8 @@ Let's explain four popular features of the THEOplayer API.
 
 #### Autoplay
 
-You add support for autoplay by setting [`player.autoplay = true`](pathname:///theoplayer/v6/api-reference/web/types/MutedAutoplayConfiguration.html).
-Additionally, we set [`mutedAutoplay: "all"`](pathname:///theoplayer/v6/api-reference/web/types/MutedAutoplayConfiguration.html) in the player configuration, to [combat autoplay policies](../../../faq/02-how-to-combat-autoplay-policies.md).
+You add support for autoplay by setting [`player.autoplay = true`](pathname:///theoplayer/v7/api-reference/web/types/MutedAutoplayConfiguration.html).
+Additionally, we set [`mutedAutoplay: "all"`](pathname:///theoplayer/v7/api-reference/web/types/MutedAutoplayConfiguration.html) in the player configuration, to [combat autoplay policies](../../../faq/02-how-to-combat-autoplay-policies.md).
 Combating autoplay policies through `mutedAutoplay: "all"` means: doing muted autoplay when unmuted autoplay isn't permitted.
 The following snippet adds support for the described autoplay.
 
@@ -761,7 +761,7 @@ player.source = {
 };
 ```
 
-[Other valid preload values](pathname:///theoplayer/v6/api-reference/web/types/PreloadType.html) are:
+[Other valid preload values](pathname:///theoplayer/v7/api-reference/web/types/PreloadType.html) are:
 
 - `"metadata"` (which fetches some metadata, like its duration, but no actual segments)
 - `"none"` (which explicitly disables all forms of preloading)
@@ -787,7 +787,7 @@ player.source = {
 };
 ```
 
-Other valid values for type are [`performance` and `bandwidth`](pathname:///theoplayer/v6/api-reference/web/types/ABRStrategyType.html#abrstrategytype-type).
+Other valid values for type are [`performance` and `bandwidth`](pathname:///theoplayer/v7/api-reference/web/types/ABRStrategyType.html#abrstrategytype-type).
 
 - `Performance` makes sense if you want your video to start as fast as possible, because it'll do startup with the lowest video quality.
 - `Bandwidth` is the default value and uses historical data to find an optimal ABR strategy.
@@ -852,7 +852,7 @@ Refer to our [advertisement guides](../../../how-to-guides/01-ads/00-introductio
 [ad block detection](../../../how-to-guides/01-ads/01-block-detection.md), and others.
 
 Let's consider adding support for pre-rolls advertisements as a preview. Pre-roll advertisements play before the main video content.
-You add an `ads` key to the `player.source` object. This key holds a list of [ad descriptions](pathname:///theoplayer/v6/api-reference/web/interfaces/AdDescription.html). Each ad description is an advertisement.
+You add an `ads` key to the `player.source` object. This key holds a list of [ad descriptions](pathname:///theoplayer/v7/api-reference/web/interfaces/AdDescription.html). Each ad description is an advertisement.
 For each ad description, you configure its `sources` property (which is the link to the ad tag) and its `timeOffset` (which is the position of the advertisement).
 Set `timeOffset` to `start` to specify that it's a pre-roll. Set the `timeOffset` value to `end` to specify it's a post-roll, or set a timestamp (e.g. "00:00:15") to specify it's a mid-roll.
 

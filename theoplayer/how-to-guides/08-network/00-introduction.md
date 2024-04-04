@@ -4,7 +4,7 @@ This article explains how to use the Network API.
 
 On iOS browsers, the Network API can only be used to intercept and alter DRM-related requests and responses.
 
-The technical documentation on the Network API can be found [here](pathname:///theoplayer/v6/api-reference/web/interfaces/Network.html).
+The technical documentation on the Network API can be found [here](pathname:///theoplayer/v7/api-reference/web/interfaces/Network.html).
 
 ## SDKs
 

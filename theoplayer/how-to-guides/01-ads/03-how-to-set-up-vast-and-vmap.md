@@ -45,7 +45,7 @@ The following snippets demonstrate how to schedule a single pre-roll.
 
 #### Web SDK
 
-You configure one [`AdDescription`](pathname:///theoplayer/v6/api-reference/web/interfaces/AdDescription.html) in the `ads` property of your [`SourceConfiguration`](pathname:///theoplayer/v6/api-reference/web/interfaces/SourceConfiguration.html).
+You configure one [`AdDescription`](pathname:///theoplayer/v7/api-reference/web/interfaces/AdDescription.html) in the `ads` property of your [`SourceConfiguration`](pathname:///theoplayer/v7/api-reference/web/interfaces/SourceConfiguration.html).
 In this `AdDescription`,
 
 - you set the value of `sources` to your ad tag URL.
@@ -74,11 +74,11 @@ For example, to schedule an advertisement at the 15s mark, you set the value of 
 
 #### Android SDK
 
-You configure one [`AdDescription`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html) in the `ads` property of your [`SourceDescription`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/SourceDescription.Builder.html#ads-com.theoplayer.android.api.source.addescription.AdDescription...-).
+You configure one [`AdDescription`](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html) in the `ads` property of your [`SourceDescription`](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/source/SourceDescription.Builder.html#ads-com.theoplayer.android.api.source.addescription.AdDescription...-).
 In this `AdDescription`,
 
 - you set the value of `sources` to your ad tag URL.
-- you set the value of [`timeOffset`](pathname:///theoplayer/v6/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html#timeOffset-java.lang.String-) to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
+- you set the value of [`timeOffset`](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html#timeOffset-java.lang.String-) to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
 
 ```java
 TypedSource typedSource = new TypedSource.Builder("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
@@ -101,11 +101,11 @@ For example, to schedule an advertisement at the 15s mark, you set the value of 
 
 #### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-You configure one [`THEOAdDescription`](pathname:///theoplayer/v6/api-reference/ios/Classes/THEOAdDescription.html) in the `ads` property of your [`SourceDescription`](pathname:///theoplayer/v6/api-reference/ios/Classes/SourceDescription.html#/s:13THEOplayerSDK17SourceDescriptionC3adsSayAA02AdD0_pGSgvp).
+You configure one [`THEOAdDescription`](pathname:///theoplayer/v7/api-reference/ios/Classes/THEOAdDescription.html) in the `ads` property of your [`SourceDescription`](pathname:///theoplayer/v7/api-reference/ios/Classes/SourceDescription.html#/s:13THEOplayerSDK17SourceDescriptionC3adsSayAA02AdD0_pGSgvp).
 In this `AdDescription`,
 
 - you set the value of `sources` to your ad tag URL.
-- you set the value of [`timeOffset`](<pathname:///theoplayer/v6/api-reference/ios/Classes/THEOAdDescription.html#/c:@M@THEOplayerSDK@objc(cs)THEOAdDescription(py)timeOffset>) to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
+- you set the value of [`timeOffset`](<pathname:///theoplayer/v7/api-reference/ios/Classes/THEOAdDescription.html#/c:@M@THEOplayerSDK@objc(cs)THEOAdDescription(py)timeOffset>) to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
 
 ```swift
 let typedSource = TypedSource(src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8", type: "application/x-mpegurl")

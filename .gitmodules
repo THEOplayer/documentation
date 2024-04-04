@@ -13,3 +13,6 @@
 [submodule "react-native-theoplayer-ui"]
 	path = open-video-ui/external/react-native-theoplayer-ui
 	url = https://github.com/THEOplayer/react-native-theoplayer-ui.git
+[submodule "react-native-v6"]
+	path = theoplayer_versioned_docs/version-v6/external/react-native-theoplayer
+	url = https://github.com/THEOplayer/react-native-theoplayer.git
