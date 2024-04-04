@@ -6,15 +6,6 @@ sidebar_label: Knowledge Base
 
 A General Information article provides information on a certain concept or general, industry topic.
 
-- [The Concept](#the-concept)
-- [Writing the Article](#Writing-the-Article)
-  - [Title of the Article](#Title-of-the-Article)
-    - Examples
-  - [Body of the Article](#Body-of-the-Article)
-  - [Template](#Template)
-    - Examples
-- [Checklist](#Checklist)
-
 ## The Concept
 
 You write General Information articles when you’re explaining something which does not really relate to the integration of THEOplayer. For example, when someone asks you “What is HLS?”, you could come up with HTTP Live Streaming.

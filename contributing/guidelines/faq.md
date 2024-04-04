@@ -6,15 +6,6 @@ sidebar_label: FAQ
 
 FAQ articles answer a question a customer (might) ask on a certain limitation, behavior or platform.
 
-- [The Concept](#the-concept)
-- [Writing the Article](#Writing-the-Article)
-  - [Title of the Article](#Title-of-the-Article)
-    - Examples
-  - [Body of the Article](#Body-of-the-Article)
-  - [Template](#Template)
-    - Examples
-- [Checklist](#Checklist)
-
 ## The Concept
 
 An FAQ article answers a single question without overdoing it.
