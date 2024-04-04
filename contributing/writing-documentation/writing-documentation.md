@@ -62,6 +62,7 @@ articles at once.
 4. You'll now be taken to your forked repository, which will look something
    like `https://github.com/YOUR_USERNAME/documentation`.
 5. Click <kbd>\<\> Code</kbd>, then click the "Copy url to clipboard" button.
+   ![Screenshot of the Clone panel](assets/github-clone.png)
 6. Use your favorite Git client to clone the repository. (Make sure to also initialize the Git submodules.)  
    Alternatively, you can use the Git command line:
    ```sh
