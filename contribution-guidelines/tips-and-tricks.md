@@ -191,7 +191,7 @@ player.addEventListener('playing', playingEventHandler);
 final EventListener<PlayingEvent> playingEventHandler = new EventListener<PlayingEvent>() {
     @Override
     public void handleEvent(PlayingEvent playingEvent) {
-        tpv.getPlayer().getAds().requestPlaying( new RequestCallback<Boolean>() {
+        tpv.getPlayer().getAds().requestPlaying(new RequestCallback<Boolean>() {
             @Override
             public void handleResult(Boolean adIsPlaying) {
                 System.out.println("PLAYING " + (adIsPlaying ? "Advertisement" : "Content"));
@@ -206,10 +206,10 @@ tpv.getPlayer().addEventListener(PlayerEventTypes.PLAYING, playingEventHandler);
 
 ```swift
 self.eventListener = self.theoplayer.addEventListener(type: PlayerEventTypes.PLAYING) { [weak self] event in
-                                      self.theoplayer?.ads.requestPlaying() { (result, _) in
-                                      print("player.ads.playing = ", result!)
-                                      }
-                              }
+    self.theoplayer?.ads.requestPlaying() { (result, _) in
+        print("player.ads.playing = ", result!)
+    }
+}
 ```
 ````
 
@@ -235,7 +235,7 @@ player.addEventListener('playing', playingEventHandler);
 final EventListener<PlayingEvent> playingEventHandler = new EventListener<PlayingEvent>() {
     @Override
     public void handleEvent(PlayingEvent playingEvent) {
-        tpv.getPlayer().getAds().requestPlaying( new RequestCallback<Boolean>() {
+        tpv.getPlayer().getAds().requestPlaying(new RequestCallback<Boolean>() {
             @Override
             public void handleResult(Boolean adIsPlaying) {
                 System.out.println("PLAYING " + (adIsPlaying ? "Advertisement" : "Content"));
@@ -250,10 +250,10 @@ tpv.getPlayer().addEventListener(PlayerEventTypes.PLAYING, playingEventHandler);
 
 ```swift
 self.eventListener = self.theoplayer.addEventListener(type: PlayerEventTypes.PLAYING) { [weak self] event in
-                                      self.theoplayer?.ads.requestPlaying() { (result, _) in
-                                      print("player.ads.playing = ", result!)
-                                      }
-                              }
+    self.theoplayer?.ads.requestPlaying() { (result, _) in
+        print("player.ads.playing = ", result!)
+    }
+}
 ```
 
 :::
