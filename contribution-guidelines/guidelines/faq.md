@@ -60,7 +60,7 @@ The following resources provide more information:
 - https://developers.google.com/youtube/terms/developer-policies
 ```
 
-Markdown Template available [here](article-faq-template.md).
+Markdown Template available [here](../templates/faq.md).
 
 **Examples**
 

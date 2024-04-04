@@ -117,7 +117,7 @@ The following resources provide more information:
 - https://developers.google.com/youtube/terms/developer-policies
 ````
 
-Markdown Template available [here](article-how-to-guides-template.md).
+Markdown Template available [here](../templates/how-to-guides.md).
 
 **Examples**
 

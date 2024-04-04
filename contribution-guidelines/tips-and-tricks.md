@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Tips and Tricks
 
 This article will provide some dos and don'ts and some general information on how to write documentation in Markdown.

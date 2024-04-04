@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Step by Step Guide using Sourcetree
 
 This document contains a small guide how to create a new branch, how to check it out locally on Sourcetree, how to make changes to that local branch, how push them back to the origin, and how to make a Pull Request in the end.
