@@ -54,7 +54,7 @@ articles at once.
 
 ### 1.b. Making a change on your local machine
 
-1. If you're a THEO employee, go to directly to step 5.
+1. If you're a THEO employee, go directly to step 5.
 2. If you're not a THEO employee, you'll need to fork the repository first. Go
    to https://github.com/THEOplayer/documentation and click <kbd>Fork</kbd>.  
    ![Screenshot of the "Fork" button](assets/github-fork-button.png)
