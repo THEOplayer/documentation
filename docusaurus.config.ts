@@ -129,6 +129,21 @@ const config: Config = {
         sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'contributing',
+        path: 'contributing',
+        routeBasePath: '/contributing',
+        sidebarPath: './sidebarsContributing.ts',
+        versions: {
+          current: {
+            noIndex: true,
+          },
+        },
+      } satisfies DocsPlugin.Options,
+    ],
     () => ({
       name: 'webpack-plugin',
       configureWebpack() {
@@ -273,7 +288,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
-      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'bash'],
+      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'bash', 'diff'],
     },
     algolia: {
       appId: '7HRS9V6FEL',

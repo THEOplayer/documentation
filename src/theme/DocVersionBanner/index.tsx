@@ -13,6 +13,8 @@ function getProductNameByPluginId(pluginId: string): string {
       return 'THEOplayer';
     case 'open-video-ui':
       return 'Open Video UI';
+    case 'contributing':
+      return 'Contributing';
     default:
       throw new Error(`Unknown plugin ID for DocVersionBanner: "${pluginId}"`);
   }
