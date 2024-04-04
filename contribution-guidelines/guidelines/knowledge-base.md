@@ -1,3 +1,7 @@
+---
+sidebar_label: Knowledge Base
+---
+
 # Knowledge Base - Guidelines
 
 A General Information article provides information on a certain concept or general, industry topic.

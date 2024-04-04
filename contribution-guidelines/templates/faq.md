@@ -1,5 +1,6 @@
 ---
 title: FAQ - Template
+sidebar_label: FAQ
 ---
 
 # Title of the Article

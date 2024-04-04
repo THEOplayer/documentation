@@ -1,3 +1,7 @@
+---
+sidebar_label: FAQ
+---
+
 # FAQ - Guidelines
 
 FAQ articles answer a question a customer (might) ask on a certain limitation, behavior or platform.

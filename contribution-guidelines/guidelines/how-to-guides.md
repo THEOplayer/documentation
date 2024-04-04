@@ -1,3 +1,7 @@
+---
+sidebar_label: How-to-Guides
+---
+
 # How-to-Guides - Guidelines
 
 How-To-Guides explain how to use/implement a certain API/feature/SDK.

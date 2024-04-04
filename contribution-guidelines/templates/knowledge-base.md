@@ -1,5 +1,6 @@
 ---
 title: Knowledge Base - Template
+sidebar_label: Knowledge Base
 ---
 
 # Title of the Article

@@ -1,5 +1,6 @@
 ---
 title: How-to-Guides - Template
+sidebar_label: How-to-Guides
 ---
 
 # Title of the Article
