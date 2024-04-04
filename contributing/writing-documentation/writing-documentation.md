@@ -26,8 +26,8 @@ articles at once.
 3. This will open the source of that article on GitHub.
    In this example, it'll take you
    to: https://github.com/THEOplayer/documentation/blob/main/theoplayer/getting-started/01-sdks/02-android/00-getting-started.md
-4. Click the <kbd>✏️</kbd> (Edit this page) button in the top right.  
-   ![Screenshot of "Edit this page" button](assets/github-edit-button.png)
+4. Click the <kbd>✏️</kbd> (Edit this file) button in the top right.  
+   ![Screenshot of "Edit this file" button](assets/github-edit-button.png)
 5. If you're not a THEO employee, you'll need to fork the repository first.  
    ![Screenshot of "Fork this repository" prompt](assets/github-fork-to-propose.png)
 6. This will take you to a page where you can edit the article.
