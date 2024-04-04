@@ -38,7 +38,8 @@ articles at once.
    - In the "Preview" view, you can see what the final article will look like when rendered.
 
      :::warning
-     Note that this is an approximation: GitHub only recognizes a _subset_ of the Markdown features
+     Note that this is an approximation: GitHub only recognizes a _subset_ of
+     the Markdown features supported by Docusaurus.
      :::
 
    ![Screenshot of the GitHub editor](assets/github-editor.png)
