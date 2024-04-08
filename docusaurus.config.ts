@@ -195,14 +195,20 @@ const config: Config = {
           .replace('web-ui/CHANGELOG', '/web/changelog')
           .replace('web-ui/react/CHANGELOG', '/react/changelog')
           .replace('android-ui/CHANGELOG', '/android/changelog')
-          .replace('react-native-theoplayer/CHANGELOG', '/getting-started/frameworks/react-native/changelog')
+          .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
           .replace('react-native-theoplayer-ui/doc/', '/react-native/');
       }
       const filePath = params.filePath.toLowerCase();
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
-        frontMatter.title ??= 'Changelog';
+        // Fix changelog titles
+        if (externalDocPath && externalDocPath.startsWith('react-native-theoplayer/')) {
+          frontMatter.title ??= 'React Native Changelog';
+          frontMatter.sidebar_label ??= 'React Native';
+        } else {
+          frontMatter.title ??= 'Changelog';
+        }
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
         frontMatter.toc_max_heading_level = 2;

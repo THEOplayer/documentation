@@ -95,7 +95,8 @@
         "id": "changelog"
       },
       "items": [
-        "changelog"
+        "changelog",
+        "external/react-native-theoplayer/CHANGELOG"
       ]
     },
     {

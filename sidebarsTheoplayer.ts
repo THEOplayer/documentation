@@ -71,7 +71,7 @@ const sidebars: SidebarsConfig = {
         icon: '📰',
       },
       link: { type: 'doc', id: 'changelog' },
-      items: ['changelog'],
+      items: ['changelog', 'external/react-native-theoplayer/CHANGELOG'],
     },
     {
       type: 'category',
