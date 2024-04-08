@@ -1,3 +1,9 @@
+---
+title: Changelog
+sidebar_label: Web, Android & iOS
+toc_max_heading_level: 2
+---
+
 ## 🚀 6.13.0 (2024/03/28)
 
 ### Web

@@ -200,7 +200,8 @@ const config: Config = {
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
           .replace('react-native-theoplayer-ui/doc/', '/react-native/');
       }
-      if (params.filePath.toLowerCase().endsWith('changelog.md')) {
+      const filePath = params.filePath.toLowerCase();
+      if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
         frontMatter.title ??= 'Changelog';
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;

@@ -83,7 +83,21 @@
         }
       ]
     },
-    "changelog",
+    {
+      "type": "category",
+      "label": "Changelog",
+      "description": "Find out what's new in THEOplayer.",
+      "customProps": {
+        "icon": "📰"
+      },
+      "link": {
+        "type": "doc",
+        "id": "changelog"
+      },
+      "items": [
+        "changelog"
+      ]
+    },
     {
       "type": "category",
       "label": "API references",
