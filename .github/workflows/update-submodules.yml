@@ -6,8 +6,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
-  deploy:
+  update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     env:
       # The branch that will receive the submodule updates (will be created if it doesn't exist)
       # Will automatically open a new PR (if no PR exists yet)
@@ -23,7 +26,10 @@ jobs:
       - name: Update submodules with upstream
         run: git submodule update --checkout --remote
       - name: Commit changes
-        run: git commit --allow-empty -a -m 'Update submodules'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit --allow-empty -a -m 'Update submodules'
       - name: Check for relevant doc changes
         shell: bash
         id: check_doc_changes
@@ -43,7 +49,7 @@ jobs:
               (cd $submodule; compare $old $new $submodule)
             done
           }
-          change_count=compare "HEAD~1" "HEAD" | grep -c -E 'CHANGELOG|/docs?/'
+          change_count=$(compare "HEAD~1" "HEAD" | grep -c -E 'CHANGELOG|/docs?/')
           if ((change_count > 0)); then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
