@@ -22,15 +22,15 @@ jobs:
         with:
           app-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
           private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
-      - name: Configure Git user
-        run: |
-          git config user.name 'theoplayer-bot[bot]'
-          git config user.email '873105+theoplayer-bot[bot]@users.noreply.github.com'
       - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 1
+      - name: Configure Git user
+        run: |
+          git config user.name 'theoplayer-bot[bot]'
+          git config user.email '873105+theoplayer-bot[bot]@users.noreply.github.com'
       - name: Create branch
         run: git checkout -b $UPDATE_BRANCH
       - name: Update submodules with upstream
