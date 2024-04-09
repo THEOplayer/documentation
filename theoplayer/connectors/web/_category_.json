@@ -6,8 +6,9 @@
       {
         "type": "category",
         "label": "CMCD",
+        "description": "Integrate with Common Media Client Data (CMCD) for server-side analytics.",
         "customProps": {
-          "icon": "🔌"
+          "icon": "☁️"
         },
         "position": 1,
         "link": {
@@ -28,8 +29,9 @@
       {
         "type": "category",
         "label": "Conviva",
+        "description": "Integrate with Conviva for player analytics.",
         "customProps": {
-          "icon": "🔌"
+          "icon": "conviva"
         },
         "position": 2,
         "link": {
@@ -50,8 +52,9 @@
       {
         "type": "category",
         "label": "Nielsen",
+        "description": "Integrate with Nielsen for player analytics.",
         "customProps": {
-          "icon": "🔌"
+          "icon": "nielsen"
         },
         "position": 3,
         "link": {
@@ -72,8 +75,9 @@
       {
         "type": "category",
         "label": "Yospace",
+        "description": "Integrate with Yospace for server-side ad insertion (SSAI).",
         "customProps": {
-          "icon": "🔌"
+          "icon": "yospace"
         },
         "position": 4,
         "link": {
