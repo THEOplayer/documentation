@@ -16,9 +16,20 @@ jobs:
       # Will automatically open a new PR (if no PR exists yet)
       UPDATE_BRANCH: update-submodules
     steps:
+      - name: Create app token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
+      - name: Configure Git user
+        run: |
+          git config user.name 'theoplayer-bot[bot]'
+          git config user.email '873105+theoplayer-bot[bot]@users.noreply.github.com'
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 1
       - name: Create branch
         run: git checkout -b $UPDATE_BRANCH
@@ -64,7 +75,7 @@ jobs:
             echo "exists=true" >> "$GITHUB_OUTPUT"
           fi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Create pull request
         if: ${{ steps.check_doc_changes.outputs.changed && !steps.check_pr_exists.outputs.exists }}
         shell: bash
@@ -75,4 +86,4 @@ jobs:
             --title "Update documentation from submodules" \
             --body "This PR pulls in the latest documentation changes from the external submodules."
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
