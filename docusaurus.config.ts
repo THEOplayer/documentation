@@ -21,6 +21,7 @@ const docsConfigBase = {
     '!(external/**)',
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
+    'external/web-connectors/*/README.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
@@ -200,6 +201,7 @@ const config: Config = {
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
           .replace('react-native-theoplayer-ui/doc/', '/react-native/')
           .replace(/web-connectors\/(\w+)\/CHANGELOG/, '/connectors/web/$1/changelog')
+          .replace(/web-connectors\/(\w+)\/README/, '/connectors/web/$1/getting-started')
           .replace(/web-connectors\/(\w+)\/doc\//, '/connectors/web/$1/');
       }
       const filePath = params.filePath.toLowerCase();
@@ -214,6 +216,8 @@ const config: Config = {
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
         frontMatter.toc_max_heading_level = 2;
+      } else if (filePath.endsWith('readme.md')) {
+        frontMatter.title ??= 'Getting started';
       }
       return result;
     },
