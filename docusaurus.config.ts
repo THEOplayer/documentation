@@ -198,7 +198,9 @@ const config: Config = {
           .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
-          .replace('react-native-theoplayer-ui/doc/', '/react-native/');
+          .replace('react-native-theoplayer-ui/doc/', '/react-native/')
+          .replace(/web-connectors\/(\w+)\/CHANGELOG/, '/connectors/web/$1/changelog')
+          .replace(/web-connectors\/(\w+)\/doc\//, '/connectors/web/$1/');
       }
       const filePath = params.filePath.toLowerCase();
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
