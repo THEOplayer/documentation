@@ -20,19 +20,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          submodules: true
       - name: Checkout or create branch
-        run: git switch $UPDATE_BRANCH || git switch --create $UPDATE_BRANCH
+        run: |
+          git fetch --depth=1 origin $UPDATE_BRANCH && git checkout $UPDATE_BRANCH || \
+          git checkout -b $UPDATE_BRANCH
       - name: Update submodules with upstream
-        run: git submodule update --checkout --remote
+        run: |
+          git submodule update --init --remote --checkout
       - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git commit --allow-empty -a -m 'Update submodules'
       - name: Check for relevant doc changes
-        shell: bash
         id: check_doc_changes
+        shell: bash
         # https://stackoverflow.com/q/67724347/7976758
         # We only care about changes to CHANGELOG.md or inside /doc/ or /docs/
         run: |
@@ -41,15 +43,14 @@ jobs:
               then git diff --name-only --ignore-submodules=all --diff-filter=ACMR "$1" "$2"
               else git diff --name-only --ignore-submodules=all --diff-filter=ACMR "$1" "$2" | awk -v r=$3 '{print "" r "/" $0}'
             fi
-          
             for submodule in `git submodule | awk '{print $2}'`
             do
               old=$(git ls-tree $1 $submodule | awk '{print $3}')
               new=$(git ls-tree $2 $submodule | awk '{print $3}')
-              (cd $submodule; compare $old $new $submodule)
+              (cd $submodule && compare $old $new $submodule)
             done
           }
-          change_count=$(compare "HEAD~1" "HEAD" | grep -c -E 'CHANGELOG|/docs?/')
+          change_count=$(compare "HEAD~1" "HEAD" | (grep -c -E 'CHANGELOG|/docs?/' ||:))
           if ((change_count > 0)); then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
