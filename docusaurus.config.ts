@@ -213,11 +213,13 @@ const config: Config = {
         } else {
           frontMatter.title ??= 'Changelog';
         }
+        frontMatter.sidebar_custom_props ??= { icon: '📰' };
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
         frontMatter.toc_max_heading_level = 2;
       } else if (filePath.endsWith('readme.md')) {
         frontMatter.title ??= 'Getting started';
+        frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
       }
       return result;
     },
