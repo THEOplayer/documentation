@@ -6,6 +6,7 @@ import AmpIcon from '@site/static/img/amp.svg';
 import AndroidIcon from '@site/static/img/android.svg';
 import AngularIcon from '@site/static/img/angular.svg';
 import AppleIcon from '@site/static/img/apple.svg';
+import ComscoreIcon from '@site/static/img/comscore.svg';
 import ChromecastIcon from '@site/static/img/chromecast.svg';
 import FlutterIcon from '@site/static/img/flutter.svg';
 import NielsenIcon from '@site/static/img/nielsen.svg';
@@ -36,6 +37,8 @@ export default function CardIcon({ icon, defaultIcon }: CardIconProps): JSX.Elem
       return <AppleIcon className={clsx(styles.cardIcon)} />;
     case 'chromecast':
       return <ChromecastIcon className={clsx(styles.cardIcon)} />;
+    case 'comscore':
+      return <ComscoreIcon className={clsx(styles.cardIcon)} />;
     case 'conviva':
       return (
         <ThemedImage

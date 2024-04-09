@@ -9,7 +9,7 @@
         "label": "Comscore",
         "description": "Integrate with Comscore for player analytics.",
         "customProps": {
-          "icon": "🔌"
+          "icon": "comscore"
         },
         "position": 1,
         "link": {
