@@ -203,7 +203,10 @@ const config: Config = {
           .replace('react-native-theoplayer-ui/doc/', '/react-native/')
           .replace(/web-connectors\/(\w+)\/CHANGELOG/, '/connectors/web/$1/changelog')
           .replace(/web-connectors\/(\w+)\/README/, '/connectors/web/$1/getting-started')
-          .replace(/web-connectors\/(\w+)\/doc\//, '/connectors/web/$1/');
+          .replace(/web-connectors\/(\w+)\/doc\//, '/connectors/web/$1/')
+          .replace(/android-connector\/connectors(?:\/\w+)*\/(\w+)\/CHANGELOG/, '/connectors/android/$1/changelog')
+          .replace(/android-connector\/connectors(?:\/\w+)*\/(\w+)\/README/, '/connectors/android/$1/getting-started')
+          .replace(/android-connector\/connectors(?:\/\w+)*\/(\w+)\/doc\//, '/connectors/android/$1/');
       }
       const filePath = params.filePath.toLowerCase();
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {

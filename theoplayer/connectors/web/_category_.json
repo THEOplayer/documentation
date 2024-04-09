@@ -1,7 +1,8 @@
 {
   "label": "Web Connectors",
+  "position": 1,
   "customProps": {
-    "icon": "Web",
+    "icon": "🌐",
     "additionalItems": [
       {
         "type": "category",
