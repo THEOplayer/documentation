@@ -23,6 +23,15 @@
           {
             "type": "doc",
             "id": "external/web-connectors/cmcd/CHANGELOG"
+          },
+          {
+            "type": "link",
+            "label": "API reference",
+            "description": "Discover all functions provided by the CMCD connector for Web.",
+            "customProps": {
+              "icon": "*️⃣"
+            },
+            "href": "https://theoplayer.github.io/web-connectors/api/modules/CMCD_Connector.html"
           }
         ]
       },
@@ -46,6 +55,15 @@
           {
             "type": "doc",
             "id": "external/web-connectors/conviva/CHANGELOG"
+          },
+          {
+            "type": "link",
+            "label": "API reference",
+            "description": "Discover all functions provided by the Conviva connector for Web.",
+            "customProps": {
+              "icon": "*️⃣"
+            },
+            "href": "https://theoplayer.github.io/web-connectors/api/modules/Conviva_Connector.html"
           }
         ]
       },
@@ -69,6 +87,15 @@
           {
             "type": "doc",
             "id": "external/web-connectors/nielsen/CHANGELOG"
+          },
+          {
+            "type": "link",
+            "label": "API reference",
+            "description": "Discover all functions provided by the Nielsen connector for Web.",
+            "customProps": {
+              "icon": "*️⃣"
+            },
+            "href": "https://theoplayer.github.io/web-connectors/api/modules/Nielsen_Connector.html"
           }
         ]
       },
@@ -92,6 +119,15 @@
           {
             "type": "doc",
             "id": "external/web-connectors/yospace/CHANGELOG"
+          },
+          {
+            "type": "link",
+            "label": "API reference",
+            "description": "Discover all functions provided by the Yospace connector for Web.",
+            "customProps": {
+              "icon": "*️⃣"
+            },
+            "href": "https://theoplayer.github.io/web-connectors/api/modules/Yospace_Connector.html"
           }
         ]
       }
