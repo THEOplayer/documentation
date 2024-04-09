@@ -22,6 +22,7 @@ const docsConfigBase = {
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
     'external/web-connectors/*/README.md',
+    'external/android-connector/connectors/**/README.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
