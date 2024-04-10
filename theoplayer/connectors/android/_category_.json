@@ -13,8 +13,9 @@
         },
         "position": 1,
         "link": {
-          "type": "doc",
-          "id": "external/android-connector/connectors/analytics/comscore/README"
+          "type": "generated-index",
+          "title": "Comscore Connector for Android",
+          "slug": "connectors/android/comscore"
         },
         "items": [
           {
@@ -41,8 +42,9 @@
         },
         "position": 2,
         "link": {
-          "type": "doc",
-          "id": "external/android-connector/connectors/analytics/conviva/README"
+          "type": "generated-index",
+          "title": "Conviva Connector for Android",
+          "slug": "connectors/android/conviva"
         },
         "items": [
           {
@@ -69,8 +71,9 @@
         },
         "position": 3,
         "link": {
-          "type": "doc",
-          "id": "external/android-connector/connectors/analytics/nielsen/README"
+          "type": "generated-index",
+          "title": "Nielsen Connector for Android",
+          "slug": "connectors/android/nielsen"
         },
         "items": [
           {
@@ -97,8 +100,9 @@
         },
         "position": 4,
         "link": {
-          "type": "doc",
-          "id": "external/android-connector/connectors/mediasession/README"
+          "type": "generated-index",
+          "title": "Media Session Connector for Android",
+          "slug": "connectors/android/mediasession"
         },
         "items": [
           {

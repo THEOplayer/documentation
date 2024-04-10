@@ -14,6 +14,7 @@
         "position": 1,
         "link": {
           "type": "generated-index",
+          "title": "CMCD Connector for Web",
           "slug": "connectors/web/cmcd"
         },
         "items": [
@@ -55,6 +56,7 @@
         "position": 2,
         "link": {
           "type": "generated-index",
+          "title": "Conviva Connector for Web",
           "slug": "connectors/web/conviva"
         },
         "items": [
@@ -96,6 +98,7 @@
         "position": 3,
         "link": {
           "type": "generated-index",
+          "title": "Nielsen Connector for Web",
           "slug": "connectors/web/nielsen"
         },
         "items": [
@@ -137,6 +140,7 @@
         "position": 4,
         "link": {
           "type": "generated-index",
+          "title": "Yospace Connector for Web",
           "slug": "connectors/web/yospace"
         },
         "items": [
