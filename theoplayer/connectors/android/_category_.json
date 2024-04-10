@@ -20,6 +20,15 @@
           {
             "type": "doc",
             "id": "external/android-connector/connectors/analytics/comscore/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/comscore"
           }
         ]
       },
@@ -39,6 +48,15 @@
           {
             "type": "doc",
             "id": "external/android-connector/connectors/analytics/conviva/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva"
           }
         ]
       },
@@ -58,6 +76,15 @@
           {
             "type": "doc",
             "id": "external/android-connector/connectors/analytics/nielsen/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/nielsen"
           }
         ]
       },
@@ -77,6 +104,15 @@
           {
             "type": "doc",
             "id": "external/android-connector/connectors/mediasession/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/mediasession"
           }
         ]
       }

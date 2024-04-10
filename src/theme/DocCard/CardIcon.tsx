@@ -51,6 +51,16 @@ export default function CardIcon({ icon, defaultIcon }: CardIconProps): JSX.Elem
       );
     case 'flutter':
       return <FlutterIcon className={clsx(styles.cardIcon)} />;
+    case 'github':
+      return (
+        <ThemedImage
+          className={clsx(styles.cardIcon)}
+          sources={{
+            light: useBaseUrl('/img/github.svg'),
+            dark: useBaseUrl('/img/github_dark.svg'),
+          }}
+        />
+      );
     case 'nielsen':
       return <NielsenIcon className={clsx(styles.cardIcon)} />;
     case 'nuxtjs':

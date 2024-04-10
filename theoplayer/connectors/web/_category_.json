@@ -33,6 +33,15 @@
               "icon": "*️⃣"
             },
             "href": "https://theoplayer.github.io/web-connectors/api/modules/CMCD_Connector.html"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/web-connectors/tree/main/cmcd"
           }
         ]
       },
@@ -65,6 +74,15 @@
               "icon": "*️⃣"
             },
             "href": "https://theoplayer.github.io/web-connectors/api/modules/Conviva_Connector.html"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/web-connectors/tree/main/conviva"
           }
         ]
       },
@@ -97,6 +115,15 @@
               "icon": "*️⃣"
             },
             "href": "https://theoplayer.github.io/web-connectors/api/modules/Nielsen_Connector.html"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/web-connectors/tree/main/nielsen"
           }
         ]
       },
@@ -129,6 +156,15 @@
               "icon": "*️⃣"
             },
             "href": "https://theoplayer.github.io/web-connectors/api/modules/Yospace_Connector.html"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/web-connectors/tree/main/yospace"
           }
         ]
       }
