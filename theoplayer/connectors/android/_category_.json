@@ -11,7 +11,6 @@
         "customProps": {
           "icon": "comscore"
         },
-        "position": 1,
         "link": {
           "type": "generated-index",
           "title": "Comscore Connector for Android",
@@ -40,7 +39,6 @@
         "customProps": {
           "icon": "conviva"
         },
-        "position": 2,
         "link": {
           "type": "generated-index",
           "title": "Conviva Connector for Android",
@@ -69,7 +67,6 @@
         "customProps": {
           "icon": "nielsen"
         },
-        "position": 3,
         "link": {
           "type": "generated-index",
           "title": "Nielsen Connector for Android",
@@ -98,7 +95,6 @@
         "customProps": {
           "icon": "📱"
         },
-        "position": 4,
         "link": {
           "type": "generated-index",
           "title": "Media Session Connector for Android",
