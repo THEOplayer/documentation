@@ -16,23 +16,33 @@ jobs:
       # Will automatically open a new PR (if no PR exists yet)
       UPDATE_BRANCH: update-submodules
     steps:
+      - name: Create app token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 1
-          submodules: true
-      - name: Checkout or create branch
-        run: git switch $UPDATE_BRANCH || git switch --create $UPDATE_BRANCH
+      - name: Configure Git user
+        run: |
+          git config user.name 'theoplayer-bot[bot]'
+          git config user.email '873105+theoplayer-bot[bot]@users.noreply.github.com'
+      - name: Create branch
+        run: git checkout -b $UPDATE_BRANCH
       - name: Update submodules with upstream
-        run: git submodule update --checkout --remote
+        run: git submodule update --init --remote --checkout
       - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git commit --allow-empty -a -m 'Update submodules'
       - name: Check for relevant doc changes
-        shell: bash
         id: check_doc_changes
+        shell: bash
         # https://stackoverflow.com/q/67724347/7976758
         # We only care about changes to CHANGELOG.md or inside /doc/ or /docs/
         run: |
@@ -41,21 +51,20 @@ jobs:
               then git diff --name-only --ignore-submodules=all --diff-filter=ACMR "$1" "$2"
               else git diff --name-only --ignore-submodules=all --diff-filter=ACMR "$1" "$2" | awk -v r=$3 '{print "" r "/" $0}'
             fi
-          
             for submodule in `git submodule | awk '{print $2}'`
             do
               old=$(git ls-tree $1 $submodule | awk '{print $3}')
               new=$(git ls-tree $2 $submodule | awk '{print $3}')
-              (cd $submodule; compare $old $new $submodule)
+              (cd $submodule && compare $old $new $submodule)
             done
           }
-          change_count=$(compare "HEAD~1" "HEAD" | grep -c -E 'CHANGELOG|/docs?/')
+          change_count=$(compare "HEAD~1" "HEAD" | (grep -c -E 'CHANGELOG|/docs?/' ||:))
           if ((change_count > 0)); then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Push to branch
         if: ${{ steps.check_doc_changes.outputs.changed }}
-        run: git push origin HEAD:$UPDATE_BRANCH
+        run: git push --force origin HEAD:$UPDATE_BRANCH
       - name: Check if pull request already exists
         if: ${{ steps.check_doc_changes.outputs.changed }}
         id: check_pr_exists
@@ -66,7 +75,7 @@ jobs:
             echo "exists=true" >> "$GITHUB_OUTPUT"
           fi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Create pull request
         if: ${{ steps.check_doc_changes.outputs.changed && !steps.check_pr_exists.outputs.exists }}
         shell: bash
@@ -77,4 +86,4 @@ jobs:
             --title "Update documentation from submodules" \
             --body "This PR pulls in the latest documentation changes from the external submodules."
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}

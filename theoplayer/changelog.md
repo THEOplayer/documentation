@@ -1,5 +1,7 @@
 ---
-description: Find out what's new in THEOplayer.
+title: Changelog
+sidebar_label: Web, Android & iOS
+toc_max_heading_level: 2
 ---
 
 ## 🚀 7.0.0 (2024/04/03)
