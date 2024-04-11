@@ -48,12 +48,54 @@
       },
       {
         "type": "category",
+        "label": "Comscore",
+        "description": "Integrate with Comscore for player analytics.",
+        "customProps": {
+          "icon": "comscore"
+        },
+        "position": 2,
+        "link": {
+          "type": "generated-index",
+          "title": "Comscore Connector for Web",
+          "slug": "connectors/web/comscore"
+        },
+        "items": [
+          {
+            "type": "doc",
+            "id": "external/web-connectors/comscore/README"
+          },
+          {
+            "type": "doc",
+            "id": "external/web-connectors/comscore/CHANGELOG"
+          },
+          {
+            "type": "link",
+            "label": "API reference",
+            "description": "Discover all functions provided by the Comscore connector for Web.",
+            "customProps": {
+              "icon": "*️⃣"
+            },
+            "href": "https://theoplayer.github.io/web-connectors/api/modules/Comscore_Connector.html"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/web-connectors/tree/main/comscore"
+          }
+        ]
+      },
+      {
+        "type": "category",
         "label": "Conviva",
         "description": "Integrate with Conviva for player analytics.",
         "customProps": {
           "icon": "conviva"
         },
-        "position": 2,
+        "position": 3,
         "link": {
           "type": "generated-index",
           "title": "Conviva Connector for Web",
@@ -95,7 +137,7 @@
         "customProps": {
           "icon": "nielsen"
         },
-        "position": 3,
+        "position": 4,
         "link": {
           "type": "generated-index",
           "title": "Nielsen Connector for Web",
@@ -137,7 +179,7 @@
         "customProps": {
           "icon": "yospace"
         },
-        "position": 4,
+        "position": 5,
         "link": {
           "type": "generated-index",
           "title": "Yospace Connector for Web",
