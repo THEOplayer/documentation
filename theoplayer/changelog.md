@@ -1,8 +1,44 @@
 ---
-title: Changelog
-sidebar_label: Web, Android & iOS
-toc_max_heading_level: 2
+description: Find out what's new in THEOplayer.
 ---
+
+## 🚀 7.1.0 (2024/04/10)
+
+### General
+
+#### ✨ Features
+
+- Added the option to enable tracks immediately after the track is added for HLS streams.
+
+### Web
+
+#### ✨ Features
+
+- Added support for adaptation set switching.
+
+#### 🐛 Issues
+
+- Fixed an issue where active tracks were not consistent between Chromecast sender and receiver.
+- Fixed an issue where ABR would not work for some streams on Safari.
+- Fixed an issue where the click-through button for Google DAI was not clickable on mobile devices.
+
+### Android
+
+#### ✨ Features
+
+- Added support for adaptation set switching.
+
+#### 🐛 Issues
+
+- Fixed an issue where stream is paused when starting casting.
+- Fixed a rare issue where the player would periodically stall due to failing requests on certain networks.
+- Fixed a memory leak where the player would unintentionally keep some segments in memory for long periods of time.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where calling `Ads.scheduledAdBreaks` with IMA/DAI integrations would return an empty list.
 
 ## 🚀 7.0.0 (2024/04/03)
 ### Officially announcing THEOplayer 7.0
@@ -26,6 +62,7 @@ THEOplayer 7.0 is **backwards compatible for most features but includes some bre
 #### 💥 Breaking Changes
 
 - Changed the Chromecast default app ID on all platforms to our THEOplayer Chromecast CAF receiver with app ID `8E80B9CE`. If you prefer the previous default web behavior which uses our Chromecast V2 receiver, you can set the `ChromecastConfiguration.appID` to `1ADD53F3`. For our Android and iOS SDKs, we officially only support Chromecast CAF receivers. If you prefer to use the default Google Chromecast CAF receiver instead, you can set the app ID to `CC1AD845`.
+- In an effort to align with the changes made by Apple regarding the [App Store publishing policy](https://developer.apple.com/news/upcoming-requirements/?id=04292024a), starting from THEOplayer 7.0 we will distribute our SDK builds using Xcode 15. Effectively, this means that developing a client application using THEOplayer iOS/tvOS SDK will require a minimum version of Xcode 15.
 
 #### 🐛 Issues
 
