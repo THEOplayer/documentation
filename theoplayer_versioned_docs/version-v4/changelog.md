@@ -1,3 +1,9 @@
+---
+title: Changelog
+sidebar_label: Web, Android & iOS
+toc_max_heading_level: 2
+---
+
 ## 🚀 4.12.7 (2023/12/19)
 
 ### iOS

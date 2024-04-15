@@ -7,10 +7,21 @@ jobs:
   create-pr:
     runs-on: ubuntu-latest
     steps:
+      - name: Create app token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 1
+      - name: Configure Git user
+        run: |
+          git config user.name 'theoplayer-bot[bot]'
+          git config user.email '873105+theoplayer-bot[bot]@users.noreply.github.com'
       - name: Check if pull request already exists
         id: check_pr_exists
         shell: bash
@@ -20,7 +31,7 @@ jobs:
             echo "exists=true" >> "$GITHUB_OUTPUT"
           fi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Create pull request
         if: ${{ !steps.check_pr_exists.outputs.exists }}
         shell: bash
@@ -32,4 +43,4 @@ jobs:
             --title "THEOplayer ${theoplayer_version}" \
             --body "This PR contains the new documentation and API references for THEOplayer version ${theoplayer_version}"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
