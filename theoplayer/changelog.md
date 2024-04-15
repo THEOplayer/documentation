@@ -2,6 +2,26 @@
 description: Find out what's new in THEOplayer.
 ---
 
+## 🚀 7.1.1 (2024/04/15)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where setting preload to auto and autoplay would result in an endless spinner for HLS live streams.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would crash when removing the Google IMA integration in response to the `ended` event.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- Increasing minimum IMA SDK supported version to 3.18.5.
+
 ## 🚀 7.1.0 (2024/04/10)
 
 ### General
