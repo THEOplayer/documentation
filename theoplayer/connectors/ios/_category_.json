@@ -22,6 +22,10 @@
             "id": "external/iOS-Connector/Code/Comscore/README"
           },
           {
+            "type": "doc",
+            "id": "external/iOS-Connector/Code/Comscore-Examples/README"
+          },
+          {
             "type": "link",
             "label": "GitHub",
             "description": "Browse the source code or report issues on GitHub.",
@@ -50,6 +54,10 @@
             "id": "external/iOS-Connector/Code/Conviva/README"
           },
           {
+            "type": "doc",
+            "id": "external/iOS-Connector/Code/Conviva-Examples/README"
+          },
+          {
             "type": "link",
             "label": "GitHub",
             "description": "Browse the source code or report issues on GitHub.",
@@ -76,6 +84,10 @@
           {
             "type": "doc",
             "id": "external/iOS-Connector/Code/Conviva-VerizonMedia/README"
+          },
+          {
+            "type": "doc",
+            "id": "external/iOS-Connector/Code/Conviva-VerizonMedia-Examples/README"
           },
           {
             "type": "link",

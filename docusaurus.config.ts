@@ -209,6 +209,7 @@ const config: Config = {
           .replace(/android-connector\/connectors(?:\/[^\/]+)*\/([^\/]+)\/README/, '/connectors/android/$1/getting-started')
           .replace(/android-connector\/connectors(?:\/[^\/]+)*\/([^\/]+)\/doc\//, '/connectors/android/$1/')
           .replace(/iOS-Connector\/Code\/([^\/]+)\/CHANGELOG/, '/connectors/ios/$1/changelog')
+          .replace(/iOS-Connector\/Code\/([^\/]+)-Examples\/README/, '/connectors/ios/$1/examples')
           .replace(/iOS-Connector\/Code\/([^\/]+)\/README/, '/connectors/ios/$1/getting-started')
           .replace(/iOS-Connector\/Code\/([^\/]+)\/doc\//, '/connectors/ios/$1/')
           .toLowerCase();
