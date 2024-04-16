@@ -62,6 +62,34 @@
       },
       {
         "type": "category",
+        "label": "Conviva with Verizon Media",
+        "description": "Integrate with Conviva and Verizon Media for player analytics.",
+        "customProps": {
+          "icon": "conviva"
+        },
+        "link": {
+          "type": "generated-index",
+          "title": "Conviva & Verizon Media Connector for iOS & tvOS",
+          "slug": "connectors/ios/conviva-verizonmedia"
+        },
+        "items": [
+          {
+            "type": "doc",
+            "id": "external/iOS-Connector/Code/Conviva-VerizonMedia/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva-VerizonMedia"
+          }
+        ]
+      },
+      {
+        "type": "category",
         "label": "Nielsen",
         "description": "Integrate with Nielsen for player analytics.",
         "customProps": {
