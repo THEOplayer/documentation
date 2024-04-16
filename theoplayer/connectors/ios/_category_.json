@@ -115,6 +115,34 @@
             "href": "https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Nielsen"
           }
         ]
+      },
+      {
+        "type": "category",
+        "label": "Sideloaded Subtitles",
+        "description": "Add support for sideloaded subtitles to your player.",
+        "customProps": {
+          "icon": "💬"
+        },
+        "link": {
+          "type": "generated-index",
+          "title": "Sideloaded Subtitles for iOS & tvOS",
+          "slug": "connectors/ios/sideloaded-subtitles"
+        },
+        "items": [
+          {
+            "type": "doc",
+            "id": "external/iOS-Connector/Code/Sideloaded-TextTracks/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Sideloaded-TextTracks"
+          }
+        ]
       }
     ]
   }
