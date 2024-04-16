@@ -30,3 +30,7 @@
 	path = theoplayer/external/android-connector
 	url = https://github.com/THEOplayer/android-connector.git
 	branch = master
+[submodule "ios-connector"]
+	path = theoplayer/external/iOS-Connector
+	url = https://github.com/THEOplayer/iOS-Connector.git
+	branch = main

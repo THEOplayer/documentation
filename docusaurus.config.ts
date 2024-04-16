@@ -23,6 +23,7 @@ const docsConfigBase = {
     'external/*/*/CHANGELOG.md',
     'external/web-connectors/*/README.md',
     'external/android-connector/connectors/**/README.md',
+    'external/iOS-Connector/Code/**/README.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
@@ -206,7 +207,11 @@ const config: Config = {
           .replace(/web-connectors\/(\w+)\/doc\//, '/connectors/web/$1/')
           .replace(/android-connector\/connectors(?:\/\w+)*\/(\w+)\/CHANGELOG/, '/connectors/android/$1/changelog')
           .replace(/android-connector\/connectors(?:\/\w+)*\/(\w+)\/README/, '/connectors/android/$1/getting-started')
-          .replace(/android-connector\/connectors(?:\/\w+)*\/(\w+)\/doc\//, '/connectors/android/$1/');
+          .replace(/android-connector\/connectors(?:\/\w+)*\/(\w+)\/doc\//, '/connectors/android/$1/')
+          .replace(/iOS-Connector\/Code\/(\w+)\/CHANGELOG/, '/connectors/ios/$1/changelog')
+          .replace(/iOS-Connector\/Code\/(\w+)\/README/, '/connectors/ios/$1/getting-started')
+          .replace(/iOS-Connector\/Code\/(\w+)\/doc\//, '/connectors/ios/$1/')
+          .toLowerCase();
       }
       const filePath = params.filePath.toLowerCase();
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
