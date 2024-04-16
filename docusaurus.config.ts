@@ -214,7 +214,7 @@ const config: Config = {
           .replace(/iOS-Connector\/Code\/([^\/]+)\/doc\//, '/connectors/ios/$1/')
           .toLowerCase();
       }
-      const filePath = params.filePath.toLowerCase();
+      const filePath = params.filePath.toLowerCase().replaceAll(path.sep, '/');
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
         // Fix changelog titles
         if (externalDocPath && externalDocPath.startsWith('react-native-theoplayer/')) {
@@ -227,6 +227,9 @@ const config: Config = {
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
         frontMatter.toc_max_heading_level = 2;
+      } else if (filePath.endsWith('examples/readme.md')) {
+        frontMatter.title ??= 'Examples';
+        frontMatter.sidebar_custom_props ??= { icon: '🛝' };
       } else if (filePath.endsWith('readme.md')) {
         frontMatter.title ??= 'Getting started';
         frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
