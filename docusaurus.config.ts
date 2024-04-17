@@ -7,6 +7,7 @@ import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
+import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import path from 'path';
 import fs from 'fs';
 
@@ -36,12 +37,29 @@ const docsConfigBase = {
   editUrl: ({ versionDocsDirPath, docPath }) => {
     if (docPath.startsWith('external')) {
       // Edit docs in external project
-      const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
-      return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
+      return externalDocUrl(docPath);
     }
     // Edit docs in this project
     return `https://github.com/THEOplayer/documentation/blob/-/${versionDocsDirPath}/${docPath}`;
   },
+  remarkPlugins: [
+    [
+      remarkLinkRewrite,
+      {
+        replacer: (url: string, docPath: string) => {
+          // External documentation may contain relative URLs to non-Markdown files.
+          // Turn them into absolute URLs to GitHub instead.
+          if (isRelativeUrl(url) && !isMarkdownUrl(url)) {
+            const relativePath = path.relative(__dirname, docPath).replaceAll(path.sep, '/');
+            if (relativePath.includes('/external/')) {
+              return new URL(url, externalDocUrl(relativePath)).href;
+            }
+          }
+          return url;
+        },
+      },
+    ],
+  ],
 } satisfies DocsPlugin.Options;
 
 const config: Config = {
@@ -351,6 +369,23 @@ function getExternalDocPath(filePath: string): string | undefined {
     return;
   }
   return parts.join('/');
+}
+
+function isRelativeUrl(href: string): boolean {
+  return href.startsWith('./') || href.startsWith('../');
+}
+
+function isMarkdownUrl(href: string): boolean {
+  return /\.mdx?$/.test(href);
+}
+
+function hasProtocol(url: string): boolean {
+  return /^(?:\w*:|\/\/)/.test(url);
+}
+
+function externalDocUrl(docPath: string): string {
+  const [, projectName, externalDocPath] = docPath.match(/\bexternal\/([^/]+)\/(.+)$/);
+  return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
 }
 
 export default config;
