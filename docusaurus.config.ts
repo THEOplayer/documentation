@@ -42,7 +42,7 @@ const docsConfigBase = {
     // Edit docs in this project
     return `https://github.com/THEOplayer/documentation/blob/-/${versionDocsDirPath}/${docPath}`;
   },
-  remarkPlugins: [
+  beforeDefaultRemarkPlugins: [
     [
       remarkLinkRewrite,
       {
