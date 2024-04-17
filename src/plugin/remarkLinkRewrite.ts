@@ -16,7 +16,10 @@ function remarkLinkRewrite(options = { replacer: defaultReplacer }) {
   const { replacer } = options;
   return (tree: Node, vfile: VFile) => {
     visit(tree, (node: any) => {
-      if (node.type === 'link') {
+      // Link: [text](url)
+      // Definition: [label]: url
+      // https://github.com/syntax-tree/mdast/blob/main/readme.md#nodes
+      if (node.type === 'link' || node.type === 'definition') {
         node.url = replacer(node.url, vfile.path);
       }
     });
