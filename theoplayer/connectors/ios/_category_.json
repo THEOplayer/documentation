@@ -138,7 +138,7 @@
         "link": {
           "type": "generated-index",
           "title": "Sideloaded Subtitles for iOS & tvOS",
-          "slug": "connectors/ios/sideloaded-subtitles"
+          "slug": "connectors/ios/sideloaded-texttracks"
         },
         "items": [
           {
