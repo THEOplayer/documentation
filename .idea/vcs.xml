@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/open-video-ui/external/react-native-theoplayer-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/open-video-ui/external/web-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/theoplayer/external/android-connector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/theoplayer/external/iOS-Connector" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/theoplayer/external/react-native-theoplayer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/theoplayer/external/web-connectors" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v4/external/react-native-theoplayer" vcs="Git" />
