@@ -57,6 +57,15 @@ const sidebars: SidebarsConfig = {
           },
           href: 'https://theoplayer.github.io/web-ui/api/',
         },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/web-ui/',
+        },
       ],
     },
     {
@@ -92,6 +101,15 @@ const sidebars: SidebarsConfig = {
             icon: '*️⃣',
           },
           href: 'https://theoplayer.github.io/android-ui/api/',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/android-ui/',
         },
       ],
     },
@@ -141,6 +159,15 @@ const sidebars: SidebarsConfig = {
           },
           href: 'https://theoplayer.github.io/web-ui/react-api/',
         },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/web-ui/tree/main/react/',
+        },
       ],
     },
     {
@@ -166,6 +193,15 @@ const sidebars: SidebarsConfig = {
             icon: '*️⃣',
           },
           href: 'https://theoplayer.github.io/react-native-theoplayer-ui/api/',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/react-native-theoplayer-ui/',
         },
       ],
     },

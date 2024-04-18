@@ -7,6 +7,7 @@ import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
+import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import path from 'path';
 import fs from 'fs';
 
@@ -21,6 +22,9 @@ const docsConfigBase = {
     '!(external/**)',
     'external/*/CHANGELOG.md',
     'external/*/*/CHANGELOG.md',
+    'external/web-connectors/*/README.md',
+    'external/android-connector/connectors/**/README.md',
+    'external/iOS-Connector/Code/**/README.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
@@ -33,12 +37,29 @@ const docsConfigBase = {
   editUrl: ({ versionDocsDirPath, docPath }) => {
     if (docPath.startsWith('external')) {
       // Edit docs in external project
-      const [, projectName, externalDocPath] = docPath.match(/^external\/([^/]+)\/(.+)$/);
-      return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
+      return externalDocUrl(docPath);
     }
     // Edit docs in this project
     return `https://github.com/THEOplayer/documentation/blob/-/${versionDocsDirPath}/${docPath}`;
   },
+  beforeDefaultRemarkPlugins: [
+    [
+      remarkLinkRewrite,
+      {
+        replacer: (url: string, docPath: string) => {
+          // External documentation may contain relative URLs to non-Markdown files.
+          // Turn them into absolute URLs to GitHub instead.
+          if (isRelativeUrl(url) && !isMarkdownUrl(url)) {
+            const relativePath = path.relative(__dirname, docPath).replaceAll(path.sep, '/');
+            if (relativePath.includes('/external/')) {
+              return new URL(url, externalDocUrl(relativePath)).href;
+            }
+          }
+          return url;
+        },
+      },
+    ],
+  ],
 } satisfies DocsPlugin.Options;
 
 const config: Config = {
@@ -198,9 +219,20 @@ const config: Config = {
           .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
-          .replace('react-native-theoplayer-ui/doc/', '/react-native/');
+          .replace('react-native-theoplayer-ui/doc/', '/react-native/')
+          .replace(/web-connectors\/([^/]+)\/CHANGELOG/, '/connectors/web/$1/changelog')
+          .replace(/web-connectors\/([^/]+)\/README/, '/connectors/web/$1/getting-started')
+          .replace(/web-connectors\/([^/]+)\/doc\//, '/connectors/web/$1/')
+          .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/CHANGELOG/, '/connectors/android/$1/changelog')
+          .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/README/, '/connectors/android/$1/getting-started')
+          .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/doc\//, '/connectors/android/$1/')
+          .replace(/iOS-Connector\/Code\/([^/]+)\/CHANGELOG/, '/connectors/ios/$1/changelog')
+          .replace(/iOS-Connector\/Code\/([^/]+)-Examples\/README/, '/connectors/ios/$1/examples')
+          .replace(/iOS-Connector\/Code\/([^/]+)\/README/, '/connectors/ios/$1/getting-started')
+          .replace(/iOS-Connector\/Code\/([^/]+)\/doc\//, '/connectors/ios/$1/')
+          .toLowerCase();
       }
-      const filePath = params.filePath.toLowerCase();
+      const filePath = params.filePath.toLowerCase().replaceAll(path.sep, '/');
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
         // Fix changelog titles
         if (externalDocPath && externalDocPath.startsWith('react-native-theoplayer/')) {
@@ -209,9 +241,16 @@ const config: Config = {
         } else {
           frontMatter.title ??= 'Changelog';
         }
+        frontMatter.sidebar_custom_props ??= { icon: '📰' };
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
         frontMatter.toc_max_heading_level = 2;
+      } else if (filePath.endsWith('examples/readme.md')) {
+        frontMatter.title ??= 'Examples';
+        frontMatter.sidebar_custom_props ??= { icon: '🛝' };
+      } else if (filePath.endsWith('readme.md')) {
+        frontMatter.title ??= 'Getting started';
+        frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
       }
       return result;
     },
@@ -330,6 +369,23 @@ function getExternalDocPath(filePath: string): string | undefined {
     return;
   }
   return parts.join('/');
+}
+
+function isRelativeUrl(href: string): boolean {
+  return href.startsWith('./') || href.startsWith('../');
+}
+
+function isMarkdownUrl(href: string): boolean {
+  return /\.mdx?$/.test(href);
+}
+
+function hasProtocol(url: string): boolean {
+  return /^(?:\w*:|\/\/)/.test(url);
+}
+
+function externalDocUrl(docPath: string): string {
+  const [, projectName, externalDocPath] = docPath.match(/\bexternal\/([^/]+)\/(.+)$/);
+  return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
 }
 
 export default config;

@@ -1,0 +1,121 @@
+{
+  "label": "Android Connectors",
+  "position": 2,
+  "customProps": {
+    "icon": "android",
+    "additionalItems": [
+      {
+        "type": "category",
+        "label": "Comscore",
+        "description": "Integrate with Comscore for player analytics.",
+        "customProps": {
+          "icon": "comscore"
+        },
+        "link": {
+          "type": "generated-index",
+          "title": "Comscore Connector for Android",
+          "slug": "connectors/android/comscore"
+        },
+        "items": [
+          {
+            "type": "doc",
+            "id": "external/android-connector/connectors/analytics/comscore/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/comscore"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Conviva",
+        "description": "Integrate with Conviva for player analytics.",
+        "customProps": {
+          "icon": "conviva"
+        },
+        "link": {
+          "type": "generated-index",
+          "title": "Conviva Connector for Android",
+          "slug": "connectors/android/conviva"
+        },
+        "items": [
+          {
+            "type": "doc",
+            "id": "external/android-connector/connectors/analytics/conviva/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Nielsen",
+        "description": "Integrate with Nielsen for player analytics.",
+        "customProps": {
+          "icon": "nielsen"
+        },
+        "link": {
+          "type": "generated-index",
+          "title": "Nielsen Connector for Android",
+          "slug": "connectors/android/nielsen"
+        },
+        "items": [
+          {
+            "type": "doc",
+            "id": "external/android-connector/connectors/analytics/nielsen/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/nielsen"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Media Session",
+        "description": "Integrate with Android Media Session to delegate system-level playback controls to your app.",
+        "customProps": {
+          "icon": "📱"
+        },
+        "link": {
+          "type": "generated-index",
+          "title": "Media Session Connector for Android",
+          "slug": "connectors/android/mediasession"
+        },
+        "items": [
+          {
+            "type": "doc",
+            "id": "external/android-connector/connectors/mediasession/README"
+          },
+          {
+            "type": "link",
+            "label": "GitHub",
+            "description": "Browse the source code or report issues on GitHub.",
+            "customProps": {
+              "icon": "github"
+            },
+            "href": "https://github.com/THEOplayer/android-connector/tree/master/connectors/mediasession"
+          }
+        ]
+      }
+    ]
+  }
+}
