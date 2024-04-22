@@ -34,7 +34,7 @@ jobs:
       - name: Create branch
         run: git checkout -b $UPDATE_BRANCH
       - name: Update submodules with upstream
-        run: git submodule update --init --remote --checkout
+        run: git submodule update --init --remote --checkout --single-branch
       - name: Commit changes
         run: git commit --allow-empty -a -m 'Update submodules'
       - name: Check for relevant doc changes
