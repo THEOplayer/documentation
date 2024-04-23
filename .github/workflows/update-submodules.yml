@@ -34,7 +34,9 @@ jobs:
       - name: Create branch
         run: git checkout -b $UPDATE_BRANCH
       - name: Update submodules with upstream
-        run: git submodule update --init --remote --checkout --single-branch
+        run: |
+          git submodule update --init --single-branch
+          git submodule foreach 'git fetch --depth=1 origin $(git config -f $toplevel/.gitmodules submodule.$name.branch) && git checkout FETCH_HEAD'
       - name: Commit changes
         run: git commit --allow-empty -a -m 'Update submodules'
       - name: Check for relevant doc changes
