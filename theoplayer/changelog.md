@@ -1,6 +1,44 @@
 ---
+title: Changelog
+sidebar_label: Web, Android & iOS
 description: Find out what's new in THEOplayer.
+toc_max_heading_level: 2
 ---
+
+## 🚀 7.2.0 (2024/04/23)
+
+### General
+
+#### ✨ Features
+
+- Added support for setting a liveOffset for HLS live streams.
+
+### Web
+
+#### ⚡ Improvements
+
+- Added some improvements for handling of the license requests on Tizen 2.4.
+
+#### 🐛 Issues
+
+- Fixed an issue in the HLS pipeline where the currentProgramDateTime would briefly return an incorrect value after switching qualities.
+- Fixed an issue where sometimes the player would do an incorrect seek on WebOS 5.X.
+
+### Android
+
+#### ✨ Features
+
+- Added support for sideloaded WebVTT TextTracks on Chromecast.
+
+#### ⚡ Improvements
+
+- Updated the Google IMA dependency from 3.32.0 to 3.33.0.
+
+### iOS
+
+#### ✨ Features
+
+- Added `TextTrack.forced` API to indicate whether the track contains Forced Narrative cues.
 
 ## 🚀 7.1.1 (2024/04/15)
 
