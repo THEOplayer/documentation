@@ -326,6 +326,12 @@ const config: Config = {
             },
             {
               type: 'docSidebar',
+              sidebarId: 'chromecast',
+              docsPluginId: 'theoplayer',
+              label: 'THEOplayer Chromecast SDK',
+            },
+            {
+              type: 'docSidebar',
               sidebarId: 'roku',
               docsPluginId: 'theoplayer',
               label: 'THEOplayer Roku SDK',
