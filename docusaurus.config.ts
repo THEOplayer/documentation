@@ -302,11 +302,29 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'web',
-          docsPluginId: 'theoplayer',
+          type: 'dropdown',
           label: 'THEOplayer',
           position: 'left',
+          items: [
+            {
+              type: 'docSidebar',
+              sidebarId: 'web',
+              docsPluginId: 'theoplayer',
+              label: 'THEOplayer Web SDK',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'android',
+              docsPluginId: 'theoplayer',
+              label: 'THEOplayer Android SDK',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'ios',
+              docsPluginId: 'theoplayer',
+              label: 'THEOplayer iOS SDK',
+            },
+          ],
         },
         {
           type: 'docSidebar',
