@@ -324,6 +324,12 @@ const config: Config = {
               docsPluginId: 'theoplayer',
               label: 'THEOplayer iOS SDK',
             },
+            {
+              type: 'docSidebar',
+              sidebarId: 'roku',
+              docsPluginId: 'theoplayer',
+              label: 'THEOplayer Roku SDK',
+            },
           ],
         },
         {

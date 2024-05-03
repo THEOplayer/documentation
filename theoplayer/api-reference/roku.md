@@ -1,8 +1,8 @@
 ---
 title: Roku API Reference
-description: API references for the THEOplayer Roku SDK
-sidebar_label: Roku
-sidebar_custom_props: { icon: '📺' }
+description: Discover all properties and functions of THEOplayer.
+sidebar_label: API references
+sidebar_custom_props: { icon: '*️⃣' }
 ---
 
 # Player API
