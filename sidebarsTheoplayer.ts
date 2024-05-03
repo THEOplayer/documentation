@@ -46,6 +46,7 @@ const faqItem: SidebarItemConfig = {
  */
 const sidebars: SidebarsConfig = {
   web: [
+    'index',
     {
       type: 'category',
       label: 'Getting started',
@@ -92,6 +93,7 @@ const sidebars: SidebarsConfig = {
     faqItem,
   ],
   android: [
+    'android/index',
     {
       type: 'category',
       label: 'Getting started',
@@ -128,6 +130,7 @@ const sidebars: SidebarsConfig = {
     faqItem,
   ],
   ios: [
+    'ios/index',
     {
       type: 'category',
       label: 'Getting started',
