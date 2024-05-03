@@ -4,16 +4,6 @@ import webConnectorsJson from './theoplayer/connectors/web/_category_.json';
 import androidConnectorsJson from './theoplayer/connectors/android/_category_.json';
 import iosConnectorsJson from './theoplayer/connectors/ios/_category_.json';
 
-/**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
 const sidebars: SidebarsConfig = {
   web: [
     'index',
