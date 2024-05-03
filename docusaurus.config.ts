@@ -303,7 +303,7 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'theoplayer',
+          sidebarId: 'web',
           docsPluginId: 'theoplayer',
           label: 'THEOplayer',
           position: 'left',
