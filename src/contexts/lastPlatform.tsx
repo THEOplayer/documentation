@@ -1,6 +1,5 @@
 import React, { JSX, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import { useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
-import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
 
 // Heavily based on useDocsPreferredVersion()
 // https://github.com/facebook/docusaurus/blob/v3.3.2/packages/docusaurus-theme-common/src/contexts/docsPreferredVersion.tsx
@@ -104,7 +103,7 @@ export function useLastPlatform(): {
   return useLastPlatformByPluginId(pluginId);
 }
 
-export function useLastPlatformByPluginId(pluginId: string | undefined = DEFAULT_PLUGIN_ID): {
+export function useLastPlatformByPluginId(pluginId: string): {
   lastPlatformName: LastPlatformName;
   saveLastPlatform: (lastPlatform: LastPlatformName) => void;
 } {
