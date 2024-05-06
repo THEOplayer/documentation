@@ -27,7 +27,7 @@ export default function LinkWrapper({ item, ...props }: Props): JSX.Element {
   const {
     activePlugin: { pluginId },
     activeVersion,
-  } = useActivePluginAndVersion();
+  } = useActivePluginAndVersion({ failfast: true });
   const { lastPlatformName } = useLastPlatformByPluginId(pluginId);
   const lastPlatformSidebar = lastPlatformName ? activeVersion.sidebars[lastPlatformName] : undefined;
   const href = lastPlatformSidebar?.link.path ?? item.href;

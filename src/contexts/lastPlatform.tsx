@@ -99,7 +99,7 @@ export function useLastPlatform(): {
   lastPlatformName: LastPlatformName;
   saveLastPlatform: (lastPlatform: LastPlatformName) => void;
 } {
-  const { pluginId } = useActivePlugin();
+  const { pluginId } = useActivePlugin({ failfast: true });
   return useLastPlatformByPluginId(pluginId);
 }
 
