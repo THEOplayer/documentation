@@ -311,22 +311,27 @@ const config: Config = {
             {
               platform: 'web',
               label: 'THEOplayer Web SDK',
+              icon: '🌐',
             },
             {
               platform: 'android',
               label: 'THEOplayer Android SDK',
+              icon: 'android',
             },
             {
               platform: 'ios',
               label: 'THEOplayer iOS SDK',
+              icon: 'apple',
             },
             {
               platform: 'chromecast',
               label: 'THEOplayer Chromecast SDK',
+              icon: 'chromecast',
             },
             {
               platform: 'roku',
               label: 'THEOplayer Roku SDK',
+              icon: '📺',
             },
           ],
         } satisfies PlatformDropdownNavbarItemProps,
