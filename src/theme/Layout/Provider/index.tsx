@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import Provider from '@theme-original/Layout/Provider';
 import type ProviderType from '@theme/Layout/Provider';
 import type { WrapperProps } from '@docusaurus/types';

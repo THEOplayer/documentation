@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
 import { useLayoutDocsSidebar } from '@docusaurus/theme-common/internal';
 import { useLocation } from '@docusaurus/router';

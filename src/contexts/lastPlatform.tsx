@@ -1,4 +1,4 @@
-import React, { type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { JSX, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { type GlobalPluginData, useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
 import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
 import { createStorageSlot } from '@docusaurus/theme-common';

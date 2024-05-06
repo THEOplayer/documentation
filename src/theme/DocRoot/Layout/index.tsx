@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { JSX, useEffect } from 'react';
 import Layout from '@theme-original/DocRoot/Layout';
 import type LayoutType from '@theme/DocRoot/Layout';
 import type { WrapperProps } from '@docusaurus/types';
