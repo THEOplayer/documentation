@@ -233,6 +233,9 @@ function backLink(): SidebarItemLink {
     type: 'link',
     label: '« Back',
     href: '/theoplayer/',
+    customProps: {
+      isBackLink: true,
+    },
   };
 }
 
