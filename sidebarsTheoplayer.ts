@@ -123,11 +123,7 @@ const sidebars: SidebarsConfig = {
     faqItem(),
   ],
   knowledgeBase: [
-    {
-      type: 'link',
-      label: '« Back',
-      href: '/theoplayer/',
-    },
+    backItem(),
     {
       type: 'category',
       label: 'Knowledge base',
@@ -137,11 +133,7 @@ const sidebars: SidebarsConfig = {
     },
   ],
   faq: [
-    {
-      type: 'link',
-      label: '« Back',
-      href: '/theoplayer/',
-    },
+    backItem(),
     {
       type: 'category',
       label: 'FAQ',
@@ -233,6 +225,14 @@ function faqItem(): SidebarItemLink {
       icon: '❔',
     },
     href: '/theoplayer/faq/',
+  };
+}
+
+function backItem(): SidebarItemLink {
+  return {
+    type: 'link',
+    label: '« Back',
+    href: '/theoplayer/',
   };
 }
 
