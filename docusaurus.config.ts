@@ -4,6 +4,7 @@ import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
+import type { Props as PlatformDropdownNavbarItemProps } from './src/theme/NavbarItem/PlatformDropdownNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
@@ -302,42 +303,33 @@ const config: Config = {
       },
       items: [
         {
-          type: 'dropdown',
+          type: 'custom-platformDropdown',
+          docsPluginId: 'theoplayer',
           label: 'THEOplayer',
           position: 'left',
           items: [
             {
-              type: 'docSidebar',
-              sidebarId: 'web',
-              docsPluginId: 'theoplayer',
+              platform: 'web',
               label: 'THEOplayer Web SDK',
             },
             {
-              type: 'docSidebar',
-              sidebarId: 'android',
-              docsPluginId: 'theoplayer',
+              platform: 'android',
               label: 'THEOplayer Android SDK',
             },
             {
-              type: 'docSidebar',
-              sidebarId: 'ios',
-              docsPluginId: 'theoplayer',
+              platform: 'ios',
               label: 'THEOplayer iOS SDK',
             },
             {
-              type: 'docSidebar',
-              sidebarId: 'chromecast',
-              docsPluginId: 'theoplayer',
+              platform: 'chromecast',
               label: 'THEOplayer Chromecast SDK',
             },
             {
-              type: 'docSidebar',
-              sidebarId: 'roku',
-              docsPluginId: 'theoplayer',
+              platform: 'roku',
               label: 'THEOplayer Roku SDK',
             },
           ],
-        },
+        } satisfies PlatformDropdownNavbarItemProps,
         {
           type: 'docSidebar',
           sidebarId: 'openVideoUi',
