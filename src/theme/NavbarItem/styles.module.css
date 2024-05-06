@@ -3,11 +3,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .platformDropdownIcon {
-  min-width: 20px;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .platformDropdownItemContent {
