@@ -1,7 +1,6 @@
-import React, { JSX, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { type GlobalPluginData, useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
+import React, { JSX, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
+import { useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
 import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants';
-import { createStorageSlot } from '@docusaurus/theme-common';
 
 // Heavily based on useDocsPreferredVersion()
 // https://github.com/facebook/docusaurus/blob/v3.3.2/packages/docusaurus-theme-common/src/contexts/docsPreferredVersion.tsx
@@ -19,11 +18,6 @@ export function isPlatformName(name: string): name is PlatformName {
 }
 
 const isDocsPluginEnabled: boolean = !!useAllDocsData;
-const storageKey = (pluginId: string) => `docs-last-platform-${pluginId}`;
-
-// https://github.com/facebook/docusaurus/blob/v3.3.2/packages/docusaurus-theme-common/src/utils/storageUtils.ts#L10-L12
-type PersistenceType = 'localStorage' | 'sessionStorage' | 'none';
-const persistence: PersistenceType = 'sessionStorage';
 
 type LastPlatformName = PlatformName | null;
 
@@ -45,29 +39,6 @@ type DocsLastPlatformState = {
  */
 const getInitialState = (pluginIds: string[]): DocsLastPlatformState => Object.fromEntries(pluginIds.map((id) => [id, { lastPlatformName: null }]));
 
-/**
- * Read storage for all docs plugins, assigning each doc plugin a last platform (if found)
- */
-function readStorageState(pluginIds: string[], allDocsData: { [pluginId: string]: GlobalPluginData }): DocsLastPlatformState {
-  /**
-   * The storage value we read might be stale, and belong to a sidebar that does
-   * not exist in the site anymore. In such case, we remove the storage value to
-   * avoid downstream errors.
-   */
-  function restorePluginState(pluginId: string): DocsLastPlatformPluginState {
-    const slot = createStorageSlot(storageKey(pluginId), { persistence });
-    const lastPlatformUnsafe = slot.get();
-    const pluginData = allDocsData[pluginId]!;
-    const sidebarExists = lastPlatformUnsafe && pluginData.versions.some((version) => version.sidebars[lastPlatformUnsafe] !== undefined);
-    if (sidebarExists) {
-      return { lastPlatformName: lastPlatformUnsafe as PlatformName };
-    }
-    slot.del();
-    return { lastPlatformName: null };
-  }
-  return Object.fromEntries(pluginIds.map((id) => [id, restorePluginState(id)]));
-}
-
 type ContextValue = [
   state: DocsLastPlatformState,
   api: {
@@ -84,15 +55,9 @@ function useContextValue(): ContextValue {
   // Initial state is empty, as we can't read browser storage in node/SSR
   const [state, setState] = useState(() => getInitialState(pluginIds));
 
-  // On mount, we set the state read from browser storage
-  useEffect(() => {
-    setState(readStorageState(pluginIds, allDocsData));
-  }, [allDocsData, pluginIds]);
-
   // The API that we expose to consumer hooks (memo for constant object)
   const api = useMemo(() => {
     function saveLastPlatform(pluginId: string, lastPlatform: LastPlatformName) {
-      createStorageSlot(storageKey(pluginId), { persistence }).set(lastPlatform);
       setState((s) => ({
         ...s,
         [pluginId]: { lastPlatformName: lastPlatform },
