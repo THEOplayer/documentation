@@ -18,31 +18,36 @@ import YospaceIconUrl from '@site/static/img/yospace.png';
 import styles from './styles.module.css';
 
 interface CardIconProps {
+  className?: string;
   icon?: string;
   defaultIcon: string;
 }
 
-export default function CardIcon({ icon, defaultIcon }: CardIconProps): JSX.Element | string | null {
+function TextIcon({ className, icon }: { className?: string; icon: string }): JSX.Element | string {
+  return className ? <span className={className}>{icon}</span> : icon;
+}
+
+export default function CardIcon({ className, icon, defaultIcon }: CardIconProps): JSX.Element | string | null {
   if (!icon) {
-    return defaultIcon;
+    return <TextIcon className={className} icon={defaultIcon} />;
   }
   switch (icon) {
     case 'amp':
-      return <AmpIcon className={clsx(styles.cardIcon)} />;
+      return <AmpIcon className={clsx(styles.cardIcon, className)} />;
     case 'android':
-      return <AndroidIcon className={clsx(styles.cardIcon)} />;
+      return <AndroidIcon className={clsx(styles.cardIcon, className)} />;
     case 'angular':
-      return <AngularIcon className={clsx(styles.cardIcon)} />;
+      return <AngularIcon className={clsx(styles.cardIcon, className)} />;
     case 'apple':
-      return <AppleIcon className={clsx(styles.cardIcon)} />;
+      return <AppleIcon className={clsx(styles.cardIcon, className)} />;
     case 'chromecast':
-      return <ChromecastIcon className={clsx(styles.cardIcon)} />;
+      return <ChromecastIcon className={clsx(styles.cardIcon, className)} />;
     case 'comscore':
-      return <ComscoreIcon className={clsx(styles.cardIcon)} />;
+      return <ComscoreIcon className={clsx(styles.cardIcon, className)} />;
     case 'conviva':
       return (
         <ThemedImage
-          className={clsx(styles.cardIcon)}
+          className={clsx(styles.cardIcon, className)}
           sources={{
             light: useBaseUrl('/img/conviva.svg'),
             dark: useBaseUrl('/img/conviva_dark.svg'),
@@ -50,11 +55,11 @@ export default function CardIcon({ icon, defaultIcon }: CardIconProps): JSX.Elem
         />
       );
     case 'flutter':
-      return <FlutterIcon className={clsx(styles.cardIcon)} />;
+      return <FlutterIcon className={clsx(styles.cardIcon, className)} />;
     case 'github':
       return (
         <ThemedImage
-          className={clsx(styles.cardIcon)}
+          className={clsx(styles.cardIcon, className)}
           sources={{
             light: useBaseUrl('/img/github.svg'),
             dark: useBaseUrl('/img/github_dark.svg'),
@@ -62,18 +67,18 @@ export default function CardIcon({ icon, defaultIcon }: CardIconProps): JSX.Elem
         />
       );
     case 'nielsen':
-      return <NielsenIcon className={clsx(styles.cardIcon)} />;
+      return <NielsenIcon className={clsx(styles.cardIcon, className)} />;
     case 'nuxtjs':
-      return <NuxtjsIcon className={clsx(styles.cardIcon)} />;
+      return <NuxtjsIcon className={clsx(styles.cardIcon, className)} />;
     case 'react':
-      return <ReactIcon className={clsx(styles.cardIcon)} />;
+      return <ReactIcon className={clsx(styles.cardIcon, className)} />;
     case 'vuejs':
-      return <VuejsIcon className={clsx(styles.cardIcon)} />;
+      return <VuejsIcon className={clsx(styles.cardIcon, className)} />;
     case 'wordpress':
-      return <WordPressIcon className={clsx(styles.cardIcon)} />;
+      return <WordPressIcon className={clsx(styles.cardIcon, className)} />;
     case 'yospace':
-      return <img src={YospaceIconUrl} className={clsx(styles.cardIcon)} />;
+      return <img src={YospaceIconUrl} className={clsx(styles.cardIcon, className)} />;
     default:
-      return icon;
+      return <TextIcon className={className} icon={icon} />;
   }
 }
