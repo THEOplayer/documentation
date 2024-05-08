@@ -1,16 +1,44 @@
 ---
+displayed_sidebar: web
 sidebar_label: Introduction
 ---
 
 # Open Video UI
 
-The Open Video UI provides component libraries for building a world-class video player experience powered by the THEOplayer SDK.
+import Intro from './shared/_intro.mdx';
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-- Use the default UI for a great out-of-the-box experience, or use the individual components to build your own custom UI.
-- Dedicated libraries for each platform, so your UI always feels native in your app.
-
-On these pages, you'll learn how to get started with the Open Video UI and make your very own UI.
-
-import SidebarDocCardList from '@site/src/components/SidebarDocCardList';
-
-<SidebarDocCardList />
+<Intro />
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      label: 'Open Video UI for Web',
+      description: 'Build an astonishing player UI with Web Components.',
+      customProps: { icon: 'web' },
+      href: useBaseUrl('open-video-ui/web'),
+    },
+    {
+      type: 'link',
+      label: 'Open Video UI for Android',
+      description: 'Build a mobile-first player UI for Android with Jetpack Compose.',
+      customProps: { icon: 'android' },
+      href: useBaseUrl('open-video-ui/android'),
+    },
+    {
+      type: 'link',
+      label: 'Open Video UI for React',
+      description: 'Build a stunning player UI with React components.',
+      customProps: { icon: 'react' },
+      href: useBaseUrl('open-video-ui/react'),
+    },
+    {
+      type: 'link',
+      label: 'React Native THEOplayer UI',
+      description: 'Build a cross-platform player UI with React Native.',
+      customProps: { icon: 'android' },
+      href: useBaseUrl('open-video-ui/react-native'),
+    },
+  ]}
+/>

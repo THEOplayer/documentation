@@ -336,12 +336,33 @@ const config: Config = {
           ],
         } satisfies PlatformDropdownNavbarItemProps,
         {
-          type: 'docSidebar',
-          sidebarId: 'openVideoUi',
+          type: 'custom-platformDropdown',
           docsPluginId: 'open-video-ui',
           label: 'Open Video UI',
           position: 'left',
-        },
+          items: [
+            {
+              platform: 'web',
+              label: 'Open Video UI for Web',
+              icon: 'web',
+            },
+            {
+              platform: 'android',
+              label: 'Open Video UI for Android',
+              icon: 'android',
+            },
+            {
+              platform: 'react',
+              label: 'Open Video UI for React',
+              icon: 'react',
+            },
+            {
+              platform: 'react-native',
+              label: 'React Native THEOplayer UI',
+              icon: 'react',
+            },
+          ],
+        } satisfies PlatformDropdownNavbarItemProps,
         {
           label: 'THEOlive',
           href: 'https://developers.theo.live/',
