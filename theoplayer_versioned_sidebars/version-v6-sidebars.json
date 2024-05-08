@@ -116,7 +116,7 @@
           "label": "Web",
           "description": "API references for the THEOplayer Web SDK",
           "customProps": {
-            "icon": "🌐"
+            "icon": "web"
           },
           "href": "pathname:///theoplayer/v6/api-reference/web/"
         },

@@ -311,7 +311,7 @@ const config: Config = {
             {
               platform: 'web',
               label: 'THEOplayer Web SDK',
-              icon: '🌐',
+              icon: 'web',
             },
             {
               platform: 'android',

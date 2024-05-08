@@ -8,7 +8,7 @@ const sidebars: SidebarsConfig = {
       label: 'Web',
       description: 'Build an astonishing player UI with Web Components.',
       customProps: {
-        icon: '🌐',
+        icon: 'web',
       },
       link: {
         type: 'generated-index',
