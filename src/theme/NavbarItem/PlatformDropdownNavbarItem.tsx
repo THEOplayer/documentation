@@ -24,6 +24,7 @@ export interface Props extends Omit<DropdownNavbarItemProps, 'items'> {
   readonly dropdownItemsAfter?: LinkLikeNavbarItemProps[];
   readonly docsPluginId?: string;
   readonly items: PlatformDropdownNavbarItemProps[];
+  readonly href?: string;
 }
 
 function PlatformDropdownItem({ label, icon }: PlatformDropdownItemProps): JSX.Element {
@@ -46,6 +47,7 @@ export default function PlatformDropdownNavbarItem({
   dropdownItemsBefore,
   dropdownItemsAfter,
   items,
+  href,
   ...props
 }: Props): JSX.Element {
   const { search, hash } = useLocation();
@@ -67,13 +69,14 @@ export default function PlatformDropdownNavbarItem({
     };
   });
   const dropdownItems = [...(dropdownItemsBefore ?? []), ...platformLinks, ...(dropdownItemsAfter ?? [])];
+  const dropdownTo = mobile && items.length > 1 ? undefined : href;
 
   return (
     <DropdownNavbarItem
       {...props}
       mobile={mobile}
       label={label}
-      to={undefined}
+      to={dropdownTo}
       items={dropdownItems}
       isActive={dropdownActiveClassDisabled ? () => false : undefined}
     />

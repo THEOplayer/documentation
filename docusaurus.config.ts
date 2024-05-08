@@ -339,6 +339,7 @@ const config: Config = {
           type: 'custom-platformDropdown',
           docsPluginId: 'open-video-ui',
           label: 'Open Video UI',
+          href: '/open-video-ui',
           position: 'left',
           items: [
             {
