@@ -28,10 +28,10 @@ export interface Props extends Omit<DropdownNavbarItemProps, 'items'> {
 
 function PlatformDropdownItem({ label, icon }: PlatformDropdownItemProps): JSX.Element {
   return (
-    <div className={styles.platformDropdownItem}>
+    <>
       <CardIcon className={styles.platformDropdownIcon} icon={icon} defaultIcon="" />
       <span className={styles.platformDropdownItemContent}>{label}</span>
-    </div>
+    </>
   );
 }
 
@@ -58,6 +58,7 @@ export default function PlatformDropdownNavbarItem({
     return {
       ...props,
       type: 'default',
+      className: styles.platformDropdownItem,
       label: <PlatformDropdownItem label={label} icon={icon} />,
       // preserve ?search#hash suffix on version switches
       to: `${sidebarLink.path}${search}${hash}`,

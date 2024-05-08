@@ -1,16 +1,19 @@
 .platformDropdownItem {
+  width: 100%;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: stretch;
+  gap: 0.25em;
 }
 
 .platformDropdownIcon {
   min-width: 40px;
   min-height: 40px;
+  margin: 0.125em;
 }
 
 .platformDropdownItemContent {
   flex-grow: 1;
+  margin: 0.125em;
 }
