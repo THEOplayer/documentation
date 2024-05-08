@@ -117,3 +117,7 @@ export function useLastPlatformByPluginId(pluginId: string): {
   );
   return { lastPlatformName, saveLastPlatform };
 }
+
+export function isSharedPlatformDoc(docId: string) {
+  return docId === 'changelog' || docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/');
+}

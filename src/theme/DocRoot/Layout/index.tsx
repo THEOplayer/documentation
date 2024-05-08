@@ -3,7 +3,7 @@ import Layout from '@theme-original/DocRoot/Layout';
 import type LayoutType from '@theme/DocRoot/Layout';
 import type { WrapperProps } from '@docusaurus/types';
 import { DocsSidebarProvider, useDocsSidebar, useDocsVersion } from '@docusaurus/theme-common/internal';
-import { isPlatformName, useLastPlatform } from '@site/src/contexts/lastPlatform';
+import { isPlatformName, isSharedPlatformDoc, useLastPlatform } from '@site/src/contexts/lastPlatform';
 import { useActiveDocContext, useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 
 type Props = WrapperProps<typeof LayoutType>;
@@ -37,8 +37,4 @@ export default function LayoutWrapper(props: Props): JSX.Element {
       <Layout {...props} />
     </DocsSidebarProvider>
   );
-}
-
-function isSharedPlatformDoc(docId: string) {
-  return docId === 'changelog' || docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/');
 }
