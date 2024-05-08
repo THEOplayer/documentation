@@ -12,6 +12,7 @@ import FlutterIcon from '@site/static/img/flutter.svg';
 import NielsenIcon from '@site/static/img/nielsen.svg';
 import NuxtjsIcon from '@site/static/img/nuxtjs.svg';
 import ReactIcon from '@site/static/img/react.svg';
+import RokuIcon from '@site/static/img/roku.svg';
 import VuejsIcon from '@site/static/img/vuejs.svg';
 import WordPressIcon from '@site/static/img/wordpress.svg';
 import YospaceIconUrl from '@site/static/img/yospace.png';
@@ -72,6 +73,8 @@ export default function CardIcon({ className, icon, defaultIcon }: CardIconProps
       return <NuxtjsIcon className={clsx(styles.cardIcon, className)} />;
     case 'react':
       return <ReactIcon className={clsx(styles.cardIcon, className)} />;
+    case 'roku':
+      return <RokuIcon className={clsx(styles.cardIcon, className)} />;
     case 'vuejs':
       return <VuejsIcon className={clsx(styles.cardIcon, className)} />;
     case 'wordpress':

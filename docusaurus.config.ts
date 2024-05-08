@@ -331,7 +331,7 @@ const config: Config = {
             {
               platform: 'roku',
               label: 'THEOplayer Roku SDK',
-              icon: '📺',
+              icon: 'roku',
             },
           ],
         } satisfies PlatformDropdownNavbarItemProps,
