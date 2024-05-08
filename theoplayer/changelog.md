@@ -5,6 +5,33 @@ description: Find out what's new in THEOplayer.
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.3.0 (2024/05/07)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where the player will stutter on playback when starting to Chromecast.
+- Fixed an issue where the player would sometimes only enable audio when casting a DASH stream to Chromecast v2.
+
+### Android
+
+#### ✨ Features
+
+- The Android SDK is now also published to `maven.theoplayer.com/releases`.
+- Added experimental support for setting a custom `Surface` to render the content into.
+
+#### 🐛 Issues
+
+- Fixed an issue where content started playing behind the advertisement if IMA and DAI integrations were used simultaneously.
+- Fixed an issue where no `ended` event is fired when reaching the end of a stream on a Chromecast receiver.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for sideloaded text tracks on Chromecast.
+
 ## 🚀 7.2.0 (2024/04/23)
 
 ### General
