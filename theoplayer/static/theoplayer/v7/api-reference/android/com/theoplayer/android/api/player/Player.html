@@ -589,10 +589,18 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#setRenderingTarget(com.theoplayer.android.api.player.RenderingTarget)>setRenderingTarget</a>(<a href=RenderingTarget.html>RenderingTarget</a> renderingTarget) </code>
                                             </th>
-                                            <td class="colLast">Sets the player rendering target SURFACE_VIEW or TEXTURE_VIEW.</td>
+                                            <td class="colLast">Sets the player rendering target where the player is displaying the video.</td>
                                         </tr>
                                         
                                         <tr id="i43" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Player.html#setCustomSurface(android.view.Surface,int,int)>setCustomSurface</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/android/view/Surface.html>Surface</a> surface, int width, int height) </code>
+                                            </th>
+                                            <td class="colLast">Sets a custom Surface for the player to draw into.</td>
+                                        </tr>
+                                        
+                                        <tr id="i44" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=track/texttrack/TextTrackStyle.html>TextTrackStyle</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getTextTrackStyle()>getTextTrackStyle</a>() </code>
@@ -600,7 +608,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             <td class="colLast">The Text Track Style API.</td>
                                         </tr>
                                         
-                                        <tr id="i44" class="altColor">
+                                        <tr id="i45" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../network/Network.html>Network</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Player.html#getNetwork()>getNetwork</a>() </code>
@@ -1780,7 +1788,7 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                     <li class="blockList">
                                         <h4>setRenderingTarget</h4>
                                         <pre class="methodSignature"> abstract void <a href=Player.html#setRenderingTarget(com.theoplayer.android.api.player.RenderingTarget)>setRenderingTarget</a>(<a href=RenderingTarget.html>RenderingTarget</a> renderingTarget)</pre>
-                                        <div class="block"><p>Sets the player rendering target SURFACE_VIEW or TEXTURE_VIEW. Default target is: SURFACE_VIEW </p><ul><li> refer to: <a href=https://developer.android.com/reference/android/view/SurfaceView.html>SurfaceView</a></li><li> refer to: <a href=https://developer.android.com/reference/android/view/TextureView.html>TextureView</a></li></ul></div>
+                                        <div class="block"><p>Sets the player rendering target where the player is displaying the video. Can be set during playback. Default target is: SURFACE_VIEW </p><ul><li>Refer to: <a href=https://developer.android.com/reference/android/view/SurfaceView.html>SurfaceView</a></li><li>Refer to: <a href=https://developer.android.com/reference/android/view/TextureView.html>TextureView</a></li><li>Setting <a href=RenderingTarget.html#CUSTOM>CUSTOM</a> has no effect. Instead use <a href=Player.html#setCustomSurface(android.view.Surface,int,int)>setCustomSurface</a>.</li></ul></div>
 
                                         <dl>
 
@@ -1789,6 +1797,44 @@ public interface <span class="typeNameLabel"><a href=Player.html>Player</a></spa
                                             
                                             
                                             <dd><code>renderingTarget</code> - the <a href=RenderingTarget.html>RenderingTarget</a> to set on the player.</dd>
+                                            
+                                            
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCustomSurface(android.view.Surface,int,int)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCustomSurface</h4>
+                                        <pre class="methodSignature">@ApiStatus.Experimental() abstract void <a href=Player.html#setCustomSurface(android.view.Surface,int,int)>setCustomSurface</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/android/view/Surface.html>Surface</a> surface, int width, int height)</pre>
+                                        <div class="block"><p>Sets a custom Surface for the player to draw into. </p><ul><li>Note: This is an experimental API.</li><li>Note: The Surface should be valid - `Surface.isValid()` should return true by the time it is passed to the player.</li><li>Note: It is up to the user to handle adding the Surface into the view hierarchy.</li><li>Note: It is up to the user to handle the <a href=AspectRatio.html>AspectRatio</a> of the video.</li><li>Note: It is up to the user to handle Fullscreen entering/exiting.</li><li>Note: It is up to the user to handle Picture in Picture entering/exiting.</li></ul></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>surface</code> - the <a href=https://developer.android.com/reference/kotlin/android/view/Surface.html>Surface</a> to be used by the player.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>width</code> - the width of the <a href=https://developer.android.com/reference/kotlin/android/view/Surface.html>Surface</a> that is being passed.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>height</code> - the height of the <a href=https://developer.android.com/reference/kotlin/android/view/Surface.html>Surface</a> that is being passed.</dd>
                                             
                                             
                                         

@@ -800,7 +800,7 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerMetadataCollectorNative.swift",
-      "line": 107,
+      "line": 114,
       "symbol": "AVPlayerMetadataCollectorNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

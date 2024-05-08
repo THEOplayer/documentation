@@ -222,13 +222,19 @@ public enum <span class="typeNameLabel"><a href=RenderingTarget.html>RenderingTa
                                     <tr class="altColor">
                                         <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
                                                 href="TODO"><a href=RenderingTarget.html#SURFACE_VIEW>SURFACE_VIEW</a></a></span></code></th>
-                                        <td class="colLast"><p>Uses SurfaceView for playback view </p><ul><li> this is default, can be changed to TEXTURE_VIEW dynamically in playback time </li><li> refer to: <a href=https://developer.android.com/reference/android/view/SurfaceView.html>SurfaceView</a></li></ul></td>
+                                        <td class="colLast"><p>The player will use a SurfaceView to draw the video into. </p><ul><li>Refer to: <a href=https://developer.android.com/reference/android/view/SurfaceView.html>SurfaceView</a></li></ul></td>
                                     </tr>
                                     
                                     <tr class="rowColor">
                                         <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
                                                 href="TODO"><a href=RenderingTarget.html#TEXTURE_VIEW>TEXTURE_VIEW</a></a></span></code></th>
-                                        <td class="colLast"><p>Uses TextureView for playback view </p><ul><li> can be changed to SURFACE_VIEW dynamically in playback time </li><li> refer to: <a href=https://developer.android.com/reference/android/view/TextureView.html>TextureView</a></li></ul></td>
+                                        <td class="colLast"><p>The player will use a TextureView to draw the video into. </p><ul><li>Refer to: <a href=https://developer.android.com/reference/android/view/TextureView.html>TextureView</a></li></ul></td>
+                                    </tr>
+                                    
+                                    <tr class="altColor">
+                                        <th class="colFirst" scope="row"><code><span class="memberNameLink"><a
+                                                href="TODO"><a href=RenderingTarget.html#CUSTOM>CUSTOM</a></a></span></code></th>
+                                        <td class="colLast"><p>The player will use a custom Surface to draw the video into. </p><ul><li>The custom Surface can be only set by using <a href=Player.html#setCustomSurface(android.view.Surface,int,int)>setCustomSurface</a>.</li></ul></td>
                                     </tr>
                                     
                                 </table>
