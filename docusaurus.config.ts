@@ -306,6 +306,7 @@ const config: Config = {
           type: 'custom-platformDropdown',
           docsPluginId: 'theoplayer',
           label: 'THEOplayer',
+          href: '/theoplayer',
           position: 'left',
           items: [
             {

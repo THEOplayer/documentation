@@ -6,7 +6,7 @@ import iosConnectorsJson from './theoplayer/connectors/ios/_category_.json';
 
 const sidebars: SidebarsConfig = {
   web: [
-    'index',
+    'web/index',
     gettingStartedCategory({
       collapsed: true,
       link: { type: 'doc', id: 'getting-started/sdks/web/getting-started' },

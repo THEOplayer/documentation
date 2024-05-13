@@ -4,8 +4,44 @@ sidebar_label: Introduction
 sidebar_position: 1
 ---
 
-# THEOplayer Web SDK
+# THEOplayer
 
 import Intro from './shared/_intro.mdx';
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <Intro />
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      label: 'THEOplayer Web SDK',
+      customProps: { icon: 'web' },
+      href: useBaseUrl('theoplayer/web'),
+    },
+    {
+      type: 'link',
+      label: 'THEOplayer Android SDK',
+      customProps: { icon: 'android' },
+      href: useBaseUrl('theoplayer/android'),
+    },
+    {
+      type: 'link',
+      label: 'THEOplayer iOS SDK',
+      customProps: { icon: 'apple' },
+      href: useBaseUrl('theoplayer/ios'),
+    },
+    {
+      type: 'link',
+      label: 'THEOplayer Chromecast SDK',
+      customProps: { icon: 'chromecast' },
+      href: useBaseUrl('theoplayer/chromecast'),
+    },
+    {
+      type: 'link',
+      label: 'THEOplayer Roku SDK',
+      customProps: { icon: 'roku' },
+      href: useBaseUrl('theoplayer/roku'),
+    },
+  ]}
+/>
