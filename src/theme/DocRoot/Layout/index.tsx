@@ -18,13 +18,13 @@ export default function LayoutWrapper(props: Props): JSX.Element {
 
   // Override sidebar for certain docs that are shared across platforms
   const sidebar = useMemo(() => {
-    if (isSharedPlatformDoc(activeDoc.id)) {
+    if (isSharedPlatformDoc(pluginId, activeDoc.id)) {
       const sidebarName = lastPlatformName || 'web';
       return { name: sidebarName, items: versionMetadata.docsSidebars[sidebarName] };
     } else {
       return docSidebar;
     }
-  }, [activeDoc.id, docSidebar, lastPlatformName, versionMetadata]);
+  }, [pluginId, activeDoc.id, docSidebar, lastPlatformName, versionMetadata]);
 
   // Store current sidebar if it's a platform sidebar
   useEffect(() => {

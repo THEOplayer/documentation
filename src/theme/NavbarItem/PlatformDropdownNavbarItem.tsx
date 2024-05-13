@@ -57,7 +57,7 @@ export default function PlatformDropdownNavbarItem({
   const { lastPlatformName, saveLastPlatform } = useLastPlatformByPluginId(docsPluginId);
   const platformLinks = items.map(({ platform, label, icon, ...props }): LinkLikeNavbarItemProps => {
     const sidebar = findSidebarInVersions(platform, versionCandidates);
-    const isDocInSidebar = activeDoc ? isSharedPlatformDoc(activeDoc.id) : false;
+    const isDocInSidebar = activeDoc ? isSharedPlatformDoc(docsPluginId, activeDoc.id) : false;
     const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
     return {
       ...props,

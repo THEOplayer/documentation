@@ -10,6 +10,9 @@ export function isPlatformName(name: string): name is PlatformName {
   return platformNames.indexOf(name as PlatformName) !== -1;
 }
 
-export function isSharedPlatformDoc(docId: string) {
-  return docId === 'changelog' || docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/');
+export function isSharedPlatformDoc(docsPluginId: string, docId: string) {
+  if (docsPluginId === 'theoplayer') {
+    return docId === 'changelog' || docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/');
+  }
+  return false;
 }
