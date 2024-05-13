@@ -4,7 +4,6 @@
     {
       "type": "category",
       "label": "Getting started",
-      "collapsed": true,
       "description": "Set up your first THEOplayer in just a few minutes!",
       "customProps": {
         "icon": "🚀"
@@ -340,7 +339,6 @@
     {
       "type": "category",
       "label": "Getting started",
-      "collapsed": true,
       "description": "Set up your first THEOplayer in just a few minutes!",
       "customProps": {
         "icon": "🚀"
