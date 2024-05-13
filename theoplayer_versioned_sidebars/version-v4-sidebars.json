@@ -402,6 +402,7 @@
         }
       ]
     },
+    "changelog",
     {
       "type": "category",
       "label": "Knowledge base",
