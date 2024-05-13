@@ -728,6 +728,10 @@ function iosConnectorItems(): SidebarItemConfig[] {
         },
       ],
     },
+    {
+      type: 'doc',
+      id: 'external/iOS-Connector/CHANGELOG',
+    },
   ];
 }
 
