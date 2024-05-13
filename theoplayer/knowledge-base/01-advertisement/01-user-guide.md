@@ -122,7 +122,7 @@ Set the `integration` property to `'freewheel'` to configure FreeWheel ads. Plea
 - [Reference API](pathname:///theoplayer/v7/api-reference/web/interfaces/FreeWheelAdDescription.html)
 - [FreeWheel](../../how-to-guides/01-ads/06-freewheel.md): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
-### Server Side Ad Intertion (SSAI)
+### Server Side Ad Insertion (SSAI)
 
 With Server-Side Ad Insertion (SSAI), advertising content is injected into a video stream: the broadcaster indicates when advertisements may be inserted by providing cues (hints) in the stream. The content is then forwarded to an ad insertion server, which replaces the dummy content with actual advertisements. That way, the advertisements are part of the stream. This creates an experience much like traditional broadcasting. SSAI opens the door to many possibilities. For example, inserted advertisement content can be personalized down to a single-user level, for improved advertisement efficiency. As a client can no longer make the distinction between content and advertisement video chunks, their download calls cannot be blocked by ad blockers. This increases advertisement revenue compared to traditional client-side ads.
 
