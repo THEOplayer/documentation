@@ -7,6 +7,7 @@ import AndroidIcon from '@site/static/img/android.svg';
 import AngularIcon from '@site/static/img/angular.svg';
 import AppleIcon from '@site/static/img/apple.svg';
 import ComscoreIcon from '@site/static/img/comscore.svg';
+import ChromeIcon from '@site/static/img/chrome.svg';
 import ChromecastIcon from '@site/static/img/chromecast.svg';
 import FlutterIcon from '@site/static/img/flutter.svg';
 import NielsenIcon from '@site/static/img/nielsen.svg';
@@ -42,6 +43,8 @@ export default function CardIcon({ className, icon, defaultIcon }: CardIconProps
       return <AngularIcon className={clsx(styles.cardIcon, className)} />;
     case 'apple':
       return <AppleIcon className={clsx(styles.cardIcon, className)} />;
+    case 'chrome':
+      return <ChromeIcon className={clsx(styles.cardIcon, className)} />;
     case 'chromecast':
       return <ChromecastIcon className={clsx(styles.cardIcon, className)} />;
     case 'comscore':
