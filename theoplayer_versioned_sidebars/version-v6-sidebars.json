@@ -1,6 +1,6 @@
 {
   "web": [
-    "index",
+    "web/index",
     {
       "type": "category",
       "label": "Getting started",
