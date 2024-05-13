@@ -3,7 +3,8 @@ import Layout from '@theme-original/DocRoot/Layout';
 import type LayoutType from '@theme/DocRoot/Layout';
 import type { WrapperProps } from '@docusaurus/types';
 import { DocsSidebarProvider, useDocsSidebar, useDocsVersion } from '@docusaurus/theme-common/internal';
-import { isPlatformName, isSharedPlatformDoc, useLastPlatform } from '@site/src/contexts/lastPlatform';
+import { useLastPlatform } from '@site/src/contexts/lastPlatform';
+import { isPlatformName, isSharedPlatformDoc } from '@site/src/util/platform';
 import { useActiveDocContext, useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 
 type Props = WrapperProps<typeof LayoutType>;

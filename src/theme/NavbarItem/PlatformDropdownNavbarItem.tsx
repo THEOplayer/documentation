@@ -5,7 +5,8 @@ import { useLocation } from '@docusaurus/router';
 import DropdownNavbarItem, { type Props as DropdownNavbarItemProps } from '@theme/NavbarItem/DropdownNavbarItem';
 import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultNavbarItem';
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
-import { type PlatformName, useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
+import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
+import { PlatformName } from '@site/src/util/platform';
 import CardIcon from '@site/src/theme/DocCard/CardIcon';
 import styles from './styles.module.css';
 

@@ -1,20 +1,9 @@
 import React, { JSX, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import { useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
+import { PlatformName } from '../util/platform';
 
 // Heavily based on useDocsPreferredVersion()
 // https://github.com/facebook/docusaurus/blob/v3.3.2/packages/docusaurus-theme-common/src/contexts/docsPreferredVersion.tsx
-
-/**
- * The names of SDK platforms.
- *
- * These MUST match the name of the sidebar in the docs plugin.
- */
-const platformNames = ['web', 'android', 'ios', 'react', 'react-native', 'chromecast', 'roku', 'flutter'] as const;
-export type PlatformName = (typeof platformNames)[number];
-
-export function isPlatformName(name: string): name is PlatformName {
-  return platformNames.indexOf(name as PlatformName) !== -1;
-}
 
 const isDocsPluginEnabled: boolean = !!useAllDocsData;
 
@@ -116,8 +105,4 @@ export function useLastPlatformByPluginId(pluginId: string): {
     [api, pluginId]
   );
   return { lastPlatformName, saveLastPlatform };
-}
-
-export function isSharedPlatformDoc(docId: string) {
-  return docId === 'changelog' || docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/');
 }
