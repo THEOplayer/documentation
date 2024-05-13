@@ -313,7 +313,7 @@ const config: Config = {
             },
             {
               platform: 'ios',
-              label: 'THEOplayer iOS SDK',
+              label: 'THEOplayer iOS & tvOS SDK',
               icon: 'apple',
             },
             {
