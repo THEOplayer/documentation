@@ -303,7 +303,7 @@ const config: Config = {
           items: [
             {
               platform: 'web',
-              icon: 'web',
+              icon: 'chrome',
             },
             {
               platform: 'android',
@@ -336,7 +336,7 @@ const config: Config = {
           items: [
             {
               platform: 'web',
-              icon: 'web',
+              icon: 'chrome',
             },
             {
               platform: 'android',
