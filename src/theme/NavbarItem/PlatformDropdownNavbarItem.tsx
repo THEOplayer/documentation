@@ -6,8 +6,7 @@ import DropdownNavbarItem, { type Props as DropdownNavbarItemProps } from '@them
 import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultNavbarItem';
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
-import { PlatformName } from '@site/src/util/platform';
-import { useSidebarsByDocId } from '@site/src/util/sidebar';
+import { isSharedPlatformDoc, PlatformName } from '@site/src/util/platform';
 import CardIcon from '@site/src/theme/DocCard/CardIcon';
 import styles from './styles.module.css';
 
@@ -55,11 +54,10 @@ export default function PlatformDropdownNavbarItem({
   const { search, hash } = useLocation();
   const { activeDoc } = useActiveDocContext(docsPluginId);
   const versionCandidates = useDocsVersionCandidates(docsPluginId);
-  const sidebarsByDocId = useSidebarsByDocId(docsPluginId);
   const { lastPlatformName, saveLastPlatform } = useLastPlatformByPluginId(docsPluginId);
   const platformLinks = items.map(({ platform, label, icon, ...props }): LinkLikeNavbarItemProps => {
     const sidebar = findSidebarInVersions(platform, versionCandidates);
-    const isDocInSidebar = sidebarsByDocId?.[activeDoc.id]?.includes(platform) ?? false;
+    const isDocInSidebar = activeDoc ? isSharedPlatformDoc(activeDoc.id) : false;
     const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
     return {
       ...props,
