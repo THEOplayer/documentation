@@ -7,7 +7,6 @@ import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type { Props as PlatformDropdownNavbarItemProps } from './src/theme/NavbarItem/PlatformDropdownNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
-import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import path from 'path';
 import fs from 'fs';
@@ -131,7 +130,6 @@ const config: Config = {
             noIndex: true,
           },
         },
-        sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
     [
@@ -148,7 +146,6 @@ const config: Config = {
             label: webUiVersion,
           },
         },
-        sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
     [
