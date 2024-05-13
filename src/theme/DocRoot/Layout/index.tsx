@@ -4,7 +4,7 @@ import type LayoutType from '@theme/DocRoot/Layout';
 import type { WrapperProps } from '@docusaurus/types';
 import { DocsSidebarProvider, useDocsSidebar, useDocsVersion } from '@docusaurus/theme-common/internal';
 import { useLastPlatform } from '@site/src/contexts/lastPlatform';
-import { isPlatformName, isSharedPlatformDoc } from '@site/src/util/platform';
+import { isPlatformName, isDocSharedWithPlatform } from '@site/src/util/platform';
 import { useActiveDocContext, useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 
 type Props = WrapperProps<typeof LayoutType>;
@@ -18,9 +18,9 @@ export default function LayoutWrapper(props: Props): JSX.Element {
 
   // Override sidebar for certain docs that are shared across platforms
   const sidebar = useMemo(() => {
-    if (isSharedPlatformDoc(pluginId, activeDoc.id)) {
-      const sidebarName = lastPlatformName || 'web';
-      return { name: sidebarName, items: versionMetadata.docsSidebars[sidebarName] };
+      const platformName = lastPlatformName || 'web';
+    if (isDocSharedWithPlatform(pluginId, activeDoc.id, platformName)) {
+      return { name: platformName, items: versionMetadata.docsSidebars[platformName] };
     } else {
       return docSidebar;
     }

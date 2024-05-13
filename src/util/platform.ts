@@ -10,9 +10,14 @@ export function isPlatformName(name: string): name is PlatformName {
   return platformNames.indexOf(name as PlatformName) !== -1;
 }
 
-export function isSharedPlatformDoc(docsPluginId: string, docId: string) {
+export function isDocSharedWithPlatform(docsPluginId: string, docId: string, platformName: PlatformName) {
   if (docsPluginId === 'theoplayer') {
-    return docId === 'changelog' || docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/');
+    if (docId === 'changelog') {
+      return platformName === 'web' || platformName === 'android' || platformName === 'ios' || platformName === 'chromecast';
+    }
+    if (docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/')) {
+      return true;
+    }
   }
   return false;
 }
