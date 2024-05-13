@@ -16,6 +16,7 @@ import fs from 'fs';
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
 fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplayerLicense);
 
+const docsPluginId = './src/plugin/contentDocs/index';
 const docsConfigBase = {
   include: [
     '**/*.{md,mdx}',
@@ -108,7 +109,7 @@ const config: Config = {
 
   plugins: [
     [
-      '@docusaurus/plugin-content-docs',
+      docsPluginId,
       {
         ...docsConfigBase,
         id: 'theoplayer',
@@ -135,7 +136,7 @@ const config: Config = {
       } satisfies DocsPlugin.Options,
     ],
     [
-      '@docusaurus/plugin-content-docs',
+      docsPluginId,
       {
         ...docsConfigBase,
         id: 'open-video-ui',
@@ -152,7 +153,7 @@ const config: Config = {
       } satisfies DocsPlugin.Options,
     ],
     [
-      '@docusaurus/plugin-content-docs',
+      docsPluginId,
       {
         ...docsConfigBase,
         id: 'contributing',
