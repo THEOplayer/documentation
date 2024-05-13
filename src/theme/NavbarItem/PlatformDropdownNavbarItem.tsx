@@ -1,6 +1,6 @@
 import React, { JSX, ReactNode } from 'react';
-import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
-import { useLayoutDocsSidebar } from '@docusaurus/theme-common/internal';
+import { type GlobalSidebar, type GlobalVersion, useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
+import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { useLocation } from '@docusaurus/router';
 import DropdownNavbarItem, { type Props as DropdownNavbarItemProps } from '@theme/NavbarItem/DropdownNavbarItem';
 import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultNavbarItem';
@@ -53,9 +53,10 @@ export default function PlatformDropdownNavbarItem({
 }: Props): JSX.Element {
   const { search, hash } = useLocation();
   const { activeDoc } = useActiveDocContext(docsPluginId);
+  const versionCandidates = useDocsVersionCandidates(docsPluginId);
   const { lastPlatformName, saveLastPlatform } = useLastPlatformByPluginId(docsPluginId);
   const platformLinks = items.map(({ platform, label, icon, ...props }): LinkLikeNavbarItemProps => {
-    const sidebar = useLayoutDocsSidebar(platform, docsPluginId);
+    const sidebar = findSidebarInVersions(platform, versionCandidates);
     const isDocInSidebar = activeDoc ? isSharedPlatformDoc(activeDoc.id) : false;
     const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
     return {
@@ -82,4 +83,13 @@ export default function PlatformDropdownNavbarItem({
       isActive={dropdownActiveClassDisabled ? () => false : undefined}
     />
   );
+}
+
+function findSidebarInVersions(sidebarName: string, versionCandidates: GlobalVersion[]): GlobalSidebar {
+  for (const version of versionCandidates) {
+    const sidebar = version.sidebars[sidebarName];
+    if (sidebar) {
+      return sidebar;
+    }
+  }
 }
