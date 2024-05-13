@@ -1,8 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 import type { SidebarItemCategoryConfig, SidebarItemConfig, SidebarItemLink } from '@docusaurus/plugin-content-docs/lib/sidebars/types';
-import webConnectorsJson from './theoplayer/connectors/web/_category_.json';
-import androidConnectorsJson from './theoplayer/connectors/android/_category_.json';
-import iosConnectorsJson from './theoplayer/connectors/ios/_category_.json';
 
 const sidebars: SidebarsConfig = {
   web: [
@@ -51,7 +48,7 @@ const sidebars: SidebarsConfig = {
     }),
     connectorsCategory({
       link: { type: 'doc', id: 'connectors/web/index' },
-      items: webConnectorsJson.customProps.additionalItems as SidebarItemConfig[],
+      items: webConnectorItems(),
     }),
     'changelog',
     apiReferencesLink({
@@ -72,7 +69,7 @@ const sidebars: SidebarsConfig = {
     }),
     connectorsCategory({
       link: { type: 'doc', id: 'connectors/android/index' },
-      items: androidConnectorsJson.customProps.additionalItems as SidebarItemConfig[],
+      items: androidConnectorItems(),
     }),
     'changelog',
     apiReferencesLink({
@@ -93,7 +90,7 @@ const sidebars: SidebarsConfig = {
     }),
     connectorsCategory({
       link: { type: 'doc', id: 'connectors/ios/index' },
-      items: iosConnectorsJson.customProps.additionalItems as SidebarItemConfig[],
+      items: iosConnectorItems(),
     }),
     'changelog',
     apiReferencesLink({
@@ -238,6 +235,490 @@ function backLink(): SidebarItemLink {
       isBackLink: true,
     },
   };
+}
+
+function webConnectorItems(): SidebarItemConfig[] {
+  return [
+    {
+      type: 'category',
+      label: 'CMCD',
+      description: 'Integrate with Common Media Client Data (CMCD) for server-side analytics.',
+      customProps: {
+        icon: '☁️',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'CMCD Connector for Web',
+        slug: 'connectors/web/cmcd',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/web-connectors/cmcd/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/web-connectors/cmcd/CHANGELOG',
+        },
+        {
+          type: 'link',
+          label: 'API reference',
+          description: 'Discover all functions provided by the CMCD connector for Web.',
+          customProps: {
+            icon: '*️⃣',
+          },
+          href: 'https://theoplayer.github.io/web-connectors/api/modules/CMCD_Connector.html',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/web-connectors/tree/main/cmcd',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Comscore',
+      description: 'Integrate with Comscore for player analytics.',
+      customProps: {
+        icon: 'comscore',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Comscore Connector for Web',
+        slug: 'connectors/web/comscore',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/web-connectors/comscore/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/web-connectors/comscore/CHANGELOG',
+        },
+        {
+          type: 'link',
+          label: 'API reference',
+          description: 'Discover all functions provided by the Comscore connector for Web.',
+          customProps: {
+            icon: '*️⃣',
+          },
+          href: 'https://theoplayer.github.io/web-connectors/api/modules/Comscore_Connector.html',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/web-connectors/tree/main/comscore',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Conviva',
+      description: 'Integrate with Conviva for player analytics.',
+      customProps: {
+        icon: 'conviva',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Conviva Connector for Web',
+        slug: 'connectors/web/conviva',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/web-connectors/conviva/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/web-connectors/conviva/CHANGELOG',
+        },
+        {
+          type: 'link',
+          label: 'API reference',
+          description: 'Discover all functions provided by the Conviva connector for Web.',
+          customProps: {
+            icon: '*️⃣',
+          },
+          href: 'https://theoplayer.github.io/web-connectors/api/modules/Conviva_Connector.html',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/web-connectors/tree/main/conviva',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Nielsen',
+      description: 'Integrate with Nielsen for player analytics.',
+      customProps: {
+        icon: 'nielsen',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Nielsen Connector for Web',
+        slug: 'connectors/web/nielsen',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/web-connectors/nielsen/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/web-connectors/nielsen/CHANGELOG',
+        },
+        {
+          type: 'link',
+          label: 'API reference',
+          description: 'Discover all functions provided by the Nielsen connector for Web.',
+          customProps: {
+            icon: '*️⃣',
+          },
+          href: 'https://theoplayer.github.io/web-connectors/api/modules/Nielsen_Connector.html',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/web-connectors/tree/main/nielsen',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Yospace',
+      description: 'Integrate with Yospace for server-side ad insertion (SSAI).',
+      customProps: {
+        icon: 'yospace',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Yospace Connector for Web',
+        slug: 'connectors/web/yospace',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/web-connectors/yospace/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/web-connectors/yospace/CHANGELOG',
+        },
+        {
+          type: 'link',
+          label: 'API reference',
+          description: 'Discover all functions provided by the Yospace connector for Web.',
+          customProps: {
+            icon: '*️⃣',
+          },
+          href: 'https://theoplayer.github.io/web-connectors/api/modules/Yospace_Connector.html',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/web-connectors/tree/main/yospace',
+        },
+      ],
+    },
+  ];
+}
+
+function androidConnectorItems(): SidebarItemConfig[] {
+  return [
+    {
+      type: 'category',
+      label: 'Comscore',
+      description: 'Integrate with Comscore for player analytics.',
+      customProps: {
+        icon: 'comscore',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Comscore Connector for Android',
+        slug: 'connectors/android/comscore',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/android-connector/connectors/analytics/comscore/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/comscore',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Conviva',
+      description: 'Integrate with Conviva for player analytics.',
+      customProps: {
+        icon: 'conviva',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Conviva Connector for Android',
+        slug: 'connectors/android/conviva',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/android-connector/connectors/analytics/conviva/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Nielsen',
+      description: 'Integrate with Nielsen for player analytics.',
+      customProps: {
+        icon: 'nielsen',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Nielsen Connector for Android',
+        slug: 'connectors/android/nielsen',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/android-connector/connectors/analytics/nielsen/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/nielsen',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Media Session',
+      description: 'Integrate with Android Media Session to delegate system-level playback controls to your app.',
+      customProps: {
+        icon: '📱',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Media Session Connector for Android',
+        slug: 'connectors/android/mediasession',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/android-connector/connectors/mediasession/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/mediasession',
+        },
+      ],
+    },
+  ];
+}
+
+function iosConnectorItems(): SidebarItemConfig[] {
+  return [
+    {
+      type: 'category',
+      label: 'Comscore',
+      description: 'Integrate with Comscore for player analytics.',
+      customProps: {
+        icon: 'comscore',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Comscore Connector for iOS & tvOS',
+        slug: 'connectors/ios/comscore',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Comscore/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Comscore-Examples/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Comscore',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Conviva',
+      description: 'Integrate with Conviva for player analytics.',
+      customProps: {
+        icon: 'conviva',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Conviva Connector for iOS & tvOS',
+        slug: 'connectors/ios/conviva',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Conviva/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Conviva-Examples/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Conviva with Verizon Media',
+      description: 'Integrate with Conviva and Verizon Media for player analytics.',
+      customProps: {
+        icon: 'conviva',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Conviva & Verizon Media Connector for iOS & tvOS',
+        slug: 'connectors/ios/conviva-verizonmedia',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Conviva-VerizonMedia/README',
+        },
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Conviva-VerizonMedia-Examples/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva-VerizonMedia',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Nielsen',
+      description: 'Integrate with Nielsen for player analytics.',
+      customProps: {
+        icon: 'nielsen',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Nielsen Connector for iOS & tvOS',
+        slug: 'connectors/ios/nielsen',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Nielsen/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Nielsen',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Sideloaded Subtitles',
+      description: 'Add support for sideloaded subtitles to your player.',
+      customProps: {
+        icon: '💬',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Sideloaded Subtitles for iOS & tvOS',
+        slug: 'connectors/ios/sideloaded-texttracks',
+      },
+      items: [
+        {
+          type: 'doc',
+          id: 'external/iOS-Connector/Code/Sideloaded-TextTracks/README',
+        },
+        {
+          type: 'link',
+          label: 'GitHub',
+          description: 'Browse the source code or report issues on GitHub.',
+          customProps: {
+            icon: 'github',
+          },
+          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Sideloaded-TextTracks',
+        },
+      ],
+    },
+  ];
 }
 
 export default sidebars;
