@@ -233,12 +233,7 @@ const config: Config = {
       const filePath = params.filePath.toLowerCase().replaceAll(path.sep, '/');
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
         // Fix changelog titles
-        if (externalDocPath && externalDocPath.startsWith('react-native-theoplayer/')) {
-          frontMatter.title ??= 'React Native Changelog';
-          frontMatter.sidebar_label ??= 'React Native';
-        } else {
-          frontMatter.title ??= 'Changelog';
-        }
+        frontMatter.title ??= 'Changelog';
         frontMatter.sidebar_custom_props ??= { icon: '📰' };
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
@@ -320,6 +315,11 @@ const config: Config = {
               platform: 'ios',
               label: 'THEOplayer iOS SDK',
               icon: 'apple',
+            },
+            {
+              platform: 'react-native',
+              label: 'React Native THEOplayer',
+              icon: 'react',
             },
             {
               platform: 'chromecast',
