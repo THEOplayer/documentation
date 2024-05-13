@@ -6,7 +6,7 @@ import DropdownNavbarItem, { type Props as DropdownNavbarItemProps } from '@them
 import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultNavbarItem';
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
-import { isDocSharedWithPlatform, PlatformName } from '@site/src/util/platform';
+import { getPlatformLabel, isDocSharedWithPlatform, PlatformName } from '@site/src/util/platform';
 import CardIcon from '@site/src/theme/DocCard/CardIcon';
 import styles from './styles.module.css';
 
@@ -59,11 +59,12 @@ export default function PlatformDropdownNavbarItem({
     const sidebar = findSidebarInVersions(platform, versionCandidates);
     const isDocInSidebar = activeDoc ? isDocSharedWithPlatform(docsPluginId, activeDoc.id, platform) : false;
     const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
+    const platformLabel = getPlatformLabel(docsPluginId, platform);
     return {
       ...props,
       type: 'default',
       className: styles.platformDropdownItem,
-      label: <PlatformDropdownItem label={label} icon={icon} />,
+      label: <PlatformDropdownItem label={label || platformLabel} icon={icon} />,
       // preserve ?search#hash suffix on version switches
       to: `${sidebarLink}${search}${hash}`,
       isActive: () => platform === lastPlatformName,

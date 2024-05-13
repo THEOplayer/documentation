@@ -303,32 +303,26 @@ const config: Config = {
           items: [
             {
               platform: 'web',
-              label: 'THEOplayer Web SDK',
               icon: 'web',
             },
             {
               platform: 'android',
-              label: 'THEOplayer Android SDK',
               icon: 'android',
             },
             {
               platform: 'ios',
-              label: 'THEOplayer iOS & tvOS SDK',
               icon: 'apple',
             },
             {
               platform: 'react-native',
-              label: 'React Native THEOplayer',
               icon: 'react',
             },
             {
               platform: 'chromecast',
-              label: 'THEOplayer Chromecast SDK',
               icon: 'chromecast',
             },
             {
               platform: 'roku',
-              label: 'THEOplayer Roku SDK',
               icon: 'roku',
             },
           ],
@@ -342,22 +336,18 @@ const config: Config = {
           items: [
             {
               platform: 'web',
-              label: 'Open Video UI for Web',
               icon: 'web',
             },
             {
               platform: 'android',
-              label: 'Open Video UI for Android',
               icon: 'android',
             },
             {
               platform: 'react',
-              label: 'Open Video UI for React',
               icon: 'react',
             },
             {
               platform: 'react-native',
-              label: 'React Native THEOplayer UI',
               icon: 'react',
             },
           ],
