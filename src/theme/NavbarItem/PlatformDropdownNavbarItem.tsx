@@ -7,6 +7,7 @@ import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultN
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import { PlatformName } from '@site/src/util/platform';
+import { useSidebarsByDocId } from '@site/src/util/sidebar';
 import CardIcon from '@site/src/theme/DocCard/CardIcon';
 import styles from './styles.module.css';
 
@@ -52,19 +53,20 @@ export default function PlatformDropdownNavbarItem({
   ...props
 }: Props): JSX.Element {
   const { search, hash } = useLocation();
-  const activeDocContext = useActiveDocContext(docsPluginId);
+  const { activeDoc } = useActiveDocContext(docsPluginId);
+  const sidebarsByDocId = useSidebarsByDocId(docsPluginId);
   const { lastPlatformName, saveLastPlatform } = useLastPlatformByPluginId(docsPluginId);
   const platformLinks = items.map(({ platform, label, icon, ...props }): LinkLikeNavbarItemProps => {
-    // TODO Try to match current doc between sidebars
-    // const versionDoc = activeDocContext.alternateDocVersions[version.name] ?? getVersionMainDoc(version);
-    const sidebarLink = useLayoutDocsSidebar(platform, docsPluginId).link;
+    const sidebar = useLayoutDocsSidebar(platform, docsPluginId);
+    const isDocInSidebar = sidebarsByDocId?.[activeDoc.id]?.includes(platform) ?? false;
+    const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
     return {
       ...props,
       type: 'default',
       className: styles.platformDropdownItem,
       label: <PlatformDropdownItem label={label} icon={icon} />,
       // preserve ?search#hash suffix on version switches
-      to: `${sidebarLink.path}${search}${hash}`,
+      to: `${sidebarLink}${search}${hash}`,
       isActive: () => platform === lastPlatformName,
       onClick: () => saveLastPlatform(platform),
     };
