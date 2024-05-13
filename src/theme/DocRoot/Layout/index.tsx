@@ -24,7 +24,7 @@ export default function LayoutWrapper(props: Props): JSX.Element {
     } else {
       return docSidebar;
     }
-  }, [activeDoc.id, lastPlatformName, versionMetadata]);
+  }, [activeDoc.id, docSidebar, lastPlatformName, versionMetadata]);
 
   // Store current sidebar if it's a platform sidebar
   useEffect(() => {
