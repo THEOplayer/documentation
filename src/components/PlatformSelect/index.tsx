@@ -4,8 +4,9 @@ import { getPlatforms, isDocSharedWithPlatform } from '@site/src/util/platform';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
-import { type GlobalSidebar, type GlobalVersion, useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
+import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
 import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
+import { findSidebarInVersions } from '@site/src/util/sidebar';
 import { useLocation } from '@docusaurus/router';
 
 interface PlatformSelectProps extends Omit<SelectProps<any>, 'items' | 'children'> {
@@ -55,13 +56,4 @@ export default function PlatformSelect({ docsPluginId, ...props }: PlatformSelec
       }}
     </Select>
   );
-}
-
-function findSidebarInVersions(sidebarName: string, versionCandidates: GlobalVersion[]): GlobalSidebar {
-  for (const version of versionCandidates) {
-    const sidebar = version.sidebars[sidebarName];
-    if (sidebar) {
-      return sidebar;
-    }
-  }
 }

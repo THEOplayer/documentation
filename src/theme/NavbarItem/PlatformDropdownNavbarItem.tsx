@@ -1,11 +1,12 @@
 import React, { JSX, ReactNode } from 'react';
-import { type GlobalSidebar, type GlobalVersion, useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
+import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
 import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { useLocation } from '@docusaurus/router';
 import DropdownNavbarItem, { type Props as DropdownNavbarItemProps } from '@theme/NavbarItem/DropdownNavbarItem';
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import { getPlatforms, isDocSharedWithPlatform } from '@site/src/util/platform';
+import { findSidebarInVersions } from '@site/src/util/sidebar';
 import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
 
@@ -77,13 +78,4 @@ export default function PlatformDropdownNavbarItem({
       isActive={dropdownActiveClassDisabled ? () => false : undefined}
     />
   );
-}
-
-function findSidebarInVersions(sidebarName: string, versionCandidates: GlobalVersion[]): GlobalSidebar {
-  for (const version of versionCandidates) {
-    const sidebar = version.sidebars[sidebarName];
-    if (sidebar) {
-      return sidebar;
-    }
-  }
 }
