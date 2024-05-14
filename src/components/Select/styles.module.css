@@ -26,15 +26,40 @@
   max-height: 80vh;
   min-width: 10rem;
   overflow-y: auto;
-  opacity: 1;
   padding: 0.5rem;
-  transform: translateY(-1px);
-  transition-property: opacity, transform;
-  transition-duration: var(--ifm-transition-fast);
-  transition-timing-function: var(--ifm-transition-timing-default);
+}
 
-  @starting-style {
+/*
+ * Enter/exit animation
+ * https://react-spectrum.adobe.com/react-aria/Popover.html
+ */
+.popover[data-placement='top'] {
+  --origin: translateY(0.625rem);
+}
+
+.popover[data-placement='bottom'] {
+  --origin: translateY(-0.625rem);
+}
+
+.popover[data-entering],
+.popover[data-exiting] {
+  animation-name: popover-slide;
+  animation-duration: var(--ifm-transition-fast);
+  animation-timing-function: var(--ifm-transition-timing-default);
+}
+
+.popover[data-exiting] {
+  animation-direction: reverse;
+}
+
+@keyframes popover-slide {
+  from {
+    transform: var(--origin);
     opacity: 0;
-    transform: translateY(-0.625rem);
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
