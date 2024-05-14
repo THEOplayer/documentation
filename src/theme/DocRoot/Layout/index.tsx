@@ -19,9 +19,8 @@ export default function LayoutWrapper(props: Props): JSX.Element {
 
   // Override sidebar for certain docs that are shared across platforms
   const sidebar = useMemo(() => {
-    const platformName = lastPlatformName || 'web';
-    if (isDocSharedWithPlatform(pluginId, activeDoc.id, platformName)) {
-      return { name: platformName, items: versionMetadata.docsSidebars[platformName] };
+    if (isDocSharedWithPlatform(pluginId, activeDoc.id, lastPlatformName)) {
+      return { name: lastPlatformName, items: versionMetadata.docsSidebars[lastPlatformName] };
     } else {
       return docSidebar;
     }

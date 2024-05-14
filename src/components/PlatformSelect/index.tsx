@@ -26,7 +26,7 @@ export default function PlatformSelect({ docsPluginId, ...props }: PlatformSelec
     <Select
       {...props}
       items={platforms}
-      selectedKey={lastPlatformName || 'web'}
+      selectedKey={lastPlatformName}
       className={styles.platformSelect}
       // dependencies for the children callback
       dependencies={[docsPluginId, activeDoc, versionCandidates, search, hash]}

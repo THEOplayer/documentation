@@ -6,6 +6,8 @@
 const platformNames = ['web', 'android', 'ios', 'react', 'react-native', 'chromecast', 'roku', 'flutter'] as const;
 export type PlatformName = (typeof platformNames)[number];
 
+export const defaultPlatformName = 'web' satisfies PlatformName;
+
 export function isPlatformName(name: string): name is PlatformName {
   return platformNames.indexOf(name as PlatformName) !== -1;
 }

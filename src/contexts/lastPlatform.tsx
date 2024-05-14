@@ -3,6 +3,7 @@ import { useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs
 import { PlatformName } from '../util/platform';
 import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { findSidebarInVersions } from '@site/src/util/sidebar';
+import { defaultPlatformName } from '@site/src/util/platform';
 
 // Heavily based on useDocsPreferredVersion()
 // https://github.com/facebook/docusaurus/blob/v3.3.2/packages/docusaurus-theme-common/src/contexts/docsPreferredVersion.tsx
@@ -99,7 +100,7 @@ export function useLastPlatformByPluginId(pluginId: string): {
   saveLastPlatform: (lastPlatform: LastPlatformName) => void;
 } {
   const [state, api] = useLastPlatformContext();
-  const { lastPlatformName } = state[pluginId]!;
+  const lastPlatformName = state[pluginId]!.lastPlatformName || defaultPlatformName;
   const saveLastPlatform = useCallback(
     (lastPlatform: LastPlatformName) => {
       api.saveLastPlatform(pluginId, lastPlatform);
@@ -112,6 +113,6 @@ export function useLastPlatformByPluginId(pluginId: string): {
 export function useLastPlatformMainLink(pluginId: string): string {
   const versionCandidates = useDocsVersionCandidates(pluginId);
   const { lastPlatformName } = useLastPlatformByPluginId(pluginId);
-  const sidebar = findSidebarInVersions(lastPlatformName || 'web', versionCandidates);
+  const sidebar = findSidebarInVersions(lastPlatformName, versionCandidates);
   return sidebar.link.path;
 }
