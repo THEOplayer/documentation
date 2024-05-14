@@ -5,14 +5,15 @@ import { useLastPlatformMainLink } from '@site/src/contexts/lastPlatform';
 
 export interface Props extends DefaultNavbarItemProps {
   readonly docsPluginId: string;
+  readonly href: string;
 }
 
 /**
  * A navbar item for opening the last platform's sidebar.
  */
-export default function PlatformSidebarNavbarItem({ docsPluginId, ...props }: Props): JSX.Element {
+export default function PlatformSidebarNavbarItem({ docsPluginId, href, ...props }: Props): JSX.Element {
   const { activeDoc } = useActiveDocContext(docsPluginId);
-  const sidebarLink = useLastPlatformMainLink(docsPluginId);
+  const sidebarLink = useLastPlatformMainLink(docsPluginId) || href;
   if (!sidebarLink) {
     throw new Error(`PlatformSidebarNavbarItem: Doc plugin ID "${docsPluginId}" doesn't have anything to be linked to.`);
   }

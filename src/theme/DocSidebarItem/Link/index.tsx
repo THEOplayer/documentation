@@ -27,6 +27,6 @@ export default function LinkWrapper({ item, ...props }: Props): JSX.Element {
   const {
     activePlugin: { pluginId },
   } = useActivePluginAndVersion({ failfast: true });
-  const href = useLastPlatformMainLink(pluginId);
+  const href = useLastPlatformMainLink(pluginId) || item.href;
   return <Link item={{ ...item, href }} {...props} />;
 }

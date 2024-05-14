@@ -298,12 +298,14 @@ const config: Config = {
           type: 'custom-platformSidebar',
           docsPluginId: 'theoplayer',
           label: 'THEOplayer',
+          href: '/theoplayer',
           position: 'left',
         } satisfies PlatformSidebarNavbarItemProps,
         {
           type: 'custom-platformSidebar',
           docsPluginId: 'open-video-ui',
           label: 'Open Video UI',
+          href: '/open-video-ui',
           position: 'left',
         } satisfies PlatformSidebarNavbarItemProps,
         {

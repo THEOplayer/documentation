@@ -112,20 +112,25 @@ export function useLastPlatformByPluginId(pluginId: string): {
   return { lastPlatformName, saveLastPlatform };
 }
 
-export function useLastPlatformMainLink(pluginId: string): string {
+export function useLastPlatformMainLink(pluginId: string): string | null {
   const [state, api] = useLastPlatformContext();
   const versionCandidates = useDocsVersionCandidates(pluginId);
-  let platformName = state[pluginId]!.lastPlatformName || defaultPlatformName;
+  let platformName = state[pluginId]!.lastPlatformName;
 
   // Try to use the same platform as the active plugin.
   // For example, when browsing the THEOplayer Android SDK docs,
-  // the Open Video UI navlink should point to Open Video UI for Android.
+  // the Open Video UI navbar link should point to Open Video UI for Android.
   const activePluginId = useActivePluginAndVersion()?.activePlugin.pluginId;
   if (activePluginId !== undefined && activePluginId !== pluginId) {
     const activePlatformName = state[activePluginId]!.lastPlatformName;
     if (activePlatformName && getPlatformByName(pluginId, activePlatformName)) {
       platformName = activePlatformName;
     }
+  }
+
+  if (!platformName) {
+    // Ignore for SSR
+    return null;
   }
 
   const sidebar = findSidebarInVersions(platformName, versionCandidates);
