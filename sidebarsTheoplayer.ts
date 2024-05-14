@@ -273,32 +273,15 @@ function webConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/web/cmcd',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/web-connectors/cmcd/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/web-connectors/cmcd/CHANGELOG',
-        },
-        {
-          type: 'link',
-          label: 'API reference',
+        'external/web-connectors/cmcd/README',
+        'external/web-connectors/cmcd/CHANGELOG',
+        apiReferencesLink({
           description: 'Discover all functions provided by the CMCD connector for Web.',
-          customProps: {
-            icon: '*️⃣',
-          },
           href: 'https://theoplayer.github.io/web-connectors/api/modules/CMCD_Connector.html',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        }),
+        githubLink({
           href: 'https://github.com/THEOplayer/web-connectors/tree/main/cmcd',
-        },
+        }),
       ],
     },
     {
@@ -314,32 +297,15 @@ function webConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/web/comscore',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/web-connectors/comscore/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/web-connectors/comscore/CHANGELOG',
-        },
-        {
-          type: 'link',
-          label: 'API reference',
+        'external/web-connectors/comscore/README',
+        'external/web-connectors/comscore/CHANGELOG',
+        apiReferencesLink({
           description: 'Discover all functions provided by the Comscore connector for Web.',
-          customProps: {
-            icon: '*️⃣',
-          },
           href: 'https://theoplayer.github.io/web-connectors/api/modules/Comscore_Connector.html',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        }),
+        githubLink({
           href: 'https://github.com/THEOplayer/web-connectors/tree/main/comscore',
-        },
+        }),
       ],
     },
     {
@@ -355,32 +321,15 @@ function webConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/web/conviva',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/web-connectors/conviva/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/web-connectors/conviva/CHANGELOG',
-        },
-        {
-          type: 'link',
-          label: 'API reference',
+        'external/web-connectors/conviva/README',
+        'external/web-connectors/conviva/CHANGELOG',
+        apiReferencesLink({
           description: 'Discover all functions provided by the Conviva connector for Web.',
-          customProps: {
-            icon: '*️⃣',
-          },
           href: 'https://theoplayer.github.io/web-connectors/api/modules/Conviva_Connector.html',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        }),
+        githubLink({
           href: 'https://github.com/THEOplayer/web-connectors/tree/main/conviva',
-        },
+        }),
       ],
     },
     {
@@ -396,32 +345,15 @@ function webConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/web/nielsen',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/web-connectors/nielsen/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/web-connectors/nielsen/CHANGELOG',
-        },
-        {
-          type: 'link',
-          label: 'API reference',
+        'external/web-connectors/nielsen/README',
+        'external/web-connectors/nielsen/CHANGELOG',
+        apiReferencesLink({
           description: 'Discover all functions provided by the Nielsen connector for Web.',
-          customProps: {
-            icon: '*️⃣',
-          },
           href: 'https://theoplayer.github.io/web-connectors/api/modules/Nielsen_Connector.html',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        }),
+        githubLink({
           href: 'https://github.com/THEOplayer/web-connectors/tree/main/nielsen',
-        },
+        }),
       ],
     },
     {
@@ -437,32 +369,15 @@ function webConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/web/yospace',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/web-connectors/yospace/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/web-connectors/yospace/CHANGELOG',
-        },
-        {
-          type: 'link',
-          label: 'API reference',
+        'external/web-connectors/yospace/README',
+        'external/web-connectors/yospace/CHANGELOG',
+        apiReferencesLink({
           description: 'Discover all functions provided by the Yospace connector for Web.',
-          customProps: {
-            icon: '*️⃣',
-          },
           href: 'https://theoplayer.github.io/web-connectors/api/modules/Yospace_Connector.html',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        }),
+        githubLink({
           href: 'https://github.com/THEOplayer/web-connectors/tree/main/yospace',
-        },
+        }),
       ],
     },
   ];
@@ -483,19 +398,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/android/comscore',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/android-connector/connectors/analytics/comscore/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/android-connector/connectors/analytics/comscore/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/comscore',
-        },
+        }),
       ],
     },
     {
@@ -511,19 +417,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/android/conviva',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/android-connector/connectors/analytics/conviva/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/android-connector/connectors/analytics/conviva/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva',
-        },
+        }),
       ],
     },
     {
@@ -539,19 +436,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/android/nielsen',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/android-connector/connectors/analytics/nielsen/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/android-connector/connectors/analytics/nielsen/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/nielsen',
-        },
+        }),
       ],
     },
     {
@@ -567,19 +455,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/android/mediasession',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/android-connector/connectors/mediasession/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/android-connector/connectors/mediasession/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/mediasession',
-        },
+        }),
       ],
     },
   ];
@@ -600,23 +479,11 @@ function iosConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/ios/comscore',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Comscore/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Comscore-Examples/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/iOS-Connector/Code/Comscore/README',
+        'external/iOS-Connector/Code/Comscore-Examples/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Comscore',
-        },
+        }),
       ],
     },
     {
@@ -632,23 +499,11 @@ function iosConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/ios/conviva',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Conviva/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Conviva-Examples/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/iOS-Connector/Code/Conviva/README',
+        'external/iOS-Connector/Code/Conviva-Examples/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva',
-        },
+        }),
       ],
     },
     {
@@ -664,23 +519,11 @@ function iosConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/ios/conviva-verizonmedia',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Conviva-VerizonMedia/README',
-        },
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Conviva-VerizonMedia-Examples/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/iOS-Connector/Code/Conviva-VerizonMedia/README',
+        'external/iOS-Connector/Code/Conviva-VerizonMedia-Examples/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva-VerizonMedia',
-        },
+        }),
       ],
     },
     {
@@ -696,19 +539,10 @@ function iosConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/ios/nielsen',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Nielsen/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/iOS-Connector/Code/Nielsen/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Nielsen',
-        },
+        }),
       ],
     },
     {
@@ -724,25 +558,13 @@ function iosConnectorItems(): SidebarItemConfig[] {
         slug: 'connectors/ios/sideloaded-texttracks',
       },
       items: [
-        {
-          type: 'doc',
-          id: 'external/iOS-Connector/Code/Sideloaded-TextTracks/README',
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          description: 'Browse the source code or report issues on GitHub.',
-          customProps: {
-            icon: 'github',
-          },
+        'external/iOS-Connector/Code/Sideloaded-TextTracks/README',
+        githubLink({
           href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Sideloaded-TextTracks',
-        },
+        }),
       ],
     },
-    {
-      type: 'doc',
-      id: 'external/iOS-Connector/CHANGELOG',
-    },
+    'external/iOS-Connector/CHANGELOG',
   ];
 }
 
