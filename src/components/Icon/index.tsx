@@ -1,6 +1,6 @@
 import React, { JSX } from 'react';
 import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import AmpIcon from '@site/static/img/amp.svg';
 import AndroidIcon from '@site/static/img/android.svg';
 import AngularIcon from '@site/static/img/angular.svg';
@@ -28,6 +28,7 @@ function TextIcon({ className, icon }: { className?: string; icon: string }): JS
 }
 
 export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.Element | string | null {
+  const { withBaseUrl } = useBaseUrlUtils();
   if (!icon) {
     return <TextIcon icon={defaultIcon} {...props} />;
   }
@@ -48,8 +49,8 @@ export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.El
       return (
         <ThemedImage
           sources={{
-            light: useBaseUrl('/img/conviva.svg'),
-            dark: useBaseUrl('/img/conviva_dark.svg'),
+            light: withBaseUrl('/img/conviva.svg'),
+            dark: withBaseUrl('/img/conviva_dark.svg'),
           }}
           {...props}
         />
@@ -60,8 +61,8 @@ export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.El
       return (
         <ThemedImage
           sources={{
-            light: useBaseUrl('/img/github.svg'),
-            dark: useBaseUrl('/img/github_dark.svg'),
+            light: withBaseUrl('/img/github.svg'),
+            dark: withBaseUrl('/img/github_dark.svg'),
           }}
           {...props}
         />
