@@ -4,7 +4,7 @@ import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
-import type { Props as PlatformDropdownNavbarItemProps } from './src/theme/NavbarItem/PlatformDropdownNavbarItem';
+import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
@@ -295,19 +295,17 @@ const config: Config = {
       },
       items: [
         {
-          type: 'custom-platformDropdown',
+          type: 'custom-platformSidebar',
           docsPluginId: 'theoplayer',
           label: 'THEOplayer',
-          href: '/theoplayer',
           position: 'left',
-        } satisfies PlatformDropdownNavbarItemProps,
+        } satisfies PlatformSidebarNavbarItemProps,
         {
-          type: 'custom-platformDropdown',
+          type: 'custom-platformSidebar',
           docsPluginId: 'open-video-ui',
           label: 'Open Video UI',
-          href: '/open-video-ui',
           position: 'left',
-        } satisfies PlatformDropdownNavbarItemProps,
+        } satisfies PlatformSidebarNavbarItemProps,
         {
           label: 'THEOlive',
           href: 'https://developers.theo.live/',
