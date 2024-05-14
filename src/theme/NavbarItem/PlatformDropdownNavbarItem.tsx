@@ -3,10 +3,9 @@ import { type GlobalSidebar, type GlobalVersion, useActiveDocContext } from '@do
 import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { useLocation } from '@docusaurus/router';
 import DropdownNavbarItem, { type Props as DropdownNavbarItemProps } from '@theme/NavbarItem/DropdownNavbarItem';
-import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultNavbarItem';
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
-import { getPlatformLabel, isDocSharedWithPlatform, PlatformName } from '@site/src/util/platform';
+import { getPlatforms, isDocSharedWithPlatform } from '@site/src/util/platform';
 import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
 
@@ -15,16 +14,11 @@ export interface PlatformDropdownItemProps {
   readonly icon?: string;
 }
 
-export interface PlatformDropdownNavbarItemProps extends DefaultNavbarItemProps, PlatformDropdownItemProps {
-  readonly platform: PlatformName;
-}
-
 export interface Props extends Omit<DropdownNavbarItemProps, 'items'> {
   readonly dropdownActiveClassDisabled?: boolean;
   readonly dropdownItemsBefore?: LinkLikeNavbarItemProps[];
   readonly dropdownItemsAfter?: LinkLikeNavbarItemProps[];
   readonly docsPluginId?: string;
-  readonly items: PlatformDropdownNavbarItemProps[];
   readonly href?: string;
 }
 
@@ -47,7 +41,6 @@ export default function PlatformDropdownNavbarItem({
   dropdownActiveClassDisabled,
   dropdownItemsBefore,
   dropdownItemsAfter,
-  items,
   href,
   ...props
 }: Props): JSX.Element {
@@ -55,16 +48,16 @@ export default function PlatformDropdownNavbarItem({
   const { activeDoc } = useActiveDocContext(docsPluginId);
   const versionCandidates = useDocsVersionCandidates(docsPluginId);
   const { lastPlatformName, saveLastPlatform } = useLastPlatformByPluginId(docsPluginId);
-  const platformLinks = items.map(({ platform, label, icon, ...props }): LinkLikeNavbarItemProps => {
+  const platforms = getPlatforms(docsPluginId);
+  const platformLinks = platforms.map(({ platform, label, icon }): LinkLikeNavbarItemProps => {
     const sidebar = findSidebarInVersions(platform, versionCandidates);
     const isDocInSidebar = activeDoc ? isDocSharedWithPlatform(docsPluginId, activeDoc.id, platform) : false;
     const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
-    const platformLabel = getPlatformLabel(docsPluginId, platform);
     return {
       ...props,
       type: 'default',
       className: styles.platformDropdownItem,
-      label: <PlatformDropdownItem label={label || platformLabel} icon={icon} />,
+      label: <PlatformDropdownItem label={label} icon={icon} />,
       // preserve ?search#hash suffix on version switches
       to: `${sidebarLink}${search}${hash}`,
       isActive: () => platform === lastPlatformName,
@@ -72,7 +65,7 @@ export default function PlatformDropdownNavbarItem({
     };
   });
   const dropdownItems = [...(dropdownItemsBefore ?? []), ...platformLinks, ...(dropdownItemsAfter ?? [])];
-  const dropdownTo = mobile && items.length > 1 ? undefined : href;
+  const dropdownTo = mobile && platforms.length > 1 ? undefined : href;
 
   return (
     <DropdownNavbarItem

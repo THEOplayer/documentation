@@ -1,7 +1,7 @@
 import React from 'react';
 import DocSidebarItem from '@theme/DocSidebarItem';
 import { useLastPlatform } from '@site/src/contexts/lastPlatform';
-import { getPlatformLabel } from '@site/src/util/platform';
+import { getPlatformByName } from '@site/src/util/platform';
 import { useActivePluginAndVersion } from '@docusaurus/plugin-content-docs/client';
 import styles from './styles.module.css';
 
@@ -10,13 +10,13 @@ export default function SidebarPlatformItem() {
     activePlugin: { pluginId },
   } = useActivePluginAndVersion({ failfast: true });
   const { lastPlatformName } = useLastPlatform();
-  const platformLabel = getPlatformLabel(pluginId, lastPlatformName || 'web');
+  const platform = getPlatformByName(pluginId, lastPlatformName || 'web');
   return (
-    platformLabel && (
+    platform && (
       <DocSidebarItem
         item={{
           type: 'html',
-          value: platformLabel,
+          value: platform.label,
           defaultStyle: true,
           className: styles.sidebarPlatformLabel,
         }}

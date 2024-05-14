@@ -300,32 +300,6 @@ const config: Config = {
           label: 'THEOplayer',
           href: '/theoplayer',
           position: 'left',
-          items: [
-            {
-              platform: 'web',
-              icon: 'web',
-            },
-            {
-              platform: 'android',
-              icon: 'android',
-            },
-            {
-              platform: 'ios',
-              icon: 'apple',
-            },
-            {
-              platform: 'react-native',
-              icon: 'react',
-            },
-            {
-              platform: 'chromecast',
-              icon: 'chromecast',
-            },
-            {
-              platform: 'roku',
-              icon: 'roku',
-            },
-          ],
         } satisfies PlatformDropdownNavbarItemProps,
         {
           type: 'custom-platformDropdown',
@@ -333,24 +307,6 @@ const config: Config = {
           label: 'Open Video UI',
           href: '/open-video-ui',
           position: 'left',
-          items: [
-            {
-              platform: 'web',
-              icon: 'web',
-            },
-            {
-              platform: 'android',
-              icon: 'android',
-            },
-            {
-              platform: 'react',
-              icon: 'react',
-            },
-            {
-              platform: 'react-native',
-              icon: 'react',
-            },
-          ],
         } satisfies PlatformDropdownNavbarItemProps,
         {
           label: 'THEOlive',
