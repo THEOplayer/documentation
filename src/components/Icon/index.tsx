@@ -1,5 +1,5 @@
 import React, { JSX } from 'react';
-import ThemedImage from '@theme/ThemedImage';
+import ThemedImage, { type Props as ThemedImageProps } from '@theme/ThemedImage';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import AmpIcon from '@site/static/img/amp.svg';
 import AndroidIcon from '@site/static/img/android.svg';
@@ -27,8 +27,20 @@ function TextIcon({ className, icon }: { className?: string; icon: string }): JS
   return className ? <span className={className}>{icon}</span> : icon;
 }
 
-export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.Element | string | null {
+function ThemedImageWithBaseUrl({ sources, ...props }: ThemedImageProps): JSX.Element | string {
   const { withBaseUrl } = useBaseUrlUtils();
+  return (
+    <ThemedImage
+      sources={{
+        light: withBaseUrl(sources.light),
+        dark: withBaseUrl(sources.dark),
+      }}
+      {...props}
+    />
+  );
+}
+
+export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.Element | string | null {
   if (!icon) {
     return <TextIcon icon={defaultIcon} {...props} />;
   }
@@ -47,10 +59,10 @@ export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.El
       return <ComscoreIcon {...props} />;
     case 'conviva':
       return (
-        <ThemedImage
+        <ThemedImageWithBaseUrl
           sources={{
-            light: withBaseUrl('/img/conviva.svg'),
-            dark: withBaseUrl('/img/conviva_dark.svg'),
+            light: '/img/conviva.svg',
+            dark: '/img/conviva_dark.svg',
           }}
           {...props}
         />
@@ -59,10 +71,10 @@ export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.El
       return <FlutterIcon {...props} />;
     case 'github':
       return (
-        <ThemedImage
+        <ThemedImageWithBaseUrl
           sources={{
-            light: withBaseUrl('/img/github.svg'),
-            dark: withBaseUrl('/img/github_dark.svg'),
+            light: '/img/github.svg',
+            dark: '/img/github_dark.svg',
           }}
           {...props}
         />
