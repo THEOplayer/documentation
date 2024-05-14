@@ -7,7 +7,7 @@ import { translate } from '@docusaurus/Translate';
 import type { Props } from '@theme/DocCard';
 import type { PropSidebarItemCategory, PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 import Heading from '@theme/Heading';
-import CardIcon from './CardIcon';
+import Icon from './Icon';
 import styles from './styles.module.css';
 
 function CardContainer({ href, children }) {
@@ -39,7 +39,7 @@ interface SidebarItemCardIconProps {
 }
 
 function SidebarItemCardIcon({ item, defaultIcon }: SidebarItemCardIconProps): JSX.Element {
-  return <CardIcon icon={(item.customProps as SidebarItemCustomProps)?.icon} defaultIcon={defaultIcon} />;
+  return <Icon icon={(item.customProps as SidebarItemCustomProps)?.icon} defaultIcon={defaultIcon} />;
 }
 
 function CardCategory({ item }: { item: PropSidebarItemCategory }) {

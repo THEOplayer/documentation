@@ -19,7 +19,7 @@ import WordPressIcon from '@site/static/img/wordpress.svg';
 import YospaceIconUrl from '@site/static/img/yospace.png';
 import styles from './styles.module.css';
 
-interface CardIconProps {
+interface IconProps {
   className?: string;
   icon?: string;
   defaultIcon: string;
@@ -29,7 +29,7 @@ function TextIcon({ className, icon }: { className?: string; icon: string }): JS
   return className ? <span className={className}>{icon}</span> : icon;
 }
 
-export default function CardIcon({ className, icon, defaultIcon }: CardIconProps): JSX.Element | string | null {
+export default function Icon({ className, icon, defaultIcon }: IconProps): JSX.Element | string | null {
   if (!icon) {
     return <TextIcon className={className} icon={defaultIcon} />;
   }

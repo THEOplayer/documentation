@@ -7,7 +7,7 @@ import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultN
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import { getPlatformLabel, isDocSharedWithPlatform, PlatformName } from '@site/src/util/platform';
-import CardIcon from '@site/src/theme/DocCard/CardIcon';
+import Icon from '@site/src/theme/DocCard/Icon';
 import styles from './styles.module.css';
 
 export interface PlatformDropdownItemProps {
@@ -31,7 +31,7 @@ export interface Props extends Omit<DropdownNavbarItemProps, 'items'> {
 function PlatformDropdownItem({ label, icon }: PlatformDropdownItemProps): JSX.Element {
   return (
     <>
-      <CardIcon className={styles.platformDropdownIcon} icon={icon} defaultIcon="" />
+      <Icon className={styles.platformDropdownIcon} icon={icon} defaultIcon="" />
       <span className={styles.platformDropdownItemContent}>{label}</span>
     </>
   );
