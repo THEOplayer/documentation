@@ -3,7 +3,7 @@ import Link from '@theme-original/DocSidebarItem/Link';
 import type LinkType from '@theme/DocSidebarItem/Link';
 import type { WrapperProps } from '@docusaurus/types';
 import type { PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
-import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
+import { useLastPlatformMainLink } from '@site/src/contexts/lastPlatform';
 import { useActivePluginAndVersion } from '@docusaurus/plugin-content-docs/client';
 
 export interface Props extends WrapperProps<typeof LinkType> {
@@ -26,10 +26,7 @@ export default function LinkWrapper({ item, ...props }: Props): JSX.Element {
   // Replace back link with last platform's main sidebar link (if available)
   const {
     activePlugin: { pluginId },
-    activeVersion,
   } = useActivePluginAndVersion({ failfast: true });
-  const { lastPlatformName } = useLastPlatformByPluginId(pluginId);
-  const lastPlatformSidebar = lastPlatformName ? activeVersion.sidebars[lastPlatformName] : undefined;
-  const href = lastPlatformSidebar?.link.path ?? item.href;
+  const href = useLastPlatformMainLink(pluginId);
   return <Link item={{ ...item, href }} {...props} />;
 }
