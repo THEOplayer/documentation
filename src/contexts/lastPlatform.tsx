@@ -73,10 +73,15 @@ function LastPlatformContextProviderUnsafe({ children }: { children: ReactNode }
   const pluginId = useActivePlugin()?.pluginId || 'theoplayer';
   const { activeDoc } = useActiveDocContext(pluginId);
   const docSidebarName = activeDoc?.sidebar;
-  const lastPlatformName = state[pluginId].lastPlatformName || defaultPlatformName;
-  if (activeDoc && lastPlatformName !== docSidebarName) {
-    if (isDocSharedWithPlatform(pluginId, activeDoc.id, lastPlatformName)) {
-      // Keep last platform for cross-platform docs
+  const lastPlatformName = state[pluginId].lastPlatformName;
+  if (activeDoc && (!lastPlatformName || lastPlatformName !== docSidebarName)) {
+    if (isDocSharedWithPlatform(pluginId, activeDoc.id, lastPlatformName || defaultPlatformName)) {
+      if (lastPlatformName) {
+        // Prefer last platform for cross-platform docs
+      } else {
+        // No last platform yet, so update to default platform
+        api.saveLastPlatform(pluginId, defaultPlatformName);
+      }
     } else if (docSidebarName && isPlatformName(docSidebarName)) {
       // Doc belongs to a different platform, so update our last platform
       api.saveLastPlatform(pluginId, docSidebarName);
