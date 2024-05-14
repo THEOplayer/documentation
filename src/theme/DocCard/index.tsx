@@ -38,12 +38,12 @@ interface SidebarItemCardIconProps {
   defaultIcon: string;
 }
 
-function SidebarItemCardIcon({ item, defaultIcon }: SidebarItemCardIconProps): JSX.Element {
-  return <Icon icon={(item.customProps as SidebarItemCustomProps)?.icon} defaultIcon={defaultIcon} />;
+function CardIcon({ item, defaultIcon }: SidebarItemCardIconProps): JSX.Element {
+  return <Icon className={styles.cardIcon} icon={(item.customProps as SidebarItemCustomProps)?.icon} defaultIcon={defaultIcon} />;
 }
 
 function CardCategory({ item }: { item: PropSidebarItemCategory }) {
-  const icon = <SidebarItemCardIcon item={item} defaultIcon="🗃️" />;
+  const icon = <CardIcon item={item} defaultIcon="🗃️" />;
   const href = findFirstSidebarItemLink(item);
   // Unexpected: categories that don't have a link have been filtered upfront
   if (!href) {
@@ -70,7 +70,7 @@ function CardCategory({ item }: { item: PropSidebarItemCategory }) {
 }
 
 function CardLink({ item }: { item: PropSidebarItemLink }) {
-  const icon = <SidebarItemCardIcon item={item} defaultIcon={isInternalUrl(item.href) ? '📄️' : '🔗'} />;
+  const icon = <CardIcon item={item} defaultIcon={isInternalUrl(item.href) ? '📄️' : '🔗'} />;
   const doc = useDocById(item.docId ?? undefined);
   return <CardLayout href={item.href} icon={icon} title={item.label} description={item.description ?? doc?.description} />;
 }
