@@ -1,6 +1,6 @@
 import React, { JSX, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
-import { useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
-import { PlatformName } from '../util/platform';
+import { useActivePlugin, useActivePluginAndVersion, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
+import { getPlatformByName, PlatformName } from '../util/platform';
 import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { findSidebarInVersions } from '@site/src/util/sidebar';
 import { defaultPlatformName } from '@site/src/util/platform';
@@ -28,7 +28,9 @@ type DocsLastPlatformState = {
 /**
  * Initial state is always null as we can't read local storage from node SSR
  */
-const getInitialState = (pluginIds: string[]): DocsLastPlatformState => Object.fromEntries(pluginIds.map((id) => [id, { lastPlatformName: null }]));
+function getInitialState(pluginIds: string[]): DocsLastPlatformState {
+  return Object.fromEntries(pluginIds.map((id) => [id, { lastPlatformName: null }]));
+}
 
 type ContextValue = [
   state: DocsLastPlatformState,
@@ -111,8 +113,21 @@ export function useLastPlatformByPluginId(pluginId: string): {
 }
 
 export function useLastPlatformMainLink(pluginId: string): string {
+  const [state, api] = useLastPlatformContext();
   const versionCandidates = useDocsVersionCandidates(pluginId);
-  const { lastPlatformName } = useLastPlatformByPluginId(pluginId);
-  const sidebar = findSidebarInVersions(lastPlatformName, versionCandidates);
+  let platformName = state[pluginId]!.lastPlatformName || defaultPlatformName;
+
+  // Try to use the same platform as the active plugin.
+  // For example, when browsing the THEOplayer Android SDK docs,
+  // the Open Video UI navlink should point to Open Video UI for Android.
+  const activePluginId = useActivePluginAndVersion()?.activePlugin.pluginId;
+  if (activePluginId !== undefined && activePluginId !== pluginId) {
+    const activePlatformName = state[activePluginId]!.lastPlatformName;
+    if (activePlatformName && getPlatformByName(pluginId, activePlatformName)) {
+      platformName = activePlatformName;
+    }
+  }
+
+  const sidebar = findSidebarInVersions(platformName, versionCandidates);
   return sidebar.link.path;
 }
