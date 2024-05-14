@@ -7,7 +7,7 @@ import { translate } from '@docusaurus/Translate';
 import type { Props } from '@theme/DocCard';
 import type { PropSidebarItemCategory, PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 import Heading from '@theme/Heading';
-import Icon from './Icon';
+import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
 
 function CardContainer({ href, children }) {

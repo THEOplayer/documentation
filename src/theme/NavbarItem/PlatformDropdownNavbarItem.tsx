@@ -7,7 +7,7 @@ import type { Props as DefaultNavbarItemProps } from '@theme/NavbarItem/DefaultN
 import type { LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import { getPlatformLabel, isDocSharedWithPlatform, PlatformName } from '@site/src/util/platform';
-import Icon from '@site/src/theme/DocCard/Icon';
+import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
 
 export interface PlatformDropdownItemProps {
