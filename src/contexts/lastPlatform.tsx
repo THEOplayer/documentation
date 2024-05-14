@@ -1,6 +1,6 @@
 import React, { JSX, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
-import { useActivePlugin, useActivePluginAndVersion, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
-import { getPlatformByName, PlatformName } from '../util/platform';
+import { useActiveDocContext, useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
+import { getPlatformByName, isDocSharedWithPlatform, isPlatformName, PlatformName } from '../util/platform';
 import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { findSidebarInVersions } from '@site/src/util/sidebar';
 import { defaultPlatformName } from '@site/src/util/platform';
@@ -67,6 +67,22 @@ function useContextValue(): ContextValue {
 
 function LastPlatformContextProviderUnsafe({ children }: { children: ReactNode }): JSX.Element {
   const value = useContextValue();
+  const [state, api] = value;
+
+  // Update last platform using current doc (if needed)
+  const pluginId = useActivePlugin()?.pluginId || 'theoplayer';
+  const { activeDoc } = useActiveDocContext(pluginId);
+  const docSidebarName = activeDoc?.sidebar;
+  const lastPlatformName = state[pluginId].lastPlatformName || defaultPlatformName;
+  if (activeDoc && lastPlatformName !== docSidebarName) {
+    if (isDocSharedWithPlatform(pluginId, activeDoc.id, lastPlatformName)) {
+      // Keep last platform for cross-platform docs
+    } else if (docSidebarName && isPlatformName(docSidebarName)) {
+      // Doc belongs to a different platform, so update our last platform
+      api.saveLastPlatform(pluginId, docSidebarName);
+    }
+  }
+
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
@@ -120,7 +136,7 @@ export function useLastPlatformMainLink(pluginId: string): string | null {
   // Try to use the same platform as the active plugin.
   // For example, when browsing the THEOplayer Android SDK docs,
   // the Open Video UI navbar link should point to Open Video UI for Android.
-  const activePluginId = useActivePluginAndVersion()?.activePlugin.pluginId;
+  const activePluginId = useActivePlugin()?.pluginId;
   if (activePluginId !== undefined && activePluginId !== pluginId) {
     const activePlatformName = state[activePluginId]!.lastPlatformName;
     if (activePlatformName && getPlatformByName(pluginId, activePlatformName)) {
