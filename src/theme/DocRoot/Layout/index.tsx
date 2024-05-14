@@ -6,6 +6,7 @@ import { DocsSidebarProvider, useDocsSidebar, useDocsVersion } from '@docusaurus
 import { useLastPlatform } from '@site/src/contexts/lastPlatform';
 import { isDocSharedWithPlatform, isPlatformName } from '@site/src/util/platform';
 import { useActiveDocContext, useActivePlugin } from '@docusaurus/plugin-content-docs/client';
+import ReactAriaRouterProvider from '@site/src/contexts/reactAriaRouterProvider';
 
 type Props = WrapperProps<typeof LayoutType>;
 
@@ -35,7 +36,9 @@ export default function LayoutWrapper(props: Props): JSX.Element {
 
   return (
     <DocsSidebarProvider name={sidebar.name} items={sidebar.items}>
-      <Layout {...props} />
+      <ReactAriaRouterProvider>
+        <Layout {...props} />
+      </ReactAriaRouterProvider>
     </DocsSidebarProvider>
   );
 }
