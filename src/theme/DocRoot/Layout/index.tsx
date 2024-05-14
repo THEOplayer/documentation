@@ -4,7 +4,7 @@ import type LayoutType from '@theme/DocRoot/Layout';
 import type { WrapperProps } from '@docusaurus/types';
 import { DocsSidebarProvider, useDocsVersion } from '@docusaurus/theme-common/internal';
 import { useLastPlatform } from '@site/src/contexts/lastPlatform';
-import { isPlatformName } from '@site/src/util/platform';
+import { isDocSharedWithPlatform } from '@site/src/util/platform';
 import { useActiveDocContext, useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 import ReactAriaRouterProvider from '@site/src/contexts/reactAriaRouterProvider';
 
@@ -17,7 +17,7 @@ function PlatformSidebarProvider({ children }: { children: ReactNode }) {
   const { lastPlatformName } = useLastPlatform();
 
   // Override sidebar for certain docs that are shared across platforms
-  if (activeDoc && activeDoc.sidebar && isPlatformName(activeDoc.sidebar) && activeDoc.sidebar !== lastPlatformName) {
+  if (isDocSharedWithPlatform(pluginId, activeDoc.id, lastPlatformName)) {
     return (
       <DocsSidebarProvider name={lastPlatformName} items={versionMetadata.docsSidebars[lastPlatformName]}>
         {children}
