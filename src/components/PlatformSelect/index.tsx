@@ -8,6 +8,7 @@ import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
 import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { findSidebarInVersions } from '@site/src/util/sidebar';
 import { useLocation } from '@docusaurus/router';
+import clsx from 'clsx';
 
 interface PlatformSelectProps extends Omit<SelectProps<any>, 'items' | 'children'> {
   docsPluginId: string;
@@ -16,7 +17,7 @@ interface PlatformSelectProps extends Omit<SelectProps<any>, 'items' | 'children
 /**
  * A dropdown to change the current platform.
  */
-export default function PlatformSelect({ docsPluginId, ...props }: PlatformSelectProps): JSX.Element {
+export default function PlatformSelect({ docsPluginId, className, ...props }: PlatformSelectProps): JSX.Element {
   const { search, hash } = useLocation();
   const { activeDoc } = useActiveDocContext(docsPluginId);
   const versionCandidates = useDocsVersionCandidates(docsPluginId);
@@ -27,7 +28,7 @@ export default function PlatformSelect({ docsPluginId, ...props }: PlatformSelec
       {...props}
       items={platforms}
       selectedKey={lastPlatformName}
-      className={styles.platformSelect}
+      className={clsx(styles.platformSelect, className)}
       valueChildren={({ selectedItem, defaultChildren }) =>
         selectedItem ? (
           <div className={styles.platformItem}>
