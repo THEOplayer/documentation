@@ -28,6 +28,15 @@ export default function PlatformSelect({ docsPluginId, ...props }: PlatformSelec
       items={platforms}
       selectedKey={lastPlatformName}
       className={styles.platformSelect}
+      valueChildren={({ selectedItem, defaultChildren }) =>
+        selectedItem ? (
+          <div className={styles.platformItem}>
+            <span className={styles.platformLabel}>{selectedItem.label}</span>
+          </div>
+        ) : (
+          defaultChildren
+        )
+      }
       // dependencies for the children callback
       dependencies={[docsPluginId, activeDoc, versionCandidates, search, hash]}
     >
@@ -47,9 +56,9 @@ export default function PlatformSelect({ docsPluginId, ...props }: PlatformSelec
             // update current platform when navigating
             routerOptions={{ platform: platform }}
           >
-            <div className={styles.platformSelectItem}>
-              <Icon className={styles.platformSelectIcon} icon={icon} defaultIcon="" />
-              <span className={styles.platformSelectItemContent}>{label}</span>
+            <div className={styles.platformItem}>
+              <Icon className={styles.platformIcon} icon={icon} defaultIcon="" />
+              <span className={styles.platformLabel}>{label}</span>
             </div>
           </Item>
         );

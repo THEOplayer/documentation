@@ -10,6 +10,7 @@ import {
   Select as ReactAriaSelect,
   type SelectProps as ReactAriaSelectProps,
   SelectValue,
+  type SelectValueRenderProps,
   Text,
   type ValidationResult,
 } from 'react-aria-components';
@@ -22,6 +23,13 @@ export interface SelectProps<T extends object> extends Omit<ReactAriaSelectProps
   errorMessage?: string | ((validation: ValidationResult) => string);
   items?: readonly T[];
   children: ReactNode | ((item: T) => ReactNode);
+  valueChildren?:
+    | ReactNode
+    | ((
+        values: SelectValueRenderProps<T> & {
+          defaultChildren: ReactNode | undefined;
+        }
+      ) => ReactNode);
   dependencies?: any[];
 }
 
@@ -31,6 +39,7 @@ export default function Select<T extends object>({
   description,
   errorMessage,
   children,
+  valueChildren,
   items,
   dependencies,
   className,
@@ -40,7 +49,7 @@ export default function Select<T extends object>({
     <ReactAriaSelect {...props} className={clsx(styles.select, className)}>
       <Label>{label}</Label>
       <Button className={styles.button}>
-        <SelectValue className={styles.selectValue} />
+        <SelectValue className={styles.selectValue} children={valueChildren} />
       </Button>
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>

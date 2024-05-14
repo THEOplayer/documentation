@@ -1,4 +1,4 @@
-.platformSelectItem {
+.platformItem {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -6,20 +6,20 @@
   gap: 0.25em;
 }
 
-.platformSelectIcon {
+.platformIcon {
   flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
   margin: 0.125em;
 }
 
-.platformSelectItemContent {
+.platformLabel {
   flex-grow: 1;
   margin: 0.125em;
 }
 
-.platformSelectItem,
-.platformSelectItemContent {
+.platformItem,
+.platformLabel {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
