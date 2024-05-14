@@ -37,7 +37,7 @@ export default function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   return (
-    <ReactAriaSelect {...props} className={className}>
+    <ReactAriaSelect {...props} className={clsx(styles.select, className)}>
       <Label>{label}</Label>
       <Button className={styles.button}>
         <SelectValue className={styles.selectValue} />

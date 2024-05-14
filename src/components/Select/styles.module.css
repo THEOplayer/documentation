@@ -1,5 +1,28 @@
+.select {
+  /* based on .dropdown */
+  font-weight: var(--ifm-dropdown-font-weight);
+}
+
 .button {
   width: 100%;
+  appearance: none;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+
+  /* based on .menu__link */
+  border-radius: 0.25rem;
+  background: var(--ifm-menu-color-background);
+
+  /* based on .dropdown__link */
+  color: var(--ifm-dropdown-link-color);
+  margin-top: 0.2rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.button:hover {
+  background: var(--ifm-menu-color-background-hover);
 }
 
 .selectValue {
@@ -10,6 +33,7 @@
 }
 
 .selectValue::after {
+  /* based on dropdown > .navbar__link:after */
   display: inline;
   content: '';
   border-color: currentColor transparent;
@@ -19,6 +43,10 @@
 }
 
 .popover {
+  /* based on .dropdown */
+  font-weight: var(--ifm-dropdown-font-weight);
+
+  /* based on .dropdown__menu */
   background-color: var(--ifm-dropdown-background-color);
   border-radius: var(--ifm-global-radius);
   box-shadow: var(--ifm-global-shadow-md);

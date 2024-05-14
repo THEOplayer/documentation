@@ -7,6 +7,7 @@
 }
 
 .platformSelectIcon {
+  flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
   margin: 0.125em;
@@ -15,4 +16,11 @@
 .platformSelectItemContent {
   flex-grow: 1;
   margin: 0.125em;
+}
+
+.platformSelectItem,
+.platformSelectItemContent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
