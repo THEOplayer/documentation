@@ -1,0 +1,40 @@
+.button {
+  width: 100%;
+}
+
+.selectValue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectValue::after {
+  display: inline;
+  content: '';
+  border-color: currentColor transparent;
+  border-style: solid;
+  border-width: 0.4em 0.4em 0;
+  margin-left: 0.6em;
+}
+
+.popover {
+  background-color: var(--ifm-dropdown-background-color);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+  list-style: none;
+  max-height: 80vh;
+  min-width: 10rem;
+  overflow-y: auto;
+  opacity: 1;
+  padding: 0.5rem;
+  transform: translateY(-1px);
+  transition-property: opacity, transform;
+  transition-duration: var(--ifm-transition-fast);
+  transition-timing-function: var(--ifm-transition-timing-default);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(-0.625rem);
+  }
+}
