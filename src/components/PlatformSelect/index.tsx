@@ -29,13 +29,11 @@ export default function PlatformSelect({ docsPluginId, className, ...props }: Pl
       items={platforms}
       selectedKey={lastPlatformName}
       className={clsx(styles.platformSelect, className)}
-      valueChildren={({ selectedItem, defaultChildren }) =>
-        selectedItem ? (
+      valueChildren={({ selectedItem }) =>
+        selectedItem && (
           <div className={styles.platformItem}>
             <span className={styles.platformLabel}>{selectedItem.label}</span>
           </div>
-        ) : (
-          defaultChildren
         )
       }
       // dependencies for the children callback
