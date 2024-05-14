@@ -9,7 +9,6 @@ import DocsVersionNavbarItem from '@theme/NavbarItem/DocsVersionNavbarItem';
 import DocsVersionDropdownNavbarItem from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
 import type { ComponentTypesObject } from '@theme/NavbarItem/ComponentTypes';
 import PlatformSidebarNavbarItem from './PlatformSidebarNavbarItem';
-import PlatformDropdownNavbarItem from './PlatformDropdownNavbarItem';
 
 const ComponentTypes: ComponentTypesObject = {
   default: DefaultNavbarItem,
@@ -22,7 +21,6 @@ const ComponentTypes: ComponentTypesObject = {
   docsVersion: DocsVersionNavbarItem,
   docsVersionDropdown: DocsVersionDropdownNavbarItem,
   'custom-platformSidebar': PlatformSidebarNavbarItem,
-  'custom-platformDropdown': PlatformDropdownNavbarItem,
 };
 
 export default ComponentTypes;
