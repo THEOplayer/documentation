@@ -104,6 +104,9 @@ const sidebars: SidebarsConfig = {
     apiReferencesLink({
       href: 'https://theoplayer.github.io/react-native-theoplayer/api/',
     }),
+    githubLink({
+      href: 'https://github.com/THEOplayer/react-native-theoplayer',
+    }),
     knowledgeBaseCategory(),
     faqLink(),
   ],
@@ -202,6 +205,18 @@ function apiReferencesLink(config: SidebarItemLink): SidebarItemLink {
     description: 'Discover all properties and functions of THEOplayer.',
     customProps: {
       icon: '*️⃣',
+    },
+    ...config,
+  };
+}
+
+function githubLink(config: SidebarItemLink): SidebarItemLink {
+  return {
+    type: 'link',
+    label: 'GitHub',
+    description: 'Browse the source code or report issues on GitHub.',
+    customProps: {
+      icon: 'github',
     },
     ...config,
   };
