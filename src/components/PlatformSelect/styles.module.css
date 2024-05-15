@@ -1,4 +1,5 @@
-.platformItem {
+.platformItem,
+.platformValue {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,8 +9,16 @@
 
 .platformIcon {
   flex-shrink: 0;
+}
+
+.platformItem .platformIcon {
   width: 2.5rem;
   height: 2.5rem;
+}
+
+.platformValue .platformIcon {
+  width: 1rem;
+  height: 1rem;
 }
 
 .platformLabel {
@@ -17,6 +26,7 @@
 }
 
 .platformItem,
+.platformValue,
 .platformLabel {
   overflow: hidden;
   text-overflow: ellipsis;
