@@ -4,16 +4,23 @@
   flex-direction: row;
   align-items: center;
   justify-content: stretch;
-  gap: 0.5em;
 }
 
 .platformIcon {
   flex-shrink: 0;
 }
 
+.platformItem {
+  gap: 0.75em;
+}
+
 .platformItem .platformIcon {
   width: 2em;
   height: 2em;
+}
+
+.platformValue {
+  gap: 0.5em;
 }
 
 .platformValue .platformIcon {
