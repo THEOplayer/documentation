@@ -77,6 +77,7 @@ const openVideoUiPlatforms: PlatformDescription[] = [
   {
     platform: 'react-native',
     label: 'React Native THEOplayer UI',
+    shortLabel: 'React Native UI',
     icon: 'react',
   },
 ];
