@@ -6,7 +6,6 @@ import { DocsSidebarProvider, useDocsVersion } from '@docusaurus/theme-common/in
 import { useLastPlatform } from '@site/src/contexts/lastPlatform';
 import { isDocSharedWithPlatform } from '@site/src/util/platform';
 import { useActiveDocContext, useActivePlugin } from '@docusaurus/plugin-content-docs/client';
-import ReactAriaRouterProvider from '@site/src/contexts/reactAriaRouterProvider';
 
 type Props = WrapperProps<typeof LayoutType>;
 
@@ -31,9 +30,7 @@ function PlatformSidebarProvider({ children }: { children: ReactNode }) {
 export default function LayoutWrapper(props: Props): JSX.Element {
   return (
     <PlatformSidebarProvider>
-      <ReactAriaRouterProvider>
-        <Layout {...props} />
-      </ReactAriaRouterProvider>
+      <Layout {...props} />
     </PlatformSidebarProvider>
   );
 }

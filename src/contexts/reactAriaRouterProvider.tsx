@@ -3,7 +3,8 @@ import { useHistory } from '@docusaurus/router';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import type { ReactNode } from 'react';
 import { PlatformName } from '@site/src/util/platform';
-import { useLastPlatform } from '@site/src/contexts/lastPlatform';
+import { useLastPlatform, useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
+import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 
 /**
  * Options for <Link> components in React Aria.
@@ -15,10 +16,38 @@ export interface ReactAriaRouterOptions {
   platform?: PlatformName;
 }
 
+// https://react-spectrum.adobe.com/react-aria/routing.html#router-options
 declare module 'react-aria-components' {
   interface RouterConfig {
     routerOptions: ReactAriaRouterOptions;
   }
+}
+
+function ReactAriaRouterProviderImpl({
+  saveLastPlatform,
+  children,
+}: {
+  saveLastPlatform?: (lastPlatform: PlatformName) => void;
+  children: ReactNode;
+}) {
+  const history = useHistory();
+  const { withBaseUrl } = useBaseUrlUtils();
+  const navigate = (href: string, routerOptions: ReactAriaRouterOptions | undefined) => {
+    if (routerOptions?.platform) {
+      saveLastPlatform?.(routerOptions.platform);
+    }
+    history.push(href);
+  };
+  return <RouterProvider navigate={navigate} useHref={withBaseUrl} children={children} />;
+}
+
+function ReactAriaRouterProviderWithDoc({ pluginId, children }: { pluginId: string; children: ReactNode }) {
+  const { saveLastPlatform } = useLastPlatformByPluginId(pluginId);
+  return <ReactAriaRouterProviderImpl saveLastPlatform={saveLastPlatform} children={children} />;
+}
+
+function ReactAriaRouterProviderWithoutDoc({ children }: { children: ReactNode }) {
+  return <ReactAriaRouterProviderImpl saveLastPlatform={undefined} children={children} />;
 }
 
 /**
@@ -27,14 +56,10 @@ declare module 'react-aria-components' {
  * @see https://react-spectrum.adobe.com/react-aria/routing.html
  */
 export default function ReactAriaRouterProvider({ children }: { children: ReactNode }) {
-  const history = useHistory();
-  const { withBaseUrl } = useBaseUrlUtils();
-  const { saveLastPlatform } = useLastPlatform();
-  const navigate = (href: string, routerOptions: ReactAriaRouterOptions | undefined) => {
-    if (routerOptions?.platform) {
-      saveLastPlatform(routerOptions.platform);
-    }
-    history.push(href);
-  };
-  return <RouterProvider navigate={navigate} useHref={withBaseUrl} children={children} />;
+  const pluginId = useActivePlugin()?.pluginId;
+  if (pluginId) {
+    return <ReactAriaRouterProviderWithDoc pluginId={pluginId} children={children} />;
+  } else {
+    return <ReactAriaRouterProviderWithoutDoc children={children} />;
+  }
 }
