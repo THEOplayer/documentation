@@ -5,7 +5,6 @@ import type { WrapperProps } from '@docusaurus/types';
 import { useActivePluginAndVersion } from '@docusaurus/plugin-content-docs/client';
 import PlatformSelect from '@site/src/components/PlatformSelect';
 import DocSidebarItem from '@theme/DocSidebarItem';
-import styles from './styles.module.css';
 
 type Props = WrapperProps<typeof DocSidebarItemsType>;
 
@@ -13,7 +12,7 @@ function DocSidebarPlatformSelect() {
   const {
     activePlugin: { pluginId },
   } = useActivePluginAndVersion({ failfast: true });
-  return <PlatformSelect docsPluginId={pluginId} className={styles.docSidebarPlatformSelect} />;
+  return <PlatformSelect docsPluginId={pluginId} />;
 }
 
 function DocSidebarItemSeparator() {
