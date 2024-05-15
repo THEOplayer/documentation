@@ -1,21 +1,19 @@
 .platformItem {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: stretch;
-  gap: 0.25em;
+  gap: 0.5em;
 }
 
 .platformIcon {
   flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
-  margin: 0.125em;
 }
 
 .platformLabel {
   flex-grow: 1;
-  margin: 0.125em;
 }
 
 .platformItem,
