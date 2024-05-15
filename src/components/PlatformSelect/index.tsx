@@ -30,11 +30,11 @@ export default function PlatformSelect({ docsPluginId, className, ...props }: Pl
       selectedKey={lastPlatformName}
       className={clsx(styles.platformSelect, className)}
       valueChildren={({ selectedItem }) => {
-        const { label, icon } = selectedItem ?? platforms[0];
+        const { label, shortLabel, icon } = selectedItem ?? platforms[0];
         return (
           <div className={clsx(styles.platformValue)}>
             <Icon className={styles.platformIcon} icon={icon} defaultIcon="" />
-            <span className={styles.platformLabel}>{label}</span>
+            <span className={styles.platformLabel}>{shortLabel ?? label}</span>
           </div>
         );
       }}

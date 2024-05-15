@@ -15,6 +15,7 @@ export function isPlatformName(name: string): name is PlatformName {
 interface PlatformDescription {
   platform: PlatformName;
   label: string;
+  shortLabel?: string;
   icon: string;
 }
 
@@ -22,31 +23,37 @@ const theoplayerPlatforms: PlatformDescription[] = [
   {
     platform: 'web',
     label: 'THEOplayer Web SDK',
+    shortLabel: 'Web SDK',
     icon: 'web',
   },
   {
     platform: 'android',
     label: 'THEOplayer Android SDK',
+    shortLabel: 'Android SDK',
     icon: 'android',
   },
   {
     platform: 'ios',
     label: 'THEOplayer iOS & tvOS SDK',
+    shortLabel: 'iOS & tvOS SDK',
     icon: 'apple',
   },
   {
     platform: 'react-native',
-    label: 'React Native THEOplayer',
+    label: 'React Native THEOplayer SDK',
+    shortLabel: 'React Native SDK',
     icon: 'react',
   },
   {
     platform: 'chromecast',
     label: 'THEOplayer Chromecast SDK',
+    shortLabel: 'Chromecast SDK',
     icon: 'chromecast',
   },
   {
     platform: 'roku',
     label: 'THEOplayer Roku SDK',
+    shortLabel: 'Roku SDK',
     icon: 'roku',
   },
 ];
