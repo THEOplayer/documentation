@@ -81,6 +81,8 @@ export default function DocCard({ item }: Props) {
       return <CardLink item={item} />;
     case 'category':
       return <CardCategory item={item} />;
+    case 'html':
+      return null;
     default:
       throw new Error(`unknown item type ${JSON.stringify(item)}`);
   }

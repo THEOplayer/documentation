@@ -19,14 +19,20 @@ function isIndexLink(item: PropSidebarItem): boolean {
   return item.type === 'link' && item.docId && item.docId.endsWith('/index');
 }
 
+function isValidItem(item: PropSidebarItem): boolean {
+  return (
+    (item.type === 'link' || item.type === 'category') &&
+    // Remove link to index page
+    !isIndexLink(item)
+  );
+}
+
 export default function DocCardList(props: Props) {
   const { items, className } = props;
   if (!items) {
     return <DocCardListForCurrentSidebarCategory {...props} />;
   }
-  const filteredItems = filterDocCardListItems(items)
-    // Remove link to index page
-    .filter((item) => !isIndexLink(item));
+  const filteredItems = filterDocCardListItems(items).filter(isValidItem);
   return (
     <section className={clsx('row', className)}>
       {filteredItems.map((item, index) => (
