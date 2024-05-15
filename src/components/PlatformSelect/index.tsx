@@ -35,10 +35,10 @@ export default function PlatformSelect({ docsPluginId, className, ...props }: Pl
           // selectedItem is always null during SSR, so look up the initial platform manually
           platforms.find((desc) => desc.platform === lastPlatformName);
         return (
-          <div className={clsx(styles.platformValue)}>
+          <span className={clsx(styles.platformValue)}>
             <Icon className={styles.platformIcon} icon={icon} defaultIcon="" />
             <span className={styles.platformLabel}>{shortLabel ?? label}</span>
-          </div>
+          </span>
         );
       }}
       // dependencies for the children callback
@@ -60,10 +60,10 @@ export default function PlatformSelect({ docsPluginId, className, ...props }: Pl
             // update current platform when navigating
             routerOptions={{ platform: platform }}
           >
-            <div className={styles.platformItem}>
+            <span className={styles.platformItem}>
               <Icon className={styles.platformIcon} icon={icon} defaultIcon="" />
               <span className={styles.platformLabel}>{label}</span>
-            </div>
+            </span>
           </Item>
         );
       }}
