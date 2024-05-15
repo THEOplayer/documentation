@@ -30,7 +30,10 @@ export default function PlatformSelect({ docsPluginId, className, ...props }: Pl
       selectedKey={lastPlatformName}
       className={clsx(styles.platformSelect, className)}
       valueChildren={({ selectedItem }) => {
-        const { label, shortLabel, icon } = selectedItem ?? platforms[0];
+        const { label, shortLabel, icon } =
+          selectedItem ??
+          // selectedItem is always null during SSR, so look up the initial platform manually
+          platforms.find((desc) => desc.platform === lastPlatformName);
         return (
           <div className={clsx(styles.platformValue)}>
             <Icon className={styles.platformIcon} icon={icon} defaultIcon="" />
