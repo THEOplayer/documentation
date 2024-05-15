@@ -16,6 +16,8 @@ import VuejsIcon from '@site/static/img/vuejs.svg';
 import WebIcon from '@site/static/img/web.svg';
 import WordPressIcon from '@site/static/img/wordpress.svg';
 import YospaceIconUrl from '@site/static/img/yospace.png';
+import clsx from 'clsx';
+import styles from './styles.module.css';
 
 interface IconProps {
   className?: string;
@@ -40,23 +42,23 @@ function ThemedImageWithBaseUrl({ sources, ...props }: ThemedImageProps): JSX.El
   );
 }
 
-export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.Element | string | null {
+export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.Element | string | null {
   if (!icon) {
-    return <TextIcon icon={defaultIcon} {...props} />;
+    return <TextIcon icon={defaultIcon} className={clsx(styles.icon, className)} />;
   }
   switch (icon) {
     case 'amp':
-      return <AmpIcon {...props} />;
+      return <AmpIcon className={clsx(styles.icon, className)} />;
     case 'android':
-      return <AndroidIcon {...props} />;
+      return <AndroidIcon className={clsx(styles.icon, className)} />;
     case 'angular':
-      return <AngularIcon {...props} />;
+      return <AngularIcon className={clsx(styles.icon, className)} />;
     case 'apple':
-      return <AppleIcon {...props} />;
+      return <AppleIcon className={clsx(styles.icon, className)} />;
     case 'chromecast':
-      return <ChromecastIcon {...props} />;
+      return <ChromecastIcon className={clsx(styles.icon, className)} />;
     case 'comscore':
-      return <ComscoreIcon {...props} />;
+      return <ComscoreIcon className={clsx(styles.icon, className)} />;
     case 'conviva':
       return (
         <ThemedImageWithBaseUrl
@@ -64,11 +66,11 @@ export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.El
             light: '/img/conviva.svg',
             dark: '/img/conviva_dark.svg',
           }}
-          {...props}
+          className={clsx(styles.icon, className)}
         />
       );
     case 'flutter':
-      return <FlutterIcon {...props} />;
+      return <FlutterIcon className={clsx(styles.icon, className)} />;
     case 'github':
       return (
         <ThemedImageWithBaseUrl
@@ -76,26 +78,26 @@ export default function Icon({ icon, defaultIcon, ...props }: IconProps): JSX.El
             light: '/img/github.svg',
             dark: '/img/github_dark.svg',
           }}
-          {...props}
+          className={clsx(styles.icon, className)}
         />
       );
     case 'nielsen':
-      return <NielsenIcon {...props} />;
+      return <NielsenIcon className={clsx(styles.icon, className)} />;
     case 'nuxtjs':
-      return <NuxtjsIcon {...props} />;
+      return <NuxtjsIcon className={clsx(styles.icon, className)} />;
     case 'react':
-      return <ReactIcon {...props} />;
+      return <ReactIcon className={clsx(styles.icon, className)} />;
     case 'roku':
-      return <RokuIcon {...props} />;
+      return <RokuIcon className={clsx(styles.icon, className)} />;
     case 'vuejs':
-      return <VuejsIcon {...props} />;
+      return <VuejsIcon className={clsx(styles.icon, className)} />;
     case 'web':
-      return <WebIcon {...props} />;
+      return <WebIcon className={clsx(styles.icon, className)} />;
     case 'wordpress':
-      return <WordPressIcon {...props} />;
+      return <WordPressIcon className={clsx(styles.icon, className)} />;
     case 'yospace':
-      return <img src={YospaceIconUrl} {...props} />;
+      return <img src={YospaceIconUrl} className={clsx(styles.icon, className)} />;
     default:
-      return <TextIcon icon={icon} {...props} />;
+      return <TextIcon icon={icon} className={clsx(styles.icon, className)} />;
   }
 }
