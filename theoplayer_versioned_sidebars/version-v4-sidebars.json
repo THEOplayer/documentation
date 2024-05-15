@@ -104,6 +104,10 @@
       "href": "pathname:///theoplayer/v4/api-reference/web/"
     },
     {
+      "type": "html",
+      "value": "<hr>"
+    },
+    {
       "type": "category",
       "label": "Knowledge base",
       "description": "Learn about topics in the video industry from our experts.",
@@ -212,6 +216,10 @@
       "href": "pathname:///theoplayer/v4/api-reference/android/"
     },
     {
+      "type": "html",
+      "value": "<hr>"
+    },
+    {
       "type": "category",
       "label": "Knowledge base",
       "description": "Learn about topics in the video industry from our experts.",
@@ -307,6 +315,10 @@
       "href": "pathname:///theoplayer/v4/api-reference/ios/"
     },
     {
+      "type": "html",
+      "value": "<hr>"
+    },
+    {
       "type": "category",
       "label": "Knowledge base",
       "description": "Learn about topics in the video industry from our experts.",
@@ -383,6 +395,10 @@
       "href": "https://theoplayer.github.io/react-native-theoplayer/api/"
     },
     {
+      "type": "html",
+      "value": "<hr>"
+    },
+    {
       "type": "category",
       "label": "Knowledge base",
       "description": "Learn about topics in the video industry from our experts.",
@@ -451,6 +467,10 @@
     },
     "changelog",
     {
+      "type": "html",
+      "value": "<hr>"
+    },
+    {
       "type": "category",
       "label": "Knowledge base",
       "description": "Learn about topics in the video industry from our experts.",
@@ -518,6 +538,10 @@
       ]
     },
     "api-reference/roku",
+    {
+      "type": "html",
+      "value": "<hr>"
+    },
     {
       "type": "category",
       "label": "Knowledge base",
