@@ -79,6 +79,8 @@ export function getPlatforms(docsPluginId: string): readonly PlatformDescription
     return theoplayerPlatforms;
   } else if (docsPluginId === 'open-video-ui') {
     return openVideoUiPlatforms;
+  } else {
+    return [];
   }
 }
 
