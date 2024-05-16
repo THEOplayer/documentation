@@ -16,6 +16,7 @@ interface PlatformDescription {
   platform: PlatformName;
   label: string;
   shortLabel?: string;
+  description: string;
   icon: string;
 }
 
@@ -24,36 +25,42 @@ const theoplayerPlatforms: PlatformDescription[] = [
     platform: 'web',
     label: 'THEOplayer Web SDK',
     shortLabel: 'Web SDK',
+    description: 'For desktop and mobile web browsers, and smart TVs like Tizen and WebOS',
     icon: 'web',
   },
   {
     platform: 'android',
     label: 'THEOplayer Android SDK',
     shortLabel: 'Android SDK',
+    description: 'For smartphones, tablets and Android TVs',
     icon: 'android',
   },
   {
     platform: 'ios',
     label: 'THEOplayer iOS & tvOS SDK',
     shortLabel: 'iOS & tvOS SDK',
+    description: 'For iPhone, iPad and Apple TV',
     icon: 'apple',
   },
   {
     platform: 'react-native',
     label: 'React Native THEOplayer SDK',
     shortLabel: 'React Native SDK',
+    description: 'For cross-platform apps targeting web, Android and iOS',
     icon: 'react',
   },
   {
     platform: 'chromecast',
     label: 'THEOplayer Chromecast SDK',
     shortLabel: 'Chromecast SDK',
+    description: 'For custom Chromecast receiver apps',
     icon: 'chromecast',
   },
   {
     platform: 'roku',
     label: 'THEOplayer Roku SDK',
     shortLabel: 'Roku SDK',
+    description: 'For Roku smart TVs',
     icon: 'roku',
   },
 ];
@@ -62,22 +69,26 @@ const openVideoUiPlatforms: PlatformDescription[] = [
   {
     platform: 'web',
     label: 'Open Video UI for Web',
+    description: 'For desktop and mobile web browsers using Web Components',
     icon: 'web',
   },
   {
     platform: 'android',
     label: 'Open Video UI for Android',
+    description: 'For Android smartphones and tablets using Jetpack Compose',
     icon: 'android',
   },
   {
     platform: 'react',
     label: 'Open Video UI for React',
+    description: 'For web apps using React components',
     icon: 'react',
   },
   {
     platform: 'react-native',
     label: 'React Native THEOplayer UI',
     shortLabel: 'React Native UI',
+    description: 'For cross-platform apps using React Native components',
     icon: 'react',
   },
 ];

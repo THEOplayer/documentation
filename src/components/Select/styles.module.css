@@ -50,6 +50,7 @@
   list-style: none;
   max-height: 80vh;
   min-width: 10rem;
+  max-width: min(25rem, 90vw);
   overflow-y: auto;
   padding: 0.5rem;
 }

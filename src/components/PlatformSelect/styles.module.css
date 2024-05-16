@@ -28,14 +28,21 @@
   height: 1.5em;
 }
 
-.platformLabel {
-  flex-grow: 1;
-}
-
-.platformItem,
 .platformValue,
 .platformLabel {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.platformText {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  white-space: wrap;
+  text-wrap: pretty;
+}
+
+.platformDescription {
+  font-size: 0.7rem;
 }

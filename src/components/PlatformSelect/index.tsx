@@ -45,7 +45,7 @@ export default function PlatformSelect({ docsPluginId, className, ...props }: Pl
       dependencies={[docsPluginId, activeDoc, versionCandidates, search, hash]}
     >
       {(desc) => {
-        const { platform, label, icon } = desc;
+        const { platform, label, description, icon } = desc;
         const sidebar = findSidebarInVersions(platform, versionCandidates);
         const isDocInSidebar = activeDoc ? isDocSharedWithPlatform(docsPluginId, activeDoc.id, platform) : false;
         const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
@@ -62,7 +62,10 @@ export default function PlatformSelect({ docsPluginId, className, ...props }: Pl
           >
             <span className={styles.platformItem}>
               <Icon className={styles.platformIcon} icon={icon} defaultIcon="" />
-              <span className={styles.platformLabel}>{label}</span>
+              <span className={styles.platformText}>
+                <span className={styles.platformLabel}>{label}</span>
+                <span className={styles.platformDescription}>{description}</span>
+              </span>
             </span>
           </Item>
         );
