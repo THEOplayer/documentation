@@ -13,11 +13,13 @@ import { theoplayerPlatforms } from '@site/src/util/platform';
 
 <Intro />
 <DocCardList
-  items={theoplayerPlatforms.map((desc) => ({
-    type: 'link',
-    label: desc.label,
-    description: desc.description,
-    customProps: { icon: desc.icon },
-    href: useBaseUrl(`theoplayer/v6/${desc}`),
-  }))}
+  items={theoplayerPlatforms
+    .filter((desc) => desc.minVersion <= 6)
+    .map((desc) => ({
+      type: 'link',
+      label: desc.label,
+      description: desc.description,
+      customProps: { icon: desc.icon },
+      href: useBaseUrl(`theoplayer/v6/${desc}`),
+    }))}
 />

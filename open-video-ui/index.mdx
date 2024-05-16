@@ -12,11 +12,13 @@ import { openVideoUiPlatforms } from '@site/src/util/platform';
 
 <Intro />
 <DocCardList
-  items={openVideoUiPlatforms.map((desc) => ({
-    type: 'link',
-    label: desc.label,
-    description: desc.description,
-    customProps: { icon: desc.icon },
-    href: useBaseUrl(`open-video-ui/${desc}`),
-  }))}
+  items={openVideoUiPlatforms
+    .filter((desc) => desc.minVersion <= 1)
+    .map((desc) => ({
+      type: 'link',
+      label: desc.label,
+      description: desc.description,
+      customProps: { icon: desc.icon },
+      href: useBaseUrl(`open-video-ui/${desc}`),
+    }))}
 />

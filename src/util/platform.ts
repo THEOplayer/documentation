@@ -18,6 +18,7 @@ interface PlatformDescription {
   shortLabel?: string;
   description: string;
   icon: string;
+  minVersion: number;
 }
 
 export const theoplayerPlatforms: readonly PlatformDescription[] = [
@@ -27,6 +28,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'Web SDK',
     description: 'For desktop and mobile web browsers, and smart TVs like Tizen and WebOS',
     icon: 'web',
+    minVersion: 1,
   },
   {
     platform: 'android',
@@ -34,6 +36,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'Android SDK',
     description: 'For smartphones, tablets and Android TVs',
     icon: 'android',
+    minVersion: 1,
   },
   {
     platform: 'ios',
@@ -41,6 +44,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'iOS & tvOS SDK',
     description: 'For iPhone, iPad and Apple TV',
     icon: 'apple',
+    minVersion: 1,
   },
   {
     platform: 'react-native',
@@ -48,6 +52,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'React Native SDK',
     description: 'For cross-platform apps targeting web, Android and iOS',
     icon: 'react',
+    minVersion: 1,
   },
   {
     platform: 'flutter',
@@ -55,6 +60,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'Flutter SDK',
     description: 'For cross-platform apps targeting web, Android and iOS',
     icon: 'flutter',
+    minVersion: 7,
   },
   {
     platform: 'chromecast',
@@ -62,6 +68,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'Chromecast SDK',
     description: 'For custom Chromecast receiver apps',
     icon: 'chromecast',
+    minVersion: 1,
   },
   {
     platform: 'roku',
@@ -69,6 +76,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'Roku SDK',
     description: 'For Roku smart TVs',
     icon: 'roku',
+    minVersion: 1,
   },
 ];
 
@@ -78,18 +86,21 @@ export const openVideoUiPlatforms: readonly PlatformDescription[] = [
     label: 'Open Video UI for Web',
     description: 'For desktop and mobile web browsers using Web Components',
     icon: 'web',
+    minVersion: 1,
   },
   {
     platform: 'android',
     label: 'Open Video UI for Android',
     description: 'For Android smartphones and tablets using Jetpack Compose',
     icon: 'android',
+    minVersion: 1,
   },
   {
     platform: 'react',
     label: 'Open Video UI for React',
     description: 'For web apps using React components',
     icon: 'react',
+    minVersion: 1,
   },
   {
     platform: 'react-native',
@@ -97,6 +108,7 @@ export const openVideoUiPlatforms: readonly PlatformDescription[] = [
     shortLabel: 'React Native UI',
     description: 'For cross-platform apps using React Native components',
     icon: 'react',
+    minVersion: 1,
   },
 ];
 
