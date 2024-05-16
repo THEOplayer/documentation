@@ -44,7 +44,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'react-native',
-    label: 'React Native THEOplayer SDK',
+    label: 'THEOplayer React Native SDK',
     shortLabel: 'React Native SDK',
     description: 'For cross-platform apps targeting web, Android and iOS',
     icon: 'react',
