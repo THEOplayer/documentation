@@ -50,6 +50,13 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
     icon: 'react',
   },
   {
+    platform: 'flutter',
+    label: 'THEOplayer Flutter SDK',
+    shortLabel: 'Flutter SDK',
+    description: 'For cross-platform apps targeting web, Android and iOS',
+    icon: 'flutter',
+  },
+  {
     platform: 'chromecast',
     label: 'THEOplayer Chromecast SDK',
     shortLabel: 'Chromecast SDK',
