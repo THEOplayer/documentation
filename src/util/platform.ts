@@ -20,7 +20,7 @@ interface PlatformDescription {
   icon: string;
 }
 
-const theoplayerPlatforms: PlatformDescription[] = [
+export const theoplayerPlatforms: readonly PlatformDescription[] = [
   {
     platform: 'web',
     label: 'THEOplayer Web SDK',
@@ -65,7 +65,7 @@ const theoplayerPlatforms: PlatformDescription[] = [
   },
 ];
 
-const openVideoUiPlatforms: PlatformDescription[] = [
+export const openVideoUiPlatforms: readonly PlatformDescription[] = [
   {
     platform: 'web',
     label: 'Open Video UI for Web',

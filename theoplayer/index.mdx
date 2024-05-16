@@ -9,45 +9,15 @@ sidebar_position: 1
 import Intro from './shared/_intro.mdx';
 import DocCardList from '@theme/DocCardList';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { theoplayerPlatforms } from '@site/src/util/platform';
 
 <Intro />
 <DocCardList
-  items={[
-    {
-      type: 'link',
-      label: 'THEOplayer Web SDK',
-      customProps: { icon: 'web' },
-      href: useBaseUrl('theoplayer/web'),
-    },
-    {
-      type: 'link',
-      label: 'THEOplayer Android SDK',
-      customProps: { icon: 'android' },
-      href: useBaseUrl('theoplayer/android'),
-    },
-    {
-      type: 'link',
-      label: 'THEOplayer iOS & tvOS SDK',
-      customProps: { icon: 'apple' },
-      href: useBaseUrl('theoplayer/ios'),
-    },
-    {
-      type: 'link',
-      label: 'React Native THEOplayer',
-      customProps: { icon: 'react' },
-      href: useBaseUrl('theoplayer/react-native'),
-    },
-    {
-      type: 'link',
-      label: 'THEOplayer Chromecast SDK',
-      customProps: { icon: 'chromecast' },
-      href: useBaseUrl('theoplayer/chromecast'),
-    },
-    {
-      type: 'link',
-      label: 'THEOplayer Roku SDK',
-      customProps: { icon: 'roku' },
-      href: useBaseUrl('theoplayer/roku'),
-    },
-  ]}
+  items={theoplayerPlatforms.map((desc) => ({
+    type: 'link',
+    label: desc.label,
+    description: desc.description,
+    customProps: { icon: desc.icon },
+    href: useBaseUrl(`theoplayer/${desc}`),
+  }))}
 />
