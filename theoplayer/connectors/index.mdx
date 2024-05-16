@@ -1,12 +1,31 @@
 ---
-sidebar_position: 0
-sidebar_label: Overview
-pagination_label: Connectors
-pagination_next: connectors/web/index
+displayed_sidebar: web
 ---
 
 # Connectors for THEOplayer
 
-import SubcategoryDocCardList from '@site/src/components/SubcategoryDocCardList';
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<SubcategoryDocCardList />
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      label: 'Connectors for Web SDK',
+      customProps: { icon: 'web' },
+      href: useBaseUrl(`theoplayer/connectors/web`),
+    },
+    {
+      type: 'link',
+      label: 'Connectors for Android SDK',
+      customProps: { icon: 'android' },
+      href: useBaseUrl(`theoplayer/connectors/android`),
+    },
+    {
+      type: 'link',
+      label: 'Connectors for iOS & tvOS SDK',
+      customProps: { icon: 'apple' },
+      href: useBaseUrl(`theoplayer/connectors/ios`),
+    },
+  ]}
+/>
