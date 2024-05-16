@@ -1,8 +1,5 @@
 ---
-sidebar_position: 0
-sidebar_label: Overview
-pagination_label: Getting started
-pagination_next: getting-started/sdks/introduction
+displayed_sidebar: web
 ---
 
 # Getting started
@@ -11,6 +8,23 @@ THEOplayer offers a rich portfolio of video SDKs for many platforms and framewor
 
 Our dedicated guides help you get started right away.
 
-import SubcategoryDocCardList from '@site/src/components/SubcategoryDocCardList';
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { theoplayerPlatforms } from '@site/src/util/platform';
 
-<SubcategoryDocCardList />
+<DocCardList
+  items={theoplayerPlatforms
+    .filter((desc) => desc.minVersion <= 4)
+    .map((desc) => {
+      const href =
+        desc.platform === 'react-native' || desc.platform === 'flutter'
+          ? `theoplayer/v4/getting-started/frameworks/${desc.platform}/getting-started`
+          : `theoplayer/v4/getting-started/sdks/${desc.platform}/getting-started`;
+      return {
+        type: 'link',
+        label: desc.label,
+        customProps: { icon: desc.icon },
+        href: useBaseUrl(href),
+      };
+    })}
+/>
