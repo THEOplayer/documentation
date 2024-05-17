@@ -1,15 +1,25 @@
 ---
-displayed_sidebar: theoplayer
+displayed_sidebar: web
 sidebar_label: Introduction
 sidebar_position: 1
 ---
 
 # THEOplayer
 
-THEOplayer is the universal video player solution created by THEO Technologies. It offers support for HLS, MPEG-DASH, advertisements, DRM and much more.
+import Intro from './shared/_intro.mdx';
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { theoplayerPlatforms } from '@site/src/util/platform';
 
-On these pages, you'll learn how to get started with THEOplayer, how to use the various features, and explore the many examples.
-
-import SidebarDocCardList from '@site/src/components/SidebarDocCardList';
-
-<SidebarDocCardList />
+<Intro />
+<DocCardList
+  items={theoplayerPlatforms
+    .filter((desc) => desc.minVersion <= 6)
+    .map((desc) => ({
+      type: 'link',
+      label: desc.label,
+      description: desc.description,
+      customProps: { icon: desc.icon },
+      href: useBaseUrl(`theoplayer/v6/${desc.platform}`),
+    }))}
+/>

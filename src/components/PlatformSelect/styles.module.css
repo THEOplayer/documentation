@@ -1,0 +1,48 @@
+.platformItem,
+.platformValue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+}
+
+.platformIcon {
+  flex-shrink: 0;
+}
+
+.platformItem {
+  gap: 0.75em;
+}
+
+.platformItem .platformIcon {
+  width: 2em;
+  height: 2em;
+}
+
+.platformValue {
+  gap: 0.5em;
+}
+
+.platformValue .platformIcon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.platformValue,
+.platformLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.platformText {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  white-space: wrap;
+  text-wrap: pretty;
+}
+
+.platformDescription {
+  font-size: 0.7rem;
+}

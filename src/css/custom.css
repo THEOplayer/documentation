@@ -56,3 +56,7 @@ code[class*='language-'],
 pre[class*='language-'] {
   text-shadow: none !important;
 }
+
+.theme-doc-sidebar-menu hr {
+  --ifm-hr-margin-vertical: 0.5rem;
+}

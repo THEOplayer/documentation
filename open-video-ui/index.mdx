@@ -1,16 +1,24 @@
 ---
+displayed_sidebar: web
 sidebar_label: Introduction
 ---
 
 # Open Video UI
 
-The Open Video UI provides component libraries for building a world-class video player experience powered by the THEOplayer SDK.
+import Intro from './shared/_intro.mdx';
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { openVideoUiPlatforms } from '@site/src/util/platform';
 
-- Use the default UI for a great out-of-the-box experience, or use the individual components to build your own custom UI.
-- Dedicated libraries for each platform, so your UI always feels native in your app.
-
-On these pages, you'll learn how to get started with the Open Video UI and make your very own UI.
-
-import SidebarDocCardList from '@site/src/components/SidebarDocCardList';
-
-<SidebarDocCardList />
+<Intro />
+<DocCardList
+  items={openVideoUiPlatforms
+    .filter((desc) => desc.minVersion <= 1)
+    .map((desc) => ({
+      type: 'link',
+      label: desc.label,
+      description: desc.description,
+      customProps: { icon: desc.icon },
+      href: useBaseUrl(`open-video-ui/${desc.platform}`),
+    }))}
+/>

@@ -1,6 +1,7 @@
 ---
 title: Changelog
-sidebar_label: Web, Android & iOS
+description: Find out what's new in THEOplayer.
+sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 

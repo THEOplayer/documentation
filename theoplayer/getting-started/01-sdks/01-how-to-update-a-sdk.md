@@ -1,4 +1,5 @@
 ---
+displayed_sidebar: web
 sidebar_position: 101
 ---
 

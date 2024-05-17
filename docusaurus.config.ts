@@ -4,9 +4,9 @@ import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
+import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
-import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import path from 'path';
 import fs from 'fs';
@@ -130,7 +130,6 @@ const config: Config = {
             noIndex: true,
           },
         },
-        sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
     [
@@ -147,7 +146,6 @@ const config: Config = {
             label: webUiVersion,
           },
         },
-        sidebarItemsGenerator,
       } satisfies DocsPlugin.Options,
     ],
     [
@@ -226,7 +224,7 @@ const config: Config = {
           .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/CHANGELOG/, '/connectors/android/$1/changelog')
           .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/README/, '/connectors/android/$1/getting-started')
           .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/doc\//, '/connectors/android/$1/')
-          .replace(/iOS-Connector\/Code\/([^/]+)\/CHANGELOG/, '/connectors/ios/$1/changelog')
+          .replace(/iOS-Connector\/CHANGELOG/, '/connectors/ios/changelog')
           .replace(/iOS-Connector\/Code\/([^/]+)-Examples\/README/, '/connectors/ios/$1/examples')
           .replace(/iOS-Connector\/Code\/([^/]+)\/README/, '/connectors/ios/$1/getting-started')
           .replace(/iOS-Connector\/Code\/([^/]+)\/doc\//, '/connectors/ios/$1/')
@@ -235,12 +233,7 @@ const config: Config = {
       const filePath = params.filePath.toLowerCase().replaceAll(path.sep, '/');
       if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
         // Fix changelog titles
-        if (externalDocPath && externalDocPath.startsWith('react-native-theoplayer/')) {
-          frontMatter.title ??= 'React Native Changelog';
-          frontMatter.sidebar_label ??= 'React Native';
-        } else {
-          frontMatter.title ??= 'Changelog';
-        }
+        frontMatter.title ??= 'Changelog';
         frontMatter.sidebar_custom_props ??= { icon: '📰' };
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
@@ -302,19 +295,19 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'theoplayer',
+          type: 'custom-platformSidebar',
           docsPluginId: 'theoplayer',
           label: 'THEOplayer',
+          href: '/theoplayer',
           position: 'left',
-        },
+        } satisfies PlatformSidebarNavbarItemProps,
         {
-          type: 'docSidebar',
-          sidebarId: 'openVideoUi',
+          type: 'custom-platformSidebar',
           docsPluginId: 'open-video-ui',
           label: 'Open Video UI',
+          href: '/open-video-ui',
           position: 'left',
-        },
+        } satisfies PlatformSidebarNavbarItemProps,
         {
           label: 'THEOlive',
           href: 'https://developers.theo.live/',
