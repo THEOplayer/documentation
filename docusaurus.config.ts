@@ -25,6 +25,7 @@ const docsConfigBase = {
     'external/web-connectors/*/README.md',
     'external/android-connector/connectors/**/README.md',
     'external/iOS-Connector/Code/**/README.md',
+    'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
@@ -216,6 +217,9 @@ const config: Config = {
           .replace('android-ui/CHANGELOG', '/android/changelog')
           .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
+          .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/CHANGELOG', '/flutter/changelog')
+          .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/README', '/getting-started/frameworks/flutter/getting-started')
+          .replace('flutter-theoplayer-sdk/doc/', '/flutter/guides/')
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
           .replace('react-native-theoplayer-ui/doc/', '/react-native/')
           .replace(/web-connectors\/([^/]+)\/CHANGELOG/, '/connectors/web/$1/changelog')
@@ -243,6 +247,9 @@ const config: Config = {
         frontMatter.sidebar_custom_props ??= { icon: '🛝' };
       } else if (filePath.endsWith('readme.md')) {
         frontMatter.title ??= 'Getting started';
+        frontMatter.description ??= filePath.includes('/open-video-ui/')
+          ? 'Start building your UI in just a few minutes!'
+          : 'Set up your first THEOplayer in just a few minutes!';
         frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
       }
       return result;
