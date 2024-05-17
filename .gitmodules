@@ -35,3 +35,7 @@
 	path = theoplayer/external/iOS-Connector
 	url = https://github.com/THEOplayer/iOS-Connector.git
 	branch = main
+[submodule "flutter"]
+	path = theoplayer/external/flutter-theoplayer-sdk
+	url = https://github.com/THEOplayer/flutter-theoplayer-sdk.git
+	branch = main
