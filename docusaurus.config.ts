@@ -375,7 +375,7 @@ function isRelativeUrl(href: string): boolean {
 }
 
 function isMarkdownUrl(href: string): boolean {
-  return /\.mdx?$/.test(href);
+  return /\.mdx?(?:#|$)/.test(href);
 }
 
 function hasProtocol(url: string): boolean {
