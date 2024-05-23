@@ -21,7 +21,7 @@ interface PlatformDescription {
   minVersion: number;
 }
 
-export const theoplayerPlatforms: readonly PlatformDescription[] = [
+const theoplayerPlatforms: readonly PlatformDescription[] = [
   {
     platform: 'web',
     label: 'THEOplayer Web SDK',
@@ -80,7 +80,7 @@ export const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
 ];
 
-export const openVideoUiPlatforms: readonly PlatformDescription[] = [
+const openVideoUiPlatforms: readonly PlatformDescription[] = [
   {
     platform: 'web',
     label: 'Open Video UI for Web',
@@ -120,6 +120,15 @@ export function getPlatforms(docsPluginId: string): readonly PlatformDescription
   } else {
     return [];
   }
+}
+
+export function getPlatformsByVersion(docsPluginId: string, version?: string): readonly PlatformDescription[] {
+  let platforms = getPlatforms(docsPluginId);
+  if (version && version !== 'current') {
+    const versionNumber = Number(version.slice(1)); // e.g. "v4" -> 4
+    platforms = platforms.filter((desc) => desc.minVersion <= versionNumber);
+  }
+  return platforms;
 }
 
 type PlatformDescriptionsByName = Record<PlatformName, PlatformDescription>;

@@ -3,7 +3,7 @@ import DocSidebarItems from '@theme-original/DocSidebarItems';
 import type DocSidebarItemsType from '@theme/DocSidebarItems';
 import type { WrapperProps } from '@docusaurus/types';
 import { useActivePluginAndVersion } from '@docusaurus/plugin-content-docs/client';
-import { getPlatforms } from '@site/src/util/platform';
+import { getPlatformsByVersion } from '@site/src/util/platform';
 import PlatformSelect from '@site/src/components/PlatformSelect';
 import DocSidebarItem from '@theme/DocSidebarItem';
 
@@ -12,14 +12,15 @@ type Props = WrapperProps<typeof DocSidebarItemsType>;
 function DocSidebarHeader(): JSX.Element | null {
   const {
     activePlugin: { pluginId },
+    activeVersion: { name: versionName },
   } = useActivePluginAndVersion({ failfast: true });
-  const platforms = getPlatforms(pluginId);
+  const platforms = getPlatformsByVersion(pluginId, versionName);
   if (!platforms.length) {
     return null;
   }
   return (
     <>
-      <PlatformSelect docsPluginId={pluginId} />
+      <PlatformSelect docsPluginId={pluginId} version={versionName} />
       <DocSidebarItemSeparator />
     </>
   );
