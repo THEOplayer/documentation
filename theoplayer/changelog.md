@@ -5,6 +5,46 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.4.0 (2024/05/21)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue with the ABR algorithm for HLS on devices that do not report the total segment byte size during the download.
+
+### Web
+
+#### ✨ Features
+
+- Added support for managing low-latency live playback for HLS and DASH streams via `player.latency`.
+- Added support for LL-DASH `ServiceDescription` elements, used as the default `player.latency` configuration for LL-DASH live playback. 
+- Added [`player.ads.registerServerSideIntegration()`](https://www.theoplayer.com/docs/theoplayer/v7/api-reference/web/interfaces/Ads.html#registerServerSideIntegration.registerServerSideIntegration-1)  API for registering custom server-side advertisement integrations. This API is currently experimental.
+
+#### 🐛 Issues
+
+- Fixed an issue where IMA post-roll ads would be preloaded too early. The post-rolls for VMAPs can now only be preloaded if `player.preload` is set to at least `"metadata"`.
+
+### Android
+
+#### ✨ Features
+
+- Exposed the [focus()](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/api/reference/com/google/ads/interactivemedia/v3/api/BaseManager.html#focus()) method on GoogleImaIntegration and GoogleDaiIntegration to allow moving the focus on interactive elements.
+
+### iOS
+
+#### ✨ Features
+
+- Added `resizeTransitionEnabled` API on THEOplayer to control whether to enable or disable the transition animation when resizing the player.
+- Introduced `activeQualityBandwidth` property for `MediaTrack`. This API can be used to get the current video track quality's bandwidth value.
+- Introduced `TrackUpdateEvent` event alongside `TrackEventTypes`. This event can be listened to through a `MediaTrack`'s `addEventListener` method.
+
+#### 🐛 Issues
+
+- Fixed an issue where returning from picture-in-picture to the application when in the background would cause the player to pause.
+- Fixed an issue where `PLAYING` and `PAUSE` events would not fire during IMA ads when using the native picture-in-picture buttons.
+- Fixed an issue where seeking beyond the duration of an asset would not trigger an `ended` event, would keep incrementing the currentTime and block the viewer from restarting playout from scratch.
+
 ## 🚀 7.3.0 (2024/05/07)
 
 ### Web
