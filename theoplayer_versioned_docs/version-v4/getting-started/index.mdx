@@ -14,21 +14,19 @@ Our dedicated guides help you get started right away.
 
 import DocCardList from '@theme/DocCardList';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { theoplayerPlatforms } from '@site/src/util/platform';
+import { getPlatformsByVersion } from '@site/src/util/platform';
 
 <DocCardList
-  items={theoplayerPlatforms
-    .filter((desc) => desc.minVersion <= 4)
-    .map((desc) => {
-      const href =
-        desc.platform === 'react-native' || desc.platform === 'flutter'
-          ? `theoplayer/v4/getting-started/frameworks/${desc.platform}/getting-started`
-          : `theoplayer/v4/getting-started/sdks/${desc.platform}/getting-started`;
-      return {
-        type: 'link',
-        label: desc.label,
-        customProps: { icon: desc.icon },
-        href: useBaseUrl(href),
-      };
-    })}
+  items={getPlatformsByVersion('theoplayer', 'v4').map((desc) => {
+    const href =
+      desc.platform === 'react-native' || desc.platform === 'flutter'
+        ? `theoplayer/v4/getting-started/frameworks/${desc.platform}/getting-started`
+        : `theoplayer/v4/getting-started/sdks/${desc.platform}/getting-started`;
+    return {
+      type: 'link',
+      label: desc.label,
+      customProps: { icon: desc.icon },
+      href: useBaseUrl(href),
+    };
+  })}
 />

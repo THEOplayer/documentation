@@ -34,6 +34,8 @@ const docsConfigBase = {
     'external/*/{doc,docs}/**/index.{md,mdx}',
     // Ignore node_modules
     'external/**/node_modules/**/*',
+    // Ignore platform-specific docs from Flutter SDK
+    'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk_*/**/*',
   ],
   editUrl: ({ versionDocsDirPath, docPath }) => {
     if (docPath.startsWith('external')) {
@@ -351,7 +353,13 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
-function parseDocPath(filePath: string): { docPluginId: string; version: string | undefined; docPath: string } | undefined {
+function parseDocPath(filePath: string):
+  | {
+      docPluginId: string;
+      version: string | undefined;
+      docPath: string;
+    }
+  | undefined {
   const parts = path.relative(__dirname, filePath).split(path.sep);
   if (parts.length < 2) {
     return;

@@ -8,17 +8,15 @@ sidebar_label: Introduction
 import Intro from './shared/_intro.mdx';
 import DocCardList from '@theme/DocCardList';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { openVideoUiPlatforms } from '@site/src/util/platform';
+import { getPlatforms } from '@site/src/util/platform';
 
 <Intro />
 <DocCardList
-  items={openVideoUiPlatforms
-    .filter((desc) => desc.minVersion <= 1)
-    .map((desc) => ({
-      type: 'link',
-      label: desc.label,
-      description: desc.description,
-      customProps: { icon: desc.icon },
-      href: useBaseUrl(`open-video-ui/${desc.platform}`),
-    }))}
+  items={getPlatforms('open-video-ui').map((desc) => ({
+    type: 'link',
+    label: desc.label,
+    description: desc.description,
+    customProps: { icon: desc.icon },
+    href: useBaseUrl(`open-video-ui/${desc.platform}`),
+  }))}
 />

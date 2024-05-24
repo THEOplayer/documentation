@@ -18,15 +18,20 @@ export interface Props extends WrapperProps<typeof LinkType> {
   };
 }
 
-export default function LinkWrapper({ item, ...props }: Props): JSX.Element {
-  const isBackLink = item.customProps?.isBackLink;
-  if (!isBackLink) {
-    return <Link item={item} {...props} />;
-  }
+function BackLink({ item, ...props }: Props): JSX.Element {
   // Replace back link with last platform's main sidebar link (if available)
   const {
     activePlugin: { pluginId },
   } = useActivePluginAndVersion({ failfast: true });
   const href = useLastPlatformMainLink(pluginId) || item.href;
   return <Link item={{ ...item, href }} {...props} />;
+}
+
+export default function LinkWrapper({ item, ...props }: Props): JSX.Element {
+  const isBackLink = item.customProps?.isBackLink;
+  if (isBackLink) {
+    return <BackLink item={item} {...props} />;
+  } else {
+    return <Link item={item} {...props} />;
+  }
 }
