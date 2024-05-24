@@ -36,7 +36,7 @@ allprojects {
         google()
         mavenCentral()
         maven {
-            url "https://maven.theoplayer.com/releases"
+            url 'https://maven.theoplayer.com/releases'
         }
     }
 }
