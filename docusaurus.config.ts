@@ -353,7 +353,13 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
-function parseDocPath(filePath: string): { docPluginId: string; version: string | undefined; docPath: string } | undefined {
+function parseDocPath(filePath: string):
+  | {
+      docPluginId: string;
+      version: string | undefined;
+      docPath: string;
+    }
+  | undefined {
   const parts = path.relative(__dirname, filePath).split(path.sep);
   if (parts.length < 2) {
     return;
