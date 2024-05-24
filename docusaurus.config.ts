@@ -34,6 +34,8 @@ const docsConfigBase = {
     'external/*/{doc,docs}/**/index.{md,mdx}',
     // Ignore node_modules
     'external/**/node_modules/**/*',
+    // Ignore platform-specific docs from Flutter SDK
+    'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk_*/**/*',
   ],
   editUrl: ({ versionDocsDirPath, docPath }) => {
     if (docPath.startsWith('external')) {
