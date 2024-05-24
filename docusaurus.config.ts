@@ -25,6 +25,7 @@ const docsConfigBase = {
     'external/web-connectors/*/README.md',
     'external/android-connector/connectors/**/README.md',
     'external/iOS-Connector/Code/**/README.md',
+    'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
@@ -202,11 +203,12 @@ const config: Config = {
     parseFrontMatter: async (params) => {
       const result = await params.defaultParseFrontMatter(params);
       const { frontMatter } = result;
-      let externalDocPath = getExternalDocPath(params.filePath);
-      if (externalDocPath) {
+      let { docPluginId, docPath } = parseDocPath(params.filePath);
+      if (docPath.startsWith('external/')) {
         // Add a slug to all external doc pages
-        frontMatter.slug ??= externalDocPath
+        frontMatter.slug ??= docPath
           // Remove extension
+          .replace('external/', '')
           .replace(/\.mdx?$/, '')
           // Map external projects to desired URLs
           .replace('web-ui/docs/', '/web/')
@@ -216,6 +218,9 @@ const config: Config = {
           .replace('android-ui/CHANGELOG', '/android/changelog')
           .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
+          .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/CHANGELOG', '/flutter/changelog')
+          .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/README', '/getting-started/frameworks/flutter/getting-started')
+          .replace('flutter-theoplayer-sdk/doc/', '/flutter/guides/')
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
           .replace('react-native-theoplayer-ui/doc/', '/react-native/')
           .replace(/web-connectors\/([^/]+)\/CHANGELOG/, '/connectors/web/$1/changelog')
@@ -230,19 +235,21 @@ const config: Config = {
           .replace(/iOS-Connector\/Code\/([^/]+)\/doc\//, '/connectors/ios/$1/')
           .toLowerCase();
       }
-      const filePath = params.filePath.toLowerCase().replaceAll(path.sep, '/');
-      if (filePath.endsWith('changelog.md') || filePath.includes('/changelog/')) {
+      docPath = docPath.toLowerCase();
+      if (docPath.endsWith('changelog.md') || docPath.includes('/changelog/')) {
         // Fix changelog titles
         frontMatter.title ??= 'Changelog';
         frontMatter.sidebar_custom_props ??= { icon: '📰' };
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
         frontMatter.toc_max_heading_level = 2;
-      } else if (filePath.endsWith('examples/readme.md')) {
+      } else if (docPath.endsWith('examples/readme.md')) {
         frontMatter.title ??= 'Examples';
         frontMatter.sidebar_custom_props ??= { icon: '🛝' };
-      } else if (filePath.endsWith('readme.md')) {
+      } else if (docPath.endsWith('readme.md')) {
         frontMatter.title ??= 'Getting started';
+        frontMatter.description ??=
+          docPluginId === 'open-video-ui' ? 'Start building your UI in just a few minutes!' : 'Set up your first THEOplayer in just a few minutes!';
         frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
       }
       return result;
@@ -327,7 +334,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
-      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'bash', 'diff'],
+      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff'],
     },
     algolia: {
       appId: '7HRS9V6FEL',
@@ -344,24 +351,23 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
-function getExternalDocPath(filePath: string): string | undefined {
+function parseDocPath(filePath: string): { docPluginId: string; version: string | undefined; docPath: string } | undefined {
   const parts = path.relative(__dirname, filePath).split(path.sep);
   if (parts.length < 2) {
     return;
   }
-  if (/^([^_]+)_versioned_docs$/.test(parts[0])) {
-    // Versioned doc, remove first two directories (e.g. "theoplayer_versioned_docs/version_1.x")
-    parts.splice(0, 2);
+  if (parts[0].endsWith('_versioned_docs')) {
+    // Versioned doc, e.g. "theoplayer_versioned_docs/version_1.x"
+    const docPluginId = parts[0].replace('_versioned_docs', '');
+    const version = parts[1].replace('version-', '');
+    const docPath = parts.slice(2).join('/');
+    return { docPluginId, version, docPath };
   } else {
-    // Current doc, remove first directory (e.g. "theoplayer")
-    parts.splice(0, 1);
+    // Current doc, e.g. "theoplayer"
+    const docPluginId = parts[0];
+    const docPath = parts.slice(1).join('/');
+    return { docPluginId, version: undefined, docPath };
   }
-  const firstPart = parts.shift();
-  if (firstPart !== 'external') {
-    // Not an external doc
-    return;
-  }
-  return parts.join('/');
 }
 
 function isRelativeUrl(href: string): boolean {
@@ -369,7 +375,7 @@ function isRelativeUrl(href: string): boolean {
 }
 
 function isMarkdownUrl(href: string): boolean {
-  return /\.mdx?$/.test(href);
+  return /\.mdx?(?:#|$)/.test(href);
 }
 
 function hasProtocol(url: string): boolean {

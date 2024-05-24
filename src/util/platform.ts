@@ -139,7 +139,10 @@ export function isDocSharedWithPlatform(docsPluginId: string, docId: string, pla
     if (docId === 'changelog') {
       return platformName === 'web' || platformName === 'android' || platformName === 'ios' || platformName === 'chromecast';
     }
-    if (docId.startsWith('how-to-guides/') || docId.startsWith('knowledge-base/')) {
+    if (docId.startsWith('how-to-guides/')) {
+      return platformName !== 'flutter';
+    }
+    if (docId.startsWith('knowledge-base/')) {
       return true;
     }
   }
