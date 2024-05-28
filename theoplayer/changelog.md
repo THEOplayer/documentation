@@ -5,6 +5,20 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.4.1 (2024/05/27)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where incomplete `ServiceDescription` tags in a DASH stream would prevent the player from being able to load the manifest.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where streams with Google DAI SSAI would not start playing.
+
 ## 🚀 7.4.0 (2024/05/21)
 
 ### General
