@@ -152,4 +152,4 @@ When your license expires, THEOplayer will attempt to load an updated license. I
 
 ### What should I do to protect my license?
 
-The THEOplayer license you get from THEOportal is already an obfuscated string. If you want to protect your license, you need to make sure to configure your [page and source domains](https://www.theoplayer.com/docs/theoplayer/faq/page-and-source-domains/) to guarantee that your license string cannot be used anywhere other than the specified pages and/or with those source domains.
+The THEOplayer license you get from THEOportal is already an obfuscated string. If you want to protect your license, you need to make sure to configure your [page and source domains](../../faq/64-page-and-source-domains.md) to guarantee that your license string cannot be used anywhere other than the specified pages and/or with those source domains.
