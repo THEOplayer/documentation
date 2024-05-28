@@ -20,7 +20,7 @@ THEOplayer is extended to allow configuring the license at runtime by just passi
 
 This can be done in two ways:
 
-- Pass an obfuscated license string which is the actual license for the player by setting it on the `license` property:
+- Pass a license string for the player by setting it on the `license` property:
 
 ```js
 var player = new THEOplayer.Player(element, {
@@ -70,7 +70,7 @@ Define the same `license` or a `licenseUrl` as a new key in the `Info.plist` fil
 
 Our iOS SDK allows configuring the license via Info.plist keys, which could be either `THEOplayerLicense` or `THEOplayerLicenseUrl`.
 
-- `THEOplayerLicense` must be an obfuscated license string
+- `THEOplayerLicense` must be a license string
 - `THEOplayerLicenseUrl` must be a valid URL to a license server
 
 The license defined in the player configuration has higher precedence than the license provided in the `Info.plist`. If neither of these are defined, then the built-in license will be used.
@@ -105,7 +105,7 @@ Define the same `license` or a `licenseUrl` as a new key in the app's manifest.
 
 Our Android SDK allows configuring the license via metadata keys, which could be either `THEOPLAYER_LICENSE` or `THEOPLAYER_LICENSE_URL`.
 
-- `THEOPLAYER_LICENSE` must be an obfuscated license string
+- `THEOPLAYER_LICENSE` must be a license string
 - `THEOPLAYER_LICENSE_URL` must be a valid URL to a license server
 
 The license defined in the player configuration has higher precedence than the license provided in the app's manifest. If neither of these are defined, then the built-in license will be used.
@@ -149,3 +149,7 @@ For self-hosting, the license file with the latest license string for your appli
 ### Will I still be able to play offline content with my THEOplayer SDK if my license expires?
 
 When your license expires, THEOplayer will attempt to load an updated license. If an updated license is available, offline playback will still function. If no valid license is available, and no license server can be reached (due to the client being offline), the player will throw an error and stop playback. For this reason, it is important to always keep your license up to date.
+
+### What should I do to protect my license?
+
+The THEOplayer license you get from THEOportal is already an obfuscated string. If you want to protect your license, you need to make sure to configure your [page and source domains](../../faq/64-page-and-source-domains.md) to guarantee that your license string cannot be used anywhere other than the specified pages and/or with those source domains.
