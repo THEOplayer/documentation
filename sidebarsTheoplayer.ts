@@ -432,6 +432,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
       },
       items: [
         'external/android-connector/connectors/analytics/comscore/README',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Comscore connector for Android.',
+          href: 'https://theoplayer.github.io/android-connector/api/connectors/analytics/comscore/',
+        }),
         githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/comscore',
         }),
@@ -451,6 +455,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
       },
       items: [
         'external/android-connector/connectors/analytics/conviva/README',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Conviva connector for Android.',
+          href: 'https://theoplayer.github.io/android-connector/api/connectors/analytics/conviva/',
+        }),
         githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva',
         }),
@@ -470,6 +478,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
       },
       items: [
         'external/android-connector/connectors/analytics/nielsen/README',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Nielsen connector for Android.',
+          href: 'https://theoplayer.github.io/android-connector/api/connectors/analytics/nielsen/',
+        }),
         githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/nielsen',
         }),
@@ -489,6 +501,10 @@ function androidConnectorItems(): SidebarItemConfig[] {
       },
       items: [
         'external/android-connector/connectors/mediasession/README',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Media Session connector for Android.',
+          href: 'https://theoplayer.github.io/android-connector/api/connectors/mediasession/',
+        }),
         githubLink({
           href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/mediasession',
         }),
