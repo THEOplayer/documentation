@@ -716,7 +716,7 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 444,
+      "line": 447,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -947,14 +947,14 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
-      "line": 62,
+      "line": 83,
       "symbol": "AirPlayImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
-      "line": 72,
+      "line": 93,
       "symbol": "AirPlayImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

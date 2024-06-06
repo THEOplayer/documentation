@@ -239,6 +239,12 @@ public class <span class="typeNameLabel"><a href=SourceDescription.html>SourceDe
                                         </tr>
 
                                         
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#SourceDescription(java.util.List,java.util.List,java.util.List,java.lang.String,com.theoplayer.android.api.source.metadata.MetadataDescription,java.lang.String)">SourceDescription</a></span>(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TextTrackDescription.html>TextTrackDescription</a>&gt; textTracks, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> poster, <a href=metadata/MetadataDescription.html>MetadataDescription</a> metadata, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> timeServer)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
 
                                         </tbody>
                                     </table>
@@ -337,6 +343,22 @@ public class <span class="typeNameLabel"><a href=SourceDescription.html>SourceDe
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>static <a href=SourceDescription.html>SourceDescription</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=SourceDescription.html#replaceAds(com.theoplayer.android.api.source.SourceDescription,java.util.List)>replaceAds</a>(<a href=SourceDescription.html>SourceDescription</a> originalSource, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>static <a href=SourceDescription.html>SourceDescription</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=SourceDescription.html#replaceSources(com.theoplayer.android.api.source.SourceDescription,java.util.List)>replaceSources</a>(<a href=SourceDescription.html>SourceDescription</a> source, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=SourceDescription.html#equals(Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> o) </code>
@@ -344,7 +366,7 @@ public class <span class="typeNameLabel"><a href=SourceDescription.html>SourceDe
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code>int</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=SourceDescription.html#hashCode()>hashCode</a>() </code>
@@ -382,6 +404,16 @@ public class <span class="typeNameLabel"><a href=SourceDescription.html>SourceDe
                                 <!--   -->
                             </a>
                                 <h3>Constructor Detail</h3>
+                                
+                                <a name="SourceDescription(java.util.List,java.util.List,java.util.List,java.lang.String,com.theoplayer.android.api.source.metadata.MetadataDescription,java.lang.String)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>SourceDescription</h4>
+                                        <pre>SourceDescription(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TextTrackDescription.html>TextTrackDescription</a>&gt; textTracks, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> poster, <a href=metadata/MetadataDescription.html>MetadataDescription</a> metadata, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> timeServer)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
                                 
                             </li>
                         </ul>
@@ -533,6 +565,52 @@ public class <span class="typeNameLabel"><a href=SourceDescription.html>SourceDe
                                         <h4>getTimeServer</h4>
                                         <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=SourceDescription.html#getTimeServer()>getTimeServer</a>()</pre>
                                         <div class="block"><p>Returns the URL of the time server. (Nullable) </p><ul><li>The time server should return time in ISO-8601 format. </li><li>Applies for all sources. </li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="replaceAds(com.theoplayer.android.api.source.SourceDescription,java.util.List)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>replaceAds</h4>
+                                        <pre class="methodSignature"> static <a href=SourceDescription.html>SourceDescription</a> <a href=SourceDescription.html#replaceAds(com.theoplayer.android.api.source.SourceDescription,java.util.List)>replaceAds</a>(<a href=SourceDescription.html>SourceDescription</a> originalSource, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="replaceSources(com.theoplayer.android.api.source.SourceDescription,java.util.List)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>replaceSources</h4>
+                                        <pre class="methodSignature"> static <a href=SourceDescription.html>SourceDescription</a> <a href=SourceDescription.html#replaceSources(com.theoplayer.android.api.source.SourceDescription,java.util.List)>replaceSources</a>(<a href=SourceDescription.html>SourceDescription</a> source, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources)</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 

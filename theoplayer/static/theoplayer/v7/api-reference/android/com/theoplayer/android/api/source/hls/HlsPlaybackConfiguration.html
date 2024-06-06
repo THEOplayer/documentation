@@ -257,10 +257,18 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.html>H
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#isUseLegacy()>isUseLegacy</a>() </code>
                                             </th>
-                                            <td class="colLast">Returns whether this source should be played using the legacy HLS pipeline.</td>
+                                            <td class="colLast">Deprecated: was used for using a legacy HLS pipeline that is no longer included with THEOplayer.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>boolean</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#isDelaySubtitlePreload()>isDelaySubtitlePreload</a>() </code>
+                                            </th>
+                                            <td class="colLast">Flag for delaying preloading of subtitles until after video/audio for HLS streams, intended to be used for MediaTailor streams.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#equals(Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> o) </code>
@@ -268,7 +276,7 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.html>H
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
+                                        <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code>int</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.html#hashCode()>hashCode</a>() </code>
@@ -328,8 +336,31 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.html>H
                                           >
                                     <li class="blockList">
                                         <h4>isUseLegacy</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=HlsPlaybackConfiguration.html#isUseLegacy()>isUseLegacy</a>()</pre>
-                                        <div class="block"><p>Returns whether this source should be played using the legacy HLS pipeline. </p><ul><li>If `true`, always use the legacy HLS pipeline.</li><li>If `false`, never use the legacy HLS pipeline.</li><li>If `null` (default), use the modern HLS pipeline if available, otherwise fall back to the legacy HLS pipeline.</li></ul></div>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>()@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=HlsPlaybackConfiguration.html#isUseLegacy()>isUseLegacy</a>()</pre>
+                                        <div class="block"><p>Deprecated: was used for using a legacy HLS pipeline that is no longer included with THEOplayer.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isDelaySubtitlePreload()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isDelaySubtitlePreload</h4>
+                                        <pre class="methodSignature"> boolean <a href=HlsPlaybackConfiguration.html#isDelaySubtitlePreload()>isDelaySubtitlePreload</a>()</pre>
+                                        <div class="block"><p>Flag for delaying preloading of subtitles until after video/audio for HLS streams, intended to be used for MediaTailor streams. A bug on the MediaTailor server side is currently causing them to return manifests without ads if the subtitle request is handled before video/audio. Enabling this flag will cause the player to delay starting subtitle loading until after video/audio manifests have successfully been requested, in order to work around the issue.</p></div>
 
                                         <dl>
 
