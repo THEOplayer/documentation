@@ -5,6 +5,35 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.5.0 (2024/06/04)
+
+### General
+
+#### ✨ Features
+
+- Added `HlsPlaybackConfiguration` flag `delaySubtitlePreload` to delay preloading of subtitles until after video/audio for HLS streams, to work around an issue on MediaTailor streams where no ads are provided when loading subtitles concurrently.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where the player's seekable range would be incorrect when casting an HLS stream to Chromecast V2.
+- Fixed an issue where the player's currentTime was not updated after changing the source to an HLS stream while casting to a CAF receiver.
+- Fixed an issue where the player would stall indefinitely when seeking into a discontinuity misalignment.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where adding more than one integration on Android 7 (API level 24) caused a crash.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the airplay state would be incorrect after killing and re-instantiating a player instance whilst connected to an AirPlay device.
+- Fixed an issue where a downloaded mp4 on iOS would be evicted right after the download finishes.
+
 ## 🚀 7.4.1 (2024/05/27)
 
 ### General

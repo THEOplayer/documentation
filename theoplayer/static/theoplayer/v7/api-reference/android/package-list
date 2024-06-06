@@ -35,6 +35,7 @@ $dokka.location:com.theoplayer.android.api.source.mediatailor/MediaTailorSource.
 $dokka.location:com.theoplayer.android.api.source.metadata/ChromecastMetadataDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/metadata/ChromecastMetadataDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source.ssai.dai/GoogleDaiLiveConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.ssai.dai/GoogleDaiVodConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.ssai/GoogleDaiConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/GoogleDaiConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source/GoogleDaiTypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/GoogleDaiTypedSource.Builder.html
 $dokka.location:com.theoplayer.android.api.source/SourceDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/SourceDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TextTrackDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TextTrackDescription.Builder.html
