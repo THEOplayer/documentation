@@ -5,6 +5,32 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.6.0 (2024/06/18)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed a memory leak where an `<iframe>` created by the Google DAI integration was not properly removed after calling `player.destroy()`.
+- Fixed a performance issue with segment downloads on WebOS 5.x and below and Tizen.
+- Fixed an issue where the player would sometimes stall after switching to a very short period in a multi-period DASH stream.
+
+### Android
+
+#### ✨ Features
+
+- Added [`player.ads.registerServerSideIntegration()`](https://www.theoplayer.com/docs/theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory))  API for registering custom server-side advertisement integrations. This API is currently experimental.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would sometimes crash on ad play-out completion.
+- Fixed an issue where Google IMA ads were not preloaded when using `AdsRenderingSettings.enablePreloading`.
+- Fixed an issue where setting preload to `PreloadType.AUTO` would cause the player to always autoplay if the source contained Google-IMA pre-roll ads.
+- Fixed an issue where the player would show the first frame of the content before playing a Google-IMA pre-roll ad if preload type `PreloadType.AUTO` was selected.
+- Fixed an issue where the player would appear stuck if you changed the source during Google-IMA ad playback.
+- Fixed an issue where a source change could trigger a crash on some Android devices.
+- Fixed an issue where a media track could not be enabled in its `ADDTRACK` event listener.
+
 ## 🚀 7.5.0 (2024/06/04)
 
 ### General
@@ -1807,6 +1833,23 @@ THEOplayer 5.0 is **backwards compatible for most features but includes some bre
 - Added integration support via `THEOplayer.addIntegration()` API
 - Added TextTrack styling support via `THEOplayer.textTrackStyle` API
 - Added `THEOplayer.developerSettings` API to host developer-friendly settings and experimental features
+
+## 🚀 4.12.9 (2024/05/13)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue with building the iOS SDK from THEOportal.
+
+## 🚀 4.12.8 (2024/04/18)
+
+### iOS
+
+#### ✨ Features
+
+- Added conformance to Apple's new privacy policy for API usage.
+- Added support for arm64 simulator architecture with GoogleCast.
 
 ## 🚀 4.12.7 (2023/12/19)
 
