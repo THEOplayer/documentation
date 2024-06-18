@@ -2,6 +2,7 @@ $dokka.format:javadoc-v1
 $dokka.linkExtension:html
 $dokka.location:com.theoplayer.android.api.abr/AbrStrategyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.abr/AbrStrategyMetadata.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyMetadata.Builder.html
+$dokka.location:com.theoplayer.android.api.ads/MediaFile.Builder///PointingToDeclaration/com/theoplayer/android/api/ads/MediaFile.Builder.html
 $dokka.location:com.theoplayer.android.api.cache/CachingParameters.Builder///PointingToDeclaration/com/theoplayer/android/api/cache/CachingParameters.Builder.html
 $dokka.location:com.theoplayer.android.api.cache/CachingPreferredTrackSelection.Builder///PointingToDeclaration/com/theoplayer/android/api/cache/CachingPreferredTrackSelection.Builder.html
 $dokka.location:com.theoplayer.android.api.cast/CastConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/cast/CastConfiguration.Builder.html

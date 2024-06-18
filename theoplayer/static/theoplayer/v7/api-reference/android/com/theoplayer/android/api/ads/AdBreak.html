@@ -285,6 +285,14 @@ public interface <span class="typeNameLabel"><a href=AdBreak.html>AdBreak</a></s
                                             <td class="colLast">The type of ad integration.</td>
                                         </tr>
                                         
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreak.html#getCustomIntegration()>getCustomIntegration</a>() </code>
+                                            </th>
+                                            <td class="colLast">The type of custom ad integration.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -437,7 +445,7 @@ public interface <span class="typeNameLabel"><a href=AdBreak.html>AdBreak</a></s
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getIntegration</h4>
@@ -451,6 +459,32 @@ public interface <span class="typeNameLabel"><a href=AdBreak.html>AdBreak</a></s
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The ad integration type. (NonNull)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCustomIntegration()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCustomIntegration</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=AdBreak.html#getCustomIntegration()>getCustomIntegration</a>()</pre>
+                                        <div class="block"><p>The type of custom ad integration. </p><ul><li>Only available if <a href=AdBreak.html#getIntegration()>getIntegration</a> equals <a href=../event/ads/AdIntegrationKind.html#CUSTOM>CUSTOM</a>. </li><li>Custom ad integrations are registered using <a href=Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory)>registerServerSideIntegration</a>.</li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The custom ad integration type. (Nullable)</p></dd>
                                         
 
                                         

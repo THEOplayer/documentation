@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!-- NewPage -->
 <html lang="en"><head>
-    <title>NonLinearAd </title>
+    <title>AdBreakInit </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="dc.created" content="2020-03-25">
     <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
@@ -40,7 +40,7 @@ var pathtoroot = "../../../../../";
     
     <li><a href="package-summary.html">Package</a></li>
     
-    <li>Class</li>
+    <li class="navBarCell1Rev">Class</li>
     
     <li><a href="package-tree.html">Tree</a></li>
     
@@ -89,7 +89,7 @@ var pathtoroot = "../../../../../";
 <main role="main">
     <div class="header">
         <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">com.theoplayer.android.api.ads</a></div>
-        <h2 title="Interface NonLinearAd" class="title">Interface NonLinearAd</h2>
+        <h2 title="Class AdBreakInit" class="title">Class AdBreakInit</h2>
     </div>
     <div class="contentContainer">
         <!-- <ul class="inheritance">
@@ -108,19 +108,16 @@ var pathtoroot = "../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
-                            <code>com.theoplayer.android.api.ads.Ad</code>
-                            
-                            
                         </dd>
                     </dl>
                     
                     <hr>
                     <pre class="wrap-overflow">
+@ApiStatus.Experimental() 
+public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakInit</a></span>
 
-public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearAd</a></span>
- implements <a href=Ad.html>Ad</a>
                     </pre>
-                    <div class="block"><p>The NonLinearAd API represents a non-linear ad in the VAST specification.</p></div>
+                    <div class="block"><p>An initializer for a custom <a href=AdBreak.html>AdBreak</a>.</p></div>
 
                     <dl>
 
@@ -175,6 +172,18 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
                                         
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#timeOffset>timeOffset</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#maxDuration>maxDuration</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -198,6 +207,18 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
 
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#AdBreakInit(java.lang.Integer,java.lang.Integer)">AdBreakInit</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxDuration)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#AdBreakInit(java.lang.Integer)">AdBreakInit</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
                                         
 
                                         </tbody>
@@ -249,19 +270,19 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=NonLinearAd.html#getClickThrough()>getClickThrough</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#getTimeOffset()>getTimeOffset</a>() </code>
                                             </th>
-                                            <td class="colLast">The website of the advertiser.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=NonLinearAd.html#getResourceURI()>getResourceURI</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#getMaxDuration()>getMaxDuration</a>() </code>
                                             </th>
-                                            <td class="colLast">The URI of the the ad content.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -269,12 +290,6 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
                                 </div>
                                 <ul class="blockList">
                                 
-                                    <li class="blockList"><a id="methods.inherited.from.class.com.theoplayer.android.api.ads.Ad">
-                                            <!--   -->
-                                        </a>
-                                            <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.ads.Ad</h3>
-                                            <code>getAdBreak, getCompanions, getCustomIntegration, getId, getIntegration, getSkipOffset, getType</code></li>
-                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
                                     </a>
@@ -301,6 +316,26 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="AdBreakInit(java.lang.Integer,java.lang.Integer)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>AdBreakInit</h4>
+                                        <pre>AdBreakInit(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxDuration)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="AdBreakInit(java.lang.Integer)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>AdBreakInit</h4>
+                                        <pre>AdBreakInit(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                             </li>
                         </ul>
                     </section>
@@ -314,24 +349,21 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="getClickThrough()">
+                                <a id="getTimeOffset()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getClickThrough</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=NonLinearAd.html#getClickThrough()>getClickThrough</a>()</pre>
-                                        <div class="block"><p>The website of the advertiser. </p><ul><li>Only supported for StaticResource. </li></ul><p>Default: Empty string.</p></div>
+                                        <h4>getTimeOffset</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=AdBreakInit.html#getTimeOffset()>getTimeOffset</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The website of the advertiser. (NonNull)</p></dd>
                                         
 
                                         
@@ -340,24 +372,21 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
                                     </li>
                                 </ul>
                                 
-                                <a id="getResourceURI()">
+                                <a id="getMaxDuration()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>getResourceURI</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=NonLinearAd.html#getResourceURI()>getResourceURI</a>()</pre>
-                                        <div class="block"><p>The URI of the the ad content. </p><p>Default: Empty string.</p></div>
+                                        <h4>getMaxDuration</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=AdBreakInit.html#getMaxDuration()>getMaxDuration</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The ad's content URI. (NonNull)</p></dd>
                                         
 
                                         
@@ -391,7 +420,7 @@ public interface <span class="typeNameLabel"><a href=NonLinearAd.html>NonLinearA
     
     <li><a href="package-summary.html">Package</a></li>
     
-    <li>Class</li>
+    <li class="navBarCell1Rev">Class</li>
     
     <li><a href="package-tree.html">Tree</a></li>
     
