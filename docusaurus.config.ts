@@ -250,8 +250,15 @@ const config: Config = {
         frontMatter.sidebar_custom_props ??= { icon: '🛝' };
       } else if (docPath.endsWith('readme.md')) {
         frontMatter.title ??= 'Getting started';
-        frontMatter.description ??=
-          docPluginId === 'open-video-ui' ? 'Start building your UI in just a few minutes!' : 'Set up your first THEOplayer in just a few minutes!';
+        if (!frontMatter.description) {
+          if (docPluginId === 'open-video-ui') {
+            frontMatter.description = 'Start building your UI in just a few minutes!';
+          } else if (docPath.includes('connector')) {
+            frontMatter.description = 'Set up your connector in just a few minutes!';
+          } else {
+            frontMatter.description = 'Set up your first THEOplayer in just a few minutes!';
+          }
+        }
         frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
       }
       return result;

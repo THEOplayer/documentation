@@ -59,7 +59,7 @@ jobs:
               (cd $submodule && compare $old $new $submodule)
             done
           }
-          change_count=$(compare "HEAD~1" "HEAD" | (grep -c -E 'CHANGELOG|/docs?/' ||:))
+          change_count=$(compare "HEAD~1" "HEAD" | (grep -c -E 'README|CHANGELOG|/docs?/' ||:))
           if ((change_count > 0)); then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
