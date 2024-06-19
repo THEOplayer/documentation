@@ -510,6 +510,29 @@ function androidConnectorItems(): SidebarItemConfig[] {
         }),
       ],
     },
+    {
+      type: 'category',
+      label: 'Yospace',
+      description: 'Integrate with Yospace for server-side ad insertion (SSAI).',
+      customProps: {
+        icon: 'yospace',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Yospace Connector for Android',
+        slug: 'connectors/android/yospace',
+      },
+      items: [
+        'external/android-connector/connectors/yospace/README',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Yospace connector for Android.',
+          href: 'https://theoplayer.github.io/android-connector/api/connectors/yospace/',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/android-connector/tree/master/connectors/yospace',
+        }),
+      ],
+    },
   ];
 }
 
