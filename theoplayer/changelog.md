@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.6.1 (2024/06/26)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where the player could sometimes stall while playing an HLS stream with rounded `#EXTINF` durations.
+
 ## 🚀 7.6.0 (2024/06/18)
 
 ### Web
