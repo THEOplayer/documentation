@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>EventType Class Reference</title>
+    <title>MediaTrackEventTypes Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/EventType" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/MediaTrackEventTypes" class="dashAnchor"></a>
 
-    <a title="EventType Class Reference"></a>
+    <a title="MediaTrackEventTypes Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">THEOplayerSDK Reference</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      EventType Class Reference
+      MediaTrackEventTypes Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -1064,15 +1064,15 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>EventType</h1>
+            <h1>MediaTrackEventTypes</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">EventType</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/EventProtocol.html">EventProtocol</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MediaTrackEventTypes</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents an <code>EventType</code> that conforms to a certain type of <code><a href="../Protocols/EventProtocol.html">EventProtocol</a></code> T.</p>
+            <p>The events fired by a <code><a href="../Protocols/MediaTrack.html">MediaTrack</a></code>.</p>
 
           </div>
         </section>
@@ -1084,9 +1084,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13THEOplayerSDK9EventTypeC4nameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13THEOplayerSDK9EventTypeC4nameSSvp">name</a>
+                    <a name="/s:13THEOplayerSDK20MediaTrackEventTypesV22ACTIVE_QUALITY_CHANGEDAA0E4TypeCyAA020ActiveQualityChangedE0CGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/ACTIVE_QUALITY_CHANGED" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK20MediaTrackEventTypesV22ACTIVE_QUALITY_CHANGEDAA0E4TypeCyAA020ActiveQualityChangedE0CGvpZ">ACTIVE_QUALITY_CHANGED</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1094,21 +1094,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The name of the <code>EventType</code>.</p>
-<div class="aside aside-remark">
-    <p class="aside-title">Remark</p>
-    <ul>
-<li>This name should be unique.</li>
-</ul>
-
-</div>
+                        <p>Fired when the <code>activeQualityBandwidth</code> property of a <code><a href="../Protocols/MediaTrack.html">MediaTrack</a></code> has been updated.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">ACTIVE_QUALITY_CHANGED</span><span class="p">:</span> <span class="kt"><a href="../Classes/EventType.html">EventType</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ActiveQualityChangedEvent.html">ActiveQualityChangedEvent</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>

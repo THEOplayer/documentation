@@ -919,7 +919,7 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/Tracks/MediaTrackImplNative.swift",
-      "line": 85,
+      "line": 87,
       "symbol": "MediaTrackImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

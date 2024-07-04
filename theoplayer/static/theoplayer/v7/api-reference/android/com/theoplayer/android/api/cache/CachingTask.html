@@ -547,7 +547,7 @@ public interface <span class="typeNameLabel"><a href=CachingTask.html>CachingTas
                                     <li class="blockList">
                                         <h4>getDuration</h4>
                                         <pre class="methodSignature"> abstract double <a href=CachingTask.html#getDuration()>getDuration</a>()</pre>
-                                        <div class="block"><p>The requested cached duration of the media, in seconds. </p><ul><li>Returns -1 if the duration is not available yet. </li></ul></div>
+                                        <div class="block"><p>The requested cached duration of the media, in seconds. </p><ul><li>Returns -1 if the duration is not available yet. </li><li>Returns -1 while caching progressive media. </li></ul></div>
 
                                         <dl>
 
@@ -651,7 +651,7 @@ public interface <span class="typeNameLabel"><a href=CachingTask.html>CachingTas
                                     <li class="blockList">
                                         <h4>getSecondsCached</h4>
                                         <pre class="methodSignature"> abstract double <a href=CachingTask.html#getSecondsCached()>getSecondsCached</a>()</pre>
-                                        <div class="block"><p>The amount of content that has been cached.</p></div>
+                                        <div class="block"><p>The amount of content that has been cached. </p><ul><li>Returns 0 while caching progressive media. </li></ul></div>
 
                                         <dl>
 
