@@ -5,6 +5,43 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.7.0 (2024/07/01)
+
+### General
+
+#### ✨ Features
+
+- Added the ability in HLS to disable the video track (or audio track) on any stream, in order to play audio-only (or video-only).
+
+#### 🐛 Issues
+
+- Fixed an issue where for LL-HLS a race condition could potentially throw the error 'Internal error: attempted to download an incomplete segment'.
+- Fixed an issue where the player could sometimes stall while playing an HLS stream with rounded `#EXTINF` durations.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed a regression where the player would throw an "Invalid UTF-8 detected" error when loading an HLS stream on an older browser without `fetch()` support and when using a network response interceptor.
+
+### Android
+
+#### ✨ Features
+
+- Added support for caching MP4 videos.
+
+#### 🐛 Issues
+
+- Fixed an issue where audio and text tracks restored to default when starting or stopping casting.
+- Fixed an issue where media tracks were not updated after changing source while casting to Chromecast
+- Fixed an issue where player paused when going to a fullscreen view during an IMA ad.
+
+### iOS
+
+#### ✨ Features
+
+- Added ActiveQualityChangedEvent which is fired by a MediaTrack when its activeQualityBandwidth property value changes.
+
 ## 🚀 7.6.1 (2024/06/26)
 
 ### General
