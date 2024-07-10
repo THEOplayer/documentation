@@ -5,6 +5,20 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.7.1 (2024/07/09)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed a regression where DASH playback could stall indefinitely after an HTTP request timed out on older browsers without `fetch()`.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where playback was not restoring after a poor network connection.
+
 ## 🚀 7.7.0 (2024/07/01)
 
 ### General
