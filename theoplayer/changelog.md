@@ -5,6 +5,41 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.8.0 (2024/07/15)
+
+### Web
+
+#### ✨ Features
+
+- Added `MultiViewPlayer.ui` to access the UI of a multiview player.
+
+#### 🐛 Issues
+
+- Fixed `MultiViewPlayer.destroy()` to not remove the original container element from the DOM.
+- Updated `MultiViewPlayerLayout` in the TypeScript type definitions to be a string union instead of an enum.
+- Fixed an issue on older browsers (such as Samsung Tizen 2.4) where the player failed to load when `Symbol.iterator` is not defined.
+- Fixed an issue on Tizen where seeking backwards after the stream ended could cause the player to be stuck in a playback loop and not ending again.
+- Fixed an issue where Google IMA midroll and postroll ads were not preloaded.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where audio played on the phone instead of the connected headset after stopping Chromecast.
+- Fixed an issue where the play/pause button was not working in a PiP window when targeting  API 34 (or Android 14).
+- Fixed an issue where caching sources would cause a runtime crash.
+
+#### 👎 Deprecations
+
+- [Jitpack.io](https://jitpack.io/#com.theoplayer/theoplayer-sdk-android) is now deprecated in favor of the [THEOplayer Maven repository](https://maven.theoplayer.com/#/releases/com/theoplayer/theoplayer-sdk-android).
+  Starting from 8.0 we will no longer publish new versions of the THEOplayer Android SDK or connectors to Jitpack.
+
+### iOS
+
+#### ✨ Features
+
+- Added `player.ads.registerServerSideIntegration()` API for registering custom server-side advertisement integrations. This API is currently experimental.
+
 ## 🚀 7.7.1 (2024/07/09)
 
 ### Web

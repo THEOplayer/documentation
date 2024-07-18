@@ -619,6 +619,25 @@ function iosConnectorItems(): SidebarItemConfig[] {
     },
     {
       type: 'category',
+      label: 'Yospace',
+      description: 'Integrate with Yospace for server-side ad insertion (SSAI).',
+      customProps: {
+        icon: '💬',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Yospace Connector for iOS & tvOS',
+        slug: 'connectors/ios/yospace',
+      },
+      items: [
+        'external/iOS-Connector/Code/Yospace/README',
+        githubLink({
+          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Yospace',
+        }),
+      ],
+    },
+    {
+      type: 'category',
       label: 'Sideloaded Subtitles',
       description: 'Add support for sideloaded subtitles to your player.',
       customProps: {
