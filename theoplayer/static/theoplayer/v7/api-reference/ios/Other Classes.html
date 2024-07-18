@@ -827,10 +827,25 @@
                 <a class="nav-group-task-link" href="Classes/ActiveQualityChangedEvent.html">ActiveQualityChangedEvent</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakChangeEvent">AdBreakChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakInit">AdBreakInit</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdInit">AdInit</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/AdSkipEvent.html">AdSkipEvent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdTappedEvent">AdTappedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdBreakEvent">AddAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdEvent">AddAdEvent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/CachingParametersTrackSelectionBuilder.html">CachingParametersTrackSelectionBuilder</a>
@@ -872,10 +887,19 @@
                 <a class="nav-group-task-link" href="Classes/PlayerEvent.html">PlayerEvent</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerRemoveAdBreakEvent">RemoveAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/TrackUpdateEvent.html">TrackUpdateEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdBreakEvent">UpdateAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdEvent">UpdateAdEvent</a>
               </li>
             </ul>
           </li>
@@ -950,6 +974,9 @@
                 <a class="nav-group-task-link" href="Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerCueEventProtocol">CueEventProtocol_Objc</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/CustomServerSideAdInsertionConfiguration.html">CustomServerSideAdInsertionConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/DRMConfiguration_Objc.html">DRMConfiguration_Objc</a>
               </li>
               <li class="nav-group-task">
@@ -1008,6 +1035,15 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/ScheduledAd_Objc.html">ScheduledAd_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ServerSideAdIntegrationController.html">ServerSideAdIntegrationController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ServerSideAdIntegrationHandler.html">ServerSideAdIntegrationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ServerSideAdIntegrationHandler_Objc.html">ServerSideAdIntegrationHandler_Objc</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerTextTrackCueEventProtocol">TextTrackCueEventProtocol_Objc</a>
@@ -1137,6 +1173,72 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdInit"></a>
+                    <a name="//apple_ref/swift/Class/AdInit" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdInit">AdInit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An initializer for a custom <code><a href="Protocols/Ad.html">Ad</a></code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Experimental
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerAdInit)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdInit</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakInit"></a>
+                    <a name="//apple_ref/swift/Class/AdBreakInit" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakInit">AdBreakInit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An initializer for a custom <code><a href="Protocols/AdBreak.html">AdBreak</a></code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Experimental
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerAdBreakInit)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdBreakInit</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerPiPConfiguration"></a>
                     <a name="//apple_ref/swift/Class/PiPConfiguration" class="dashAnchor"></a>
                     <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerPiPConfiguration">PiPConfiguration</a>
@@ -1218,6 +1320,198 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerAdTappedEvent)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdTappedEvent</span> <span class="p">:</span> <span class="kt">AdEvent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdEvent"></a>
+                    <a name="//apple_ref/swift/Class/AddAdEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdEvent">AddAdEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown to indicate that an ad was added.</p>
+
+<ul>
+<li>ad : the Ad (either LinearAd or NonLinearAd)</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerAddAdEvent)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">AddAdEvent</span> <span class="p">:</span> <span class="kt">AdEvent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdEvent"></a>
+                    <a name="//apple_ref/swift/Class/UpdateAdEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdEvent">UpdateAdEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown to indicate that an ad was updated.</p>
+
+<ul>
+<li>ad : the Ad (either LinearAd or NonLinearAd)</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerUpdateAdEvent)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">UpdateAdEvent</span> <span class="p">:</span> <span class="kt">AdEvent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdBreakEvent"></a>
+                    <a name="//apple_ref/swift/Class/AddAdBreakEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdBreakEvent">AddAdBreakEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown to indicate that an adbreak has been added.</p>
+
+<ul>
+<li>ad : the AdBreak</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerAddAdBreakEvent)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">AddAdBreakEvent</span> <span class="p">:</span> <span class="kt">AdBreakEvent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdBreakEvent"></a>
+                    <a name="//apple_ref/swift/Class/UpdateAdBreakEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdBreakEvent">UpdateAdBreakEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown to indicate that an adbreak has been updated.</p>
+
+<ul>
+<li>ad : the AdBreak</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerUpdateAdBreakEvent)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">UpdateAdBreakEvent</span> <span class="p">:</span> <span class="kt">AdBreakEvent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerRemoveAdBreakEvent"></a>
+                    <a name="//apple_ref/swift/Class/RemoveAdBreakEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerRemoveAdBreakEvent">RemoveAdBreakEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown to indicate that an adbreak has been removed.</p>
+
+<ul>
+<li>ad : the AdBreak</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerRemoveAdBreakEvent)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">RemoveAdBreakEvent</span> <span class="p">:</span> <span class="kt">AdBreakEvent</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakChangeEvent"></a>
+                    <a name="//apple_ref/swift/Class/AdBreakChangeEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakChangeEvent">AdBreakChangeEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown to indicate that an adbreak has changed.</p>
+
+<ul>
+<li>ad : the AdBreak</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerAdBreakChangeEvent)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">AdBreakChangeEvent</span> <span class="p">:</span> <span class="kt">AdBreakEvent</span></code></pre>
 
                         </div>
                       </div>

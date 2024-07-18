@@ -827,10 +827,25 @@
                 <a class="nav-group-task-link" href="Classes/ActiveQualityChangedEvent.html">ActiveQualityChangedEvent</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakChangeEvent">AdBreakChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakInit">AdBreakInit</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdInit">AdInit</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/AdSkipEvent.html">AdSkipEvent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdTappedEvent">AdTappedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdBreakEvent">AddAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdEvent">AddAdEvent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/CachingParametersTrackSelectionBuilder.html">CachingParametersTrackSelectionBuilder</a>
@@ -872,10 +887,19 @@
                 <a class="nav-group-task-link" href="Classes/PlayerEvent.html">PlayerEvent</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerRemoveAdBreakEvent">RemoveAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/TrackUpdateEvent.html">TrackUpdateEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdBreakEvent">UpdateAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdEvent">UpdateAdEvent</a>
               </li>
             </ul>
           </li>
@@ -950,6 +974,9 @@
                 <a class="nav-group-task-link" href="Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerCueEventProtocol">CueEventProtocol_Objc</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/CustomServerSideAdInsertionConfiguration.html">CustomServerSideAdInsertionConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/DRMConfiguration_Objc.html">DRMConfiguration_Objc</a>
               </li>
               <li class="nav-group-task">
@@ -1008,6 +1035,15 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/ScheduledAd_Objc.html">ScheduledAd_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ServerSideAdIntegrationController.html">ServerSideAdIntegrationController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ServerSideAdIntegrationHandler.html">ServerSideAdIntegrationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ServerSideAdIntegrationHandler_Objc.html">ServerSideAdIntegrationHandler_Objc</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerTextTrackCueEventProtocol">TextTrackCueEventProtocol_Objc</a>
@@ -1216,7 +1252,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerScheduledAd)</span>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "With the next major version, `THEOplayerScheduledAd` will de obsoleted")</span>
+<span class="kd">@objc(THEOplayerScheduledAd)</span>
 <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ScheduledAd_Objc</span></code></pre>
 
                         </div>
@@ -1362,6 +1399,112 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerGoogleDAI)</span>
 <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GoogleDAI_Objc</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK30ServerSideAdIntegrationHandlerP"></a>
+                    <a name="//apple_ref/swift/Protocol/ServerSideAdIntegrationHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK30ServerSideAdIntegrationHandlerP">ServerSideAdIntegrationHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A handler for a server-side ad integration.</p>
+
+<p>You can implement one or more of these methods to hook into various parts of the player&rsquo;s lifecycle and perform your integration-specific ad handling.</p>
+
+<p>Use the <code><a href="Protocols/ServerSideAdIntegrationController.html">ServerSideAdIntegrationController</a></code> provided by <code>Ads.registerServerSideIntegration</code> to update the state of your integration.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Experimental
+
+</div>
+
+                        <a href="Protocols/ServerSideAdIntegrationHandler.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ServerSideAdIntegrationHandler</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(pl)THEOplayerServerSideAdIntegrationHandler"></a>
+                    <a name="//apple_ref/swift/Protocol/ServerSideAdIntegrationHandler_Objc" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(pl)THEOplayerServerSideAdIntegrationHandler">ServerSideAdIntegrationHandler_Objc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A handler for a server-side ad integration. You can implement one or more of these methods to hook into various parts of the player&rsquo;s lifecycle and perform your integration-specific ad handling.</p>
+
+<p>Use the <code><a href="Protocols/ServerSideAdIntegrationController.html">ServerSideAdIntegrationController</a></code> provided by <code>Ads.registerServerSideIntegration</code> to update the state of your integration.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Experimental
+
+</div>
+
+                        <a href="Protocols/ServerSideAdIntegrationHandler_Objc.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerServerSideAdIntegrationHandler)</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ServerSideAdIntegrationHandler_Objc</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK33ServerSideAdIntegrationControllerP"></a>
+                    <a name="//apple_ref/swift/Protocol/ServerSideAdIntegrationController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK33ServerSideAdIntegrationControllerP">ServerSideAdIntegrationController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A controller to be used by your <code><a href="Protocols/ServerSideAdIntegrationHandler.html">ServerSideAdIntegrationHandler</a></code> to update the state of your custom server-side ad integration.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Experimental
+
+</div>
+
+                        <a href="Protocols/ServerSideAdIntegrationController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ServerSideAdIntegrationController</span></code></pre>
 
                         </div>
                       </div>
@@ -2409,6 +2552,35 @@ Relying on them in production systems can be dangerous.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerChromecast)</span>
 <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Chromecast_Objc</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(pl)THEOplayerCustomServerSideAdInsertionConfiguration"></a>
+                    <a name="//apple_ref/swift/Protocol/CustomServerSideAdInsertionConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(pl)THEOplayerCustomServerSideAdInsertionConfiguration">CustomServerSideAdInsertionConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The configuration for a custom server-side ad insertion (SSAI) integration.</p>
+
+                        <a href="Protocols/CustomServerSideAdInsertionConfiguration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(THEOplayerCustomServerSideAdInsertionConfiguration)</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CustomServerSideAdInsertionConfiguration</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ServerSideAdInsertionConfiguration.html">ServerSideAdInsertionConfiguration</a></span></code></pre>
 
                         </div>
                       </div>

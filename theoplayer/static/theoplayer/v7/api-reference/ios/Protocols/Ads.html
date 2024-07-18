@@ -827,10 +827,25 @@
                 <a class="nav-group-task-link" href="../Classes/ActiveQualityChangedEvent.html">ActiveQualityChangedEvent</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakChangeEvent">AdBreakChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakInit">AdBreakInit</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdInit">AdInit</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/AdSkipEvent.html">AdSkipEvent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdTappedEvent">AdTappedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdBreakEvent">AddAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdEvent">AddAdEvent</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/CachingParametersTrackSelectionBuilder.html">CachingParametersTrackSelectionBuilder</a>
@@ -872,10 +887,19 @@
                 <a class="nav-group-task-link" href="../Classes/PlayerEvent.html">PlayerEvent</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerRemoveAdBreakEvent">RemoveAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TrackUpdateEvent.html">TrackUpdateEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdBreakEvent">UpdateAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdEvent">UpdateAdEvent</a>
               </li>
             </ul>
           </li>
@@ -950,6 +974,9 @@
                 <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerCueEventProtocol">CueEventProtocol_Objc</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CustomServerSideAdInsertionConfiguration.html">CustomServerSideAdInsertionConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/DRMConfiguration_Objc.html">DRMConfiguration_Objc</a>
               </li>
               <li class="nav-group-task">
@@ -1008,6 +1035,15 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/ScheduledAd_Objc.html">ScheduledAd_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ServerSideAdIntegrationController.html">ServerSideAdIntegrationController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ServerSideAdIntegrationHandler.html">ServerSideAdIntegrationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ServerSideAdIntegrationHandler_Objc.html">ServerSideAdIntegrationHandler_Objc</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerTextTrackCueEventProtocol">TextTrackCueEventProtocol_Objc</a>
@@ -1217,7 +1253,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">scheduledAds</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/ScheduledAd.html">ScheduledAd</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "With the next major version, the array element type will change to `Ad`.")</span>
+<span class="k">var</span> <span class="nv">scheduledAds</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/ScheduledAd.html">ScheduledAd</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1495,6 +1532,69 @@
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">dai</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GoogleDAI.html">GoogleDAI</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK3AdsP29registerServerSideIntegration13integrationId0H7FactoryySS_AA0ef2AdG7Handler_pAA0efkG10Controller_pXEtF"></a>
+                    <a name="//apple_ref/swift/Method/registerServerSideIntegration(integrationId:integrationFactory:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK3AdsP29registerServerSideIntegration13integrationId0H7FactoryySS_AA0ef2AdG7Handler_pAA0efkG10Controller_pXEtF">registerServerSideIntegration(integrationId:<wbr>integrationFactory:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register a custom advertisement integration. This allows you to integrate with third-party advertisement providers, and have them report their ads and ad-related events through the THEOplayer <code>Ads</code> API.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>This API is <strong>experimental</strong> and is subject to change in any minor version of THEOplayer. Please consult with THEO Technologies before using this API.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerServerSideIntegration</span><span class="p">(</span><span class="nv">integrationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">integrationFactory</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ServerSideAdIntegrationController.html">ServerSideAdIntegrationController</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ServerSideAdIntegrationHandler.html">ServerSideAdIntegrationHandler</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>integrationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An identifier of the integration.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>integrationFactory</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Factory that will construct an <code><a href="../Protocols/ServerSideAdIntegrationHandler.html">ServerSideAdIntegrationHandler</a></code> for this integration.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
