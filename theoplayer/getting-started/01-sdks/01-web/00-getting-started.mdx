@@ -224,6 +224,21 @@ This `<div>` element creates a video player container.
 - The `theoplayer-container` class is used to fetch the container through JavaScript, as demonstrated by the snippet below.
 - The `video-js theoplayer-skin vjs-16-9` classes load the default THEOplayer UI. You may omit `vjs-16-9` if you don't want a 16:9 container.
 
+<details>
+    <summary>Setting the size of the container</summary>
+
+    There are other approaches to setting the size of your container instead of using `vjs-16-9`.
+    For example, you could omit the `vjs-16-9` class, and instead configure the width and height of container class through CSS,
+    as demonstrated in the screenshot below.
+    ![screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player](../../../assets/img/getting-started-web-sdk/container-height-percent.png)
+
+    Alternatively, you set your container to be responsive to its parent node by setting your configuration to `"fluid: true"`,
+    as demonstrated by the following screenshot.
+    ![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../assets/img/getting-started-web-sdk/container-height-fluid.png)
+
+    There is no wrong or right. It's up to you to decide which approach is best for your use-case.
+</details>
+
 ```javascript
 var element = document.querySelector(".theoplayer-container");
 ```
