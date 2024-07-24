@@ -45,7 +45,7 @@ The outcome of this article is the template below.
 ```
 
 Note that copy-pasting the above code in a development environment won't give you a valid video player,
-because its license (i.e. `your_license_string`) and library location (i.e. `/path/to/node_modules/theoplayer/`) contain invalid placeholder values.
+because its license (i.e. `'your_license_string'`) and library location (i.e. `'/path/to/node_modules/theoplayer/'`) contain invalid placeholder values.
 
 ## Prerequisites
 
@@ -157,7 +157,7 @@ There are two options for this:
 The `<script>` tag can include an external JavaScript library on a web page.
 In this case we use it to include the THEOplayer library.
 
-The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `/path/to/node_modules/theoplayer/THEOplayer.js`,
+The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `'/path/to/node_modules/theoplayer/THEOplayer.js'`,
 where the URL is a link to your THEOplayer.js file.
 
 - Option 2: in your JavaScript
@@ -275,7 +275,7 @@ var player = new THEOplayer.Player(element, {
 });
 ```
 
-Similar to the JavaScript and CSS library, you must swap out `'/path/to/node_modules/theoplayer/'` and `'your_license_string'`.
+Similar to the JavaScript and CSS library, you must swap out `'/path/to/'` and `'your_license_string'`.
 
 You can read more about configuring the `license` at the [License section](../../../how-to-guides/12-license/00-introduction.md).
 
