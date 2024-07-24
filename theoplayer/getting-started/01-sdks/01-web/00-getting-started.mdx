@@ -9,12 +9,6 @@ import Link from '@docusaurus/Link';
 THEOplayer is the universal video player solution created by THEO Technologies.
 The THEOplayer HTML5/Tizen/webOS SDK offers support for HLS, MPEG-DASH, advertisements, DRM and much more.
 
-:::info NPM
-
-THEOplayer v2.82.0 and above can be managed through NPM. Refer to https://www.npmjs.com/package/theoplayer for more information.
-
-:::
-
 This article is your starting point if you are using THEOplayer for the first time.
 It takes you through the required steps to achieve a basic manual implementation of the THEOplayer SDK on Web.
 The outcome of this article is the template below.
@@ -26,15 +20,15 @@ The outcome of this article is the template below.
     <meta charset="UTF-8" />
     <title>THEOplayer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/path/to/ui.css" />
+    <link rel="stylesheet" type="text/css" href="/path/to/node_modules/theoplayer/ui.css" />
   </head>
   <body>
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
-    <script src="/path/to/THEOplayer.js"></script>
+    <script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
     <script>
       var element = document.querySelector(".theoplayer-container");
       var player = new THEOplayer.Player(element, {
-        libraryLocation: "/path/to/your-theoplayer-folder/",
+        libraryLocation: "/path/to/node_modules/theoplayer/",
         license: "your_license_string"
       });
       player.source = {
@@ -50,6 +44,9 @@ The outcome of this article is the template below.
 </html>
 ```
 
+Note that copy-pasting the above code in a development environment won't give you a valid video player,
+because its license (i.e. `your_license_string`) and library location (i.e. `/path/to/node_modules/theoplayer/`) contain invalid placeholder values.
+
 ## Prerequisites
 
 Before we can start using THEOplayer, you'll need a few things:
@@ -58,13 +55,33 @@ Before we can start using THEOplayer, you'll need a few things:
 2. A THEOplayer SDK and license to implement the THEOplayer library and access the THEOplayer API.
 3. A video stream (e.g. an `.m3u8` or `.mpd` file) to show to your viewers through the THEOplayer API.
 
-### THEOplayer SDK and license
+### Getting a THEOplayer License
 
-Acquiring a THEOplayer SDK and license takes three steps:
+Acquiring a THEOplayer license takes three steps:
 
 1. Sign up for [https://portal.theoplayer.com](https://portal.theoplayer.com).
 2. Create a THEOplayer Web SDK.
 3. Have your ["CDN URL" and "license string"](#sdkready) handy.
+
+<Link id="sdkready"/>
+![SDK ready](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
+
+### Installing THEOplayer Web SDK
+
+The THEOplayer Web SDK is available on NPM: https://www.npmjs.com/package/theoplayer
+Installation can be done using your favorite package manager for Node (such as `npm` or `yarn`):
+
+```
+npm install theoplayer
+```
+
+You can also install a specific version instead:
+
+```
+npm install theoplayer@6.0.0
+```
+
+Different THEOplayer packages are available on NPM with their own included features. Choose the package which best fits your requirements.
 
 ## Basic setup
 
@@ -81,7 +98,7 @@ Now, we're ready to set up THEOplayer on your website. This guide explains how y
 When THEOplayer is used as a web video player, we will need a web page (i.e. HTML file) to embed THEOplayer and the code.
 
 Note that a THEOplayer SDK license can only be used on whitelisted domains.
-You configure these domains when you create a THEOplayer Web SDK at [https://portal.theoplayer.com](https://portal.theoplayer.com).
+You configure these domains when you create a THEOplayer license at [https://portal.theoplayer.com](https://portal.theoplayer.com).
 
 Let's start with the following HTML file:
 
@@ -106,36 +123,48 @@ The JavaScript library exposes the THEOplayer API and the CSS library contains t
 
 #### THEOplayer JavaScript library
 
-The following line includes the THEOplayer JavaScript library, and gives you access to the THEOplayer API.
+In a previous step we downloaded the [THEOplayer npm package](#installing-theoplayer-web-sdk), now we'll include it in our HTML file.
+There are two options for this:
+- Option 1: in your HTML
 
 ```html
-<script src="/path/to/THEOplayer.js"></script>
+<script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
+
+<!-- or if you only need the chromeless version (without UI) -->
+<script src="/path/to/node_modules/theoplayer/THEOplayer.chromeless.js"></script>
 ```
 
 The `<script>` tag can include an external JavaScript library on a web page.
 In this case we use it to include the THEOplayer library.
 
-The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `/path/to/THEOplayer.js`, where the URL is a link to your THEOplayer.js file.
-<Link id="sdkready"/>
-![SDK ready](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
+The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `/path/to/node_modules/theoplayer/THEOplayer.js`,
+where the URL is a link to your THEOplayer.js file.
 
-You must swap `/path/to/` with your CDN URL.
-If your SDK was the one above, then you'd include the following instead `<script>` tag instead.
+- Option 2: in your JavaScript
+```javascript
+import * as THEOplayer from 'theoplayer';
 
-```html
-<script src="https://cdn.myth.theoplayer.com/55d71743-4924-4d1b-8440-78f9cd103879/THEOplayer.js"></script>
+// or if you only need the chromeless version (without UI):
+import * as THEOplayer from 'theoplayer/chromeless';
 ```
+
+:::info Legacy browser support
+
+Starting with THEOplayer 6.0, this will import a JavaScript module targeting modern browsers, using modern JavaScript syntax such as `async/await`.
+If you need to support older browsers (such as older smart TVs), then you'll need to use option 1 instead as this creates a global `THEOplayer` variable that exposes the full API.
+
+:::
 
 #### THEOplayer CSS library
 
 To use the default THEOplayer UI, you need to reference the THEOplayer CSS library:
 
 ```html
-<link rel="stylesheet" type="text/css" href="/path/to/ui.css" />
+<link rel="stylesheet" type="text/css" href="/path/to/node_modules/theoplayer/ui.css" />
 ```
 
 The `<link>` tag includes a CSS file on a web page.
-Similar to the JavaScript library, you must swap `/path/to/` with your CDN URL.
+Similar to the JavaScript library, you must swap `/path/to/` with your actual path.
 
 Next, we’ll create a THEOplayer instance and configure a video stream.
 
@@ -152,13 +181,13 @@ The snippet below implements these 4 steps.
 
 ```html
 <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
-<script src="/path/to/THEOplayer.js"></script>
+<script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
 <script>
   var element = document.querySelector(".theoplayer-container"); // fetch THEOplayer container div
 
   var player = new THEOplayer.Player(element, {
-    // instantiates video player
-    libraryLocation: "/path/to/your-theoplayer-folder/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+    // instantiates the video player
+    libraryLocation: "/path/to/node_modules/theoplayer/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
     license: "your_license_string" // references your THEOplayer SDK license
   });
 
@@ -205,24 +234,13 @@ The snippet below creates a THEOplayer instance for a container with a specific 
 
 ```js
 var player = new THEOplayer.Player(element, {
-  // instantiates video player
-  libraryLocation: "/path/to/your-theoplayer-folder/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+  // instantiates the video player
+  libraryLocation: "/path/to/node_modules/theoplayer/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
   license: "your_license_string" // references your THEOplayer SDK license
 });
 ```
 
-Similar to the JavaScript and CSS library, you must swap out `'/path/to/your-theoplayer-folder/'` and `'your_license_string'`.
-For example, for the [previously shown screenshot](#sdkready) representing your SDK,
-you would instead configure the snippet below:
-
-```js
-var player = new THEOplayer.Player(element, {
-  libraryLocation:
-    "https://cdn.myth.theoplayer.com/55d71743-4924-4d1b-8440-78f9cd103879/",
-  license:
-    "sZP7IYe6T6PeCl0iCSbrI6klIQf_FSaZ3Le-TSez0mzoIDat3DarTSIlCSb6FOPlUY3zWokgbgjNIOf9fKaZTux10LUlFDXgTSb-3QIg06k1IKhrFSBrISCo0QPeCo0i36fVfK4_bQgZCYxNWoryIQXzImf90SCZ3SfZ0u5i0u5i0Oi6Io4pIYP1UQgqWgjeCYxgflEc3l5r3u0k0Se_this_is_a_fake_license_string_1dDrLYtA1Ioh6TgV6UQ1gWtAVCYggb6rlWoz6FOPVWo31WQ1qbta6Ymi6IQj-CDgpbkjLWt4ZCoh6TgV6UQ1gWtAVCYggb6rlWoz6FOPVWo31WQ1qbta6FOfJfgzVfG3edt06TgV6dwx-Wuh6Ymi6bo4pIXjNWYAZIY3LdDjpflNzbG4gya"
-});
-```
+Similar to the JavaScript and CSS library, you must swap out `'/path/to/node_modules/theoplayer/'` and `'your_license_string'`.
 
 You can read more about configuring the `license` at the [License section](../../../how-to-guides/12-license/00-introduction.md).
 
@@ -259,15 +277,15 @@ or experiment with it on an [online code playground](https://jsfiddle.net/thijsl
     <meta charset="UTF-8" />
     <title>THEOplayer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/path/to/ui.css" />
+    <link rel="stylesheet" type="text/css" href="/path/to/node_modules/theoplayer/ui.css" />
   </head>
   <body>
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
-    <script src="/path/to/THEOplayer.js"></script>
+    <script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
     <script>
       var element = document.querySelector(".theoplayer-container");
       var player = new THEOplayer.Player(element, {
-        libraryLocation: "/path/to/your-theoplayer-folder/",
+        libraryLocation: "/path/to/node_modules/theoplayer/",
         license: "your_license_string"
       });
       player.source = {
