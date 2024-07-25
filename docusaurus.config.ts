@@ -166,6 +166,19 @@ const config: Config = {
         },
       } satisfies DocsPlugin.Options,
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath: string) {
+          if (existingPath.includes('/docs/theoplayer/getting-started/sdks/web/getting-started')) {
+            return [
+              existingPath.replace('/docs/theoplayer/getting-started/sdks/web/getting-started', '/docs/theoplayer/getting-started/sdks/web/getting-started-extended'),
+            ];
+          }
+          return undefined;
+        },
+      },
+    ],
     () => ({
       name: 'webpack-plugin',
       configureWebpack() {
