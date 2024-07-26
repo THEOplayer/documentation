@@ -17,15 +17,15 @@ The outcome of this article is the template below.
     <meta charset="UTF-8" />
     <title>THEOplayer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/path/to/node_modules/theoplayer/ui.css" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
-    <script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
+    <script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
       var element = document.querySelector(".theoplayer-container");
       var player = new THEOplayer.Player(element, {
-        libraryLocation: "/path/to/node_modules/theoplayer/",
+        libraryLocation: "SDK-LIBRARY-LOCATION",
         license: "your_license_string"
       });
       player.source = {
@@ -42,7 +42,7 @@ The outcome of this article is the template below.
 ```
 
 Note that copy-pasting the above code in a development environment won't give you a valid video player,
-because its license (i.e. `'your_license_string'`) and library location (i.e. `'/path/to/node_modules/theoplayer/'`) contain invalid placeholder values.
+because its license (i.e. `'your_license_string'`) and library location (i.e. `'SDK-LIBRARY-LOCATION'`) contain invalid placeholder values.
 
 ## Prerequisites
 
@@ -68,6 +68,7 @@ npm install theoplayer@6.0.0
 ```
 
 Different THEOplayer packages are available on npm with their own included features. Choose the package which best fits your requirements.
+In the rest of the guide we reference `'SDK-LIBRARY-LOCATION'` which should become the path to the installed theoplayer package in your node modules, similar to: `'path/to/node_modules/theoplayer/'`.
 
 :::info Custom Web SDK
 
@@ -164,8 +165,7 @@ Once you see the <span className={styles.borderRed}>Ready!</span> button, as the
 
 ![SDK ready](../../../assets/img/getting-started-web-sdk/portal-sdk-ready.png)
 
-The following sections of this guide assume the SDK is downloaded through npm. Instead of `'path/to/node_modules/theoplayer'`,
-you can use the SDK <span className={styles.borderBlue}>library location URL</span>.
+The following sections of this guide reference `'SDK-LIBRARY-LOCATION'` which should be replaced with the SDK <span className={styles.borderBlue}>library location URL</span>.
 
 ## Basic setup
 
@@ -214,24 +214,25 @@ More information can be found on the Open Video UI's Getting Started.
 
 #### THEOplayer JavaScript library
 
-In a previous step we downloaded the [THEOplayer npm package](#installing-theoplayer-web-sdk), now we'll include it in our HTML file.
+In a previous step we downloaded the [THEOplayer npm package](#installing-theoplayer-web-sdk) or gotten a [custom THEOplayer SDK](#create-an-sdk-through-portal), now we'll include it in our HTML file.
 There are two options for this:
 - Option 1: in your HTML
 
 ```html
-<script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
+<script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
 
 <!-- or if you only need the chromeless version (without UI) -->
-<script src="/path/to/node_modules/theoplayer/THEOplayer.chromeless.js"></script>
+<script src="SDK-LIBRARY-LOCATION/THEOplayer.chromeless.js"></script>
 ```
 
 The `<script>` tag can include an external JavaScript library on a web page.
 In this case we use it to include the THEOplayer library.
 
-The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `'/path/to/node_modules/theoplayer/THEOplayer.js'`,
+The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `'SDK-LIBRARY-LOCATION/THEOplayer.js'`,
 where the URL is a link to your THEOplayer.js file.
 
 - Option 2: in your JavaScript
+
 ```javascript
 import * as THEOplayer from 'theoplayer';
 
@@ -251,11 +252,11 @@ If you need to support older browsers (such as older smart TVs), then you'll nee
 To use the default THEOplayer UI, you need to reference the THEOplayer CSS library:
 
 ```html
-<link rel="stylesheet" type="text/css" href="/path/to/node_modules/theoplayer/ui.css" />
+<link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
 ```
 
 The `<link>` tag includes a CSS file on a web page.
-Similar to the JavaScript library, you must swap `/path/to/` with your actual path.
+Similar to the JavaScript library, you must swap `SDK-LIBRARY-LOCATION` with your actual library location.
 
 Next, we’ll create a THEOplayer instance and configure a video stream.
 
@@ -272,13 +273,13 @@ The snippet below implements these 4 steps.
 
 ```html
 <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
-<script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
+<script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
 <script>
   var element = document.querySelector(".theoplayer-container"); // fetch THEOplayer container div
 
   var player = new THEOplayer.Player(element, {
     // instantiates the video player
-    libraryLocation: "/path/to/node_modules/theoplayer/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+    libraryLocation: "SDK-LIBRARY-LOCATION", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
     license: "your_license_string" // references your THEOplayer SDK license
   });
 
@@ -341,12 +342,12 @@ The snippet below creates a THEOplayer instance for a container with a specific 
 ```js
 var player = new THEOplayer.Player(element, {
   // instantiates the video player
-  libraryLocation: "/path/to/node_modules/theoplayer/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+  libraryLocation: "SDK-LIBRARY-LOCATION", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
   license: "your_license_string" // references your THEOplayer SDK license
 });
 ```
 
-Similar to the JavaScript and CSS library, you must swap out `'/path/to/'` and `'your_license_string'`.
+Similar to the JavaScript and CSS library, you must swap out `'SDK-LIBRARY-LOCATION'` and `'your_license_string'`.
 
 You can read more about configuring the `license` at the [License section](../../../how-to-guides/12-license/00-introduction.md).
 
@@ -382,15 +383,15 @@ Use the snippet below on your web server.
     <meta charset="UTF-8" />
     <title>THEOplayer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/path/to/node_modules/theoplayer/ui.css" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
-    <script src="/path/to/node_modules/theoplayer/THEOplayer.js"></script>
+    <script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
       var element = document.querySelector(".theoplayer-container");
       var player = new THEOplayer.Player(element, {
-        libraryLocation: "/path/to/node_modules/theoplayer/",
+        libraryLocation: "SDK-LIBRARY-LOCATION",
         license: "your_license_string"
       });
       player.source = {
