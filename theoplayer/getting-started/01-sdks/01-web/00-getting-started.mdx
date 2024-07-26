@@ -73,55 +73,103 @@ npm install theoplayer@6.0.0
 
 Different THEOplayer packages are available on npm with their own included features. Choose the package which best fits your requirements.
 
-<details>
-    <summary>While we do recommend getting your THEOplayer Web SDK through NPM, it is also possible to get yours through the THEOplayer portal.</summary>
+:::info Custom Web SDK
 
-    Creating a Web SDK on the Portal can be achieved by the following steps:
+We do recommend downloading the THEOplayer Web SDK through npm, but if you need a custom SDK with a different combination of features it is possible to create one on [the Portal](https://portal.theoplayer.com/login).
+Skip to [Create an SDK through Portal](#create-an-sdk-through-portal) for a detailed explanation.
 
-    1. [Register and sign in](#register-and-sign-in)
-    2. [Locate SDKs and initiate SDK creation](#locate-sdks-and-initiate-sdk-creation)
-    3. [Build, configure and publish SDK](#build-configure-and-publish-sdk)
+:::
 
-    ### Register and sign in
+### Getting a THEOplayer License
 
-    You register with your Github or Google account through the [sign-in page](https://portal.theoplayer.com/login), or complete the [signup form](https://portal.theoplayer.com/register).
-    You sign in with your Github or Google account, or with your credentials, through the sign-in page.
+Creating a Web SDK on the Portal can be achieved by the following steps:
 
-    ### Locate SDKs and initiate SDK creation
+1. [Register and sign in](#register-and-sign-in)
+2. [Initiate license creation](#initiate-license-creation)
+3. [Build, configure and publish license](#build-configure-and-publish-license)
 
-    The THEOplayer Developer Portal is a dashboard with a <span className={styles.borderPurple}>top navigation</span> panel, a <span className={styles.borderPurple}>side navigation</span> panel and a <span className={styles.borderPurple}>content panel</span>, as shown in the screenshot below.
-    The content panel contains multiple sub-panels, with one of them being the <span className={styles.borderYellow}>SDKs</span> panel.
-    Click the <span className={styles.borderRed}>Create</span> button in the SDKs panel, as annotated with a red arrow in the following screenshot.
+#### Register and sign in
 
-    ![THEOplayer Developer Portal's dashboard](../../../assets/img/getting-started-web-sdk/dashboard-annotate.png)
+You register with your GitHub or Google account through the [sign-in page](https://portal.theoplayer.com/login), or complete the [signup form](https://portal.theoplayer.com/register).
+You sign in with your GitHub or Google account, or with your credentials, through the sign-in page.
 
-    Alternatively, you create an SDK through the SDKs page.
+#### Initiate license creation
 
-    - You click the <span className={styles.borderRedDashed}>SDKs</span> item in the side navigation panel (annotated with a dashed red rectangle in the screenshot above) to navigate to the overview of your existing SDKs.
-    - The content panel of the SDKs page presents action buttons. Click the <span className={styles.borderRed}>Create</span> button to initiate the SDK creation process, as highlighted in the screenshot below.
+On the THEOplayer Developer Portal dashboard, click the <span className={styles.borderRed}>Create</span> button in the licenses panel, as annotated with a red arrow in the following screenshot.
 
-    ![THEOplayer Developer Portal SDK Page](../../../assets/img/getting-started-web-sdk/sdks-page.png)
+![THEOplayer Developer Portal's dashboard](../../../assets/img/getting-started-web-sdk/portal-dashboard.png)
 
-    ### Build, configure and publish SDK
+Alternatively, you create a license through the SDKs page.
 
-    Building your Web SDK involves four steps.
+- You click the SDKs item in the side navigation panel to navigate to the overview of your existing SDKs.
+- The content panel of the SDKs page presents action buttons. Click the <span className={styles.borderRed}>Create</span> button to initiate the license creation process, as highlighted in the screenshot below.
 
-    1. Choose platform – Select the HTML5 icon highlighted with the red circle in the following screenshot. HTML5 applications (i.e. websites, progressive web apps) use the THEOplayer Web SDK.
-    2. Configure SDK – Name the SDK and configure your domain whitelisting settings. The latter allows your SDK to only function for some websites and/or streams.
-    3. Select features – Enable certain features (e.g. HLS advertising) and disable others (e.g. Chromecast). You can also change the default colors of your player, and the setup of certain integrations.
-    4. Review and publish – Validate your configuration and click "Publish", or go back.
+![THEOplayer Developer Portal SDK Page](../../../assets/img/getting-started-web-sdk/portal-sdk.png)
 
-    ![Build SDK](../../../assets/img/getting-started-web-sdk/build-sdk.png)
+#### Build, configure and publish license
 
-    After you complete the fourth step, "Review and Publish", it'll take the portal a couple of minutes to generate your unique SDK.
-    Once you see the <span className={styles.borderRed}>Ready!</span> button, as the screenshot below highlights with the red rectangle, you know that your SDK is available.
+Building your license involves three steps.
 
-    ![SDK ready](../../../assets/img/getting-started-web-sdk/sdk-ready.png)
+1. Choose platform – Select the HTML5 icon highlighted with the red circle in the following screenshot. HTML5 applications (i.e. websites, progressive web apps) use the THEOplayer Web SDK.
+2. Configure license – Name the license and configure your domain whitelisting settings. The latter allows your license to only function for some websites and/or streams.
+3. Review and publish – Validate your configuration and click "Publish", or go back.
 
-    The following sections of this guide assume the SDK is downloaded through NPM. Instead of `'path/to/node_modules/theoplayer'`,
-    you can use the SDK library URL in the <span className={styles.borderBlue}>blue rectangle</span>.
-    For the license you can use the value in the <span className={styles.borderGreen}>green rectangle</span>.
-</details>
+![Choose platform](../../../assets/img/getting-started-web-sdk/portal-choose-platform.png)
+
+After you complete the third step, "Review and Publish", you will get your unique <span className={styles.borderGreen}>LICENSE</span>.
+
+![License generated](../../../assets/img/getting-started-web-sdk/portal-license.png)
+
+### Create an SDK through Portal
+
+:::info
+
+We recommend [downloading the THEOplayer SDK through npm](#installing-theoplayer-web-sdk) in most use cases.
+If you need an SDK with custom features, you can follow the next steps. Otherwise, skip to [Basic setup](#basic-setup).
+
+:::
+
+Creating a Web SDK on the Portal can be achieved by the following steps:
+
+1. [Register and sign in to Portal](#register-and-sign-in-to-portal)
+2. [Initiate SDK creation](#initiate-sdk-creation)
+3. [Build, configure and publish SDK](#build-configure-and-publish-sdk)
+
+#### Register and sign in to Portal
+
+You register with your GitHub or Google account through the sign-in page, or complete the signup form. You sign in with your GitHub or Google account, or with your credentials, through the sign-in page.
+
+#### Initiate SDK creation
+
+To create an SDK through Portal similar steps should be followed as generating a license only.
+On the dashboard or in the SDKs menu, also click the <span className={styles.borderRed}>Create</span> button.
+Important here is to make sure you are on the <span className={styles.borderBlue}>CUSTOM</span> tab as this will allow creating a custom SDK with a license instead of only a license.
+
+![THEOplayer Developer Portal's dashboard custom](../../../assets/img/getting-started-web-sdk/portal-custom-sdk.png)
+
+Alternatively, when following the steps to generate only a license there will be redirect link to the steps for creating a custom THEOplayer SDK.
+
+![Custom SDK redirect](../../../assets/img/getting-started-web-sdk/portal-sdk-redirect.png)
+
+#### Build, configure and publish SDK
+
+Building your Web SDK involves four steps.
+
+1. Choose platform – Select the HTML5 icon highlighted with the red circle in the following screenshot. HTML5 applications (i.e. websites, progressive web apps) use the THEOplayer Web SDK.
+2. Configure SDK – Name the SDK and configure your domain whitelisting settings. The latter allows your SDK to only function for some websites and/or streams.
+3. Select features – Enable certain features (e.g. HLS advertising) and disable others (e.g. Chromecast).
+4. Review and publish – Validate your configuration and click "Publish", or go back.
+
+![Build SDK](../../../assets/img/getting-started-web-sdk/portal-build-sdk.png)
+
+
+After you complete the fourth step, "Review and Publish", it'll take the portal a couple of minutes to generate your unique SDK.
+Once you see the <span className={styles.borderRed}>Ready!</span> button, as the screenshot below highlights with the red rectangle, you know that your SDK is available.
+
+![SDK ready](../../../assets/img/getting-started-web-sdk/portal-sdk-ready.png)
+
+The following sections of this guide assume the SDK is downloaded through npm. Instead of `'path/to/node_modules/theoplayer'`,
+you can use the SDK <span className={styles.borderBlue}>library location URL</span>.
 
 ## Basic setup
 
