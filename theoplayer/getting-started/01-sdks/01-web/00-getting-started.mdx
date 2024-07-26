@@ -26,7 +26,7 @@ The outcome of this article is the template below.
       var element = document.querySelector(".theoplayer-container");
       var player = new THEOplayer.Player(element, {
         libraryLocation: "SDK-LIBRARY-LOCATION",
-        license: "your_license_string"
+        license: "YOUR-LICENSE-STRING"
       });
       player.source = {
         sources: [
@@ -42,7 +42,7 @@ The outcome of this article is the template below.
 ```
 
 Note that copy-pasting the above code in a development environment won't give you a valid video player,
-because its license (i.e. `'your_license_string'`) and library location (i.e. `'SDK-LIBRARY-LOCATION'`) contain invalid placeholder values.
+because its license (i.e. `'YOUR-LICENSE-STRING'`) and library location (i.e. `'SDK-LIBRARY-LOCATION'`) contain invalid placeholder values.
 
 ## Prerequisites
 
@@ -113,7 +113,7 @@ Building your license involves three steps.
 
 ![Choose platform](../../../assets/img/getting-started-web-sdk/portal-choose-platform.png)
 
-After you complete the third step, "Review and Publish", you will get your unique <span className={styles.borderGreen}>LICENSE</span>.
+After you complete the third step, "Review and Publish", you will get your unique <span className={styles.borderGreen}>LICENSE</span> which should replace `'YOUR-LICENSE-STRING'` in the examples.
 
 ![License generated](../../../assets/img/getting-started-web-sdk/portal-license.png)
 
@@ -166,6 +166,7 @@ Once you see the <span className={styles.borderRed}>Ready!</span> button, as the
 ![SDK ready](../../../assets/img/getting-started-web-sdk/portal-sdk-ready.png)
 
 The following sections of this guide reference `'SDK-LIBRARY-LOCATION'` which should be replaced with the SDK <span className={styles.borderBlue}>library location URL</span>.
+Similarly, `'YOUR-LICENSE-STRING'` should be replaced with the <span className={styles.borderGreen}>LICENSE</span>
 
 ## Basic setup
 
@@ -280,7 +281,7 @@ The snippet below implements these 4 steps.
   var player = new THEOplayer.Player(element, {
     // instantiates the video player
     libraryLocation: "SDK-LIBRARY-LOCATION", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
-    license: "your_license_string" // references your THEOplayer SDK license
+    license: "YOUR-LICENSE-STRING" // references your THEOplayer SDK license
   });
 
   // HLS
@@ -343,11 +344,11 @@ The snippet below creates a THEOplayer instance for a container with a specific 
 var player = new THEOplayer.Player(element, {
   // instantiates the video player
   libraryLocation: "SDK-LIBRARY-LOCATION", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
-  license: "your_license_string" // references your THEOplayer SDK license
+  license: "YOUR-LICENSE-STRING" // references your THEOplayer SDK license
 });
 ```
 
-Similar to the JavaScript and CSS library, you must swap out `'SDK-LIBRARY-LOCATION'` and `'your_license_string'`.
+Similar to the JavaScript and CSS library, you must swap out `'SDK-LIBRARY-LOCATION'` and `'YOUR-LICENSE-STRING'`.
 
 You can read more about configuring the `license` at the [License section](../../../how-to-guides/12-license/00-introduction.md).
 
@@ -392,7 +393,7 @@ Use the snippet below on your web server.
       var element = document.querySelector(".theoplayer-container");
       var player = new THEOplayer.Player(element, {
         libraryLocation: "SDK-LIBRARY-LOCATION",
-        license: "your_license_string"
+        license: "YOUR-LICENSE-STRING"
       });
       player.source = {
         sources: [
