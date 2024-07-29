@@ -175,6 +175,11 @@ const config: Config = {
               existingPath.replace('/theoplayer/getting-started/sdks/web/getting-started', '/theoplayer/getting-started/sdks/web/getting-started-extended'),
             ];
           }
+          if (existingPath.includes('/open-video-ui/web/getting-started')) {
+            return [
+              existingPath.replace('/open-video-ui/web/getting-started', '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui'),
+            ];
+          }
           return undefined;
         },
       },
