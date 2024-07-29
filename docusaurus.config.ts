@@ -4,6 +4,7 @@ import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
+import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
@@ -179,7 +180,7 @@ const config: Config = {
             to: '/open-video-ui/web/getting-started',
           },
         ],
-      },
+      } satisfies ClientRedirectsPlugin.Options,
     ],
     () => ({
       name: 'webpack-plugin',
