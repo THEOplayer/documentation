@@ -169,19 +169,16 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        createRedirects(existingPath: string) {
-          if (existingPath.includes('/theoplayer/getting-started/sdks/web/getting-started')) {
-            return [
-              existingPath.replace('/theoplayer/getting-started/sdks/web/getting-started', '/theoplayer/getting-started/sdks/web/getting-started-extended'),
-            ];
-          }
-          if (existingPath.includes('/open-video-ui/web/getting-started')) {
-            return [
-              existingPath.replace('/open-video-ui/web/getting-started', '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui'),
-            ];
-          }
-          return undefined;
-        },
+        redirects: [
+          {
+            from: '/theoplayer/getting-started/sdks/web/getting-started-extended',
+            to: '/theoplayer/getting-started/sdks/web/getting-started/',
+          },
+          {
+            from: '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui',
+            to: '/open-video-ui/web/getting-started',
+          },
+        ],
       },
     ],
     () => ({
