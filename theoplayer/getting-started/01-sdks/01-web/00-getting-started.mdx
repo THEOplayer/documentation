@@ -223,34 +223,34 @@ In a previous step we downloaded the [THEOplayer npm package](#installing-theopl
 There are two options for this:
 - Option 1: in your HTML
 
-```html
-<script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
+  ```html
+  <script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
 
-<!-- or if you only need the chromeless version (without UI) -->
-<script src="SDK-LIBRARY-LOCATION/THEOplayer.chromeless.js"></script>
-```
+  <!-- or if you only need the chromeless version (without UI) -->
+  <script src="SDK-LIBRARY-LOCATION/THEOplayer.chromeless.js"></script>
+  ```
 
-The `<script>` tag can include an external JavaScript library on a web page.
-In this case we use it to include the THEOplayer library.
+  The `<script>` tag can include an external JavaScript library on a web page.
+  In this case we use it to include the THEOplayer library.
 
-The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `'SDK-LIBRARY-LOCATION/THEOplayer.js'`,
-where the URL is a link to your THEOplayer.js file.
+  The `src` attribute is the URI of the THEOplayer library that you wish to use. This could be something like: `'SDK-LIBRARY-LOCATION/THEOplayer.js'`,
+  where the URL is a link to your THEOplayer.js file.
 
 - Option 2: in your JavaScript
 
-```javascript
-import * as THEOplayer from 'theoplayer';
+  ```javascript
+  import * as THEOplayer from 'theoplayer';
 
-// or if you only need the chromeless version (without UI):
-import * as THEOplayer from 'theoplayer/chromeless';
-```
+  // or if you only need the chromeless version (without UI):
+  import * as THEOplayer from 'theoplayer/chromeless';
+  ```
 
-:::info Legacy browser support
+  :::info Legacy browser support
 
-Starting with THEOplayer 6.0, this will import a JavaScript module targeting modern browsers, using modern JavaScript syntax such as [`async/await`](https://caniuse.com/async-functions).
-If you need to support older browsers (such as older smart TVs), then you'll need to use option 1 instead as this creates a global `THEOplayer` variable that exposes the full API.
+  Starting with THEOplayer 6.0, this will import a JavaScript module targeting modern browsers, using modern JavaScript syntax such as [`async/await`](https://caniuse.com/async-functions).
+  If you need to support older browsers (such as older smart TVs), then you'll need to use option 1 instead as this creates a global `THEOplayer` variable that exposes the full API.
 
-:::
+  :::
 
 #### THEOplayer CSS library
 
