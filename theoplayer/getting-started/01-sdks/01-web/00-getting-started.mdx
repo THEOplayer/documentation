@@ -23,18 +23,18 @@ The outcome of this article is the template below.
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
     <script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var element = document.querySelector(".theoplayer-container");
+      var element = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(element, {
-        libraryLocation: "SDK-LIBRARY-LOCATION",
-        license: "YOUR-LICENSE-STRING"
+        libraryLocation: 'SDK-LIBRARY-LOCATION',
+        license: 'YOUR-LICENSE-STRING',
       });
       player.source = {
         sources: [
           {
-            src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
-            type: "application/x-mpegurl"
-          }
-        ]
+            src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
       };
     </script>
   </body>
@@ -163,7 +163,6 @@ Building your Web SDK involves four steps.
 
 ![Build SDK](../../../assets/img/getting-started-web-sdk/portal-build-sdk.png)
 
-
 After you complete the fourth step, "Review and Publish", it'll take the portal a couple of minutes to generate your unique SDK.
 Once you see the <span className={styles.borderRed}>Ready!</span> button, as the screenshot below highlights with the red rectangle, you know that your SDK is available.
 
@@ -282,30 +281,32 @@ The snippet below implements these 4 steps:
 <script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
 <script>
   // Retrieve the THEOplayer container div
-  var element = document.querySelector(".theoplayer-container");
+  var element = document.querySelector('.theoplayer-container');
 
   // Create the video player
   var player = new THEOplayer.Player(element, {
-    libraryLocation: "SDK-LIBRARY-LOCATION", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
-    license: "YOUR-LICENSE-STRING" // references your THEOplayer SDK license
+    libraryLocation: 'SDK-LIBRARY-LOCATION', // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+    license: 'YOUR-LICENSE-STRING', // references your THEOplayer SDK license
   });
 
   // HLS
   player.source = {
     sources: [
       {
-        src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8", // sets HLS source
-        type: "application/x-mpegurl" // sets type to HLS
-      }
-    ]
+        src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8', // sets HLS source
+        type: 'application/x-mpegurl', // sets type to HLS
+      },
+    ],
   };
 
   // DASH
   // player.source = {
-  //     sources : [{
-  //         src : '//cdn.theoplayer.com/video/cosmos/cmaf.mpd', // sets DASH source
-  //         type : 'application/dash+xml' // sets type to MPEG-DASH
-  //     }]
+  //   sources: [
+  //     {
+  //       src: '//cdn.theoplayer.com/video/cosmos/cmaf.mpd', // sets DASH source
+  //       type: 'application/dash+xml', // sets type to MPEG-DASH
+  //     },
+  //   ],
   // };
 </script>
 ```
@@ -347,10 +348,11 @@ This `<div>` element creates a video player container.
     ![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../assets/img/getting-started-web-sdk/container-height-fluid.png)
 
     There is no wrong or right. It's up to you to decide which approach is best for your use-case.
+
 </details>
 
 ```javascript
-var element = document.querySelector(".theoplayer-container");
+var element = document.querySelector('.theoplayer-container');
 ```
 
 #### Create THEOplayer instance
@@ -360,8 +362,8 @@ The snippet below creates a THEOplayer instance for a container with a specific 
 ```js
 var player = new THEOplayer.Player(element, {
   // instantiates the video player
-  libraryLocation: "SDK-LIBRARY-LOCATION", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
-  license: "YOUR-LICENSE-STRING" // references your THEOplayer SDK license
+  libraryLocation: 'SDK-LIBRARY-LOCATION', // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+  license: 'YOUR-LICENSE-STRING', // references your THEOplayer SDK license
 });
 ```
 
@@ -377,10 +379,10 @@ The snippet below configures a HLS video stream for the THEOplayer instance.
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8", // sets HLS source
-      type: "application/x-mpegurl" // sets type to HLS
-    }
-  ]
+      src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8', // sets HLS source
+      type: 'application/x-mpegurl', // sets type to HLS
+    },
+  ],
 };
 ```
 
@@ -407,18 +409,18 @@ Use the snippet below on your web server.
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
     <script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var element = document.querySelector(".theoplayer-container");
+      var element = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(element, {
-        libraryLocation: "SDK-LIBRARY-LOCATION",
-        license: "YOUR-LICENSE-STRING"
+        libraryLocation: 'SDK-LIBRARY-LOCATION',
+        license: 'YOUR-LICENSE-STRING',
       });
       player.source = {
         sources: [
           {
-            src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
-            type: "application/x-mpegurl"
-          }
-        ]
+            src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
       };
     </script>
   </body>
