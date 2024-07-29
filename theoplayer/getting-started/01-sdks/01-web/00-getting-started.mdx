@@ -125,7 +125,7 @@ After you complete the third step, "Review and Publish", you will get your uniqu
 
 :::info
 
-We recommend [downloading the THEOplayer SDK through npm](#installing-theoplayer-web-sdk) in most use cases.
+We recommend [downloading the THEOplayer SDK through npm](#installing-theoplayer-web-sdk) for most use cases.
 If you need an SDK with custom features, you can follow the next steps. Otherwise, skip to [Basic setup](#basic-setup).
 
 :::
@@ -157,7 +157,7 @@ Alternatively, when following the steps to generate only a license there will be
 Building your Web SDK involves four steps.
 
 1. Choose platform – Select the HTML5 icon highlighted with the red circle in the following screenshot. HTML5 applications (i.e. websites, progressive web apps) use the THEOplayer Web SDK.
-2. Configure SDK – Name the SDK and configure your domain whitelisting settings. The latter allows your SDK to only function for some websites and/or streams.
+2. Configure SDK – Name the SDK and configure your domain whitelisting settings. The latter allows you to restrict your SDK to only function on your own websites and/or streams.
 3. Select features – Enable certain features (e.g. HLS advertising) and disable others (e.g. Chromecast).
 4. Review and publish – Validate your configuration and click "Publish", or go back.
 
@@ -210,17 +210,18 @@ Next, we’ll include the THEOplayer SDK.
 To access the THEOplayer API and default UI, you must first include the THEOplayer library files.
 The JavaScript library exposes the THEOplayer API and the CSS library contains the default UI.
 
-:::info Open Video UI
+:::tip Open Video UI
 
 The Open Video UI is our new Web UI. It provides component libraries for building a world-class video player experience powered by the THEOplayer SDK.
-More information can be found on the Open Video UI's Getting Started.
+[See our Getting Started guide to start using the Open Video UI.](/open-video-ui/web/getting-started/)
 
 :::
 
 #### THEOplayer JavaScript library
 
-In a previous step we downloaded the [THEOplayer npm package](#installing-theoplayer-web-sdk) or gotten a [custom THEOplayer SDK](#create-an-sdk-through-portal), now we'll include it in our HTML file.
-There are two options for this:
+In a previous step, we downloaded the [THEOplayer npm package](#installing-theoplayer-web-sdk) or created a [custom THEOplayer SDK](#create-an-sdk-through-portal).
+Now we'll include it in our HTML file. There are two options for this:
+
 - Option 1: in your HTML
 
   ```html
@@ -245,7 +246,7 @@ There are two options for this:
   import * as THEOplayer from 'theoplayer/chromeless';
   ```
 
-  :::info Legacy browser support
+  :::warning Legacy browser support
 
   Starting with THEOplayer 6.0, this will import a JavaScript module targeting modern browsers, using modern JavaScript syntax such as [`async/await`](https://caniuse.com/async-functions).
   If you need to support older browsers (such as older smart TVs), then you'll need to use option 1 instead as this creates a global `THEOplayer` variable that exposes the full API.
@@ -269,21 +270,22 @@ Next, we’ll create a THEOplayer instance and configure a video stream.
 
 To play a video through the THEOplayer Web SDK, you must:
 
-1. Create a video player container,
-2. fetch this container through JavaScript,
-3. create a THEOplayer instance associated with that container,
-4. and configure a video stream for this instance.
+1. Create a video player container element.
+2. Retrieve a reference to this container through JavaScript.
+3. Create a THEOplayer instance associated with that container.
+4. Configure a video stream for this instance.
 
-The snippet below implements these 4 steps.
+The snippet below implements these 4 steps:
 
 ```html
 <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
 <script src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
 <script>
-  var element = document.querySelector(".theoplayer-container"); // fetch THEOplayer container div
+  // Retrieve the THEOplayer container div
+  var element = document.querySelector(".theoplayer-container");
 
+  // Create the video player
   var player = new THEOplayer.Player(element, {
-    // instantiates the video player
     libraryLocation: "SDK-LIBRARY-LOCATION", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
     license: "YOUR-LICENSE-STRING" // references your THEOplayer SDK license
   });
@@ -325,12 +327,23 @@ This `<div>` element creates a video player container.
     <summary>Setting the size of the container</summary>
 
     There are other approaches to setting the size of your container instead of using `vjs-16-9`.
-    For example, you could omit the `vjs-16-9` class, and instead configure the width and height of container class through CSS,
-    as demonstrated in the screenshot below.
+    For example, you could omit the `vjs-16-9` class, and instead configure the width and height of container class through CSS.
+    ```css
+    .theoplayer-container {
+        width: 200px;
+        height: 200px;
+    }
+    ```
     ![screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player](../../../assets/img/getting-started-web-sdk/container-height-percent.png)
 
-    Alternatively, you set your container to be responsive to its parent node by setting your configuration to `"fluid: true"`,
+    Alternatively, you set your container to be responsive to its parent node by setting `fluid: true` in your configuration,
     as demonstrated by the following screenshot.
+    ```js
+    var player = new THEOplayer.Player(element, {
+        fluid: true
+        // ...other options go here
+    });
+    ```
     ![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../assets/img/getting-started-web-sdk/container-height-fluid.png)
 
     There is no wrong or right. It's up to you to decide which approach is best for your use-case.
