@@ -170,9 +170,9 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         createRedirects(existingPath: string) {
-          if (existingPath.includes('/docs/theoplayer/getting-started/sdks/web/getting-started')) {
+          if (existingPath.includes('/theoplayer/getting-started/sdks/web/getting-started')) {
             return [
-              existingPath.replace('/docs/theoplayer/getting-started/sdks/web/getting-started', '/docs/theoplayer/getting-started/sdks/web/getting-started-extended'),
+              existingPath.replace('/theoplayer/getting-started/sdks/web/getting-started', '/theoplayer/getting-started/sdks/web/getting-started-extended'),
             ];
           }
           return undefined;
