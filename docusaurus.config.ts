@@ -4,6 +4,7 @@ import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
+import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
@@ -165,6 +166,21 @@ const config: Config = {
           },
         },
       } satisfies DocsPlugin.Options,
+    ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/theoplayer/getting-started/sdks/web/getting-started-extended',
+            to: '/theoplayer/getting-started/sdks/web/getting-started/',
+          },
+          {
+            from: '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui',
+            to: '/open-video-ui/web/getting-started',
+          },
+        ],
+      } satisfies ClientRedirectsPlugin.Options,
     ],
     () => ({
       name: 'webpack-plugin',
@@ -342,7 +358,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
-      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff'],
+      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff', 'json'],
     },
     algolia: {
       appId: '7HRS9V6FEL',
