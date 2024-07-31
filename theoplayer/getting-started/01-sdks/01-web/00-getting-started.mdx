@@ -426,6 +426,192 @@ Use the snippet below on your web server.
 </html>
 ```
 
+## Bundler setup
+
+When using a [bundler](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview)
+such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Vite](https://vitejs.dev/) or [Parcel](https://parceljs.org/)
+you may need some additional configuration to make your bundler copy all files needed by the THEOplayer Web SDK
+and set your `libraryLocation` correctly.
+
+:::tip Just give me the code!
+
+If you prefer starting from a fully working example rather than copy-pasting these snippets into your code,
+check out [our examples on GitHub](https://github.com/THEOplayer/samples-npm-html5-sdk)!
+
+:::
+
+<details>
+<summary>What is a `libraryLocation`?</summary>
+
+The THEOplayer Web SDK uses [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+to off-load several CPU-intensive tasks to a separate worker thread. By moving these tasks off the main thread,
+THEOplayer ensures that your app remains fast and responsive.
+
+The code for these workers is located in separate JavaScript files, outside the main THEOplayer library.
+The THEOplayer Web SDK ships with several of these files, such as:
+
+- `THEOplayer.transmux.js`: responsible for transmuxing MPEG-TS and AAC files to fragmented MP4.
+- `theoplayer.d.js`: responsible for decrypting HLS segments encrypted with full-segment AES-128 encryption.
+
+Additionally, some of these workers leverage [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) for improved performance:
+
+- `THEOplayer.transmux.wasm`: the WebAssembly binary for transmuxing MPEG-TS and AAC files.
+
+These files need to be hosted on your app's server, so the main THEOplayer library can locate and load them when needed.
+You tell THEOplayer where you put those files by setting the `libraryLocation` in your [player configuration](pathname:///theoplayer/v7/api-reference/web/interfaces/PlayerConfiguration.html).
+
+JavaScript bundlers work by traversing your app's dependencies through `import` or `require()` statements in your source code.
+As such, they can't auto-magically detect that THEOplayer needs these extra files, since they are never directly imported.
+You'll need to configure your bundler to _also_ copy these extra files to your app's output directory.
+
+</details>
+
+### Webpack
+
+Use [`copy-webpack-plugin`](https://webpack.js.org/plugins/copy-webpack-plugin/) to copy the THEOplayer files
+to the output directory.
+
+```js title="webpack.config.js"
+const CopyPlugin = require('copy-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: __dirname + '/dist',
+  },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          context: 'node_modules/theoplayer/',
+          from: './*.(css|js|html|wasm)',
+          info: { minimized: true },
+          to: 'vendor/theoplayer/',
+        },
+      ],
+    }),
+  ],
+};
+```
+
+Then, configure your library location:
+
+```js title="src/index.js"
+import * as THEOplayer from 'theoplayer';
+
+var player = new THEOplayer.Player(element, {
+  libraryLocation: '/vendor/theoplayer/',
+  license: 'YOUR-LICENSE-STRING',
+});
+```
+
+### Rollup
+
+Use [`rollup-plugin-copy`](https://webpack.js.org/plugins/copy-webpack-plugin/) to copy the THEOplayer files
+to the output directory.
+
+```js title="rollup.config.js"
+import copy from 'rollup-plugin-copy';
+
+export default {
+  input: {
+    bundle: './src/index.js',
+  },
+  output: {
+    dir: './dist',
+  },
+  plugins: [
+    copy({
+      targets: [
+        {
+          src: './node_modules/theoplayer/*.(js|css|html|wasm)',
+          dest: './dist/vendor/theoplayer',
+        },
+      ],
+    }),
+  ],
+};
+```
+
+Then, configure your library location:
+
+```js title="src/index.js"
+import * as THEOplayer from 'theoplayer';
+
+var player = new THEOplayer.Player(element, {
+  libraryLocation: '/vendor/theoplayer/',
+  license: 'YOUR-LICENSE-STRING',
+});
+```
+
+### Vite
+
+Use [`vite-plugin-static-copy`](https://www.npmjs.com/package/vite-plugin-static-copy) to copy the THEOplayer files
+to the output directory.
+
+```js title="vite.config.js"
+import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig({
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'node_modules/theoplayer/*.(css|js|html|wasm)',
+          dest: 'vendor/theoplayer/',
+        },
+      ],
+    }),
+  ],
+});
+```
+
+Then, configure your library location:
+
+```js title="src/index.js"
+import * as THEOplayer from 'theoplayer';
+
+var player = new THEOplayer.Player(element, {
+  libraryLocation: `${import.meta.env.BASE_URL}vendor/theoplayer/`,
+  license: 'YOUR-LICENSE-STRING',
+});
+```
+
+### Parcel
+
+Use [`parcel-reporter-static-files-copy`](https://www.npmjs.com/package/parcel-reporter-static-files-copy)
+to copy the THEOplayer files to the output directory.
+
+```json title=".parcelrc"
+{
+  "extends": ["@parcel/config-default"],
+  "reporters": ["...", "parcel-reporter-static-files-copy"]
+}
+```
+
+```json title="package.json"
+{
+  "name": "my-app",
+  "staticFiles": {
+    "staticPath": "node_modules/theoplayer/",
+    "distDir": "dist/vendor/theoplayer/"
+  }
+}
+```
+
+Then, configure your library location:
+
+```js title="src/index.js"
+import * as THEOplayer from 'theoplayer';
+
+var player = new THEOplayer.Player(element, {
+  libraryLocation: '/vendor/theoplayer/',
+  license: 'YOUR-LICENSE-STRING',
+});
+```
+
 ## Next steps
 
 Ready to learn more?
