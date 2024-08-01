@@ -5,6 +5,65 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.9.0 (2024/07/31)
+
+### General
+
+#### ✨ Features
+
+- Added support for media track enabling / disabling for HESP streams (Safari on iOS <17.1 devices not included).
+
+#### 🐛 Issues
+
+- Fixed an issue where the player could crash when processing an MPEG-TS segment containing a PES header split across multiple MPEG-TS packets.
+
+### Web
+
+#### ⚡ Improvements
+
+- Extended the functionality of source abr configuration properties `preferredAudioCodecs` and `preferredVideoCodecs` to apply throughout playback rather than only at the beginning.
+
+#### 🐛 Issues
+
+- Fixed several issues that would cause the player to get stuck resetting after a source change on older Tizen versions.
+- Fixed an issue where source abr property `preferredAudioCodecs` would not be properly applied in case of multiple audio tracks of the same language with different codecs.
+
+#### 👎 Deprecations
+
+- Deprecated the Conviva pre-integration in favor of the new [Conviva web connector](https://www.theoplayer.com/docs/theoplayer/connectors/web/conviva/).
+- Deprecated the Yospace pre-integration in favor of the new [Yospace web connector](https://www.theoplayer.com/docs/theoplayer/connectors/web/yospace/).
+
+### Android
+
+#### ✨ Features
+
+- Added support for streaming advertisements (DASH/HLS) with Google IMA.
+    - It can be set by combining
+      [AdsRenderingSettings.setMimeTypes(List<String> mimeTypes)](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/api/reference/com/google/ads/interactivemedia/v3/api/AdsRenderingSettings.html#public-abstract-void-setmimetypes-liststring-mimetypes)
+      along with `GoogleImaIntegration.setAdsRenderingSettings(adsRenderingSettings: AdsRenderingSettings?)`
+      or `GoogleImaIntegration.requestAds(adsRequest: AdsRequest, adsRenderingSettings: AdsRenderingSettings?)`
+    - Note that this will limit the playback of the ads to the ones with the specified mimeTypes, which means some ads might be skipped.
+- Added support for using the experimental custom `Surface` to play advertisements.
+- Added support for managing low-latency live playback via `Player.getLatencyManager()` API.
+
+#### ⚡ Improvements
+
+- Added ability to create `THEOplayerView` from non-Activity `Context`.
+
+#### 🐛 Issues
+
+- Fixed an issue where Chromecast did not start playing if the source URL did not have a file extension.
+- Fixed an issue where cast crashed if one of the values in the metadata was null.
+- Fixed an issue where the player could sometimes crash after stopping a Chromecast session.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the seeking and seeked events would fire twice while casting to AirPlay.
+- Fixed an issue where the main content would load before ad pre-rolls.
+- Fixed an issue where sideloading subtitles would fail.
+
 ## 🚀 7.8.0 (2024/07/15)
 
 ### Web

@@ -221,12 +221,18 @@ public class <span class="typeNameLabel"><a href=TypedSource.Builder.html>TypedS
                                         </tr>
                                         
                                         <tr class="altColor">
+                                            <td class="colFirst"><code>protected  <a href=../latency/LatencyConfiguration.html>LatencyConfiguration</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=TypedSource.Builder.html#latencyConfiguration>latencyConfiguration</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>protected  <a href=hls/HlsPlaybackConfiguration.html>HlsPlaybackConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=TypedSource.Builder.html#hls>hls</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>protected  <a href=dash/DashPlaybackConfiguration.html>DashPlaybackConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=TypedSource.Builder.html#dash>dash</a></code></th>
                                             <td class="colLast"></td>
@@ -370,12 +376,20 @@ public class <span class="typeNameLabel"><a href=TypedSource.Builder.html>TypedS
                                         <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code><a href=TypedSource.Builder.html>TypedSource.Builder</a></code>
                                             </td>
+                                            <th class="colSecond" scope="row"><code><a href=TypedSource.Builder.html#latencyConfiguration(com.theoplayer.android.api.latency.LatencyConfiguration)>latencyConfiguration</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../latency/LatencyConfiguration.html>LatencyConfiguration</a> latencyConfiguration) </code>
+                                            </th>
+                                            <td class="colLast">Sets the latency configuration for this source.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code><a href=TypedSource.Builder.html>TypedSource.Builder</a></code>
+                                            </td>
                                             <th class="colSecond" scope="row"><code><a href=TypedSource.Builder.html#hls(com.theoplayer.android.api.source.hls.HlsPlaybackConfiguration)>hls</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=hls/HlsPlaybackConfiguration.html>HlsPlaybackConfiguration</a> hlsPlaybackConfiguration) </code>
                                             </th>
                                             <td class="colLast">Sets the configuration for controlling playback of an HLS stream.</td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code><a href=TypedSource.Builder.html>TypedSource.Builder</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TypedSource.Builder.html#dash(com.theoplayer.android.api.source.dash.DashPlaybackConfiguration)>dash</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=dash/DashPlaybackConfiguration.html>DashPlaybackConfiguration</a> dashPlaybackConfiguration) </code>
@@ -383,7 +397,7 @@ public class <span class="typeNameLabel"><a href=TypedSource.Builder.html>TypedS
                                             <td class="colLast">Sets the configuration for controlling playback of an DASH stream.</td>
                                         </tr>
                                         
-                                        <tr id="i9" class="rowColor">
+                                        <tr id="i10" class="altColor">
                                             <td class="colFirst"><code><a href=TypedSource.html>TypedSource</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TypedSource.Builder.html#build()>build</a>() </code>
@@ -659,6 +673,36 @@ public class <span class="typeNameLabel"><a href=TypedSource.Builder.html>TypedS
                                             
                                                 <dd><p>v2.72.0</p></dd>
                                             
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="latencyConfiguration(com.theoplayer.android.api.latency.LatencyConfiguration)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>latencyConfiguration</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=TypedSource.Builder.html>TypedSource.Builder</a> <a href=TypedSource.Builder.html#latencyConfiguration(com.theoplayer.android.api.latency.LatencyConfiguration)>latencyConfiguration</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../latency/LatencyConfiguration.html>LatencyConfiguration</a> latencyConfiguration)</pre>
+                                        <div class="block"><p>Sets the latency configuration for this source. </p><ul><li>Ignored for VOD playback. </li></ul></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>latencyConfiguration</code> - The source's latency configuration.</dd>
+                                            
+                                            
+                                        
+
+                                        
+
                                         
 
                                         </dl>
