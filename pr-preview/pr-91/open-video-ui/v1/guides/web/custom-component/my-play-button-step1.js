@@ -1,1 +1,0 @@
-import{Button,buttonTemplate}from"@theoplayer/web-ui";const template=document.createElement("template");template.innerHTML=buttonTemplate("Play");export class MyPlayButton extends Button{constructor(){super({template:template})}handleClick(){alert("My play button was clicked!")}}customElements.define("my-play-button",MyPlayButton);

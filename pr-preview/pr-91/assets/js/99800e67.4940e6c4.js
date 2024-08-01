@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[71265],{43745:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"theoplayer"}')}}]);
