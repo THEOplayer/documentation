@@ -11,7 +11,7 @@ toc_max_heading_level: 2
 
 #### ✨ Features
 
-- Added support for media track enabling / disabling for HESP streams (Safari on iOS <17.1 devices not included).
+- Added support for media track enabling / disabling for HESP streams (Safari on iOS \<17.1 devices not included).
 
 #### 🐛 Issues
 
@@ -39,7 +39,7 @@ toc_max_heading_level: 2
 
 - Added support for streaming advertisements (DASH/HLS) with Google IMA.
     - It can be set by combining
-      [AdsRenderingSettings.setMimeTypes(List<String> mimeTypes)](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/api/reference/com/google/ads/interactivemedia/v3/api/AdsRenderingSettings.html#public-abstract-void-setmimetypes-liststring-mimetypes)
+      [AdsRenderingSettings.setMimeTypes(List\<String\> mimeTypes)](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/api/reference/com/google/ads/interactivemedia/v3/api/AdsRenderingSettings.html#public-abstract-void-setmimetypes-liststring-mimetypes)
       along with `GoogleImaIntegration.setAdsRenderingSettings(adsRenderingSettings: AdsRenderingSettings?)`
       or `GoogleImaIntegration.requestAds(adsRequest: AdsRequest, adsRenderingSettings: AdsRenderingSettings?)`
     - Note that this will limit the playback of the ads to the ones with the specified mimeTypes, which means some ads might be skipped.
