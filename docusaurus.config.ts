@@ -68,7 +68,7 @@ const docsConfigBase = {
 
 const config: Config = {
   title: 'THEOdocs',
-  tagline: 'Discover the latest developer documentation and samples for THEOplayer, Open Video UI and THEOlive.',
+  tagline: 'Discover the latest developer documentation and samples for THEOplayer, Open Video UI, THEOads and THEOlive.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -133,6 +133,22 @@ const config: Config = {
             banner: 'unmaintained',
             noIndex: true,
           },
+        },
+      } satisfies DocsPlugin.Options,
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'theoads',
+        path: 'theoads',
+        routeBasePath: '/theoads',
+        sidebarPath: './sidebarsTHEOads.ts',
+        lastVersion: 'current',
+        versions: {
+          current: {
+            label: fs.readFileSync(path.join(__dirname, 'theoads/version.txt'), 'utf8').trim(),
+          }
         },
       } satisfies DocsPlugin.Options,
     ],
@@ -330,6 +346,13 @@ const config: Config = {
           docsPluginId: 'theoplayer',
           label: 'THEOplayer',
           href: '/theoplayer',
+          position: 'left',
+        } satisfies PlatformSidebarNavbarItemProps,
+        {
+          type: 'custom-platformSidebar',
+          docsPluginId: 'theoads',
+          label: 'THEOads',
+          href: '/theoads',
           position: 'left',
         } satisfies PlatformSidebarNavbarItemProps,
         {
