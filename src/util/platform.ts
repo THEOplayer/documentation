@@ -80,6 +80,33 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
 ];
 
+const theoadsPlatforms: readonly PlatformDescription[] = [
+  {
+    platform: 'web',
+    label: 'THEOads for Web',
+    shortLabel: 'Web',
+    description: 'For desktop and mobile web browsers, and smart TVs like Tizen and WebOS',
+    icon: 'web',
+    minVersion: 1,
+  },
+  {
+    platform: 'android',
+    label: 'THEOads for Android',
+    shortLabel: 'Android',
+    description: 'For smartphones, tablets and Android TVs',
+    icon: 'android',
+    minVersion: 1,
+  },
+  {
+    platform: 'ios',
+    label: 'THEOads for iOS & tvOS',
+    shortLabel: 'iOS & tvOS',
+    description: 'For iPhone, iPad and Apple TV',
+    icon: 'apple',
+    minVersion: 1,
+  },
+];
+
 const openVideoUiPlatforms: readonly PlatformDescription[] = [
   {
     platform: 'web',
@@ -117,6 +144,8 @@ export function getPlatforms(docsPluginId: string): readonly PlatformDescription
     return theoplayerPlatforms;
   } else if (docsPluginId === 'open-video-ui') {
     return openVideoUiPlatforms;
+  } else if (docsPluginId === 'theoads') {
+    return theoadsPlatforms;
   } else {
     return [];
   }
@@ -133,6 +162,7 @@ export function getPlatformsByVersion(docsPluginId: string, version?: string): r
 
 type PlatformDescriptionsByName = Record<PlatformName, PlatformDescription>;
 const theoplayerPlatformsByName = Object.fromEntries(theoplayerPlatforms.map((desc) => [desc.platform, desc])) as PlatformDescriptionsByName;
+const theoadsPlatformsByName = Object.fromEntries(theoadsPlatforms.map((desc) => [desc.platform, desc])) as PlatformDescriptionsByName;
 const openVideoUiPlatformsByName = Object.fromEntries(openVideoUiPlatforms.map((desc) => [desc.platform, desc])) as PlatformDescriptionsByName;
 
 export function getPlatformByName(docsPluginId: string, platformName: PlatformName): PlatformDescription | undefined {
@@ -140,6 +170,8 @@ export function getPlatformByName(docsPluginId: string, platformName: PlatformNa
     return theoplayerPlatformsByName[platformName];
   } else if (docsPluginId === 'open-video-ui') {
     return openVideoUiPlatformsByName[platformName];
+  } else if (docsPluginId === 'theoads') {
+    return theoadsPlatformsByName[platformName];
   }
 }
 
