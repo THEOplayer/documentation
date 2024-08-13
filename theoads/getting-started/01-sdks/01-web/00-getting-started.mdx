@@ -3,14 +3,16 @@
 THEOads is a service where we use Server Guided Ad Insertion (SGAI) to deliver ads in your content.
 This has multiple advantages over Client-Side Ad Insertion (CSAI) and Server-Side Ad Insertion (SSAI).
 Some advantages include:
+
+- Scalability
+- Flexibility
 - Tune-in
-- Adblocker proof
-- ???
-- Profit
+
+THEOads enhances ad playback quality and experience while enabling innovative ad formats and simplifying ad delivery.
 
 ## Integration
 
-Setting up THEOads requires some small changes to your THEOplayer build, as well as setting up a signalling server.
+Setting up THEOads requires some small changes to your THEOplayer build, as well as setting up a signaling server.
 
 :::note
 Currently only HLS streams are supported. In the future DASH and HESP streams will also be supported.
@@ -60,8 +62,8 @@ player.source = {
           integration: 'theoads',
           networkCode: 'NETWORK-CODE',
           customAssetKey: 'CUSTOM-ASSET-KEY',
-          backdropDoubleBox: 'PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE',
-          backdropLShape: 'PATH-TO-L-SHAPE-BACKDROP-IMAGE'
+          backdropDoubleBox: 'PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE', // Optional
+          backdropLShape: 'PATH-TO-L-SHAPE-BACKDROP-IMAGE' // Optional
       }
   ]
 };
@@ -70,3 +72,8 @@ player.source = {
 - Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
 More information can be found [here](#signaling-server).
 - The `ads` object needs to have its integration set to `theoads`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
+
+
+## More information
+
+TODO LINK TO THE API REFERENCE ONCE IT IS PUBLIC
