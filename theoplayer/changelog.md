@@ -5,6 +5,43 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.10.0 (2024/08/12)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not do ABR for audio only HLS streams.
+- Fixed an issue where the player would stall indefinitely on certain HLS streams with discontinuities.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue with the positions top-left and top-right of picture-in-picture.
+
+#### 👎 Deprecations
+
+- Deprecated the `'theo'` AdIntegrationKind and `THEOplayerAdDescription`. The functionality of the default client-side ad integration remains identical but is now renamed to AdIntegrationKind `'csai'` and the associated `CsaiAdDescription`. Ad descriptions that don't explicitly configure `integration` will for now still default to `'theo'` until THEOplayer 8.0, starting from which it will default to the new `'csai'`.
+
+### Android
+
+#### ⚡ Improvements
+
+- Added support for generic ad event types (defined in [`AdsEventTypes`](https://www.theoplayer.com/docs/theoplayer/v7/api-reference/android/com/theoplayer/android/api/event/ads/AdsEventTypes.html)) to the Google IMA, Google DAI and MediaTailor integrations.
+- All events will now be dispatched on the main thread.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player could sometimes crash when starting a Chromecast session.
+- Fixed an issue where hiding the player view until the `loadeddata` event breaks the playback.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for sideloaded WebVTT thumbnails as metadata text tracks. The player will expose the thumbnails as a `TextTrack` via the `theoplayer.textTracks` API.
+
 ## 🚀 7.9.0 (2024/07/31)
 
 ### General
