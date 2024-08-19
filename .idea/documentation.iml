@@ -9,7 +9,21 @@
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/theoplayer/static/theoplayer/v6/api-reference" />
       <excludeFolder url="file://$MODULE_DIR$/theoplayer/static/theoplayer/v4/api-reference" />
+      <excludeFolder url="file://$MODULE_DIR$/open-video-ui/external/android-ui" />
+      <excludeFolder url="file://$MODULE_DIR$/open-video-ui/external/react-native-theoplayer-ui" />
+      <excludeFolder url="file://$MODULE_DIR$/open-video-ui/external/web-ui" />
+      <excludeFolder url="file://$MODULE_DIR$/theoplayer/external/flutter-theoplayer-sdk" />
+      <excludeFolder url="file://$MODULE_DIR$/theoplayer/external/react-native-theoplayer" />
+      <excludeFolder url="file://$MODULE_DIR$/theoplayer_versioned_docs/version-v4/external/react-native-theoplayer" />
+      <excludeFolder url="file://$MODULE_DIR$/theoplayer_versioned_docs/version-v6/external/react-native-theoplayer" />
     </content>
+    <content url="file://$MODULE_DIR$/open-video-ui/external/android-ui/docs" />
+    <content url="file://$MODULE_DIR$/open-video-ui/external/react-native-theoplayer-ui/doc" />
+    <content url="file://$MODULE_DIR$/open-video-ui/external/web-ui/docs" />
+    <content url="file://$MODULE_DIR$/theoplayer/external/flutter-theoplayer-sdk/doc" />
+    <content url="file://$MODULE_DIR$/theoplayer/external/react-native-theoplayer/doc" />
+    <content url="file://$MODULE_DIR$/theoplayer_versioned_docs/version-v4/external/react-native-theoplayer/doc" />
+    <content url="file://$MODULE_DIR$/theoplayer_versioned_docs/version-v6/external/react-native-theoplayer/doc" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
