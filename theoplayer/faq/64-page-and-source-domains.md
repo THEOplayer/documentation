@@ -6,7 +6,9 @@ Page and Source domains prevent unauthorized users from embedding your SDK on th
 
 
 
-Page domains (available only on Web SDK, React Native SDK and Flutter SDK) specify on which domains the player can be loaded. Imagine your website has the following domain: `example.com`, you have configured your Page domains and the THEOplayer SDK is installed on your website. When a malicious user copies your SDK and installs it on their domain, `other.com`, the player will throw an error that the license is invalid.
+Page domains (available only on Web SDK, React Native SDK and Flutter SDK) specify on which domains the player can be loaded. 
+
+Imagine your website has the following domain: `example.com`, you have configured your Page domains and the THEOplayer SDK is installed on your website. When a malicious user copies your SDK and installs it on their domain, `other.com`, the player will throw an error that the license is invalid.
 
 Whitelisting `example.com` will also whitelist all its subdomains such as `a.example.com` or `a.b.example.com` so you don't have to enter each of them one by one. Please note that whitelisting `*.example.com` <u>will not</u> whitelist the subdomains.
 
@@ -14,7 +16,7 @@ Your page domains are included on your player [license](https://www.theoplayer.c
 
 ## Source domains
 
-Source domains specify from which domains the player is allowed to play streams. When the Source domains are configured to `example.com` the player will only play streams from this domain. If the player plays a stream from `other.com`, it will throw an error that the license is invalid.
+Source domains specify from which domains the player is allowed to play streams. When the Source domains are configured to `example.com` the player will only play streams from this domain. If the player attempts to play a stream from `other.com`, it will result in an error stating that the license is invalid.
 
 Similar to Page domains, whitelisting `example.com` will also whitelist all its subdomains such as `a.example.com` or `a.b.example.com` so you don't have to enter each of them one by one. Please note that whitelisting `*.example.com` <u>will not</u> whitelist the subdomains.
 
