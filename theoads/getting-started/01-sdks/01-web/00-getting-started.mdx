@@ -44,11 +44,21 @@ Installing the signaling server can be done through Ansible.
 
 TO BE FILLED IN WHENEVER WE HAVE THIS PROCESS FINALIZED.
 
-### Player configuration
+### Integration
 
 This guide assumes you know how to set up THEOplayer. For more information regarding this check out the [THEOplayer getting started](/theoplayer/getting-started/sdks/web/getting-started/).
 
-To use the THEOads integration, only a specific source needs to be set:
+#### Google DAI library
+
+Since THEOads integrates with Google DAI Pod Serving, it is required to load the Google DAI script on your page:
+
+```html
+<script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+```
+
+#### Player configuration
+
+To make use of the THEOads integration, only a specific source needs to be set:
 
 ```javascript
 player.source = {
