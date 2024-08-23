@@ -1,9 +1,8 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import type { SidebarItemCategoryConfig } from '@docusaurus/plugin-content-docs/lib/sidebars/types';
 
 const sidebars: SidebarsConfig = {
-  web: [
-    'web/index',
+  theoads: [
+    'index',
     {
       type: 'category',
       label: 'Getting started',

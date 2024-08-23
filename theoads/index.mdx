@@ -1,22 +1,14 @@
 ---
-displayed_sidebar: web
 sidebar_label: Introduction
+sidebar_position: 1
 ---
 
 # THEOads
 
-import Intro from './shared/_intro.mdx';
-import DocCardList from '@theme/DocCardList';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import { getPlatforms } from '@site/src/util/platform';
+import SidebarDocCardList from '@site/src/components/SidebarDocCardList';
 
-<Intro />
-<DocCardList
-  items={getPlatforms('theoads').map((desc) => ({
-    type: 'link',
-    label: desc.label,
-    description: desc.description,
-    customProps: { icon: desc.icon },
-    href: useBaseUrl(`theoads/${desc.platform}`),
-  }))}
-/>
+THEOAds is the Future of Viewer Engagement and Monetization.
+
+Creating more but less intrusive monetization opportunities in a better way.
+
+<SidebarDocCardList />
