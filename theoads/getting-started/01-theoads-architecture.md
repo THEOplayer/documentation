@@ -36,4 +36,4 @@ It handles VAST wrapper unwrapping and ad transcoding to ensure media file avail
 Serves the ad stream for the full ad break with in-stream metadata for tracking ad insights.
 
 
-![THEOads architecture](../../../assets/img/THEOads_architecture.png)
+![THEOads architecture](../assets/img/THEOads_architecture.png)
