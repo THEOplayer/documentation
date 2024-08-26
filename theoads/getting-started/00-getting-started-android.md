@@ -6,4 +6,3 @@ sidebar_label: Android
 # Getting started on Android
 
 ## Installation
-

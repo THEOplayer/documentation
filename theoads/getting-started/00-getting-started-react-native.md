@@ -6,4 +6,3 @@ sidebar_label: React native
 # Getting started on React Native
 
 ## Installation
-

@@ -6,4 +6,3 @@ sidebar_label: iOS
 # Getting started on iOS
 
 ## Installation
-

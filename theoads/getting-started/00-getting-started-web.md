@@ -17,14 +17,13 @@ Currently only HLS streams are supported. In the future DASH and HESP streams wi
 
 The THEOads feature is only included in the `@theoplayer/theoads` package which can be installed by executing the following command:
 
-``` bash
+```bash
 npm install @theoplayer/theoads
 ```
 
 ### 2. You need to have a THEOplayer license which is compatible with THEOads
 
 This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
-
 
 ## Integration
 
@@ -45,19 +44,19 @@ To make use of the THEOads integration, only a specific source needs to be set:
 ```javascript
 player.source = {
   sources: {
-      src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI',
-      type: 'application/x-mpegurl',
-      hlsDateRange: true
+    src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI',
+    type: 'application/x-mpegurl',
+    hlsDateRange: true,
   },
   ads: [
-      {
-          integration: 'theoads',
-          networkCode: 'NETWORK-CODE',
-          customAssetKey: 'CUSTOM-ASSET-KEY',
-          backdropDoubleBox: 'PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE', // Optional
-          backdropLShape: 'PATH-TO-L-SHAPE-BACKDROP-IMAGE' // Optional
-      }
-  ]
+    {
+      integration: 'theoads',
+      networkCode: 'NETWORK-CODE',
+      customAssetKey: 'CUSTOM-ASSET-KEY',
+      backdropDoubleBox: 'PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE', // Optional
+      backdropLShape: 'PATH-TO-L-SHAPE-BACKDROP-IMAGE', // Optional
+    },
+  ],
 };
 ```
 
@@ -65,7 +64,6 @@ player.source = {
   More information can be found [here](00-getting-started-signaling-service.md).
 - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
 - The `ads` object needs to have its integration set to `theoads`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
-
 
 ## More information
 
