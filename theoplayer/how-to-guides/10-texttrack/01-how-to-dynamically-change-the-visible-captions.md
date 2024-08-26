@@ -35,12 +35,13 @@ function setLanguage(player, language) {
 
 ```swift
 private func setLanguage(player: THEOplayer, language: String) {
-    let array = player.textTracks as! Array<TextTrack>
-    //Disable all current active textTracks
-    _ = array.filter { $0.mode != "disabled" }.forEach { $0.mode == TextTrackMode.disabled }
-    //Enable the text track for a specific language.
-    var textTrackToActivate = array.filter { $0.label == language }[0]
-    textTrackToActivate.mode = TextTrackMode.showing
+    let list: TextTrackList = player.textTracks
+    for i in 0..<list.count {
+        var textTrack: TextTrack = list[i]
+        if textTrack.label == language {
+            textTrack.mode = .showing
+        }
+    }
 }
 ```
 
