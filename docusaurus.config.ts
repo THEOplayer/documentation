@@ -144,12 +144,6 @@ const config: Config = {
         path: 'theoads',
         routeBasePath: '/theoads',
         sidebarPath: './sidebarsTHEOads.ts',
-        lastVersion: 'current',
-        versions: {
-          current: {
-            label: fs.readFileSync(path.join(__dirname, 'theoads/version.txt'), 'utf8').trim(),
-          }
-        },
       } satisfies DocsPlugin.Options,
     ],
     [
