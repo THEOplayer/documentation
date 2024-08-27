@@ -13,7 +13,7 @@ Let's discuss this in more detail for custom [Web](#web), [Android](#android) an
 
 ### Web
 
-The following webpage should suffice:
+The following web page should suffice:
 
 ```html
 <!doctype html>
@@ -62,7 +62,7 @@ The following webpage should suffice:
 </html>
 ```
 
-Load this in Google Chrome, connect to a Chromecast device, and then you can do:
+Load this in Google Chrome, connect to a Chromecast device, and then you can do the following:
 
 ```js
 startCasting({
@@ -85,7 +85,7 @@ This will start playback.
 
 ### Android
 
-First, set up your CastOptionsProvider:
+First, set up your `CastOptionsProvider`:
 
 ```java
 package com.yourcomp.chromecastSender;
@@ -116,7 +116,7 @@ public class THEOCastOptionsProvider implements OptionsProvider {
 }
 ```
 
-And link to it in your AndroidManifest.xml file:
+And link to it in your `AndroidManifest.xml` file:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -134,8 +134,8 @@ And link to it in your AndroidManifest.xml file:
 </manifest>
 ```
 
-Fill in the correct class name by replacing "com.yourcomp.chromecastSender.CastOptionsProvider"!
-You can change the DEFAULT_APP_ID to direct to your own Chromecast app. Next you can actually do the casting like so:
+Fill in the correct class name by replacing `com.yourcomp.chromecastSender.CastOptionsProvider`!
+You can change the `DEFAULT_APP_ID` to direct to your own Chromecast app. Next you can actually do the casting like the following:
 
 ```java
 package com.yourcomp.chromecastSender;
@@ -237,12 +237,13 @@ GCKCastContext.setSharedInstanceWith(options)
 ```
 
 Once this is done, it’s necessary to start a session.
-This is usually done by creating a cast button somewhere in your UI using GCKUICastButton, which when pressed opens up a dialog allowing you to select a device and start a session.
+This is usually done by creating a cast button somewhere in your UI using `GCKUICastButton`, which when pressed opens up a dialog allowing you to select a device and start a session.
 
 Once a session is started, you can start playing back content.
-The THEOplayer Chromecast receiver is capable of playing back content easily using the default Google Cast APIs (with GCKMediaInformationBuilder and LoadRequest).
+The THEOplayer Chromecast receiver is capable of playing back content easily using the default Google Cast APIs (with `GCKMediaInformationBuilder` and `LoadRequest`).
 However, to use the more advanced functionality, you will need to pass in custom data in the [`GCKMediaLoadOptions`](https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_media_load_options) object.
-This custom data follows the structure of SourceDescription as used in the web version of THEOplayer, except we have to use NSDictionary notation.
+
+This custom data follows the structure of `SourceDescription` as used in the web version of THEOplayer, except we have to use `NSDictionary` notation.
 
 ```swift
 let metadata = GCKMediaMetadata()
@@ -283,7 +284,7 @@ loadOptions.customData = ["sourceDescription": sourceDescription]
 castSession!.remoteMediaClient?.loadMedia(mediaInfo, with: loadOptions)
 ```
 
-Note that you should also adapt the contentID and contentType in the arguments for the GCKMediaInformation initializer.
+Note that you should also adapt the contentID and contentType in the arguments for the `GCKMediaInformation` initializer.
 
 You have to use the Chromecast API to implement additional logic such as pausing the Chromecast Receiver application, fetching the video's progress, ...
 
@@ -297,4 +298,4 @@ You have to use the Chromecast API to implement additional logic such as pausing
 
 - [How to know whether a live stream is playing?](../../../faq/14-how-to-know-when-livestream-is-playing.md)
 
-- [Chromecast SDK Setup](../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)
+- [Getting started on Chromecast](../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)
