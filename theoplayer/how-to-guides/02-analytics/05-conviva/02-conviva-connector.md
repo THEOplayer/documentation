@@ -36,7 +36,7 @@ Install using your favorite package manager for Node (such as npm or yarn):
 
 Define the Conviva metadata and configuration:
 
-```js
+```javascript
 const convivaMetadata = {
   ["Conviva.assetName"]: "ASSET_NAME_GOES_HERE",
   ["Conviva.streamUrl"]: "CUSTOMER_STREAM_URL_GOES_HERE",
@@ -58,7 +58,7 @@ Using these configs you can create the Conviva connector with THEOplayer. Altern
 
 - Add as a regular script:
 
-```html
+```javascript
 <script type="text/javascript" src="path/to/conviva-connector.umd.js"></script>
 <script type="text/javascript">
   const player = new THEOplayer.Player(element, configuration);
@@ -72,7 +72,7 @@ Using these configs you can create the Conviva connector with THEOplayer. Altern
 
 - Add as an ES2015 module:
 
-```html
+```javascript
 <script type="module">
   import { ConvivaConnector } from "path/to/conviva-connector.esm.js";
   const player = new THEOplayer.Player(element, configuration);
@@ -100,7 +100,7 @@ If you have a Yospace SSAI stream and want to also report ad related events to C
 
 After configuring the Yospace connector, you can link it to the Conviva connector:
 
-```js
+```javascript
 async function setupYospaceConnector(player) {
   const source = {
     sources: [
@@ -133,87 +133,105 @@ async function setupYospaceConnector(player) {
 
 ### Prerequisites
 
-1. The THEOplayer Android SDK Conviva Connector requires the application to import the THEOplayer Android SDK since the connector relies on its public APIs. For more details, check out our [Getting started on Android](../../../getting-started/01-sdks/02-android/00-getting-started.md) or [Getting started on Legacy Android SDK (4.12.x)](../../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/00-getting-started.md) guide.
+1. The THEOplayer Android SDK Conviva Connector requires the application to import the THEOplayer Android SDK since the connector relies on its public APIs. For more details, check out our [Getting started on Android](../../../getting-started/01-sdks/02-android/00-getting-started.md) guide.
 2. For setting up a valid Conviva session, you must have access to a Conviva developer account with access to a debug or production key.
 
 ### Installation
 
 After setting up the THEOplayer Android SDK, in your module level `build.gradle` file add the THEOplayer Android SDK Conviva Connector and the Conviva SDK:
 
-```java
+```kotlin
 implementation 'com.theoplayer.android-connector:conviva:+'
-implementation 'com.conviva.sdk:conviva-core-sdk:4.0.23'
+implementation 'com.conviva.sdk:conviva-core-sdk:4.0.33'
 ```
 
 ### Usage
 
 #### Setting up the Conviva Connector
 
-```java
+```kotlin
 val theoplayerView: THEOplayerView
 
 private fun setupConviva() {
     val customerKey = "your_conviva_customer_key"
     val gatewayUrl = "your_conviva_debug_gateway_url"
-
-    val settings = HashMap<String, Any>()
-    settings[ConvivaSdkConstants.GATEWAY_URL] = gatewayUrl
-    settings[ConvivaSdkConstants.LOG_LEVEL] = SystemSettings.LogLevel.DEBUG
-
-    convivaConnector = ConvivaConnector(applicationContext, theoplayerView.player, customerKey, settings)
-    convivaConnector?.setViewerId("viewer ID")
+    
+    val metadata = hashMapOf(
+        "Conviva.applicationName" to "THEOplayer",
+        "Conviva.viewerId" to "viewerId"
+    )
+    val config = ConvivaConfiguration(
+        customerKey,
+        true, // debug
+        gatewayUrl,
+    )
+    convivaConnector = ConvivaConnector(applicationContext, theoplayerView.player, metadata, config)
 }
 ```
 
 #### Setting asset name
 
-Whenever a new source is set on the player, follow it by setting the new asset name. For example:
+Most media related properties, such as its `streamURL`, `duration` or whether it is a `live` or `vod` stream, are determined and passed by the connector itself when setting a new source.
 
-```java
+Whenever a new source is set on the player, the metadata title property is used to pass an asset name.
+
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+        TypedSource.Builder("https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8").build()
+    )
+    .metadata(MetadataDescription(mapOf("title" to "Big Buck Bunny")))
+    .build()
+```
+
+Alternatively, the asset name can be passed to the connector at any time along with additional metadata through an open key-value map, for example:
+
+```kotlin
 theoplayerView.player.source = sourceDescription
-convivaConnector?.setAssetName("BigBuckBunny with Google IMA ads")
+convivaConnector?.setContentInfo(hashMapOf(
+    "Conviva.assetName" to "Big Buck Bunny",
+    "customTag1" to "customValue1",
+    "customTag2" to "customValue2"
+))
+```
+
+#### Starting a new session on program boundaries
+
+By default, new sessions are only started on play-out of a new source, or when an ad break starts. During a live stream it is possible to manually mark the start of a new session, for example when a new program starts.
+
+```kotlin
+convivaConnector?.stopAndStartNewSession(hashMapOf(
+    "Conviva.assetName" to "New program",
+    "customTag1" to "customValue1",
+    "customTag2" to "customValue2"
+))
 ```
 
 #### Destroying / Cleaning up
 
 To release listeners and resources, call `destroy` whenever the Conviva Connector is no longer needed.
 
-```java
+```kotlin
 convivaConnector?.destroy()
 ```
 
 After destroying a Conviva Connector instance, it can no longer be used. If needed, a new instance should be created.
 
-## iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
+## iOS/tvOS SDK
 
 ### Installation
 
-#### Swift Package Manager
+#### [Swift Package Manager](https://swift.org/package-manager/)
 
 1. In Xcode, install the Conviva libraries by navigating to **File > Add Packages**
 2. In the prompt that appears, select the iOS-Connector GitHub repository: `https://github.com/THEOplayer/iOS-Connector`
 3. Select the version you want to use.
 4. Choose the Connector libraries you want to include in your app.
 
-To support custom feature builds of THEOplayerSDK perform the following steps:
-
-1. Clone the [THEOplayer Conviva connector repository](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva) to your computer.
-2. Use a [local override](https://developer.apple.com/documentation/xcode/editing-a-package-dependency-as-a-local-package) of the theoplayer-sdk-ios package by selecting the folder `../../Helpers/TheoSPM/theoplayer-sdk-ios` in Finder and dragging it into the Project navigator of your Xcode project.
-3. Place your custom `THEOplayerSDK.xcframework` at `../../Helpers/TheoSPM/theoplayer-sdk-ios/THEOplayerSDK.xcframework`. (It is also possible to place your xcframework somewhere else. In that case make sure to update the [Package.swift](https://github.com/THEOplayer/iOS-Connector/blob/main/Helpers/TheoSPM/theoplayer-sdk-ios/Package.swift) manifest inside your local override so that it points to your custom THEOplayer build)
-4. If Xcode complains about a missing xcframework
-   1. Choose `File` > `Packages` > `Reset Package Caches` from the menu bar.
-   2. If it is still not working, make sure to remove any `THEOplayerSDK.xcframework` inclusions that you manually installed before installing this THEOplayer-Connector-Conviva package.
-
-#### Cocoapods
+#### [Cocoapods](https://guides.cocoapods.org/using/getting-started.html#getting-started)
 
 1. Create a Podfile if you don't already have one. From the root of your project directory, run the following command: `pod init`
 2. To your Podfile, add the Conviva connector pods that you want to use in your app: `pod 'THEOplayer-Connector-Conviva'`
 3. Install the pods using `pod install`, then open your `.xcworkspace` file to see the project in Xcode.
-
-To support custom feature builds of THEOplayerSDK perform the following steps:
-
-1. Clone this repository to your computer.
-2. Use a [local override](https://guides.cocoapods.org/using/the-podfile.html#using-the-files-from-a-folder-local-to-the-machine) of the `THEOplayerSDK-basic` pod by adding the following line to your projects Podfile: `pod 'THEOplayerSDK-basic', :path => 'iOS-Connector/Helpers/TheoPod'` and make sure the path points to the [TheoPod folder](https://github.com/THEOplayer/iOS-Connector/tree/main/Helpers/TheoPod).
 
 ### Usage
 
@@ -223,13 +241,13 @@ Import the `THEOplayerConnectorConviva` module:
 import THEOplayerConnectorConviva
 ```
 
-Create a `ConvivaConfiguration` that contains the info on how to connect to your Conviva endpoint:
+Create a `ConvivaConfiguration` that contains the info on how to connect to your conviva endpoint:
 
 ```swift
 let configuration = ConvivaConfiguration(
-      customerKey: "put your customer key here",
-      gatewayURL: " put your  gateway URL here ",
-      logLevel: .LOGLEVEL_FUNC
+    customerKey: "put your customer key here",
+    gatewayURL: " put your  gateway URL here ",
+    logLevel: .LOGLEVEL_FUNC
 )
 ```
 
@@ -237,31 +255,38 @@ Create a `ConvivaConnector` that uses this `configuration` and your `THEOplayer`
 
 ```swift
 let connector = ConvivaConnector(
-      configuration: configuration,
-      player: yourTHEOplayer
+    configuration: configuration,
+    player: yourTHEOplayer
 )
 ```
 
-Report the viewer's ID:
+For each asset you play, the **asset name** needs to be reported to Conviva which you can do by providing the asset name as a `title` field inside your `SourceDescription's metadata`:
 
 ```swift
-connector.report(viewerID: "John Doe")
+let mySource = SourceDescription(source: source, metadata: MetadataDescription(metadataKeys: ["title": "your_asset_name"]))
 ```
 
-For each asset that you play, set its name using:
+Alternatively, the asset name can be provided as contentInfo (`CIS_SSDK_METADATA_ASSET_NAME`) using the `setContentInfo` method, along with other metadata. For example to report the viewer's ID: 
 
 ```swift
-connector.report(assetName: "Star Wars - Episode II")
+let contentInfo = [ 
+   CIS_SSDK_METADATA_VIEWER_ID: "your_viewer_id"
+]
+connector.setContentInfo(contentInfo)
 ```
+
+**Important note**: setting a new source on the player will reset previously set `contentInfo`. Make sure to use the `setContentInfo` method after receiving the `SOURCE_CHANGE` event.
+
+### Lifecycle
 
 Hold a reference to your connector. Once the connector is released from memory it will clean up itself and stop reporting to Conviva.
 
 ## Related links:
 
 - Demo page: [Conviva Analytics Test Page](https://cdn.theoplayer.com/conviva/conviva_test.html)
-- [Web SDK connector on Github](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)
-- [Android SDK connector on Github](https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva)
-- [iOS SDK connector on Github](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva)
+- [Web SDK connector on GitHub](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)
+- [Android SDK connector on GitHub](https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva)
+- [iOS SDK connector on GitHub](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva)
 - [Conviva SDK Documentation](https://cdn.theoplayer.com/conviva/Conviva_Documentation_4.0.14/index.html)
 - More Information about [Conviva Video Experience](https://www.conviva.com/experience-insights/)
 - More Information about [Conviva Ad Insights](https://www.conviva.com/ad-insights/)
