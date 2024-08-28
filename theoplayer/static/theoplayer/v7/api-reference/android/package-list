@@ -50,6 +50,7 @@ com.theoplayer.android.api.ads
 com.theoplayer.android.api.ads.dai
 com.theoplayer.android.api.ads.ima
 com.theoplayer.android.api.ads.mediatailor
+com.theoplayer.android.api.ads.theoads
 com.theoplayer.android.api.cache
 com.theoplayer.android.api.cast
 com.theoplayer.android.api.cast.chromecast

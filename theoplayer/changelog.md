@@ -5,6 +5,47 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.11.0 (2024/08/26)
+
+### General
+
+#### ⚡ Improvements
+
+- Added support for the 'urn:mpeg:dash:adaptation-set-switching:2016' property inside DASH SupplementalProperty.
+
+### Web
+
+#### ✨ Features
+
+- Added support for FLAC audio in CMAF HLS streams.
+
+#### ⚡ Improvements
+
+- Set an empty WAI-ARIA `role` attribute on the Web Worker iframe to make sure it is ignored by assistive technologies, such as screen readers.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would unmute after source changes and seeks on Tizen 2.4.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where no `sourcechange` event would be dispatched when resetting the player's source after play-out of a non-streamable asset.
+- Fixed an issue where the Metrics API reported incorrect values.
+
+#### 👎 Deprecations
+
+- Deprecated unused `UIConfiguration`.
+- Deprecated unused `THEOplayerConfig#getUi()`.
+- Deprecated unused `THEOplayerConfig.Builder#ui(UIConfiguration)`.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the picture-in-picture window would disappear after an ad preroll ends.
+
 ## 🚀 7.10.0 (2024/08/12)
 
 ### General
