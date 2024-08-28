@@ -1,112 +1,30 @@
-# Youbora
+# Youbora (NPAW Plugin)
 
-This article is a good place to start if you are looking for information on how to configure the THEOplayer Youbora pre-integration, which is part of the [Analytics API](pathname:///theoplayer/v7/api-reference/web/types/YouboraAnalyticsIntegrationID.html).
+This article is a good place to start if you are looking for information on how to configure THEOplayer with Youbora.
 
-## SDKs
+Youbora adapter (NPAW plugin) for THEOplayer is maintained by the NPAW team and regularly kept up to date to make sure it is compatible with the latest THEOplayer version.
 
-| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
-| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
-|   Yes   |     Yes     |   Yes   |    No    |      Yes       |      Yes       |
+In order to access the links on this guide, you may need to login with your NPAW developer account.
 
-## Code example
+Before you get started, for general information on NPAW plugin, please refer to [this guide](https://documentation.npaw.com/integration-docs/docs/first-steps).
 
 ##### Web SDK
-Make sure you load the Youbora plugin in the head of the page.
 
-```html  
-<script src="https://smartplugin.youbora.com/v6/js/adapters/theoplayer2/6.8.10/sp.min.js"></script>  
-```  
+For general information on NPAW plugin for Web and how to set it up, please refer to [this guide](https://documentation.npaw.com/integration-docs/docs/js-integration-guide).
 
-Include the following in your `SourceDescription` object:
-
-```js  
-var youbora = {  integration: "youbora",  
-  accountCode: "YOUR_YOUBORA_ACCOUNT_CODE",  
-  enableAnalytics: true,  
-  username: "THEO",  
- "content.title": "THEO 1 (VOD)", "content.duration": 653, "content.isLive": false,}  
-  
-var SourceDescription = {  sources: [typedSource],  
-  analytics: [youbora],  
-}  
-```  
+For integration with THEOplayer Web SDK, please refer to their integration guide [here](https://documentation.npaw.com/integration-docs/docs/theoplayer-js).
 
 ##### Android (TV) SDK
 
-You need to first initialize the Youbora library on your application. You can do this in two different ways:
+For general information on NPAW plugin for Android (TV) and how to set it up, please refer to [this guide](https://documentation.npaw.com/integration-docs/docs/android-integration-guide).
 
-- While creating the player programmatically:
+For integration with THEOplayer Android SDK, please reach out to the NPAW team to get the latest resources.
 
-```java  
-// create player config  
-THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()  
- .analytics(new YouboraOptions.Builder("YOUR_YOUBORA_ACCOUNT_CODE").build()) .build();  
-// create player  
-THEOplayerView tpv = new THEOplayerView(this, playerConfig);  
-```  
+##### iOS/tvOS SDK
 
-- Or through the player's XML configuration:
+For general information on NPAW plugin for iOS/tvOS and how to set it up, please refer to [this guide](https://documentation.npaw.com/integration-docs/docs/ios-integration-guide).
 
-```java  
-<com.theoplayer.android.api.THEOplayerView  
- android:id="@+id/theo_player_view" app:youboraAccountCode="YOUR_YOUBORA_ACCOUNT_CODE" />```  
-  
-You can then set a Youbora source like the following:  
-  
-```java  
-YouboraOptions youbora = new YouboraOptions.Builder("YOUR_YOUBORA_ACCOUNT_CODE")  
- .put("enableAnalytics", "true") .put("username", "THEO") .put("content.title", "VOD") .put("content.duration", "653") .put("content.isLive", "false") .build();  
-SourceDescription elephantsDream = SourceDescription.Builder  
- .sourceDescription(TypedSource.Builder.typedSource().src("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8").build()) .analytics(youbora) .build();  
-tpv.getPlayer().setSource(elephantsDream);  
-```
-
-:::info
-
-Starting from Android SDK API 28, Google introduced some additional network security configurations. By default, http requests are blocked by the OS unless the application explicitly allows it.
-
-In order to allow http requests (and allow Youbora data to be sent to the dashboard), you should follow the instructions in their guide: [Network security configuration](https://developer.android.com/training/articles/security-config).
-
-Basically there are 2 different ways to solve this on your app:
-
-1. Set the `android:usesCleartextTraffic="true"` flag under your application tag.
-2. If you are using a network security config such as: `android:networkSecurityConfig="@xml/network_security_config"`, include this flag on your configuration, for example:
-
-```java  
-<?xml version="1.0" encoding="utf-8"?>  
-<network-security-config>  
- <domain-config cleartextTrafficPermitted="true"> .... </domain-config> <base-config cleartextTrafficPermitted="false"/></network-security-config>  
-``` 
-
-:::
-
-##### Legacy iOS/tvOS SDK (4.12.x)
-
-You need to first initialize the Youbora library on your application. You can do this on your player's configuration object:
-
-```swift
-let youboraOptions = YouboraOptions(accountCode: "YOUR_YOUBORA_ACCOUNT_CODE")
-youboraOptions.put(key: "enableAnalytics", value: "true")
-let playerConfiguration = THEOplayerConfiguration(chromeless: true, analytics: [youboraOptions])
-```
-
-You can then provide different Youbora option objects per source you set:
-
-```swift
-let youbora = YouboraOptions(accountCode: "YOUR_YOUBORA_ACCOUNT_CODE")
-youbora.put(key: "enableAnalytics", value: "true")
-youbora.put(key: "username", value: "THEO")
-youbora.put(key: "content.title", value: "THEO 1 (VOD)")
-youbora.put(key: "content.duration", value: "653")
-youbora.put(key: "content.isLive", value: "false")
-let sourceDescription = SourceDescription(source : typedSource, analytics: [youbora])
-```
-
-## Related links
-
-- [Analytics API](pathname:///theoplayer/v7/api-reference/web/interfaces/Analytics.html)
-- NPAW's own Youbora THEOplayer plugin: [Web](https://bitbucket.org/npaw/theoplayer2-adapter-js/src/master/), [iOS](https://bitbucket.org/npaw/theoplayer-adapter-ios/src/master/), [Android](https://bitbucket.org/npaw/theoplayer-adapter-android/src/master/)
-- Youbora documentation on NPAW's website: [Web](https://documentation.npaw.com/integration-docs/docs/theoplayer), [iOS](https://documentation.npaw.com/integration-docs/docs/theoplayer-ios), [Android](https://documentation.npaw.com/integration-docs/docs/theoplayer-android) (login required)
+For integration with THEOplayer iOS/tvOS SDK, please reach out to the NPAW team to get the latest resources.
 
 ## Related articles
 
