@@ -96,7 +96,7 @@ theoPlayer.ads.addEventListener(GoogleImaAdEventType.AD_BREAK_STARTED) {
 The `Player` API exposes an [`ads`](pathname:///theoplayer/v7/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C3adsAA3Ads_pvp) property which belongs to the [`Ads`](pathname:///theoplayer/v7/api-reference/ios/Protocols/Ads.html) interface. Because this `Ads` interface inherits from [`EventDispatcher`](pathname:///theoplayer/v7/api-reference/ios/Ads%20Events.html),
 you can leverage event listeners in this interface.
 
-The ad-related events are documented in [Ads Events](pathname:///theoplayer/v7/api-reference/ios/Ads%20Events.html).
+The ad-related events are documented in [AdsEventTypes](pathname:///theoplayer/v7/api-reference/ios/Structs/AdsEventTypes.html).
 
 To subscribe to an event, you select an event from this page, use the `Ads` interface, call the `addEventListener` method, and set the event as the first parameter, and the callback as the second parameter.
 
@@ -146,13 +146,13 @@ player.ads.addEventListener(
 
 This use-case is an application of [Subscribing to an event](#subscribing-to-an-event), and relates to the following events:
 
-- `started`
-- `ad_break_started`
-- `ad_period_started`
-- `completed`
-- `all_ads_completed`
-- `ad_break_ended`
-- `ad_period_ended`
+- `STARTED`
+- `AD_BREAK_STARTED`
+- `AD_PERIOD_STARTED`
+- `AD_BREAK_ENDED`
+- `AD_PERIOD_ENDED`
+- `COMPLETED`
+- `ALL_ADS_COMPLETED`
 
 ```kotlin
 theoPlayer.ads.addEventListener(GoogleImaAdEventType.AD_BREAK_STARTED) {
@@ -164,10 +164,10 @@ theoPlayer.ads.addEventListener(GoogleImaAdEventType.AD_BREAK_STARTED) {
 
 This use-case is an application of [Subscribing to an event](#subscribing-to-an-event), and relates to the following events:
 
-- `AdBegin`
-- `AdBreakBegin`
-- `AdBreakEnd`
-- `AdEnd`
+- `AD_BEGIN`
+- `AD_BREAK_BEGIN`
+- `AD_END`
+- `AD_BREAK_END`
 
 ```swift
 player.ads.addEventListener(type: AdsEventTypes.AD_BREAK_BEGIN) { (event) in
@@ -195,7 +195,7 @@ player.ads.addEventListener("aderror", function (event) {
 
 #### Android SDK
 
-This use-case is an application of [Subscribing to an event](#subscribing-to-an-event), specifically the `ad_error` event.
+This use-case is an application of [Subscribing to an event](#subscribing-to-an-event), specifically the `AD_ERROR` event.
 
 The following snippet would trigger the callback when an ad error occurs:
 
@@ -207,7 +207,7 @@ theoPlayer.ads.addEventListener(GoogleImaAdEventType.AD_ERROR) {
 
 #### iOS/tvOS SDK
 
-This use-case is an application of [Subscribing to an event](#subscribing-to-an-event), specifically the `ad_error` event.
+This use-case is an application of [Subscribing to an event](#subscribing-to-an-event), specifically the `AD_ERROR` event.
 
 The following snippet would trigger the callback when an ad error occurs:
 
