@@ -52,7 +52,7 @@ We configure cuePoints in this example. This is needed for some set-ups or compl
 
 This API is currently not available on the Android (TV) SDK.
 
-##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
+##### iOS/tvOS SDK
 
 This API is currently not available on the iOS (/tvOS) SDK.
 

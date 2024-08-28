@@ -17,7 +17,7 @@ The API reference is available through the following links:
 
 Use the API as demonstrated below:
 
-#### THEOplayer Web SDK
+#### Web SDK
 
 ```javascript
 // const player = new THEOplayer.Player(...)
@@ -51,8 +51,6 @@ if (chromecastState != "unavailable") {
 }
 ```
 
-#### THEOplayer Android SDK
-
 ##### Android SDK
 
 ```java
@@ -72,29 +70,7 @@ theoplayerView.getCast().getChromecast().addEventListener(ChromecastEventTypes.S
 });
 ```
 
-##### Legacy Android SDK (4.12.x)
-
-```java
-PlayerCastState chromecastState = theoplayerView.getCast().getChromecast().getState();
-boolean isCasting = theoplayerView.getCast().isCasting();
-// if (want to start Chromecast)
-theoplayerView.getCast().getChromecast().start();
-// if (Want to stop Chromecast)
-theoplayerView.getCast().getChromecast().stop();
-theoplayerView.getCast().getChromecast().addEventListener(ChromecastEventTypes.STATECHANGE, event -> {
-    if (event.getState() == PlayerCastState.AVAILABLE) {
-        // show Chromecast available icon
-    } else if (event.getState() == PlayerCastState.CONNECTED) {
-        // show Chromecast connected icon
-    } else if (event.getState() == PlayerCastState.CONNECTING) {
-        // show Chromecast connecting icon
-    } else if (event.getState() == PlayerCastState.UNAVAILABLE) {
-        // show Chromecast unavailable icon
-    }
-});
-```
-
-#### THEOplayer iOS SDK
+#### iOS SDK
 
 ```swift
 private func setupTheoplayer() {

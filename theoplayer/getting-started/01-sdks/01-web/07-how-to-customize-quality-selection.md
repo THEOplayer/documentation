@@ -1,4 +1,4 @@
-# How to customise quality selection & labels (MP4)
+# How to customise quality selection and labels on the default UI (MP4)
 
 Some of our customers prefer MP4 assets over HLS/MPEG-DASH ones. One major downside to this approach is that Adaptive Bitrate Streaming (ABR) is not possible with such streams, as they don't have a playlist with multiple qualities.
 
@@ -8,24 +8,22 @@ To counter this, we've made it possible to pass on a list of MP4 qualities & swi
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
-|   Yes   |     Yes     |   Yes   |   N/A    |      Yes       |      N/A       |
+|   Yes   |     N/A     |   N/A   |   N/A    |      N/A       |      N/A       |
 
-## Customizing the quality selector & labels
+## Customizing the quality selector and labels
 
 This example explains how to customise quality selection & labels for MP4 assets.
 
 ##### Web SDK
 
-First of all, we need to [set up the player](./00-getting-started.mdx) (don't forget to edit the placeholders to match your setup).
-
-Then, the different MP4 qualities of the same asset need to be stated, along with the corresponding resolutions:
+First of all, we need to [set up the player](./00-getting-started.mdx). Then, the different MP4 qualities of the same asset need to be stated, along with the corresponding resolutions:
 
 ```js
 // set your resolutions and sources
 var resolutions = [
-  { name: "360p", src: "http://example.com/demos/sample-videos/low.mp4" },
-  { name: "540p", src: "http://example.com/demos/sample-videos/medium.mp4" },
-  { name: "720p", src: "http://example.com/demos/sample-videos/high.mp4" }
+  { name: "360p", src: "https://example.com/demos/sample-videos/low.mp4" },
+  { name: "540p", src: "https://example.com/demos/sample-videos/medium.mp4" },
+  { name: "720p", src: "https://example.com/demos/sample-videos/high.mp4" }
 ];
 ```
 
@@ -81,13 +79,11 @@ selectQuality(resolutions[0]);
 
 ##### Android SDK
 
-The above JavaScript code can be used for Android projects by injecting the JavaScript code.
-Documentation for: [Injecting CSS and JavaScript to Android/iOS](../../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+Android SDK does not have a built-in UI. It also does not support JavaScript injection. However, you can implement a similar custom quality selection menu using [Open Video UI for Android](https://github.com/THEOplayer/android-ui) and following the same logic for Web SDK.
 
-##### Legacy iOS/tvOS SDK (4.12.x)
+##### iOS SDK
 
-The above JavaScript code can be used for Android projects by injecting the JavaScript code.
-Documentation for: [Injecting CSS and JavaScript to Android/iOS](../../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+iOS SDK does not have a built-in UI. It also does not support JavaScript injection. However, you can implement a similar custom quality selection menu on your custom UI following the same logic for Web SDK.
 
 You can now select multiple qualities of the same MP4 asset!
 
