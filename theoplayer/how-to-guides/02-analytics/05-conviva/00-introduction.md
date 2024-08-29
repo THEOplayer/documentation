@@ -1,6 +1,6 @@
 # Introduction
 
-Conviva is an analytics service. THEOplayer offers a connector which can be initialised depending upon the
+Conviva is an analytics service. THEOplayer offers a connector which can be initialized depending upon the
 customer requirements for measuring all the solutions offered by Conviva (Video Analytics & Ads Analytics).
 
 Please check out our guide on how to integrate the [Conviva Connector for VideoAnalytics & AdsAnalytics](02-conviva-connector.md).

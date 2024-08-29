@@ -17,7 +17,7 @@ to this
 
 ## Making the audio player from the video player
 
-This section explains how to alter the default video player UI into the UI shown in the picture below, thus transforming a default THEOplayer instance in an audio player. This can, of course, be further customised to your liking to adapt to the rest of your implementation.
+This section explains how to alter the default video player UI into the UI shown in the picture below, thus transforming a default THEOplayer instance in an audio player. This can, of course, be further customized to your liking to adapt to the rest of your implementation.
 
 ![Audio Only](../../assets/img/audio-only-3.png "Audio Only")
 

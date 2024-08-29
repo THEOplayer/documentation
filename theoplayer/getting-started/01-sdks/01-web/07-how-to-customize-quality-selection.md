@@ -1,8 +1,8 @@
-# How to customise quality selection and labels on the default UI (MP4)
+# How to customize quality selection and labels on the default UI (MP4)
 
 Some of our customers prefer MP4 assets over HLS/MPEG-DASH ones. One major downside to this approach is that Adaptive Bitrate Streaming (ABR) is not possible with such streams, as they don't have a playlist with multiple qualities.
 
-To counter this, we've made it possible to pass on a list of MP4 qualities & switch between them manually, to improve the overall UX. What is nice about this piece of integration code, is that it can be tweaked and applied to customise other parts of the default UI as well!
+To counter this, we've made it possible to pass on a list of MP4 qualities & switch between them manually, to improve the overall UX. What is nice about this piece of integration code, is that it can be tweaked and applied to customize other parts of the default UI as well!
 
 ## SDKs
 
@@ -12,7 +12,7 @@ To counter this, we've made it possible to pass on a list of MP4 qualities & swi
 
 ## Customizing the quality selector and labels
 
-This example explains how to customise quality selection & labels for MP4 assets.
+This example explains how to customize quality selection & labels for MP4 assets.
 
 ##### Web SDK
 

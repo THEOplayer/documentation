@@ -29,8 +29,8 @@ const player = new THEOplayer.Player(element, {
         language: 'en',
         languages: { 'en':
             {
-                    "The content will play in": "Here your customised text",
-                    "seconds": "Here your customised text"
+                    "The content will play in": "Here your customized text",
+                    "seconds": "Here your customized text"
                     // any other translation or text change
           }
         }

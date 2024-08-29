@@ -193,7 +193,7 @@ import THEOplayerGoogleIMAIntegration
 
 ### Usage
 
-After initialising your `THEOplayer` instance, it's time to initialise the integration and pass it to the `THEOplayer` instance:
+After initializing your `THEOplayer` instance, it's time to initialize the integration and pass it to the `THEOplayer` instance:
 
 ```swift
 let imaIntegration = GoogleIMAIntegrationFactory.createIntegration(on: self.theoplayer)
@@ -234,7 +234,7 @@ And that's all. A VAST ad without a timeOffset argument in the description will 
 
 ### Google DAI
 
-Alternatively, the integration also supports server side ad insertion. To play a dynamically loaded advertisements, initialise the integration and pass it to the `THEOplayer` instance the same way as above:
+Alternatively, the integration also supports server side ad insertion. To play a dynamically loaded advertisements, initialize the integration and pass it to the `THEOplayer` instance the same way as above:
 
 ```swift
 let imaIntegration = GoogleIMAIntegrationFactory.createIntegration(on: self.theoplayer)
@@ -286,7 +286,7 @@ CastIntegrationHelper.setGCKCastContextSharedInstanceWithDefaultCastOptions()
 
 Second, you will need to provide some privacy permissions and network discovery allowances. For more information on this, please check the [following documentation about permissions and discovery.](https://developers.google.com/cast/docs/ios_sender/permissions_and_discovery)
 
-After initialising your `THEOplayer` instance, it's time to initialise the integration and pass it to the `THEOplayer` instance:
+After initializing your `THEOplayer` instance, it's time to initialize the integration and pass it to the `THEOplayer` instance:
 
 ```swift
 let castConfiguration: CastConfiguration = CastConfiguration(strategy: .auto)
