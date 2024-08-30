@@ -51,7 +51,7 @@ if (chromecastState != "unavailable") {
 }
 ```
 
-##### Android SDK
+#### Android SDK
 
 ```java
 // Verify the Cast dependency is present in your build.gradle file.
