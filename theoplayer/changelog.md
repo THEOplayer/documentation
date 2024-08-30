@@ -11,7 +11,7 @@ toc_max_heading_level: 2
 
 #### ⚡ Improvements
 
-- Added support for the 'urn:mpeg:dash:adaptation-set-switching:2016' property inside DASH SupplementalProperty.
+- Added support for the `urn:mpeg:dash:adaptation-set-switching:2016` property inside DASH SupplementalProperty.
 
 ### Web
 
