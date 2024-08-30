@@ -140,7 +140,7 @@ async function setupYospaceConnector(player) {
 
 After setting up the THEOplayer Android SDK, in your module level `build.gradle` file add the THEOplayer Android SDK Conviva Connector and the Conviva SDK:
 
-```kotlin
+```groovy
 implementation 'com.theoplayer.android-connector:conviva:+'
 implementation 'com.conviva.sdk:conviva-core-sdk:4.0.33'
 ```

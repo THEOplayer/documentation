@@ -4,15 +4,15 @@ Yospace is a Server-Side Ad Insertion solution. A demo for the Web SDK can be fo
 
 ##### Web SDK
 
-You need to set up [THEOplayer Yospace Connector for Web](https://github.com/THEOplayer/web-connectors/tree/main/yospace). Please refer to [this](https://www.theoplayer.com/docs/theoplayer/connectors/web/yospace/) section to learn all about how to integrate and use the Yospace connector on Web SDK.
+You need to set up [THEOplayer Yospace Connector for Web](https://github.com/THEOplayer/web-connectors/tree/main/yospace). Please refer to [this](/theoplayer/connectors/web/yospace/) section to learn all about how to integrate and use the Yospace connector on Web SDK.
 
 ##### Android (TV) SDK
 
-You need to set up [THEOplayer Yospace Connector for Android](https://github.com/THEOplayer/android-connector/tree/master/connectors/yospace). Please refer to [this](https://www.theoplayer.com/docs/theoplayer/connectors/android/yospace/) section to learn all about how to integrate and use the Yospace connector on Android (TV) SDK.
+You need to set up [THEOplayer Yospace Connector for Android](https://github.com/THEOplayer/android-connector/tree/master/connectors/yospace). Please refer to [this](/theoplayer/connectors/android/yospace/) section to learn all about how to integrate and use the Yospace connector on Android (TV) SDK.
 
 ##### iOS (/tvOS) SDK
 
-You need to set up [THEOplayer Yospace connector for iOS](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Yospace). Please refer to [this](https://www.theoplayer.com/docs/theoplayer/connectors/ios/yospace/) section to learn all about how to integrate and use the Yospace connector on iOS (/tvOS) SDK.
+You need to set up [THEOplayer Yospace connector for iOS](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Yospace). Please refer to [this](/theoplayer/connectors/ios/yospace/) section to learn all about how to integrate and use the Yospace connector on iOS (/tvOS) SDK.
 
 ## Conclusion
 

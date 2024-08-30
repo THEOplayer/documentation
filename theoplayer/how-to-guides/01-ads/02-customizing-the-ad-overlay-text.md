@@ -130,7 +130,7 @@ You can find a list of locales supported by IMA SDK on Android [here](https://de
 
 ##### Web SDK
 
-Currently it is not possible to customize the default UI on Google IMA/DAI SDKs on Web with the expection of toggling certain [UiElements](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/reference/js/google.ima#.UiElements). This can be done like the following:
+Currently it is not possible to customize the default UI on Google IMA/DAI SDKs on Web with the exception of toggling certain [UiElements](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/reference/js/google.ima#.UiElements). This can be done like the following:
 
 ```javascript
 var element = document.querySelector('.video-js');
