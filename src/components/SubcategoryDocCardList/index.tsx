@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import DocCardList, { type Props as DocCardListProps } from '@theme/DocCardList';
-import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import { useCurrentSidebarCategory } from '@docusaurus/plugin-content-docs/client';
 import { PropSidebarItem, PropSidebarItemCategory } from '@docusaurus/plugin-content-docs';
 import Heading, { type HeadingType } from '@theme/Heading';
 

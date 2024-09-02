@@ -2,10 +2,9 @@ import React, { type JSX, type ReactNode } from 'react';
 import Layout from '@theme-original/DocRoot/Layout';
 import type LayoutType from '@theme/DocRoot/Layout';
 import type { WrapperProps } from '@docusaurus/types';
-import { DocsSidebarProvider, useDocsVersion } from '@docusaurus/theme-common/internal';
+import { DocsSidebarProvider, useActiveDocContext, useActivePlugin, useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 import { useLastPlatform } from '@site/src/contexts/lastPlatform';
 import { isDocSharedWithPlatform } from '@site/src/util/platform';
-import { useActiveDocContext, useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 
 type Props = WrapperProps<typeof LayoutType>;
 
