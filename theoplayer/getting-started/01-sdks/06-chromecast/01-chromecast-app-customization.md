@@ -16,11 +16,11 @@ their three Cast APIs, and about receiver applications and their four options.
 
 #### Sender applications
 
-Google describes three Cast APIs: the Android API, the iOS API and the Chrome API. The THEOplayer SDKs integrate these Cast APIs and expose a wrapper API for developers to use instead.
+Google describes three Cast APIs: the Android API, the iOS API and the Web Sender API. The THEOplayer SDKs integrate these Cast APIs and expose a wrapper API for developers to use instead.
 
 1. The THEOplayer Android SDK implements the [Android API](https://developers.google.com/android/reference/com/google/android/gms/cast/package-summary).
 2. The THEOplayer iOS SDK implements the [iOS API](https://developers.google.com/cast/docs/reference/ios).
-3. The THEOplayer Web SDK implements the [Chrome API](https://developers.google.com/cast/docs/reference/chrome).
+3. The THEOplayer Web SDK implements the [Web Sender API](https://developers.google.com/cast/docs/reference/web_sender).
 
 #### Receiver applications
 

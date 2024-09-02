@@ -1,65 +1,49 @@
 # Customizing the ad overlay text
 
-This guide explains how to customize the overlay texts during an adbreak, if any. You may ask this question if you want to change the aspect or the content of the overlay displaying the countdown to content on top of the ads.
+This guide explains how to customize the overlay text shown during an ad break. You may ask this question if you want to change the customize the styling or override the texts shown during an ad break.
 
-This is done in two steps: the first is to customize the text, if you so desire. For this we will be leveraging the language localization mechanism. You can find further information on this regard at [UIConfiguration.language](pathname:///theoplayer/v7/api-reference/web/interfaces/UIConfiguration.html#language).
+Depending on the ad integration kind you use, the steps to take differ.
 
-The second step is to change the aspect of such text. This can be done via CSS.
+## CSAI integration
 
-## SDKs
+The `csai` [ad integration kind](pathname:///theoplayer/v7/api-reference/web/types/AdIntegrationKind.html) is only available on Web SDK and allows customization.
 
-| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
-| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
-|   Yes   |     Yes     |   Yes   |   Yes    |       No       |      N/A       |
+To customize the text here we will be leveraging the language localization mechanism. You can find the API we will be using [here](pathname:///theoplayer/v7/api-reference/web/interfaces/UIConfiguration.html#language).
 
-## Changing the text
+The second step is to customize the styling of texts. This can be done via CSS.
 
-In this paragraph, we will explain how to modify the text. We will take the countdown to the content text as an example (another ad overlay text is the "Skip ad" text, if any). When considering a new text to replace the original one, it is important to take into consideration its length (which should be determined accordingly to the available space) and how it is composed.
+### Changing or localizing the text
+
+In this section, we will explain how to modify the text. We will take the countdown to the content text as an example (another ad overlay text is the "Skip ad" text, if any). When considering a new text to replace the original one, it is important to take into consideration its length (which should be determined accordingly to the available space) and how it is composed.
 
 The current example is composed of 3 parts: one text ("The content will play in"), a dynamic countdown and another text ("seconds"). For this reason, when changing the text, both text parts need addressing.
 
-### Code examples
-
-##### Web SDK
+An example:
 
 ```js
-ui: {
+var element = document.querySelector('.video-js');
+const player = new THEOplayer.Player(element, {
+    license: "your_license_here",
+    ui: {
         // your other UI configuration
         language: 'en',
         languages: { 'en':
-                    {
-                        "The content will play in": "Here your customised text",
-                           "seconds": "Here your customised text"
-                        // any other translation or text change
-                    }
-                }
-}
+            {
+                    "The content will play in": "Here your customized text",
+                    "seconds": "Here your customized text"
+                    // any other translation or text change
+          }
+        }
+    },
+    libraryLocation: 'https://example.com/',
+    });
 ```
 
-##### Legacy Android SDK (4.12.x)
-
-```java
-//Example of THEOplayerConfig with language localization enabled
-THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()
-    .cssPaths("style.css")
-    .jsPaths("script.js")
-    .ui(new UIConfiguration.Builder().language("nl").build())
-    .build();
-```
-
-##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
-
-```swift
-//to be added
-```
-
-## Changing the aspect
+### Changing the styling
 
 If you are interested in changing the aspect of the overlay or its content, you may do so applying the desired CSS properties to the concerned elements.
 
-### Code examples
-
-##### Web SDK
+As mentioned, the following example is only valid for the `csai` ad integration:
 
 ```css
 /* This modifies the countdown div */
@@ -85,20 +69,97 @@ If you are interested in changing the aspect of the overlay or its content, you 
 }
 ```
 
-##### Legacy Android SDK (4.12.x)
+## Google IMA/DAI
 
-The Web SDK code should be included in your Android (TV) project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
+With Google IMA/DAI, it is not possible to directly edit the default UI. You can pass a locale to IMA to completely localize the ad UI. On the following sections we will explain the possibilities.
 
-##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
+### Changing or localizing the text
 
-TheWeb SDKcode should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
+It is not possible to edit the texts on the default UI on Google IMA/DAI SDKs. However, you can pass a locale to IMA to completely localize its ad UI like the following:
+
+##### Web SDK
+
+```javascript
+var element = document.querySelector('.video-js');
+const player = new THEOplayer.Player(element, {
+    license: "your_license_here",
+    libraryLocation: 'https://example.com',
+    ads: {
+        googleIma: {
+            language: "nl"
+        }
+    }
+});
+```
+You can find a list of locales supported by IMA SDK on web [here](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/localization#locale-codes).
+
+##### Android SDK
+
+You can pass [your preferred language](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/api/reference/com/google/ads/interactivemedia/v3/api/ImaSdkSettings.html#setLanguage(java.lang.String)) while adding the Google IMA integration to the player:
+
+```kotlin
+private fun addGoogleImaIntegration() {
+    val settings = ImaSdkFactory.getInstance().createImaSdkSettings()
+    settings.language = "nl"
+
+    val imaIntegration = createGoogleImaIntegration(tpv!!, settings)
+
+    tpv?.player?.addIntegration(imaIntegration)
+}
+```
+You can find a list of locales supported by IMA SDK on Android [here](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/localization#locale-codes).
+
+##### iOS SDK
+
+You can pass [your preferred language](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side/reference/Classes/IMASettings#language) while adding the Google IMA integration to the player:
+
+```swift
+private func setupImaIntegration() {
+    let imaSettings = IMASettings()
+    imaSettings.language = "nl"
+        
+    let imaIntegration: GoogleImaIntegration = GoogleIMAIntegrationFactory.createIntegration(on: self.theoplayer!, with: imaSettings)
+
+    theoplayer.addIntegration(imaIntegration)
+    }
+```
+
+You can find a list of locales supported by IMA SDK on Android [here](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side/localization#locale-codes).
+
+### Changing the styling
+
+##### Web SDK
+
+Currently it is not possible to customize the default UI on Google IMA/DAI SDKs on Web with the exception of toggling certain [UiElements](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/reference/js/google.ima#.UiElements). This can be done like the following:
+
+```javascript
+var element = document.querySelector('.video-js');
+const player = new THEOplayer.Player(element, {
+    license: "your_license_here",
+    libraryLocation: 'https://example.com',
+    ads: {
+        googleIma: {
+              uiElements: [google.ima.UiElements.AD_ATTRIBUTION, google.ima.UiElements.COUNTDOWN]
+        }
+    }
+});
+```
+
+##### Android SDK
+
+Please refer to the relevant [Google IMA guide](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/custom-ui) on how to disable the default UI and implement your own ad UI.
+
+##### iOS SDK
+
+Please refer to the relevant [Google IMA guide](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side/custom-ui) on how to disable the default UI and implement your own ad UI.
 
 ## Remarks
 
-- This will have no effect when using the Google IMA integration: in this case, google IMA manages its own language localization. Also, no countdown to the content is currently displayed when using the Google-IMA integration, so this is to me remarked only for the text about skipping the ads, if any.
+- If you are using [THEOplayer Open Video UI](https://www.theoplayer.com/product/open-video-ui), there could be alternative ways to edit certain elements depending on the platform and the ad integration kind used. For reference, you can find a demo for the `csai` ad integration on Web SDK [here](https://www.theoplayer.com/docs/open-video-ui/web/examples/ads/).
+- The `Why this ad?` text or the `?` (question mark) icon that may appear while using the Google IMA/DAI integration is inserted by the IMA SDK itself and is required to be displayed with any ad that was not manually selected. The  icon is rendered as a VAST icon and is automatically generated by Ad Manager where required.
 
 ## Resources
 
 - [How to change the default UI language to other](../../how-to-guides/11-ui/08-how-to-change-default-UI-language-to-other.md)
-- [API Reference - UIConfiguration.language](pathname:///theoplayer/v7/api-reference/web/interfaces/UIConfiguration.html#language)
-- [http://demo.theoplayer.com/language-localization](http://demo.theoplayer.com/language-localization)
+- [Language localization](https://www.theoplayer.com/theoplayer-demo-language-localization)
+- [THEOplayer advertisement tester](https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap)

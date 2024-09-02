@@ -14,6 +14,6 @@ Notes about the current example:
 
 - it has been successfully tested on major browsers (Chrome, Firefox, Safari) but no complete investigation has been performed. In Edge the slider still does not appear correctly and needs some more CSS tinkering.
 - it has been successfully tested in several conditions (fullscreen and inline presentation mode and on different resolutions). However, it still needs testing in your specific implementation and use case.
-- The aspect of the current volume slider differs depending on the browser: we encourage you to replace it with your favorite one and customise it
+- The aspect of the current volume slider differs depending on the browser: we encourage you to replace it with your favorite one and customize it
 - The volume icon changes when the player is muted, but otherwise do not reflect volume increases/decreases.
 - When the player is muted, the slider and the aria values do not go to 0 yet

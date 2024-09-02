@@ -14,7 +14,7 @@ To use this API, be sure to have the `webaudio` feature included in your THEOpla
 
 ## How to use the Web Audio API
 
-The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx). In the following sections, we will assume that you have just created a THEOplayer instance and bound it to the variable 'player'.
+The first thing you need is a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx). In the following sections, we will assume that you have just created a THEOplayer instance and bound it to the variable `player`.
 
 ## Code Examples
 
@@ -53,7 +53,7 @@ sourceNode.connect(gainNode);
 gainNode.connect(audioCtx.destination);
 ```
 
-This sets up a gain filter on top of the player audio output, which we can manipulate using the gainNode.gain.value property. An example would be that we could set up a callback which monitors mouse movement:
+This sets up a gain filter on top of the player audio output, which we can manipulate using the `gainNode.gain.value` property. An example would be that we could set up a callback which monitors mouse movement:
 
 ```js
 var updatePage = function (e) {
@@ -67,7 +67,7 @@ The callback will be executed every time the mouse position is updated. The resu
 
 **Playing with stereo panning**
 
-Similarly, we can play with the stereo panning of the player audio output. This can be achieved by playing with the pan.value property of the StereoPanner node.
+Similarly, we can play with the stereo panning of the player audio output. This can be achieved by playing with the `pan.value` property of the `StereoPanner` node.
 
 ```js
 var AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -110,7 +110,7 @@ document.onmousemove = updatePage;
 
 **Bringing it all together**
 
-The next step we can take is to create a simple demo where we manipulate the audio of two players simultaneously. Assume that we have two players set up, bound to variables player1 and player2. Then we can set up exactly the same audio pipeline for both players, and reroute their audio to a single output.
+The next step we can take is to create a simple demo where we manipulate the audio of two players simultaneously. Assume that we have two players set up, bound to variables `player1` and `player2`. Then we can set up exactly the same audio pipeline for both players, and reroute their audio to a single output.
 
 ```js
 var sourceNode1 = player1.audio.createAudioSourceNode(audioCtx);
@@ -147,7 +147,7 @@ document.onmousemove = updatePage;
 
 This API is currently not available on the Android (TV) SDK.
 
-##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
+##### iOS/tvOS SDK
 
 This API is currently not available on the iOS (/tvOS) SDK.
 
@@ -155,15 +155,7 @@ This API is currently not available on the iOS (/tvOS) SDK.
 
 The demo below illustrates the Web Audio API in production.
 
-- Demo: [https://demo.theoplayer.com/web-audio-api](https://demo.theoplayer.com/web-audio-api)
-
-## Remarks
-
-The following remarks can help:
-
-- The web Audio API is currently unavailable on all SDKs except the Web SDK.
-
-- If your use case would require this feature to work on the Chromecast SDK, let us know and we’ll look into customizing a receiver in order to enable Web Audio on it.
+- Demo: [https://www.theoplayer.com/theoplayer-demo-web-audio-api](https://www.theoplayer.com/theoplayer-demo-web-audio-api)
 
 ## Resources
 
