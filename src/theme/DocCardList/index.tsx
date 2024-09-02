@@ -1,8 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { filterDocCardListItems, useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import { filterDocCardListItems, useCurrentSidebarCategory, useDoc } from '@docusaurus/plugin-content-docs/client';
 import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
-import { useDoc } from '@docusaurus/theme-common/internal';
 import type { Props } from '@theme/DocCardList';
 import DocCard from '@theme/DocCard';
 

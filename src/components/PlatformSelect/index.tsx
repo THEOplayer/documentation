@@ -4,8 +4,7 @@ import { defaultPlatformName, getPlatformsByVersion, isDocSharedWithPlatform } f
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
-import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
-import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
+import { useActiveDocContext, useDocsVersionCandidates } from '@docusaurus/plugin-content-docs/client';
 import { findSidebarInVersions } from '@site/src/util/sidebar';
 import { useLocation } from '@docusaurus/router';
 import clsx from 'clsx';

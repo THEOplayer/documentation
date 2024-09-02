@@ -1,4 +1,4 @@
-import { useDoc, useDocsSidebar } from '@docusaurus/theme-common/internal';
+import { useDoc, useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import DocCardList, { type Props as DocCardListProps } from '@theme/DocCardList';
 
 export interface Props extends Omit<DocCardListProps, 'items'> {}

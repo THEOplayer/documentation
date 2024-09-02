@@ -1,7 +1,6 @@
 import React, { JSX, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
-import { useActiveDocContext, useActivePlugin, useAllDocsData } from '@docusaurus/plugin-content-docs/client';
+import { useActiveDocContext, useActivePlugin, useAllDocsData, useDocsVersionCandidates } from '@docusaurus/plugin-content-docs/client';
 import { getPlatformByName, isDocSharedWithPlatform, isPlatformName, PlatformName } from '../util/platform';
-import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
 import { findSidebarInVersions } from '@site/src/util/sidebar';
 import { defaultPlatformName } from '@site/src/util/platform';
 
