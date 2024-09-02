@@ -6,4 +6,97 @@ sidebar_custom_props: { 'icon': 'android' }
 
 # Getting started with THEOads on Android
 
+This guide will get you started with THEOads in your THEOplayer Android SDK.
+
+## Prerequisites
+
+1. You need to have a THEOplayer license which is compatible with THEOads.
+   This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
+
 ## Installation
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+1. Add the THEOplayer Android SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/android/getting-started) guide.
+   Make sure to [set up a THEOads-compatible license](/theoplayer/getting-started/sdks/android/getting-started/#setting-up-the-license)
+   in your app.
+2. Add the THEOads integration as a dependency in your module-level `build.gradle` file:
+   <Tabs queryString="lang">
+      <!-- prettier-ignore-start -->
+      <TabItem value="groovy" label="Groovy">
+       ```groovy
+       dependencies {
+           implementation "com.theoplayer.theoplayer-sdk-android:core:8.+"
+           // highlight-next-line
+           implementation "com.theoplayer.theoplayer-sdk-android:integration-theoads:8.+"
+       }
+       ```
+       </TabItem>
+       <TabItem value="kotlin" label="Kotlin">
+       ```kotlin
+       dependencies {
+           implementation("com.theoplayer.theoplayer-sdk-android:core:8.+")
+           // highlight-next-line
+           implementation("com.theoplayer.theoplayer-sdk-android:integration-theoads:8.+")
+       }
+       ```
+       </TabItem>
+       <!-- prettier-ignore-end -->
+   </Tabs>
+3. Create and add the `TheoAdsIntegration` to your `THEOplayerView`:
+
+   ```kotlin
+   import com.theoplayer.android.api.THEOplayerView
+   import com.theoplayer.android.api.ads.theoads.TheoAdsIntegration
+   import com.theoplayer.android.api.ads.theoads.TheoAdsIntegrationFactory.createTheoAdsIntegration
+
+   class MyActivity : Activity() {
+       private lateinit var theoPlayerView: THEOplayerView
+       private lateinit var theoAdsIntegration: TheoAdsIntegration
+
+       override fun onCreate(savedInstanceState: Bundle?) {
+           super.onCreate(savedInstanceState)
+           setContentView(R.layout.activity_main)
+
+           theoPlayerView = findViewById<THEOplayerView>(R.id.theoplayer)
+
+           theoAdsIntegration = createTheoAdsIntegration(theoPlayerView)
+           theoPlayerView.player.addIntegration(theoAdsIntegration)
+       }
+   }
+   ```
+
+## Usage
+
+To make use of the THEOads integration, you configure a source containing a `TheoAdsDescription`:
+
+```kotlin
+import com.theoplayer.android.api.ads.theoads.TheoAdsDescription
+import com.theoplayer.android.api.source.SourceDescription
+import com.theoplayer.android.api.source.SourceType
+import com.theoplayer.android.api.source.TypedSource
+
+theoPlayerView.player.source = SourceDescription.Builder(
+    TypedSource.Builder("PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI")
+        .type(SourceType.HLS)
+        .hlsDateRange(true)
+        .build()
+).ads(
+    TheoAdsDescription(
+        networkCode = "NETWORK-CODE",
+        customAssetKey = "CUSTOM-ASSET-KEY",
+        backdropDoubleBox = "PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE", // Optional
+        backdropLShape = "PATH-TO-L-SHAPE-BACKDROP-IMAGE", // Optional
+    )
+).build()
+```
+
+- Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
+  More information can be found [here](00-getting-started-signaling-service.mdx).
+- The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
+- The `ads` object needs to be a `TheoAdsDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
+
+## More information
+
+- [API references](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html)
