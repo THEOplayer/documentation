@@ -10,18 +10,15 @@ This guide will get you started with THEOads in your THEOplayer Android SDK.
 
 ## Prerequisites
 
-1. You need to have a THEOplayer license which is compatible with THEOads.
-   This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
-
-## Installation
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-1. Add the THEOplayer Android SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/android/getting-started) guide.
+1. You need to have a THEOplayer license which is compatible with THEOads.
+   This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
+2. Add the THEOplayer Android SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/android/getting-started) guide.
    Make sure to [set up a THEOads-compatible license](/theoplayer/getting-started/sdks/android/getting-started/#setting-up-the-license)
    in your app.
-2. Add the THEOads integration as a dependency in your module-level `build.gradle` file:
+3. Add the THEOads integration as a dependency in your module-level `build.gradle` file:
    <Tabs queryString="lang">
       <!-- prettier-ignore-start -->
       <TabItem value="groovy" label="Groovy">
@@ -44,32 +41,33 @@ import TabItem from '@theme/TabItem';
        </TabItem>
        <!-- prettier-ignore-end -->
    </Tabs>
-3. Create and add the `TheoAdsIntegration` to your `THEOplayerView`:
 
-   ```kotlin
-   import com.theoplayer.android.api.THEOplayerView
-   import com.theoplayer.android.api.ads.theoads.TheoAdsIntegration
-   import com.theoplayer.android.api.ads.theoads.TheoAdsIntegrationFactory.createTheoAdsIntegration
+## Integration
 
-   class MyActivity : Activity() {
-       private lateinit var theoPlayerView: THEOplayerView
-       private lateinit var theoAdsIntegration: TheoAdsIntegration
+To make use of the THEOads integration, create and add the `TheoAdsIntegration` to your `THEOplayerView`:
 
-       override fun onCreate(savedInstanceState: Bundle?) {
-           super.onCreate(savedInstanceState)
-           setContentView(R.layout.activity_main)
+```kotlin
+import com.theoplayer.android.api.THEOplayerView
+import com.theoplayer.android.api.ads.theoads.TheoAdsIntegration
+import com.theoplayer.android.api.ads.theoads.TheoAdsIntegrationFactory.createTheoAdsIntegration
 
-           theoPlayerView = findViewById<THEOplayerView>(R.id.theoplayer)
+class MyActivity : Activity() {
+    private lateinit var theoPlayerView: THEOplayerView
+    private lateinit var theoAdsIntegration: TheoAdsIntegration
 
-           theoAdsIntegration = createTheoAdsIntegration(theoPlayerView)
-           theoPlayerView.player.addIntegration(theoAdsIntegration)
-       }
-   }
-   ```
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-## Usage
+        theoPlayerView = findViewById<THEOplayerView>(R.id.theoplayer)
 
-To make use of the THEOads integration, you configure a source containing a `TheoAdsDescription`:
+        theoAdsIntegration = createTheoAdsIntegration(theoPlayerView)
+        theoPlayerView.player.addIntegration(theoAdsIntegration)
+    }
+}
+```
+
+Then, configure a source containing a `TheoAdsDescription`:
 
 ```kotlin
 import com.theoplayer.android.api.ads.theoads.TheoAdsDescription
