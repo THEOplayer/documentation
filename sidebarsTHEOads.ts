@@ -6,7 +6,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Getting started',
-      description: 'Set up your first THEOplayer in just a few minutes!',
+      description: 'Set up your first stream with THEOads!',
       customProps: {
         icon: '🚀',
       },
