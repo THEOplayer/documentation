@@ -1,6 +1,7 @@
 ---
 sidebar_position: 0.2
 sidebar_label: Web
+sidebar_custom_props: { 'icon': 'web' }
 ---
 
 # Web

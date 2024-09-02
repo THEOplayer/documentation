@@ -1,6 +1,7 @@
 ---
 sidebar_position: 0.5
-sidebar_label: React native
+sidebar_label: React Native
+sidebar_custom_props: { 'icon': 'react' }
 ---
 
 # Getting started on React Native

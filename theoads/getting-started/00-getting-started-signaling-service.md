@@ -1,6 +1,7 @@
 ---
 sidebar_position: 0.1
 sidebar_label: Signaling service
+sidebar_custom_props: { 'icon': '🛜' }
 ---
 
 # Signaling service
