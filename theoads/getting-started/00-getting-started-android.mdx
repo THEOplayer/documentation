@@ -96,6 +96,43 @@ theoPlayerView.player.source = SourceDescription.Builder(
 - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
 - The `ads` object needs to be a `TheoAdsDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
 
+## Integrating with Open Video UI
+
+When using the [Open Video UI for Android](/open-video-ui/android/), you need to create and add
+the `TheoAdsIntegration` before creating your `DefaultUI` or `UIController`. You can then create a
+THEOads-enabled source and set it as `player.source`:
+
+```kotlin
+import androidx.activity.compose.setContent
+import com.theoplayer.android.ui.rememberPlayer
+
+setContent {
+    val player = rememberPlayer()
+    LaunchedEffect(player) {
+        player.theoplayerView?.let { theoPlayerView ->
+            val theoAdsIntegration = createTheoAdsIntegration(theoPlayerView)
+            theoPlayerView.player.addIntegration(theoAdsIntegration)
+        }
+
+        player.source = SourceDescription.Builder(
+            TypedSource.Builder("PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI")
+                .type(SourceType.HLS)
+                .hlsDateRange(true)
+                .build()
+        ).ads(
+            TheoAdsDescription(
+                networkCode = "NETWORK-CODE",
+                customAssetKey = "CUSTOM-ASSET-KEY"
+            )
+        ).build()
+    }
+
+    DefaultUI(
+        player = player
+    )
+}
+```
+
 ## More information
 
 - [API references](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html)

@@ -65,6 +65,36 @@ player.source = {
 - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
 - The `ads` object needs to have its integration set to `theoads`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
 
+## Integrating with Open Video UI
+
+THEOads works seamlessly together with [Open Video UI for Web](/open-video-ui/web/).
+You can pass your THEOads-enabled source directly to the UI's `source` property:
+
+```html
+<theoplayer-default-ui></theoplayer-default-ui>
+<script>
+  const ui = document.querySelector('theoplayer-default-ui');
+  ui.configuration = {
+    libraryLocation: 'YOUR-LIBRARY-LOCATION',
+    license: 'YOUR-LICENSE-WITH-THEOADS',
+  };
+  ui.source = {
+    sources: {
+      src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI',
+      type: 'application/x-mpegurl',
+      hlsDateRange: true,
+    },
+    ads: [
+      {
+        integration: 'theoads',
+        networkCode: 'NETWORK-CODE',
+        customAssetKey: 'CUSTOM-ASSET-KEY',
+      },
+    ],
+  };
+</script>
+```
+
 ## More information
 
 TODO LINK TO THE API REFERENCE ONCE IT IS PUBLIC
