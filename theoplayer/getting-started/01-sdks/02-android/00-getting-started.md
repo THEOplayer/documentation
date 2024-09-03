@@ -18,7 +18,7 @@ This approach gives more flexibility and results in a reduced application size, 
 
 The Android SDK leverages Java 8 and Kotlin languages to provide safer and more concise code.
 
-The Android SDK is published to the [THEOplayer Maven respository](https://maven.theoplayer.com/) where developers can easily navigate our releases and find code snippets for implementing the player into their project.
+The Android SDK is published to the [THEOplayer Maven repository](https://maven.theoplayer.com/) where developers can easily navigate our releases and find code snippets for implementing the player into their project.
 
 ## Add THEOplayer and Kotlin libraries to your application
 
