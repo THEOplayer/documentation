@@ -1,6 +1,6 @@
 # THEOdocs
 
-The developer documentation website for THEOplayer, Open Video UI and THEOlive.
+The developer documentation website for THEOplayer, THEOads, Open Video UI and THEOlive.
 
 Find the documentation at https://www.theoplayer.com/docs/
 

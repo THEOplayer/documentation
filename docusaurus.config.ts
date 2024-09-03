@@ -68,7 +68,7 @@ const docsConfigBase = {
 
 const config: Config = {
   title: 'THEOdocs',
-  tagline: 'Discover the latest developer documentation and samples for THEOplayer, Open Video UI, THEOads and THEOlive.',
+  tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI and THEOlive.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
