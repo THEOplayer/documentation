@@ -6,20 +6,47 @@ sidebar_custom_props: { 'icon': '🛜' }
 
 # Signaling service
 
-THEO develops and provides this component. It will be integrated between your CDN and media origin.
-It performs manifest manipulation to insert ad breaks and additional metadata for the player.
-Additionally, it ensures scalability of the end-to-end system through integration with the early ad break notification API of the Google Ad Server.
+The Signaling Service is provided as a service and can be integrated into any existing content management workflow through its APIs, enabling seamless adoption without significant changes to your current setup.
 
-## Requirements (WIP)
+Developed and provided by THEO Technologies, this service operates on your infrastructure, integrated between your CDN and media origin. It performs manifest manipulation to insert ad breaks and additional metadata for the player. Additionally, it ensures scalability of the end-to-end system through early ad break notifications to ad decisioning servers.
 
-Aside from having a valid manifest, we do have some requirements to make THEOads work:
+![THEOads architecture](../assets/img/how_theoads_works-light.svg)
 
-- Use a HLS manifest. For now this is the only one supported. Other protocols will follow in the future.
-- We require an `EXT-X-PROGRAM-DATE-TIME` tag to be present. This is needed to accurately schedule the ad breaks.
-- SCTE markers should be provided either in an `EXT-X-DATERANGE` tag, an `EXT-X-OATCLS-SCTE35` tag or with the `EXT-X-CUE-OUT` and `EXT-X-CUE-OUT-CONT` tags.
-- `EXT-X-DATERANGE` is recommended due to its standardization and ability to provide more comprehensive data for improved integration.
-- To make use of the tune-in feature, we require `EXT-X-CUE-OUT-CONT` tags to be present between the `EXT-X-CUE-OUT` and `EXT-X-CUE-IN` markers.
+## Infrastructure
 
-## Deployment
+The service is deployed and operated by THEO Technologies within the customer’s infrastructure. This setup ensures smooth integration into the existing video workflow with minimal disruption. During onboarding, THEO Technologies provides the infrastructure requirements. Once set up, THEO Technologies bootstraps the service, after which the customer can manage their signaling service deployments and monitor the service through the REST API.
 
-TODO
+## Integration
+
+In collaboration with the customer and THEO's solutions team, the integration of the service into the existing video workflow is designed. Deploying the Signaling Service between the CDN and Origin ensures that regionalization, security, and localization features remain unaffected.
+
+> To ensure high availability, we recommend maintaining the original origin stream on a CDN as a backup, while the Signaling Service provides redundancy and failover capabilities to further enhance reliability.
+
+For each Origin stream that needs to be enabled for THEOads, a monetized-stream can be created through the locally deployed REST API from your CMS or other existing orchestration systems. The monetized-stream represents a high-availability Signaling Service deployed on the provided infrastructure. Each active monetized-stream offers an HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. The endpoint path is standardized, so no CDN reconfiguration is required when stopping and recreating the monetized-stream.
+
+Please refer to the API reference for detailed information on the REST API.
+
+## Media Origin
+
+To accurately schedule breaks, the origin manifest must be valid and include date and time indications. For HLS, this means the `EXT-X-PROGRAM-DATE-TIME` tag must be present. Breaks can be scheduled using either the provided REST API or in-stream (manifest) metadata (SCTE).
+
+When using SCTE triggers, the following is supported:
+
+- SCTE markers should be included in either an `EXT-X-DATERANGE` tag, an `EXT-X-OATCLS-SCTE35` tag, or with `EXT-X-CUE-OUT` and `EXT-X-CUE-OUT-CONT` tags.
+- The `EXT-X-DATERANGE` tag is recommended for its standardization and ability to provide more comprehensive data for improved integration.
+- To use the tune-in feature, `EXT-X-CUE-OUT-CONT` tags must be present between `EXT-X-CUE-OUT` and `EXT-X-CUE-IN` markers.
+
+For scheduling ad breaks through the REST API, please refer to the API definitions and the example below.
+
+```bash
+curl --location 'http://theoads-host/api/v1/monetized-streams/stream-1/break' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data '{
+  "id": "626cd35a-4fbf-48b8-b0cd-acc246266f88",
+  "startDate": "2024-09-03T08:00:00.000Z",
+  "duration": 60,
+  "source": "",
+  "layout": "LSHAPE_AD"
+}'
+```
