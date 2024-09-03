@@ -43,11 +43,7 @@ const FeatureList: FeatureItem[] = [
         }}
       />
     ),
-    description: (
-      <>
-        ...
-      </>
-    ),
+    description: <>Deliver a seamless, less intrusive ad experience with THEOads, designed to boost viewer engagement and maximize ad revenue.</>,
     to: '/theoads',
   },
   {
