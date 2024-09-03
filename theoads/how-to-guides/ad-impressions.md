@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # THEOads impressions
 
 When playing a THEOads ad break, the player will send a beacon to our THEOplayer server to track the impressions.

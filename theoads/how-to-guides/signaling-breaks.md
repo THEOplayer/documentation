@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Signaling breaks
 
 THEOads is able to insert ad breaks into your content, but it needs some information for this.
