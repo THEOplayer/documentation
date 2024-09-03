@@ -33,6 +33,24 @@ const FeatureList: FeatureItem[] = [
     to: '/theoplayer',
   },
   {
+    title: 'THEOads',
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/theoads.svg'),
+          dark: useBaseUrl('/img/theoads_dark.svg'),
+        }}
+      />
+    ),
+    description: (
+      <>
+        ...
+      </>
+    ),
+    to: '/theoads',
+  },
+  {
     title: 'Open Video UI',
     Image: (props) => (
       <ThemedImage
