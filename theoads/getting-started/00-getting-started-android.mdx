@@ -68,10 +68,10 @@ class MyActivity : Activity() {
 }
 ```
 
-Then, configure a source containing a `TheoAdsDescription`:
+Then, configure a source containing a `TheoAdDescription`:
 
 ```kotlin
-import com.theoplayer.android.api.ads.theoads.TheoAdsDescription
+import com.theoplayer.android.api.ads.theoads.TheoAdDescription
 import com.theoplayer.android.api.source.SourceDescription
 import com.theoplayer.android.api.source.SourceType
 import com.theoplayer.android.api.source.TypedSource
@@ -82,7 +82,7 @@ theoPlayerView.player.source = SourceDescription.Builder(
         .hlsDateRange(true)
         .build()
 ).ads(
-    TheoAdsDescription(
+    TheoAdDescription(
         networkCode = "NETWORK-CODE",
         customAssetKey = "CUSTOM-ASSET-KEY",
         backdropDoubleBox = "PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE", // Optional
@@ -94,7 +94,7 @@ theoPlayerView.player.source = SourceDescription.Builder(
 - Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
   More information can be found [here](00-getting-started-signaling-service.mdx).
 - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
-- The `ads` object needs to be a `TheoAdsDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
+- The `ads` object needs to be a `TheoAdDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
 
 ## Integrating with Open Video UI
 
@@ -120,7 +120,7 @@ setContent {
                 .hlsDateRange(true)
                 .build()
         ).ads(
-            TheoAdsDescription(
+            TheoAdDescription(
                 networkCode = "NETWORK-CODE",
                 customAssetKey = "CUSTOM-ASSET-KEY"
             )
