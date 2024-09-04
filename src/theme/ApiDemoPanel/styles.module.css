@@ -1,0 +1,9 @@
+.apiDemoPanel :global(.button--primary) {
+  /**
+   * We don't have a public API endpoint, so hide the Execute button.
+   *
+   * Unfortunately, we can't swizzle ApiDemoPanel/Execute separately,
+   * so we have to hack it with CSS...
+   */
+  display: none;
+}
