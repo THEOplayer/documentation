@@ -5,27 +5,47 @@ sidebar_position: 3
 # Override layout
 
 THEOads is able to insert ad breaks into your content via the signaling server. The layout that is used while playing is 
-also determined by the signaling server. Currently, you can have the following layout modes :
+usually determined by the signaling server. Currently, you can have the following layout modes :
 
 * `SINGLE` : Replaces the content with an advertisement.
 * `DOUBLE` : Allows content to continue playing side-by-side with an advertisement and its companion background.
 * `LSHAPE_AD` : Displays advertisements in a scaled window alongside a companion background.
 
-You might not always want to show the default layout mode as provided by the signaling server. For example, if your watching 
-content on a mobile device, the `DOUBLE` layout mode might be too small. 
+When your signaling service is created, the default layout should be defined. Look at our [API references](/theoads/api/signaling/create-monetized-stream/) for more information.
 
-Therefore, the player offers you the possibility to override the default layout via the `TheoAdDescription`.
+The rest of this page will go over how to override this initial chosen layout in the [signaling service](#override-layout-through-the-signaling-service) itself, 
+or override it on the [player side](#override-the-layout-through-the-player).
 
-## Possible layouts overrides
+## Override layout through the signaling service
 
-Via the player, you can pass the following values to override the layout :
+There are two ways to update the layout in the signaling service. 
+
+### Setting a new default layout
+
+It is possible to update the default layout value on the signaling service. This can be done by making an [UpdateMonetizedStreamLayout](/theoads/api/signaling/update-monetized-stream-layout/)
+API request to the signaling service with the new layout.
+The updated layout value will be the new default for all ad breaks.
+
+### Signaling an ad break through the API
+
+When scheduling ad breaks through the signaling service API it is possible to choose the layout of the ad break. 
+The passed layout will be used, unless it is left `undefined`. In this case the default layout is still used.
+
+For more information on the scheduling API refer to the following section: [Signaling breaks through the signaling service](/theoads/how-to-guides/signaling-breaks/#through-the-signaling-service).
+
+## Override the layout through the player
+
+You might not always want to show the default layout mode as provided by the signaling server. For example, if you are watching
+content on a mobile device, the `DOUBLE` layout mode might not be the ideal user experience.
+
+Via the player, you can pass the following values to `TheoAdDescription.overrideLayout` to override the layout :
 
  - `'single'`: This will override the default layout and plays all the ad breaks using the "single" layout mode.
  - `'l-shape'`: This will override the default layout mode and plays all the ad breaks using the "l-shape" layout mode.
  - `'double'`: This will override the default layout mode and plays all the ad breaks using the "double" layout mode.
  - `'single-if-mobile'`: This will override the default layout mode to play all ad breaks using the "single" layout mode only when on mobile.
 
-## Web SDK
+### Web SDK
 
 For the Web SDK, you can override the default layout by setting `overrideLayout` in the `TheoAdDescription` object as followed : 
 
@@ -51,9 +71,9 @@ player.source = {
  There is a limitation that double box (`DOUBLE`) is not supported on older smartTV's. If you want to play THEOads on these devices, please override to another layout.
 :::
 
-## Android
+### Android SDK
 
-For the Android SDK, you can override the default layout by setting `overrideLayout` in the `TheoAdDescription` object as followed :
+For the Android SDK, you can override the default layout by setting `overrideLayout` in the `TheoAdDescription` object as follows:
 
 ```kotlin
 import com.theoplayer.android.api.ads.theoads.TheoAdsDescription
@@ -75,6 +95,6 @@ theoPlayerView.player.source = SourceDescription.Builder(
 ).build()
 ```
 
-## iOS
+### iOS SDK
 
 This API is currently not available on the iOS SDK.
