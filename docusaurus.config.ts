@@ -152,7 +152,7 @@ const config: Config = {
       'docusaurus-plugin-openapi',
       {
         id: 'theoads-api',
-        path: 'theoads/ads-client.swagger.json',
+        path: 'theoads/api/ads-client.swagger.json',
         routeBasePath: '/theoads/api',
       } satisfies OpenApiPlugin.Options,
     ],
