@@ -42,6 +42,11 @@
     "typescript": "~5.4.5",
     "unist-util-visit": "^5.0.0"
   },
+  "overrides": {
+    "docusaurus-plugin-openapi": {
+      "openapi-to-postmanv2": "^4.20.1"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.5%",
