@@ -153,7 +153,7 @@ const config: Config = {
       {
         id: 'theoads-api',
         path: 'theoads/api/ads-client.swagger.json',
-        routeBasePath: '/theoads/api',
+        routeBasePath: '/theoads/api/signalling',
       } satisfies OpenApiPlugin.Options,
     ],
     [

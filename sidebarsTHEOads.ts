@@ -30,12 +30,13 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '*️⃣',
       },
+      link: { type: 'generated-index', slug: 'api' },
       items: [
         {
           type: 'link',
           label: 'Signalling Service',
           customProps: { icon: '🛜' },
-          href: '/theoads/api/',
+          href: '/theoads/api/signalling/',
         },
         {
           type: 'link',
