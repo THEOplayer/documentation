@@ -103,8 +103,8 @@ The body of the post request can have the following properties:
 - The `id` corresponds to the ID of the DATERANGE which corresponds to the ad break request.
 - `startDate` denotes when the ad break should start. It should be in a Program Date Time format such as such as `YYYY-MM-DDThh:mm:ss.SSSZ`.
 - `duration` is the total duration of the ad break.
-- `source` is optional. In case multiple streams use the same signaling service you can specify part of the stream base uri here. In this case only for the specified stream the ad will be inserted. If it is undefined the ad will be scheduled for all streams that use the signaling service.
-- `layout` is the optional THEOads layout, which can be set to `SINGLE`, `DOUBLE` or `LSHAPE_AD`.
+- `source` is optional. In case multiple streams use the same signaling service you can specify part of the stream base uri here. In this case only for the specified stream the ad will be inserted. If it is `undefined` the ad will be scheduled for all streams that use the signaling service.
+- `layout` is the optional THEOads layout, which can be set to `SINGLE`, `DOUBLE` or `LSHAPE_AD`. If it is `undefined` the default layout of the signaling service will be chosen.
 
 An example of such a schedule ad break request body can be found below:
 
