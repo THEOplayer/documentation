@@ -1,0 +1,256 @@
+{
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {},
+    "requestBodies": {},
+    "responses": {},
+    "securitySchemes": {
+      "apiKeyAuth": { "type": "apiKey", "name": "X-API-KEY", "in": "header" }
+    }
+  },
+  "info": {
+    "title": "Ads Client Api",
+    "version": "0.0.1",
+    "description": "This API facilitates the deployment of monetized streams on the local environment",
+    "license": { "name": "MIT" },
+    "contact": {}
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/monetized-streams": {
+      "get": {
+        "operationId": "GetMonetizedStreams",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ApiMonetizedStreamResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all monetized streams currently deployed on the platform",
+        "tags": ["Ad"],
+        "security": [],
+        "parameters": []
+      },
+      "post": {
+        "operationId": "CreateMonetizedStream",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiMonetizedStreamResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a new monetized stream",
+        "tags": ["Ad"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MonetizedStream" }
+            }
+          }
+        }
+      }
+    },
+    "/monetized-streams/{monetizedStreamId}": {
+      "get": {
+        "operationId": "GetMonetizedStream",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiMonetizedStreamResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all monetized stream by id currently deployed on the platform",
+        "tags": ["Ad"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "ID of the monetized stream",
+            "in": "path",
+            "name": "monetizedStreamId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "UpdateMonetizedStream",
+        "responses": {
+          "204": {
+            "description": "Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiMonetizedStreamResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update a monetized stream by id",
+        "tags": ["Ad"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "ID of the monetized stream",
+            "in": "path",
+            "name": "monetizedStreamId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_MonetizedStream_"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "DeleteMonetizedStream",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiMonetizedStreamResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a monetized stream by id",
+        "tags": ["Ad"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "ID of the monetized stream",
+            "in": "path",
+            "name": "monetizedStreamId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ]
+      }
+    },
+    "/monetized-streams/{monetizedStreamId}/break": {
+      "post": {
+        "operationId": "CreateMonetizedStreamBreak",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": { "application/json": { "schema": {} } }
+          }
+        },
+        "description": "Schedule an ad break for a monetized stream",
+        "tags": ["Ad"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "ID of the monetized stream",
+            "in": "path",
+            "name": "monetizedStreamId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AdBreak" }
+            }
+          }
+        }
+      }
+    },
+    "/monetized-streams/{monetizedStreamId}/layout": {
+      "patch": {
+        "operationId": "UpdateMonetizedStreamLayout",
+        "responses": {
+          "204": {
+            "description": "Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiMonetizedStreamResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update the layout of a monetized stream",
+        "tags": ["Ad"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "ID of the monetized stream",
+            "in": "path",
+            "name": "monetizedStreamId",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pick_MonetizedStream.layout_"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "The status of the API.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/IStatus" }
+              }
+            }
+          }
+        },
+        "description": "Get the status of the API.",
+        "tags": ["Status"],
+        "security": [],
+        "parameters": []
+      }
+    }
+  },
+  "servers": [{ "url": "/api/v1" }]
+}

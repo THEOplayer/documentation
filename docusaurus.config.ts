@@ -2,9 +2,10 @@ import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
-import type * as Preset from '@docusaurus/preset-classic';
+import type * as Preset from 'docusaurus-preset-openapi';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
@@ -98,10 +99,11 @@ const config: Config = {
 
   presets: [
     [
-      'classic',
+      'docusaurus-preset-openapi',
       {
         docs: false,
         blog: false,
+        api: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -145,6 +147,14 @@ const config: Config = {
         routeBasePath: '/theoads',
         sidebarPath: './sidebarsTHEOads.ts',
       } satisfies DocsPlugin.Options,
+    ],
+    [
+      'docusaurus-plugin-openapi',
+      {
+        id: 'theoads-api',
+        path: 'theoads/ads-client.swagger.json',
+        routeBasePath: '/theoads/api',
+      } satisfies OpenApiPlugin.Options,
     ],
     [
       '@docusaurus/plugin-content-docs',
