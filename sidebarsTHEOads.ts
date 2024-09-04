@@ -34,9 +34,9 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'link',
-          label: 'Signalling Service',
+          label: 'Signaling Service',
           customProps: { icon: '🛜' },
-          href: '/theoads/api/signalling/',
+          href: '/theoads/api/signaling/',
         },
         {
           type: 'link',
