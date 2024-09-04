@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import Curl from '@theme-original/ApiDemoPanel/Curl';
 import type CurlType from '@theme/ApiDemoPanel/Curl';
 import type { WrapperProps } from '@docusaurus/types';
