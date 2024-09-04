@@ -18,7 +18,7 @@ In this section we'll go through the different options and the minimal requireme
 
 ### Requirements
 
-For HLS live streams, we require qn `#EXT-X-PROGRAM-DATE-TIME` tag to be present. 
+For HLS live streams, we require qn `#EXT-X-PROGRAM-DATE-TIME` tag to be present.
 This is necessary to have a clear timeline for each viewer and allows accurate scheduling of the ad breaks.
 
 ### Manifest scheduling
@@ -34,6 +34,7 @@ The `#EXT-X-DATERANGE` tag is the recommended approach to signal an ad break due
 THEOads will recognize any `#EXT-X-DATERANGE` tag as long as the `CLASS` attribute is undefined.
 
 The required attributes for this are:
+
 - `ID`: a unique identifier of the Date Range in the playlist.
 - `START-DATE`: A quoted string containing the date/time at which the Date Range begins.
 - `DURATION` or `PLANNED-DURATION` of the Date Range.
@@ -49,15 +50,15 @@ An example snippet can be found below:
 2.ts
 ```
 
-#### CUE-OUT 
+#### CUE-OUT
 
-Inside of the manifest the ad break start can be signaled by adding an `#EXT-X-CUE-OUT` tag. 
+Inside of the manifest the ad break start can be signaled by adding an `#EXT-X-CUE-OUT` tag.
 The duration of the ad break should be specified after it.
 The end of the ad break and start of content would be signaled by an `#EXT-X-CUE-IN` tag.
 The `CUE-OUT` tag can be accompanied by a [daterange](#daterange).
 This is interesting if the ad break start does not correspond with the start of a new segment.
 
-It is also recommended to add `#EXT-X-CUE-OUT-CONT` tags for each segment inside of the ad break. 
+It is also recommended to add `#EXT-X-CUE-OUT-CONT` tags for each segment inside of the ad break.
 This enables the tune-in feature which is able to show parts of the ad break even if the viewer joins in the middle of one.
 
 Similar to the daterange, `SCTE35` markers could optionally be added containing the duration and the ID of the ad break.
@@ -91,11 +92,11 @@ The body of the post request can have the following properties:
 
 ```ts
 {
-    id: string;
-    startDate: string;
-    duration: string;
-    source: string | undefined;
-    layout: string | undefined;
+  id: string;
+  startDate: string;
+  duration: string;
+  source: string | undefined;
+  layout: string | undefined;
 }
 ```
 
@@ -109,10 +110,10 @@ An example of such a schedule ad break request body can be found below:
 
 ```json
 {
-    "id": "1",
-    "startDate": "2024-08-09T07:30:11.274Z",
-    "duration": "10",
-    "source": "https://cdn.theoplayer.com/video/big_buck_bunny/",
-    "layout": "DOUBLE"
+  "id": "1",
+  "startDate": "2024-08-09T07:30:11.274Z",
+  "duration": "10",
+  "source": "https://cdn.theoplayer.com/video/big_buck_bunny/",
+  "layout": "DOUBLE"
 }
 ```
