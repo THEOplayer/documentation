@@ -1223,6 +1223,47 @@
         }
       }
     },
+    "/monetized-streams/{monetizedStreamId}/layout": {
+      "patch": {
+        "operationId": "UpdateMonetizedStreamLayout",
+        "responses": {
+          "204": {
+            "description": "Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseItem_MonetizedStream_"
+                }
+              }
+            }
+          }
+        },
+        "description": "Updates the default layout for an existing monetized stream (signaling service).",
+        "tags": ["Monetized-Stream"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "The Monetized stream identifier.",
+            "in": "path",
+            "name": "monetizedStreamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pick_MonetizedStream.layout_"
+              }
+            }
+          }
+        }
+      }
+    },
     "/status": {
       "get": {
         "operationId": "Status",
