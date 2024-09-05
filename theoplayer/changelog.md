@@ -5,6 +5,49 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 7.12.0 (2024/09/05)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where the player could stall indefinitely when playing or seeking in an HLS stream with misaligned discontinuities.
+
+### Web
+
+#### ✨ Features
+
+- Added `Ad.customData` and `AdBreak.customData`, which can be populated with integration-specific data by a [custom SSAI integration](https://www.theoplayer.com/docs/theoplayer/v7/api-reference/web/interfaces/Ads.html#registerServerSideIntegration).
+
+#### ⚡ Improvements
+
+- Do not report the HESP latency when paused or when recovery seeking as these values don't have semantic meaning.
+
+### Android
+
+#### ✨ Features
+
+- Added `headers` property to `TypedSource`. The player will add the headers to the HTTP requests for the given `TypedSource`, only for mp3 and mp4 sources.
+- Added `Ad.customData` and `AdBreak.customData`, which can be populated with integration-specific data by a [custom SSAI integration](https://www.theoplayer.com/docs/theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory)).
+
+#### 🐛 Issues
+
+- Fixed an issue where `player.getDuration()` was negative while playing a live stream on Chromecast.
+
+#### 👎 Deprecations
+
+- Deprecated unused `AdIntegrationKind.DEFAULT`.
+
+### iOS
+
+#### ✨ Features
+
+- Added `headers` property to `TypedSource`. The player will add the headers to the HTTP requests for the given `TypedSource`.
+
+#### 👎 Deprecations
+
+- Deprecated obsoleted `defaultKind`, `theo` and `freewheel` cases from `AdIntegrationKind`.
+
 ## 🚀 7.11.0 (2024/08/26)
 
 ### General

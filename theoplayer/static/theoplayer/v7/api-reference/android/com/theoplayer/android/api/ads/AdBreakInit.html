@@ -184,6 +184,12 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private  <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#customData>customData</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -210,13 +216,25 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#AdBreakInit(java.lang.Integer,java.lang.Integer)">AdBreakInit</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxDuration)</code></th>
+                                                        href="#AdBreakInit(java.lang.Integer,java.lang.Integer,java.lang.Object)">AdBreakInit</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxDuration, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> customData)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#AdBreakInit(java.lang.Integer,java.lang.Integer)">AdBreakInit</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxDuration)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
                                                         href="#AdBreakInit(java.lang.Integer)">AdBreakInit</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#AdBreakInit()">AdBreakInit</a></span>()</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -274,7 +292,7 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#getTimeOffset()>getTimeOffset</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">The time offset at which content will be paused to play the ad break, in seconds.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -282,7 +300,23 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#getMaxDuration()>getMaxDuration</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">The duration of the ad break, in seconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#getCustomData()>getCustomData</a>() </code>
+                                            </th>
+                                            <td class="colLast">Additional integration-specific data associated with this ad break.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=AdBreakInit.html#setCustomData(java.lang.Object)>setCustomData</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> customData) </code>
+                                            </th>
+                                            <td class="colLast">Additional integration-specific data associated with this ad break.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -316,6 +350,16 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="AdBreakInit(java.lang.Integer,java.lang.Integer,java.lang.Object)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>AdBreakInit</h4>
+                                        <pre>AdBreakInit(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> maxDuration, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> customData)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                                 <a name="AdBreakInit(java.lang.Integer,java.lang.Integer)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
@@ -331,6 +375,16 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                                     <li class="blockList">
                                         <h4>AdBreakInit</h4>
                                         <pre>AdBreakInit(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> timeOffset)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="AdBreakInit()"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>AdBreakInit</h4>
+                                        <pre>AdBreakInit()</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -358,7 +412,7 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                                     <li class="blockList">
                                         <h4>getTimeOffset</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=AdBreakInit.html#getTimeOffset()>getTimeOffset</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>The time offset at which content will be paused to play the ad break, in seconds.</p><ul><li><p>Required when used in <a href=ServerSideAdIntegrationController.html#createAdBreak(com.theoplayer.android.api.ads.AdBreakInit)>ServerSideAdIntegrationController.createAdBreak</a>.</p></li><li><p>Ignored when used in <a href=ServerSideAdIntegrationController.html#updateAdBreak(com.theoplayer.android.api.ads.AdBreak,com.theoplayer.android.api.ads.AdBreakInit)>ServerSideAdIntegrationController.updateAdBreak</a>.</p></li></ul></div>
 
                                         <dl>
 
@@ -376,12 +430,58 @@ public final class <span class="typeNameLabel"><a href=AdBreakInit.html>AdBreakI
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getMaxDuration</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=AdBreakInit.html#getMaxDuration()>getMaxDuration</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>The duration of the ad break, in seconds.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCustomData()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCustomData</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> <a href=AdBreakInit.html#getCustomData()>getCustomData</a>()</pre>
+                                        <div class="block"><p>Additional integration-specific data associated with this ad break.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="setCustomData(java.lang.Object)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCustomData</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=AdBreakInit.html#setCustomData(java.lang.Object)>setCustomData</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> customData)</pre>
+                                        <div class="block"><p>Additional integration-specific data associated with this ad break.</p></div>
 
                                         <dl>
 
