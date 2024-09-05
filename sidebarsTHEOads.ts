@@ -38,6 +38,8 @@ const sidebars: SidebarsConfig = {
           customProps: { icon: '🛜' },
           href: '/theoads/api/signaling/',
         },
+        // TODO Enable once version 8 is released
+        /*
         {
           type: 'link',
           label: 'Web',
@@ -56,6 +58,7 @@ const sidebars: SidebarsConfig = {
           customProps: { icon: 'react' },
           href: 'https://theoplayer.github.io/react-native-theoplayer/api/',
         },
+        */
       ],
     },
   ],
