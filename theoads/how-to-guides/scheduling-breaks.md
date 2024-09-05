@@ -21,7 +21,7 @@ The signaling service will recognize this information and will translate it so t
 
 There are several options on achieving this:
 
-### DATERANGE (Manifest)
+### DATERANGE (Manifest) {#daterange}
 
 The `#EXT-X-DATERANGE` tag is the recommended approach to signal an ad break due to its standardization.
 THEOads will recognize any `#EXT-X-DATERANGE` tag as long as the `CLASS` attribute is undefined.
@@ -43,7 +43,7 @@ An example snippet can be found below:
 2.ts
 ```
 
-### CUE-OUT (Manifest)
+### CUE-OUT (Manifest) {#cue-out}
 
 Inside of the manifest the ad break start can be signaled by adding an `#EXT-X-CUE-OUT` tag.
 The duration of the ad break should be specified after it.
