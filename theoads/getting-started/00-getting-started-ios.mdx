@@ -36,7 +36,6 @@ import TabItem from '@theme/TabItem';
        <!-- prettier-ignore-end -->
    </Tabs>
 
-
 ## Integration
 
 ### Create integration
@@ -80,7 +79,16 @@ player.source = .init(
 ```
 
 :::note
- - The `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials. More information can be found [here](00-getting-started-signaling-service.mdx).
- - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
- - The `ads` object needs to be a `TheoAdDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
-:::
+
+- The `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials. More information can be found [here](00-getting-started-signaling-service.mdx).
+- The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
+- The `ads` object needs to be a `TheoAdDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
+  :::
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/ios/interfaces/TheoAdDescription.html)
+- [What is THEOads?](https://www.theoplayer.com/product/theoads/)
+- [The Advantages of Server-Guided Ad Insertion](https://www.theoplayer.com/solutions/server-guided-ad-insertion-sgai/)
+- [Flexible, Usage-Based Pricing](https://www.theoplayer.com/product/theoads/pricing/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://www.theoplayer.com/blog/server-guided-ad-insertion-sgai-revolutionizing-streaming-monetization/)
