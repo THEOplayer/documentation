@@ -50,6 +50,12 @@ const sidebars: SidebarsConfig = {
           customProps: { icon: 'android' },
           href: 'pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html',
         },
+        {
+          type: 'link',
+          label: 'React-Native',
+          customProps: { icon: 'react' },
+          href: 'https://theoplayer.github.io/react-native-theoplayer/api/',
+        },
       ],
     },
   ],
