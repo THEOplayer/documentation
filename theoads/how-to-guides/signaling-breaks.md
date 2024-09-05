@@ -4,8 +4,7 @@ sidebar_position: 4
 
 # Scheduling breaks
 
-THEOads is able to insert ad breaks into your content, but it needs placement information for this.
-On this page we will go over the multiple break scheduling possibilities.
+THEOads can insert ad breaks into your content, but it requires placement information to do so. This page will outline the various options for scheduling ad breaks.
 
 ## Using the manifest
 
