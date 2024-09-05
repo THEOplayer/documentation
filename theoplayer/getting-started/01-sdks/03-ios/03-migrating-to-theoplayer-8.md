@@ -35,3 +35,79 @@ When it was introduced, the goal of the Objective-C APIs was to provide bindings
 Over time, that became unneeded as React Native became capable to interact directly with Swift APIs.
 
 Please contact us for support in case your codebase relies on the Objective-C APIs.
+
+## API changes to THEOplayerSDK
+
+Two methods on the `THEOplayer` API have been replaced with setter properties: `setPreload` and `setPlaybackRate`.
+The following code snippets elaborate more on the changes.
+
+Before 8.0:
+
+```swift
+import THEOplayerSDK
+
+let theoplayer: THEOplayer = .init()
+theoplayer.setPreload(.auto)
+theoplayer.source = ...
+theoplayer.setPlaybackRate(2)
+```
+
+After 8.0:
+
+```swift
+import THEOplayerSDK
+
+let theoplayer: THEOplayer = .init()
+theoplayer.preload = .auto
+theoplayer.source = ...
+theoplayer.playbackRate = 2
+```
+
+In the configuration side of the APIs, the initializer of `THEOplayerConfiguration` has been replaced with a builder approach with `THEOplayerConfigurationBuilder`. The same change is made also to `PiPConfiguration` with `PiPConfigurationBuilder`.
+
+Before 8.0:
+
+```swift
+import THEOplayerSDK
+
+let pipConfig: PiPConfiguration = .init(canStartPictureInPictureAutomaticallyFromInline: true)
+let playerConfig: THEOplayerConfiguration = .init(pip: pipConfig)
+let theoplayer: THEOplayer = .init(configuration: playerConfig)
+```
+
+After 8.0:
+
+```swift
+import THEOplayerSDK
+
+let pipConfigBuilder: PiPConfigurationBuilder = .init()
+pipConfigBuilder.canStartPictureInPictureAutomaticallyFromInline = true
+
+let playerConfigBuilder: THEOplayerConfigurationBuilder = .init()
+playerConfigBuilder.pip = pipConfigBuilder.build()
+
+let theoplayer: THEOplayer = .init(configuration: playerConfigBuilder.build())
+```
+
+Last but not least, `AdsConfiguration` is removed, and so are `GoogleDAIAdsConfiguration/GoogleDAIAdsConfigurationBuilder` and `GoogleIMAAdsConfiguration/GoogleIMAConfigurationBuilder`.
+The following code snippet will demonstrate how to configure the IMA configuration:
+
+```swift
+import THEOplayerSDK
+import THEOplayerGoogleIMAIntegration
+import GoogleInteractiveMediaAds
+
+let theoplayer: THEOplayer = .init()
+
+let imaSettings: IMASettings = .init()
+imaSettings.enableBackgroundPlayback = true
+imaSettings.language = "es"
+
+let imaIntegration: GoogleImaIntegration = GoogleIMAIntegrationFactory.createIntegration(on: theoplayer, with: imaSettings)
+
+let renderingSettings: IMAAdsRenderingSettings = .init()
+renderingSettings.uiElements = []
+imaIntegration.renderingSettings = renderingSettings
+
+theoplayer.addIntegration(imaIntegration)
+```
