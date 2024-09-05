@@ -1,0 +1,86 @@
+---
+sidebar_position: 0.5
+sidebar_label: React Native
+sidebar_custom_props: { 'icon': 'react' }
+---
+
+# Getting started with THEOads on React Native
+
+This guide will get you started with THEOads in your THEOplayer React Native SDK: configure the license, update dependencies and set the source description.
+
+## Prerequisites
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+1.  You need to have a THEOplayer license which is compatible with THEOads.
+    This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
+2.  You need a working [THEOads signaling service](00-getting-started-signaling-service.mdx).
+3.  Enable the THEOads integration based on the target platform:
+    <Tabs queryString="platform">
+        <!-- prettier-ignore-start -->
+        <TabItem value="android" label="Android & Android TV">
+            The Android SDK is modular-based, so to enable THEOads, simply include the extension by setting this flag in your gradle.properties:
+            ```groovy
+            # Enable THEOplayer Extensions (default: disabled)
+            THEOplayer_extensionTHEOads = true
+            ```
+        </TabItem>
+        <TabItem value="ios" label="iOS & tvOS">
+            To enable THEOads you can add the "THEOADS" feature flag to react-native-theoplayer.json (or theoplayer-config.json)
+        </TabItem>
+        <TabItem value="web" label="Web">
+            Add a dependency to a THEOads-enabled THEOplayer package:
+            ```bash
+            $ npm i theoplayer@npm:@theoplayer/theoads
+            ```
+
+            In addition, since THEOads integrates with Google DAI Pod Serving, it is required to load the Google DAI script on your page:
+
+            ```html
+            <script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+            ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+
+    </Tabs>
+
+## Integration
+
+This guide assumes you know how to set up React Native with THEOplayer.
+For more information regarding this check out the [THEOplayer getting started](/theoplayer/getting-started/frameworks/react-native/getting-started/).
+
+### Player configuration
+
+To make use of the THEOads integration, only a specific source needs to be set:
+
+```javascript
+player.source = {
+  sources: {
+    src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI',
+    type: 'application/x-mpegurl',
+    hlsDateRange: true,
+  },
+  ads: [
+    {
+      integration: 'theoads',
+      networkCode: 'NETWORK-CODE',
+      customAssetKey: 'CUSTOM-ASSET-KEY',
+      backdropDoubleBox: 'PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE', // Optional
+      backdropLShape: 'PATH-TO-L-SHAPE-BACKDROP-IMAGE', // Optional
+    },
+  ],
+};
+```
+
+- Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
+  More information can be found [here](00-getting-started-signaling-service.mdx).
+- The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
+- The `ads` object needs to have its integration set to `theoads`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
+
+## More information
+
+- [What is THEOads?](https://www.theoplayer.com/product/theoads/)
+- [The Advantages of Server-Guided Ad Insertion](https://www.theoplayer.com/solutions/server-guided-ad-insertion-sgai/)
+- [Flexible, Usage-Based Pricing](https://www.theoplayer.com/product/theoads/pricing/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://www.theoplayer.com/blog/server-guided-ad-insertion-sgai-revolutionizing-streaming-monetization/)

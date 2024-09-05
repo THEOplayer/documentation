@@ -33,6 +33,20 @@ const FeatureList: FeatureItem[] = [
     to: '/theoplayer',
   },
   {
+    title: 'THEOads',
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/theoads.svg'),
+          dark: useBaseUrl('/img/theoads_dark.svg'),
+        }}
+      />
+    ),
+    description: <>Deliver a seamless, less intrusive ad experience with THEOads, designed to boost viewer engagement and maximize ad revenue.</>,
+    to: '/theoads',
+  },
+  {
     title: 'Open Video UI',
     Image: (props) => (
       <ThemedImage
@@ -71,8 +85,8 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, Image, description, to }: FeatureItem) {
   return (
-    <div className={clsx('col col--4 margin-vert--md')}>
-      <div className={clsx('card padding--lg margin-horiz--sm', styles.featureCard)}>
+    <div className={clsx('col col--6 margin-vert--md')}>
+      <div className={clsx('card padding--md margin-horiz--sm', styles.featureCard)}>
         <div className={clsx('card__header text--center', styles.featureHeading)}>
           <Image className={styles.featureImage} alt={title} />
         </div>

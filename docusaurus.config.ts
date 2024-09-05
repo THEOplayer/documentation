@@ -2,9 +2,10 @@ import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
-import type * as Preset from '@docusaurus/preset-classic';
+import type * as Preset from 'docusaurus-preset-openapi';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
@@ -68,7 +69,7 @@ const docsConfigBase = {
 
 const config: Config = {
   title: 'THEOdocs',
-  tagline: 'Discover the latest developer documentation and samples for THEOplayer, Open Video UI and THEOlive.',
+  tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI and THEOlive.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -98,10 +99,11 @@ const config: Config = {
 
   presets: [
     [
-      'classic',
+      'docusaurus-preset-openapi',
       {
         docs: false,
         blog: false,
+        api: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -135,6 +137,24 @@ const config: Config = {
           },
         },
       } satisfies DocsPlugin.Options,
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'theoads',
+        path: 'theoads',
+        routeBasePath: '/theoads',
+        sidebarPath: './sidebarsTHEOads.ts',
+      } satisfies DocsPlugin.Options,
+    ],
+    [
+      'docusaurus-plugin-openapi',
+      {
+        id: 'theoads-api',
+        path: 'theoads/api/ads-client.swagger.json',
+        routeBasePath: '/theoads/api/signaling',
+      } satisfies OpenApiPlugin.Options,
     ],
     [
       '@docusaurus/plugin-content-docs',
@@ -330,6 +350,13 @@ const config: Config = {
           docsPluginId: 'theoplayer',
           label: 'THEOplayer',
           href: '/theoplayer',
+          position: 'left',
+        } satisfies PlatformSidebarNavbarItemProps,
+        {
+          type: 'custom-platformSidebar',
+          docsPluginId: 'theoads',
+          label: 'THEOads',
+          href: '/theoads',
           position: 'left',
         } satisfies PlatformSidebarNavbarItemProps,
         {
