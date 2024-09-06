@@ -75,7 +75,7 @@ end function
 ## Related articles
 
 - [How to dynamically change the visible captions?](01-how-to-dynamically-change-the-visible-captions.md)
-- [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+- [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
 - [Web SDK](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
-- [Android Legacy (4.12.x) SDK](../../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/02-android/00-getting-started.md)
+- [Android Legacy (4.12.x) SDK](../../../version-v4/getting-started/01-sdks/02-android/00-getting-started.md)
 - [Chromecast Receiver SDK](../../getting-started/01-sdks/06-chromecast/00-getting-started.md)
