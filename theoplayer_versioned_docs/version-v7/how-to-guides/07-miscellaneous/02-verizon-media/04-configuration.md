@@ -22,7 +22,7 @@ Developers can set a Verizon Media Configuration when creating their video playe
 
 You can toggle this features at https://cdn.theoplayer.com/demos/verizon-media/index.html. _(Note: technically, this demo doesn't use `defaultSkipOffset` to configure the skip offset. Instead, this demo uses `player.verizonMedia.ads.adBreaks[<element>].skipOffset` to adjust this dynamically at run-time.)_
 
-![VerizonMediaDemo](../../../assets/img/VerizonMediaConfiguration.png "Verizon Media Configuration")
+![VerizonMediaDemo](../../../../../theoplayer/assets/img/VerizonMediaConfiguration.png "Verizon Media Configuration")
 
 The examples below demonstrate how to use a Verizon Media Configuration per platform.
 

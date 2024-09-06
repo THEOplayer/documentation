@@ -43,7 +43,7 @@ You can programmatically request the list of available error categories through 
 For example, on the Web SDK, you can access this list through `THEOplayer.ErrorCategory`,
 as illustrated by the screenshot below.
 
-![ErrorCategory](../../../assets/img/error-code-ErrorCategory.png "ErrorCategory")
+![ErrorCategory](../../../../../theoplayer/assets/img/error-code-ErrorCategory.png "ErrorCategory")
 
 You can also programmatically request the category of an error code through the THEOplayer API.
 For example, on the Web SDK, you can access this through `THEOplayer.ErrorCategory.fromCode(<errorCode>)`.
@@ -70,7 +70,7 @@ You can programmatically request the list of all available error codes through t
 For example, on the Web SDK, you can access this through `THEOplayer.ErrorCode`,
 as illustrated by the screenshot below.
 
-![ErrorCode](../../../assets/img/error-code-ErrorCode.png "ErrorCode")
+![ErrorCode](../../../../../theoplayer/assets/img/error-code-ErrorCode.png "ErrorCode")
 
 Relevant API references:
 

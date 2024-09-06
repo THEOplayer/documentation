@@ -13,7 +13,7 @@ Afterwards, you must locate the _"Need to raise a request? Contact us."_-button,
 This action will take you to https://opentelly.atlassian.net/servicedesk/customer/portal/1/group/1/create/150,
 as illustrated by the screenshot below.
 
-![THEOplayer Jira Service Desk](../assets/img/jira-service-desk.png)
+![THEOplayer Jira Service Desk](../../../theoplayer/assets/img/jira-service-desk.png)
 
 Enter a clear summary, select the appropriate request type, and enter a valuable description.
 
