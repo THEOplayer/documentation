@@ -50,3 +50,18 @@
 	url = https://github.com/THEOplayer/flutter-theoplayer-sdk.git
 	branch = 7.x
 	shallow = true
+[submodule "web-connectors-v7"]
+	path = theoplayer_versioned_docs/version-v7/external/web-connectors
+	url = https://github.com/THEOplayer/web-connectors.git
+	branch = main
+	shallow = true
+[submodule "android-connector-v7"]
+	path = theoplayer_versioned_docs/version-v7/external/android-connector
+	url = https://github.com/THEOplayer/android-connector.git
+	branch = main
+	shallow = true
+[submodule "ios-connector-v7"]
+	path = theoplayer_versioned_docs/version-v7/external/iOS-Connector
+	url = https://github.com/THEOplayer/iOS-Connector.git
+	branch = main
+	shallow = true
