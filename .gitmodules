@@ -45,3 +45,8 @@
 	path = theoplayer/external/flutter-theoplayer-sdk
 	url = https://github.com/THEOplayer/flutter-theoplayer-sdk.git
 	branch = main
+[submodule "flutter-v7"]
+	path = theoplayer_versioned_docs/version-v7/external/flutter-theoplayer-sdk
+	url = https://github.com/THEOplayer/flutter-theoplayer-sdk.git
+	branch = 7.x
+	shallow = true
