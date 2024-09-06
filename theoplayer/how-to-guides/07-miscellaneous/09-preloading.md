@@ -72,6 +72,6 @@ The demo below illustrates the Preload API in production.
 ## Resources
 
 - [What are the benefits of preloading?](../../faq/38-what-are-the-benefits-of-preloading.md)
-- [API reference](pathname:///theoplayer/v7/api-reference/web/types/PreloadType.html)
+- [API reference](pathname:///theoplayer/v8/api-reference/web/types/PreloadType.html)
 - [HTML5 specification](https://www.w3.org/TR/html5/embedded-content-0.html#attr-media-preload)
-- [API reference: Cache API](pathname:///theoplayer/v7/api-reference/web/interfaces/Cache.html)
+- [API reference: Cache API](pathname:///theoplayer/v8/api-reference/web/interfaces/Cache.html)

@@ -49,7 +49,7 @@ const sidebars: SidebarsConfig = {
     }),
     'changelog',
     apiReferencesLink({
-      href: 'pathname:///theoplayer/v7/api-reference/web/',
+      href: 'pathname:///theoplayer/v8/api-reference/web/',
     }),
     separator(),
     knowledgeBaseCategory(),
@@ -71,7 +71,7 @@ const sidebars: SidebarsConfig = {
     }),
     'changelog',
     apiReferencesLink({
-      href: 'pathname:///theoplayer/v7/api-reference/android/',
+      href: 'pathname:///theoplayer/v8/api-reference/android/',
     }),
     separator(),
     knowledgeBaseCategory(),
@@ -93,7 +93,7 @@ const sidebars: SidebarsConfig = {
     }),
     'changelog',
     apiReferencesLink({
-      href: 'pathname:///theoplayer/v7/api-reference/ios/',
+      href: 'pathname:///theoplayer/v8/api-reference/ios/',
     }),
     separator(),
     knowledgeBaseCategory(),

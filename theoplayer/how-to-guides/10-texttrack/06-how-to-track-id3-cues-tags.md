@@ -6,7 +6,7 @@ The question above is commonly asked by the developers who want to introduce a c
 - to overlay certain text on top of the player (e.g. the score of a football match).
 - ...
 
-[ID3](https://en.wikipedia.org/wiki/ID3) is a type of metadata which can be inserted in HTTP livestreams. Once an ID3 cue is inserted, it'll be added to a THEOplayer [TextTrack](pathname:///theoplayer/v7/api-reference/web/interfaces/TextTrack.html).
+[ID3](https://en.wikipedia.org/wiki/ID3) is a type of metadata which can be inserted in HTTP livestreams. Once an ID3 cue is inserted, it'll be added to a THEOplayer [TextTrack](pathname:///theoplayer/v8/api-reference/web/interfaces/TextTrack.html).
 The demo at [https://demo.theoplayer.com/audio-id3-metadata](https://demo.theoplayer.com/audio-id3-metadata) demonstrates a usage of ID3 metadata. Just before the song changes, an `enter` event will be dispatched, the song information (title, album, etc.) is contained within this `enter` event, and can be used to update the UI.
 
 ## SDKs
@@ -74,7 +74,7 @@ _ = player.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, 
 
 ### Track the enter event
 
-The snippet below explains how you correctly track the `enter` event, which is part of the [TextTrack API](pathname:///theoplayer/v7/api-reference/web/interfaces/TextTrack.html). The `enter` event maps to the moment in time when the ID3 cue is relevant.
+The snippet below explains how you correctly track the `enter` event, which is part of the [TextTrack API](pathname:///theoplayer/v8/api-reference/web/interfaces/TextTrack.html). The `enter` event maps to the moment in time when the ID3 cue is relevant.
 
 > ⚠ **Migrating from version 3.x or lower**
 >
@@ -146,7 +146,7 @@ The demo below illustrates the use of ID3 in production.
 
 ## Resources
 
-- [Reference API - TextTrack](pathname:///theoplayer/v7/api-reference/web/interfaces/TextTrack.html)
+- [Reference API - TextTrack](pathname:///theoplayer/v8/api-reference/web/interfaces/TextTrack.html)
 - [http://id3.org/](http://id3.org/): ID3.org Home
 - [https://en.wikipedia.org/wiki/ID3](https://en.wikipedia.org/wiki/ID3): Wikipedia - ID3
 - [https://dev.w3.org/html5/html-sourcing-inband-tracks/](https://dev.w3.org/html5/html-sourcing-inband-tracks/): External resource - Sourcing In-band Media Resource Tracks from Media Containers into HTML

@@ -6,9 +6,9 @@ Depending on the ad integration kind you use, the steps to take differ.
 
 ## CSAI integration
 
-The `csai` [ad integration kind](pathname:///theoplayer/v7/api-reference/web/types/AdIntegrationKind.html) is only available on Web SDK and allows customization.
+The `csai` [ad integration kind](pathname:///theoplayer/v8/api-reference/web/types/AdIntegrationKind.html) is only available on Web SDK and allows customization.
 
-To customize the text here we will be leveraging the language localization mechanism. You can find the API we will be using [here](pathname:///theoplayer/v7/api-reference/web/interfaces/UIConfiguration.html#language).
+To customize the text here we will be leveraging the language localization mechanism. You can find the API we will be using [here](pathname:///theoplayer/v8/api-reference/web/interfaces/UIConfiguration.html#language).
 
 The second step is to customize the styling of texts. This can be done via CSS.
 

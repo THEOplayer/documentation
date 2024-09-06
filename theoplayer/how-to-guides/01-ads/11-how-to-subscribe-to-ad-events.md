@@ -21,10 +21,10 @@ If you are scheduling [client-side advertisements](03-how-to-set-up-vast-and-vma
 
 #### Web SDK
 
-The `Player` API exposes an [`ads`](pathname:///theoplayer/v7/api-reference/web/classes/ChromelessPlayer.html#ads) property which belongs to the [`Ads`](pathname:///theoplayer/v7/api-reference/web/interfaces/Ads.html) interface. Because this [`Ads`](pathname:///theoplayer/v7/api-reference/web/interfaces/Ads.html) interface inherits from [`EventDispatcher<AdsEventMap>`](pathname:///theoplayer/v7/api-reference/web/interfaces/AdsEventMap.html),
+The `Player` API exposes an [`ads`](pathname:///theoplayer/v8/api-reference/web/classes/ChromelessPlayer.html#ads) property which belongs to the [`Ads`](pathname:///theoplayer/v8/api-reference/web/interfaces/Ads.html) interface. Because this [`Ads`](pathname:///theoplayer/v8/api-reference/web/interfaces/Ads.html) interface inherits from [`EventDispatcher<AdsEventMap>`](pathname:///theoplayer/v8/api-reference/web/interfaces/AdsEventMap.html),
 you can leverage event listeners in this interface.
 
-The ad-related events are documented in [`AdsEventMap`](pathname:///theoplayer/v7/api-reference/web/interfaces/AdsEventMap.html).
+The ad-related events are documented in [`AdsEventMap`](pathname:///theoplayer/v8/api-reference/web/interfaces/AdsEventMap.html).
 
 To subscribe to an event, you select an event from this page, use the `Ads` interface, call the `addEventListener` method, and set the event as the first parameter, and the callback as the second parameter.
 
@@ -77,9 +77,9 @@ When you do the same for the `csai` ad integration, you get the following events
 
 #### Android SDK
 
-The `Player` API exposes an [`getAds()`](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/player/Player.html#getAds--) method which belongs to the [`Ads`](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/Ads.html) interface. Because this `Ads` interface inherits from [`EventDispatcher<AdEvent>`](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/event/ads/AdEvent.html),you can leverage event listeners in this interface.
+The `Player` API exposes an [`getAds()`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/player/Player.html#getAds--) method which belongs to the [`Ads`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/Ads.html) interface. Because this `Ads` interface inherits from [`EventDispatcher<AdEvent>`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/event/ads/AdEvent.html),you can leverage event listeners in this interface.
 
-The Android SDK currently only allows ad playback through [Google IMA](10-google-ima.md#android-sdk). The available events are documented in [`GoogleImaAdEventType`](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaAdEventType.html).
+The Android SDK currently only allows ad playback through [Google IMA](10-google-ima.md#android-sdk). The available events are documented in [`GoogleImaAdEventType`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaAdEventType.html).
 
 To subscribe to an event, you select an appropriate `GoogleImaAdEventType` or `AdsEventType`, use the `Ads` interface, call the `addEventListener` method, and set the event as the first parameter, and the callback as the second parameter.
 
@@ -93,10 +93,10 @@ theoPlayer.ads.addEventListener(GoogleImaAdEventType.AD_BREAK_STARTED) {
 
 #### iOS/tvOS SDK
 
-The `Player` API exposes an [`ads`](pathname:///theoplayer/v7/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C3adsAA3Ads_pvp) property which belongs to the [`Ads`](pathname:///theoplayer/v7/api-reference/ios/Protocols/Ads.html) interface. Because this `Ads` interface inherits from [`EventDispatcher`](pathname:///theoplayer/v7/api-reference/ios/Ads%20Events.html),
+The `Player` API exposes an [`ads`](pathname:///theoplayer/v8/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C3adsAA3Ads_pvp) property which belongs to the [`Ads`](pathname:///theoplayer/v8/api-reference/ios/Protocols/Ads.html) interface. Because this `Ads` interface inherits from [`EventDispatcher`](pathname:///theoplayer/v8/api-reference/ios/Ads%20Events.html),
 you can leverage event listeners in this interface.
 
-The ad-related events are documented in [AdsEventTypes](pathname:///theoplayer/v7/api-reference/ios/Structs/AdsEventTypes.html).
+The ad-related events are documented in [AdsEventTypes](pathname:///theoplayer/v8/api-reference/ios/Structs/AdsEventTypes.html).
 
 To subscribe to an event, you select an event from this page, use the `Ads` interface, call the `addEventListener` method, and set the event as the first parameter, and the callback as the second parameter.
 

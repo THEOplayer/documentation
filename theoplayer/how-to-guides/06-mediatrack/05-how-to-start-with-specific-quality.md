@@ -83,4 +83,4 @@ private void attachABRResetLogic() {
 
 ## Resources
 
-- [MediaTrack API](pathname:///theoplayer/v7/api-reference/web/interfaces/MediaTrack.html)
+- [MediaTrack API](pathname:///theoplayer/v8/api-reference/web/interfaces/MediaTrack.html)
