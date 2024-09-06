@@ -22,7 +22,13 @@
 [submodule "react-native-v6"]
 	path = theoplayer_versioned_docs/version-v6/external/react-native-theoplayer
 	url = https://github.com/THEOplayer/react-native-theoplayer.git
-	branch = master
+	branch = 7.x
+	shallow = true
+[submodule "react-native-v7"]
+	path = theoplayer_versioned_docs/version-v7/external/react-native-theoplayer
+	url = https://github.com/THEOplayer/react-native-theoplayer.git
+	branch = 7.x
+	shallow = true
 [submodule "web-connectors"]
 	path = theoplayer/external/web-connectors
 	url = https://github.com/THEOplayer/web-connectors.git
