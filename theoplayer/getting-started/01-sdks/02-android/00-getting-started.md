@@ -18,9 +18,7 @@ This approach gives more flexibility and results in a reduced application size, 
 
 The Android SDK leverages Java 8 and Kotlin languages to provide safer and more concise code.
 
-The Android SDK is published to the [THEOplayer Maven respository](https://maven.theoplayer.com/) where developers can easily navigate our releases and find code snippets for implementing the player into their project.
-
-_Note: the Android SDK is also still published to [Jitpack](https://jitpack.io/#com.theoplayer.theoplayer-sdk-android/core) but we encourage users to use the THEOplayer Maven repository as we will stop publishing to Jitpack in the near future._
+The Android SDK is published to the [THEOplayer Maven repository](https://maven.theoplayer.com/) where developers can easily navigate our releases and find code snippets for implementing the player into their project.
 
 ## Add THEOplayer and Kotlin libraries to your application
 
@@ -30,13 +28,14 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
 
 ![](../../../assets/img/android-getting-started-07.png)
 
-1. a) Add the THEOplayer Maven repo and Jitpack as repositories.
+1. a) Add the THEOplayer Maven repository.
 
 ```groovy
 allprojects {
     repositories {
         google()
         mavenCentral()
+        // highlight-next-line
         maven { url 'https://maven.theoplayer.com/releases' }
     }
 }
