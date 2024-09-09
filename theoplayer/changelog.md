@@ -5,6 +5,82 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.0.0 (2024/09/09)
+### Officially announcing THEOplayer 8.0
+Introducing a major version bump to THEOplayer 8.0. This version officially releases all the improvements and developments THEOplayer has achieved since version 7.0.
+
+THEOplayer 8.0 is **backwards compatible for most features but includes some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
+
+- THEOplayer 8.0 is the first official release with support for [THEOads](https://www.theoplayer.com/product/theoads), our new product for delivering seamless and novel ad experiences through Server Guided Ad Insertion.  
+
+- The Custom Server Side Ad Insertion API allows custom SSAI integrations to control the player Ad API, and forms the basis for our new Yospace connectors for [Web](https://www.theoplayer.com/docs/theoplayer/connectors/web/yospace/), [Android](https://www.theoplayer.com/docs/theoplayer/connectors/android/yospace/) and [iOS](https://www.theoplayer.com/docs/theoplayer/connectors/ios/yospace/) as well as our upcoming Edgio Uplynk connectors.
+
+- The Latency Manager API allows fine-tuned control over live and low-latency playback for DASH, HLS and HESP, available on Web and Android.
+
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-8/), [Android](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-8/) and [iOS](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-8/).
+
+### General
+
+#### ✨ Features
+
+- Custom server-side advertisement integrations are now stable. See the API documentation for [web](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/web/interfaces/Ads.html#registerServerSideIntegration.registerServerSideIntegration-1), [Android](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory)) and [iOS](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/ios/Protocols/Ads.html).
+
+### Web
+
+#### 💥 Breaking Changes
+
+- Removed the Yospace pre-integration in favor of the new [Yospace web connector](https://www.theoplayer.com/docs/theoplayer/connectors/web/yospace/).
+- Removed the Conviva pre-integration in favor of the new [Conviva web connector](https://www.theoplayer.com/docs/theoplayer/connectors/web/conviva/).
+- Removed the empty `player.analytics` API.
+- Renamed the default integration for client-side VAST and VMAP ads from `'theo'` to `'csai'`. Ad descriptions that don't specify an [integration](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/web/interfaces/AdDescription.html#integration) or use the old name will continue to work, but will have their integration replaced with `'csai'` in the API. The new name was chosen to avoid confusion with our new THEOads solution for server-guided ad insertion.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- Removed deprecated UIConfiguration.
+- Removed deprecated `AdIntegrationKind.DEFAULT`.
+- Removed deprecated `HlsPlaybackConfiguration.isUseLegacy` flag.
+
+#### ⚡ Improvements
+
+- Make `CachingTaskList#getTaskById(String)` return `null` if no match is found.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- Due to low number of usage of iOS 12, we decided to raise the minimum supported version of our iOS SDK to 13.0. This decision was based on metrics provided by Apple's iOS usage measures by devices that transacted on the App Store. For more info check `https://developer.apple.com/support/app-store/`.
+- Removed deprecated `GoogleIMAAdsConfiguration` and `GoogleIMAConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-8/
+- Removed deprecated `GoogleDAIAdsConfiguration` and `GoogleDAIAdsConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-8/
+- Removed deprecated `AdsConfiguration` and `AdPreloadType` APIs.
+- Removed deprecated `ScheduledAd` API. Change `Ads.scheduledAds` type from `ScheduledAd` to `Ad`.
+- Removed deprecated `PiPConfiguration.init` API. Use `PiPConfigurationBuilder` instead.
+- Removed deprecated `UIConfiguration` API.
+- Removed deprecated `setPreload` and `setPlaybackRate` APIs. Use `preload` and `playbackRate` setters respectively.
+- Removed deprecated `THEOplayerCastHelper` API. Use `THEOplayerGoogleCastIntegration.CastIntegrationHelper` instead.
+- Changed `CompanionAd.width` and `CompanionAd.height` types from `Int?` to `Int`.
+- Changed `Ad.adBreak` type from `AdBreak` to `AdBreak?`. Changed `Ad.companions` type from `[CompanionAd?]` to `[CompanionAd]`.
+- Removed deprecated `THEOplayerConfiguration.init` API. Use `THEOplayerConfigurationBuilder` instead.
+- Removed deprecated `ads`, `cast` and `ui` properties from `THEOplayerConfiguration` API.
+- Removed obsoleted and deprecated `defaultKind`, `theo` and `freewheel` cases from `AdIntegrationKind` API.
+- Bumped minimum supported GoogleCast xcframework version from 4.7.1 to 4.8.0.
+- Removed unused `AdIntegration.theo` enum case in preparation for the new THEOads API.
+
+#### 👎 Deprecations
+
+- Deprecating all THEOplayer Objective-C API support. Existing APIs will still continue to work until next major release, but additional support for new APIs will discontinue. When it was introduced, the goal of the Objective-C APIs was to provide bindings to bridge our native SDK to React Native. Over time that became unneeded as Swift became capable of accomplishing the goal. Please contact us for support in case your codebase relies on the Objective-C APIs.
+
+### tvOS
+
+#### 💥 Breaking Changes
+
+- Raising the tvOS mimimum supported version of our tvOS SDK to 13.0 for consistency with iOS version.
+
+#### 👎 Deprecations
+
+- Deprecating all THEOplayer Objective-C API support. Existing APIs will still continue to work until next major release, but additional support for new APIs will discontinue. When it was introduced, the goal of the Objective-C APIs was to provide bindings to bridge our native SDK to React Native. Over time that became unneeded as Swift became capable of accomplishing the goal. Please contact us for support in case your codebase relies on the Objective-C APIs.
+
 ## 🚀 7.12.0 (2024/09/05)
 
 ### General

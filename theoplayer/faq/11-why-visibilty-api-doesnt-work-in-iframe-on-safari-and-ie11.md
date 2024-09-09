@@ -2,7 +2,7 @@
 
 This question may be asked when you observe a different behavior of the Visibility API on different browsers.
 
-The [Visibility API](pathname:///theoplayer/v7/api-reference/web/interfaces/Visibility.html) provides developers a way to observe how much of the player is visible.
+The [Visibility API](pathname:///theoplayer/v8/api-reference/web/interfaces/Visibility.html) provides developers a way to observe how much of the player is visible.
 
 When the player is embedded in an iframe, this API does not work on Safari and IE11. This depends on the fact that the player uses the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Browser_compatibility) if it's available in the browser. Unfortunately, IE and Safari do not have support for this, so the player necessarily falls back to scroll events for these environments.
 

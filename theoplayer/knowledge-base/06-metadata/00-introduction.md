@@ -201,7 +201,7 @@ THEOplayer offers features which might implement your desired use-case out-of-th
 
 - THEOplayer
   - [How to track ID3 cues/tags?](../../how-to-guides/10-texttrack/06-how-to-track-id3-cues-tags.md)
-  - [TextTrack Types](pathname:///theoplayer/v7/api-reference/web/types/TextTrackType.html)
+  - [TextTrack Types](pathname:///theoplayer/v8/api-reference/web/types/TextTrackType.html)
   - [ID3 Audio Player Demo](https://demo.theoplayer.com/audio-id3-metadata)
 - External
   - [Requirements for Media Timed Events by the Media and Entertainment Interest Group](https://www.w3.org/TR/media-timed-events/)

@@ -37,5 +37,5 @@ If your reason for using HLS ads is the wish to use ABR to be more flexible rega
 The following resources provide more information:
 
 - [IAB Standards, Guidelines & Best Practices](https://www.iab.com/guidelines/?post_type=iab_guideline)
-- [API reference – Ads interface](pathname:///theoplayer/v7/api-reference/web/interfaces/Ads.html)
+- [API reference – Ads interface](pathname:///theoplayer/v8/api-reference/web/interfaces/Ads.html)
 - [THEOplayer Advertising User Guide](../knowledge-base/01-advertisement/01-user-guide.md)

@@ -45,7 +45,7 @@ const player = new THEOplayer.Player(element, {
 });
 ```
 
-Refer to the [VerizonMediaConfiguration API reference](pathname:///theoplayer/v7/api-reference/web/interfaces/VerizonMediaConfiguration.html) for more information.
+Refer to the [VerizonMediaConfiguration API reference](pathname:///theoplayer/v8/api-reference/web/interfaces/VerizonMediaConfiguration.html) for more information.
 
 ##### Legacy Android SDK (4.12.x)
 
@@ -67,7 +67,7 @@ THEOplayerConfig theoplayerConfig = new THEOplayerConfig.Builder()
 THEOplayerView theoplayerView = new THEOplayerView(this, theoplayerConfig);
 ```
 
-Refer to the documentation at [VerizonMediaConfiguration](pathname:///theoplayer/v7/api-reference/android/com/theoplayer/android/api/verizonmedia/VerizonMediaConfiguration.html) for more information.
+Refer to the documentation at [VerizonMediaConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/verizonmedia/VerizonMediaConfiguration.html) for more information.
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 
@@ -87,7 +87,7 @@ let theoplayerConfiguration = THEOplayerConfiguration(
 let theoplayer = THEOplayer(configuration: theoplayerConfiguration)
 ```
 
-Refer to the documentation at [VerizonMediaConfiguration](pathname:///theoplayer/v7/api-reference/ios/Classes/VerizonMediaConfiguration.html) for more information.
+Refer to the documentation at [VerizonMediaConfiguration](pathname:///theoplayer/v8/api-reference/ios/Classes/VerizonMediaConfiguration.html) for more information.
 
 # Related articles
 
