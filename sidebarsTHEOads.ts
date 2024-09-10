@@ -52,7 +52,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          label: 'React-Native',
+          label: 'React Native',
           customProps: { icon: 'react' },
           href: 'https://theoplayer.github.io/react-native-theoplayer/api/interfaces/TheoAdDescription.html',
         },
