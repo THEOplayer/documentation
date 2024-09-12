@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.0.1 (2024/09/11)
+
+### Web
+
+#### ✨ Features
+
+- Exposed the `adsmanagerloaded` event on the `player.ads` API to access the Google IMA AdManager.
+
 ## 🚀 8.0.0 (2024/09/09)
 ### Officially announcing THEOplayer 8.0
 Introducing a major version bump to THEOplayer 8.0. This version officially releases all the improvements and developments THEOplayer has achieved since version 7.0.
