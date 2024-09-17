@@ -7,7 +7,19 @@
     "responses": {},
     "schemas": {
       "ResourceState": {
-        "enum": ["create", "creating", "created", "update", "updating", "delete", "deleting", "deleted", "retrieve", "retrieved", "link"],
+        "enum": [
+          "create",
+          "creating",
+          "created",
+          "update",
+          "updating",
+          "delete",
+          "deleting",
+          "deleted",
+          "retrieve",
+          "retrieved",
+          "link"
+        ],
         "type": "string"
       },
       "ResourceType": {
@@ -46,7 +58,11 @@
             "$ref": "#/components/schemas/ResourceType"
           }
         },
-        "required": ["id", "state", "type"],
+        "required": [
+          "id",
+          "state",
+          "type"
+        ],
         "type": "object",
         "description": "From T, pick a set of properties whose keys are in the union K"
       },
@@ -55,7 +71,12 @@
         "description": "Construct a type with the properties of T except for those in type K."
       },
       "MonetizedStreamLayout": {
-        "enum": ["SINGLE", "DOUBLE", "LSHAPE_AD", "LSHAPE_CONTENT"],
+        "enum": [
+          "SINGLE",
+          "DOUBLE",
+          "LSHAPE_AD",
+          "LSHAPE_CONTENT"
+        ],
         "type": "string"
       },
       "ReturnType_typeofMonetizedStreamSchema.validateSync_": {
@@ -71,6 +92,9 @@
           },
           "layout": {
             "$ref": "#/components/schemas/MonetizedStreamLayout"
+          },
+          "segmentOrigin": {
+            "type": "string"
           },
           "origin": {
             "type": "string"
@@ -120,7 +144,9 @@
                 "$ref": "#/components/schemas/MonetizedStream"
               }
             },
-            "required": ["payload"],
+            "required": [
+              "payload"
+            ],
             "type": "object"
           }
         ]
@@ -157,6 +183,9 @@
           "origin": {
             "type": "string"
           },
+          "segmentOrigin": {
+            "type": "string"
+          },
           "layout": {
             "$ref": "#/components/schemas/MonetizedStreamLayout"
           },
@@ -181,7 +210,12 @@
           },
           {
             "type": "string",
-            "enum": ["no", "always", "on-failure", "unless-stopped"]
+            "enum": [
+              "no",
+              "always",
+              "on-failure",
+              "unless-stopped"
+            ]
           }
         ]
       },
@@ -277,7 +311,9 @@
                       "type": "array"
                     }
                   },
-                  "required": ["aliases"],
+                  "required": [
+                    "aliases"
+                  ],
                   "type": "object"
                 }
               ]
@@ -309,7 +345,10 @@
                 "format": "double"
               }
             },
-            "required": ["delay", "parallelism"],
+            "required": [
+              "delay",
+              "parallelism"
+            ],
             "type": "object"
           },
           "update_config": {
@@ -322,7 +361,10 @@
                 "format": "double"
               }
             },
-            "required": ["delay", "parallelism"],
+            "required": [
+              "delay",
+              "parallelism"
+            ],
             "type": "object"
           },
           "restart_policy": {
@@ -339,16 +381,60 @@
               },
               "condition": {
                 "type": "string",
-                "enum": ["any", "none", "on-failure"]
+                "enum": [
+                  "none",
+                  "on-failure",
+                  "any"
+                ]
               }
             },
-            "required": ["window", "max_attempts", "delay", "condition"],
+            "required": [
+              "window",
+              "max_attempts",
+              "delay",
+              "condition"
+            ],
             "type": "object"
           },
           "resources": {
             "properties": {
               "reservations": {
                 "properties": {
+                  "devices": {
+                    "items": {
+                      "properties": {
+                        "options": {
+                          "$ref": "#/components/schemas/Record_string.string_"
+                        },
+                        "device_ids": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "count": {
+                          "type": "number",
+                          "format": "double"
+                        },
+                        "driver": {
+                          "type": "string"
+                        },
+                        "capabilities": {
+                          "type": "string",
+                          "enum": [
+                            "gpu",
+                            "tpu"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "pids": {
+                    "type": "number",
+                    "format": "double"
+                  },
                   "memory": {
                     "type": "string"
                   },
@@ -360,6 +446,41 @@
               },
               "limits": {
                 "properties": {
+                  "devices": {
+                    "items": {
+                      "properties": {
+                        "options": {
+                          "$ref": "#/components/schemas/Record_string.string_"
+                        },
+                        "device_ids": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "count": {
+                          "type": "number",
+                          "format": "double"
+                        },
+                        "driver": {
+                          "type": "string"
+                        },
+                        "capabilities": {
+                          "type": "string",
+                          "enum": [
+                            "gpu",
+                            "tpu"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "pids": {
+                    "type": "number",
+                    "format": "double"
+                  },
                   "memory": {
                     "type": "string"
                   },
@@ -381,7 +502,9 @@
                       "type": "string"
                     }
                   },
-                  "required": ["spread"],
+                  "required": [
+                    "spread"
+                  ],
                   "type": "object"
                 },
                 "type": "array"
@@ -401,7 +524,10 @@
           },
           "mode": {
             "type": "string",
-            "enum": ["replicated", "global"]
+            "enum": [
+              "replicated",
+              "global"
+            ]
           }
         },
         "type": "object"
@@ -410,7 +536,11 @@
         "properties": {
           "pull_policy": {
             "type": "string",
-            "enum": ["always", "if-not-present", "never"]
+            "enum": [
+              "always",
+              "if-not-present",
+              "never"
+            ]
           },
           "deploy": {
             "$ref": "#/components/schemas/ComposeDeploy"
@@ -469,7 +599,9 @@
                 "type": "string"
               }
             },
-            "required": ["driver"],
+            "required": [
+              "driver"
+            ],
             "type": "object"
           },
           "links": {
@@ -551,7 +683,12 @@
                 "type": "array"
               }
             },
-            "required": ["retries", "timeout", "interval", "test"],
+            "required": [
+              "retries",
+              "timeout",
+              "interval",
+              "test"
+            ],
             "type": "object"
           },
           "entrypoint": {
@@ -579,7 +716,9 @@
             "type": "string"
           }
         },
-        "required": ["image"],
+        "required": [
+          "image"
+        ],
         "type": "object"
       },
       "ComposeNetwork": {
@@ -622,7 +761,9 @@
                 "type": "string"
               }
             },
-            "required": ["driver"],
+            "required": [
+              "driver"
+            ],
             "type": "object"
           },
           "enable_ipv6": {
@@ -678,7 +819,9 @@
                         "type": "string"
                       }
                     },
-                    "required": ["size"],
+                    "required": [
+                      "size"
+                    ],
                     "type": "object"
                   }
                 ]
@@ -700,7 +843,10 @@
                         "type": "string"
                       }
                     },
-                    "required": ["target", "source"],
+                    "required": [
+                      "target",
+                      "source"
+                    ],
                     "type": "object"
                   }
                 ]
@@ -722,7 +868,10 @@
                         "type": "string"
                       }
                     },
-                    "required": ["target", "source"],
+                    "required": [
+                      "target",
+                      "source"
+                    ],
                     "type": "object"
                   }
                 ]
@@ -815,7 +964,9 @@
             "type": "string"
           }
         },
-        "required": ["services"],
+        "required": [
+          "services"
+        ],
         "type": "object"
       },
       "ComposeDependency": {
@@ -840,7 +991,11 @@
             "type": "string"
           }
         },
-        "required": ["overwrite", "content", "file"],
+        "required": [
+          "overwrite",
+          "content",
+          "file"
+        ],
         "type": "object"
       },
       "ReturnType_typeofLocalDeploymentSchema.validateSync_": {
@@ -860,6 +1015,9 @@
                   },
                   "layout": {
                     "$ref": "#/components/schemas/MonetizedStreamLayout"
+                  },
+                  "segmentOrigin": {
+                    "type": "string"
                   },
                   "origin": {
                     "type": "string"
@@ -936,7 +1094,9 @@
                 "$ref": "#/components/schemas/LocalDeployment"
               }
             },
-            "required": ["payload"],
+            "required": [
+              "payload"
+            ],
             "type": "object"
           }
         ]
@@ -1008,7 +1168,13 @@
             "type": "string"
           }
         },
-        "required": ["status", "error", "uptime", "timestamp", "version"],
+        "required": [
+          "status",
+          "error",
+          "uptime",
+          "timestamp",
+          "version"
+        ],
         "type": "object",
         "additionalProperties": false
       }
@@ -1051,7 +1217,9 @@
           }
         },
         "description": "Retrieves all created and deployed monetized streams (signaling services) along with their configurations.",
-        "tags": ["Monetized-Stream"],
+        "tags": [
+          "Monetized-Stream"
+        ],
         "security": [],
         "parameters": []
       },
@@ -1070,7 +1238,9 @@
           }
         },
         "description": "Creates and deploys a new monetized stream in the environment, resulting in a deployment of a signaling service.",
-        "tags": ["Monetized-Stream"],
+        "tags": [
+          "Monetized-Stream"
+        ],
         "security": [],
         "parameters": [],
         "requestBody": {
@@ -1101,7 +1271,9 @@
           }
         },
         "description": "Retrieves a single monetized stream (signaling service) based on its identifier, along with its configuration details.",
-        "tags": ["Monetized-Stream"],
+        "tags": [
+          "Monetized-Stream"
+        ],
         "security": [],
         "parameters": [
           {
@@ -1130,7 +1302,9 @@
           }
         },
         "description": "Updates a single monetized stream (signaling service) based on its identifier, along with its configuration update.",
-        "tags": ["Monetized-Stream"],
+        "tags": [
+          "Monetized-Stream"
+        ],
         "security": [],
         "parameters": [
           {
@@ -1169,7 +1343,9 @@
           }
         },
         "description": "Deletes a single monetized stream (signaling service) based on its identifier.",
-        "tags": ["Monetized-Stream"],
+        "tags": [
+          "Monetized-Stream"
+        ],
         "security": [],
         "parameters": [
           {
@@ -1198,7 +1374,9 @@
           }
         },
         "description": "Creates an ad break on an existing monetized stream (signaling service).",
-        "tags": ["Monetized-Stream"],
+        "tags": [
+          "Monetized-Stream"
+        ],
         "security": [],
         "parameters": [
           {
@@ -1239,7 +1417,9 @@
           }
         },
         "description": "Updates the default layout for an existing monetized stream (signaling service).",
-        "tags": ["Monetized-Stream"],
+        "tags": [
+          "Monetized-Stream"
+        ],
         "security": [],
         "parameters": [
           {
@@ -1280,7 +1460,9 @@
           }
         },
         "description": "Get the status of the API.",
-        "tags": ["Status"],
+        "tags": [
+          "Status"
+        ],
         "security": [],
         "parameters": []
       }
