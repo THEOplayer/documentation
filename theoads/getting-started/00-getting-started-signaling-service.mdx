@@ -86,7 +86,7 @@ The monitized-stream holds the following information:
 
 ### Creating a new monetized stream
 
-The following API endpoint creates a new monetized stream (signaling-service) in the environment, mandatory paramters are:
+The following API endpoint creates a new monetized stream (signaling-service) in the environment, mandatory parameters are:
 
 - `name`: Self defined descriptive name for the monitized stream.
 - `labels`: Array of self defined lables (string).
@@ -120,7 +120,7 @@ curl -L '/api/v1/monetized-streams' \
 
 ### Updating an existing monetized stream
 
-The following API endpoint updates an existing monetized stream based on it's streamId, mandatory paramters are:
+The following API endpoint updates an existing monetized stream based on it's streamId, mandatory parameters are:
 
 - `name`: Self defined descriptive name for the monitized stream.
 - `labels`: Array of self defined lables (string).
@@ -198,14 +198,14 @@ The response is an array of the existing monitized stream resources.
 
 ### Retrieving individual monetized stream
 
-The following API endpoint returns an existing monetized stream based on it's identifier (streamId).
+The following API endpoint returns an existing monetized stream based on its identifier (streamId).
 
 ```curl
 curl -L '/api/v1/monetized-streams/:streamId' \
 -H 'Accept: application/json'
 ```
 
-The response is the monitized stream resource.
+The response is the monetized stream resource.
 
 ```json
 {
