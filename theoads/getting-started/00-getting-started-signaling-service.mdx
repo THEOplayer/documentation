@@ -61,6 +61,7 @@ The monitized-stream holds the following information:
 - `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
+- `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 - `streamId`: Unique identifier for the monitized stream within the environment.
 - `description`: Additional descriptive information for the monitized stream.
@@ -73,6 +74,7 @@ The monitized-stream holds the following information:
   "labels": [],
   "layout": "DOUBLE",
   "origin": "https://domain.com",
+  "segmentOrigin": "https://segment-domain.com",
   "assetKey": "google-sgai-demo",
   "streamId": "theoads-demo",
   "originPath": "/",
@@ -90,6 +92,7 @@ The following API endpoint creates a new monetized stream (signalling-service) i
 - `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
+- `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 - `streamId`: Unique identifier for the monitized stream within the environment.
 - `description`: Additional descriptive information for the monitized stream.
@@ -104,6 +107,7 @@ curl -L '/api/v1/monetized-streams' \
   "assetKey": "string",
   "layout": "SINGLE",
   "origin": "string",
+  "segmentOrigin": "string",
   "adURITemplate": "string",
   "streamId": "string",
   "labels": [
@@ -122,6 +126,7 @@ The following API endpoint updates an existing monetized stream based on it's st
 - `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
+- `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 - `streamId`: Unique identifier for the monitized stream within the environment.
 - `description`: Additional descriptive information for the monitized stream.
@@ -140,6 +145,7 @@ curl -L -X PATCH '/api/v1/monetized-streams/:streamId' \
   "streamId": "string",
   "adURITemplate": "string",
   "origin": "string",
+  "segmentOrigin": "string",
   "layout": "SINGLE",
   "assetKey": "string",
   "networkCode": "string",
@@ -176,6 +182,7 @@ The response is an array of the existing monitized stream resources.
       "labels": [],
       "layout": "DOUBLE",
       "origin": "https://domain.com",
+      "segmentOrigin": "https://segment-domain.com",
       "assetKey": "google-sgai-demo",
       "streamId": "theoads-demo",
       "originPath": "/",
@@ -208,6 +215,7 @@ The response is the monitized stream resource.
     "labels": [],
     "layout": "DOUBLE",
     "origin": "https://domain.com",
+    "segmentOrigin": "https://segment-domain.com",
     "assetKey": "google-sgai-demo",
     "streamId": "theoads-demo",
     "originPath": "/",
