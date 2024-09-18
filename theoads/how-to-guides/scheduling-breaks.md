@@ -75,6 +75,21 @@ An example manifest with these tags can be found below:
 5.ts
 ```
 
+### OATCLS-SCTE35 (Manifest) {#oatcls-scte35}
+
+The `#EXT-OATCLS-SCTE35` tag is a non-standard tag which contains a SCTE marker.
+The Signaling Service will parse the information in the SCTE marker such as the duration and ID.
+
+An example snippet for an `#EXT-OATCLS-SCTE35` tag can be found below:
+
+```
+#EXTINF:10,
+1.ts
+#EXT-OATCLS-SCTE35:/DBFAAAAAAAAAP/wFAUAAAI+f+/+yuN1kH4Azf5gAAAAAAAgAh5DVUVJAAABy3//AADN/mAOCk5GTF9saW5lYXIwAACyYCjX
+#EXTINF:10,
+2.ts
+```
+
 ## Using the Signaling service REST API
 
 If the ad information won't be present in the provided manifest, it is possible to schedule one through the signaling service API.
