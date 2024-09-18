@@ -55,16 +55,16 @@ curl --location 'http://theoads-host/api/v1/monetized-streams/stream-1/break' \
 
 A monetized stream resource represents a high-availability Signaling Service deployed to enable THEOads for an Origin stream. Created via the locally deployed REST API, it provides a standardized HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. This setup ensures seamless ad insertion without needing CDN reconfiguration, even if the monetized stream is stopped and recreated.
 
-The monitized-stream holds the following information:
+The monetized-stream holds the following information:
 
-- `name`: Self defined descriptive name for the monitized stream.
+- `name`: Self defined descriptive name for the monetized stream.
 - `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `streamId`: Unique identifier for the monitized stream within the environment.
-- `description`: Additional descriptive information for the monitized stream.
+- `streamId`: Unique identifier for the monetized stream within the environment.
+- `description`: Additional descriptive information for the monetized stream.
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 - `adURITemplate`: Template URI to be used by THEOplayer, default value `theo-ads://dai.break/?d=[duration]`.
 
@@ -87,14 +87,14 @@ The monitized-stream holds the following information:
 
 The following API endpoint creates a new monetized stream (signaling-service) in the environment, mandatory parameters are:
 
-- `name`: Self defined descriptive name for the monitized stream.
+- `name`: Self defined descriptive name for the monetized stream.
 - `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `streamId`: Unique identifier for the monitized stream within the environment.
-- `description`: Additional descriptive information for the monitized stream.
+- `streamId`: Unique identifier for the monetized stream within the environment.
+- `description`: Additional descriptive information for the monetized stream.
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 
 ```curl
@@ -121,14 +121,14 @@ curl -L '/api/v1/monetized-streams' \
 
 The following API endpoint updates an existing monetized stream based on it's streamId, mandatory parameters are:
 
-- `name`: Self defined descriptive name for the monitized stream.
+- `name`: Self defined descriptive name for the monetized stream.
 - `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `streamId`: Unique identifier for the monitized stream within the environment.
-- `description`: Additional descriptive information for the monitized stream.
+- `streamId`: Unique identifier for the monetized stream within the environment.
+- `description`: Additional descriptive information for the monetized stream.
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 
 ```curl
@@ -170,7 +170,7 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-The response is an array of the existing monitized stream resources.
+The response is an array of the existing monetized stream resources.
 
 ```json
 [
