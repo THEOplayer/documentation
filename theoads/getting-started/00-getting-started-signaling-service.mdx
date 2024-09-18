@@ -51,6 +51,47 @@ curl --location 'http://theoads-host/api/v1/monetized-streams/stream-1/break' \
 }'
 ```
 
+### Configuration
+
+When setting up the Signaling Service, a configuration needs to be passed along. It must contain the following parameters:
+
+- `adURITemplate`: The Ad Decisioning Template URI which is to be used for ad requests, default value `theo-ads://dai.break/?d=[duration]`.
+- `origin`: The origin URI to use for manifest requests.
+- `segmentOrigin`: The segment origin URI to use for segment requests.
+- `layout`: The default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/) for possible values.
+- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+
+#### Origins
+
+When playing a THEOads source, it is expected to pass a source that looks like this:
+
+```js
+src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI'
+```
+
+For the `MANIFEST-URI` part of the `src`, it can be an absolute URL or a relative one where the `origin` is not part of it.
+The relative URL should be used if the origin is a non-public hostname or ip address.
+Below shows an example for both cases:
+
+```js
+// Absolute URL
+src: 'PATH-TO-SIGNALING-SERVER/hls/https://domain.com/manifest.m3u8'
+
+// Relative URL
+src: 'PATH-TO-SIGNALING-SERVER/hls/manifest.m3u8'
+```
+
+In the case of the absolute URL the Signaling Service uses the whole URL as is. For the relative URL on the other hand,
+it does not have a valid URL to fetch the manifest yet. Here we will use the `origin` parameter as provided in the config.
+By combining both we do get a valid URL and can fetch the manifest.
+
+The Signaling Service will not add the origin URL into the manifest in the case of a relative URL.
+However, segment URLs in the media playlists should be absolute URLs.
+Segment requests don't need to pass through the Signaling Service but should be handled directly on their origin.
+The `segmentOrigin` parameter should contain this publicly available endpoint to fetch the segments directly.
+
+
 ## Monetized stream
 
 A monetized stream resource represents a high-availability Signaling Service deployed to enable THEOads for an Origin stream. Created via the locally deployed REST API, it provides a standardized HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. This setup ensures seamless ad insertion without needing CDN reconfiguration, even if the monetized stream is stopped and recreated.
