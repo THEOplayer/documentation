@@ -26,17 +26,26 @@ For each Origin stream that needs to be enabled for THEOads, a monetized-stream 
 
 Please refer to the [API reference](/theoads/api/signaling/) for detailed information on the REST API.
 
-### Media Origin
+### Scheduling ad breaks
 
-To accurately schedule breaks, the origin manifest must be valid and include date and time indications. For HLS, this means the `EXT-X-PROGRAM-DATE-TIME` tag must be present. Breaks can be scheduled using either the provided REST API or in-stream (manifest) metadata (SCTE).
+To accurately schedule breaks, the origin manifest must be valid and include date and time indications.
+For HLS, this means the `EXT-X-PROGRAM-DATE-TIME` tag must be present.
+Breaks can be scheduled using either the provided REST API or in the manifest itself.
 
-When using SCTE triggers, the following is supported:
+#### Manifest
+When using manifest triggers, the following tags are supported:
 
-- SCTE markers should be included in either an `EXT-X-DATERANGE` tag, an `EXT-X-OATCLS-SCTE35` tag, or with `EXT-X-CUE-OUT` and `EXT-X-CUE-OUT-CONT` tags.
-- The `EXT-X-DATERANGE` tag is recommended for its standardization and ability to provide more comprehensive data for improved integration.
-- To use the tune-in feature, `EXT-X-CUE-OUT-CONT` tags must be present between `EXT-X-CUE-OUT` and `EXT-X-CUE-IN` markers.
+- `#EXT-X-DATERANGE` tag
+    - this is recommended because of its standardization and ability to provide more comprehensive data for improved integration.
+- `#EXT-X-OATCLS-SCTE35` tag
+- `#EXT-X-CUE-OUT` and `#EXT-X-CUE-OUT-CONT` tags
+- To use the tune-in feature, `#EXT-X-CUE-OUT-CONT` tags must be present between `#EXT-X-CUE-OUT` and `#EXT-X-CUE-IN` markers.
 
-For scheduling ad breaks through the REST API, please refer to the API definitions and the example below.
+Optionally, SCTE markers can be included with the tags for extra metadata.
+
+#### REST API
+
+For scheduling ad breaks through the REST API, please refer to the [API definitions](/theoads/api/signaling/create-monetized-stream-break/) and the example below.
 
 ```bash
 curl --location 'http://theoads-host/api/v1/monetized-streams/stream-1/break' \
@@ -50,6 +59,8 @@ curl --location 'http://theoads-host/api/v1/monetized-streams/stream-1/break' \
   "layout": "LSHAPE_AD"
 }'
 ```
+
+For more in depth information on scheduling ad breaks we refer to our [How-to guide: Scheduling breaks](/theoads/how-to-guides/scheduling-breaks/)
 
 ### Configuration
 
