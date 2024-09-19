@@ -256,7 +256,7 @@ To see PiP in action, start the video and scroll down on the page.
 
 A sample app for Picture-In-Picture could be found here:
 
-- [https://github.com/THEOplayer/samples-android-sdk/tree/master/PiP-Handling](https://github.com/THEOplayer/samples-android-sdk/tree/master/PiP-Handling)
+- [https://github.com/THEOplayer/samples-android-sdk/tree/master/pip-handling](https://github.com/THEOplayer/samples-android-sdk/tree/master/pip-handling)
 
 ## Remarks
 
