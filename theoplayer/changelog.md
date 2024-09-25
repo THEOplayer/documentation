@@ -5,6 +5,32 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.1.0 (2024/09/24)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue with the TypeScript type definitions where `ServerSideAdInsertionConfiguration.integration` did not allow for custom server-side ad integrations.
+- Fixed an issue where the THEOads player would show the subtitles from the content stream while playing ads.
+- Fixed an issue where the player could skip a playable FairPlay DRM source if the same source description also contained a source which did not use FairPlay DRM.
+- Fixed an issue where audio tracks would be ordered differently when playing natively on iOS Safari.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where `SourceChangeEvent` would be triggered late when `autoplay` is set to true.
+- Fixed an issue where going in and out of fullscreen would cause the playback to seek back.
+- Fixed an issue where audio and video were not in sync for a few frames.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where in DAI live streams the ad countdown was missing.
+- Fixed an issue where passing multiple `GoogleImaAdDescription`s as pre-roll ads would only playout one.
+
 ## 🚀 8.0.1 (2024/09/11)
 
 ### Web
