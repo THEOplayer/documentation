@@ -5,6 +5,26 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.1.1 (2024/09/27)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would error when a media key changes from `usable` to `output-restricted` while other qualities are still playable.
+
+### Web
+
+#### ✨ Features
+
+- Added subtitle styling support for TTML.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where playing long MP3 files could cause audio stuttering.
+
 ## 🚀 8.1.0 (2024/09/24)
 
 ### Web
