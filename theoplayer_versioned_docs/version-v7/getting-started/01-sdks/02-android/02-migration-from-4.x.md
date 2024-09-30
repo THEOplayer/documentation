@@ -13,7 +13,7 @@ This approach gives more flexibility and results in a reduced application size, 
 
 The Android SDK leverages Java 8 and Kotlin languages to provide safer and more concise code.
 
-Lastly, the Android SDK is released on JitPack which allow developers to easily fetch and implement the player into their app.
+The Android SDK is published to the [THEOplayer Maven repository](https://maven.theoplayer.com/) where developers can easily navigate our releases and find code snippets for implementing the player into their project.
 
 ## When to migrate?
 
