@@ -14,7 +14,7 @@ This guide explains how you set up THEOplayer Android SDK to add and remove requ
 
 ## Set up THEOplayer in your app
 
-To set up THEOplayer Android SDK in your app follow the steps in our [Getting started on Android](../../getting-started/01-sdks/02-android/00-getting-started.md) guide.
+To set up THEOplayer Android SDK in your app follow the steps in our [Getting started on Android](../../getting-started/01-sdks/02-android/00-getting-started.mdx) guide.
 
 ## Adding and removing an interceptor
 

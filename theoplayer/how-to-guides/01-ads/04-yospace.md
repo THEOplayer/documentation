@@ -23,6 +23,6 @@ This partnership means that we are compatible with each other: THEOplayer has a 
 ## Resources:
 
 - [Getting started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
-- [Getting started on Android](../../getting-started/01-sdks/02-android/00-getting-started.md)
+- [Getting started on Android](../../getting-started/01-sdks/02-android/00-getting-started.mdx)
 - [Getting started on iOS](../../getting-started/01-sdks/03-ios/00-getting-started.md)
 - [Yospace website](https://www.yospace.com/)
