@@ -4,21 +4,6 @@ sidebar_position: 0.0
 
 # Getting started on Android
 
-## What are the differences between Android SDK and Legacy Android SDK (4.12.x)?
-
-The Android SDK is significantly more performant than the Legacy Android SDK (4.12.x), as it removes the dependency on the WebView to handle video-playback and supported features.
-Removing the WebView dependency also allowed to move many of the APIs from being asynchronous to being synchronous, such as querying the current time.
-
-Another difference between the SDKs is that with Android SDK users will no longer need to maintain multiple flavors for different platforms or Android OS version.
-This because the Android SDK works on Android mobile, Android TV and Fire TV devices with Android OS version 5.0+ (API level 21 and above).
-
-The Android SDK moves towards more modularized features, which means there is a base SDK that can handle basic playback and additional feature integrations are provided as separate modules that can be added as desired.
-This approach gives more flexibility and results in a reduced application size, since non-required parts are not included in the build of the application.
-
-The Android SDK leverages Java 8 and Kotlin languages to provide safer and more concise code.
-
-Lastly, the Android SDK is released on JitPack which allow developers to easily fetch and implement the player into their app.
-
 ## Add THEOplayer and Kotlin libraries to your application
 
 We have to modify the **build.gradle** files to be able to fetch the Android SDK and the Kotlin plugin.
