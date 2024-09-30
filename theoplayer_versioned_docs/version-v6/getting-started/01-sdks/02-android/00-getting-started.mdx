@@ -2,53 +2,66 @@
 sidebar_position: 0.0
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Getting started on Android
 
 ## Add THEOplayer and Kotlin libraries to your application
 
-We have to modify the **build.gradle** files to be able to fetch the Android SDK and the Kotlin plugin.
+We have to modify the `build.gradle` files to be able to fetch the Android SDK and the Kotlin plugin.
 
-1. In your **top-level** (project) **build.gradle** file
+1. In your **top-level** (project) `settings.gradle.kts` file
 
-![](../../../../../theoplayer/assets/img/android-getting-started-07.png)
+1. Add the THEOplayer Maven repository.
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="groovy" label="Groovy">
+        ```groovy
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url "https://maven.theoplayer.com/releases" }
+            }
+        }
+        ```
+        </TabItem>
+        <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url = uri("https://maven.theoplayer.com/releases") }
+            }
+        }
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
-1. a) Add JitPack as a repository.
+2. Next, we need to edit the `build.gradle` on the **module-level** (**app/build.gradle**)
 
-```groovy
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
 
-1. b) Add Kotlin as a plugin
-
-```groovy
-buildscript {
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
-    }
-}
-```
-
-2. Next, we need to edit the **build.gradle** on the **module-level** (**app/build.gradle**)
-
-![](../../../../../theoplayer/assets/img/android-getting-started-09.png)
-
-We need to apply Kotlin as a plugin using by adding `apply plugin: 'kotlin-android'`.
-Then specify THEOplayer as a dependency for the app. So edit the Gradle file to contain:
-
-```groovy
-apply plugin: 'kotlin-android'
-
-dependencies {
-    implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
-}
-```
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="groovy" label="Groovy">
+        ```groovy
+        implementation "com.theoplayer.theoplayer-sdk-android:core:+"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
+        implementation "androidx.appcompat:appcompat:1.7.0"
+        ```
+        </TabItem>
+        <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        implementation("com.theoplayer.theoplayer-sdk-android:core:+")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+        implementation("androidx.appcompat:appcompat:1.7.0")
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
 <u>Note</u>: It's possible to replace the `+` with a particular version of THEOplayer that should be used, for example:
 
@@ -57,7 +70,8 @@ dependencies {
 ## Setting up the license
 
 You need to configure your THEOplayer license, if you don't enter this license string, you might encounter licensing issues (e.g.: when trying to play non-whitelisted video streams).
-First, obtain a THEOplayer Android SDK license through the THEOplayer Developer Portal at [https://portal.theoplayer.com](https://portal.theoplayer.com/login).
+
+First, obtain a THEOplayer Android SDK license through the [THEOplayer Developer Portal](https://portal.theoplayer.com/login).
 ![](https://cdn.theoplayer.com/images/git/theoplayer-android-sdk-license-string.png)
 
 Then, identify your license string from the screenshot above and add the `<meta-data ...` tag below at the appropriate location in your `AndroidManifest.xml`, and swap `your_license_here` with your
@@ -71,7 +85,7 @@ actual license string.
 </application>
 ```
 
-Additionally, to play online videos with THEOplayer, you first need to add [**INTERNET**](https://developer.android.com/reference/android/Manifest.permission.html#INTERNET) permission into the **AndroidManifest.xml** file too.
+Additionally, to play online videos with THEOplayer, you first need to add [INTERNET](https://developer.android.com/reference/android/Manifest.permission.html#INTERNET) permission into the `AndroidManifest.xml` file too.
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -79,25 +93,18 @@ Additionally, to play online videos with THEOplayer, you first need to add [**IN
 
 More information regarding the license can be found [here](../../../how-to-guides/12-license/00-introduction.md).
 
-## Add THEOplayer view to your application ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/db0205f330009febe0cf8b8a29d600e453445926?diff=unified))
+## Add THEOplayer view to your application
 
-THEOplayer can be added to an application either through a layout (i.e. XML) or programmatically through the constructor API.
-
-This guide uses approach A.
-
-<u>Note</u>: Refer to [Using the constructor API](https://github.com/THEOplayer/theoplayer-sdk-android#b-using-the-constructor-api)
-if you want to use approach B instead.
-This approach also allows you to configure the "license string" through a programmatic configuration instead of the `AndroidManifest.xml`.
+THEOplayer can be added to an application either through a layout (i.e. XML) or programmatically through the constructor API. This guide uses the layout approach. Refer to [Using the constructor API](https://github.com/THEOplayer/theoplayer-sdk-android#b-using-the-constructor-api)
+if you want to use the latter approach. This approach also allows you to configure the license string through a programmatic configuration instead of the `AndroidManifest.xml`.
 
 You will add some code to the activity_main.xml file.
 
-![](../../../../../theoplayer/assets/img/android-getting-started-13.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-13_2.png)
 
-You can add the **THEOplayerView** to the layout of the **MainActivity** with the snippet below.
+You can add the `THEOplayerView` to the layout of the `MainActivity` with the snippet below.
 
-At least the "**id**", "**width**" and "**height**" attributes need to be specified on the new view.
-
-The "**id**" is important because it is used to identify the view object in you **MainActivity** class.
+At least the `id`, `width` and `height` attributes need to be specified on the new view. The `id` is important as it is used to identify the view object in your `MainActivity` class.
 
 ```xml
 <com.theoplayer.android.api.THEOplayerView
@@ -108,173 +115,251 @@ The "**id**" is important because it is used to identify the view object in you 
 </com.theoplayer.android.api.THEOplayerView>
 ```
 
-![](../../../../../theoplayer/assets/img/android-getting-started-14.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-14_2.png)
 
 ## Use THEOplayer API in your application
 
-Now in the **MainActivity.java** we can retrieve the **THEOplayerView** by the "**id**" we set earlier using the **findViewById** method.
+Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we set earlier using the `findViewById` method.
 
 #### 1. Get the THEOplayer instance
 
-```java
-...
-import com.theoplayer.android.api.THEOplayerView;
 
-public class MainActivity extends AppCompatActivity{
-    THEOplayerView theoPlayerView;
+<Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="kotlin" label="Kotlin">
+            ```kotlin
+            ...
+            import com.theoplayer.android.api.THEOplayerView
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+            class MainActivity : ComponentActivity() {
+                lateinit var theoPlayerView: THEOplayerView
 
-        theoPlayerView = findViewById(R.id.theoplayer);
+                override fun onCreate(savedInstanceState: Bundle?) {
+                    super.onCreate(savedInstanceState)
+                    setContentView(R.layout.activity_main)
+                    theoPlayerView = findViewById(R.id.theoplayer)
+                }
+            }
+            ```
+        </TabItem>
+        <TabItem value="java" label="Java">
+            ```java
 
-    }
-}
+            import com.theoplayer.android.api.THEOplayerView;
 
-```
+            public class MainActivity extends ComponentActivity {
+                private THEOplayerView theoPlayerView;
 
-#### 2. Configure source ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/b57ccd82f8b6391636245d74f4f2a68faae227c4?diff=unified))
+                @Override
+                protected void onCreate(@Nullable Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_main);
+                    theoPlayerView = findViewById(R.id.theoplayer);
+                }
+            }
+            ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
-To play a video in THEOplayer, we need to **configure a source** for the player in our **MainActivity**:
+#### 2. Configure source
 
-```java
-TypedSource typedSource = new TypedSource.Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
-    .type(SourceType.DASH)
-    .build();
+To play a video in THEOplayer, we need to configure a source for the player in our `MainActivity`:
+<Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val typedSource = TypedSource
+            .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+            .type(SourceType.DASH)
+            .build()
 
-SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
-    .build();
+        val sourceDescription = SourceDescription
+            .Builder(typedSource)
+            .build()
 
-theoPlayerView.getPlayer().setSource(sourceDescription);
-```
+        theoPlayerView.player.source = sourceDescription
+        ```
 
-#### 3. Control THEOplayer through the API ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/c9a2b448ef1a920dc6899bf0fb7aee6ac1e15e33?diff=unified))
+        </TabItem>
+        <TabItem value="java" label="Java">
+        ```java
+        TypedSource typedSource = new TypedSource
+                .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+                .type(SourceType.DASH)
+                .build();
+
+        SourceDescription sourceDescription = new SourceDescription
+                .Builder(typedSource)
+                .build();
+
+        theoPlayerView.getPlayer().setSource(sourceDescription);
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
+
+#### 3. Control THEOplayer through the API
 
 We will now introduce a button to start/stop the video in the player.
 
-First add the button to our **activity_main.xml** layout file
+First add the button to our `activity_main.xml` layout file.
 
 ```xml
 <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/btn_playpause"
-    android:text="PLAY/PAUSE"
-    app:layout_constraintTop_toBottomOf="@+id/theoplayer"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_playpause"
+        android:text="PLAY/PAUSE" />
 ```
 
-![](../../../../../theoplayer/assets/img/android-getting-started-16.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-16_2.png)
 
-Then set an **OnClickListener()** on the button in our **MainActivity** code to trigger play and pause in the player.
+Then set an `OnClickListener()` on the button in our `MainActivity` code to trigger `play()` and `pause()` on the player.
 
-```java
-Button btnPlayPause;
-    ...
-    btnPlayPause = findViewById(R.id.btn_playpause);
-    btnPlayPause.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (theoPlayerView.getPlayer().isPaused()) {
-                theoPlayerView.getPlayer().play();
+<Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val btnPlayPause = findViewById<Button>(R.id.btn_playpause)
+        btnPlayPause.setOnClickListener {
+            if (theoPlayerView.player.isPaused) {
+                theoPlayerView.player.play()
             } else {
-                theoPlayerView.getPlayer().pause();
+                theoPlayerView.player.pause()
             }
         }
-    });
-```
+        ```
+        </TabItem>
+        <TabItem value="java" label="Java">
+        ```java
+        Button btnPlayPause = findViewById(R.id.btn_playpause);
+        btnPlayPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (theoPlayerView.getPlayer().isPaused()) {
+                    theoPlayerView.getPlayer().play();
+                } else {
+                    theoPlayerView.getPlayer().pause();
+                }
+            }
+        });
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
-![](../../../../../theoplayer/assets/img/android-getting-started-17.png)
+![](../../../../../theoplayer/assets/img/android-getting-started-17_2.png)
 
-#### 4. Listen for THEOplayer events ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/52f4a46b6c856d402f2fa2dfca249779d2b22967?diff=unified))
+#### 4. Listen for THEOplayer events
 
 The next step is listening for player events.
 
-First, we need to create two more TextViews in the activity_main.xml file.
+First, we need to create two more TextViews in the `activity_main.xml` file.
 
 ```xml
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/txt_playstatus"
-    app:layout_constraintLeft_toRightOf="@+id/btn_playpause"
-    app:layout_constraintTop_toBottomOf="@+id/theoplayer"
-    app:layout_constraintBaseline_toBaselineOf="@+id/btn_playpause"
-    android:layout_marginLeft="20dp"/>
+    android:layout_marginStart="20dp"/>
 
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/txt_timeupdate"
-    app:layout_constraintLeft_toRightOf="@+id/txt_playstatus"
-    app:layout_constraintTop_toBottomOf="@+id/theoplayer"
-    app:layout_constraintBaseline_toBaselineOf="@+id/btn_playpause"
-    android:layout_marginLeft="20dp"/>
+    android:layout_marginStart="20dp"/>
 ```
 
-We will now listen for "**PLAY**", "**PAUSE**" and "**TIMEUPDATE**" in this example.
+We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
+<Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val txtPlayStatus = findViewById<TextView>(R.id.txt_playstatus)
+        val txtTimeUpdate = findViewById<TextView>(R.id.txt_timeupdate)
 
-```java
-TextView txtPlayStatus, txtTimeUpdate;
+        theoPlayerView.player.addEventListener(PlayerEventTypes.PLAY) {
+            txtPlayStatus.text = "Playing"
+        }
 
-...
+        theoPlayerView.player.addEventListener(PlayerEventTypes.PAUSE) {
+            txtPlayStatus.text = "Paused"
+        }
 
-txtPlayStatus = findViewById(R.id.txt_playstatus);
-txtTimeUpdate = findViewById(R.id.txt_timeupdate);
+        theoPlayerView.player.addEventListener(PlayerEventTypes.TIMEUPDATE) { timeUpdateEvent ->
+        txtTimeUpdate.text = timeUpdateEvent.currentTime.toString()
+        }
+        ```
+        </TabItem>
+        <TabItem value="java" label="Java">
+        ```java
+        TextView txtPlayStatus = findViewById(R.id.txt_playstatus);
+        TextView txtTimeUpdate = findViewById(R.id.txt_timeupdate);
 
-theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.PLAY, new EventListener<PlayEvent>() {
-    @Override
-    public void handleEvent(PlayEvent playEvent) {
-        txtPlayStatus.setText("Playing");
-    }
-});
+        theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.PLAY, new EventListener<PlayEvent>() {
+            @Override
+            public void handleEvent(PlayEvent playEvent) {
+                txtPlayStatus.setText("Playing");
+            }
+        });
 
-theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.PAUSE, new EventListener<PauseEvent>() {
-    @Override
-    public void handleEvent(PauseEvent pauseEvent) {
-        txtPlayStatus.setText("Paused");
-    }
-});
+        theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.PAUSE, new EventListener<PauseEvent>() {
+            @Override
+            public void handleEvent(PauseEvent pauseEvent) {
+                txtPlayStatus.setText("Paused");
+            }
+        });
 
-theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.TIMEUPDATE, new EventListener<TimeUpdateEvent>() {
-    @Override
-    public void handleEvent(TimeUpdateEvent timeUpdateEvent) {
-        txtTimeUpdate.setText(String.valueOf(timeUpdateEvent.getCurrentTime()));
-    }
-});
-```
+        theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.TIMEUPDATE, new EventListener<TimeUpdateEvent>() {
+            @Override
+            public void handleEvent(TimeUpdateEvent timeUpdateEvent) {
+                txtTimeUpdate.setText(String.valueOf(timeUpdateEvent.getCurrentTime()));
+            }
+        });
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
-![](../../../../../theoplayer/assets/img/android-getting-started-19.png)
 
 When the events are triggered, we will update the **MainActivity** UI with the corresponding state.
 
-#### 5. Play fullscreen video in landscape mode ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/c327296197ab5cd30d206dd0cd2f5f64f4a3b6ff?diff=unified))
+#### 5. Play fullscreen video in landscape mode
 
 THEOplayer SDK contains a default fullscreen activity which can be started automatically when you rotate your device.
 
-We have to configure our player instance in the **MainActivity** to react to orientation changes and start the Fullscreen activity.
+We have to configure our player instance in the `MainActivity` to react to orientation changes and start the Fullscreen activity.
 
-```java
-@Override
-protected void onCreate(Bundle savedInstanceState) {
+<Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        override fun onCreate(savedInstanceState: Bundle?) {
+            //...
+            theoPlayerView = findViewById(R.id.theoplayer)
+            theoPlayerView.settings.isFullScreenOrientationCoupled = true
+            //...
+        }
+        ```
+        </TabItem>
+        <TabItem value="java" label="Java">
+        ```java
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            // ...
+            theoPlayerView = findViewById(R.id.theoplayer);
+            theoPlayerView.getSettings().setFullScreenOrientationCoupled(true);
+            // ...
+        }
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
-    // ...
+![](../../../../../theoplayer/assets/img/android-getting-started-21_2.png)
 
-    theoPlayerView = findViewById(R.id.theoplayer);
-    theoPlayerView.getSettings().setFullScreenOrientationCoupled(true);
-
-    // ...
-
-}
-```
-
-![](../../../../../theoplayer/assets/img/android-getting-started-21.png)
-
-In the **AndroidManifest.xml** we can disable the default orientation behavior on our MainActivity and lock it in portrait.  
-Then, because we enabled fullscreen orientation coupling with the **setFullScreenOrientationCoupled(true)** method earlier, THEOplayer will take care of the support of seamless landscape activity transition at rotation.
+In the `AndroidManifest.xml` we can disable the default orientation behavior on our `MainActivity` and lock it in portrait. Then, because we enabled fullscreen orientation coupling with the `setFullScreenOrientationCoupled(true)` method earlier, THEOplayer will take care of the support of seamless landscape activity transition at rotation.
 
 ```xml
 <activity android:name=".MainActivity"
@@ -288,41 +373,69 @@ Then, because we enabled fullscreen orientation coupling with the **setFullScree
 </activity>
 ```
 
-![](../../../../../theoplayer/assets/img/android-getting-started-20.png)
-
 ## Couple THEOplayer with the lifecycle callbacks
 
 In order for THEOplayer to work properly and in sync with the [Activity lifecycle changes](https://developer.android.com/guide/components/activities/activity-lifecycle) (e.g. when we rotate the device or start a new Activity or the app goes to background).
-We need to call the "**onResume"**, "**onPause"** and "**onDestroy"** methods of the **THEOplayerView** when the matching methods are called in the Activity.
+We need to call the `onResume`, `onPause` and `onDestroy` methods of the `THEOplayerView` when the matching methods are called in the Activity.
 
-```java
-public class MainActivity extends AppCompatActivity{
+<Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        class MainActivity : ComponentActivity() {
 
-    // ...
+            // ...
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        theoPlayerView.onPause();
-    }
+            override fun onPause() {
+                super.onPause()
+                theoPlayerView.onPause()
+            }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        theoPlayerView.onResume();
-    }
+            override fun onResume() {
+                super.onResume()
+                theoPlayerView.onResume()
+            }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        theoPlayerView.onDestroy();
-    }
+            override fun onDestroy() {
+                super.onDestroy()
+                theoPlayerView.onDestroy()
+            }
 
-    // ...
-}
-```
+            // ...
 
-![](../../../../../theoplayer/assets/img/android-getting-started-22.png)
+        }
+        ```
+        </TabItem>
+        <TabItem value="java" label="Java">
+        ```java
+        public class MainActivity extends AppCompatActivity{
+
+            // ...
+
+            @Override
+            protected void onPause() {
+                super.onPause();
+                theoPlayerView.onPause();
+            }
+
+            @Override
+            protected void onResume() {
+                super.onResume();
+                theoPlayerView.onResume();
+            }
+
+            @Override
+            protected void onDestroy() {
+                super.onDestroy();
+                theoPlayerView.onDestroy();
+            }
+
+            // ...
+        }
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
 
 If you would like to customize the Fullscreen Activity, you can follow our tutorial [here](../../../../version-v4/getting-started/01-sdks/02-android/01-android-sdk-customization.md).
 
@@ -332,19 +445,19 @@ Here you have some screenshots from the running application:
 
 ### Start screen
 
-![](../../../../../theoplayer/assets/img/screenshot-1524665161199.jpg)
+![](../../../../../theoplayer/assets/img/android-getting-started-screenshot-1.png)
 
 ### Playing screen
 
-![](../../../../../theoplayer/assets/img/screenshot-1524665170079.jpg)
+![](../../../../../theoplayer/assets/img/android-getting-started-screenshot-2.png)
 
 ### Paused screen
 
-![](../../../../../theoplayer/assets/img/screenshot-1524665175584.jpg)
+![](../../../../../theoplayer/assets/img/android-getting-started-screenshot-3.png)
 
 ### Rotated fullscreen
 
-![](../../../../../theoplayer/assets/img/screenshot-1524665185023.jpg)
+![](../../../../../theoplayer/assets/img/android-getting-started-screenshot-4.png)
 
 ## Summary
 
@@ -354,10 +467,10 @@ This guide focuses on creating an Android application from scratch and integrati
 - you have registered player events,
 - and you have learned how to enable automatic orientation detection.
 
-The full source of this application is available on [GitHub](https://github.com/THEOplayer/android-sdk-starter-project).
+You can find various samples for different use cases on [GitHub](https://github.com/THEOplayer/samples-android-sdk/tree/master).
 
 You may also find the readme at [https://github.com/THEOplayer/theoplayer-sdk-android](https://github.com/THEOplayer/theoplayer-sdk-android) useful.
 
-You can find interesting features of THEOplayer on our [demo](https://www.theoplayer.com/demo-zone) page.
+You can find interesting features of THEOplayer on our [demo](https://www.theoplayer.com/theoplayer-demo-overview) page.
 
 Did you encounter any issues? Raise a ticket through [the ticketing system](https://opentelly.atlassian.net/servicedesk/customer/portal/1) and we will be happy to assist.
