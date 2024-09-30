@@ -42,7 +42,7 @@
 [submodule "android-connector-v7"]
 	path = theoplayer_versioned_docs/version-v7/external/android-connector
 	url = https://github.com/THEOplayer/android-connector.git
-	branch = master
+	branch = 7.x
 	shallow = true
 [submodule "ios-connector"]
 	path = theoplayer/external/iOS-Connector
@@ -51,7 +51,7 @@
 [submodule "ios-connector-v7"]
 	path = theoplayer_versioned_docs/version-v7/external/iOS-Connector
 	url = https://github.com/THEOplayer/iOS-Connector.git
-	branch = main
+	branch = 7.x
 	shallow = true
 [submodule "web-ui"]
     path = open-video-ui/external/web-ui
