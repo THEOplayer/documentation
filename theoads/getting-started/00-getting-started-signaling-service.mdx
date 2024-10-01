@@ -66,7 +66,6 @@ For more in depth information on scheduling ad breaks we refer to our [How-to gu
 
 When setting up the Signaling Service, a configuration needs to be passed along. It must contain the following parameters:
 
-- `adURITemplate`: The Ad Decisioning Template URI which is to be used for ad requests, default value `theo-ads://dai.break/?d=[duration]`.
 - `origin`: The origin URI to use for manifest requests.
 - `segmentOrigin`: The segment origin URI to use for segment requests.
 - `layout`: The default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/) for possible values.
@@ -117,7 +116,7 @@ The monetized-stream holds the following information:
 - `streamId`: Unique identifier for the monetized stream within the environment.
 - `description`: Additional descriptive information for the monetized stream.
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `adURITemplate`: Template URI to be used by THEOplayer, default value `theo-ads://dai.break/?d=[duration]`.
+- `adSrc`: Optional Ad src which is to be used during ad breaks. If not set it will request an ad through Google Pod Serving.
 
 ```json
 {
@@ -129,7 +128,7 @@ The monetized-stream holds the following information:
   "streamId": "theoads-demo",
   "description": "SGAI THEOads Demo",
   "networkCode": "89053",
-  "adURITemplate": "theo-ads://dai.break/?d=[duration]"
+  "adSrc": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8",
 }
 ```
 
@@ -156,7 +155,6 @@ curl -L '/api/v1/monetized-streams' \
   "layout": "SINGLE",
   "origin": "string",
   "segmentOrigin": "string",
-  "adURITemplate": "string",
   "streamId": "string",
   "labels": [
     "string"
@@ -187,7 +185,6 @@ curl -L -X PATCH '/api/v1/monetized-streams/:streamId' \
   "name": "string",
   "description": "string",
   "streamId": "string",
-  "adURITemplate": "string",
   "origin": "string",
   "segmentOrigin": "string",
   "layout": "SINGLE",
@@ -229,8 +226,7 @@ The response is an array of the existing monetized stream resources.
       "assetKey": "google-sgai-demo",
       "streamId": "theoads-demo",
       "description": "SGAI THEOads Demo",
-      "networkCode": "89053",
-      "adURITemplate": "theo-ads://dai.break/?d=[duration]"
+      "networkCode": "89053"
     },
     "state": "created",
     "type": "monetized-stream"
@@ -260,8 +256,7 @@ The response is the monetized stream resource.
     "assetKey": "google-sgai-demo",
     "streamId": "theoads-demo",
     "description": "SGAI THEOads Demo",
-    "networkCode": "89053",
-    "adURITemplate": "theo-ads://dai.break/?d=[duration]"
+    "networkCode": "89053"
   },
   "state": "created",
   "type": "monetized-stream"
