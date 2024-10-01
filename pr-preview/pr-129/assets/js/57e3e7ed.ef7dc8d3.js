@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[99760],{37346:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-openapi","id":"theoads-api"}')}}]);
