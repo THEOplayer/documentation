@@ -152,14 +152,14 @@ curl -L '/api/v1/monetized-streams' \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
 -d '{
-  "networkCode": "string",
-  "assetKey": "string",
+  "name": "string",
   "layout": "SINGLE",
   "origin": "string",
   "segmentOrigin": "string",
+  "assetKey": "string",
   "streamId": "string",
   "description": "string",
-  "name": "string"
+  "networkCode": "string"
 }'
 ```
 
@@ -182,13 +182,13 @@ curl -L -X PATCH '/api/v1/monetized-streams/:streamId' \
 -H 'Accept: application/json' \
 -d '{
   "name": "string",
-  "description": "string",
-  "streamId": "string",
+  "layout": "SINGLE",
   "origin": "string",
   "segmentOrigin": "string",
-  "layout": "SINGLE",
   "assetKey": "string",
-  "networkCode": "string",
+  "streamId": "string",
+  "description": "string",
+  "networkCode": "string"
 }'
 ```
 
