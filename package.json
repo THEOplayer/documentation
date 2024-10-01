@@ -45,6 +45,9 @@
   "overrides": {
     "docusaurus-plugin-openapi": {
       "openapi-to-postmanv2": "^4.20.1"
+    },
+    "serve-handler": {
+      "path-to-regexp": "^3.3.0"
     }
   },
   "browserslist": {
