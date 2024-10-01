@@ -110,7 +110,6 @@ A monetized stream resource represents a high-availability Signaling Service dep
 The monetized-stream holds the following information:
 
 - `name`: Self defined descriptive name for the monetized stream.
-- `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
@@ -123,7 +122,6 @@ The monetized-stream holds the following information:
 ```json
 {
   "name": "THEOads Demo",
-  "labels": [],
   "layout": "DOUBLE",
   "origin": "https://domain.com",
   "segmentOrigin": "https://segment-domain.com",
@@ -140,7 +138,6 @@ The monetized-stream holds the following information:
 The following API endpoint creates a new monetized stream (signaling-service) in the environment, mandatory parameters are:
 
 - `name`: Self defined descriptive name for the monetized stream.
-- `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
@@ -174,7 +171,6 @@ curl -L '/api/v1/monetized-streams' \
 The following API endpoint updates an existing monetized stream based on it's streamId, mandatory parameters are:
 
 - `name`: Self defined descriptive name for the monetized stream.
-- `labels`: Array of self defined lables (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
@@ -190,9 +186,6 @@ curl -L -X PATCH '/api/v1/monetized-streams/:streamId' \
 -d '{
   "name": "string",
   "description": "string",
-  "labels": [
-    "string"
-  ],
   "streamId": "string",
   "adURITemplate": "string",
   "origin": "string",
@@ -230,7 +223,6 @@ The response is an array of the existing monetized stream resources.
     "id": "theoads-demo",
     "payload": {
       "name": "THEOads Demo",
-      "labels": [],
       "layout": "DOUBLE",
       "origin": "https://domain.com",
       "segmentOrigin": "https://segment-domain.com",
@@ -262,7 +254,6 @@ The response is the monetized stream resource.
   "id": "theoads-demo",
   "payload": {
     "name": "THEOads Demo",
-    "labels": [],
     "layout": "DOUBLE",
     "origin": "https://domain.com",
     "segmentOrigin": "https://segment-domain.com",
