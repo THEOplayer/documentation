@@ -109,6 +109,7 @@ A monetized stream resource represents a high-availability Signaling Service dep
 The monetized-stream holds the following information:
 
 - `name`: Self defined descriptive name for the monetized stream.
+- `labels`: Array of self defined labels (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
@@ -122,6 +123,7 @@ The monetized-stream holds the following information:
 ```json
 {
   "name": "THEOads Demo",
+  "labels": [],
   "layout": "DOUBLE",
   "origin": "https://domain.com",
   "segmentOrigin": "https://segment-domain.com",
@@ -168,6 +170,7 @@ curl -L '/api/v1/monetized-streams' \
 The following API endpoint updates an existing monetized stream based on it's streamId, mandatory parameters are:
 
 - `name`: Self defined descriptive name for the monetized stream.
+- `labels`: Array of self defined labels (string).
 - `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
@@ -182,7 +185,9 @@ curl -L -X PATCH '/api/v1/monetized-streams/:streamId' \
 -H 'Accept: application/json' \
 -d '{
   "name": "string",
-  "layout": "SINGLE",
+  "labels": [
+    "string"
+  ],
   "origin": "string",
   "segmentOrigin": "string",
   "assetKey": "string",
@@ -219,6 +224,7 @@ The response is an array of the existing monetized stream resources.
     "id": "theoads-demo",
     "payload": {
       "name": "THEOads Demo",
+      "labels": [],
       "layout": "DOUBLE",
       "origin": "https://domain.com",
       "segmentOrigin": "https://segment-domain.com",
@@ -249,6 +255,7 @@ The response is the monetized stream resource.
   "id": "theoads-demo",
   "payload": {
     "name": "THEOads Demo",
+    "labels": [],
     "layout": "DOUBLE",
     "origin": "https://domain.com",
     "segmentOrigin": "https://segment-domain.com",
