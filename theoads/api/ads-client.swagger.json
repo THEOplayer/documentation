@@ -81,6 +81,12 @@
       },
       "ReturnType_typeofMonetizedStreamSchema.validateSync_": {
         "properties": {
+          "backdropURI": {
+            "type": "string"
+          },
+          "assetURI": {
+            "type": "string"
+          },
           "originPath": {
             "type": "string"
           },
@@ -99,16 +105,7 @@
           "origin": {
             "type": "string"
           },
-          "adURITemplate": {
-            "type": "string"
-          },
           "streamId": {
-            "type": "string"
-          },
-          "streamLogoUrl": {
-            "type": "string"
-          },
-          "defaultBackdropBaseURL": {
             "type": "string"
           },
           "version": {
@@ -168,16 +165,7 @@
           "version": {
             "type": "string"
           },
-          "defaultBackdropBaseURL": {
-            "type": "string"
-          },
-          "streamLogoUrl": {
-            "type": "string"
-          },
           "streamId": {
-            "type": "string"
-          },
-          "adURITemplate": {
             "type": "string"
           },
           "origin": {
@@ -196,6 +184,12 @@
             "type": "string"
           },
           "originPath": {
+            "type": "string"
+          },
+          "assetURI": {
+            "type": "string"
+          },
+          "backdropURI": {
             "type": "string"
           }
         },
@@ -1004,6 +998,12 @@
             "properties": {
               "monetizedStream": {
                 "properties": {
+                  "backdropURI": {
+                    "type": "string"
+                  },
+                  "assetURI": {
+                    "type": "string"
+                  },
                   "originPath": {
                     "type": "string"
                   },
@@ -1022,16 +1022,7 @@
                   "origin": {
                     "type": "string"
                   },
-                  "adURITemplate": {
-                    "type": "string"
-                  },
                   "streamId": {
-                    "type": "string"
-                  },
-                  "streamLogoUrl": {
-                    "type": "string"
-                  },
-                  "defaultBackdropBaseURL": {
                     "type": "string"
                   },
                   "version": {
@@ -1189,7 +1180,7 @@
   },
   "info": {
     "title": "THEOads Api",
-    "version": "24.9.0",
+    "version": "",
     "description": "The THEOads REST API allows you to create and manage monetized streams, which are deployments of signaling services. Each monetized stream corresponds to an origin stream that is monetized using THEOads (SGAI). For detailed information on the various parameters and their usage, please refer to the getting started guide.",
     "license": {
       "name": "MIT"
