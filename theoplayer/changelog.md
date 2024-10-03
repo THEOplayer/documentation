@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.1.2 (2024/10/02)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where playing locally stored mp3 files caused a crash.
+
 ## 🚀 8.1.1 (2024/09/27)
 
 ### General
