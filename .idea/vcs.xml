@@ -12,5 +12,10 @@
     <mapping directory="$PROJECT_DIR$/theoplayer/external/web-connectors" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v4/external/react-native-theoplayer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v6/external/react-native-theoplayer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v7/external/android-connector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v7/external/flutter-theoplayer-sdk" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v7/external/iOS-Connector" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v7/external/react-native-theoplayer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/theoplayer_versioned_docs/version-v7/external/web-connectors" vcs="Git" />
   </component>
 </project>
