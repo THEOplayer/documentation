@@ -1180,7 +1180,7 @@
   },
   "info": {
     "title": "THEOads Api",
-    "version": "24.10.1",
+    "version": "",
     "description": "The THEOads REST API allows you to create and manage monetized streams, which are deployments of signaling services. Each monetized stream corresponds to an origin stream that is monetized using THEOads (SGAI). For detailed information on the various parameters and their usage, please refer to the getting started guide.",
     "license": {
       "name": "MIT"
