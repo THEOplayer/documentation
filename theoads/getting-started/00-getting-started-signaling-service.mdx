@@ -117,7 +117,7 @@ The monetized-stream holds the following information:
 - `streamId`: Unique identifier for the monetized stream within the environment.
 - `description`: Additional descriptive information for the monetized stream.
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `adSrc`: Optional Ad src which is to be used during ad breaks. If not set it will request an ad through Google Pod Serving.
+- `assetURI`: Optional Ad src which is to be used during ad breaks. If not set it will request an ad through Google Pod Serving.
 - `backdropURI`: Optional URI containing the back-drop to be used during the double box or L-shape ad.
 
 ```json
@@ -131,7 +131,7 @@ The monetized-stream holds the following information:
   "streamId": "theoads-demo",
   "description": "SGAI THEOads Demo",
   "networkCode": "89053",
-  "adSrc": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8",
+  "assetURI": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8",
   "backdropURI": "https://demo.theoads.live/img/THEOads_double_box.svg"
 }
 ```
