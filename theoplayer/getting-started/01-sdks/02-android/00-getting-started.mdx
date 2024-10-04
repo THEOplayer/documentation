@@ -95,14 +95,16 @@ More information regarding the license can be found [here](../../../how-to-guide
 
 ## Add THEOplayer view to your application
 
-THEOplayer can be added to an application either through a layout (i.e. XML) or programmatically through the constructor API. This guide uses the layout approach. Refer to [Using the constructor API](https://github.com/THEOplayer/theoplayer-sdk-android#b-using-the-constructor-api)
-if you want to use the latter approach. This approach also allows you to configure the license string through a programmatic configuration instead of the `AndroidManifest.xml`.
+THEOplayer can be added to an Android application either:
 
-You will add some code to the activity_main.xml file.
+1. **Through a layout (XML)**: By adding the `THEOplayerView` to your layout XML file (e.g., `activity_main.xml`), or
+2. **Programmatically using the Constructor API**: This approach also allows you to configure the license string through a programmatic configuration instead of the `AndroidManifest.xml`.
 
-![](../../../assets/img/android-getting-started-13_2.png)
+### Adding THEOplayerView via XML layout
 
 You can add the `THEOplayerView` to the layout of the `MainActivity` with the snippet below.
+
+![](../../../../theoplayer/assets/img/android-getting-started-13_2.png)
 
 At least the `id`, `width` and `height` attributes need to be specified on the new view. The `id` is important as it is used to identify the view object in your `MainActivity` class.
 
@@ -115,7 +117,39 @@ At least the `id`, `width` and `height` attributes need to be specified on the n
 </com.theoplayer.android.api.THEOplayerView>
 ```
 
-![](../../../assets/img/android-getting-started-14_2.png)
+![](../../../../theoplayer/assets/img/android-getting-started-14_2.png)
+
+
+### Adding THEOplayerView programmatically (Constructor API)
+
+In the Activity/Fragment, you can use the [constructor API](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerView.html) to create a THEOplayer instance
+by passing along a context and a [`THEOplayerConfig`](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerConfig.html).
+
+In this `THEOplayerConfig`, you must configure your license string, as demonstrated in the snippet below.
+<Tabs queryString="lang">
+   <!-- prettier-ignore-start -->
+   <TabItem value="kotlin" label="Kotlin">
+    ```kotlin
+    val playerConfig = THEOplayerConfig.Builder()
+        .license("your_license_here")
+        .build()
+
+    val theoPlayerView = THEOplayerView(this, playerConfig)
+    ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+    ```java
+    THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()
+        .license("your_license_here")
+        .build();
+
+    THEOplayerView theoPlayerView = new THEOplayerView(this, playerConfig);
+    ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
+
+This approach is ideal when you need to adjust the configuration dynamically, such as during runtime or based on specific app conditions. It removes the need for XML-based configuration and is useful for advanced customization scenarios.
 
 ## Use THEOplayer API in your application
 

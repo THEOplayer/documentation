@@ -548,7 +548,6 @@ This guide focuses on creating an Android application from scratch, and integrat
 - and you have learned how to enable automatic orientation detection.
 
 The full source of this application is available on [GitHub](https://github.com/THEOplayer/android-sdk-starter-project).
-You may also find the readme at [https://github.com/THEOplayer/theoplayer-sdk-android](https://github.com/THEOplayer/theoplayer-sdk-android) useful.
 
 You can find interesting features of THEOplayer on our [demo](https://www.theoplayer.com/demo-zone) page.
 
