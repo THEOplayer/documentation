@@ -20,7 +20,7 @@ THEOplayer offers the following SDKs. (Clicking the link takes you to the respec
 
 - Android/Android TV/Fire TV SDK
 
-  - [Android](02-android/00-getting-started.md) targets Android, Android TV and Fire TV apps. It may also be used for other Android-based platforms.
+  - [Android](02-android/00-getting-started.mdx) targets Android, Android TV and Fire TV apps. It may also be used for other Android-based platforms.
 
 - iOS/tvOS SDK
 
