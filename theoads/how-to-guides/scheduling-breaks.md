@@ -105,6 +105,7 @@ The body of the post request can have the following properties:
   duration: string;
   source: string | undefined;
   layout: string | undefined;
+  assetURI: string | undefined;
 }
 ```
 
@@ -112,8 +113,9 @@ The body of the post request can have the following properties:
 - `startDate` denotes when the ad break should start. It should be in a Program Date Time format such as such as `YYYY-MM-DDThh:mm:ss.SSSZ`.
 - `duration` is the total duration of the ad break (seconds).
 - `layout` is the optional THEOads layout, which can be set to `SINGLE`, `DOUBLE` or `LSHAPE_AD`. If it is `undefined` the default layout of the signaling service will be chosen.
+- `assetURI` is the optional manifest URI of an alternative ad source. If set it will use this URI during the scheduled ad break instead of Google Pod Serving.
 
-An example of such a schedule ad break request body can be found below:
+An example of a schedule ad break request body can be found below:
 
 ```json
 {
