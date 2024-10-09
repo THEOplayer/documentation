@@ -169,7 +169,7 @@ export function getPlatformDoc(
   baseUrlUtils: BaseUrlUtils
 ): GlobalDoc | undefined {
   if (isDocSharedWithPlatform(docsPluginId, doc, platformName)) {
-    return version.docs[doc.id];
+    return doc;
   }
   if (docsPluginId === 'theoplayer') {
     return findMatchingTheoplayerDoc(version, doc, platformName, baseUrlUtils);
