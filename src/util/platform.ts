@@ -166,6 +166,8 @@ export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc
   }
   if (docsPluginId === 'theoplayer') {
     return findMatchingTheoplayerDoc(version, doc, platformName);
+  } else if (docsPluginId === 'open-video-ui') {
+    return findMatchingOpenVideoUiDoc(version, doc, platformName);
   }
 }
 
@@ -194,6 +196,25 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
     const docPathPrefix = `/docs/theoplayer/connectors/${platformName}`;
     // Find exact match
     const exactDocPath = `${docPathPrefix}/${connectorMatch[1]}`;
+    if (doc.path === exactDocPath) {
+      return doc;
+    }
+    const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
+    if (exactDoc) {
+      return exactDoc;
+    }
+    // Find index page
+    const indexDocPath = `${docPathPrefix}/`;
+    return version.docs.find((otherDoc) => otherDoc.path === indexDocPath);
+  }
+}
+
+function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  const match = doc.path.match(/^\/docs\/open-video-ui\/[a-z\-]+\/(.*)$/);
+  if (match) {
+    const docPathPrefix = `/docs/open-video-ui/${platformName}`;
+    // Find exact match
+    const exactDocPath = `${docPathPrefix}/${match[1]}`;
     if (doc.path === exactDocPath) {
       return doc;
     }
