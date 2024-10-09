@@ -1,3 +1,5 @@
+import type { GlobalDoc, GlobalVersion } from '@docusaurus/plugin-content-docs/client';
+
 /**
  * The names of SDK platforms.
  *
@@ -143,17 +145,47 @@ export function getPlatformByName(docsPluginId: string, platformName: PlatformNa
   }
 }
 
-export function isDocSharedWithPlatform(docsPluginId: string, docId: string, platformName: PlatformName) {
+export function isDocSharedWithPlatform(docsPluginId: string, doc: GlobalDoc, platformName: PlatformName) {
   if (docsPluginId === 'theoplayer') {
-    if (docId === 'changelog') {
+    if (doc.id === 'changelog') {
       return platformName === 'web' || platformName === 'android' || platformName === 'ios' || platformName === 'chromecast';
     }
-    if (docId.startsWith('how-to-guides/')) {
+    if (doc.id.startsWith('how-to-guides/')) {
       return platformName !== 'flutter';
     }
-    if (docId.startsWith('knowledge-base/')) {
+    if (doc.id.startsWith('knowledge-base/')) {
       return true;
     }
   }
   return false;
+}
+
+export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  if (isDocSharedWithPlatform(docsPluginId, doc, platformName)) {
+    return version.docs[doc.id];
+  }
+  if (docsPluginId === 'theoplayer') {
+    return findMatchingTheoplayerDoc(version, doc, platformName);
+  }
+}
+
+function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  // Getting Started
+  const gettingStartedMatch = doc.path.match(/^\/docs\/theoplayer\/getting-started\/(?:sdks|frameworks)\/[a-z\-]+\/(.*)$/);
+  if (gettingStartedMatch) {
+    const isFrameworkPlatform = platformName === 'react-native' || platformName === 'flutter';
+    const docPathPrefix = `/docs/theoplayer/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
+    // Find exact match
+    const exactDocPath = `${docPathPrefix}/${gettingStartedMatch[1]}`;
+    if (doc.path === exactDocPath) {
+      return doc;
+    }
+    const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
+    if (exactDoc) {
+      return exactDoc;
+    }
+    // Find main Getting Started page
+    const mainDocPath = `${docPathPrefix}/getting-started`;
+    return version.docs.find((otherDoc) => otherDoc.path === mainDocPath);
+  }
 }

@@ -74,7 +74,7 @@ function LastPlatformContextProviderUnsafe({ children }: { children: ReactNode }
   const docSidebarName = activeDoc?.sidebar;
   const lastPlatformName = state[pluginId].lastPlatformName;
   if (activeDoc && (!lastPlatformName || lastPlatformName !== docSidebarName)) {
-    if (isDocSharedWithPlatform(pluginId, activeDoc.id, lastPlatformName || defaultPlatformName)) {
+    if (isDocSharedWithPlatform(pluginId, activeDoc, lastPlatformName || defaultPlatformName)) {
       if (lastPlatformName && activeVersion.sidebars[lastPlatformName]) {
         // Prefer last platform for cross-platform docs
       } else {
