@@ -188,4 +188,21 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
     const mainDocPath = `${docPathPrefix}/getting-started`;
     return version.docs.find((otherDoc) => otherDoc.path === mainDocPath);
   }
+  // Connectors
+  const connectorMatch = doc.path.match(/^\/docs\/theoplayer\/connectors\/[a-z\-]+\/(.*)$/);
+  if (connectorMatch) {
+    const docPathPrefix = `/docs/theoplayer/connectors/${platformName}`;
+    // Find exact match
+    const exactDocPath = `${docPathPrefix}/${connectorMatch[1]}`;
+    if (doc.path === exactDocPath) {
+      return doc;
+    }
+    const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
+    if (exactDoc) {
+      return exactDoc;
+    }
+    // Find index page
+    const indexDocPath = `${docPathPrefix}/`;
+    return version.docs.find((otherDoc) => otherDoc.path === indexDocPath);
+  }
 }
