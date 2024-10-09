@@ -7,7 +7,6 @@ import styles from './styles.module.css';
 import { useActiveDocContext, useDocsVersionCandidates } from '@docusaurus/plugin-content-docs/client';
 import { findSidebarInVersions } from '@site/src/util/sidebar';
 import { useLocation } from '@docusaurus/router';
-import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
 
 interface PlatformSelectProps extends Omit<SelectProps<any>, 'items' | 'children'> {
@@ -23,7 +22,6 @@ export default function PlatformSelect({ docsPluginId, version, className, ...pr
   const { activeVersion, activeDoc } = useActiveDocContext(docsPluginId);
   const versionCandidates = useDocsVersionCandidates(docsPluginId);
   const { lastPlatformName } = useLastPlatformByPluginId(docsPluginId);
-  const baseUrlUtils = useBaseUrlUtils();
   const platforms = getPlatformsByVersion(docsPluginId, version);
   return (
     <Select
@@ -51,7 +49,7 @@ export default function PlatformSelect({ docsPluginId, version, className, ...pr
       {(desc) => {
         const { platform, label, description, icon } = desc;
         const sidebar = findSidebarInVersions(platform, versionCandidates);
-        const sidebarLink = (activeDoc && getPlatformDoc(docsPluginId, activeVersion, activeDoc, platform, baseUrlUtils)?.path) ?? sidebar.link.path;
+        const sidebarLink = (activeDoc && getPlatformDoc(docsPluginId, activeVersion, activeDoc, platform)?.path) ?? sidebar.link.path;
         return (
           <Item
             id={platform}

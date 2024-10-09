@@ -161,35 +161,24 @@ export function isDocSharedWithPlatform(docsPluginId: string, doc: GlobalDoc, pl
   return false;
 }
 
-export function getPlatformDoc(
-  docsPluginId: string,
-  version: GlobalVersion,
-  doc: GlobalDoc,
-  platformName: PlatformName,
-  baseUrlUtils: BaseUrlUtils
-): GlobalDoc | undefined {
+export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
   if (isDocSharedWithPlatform(docsPluginId, doc, platformName)) {
     return doc;
   }
   if (docsPluginId === 'theoplayer') {
-    return findMatchingTheoplayerDoc(version, doc, platformName, baseUrlUtils);
+    return findMatchingTheoplayerDoc(version, doc, platformName);
   } else if (docsPluginId === 'open-video-ui') {
-    return findMatchingOpenVideoUiDoc(version, doc, platformName, baseUrlUtils);
+    return findMatchingOpenVideoUiDoc(version, doc, platformName);
   }
 }
 
-function findMatchingTheoplayerDoc(
-  version: GlobalVersion,
-  doc: GlobalDoc,
-  platformName: PlatformName,
-  baseUrlUtils: BaseUrlUtils
-): GlobalDoc | undefined {
-  const docPath = doc.path.replace(baseUrlUtils.withBaseUrl('/'), '/');
+function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  const docPath = doc.path.replace(version.path, '');
   // Getting Started
-  const gettingStartedMatch = docPath.match(/^\/theoplayer\/getting-started\/(?:sdks|frameworks)\/[a-z\-]+\/(.*)$/);
+  const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/[a-z\-]+\/(.*)$/);
   if (gettingStartedMatch) {
     const isFrameworkPlatform = platformName === 'react-native' || platformName === 'flutter';
-    const docPathPrefix = baseUrlUtils.withBaseUrl(`/theoplayer/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`);
+    const docPathPrefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
     // Find exact match
     const exactDocPath = `${docPathPrefix}/${gettingStartedMatch[1]}`;
     if (doc.path === exactDocPath) {
@@ -204,9 +193,9 @@ function findMatchingTheoplayerDoc(
     return version.docs.find((otherDoc) => otherDoc.path === mainDocPath);
   }
   // Connectors
-  const connectorMatch = docPath.match(/^\/theoplayer\/connectors\/[a-z\-]+\/(.*)$/);
+  const connectorMatch = docPath.match(/^\/connectors\/[a-z\-]+\/(.*)$/);
   if (connectorMatch) {
-    const docPathPrefix = baseUrlUtils.withBaseUrl(`/theoplayer/connectors/${platformName}`);
+    const docPathPrefix = `${version.path}/connectors/${platformName}`;
     // Find exact match
     const exactDocPath = `${docPathPrefix}/${connectorMatch[1]}`;
     if (doc.path === exactDocPath) {
@@ -222,16 +211,11 @@ function findMatchingTheoplayerDoc(
   }
 }
 
-function findMatchingOpenVideoUiDoc(
-  version: GlobalVersion,
-  doc: GlobalDoc,
-  platformName: PlatformName,
-  baseUrlUtils: BaseUrlUtils
-): GlobalDoc | undefined {
-  const docPath = doc.path.replace(baseUrlUtils.withBaseUrl('/'), '/');
-  const match = docPath.match(/^\/open-video-ui\/[a-z\-]+\/(.*)$/);
+function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  const docPath = doc.path.replace(version.path, '');
+  const match = docPath.match(/^\/[a-z\-]+\/(.*)$/);
   if (match) {
-    const docPathPrefix = baseUrlUtils.withBaseUrl(`open-video-ui/${platformName}`);
+    const docPathPrefix = `${version.path}/${platformName}`;
     // Find exact match
     const exactDocPath = `${docPathPrefix}/${match[1]}`;
     if (doc.path === exactDocPath) {
