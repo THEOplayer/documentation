@@ -1,4 +1,5 @@
 import type { GlobalDoc, GlobalVersion } from '@docusaurus/plugin-content-docs/client';
+import useBaseUrl, { BaseUrlUtils } from '@docusaurus/useBaseUrl';
 
 /**
  * The names of SDK platforms.
@@ -160,23 +161,35 @@ export function isDocSharedWithPlatform(docsPluginId: string, doc: GlobalDoc, pl
   return false;
 }
 
-export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+export function getPlatformDoc(
+  docsPluginId: string,
+  version: GlobalVersion,
+  doc: GlobalDoc,
+  platformName: PlatformName,
+  baseUrlUtils: BaseUrlUtils
+): GlobalDoc | undefined {
   if (isDocSharedWithPlatform(docsPluginId, doc, platformName)) {
     return version.docs[doc.id];
   }
   if (docsPluginId === 'theoplayer') {
-    return findMatchingTheoplayerDoc(version, doc, platformName);
+    return findMatchingTheoplayerDoc(version, doc, platformName, baseUrlUtils);
   } else if (docsPluginId === 'open-video-ui') {
-    return findMatchingOpenVideoUiDoc(version, doc, platformName);
+    return findMatchingOpenVideoUiDoc(version, doc, platformName, baseUrlUtils);
   }
 }
 
-function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+function findMatchingTheoplayerDoc(
+  version: GlobalVersion,
+  doc: GlobalDoc,
+  platformName: PlatformName,
+  baseUrlUtils: BaseUrlUtils
+): GlobalDoc | undefined {
+  const docPath = doc.path.replace(baseUrlUtils.withBaseUrl('/'), '/');
   // Getting Started
-  const gettingStartedMatch = doc.path.match(/^\/docs\/theoplayer\/getting-started\/(?:sdks|frameworks)\/[a-z\-]+\/(.*)$/);
+  const gettingStartedMatch = docPath.match(/^\/theoplayer\/getting-started\/(?:sdks|frameworks)\/[a-z\-]+\/(.*)$/);
   if (gettingStartedMatch) {
     const isFrameworkPlatform = platformName === 'react-native' || platformName === 'flutter';
-    const docPathPrefix = `/docs/theoplayer/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
+    const docPathPrefix = baseUrlUtils.withBaseUrl(`/theoplayer/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`);
     // Find exact match
     const exactDocPath = `${docPathPrefix}/${gettingStartedMatch[1]}`;
     if (doc.path === exactDocPath) {
@@ -191,9 +204,9 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
     return version.docs.find((otherDoc) => otherDoc.path === mainDocPath);
   }
   // Connectors
-  const connectorMatch = doc.path.match(/^\/docs\/theoplayer\/connectors\/[a-z\-]+\/(.*)$/);
+  const connectorMatch = docPath.match(/^\/theoplayer\/connectors\/[a-z\-]+\/(.*)$/);
   if (connectorMatch) {
-    const docPathPrefix = `/docs/theoplayer/connectors/${platformName}`;
+    const docPathPrefix = baseUrlUtils.withBaseUrl(`/theoplayer/connectors/${platformName}`);
     // Find exact match
     const exactDocPath = `${docPathPrefix}/${connectorMatch[1]}`;
     if (doc.path === exactDocPath) {
@@ -209,10 +222,16 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
   }
 }
 
-function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
-  const match = doc.path.match(/^\/docs\/open-video-ui\/[a-z\-]+\/(.*)$/);
+function findMatchingOpenVideoUiDoc(
+  version: GlobalVersion,
+  doc: GlobalDoc,
+  platformName: PlatformName,
+  baseUrlUtils: BaseUrlUtils
+): GlobalDoc | undefined {
+  const docPath = doc.path.replace(baseUrlUtils.withBaseUrl('/'), '/');
+  const match = docPath.match(/^\/open-video-ui\/[a-z\-]+\/(.*)$/);
   if (match) {
-    const docPathPrefix = `/docs/open-video-ui/${platformName}`;
+    const docPathPrefix = baseUrlUtils.withBaseUrl(`open-video-ui/${platformName}`);
     // Find exact match
     const exactDocPath = `${docPathPrefix}/${match[1]}`;
     if (doc.path === exactDocPath) {
