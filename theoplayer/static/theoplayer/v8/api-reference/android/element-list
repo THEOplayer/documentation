@@ -9,6 +9,7 @@ $dokka.location:com.theoplayer.android.api.cast/CastConfiguration.Builder///Poin
 $dokka.location:com.theoplayer.android.api.event.ads/AdsEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/ads/AdsEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.event.player/PlayerEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/PlayerEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.latency/LatencyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/latency/LatencyConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.media3/Media3PlayerIntegration.SourceSelectCallback///PointingToDeclaration/com/theoplayer/android/api/media3/Media3PlayerIntegration.SourceSelectCallback.html
 $dokka.location:com.theoplayer.android.api.pip/PipConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/pip/PipConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack.cue/DateRangeCue.CustomAttributes///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/cue/DateRangeCue.CustomAttributes.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.EdgeType///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.EdgeType.html
@@ -75,6 +76,7 @@ com.theoplayer.android.api.event.track.texttrack.texttrackcue
 com.theoplayer.android.api.event.track.tracklist
 com.theoplayer.android.api.fullscreen
 com.theoplayer.android.api.latency
+com.theoplayer.android.api.media3
 com.theoplayer.android.api.metrics
 com.theoplayer.android.api.network
 com.theoplayer.android.api.network.http

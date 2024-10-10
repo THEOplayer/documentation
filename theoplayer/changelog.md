@@ -5,6 +5,59 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.2.0 (2024/10/10)
+
+### General
+
+#### ✨ Features
+
+- Added THEOads API to allow to changing the ad tag parameters via `player.ads.theoads.replaceAdTagParameters`.
+
+#### ⚡ Improvements
+
+- Prevent unnecessary first seek when starting playback at the beginning of a VoD source for DASH, to improve startup times on lower-end smart TVs.
+
+#### 🐛 Issues
+
+- Fixed an issue where the latency manager would not be automatically enabled when overriding the source with another source containing a `SourceLatencyConfiguration`.
+- Fixed an issue where the player would sometimes skip some segments when playing certain MPEG-DASH live streams with slightly misaligned segments, which could result in excessive gap jumping and stalling.
+- Fixed an issue where the player could stall indefinitely when playing an HLS stream with misaligned discontinuities on macOS Safari and other WebKit-based browsers.
+
+### Web
+
+#### 💥 Breaking Changes
+
+- In order to use THEOads, you now need to set [`PlayerConfiguration.ads.theoads`](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/web/interfaces/AdsConfiguration.html#theoads) to `true`. Users of the [@theoplayer/theoads](https://www.npmjs.com/package/@theoplayer/theoads) package can temporarily keep using THEOads without updating their player configuration.
+
+#### ✨ Features
+
+- Added support for CEA-608 and CEA-708 subtitles for HESP streams.
+- Added support for THEOlive sources.
+- Fixed an issue where the player could remain stuck retrying offline HLS media playlists even after a new source is set.
+
+#### 🐛 Issues
+
+- Fixed an issue where some HESP streams would not play on iOS \<17.1 devices.
+
+### Android
+
+#### ✨ Features
+
+- Added [Millicast](https://dolby.io/products/real-time-streaming/) integration for real-time streaming. The integration is available on [our Maven repository](https://maven.theoplayer.com/) as `com.theoplayer.theoplayer-sdk-android:integration-millicast`.
+- Added `TheoAdsIntegration.replaceAdTagParameters()` to allow changing ad tag parameters for THEOads dynamically.
+
+#### 🐛 Issues
+
+- Fixed an issue where an HTTP 3xx redirect from `http://` to `https://` was not followed.
+- Fixed an issue where multiple CANPLAYTHROUGH events were triggered
+- Fixed an issue where THEOplayer licenses containing `ip-range()` source domains were not handled correctly.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the player automatically resumed playing after coming back from tapping the Learn more button during a Google IMA ad.
+
 ## 🚀 8.1.2 (2024/10/02)
 
 ### Android
