@@ -15,10 +15,11 @@ This guide will get you started with THEOads in your THEOplayer Web SDK: configu
 2. You need a working [THEOads signaling service](00-getting-started-signaling-service.mdx).
 3. Your THEOplayer SDK needs to have the `theoads` feature enabled.
 
-   The THEOads feature is only included in the `@theoplayer/theoads` package which can be installed by executing the following command:
+   As of THEOplayer version 8.2.0, this feature is enabled in the main `theoplayer` package.
+   You can install this package with the following command:
 
    ```bash
-   npm install theoplayer@npm:@theoplayer/theoads
+   npm install theoplayer
    ```
 
 ## Integration
@@ -35,7 +36,18 @@ Since THEOads integrates with Google DAI Pod Serving, it is required to load the
 
 ### Player configuration
 
-To make use of the THEOads integration, only a specific source needs to be set:
+To make use of the THEOads integration, first enable the feature in your player configuration:
+```javascript
+const player = new THEOplayer.Player(element, {
+  libraryLocation: 'YOUR-LIBRARY-LOCATION',
+  license: 'YOUR-LICENSE-WITH-THEOADS',
+  ads: {
+    theoads: true
+  }
+});
+```
+
+Then, specify a source with a THEOads-enabled ad description:
 
 ```javascript
 player.source = {
@@ -73,6 +85,9 @@ You can pass your THEOads-enabled source directly to the UI's `source` property:
   ui.configuration = {
     libraryLocation: 'YOUR-LIBRARY-LOCATION',
     license: 'YOUR-LICENSE-WITH-THEOADS',
+    ads: {
+      theoads: true
+    }
   };
   ui.source = {
     sources: {
