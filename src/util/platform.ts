@@ -178,36 +178,14 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
   const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/[a-z\-]+\/(.*)$/);
   if (gettingStartedMatch) {
     const isFrameworkPlatform = platformName === 'react-native' || platformName === 'flutter';
-    const docPathPrefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
-    // Find exact match
-    const exactDocPath = `${docPathPrefix}/${gettingStartedMatch[1]}`;
-    if (doc.path === exactDocPath) {
-      return doc;
-    }
-    const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
-    if (exactDoc) {
-      return exactDoc;
-    }
-    // Find main Getting Started page
-    const mainDocPath = `${docPathPrefix}/getting-started`;
-    return version.docs.find((otherDoc) => otherDoc.path === mainDocPath);
+    const prefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, gettingStartedMatch[1], 'getting-started');
   }
   // Connectors
   const connectorMatch = docPath.match(/^\/connectors\/[a-z\-]+\/(.*)$/);
   if (connectorMatch) {
-    const docPathPrefix = `${version.path}/connectors/${platformName}`;
-    // Find exact match
-    const exactDocPath = `${docPathPrefix}/${connectorMatch[1]}`;
-    if (doc.path === exactDocPath) {
-      return doc;
-    }
-    const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
-    if (exactDoc) {
-      return exactDoc;
-    }
-    // Find index page
-    const indexDocPath = `${docPathPrefix}/`;
-    return version.docs.find((otherDoc) => otherDoc.path === indexDocPath);
+    const prefix = `${version.path}/connectors/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, connectorMatch[1], '');
   }
 }
 
@@ -215,18 +193,33 @@ function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, plat
   const docPath = doc.path.replace(version.path, '');
   const match = docPath.match(/^\/[a-z\-]+\/(.*)$/);
   if (match) {
-    const docPathPrefix = `${version.path}/${platformName}`;
-    // Find exact match
-    const exactDocPath = `${docPathPrefix}/${match[1]}`;
-    if (doc.path === exactDocPath) {
-      return doc;
-    }
-    const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
-    if (exactDoc) {
-      return exactDoc;
-    }
-    // Find index page
-    const indexDocPath = `${docPathPrefix}/`;
-    return version.docs.find((otherDoc) => otherDoc.path === indexDocPath);
+    const prefix = `${version.path}/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, match[1], '');
   }
+}
+
+function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string, suffix: string, fallbackSuffix: string): GlobalDoc | undefined {
+  // Find exact match
+  const exactDocPath = `${prefix}/${suffix}`;
+  if (doc.path === exactDocPath) {
+    return doc;
+  }
+  const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
+  if (exactDoc) {
+    return exactDoc;
+  }
+  // Find a loose match with fewer path parts
+  const suffixParts = suffix.split('/');
+  suffixParts.pop();
+  while (suffixParts.length > 0) {
+    const looseDocPath = `${prefix}/${suffixParts.join('/')}`;
+    const looseDoc = version.docs.find((otherDoc) => otherDoc.path === looseDocPath);
+    if (looseDoc) {
+      return looseDoc;
+    }
+    suffixParts.pop();
+  }
+  // Find fallback page
+  const fallbackDocPath = `${prefix}/${fallbackSuffix}`;
+  return version.docs.find((otherDoc) => otherDoc.path === fallbackDocPath);
 }
