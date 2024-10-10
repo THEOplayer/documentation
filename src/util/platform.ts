@@ -1,3 +1,6 @@
+import type { GlobalDoc, GlobalVersion } from '@docusaurus/plugin-content-docs/client';
+import useBaseUrl, { BaseUrlUtils } from '@docusaurus/useBaseUrl';
+
 /**
  * The names of SDK platforms.
  *
@@ -143,17 +146,86 @@ export function getPlatformByName(docsPluginId: string, platformName: PlatformNa
   }
 }
 
-export function isDocSharedWithPlatform(docsPluginId: string, docId: string, platformName: PlatformName) {
+export function isDocSharedWithPlatform(docsPluginId: string, doc: GlobalDoc, platformName: PlatformName) {
   if (docsPluginId === 'theoplayer') {
-    if (docId === 'changelog') {
+    if (doc.id === 'changelog') {
       return platformName === 'web' || platformName === 'android' || platformName === 'ios' || platformName === 'chromecast';
     }
-    if (docId.startsWith('how-to-guides/')) {
+    if (doc.id.startsWith('how-to-guides/')) {
       return platformName !== 'flutter';
     }
-    if (docId.startsWith('knowledge-base/')) {
+    if (doc.id.startsWith('knowledge-base/')) {
       return true;
     }
   }
   return false;
+}
+
+export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  if (isDocSharedWithPlatform(docsPluginId, doc, platformName)) {
+    return doc;
+  }
+  if (docsPluginId === 'theoplayer') {
+    return findMatchingTheoplayerDoc(version, doc, platformName);
+  } else if (docsPluginId === 'open-video-ui') {
+    return findMatchingOpenVideoUiDoc(version, doc, platformName);
+  }
+}
+
+function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  const docPath = doc.path.replace(version.path, '');
+  // Getting Started
+  const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/([a-z\-]+)\/(.*)$/);
+  if (gettingStartedMatch && isPlatformName(gettingStartedMatch[1])) {
+    const isFrameworkPlatform = platformName === 'react-native' || platformName === 'flutter';
+    const prefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, gettingStartedMatch[2], 'getting-started');
+  }
+  // How-to guides
+  const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z\-]+)\/(.*)$/);
+  if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {
+    const prefix = `${version.path}/how-to-guides/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, howToGuideMatch[2], '');
+  }
+  // Connectors
+  const connectorMatch = docPath.match(/^\/connectors\/([a-z\-]+)\/(.*)$/);
+  if (connectorMatch && isPlatformName(connectorMatch[1])) {
+    const prefix = `${version.path}/connectors/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, connectorMatch[2], '');
+  }
+}
+
+function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
+  const docPath = doc.path.replace(version.path, '');
+  const match = docPath.match(/^\/([a-z\-]+)\/(.*)$/);
+  if (match && isPlatformName(match[1])) {
+    const prefix = `${version.path}/${platformName}`;
+    return findMatchingDoc(version, doc, prefix, match[2], '');
+  }
+}
+
+function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string, suffix: string, fallbackSuffix: string): GlobalDoc | undefined {
+  // Find exact match
+  const exactDocPath = `${prefix}/${suffix}`;
+  if (doc.path === exactDocPath) {
+    return doc;
+  }
+  const exactDoc = version.docs.find((otherDoc) => otherDoc.path === exactDocPath);
+  if (exactDoc) {
+    return exactDoc;
+  }
+  // Find a loose match with fewer path parts
+  const suffixParts = suffix.split('/');
+  suffixParts.pop();
+  while (suffixParts.length > 0) {
+    const looseDocPath = `${prefix}/${suffixParts.join('/')}`;
+    const looseDoc = version.docs.find((otherDoc) => otherDoc.path === looseDocPath);
+    if (looseDoc) {
+      return looseDoc;
+    }
+    suffixParts.pop();
+  }
+  // Find fallback page
+  const fallbackDocPath = `${prefix}/${fallbackSuffix}`;
+  return version.docs.find((otherDoc) => otherDoc.path === fallbackDocPath);
 }

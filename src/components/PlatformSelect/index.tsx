@@ -1,6 +1,6 @@
 import React, { JSX } from 'react';
 import Select, { Item, SelectProps } from '@site/src/components/Select';
-import { defaultPlatformName, getPlatformsByVersion, isDocSharedWithPlatform } from '@site/src/util/platform';
+import { defaultPlatformName, getPlatformDoc, getPlatformsByVersion } from '@site/src/util/platform';
 import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
@@ -19,7 +19,7 @@ interface PlatformSelectProps extends Omit<SelectProps<any>, 'items' | 'children
  */
 export default function PlatformSelect({ docsPluginId, version, className, ...props }: PlatformSelectProps): JSX.Element {
   const { search, hash } = useLocation();
-  const { activeDoc } = useActiveDocContext(docsPluginId);
+  const { activeVersion, activeDoc } = useActiveDocContext(docsPluginId);
   const versionCandidates = useDocsVersionCandidates(docsPluginId);
   const { lastPlatformName } = useLastPlatformByPluginId(docsPluginId);
   const platforms = getPlatformsByVersion(docsPluginId, version);
@@ -49,8 +49,7 @@ export default function PlatformSelect({ docsPluginId, version, className, ...pr
       {(desc) => {
         const { platform, label, description, icon } = desc;
         const sidebar = findSidebarInVersions(platform, versionCandidates);
-        const isDocInSidebar = activeDoc ? isDocSharedWithPlatform(docsPluginId, activeDoc.id, platform) : false;
-        const sidebarLink = isDocInSidebar ? activeDoc.path : sidebar.link.path;
+        const sidebarLink = (activeDoc && getPlatformDoc(docsPluginId, activeVersion, activeDoc, platform)?.path) ?? sidebar.link.path;
         return (
           <Item
             id={platform}
