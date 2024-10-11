@@ -15,7 +15,7 @@ function PlatformSidebarProvider({ children }: { children: ReactNode }) {
   const { lastPlatformName } = useLastPlatform();
 
   // Override sidebar for certain docs that are shared across platforms
-  if (isDocSharedWithPlatform(pluginId, activeDoc.id, lastPlatformName)) {
+  if (isDocSharedWithPlatform(pluginId, activeDoc, lastPlatformName)) {
     return (
       <DocsSidebarProvider name={lastPlatformName} items={versionMetadata.docsSidebars[lastPlatformName]}>
         {children}
