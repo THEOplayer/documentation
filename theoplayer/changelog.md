@@ -51,7 +51,7 @@ toc_max_heading_level: 2
 
 #### 🐛 Issues
 
-- Fixed an issue where some HESP streams would not play on iOS <17.1 devices.
+- Fixed an issue where some HESP streams would not play on iOS \<17.1 devices.
 
 ### Android
 
