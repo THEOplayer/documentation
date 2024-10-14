@@ -5,6 +5,20 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.2.1 (2024/10/14)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where THEOads was not enabled by default in the `@theoplayer/theoads` package.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where playback on iOS 15+ devices would pause when returning from a `backgroundAudio` playout after the player went through a view hierarchy change.
+
 ## 🚀 8.2.0 (2024/10/10)
 
 ### General
@@ -37,7 +51,7 @@ toc_max_heading_level: 2
 
 #### 🐛 Issues
 
-- Fixed an issue where some HESP streams would not play on iOS \<17.1 devices.
+- Fixed an issue where some HESP streams would not play on iOS <17.1 devices.
 
 ### Android
 
