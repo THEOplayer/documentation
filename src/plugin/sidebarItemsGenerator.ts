@@ -6,16 +6,18 @@ import type {
   SidebarItemsGeneratorArgs,
 } from '@docusaurus/plugin-content-docs/lib/sidebars/types';
 
-interface PostProcessArgs extends Omit<SidebarItemsGeneratorArgs, 'item'> {
-  item: NormalizedSidebarItem & {
-    customProps?: {
-      additionalItems?: Array<
-        SidebarItemConfig & {
-          position?: number;
-        }
-      >;
-    };
+type SidebarItemWithCustomProps = NormalizedSidebarItem & {
+  customProps?: {
+    additionalItems?: AdditionalItem[];
   };
+};
+
+interface AdditionalItem extends SidebarItemConfig {
+  position?: number;
+}
+
+interface PostProcessArgs extends Omit<SidebarItemsGeneratorArgs, 'item'> {
+  item: SidebarItemWithCustomProps;
 }
 
 function postProcess({ item, ...args }: PostProcessArgs) {
@@ -24,14 +26,18 @@ function postProcess({ item, ...args }: PostProcessArgs) {
     for (const childItem of item.items) {
       postProcess({ item: childItem, ...args });
     }
-    // Add additional items
-    if (item.customProps?.additionalItems) {
-      for (const { position, ...additionalItem } of item.customProps.additionalItems) {
-        if (position !== undefined) {
-          item.items.splice(position - 1, 0, additionalItem);
-        } else {
-          item.items.push(additionalItem);
-        }
+    postProcessChildren(item, item.items);
+  }
+}
+
+function postProcessChildren(parent: SidebarItemWithCustomProps, children: NormalizedSidebarItem[]) {
+  // Add additional items
+  if (parent.customProps?.additionalItems) {
+    for (const { position, ...additionalItem } of parent.customProps.additionalItems) {
+      if (position !== undefined) {
+        children.splice(position - 1, 0, additionalItem);
+      } else {
+        children.push(additionalItem);
       }
     }
   }
@@ -46,5 +52,6 @@ export default async function sidebarItemsGenerator({
   for (const item of sidebarItems) {
     postProcess({ item, defaultSidebarItemsGenerator, ...args });
   }
+  postProcessChildren(item, sidebarItems);
   return sidebarItems;
 }
