@@ -8,6 +8,7 @@ import type {
 
 type SidebarItemWithCustomProps = NormalizedSidebarItem & {
   customProps?: {
+    exclude: string[];
     additionalItems?: AdditionalItem[];
   };
 };
@@ -31,6 +32,16 @@ function postProcess({ item, ...args }: PostProcessArgs) {
 }
 
 function postProcessChildren(parent: SidebarItemWithCustomProps, children: NormalizedSidebarItem[]) {
+  // Remove excluded items
+  if (parent.customProps?.exclude) {
+    const exclude = new Set(parent.customProps.exclude);
+    for (let i = children.length - 1; i >= 0; i--) {
+      const child = children[i];
+      if (child.type === 'category' && exclude.has(child.label)) {
+        children.splice(i, 1);
+      }
+    }
+  }
   // Add additional items
   if (parent.customProps?.additionalItems) {
     for (const { position, ...additionalItem } of parent.customProps.additionalItems) {
