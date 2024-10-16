@@ -1,11 +1,11 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 import type {
+  SidebarItemBase,
   SidebarItemCategoryConfig,
   SidebarItemConfig,
-  SidebarItemLink,
   SidebarItemHtml,
+  SidebarItemLink,
 } from '@docusaurus/plugin-content-docs/lib/sidebars/types';
-import { SidebarItemDoc } from '@docusaurus/plugin-content-docs/src/sidebars/types';
 
 const sidebars: SidebarsConfig = {
   web: [
@@ -176,76 +176,99 @@ const sidebars: SidebarsConfig = {
   ],
 };
 
-function gettingStartedCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
+function mergeSidebarItems<T extends SidebarItemBase>(base: T, config: T): T {
   return {
-    type: 'category',
-    label: 'Getting started',
-    description: 'Set up your first THEOplayer in just a few minutes!',
-    customProps: {
-      icon: '🚀',
-    },
+    ...base,
     ...config,
+    customProps: {
+      ...(base.customProps ?? {}),
+      ...(config.customProps ?? {}),
+    },
   };
+}
+
+function gettingStartedCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
+  return mergeSidebarItems(
+    {
+      type: 'category',
+      label: 'Getting started',
+      description: 'Set up your first THEOplayer in just a few minutes!',
+      customProps: {
+        icon: '🚀',
+      },
+    },
+    config
+  );
 }
 
 function examplesCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
-  return {
-    type: 'category',
-    label: 'Examples',
-    description: 'See the player in action!',
-    customProps: {
-      icon: '🛝',
+  return mergeSidebarItems(
+    {
+      type: 'category',
+      label: 'Examples',
+      description: 'See the player in action!',
+      customProps: {
+        icon: '🛝',
+      },
     },
-    ...config,
-  };
+    config
+  );
 }
 
 function connectorsCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
-  return {
-    type: 'category',
-    label: 'Connectors',
-    description: `Integrate third-party solutions with THEOplayer using our pre-built connectors.`,
-    customProps: {
-      icon: '🔌',
+  return mergeSidebarItems(
+    {
+      type: 'category',
+      label: 'Connectors',
+      description: `Integrate third-party solutions with THEOplayer using our pre-built connectors.`,
+      customProps: {
+        icon: '🔌',
+      },
     },
-    ...config,
-  };
+    config
+  );
 }
 
 function howToGuidesCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
-  return {
-    type: 'category',
-    label: 'How-to guides',
-    description: 'Learn how to implement our rich set of features and integrations.',
-    customProps: {
-      icon: '📖',
+  return mergeSidebarItems(
+    {
+      type: 'category',
+      label: 'How-to guides',
+      description: 'Learn how to implement our rich set of features and integrations.',
+      customProps: {
+        icon: '📖',
+      },
     },
-    ...config,
-  };
+    config
+  );
 }
 
 function apiReferencesLink(config: SidebarItemLink): SidebarItemLink {
-  return {
-    type: 'link',
-    label: 'API references',
-    description: 'Discover all properties and functions of THEOplayer.',
-    customProps: {
-      icon: '*️⃣',
+  return mergeSidebarItems(
+    {
+      type: 'link',
+      label: 'API references',
+      description: 'Discover all properties and functions of THEOplayer.',
+      customProps: {
+        icon: '*️⃣',
+      },
     },
-    ...config,
-  };
+    config
+  );
 }
 
 function githubLink(config: SidebarItemLink): SidebarItemLink {
-  return {
-    type: 'link',
-    label: 'GitHub',
-    description: 'Browse the source code or report issues on GitHub.',
-    customProps: {
-      icon: 'github',
+  return mergeSidebarItems(
+    {
+      type: 'link',
+      label: 'GitHub',
+      description: 'Browse the source code or report issues on GitHub.',
+      customProps: {
+        icon: 'github',
+      },
     },
-    ...config,
-  };
+    config
+  );
 }
 
 function knowledgeBaseCategory(): SidebarItemCategoryConfig {
