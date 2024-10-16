@@ -1,5 +1,4 @@
 import type { GlobalDoc, GlobalVersion } from '@docusaurus/plugin-content-docs/client';
-import useBaseUrl, { BaseUrlUtils } from '@docusaurus/useBaseUrl';
 
 /**
  * The names of SDK platforms.
@@ -152,7 +151,10 @@ export function isDocSharedWithPlatform(docsPluginId: string, doc: GlobalDoc, pl
       return platformName === 'web' || platformName === 'android' || platformName === 'ios' || platformName === 'chromecast';
     }
     if (doc.id.startsWith('how-to-guides/')) {
-      return platformName !== 'flutter';
+      // how-to-guides/ads/ = shared
+      // how-to-guides/web/ = not shared, because platform-specific
+      const [, docPlatformName] = doc.id.split('/', 2);
+      return !isPlatformName(docPlatformName) || docPlatformName === platformName;
     }
     if (doc.id.startsWith('knowledge-base/')) {
       return true;
