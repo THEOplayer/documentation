@@ -1,4 +1,10 @@
-import type { NormalizedSidebarItem, SidebarItemConfig, SidebarItemsGeneratorArgs } from '@docusaurus/plugin-content-docs/lib/sidebars/types';
+import type {
+  NormalizedSidebar,
+  NormalizedSidebarItem,
+  SidebarItemConfig,
+  SidebarItemsGenerator,
+  SidebarItemsGeneratorArgs,
+} from '@docusaurus/plugin-content-docs/lib/sidebars/types';
 
 interface PostProcessArgs extends Omit<SidebarItemsGeneratorArgs, 'item'> {
   item: NormalizedSidebarItem & {
@@ -12,11 +18,11 @@ interface PostProcessArgs extends Omit<SidebarItemsGeneratorArgs, 'item'> {
   };
 }
 
-async function postProcess({ item, ...args }: PostProcessArgs) {
+function postProcess({ item, ...args }: PostProcessArgs) {
   if (item.type === 'category') {
     // Recurse through children
     for (const childItem of item.items) {
-      await postProcess({ item: childItem, ...args });
+      postProcess({ item: childItem, ...args });
     }
     // Add additional items
     if (item.customProps?.additionalItems) {
@@ -31,10 +37,14 @@ async function postProcess({ item, ...args }: PostProcessArgs) {
   }
 }
 
-export default async function sidebarItemsGenerator({ defaultSidebarItemsGenerator, item, ...args }: SidebarItemsGeneratorArgs) {
-  const sidebarItems = await defaultSidebarItemsGenerator({ item, ...args });
+export default async function sidebarItemsGenerator({
+  defaultSidebarItemsGenerator,
+  item,
+  ...args
+}: { defaultSidebarItemsGenerator: SidebarItemsGenerator } & SidebarItemsGeneratorArgs) {
+  const sidebarItems: NormalizedSidebar = await defaultSidebarItemsGenerator({ item, ...args });
   for (const item of sidebarItems) {
-    await postProcess({ item, defaultSidebarItemsGenerator, ...args });
+    postProcess({ item, defaultSidebarItemsGenerator, ...args });
   }
   return sidebarItems;
 }
