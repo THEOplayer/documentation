@@ -5,6 +5,15 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.2.2 (2024/10/16)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an audio glitch that occured when transitioning to background audio playback.
+- Fixed an issue on Android where the player would sometimes crash when setting a new source after play-out of the old source had already started.
+
 ## 🚀 8.2.1 (2024/10/14)
 
 ### Web
