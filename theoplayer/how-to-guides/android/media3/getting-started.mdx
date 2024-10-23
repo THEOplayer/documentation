@@ -142,6 +142,26 @@ As this integration is still under development, there are currently some known l
 - Certain player events may not yet be dispatched correctly.
 - There are some known issues with video track and quality switching.
 
+## FAQ
+
+### When should I use the Media3 integration?
+
+The Media3 integration is being built to improve stability and performance, so if your usecase is targeting performance restricted devices or you target broad coverage and have encountered playback issues on particular device segments we recommend trying out the Media3 integration.
+
+### How does this integration affect the THEOplayer Android SDK?
+
+This integration replaces the media playback base layer of the THEOplayer Android SDK, offering improvements in performance and stability for playback over our current implementation. As only core media playback is affected, all player API remains identical and other features such as ad or analytics integrations or the chromecast integration are not affected and will function the same. See [the Known limitations section](#known-limitations) for more info on what features might currently be affected.
+
+### Does this integration use Exoplayer?
+
+While we make use of Exoplayer components, this is not a plain Exoplayer implementation. In addition to the additional integrations, features and support already offered by the THEOplayer Android SDK, we've reused what makes sense to implement our own playback pipeline that offers improvements, bugfixes and additional functionality over Exoplayer.
+
+### Will this integration replace the current THEO Android playback pipeline?
+
+We are developing this integration to offer significant improvements over our current playback implementation on Android. While currently this is still under development, the goal is for this pipeline to become the default playback pipeline for the THEOplayer Android SDK in the future.
+
+###
+
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/media3/package-summary.html)
