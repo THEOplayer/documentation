@@ -1,0 +1,165 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting started with Media3 on Android
+
+The THEOplayer Android Media3 pipeline is a new integration for the THEOplayer Android SDK that serves as a new and rebuilt base layer for playback of video and audio files.
+It is based on [Jetpack Media3](https://developer.android.com/media/media3) components, and it provides more stable playback covering a broader range of use cases, all while being lighter in size and more performant.
+Note that the integration is still under active development, see [the Known limitations section](#known-limitations) for more information.
+
+## Usage
+
+1. Follow [our Getting Started guide](../../../getting-started/01-sdks/02-android/00-getting-started.mdx)
+   to set up THEOplayer in your Android app.
+2. Add the Media3 integration as a dependency in your module-level `build.gradle` file.
+3. Add the Media3 integration to the player.
+
+### Add the Media3 integration dependency
+
+Given that the Media3 integration is under active development, it is currently still published to our `snapshots` repository, so add the THEOplayer `snapshots` Maven repository in your **top-level** (project) `settings.gradle.kts` file.
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="groovy" label="Groovy">
+        ```groovy
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url "https://maven.theoplayer.com/releases" }
+                // highlight-next-line
+                maven { url "https://maven.theoplayer.com/snapshots" }
+            }
+        }
+        ```
+        </TabItem>
+        <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url = uri("https://maven.theoplayer.com/releases") }
+                // highlight-next-line
+                maven { url = uri("https://maven.theoplayer.com/snapshots") }
+            }
+        }
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
+
+Add the Media3 integration as a dependency in your module-level `build.gradle` file:
+
+<Tabs queryString="lang">
+  <!-- prettier-ignore-start -->
+  <TabItem value="groovy" label="Groovy">
+    ```groovy
+    dependencies {
+      implementation "com.theoplayer.theoplayer-sdk-android:core:8.+"
+      // highlight-next-line
+      implementation "com.theoplayer.theoplayer-sdk-android:integration-media3:8.+"
+    }
+    ```
+  </TabItem>
+  <TabItem value="kotlin" label="Kotlin">
+    ```kotlin
+    dependencies {
+      implementation("com.theoplayer.theoplayer-sdk-android:core:8.+")
+      // highlight-next-line
+      implementation("com.theoplayer.theoplayer-sdk-android:integration-media3:8.+")
+    }
+    ```
+  </TabItem>
+  <!-- prettier-ignore-end -->
+</Tabs>
+
+### Add the Media3 integration to the player
+
+To make use of the Media3 integration, create and add the `Media3PlayerIntegration` to your `THEOplayerView`:
+
+```kotlin
+val media3PlayerIntegration = Media3PlayerIntegration.createMedia3PlayerIntegration();
+theoplayerView.player.addIntegration(media3PlayerIntegration);
+```
+
+Once the Media3PlayerIntegration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
+
+<Tabs queryString="lang">
+  <!-- prettier-ignore-start -->
+  <TabItem value="kotlin" label="Kotlin">
+    ```kotlin
+    val typedSource = TypedSource
+    .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+    .type(SourceType.DASH)
+    .build()
+
+    val sourceDescription = SourceDescription
+    .Builder(typedSource)
+    .build()
+
+    theoPlayerView.player.source = sourceDescription
+    ```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+    ```java
+    TypedSource typedSource = new TypedSource
+    .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+    .type(SourceType.DASH)
+    .build();
+
+    SourceDescription sourceDescription = new SourceDescription
+    .Builder(typedSource)
+    .build();
+
+    theoPlayerView.getPlayer().setSource(sourceDescription);
+    ```
+  </TabItem>
+  <!-- prettier-ignore-end -->
+</Tabs>
+
+By default, the `Media3PlayerIntegration` will play all types of sources except HESP and Millicast.
+To modify the default behaviour, you can pass a custom `Media3PlayerIntegration.SourceSelectCallback` implementation
+when constructing the integration.
+
+```kotlin
+val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegration.SourceSelectCallback { selectedSource, source ->
+    // selectedSource -> represents the TypedSource the player picked to play.
+    // source -> represents the SourceDescription passed to the player.
+    // return true -> the Media3 integration pipeline will be used to play the selected source.
+    // return false -> the default pipeline will be used to play the selected source.
+})
+theoplayerView.player.addIntegration(media3PlayerIntegration)
+```
+
+## Known limitations
+
+As this integration is still under development, there are currently some known limitations and features that are still under development and not yet supported:
+- The preload, ABR, network, metrics, latency and caching (offline playback) APIs are not yet implemented and return dummy values.
+- HESP/THEOlive and Millicast playback are not yet supported, and will fall back to our existing playback pipeline.
+- `TextTrack.cues`, `TextTrack.activeCues` and cue-related events are not yet supported. Although subtitles do render correctly to the screen, the content of these subtitles is not yet exposed through our API.
+- Certain player and source configuration parameters are not yet handled.
+- Certain player events may not yet be dispatched correctly.
+- There are some known issues with video track and quality switching.
+
+## FAQ
+
+### When should I use the Media3 integration?
+
+The Media3 integration is being built to improve stability and performance. If you're targeting performance restricted devices and/or aiming to broaden your device coverage, and you have encountered playback issues on particular device segments, we recommend trying out the Media3 integration.
+
+### How does this integration affect the THEOplayer Android SDK?
+
+This integration replaces the media playback base layer of the THEOplayer Android SDK, offering improvements in performance and stability for playback over our current implementation. As only core media playback is affected, all player APIs remain identical and other features and integrations (such as ads, analytics or Chromecast) are not affected and will function the same. See [the Known limitations section](#known-limitations) for more info on what features might currently be affected.
+
+### Does this integration use ExoPlayer?
+
+While we make use of ExoPlayer components, this is not a plain ExoPlayer implementation. In addition to the integrations, features and support already offered by the THEOplayer Android SDK, we've reused what makes sense to implement our own playback pipeline that offers improvements, bugfixes and additional functionality over ExoPlayer.
+
+### Will this integration replace the current THEOplayer Android playback pipeline?
+
+We are developing this integration to offer significant improvements over our current playback implementation on Android. While currently this is still under development, the goal is for this pipeline to become the default playback pipeline for the THEOplayer Android SDK in the future.
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/media3/package-summary.html)
