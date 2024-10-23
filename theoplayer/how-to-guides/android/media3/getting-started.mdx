@@ -16,6 +16,38 @@ Note that the integration is still under active development, see [the Known limi
 
 ### Add the Media3 integration dependency
 
+Given that the Media3 integration is under active development, it is currently still published to our `snapshots` repository, so add the THEOplayer `snapshots` Maven repository in your **top-level** (project) `settings.gradle.kts` file.
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="groovy" label="Groovy">
+        ```groovy
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url "https://maven.theoplayer.com/releases" }
+                // highlight-next-line
+                maven { url "https://maven.theoplayer.com/snapshots" }
+            }
+        }
+        ```
+        </TabItem>
+        <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        dependencyResolutionManagement {
+            repositories {
+                google()
+                mavenCentral()
+                maven { url = uri("https://maven.theoplayer.com/releases") }
+                // highlight-next-line
+                maven { url = uri("https://maven.theoplayer.com/snapshots") }
+            }
+        }
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+    </Tabs>
+
 Add the Media3 integration as a dependency in your module-level `build.gradle` file:
 
 <Tabs queryString="lang">
