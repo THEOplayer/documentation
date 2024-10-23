@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # Getting started with Media3 on Android
 
-The THEOplayer Android Media3 pipeline is a new integration within our Android SDK that serves as a new and rebuilt base layer for playback of video and audio files.
+The THEOplayer Android Media3 pipeline is a new integration for the THEOplayer Android SDK that serves as a new and rebuilt base layer for playback of video and audio files.
 It is based on [Jetpack Media3](https://developer.android.com/media/media3) components, and it provides more stable playback covering a broader range of use cases, all while being lighter in size and more performant.
 Note that the integration is still under active development, see [the Known limitations section](#known-limitations) for more information.
 
@@ -82,7 +82,7 @@ val media3PlayerIntegration = Media3PlayerIntegration.createMedia3PlayerIntegrat
 theoplayerView.player.addIntegration(media3PlayerIntegration);
 ```
 
-From the moment the Media3PlayerIntegration is added, all subsequent sources set will use our Media3 pipeline to play.
+Once the Media3PlayerIntegration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
 
 <Tabs queryString="lang">
   <!-- prettier-ignore-start -->
@@ -119,8 +119,8 @@ From the moment the Media3PlayerIntegration is added, all subsequent sources set
 </Tabs>
 
 By default, the `Media3PlayerIntegration` will play all types of sources except HESP and Millicast.
-To modify the default behaviour, it's possible to pass an implementation of the `Media3PlayerIntegration.SourceSelectCallback`
-interface while creating the Integration.
+To modify the default behaviour, you can pass a custom `Media3PlayerIntegration.SourceSelectCallback` implementation
+when constructing the integration.
 
 ```kotlin
 val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegration.SourceSelectCallback { selectedSource, source ->
@@ -129,13 +129,13 @@ val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegrat
     // return true -> the Media3 integration pipeline will be used to play the selected source.
     // return false -> the default pipeline will be used to play the selected source.
 })
-theoplayerView.player.addIntegration(media3PlayerIntegration);
+theoplayerView.player.addIntegration(media3PlayerIntegration)
 ```
 
 ## Known limitations
 
 As this integration is still under development, there are currently some known limitations and features that are still under development and not yet supported:
-- The preload, ABR, network, metrics latency and caching / offline playback APIs are not yet implemented and return dummy values.
+- The preload, ABR, network, metrics, latency and caching (offline playback) APIs are not yet implemented and return dummy values.
 - HESP/THEOlive and Millicast playback are not yet supported, and will fall back to our existing playback pipeline.
 - `TextTrack.cues`, `TextTrack.activeCues` and cue-related events are not yet supported. Although subtitles do render correctly to the screen, the content of these subtitles is not yet exposed through our API.
 - Certain player and source configuration parameters are not yet handled.
@@ -146,21 +146,19 @@ As this integration is still under development, there are currently some known l
 
 ### When should I use the Media3 integration?
 
-The Media3 integration is being built to improve stability and performance, so if your usecase is targeting performance restricted devices or you target broad coverage and have encountered playback issues on particular device segments we recommend trying out the Media3 integration.
+The Media3 integration is being built to improve stability and performance. If you're targeting performance restricted devices and/or aiming to broaden your device coverage, and you have encountered playback issues on particular device segments, we recommend trying out the Media3 integration.
 
 ### How does this integration affect the THEOplayer Android SDK?
 
-This integration replaces the media playback base layer of the THEOplayer Android SDK, offering improvements in performance and stability for playback over our current implementation. As only core media playback is affected, all player API remains identical and other features such as ad or analytics integrations or the chromecast integration are not affected and will function the same. See [the Known limitations section](#known-limitations) for more info on what features might currently be affected.
+This integration replaces the media playback base layer of the THEOplayer Android SDK, offering improvements in performance and stability for playback over our current implementation. As only core media playback is affected, all player APIs remain identical and other features and integrations (such as ads, analytics or Chromecast) are not affected and will function the same. See [the Known limitations section](#known-limitations) for more info on what features might currently be affected.
 
-### Does this integration use Exoplayer?
+### Does this integration use ExoPlayer?
 
-While we make use of Exoplayer components, this is not a plain Exoplayer implementation. In addition to the additional integrations, features and support already offered by the THEOplayer Android SDK, we've reused what makes sense to implement our own playback pipeline that offers improvements, bugfixes and additional functionality over Exoplayer.
+While we make use of ExoPlayer components, this is not a plain ExoPlayer implementation. In addition to the integrations, features and support already offered by the THEOplayer Android SDK, we've reused what makes sense to implement our own playback pipeline that offers improvements, bugfixes and additional functionality over ExoPlayer.
 
-### Will this integration replace the current THEO Android playback pipeline?
+### Will this integration replace the current THEOplayer Android playback pipeline?
 
 We are developing this integration to offer significant improvements over our current playback implementation on Android. While currently this is still under development, the goal is for this pipeline to become the default playback pipeline for the THEOplayer Android SDK in the future.
-
-###
 
 ## More information
 
