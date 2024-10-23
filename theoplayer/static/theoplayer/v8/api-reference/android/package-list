@@ -78,6 +78,7 @@ com.theoplayer.android.api.fullscreen
 com.theoplayer.android.api.latency
 com.theoplayer.android.api.media3
 com.theoplayer.android.api.metrics
+com.theoplayer.android.api.millicast
 com.theoplayer.android.api.network
 com.theoplayer.android.api.network.http
 com.theoplayer.android.api.pip

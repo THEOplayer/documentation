@@ -5,6 +5,66 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.3.0 (2024/10/22)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where the player did not consistently request blocking playlist updates when playing a low-latency HLS stream.
+- Fixed an issue where the player would switch to requesting full segments instead of partial segments after a quality switch when playing a low-latency HLS stream.
+
+### Web
+
+#### ✨ Features
+
+- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/web/millicast/getting-started/) support for real-time streaming.
+
+#### ⚡ Improvements
+
+- Optimized logic for updating `TextTrack.activeCues` to not always need to run on every animation frame.
+
+#### 🐛 Issues
+
+- Fixed an issue where THEOads was not enabled by default in the `@theoplayer/theoads` package.
+- Fixed an issue on Safari where ID3 cues were not correctly removed once they are no longer inside the player's live seekable range.
+- Fixed an issue in Safari on iOS 18 where native metadata cues with type `com.apple.quicktime.HLS` were not being cleaned up properly and could leak memory.
+
+### Android
+
+#### ⚡ Improvements
+
+- Added `AdClickedEvent` to detect interactions with the "Learn More" button on Google IMA.
+
+#### 🐛 Issues
+
+- Fixed an issue where the ReadyState and the relevant events were not correctly dispatched while playing an MP3 source.
+- Fixed an issue where tracks were not loaded by the time the `LOADEDMETADATA` event was triggered.
+- Fixed missing API documentation for the Millicast integration. It is now available on [our documentation website](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/android/com/theoplayer/android/api/millicast/package-summary.html).
+- Fixed an issue in the Millicast integration where the player would incorrectly try to re-subscribe to an already subscribed stream after returning the app from the background.
+
+### iOS
+
+#### ✨ Features
+
+- ID3 cue endTimes are now updated when receiving a new entry.
+
+#### ⚡ Improvements
+
+- Introduced a new Swift Package repository (SPM) to avoid slow startup times in Xcode when depending on THEOplayer using SPM. For more information please visit “https://github.com/theoplayer/theoplayer-sdk-apple”.
+- Outdated text track cues that fall out of seekable time ranges are now removed.
+- Added `AdClickedEvent` to detect interactions with the "Learn More" button on Google IMA.
+
+#### 🐛 Issues
+
+- Fixed an issue where on iOS15+ devices playback would pause when returning from backgroundAudio playout when the player went through a view hierarchy change.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fixed an issue where HLS streams were showing no video when casting to a Chromecast v2 receiver and only audio would be played.
+
 ## 🚀 8.2.2 (2024/10/16)
 
 ### Android
@@ -66,7 +126,7 @@ toc_max_heading_level: 2
 
 #### ✨ Features
 
-- Added [Millicast](https://dolby.io/products/real-time-streaming/) integration for real-time streaming. The integration is available on [our Maven repository](https://maven.theoplayer.com/) as `com.theoplayer.theoplayer-sdk-android:integration-millicast`.
+- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/millicast/getting-started/) integration for real-time streaming. The integration is available on [our Maven repository](https://maven.theoplayer.com/) as `com.theoplayer.theoplayer-sdk-android:integration-millicast`.
 - Added `TheoAdsIntegration.replaceAdTagParameters()` to allow changing ad tag parameters for THEOads dynamically.
 
 #### 🐛 Issues
