@@ -93,7 +93,7 @@ interface while creating the Integration.
 val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegration.SourceSelectCallback { selectedSource, source ->
     // selectedSource -> represents the TypedSource the player picked to play.
     // source -> represents the SourceDescription passed to the player.
-    // return true -> the Media3 integration pipline will be used to play the selected source.
+    // return true -> the Media3 integration pipeline will be used to play the selected source.
     // return false -> the default pipeline will be used to play the selected source.
 })
 theoplayerView.player.addIntegration(media3PlayerIntegration);
