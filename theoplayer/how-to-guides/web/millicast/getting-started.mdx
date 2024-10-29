@@ -27,6 +27,29 @@ player.source = {
 };
 ```
 
+### Add configuration
+
+Optionally, you can provide additional configuration to the player, specific for working with Millicast streams. To
+configure these settings, add a `millicast` section in the player configuration upon creation and specify the options in
+`connectOptions`.
+
+In the example below, the configuration is used to disable any audio from the Millicast stream.
+For an exhaustive list of these options, visit the
+[documentation](https://millicast.github.io/millicast-sdk/View.html#connect).
+
+```javascript
+const player = new THEOplayer.Player(element, {
+  ...,
+  millicast: {
+    connectOptions: {
+      disableAudio: true,
+      ...
+    }
+  },
+  ...
+});
+```
+
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/MillicastSource.html)
