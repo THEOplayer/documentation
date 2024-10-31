@@ -66,7 +66,26 @@ player.source = {
 
 ## Android SDK
 
-This API is currently under development and will become available soon.
+For the Android SDK, you can set your desired ad tag parameters via `adTagParameters` in the `TheoAdDescription` as followed:
+
+```kotlin
+theoPlayerView.player.source = SourceDescription.Builder(
+    TypedSource.Builder("PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI")
+        .type(SourceType.HLS)
+        .hlsDateRange(true)
+        .build()
+).ads(
+    TheoAdDescription(
+        networkCode = "NETWORK-CODE",
+        customAssetKey = "CUSTOM-ASSET-KEY",
+        adTagParameters = mapOf(
+            "YOUR-AD-TAG-PARAMETER-1" to "VALUE-1",
+            "YOUR-AD-TAG-PARAMETER-2" to "VALUE-2"
+        )
+    )
+)
+.build()
+```
 
 ## iOS SDK
 
