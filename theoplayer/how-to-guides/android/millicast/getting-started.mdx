@@ -46,6 +46,31 @@ theoplayerView.player.source = SourceDescription.Builder(
 ).build()
 ```
 
+### Add configuration
+
+Optionally, you can provide additional configuration to the source, specific for working with Millicast streams.
+To configure these settings, add an `Option` object as a second parameter to the source object and specify the options.
+
+In the example below, the configuration is used to disable any audio from the Millicast stream.
+For an exhaustive list of these options, visit the [documentation](https://millicast.github.io/doc/latest/android/android/com.millicast.subscribers/-option/index.html).
+
+```kotlin
+import com.millicast.subscribers.Credential
+import com.millicast.subscribers.Option
+import com.theoplayer.android.api.millicast.MillicastSource
+
+...
+    MillicastSource(
+        credential = Credential(
+            ...
+        ),
+        option = Option(
+            disableAudio = true
+        )
+    )
+...
+```
+
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/millicast/package-summary.html)
