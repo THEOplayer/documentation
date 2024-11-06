@@ -7,6 +7,7 @@ $dokka.location:com.theoplayer.android.api.cache/CachingParameters.Builder///Poi
 $dokka.location:com.theoplayer.android.api.cache/CachingPreferredTrackSelection.Builder///PointingToDeclaration/com/theoplayer/android/api/cache/CachingPreferredTrackSelection.Builder.html
 $dokka.location:com.theoplayer.android.api.cast/CastConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/cast/CastConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.event.ads/AdsEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/ads/AdsEventTypes.Identifiers.html
+$dokka.location:com.theoplayer.android.api.event.player.theolive/TheoLiveEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/theolive/TheoLiveEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.event.player/PlayerEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/PlayerEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.latency/LatencyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/latency/LatencyConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.media3/Media3PlayerIntegration.SourceSelectCallback///PointingToDeclaration/com/theoplayer/android/api/media3/Media3PlayerIntegration.SourceSelectCallback.html
@@ -43,6 +44,7 @@ $dokka.location:com.theoplayer.android.api.source/GoogleDaiTypedSource.Builder//
 $dokka.location:com.theoplayer.android.api.source/SourceDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/SourceDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TextTrackDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TextTrackDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TypedSource.Builder.html
+$dokka.location:com.theoplayer.android.api.theolive/THEOLiveConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/theolive/THEOLiveConfig.Builder.html
 $dokka.location:com.theoplayer.android.api/THEOplayerConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/THEOplayerConfig.Builder.html
 com.theoplayer.android.api
 com.theoplayer.android.api.abr
@@ -63,6 +65,7 @@ com.theoplayer.android.api.event.cache.task
 com.theoplayer.android.api.event.cache.tasklist
 com.theoplayer.android.api.event.chromecast
 com.theoplayer.android.api.event.player
+com.theoplayer.android.api.event.player.theolive
 com.theoplayer.android.api.event.track
 com.theoplayer.android.api.event.track.mediatrack
 com.theoplayer.android.api.event.track.mediatrack.audio
@@ -83,6 +86,7 @@ com.theoplayer.android.api.network
 com.theoplayer.android.api.network.http
 com.theoplayer.android.api.pip
 com.theoplayer.android.api.player
+com.theoplayer.android.api.player.theolive
 com.theoplayer.android.api.player.track
 com.theoplayer.android.api.player.track.mediatrack
 com.theoplayer.android.api.player.track.mediatrack.quality
@@ -99,6 +103,7 @@ com.theoplayer.android.api.source.mediatailor
 com.theoplayer.android.api.source.metadata
 com.theoplayer.android.api.source.ssai
 com.theoplayer.android.api.source.ssai.dai
+com.theoplayer.android.api.theolive
 com.theoplayer.android.api.timerange
 com.theoplayer.android.api.util
 
