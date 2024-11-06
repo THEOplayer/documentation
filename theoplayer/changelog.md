@@ -5,6 +5,43 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.4.0 (2024/11/05)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where a multi-period DASH stream containing the same segment in two consecutive periods could cause the player to keep requesting the same segment.
+
+### Web
+
+#### ✨ Features
+
+- Added `MillicastSource.connectOptions` to set additional subscriber options for a [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/web/millicast/getting-started/) stream.
+
+#### ⚡ Improvements
+
+- Improve the native fullscreen UI on older Safari versions when playing live streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where attempting to play VR content with WebXR on Meta Quest devices would cause a browser crash.
+
+### Android
+
+#### ✨ Features
+
+- Added the [THEOlive](https://theo.live) integration for enabling THEOlive playback as part of the standard THEOplayer SDK.
+
+#### ⚡ Improvements
+
+- `THEOplayerView.getCast()` is now non-null. When the Chromecast integration is not (yet) registered, this API returns default values but already allows attaching event listeners.
+
+#### 🐛 Issues
+
+- Fixed a crash that could occur during mp3/mp4 playback due to a `java.lang.IllegalStateException`.
+- Fixed an issue where an `IOException` during mp3 playback could cause an application crash.
+
 ## 🚀 8.3.0 (2024/10/22)
 
 ### General
