@@ -26,9 +26,20 @@ dependencies {
 }
 ```
 
+### Add the Millicast integration to the player
+
+To make use of the Millicast integration, after setting up a `THEOplayerView` in your app's activity, create and add the Media3PlayerIntegration to your THEOplayerView:
+
+```kotlin
+import com.theoplayer.android.api.millicast.MillicastIntegrationFactory.createMillicastIntegration
+
+val millicastIntegration = createMillicastIntegration()
+theoPlayerView.player.addIntegration(millicastIntegration)
+```
+
 ### Add a `MillicastSource`
 
-After setting up a `THEOplayerView` in your app's activity, set its source to a `SourceDescription` containing a `MillicastSource`.
+After setting up your `THEOplayerView` and adding the Millicast integration, set its source to a `SourceDescription` containing a `MillicastSource`.
 You'll need a Millicast account ID and stream name to create a `Credential` object and identify your Millicast stream:
 
 ```kotlin
