@@ -78,8 +78,8 @@ Add the Media3 integration as a dependency in your module-level `build.gradle` f
 To make use of the Media3 integration, create and add the `Media3PlayerIntegration` to your `THEOplayerView`:
 
 ```kotlin
-val media3PlayerIntegration = Media3PlayerIntegration.createMedia3PlayerIntegration();
-theoplayerView.player.addIntegration(media3PlayerIntegration);
+val media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
+theoplayerView.player.addIntegration(media3PlayerIntegration)
 ```
 
 Once the Media3PlayerIntegration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
