@@ -277,7 +277,6 @@ player.source = {
   ads: [
     {
       sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start",
       type: "vmap",
       integration: "csai" // When no integration is provided, the player defaults to `csai`.
     }
