@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Worklow integration
+# Workflow integration
 
 For implementing THEOads, the Signaling Service must be integrated within your existing video workflow. This service acts as an intermediary between the media origin and the CDN, enabling ad insertion and metadata enrichment.
 
