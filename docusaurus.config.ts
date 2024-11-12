@@ -2,10 +2,10 @@ import 'dotenv/config';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
-import type * as Preset from 'docusaurus-preset-openapi';
+import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
-import type * as OpenApiPlugin from 'docusaurus-plugin-openapi';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
@@ -91,6 +91,9 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   onBrokenMarkdownLinks: 'throw',
+  future: {
+    experimental_faster: true,
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -102,11 +105,10 @@ const config: Config = {
 
   presets: [
     [
-      'docusaurus-preset-openapi',
+      'classic',
       {
         docs: false,
         blog: false,
-        api: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -155,15 +157,25 @@ const config: Config = {
         path: 'theoads',
         routeBasePath: '/theoads',
         sidebarPath: './sidebarsTHEOads.ts',
+        docItemComponent: '@theme/ApiItem',
       } satisfies DocsPlugin.Options,
     ],
     [
-      'docusaurus-plugin-openapi',
+      'docusaurus-plugin-openapi-docs',
       {
         id: 'theoads-api',
-        path: 'theoads/api/ads-client.swagger.json',
-        routeBasePath: '/theoads/api/signaling',
-      } satisfies OpenApiPlugin.Options,
+        docsPluginId: 'theoads',
+        config: {
+          signaling: {
+            specPath: 'theoads/api/ads-client.swagger.json',
+            outputDir: 'theoads/api/signaling',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          } satisfies OpenApiPlugin.Options,
+        },
+      },
     ],
     [
       '@docusaurus/plugin-content-docs',
@@ -209,6 +221,10 @@ const config: Config = {
             from: '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui',
             to: '/open-video-ui/web/getting-started',
           },
+          {
+            from: '/theoads/api/signaling/',
+            to: '/theoads/api/signaling/theoads-api/',
+          },
         ],
       } satisfies ClientRedirectsPlugin.Options,
     ],
@@ -246,6 +262,8 @@ const config: Config = {
       },
     }),
   ],
+
+  themes: ['docusaurus-theme-openapi-docs'],
 
   markdown: {
     parseFrontMatter: async (params) => {

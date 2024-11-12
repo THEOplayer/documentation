@@ -4,6 +4,8 @@
  * work well for content-centric websites.
  */
 
+@import 'openapi.css';
+
 :root {
   --ifm-font-family-base: 'Open Sans', sans-serif;
   --ifm-heading-font-family: 'Francois One', sans-serif;
