@@ -1,3 +1,8 @@
+/* Fix background of OpenAPI code snippets */
+.openapi-explorer__code-block-content > pre[class*='language-'] {
+  background: none;
+}
+
 /* OpenAPI Sidebar Method labels */
 .api-method > .menu__link,
 .schema > .menu__link {
