@@ -1,4 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+import signalingApiSidebar from './theoads/api/signaling/sidebar';
 
 const sidebars: SidebarsConfig = {
   theoads: [
@@ -36,7 +37,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Signaling Service',
           customProps: { icon: '🛜' },
-          href: '/theoads/api/signaling/',
+          href: '/theoads/api/signaling/theoads-api',
         },
         {
           type: 'link',
@@ -58,6 +59,14 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+  ],
+  signalingApi: [
+    {
+      type: 'link',
+      label: '« Back',
+      href: '/theoads/',
+    },
+    ...signalingApiSidebar,
   ],
 };
 

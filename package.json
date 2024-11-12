@@ -5,12 +5,16 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "prestart": "npm run gen-api-docs",
     "build": "docusaurus build",
+    "prebuild": "npm run gen-api-docs",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "serve": "node serve.js",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "gen-api-docs": "docusaurus gen-api-docs all",
+    "clean-api-docs": "docusaurus clean-api-docs all",
     "typecheck": "tsc",
     "format": "prettier --write ."
   },
@@ -21,7 +25,8 @@
     "@mdx-js/react": "^3.0.1",
     "@webcoder49/code-input": "^2.2.1",
     "clsx": "^2.1.1",
-    "docusaurus-preset-openapi": "^0.7.5",
+    "docusaurus-plugin-openapi-docs": "^4.2.0",
+    "docusaurus-theme-openapi-docs": "^4.2.0",
     "prism-react-renderer": "^2.3.0",
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
@@ -43,9 +48,6 @@
     "unist-util-visit": "^5.0.0"
   },
   "overrides": {
-    "docusaurus-plugin-openapi": {
-      "openapi-to-postmanv2": "^4.20.1"
-    },
     "serve-handler": {
       "path-to-regexp": "^3.3.0"
     }
