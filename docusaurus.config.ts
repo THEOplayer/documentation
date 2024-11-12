@@ -29,6 +29,7 @@ const docsConfigBase = {
     'external/android-connector/connectors/**/README.md',
     'external/iOS-Connector/Code/**/README.md',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
+    'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
   ],
   exclude: [
@@ -39,6 +40,7 @@ const docsConfigBase = {
     'external/**/node_modules/**/*',
     // Ignore platform-specific docs from Flutter SDK
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk_*/**/*',
+    'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk_*/**/*',
   ],
   editUrl: ({ versionDocsDirPath, docPath }) => {
     if (docPath.startsWith('external')) {
@@ -264,6 +266,7 @@ const config: Config = {
           .replace('android-ui/CHANGELOG', '/android/changelog')
           .replace('react-native-theoplayer/CHANGELOG', '/changelog/react-native')
           .replace('react-native-theoplayer/doc/', '/getting-started/frameworks/react-native/')
+          .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk/', 'flutter-theoplayer-sdk/flutter_theoplayer_sdk/')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/CHANGELOG', '/flutter/changelog')
           .replace('flutter-theoplayer-sdk/flutter_theoplayer_sdk/README', '/getting-started/frameworks/flutter/getting-started')
           .replace('flutter-theoplayer-sdk/doc/', '/flutter/guides/')
