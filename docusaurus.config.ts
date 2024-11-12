@@ -221,6 +221,10 @@ const config: Config = {
             from: '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui',
             to: '/open-video-ui/web/getting-started',
           },
+          {
+            from: '/theoads/api/signaling/',
+            to: '/theoads/api/signaling/theoads-api/',
+          },
         ],
       } satisfies ClientRedirectsPlugin.Options,
     ],
