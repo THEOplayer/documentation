@@ -26,7 +26,7 @@ Below is a template for the Double Box layout tailored for 1080p resolution:
 ### 2. L-Shape Layout
 
 The **L-Shape** layout positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image. 
-This configuration allows viewers to see the content or ad and the backdrop image simultaneously.
+This configuration allows viewers to see the ad and the backdrop image simultaneously.
 
 - **Screen Ratio:** 16:9, ensuring compatibility with most screens.
 - **Positioning:** The player is moved to the top-left corner, with the backdrop image filling the remaining space.
