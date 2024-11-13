@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.4.1 (2024/11/12)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue on Android where the player would crash when destroying an instance with a cast integration.
+
 ## 🚀 8.4.0 (2024/11/05)
 
 ### General
