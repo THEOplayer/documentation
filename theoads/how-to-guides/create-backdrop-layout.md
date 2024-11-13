@@ -3,7 +3,7 @@ sidebar_position: 6
 ---
 
 # Create backdrop images
-Backdrop is an image that is shown along with the player during an ad.
+A backdrop is an image that is shown along with the player during an ad.
 This image is intended to provide some additional information about an advertisement.
 
 ## Backdrop Layout Options
@@ -15,7 +15,7 @@ There are two primary backdrop layout options, each serving a specific purpose i
 The **Double Box** layout places the video content and advertisement side by side, allowing viewers to see both elements simultaneously.
 
 - **Screen Ratio:** 16:9 for optimal viewing on widescreen displays.
-- **Border:** A fixed 20px border is applied around video elements, ensuring a clean, defined separation between the content and the ad.
+- **Border:** A fixed 20px border is applied around the video elements, ensuring a clean, defined separation between the content and the ad.
 
 #### Example Template
 
@@ -26,7 +26,7 @@ Below is a template for the Double Box layout tailored for 1080p resolution:
 ### 2. L-Shape Layout
 
 The **L-Shape** layout positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image. 
-This configuration allows viewers to see the content or ad and backdrop image simultaneously.
+This configuration allows viewers to see the content or ad and the backdrop image simultaneously.
 
 - **Screen Ratio:** 16:9, ensuring compatibility with most screens.
 - **Positioning:** The player is moved to the top-left corner, with the backdrop image filling the remaining space.
