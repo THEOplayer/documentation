@@ -33,7 +33,7 @@ This configuration allows viewers to see the ad and the backdrop image simultane
 
 #### Example Template
 
-Below is a template for the L-Shape layout designed for 1080p resolution:
+Below is a template for the L-Shape layout:
 
 ![L-Shape Template.png](../assets/img/theoads-backdrop-lshape-template.png)
 
