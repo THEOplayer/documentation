@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.4.2 (2024/11/14)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where the player was stuck on a black screen indefinitely after transitioning to or from full screen.
+
 ## 🚀 8.4.1 (2024/11/12)
 
 ### Android
