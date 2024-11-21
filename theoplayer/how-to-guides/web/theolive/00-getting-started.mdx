@@ -1,0 +1,50 @@
+# Getting started with THEOlive on Web
+
+import Intro from '../../shared/theolive/_getting-started-intro.mdx';
+
+<Intro />
+
+## Usage
+
+1. Follow [our Getting Started guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx)
+   to set up THEOplayer in your web app or website.
+2. Add a THEOlive source to your player's source.
+
+### Add a THEOlive source
+
+After setting up your THEOplayer on your web page, set its source to a `SourceDescription` containing a `THEOliveSource`.
+You'll need a THEOlive channel ID:
+
+```javascript
+const player = new THEOplayer.Player(element, configuration);
+player.source = {
+  sources: {
+    type: 'theolive',
+    src: 'your-channel-id',
+  },
+};
+```
+
+### Add configuration
+
+Optionally, you can provide additional configuration to the player, specific for THEOlive streams. To
+configure these settings, add a `theolive` property to the player configuration. For an exhaustive list of these options,
+please visit the [documentation](pathname:///theoplayer/v8/api-reference/web/interfaces/TheoLiveConfiguration.html).
+
+```javascript
+var player = new THEOplayer.Player(element, {
+    license: 'your-license',
+    // This is needed for fallback to work properly
+    retryConfiguration: {
+        maxRetries: 6
+    },
+    theoLive: {
+        externalSessionId: 'my-external-session-id',
+        fallbackEnabled: true
+    }
+});
+```
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/TheoLiveSource.html)

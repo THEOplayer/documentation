@@ -209,7 +209,7 @@ let adDescription = GoogleImaAdDescription(src: adSrc)
 let adDescriptionWithOffset = GoogleImaAdDescription(src: adSrc, timeOffset: "10")
 ```
 
-The time offset helps VAST ads to play at a specific timestamp. VMAP ads can define that behavior inside their manifest file thus they don't require a timeOffset parameter.
+The time offset helps VAST ads to play at a specific timestamp. VMAP ads can define that behavior inside their manifest file, thus they should not have a timeOffset parameter. This property may not be configured for ad types other than `VAST`. Setting a `timeOffset` on a `VMAP` ad will cause your ads not to be scheduled correctly, unless you explicitly configured an `AdSource.type`, in which case `timeOffset` will be ignored. This is because the player must decide up front when to load the ad source: `VMAP` ads must be loaded immediately in order to schedule them correctly, while loading a `VAST` ad can be deferred until right before the `timeOffset` at which to play them. Therefore, if a `timeOffset` is configured without an explicit `AdSource.Type`, the player will assume that it's a `VAST` ad.
 
 Finally, we pass the ad description to the player either by setting it in the source:
 
