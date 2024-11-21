@@ -24,6 +24,8 @@ toc_max_heading_level: 2
 
 - Fixed an issue where the `ended` event would no longer fire when seeking to the end of a stream while the player is paused in Chrome.
 - Fixed a memory leak for HESP streams.
+- Fixed an issue where snapback on Google DAI streams would behave incorrectly when seeking forward or into an adbreak.
+- Fixed an issue where Airplay failed to start playing.
 
 ### Android
 
