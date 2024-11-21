@@ -178,6 +178,12 @@ extends <a href=../source/TypedSource.html>TypedSource</a>
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final Option</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=MillicastSource.html#option>option</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -204,7 +210,7 @@ extends <a href=../source/TypedSource.html>TypedSource</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#MillicastSource(com.millicast.subscribers.Credential)">MillicastSource</a></span>(Credential credential)</code></th>
+                                                        href="#MillicastSource(com.millicast.subscribers.Credential,com.millicast.subscribers.Option)">MillicastSource</a></span>(Credential credential, Option option)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -265,6 +271,14 @@ extends <a href=../source/TypedSource.html>TypedSource</a>
                                             <td class="colLast">The credentials required to connect and subscribe to the stream.</td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final Option</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=MillicastSource.html#getOption()>getOption</a>() </code>
+                                            </th>
+                                            <td class="colLast">The optional configuration for adjusting stream settings</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -302,11 +316,11 @@ extends <a href=../source/TypedSource.html>TypedSource</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="MillicastSource(com.millicast.subscribers.Credential)"></a>
+                                <a name="MillicastSource(com.millicast.subscribers.Credential,com.millicast.subscribers.Option)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>MillicastSource</h4>
-                                        <pre>MillicastSource(Credential credential)</pre>
+                                        <pre>MillicastSource(Credential credential, Option option)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -329,12 +343,35 @@ extends <a href=../source/TypedSource.html>TypedSource</a>
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getCredential</h4>
                                         <pre class="methodSignature"> final Credential <a href=MillicastSource.html#getCredential()>getCredential</a>()</pre>
                                         <div class="block"><p>The credentials required to connect and subscribe to the stream.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getOption()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getOption</h4>
+                                        <pre class="methodSignature"> final Option <a href=MillicastSource.html#getOption()>getOption</a>()</pre>
+                                        <div class="block"><p>The optional configuration for adjusting stream settings</p></div>
 
                                         <dl>
 

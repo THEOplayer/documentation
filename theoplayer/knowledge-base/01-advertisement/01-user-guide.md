@@ -173,11 +173,13 @@ The player supports VAST by specifying a URL parameter to the VAST description i
 
 You can specify an optional offset parameter that indicates at what time the ad should be displayed before, during or after the video. This parameter works for linear as well as non-linear and companion ads and has the following specification:
 
-- `timeOffset`: This optional parameter allows you to determine the place of the specified ad. Five different formats are allowed:
+- `timeOffset`: This optional parameter allows you to determine the placement of the specified ad. Five different formats are allowed:
   - **seconds**: a numeric value representing the number of seconds into the video the ad should play.
   - **time**: in the format `hh:mm:ss.mmm` (`.mmm` is optional), for example `'00:35:30.000'`.
   - **percentage**: in the format `n%`, where n is a value from 0-100, for example `50%`.
   - **start/end**: The value `'start'` signifies that the video is a pre-roll and should be played before the actual video can be watched. The value `'end'` signifies that the video is a post-roll and should be played after the original video.
+
+If you are using a VMAP ad, this property should not be used, as the VMAP format specifies its own time offset for breaks. Using this property with VMAP may cause no ad breaks or incorrect placement of ad breaks.
 
 **Configuring your ad to be skippable**
 

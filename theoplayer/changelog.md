@@ -5,6 +5,49 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.5.0 (2024/11/19)
+
+### Web
+
+#### ✨ Features
+
+- Added support for Millicast audio-only streams.
+- Added audio track events for Millicast audio tracks.
+- Added support for chromecasting and airplaying THEOlive streams (with higher latency).
+
+#### ⚡ Improvements
+
+- Improved error reporting when an asset cannot be played because of lack of DRM support in the platform.
+- Updated documentation to clearly state the incompatibility of VMAP ads with `timeOffset` and added in warnings for when it happens anyway.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `ended` event would no longer fire when seeking to the end of a stream while the player is paused in Chrome.
+- Fixed a memory leak for HESP streams.
+
+### Android
+
+#### ✨ Features
+
+- Added `MillicastSource.option` to set additional subscriber options for a [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/millicast/getting-started/) stream.
+- Added support for CMCD in TheoLive.
+
+#### 🐛 Issues
+
+- Fixed an issue where attempting to load an MP4 or MP3 source that is not allowed by the player's license would crash the app instead of dispatching an `ErrorEvent`.
+- Fixed an issue where switching video tracks in a Millicast stream would show frames from both the old and new video track.
+- Fixed an issue where VMAP mid-roll ads were not being played.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Removed extra play/pause events after preroll ads.
+
+#### 🐛 Issues
+
+- Fixed an issue on the cue activation algorithm for iOS, that was preventing cues from being activated (i.e 'entered').
+
 ## 🚀 8.4.2 (2024/11/14)
 
 ### Android
