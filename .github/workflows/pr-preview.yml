@@ -11,9 +11,16 @@ jobs:
   pr-preview:
     runs-on: ubuntu-latest
     steps:
+      - name: Create app token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 1
           submodules: true
       # Build the website
@@ -42,6 +49,7 @@ jobs:
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
+          token: ${{ steps.app-token.outputs.token }}
           source-dir: ./build/
           preview-branch: gh-pages
           umbrella-dir: pr-preview
