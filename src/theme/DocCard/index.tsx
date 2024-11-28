@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import { findFirstSidebarItemLink, useDocById } from '@docusaurus/plugin-content-docs/client';
@@ -10,7 +10,7 @@ import Heading from '@theme/Heading';
 import Icon from '@site/src/components/Icon';
 import styles from './styles.module.css';
 
-function CardContainer({ href, children }) {
+function CardContainer({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link href={href} className={clsx('card padding--lg', styles.cardContainer)}>
       {children}
@@ -18,7 +18,7 @@ function CardContainer({ href, children }) {
   );
 }
 
-function CardLayout({ href, icon, title, description }) {
+function CardLayout({ href, icon, title, description }: { href: string; icon: ReactNode; title: string; description: ReactNode }) {
   return (
     <CardContainer href={href}>
       <Heading as="h2" className={clsx('text--truncate', styles.cardTitle)} title={title}>

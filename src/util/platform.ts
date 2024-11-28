@@ -177,20 +177,20 @@ export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc
 function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
   const docPath = doc.path.replace(version.path, '');
   // Getting Started
-  const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/([a-z\-]+)\/(.*)$/);
+  const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/([a-z-]+)\/(.*)$/);
   if (gettingStartedMatch && isPlatformName(gettingStartedMatch[1])) {
     const isFrameworkPlatform = platformName === 'react-native' || platformName === 'flutter';
     const prefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
     return findMatchingDoc(version, doc, prefix, gettingStartedMatch[2], 'getting-started');
   }
   // How-to guides
-  const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z\-]+)\/(.*)$/);
+  const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)\/(.*)$/);
   if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {
     const prefix = `${version.path}/how-to-guides/${platformName}`;
     return findMatchingDoc(version, doc, prefix, howToGuideMatch[2], '');
   }
   // Connectors
-  const connectorMatch = docPath.match(/^\/connectors\/([a-z\-]+)\/(.*)$/);
+  const connectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/(.*)$/);
   if (connectorMatch && isPlatformName(connectorMatch[1])) {
     const prefix = `${version.path}/connectors/${platformName}`;
     return findMatchingDoc(version, doc, prefix, connectorMatch[2], '');
@@ -199,7 +199,7 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
 
 function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
   const docPath = doc.path.replace(version.path, '');
-  const match = docPath.match(/^\/([a-z\-]+)\/(.*)$/);
+  const match = docPath.match(/^\/([a-z-]+)\/(.*)$/);
   if (match && isPlatformName(match[1])) {
     const prefix = `${version.path}/${platformName}`;
     return findMatchingDoc(version, doc, prefix, match[2], '');
