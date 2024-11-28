@@ -45,6 +45,7 @@
     "dotenv": "^16.4.4",
     "eslint": "^9.15.0",
     "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124",
     "exports-loader": "^5.0.0",
     "globals": "^15.12.0",
     "imports-loader": "^5.0.0",
