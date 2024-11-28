@@ -3,6 +3,7 @@ import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import reactCompiler from 'eslint-plugin-react-compiler';
+import reactHooks from 'eslint-plugin-react-hooks';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -16,6 +17,7 @@ export default [
     },
     plugins: {
       'react-compiler': reactCompiler,
+      'react-hooks': reactHooks,
     },
     settings: {
       react: {
@@ -39,6 +41,7 @@ export default [
           varsIgnorePattern: '^_|^React$',
         },
       ],
+      ...reactHooks.configs.recommended.rules,
     },
   },
 ];
