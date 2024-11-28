@@ -16,7 +16,9 @@
     "gen-api-docs": "docusaurus gen-api-docs all",
     "clean-api-docs": "docusaurus clean-api-docs all",
     "typecheck": "tsc",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "eslint docusaurus.config.ts \"sidebars*.ts\" src",
+    "fix-lint": "npm run lint -- --fix"
   },
   "dependencies": {
     "@docusaurus/core": "^3.6.1",
@@ -39,13 +41,18 @@
     "@docusaurus/module-type-aliases": "^3.6.1",
     "@docusaurus/tsconfig": "^3.6.1",
     "@docusaurus/types": "^3.6.1",
+    "@eslint/js": "^9.15.0",
     "dotenv": "^16.4.4",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react": "^7.37.2",
     "exports-loader": "^5.0.0",
+    "globals": "^15.12.0",
     "imports-loader": "^5.0.0",
     "prettier": "^3.3.2",
     "raw-loader": "^4.0.2",
     "serve-handler": "^6.1.5",
     "typescript": "~5.4.5",
+    "typescript-eslint": "^8.16.0",
     "unist-util-visit": "^5.0.0"
   },
   "overrides": {
