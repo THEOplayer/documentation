@@ -28,28 +28,30 @@ You'll work towards implementing and understanding the following code in nine st
 This code includes the THEOplayer SDK in an HTML page and configures a video player.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <title>THEOplayer Web SDK: Getting Started</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta charset="UTF-8" />
+    <title>THEOplayer Web SDK: Getting Started</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <div class="theoplayer-container theoplayer-skin video-js vjs-16-9"></div>
     <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var element = document.querySelector(".theoplayer-container");
+      var element = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(element, {
-        libraryLocation : "SDK-LIBRARY-LOCATION",
-        license: "YOUR-LICENSE"
+        libraryLocation: 'SDK-LIBRARY-LOCATION',
+        license: 'YOUR-LICENSE',
       });
       player.source = {
-        sources : [{
-          src : "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-          type : "application/x-mpegurl"
-        }]
+        sources: [
+          {
+            src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
       };
     </script>
   </body>
@@ -67,8 +69,8 @@ This section explains how you create a THEOplayer SDK at [https://portal.theopla
 
 This section may be optional to you.
 
-* Skip to "[Include an SDK](#include-an-sdk)" if you already have an SDK.
-* Skip to "[Locate SDKs and initiate SDK creation](#locate-sdks-and-initiate-sdk-creation)" if you are signed in to the Portal, but do not know how to create an SDK.
+- Skip to "[Include an SDK](#include-an-sdk)" if you already have an SDK.
+- Skip to "[Locate SDKs and initiate SDK creation](#locate-sdks-and-initiate-sdk-creation)" if you are signed in to the Portal, but do not know how to create an SDK.
 
 :::
 
@@ -122,15 +124,15 @@ This section explains how you include the THEOplayer Web SDK in a development en
 The code snippet below represents "step-0", and is your starting point. This snippet is a near-empty HTML5 page. You will expand this snippet throughout the next sections through a total of nine steps.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <title>THEOplayer Web SDK: Getting Started</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>THEOplayer Web SDK: Getting Started</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-     <h1>THEOplayer Web SDK: Getting Started</h1>
+    <h1>THEOplayer Web SDK: Getting Started</h1>
   </body>
 </html>
 ```
@@ -139,7 +141,14 @@ Throughout this guide, you may copy-paste code snippets into your own developmen
 Owning a development environment can be as simple as opening [https://jsfiddle.net/](https://jsfiddle.net/) in a browser tab.
 When you copy-paste the snippet above into JSFiddle, it should look similar to the result below.
 
-<iframe className={styles.boxShadow} width="100%" height="300" src="//jsfiddle.net/thijsl/zs39fgj5/1/embedded/result" allowFullScreen frameBorder="0"></iframe>
+<iframe
+  className={styles.boxShadow}
+  width="100%"
+  height="300"
+  src="//jsfiddle.net/thijsl/zs39fgj5/1/embedded/result"
+  allowFullScreen
+  frameBorder="0"
+></iframe>
 
 <details>
 <summary>Setting up a development environment</summary>
@@ -150,7 +159,7 @@ Consider one of two approaches to set up a development environment.
    [http://codepen.io](http://codepen.io/), [http://codesandbox.io](http://codesandbox.io), and [https://repl.it](https://repl.it/).
    Take this approach for rapid testing.
 2. Local. A local development environment runs on your own machine. You use the IDE/HTML editor of your choice. We will not discuss setting up a local environment in this guide.
-</details>
+   </details>
 
 <details>
 <summary><Heading as="span" id="sdkcdn">What is in the THEOplayer Web SDK?</Heading></summary>
@@ -217,12 +226,12 @@ There are two valid values for `SDK-LIBRARY-LOCATION`:
 The following code represents step-1, and includes the THEOplayer JavaScript library.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <title>THEOplayer Web SDK: Getting Started</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>THEOplayer Web SDK: Getting Started</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
@@ -250,19 +259,19 @@ This file is called ui.css, and is located at your library location.
 You include the CSS file through the `<link>`-tag.
 
 ```html showLineNumbers
-<link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+<link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
 ```
 
 The following code represents step-2, and includes the THEOplayer CSS file.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <title>THEOplayer Web SDK: Getting Started</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta charset="UTF-8" />
+    <title>THEOplayer Web SDK: Getting Started</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
@@ -312,13 +321,13 @@ We set `theoplayer-container` as the initial class name of this `<div>`-element.
 The following code represents step-3, and adds the div container to your HTML page.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>THEOplayer Web SDK: Getting Started</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
@@ -335,27 +344,27 @@ The snippet below demonstrates how you can use the `document.querySelector` API 
 
 ```html showLineNumbers
 <script>
-   var container = document.querySelector(".theoplayer-container");
+  var container = document.querySelector('.theoplayer-container');
 </script>
 ```
 
 The following code represents step-4, and creates the reference to your `<div>`-element.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>THEOplayer Web SDK: Getting Started</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
     <div class="theoplayer-container"></div>
     <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var container = document.querySelector(".theoplayer-container");
+      var container = document.querySelector('.theoplayer-container');
     </script>
   </body>
 </html>
@@ -378,20 +387,20 @@ var player = new THEOplayer.Player(container, {});
 The following code represents step-5, and creates the initial THEOplayer instance.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>THEOplayer Web SDK: Getting Started</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
     <div class="theoplayer-container"></div>
     <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var container = document.querySelector(".theoplayer-container");
+      var container = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(container, {});
     </script>
   </body>
@@ -401,7 +410,14 @@ The following code represents step-5, and creates the initial THEOplayer instanc
 The widget below demonstrates the output of a similar snippet in JSFiddle.
 (Remind yourself to update the value of [`SDK-LIBRARY-LOCATION`](#library-location-explanation) in the above snippet to your actual key value.)
 
-<iframe className={styles.boxShadow} width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/uymLn9vj/50/embedded/result/" allowFullScreen frameBorder="0"></iframe>
+<iframe
+  className={styles.boxShadow}
+  width="100%"
+  height="600"
+  src="//jsfiddle.net/georgechoustoulakis/uymLn9vj/50/embedded/result/"
+  allowFullScreen
+  frameBorder="0"
+></iframe>
 
 You currently have a THEOplayer instance, but the styling is off. You'll fix this by loading the default skin.
 
@@ -416,20 +432,20 @@ If you do not set a size (e.g. through the `vjs-16-9` class), your container wou
 The following code represents step-6, and configures the default skin.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>THEOplayer Web SDK: Getting Started</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
     <div class="theoplayer-container theoplayer-skin video-js vjs-16-9"></div>
     <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var container = document.querySelector(".theoplayer-container");
+      var container = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(container, {});
     </script>
   </body>
@@ -439,7 +455,14 @@ The following code represents step-6, and configures the default skin.
 Running this code in your developer environment gives you the first visual preview of what is to come.
 The following widget demonstrates a modified snippet in JSFiddle.
 
-<iframe className={styles.boxShadow} width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/23yuvcjp/3/embedded/result/" allowFullScreen frameBorder="0"></iframe>
+<iframe
+  className={styles.boxShadow}
+  width="100%"
+  height="600"
+  src="//jsfiddle.net/georgechoustoulakis/23yuvcjp/3/embedded/result/"
+  allowFullScreen
+  frameBorder="0"
+></iframe>
 
 <details>
 <summary>Setting the size of the container</summary>
@@ -454,12 +477,14 @@ as demonstrated by the following screenshot.
 ![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../../../theoplayer/assets/img/getting-started-web-sdk/container-height-fluid.png)
 
 There is no wrong or right. It's up to you to decide which approach is best for your use-case.
+
 </details>
 
 :::info Video.js
 
 THEOplayer uses a modified version of Video.js v5 for its default styling.
 You can leverage Video.js APIs to customize your video player.
+
 <!--  (e.g. [insert a custom button](https://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer))-->
 
 :::
@@ -481,29 +506,29 @@ The snippet below configures a library location - albeit an illegal one, due to 
 
 ```javascript
 var player = new THEOplayer.Player(container, {
-  libraryLocation: "SDK-LIBRARY-LOCATION"
+  libraryLocation: 'SDK-LIBRARY-LOCATION',
 });
 ```
 
 The following code represents step-7, and sets your `libraryLocation`.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>THEOplayer Web SDK: Getting Started</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
     <div class="theoplayer-container theoplayer-skin video-js vjs-16-9"></div>
     <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var container = document.querySelector(".theoplayer-container");
+      var container = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(container, {
-        libraryLocation: "SDK-LIBRARY-LOCATION"
+        libraryLocation: 'SDK-LIBRARY-LOCATION',
       });
     </script>
   </body>
@@ -529,23 +554,23 @@ The green rectangle in the following screenshot points out where you find the va
 The following code represents step-8, and sets your `license`.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>THEOplayer Web SDK: Getting Started</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
     <div class="theoplayer-container theoplayer-skin video-js vjs-16-9"></div>
     <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var container = document.querySelector(".theoplayer-container");
+      var container = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(container, {
-        libraryLocation: "SDK-LIBRARY-LOCATION",
-        license: "YOUR-LICENSE"
+        libraryLocation: 'SDK-LIBRARY-LOCATION',
+        license: 'YOUR-LICENSE',
       });
     </script>
   </body>
@@ -567,10 +592,10 @@ The snippet below exemplifies how you could configure an HLS stream through `pla
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
-  ]
+      src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
 };
 ```
 
@@ -594,39 +619,41 @@ The following snippet demonstrates this for MPEG-DASH.
 player.source = {
   sources: [
     {
-      src: "//amssamples.streaming.mediaservices.windows.net/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest(format=mpd-time-csf)",
-      type: "application/dash+xml"
-    }
-  ]
+      src: '//amssamples.streaming.mediaservices.windows.net/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest(format=mpd-time-csf)',
+      type: 'application/dash+xml',
+    },
+  ],
 };
 ```
 
 The following code represents step-9, and configures an HLS stream.
 
 ```html showLineNumbers
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>THEOplayer Web SDK: Getting Started</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="SDK-LIBRARY-LOCATION/ui.css" />
   </head>
   <body>
     <h1>THEOplayer Web SDK: Getting Started</h1>
     <div class="theoplayer-container theoplayer-skin video-js vjs-16-9"></div>
     <script type="text/javascript" src="SDK-LIBRARY-LOCATION/THEOplayer.js"></script>
     <script>
-      var container = document.querySelector(".theoplayer-container");
+      var container = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(container, {
-        libraryLocation: "SDK-LIBRARY-LOCATION",
-        license: "YOUR-LICENSE"
+        libraryLocation: 'SDK-LIBRARY-LOCATION',
+        license: 'YOUR-LICENSE',
       });
       player.source = {
-        sources: [{
-          src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-          type: "application/x-mpegurl"
-        }]
+        sources: [
+          {
+            src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
       };
     </script>
   </body>
@@ -636,7 +663,14 @@ The following code represents step-9, and configures an HLS stream.
 If you paste the snippet above into your development environment, and update the value of [`SDK-LIBRARY-LOCATION`](#library-location-explanation) and [`YOUR-LICENSE`](#library-location-explanation), you should be able to click the big play button.
 The following widget demonstrates a successful configuration.
 
-<iframe className={styles.boxShadow} width="100%" height="600" src="//jsfiddle.net/georgechoustoulakis/21fphaqL/5/embedded/result,html/" allowFullScreen frameBorder="0"></iframe>
+<iframe
+  className={styles.boxShadow}
+  width="100%"
+  height="600"
+  src="//jsfiddle.net/georgechoustoulakis/21fphaqL/5/embedded/result,html/"
+  allowFullScreen
+  frameBorder="0"
+></iframe>
 
 **Congratulations! 🎉 You now know how build a THEOplayer SDK, include it on your web page, configure a video player and play a stream.**<br/>
 Go through the next section to learn more about THEOplayer, its API, and some use-cases.
@@ -688,6 +722,7 @@ such as the `playing` and `volumechange` event.
 The THEOplayer interface mimics the [HTML5 MediaElement interface](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement). All commonly used properties,
 functions and events are available, allowing you to replace a standard HTML5 video element with THEOplayer.
 For more advanced features, it might be needed to use THEOplayer specific APIs.
+
 </details>
 
 Let's explain four popular features of the THEOplayer API.
@@ -706,18 +741,18 @@ The following snippet adds support for the described autoplay.
 
 ```javascript
 var player = new THEOplayer.Player(container, {
-  libraryLocation: "SDK-LIBRARY-LOCATION",
-  license: "YOUR-LICENSE",
-  mutedAutoplay: "all"
+  libraryLocation: 'SDK-LIBRARY-LOCATION',
+  license: 'YOUR-LICENSE',
+  mutedAutoplay: 'all',
 });
 player.autoplay = true;
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
-  ]
+      src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
 };
 ```
 
@@ -732,11 +767,11 @@ You configure the `poster` property of the `player.source` by pointing it to an 
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
+      src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
   ],
-  poster: "https://cdn.theoplayer.com/video/elephants-dream.png"
+  poster: 'https://cdn.theoplayer.com/video/elephants-dream.png',
 };
 ```
 
@@ -750,14 +785,14 @@ which in turns reduces the waiting time for your viewers when they click play.
 You enable preloading by setting `player.preload = "auto"`.
 
 ```javascript
-player.preload = "auto";
+player.preload = 'auto';
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
-  ]
+      src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
 };
 ```
 
@@ -776,14 +811,14 @@ compared to starting in the lowest quality.
 You let the video instance start in the highest video quality by setting `player.abr.strategy = {type: "quality"}`.
 
 ```javascript
-player.abr.strategy = { type: "quality" };
+player.abr.strategy = { type: 'quality' };
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
-  ]
+      src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
 };
 ```
 
@@ -807,7 +842,17 @@ If you want to change the color scheme of the default skin, you can use the skin
 This editor generates CSS which you can include in your web application.
 The following video demonstrates how you use this tool in combination with step-9.
 
-<iframe className={styles.player} src="https://cdn.theoplayer.com/demos/getting-started/web-sdk/portal.html" title="Embedded THEOplayer" frameBorder="0" scrolling="no" width="100%" height="100%" allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" allowFullScreen></iframe>
+<iframe
+  className={styles.player}
+  src="https://cdn.theoplayer.com/demos/getting-started/web-sdk/portal.html"
+  title="Embedded THEOplayer"
+  frameBorder="0"
+  scrolling="no"
+  width="100%"
+  height="100%"
+  allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
 
 You can also change the appearance of buttons in the default UI, add overlays and insert new elements.
 Consider the following resources for more information:
@@ -862,16 +907,16 @@ The snippet below is an altered version of `player.source` in step-9, and config
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
+      src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
   ],
   ads: [
     {
-      sources: "//cdn.theoplayer.com/demos/preroll.xml",
-      timeOffset: "start"
-    }
-  ]
+      sources: '//cdn.theoplayer.com/demos/preroll.xml',
+      timeOffset: 'start',
+    },
+  ],
 };
 ```
 
@@ -906,4 +951,7 @@ The right window shows you what Service Desk looks like.
 
 ![Support](../../../../../theoplayer/assets/img/getting-started-web-sdk/support.png)
 
-<em>We hope that you enjoyed this Getting Started Guide! [Let us know through Github](https://github.com/THEOplayer/documentation/issues) if you know how we could improve this introduction.</em>
+<em>
+  We hope that you enjoyed this Getting Started Guide! [Let us know through Github](https://github.com/THEOplayer/documentation/issues) if you know
+  how we could improve this introduction.
+</em>

@@ -7,7 +7,7 @@ This question is occasionally asked by developers who've configured the latest r
 The most common reason on an older build why closed captions are no longer working is because the **`texttrackrendering` feature isn't enabled**. To verify whether this feature is enabled you can execute the query below.
 
 ```js
-var subsEnabled = THEOplayer.features.indexOf("texttrackrendering") > -1;
+var subsEnabled = THEOplayer.features.indexOf('texttrackrendering') > -1;
 ```
 
 ### After version 2.80

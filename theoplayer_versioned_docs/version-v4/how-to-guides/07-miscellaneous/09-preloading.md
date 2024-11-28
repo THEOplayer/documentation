@@ -12,7 +12,7 @@ At the bottom, you will be able to find interesting Resources on this topic.
 
 ## How to use preloading
 
-Choosing to preload your video content will reduce the start-up time of your videos. It will also make some data regarding the current source (video duration, timeline thumbnails, etc.) available before the user initiates playback. On the other hand, when the video is less likely to be played, or when it is less beneficial (live video; autoplay)  you can configure the player to not preload it and save bandwidth. Here is how.
+Choosing to preload your video content will reduce the start-up time of your videos. It will also make some data regarding the current source (video duration, timeline thumbnails, etc.) available before the user initiates playback. On the other hand, when the video is less likely to be played, or when it is less beneficial (live video; autoplay) you can configure the player to not preload it and save bandwidth. Here is how.
 
 ### Preloading settings
 
@@ -29,7 +29,7 @@ Choosing to preload your video content will reduce the start-up time of your vid
 In this example, we are preloading metadata only.
 
 ```js
-player.preload = "metadata";
+player.preload = 'metadata';
 ```
 
 ##### Android SDK

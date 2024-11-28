@@ -14,54 +14,53 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
 1. In your **top-level** (project) `settings.gradle.kts` file
 
 1. Add the THEOplayer Maven repository.
-    <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
-       <TabItem value="groovy" label="Groovy">
-        ```groovy
-        dependencyResolutionManagement {
-            repositories {
-                google()
-                mavenCentral()
-                maven { url "https://maven.theoplayer.com/releases" }
-            }
+<Tabs queryString="lang">
+   <!-- prettier-ignore-start -->
+   <TabItem value="groovy" label="Groovy">
+    ```groovy
+    dependencyResolutionManagement {
+        repositories {
+            google()
+            mavenCentral()
+            maven { url "https://maven.theoplayer.com/releases" }
         }
-        ```
-        </TabItem>
-        <TabItem value="kotlin" label="Kotlin">
-        ```kotlin
-        dependencyResolutionManagement {
-            repositories {
-                google()
-                mavenCentral()
-                maven { url = uri("https://maven.theoplayer.com/releases") }
-            }
+    }
+    ```
+    </TabItem>
+    <TabItem value="kotlin" label="Kotlin">
+    ```kotlin
+    dependencyResolutionManagement {
+        repositories {
+            google()
+            mavenCentral()
+            maven { url = uri("https://maven.theoplayer.com/releases") }
         }
-        ```
-        </TabItem>
-        <!-- prettier-ignore-end -->
-    </Tabs>
+    }
+    ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
 
-2. Next, we need to edit the `build.gradle` on the **module-level** (**app/build.gradle**)
+1. Next, we need to edit the `build.gradle` on the **module-level** (**app/build.gradle**)
 
-
-    <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
-       <TabItem value="groovy" label="Groovy">
-        ```groovy
-        implementation "com.theoplayer.theoplayer-sdk-android:core:+"
-        implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
-        implementation "androidx.appcompat:appcompat:1.7.0"
-        ```
-        </TabItem>
-        <TabItem value="kotlin" label="Kotlin">
-        ```kotlin
-        implementation("com.theoplayer.theoplayer-sdk-android:core:+")
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
-        implementation("androidx.appcompat:appcompat:1.7.0")
-        ```
-        </TabItem>
-        <!-- prettier-ignore-end -->
-    </Tabs>
+<Tabs queryString="lang">
+   <!-- prettier-ignore-start -->
+   <TabItem value="groovy" label="Groovy">
+    ```groovy
+    implementation "com.theoplayer.theoplayer-sdk-android:core:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    ```
+    </TabItem>
+    <TabItem value="kotlin" label="Kotlin">
+    ```kotlin
+    implementation("com.theoplayer.theoplayer-sdk-android:core:+")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
 
 <u>Note</u>: It's possible to replace the `+` with a particular version of THEOplayer that should be used, for example:
 
@@ -119,13 +118,13 @@ At least the `id`, `width` and `height` attributes need to be specified on the n
 
 ![](../../../../theoplayer/assets/img/android-getting-started-14_2.png)
 
-
 ### Adding THEOplayerView programmatically (Constructor API)
 
 In the Activity/Fragment, you can use the [constructor API](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerView.html) to create a THEOplayer instance
 by passing along a context and a [`THEOplayerConfig`](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerConfig.html).
 
 In this `THEOplayerConfig`, you can configure your license string, as demonstrated in the snippet below.
+
 <Tabs queryString="lang">
    <!-- prettier-ignore-start -->
    <TabItem value="kotlin" label="Kotlin">
@@ -147,6 +146,7 @@ In this `THEOplayerConfig`, you can configure your license string, as demonstrat
     ```
     </TabItem>
     <!-- prettier-ignore-end -->
+
 </Tabs>
 
 This approach is ideal when you need to adjust the configuration dynamically, such as during runtime or based on specific app conditions. It removes the need for XML-based configuration and is useful for advanced customization scenarios.
@@ -156,7 +156,6 @@ This approach is ideal when you need to adjust the configuration dynamically, su
 Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we set earlier using the `findViewById` method.
 
 ### 1. Get the THEOplayer instance
-
 
 <Tabs queryString="lang">
        <!-- prettier-ignore-start -->
@@ -199,6 +198,7 @@ Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we se
 ### 2. Configure source
 
 To play a video in THEOplayer, we need to configure a source for the player in our `MainActivity`:
+
 <Tabs queryString="lang">
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
@@ -306,6 +306,7 @@ First, we need to create two more TextViews in the `activity_main.xml` file.
 ```
 
 We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
+
 <Tabs queryString="lang">
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
@@ -355,7 +356,6 @@ We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
         </TabItem>
         <!-- prettier-ignore-end -->
     </Tabs>
-
 
 When the events are triggered, we will update the **MainActivity** UI with the corresponding state.
 

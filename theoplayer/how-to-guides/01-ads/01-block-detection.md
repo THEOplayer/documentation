@@ -6,7 +6,7 @@ is detected, and show a default error message, or either B) detect an `aderror` 
 
 The screenshot below illustrates the default error message.
 
-![Ad block detection](../../assets/img/ad-blocker-detected-2021.png "Adblock detection")
+![Ad block detection](../../assets/img/ad-blocker-detected-2021.png 'Adblock detection')
 
 ## SDKs
 
@@ -32,32 +32,31 @@ The snippet below demonstrates how you could implement this `blockContentIfAdErr
 ```js
 player.source = {
   sources: {
-    src: "//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
+    src: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
   },
   ads: [
     {
       sources:
-        "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator="
-    }
+        'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=',
+    },
   ],
-  blockContentIfAdError: true
+  blockContentIfAdError: true,
 };
 ```
 
 Through localization, you could rename the default error message, as demonstrated below.
 
 ```javascript
-var player = new THEOplayer.Player(document.querySelector(".video-js"), {
+var player = new THEOplayer.Player(document.querySelector('.video-js'), {
   ui: {
-    language: "en",
+    language: 'en',
     languages: {
       en: {
-        "Starting ads was not possible. Turn off your AdBlocker and try again.":
-          "Disable your AdBlocker."
-      }
-    }
+        'Starting ads was not possible. Turn off your AdBlocker and try again.': 'Disable your AdBlocker.',
+      },
+    },
   },
-  libraryLocation: "<your-library-location>"
+  libraryLocation: '<your-library-location>',
 });
 ```
 
@@ -78,7 +77,7 @@ The callback event may be differently formatted depending on your selected ad in
 If you're using the [Google IMA](10-google-ima.md) ad integration, your callback event will have a `problemType` property that will equal `"adblock"`.
 
 ```javascript
-player.ads.addEventListener("aderror", function (event) {
+player.ads.addEventListener('aderror', function (event) {
   // if using the Google IMA SDK, then your event looks like this:
   // {
   //  "type": "aderror",
@@ -91,7 +90,7 @@ player.ads.addEventListener("aderror", function (event) {
   //  }
   // }
   // so, to detect an ad blocker, you can do
-  if (event.problemType == "adblock") {
+  if (event.problemType == 'adblock') {
     // and do something else
   }
 });
@@ -100,7 +99,7 @@ player.ads.addEventListener("aderror", function (event) {
 If you're using the default ad integration, your callback event will have a `problemType` property that will equal `"network"`.
 
 ```javascript
-player.ads.addEventListener("aderror", function (event) {
+player.ads.addEventListener('aderror', function (event) {
   // if using the default ad integration, then your event looks like this:
   // {
   //   "type": "aderror",
@@ -114,7 +113,7 @@ player.ads.addEventListener("aderror", function (event) {
   //   }
   // }
   // so, to detect an ad blocker, you can do
-  if (event.problemType == "network") {
+  if (event.problemType == 'network') {
     // and do something else
   }
 });

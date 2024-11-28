@@ -52,7 +52,7 @@ The [Ads API](pathname:///theoplayer/v8/api-reference/web/interfaces/Ads.html) e
 The snippet below demonstrates how you could detect the start of an adbreak through a JavaScript event listener.
 
 ```js
-player.ads.addEventListener("adbreakbegin", console.log);
+player.ads.addEventListener('adbreakbegin', console.log);
 ```
 
 These events can be used to trigger a certain behavior programmatically.
@@ -86,21 +86,21 @@ CSS
 JavaScript
 
 ```js
-var button = THEOplayer.videojs.getComponent("Button");
+var button = THEOplayer.videojs.getComponent('Button');
 var myButton = THEOplayer.videojs.extend(button, {
   constructor: function () {
     button.apply(this, arguments);
-    this.el().innerHTML = "Ad";
+    this.el().innerHTML = 'Ad';
   },
   handleClick: function () {
-    elementContainer.classList.toggle("hidden");
+    elementContainer.classList.toggle('hidden');
   },
   buildCSSClass: function () {
-    return "theo-advert-label";
-  }
+    return 'theo-advert-label';
+  },
 });
-THEOplayer.videojs.registerComponent("AdvertLabelButton", myButton);
-player.ui.getChild("controlBar").addChild("AdvertLabelButton", {});
+THEOplayer.videojs.registerComponent('AdvertLabelButton', myButton);
+player.ui.getChild('controlBar').addChild('AdvertLabelButton', {});
 ```
 
 ##### Android SDK
@@ -132,25 +132,25 @@ JavaScript
 
 ```js
 function updateTime() {
-  var countdown = document.querySelector(".theo-ad-countdown");
+  var countdown = document.querySelector('.theo-ad-countdown');
   if (countdown) {
     countdown.innerHTML = Math.round(player.duration - player.currentTime);
   }
 }
 
-player.ads.addEventListener("adbegin", function (e) {
-  var countdown = document.createElement("div");
-  countdown.className = "theo-ad-countdown";
+player.ads.addEventListener('adbegin', function (e) {
+  var countdown = document.createElement('div');
+  countdown.className = 'theo-ad-countdown';
   countdown.innerHTML = player.duration;
   element.appendChild(countdown);
 
-  player.addEventListener("timeupdate", updateTime);
+  player.addEventListener('timeupdate', updateTime);
 });
 
-player.ads.addEventListener("adend", function (e) {
-  var countdown = document.querySelector(".theo-ad-countdown");
+player.ads.addEventListener('adend', function (e) {
+  var countdown = document.querySelector('.theo-ad-countdown');
   if (countdown) {
-    player.removeEventListener("timeupdate", updateTime);
+    player.removeEventListener('timeupdate', updateTime);
     element.removeChild(countdown);
   }
 });

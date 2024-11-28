@@ -17,9 +17,9 @@ Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for mor
 ```js
 if (HLS) {
   let drmConfiguration = {
-    integration: "xstream",
-    streamId: "<STREAM_ID>",
-    ticketAcquisitionURL: "<TICKET_ACQUISITION_URL>"
+    integration: 'xstream',
+    streamId: '<STREAM_ID>',
+    ticketAcquisitionURL: '<TICKET_ACQUISITION_URL>',
     /*"fairplay": {
             "licenseAcquisitionURL": "<LICENSE_KEY_URL_FAIRPLAY>",
             "certificateURL": "CERTIFICATE_URL>"
@@ -27,16 +27,16 @@ if (HLS) {
   };
   player.source = {
     sources: {
-      src: "<HLS_STREAM_URL>",
-      type: "application/x-mpegurl",
-      contentProtection: drmConfiguration
-    }
+      src: '<HLS_STREAM_URL>',
+      type: 'application/x-mpegurl',
+      contentProtection: drmConfiguration,
+    },
   };
 } else if (DASH) {
   let drmConfiguration = {
-    integration: "xstream",
-    streamId: "<STREAM_ID>",
-    ticketAcquisitionURL: "<TICKET_ACQUISITION_URL>"
+    integration: 'xstream',
+    streamId: '<STREAM_ID>',
+    ticketAcquisitionURL: '<TICKET_ACQUISITION_URL>',
     /*"playready": {
             "licenseAcquisitionURL": "<LICENSE_KEY_URL_PLAYREADY>"
         },
@@ -46,10 +46,10 @@ if (HLS) {
   };
   player.source = {
     sources: {
-      src: "<DASH_STREAM_URL>",
-      type: "application/dash+xml",
-      contentProtection: drmConfiguration
-    }
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
   };
 }
 ```

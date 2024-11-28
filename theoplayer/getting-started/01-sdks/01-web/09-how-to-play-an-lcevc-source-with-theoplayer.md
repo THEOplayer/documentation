@@ -21,10 +21,7 @@ You can quickly check using `THEOplayer.features`. The feature is only available
 This example below uses the latest version of the DIL that is maintained by V-Nova:
 
 ```js
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/lcevc_dil.js@latest/dist/lcevc_dil.min.js"
-></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lcevc_dil.js@latest/dist/lcevc_dil.min.js"></script>
 ```
 
 ## Setting the source
@@ -37,10 +34,10 @@ the SourceDescription so that the player knows how to configure the correct play
 ```js
 player.source = {
   sources: {
-    type: "application/dash+xml",
-    src: "path/to/your/source/master.mpd",
-    lcevc: true
-  }
+    type: 'application/dash+xml',
+    src: 'path/to/your/source/master.mpd',
+    lcevc: true,
+  },
 };
 ```
 
@@ -49,10 +46,10 @@ player.source = {
 ```js
 player.source = {
   sources: {
-    type: "application/x-mpegurl",
-    src: "path/to/your/source/master.m3u8",
-    lcevc: true
-  }
+    type: 'application/x-mpegurl',
+    src: 'path/to/your/source/master.m3u8',
+    lcevc: true,
+  },
 };
 ```
 

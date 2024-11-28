@@ -23,7 +23,7 @@ The Web SDK leverages the [TextTrack API](pathname:///theoplayer/v7/api-referenc
 function handleAddTrackEvent(addTrackEvent) {
   var textTrack = addTrackEvent.track;
 }
-player.textTracks.addEventListener("addtrack", handleAddTrackEvent);
+player.textTracks.addEventListener('addtrack', handleAddTrackEvent);
 ```
 
 ##### Android (TV) SDK

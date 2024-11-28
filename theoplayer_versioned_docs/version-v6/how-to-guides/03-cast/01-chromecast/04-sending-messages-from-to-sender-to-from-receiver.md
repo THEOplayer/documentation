@@ -14,7 +14,7 @@ The Google Cast SDK has a global object that everyone can access. This global ob
 // Retrieve the current cast session
 var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
 // Send message on defined namespace channel
-castSession.sendMessage("namespace", "message");
+castSession.sendMessage('namespace', 'message');
 ```
 
 Reference:
@@ -70,7 +70,7 @@ The general idea is to retrieve the current active cast session and add an event
 // Retrieve the current cast session
 var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
 // Add an event listener to the defined namespace channel
-castSession.addMessageListener("namespace", (namespace, message) => {
+castSession.addMessageListener('namespace', (namespace, message) => {
   console.log(namespace, message);
 });
 ```
@@ -125,7 +125,7 @@ The general idea is to retrieve the receiver manager and add a message listener 
 // Retrieve the cast receiver manager
 var castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
 // Retrieve the message bus from the cast receiver manager
-var messageBus = castReceiverManager.getCastMessageBus("namespace");
+var messageBus = castReceiverManager.getCastMessageBus('namespace');
 // Add message listener to the message bus
 messageBus.onMessage = function (event) {
   console.log(event);
@@ -151,10 +151,10 @@ There are multiple possibilities to send data from the receiver:
 ```js
 // 1.
 messageBus.onMessage = function (event) {
-  messageBus.send(event.senderId, "message");
+  messageBus.send(event.senderId, 'message');
 };
 // 2.
-messageBus.broadcast("message");
+messageBus.broadcast('message');
 ```
 
 Reference:

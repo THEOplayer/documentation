@@ -1,12 +1,12 @@
 # MediaMelon SmartSight
+
 MediaMelon SmartSight is an analytics service maintained by MediaMelon. The library is maintained by the MediaMelon team.
 
 ## SDKs
 
-| Web SDK |           Android SDK            |             iOS SDK              | tvOS SDK | Android TV SDK | Chromecast SDK |
-| :-----: | :------------------------------: | :------------------------------: | :------: | :------------: | :------------: |
-|   Yes   | Yes | Yes |    Yes     |       Yes        |   No   |
-
+| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
+| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
+|   Yes   |     Yes     |   Yes   |   Yes    |      Yes       |       No       |
 
 ## Prerequisites
 
@@ -24,8 +24,8 @@ For the most up to date information on how to integrate MediaMelon SmartSight wi
 Include the following scripts in the web page (before `THEOplayer.js` is loaded):
 
 ```html
-  <script type="text/javascript" src="https://PATH_TO_SMARTSIGHT_SDK/mmsmartstreaming_theoplayer.min.js"></script>
-  <script type='text/javascript' src='THEOplayer.js'></script>
+<script type="text/javascript" src="https://PATH_TO_SMARTSIGHT_SDK/mmsmartstreaming_theoplayer.min.js"></script>
+<script type="text/javascript" src="THEOplayer.js"></script>
 ```
 
 **Step 2: Register and Initialize MediaMelon SDK**
@@ -34,45 +34,45 @@ Note: `<customer_id>` is your MediaMelon-assigned Customer ID. If you do not kno
 After the player instance has been created, create a new plugin object, register, report player Info and then initialize the plugin as shown below:
 
 ```js
- var theoPlayer = new THEOplayer.Player(element, {
- libraryLocation: "your_library_location",
- license: "your_license_here"
- })
+var theoPlayer = new THEOplayer.Player(element, {
+  libraryLocation: 'your_library_location',
+  license: 'your_license_here',
+});
 
 var mmVideoAssetInfo = {
-      "assetName": "ASSET_NAME",
-      "assetId": "ASSET_ID",
-      "videoId": "VIDEO_ID",
-      "contentType": "CONTENT_TYPE",
-      "genre": "GENRE",
-      "drmProtection": "DRM_PROTECTION",
-      "episodeNumber": "EPISODE_NUMBER",
-      "season": "SEASON",
-      "seriesTitle": "SERIES_TITLE",
-      "videoType": "VIDEO_TYPE",
-      "customTags": {
-          "key1": "VALUE_STRING1",
-          "key2": "VALUE_STRING2"
-      }
- };
+  assetName: 'ASSET_NAME',
+  assetId: 'ASSET_ID',
+  videoId: 'VIDEO_ID',
+  contentType: 'CONTENT_TYPE',
+  genre: 'GENRE',
+  drmProtection: 'DRM_PROTECTION',
+  episodeNumber: 'EPISODE_NUMBER',
+  season: 'SEASON',
+  seriesTitle: 'SERIES_TITLE',
+  videoType: 'VIDEO_TYPE',
+  customTags: {
+    key1: 'VALUE_STRING1',
+    key2: 'VALUE_STRING2',
+  },
+};
 
- var theoPlugin = new mmTheoJSAdapter();
- if(theoPlugin.getRegistrationStatus() === false){
-    theoPlugin.registerMMSmartStreaming("PLAYER_NAME", "CUSTOMER_ID", "SUBSCRIBER_ID", "DOMAIN_NAME", "SUBSCRIBER_TYPE" , "SUBSCRIBER_TAG");
-    theoPlugin.reportPlayerInfo("PLAYER_BRAND", "PLAYER_MODEL", "PLAYER_VERSION");
- }
- 
- theoPlugin.reportAppInfo("APP_NAME", "APP_VERSION");
- theoPlugin.setDeviceInfo("DEVICE_MARKETING_NAME");
- theoPlugin.reportVideoQuality("VIDEO_QUALITY");
- theoPlugin.reportDeviceId("DEVICE_ID");
-    
- var isLive = false;    //Set this to true for a live stream or false for a VOD stream
- // If isLive is not set here, it will be handled internally by the SDK.
- theoPlugin.initialize(theoPlayer, "STREAM_URL", mmVideoAssetInfo, isLive);
- 
- // Call this Error API to report an App Error.
- theoPlugin.reportAppError("ERROR_MESSAGE", "ERROR_CODE"); 
+var theoPlugin = new mmTheoJSAdapter();
+if (theoPlugin.getRegistrationStatus() === false) {
+  theoPlugin.registerMMSmartStreaming('PLAYER_NAME', 'CUSTOMER_ID', 'SUBSCRIBER_ID', 'DOMAIN_NAME', 'SUBSCRIBER_TYPE', 'SUBSCRIBER_TAG');
+  theoPlugin.reportPlayerInfo('PLAYER_BRAND', 'PLAYER_MODEL', 'PLAYER_VERSION');
+}
+
+theoPlugin.reportAppInfo('APP_NAME', 'APP_VERSION');
+theoPlugin.setDeviceInfo('DEVICE_MARKETING_NAME');
+theoPlugin.reportVideoQuality('VIDEO_QUALITY');
+theoPlugin.reportDeviceId('DEVICE_ID');
+
+var isLive = false; //Set this to true for a live stream or false for a VOD stream
+// If isLive is not set here, it will be handled internally by the SDK.
+theoPlugin.initialize(theoPlayer, 'STREAM_URL', mmVideoAssetInfo, isLive);
+
+// Call this Error API to report an App Error.
+theoPlugin.reportAppError('ERROR_MESSAGE', 'ERROR_CODE');
 ```
 
 You can find an explanation of the parameters on the snippet above [here](https://docs.mediamelon.com/mediamelon/smartsight-player-sdk-integration/web/theoplayer-web-v2-1#cl-step-4-providing-content-metadata-and-custom-tags).
@@ -85,20 +85,20 @@ You can also provide custom metadata and tags as shown below in HTML/JS while se
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
+      src: '//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
   ],
   mmVideoAssetInfo: {
-    assetName: "Elephants Dream",
-    assetId: "ASSETID_STRING",
-    videoId: "VIDEOID_STRING",
+    assetName: 'Elephants Dream',
+    assetId: 'ASSETID_STRING',
+    videoId: 'VIDEOID_STRING',
     customTags: {
-      key1: "VALUE_STRING1",
-      key2: "VALUE_STRING2",
-      key3: "VALUE_STRING3"
-    }
-  }
+      key1: 'VALUE_STRING1',
+      key2: 'VALUE_STRING2',
+      key3: 'VALUE_STRING3',
+    },
+  },
 };
 ```
 
@@ -108,16 +108,16 @@ If your workflow restricts the manifest to be accessible from both player and SD
 
 ```javascript
 var player = new THEOplayer.Player(element, {
-    libraryLocation : 'path_to_your_library/',
-    license: 'your_license_here'
+  libraryLocation: 'path_to_your_library/',
+  license: 'your_license_here',
 });
 
- var theoPlugin = new mmTheoJSAdapter();
- if(theoPlugin.getRegistrationStatus() === false){
-    theoPlugin.registerMMSmartStreaming("PLAYER_NAME", "CUSTOMER_ID", "SUBSCRIBER_ID", "DOMAIN_NAME", "SUBSCRIBER_TYPE" , "SUBSCRIBER_TAG");
-    theoPlugin.reportPlayerInfo("PLAYER_BRAND", "PLAYER_MODEL", "PLAYER_VERSION");
-    theoPlugin.disableManifestsFetch(true);
- }
+var theoPlugin = new mmTheoJSAdapter();
+if (theoPlugin.getRegistrationStatus() === false) {
+  theoPlugin.registerMMSmartStreaming('PLAYER_NAME', 'CUSTOMER_ID', 'SUBSCRIBER_ID', 'DOMAIN_NAME', 'SUBSCRIBER_TYPE', 'SUBSCRIBER_TAG');
+  theoPlugin.reportPlayerInfo('PLAYER_BRAND', 'PLAYER_MODEL', 'PLAYER_VERSION');
+  theoPlugin.disableManifestsFetch(true);
+}
 
 theoPlugin.initialize(theoPlayer);
 ```

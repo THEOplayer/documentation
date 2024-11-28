@@ -6,26 +6,25 @@ The snippet below does exactly that.
 
 ```js
 function customizeContextMenu(container) {
-  var contextMenu = container.querySelector(".theo-context-menu");
+  var contextMenu = container.querySelector('.theo-context-menu');
 
   // change context menu text
-  var contextMenuFirstItem = contextMenu.querySelector(".theo-context-version");
-  contextMenuFirstItem.innerText = "Brand X";
+  var contextMenuFirstItem = contextMenu.querySelector('.theo-context-version');
+  contextMenuFirstItem.innerText = 'Brand X';
 
   // change mini logo
-  var contextLogo = contextMenu.querySelector(".theo-0logo");
-  contextLogo.style.backgroundImage =
-    "url('https://image.freepik.com/free-icon/line-logo_318-102660.jpg')";
-  contextLogo.style.backgroundSize = "cover";
-  contextLogo.querySelector("svg").style.visibility = "hidden";
+  var contextLogo = contextMenu.querySelector('.theo-0logo');
+  contextLogo.style.backgroundImage = "url('https://image.freepik.com/free-icon/line-logo_318-102660.jpg')";
+  contextLogo.style.backgroundSize = 'cover';
+  contextLogo.querySelector('svg').style.visibility = 'hidden';
 
   // add a line
-  var contextMenuSecondItem = document.createElement("li");
-  contextMenuSecondItem.innerText = "24/07/2018";
+  var contextMenuSecondItem = document.createElement('li');
+  contextMenuSecondItem.innerText = '24/07/2018';
   contextMenu.appendChild(contextMenuSecondItem);
 }
 
-var element = document.querySelector(".video-container");
+var element = document.querySelector('.video-container');
 var player = new THEOplayer.Player(element, playerConfig);
 customizeContextMenu(element);
 ```
@@ -37,5 +36,5 @@ Another common question is to remove the context menu altogether. The context me
 To verify whether this feature is enabled you can execute the query below.
 
 ```js
-var contextMenuEnabled = THEOplayer.features.indexOf("contextmenu") > -1;
+var contextMenuEnabled = THEOplayer.features.indexOf('contextmenu') > -1;
 ```

@@ -25,13 +25,13 @@ You can also swap out the `playing` event for a `play` event, or any other event
 
 ```js
 function firstplaying(event) {
-  player.removeEventListener("playing", firstplaying);
-  console.log("first play event!", event);
+  player.removeEventListener('playing', firstplaying);
+  console.log('first play event!', event);
 }
-player.addEventListener("sourcechange", function () {
-  console.log("A new SourceDescription has been set.");
-  player.removeEventListener("playing", firstplaying);
-  player.addEventListener("playing", firstplaying);
+player.addEventListener('sourcechange', function () {
+  console.log('A new SourceDescription has been set.');
+  player.removeEventListener('playing', firstplaying);
+  player.addEventListener('playing', firstplaying);
 });
 // OR
 // player.addEventListener('loadedmetadata', function() {

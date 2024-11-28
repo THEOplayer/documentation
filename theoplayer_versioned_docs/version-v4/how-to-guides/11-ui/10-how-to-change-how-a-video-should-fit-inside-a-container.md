@@ -44,9 +44,9 @@ The CSS [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-f
 Alternatively, if you cannot use CSS for some reason, you could try to achieve the same through JavaScript.
 
 ```javascript
-const videos = document.querySelectorAll(".theoplayer-skin video");
+const videos = document.querySelectorAll('.theoplayer-skin video');
 for (let i = 0; i < videos.length; i++) {
-  videos[i].style.objectFit = "cover";
+  videos[i].style.objectFit = 'cover';
 }
 ```
 

@@ -21,10 +21,10 @@ The Web SDK leverages the [MediaTrack API](pathname:///theoplayer/v8/api-referen
 
 ```js
 // detect video tracks being added to the player
-player.videoTracks.addEventListener("addtrack", function (e0) {
+player.videoTracks.addEventListener('addtrack', function (e0) {
   // detect quality changes of a track
-  e0.track.addEventListener("activequalitychanged", function (e1) {
-    console.log("activequalitychanged event detected!", e1);
+  e0.track.addEventListener('activequalitychanged', function (e1) {
+    console.log('activequalitychanged event detected!', e1);
   });
 });
 ```

@@ -26,19 +26,19 @@ Each text track should be described as a [TextTrackDescription](pathname:///theo
 player.source = {
   sources: [
     {
-      src: "//path/to/your-manifest.m3u8", // sets source
-      type: "application/x-mpegurl" // sets type - find other values at https://support.theoplayer.com/hc/en-us/articles/214350425-SourceDescription-API#TypedSource
-    }
+      src: '//path/to/your-manifest.m3u8', // sets source
+      type: 'application/x-mpegurl', // sets type - find other values at https://support.theoplayer.com/hc/en-us/articles/214350425-SourceDescription-API#TypedSource
+    },
   ],
   textTracks: [
     {
       default: true, //optional
-      kind: "subtitles", //optional - find other values at https://support.theoplayer.com/hc/en-us/articles/214350425#TextTrackDescription
-      label: "English subs", //optional - this will appear in your UI
-      src: "path/to/your-subs-track1.vtt",
-      srclang: "en"
-    }
-  ]
+      kind: 'subtitles', //optional - find other values at https://support.theoplayer.com/hc/en-us/articles/214350425#TextTrackDescription
+      label: 'English subs', //optional - this will appear in your UI
+      src: 'path/to/your-subs-track1.vtt',
+      srclang: 'en',
+    },
+  ],
 };
 ```
 

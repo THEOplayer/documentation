@@ -37,7 +37,7 @@ And enable it:
 
 ```js
 const POLYFILL_CONFIG = {
-  allowCardboardOnDesktop: true
+  allowCardboardOnDesktop: true,
 };
 new WebXRPolyfill(POLYFILL_CONFIG);
 ```
@@ -51,8 +51,8 @@ your `PlayerConfiguration`:
 const playerConfig: PlayerConfiguration = {
   // ...
   vr: {
-    useWebXR: true
-  }
+    useWebXR: true,
+  },
 };
 ```
 
@@ -63,14 +63,14 @@ You can set the following source to test:
 ```js
 player.source = {
   sources: {
-    src: "//demo.theoplayer.com/hubfs/videos/natgeo/playlist.m3u8",
-    crossOrigin: "anonymous"
+    src: '//demo.theoplayer.com/hubfs/videos/natgeo/playlist.m3u8',
+    crossOrigin: 'anonymous',
   },
   vr: {
-    panoramaMode: "360",
-    stereoMode: "none"
+    panoramaMode: '360',
+    stereoMode: 'none',
   },
-  poster: "//demo.theoplayer.com/hubfs/videos/natgeo/poster.jpg"
+  poster: '//demo.theoplayer.com/hubfs/videos/natgeo/poster.jpg',
 };
 ```
 

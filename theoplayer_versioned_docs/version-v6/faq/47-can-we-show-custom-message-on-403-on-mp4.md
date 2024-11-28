@@ -20,8 +20,8 @@ function reqListener() {
   XMLHttpRequestObject = this;
 }
 requestObject = new XMLHttpRequest();
-requestObject.addEventListener("load", reqListener);
-requestObject.open("GET", "https://httpstat.us/403?sleep=100");
+requestObject.addEventListener('load', reqListener);
+requestObject.open('GET', 'https://httpstat.us/403?sleep=100');
 requestObject.send();
 
 XMLHttpRequestObject.status; // result should be 403 - this may be used for a control that, if true, prints on the overlay the desired error message.

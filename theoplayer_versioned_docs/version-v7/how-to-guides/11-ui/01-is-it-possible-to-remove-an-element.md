@@ -27,7 +27,7 @@ For this example we will consider the Speed menu option (control bar > Settings 
 We identify the element and hide it. Since In this specific case there is no id or class to identify this element specifically, we make use of its aria attribute. Of course, should it change, this line of code should be adapted accordingly.
 
 ```css
-.theoplayer-skin li[aria-label="Open the video speed settings menu"] {
+.theoplayer-skin li[aria-label='Open the video speed settings menu'] {
   display: none !important;
 }
 ```
@@ -38,15 +38,13 @@ In alternative to CSS, it is also possible to achieve the same result with JavaS
 
 ```js
 function firstplay(event) {
-  player.removeEventListener("playing", firstplay);
-  var speed = document.querySelector(
-    '.theoplayer-skin li[aria-label="Open the video speed settings menu"]'
-  );
+  player.removeEventListener('playing', firstplay);
+  var speed = document.querySelector('.theoplayer-skin li[aria-label="Open the video speed settings menu"]');
   speed.parentNode.removeChild(speed);
 }
-player.addEventListener("sourcechange", function () {
-  player.removeEventListener("playing", firstplay);
-  player.addEventListener("playing", firstplay);
+player.addEventListener('sourcechange', function () {
+  player.removeEventListener('playing', firstplay);
+  player.addEventListener('playing', firstplay);
 });
 ```
 

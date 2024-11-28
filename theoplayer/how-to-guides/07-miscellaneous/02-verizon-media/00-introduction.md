@@ -20,7 +20,7 @@ For example,
 
 A live demo of THEOplayer's integration of Verizon Media is available at https://cdn.theoplayer.com/demos/verizon-media/index.html.
 
-![VerizonMediaDemo](../../../assets/img/VerizonMediaDemo.png "Verizon Media Demo")
+![VerizonMediaDemo](../../../assets/img/VerizonMediaDemo.png 'Verizon Media Demo')
 
 For more information on the integration and available APIs, continue your read on the pages below.
 

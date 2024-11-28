@@ -9,7 +9,7 @@ The objective of this guide is to define some video player states, and how to tr
 Although there's no official list of video player states,
 we'll define 11 states for learning purposes. These 11 states are visualized in the state diagram below.
 
-![Video Player States](../../assets/img/player-video-player-states.png "Video Player States")
+![Video Player States](../../assets/img/player-video-player-states.png 'Video Player States')
 
 The table below provides the definitions of these 11 states.
 
@@ -95,11 +95,11 @@ All other events can be tracked similarly. You can find the event names in [the 
 This approach is valid for all web-based platforms, including Tizen and webOS.
 
 ```javascript
-player.addEventListener("sourcechange", (event) => {
+player.addEventListener('sourcechange', (event) => {
   console.log(event);
 });
 // ...
-player.addEventListener("ended", (event) => {
+player.addEventListener('ended', (event) => {
   console.log(event);
 });
 ```

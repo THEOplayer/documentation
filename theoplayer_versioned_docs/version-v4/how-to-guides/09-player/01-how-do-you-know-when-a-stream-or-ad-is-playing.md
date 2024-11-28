@@ -28,9 +28,9 @@ Let's see some code examples for the various SDKs.
 ```js
 function playingEventHandler(event) {
   var adIsPlaying = player.ads.playing;
-  console.log("PLAYING", adIsPlaying ? "Advertisement" : "Content", event);
+  console.log('PLAYING', adIsPlaying ? 'Advertisement' : 'Content', event);
 }
-player.addEventListener("playing", playingEventHandler);
+player.addEventListener('playing', playingEventHandler);
 ```
 
 ##### Android SDK

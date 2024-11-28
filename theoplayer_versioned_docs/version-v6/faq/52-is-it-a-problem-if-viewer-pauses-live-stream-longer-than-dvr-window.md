@@ -9,10 +9,7 @@ In case you wish to avoid this behavior and skip the current buffer, this is als
 This is a JavaScript example for this, where the DVR window is 60 sec long and the new custom position to seek to is in the middle of it.
 
 ```js
-player.addEventListener("play", () => {
-  player.currentTime =
-    player.seekable.end() - player.currentTime > 60
-      ? player.seekable.end() - 30
-      : player.currentTime;
+player.addEventListener('play', () => {
+  player.currentTime = player.seekable.end() - player.currentTime > 60 ? player.seekable.end() - 30 : player.currentTime;
 });
 ```

@@ -41,15 +41,15 @@ The [`ChromecastConnectionCallback`](pathname:///theoplayer/v6/api-reference/web
 ```js
 var senderSource = {
   sources: {
-    src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-    type: "application/x-mpegurl"
-  }
+    src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+    type: 'application/x-mpegurl',
+  },
 };
 var chromecastSource = {
   sources: {
-    src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8",
-    type: "application/x-mpegurl"
-  }
+    src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    type: 'application/x-mpegurl',
+  },
 };
 player.source = senderSource;
 player.cast.chromecast.connectionCallback = {
@@ -64,7 +64,7 @@ player.cast.chromecast.connectionCallback = {
   },
   onLeave: function (source) {
     return source;
-  }
+  },
 };
 ```
 
@@ -240,10 +240,10 @@ The snippet below demonstrates this API.
 const source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
-      type: "application/x-mpegurl"
-    }
-  ]
+      src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
 };
 player.cast.chromecast.source = source;
 ```

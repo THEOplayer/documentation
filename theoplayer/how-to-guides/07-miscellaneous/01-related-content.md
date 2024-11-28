@@ -2,7 +2,7 @@
 
 The article in this section describes how to implement common use-cases related to the Related Content feature. This feature adds a component to the UI which enables viewers to navigate to related content. Developers can configure the related content using the exposed Related API.
 
-![Related Content](../../assets/img/related-content.png "Related Content")
+![Related Content](../../assets/img/related-content.png 'Related Content')
 
 ## SDKs
 
@@ -24,64 +24,62 @@ The Related Content API was first released on THEOplayer's Web SDK.
 ```js
 player.related.sources = [
   {
-    image: "//cdn.theoplayer.com/video/vr/poster.jpg",
-    title: "Experience true 360/VR in THEOplayer",
-    duration: "2:14",
-    link: "//demo.theoplayer.com/vr-and-360"
+    image: '//cdn.theoplayer.com/video/vr/poster.jpg',
+    title: 'Experience true 360/VR in THEOplayer',
+    duration: '2:14',
+    link: '//demo.theoplayer.com/vr-and-360',
   },
   {
-    image:
-      "//cdn2.hubspot.net/hubfs/2163521/Demo_zone/CaminandesLlamaDramaPoster.jpg",
-    title: "4K Streaming with THEOplayer",
-    duration: "1:30",
-    link: "//demo.theoplayer.com/4k"
+    image: '//cdn2.hubspot.net/hubfs/2163521/Demo_zone/CaminandesLlamaDramaPoster.jpg',
+    title: '4K Streaming with THEOplayer',
+    duration: '1:30',
+    link: '//demo.theoplayer.com/4k',
   },
   {
-    image: "//cdn.theoplayer.com/video/sintel/poster.jpg",
-    title: "Optimally present your content with chapter markers",
-    duration: "1:30",
-    link: "//demo.theoplayer.com/chapters"
+    image: '//cdn.theoplayer.com/video/sintel/poster.jpg',
+    title: 'Optimally present your content with chapter markers',
+    duration: '1:30',
+    link: '//demo.theoplayer.com/chapters',
   },
   {
-    image: "//localhost/server/azure.jpg",
-    title: "Keep THEOplayer visible with picture-in-picture",
-    duration: "1:30",
-    link: "//demo.theoplayer.com/chapters"
+    image: '//localhost/server/azure.jpg',
+    title: 'Keep THEOplayer visible with picture-in-picture',
+    duration: '1:30',
+    link: '//demo.theoplayer.com/chapters',
   },
   {
-    image: "//cdn.theoplayer.com/video/big_buck_bunny/poster.jpg",
-    title: "THEOplayer: Advertisements Tester (VAST, VPAID, VMAP)",
-    duration: "9:57",
-    link: "//demo.theoplayer.com/chapters"
+    image: '//cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+    title: 'THEOplayer: Advertisements Tester (VAST, VPAID, VMAP)',
+    duration: '9:57',
+    link: '//demo.theoplayer.com/chapters',
   },
   {
-    image:
-      "//cdn2.hubspot.net/hubfs/2163521/Demo_zone/tears_of_steel_poster.jpg",
-    title: "CEA Closed Captions and Subtitles With THEOplayer",
-    duration: "12:14",
-    link: "//demo.theoplayer.com/closed-captions-subtitles"
+    image: '//cdn2.hubspot.net/hubfs/2163521/Demo_zone/tears_of_steel_poster.jpg',
+    title: 'CEA Closed Captions and Subtitles With THEOplayer',
+    duration: '12:14',
+    link: '//demo.theoplayer.com/closed-captions-subtitles',
   },
   {
-    title: "Go Big Screen With THEOplayer and Chromecast",
-    link: "//demo.theoplayer.com/chromecast",
-    duration: "9:57",
-    image: "//cdn.theoplayer.com/video/big_buck_bunny/poster-alt1.jpg"
+    title: 'Go Big Screen With THEOplayer and Chromecast',
+    link: '//demo.theoplayer.com/chromecast',
+    duration: '9:57',
+    image: '//cdn.theoplayer.com/video/big_buck_bunny/poster-alt1.jpg',
   },
   {
-    title: "Effortless casting with THEOplayer and AirPlay",
-    link: "//demo.theoplayer.com/airplay",
-    duration: "9:57",
-    image: "//cdn.theoplayer.com/video/big_buck_bunny/poster-alt2.jpg"
+    title: 'Effortless casting with THEOplayer and AirPlay',
+    link: '//demo.theoplayer.com/airplay',
+    duration: '9:57',
+    image: '//cdn.theoplayer.com/video/big_buck_bunny/poster-alt2.jpg',
   },
   {
-    title: "DRM and AES-128 content protection with THEOplayer",
-    link: "//demo.theoplayer.com/drm-aes-128-encryption",
-    duration: "LIVE",
-    image: "//cdn.theoplayer.com/video/big_buck_bunny/poster-alt3.jpg"
-  }
+    title: 'DRM and AES-128 content protection with THEOplayer',
+    link: '//demo.theoplayer.com/drm-aes-128-encryption',
+    duration: 'LIVE',
+    image: '//cdn.theoplayer.com/video/big_buck_bunny/poster-alt3.jpg',
+  },
 ];
 
-player.addEventListener("ended", function () {
+player.addEventListener('ended', function () {
   if (!player.related.showing) {
     setTimeout(function () {
       player.related.show();

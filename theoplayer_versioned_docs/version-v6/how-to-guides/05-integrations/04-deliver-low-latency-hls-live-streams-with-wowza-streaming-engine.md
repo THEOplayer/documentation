@@ -125,7 +125,7 @@ To bypass encoding streams with Transcoder, source streams should meet the follo
 - CMAF-supported codecs (required)
 
 | Video          | Audio                                                                                                                                                                           |
-| -------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - H.264, H.265 | - AAC, AAC-LC, HE-AAC (AAC+ or aacPlus), <br/>- HE-AACv2 (enhanced AAC+, aacPlus v2) - Dolby Digital 5.1 Surround Sound (AC-3) and Dolby Digital Plus (Enhanced AC-3 or E-AC-3) |
 
 - GOP size: 1 or 2 seconds
@@ -195,11 +195,11 @@ where **\_sfts** indicates that the media playlist contains .ts segments.
   player.source = {
     sources: [
       {
-        src: "https://5d6e17f1ca731.streamlock.net/LowLatencyBBB/myStream/playlist.m3u8", // set the LL-HLS source
-        type: "application/x-mpegurl", // set the type to HLS
-        lowLatency: true
-      }
-    ]
+        src: 'https://5d6e17f1ca731.streamlock.net/LowLatencyBBB/myStream/playlist.m3u8', // set the LL-HLS source
+        type: 'application/x-mpegurl', // set the type to HLS
+        lowLatency: true,
+      },
+    ],
   };
 </script>
 ```

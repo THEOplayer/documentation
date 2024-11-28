@@ -40,7 +40,7 @@ You handle these `error` events in the same fashion.)
 #### Web
 
 ```js
-player.addEventListener("error", function (errorEvent) {
+player.addEventListener('error', function (errorEvent) {
   console.log(errorEvent);
 });
 ```
@@ -69,7 +69,7 @@ For example, if the `error` event of the top-level `Player` interface would be d
 then you can access the `errorObject` property of this interface.
 
 ```js
-player.addEventListener("error", function (errorEvent) {
+player.addEventListener('error', function (errorEvent) {
   // console.log(errorEvent);
   console.log(player.errorObject);
 });

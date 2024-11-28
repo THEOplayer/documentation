@@ -3,11 +3,11 @@
 This article will tell you how to manipulate THEOplayer (Web) to make an audio-only interface, using only CSS and JavaScript. This applies also to mobile SDKs, where CSS and javascript can be injected (see _Resources_).
 
 Going from this
-![Audio Only](../../../../theoplayer/assets/img/audio-only-1.png "Audio Only")
+![Audio Only](../../../../theoplayer/assets/img/audio-only-1.png 'Audio Only')
 
 to this
 
-![Audio Only](../../../../theoplayer/assets/img/audio-only-2.png "Audio Only")
+![Audio Only](../../../../theoplayer/assets/img/audio-only-2.png 'Audio Only')
 
 ## SDKs
 
@@ -19,7 +19,7 @@ to this
 
 This section explains how to alter the default video player UI into the UI shown in the picture below, thus transforming a default THEOplayer instance in an audio player. This can, of course, be further customised to your liking to adapt to the rest of your implementation.
 
-![Audio Only](../../../../theoplayer/assets/img/audio-only-3.png "Audio Only")
+![Audio Only](../../../../theoplayer/assets/img/audio-only-3.png 'Audio Only')
 
 The alteration involves 8 steps:
 
@@ -47,14 +47,14 @@ To comfortably provide the required CSS during the next steps, we add CSS classe
 
 ```js
 function transformPlayer(forAudio) {
-  var player = document.querySelector(".vjs-fluid");
-  var controlbar = document.querySelector(".vjs-control-bar");
+  var player = document.querySelector('.vjs-fluid');
+  var controlbar = document.querySelector('.vjs-control-bar');
   if (forAudio) {
-    player.classList.add("audioplayer");
-    controlbar.classList.add("audiocontrol");
+    player.classList.add('audioplayer');
+    controlbar.classList.add('audiocontrol');
   } else {
-    player.classList.remove("audioplayer");
-    controlbar.classList.remove("audiocontrol");
+    player.classList.remove('audioplayer');
+    controlbar.classList.remove('audiocontrol');
   }
 }
 ```
@@ -167,7 +167,7 @@ This plays without any issue on most platforms, however we have noticed that Fir
 
 ```js
 const player = new THEOplayer.Player(element, {
-  audioOnly: true
+  audioOnly: true,
 });
 ```
 
@@ -175,7 +175,7 @@ const player = new THEOplayer.Player(element, {
 
 You should end up with a player that looks like this:
 
-![Audio Only](../../../../theoplayer/assets/img/audio-only-4.png "Audio Only")
+![Audio Only](../../../../theoplayer/assets/img/audio-only-4.png 'Audio Only')
 
 You can further modify the audio player that you have at this point to better fit in your implementation.
 

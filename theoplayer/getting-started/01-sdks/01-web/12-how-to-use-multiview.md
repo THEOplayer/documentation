@@ -28,12 +28,12 @@ To make a MultiViewPlayer, one has to add the following code to their page:
 <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
 <script src="/path/to/THEOplayer.js"></script>
 <script>
-  var element = document.querySelector(".theoplayer-container"); // fetch THEOplayer container div
+  var element = document.querySelector('.theoplayer-container'); // fetch THEOplayer container div
 
   var player = new THEOplayer.MultiViewPlayer(element, {
     // instantiates the MultiView player
-    libraryLocation: "/path/to/your-theoplayer-folder/", // references folder containing your THEOplayer library files (THEOplayer.js, ...)
-    license: "your_license_string" // references your THEOplayer SDK license
+    libraryLocation: '/path/to/your-theoplayer-folder/', // references folder containing your THEOplayer library files (THEOplayer.js, ...)
+    license: 'your_license_string', // references your THEOplayer SDK license
   });
 </script>
 ```
@@ -41,13 +41,13 @@ To make a MultiViewPlayer, one has to add the following code to their page:
 Now that the MultiViewPlayer is instantiated, you'll need to load each view separately:
 
 ```js
-player.load("Label", {
+player.load('Label', {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8", // sets HLS source
-      type: "application/x-mpegurl" // sets type to HLS
-    }
-  ]
+      src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8', // sets HLS source
+      type: 'application/x-mpegurl', // sets type to HLS
+    },
+  ],
 });
 ```
 

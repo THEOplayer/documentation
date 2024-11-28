@@ -37,13 +37,14 @@ Since THEOads integrates with Google DAI Pod Serving, it is required to load the
 ### Player configuration
 
 To make use of the THEOads integration, first enable the feature in your player configuration:
+
 ```javascript
 const player = new THEOplayer.Player(element, {
   libraryLocation: 'YOUR-LIBRARY-LOCATION',
   license: 'YOUR-LICENSE-WITH-THEOADS',
   ads: {
-    theoads: true
-  }
+    theoads: true,
+  },
 });
 ```
 
@@ -86,8 +87,8 @@ You can pass your THEOads-enabled source directly to the UI's `source` property:
     libraryLocation: 'YOUR-LIBRARY-LOCATION',
     license: 'YOUR-LICENSE-WITH-THEOADS',
     ads: {
-      theoads: true
-    }
+      theoads: true,
+    },
   };
   ui.source = {
     sources: {

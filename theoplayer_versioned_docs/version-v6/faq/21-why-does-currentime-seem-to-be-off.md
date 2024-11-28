@@ -39,9 +39,9 @@ function AbsoluteTimeline(player) {
 
   function durationchangeHandler() {
     timeOffset = player.seekable.start(0);
-    player.removeEventListener("durationchange", durationchangeHandler);
+    player.removeEventListener('durationchange', durationchangeHandler);
   }
-  player.addEventListener("durationchange", durationchangeHandler);
+  player.addEventListener('durationchange', durationchangeHandler);
 
   return {
     getOffset: function () {
@@ -52,7 +52,7 @@ function AbsoluteTimeline(player) {
     },
     seek: function (timestamp) {
       player.currentTime = timestamp + timeOffset;
-    }
+    },
   };
 }
 

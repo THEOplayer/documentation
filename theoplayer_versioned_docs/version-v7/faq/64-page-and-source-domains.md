@@ -4,9 +4,7 @@ Page and Source domains prevent unauthorized users from embedding your SDK on th
 
 ## Page domains
 
-
-
-Page domains (available only on Web SDK, React Native SDK and Flutter SDK) specify on which domains the player can be loaded. 
+Page domains (available only on Web SDK, React Native SDK and Flutter SDK) specify on which domains the player can be loaded.
 
 Imagine your website has the following domain: `example.com`, you have configured your Page domains and the THEOplayer SDK is installed on your website. When a malicious user copies your SDK and installs it on their domain, `other.com`, the player will throw an error that the license is invalid.
 

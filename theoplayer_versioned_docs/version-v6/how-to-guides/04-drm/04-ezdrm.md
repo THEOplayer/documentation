@@ -15,35 +15,35 @@ This article describes how to configure [EZDRM](https://www.ezdrm.com/) with THE
 ```js
 if (HLS) {
   let drmConfiguration = {
-    integration: "ezdrm",
+    integration: 'ezdrm',
     fairplay: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
-      certificateURL: "CERTIFICATE_URL>"
-    }
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+      certificateURL: 'CERTIFICATE_URL>',
+    },
   };
   player.source = {
     sources: {
-      src: "<HLS_STREAM_URL>",
-      type: "application/x-mpegurl",
-      contentProtection: drmConfiguration
-    }
+      src: '<HLS_STREAM_URL>',
+      type: 'application/x-mpegurl',
+      contentProtection: drmConfiguration,
+    },
   };
 } else if (DASH) {
   let drmConfiguration = {
-    integration: "ezdrm",
+    integration: 'ezdrm',
     playready: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_PLAYREADY>"
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
     },
     widevine: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_WIDEVINE>"
-    }
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+    },
   };
   player.source = {
     sources: {
-      src: "<DASH_STREAM_URL>",
-      type: "application/dash+xml",
-      contentProtection: drmConfiguration
-    }
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
   };
 }
 ```
@@ -81,6 +81,7 @@ theoplayer.source = sourceDescription
 ```
 
 ### Connectors
+
 We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
 When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
 
@@ -94,10 +95,12 @@ Connectors are also the way forward for the current mobile SDKs. There currently
 The EZDRM connector can be found in [here](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/ContentProtectionIntegration/integration/EzdrmDRMIntegration.swift)
 
 ## Resources
+
 - [https://www.ezdrm.com/html/documentation.asp](https://www.ezdrm.com/html/documentation.asp)
 - [THEOplayer Github Samples DRM Integration repository](https://github.com/THEOplayer/samples-drm-integration)
 
 ## Related articles
+
 - [Xstream](13-xstream.md)
 - [Vualto VuDRM](11-vualto-vudrm.md)
 - [Vimond](10-vimond.md)

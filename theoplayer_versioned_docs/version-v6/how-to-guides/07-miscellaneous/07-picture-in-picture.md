@@ -36,7 +36,7 @@ Picture-in-Picture is an interesting option on both desktop and mobile to keep s
 In this SDK, PiP is enabled by default if the player configuration contains any PiP configuration (see below image). For this reason, there is no need to use any specific snippet to enable it.
 Note that in this SDK out-of-app Picture is (currently) not supported.
 
-![Picture-in-Picture](../../../../theoplayer/assets/img/picture-in-picture.png "Picture-in-Picture")
+![Picture-in-Picture](../../../../theoplayer/assets/img/picture-in-picture.png 'Picture-in-Picture')
 
 The PiP configuration for this SDK includes 3 properties:
 
@@ -51,12 +51,12 @@ The PiP configuration for this SDK includes 3 properties:
 
 ```js
 var playerConfig = {
-    /* ... */
-    pip: {
-        visibility: 0.7,
-        position: "bottom-left",
-        retainPresentationModeOnSourceChange: true
-    }
+  /* ... */
+  pip: {
+    visibility: 0.7,
+    position: 'bottom-left',
+    retainPresentationModeOnSourceChange: true,
+  },
 };
 ```
 
@@ -129,8 +129,6 @@ Notes:
 - `configure` is only available when using in-app PiP.
 - tvOS only supports in-app PiP, which is **enabled by default** if the OS version supports it (minimum tvOS 14.0).
 - iPadOS 14.0 (and above) also supports in-app PiP.
-
-
 
 ### Observe events in Picture-In-Picture
 
@@ -241,7 +239,6 @@ if #available(iOS 14.0, *) {
 }
 ```
 
-
 ## Sample applications
 
 ### Web SDK
@@ -262,7 +259,7 @@ A sample app for Picture-In-Picture could be found here:
 
 The following remarks can help:
 
-- PiP is a presentation mode of the player. As such, you can listen for a *presentationmodechange* event or verify the presentationMode of the player in case you need to find out what the presentation mode is at a given moment or detect a change.
+- PiP is a presentation mode of the player. As such, you can listen for a _presentationmodechange_ event or verify the presentationMode of the player in case you need to find out what the presentation mode is at a given moment or detect a change.
 
 - This feature is not completely the same on all SDKs, as the options may vary. For example, in the Web SDK it is not possible to drag and drop the floating player to a new position (PiP is not _movable_).
 

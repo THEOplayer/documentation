@@ -21,9 +21,9 @@ First of all, we need to [set up the player](./00-getting-started.mdx). Then, th
 ```js
 // set your resolutions and sources
 var resolutions = [
-  { name: "360p", src: "https://example.com/demos/sample-videos/low.mp4" },
-  { name: "540p", src: "https://example.com/demos/sample-videos/medium.mp4" },
-  { name: "720p", src: "https://example.com/demos/sample-videos/high.mp4" }
+  { name: '360p', src: 'https://example.com/demos/sample-videos/low.mp4' },
+  { name: '540p', src: 'https://example.com/demos/sample-videos/medium.mp4' },
+  { name: '720p', src: 'https://example.com/demos/sample-videos/high.mp4' },
 ];
 ```
 
@@ -31,29 +31,27 @@ Now for the slightly trickier part: Removing current & adding custom menu
 
 ```js
 var currentTime, wasPaused;
-var settingsMenu = player.ui
-  .getChild("ControlBar")
-  .getChild("SettingsButton").menu;
+var settingsMenu = player.ui.getChild('ControlBar').getChild('SettingsButton').menu;
 
 // Remove built-in quality sub menu
 settingsMenu.removeMenuItem(settingsMenu.menuItems[0]);
 
 // Create custom quality sub menu
 var qualityMenuItem = settingsMenu.addSubMenuItem({
-  index: 0
+  index: 0,
 });
-var qualityMenuTitle = document.createElement("span");
-qualityMenuTitle.className = "theo-settings-control-menu-item-title";
-qualityMenuTitle.innerHTML = "Quality";
-var qualityMenuValue = document.createElement("span");
-qualityMenuValue.className = "theo-settings-control-menu-item-value";
+var qualityMenuTitle = document.createElement('span');
+qualityMenuTitle.className = 'theo-settings-control-menu-item-title';
+qualityMenuTitle.innerHTML = 'Quality';
+var qualityMenuValue = document.createElement('span');
+qualityMenuValue.className = 'theo-settings-control-menu-item-value';
 qualityMenuItem.el().appendChild(qualityMenuTitle);
 qualityMenuItem.el().appendChild(qualityMenuValue);
-qualityMenuItem.subMenu.menuHeader.el().innerHTML = "Quality";
+qualityMenuItem.subMenu.menuHeader.el().innerHTML = 'Quality';
 var qualityItems = resolutions.map(function (resolution) {
   var qualityItem = qualityMenuItem.subMenu.addMenuItem();
   qualityItem.el().innerHTML = resolution.name;
-  qualityItem.on("click", function () {
+  qualityItem.on('click', function () {
     selectQuality(resolution);
   });
   return qualityItem;
@@ -87,4 +85,4 @@ iOS SDK does not have a built-in UI. It also does not support JavaScript injecti
 
 You can now select multiple qualities of the same MP4 asset!
 
-![Customize quality selection](../../../../../theoplayer/assets/img/customize-quality-selection.png "Customize quality selection")
+![Customize quality selection](../../../../../theoplayer/assets/img/customize-quality-selection.png 'Customize quality selection')

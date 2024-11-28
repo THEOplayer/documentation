@@ -26,43 +26,43 @@ The examples below demonstrate how to configure a stream through the Verizon Med
 player.source = {
   sources: [
     {
-      integration: "verizon-media",
-      id: "verizon-media_content_id",
+      integration: 'verizon-media',
+      id: 'verizon-media_content_id',
       preplayParameters: {}, // Optional, defaults to an empty object. These will be added as query parameters to the Preplay API call.
-      assetType: "asset", // Optional, defaults to 'asset'. Can also be 'channel' or 'event', following the Verizon Media semantics, where 'asset' is On-demand content.
-      contentProtected: false // Optional, defaults to false.
-    }
-  ]
+      assetType: 'asset', // Optional, defaults to 'asset'. Can also be 'channel' or 'event', following the Verizon Media semantics, where 'asset' is On-demand content.
+      contentProtected: false, // Optional, defaults to false.
+    },
+  ],
 };
 
 // Source example for an external id (with optional properties omitted)
 player.source = {
   sources: [
     {
-      integration: "verizon-media",
+      integration: 'verizon-media',
       id: {
-        userId: "verizon-media_user_id",
-        externalId: "verizon-media_external_content_id"
-      }
-    }
-  ]
+        userId: 'verizon-media_user_id',
+        externalId: 'verizon-media_external_content_id',
+      },
+    },
+  ],
 };
 
 // Source example for a regular asset id with e.g. 'delay' parameter and 'sig' token parameter.
 player.source = {
   sources: [
     {
-      integration: "verizon-media",
-      id: "verizon-media_content_id",
+      integration: 'verizon-media',
+      id: 'verizon-media_content_id',
       preplayParameters: {
-        delay: "7200",
-        rays: "dcba",
-        sig: "2ff94739b021912712adafeccd6fa291f11eef0648c3b18b30224b84e0590b4f"
+        delay: '7200',
+        rays: 'dcba',
+        sig: '2ff94739b021912712adafeccd6fa291f11eef0648c3b18b30224b84e0590b4f',
       }, // Optional, defaults to an empty object. These will be added as query parameters to the Preplay API call.
-      assetType: "asset", // Optional, defaults to 'asset'. Can also be 'channel' or 'event', following the Verizon Media semantics, where 'asset' is On-demand content.
-      contentProtected: false // Optional, defaults to false.
-    }
-  ]
+      assetType: 'asset', // Optional, defaults to 'asset'. Can also be 'channel' or 'event', following the Verizon Media semantics, where 'asset' is On-demand content.
+      contentProtected: false, // Optional, defaults to false.
+    },
+  ],
 };
 ```
 
@@ -278,13 +278,10 @@ THEOplayer automatically interprets the response returned by the Preplay service
 
 ```js
 const listener = (event) => {
-  console.log(
-    "Do something with the raw response of the Preplay API call",
-    event.response
-  );
+  console.log('Do something with the raw response of the Preplay API call', event.response);
 };
 
-player.verizonMedia.addEventListener("preplayresponse", listener);
+player.verizonMedia.addEventListener('preplayresponse', listener);
 ```
 
 ##### Android (TV) SDK
@@ -322,19 +319,19 @@ then it could look like the snippet below using `allowrmt`.
 
 ```js
 let params = {
-  v: "2",
-  tc: "1",
+  v: '2',
+  tc: '1',
   exp: 36000,
   rn: 12345,
-  ct: "a",
-  cid: "<CENSORED>",
-  allowrmt: 1
+  ct: 'a',
+  cid: '<CENSORED>',
+  allowrmt: 1,
 };
 let query = Object.keys(params)
-  .map((key) => key + "=" + params[key])
-  .join("&");
-let sig = CryptoJS.HmacSHA256(query, "<API_SECRET>").toString();
-params["sig"] = sig;
+  .map((key) => key + '=' + params[key])
+  .join('&');
+let sig = CryptoJS.HmacSHA256(query, '<API_SECRET>').toString();
+params['sig'] = sig;
 ```
 
 Now you want to communicate this entire `params` object to your client-side, and set it as the value for `preplayParameters`:
@@ -342,12 +339,12 @@ Now you want to communicate this entire `params` object to your client-side, and
 ```js
 player.source = {
   sources: {
-    integration: "verizon-media",
-    id: "<CENSORED>",
+    integration: 'verizon-media',
+    id: '<CENSORED>',
     preplayParameters: params,
-    assetType: "asset",
-    contentProtected: true
-  }
+    assetType: 'asset',
+    contentProtected: true,
+  },
 };
 ```
 

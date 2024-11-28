@@ -11,25 +11,28 @@ This article is a good place to start if you are looking for information on how 
 ## Code example
 
 ##### Web SDK
+
 Make sure you load the Youbora plugin in the head of the page.
 
-```html  
-<script src="https://smartplugin.youbora.com/v6/js/adapters/theoplayer2/6.8.10/sp.min.js"></script>  
-```  
+```html
+<script src="https://smartplugin.youbora.com/v6/js/adapters/theoplayer2/6.8.10/sp.min.js"></script>
+```
 
 Include the following in your `SourceDescription` object:
 
-```js  
-var youbora = {  integration: "youbora",  
-  accountCode: "YOUR_YOUBORA_ACCOUNT_CODE",  
-  enableAnalytics: true,  
-  username: "THEO",  
- "content.title": "THEO 1 (VOD)", "content.duration": 653, "content.isLive": false,}  
-  
-var SourceDescription = {  sources: [typedSource],  
-  analytics: [youbora],  
-}  
-```  
+```js
+var youbora = {
+  integration: 'youbora',
+  accountCode: 'YOUR_YOUBORA_ACCOUNT_CODE',
+  enableAnalytics: true,
+  username: 'THEO',
+  'content.title': 'THEO 1 (VOD)',
+  'content.duration': 653,
+  'content.isLive': false,
+};
+
+var SourceDescription = { sources: [typedSource], analytics: [youbora] };
+```
 
 ##### Android (TV) SDK
 
@@ -37,29 +40,29 @@ You need to first initialize the Youbora library on your application. You can do
 
 - While creating the player programmatically:
 
-```java  
-// create player config  
-THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()  
- .analytics(new YouboraOptions.Builder("YOUR_YOUBORA_ACCOUNT_CODE").build()) .build();  
-// create player  
-THEOplayerView tpv = new THEOplayerView(this, playerConfig);  
-```  
+```java
+// create player config
+THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()
+ .analytics(new YouboraOptions.Builder("YOUR_YOUBORA_ACCOUNT_CODE").build()) .build();
+// create player
+THEOplayerView tpv = new THEOplayerView(this, playerConfig);
+```
 
 - Or through the player's XML configuration:
 
-```java  
-<com.theoplayer.android.api.THEOplayerView  
- android:id="@+id/theo_player_view" app:youboraAccountCode="YOUR_YOUBORA_ACCOUNT_CODE" />```  
-  
-You can then set a Youbora source like the following:  
-  
-```java  
-YouboraOptions youbora = new YouboraOptions.Builder("YOUR_YOUBORA_ACCOUNT_CODE")  
- .put("enableAnalytics", "true") .put("username", "THEO") .put("content.title", "VOD") .put("content.duration", "653") .put("content.isLive", "false") .build();  
-SourceDescription elephantsDream = SourceDescription.Builder  
- .sourceDescription(TypedSource.Builder.typedSource().src("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8").build()) .analytics(youbora) .build();  
-tpv.getPlayer().setSource(elephantsDream);  
-```
+````java
+<com.theoplayer.android.api.THEOplayerView
+ android:id="@+id/theo_player_view" app:youboraAccountCode="YOUR_YOUBORA_ACCOUNT_CODE" />```
+
+You can then set a Youbora source like the following:
+
+```java
+YouboraOptions youbora = new YouboraOptions.Builder("YOUR_YOUBORA_ACCOUNT_CODE")
+ .put("enableAnalytics", "true") .put("username", "THEO") .put("content.title", "VOD") .put("content.duration", "653") .put("content.isLive", "false") .build();
+SourceDescription elephantsDream = SourceDescription.Builder
+ .sourceDescription(TypedSource.Builder.typedSource().src("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8").build()) .analytics(youbora) .build();
+tpv.getPlayer().setSource(elephantsDream);
+````
 
 :::info
 
@@ -72,11 +75,11 @@ Basically there are 2 different ways to solve this on your app:
 1. Set the `android:usesCleartextTraffic="true"` flag under your application tag.
 2. If you are using a network security config such as: `android:networkSecurityConfig="@xml/network_security_config"`, include this flag on your configuration, for example:
 
-```java  
-<?xml version="1.0" encoding="utf-8"?>  
-<network-security-config>  
- <domain-config cleartextTrafficPermitted="true"> .... </domain-config> <base-config cleartextTrafficPermitted="false"/></network-security-config>  
-``` 
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+ <domain-config cleartextTrafficPermitted="true"> .... </domain-config> <base-config cleartextTrafficPermitted="false"/></network-security-config>
+```
 
 :::
 

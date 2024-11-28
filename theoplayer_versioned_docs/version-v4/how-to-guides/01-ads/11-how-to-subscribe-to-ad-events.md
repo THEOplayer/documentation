@@ -36,7 +36,7 @@ call the `addEventListener` method, and set the event as the first parameter, an
 For example, if you want to track the start of an ad break, you could use the following snippet:
 
 ```javascript
-player.ads.addEventListener("adbreakbegin", function (event) {
+player.ads.addEventListener('adbreakbegin', function (event) {
   console.log(event);
 });
 ```
@@ -46,25 +46,25 @@ The following snippet should log most events to the console.
 ```javascript
 player.ads.addEventListener(
   [
-    "adbegin",
-    "adbreakbegin",
-    "adbreakchange",
-    "adbreakend",
-    "adbuffering",
-    "addad",
-    "addadbreak",
-    "adend",
-    "aderror",
-    "adfirstquartile",
-    "adimpression",
-    "adloaded",
-    "admetadata",
-    "admidpoint",
-    "adskip",
-    "adthirdquartile",
-    "removeadbreak",
-    "updatead",
-    "updateadbreak"
+    'adbegin',
+    'adbreakbegin',
+    'adbreakchange',
+    'adbreakend',
+    'adbuffering',
+    'addad',
+    'addadbreak',
+    'adend',
+    'aderror',
+    'adfirstquartile',
+    'adimpression',
+    'adloaded',
+    'admetadata',
+    'admidpoint',
+    'adskip',
+    'adthirdquartile',
+    'removeadbreak',
+    'updatead',
+    'updateadbreak',
   ],
   console.log
 );
@@ -165,7 +165,7 @@ This use-case is an application of [Subscribing to an event](#subscribing-to-an-
 For example, the following snippet would trigger the callback when an ad break begins:
 
 ```javascript
-player.ads.addEventListener("adbreakbegin", function (event) {
+player.ads.addEventListener('adbreakbegin', function (event) {
   console.log(event);
 });
 ```
@@ -173,12 +173,9 @@ player.ads.addEventListener("adbreakbegin", function (event) {
 You can swap `adbreakbegin` for the other events, or supply an array instead:
 
 ```javascript
-player.ads.addEventListener(
-  ["adbegin", "adbreakbegin", "adbreakend", "adend"],
-  function (event) {
-    console.log(event);
-  }
-);
+player.ads.addEventListener(['adbegin', 'adbreakbegin', 'adbreakend', 'adend'], function (event) {
+  console.log(event);
+});
 ```
 
 #### Android SDK
@@ -239,7 +236,7 @@ This use-case is an application of [Subscribing to an event](#subscribing-to-an-
 The following snippet would trigger the callback when an ad error occurs:
 
 ```javascript
-player.ads.addEventListener("aderror", function (event) {
+player.ads.addEventListener('aderror', function (event) {
   console.log(event);
 });
 ```

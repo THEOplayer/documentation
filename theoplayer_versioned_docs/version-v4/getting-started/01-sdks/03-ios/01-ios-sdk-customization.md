@@ -55,14 +55,14 @@ as demonstrated in the example below:
 /* this example sends a message every 10 seconds */
 setInterval(function () {
   const message = {
-    a: "abc",
+    a: 'abc',
     b: true,
     c: 123,
     d: {
-      a: "abc",
+      a: 'abc',
       b: true,
-      c: 123
-    }
+      c: 123,
+    },
   };
   window.webkit.messageHandlers.myMessageName.postMessage(message);
 }, 10000);

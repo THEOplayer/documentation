@@ -20,10 +20,10 @@ The code examples below how to implement toggling subtitles across SDK. It's adv
 ```js
 // disable all text tracks
 player.textTracks.forEach(function (track) {
-  track.mode = "disabled";
+  track.mode = 'disabled';
 });
 // enable a specific text track
-player.textTracks[indexOfRequestedTextTrack].mode = "showing";
+player.textTracks[indexOfRequestedTextTrack].mode = 'showing';
 ```
 
 ##### Android (TV) SDK

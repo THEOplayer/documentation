@@ -21,7 +21,7 @@ The below table presents what approximately bandwidth is required for video stre
 Taking above table into account, the logic responsible for the proactive strategy can look like:
 
 ```javascript
-player.addEventListener("representationchange", function (event) {
+player.addEventListener('representationchange', function (event) {
   // specifies how big bandwidth is required for the current quality
   var representationBandwidth = event.representation.bandwidth;
   // player.abr.targetBuffer is 20 by default
@@ -30,10 +30,7 @@ player.addEventListener("representationchange", function (event) {
   // SD
   if (representationBandwidth < 3000000) {
     targetBuffer = 20;
-  } else if (
-    representationBandwidth > 3000000 &&
-    representationBandwidth < 6000000
-  ) {
+  } else if (representationBandwidth > 3000000 && representationBandwidth < 6000000) {
     // HD
     targetBuffer = 10;
   } else if (representationBandwidth > 6000000) {
@@ -42,10 +39,7 @@ player.addEventListener("representationchange", function (event) {
   }
 
   player.abr.targetBuffer = targetBuffer;
-  console.log(
-    "representationchange - updated player.abr.targetBuffer: " +
-      player.abr.targetBuffer
-  );
+  console.log('representationchange - updated player.abr.targetBuffer: ' + player.abr.targetBuffer);
 });
 ```
 

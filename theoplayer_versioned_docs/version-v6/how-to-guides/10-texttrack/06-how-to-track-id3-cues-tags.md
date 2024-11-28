@@ -32,11 +32,11 @@ Below you can find an example of how timed metadata events can be captured when 
 
 ```js
 var player = theoplayer.player(0);
-player.textTracks.addEventListener("addtrack", function (addTrackEvent) {
+player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
   var track = addTrackEvent.track;
   // assert track.kind === "metadata"
 
-  track.addEventListener("cuechange", function (cueChangeEvent) {
+  track.addEventListener('cuechange', function (cueChangeEvent) {
     // here you can access the cue and other properties of the track and display the metadata to the outside
   });
 });
@@ -90,16 +90,16 @@ function enterListener(e2) {
 }
 function handleTrackCreation(e0) {
   e0.track.cues.forEach(function (cue) {
-    cue.addEventListener("enter", enterListener);
+    cue.addEventListener('enter', enterListener);
   });
 
   // detect cues being added to the track
-  e0.track.addEventListener("addcue", function (e1) {
+  e0.track.addEventListener('addcue', function (e1) {
     // detect a cue being shown from a track
-    e1.cue.addEventListener("enter", enterListener);
+    e1.cue.addEventListener('enter', enterListener);
   });
 }
-player.textTracks.addEventListener("addtrack", handleTrackCreation);
+player.textTracks.addEventListener('addtrack', handleTrackCreation);
 ```
 
 ##### Android SDK

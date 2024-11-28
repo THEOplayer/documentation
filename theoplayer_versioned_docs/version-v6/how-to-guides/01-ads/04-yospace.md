@@ -86,9 +86,7 @@ Pretty self-explanatory, isn't it?
 The two snippets above are the references to the JS and CSS library.
 
 ```html
-<div
-  class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"
-></div>
+<div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
 ```
 
 The snippet above is your HTML container.
@@ -122,16 +120,16 @@ Add a Yospace `adConfiguration` to the sources.
 
 ```javascript
 var yoSpaceConfiguration = {
-  integration: "yospace"
+  integration: 'yospace',
 };
 var SourceDescription = {
   sources: [
     {
-      src: "http://csm-e-ces1eurxaws101j8-iyypj6ugos2.cds1.yospace.com/csm/extlive/yospace02,sampledroid.m3u8;jsessionid=502C66F7C767AB994AFEAFADCFB822C2.csm-e-ces1eurxaws101j8-iyypj6ugos2.cds1.yospace.com?yo.br=false&yo.ac=true",
-      type: "application/x-mpegurl",
-      ssai: yoSpaceConfiguration
-    }
-  ]
+      src: 'http://csm-e-ces1eurxaws101j8-iyypj6ugos2.cds1.yospace.com/csm/extlive/yospace02,sampledroid.m3u8;jsessionid=502C66F7C767AB994AFEAFADCFB822C2.csm-e-ces1eurxaws101j8-iyypj6ugos2.cds1.yospace.com?yo.br=false&yo.ac=true',
+      type: 'application/x-mpegurl',
+      ssai: yoSpaceConfiguration,
+    },
+  ],
 };
 ```
 
@@ -139,7 +137,7 @@ You can also access the extended Yospace API.
 
 ```javascript
 player.yospace.session; // the Yospace session object
-player.yospace.addEventListener("sessionavailable", console.log);
+player.yospace.addEventListener('sessionavailable', console.log);
 ```
 
 You can also detect ad-related events.
@@ -147,20 +145,20 @@ You can also detect ad-related events.
 ```javascript
 player.yospace.registerPlayer({
   AdBreakStart: function () {
-    console.log("AdBreakStart", player.yospace.session);
+    console.log('AdBreakStart', player.yospace.session);
   },
   AdvertStart: function () {
-    console.log("AdvertStart", player.yospace.session);
+    console.log('AdvertStart', player.yospace.session);
   },
   AdvertEnd: function () {
-    console.log("AdvertEnd", player.yospace.session);
+    console.log('AdvertEnd', player.yospace.session);
   },
   AdBreakEnd: function () {
-    console.log("AdBreakEnd", player.yospace.session);
+    console.log('AdBreakEnd', player.yospace.session);
   },
   UpdateTimeline: function () {
-    console.log("UpdateTimeline", player.yospace.session);
-  }
+    console.log('UpdateTimeline', player.yospace.session);
+  },
 });
 ```
 

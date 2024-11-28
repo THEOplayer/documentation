@@ -25,8 +25,8 @@ This can be done in two ways:
 ```js
 var player = new THEOplayer.Player(element, {
   // instantiates video player
-  libraryLocation: "/path/to/your-theoplayer-folder/",
-  license: "your_license"
+  libraryLocation: '/path/to/your-theoplayer-folder/',
+  license: 'your_license',
 });
 ```
 
@@ -35,8 +35,8 @@ var player = new THEOplayer.Player(element, {
 ```js
 var player = new THEOplayer.Player(element, {
   // instantiates video player
-  libraryLocation: "/path/to/your-theoplayer-folder/",
-  licenseUrl: "your_license_url"
+  libraryLocation: '/path/to/your-theoplayer-folder/',
+  licenseUrl: 'your_license_url',
 });
 ```
 

@@ -4,9 +4,9 @@ SpotX is a global video ad serving platform providing digital media owners with 
 
 ## SDKs
 
-| Web SDK | Android SDK | iOS SDK |  tvOS SDK  | Android TV SDK | Chromecast SDK |
-| :-----: | :---------: | :-----: | :--------: | :------------: | :------------: |
-|   Yes   |     No     |   No   | No |      No       |      No       |
+| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
+| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
+|   Yes   |     No      |   No    |    No    |       No       |       No       |
 
 ## Prerequisites
 

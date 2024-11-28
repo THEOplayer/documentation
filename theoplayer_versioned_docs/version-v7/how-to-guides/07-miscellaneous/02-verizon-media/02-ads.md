@@ -21,9 +21,9 @@ The examples below demonstrate how to pass along global configuration for the Ve
 var player = new THEOplayer.Player(element, {
   verizonMedia: {
     defaultSkipOffset: 2, // Ad breaks added by SSAI are by default skippable after two seconds. Optional and defaults to unskippable.
-    onSeekOverAd: "play-last" // When seeking over ad breaks, this configuration decides how to snapback and play any missed ad breaks.
+    onSeekOverAd: 'play-last', // When seeking over ad breaks, this configuration decides how to snapback and play any missed ad breaks.
     // Possible values are currently 'play-none', 'play-last' and 'play-all' where 'play-none' is the default.
-  }
+  },
   // ... Other configuration goes here
 });
 ```
@@ -112,7 +112,7 @@ For ads there are the following events defined :
 ```js
 // Sample source snippet
 
-player.verizonMedia.ads.adBreaks.addEventListener("addadbreak", (event) => {
+player.verizonMedia.ads.adBreaks.addEventListener('addadbreak', (event) => {
   // do something with event.adBreak as it is an ad break added through SSAI, an example:
   const adBreak = event.adBreak;
   if (adBreak.duration <= 15) {
@@ -123,11 +123,11 @@ player.verizonMedia.ads.adBreaks.addEventListener("addadbreak", (event) => {
     adBreak.skipOffset = 0; // For all other ad breaks, allow immediate skipping
   }
   // subscribe to additional events
-  event.adBreak.addEventListener("adbreakbegin", console.log);
-  event.adBreak.addEventListener("adbreakend", console.log);
+  event.adBreak.addEventListener('adbreakbegin', console.log);
+  event.adBreak.addEventListener('adbreakend', console.log);
   for (var i = 0; i < event.adBreak.ads.length; i++) {
-    event.adBreak.ads[i].addEventListener("adbegin", console.log);
-    event.adBreak.ads[i].addEventListener("adend", console.log);
+    event.adBreak.ads[i].addEventListener('adbegin', console.log);
+    event.adBreak.ads[i].addEventListener('adend', console.log);
   }
 });
 ```

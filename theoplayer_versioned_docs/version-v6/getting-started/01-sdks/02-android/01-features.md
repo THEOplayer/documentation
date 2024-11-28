@@ -43,7 +43,7 @@ Otherwise, calling an API from an integration without adding it to the `Player` 
 With Android THEOplayer SDK we currently support the following feature integrations:
 
 | Feature         | Dependency                      | Release | Documentation                                                                                                      |
-|:----------------|:--------------------------------|:-------:|:-------------------------------------------------------------------------------------------------------------------|
+| :-------------- | :------------------------------ | :-----: | :----------------------------------------------------------------------------------------------------------------- |
 | Google IMA      | `integration-ads-ima:+`         | 3.1.0+  | [Google IMA Documentation](../../../how-to-guides/01-ads/10-google-ima.md#android-sdk)                             |
 | Chromecast      | `integration-cast:+`            | 3.4.0+  | [Chromecast Documentation](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md#theoplayer-android-sdk) |
 | AWS MediaTailor | `integration-ads-mediatailor:+` | 4.0.0+  | [AWS MediaTailor Documentation](../../../how-to-guides/01-ads/12-mediatailor.md#android-sdk)                       |

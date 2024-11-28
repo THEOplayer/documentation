@@ -6,7 +6,7 @@ The Social Sharing feature adds a component to the UI which enables the viewers 
 
 The Social Sharing feature exposes the Social API. This API allows developers to configure the URLs and (social) channels.
 
-![Social Sharing](../../../../theoplayer/assets/img/social-sharing.png "Social Sharing")
+![Social Sharing](../../../../theoplayer/assets/img/social-sharing.png 'Social Sharing')
 
 ## SDKs
 
@@ -26,31 +26,31 @@ The Social Sharing API is currently only available on the Web SDK.
 - Online demo: [Social Sharing Demo](https://demo.theoplayer.com/social-sharing)
 
 ```js
-player.social.url = "https://demo.theoplayer.com/social-sharing";
+player.social.url = 'https://demo.theoplayer.com/social-sharing';
 player.social.items = [
   {
-    label: "Facebook",
-    icon: "https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png",
-    src: "http://www.facebook.com/sharer/sharer.php?u=<URL>"
+    label: 'Facebook',
+    icon: 'https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png',
+    src: 'http://www.facebook.com/sharer/sharer.php?u=<URL>',
   },
   {
-    label: "Twitter",
-    icon: "https://s-media-cache-ak0.pinimg.com/originals/f3/6f/51/f36f511b261596a2debe85d844bb1b87.png",
-    src: "http://twitter.com/intent/tweet?url=<URL>"
+    label: 'Twitter',
+    icon: 'https://s-media-cache-ak0.pinimg.com/originals/f3/6f/51/f36f511b261596a2debe85d844bb1b87.png',
+    src: 'http://twitter.com/intent/tweet?url=<URL>',
   },
   {
-    label: "Reddit",
-    icon: "https://vignette3.wikia.nocookie.net/hayday/images/1/10/Reddit.png/revision/latest?cb=20160713122603",
-    src: "http://www.reddit.com/submit?url=<URL>"
+    label: 'Reddit',
+    icon: 'https://vignette3.wikia.nocookie.net/hayday/images/1/10/Reddit.png/revision/latest?cb=20160713122603',
+    src: 'http://www.reddit.com/submit?url=<URL>',
   },
   {
-    label: "Direct link",
-    src: "http://demo.theoplayer.com/social-sharing"
+    label: 'Direct link',
+    src: 'http://demo.theoplayer.com/social-sharing',
   },
   {
-    label: "Embed",
-    text: '<iframe width="640" height="360" src="http://demo.theoplayer.com/social-sharing" frameborder="0" allowfullscreen>\n</iframe>'
-  }
+    label: 'Embed',
+    text: '<iframe width="640" height="360" src="http://demo.theoplayer.com/social-sharing" frameborder="0" allowfullscreen>\n</iframe>',
+  },
 ];
 ```
 

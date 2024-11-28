@@ -20,15 +20,17 @@ The thumbnails are loaded as a separate text track, by setting it as a sideloade
 player.source = {
   sources: {
     type: 'application/x-mpegurl',
-    src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8'
+    src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8',
   },
-  textTracks: [{
-    default: true,
-    src: 'https://cdn.theoplayer.com/dash/theoplayer/thumbnails/big_buck_bunny_thumbnails.vtt',
-    label: 'thumbnails',
-    kind: 'metadata'
-  }]
-}
+  textTracks: [
+    {
+      default: true,
+      src: 'https://cdn.theoplayer.com/dash/theoplayer/thumbnails/big_buck_bunny_thumbnails.vtt',
+      label: 'thumbnails',
+      kind: 'metadata',
+    },
+  ],
+};
 ```
 
 ##### Android SDK

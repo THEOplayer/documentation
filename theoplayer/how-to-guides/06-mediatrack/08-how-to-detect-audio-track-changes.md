@@ -37,7 +37,7 @@ This `TrackListEventMap` contains the [`change`](pathname:///theoplayer/v8/api-r
 The code below allows you to detect text track changes.
 
 ```js
-player.audioTracks.addEventListener("change", function (event) {
+player.audioTracks.addEventListener('change', function (event) {
   const track = event.track;
   console.log(track, track.label, track.language, track.enabled);
 });

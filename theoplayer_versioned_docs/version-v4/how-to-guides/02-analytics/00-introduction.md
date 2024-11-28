@@ -86,7 +86,7 @@ then you might have noticed that there is an analytics dashboard at [https://por
 
 This analytics dashboard is located in the "Usage" tab of your Portal account. The dashboard should resemble the screenshot below.
 
-![THEOplayer Portal Analytics Dashboard](../../../../theoplayer/assets/img/analytics-introduction-portal-dashboard.png "THEOplayer Portal Analytics Dashboard")
+![THEOplayer Portal Analytics Dashboard](../../../../theoplayer/assets/img/analytics-introduction-portal-dashboard.png 'THEOplayer Portal Analytics Dashboard')
 
 This dashboard allows you to track your [impressions](../../faq/12-what-is-an-impression.md) across different periods of times across different SDKs.
 

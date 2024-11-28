@@ -42,19 +42,19 @@ Alternatively, in the callback of your `addtrack` event, you could track the [`c
 The code below allows you to detect the active text track cues.
 
 ```js
-player.textTracks.addEventListener("addtrack", function (e1) {
+player.textTracks.addEventListener('addtrack', function (e1) {
   const track = e1.track;
-  track.addEventListener("addcue", function (e2) {
+  track.addEventListener('addcue', function (e2) {
     const cue = e2.cue;
-    cue.addEventListener("enter", function (e3) {
+    cue.addEventListener('enter', function (e3) {
       console.log(e3, e3.cue.content);
     });
-    cue.addEventListener("exit", console.log);
+    cue.addEventListener('exit', console.log);
   });
-  track.addEventListener("cuechange", function (e2) {
+  track.addEventListener('cuechange', function (e2) {
     const cues = e2.track.activeCues;
     for (let i = 0; i < cues.length; i++) {
-      console.log("cuechange active cue", i, cues[i]);
+      console.log('cuechange active cue', i, cues[i]);
     }
   });
 });

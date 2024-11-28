@@ -18,60 +18,60 @@ Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for mor
 if (HLS) {
   if (CLASSIC_MODEL) {
     let drmConfiguration = {
-      integration: "conax",
-      token: "<CONAX_TOKEN>",
-      deviceId: "<DEVICE_ID>",
+      integration: 'conax',
+      token: '<CONAX_TOKEN>',
+      deviceId: '<DEVICE_ID>',
       fairplay: {
-        licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
-        certificateURL: "CERTIFICATE_URL>"
-      }
+        licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+        certificateURL: 'CERTIFICATE_URL>',
+      },
     };
     player.source = {
       sources: {
-        src: "<HLS_STREAM_URL>",
-        type: "application/x-mpegurl",
-        contentProtection: drmConfiguration
-      }
+        src: '<HLS_STREAM_URL>',
+        type: 'application/x-mpegurl',
+        contentProtection: drmConfiguration,
+      },
     };
   } else if (UPFRONT_MODEL) {
     let drmConfiguration = {
-      integration: "conax",
+      integration: 'conax',
       fairplay: {
-        licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
-        certificateURL: "CERTIFICATE_URL>"
+        licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+        certificateURL: 'CERTIFICATE_URL>',
       },
       headers: {
-        PreAuthorization: "<CONAX_PREAUTHORIZATION_TOKEN>"
-      }
+        PreAuthorization: '<CONAX_PREAUTHORIZATION_TOKEN>',
+      },
     };
     player.source = {
       sources: {
-        src: "<HLS_STREAM_URL>",
-        type: "application/x-mpegurl",
-        contentProtection: drmConfiguration
-      }
+        src: '<HLS_STREAM_URL>',
+        type: 'application/x-mpegurl',
+        contentProtection: drmConfiguration,
+      },
     };
   } else {
     // player throws an Invalid Conax configuration error
   }
 } else if (DASH) {
   let drmConfiguration = {
-    integration: "conax",
-    token: "<CONAX_TOKEN>",
-    deviceId: "<DEVICE_ID>",
+    integration: 'conax',
+    token: '<CONAX_TOKEN>',
+    deviceId: '<DEVICE_ID>',
     playready: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_PLAYREADY>"
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
     },
     widevine: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_WIDEVINE>"
-    }
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+    },
   };
   player.source = {
     sources: {
-      src: "<DASH_STREAM_URL>",
-      type: "application/dash+xml",
-      contentProtection: drmConfiguration
-    }
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
   };
 }
 ```

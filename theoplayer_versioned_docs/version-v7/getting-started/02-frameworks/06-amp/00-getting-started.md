@@ -23,22 +23,11 @@ Accelerated Mobile Pages (AMP) is an open-source HTML framework. More informatio
     <title>amp-iframe</title>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <!--  Import the amp-iframe component in the header. -->
-    <script
-      async
-      custom-element="amp-iframe"
-      src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"
-    ></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
     <!-- You can use the `amp-bind` extension to dynamically change an iframe src. -->
-    <script
-      async
-      custom-element="amp-bind"
-      src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"
-    ></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <link rel="canonical" href="<% canonical %>" />
-    <meta
-      name="viewport"
-      content="width=device-width,minimum-scale=1,initial-scale=1"
-    />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
     <style amp-boilerplate>
       body {
         -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
@@ -116,11 +105,7 @@ Accelerated Mobile Pages (AMP) is an open-source HTML framework. More informatio
       frameborder="0"
       src="https://cdn.theoplayer.com/demos/iframe/iframe.html"
     >
-      <amp-img
-        layout="fill"
-        src="https://cdn.theoplayer.com/demos/iframe/pixel.png"
-        placeholder
-      ></amp-img>
+      <amp-img layout="fill" src="https://cdn.theoplayer.com/demos/iframe/pixel.png" placeholder></amp-img>
     </amp-iframe>
   </body>
 </html>

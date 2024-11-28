@@ -17,35 +17,35 @@ Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for mor
 ```js
 if (HLS) {
   let drmConfiguration = {
-    integration: "expressplay",
+    integration: 'expressplay',
     fairplay: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
-      certificateURL: "CERTIFICATE_URL>"
-    }
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+      certificateURL: 'CERTIFICATE_URL>',
+    },
   };
   player.source = {
     sources: {
-      src: "<HLS_STREAM_URL>",
-      type: "application/x-mpegurl",
-      contentProtection: drmConfiguration
-    }
+      src: '<HLS_STREAM_URL>',
+      type: 'application/x-mpegurl',
+      contentProtection: drmConfiguration,
+    },
   };
 } else if (DASH) {
   let drmConfiguration = {
-    integration: "expressplay",
+    integration: 'expressplay',
     playready: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_PLAYREADY>"
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
     },
     widevine: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_WIDEVINE>"
-    }
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+    },
   };
   player.source = {
     sources: {
-      src: "<DASH_STREAM_URL>",
-      type: "application/dash+xml",
-      contentProtection: drmConfiguration
-    }
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
   };
 }
 ```

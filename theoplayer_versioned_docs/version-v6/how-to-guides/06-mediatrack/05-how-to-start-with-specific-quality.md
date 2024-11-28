@@ -14,9 +14,9 @@ This question is typically asked because developers want their HLS or MPEG-DASH 
 
 ```js
 var player = new THEOplayer.Player(element, playerConfig);
-player.videoTracks.addEventListener("addtrack", function (e0) {
+player.videoTracks.addEventListener('addtrack', function (e0) {
   player.videoTracks[0].targetQuality = player.videoTracks[0].qualities[0]; // start with a specific quality
-  player.addEventListener("progress", attachABRResetLogic);
+  player.addEventListener('progress', attachABRResetLogic);
 });
 
 function attachABRResetLogic() {
@@ -24,7 +24,7 @@ function attachABRResetLogic() {
     // switch to normal ABR when THEOplayer buffered beyond 10 seconds
     if (player.buffered.end(player.buffered.length - 1) > 10) {
       player.videoTracks[0].targetQuality = null;
-      player.removeEventListener("progress", attachABRResetLogic);
+      player.removeEventListener('progress', attachABRResetLogic);
     }
   }
 }
@@ -32,9 +32,9 @@ function attachABRResetLogic() {
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8"
-    }
-  ]
+      src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+    },
+  ],
 };
 ```
 

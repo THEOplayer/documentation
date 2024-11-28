@@ -23,20 +23,20 @@ Here is how you pass the current active subtitle track to the Chromecast session
 ```js
 var currentTextTrack;
 
-player.textTracks.addEventListener("change", function () {
+player.textTracks.addEventListener('change', function () {
   for (var t in player.textTracks) {
-    if (player.textTracks[t].mode === "showing") {
+    if (player.textTracks[t].mode === 'showing') {
       currentTextTrack = player.textTracks[t];
     }
   }
 });
 
-player.cast.chromecast.addEventListener("statechange", (event) => {
-  if (event.state === "connected") {
-    player.addEventListener("playing", function () {
+player.cast.chromecast.addEventListener('statechange', (event) => {
+  if (event.state === 'connected') {
+    player.addEventListener('playing', function () {
       for (var tt in player.textTracks) {
         if (player.textTracks[tt].id === currentTextTrack.id) {
-          player.textTracks[tt].mode = "showing";
+          player.textTracks[tt].mode = 'showing';
         }
       }
     });
@@ -79,9 +79,7 @@ tpv.getCast().getChromecast().addEventListener(ChromecastEventTypes.STATECHANGE,
 });
 ```
 
-
 ##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
-
 
 ```swift
 var currentTextTrack: TextTrack?
