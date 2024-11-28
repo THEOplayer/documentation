@@ -12,17 +12,17 @@ function httpErrorInterceptor(response) {
     var errorDetails = {
       status: response.status,
       fileType: response.request.type,
-      url: response.request.url
+      url: response.request.url,
     };
-    var networkErrorEvent = new CustomEvent("THEOnetworkerror", {
-      detail: errorDetails
+    var networkErrorEvent = new CustomEvent('THEOnetworkerror', {
+      detail: errorDetails,
     });
     document.dispatchEvent(networkErrorEvent);
   }
 }
 
 player.network.addResponseInterceptor(httpErrorInterceptor);
-document.addEventListener("THEOnetworkerror", console.log);
+document.addEventListener('THEOnetworkerror', console.log);
 ```
 
 ## Android
@@ -40,12 +40,9 @@ For Android, you'll also use the Network API as you would with our Web SDK but y
          var errorDetails = {
            status: response.status,
            fileType: response.request.type,
-           url: response.request.url
+           url: response.request.url,
          };
-         theoplayerAndroid.sendMessage(
-           "THEOplayer.network.error",
-           JSON.stringify(errorDetails)
-         );
+         theoplayerAndroid.sendMessage('THEOplayer.network.error', JSON.stringify(errorDetails));
        }
      };
      player.network.addResponseInterceptor(interceptor);

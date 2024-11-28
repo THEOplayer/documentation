@@ -23,7 +23,7 @@ The Web SDK leverages the [MediaTrack API](pathname:///theoplayer/v7/api-referen
 function handleAddTrackEvent(addTrackEvent) {
   var videoTrackQualities = addTrackEvent.track.qualities;
 }
-player.videoTracks.addEventListener("addtrack", handleAddTrackEvent);
+player.videoTracks.addEventListener('addtrack', handleAddTrackEvent);
 ```
 
 ##### Android (TV) SDK

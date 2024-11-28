@@ -33,13 +33,13 @@ ng generate component theoplayer
 7. In theoplayer.component.ts add
 
 ```typescript
-import { Component, OnInit } from "@angular/core";
-import * as THEOplayer from "../../../THEOplayer.js";
+import { Component, OnInit } from '@angular/core';
+import * as THEOplayer from '../../../THEOplayer.js';
 
 @Component({
-  selector: "app-theoplayer",
-  templateUrl: "./theoplayer.component.html",
-  styleUrls: ["./theoplayer.component.css"]
+  selector: 'app-theoplayer',
+  templateUrl: './theoplayer.component.html',
+  styleUrls: ['./theoplayer.component.css'],
 })
 export class TheoplayerComponent implements OnInit {
   constructor() {}
@@ -49,19 +49,19 @@ export class TheoplayerComponent implements OnInit {
   }
 
   createPlayer() {
-    const element = document.querySelector(".theoplayer-container");
+    const element = document.querySelector('.theoplayer-container');
 
     const player = new THEOplayer.Player(element, {
-      libraryLocation: ""
+      libraryLocation: '',
     });
 
     player.source = {
       sources: [
         {
-          src: "//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-          type: "application/x-mpegurl" // sets type to MPEG-DASH
-        }
-      ]
+          src: '//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+          type: 'application/x-mpegurl', // sets type to MPEG-DASH
+        },
+      ],
     };
   }
 }
@@ -70,7 +70,7 @@ export class TheoplayerComponent implements OnInit {
 Then
 
 ```typescript
-import * as THEOplayer from "../../../THEOplayer.js";
+import * as THEOplayer from '../../../THEOplayer.js';
 ```
 
 will make sure to get everything needed from our sdk.

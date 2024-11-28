@@ -30,10 +30,10 @@ In the example below, the request interceptor is used to redirect certain URL to
 // Add a request interceptor
 player.network.addRequestInterceptor((request) => {
   // The interceptor intercepts ALL requests and we only want to redirect one specific url
-  if (request.url == "https://link-to-specific-url") {
+  if (request.url == 'https://link-to-specific-url') {
     // Redirect the request
     request.redirect({
-      url: "https://link-to-new-url",
+      url: 'https://link-to-new-url',
       method: request.method, // Keep the methods the same
       headers: request.headers, // Keep the headers the same
       closed: request.closed,
@@ -41,7 +41,7 @@ player.network.addRequestInterceptor((request) => {
       type: request.type,
       subType: request.subType,
       responseType: request.responseType,
-      body: request.body
+      body: request.body,
     });
   }
 });
@@ -72,7 +72,7 @@ Like the example above, this example will overwrite a response:
 ```js
 player.network.addResponseInterceptor((response) => {
   // If the response comes from a specific URL
-  if (response.url == "https://specific-url") {
+  if (response.url == 'https://specific-url') {
     // Requests run async, therefore make sure to execute after the request is finished
     response.waitUntil((done) => {
       response.respondWith({
@@ -81,10 +81,10 @@ player.network.addResponseInterceptor((response) => {
         request: response.request,
         respondWith: response.respondWith,
         status: 201, // Updated status code as example
-        statusText: "All cool bro", // Updated status text as example
+        statusText: 'All cool bro', // Updated status text as example
         url: response.url,
         waitUntil: response.waitUntil,
-        body: "New body"
+        body: 'New body',
       });
       done();
     });

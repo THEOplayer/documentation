@@ -32,14 +32,13 @@ The player configuration should include the [AgamaPlayerConfiguration](pathname:
 
 ```js
 var player = new THEOplayer.Player(element, {
-  libraryLocation: "/path/to/your-theoplayer-folder/",
+  libraryLocation: '/path/to/your-theoplayer-folder/',
   analytics: [
     {
-      integration: "agama",
-      config:
-        "emp_service=http://127.0.0.1:8191/report;report_interval=60;id_report_interval=240;operator_id=fooSoo"
-    }
-  ]
+      integration: 'agama',
+      config: 'emp_service=http://127.0.0.1:8191/report;report_interval=60;id_report_interval=240;operator_id=fooSoo',
+    },
+  ],
 });
 ```
 

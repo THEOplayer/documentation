@@ -30,9 +30,7 @@ A basic HTML page with a working THEOplayer could look like the following:
     <link rel="stylesheet" type="text/css" href="/path/to/ui.css" />
   </head>
   <body>
-    <div
-      class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"
-    ></div>
+    <div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
     <script type="text/javascript" src="/path/to/THEOplayer.js"></script>
     <!-- ads THEOplayer library -->
     <script>
@@ -68,24 +66,22 @@ The two snippets below are the references to the JS and CSS library.
 The following snippet is your HTML container.
 
 ```html
-<div
-  class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"
-></div>
+<div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
 ```
 
 This snippet initializes your player, including an HLS source.
 
 ```html
 <script>
-  var element = document.querySelector(".theoplayer-container");
+  var element = document.querySelector('.theoplayer-container');
   var player = new THEOplayer.Player(element);
   player.source = {
     sources: [
       {
-        src: "https://cdn.theoplayer.com/video/sintel/nosubs.m3u8",
-        type: "application/x-mpegurl"
-      }
-    ]
+        src: 'https://cdn.theoplayer.com/video/sintel/nosubs.m3u8',
+        type: 'application/x-mpegurl',
+      },
+    ],
   };
 </script>
 ```
@@ -98,13 +94,13 @@ A request interceptor can modify the request with the [`redirect`](pathname:///t
 
 ```js
 var interceptor = function (request) {
-  if (request.type === "manifest") {
+  if (request.type === 'manifest') {
     request.redirect({
-      url: "https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8",
-      method: "GET",
+      url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+      method: 'GET',
       headers: {
-        "Content-Type": "application/x-mpegurl"
-      }
+        'Content-Type': 'application/x-mpegurl',
+      },
     });
   }
 };
@@ -118,11 +114,11 @@ A response to the request can be added in an interceptor as follows:
 
 ```js
 var interceptor = function (request) {
-  if (request.type === "manifest") {
+  if (request.type === 'manifest') {
     request.respondWith({
-      body: "#EXTM3U\n#EXTINF:6,\nhttps://cdn.theoplayer.com/video/elephants-dream/448/media_w370587926_b688000_vo_slen_t64TWFpbg==_0.ts\n#EXT-X-ENDLIST",
+      body: '#EXTM3U\n#EXTINF:6,\nhttps://cdn.theoplayer.com/video/elephants-dream/448/media_w370587926_b688000_vo_slen_t64TWFpbg==_0.ts\n#EXT-X-ENDLIST',
       status: 200,
-      statusText: "OK"
+      statusText: 'OK',
     });
   }
 };
@@ -153,9 +149,9 @@ A ResponseInterceptor can modify the response with the [`respondWith`](pathname:
 ```js
 var interceptor = function (response) {
   response.respondWith({
-    body: "#EXTM3U\n#EXTINF:6,\nhttps://cdn.theoplayer.com/video/elephants-dream/448/media_w370587926_b688000_vo_slen_t64TWFpbg==_0.ts\n#EXT-X-ENDLIST",
+    body: '#EXTM3U\n#EXTINF:6,\nhttps://cdn.theoplayer.com/video/elephants-dream/448/media_w370587926_b688000_vo_slen_t64TWFpbg==_0.ts\n#EXT-X-ENDLIST',
     status: 200,
-    statusText: "OK"
+    statusText: 'OK',
   });
 };
 ```
@@ -195,9 +191,9 @@ var interceptor = function (request) {
   request.waitUntil(function (done) {
     setTimeout(function () {
       request.redirect({
-        url: "https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8",
-        method: "GET",
-        headers: modifyRequestHeaders(request.headers)
+        url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+        method: 'GET',
+        headers: modifyRequestHeaders(request.headers),
       });
       done();
     }, 100);
@@ -218,9 +214,9 @@ var interceptor = function (request) {
   request.waitUntil(function () {
     return delay(100).then(function () {
       request.redirect({
-        url: "https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8",
-        method: "GET",
-        headers: modifyRequestHeaders(request.headers)
+        url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+        method: 'GET',
+        headers: modifyRequestHeaders(request.headers),
       });
     });
   });
@@ -239,9 +235,9 @@ The waitUntil method can be defined with a `PromiseLike` as follows
 var interceptor = function (request) {
   var promise = delay(100).then(function () {
     request.redirect({
-      url: "https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8",
-      method: "GET",
-      headers: modifyRequestHeaders(request.headers)
+      url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+      method: 'GET',
+      headers: modifyRequestHeaders(request.headers),
     });
   });
   request.waitUntil(promise);
@@ -261,11 +257,11 @@ If the player originally responded with an HTTP error, the interceptor can chang
 The 'online' and 'offline' events can be added to the network as follows:
 
 ```js
-player.network.addEventListener("online", handleOnlineEvent);
+player.network.addEventListener('online', handleOnlineEvent);
 ```
 
 Events can be removed similarly, as follows:
 
 ```js
-player.network.removeEventListener("online", handleOnlineEvent);
+player.network.removeEventListener('online', handleOnlineEvent);
 ```

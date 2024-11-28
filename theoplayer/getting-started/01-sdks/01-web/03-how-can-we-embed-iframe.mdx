@@ -29,13 +29,20 @@ You come across iframes all the time when using the web.
 (_That YouTube video on that news website you just visited? That's an iframe. That Facebook or Twitter post which was embedded on that blog? That could also be an iframe. They are all HTML website pages which are embedded on another HTML website page._)
 
 ```html
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GrOJkhIXifc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/GrOJkhIXifc"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 ```
 
 The code snippet above represent an actual `<iframe>` tag. Adding this code snippet to the HTML of your website would embed [https://www.youtube.com/embed/GrOJkhIXifc](https://www.youtube.com/embed/GrOJkhIXifc), which is a YouTube video.
 If you opened this link, you would see that it is a YouTube video which fits the entire size of your browser window.
 
-![iframe YouTube example](../../../assets/img/iframe-youtube-example.png "iframe YouTube example")
+![iframe YouTube example](../../../assets/img/iframe-youtube-example.png 'iframe YouTube example')
 
 As you can see, [the embedded page](https://www.youtube.com/embed/GrOJkhIXifc) is quite different from the "[real](https://www.youtube.com/watch?v=GrOJkhIXifc)" YouTube page.
 When you design and develop a page which should be embedded through an `<iframe>`, you optimize for this embedding use-case. Typically, your component (e.g. a video player) fills the entire browser window,
@@ -61,9 +68,9 @@ You can easily allow embedding by setting the `isEmbeddable`-flag in the THEOpla
 ```js
 let playerConfiguration = {
   // ...
-  libraryLocation: "</path-to-library>/",
-  license: "your-license-here",
-  isEmbeddable: true
+  libraryLocation: '</path-to-library>/',
+  license: 'your-license-here',
+  isEmbeddable: true,
   // ...
 };
 let player = new THEOplayer.Player(element, playerConfiguration);
@@ -83,15 +90,7 @@ Embedding THEOplayer through an `<iframe>` tag is disabled by default. Why?
 If you want to allow your viewers to open your iframe in fullscreen, then you must explicitly enable the [`allowfullscreen`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allowfullscreen)-attribute.
 
 ```html
-<iframe
-  src="player.html"
-  frameborder="0"
-  scrolling="no"
-  width="100%"
-  height="100%"
-  allowfullscreen=""
->
-</iframe>
+<iframe src="player.html" frameborder="0" scrolling="no" width="100%" height="100%" allowfullscreen=""> </iframe>
 ```
 
 On top of this, you want to configure the [`allow`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allow)-attribute and track its evolution.
@@ -156,29 +155,14 @@ Additionally, you may want to alter your user experience by implementing messagi
 Styling your `<iframe>` element is a breeze if you're using a fixed width and height: you can directly configure those through the `width` and `height` attributes as demonstrated below.
 
 ```html
-<iframe
-  src="player.html"
-  frameborder="0"
-  scrolling="no"
-  width="800px"
-  height="450px"
-  allowfullscreen=""
->
-</iframe>
+<iframe src="player.html" frameborder="0" scrolling="no" width="800px" height="450px" allowfullscreen=""> </iframe>
 ```
 
 However, more common is to rely on responsive styling, and not knowing your specific width and height. On top of wanting a responsive iframe, you usually want to respect the aspect ratio of your video.
 Basically, you want your `<iframe>` container to automatically -and appropriately- scale when the size of your browser window changes.
 
 ```html
-<iframe
-  src="player.html"
-  frameborder="0"
-  scrolling="no"
-  width="100%"
-  style="width:100%;aspect-ratio:16/9"
->
-</iframe>
+<iframe src="player.html" frameborder="0" scrolling="no" width="100%" style="width:100%;aspect-ratio:16/9"> </iframe>
 ```
 
 The above snippet demonstrates how you can achieve this.
@@ -197,10 +181,7 @@ You usually want your video player to fit the full width and height of your brow
 ```html
 <html>
   <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <style>
       html,
@@ -245,7 +226,16 @@ You can achieve this with cross-document messaging and the `postMessage` API. Pl
 
 The video player below this paragraph is embedded through an `<iframe>` tag.
 
-<iframe src="https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8" title="Embedded THEOplayer" frameBorder="0" scrolling="no" width="100%" style={{width:'100%',aspectRatio:'16/9'}} allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" allowFullScreen></iframe>
+<iframe
+  src="https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8"
+  title="Embedded THEOplayer"
+  frameBorder="0"
+  scrolling="no"
+  width="100%"
+  style={{ width: '100%', aspectRatio: '16/9' }}
+  allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
 
 We selected the "direct approach" by leveraging query parameters, as demonstrated by the code snippet below.
 
@@ -271,16 +261,9 @@ You can see the code of the iframe HTML page at [https://cdn.theoplayer.com/demo
 ```html
 <html>
   <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/path/to/libraryLocation/ui.css"
-    />
+    <link rel="stylesheet" type="text/css" href="/path/to/libraryLocation/ui.css" />
     <script src="/path/to/libraryLocation/THEOplayer.js"></script>
     <style>
       html,
@@ -304,34 +287,31 @@ You can see the code of the iframe HTML page at [https://cdn.theoplayer.com/demo
       // function to get URL query parameters by name
       function getParameterByName(name, url) {
         if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
           results = regex.exec(url);
         if (!results) return null;
-        if (!results[2]) return "";
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
       }
 
       // initialize THEOplayer instance
-      var element = document.querySelector(".theoplayer-container");
+      var element = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(element, {
-        libraryLocation: "/path/to/libraryLocation/",
-        license: "your-license-here",
+        libraryLocation: '/path/to/libraryLocation/',
+        license: 'your-license-here',
         ui: {
-          width: "100%",
-          height: "100%"
+          width: '100%',
+          height: '100%',
         },
-        isEmbeddable: true
+        isEmbeddable: true,
       });
 
       // get query parameter values
-      var autoplay =
-        getParameterByName("autoplay") &&
-        getParameterByName("autoplay") == "true";
-      var muted =
-        getParameterByName("muted") && getParameterByName("muted") == "true";
-      var preload = getParameterByName("preload");
-      var src = getParameterByName("src");
+      var autoplay = getParameterByName('autoplay') && getParameterByName('autoplay') == 'true';
+      var muted = getParameterByName('muted') && getParameterByName('muted') == 'true';
+      var preload = getParameterByName('preload');
+      var src = getParameterByName('src');
 
       // set settings and stream URL
       player.autoplay = autoplay;

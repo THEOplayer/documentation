@@ -33,15 +33,15 @@ please visit the [documentation](pathname:///theoplayer/v8/api-reference/web/int
 
 ```javascript
 var player = new THEOplayer.Player(element, {
-    license: 'your-license',
-    // This is needed for fallback to work properly
-    retryConfiguration: {
-        maxRetries: 6
-    },
-    theoLive: {
-        externalSessionId: 'my-external-session-id',
-        fallbackEnabled: true
-    }
+  license: 'your-license',
+  // This is needed for fallback to work properly
+  retryConfiguration: {
+    maxRetries: 6,
+  },
+  theoLive: {
+    externalSessionId: 'my-external-session-id',
+    fallbackEnabled: true,
+  },
 });
 ```
 

@@ -26,40 +26,40 @@ npm run dev
 
 ```js
 export default {
-  mode: "spa",
+  mode: 'spa',
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || "",
+    title: process.env.npm_package_name || '',
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
-        hid: "description",
-        name: "description",
-        content: process.env.npm_package_description || ""
-      }
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || '',
+      },
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
-        rel: "stylesheet",
-        type: "text/css",
-        href: "//cdn.theoplayer.com/dash/theoplayer/ui.css"
-      }
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: '//cdn.theoplayer.com/dash/theoplayer/ui.css',
+      },
     ],
     script: [
       {
-        type: "text/javascript",
-        src: "//cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"
-      }
-    ]
+        type: 'text/javascript',
+        src: '//cdn.theoplayer.com/dash/theoplayer/THEOplayer.js',
+      },
+    ],
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#fff" },
+  loading: { color: '#fff' },
   /*
    ** Global CSS
    */
@@ -73,7 +73,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    "@nuxtjs/eslint-module"
+    '@nuxtjs/eslint-module',
   ],
   /*
    ** Nuxt.js modules
@@ -86,8 +86,8 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
-  }
+    extend(config, ctx) {},
+  },
 };
 ```
 
@@ -95,17 +95,14 @@ export default {
 
 ```html
 <template>
-  <div
-    ref="theoplayer"
-    class="theoplayer-container video-js theoplayer-skin vjs-16-9 THEOplayer"
-  ></div>
+  <div ref="theoplayer" class="theoplayer-container video-js theoplayer-skin vjs-16-9 THEOplayer"></div>
 </template>
 
 <script>
-  import { mapState } from "vuex";
+  import { mapState } from 'vuex';
   export default {
     computed: mapState({
-      source: (state) => state.source
+      source: (state) => state.source,
     }),
     mounted() {
       this.playerInit();
@@ -114,13 +111,13 @@ export default {
       playerInit() {
         const player = new window.THEOplayer.Player(this.$refs.theoplayer, {
           fluid: true,
-          libraryLocation: "//cdn.theoplayer.com/dash/theoplayer/"
+          libraryLocation: '//cdn.theoplayer.com/dash/theoplayer/',
         });
         player.source = {
-          sources: this.source
+          sources: this.source,
         };
-      }
-    }
+      },
+    },
   };
 </script>
 <style>
@@ -140,13 +137,13 @@ export default {
 
 ```js
 export const state = () => ({
-  source: null
+  source: null,
 });
 
 export const mutations = {
   setSource(state, source) {
     state.source = source;
-  }
+  },
 };
 ```
 
@@ -161,37 +158,29 @@ export const mutations = {
       <h1 class="title">theoplayer-nuxtjs-sample</h1>
       <h2 class="subtitle">THEOplayer nuxtjs sample app</h2>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green"> Documentation </a>
+        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey"> GitHub </a>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import Logo from "~/components/Logo.vue";
-  import Player from "~/components/Player.vue";
+  import Logo from '~/components/Logo.vue';
+  import Player from '~/components/Player.vue';
 
   export default {
     components: {
       Logo,
-      Player
+      Player,
     },
     created() {
-      this.$store.commit("setSource", [
+      this.$store.commit('setSource', [
         {
-          type: "application/x-mpegurl",
-          src: "//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8"
-        }
+          type: 'application/x-mpegurl',
+          src: '//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+        },
       ]);
-    }
+    },
   };
 </script>
 
@@ -207,13 +196,13 @@ export const mutations = {
 
   .title {
     font-family:
-      "Quicksand",
-      "Source Sans Pro",
+      'Quicksand',
+      'Source Sans Pro',
       -apple-system,
       BlinkMacSystemFont,
-      "Segoe UI",
+      'Segoe UI',
       Roboto,
-      "Helvetica Neue",
+      'Helvetica Neue',
       Arial,
       sans-serif;
     display: block;

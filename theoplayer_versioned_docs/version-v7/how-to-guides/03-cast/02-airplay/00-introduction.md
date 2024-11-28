@@ -55,14 +55,14 @@ player.cast.airplay.start();
 // if (want to stop AirPlay)
 player.cast.airplay.stop();
 // ...
-if (airPlayState == "available") {
+if (airPlayState == 'available') {
   // airplay is possible
-  player.cast.airplay.addEventListener("statechange", function (event) {
+  player.cast.airplay.addEventListener('statechange', function (event) {
     switch (event.state) {
-      case "available":
+      case 'available':
         // show AirPlay available icon
         break;
-      case "connected":
+      case 'connected':
         // show AirPlay connected icon
         break;
     }

@@ -1,6 +1,6 @@
 # How to add CSS or JavaScript files to an Android/iOS project (legacy mobile SDKs)
 
-This guide describes how to add CSS or JavaScript files to an Android or iOS project, and manipulate the player using CSS and/or JavaScript. 
+This guide describes how to add CSS or JavaScript files to an Android or iOS project, and manipulate the player using CSS and/or JavaScript.
 
 :::important
 
@@ -34,9 +34,9 @@ The JavaScript file can directly refer to the player variable on which you can p
 ```js
 player.source = {
   sources: {
-    src: "//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-    useCredentials: false
-  }
+    src: '//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+    useCredentials: false,
+  },
 };
 ```
 

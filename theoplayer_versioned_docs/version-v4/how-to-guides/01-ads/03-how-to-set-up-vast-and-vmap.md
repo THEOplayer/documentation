@@ -55,15 +55,15 @@ In this `AdDescription`,
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start"
-    }
-  ]
+      sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+    },
+  ],
 };
 ```
 
@@ -136,31 +136,31 @@ The following snippets demonstrate how you'd configure two pre-rolls, two mid-ro
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start"
+      sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
     },
     {
-      sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start"
+      sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
     },
     {
-      sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "00:00:15"
+      sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: '00:00:15',
     },
     {
-      sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "00:00:30"
+      sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: '00:00:30',
     },
     {
-      sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "end"
-    }
-  ]
+      sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'end',
+    },
+  ],
 };
 ```
 
@@ -223,16 +223,16 @@ Note that the `skipOffset` property is not supported when using other ad integra
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "00:00:15",
-      skipOffset: "5"
-    }
-  ]
+      sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: '00:00:15',
+      skipOffset: '5',
+    },
+  ],
 };
 ```
 
@@ -274,13 +274,12 @@ The snippets below demonstrate how to configure a VMAP advertisement.
 
 ```js
 // Declare a VMAP ad source. No timeOffset here, because the VMAP itself arranges this.
-let vmapSource =
-  "//cdn.theoplayer.com/demos/ads/vmap/single-pre-mid-post-no-skip.xml";
+let vmapSource = '//cdn.theoplayer.com/demos/ads/vmap/single-pre-mid-post-no-skip.xml';
 let ad = [{ sources: vmapSource }];
 
 let source = {
   sources: [typedSource],
-  ads: ad
+  ads: ad,
 };
 player.source = source;
 ```
@@ -335,7 +334,7 @@ Invoking the following function when the video is already playing will instantly
 
 ```javascript
 player.ads.schedule({
-  sources: "//cdn.theoplayer.com/demos/ads/vast/vast.xml"
+  sources: '//cdn.theoplayer.com/demos/ads/vast/vast.xml',
 });
 ```
 

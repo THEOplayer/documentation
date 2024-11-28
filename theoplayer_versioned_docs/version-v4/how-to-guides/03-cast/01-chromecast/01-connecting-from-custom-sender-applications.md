@@ -23,37 +23,31 @@ The following webpage should suffice:
     <title>Title</title>
     <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
     <script>
-      window["__onGCastApiAvailable"] = function (isAvailable) {
+      window['__onGCastApiAvailable'] = function (isAvailable) {
         if (isAvailable) {
           cast.framework.CastContext.getInstance().setOptions({
-            receiverApplicationId: "$YOUR_APP_ID", // Adapt this
-            autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED // And this if you want to
+            receiverApplicationId: '$YOUR_APP_ID', // Adapt this
+            autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED, // And this if you want to
           });
         }
       };
     </script>
     <script>
       function startCasting(sourceDescription) {
-        var castSession =
-          cast.framework.CastContext.getInstance().getCurrentSession();
-        var mediaInfo = new chrome.cast.media.MediaInfo(
-          sourceDescription.sources[0].src,
-          sourceDescription.sources[0].type
-        );
+        var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
+        var mediaInfo = new chrome.cast.media.MediaInfo(sourceDescription.sources[0].src, sourceDescription.sources[0].type);
         var request = new chrome.cast.media.LoadRequest(mediaInfo);
         request.customData = { sourceDescription: sourceDescription };
         castSession.loadMedia(request).then(
           function () {
-            console.log("Load succeed");
+            console.log('Load succeed');
           },
           function (errorCode) {
-            console.log("Error code: " + errorCode);
+            console.log('Error code: ' + errorCode);
           }
         );
         var player = new cast.framework.RemotePlayer();
-        var playerController = new cast.framework.RemotePlayerController(
-          player
-        );
+        var playerController = new cast.framework.RemotePlayerController(player);
         return playerController;
       }
     </script>
@@ -68,16 +62,15 @@ Load this in Google Chrome, connect to a Chromecast device, and then you can do:
 startCasting({
   sources: [
     {
-      src: "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)",
-      type: "application/dash+xml",
+      src: 'https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)',
+      type: 'application/dash+xml',
       contentProtection: {
         widevine: {
-          licenseAcquisitionURL:
-            "https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac"
-        }
-      }
-    }
-  ]
+          licenseAcquisitionURL: 'https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac',
+        },
+      },
+    },
+  ],
 });
 ```
 

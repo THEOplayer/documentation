@@ -20,21 +20,21 @@ The EXT-X-DATERANGE tag associates a Date Range (i.e., a range of time defined b
 
 ```js
 //in playerConfiguration
-var element = document.querySelector(".theoplayer-container");
+var element = document.querySelector('.theoplayer-container');
 
 var player = new THEOplayer.Player(element, {
   libraryLocation: libraryLocation,
-  license: "your-license-here",
-  hlsDateRange: true
+  license: 'your-license-here',
+  hlsDateRange: true,
 });
 
 //in the source description
 player.source = {
   hlsDateRange: true,
   sources: {
-    src: "Example-Stream.m3u8",
-    type: "application/x-mpegurl"
-  }
+    src: 'Example-Stream.m3u8',
+    type: 'application/x-mpegurl',
+  },
 };
 ```
 
@@ -82,43 +82,43 @@ The TextTrack API is used to retrieve the timed metadata. A MetadataTextTrack wi
 
 ```js
 function handleTimedMetadata(player, onTimeMetadataEnter, onTimeMetadataExit) {
-  console.log("function handleTimedMetadata is starting! yeeee");
+  console.log('function handleTimedMetadata is starting! yeeee');
   const onTrackAdded = (event) => {
     const track = event.track;
-    console.log("track", track.kind, track.cues);
-    if (track.kind !== "metadata") {
+    console.log('track', track.kind, track.cues);
+    if (track.kind !== 'metadata') {
       return;
     }
-    track.mode = "hidden"; // By default, tracks are disabled and do not expose cues
-    track.addEventListener("addcue", onCueAdded);
-    track.addEventListener("removecue", onCueRemoved);
+    track.mode = 'hidden'; // By default, tracks are disabled and do not expose cues
+    track.addEventListener('addcue', onCueAdded);
+    track.addEventListener('removecue', onCueRemoved);
   };
   const onTrackRemoved = (event) => {
     const track = event.track;
-    if (track.kind !== "metadata") {
+    if (track.kind !== 'metadata') {
       return;
     }
-    track.removeEventListener("addcue", onCueAdded);
-    track.removeEventListener("removecue", onCueRemoved);
+    track.removeEventListener('addcue', onCueAdded);
+    track.removeEventListener('removecue', onCueRemoved);
   };
   const onCueAdded = (event) => {
     const cue = event.cue;
-    console.log("cueadded", cue);
-    cue.addEventListener("enter", onTimeMetadataEnter);
-    cue.addEventListener("exit", onTimeMetadataExit);
+    console.log('cueadded', cue);
+    cue.addEventListener('enter', onTimeMetadataEnter);
+    cue.addEventListener('exit', onTimeMetadataExit);
   };
   const onCueRemoved = (event) => {
     const cue = event.cue;
-    cue.removeEventListener("enter", onTimeMetadataEnter);
-    cue.removeEventListener("exit", onTimeMetadataExit);
+    cue.removeEventListener('enter', onTimeMetadataEnter);
+    cue.removeEventListener('exit', onTimeMetadataExit);
   };
-  player.textTracks.addEventListener("addtrack", onTrackAdded);
-  player.textTracks.addEventListener("removetrack", onTrackRemoved);
+  player.textTracks.addEventListener('addtrack', onTrackAdded);
+  player.textTracks.addEventListener('removetrack', onTrackRemoved);
 }
 handleTimedMetadata(
   player,
-  (event) => console.log("Do something with timed metadata starting", event),
-  (event) => console.log("Do something with metadata ending", event)
+  (event) => console.log('Do something with timed metadata starting', event),
+  (event) => console.log('Do something with metadata ending', event)
 );
 ```
 

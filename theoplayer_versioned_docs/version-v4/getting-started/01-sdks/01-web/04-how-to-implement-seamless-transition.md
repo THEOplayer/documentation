@@ -17,10 +17,7 @@ Seamless video transitionExpand source
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>Seamless video transition</title>
@@ -30,16 +27,9 @@ Seamless video transitionExpand source
       integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdn.theoplayer.com/dash/theoplayer/ui.css"
-    />
+    <link rel="stylesheet" type="text/css" href="//cdn.theoplayer.com/dash/theoplayer/ui.css" />
 
-    <script
-      type="text/javascript"
-      src="//cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"
-    ></script>
+    <script type="text/javascript" src="//cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
 
     <style>
       canvas {
@@ -66,21 +56,20 @@ Seamless video transitionExpand source
     </div>
 
     <script type="text/javascript">
-      var element = document.querySelector(".video-js");
+      var element = document.querySelector('.video-js');
 
       // COMMENT: some player configuration here - interesting but nothing related to this example
       var player = new THEOplayer.Player(element, {
         ui: {
           //fluid: true
-          width: "800",
-          height: "450"
+          width: '800',
+          height: '450',
         },
-        libraryLocation: "//cdn.theoplayer.com/dash/theoplayer/"
+        libraryLocation: '//cdn.theoplayer.com/dash/theoplayer/',
       });
       player.autoplay = true;
       player.source = {
-        sources:
-          "//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
+        sources: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
       };
 
       //COMMENT: objective: hide the transition between 2 videos.
@@ -91,39 +80,39 @@ Seamless video transitionExpand source
       // - when playback starts, the canvas is hidden
 
       // COMMENT: this detects the first play event and calls the function firstplay()
-      player.addEventListener("sourcechange", function () {
+      player.addEventListener('sourcechange', function () {
         //console.log("A new SourceDescription has been set.");
-        player.removeEventListener("playing", firstplay);
-        player.addEventListener("playing", firstplay);
+        player.removeEventListener('playing', firstplay);
+        player.addEventListener('playing', firstplay);
       });
 
       // COMMENT: on click we call writeToCanvas() and change the player source after a small delay (time is needed for the canvas content to be loaded)
-      var button = document.querySelector("#sourcechange-btn");
-      button.addEventListener("click", () => {
+      var button = document.querySelector('#sourcechange-btn');
+      button.addEventListener('click', () => {
         writeToCanvas();
         setTimeout(function () {
           player.src =
-            "https://amssamples.streaming.mediaservices.windows.net/bb34a723-f69a-4231-afba-dc850f9e3da8/ChildOfThe90s.ism/manifest(format=m3u8-aapl)";
+            'https://amssamples.streaming.mediaservices.windows.net/bb34a723-f69a-4231-afba-dc850f9e3da8/ChildOfThe90s.ism/manifest(format=m3u8-aapl)';
         }, 50);
       });
 
       // COMMENT: canvas is hidden when the first play event is fired
       function firstplay(event) {
-        var canvas = document.querySelector("canvas");
-        player.removeEventListener("playing", firstplay);
+        var canvas = document.querySelector('canvas');
+        player.removeEventListener('playing', firstplay);
         //console.log("first play event!", event);
-        canvas.style.display = "none";
+        canvas.style.display = 'none';
       }
 
       // COMMENT:
       // (1) Canvas is detected, its sizes adapted to those of the player and it gets the last frame as content.
       // (2) It is displayed as block (as opposed to the initial "none")
       function writeToCanvas() {
-        var canvas = document.querySelector("canvas");
-        canvas.setAttribute("width", player.videoWidth + "px");
-        canvas.setAttribute("height", player.videoHeight + "px");
-        var ctx = canvas.getContext("2d");
-        canvas.style.display = "block";
+        var canvas = document.querySelector('canvas');
+        canvas.setAttribute('width', player.videoWidth + 'px');
+        canvas.setAttribute('height', player.videoHeight + 'px');
+        var ctx = canvas.getContext('2d');
+        canvas.style.display = 'block';
         player.canvas.drawImage(ctx, 0, 0);
       }
     </script>

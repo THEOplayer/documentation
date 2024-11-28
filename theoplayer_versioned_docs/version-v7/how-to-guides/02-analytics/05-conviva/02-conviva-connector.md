@@ -38,17 +38,17 @@ Define the Conviva metadata and configuration:
 
 ```javascript
 const convivaMetadata = {
-  ["Conviva.assetName"]: "ASSET_NAME_GOES_HERE",
-  ["Conviva.streamUrl"]: "CUSTOMER_STREAM_URL_GOES_HERE",
-  ["Conviva.streamType"]: "STREAM_TYPE_GOES_HERE", // VOD or LIVE
-  ["Conviva.applicationName"]: "APPLICATION_NAME_GOES_HERE",
-  ["Conviva.viewerId"]: "VIEWER_ID_GOES_HERE"
+  ['Conviva.assetName']: 'ASSET_NAME_GOES_HERE',
+  ['Conviva.streamUrl']: 'CUSTOMER_STREAM_URL_GOES_HERE',
+  ['Conviva.streamType']: 'STREAM_TYPE_GOES_HERE', // VOD or LIVE
+  ['Conviva.applicationName']: 'APPLICATION_NAME_GOES_HERE',
+  ['Conviva.viewerId']: 'VIEWER_ID_GOES_HERE',
 };
 
 const convivaConfig = {
   debug: false,
-  gatewayUrl: "CUSTOMER_GATEWAY_GOES_HERE",
-  customerKey: "CUSTOMER_KEY_GOES_HERE" // Can be a test or production key.
+  gatewayUrl: 'CUSTOMER_GATEWAY_GOES_HERE',
+  customerKey: 'CUSTOMER_KEY_GOES_HERE', // Can be a test or production key.
 };
 ```
 
@@ -74,13 +74,8 @@ Using these configs you can create the Conviva connector with THEOplayer. Altern
 
 ```javascript
 <script type="module">
-  import { ConvivaConnector } from "path/to/conviva-connector.esm.js";
-  const player = new THEOplayer.Player(element, configuration);
-  const convivaIntegration = new ConvivaConnector(
-    player,
-    convivaMetadata,
-    convivaConfig
-  );
+  import {ConvivaConnector} from "path/to/conviva-connector.esm.js"; const player = new THEOplayer.Player(element, configuration); const
+  convivaIntegration = new ConvivaConnector( player, convivaMetadata, convivaConfig );
 </script>
 ```
 
@@ -105,21 +100,17 @@ async function setupYospaceConnector(player) {
   const source = {
     sources: [
       {
-        src: "https://csm-e-sdk-validation.bln1.yospace.com/csm/extlive/yospace02,hlssample42.m3u8?yo.br=true&yo.av=4",
+        src: 'https://csm-e-sdk-validation.bln1.yospace.com/csm/extlive/yospace02,hlssample42.m3u8?yo.br=true&yo.av=4',
         ssai: {
-          integration: "yospace"
-        }
-      }
-    ]
+          integration: 'yospace',
+        },
+      },
+    ],
   };
 
   // Create the connectors.
   const yospace = new THEOplayerYospaceConnector.YospaceConnector(player);
-  const conviva = new THEOplayerConvivaConnector.ConvivaConnector(
-    player,
-    convivaMetadata,
-    convivaConfig
-  );
+  const conviva = new THEOplayerConvivaConnector.ConvivaConnector(player, convivaMetadata, convivaConfig);
 
   // Link ConvivaConnector with the YospaceConnector.
   conviva.connect(yospace);
@@ -155,7 +146,7 @@ val theoplayerView: THEOplayerView
 private fun setupConviva() {
     val customerKey = "your_conviva_customer_key"
     val gatewayUrl = "your_conviva_debug_gateway_url"
-    
+
     val metadata = hashMapOf(
         "Conviva.applicationName" to "THEOplayer",
         "Conviva.viewerId" to "viewerId"
@@ -266,10 +257,10 @@ For each asset you play, the **asset name** needs to be reported to Conviva whic
 let mySource = SourceDescription(source: source, metadata: MetadataDescription(metadataKeys: ["title": "your_asset_name"]))
 ```
 
-Alternatively, the asset name can be provided as contentInfo (`CIS_SSDK_METADATA_ASSET_NAME`) using the `setContentInfo` method, along with other metadata. For example to report the viewer's ID: 
+Alternatively, the asset name can be provided as contentInfo (`CIS_SSDK_METADATA_ASSET_NAME`) using the `setContentInfo` method, along with other metadata. For example to report the viewer's ID:
 
 ```swift
-let contentInfo = [ 
+let contentInfo = [
    CIS_SSDK_METADATA_VIEWER_ID: "your_viewer_id"
 ]
 connector.setContentInfo(contentInfo)

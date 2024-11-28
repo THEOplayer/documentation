@@ -15,7 +15,7 @@ THEOplayer currently supports 4 types of client-side ad integrations:
 4. [FreeWheel](../../how-to-guides/01-ads/06-freewheel.md)
 
 This article explains scheduling VAST and VMAP ads.
-Scheduling VAST and VMAP ads through all ad integrations is very similar, so consider this article as a reference guide. 
+Scheduling VAST and VMAP ads through all ad integrations is very similar, so consider this article as a reference guide.
 
 ## SDKs
 
@@ -57,17 +57,17 @@ In this `AdDescription`,
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start",
-      type: "vast",
-      integration: "csai" // When no integration is provided, the player defaults to `csai`.
-    }
-  ]
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+      type: 'vast',
+      integration: 'csai', // When no integration is provided, the player defaults to `csai`.
+    },
+  ],
 };
 ```
 
@@ -156,31 +156,31 @@ The following snippets demonstrate how you would configure two pre-rolls, two mi
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start"
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
     },
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start"
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
     },
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "00:00:15"
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: '00:00:15',
     },
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "00:00:30"
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: '00:00:30',
     },
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "end"
-    }
-  ]
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'end',
+    },
+  ],
 };
 ```
 
@@ -244,17 +244,17 @@ Note that the `skipOffset` property is not supported when using other ad integra
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      type: "vast",
-      timeOffset: "00:00:15",
-      skipOffset: "5"
-    }
-  ]
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      type: 'vast',
+      timeOffset: '00:00:15',
+      skipOffset: '5',
+    },
+  ],
 };
 ```
 
@@ -271,17 +271,17 @@ The snippets below demonstrate how to configure a VMAP advertisement.
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start",
-      type: "vmap",
-      integration: "csai" // When no integration is provided, the player defaults to `csai`.
-    }
-  ]
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+      type: 'vmap',
+      integration: 'csai', // When no integration is provided, the player defaults to `csai`.
+    },
+  ],
 };
 ```
 
@@ -328,7 +328,7 @@ The following samples illustrate the `schedule` function across different SDKs. 
 
 ```javascript
 player.ads.schedule({
-  sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml"
+  sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
 });
 ```
 
@@ -348,6 +348,7 @@ theoplayer.ads.schedule(adDescription: GoogleImaAdDescription(src: "https://cdn.
 ```
 
 ## Resources
+
 - [Samples for Web SDK](https://github.com/THEOplayer/samples-html5-sdk)
 - [Samples for Android SDK](https://github.com/THEOplayer/samples-android-sdk)
 - [Samples for iOS SDK](https://github.com/THEOplayer/samples-ios-sdk)

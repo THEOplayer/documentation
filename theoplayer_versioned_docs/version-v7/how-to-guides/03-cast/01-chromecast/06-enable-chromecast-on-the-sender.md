@@ -17,10 +17,7 @@ To allow Chromecast playback you need to include Google's Chromecast Sender SDK,
 The JavaScript snippet below illustrates how you include this Sender SDK. You can read more about it at [https://developers.google.com/cast/docs/web_sender](https://developers.google.com/cast/docs/web_sender).
 
 ```javascript
-<script
-  type="text/javascript"
-  src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
-></script>
+<script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 ```
 
 Once this SDK is imported, THEOplayer will automatically add the Chromecast casting capability to your player (if you've enabled the Chromecast feature for your THEOplayer SDK).
@@ -213,15 +210,15 @@ but you can connect it to a custom Chromecast Receiver application instead.
 If you have your own Receiver app, then you adjust the [PlayerConfiguration](pathname:///theoplayer/v7/api-reference/web/interfaces/CastConfiguration.html) to connect with a specific `appID` as demonstrated below.
 
 ```javascript
-let customChromecastReceiverAppID = "8E80B9CE";
+let customChromecastReceiverAppID = '8E80B9CE';
 let player = new THEOplayer.Player(element, {
-  libraryLocation: "...",
-  license: "...",
+  libraryLocation: '...',
+  license: '...',
   cast: {
     chromecast: {
-      appID: customChromecastReceiverAppID
-    }
-  }
+      appID: customChromecastReceiverAppID,
+    },
+  },
 });
 ```
 

@@ -69,9 +69,9 @@ You need to add a DOM-element which will contain the user interface of THEOplaye
   <body>
     <div id="my-player"></div>
     <script>
-      var player = new THEOplayer.Player(document.getElementById("my-player"), {
-        libraryLocation: "path/to/theoplayer/",
-        license: "your-license-here"
+      var player = new THEOplayer.Player(document.getElementById('my-player'), {
+        libraryLocation: 'path/to/theoplayer/',
+        license: 'your-license-here',
       });
     </script>
   </body>
@@ -105,7 +105,7 @@ Note that you can also use the easy UI skinning colors to modify the UI as descr
         width: 100%;
         height: 100%;
         background:
-          url("...") no-repeat,
+          url('...') no-repeat,
           no-repeat center;
         background-size: cover;
       }
@@ -113,15 +113,15 @@ Note that you can also use the easy UI skinning colors to modify the UI as descr
       .THEO-cast-receiver-player .THEO-cast-receiver-watermark {
         width: 124px;
         height: 65px;
-        background-image: url("...");
+        background-image: url('...');
       }
     </style>
   </head>
   <body>
     <div id="my-player"></div>
     <script>
-      var player = new THEOplayer.Player(document.getElementById("my-player"), {
-        libraryLocation: "../release/"
+      var player = new THEOplayer.Player(document.getElementById('my-player'), {
+        libraryLocation: '../release/',
       });
     </script>
   </body>

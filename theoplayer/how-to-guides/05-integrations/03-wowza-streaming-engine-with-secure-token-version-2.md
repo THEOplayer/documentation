@@ -6,11 +6,11 @@ An important aspect when generating the hash, is that the client web server shou
 
 ## SDKs
 
-| Web SDK |                 Android SDK                 |                   iOS SDK                   | tvOS SDK |               Android TV SDK                | Chromecast SDK |
-| :-----: | :-----------------------------------------: | :-----------------------------------------: | :------: | :-----------------------------------------: | :------------: |
-|   Yes   | Unverified through CSS/JavaScript injection* | Unverified through CSS/JavaScript injection* |    No    | Unverified through CSS/JavaScript injection* |      N/A       |
+| Web SDK |                  Android SDK                  |                    iOS SDK                    | tvOS SDK |                Android TV SDK                 | Chromecast SDK |
+| :-----: | :-------------------------------------------: | :-------------------------------------------: | :------: | :-------------------------------------------: | :------------: |
+|   Yes   | Unverified through CSS/JavaScript injection\* | Unverified through CSS/JavaScript injection\* |    No    | Unverified through CSS/JavaScript injection\* |      N/A       |
 
-*CSS/JavaScript injection in the project is only possible with the legacy mobile SDKs (up to 4.12.X).
+\*CSS/JavaScript injection in the project is only possible with the legacy mobile SDKs (up to 4.12.X).
 
 ## How to set up THEOplayer with Wowza Streaming Engine
 
@@ -49,70 +49,67 @@ The application was saved and restarted.
 The below code makes reference to the above configuration settings specified in the Wowza Streaming Engine manager.
 
 ```js
-var express = require("express");
+var express = require('express');
 var app = express();
 
-var crypto = require("crypto");
-var address = require("address");
+var crypto = require('crypto');
+var address = require('address');
 
 // add CORS headers
-app.use("/generate-hash", function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+app.use('/generate-hash', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
-const path = require("path");
+const path = require('path');
 const port = 3000;
 
 /****************** START OF CONFIGURATION ******************/
 
 // your hash algorithm: 256, 384 OR 512
-const hashAlgorithm = "256";
+const hashAlgorithm = '256';
 
 // your shared Secret
-const sharedSecret = "53a0a16b7cde230b";
+const sharedSecret = '53a0a16b7cde230b';
 
 // the content path to the streaming asset and is the part of the URL that starts with the application name
 // (excluding the '/' that precedes the application name) and continues through to the end of the stream name or file name.
 // Be sure to exclude all HTTP request keywords after the stream name or file name (for example, /manifest.m3u8, /media.ts, /Manifest, /manifest.f4v, and so on)
-const contentPath = "vod/mp4:sample.mp4";
+const contentPath = 'vod/mp4:sample.mp4';
 
 // your token prefix custom parameter
-const tokenPrefix = "wowzatoken";
+const tokenPrefix = 'wowzatoken';
 
 // your random custom parameter (optional - leave as empty string if none)
-const customParameter = "myrandomcustomparameter";
+const customParameter = 'myrandomcustomparameter';
 
 // include client IP address in hash generation (yes/no)?
-const includeClientIPAddress = "yes";
+const includeClientIPAddress = 'yes';
 
 //const now = new Date();
 //const startTime = Math.round(now.getTime() / 1000);
-const startTime = "0";
+const startTime = '0';
 //const validity = 1000; // validity in seconds
 
 //const endTime = Math.round(now.getTime() / 1000) + validity;
-const endTime = "0";
+const endTime = '0';
 
 /****************** END OF CONFIGURATION ******************/
 
 var params = [];
 
 // create an array with the parameters
-if (includeClientIPAddress == "yes") {
+if (includeClientIPAddress == 'yes') {
   address(function (err, addrs) {
     params.push(addrs.ip);
   });
 }
 
 params.push(
-  tokenPrefix + "startTime=" + startTime,
-  tokenPrefix + "endTime=" + endTime,
-  tokenPrefix + "customParameter=" + customParameter,
+  tokenPrefix + 'startTime=' + startTime,
+  tokenPrefix + 'endTime=' + endTime,
+  tokenPrefix + 'customParameter=' + customParameter,
   sharedSecret
 );
 
@@ -120,26 +117,26 @@ params.push(
 params.sort();
 
 // construct the hash string
-var hashString = contentPath + "?";
+var hashString = contentPath + '?';
 
 for (var i = 0; i < params.length; i++) {
   if (i + 1 == params.length) {
     hashString = hashString + params[i];
   } else {
-    hashString = hashString + params[i] + "&";
+    hashString = hashString + params[i] + '&';
   }
 }
 
 // the hash generated at the client should be a URL-safe Base64-encoded string.
-app.get("/generate-hash", function (req, res, next) {
+app.get('/generate-hash', function (req, res, next) {
   var hash = crypto
-    .createHash("sha" + hashAlgorithm)
-    .update(hashString, "utf8")
-    .digest("base64");
+    .createHash('sha' + hashAlgorithm)
+    .update(hashString, 'utf8')
+    .digest('base64');
 
   // URL-safe Base64 encoding replaces the '+' character with the '-' character and the '/' character with the '_' character.
-  hash = hash.replace(/\+/g, "-");
-  hash = hash.replace(/\//g, "_");
+  hash = hash.replace(/\+/g, '-');
+  hash = hash.replace(/\//g, '_');
 
   console.log(hashString);
 
@@ -147,8 +144,8 @@ app.get("/generate-hash", function (req, res, next) {
 });
 
 // Listen for requests
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname + "/index.html"));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.listen(port);
@@ -170,10 +167,7 @@ Save this JavaScript file as wowzasecuretoken.js and then run it with `node wowz
   </head>
   <body>
     <div class="theoplayer-container video-js theoplayer-skin"></div>
-    <script
-      type="text/javascript"
-      src="path/to/thoeplayer/THEOplayer.js"
-    ></script>
+    <script type="text/javascript" src="path/to/thoeplayer/THEOplayer.js"></script>
     <!-- adds THEOplayer library -->
     <script>
       // Initialize player function once the hash has been retrieved
@@ -181,19 +175,19 @@ Save this JavaScript file as wowzasecuretoken.js and then run it with `node wowz
         console.log(hash);
         // Replace http://192.168.1.34:1935/vod/mp4:sample.mp4/playlist.m3u8 with your stream manifest
         var hlsUrl =
-          "http://192.168.1.34:1935/vod/mp4:sample.mp4/playlist.m3u8?" +
-          "wowzatokenstartTime=0&" +
-          "wowzatokenendTime=0&" +
-          "wowzatokencustomParameter=myrandomcustomparameter&" +
-          "wowzatokenhash=" +
+          'http://192.168.1.34:1935/vod/mp4:sample.mp4/playlist.m3u8?' +
+          'wowzatokenstartTime=0&' +
+          'wowzatokenendTime=0&' +
+          'wowzatokencustomParameter=myrandomcustomparameter&' +
+          'wowzatokenhash=' +
           hash;
 
         console.log(hlsUrl);
 
-        var element = document.querySelector(".video-js");
+        var element = document.querySelector('.video-js');
         var player = new THEOplayer.Player(element, {
-          libraryLocation: "path/to/theoplayer",
-          license: "your-license-here"
+          libraryLocation: 'path/to/theoplayer',
+          license: 'your-license-here',
         });
 
         player.src = hlsUrl;
@@ -202,25 +196,25 @@ Save this JavaScript file as wowzasecuretoken.js and then run it with `node wowz
       // Ajax request for the hash to the node/express app
       var requestHash = function (url) {
         var req = new XMLHttpRequest();
-        req.open("GET", url, true);
+        req.open('GET', url, true);
         req.onreadystatechange = function () {
           if (req.readyState === 4) {
             var response = req.responseText;
             if (req.status === 200) {
               initPlayer(response);
             } else {
-              console.log("Could not get hash");
+              console.log('Could not get hash');
             }
           }
         };
         req.onerror = function () {
-          console.log("Could not get hash");
+          console.log('Could not get hash');
         };
         req.send();
       };
 
       // Start the request to your node/express server. Be sure to replace http://127.0.0.1:3000 with your node IP address and port
-      var serverHashUrl = "http://127.0.0.1:3000/generate-hash";
+      var serverHashUrl = 'http://127.0.0.1:3000/generate-hash';
       requestHash(serverHashUrl);
     </script>
   </body>

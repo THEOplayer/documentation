@@ -32,10 +32,7 @@ For example:
 <yoursite.com
   >/resource/file/path/5.5.0/THEOplayer.js
   <yoursite.com
-    >/resource/file/path/5.5.1/THEOplayer.js
-    <yoursite.com
-      >/resource/file/path/31-01-2023/THEOplayer.js</yoursite.com
-    ></yoursite.com
+    >/resource/file/path/5.5.1/THEOplayer.js <yoursite.com>/resource/file/path/31-01-2023/THEOplayer.js</yoursite.com></yoursite.com
   ></yoursite.com
 >
 ```
@@ -49,12 +46,7 @@ By adding something like the version or the date, you can be sure that the brows
 For example:
 
 ```html
-<yoursite.com
-  >/resource/file/path/THEOplayer.js?d=10012023
-  <yoursite.com
-    >/resource/file/path/THEOplayer.js?v=5.5.1</yoursite.com
-  ></yoursite.com
->
+<yoursite.com>/resource/file/path/THEOplayer.js?d=10012023 <yoursite.com>/resource/file/path/THEOplayer.js?v=5.5.1</yoursite.com></yoursite.com>
 ```
 
 **Note**: For HLS playback, the player uses worker files. These workers must be present in the `libraryLocation` set on the player configuration. You do not need to link to them in the webpage as they are dynamically called from the `libraryLocation`.
@@ -70,13 +62,7 @@ Here's an example on how to dynamically generate such a cachebuster variable in 
 ```html
 <script type="text/javascript">
   var cachebuster = Math.round(new Date().getTime() / 1000);
-  document.write(
-    "<scr" +
-      'ipt type="text/javascript" src="external.js?cb=' +
-      cachebuster +
-      '"></scr' +
-      "ipt>"
-  );
+  document.write('<scr' + 'ipt type="text/javascript" src="external.js?cb=' + cachebuster + '"></scr' + 'ipt>');
 </script>
 ```
 

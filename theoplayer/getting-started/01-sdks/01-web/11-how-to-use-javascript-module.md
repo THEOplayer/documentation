@@ -36,21 +36,21 @@ The outcome of this article is the template below.
   <body>
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
     <script type="module">
-      import * as THEOplayer from "/path/to/THEOplayer.esm.js";
+      import * as THEOplayer from '/path/to/THEOplayer.esm.js';
 
-      let element = document.querySelector(".theoplayer-container");
+      let element = document.querySelector('.theoplayer-container');
       let player = new THEOplayer.Player(element, {
-        libraryLocation: "/path/to/your-theoplayer-folder/",
-        license: "your_license_string"
+        libraryLocation: '/path/to/your-theoplayer-folder/',
+        license: 'your_license_string',
       });
 
       player.source = {
         sources: [
           {
-            src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
-            type: "application/x-mpegurl"
-          }
-        ]
+            src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
       };
     </script>
   </body>
@@ -110,7 +110,7 @@ The following line imports the THEOplayer JavaScript library, and gives you acce
 
 ```html
 <script type="module">
-  import * as THEOplayer from "/path/to/THEOplayer.esm.js";
+  import * as THEOplayer from '/path/to/THEOplayer.esm.js';
 </script>
 ```
 
@@ -121,7 +121,7 @@ You must swap `/path/to/` with your CDN URL.
 For example, if your SDK is hosted on `https://example.com/vendor/theoplayer/`, then you'd write the following import:
 
 ```js
-import * as THEOplayer from "https://example.com/vendor/theoplayer/THEOplayer.esm.js";
+import * as THEOplayer from 'https://example.com/vendor/theoplayer/THEOplayer.esm.js';
 ```
 
 #### THEOplayer CSS library
@@ -151,24 +151,24 @@ The snippet below implements these 4 steps.
 ```html
 <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
 <script type="module">
-  import * as THEOplayer from "/path/to/THEOplayer.esm.js";
+  import * as THEOplayer from '/path/to/THEOplayer.esm.js';
 
-  let element = document.querySelector(".theoplayer-container"); // fetch THEOplayer container div
+  let element = document.querySelector('.theoplayer-container'); // fetch THEOplayer container div
 
   let player = new THEOplayer.Player(element, {
     // instantiates video player
-    libraryLocation: "/path/to/your-theoplayer-folder/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
-    license: "your_license_string" // references your THEOplayer SDK license
+    libraryLocation: '/path/to/your-theoplayer-folder/', // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+    license: 'your_license_string', // references your THEOplayer SDK license
   });
 
   // HLS
   player.source = {
     sources: [
       {
-        src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8", // sets HLS source
-        type: "application/x-mpegurl" // sets type to HLS
-      }
-    ]
+        src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8', // sets HLS source
+        type: 'application/x-mpegurl', // sets type to HLS
+      },
+    ],
   };
 
   // DASH
@@ -195,7 +195,7 @@ This `<div>` element creates a video player container.
 - The `video-js theoplayer-skin vjs-16-9` classes load the default THEOplayer UI. You may omit `vjs-16-9` if you don't want a 16:9 container.
 
 ```javascript
-let element = document.querySelector(".theoplayer-container");
+let element = document.querySelector('.theoplayer-container');
 ```
 
 #### Create THEOplayer instance
@@ -206,8 +206,8 @@ specific [Player Configuration](pathname:///theoplayer/v8/api-reference/web/inte
 ```js
 let player = new THEOplayer.Player(element, {
   // instantiates video player
-  libraryLocation: "/path/to/your-theoplayer-folder/", // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
-  license: "your_license_string" // references your THEOplayer SDK license
+  libraryLocation: '/path/to/your-theoplayer-folder/', // references folder containing your THEOplayer library files (theoplayer.p.js, THEOplayer.js, ...)
+  license: 'your_license_string', // references your THEOplayer SDK license
 });
 ```
 
@@ -218,8 +218,8 @@ For example, if your SDK is hosted on `https://example.com/vendor/theoplayer/` a
 
 ```js
 var player = new THEOplayer.Player(element, {
-  libraryLocation: "https://example.com/vendor/theoplayer/",
-  license: "ABCD1234"
+  libraryLocation: 'https://example.com/vendor/theoplayer/',
+  license: 'ABCD1234',
 });
 ```
 
@@ -234,10 +234,10 @@ The snippet below configures a HLS video stream for the THEOplayer instance.
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8", // sets HLS source
-      type: "application/x-mpegurl" // sets type to HLS
-    }
-  ]
+      src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8', // sets HLS source
+      type: 'application/x-mpegurl', // sets type to HLS
+    },
+  ],
 };
 ```
 
@@ -263,21 +263,21 @@ We're done! Here's the complete code again, which you can put on your web server
   <body>
     <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
     <script type="module">
-      import * as THEOplayer from "/path/to/THEOplayer.esm.js";
+      import * as THEOplayer from '/path/to/THEOplayer.esm.js';
 
-      let element = document.querySelector(".theoplayer-container");
+      let element = document.querySelector('.theoplayer-container');
       let player = new THEOplayer.Player(element, {
-        libraryLocation: "/path/to/your-theoplayer-folder/",
-        license: "your_license_string"
+        libraryLocation: '/path/to/your-theoplayer-folder/',
+        license: 'your_license_string',
       });
 
       player.source = {
         sources: [
           {
-            src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
-            type: "application/x-mpegurl"
-          }
-        ]
+            src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+            type: 'application/x-mpegurl',
+          },
+        ],
       };
     </script>
   </body>

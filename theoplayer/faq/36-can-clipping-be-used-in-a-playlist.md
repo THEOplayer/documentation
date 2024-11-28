@@ -21,40 +21,39 @@ var playlist = [
   {
     source: {
       sources: {
-        src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8",
+        src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
         startTime: 100,
-        endTime: 150
+        endTime: 150,
       },
-      title: "Big Buck Bunny",
-      description: "Big Buck Bunny",
-      poster: "https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg"
-    }
+      title: 'Big Buck Bunny',
+      description: 'Big Buck Bunny',
+      poster: 'https://cdn.theoplayer.com/video/big_buck_bunny/poster.jpg',
+    },
   },
   {
     source: {
       sources: {
-        src: "https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
+        src: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
         startTime: 120,
-        endTime: 180
+        endTime: 180,
       },
-      title: "Star Wars Reel",
-      description: "Star Wars Reel",
-      poster:
-        "https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg"
-    }
+      title: 'Star Wars Reel',
+      description: 'Star Wars Reel',
+      poster: 'https://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/poster.jpg',
+    },
   },
   {
     source: {
       sources: {
-        src: "https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8",
+        src: 'https://cdn.theoplayer.com/video/tears_of_steel/index.m3u8',
         startTime: 50,
-        endTime: 150
+        endTime: 150,
       },
-      title: "Tears of Steel",
-      description: "Tears of Steel",
-      poster: "https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg"
-    }
-  }
+      title: 'Tears of Steel',
+      description: 'Tears of Steel',
+      poster: 'https://cdn.theoplayer.com/video/tears_of_steel/poster.jpg',
+    },
+  },
 ];
 
 // the desired source is set in the player -
@@ -70,12 +69,12 @@ var playlist = [
 function firstplaying() {
   player.clip.startTime = player.source.sources.startTime;
   player.clip.endTime = player.source.sources.endTime;
-  THEOplayer.players[0].removeEventListener("durationchange", firstplaying);
+  THEOplayer.players[0].removeEventListener('durationchange', firstplaying);
 }
 
-THEOplayer.players[0].addEventListener("sourcechange", function () {
-  THEOplayer.players[0].removeEventListener("durationchange", firstplaying);
-  THEOplayer.players[0].addEventListener("durationchange", firstplaying);
+THEOplayer.players[0].addEventListener('sourcechange', function () {
+  THEOplayer.players[0].removeEventListener('durationchange', firstplaying);
+  THEOplayer.players[0].addEventListener('durationchange', firstplaying);
 });
 ```
 

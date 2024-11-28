@@ -7,7 +7,7 @@ Note that only the `error` events in the "Player API" are fatal.
 Error events dispatched in different APIs (e.g. Ads API) are considered non-fatal, because some level of playback might still be possible, or the video player might recover from it.
 
 |          API           |                    Event                     |                                      Use                                       |                             Example/how to trigger                              |
-| :--------------------: | :------------------------------------------: | :----------------------------------------------------------------------------: |:-------------------------------------------------------------------------------:|
+| :--------------------: | :------------------------------------------: | :----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
 |         Player         |                    error                     |                 Triggered for media issues, NOT network issues                 |                            A poorly encoded segment                             |
 |                        | segmentnotfound (not on iOS + only for DASH) |                            A segment was not found                             |                           A 404 returned on a segment                           |
 |        Ads API         |                   aderror                    |                    Something went wrong during ad handling                     |                            Empty ad tag / Adblocker                             |

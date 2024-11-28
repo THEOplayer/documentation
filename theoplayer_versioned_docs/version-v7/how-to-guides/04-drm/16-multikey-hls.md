@@ -1,6 +1,6 @@
 # Multi-key HLS
 
-There are multiple DRM key systems on the market to choose from. The most popular ones are Google Widevine, Microsoft PlayReady and Apple FairPlay. Under the hood, all these systems encrypt the media samples using the AES-128 encryption algorithm. AES-128 is a standardized block-cipher that allows for multiple ways of choosing the blocks. Widevine and PlayReady both use `CTR` and FairPlay uses `CBC`. Therefore, it was possible to share segments between Widevine and PlayReady protected streams, but not with FairPlay protected stream. 
+There are multiple DRM key systems on the market to choose from. The most popular ones are Google Widevine, Microsoft PlayReady and Apple FairPlay. Under the hood, all these systems encrypt the media samples using the AES-128 encryption algorithm. AES-128 is a standardized block-cipher that allows for multiple ways of choosing the blocks. Widevine and PlayReady both use `CTR` and FairPlay uses `CBC`. Therefore, it was possible to share segments between Widevine and PlayReady protected streams, but not with FairPlay protected stream.
 However, support has been added for Widevine and PlayReady with AES-128 in `CBC` mode. Hence, it is now possible to create HLS streams compatible with all these key systems. Where you previously had to encode the stream twice, this is no longer needed. A multi-key HLS stream will play in all web platforms that support MSE and either Widevine, PlayReady or FairPlay.
 
 ## The HLS playlist
@@ -48,23 +48,23 @@ A corresponding player configuration looks like:
 player.source = {
   sources: [
     {
-      src: "https://yourdomain.com/playlist.m3u8",
-      type: "application/x-mpegurl",
+      src: 'https://yourdomain.com/playlist.m3u8',
+      type: 'application/x-mpegurl',
       contentProtection: {
         widevine: {
-          licenseAcquisitionURL: "https://widevine-server.com/license"
+          licenseAcquisitionURL: 'https://widevine-server.com/license',
         },
         playready: {
-          licenseAcquisitionURL: "https://playready-server.com/license"
+          licenseAcquisitionURL: 'https://playready-server.com/license',
         },
         fairplay: {
-          certificateURL: "https://fairplay-server.com/certificate",
-          licenseAcquisitionURL: "https://fairplay-server.com/license"
-        }
-      }
-    }
-  ]
+          certificateURL: 'https://fairplay-server.com/certificate',
+          licenseAcquisitionURL: 'https://fairplay-server.com/license',
+        },
+      },
+    },
+  ],
 };
 ```
 
-Note that this feature is available on the current HLS pipeline (default since THEOplayer 4.X). To use it in previous versions, the `lowLatency` flag must be set to true. 
+Note that this feature is available on the current HLS pipeline (default since THEOplayer 4.X). To use it in previous versions, the `lowLatency` flag must be set to true.

@@ -11,16 +11,16 @@ To measure the time-to-first-frame, you need to measure the time difference betw
 ```js
 var playEventRegisteredAt;
 function playingEventHandler(event) {
-  player.removeEventListener("playing", playingEventHandler);
+  player.removeEventListener('playing', playingEventHandler);
   var timeToFirstFrame = Date.now() - playEventRegisteredAt;
-  console.log("Time-to-first-frame:", timeToFirstFrame);
+  console.log('Time-to-first-frame:', timeToFirstFrame);
 }
 function playEventHandler(event) {
-  player.removeEventListener("play", playEventHandler);
+  player.removeEventListener('play', playEventHandler);
   playEventRegisteredAt = Date.now();
 }
-player.addEventListener("playing", playingEventHandler);
-player.addEventListener("play", playEventHandler);
+player.addEventListener('playing', playingEventHandler);
+player.addEventListener('play', playEventHandler);
 ```
 
 ##### Android SDK

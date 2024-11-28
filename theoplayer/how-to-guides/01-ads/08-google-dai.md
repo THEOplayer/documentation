@@ -71,9 +71,7 @@ Pretty self-explanatory, isn't it?
 The two snippets above are the references to the JS and CSS library.
 
 ```html
-<div
-  class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"
-></div>
+<div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
 ```
 
 The snippet above is your HTML container.
@@ -101,62 +99,59 @@ The snippet above initializes your player, including a HLS source.
 Add a Google DAI JavaScript library.
 
 ```javascript
-<script
-  type="text/javascript"
-  src="//imasdk.googleapis.com/js/sdkloader/ima3_dai.js"
-></script>
+<script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
 ```
 
 Add a Google DAI ad configuration to the sources.
 
 ```javascript
 const TYPES = {
-  hls: "application/vnd.apple.mpegurl",
-  dash: "application/dash+xml"
+  hls: 'application/vnd.apple.mpegurl',
+  dash: 'application/dash+xml',
 };
 
 // example and reference tester at https://developers.google.com/interactive-media-ads/docs/sdks/html5/dai/vastinspector
 const SOURCES = {
   dash: {
     vod: {
-      integration: "google-dai",
-      availabilityType: "vod",
+      integration: 'google-dai',
+      availabilityType: 'vod',
       apiKey: null,
-      contentSourceID: "<contentSourceID>",
-      videoID: "<videoID>"
+      contentSourceID: '<contentSourceID>',
+      videoID: '<videoID>',
     },
     live: {
-      integration: "google-dai",
-      availabilityType: "live",
+      integration: 'google-dai',
+      availabilityType: 'live',
       apiKey: null,
-      assetKey: "<assetKey>"
-    }
+      assetKey: '<assetKey>',
+    },
   },
   hls: {
     vod: {
-      integration: "google-dai",
-      availabilityType: "vod",
+      integration: 'google-dai',
+      availabilityType: 'vod',
       apiKey: null,
-      contentSourceID: "<contentSourceID>",
-      videoID: "<videoID>"
+      contentSourceID: '<contentSourceID>',
+      videoID: '<videoID>',
     },
     live: {
-      integration: "google-dai",
-      availabilityType: "live",
+      integration: 'google-dai',
+      availabilityType: 'live',
       apiKey: null,
-      assetKey: "<assetKey>"
-    }
-  }
+      assetKey: '<assetKey>',
+    },
+  },
 };
 // Configure THEOplayer Source
-const MANIFEST_TYPE = "hls"; // 'hls' / 'dash'
-const AVAILABILITY_TYPE = "vod"; // 'vod' or 'live'
+const MANIFEST_TYPE = 'hls'; // 'hls' / 'dash'
+const AVAILABILITY_TYPE = 'vod'; // 'vod' or 'live'
 
 player.source = {
   sources: {
     type: TYPES[MANIFEST_TYPE],
-    ssai: SOURCES[MANIFEST_TYPE][AVAILABILITY_TYPE]
-  }
+    ssai: SOURCES[MANIFEST_TYPE][AVAILABILITY_TYPE],
+  },
 };
 ```
 

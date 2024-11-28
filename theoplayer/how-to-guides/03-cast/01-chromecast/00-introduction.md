@@ -30,20 +30,20 @@ player.cast.chromecast.start();
 // if (want to stop Chromecast)
 player.cast.chromecast.stop();
 // ...
-if (chromecastState != "unavailable") {
+if (chromecastState != 'unavailable') {
   // Chromecast is possible
-  player.cast.chromecast.addEventListener("statechange", function (event) {
+  player.cast.chromecast.addEventListener('statechange', function (event) {
     switch (event.state) {
-      case "connecting":
+      case 'connecting':
         // show Chromecast trying-to-connect icon
         break;
-      case "available":
+      case 'available':
         // show Chromecast available icon
         break;
-      case "connected":
+      case 'connected':
         // show Chromecast connected icon
         break;
-      case "unavailable":
+      case 'unavailable':
         // hide Chromecast icon
         break;
     }
@@ -116,12 +116,12 @@ When a viewer is streaming through a Chromecast device, they are actually castin
 
 If you have implemented THEOplayer in your sender application, you can [enable Chromecast](../../../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md). Furthermore, you can also [specify the application ID](../../../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md#custom-receiver-app) in your sender application.
 
-![Casting approaches](../../../assets/img/casting-approaches.png "Casting approaches")
+![Casting approaches](../../../assets/img/casting-approaches.png 'Casting approaches')
 
 By specifying the application ID, you implicitly connect it with a type of receiver application. The following three types of receiver applications are common:
 
 | Type                                    | Maintainer             | Info                                                                                                                                                                                | Benefits                                                                                                                                                                                                      | Disadvantages                                                                                                                       |
-|-----------------------------------------|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | Default THEOplayer Receiver Application | THEOplayer             | This is the default receiver application THEOplayer SDKs will connect with. The app ID of this default THEOplayer receiver application is `8E80B9CE`.                               | You (i.e. the developer) do not need to do anything extra on the Chromecast receiver application side. You don't need to create a Chromecast receiver, you don't need to register it at, ... - it just works. | You are limited w.r.t. customizing the UI and integrating custom logic.                                                             |
 | Custom THEOplayer Receiver Application  | Developer + THEOplayer | This is a custom receiver application you can build, and where you integrate the [THEOplayer Chromecast SDK](../../../getting-started/01-sdks/06-chromecast/00-getting-started.md). | You (i.e. the developer) can adjust the look and feel, and integrate custom logic.                                                                                                                            | You need to create a Chromecast receiver, register it, maintain it, ...                                                             |
 | Customer Receiver Application           | Developer              | This is a custom receiver application you can build, but without using the THEOplayer Chromecast SDK.                                                                               | The THEOplayer Chromecast Receiver SDK is not a dependency.                                                                                                                                                   | You are responsible for building and maintaining the receiver application, and its connection with the various sender applications. |

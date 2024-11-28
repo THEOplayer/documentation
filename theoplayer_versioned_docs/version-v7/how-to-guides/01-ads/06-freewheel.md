@@ -35,15 +35,10 @@ Next, you add a [`FreeWheelAdDescription`](pathname:///theoplayer/v7/api-referen
 ```html
 ...
 <!-- make sure to link to a valid version number -->
-<script
-  type="text/javascript"
-  src="https://mssl.fwmrm.net/libs/adm/6.xx.x/AdManager.js"
-></script>
-... player.source = { sources : [{ src : 'your.m3u8', type :
-'application/x-mpegurl' }], ads: [{ integration: 'freewheel', networkId: 96749,
-assetId: 'DemoVideoGroup.01', profile: 'global-js', assetDuration: 22,
-adServerUrl: 'https://demo.v.fwmrm.net/ad/g/1', siteSectionId:
-'DemoSiteGroup.01', cuePoints: [{ adUnit: 'preroll' }] }] };
+<script type="text/javascript" src="https://mssl.fwmrm.net/libs/adm/6.xx.x/AdManager.js"></script>
+... player.source = { sources : [{ src : 'your.m3u8', type : 'application/x-mpegurl' }], ads: [{ integration: 'freewheel', networkId: 96749, assetId:
+'DemoVideoGroup.01', profile: 'global-js', assetDuration: 22, adServerUrl: 'https://demo.v.fwmrm.net/ad/g/1', siteSectionId: 'DemoSiteGroup.01',
+cuePoints: [{ adUnit: 'preroll' }] }] };
 ```
 
 We configure cuePoints in this example. This is needed for some set-ups or completely optional for others. THEOplayer will create a FreeWheel temporalSlot behind the screens, which is a request to schedule an advertisement at said point. It is up to FreeWheel (and the campaign settings) to decide whether it will insert an advertisement at this requested time. Not all campaigns need it and for some campaigns the requested cuePoints might even be ignored by FreeWheel.

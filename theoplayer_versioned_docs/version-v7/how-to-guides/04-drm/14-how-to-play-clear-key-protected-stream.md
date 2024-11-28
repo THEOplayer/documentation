@@ -23,19 +23,19 @@ With keys:
 ```js
 player.source = {
   sources: {
-    src: "your-manifest-URL",
+    src: 'your-manifest-URL',
     useCredentials: false,
     contentProtection: {
       clearkey: {
         keys: [
           {
-            id: "id",
-            value: "value"
-          }
-        ]
-      }
-    }
-  }
+            id: 'id',
+            value: 'value',
+          },
+        ],
+      },
+    },
+  },
 };
 ```
 
@@ -44,15 +44,14 @@ With a license URL:
 ```js
 player.source = {
   sources: {
-    src: "https://storage.googleapis.com/shaka-demo-assets/angel-one-clearkey/dash.mpd",
+    src: 'https://storage.googleapis.com/shaka-demo-assets/angel-one-clearkey/dash.mpd',
     useCredentials: false,
     contentProtection: {
       clearkey: {
-        licenseAcquisitionURL:
-          "https://cwip-shaka-proxy.appspot.com/clearkey?_u3wDe7erb7v8Lqt8A3QDQ=ABEiM0RVZneImaq7zN3u_w"
-      }
-    }
-  }
+        licenseAcquisitionURL: 'https://cwip-shaka-proxy.appspot.com/clearkey?_u3wDe7erb7v8Lqt8A3QDQ=ABEiM0RVZneImaq7zN3u_w',
+      },
+    },
+  },
 };
 ```
 

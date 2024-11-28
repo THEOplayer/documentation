@@ -9,10 +9,7 @@ The current frame of the player can be calculated given the current time of the 
 ```js
 function getCurrentFrame(player) {
   var activeQuality = player.videoTracks[0].activeQuality;
-  return Math.round(
-    (player.currentTime - activeQuality.firstFrame) * activeQuality.frameRate -
-      0.5
-  );
+  return Math.round((player.currentTime - activeQuality.firstFrame) * activeQuality.frameRate - 0.5);
 }
 ```
 
@@ -25,8 +22,7 @@ Given a certain frame number, it is possible to seek to this frame specifically.
 ```js
 function seekToFrame(player, targetFrame) {
   var activeQuality = player.videoTracks[0].activeQuality;
-  var time =
-    (targetFrame + 0.5) / activeQuality.frameRate + activeQuality.firstFrame;
+  var time = (targetFrame + 0.5) / activeQuality.frameRate + activeQuality.firstFrame;
   player.currentTime = time;
 }
 ```

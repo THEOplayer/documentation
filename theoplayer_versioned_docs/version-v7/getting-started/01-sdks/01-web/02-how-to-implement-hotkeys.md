@@ -50,7 +50,7 @@ Make a new JavaScript file and include it to your project with the rest of your 
 First off we're going to make a variable that holds the element in which we want to check for user interaction.
 
 ```javascript
-const wrapper = document.getElementById("yourPlayerId");
+const wrapper = document.getElementById('yourPlayerId');
 ```
 
 Next up are the individual functions:
@@ -138,10 +138,10 @@ Checks what presentation mode THEOplayer is in and switches the presentation mod
 
 ```javascript
 function toggleFullScreen() {
-  if (player.presentation.currentMode === "fullscreen") {
-    player.presentation.requestMode("inline");
+  if (player.presentation.currentMode === 'fullscreen') {
+    player.presentation.requestMode('inline');
   } else {
-    player.presentation.requestMode("fullscreen");
+    player.presentation.requestMode('fullscreen');
   }
 }
 ```
@@ -174,34 +174,29 @@ function getPressedKey(event) {
   const pressedKey = event.key;
   let action;
   switch (pressedKey) {
-    case " ":
+    case ' ':
       action = togglePlay(); //Pauses or Unpauses with Space
       break;
-    case "ArrowLeft":
+    case 'ArrowLeft':
       action = rewind(); //Rewinds the video with the Left Arrow Key
       break;
-    case "ArrowRight":
+    case 'ArrowRight':
       action = forward(); //Forwards the video with the Right Arrow Key
       break;
-    case "ArrowUp":
+    case 'ArrowUp':
       action = increaseVolume(); //Increases volume with the Up Arrow Key
       break;
-    case "ArrowDown":
+    case 'ArrowDown':
       action = decreaseVolume(); //Lowers volume with the Down Arrow Key
       break;
-    case "f":
+    case 'f':
       action = toggleFullScreen(); //Toggle Fullscreen mode with the 'F' Key
       break;
-    case "m":
+    case 'm':
       action = toggleMute(); //Toggle Mute with the 'M' Key
       break;
   }
-  if (
-    action &&
-    pressedKey !== "Control" &&
-    pressedKey !== "Alt" &&
-    pressedKey !== "Shift"
-  ) {
+  if (action && pressedKey !== 'Control' && pressedKey !== 'Alt' && pressedKey !== 'Shift') {
     action();
     preventStandardHotKeyActions(event); //Stops the default key behavior like jumping the page with space.
   }
@@ -221,9 +216,9 @@ The snippet below will catch when the active element changes. If this element is
 ```javascript
 function playerFocused() {
   if (wrapper.contains(document.activeElement)) {
-    document.addEventListener("keydown", getPressedKey);
+    document.addEventListener('keydown', getPressedKey);
   } else {
-    document.removeEventListener("keydown", getPressedKey);
+    document.removeEventListener('keydown', getPressedKey);
   }
 }
 ```
@@ -243,8 +238,8 @@ Creates an eventListener for both 'keydown' events and when the viewer's mouse l
 ```javascript
 function mouseInPlayer() {
   //Adds listeners for the keydown event and mouse leave event
-  document.addEventListener("keydown", getPressedKey);
-  wrapper.addEventListener("mouseleave", mouseOutPlayer);
+  document.addEventListener('keydown', getPressedKey);
+  wrapper.addEventListener('mouseleave', mouseOutPlayer);
 }
 ```
 
@@ -257,8 +252,8 @@ When the viewer has left the wrapper area, the unused eventListeners are removed
 ```javascript
 function mouseOutPlayer() {
   //Checks if the mouse leaves the player wrapper area
-  wrapper.removeEventListener("mouseleave", mouseOutPlayer);
-  document.removeEventListener("keydown", getPressedKey);
+  wrapper.removeEventListener('mouseleave', mouseOutPlayer);
+  document.removeEventListener('keydown', getPressedKey);
 }
 ```
 
@@ -276,17 +271,17 @@ When calling this function you can use:
 ```javascript
 function enableShortcuts(method) {
   switch (method) {
-    case "mouseOver": //If the param reads 'mouseOver' shortcuts are only enabled when the mouse is inside of the player.
-      wrapper.addEventListener("mouseenter", mouseInPlayer);
+    case 'mouseOver': //If the param reads 'mouseOver' shortcuts are only enabled when the mouse is inside of the player.
+      wrapper.addEventListener('mouseenter', mouseInPlayer);
       break;
-    case "playerFocused": //If the param reads 'playerFocused' shortcuts are only enabled when the player is focused.
-      document.addEventListener("focus", playerFocused, true);
+    case 'playerFocused': //If the param reads 'playerFocused' shortcuts are only enabled when the player is focused.
+      document.addEventListener('focus', playerFocused, true);
       break;
     default:
-      document.addEventListener("keydown", getPressedKey); //Else player shortcuts are always enabled.
+      document.addEventListener('keydown', getPressedKey); //Else player shortcuts are always enabled.
   }
 }
-enableShortcuts("mouseOver");
+enableShortcuts('mouseOver');
 ```
 
 ---
@@ -294,31 +289,31 @@ enableShortcuts("mouseOver");
 ## Full JavaScript Code Example
 
 ```javascript
-const wrapper = document.getElementById("yourPlayerId");
-const element = document.querySelector(".video-js");
+const wrapper = document.getElementById('yourPlayerId');
+const element = document.querySelector('.video-js');
 
 const player = new THEOplayer.Player(element, {
   ui: {
-    fluid: true
+    fluid: true,
   },
-  libraryLocation: "/YourTHEOplayerLibraryLocation/",
-  license: "your-license-here"
+  libraryLocation: '/YourTHEOplayerLibraryLocation/',
+  license: 'your-license-here',
 });
 
 player.source = {
-  sources: ["https://example.mpd"],
+  sources: ['https://example.mpd'],
   metadata: {
     images: [
       {
-        src: "https://thumbnail.jpg"
-      }
+        src: 'https://thumbnail.jpg',
+      },
     ],
-    releaseDate: "2014-10-31",
+    releaseDate: '2014-10-31',
     releaseYear: 2014,
-    subtitle: "My movie subtitle",
-    title: "My movie",
-    type: "movie"
-  }
+    subtitle: 'My movie subtitle',
+    title: 'My movie',
+    type: 'movie',
+  },
 };
 
 function togglePlay() {
@@ -346,10 +341,10 @@ function decreaseVolume() {
 }
 
 function toggleFullScreen() {
-  if (player.presentation.currentMode === "fullscreen") {
-    player.presentation.requestMode("inline");
+  if (player.presentation.currentMode === 'fullscreen') {
+    player.presentation.requestMode('inline');
   } else {
-    player.presentation.requestMode("fullscreen");
+    player.presentation.requestMode('fullscreen');
   }
 }
 
@@ -366,34 +361,29 @@ function getPressedKey(event) {
   const pressedKey = event.key;
   let action;
   switch (pressedKey) {
-    case " ":
+    case ' ':
       action = togglePlay(); //Pauses or Unpauses with Space
       break;
-    case "ArrowLeft":
+    case 'ArrowLeft':
       action = rewind(); //Rewinds the video with the Left Arrow Key
       break;
-    case "ArrowRight":
+    case 'ArrowRight':
       action = forward(); //Forwards the video with the Right Arrow Key
       break;
-    case "ArrowUp":
+    case 'ArrowUp':
       action = increaseVolume(); //Increases volume with the Up Arrow Key
       break;
-    case "ArrowDown":
+    case 'ArrowDown':
       action = decreaseVolume(); //Lowers volume with the Down Arrow Key
       break;
-    case "f":
+    case 'f':
       action = toggleFullScreen(); //Toggle Fullscreen mode with the 'F' Key
       break;
-    case "m":
+    case 'm':
       action = toggleMute(); //Toggle Mute with the 'M' Key
       break;
   }
-  if (
-    action &&
-    pressedKey !== "Control" &&
-    pressedKey !== "Alt" &&
-    pressedKey !== "Shift"
-  ) {
+  if (action && pressedKey !== 'Control' && pressedKey !== 'Alt' && pressedKey !== 'Shift') {
     action();
     preventStandardHotKeyActions(event); //Stops the default key behavior like jumping the page with space.
   }
@@ -401,34 +391,34 @@ function getPressedKey(event) {
 
 function playerFocused() {
   if (wrapper.contains(document.activeElement)) {
-    document.addEventListener("keydown", getPressedKey);
+    document.addEventListener('keydown', getPressedKey);
   } else {
-    document.removeEventListener("keydown", getPressedKey);
+    document.removeEventListener('keydown', getPressedKey);
   }
 }
 
 function mouseInPlayer() {
   //Checks if the mouse is inside the player wrapper area
-  document.addEventListener("keydown", getPressedKey);
-  wrapper.addEventListener("mouseleave", mouseOutPlayer);
+  document.addEventListener('keydown', getPressedKey);
+  wrapper.addEventListener('mouseleave', mouseOutPlayer);
 }
 
 function mouseOutPlayer() {
   //Checks if the mouse leaves the player wrapper area
-  wrapper.removeEventListener("mouseleave", mouseOutPlayer);
-  document.removeEventListener("keydown", getPressedKey);
+  wrapper.removeEventListener('mouseleave', mouseOutPlayer);
+  document.removeEventListener('keydown', getPressedKey);
 }
 
 function enableShortcuts(method) {
   switch (method) {
-    case "mouseOver": //If the param reads 'mouseOver' shortcuts are only enabled when the mouse is inside of the player.
-      wrapper.addEventListener("mouseenter", mouseInPlayer);
+    case 'mouseOver': //If the param reads 'mouseOver' shortcuts are only enabled when the mouse is inside of the player.
+      wrapper.addEventListener('mouseenter', mouseInPlayer);
       break;
-    case "playerFocused": //If the param reads 'playerFocused' shortcuts are only enabled when the player is focused.
-      document.addEventListener("focus", playerFocused, true);
+    case 'playerFocused': //If the param reads 'playerFocused' shortcuts are only enabled when the player is focused.
+      document.addEventListener('focus', playerFocused, true);
       break;
     default:
-      document.addEventListener("keydown", getPressedKey); //Else player shortcuts are always enabled.
+      document.addEventListener('keydown', getPressedKey); //Else player shortcuts are always enabled.
   }
 }
 

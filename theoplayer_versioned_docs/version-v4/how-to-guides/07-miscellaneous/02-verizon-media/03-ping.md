@@ -117,6 +117,7 @@ If this configuration is not present, or none of the configuration options is ac
 ## Ping requests
 
 When the Ping API is enabled, THEOplayer will call the Ping URL located at:
+
 ```
 {prefix}/session/ping/{sessionID}.json?v=3&pt={currentTime}&ev={event}&ft={freeWheelTime}
 ```
@@ -171,7 +172,7 @@ The raw ping response can be retrieved by adding an event listener for the "ping
 ##### Web SDK
 
 ```js
-player.verizonMedia.addEventListener("pingresponse", function (event) {
+player.verizonMedia.addEventListener('pingresponse', function (event) {
   console.log(event.response); // Will print the raw Ping response.
 });
 ```

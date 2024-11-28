@@ -11,6 +11,12 @@
 .docusaurus
 .cache-loader
 static/theoplayer-license.txt
+theoplayer/changelog.md
+theoplayer/static/theoplayer/*/api-reference
+theoplayer_versioned_docs/*/changelog.md
+theoplayer_versioned_docs/*/static/theoplayer/*/api-reference
+theoads/api/ads-client.swagger.json
+theoads/api/signaling/
 
 # Submodules
 theoplayer/external/

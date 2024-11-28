@@ -20,41 +20,41 @@ First, define the metadata for your MediaSession: [see documentation here](https
 
 ```javascript
 const mediaSessionMetadata = {
-  title: "Sintel",
-  artist: "Blender",
-  album: "Movie",
+  title: 'Sintel',
+  artist: 'Blender',
+  album: 'Movie',
   artwork: [
     {
-      src: "https://storage.googleapis.com/media-session/sintel/artwork-96.png",
-      sizes: "96x96",
-      type: "image/png"
+      src: 'https://storage.googleapis.com/media-session/sintel/artwork-96.png',
+      sizes: '96x96',
+      type: 'image/png',
     },
     {
-      src: "https://storage.googleapis.com/media-session/sintel/artwork-128.png",
-      sizes: "128x128",
-      type: "image/png"
+      src: 'https://storage.googleapis.com/media-session/sintel/artwork-128.png',
+      sizes: '128x128',
+      type: 'image/png',
     },
     {
-      src: "https://storage.googleapis.com/media-session/sintel/artwork-192.png",
-      sizes: "192x192",
-      type: "image/png"
+      src: 'https://storage.googleapis.com/media-session/sintel/artwork-192.png',
+      sizes: '192x192',
+      type: 'image/png',
     },
     {
-      src: "https://storage.googleapis.com/media-session/sintel/artwork-256.png",
-      sizes: "256x256",
-      type: "image/png"
+      src: 'https://storage.googleapis.com/media-session/sintel/artwork-256.png',
+      sizes: '256x256',
+      type: 'image/png',
     },
     {
-      src: "https://storage.googleapis.com/media-session/sintel/artwork-384.png",
-      sizes: "384x384",
-      type: "image/png"
+      src: 'https://storage.googleapis.com/media-session/sintel/artwork-384.png',
+      sizes: '384x384',
+      type: 'image/png',
     },
     {
-      src: "https://storage.googleapis.com/media-session/sintel/artwork-512.png",
-      sizes: "512x512",
-      type: "image/png"
-    }
-  ]
+      src: 'https://storage.googleapis.com/media-session/sintel/artwork-512.png',
+      sizes: '512x512',
+      type: 'image/png',
+    },
+  ],
 };
 ```
 
@@ -67,76 +67,61 @@ function addMediaSessionEventListeners(player) {
   if (mediaSession === undefined) {
     return;
   }
-  mediaSession.setActionHandler("play", () => player.play());
-  mediaSession.setActionHandler("pause", () => player.pause());
-  mediaSession.setActionHandler("seekto", (details) => {
+  mediaSession.setActionHandler('play', () => player.play());
+  mediaSession.setActionHandler('pause', () => player.pause());
+  mediaSession.setActionHandler('seekto', (details) => {
     if (isNaN(player.duration)) {
       return;
     }
     player.currentTime = details.seekTime;
   });
-  mediaSession.setActionHandler("seekbackward", function (details) {
+  mediaSession.setActionHandler('seekbackward', function (details) {
     if (isNaN(player.duration)) {
       return;
     }
-    player.currentTime = Math.max(
-      player.currentTime - (details.seekOffset ?? 10),
-      0
-    );
+    player.currentTime = Math.max(player.currentTime - (details.seekOffset ?? 10), 0);
   });
-  mediaSession.setActionHandler("seekforward", function (details) {
+  mediaSession.setActionHandler('seekforward', function (details) {
     if (isNaN(player.duration)) {
       return;
     }
-    player.currentTime = Math.min(
-      player.currentTime + (details.seekOffset ?? 10),
-      player.duration
-    );
+    player.currentTime = Math.min(player.currentTime + (details.seekOffset ?? 10), player.duration);
   });
   var updateMediaSession = function () {
     if (isNaN(player.duration)) {
       return;
     }
-    mediaSession.playbackState = player.paused ? "paused" : "playing";
+    mediaSession.playbackState = player.paused ? 'paused' : 'playing';
     const seekableLength = player.seekable.length;
     if (seekableLength === 0) {
       return;
     }
     mediaSession.setPositionState({
-      duration: Math.max(
-        player.seekable.end(seekableLength - 1),
-        player.currentTime
-      ),
+      duration: Math.max(player.seekable.end(seekableLength - 1), player.currentTime),
       playbackRate: player.playbackRate,
-      position: player.currentTime
+      position: player.currentTime,
     });
   };
   var onFirstPlaying = function () {
-    player.removeEventListener(["play", "playing"], onFirstPlaying);
+    player.removeEventListener(['play', 'playing'], onFirstPlaying);
     // Set MediaSession metadata
     if (mediaSessionMetadata !== undefined) {
       mediaSession.metadata = new MediaMetadata(mediaSessionMetadata);
     }
     // Start monitoring player to update MediaSession
-    player.addEventListener(
-      ["play", "pause", "durationchange", "timeupdate", "ratechange"],
-      updateMediaSession
-    );
+    player.addEventListener(['play', 'pause', 'durationchange', 'timeupdate', 'ratechange'], updateMediaSession);
   };
   var onSourceChange = function () {
     // Remove event listeners
-    player.removeEventListener(["play", "playing"], onFirstPlaying);
-    player.removeEventListener(
-      ["play", "pause", "durationchange", "timeupdate", "ratechange"],
-      updateMediaSession
-    );
+    player.removeEventListener(['play', 'playing'], onFirstPlaying);
+    player.removeEventListener(['play', 'pause', 'durationchange', 'timeupdate', 'ratechange'], updateMediaSession);
     // Reset MediaSession
     mediaSession.metadata = undefined;
-    mediaSession.playbackState = "none";
+    mediaSession.playbackState = 'none';
     // Wait for next source playback
-    player.addEventListener(["play", "playing"], onFirstPlaying);
+    player.addEventListener(['play', 'playing'], onFirstPlaying);
   };
-  player.addEventListener("sourcechange", onSourceChange);
+  player.addEventListener('sourcechange', onSourceChange);
 }
 ```
 
@@ -148,9 +133,9 @@ addMediaSessionEventListeners(player);
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/sintel/nosubs.m3u8"
-    }
-  ]
+      src: 'https://cdn.theoplayer.com/video/sintel/nosubs.m3u8',
+    },
+  ],
 };
 ```
 

@@ -6,11 +6,11 @@ This guide describes how to do a [custom IrisTV integration](https://iristv.atla
 
 ## SDKs
 
-| Web SDK |                 Android SDK                 |                   iOS SDK                   | tvOS SDK |               Android TV SDK                | Chromecast SDK |
-| :-----: | :-----------------------------------------: | :-----------------------------------------: | :------: | :-----------------------------------------: | :------------: |
-|   Yes   | Unverified through CSS/JavaScript injection* | Unverified through CSS/JavaScript* injection |    No    | Unverified through CSS/JavaScript injection* |      N/A       |
+| Web SDK |                  Android SDK                  |                    iOS SDK                    | tvOS SDK |                Android TV SDK                 | Chromecast SDK |
+| :-----: | :-------------------------------------------: | :-------------------------------------------: | :------: | :-------------------------------------------: | :------------: |
+|   Yes   | Unverified through CSS/JavaScript injection\* | Unverified through CSS/JavaScript\* injection |    No    | Unverified through CSS/JavaScript injection\* |      N/A       |
 
-*CSS/JavaScript injection in the project is only possible with the legacy mobile SDKs (up to 4.12.X).
+\*CSS/JavaScript injection in the project is only possible with the legacy mobile SDKs (up to 4.12.X).
 
 ## How to integrate the player with Iris.TV
 
@@ -43,10 +43,7 @@ You need to include the IrisTV JavaScript library in your project:
 Include the script tag right before where you include the THEOplayer.js library:
 
 ```html
-<script
-  type="text/javascript"
-  src="https://ovp.iris.tv/libs/adaptive/iris.adaptive.js"
-></script>
+<script type="text/javascript" src="https://ovp.iris.tv/libs/adaptive/iris.adaptive.js"></script>
 ```
 
 ##### Legacy Android SDK (4.12.X)
@@ -70,17 +67,13 @@ You need to include the JavaScript script tag referencing the file containing th
 Include the script tag this right after where you include the THEOplayer.js library.
 
 ```html
-<script
-  type="text/javascript"
-  src="https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.js"
-></script>
+<script type="text/javascript" src="https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.js"></script>
 ```
 
 You can also add extra styling on top of the IrisTV UI:
 
 ```html
-<link rel='stylesheet' type='text/css'
-    href='https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.css' />
+<link rel="stylesheet" type="text/css" href="https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.css" />
 ```
 
 ##### Legacy Android SDK (4.12.X)

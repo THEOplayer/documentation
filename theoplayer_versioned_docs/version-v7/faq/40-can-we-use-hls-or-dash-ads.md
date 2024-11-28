@@ -8,14 +8,14 @@ To be able to play HLS or DASH advertisements, make sure to add `allowedMimeType
 new THEOplayer.Player(element, {
   ads: {
     allowedMimeTypes: [
-      "application/dash+xml",
-      "application/x-mpegURL",
-      "application/vnd.apple.mpegurl",
-      "video/mp4",
-      "video/3gpp", // See the Remark about 3gpp at the bottom.
-      "video/webm"
-    ]
-  }
+      'application/dash+xml',
+      'application/x-mpegURL',
+      'application/vnd.apple.mpegurl',
+      'video/mp4',
+      'video/3gpp', // See the Remark about 3gpp at the bottom.
+      'video/webm',
+    ],
+  },
 });
 ```
 

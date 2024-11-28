@@ -21,13 +21,12 @@ The Web SDK leverages the [MediaTrack API](pathname:///theoplayer/v6/api-referen
 
 ```js
 // enable a specific video track quality
-player.videoTracks[0].targetQuality =
-  player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality];
+player.videoTracks[0].targetQuality = player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality];
 
 // do ABR on a set of qualities
 player.videoTracks[0].targetQuality = [
   player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality1],
-  player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality2]
+  player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality2],
 ];
 
 // set to default ABR algorithm

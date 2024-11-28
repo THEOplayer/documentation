@@ -11,7 +11,7 @@ In 2.78, we fixed an issue that was preventing specific streams to play in Edge 
 We noticed that, due to their default settings, a conflict arises (regarding which DRM system is to be given priority) between the player and the browser. This may lead to playback failure for certain PlayReady streams. This is solved directly on the implementer’s side by using the following values order for the _preferredKeySystems_ property.
 
 ```js
-preferredKeySystems: ["playready", "widevine", "fairplay"];
+preferredKeySystems: ['playready', 'widevine', 'fairplay'];
 ```
 
 Please note that this will not hinder playback in case also/only Widevine is present, nor on other browsers.

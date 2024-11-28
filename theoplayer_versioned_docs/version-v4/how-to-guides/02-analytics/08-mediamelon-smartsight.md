@@ -1,13 +1,14 @@
 # MediaMelon SmartSight
+
 MediaMelon SmartSight is an analytics service maintained by MediaMelon. THEOplayer offers a pre-integration for this solution.
 
 ## SDKs
 
-| Web SDK |           Android SDK            |             iOS SDK              | tvOS SDK | Android TV SDK | Chromecast SDK |
-| :-----: | :------------------------------: | :------------------------------: | :------: | :------------: | :------------: |
-|   Yes   | Through CSS/JavaScript injection* | Through CSS/JavaScript injection* |    ?     |       ?        |   Unverified   |
+| Web SDK |            Android SDK             |              iOS SDK               | tvOS SDK | Android TV SDK | Chromecast SDK |
+| :-----: | :--------------------------------: | :--------------------------------: | :------: | :------------: | :------------: |
+|   Yes   | Through CSS/JavaScript injection\* | Through CSS/JavaScript injection\* |    ?     |       ?        |   Unverified   |
 
-*CSS/JavaScript injection in the project is only possible with the legacy mobile SDKs (up to 4.12.X).
+\*CSS/JavaScript injection in the project is only possible with the legacy mobile SDKs (up to 4.12.X).
 
 ## Prerequisites
 
@@ -23,10 +24,7 @@ MediaMelon SmartSight is an analytics service maintained by MediaMelon. THEOplay
 Include the following scripts in the web page (before THEOplayer.js files are loaded):
 
 ```html
-<script
-  type="text/javascript"
-  src="https://PATH_TO_SMARTSIGHT_SDK/mmsmartstreaming-theo-sdk.js"
-></script>
+<script type="text/javascript" src="https://PATH_TO_SMARTSIGHT_SDK/mmsmartstreaming-theo-sdk.js"></script>
 <script type="text/javascript" src="THEOplayer.js"></script>
 ```
 
@@ -71,20 +69,20 @@ You can also provide the assetId, assetName, videoId, and custom tags as shown b
 player.source = {
   sources: [
     {
-      src: "//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8",
-      type: "application/x-mpegurl"
-    }
+      src: '//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+      type: 'application/x-mpegurl',
+    },
   ],
   mmVideoAssetInfo: {
-    assetName: "Elephants Dream",
-    assetId: "ASSETID_STRING",
-    videoId: "VIDEOID_STRING",
+    assetName: 'Elephants Dream',
+    assetId: 'ASSETID_STRING',
+    videoId: 'VIDEOID_STRING',
     customTags: {
-      key1: "VALUE_STRING1",
-      key2: "VALUE_STRING2",
-      key3: "VALUE_STRING3"
-    }
-  }
+      key1: 'VALUE_STRING1',
+      key2: 'VALUE_STRING2',
+      key3: 'VALUE_STRING3',
+    },
+  },
 };
 ```
 

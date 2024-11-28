@@ -74,13 +74,13 @@ Configure the Moat partner code.
 
 ```js
 new THEOplayer.Player(containerElement, {
-  libraryLocation: "https://cdn.theoplayer.com/dash/theoplayer/",
+  libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
   analytics: [
     {
-      integration: "moat",
-      partnerCode: "<PARTNER_CODE>"
-    }
-  ]
+      integration: 'moat',
+      partnerCode: '<PARTNER_CODE>',
+    },
+  ],
 });
 ```
 

@@ -46,7 +46,7 @@ general video player events like `play`, `pause` and `ended`.
 The [`Ads`](pathname:///theoplayer/v7/api-reference/web/interfaces/AdsEventMap.html) interface contains events related to advertisements,
 like `adbreakbegin` and `adend`.
 
-![THEOplayer API Interfaces and Events](../../../../theoplayer/assets/img/analytics-events.png "THEOplayer API Interfaces and Events")
+![THEOplayer API Interfaces and Events](../../../../theoplayer/assets/img/analytics-events.png 'THEOplayer API Interfaces and Events')
 
 When creating a custom analytics implementation, you must familiarize yourself with the relevant interfaces and events.
 Luckily, all information is available at [https://docs.theoplayer.com/](https://docs.theoplayer.com/),
@@ -161,12 +161,9 @@ This script also sets up a default tracker for your tracking ID UA-XXXXX-Y.
 
 ```html
 <head>
-  ...
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview'); ...
+  ... (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+  Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview'); ...
 </head>
 ```
 
@@ -178,28 +175,15 @@ For example, with Google Analytics, we could subscribe to a list of events,
 and call the `ga('send')` function from the Google Analytics API to forward this event to your Google Analytics database.
 
 ```js
-player.addEventListener(
-  [
-    "durationchange",
-    "stalled",
-    "ended",
-    "seeking",
-    "seeked",
-    "waiting",
-    "playing",
-    "pause",
-    "volumechange"
-  ],
-  function (event) {
-    ga("send", {
-      hitType: "event",
-      eventCategory: "video",
-      eventAction: event.type,
-      eventLabel: player.src,
-      eventValue: Math.floor(player.currentTime)
-    });
-  }
-);
+player.addEventListener(['durationchange', 'stalled', 'ended', 'seeking', 'seeked', 'waiting', 'playing', 'pause', 'volumechange'], function (event) {
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'video',
+    eventAction: event.type,
+    eventLabel: player.src,
+    eventValue: Math.floor(player.currentTime),
+  });
+});
 ```
 
 For more advanced integrations, Google Analytics also allows you to [create multiple named trackers](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers).
@@ -209,23 +193,23 @@ A useful example would a `firstplay` event, which would map to the "first play" 
 
 ```js
 var firstplay = true;
-player.addEventListener("play", function (event) {
+player.addEventListener('play', function (event) {
   if (firstplay) {
-    ga("send", {
-      hitType: "event",
-      eventCategory: "video",
-      eventAction: "firstplay",
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'video',
+      eventAction: 'firstplay',
       eventLabel: player.src,
-      eventValue: Math.floor(player.currentTime)
+      eventValue: Math.floor(player.currentTime),
     });
     firstplay = false;
   }
-  ga("send", {
-    hitType: "event",
-    eventCategory: "video",
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'video',
     eventAction: event.type,
     eventLabel: player.src,
-    eventValue: Math.floor(player.currentTime)
+    eventValue: Math.floor(player.currentTime),
   });
 });
 ```
@@ -239,14 +223,14 @@ For example, if you want to notify GA of a video quality change event, you have 
 and leverage the `VideoTrackList` interface and the `VideoTrack` interface.
 
 ```js
-player.videoTracks.addEventListener("addtrack", function (e0) {
-  e0.track.addEventListener("activequalitychanged", function (e1) {
-    ga("send", {
-      hitType: "event",
-      eventCategory: "video",
+player.videoTracks.addEventListener('addtrack', function (e0) {
+  e0.track.addEventListener('activequalitychanged', function (e1) {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'video',
       eventAction: e1.type,
       eventLabel: player.src,
-      eventValue: Math.floor(player.currentTime)
+      eventValue: Math.floor(player.currentTime),
     });
   });
 });

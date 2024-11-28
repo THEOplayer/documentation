@@ -25,19 +25,13 @@ To use Google IMA in the Web SDK,
 Google IMA has a dependency on the IMA SDK. Hence, this library needs to be included. The following snippet demonstrates how the IMA SDK can be included:
 
 ```html
-<script
-  type="text/javascript"
-  src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"
-></script>
+<script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
 ```
 
 Alternatively, you can include the debug version of the IMA SDK for troubleshooting, which will provide extra logs from IMA on console:
 
 ```html
-<script
-  type="text/javascript"
-  src="https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js"
-></script>
+<script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js"></script>
 ```
 
 #### Specify the integration
@@ -48,16 +42,16 @@ You need to set integration to `"google-ima"`, as demonstrated by the snippet be
 player.source = {
   sources: [
     {
-      src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8"
-    }
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
   ],
   ads: [
     {
-      integration: "google-ima",
-      sources: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml",
-      timeOffset: "start"
-    }
-  ]
+      integration: 'google-ima',
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+    },
+  ],
 };
 ```
 

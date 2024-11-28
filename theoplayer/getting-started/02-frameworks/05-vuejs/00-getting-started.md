@@ -44,25 +44,15 @@ npm run serve
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>theoplayer-vuejs-sample</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdn.theoplayer.com/dash/theoplayer/ui.css"
-    />
+    <link rel="stylesheet" type="text/css" href="//cdn.theoplayer.com/dash/theoplayer/ui.css" />
   </head>
 
   <body>
     <noscript>
-      <strong
-        >We're sorry but theoplayer-vuejs-sample doesn't work properly without
-        JavaScript enabled. Please enable it to continue.</strong
-      >
+      <strong>We're sorry but theoplayer-vuejs-sample doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <script
-      type="text/javascript"
-      src="//cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"
-    ></script>
+    <script type="text/javascript" src="//cdn.theoplayer.com/dash/theoplayer/THEOplayer.js"></script>
     <!-- built files will be auto injected -->
   </body>
 </html>
@@ -72,15 +62,12 @@ npm run serve
 
 ```html
 <template>
-  <div
-    class="theoplayer-container video-js theoplayer-skin vjs-16-9 THEOplayer"
-    ref="theoplayer"
-  ></div>
+  <div class="theoplayer-container video-js theoplayer-skin vjs-16-9 THEOplayer" ref="theoplayer"></div>
 </template>
 
 <script>
   export default {
-    props: ["source"],
+    props: ['source'],
     mounted: function () {
       this.playerInit();
     },
@@ -88,13 +75,13 @@ npm run serve
       playerInit() {
         const player = new window.THEOplayer.Player(this.$refs.theoplayer, {
           fluid: true,
-          libraryLocation: "//cdn.theoplayer.com/dash/theoplayer/"
+          libraryLocation: '//cdn.theoplayer.com/dash/theoplayer/',
         });
         player.source = {
-          sources: this.source
+          sources: this.source,
         };
-      }
-    }
+      },
+    },
   };
 </script>
 <style>
@@ -121,28 +108,28 @@ npm run serve
 </template>
 
 <script>
-  import Player from "./components/Player.vue";
+  import Player from './components/Player.vue';
 
   export default {
-    name: "app",
+    name: 'app',
     components: {
-      Player
+      Player,
     },
     data: function () {
       return {
         source: [
           {
-            type: "application/x-mpegurl",
-            src: "//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8"
-          }
-        ]
+            type: 'application/x-mpegurl',
+            src: '//cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+          },
+        ],
       };
-    }
+    },
   };
 </script>
 <style>
   #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -172,10 +159,7 @@ npm run serve
 
   <body>
     <noscript>
-      <strong
-        >We're sorry but theoplayer-vuejs-sample doesn't work properly without
-        JavaScript enabled. Please enable it to continue.</strong
-      >
+      <strong>We're sorry but theoplayer-vuejs-sample doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <script type="text/javascript" src="libs/THEOplayer/THEOplayer.js"></script>
@@ -189,6 +173,6 @@ npm run serve
 ```js
 const player = new window.THEOplayer.Player(this.$refs.theoplayer, {
   fluid: true,
-  libraryLocation: "./libs/THEOplayer"
+  libraryLocation: './libs/THEOplayer',
 });
 ```

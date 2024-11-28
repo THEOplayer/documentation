@@ -81,20 +81,20 @@ Each language should be described as a [UIConfiguration](pathname:///theoplayer/
 
 ```js
 player = new THEOplayer.Player(playerElement, {
-  libraryLocation: "path/to/theoplayer/",
-  license: "your-license-here",
+  libraryLocation: 'path/to/theoplayer/',
+  license: 'your-license-here',
   ui: {
-    language: "esp",
+    language: 'esp',
     languages: {
       esp: {
-        Play: "Reproducir",
-        Pause: "Pausa",
-        "Current Time": "Tiempo actual",
-        "Duration Time": "Duración",
-        "Remaining Time": "Tiempo restante"
-      }
-    }
-  }
+        Play: 'Reproducir',
+        Pause: 'Pausa',
+        'Current Time': 'Tiempo actual',
+        'Duration Time': 'Duración',
+        'Remaining Time': 'Tiempo restante',
+      },
+    },
+  },
 });
 ```
 

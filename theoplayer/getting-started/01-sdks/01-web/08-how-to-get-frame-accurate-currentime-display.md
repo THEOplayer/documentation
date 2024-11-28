@@ -23,32 +23,20 @@ function secondsToHms(d) {
   var m = Math.floor((d % 3600) / 60);
   var s = Math.floor((d % 3600) % 60);
 
-  var hDisplay = h < 10 ? "0" + h : h;
-  var mDisplay = m < 10 ? "0" + m : m;
-  var sDisplay = s < 10 ? "0" + s : s;
+  var hDisplay = h < 10 ? '0' + h : h;
+  var mDisplay = m < 10 ? '0' + m : m;
+  var sDisplay = s < 10 ? '0' + s : s;
   var msDisplay = ms.toFixed(3);
   //var msDisplay = d.toPrecision() -player.currentTime.toFixed();
-  return (
-    hDisplay +
-    ":" +
-    mDisplay +
-    ":" +
-    sDisplay +
-    "." +
-    String(msDisplay).split(".")[1]
-  );
+  return hDisplay + ':' + mDisplay + ':' + sDisplay + '.' + String(msDisplay).split('.')[1];
 }
 
 setInterval(function () {
-  document.querySelector(".vjs-current-time-display").innerText = secondsToHms(
-    player.currentTime
-  );
+  document.querySelector('.vjs-current-time-display').innerText = secondsToHms(player.currentTime);
 }, 1);
 
-player.addEventListener("durationchange", function (e) {
-  document.querySelector(".vjs-duration").innerText = secondsToHms(
-    Math.floor(e.duration)
-  );
+player.addEventListener('durationchange', function (e) {
+  document.querySelector('.vjs-duration').innerText = secondsToHms(Math.floor(e.duration));
 });
 ```
 

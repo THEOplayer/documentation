@@ -16,35 +16,35 @@ Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for mor
 ```js
 if (HLS) {
   let drmConfiguration = {
-    integration: "verimatrix",
+    integration: 'verimatrix',
     fairplay: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
-      certificateURL: "CERTIFICATE_URL>"
-    }
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+      certificateURL: 'CERTIFICATE_URL>',
+    },
   };
   player.source = {
     sources: {
-      src: "<HLS_STREAM_URL>",
-      type: "application/x-mpegurl",
-      contentProtection: drmConfiguration
-    }
+      src: '<HLS_STREAM_URL>',
+      type: 'application/x-mpegurl',
+      contentProtection: drmConfiguration,
+    },
   };
 } else if (DASH) {
   let drmConfiguration = {
-    integration: "verimatrix",
+    integration: 'verimatrix',
     playready: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_PLAYREADY>"
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
     },
     widevine: {
-      licenseAcquisitionURL: "<LICENSE_KEY_URL_WIDEVINE>"
-    }
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+    },
   };
   player.source = {
     sources: {
-      src: "<DASH_STREAM_URL>",
-      type: "application/dash+xml",
-      contentProtection: drmConfiguration
-    }
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
   };
 }
 ```
@@ -96,8 +96,8 @@ The Verimatrix DRM connector can be found in [this folder](https://github.com/TH
 The Verimatrix DRM connector can be found [here](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/ContentProtectionIntegration/integration/VerimatrixCoreDRMIntegration.swift).
 
 ## Resources
-- [THEOplayer Github Samples DRM Integration repository](https://github.com/THEOplayer/samples-drm-integration)
 
+- [THEOplayer Github Samples DRM Integration repository](https://github.com/THEOplayer/samples-drm-integration)
 
 ## Related articles
 

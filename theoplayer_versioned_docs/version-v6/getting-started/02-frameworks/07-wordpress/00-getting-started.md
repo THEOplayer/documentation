@@ -55,14 +55,11 @@ First off, you want to include the THEOplayer CSS file and THEOplayer JavaScript
 
 ```html
 <link rel="stylesheet" type="text/css" href="/path/to/libraryLocation/ui.css" />
-<script
-  type="text/javascript"
-  src="/path/to/libraryLocation/THEOplayer.js"
-></script>
+<script type="text/javascript" src="/path/to/libraryLocation/THEOplayer.js"></script>
 ```
 
 The screenshot below shows you how to access such a "Custom HTML block".
-![WordPress Custom HTML](../../../../../theoplayer/assets/img/wordpress-custom-html.png "WordPres Custom HTML")
+![WordPress Custom HTML](../../../../../theoplayer/assets/img/wordpress-custom-html.png 'WordPres Custom HTML')
 
 ### 5. Create container
 
@@ -72,10 +69,7 @@ Your Custom HTML block should now be similar to the code below.
 
 ```html
 <link rel="stylesheet" type="text/css" href="/path/to/libraryLocation/ui.css" />
-<script
-  type="text/javascript"
-  src="/path/to/libraryLocation/THEOplayer.js"
-></script>
+<script type="text/javascript" src="/path/to/libraryLocation/THEOplayer.js"></script>
 <div class="video-js vjs-16-9 theoplayer-container theoplayer-skin"></div>
 ```
 
@@ -88,10 +82,7 @@ identify styling issues caused by your theme. For example, the CSS of our WordPr
 of our container, so we manually unset it as demonstrated below.
 
 ```html
-<div
-  class="video-js vjs-16-9 theoplayer-container theoplayer-skin"
-  style="max-width: unset;"
-></div>
+<div class="video-js vjs-16-9 theoplayer-container theoplayer-skin" style="max-width: unset;"></div>
 ```
 
 ### 6. Configure video
@@ -102,34 +93,28 @@ You can achieve this by expanding your Custom HTML block to resemble the snippet
 
 ```html
 <link rel="stylesheet" type="text/css" href="/path/to/libraryLocation/ui.css" />
-<script
-  type="text/javascript"
-  src="/path/to/libraryLocation/THEOplayer.js"
-></script>
-<div
-  class="video-js vjs-16-9 theoplayer-container theoplayer-skin"
-  style="max-width: unset;"
-></div>
+<script type="text/javascript" src="/path/to/libraryLocation/THEOplayer.js"></script>
+<div class="video-js vjs-16-9 theoplayer-container theoplayer-skin" style="max-width: unset;"></div>
 <script>
-  var element = document.querySelector(".theoplayer-container");
+  var element = document.querySelector('.theoplayer-container');
   var player = new THEOplayer.Player(element, {
-    libraryLocation: "/path/to/libraryLocation/",
-    license: "your-license-here"
+    libraryLocation: '/path/to/libraryLocation/',
+    license: 'your-license-here',
   });
 
   player.source = {
     sources: [
       {
-        src: "//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
-        type: "application/x-mpegurl"
-      }
-    ]
+        src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+        type: 'application/x-mpegurl',
+      },
+    ],
   };
 </script>
 ```
 
 All of this should result in a demo similar to the screenshot below.
-![WordPress Demo Screenshot](../../../../../theoplayer/assets/img/wordpress-demo-screenshot.png "WordPres Demo Screenshot")
+![WordPress Demo Screenshot](../../../../../theoplayer/assets/img/wordpress-demo-screenshot.png 'WordPres Demo Screenshot')
 
 ## Note
 

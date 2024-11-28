@@ -25,19 +25,19 @@ Starting from the basic template above, you only need to add your BuyDRM token (
 ```js
 player.source = {
   sources: {
-    src: "your.mpd",
-    type: "application/dash+xml",
+    src: 'your.mpd',
+    type: 'application/dash+xml',
     drm: {
-      integration: "keyos",
-      customdata: "PEtleU9T...blhNTD4=",
+      integration: 'keyos',
+      customdata: 'PEtleU9T...blhNTD4=',
       playready: {
-        licenseAcquisitionURL: "<LICENSE_KEY_URL_PLAYREADY>"
+        licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
       },
       widevine: {
-        licenseAcquisitionURL: "<LICENSE_KEY_URL_WIDEVINE>"
-      }
-    }
-  }
+        licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+      },
+    },
+  },
 };
 ```
 
@@ -54,37 +54,35 @@ Your updated starting template would now look like this:
     <!-- adds THEOplayer CSS -->
   </head>
   <body>
-    <div
-      class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"
-    ></div>
+    <div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
 
     <script type="text/javascript" src="/path/to/THEOplayer.js"></script>
     <!-- adds THEOplayer library -->
 
     <script>
-      var element = document.querySelector(".theoplayer-container");
+      var element = document.querySelector('.theoplayer-container');
       var player = new THEOplayer.Player(element, {
-        license: "your_license_string",
+        license: 'your_license_string',
         //...
       });
 
       player.source = {
         sources: [
           {
-            src: "your.mpd",
-            type: "application/dash+xml",
+            src: 'your.mpd',
+            type: 'application/dash+xml',
             drm: {
-              integration: "keyos",
-              customdata: "PEtleU9T...blhNTD4=",
+              integration: 'keyos',
+              customdata: 'PEtleU9T...blhNTD4=',
               playready: {
-                licenseAcquisitionURL: "<LICENSE_KEY_URL_PLAYREADY>"
+                licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
               },
               widevine: {
-                licenseAcquisitionURL: "<LICENSE_KEY_URL_WIDEVINE>"
-              }
-            }
-          }
-        ]
+                licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+              },
+            },
+          },
+        ],
       };
     </script>
   </body>

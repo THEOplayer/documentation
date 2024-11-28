@@ -62,10 +62,10 @@ var to = [];
 var checker = true;
 var playedAds = [];
 
-player.addEventListener("pause", () => {
+player.addEventListener('pause', () => {
   checker = false;
 });
-player.addEventListener("playing", () => {
+player.addEventListener('playing', () => {
   var adIsPlaying = player.ads.playing;
   detectTimeOffset();
   detectDuration(adIsPlaying);
@@ -77,35 +77,33 @@ player.addEventListener("playing", () => {
   }
 });
 
-player.addEventListener("sourcechange", function () {
+player.addEventListener('sourcechange', function () {
   playedAds.length = 0;
 });
 
-player.ads.addEventListener("adend", (adEvent) => {
+player.ads.addEventListener('adend', (adEvent) => {
   playedAds.push(adEvent.ad.adBreak.timeOffset);
 });
 
 function drawCues() {
-  var progressBar = element.querySelector(".vjs-progress-control.vjs-control");
+  var progressBar = element.querySelector('.vjs-progress-control.vjs-control');
 
   for (var i = 0; i < to.length; i++) {
     var timeOffset = to[i];
 
     if (playedAds.indexOf(timeOffset) === -1) {
       var left = (to[i] * progressBar.offsetWidth) / contentDuration;
-      var div = document.createElement("div");
-      div.setAttribute("to", to[i]);
-      div.classList.add("adCue");
-      div.style.left = left + "px";
+      var div = document.createElement('div');
+      div.setAttribute('to', to[i]);
+      div.classList.add('adCue');
+      div.style.left = left + 'px';
       progressBar.children[0].appendChild(div);
     }
   }
 }
 
 function destroyCues() {
-  var cues = element.querySelectorAll(
-    ".vjs-progress-control.vjs-control .adCue"
-  );
+  var cues = element.querySelectorAll('.vjs-progress-control.vjs-control .adCue');
   for (cue of cues) {
     cue.parentNode.removeChild(cue);
   }
@@ -118,7 +116,7 @@ function detectDuration(adIsPlaying) {
   }
   var t = 0;
   for (var ad of player.source.ads) {
-    to[t] = to[t] == "end" ? contentDuration : to[t];
+    to[t] = to[t] == 'end' ? contentDuration : to[t];
     t++;
   }
 }
@@ -127,12 +125,7 @@ function detectTimeOffset() {
   if (adsPresent) {
     var t = 0;
     for (var ad of player.source.ads) {
-      to[t] =
-        ad.timeOffset == undefined
-          ? 0
-          : ad.timeOffset == "start"
-            ? 0
-            : ad.timeOffset;
+      to[t] = ad.timeOffset == undefined ? 0 : ad.timeOffset == 'start' ? 0 : ad.timeOffset;
       t++;
     }
   }

@@ -4,7 +4,7 @@ This question is asked when developers want to change the appearance of the curr
 
 Please note that this article isn't final.
 
-![Align timeline middle](../../assets/img/align-timeline-middle.png "Align timeline middle")
+![Align timeline middle](../../assets/img/align-timeline-middle.png 'Align timeline middle')
 
 ## SDKs
 
@@ -52,9 +52,7 @@ HTML and JS
 
 ```html
 <div class="video-container video-js theoplayer-skin">
-  <div class="custom-timeline">
-    <span class="current-time">00:00:00</span> / <span class="duration"></span>
-  </div>
+  <div class="custom-timeline"><span class="current-time">00:00:00</span> / <span class="duration"></span></div>
 </div>
 <script>
   var player = new THEOplayer.Player(element, playerConfig);

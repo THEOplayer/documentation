@@ -36,11 +36,10 @@ as highlighted with the yellow rectangles.
 If we map that to JavaScript code:
 
 ```javascript
-const theoplayerContainer = document.querySelector(".video-js");
+const theoplayerContainer = document.querySelector('.video-js');
 const controlBarVisible =
-  (theoplayerContainer.classList.contains("vjs-user-active") ||
-    theoplayerContainer.classList.contains("vjs-paused")) &&
-  theoplayerContainer.classList.contains("vjs-has-started");
+  (theoplayerContainer.classList.contains('vjs-user-active') || theoplayerContainer.classList.contains('vjs-paused')) &&
+  theoplayerContainer.classList.contains('vjs-has-started');
 ```
 
 This approach is also valid for our default UI on the iOS and Android SDK,
@@ -56,9 +55,9 @@ The snippet below illustrates how you could poll the opacity every 100ms.
 
 ```javascript
 setInterval(function () {
-  const controlBar = document.querySelectorAll(".vjs-control-bar")[1];
+  const controlBar = document.querySelectorAll('.vjs-control-bar')[1];
   const controlBarOpacity = getComputedStyle(controlBar).opacity;
-  console.log("control bar opacity", controlBarOpacity);
+  console.log('control bar opacity', controlBarOpacity);
 }, 100);
 ```
 
@@ -75,25 +74,23 @@ The next sub-sections discusses this approach in more detail per SDK.
 The snippet below demonstrates how use the previously specified `controlBarVisible` variable in combination with a `MutationObserver`.
 
 ```javascript
-const theoplayerContainer = document.querySelector(".video-js");
+const theoplayerContainer = document.querySelector('.video-js');
 var controlBarObserver = new MutationObserver(function (event) {
   for (let i = 0; i < event.length; i++) {
     const el = event[i].target;
     const controlBarVisible =
-      (el.classList.contains("vjs-user-active") ||
-        el.classList.contains("vjs-paused")) &&
-      el.classList.contains("vjs-has-started");
+      (el.classList.contains('vjs-user-active') || el.classList.contains('vjs-paused')) && el.classList.contains('vjs-has-started');
     const message = {
-      controlBarVisible: controlBarVisible
+      controlBarVisible: controlBarVisible,
     };
     console.log(message);
   }
 });
 controlBarObserver.observe(theoplayerContainer, {
   attributes: true,
-  attributeFilter: ["class"],
+  attributeFilter: ['class'],
   childList: false,
-  characterData: false
+  characterData: false,
 });
 ```
 
@@ -110,16 +107,14 @@ This flow is described at [iOS SDK Customization](../../getting-started/01-sdks/
 This means that your JavaScript code could resemble the snippet below:
 
 ```javascript
-const theoplayerContainer = document.querySelector(".video-js");
+const theoplayerContainer = document.querySelector('.video-js');
 var controlBarObserver = new MutationObserver(function (event) {
   for (let i = 0; i < event.length; i++) {
     const el = event[i].target;
     const controlBarVisible =
-      (el.classList.contains("vjs-user-active") ||
-        el.classList.contains("vjs-paused")) &&
-      el.classList.contains("vjs-has-started");
+      (el.classList.contains('vjs-user-active') || el.classList.contains('vjs-paused')) && el.classList.contains('vjs-has-started');
     const message = {
-      controlBarVisible: controlBarVisible
+      controlBarVisible: controlBarVisible,
     };
     console.log(message);
     window.webkit.messageHandlers.myMessageName.postMessage(message);
@@ -127,9 +122,9 @@ var controlBarObserver = new MutationObserver(function (event) {
 });
 controlBarObserver.observe(theoplayerContainer, {
   attributes: true,
-  attributeFilter: ["class"],
+  attributeFilter: ['class'],
   childList: false,
-  characterData: false
+  characterData: false,
 });
 ```
 
