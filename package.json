@@ -16,6 +16,7 @@
     "gen-api-docs": "docusaurus gen-api-docs all",
     "clean-api-docs": "docusaurus clean-api-docs all",
     "typecheck": "tsc",
+    "check-format": "prettier --check .",
     "format": "prettier --write .",
     "lint": "eslint docusaurus.config.ts \"sidebars*.ts\" src",
     "fix-lint": "npm run lint -- --fix"
