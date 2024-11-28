@@ -49,11 +49,13 @@ export default function Select<T extends object>({
     <ReactAriaSelect {...props} className={clsx(styles.select, className)}>
       <Label>{label}</Label>
       <Button className={styles.button}>
+        {/* eslint-disable-next-line react/no-children-prop */}
         <SelectValue className={styles.selectValue} children={valueChildren} />
       </Button>
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
       <Popover className={styles.popover}>
+        {/* eslint-disable-next-line react/no-children-prop */}
         <ListBox items={items} children={children} dependencies={dependencies} />
       </Popover>
     </ReactAriaSelect>

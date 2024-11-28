@@ -269,7 +269,9 @@ const config: Config = {
     parseFrontMatter: async (params) => {
       const result = await params.defaultParseFrontMatter(params);
       const { frontMatter } = result;
-      let { docPluginId, docPath } = parseDocPath(params.filePath);
+      const parsedDocPath = parseDocPath(params.filePath);
+      const { docPluginId } = parsedDocPath;
+      let { docPath } = parsedDocPath;
       if (docPath.startsWith('external/')) {
         // Add a slug to all external doc pages
         frontMatter.slug ??= docPath
@@ -462,10 +464,6 @@ function isRelativeUrl(href: string): boolean {
 
 function isMarkdownUrl(href: string): boolean {
   return /\.mdx?(?:#|$)/.test(href);
-}
-
-function hasProtocol(url: string): boolean {
-  return /^(?:\w*:|\/\/)/.test(url);
 }
 
 function externalDocUrl(docPath: string): string {

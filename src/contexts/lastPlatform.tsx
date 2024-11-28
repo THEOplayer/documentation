@@ -133,7 +133,7 @@ export function useLastPlatformByPluginId(pluginId: string): {
 }
 
 export function useLastPlatformMainLink(pluginId: string): string | null {
-  const [state, api] = useLastPlatformContext();
+  const [state] = useLastPlatformContext();
   const versionCandidates = useDocsVersionCandidates(pluginId);
   let platformName = state[pluginId]!.lastPlatformName;
 

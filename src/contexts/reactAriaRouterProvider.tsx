@@ -3,7 +3,7 @@ import { useHistory } from '@docusaurus/router';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import type { ReactNode } from 'react';
 import { PlatformName } from '@site/src/util/platform';
-import { useLastPlatform, useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
+import { useLastPlatformByPluginId } from '@site/src/contexts/lastPlatform';
 import { useActivePlugin } from '@docusaurus/plugin-content-docs/client';
 
 /**
@@ -38,16 +38,20 @@ function ReactAriaRouterProviderImpl({
     }
     history.push(href);
   };
-  return <RouterProvider navigate={navigate} useHref={withBaseUrl} children={children} />;
+  return (
+    <RouterProvider navigate={navigate} useHref={withBaseUrl}>
+      {children}
+    </RouterProvider>
+  );
 }
 
 function ReactAriaRouterProviderWithDoc({ pluginId, children }: { pluginId: string; children: ReactNode }) {
   const { saveLastPlatform } = useLastPlatformByPluginId(pluginId);
-  return <ReactAriaRouterProviderImpl saveLastPlatform={saveLastPlatform} children={children} />;
+  return <ReactAriaRouterProviderImpl saveLastPlatform={saveLastPlatform}>{children}</ReactAriaRouterProviderImpl>;
 }
 
 function ReactAriaRouterProviderWithoutDoc({ children }: { children: ReactNode }) {
-  return <ReactAriaRouterProviderImpl saveLastPlatform={undefined} children={children} />;
+  return <ReactAriaRouterProviderImpl saveLastPlatform={undefined}>{children}</ReactAriaRouterProviderImpl>;
 }
 
 /**
@@ -58,8 +62,8 @@ function ReactAriaRouterProviderWithoutDoc({ children }: { children: ReactNode }
 export default function ReactAriaRouterProvider({ children }: { children: ReactNode }) {
   const pluginId = useActivePlugin()?.pluginId;
   if (pluginId) {
-    return <ReactAriaRouterProviderWithDoc pluginId={pluginId} children={children} />;
+    return <ReactAriaRouterProviderWithDoc pluginId={pluginId}>{children}</ReactAriaRouterProviderWithDoc>;
   } else {
-    return <ReactAriaRouterProviderWithoutDoc children={children} />;
+    return <ReactAriaRouterProviderWithoutDoc>{children}</ReactAriaRouterProviderWithoutDoc>;
   }
 }
