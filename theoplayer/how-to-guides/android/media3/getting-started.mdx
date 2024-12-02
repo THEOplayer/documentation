@@ -19,9 +19,9 @@ Note that the integration is still under active development, see [the Known limi
 Given that the Media3 integration is under active development, it is currently still published to our `snapshots` repository, so add the THEOplayer `snapshots` Maven repository in your **top-level** (project) `settings.gradle.kts` file.
 
 <Tabs queryString="lang">
-<!-- prettier-ignore-start -->
-<TabItem value="groovy" label="Groovy">
-`groovy
+    <!-- prettier-ignore-start -->
+    <TabItem value="groovy" label="Groovy">
+        ```groovy
         dependencyResolutionManagement {
             repositories {
                 google()
@@ -31,10 +31,10 @@ Given that the Media3 integration is under active development, it is currently s
                 maven { url "https://maven.theoplayer.com/snapshots" }
             }
         }
-        `
-</TabItem>
-<TabItem value="kotlin" label="Kotlin">
-`kotlin
+        ```
+    </TabItem>
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
         dependencyResolutionManagement {
             repositories {
                 google()
@@ -44,34 +44,34 @@ Given that the Media3 integration is under active development, it is currently s
                 maven { url = uri("https://maven.theoplayer.com/snapshots") }
             }
         }
-        `
-</TabItem>
-<!-- prettier-ignore-end -->
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
 </Tabs>
 
 Add the Media3 integration as a dependency in your module-level `build.gradle` file:
 
 <Tabs queryString="lang">
-  <!-- prettier-ignore-start -->
-  <TabItem value="groovy" label="Groovy">
-    ```groovy
-    dependencies {
-      implementation "com.theoplayer.theoplayer-sdk-android:core:8.+"
-      // highlight-next-line
-      implementation "com.theoplayer.theoplayer-sdk-android:integration-media3:8.+"
-    }
-    ```
-  </TabItem>
-  <TabItem value="kotlin" label="Kotlin">
-    ```kotlin
-    dependencies {
-      implementation("com.theoplayer.theoplayer-sdk-android:core:8.+")
-      // highlight-next-line
-      implementation("com.theoplayer.theoplayer-sdk-android:integration-media3:8.+")
-    }
-    ```
-  </TabItem>
-  <!-- prettier-ignore-end -->
+    <!-- prettier-ignore-start -->
+    <TabItem value="groovy" label="Groovy">
+        ```groovy
+        dependencies {
+            implementation "com.theoplayer.theoplayer-sdk-android:core:8.+"
+            // highlight-next-line
+            implementation "com.theoplayer.theoplayer-sdk-android:integration-media3:8.+"
+        }
+        ```
+    </TabItem>
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        dependencies {
+            implementation("com.theoplayer.theoplayer-sdk-android:core:8.+")
+            // highlight-next-line
+            implementation("com.theoplayer.theoplayer-sdk-android:integration-media3:8.+")
+        }
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
 </Tabs>
 
 ### Add the Media3 integration to the player
@@ -86,38 +86,37 @@ theoplayerView.player.addIntegration(media3PlayerIntegration)
 Once the Media3PlayerIntegration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
 
 <Tabs queryString="lang">
-  <!-- prettier-ignore-start -->
-  <TabItem value="kotlin" label="Kotlin">
-    ```kotlin
-    val typedSource = TypedSource
-    .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
-    .type(SourceType.DASH)
-    .build()
+    <!-- prettier-ignore-start -->
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val typedSource = TypedSource
+        .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+        .type(SourceType.DASH)
+        .build()
 
-    val sourceDescription = SourceDescription
-    .Builder(typedSource)
-    .build()
+        val sourceDescription = SourceDescription
+        .Builder(typedSource)
+        .build()
 
-    theoPlayerView.player.source = sourceDescription
-    ```
+        theoPlayerView.player.source = sourceDescription
+        ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+        ```java
+        TypedSource typedSource = new TypedSource
+        .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+        .type(SourceType.DASH)
+        .build();
 
-  </TabItem>
-  <TabItem value="java" label="Java">
-    ```java
-    TypedSource typedSource = new TypedSource
-    .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
-    .type(SourceType.DASH)
-    .build();
+        SourceDescription sourceDescription = new SourceDescription
+        .Builder(typedSource)
+        .build();
 
-    SourceDescription sourceDescription = new SourceDescription
-    .Builder(typedSource)
-    .build();
+        theoPlayerView.getPlayer().setSource(sourceDescription);
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
 
-    theoPlayerView.getPlayer().setSource(sourceDescription);
-    ```
-
-  </TabItem>
-  <!-- prettier-ignore-end -->
 </Tabs>
 
 By default, the `Media3PlayerIntegration` will play all types of sources except HESP and Millicast.
