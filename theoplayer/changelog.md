@@ -5,6 +5,15 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.5.1 (2024/11/29)
+
+### Android
+
+#### ⚡ Improvements
+
+- Added `RenderingTarget.SURFACE_CONTROL` to help managing the `Surface` lifecycle during entering/exiting fullscreen.
+  - Note: `RenderingTarget.SURFACE_CONTROL` is only available for API level 29 and above.
+
 ## 🚀 8.5.0 (2024/11/19)
 
 ### Web
