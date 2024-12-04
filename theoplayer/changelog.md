@@ -5,6 +5,66 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.6.0 (2024/12/04)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where the minimum and maximum playback rate in the latency configuration for an HESP stream were incorrectly reset after a buffer stall.
+- Fixed an issue where no DRM license requests were sent for a DASH stream for which adaptation set switching is enabled and the PSSH does not appear inside the initialization segment. This relates to both web and Android.
+
+### Web
+
+#### 💥 Breaking Changes
+
+- Removed currentServerLiveTime and currentLatency from experimental HESP API in favor of the latency API.
+
+#### ✨ Features
+
+- Added ad events for alternative THEOads ad sources.
+- Exposed `description` on `GoogleImaAd`.
+- Added the `player.addTextTrack()` API to be able to create an external text track. This track is mutable and can be filled with cues, allowing 3rd parties to add subtitles to the player in real-time.
+- Added support for passing a `latencyConfiguration` in HESP and THEOlive sources.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `adend` and `adbreakend` events were not dispatched correctly when a THEOads adbreak ended.
+- Fixed an issue where the player did not fire seeking and seeked events when seeking using the seek bar in the native fullscreen UI on iOS Safari (when allowNativeFullscreen is set to true).
+- Added the `useAdUiElementForSsai` flag to the `GoogleImaConfiguration` player config to enable use of an ad UI element for Google DAI to allow ads with extra UI to be displayed, which is required in the EU. Note that enabling this flag disables THEO's default clickthrough element which had improved keyboard accessibility over the DAI ad ui element.
+
+#### 👎 Deprecations
+
+- Deprecated streamName for Millicast sources in favor of the src property.
+- Deprecated integration `theolive` in favor of type `theolive` for THEOlive sources.
+
+### Android
+
+#### ✨ Features
+
+- Added support for CEAX08 subtitles for HESP and THEOlive streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where the UI overlay was not registered as a "friendly" obstruction with Google IMA and Google DAI.
+- Fixed an issue where creating a CachingTask would cause a crash.
+
+#### 👎 Deprecations
+
+- Deprecated `MillicastSource.Credential` in favor of `src` and inlined properties `streamAccountId`, `apiUrl` and `subscriberToken` directly on `MillicastSource`.
+
+### iOS
+
+#### ✨ Features
+
+- Added a THEOlive integration with a `TheoLiveSource` to play channels from [https://theo.live](https://theo.live) using a THEOplayer on iOS.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player license provided in the plist was not read properly.
+- Fixed an issue where DAI `AdBreak`s returned by the `AdsEventTypes.AD_BREAK_BEGIN` event would have an inaccurate `timeOffset`.
+- Fixed an issue where on iOS cues were skipped during the cue activation process.
+
 ## 🚀 8.5.1 (2024/11/29)
 
 ### Android

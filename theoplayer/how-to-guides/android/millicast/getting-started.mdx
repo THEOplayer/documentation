@@ -39,19 +39,16 @@ theoplayerView.player.addIntegration(millicastIntegration)
 ### Add a `MillicastSource`
 
 After setting up a `THEOplayerView` in your app's activity, set its source to a `SourceDescription` containing a `MillicastSource`.
-You'll need a Millicast account ID and stream name to create a `Credential` object and identify your Millicast stream:
+You'll need a Millicast account ID and stream name to identify your Millicast stream:
 
 ```kotlin
-import com.millicast.subscribers.Credential
 import com.theoplayer.android.api.millicast.MillicastSource
 
 theoplayerView.player.source = SourceDescription.Builder(
     MillicastSource(
-        credential = Credential(
-            streamName = "multiview",
-            accountId = "k9Mwad",
-            apiUrl = "https://director.millicast.com/api/director/subscribe"
-        )
+        src = "multiview",
+        streamAccountId = "k9Mwad",
+        apiUrl = "https://director.millicast.com/api/director/subscribe"
     )
 ).build()
 ```
@@ -59,26 +56,24 @@ theoplayerView.player.source = SourceDescription.Builder(
 ### Add configuration
 
 Optionally, you can provide additional configuration to the source, specific for working with Millicast streams.
-To configure these settings, add an `Option` object as a second parameter to the source object and specify the options.
+To configure these settings, add an `Option` object as the `connectOptions` parameter of the source object
+and specify the options.
 
 In the example below, the configuration is used to disable any audio from the Millicast stream.
 For an exhaustive list of these options, visit the [documentation](https://millicast.github.io/doc/latest/android/android/com.millicast.subscribers/-option/index.html).
 
 ```kotlin
-import com.millicast.subscribers.Credential
 import com.millicast.subscribers.Option
 import com.theoplayer.android.api.millicast.MillicastSource
 
-...
+theoplayerView.player.source = SourceDescription.Builder(
     MillicastSource(
-        credential = Credential(
-            ...
-        ),
-        option = Option(
+        // ...
+        connectOptions = Option(
             disableAudio = true
         )
     )
-...
+).build()
 ```
 
 ## More information
