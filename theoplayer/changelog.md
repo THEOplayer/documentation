@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.6.1 (2024/12/05)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where legacy player licenses without the features property were rejected.
+
 ## 🚀 8.6.0 (2024/12/04)
 
 ### General
