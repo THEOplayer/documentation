@@ -5,6 +5,26 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.6.2 (2024/12/10)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue on Web and Android on content protected DASH streams where the player tries to access adaptation sets that the DRM server did not return a key for.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where using an empty string as the token with DRM integration `vudrm` would cause an error.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where `THEOplayer.autoplay` was not being set correctly.
+
 ## 🚀 8.6.1 (2024/12/05)
 
 ### iOS
@@ -65,7 +85,7 @@ toc_max_heading_level: 2
 
 #### ✨ Features
 
-- Added a THEOlive integration with a `TheoLiveSource` to play channels from [https://theo.live](https://theo.live) using a THEOplayer on iOS.
+- Added a THEOlive integration with a `TheoLiveSource` to play [THEOlive](https://theo.live) channels using a THEOplayer on iOS.
 
 #### 🐛 Issues
 
