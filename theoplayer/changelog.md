@@ -5,6 +5,21 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.6.3 (2024/12/12)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved the UI for HESP streams when returning back to a muted tab on Chromium-based browsers.
+- Improved playback of THEOlive streams on Vizio devices.
+
+### tvOS
+
+#### ✨ Features
+
+- Added a THEOlive integration with a `TheoLiveSource` to play [THEOlive](https://theo.live) channels using a THEOplayer on tvOS.
+
 ## 🚀 8.6.2 (2024/12/10)
 
 ### General
