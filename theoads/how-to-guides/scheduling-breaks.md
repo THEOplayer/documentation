@@ -94,7 +94,7 @@ An example snippet for an `#EXT-OATCLS-SCTE35` tag can be found below:
 
 If the ad information won't be present in the provided manifest, it is possible to schedule one through the signaling service API.
 
-This can be done by a POST request to `{path}/schedule-ad-break` where path is the usual url to interact with the signaling service: `signaling-service-url/stream-id`. Please see [CreateMonetizedStreamBreak](/theoads/api/signaling/create-monetized-stream-break/).
+This can be done by a POST request to `{path}/break` where path is the usual url to interact with the signaling service for a specific monetized stream: `{signaling-service-url}/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamBreak](/theoads/api/signaling/create-monetized-stream-break/).
 
 The body of the post request can have the following properties:
 

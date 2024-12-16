@@ -48,6 +48,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/signaling/create-monetized-stream-overlay",
+          label: "CreateMonetizedStreamOverlay",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
           id: "api/signaling/update-monetized-stream-layout",
           label: "UpdateMonetizedStreamLayout",
           className: "api-method patch",
