@@ -56,7 +56,7 @@ The body of the post request can have the following properties:
 - `duration` is the total duration of the overlay presentation (in seconds).
 - `type` can only be 'image' for now. In future we might extend this.
 - `position` is required to know where the overlay needs to be presented on top of the video content. It requires a combination of either one of `left` or `right` and `top` or `bottom`. All values are percentage based and non-zero. The values denote the location from the specified side. For example: `left: 10` denotes `10% from the left edge of the video`.
-- `position` is required to know what the overlay presentation width and height need to be relative to the video content display size. All values are percentage based and non-zero. For example: `width: 20` denotes 20% of the current video display width.
+- `size` is required to know what the overlay presentation width and height need to be relative to the video content display size. All values are percentage based and non-zero. For example: `width: 20` denotes 20% of the current video display width.
 - `opacity` can optionally be used to make the overlay less opaque. This value is percentage based and non-zero. The default is `100`.
 - `gamProperties` can optionally be used to specify the values required for requesting a pre-configured creative from GAM. It follows the [specifications](https://support.google.com/admanager/answer/2623168#zippy=%2Crequired-parameters) for a tagless request to load a creative. If `gamProperties` is not defined, you need to specify at least one `resourceURI`.
   - `iu` specifies the Google Ad Manager ad unit code, including your Google Ad Manager network code.
