@@ -1,863 +1,867 @@
 {
-  "components": {
-    "examples": {},
-    "headers": {},
-    "parameters": {},
-    "requestBodies": {},
-    "responses": {},
-    "schemas": {
-      "MonetizedStreamLayout": {
-        "enum": [
-          "SINGLE",
-          "DOUBLE",
-          "LSHAPE_AD",
-          "LSHAPE_CONTENT"
-        ],
-        "type": "string"
-      },
-      "IMonetizedStream": {
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "version": {
-            "type": "string"
-          },
-          "streamId": {
-            "type": "string"
-          },
-          "origin": {
-            "type": "string"
-          },
-          "segmentOrigin": {
-            "type": "string"
-          },
-          "layout": {
-            "$ref": "#/components/schemas/MonetizedStreamLayout"
-          },
-          "assetKey": {
-            "type": "string"
-          },
-          "networkCode": {
-            "type": "string"
-          },
-          "originPath": {
-            "type": "string"
-          },
-          "assetURI": {
-            "type": "string"
-          },
-          "backdropURI": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "streamId",
-          "origin",
-          "segmentOrigin",
-          "layout"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "IMonetizedStreamApiResponse": {
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "state": {
-            "type": "string",
-            "enum": [
-              "created",
-              "deleted"
-            ]
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "monetized-stream"
-            ],
-            "nullable": false
-          },
-          "payload": {
-            "$ref": "#/components/schemas/IMonetizedStream"
-          }
-        },
-        "required": [
-          "id",
-          "state",
-          "type",
-          "payload"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "IMonetizedStreamUpdate": {
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "version": {
-            "type": "string"
-          },
-          "origin": {
-            "type": "string"
-          },
-          "segmentOrigin": {
-            "type": "string"
-          },
-          "layout": {
-            "$ref": "#/components/schemas/MonetizedStreamLayout"
-          },
-          "assetKey": {
-            "type": "string"
-          },
-          "networkCode": {
-            "type": "string"
-          },
-          "originPath": {
-            "type": "string"
-          },
-          "assetURI": {
-            "type": "string"
-          },
-          "backdropURI": {
-            "type": "string"
-          }
-        },
-        "type": "object",
-        "additionalProperties": false
-      },
-      "IAdBreak": {
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "startDate": {
-            "type": "string"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "duration": {
-            "type": "number",
-            "format": "double"
-          },
-          "source": {
-            "type": "string"
-          },
-          "layout": {
-            "$ref": "#/components/schemas/MonetizedStreamLayout"
-          },
-          "assetURI": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "startDate",
-          "duration"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "IAdBreakApiResponse": {
-        "properties": {
-          "payload": {
-            "$ref": "#/components/schemas/IAdBreak"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "ad-break"
-            ],
-            "nullable": false
-          },
-          "state": {
-            "type": "string",
-            "enum": [
-              "created",
-              "deleted"
-            ]
-          },
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "payload",
-          "type",
-          "state",
-          "id"
-        ],
-        "type": "object"
-      },
-      "IAdBreaksApiResponse": {
-        "properties": {
-          "payload": {
-            "items": {
-              "$ref": "#/components/schemas/IAdBreak"
-            },
-            "type": "array"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "ad-break"
-            ],
-            "nullable": false
-          },
-          "state": {
-            "type": "string",
-            "enum": [
-              "created",
-              "deleted"
-            ]
-          },
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "payload",
-          "type",
-          "state",
-          "id"
-        ],
-        "type": "object"
-      },
-      "OverlayTypes": {
-        "enum": [
-          "image"
-        ],
-        "type": "string"
-      },
-      "OverlayURITypes": {
-        "enum": [
-          "png",
-          "svg"
-        ],
-        "type": "string"
-      },
-      "IOverlay": {
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "startDate": {
-            "type": "string"
-          },
-          "endDate": {
-            "type": "string"
-          },
-          "duration": {
-            "type": "number",
-            "format": "double"
-          },
-          "type": {
-            "$ref": "#/components/schemas/OverlayTypes"
-          },
-          "position": {
-            "properties": {
-              "bottom": {
-                "type": "number",
-                "format": "double"
-              },
-              "top": {
-                "type": "number",
-                "format": "double"
-              },
-              "right": {
-                "type": "number",
-                "format": "double"
-              },
-              "left": {
-                "type": "number",
-                "format": "double"
-              }
-            },
-            "type": "object"
-          },
-          "size": {
-            "properties": {
-              "height": {
-                "type": "number",
-                "format": "double"
-              },
-              "width": {
-                "type": "number",
-                "format": "double"
-              }
-            },
-            "required": [
-              "height",
-              "width"
-            ],
-            "type": "object"
-          },
-          "opacity": {
-            "type": "number",
-            "format": "double"
-          },
-          "gamProperties": {
-            "properties": {
-              "sz": {
-                "properties": {
-                  "tv": {
-                    "type": "string"
-                  },
-                  "phone": {
-                    "type": "string"
-                  },
-                  "default": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "default"
-                ],
-                "type": "object"
-              },
-              "iu": {
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "resourceURI": {
-            "items": {
-              "properties": {
-                "tv": {
-                  "type": "string"
-                },
-                "phone": {
-                  "type": "string"
-                },
-                "default": {
-                  "type": "string"
-                },
-                "type": {
-                  "$ref": "#/components/schemas/OverlayURITypes"
-                }
-              },
-              "required": [
-                "default",
-                "type"
-              ],
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "clickThroughURI": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "startDate",
-          "duration",
-          "type",
-          "position",
-          "size"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "IOverlayApiResponse": {
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "state": {
-            "type": "string",
-            "enum": [
-              "created",
-              "deleted"
-            ]
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "overlay"
-            ],
-            "nullable": false
-          },
-          "payload": {
-            "$ref": "#/components/schemas/IOverlay"
-          }
-        },
-        "required": [
-          "id",
-          "state",
-          "type",
-          "payload"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "IStatus": {
-        "properties": {
-          "status": {
-            "type": "string"
-          },
-          "error": {
-            "type": "string",
-            "nullable": true
-          },
-          "uptime": {
-            "type": "number",
-            "format": "double"
-          },
-          "timestamp": {
-            "type": "number",
-            "format": "double"
-          },
-          "version": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "status",
-          "error",
-          "uptime",
-          "timestamp",
-          "version"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      }
-    },
-    "securitySchemes": {
-      "apiKeyAuth": {
-        "type": "apiKey",
-        "name": "X-API-KEY",
-        "in": "header"
-      }
-    }
-  },
-  "info": {
-    "title": "THEOads Api",
-    "version": "24.11.6",
-    "description": "The THEOads REST API allows you to create and manage monetized streams, which are deployments of signaling services. Each monetized stream corresponds to an origin stream that is monetized using THEOads (SGAI). For detailed information on the various parameters and their usage, please refer to the getting started guide.",
-    "license": {
-      "name": "UNLICENSED"
-    },
-    "contact": {}
-  },
-  "openapi": "3.0.0",
-  "paths": {
-    "/monetized-streams": {
-      "get": {
-        "operationId": "GetMonetizedStreams",
-        "responses": {
-          "200": {
-            "description": "List of monetized streams",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-                  },
-                  "type": "array"
-                }
-              }
-            }
-          }
-        },
-        "description": "Retrieves all created and deployed monetized streams (signaling services) along with their configurations.",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": []
-      },
-      "post": {
-        "operationId": "CreateMonetizedStream",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Creates and deploys a new monetized stream in the environment, resulting in a deployment of a signaling service.",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [],
-        "requestBody": {
-          "description": "The monetized stream configuration",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IMonetizedStream",
-                "description": "The monetized stream configuration"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/monetized-streams/{monetizedStreamId}": {
-      "get": {
-        "operationId": "GetMonetizedStream",
-        "responses": {
-          "200": {
-            "description": "A monetized stream",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Retrieves a single monetized stream (signaling service) based on its identifier, along with its configuration details.",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      },
-      "patch": {
-        "operationId": "UpdateMonetizedStream",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Updates a single monetized stream (signaling service) based on its identifier, along with its configuration update.",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The monetized stream configuration update",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IMonetizedStreamUpdate",
-                "description": "The monetized stream configuration update"
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "operationId": "DeleteMonetizedStream",
-        "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Deletes a single monetized stream (signaling service) based on its identifier.",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/monetized-streams/{monetizedStreamId}/break": {
-      "post": {
-        "operationId": "CreateMonetizedStreamBreak",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IAdBreakApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Creates an ad break on an existing monetized stream (signaling service).",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The ad break configuration",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IAdBreak",
-                "description": "The ad break configuration"
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "operationId": "GetMonetizedStreamBreaks",
-        "responses": {
-          "200": {
-            "description": "A monetized stream",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IAdBreaksApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Retrieves all adbreaks linked to the monetized sctream",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/monetized-streams/{monetizedStreamId}/break/{adbreakId}": {
-      "delete": {
-        "operationId": "DeleteMonetizedStreamBreaks",
-        "responses": {
-          "200": {
-            "description": "A monetized stream",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IAdBreakApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Deletes an adbreaks linked to the monetized sctream",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "adbreakId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/monetized-streams/{monetizedStreamId}/layout": {
-      "patch": {
-        "operationId": "UpdateMonetizedStreamLayout",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Updates the default layout for an existing monetized stream (signaling service).",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The layout configuration",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "layout": {
-                    "$ref": "#/components/schemas/MonetizedStreamLayout"
-                  }
-                },
-                "required": [
-                  "layout"
-                ],
-                "type": "object",
-                "description": "The layout configuration"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/monetized-streams/{monetizedStreamId}/overlay": {
-      "post": {
-        "operationId": "CreateMonetizedStreamOverlay",
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IOverlayApiResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Creates an overlay on an existing monetized stream (signaling service).",
-        "tags": [
-          "Monetized-Stream"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "description": "The Monetized stream identifier.",
-            "in": "path",
-            "name": "monetizedStreamId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "The overlay configuration",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IOverlay",
-                "description": "The overlay configuration"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/status": {
-      "get": {
-        "operationId": "Status",
-        "responses": {
-          "200": {
-            "description": "The status of the API.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IStatus"
-                }
-              }
-            }
-          }
-        },
-        "description": "Get the status of the API.",
-        "tags": [
-          "Status"
-        ],
-        "security": [],
-        "parameters": []
-      }
-    }
-  },
-  "servers": [
-    {
-      "url": "/api/v1"
-    }
-  ]
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"MonetizedStreamLayout": {
+				"enum": [
+					"SINGLE",
+					"DOUBLE",
+					"LSHAPE_AD",
+					"LSHAPE_CONTENT"
+				],
+				"type": "string"
+			},
+			"IMonetizedStream": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					},
+					"streamId": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					},
+					"segmentOrigin": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"assetKey": {
+						"type": "string"
+					},
+					"networkCode": {
+						"type": "string"
+					},
+					"originPath": {
+						"type": "string"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"backdropURI": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"streamId",
+					"origin",
+					"segmentOrigin",
+					"layout"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IMonetizedStreamApiResponse": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"created",
+							"deleted"
+						]
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"monetized-stream"
+						],
+						"nullable": false
+					},
+					"payload": {
+						"$ref": "#/components/schemas/IMonetizedStream"
+					}
+				},
+				"required": [
+					"id",
+					"state",
+					"type",
+					"payload"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IMonetizedStreamUpdate": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					},
+					"segmentOrigin": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"assetKey": {
+						"type": "string"
+					},
+					"networkCode": {
+						"type": "string"
+					},
+					"originPath": {
+						"type": "string"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"backdropURI": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAdBreak": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"endDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"source": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"assetURI": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"startDate",
+					"duration"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAdBreakApiResponse": {
+				"properties": {
+					"payload": {
+						"$ref": "#/components/schemas/IAdBreak"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"ad-break"
+						],
+						"nullable": false
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"created",
+							"deleted"
+						]
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"payload",
+					"type",
+					"state",
+					"id"
+				],
+				"type": "object"
+			},
+			"IAdBreaksApiResponse": {
+				"properties": {
+					"payload": {
+						"items": {
+							"$ref": "#/components/schemas/IAdBreak"
+						},
+						"type": "array"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"ad-break"
+						],
+						"nullable": false
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"created",
+							"deleted"
+						]
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"payload",
+					"type",
+					"state",
+					"id"
+				],
+				"type": "object"
+			},
+			"OverlayTypes": {
+				"enum": [
+					"image"
+				],
+				"type": "string"
+			},
+			"OverlayURITypes": {
+				"enum": [
+					"png",
+					"svg"
+				],
+				"type": "string"
+			},
+			"IOverlay": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"endDate": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"type": {
+						"$ref": "#/components/schemas/OverlayTypes"
+					},
+					"position": {
+						"properties": {
+							"bottom": {
+								"type": "number",
+								"format": "double"
+							},
+							"top": {
+								"type": "number",
+								"format": "double"
+							},
+							"right": {
+								"type": "number",
+								"format": "double"
+							},
+							"left": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"type": "object"
+					},
+					"size": {
+						"properties": {
+							"height": {
+								"type": "number",
+								"format": "double"
+							},
+							"width": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"height",
+							"width"
+						],
+						"type": "object"
+					},
+					"opacity": {
+						"type": "number",
+						"format": "double"
+					},
+					"gamProperties": {
+						"properties": {
+							"sz": {
+								"properties": {
+									"tv": {
+										"type": "string"
+									},
+									"phone": {
+										"type": "string"
+									},
+									"default": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"default"
+								],
+								"type": "object"
+							},
+							"iu": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"sz",
+							"iu"
+						],
+						"type": "object"
+					},
+					"resourceURI": {
+						"items": {
+							"properties": {
+								"tv": {
+									"type": "string"
+								},
+								"phone": {
+									"type": "string"
+								},
+								"default": {
+									"type": "string"
+								},
+								"type": {
+									"$ref": "#/components/schemas/OverlayURITypes"
+								}
+							},
+							"required": [
+								"default",
+								"type"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"clickThroughURI": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"startDate",
+					"duration",
+					"type",
+					"position",
+					"size"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IOverlayApiResponse": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"created",
+							"deleted"
+						]
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"overlay"
+						],
+						"nullable": false
+					},
+					"payload": {
+						"$ref": "#/components/schemas/IOverlay"
+					}
+				},
+				"required": [
+					"id",
+					"state",
+					"type",
+					"payload"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IStatus": {
+				"properties": {
+					"status": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string",
+						"nullable": true
+					},
+					"uptime": {
+						"type": "number",
+						"format": "double"
+					},
+					"timestamp": {
+						"type": "number",
+						"format": "double"
+					},
+					"version": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"status",
+					"error",
+					"uptime",
+					"timestamp",
+					"version"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"apiKeyAuth": {
+				"type": "apiKey",
+				"name": "X-API-KEY",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "THEOads Api",
+		"version": "24.11.6",
+		"description": "The THEOads REST API allows you to create and manage monetized streams, which are deployments of signaling services. Each monetized stream corresponds to an origin stream that is monetized using THEOads (SGAI). For detailed information on the various parameters and their usage, please refer to the getting started guide.",
+		"license": {
+			"name": "UNLICENSED"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/monetized-streams": {
+			"get": {
+				"operationId": "GetMonetizedStreams",
+				"responses": {
+					"200": {
+						"description": "List of monetized streams",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieves all created and deployed monetized streams (signaling services) along with their configurations.",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateMonetizedStream",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Creates and deploys a new monetized stream in the environment, resulting in a deployment of a signaling service.",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"description": "The monetized stream configuration",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IMonetizedStream",
+								"description": "The monetized stream configuration"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/monetized-streams/{monetizedStreamId}": {
+			"get": {
+				"operationId": "GetMonetizedStream",
+				"responses": {
+					"200": {
+						"description": "A monetized stream",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieves a single monetized stream (signaling service) based on its identifier, along with its configuration details.",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateMonetizedStream",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Updates a single monetized stream (signaling service) based on its identifier, along with its configuration update.",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The monetized stream configuration update",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IMonetizedStreamUpdate",
+								"description": "The monetized stream configuration update"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteMonetizedStream",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Deletes a single monetized stream (signaling service) based on its identifier.",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/monetized-streams/{monetizedStreamId}/break": {
+			"post": {
+				"operationId": "CreateMonetizedStreamBreak",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAdBreakApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Creates an ad break on an existing monetized stream (signaling service).",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The ad break configuration",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IAdBreak",
+								"description": "The ad break configuration"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetMonetizedStreamBreaks",
+				"responses": {
+					"200": {
+						"description": "A monetized stream",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAdBreaksApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieves all adbreaks linked to the monetized sctream",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/monetized-streams/{monetizedStreamId}/break/{adbreakId}": {
+			"delete": {
+				"operationId": "DeleteMonetizedStreamBreaks",
+				"responses": {
+					"200": {
+						"description": "A monetized stream",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAdBreakApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Deletes an adbreaks linked to the monetized sctream",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "adbreakId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/monetized-streams/{monetizedStreamId}/layout": {
+			"patch": {
+				"operationId": "UpdateMonetizedStreamLayout",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Updates the default layout for an existing monetized stream (signaling service).",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The layout configuration",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"layout": {
+										"$ref": "#/components/schemas/MonetizedStreamLayout"
+									}
+								},
+								"required": [
+									"layout"
+								],
+								"type": "object",
+								"description": "The layout configuration"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/monetized-streams/{monetizedStreamId}/overlay": {
+			"post": {
+				"operationId": "CreateMonetizedStreamOverlay",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IOverlayApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Creates an overlay on an existing monetized stream (signaling service).",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The overlay configuration",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IOverlay",
+								"description": "The overlay configuration"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/status": {
+			"get": {
+				"operationId": "Status",
+				"responses": {
+					"200": {
+						"description": "The status of the API.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IStatus"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get the status of the API.",
+				"tags": [
+					"Status"
+				],
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/api/v1"
+		}
+	]
 }
