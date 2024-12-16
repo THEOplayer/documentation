@@ -29,7 +29,7 @@ The body of the post request can have the following properties:
   };
   size: {
     width: number;
-    height: number; 
+    height: number;
   };
   opacity: number | undefined;
   gamProperties: {
@@ -76,21 +76,21 @@ An example of a schedule overlay request body for a GAM based image overlay can 
   "duration": "30",
   "type": "image",
   "position": {
-      "left": 5,
-      "top": 5
+    "left": 5,
+    "top": 5
   },
   "size": {
-      "width": 10,
-      "height": 10
+    "width": 10,
+    "height": 10
   },
   "opacity": 50,
   "gamProperties": {
-      "iu": "/12345678/overlay_1",
-      "sz": {
-          "default": "400x225",
-          "phone": "400x225",
-          "tv": "400x225"
-      }
+    "iu": "/12345678/overlay_1",
+    "sz": {
+      "default": "400x225",
+      "phone": "400x225",
+      "tv": "400x225"
+    }
   },
   "clickThroughURI": "https://www.theoplayer.com/product/theoads"
 }
@@ -106,28 +106,28 @@ An example of a schedule overlay request body for a custom image overlay can be 
   "duration": "30",
   "type": "image",
   "position": {
-      "left": 5,
-      "top": 5
+    "left": 5,
+    "top": 5
   },
   "size": {
-      "width": 10,
-      "height": 10
+    "width": 10,
+    "height": 10
   },
   "opacity": 50,
   "resourceURI": [
-        {
-            "type": "svg",
-            "default": "https://<PATH_TO_IMAGE>/image.svg",
-            "phone": "https://<PATH_TO_IMAGE>/image_phone.svg",
-            "tv": "https://<PATH_TO_IMAGE>/image_tv.svg"
-        },
-        {
-            "type": "png",
-            "default": "https://<PATH_TO_IMAGE>/image.png",
-            "phone": "https://<PATH_TO_IMAGE>/image_phone.png",
-            "tv": "https://<PATH_TO_IMAGE>/image_tv.png"
-        }
-    ],
+    {
+      "type": "svg",
+      "default": "https://<PATH_TO_IMAGE>/image.svg",
+      "phone": "https://<PATH_TO_IMAGE>/image_phone.svg",
+      "tv": "https://<PATH_TO_IMAGE>/image_tv.svg"
+    },
+    {
+      "type": "png",
+      "default": "https://<PATH_TO_IMAGE>/image.png",
+      "phone": "https://<PATH_TO_IMAGE>/image_phone.png",
+      "tv": "https://<PATH_TO_IMAGE>/image_tv.png"
+    }
+  ],
   "clickThroughURI": "https://www.theoplayer.com/product/theoads"
 }
 ```
