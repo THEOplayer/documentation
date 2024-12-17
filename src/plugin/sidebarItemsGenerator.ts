@@ -1,21 +1,15 @@
 import type {
   NormalizedSidebar,
   NormalizedSidebarItem,
-  SidebarItemConfig,
   SidebarItemsGenerator,
   SidebarItemsGeneratorArgs,
-} from '@docusaurus/plugin-content-docs/lib/sidebars/types';
+} from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
 
 type SidebarItemWithCustomProps = NormalizedSidebarItem & {
   customProps?: {
-    exclude: string[];
-    additionalItems?: AdditionalItem[];
+    exclude?: string[];
   };
 };
-
-interface AdditionalItem extends SidebarItemConfig {
-  position?: number;
-}
 
 interface PostProcessArgs extends Omit<SidebarItemsGeneratorArgs, 'item'> {
   item: SidebarItemWithCustomProps;
@@ -42,16 +36,6 @@ function postProcessChildren(parent: SidebarItemWithCustomProps, children: Norma
       }
     }
   }
-  // Add additional items
-  if (parent.customProps?.additionalItems) {
-    for (const { position, ...additionalItem } of parent.customProps.additionalItems) {
-      if (position !== undefined) {
-        children.splice(position - 1, 0, additionalItem);
-      } else {
-        children.push(additionalItem);
-      }
-    }
-  }
 }
 
 export default async function sidebarItemsGenerator({
@@ -61,7 +45,7 @@ export default async function sidebarItemsGenerator({
 }: { defaultSidebarItemsGenerator: SidebarItemsGenerator } & SidebarItemsGeneratorArgs) {
   const sidebarItems: NormalizedSidebar = await defaultSidebarItemsGenerator({ item, ...args });
   for (const item of sidebarItems) {
-    postProcess({ item, defaultSidebarItemsGenerator, ...args });
+    postProcess({ item, ...args });
   }
   postProcessChildren(item, sidebarItems);
   return sidebarItems;

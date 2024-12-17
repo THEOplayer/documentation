@@ -5,7 +5,7 @@ import type {
   SidebarItemConfig,
   SidebarItemHtml,
   SidebarItemLink,
-} from '@docusaurus/plugin-content-docs/lib/sidebars/types';
+} from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
 
 const platformNames = ['web', 'android', 'ios', 'react', 'react-native', 'chromecast', 'roku', 'flutter'] as const;
 const sidebars: SidebarsConfig = {
@@ -233,7 +233,12 @@ const sidebars: SidebarsConfig = {
   ],
 };
 
-function mergeSidebarItems<T extends SidebarItemBase>(base: T, config: T): T {
+type MakeOptional<T, OptionalKeys extends keyof T> = Pick<T, Exclude<keyof T, OptionalKeys>> & Partial<Pick<T, OptionalKeys>>;
+type PredefinedSidebarItemKeys = 'type' | 'label' | 'description' | 'customProps';
+type PartialSidebarItemCategoryConfig = MakeOptional<SidebarItemCategoryConfig, PredefinedSidebarItemKeys>;
+type PartialSidebarItemLink = MakeOptional<SidebarItemLink, PredefinedSidebarItemKeys>;
+
+function mergeSidebarItems<T extends Partial<SidebarItemBase>, U extends Partial<SidebarItemBase>>(base: T, config: U): T & U {
   return {
     ...base,
     ...config,
@@ -244,10 +249,10 @@ function mergeSidebarItems<T extends SidebarItemBase>(base: T, config: T): T {
   };
 }
 
-function gettingStartedCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
+function gettingStartedCategory(config: PartialSidebarItemCategoryConfig): SidebarItemCategoryConfig {
   return mergeSidebarItems(
     {
-      type: 'category',
+      type: 'category' as const,
       label: 'Getting started',
       description: 'Set up your first THEOplayer in just a few minutes!',
       customProps: {
@@ -258,10 +263,10 @@ function gettingStartedCategory(config: SidebarItemCategoryConfig): SidebarItemC
   );
 }
 
-function examplesCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
+function examplesCategory(config: PartialSidebarItemCategoryConfig): SidebarItemCategoryConfig {
   return mergeSidebarItems(
     {
-      type: 'category',
+      type: 'category' as const,
       label: 'Examples',
       description: 'See the player in action!',
       customProps: {
@@ -272,10 +277,10 @@ function examplesCategory(config: SidebarItemCategoryConfig): SidebarItemCategor
   );
 }
 
-function connectorsCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
+function connectorsCategory(config: PartialSidebarItemCategoryConfig): SidebarItemCategoryConfig {
   return mergeSidebarItems(
     {
-      type: 'category',
+      type: 'category' as const,
       label: 'Connectors',
       description: `Integrate third-party solutions with THEOplayer using our pre-built connectors.`,
       customProps: {
@@ -286,10 +291,10 @@ function connectorsCategory(config: SidebarItemCategoryConfig): SidebarItemCateg
   );
 }
 
-function howToGuidesCategory(config: SidebarItemCategoryConfig): SidebarItemCategoryConfig {
+function howToGuidesCategory(config: PartialSidebarItemCategoryConfig): SidebarItemCategoryConfig {
   return mergeSidebarItems(
     {
-      type: 'category',
+      type: 'category' as const,
       label: 'How-to guides',
       description: 'Learn how to implement our rich set of features and integrations.',
       customProps: {
@@ -300,10 +305,10 @@ function howToGuidesCategory(config: SidebarItemCategoryConfig): SidebarItemCate
   );
 }
 
-function apiReferencesLink(config: SidebarItemLink): SidebarItemLink {
+function apiReferencesLink(config: PartialSidebarItemLink): SidebarItemLink {
   return mergeSidebarItems(
     {
-      type: 'link',
+      type: 'link' as const,
       label: 'API references',
       description: 'Discover all properties and functions of THEOplayer.',
       customProps: {
@@ -314,10 +319,10 @@ function apiReferencesLink(config: SidebarItemLink): SidebarItemLink {
   );
 }
 
-function githubLink(config: SidebarItemLink): SidebarItemLink {
+function githubLink(config: PartialSidebarItemLink): SidebarItemLink {
   return mergeSidebarItems(
     {
-      type: 'link',
+      type: 'link' as const,
       label: 'GitHub',
       description: 'Browse the source code or report issues on GitHub.',
       customProps: {
