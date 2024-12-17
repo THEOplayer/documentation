@@ -4,23 +4,9 @@
   "compilerOptions": {
     "target": "es2021",
     "lib": ["es2021", "dom"],
-    "types": [
-      "@docusaurus/module-type-aliases",
-      "@docusaurus/theme-classic"
-    ],
+    "types": ["@docusaurus/module-type-aliases", "@docusaurus/theme-classic"],
     "baseUrl": "."
   },
-  "include": [
-    "sidebars*.ts",
-    "src/",
-    "theoplayer/",
-    "theoads/",
-    "open-video-ui/",
-    "contributing/"
-  ],
-  "exclude": [
-    "theoplayer/external/",
-    "open-video-ui/external/",
-    "theoplayer_versioned_docs/"
-  ]
+  "include": ["sidebars*.ts", "src/", "theoplayer/", "theoads/", "open-video-ui/", "contributing/"],
+  "exclude": ["theoplayer/external/", "open-video-ui/external/", "theoplayer_versioned_docs/"]
 }
