@@ -5,6 +5,59 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.7.0 (2024/12/16)
+
+### Web
+
+#### ✨ Features
+
+- Added support for Dolby Vision (`dvav`, `dva1`, `dvhe` `dvh1`) and Dolby Digital Plus (`ec-3`) codecs in HLS when the platform supports it.
+
+#### ⚡ Improvements
+
+- Improved the behavior of THEOads on smart TVs.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would sometimes stall when trying to switch between an alternative THEOad source and the content.
+- Added in the missing `activequalitychanged` event for Millicast media.
+- Fixed an issue where the DRM server doesn't return a key for one or more adaptation sets, while the player still tries to access them.
+- Fixed an issue where the player would sometimes repeatedly request the same segment in a DASH live stream when the segment overlaps with a previous segment.
+- Fixed an issue where playback using the Microsoft WebView2 control with Edge Chromium v130 would fail due to incorrect functionality of `SourceBuffer.changeType`. 
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where THEOplayer ProGuard rules would affect the importing application builds.
+- Fixed a `NullPointerException` crash when seeking in a Google DAI stream with snap back when there are no scheduled ad breaks.
+- Fixed an issue where in some edge cases the player would throw a `NullPointerException` while playing a Google IMA ad.
+
+#### 👎 Deprecations
+
+- The `GoogleImaAd` interface will be moved from the `core` Maven package to the `integration-ads-ima` package in the next major version, and will be moved from `com.theoplayer.android.api.ads.GoogleImaAd` to `com.theoplayer.android.api.ads.ima.GoogleImaAd`. You can already switch to the new class name today for your Kotlin code, to facilitate the migration.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for picture in picture presentation mode on THEOlive sources.
+
+#### 🐛 Issues
+
+- Fixed an issue where `THEOplayer.autoplay` was not being set correctly.
+- Fixed an issue where when returning to the sender from chromecast would cause audio and text tracks to be selected incorrectly.
+- Fixed an issue where fatal errors were emitted when retrieving videoHeight, videoWidth, videoRect or setting the currentTime or programDateTime while playing a THEOlive source.
+- Fixed an issue where the duration of THEOlive sources was not set correctly.
+- Fixed an issue where the pause event is not dispatched when entering background mode while an IMA ad is active.
+
+### tvOS
+
+#### 🐛 Issues
+
+- Fixed an issue where fatal errors were emitted when retrieving videoHeight, videoWidth, videoRect or setting the currentTime or programDateTime while playing a THEOlive source.
+- Fixed an issue where the duration of THEOlive sources was not set correctly.
+
 ## 🚀 8.6.3 (2024/12/12)
 
 ### Web
