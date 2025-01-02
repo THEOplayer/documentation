@@ -203,6 +203,12 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;byte&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#certificate>certificate</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -229,7 +235,7 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#KeySystemConfiguration(java.lang.String,java.util.Map,boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,java.lang.String)">KeySystemConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, boolean useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> certificate)</code></th>
+                                                        href="#KeySystemConfiguration(java.lang.String,java.util.Map,boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,kotlin.Array)">KeySystemConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, boolean useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;byte&gt; certificate)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -315,19 +321,19 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>boolean</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#isUseCredentials()>isUseCredentials</a>() </code>
-                                            </th>
-                                            <td class="colLast">Returns whether the player is allowed to use credentials for cross-origin requests.</td>
-                                        </tr>
-                                        
-                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;byte&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#getCertificate()>getCertificate</a>() </code>
                                             </th>
                                             <td class="colLast">The certificate.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>boolean</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#isUseCredentials()>isUseCredentials</a>() </code>
+                                            </th>
+                                            <td class="colLast">Returns whether the player is allowed to use credentials for cross-origin requests.</td>
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
@@ -377,11 +383,11 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="KeySystemConfiguration(java.lang.String,java.util.Map,boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,java.lang.String)"></a>
+                                <a name="KeySystemConfiguration(java.lang.String,java.util.Map,boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,kotlin.Array)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>KeySystemConfiguration</h4>
-                                        <pre>KeySystemConfiguration(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, boolean useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> certificate)</pre>
+                                        <pre>KeySystemConfiguration(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, boolean useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;byte&gt; certificate)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -501,29 +507,6 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                     </li>
                                 </ul>
                                 
-                                <a id="isUseCredentials()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>isUseCredentials</h4>
-                                        <pre class="methodSignature"> boolean <a href=preintegration/KeyOSKeySystemConfiguration.html#isUseCredentials()>isUseCredentials</a>()</pre>
-                                        <div class="block"><p>Returns whether the player is allowed to use credentials for cross-origin requests. </p><ul><li>Credentials are cookies, authorization headers or TLS client certificates. </li></ul><p>Default: false</p></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
                                 <a id="getCertificate()">
                                     <!--   -->
                                 </a>
@@ -542,6 +525,29 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The certificate. (Nullable)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isUseCredentials()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isUseCredentials</h4>
+                                        <pre class="methodSignature"> boolean <a href=preintegration/KeyOSKeySystemConfiguration.html#isUseCredentials()>isUseCredentials</a>()</pre>
+                                        <div class="block"><p>Returns whether the player is allowed to use credentials for cross-origin requests. </p><ul><li>Credentials are cookies, authorization headers or TLS client certificates. </li></ul><p>Default: false</p></div>
+
+                                        <dl>
+
+                                        
+
                                         
 
                                         

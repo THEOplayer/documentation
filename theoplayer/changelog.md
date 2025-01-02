@@ -5,6 +5,33 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.8.0 (2024/12/30)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where the beginning of the seekable range in a DASH live stream was jumping back and forth by a few seconds.
+- Fixed an issue where a seek to the start of the seekable range would result in a seek to live for DASH live streams.
+- Fixed an issue on Web and Android on content protected DASH streams where the player was still appending segments from adaptation sets that the DRM server did not return a key for.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would dispatch incorrect play/pause events when playing a THEOads stream.
+- Fixed an issue where the player would run out of buffer occasionally when playing DASH live streams with slight inconsistencies in segment start times between manifest updates.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Google IMA and DAI ads now dispatch `ADD_AD_BREAK`, `UPDATE_AD_BREAK` and `REMOVE_AD_BREAK` events.
+
+#### 🐛 Issues
+
+- Fixed an issue where an `AdBreak`'s `maxRemainingDuration` property was not updated in IMA and DAI ads.
+
 ## 🚀 8.7.0 (2024/12/16)
 
 ### Web
@@ -21,7 +48,6 @@ toc_max_heading_level: 2
 
 - Fixed an issue where the player would sometimes stall when trying to switch between an alternative THEOad source and the content.
 - Added in the missing `activequalitychanged` event for Millicast media.
-- Fixed an issue where the DRM server doesn't return a key for one or more adaptation sets, while the player still tries to access them.
 - Fixed an issue where the player would sometimes repeatedly request the same segment in a DASH live stream when the segment overlaps with a previous segment.
 - Fixed an issue where playback using the Microsoft WebView2 control with Edge Chromium v130 would fail due to incorrect functionality of `SourceBuffer.changeType`. 
 
