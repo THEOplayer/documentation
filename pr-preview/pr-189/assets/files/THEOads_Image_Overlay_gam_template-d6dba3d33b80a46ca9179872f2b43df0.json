@@ -1,0 +1,22 @@
+{
+  "name": "THEOads Image Overlay",
+  "description": "THEOads Image Overlay",
+  "variables": [
+    {
+      "mimeTypes": [],
+      "label": "Image",
+      "uniqueName": "Image",
+      "description": "The image to use for the overlay",
+      "isRequired": true,
+      "variableType": "ASSET"
+    }
+  ],
+  "formatter": "{\n\t\"image\": \"[%Image%]\"\n}",
+  "omidPartnerName": "",
+  "type": "USER_DEFINED",
+  "isInterstitial": false,
+  "isNativeEligible": false,
+  "isNativeVideoEligible": false,
+  "isNewsletterEligible": false,
+  "isSafeFrameCompatible": true
+}
