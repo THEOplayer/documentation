@@ -8,9 +8,9 @@ THEOads can insert overlays into your content, but it requires placement informa
 
 ## Using the Signaling service REST API
 
-The recommended way to schedule overlays is through the signaling service API.
+The recommended way to schedule overlays is through the THEOads service API.
 
-This can be done by a POST request to `{path}/overlay` where path is the usual url to interact with the signaling service for a specific monetized stream: `{signaling-service-url}/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamOverlay](/theoads/api/signaling/create-monetized-stream-overlay/).
+This can be done by a POST request to `{path}/overlay` where path is the usual url to interact with the THEOads service for a specific monetized stream: `{theoads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamOverlay](/theoads/api/signaling/create-monetized-stream-overlay/).
 
 The body of the post request can have the following properties:
 
@@ -58,7 +58,7 @@ The body of the post request can have the following properties:
 - `position` is required to know where the overlay needs to be presented on top of the video content. It requires a combination of either one of `left` or `right` and `top` or `bottom`. All values are percentage based and non-zero. The values denote the location from the specified side. For example: `left: 10` denotes `10% from the left edge of the video`.
 - `size` is required to know what the overlay presentation's width and height need to be relative to the video content display size. All values are percentage based and non-zero. For example: `width: 20` denotes 20% of the current video display width.
 - `opacity` can optionally be used to make the overlay less opaque. This value is percentage based and non-zero. The default is `100`.
-- `gamProperties` can optionally be used to specify the values required for requesting a pre-configured creative from GAM. It follows the [specifications](https://support.google.com/admanager/answer/2623168#zippy=%2Crequired-parameters) for a tagless request to load a creative. If `gamProperties` is not defined, you need to specify at least one `resourceURI`.
+- `gamProperties` can optionally be used to specify the values required for requesting a pre-configured custom creative from GAM (See below). It follows the [specifications](https://support.google.com/admanager/answer/2623168#zippy=%2Crequired-parameters) for a tagless request to load a creative. If `gamProperties` is not defined, you need to specify at least one `resourceURI`.
   - `iu` specifies the Google Ad Manager ad unit code, including your Google Ad Manager network code.
   - `sz` specifies the creative size configured in GAM. Aside from the required `default` value, you can optionally specify alternative values for either `phone` or `tv` devices.
 - `resourceURI` can optionally be used to specify one or more types required for requesting a custom overlay via a URI. If `resourceURI` is not defined, you need to specify `gamProperties`.
@@ -131,3 +131,42 @@ An example of a schedule overlay request body for a custom image overlay can be 
   "clickThroughURI": "https://www.theoplayer.com/product/theoads"
 }
 ```
+
+## Custom Creatives via Google Ad Manager
+
+When using GAM for delivering dynamic image overlays through the `gamProperties` property of the overlay object, you need to first configure corresponding Creatives in the GAM console.
+
+First off, you need to define a custom creative template specifically for THEOads image overlays as documented [here](https://support.google.com/admanager/answer/1138308#custom-templates).
+
+You can either import this [pre-defined template](../assets/json/THEOads_Image_Overlay_gam_template.json), or follow the steps below.
+
+Apart from assigning a `Name` and optional `Description`, you need to perform 2 things:
+
+- Configure a File type variable `Image`, optionally limiting the allowed file types:
+
+![Configure a File type variable `Image`](../assets/img/overlay_gam_2.png)
+
+- Configure the `Code snippet` as follows:
+```json
+{
+	"image": "[%Image%]"
+}
+```
+
+In the end it should look like this:
+
+![Create custom creative template](../assets/img/overlay_gam_1.png)
+
+Now that the template is set up, you can start adding creatives as you would otherwise when using standard image creative, except you need to select this Custom creative template when adding the new creatives:
+
+![Create custom creative template](../assets/img/overlay_gam_3.png)
+
+When editing the creative itself, make sure to select an appropriate `Target ad unit size` as you would with a standard image creative also. This size corresponds to the `sz` property values inside the `gamProperties`.
+
+Besides that, you need to at least also upload or select a suitable image for display.
+
+![Create custom creative template](../assets/img/overlay_gam_4.png)
+
+Now that the creatives are defined, make sure to add them to a line item that is at least in status 'Ready' so delivery can commence (Ref GAM [documentation](https://support.google.com/admanager/answer/82991?hl=en&ref_topic=7506394&sjid=17311913585360515246-EU)).
+
+That's it! You should now be able to add image overlays which should show up inside the player at the appropriate time and location.
