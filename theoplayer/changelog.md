@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.8.2 (2025/01/06)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where accessing `THEOplayerGlobal.getSharedInstance` before creating a THEOplayer View would cause an application crash.
+
 ## 🚀 8.8.1 (2025/01/03)
 
 ### Android
