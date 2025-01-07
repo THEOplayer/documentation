@@ -147,9 +147,10 @@ Apart from assigning a `Name` and optional `Description`, you need to perform 2 
 ![Configure a File type variable `Image`](../assets/img/overlay_gam_2.png)
 
 - Configure the `Code snippet` as follows:
+
 ```json
 {
-	"image": "[%Image%]"
+  "image": "[%Image%]"
 }
 ```
 
