@@ -140,17 +140,22 @@ First off, you need to define a custom creative template specifically for THEOad
 
 You can either import this [pre-defined template](../assets/json/THEOads_Image_Overlay_gam_template.json), or follow the steps below.
 
-Apart from assigning a `Name` and optional `Description`, you need to perform 2 things:
+Apart from assigning a `Name` and optional `Description`, you need to perform the following changes:
 
 - Configure a File type variable `Image`, optionally limiting the allowed file types:
 
-![Configure a File type variable `Image`](../assets/img/overlay_gam_2.png)
+![Configure a File type variable `Image`](../assets/img/overlay_gam_2a.png)
+
+- Optionally configure a URL type variable `ClickThrough`:
+
+![Configure a URL type variable `ClickThrough`](../assets/img/overlay_gam_2b.png)
 
 - Configure the `Code snippet` as follows:
 
 ```json
 {
-  "image": "[%Image%]"
+  "image": "[%Image%]",
+  "clickThrough": "[%ClickThrough%]"
 }
 ```
 
