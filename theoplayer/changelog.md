@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.8.3 (2025/01/07)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where `seekable` would incorrectly be empty for DASH live streams.
+
 ## 🚀 8.8.2 (2025/01/06)
 
 ### Android
