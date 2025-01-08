@@ -9,9 +9,18 @@
       "description": "The image to use for the overlay",
       "isRequired": true,
       "variableType": "ASSET"
+    },
+    {
+      "isTrackingUrl": false,
+      "urlType": "STANDARD_HTTP",
+      "label": "ClickThrough",
+      "uniqueName": "ClickThrough",
+      "description": "The clickthrough URL for this creative",
+      "isRequired": false,
+      "variableType": "URL"
     }
   ],
-  "formatter": "{\n\t\"image\": \"[%Image%]\"\n}",
+  "formatter": "{\n\t\"image\": \"[%Image%]\",\n\t\"clickThrough\": \"[%ClickThrough%]\"\n}",
   "omidPartnerName": "",
   "type": "USER_DEFINED",
   "isInterstitial": false,
