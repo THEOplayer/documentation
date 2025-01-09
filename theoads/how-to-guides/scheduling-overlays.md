@@ -155,9 +155,12 @@ Apart from assigning a `Name` and optional `Description`, you need to perform th
 ```json
 {
   "image": "[%Image%]",
-  "clickThrough": "[%ClickThrough%]"
+  "clickThrough": "[%ClickThrough%]",
+  "impression": "%%VIEW_URL_ESC%%"
 }
 ```
+
+Note the `impression` field which is needed for the player to properly handle impression tracking.
 
 In the end it should look like this:
 
