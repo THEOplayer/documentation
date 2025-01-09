@@ -20,7 +20,7 @@
       "variableType": "URL"
     }
   ],
-  "formatter": "{\n\t\"image\": \"[%Image%]\",\n\t\"clickThrough\": \"[%ClickThrough%]\"\n}",
+  "formatter": "{\n\t\"image\": \"[%Image%]\",\n\t\"clickThrough\": \"[%ClickThrough%]\",\n  \"impression\": \"%%VIEW_URL_ESC%%\"\n}",
   "omidPartnerName": "",
   "type": "USER_DEFINED",
   "isInterstitial": false,
