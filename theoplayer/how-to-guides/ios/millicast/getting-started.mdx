@@ -1,0 +1,55 @@
+# Getting started with Millicast for iOS
+
+import Intro from '../../shared/millicast/_getting-started-intro.mdx';
+
+<Intro />
+
+## Usage
+
+1. Follow [our Getting Started guide](../../../getting-started/01-sdks/03-ios/00-getting-started.mdx)
+   to set up THEOplayer in your Android app.
+2. Add the `THEOplayer-Integration-Millicast` dependency to your project's Podfile.
+3. Add the `MillicastIntegration` to the player.
+4. Add a `MillicastSource` to your player's source.
+
+### Add the `integration-millicast` dependency
+
+Add the Millicast integration to your project's `Podfile`, as demonstrated below:
+```
+pod 'THEOplayer-Integration-Millicast'
+```
+
+### Add the Millicast integration to the player
+
+First import the integration into your project: 
+```
+import THEOplayerMillicastIntegration
+```
+
+Create and add the `MillicastIntegration` to your `THEOplayer`:
+
+```swift
+let millicastIntegration = MillicastIntegrationFactory.createMillicastIntegration()
+theoplayer.addIntegration(millicastIntegration)
+```
+
+### Add a `MillicastSource`
+
+After setting up a `THEOplayer` in your app, set its source to a `SourceDescription` containing a `MillicastSource`.
+You'll need a Millicast account ID and stream name to identify your Millicast stream:
+
+```swift
+let millicastSource = SourceDescription(source: MillicastSource(streamName: "multiview", accountID: "k9Mwad"))
+theoplayer.source = millicastSource
+```
+
+Make sure to replace the above `streamName` and `accountID` with your own. If your source is a secure stream, then you will
+also need to add a subscriber token to the source as follows:
+```swift
+MillicastSource(streamName: ..., accountID: ..., token: "Your token")
+```
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/ios/index.html)
+- [Millicast documentation](https://docs.dolby.io/streaming-apis/docs/)
