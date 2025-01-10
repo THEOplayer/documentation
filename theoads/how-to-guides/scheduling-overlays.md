@@ -6,7 +6,7 @@ sidebar_position: 5
 
 THEOads can insert overlays into your content, but it requires placement information to do so. This page will outline the various options for scheduling overlays.
 
-## Using the Signaling service REST API
+## Using the THEOads service REST API
 
 The recommended way to schedule overlays is through the THEOads service API.
 

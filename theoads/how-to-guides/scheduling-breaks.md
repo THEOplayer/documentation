@@ -90,7 +90,7 @@ An example snippet for an `#EXT-OATCLS-SCTE35` tag can be found below:
 2.ts
 ```
 
-## Using the Signaling service REST API
+## Using the THEOads service REST API
 
 If the ad information won't be present in the provided manifest, it is possible to schedule one through the THEOads service API.
 
