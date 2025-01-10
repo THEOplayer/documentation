@@ -19,6 +19,7 @@ Consider reading our [Advertising User Guide](../../knowledge-base/01-advertisem
   - [Google DAI](../../how-to-guides/01-ads/08-google-dai.md)
   - [Verizon Media](../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md)
   - [MediaTailor](../../how-to-guides/01-ads/12-mediatailor.md)
+  - [Custom Server Side Ad Integration](../../how-to-guides/01-ads/13-custom-ssai-integration.md)
 - Other
   - [How to subscribe to events](../../how-to-guides/01-ads/11-how-to-subscribe-to-ad-events.md)
   - [Adblock Detection](../../how-to-guides/01-ads/01-block-detection.md)
