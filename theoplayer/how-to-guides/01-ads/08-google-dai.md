@@ -157,7 +157,7 @@ player.source = {
 
 ## Android SDK
 
-The usage of Google IMA differs across the two Android-based SDKs.
+The usage of Google DAI differs across the two Android-based SDKs.
 
 - The Android SDK requires you to add the `GoogleDaiIntegration`.
 - The Legacy Android SDK (4.12.x) requires you to:
