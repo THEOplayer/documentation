@@ -160,7 +160,7 @@ Apart from assigning a `Name` and optional `Description`, you need to perform th
 }
 ```
 
-Note the `impression` field which is needed for the player to properly handle impression tracking.
+Note the `impression` field which is needed for the player to properly handle impression tracking. The special macro `%%VIEW_URL_ESC%%` is supplied by GAM and will contain a GAM specfic impression URL which is called when the overlay is shown on the client.
 
 In the end it should look like this:
 
