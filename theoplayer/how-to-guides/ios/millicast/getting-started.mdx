@@ -15,13 +15,15 @@ import Intro from '../../shared/millicast/_getting-started-intro.mdx';
 ### Add the `integration-millicast` dependency
 
 Add the Millicast integration to your project's `Podfile`, as demonstrated below:
+
 ```
 pod 'THEOplayer-Integration-Millicast'
 ```
 
 ### Add the Millicast integration to the player
 
-First import the integration into your project: 
+First import the integration into your project:
+
 ```
 import THEOplayerMillicastIntegration
 ```
@@ -45,6 +47,7 @@ theoplayer.source = millicastSource
 
 Make sure to replace the above `streamName` and `accountID` with your own. If your source is a secure stream, then you will
 also need to add a subscriber token to the source as follows:
+
 ```swift
 MillicastSource(streamName: ..., accountID: ..., token: "Your token")
 ```
