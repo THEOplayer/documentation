@@ -12,29 +12,214 @@ Developed and provided by THEO Technologies, this service operates on your infra
 
 ![THEOads architecture](../assets/img/how_theoads_works-light.svg)
 
-## Infrastructure
+## Infrastructure integration
 
-The service is deployed and operated by THEO Technologies within the customer’s infrastructure. This setup ensures smooth integration into the existing video workflow with minimal disruption. During onboarding, THEO Technologies provides the infrastructure requirements. Once set up, THEO Technologies bootstraps the service, after which the customer can manage their signaling service deployments and monitor the service through the REST API.
-
-### Integration
+The service is deployed and operated by THEO Technologies within the customer’s infrastructure. This setup ensures smooth integration into the existing video workflow with minimal disruption. During onboarding, THEO Technologies provides the specific infrastructure and network requirements. Once set up, THEO Technologies bootstraps the service, after which the customer can manage their streams and monitor the service through the REST API.
 
 In collaboration with the customer and THEO's solutions team, the integration of the service into the existing video workflow is designed. Deploying the Signaling Service between the CDN and Origin ensures that regionalization, security, and localization features remain unaffected.
 
 > To ensure high availability, we recommend maintaining the original origin stream on a CDN as a backup, while the Signaling Service provides redundancy and failover capabilities to further enhance reliability.
 
-For each Origin stream that needs to be enabled for THEOads, a monetized-stream can be created through the locally deployed REST API from your CMS or other existing orchestration systems. The monetized-stream represents a high-availability Signaling Service deployed on the provided infrastructure. Each active monetized-stream offers an HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. The endpoint path is standardized, so no CDN reconfiguration is required when stopping and recreating the monetized-stream.
+## Monetized streams
 
-Please refer to the [API reference](/theoads/api/signaling/theoads-api/) for detailed information on the REST API.
+After deployment of the Signaling Service has been completed, the next step is the creation of monetized streams. A monetized stream represents an instance of a origin stream that is processed by the Signaling Service to enable THEOads for this origin stream. Created via the locally deployed REST API, it exposes a standardized HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. This setup ensures seamless ad insertion without needing CDN reconfiguration, even if the monetized stream is stopped and recreated.
 
-### Scheduling ad breaks
+The monetized stream holds the following information:
 
+- `streamId`: Unique identifier for the monetized stream within the environment.
+- `name`: Self defined descriptive name for the monetized stream.
+- `description`: Optional descriptive information for the monetized stream.
+- `labels`: Array of self defined labels (string).
+- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `origin`: Your media origin host.
+- `segmentOrigin`: Your publicly available segments origin host.
+- `assetKey`: Google DAI Asset-Key linked to this stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+- `assetURI`: Optional custom asset URI which is to be used during ad breaks. If not set it will request an adbreak through Google Pod Serving.
+- `backdropURI`: Optional URI containing the back-drop to be used during the double box or L-shape ad.
+
+```json
+{
+  "streamId": "theoads-demo",
+  "name": "THEOads Demo",
+  "description": "SGAI THEOads Demo",
+  "labels": [],
+  "layout": "DOUBLE",
+  "origin": "https://domain.com",
+  "segmentOrigin": "https://segment-domain.com",
+  "assetKey": "google-sgai-demo",
+  "networkCode": "89053",
+  "assetURI": "https://asset.m3u8",
+  "backdropURI": "https://backdrop.svg"
+}
+```
+
+### Creating a new monetized stream
+
+The following API endpoint creates a new monetized stream, mandatory parameters are:
+
+- `streamId`: Unique identifier for the monetized stream within the environment.
+- `name`: Self defined descriptive name for the monetized stream.
+- `description`: Optional descriptive information for the monetized stream.
+- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `origin`: Your media Origin host.
+- `segmentOrigin`: Your publicly available segments origin.
+- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+
+```curl
+curl -L 'https://<theoads-host>/ads-client/api/v1/monetized-streams' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-d '{
+  "streamId": "string",
+  "name": "string",
+  "description": "string",
+  "layout": "SINGLE",
+  "origin": "string",
+  "segmentOrigin": "string",
+  "assetKey": "string",
+  "networkCode": "string"
+}'
+```
+
+### Updating an existing monetized stream
+
+The following API endpoint updates an existing monetized stream based on it's streamId, mandatory parameters are:
+
+- `streamId`: Unique identifier for the monetized stream within the environment.
+- `name`: Self defined descriptive name for the monetized stream.
+- `description`: Additional descriptive information for the monetized stream.
+- `labels`: Array of self defined labels (string).
+- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `origin`: Your media Origin host.
+- `segmentOrigin`: Your publicly available segments origin.
+- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+
+```curl
+curl -L -X PATCH 'https://<theoads-host>/ads-client/api/v1/monetized-streams/:streamId' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-d '{
+  "streamId": "string",
+  "name": "string",
+  "description": "string",
+  "labels": [
+    "string"
+  ],
+  "origin": "string",
+  "segmentOrigin": "string",
+  "assetKey": "string",
+  "networkCode": "string"
+}'
+```
+
+### Deleting an existing monetized stream
+
+The following API endpoint deletes an existing monetized stream based on it's streamId.
+
+```curl
+curl -L -X DELETE 'https://<theoads-host>/ads-client/api/v1/monetized-streams/:streamId' \
+-H 'Accept: application/json'
+```
+
+### Retrieving all monetized streams
+
+The following API endpoint returns all existing monetized streams in the deployed environment.
+
+```curl
+curl -X 'GET' \
+  'https://<theoads-host>/ads-client/api/v1/monetized-streams' \
+  -H 'accept: application/json'
+```
+
+The response is an array of the existing monetized stream resources.
+
+```json
+[
+  {
+    "id": "theoads-demo",
+    "payload": {
+      "streamId": "theoads-demo",
+      "name": "THEOads Demo",
+      "description": "SGAI THEOads Demo",
+      "labels": [],
+      "layout": "DOUBLE",
+      "origin": "https://domain.com",
+      "segmentOrigin": "https://segment-domain.com",
+      "assetKey": "google-sgai-demo",
+      "networkCode": "89053"
+    },
+    "state": "created",
+    "type": "monetized-stream"
+  }
+]
+```
+
+### Retrieving an individual monetized stream
+
+The following API endpoint returns an existing monetized stream based on its identifier (streamId).
+
+```curl
+curl -L 'https://<theoads-host>/ads-client/api/v1/monetized-streams/:streamId' \
+-H 'Accept: application/json'
+```
+
+The response is the monetized stream resource.
+
+```json
+{
+  "id": "theoads-demo",
+  "payload": {
+    "streamId": "theoads-demo",
+    "name": "THEOads Demo",
+    "description": "SGAI THEOads Demo",
+    "labels": [],
+    "layout": "DOUBLE",
+    "origin": "https://domain.com",
+    "segmentOrigin": "https://segment-domain.com",
+    "assetKey": "google-sgai-demo",
+    "networkCode": "89053"
+  },
+  "state": "created",
+  "type": "monetized-stream"
+}
+```
+
+Please refer to the [API reference](/theoads/api/signaling/theoads-api/) for even more detailed information on the REST API.
+
+### Player source
+
+When playing a THEOads source corresponding to a monetized stream, it is expected to pass a source that looks like this:
+
+```js
+src: 'https://<theoads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/MANIFEST-URI';
+```
+
+In this URI, the `<theoads-host>` points to the network endpoint where the THEOads service is deployed, preferably a DNS entry pointing to the service IP endpoint and reachable from the CDN.
+Secondly, the `<monetized-stream-id>` corresponds to the `streamId` for the monetized stream.
+Finally, the `MANIFEST-URI` part points to the origin's manifest relative to the configured `origin` property of the monetized stream.
+For example:
+
+```js
+src: 'https://<theoads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/manifest.m3u8';
+```
+
+Segment URLs in the media playlists should be absolute URLs however.
+Segment requests don't need to pass through the Signaling Service but should be fetched directly from the CDN to the origin so as to keep the benefit of scaling via the CDN.
+The `segmentOrigin` parameter should contain this publicly available endpoint to fetch the segments directly.
+
+## Scheduling ad breaks
+
+Once all the required monetized streams are configured, the next step is scheduling ad breaks for these monetized streams.
 To accurately schedule breaks, the origin manifest must be valid and include date and time indications.
 For HLS, this means the `EXT-X-PROGRAM-DATE-TIME` tag must be present.
-Breaks can be scheduled using either the provided REST API or in the manifest itself.
+Ad breaks can be signaled through either the provided REST API or by including the relevant information in the manifest itself.
 
-#### Manifest
+### Manifest
 
-When using manifest triggers, the following tags are supported:
+When using manifest signaling, the following tags are supported:
 
 - `#EXT-X-DATERANGE` tag
   - this is recommended because of its standardization and ability to provide more comprehensive data for improved integration.
@@ -44,12 +229,12 @@ When using manifest triggers, the following tags are supported:
 
 Optionally, SCTE markers can be included with the tags for extra metadata.
 
-#### REST API
+### REST API
 
 For scheduling ad breaks through the REST API, please refer to the [API definitions](/theoads/api/signaling/create-monetized-stream-break/) and the example below.
 
 ```bash
-curl --location 'http://theoads-host/api/v1/monetized-streams/stream-1/break' \
+curl --location 'https://<theoads-host>/ads-client/api/v1/monetized-streams/stream-1/break' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data '{
@@ -63,212 +248,7 @@ curl --location 'http://theoads-host/api/v1/monetized-streams/stream-1/break' \
 
 For more in depth information on scheduling ad breaks we refer to our [How-to guide: Scheduling breaks](/theoads/how-to-guides/scheduling-breaks/)
 
-### Configuration
-
-When setting up the Signaling Service, a configuration needs to be passed along. It must contain the following parameters:
-
-- `origin`: The origin URI to use for manifest requests.
-- `segmentOrigin`: The segment origin URI to use for segment requests.
-- `layout`: The default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/) for possible values.
-- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-
-#### Origins
-
-When playing a THEOads source, it is expected to pass a source that looks like this:
-
-```js
-src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI';
-```
-
-For the `MANIFEST-URI` part of the `src`, it can be an absolute URL or a relative one where the `origin` is not part of it.
-The relative URL should be used if the origin is a non-public hostname or ip address.
-Below shows an example for both cases:
-
-```js
-// Absolute URL
-src: 'PATH-TO-SIGNALING-SERVER/hls/https://domain.com/manifest.m3u8';
-
-// Relative URL
-src: 'PATH-TO-SIGNALING-SERVER/hls/manifest.m3u8';
-```
-
-In the case of the absolute URL the Signaling Service uses the whole URL as is. For the relative URL on the other hand,
-it does not have a valid URL to fetch the manifest yet. Here we will use the `origin` parameter as provided in the config.
-By combining both we do get a valid URL and can fetch the manifest.
-
-However, segment URLs in the media playlists should be absolute URLs.
-Segment requests don't need to pass through the Signaling Service but should be fetched directly from the CDN to the origin.
-The `segmentOrigin` parameter should contain this publicly available endpoint to fetch the segments directly.
-
 For more information on this topic we refer to our [workflow integration](/theoads/how-to-guides/workflow-integration/).
-
-## Monetized stream
-
-A monetized stream resource represents a high-availability Signaling Service deployed to enable THEOads for an Origin stream. Created via the locally deployed REST API, it provides a standardized HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. This setup ensures seamless ad insertion without needing CDN reconfiguration, even if the monetized stream is stopped and recreated.
-
-The monetized-stream holds the following information:
-
-- `name`: Self defined descriptive name for the monetized stream.
-- `labels`: Array of self defined labels (string).
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
-- `origin`: Your media Origin host.
-- `segmentOrigin`: Your publicly available segments origin.
-- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `streamId`: Unique identifier for the monetized stream within the environment.
-- `description`: Additional descriptive information for the monetized stream.
-- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `assetURI`: Optional Asset URI which is to be used during ad breaks. If not set it will request an ad through Google Pod Serving.
-- `backdropURI`: Optional URI containing the back-drop to be used during the double box or L-shape ad.
-
-```json
-{
-  "name": "THEOads Demo",
-  "labels": [],
-  "layout": "DOUBLE",
-  "origin": "https://domain.com",
-  "segmentOrigin": "https://segment-domain.com",
-  "assetKey": "google-sgai-demo",
-  "streamId": "theoads-demo",
-  "description": "SGAI THEOads Demo",
-  "networkCode": "89053",
-  "assetURI": "https://asset.m3u8",
-  "backdropURI": "https://backdrop.svg"
-}
-```
-
-### Creating a new monetized stream
-
-The following API endpoint creates a new monetized stream (signaling-service) in the environment, mandatory parameters are:
-
-- `name`: Self defined descriptive name for the monetized stream.
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
-- `origin`: Your media Origin host.
-- `segmentOrigin`: Your publicly available segments origin.
-- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `streamId`: Unique identifier for the monetized stream within the environment.
-- `description`: Additional descriptive information for the monetized stream.
-- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-
-```curl
-curl -L '/api/v1/monetized-streams' \
--H 'Content-Type: application/json' \
--H 'Accept: application/json' \
--d '{
-  "name": "string",
-  "layout": "SINGLE",
-  "origin": "string",
-  "segmentOrigin": "string",
-  "assetKey": "string",
-  "streamId": "string",
-  "description": "string",
-  "networkCode": "string"
-}'
-```
-
-### Updating an existing monetized stream
-
-The following API endpoint updates an existing monetized stream based on it's streamId, mandatory parameters are:
-
-- `name`: Self defined descriptive name for the monetized stream.
-- `labels`: Array of self defined labels (string).
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
-- `origin`: Your media Origin host.
-- `segmentOrigin`: Your publicly available segments origin.
-- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `streamId`: Unique identifier for the monetized stream within the environment.
-- `description`: Additional descriptive information for the monetized stream.
-- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-
-```curl
-curl -L -X PATCH '/api/v1/monetized-streams/:streamId' \
--H 'Content-Type: application/json' \
--H 'Accept: application/json' \
--d '{
-  "name": "string",
-  "labels": [
-    "string"
-  ],
-  "origin": "string",
-  "segmentOrigin": "string",
-  "assetKey": "string",
-  "streamId": "string",
-  "description": "string",
-  "networkCode": "string"
-}'
-```
-
-### Deleting an existing monetized stream
-
-The following API endpoint deletes an existing monetized stream based on it's streamId.
-
-```curl
-curl -L -X DELETE '/api/v1/monetized-streams/:streamId' \
--H 'Accept: application/json'
-```
-
-### Retrieving all monetized streams
-
-The following API endpoint returns all existing monetized streams in the deployed environment.
-
-```curl
-curl -X 'GET' \
-  '/api/v1/monetized-streams' \
-  -H 'accept: application/json'
-```
-
-The response is an array of the existing monetized stream resources.
-
-```json
-[
-  {
-    "id": "theoads-demo",
-    "payload": {
-      "name": "THEOads Demo",
-      "labels": [],
-      "layout": "DOUBLE",
-      "origin": "https://domain.com",
-      "segmentOrigin": "https://segment-domain.com",
-      "assetKey": "google-sgai-demo",
-      "streamId": "theoads-demo",
-      "description": "SGAI THEOads Demo",
-      "networkCode": "89053"
-    },
-    "state": "created",
-    "type": "monetized-stream"
-  }
-]
-```
-
-### Retrieving individual monetized stream
-
-The following API endpoint returns an existing monetized stream based on its identifier (streamId).
-
-```curl
-curl -L '/api/v1/monetized-streams/:streamId' \
--H 'Accept: application/json'
-```
-
-The response is the monetized stream resource.
-
-```json
-{
-  "id": "theoads-demo",
-  "payload": {
-    "name": "THEOads Demo",
-    "labels": [],
-    "layout": "DOUBLE",
-    "origin": "https://domain.com",
-    "segmentOrigin": "https://segment-domain.com",
-    "assetKey": "google-sgai-demo",
-    "streamId": "theoads-demo",
-    "description": "SGAI THEOads Demo",
-    "networkCode": "89053"
-  },
-  "state": "created",
-  "type": "monetized-stream"
-}
-```
 
 # More information
 

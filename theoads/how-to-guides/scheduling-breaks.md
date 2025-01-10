@@ -90,11 +90,11 @@ An example snippet for an `#EXT-OATCLS-SCTE35` tag can be found below:
 2.ts
 ```
 
-## Using the Signaling service REST API
+## Using the THEOads service REST API
 
-If the ad information won't be present in the provided manifest, it is possible to schedule one through the signaling service API.
+If the ad information won't be present in the provided manifest, it is possible to schedule one through the THEOads service API.
 
-This can be done by a POST request to `{path}/break` where path is the usual url to interact with the signaling service for a specific monetized stream: `{signaling-service-url}/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamBreak](/theoads/api/signaling/create-monetized-stream-break/).
+This can be done by a POST request to `{path}/break` where path is the usual url to interact with the THEOads service for a specific monetized stream: `{theoads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamBreak](/theoads/api/signaling/create-monetized-stream-break/).
 
 The body of the post request can have the following properties:
 

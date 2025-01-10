@@ -31,7 +31,7 @@ The updated layout value will be the new default for all ad breaks.
 When scheduling ad breaks through the signaling service API it is possible to choose the layout of the ad break.
 The passed layout will be used, unless it is left `undefined`. In this case the default layout is still used.
 
-For more information on the scheduling API refer to the following section: [Scheduling breaks through the signaling service](/theoads/how-to-guides/scheduling-breaks/#using-the-signaling-service-rest-api).
+For more information on the scheduling API refer to the following section: [Scheduling breaks through the signaling service](/theoads/how-to-guides/scheduling-breaks/#using-the-theoads-service-rest-api).
 
 ## Override the layout through the player
 
