@@ -8,17 +8,27 @@ import Intro from '../../shared/millicast/_getting-started-intro.mdx';
 
 1. Follow [our Getting Started guide](../../../getting-started/01-sdks/03-ios/00-getting-started.md)
    to set up THEOplayer in your iOS app.
-2. Add the `THEOplayer-Integration-Millicast` dependency to your project's Podfile.
+2. Add the `THEOplayer-Integration-Millicast` dependency to your project.
 3. Add the `MillicastIntegration` to the player.
 4. Add a `MillicastSource` to your player's source.
 
 ### Add the `THEOplayer-Integration-Millicast` dependency
-
-Add the Millicast integration to your project's `Podfile`, as demonstrated below:
-
-```ruby
-pod 'THEOplayer-Integration-Millicast'
-```
+Add the Millicast integration as a dependency in to your project:
+   <Tabs queryString="lang">
+      <!-- prettier-ignore-start -->
+      <TabItem value="spm" label="Swift Package Manager">
+       ```swift
+       .package(url: "https://github.com/theoplayer/theoplayer-sdk-spm.git", from: "8.10.0")
+       .product(name: "THEOplayerMillicastIntegration", package: "theoplayer-sdk-spm")
+       ```
+       </TabItem>
+       <TabItem value="cocoapods" label="Cocoapods">
+       ```
+       pod 'THEOplayer-Integration-Millicast', '~> 8.10.0'
+       ```
+       </TabItem>
+       <!-- prettier-ignore-end -->
+   </Tabs>
 
 ### Add the Millicast integration to the player
 
