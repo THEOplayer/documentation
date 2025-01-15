@@ -1,0 +1,120 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:com.theoplayer.android.api.abr/AbrStrategyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.abr/AbrStrategyMetadata.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyMetadata.Builder.html
+$dokka.location:com.theoplayer.android.api.ads/MediaFile.Builder///PointingToDeclaration/com/theoplayer/android/api/ads/MediaFile.Builder.html
+$dokka.location:com.theoplayer.android.api.cache/CachingParameters.Builder///PointingToDeclaration/com/theoplayer/android/api/cache/CachingParameters.Builder.html
+$dokka.location:com.theoplayer.android.api.cache/CachingPreferredTrackSelection.Builder///PointingToDeclaration/com/theoplayer/android/api/cache/CachingPreferredTrackSelection.Builder.html
+$dokka.location:com.theoplayer.android.api.cast/CastConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/cast/CastConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.event.ads/AdsEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/ads/AdsEventTypes.Identifiers.html
+$dokka.location:com.theoplayer.android.api.event.player.theolive/TheoLiveEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/theolive/TheoLiveEventTypes.Identifiers.html
+$dokka.location:com.theoplayer.android.api.event.player/PlayerEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/PlayerEventTypes.Identifiers.html
+$dokka.location:com.theoplayer.android.api.latency/LatencyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/latency/LatencyConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.media3/Media3PlayerIntegration.SourceSelectCallback///PointingToDeclaration/com/theoplayer/android/api/media3/Media3PlayerIntegration.SourceSelectCallback.html
+$dokka.location:com.theoplayer.android.api.pip/PipConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/pip/PipConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.cue/DateRangeCue.CustomAttributes///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/cue/DateRangeCue.CustomAttributes.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.AttachedPicture///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.AttachedPicture.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Chapter///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Chapter.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.ChapterToc///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.ChapterToc.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Comments///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Comments.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.GeneralEncapsulatedObject///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.GeneralEncapsulatedObject.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Private///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Private.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Text///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Text.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Unknown///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Unknown.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Url///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Url.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Yospace///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Yospace.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.EdgeType///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.EdgeType.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.FontFamily///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.FontFamily.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.FontStyle///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.FontStyle.html
+$dokka.location:com.theoplayer.android.api.player/NetworkConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/player/NetworkConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.addescription/GoogleImaAdDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html
+$dokka.location:com.theoplayer.android.api.source.dash/DashPlaybackConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/dash/DashPlaybackConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/AxinomDRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/AxinomDRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/AzureDRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/AzureDRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/ConaxDRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/ConaxDRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/DRMTodayConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/DRMTodayConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/IrdetoConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/IrdetoConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/KeyOSDRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/KeyOSDRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/KeyOSKeySystemConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/KeyOSKeySystemConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/TitaniumDRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/TitaniumDRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/VudrmDRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/VudrmDRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm.preintegration/XstreamConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/preintegration/XstreamConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm/ClearkeyKeySystemConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/ClearkeyKeySystemConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm/ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey///PointingToDeclaration/com/theoplayer/android/api/source/drm/ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey.html
+$dokka.location:com.theoplayer.android.api.source.drm/DRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/DRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm/FairPlayKeySystemConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/FairPlayKeySystemConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm/KeySystemConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/KeySystemConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.hls/HlsPlaybackConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/hls/HlsPlaybackConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.mediatailor/MediaTailorSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/mediatailor/MediaTailorSource.Builder.html
+$dokka.location:com.theoplayer.android.api.source.metadata/ChromecastMetadataDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/metadata/ChromecastMetadataDescription.Builder.html
+$dokka.location:com.theoplayer.android.api.source.ssai.dai/GoogleDaiLiveConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.ssai.dai/GoogleDaiVodConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.ssai/GoogleDaiConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/GoogleDaiConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source/GoogleDaiTypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/GoogleDaiTypedSource.Builder.html
+$dokka.location:com.theoplayer.android.api.source/SourceDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/SourceDescription.Builder.html
+$dokka.location:com.theoplayer.android.api.source/TextTrackDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TextTrackDescription.Builder.html
+$dokka.location:com.theoplayer.android.api.source/TypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TypedSource.Builder.html
+$dokka.location:com.theoplayer.android.api.theolive/THEOLiveConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/theolive/THEOLiveConfig.Builder.html
+$dokka.location:com.theoplayer.android.api/THEOplayerConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/THEOplayerConfig.Builder.html
+com.theoplayer.android.api
+com.theoplayer.android.api.abr
+com.theoplayer.android.api.ads
+com.theoplayer.android.api.ads.dai
+com.theoplayer.android.api.ads.ima
+com.theoplayer.android.api.ads.mediatailor
+com.theoplayer.android.api.ads.theoads
+com.theoplayer.android.api.cache
+com.theoplayer.android.api.cast
+com.theoplayer.android.api.cast.chromecast
+com.theoplayer.android.api.contentprotection
+com.theoplayer.android.api.error
+com.theoplayer.android.api.event
+com.theoplayer.android.api.event.ads
+com.theoplayer.android.api.event.cache
+com.theoplayer.android.api.event.cache.task
+com.theoplayer.android.api.event.cache.tasklist
+com.theoplayer.android.api.event.chromecast
+com.theoplayer.android.api.event.player
+com.theoplayer.android.api.event.player.theolive
+com.theoplayer.android.api.event.track
+com.theoplayer.android.api.event.track.mediatrack
+com.theoplayer.android.api.event.track.mediatrack.audio
+com.theoplayer.android.api.event.track.mediatrack.audio.list
+com.theoplayer.android.api.event.track.mediatrack.quality
+com.theoplayer.android.api.event.track.mediatrack.video
+com.theoplayer.android.api.event.track.mediatrack.video.list
+com.theoplayer.android.api.event.track.texttrack
+com.theoplayer.android.api.event.track.texttrack.list
+com.theoplayer.android.api.event.track.texttrack.texttrackcue
+com.theoplayer.android.api.event.track.tracklist
+com.theoplayer.android.api.fullscreen
+com.theoplayer.android.api.latency
+com.theoplayer.android.api.media3
+com.theoplayer.android.api.metrics
+com.theoplayer.android.api.millicast
+com.theoplayer.android.api.network
+com.theoplayer.android.api.network.http
+com.theoplayer.android.api.pip
+com.theoplayer.android.api.player
+com.theoplayer.android.api.player.theolive
+com.theoplayer.android.api.player.track
+com.theoplayer.android.api.player.track.mediatrack
+com.theoplayer.android.api.player.track.mediatrack.quality
+com.theoplayer.android.api.player.track.texttrack
+com.theoplayer.android.api.player.track.texttrack.cue
+com.theoplayer.android.api.player.track.texttrack.id3
+com.theoplayer.android.api.settings
+com.theoplayer.android.api.source
+com.theoplayer.android.api.source.addescription
+com.theoplayer.android.api.source.dash
+com.theoplayer.android.api.source.drm
+com.theoplayer.android.api.source.drm.preintegration
+com.theoplayer.android.api.source.hls
+com.theoplayer.android.api.source.mediatailor
+com.theoplayer.android.api.source.metadata
+com.theoplayer.android.api.source.ssai
+com.theoplayer.android.api.source.ssai.dai
+com.theoplayer.android.api.theolive
+com.theoplayer.android.api.timerange
+com.theoplayer.android.api.util
+
