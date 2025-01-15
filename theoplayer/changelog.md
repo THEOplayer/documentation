@@ -5,6 +5,45 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.9.0 (2025/01/15)
+
+### General
+
+### Web
+
+#### ✨ Features
+
+- Added 'native-picture-in-picture' to 'Presentation' API as an experimental feature.
+- Added a flag `segmentRelativeVttTiming` to `DashPlaybackConfiguration` to indicate whether segmented WebVTT files' timestamps should be considered relative to the segment start time.
+
+#### ⚡ Improvements
+
+- Improved the behavior of THEOads tune-in when using an alternative ad source.
+- Improved the performance of HESP and THEOlive streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where the THEOads overlays were not always attached to the content when the video aspect ratio and the player aspect ratio do not match.
+- Fixed an issue for THEOads where the content could be incorrectly paused after transitioning from ad to content.
+- Fixed the returned `buffered` for THEOads near adbreaks.
+
+### Android
+
+#### ✨ Features
+
+- Added `ID3Cue` interface with a `getFrame()` method, which provides a type-safe API to read the ID3 frame of an ID3 metadata cue.
+- Google DAI [Ad](https://developers.google.com/ad-manager/dynamic-ad-insertion/sdk/android/apis#ima.dai.api.Ad) data is now exposed under `THEOAd` and `THEOAdBreak`.
+
+#### 👎 Deprecations
+
+- Deprecated `sessionId` and `userId` options in `THEOLiveConfig` in favor of `externalSessionId`. This is now in line with the web player.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where paused caching tasks were evicted and entered error state after an application restarted.
+
 ## 🚀 8.8.3 (2025/01/07)
 
 ### General
@@ -77,9 +116,22 @@ toc_max_heading_level: 2
 
 ### Android
 
-#### 🐛 Issues
+#### 💥 Breaking Changes
 
 - Fixed an issue where THEOplayer ProGuard rules would affect the importing application builds.
+    - Depending on your project, you may need to add one or more of the following `dontwarn` rules to your application's ProGuard rules:
+        ```
+        -dontwarn androidx.mediarouter.**
+        -dontwarn com.google.ads.interactivemedia.v3.api.**
+        -dontwarn com.google.android.gms.cast.framework.**
+        -dontwarn com.google.android.gms.common.GoogleApiAvailability
+        -dontwarn com.google.android.gms.security.**
+        -dontwarn com.google.gson.**
+        -dontwarn kotlin.jvm.internal.SourceDebugExtension
+        ```
+
+#### 🐛 Issues
+
 - Fixed a `NullPointerException` crash when seeking in a Google DAI stream with snap back when there are no scheduled ad breaks.
 - Fixed an issue where in some edge cases the player would throw a `NullPointerException` while playing a Google IMA ad.
 
