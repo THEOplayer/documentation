@@ -709,14 +709,14 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CacheInternalNative.swift",
-      "line": 160,
+      "line": 168,
       "symbol": "CacheInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CacheInternalNative.swift",
-      "line": 168,
+      "line": 176,
       "symbol": "CacheInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -744,14 +744,14 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 278,
+      "line": 266,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 443,
+      "line": 431,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

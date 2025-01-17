@@ -13,6 +13,16 @@ $dokka.location:com.theoplayer.android.api.latency/LatencyConfiguration.Builder/
 $dokka.location:com.theoplayer.android.api.media3/Media3PlayerIntegration.SourceSelectCallback///PointingToDeclaration/com/theoplayer/android/api/media3/Media3PlayerIntegration.SourceSelectCallback.html
 $dokka.location:com.theoplayer.android.api.pip/PipConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/pip/PipConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack.cue/DateRangeCue.CustomAttributes///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/cue/DateRangeCue.CustomAttributes.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.AttachedPicture///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.AttachedPicture.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Chapter///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Chapter.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.ChapterToc///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.ChapterToc.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Comments///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Comments.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.GeneralEncapsulatedObject///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.GeneralEncapsulatedObject.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Private///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Private.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Text///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Text.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Unknown///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Unknown.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Url///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Url.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Yospace///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Yospace.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.EdgeType///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.EdgeType.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.FontFamily///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.FontFamily.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.FontStyle///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.FontStyle.html
@@ -92,6 +102,7 @@ com.theoplayer.android.api.player.track.mediatrack
 com.theoplayer.android.api.player.track.mediatrack.quality
 com.theoplayer.android.api.player.track.texttrack
 com.theoplayer.android.api.player.track.texttrack.cue
+com.theoplayer.android.api.player.track.texttrack.id3
 com.theoplayer.android.api.settings
 com.theoplayer.android.api.source
 com.theoplayer.android.api.source.addescription
