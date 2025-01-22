@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 1. Follow [our Getting Started guide](../../../getting-started/01-sdks/03-ios/00-getting-started.md)
    to set up THEOplayer in your iOS app.
 2. Add the `THEOplayer-Integration-Millicast` dependency to your project.
-3. Add the `MillicastIntegration` to the player.
+3. Add the `THEOplayerMillicastIntegration` to the player.
 4. Add a `MillicastSource` to your player's source.
 
 ### Add the `THEOplayer-Integration-Millicast` dependency
@@ -42,10 +42,10 @@ First import the integration into your project:
 import THEOplayerMillicastIntegration
 ```
 
-Create and add the `MillicastIntegration` to your `THEOplayer`:
+Create and add the `THEOplayerMillicastIntegration` to your `THEOplayer`:
 
 ```swift
-let millicastIntegration = MillicastIntegrationFactory.createMillicastIntegration()
+let millicastIntegration = MillicastIntegrationFactory.createIntegration()
 theoplayer.addIntegration(millicastIntegration)
 ```
 
