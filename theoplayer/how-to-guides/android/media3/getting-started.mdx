@@ -57,13 +57,13 @@ Once the Media3PlayerIntegration is added to the player, all subsequent sources 
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val typedSource = TypedSource
-        .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
-        .type(SourceType.DASH)
-        .build()
+            .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+            .type(SourceType.DASH)
+            .build()
 
         val sourceDescription = SourceDescription
-        .Builder(typedSource)
-        .build()
+            .Builder(typedSource)
+            .build()
 
         theoPlayerView.player.source = sourceDescription
         ```
@@ -71,13 +71,13 @@ Once the Media3PlayerIntegration is added to the player, all subsequent sources 
     <TabItem value="java" label="Java">
         ```java
         TypedSource typedSource = new TypedSource
-        .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
-        .type(SourceType.DASH)
-        .build();
+            .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+            .type(SourceType.DASH)
+            .build();
 
         SourceDescription sourceDescription = new SourceDescription
-        .Builder(typedSource)
-        .build();
+            .Builder(typedSource)
+            .build();
 
         theoPlayerView.getPlayer().setSource(sourceDescription);
         ```
