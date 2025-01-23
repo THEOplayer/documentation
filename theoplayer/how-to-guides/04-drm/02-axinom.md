@@ -87,7 +87,7 @@ theoplayer.source = sourceDescription
 
 ## Resources
 
-- [https://drm.axinom.com/](https://drm.axinom.com/)
+- [https://www.axinom.com/products/drm](https://www.axinom.com/products/drm)
 
 ## Related articles
 
