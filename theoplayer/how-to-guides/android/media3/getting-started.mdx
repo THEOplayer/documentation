@@ -45,10 +45,22 @@ Add the Media3 integration as a dependency in your module-level `build.gradle` f
 
 To make use of the Media3 integration, create and add the `Media3PlayerIntegration` to your `THEOplayerView`:
 
-```kotlin
-val media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
-theoplayerView.player.addIntegration(media3PlayerIntegration)
-```
+<Tabs queryString="lang">
+    <!-- prettier-ignore-start -->
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
+        theoplayerView.player.addIntegration(media3PlayerIntegration)
+        ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+        ```java
+        Media3PlayerIntegration media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
+        theoplayerView.getPlayer().addIntegration(media3PlayerIntegration)
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
 
 Once the Media3PlayerIntegration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
 
@@ -83,22 +95,38 @@ Once the Media3PlayerIntegration is added to the player, all subsequent sources 
         ```
     </TabItem>
     <!-- prettier-ignore-end -->
-
 </Tabs>
 
 By default, the `Media3PlayerIntegration` will play all types of sources except Millicast.
 To modify the default behaviour, you can pass a custom `Media3PlayerIntegration.SourceSelectCallback` implementation
 when constructing the integration.
 
-```kotlin
-val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegration.SourceSelectCallback { selectedSource, source ->
-    // selectedSource -> represents the TypedSource the player picked to play.
-    // source -> represents the SourceDescription passed to the player.
-    // return true -> the Media3 integration pipeline will be used to play the selected source.
-    // return false -> the default pipeline will be used to play the selected source.
-})
-theoplayerView.player.addIntegration(media3PlayerIntegration)
-```
+<Tabs queryString="lang">
+    <!-- prettier-ignore-start -->
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegration.SourceSelectCallback { selectedSource, source ->
+            // selectedSource -> represents the TypedSource the player picked to play.
+            // source -> represents the SourceDescription passed to the player.
+            // return true -> the Media3 integration pipeline will be used to play the selected source.
+            // return false -> the default pipeline will be used to play the selected source.
+        })
+        theoplayerView.player.addIntegration(media3PlayerIntegration)
+        ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+        ```java
+        Media3PlayerIntegration media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration((selectedSource, source) -> {
+            // selectedSource -> represents the TypedSource the player picked to play.
+            // source -> represents the SourceDescription passed to the player.
+            // return true; -> the Media3 integration pipeline will be used to play the selected source.
+            // return false; -> the default pipeline will be used to play the selected source.
+        });
+        theoplayerView.getPlayer().addIntegration(media3PlayerIntegration);
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
 
 ## Known limitations
 
