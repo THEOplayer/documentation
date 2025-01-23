@@ -119,7 +119,7 @@ Once the Media3PlayerIntegration is added to the player, all subsequent sources 
 
 </Tabs>
 
-By default, the `Media3PlayerIntegration` will play all types of sources except HESP and Millicast.
+By default, the `Media3PlayerIntegration` will play all types of sources except Millicast.
 To modify the default behaviour, you can pass a custom `Media3PlayerIntegration.SourceSelectCallback` implementation
 when constructing the integration.
 
@@ -138,7 +138,7 @@ theoplayerView.player.addIntegration(media3PlayerIntegration)
 As this integration is still under development, there are currently some known limitations and features that are still under development and not yet supported:
 
 - The preload, ABR, network, metrics, latency and caching (offline playback) APIs are not yet implemented and return dummy values.
-- HESP/THEOlive and Millicast playback are not yet supported, and will fall back to our existing playback pipeline.
+- Millicast playback is not yet supported, and will fall back to our existing playback pipeline.
 - `TextTrack.cues`, `TextTrack.activeCues` and cue-related events are not yet supported. Although subtitles do render correctly to the screen, the content of these subtitles is not yet exposed through our API.
 - Certain player and source configuration parameters are not yet handled.
 - Certain player events may not yet be dispatched correctly.
