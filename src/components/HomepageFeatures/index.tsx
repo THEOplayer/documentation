@@ -79,7 +79,7 @@ const FeatureList: FeatureItem[] = [
         entertainment.
       </>
     ),
-    to: 'https://developers.theo.live/',
+    to: '/theolive',
   },
 ];
 

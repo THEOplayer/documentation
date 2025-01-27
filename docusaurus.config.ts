@@ -198,6 +198,21 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
+        id: 'theolive',
+        path: 'theolive',
+        routeBasePath: '/theolive',
+        sidebarPath: './sidebarsTheolive.ts',
+        versions: {
+          current: {
+            noIndex: true,
+          },
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
         id: 'contributing',
         path: 'contributing',
         routeBasePath: '/contributing',
@@ -399,7 +414,7 @@ const config: Config = {
         } satisfies PlatformSidebarNavbarItemProps,
         {
           label: 'THEOlive',
-          href: 'https://developers.theo.live/',
+          href: '/theolive',
           position: 'left',
         },
         {

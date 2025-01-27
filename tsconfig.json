@@ -7,6 +7,6 @@
     "types": ["@docusaurus/module-type-aliases", "@docusaurus/theme-classic"],
     "baseUrl": "."
   },
-  "include": ["sidebars*.ts", "src/", "theoplayer/", "theoads/", "open-video-ui/", "contributing/"],
+  "include": ["sidebars*.ts", "src/", "theoplayer/", "theoads/", "open-video-ui/", "contributing/", "theolive/"],
   "exclude": ["theoplayer/external/", "open-video-ui/external/", "theoplayer_versioned_docs/"]
 }
