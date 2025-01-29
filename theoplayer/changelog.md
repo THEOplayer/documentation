@@ -5,6 +5,71 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.10.0 (2025/01/27)
+
+### Web
+
+#### ✨ Features
+
+- Added native support for HbbTV 1.5.
+
+#### ⚡ Improvements
+
+- Ensure ads in SSAI play back at normal speed, but allow content to resume at the selected playback rate.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player could switch to the main audio track when seeking backwards on Tizen 2.4.
+- Fixed an issue where sometimes the player failed to dispatch an `error` event when encountering a media decode error while playing an HLS stream.
+- Fixed an issue where a THEOads ad break could be removed from the API before it has been fully played.
+- Fixed an issue where going into native PiP during a THEOads adbreak would not play the ad in PiP mode.
+- Fixed an issue where starting the stream in the middle of a THEOads ad break could falsely keep the player in a paused state.
+- Fixed an issue where THEOads could get stuck at the end of the ad break on MacOS Safari and Firefox.
+- Fixed an issue on Safari where a THEOads ad break could be interrupted by setting another ad break.
+- Fixed an issue where the same THEOads ad break could be duplicated on the API.
+- Fixed an issue where autoplay did not work when using THEOads on smart TV's.
+- Fixed an issue with incorrect positioning and sizing of THEOads overlays.
+- Fixed an issue where the player would trigger an unhandled promise rejection in Safari version 16 and lower.
+- Fixed an issue where THEOads clickthrough didn't work properly.
+- Fixed an issue on Firefox where a THEOads ad would be only half the width of what it should be.
+- Fixed an issue where the player could show a black screen when going into a THEOads adbreak on MacOS Safari versions 16 and 17.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- Removed `badnetworkMode` on THEOlive API.
+
+#### ✨ Features
+
+- Added the Media3 integration. This integration installs a new player backend built on top of [Jetpack Media3](https://developer.android.com/media/media3), which aims to provide more stable playback on a wider range of devices.
+    - Note that this integration is currently under active development, and some advanced player features may not yet be compatible with this new integration.
+    - For more information, see [our getting started guide](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/media3/getting-started/).
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not automatically retry loading THEOlive streams on recoverable errors.
+- Fixed an issue where cues are not added all at once while sideloading thumbnails during MP4 playback.
+- Fixed an issue where a source using THEOads would not start play-out.
+
+### iOS
+
+#### ✨ Features
+
+- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/ios/millicast/getting-started/) integration for real-time streaming. The integration is available on Cocoapods and SPM.
+
+#### 🐛 Issues
+
+- Fixed an issue where background audio would not continue when in PiP mode and locking the screen.
+- Fixed an issue where Play/Pause events were not dispatched correctly during playback of a THEOlive source while Airplaying.
+- Fixed an issue where THEOlive sources would occasionally pause unexpectedly.
+
+### tvOS
+
+#### ✨ Features
+
+- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/ios/millicast/getting-started/) integration for real-time streaming. The integration is available on Cocoapods and SPM.
+
 ## 🚀 8.9.0 (2025/01/15)
 
 ### General
