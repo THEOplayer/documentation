@@ -416,7 +416,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
-      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff', 'json'],
+      additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff', 'json', 'ruby'],
     },
     algolia: {
       appId: '7HRS9V6FEL',
