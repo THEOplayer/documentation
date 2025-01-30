@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../";
 public interface <span class="typeNameLabel"><a href=LatencyManager.html>LatencyManager</a></span>
 
                     </pre>
-                    <div class="block"><p>The latency manager, used to control low-latency live playback.</p><ul><li><p>This is only used for live playback.</p></li></ul></div>
+                    <div class="block"><p>The latency manager, used to control low-latency live playback.</p><ul><li><p>This is only used for live playback.</p></li><li><p>Only supported for HESP / THEOlive streams with the Media3 backend.</p></li></ul></div>
 
                     <dl>
 
@@ -254,7 +254,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=LatencyManager.html#setEnabled(java.lang.Boolean)>setEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isEnabled) </code>
                                             </th>
@@ -338,7 +338,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                     <li class="blockList">
                                         <h4>isEnabled</h4>
                                         <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=LatencyManager.html#isEnabled()>isEnabled</a>()</pre>
-                                        <div class="block"><p>Whether the latency manager is enabled.</p></div>
+                                        <div class="block"><p>Whether the latency manager is enabled.</p><ul><li><p>With the Media3 backend, this value is true when <a href=../source/mediatailor/MediaTailorSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> is set, false otherwise.</p></li></ul></div>
 
                                         <dl>
 
@@ -360,8 +360,8 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                           >
                                     <li class="blockList">
                                         <h4>setEnabled</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=LatencyManager.html#setEnabled(java.lang.Boolean)>setEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isEnabled)</pre>
-                                        <div class="block"><p>Whether the latency manager is enabled.</p></div>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=LatencyManager.html#setEnabled(java.lang.Boolean)>setEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isEnabled)</pre>
+                                        <div class="block"><p>Whether the latency manager is enabled.</p><ul><li><p>With the Media3 backend, this value is true when <a href=../source/mediatailor/MediaTailorSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> is set, false otherwise.</p></li></ul></div>
 
                                         <dl>
 
@@ -384,7 +384,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                     <li class="blockList">
                                         <h4>isMonitoringLivePlayback</h4>
                                         <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=LatencyManager.html#isMonitoringLivePlayback()>isMonitoringLivePlayback</a>()</pre>
-                                        <div class="block"><p>Whether the latency manager is monitoring to stay within the live playback configurationLatencyManager.currentLatencyConfiguration.</p><ul><li><p>Can only be monitored for live playback.</p></li></ul></div>
+                                        <div class="block"><p>Whether the latency manager is monitoring to stay within the live playback configurationLatencyManager.currentLatencyConfiguration.</p><ul><li><p>Can only be monitored for live playback.</p></li><li><p>With the Media3 backend, this value is equal to <a href=LatencyManager.html#isEnabled()>isEnabled</a></p></li></ul></div>
 
                                         <dl>
 
