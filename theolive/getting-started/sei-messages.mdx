@@ -16,28 +16,28 @@ Next step is reacting to these messages when the player receives them. When the 
 
 ```typescript typescript
 export interface FrameMetadataEvent extends Event<'framemetadata'> {
-    readonly metadata: FrameMetadata[];
+  readonly metadata: FrameMetadata[];
 }
 
 /**
  * All possible types of frame metadata. Note this might be extended in the future so explicitely check the type field
  * to see the type of the metadata
  */
-export type FrameMetadata = TimeCodeMetadata
+export type FrameMetadata = TimeCodeMetadata;
 
 /**
  * Metadata containing a timecode.
  */
 export interface TimeCodeMetadata {
-    readonly type: 'timecode';
-    readonly timeCode: TimeCode;
+  readonly type: 'timecode';
+  readonly timeCode: TimeCode;
 }
 
 export interface TimeCode {
-    readonly hours: number;
-    readonly minutes: number;
-    readonly seconds: number;
-    readonly frames: number;
+  readonly hours: number;
+  readonly minutes: number;
+  readonly seconds: number;
+  readonly frames: number;
 }
 ```
 
