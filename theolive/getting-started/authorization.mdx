@@ -38,7 +38,7 @@ THEOlive makes use of Basic Authentication when making requests to the API. In t
 
 As an example, assume that your token has the value "my-token", and your secret has the value "my-secret". Then you can put them together like this: `my-token:my-secret`.
 
-You subsequently encode this value using base64. Applying 'base64(my-token:my-secret)' will result in the following encoded string: 'bXktdG9rZW46bXktc2VjcmV0'
+You subsequently encode this value using base64. Applying `base64(my-token:my-secret)` will result in the following encoded string: `bXktdG9rZW46bXktc2VjcmV0`
 
 This string can then be used in combination with 'Basic' to pass in the 'Authorization' header:
 
