@@ -1,0 +1,48 @@
+---
+sidebar_position: 10
+sidebar_label: In-stream metadata through SEI messages
+pagination_label: Authorization
+pagination_next: getting-started/troubleshooting
+title: In-stream metadata through SEI messages
+---
+
+---
+
+THEOlive allows you to embed metadata into your stream that is preserved throughout the THEOlive pipeline and can be accessed by the player.
+
+The first step is adding the metadata to your (h264) input stream in the form of picture timing SEI messages as defined in ITUT H264 Annex D 1.3. These messages allow you to add a timestamp to your frames and associate the timestamp with an event that happened on your backend.
+
+Next step is reacting to these messages when the player receives them. When the player receives a frame with an attached picture timing SEI message, it will emit a `FrameMetadatEvent`. The types look like this:
+
+```typescript typescript
+export interface FrameMetadataEvent extends Event<'framemetadata'> {
+    readonly metadata: FrameMetadata[];
+}
+
+/**
+ * All possible types of frame metadata. Note this might be extended in the future so explicitely check the type field
+ * to see the type of the metadata
+ */
+export type FrameMetadata = TimeCodeMetadata
+
+/**
+ * Metadata containing a timecode.
+ */
+export interface TimeCodeMetadata {
+    readonly type: 'timecode';
+    readonly timeCode: TimeCode;
+}
+
+export interface TimeCode {
+    readonly hours: number;
+    readonly minutes: number;
+    readonly seconds: number;
+    readonly frames: number;
+}
+```
+
+As you can see, the event contains metadata that for now can only be of type `timecode`. As this may change in the future, it is best to filter out the metadata which are of type `timecode` if you want to use this feature. These metadata contain the fields that correspond to picture timing fields defined in the SEI message.
+
+So a full example could be as follows:
+
+You distribute sports matches and want to display an overlay on the player when the score changes. Every time a score change happens, you add a picture timing SEI message to the stream and store in your backend that this time corresponds with this score. (You could also just add the timing message to all frames if this is easier, but this requires more processing both server and player side). This information can then be retrieved by the application running on the device of a viewer. You then add the event listener and listen for the `framemetadata` events and filter out the timecode metadata. In the listener you check whether the `TimeCode` corresponds with a score change event you recorded earlier and if so, display an overlay over the player.
