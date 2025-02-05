@@ -34,7 +34,7 @@ In case you forgot your secret, or the secret got exposed, you can easily regene
 
 ## 2. Using the token-secret pair with Basic Authentication
 
-THEOlive makes use of Basic Authentication when making requests to the API. In the 'Authorization' header, make sure to pass your token-secret pair (encrypted with base64), prepended with the word 'Basic'.
+THEOlive makes use of Basic Authentication when making requests to the API. In the 'Authorization' header, make sure to pass your token-secret pair (encoded with base64), prepended with the word 'Basic'.
 
 As an example, assume that your token has the value "my-token", and your secret has the value "my-secret". Then you can put them together like this: `my-token:my-secret`.
 
