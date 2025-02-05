@@ -1,10 +1,8 @@
 ---
 sidebar_position: 9
-sidebar_label: THEOlive scheduler
-pagination_label: scheduler
-title: 'THEOlive scheduler: schedule channel start & stop'
-pagination_next: getting-started/sei-messages
 ---
+
+# THEOlive scheduler: schedule channel start & stop
 
 ## Define when a channel should be ready and when it should be stopped
 
@@ -16,7 +14,7 @@ THEOlive offers the option to schedule the start and stop of a channel automatic
 
 ## How it works
 
-A scheduler can be seen as a** collection of **a** start and end time**, and** a list of channels** that have to start and stop at these given times. Setting the end time of a scheduler is optional: when not setting an end time, you'll still have to terminate the scheduler yourself, but this can be useful when you don't know the exact end time of your event.
+A scheduler can be seen as a **collection of** a **start and end time**, and **a list of channels** that have to start and stop at these given times. Setting the end time of a scheduler is optional: when not setting an end time, you'll still have to terminate the scheduler yourself, but this can be useful when you don't know the exact end time of your event.
 
 15 minutes before the actual start, the channels of this scheduler will go in `scheduled` state. During this period, the whole THEOlive stack will start up. The THEOlive player will show nothing in this period: it will behave the same as if the channel was in stopped mode. Note that you can also create a scheduler of which the start time is in less than 15 minutes, or even immediately (not setting the `start` property via the API): channels will still be available for your viewers at the chosen start time, but THEOlive doesn't guarantee that your stream is already available, as starting up the machines in our stack takes some time.
 
