@@ -36,7 +36,7 @@ To start your journey, you'll have to create a THEOlive account in the [manageme
 
 Once you've entered your user name and password, you can already create your first channel and start streaming. There will be a 5-minute streaming cap and a THEOlive watermark in this free environment. To get access to unlimited streaming, you will have to complete your account and credit card details in the 'my account' section. Find more information on [How billing works for THEOlive](doc:how-billing-works-for-theolive).
 
-![](https://files.readme.io/302e789-dashboard.PNG "Homepage of the THEOlive management console")
+![](./assets/img/302e789-dashboard.png "Homepage of the THEOlive management console")
 
 
 > 📘 API reference
@@ -47,12 +47,12 @@ Once you've entered your user name and password, you can already create your fir
 
 Time to start streaming! In the management console, please click "create channel", which will return the following screen: here you can enter a name for your channel, choose the ingest location, and define your [Stream configuration](doc:stream-configuration). It is important to choose a location as close as possible to you to reduce latency. An overview of possible ingest locations can be found [here](doc:regions).
 
-![](https://files.readme.io/b636bf5-create-channel.PNG "Create a channel")
+![](./assets/img/b636bf5-create-channel.PNG "Create a channel")
 
 
 When hitting 'Create', you will be navigated towards the Details page of your newly created channel.  
 
-![](https://files.readme.io/467abb8-overview.PNG "Management console: Details page with the possibility to start your channel and options to customize your player.")
+![](./assets/img/467abb8-overview.PNG "Management console: Details page with the possibility to start your channel and options to customize your player.")
 
 
 A channel can also be created through an API call to the `channels` endpoint, passing an ingest location and a name. It will return an `id` that you can use to start, stop, update or delete the channel later on. Also, a `streamKey` and `rtmpPushUrl` will be returned to stream your content to. More information about the Create channel endpoint and how to pass advanced properties can be found [here](ref:create-channel). 
@@ -95,7 +95,7 @@ When you're all set, you can start your THEOlive channel. Starting your channel 
 
 You can easily start your channel on the channel details page, by clicking on the green "start" button.
 
-![](https://files.readme.io/cbe288c-start.PNG)
+![](./assets/img/cbe288c-start.PNG)
 
 
 In the background this will make a `POST` request to the `channels/start` endpoint. You can also start a channel via the Start channel API call, for which you can find more information [here](ref:start-channel). As mentioned in the last section, you can optionally pass the `rtmpPullUrl` property in the body of the request for pull-based streaming. Don't forget to stop streaming when you are done!

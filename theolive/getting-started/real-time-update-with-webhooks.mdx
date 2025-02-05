@@ -1,12 +1,10 @@
 ---
 sidebar_position: 8
 sidebar_label:  Real-Time Updates with webhooks
+title: Real-Time Updates with webhooks
 pagination_label: real-time-updates-with-webhooks
 pagination_next: getting-started/scheduler
 ---
-
-
-# Real-Time Updates with webhooks
 
 This guide describes how you can leverage THEOlive webhooks to receive real-time updates about your THEOlive components. You don't need to query for updates yourself anymore: we send you information when certain events happen. This guide will first explain what webhooks are, how you can create and manage them via the THEOlive console and/or API, and finally describe how you can secure your webhooks.
 
@@ -18,7 +16,7 @@ You can choose on which events THEOlive has to send a message to your endpoint. 
 
 The main advantage of webhooks is that THEOlive informs you in real-time when an event happens, and you don't have to pull our API continuously to check if there are any updates on an object. 
 
-![](https://files.readme.io/d2e680e-webhooks.png "webhooks.png")
+![](../assets/img/d2e680e-webhooks.png "webhooks.png")
 
 ## 2. Create and manage your webhooks
 
@@ -26,7 +24,7 @@ You can create a webhook through the THEOlive API, or via the management console
 
 To create a webhook, click on "Webhooks" on the sidebar, followed by "Create". A webhook expects a name, a valid HTTPS endpoint, an optional description and a list of events it should listen and act on. A full list of events can be found at the bottom of this page. You can also select to listen to all possible events. When using the API, you can pass `events: ["*"]` when a webhook should listen to all events.
 
-![](https://files.readme.io/a1acade-create-webhook.PNG "Creating a webhook through the console")
+![](../assets/img/a1acade-create-webhook.PNG "Creating a webhook through the console")
 
 
 When such an event happens, THEOlive will try to send a request to your endpoint. **It's important that you inform us as soon as possible that you received the request with a status 200 code**: requests that take longer than 3 seconds will be terminated by THEOlive and marked as failed. When a webhook has too many failed attempts, THEOlive will disable the webhook automatically.  Below, we show a small code example of an Express app where we inform THEOlive we have received the request, before we do all other actions:
@@ -56,7 +54,7 @@ app.listen(port, () => {
 
 When a webhook is created, you can update or delete it through the API or management console. At the details page you can also see the history of all message that have been sent to your endpoint, and if they've failed or not.
 
-![](https://files.readme.io/57e33f4-manage-webhook.PNG "Webhook details page: option to manage your webhook, and a historical overview of all webhook messages that THEOlive sent to your endpoint")
+![](../assets/img/57e33f4-manage-webhook.PNG "Webhook details page: option to manage your webhook, and a historical overview of all webhook messages that THEOlive sent to your endpoint")
 
 
 ## 3. How to act on event
