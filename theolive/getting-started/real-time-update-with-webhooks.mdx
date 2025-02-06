@@ -49,7 +49,7 @@ app.listen(port, () => {
 
 :::warning 🚧 Newly created webhooks will be disabled by default
 
-When you create a webhook, it won't be active yet. THEOlive does this so you can test things out before we actually start firing events to your endpoint. When you think you are fully ready to receive webhook mesages from THEOlive, you can enable the webhook through the console, or via the [/webhooks/_webhook-id_/enable endpoint](https://developers.theo.live/reference/enable-webhook).
+When you create a webhook, it won't be active yet. THEOlive does this so you can test things out before we actually start firing events to your endpoint. When you think you are fully ready to receive webhook mesages from THEOlive, you can enable the webhook through the console, or via the [/webhooks/$\{webhook-id\}/enable](https://developers.theo.live/reference/enable-webhook) endpoint.
 :::
 
 When a webhook is created, you can update or delete it through the API or management console. At the details page you can also see the history of all message that have been sent to your endpoint, and if they've failed or not.
