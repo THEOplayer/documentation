@@ -20,7 +20,7 @@ The main advantage of webhooks is that THEOlive informs you in real-time when an
 
 ## 2. Create and manage your webhooks
 
-You can create a webhook through the THEOlive API, or via the management console. In this document we will mainly describe the console approach, the full API reference for the actions and methods can be found [here](ref:create-webhook).
+You can create a webhook through the THEOlive API, or via the management console. In this document we will mainly describe the console approach, the full API reference for the actions and methods can be found [here](https://developers.theo.live/reference/create-webhook).
 
 To create a webhook, click on "Webhooks" on the sidebar, followed by "Create". A webhook expects a name, a valid HTTPS endpoint, an optional description and a list of events it should listen and act on. A full list of events can be found at the bottom of this page. You can also select to listen to all possible events. When using the API, you can pass `events: ["*"]` when a webhook should listen to all events.
 
@@ -50,7 +50,7 @@ app.listen(port, () => {
 :::info
 🚧 Newly created webhooks will be disabled by default
 
-When you create a webhook, it won't be active yet. THEOlive does this so you can test things out before we actually start firing events to your endpoint. When you think you are fully ready to receive webhook mesages from THEOlive, you can enable the webhook through the console, or via the [/webhooks/_webhook-id_/enable endpoint](ref:enable-webhook).
+When you create a webhook, it won't be active yet. THEOlive does this so you can test things out before we actually start firing events to your endpoint. When you think you are fully ready to receive webhook mesages from THEOlive, you can enable the webhook through the console, or via the [/webhooks/_webhook-id_/enable endpoint](https://developers.theo.live/reference/enable-webhook).
 :::
 
 When a webhook is created, you can update or delete it through the API or management console. At the details page you can also see the history of all message that have been sent to your endpoint, and if they've failed or not.
