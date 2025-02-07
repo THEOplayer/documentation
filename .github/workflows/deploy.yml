@@ -4,6 +4,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      full-sync:
+        description: 'Perform a full sync to S3'
+        required: false
+        type: boolean
+
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
@@ -37,9 +43,14 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::108977503313:role/github-documentation
           aws-region: eu-west-1
-      - name: Deploy to S3
+      - name: Deploy changed files to S3
+        if: ${{ !inputs.full-sync }}
         run: |
           aws s3 sync --delete --size-only ./build s3://www.theoplayer.com-docs/docs
+      - name: Deploy all files to S3
+        if: ${{ inputs.full-sync }}
+        run: |
+          aws s3 sync --delete ./build s3://www.theoplayer.com-docs/docs
       - name: Invalidate CloudFront
         run: |
           aws cloudfront create-invalidation --distribution-id E1IOJWYC9REF7X --paths '/docs/*'
