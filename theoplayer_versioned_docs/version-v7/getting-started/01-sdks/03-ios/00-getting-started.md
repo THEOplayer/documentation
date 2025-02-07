@@ -34,7 +34,7 @@ If you just installed Cocoapods or are already up-to-date, then this step can be
 
 Add `pod 'THEOplayerSDK-core', '~> 5'` similar to the following to your Podfile:
 
-```swift
+```ruby
 target 'MyApp' do
   pod 'THEOplayerSDK-core', '~> 5'
 end
