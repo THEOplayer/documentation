@@ -7,7 +7,7 @@ and the changes needed in your code.
 
 Update THEOplayer iOS/tvOS SDK to version 8 in your Podfile:
 
-```swift
+```ruby
 target 'MyApp' do
   pod 'THEOplayerSDK-core', '~> 8'
 end
