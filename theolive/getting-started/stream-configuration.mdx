@@ -1,0 +1,113 @@
+---
+sidebar_position: 4
+---
+
+# Stream Configuration
+
+Settings related to the THEOlive stream output
+
+---
+
+THEOlive offers pre-defined ABR profiles (or "presets") which allows you to adjust the stream settings according to your use case. Different pricing per minute transcoded and viewed applies to each profile.
+
+**Note:** this is a breaking change compared to the method where you had to passed a `ingestConfig` object in the past. This old approach is still available for the time being. More information can be found later on in this [document](#setting-the-stream-configuration-via-the-ingestconfig-object-deprecated). You can pass as well the `streamConfig` as `ingestConfig` object (the API won't throw an error), but `streamConfig` will take precedence.
+
+## Setting the stream configuration via the `streamConfig` object
+
+The goal is to pass a `streamConfig` object during the [creation](https://developers.theo.live/reference/create-channel) of a channel, or when [updating](https://developers.theo.live/reference/update-channel) it. This object consists of:
+
+- `bitrate`: the max bitrate value that will be used in Mbps.
+- `resolution`: the max resolution that will be used. Possible values: `"1080p"`, `"720p"`, `"576p"`, `"480p"`.
+- `fps`: the max fps value that will be used. Can be `25`, `29.97`, `30`, `50`, `59.94`, `60`.
+- `abr`: a boolean to determine if ABR should be enabled or not.
+
+**Remarks:**
+
+- The `streamConfig`object is optional. When it's not passed, the following default values will be used:
+  - `bitrate: 4.5`
+  - `resolution: "1080p"`
+  - `fps: 30`
+- When defining the `streamConfig` object, it's mandatory to pass _all_ properties (bitrate, resolution, fps). Otherwise, the API will return an error.
+
+In the table below you can find a complete overview of all possible values that can be passed and the ABR ladder in which it will result. Please refer to our [pricing page](https://www.theoplayer.com/pricing/theolive) for the latest pricings per profile.
+
+| Bitrate  | Resolution | fps           | ABR ladder                                                               |
+| :------- | :--------- | :------------ | :----------------------------------------------------------------------- |
+| 8 Mbps   | 1080p      | 50, 59.94, 60 | - 1080p @ 8 Mbps - 720p @ 4.5 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps   |
+| 8 Mbps   | 1080p      | 25, 29.97, 30 | - 1080p @ 8 Mbps - 720p @ 4.5 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps   |
+| 6 Mbps   | 1080p      | 50, 59.94, 60 | - 1080p @ 6 Mbps - 720p @ 3.5 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps   |
+| 6 Mbps   | 1080p      | 25, 29.97, 30 | - 1080p @ 6 Mbps - 720p @ 3.5 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps   |
+| 6 Mbps   | 720p       | 50, 59.94, 60 | - 720p @ 6 Mbps - 576p @ 4 Mbps - 360p @ 2 Mbps - 240p @ 0.9 Mbps        |
+| 6 Mbps   | 720p       | 25, 29.97, 30 | - 720p @ 6 Mbps - 576p @ 4 Mbps - 360p @ 2 Mbps - 240p @ 0.9 Mbps        |
+| 4.5 Mbps | 1080p      | 50, 59.94, 60 | - 1080p @ 4.5 Mbps - 720p @ 3 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps   |
+| 4.5 Mbps | 1080p      | 25, 29.97, 30 | - 1080p @ 4.5 Mbps - 720p @ 3 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps   |
+| 4.5 Mbps | 720p       | 50, 59.94, 60 | - 720p @ 4.5 Mbps - 576p @ 2.5 Mbps - 360p @ 1.5 Mbps - 240p @ 0.9 Mbps  |
+| 4.5 Mbps | 720p       | 25, 29.97, 30 | - 720p @ 4.5 Mbps - 576p @ 2.5 Mbps - 360p @ 1.5 Mbps - 240p @ 0.9 Mbps  |
+| 2.5 Mbps | 1080p      | 25, 29.97, 30 | - 1080p @ 2.5 Mbps - 720p @ 2.2 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps |
+| 2.5 Mbps | 720p       | 25, 29.97, 30 | - 720p @ 2.5 Mbps - 576p @ 1.5 Mbps - 360p @ 0.9 Mbps                    |
+| 2.5 Mbps | 576p       | 25, 29.97, 30 | - 576p @ 2.5 Mbps - 360p @ 1.5 Mbps - 240p @ 0.9 Mbps                    |
+| 1.5 Mbps | 720p       | 25, 29.97, 30 | - 720p @ 1.5 Mbps - 576p @ 1 Mbps - 360p @ 0.9 Mbps                      |
+| 1.5 Mbps | 576p       | 25, 29.97, 30 | - 576p @ 1.5 Mbps - 360p @ 1 Mbps - 240p @ 0.9 Mbps                      |
+| 1.5 Mbps | 360p       | 25, 29.97, 30 | - 360p @ 1.5 Mbps - 240p @ 0.9 Mbps                                      |
+| 1 Mbps   | 576p       | 25, 29.97, 30 | - 576p @ 1 Mbps - 360p @ 0.9 Mbps - 240p @ 0.8 Mbps                      |
+| 1 Mbps   | 360p       | 25, 29.97, 30 | - 360p @ 1 Mbps - 240p @ 0.8 Mbps                                        |
+
+:::info 🚧 Encoder settings
+
+**Frame rate**  
+To obtain the best performance, set the same frame rate on both your encoder and in the channel configuration (the suggested values for this are 25, 29.97 or 30 fps). Frame rate differences between encoder and channel may lead to information loss and stalls.
+
+**Bandwidth**  
+Make sure your encoder has a stable connection with enough upload bandwidth to correctly serve all frames. Dropped frames or connection interruptions may lead to increased latency, stalls and playback failures.
+:::
+
+## Setting the stream configuration via the `ingestConfig` object (deprecated)
+
+Before the `streamConfig` object was available in our API, you had to configure the settings using the `ingestConfig` object. This approach is still available to provide backwards compatibility for existing integrations, but it's not recommended to use anymore: it will be deprecated in the near future.
+
+We highly recommend to update your integration to make use of the new `streamConfig` object.
+
+For those still using the `ingestConfig` object: this object accepts a few properties.
+
+- `preset`: can be `"default"`, `"sport"`or `"presentation"`. Defaults to `"default"` when not passed. The connected ABR ladders can be found below
+- `abr`: boolean.
+- `aspectRatio`: used for setting the max resolution, but poorly named in the past. Depending on the resolution you choose, your ABR ladder will exist out of four steps (in case of `"1080p"`), three steps (in case of `"720p"`), two steps (in case of `"480p"`), or one step (in case of `"360p"`).
+- `fps`: a number that can be 25, 29.97, 30, 50, 50.94, 60.
+
+### Default preset values
+
+The default configuration that will work for most use cases.
+
+| Quality    | Bit rate  |
+| :--------- | :-------- |
+| HD - 1080p | 4000 kbps |
+| HQ - 720p  | 2500 kbps |
+| MQ - 480p  | 1200 kbps |
+| LQ - 360p  | 900 kbps  |
+
+### Sport preset values
+
+The ideal configuration for streams with fast-moving images and a lot of scene changes that have a high bit rate. An example can be a broadcasted football game.
+
+| Quality    | Bit rate  |
+| :--------- | :-------- |
+| HD - 1080p | 4500 kbps |
+| HQ - 720p  | 2700 kbps |
+| MQ - 480p  | 1400 kbps |
+| LQ - 360p  | 1000 kbps |
+
+### Presentation preset values
+
+The configuration that can be used when not a lot of scene changes are expected, think about a meeting with a few slides.
+
+| Quality    | Bit rate  |
+| :--------- | :-------- |
+| HD - 1080p | 2200 kbps |
+| HQ - 720p  | 900 kbps  |
+| MQ - 480p  | 800 kbps  |
+| LQ - 360p  | 450 kbps  |
+
+:::info 📘 Ingest configuration
+
+When configuring your RTMP ingest, it is important to match the highest bitrate of your bitrate ladder. When using the recommended preset at 1080p for example, the RTMP ingest should be configured at 4000 kbps.
+:::

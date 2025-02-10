@@ -1,0 +1,54 @@
+---
+sidebar_position: 1
+---
+
+# Authorization
+
+We make sure that only authorized users can make API calls!
+
+---
+
+Making secure calls to our REST API requires authentication and authorization. THEOlive makes use of token-secret pairs to authorize requests.
+
+## 1. Getting a token-secret pair
+
+To generate a token-secret pair, you should be registered for an account at on our [management console](https://console.theo.live/). Under the section "Tokens", click on the "Generate Token" button, and enter a name before clicking "Generate".
+
+![](../assets/img/c0aca77-1.-THEOlive-console-generate-token.PNG)
+
+This will give a pop-up which shows your token "key" and the corresponding secret.
+
+![](../assets/img/bb9b4a6-2.-THEOlive-console-generated-token-and-secret.PNG)
+
+Once you "Close" the pop-up window, the new token will be visible in your list of tokens.
+
+![](../assets/img/5361242-3.-THEOlive-console-token-list.PNG)
+
+:::warning[Please store the secret]
+
+Make sure to store the secret somewhere, as this will be shown to you only once, and THEOlive only stores a hash of the secret, so it cannot be recovered afterward.
+
+:::
+
+In case you forgot your secret, or the secret got exposed, you can easily regenerate a pair at all times.
+
+## 2. Using the token-secret pair with Basic Authentication
+
+THEOlive makes use of Basic Authentication when making requests to the API. In the 'Authorization' header, make sure to pass your token-secret pair (encoded with base64), prepended with the word 'Basic'.
+
+As an example, assume that your token has the value "my-token", and your secret has the value "my-secret". Then you can put them together like this: `my-token:my-secret`.
+
+You subsequently encode this value using base64. Applying `base64(my-token:my-secret)` will result in the following encoded string: `bXktdG9rZW46bXktc2VjcmV0`
+
+This string can then be used in combination with 'Basic' to pass in the 'Authorization' header:
+
+```text
+Authorization: Basic bXktdG9rZW46bXktc2VjcmV0
+```
+
+You can now make requests to our THEOlive API in the name of your organization!
+
+:::info 📘 Basic Authentication with Postman
+
+The guide [Using Postman with THEOlive](https://developers.theo.live/docs/how-to-use-postmans-api-client-with-theolive) illustrates how to use the THEOlive token-secret pair in Postman.
+:::

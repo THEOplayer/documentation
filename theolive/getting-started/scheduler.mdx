@@ -1,0 +1,41 @@
+---
+sidebar_position: 9
+---
+
+# THEOlive scheduler: schedule channel start & stop
+
+## Define when a channel should be ready and when it should be stopped
+
+THEOlive offers the option to schedule the start and stop of a channel automatically. This has some advantages:
+
+- All machines needed to run the THEOlive stack will be ready on time
+- You don't need to develop a scheduler on your own, reducing costs
+- No needless transcoding minutes when forgetting to stop a channel
+
+## How it works
+
+A scheduler can be seen as a **collection of** a **start and end time**, and **a list of channels** that have to start and stop at these given times. Setting the end time of a scheduler is optional: when not setting an end time, you'll still have to terminate the scheduler yourself, but this can be useful when you don't know the exact end time of your event.
+
+15 minutes before the actual start, the channels of this scheduler will go in `scheduled` state. During this period, the whole THEOlive stack will start up. The THEOlive player will show nothing in this period: it will behave the same as if the channel was in stopped mode. Note that you can also create a scheduler of which the start time is in less than 15 minutes, or even immediately (not setting the `start` property via the API): channels will still be available for your viewers at the chosen start time, but THEOlive doesn't guarantee that your stream is already available, as starting up the machines in our stack takes some time.
+
+At the chosen start time, the channel will move to `playing` mode and start showing content to your viewers. When the end time is met, or the scheduler gets terminated manually, the channel will stop. Afterwards (around 15 minutes _after_ the termination of the scheduler) a usage report will be generated. This report will contain the seconds viewed per channel, channel alias, per country, per OS and browser version, and much more!
+
+## Creating and managing a scheduler through the API
+
+Creating a scheduler is very easy through our API. Please refer to [Create scheduler](https://developers.theo.live/reference/create-scheduler) for more information. You can update the scheduler at any time. When a scheduler is active, you can choose to [terminate](https://developers.theo.live/reference/terminate-scheduler) it manually (for example when your event is earlier done, or when you didn't set an end time).
+
+An inactive scheduler can also be [deleted](https://developers.theo.live/reference/delete-scheduler) via the API.
+
+15 minutes after a scheduler has been terminated, a [report](https://developers.theo.live/reference/get-scheduler-report) can be requested as well.
+
+## Scheduler management in the console
+
+At any time, you can see the schedulers that are active, pending and terminated. Schedulers that are active cannot be deleted.
+
+![](../assets/img/cd5c594-scheduler-overview.png 'Scheduler overview')
+
+When creating a new or managing an existing scheduler, you can pass a name, start and (optional) end date, and select the channels that are part of this scheduler and should start and stop at the given timestamps.
+
+As a user, you can also pass an optional _Client ID_, which is an ID you can use for your reference. You can also pass a metadata object, which consists of key-value pairs.
+
+![](../assets/img/8ce9112-create-scheduler.PNG 'Creating a new scheduler')

@@ -1,0 +1,19 @@
+---
+sidebar_position: 11
+---
+
+# Troubleshooting
+
+On this page you can find some additional info which can help during troubleshooting.
+
+## Network
+
+The network speed and bandwidth takes a crucial role in video delivery. Therefore it's recommended to verify network settings when facing play-out issues.
+
+Some known issues and advisable configuration items:
+
+| Topic                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                  |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| What is the list of FQDNs THEOlive player is using?                  | https://theolive-anywhere.global.ssl.fastly.net <br/> https://theolive.global.ssl.fastly.net <br/> https://cdn.tla-prd.theostream.live <br/> https://discovery.theo.live <br/> https://theo-insights-prod-5cb0.ew.r.appspot.com <br/> https://time.akamai.com                                                                                                                                |
+| Why is my corporate VPN having issues when playing THEOlive streams? | In the past, we have seen 2 possible reasons for poor VPN playback: <br/> - The VPN might have a security gateway that does packet inspection. It is very important that all THEOlive domains are whitelisted so network requests are allowed to go through the VPN at real-time speeds. <br/> - The overhead of the VPN connection does not meet the bandwidth & network stability to play. |
+| Packet inspection                                                    | Packet inspection software (e.g. Zscaler) can have a negative impact on play-out causing buffering and stalling of the THEOlive stream.                                                                                                                                                                                                                                                      |
