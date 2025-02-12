@@ -77,6 +77,16 @@ theoplayerView.player.source = SourceDescription.Builder(
 ).build()
 ```
 
+### Background playback
+
+:::info Known issue on Android Millicast background playback
+
+Currently there is a known issue where after an indeterminate amount of time background playback of Millicast sources can stop playing unexpectedly. This issue is being investigated and will be fixed in an upcoming release.
+
+:::
+
+In order to play Millicast sources in the background, ensure you've configured allowing background playback using the [setAllowBackgroundPlayback](<https://www.theoplayer.com/docs/theoplayer/v8/api-reference/android/com/theoplayer/android/api/THEOplayerSettings.html#setAllowBackgroundPlayback(boolean)>) API on the player.
+
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/millicast/package-summary.html)
