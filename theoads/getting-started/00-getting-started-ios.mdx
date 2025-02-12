@@ -1,0 +1,152 @@
+---
+sidebar_position: 0.3
+sidebar_label: iOS
+sidebar_custom_props: { 'icon': 'apple' }
+---
+
+# Getting started with THEOads on iOS
+
+This guide will get you started to integrate THEOads in your THEOplayer iOS SDK: configure the license, update dependencies and set the source description.
+
+## Prerequisites
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+1.  You need to have a THEOplayer license which is compatible with THEOads.
+    This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
+2.  You need a working [THEOads signaling service](00-getting-started-signaling-service.mdx).
+3.  Add the THEOplayer iOS SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/ios/getting-started) guide.
+    Make sure to [set up a THEOads-compatible license](/theoplayer/getting-started/sdks/ios/getting-started/#theoplayer-license)
+    in your app.
+4.  Add the THEOads integration as a dependency to your project:
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="swiftpm" label="SwiftPM">
+         1. Open your Xcode project and navigate to File > Add Package Dependencies...
+
+         ![Screenshot of Xcode file menu](../assets/img/theoads-ios-xcode-file-menu.png)
+
+         2. Add `theoplayer-sdk-apple` package by entering the following url:
+         ```sh
+         https://github.com/THEOplayer/theoplayer-sdk-apple
+         ```
+         ![Screenshot of SwiftPM menu](../assets/img/theoads-ios-swiftpm-menu.png)
+
+         3. Select `THEOplayerTHEOadsIntegration` from the package products list and add it to your target.
+
+         ![Screenshot of SwiftPM  product selection](../assets/img/theoads-ios-swiftpm-product-selection.png)
+        </TabItem>
+        <TabItem value="cocoapods" label="CocoaPods">
+        1. Add the `THEOplayer-Integration-THEOads` pod to your Podfile:
+        ```sh
+        pod 'THEOplayer-Integration-THEOads', '~> 8.10.0'
+        ```
+        2. Install the new pod:
+        ```sh
+        pod install
+        ```
+        </TabItem>
+        <!-- prettier-ignore-end -->
+
+    </Tabs>
+
+5.  Add Google IMA SDK as a dependency to your project:
+    <Tabs queryString="lang">
+       <!-- prettier-ignore-start -->
+       <TabItem value="swiftpm" label="SwiftPM">
+         1. Open your Xcode project and navigate to File > Add Package Dependencies...
+
+         ![Screenshot of Xcode file menu](../assets/img/theoads-ios-xcode-file-menu.png)
+
+         2. Add `swift-package-manager-google-interactive-media-ads-ios` package by entering the following url:
+         ```sh
+         https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios
+         ```
+         ![Screenshot of SwiftPM menu](../assets/img/theoads-ios-swiftpm-menu-google.png)
+
+         3. Select `GoogleInteractiveMediaAds` from the package products list and add it to your target.
+
+         ![Screenshot of SwiftPM  product selection](../assets/img/theoads-ios-swiftpm-product-selection-google.png)
+        </TabItem>
+        <TabItem value="cocoapods" label="CocoaPods">
+        1. The `THEOplayer-Integration-THEOads` pod has a dependency on `GoogleAds-IMA-iOS-SDK` which should be installed automatically.
+        </TabItem>
+        <!-- prettier-ignore-end -->
+
+    </Tabs>
+
+## Integration
+
+To make use of the THEOads integration, create and add the `THEOadsIntegration` to your `THEOplayer` instance:
+
+```swift
+import UIKit
+import THEOplayerSDK
+import THEOplayerTHEOadsIntegration
+
+class ViewController: UIViewController {
+    var theoplayer: THEOplayer!
+    var theoads: THEOadsIntegration!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.theoplayer = THEOplayer(configuration: THEOplayerConfigurationBuilder().build())
+        self.theoplayer.frame = view.bounds
+        self.theoplayer.addAsSubview(of: view)
+        self.theoads = THEOadsIntegrationFactory.createIntegration(on: self.theoplayer)
+        self.theoplayer.addIntegration(self.theoads)
+    }
+
+}
+```
+
+Then, configure a source containing a `THEOAdDescription`:
+
+```swift
+import UIKit
+import THEOplayerSDK
+import THEOplayerTHEOadsIntegration
+
+class ViewController: UIViewController {
+    var theoplayer: THEOplayer!
+    var theoads: THEOadsIntegration!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.theoplayer = THEOplayer(configuration: THEOplayerConfigurationBuilder().build())
+        self.theoplayer.frame = view.bounds
+        self.theoplayer.addAsSubview(of: view)
+        self.theoads = THEOadsIntegrationFactory.createIntegration(on: self.theoplayer)
+        self.theoplayer.addIntegration(self.theoads)
+
+        let source = "PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI"
+        let typedSource = TypedSource(
+            src: source,
+            type: "application/x-mpegurl",
+            hlsDateRange: true
+        )
+        let theoad = THEOAdDescription(
+            networkCode: "NETWORK-CODE",
+            customAssetKey: "CUSTOM-ASSET-KEY"
+        )
+        let sourceDescription = SourceDescription(source: typedSource, ads: [theoad])
+        self.theoplayer.source = sourceDescription
+        self.theoplayer.play()
+    }
+
+}
+```
+
+- Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
+  More information can be found [here](00-getting-started-signaling-service.mdx).
+- The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
+- The `ads` array needs to contain a `THEOAdDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html)
+- [What is THEOads?](https://www.theoplayer.com/product/theoads/)
+- [The Advantages of Server-Guided Ad Insertion](https://www.theoplayer.com/solutions/server-guided-ad-insertion-sgai/)
+- [Flexible, Usage-Based Pricing](https://www.theoplayer.com/product/theoads/pricing/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://www.theoplayer.com/blog/server-guided-ad-insertion-sgai-revolutionizing-streaming-monetization/)
