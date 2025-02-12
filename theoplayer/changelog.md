@@ -5,6 +5,68 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.11.0 (2025/02/08)
+
+### Web
+
+#### 💥 Breaking Changes
+
+- Updated the LCEVC integration compatibility for the new LCEVCdecJS SDK version 1.2.0. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
+
+#### ✨ Features
+
+- Added native support for HbbTV devices without MSE support and added a flag useOipfDrmAgent to configure the player to use the native HbbTV DRM flow instead of using EME.
+- Added `GoogleDAIConfiguration.networkCode`.
+
+#### 🐛 Issues
+
+- Fixed an issue where the browser's decoder could crash on some streams when the player performs a gap jump at the start of the video. The player will now wait a little bit to give the browser a chance to jump this gap on its own, without having to reset its decoder.
+- Fixed an issue where a THEOads ad break could end early if the Google IMA SDK sends an incorrect period ended event.
+- Fixed THEOads overlays not using the default properties on phone and TV devices.
+- Fixed `GoogleDAIConfiguration.authToken` and `.streamActivityMonitorID` not working properly.
+- Fixed an issue where author-defined TTML styles such as `tts:color` were not respected.
+- Fixed an issue where playing a THEOads stream in native PiP would not dispatch any play/pause events.
+- Fixed an issue where playing a THEOads ad in native PiP would dispatch an incorrect ended event at the end of the ad break.
+
+### Android
+
+#### ✨ Features
+
+- Added RetrievePodId parameter for THEOAds source description as an experimental API.
+- Improved the Ad events for THEOads streams.
+
+#### ⚡ Improvements
+
+- Improved support for `player.preload = PreloadType.METADATA` in the Media3 integration. The player now fires a `loadedmetadata` event when preloading is complete, and populates `player.duration` and `player.seekable`.
+- Improved startup times and initial latency for THEOlive streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where creating or accessing a CachingTask would cause a crash.
+- Fixed an issue where Millicast sources would be stretched instead of keeping the aspect ratio.
+
+### iOS
+
+#### ✨ Features
+
+- Added `connectOptions` property to `MillicastSource` initializer to help configure client options for a specific source.
+- Added `preventsDisplaySleepDuringVideoPlayback` API to help configure enabling screen locking.
+- Introduced `MillicastEventTypes.ERROR` to `THEOplayerMillicastIntegration` for error dispatching. Use the `addEventListener` method on `MillicastIntegration` to listen to Millicast related events. For more info check the API reference at https://www.theoplayer.com/docs/theoplayer/v8/api-reference/ios/Millicast/
+
+#### ⚡ Improvements
+
+- Improved playback event dispatching system while Airplaying a THEOlive source.
+
+#### 🐛 Issues
+
+- Fixed an issue that caused a fatal error when accessing an expired caching task.
+- Fixed an issue where the picture-in-picture presentation mode was not retained after setting a new source.
+- Fixed an issue where a THEOlive source would not resume after being paused for too long.
+
+#### 👎 Deprecations
+
+- Deprecated the `src` property's type. With the next major version the type will be `String` instead of `URL`.
+
 ## 🚀 8.10.0 (2025/01/27)
 
 ### Web
