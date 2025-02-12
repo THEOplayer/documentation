@@ -66,6 +66,34 @@ also need to add a subscriber token to the source as follows:
 MillicastSource(streamName: ..., accountID: ..., token: "Your token")
 ```
 
+### Add configuration
+
+Optionally, you can provide additional configuration to the source, specific for working with Millicast streams.
+To configure these settings, add a `MCClientOptions` object as the `connectOptions` parameter of the source object
+and specify the options.
+
+In the example below, the configuration is used to disable any audio from the Millicast stream.
+For an exhaustive list of these options, visit the [documentation](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclientoptions).
+
+```swift
+let connectOptions: MCClientOptions = .init()
+connectOptions.disableAudio = true
+MillicastSource(streamName: ..., accountID: ..., connectOptions: connectOptions)
+```
+
+### Background playback
+
+In order to play Millicast sources in the background, ensure you've configured a `backgroundPlaybackDelegate` on the player. A simple example for always allowing background playback is shown below:
+
+```swift
+class BackgroundDelegate: BackgroundPlaybackDelegate {
+    func shouldContinueAudioPlaybackInBackground() -> Bool {
+        return true
+    }
+}
+theoplayer.backgroundPlaybackDelegate = BackgroundDelegate()
+```
+
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/ios/Millicast/index.html)
