@@ -16,12 +16,12 @@ first.
 
 You can quickly check using `THEOplayer.features`. The feature is only available from THEOplayer 4.0 onwards.
 
-#### 2. You need to include V-Nova's [Decoder Integration Layer (DIL)](https://docs.v-nova.com/v-nova/lcevc/sdk/dil) on the page.
+#### 2. You need to include V-Nova's [LCEVC Decoder for Web](https://docs.v-nova.com/v-nova/lcevc/sdk/lcevc-decoder-for-web-lcevcdecjs) on the page.
 
-This example below uses the latest version of the DIL that is maintained by V-Nova:
+This example below uses the latest version of the LCEVCdecJS library that is maintained by V-Nova:
 
 ```js
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lcevc_dil.js@latest/dist/lcevc_dil.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/lcevc_dec.js@latest/dist/lcevc_dec.min.js"></script>
 ```
 
 ## Setting the source
