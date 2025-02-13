@@ -1,0 +1,31 @@
+{
+  "name": "THEOads Image Overlay",
+  "description": "THEOads Image Overlay",
+  "variables": [
+    {
+      "mimeTypes": [],
+      "label": "Image",
+      "uniqueName": "Image",
+      "description": "The image to use for the overlay",
+      "isRequired": true,
+      "variableType": "ASSET"
+    },
+    {
+      "isTrackingUrl": false,
+      "urlType": "STANDARD_HTTP",
+      "label": "ClickThrough",
+      "uniqueName": "ClickThrough",
+      "description": "The clickthrough URL for this creative",
+      "isRequired": false,
+      "variableType": "URL"
+    }
+  ],
+  "formatter": "{\n\t\"image\": \"[%Image%]\",\n\t\"clickThrough\": \"[%ClickThrough%]\",\n  \"impression\": \"%%VIEW_URL_ESC%%\"\n}",
+  "omidPartnerName": "",
+  "type": "USER_DEFINED",
+  "isInterstitial": false,
+  "isNativeEligible": false,
+  "isNativeVideoEligible": false,
+  "isNewsletterEligible": false,
+  "isSafeFrameCompatible": true
+}

@@ -1,0 +1,3537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>THEOplayer Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/THEOplayer" class="dashAnchor"></a>
+
+    <a title="THEOplayer Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          THEOplayerSDK Docs
+        </a>
+        
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">THEOplayerSDK</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      <a class="breadcrumb" href="../THEOplayer%20API.html">THEOplayer API</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      THEOplayer Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../THEOplayer%20API.html">THEOplayer API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/THEOplayer.html">THEOplayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/THEOplayerConfiguration.html">THEOplayerConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Cast.html">Cast</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ReadyState.html">ReadyState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/PresentationMode.html">PresentationMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Preload.html">Preload</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../THEOplayer%20API.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerMetrics">Metrics</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BackgroundPlaybackDelegate.html">BackgroundPlaybackDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Player%20Events.html">Player Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayerEventTypes.html">PlayerEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SourceChangeEvent.html">SourceChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ReadyStateEvent.html">ReadyStateEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerPlayEvent">PlayEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerPlayingEvent">PlayingEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerPauseEvent">PauseEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerProgressEvent">ProgressEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DurationChangeEvent.html">DurationChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerSeekingEvent">SeekingEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerSeekedEvent">SeekedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerWaitingEvent">WaitingEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TimeUpdateEvent.html">TimeUpdateEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerEndedEvent">EndedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RateChangeEvent.html">RateChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerReadyStateChangeEvent">ReadyStateChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerLoadedMetaDataEvent">LoadedMetaDataEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerLoadedDataEvent">LoadedDataEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerCanPlayEvent">CanPlayEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerCanPlayThroughEvent">CanPlayThroughEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ErrorEvent.html">ErrorEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PresentationModeChangeEvent.html">PresentationModeChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/VolumeChangeEvent.html">VolumeChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerResizeEvent">ResizeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerLoadStartEvent">LoadStartEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerDestroyEvent">DestroyEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Track%20List%20API.html">Track List API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/MediaTrackList.html">MediaTrackList</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/VideoTrackList.html">VideoTrackList</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AudioTrackList.html">AudioTrackList</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TextTrackList.html">TextTrackList</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Track%20List%20Events.html">Track List Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/VideoTrackListEventTypes.html">VideoTrackListEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/AudioTrackListEventTypes.html">AudioTrackListEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TextTrackListEventTypes.html">TextTrackListEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrackChangeEvent.html">TrackChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AddTrackEvent.html">AddTrackEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RemoveTrackEvent.html">RemoveTrackEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Track%20API.html">Track API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Track.html">Track</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/MediaTrack.html">MediaTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Track%20API.html#/s:13THEOplayerSDK10VideoTrackP">VideoTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AudioTrack.html">AudioTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TextTrack.html">TextTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TextTrackMode.html">TextTrackMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TextTrackKind.html">TextTrackKind</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TextTrackFormat.html">TextTrackFormat</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Track%20Events.html">Track Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TextTrackEventTypes.html">TextTrackEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AddCueEvent.html">AddCueEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RemoveCueEvent.html">RemoveCueEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CueChangeEvent.html">CueChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/EnterCueEvent.html">EnterCueEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ExitCueEvent.html">ExitCueEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Text%20Track%20Cue%20API.html">Text Track Cue API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Cue%20API.html#/s:13THEOplayerSDK16CueEventProtocolP">CueEventProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Cue%20API.html#/s:13THEOplayerSDK25TextTrackCueEventProtocolP">TextTrackCueEventProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/DateRangeCue.html">DateRangeCue</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Cue%20API.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerCustomAttribute">CustomAttribute</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CustomAttributes.html">CustomAttributes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TextTrackCue.html">TextTrackCue</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/WebVttCue.html">WebVttCue</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Cue%20API.html#/s:13THEOplayerSDK6Id3CueP">Id3Cue</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Text%20Track%20Cue%20Events.html">Text Track Cue Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TextTrackCueEventTypes.html">TextTrackCueEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CueEnterEvent.html">CueEnterEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CueExitEvent.html">CueExitEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CueUpdateEvent.html">CueUpdateEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Text%20Track%20Styling%20API.html">Text Track Styling API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TextTrackStyle.html">TextTrackStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Styling%20API.html#/s:13THEOplayerSDK18TextTrackStyleRuleP">TextTrackStyleRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Styling%20API.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerTextTrackStyleRuleColor">TextTrackStyleRuleColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Styling%20API.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerTextTrackStyleRuleString">TextTrackStyleRuleString</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Text%20Track%20Styling%20API.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerTextTrackStyleRuleNumber">TextTrackStyleRuleNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TextTrackStyleEdgeStyle.html">TextTrackStyleEdgeStyle</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Source%20Description%20API.html">Source Description API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SourceDescription.html">SourceDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TypedSource.html">TypedSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TextTrackDescription.html">TextTrackDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/MetadataDescription.html">MetadataDescription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Content%20Protection.html">Content Protection</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Content%20Protection.html#/s:13THEOplayerSDK32FairPlayDRMConfigurationProtocolP">FairPlayDRMConfigurationProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Content%20Protection.html#/s:13THEOplayerSDK32WidevineDRMConfigurationProtocolP">WidevineDRMConfigurationProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/DRMConfiguration.html">DRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/FairPlayDRMConfiguration.html">FairPlayDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AzureDRMConfiguration.html">AzureDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DRMTodayDRMConfiguration.html">DRMTodayDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/EzdrmDRMConfiguration.html">EzdrmDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/IrdetoDRMConfiguration.html">IrdetoDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/VudrmDRMConfiguration.html">VudrmDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WidevineDRMConfiguration.html">WidevineDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AxinomDRMConfiguration.html">AxinomDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ComcastDRMConfiguration.html">ComcastDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/KeyOSDRMConfiguration.html">KeyOSDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/UplynkDRMConfiguration.html">UplynkDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/VerimatrixDRMConfiguration.html">VerimatrixDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/VimondDRMConfiguration.html">VimondDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/XstreamDRMConfiguration.html">XstreamDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/KeySystemConfiguration.html">KeySystemConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/DRMIntegration.html">DRMIntegration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/LicenseType.html">LicenseType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ContentProtectionError.html">ContentProtectionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../SSAI.html">SSAI</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ServerSideAdInsertionConfiguration.html">ServerSideAdInsertionConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SSAIIntegrationId.html">SSAIIntegrationId</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleDAIConfiguration.html">GoogleDAIConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleDAILiveConfiguration.html">GoogleDAILiveConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleDAITypedSource.html">GoogleDAITypedSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleDAIVodConfiguration.html">GoogleDAIVodConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/StreamType.html">StreamType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../CSAI.html">CSAI</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AdDescription.html">AdDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleImaAdDescription.html">GoogleImaAdDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/GoogleImaAd.html">GoogleImaAd</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Ads%20API.html">Ads API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Ads.html">Ads</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Ad.html">Ad</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/LinearAd.html">LinearAd</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/MediaFile.html">MediaFile</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NonLinearAd.html">NonLinearAd</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AdBreak.html">AdBreak</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CompanionAd.html">CompanionAd</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AdType.html">AdType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AdIntegration.html">AdIntegration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AdIntegrationKind.html">AdIntegrationKind</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Omid.html">Omid</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/OmidFriendlyObstruction.html">OmidFriendlyObstruction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/OmidFriendlyObstructionPurpose.html">OmidFriendlyObstructionPurpose</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Ads%20Events.html">Ads Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBeginEvent">AdBeginEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdEndEvent">AdEndEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AdErrorEvent.html">AdErrorEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakBeginEvent">AdBreakBeginEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakEndEvent">AdBreakEndEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdFirstQuartileEvent">AdFirstQuartileEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdImpressionEvent">AdImpressionEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdLoadedEvent">AdLoadedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdMidPointEvent">AdMidpointEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Ads%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdThirdQuartileEvent">AdThirdQuartileEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../ChromeCast%20API.html">ChromeCast API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Chromecast.html">Chromecast</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CastConfiguration.html">CastConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/CastStrategy.html">CastStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/PlayerCastState.html">PlayerCastState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CastError.html">CastError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ChromecastMetadataDescription.html">ChromecastMetadataDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ChromecastMetadataImage.html">ChromecastMetadataImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ChromecastMetadataType.html">ChromecastMetadataType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ErrorCode.html">ErrorCode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../ChromeCast%20Events.html">ChromeCast Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ChromecastEventTypes.html">ChromecastEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CastErrorEvent.html">CastErrorEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/StateChangeEvent.html">StateChangeEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Airplay%20API.html">Airplay API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AirPlay.html">AirPlay</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Airplay%20Events.html">Airplay Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/AirPlayEventTypes.html">AirPlayEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AirPlayEvent.html">AirPlayEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AirPlayStateChangeEvent.html">AirPlayStateChangeEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Picture-In-Picture.html">Picture-In-Picture</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PictureInPicture.html">PictureInPicture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/PictureInPictureCorner.html">PictureInPictureCorner</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Picture-In-Picture.html#/s:13THEOplayerSDK09PictureInC20NewCornerUserInfoKeySSvp">PictureInPictureNewCornerUserInfoKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Picture-In-Picture.html#/s:13THEOplayerSDK09PictureInC20OldCornerUserInfoKeySSvp">PictureInPictureOldCornerUserInfoKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Fullscreen%20API.html">Fullscreen API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Fullscreen.html">Fullscreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/AspectRatio.html">AspectRatio</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Fullscreen%20Events.html">Fullscreen Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Fullscreen%20Events.html#/s:13THEOplayerSDK20FullscreenEventTypesV">FullscreenEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AspectRatioChangeEvent.html">AspectRatioChangeEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Network%20API.html">Network API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Network%20API.html#/s:13THEOplayerSDK7NetworkP">Network</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Network%20Events.html">Network Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NetworkEventTypes.html">NetworkEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NetworkErrorEvent.html">NetworkErrorEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Error%20API.html">Error API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/THEOBaseError.html">THEOBaseError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/THEOError.html">THEOError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NetworkError.html">NetworkError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AVPlayerError.html">AVPlayerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/THEOErrorCode.html">THEOErrorCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ErrorCategory.html">ErrorCategory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Cache%20API.html">Cache API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Cache.html">Cache</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/CacheStatus.html">CacheStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CachingTask.html">CachingTask</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/CachingTaskStatus.html">CachingTaskStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CachingParameters.html">CachingParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CachingTaskLicense.html">CachingTaskLicense</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CachingParametersTrackSelection.html">CachingParametersTrackSelection</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Cache%20Events.html">Cache Events</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CacheEventTypes.html">CacheEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CachingTaskEventTypes.html">CachingTaskEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Cache%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerCacheStateChangeEvent">CacheStateChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Cache%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerCachingTaskStateChangeEvent">CachingTaskStateChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Cache%20Events.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerCachingTaskProgressEvent">CachingTaskProgressEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Adaptive%20Bit%20Rate%20API.html">Adaptive Bit Rate API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ABRStrategyType.html">ABRStrategyType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ABRMetadata.html">ABRMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ABRStrategyConfiguration.html">ABRStrategyConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ABRConfiguration.html">ABRConfiguration</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../External%20Content%20Protection%20integration%20API.html">External Content Protection integration API</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ContentProtectionIntegration.html">ContentProtectionIntegration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../External%20Content%20Protection%20integration%20API.html#/s:13THEOplayerSDK35ContentProtectionIntegrationFactoryP">ContentProtectionIntegrationFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../External%20Content%20Protection%20integration%20API.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerCertificateRequestCallback">CertificateRequestCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../External%20Content%20Protection%20integration%20API.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerCertificateResponseCallback">CertificateResponseCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../External%20Content%20Protection%20integration%20API.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerLicenseRequestCallback">LicenseRequestCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../External%20Content%20Protection%20integration%20API.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerLicenseResponseCallback">LicenseResponseCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CertificateResponse.html">CertificateResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/LicenseResponse.html">LicenseResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../External%20Content%20Protection%20integration%20API.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerCertificateRequest">CertificateRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/LicenseRequest.html">LicenseRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/KeySystemId.html">KeySystemId</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Response.html">Response</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Util.html">Util</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TimeRange.html">TimeRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/THEOMargins.html">THEOMargins</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Base%20classes%20%26%20interfaces.html">Base classes &amp; interfaces</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CacheEvent.html">CacheEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CurrentTimeEvent.html">CurrentTimeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/EventProtocol.html">EventProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/EventType.html">EventType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/EventDispatcherProtocol.html">EventDispatcherProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Base%20classes%20%26%20interfaces.html#/s:13THEOplayerSDK18TrackEventProtocolP">TrackEventProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ActiveQualityChangedEvent.html">ActiveQualityChangedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakChangeEvent">AdBreakChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdBreakInit">AdBreakInit</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdClickedEvent">AdClickedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdInit">AdInit</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AdSkipEvent.html">AdSkipEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAdTappedEvent">AdTappedEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdBreakEvent">AddAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerAddAdEvent">AddAdEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CachingParametersTrackSelectionBuilder.html">CachingParametersTrackSelectionBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CachingTaskErrorStateChangeEvent.html">CachingTaskErrorStateChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CachingTaskIdleStateChangeEvent.html">CachingTaskIdleStateChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CastError_Objc.html">CastError_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)FullscreenViewController">FullscreenViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/KeySystemConfigurationCollection.html">KeySystemConfigurationCollection</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/MultiplatformDRMConfiguration.html">MultiplatformDRMConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NetworkConfiguration.html">NetworkConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NetworkConfigurationBuilder.html">NetworkConfigurationBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PiPConfiguration.html">PiPConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PlayerEvent.html">PlayerEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerRemoveAdBreakEvent">RemoveAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrackUpdateEvent.html">TrackUpdateEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdBreakEvent">UpdateAdBreakEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerUpdateAdEvent">UpdateAdEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Enums.html#/c:@M@THEOplayerSDK@E@THEOplayerCacheStatusIdleReason">CacheStatusIdleReason</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AVPictureInPictureControllerDelegateExtended.html">AVPictureInPictureControllerDelegateExtended</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AdBreak_Objc.html">AdBreak_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Ad_Objc.html">Ad_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Ads_Objc.html">Ads_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Airplay_Objc.html">Airplay_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AudioTrackList_Objc.html">AudioTrackList_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AudioTrack_Objc.html">AudioTrack_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Cache_Objc.html">Cache_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CachingTaskLicense_Objc.html">CachingTaskLicense_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CachingTask_Objc.html">CachingTask_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Cast_Objc.html">Cast_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Chromecast_Objc.html">Chromecast_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CompanionAd_Objc.html">CompanionAd_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ContentProtectionError_Objc.html">ContentProtectionError_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerContentProtectionIntegrationFactory">ContentProtectionIntegrationFactory_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerCueEventProtocol">CueEventProtocol_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CustomServerSideAdInsertionConfiguration.html">CustomServerSideAdInsertionConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/DRMConfiguration_Objc.html">DRMConfiguration_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/DateRangeCue_Objc.html">DateRangeCue_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/DeveloperSettings.html">DeveloperSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/EventDispatcherProtocol_Objc.html">EventDispatcherProtocol_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerFairPlayDRMConfigurationProtocol">FairPlayDRMConfigurationProtocol_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/FullscreenPresentationDelegate.html">FullscreenPresentationDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Fullscreen_Objc.html">Fullscreen_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/GoogleDAI.html">GoogleDAI</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/GoogleDAI_Objc.html">GoogleDAI_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/GoogleImaAd_Objc.html">GoogleImaAd_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerId3Cue">Id3Cue_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/InternalCastIntegration.html">InternalCastIntegration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/LinearAd_Objc.html">LinearAd_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ManifestInterceptor.html">ManifestInterceptor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/MediaTrackList_Objc.html">MediaTrackList_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/MediaTrack_Objc.html">MediaTrack_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Network_Objc.html">Network_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NonLinearAd_Objc.html">NonLinearAd_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PictureInPicture_Objc.html">PictureInPicture_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ServerSideAdIntegrationController.html">ServerSideAdIntegrationController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ServerSideAdIntegrationHandler.html">ServerSideAdIntegrationHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ServerSideAdIntegrationHandler_Objc.html">ServerSideAdIntegrationHandler_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerTextTrackCueEventProtocol">TextTrackCueEventProtocol_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TextTrackCue_Objc.html">TextTrackCue_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TextTrackList_Objc.html">TextTrackList_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TextTrack_Objc.html">TextTrack_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerTrackEventProtocol">TrackEventProtocol_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Track_Objc.html">Track_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/UniversalAdId.html">UniversalAdId</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/VideoTrackList_Objc.html">VideoTrackList_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerVideoTrack">VideoTrack_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/WebVttCue_Objc.html">WebVttCue_Objc</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Protocols.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerWidevineDRMConfigurationProtocol">WidevineDRMConfigurationProtocol_Objc</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/AdsEventTypes.html">AdsEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/MediaTrackEventTypes.html">MediaTrackEventTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TrackEventTypes.html">TrackEventTypes</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>THEOplayer</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">THEOplayer</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/EventDispatcherProtocol.html">EventDispatcherProtocol</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>The THEOplayer object.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C26backgroundPlaybackDelegateAA010BackgrounddE0_pvp"></a>
+                    <a name="//apple_ref/swift/Property/backgroundPlaybackDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C26backgroundPlaybackDelegateAA010BackgrounddE0_pvp">backgroundPlaybackDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate defining behavior for background playback</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">backgroundPlaybackDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/BackgroundPlaybackDelegate.html">BackgroundPlaybackDelegate</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C4with13configurationACSo6CGRectVSg_AA0A13ConfigurationCSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(with:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C4with13configurationACSo6CGRectVSg_AA0A13ConfigurationCSgtcfc">init(with:<wbr>configuration:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new instance of THEOplayer with a frame.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">with</span> <span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Classes/THEOplayerConfiguration.html">THEOplayerConfiguration</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>frame</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The frame rectangle, which describes the THEOplayer view’s location and size in its superview’s coordinate system, defaults to nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A configuration for the new THEOplayer, defaults to nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(cpy)playerVersion"></a>
+                    <a name="//apple_ref/swift/Variable/version" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(cpy)playerVersion">version</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>THEOplayer&rsquo;s Version.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Example: <code>&quot;2.77.0&quot;</code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(playerVersion)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">version</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)frame"></a>
+                    <a name="//apple_ref/swift/Property/frame" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)frame">frame</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The frame rectangle, which describes the THEOplayer view’s location and size in its superview’s coordinate system.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)bounds"></a>
+                    <a name="//apple_ref/swift/Property/bounds" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)bounds">bounds</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bounds rectangle, which describes the THEOplayer view’s location and size in its own coordinate system.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">bounds</span><span class="p">:</span> <span class="kt">CGRect</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)center"></a>
+                    <a name="//apple_ref/swift/Property/center" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)center">center</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The center of the THEOplayer view&rsquo;s frame.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">CGPoint</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)autoresizingMask"></a>
+                    <a name="//apple_ref/swift/Property/autoresizingMask" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)autoresizingMask">autoresizingMask</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An integer bit mask that determines how the THEOplayer view resizes itself when its superview’s bounds change.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">autoresizingMask</span><span class="p">:</span> <span class="kt">UIView</span><span class="o">.</span><span class="kt">AutoresizingMask</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)videoHeight"></a>
+                    <a name="//apple_ref/swift/Property/videoHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)videoHeight">videoHeight</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the height of the video in pixels for the current quality.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">videoHeight</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)videoWidth"></a>
+                    <a name="//apple_ref/swift/Property/videoWidth" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)videoWidth">videoWidth</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the width of the video in pixels for the current quality.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">videoWidth</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)videoRect"></a>
+                    <a name="//apple_ref/swift/Property/videoRect" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)videoRect">videoRect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the current size and position of the video image as displayed within the receiver&rsquo;s bounds.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This property is key-value observable.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">dynamic</span> <span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">videoRect</span><span class="p">:</span> <span class="kt">CGRect</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)resizeTransitionEnabled"></a>
+                    <a name="//apple_ref/swift/Property/resizeTransitionEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)resizeTransitionEnabled">resizeTransitionEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enables or disables the transition animation when resizing the player. Defaults to <code>true</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">resizeTransitionEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)abr"></a>
+                    <a name="//apple_ref/swift/Property/abr" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)abr">abr</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Allows you to modify the player&rsquo;s ABR behavior. See documentation for <code><a href="../Protocols/ABRConfiguration.html">ABRConfiguration</a></code> to see how this is done.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">abr</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ABRConfiguration.html">ABRConfiguration</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)aspectRatio"></a>
+                    <a name="//apple_ref/swift/Property/aspectRatio" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)aspectRatio">aspectRatio</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Specifies how to handle the aspect ratio of the content.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">aspectRatio</span><span class="p">:</span> <span class="kt"><a href="../Enums/AspectRatio.html">AspectRatio</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C7networkAA7Network_pvp"></a>
+                    <a name="//apple_ref/swift/Property/network" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C7networkAA7Network_pvp">network</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The network status of the player which can be used to monitor the network related errors.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">network</span><span class="p">:</span> <span class="kt"><a href="../Network%20API.html#/s:13THEOplayerSDK7NetworkP">Network</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C10textTracksAA13TextTrackList_pvp"></a>
+                    <a name="//apple_ref/swift/Property/textTracks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C10textTracksAA13TextTrackList_pvp">textTracks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of Text Tracks.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">textTracks</span><span class="p">:</span> <span class="kt"><a href="../Protocols/TextTrackList.html">TextTrackList</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C11audioTracksAA14AudioTrackList_pvp"></a>
+                    <a name="//apple_ref/swift/Property/audioTracks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C11audioTracksAA14AudioTrackList_pvp">audioTracks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of Audio Tracks.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">audioTracks</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AudioTrackList.html">AudioTrackList</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C11videoTracksAA14VideoTrackList_pvp"></a>
+                    <a name="//apple_ref/swift/Property/videoTracks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C11videoTracksAA14VideoTrackList_pvp">videoTracks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of Video Tracks.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">videoTracks</span><span class="p">:</span> <span class="kt"><a href="../Protocols/VideoTrackList.html">VideoTrackList</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C8durationSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/duration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C8durationSdSgvp">duration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The length of the currently loaded video, in seconds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)autoplay"></a>
+                    <a name="//apple_ref/swift/Property/autoplay" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)autoplay">autoplay</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets or returns if the video should automatically start playing.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>If you set autoplay to true, this will set preload to &lsquo;auto&rsquo;.</li>
+<li>Preload will be back to the previous state if you set autoplay back to false.</li>
+<li>If you want to use autoplay, you should not modify the preload or the autoplay won&rsquo;t work.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">autoplay</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)source"></a>
+                    <a name="//apple_ref/swift/Property/source" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)source">source</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets or returns the current source of the video.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>After invoking the setter, the player sets the provided playback source and applies the provided parameters in the source description.</li>
+<li>The source description is an object that should be constructed by the user and which should implement the SourceDescription protocol.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">source</span><span class="p">:</span> <span class="kt"><a href="../Classes/SourceDescription.html">SourceDescription</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)src"></a>
+                    <a name="//apple_ref/swift/Property/src" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)src">src</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the current source URL of the video.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">src</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)volume"></a>
+                    <a name="//apple_ref/swift/Property/volume" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)volume">volume</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets or returns the volume of the video.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">volume</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)muted"></a>
+                    <a name="//apple_ref/swift/Property/muted" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)muted">muted</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets or returns whether the audio output of the video is muted.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">muted</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)seeking"></a>
+                    <a name="//apple_ref/swift/Property/seeking" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)seeking">seeking</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return whether the video is seeking.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">seeking</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)paused"></a>
+                    <a name="//apple_ref/swift/Property/paused" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)paused">paused</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns whether the video is paused.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">paused</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)ended"></a>
+                    <a name="//apple_ref/swift/Property/ended" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)ended">ended</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns whether the video has ended.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">ended</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)preventsDisplaySleepDuringVideoPlayback"></a>
+                    <a name="//apple_ref/swift/Property/preventsDisplaySleepDuringVideoPlayback" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)preventsDisplaySleepDuringVideoPlayback">preventsDisplaySleepDuringVideoPlayback</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Prevents the display from sleeping during video playback. Defaults to true.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">preventsDisplaySleepDuringVideoPlayback</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)preload"></a>
+                    <a name="//apple_ref/swift/Property/preload" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)preload">preload</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns whether the player should preload a certain type of data.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>Default is set to <strong>&ldquo;none&rdquo;</strong>.</li>
+<li>For all possibilities, see <code><a href="../Enums/Preload.html">Preload</a></code>.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">preload</span><span class="p">:</span> <span class="kt"><a href="../Enums/Preload.html">Preload</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)playbackRate"></a>
+                    <a name="//apple_ref/swift/Property/playbackRate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)playbackRate">playbackRate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns current playback rate of the player.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <strong>1</strong> referring to normal speed.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">playbackRate</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)buffered"></a>
+                    <a name="//apple_ref/swift/Property/buffered" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)buffered">buffered</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the buffered <code><a href="../Classes/TimeRange.html">TimeRange</a></code>s of the player.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">buffered</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/TimeRange.html">TimeRange</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)played"></a>
+                    <a name="//apple_ref/swift/Property/played" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)played">played</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the played <code><a href="../Classes/TimeRange.html">TimeRange</a></code>s of the player.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">played</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/TimeRange.html">TimeRange</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)seekable"></a>
+                    <a name="//apple_ref/swift/Property/seekable" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)seekable">seekable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the seekable <code><a href="../Classes/TimeRange.html">TimeRange</a></code>s of the player.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">seekable</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/TimeRange.html">TimeRange</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)metrics"></a>
+                    <a name="//apple_ref/swift/Property/metrics" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)metrics">metrics</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the <code><a href="../THEOplayer%20API.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayerMetrics">Metrics</a></code> data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">metrics</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)presentationMode"></a>
+                    <a name="//apple_ref/swift/Property/presentationMode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)presentationMode">presentationMode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets or returns the presentationMode of the player.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>Default is set to &lsquo;inline&rsquo;.</li>
+<li>For all possibilities, see <code><a href="../Enums/PresentationMode.html">PresentationMode</a></code>.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">presentationMode</span><span class="p">:</span> <span class="kt"><a href="../Enums/PresentationMode.html">PresentationMode</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)readyState"></a>
+                    <a name="//apple_ref/swift/Property/readyState" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)readyState">readyState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the readystate of the player.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>Default is set to <strong>HAVE_NOTHING</strong>.</li>
+<li>For all possibilities, see <code><a href="../Enums/ReadyState.html">ReadyState</a></code>.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">readyState</span><span class="p">:</span> <span class="kt"><a href="../Enums/ReadyState.html">ReadyState</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)error"></a>
+                    <a name="//apple_ref/swift/Property/error" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)error">error</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the last encountered player error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)uid"></a>
+                    <a name="//apple_ref/swift/Property/uid" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)uid">uid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the unique ID of the player</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">uid</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)currentTime"></a>
+                    <a name="//apple_ref/swift/Property/currentTime" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)currentTime">currentTime</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current playback position of the video, in seconds. Setting it allows to change the playback position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">currentTime</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)currentProgramDateTime"></a>
+                    <a name="//apple_ref/swift/Property/currentProgramDateTime" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(py)currentProgramDateTime">currentProgramDateTime</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the current playback position of the media, as a timestamp.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Returns nil when the manifest doesn&rsquo;t specify the currentProgramDateTime.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">currentProgramDateTime</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(cpy)automaticallyManageAudioSession"></a>
+                    <a name="//apple_ref/swift/Variable/automaticallyManageAudioSession" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(cpy)automaticallyManageAudioSession">automaticallyManageAudioSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets whether THEOplayer automatically manages the <code>AVAudioSession</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>THEOPlayer uses <code>playback</code> as default value for the <code>AVAudioSession.Category</code>.</li>
+<li>THEOPlayer uses <code>moviePlayback</code> as default value for the <code>AVAudioSession.Mode</code>.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">automaticallyManageAudioSession</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)play"></a>
+                    <a name="//apple_ref/swift/Method/play()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)play">play()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>After invoking this method, the player starts playback.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">play</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)pause"></a>
+                    <a name="//apple_ref/swift/Method/pause()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)pause">pause()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>After invoking this method, the player pauses playback.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">pause</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C4stop17completionHandleryySbSg_s5Error_pSgtcSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/stop(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C4stop17completionHandleryySbSg_s5Error_pSgtcSg_tF">stop(completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>After invoking this method, the player stops playback completely and unloads all loaded resources.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>Remark:</p>
+
+<ul>
+<li>If the operation completes, the success flag is true and the error is nil.</li>
+<li>If the operation fails, the success flag is false and the error indicates the problem.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stop</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional closure to invoke when operation completes or fails, defaults to nil. The closure takes two optional arguments: A success flag and an error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C16addEventListener4type8listenerAA0dE0_pAA0D4TypeCyxG_yxctAA0D8ProtocolRzlF"></a>
+                    <a name="//apple_ref/swift/Method/addEventListener(type:listener:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C16addEventListener4type8listenerAA0dE0_pAA0D4TypeCyxG_yxctAA0D8ProtocolRzlF">addEventListener(type:<wbr>listener:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds the given event listener of the given PlayerEventType.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>When attaching a listener on the wrong object the application will crash.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">addEventListener</span><span class="o">&lt;</span><span class="kt">E</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Classes/EventType.html">EventType</a></span><span class="o">&lt;</span><span class="kt">E</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">listener</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">E</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">EventListener</span> <span class="k">where</span> <span class="kt">E</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/EventProtocol.html">EventProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>PlayerEventType</code> of the added event listener.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>listener</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Closure called when event is dispatched.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>EventListener that can be removed.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C19removeEventListener4type8listeneryAA0D4TypeCyxG_AA0dE0_ptAA0D8ProtocolRzlF"></a>
+                    <a name="//apple_ref/swift/Method/removeEventListener(type:listener:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C19removeEventListener4type8listeneryAA0D4TypeCyxG_AA0dE0_ptAA0D8ProtocolRzlF">removeEventListener(type:<wbr>listener:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes the given event listener of the given PlayerEventType.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">removeEventListener</span><span class="o">&lt;</span><span class="kt">E</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Classes/EventType.html">EventType</a></span><span class="o">&lt;</span><span class="kt">E</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">listener</span><span class="p">:</span> <span class="kt">EventListener</span><span class="p">)</span> <span class="k">where</span> <span class="kt">E</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/EventProtocol.html">EventProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>PlayerEventType</code> of the removed event listener.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>listener</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>EventListener object that has been returned on addEventListener.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)setCurrentTime:completionHandler:"></a>
+                    <a name="//apple_ref/swift/Method/setCurrentTime(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)setCurrentTime:completionHandler:">setCurrentTime(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the current playback position in the video.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">setCurrentTime</span><span class="p">(</span><span class="n">_</span> <span class="nv">newValue</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Any</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The new playback position, in seconds.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to invoke when operation completes or fails, defaults to nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)setCurrentProgramDateTime:completionHandler:"></a>
+                    <a name="//apple_ref/swift/Method/setCurrentProgramDateTime(_:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)setCurrentProgramDateTime:completionHandler:">setCurrentProgramDateTime(_:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the current ProgramDateTime of the player.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">setCurrentProgramDateTime</span><span class="p">(</span><span class="n">_</span> <span class="nv">newValue</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Any</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The new ProgramDateTime.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to invoke when operation completes or fails, defaults to nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)addAsSubviewOf:"></a>
+                    <a name="//apple_ref/swift/Method/addAsSubview(of:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)addAsSubviewOf:">addAsSubview(of:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds the THEOplayer view to the end of the parameter view&rsquo;s list of subviews.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">addAsSubview</span><span class="p">(</span><span class="n">of</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view on which the THEOplayer view will be added as a subview.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)insertAsSubviewOf:at:"></a>
+                    <a name="//apple_ref/swift/Method/insertAsSubview(of:at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)insertAsSubviewOf:at:">insertAsSubview(of:<wbr>at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Inserts the THEOplayer view at the specified index of the parameter view&rsquo;s list of subviews.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">insertAsSubview</span><span class="p">(</span><span class="n">of</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view on which the THEOplayer view will be added as a subview.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>at</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index in the array of the subviews property at which to insert the THEOplayer view. Subview indices start at 0 and cannot be greater than the number of subviews.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)insertAsSubviewOf:belowSubview:"></a>
+                    <a name="//apple_ref/swift/Method/insertAsSubview(of:belowSubview:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)insertAsSubviewOf:belowSubview:">insertAsSubview(of:<wbr>belowSubview:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Inserts the THEOplayer view below another view in the parameter view&rsquo;s hierarchy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">insertAsSubview</span><span class="p">(</span><span class="n">of</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="n">belowSubview</span> <span class="nv">siblingSubview</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view on which the THEOplayer view will be added as a subview.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>siblingSubview</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sibling view that will be above the THEOplayer view.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)insertAsSubviewOf:aboveSubview:"></a>
+                    <a name="//apple_ref/swift/Method/insertAsSubview(of:aboveSubview:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)insertAsSubviewOf:aboveSubview:">insertAsSubview(of:<wbr>aboveSubview:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Inserts the THEOplayer view above another view in the parameter view&rsquo;s hierarchy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">insertAsSubview</span><span class="p">(</span><span class="n">of</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="n">aboveSubview</span> <span class="nv">siblingSubview</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view on which the THEOplayer view will be added as a subview.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>siblingSubview</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sibling view that will be behind the inserted THEOplayer view.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)isContainedIn:"></a>
+                    <a name="//apple_ref/swift/Method/isContained(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)isContainedIn:">isContained(in:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a Boolean value indicating whether THEOplayer is contained in the given array of UIview.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>Example:
+<code>self.theoplayer.isContained(in: self.view.subviews)</code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">isContained</span><span class="p">(</span><span class="k">in</span> <span class="nv">views</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIView</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>views</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The array of views in which to search for THEOplayer.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C36registerContentProtectionIntegration13integrationId9keySystem0G7FactoryySS_AA03KeyjH0OAA0defK0_ptFZ"></a>
+                    <a name="//apple_ref/swift/Method/registerContentProtectionIntegration(integrationId:keySystem:integrationFactory:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C36registerContentProtectionIntegration13integrationId9keySystem0G7FactoryySS_AA03KeyjH0OAA0defK0_ptFZ">registerContentProtectionIntegration(integrationId:<wbr>keySystem:<wbr>integrationFactory:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register a content protection integration</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>Remark:</p>
+
+<ul>
+<li>This function allows for registering a <code><a href="../External%20Content%20Protection%20integration%20API.html#/s:13THEOplayerSDK35ContentProtectionIntegrationFactoryP">ContentProtectionIntegrationFactory</a></code> for a specific integrationId and keySystem.</li>
+<li>If a source is
+set with the <code><a href="../Protocols/DRMConfiguration.html#/s:13THEOplayerSDK16DRMConfigurationP11integrationAA14DRMIntegrationOSgvp">DRMConfiguration.integration</a></code> property set to this id, on a platform where the player will use the keySystem that corresponds
+with the given <code><a href="../Enums/KeySystemId.html">KeySystemId</a></code>, this <code><a href="../External%20Content%20Protection%20integration%20API.html#/s:13THEOplayerSDK35ContentProtectionIntegrationFactoryP">ContentProtectionIntegrationFactory</a></code> will be used to construct a
+<code><a href="../Protocols/ContentProtectionIntegration.html">ContentProtectionIntegration</a></code> based on the <code><a href="../Protocols/DRMConfiguration.html">DRMConfiguration</a></code>.</li>
+<li>This <code><a href="../Protocols/ContentProtectionIntegration.html">ContentProtectionIntegration</a></code> allows for altering licenseand certificate requests and responses.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">registerContentProtectionIntegration</span><span class="p">(</span><span class="nv">integrationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">keySystem</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeySystemId.html">KeySystemId</a></span><span class="p">,</span> <span class="nv">integrationFactory</span><span class="p">:</span> <span class="kt"><a href="../External%20Content%20Protection%20integration%20API.html#/s:13THEOplayerSDK35ContentProtectionIntegrationFactoryP">ContentProtectionIntegrationFactory</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>integrationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An id of the integration.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keySystem</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The<code><a href="../Enums/KeySystemId.html">KeySystemId</a></code> for which the<code><a href="../External%20Content%20Protection%20integration%20API.html#/s:13THEOplayerSDK35ContentProtectionIntegrationFactoryP">ContentProtectionIntegrationFactory</a></code> should be used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>integrationFactory</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Factory that will construct a <code><a href="../Protocols/ContentProtectionIntegration.html">ContentProtectionIntegration</a></code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)destroy"></a>
+                    <a name="//apple_ref/swift/Method/destroy()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)destroy">destroy()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unloads the THEOplayer.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    All future calls to this object will throw an error.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">destroy</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)addIntegration:"></a>
+                    <a name="//apple_ref/swift/Method/addIntegration(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)addIntegration:">addIntegration(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add an <code>Integration</code> to the THEOplayer instance .</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    For possible options, please check: <a href="https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md">https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md</a>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">addIntegration</span><span class="p">(</span><span class="n">_</span> <span class="nv">integration</span><span class="p">:</span> <span class="kt">Integration</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)removeIntegration:"></a>
+                    <a name="//apple_ref/swift/Method/removeIntegration(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)removeIntegration:">removeIntegration(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes an <code>Integration</code> from the THEOplayer instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeIntegration</span><span class="p">(</span><span class="n">_</span> <span class="nv">integration</span><span class="p">:</span> <span class="kt">Integration</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)removeAllIntegrations"></a>
+                    <a name="//apple_ref/swift/Method/removeAllIntegrations()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)removeAllIntegrations">removeAllIntegrations()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes all <code>Integration</code>s from the THEOplayer instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeAllIntegrations</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)getAllIntegrations"></a>
+                    <a name="//apple_ref/swift/Method/getAllIntegrations()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)getAllIntegrations">getAllIntegrations()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns all registered <code>Integration</code>s  on the THEOplayer instance</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">getAllIntegrations</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Integration</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)textTrackStyle"></a>
+                    <a name="//apple_ref/swift/Property/textTrackStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)textTrackStyle">textTrackStyle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>API to configure TextTrack styles (for subtitles)</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Only available on the native pipeline.
+
+</div>
+
+<p>Sample usage</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">tts</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">theoplayer</span><span class="p">?</span><span class="o">.</span><span class="n">textTrackStyle</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">textTrackStyle</span><span class="p">?</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TextTrackStyleRuleColor</span><span class="p">(</span><span class="kt">UIColor</span><span class="o">.</span><span class="n">green</span><span class="p">)]</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">textTrackStyle</span><span class="p">?</span><span class="o">.</span><span class="n">fontColor</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TextTrackStyleRuleColor</span><span class="p">(</span><span class="kt">UIColor</span><span class="o">.</span><span class="n">red</span><span class="p">)]</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">textTrackStyle</span><span class="p">?</span><span class="o">.</span><span class="n">edgeStyle</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TextTrackStyleRuleString</span><span class="p">(</span><span class="kt">TextTrackStyleEdgeStyle</span><span class="o">.</span><span class="n">raised</span><span class="p">)]</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">textTrackStyle</span><span class="p">?</span><span class="o">.</span><span class="n">fontFamily</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TextTrackStyleRuleString</span><span class="p">(</span><span class="s">"American Typewriter"</span><span class="p">)]</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">textTrackStyle</span><span class="p">?</span><span class="o">.</span><span class="n">fontSize</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TextTrackStyleRuleNumber</span><span class="p">(</span><span class="mi">120</span><span class="p">)]</span> <span class="c1">//20% increase</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">textTrackStyle</span><span class="p">?</span><span class="o">.</span><span class="n">marginTop</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TextTrackStyleRuleNumber</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span> <span class="c1">// top</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">textTrackStyle</span><span class="p">?</span><span class="o">.</span><span class="n">marginLeft</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TextTrackStyleRuleNumber</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span> <span class="c1">// left</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">textTrackStyle</span><span class="p">:</span> <span class="kt"><a href="../Protocols/TextTrackStyle.html">TextTrackStyle</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C4castAA4Cast_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cast" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C4castAA4Cast_pSgvp">cast</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Cast object helps you configure and control casting to external devices with THEOplayer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cast</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Cast.html">Cast</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C10fullscreenAA10Fullscreen_pvp"></a>
+                    <a name="//apple_ref/swift/Property/fullscreen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C10fullscreenAA10Fullscreen_pvp">fullscreen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code><a href="../Protocols/Fullscreen.html">Fullscreen</a></code> api of theoplayer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">fullscreen</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Fullscreen.html">Fullscreen</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)addGestureRecognizer:"></a>
+                    <a name="//apple_ref/swift/Method/addGestureRecognizer(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)addGestureRecognizer:">addGestureRecognizer(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Attaches a gesture recognizer to THEOplayer.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Only available on iOS.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">addGestureRecognizer</span><span class="p">(</span><span class="n">_</span> <span class="nv">gestureRecognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)removeGestureRecognizer:"></a>
+                    <a name="//apple_ref/swift/Method/removeGestureRecognizer(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(im)removeGestureRecognizer:">removeGestureRecognizer(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Detaches a gesture recognizer from THEOplayer.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Only available on iOS.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeGestureRecognizer</span><span class="p">(</span><span class="n">_</span> <span class="nv">gestureRecognizer</span><span class="p">:</span> <span class="kt">UIGestureRecognizer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)gestureRecognizers"></a>
+                    <a name="//apple_ref/swift/Property/gestureRecognizers" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)gestureRecognizers">gestureRecognizers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>List of the gesture recognizers attached to THEOplayer.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Only available on iOS.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">gestureRecognizers</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIGestureRecognizer</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C3adsAA3Ads_pvp"></a>
+                    <a name="//apple_ref/swift/Property/ads" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C3adsAA3Ads_pvp">ads</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An <code><a href="../Protocols/Ads.html">Ads</a></code> object that contains information about the current and the scheduled advertisements.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">ads</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Ads.html">Ads</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)ads"></a>
+                    <a name="//apple_ref/swift/Property/ads_Objc" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)ads">ads_Objc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An <code><a href="../Protocols/Ads.html">Ads</a></code> object that contains information about the current and the scheduled advertisements.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(ads)</span>
+<span class="k">var</span> <span class="nv">ads_Objc</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Ads_Objc.html">Ads_Objc</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C3pipAA09PictureInD0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/pip" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C3pipAA09PictureInD0_pSgvp">pip</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A <code><a href="../Protocols/PictureInPicture.html">PictureInPicture</a></code> object to configure Picture-In-Picture.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">pip</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PictureInPicture.html">PictureInPicture</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)fullscreenOrientationCoupling"></a>
+                    <a name="//apple_ref/swift/Property/fullscreenOrientationCoupling" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@THEOplayerSDK@objc(cs)THEOplayer(py)fullscreenOrientationCoupling">fullscreenOrientationCoupling</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Whether the fullscreen mode is coupled to device orientation, defaults to false.</p>
+
+<p>When enabled, landscape mode will trigger fullscreen mode and portrait mode will trigger non-fullscreen mode.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Changes in the device orientation or fullscreen state will also trigger their coupled mode if enabled.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="k">var</span> <span class="nv">fullscreenOrientationCoupling</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK0A0C5cacheAA5Cache_pvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/cache" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK0A0C5cacheAA5Cache_pvpZ">cache</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Cache object to access the caching API.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">cache</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Cache.html">Cache</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>© 2025 THEOplayer</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>
