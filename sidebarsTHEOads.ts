@@ -47,6 +47,12 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
+          label: 'iOS',
+          customProps: { icon: 'apple' },
+          href: 'pathname:///theoplayer/v8/api-reference/ios/THEOads/',
+        },
+        {
+          type: 'link',
           label: 'Android',
           customProps: { icon: 'android' },
           href: 'pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html',
