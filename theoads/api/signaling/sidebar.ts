@@ -54,13 +54,13 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/signaling/create-monetized-stream-break",
+          id: "api/signaling/get-monetized-stream-breaks",
           label: "GetMonetizedStreamBreak",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "api/signaling/create-monetized-stream-break",
+          id: "api/signaling/delete-monetized-stream-breaks",
           label: "DeleteMonetizedStreamBreak",
           className: "api-method delete",
         },
@@ -72,13 +72,13 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/signaling/create-monetized-stream-overlay",
+          id: "api/signaling/get-monetized-stream-overlays",
           label: "GetMonetizedStreamOverlay",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "api/signaling/create-monetized-stream-overlay",
+          id: "api/signaling/delete-monetized-stream-overlay",
           label: "DeleteMonetizedStreamOverlay",
           className: "api-method delete",
         },
