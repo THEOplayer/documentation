@@ -22,6 +22,16 @@ import TabItem from '@theme/TabItem';
 4.  Add the THEOads integration as a dependency to your project:
     <Tabs queryString="lang">
        <!-- prettier-ignore-start -->
+       <TabItem value="cocoapods" label="CocoaPods">
+        1. Add the `THEOplayer-Integration-THEOads` pod to your Podfile:
+        ```sh
+        pod 'THEOplayer-Integration-THEOads', '~> 8.10.0'
+        ```
+        2. Install the new pod:
+        ```sh
+        pod install
+        ```
+        </TabItem>
        <TabItem value="swiftpm" label="SwiftPM">
          1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
@@ -37,16 +47,6 @@ import TabItem from '@theme/TabItem';
 
          ![Screenshot of SwiftPM  product selection](../assets/img/theoads-ios-swiftpm-product-selection.png)
         </TabItem>
-        <TabItem value="cocoapods" label="CocoaPods">
-        1. Add the `THEOplayer-Integration-THEOads` pod to your Podfile:
-        ```sh
-        pod 'THEOplayer-Integration-THEOads', '~> 8.10.0'
-        ```
-        2. Install the new pod:
-        ```sh
-        pod install
-        ```
-        </TabItem>
         <!-- prettier-ignore-end -->
 
     </Tabs>
@@ -54,6 +54,9 @@ import TabItem from '@theme/TabItem';
 5.  Add Google IMA SDK as a dependency to your project:
     <Tabs queryString="lang">
        <!-- prettier-ignore-start -->
+       <TabItem value="cocoapods" label="CocoaPods">
+        1. The `THEOplayer-Integration-THEOads` pod has a dependency on `GoogleAds-IMA-iOS-SDK` which should be installed automatically.
+        </TabItem>
        <TabItem value="swiftpm" label="SwiftPM">
          1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
@@ -68,9 +71,6 @@ import TabItem from '@theme/TabItem';
          3. Select `GoogleInteractiveMediaAds` from the package products list and add it to your target.
 
          ![Screenshot of SwiftPM  product selection](../assets/img/theoads-ios-swiftpm-product-selection-google.png)
-        </TabItem>
-        <TabItem value="cocoapods" label="CocoaPods">
-        1. The `THEOplayer-Integration-THEOads` pod has a dependency on `GoogleAds-IMA-iOS-SDK` which should be installed automatically.
         </TabItem>
         <!-- prettier-ignore-end -->
 
