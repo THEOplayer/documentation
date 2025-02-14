@@ -6,6 +6,13 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"MonetizedStreamType": {
+				"enum": [
+					"LIVE",
+					"VOD"
+				],
+				"type": "string"
+			},
 			"MonetizedStreamLayout": {
 				"enum": [
 					"SINGLE",
@@ -25,6 +32,9 @@
 					},
 					"streamId": {
 						"type": "string"
+					},
+					"streamType": {
+						"$ref": "#/components/schemas/MonetizedStreamType"
 					},
 					"origin": {
 						"type": "string"
@@ -100,6 +110,9 @@
 					"version": {
 						"type": "string"
 					},
+					"streamType": {
+						"$ref": "#/components/schemas/MonetizedStreamType"
+					},
 					"origin": {
 						"type": "string"
 					},
@@ -151,6 +164,15 @@
 						"$ref": "#/components/schemas/MonetizedStreamLayout"
 					},
 					"assetURI": {
+						"type": "string"
+					},
+					"asset_key": {
+						"type": "string"
+					},
+					"network_code": {
+						"type": "string"
+					},
+					"backdropURI": {
 						"type": "string"
 					}
 				},
@@ -403,6 +425,41 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"IOverlaysApiResponse": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"created",
+							"deleted"
+						]
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"overlay"
+						],
+						"nullable": false
+					},
+					"payload": {
+						"items": {
+							"$ref": "#/components/schemas/IOverlay"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"state",
+					"type",
+					"payload"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"IStatus": {
 				"properties": {
 					"status": {
@@ -445,7 +502,7 @@
 	},
 	"info": {
 		"title": "THEOads Api",
-		"version": "24.11.6",
+		"version": "25.2.0",
 		"description": "The THEOads REST API allows you to create and manage monetized streams, which are deployments of signaling services. Each monetized stream corresponds to an origin stream that is monetized using THEOads (SGAI). For detailed information on the various parameters and their usage, please refer to the getting started guide.",
 		"license": {
 			"name": "UNLICENSED"
@@ -620,6 +677,59 @@
 				]
 			}
 		},
+		"/monetized-streams/{monetizedStreamId}/layout": {
+			"patch": {
+				"operationId": "UpdateMonetizedStreamLayout",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Updates the default layout for an existing monetized stream (signaling service).",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The layout configuration",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"layout": {
+										"$ref": "#/components/schemas/MonetizedStreamLayout"
+									}
+								},
+								"required": [
+									"layout"
+								],
+								"type": "object",
+								"description": "The layout configuration"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/monetized-streams/{monetizedStreamId}/break": {
 			"post": {
 				"operationId": "CreateMonetizedStreamBreak",
@@ -678,7 +788,7 @@
 						}
 					}
 				},
-				"description": "Retrieves all adbreaks linked to the monetized sctream",
+				"description": "Retrieves all adbreaks linked to the monetized stream",
 				"tags": [
 					"Monetized-Stream"
 				],
@@ -711,7 +821,7 @@
 						}
 					}
 				},
-				"description": "Deletes an adbreaks linked to the monetized sctream",
+				"description": "Deletes an adbreak linked to the monetized stream",
 				"tags": [
 					"Monetized-Stream"
 				],
@@ -735,59 +845,6 @@
 						}
 					}
 				]
-			}
-		},
-		"/monetized-streams/{monetizedStreamId}/layout": {
-			"patch": {
-				"operationId": "UpdateMonetizedStreamLayout",
-				"responses": {
-					"200": {
-						"description": "OK",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-								}
-							}
-						}
-					}
-				},
-				"description": "Updates the default layout for an existing monetized stream (signaling service).",
-				"tags": [
-					"Monetized-Stream"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"description": "The Monetized stream identifier.",
-						"in": "path",
-						"name": "monetizedStreamId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"description": "The layout configuration",
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"properties": {
-									"layout": {
-										"$ref": "#/components/schemas/MonetizedStreamLayout"
-									}
-								},
-								"required": [
-									"layout"
-								],
-								"type": "object",
-								"description": "The layout configuration"
-							}
-						}
-					}
-				}
 			}
 		},
 		"/monetized-streams/{monetizedStreamId}/overlay": {
@@ -833,6 +890,78 @@
 						}
 					}
 				}
+			},
+			"get": {
+				"operationId": "GetMonetizedStreamOverlays",
+				"responses": {
+					"200": {
+						"description": "A monetized stream",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IOverlaysApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieves all overlays linked to the monetized stream",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/monetized-streams/{monetizedStreamId}/overlay/{overlayId}": {
+			"delete": {
+				"operationId": "DeleteMonetizedStreamOverlay",
+				"responses": {
+					"200": {
+						"description": "A monetized stream",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IOverlayApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Deletes an overlay linked to the monetized stream",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "overlayId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
 			}
 		},
 		"/status": {
