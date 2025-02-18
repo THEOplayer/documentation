@@ -119,7 +119,43 @@ theoPlayerView.player.source = SourceDescription.Builder(
 
 ### iOS SDK
 
-This API is currently under development and will become available soon.
+For the iOS SDK, you can override the default layout by setting `overrideLayout` in the `THEOAdDescription` object as follows:
+
+```swift
+import UIKit
+import THEOplayerSDK
+import THEOplayerTHEOadsIntegration
+
+class ViewController: UIViewController {
+    var theoplayer: THEOplayer!
+    var theoads: THEOadsIntegration!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.theoplayer = THEOplayer(configuration: THEOplayerConfigurationBuilder().build())
+        self.theoplayer.frame = view.bounds
+        self.theoplayer.addAsSubview(of: view)
+        self.theoads = THEOadsIntegrationFactory.createIntegration(on: self.theoplayer)
+        self.theoplayer.addIntegration(self.theoads)
+
+        let source = "PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI"
+        let typedSource = TypedSource(
+            src: source,
+            type: "application/x-mpegurl",
+            hlsDateRange: true
+        )
+        let theoad = THEOAdDescription(
+            networkCode: "NETWORK-CODE",
+            customAssetKey: "CUSTOM-ASSET-KEY",
+            overrideLayout: .single // .double or .lshape
+        )
+        let sourceDescription = SourceDescription(source: typedSource, ads: [theoad])
+        self.theoplayer.source = sourceDescription
+        self.theoplayer.play()
+    }
+
+}
+```
 
 ## More information
 
