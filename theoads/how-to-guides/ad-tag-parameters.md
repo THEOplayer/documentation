@@ -89,7 +89,20 @@ theoPlayerView.player.source = SourceDescription.Builder(
 
 ## iOS SDK
 
-This API is currently under development and will become available soon.
+For the iOS SDK, you can set your desired ad tag parameters via `adTagParameters` in the `THEOAdDescription` as followed:
+
+```swift
+let theoad = THEOAdDescription(
+    networkCode: "NETWORK-CODE",
+    customAssetKey: "CUSTOM-ASSET-KEY",
+    adTagParameters: [
+        "YOUR-AD-TAG-PARAMETER-1" : "VALUE-1",
+        "YOUR-AD-TAG-PARAMETER-2" : "VALUE-2"
+    ]
+)
+let sourceDescription = SourceDescription(source: typedSource, ads: [theoad])
+self.theoplayer.source = sourceDescription
+```
 
 ## More information
 

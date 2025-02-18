@@ -37,6 +37,7 @@ The monetized stream holds the following information:
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 - `assetURI`: Optional custom asset URI which is to be used during ad breaks. If not set it will request an adbreak through Google Pod Serving.
 - `backdropURI`: Optional URI containing the back-drop to be used during the double box or L-shape ad.
+- `streamType`: Optional property to specify this stream's type to be either 'LIVE' (the default) or 'VOD'. Note: this is only relevant for scheduling overlays for now.
 
 ```json
 {
