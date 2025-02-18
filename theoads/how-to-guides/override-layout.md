@@ -87,7 +87,7 @@ player.source = {
       integration: 'theoads',
       networkCode: 'NETWORK-CODE',
       customAssetKey: 'CUSTOM-ASSET-KEY',
-      overrideLayout: 'YOUR-DESIRED-LAYOUT',
+      overrideLayout: 'single', //"l-shape", "double", "single-if-mobile"
     },
   ],
 };
@@ -112,7 +112,7 @@ theoPlayerView.player.source = SourceDescription.Builder(
     TheoAdsDescription(
         networkCode = "NETWORK-CODE",
         customAssetKey = "CUSTOM-ASSET-KEY",
-        overrideLayout = "YOUR-DESIRED-LAYOUT"
+        overrideLayout = "single", //"l-shape", "double"
     )
 ).build()
 ```
