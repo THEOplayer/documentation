@@ -744,6 +744,26 @@ function iosConnectorItems(): SidebarItemConfig[] {
         }),
       ],
     },
+    {
+      type: 'category',
+      label: 'Uplynk',
+      description: 'Add support for Uplynk CMS to your player.',
+      customProps: {
+        icon: 'uplynk',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Uplynk Connector for iOS & tvOS',
+        slug: 'connectors/ios/uplynk',
+      },
+      items: [
+        'external/iOS-Connector/Code/Uplynk/README',
+        'external/iOS-Connector/Code/Uplynk-Examples/README',
+        githubLink({
+          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Uplynk',
+        }),
+      ],
+    },
     'external/iOS-Connector/CHANGELOG',
   ];
 }
