@@ -241,6 +241,12 @@ const config: Config = {
             to: '/theoads/api/signaling/theoads-api/',
           },
         ],
+        createRedirects(existingPath) {
+          if (existingPath.startsWith('/theoplayer/how-to-guides/integrations/uplynk/')) {
+            return [existingPath.replace('/theoplayer/how-to-guides/integrations/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
+          }
+          return undefined;
+        },
       } satisfies ClientRedirectsPlugin.Options,
     ],
     () => ({
