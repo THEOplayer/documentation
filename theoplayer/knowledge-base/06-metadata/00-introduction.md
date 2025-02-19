@@ -190,7 +190,7 @@ Reach out to THEOplayer if your vendor is missing from the list below, because t
 
 - [Google DAI](../../how-to-guides/01-ads/08-google-dai.md)
 - [Yospace](../../how-to-guides/01-ads/04-yospace.md)
-- [Verizon Media](../../how-to-guides/05-integrations/uplynk/00-introduction.md)
+- [Verizon Media](../../how-to-guides/05-integrations/uplynk/00-introduction.mdx)
 
 THEOplayer offers features which might implement your desired use-case out-of-the-box:
 

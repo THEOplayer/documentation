@@ -92,4 +92,4 @@ Refer to the documentation at [VerizonMediaConfiguration](pathname:///theoplayer
 # Related articles
 
 - [Verizon Media - Ads](02-ads.md): this article zooms in on `defaultSkipOffset` and ``onSeekOverAd`.
-- [Verizon Media - Introduction](00-introduction.md): this article links to sample Git projects which implement a `VerizonMediaConfiguration`.
+- [Verizon Media - Introduction](00-introduction.mdx): this article links to sample Git projects which implement a `VerizonMediaConfiguration`.

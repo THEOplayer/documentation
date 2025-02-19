@@ -21,7 +21,7 @@ The `VerizonMedia` Interface is exposed through your THEOplayer instance (e.g.: 
 
 If you're looking for more information on how to query the available advertisements and how to subscribe to ad events, then refer to [Verizon Media Ads](02-ads.md).
 
-The examples below provide a basic demonstration of how to use the `VerizonMedia` interface. The Github projects linked at [Verizon Media - Introduction](00-introduction.md) provide more code samples.
+The examples below provide a basic demonstration of how to use the `VerizonMedia` interface. The Github projects linked at [Verizon Media - Introduction](00-introduction.mdx) provide more code samples.
 
 ##### Web SDK
 
@@ -143,4 +143,4 @@ Refer to the documentation at [VerizonMedia](pathname:///theoplayer/v8/api-refer
 - [Verizon Media - Ads](02-ads.md): this article offers more information on the `ads` parts of the Verizon Media interface.
 - [Verizon Media - Ping](03-ping.md): this article explains how you can use the Verizon Media Interface to intercept Ping responses.
 - [Verizon Media - Ping](01-preplay.md): this article explains how you can use the Verizon Media Interface to intercept Preplay responses.
-- [Verizon Media - Introduction](00-introduction.md): this article links to sample Git projects which query (and subscribe to) the various properties and events offered by the `VerizonMedia` interface.
+- [Verizon Media - Introduction](00-introduction.mdx): this article links to sample Git projects which query (and subscribe to) the various properties and events offered by the `VerizonMedia` interface.

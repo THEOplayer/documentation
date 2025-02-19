@@ -1,6 +1,6 @@
 # What are the Edgio challenges
 
-The purpose of this article is to group common challenges application developers might encounter when using [Edgio](../how-to-guides/05-integrations/uplynk/00-introduction.md) (formerly known as Verizon Media and Edgecast) as the back-end.
+The purpose of this article is to group common challenges application developers might encounter when using [Edgio](../how-to-guides/05-integrations/uplynk/00-introduction.mdx) (formerly known as Verizon Media and Edgecast) as the back-end.
 
 1. [Why does Chromecast or AirPlay not work?](#why-does-chromecast-or-airplay-not-work)
 2. [Why aren't all video qualities showing up?](#why-arent-all-video-qualities-showing-up)
