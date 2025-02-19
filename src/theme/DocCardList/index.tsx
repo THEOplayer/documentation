@@ -2,12 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import { filterDocCardListItems, useCurrentSidebarCategory, useDoc } from '@docusaurus/plugin-content-docs/client';
 import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
-import type { Props as DocCardListProps } from '@theme/DocCardList';
+import type { Props } from '@theme/DocCardList';
 import DocCard from '@theme/DocCard';
-
-export interface Props extends DocCardListProps {
-  additionalItems?: PropSidebarItem[];
-}
 
 function DocCardListForCurrentSidebarCategory(props: Props) {
   const doc = useDoc();
@@ -31,11 +27,11 @@ function isValidItem(item: PropSidebarItem): boolean {
 }
 
 export default function DocCardList(props: Props) {
-  const { items, additionalItems = [], className } = props;
+  const { items, className } = props;
   if (!items) {
     return <DocCardListForCurrentSidebarCategory {...props} />;
   }
-  const filteredItems = filterDocCardListItems([...items, ...additionalItems]).filter(isValidItem);
+  const filteredItems = filterDocCardListItems(items).filter(isValidItem);
   return (
     <section className={clsx('row', className)}>
       {filteredItems.map((item, index) => (

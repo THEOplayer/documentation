@@ -2,6 +2,10 @@
   "label": "Uplynk",
   "position": 103,
   "customProps": {
-    "icon": "uplynk"
+    "icon": "uplynk",
+    "additionalItems": [{
+      "type": "doc",
+      "id": "faq/what-are-the-edgio-challenges"
+    }]
   }
 }
