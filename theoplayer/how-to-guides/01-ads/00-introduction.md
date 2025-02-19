@@ -17,7 +17,7 @@ Consider reading our [Advertising User Guide](../../knowledge-base/01-advertisem
 - Server-side advertisement systems
   - [Yospace](../../how-to-guides/01-ads/04-yospace.md)
   - [Google DAI](../../how-to-guides/01-ads/08-google-dai.md)
-  - [Verizon Media](../05-integrations/uplynk/02-ads.md)
+  - [Verizon Media](../web/uplynk/02-ads.md)
   - [MediaTailor](../../how-to-guides/01-ads/12-mediatailor.md)
   - [Custom Server Side Ad Integration](../../how-to-guides/01-ads/13-custom-ssai-integration.md)
 - Other

@@ -1,6 +1,6 @@
 # What are the Edgio challenges
 
-The purpose of this article is to group common challenges application developers might encounter when using [Edgio](../how-to-guides/05-integrations/uplynk/00-introduction.mdx) (formerly known as Verizon Media and Edgecast) as the back-end.
+The purpose of this article is to group common challenges application developers might encounter when using [Edgio](../how-to-guides/web/uplynk/00-introduction.mdx) (formerly known as Verizon Media and Edgecast) as the back-end.
 
 1. [Why does Chromecast or AirPlay not work?](#why-does-chromecast-or-airplay-not-work)
 2. [Why aren't all video qualities showing up?](#why-arent-all-video-qualities-showing-up)
@@ -10,7 +10,7 @@ The purpose of this article is to group common challenges application developers
 
 If you've [correctly enabled Chromecast](../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md) or AirPlay,
 but you are not getting any playback on your Chromecast or AirPlay device,
-then a likely cause is your [tokenization](../how-to-guides/05-integrations/uplynk/01-preplay.md#using-tokens) approach.
+then a likely cause is your [tokenization](../how-to-guides/web/uplynk/01-preplay.md#using-tokens) approach.
 
 1/ When you tokenize a URL, you are also specifying an expiration date.
 It is possible that your expiration date has passed when you initiate the casting session.
@@ -41,4 +41,4 @@ Doing so will group all qualities to one `AdaptationSet` with one key.
 
 ## What should I know before tokenizing my stream?
 
-Refer to [Preplay - tokenization](../how-to-guides/05-integrations/uplynk/01-preplay.md#using-tokens).
+Refer to [Preplay - tokenization](../how-to-guides/web/uplynk/01-preplay.md#using-tokens).

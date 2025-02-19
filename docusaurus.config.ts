@@ -242,8 +242,8 @@ const config: Config = {
           },
         ],
         createRedirects(existingPath) {
-          if (existingPath.startsWith('/theoplayer/how-to-guides/integrations/uplynk/')) {
-            return [existingPath.replace('/theoplayer/how-to-guides/integrations/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
+          if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
+            return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
           }
           return undefined;
         },
