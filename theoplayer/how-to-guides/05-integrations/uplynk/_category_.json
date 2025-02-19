@@ -1,4 +1,7 @@
 {
-  "label": "Verizon Media",
-  "position": 102
+  "label": "Uplynk",
+  "position": 101,
+  "customProps": {
+    "icon": "uplynk"
+  }
 }
