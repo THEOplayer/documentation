@@ -1,7 +1,7 @@
 # Verizon Uplynk
 
-**Important:** Verizon Media Platform customers should configure DRM through the [THEOplayer Verizon Media integration](../../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md).
-More specifically, to configure DRM, developers should use the [`contentProtected`](../../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md) flag.
+**Important:** Verizon Media Platform customers should configure DRM through the [THEOplayer Verizon Media integration](../05-integrations/uplynk/01-preplay.md).
+More specifically, to configure DRM, developers should use the [`contentProtected`](../05-integrations/uplynk/01-preplay.md) flag.
 (The Verizon Media integration provides a pre-integration with Verizon Media's Preplay, Ping and Asset Info services,
 exposes additional APIs, and enhances your UI and UX.)
 

@@ -220,7 +220,7 @@ If you're scheduling server-side ads, you might need to use a different interfac
 
 - [Google DAI](10-google-ima.md): if you're using Google DAI, you can use the same API as the one for client-side ads, as described in the sections above.
 - [Yospace](04-yospace.md): if you're using Yospace, you must use the Yospace interface. You can read more about detecting ad-related events with Yospace at our [Yospace documentation](04-yospace.md).
-- [Verizon Media](../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md): if you're using Verizon Media, you must use the Verizon interface. You can read more about detecting ad-related events with Verizon Media at our [Verizon Media documentation](../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md#verizon-media-ads-api).
+- [Verizon Media](../05-integrations/uplynk/02-ads.md): if you're using Verizon Media, you must use the Verizon interface. You can read more about detecting ad-related events with Verizon Media at our [Verizon Media documentation](../05-integrations/uplynk/02-ads.md#verizon-media-ads-api).
 
 If you're building a custom server-side ad insertion solution, you might be interested in using our `TextTrack` API to detect `id3/emsg/EventStream/EXT-X-DATERANGE` cues, and the `timeupdate` event in the `Player` interface to determine the current playhead position.
 
