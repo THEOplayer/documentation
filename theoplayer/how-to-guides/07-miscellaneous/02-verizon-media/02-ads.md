@@ -323,5 +323,5 @@ let adBreakArrayListenerRef = player.verizonMedia.ads.adBreaks.addEventListener(
 
 ## Related articles
 
-- [Verizon Media - Preplay](../../../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md)
-- [Verizon Media - Ping](../../../how-to-guides/07-miscellaneous/02-verizon-media/03-ping.md)
+- [Verizon Media - Preplay](01-preplay.md)
+- [Verizon Media - Ping](03-ping.md)

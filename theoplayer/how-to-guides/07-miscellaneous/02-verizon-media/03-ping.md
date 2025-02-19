@@ -244,5 +244,5 @@ let verizonMediaSource = VerizonMediaSource(assetId: "assetID", ping: pingConfig
 
 ## Related articles
 
-- [Verizon Media - Preplay](../../../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md)
-- [Verizon Media - Ads](../../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md)
+- [Verizon Media - Preplay](01-preplay.md)
+- [Verizon Media - Ads](02-ads.md)

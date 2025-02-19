@@ -354,5 +354,5 @@ Having difficulties figuring out tokens, DRM and THEOplayer? Check out the Node.
 
 # Related articles
 
-- [Verizon Media - Ads](../../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md)
-- [Verizon Media - Ping](../../../how-to-guides/07-miscellaneous/02-verizon-media/03-ping.md)
+- [Verizon Media - Ads](02-ads.md)
+- [Verizon Media - Ping](03-ping.md)

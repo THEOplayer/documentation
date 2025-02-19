@@ -91,5 +91,5 @@ Refer to the documentation at [VerizonMediaConfiguration](pathname:///theoplayer
 
 # Related articles
 
-- [Verizon Media - Ads](../../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md): this article zooms in on `defaultSkipOffset` and ``onSeekOverAd`.
-- [Verizon Media - Introduction](../../../how-to-guides/07-miscellaneous/02-verizon-media/00-introduction.md): this article links to sample Git projects which implement a `VerizonMediaConfiguration`.
+- [Verizon Media - Ads](02-ads.md): this article zooms in on `defaultSkipOffset` and ``onSeekOverAd`.
+- [Verizon Media - Introduction](00-introduction.md): this article links to sample Git projects which implement a `VerizonMediaConfiguration`.
