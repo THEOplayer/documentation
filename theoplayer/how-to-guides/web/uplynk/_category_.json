@@ -3,9 +3,11 @@
   "position": 103,
   "customProps": {
     "icon": "uplynk",
-    "additionalItems": [{
-      "type": "doc",
-      "id": "faq/what-are-the-edgio-challenges"
-    }]
+    "additionalItems": [
+      {
+        "type": "doc",
+        "id": "faq/what-are-the-edgio-challenges"
+      }
+    ]
   }
 }
