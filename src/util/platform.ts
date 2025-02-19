@@ -183,6 +183,24 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
     const prefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
     return findMatchingDoc(version, doc, prefix, gettingStartedMatch[2], 'getting-started');
   }
+  // Uplynk Web to Android/iOS connector
+  if (platformName === 'android' || platformName === 'ios') {
+    const uplynkWebMatch = docPath.match(/^\/how-to-guides\/web\/uplynk\/(.*)$/);
+    if (uplynkWebMatch) {
+      const prefix = `${version.path}/connectors/${platformName}/uplynk`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, uplynkWebMatch[1], '');
+      if (matchingDoc) return matchingDoc;
+    }
+  }
+  // Uplynk Android/iOS connector to Web
+  if (platformName === 'web') {
+    const uplynkConnectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/uplynk\/(.*)$/);
+    if (uplynkConnectorMatch && isPlatformName(uplynkConnectorMatch[1])) {
+      const prefix = `${version.path}/how-to-guides/web/uplynk`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, uplynkConnectorMatch[2], 'introduction');
+      if (matchingDoc) return matchingDoc;
+    }
+  }
   // How-to guides
   const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)\/(.*)$/);
   if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {
@@ -228,6 +246,6 @@ function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string,
     suffixParts.pop();
   }
   // Find fallback page
-  const fallbackDocPath = `${prefix}/${fallbackSuffix}`;
+  const fallbackDocPath = fallbackSuffix ? `${prefix}/${fallbackSuffix}` : prefix;
   return version.docs.find((otherDoc) => otherDoc.path === fallbackDocPath);
 }
