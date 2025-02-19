@@ -2,16 +2,20 @@ import React from 'react';
 import clsx from 'clsx';
 import { filterDocCardListItems, useCurrentSidebarCategory, useDoc } from '@docusaurus/plugin-content-docs/client';
 import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
-import type { Props } from '@theme/DocCardList';
+import type { Props as DocCardListProps } from '@theme/DocCardList';
 import DocCard from '@theme/DocCard';
 
-function DocCardListForCurrentSidebarCategory({ className }: Props) {
+export interface Props extends DocCardListProps {
+  additionalItems?: PropSidebarItem[];
+}
+
+function DocCardListForCurrentSidebarCategory(props: Props) {
   const doc = useDoc();
   const category = useCurrentSidebarCategory();
   const filteredItems = category.items
     // Hide the current doc page from list
     .filter((item) => !(item.type === 'link' && item.docId === doc.metadata.id));
-  return <DocCardList items={filteredItems} className={className} />;
+  return <DocCardList {...props} items={filteredItems} />;
 }
 
 function isIndexLink(item: PropSidebarItem): boolean {
@@ -27,11 +31,11 @@ function isValidItem(item: PropSidebarItem): boolean {
 }
 
 export default function DocCardList(props: Props) {
-  const { items, className } = props;
+  const { items, additionalItems = [], className } = props;
   if (!items) {
     return <DocCardListForCurrentSidebarCategory {...props} />;
   }
-  const filteredItems = filterDocCardListItems(items).filter(isValidItem);
+  const filteredItems = filterDocCardListItems([...items, ...additionalItems]).filter(isValidItem);
   return (
     <section className={clsx('row', className)}>
       {filteredItems.map((item, index) => (
