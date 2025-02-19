@@ -194,7 +194,7 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
   }
   // Uplynk Android/iOS connector to Web
   if (platformName === 'web') {
-    const uplynkConnectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/uplynk\/(.*)$/);
+    const uplynkConnectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/uplynk(|\/.*)$/);
     if (uplynkConnectorMatch && isPlatformName(uplynkConnectorMatch[1])) {
       const prefix = `${version.path}/how-to-guides/web/uplynk`;
       const matchingDoc = findMatchingDoc(version, doc, prefix, uplynkConnectorMatch[2], 'introduction');
@@ -202,13 +202,13 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
     }
   }
   // How-to guides
-  const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)\/(.*)$/);
+  const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)(|\/.*)$/);
   if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {
     const prefix = `${version.path}/how-to-guides/${platformName}`;
     return findMatchingDoc(version, doc, prefix, howToGuideMatch[2], '');
   }
   // Connectors
-  const connectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/(.*)$/);
+  const connectorMatch = docPath.match(/^\/connectors\/([a-z-]+)(|\/.*)$/);
   if (connectorMatch && isPlatformName(connectorMatch[1])) {
     const prefix = `${version.path}/connectors/${platformName}`;
     return findMatchingDoc(version, doc, prefix, connectorMatch[2], '');
@@ -226,7 +226,7 @@ function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, plat
 
 function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string, suffix: string, fallbackSuffix: string): GlobalDoc | undefined {
   // Find exact match
-  const exactDocPath = `${prefix}/${suffix}`;
+  const exactDocPath = suffix ? `${prefix}/${suffix}` : prefix;
   if (doc.path === exactDocPath) {
     return doc;
   }
