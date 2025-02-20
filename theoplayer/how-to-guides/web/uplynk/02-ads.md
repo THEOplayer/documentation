@@ -26,7 +26,7 @@ var player = new THEOplayer.Player(element, {
 
 :::info Deprecation
 
-Starting THEOplayer v8.12.0, it is possible to use the regular `player.ads` API for subscribing to Uplynk ad breaks.
+Starting THEOplayer v8.12.0, it is possible to use the regular `player.ads` API for subscribing to Uplynk ad breaks, as described on [How to subscribe to ad events](../../01-ads/11-how-to-subscribe-to-ad-events.md).
 The implementation below can be expected to be removed in the future.
 
 :::
