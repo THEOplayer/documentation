@@ -28,6 +28,7 @@ const docsConfigBase = {
     'external/web-connectors/*/README.md',
     'external/android-connector/connectors/**/README.md',
     'external/iOS-Connector/Code/**/README.md',
+    'external/iOS-Connector/Code/Uplynk/docs/*.md',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
