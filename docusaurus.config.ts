@@ -319,11 +319,11 @@ const config: Config = {
           .replace(/web-connectors\/([^/]+)\/doc\//, '/connectors/web/$1/')
           .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/CHANGELOG/, '/connectors/android/$1/changelog')
           .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/README/, '/connectors/android/$1/getting-started')
-          .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/doc\//, '/connectors/android/$1/')
+          .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/docs?\//, '/connectors/android/$1/')
           .replace(/iOS-Connector\/CHANGELOG/, '/connectors/ios/changelog')
           .replace(/iOS-Connector\/Code\/([^/]+)-Examples\/README/, '/connectors/ios/$1/examples')
           .replace(/iOS-Connector\/Code\/([^/]+)\/README/, '/connectors/ios/$1/getting-started')
-          .replace(/iOS-Connector\/Code\/([^/]+)\/doc\//, '/connectors/ios/$1/')
+          .replace(/iOS-Connector\/Code\/([^/]+)\/docs?\//, '/connectors/ios/$1/')
           .toLowerCase();
       }
       docPath = docPath.toLowerCase();
