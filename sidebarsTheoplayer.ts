@@ -625,7 +625,7 @@ function androidConnectorItems(): SidebarItemConfig[] {
   ];
 }
 
-function connectorIosGuideItem(): SidebarItemConfig {
+function iosConnectorGuideItem(): SidebarItemConfig {
   return {
     type: 'category',
     label: 'Guides',
@@ -637,10 +637,10 @@ function connectorIosGuideItem(): SidebarItemConfig {
     },
 
     items: [
-      'external/iOS-Connector/Code/Uplynk/docs/00-introduction.md',
-      'external/iOS-Connector/Code/Uplynk/docs/01-preplay.md',
-      'external/iOS-Connector/Code/Uplynk/docs/02-ads.md',
-      'external/iOS-Connector/Code/Uplynk/docs/03-ping.md',
+      'external/iOS-Connector/Code/Uplynk/docs/introduction',
+      'external/iOS-Connector/Code/Uplynk/docs/preplay',
+      'external/iOS-Connector/Code/Uplynk/docs/ads',
+      'external/iOS-Connector/Code/Uplynk/docs/ping',
     ],
   };
 }
@@ -778,7 +778,7 @@ function iosConnectorItems(): SidebarItemConfig[] {
       },
       items: [
         'external/iOS-Connector/Code/Uplynk/README',
-        connectorIosGuideItem(),
+        iosConnectorGuideItem(),
         'external/iOS-Connector/Code/Uplynk-Examples/README',
         githubLink({
           href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Uplynk',
