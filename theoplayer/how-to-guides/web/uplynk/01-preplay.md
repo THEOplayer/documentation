@@ -7,7 +7,7 @@ Uplynk users can use an API (i.e. `Preplay`) to generate a streaming playlist gi
 Assumptions:
 
 - THEOplayer assumes the availability of the Preplay API and Uplynk content servers to be 100%, since these identify and provide the necessary streams for playback with this feature.
-- THEOplayer assumes that developers who are interested in this feature have a basic understanding of the Preplay API. Uplynk documents this service in the [API docs](https://api-docs.uplynk.com/#Develop/Preplayv2.htm%3FTocPath%3DClient%2520(Media%2520Player)%7C_____2).
+- THEOplayer assumes that developers who are interested in this feature have a basic understanding of the Preplay API. Uplynk documents this service in the [API docs](<https://api-docs.uplynk.com/#Develop/Preplayv2.htm%3FTocPath%3DClient%2520(Media%2520Player)%7C_____2>).
 - THEOplayer assumes that developers provide correct asset identifiers, as well as the proper content protection level.
 
 ## Stream Configuration (without ads)
@@ -50,7 +50,7 @@ player.source = {
         delay: '7200',
         rays: 'dcba',
         sig: '2ff94739b021912712adafeccd6fa291f11eef0648c3b18b30224b84e0590b4f',
-      }
+      },
     },
   ],
 };
@@ -90,6 +90,7 @@ player.source = {
     }]
 }
 ```
+
 More information on certain properties:
 
 - `preplayParameters`: The `preplayParameters` object should have string-key-string-value combinations, which will be used as query parameters for the Preplay API call. Nested objects are not supported.
@@ -118,7 +119,7 @@ If you do not configure the `preplayParameters` correctly in relation to your si
 
 Let's consider a set-up where an Uplynk customer uses both URL signatures and multi-DRM.
 [When you do DRM, you must specify the `rmt` and `manifest` parameter](https://api-docs.uplynk.com/#Develop/Preplayv2.htm?Highlight=rmt),
-**or** you can set `allowrmt` to `1` instead. We recommend using the latter, as demonstrated in our Node.js reference project at [https://github.com/THEOplayer/theoplayer-verizon-media-node-js](https://github.com/THEOplayer/theoplayer-verizon-media-node-js).
+**or** you can set `allowrmt` to `1` instead. We recommend using the latter, as demonstrated in our Node.js reference project at [GitHub](https://github.com/THEOplayer/theoplayer-verizon-media-node-js).
 
 So, let's say you want to generate a signature on your back-end that is compatible with HLS + FairPlay, MPEG-DASH + Widevine and MPEG-DASH + PlayReady,
 then it could look like the snippet below using `allowrmt`.
