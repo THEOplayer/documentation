@@ -294,9 +294,9 @@ const config: Config = {
       const parsedDocPath = parseDocPath(params.filePath);
       const { docPluginId } = parsedDocPath;
       let { docPath } = parsedDocPath;
-      if (docPath.startsWith('external/')) {
+      if (!frontMatter.slug && docPath.startsWith('external/')) {
         // Add a slug to all external doc pages
-        frontMatter.slug ??= docPath
+        frontMatter.slug = docPath
           // Remove extension
           .replace('external/', '')
           .replace(/\.mdx?$/, '')
