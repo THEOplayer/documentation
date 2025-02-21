@@ -1,6 +1,6 @@
-# What are the Edgio challenges
+# What are the Uplynk challenges
 
-The purpose of this article is to group common challenges application developers might encounter when using [Edgio](../how-to-guides/07-miscellaneous/02-verizon-media/00-introduction.md) (formerly known as Verizon Media and Edgecast) as the back-end.
+The purpose of this article is to group common challenges application developers might encounter when using [Uplynk](../how-to-guides/web/uplynk/00-introduction.mdx) (formerly known as Verizon Media, Edgecast or Edgio) as the back-end.
 
 1. [Why does Chromecast or AirPlay not work?](#why-does-chromecast-or-airplay-not-work)
 2. [Why aren't all video qualities showing up?](#why-arent-all-video-qualities-showing-up)
@@ -10,7 +10,7 @@ The purpose of this article is to group common challenges application developers
 
 If you've [correctly enabled Chromecast](../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md) or AirPlay,
 but you are not getting any playback on your Chromecast or AirPlay device,
-then a likely cause is your [tokenization](../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md#using-tokens) approach.
+then a likely cause is your [tokenization](../how-to-guides/web/uplynk/01-preplay.md#using-tokens) approach.
 
 1/ When you tokenize a URL, you are also specifying an expiration date.
 It is possible that your expiration date has passed when you initiate the casting session.
@@ -18,8 +18,8 @@ Your stream will no longer be valid when this is the case, and result in unsucce
 
 The solution? Use an expiration date that is valid for a longer time.
 
-2/ An Edgio token will be attached to one IP address when it's invoked for the first time (i.e. request to the Preplay URL with the token as a query parameter).
-This could cause problems when either your sender device (i.e. iOS app, Android app, browser) or reciever device (i.e. Chromecast device)
+2/ An Uplynk token will be attached to one IP address when it's invoked for the first time (i.e. request to the Preplay URL with the token as a query parameter).
+This could cause problems when either your sender device (i.e. iOS app, Android app, browser) or receiver device (i.e. Chromecast device)
 uses an iPv6 address, because those addresses are unique. (Meaning: the token could be invalid for your IPv6 receiver device because it was already attached to your different IPv4 sender device.)
 
 The solution?
@@ -31,8 +31,8 @@ The solution?
 
 ## Why aren't all video qualities showing up?
 
-If you notice that THEOplayer doesn't expose all your Edgio MPEG-DASH video qualities,
-then the likely culprit is not aggregating the different `AdaptationSet`s as part of Edgio's multi-key approach.
+If you notice that THEOplayer doesn't expose all your Uplynk MPEG-DASH video qualities,
+then the likely culprit is not aggregating the different `AdaptationSet`s as part of Uplynk's multi-key approach.
 
 The solution?
 
@@ -41,4 +41,4 @@ Doing so will group all qualities to one `AdaptationSet` with one key.
 
 ## What should I know before tokenizing my stream?
 
-Refer to [Preplay - tokenization](../how-to-guides/07-miscellaneous/02-verizon-media/01-preplay.md#using-tokens).
+Refer to [Preplay - tokenization](../how-to-guides/web/uplynk/01-preplay.md#using-tokens).

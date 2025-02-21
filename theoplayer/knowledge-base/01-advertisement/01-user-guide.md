@@ -145,7 +145,7 @@ To use the Yospace integration you have to set the `integration` key to `'yospac
 
 To use the Verizon Media integration you have to set the `integration` key to `'verizon-media'`.
 
-You can refer to [our section on Verizon Media](../../how-to-guides/07-miscellaneous/02-verizon-media/02-ads.md) to learn more about SSAI with Verizon Media.
+You can refer to [our section on Verizon Media](../../how-to-guides/web/uplynk/02-ads.md) to learn more about SSAI with Verizon Media.
 
 #### MediaTailor
 

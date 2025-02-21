@@ -177,20 +177,38 @@ export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc
 function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
   const docPath = doc.path.replace(version.path, '');
   // Getting Started
-  const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/([a-z-]+)\/(.*)$/);
+  const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/([a-z-]+)(|\/.*)$/);
   if (gettingStartedMatch && isPlatformName(gettingStartedMatch[1])) {
     const isFrameworkPlatform = platformName === 'react-native' || platformName === 'flutter';
     const prefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
-    return findMatchingDoc(version, doc, prefix, gettingStartedMatch[2], 'getting-started');
+    return findMatchingDoc(version, doc, prefix, gettingStartedMatch[2], '/getting-started');
+  }
+  // Uplynk Web to Android/iOS connector
+  if (platformName === 'android' || platformName === 'ios') {
+    const uplynkWebMatch = docPath.match(/^\/how-to-guides\/web\/uplynk(|\/.*)$/);
+    if (uplynkWebMatch) {
+      const prefix = `${version.path}/connectors/${platformName}/uplynk`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, uplynkWebMatch[1], '');
+      if (matchingDoc) return matchingDoc;
+    }
+  }
+  // Uplynk Android/iOS connector to Web
+  if (platformName === 'web') {
+    const uplynkConnectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/uplynk(|\/.*)$/);
+    if (uplynkConnectorMatch && isPlatformName(uplynkConnectorMatch[1])) {
+      const prefix = `${version.path}/how-to-guides/web/uplynk`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, uplynkConnectorMatch[2], '/introduction');
+      if (matchingDoc) return matchingDoc;
+    }
   }
   // How-to guides
-  const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)\/(.*)$/);
+  const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)(|\/.*)$/);
   if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {
     const prefix = `${version.path}/how-to-guides/${platformName}`;
     return findMatchingDoc(version, doc, prefix, howToGuideMatch[2], '');
   }
   // Connectors
-  const connectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/(.*)$/);
+  const connectorMatch = docPath.match(/^\/connectors\/([a-z-]+)(|\/.*)$/);
   if (connectorMatch && isPlatformName(connectorMatch[1])) {
     const prefix = `${version.path}/connectors/${platformName}`;
     return findMatchingDoc(version, doc, prefix, connectorMatch[2], '');
@@ -199,7 +217,7 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
 
 function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
   const docPath = doc.path.replace(version.path, '');
-  const match = docPath.match(/^\/([a-z-]+)\/(.*)$/);
+  const match = docPath.match(/^\/([a-z-]+)(|\/.*)$/);
   if (match && isPlatformName(match[1])) {
     const prefix = `${version.path}/${platformName}`;
     return findMatchingDoc(version, doc, prefix, match[2], '');
@@ -208,7 +226,7 @@ function findMatchingOpenVideoUiDoc(version: GlobalVersion, doc: GlobalDoc, plat
 
 function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string, suffix: string, fallbackSuffix: string): GlobalDoc | undefined {
   // Find exact match
-  const exactDocPath = `${prefix}/${suffix}`;
+  const exactDocPath = `${prefix}${suffix}`.replace(/\/$/, '');
   if (doc.path === exactDocPath) {
     return doc;
   }
@@ -220,7 +238,7 @@ function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string,
   const suffixParts = suffix.split('/');
   suffixParts.pop();
   while (suffixParts.length > 0) {
-    const looseDocPath = `${prefix}/${suffixParts.join('/')}`;
+    const looseDocPath = `${prefix}${suffixParts.join('/')}`;
     const looseDoc = version.docs.find((otherDoc) => otherDoc.path === looseDocPath);
     if (looseDoc) {
       return looseDoc;
@@ -228,6 +246,6 @@ function findMatchingDoc(version: GlobalVersion, doc: GlobalDoc, prefix: string,
     suffixParts.pop();
   }
   // Find fallback page
-  const fallbackDocPath = `${prefix}/${fallbackSuffix}`;
+  const fallbackDocPath = `${prefix}${fallbackSuffix}`;
   return version.docs.find((otherDoc) => otherDoc.path === fallbackDocPath);
 }

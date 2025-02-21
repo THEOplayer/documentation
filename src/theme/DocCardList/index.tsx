@@ -5,13 +5,13 @@ import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
 import type { Props } from '@theme/DocCardList';
 import DocCard from '@theme/DocCard';
 
-function DocCardListForCurrentSidebarCategory({ className }: Props) {
+function DocCardListForCurrentSidebarCategory(props: Props) {
   const doc = useDoc();
   const category = useCurrentSidebarCategory();
   const filteredItems = category.items
     // Hide the current doc page from list
     .filter((item) => !(item.type === 'link' && item.docId === doc.metadata.id));
-  return <DocCardList items={filteredItems} className={className} />;
+  return <DocCardList {...props} items={filteredItems} />;
 }
 
 function isIndexLink(item: PropSidebarItem): boolean {

@@ -12,6 +12,7 @@ import NielsenIcon from '@site/static/img/nielsen.svg';
 import NuxtjsIcon from '@site/static/img/nuxtjs.svg';
 import ReactIcon from '@site/static/img/react.svg';
 import RokuIcon from '@site/static/img/roku.svg';
+import UplynkIcon from '@site/static/img/uplynk.svg';
 import VuejsIcon from '@site/static/img/vuejs.svg';
 import WebIcon from '@site/static/img/web.svg';
 import WordPressIcon from '@site/static/img/wordpress.svg';
@@ -89,6 +90,8 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
       return <ReactIcon className={clsx(styles.icon, className)} />;
     case 'roku':
       return <RokuIcon className={clsx(styles.icon, className)} />;
+    case 'uplynk':
+      return <UplynkIcon className={clsx(styles.icon, className)} />;
     case 'vuejs':
       return <VuejsIcon className={clsx(styles.icon, className)} />;
     case 'web':
