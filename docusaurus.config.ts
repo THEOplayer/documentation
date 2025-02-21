@@ -28,6 +28,7 @@ const docsConfigBase = {
     'external/web-connectors/*/README.md',
     'external/android-connector/connectors/**/README.md',
     'external/iOS-Connector/Code/**/README.md',
+    'external/iOS-Connector/Code/Uplynk/docs/*.md',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
@@ -293,9 +294,9 @@ const config: Config = {
       const parsedDocPath = parseDocPath(params.filePath);
       const { docPluginId } = parsedDocPath;
       let { docPath } = parsedDocPath;
-      if (docPath.startsWith('external/')) {
+      if (!frontMatter.slug && docPath.startsWith('external/')) {
         // Add a slug to all external doc pages
-        frontMatter.slug ??= docPath
+        frontMatter.slug = docPath
           // Remove extension
           .replace('external/', '')
           .replace(/\.mdx?$/, '')
@@ -318,11 +319,11 @@ const config: Config = {
           .replace(/web-connectors\/([^/]+)\/doc\//, '/connectors/web/$1/')
           .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/CHANGELOG/, '/connectors/android/$1/changelog')
           .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/README/, '/connectors/android/$1/getting-started')
-          .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/doc\//, '/connectors/android/$1/')
+          .replace(/android-connector\/connectors(?:\/[^/]+)*\/([^/]+)\/docs?\//, '/connectors/android/$1/')
           .replace(/iOS-Connector\/CHANGELOG/, '/connectors/ios/changelog')
           .replace(/iOS-Connector\/Code\/([^/]+)-Examples\/README/, '/connectors/ios/$1/examples')
           .replace(/iOS-Connector\/Code\/([^/]+)\/README/, '/connectors/ios/$1/getting-started')
-          .replace(/iOS-Connector\/Code\/([^/]+)\/doc\//, '/connectors/ios/$1/')
+          .replace(/iOS-Connector\/Code\/([^/]+)\/docs?\//, '/connectors/ios/$1/')
           .toLowerCase();
       }
       docPath = docPath.toLowerCase();
