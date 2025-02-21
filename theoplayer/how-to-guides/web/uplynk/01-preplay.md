@@ -95,6 +95,8 @@ More information on certain properties:
 
 - `preplayParameters`: The `preplayParameters` object should have string-key-string-value combinations, which will be used as query parameters for the Preplay API call. Nested objects are not supported.
 - **A Preplay request must include all parameters defined within the [playback request](https://api-docs.uplynk.com/#Setup/Playback-URLs.htm#LiveChannelPURLs), hence these parameters must be included in the THEOplayer source**. This request must also include a digital signature if the 'Require a token for playback' option is enabled in the back-end on the corresponding live channel. (See also : [Signing a Playback URL Tutorial](https://api-docs.uplynk.com/#Tutorials/Signed-Playback-URL-Tutorial.htm))
+  > Note the confusion that the provided link only mentions signing the **playback URL**, even though we are describing using
+  > tokens for the call to the Preplay API. However, this process is also valid for signing the `preplayParameters`.
 - Uplynk specific documentation on the available playback URL query parameters can be found on the Uplynk documentation site under [Customizing Playback via Parameters](https://api-docs.uplynk.com/#Setup/Customizing-Playback.htm).
 - Some parameters can be excluded from the digital signature calculation. These parameters may enable certain use cases (e.g. DVR) and would for this reason be excluded from the digital signature.
 
@@ -114,7 +116,12 @@ player.uplynk.addEventListener('preplayresponse', listener);
 
 Uplynk users often leverage URL signatures (i.e. tokens) to further secure their content -- on top of AES-128 encryption or studio DRM.
 A token is (typically) generated on back-end using an API key and a set of parameters, as described on
-[Signing a Playback URL Tutorial](https://api-docs.uplynk.com/#Tutorials/Signed-Playback-URL-Tutorial.htm). This set of parameters should also be passed along to the `preplayParameters` in an [UplynkSource](pathname:///theoplayer/v8/api-reference/web/interfaces/UplynkSource.html).
+[Signing a Playback URL Tutorial](https://api-docs.uplynk.com/#Tutorials/Signed-Playback-URL-Tutorial.htm).
+
+> Note the confusion that the provided link only mentions signing the **playback URL**, even though we are describing using
+> tokens for the call to the Preplay API. However, this process is also valid for signing the `preplayParameters`.
+
+This set of parameters should also be passed along to the `preplayParameters` in an [UplynkSource](pathname:///theoplayer/v8/api-reference/web/interfaces/UplynkSource.html).
 If you do not configure the `preplayParameters` correctly in relation to your signature parameters, then the Preplay request made by THEOplayer will most likely return an invalid Preplay response, preventing THEOplayer from setting up your stream.
 
 Let's consider a set-up where an Uplynk customer uses both URL signatures and multi-DRM.
