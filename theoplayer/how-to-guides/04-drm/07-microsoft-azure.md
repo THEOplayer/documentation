@@ -96,7 +96,7 @@ theoplayer.source = sourceDescription
 - [PallyCon](15-pallycon.md)
 - [BuyDRM KeyOS](01-buydrm-keyos/00-introduction.md)
 - [Arris Titanium](01-arris-titanium.md)
+- [Uplynk](12-uplynk.md)
 - [Xstream](13-xstream.md)
-- [Verizon Uplynk](12-verizon-uplynk.md)
 - [Vualto VuDRM](11-vualto-vudrm.md)
 - [Azure Media Services - THEOplayer Implementation Sample](https://github.com/Azure-Samples/media-services-3rdparty-player-samples/tree/master/docs/THEOplayer)

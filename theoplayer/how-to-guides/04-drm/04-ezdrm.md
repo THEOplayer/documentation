@@ -101,10 +101,10 @@ The EZDRM connector can be found in [here](https://github.com/THEOplayer/samples
 
 ## Related articles
 
+- [Uplynk](12-uplynk.md)
 - [Xstream](13-xstream.md)
 - [Vualto VuDRM](11-vualto-vudrm.md)
 - [Vimond](10-vimond.md)
-- [Verizon Uplynk](12-verizon-uplynk.md)
 - [Verimatrix MultiRights](09-verimatrix-multirights.md)
 - [PallyCon](15-pallycon.md)
 - [Nagra Conax Contego](08-nagra-conax-contego.md)
