@@ -88,7 +88,7 @@ Below is an (incomplete) list of some common interface event maps.
 
 Note that maintaining the above list manually is unfortunately a no-go because our interfaces evolve.
 This means that you should research your events through our automatically managed API references at [https://docs.theoplayer.com/](https://docs.theoplayer.com/).
-For example, interfaces like VR, TextTrackCueList, VideoTrackList, Verizon Media and Yospace are omitted because manually maintaining this would be too challenging.
+For example, interfaces like VR, TextTrackCueList, VideoTrackList, Uplynk and Yospace are omitted because manually maintaining this would be too challenging.
 
 When doing a custom analytics integration, you should also check our [Metrics](pathname:///theoplayer/v8/api-reference/web/interfaces/Metrics.html) API,
 and our articles on [error handling](../07-miscellaneous/04-error/00-introduction.md).
