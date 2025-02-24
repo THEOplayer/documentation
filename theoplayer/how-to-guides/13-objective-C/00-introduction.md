@@ -8,7 +8,7 @@ We will also dive into some of the changes made to the Swift APIs to accommodate
 #### Getting started
 
 Get the latest THEOplayer iOS SDK. The simplest way to do so is through [Cocoapods](https://github.com/THEOplayer/theoplayer-sdk-ios).
-Starting from version 2.89.0, the THEOplayer iOS SDK comes with Objective-C support! This single framework contains all the declarations available in Swift and Objective-C (except for the Verizon Media APIs which are still only available in Swift).
+Starting from version 2.89.0, the THEOplayer iOS SDK comes with Objective-C support! This single framework contains all the declarations available in Swift and Objective-C (except for the legacy Verizon Media APIs which are still only available in Swift).
 
 To use it, simply import the framework in the header or implementation files like so:
 

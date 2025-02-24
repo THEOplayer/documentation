@@ -104,7 +104,7 @@ theoplayer.getPlayer().setSource(sourceDescription);
 - [Intertrust ExpressPlay](05-intertrust-expressplay.md)
 - [Irdeto](06-irdeto.md)
 - [Microsoft Azure](07-microsoft-azure.md)
+- [Uplynk](12-uplynk.md)
 - [Verimatrix MultiRights](09-verimatrix-multirights.md)
 - [Vimond](10-vimond.md)
 - [Vualto VuDRM](11-vualto-vudrm.md)
-- [Verizon Uplynk](12-verizon-uplynk.md)
