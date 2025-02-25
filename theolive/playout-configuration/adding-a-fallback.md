@@ -56,4 +56,4 @@ For more information, please visit our [API Reference](https://developers.theo.l
 
 Note that the fallback can also easily be set in our management console on the Channel Details page. Scroll down to the **Playout Configurations** section and select the _Fallback_ tab.
 
-![Setting a fallback through the management console](https://files.readme.io/8d77256-Screenshot_2023-06-28_131652.png)
+![Setting a fallback through the management console](../assets/img/8d77256-Screenshot_2023-06-28_131652.png)
