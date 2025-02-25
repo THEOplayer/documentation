@@ -1,0 +1,34 @@
+# Getting started with CMCD on Android
+
+import Intro from '../../shared/cmcd/_getting-started-intro.mdx';
+
+<Intro />
+
+## Usage
+
+To enable CMCD, developers can add a CMCDTransmissionMode inside a SourceDescription.
+
+```kotlin
+TypedSource typedSource = new TypedSource.Builder("<HLS_STREAM_URL>")
+    .cmcdTransmissionMode(CMCDTransmissionMode.HTTP_HEADER)
+    .build();
+SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+The preferred mode of transmission for HTTP requests is to use custom headers, but you can configure the
+transmission mode when creating the CMCD source. For example, to transmit via query arguments:
+
+```kotlin
+TypedSource typedSource = new TypedSource.Builder("<HLS_STREAM_URL>")
+    .cmcdTransmissionMode(CMCDTransmissionMode.QUERY_ARGUMENT)
+    .build();
+SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Remarks
+
+Note that CMCD is only supported with the Media3 integration.
