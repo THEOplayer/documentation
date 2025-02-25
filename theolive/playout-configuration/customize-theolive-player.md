@@ -144,9 +144,3 @@ Below you can find an example of the JSON body:
 Each action that has been described throughout this document can also be accomplished using the management console. When navigating to the channel Details Page, you can select different colors, set an announcement message, a poster image, and a logo.
 
 ![Customization options in the management console](../assets/img/567f3ad-console-section-customize.jpg)
-
-:::note Looking for more player customizations?
-
-As an alternative to using the THEOlive player embed script, it is also possible to self-host a THEOlive NPM player to further customize the player. For more information, you can consult [How to use a self-hosted player (through NPM)](../theolive-through-npm/index.md).
-
-:::
