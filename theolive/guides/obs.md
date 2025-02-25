@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 ---
+
 # Using OBS with THEOlive
 
 This guide will shortly describe how to set up [OBS Studio](https://obsproject.com) correctly so it can be used to stream content to THEOlive.
