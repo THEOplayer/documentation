@@ -34,6 +34,6 @@ Explanation of the sample piece of code above:
 
 In the screenshots below you can see the video always taking up 75% of the screen and thus applying the auto-sizing rules based on the screen width.
 
-![Big screen example. Player takes 75% of the available width.](https://files.readme.io/f1499d0-big-size.PNG)
+![Big screen example. Player takes 75% of the available width.](../assets/img/f1499d0-big-size.PNG)
 
-![Small screen example: player still takes 75% of width and sizes automatically.](https://files.readme.io/7fc1245-small-size.PNG)
+![Small screen example: player still takes 75% of width and sizes automatically.](../assets/img/7fc1245-small-size.PNG)

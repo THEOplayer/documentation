@@ -14,7 +14,7 @@ In your Videon VersaStreamer / EdgeCaster Streaming Dashboard configure the foll
 - Select your Video Input (SDI/HDMI) and Audio Input audio (Embedded Audio/3.5mm Audio). The "Video Input Resolution" will automatically be detected. In the example below this is 1080p25.
 - Click on the "Save" button.
 
-![Defining the input settings](https://files.readme.io/ad14aad-1.Videon_Edgecaster_-_Input_Settings.jpg)
+![Defining the input settings](../assets/img/ad14aad-1.Videon_Edgecaster_-_Input_Settings.jpg)
 
 :::info 🚧 Frame rate and bandwidth
 
@@ -29,7 +29,7 @@ Remember to set the frame rate to the same value as in your THEOlive channel ing
 - Further configure your encoding settings. Select `Lowest`, `Low`, `Normal` or `High` in the Quality/Latency drop-down menu, depending on your preference. Selecting `Lowest` will give you lower quality but also the lowest latency and the other way around for `High` which gives the `Highest` quality but with slightly higher latency.
 - Click on the "Save" button.
 
-![Setting up the video profile](https://files.readme.io/c5767b3-2.Videon_Edgecaster_-_Video_Profile.jpg)
+![Setting up the video profile](../assets/img/c5767b3-2.Videon_Edgecaster_-_Video_Profile.jpg)
 
 ## Set your Audio profile
 
@@ -37,7 +37,7 @@ Remember to set the frame rate to the same value as in your THEOlive channel ing
 - Select your audio encoding settings. In the example below ´MPEG-4 AAC-LC\` has been selected with 128kbps audio bitrate.
 - Click on the "Save" button.
 
-![Setting the audio profile](https://files.readme.io/fad7ad2-3.Videon_Edgecaster_-_Audio_Profile.jpg)
+![Setting the audio profile](../assets/img/fad7ad2-3.Videon_Edgecaster_-_Audio_Profile.jpg)
 
 ## 4. Setting the Outputs
 
@@ -48,4 +48,4 @@ Remember to set the frame rate to the same value as in your THEOlive channel ing
 - Click on the "Save" button.
 - You are now ready to start streaming! Switch on the "Output" by moving the orange button to "On".
 
-![Setting the outputs](https://files.readme.io/15eb115-4.Videon_Edgecaster_-_Output.jpg)
+![Setting the outputs](../assets/img/15eb115-4.Videon_Edgecaster_-_Output.jpg)

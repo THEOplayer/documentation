@@ -19,7 +19,7 @@ In the bearer token that gets sent to us, we expect the following properties to 
 
 When not passing a bearer token for a secured channel, the request will be rejected.
 
-![token based security](https://files.readme.io/dcdfc37-token_security.png)
+![token based security](../../assets/img/dcdfc37-token_security.png)
 
 ## Enable or disable token security for an alias
 
@@ -29,7 +29,7 @@ When enabling for the first time, you have to pass the `key` property in the bod
 
 If you're using the THEOlive management console, you can navigate to a player details page and select the alias you want to enable/disable token security for. When enabling, please pass the correct shared or public key to use. Don't forget to confirm your changes by hitting the save button!
 
-![Managing token security in the console](https://files.readme.io/51376b6-token.png)
+![Managing token security in the console](../../assets/img/51376b6-token.png)
 
 ## Passing headers with the THEOlive npm player
 

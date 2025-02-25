@@ -36,7 +36,7 @@ Passing this JSON body will result in the player below:
 - a blue color for the control bar icons (pause, mute, ...) = the secondary color
 - a purple color for the background of the control bar = the tertiary color
 
-![Example with the colors defined in the JSON object above](https://files.readme.io/762eb40-colors.png)
+![Example with the colors defined in the JSON object above](../assets/img/762eb40-colors.png)
 
 In case you would only like to change the secondary color, for example, you can pass the following JSON body:
 
@@ -69,7 +69,7 @@ In the JSON object below, a new announcement message has been set, and the locat
 
 This will result in the following player when the live stream isn't started yet:
 
-![Pre-live player settings example with an announcement and poster image](https://files.readme.io/834fd73-waiting-example.PNG)
+![Pre-live player settings example with an announcement and poster image](../assets/img/834fd73-waiting-example.PNG)
 
 If you want to delete the poster image, you can just set an empty string for the `posterImg` property:
 
@@ -95,7 +95,7 @@ You can pass a logo that will be displayed at the top-left of the video. Setting
 
 The outcome of this call is depicted below:
 
-![Example with our own THEOlive logo](https://files.readme.io/0ab3624-1b.PNG)
+![Example with our own THEOlive logo](../assets/img/0ab3624-1b.PNG)
 
 If you want to remove the logo, you can just set an empty string as value for the `logo` property:
 
@@ -143,7 +143,7 @@ Below you can find an example of the JSON body:
 
 Each action that has been described throughout this document can also be accomplished using the management console. When navigating to the channel Details Page, you can select different colors, set an announcement message, a poster image, and a logo.
 
-![Customization options in the management console](https://files.readme.io/567f3ad-console-section-customize.jpg)
+![Customization options in the management console](../assets/img/567f3ad-console-section-customize.jpg)
 
 :::note Looking for more player customizations?
 
