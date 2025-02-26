@@ -5,6 +5,75 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.12.0 (2025/02/24)
+
+### General
+
+#### 🐛 Issues
+
+- Fixed an issue where text track cues would not be removed for THEOlive / HESP streams.
+
+### Web
+
+#### ✨ Features
+
+- Added the THEOads api via `player.theoads`. This is API specific to the [THEOads](https://www.theoplayer.com/product/theoads) feature that exposes information about playing and scheduled interstitials and allows configuration of THEOads specific properties.
+- Added support for [Millicast frame metadata](https://docs.dolby.io/streaming-apis/docs/frame-metadata). When setting `metadata` to `true` in `MillicastSource.connectOptions`, all received frame metadata is added to a metadata text track with type `millicast`.
+- Rebranded the existing `verizon-media` integration and the Verizon Media player configuration to the `uplynk` integration and the Uplynk player configuration for consistency across the SDKs.
+- Uplynk ad information is now also exposed on the general `player.ads` API.
+- Added support for THEOads streams while playing in native fullscreen.
+
+#### ⚡ Improvements
+
+- Added `MillicastSource.apiUrl` to allow configuration of a custom Millicast API endpoint. 
+
+#### 🐛 Issues
+
+- Fixed an issue where incorrect `durationchange` events were dispatched when playing a THEOads ad break in native PiP.
+- Fixed an issue where the `currentTime` would not be consistent for THEOads ad breaks played in native PiP.
+- Fixed an issue where the duration of ads when using THEOads was always undefined.
+- Fixed an issue where the player would sometimes crash with an internal error when seeking into the last period of an Uplynk MPEG-DASH stream when there's an unplayed midroll that still needed to be played.
+- Fixed an issue where ads from a custom SSAI integration would not be available through the Ads API when THEOads is also enabled.
+
+#### 👎 Deprecations
+
+- Deprecated `player.ads.theoads.replaceAdTagParameters` in favor of `player.theoads.replaceAdTagParameters`.
+- Deprecated the `verizon-media` integration and the Verizon Media player configuration in favor of the `uplynk` integration and the Uplynk player configuration.
+
+### Android
+
+#### ✨ Features
+
+- Added support for image overlays in THEOads.
+- Added support for playing sources cached through the Cache API using the Media3 integration.
+- Handle `ICON_TAPPED` and `ICON_FALLBACK_IMAGE_CLOSED` Google IMA events on Connected TVs by focusing the ad UI when an icon is tapped and resuming ad play-out in case the user has closed the icon fallback image dialog. 
+- Added support for `TypedSource.liveOffset` in the Media3 integration.
+
+#### ⚡ Improvements
+
+- Updated the Google IMA dependency from 3.33.0 to 3.36.0.
+
+#### 🐛 Issues
+
+- Fixed `seekable.end(0)` being too close to the live edge in the Media3 integration.
+- Fixed the default live offset for MPEG-DASH streams in the Media3 integration to be aligned with the legacy player.
+- Fixed an issue where `SeekingEvent.currentTime` returned the current time *before* seeking instead of *after* seeking in the Media3 integration.
+- Fixed an issue where calling `Player.setAspectRatio()` before setting the first source would have no effect.
+
+### iOS
+
+#### 🐛 Issues
+
+- Disabled picture-in-picture when paused on a THEOlive stream to prevent encountering an AVFoundation issue where playback would not be able to resume from PiP.
+- Fixed an issue where playing a THEOads stream would not dispatch timeupdate events during ad playback.
+- Fixed an issue where doing consecutive source changes in quick succession would result in an indefinite freeze on THEOlive sources.
+
+### tvOS
+
+#### 🐛 Issues
+
+- Fixed an issue that prevented playing IMA ads on tvOS.
+
 ## 🚀 8.11.0 (2025/02/08)
 
 ### Web
