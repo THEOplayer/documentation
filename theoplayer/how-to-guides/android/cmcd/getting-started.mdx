@@ -9,24 +9,28 @@ import Intro from '../../shared/cmcd/_getting-started-intro.mdx';
 To enable CMCD, developers can add a CMCDTransmissionMode inside a SourceDescription.
 
 ```kotlin
-TypedSource typedSource = new TypedSource.Builder("<HLS_STREAM_URL>")
+val typedSource = TypedSource.Builder("<HLS_STREAM_URL>")
     .cmcdTransmissionMode(CMCDTransmissionMode.HTTP_HEADER)
-    .build();
-SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
-    .build();
-theoplayer.getPlayer().setSource(sourceDescription);
+    .build()
+
+val sourceDescription = SourceDescription.Builder(typedSource)
+    .build()
+
+theoPlayerView.player.source = sourceDescription
 ```
 
 The preferred mode of transmission for HTTP requests is to use custom headers, but you can configure the transmission mode when creating the CMCD source. For example, to transmit via query arguments:
 
 ```kotlin
-TypedSource typedSource = new TypedSource.Builder("<HLS_STREAM_URL>")
+val typedSource = TypedSource.Builder("<HLS_STREAM_URL>")
     // highlight-next-line
     .cmcdTransmissionMode(CMCDTransmissionMode.QUERY_ARGUMENT)
-    .build();
-SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
-    .build();
-theoplayer.getPlayer().setSource(sourceDescription);
+    .build()
+
+val sourceDescription = SourceDescription.Builder(typedSource)
+    .build()
+
+theoPlayerView.player.source = sourceDescription
 ```
 
 ## Remarks
