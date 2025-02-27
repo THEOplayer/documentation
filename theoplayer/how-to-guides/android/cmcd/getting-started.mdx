@@ -21,6 +21,7 @@ The preferred mode of transmission for HTTP requests is to use custom headers, b
 
 ```kotlin
 TypedSource typedSource = new TypedSource.Builder("<HLS_STREAM_URL>")
+    // highlight-next-line
     .cmcdTransmissionMode(CMCDTransmissionMode.QUERY_ARGUMENT)
     .build();
 SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
