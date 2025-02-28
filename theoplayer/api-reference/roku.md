@@ -146,7 +146,7 @@ There are several player events being emitted.
 - `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
 - `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
 - `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
-- `destroy`: Fired when the the player is destroyed, there is no extra data emitted along
+- `destroy`: Fired when the player is destroyed, there is no extra data emitted along
 - `durationchange`: Fired when the duration changes, the extra data emitted is the duration
 - `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
 - `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
