@@ -11,42 +11,48 @@ The attributes, methods and events.
 
 ## Attributes
 
-| Name        | Type                        | Default | Access Permission | Description                                                                                                                                                                                                                                                                                |
-| ----------- | --------------------------- | ------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| audioTracks | array of associative arrays | []      | read              | Provides information about audio tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track name, language - track language, enabled - true if track is current track                                                   |
-| controls    | boolean                     | true    | read,write        | Allows to enable or disable player controls ( `true` to show controls, `false` to hide controls).                                                                                                                                                                                          |
-| currentTime | integer                     |         | read,write        | Current timestamp of video.                                                                                                                                                                                                                                                                |
-| duration    | integer                     |         | read              | Duration of video.                                                                                                                                                                                                                                                                         |
-| ended       | boolean                     | false   | read              | Whether playback of the media is ended.                                                                                                                                                                                                                                                    |
-| loop        | boolean                     | false   | read,write        | Whether playback of the media is looped.                                                                                                                                                                                                                                                   |
-| paused      | boolean                     |         | read              | Whether the player is paused.                                                                                                                                                                                                                                                              |
-| poster      | string                      |         | read,write        | The poster of the current source.                                                                                                                                                                                                                                                          |
-| seeking     | boolean                     |         | read              | `true` when player is seeking, `false` when player is not seeking now.                                                                                                                                                                                                                     |
-| source      | Source Description          |         | read,write        | Describes source of current video.                                                                                                                                                                                                                                                         |
-| src         | string                      |         | read              | The current URL of the media resource.                                                                                                                                                                                                                                                     |
-| textTracks  | array of associative arrays | []      | read              | Provides information about Closed Captions tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track description, language - track language,mode - determines track state, available values: disabled, showing, hidden |
+| Name | Type | Default | Access Permission | Description |
+|--|--|--|--|--|
+| audioTracks | array of associative arrays | [] | read | Provides information about audio tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track name, language - track language, enabled - true if track is current track |
+| controls | boolean | true | read,write | Allows to enable or disable player controls ( `true` to show controls, `false` to hide controls). |
+| currentTime | integer |  | read,write | Current timestamp of video. |
+| duration | integer |  | read | Duration of video. |
+| enableTrickPlay | boolean | true | read,write | Whether trick playback of the media is enabled, and whether the remote buttons will allow trickplay. NOTE: `controls` must be set to `true` for this to have any effect. |
+| ended | boolean | false | read | Whether playback of the media is ended. |
+| loop | boolean | false | read,write | Whether playback of the media is looped. |
+| paused | boolean |  | read | Whether the player is paused. |
+| poster | string |  | read,write | The poster of the current source. |
+| seeking | boolean |  | read | `true` when player is seeking, `false` when player is not seeking now. |
+| source | Source Description |  | read,write | Describes source of current video. |
+| src | string |  | read | The current URL of the media resource. |
+| textTracks | array of associative arrays | [] | read | Provides information about Closed Captions tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track description, language - track language,mode - determines track state, available values: disabled, showing, hidden |
 
 ### Source Description
 
 The following key/value pairs are supported on the `source` attribute of the `THEOsdk:THEOplayer` :
 
-| Name                | Type               | Description                                                                                                                                                                                                                                               |
-| ------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name                | Type               | Description                                                  |
+| ------------------- | ------------------ | ------------------------------------------------------------ |
 | sources             | roArray            | An array of Typed Sources. When specifying multiple source descriptions, the sources attribute will be interpreted as a playlist where the first typed source will play first and subsequent sources will play when its preceding typed source has ended. |
-| drmHttpAgentHeaders | roAssociativeArray | A key-value dictionary that contains additional HTTP headers that will be sent for DRM key/license requests. The keys represent the HTTP header names and the values represent their corresponding values.                                                |
+| poster              | string             | The URL of an image to use as the poster for the media source. This is used for SDPosterUrl, HDPosterUrl, and FHDPosterUrl. |
+| live                | boolean            | Whether the asset is live or not. |
+| drmHttpAgentHeaders | roAssociativeArray | A key-value dictionary that contains additional HTTP headers that will be sent for DRM key/license  requests. The keys represent the HTTP header names and the values represent their corresponding values. |
 
 ### Typed Source
 
 The following key/value pairs are supported on the `sources` attribute of a Source Description:
 
-| **Name**          | **Type**           | **Description**                                                                                                            |
-| :---------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| src               | String             | The URL of the media resource.                                                                                             |
+| **Name**          | **Type**           | **Description**                                              |
+| :---------------- | ------------------ | ------------------------------------------------------------ |
+| src               | String             | The URL of the media resource.                               |
 | type              | String             | The content type (MIME type) of the media resource. Possible values are `application/dash+xml` and `application/x-mpegURL` |
-| contentProtection | Content Protection | Parameters for DRM playback                                                                                                |
-| SDBifUrl          | String             | "Base Index Frames" URL for SD trick mode.                                                                                 |
-| HDBifUrl          | String             | "Base Index Frames" URL for HD trick mode.                                                                                 |
-| FHDBifUrl         | String             | "Base Index Frames" URL for FHD trick mode.                                                                                |
+| title             | String             | The title of the media resource.                             |
+| description       | String             | The description of the media resource.                       |
+| playStart         | Number             | The position in the stream the user starts playback at. Use negative numbers to offset from the live edge.               |
+| contentProtection | Content Protection | Parameters for DRM playback                                  |
+| SDBifUrl          | String             | "Base Index Frames" URL for SD trick mode.                   |
+| HDBifUrl          | String             | "Base Index Frames" URL for HD trick mode.                   |
+| FHDBifUrl         | String             | "Base Index Frames" URL for FHD trick mode.                  |
 
 "Base Index Frames" or BIF, is an archive file format that contains a set of still images, also known as "trick play thumbnails", supporting enhanced fast-forward and rewind modes during video playback.
 
@@ -54,18 +60,18 @@ The following key/value pairs are supported on the `sources` attribute of a Sour
 
 The following key/value pairs are supported on the `contentProtection` attribute of a Typed Source:
 
-| Name        | Type           | Description                                                                                                                                                     |
-| ----------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| integration | String         | _Optional attribute._ The key system the player should use. Possible values are `playready` , `widevine`.                                                       |
-| licenseUrl  | String         | The licence acquisition URL                                                                                                                                     |
+| Name        | Type           | Description                                                  |
+| ----------- | -------------- | ------------------------------------------------------------ |
+| integration | String         | *Optional attribute.* The key system the player should use. Possible values are `playready` , `widevine`. |
+| licenseUrl  | String         | The licence acquisition URL                                  |
 | certificate | String         | The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. Leave this unset unless Widevine is used for DRM. |
-| drmParams   | DRM Parameters | An alternative way to set parameters for DRM playback. _This attribute is only used when the `integration` attribute is not set._                               |
+| drmParams   | DRM Parameters | An alternative way to set parameters for DRM playback. *This attribute is only used when the `integration` attribute is not set.* |
 
 **Example DRM source with VuDRM specific headers**
 
 To play videos protected using VUDRM, you need to supply a token. Replace the token `vualto-demo|2018-06-19T09:18:24Z|YSnJPmEceo` in the code below with your own token as well as the associated values of the keys `src` and `licenseUrl`.
 
-```brightscript
+```
 vuDrmSource = {
   sources: [
     {
@@ -88,62 +94,64 @@ vuDrmSource = {
 
 The following key/value pairs are supported on the `drmParams` attribute of a Content Protection:
 
-| Name             | Type   | Description                                                                                                                                                                                                                                                                                                                                                        |
-| ---------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| KeySystem        | String | "playready" or "widevine". This value is case-insensitive. The default is an empty string.                                                                                                                                                                                                                                                                         |
-| licenseRenewURL  | String | A URL location for sending license renewal requests. If not specified, the Roku OS will send renewal requests to the URL specified in the licenseServerURL. This only works with Widevine.                                                                                                                                                                         |
-| licenseServerURL | String | A URL location of a license server. This URL may include CGI parameters.                                                                                                                                                                                                                                                                                           |
-| serializationURL | String | A server address used for device provisioning                                                                                                                                                                                                                                                                                                                      |
-| serviceCert      | String | The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. Leave this unset unless Widevine is used for DRM.                                                                                                                                                                                                    |
-| lic_acq_window   | String | The maximum amount of time (in milliseconds) that a channel waits before rotating its Widevine DRM keys. The channel can generate a random wait time between 0 and the value specified in the **lic_acq_window** field, and use the random wait time to instruct when the Video node should make its next Widevine license request. _Available since Roku OS 10.5_ |
+| Name             | Type   | Description                                                  |
+| ---------------- | ------ | ------------------------------------------------------------ |
+| KeySystem        | String | "playready" or "widevine". This value is case-insensitive. The default is an empty string. |
+| licenseRenewURL  | String | A URL location for sending license renewal requests. If not specified, the Roku OS will send renewal requests to the URL specified in the licenseServerURL. This only works with widevine. |
+| licenseServerURL | String | A URL location of a license server. This URL may include CGI parameters. |
+| serializationURL | String | A server address used for device provisioning                |
+| serviceCert      | String | The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. Leave this unset unless Widevine is used for DRM. |
+| lic_acq_window   | String | The maximum amount of time (in milliseconds) that a channel waits before rotating its Widevine DRM keys. The channel can generate a random wait time between 0 and the value specified in the **lic_acq_window** field, and use the random wait time to instruct when the Video node should make its next Widevine license request. *Available since Roku OS 10.5* |
 
 ## Verizon Media specific Attributes
 
-| name   | type                       | description                                                   |
-| ------ | -------------------------- | ------------------------------------------------------------- |
-| ads    | verizonMediaAds            | Verizon media ads API, contains ads and ad breaks information |
-| assets | array of verizonMediaAsset | Verizon media assets API, contains assets information         |
+| name | type | description |
+| -- | -- | --|
+| ads | verizonMediaAds | Verizon media ads API, contains ads and ad breaks information |
+| assets | array of verizonMediaAsset | Verizon media assets API, contains assets information |
 
 ## Methods
 
-| Method                                                                          | Description                                                                                                                                            |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| addEventListener                                                                |                                                                                                                                                        |
-| destroy                                                                         | Destroy the player.                                                                                                                                    |
-| pause                                                                           | Pause playback.                                                                                                                                        |
-| play                                                                            | Start playback.                                                                                                                                        |
-| removeEventListener                                                             |                                                                                                                                                        |
-| setCopyGuardManagementSystem(cgms as Integer)                                   | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted. |
-| setDestinationRectangle(rect \{w,h,x,y} as roAssociativeArray)                  | Sets width, height, x, y of player.                                                                                                                    |
-| setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer) | Sets width, height, x, y of player.                                                                                                                    |
-| setMaxVideoResolution(width as Integer, height as Integer)                      | Sets maximum video resolution.                                                                                                                         |
+| Method | Description |
+|--|--|
+| addEventListener | Add a listener for the specified player event. |
+| destroy| Destroy the player. |
+| getVideoNode | Returns the interior Roku video node.  |
+| pause | Pause playback. |
+| play | Start playback. |
+| removeEventListener | Remove the specified listener for the specified player event. |
+| setCopyGuardManagementSystem(cgms as Integer) | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted. |
+| setDestinationRectangle(rect {w,h,x,y} as roAssociativeArray) | Sets width, height, x, y of player. |
+| setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer) | Sets width, height, x, y of player. |
+| setMaxVideoResolution(width as Integer, height as Integer) | Sets maximum video resolution. |
 
 ## Verizon Media specific Methods
 
-| Method | Description                                                                                                     |
-| ------ | --------------------------------------------------------------------------------------------------------------- |
+| Method | Description |
+|--|--|
 | skipAd | Skips Ad break if it is possible. This method is assigned directly to Player, due to roku specific architecture |
+
 
 ## Events
 
 The event consists of:
 
-- date (timestamp) of occurrence
-- type (string) of the event
-- extra data
+-   date (timestamp) of occurrence
+-   type (string) of the event
+-   extra data
 
 There are several player events being emitted.
 
-- `addedaudiotrack`: Fired when audio track has been added
-- `addedtexttrack`: Fired when text track has been added
-- `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
-- `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
-- `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
-- `destroy`: Fired when the player is destroyed, there is no extra data emitted along
-- `durationchange`: Fired when the duration changes, the extra data emitted is the duration
-- `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
-- `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
-- `error`: Fired when an error occurs, the extra data emitted is an associative array e.g.:
+-   `addedaudiotrack`: Fired when audio track has been added
+-   `addedtexttrack`: Fired when text track has been added
+-   `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
+-   `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
+-   `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
+-   `destroy`: Fired when the the player is destroyed, there is no extra data emitted along
+-   `durationchange`: Fired when the duration changes, the extra data emitted is the duration
+-   `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
+-   `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
+-   `error`: Fired when an error occurs, the extra data emitted is an associative array e.g.:
 
 ```brightscript
 {
@@ -155,14 +163,14 @@ There are several player events being emitted.
 }
 ```
 
-- `loadeddata`: Fired when the player can render the media data at the current playback position for the first time, the extra data emitted is the currentTime
-- `loadedmetadata`: Fired when the player determines the duration and dimensions of the media resource, the extra data emitted is the currentTime
-- `pause`: Fired when the "paused" changes to true, the extra data emitted is the currentTime
-- `play`: Fired when the "paused" changes to false, the extra data emitted is the currentTime
-- `playing`: Fired when playback is ready to start after having been paused or delayed due to lack of media data, the extra data emitted is the currentTime
-- `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
-- `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime
-- `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:
+-   `loadeddata`: Fired when the player can render the media data at the current playback position for the first time, the extra data emitted is the currentTime
+-   `loadedmetadata`: Fired when the player determines the duration and dimensions of the media resource, the extra data emitted is the currentTime
+-   `pause`: Fired when the "paused" changes to true, the extra data emitted is the currentTime
+-   `play`: Fired when the "paused" changes to false, the extra data emitted is the currentTime
+-   `playing`: Fired when playback is ready to start after having been paused or delayed due to lack of media data, the extra data emitted is the currentTime
+-   `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
+-   `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime
+-   `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:
 
 ```brightscript
 {
@@ -185,14 +193,14 @@ There are several player events being emitted.
 }
 ```
 
-- `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
+-   `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
 
 ## Verizon Media specific Events
 
 all events contain following data:
 
-- `date` (timestamp) of occurrence
-- `type` (string) of the event
+-   `date` (timestamp) of occurrence
+-   `type` (string) of the event
 
 ### ads events:
 
@@ -215,13 +223,13 @@ all ads events contain additional field `ad` of type VerizonMediaAd e.g.:
 }
 ```
 
-- `adbegin `: fired when an ad begins
-- `adcomplete`: fired when ad is completed
-- `adend`: fired when ad ends
-- `removead`: fired when ad is removed
-- `adfirstquartile`: fired when the ad reaches the first quartile
-- `admidpoint`: fired when the ad reaches the midpoint
-- `adthirdquartile`: fired when the ad reaches the third quartile
+-   `adbegin `: fired when an ad begins
+-   `adcomplete`: fired when ad is completed
+-   `adend`: fired when ad ends
+-   `removead`: fired when ad is removed
+-   `adfirstquartile`: fired when the ad reaches the first quartile
+-   `admidpoint`: fired when the ad reaches the midpoint
+-   `adthirdquartile`: fired when the ad reaches the third quartile
 
 ### ad breaks events:
 
@@ -252,12 +260,12 @@ all ads events contain additional field `adBreak` of type VerizonMediaAdBreak e.
 }
 ```
 
-- `adbreakbegin`: fired when ad break begins
-- `adbreakend`: fired when ad break ends
-- `updateadbreak`: fired when the ad break is updated
-- `adbreakskip`: fired when ad break is skipped
-- `addadbreak`: fired when ad break is added
-- `removeadbreak`: fired when ad break is removed
+-   `adbreakbegin`: fired when ad break begins
+-   `adbreakend`: fired when ad break ends
+-   `updateadbreak`: fired when the ad break is updated
+-   `adbreakskip`: fired when ad break is skipped
+-   `addadbreak`: fired when ad break is added
+-   `removeadbreak`: fired when ad break is removed
 
 ### assets events:
 
@@ -307,14 +315,14 @@ all assets events contain additional field `asset` of type VerizonMediaAsset e.g
 }
 ```
 
-- `addasset`: fired when asset has been added
-- `assetinforesponse`: fired when an asset info response is received. This event does not contain `asset` field but `response` VerizonMediaAssetInfoResponse.
-- `removeasset`: fired when asset has been removed
+-   `addasset`: fired when asset has been added
+-   `assetinforesponse`: fired when an asset info response is received. This event does not contain `asset` field but `response` VerizonMediaAssetInfoResponse.
+-   `removeasset`: fired when asset has been removed
 
 ### ping events:
 
-- `pingerror`: fired when a Ping error has been received. Contains additional `error` (string) field.
-- `pingresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPingResponse field e.g.:
+-   `pingerror`: fired when a Ping error has been received. Contains additional `error` (string) field.
+-   `pingresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPingResponse field e.g.:
 
 ```brightscript
 {
@@ -347,7 +355,7 @@ all assets events contain additional field `asset` of type VerizonMediaAsset e.g
 
 ### preplay events:
 
-- `preplayresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPreplayResponse field e.g.:
+-   `preplayresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPreplayResponse field e.g.:
 
 ```brightscript
 {
