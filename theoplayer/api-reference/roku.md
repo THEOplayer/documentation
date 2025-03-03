@@ -121,7 +121,7 @@ The following key/value pairs are supported on the `drmParams` attribute of a Co
 | play                                                                            | Start playback.                                                                                                                                        |
 | removeEventListener                                                             | Remove the specified listener for the specified player event.                                                                                          |
 | setCopyGuardManagementSystem(cgms as Integer)                                   | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted. |
-| setDestinationRectangle(rect {w,h,x,y} as roAssociativeArray)                   | Sets width, height, x, y of player.                                                                                                                    |
+| setDestinationRectangle(rect \{w,h,x,y} as roAssociativeArray)                  | Sets width, height, x, y of player.                                                                                                                    |
 | setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer) | Sets width, height, x, y of player.                                                                                                                    |
 | setMaxVideoResolution(width as Integer, height as Integer)                      | Sets maximum video resolution.                                                                                                                         |
 
