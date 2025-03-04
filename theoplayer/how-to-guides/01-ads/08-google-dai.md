@@ -303,7 +303,7 @@ Then, you need to include the Google DAI (Interactive Media Ads SDK) framework t
 
 Step 1: Download [Google DAI (Interactive Media Ads SDK) framework](https://developers.google.com/interactive-media-ads/docs/sdks/ios/dai/download)
 
-Step 2: Check [How to Configure Framework Section to add Google DAI Framework](../../getting-started/01-sdks/03-ios/00-getting-started.md)
+Step 2: Check [How to Configure Framework Section to add Google DAI Framework](../../getting-started/01-sdks/03-ios/00-getting-started.mdx)
 
 Finally, add a Google DAI ad configuration to the sources.
 

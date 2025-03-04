@@ -22,7 +22,7 @@ import THEOplayerGoogleCastIntegration
 
 As shown in the previous section, importing additional integration modules can be done by simply adding the dependency to your swift source file.
 
-For more information on how to fetch the dependencies to your Xcode project, [please check the getting started guide.](./00-getting-started.md)
+For more information on how to fetch the dependencies to your Xcode project, [please check the getting started guide.](./00-getting-started.mdx)
 
 **Important Note:**
 It is required to keep the THEOplayer core SDK and all the required feature modules on the **same** version number.

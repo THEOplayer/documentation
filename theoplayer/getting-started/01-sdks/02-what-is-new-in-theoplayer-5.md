@@ -102,7 +102,7 @@ Dropping the middle layer and relying only on native APIs gives us the possibili
 
 ### Getting started
 
-You can follow our getting started guides for [Android](./02-android/00-getting-started.mdx) and for [iOS](./03-ios/00-getting-started.md)
+You can follow our getting started guides for [Android](./02-android/00-getting-started.mdx) and for [iOS](./03-ios/00-getting-started.mdx)
 
 ### Migration from 4.x?
 
