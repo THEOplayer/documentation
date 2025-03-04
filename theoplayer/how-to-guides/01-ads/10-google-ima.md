@@ -66,7 +66,7 @@ The usage of Google IMA differs across the two Android-based SDKs.
 1. The Android SDK requires you to add `GoogleImaIntegration`.
 2. The Legacy Android SDK (4.12.x) requires you to configure the `THEOplayerConfig` correctly.
 
-#### Android SDK
+#### Current Version
 
 Using Google IMA in the Android SDK consists of 3 steps:
 
@@ -192,7 +192,13 @@ SourceDescription sourceDescription = new SourceDescription.Builder()
 playerView.getPlayer().setSource(sourceDescription);
 ```
 
-### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
+### iOS/tvOS SDK
+
+#### Current Version
+
+The documentation of the current version [can be found at this URL](https://github.com/THEOplayer/theoplayer-sdk-apple/tree/master/docsTHEOplayer-Integration-GoogleIMA/README.md).
+
+#### Legacy iOS/tvOS SDK (4.12.x)
 
 To use Google IMA in the iOS SDK,
 
@@ -204,14 +210,14 @@ An example for the iOS SDK is available [here](https://github.com/THEOplayer/sam
 
 Note that some [limitations](#limitations) may apply.
 
-#### Include the IMA SDK
+##### Include the IMA SDK
 
 Similar to how you add the THEOplayer "framework" (i.e. SDK) in your Xcode,
 you must also add the Google IMA "framework" (i.e. SDK) in your Xcode.
 
 You can find the Google IMA iOS SDK at [here](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side/download), which you will need to [manually download and install](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side#manually_downloading_and_installing_the_sdk). Alternatively, you can use Cocoapods as demonstrated [here](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Google-IMA).
 
-#### Set useNativeIma to true
+##### Set useNativeIma to true
 
 Google IMA has to be enabled in the `THEOplayerConfiguration`, as demonstrated by the snippet below.
 
@@ -225,7 +231,7 @@ If you're using the tvOS SDK, then it's sufficient to create an empty `AdsConfig
 let playerConfig = THEOplayerConfiguration(chromeless: false, ads: AdsConfiguration())
 ```
 
-#### Use a GoogleImaAdDescription
+##### Use a GoogleImaAdDescription
 
 You have to use a `GoogleImaAdDescription` instead of a `THEOAdDescription`.
 The snippet below demonstrates how you could schedule a pre-roll VAST ad.
