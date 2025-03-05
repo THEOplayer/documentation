@@ -17,7 +17,7 @@ The API reference is available through the following links:
 
 Use the API as demonstrated below:
 
-#### Web SDK
+### Web SDK
 
 ```javascript
 // const player = new THEOplayer.Player(...)
@@ -51,7 +51,7 @@ if (chromecastState != 'unavailable') {
 }
 ```
 
-#### Android SDK
+### Android SDK
 
 ```java
 // Verify the Cast dependency is present in your build.gradle file.
@@ -70,36 +70,90 @@ theoplayerView.getCast().getChromecast().addEventListener(ChromecastEventTypes.S
 });
 ```
 
-#### iOS SDK
+### iOS SDK
+
+To use Google Cast, also known as Chromecast, with the THEOplayer iOS SDK, the **THEOplayer GoogleCast Integration** should be integrated. The integration is a lightweight module written in Swift, to enable casting playback from an iOS device to a receiver application.
+
+#### Installation
+
+The THEOplayer GoogleCast integration is published on the following package managers:
+
+##### Cocoapods
+
+Simply add the following to your project's Podfile:
+
+```ruby
+pod 'THEOplayer-Integration-GoogleCast'
+```
+
+The above entry automatically manages the fetching of the GoogleCast SDK dependency.
+
+In case where the integrator would want to manage fetching a specific version of the GoogleCast SDK, then replace the Podfile entry with:
+
+```ruby
+pod 'THEOplayer-Integration-GoogleIMA/Base'
+pod 'google-cast-sdk-dynamic-xcframework', '4.8.3' # specify the desired version
+```
+
+##### Swift Package Manager
+
+Please check the [installation instruction found here](https://github.com/THEOplayer/theoplayer-sdk-apple/README.md#installation)
+
+:::warning
+This will not get the GoogleCast SDK, but only the THEOplayer GoogleCast integration. You need to manage fetching the GoogleCast SDK dependency.
+:::
+
+#### Import
+
+Import the framework in the source files where it will be used:
 
 ```swift
-private func setupTheoplayer() {
-    // player = THEOplayer(...)
-    let chromecastState = theoplayer.cast?.chromecast?.state
-    let isCasting = theoplayer.cast?.chromecast?.casting
-    // ...
-    // if (want to start Chromecast)
-        theoplayer.cast?.chromecast?.start()
-    // if (want to stop Chromecast)
-        theoplayer.cast?.chromecast?.stop()
-    // ...
-    theoplayer.cast?.chromecast?.addEventListener(type: ChromecastEventTypes.STATE_CHANGE, listener: onStateChange)
-}
-
-private func onStateChange(event: ChromecastStateChangeEvent) {
-    if (event.state == PlayerCastState.available) {
-        // show Chromecast available icon
-    } else if (event.state == PlayerCastState.connected) {
-        // show Chromecast connected icon
-    } else if (event.state == PlayerCastState.connecting) {
-        // show Chromecast connecting icon
-    } else if (event.state == PlayerCastState.unavailable) {
-       // show Chromecast unavailable icon
-    }
-    print(event.state)
-    print(self.player.cast?.chromecast?.casting)
-}
+import THEOplayerGoogleCastIntegration
 ```
+
+You will also need the THEOplayer core SDK since the THEOplayer GoogleCast integration extends its functionality.
+<br/>To import the THEOplayer core SDK framework add:
+
+
+```swift
+import THEOplayerSDK
+```
+
+#### Usage
+
+First set the context in your `AppDelegate` file's `didFinishLaunchingWithOptions` method:
+
+```swift
+THEOplayerGoogleCastIntegration.CastIntegrationHelper.setGCKCastContextSharedInstanceWithDefaultCastOptions()
+```
+
+:::note
+The above method will set the options for `GCKCastContext` with a CAF receiver application. If a custom context must be set, instead of calling the `setGCKCastContextSharedInstanceWithDefaultCastOptions` method, the implementation should specify an `GCKDiscoveryCriteria` in the context with an `applicationID` parameter. You can find the default THEOplayer CAF V3 default application ID at `CastIntegrationHelper.defaultV3ReceiverApplicationID`.
+:::
+
+:::info
+The THEOplayer Google Cast integration only supports CAF receivers.
+:::
+
+Second, you will need to provide some privacy permissions and network discovery allowances. For more information on this, please check the [following documentation about permissions and discovery.](https://developers.google.com/cast/docs/ios_sender/permissions_and_discovery)
+
+After initializing your `THEOplayer` instance, initialize the integration and pass it to the `THEOplayer` instance:
+
+```swift
+let configBuilder = THEOplayerConfigurationBuilder()
+configBuilder.license = "your_theoplayer_license"
+let theoplayer = THEOplayer(configuration: configBuilder.build()
+
+let castConfiguration: CastConfiguration = CastConfiguration(strategy: .auto)
+let castIntegration: THEOplayerSDK.Integration = GoogleCastIntegrationFactory.createIntegration(on: theoplayer, with: castConfiguration)
+theoplayer.addIntegration(castIntegration)
+```
+
+:::info
+Additional APIs can be found on the `castIntegration` or `theoplayer.cast.chromecast` endpoints.
+:::
+
+<br/>For more extensive example on how to implement GoogleCast with THEOplayer, please check [this sample app](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Native-GoogleCast).
 
 ## Related articles
 
