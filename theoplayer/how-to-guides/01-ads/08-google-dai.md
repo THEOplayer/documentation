@@ -220,10 +220,12 @@ theoplayerView.player.source = SourceDescription.Builder(
 
 ### Notes
 
-The available ad events are different between the Android SDK and the Legacy Android SDK (4.12.x).
-More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
+The Google DAI integration exposes events through the Ads API. More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
-The [GoogleDaiIntegration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) instance exposes a number of methods. For example:
+The integration exposes a number of additional methods.
+These are available directly on the [`GoogleDaiIntegration`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) object,
+or indirectly through `player.ads.dai` (only for Kotlin).
+For example:
 
 - [requestStream(StreamRequest, AdsRenderingSettings)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
 - [contentTimeForStreamTime(double)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
