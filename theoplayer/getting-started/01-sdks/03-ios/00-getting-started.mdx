@@ -14,7 +14,9 @@ After creating your license, you can copy its license string to your clipboard a
 
 ![](https://cdn.theoplayer.com/images/git/theoplayer-ios-sdk-license-string.png)
 
-> **Note:** It's possible to add multiple platforms in a single license ie. iOS & tvOS.
+:::note
+It's possible to add multiple platforms in a single license ie. iOS & tvOS.
+:::
 
 Later in the guide we explain how to configure the license ([in this section](#adding-the-theoplayer-license)).
 
@@ -24,9 +26,11 @@ The THEOplayer SDK is published on the following package managers:
 
 #### <span style={{ fontSize: '1.25rem' }}>Cocoapods</span>
 
-> **_It's considered good practice to run `pod repo update` before adding new pods to your Podfile.
+:::tip
+It's considered good practice to run `pod repo update` before adding new pods to your Podfile.
 This will help find newly added pods by updating the list of references to the public spec repos.
-If you just installed Cocoapods or are already up-to-date, then this step can be skipped._**
+If you just installed Cocoapods or are already up-to-date, then this step can be skipped.
+:::
 
 <br/>
 Add the following entry to your Podfile:
@@ -37,7 +41,9 @@ target 'MyApp' do
 end
 ```
 
-> You can skip specifying the version to get the latest published version of THEOplayerSDK.
+:::note
+You can skip specifying the version to get the latest published version of THEOplayerSDK.
+:::
 
 Then, using the terminal navigate to the directory where your Podfile is located and run:
 
@@ -55,7 +61,9 @@ The following image illustrates what it should look like:
 
 ![](../../../../theoplayer/assets/img/ios-getting-started-1.png)
 
-> **_If Xcode fails to fetch the THEOplayer package, navigate in Terminal to the root directory of your project and run `xcodebuild -resolvePackageDependencies`. This will re-attempt to fetch the packages specified in the project. Restart your Xcode and the package dependencies should be in place._**
+:::info
+If Xcode fails to fetch the THEOplayer package, navigate in Terminal to the root directory of your project and run `xcodebuild -resolvePackageDependencies`. This will re-attempt to fetch the packages specified in the project. Restart your Xcode and the package dependencies should be in place.
+:::
 
 
 And make sure the THEOplayerSDK framework is added to the target application:
@@ -86,7 +94,9 @@ import THEOplayerSDK
 
 THEOplayer provides a configuration object to configure the player settings. In the following snippet we configure the player license to be passed to the player.
 
-> **Note:** If the license is provided through the `plist` file (as mentioned above), then passing again in the player configuration is not required.
+:::note
+If the license is provided through the `plist` file (as mentioned above), then passing again in the player configuration is not required.
+:::
 
 ```swift
 var theoplayer: THEOplayer?
@@ -102,7 +112,9 @@ override func viewDidLoad() {
 }
 ```
 
-> **Note:** It is important to keep a strong reference to the player as demonstrated in the above code snippet, otherwise the player will not be retained by ARC.
+:::info
+It is important to keep a strong reference to the player as demonstrated in the above code snippet, otherwise the player will not be retained by ARC.
+:::
 
 ### Displaying the player
 
@@ -127,7 +139,9 @@ let mimeType = "application/x-mpegurl"
 theoplayer.source = SourceDescription(source: TypedSource(src: source, type: mimeType))
 ```
 
-> **Note:** Sources that are not whitelisted in the THEOplayer license will fail to play. If no player license is configured, then by default only sources from the `theoplayer` domain will play. This can be the reason of failure when updating the source in the snippet above.
+:::warning
+Sources that are not whitelisted in the THEOplayer license will fail to play. If no player license is configured, then by default only sources from the `theoplayer` domain will play. This can be the reason of failure when updating the source in the snippet above.
+:::
 
 ### Basic playback controls
 
