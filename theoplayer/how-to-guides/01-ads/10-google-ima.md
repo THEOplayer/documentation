@@ -61,20 +61,13 @@ player.source = {
 
 ### Android SDK
 
-The usage of Google IMA differs across the two Android-based SDKs.
-
-1. The Android SDK requires you to add `GoogleImaIntegration`.
-2. The Legacy Android SDK (4.12.x) requires you to configure the `THEOplayerConfig` correctly.
-
-#### Android SDK
-
 Using Google IMA in the Android SDK consists of 3 steps:
 
 1. Add the `integration-ads-ima` dependency to your module's `build.gradle`.
 2. Use the `GoogleImaIntegrationFactory` to create and add a `GoogleImaIntegration`.
 3. Use a `GoogleImaAdDescription` to schedule ads.
 
-##### Add the `integration-ads-ima` dependency
+#### Add the `integration-ads-ima` dependency
 
 Add `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:+'` to your module `build.gradle` file, as demonstrated below:
 
@@ -88,7 +81,7 @@ dependencies {
 }
 ```
 
-##### Use the `GoogleImaIntegrationFactory`
+#### Use the `GoogleImaIntegrationFactory`
 
 Create a `GoogleImaIntegration` through the `GoogleImaIntegrationFactory`, and add it to your player instance, as demonstrated below:
 
@@ -98,7 +91,7 @@ GoogleImaIntegration imaIntegration = GoogleImaIntegrationFactory.createGoogleIm
 theoPlayerView.getPlayer().addIntegration(imaIntegration);
 ```
 
-##### Use a `GoogleImaAdDescription`
+#### Use a `GoogleImaAdDescription`
 
 Use a [`GoogleImaAdDescription`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.html) to schedule advertisements,
 as demonstrated below:
@@ -118,7 +111,7 @@ SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
 playerView.getPlayer().setSource(sourceDescription);
 ```
 
-##### Other
+#### Other
 
 The available ad events are different between the Android SDK and the Legacy Android SDK (4.12.x). More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
@@ -126,71 +119,6 @@ The [`GoogleImaIntegration`](pathname:///theoplayer/v8/api-reference/android/com
 can be used to request ads through the native Google IMA API.
 
 When you add your THEOplayer IMA dependency to your module `build.gradle` file (i.e. `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:+'`), we will automatically add `com.google.ads.interactivemedia.v3:interactivemedia` with the version specified [here](https://github.com/THEOplayer/theoplayer-sdk-android/blob/master/app/build.gradle). You can overwrite this with a later version of the Google IMA SDK by adding this dependency to your module `build.gradle` file, but at your own risk.
-
-#### Legacy Android SDK (4.12.x)
-
-To use Google IMA in the Legacy Android SDK (4.12.x),
-
-1. You need to include the Google IMA SDK,
-2. You need to set `useNativeIma` to `true` in your `THEOplayerConfiguration`.
-3. You need to use a `GoogleImaAdDescription`.
-
-##### Include the IMA SDK
-
-You must add the Google IMA Android SDK to your Android project, as explained [here](https://github.com/googleads/googleads-ima-android/releases).
-
-We would recommend adding the following gradle dependency to your gradle file, as demonstrated below, near the place where THEOplayer `.aar` file is included in the same file.
-
-```groovy
-implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.25.1'
-```
-
-##### Set useNativeIma to true
-
-Google IMA has to be enabled by setting the [useNativeIma](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/AdsConfiguration.Builder.html) to `true`, as demonstrated by the snippet below.
-
-```java
-THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()
-    .ads(
-        new AdsConfiguration.Builder()
-            .googleImaConfiguration(new GoogleImaConfiguration.Builder().useNativeIma(true).build())
-            .build()
-    )
-    .build();
-```
-
-Alternatively, if you specify your `THEOplayerView` through XML, you must configure it there, as demonstrated below.
-
-```xml
-<com.theoplayer.android.api.THEOplayerView
-    android:id="@+id/theoPlayerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:adGoogleImaNative="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-```
-
-##### Use a GoogleImaAdDescription
-
-You have to use a `GoogleImaAdDescription`instead of a `THEOAdDescription`.
-The snippet below demonstrates how you could schedule a pre-roll VAST ad.
-
-```java
-TypedSource typedSource = new TypedSource.Builder()
-    .src("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
-    .build();
-
-GoogleImaAdDescription imaAdDescription = new GoogleImaAdDescription.Builder()
-    .source("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
-    .timeOffset("start")
-    .build();
-
-SourceDescription sourceDescription = new SourceDescription.Builder()
-    .sources(typedSource)
-    .ads(imaAdDescription)
-    .build();
-playerView.getPlayer().setSource(sourceDescription);
-```
 
 ### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
