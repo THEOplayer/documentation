@@ -50,7 +50,13 @@ implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
 implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-mediatailor:+' // add MediaTailor dependency
 ```
 
-Then, add the MediaTailor integration to the `Player`
+Then, add the MediaTailor integration to the `Player`.
+
+:::tip
+
+If you're using [automatic integrations](../../getting-started/01-sdks/02-android/01-features.md#adding-integrations-automatically), you can skip this step.
+
+:::
 
 ```java
 MediaTailorIntegration mediaTailor = MediaTailorIntegrationFactory.createMediaTailorIntegration(theoPlayerView);
