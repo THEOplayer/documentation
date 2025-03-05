@@ -37,9 +37,10 @@ to manage the version of the base SDK and the integration modules.
 After importing the dependencies, it's time to create the integrations and connect them to THEOplayer.
 
 Each module provides a **Factory** class that allows the creation of that specific integration.
-For example, the Google IMA module provides `GoogleImaIntegrationFactory` and the Google Cast module provides `CastIntegrationFactory`.
+For example, the Google IMA module provides [`GoogleImaIntegrationFactory`] and the Google Cast module provides [`CastIntegrationFactory`].
 
-Additionally, the `Player` class provides the `addIntegration(Integration integration)` API which allows adding the integration to the player.
+Additionally, the `Player` class provides the [`addIntegration(Integration integration)`][Player.addIntegration] API
+which allows adding the integration to the player.
 
 Connecting the feature integration with the `Player` will make them available to be used.
 Otherwise, calling an API from an integration without adding it to the `Player` will cause an error to be thrown.
@@ -57,3 +58,7 @@ With Android THEOplayer SDK we currently support the following feature integrati
 | THEOads         | `integration-ads-theoads:+`     | 8.2.0+  | [THEOads Documentation](/theoads/getting-started/getting-started-android/)                              |
 | Millicast       | `integration-millicast:+`       | 8.2.0+  | [Millicast Documentation](../../../how-to-guides/android/millicast/getting-started.mdx)                 |
 | Jetpack Media3  | `integration-media3:+`          | 8.10.0+ | [Media3 Documentation](../../../how-to-guides/android/media3/getting-started.mdx)                       |
+
+[`GoogleImaIntegrationFactory`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegrationFactory.html
+[`CastIntegrationFactory`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/cast/CastIntegrationFactory.html
+[Player.addIntegration]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/player/Player.html#addIntegration(com.theoplayer.android.api.Integration)
