@@ -8,23 +8,29 @@ This approach gives more flexibility and results in a reduced application size, 
 For example, the base SDK is provided by:
 
 ```groovy
-implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
+implementation 'com.theoplayer.theoplayer-sdk-android:core:8.0.0'
 ```
 
 Meanwhile, additional features such as Google IMA and Google Cast are provided by:
 
 ```groovy
-implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:+'
-implementation 'com.theoplayer.theoplayer-sdk-android:integration-cast:+'
+implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:8.0.0'
+implementation 'com.theoplayer.theoplayer-sdk-android:integration-cast:8.0.0'
 ```
 
 ## Importing additional integration modules
 
 As shown in the previous section, importing additional integration modules can be done by simply adding the dependency in the `build.gradle` file of the module using THEOplayer.
 
-**Important Note:**
-It is required to keep the Android base SDK and all the required feature modules on the **same** version number.
-For example one should **not** import `core:3.6.0` and `integration-cast:3.5.0` in the same project.
+:::info Important
+
+It is required to keep the Android base SDK and all the required integration modules on the **same** version number.
+For example one should **not** import `core:8.1.0` and `integration-cast:8.2.0` in the same project.
+
+Consider using [version catalogs](https://developer.android.com/build/migrate-to-catalogs) in your app
+to manage the version of the base SDK and the integration modules.
+
+:::
 
 ## Adding integrations
 
