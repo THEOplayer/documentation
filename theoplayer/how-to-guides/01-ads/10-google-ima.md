@@ -61,13 +61,6 @@ player.source = {
 
 ### Android SDK
 
-The usage of Google IMA differs across the two Android-based SDKs.
-
-1. The Android SDK requires you to add `GoogleImaIntegration`.
-2. The Legacy Android SDK (4.12.x) requires you to configure the `THEOplayerConfig` correctly.
-
-#### Current Version
-
 Using Google IMA in the Android SDK consists of 3 steps:
 
 1. Add the `integration-ads-ima` dependency to your module's `build.gradle`.
@@ -127,123 +120,9 @@ can be used to request ads through the native Google IMA API.
 
 When you add your THEOplayer IMA dependency to your module `build.gradle` file (i.e. `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:+'`), we will automatically add `com.google.ads.interactivemedia.v3:interactivemedia` with the version specified [here](https://github.com/THEOplayer/theoplayer-sdk-android/blob/master/app/build.gradle). You can overwrite this with a later version of the Google IMA SDK by adding this dependency to your module `build.gradle` file, but at your own risk.
 
-#### Legacy Android SDK (4.12.x)
-
-To use Google IMA in the Legacy Android SDK (4.12.x),
-
-1. You need to include the Google IMA SDK,
-2. You need to set `useNativeIma` to `true` in your `THEOplayerConfiguration`.
-3. You need to use a `GoogleImaAdDescription`.
-
-##### Include the IMA SDK
-
-You must add the Google IMA Android SDK to your Android project, as explained [here](https://github.com/googleads/googleads-ima-android/releases).
-
-We would recommend adding the following gradle dependency to your gradle file, as demonstrated below, near the place where THEOplayer `.aar` file is included in the same file.
-
-```groovy
-implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.25.1'
-```
-
-##### Set useNativeIma to true
-
-Google IMA has to be enabled by setting the [useNativeIma](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/AdsConfiguration.Builder.html) to `true`, as demonstrated by the snippet below.
-
-```java
-THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()
-    .ads(
-        new AdsConfiguration.Builder()
-            .googleImaConfiguration(new GoogleImaConfiguration.Builder().useNativeIma(true).build())
-            .build()
-    )
-    .build();
-```
-
-Alternatively, if you specify your `THEOplayerView` through XML, you must configure it there, as demonstrated below.
-
-```xml
-<com.theoplayer.android.api.THEOplayerView
-    android:id="@+id/theoPlayerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:adGoogleImaNative="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-```
-
-##### Use a GoogleImaAdDescription
-
-You have to use a `GoogleImaAdDescription`instead of a `THEOAdDescription`.
-The snippet below demonstrates how you could schedule a pre-roll VAST ad.
-
-```java
-TypedSource typedSource = new TypedSource.Builder()
-    .src("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
-    .build();
-
-GoogleImaAdDescription imaAdDescription = new GoogleImaAdDescription.Builder()
-    .source("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
-    .timeOffset("start")
-    .build();
-
-SourceDescription sourceDescription = new SourceDescription.Builder()
-    .sources(typedSource)
-    .ads(imaAdDescription)
-    .build();
-playerView.getPlayer().setSource(sourceDescription);
-```
-
 ### iOS/tvOS SDK
 
-#### Current Version
-
 The documentation of the current version [can be found at this URL](https://github.com/THEOplayer/theoplayer-sdk-apple/tree/master/docsTHEOplayer-Integration-GoogleIMA/README.md).
-
-#### Legacy iOS/tvOS SDK (4.12.x)
-
-To use Google IMA in the iOS SDK,
-
-1. You need to include the Google IMA SDK,
-2. You need to set `useNativeIma: true` in your `THEOplayerConfiguration`.
-3. You need to use a `GoogleImaAdDescription`.
-
-An example for the iOS SDK is available [here](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Google-IMA). An example for the tvOS SDK is available [here](https://github.com/THEOplayer/samples-tvos-sdk/tree/master/Google-IMA).
-
-Note that some [limitations](#limitations) may apply.
-
-##### Include the IMA SDK
-
-Similar to how you add the THEOplayer "framework" (i.e. SDK) in your Xcode,
-you must also add the Google IMA "framework" (i.e. SDK) in your Xcode.
-
-You can find the Google IMA iOS SDK at [here](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side/download), which you will need to [manually download and install](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side#manually_downloading_and_installing_the_sdk). Alternatively, you can use Cocoapods as demonstrated [here](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Google-IMA).
-
-##### Set useNativeIma to true
-
-Google IMA has to be enabled in the `THEOplayerConfiguration`, as demonstrated by the snippet below.
-
-```swift
-let playerConfig = THEOplayerConfiguration(chromeless: false, defaultCSS: false, ads: AdsConfiguration(showCountdown: true , preload: .MIDROLL_AND_POSTROLL, googleImaConfiguration: GoogleIMAConfiguration(useNativeIma: true)))
-```
-
-If you're using the tvOS SDK, then it's sufficient to create an empty `AdsConfiguration` object to enable Google IMA, as demonstrated by the snippet below.
-
-```swift
-let playerConfig = THEOplayerConfiguration(chromeless: false, ads: AdsConfiguration())
-```
-
-##### Use a GoogleImaAdDescription
-
-You have to use a `GoogleImaAdDescription` instead of a `THEOAdDescription`.
-The snippet below demonstrates how you could schedule a pre-roll VAST ad.
-
-```swift
-let typedSource = TypedSource(src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8", type: "application/x-mpegurl")
-let stream = SourceDescription(source: typedSource, ads: [GoogleImaAdDescription(src: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml", timeOffset: "start")])
-player.source = stream;
-```
-
-<!-- * on iOS, the THEOplayer iOS SDK is compatible up to version 3.11.4 when targeting iOS 10 and above. Using version 3.11.3 allows you to target lower iOS versions. Versions 3.12.0 and above are not supported.
-* on tvOS, the THEOplayer tvOS SDK is compatible up to version 4.2.3 when targeting iOS 10 and above. Using version 4.2.1 allows you to target lower iOS versions. Versions 4.3.1 and above are not supported. -->
 
 ## Remarks
 
