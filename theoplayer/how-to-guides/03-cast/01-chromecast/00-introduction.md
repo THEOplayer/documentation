@@ -114,7 +114,6 @@ import THEOplayerGoogleCastIntegration
 You will also need the THEOplayer core SDK since the THEOplayer GoogleCast integration extends its functionality.
 <br/>To import the THEOplayer core SDK framework add:
 
-
 ```swift
 import THEOplayerSDK
 ```
