@@ -5,6 +5,16 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.12.1 (2025/02/28)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where exiting native PiP or native fullscreen did not dispatch a paused event when using THEOads despite being paused due to the native behavior.
+- Fixed an issue for THEOads on Safari where activating native PiP during an ad break was broken.
+- Fixed an issue for THEOads on iOS Safari where native fullscreen did not work for an L-SHAPE adbreak.
+
 ## 🚀 8.12.0 (2025/02/24)
 
 ### General
