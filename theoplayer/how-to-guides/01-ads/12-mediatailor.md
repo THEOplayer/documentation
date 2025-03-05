@@ -45,7 +45,7 @@ Seeking is only disabled during an ad, no logic is in place for playing an ad if
 
 To use a MediaTailor stream with THEOplayer on Android SDK, first import our MediaTailor module dependency in your `build.gradle` file.
 
-```java
+```groovy
 implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
 implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-mediatailor:+' // add MediaTailor dependency
 ```
@@ -58,23 +58,22 @@ If you're using [automatic integrations](../../getting-started/01-sdks/02-androi
 
 :::
 
-```java
-MediaTailorIntegration mediaTailor = MediaTailorIntegrationFactory.createMediaTailorIntegration(theoPlayerView);
-theoPlayerView.getPlayer().addIntegration(mediaTailor);
+```kotlin
+val theoplayerView = THEOplayerView(context)
+val mediaTailorIntegration = MediaTailorIntegrationFactory.createMediaTailorIntegration(theoPlayerView);
+theoplayerView.player.addIntegration(mediaTailorIntegration)
 ```
 
-Finally, set a MediaTailorSource to play.
+Finally, set a [`MediaTailorSource`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/mediatailor/MediaTailorSource.html) to play.
 
-```java
-MediaTailorSource mediaTailorSource = new MediaTailorSource.Builder()
+```kotlin
+val mediaTailorSource = MediaTailorSource.Builder()
     .src("<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
-    .build();
+    .build()
 
-SourceDescription sourceDescription = new SourceDescription.Builder()
+theoplayerView.player.source = SourceDescription.Builder()
     .sources(mediaTailorSource)
-    .build();
-
-theoPlayerView.getPlayer().setSource(sourceDescription);
+    .build()
 ```
 
 #### Legacy Android SDK (4.12.x)
@@ -90,12 +89,12 @@ To use a MediaTailor stream with THEOplayer on the iOS SDK, you have to:
 - set a MediaTailorSource to play, as follows
 
 ```swift
- player.source = SourceDescription(
+player.source = SourceDescription(
     source: MediaTailorSource(
         src: "<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>",
         type: "application/x-mpegurl"
     )
- )
+)
 ```
 
 Note that the MediaTailor URL must have the same structure as described above (Web SDK). Different URL structures may result in playback errors.
