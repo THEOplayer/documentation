@@ -174,6 +174,12 @@ dependencies {
 
 ### Creating an instance of Google DAI Integration.
 
+:::tip
+
+If you're using [automatic integrations](../../getting-started/01-sdks/02-android/01-features.md#adding-integrations-automatically), you can skip this step.
+
+:::
+
 Create a `GoogleDaiIntegration` through the `GoogleDaiIntegrationFactory`, and add it to your player instance, as demonstrated below:
 
 ```java
