@@ -41,8 +41,6 @@ Seeking is only disabled during an ad, no logic is in place for playing an ad if
 
 ### Android SDK
 
-#### Android SDK
-
 To use a MediaTailor stream with THEOplayer on Android SDK, first import our MediaTailor module dependency in your `build.gradle` file.
 
 ```groovy
@@ -75,11 +73,6 @@ theoplayerView.player.source = SourceDescription.Builder()
     .sources(mediaTailorSource)
     .build()
 ```
-
-#### Legacy Android SDK (4.12.x)
-
-For the Legacy Android SDK (4.12.x), make sure to have a THEOplayer build with the `mediatailor` feature flag set.
-And then set a MediaTailorSource to play similar to the Android SDK shown above.
 
 ### Legacy iOS/tvOS SDK (4.12.x)
 
