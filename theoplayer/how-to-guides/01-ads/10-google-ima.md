@@ -85,10 +85,12 @@ dependencies {
 
 Create a `GoogleImaIntegration` through the `GoogleImaIntegrationFactory`, and add it to your player instance, as demonstrated below:
 
-```java
-// THEOplayerView theoPlayerView = ...;
-GoogleImaIntegration imaIntegration = GoogleImaIntegrationFactory.createGoogleImaIntegration(theoPlayerView);
-theoPlayerView.getPlayer().addIntegration(imaIntegration);
+```kotlin
+import com.theoplayer.android.api.ads.ima.GoogleImaIntegrationFactory
+
+val theoplayerView = THEOplayerView(context)
+val imaIntegration = GoogleImaIntegrationFactory.createGoogleImaIntegration(theoplayerView)
+theoplayerView.player.addIntegration(imaIntegration)
 ```
 
 #### Use a `GoogleImaAdDescription`
@@ -96,19 +98,19 @@ theoPlayerView.getPlayer().addIntegration(imaIntegration);
 Use a [`GoogleImaAdDescription`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.html) to schedule advertisements,
 as demonstrated below:
 
-```java
-TypedSource typedSource = new TypedSource.Builder("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
-    .build();
+```kotlin
+val typedSource = TypedSource.Builder("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
+    .build()
 
-GoogleImaAdDescription imaAdDescription = new GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
+val imaAdDescription = GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
     .timeOffset("start")
-    .build();
+    .build()
 
-SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
+val sourceDescription = SourceDescription.Builder(typedSource)
     .ads(imaAdDescription)
-    .build();
+    .build()
 
-playerView.getPlayer().setSource(sourceDescription);
+theoplayerView.player.source = sourceDescription
 ```
 
 #### Next steps
