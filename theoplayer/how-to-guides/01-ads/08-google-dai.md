@@ -157,18 +157,9 @@ player.source = {
 
 ## Android SDK
 
-The usage of Google DAI differs across the two Android-based SDKs.
-
-- The Android SDK requires you to add the `GoogleDaiIntegration`.
-- The Legacy Android SDK (4.12.x) requires you to:
-  1.  Have the `google-dai` feature flag enabled.
-  2.  Include the Google DAI dependency library in your Android project.
-
-#### Android SDK
-
 Using Google DAI in the Android SDK consists of 3 steps:
 
-##### 1. Importing Google DAI feature module.
+### 1. Importing Google DAI feature module.
 
 Add `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-dai:+'` to your module `build.gradle` file, as demonstrated below:
 
@@ -181,119 +172,64 @@ dependencies {
 }
 ```
 
-##### 2. Creating an instance of Google DAI Integration.
+### 2. Creating an instance of Google DAI Integration.
+
+:::tip
+
+If you're using [automatic integrations](../../getting-started/01-sdks/02-android/01-features.md#adding-integrations-automatically), you can skip this step.
+
+:::
 
 Create a `GoogleDaiIntegration` through the `GoogleDaiIntegrationFactory`, and add it to your player instance, as demonstrated below:
 
-```java
-THEOplayerView theoPlayerView = ...;
-GoogleDaiIntegration daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theoPlayerView);
-theoPlayerView.getPlayer().addIntegration(daiIntegration);
+```kotlin
+val theoplayerView = THEOplayerView(context)
+val daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theoplayerView)
+theoplayerView.player.addIntegration(daiIntegration)
 ```
 
-##### 3. Using a Google DAI Source.
+### 3. Using a Google DAI Source.
 
 Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
 or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
 to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
 
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
             .build()
     )
     .type(SourceType.DASH)
     .build()
-)
-.build();
+).build()
 ```
 
-OR
+or:
 
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
             .build()
     )
     .type(SourceType.DASH)
     .build()
-)
-.build();
+).build()
 ```
 
-Then, set the source on the player:
+### Notes
 
-```java
-playerView.getPlayer().setSource(sourceDescription);
-```
+The Google DAI integration exposes events through the Ads API. More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
-##### Notes
-
-The available ad events are different between the Android SDK and the Legacy Android SDK (4.12.x).
-More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
-
-The [GoogleDaiIntegration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) instance exposes a number of methods. For example:
+The integration exposes a number of additional methods.
+These are available directly on the [`GoogleDaiIntegration`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) object,
+or indirectly through `player.ads.dai` (only for Kotlin).
+For example:
 
 - [requestStream(StreamRequest, AdsRenderingSettings)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
 - [contentTimeForStreamTime(double)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
   / [streamTimeForContentTime(double)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#streamTimeForContentTime(double)>) can be used to convert content time to stream time and vice versa.
-
-#### Legacy Android SDK (4.12.x)
-
-Using Google DAI in the Android SDK consists of 2 steps:
-
-##### 1. Importing Google DAI dependency.
-
-Add `implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.25.1'` to your module `build.gradle` file, as demonstrated below:
-
-```groovy
-dependencies {
-    // ...
-    implementation files('libs/theoplayer.aar')
-    implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.25.1'
-    // ...
-}
-```
-
-##### 2. Using a Google DAI Source.
-
-Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
-or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
-to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
-
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
-            .build()
-    )
-    .type(SourceType.DASH)
-    .build()
-)
-.build();
-```
-
-OR
-
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
-            .build()
-    )
-    .type(SourceType.DASH)
-    .build()
-)
-.build();
-```
-
-Then, set the source on the player:
-
-```java
-playerView.getPlayer().setSource(sourceDescription);
-```
 
 ## iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
