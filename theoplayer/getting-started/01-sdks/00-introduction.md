@@ -24,7 +24,7 @@ THEOplayer offers the following SDKs. (Clicking the link takes you to the respec
 
 - iOS/tvOS SDK
 
-  - [iOS & tvOS](03-ios/00-getting-started.md) targets iOS, iPadOS and tvOS apps.
+  - [iOS & tvOS](03-ios/00-getting-started.mdx) targets iOS, iPadOS and tvOS apps.
 
 - Roku SDK
 
