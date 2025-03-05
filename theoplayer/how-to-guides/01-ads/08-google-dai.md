@@ -182,10 +182,10 @@ If you're using [automatic integrations](../../getting-started/01-sdks/02-androi
 
 Create a `GoogleDaiIntegration` through the `GoogleDaiIntegrationFactory`, and add it to your player instance, as demonstrated below:
 
-```java
-THEOplayerView theoPlayerView = ...;
-GoogleDaiIntegration daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theoPlayerView);
-theoPlayerView.getPlayer().addIntegration(daiIntegration);
+```kotlin
+val theoplayerView = THEOplayerView(context)
+val daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theoplayerView)
+theoplayerView.player.addIntegration(daiIntegration)
 ```
 
 ### Using a Google DAI Source.
@@ -194,36 +194,28 @@ Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v8/api-reference/androi
 or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
 to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
 
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
             .build()
     )
     .type(SourceType.DASH)
     .build()
-)
-.build();
+).build()
 ```
 
-OR
+or:
 
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
             .build()
     )
     .type(SourceType.DASH)
     .build()
-)
-.build();
-```
-
-Then, set the source on the player:
-
-```java
-playerView.getPlayer().setSource(sourceDescription);
+).build()
 ```
 
 ### Notes
