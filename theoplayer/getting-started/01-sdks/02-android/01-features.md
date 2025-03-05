@@ -36,14 +36,57 @@ to manage the version of the base SDK and the integration modules.
 
 After importing the dependencies, it's time to create the integrations and connect them to THEOplayer.
 
+### Adding integrations automatically
+
+Starting with version 8.13.0, the Android SDK supports automatically connecting all available integrations to your player.
+When constructing your `THEOplayerView`, set [`THEOplayerConfig.autoIntegrations`] to `true`:
+
+```kotlin
+val theoplayerConfig = THEOplayerConfig.Builder()
+    // highlight-next-line
+    .autoIntegrations(true)
+    .build()
+val theoplayerView = THEOplayerView(context, theoplayerConfig)
+```
+
+The player will automatically create and attach any integrations that were added to your app's dependencies.
+
+:::info
+
+Starting with version 9.0.0, this automatic behavior will become the default.
+You can always opt out by manually setting [`THEOplayerConfig.autoIntegrations`] to `false`.
+
+:::
+
+### Adding integrations manually
+
+You can also create and attach each integration manually.
+
 Each module provides a **Factory** class that allows the creation of that specific integration.
 For example, the Google IMA module provides [`GoogleImaIntegrationFactory`] and the Google Cast module provides [`CastIntegrationFactory`].
+You can then attach the created integration to your player using the [`addIntegration(Integration integration)`][Player.addIntegration] method
+of the `Player` API.
 
-Additionally, the `Player` class provides the [`addIntegration(Integration integration)`][Player.addIntegration] API
-which allows adding the integration to the player.
+For example, to set up the Google IMA integration, you create an integration using the [`GoogleImaIntegrationFactory`]
+and then attach it to the player using [`addIntegration(Integration integration)`][Player.addIntegration]:
 
-Connecting the feature integration with the `Player` will make them available to be used.
-Otherwise, calling an API from an integration without adding it to the `Player` will cause an error to be thrown.
+```kotlin
+import com.theoplayer.android.api.ads.ima.GoogleImaIntegrationFactory
+
+val theoplayerView = THEOplayerView(context)
+val googleImaIntegration = GoogleImaIntegrationFactory.createGoogleImaIntegration(theoplayerView)
+theoplayerView.player.addIntegration(googleImaIntegration)
+```
+
+[The documentation of each individual integration](#available-feature-integrations) provides more detail on how to
+set up and configure that integration.
+
+:::warning
+
+You must call `addIntegration()` before using the integration. Attempting to call a method on the integration
+without attaching it to a player will throw an error.
+
+:::
 
 ## Available feature integrations
 
@@ -62,3 +105,4 @@ With Android THEOplayer SDK we currently support the following feature integrati
 [`GoogleImaIntegrationFactory`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegrationFactory.html
 [`CastIntegrationFactory`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/cast/CastIntegrationFactory.html
 [Player.addIntegration]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/player/Player.html#addIntegration(com.theoplayer.android.api.Integration)
+[`THEOplayerConfig.autoIntegrations`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/THEOplayerConfig.Builder.html#autoIntegrations(boolean)
