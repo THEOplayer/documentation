@@ -1,6 +1,6 @@
 # MediaTailor
 
-[MediaTailor](https://docs.aws.amazon.com/mediatailor/index.html) is a service that provides scalable ad insertion and channel assembly. It is able to serve targeted ad content to viewers and create linear streams while maintaining broadcast quality in over-the-top (OTT) video applications. It supports HLS and DASH for both VOD and live workflows.
+[AWS Elemental MediaTailor](https://docs.aws.amazon.com/mediatailor/index.html) is a service that provides scalable ad insertion and channel assembly. It is able to serve targeted ad content to viewers and create linear streams while maintaining broadcast quality in over-the-top (OTT) video applications. It supports HLS and DASH for both VOD and live workflows.
 
 At the moment of writing only linear ads are supported, but it is possible to expand it to non-linear and companion ads as well.
 
