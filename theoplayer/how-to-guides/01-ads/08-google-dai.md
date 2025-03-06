@@ -159,7 +159,7 @@ player.source = {
 
 Using Google DAI in the Android SDK consists of 3 steps:
 
-### Importing Google DAI feature module.
+### Importing Google DAI feature module
 
 Add `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-dai:+'` to your module `build.gradle` file, as demonstrated below:
 
@@ -172,7 +172,7 @@ dependencies {
 }
 ```
 
-### Creating an instance of Google DAI Integration.
+### Creating an instance of Google DAI Integration
 
 :::tip
 
@@ -188,7 +188,7 @@ val daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theo
 theoplayerView.player.addIntegration(daiIntegration)
 ```
 
-### Using a Google DAI Source.
+### Using a Google DAI Source
 
 Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
 or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
