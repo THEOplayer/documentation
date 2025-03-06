@@ -159,7 +159,7 @@ player.source = {
 
 Using Google DAI in the Android SDK consists of 3 steps:
 
-### Importing Google DAI feature module.
+### Importing Google DAI feature module
 
 Add `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-dai:+'` to your module `build.gradle` file, as demonstrated below:
 
@@ -172,60 +172,60 @@ dependencies {
 }
 ```
 
-### Creating an instance of Google DAI Integration.
+### Creating an instance of Google DAI Integration
+
+:::tip
+
+If you're using [automatic integrations](../../getting-started/01-sdks/02-android/01-features.md#adding-integrations-automatically), you can skip this step.
+
+:::
 
 Create a `GoogleDaiIntegration` through the `GoogleDaiIntegrationFactory`, and add it to your player instance, as demonstrated below:
 
-```java
-THEOplayerView theoPlayerView = ...;
-GoogleDaiIntegration daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theoPlayerView);
-theoPlayerView.getPlayer().addIntegration(daiIntegration);
+```kotlin
+val theoplayerView = THEOplayerView(context)
+val daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theoplayerView)
+theoplayerView.player.addIntegration(daiIntegration)
 ```
 
-### Using a Google DAI Source.
+### Using a Google DAI Source
 
 Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
 or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
 to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
 
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
             .build()
     )
     .type(SourceType.DASH)
     .build()
-)
-.build();
+).build()
 ```
 
-OR
+or:
 
-```java
-SourceDescription sourceDescription = new SourceDescription.Builder(
-    new GoogleDaiTypedSource.Builder(
-        new GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
             .build()
     )
     .type(SourceType.DASH)
     .build()
-)
-.build();
-```
-
-Then, set the source on the player:
-
-```java
-playerView.getPlayer().setSource(sourceDescription);
+).build()
 ```
 
 ### Notes
 
-The available ad events are different between the Android SDK and the Legacy Android SDK (4.12.x).
-More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
+The Google DAI integration exposes events through the Ads API. More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
-The [GoogleDaiIntegration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) instance exposes a number of methods. For example:
+The integration exposes a number of additional methods.
+These are available directly on the [`GoogleDaiIntegration`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) object,
+or indirectly through `player.ads.dai` (only for Kotlin).
+For example:
 
 - [requestStream(StreamRequest, AdsRenderingSettings)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
 - [contentTimeForStreamTime(double)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
