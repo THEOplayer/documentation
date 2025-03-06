@@ -43,26 +43,26 @@ Add the Media3 integration as a dependency in your module-level `build.gradle` f
 
 ### Add the Media3 integration to the player
 
-To make use of the Media3 integration, create and add the `Media3PlayerIntegration` to your `THEOplayerView`:
+To make use of the Media3 integration, create and add the `Media3Integration` to your `THEOplayerView`:
 
 <Tabs queryString="lang">
     <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
-        val media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
-        theoplayerView.player.addIntegration(media3PlayerIntegration)
+        val media3Integration = Media3IntegrationFactory.createMedia3Integration()
+        theoplayerView.player.addIntegration(media3Integration)
         ```
     </TabItem>
     <TabItem value="java" label="Java">
         ```java
-        Media3PlayerIntegration media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
-        theoplayerView.getPlayer().addIntegration(media3PlayerIntegration)
+        Media3Integration media3Integration = Media3IntegrationFactory.createMedia3Integration()
+        theoplayerView.getPlayer().addIntegration(media3Integration)
         ```
     </TabItem>
     <!-- prettier-ignore-end -->
 </Tabs>
 
-Once the Media3PlayerIntegration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
+Once the Media3Integration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
 
 <Tabs queryString="lang">
     <!-- prettier-ignore-start -->
@@ -98,7 +98,7 @@ Once the Media3PlayerIntegration is added to the player, all subsequent sources 
 
 </Tabs>
 
-By default, the `Media3PlayerIntegration` will play all types of sources except Millicast.
+By default, the `Media3Integration` will play all types of sources except Millicast.
 You can opt in or opt out of this behavior by setting [`TypedSource.playbackPipeline`]
 to either `PlaybackPipeline.MEDIA3` (to _always_ use the Media3 integration)
 or `PlaybackPipeline.LEGACY` (to _never_ use the Media3 integration).
