@@ -99,31 +99,42 @@ Once the Media3PlayerIntegration is added to the player, all subsequent sources 
 </Tabs>
 
 By default, the `Media3PlayerIntegration` will play all types of sources except Millicast.
-To modify the default behaviour, you can pass a custom `Media3PlayerIntegration.SourceSelectCallback` implementation
-when constructing the integration.
+You can opt in or opt out of this behavior by setting [`TypedSource.playbackPipeline`]
+to either `PlaybackPipeline.MEDIA3` (to _always_ use the Media3 integration)
+or `PlaybackPipeline.LEGACY` (to _never_ use the Media3 integration).
 
 <Tabs queryString="lang">
     <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
-        val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegration.SourceSelectCallback { selectedSource, source ->
-            // selectedSource -> represents the TypedSource the player picked to play.
-            // source -> represents the SourceDescription passed to the player.
-            // return true -> the Media3 integration pipeline will be used to play the selected source.
-            // return false -> the default pipeline will be used to play the selected source.
-        })
-        theoplayerView.player.addIntegration(media3PlayerIntegration)
+        val typedSource = TypedSource
+            .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+            .type(SourceType.DASH)
+            // highlight-next-line
+            .playbackPipeline(PlaybackPipeline.MEDIA3)
+            .build()
+
+        val sourceDescription = SourceDescription
+            .Builder(typedSource)
+            .build()
+
+        theoPlayerView.player.source = sourceDescription
         ```
     </TabItem>
     <TabItem value="java" label="Java">
         ```java
-        Media3PlayerIntegration media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration((selectedSource, source) -> {
-            // selectedSource -> represents the TypedSource the player picked to play.
-            // source -> represents the SourceDescription passed to the player.
-            // return true; -> the Media3 integration pipeline will be used to play the selected source.
-            // return false; -> the default pipeline will be used to play the selected source.
-        });
-        theoplayerView.getPlayer().addIntegration(media3PlayerIntegration);
+        TypedSource typedSource = new TypedSource
+            .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+            .type(SourceType.DASH)
+            // highlight-next-line
+            .playbackPipeline(PlaybackPipeline.MEDIA3)
+            .build();
+
+        SourceDescription sourceDescription = new SourceDescription
+            .Builder(typedSource)
+            .build();
+
+        theoPlayerView.getPlayer().setSource(sourceDescription);
         ```
     </TabItem>
     <!-- prettier-ignore-end -->
@@ -161,3 +172,5 @@ We are developing this integration to offer significant improvements over our cu
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/media3/package-summary.html)
+
+[`TypedSource.playbackPipeline`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html#playbackPipeline(com.theoplayer.android.api.source.PlaybackPipeline)
