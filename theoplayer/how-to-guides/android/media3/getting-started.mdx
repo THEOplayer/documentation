@@ -141,6 +141,79 @@ or `PlaybackPipeline.LEGACY` (to _never_ use the Media3 integration).
 
 </Tabs>
 
+### Caching and offline playback with Media3
+
+The Media3 integration supports playing all sources cached by the default pipeline.
+However, you can also choose to use the Media3 integration to cache sources,
+allowing it to more optimally read and write files from the cache.
+
+To use Media3 for caching, create and add the `Media3Integration` to the global [`Cache`] API:
+
+<Tabs queryString="lang">
+    <!-- prettier-ignore-start -->
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val cache = THEOplayerGlobal.getSharedInstance(context).cache
+        val media3Integration = Media3IntegrationFactory.createMedia3Integration()
+        cache.addIntegration(media3Integration)
+        ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+        ```java
+        Cache cache = THEOplayerGlobal.getSharedInstance(context).getCache();
+        Media3Integration media3Integration = Media3IntegrationFactory.createMedia3Integration();
+        cache.addIntegration(media3Integration);
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
+
+:::note
+
+The `Media3Integration` object does not need to be the same instance that you use in `player.addIntegration()`,
+it's okay to create a different one.
+
+:::
+
+Then, set [`CachingParameters.storageType`] to `CacheStorageType.MEDIA3` when creating your caching task:
+
+<Tabs queryString="lang">
+    <!-- prettier-ignore-start -->
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val cache = THEOplayerGlobal.getSharedInstance(context).cache
+        val sourceDescription = SourceDescription.Builder(
+            TypedSource.Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+                .playbackPipeline(PlaybackPipeline.MEDIA3)
+                .build()
+            ).build()
+        val cachingParameters = CachingParameters.Builder()
+            // highlight-next-line
+            .storageType(CacheStorageType.MEDIA3)
+            .build()
+        val cachingTask = cache.createTask(sourceDescription, cachingParameters)
+        cachingTask.start()
+        ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+        ```java
+        Cache cache = THEOplayerGlobal.getSharedInstance(context).getCache();
+        SourceDescription sourceDescription = SourceDescription.Builder(
+            TypedSource.Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+                .playbackPipeline(PlaybackPipeline.MEDIA3)
+                .build()
+            ).build();
+        CachingParameters cachingParameters = CachingParameters.Builder()
+            // highlight-next-line
+            .storageType(CacheStorageType.MEDIA3)
+            .build();
+        CachingTask cachingTask = cache.createTask(sourceDescription, cachingParameters);
+        cachingTask.start();
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
+
 ## Known limitations
 
 As this integration is still under development, there are currently some known limitations and features that are still under development and not yet supported:
@@ -174,3 +247,5 @@ We are developing this integration to offer significant improvements over our cu
 - [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/media3/package-summary.html)
 
 [`TypedSource.playbackPipeline`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html#playbackPipeline(com.theoplayer.android.api.source.PlaybackPipeline)
+[`Cache`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/cache/Cache.html
+[`CachingParameters.storageType`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/cache/CachingParameters.Builder.html#storageType(com.theoplayer.android.api.cache.CacheStorageType)
