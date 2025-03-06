@@ -453,6 +453,10 @@ const config: Config = {
           }
         : undefined,
     },
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 4,
+    },
   } satisfies Preset.ThemeConfig,
 };
 
