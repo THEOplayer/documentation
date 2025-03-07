@@ -8,7 +8,10 @@ Go to Tools, then Package Manager
 
 ![](../../../assets/img/tizen-extensions-1.jpg)
 
-Install everything under Tizen SDK tools under Main SDK
+Install everything under Tizen SDK tools under Main SDK.
+
+**Note:** Make sure to close Tizen Studio before installing, otherwise an
+empty warning message might show up that stops you from completing the installation.
 
 ![](../../../assets/img/tizen-extensions-2.jpg)
 
