@@ -4,9 +4,9 @@ Google DAI is a Server-Side Ad-Insertion solution offered by Google where THEOpl
 
 ## SDKs
 
-| Web SDK | Android SDK | iOS SDK |  tvOS SDK  | Android TV SDK | Chromecast SDK |
-| :-----: | :---------: | :-----: | :--------: | :------------: | :------------: |
-|   Yes   |     Yes     |   Yes   | Unverified |   Unverified   |      Yes       |
+| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
+| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
+|   Yes   |     Yes     |   Yes   |   Yes    |      Yes       |      Yes       |
 
 ## Web SDK
 
