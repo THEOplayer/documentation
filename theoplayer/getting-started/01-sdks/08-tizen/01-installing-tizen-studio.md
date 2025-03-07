@@ -15,6 +15,6 @@ empty warning message might show up that stops you from completing the installat
 
 ![](../../../assets/img/tizen-extensions-2.jpg)
 
-Install the latest tv extensions under Extension SDK
+Install the latest tv extensions under Extension SDK.
 
 ![](../../../assets/img/tizen-extensions-3.jpg)
