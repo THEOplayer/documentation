@@ -183,7 +183,7 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
     const prefix = `${version.path}/getting-started/${isFrameworkPlatform ? 'frameworks' : 'sdks'}/${platformName}`;
     return findMatchingDoc(version, doc, prefix, gettingStartedMatch[2], '/getting-started');
   }
-  // Uplynk Web to Android/iOS connector
+  // Uplynk Web guide to Android/iOS connector
   if (platformName === 'android' || platformName === 'ios') {
     const uplynkWebMatch = docPath.match(/^\/how-to-guides\/web\/uplynk(|\/.*)$/);
     if (uplynkWebMatch) {
@@ -192,12 +192,30 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
       if (matchingDoc) return matchingDoc;
     }
   }
-  // Uplynk Android/iOS connector to Web
+  // Uplynk Android/iOS connector to Web guide
   if (platformName === 'web') {
     const uplynkConnectorMatch = docPath.match(/^\/connectors\/([a-z-]+)\/uplynk(|\/.*)$/);
     if (uplynkConnectorMatch && isPlatformName(uplynkConnectorMatch[1])) {
       const prefix = `${version.path}/how-to-guides/web/uplynk`;
       const matchingDoc = findMatchingDoc(version, doc, prefix, uplynkConnectorMatch[2], '/introduction');
+      if (matchingDoc) return matchingDoc;
+    }
+  }
+  // CMCD Web connector to Android/iOS guide
+  if (platformName === 'android' || platformName === 'ios') {
+    const cmcdConnectorMatch = docPath.match(/^\/connectors\/web\/cmcd(|\/.*)$/);
+    if (cmcdConnectorMatch) {
+      const prefix = `${version.path}/how-to-guides/${platformName}/cmcd`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, cmcdConnectorMatch[1], '/getting-started');
+      if (matchingDoc) return matchingDoc;
+    }
+  }
+  // CMCD Android/iOS guide to Web connector
+  if (platformName === 'web') {
+    const cmcdGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)\/cmcd(|\/.*)$/);
+    if (cmcdGuideMatch && isPlatformName(cmcdGuideMatch[1])) {
+      const prefix = `${version.path}/connectors/web/cmcd`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, cmcdGuideMatch[2], '/getting-started');
       if (matchingDoc) return matchingDoc;
     }
   }
