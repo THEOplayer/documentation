@@ -176,8 +176,26 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=ErrorCode.html>ErrorCode</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#code>code</a></code></th>
+                                            <td class="colFirst"><code>private final <a href=ErrorCategory.html>ErrorCategory</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#category>category</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=ErrorCode.html>ErrorCode</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#code>code</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#cause>cause</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#message>message</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -207,13 +225,13 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#THEOplayerException(com.theoplayer.android.api.error.ErrorCode,java.lang.String)">THEOplayerException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message)</code></th>
+                                                        href="#THEOplayerException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.Throwable)">THEOplayerException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> cause)</code></th>
                                                 <td class="colLast">Constructs an exception that can be thrown by the player.</td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#THEOplayerException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.Throwable)">THEOplayerException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> cause)</code></th>
+                                                        href="#THEOplayerException(com.theoplayer.android.api.error.ErrorCode,java.lang.String)">THEOplayerException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message)</code></th>
                                                 <td class="colLast">Constructs an exception that can be thrown by the player.</td>
                                             </tr>
                                         
@@ -267,19 +285,19 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=ErrorCode.html>ErrorCode</a></code>
+                                            <td class="colFirst"><code>final <a href=ErrorCategory.html>ErrorCategory</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#getCode()>getCode</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#getCategory()>getCategory</a>() </code>
                                             </th>
-                                            <td class="colLast">The unique <a href=ErrorCode.html>ErrorCode</a> of the error.</td>
+                                            <td class="colLast">The <a href=ErrorCategory.html>ErrorCategory</a> of the error.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code><a href=ErrorCategory.html>ErrorCategory</a></code>
+                                            <td class="colFirst"><code>final <a href=ErrorCode.html>ErrorCode</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#getCategory()>getCategory</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#getCode()>getCode</a>() </code>
                                             </th>
-                                            <td class="colLast">The <a href=ErrorCategory.html>ErrorCategory</a> of the error.</td>
+                                            <td class="colLast">The <a href=ErrorCode.html>ErrorCode</a> of the exception.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -287,11 +305,11 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                                 </div>
                                 <ul class="blockList">
                                 
-                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Throwable">
+                                    <li class="blockList"><a id="methods.inherited.from.class.kotlin.Throwable">
                                             <!--   -->
                                         </a>
-                                            <h3>Methods inherited from class&nbsp;java.lang.Throwable</h3>
-                                            <code>addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, setStackTrace, toString</code></li>
+                                            <h3>Methods inherited from class&nbsp;kotlin.Throwable</h3>
+                                            <code>addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, printStackTrace, printStackTrace, setStackTrace</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
@@ -319,29 +337,6 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="THEOplayerException(com.theoplayer.android.api.error.ErrorCode,java.lang.String)"></a>
-                                <ul class="blockList">
-                                    <li class="blockList">
-                                        <h4>THEOplayerException</h4>
-                                        <pre>THEOplayerException(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message)</pre>
-                                        <div class="block">Constructs an exception that can be thrown by the player.</div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>code</code> - The <a href=ErrorCode.html>ErrorCode</a> of the exception.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>message</code> - A textual description of the exception.</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                    </li>
-                                </ul>
-                                
                                 <a name="THEOplayerException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.Throwable)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
@@ -349,22 +344,15 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                                         <pre>THEOplayerException(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> cause)</pre>
                                         <div class="block">Constructs an exception that can be thrown by the player.</div>
                                         
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>code</code> - The <a href=ErrorCode.html>ErrorCode</a> of the exception.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>message</code> - A textual description of the exception.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>cause</code> - The cause of the exception.</dd>
-                                            
-                                            
-                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerException(com.theoplayer.android.api.error.ErrorCode,java.lang.String)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerException</h4>
+                                        <pre>THEOplayerException(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message)</pre>
+                                        <div class="block">Constructs an exception that can be thrown by the player.</div>
                                         
                                     </li>
                                 </ul>
@@ -382,41 +370,15 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="getCode()">
+                                <a id="getCategory()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getCode</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=ErrorCode.html>ErrorCode</a> <a href=ContentProtectionException.html#getCode()>getCode</a>()</pre>
-                                        <div class="block"><p>The unique <a href=ErrorCode.html>ErrorCode</a> of the error.</p></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The ErrorCode. (NonNull)</p></dd>
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="getCategory()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockListLast"
-                                          >
-                                    <li class="blockList">
                                         <h4>getCategory</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=ErrorCategory.html>ErrorCategory</a> <a href=ContentProtectionException.html#getCategory()>getCategory</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=ErrorCategory.html>ErrorCategory</a> <a href=THEOplayerException.html#getCategory()>getCategory</a>()</pre>
                                         <div class="block"><p>The <a href=ErrorCategory.html>ErrorCategory</a> of the error.</p></div>
 
                                         <dl>
@@ -426,6 +388,29 @@ extends <a href=https://developer.android.com/reference/kotlin/java/lang/Excepti
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The ErrorCategory. (NonNull)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCode()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCode</h4>
+                                        <pre class="methodSignature"> final <a href=ErrorCode.html>ErrorCode</a> <a href=THEOplayerException.html#getCode()>getCode</a>()</pre>
+                                        <div class="block"><p>The <a href=ErrorCode.html>ErrorCode</a> of the exception. (NonNull)</p></div>
+
+                                        <dl>
+
+                                        
+
                                         
 
                                         

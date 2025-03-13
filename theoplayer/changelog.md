@@ -5,6 +5,79 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.13.0 (2025/03/08)
+
+### General
+
+#### ⚡ Improvements
+
+- Improved speed of ABR decisions on THEOlive and HESP streams.
+
+### Web
+
+#### ✨ Features
+
+- Added support for THEOads streams while playing in native fullscreen.
+- Added `mediaUrl` property on client-side VAST ads when using the default `csai` integration, representing the content URL of the `MediaFile` that was selected for ad playback.
+- Added `closedCaptionFiles` property on client-side VAST ads when using the default `csai` integration, representing the list of `ClosedCaptionFile`s that may accompany the `MediaFile`s that are available for ad playback.
+- Added the IMA DAI `streamActivityMonitorId` property as a configuration on the `TheoAdDescription`.
+
+#### ⚡ Improvements
+
+- When the `Duration` in a client-side VAST ad has an invalid value or is equal to zero seconds, the player now throws an error and skips the ad.
+- Added support for VAST error 1009 when the ad server returns an empty VAST response without wrappers.
+
+#### 🐛 Issues
+
+- Fixed an issue where exiting native PiP or native fullscreen did not dispatch a paused event when using THEOads despite being paused due to the native behavior.
+- Fixed an issue with Google IMA where only the first ad in a VMAP with multiple ads could be paused.
+
+### Android
+
+#### ✨ Features
+
+- Added support for caching sources using the Media3 integration by setting `CachingParameters.storageType` to `CacheStorageType.MEDIA3`. Sources cached with this method will only be playable using the Media3 integration.
+- Added `TextTrackCue.getTrack()` getter.
+- Added support for CMCD in THEOplayer. This is only supported with the Media3 integration. Read more about it [on our Android CMCD docs](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/cmcd/getting-started/).
+- Added support for automatically adding all available integrations to a new `THEOplayerView` instance. This can be enabled with `THEOplayerConfig.Builder.autoIntegrations()`, and will be enabled by default starting with THEOplayer version 9.0.
+- Added support for the Latency Manager API (`player.latency`) in the Media3 integration.
+- Added support for THEOlive and HESP streams with the Media3 integration.
+- Added support for ABR strategies when using the Media3 integration.
+
+#### ⚡ Improvements
+
+- Improved support for TTML subtitles and CEA-608 captions in the Media3 integration.
+- Added Kotlin constructor for `TypedSource`, as an alternative for `TypedSource.Builder`.
+- Added support for `ContentProtectionSuccessEvent`, `ContentProtectionErrorEvent` and `MediaEncryptedEvent` in the Media3 integration.
+- Added `Player.ads.ima` as an alternative method to retrieve the `GoogleImaIntegration` (if it was previously added to the player).
+- Added `Player.ads.dai` as an alternative method to retrieve the `GoogleDaiIntegration` (if it was previously added to the player).
+- Added `Player.theoAds` as an alternative method to retrieve the `TheoAdsIntegration` (if it was previously added to the player).
+- Added `THEOplayerConfig.googleImaConfiguration` as an alternative method to configure the `GoogleImaIntegration`.
+- Added `THEOplayerConfig.castConfiguration` as an alternative method to configure the `CastIntegration`.
+
+#### 👎 Deprecations
+
+- Deprecated `THEOplayerConfig.liveOffset` and `.isHlsDateRange`. Use their counterparts on `TypedSource` instead.
+- Renamed `Media3PlayerIntegration.createMedia3PlayerIntegration()` to `Media3Integration.createMedia3Integration()`. The old name still works, but is now deprecated.
+- Deprecated `Media3Integration.SourceSelectCallback`. Use `TypedSource.playbackPipeline` instead to enable or disable the Media3 integration for a specific source.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- Changing `THEOplayer.backgroundPlaybackDelegate` property type to be optional. This is a minor change for internal purposes, but should not affect common usage of this API.
+
+#### ✨ Features
+
+- Added support for CMCD in THEOplayer. This is only supported on iOS 18.0+. Read more about it [on our iOS CMCD docs](https://www.theoplayer.com/docs/theoplayer/how-to-guides/ios/cmcd/getting-started/).
+- Added `player.theoLive` API for THEOlive-specific features
+
+#### 🐛 Issues
+
+- Fixed an issue where performing consecutive source changes in quick succession would result in an indefinite freeze on THEOlive sources.
+- Fixed an issue where the Chromecast sender app would be disconnected from the session and out of sync with the receiver app when returning from background to foreground.
+- Fixed an issue that caused the text track API to stop working correctly after pausing and playing a THEOlive stream.
+
 ## 🚀 8.12.1 (2025/02/28)
 
 ### Web

@@ -92,6 +92,8 @@ var pathtoroot = "";
         <h2 title="Contents">Contents</h2>
         <ul>
         
+            <li><a href="#interface">Interfaces</a></li>
+        
             <li><a href="#class">Classes</a></li>
         
             <li><a href="#method">Methods</a></li>
@@ -101,6 +103,43 @@ var pathtoroot = "";
         </ul>
     </div>
     <div class="contentContainer">
+        
+            <a id="interface"></a>
+            <ul class="blockList">
+                <li class="blockList">
+                    <div class="deprecatedSummary">
+                        <table>
+                            <caption><span>Interfaces</span><span class="tabEnd">&nbsp;</span></caption>
+                            <tr>
+                                <th class="colFirst" scope="col">Interface</th>
+                                <th class="colLast" scope="col">Description</th>
+                            </tr>
+                            
+                                <tr class="altColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/media3/Media3Integration.SourceSelectCallback.html">com.theoplayer.android.api.media3.Media3Integration.SourceSelectCallback</a>
+                                    </th>
+                                    <td class="colLast">A callback that decides which sources to play using the <a href=com/theoplayer/android/api/media3/Media3Integration.html>Media3Integration</a>.</td>
+                                </tr>
+                            
+                                <tr class="rowColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/media3/Media3PlayerIntegration.SourceSelectCallback.html">com.theoplayer.android.api.media3.Media3PlayerIntegration.SourceSelectCallback</a>
+                                    </th>
+                                    <td class="colLast"></td>
+                                </tr>
+                            
+                                <tr class="altColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/media3/Media3PlayerIntegration.html">com.theoplayer.android.api.media3.Media3PlayerIntegration</a>
+                                    </th>
+                                    <td class="colLast"></td>
+                                </tr>
+                            
+                        </table>
+                    </div>
+                </li>
+            </ul>
         
             <a id="class"></a>
             <ul class="blockList">
@@ -114,6 +153,13 @@ var pathtoroot = "";
                             </tr>
                             
                                 <tr class="altColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/media3/Media3PlayerIntegrationFactory.html">com.theoplayer.android.api.media3.Media3PlayerIntegrationFactory</a>
+                                    </th>
+                                    <td class="colLast">Factory class for creating a <a href=com/theoplayer/android/api/media3/Media3PlayerIntegration.html>Media3PlayerIntegration</a>.</td>
+                                </tr>
+                            
+                                <tr class="rowColor">
                                     <th class="colDeprecatedItemName" scope="row">
                                         <a href="com/theoplayer/android/api/theolive/SessionId.html">com.theoplayer.android.api.theolive.SessionId</a>
                                     </th>
@@ -138,9 +184,58 @@ var pathtoroot = "";
                             
                                 <tr class="altColor">
                                     <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/media3/Media3PlayerIntegrationFactory.html#createMedia3PlayerIntegration(com.theoplayer.android.api.media3.Media3PlayerIntegration.SourceSelectCallback)">com.theoplayer.android.api.media3.createMedia3PlayerIntegration(com.theoplayer.android.api.media3.Media3PlayerIntegration.SourceSelectCallback)</a>
+                                    </th>
+                                    <td class="colLast">Creates a <a href=com/theoplayer/android/api/media3/Media3PlayerIntegration.html>Media3PlayerIntegration</a> instance.</td>
+                                </tr>
+                            
+                                <tr class="rowColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/THEOplayerConfig.Builder.html#liveOffset(double)">com.theoplayer.android.api.liveOffset(double)</a>
+                                    </th>
+                                    <td class="colLast">Sets the offset duration between the live point and the end of the manifest.</td>
+                                </tr>
+                            
+                                <tr class="altColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/THEOplayerConfig.Builder.html#hlsDateRange(boolean)">com.theoplayer.android.api.hlsDateRange(boolean)</a>
+                                    </th>
+                                    <td class="colLast">Sets whether the logic to expose date ranges parsed from HLS manifests is enabled.</td>
+                                </tr>
+                            
+                                <tr class="rowColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/THEOplayerConfig.html#getLiveOffset()">com.theoplayer.android.api.getLiveOffset()</a>
+                                    </th>
+                                    <td class="colLast">The offset duration between the live point and the end of the manifest.</td>
+                                </tr>
+                            
+                                <tr class="altColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/THEOplayerConfig.html#isHlsDateRange()">com.theoplayer.android.api.isHlsDateRange()</a>
+                                    </th>
+                                    <td class="colLast">Returns whether the logic to expose date ranges parsed from HLS manifests is enabled.</td>
+                                </tr>
+                            
+                                <tr class="rowColor">
+                                    <th class="colDeprecatedItemName" scope="row">
                                         <a href="com/theoplayer/android/api/source/drm/preintegration/ConaxDRMConfiguration.Builder.html#fairPlay(com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration)">com.theoplayer.android.api.source.drm.preintegration.fairPlay(com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration)</a>
                                     </th>
                                     <td class="colLast">Sets the configuration of the Fairplay key system.</td>
+                                </tr>
+                            
+                                <tr class="altColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/ads/ima/GoogleImaIntegrationFactory.html#createGoogleImaIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)">com.theoplayer.android.api.ads.ima.createGoogleImaIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)</a>
+                                    </th>
+                                    <td class="colLast">Creates a GoogleImaIntegration instance.</td>
+                                </tr>
+                            
+                                <tr class="rowColor">
+                                    <th class="colDeprecatedItemName" scope="row">
+                                        <a href="com/theoplayer/android/api/ads/dai/GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)">com.theoplayer.android.api.ads.dai.createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)</a>
+                                    </th>
+                                    <td class="colLast">Creates a GoogleDaiIntegration instance.</td>
                                 </tr>
                             
                         </table>

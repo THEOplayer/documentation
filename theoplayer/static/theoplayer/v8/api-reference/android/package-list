@@ -10,6 +10,7 @@ $dokka.location:com.theoplayer.android.api.event.ads/AdsEventTypes.Identifiers//
 $dokka.location:com.theoplayer.android.api.event.player.theolive/TheoLiveEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/theolive/TheoLiveEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.event.player/PlayerEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/event/player/PlayerEventTypes.Identifiers.html
 $dokka.location:com.theoplayer.android.api.latency/LatencyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/latency/LatencyConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.media3/Media3Integration.SourceSelectCallback///PointingToDeclaration/com/theoplayer/android/api/media3/Media3Integration.SourceSelectCallback.html
 $dokka.location:com.theoplayer.android.api.media3/Media3PlayerIntegration.SourceSelectCallback///PointingToDeclaration/com/theoplayer/android/api/media3/Media3PlayerIntegration.SourceSelectCallback.html
 $dokka.location:com.theoplayer.android.api.pip/PipConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/pip/PipConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack.cue/DateRangeCue.CustomAttributes///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/cue/DateRangeCue.CustomAttributes.html
@@ -66,6 +67,7 @@ com.theoplayer.android.api.ads.theoads
 com.theoplayer.android.api.cache
 com.theoplayer.android.api.cast
 com.theoplayer.android.api.cast.chromecast
+com.theoplayer.android.api.cmcd
 com.theoplayer.android.api.contentprotection
 com.theoplayer.android.api.error
 com.theoplayer.android.api.event

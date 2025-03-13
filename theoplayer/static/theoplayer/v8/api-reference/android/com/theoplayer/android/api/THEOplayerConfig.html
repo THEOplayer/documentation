@@ -316,6 +316,14 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                             <td class="colLast">The TheoLive configuration of the player.</td>
                                         </tr>
                                         
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>abstract boolean</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#isAutoIntegrations()>isAutoIntegrations</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether all available integrations should be automatically added on the created <a href=player/Player.html>Player</a>.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -391,7 +399,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getLiveOffset</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a> <a href=THEOplayerConfig.html#getLiveOffset()>getLiveOffset</a>()</pre>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>()@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a> <a href=THEOplayerConfig.html#getLiveOffset()>getLiveOffset</a>()</pre>
                                         <div class="block"><p>The offset duration between the live point and the end of the manifest. </p><ul><li>This will return null if it is 3 target durations. </li></ul></div>
 
                                         <dl>
@@ -417,7 +425,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>isHlsDateRange</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#isHlsDateRange()>isHlsDateRange</a>()</pre>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/java/lang/Deprecated.html>Deprecated</a>()@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#isHlsDateRange()>isHlsDateRange</a>()</pre>
                                         <div class="block"><p>Returns whether the logic to expose date ranges parsed from HLS manifests is enabled. (Nullable)</p></div>
 
                                         <dl>
@@ -540,7 +548,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getTHEOLiveConfiguration</h4>
@@ -554,6 +562,32 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The TheoLive configuration.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isAutoIntegrations()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isAutoIntegrations</h4>
+                                        <pre class="methodSignature"> abstract boolean <a href=THEOplayerConfig.html#isAutoIntegrations()>isAutoIntegrations</a>()</pre>
+                                        <div class="block"><p>Whether all available integrations should be automatically added on the created <a href=player/Player.html>Player</a>.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>True if integrations should be automatically added.</p></dd>
                                         
 
                                         

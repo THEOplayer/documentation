@@ -261,6 +261,14 @@ public interface <span class="typeNameLabel"><a href=SourceChangeEvent.html>Sour
                                             <td class="colLast">The player's new <a href=../../source/SourceDescription.html>SourceDescription</a>.</td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=../../source/PlaybackPipeline.html>PlaybackPipeline</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=SourceChangeEvent.html#getPlaybackPipeline()>getPlaybackPipeline</a>() </code>
+                                            </th>
+                                            <td class="colLast">The playback pipeline selected to play this source.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -315,7 +323,7 @@ public interface <span class="typeNameLabel"><a href=SourceChangeEvent.html>Sour
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getSource</h4>
@@ -331,6 +339,37 @@ public interface <span class="typeNameLabel"><a href=SourceChangeEvent.html>Sour
                                             <dd><p>The new source. (Nullable)</p></dd>
                                         
 
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPlaybackPipeline()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPlaybackPipeline</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=../../source/PlaybackPipeline.html>PlaybackPipeline</a> <a href=SourceChangeEvent.html#getPlaybackPipeline()>getPlaybackPipeline</a>()</pre>
+                                        <div class="block"><p>The playback pipeline selected to play this source. </p><ul><li>Currently, this returns <code>null</code> for Millicast sources and remote Chromecast sources.</li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The selected playback pipeline, or <code>null</code> if unknown.</p></dd>
+                                        
+
+                                        
+                                            <dt><span class="sinceLabel">Since:</span></dt>
+                                            
+                                                <dd><p>v8.13.0</p></dd>
+                                            
                                         
 
                                         </dl>

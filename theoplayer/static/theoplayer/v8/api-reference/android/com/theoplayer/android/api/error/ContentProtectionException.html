@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public class <span class="typeNameLabel"><a href=ContentProtectionException.html>ContentProtectionException</a></span>
+public final class <span class="typeNameLabel"><a href=ContentProtectionException.html>ContentProtectionException</a></span>
 extends <a href=THEOplayerException.html>THEOplayerException</a>
                     </pre>
                     <div class="block"><p>A THEOplayer exception that gives an informative description of the content-protection error that occurred.</p></div>
@@ -176,32 +176,56 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public  <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#url>url</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>public  int</code></td>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#status>status</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public  <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#statusText>statusText</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>public  <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#response>response</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=ErrorCode.html>ErrorCode</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#code>code</a></code></th>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#systemCode>systemCode</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=ErrorCategory.html>ErrorCategory</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#category>category</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=ErrorCode.html>ErrorCode</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#code>code</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#cause>cause</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerException.html#message>message</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -231,13 +255,13 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String,int)">ContentProtectionException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, int status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, int systemCode)</code></th>
+                                                        href="#ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String,java.lang.Integer)">ContentProtectionException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> systemCode)</code></th>
                                                 <td class="colLast">Constructs a content-protection exception that can be thrown by the player.</td>
                                             </tr>
                                         
                                             <tr class="rowColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.Throwable,java.lang.String,int,java.lang.String,java.lang.String,int)">ContentProtectionException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> cause, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, int status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, int systemCode)</code></th>
+                                                        href="#ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.Throwable,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String,java.lang.Integer)">ContentProtectionException</a></span>(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> cause, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> systemCode)</code></th>
                                                 <td class="colLast">Constructs a content-protection exception that can be thrown by the player.</td>
                                             </tr>
                                         
@@ -291,7 +315,7 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#getUrl()>getUrl</a>() </code>
                                             </th>
@@ -299,7 +323,7 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>int</code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#getStatus()>getStatus</a>() </code>
                                             </th>
@@ -307,7 +331,7 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#getStatusText()>getStatusText</a>() </code>
                                             </th>
@@ -315,11 +339,19 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#getResponse()>getResponse</a>() </code>
                                             </th>
                                             <td class="colLast">A textual representation of the body of the HTTP response.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ContentProtectionException.html#getSystemCode()>getSystemCode</a>() </code>
+                                            </th>
+                                            <td class="colLast">The internal error code from the CDM.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -333,11 +365,11 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                             <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.error.THEOplayerException</h3>
                                             <code>getCategory, getCode</code></li>
                                  
-                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Throwable">
+                                    <li class="blockList"><a id="methods.inherited.from.class.kotlin.Throwable">
                                             <!--   -->
                                         </a>
-                                            <h3>Methods inherited from class&nbsp;java.lang.Throwable</h3>
-                                            <code>addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, setStackTrace, toString</code></li>
+                                            <h3>Methods inherited from class&nbsp;kotlin.Throwable</h3>
+                                            <code>addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, printStackTrace, printStackTrace, setStackTrace</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
@@ -365,11 +397,11 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String,int)"></a>
+                                <a name="ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String,java.lang.Integer)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>ContentProtectionException</h4>
-                                        <pre>ContentProtectionException(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, int status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, int systemCode)</pre>
+                                        <pre>ContentProtectionException(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> systemCode)</pre>
                                         <div class="block">Constructs a content-protection exception that can be thrown by the player.</div>
                                         
                                         <dl>
@@ -408,49 +440,12 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                     </li>
                                 </ul>
                                 
-                                <a name="ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.Throwable,java.lang.String,int,java.lang.String,java.lang.String,int)"></a>
+                                <a name="ContentProtectionException(com.theoplayer.android.api.error.ErrorCode,java.lang.String,java.lang.Throwable,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String,java.lang.Integer)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>ContentProtectionException</h4>
-                                        <pre>ContentProtectionException(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> cause, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, int status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, int systemCode)</pre>
+                                        <pre>ContentProtectionException(<a href=ErrorCode.html>ErrorCode</a> code, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> message, <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> cause, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> url, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> status, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> statusText, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> response, <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> systemCode)</pre>
                                         <div class="block">Constructs a content-protection exception that can be thrown by the player.</div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>code</code> - The <a href=ErrorCode.html>ErrorCode</a> of the exception.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>message</code> - A textual description of the exception.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>cause</code> - The cause of the exception.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>url</code> - The URL that was used in the request.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>status</code> - The status code.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>statusText</code> - A textual description regarding the status.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>response</code> - A textual description of the response.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>systemCode</code> - The internal error code from the CDM.</dd>
-                                            
-                                            
-                                        </dl>
                                         
                                     </li>
                                 </ul>
@@ -476,16 +471,13 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                           >
                                     <li class="blockList">
                                         <h4>getUrl</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getUrl()>getUrl</a>()</pre>
-                                        <div class="block"><p>The URL that was used in the request. </p><ul><li>Only available when <a href=ContentProtectionException.html#getCode()>getCode</a> is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>CONTENT_PROTECTION_LICENSE_ERROR</a>. </li></ul></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getUrl()>getUrl</a>()</pre>
+                                        <div class="block"><p>The URL that was used in the request.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The URL that was used in the request. (Nullable)</p></dd>
                                         
 
                                         
@@ -502,16 +494,13 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                           >
                                     <li class="blockList">
                                         <h4>getStatus</h4>
-                                        <pre class="methodSignature"> int <a href=ContentProtectionException.html#getStatus()>getStatus</a>()</pre>
-                                        <div class="block"><p>The status code from the HTTP response. </p><ul><li>Only available when <a href=ContentProtectionException.html#getCode()>getCode</a> is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>CONTENT_PROTECTION_LICENSE_ERROR</a>. </li></ul></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=ContentProtectionException.html#getStatus()>getStatus</a>()</pre>
+                                        <div class="block"><p>The status code from the HTTP response.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The status code from the HTTP response.</p></dd>
                                         
 
                                         
@@ -528,16 +517,13 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                           >
                                     <li class="blockList">
                                         <h4>getStatusText</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getStatusText()>getStatusText</a>()</pre>
-                                        <div class="block"><p>A textual description regarding the status from the HTTP response. </p><ul><li>Only available when <a href=ContentProtectionException.html#getCode()>getCode</a> is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>CONTENT_PROTECTION_LICENSE_ERROR</a>. </li></ul></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getStatusText()>getStatusText</a>()</pre>
+                                        <div class="block"><p>A textual description regarding the status from the HTTP response.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The status text from the HTTP response. (Nullable)</p></dd>
                                         
 
                                         
@@ -550,20 +536,40 @@ extends <a href=THEOplayerException.html>THEOplayerException</a>
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getResponse</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getResponse()>getResponse</a>()</pre>
-                                        <div class="block"><p>A textual representation of the body of the HTTP response. </p><ul><li>Only available when <a href=ContentProtectionException.html#getCode()>getCode</a> is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>CONTENT_PROTECTION_LICENSE_ERROR</a>. </li></ul></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ContentProtectionException.html#getResponse()>getResponse</a>()</pre>
+                                        <div class="block"><p>A textual representation of the body of the HTTP response.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_CERTIFICATE_ERROR>ErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</a> or <a href=ErrorCode.html#CONTENT_PROTECTION_LICENSE_ERROR>ErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</a>.</p></li></ul></div>
 
                                         <dl>
 
                                         
 
                                         
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The body of the HTTP response. (Nullable)</p></dd>
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSystemCode()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSystemCode</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=ContentProtectionException.html#getSystemCode()>getSystemCode</a>()</pre>
+                                        <div class="block"><p>The internal error code from the CDM.</p><ul><li><p>Only available when code is <a href=ErrorCode.html#CONTENT_PROTECTION_INTERNAL_ERROR>ErrorCode.CONTENT_PROTECTION_INTERNAL_ERROR</a>.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+
                                         
 
                                         

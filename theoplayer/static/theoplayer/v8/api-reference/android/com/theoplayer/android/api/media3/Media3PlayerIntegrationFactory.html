@@ -113,7 +113,7 @@ var pathtoroot = "../../../../../";
                     
                     <hr>
                     <pre class="wrap-overflow">
-
+@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use Media3IntegrationFactory&quot;) 
 public class <span class="typeNameLabel"><a href=Media3PlayerIntegrationFactory.html>Media3PlayerIntegrationFactory</a></span>
 
                     </pre>
@@ -311,10 +311,10 @@ public class <span class="typeNameLabel"><a href=Media3PlayerIntegrationFactory.
                                           >
                                     <li class="blockList">
                                         <h4>createMedia3PlayerIntegration</h4>
-                                        <pre class="methodSignature"> final static <a href=Media3PlayerIntegration.html>Media3PlayerIntegration</a> <a href=Media3PlayerIntegrationFactory.html#createMedia3PlayerIntegration(com.theoplayer.android.api.media3.Media3PlayerIntegration.SourceSelectCallback)>createMedia3PlayerIntegration</a>(<a href=Media3PlayerIntegration.SourceSelectCallback.html>Media3PlayerIntegration.SourceSelectCallback</a> sourceSelectCallback)</pre>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use createMedia3Integration&quot;, replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {&quot;com.theoplayer.android.api.media3.Media3IntegrationFactory.createMedia3Integration&quot;}, expression = &quot;createMedia3Integration(sourceSelectCallback = sourceSelectCallback)&quot;)) final static <a href=Media3PlayerIntegration.html>Media3PlayerIntegration</a> <a href=Media3PlayerIntegrationFactory.html#createMedia3PlayerIntegration(com.theoplayer.android.api.media3.Media3PlayerIntegration.SourceSelectCallback)>createMedia3PlayerIntegration</a>(<a href=Media3PlayerIntegration.SourceSelectCallback.html>Media3PlayerIntegration.SourceSelectCallback</a> sourceSelectCallback)</pre>
                                         <div class="block"><p>Creates a <a href=Media3PlayerIntegration.html>Media3PlayerIntegration</a> instance.</p><p>Use Player.addIntegration to attach this integration to your THEOplayer instance.</p><pre><code>val theoplayerView = THEOplayerView(context)
-val media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
-theoplayerView.player.addIntegration(media3PlayerIntegration)</code></pre></div>
+val media3Integration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
+theoplayerView.player.addIntegration(media3Integration)</code></pre></div>
 
                                         <dl>
 
