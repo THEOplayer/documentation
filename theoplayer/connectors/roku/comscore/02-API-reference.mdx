@@ -1,0 +1,116 @@
+# Comscore Connector API
+
+The attributes, methods and events for the THEOComscoreConnector.
+
+## Attributes
+
+| Name        | Type             | Default              | Access Permission | Description                                  |
+| ----------- | ---------------- | -------------------- | ----------------- | -------------------------------------------- |
+| id          | string           |                      | read,write        | The id of the node.                          |
+| MEDIA_TYPES | associativeArray | Comscore Media Types | read              | Constant with the Comscore media type enums. |
+| AD_TYPES    | associativeArray | Comscore Ad Types    | read              | Constant with the Comscore ad type enums.    |
+
+## Methods
+
+| Method               | Params                                                                                                                                      | Description                                                                                                                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| configure            | player: THEOplayer, configuration: THEOConnectorConfiguration, metadata: (optional) THEOComscoreReadableMetadata or THEOComscoreTagMetadata | Add a player to monitor, configure the Comscore SDK, and also pass in optional metadata for your content.                                                                                                                                  |
+| destroy              | none                                                                                                                                        | Destroy the connector. It also ends the current session, if any.                                                                                                                                                                           |
+| endSession           | none                                                                                                                                        | End the current Comscore session, but do not destroy the connector.                                                                                                                                                                        |
+| update               | metadata: THEOComscoreReadableMetadata or THEOComscoreTagMetadata                                                                           | Updates the content metadata for the current session.                                                                                                                                                                                      |
+| sendTick             | none                                                                                                                                        | Sends a tick to Comscore. This is only needed if you do not implement the `tccTick` field in your main event loop.                                                                                                                         |
+| startSession         | mediaType: string, metadata: (optional) THEOComscoreReadableMetadata or THEOComscoreTagMetadata                                             | Starts a Comscore streaming session with the specified media type, and optionally applies the content metadata. If not passing content metadata, you will need to add it separately with the `update` method before calling `startSession` |
+| reportPlaybackEvent  | eventType: string, eventDetail: AssociativeArray                                                                                            | Reports a playback event with the associated data to Comscore.                                                                                                                                                                             |
+| reportPlaybackFailed | errorMessage: string                                                                                                                        | Reports a playback failure to Comscore.                                                                                                                                                                                                    |
+| setAdInfo            | adInfo: AssociativeArray                                                                                                                    | Sets the supplied ad info to Comscore. adInfo should be in the form of ComscoreContentInfo                                                                                                                                                 |
+| setContentInfo       | contentMetadata: AssociativeArray                                                                                                           | Sets or updates the content metadata for the current session. Partials are supported and will be merged with the existing content metadata. See below for the schema of content metadata.                                                  |
+| startSession         | contentMetadata: AssociativeArray                                                                                                           | Starts a Comscore session with the supplied content metadata. See below for the schema of content metadata.                                                                                                                                |
+
+### Comscore Config
+
+The configuration the Comscore connector is the THEOConnectorConfiguration interface.
+
+```brightscript
+configuration = {
+	publisherId: "MY_PUBLISHER_ID",
+	publisherSecret: "MY_PUBLISHER_SECRET",
+	applicationName: "MY_APPLICATION_NAME"
+}
+```
+
+The `applicationName` property is optional. If omitted, Comscore will automatically collect it from the manifest file.
+
+To get your publisher ID and secret, log into your Comscore account. Go to the Direct dashboard, and switch to the Mobile App tab. Then click the Get Tag button, and a dialog should show with the ID and secret in it.
+
+### Content Metadata
+
+Content metadata should be an AssociativeArray following Comscore's schema for streaming tags. However, the THEOComscoreConnector also will accept a more human readable format. These are in the THEOComscoreReadableMetadata and THEOComscoreTagMetadata interfaces. NOTE: if you omit a string value, replace it with `"*null"`, which is the value requested by Comscore for empty fields.
+
+#### THEOComscoreReadableMetadata
+
+```brightscript
+comscoreMetadata = {
+	adLoadFlag: false,
+	assetId: "myAssetId",
+	c3: "Arbitrary C3 value",
+	c4: "*null",
+	c6: "*null",
+	clipLength: 600,
+	completeEpisodeFlag: true,
+	contentGenre: "Sports",
+	digitalAirDate: "2025-03-04",
+	episodeNumber: "59",
+	episodeSeasonNumber: "5",
+	episodeTitle: "The Game Last Night",
+	programTitle: "The Sports Show",
+	publisherBrandName: "Sports Publisher Network",
+	stationTitle: "KXYZ",
+	tvAirDate: "2025-03-04"
+}
+```
+
+#### THEOComscoreTagMetadata
+
+NOTE: all values must be strings for this object, with Booleans being represented as `"0"` and `"1"`.
+
+```brightscript
+comscoreMetadata = {
+	ns_st_ia: "0",
+	ns_st_ci: c3.cm.id,
+	c3: "Arbitrary C3 value",
+	c4: "*null",
+	c6: "*null",
+	ns_st_cl: "600",
+	ns_st_ce: "1",
+	ns_st_cg: "Sports",
+	ns_st_ddt: "2025-03-04",
+	ns_st_en: "59",
+	ns_st_sn: "5",
+	ns_st_ep: "The Game Last Night",
+	ns_st_pr: "The Sports Show",
+	ns_st_pu: "Sports Publisher Network",
+	ns_st_st: "KXYZ",
+	ns_st_tdt: "2025-03-04"
+}
+```
+
+### Sending Ticks
+
+Comscore wants a tick to be sent to it on every run of the main event loop. You can do this manually by calling the `sendTick` method on the THEOComscoreConnector:
+`m.comscoreConnector.callFunc("sendTick")`
+
+However, if you want to have the connector automatically send the tick for you, in your `main.brs` file, add an integer field to the global node called `tccTick`. Set it equal to 0 and then increment it on each run of your event loop. Note that the `wait` line will make it run every 1000 milliseconds.
+
+```brightscript
+m.global.addField("tccTick", "integer", false)
+m.global.tccTick = 0
+
+while true
+	m.global.tccTick = m.global.tccTick + 1
+	msg = wait(1000, m.port)
+	msgType = type(msg)
+	if msgType = "roSGScreenEvent"
+		if msg.isScreenClosed() then return
+	end if
+end while
+```
