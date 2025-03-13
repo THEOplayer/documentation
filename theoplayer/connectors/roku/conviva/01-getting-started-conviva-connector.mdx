@@ -1,0 +1,54 @@
+# Getting started with the Conviva Connector for the Roku SDK
+
+## Prerequisites
+
+In order to set up the Conviva Connector in your Roku application, you'll need the following:
+
+- Your Conviva customer key (available in your Conviva Pulse dashboard)
+- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
+- Optionally for debug and testing, your Conviva Touchstone gateway URL, which should be in the format of `"https://MY_TOUCHSTONE_DOMAIN.ts-testonly.conviva.com/"`
+
+## Integration
+
+1. First you must download the THEO Conviva Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOConvivaConnector` and providing the URI for the THEOConvivaConnector.pkg:
+
+```xml
+<ComponentLibrary id="THEOConvivaConnector" uri="https://cdn.myth.theoplayer.com/roku/1.5.0/THEOConvivaConnector.pkg" />
+```
+
+2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+
+```brightscript
+sub Init()
+    THEOConvivaNode = m.top.findNode("THEOConvivaConnector")
+    THEOConvivaNode.observeField("loadStatus", "onLibraryLoadStatusChanged")
+end sub
+
+sub onLibraryLoadStatusChanged(event as object)
+    THEOConvivaNode = event.getROSGNode()
+
+    if THEOConvivaNode = invalid
+        return
+    end if
+
+    if THEOConvivaNode.loadStatus = "ready"
+		' Success
+    else if THEOConvivaNode.loadStatus = "failed"
+		? "Failed to load component library, please check URL. "; THEOConvivaNode.uri
+	end if
+end sub
+```
+
+3. With the SDK and connector loaded, you can now proceed to initialize the player and Conviva connector along with it. To use the THEOConvivaConnector``
+
+```brightscript
+THEOConvivaNode.callFunc("configure", m.player, "MY_CUSTOMER_KEY")
+```
+
+For using the connector in debug mode and a Conviva Touchstone gateway URL, configure the connector as follows:
+
+```brightscript
+THEOConvivaNode.callFunc("configure", m.player, "MY_CUSTOMER_KEY")
+```
+
+4. Consult the [API reference](TODO) for further functionality!
