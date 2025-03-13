@@ -28,7 +28,7 @@ Perform the following basic steps to set up your request:
 
 - Select the Authorization tab
 - Select “Basic Auth” as type
-- Pass your credentials, i.e. username and password. These correspond to respectively the token (=user name) and secret (=password) as generated in the management console. More information on authorization can be found in the [Authorization](../getting-started/authorization.mdx) guide.
+- Pass your credentials, i.e. username and password. These correspond to respectively the token (=user name) and secret (=password) as generated in the management console. More information on authorization can be found in the [Authorization](./authorization.mdx) guide.
 
 ![Setting the authorization right](../assets/img/f033f01-2.-auth.png)
 

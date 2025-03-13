@@ -47,7 +47,7 @@ If you want to burn in a clock you can follow the steps documented by vMix. You 
 **Note:\*** You are free to experiment with your encoding settings but the values shown in this image reflect the encoding setting THEOlive uses on the server side.
 
 :::info 🚧 Frame rate and bandwidth
-Remember to set the frame rate to the same value as in your THEOlive channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](../getting-started/stream-configuration.mdx) for more details.
+Remember to set the frame rate to the same value as in your THEOlive channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](./stream-configuration.mdx) for more details.
 :::
 
 ## 3. Start streaming

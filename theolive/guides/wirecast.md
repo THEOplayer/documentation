@@ -35,7 +35,7 @@ Definitely check whether your Wirecast version/edition supports RTMPS. Older ver
 
 - Define the appropriate encoder latency, taking into account your computer performance. "1 - (Ultra Fast encoding)" will give the lowest latency as it requires the least CPU time.
 - Also select the encoding "Profile". For example, "Main" will give lower latencies than "High" but on the other hand "High" will provide for better quality than "Main".
-- Lastly, set "Frames per second" to the same value used in the THEOlive channel ingest config and set "Average bit rate" to match the max bitrate of the channel preset. See [Stream configuration](../getting-started/stream-configuration.mdx) for more details.
+- Lastly, set "Frames per second" to the same value used in the THEOlive channel ingest config and set "Average bit rate" to match the max bitrate of the channel preset. See [Stream configuration](./stream-configuration.mdx) for more details.
 - Click "OK" and move to step 2 to add your live stream.
 
 ![Wirecast encoding quality](../assets/img/48bc7d6-Wirecast_-_Encoding_Quality.png)

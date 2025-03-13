@@ -18,14 +18,14 @@ In your Videon VersaStreamer / EdgeCaster Streaming Dashboard configure the foll
 
 :::info 🚧 Frame rate and bandwidth
 
-Remember to set the frame rate to the same value as in your THEOlive channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](../getting-started/stream-configuration.mdx) for more details.
+Remember to set the frame rate to the same value as in your THEOlive channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](./stream-configuration.mdx) for more details.
 :::
 
 ## 2. Set your Video Profile
 
 - Under the "Video Profiles" section, please select your profile, or create a new one. In the example below we have selected the profile "hesp.live". If you would create a new profile, you can change the name by clicking on the pencil.
 - Under Video Scaling, select the desired resolution. Note that THEOlive support resolutions up to 1080p. The resolution of your ingested stream can be found under "Encoded Video Resolution". In the example below we have selected pass through, which means we keep our "Encoded Video Resolution" of 1080p25.
-- Match the "Video bitrate" value to the maximum value of the channel preset you are using. See [Stream configuration](../getting-started/stream-configuration.mdx) for more details.
+- Match the "Video bitrate" value to the maximum value of the channel preset you are using. See [Stream configuration](./stream-configuration.mdx) for more details.
 - Further configure your encoding settings. Select `Lowest`, `Low`, `Normal` or `High` in the Quality/Latency drop-down menu, depending on your preference. Selecting `Lowest` will give you lower quality but also the lowest latency and the other way around for `High` which gives the `Highest` quality but with slightly higher latency.
 - Click on the "Save" button.
 

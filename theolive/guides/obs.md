@@ -25,14 +25,14 @@ Select _Settings_ in the _Controls_ section at the right bottom of the applicati
 As a next step, go to the _Output_ tab in the _Settings_ menu, and configure the following settings in order to achieve the lowest possible latency with THEOlive.
 
 - Output Mode: `Advanced`
-- Bitrate: match the max bitrate of the profile used in your channel (e.g.: 4500Kbps for "sport"). [More details](../getting-started/stream-configuration.mdx).
+- Bitrate: match the max bitrate of the profile used in your channel (e.g.: 4500Kbps for "sport"). [More details](stream-configuration.mdx).
 - CPU Usage Preset (higher = less CPU): `veryfast`
 - Profile: `main`
 - Tune: `zerolatency`
 
 ![Defining output settings](../assets/img/4f50555-settingsOBS.PNG)
 
-Go to the _Video_ tab and set the frame rate to the same value you are using in your channel. See [Stream configuration](../getting-started/stream-configuration.mdx) for more details.
+Go to the _Video_ tab and set the frame rate to the same value you are using in your channel. See [Stream configuration](stream-configuration.mdx) for more details.
 
 :::info 🚧 Upload bandwidth
 Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the THEOlive channel.
