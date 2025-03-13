@@ -220,6 +220,10 @@ const sidebars: SidebarsConfig = {
         },
       ],
     }),
+    connectorsCategory({
+      link: { type: 'doc', id: 'connectors/roku/index' },
+      items: rokuConnectorItems(),
+    }),
     'api-reference/roku',
     separator(),
     knowledgeBaseCategory(),
@@ -378,6 +382,25 @@ function separator(): SidebarItemHtml {
     type: 'html',
     value: '<hr>',
   };
+}
+
+function rokuConnectorItems(): SidebarItemConfig[] {
+  return [
+    {
+      type: 'category',
+      label: 'Conviva',
+      description: 'Integrate with Conviva analytics.',
+      customProps: {
+        icon: 'conviva',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Conviva Connector for Roku',
+        slug: 'connectors/roku/conviva',
+      },
+      items: ['connectors/roku/conviva/integrating-conviva-connector'],
+    },
+  ];
 }
 
 function webConnectorItems(): SidebarItemConfig[] {

@@ -1,0 +1,61 @@
+index.html:73 EVENT: 6472.999999999956 CurrentSourceChangeEvent2 {type: "currentsourcechange", date: Thu Jan 23 2025 13:54:28 GMT-0700 (Mountain Standard Time), currentSource: {…}}
+BaseWebEnvironment.ts:48 Switched to AdPlayer context
+index.html:73 EVENT: 6623.10000000025 SourceChangeEvent2 {type: "sourcechange", date: Thu Jan 23 2025 13:54:28 GMT-0700 (Mountain Standard Time), source: {…}}
+index.html:73 EVENT: 6629.00000000036 PlayEvent2 {type: "play", date: Thu Jan 23 2025 13:54:28 GMT-0700 (Mountain Standard Time), currentTime: 0}
+imasdk.googleapis.com/js/core/bridge3.682.0_en.html#goog_1991258477:1 Failed to load https://dott-origin-vod.s3.us-west-2.amazonaws.com/Ads/all_mp4_vmap/vmap.xml: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'. Origin 'https://imasdk.googleapis.com' is therefore not allowed access. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.
+imasdk.googleapis.com/js/core/bridge3.682.0_en.html#goog_1991258477:1 Failed to load https://dott-origin-vod.s3.us-west-2.amazonaws.com/Ads/all_mp4_vmap/preroll.xml: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'. Origin 'https://imasdk.googleapis.com' is therefore not allowed access. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.
+index.html:73 EVENT: 10094.2 LoadedMetadataEvent2 {type: "loadedmetadata", date: Thu Jan 23 2025 13:54:31 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:81 AD EVENT: 10121.000000000095 AdBreakBeginEvent2 {type: "adbreakbegin", date: Thu Jan 23 2025 13:54:31 GMT-0700 (Mountain Standard Time), adBreak: {…}}
+index.html:73 EVENT: 10137.700000000223 DurationChangeEvent2 {type: "durationchange", date: Thu Jan 23 2025 13:54:31 GMT-0700 (Mountain Standard Time), duration: 10}
+index.html:81 AD EVENT: 11479.00000000027 AdBeginEvent2 {type: "adbegin", date: Thu Jan 23 2025 13:54:33 GMT-0700 (Mountain Standard Time), ad: {…}, currentTime: 0}
+index.html:73 EVENT: 11487.100000000282 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:54:33 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 3}
+index.html:73 EVENT: 11495.900000000347 LoadedDataEvent2 {type: "loadeddata", date: Thu Jan 23 2025 13:54:33 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:73 EVENT: 11503.400000000056 CanPlayEvent2 {type: "canplay", date: Thu Jan 23 2025 13:54:33 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:73 EVENT: 11512.300000000323 CanPlayThroughEvent2 {type: "canplaythrough", date: Thu Jan 23 2025 13:54:33 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:73 EVENT: 11523.70000000019 PlayingEvent2 {type: "playing", date: Thu Jan 23 2025 13:54:33 GMT-0700 (Mountain Standard Time), currentTime: 0}
+index.html:81 AD EVENT: 21136.50000000007 AdEndEvent2 {type: "adend", date: Thu Jan 23 2025 13:54:42 GMT-0700 (Mountain Standard Time), ad: {…}, currentTime: 0}
+index.html:73 EVENT: 21143.90000000003 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:54:42 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:81 AD EVENT: 21198.80000000012 AdBreakEndEvent2 {type: "adbreakend", date: Thu Jan 23 2025 13:54:43 GMT-0700 (Mountain Standard Time), adBreak: {…}}
+BaseWebEnvironment.ts:48 Switched to Player context
+index.html:73 EVENT: 21238.49999999993 DurationChangeEvent2 {type: "durationchange", date: Thu Jan 23 2025 13:54:43 GMT-0700 (Mountain Standard Time), duration: NaN}
+index.html:73 EVENT: 21262.300000000323 LoadStartEvent2 {type: "loadstart", date: Thu Jan 23 2025 13:54:43 GMT-0700 (Mountain Standard Time)}
+index.html:73 EVENT: 21308.400000000347 WaitingEvent2 {type: "waiting", date: Thu Jan 23 2025 13:54:43 GMT-0700 (Mountain Standard Time), currentTime: 0}
+index.html:73 EVENT: 22208.000000000084 ManifestUpdateEvent2 {type: "manifestupdate", date: Thu Jan 23 2025 13:54:44 GMT-0700 (Mountain Standard Time)}
+index.html:73 EVENT: 22228.100000000268 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:54:44 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 1}
+index.html:73 EVENT: 22244.700000000194 LoadedMetadataEvent2 {type: "loadedmetadata", date: Thu Jan 23 2025 13:54:44 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 1}
+index.html:73 EVENT: 22690.60000000036 DurationChangeEvent2 {type: "durationchange", date: Thu Jan 23 2025 13:54:44 GMT-0700 (Mountain Standard Time), duration: 3048.16}
+index.html:73 EVENT: 22718.10000000005 RepresentationChangeEvent2 {type: "representationchange", date: Thu Jan 23 2025 13:54:44 GMT-0700 (Mountain Standard Time), representation: {…}, previousRepresentation: undefined}
+index.html:73 EVENT: 22731.900000000223 RepresentationChangeEvent2 {type: "representationchange", date: Thu Jan 23 2025 13:54:44 GMT-0700 (Mountain Standard Time), representation: {…}, previousRepresentation: undefined}
+index.html:73 EVENT: 23251.500000000306 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:54:45 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 3}
+index.html:73 EVENT: 23257.500000000164 LoadedDataEvent2 {type: "loadeddata", date: Thu Jan 23 2025 13:54:45 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 3}
+index.html:73 EVENT: 23264.700000000175 CanPlayEvent2 {type: "canplay", date: Thu Jan 23 2025 13:54:45 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 3}
+index.html:73 EVENT: 23273.70000000019 PlayingEvent2 {type: "playing", date: Thu Jan 23 2025 13:54:45 GMT-0700 (Mountain Standard Time), currentTime: 0}
+index.html:73 EVENT: 24862.800000000334 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:54:46 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 4}
+index.html:73 EVENT: 24872.100000000046 CanPlayThroughEvent2 {type: "canplaythrough", date: Thu Jan 23 2025 13:54:46 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 4}
+index.html:73 EVENT: 29188.4 RepresentationChangeEvent2 {type: "representationchange", date: Thu Jan 23 2025 13:54:51 GMT-0700 (Mountain Standard Time), representation: {…}, previousRepresentation: {…}}
+imasdk.googleapis.com/js/core/bridge3.682.0_en.html#goog_1991258477:1 Failed to load https://dott-origin-vod.s3.us-west-2.amazonaws.com/Ads/all_mp4_vmap/midroll.xml: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'. Origin 'https://imasdk.googleapis.com' is therefore not allowed access. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.
+BaseWebEnvironment.ts:48 Switched to AdPlayer context
+index.html:81 AD EVENT: 40621.80000000035 AdBreakBeginEvent2 {type: "adbreakbegin", date: Thu Jan 23 2025 13:55:02 GMT-0700 (Mountain Standard Time), adBreak: {…}}
+index.html:73 EVENT: 40639.70000000017 DurationChangeEvent2 {type: "durationchange", date: Thu Jan 23 2025 13:55:02 GMT-0700 (Mountain Standard Time), duration: 15}
+index.html:73 EVENT: 40669.60000000017 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:55:02 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:73 EVENT: 40687.6000000002 WaitingEvent2 {type: "waiting", date: Thu Jan 23 2025 13:55:02 GMT-0700 (Mountain Standard Time), currentTime: 0}
+index.html:81 AD EVENT: 42177.50000000023 AdBeginEvent2 {type: "adbegin", date: Thu Jan 23 2025 13:55:04 GMT-0700 (Mountain Standard Time), ad: {…}, currentTime: 15}
+index.html:73 EVENT: 42188.59999999995 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:55:04 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 3}
+index.html:73 EVENT: 42199.10000000027 LoadedDataEvent2 {type: "loadeddata", date: Thu Jan 23 2025 13:55:04 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:73 EVENT: 42207.499999999985 CanPlayEvent2 {type: "canplay", date: Thu Jan 23 2025 13:55:04 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:73 EVENT: 42216.00000000035 CanPlayThroughEvent2 {type: "canplaythrough", date: Thu Jan 23 2025 13:55:04 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:73 EVENT: 42225.000000000364 PlayingEvent2 {type: "playing", date: Thu Jan 23 2025 13:55:04 GMT-0700 (Mountain Standard Time), currentTime: 0}
+index.html:81 AD EVENT: 56906.4000000003 AdEndEvent2 {type: "adend", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), ad: {…}, currentTime: 15}
+index.html:73 EVENT: 56916.40000000007 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), currentTime: 0, readyState: 0}
+index.html:81 AD EVENT: 56999.80000000005 AdBreakEndEvent2 {type: "adbreakend", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), adBreak: {…}}
+BaseWebEnvironment.ts:48 Switched to Player context
+index.html:73 EVENT: 57039.50000000032 LoadedMetadataEvent2 {type: "loadedmetadata", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), currentTime: 15.112, readyState: 4}
+index.html:73 EVENT: 57049.89999999998 DurationChangeEvent2 {type: "durationchange", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), duration: 3048.16}
+index.html:73 EVENT: 57068.999999999956 LoadedDataEvent2 {type: "loadeddata", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), currentTime: 15.112, readyState: 4}
+index.html:73 EVENT: 57079.99999999993 CanPlayEvent2 {type: "canplay", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), currentTime: 15.112, readyState: 4}
+index.html:73 EVENT: 57093.10000000005 CanPlayThroughEvent2 {type: "canplaythrough", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), currentTime: 15.112, readyState: 4}
+index.html:73 EVENT: 57106.50000000032 ReadyStateChangeEvent2 {type: "readystatechange", date: Thu Jan 23 2025 13:55:18 GMT-0700 (Mountain Standard Time), currentTime: 15.112, readyState: 4}
+index.html:73 EVENT: 57146.200000000135 PlayingEvent2 {type: "playing", date: Thu Jan 23 2025 13:55:19 GMT-0700 (Mountain Standard Time), currentTime: 15.224}
+player.pause()
+index.html:73 EVENT: 69490.09999999998 PauseEvent2 {type: "pause", date: Thu Jan 23 2025 13:55:31 GMT-0700 (Mountain Standard Time), currentTime: 23.001}
+undefined
