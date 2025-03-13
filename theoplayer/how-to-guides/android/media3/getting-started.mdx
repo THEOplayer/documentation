@@ -43,26 +43,26 @@ Add the Media3 integration as a dependency in your module-level `build.gradle` f
 
 ### Add the Media3 integration to the player
 
-To make use of the Media3 integration, create and add the `Media3PlayerIntegration` to your `THEOplayerView`:
+To make use of the Media3 integration, create and add the `Media3Integration` to your `THEOplayerView`:
 
 <Tabs queryString="lang">
     <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
-        val media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
-        theoplayerView.player.addIntegration(media3PlayerIntegration)
+        val media3Integration = Media3IntegrationFactory.createMedia3Integration()
+        theoplayerView.player.addIntegration(media3Integration)
         ```
     </TabItem>
     <TabItem value="java" label="Java">
         ```java
-        Media3PlayerIntegration media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration()
-        theoplayerView.getPlayer().addIntegration(media3PlayerIntegration)
+        Media3Integration media3Integration = Media3IntegrationFactory.createMedia3Integration();
+        theoplayerView.getPlayer().addIntegration(media3Integration);
         ```
     </TabItem>
     <!-- prettier-ignore-end -->
 </Tabs>
 
-Once the Media3PlayerIntegration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
+Once the Media3Integration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
 
 <Tabs queryString="lang">
     <!-- prettier-ignore-start -->
@@ -98,32 +98,117 @@ Once the Media3PlayerIntegration is added to the player, all subsequent sources 
 
 </Tabs>
 
-By default, the `Media3PlayerIntegration` will play all types of sources except Millicast.
-To modify the default behaviour, you can pass a custom `Media3PlayerIntegration.SourceSelectCallback` implementation
-when constructing the integration.
+By default, the `Media3Integration` will play all types of sources except Millicast.
+You can opt in or opt out of this behavior by setting [`TypedSource.playbackPipeline`]
+to either `PlaybackPipeline.MEDIA3` (to _always_ use the Media3 integration)
+or `PlaybackPipeline.LEGACY` (to _never_ use the Media3 integration).
 
 <Tabs queryString="lang">
     <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
-        val media3PlayerIntegration = createMedia3PlayerIntegration(Media3PlayerIntegration.SourceSelectCallback { selectedSource, source ->
-            // selectedSource -> represents the TypedSource the player picked to play.
-            // source -> represents the SourceDescription passed to the player.
-            // return true -> the Media3 integration pipeline will be used to play the selected source.
-            // return false -> the default pipeline will be used to play the selected source.
-        })
-        theoplayerView.player.addIntegration(media3PlayerIntegration)
+        val typedSource = TypedSource
+            .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+            .type(SourceType.DASH)
+            // highlight-next-line
+            .playbackPipeline(PlaybackPipeline.MEDIA3)
+            .build()
+
+        val sourceDescription = SourceDescription
+            .Builder(typedSource)
+            .build()
+
+        theoPlayerView.player.source = sourceDescription
         ```
     </TabItem>
     <TabItem value="java" label="Java">
         ```java
-        Media3PlayerIntegration media3PlayerIntegration = Media3PlayerIntegrationFactory.createMedia3PlayerIntegration((selectedSource, source) -> {
-            // selectedSource -> represents the TypedSource the player picked to play.
-            // source -> represents the SourceDescription passed to the player.
-            // return true; -> the Media3 integration pipeline will be used to play the selected source.
-            // return false; -> the default pipeline will be used to play the selected source.
-        });
-        theoplayerView.getPlayer().addIntegration(media3PlayerIntegration);
+        TypedSource typedSource = new TypedSource
+            .Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+            .type(SourceType.DASH)
+            // highlight-next-line
+            .playbackPipeline(PlaybackPipeline.MEDIA3)
+            .build();
+
+        SourceDescription sourceDescription = new SourceDescription
+            .Builder(typedSource)
+            .build();
+
+        theoPlayerView.getPlayer().setSource(sourceDescription);
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+
+</Tabs>
+
+### Caching and offline playback with Media3
+
+The Media3 integration supports playing all sources cached by the default pipeline.
+However, you can also choose to use the Media3 integration to cache sources,
+allowing it to more optimally read and write files from the cache.
+
+To use Media3 for caching, create and add the `Media3Integration` to the global [`Cache`] API:
+
+<Tabs queryString="lang">
+    <!-- prettier-ignore-start -->
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val cache = THEOplayerGlobal.getSharedInstance(context).cache
+        val media3Integration = Media3IntegrationFactory.createMedia3Integration()
+        cache.addIntegration(media3Integration)
+        ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+        ```java
+        Cache cache = THEOplayerGlobal.getSharedInstance(context).getCache();
+        Media3Integration media3Integration = Media3IntegrationFactory.createMedia3Integration();
+        cache.addIntegration(media3Integration);
+        ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
+
+:::note
+
+The `Media3Integration` object does not need to be the same instance that you use in `player.addIntegration()`,
+it's okay to create a different one.
+
+:::
+
+Then, set [`CachingParameters.storageType`] to `CacheStorageType.MEDIA3` when creating your caching task:
+
+<Tabs queryString="lang">
+    <!-- prettier-ignore-start -->
+    <TabItem value="kotlin" label="Kotlin">
+        ```kotlin
+        val cache = THEOplayerGlobal.getSharedInstance(context).cache
+        val sourceDescription = SourceDescription.Builder(
+            TypedSource.Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+                .playbackPipeline(PlaybackPipeline.MEDIA3)
+                .build()
+            ).build()
+        val cachingParameters = CachingParameters.Builder()
+            // highlight-next-line
+            .storageType(CacheStorageType.MEDIA3)
+            .build()
+        val cachingTask = cache.createTask(sourceDescription, cachingParameters)
+        cachingTask.start()
+        ```
+    </TabItem>
+    <TabItem value="java" label="Java">
+        ```java
+        Cache cache = THEOplayerGlobal.getSharedInstance(context).getCache();
+        SourceDescription sourceDescription = SourceDescription.Builder(
+            TypedSource.Builder("https://cdn.theoplayer.com/video/dash/big_buck_bunny/BigBuckBunny_10s_simple_2014_05_09.mpd")
+                .playbackPipeline(PlaybackPipeline.MEDIA3)
+                .build()
+            ).build();
+        CachingParameters cachingParameters = CachingParameters.Builder()
+            // highlight-next-line
+            .storageType(CacheStorageType.MEDIA3)
+            .build();
+        CachingTask cachingTask = cache.createTask(sourceDescription, cachingParameters);
+        cachingTask.start();
         ```
     </TabItem>
     <!-- prettier-ignore-end -->
@@ -133,12 +218,7 @@ when constructing the integration.
 
 As this integration is still under development, there are currently some known limitations and features that are still under development and not yet supported:
 
-- The ABR, network, metrics and caching (offline playback) APIs are not yet implemented and return dummy values.
-- The latency API is currently only supported for HESP/THEOlive streams.
-- Millicast playback is not yet supported, and must always be handled by the [Millicast integration](../millicast/getting-started.mdx).
-- Certain player and source configuration parameters are not yet handled.
-- Certain player events may not yet be dispatched correctly.
-- There are some known issues with video track and quality switching.
+- The metrics API is not yet implemented and returns dummy values.
 
 ## FAQ
 
@@ -156,8 +236,12 @@ While we make use of ExoPlayer components, this is not a plain ExoPlayer impleme
 
 ### Will this integration replace the current THEOplayer Android playback pipeline?
 
-We are developing this integration to offer significant improvements over our current playback implementation on Android. While currently this is still under development, the goal is for this pipeline to become the default playback pipeline for the THEOplayer Android SDK in the future.
+We are developing this integration to offer significant improvements over our current playback implementation on Android. While currently this is still under development, the goal is for this pipeline to become the default playback pipeline for the THEOplayer Android SDK starting with version 9.0.0.
 
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/media3/package-summary.html)
+
+[`TypedSource.playbackPipeline`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html#playbackPipeline(com.theoplayer.android.api.source.PlaybackPipeline)
+[`Cache`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/cache/Cache.html
+[`CachingParameters.storageType`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/cache/CachingParameters.Builder.html#storageType(com.theoplayer.android.api.cache.CacheStorageType)
