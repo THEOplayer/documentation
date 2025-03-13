@@ -114,10 +114,10 @@ var pathtoroot = "../../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a></span>
+public final class <span class="typeNameLabel"><a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a></span>
 extends <a href=../TypedSource.Builder.html>TypedSource.Builder</a>
                     </pre>
-                    <div class="block"><p>The builder for a MediaTailor source. </p><ul><li>The final URL will have the following format: '/v1/session/</li></ul></div>
+                    <div class="block"><p>The builder for a MediaTailor source.</p><ul><li><p>The final URL will have the following format: <code>&lt;baseUri&gt;/v1/session/&lt;accountId&gt;/&lt;originId&gt;/&lt;assetId&gt;</code></p></li></ul></div>
 
                     <dl>
 
@@ -173,74 +173,86 @@ extends <a href=../TypedSource.Builder.html>TypedSource.Builder</a>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>protected  <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#src>src</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
                                             <td class="colFirst"><code>protected  <a href=../drm/DRMConfiguration.html>DRMConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#drm>drm</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>protected  <a href=../SourceType.html>SourceType</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#type>type</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>protected  <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt;</code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#headers>headers</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>protected  <a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#liveOffset>liveOffset</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>protected  <a href=../ssai/SsaiDescription.html>SsaiDescription</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#ssai>ssai</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>protected  <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#hlsDateRange>hlsDateRange</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>protected  <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#timeServer>timeServer</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>protected  <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#lowLatency>lowLatency</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>protected  <a href=../../latency/LatencyConfiguration.html>LatencyConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#latencyConfiguration>latencyConfiguration</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
+                                        <tr class="rowColor">
                                             <td class="colFirst"><code>protected  <a href=../hls/HlsPlaybackConfiguration.html>HlsPlaybackConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#hls>hls</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>protected  <a href=../dash/DashPlaybackConfiguration.html>DashPlaybackConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#dash>dash</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>protected  <a href=../../cmcd/CMCDTransmissionMode.html>CMCDTransmissionMode</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#cmcdTransmissionMode>cmcdTransmissionMode</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>protected  <a href=../PlaybackPipeline.html>PlaybackPipeline</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#playbackPipeline>playbackPipeline</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>protected  <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#src>src</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -324,9 +336,9 @@ extends <a href=../TypedSource.Builder.html>TypedSource.Builder</a>
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a></code>
+                                            <td class="colFirst"><code>final <a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#adParams(java.util.Map)>adParams</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adParams) </code>
+                                            <th class="colSecond" scope="row"><code><a href=MediaTailorSource.Builder.html#adParams(java.util.Map)>adParams</a>(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adParams) </code>
                                             </th>
                                             <td class="colLast">Optional Map of ad parameters to perform client-side ad reporting.</td>
                                         </tr>
@@ -348,7 +360,7 @@ extends <a href=../TypedSource.Builder.html>TypedSource.Builder</a>
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.source.TypedSource.Builder</h3>
-                                            <code>dash, drm, headers, hls, hlsDateRange, latencyConfiguration, liveOffset, lowLatency, ssai, timeServer, type</code></li>
+                                            <code>cmcdTransmissionMode, dash, drm, headers, hls, hlsDateRange, latencyConfiguration, liveOffset, lowLatency, playbackPipeline, ssai, timeServer, type</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
@@ -416,7 +428,7 @@ extends <a href=../TypedSource.Builder.html>TypedSource.Builder</a>
                                           >
                                     <li class="blockList">
                                         <h4>adParams</h4>
-                                        <pre class="methodSignature"> <a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a> <a href=MediaTailorSource.Builder.html#adParams(java.util.Map)>adParams</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adParams)</pre>
+                                        <pre class="methodSignature"> final <a href=MediaTailorSource.Builder.html>MediaTailorSource.Builder</a> <a href=MediaTailorSource.Builder.html#adParams(java.util.Map)>adParams</a>(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adParams)</pre>
                                         <div class="block"><p>Optional Map of ad parameters to perform client-side ad reporting. For more information visit <a href=https://docs.aws.amazon.com/mediatailor/latest/ug/ad-reporting-client-side.html>MediaTailor documentation</a>.</p></div>
 
                                         <dl>
@@ -446,7 +458,7 @@ extends <a href=../TypedSource.Builder.html>TypedSource.Builder</a>
                                           >
                                     <li class="blockList">
                                         <h4>build</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=MediaTailorSource.html>MediaTailorSource</a> <a href=MediaTailorSource.Builder.html#build()>build</a>()</pre>
+                                        <pre class="methodSignature"> <a href=MediaTailorSource.html>MediaTailorSource</a> <a href=MediaTailorSource.Builder.html#build()>build</a>()</pre>
                                         <div class="block"><p>Builds the MediaTailor source.</p></div>
 
                                         <dl>

@@ -114,7 +114,7 @@ var pathtoroot = "../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a></span>
+public final class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a></span>
 
                     </pre>
                     <div class="block"><p>The metadata of the adaptive bitrate strategy.</p></div>
@@ -150,7 +150,7 @@ public class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStr
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public class</code></td>
+                                            <td class="colFirst"><code>public final class</code></td>
                                             <th class="colSecond" scope="row"><code><a href="AbrStrategyMetadata.Builder.html">AbrStrategyMetadata.Builder</a></span></code>
                                             </th>
                                             <td class="colLast"><p>The builder for the metadata of the adaptive bitrate strategy.</p></td>
@@ -180,7 +180,7 @@ public class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStr
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=AbrStrategyMetadata.html#bitrate>bitrate</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -208,6 +208,12 @@ public class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStr
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
 
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#AbrStrategyMetadata(java.lang.Integer)">AbrStrategyMetadata</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> bitrate)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
                                         
 
                                         </tbody>
@@ -259,11 +265,11 @@ public class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStr
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=AbrStrategyMetadata.html#getBitrate()>getBitrate</a>() </code>
                                             </th>
-                                            <td class="colLast">The initial bitrate.</td>
+                                            <td class="colLast">The initial bitrate, in bits per second.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -297,6 +303,16 @@ public class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStr
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="AbrStrategyMetadata(java.lang.Integer)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>AbrStrategyMetadata</h4>
+                                        <pre>AbrStrategyMetadata(<a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> bitrate)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                             </li>
                         </ul>
                     </section>
@@ -318,16 +334,13 @@ public class <span class="typeNameLabel"><a href=AbrStrategyMetadata.html>AbrStr
                                           >
                                     <li class="blockList">
                                         <h4>getBitrate</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=AbrStrategyMetadata.html#getBitrate()>getBitrate</a>()</pre>
-                                        <div class="block"><p>The initial bitrate.</p></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=AbrStrategyMetadata.html#getBitrate()>getBitrate</a>()</pre>
+                                        <div class="block"><p>The initial bitrate, in bits per second. (Nullable)</p></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The initial bitrate, in bits per second. (Nullable)</p></dd>
                                         
 
                                         

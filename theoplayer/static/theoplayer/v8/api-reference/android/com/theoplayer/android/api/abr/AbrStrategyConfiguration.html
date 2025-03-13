@@ -114,7 +114,7 @@ var pathtoroot = "../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>AbrStrategyConfiguration</a></span>
+public final class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>AbrStrategyConfiguration</a></span>
 
                     </pre>
                     <div class="block"><p>The configuration of the adaptive bitrate strategy.</p></div>
@@ -150,7 +150,7 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public class</code></td>
+                                            <td class="colFirst"><code>public final class</code></td>
                                             <th class="colSecond" scope="row"><code><a href="AbrStrategyConfiguration.Builder.html">AbrStrategyConfiguration.Builder</a></span></code>
                                             </th>
                                             <td class="colLast"><p>The builder for the adaptive bitrate strategy configuration.</p></td>
@@ -180,13 +180,13 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=AbrStrategyType.html>AbrStrategyType</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=AbrStrategyType.html>AbrStrategyType</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=AbrStrategyConfiguration.html#type>type</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>public final <a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=AbrStrategyConfiguration.html#metadata>metadata</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -214,6 +214,12 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
 
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#AbrStrategyConfiguration(com.theoplayer.android.api.abr.AbrStrategyType,com.theoplayer.android.api.abr.AbrStrategyMetadata)">AbrStrategyConfiguration</a></span>(<a href=AbrStrategyType.html>AbrStrategyType</a> type, <a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a> metadata)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
                                         
 
                                         </tbody>
@@ -265,7 +271,7 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=AbrStrategyType.html>AbrStrategyType</a></code>
+                                            <td class="colFirst"><code>final <a href=AbrStrategyType.html>AbrStrategyType</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=AbrStrategyConfiguration.html#getType()>getType</a>() </code>
                                             </th>
@@ -273,7 +279,7 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code><a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a></code>
+                                            <td class="colFirst"><code>final <a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=AbrStrategyConfiguration.html#getMetadata()>getMetadata</a>() </code>
                                             </th>
@@ -311,6 +317,16 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="AbrStrategyConfiguration(com.theoplayer.android.api.abr.AbrStrategyType,com.theoplayer.android.api.abr.AbrStrategyMetadata)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>AbrStrategyConfiguration</h4>
+                                        <pre>AbrStrategyConfiguration(<a href=AbrStrategyType.html>AbrStrategyType</a> type, <a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a> metadata)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                             </li>
                         </ul>
                     </section>
@@ -332,16 +348,13 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                                           >
                                     <li class="blockList">
                                         <h4>getType</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=AbrStrategyType.html>AbrStrategyType</a> <a href=AbrStrategyConfiguration.html#getType()>getType</a>()</pre>
-                                        <div class="block"><p>The strategy for initial playback.</p></div>
+                                        <pre class="methodSignature"> final <a href=AbrStrategyType.html>AbrStrategyType</a> <a href=AbrStrategyConfiguration.html#getType()>getType</a>()</pre>
+                                        <div class="block"><p>The strategy for initial playback. (NonNull)</p></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The strategy. (NonNull)</p></dd>
                                         
 
                                         
@@ -358,16 +371,13 @@ public class <span class="typeNameLabel"><a href=AbrStrategyConfiguration.html>A
                                           >
                                     <li class="blockList">
                                         <h4>getMetadata</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a> <a href=AbrStrategyConfiguration.html#getMetadata()>getMetadata</a>()</pre>
-                                        <div class="block"><p>The metadata for initial playback strategy.</p></div>
+                                        <pre class="methodSignature"> final <a href=AbrStrategyMetadata.html>AbrStrategyMetadata</a> <a href=AbrStrategyConfiguration.html#getMetadata()>getMetadata</a>()</pre>
+                                        <div class="block"><p>The metadata for initial playback strategy. (Nullable)</p></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The metadata (Nullable)</p></dd>
                                         
 
                                         

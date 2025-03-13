@@ -108,6 +108,9 @@ var pathtoroot = "../../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>com.theoplayer.android.internal.integration.IntegrationFactory</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -115,7 +118,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public class <span class="typeNameLabel"><a href=GoogleDaiIntegrationFactory.html>GoogleDaiIntegrationFactory</a></span>
-
+ implements IntegrationFactory
                     </pre>
                     <div class="block"><p>Factory class for creating <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> instance.</p></div>
 
@@ -254,7 +257,7 @@ public class <span class="typeNameLabel"><a href=GoogleDaiIntegrationFactory.htm
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView, ImaSdkSettings imaSdkSettings) </code>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.theoplayer.android.api.ads.ima.GoogleImaConfiguration)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView, <a href=../ima/GoogleImaConfiguration.html>GoogleImaConfiguration</a> googleImaConfiguration) </code>
                                             </th>
                                             <td class="colLast">Creates a GoogleDaiIntegration instance.</td>
                                         </tr>
@@ -262,9 +265,25 @@ public class <span class="typeNameLabel"><a href=GoogleDaiIntegrationFactory.htm
                                         <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code>final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView) </code>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView, ImaSdkSettings imaSdkSettings) </code>
                                             </th>
                                             <td class="colLast">Creates a GoogleDaiIntegration instance.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView) </code>
+                                            </th>
+                                            <td class="colLast">Creates a GoogleDaiIntegration instance.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code><a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=GoogleDaiIntegrationFactory.html#createIntegration(com.theoplayer.android.api.THEOplayerView)>createIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView) </code>
+                                            </th>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -311,6 +330,43 @@ public class <span class="typeNameLabel"><a href=GoogleDaiIntegrationFactory.htm
                             </a>
                                 <h3>Method Detail</h3>
                                 
+                                <a id="createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.theoplayer.android.api.ads.ima.GoogleImaConfiguration)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>createGoogleDaiIntegration</h4>
+                                        <pre class="methodSignature"> final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> <a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.theoplayer.android.api.ads.ima.GoogleImaConfiguration)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView, <a href=../ima/GoogleImaConfiguration.html>GoogleImaConfiguration</a> googleImaConfiguration)</pre>
+                                        <div class="block"><p>Creates a GoogleDaiIntegration instance.</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>theoplayerView</code> - The <a href=../../THEOplayerView.html>THEOplayerView</a> where the stream would play (<i>NonNull</i>).</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>googleImaConfiguration</code> - The configuration for the Google IMA integration.</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> (<i>NonNull</i>).</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
                                 <a id="createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)">
                                     <!--   -->
                                 </a>
@@ -319,7 +375,7 @@ public class <span class="typeNameLabel"><a href=GoogleDaiIntegrationFactory.htm
                                           >
                                     <li class="blockList">
                                         <h4>createGoogleDaiIntegration</h4>
-                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html>JvmOverloads</a>() final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> <a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView, ImaSdkSettings imaSdkSettings)</pre>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use createGoogleDaiIntegration(THEOplayerView, GoogleImaConfiguration)&quot;, replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {&quot;com.theoplayer.android.api.ads.ima.GoogleDaiIntegrationFactory.createGoogleDaiIntegration&quot;, &quot;com.theoplayer.android.api.ads.ima.GoogleImaConfiguration&quot;}, expression = &quot;createGoogleDaiIntegration(theoplayerView, GoogleImaConfiguration(imaSdkSettings = imaSdkSettings))&quot;)) final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> <a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView, ImaSdkSettings imaSdkSettings)</pre>
                                         <div class="block"><p>Creates a GoogleDaiIntegration instance.</p></div>
 
                                         <dl>
@@ -352,12 +408,12 @@ public class <span class="typeNameLabel"><a href=GoogleDaiIntegrationFactory.htm
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>createGoogleDaiIntegration</h4>
-                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html>JvmOverloads</a>() final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> <a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView,com.google.ads.interactivemedia.v3.api.ImaSdkSettings)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView)</pre>
-                                        <div class="block"><p>Creates a GoogleDaiIntegration instance.</p></div>
+                                        <pre class="methodSignature"> final static <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> <a href=GoogleDaiIntegrationFactory.html#createGoogleDaiIntegration(com.theoplayer.android.api.THEOplayerView)>createGoogleDaiIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView)</pre>
+                                        <div class="block"><p>Creates a GoogleDaiIntegration instance.</p><p>This uses the <a href=../ima/GoogleImaConfiguration.html>GoogleImaConfiguration</a> specified in <a href=../ima/GoogleImaConfigurationKt.html#googleImaConfiguration>THEOplayerConfig.googleImaConfiguration</a>.</p></div>
 
                                         <dl>
 
@@ -373,6 +429,29 @@ public class <span class="typeNameLabel"><a href=GoogleDaiIntegrationFactory.htm
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> (<i>NonNull</i>).</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="createIntegration(com.theoplayer.android.api.THEOplayerView)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>createIntegration</h4>
+                                        <pre class="methodSignature"> <a href=GoogleDaiIntegration.html>GoogleDaiIntegration</a> <a href=GoogleDaiIntegrationFactory.html#createIntegration(com.theoplayer.android.api.THEOplayerView)>createIntegration</a>(<a href=../../THEOplayerView.html>THEOplayerView</a> theoplayerView)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
                                         
 
                                         

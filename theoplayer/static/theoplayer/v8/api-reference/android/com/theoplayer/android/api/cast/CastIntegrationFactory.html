@@ -108,6 +108,9 @@ var pathtoroot = "../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>com.theoplayer.android.internal.integration.IntegrationFactory</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -115,7 +118,7 @@ var pathtoroot = "../../../../../";
                     <pre class="wrap-overflow">
 
 public class <span class="typeNameLabel"><a href=CastIntegrationFactory.html>CastIntegrationFactory</a></span>
-
+ implements IntegrationFactory
                     </pre>
                     <div class="block"><p>Factory class for creating <a href=CastIntegration.html>CastIntegration</a> instance.</p></div>
 
@@ -259,6 +262,22 @@ public class <span class="typeNameLabel"><a href=CastIntegrationFactory.html>Cas
                                             <td class="colLast">Creates a CastIntegration instance.</td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>final static <a href=CastIntegration.html>CastIntegration</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=CastIntegrationFactory.html#createCastIntegration(com.theoplayer.android.api.THEOplayerView)>createCastIntegration</a>(<a href=../THEOplayerView.html>THEOplayerView</a> theoplayerView) </code>
+                                            </th>
+                                            <td class="colLast">Creates a CastIntegration instance.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code><a href=CastIntegration.html>CastIntegration</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=CastIntegrationFactory.html#createIntegration(com.theoplayer.android.api.THEOplayerView)>createIntegration</a>(<a href=../THEOplayerView.html>THEOplayerView</a> theoplayerView) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -307,7 +326,7 @@ public class <span class="typeNameLabel"><a href=CastIntegrationFactory.html>Cas
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>createCastIntegration</h4>
@@ -332,6 +351,62 @@ public class <span class="typeNameLabel"><a href=CastIntegrationFactory.html>Cas
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The <a href=CastIntegration.html>CastIntegration</a> (<i>Nullable</i>).</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="createCastIntegration(com.theoplayer.android.api.THEOplayerView)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>createCastIntegration</h4>
+                                        <pre class="methodSignature"> final static <a href=CastIntegration.html>CastIntegration</a> <a href=CastIntegrationFactory.html#createCastIntegration(com.theoplayer.android.api.THEOplayerView)>createCastIntegration</a>(<a href=../THEOplayerView.html>THEOplayerView</a> theoplayerView)</pre>
+                                        <div class="block"><p>Creates a CastIntegration instance.</p><p>This uses the <a href=CastConfiguration.html>CastConfiguration</a> specified in <a href=CastConfigurationKt.html#castConfiguration>THEOplayerConfig.castConfiguration</a>.</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>theoplayerView</code> - The <a href=../THEOplayerView.html>THEOplayerView</a> which will handle the Cast session (<i>NonNull</i>).</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The <a href=CastIntegration.html>CastIntegration</a> (<i>Nullable</i>).</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="createIntegration(com.theoplayer.android.api.THEOplayerView)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>createIntegration</h4>
+                                        <pre class="methodSignature"> <a href=CastIntegration.html>CastIntegration</a> <a href=CastIntegrationFactory.html#createIntegration(com.theoplayer.android.api.THEOplayerView)>createIntegration</a>(<a href=../THEOplayerView.html>THEOplayerView</a> theoplayerView)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
                                         
 
                                         

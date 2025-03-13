@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../";
 public interface <span class="typeNameLabel"><a href=LatencyManager.html>LatencyManager</a></span>
 
                     </pre>
-                    <div class="block"><p>The latency manager, used to control low-latency live playback.</p><ul><li><p>This is only used for live playback.</p></li><li><p>Only supported for HESP / THEOlive streams with the Media3 backend.</p></li></ul></div>
+                    <div class="block"><p>The latency manager, used to control low-latency live playback.</p><ul><li><p>This is only used for live playback.</p></li></ul></div>
 
                     <dl>
 
@@ -266,7 +266,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=LatencyManager.html#isMonitoringLivePlayback()>isMonitoringLivePlayback</a>() </code>
                                             </th>
-                                            <td class="colLast">Whether the latency manager is monitoring to stay within the live playback configurationLatencyManager.currentLatencyConfiguration.</td>
+                                            <td class="colLast">Whether the latency manager is monitoring to stay within the live playback configuration.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -338,7 +338,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                     <li class="blockList">
                                         <h4>isEnabled</h4>
                                         <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=LatencyManager.html#isEnabled()>isEnabled</a>()</pre>
-                                        <div class="block"><p>Whether the latency manager is enabled.</p><ul><li><p>With the Media3 backend, this value is true when <a href=../source/mediatailor/MediaTailorSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> is set, false otherwise.</p></li></ul></div>
+                                        <div class="block"><p>Whether the latency manager is enabled.</p><ul><li><p>With the Media3 backend, this value is automatically set to <code>true</code> when <a href=../theolive/TheoLiveSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> is set.</p></li></ul></div>
 
                                         <dl>
 
@@ -361,7 +361,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                     <li class="blockList">
                                         <h4>setEnabled</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=LatencyManager.html#setEnabled(java.lang.Boolean)>setEnabled</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> isEnabled)</pre>
-                                        <div class="block"><p>Whether the latency manager is enabled.</p><ul><li><p>With the Media3 backend, this value is true when <a href=../source/mediatailor/MediaTailorSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> is set, false otherwise.</p></li></ul></div>
+                                        <div class="block"><p>Whether the latency manager is enabled.</p><ul><li><p>With the Media3 backend, this value is automatically set to <code>true</code> when <a href=../theolive/TheoLiveSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> is set.</p></li></ul></div>
 
                                         <dl>
 
@@ -384,7 +384,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                     <li class="blockList">
                                         <h4>isMonitoringLivePlayback</h4>
                                         <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=LatencyManager.html#isMonitoringLivePlayback()>isMonitoringLivePlayback</a>()</pre>
-                                        <div class="block"><p>Whether the latency manager is monitoring to stay within the live playback configurationLatencyManager.currentLatencyConfiguration.</p><ul><li><p>Can only be monitored for live playback.</p></li><li><p>With the Media3 backend, this value is equal to <a href=LatencyManager.html#isEnabled()>isEnabled</a></p></li></ul></div>
+                                        <div class="block"><p>Whether the latency manager is monitoring to stay within the live playback configuration.</p><ul><li><p>Can only be monitored for live playback.</p></li><li><p>With the Media3 backend, this value is true if the manager <a href=LatencyManager.html#isEnabled()>is enabled</a> and a <a href=../theolive/TheoLiveSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> was set.</p></li></ul></div>
 
                                         <dl>
 
@@ -430,7 +430,7 @@ public interface <span class="typeNameLabel"><a href=LatencyManager.html>Latency
                                     <li class="blockList">
                                         <h4>getCurrentLatencyConfiguration</h4>
                                         <pre class="methodSignature"> abstract <a href=LatencyConfiguration.html>LatencyConfiguration</a> <a href=LatencyManager.html#getCurrentLatencyConfiguration()>getCurrentLatencyConfiguration</a>()</pre>
-                                        <div class="block"><p>The current latency configuration for the current source, if available.</p><ul><li><p>The initial value will be based on <a href=../source/mediatailor/MediaTailorSource.html#getLatencyConfiguration()>TypedSource.getLatencyConfiguration</a></p></li><li><p>If <a href=../source/mediatailor/MediaTailorSource.html#getLatencyConfiguration()>TypedSource.getLatencyConfiguration</a> is not set, the player will determine the configuration for your live stream.</p></li><li><p>The player might change the latency configuration based on playback events like stalls.</p></li></ul></div>
+                                        <div class="block"><p>The current latency configuration for the current source, if available.</p><ul><li><p>The initial value will be based on <a href=../theolive/TheoLiveSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a></p></li><li><p>If <a href=../theolive/TheoLiveSource.html#latencyConfiguration>TypedSource.latencyConfiguration</a> is not set, the player will determine the configuration for your live stream.</p></li><li><p>The player might change the latency configuration based on playback events like stalls.</p></li></ul></div>
 
                                         <dl>
 

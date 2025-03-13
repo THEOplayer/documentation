@@ -203,6 +203,12 @@ public class <span class="typeNameLabel"><a href=CachingParameters.html>CachingP
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final <a href=CacheStorageType.html>CacheStorageType</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=CachingParameters.html#storageType>storageType</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -308,6 +314,14 @@ public class <span class="typeNameLabel"><a href=CachingParameters.html>CachingP
                                             <td class="colLast">The preferred audio/text tracks to cache.</td>
                                         </tr>
                                         
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code><a href=CacheStorageType.html>CacheStorageType</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=CachingParameters.html#getStorageType()>getStorageType</a>() </code>
+                                            </th>
+                                            <td class="colLast">The storage type to use for caching.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -361,7 +375,7 @@ public class <span class="typeNameLabel"><a href=CachingParameters.html>CachingP
                                     <li class="blockList">
                                         <h4>getAmount</h4>
                                         <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=CachingParameters.html#getAmount()>getAmount</a>()</pre>
-                                        <div class="block"><p>The amount of data to cache for the given stream. Possible formats: </p><ul><li>A number in seconds. </li><li>A percentage string (XX%) for a proportion of the content duration. </li></ul><p>Default: &quot;100%&quot;</p></div>
+                                        <div class="block"><p>The amount of data to cache for the given stream. </p><p> Possible formats: </p><ul><li>A number in seconds. </li><li>A percentage string (XX%) for a proportion of the content duration. </li></ul><p>Default: &quot;100%&quot;</p></div>
 
                                         <dl>
 
@@ -434,7 +448,7 @@ public class <span class="typeNameLabel"><a href=CachingParameters.html>CachingP
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getPreferredTrackSelection</h4>
@@ -448,6 +462,32 @@ public class <span class="typeNameLabel"><a href=CachingParameters.html>CachingP
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The preferred track selection caching parameter.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getStorageType()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getStorageType</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=CacheStorageType.html>CacheStorageType</a> <a href=CachingParameters.html#getStorageType()>getStorageType</a>()</pre>
+                                        <div class="block"><p>The storage type to use for caching.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The storage type to use.</p></dd>
                                         
 
                                         
