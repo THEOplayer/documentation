@@ -1,0 +1,72 @@
+# THEOConvivaConnector API reference
+
+The attributes, methods and events for the THEOConvivaConnector.
+
+## Attributes
+
+| Name | Type   | Default | Access Permission | Description         |
+| ---- | ------ | ------- | ----------------- | ------------------- |
+| id   | string |         | read, write       | The ID of this node |
+
+## Methods
+
+| Method               | Params                                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| configure            | player: THEOplayer, customerKey: string, gatewayUrl: string (Optional), debug: boolean (Optional) | Configure the Conviva SDK for use. The `gatewayUrl` param is the URL for the Touchstone service for use in validating your Conviva integration. Omit this for production builds.                                                                                                                                                                                                                                |
+| destroy              | none                                                                                              | Destroy the connector. It also ends the current session, if any.                                                                                                                                                                                                                                                                                                                                                |
+| endSession           | none                                                                                              | End the current Conviva session, but do not destroy the connector.                                                                                                                                                                                                                                                                                                                                              |
+| getContentInfo       | none                                                                                              | Returns the content metadata for the current session.                                                                                                                                                                                                                                                                                                                                                           |
+| monitorCdnChanges    | mappings: CDNMonitoringConfig, defaultCdn: string (optional)                                      | Updates the CDN monitoring settings. If passed a CDN monitoring config (see below), it will begin monitoring the downloaded segments for changes in CDN. This will update the defaultReportingResource for the current session if a CDN change is detected If passed invalid as the first parameter, it will stop the monitoring and use any string passed as the second param as the defaultReportingResource. |
+| reportPlaybackEvent  | eventType: string, eventDetail: AssociativeArray                                                  | Reports a playback event with the associated data to Conviva.                                                                                                                                                                                                                                                                                                                                                   |
+| reportPlaybackFailed | errorMessage: string                                                                              | Reports a playback failure to Conviva.                                                                                                                                                                                                                                                                                                                                                                          |
+| setAdInfo            | adInfo: AssociativeArray                                                                          | Sets the supplied ad info to Conviva. adInfo should be in the form of ConvivaContentInfo                                                                                                                                                                                                                                                                                                                        |
+| setContentInfo       | contentMetadata: AssociativeArray                                                                 | Sets or updates the content metadata for the current session. Partials are supported and will be merged with the existing content metadata. See below for the schema of content metadata.                                                                                                                                                                                                                       |
+| startSession         | contentMetadata: AssociativeArray                                                                 | Starts a Conviva session with the supplied content metadata. See below for the schema of content metadata.                                                                                                                                                                                                                                                                                                      |
+
+### CDN Monitoring Config
+
+The configuration for CDN monitoring should be an AssociativeArray with keys that are the name of the CDN and values that are arrays of strings to search for in segment URLs.
+
+```brightscript
+cdnMappings = {
+	akamai: ["akamaized.net"],
+	theo: ["dev.theoads.live", "cdn.theoplayer.com"]
+	level3: ["llnw.com"]
+}
+```
+
+Passing a config as the only param will start CDN change monitoring with the provided configuration, or update the config if it is already started.
+`m.theoConvivaConnector.callFunc("monitorCDNChanges", cdnMappings)`
+However, if you want to stop CDN change monitoring, pass `invalid` as the first parameter, and the string you want to use for the defaultReportingResource as the second parameter.
+`m.theoConvivaConnector.callFunc("monitorCDNChanges", invalid, "theo")`
+
+### Content Metadata
+
+Content metadata should be an AssociativeArray following [Conviva's schema](https://pulse.conviva.com/learning-center/content/sensor_developer_center/sensor_integration/roku/roku_stream_sensor.htm#PredefinedVideoandContentMetadata).
+However, the THEOConviaConnector does provide a shortcut for c3 data. You may specify the c3 data by its full name:
+
+```brightscript
+contentMetadata = {
+	customMetadata: {
+		myCustomTag: "Value",
+		"c3.cm.contentType": "DVR",
+		"c3.cm.name": "CMS"
+	}
+}
+```
+
+However, we also support using an object notation:
+
+```brightscript
+contentMetadata = {
+	customMetadata: {
+		myCustomTag: "Value",
+		c3: {
+			cm: {
+				contentType: "DVR",
+				name: "CMS"
+			}
+		}
+	}
+}
+```

@@ -2,12 +2,11 @@
 
 ## Prerequisites
 
-In order to set up the Conviva Connector for Roku, you'll need to have these things:
+In order to set up the Conviva Connector in your Roku application, you'll need the following:
 
-- Your Conviva customer key (available your Conviva Pulse dashboard)
+- Your Conviva customer key (available in your Conviva Pulse dashboard)
 - Your Conviva Touchstone gateway URL, which should be in the format of `"https://MY_TOUCHSTONE_DOMAIN.ts-testonly.conviva.com/"`
-- A Roku to develop on
-- An app with the THEOPlayer SDK for Roku already integrated
+- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
 
 ## Integration
 
@@ -17,27 +16,39 @@ In order to set up the Conviva Connector for Roku, you'll need to have these thi
 <ComponentLibrary id="THEOConvivaConnector" uri="https://cdn.myth.theoplayer.com/roku/1.5.0/THEOConvivaConnector.pkg" />
 ```
 
-1. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
 
 ```brightscript
 sub Init()
-    libraryNode = m.top.findNode("THEOConvivaConnector")
-    libraryNode.observeField("loadStatus", "onLibraryLoadStatusChanged")
+    THEOConvivaNode = m.top.findNode("THEOConvivaConnector")
+    THEOConvivaNode.observeField("loadStatus", "onLibraryLoadStatusChanged")
 end sub
 
 sub onLibraryLoadStatusChanged(event as object)
-    libraryNode = event.getROSGNode()
+    THEOConvivaNode = event.getROSGNode()
 
-    if libraryNode = invalid
+    if THEOConvivaNode = invalid
         return
     end if
 
-    if libraryNode.loadStatus = "ready"
-		' Success! Enable the app to continue
-    else if libraryNode.loadStatus = "failed"
-		? "Failed to load component library, please check URL. "; libraryNode.uri
+    if THEOConvivaNode.loadStatus = "ready"
+		' Success
+    else if THEOConvivaNode.loadStatus = "failed"
+		? "Failed to load component library, please check URL. "; THEOConvivaNode.uri
 	end if
 end sub
 ```
 
-1. With the SDK and connector loaded, you can now proceed to initialize the player and Conviva connector along with it. To use the THEOConvivaConnector`m.convivaConnector.callFunc("configure", m.player, "MY_CUSTOMER_KEY", "MY_TOUCHSTONE_GATEWAY_URL", true)`
+3. With the SDK and connector loaded, you can now proceed to initialize the player and Conviva connector along with it. To use the THEOConvivaConnector``
+
+```brightscript
+THEOConvivaNode.callFunc("configure", m.player, "MY_CUSTOMER_KEY")
+```
+
+For using the connector in debug mode and a Conviva Touchstone gateway URL, configure the connector as follows:
+
+```brightscript
+THEOConvivaNode.callFunc("configure", m.player, "MY_CUSTOMER_KEY")
+```
+
+4. Consult the [API reference](TODO) for further functionality!
