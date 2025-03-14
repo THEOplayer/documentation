@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Adding a fallback
+# Redundancy
 
 With THEOlive we want to make sure your viewers can continue watching your stream, even if there is an ingest failure or if there are connectivity problems in a certain location. It is hence possible to set up a fallback stream. This means that if one stream is unavailable for a short amount of time, the player checks if the fallback stream is available and switches the player source automatically to this stream. In this case, the viewers only see a small interruption and can continue watching without having to act.
 

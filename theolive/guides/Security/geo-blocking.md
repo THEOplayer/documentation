@@ -52,7 +52,7 @@ Suppose you provide a stream that you'll distribute to end customers:
 - The other one can show the stream in the UK and USA
 - A third one only in France
 
-In such a case, you can create 3 aliases, one for each customer, so you can easily[ track customer specific analytics](multi-channel.md) as well later on.
+In such a case, you can create 3 aliases, one for each customer, so you can easily[ track customer specific analytics](../multi-channel.md) as well later on.
 
 As the main channel id `channel-id` won't be used, we can geo-block it completely: someone using this channel ID won't be able to see it anywhere in the world.
 
@@ -60,7 +60,7 @@ For our first customer, we share the channel ID `alias-1`, we can enable geo-blo
 Our second customer gets channel ID `alias-2`, we do the same, but restrict to the US and UK.  
 Lastly, our third customer will receive `alias-3` from us. This stream will be geo-blocked everywhere, but not in France.
 
-![Example of geo-blocking setup with channel and aliases](../assets/img/48b69bf-Geoblocking.png)
+![Example of geo-blocking setup with channel and aliases](../../assets/img/48b69bf-Geoblocking.png)
 
 ## Managing geo-blocking in the console
 
@@ -68,4 +68,4 @@ You can change your geo-blocking settings per channel and channel alias. Just na
 Enabling and disabling geo-blocking can easily be done by the switch. When enabled, a mode can be selected and countries can be added to the list.  
 Don't forget to hit "Save" to confirm your changes!
 
-![Geo-blocking settings in the console](../assets/img/a24f145-geoblock.PNG)
+![Geo-blocking settings in the console](../../assets/img/a24f145-geoblock.PNG)

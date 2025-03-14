@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+sidebar_label: Alias
 ---
 
 # Multi-channel: aliases for channels
