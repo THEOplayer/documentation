@@ -123,19 +123,19 @@ The following key/value pairs are supported on the `drmParams` attribute of a Co
 
 ## Methods
 
-| Method                                                                          | Description                                                                                                                                                                        |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| addEventListener                                                                | Add a listener for the specified player event.                                                                                                                                     |
-| destroy                                                                         | Destroy the player.                                                                                                                                                                |
-| getVideoNode                                                                    | Returns the interior Roku video node.                                                                                                                                              |
-| pause                                                                           | Pause playback.                                                                                                                                                                    |
-| play                                                                            | Start playback.                                                                                                                                                                    |
-| removeEventListener                                                             | Remove the specified listener for the specified player event.                                                                                                                      |
-| setCopyGuardManagementSystem(cgms as Integer)                                   | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted.                             |
-| setDestinationRectangle(rect \{w,h,x,y} as roAssociativeArray)                  | Sets width, height, x, y of player.                                                                                                                                                |
-| setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer) | Sets width, height, x, y of player.                                                                                                                                                |
-| setMaxVideoResolution(width as Integer, height as Integer)                      | Sets maximum video resolution.                                                                                                                                                     |
-| setPlayerFocus(focused as Boolean, focusReceiver (optional) as roSGNode)        | Gives or removes the focus from the internal player. If passing `false`, you may pass an optional roSGNode to receive the focus. If not passed, the THEOplayer SDK receives focus. |
+| Method                                                                                       | Description                                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| addEventListener(eventType as string, eventListener as string, listenerOwner as roSGNode)    | Add a listener for the specified player event.                                                                                                                                     |
+| destroy                                                                                      | Destroy the player.                                                                                                                                                                |
+| getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                                              |
+| pause                                                                                        | Pause playback.                                                                                                                                                                    |
+| play                                                                                         | Start playback.                                                                                                                                                                    |
+| removeEventListener(eventType as string, eventListener as string, listenerOwner as roSGNode) | Remove the specified listener for the specified player event.                                                                                                                      |
+| setCopyGuardManagementSystem(cgms as Integer)                                                | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted.                             |
+| setDestinationRectangle(rect \{w,h,x,y} as roAssociativeArray)                               | Sets width, height, x, y of player.                                                                                                                                                |
+| setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer)              | Sets width, height, x, y of player.                                                                                                                                                |
+| setMaxVideoResolution(width as Integer, height as Integer)                                   | Sets maximum video resolution.                                                                                                                                                     |
+| setPlayerFocus(focused as Boolean, focusReceiver (optional) as roSGNode)                     | Gives or removes the focus from the internal player. If passing `false`, you may pass an optional roSGNode to receive the focus. If not passed, the THEOplayer SDK receives focus. |
 
 ## Verizon Media specific Methods
 
@@ -213,9 +213,9 @@ all events contain following data:
 - `date` (timestamp) of occurrence
 - `type` (string) of the event
 
-### ads events:
+### Ads events:
 
-all ads events contain additional field `ad` of type VerizonMediaAd e.g.:
+All ads events contain additional field `ad` of type VerizonMediaAd e.g.:
 
 ```brightscript
 {
@@ -242,9 +242,9 @@ all ads events contain additional field `ad` of type VerizonMediaAd e.g.:
 - `admidpoint`: fired when the ad reaches the midpoint
 - `adthirdquartile`: fired when the ad reaches the third quartile
 
-### ad breaks events:
+### Ad break events:
 
-all ads events contain additional field `adBreak` of type VerizonMediaAdBreak e.g.:
+All ads events contain additional field `adBreak` of type VerizonMediaAdBreak e.g.:
 
 ```brightscript
 {
@@ -280,7 +280,7 @@ all ads events contain additional field `adBreak` of type VerizonMediaAdBreak e.
 
 ### assets events:
 
-all assets events contain additional field `asset` of type VerizonMediaAsset e.g.:
+All assets events contain additional field `asset` of type VerizonMediaAsset e.g.:
 
 ```brightscript
 {
@@ -330,7 +330,7 @@ all assets events contain additional field `asset` of type VerizonMediaAsset e.g
 - `assetinforesponse`: fired when an asset info response is received. This event does not contain `asset` field but `response` VerizonMediaAssetInfoResponse.
 - `removeasset`: fired when asset has been removed
 
-### ping events:
+### Ping events:
 
 - `pingerror`: fired when a Ping error has been received. Contains additional `error` (string) field.
 - `pingresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPingResponse field e.g.:
@@ -364,7 +364,7 @@ all assets events contain additional field `asset` of type VerizonMediaAsset e.g
 
 ```
 
-### preplay events:
+### Preplay events:
 
 - `preplayresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPreplayResponse field e.g.:
 
