@@ -45,15 +45,22 @@ sub onLibraryLoadStatusChanged(event as object)
 end sub
 ```
 
-3. Then configure the connector by calling the configure method, passing the player instance and your Comscore customer key.
+3. Add the THEOComscoreConnector component to the SceneGraph file where your THEOPlayer is defined
+
+```xml
+<THEOsdk:THEOplayer id="THEOplayer" controls="true" />
+<THEOComscoreConnector:THEOComscoreConnector id="THEOComscoreConnector" />
+```
+
+4. Then configure the connector by calling the configure method, passing the player instance and your Comscore customer key.
 
 ```brightscript
-m.player = m.top.findNode("VideoPlayerNativeControls")
+m.player = m.top.findNode("THEOplayer")
 m.comscoreConnector = m.top.findNode("THEOComscoreConnector")
 m.comscoreConnector.callFunc("configure", m.player, { publisherId: "MY_PUBLISHER_ID", publisherSecret: "MY_PUBLISHER_SECRET", applicationName: "MY_APPLICATION_NAME"})
 ```
 
-4. Next, when you start playing the asset, call the `startSession` method and pass it the content metadata for the asset you're playing:
+5. Next, when you start playing the asset, call the `startSession` method and pass it the content metadata for the asset you're playing:
 
 ```brightscript
 m.player.source = sourceDescription
@@ -80,7 +87,7 @@ m.comscoreConnector.callFunc("startSession", contentMetadata)
 
 See the [API documentation](https://www.theoplayer.com/docs/theoplayer/connectors/roku/comscore/API-reference/) for more on how to structure the content metadata for Comscore.
 
-5. Comscore requests a call to their `tick` method when the main event loop executes. If you update a global field called `tccTick`, the THEOComscoreConnector will automatically observe that field and call `tick` for you. Otherwise, you can manually call the `sendTick` method on the THEOComscoreConnector.
+6. Comscore requests a call to their `tick` method when the main event loop executes. If you update a global field called `tccTick`, the THEOComscoreConnector will automatically observe that field and call `tick` for you. Otherwise, you can manually call the `sendTick` method on the THEOComscoreConnector.
 
 ```brightscript
 m.global.addField("tccTick", "integer", false)
@@ -98,11 +105,11 @@ end while
 
 NOTE: the `wait` method is running for 1000ms here, making the `tccTick` field get updated every second. Setting it to 0ms will cause the `tccTick` field to not get updated regularly.
 
-6. If the content metadata needs to change, you can update it by calling `update`. This method accepts partial content metadata:
+7. If the content metadata needs to change, you can update it by calling `update`. This method accepts partial content metadata:
    `m.comscoreConnector.callFunc( "update", contentMetadata)`
-7. When the video has stopped playing because it ended or the user exited, end the Comscore session
+8. When the video has stopped playing because it ended or the user exited, end the Comscore session
    `m.comscoreConnector.callFunc("endSession")`
-8. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the SDK:
+9. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the SDK:
 
 ```brightscript
 m.comscoreConnector.callFunc("destroy")

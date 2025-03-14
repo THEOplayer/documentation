@@ -46,10 +46,17 @@ sub onLibraryLoadStatusChanged(event as object)
 end sub
 ```
 
-3. Then configure the connector by calling the configure method, passing the player instance and your Conviva customer key.
+3. Add the THEOConvivaConnector component to the SceneGraph file where your THEOPlayer is defined
+
+```xml
+<THEOsdk:THEOplayer id="THEOplayer" controls="true" />
+<THEOConvivaConnector:THEOConvivaConnector id="THEOConvivaConnector" />
+```
+
+4. Then in the Brightscript file, configure the connector by calling the configure method, passing the player instance and your Conviva customer key.
 
 ```brightscript
-m.player = m.top.findNode("VideoPlayerNativeControls")
+m.player = m.top.findNode("THEOPlayer")
 m.convivaConnector = m.top.findNode("THEOConvivaConnector")
 m.convivaConnector.callFunc("configure", m.player, "MY_CUSTOMER_KEY")
 ```
@@ -57,7 +64,7 @@ m.convivaConnector.callFunc("configure", m.player, "MY_CUSTOMER_KEY")
 NOTE: that if you want to debug first and use Conviva's Touchstone service to validate your integration, you can include the gateway URL and a debug parameter in the configure call:
 `m.convivaConnector.callFunc("configure", m.player, "MY_CUSTOMER_KEY", "MY_TOUCHSTONE_GATEWAY_URL", true)`
 
-4. Next, when you start playing the asset, call the `startSession` method and pass it the content metadata for the asset you're playing:
+5. Next, when you start playing the asset, call the `startSession` method and pass it the content metadata for the asset you're playing:
 
 ```brightscript
 m.player.source = sourceDescription
@@ -72,13 +79,13 @@ m.convivaConnector.callFunc("startSession", contentMetadata)
 
 See the [API documentation](https://www.theoplayer.com/docs/theoplayer/connectors/roku/conviva/API-reference/) for more on how to structure the content metadata for Conviva.
 
-5. If you desire to monitor for CDN changes, you can optionally add a configuration for that after starting the session.
+6. If you desire to monitor for CDN changes, you can optionally add a configuration for that after starting the session.
    `m.convivaConnector.callFunc("monitorCdnChanges", { mycdn: ["my-cdn.net"], theo: ["cdn.theoplayer.com"] })`
-6. If the content metadata needs to change, you can update it by calling `setContentInfo`. This method accepts partial content metadata:
+7. If the content metadata needs to change, you can update it by calling `setContentInfo`. This method accepts partial content metadata:
    `m.convivaConnector.callFunc( "setContentInfo", {assetName: "New Program"})`
-7. When the video has stopped playing because it ended or the user exited, end the Conviva session
+8. When the video has stopped playing because it ended or the user exited, end the Conviva session
    `m.convivaConnector.callFunc("endSession")`
-8. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the SDK:
+9. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the SDK:
 
 ```brightscript
 m.convivaConnector.callFunc("destroy")
