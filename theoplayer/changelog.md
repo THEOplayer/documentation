@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.13.1 (2025/03/14)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where playing back THEOlive streams would not work.
+
 ## 🚀 8.13.0 (2025/03/08)
 
 ### General
