@@ -1,0 +1,144 @@
+---
+title: "Software Encoders"
+id: software-encoders
+---
+A software encoder can take raw video frames and convert it into a digital format that is compatible for distribution with Dolby.io. This type of integration can typically be done without additional hardware requirements and eases adoption of real-time streaming workflows.
+
+# Integration Guides
+
+Review these guides for how to setup your preferred tools for real-time streaming integrations.
+
+<div class="small-image-and-text-btn-container">
+  <a href="./using-ffmpeg" class="small-image-and-text-btn">
+    <div class="small-image-and-text-btn-inner-container">
+      <div>
+        <img class="gray-svg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/FFmpeg_Logo_new.svg/2560px-FFmpeg_Logo_new.svg.png"/>
+      </div>
+      <div class="small-image-and-text-btn-title"> </div>
+    </div>
+  </a>
+
+  <a href="./using-obs" class="small-image-and-text-btn">
+    <div class="obs-inner-container">
+      <div align="center">
+      <img class="logo-obs" src="https://upload.wikimedia.org/wikipedia/commons/1/14/Open_Broadcaster_Software_Logo.png"/>
+      </div>
+      <div class="small-image-and-text-btn-title"> OBS </div>
+    </div>
+  </a>
+  
+  <a href="./using-whip-with-gstreamer" class="small-image-and-text-btn">
+    <div class="small-image-and-text-btn-inner-container">
+      <div>
+      <img class="gray-svg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Gstreamer-logo.svg/2560px-Gstreamer-logo.svg.png"/>
+      </div>
+      <div class="small-image-and-text-btn-title"> </div>
+    </div>
+  </a>
+  
+  <a href="./broadcasting-with-vmix" class="small-image-and-text-btn">
+    <div class="small-image-and-text-btn-inner-container">
+      <div>
+      <img class="gray-svg" src="https://www.vmix.com/images/2017/logos/web/vmix-logo/vMix-Logo-Black.png"/>
+      </div>
+      <div class="small-image-and-text-btn-title"> </div>
+    </div>
+  </a>
+  
+  
+  <a href="./using-whip-with-flowcaster" class="small-image-and-text-btn">
+    <div class="small-image-and-text-btn-inner-container">
+      <div>
+      <img class="gray-svg" src="data:image/png;base64,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"/>
+      </div>
+      <div class="small-image-and-text-btn-title"> </div>
+    </div>
+  </a>
+
+  <a href="./liveu-studio-using-whip" class="small-image-and-text-btn">
+    <div class="small-image-and-text-btn-inner-container">
+      <div>
+      <img class="gray-svg" src="https://cdn-liveutv.pressidium.com/wp-content/uploads/2021/06/LiveU_Logo_On_Whtite.png"/>
+      </div>
+      <div class="small-image-and-text-btn-title"> </div>
+    </div>
+  </a>  
+
+  <!--
+  <a href="./broadcasting-jitsi-or-zoom-meetings" class="small-image-and-text-btn">
+    <div class="small-image-and-text-btn-inner-container">
+      <div>
+      <img class="gray-svg" src="https://logos-world.net/wp-content/uploads/2021/03/Zoom-Logo.png"/>
+      </div>
+      <div class="small-image-and-text-btn-title"> </div>
+    </div>
+  </a>    
+  -->
+  
+</div>
+
+
+## Drastic Technologies
+
+**FlowCaster** from Drastic Technologies lets you share high quality video over IP for remote collaboration and review workflows. This tool supports broadcasting with [WHIP](/millicast/webrtc-whip.md).
+
+[How-to integrate with Flowcaster](/millicast/using-whip-with-flowcaster.md)
+
+## FFmpeg
+
+**FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. The `ffmpeg` command-line tool can be used to forward streams with [RTMP](/millicast/using-rtmp-and-rtmps.md). This can be helpful for quickly streaming a media file from disk.
+
+[How-to integrate with FFmpeg](/millicast/using-ffmpeg.md)
+
+## GStreamer
+
+**GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines. The tools can be used to ingest streams with [WHIP](/millicast/webrtc-whip.md). This can be helpful for complex workflows that operate on media streams.
+
+[How-to integrate with GStreamer](/millicast/using-whip-with-gstreamer.md)
+
+## Open Broadcaster Software (OBS)
+
+**OBS** is a free open-source application for broadcasting and recording streams from your desktop computer. It supports broadcasting with [WebRTC](/millicast/webrtc-whip.md), [SRT](/millicast/using-srt.md), and [RTMP](/millicast/using-rtmp-and-rtmps.md) to support many different use cases.
+
+[How-to integrate with OBS](/millicast/using-obs.md)
+
+## LiveU
+
+**LiveU Studio** is a cloud production tool for live video feeds. It supports [WHIP](/millicast/webrtc-whip.md).
+
+[How-to integrate with LiveU Studio](/millicast/liveu-studio-using-whip.md)
+
+## vMix
+
+**vMix** is a Windows desktop applicationi that provides a vision mixer and encoder. You can use this tool as both a [RTMP](/millicast/using-rtmp-and-rtmps.md) or [NDI](/millicast/using-ndi.md) source.
+
+[How-to integrate with vMix](/millicast/broadcasting-with-vmix.md)
+
+## Zoom
+
+**Zoom** is a video collaboration platform. The application supports streaming use cases with [RTMP](/millicast/using-rtmp-and-rtmps.md) which allows you to distribute your meeting with Dolby.io Real-time Streaming.
+
+[How-to integrate with Zoom Meetings](/millicast/broadcasting-jitsi-or-zoom-meetings.md)
+
+# Learn more
+
+You can find examples of using [Avid Media Composer](https://dolby.io/blog/collaborative-post-production-with-avid-media-composer/), [OBS](https://dolby.io/blog/using-webrtc-in-obs-for-remote-live-production/), and more on the [developer blog](https://dolby.io/blog/tag/encoder/).
+
+<div>
+  <div class="small-text-only-btn-container">
+
+    <a class="small-text-only-btn" href="https://github.com/orgs/dolbyio-samples/repositories?q=encoder">
+      <div class="model-card"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>Explore GitHub sample code</div>
+    </a>    
+      
+    <a class="small-text-only-btn" href="https://dolby.io/blog/tag/encoder/">
+      <div class="model-card">Find related blog posts</div>
+    </a>
+      
+  </div>
+</div>
+
+
+
+
+

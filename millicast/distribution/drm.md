@@ -1,0 +1,185 @@
+---
+title: "DRM"
+id: drm
+---
+**Digital Rights Management (DRM)** is a security mechanism that helps protect premium content or intellectual property within a stream from being shared without permission. This mechanism prevents bad actors from screen sharing, taking screenshots, and other unauthorized distribution.
+
+DRM is accomplished through an extra layer of encryption before distributing content for playback. When configuring your [Publish Tokens](/millicast/managing-your-tokens.md) you enable DRM for any associated streams. The video player will contact a licensing server to retrieve a key to decrypt the audio and video. 
+
+Support is available for:
+
+✓ Video codecs including H.264
+
+✓ Broadcast protocols including SRT, RTMP
+
+✓ DRM standards including Widevine, Fairplay
+
+Without authorized access, viewers will typically only observe a black or green screen without any audio.
+
+<CalloutPremiumFeature />
+
+# How It Works
+
+When streaming with DRM enabled, the content is distributed with an additional level of encryption. To decrypt and view the media, the player and platform must enforce protections and be able to fetch a license that is used to decrypt.
+
+![](https://files.readme.io/9fa71d5693c8953b167e73d4ce9ff8cab0275b3b54744eed0373c0128dfc37df-image.png)
+
+In order to enable DRM, you will need to follow a few steps:
+
+1. Use the [Streaming Dashboard](/millicast/about-dash.md) or [/api/publish_token](ref:publish-tokens) REST API to set the `drm` parameter to **true**. You should also be sure to use a [Subscribe Token](/millicast/subscribe-tokens.md).
+2. Use the [Web](/millicast/web.md) SDK or [Hosted Millicast Player](/millicast/hosted-viewer.md) with the appropriate DRM setting enabled.
+
+Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
+
+> ❗️ Additional Charges - Licenses
+> 
+> This feature will incur additional charges for licenses. If you would like to use this capability on your projects, please be aware of the pricing impact or reach out to your [sales/solutions](https://dolby.io/contact/) contact with any questions.
+> 
+> Review [Pricing](https://dolby.io/pricing/) for additional details.
+
+<br />
+
+## Enabling DRM on a Stream
+
+### Using the REST API
+
+The [/api/publish_token](ref:publish-tokens) endpoint can be used to create or modify existing publish tokens. The `drm` parameter is used to indicate whether or not a stream should be protected with DRM.
+
+```curl Create New Token with DRM
+POST https://api.millicast.com/api/publish_token
+{
+  "label": "drm-test",
+  "streams": [{
+    "streamName": "drm-test"
+  }],
+  "drm": true,
+  "subscribeRequiresAuth": true
+}
+```
+```curl Update Token with DRM
+PUT https://api.millicast.com/api/publish_token
+{
+  "drm": true,
+  "subscriberRequiresAuth": true
+}
+```
+
+When updating an existing token, you should also enable the `subscriberRequiresAuth` setting.
+
+<GettingStartedRESTAPI />
+
+## Viewing a DRM Stream
+
+### Using the Hosted Player
+
+The [Hosted Player](/millicast/hosted-viewer.md) has an option to enable DRM. Whether it is a standalone web application or embedded in an iframe within your site you will need to add the `&drm` [publishing parameter](/millicast/broadcast-parameters.md) to the URL.
+
+For example:
+
+```
+https://viewer.millicast.com?streamId={accountId/streamName}&token={subscriberToken}&drm
+```
+
+### Using the Web SDK
+
+There are a few things to know when setting up playback.
+
+- The HTML must have discrete **Video** and **Audio** elements.
+- The subscribe token should be in the `getSubscriber` request.
+- The `enableDRM` parameter should be provided to the connection options.
+- The `active` broadcast event should be enabled.
+
+Here is an example of initializing the subscriber for a DRM stream:
+
+```javascript
+const tokenGenerator = () => Director.getSubscriber(streamName, accountId,subscriberToken, enableDRM);
+ 
+ 
+
+```
+
+You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV)** and **key** for decrypting the content.
+
+```javascript
+await viewer.connect({
+    drm : true,
+    events : ['active', 'inactive', 'layers'],
+})
+
+viewer.on('broadcastEvent', (event) => {
+    const {name, data} = event
+    switch(name) {
+        case 'active' :
+            if(event.data.encryption) {
+                const drmOptions = {
+                  videoElement: document.querySelector("video"),
+                  audioElement: document.querySelector("audio"),
+                  videoEncryptionParams: event.data.encryption,
+                  videoMid: '0',                 
+                }
+                // if there are audio tracks in your stream, add the next two lines
+ 
+                const audioTrackInfo = event.data.tracks.find((track) => track.type === 'audio')
+                if (audioTrackInfo) {
+                  drmOptions.audioMid = audioTrackInfo.mediaId;
+                }
+                viewer.configureDRM(drmOptions)
+            }
+    }
+});
+```
+
+You then can project the source onto your media elements on a web app.
+
+```javascript
+await viewer.project(sourceId, tracksMapping)
+
+```
+
+> 📘 Sample Code and Reference
+> 
+> For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js)  which demonstrates the use of DRM.
+
+<br />
+
+# Troubleshooting
+
+To diagnose DRM issues such as unauthorized sharing or an inability to view content, review the details of the publishing settings, such as:
+
+- Protocol: RTMP or SRT
+- Settings: Bitrate, FPS, Resolution, or Simulcast setting
+- Licenses: An account in good standing with enough licenses for each player instance
+
+## Device Compatibility
+
+Support for most popular browsers is available on both desktop and mobile devices.
+
+| Device / Browser | Desktop | Mobile |
+| :--------------- | :------ | :----- |
+| Safari           | ✅       | ✅      |
+| Chrome           | ✅       | ✅      |
+| Edge             | ✅       | ✅      |
+| Firefox          | ⚠️      | ⚠️     |
+| Native Android   | N/A     | ⚠️     |
+| Native iOS       | N/A     | ❌      |
+
+There are some specific scenarios that limit compatibility with Firefox. Similarly, L3 Widevine is the default configuration due to browser limitations. Please reach out to your account team to discuss the latest status and impact this will have on your plans.
+
+## Feature Compatibility
+
+The use of DRM will limit some of the other platform features.
+
+- [Cloud Transcoder](/millicast/cloud-transcoder.md) for ABR broadcasts are not compatible with DRM at this time.
+- [Multi-Source Broadcasting](/millicast/multi-source-broadcasting.md) with multiple contribution ingests will not use DRM for each layer.
+- [Analytics](/millicast/analytics-1.md) around video stats are not available from encrypted content.
+- [Live Monitoring](/millicast/live-monitoring.md) dashboard will be unable to allow a preview of streams without consuming a license so is unavailable.
+
+Please reach out to your account team to discuss the latest status if this will impact your production plans.
+
+## OBS Broadcast Failing to Playback
+
+If you are sending a source from OBS and playback doesn't appear to be working as expected, please ensure that you do not have an Active Scene in OBS that could be doing a screen capture or screen recording. Even if that is not the scene being used to stream for this particular event, if a screen capture is happening in the background DRM will still block playback.
+
+## Green Video Playback
+
+Typically when a license check fails, content will be presented as a black screen. In some cases, a green screen may appear instead and could also indicate video decoding is not working properly. Contact support if that is the case and you need additional help troubleshooting.

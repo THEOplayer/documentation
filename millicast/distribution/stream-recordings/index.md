@@ -1,0 +1,179 @@
+---
+title: "Stream Recordings"
+id: recordings
+---
+With **_Stream Recording_** you can keep a copy of a real-time stream where media can be used for a variety of use cases such as video on demand (VOD) playback, archiving and auditing, event highlights and instant replay, etc. To support this variety of purposes there are options for the type of media assets that you will create from a stream.
+
+- **Recordings** are full-length copies of a stream that will be processed and made available shortly after a broadcast is complete.
+- Live **Clips** are media files from a broadcast stream that can be processed and retrieved immediately while the live stream is still in progress.
+
+You can work with recordings and clips either from the [Streaming Dashboard](/millicast/about-dash.md) or using the [Media Assets](ref:media-assets) REST API. 
+
+# How It Works
+
+The collection of recordings and clips is referred to more broadly as **Media Assets** that have been created from your account. There are a few concepts to understand to make best use of the feature.
+
+
+![](https://cdn.TODO.io/docs/readme/369a62ae8b5cccab48739f346b2bcd4b9fc3a48f827fb09924f0cb921f1f1825-media-assets-overview.png)
+
+
+
+When a [Publish Token](/millicast/managing-your-tokens.md) is enabled with recording or clipping, the system will generate a timeline for each incoming source. For simple streams, this may be a single broadcast source but for more complex workflows with [multi-bitrate contribution](/millicast/multi-source-broadcasting.md) and [multi-view](/millicast/multiview.md) applications that have multiple sources there may be more than one timeline. The **timeline** is a series of buffered segments that are kept in a cache so that they can be stored as a recording or a clip later. When a stream goes offline, one timeline ends and if it reconnects a new one begins.
+
+There are costs associated with storage, so you can configure **expiration rules** for how long you want to maintain availability of a media stream and **storage profiles** so that you can have the service transfer files to your own preferred storage provider (AWS S3, GCS, etc.)
+
+<CalloutStorageSurcharge />
+
+<br />
+
+## Enable Recording and/or Clipping
+
+You must configure a [Publish Token](/millicast/managing-your-tokens.md) prior to beginning a broadcast to enable the capture of media.
+
+|Media Type|Enable|Create|
+|:----|:----|:----|
+|Recording|The [Publish Token](/millicast/managing-your-tokens.md)  has a `record` property to enable recordings.|Will begin after being enabled from a [Client SDK](/millicast/client-sdks.md) with an active publish connection.|
+|Clip|The [Publish Token](/millicast/managing-your-tokens.md) has a `clip` property to enable live clipping.|
+| |
+|:exclamation: This feature is not available on all plans.|Processed on demand by calling the  [/api/v3/media/assets](ref:media-assets)  ([Create Clip](ref:recordfiles_createrecordclip)) REST endpoint with **start** and **stop** timestamps.|
+
+
+
+For more detailed instructions, review one of the following tutorials:
+
+<div class="dolbyio-cards-container">
+  
+  <a class="dolbyio-card dolbyio-card-1" href="../docs/live-clipping">
+     <div class="dolbyio-card-image">
+      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
+    </div>
+    <div class="dolbyio-card-header">How-to Create Live Clips</div>
+    <div class="dolbyio-card-description">
+      Learn how-to setup and create live clips.
+    </div>
+  </a>
+  
+  <a class="dolbyio-card dolbyio-card-1" href="../docs/starting-recording">
+     <div class="dolbyio-card-image">
+      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
+    </div>
+    <div class="dolbyio-card-header">How-to Start Recordings</div>
+    <div class="dolbyio-card-description">
+      Learn how-to setup and create recordings.
+    </div>
+  </a>
+  
+</div>
+
+
+
+<br />
+
+## Finding Your Media
+
+You can find both recordings and clips in the [Streaming Dashboard](/millicast/about-dash.md) or by calling the [Media Assets](ref:media-assets) REST endpoint.
+
+| Media Type | Availability                                                                                                                                                                                    | Storage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Recording  | Recordings will be processed and made available shortly after the completion of a broadcast.                                                                                                    | Recordings are stored within your Dolby account. You can retrieve them from the [Streaming Dashboard](/millicast/about-dash.md) or by downloading them using the [/api/v3/media/assets](ref:media-assets)   ([List Media Assets](ref:media-assets-get) ) REST endpoint.                                                                                                                                                                                                                                        |
+| Clip       | Call the   [/api/v3/media/assets](ref:media-assets)  ([List Media Assets](ref:media-assets-get)) REST endpoint to check the status of a clip or subscribe to [Media Webhooks](/millicast/media-hooks.md). | Clips are stored as configured by a storage profile. This can be set to send media directly to third-party cloud storage providers such as AWS S3 or GCS. You can specify where to store media when you call the  [/api/v3/media/assets](ref:media-assets)  ([Create Clip](ref:recordfiles_createrecordclip)) REST endpoint or as configured for your account from the [/api/v3/account/media/storage](ref:account) ([Get Storage Profile](ref:account-media-storage-id-get)) account configuration. |
+
+For more detailed instructions, review one of the following tutorials:
+
+<div class="dolbyio-cards-container">
+  
+  <a class="dolbyio-card dolbyio-card-1" href="../docs/how-to-get-media-assets">
+     <div class="dolbyio-card-image">
+      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
+    </div>
+    <div class="dolbyio-card-header">How-to Get Media Assets</div>
+    <div class="dolbyio-card-description">
+      Learn how to filter and find recordings and clips.
+    </div>
+  </a>
+  
+  <a class="dolbyio-card dolbyio-card-1" href="../docs/how-to-setup-media-storage">
+     <div class="dolbyio-card-image">
+      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
+    </div>
+    <div class="dolbyio-card-header">How-to Setup Clip Storage</div>
+    <div class="dolbyio-card-description">
+      Learn how to configure third-party cloud storage for clipping.
+    </div>
+  </a>
+  
+</div>
+
+
+
+<br />
+
+<br />
+
+## Media Properties
+
+Media assets will have matching resolution and bitrate of the broadcasted stream. Any degradation of the broadcast stream due to bad network conditions will persist, however any client playback issues that result from adaptive bitrate playback will not impact the recordings or clips.
+
+The video and audio codecs used during the broadcast will be reflected in the archived media assets.
+
+| Video codec   | Media container |
+| :------------ | :-------------- |
+| H.264         | MP4             |
+| VP8, VP9, AV1 | WebM            |
+
+We recommend that encoding settings use an **I-Frame** period of `1s` when using the service to increase precision when aligning keyframes with media segments.
+
+# Troubleshooting
+
+To diagnose recording issues, such as missing recordings, review the details of the publishing settings, such as:
+
+- Protocol: RTMP, SRT, WebRTC, or WHIP
+- Encoder: Hardware and software type with version details
+- Settings: Bitrate, FPS, Resolution, or Simulcast setting
+- Network: Details about the network used. For example, a cellular connection may create issues with fluctuations in the network.
+
+## Multi-source
+
+When using [multi-source](/millicast/multi-source-broadcasting.md) broadcasting, multiple independent broadcast timelines will be created. 
+
+For `clip` assets you can identify the specific source from which to clip, or if not specified multiple clips will be created. 
+
+For `recording` assets, you will get a discrete media file for each source.
+
+You will need to use a separate media tool (such as [Dolby.io Media Transcode API](https://docs.dolby.io/media-apis/docs/transcode-api-guide)) if you want to automate any transizing, transrating, or stitching operations.
+
+## Media Duration
+
+There are some limits to how large any individual media asset will be.
+
+| Media Type | Minimum Duration | Maximum Duration |
+| :--------- | :--------------- | :--------------- |
+| Recording  | 10 seconds       | 24 hours         |
+| Clip       | 10 seconds       | 8 hours          |
+
+For long-running streams that exceed 12 hours, multiple media assets will be created.
+
+## Media Expiration
+
+Consideration should be made on how long you may want to store media before it expires and is no longer available for retrieval.
+
+| Media Type | Default | Minimum | Maximum                  |
+| :--------- | :------ | :------ | :----------------------- |
+| Recording  | none    | 1 day   | account in good standing |
+| Clip       | none    | 1 day   | account in good standing |
+| Timelines  | 30 days | 1 day   | account in good standing |
+
+## Missing Audio for 5.1
+
+When publishing streams using 5.1 audio format, the audio is present on the viewer live stream, but not preserved in the recording. Multi-channel audio is currently not preserved in the recording archive. The audio is only present in the recording archive if using stereo and mono formats. Multi-source stream audio is also affected if the URL is set to `&videoOnly`.
+
+## Dashboard Recording Error
+
+If the dashboard displays recording errors, contact the [Dolby support](http://support.dolby.io) team and specify as many of your publishing settings as possible. 
+
+# Learn More
+
+Learn more by exploring the [specification](ref:media-assets), [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
+
+
+
