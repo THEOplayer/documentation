@@ -23,7 +23,7 @@ In what follows, we describe the approach to set a fallback for one channel.
 
 ## 1. Create two channels and start them.
 
-You'll need to create two THEOlive channels via the [API](https://developers.theo.live/reference/create-channel) or [management console](https://console.theo.live/). Let's say for example that we h`ave the following channels with fictive IDs:`
+You'll need to create two THEOlive channels via the [API](https://developers.theo.live/reference/create-channel) or [management console](https://console.theo.live/). Let's say for example that we have the following channels with fictive IDs:
 
 - Channel `<channel-in-us-west>` which is located in the `us-west` region
 - Channel `<channel-in-us-east>` which is located in the `us-east` region
