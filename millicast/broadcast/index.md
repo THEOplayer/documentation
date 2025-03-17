@@ -8,11 +8,11 @@ The Dolby.io CDN can ingest streams encoded in a few main formats:
 
 <div style="margin-left: 20px">
 
-✓ [WebRTC](webrtc-whip.md), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
+✓ [WebRTC](/millicast/broadcast/webrtc-whip.md), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
 
-✓ [SRT](using-srt.md), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
+✓ [SRT](/millicast/broadcast/using-srt.md), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
 
-✓ [RTMP](using-rtmp-and-rtmps.md) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec. 
+✓ [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec. 
 
 </div>
 
@@ -66,15 +66,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
     <div class="small-image-and-text-btn-inner-container">
       <div>
                 <svg viewBox="0 0 450 250" width="69" height="46">
-          <style type="text/css">
-            .st0a {
-              fill: darkgrey;
-            }
-
-            .st1 {
-              fill: none;
-            }
-          </style>
+          
           <g id="Layer_1">
             <path
                   class="st0a"
@@ -108,15 +100,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
     <div class="small-image-and-text-btn-inner-container">
       <div>
                 <svg viewBox="0 0 50 50" width="69" height="46">
-          <style type="text/css">
-            .st0a {
-              fill: darkgrey;
-            }
-
-            .st1 {
-              fill: none;
-            }
-          </style>
+          
           <g id="Layer_1">
             <path class="cls-1" d="M44.05,17.05c-.29,.23-5.41,3.11-5.41,9.53,0,7.42,6.52,10.05,6.71,10.11-.03,.16-1.04,3.6-3.44,7.1-2.14,3.08-4.38,6.16-7.78,6.16s-4.28-1.98-8.2-1.98-5.19,2.04-8.3,2.04-5.28-2.85-7.78-6.35c-2.89-4.11-5.23-10.5-5.23-16.56,0-9.72,6.32-14.88,12.54-14.88,3.31,0,6.06,2.17,8.14,2.17s5.06-2.3,8.82-2.3c1.43,0,6.55,.13,9.92,4.96Zm-11.7-9.08c1.56-1.85,2.66-4.41,2.66-6.97,0-.36-.03-.72-.1-1.01-2.53,.1-5.54,1.69-7.36,3.79-1.43,1.62-2.76,4.18-2.76,6.78,0,.39,.07,.78,.1,.91,.16,.03,.42,.07,.68,.07,2.27,0,5.13-1.52,6.78-3.57Z"></path>
           </g></svg>
@@ -152,13 +136,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
              width="40"
              viewBox="0 0 50 50"
              >
-          <defs>
-            <style>
-              .cls-1 {
-                fill: darkgrey;
-              }
-            </style>
-          </defs>
+        
           <polygon
                    class="cls-1"
                    points="45.24 0 29.74 .02 4.76 25 12.47 32.72 19.24 25.98 45.24 0"
@@ -222,58 +200,12 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
   <a href="https://docs.dolby.io/streaming-apis/docs/player-plugin" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
-         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" height="45" width="45" viewBox="0 0 50 50"><defs><style>.cls-1{fill:#a9a9a9}</style></defs><path class="cls-1" d="M35.98,32.49c-.9,0-1.26-.54-1.26-.54-.06-.24-.12-3.82-.15-7.37-.03-3.7,0-7.37,.18-7.4,1.05-1.96,4.36-5.9,4.36-5.9-6.2,1.23-9.57,5.29-9.57,5.29-.99-.78-3.04-.66-3.04-.66,.96,.51,1.9,2.05,1.9,3.31v12.45s-2.08,1.84-3.67,1.84c-.96,0-1.53-.51-1.87-.93-.21-.3-.3-.54-.3-.54v-15.37c-.21,.15-.48,.27-.75,.27-.33,0-.69-.18-.93-.66-.18-.39-.3-.93-.3-1.77,0-2.83,3.22-4.72,3.22-4.72-4.06,1.08-7.85,3.19-12.88,8.97-5.02,5.78-4.06,10.53-4.06,10.53,0,0,1.35-3.31,4.69-6.77,1.59-1.62,2.77-2.17,3.58-2.2,.9,0,1.32,.66,1.32,1.26v11.7c0,1.14-.75,1.41-1.44,1.38-.57,0-1.11-.21-1.11-.21,3.43,4.96,11.61,5.69,11.61,5.69l3.61-3.85,.09,.06,3.31,2.8c6.02-3.58,8.94-10.23,8.94-10.23-2.74,2.92-4.45,3.58-5.48,3.58Z"></path><path class="cls-1" d="M25.03-.21C11.19-.21,0,11.07,0,25s11.19,25.21,25,25.21,25-11.28,25-25.21C50.03,11.07,38.84-.21,25.03-.21Zm16.91,42.3c-4.51,4.54-10.53,7.07-16.91,7.07s-12.39-2.5-16.91-7.07C3.61,37.55,1.11,31.47,1.11,25.03S3.61,12.55,8.12,7.97C12.64,3.4,18.62,.9,25.03,.9s12.39,2.5,16.91,7.07c4.51,4.54,7.01,10.62,7.01,17.06s-2.5,12.48-7.01,17.06Z"></path></svg>     
+         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" height="45" width="45" viewBox="0 0 50 50"><path class="cls-1" d="M35.98,32.49c-.9,0-1.26-.54-1.26-.54-.06-.24-.12-3.82-.15-7.37-.03-3.7,0-7.37,.18-7.4,1.05-1.96,4.36-5.9,4.36-5.9-6.2,1.23-9.57,5.29-9.57,5.29-.99-.78-3.04-.66-3.04-.66,.96,.51,1.9,2.05,1.9,3.31v12.45s-2.08,1.84-3.67,1.84c-.96,0-1.53-.51-1.87-.93-.21-.3-.3-.54-.3-.54v-15.37c-.21,.15-.48,.27-.75,.27-.33,0-.69-.18-.93-.66-.18-.39-.3-.93-.3-1.77,0-2.83,3.22-4.72,3.22-4.72-4.06,1.08-7.85,3.19-12.88,8.97-5.02,5.78-4.06,10.53-4.06,10.53,0,0,1.35-3.31,4.69-6.77,1.59-1.62,2.77-2.17,3.58-2.2,.9,0,1.32,.66,1.32,1.26v11.7c0,1.14-.75,1.41-1.44,1.38-.57,0-1.11-.21-1.11-.21,3.43,4.96,11.61,5.69,11.61,5.69l3.61-3.85,.09,.06,3.31,2.8c6.02-3.58,8.94-10.23,8.94-10.23-2.74,2.92-4.45,3.58-5.48,3.58Z"></path><path class="cls-1" d="M25.03-.21C11.19-.21,0,11.07,0,25s11.19,25.21,25,25.21,25-11.28,25-25.21C50.03,11.07,38.84-.21,25.03-.21Zm16.91,42.3c-4.51,4.54-10.53,7.07-16.91,7.07s-12.39-2.5-16.91-7.07C3.61,37.55,1.11,31.47,1.11,25.03S3.61,12.55,8.12,7.97C12.64,3.4,18.62,.9,25.03,.9s12.39,2.5,16.91,7.07c4.51,4.54,7.01,10.62,7.01,17.06s-2.5,12.48-7.01,17.06Z"></path></svg>     
       </div>
       <div class="small-image-and-text-btn-title">Unreal plugin</div>
     </div>
   </a> 
 </div>
-
-<style> 
-  .small-image-and-text-btn-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 100px)); 
-    grid-gap: 20px; 
-  }
-  
-  .small-image-and-text-btn {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    height: 80px; 
-    border: solid 1px rgba(0,0,0,.1);
-    background-color: white;
-    border-radius: 7px;
-    text-align: center;
-    text-decoration: none !important; 
-    box-shadow: 0 4px 10px rgba(62,62,62,.03);
-    transition: all .2s ease .01s !important;
-    color: black !important;
-  }
-  
-  .small-image-and-text-btn:hover {
-    border: solid 1px #cbadff;
-    top: -2px;
-    box-shadow: 0 5px 8px rgba(81,111,247,.2); 
-  }
-  
-  .small-image-and-text-btn-inner-container {
-    height: 70px; 
-  }
-  
-  .small-image-and-text-btn-title {
-    margin-bottom: 15px; 
-    font-size: 12px;
-    font-weight: 600; 
-  }
-  
-  .gray-svg {
-    filter: gray;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-  }
-  
-</style>
 
 
 # Encoding
@@ -300,43 +232,43 @@ A few terms to remember are:
 
 ## Encoders
 
-A [hardware encoder](hardware-encoders.md) can help transform [capture](capture.md) devices used in professional broadcast setups into a real-time streaming solution. The typical hardware encoder will have drivers that support interfaces like SDI, HDMI, etc., while optimizing for fast encoding to standards like WHIP or RTMP for streaming broadcast workflows. There are also [software encoders](software-encoders.md) that can help with encoding by using compute resources.
+A [hardware encoder](/millicast/hardware-encoders/index.md) can help transform [capture](/millicast/capture/index.md) devices used in professional broadcast setups into a real-time streaming solution. The typical hardware encoder will have drivers that support interfaces like SDI, HDMI, etc., while optimizing for fast encoding to standards like WHIP or RTMP for streaming broadcast workflows. There are also [software encoders](/millicast/software-encoders/index.md) that can help with encoding by using compute resources.
 
 Here is a breakdown of some distinct encoders with their corresponding codec and protocol compatibility.
 
 | Encoder                                                      | Protocols                                      | Codecs                                              |
 | :----------------------------------------------------------- | :--------------------------------------------- | :-------------------------------------------------- |
-| [Osprey](using-osprey-talon-whip-hardware-encoder.md) Talon | RTMP, RTMPS, RTSP, HLS, RTP, SRT, WebRTC, WHIP | H.264 (AVC), H.265 (HEVC), AAC                      |
-| [Teradek](broadcasting-teradek-vidiu.md) Wave               | RTMP, RTMPS, RTSP, SRT, HLS, NDI               | H.264 (AVC), H.265 (HEVC), AAC                      |
-| [Videon](videon.md) EdgeCaster                              | RTMP, RTMPs, SRT, HLS                          | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
-| [Haivision](using-haivision-kb-encoder.md) KB Encoder       | RTMP, RTMPS, RTSP, HLS, SRT                    | H.264 (AVC), H.265 (HEVC), AAC                      |
-| [FlowCaster](using-whip-with-flowcaster.md)                 | RTMP, RTMPs, WHIP, NDI, HLS, SRT, WebRTC       | H.264 (AVC), H.265 (HEVC)                           |
-| [FFmpeg](using-ffmpeg.md)                                   | RTMP, RTMPs, RTSP, HLS                         | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
-| [GStreamer](using-whip-with-gstreamer.md)                   | RTMP, RTMPs, RTSP, SRT, HLS, WHIP              | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
-| [OBS](using-obs.md)                                         | WebRTC, RTMP, RTMPs, NDI, HLS, SRT, RTSP       | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
-| [LiveU](liveu-studio-using-whip.md)                         | RTMP, RTMPs, HLS, RTSP, NDI                    | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
-| [vMix](broadcasting-with-vmix.md)                           | RTMP, RTMPs, RTSP, NDI, SRT, WebRTC            | H.264 (AVC), H.265 (HEVC), ProRes, DNxHD/DNxHR, AAC |
+| [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md) Talon | RTMP, RTMPS, RTSP, HLS, RTP, SRT, WebRTC, WHIP | H.264 (AVC), H.265 (HEVC), AAC                      |
+| [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md) Wave               | RTMP, RTMPS, RTSP, SRT, HLS, NDI               | H.264 (AVC), H.265 (HEVC), AAC                      |
+| [Videon](/millicast/hardware-encoders/videon.md) EdgeCaster                              | RTMP, RTMPs, SRT, HLS                          | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
+| [Haivision](/millicast/hardware-encoders/using-haivision-kb-encoder.md) KB Encoder       | RTMP, RTMPS, RTSP, HLS, SRT                    | H.264 (AVC), H.265 (HEVC), AAC                      |
+| [FlowCaster](/millicast/software-encoders/using-whip-with-flowcaster.md)                 | RTMP, RTMPs, WHIP, NDI, HLS, SRT, WebRTC       | H.264 (AVC), H.265 (HEVC)                           |
+| [FFmpeg](/millicast/software-encoders/using-ffmpeg.md)                                   | RTMP, RTMPs, RTSP, HLS                         | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
+| [GStreamer](/millicast/software-encoders/using-whip-with-gstreamer.md)                   | RTMP, RTMPs, RTSP, SRT, HLS, WHIP              | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
+| [OBS](/millicast/software-encoders/using-obs.md)                                          | WebRTC, RTMP, RTMPs, NDI, HLS, SRT, RTSP       | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
+| [LiveU](/millicast/software-encoders/liveu-studio-using-whip.md)                         | RTMP, RTMPs, HLS, RTSP, NDI                    | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
+| [vMix](/millicast/software-encoders/broadcasting-with-vmix.md)                           | RTMP, RTMPs, RTSP, NDI, SRT, WebRTC            | H.264 (AVC), H.265 (HEVC), ProRes, DNxHD/DNxHR, AAC |
 
 # Broadcast protocols
 
-The line between how a video feed is [captured](capture.md) and how it is encoded can be a subtle distinction. In order to prepare for [distribution](distribution.md), you need to ensure you have the right encoding to optimize delivery and meet your broadcast requirements.
+The line between how a video feed is [captured](/millicast/capture/index.md) and how it is encoded can be a subtle distinction. In order to prepare for [distribution](/millicast/distribution/index.md), you need to ensure you have the right encoding to optimize delivery and meet your broadcast requirements.
 
 ## Encoding with WHIP
 
-The **WebRTC-HTTP Ingestion Protocol ([WHIP](webrtc-whip.md))** is an IETF standard developed to leverage the capabilities of WebRTC to ingest content into a streaming platform over HTTP. WHIP addresses problems with Real-time Streaming by removing translation layers during encoding. 
+The **WebRTC-HTTP Ingestion Protocol ([WHIP](/millicast/broadcast/webrtc-whip.md))** is an IETF standard developed to leverage the capabilities of WebRTC to ingest content into a streaming platform over HTTP. WHIP addresses problems with Real-time Streaming by removing translation layers during encoding. 
 
 WHIP acts like a signaler, handling the creation and deletion of endpoints needed during transport while maintaining the benefits of WebRTC, such as end-to-end encryption and ultra-low latency.
 
-[How-to use GStreamer with WHIP](using-whip-with-gstreamer.md)  
+[How-to use GStreamer with WHIP](/millicast/software-encoders/using-whip-with-gstreamer.md)  
 **GStreamer** is a popular pipeline-based media framework that links together multiple nodes into a media processing workflow. Using WHIP, you can encode an output node to broadcast streaming content through Dolby.io.
 
-[How-to use FlowCaster with WHIP](using-whip-with-flowcaster.md)  
+[How-to use FlowCaster with WHIP](/millicast/software-encoders/using-whip-with-flowcaster.md)  
 **FlowCaster** software provides a secure connection to provide IP streaming for editors and remote collaboration.
 
-[How-to use LiveU Studio with WHIP](liveu-studio-using-whip.md)  
+[How-to use LiveU Studio with WHIP](/millicast/software-encoders/liveu-studio-using-whip.md)  
 **LiveU Studio** is a cloud-based SaaS solution for live video production. By supporting WHIP, media streams ingested from LiveU Studio and can be broadcast by Dolby.io.
 
-[How-to Setup an Osprey Talon for WHIP](using-osprey-talon-whip-hardware-encoder.md)  
+[How-to Setup an Osprey Talon for WHIP](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md)  
 The **Osprey Talon** provides exceptional quality with 4k resolution and a plug-and-play interface. There are some recommended settings to enable broadcasting to the Dolby.io platform by using this encoder in the pipeline.
 
 To learn how to create a stream from OBS using WebRTC, see the following video:
@@ -349,12 +281,12 @@ To learn how to create a stream from OBS using WebRTC, see the following video:
 
 ## Encoding with SRT
 
-The **Secure Reliable Transport ([SRT](using-srt.md))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance. 
+The **Secure Reliable Transport ([SRT](/millicast/broadcast/using-srt.md))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance. 
 
-[How-to setup a Dolby.io SRT Stream](using-srt.md)  
+[How-to setup a Dolby.io SRT Stream](/millicast/broadcast/using-srt.md)  
 The Dolby.io dashboard is used to configure the publish path and stream id for an incoming SRT media stream. 
 
-[How-to use OBS with SRT](using-obs.md)  
+[How-to use OBS with SRT](/millicast/software-encoders/using-obs.md)   
 **Open Broadcaster Software (OBS)** is free and open source software is popular for cross-platform streaming. You will need to download a recent version of OBS that has been extended to provide SRT support.
 
 To learn how to create a stream from OBS using SRT, see the following video:
@@ -368,31 +300,31 @@ To learn how to create a stream from OBS using SRT, see the following video:
 
 ## RTMP Ingest
 
-**Real-time Messaging Protocol ([RTMP](using-rtmp-and-rtmps.md))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.  
+**Real-time Messaging Protocol ([RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.  
 
-[How-to setup a Dolby.io RTMP Stream](using-rtmp-and-rtmps.md)  
+[How-to setup a Dolby.io RTMP Stream](/millicast/broadcast/using-rtmp-and-rtmps.md)  
 The Dolby.io dashboard is used to configure the publish path and stream id for an incoming RTMP or RTMPs media stream.
 
-[How-to use FFmpeg with RTMP](using-ffmpeg.md)  
+[How-to use FFmpeg with RTMP](/millicast/software-encoders/using-ffmpeg.md)  
 **FFmpeg** is a free and open-source software project that is commonly used in legacy media workflows. It is a command-line tool that is capable of outputing streaming content via RTMP, RTMPS, and RTSP.
 
-[How-to use vMix with RTMP](broadcasting-with-vmix.md)  
+[How-to use vMix with RTMP](/millicast/software-encoders/broadcasting-with-vmix.md)  
 **vMix** is a software vision mixer available for Windows. It is useful for certain live video production workflows and supports RTMP output that can be broadcast by Dolby.io.
 
-[How-to Setup a Haivision KB encoder for RTMP](using-haivision-kb-encoder.md)  
+[How-to Setup a Haivision KB encoder for RTMP](/millicast/hardware-encoders/using-haivision-kb-encoder.md)  
 The **Haivision KB** series of media encoders deliver high-quality video streaming with 4k resolution and a plug-and-play interface with a small rack-mountable form factor. There are some recommended encoding sessions to optimize this encoder in the broadcast pipeline.
 
-[How-to Setup a Teradek VidiU Go for RTMP](broadcasting-teradek-vidiu.md)  
+[How-to Setup a Teradek VidiU Go for RTMP](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md)  
 The **Teradek VidiU Go** is a hardware encoder is capable of broadcast quality video that can be sent over RTMP for compatibility with Dolby.io broadcast workflows.
 
 ## Publish parameters
 
-[Broadcast URL Parameters](broadcast-parameters.md)  
+[Broadcast URL Parameters](/millicast/broadcast/broadcast-parameters.md)  
 Publish parameters allow modifying broadcasting preferences to customize streaming experience in more complex workflows with multiple sources.
 
 # Begin broadcasting
 
-Web and mobile browsers are widely available and have wide encoding support, whether broadcasting from Chrome, Safari, Firefox, or Edge. To start broadcasting, see the [Getting Started with Broadcasting](getting-started.md) guide.
+Web and mobile browsers are widely available and have wide encoding support, whether broadcasting from Chrome, Safari, Firefox, or Edge. To start broadcasting, see the [Getting Started with Broadcasting](/millicast/getting-started/index.md) guide.
 
 You can also start broadcasting directly from the Dolby.io dashboard. For more information, see the following video:
 
@@ -410,7 +342,7 @@ You can find examples of using [Avid Media Composer](https://dolby.io/blog/colla
   <div class="small-text-only-btn-container">
 
     <a class="small-text-only-btn" href="https://github.com/orgs/dolbyio-samples/repositories?q=broadcast">
-      <div class="model-card"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <span> Explore GitHub sample code</div>
+      <div class="model-card"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>Explore GitHub sample code</div>
     </a>    
       
     <a class="small-text-only-btn" href="https://dolby.io/blog/tag/broadcast/">
@@ -420,173 +352,3 @@ You can find examples of using [Avid Media Composer](https://dolby.io/blog/colla
   </div>
 </div>
 
-<style>
-  .small-text-only-btn-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 0.1rem;
-  }
-
-  .small-text-only-btn {
-    border: solid 1px rgba(0,0,0,.1);
-    background-color: white;
-    border-radius: 7px;
-    text-align: center;
-    text-decoration: none !important; 
-    box-shadow: 0 4px 10px rgba(62,62,62,.03);
-    transition: all .2s ease .01s !important;
-    padding: 5px;
-    color: black !important;
-    margin:5px; 
-    font-size: 13px;
-    font-weight: 400;
-  }
-
- .small-text-only-btn:hover {
-    border: solid 1px #cbadff;
-    top: -2px;
-    box-shadow: 0 5px 8px rgba(81,111,247,.2); 
-  }
-  
-  .octicon {
-    display: inline-block;
-    vertical-align: text-top;
-    fill: currentColor;
-    overflow: visible;
-  } 
-
-</style> 
-
-
-
-
-<div class="blog-widget-container">
-  
-  <a href="https://dolby.io/blog/what-is-whip-intro-to-webrtc-streaming-part-1/" class="blog-widget">
-    <div class="blog-widget-inner-container">
-      <div class="blog-widget-content">
-        <div class="blog-widget-image card__image--left">
-        </div>
-        <div class="blog-widget-title">What is WHIP?</div>
-        <div class="blog-widget-description">Learn what WHIP is and why it is important.</div>
-        <button class="blog-widget-cta-btn">Read More</button>
-      </div>
-    </div>
-  </a>
-  
-  <a href="https://dolby.io/blog/collaborative-post-production-with-avid-media-composer/" class="blog-widget">
-    <div class="blog-widget-inner-container">
-      <div class="blog-widget-content">
-        <div class="blog-widget-image card__image--center">
-        </div>
-        <div class="blog-widget-title">Post-Production with Avid Media Composer</div>
-        <div class="blog-widget-description">Re-broadcast SRT ingested media as native WebRTC.</div>
-        <button class="blog-widget-cta-btn">Read More</button>
-      </div>
-    </div>
-  </a>
-  
-  <a href="https://dolby.io/blog/ending-live-streams-with-automation-and-apis/" class="blog-widget">
-    <div class="blog-widget-inner-container">
-      <div class="blog-widget-content">
-        <div class="blog-widget-image card__image--right">
-        </div>
-        <div class="blog-widget-title">End Live Streams with Automation and APIs</div>
-        <div class="blog-widget-description">Learn how to stop a live stream remotely using the REST APIs.</div>
-        <button class="blog-widget-cta-btn">Read More</button>
-      </div>
-    </div>
-  </a>
-  
-</div>
-
-<style> 
-  .blog-widget-container {
-    display: flex;
-    flex-wrap: wrap; 
-    column-gap: 20px; 
-  }
-  
-  .blog-widget {
-    display: flex; 
-    flex: 1; 
-    align-items: center; 
-    justify-content: center; 
-    border: solid 1px rgba(0,0,0,.1);
-    background-color: white;
-    border-radius: 7px;
-    /* text-align: center; centered version */
-    text-decoration: none !important; 
-    box-shadow: 0 4px 10px rgba(62,62,62,.03);
-    transition: all .2s ease .01s !important;
-    color: black !important;
-  }
-  
-  .blog-widget:hover {
-    border: solid 1px #cbadff;
-    top: -2px;
-    box-shadow: 0 5px 8px rgba(81,111,247,.2); 
-  }
-  
-  .blog-widget-inner-container {
-    display: flex; 
-    flex: 1 1 auto;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  
-  .blog-widget-content {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-  }
-  
-  .blog-widget-image {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 15px; 
-  }
-  
-  .blog-widget-image::before {
-    content: "";
-	  display: block;
-    padding-top: 56.25%; 
-  }
-  
-  .card__image--left {
-  background-image: url(https://dolby.io/wp-content/uploads/2023/03/Dolby.io_What-is-WHIP-1088x450-1.jpg);
-	} 
-  
-  .card__image--center {
-  background-image: url(https://dolby.io/wp-content/uploads/2023/02/Avid-remote-production-feature-image.png);
-	} 
-  
-    .card__image--right {
-  background-image: url(https://dolby.io/wp-content/uploads/2023/01/Dolby.io_How-to-Stop-your-live-stream-via-API-80.jpg);
-	} 
-  
-  .blog-widget-title {
-    margin-bottom: 15px; 
-    font-size: 1.25rem;
-    font-weight: 300; 
-  }
-  
-  .blog-widget-description {
-    flex: 1 1 auto; 
-    font-size: 0.875rem; 
-    margin-bottom: 15px; 
-  }
-  
-  .blog-widget-cta-btn {
-    display: block; 
-    width: 100%; 
-    padding: 0.5rem; 
-    background-color: white; 
-    border: 1px solid gray; 
-    cursor: pointer; 
-  }
-  
-</style>

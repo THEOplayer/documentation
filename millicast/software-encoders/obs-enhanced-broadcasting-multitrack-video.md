@@ -6,9 +6,9 @@ id: obs-enhanced-broadcasting-multitrack-video
 > 
 > This feature is still under development and may be updated, changed, or deprecated without notice.  We welcome your feedback.
 > 
-> For OBS support, you can follow the following pull-request for the OBS project to merge this functionality with Millicast.  Once this PR is merged the functionality will be put into the next release of OBS: <https://github.com/obsproject/obs-studio/pull/11509>
+> For OBS support, you can follow the following pull-request for the OBS project to merge this functionality with Millicast.  Once this PR is merged the functionality will be put into the next release of OBS: https://github.com/obsproject/obs-studio/pull/11509
 
-<br />
+, 
 
 # MultiTrack Video with OBS
 

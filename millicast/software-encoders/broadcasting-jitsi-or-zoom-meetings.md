@@ -2,7 +2,7 @@
 title: "Zoom"
 id: broadcasting-jitsi-or-zoom-meetings
 ---
-[Zoom](https://zoom.us/) is a video collaboration tool for hosting conferences and meetings. Zoom supports streaming to consumer platforms or any [RTMP](/millicast/using-rtmp-and-rtmps.md) source such as distributing Real-time Streaming content with Dolby.io.
+[Zoom](https://zoom.us/) is a video collaboration tool for hosting conferences and meetings. Zoom supports streaming to consumer platforms or any [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) source such as distributing Real-time Streaming content with Dolby.io.
 
 See the official [zoom](https://zoom.us/) site for documentation, installation instructions, and additional support.
 
@@ -16,9 +16,9 @@ In order to broadcast with RTMP, you will need to have your **RTMP publish path*
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.md) tutorial to create a Dolby.io application and start your first broadcast.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.md) tutorial to create a Dolby.io application and start your first broadcast.
 
-See the [RTMP Broadcast Guide](/millicast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
+See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
 
 # How-to stream a Zoom meeting or webinar with RTMP
 

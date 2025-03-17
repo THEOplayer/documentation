@@ -13,7 +13,7 @@ The transcoder allows ingesting B-frames and reducing the amount of data require
 
 <CalloutBetaFeature />
 
-<br />
+, 
 
 # Transcoder statuses
 
@@ -30,7 +30,7 @@ Each transcoder has a state that depends on the performed asynchronous operation
 | **Delete** | Deleting     | A transcoder that is marked for deletion will be set to _Deleting_.                                                                                                                                                                                                                                   |         |
 |            | Deleted      | A transcoder that has been _Deleted_ will still have a historical record, but is no longer usable or able to be re-started. You'll need to configure and start a new transcoder.                                                                                                                      | ✓       |
 
-There are [webhooks](/millicast/transcoder-hooks.md) available to monitor the status change of transcoder instances.
+There are [webhooks](/millicast/webhooks/transcoder-webhooks.md) available to monitor the status change of transcoder instances.
 
 # Parameters
 
@@ -153,7 +153,7 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
    Notice that the response body contains publish URLs required for publishing your stream.
 
-3. Construct a complete publish URL endpoint by adding your stream ID and publish token at the end of the received publish URLs. In the case of RTMP and RTMPS, you can pass your token as a string. SRT requires encoding the token and providing it as Base64-encoded data. For more information, see the [SRT](/millicast/using-srt.md#how-to-get-the-srt-publish-settings-using-the-rest-apis) document.
+3. Construct a complete publish URL endpoint by adding your stream ID and publish token at the end of the received publish URLs. In the case of RTMP and RTMPS, you can pass your token as a string. SRT requires encoding the token and providing it as Base64-encoded data. For more information, see the [SRT](/millicast/broadcast/using-srt.md#how-to-get-the-srt-publish-settings-using-the-rest-apis) document.
 
    Examples:
 
@@ -161,7 +161,7 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
    - rtmps://example-accountId.transcoder.millicast.com:443/v2/pub**/streamName?token=publishToken**
    - srt://example-accountId.transcoder.millicast.com:10000**?streamid=streamName?token=encodedPublishToken**
 
-4. Once the stream begins publishing to the cloud transcoder the full ladder will be available for playback. To quickly verify the transcoder is working we recommend trying out [the hosted web player](/millicast/hosted-viewer.md).
+4. Once the stream begins publishing to the cloud transcoder the full ladder will be available for playback. To quickly verify the transcoder is working we recommend trying out [the hosted web player](/millicast/playback/hosted-viewer.md).
 
 
 ![](https://cdn.TODO.io/docs/readme/a0b12db-Screenshot_2024-06-05_at_4.01.58_PM.png)
@@ -185,7 +185,7 @@ The platform also offers the [Configure Transcoder](ref:transcoder_configuretran
 | 360    | passthrough or 750Kbps              |
 | 240    | 400Kbps                             |
 
-<br />
+, 
 
 <!--
 
@@ -213,7 +213,7 @@ Some encoders have TTL settings that can exceed 60 minutes so a work-around is t
 
 ## Feature Compatibility
 
-The Dolby.io Streaming platform allows using cloud transcoders with all other features, even with [Multi-view](/millicast/multiview.md) and [Redundant Ingest](/millicast/redundant-ingest.md). However, publishing redundant feeds requires streaming feeds into two transcoders.
+The Dolby.io Streaming platform allows using cloud transcoders with all other features, even with [Multi-view](/millicast/playback/multiview.md) and [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md). However, publishing redundant feeds requires streaming feeds into two transcoders.
 
 When using transcoding with recording, the platform records only the top layer.
 

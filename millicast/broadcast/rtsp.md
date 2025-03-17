@@ -2,7 +2,7 @@
 title: "RTSP"
 id: rtsp
 ---
-**Real-Time Streaming Protocol (RTSP)**, is a network control protocol used for controlling the delivery of multimedia data, such as video and audio files, over IP networks. Dolby.io supports RTSP to facilitate seamless integration with existing infrastructure and workflows that rely on this protocol for streaming IP camera feeds. 
+**Real-Time Streaming Protocol (RTSP), is a network control protocol used for controlling the delivery of multimedia data, such as video and audio files, over IP networks. Dolby.io supports RTSP to facilitate seamless integration with existing infrastructure and workflows that rely on this protocol for streaming IP camera feeds. 
 
 # WebRTC support with RTSP
 
@@ -86,11 +86,11 @@ Unselect_ Local File_ on Input shows. Enter on _Input_ the URL. Here is an examp
 
 Add your admin and password, followed by the IP address and the port or location of the video stream: `rtsp://[IP address of RTSP server]:[port]/live`
 
-Afterward, start up the stream, and you should see live streaming the Hosted Player Path URL. For more information on how to stream from OBS to the Dolby.io CDNs, follow the dedicated [OBS guide](/millicast/using-obs.md).
+Afterward, start up the stream, and you should see live streaming the Hosted Player Path URL. For more information on how to stream from OBS to the Dolby.io CDNs, follow the dedicated [OBS guide](/millicast/software-encoders/using-obs.md).
 
 ## How-to support RTSP using NDI on Windows
 
-If you haven't already, begin by following the [NDI Getting Started](/millicast/using-ndi.md) tutorial to start your first broadcast with a NDI virtual picker. You'll need a familiarity with the Dolby.io Streaming Dashboard for the steps described below.
+If you haven't already, begin by following the [NDI Getting Started](/millicast/broadcast/using-ndi.md) tutorial to start your first broadcast with a NDI virtual picker. You'll need a familiarity with the Dolby.io Streaming Dashboard for the steps described below.
 
 You can also use [NDI tools](https://ndi.video/tools/ndi-core-suite/) with a VLC plugin. The [VLC plugin](https://ndi.video/tools/vlc-plugin/) is available for Windows and allows you to set an RTSP IP camera as an NDI source. Once configured, you can use the Dolby.io Streaming Broadcaster and select the NDI source. This allows you to also publish using the AV1 codec. 
 

@@ -10,7 +10,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 
 ✓ Interactive playback for streams that support dynamic tracks, multiple layers, multiple views, and playback events.
 
-✓ Support with [Client SDKs](/millicast/client-sdks.md) for building custom playback viewers for [Web](/millicast/web.md), [iOS](/millicast/ios.md), [Android](/millicast/android.md), [React-Native](/millicast/rn.md), [Flutter](/millicast/flutter.md), [Unity Plugins](/millicast/unity-getting-started.md), [Unreal Player Plugin](/millicast/unreal-player-plugin.md), or desktop environments.
+✓ Support with [Client SDKs](/millicast/client-sdks/index.md) for building custom playback viewers for [Web](/millicast/client-sdks/web.md), [iOS](/millicast/client-sdks/ios/index.md), [Android](/millicast/client-sdks/android/index.md), [React-Native](/millicast/client-sdks/rn.md), [Flutter](/millicast/client-sdks/flutter.md), or desktop environments.
 
 ✓ Preview streams with poster images and thumbnails.
 
@@ -225,15 +225,15 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 
 # Playback streaming media
 
-The previous stages of [Capture](/millicast/capture.md), [Broadcast](/millicast/broadcast/index.md), and [Distribution](/millicast/distribution) all lead up to making the content available for the end-user to view.
+The previous stages of [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.md), and [Distribution](/millicast/distribution/index.md) all lead up to making the content available for the end-user to view.
 
 ## Using the streaming viewer
 
-[Dolby.io Dashboard Viewer](/millicast/how-to-broadcast-in-dashboard.md)  
-The quickest and easiest way to test playback is to use your account dashboard. The streaming viewer is built into the Dolby.io Dashboard, so you can test out streaming right away. To build a more customized application, the [Client SDKs](/millicast/client-sdks.md) provide support for the most popular programming platforms.
+[Dolby.io Dashboard Viewer](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md)  
+The quickest and easiest way to test playback is to use your account dashboard. The streaming viewer is built into the Dolby.io Dashboard, so you can test out streaming right away. To build a more customized application, the [Client SDKs](/millicast/client-sdks/index.md) provide support for the most popular programming platforms.
 
-[How-to Create Subscriber Tokens](/millicast/managing-your-subscriber-tokens.md)  
-To broadcast, you need a _publishing_ token. Similarly, to support playback in your application, you will need to be able to generate a _subscriber_ token. This can be done either in a [web application](/millicast/secure-stream-web-page.md) or with an [API](/millicast/secure-viewer-api.md).
+[How-to Create Subscriber Tokens](/millicast/streaming-dashboard/subscribe-tokens.md)  
+To broadcast, you need a _publishing_ token. Similarly, to support playback in your application, you will need to be able to generate a _subscriber_ token. This can be done either in a web application or with an [API](/millicast/distribution/access-control#subscribing-access-control).
 
 <div style="display: flex; justify-content: center; align-items: center;">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/Tj4miDHMwSI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -242,7 +242,7 @@ To broadcast, you need a _publishing_ token. Similarly, to support playback in y
 
 ## Previewing a stream
 
-[How-to Add a Poster Image](/millicast/customize-your-player.md)  
+[How-to Add a Poster Image](/millicast/playback/customize-your-player.md)  
 A **poster image** is a graphic that lets the audience know that a session exists but that a broadcast has not yet begun.
 
 [How-to Provide Thumbnail Image Previews](/millicast/webhooks/thumbnail-webhooks.md)  
@@ -250,10 +250,10 @@ A **thumbnail** is a static frame image that is captured at regular intervals du
 
 ## Interactive viewer features
 
-[How-to Create a Multi-view Web Application](/millicast/create-multi-view-web-app.md)  
+[How-to Create a Multi-view Web Application](/millicast/playback/multiview.md)  
 When more than one streaming source is being broadcast, the viewer is capable of presenting a lower-resolution preview of each incoming feed. The application can then let the user choose from these multi-view options.
 
-[Source and Layer Selection](/millicast/source-and-layer-selection.md)  
+[Source and Layer Selection](/millicast/playback/source-and-layer-selection.md)  
 For some applications, you may need to create more than one experience. The **multi-view application** can allow a host to choose which source layer should be sent as the primary stream that will be distributed for end-user playback. This feature can create the effect of switching between camera feeds and make dynamic cuts over the duration of the stream.
 
 ## Integrating third-party capabilities
@@ -272,22 +272,22 @@ You can find examples of more third-party viewer integrations, such as [Adding G
 </div>
 
 
-[Webhooks](/millicast/getting-started-webhooks.md)  
+[Webhooks](/millicast/webhooks/index.md)  
 A **webhook** is a registered URL that will be called back from the Dolby.io platform with details about an event as it occurs. You can create webhooks for when a thumbnail is generated, a recording is complete, or when streams begin and end.
 
-[Viewer events](/millicast/viewer-events.md)  
+[Viewer events](/millicast/playback/viewer-events.md)  
 Viewer events occur when a component of a stream changes, such as when a new source is published, simulcast layer information has changed, etc.
 
 [Syndication](https://dolby-io.readme.io/streaming-apis/docs/syndication) 
 
 **Syndication** refers to the process of distributing or sharing content with multiple streaming partners while tracking and analyzing viewer data on bandwidth consumption. 
 
-[Streaming analytics](/millicast/analytics-api.md)  
+[Streaming analytics](/millicast/analytics/index.md)  
 The account dashboard provides data-rich information about streaming usage for your individual account. There are also **REST** and **GraphQL** endpoints to generate custom reports and behaviors by querying that data.
 
 ## Playback on devices
 
-The **WebRTC-HTTP Egress Protocol (WHEP)** is an IETF standard developed to leverage the capabilities of WebRTC to distribute and playback content onto a WebRTC-enabled device over HTTP. WHEP addresses problems with Real-time Streaming by removing translation layers during decoding.
+The **WebRTC-HTTP Egress Protocol (WHEP) is an IETF standard developed to leverage the capabilities of WebRTC to distribute and playback content onto a WebRTC-enabled device over HTTP. WHEP addresses problems with Real-time Streaming by removing translation layers during decoding.
 
  **Real-time Streaming Monitor** apps were created to allow your users to quickly and easily view live streams powered by Dolby.io. Plug in your Dolby.io subscriber token to view streams on any Apple iOS, iPadOS, tvOS, or Android TV device.
 
@@ -295,7 +295,7 @@ The **WebRTC-HTTP Egress Protocol (WHEP)** is an IETF standard developed to leve
 - [tvOS Stream Monitoring App](https://dolby.io/project-gallery/real-time-streaming-monitor-apps/)
 - [Android TV Stream Monitoring App](https://dolby.io/project-gallery/real-time-streaming-monitor-apps/)
 
-Download one of these apps or create and customize your own Real-time Streaming Monitor apps with a native [Client SDK](/millicast/client-sdks.md).
+Download one of these apps or create and customize your own Real-time Streaming Monitor apps with a native [Client SDK](/millicast/client-sdks/index.md).
 
 # Learn more
 

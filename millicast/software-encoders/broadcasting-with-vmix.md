@@ -4,15 +4,15 @@ id: broadcasting-with-vmix
 ---
 **vMix** is a desktop application that provides a software vision mixer and encoder for the Windows operating system. It allows users to switch inputs, mix audio, record output, and live stream cameras, video files, audio, and more. 
 
-You can originate a broadcast from vMix and forward that stream over [RTMP](/millicast/using-rtmp-and-rtmps.md), [SRT](/millicast/using-srt.md), or as an [NDI](/millicast/using-ndi.md) source.
+You can originate a broadcast from vMix and forward that stream over [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), or as an [NDI](/millicast/broadcast/using-ndi.md) source.
 
-- [Configure RTMP](/millicast/broadcasting-with-vmix#how-to-use-vmix-with-rtmp)
-- [Configure SRT](/millicast/broadcasting-with-vmix#how-to-use-vmix-with-srt)
-- [Configure NDI](/millicast/broadcasting-with-vmix#how-to-use-vmix-with-ndi)
+- [Configure RTMP](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-rtmp)
+- [Configure SRT](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-srt)
+- [Configure NDI](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-ndi)
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.md) tutorial to create a Dolby.io application and start your first broadcast.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.md) tutorial to create a Dolby.io application and start your first broadcast.
 
 See the official [vmix.com](https://vmix.com) site for documentation, installation instructions, and additional support.
 
@@ -20,7 +20,7 @@ See the official [vmix.com](https://vmix.com) site for documentation, installati
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available.
 
-See the [RTMP Broadcast Guide](/millicast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
+See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
 
 ### Configure a custom RTMP server
 
@@ -48,11 +48,11 @@ Save your publishing profile and you are ready to start publishing with vMix.
 
 ### Setup multi-bitrate RTMP streaming with vMix
 
-With vMix you have the ability to send a live stream simultaneously to up to three separate streaming destinations. This vMix feature combined with Dolby.io [Multisource Streams](/millicast/multi-source-broadcasting.md) enables Simulcast of multiple renditions of the stream. Viewers with bandwidth constraints would receive a stream optimized for that condition. Keep in mind, the broadcaster will be sending multiple streams so will need adequate bandwidth.
+With vMix you have the ability to send a live stream simultaneously to up to three separate streaming destinations. This vMix feature combined with Dolby.io [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.md) enables Simulcast of multiple renditions of the stream. Viewers with bandwidth constraints would receive a stream optimized for that condition. Keep in mind, the broadcaster will be sending multiple streams so will need adequate bandwidth.
 
 > 📘 Enable Multisource for Your Dolby.io Publish Token
 > 
-> To utilize [multisource](/millicast/multi-source-broadcasting.md) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/managing-your-tokens.md).
+> To utilize [multisource](/millicast/broadcast/multi-source-broadcasting.md) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/streaming-dashboard/managing-your-tokens.md).
 
 #### Streaming destination 1: 1080p
 
@@ -117,7 +117,7 @@ As with the other example, update the **sourceId** and adjust the quality settin
 
 ### Start and view streams
 
-In vMix click start all streams. You can then watch this stream from a [playback](/millicast/playback.md) viewer. If you select the viewer settings, you can see that there are multiple Video Quality renditions available.
+In vMix click start all streams. You can then watch this stream from a [playback](/millicast/playback/index.md) viewer. If you select the viewer settings, you can see that there are multiple Video Quality renditions available.
 
 
 ![](https://cdn.TODO.io/docs/readme/172b441-vMixABR4.png)
@@ -128,7 +128,7 @@ In vMix click start all streams. You can then watch this stream from a [playback
 
 In order to broadcast with SRT, you will need to have your **SRT publish path** and **SRT stream ID** available.
 
-See the [SRT Broadcast Guide](/millicast/using-srt.md) for details on how to retrieve these values.
+See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on how to retrieve these values.
 
 ### vMix settings
 
@@ -148,11 +148,11 @@ See the [SRT Broadcast Guide](/millicast/using-srt.md) for details on how to ret
 
 
 
-It is recommended to set the `Quality` as **H264 1mbps AAC 0kbps (5 secs)**.
+It is recommended to set the `Quality` as **H264 1mbps AAC 0kbps (5 secs).
 
 ## How-to use vMix with NDI
 
-vMix can also be set as an [NDI](/millicast/using-ndi.md) source with [OBS](/millicast/using-obs.md). This can give you the flexibility to use vMix as your switcher and OBS with WebRTC and playback in a [Hosted Player](/millicast/hosted-viewer.md).
+vMix can also be set as an [NDI](/millicast/broadcast/using-ndi.md) source with [OBS](/millicast/software-encoders/using-obs.md). This can give you the flexibility to use vMix as your switcher and OBS with WebRTC and playback in a [Hosted Player](/millicast/playback/hosted-viewer.md).
 
 To configure this, choose the Outputs / NDI / SRT configuration.
 

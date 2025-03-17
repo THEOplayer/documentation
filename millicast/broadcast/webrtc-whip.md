@@ -2,7 +2,7 @@
 title: "WebRTC | WHIP"
 id: webrtc-whip
 ---
-**Web Real-Time Communication (WebRTC)** is an open-source project that defines secure voice, audio, and data delivery between peers using web browsers or native clients. Dolby.io Real-time Streaming allows you to broadcast and distribute content using WebRTC for real-time global streaming to large-scale audiences.
+**Web Real-Time Communication (WebRTC) is an open-source project that defines secure voice, audio, and data delivery between peers using web browsers or native clients. Dolby.io Real-time Streaming allows you to broadcast and distribute content using WebRTC for real-time global streaming to large-scale audiences.
 
 # WebRTC support with WHIP
 
@@ -77,7 +77,7 @@ The Dolby.io CDN for WebRTC Real-time Streaming supports streaming up to 4k 60fp
 > 
 > Dolby.io supports broadcasting [using SRT or RTMP](/millicast/broadcast/index.md) as well.
 
-WebRTC broadcasting is enabled via WHIP, to learn more about support for WebRTC egressing and playback learn more about [WHEP](/millicast/distribution).
+WebRTC broadcasting is enabled via WHIP, to learn more about support for WebRTC egressing and playback learn more about [WHEP](/millicast/distribution/index.md).
 
 # How-to find your WHIP publish settings
 
@@ -120,7 +120,7 @@ The following are examples of how these values can be used:
 > 
 > Many hardware or software encoding solutions may include _endpoint_ and _token_ fields. This does not mean they support WebRTC or WHIP. You should review the tool's documentation to confirm it supports WebRTC before trying to stream to Dolby.io. 
 > 
-> Dolby.io streaming also supports [SRT](/millicast/using-srt.md) and [RTMP](/millicast/using-rtmp-and-rtmps.md) streams for wider compatibility for tools that do not yet support WHIP.
+> Dolby.io streaming also supports [SRT](/millicast/broadcast/using-srt.md) and [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) streams for wider compatibility for tools that do not yet support WHIP.
 
 # Learn more
 

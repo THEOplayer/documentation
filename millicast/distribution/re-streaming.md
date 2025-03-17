@@ -9,11 +9,11 @@ id: re-streaming
 
 
 
-<br />
+, 
 
 ## Overview
 
-To distribute content to an RTMP(S) output source you will need to update the settings of your [Publish Tokens](/millicast/managing-your-tokens.md). The publish token defines a `restream` property with a list of targets that are identified by:
+To distribute content to an RTMP(S) output source you will need to update the settings of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). The publish token defines a `restream` property with a list of targets that are identified by:
 
 - **url** - the media server that is able to accept RTMP(S) ingest including the rtmp:// and rtmps:// protocols and port number 
 - **key** - the url path and/or additional parameters that should be passed to the server to uniquely identify the incoming RTMP(S) stream
@@ -44,7 +44,7 @@ If the feature is enabled for your account plan, you'll be able to add, remove, 
 
 ### Using the REST API
 
-When creating or updating [Publish Tokens](/millicast/managing-your-tokens.md) you will define a `restream` property. This is an array that takes a list of dictionaries each defining the **url**, **key**, and **label** for any RTMP destination targets.
+When creating or updating [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) you will define a `restream` property. This is an array that takes a list of dictionaries each defining the **url**, **key**, and **label** for any RTMP destination targets.
 
 ```json
 {
@@ -63,9 +63,9 @@ Visit the [/api/publish_token](ref:publishtokenv1_createtoken) specification for
 
 ## Multi-source Re-streaming
 
-For scenarios such as [Multi-Source Broadcasting](/millicast/multi-source-broadcasting.md) there may be more than one incoming source stream. Since not all media platforms are capable of accepting multiple RTMP ingest sources you may have unexpected results.
+For scenarios such as [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) there may be more than one incoming source stream. Since not all media platforms are capable of accepting multiple RTMP ingest sources you may have unexpected results.
 
-To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/multiview.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
+To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast/broadcast-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/playback/multiview.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
 
 ## Feature compatability
 
@@ -81,7 +81,7 @@ If you are publishing [redundant ingest](https://docs.dolby.io/streaming-apis/do
 
 ## Troubleshooting
 
-You can check the status of re-streams by visiting the [Live Monitoring](/millicast/live-monitoring.md) section of the dashboard. You should see a `Re-stream` token as confirmation.
+You can check the status of re-streams by visiting the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) section of the dashboard. You should see a `Re-stream` token as confirmation.
 
 
 ![](https://cdn.TODO.io/docs/readme/8387755-dashboard-re-stream-monitoring-token.png)
@@ -101,7 +101,7 @@ The re-stream feed is only showing audio or video. This may be because you are u
 
 ### Re-stream is Not Working with Web Broadcasts
 
-If you are streaming using the [Live Broadcast](/millicast/how-to-broadcast-in-dashboard.md) dashboard app or a custom built app using the [Web SDK](/millicast/web.md) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/using-srt.md) and [RTMP](/millicast/using-rtmp-and-rtmps.md) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
+If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) dashboard app or a custom built app using the [Web SDK](/millicast/client-sdks/web.md) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/using-srt.md) and [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
 
 > ❗️ We're Here to Help
 > 

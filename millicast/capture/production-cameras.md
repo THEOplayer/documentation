@@ -10,7 +10,7 @@ When capturing video and audio for broadcast, there are a number of decisions th
 - Should I use chroma subsampling or capture at 4:4:4?
 - What bitrate and sampling rates should I capture audio at?
 - Does my camera have a built-in encoder, or will I need to connect to one?
-- Am I planning to broadcast with [RTMP, RTMPs](/millicast/using-rtmp-and-rtmps.md), [SRT](/millicast/using-srt.md), or [WebRTC](/millicast/using-osprey-talon-whip-hardware-encoder.md)?
+- Am I planning to broadcast with [RTMP, RTMPs](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), or [WebRTC](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md)?
 
 These decisions may be impacted by the camera you are capturing with, the encoder you are planning to use to broadcast, and the Dolby.io CDN itself. 
 
@@ -20,7 +20,7 @@ The Dolby.io CDN for WebRTC Real-time Streaming supports streaming up to 4k 60fp
 > 
 > Since RTMP, RTMPs, and SRT streams are transmuxed into WebRTC via the Dolby.io CDN they each have different audio and video codec support. Learn more in the [broadcast section](/millicast/broadcast/index.md) of the streaming guides.
 
-Once you have calibrated the camera for the appropriate video resolution and audio resolution for your use case, you will then need to connect the camera to an encoder or calibrate the built-in encoder. Dolby.io supports broadcasting [RTMP and RTMPs streams](/millicast/using-rtmp-and-rtmps.md), [SRT streams](/millicast/using-srt.md), and [WebRTC streams](/millicast/using-osprey-talon-whip-hardware-encoder.md). To start streaming with Dolby.io Real-time Streaming, proceed to the [Broadcast](/millicast/broadcast/index.md) to learn about hardware and software encoder support.
+Once you have calibrated the camera for the appropriate video resolution and audio resolution for your use case, you will then need to connect the camera to an encoder or calibrate the built-in encoder. Dolby.io supports broadcasting [RTMP and RTMPs streams](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT streams](/millicast/broadcast/using-srt.md), and [WebRTC streams](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md). To start streaming with Dolby.io Real-time Streaming, proceed to the [Broadcast](/millicast/broadcast/index.md) to learn about hardware and software encoder support.
 
 # Preparing to broadcast with the SalrayWorks raySHOT camera
 
@@ -29,8 +29,8 @@ One example of preparing a professional camera for broadcasting is setting up th
 - **What video resolution and framerate should I capture?** The camera is limited to 1080p and 60fps.
 - **Should I use chroma subsampling or capture at 4:4:4?** The raySHOT supports 4:4:4 to allow for the lowest possible delay.
 - **What bitrate and sampling rates should I capture audio at?** The camera only captures video.
-- **Does my camera have a built-in encoder, or will I need to connect to one?** The camera does not have a built-in encoder, so we'll use a [Videon EdgeCaster](/millicast/videon.md).
-- **Am I planning to broadcast with [RTMP, RTMPs](/millicast/using-rtmp-and-rtmps.md), [SRT](/millicast/using-srt.md), or [WebRTC](/millicast/using-osprey-talon-whip-hardware-encoder.md)?** Videon supports RTMP output, so we'll use that.
+- **Does my camera have a built-in encoder, or will I need to connect to one?** The camera does not have a built-in encoder, so we'll use a [Videon EdgeCaster](/millicast/hardware-encoders/videon.md).
+- **Am I planning to broadcast with [RTMP, RTMPs](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), or [WebRTC](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md)?** Videon supports RTMP output, so we'll use that.
 
 With our capture profile defined, we can look at our physical setup:
 
@@ -46,7 +46,7 @@ We have the camera, the encoder, and a serial digital interface (SDI) cable to c
 
 
 
-With everything connected, the SalrayWorks camera is now ready to capture broadcast-ready video and transport it to the encoder. At this stage, everything is set up and ready for capture. To learn about the next steps required for broadcasting, check out the [Videon guide](/millicast/videon.md) in the broadcasting section of the documentation.
+With everything connected, the SalrayWorks camera is now ready to capture broadcast-ready video and transport it to the encoder. At this stage, everything is set up and ready for capture. To learn about the next steps required for broadcasting, check out the [Videon guide](/millicast/hardware-encoders/videon.md) in the broadcasting section of the documentation.
 
 
 

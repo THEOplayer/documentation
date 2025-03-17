@@ -11,7 +11,7 @@ The Dolby.io dashboard enables you to easily provision tokens, broadcast streams
 
 ## Live broadcast
 
-Live broadcasting is instant and secure using the dashboard’s online broadcaster. The interface guides you through creating a secure token allowing your viewers to connect securely to your live stream via WebRTC. Once you have successfully created your [Publish token](/millicast/managing-your-tokens.md), you can publish a live stream instantly. A URL to a Viewer interface is created for you to instantly share your live stream with your audience, making publishing a complete, secure, and simple process. 
+Live broadcasting is instant and secure using the dashboard’s online broadcaster. The interface guides you through creating a secure token allowing your viewers to connect securely to your live stream via WebRTC. Once you have successfully created your [Publish token](/millicast/streaming-dashboard/managing-your-tokens.md), you can publish a live stream instantly. A URL to a Viewer interface is created for you to instantly share your live stream with your audience, making publishing a complete, secure, and simple process. 
 
 
 ![](https://cdn.TODO.io/docs/readme/46b4aeb-tokens-main-live-broadcast.png)
@@ -20,7 +20,7 @@ Live broadcasting is instant and secure using the dashboard’s online broadcast
 
 ## Broadcaster
 
-The broadcaster interface allows you to stream instantly from your account and gives you a link to share with your viewers. Your video is streamed via WebRTC to the Dolby.io Real-time Streaming service, which globally distributes the feed to all of your viewers with sub-second latency. For more information on how to navigate this interface, go to the [Live Broadcast Dashboard](/millicast/how-to-broadcast-in-dashboard.md) guide. 
+The broadcaster interface allows you to stream instantly from your account and gives you a link to share with your viewers. Your video is streamed via WebRTC to the Dolby.io Real-time Streaming service, which globally distributes the feed to all of your viewers with sub-second latency. For more information on how to navigate this interface, go to the [Live Broadcast Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) guide. 
 
 
 ![](https://cdn.TODO.io/docs/readme/22d226d-newpublisher.png)
@@ -29,7 +29,7 @@ The broadcaster interface allows you to stream instantly from your account and g
 
 ## Subscribe tokens
 
-Subscribe tokens are used to give access to a stream. To ensure only authenticated users view a stream, Subscribe tokens work as _passwords_ for viewers to access a stream. Inside them, a _Token_ and a _Token ID_ are provided. These can also be geolocated, specified to a cluster region, or allowed for specific IP addresses. Visit the guide on how to [manage Subscribe tokens](/millicast/subscribe-tokens.md) for more information.
+Subscribe tokens are used to give access to a stream. To ensure only authenticated users view a stream, Subscribe tokens work as _passwords_ for viewers to access a stream. Inside them, a _Token_ and a _Token ID_ are provided. These can also be geolocated, specified to a cluster region, or allowed for specific IP addresses. Visit the guide on how to [manage Subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md) for more information.
 
 
 ![](https://cdn.TODO.io/docs/readme/5b32c90-dashboard-subscribe-token.png)
@@ -56,7 +56,7 @@ The Recordings section contains your recorded broadcasts, giving you access to p
 
 A storage meter above the recording list shows you how much of your storage your files are using. This helps you to better manage the storage space on your account.
 
-Each item in the list allows you to _download_, _delete_ or _preview_ your recorded media. To preview, simply click on the respective item and the preview player will launch. The preview player will display additional information about the media. To learn more, read the **[Recordings](/millicast/recordings)** documentation.
+Each item in the list allows you to _download_, _delete_ or _preview_ your recorded media. To preview, simply click on the respective item and the preview player will launch. The preview player will display additional information about the media. To learn more, read the [Recordings](/millicast/distribution/stream-recordings/index.md) documentation.
 
 ## Analytics
 
@@ -110,7 +110,7 @@ Click on the **"Views"** button to toggle the left chart for a bandwidth view of
 
 > 📘 Access Window of Analytics
 > 
-> The analytic information in this area has an access window of 7 days, after that 7 day window you will no longer be able to access this per stream breakdown. You can read more about this limitation in our analytics **[Access Restrictions](/millicast/analytics-api#access-restrictions)** section of the Analytic API doc.
+> The analytic information in this area has an access window of 7 days, after that 7 day window you will no longer be able to access this per stream breakdown. You can read more about this limitation in our analytics [Access Restrictions](/millicast/analytics/index.md#access-restrictions) section of the Analytic API doc.
 
 ## Webhooks
 
@@ -157,11 +157,11 @@ Located in the top right corner of the dashboard, under your ID is the_ Profile_
 
 
 
-- The_ Logging in_ tab which allows you to update your password and [configure two-factor authentication](/millicast/about-dash.md)two-factor-authentication).
+- The_ Logging in_ tab which allows you to update your password and [configure two-factor authentication](/millicast/streaming-dashboard/index.md)two-factor-authentication).
 
 ## Settings
 
-Inside _Settings_, the account's _Token defaults_ are managed. Changes here are permanent across any existing and new tokens. Alternatively, you can alter [Geo-blocking](/millicast/geo-blocking.md) and [Cluster Regions](/millicast/multi-region-support.md) on a token-by-token basis instead of an account-wide change.
+Inside _Settings_, the account's _Token defaults_ are managed. Changes here are permanent across any existing and new tokens. Alternatively, you can alter [Geo-blocking](/millicast/distribution/access-control/geo-blocking.md) and [Cluster Regions](/millicast/distribution/multi-region-support/index.md) on a token-by-token basis instead of an account-wide change.
 
  On the _Security_ tab, users can create one or multiple API secrets to connect to [Dolby.io's Streaming API](https://docs.dolby.io/streaming-apis/reference/analytics_accounttotal). 
 
@@ -190,7 +190,7 @@ The Resources section of the dashboard is reserved as the space for tutorials, d
 
 ## Two-factor authentication
 
-Two-factor authentication provides an extra layer of security and helps to ensure only an authorized user has access to your account, even if the account password is exposed. The second factor of authentication is provided by a 3rd party authenticator application (**[IOS](/millicast///apps.apple.com/us/app/microsoft-authenticator/id983156458)**, **[Android](/millicast///play.google.com/store/apps/details?id=com.azure.authenticator)**), which generates a single-use verification code. The two-factor authentication user will need to provide this code in order to log into the Dolby.io dashboard.
+Two-factor authentication provides an extra layer of security and helps to ensure only an authorized user has access to your account, even if the account password is exposed. The second factor of authentication is provided by a 3rd party authenticator application ([IOS](https://apps.apple.com/us/app/microsoft-authenticator/id983156458), [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)), which generates a single-use verification code. The two-factor authentication user will need to provide this code in order to log into the Dolby.io dashboard.
 
 
 ![](https://cdn.TODO.io/docs/readme/6cdf2ce-2fa-login-code.png)
@@ -206,7 +206,7 @@ To enable this feature, navigate to the _Logging in_ section of the Dolby.io das
 
 > 🚧 Setting up Two-Factor Authentication
 > 
-> Once begun, you must complete the setup entirely to avoid any issues or missed information. Please have your authenticator application (**[IOS](/millicast///apps.apple.com/us/app/microsoft-authenticator/id983156458)**, **[Android](/millicast///play.google.com/store/apps/details?id=com.azure.authenticator)**) ready before starting the process.
+> Once begun, you must complete the setup entirely to avoid any issues or missed information. Please have your authenticator application ([IOS](https://apps.apple.com/us/app/microsoft-authenticator/id983156458), [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)) ready before starting the process.
 
 Read the QR code on the screen with your authenticator application. Once the QR code is read, it will then generate a code on your device that will be required on the next window. Make sure you see the code on your device and click the _Next_ button.
 

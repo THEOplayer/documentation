@@ -4,13 +4,13 @@ id: screensharing
 ---
 Screensharing or screen capturing is an important feature for virtual events, webinars, and many other types of broadcasts that involve sharing information. This guide will outline three options for managing screen capture in a way that is compatible with Dolby.io:
 
-1. [Screensharing with the Dolby.io Dashboard Broadcaster](/millicast/screensharing.md)screensharing-with-the-dolbyio-dashboard-broadcaster)
-2. [Screensharing with OBS](/millicast/screensharing.md)screensharing-with-obs)
-3. [Screensharing with JavaScript](/millicast/screensharing.md)screensharing-with-javascript)
+1. [Screensharing with the Dolby.io Dashboard Broadcaster](/millicast/capture/screensharing.md)screensharing-with-the-dolbyio-dashboard-broadcaster)
+2. [Screensharing with OBS](/millicast/capture/screensharing.md)screensharing-with-obs)
+3. [Screensharing with JavaScript](/millicast/capture/screensharing.md)screensharing-with-javascript)
 
 > 🚧 Sharing Screen and Video
 > 
-> If you want to enable both screensharing and share your webcam at the same time, you must enable [multisource](/millicast/multi-source-broadcasting.md) on the publishing token to broadcast multiple sources to the same stream.
+> If you want to enable both screensharing and share your webcam at the same time, you must enable [multisource](/millicast/broadcast/multi-source-broadcasting.md) on the publishing token to broadcast multiple sources to the same stream.
 
 # Screensharing with the Dolby.io dashboard broadcaster
 
@@ -50,7 +50,7 @@ Select the screen you want to share and whether you want OBS to capture the curs
 
 
 
-With your screen selected click "OK". You've now set up your screen for capture via OBS. To start streaming from OBS continue to the [broadcasting with OBS guide](/millicast/using-obs.md).
+With your screen selected click "OK". You've now set up your screen for capture via OBS. To start streaming from OBS continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
 
 # Screensharing with JavaScript
 

@@ -74,7 +74,7 @@ import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 
 > 📘 
 > 
-> You will need to find or create a new stream name with a token in your Dolby.io dashboard. You can do that following this [link](/millicast/managing-your-tokens.md).
+> You will need to find or create a new stream name with a token in your Dolby.io dashboard. You can do that following this [link](/millicast/streaming-dashboard/managing-your-tokens.md).
 
 The main module to publish a stream is the [Publish module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish-class.html).
 
@@ -159,7 +159,7 @@ For example:
 
 - If you want to start your stream with a bitrate limit, you can use the `bandwidth` option.
 
-- If your stream token in Millicast has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/recordings.md).
+- If your stream token in Millicast has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md).
 
 - You can start a stream without audio or video setting the `disableAudio` or `disableVideo` respectively.
 
@@ -169,7 +169,7 @@ For example:
 
 - [.connect()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/connect.html)
 
-- [Dashboard Recordings section](/millicast/recordings.md)
+- [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md)
 
 ### Managing your active stream
 

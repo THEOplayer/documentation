@@ -6,7 +6,7 @@ Dolby.io Real-time Streaming provide a Graph API to query both stats and real ti
 
 https://api.millicast.com/graphql
 
-To perform requests to the api, you need to authenticate using a bearer Authorization request header with the [API token from the Dolby.io dashboard](/millicast/token-api.md)acquiring-your-api-token).
+To perform requests to the api, you need to authenticate using a bearer Authorization request header with the [API token from the Dolby.io dashboard](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-token).
 
 
 ![](https://cdn.TODO.io/docs/readme/02b72b8-settings_api_secrets.png)
@@ -46,4 +46,4 @@ For example, to find the current active publications you can perform the followi
 }
 ```
 
-See the [GraphQL](ref:overview-graphql) documentation and the [GraphQL Reference API](/millicast/page:graphql-api-reference) for additional information on available models, resolvers, and types.
+See the [GraphQL](ref:overview-graphql) documentation and the [GraphQL Reference API](/millicast/graphql-api-reference) for additional information on available models, resolvers, and types.

@@ -2,11 +2,11 @@
 title: "How-to Get Media Assets"
 id: how-to-get-media-assets
 ---
-With [Stream Recordings](/millicast/recordings.md) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/about-dash.md) or automate workflows using the [Media Assets](ref:media-assets) REST endpoints. There are also [Media Webhooks](/millicast/media-hooks.md) available for building event-driven integrations.
+With [Stream Recordings](/millicast/distribution/stream-recordings/index.md) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or automate workflows using the [Media Assets](ref:media-assets) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media-webhooks.md) available for building event-driven integrations.
 
 # Recordings in the Dashboard
 
-You can find recordings by visiting the [Streaming Dashboard](/millicast/about-dash.md).
+You can find recordings by visiting the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
 ## Find Recordings by Token
 
@@ -31,7 +31,7 @@ Alternatively, to find all your recordings, open the **Recordings** section of t
 
 
 
-<br />
+, 
 
 ## Preview a Recording
 
@@ -79,7 +79,7 @@ To delete all items at once, click the **Select All** button from the same top s
 > 
 > If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 
-<br />
+, 
 
 # Finding Media by API
 
@@ -123,7 +123,7 @@ curl --request GET \
   --header 'authorization: Bearer abc123'
 ```
 
-<br />
+, 
 
 # Removing Media by API
 
@@ -143,7 +143,7 @@ To remove everything from your account you can use the [Delete All Media Assets]
 > 
 > If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 
-<br />
+, 
 
 # Downloading Media by API
 

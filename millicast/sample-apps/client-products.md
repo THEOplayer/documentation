@@ -9,45 +9,9 @@ Millicast Player allows you to view streams published to the Millicast Platform.
 WebRTC stats are also available on Studio and Player. Studio and Player apps can be downloaded [here](https://github.com/millicast/millicast-native-sdk/releases). More details can be found on this [readme](https://github.com/millicast/millicast-native-sdk/blob/main/README.md).
 
 Each of the following platforms has its own Studio and Player apps.
-<table>
-  <thead>
-    <th>Platform</th>
-<th>Studio packages</th>
-<th>Player packages</th>
-  </thead>
-  <tbody>
-    <tr><td><p>Windows</p>
-</td>
-<td><p>Win10</p>
-</td>
-<td><p>Win10</p>
-</td></tr>
-<tr><td><p>Mac</p>
-</td>
-<td><ul>
-  <li>MacOS Catalina intel
-    <ul>
-      <li>MacOS Big Sur  intel</li>
-    </ul>
-  </li>
-</ul>
-</td>
-<td><ul>
-  <li>MacOS Catalina intel
-    <ul>
-      <li>MacOS Big Sur  intel</li>
-    </ul>
-  </li>
-</ul>
-</td></tr>
-<tr><td><p>Linux</p>
-</td>
-<td><ul>
-  <li>Ubuntu 20</li>
-</ul>
-</td>
-<td><p>Ubuntu 20</p>
-</td></tr>
-  </tbody>
-</table>
+| Platform | Studio packages | Player packages |
+| --- | --- | --- |
+| Windows | Win10 | Win10 |
+| Mac | *   MacOS Catalina intel<br/>    *   MacOS Big Sur intel | *   MacOS Catalina intel<br/>    *   MacOS Big Sur intel |
+| Linux | *   Ubuntu 20 | Ubuntu 20 |
 

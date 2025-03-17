@@ -2,7 +2,7 @@
 title: "Hardware Encoders"
 id: hardware-encoders
 ---
-In today's digital landscape, the demand for real-time streaming content has skyrocketed, prompting broadcasters and video creators to prioritize the efficient delivery of high-quality video and audio streams. Hardware-based encoders play a crucial role in this process with their offerings of superior encoding capabilities and seamless transmission. Needless to say, workflows don't have to be interrupted in order to better a stream. Using the Dolby.io Streaming API protocols like [SRT](/millicast/using-srt.md), [NDI](/millicast/using-ndi.md), and [WHIP](/millicast/webrtc-whip.md) can be ingested directly from the encoders like [Teradek](/millicast/broadcasting-teradek-vidiu.md), [Osprey](/millicast/using-osprey-talon-whip-hardware-encoder.md), and [Videon](/millicast/videon.md) and distributed in WebRTC.
+In today's digital landscape, the demand for real-time streaming content has skyrocketed, prompting broadcasters and video creators to prioritize the efficient delivery of high-quality video and audio streams. Hardware-based encoders play a crucial role in this process with their offerings of superior encoding capabilities and seamless transmission. Needless to say, workflows don't have to be interrupted in order to better a stream. Using the Dolby.io Streaming API protocols like [SRT](/millicast/broadcast/using-srt.md), [NDI](/millicast/broadcast/using-ndi.md), and [WHIP](/millicast/broadcast/webrtc-whip.md) can be ingested directly from the encoders like [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md), [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md), and [Videon](/millicast/hardware-encoders/videon.md) and distributed in WebRTC.
 
 # Integration guides
 
@@ -60,13 +60,13 @@ Review these guides for how to setup your preferred tools for real-time streamin
 
 ## Elgato
 
-[How-to integrate using Elgato Stream Deck](/millicast/using-elgato-stream-deck-with-obs-studio-webrtc-version.md)
+[How-to integrate using Elgato Stream Deck](/millicast/hardware-encoders/using-elgato-stream-deck-with-obs-studio-webrtc-version.md)
 
-**Elgato Stream Deck** is a versatile control panel that simplifies from broadcasting to editing with programmable keys. This tool can help in managing [OBS](/millicast/using-obs.md) streams by automating specific actions in a physical board. 
+**Elgato Stream Deck** is a versatile control panel that simplifies from broadcasting to editing with programmable keys. This tool can help in managing [OBS](/millicast/software-encoders/using-obs.md) streams by automating specific actions in a physical board. 
 
 ## Haivision
 
-[How-to integrate using Haivision KB Encoder](/millicast/using-haivision-kb-encoder.md)
+[How-to integrate using Haivision KB Encoder](/millicast/hardware-encoders/using-haivision-kb-encoder.md)
 
 The **Haivision KB Encoder** is a high-performance video encoding device that efficiently converts video signals into compressed formats for reliable live streaming and distribution over IP networks.
 
@@ -74,17 +74,17 @@ The **Haivision KB Encoder** is a high-performance video encoding device that ef
 
 [How-to integrate using Osprey Talon Encoder](/millicast/using-osprey-talon-whip-hardware-encoder)
 
-**Osprey Talon** is a form-factor H.264 (AVC) and H.265 (HEVC) encoder designed to be easy to use, portable, and easily stream low latency 4k and UHD video encoding from SDI and HDMI. By supporting [WHIP](/millicast/webrtc-whip.md), Osprey is able to offer an encoder that can natively encode WebRTC streams at broadcast-level quality.
+**Osprey Talon** is a form-factor H.264 (AVC) and H.265 (HEVC) encoder designed to be easy to use, portable, and easily stream low latency 4k and UHD video encoding from SDI and HDMI. By supporting [WHIP](/millicast/broadcast/webrtc-whip.md), Osprey is able to offer an encoder that can natively encode WebRTC streams at broadcast-level quality.
 
 ## Teradek
 
-[How-to integrate using Teradek VidiU Go](/millicast/broadcasting-teradek-vidiu)
+[How-to integrate using Teradek VidiU Go](/millicast/hardware-encoders/broadcasting-teradek-vidiu)
 
 **Teradek VidiU Go** is a portable and reliable streaming encoder with broadcast quality of 1080p60 video, bonded network redundancy, and cutting-edge HEVC compression designed for the most challenging production environments. 
 
 ## Videon
 
-[How-to integrate using Videon EdgeCaster](/millicast/videon.md)
+[How-to integrate using Videon EdgeCaster](/millicast/hardware-encoders/videon.md)
 
 **Videon EdgeCaster** is a versatile and powerful edge compute encoder that securely delivers high-quality live video streams to multiple platforms simultaneously, offering a comprehensive solution for efficient video distribution.
 

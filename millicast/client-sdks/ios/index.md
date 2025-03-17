@@ -44,32 +44,11 @@ The Native SDK for creating iOS and tvOS applications. You may use it to connect
  
 </div>
 
-<style> 
- 
- .dolbyio-card-4 .dolbyio-card-svg-icon {
- -webkit-filter: invert(100%);
- filter: invert(100%);
- background: black;
- }
- 
- .dolbyio-card {
- height: 170px;
- }
- 
- .dolbyio-cards-container {
- display: grid;
- grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
- grid-gap: 0.5rem;
-}
- 
-</style>
-
-
 The package name of the Native SDK for iOS is _millicast-native-sdk-{version}-XCFramework.zip_.
 
 > 📘 Note
 > 
-> If you want to use Streaming APIs on Android and iOS, you can also use the [Flutter SDK](flutter.md) or the [React Native](rn.md) plugin.
+> If you want to use Streaming APIs on Android and iOS, you can also use the [Flutter SDK](/millicast/client-sdks/flutter.md) or the [React Native](/millicast/client-sdks/rn.md) plugin.
 
 # Requirements
 
@@ -88,7 +67,7 @@ To add the SDK to your project, you can either use Swift Package Manager or Coco
 
 2. Go to the **Package Dependencies** tab and click on the **+** icon to add a new dependency.
 
-3. In the line edit, enter the following package URL: <https://github.com/millicast/millicast-sdk-swift-package>. You should see the package appear.
+3. In the line edit, enter the following package URL: https://github.com/millicast/millicast-sdk-swift-package. You should see the package appear.
 
 4. Choose the version you want to use and click on **add package**.
 
@@ -120,7 +99,7 @@ This step downloads and installs all needed dependencies and creates a `.xcworks
 
 # Tutorials
 
-- [Getting Started with Publishing](ios-getting-started-with-publishing.md)
-- [Getting Started with Subscribing](ios-getting-started-with-subscribing.md)
-- [How-to Add Picture in Picture](ios-how-to-add-picture-in-picture.md)
-- [Migration Guide for iOS SDK](ios-sdk-migration-guide.md)
+- [Getting Started with Publishing](/millicast/client-sdks/ios/ios-getting-started-with-publishing.md)
+- [Getting Started with Subscribing](/millicast/client-sdks/ios/ios-getting-started-with-subscribing.md)
+- [How-to Add Picture in Picture](/millicast/client-sdks/ios/ios-how-to-add-picture-in-picture.md)
+- [Migration Guide for iOS SDK](/millicast/client-sdks/ios/ios-sdk-migration-guide.md)

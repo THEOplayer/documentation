@@ -2,17 +2,17 @@
 title: "2. Create a Streaming Web App"
 id: getting-started-creating-real-time-streaming-web-app
 ---
-In [Part 1](/millicast/getting-started-using-the-dashboard.md) we reviewed how-to log into your Dolby.io Streaming Dashboard, create a publish token, start a broadcast, and playback that broadcast in the hosted web viewer or in an iframe, all without writing any code. We'll continue getting started by substituting the broadcast and playback components with a custom-built web application.
+In [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) we reviewed how-to log into your Dolby.io Streaming Dashboard, create a publish token, start a broadcast, and playback that broadcast in the hosted web viewer or in an iframe, all without writing any code. We'll continue getting started by substituting the broadcast and playback components with a custom-built web application.
 
 This tutorial is split into three sections:
 
-- [Embed the Hosted Streaming Viewer in an iFrame](/millicast/getting-started-creating-real-time-streaming-web-app.md)
-- [Playback from a Custom Web Application](/millicast/getting-started-creating-real-time-streaming-web-app.md)21-playback-from-a-custom-web-application)
-- [Broadcast from a Custom Web Application](/millicast/getting-started-creating-real-time-streaming-web-app.md)22-broadcast-from-a-custom-web-application)
+- [Embed the Hosted Streaming Viewer in an iFrame](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md)
+- [Playback from a Custom Web Application](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md)21-playback-from-a-custom-web-application)
+- [Broadcast from a Custom Web Application](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md)22-broadcast-from-a-custom-web-application)
 
 # 2.0 Embed the streaming viewer in an iFrame
 
-In [Part 1 - Using the Streaming Dashboard](/millicast/getting-started-using-the-dashboard.md), you may have noticed the **Hosted Viewer iFrame**. You can copy and paste the `<iframe>` directly into your own web application and replace the _streamId_ and _streamName_ with your own. 
+In [Part 1 - Using the Streaming Dashboard](/millicast/getting-started/getting-started-using-the-dashboard.md), you may have noticed the **Hosted Viewer iFrame**. You can copy and paste the `<iframe>` directly into your own web application and replace the _streamId_ and _streamName_ with your own. 
 
 ```html
 <iframe
@@ -30,11 +30,11 @@ This is the simplest way to get up and running quickly with your own web applica
 
 
 
-If you click the `Customize` button in the Playback Dashboard you'll see there are lots of options you can use to include or exclude playback behaviors. The [How to Broadcast in Dashboard](/millicast/how-to-broadcast-in-dashboard.md) page goes through these options in more detail.
+If you click the `Customize` button in the Playback Dashboard you'll see there are lots of options you can use to include or exclude playback behaviors. The [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) page goes through these options in more detail.
 
 # 2.1 Playback from a custom web application
 
-In the previous part, we were able to begin to [broadcast](/millicast/broadcast/index.md) a stream and [playback](/millicast/playback.md) that stream in a hosted web viewer application. For more complex projects, you may need more control over the end-user experience. To demonstrate this, we'll build a custom web application to playback and view the stream using the same publish token created from the dashboard. 
+In the previous part, we were able to begin to [broadcast](/millicast/broadcast/index.md) a stream and [playback](/millicast/playback/index.md) that stream in a hosted web viewer application. For more complex projects, you may need more control over the end-user experience. To demonstrate this, we'll build a custom web application to playback and view the stream using the same publish token created from the dashboard. 
 
 ## a. Clone the Getting Started repository
 
@@ -69,7 +69,7 @@ You'll be editing a single **index.html** file to add streaming capabilities so 
 
 ## b. Include the Web SDK
 
-To dynamically generate a viewer you should use the [Web SDK](/millicast/web.md) in your application. You can do this by adding a `<script>` element in the `<head>` section to include the SDK from a hosted location such as a [CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk).
+To dynamically generate a viewer you should use the [Web SDK](/millicast/client-sdks/web.md) in your application. You can do this by adding a `<script>` element in the `<head>` section to include the SDK from a hosted location such as a [CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk).
 
 ```html
 <!-- Step 2.1b: Include Millicast Web SDK -->
@@ -78,13 +78,13 @@ To dynamically generate a viewer you should use the [Web SDK](/millicast/web.md)
 
 > ❗️ Using the Millicast SDK
 > 
-> Review the [Web SDK](/millicast/web.md) documentation for additional installation methods such as with `npm`. The Streaming API used to be known as Millicast so the SDK uses that name when importing the library.
+> Review the [Web SDK](/millicast/client-sdks/web.md) documentation for additional installation methods such as with `npm`. The Streaming API used to be known as Millicast so the SDK uses that name when importing the library.
 > 
 > When importing the SDK from jsdelivr you will automatically be updated to the latest version. This is fine for development, but it is strongly recommended to pin to a specific version release in order to increase stability when you move to production.
 
 ## c. Configure account ID and stream name
 
-In [Part 1](/millicast/getting-started-using-the-dashboard.md) we created a stream with a unique name such as _myStreamName_. You'll need to add that to the code along with the **Account ID** that is associated with the publishing token. You can find both of these values from the Dolby.io Dashboard.
+In [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) we created a stream with a unique name such as _myStreamName_. You'll need to add that to the code along with the **Account ID** that is associated with the publishing token. You can find both of these values from the Dolby.io Dashboard.
 
 ```javascript
 // Step 2.1c: Set your account id and stream name while Getting Started
@@ -132,7 +132,7 @@ try {
 }
 ```
 
-If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started-using-the-dashboard.md), you will then have a simple web app with video playback to continue customizing.
+If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md), you will then have a simple web app with video playback to continue customizing.
 
 
 ![](https://cdn.TODO.io/docs/readme/efedda4-dolbyio-web-playback.png)
@@ -141,7 +141,7 @@ If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/m
 
 # 2.2 Broadcast from a custom web application
 
-For this section, you can use the hosted playback viewer or the _playback-app_ you just built in the last section. This section will help you build a separate app that would be used to [Capture](/millicast/capture.md) and broadcast streaming content.
+For this section, you can use the hosted playback viewer or the _playback-app_ you just built in the last section. This section will help you build a separate app that would be used to [Capture](/millicast/capture/index.md) and broadcast streaming content.
 
 ## a. Clone the Getting Started repository
 
@@ -152,7 +152,7 @@ git clone https://github.com/dolbyio-samples/stream-sdk-web-getting-started.git
 cd stream-sdk-web-getting-started/broadcast-app
 ```
 
-The [Web SDK](/millicast/web.md) is pulled in with a `<script>` element from a CDN in the same way as is done for the playback-app.
+The [Web SDK](/millicast/client-sdks/web.md) is pulled in with a `<script>` element from a CDN in the same way as is done for the playback-app.
 
 ## b. Configure publishing token and stream name
 
@@ -240,13 +240,13 @@ document.getElementById('btn-stop').onclick = () => {
 
 These starter apps were kept simple for the purpose of getting started. You can re-use these samples in your preferred JavaScript framework such as React, VueJS, Angular, etc. as you customize the user experience of joining a stream, handling when a stream hasn't started, maintaining button state, etc.
 
-Continue by exploring the [Streaming Web SDK](/millicast/web.md) documentation for a guide on other functions as you continue building your own project.
+Continue by exploring the [Streaming Web SDK](/millicast/client-sdks/web.md) documentation for a guide on other functions as you continue building your own project.
 
 # Troubleshooting
 
 ## 400 (Bad Request)
 
-When you try to connect to a stream that has not yet begun to broadcast, you may see a `400 (Bad Request)` error. This is expected, so you will want to create a user experience that does not attempt to **connect()** prematurely, by first checking if a broadcast has begun.
+When you try to connect to a stream that has not yet begun to broadcast, you may see a `400 (Bad Request)` error. This is expected, so you will want to create a user experience that does not attempt to **connect() prematurely, by first checking if a broadcast has begun.
 
 ```http
 POST https://director.millicast.com/api/director/subscribe 400 (Bad Request)

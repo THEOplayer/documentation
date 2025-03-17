@@ -6,17 +6,17 @@ id: webhooks
 
 This guide covers:
 
-- [Creating and Managing](/millicast/webhooks.md#creating-webhooks) webhooks for your account.
-- [Receiving Webhooks](/millicast/webhooks.md#receiving-webhooks) sent to your application.
+- [Creating and Managing](/millicast/webhooks/index.md#creating-webhooks) webhooks for your account.
+- [Receiving Webhooks](/millicast/webhooks/index.md#receiving-webhooks) sent to your application.
 
 # Creating webhooks
 
-Defining a webhook requires a **Webhook URL**. This should be any publicly reachable _https\://_ endpoint address that is running a service capable of receiving `POST` requests. You can create a webhook using either the [Streaming Dashboard](/millicast/about-dash.md) or the [Webhooks API](ref:webhooks_get).
+Defining a webhook requires a **Webhook URL**. This should be any publicly reachable _https\://_ endpoint address that is running a service capable of receiving `POST` requests. You can create a webhook using either the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or the [Webhooks API](ref:webhooks_get).
 
 You choose from several _types_ of events that can be sent to your service.
 
 - [Feed Hooks](/millicast/webhooks/feeds-webhooks.md) send a notification for an activity feed of when a stream has started or stopped publishing.
-- [Recording Hooks](/millicast/webhooks/recording-webhooks.md) send a notification for the start, completion, and deletion of server-side recordings.
+- [Media Hooks](/millicast/webhooks/media-webhooks.md) send a notification for the start, completion, and deletion of server-side recordings.
 - [Thumbnail Hooks](/millicast/webhooks/thumbnail-webhooks.md) send a notification when static thumbnail images are captured during a live video stream.
 - [Transcoder Hooks](/millicast/webhooks/transcoder-webhooks.md) send a notification when a transcoder changes status such as starts or stops.
 - [ViewerConnection Hooks](/millicast/webhooks/viewerconnection-webhooks.md) send a notification when a viewer attempts to connect to an inactive stream or when a stream doesn't have any active viewers remaining.  This hook is helpful for automating an encoder to start only when a viewer connects.
@@ -27,7 +27,7 @@ Each webhook generates a **Webhook Secret**. This secret can be used for signatu
 
 ## How-to add a webhook with the streaming dashboard
 
-From the [Streaming Dashboard](/millicast/about-dash.md), navigate to the Webhooks tab and click the `CREATE` button.
+From the [Streaming Dashboard](/millicast/streaming-dashboard/index.md), navigate to the Webhooks tab and click the `CREATE` button.
 
 
 ![](https://cdn.TODO.io/docs/readme/574f868-dashboard-webhooks.png)
@@ -85,7 +85,7 @@ If you believe your webhook secret has become compromised or want to rotate it r
 
 > 👍 Using the REST APIs
 > 
-> Review the [REST API](/millicast/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+> Review the [REST API](/millicast/getting-started/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
 The [/api/webhooks](ref:webhooks_addwebhook) endpoint can be used to add new webhooks by making a `POST` request. You must specify the webhook URL and a boolean value for each event type that you want to enable or disable.
 
@@ -151,7 +151,7 @@ Most webhooks will share the same base JSON structure:
 }
 ```
 
-See the [Feed Hooks](/millicast/webhooks/feeds-webhooks.md) and [Recording Hooks](/millicast/webhooks/recording-webhooks.md) guides for additional details on what **data** to expect and how to interpret the **event**.
+See the [Feed Hooks](/millicast/webhooks/feeds-webhooks.md) and [Media Hooks](/millicast/webhooks/media-webhooks.md) guides for additional details on what **data** to expect and how to interpret the **event**.
 
 The [Thumbnail](/millicast/webhooks/thumbnail-webhooks.md) hook does not use this schema and instead only sends the captured image.
 

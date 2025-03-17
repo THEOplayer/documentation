@@ -74,7 +74,7 @@ const docsConfigBase = {
 
 const config: Config = {
   title: 'THEOdocs',
-  tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI and THEOlive.',
+  tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI, THEOlive, and Millicast',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -204,6 +204,21 @@ const config: Config = {
         path: 'theolive',
         routeBasePath: '/theolive',
         sidebarPath: './sidebarsTheolive.ts',
+        versions: {
+          current: {
+            noIndex: true,
+          },
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'millicast',
+        path: 'millicast',
+        routeBasePath: '/millicast',
+        sidebarPath: './sidebarsMillicast.ts',
         versions: {
           current: {
             noIndex: true,

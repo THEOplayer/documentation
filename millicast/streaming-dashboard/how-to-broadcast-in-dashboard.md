@@ -2,7 +2,7 @@
 title: "Live Broadcast"
 id: how-to-broadcast-in-dashboard
 ---
-The **Live broadcast** section of the [Streaming Dashboard](/millicast/about-dash.md) is the place to manage all of your [Publish Tokens](/millicast/managing-your-tokens.md). You use these tokens to securely broadcast. You can also launch a hosted **Broadcaster** web app to start a broadcast.
+The **Live broadcast** section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) is the place to manage all of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). You use these tokens to securely broadcast. You can also launch a hosted **Broadcaster** web app to start a broadcast.
 
 
 ![](https://cdn.TODO.io/docs/readme/7b57f82-live-broadcast.png)
@@ -13,7 +13,7 @@ The **Live broadcast** section of the [Streaming Dashboard](/millicast/about-das
 > 
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast.
 > 
-> You can follow the steps in [Part 1](/millicast/getting-started-using-the-dashboard.md) to learn how to use the [Live Broadcast](/millicast/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/hosted-viewer.md).
+> You can follow the steps in [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/playback/hosted-viewer.md).
 
 ## Quick actions
 
@@ -57,7 +57,7 @@ More detail about each of these can be found below.
 
 ### Video devices
 
-By choosing the camera icon you will see the available [capture](/millicast/capture.md) devices from your computer. This may include built-in cameras or accessories such as a USB camera. Virtual cameras may also be present such as with OBS or NDI devices. You can also begin [screen sharing](/millicast/screensharing.md) from this menu.
+By choosing the camera icon you will see the available [capture](/millicast/capture/index.md) devices from your computer. This may include built-in cameras or accessories such as a USB camera. Virtual cameras may also be present such as with OBS or NDI devices. You can also begin [screen sharing](/millicast/capture/screensharing.md) from this menu.
 
 #### Video test
 
@@ -82,7 +82,7 @@ Click the green `Start` button to begin a broadcast. The timecode above the butt
 
 ### Record
 
-When [recording](/millicast/recordings.md) is enabled for a publish token a record button will be present.
+When [recording](/millicast/distribution/stream-recordings/index.md) is enabled for a publish token a record button will be present.
 
 You can toggle the record feature only when you are not broadcasting live. If you are in a live broadcasting, you must stop the broadcast first to toggle the button and begin recording.
 
@@ -93,7 +93,7 @@ The settings menu provides a few options to change the behavior of the broadcast
 It allows you to manipulate camera quality, capture size, frame rate and aspect ratio. You can use these controls to tune the stream for quality, size and even codec (eg. H264, VP9 or AV1) which can provide certain benefits and capabilities. These adjustments can be very helpful when streaming to a wide variety of devices and network conditions. For example if the broadcaster is streaming from a very bandwidth-limited location, you have the ability to lower the quality, capture-size and framerate to maintain a smooth stream. More details about this pop-up are described below.
 
 - Media Settings
-- [Media Stats](/millicast/media-stats.md) provides diagnostic details about the performance of the broadcast stream
+- [Media Stats](/millicast/analytics/media-stats.md) provides diagnostic details about the performance of the broadcast stream
 - **Video Display Adjust** 
 - Report Publisher Issue can be used to request help from support and identify problems that occur while streaming.
 
@@ -136,7 +136,7 @@ Inside the Media settings, there is the option to activate the Simulcast feature
 
 > 📘 Chrome
 > 
-> Currently, our browser-based [simulcast](/millicast/using-webrtc-simulcast.md) feature is supported only when publishing via **Chrome**, however, the stream can be viewed with any browser. Only the broadcaster is required to be using Chrome.
+> Currently, our browser-based [simulcast](/millicast/distribution/using-webrtc-simulcast.md) feature is supported only when publishing via **Chrome**, however, the stream can be viewed with any browser. Only the broadcaster is required to be using Chrome.
 
 **Absolute Capture Time**
 
@@ -148,13 +148,13 @@ Choose Video or Audio only podcasts.
 
 **Priority**
 
-Set the priority of the feed when publishing multiple backup feeds. For more information, see [backup publishing](/millicast/backup-publishing.md).
+Set the priority of the feed when publishing multiple backup feeds. For more information, see [backup publishing](/millicast/broadcast/redundant-ingest/index.md).
 
 **Resolution**
 
 > 🚧 Unsupported Camera Dimensions
 > 
-> Some capture settings like width and height can disable your camera if the camera cannot support the requested dimensions. The browser will throw an over-constrained error. To learn more see **[Mozilla Docs - OverconstrainedError](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError)** or **[W3C Docs - Overconstrained Object](https://w3c.github.io/mediacapture-main/getusermedia.html#overconstrainederror-object)**.
+> Some capture settings like width and height can disable your camera if the camera cannot support the requested dimensions. The browser will throw an over-constrained error. To learn more see [Mozilla Docs - OverconstrainedError](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError) or [W3C Docs - Overconstrained Object](https://w3c.github.io/mediacapture-main/getusermedia.html#overconstrainederror-object).
 
 **FPS**
 
@@ -164,7 +164,7 @@ Set the priority of the feed when publishing multiple backup feeds. For more inf
 
 This feature enables the cancellation of echo on your audio's stream.
 
-<img class="icon" style="width:40px" src="https://files.readme.io/d6e73a5-Capture_decran_2023-07-29_a_4.55.29_PM.png" alt="Icon"/> **Audio **
+<img class="icon" style="width:40px" src="https://files.readme.io/d6e73a5-Capture_decran_2023-07-29_a_4.55.29_PM.png" alt="Icon"/> **Audio**
 
 This feature enabled stereo audio with your Dolby.io Real-time Streaming streams, however, stereo-enabled microphone is required.In addition, echo cancellation must be disabled while using the stereo setting. Doing this may cause an audio feedback loop so it is best practice to use headphones while listening to your stream to prevent echo.
 
@@ -221,6 +221,6 @@ You are actively publishing live and recording the stream.
 
 ## Learn more
 
-Feel free to use this broadcasting interface as much as you like. If you want to build your own or customize the experience by hosting your own you can by using the [Web SDK](/millicast/web.md) or using a [Sample App](/millicast/sample-apps.md) to get started.
+Feel free to use this broadcasting interface as much as you like. If you want to build your own or customize the experience by hosting your own you can by using the [Web SDK](/millicast/client-sdks/web.md) or using a [Sample App](/millicast/sample-apps/index.md) to get started.
 
-- [Hosted Viewer](/millicast/hosted-viewer.md)
+- [Hosted Viewer](/millicast/playback/hosted-viewer.md)

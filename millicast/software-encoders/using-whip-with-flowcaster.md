@@ -2,13 +2,13 @@
 title: "Drastic Technologies"
 id: using-whip-with-flowcaster
 ---
-Drastic Technologies' **FlowCaster** is a tool that enables cloud-based media workflows. FlowCaster makes it simple to use Dolby.io Real-time Streaming and the [WHIP (WebRTC HTTP Ingest Protocol)](/millicast/webrtc-whip.md) with no additional software or hardware requirements.
+Drastic Technologies' **FlowCaster** is a tool that enables cloud-based media workflows. FlowCaster makes it simple to use Dolby.io Real-time Streaming and the [WHIP (WebRTC HTTP Ingest Protocol)](/millicast/broadcast/webrtc-whip.md) with no additional software or hardware requirements.
 
 The WebRTC-HTTP ingest protocol (WHIP) uses an HTTP POST request to perform a single shot SDP offer/answer so an ICE/DTLS session can be established between the Flowcaster encoder/media producer (WHIP client) and the Dolby.io Real-time Streaming broadcasting ingestion endpoint (media server).
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.md) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.md) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 See the official [FlowCaster](https://www.drastic.tv/productsmenu-56/networkstreaminglist/flowcaster) site for documentation, installation instructions, and additional support.
 
@@ -23,7 +23,7 @@ To start off, download the [latest version of FlowCaster](https://www.drastic.tv
 
 
 
-Once inside the streaming dashboard,[create a token](/millicast/managing-your-tokens.md) in your Dolby.io dashboard. You will need the stream name and token for the stream label.
+Once inside the streaming dashboard,[create a token](/millicast/streaming-dashboard/managing-your-tokens.md) in your Dolby.io dashboard. You will need the stream name and token for the stream label.
 
 
 ![](https://cdn.TODO.io/docs/readme/f71e8f6-flowcaster-whip-token.png)
@@ -63,7 +63,7 @@ FlowCaster is a perfect tool for video and audio professionals to use with their
 
 > 🚧 FlowCaster's Mac Version
 > 
-> The newest version of the MacOS doesn't support H264/AV1C, therefore, implementing WHIP as the transmit type is not possible. However, it is possible to broadcast low-delay [SRT](/millicast/using-srt.md) or [RTMP](/millicast/using-rtmp-and-rtmps.md) streams which are also supported by Dolby.io.
+> The newest version of the MacOS doesn't support H264/AV1C, therefore, implementing WHIP as the transmit type is not possible. However, it is possible to broadcast low-delay [SRT](/millicast/broadcast/using-srt.md) or [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) streams which are also supported by Dolby.io.
 
 ## Demonstration video
 

@@ -12,9 +12,9 @@ This document will guide you on how to [broadcast](/millicast/broadcast/index.md
 
 # How-to find the SRT publish settings with the dashboard
 
-The Dolby.io [Streaming Dashboard](/millicast/about-dash.md) helps generate the parameters you can use for configuring your encoders. 
+The Dolby.io [Streaming Dashboard](/millicast/streaming-dashboard/index.md) helps generate the parameters you can use for configuring your encoders. 
 
-Some examples of encoders supporting SRT include the [Osprey](/millicast/using-osprey-talon-whip-hardware-encoder.md) Talon, [Teradek](/millicast/broadcasting-teradek-vidiu.md) Wave, [Videon](/millicast/videon.md) EdgeCaster, [Haivision](/millicast/using-haivision-kb-encoder.md) KB Encoder, [Flowcaster](/millicast/using-whip-with-flowcaster.md), Adobe Premiere Pro, Avid Media Composer, and [vMix](/millicast/broadcasting-with-vmix.md).
+Some examples of encoders supporting SRT include the [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md) Talon, [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md) Wave, [Videon](/millicast/hardware-encoders/videon.md) EdgeCaster, [Haivision](/millicast/hardware-encoders/using-haivision-kb-encoder.md) KB Encoder, [Flowcaster](/millicast/software-encoders/using-whip-with-flowcaster.md), Adobe Premiere Pro, Avid Media Composer, and [vMix](/millicast/software-encoders/broadcasting-with-vmix.md).
 
 ## 1. Select a token from _Live broadcast_
 
@@ -90,7 +90,7 @@ You will need to know the **Stream name** as well as the **Publishing token**. Y
 
 ## 1. Generate the SRT publish path
 
-If you've used the **Auto** [region](/millicast/multi-region-support.md)  as your default then the **SRT publish path** will be `srt://srt-auto.millicast.com:10000`.  
+If you've used the **Auto** [region](/millicast/distribution/multi-region-support/index.md)  as your default then the **SRT publish path** will be `srt://srt-auto.millicast.com:10000`.  
 
 For publish tokens configured for specific regions, the **srt://** endpoint will be unique for that region. These URLs can be fetched with a `GET` request to the [/api/cluster](ref:cluster) endpoint. The response will be similar to this:
 

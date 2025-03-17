@@ -83,11 +83,3 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
   </a>
   
 </div>
-
-<style> 
-  
-  .dolbyio-card {
-    height: 200px;
-  }
-  
-</style>

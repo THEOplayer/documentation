@@ -6,12 +6,12 @@ This part explains how to get started using just the Dolby.io Streaming Dashboar
 
 This tutorial is split into two sections:
 
-- [Broadcast from the Dolby.io Dashboard](/millicast/getting-started-using-the-dashboard.md)11-capture-and-broadcast-from-the-dolbyio-dashboard)
-- [Playback with the Streaming Viewer](/millicast/getting-started-using-the-dashboard.md)12-playback-content-with-the-streaming-viewer)
+- [Broadcast from the Dolby.io Dashboard](/millicast/getting-started/getting-started-using-the-dashboard.md)11-capture-and-broadcast-from-the-dolbyio-dashboard)
+- [Playback with the Streaming Viewer](/millicast/getting-started/getting-started-using-the-dashboard.md)12-playback-content-with-the-streaming-viewer)
 
 # 1.1 Capture and broadcast from the Dolby.io dashboard
 
-We will begin by [broadcasting](/millicast/broadcast/index.md) directly from the Dolby.io Streaming Dashboard, [capturing](/millicast/capture.md) audio and video with a web camera.
+We will begin by [broadcasting](/millicast/broadcast/index.md) directly from the Dolby.io Streaming Dashboard, [capturing](/millicast/capture/index.md) audio and video with a web camera.
 
 ## a. Create a publish token
 
@@ -49,11 +49,11 @@ From the dashboard broadcast application that opens, click the green `Start` but
 
 > 📘 Broadcast Guide
 > 
-> Visit the [How to Broadcast in Dashboard](/millicast/how-to-broadcast-in-dashboard.md) guide to learn more details about the options available for configuring the publish token and working with this dashboard broadcast application.
+> Visit the [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) guide to learn more details about the options available for configuring the publish token and working with this dashboard broadcast application.
 
 # 1.2 Playback content with the streaming viewer
 
-In the previous section, you created a publishing token and started to broadcast. Next, we will open a hosted streaming viewer to [playback](/millicast/playback.md) the real-time stream.
+In the previous section, you created a publishing token and started to broadcast. Next, we will open a hosted streaming viewer to [playback](/millicast/playback/index.md) the real-time stream.
 
 In the lower right-hand corner of the dashboard broadcast application are some icons. Click on the sharing icon like the one circled in Figure 2a.
 
@@ -80,4 +80,4 @@ The viewer has some user controls to pause the stream, configure settings, and v
 
 # Continue learning
 
-In this tutorial, we were able to start and view a real-time stream. To continue with your project, you may want to customize the experience. The next part will help with getting started to build [a custom web application](/millicast/getting-started-creating-real-time-streaming-web-app.md).
+In this tutorial, we were able to start and view a real-time stream. To continue with your project, you may want to customize the experience. The next part will help with getting started to build [a custom web application](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md).

@@ -66,7 +66,7 @@ This enables a wider range of use cases where precision matters for timely high-
 
 # How it works
 
-Supporting many <a href="https://dolby.io/solutions/" target="_blank">use cases</a>, real-time streaming has components that support the required capabilities for [Capture](/millicast/capture.md), [Broadcast](/millicast/broadcast/index.md), [Distribution](/millicast/distribution/index.md), and [Playback](/millicast/playback.md).
+Supporting many <a href="https://dolby.io/solutions/" target="_blank">use cases</a>, real-time streaming has components that support the required capabilities for [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.md), [Distribution](/millicast/distribution/index.md), and [Playback](/millicast/playback/index.md).
 
 
 ![](https://cdn.TODO.io/docs/readme/b54f4db4cf4a8a2a1d8d4b126bd99fd41dd5708b3feefc91c3a0dd364775d9af-dolby-millicast-real-time-streaming-workflow.png)
@@ -134,7 +134,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
 ## Distribution with WebRTC CDN
 
-The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/https://docs.dolby.io/streaming-apis/docs/basic-api-tutorial) or the Dashboard to ensure [distribution](/millicast/distribution.md) of streams is secure, stable, and scalable. 
+The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/https://docs.dolby.io/streaming-apis/docs/basic-api-tutorial) or the Dashboard to ensure [distribution](/millicast/distribution/index.md) of streams is secure, stable, and scalable. 
 
 <div style="margin-left: 20px">
 
@@ -160,7 +160,7 @@ Distribution of streaming content requires scalability, stability, and security 
 
 ## Playback streaming media
 
-The final component of the streaming workflow is taking the stream, after it has been passed through the Dolby.io CDN, and playing it back to the end viewer. Similar to the broadcasting side, decoding and [playback](/millicast/playback.md) is supported via web and mobile browsers, software, hardware, and via client-side broadcast SDKs.
+The final component of the streaming workflow is taking the stream, after it has been passed through the Dolby.io CDN, and playing it back to the end viewer. Similar to the broadcasting side, decoding and [playback](/millicast/playback/index.md) is supported via web and mobile browsers, software, hardware, and via client-side broadcast SDKs.
 
 <div style="margin-left: 20px">
 

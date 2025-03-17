@@ -8,11 +8,11 @@ id: getting-started
 > 
 > If you haven't already, please [create a Dolby.io account](https://dashboard.dolby.io/signup/?utm_medium=docs&utm_campaign=getting-started&utm_source=docs) so that you can access the Streaming Dashboard.
 
-For an introduction to the platform overall, start with the [Introduction to Streaming APIs](/millicast/introduction-to-streaming-apis.md).
+For an introduction to the platform overall, start with the [Introduction to Streaming APIs](/millicast/getting-started/introduction-to-streaming-apis.md).
 
 # Part 1: Use the Streaming Dashboard
 
-Begin by broadcasting directly [using the Dolby.io Streaming Dashboard](/millicast/getting-started-using-the-dashboard.md).
+Begin by broadcasting directly [using the Dolby.io Streaming Dashboard](/millicast/getting-started/getting-started-using-the-dashboard.md).
 
 <div style="margin-left: 20px">
 
@@ -39,7 +39,7 @@ Begin by broadcasting directly [using the Dolby.io Streaming Dashboard](/millica
 
 # Part 2: Create a Streaming Web Application
 
-After completing Part 1, you can now progress onto Part 2, building a custom web application using the [Streaming Web SDK](/millicast/web.md) to playback and view a stream or start a new broadcast.
+After completing Part 1, you can now progress onto Part 2, building a custom web application using the [Streaming Web SDK](/millicast/client-sdks/web.md) to playback and view a stream or start a new broadcast.
 
 <div style="margin-left: 20px">
 
@@ -60,7 +60,7 @@ After completing Part 1, you can now progress onto Part 2, building a custom web
 </div>
 
 
-<br />
+, 
 
 # Part 3: Automating Workflows Using REST APIs
 
@@ -85,7 +85,7 @@ After learning how to stream with the dashboard or by building a web application
 </div>
 
 
-<br />
+, 
 
 # Part 4: Create Mobile Streaming Apps
 

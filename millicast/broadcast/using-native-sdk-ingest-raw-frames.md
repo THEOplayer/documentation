@@ -2,13 +2,13 @@
 title: "Ingest Raw Frames"
 id: using-native-sdk-ingest-raw-frames
 ---
-Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](/millicast/hardware-encoders.md) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/live-streaming-from-drones-rtmp.md) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
+Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](/millicast/hardware-encoders/index.md) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/capture/live-streaming-from-drones-rtmp.md) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
 
 This guide is designed to help you leverage the Dolby.io Streaming Native SDKs to ingest raw audio and video frames, allowing the stream encoding to be handled by the SDK. There are three ways to accomplish raw frame ingestion: 
 
-1. [Using the Core API](/millicast/using-native-sdk-ingest-raw-frames.md)creating-custom-audio-and-video-frame-classes): For desktop applications such as Windows, Mac, or Linux
-2. [Using the iOS API](/millicast/using-native-sdk-ingest-raw-frames.md)using-the-ios-api): Including tvOS
-3. [Using the Android API](/millicast/using-native-sdk-ingest-raw-frames.md)using-the-android-api)
+1. [Using the Core API](/millicast/broadcast/using-native-sdk-ingest-raw-frames.md)creating-custom-audio-and-video-frame-classes): For desktop applications such as Windows, Mac, or Linux
+2. [Using the iOS API](/millicast/broadcast/using-native-sdk-ingest-raw-frames.md)using-the-ios-api): Including tvOS
+3. [Using the Android API](/millicast/broadcast/using-native-sdk-ingest-raw-frames.md)using-the-android-api)
 
 ## Using the Core API
 
@@ -226,7 +226,7 @@ void create_custom_source_and_publish() {
 }
 ```
 
-With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks.md) in the Client SDKs section of the documentation.
+With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.md) in the Client SDKs section of the documentation.
 
 ## Using the iOS API
 
@@ -500,7 +500,7 @@ func createCustomSourceAndPublish() {
 }
 ```
 
-With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks.md) in the Client SDKs section of the documentation.
+With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.md) in the Client SDKs section of the documentation.
 
 ## Using the Android API
 
@@ -697,4 +697,4 @@ void create_custom_source_and_publish() {
 }
 ```
 
-With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks.md) in the Client SDKs section of the documentation.
+With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.md) in the Client SDKs section of the documentation.

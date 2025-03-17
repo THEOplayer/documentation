@@ -107,26 +107,12 @@ There are additional usage examples below, but you may also find some of the res
   
 </div>
 
-<style> 
-  
-  .dolbyio-card {
-    height: 220px;
-  }
-  
-  .dolbyio-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    grid-gap: 0.5rem;
-}
-  
-</style>
-
 
 You might also check and follow the [Web Platform Release Notes](/millicast/changelog:changelog-web-platform) page for updates and changes to the SDK.
 
 # Basic Usage
 
-The following examples require that you've already followed the [Getting Started](/millicast/getting-started.md) tutorial and have available your **publish token** and **stream name**.
+The following examples require that you've already followed the [Getting Started](/millicast/getting-started/index.md) tutorial and have available your **publish token** and **stream name**.
 
 ## Publishing a Stream
 
@@ -197,7 +183,7 @@ The `connect()` can optionally receive more parameters, all of these are describ
 For example: 
 
 - If you want to start your stream with a bitrate limit, you can use the `bandwidth` option.
-- If your stream token in Dolby.io Real-time Streaming has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/recordings.md).
+- If your stream token in Dolby.io Real-time Streaming has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md).
 - You can start a stream without audio or video setting the `disableAudio` or `disableVideo` respectively.
 - You can select which codec you want to stream using the `codec` option. If you want to know the supported codecs of your browser, you can use [getCapabilities()](https://millicast.github.io/millicast-sdk/PeerConnection.html#.getCapabilities)
 
@@ -231,7 +217,7 @@ console.log(capabilities);
 More information here: 
 
 - [connect()](https://millicast.github.io/millicast-sdk/Publish.html#connect)
-- [Dashboard Recordings section](/millicast/recordings.md)
+- [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md)
 - [getCapabilities()](https://millicast.github.io/millicast-sdk/PeerConnection.html#.getCapabilities)
 
 ### Managing your active stream
@@ -302,8 +288,8 @@ Like when creating a Publish instance, in order to create a View instance you ne
 
 - The first one is the stream name ('my-stream-name') and it is used to set the stream you want to connect.
 - The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
-- **(Optional)**  mediaElement. This is the HTML media element where you want to mount the stream for example a `video` element.
-- **(Optional)** autoReconnect. The Default value is true, enabling auto reconnect to stream. 
+- **(Optional)  mediaElement. This is the HTML media element where you want to mount the stream for example a `video` element.
+- **(Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream. 
 
 More information here: 
 
@@ -406,7 +392,7 @@ The `broadcastEvents` can be used to detect when a stream is live or offline. Th
 More information here:
 
 - [Broadcast event](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent)
-- [Multi-source broadcasting](/millicast/multi-source-broadcasting.md)
+- [Multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.md)
 
 Example of usage (contemplating both cases):
 
@@ -570,7 +556,7 @@ Additional tutorials for using specific features and capabilities.
 
 ## How-to Screenshare
 
-You can enable screensharing from a browser as part of the broadcast. If you want to enable screen sharing and share your webcam at the same time, you must enable [multisource](/millicast/multi-source-broadcasting.md) since you are broadcasting multiple streams. Alternately, you can share your screen using OBS.
+You can enable screensharing from a browser as part of the broadcast. If you want to enable screen sharing and share your webcam at the same time, you must enable [multisource](/millicast/broadcast/multi-source-broadcasting.md) since you are broadcasting multiple streams. Alternately, you can share your screen using OBS.
 
 For screen sharing browser support see [this article on Browser Compatibility for Media Devices](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices#browser_compatibility).
 
@@ -620,7 +606,7 @@ try {
 
 ## How-to Record a Stream
 
-See the [Stream Recordings](/millicast/recordings.md) guide for more details about this platform capability. You must use a [Publish Token](/millicast/managing-your-tokens.md) that has recording enabled for the client to be able to activate recordings.
+See the [Stream Recordings](/millicast/distribution/stream-recordings/index.md) guide for more details about this platform capability. You must use a [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) that has recording enabled for the client to be able to activate recordings.
 
 You can activate recording to begin shortly after connecting by providing the `record` option to [connect()](https://millicast.github.io/millicast-sdk/Publish.html#connect):
 

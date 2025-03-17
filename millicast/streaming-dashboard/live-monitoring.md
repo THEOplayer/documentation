@@ -2,7 +2,7 @@
 title: "Live Monitoring"
 id: live-monitoring
 ---
-The **Live monitoring** section of the [Streaming Dashboard](/millicast/about-dash.md) is the place to view all of your active streams. This page displays all active ingest streams and streams that have been offline for the last hour. At a glance, you can check the number of connected viewers, stream duration, and status of your streams. Live monitoring allows you to access information about your streams to quickly diagnose and triage any issues.
+The **Live monitoring** section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) is the place to view all of your active streams. This page displays all active ingest streams and streams that have been offline for the last hour. At a glance, you can check the number of connected viewers, stream duration, and status of your streams. Live monitoring allows you to access information about your streams to quickly diagnose and triage any issues.
 
 **Note:** The live monitoring page currently only displays ingress statistics, and does not provide information on egress or client-side statistics. 
 
@@ -23,13 +23,13 @@ By default, the Live monitoring page displays all of your streams in a grid view
 
 5 **Publishing started**: The date and time the stream was created.
 
-6 **Cluster regions**: Indicates what [regions](/millicast/multi-region-support.md) the stream is ingesting to. This indicates which data center is used as the origin when broadcasting. Note: The ingest cluster region displays the most common ingest cluster region used for all feeds in the stream, and hovering over displays additional cluster regions associated with the stream. 
+6 **Cluster regions**: Indicates what [regions](/millicast/distribution/multi-region-support/index.md) the stream is ingesting to. This indicates which data center is used as the origin when broadcasting. Note: The ingest cluster region displays the most common ingest cluster region used for all feeds in the stream, and hovering over displays additional cluster regions associated with the stream. 
 
-7 **Token**: The [publish token](/millicast/managing-your-tokens.md) associated with the stream.
+7 **Token**: The [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) associated with the stream.
 
 8 **Recording enabled status**: Indicates whether recording is enabled on the stream token settings. Note: This does not indicate if the recording is currently active.
 
-9 **Redundant status**: Indicates whether the stream has a redundant option associated with it for failover. For example, if the stream has multiple quality layer feeds, and the highest quality layer has [redundant ingest](/millicast/backup-publishing.md) enabled, the stream will be tagged as redundant.
+9 **Redundant status**: Indicates whether the stream has a redundant option associated with it for failover. For example, if the stream has multiple quality layer feeds, and the highest quality layer has [redundant ingest](/millicast/broadcast/redundant-ingest/index.md) enabled, the stream will be tagged as redundant.
 
 10 **Secure viewer status**: Indicates whether the stream requires secure subscriber tokens to view. The secure viewer setting is enabled on the stream token settings. If the secure viewer setting is enabled, the hosted player will not play the stream.
 
@@ -52,20 +52,20 @@ You can also toggle to display all of your streams in list view.
 The details page for each stream provides the following ingest statistics:
 
 - **ID**:  Unique numerical identifier to identify feeds in Live Monitoring dashboard.
-- **Source name**: The name of the source. If a source has been set as the main source by not specifying a `sourceId`(for WebRTC streams) or `simulcastID` (for RTMP or SRT streams), the Main Source tag is displayed, this is the same tag used when [configuring multiple publishing sources](/millicast/multi-source-builder.md).
+- **Source name**: The name of the source. If a source has been set as the main source by not specifying a `sourceId`(for WebRTC streams) or `simulcastID` (for RTMP or SRT streams), the Main Source tag is displayed, this is the same tag used when [configuring multiple publishing sources](/millicast/streaming-dashboard/multi-source-builder.md).
 - **Resolution**: The video resolution.
-- **Priority**: Indicates the [priority](/millicast/redundant-ingest.md)4-set-priorities) set for the feed.
+- **Priority**: Indicates the [priority](/millicast/broadcast/redundant-ingest/index.md)4-set-priorities) set for the feed.
 - **Type**: The broadcast protocol - RTMP, SRT, or WebRTC.
 - **Video bitrate**: The ingest video bitrate measured in kbps.
 - **Audio bitrate**: The ingest audio bitrate measured in kbps.
 - **FPS**: Frames per second.
 - **RTT**: The round trip time measured in ms. A lower RTT value is preferred.
 - **Packet loss**: The ratio of number of packets lost to the number of packets received over an average of five seconds. This value is measured as a percentage. Note: For streams using the type RTMP, packet loss will always be 0.
-- **B Frames**: Indicates the presence of b-frames in the feed. For best results, we recommend disabling b-frames in your feed. For more information, see [Configuring Simulcast](/millicast/using-webrtc-simulcast.md)configuring-simulcast).
+- **B Frames**: Indicates the presence of b-frames in the feed. For best results, we recommend disabling b-frames in your feed. For more information, see [Configuring Simulcast](/millicast/distribution/using-webrtc-simulcast.md)configuring-simulcast).
 - **Video codec**: The video codec detected.
 - **Audio codec**: The audio codec detected.
 - **Publishing started**: The day, month, year, and time the feed was created.
-- **Cluster region**: Indicates what [regions](/millicast/multi-region-support.md) the stream is ingesting to.
+- **Cluster region**: Indicates what [regions](/millicast/distribution/multi-region-support/index.md) the stream is ingesting to.
 - **Publish geo-location**: The location from which the feed is being published.
 - ** IP address:** The IP address from which the feed is publishing from.
 

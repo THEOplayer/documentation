@@ -36,13 +36,13 @@ The **Token API** is a REST endpoint that allows you to automate the creation an
 
 This guide covers the following: 
 
-- [Getting Your API Secret](/millicast/token-api.md)acquiring-your-api-secret)
-- [Create and Manage Publish Tokens](/millicast/token-api.md)creating-publishing-tokens)
-- [Create and Manage a Subscribe Tokens](/millicast/token-api.md)creating-subscribe-tokens)
+- [Getting Your API Secret](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-secret)
+- [Create and Manage Publish Tokens](/millicast/streaming-dashboard/token-api.md)creating-publishing-tokens)
+- [Create and Manage a Subscribe Tokens](/millicast/streaming-dashboard/token-api.md)creating-subscribe-tokens)
 
 > 👍 Using the REST APIs
 > 
-> Review the [REST API](/millicast/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+> Review the [REST API](/millicast/getting-started/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
 ## Acquiring your API secret
 
@@ -65,14 +65,14 @@ From here, you can start using any of the APIs in the [API reference](ref:publis
 
 Publish tokens are required to start a stream and can be used to control who, where, and what kind of stream can be started. The easiest way to begin learning about programmatically creating a publish token is by going to the [PublishToken Create Token interface of the API reference](ref:publishtokenv1_createtoken).
 
-Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
+Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
 ![](https://cdn.TODO.io/docs/readme/00d628c-pubtok.png)
 
 
 
-There are a lot of parameters to adjust when creating a token. For a full list of definitions, refer to the [Creating a Publish Token](/millicast/managing-your-tokens.md)creating-a-publishing-token) guide, which goes into more detail.
+There are a lot of parameters to adjust when creating a token. For a full list of definitions, refer to the [Creating a Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token) guide, which goes into more detail.
 
 As an example, we can use the API reference UI to create a basic publish token via a cURL request:
 
@@ -158,18 +158,18 @@ curl --request DELETE \
 
 ## Creating subscribe tokens
 
-Unlike the publisher, the viewer, by default, does not need a subscribe token to view a broadcast. However, if you want to [secure your feed](/millicast/managing-your-tokens.md)creating-a-publishing-token) from being viewed by unauthorized users, using a subscribe token is recommended. The subscribe token also has its own set of rules you can use to protect your feed. You can create a token with a time limit, set the token to work from single or multiple specified domains, or you can even set it to use a specific IP or IPs as well. 
+Unlike the publisher, the viewer, by default, does not need a subscribe token to view a broadcast. However, if you want to [secure your feed](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token) from being viewed by unauthorized users, using a subscribe token is recommended. The subscribe token also has its own set of rules you can use to protect your feed. You can create a token with a time limit, set the token to work from single or multiple specified domains, or you can even set it to use a specific IP or IPs as well. 
 
 The easiest way to begin learning about creating a subscribe token is by going to [the _SubscribeToken Create Token_ interface of the API reference](ref:subscribetoken_createtoken).
 
-Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
+Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
 ![](https://cdn.TODO.io/docs/readme/a6e4793-subtok.png)
 
 
 
-There are a lot of parameters to adjust when creating a token. For a full list of definitions, refer to the [Creating a Subscribe Token guide](/millicast/subscribe-tokens.md), which goes into more detail.
+There are a lot of parameters to adjust when creating a token. For a full list of definitions, refer to the [Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.md), which goes into more detail.
 
 As an example, we can use the API reference UI to create a basic subscribe token via a cURL request:
 
@@ -255,7 +255,7 @@ curl --request GET \
 
 Depending on how secure you want your stream to be, you may need to create many subscribe tokens. Dolby.io Real-Time Streaming supports the ability to self-sign subscribe tokens without having to make an API call to the Dolby.io server. Self-signing subscribe tokens locally allows you to generate your subscribe token more efficiently. The self-signed token is a user-generated JSON Web Token (JWT) that is generated from an existing subscribe token.
 
-To learn more about self-signing subscribe tokens, [check out this guide](/millicast/subscribe-tokens#self-signing-subscribe-tokens).
+To learn more about self-signing subscribe tokens, [check out this guide](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens).
 
 ### Managing subscribe tokens
 

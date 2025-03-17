@@ -6,10 +6,10 @@ id: using-ndi
 
 This guide will outline four options for NDI delivery:
 
-1. [How-to Publish NDI with Dolby.io Dashboard Broadcaster](/millicast/using-ndi.md)how-to-publish-ndi-with-dolbyio-dashboard-broadcaster)
-2. [How-to Publish NDI with OBS-WebRTC](/millicast/using-ndi.md)how-to-publish-ndi-with-obs-webrtc)
-3. [How-to Publish Video Editor with NDI](/millicast/using-ndi.md)how-to-publish-video-editor-with-ndi)
-4. [How-to Publish NDI with vMix](/millicast/using-ndi.md)how-to-publish-ndi-with-vmix)
+1. [How-to Publish NDI with Dolby.io Dashboard Broadcaster](/millicast/broadcast/using-ndi.md)how-to-publish-ndi-with-dolbyio-dashboard-broadcaster)
+2. [How-to Publish NDI with OBS-WebRTC](/millicast/broadcast/using-ndi.md)how-to-publish-ndi-with-obs-webrtc)
+3. [How-to Publish Video Editor with NDI](/millicast/broadcast/using-ndi.md)how-to-publish-video-editor-with-ndi)
+4. [How-to Publish NDI with vMix](/millicast/broadcast/using-ndi.md)how-to-publish-ndi-with-vmix)
 
 # NDI publishing
 
@@ -90,7 +90,7 @@ After that, OBS needs to connect to our Dolby.io account. Go to Settings and cli
 
 
 
-To obtain the stream name and publishing token, go into the stream token's settings, and from Token Details, copy the information. Visit [our OBS guide](/millicast/using-obs.md) for any further questions. Close all of the settings and begin streaming. To see the stream, copy the Hosted Player Path from the stream token's Playback. 
+To obtain the stream name and publishing token, go into the stream token's settings, and from Token Details, copy the information. Visit [our OBS guide](/millicast/software-encoders/using-obs.md) for any further questions. Close all of the settings and begin streaming. To see the stream, copy the Hosted Player Path from the stream token's Playback. 
 
 
 ![](https://cdn.TODO.io/docs/readme/3a2339c-Capture_decran_2023-07-07_a_12.28.57_PM.png)
@@ -150,7 +150,7 @@ Open up a new Final Cut Pro project with it matching your NDI configuration and 
 
 ## How-to publish NDI with vMix
 
-You can also use [vMix as NDI](/millicast/broadcasting-with-vmix.md) source if you do not wish to purchase the NDI HDX. This allows will allow vMix to be used as your switcher or remote source and flexibility with Dolby.io Real-time Streaming codecs with real-time publishing.
+You can also use [vMix as NDI](/millicast/software-encoders/broadcasting-with-vmix.md) source if you do not wish to purchase the NDI HDX. This allows will allow vMix to be used as your switcher or remote source and flexibility with Dolby.io Real-time Streaming codecs with real-time publishing.
 
 # Learn more
 

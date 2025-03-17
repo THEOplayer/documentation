@@ -6,9 +6,9 @@ Web cameras are an easy and accessible way to capture content for broadcast with
 
 This guide outlines three options for managing web camera capture:
 
-1. [Connecting a Web Camera to the Dolby.io Dashboard Broadcaster](/millicast/web-cameras.md)connecting-a-web-camera-to-the-dolbyio-dashboard-broadcaster)
-2. [Connecting a Web Camera to OBS](/millicast/web-cameras.md)connecting-a-web-camera-to-obs)
-3. [Capturing from a Web Camera using JavaScript](/millicast/web-cameras.md)capturing-from-a-web-camera-using-javascript)
+1. [Connecting a Web Camera to the Dolby.io Dashboard Broadcaster](/millicast/capture/web-cameras.md)connecting-a-web-camera-to-the-dolbyio-dashboard-broadcaster)
+2. [Connecting a Web Camera to OBS](/millicast/capture/web-cameras.md)connecting-a-web-camera-to-obs)
+3. [Capturing from a Web Camera using JavaScript](/millicast/capture/web-cameras.md)capturing-from-a-web-camera-using-javascript)
 
 # Connecting a web camera to the Dolby.io dashboard broadcaster
 
@@ -62,11 +62,11 @@ When adding the Video Capture Device, make sure to select your Web Camera as the
 
 
 
-With your camera selected, click "OK". You've now set up your Web Camera for capture via OBS. To start streaming from OBS, continue to the [broadcasting with OBS guide](/millicast/using-obs.md).
+With your camera selected, click "OK". You've now set up your Web Camera for capture via OBS. To start streaming from OBS, continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
 
 # Capturing from a web camera using JavaScript
 
-If you are looking to prepare a Web Camera for capture within your application or platform, you'll need a programmatic solution. Dolby.io streaming supports [a number of SDKs](/millicast/client-sdks.md) for building streaming solutions bespoke to your project.
+If you are looking to prepare a Web Camera for capture within your application or platform, you'll need a programmatic solution. Dolby.io streaming supports [a number of SDKs](/millicast/client-sdks/index.md) for building streaming solutions bespoke to your project.
 
 ## Identify available cameras
 

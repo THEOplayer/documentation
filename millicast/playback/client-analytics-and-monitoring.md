@@ -4,8 +4,8 @@ id: client-analytics-and-monitoring
 ---
 With **Client Analytics**, we are referring to any metrics or KPIs that help provide a better understanding of the end-user **Quality of Experience (QoE)**.  This becomes critical when there are playback issues to troubleshoot or for establishing alerts when monitoring rules meet a particular threshold.
 
-- [Troubleshooting Client Playback](/millicast/#troubleshooting-client-playback-issues) 
-- [Monitoring Client Analytics](/millicast/#monitoring-client-analytics) 
+- [Troubleshooting Client Playback](#troubleshooting-client-playback-issues) 
+- [Monitoring Client Analytics](#monitoring-client-analytics) 
 
 # Troubleshooting Client Playback Issues
 
@@ -16,17 +16,17 @@ Questions to consider:
 - Do all client apps experience the same issue?
 - Is the problem observed regardless of browser or platform being used?
 
-If the answer is yes to either of those questions, that may indicate a broadcast problem. You can use the [Millicast Interactive Multiviewer](/millicast/millicast-interactive-multiviewer.md) demo as a test reference for confirming the client is able to view playback.
+If the answer is yes to either of those questions, that may indicate a broadcast problem. You can use the [Millicast Interactive Multiviewer](https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true) demo as a test reference for confirming the client is able to view playback.
 
 > 👍 Broadcast Monitoring
 > 
-> For broadcast issues, the [Live Monitoring](/millicast/live-monitoring.md) tool is available from your account [Streaming Dashboard](/millicast/about-dash.md) or by using the [Broadcast Monitoring](ref:broadcast-monitoring) REST API to get more insight into what may cause problems with a stream.
+> For broadcast issues, the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) tool is available from your account [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by using the [Broadcast Monitoring](ref:broadcast-monitoring) REST API to get more insight into what may cause problems with a stream.
 
 ## Diagnostics Report
 
 When a broadcast is healthy, there can still be scenarios where an individual playback client may experience poor  player performance due to regional network disruptions, app misconfigurations, client platform versions, codec compatibility, etc.
 
-To help facilitate investigating out why a client is experiencing a degraded experience, there is a utility function available from the [Client SDKs](/millicast/client-sdks.md) called `diagnose()`. This method gathers up pertinent details such as: 
+To help facilitate investigating out why a client is experiencing a degraded experience, there is a utility function available from the [Client SDKs](/millicast/client-sdks/index.md) called `diagnose()`. This method gathers up pertinent details such as: 
 
 ✓ The version of the SDK being used.
 
@@ -70,7 +70,7 @@ See the Data Dictionary below for examples of some of the data returned.
 
 # Ongoing Monitoring of Client Analytics
 
-It is common practice to proactively monitor all clients for indicators of streaming issues. The [Client SDKs](/millicast/client-sdks.md) provide access to a `stats` event that emits a snapshot of WebRTC indicators at a frequent interval. This data can be used in combination with an **Application Performance Monitoring (APM) ** solution or Observability tool to alert and integrate with other third-party analytics services for a complete picture of the end-viewer experience.
+It is common practice to proactively monitor all clients for indicators of streaming issues. The [Client SDKs](/millicast/client-sdks/index.md) provide access to a `stats` event that emits a snapshot of WebRTC indicators at a frequent interval. This data can be used in combination with an **Application Performance Monitoring (APM)** solution or Observability tool to alert and integrate with other third-party analytics services for a complete picture of the end-viewer experience.
 
 
 ![](https://cdn.TODO.io/docs/readme/14c6c9a-feature-client-analytics.png)
@@ -79,18 +79,18 @@ It is common practice to proactively monitor all clients for indicators of strea
 
 ## Analytics Collectors
 
-There are third-party [Client Analytics](/millicast/client-analytics.md) integrations available that can serve as a collector or monitoring tool for storing analytics.
+There are third-party [Client Analytics](/millicast/client-analytics/index.md) integrations available that can serve as a collector or monitoring tool for storing analytics.
 
-- [Datazoom](/millicast/datazoom.md)
-- [Datadog](/millicast/datadog.md)
+- [Datazoom](/millicast/client-analytics/datazoom.md)
+- [Datadog](/millicast/client-analytics/datadog.md)
 
 The same pattern can be used with other tools such as Grafana, Splunk, New Relic, etc.
 
 > 👍 Viewer Reporting Analytics API
 > 
-> The [Viewer Reporting](ref:analytics-2) REST API is a premium [Analytics APIs](/millicast/analytics-api.md) option made available to enterprise customers. It offers key insights from our server logs to help identify viewers, location, and other metrics. If you would like to use this endpoint, please [submit a support ticket](https://support.dolby.io/hc/en-au) or reach out to your [sales/solutions](https://dolby.io/contact/) contact.
+> The [Viewer Reporting](ref:analytics-2) REST API is a premium [Analytics APIs](/millicast/analytics/index.md) option made available to enterprise customers. It offers key insights from our server logs to help identify viewers, location, and other metrics. If you would like to use this endpoint, please [submit a support ticket](https://support.dolby.io/hc/en-au) or reach out to your [sales/solutions](https://dolby.io/contact/) contact.
 
-<br />
+, 
 
 ## How-to Configure Stats Collection Frequency
 
@@ -118,7 +118,7 @@ The data measures and metrics gathered for diagnostics are described below.
 | **version** | The version of the Client SDK that generated the analytics. | This can be helpful for debugging if you are using or testing new versions of the SDK to find signs of problems with a specific version.                 |
 | **client**  | An identifier for the Client SDK that was used.             | This can help to distinguish analytics collected between Web, Android, iOS, React-Native, etc. which may be in a mobile browser or a native application. |
 
-<br />
+, 
 
 ## Client Environment
 
@@ -127,11 +127,11 @@ The data measures and metrics gathered for diagnostics are described below.
 | **userAgent** | The user agent captured from the device and/or browser. This can identify the operating system, application versions, etc. The string is the raw unparsed value. | Codec support on platforms, devices, and browsers often come into play with playback performance. Being able to identify the user agent can be particularly helpful for diagnosing patterns. |
 | **timestamp** | Identifies the precise date and time of the client when diagnostic measures were collected as a UTC value.                                                       | This can be helpful for correlating with other system-wide or content network events.                                                                                                        |
 
-<br />
+, 
 
 ## Client Connection
 
-<br />
+, 
 
 | Measure          | Definition                                                                                                                               | Troubleshooting                                                                                             |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
@@ -143,7 +143,7 @@ The data measures and metrics gathered for diagnostics are described below.
 
 ## Content Characteristics
 
-<br />
+, 
 
 | Measure         | Definition                                                                                                                                             | Troubleshooting                                                                                                                                                              |
 | :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -157,12 +157,12 @@ The data measures and metrics gathered for diagnostics are described below.
 |Measure|Definition|Troubleshooting|
 |:----|:----|:----|
 |**bitrate**|The current bitrate in bytes per second.|If the bitrate received does not match the encoded bitrate being published there may be an indication of adaptive bitrate step-down or other factors triggering layer switching to occur.|
-|**currentRoundTripTime**|The current round trip time is the latest measure based on STUN connectivity check and response time measurements. The **totalRoundTripTime** is the sum.|The **round trip time (RTT)** is a good measure of latency experienced across clients as a measure of the time between distribution and playback. The average RTT can be computed by dividing the _totalRoundTripTime_ by number of _responsesReceived_.|
+|**currentRoundTripTime**|The current round trip time is the latest measure based on STUN connectivity check and response time measurements. The **totalRoundTripTime** is the sum.|The **round trip time (RTT) is a good measure of latency experienced across clients as a measure of the time between distribution and playback. The average RTT can be computed by dividing the _totalRoundTripTime_ by number of _responsesReceived_.|
 |**responsesReceived**|The total number of connectivity check responses that have been received.| |
 |**availableIncomingBitrate**|Calculated by congestion control from all RTP streams using the candidate pair. This is similar to the TIAS as defined in RFC3890 over a 1s window.| |
 |**framesReceived**|The total number of complete frames received for the stream.|
 | |
-|The **framesDecoded** includes only those correctly decoded, **framesDropped** counts total number of frames lost prior to decode or that missed the display deadline. **keyFramesDecoded** is the total number of key frames in VP8 (RFC6386) or IDR-frames in H.264 (RFC6184) that are successfully decoded.|These values are used to calculate **frames per second (FPS)** which can be compared against the fps that was encoded from the source.|
+|The **framesDecoded** includes only those correctly decoded, **framesDropped** counts total number of frames lost prior to decode or that missed the display deadline. **keyFramesDecoded** is the total number of key frames in VP8 (RFC6386) or IDR-frames in H.264 (RFC6184) that are successfully decoded.|These values are used to calculate **frames per second (FPS) which can be compared against the fps that was encoded from the source.|
 |**framesPerSecond**|The number of frames decoded per second.|Fluctuations in fps over time or variance between encoded and decoded fps may indicate an inefficiency in the decoding and transport.|
 |**jitter**|Deviation in packet reception times is called jitter and measured in milliseconds. The purpose of a jitter buffer is to recombine packets into frames for smooth playout.|
 | |

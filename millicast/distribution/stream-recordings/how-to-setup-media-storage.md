@@ -2,11 +2,11 @@
 title: "How-to Setup Storage Profiles"
 id: how-to-setup-media-storage
 ---
-With [Live Clipping](/millicast/live-clipping.md) you can have clips stored directly to your preferred third-party cloud storage provider. This gives you additional control over storage costs and manage usage of media clips. 
+With [Live Clipping]((millicast/distribution/stream-recordings/live-clipping.md) you can have clips stored directly to your preferred third-party cloud storage provider. This gives you additional control over storage costs and manage usage of media clips. 
 
 > 🚧 Not Available for Recordings
 > 
-> At this time, [Recordings](/millicast/starting-recording.md) cannot be configured to use a third-party cloud storage provider directly. You should follow the [How-to Get Media Assets](/millicast/how-to-get-media-assets.md) guide to identify recordings for download and then you can upload them to your preferred provider of choice.
+> At this time, [Recordings](/millicast/distribution/stream-recordings/starting-recording.md) cannot be configured to use a third-party cloud storage provider directly. You should follow the [How-to Get Media Assets](/millicast/distribution/stream-recordings/how-to-get-media-assets.md) guide to identify recordings for download and then you can upload them to your preferred provider of choice.
 > 
 > Similarly, **timelines** will always be stored in Dolby's storage subject to expiration rules.
 
@@ -96,7 +96,7 @@ The following procedure explains how to grant Dolby upload access to Google Clou
 ![](https://cdn.TODO.io/docs/readme/38921f1-Screenshot_2024-02-14_at_2.41.23_pm.png)
 
 
-<br />
+, 
 
 ## AWS S3
 

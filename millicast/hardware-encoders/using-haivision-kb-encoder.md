@@ -4,8 +4,8 @@ id: using-haivision-kb-encoder
 ---
 **Haivision** provides professional broadcasting equipment to the streaming industry. The KB series of H.264 & HEVC Internet Media Encoders and Transcoders deliver high-quality video streaming for resolutions up to 4K, available as small form factor portable appliances as well as rack-mountable enterprise-grade servers. The KB Series provides you with multiple options for live event streaming, helping you deliver the highest quality live video to your global internet audience.
 
-- [Haivision Makito X4 Encoder with SRT](/millicast/#how-to-use-haivision-makito-x4-encoder-with-srt) 
-- [Haivision KB Encoder with RTMP](/millicast/#how-to-use-haivision-kb-encoder-with-rtmp) 
+- [Haivision Makito X4 Encoder with SRT](#how-to-use-haivision-makito-x4-encoder-with-srt) 
+- [Haivision KB Encoder with RTMP](#how-to-use-haivision-kb-encoder-with-rtmp) 
 
 See the official [Haivision](https://www.haivision.com/) site for documentation, installation instructions, and additional support.
 
@@ -17,9 +17,9 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
 
 1. Select **Live Broadcast** from the left menu.
 
-2. Create your [Publishing Token](/millicast/managing-your-tokens.md#create-a-publish-token).
+2. Create your [Publishing Token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token).
 
-3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/using-srt.md#how-to-find-the-srt-publish-settings-with-the-dashboard).
+3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/broadcast/using-srt.md#how-to-find-the-srt-publish-settings-with-the-dashboard).
 
 4. Open your Haivision Encoder. 
 
@@ -38,13 +38,13 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
    | Format               | Custom                                 |
    | Stream Publishing ID | Makito?t=Your_Token_From_SRT_Stream_ID |
 
-<br />
+, 
 
 ## How to use Haivision KB encoder with RTMP
 
 > 👍 Getting Started with RTMP
 > 
-> If you haven't already, begin by following the [RTMP Getting Started](/millicast/using-rtmp-and-rtmps.md) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [RTMP Getting Started](/millicast/broadcast/using-rtmp-and-rtmps.md) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 To get started, log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin). Enter your KB web interface, switch views to the Channel Control Center, and create a new channel.
 

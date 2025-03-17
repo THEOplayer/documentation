@@ -14,9 +14,9 @@ The following instructions explain how to publish redundant streams using Stream
 
 > 👍 Geo-cascading Settings
 > 
-> Be aware that all publishers that contribute to the same stream must have the same [geo-cascading](/millicast/geo-cascading.md) settings.
+> Be aware that all publishers that contribute to the same stream must have the same [geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) settings.
 
-<br />
+, 
 
 ## Publishing redundant feeds using RTMP or SRT
 
@@ -30,7 +30,7 @@ Decide how many layers of redundancy you want for a given source.  Usually 2 is 
 
 Open the dashboard and click the **Create** button to create a new token. 
 
-Make sure that [geo-cascading](/millicast/geo-cascading.md) is also configured the same across both primary and fallback backup feeds.
+Make sure that [geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) is also configured the same across both primary and fallback backup feeds.
 
 ### 3\. Choose the preferred cluster regions
 
@@ -74,7 +74,7 @@ Decide how many layers of redundancy you want for a given con.
 
 Open the dashboard and click the **Create** button to create a new token. If you want to use two cluster regions, create two tokens.
 
-Make sure that [geo-cascading](/millicast/geo-cascading.md) is also configured the same across both primary and fallback redundant backup feeds.
+Make sure that [geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) is also configured the same across both primary and fallback redundant backup feeds.
 
 ### 3\. Choose the preferred cluster regions
 
@@ -91,7 +91,7 @@ If you use Simulcast with Redundant Ingest, you can assign priorities and source
 | Video 1 | 1        | 100      | Primary |
 | Video 1 | 1        | 1        | Backup  |
 
-If you use the dashboard, open the [Streaming Dashboard Broadcaster](/millicast/how-to-broadcast-in-dashboard.md) and click the gear icon to open **Media Settings**. Set the **Priority** parameter to a preferred value and click **Update**.
+If you use the dashboard, open the [Streaming Dashboard Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and click the gear icon to open **Media Settings**. Set the **Priority** parameter to a preferred value and click **Update**.
 
 If you use WHIP, set the **priority** query parameter by adding `&priority=X` at the end of your publish URL, where X is the preferred priority. For example, if your publish URL is `{StreamName}?token={Token}&sourceId=1`, after adding the priority parameter with a value of 1 you should have the following string: `{StreamName}?token={Token}&sourceId=1&priority=1`. 
 

@@ -4,7 +4,7 @@ id: network-requirements
 ---
 # Codecs
 
-See the [Broadcast](/millicast/broadcast.md) streaming guide for additional details about supported audio and video codecs.
+See the [Broadcast](/millicast/broadcast/index.md) streaming guide for additional details about supported audio and video codecs.
 
 # Network Ports
 
@@ -56,198 +56,21 @@ See [Oracle's IP list](https://docs.oracle.com/en-us/iaas/tools/public_ip_ranges
 
 ## IP Addresses for STUN/TURN
 
-See our documentation page for [STUN and TURN](/millicast/stun-and-turn-service.md) for IP address ranges.
+See our documentation page for [STUN and TURN](/millicast/platform-requirements/stun-and-turn-service.md) for IP address ranges.
 
 ## IP Addresses with Cloud Transcoders
 
-For customers using our real-time cloud transcoder, a static IP address is provisioned for the duration that the machine is provisioned and in use.  The IP address can be found in the Transcoding section of the dashboard or with the [Cloud Transcoder](/millicast/cloud-transcoder.md). If the instance is restarted it is possible it will use a new IP address.  A DNS name is also provided for these instances.
+For customers using our real-time cloud transcoder, a static IP address is provisioned for the duration that the machine is provisioned and in use.  The IP address can be found in the Transcoding section of the dashboard or with the [Cloud Transcoder](/millicast/distribution/cloud-transcoder.md). If the instance is restarted it is possible it will use a new IP address.  A DNS name is also provided for these instances.
 
 # Restricted Territories
 
 The following table lists regions that are currently restricted from full access to Dolby Streaming APIs.  The table outlines what actions are possible in these regions.
 
-<table>
-  <thead>
-    <th>Country / Region / Entity</th>
-<th>ISO</th>
-<th>Account creation</th>
-<th>Portal access</th>
-<th>Streaming APIs access</th>
-<th>Transact payment</th>
-<th>Reason</th>
-  </thead>
-  <tbody>
-    <tr><td><p>Belarusian banks</p>
-</td>
-<td><p>N/A</p>
-</td>
-<td><p>N/A</p>
-</td>
-<td><p>N/A</p>
-</td>
-<td><p>Sanctioned banks are blocked by Stripe</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>China</p>
-</td>
-<td><p>CN-156</p>
-</td>
-<td><p>Yes</p>
-</td>
-<td><p>Yes</p>
-</td>
-<td><p>Yes</p>
-</td>
-<td><p>No active block, requires consultation</p>
-</td>
-<td><p>Business decision</p>
-</td></tr>
-<tr><td><p>Cuba</p>
-</td>
-<td><p>CU-192</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>Iran</p>
-</td>
-<td><p>IR-364</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>North Korea</p>
-</td>
-<td><p>KP-408</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>Russia</p>
-</td>
-<td><p>RU-643</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>Customers are blocked.<br />
-API users are not blocked.</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>Business decision</p>
-</td></tr>
-<tr><td><p>Russian banks</p>
-</td>
-<td><p>N/A</p>
-</td>
-<td><p>N/A</p>
-</td>
-<td><p>N/A</p>
-</td>
-<td><p>All banks are blocked</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>Sudan</p>
-</td>
-<td><p>SD-729</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>Syria</p>
-</td>
-<td><p>SY-760</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>Ukraine - Crimea</p>
-</td>
-<td><p>UA-43</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>Ukraine - Dunbass</p>
-</td>
-<td><p>UA-09</p>
-
-<p>UA-14</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-<tr><td><p>Ukraine - Sevastopol</p>
-</td>
-<td><p>UA-40</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>No</p>
-</td>
-<td><p>US sanction</p>
-</td></tr>
-  </tbody>
-</table>
+**Country / Region / Entity**|**ISO**|**Account creation**|**Portal access**|**Streaming APIs access**|**Transact payment**|**Reason**
+-----|-----|-----|-----|-----|-----|-----
+Belarusian banks|N/A|N/A|N/A|Sanctioned banks are blocked by Stripe|No|US sanction
+China|CN-156|Yes|Yes|Yes|No active block, requires consultation|Business decision
+Cuba|CU-192|No|No|No|No|US sanction
+Iran|IR-364|No|No|No|No|US sanction
+North Korea|KP-408|No|No|No|No|US sanction
 

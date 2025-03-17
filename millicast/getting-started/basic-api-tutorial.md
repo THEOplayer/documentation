@@ -2,26 +2,26 @@
 title: "3. Automate using REST APIs"
 id: basic-api-tutorial
 ---
-The Dolby.io Streaming REST API allows remote management of your Dolby.io Real-time Streaming account. To enable remote access you must first use the Token system to securely authenticate your applications with Dolby.io Real-time Streaming. To acquire an API Token, log into your Dolby.io Real-time Streaming account and follow the directions here: **[acquiring your API token](/millicast/token-api#acquiring-your-api-token)**.
+The Dolby.io Streaming REST API allows remote management of your Dolby.io Real-time Streaming account. To enable remote access you must first use the Token system to securely authenticate your applications with Dolby.io Real-time Streaming. To acquire an API Token, log into your Dolby.io Real-time Streaming account and follow the directions here: [acquiring your API token](/millicast/streaming-dashboard/token-api#acquiring-your-api-token).
 
-For security you should always make your API calls from a secure server like Node.js, .NET or PHP. If you feel that your token has been compromised you can manage your token from your account by creating a new token or simply disabling access all together. Refer back to **[acquiring a token](/millicast/token-api#acquiring-your-api-token)** to learn how to achieve this.
+For security you should always make your API calls from a secure server like Node.js, .NET or PHP. If you feel that your token has been compromised you can manage your token from your account by creating a new token or simply disabling access all together. Refer back to [acquiring a token](/millicast/streaming-dashboard/token-api#acquiring-your-api-token) to learn how to achieve this.
 
 In this tutorial we will build a very rudimentary example for calling the API service and delivering the results down to the publishing client. You will be using Node.js as a secure layer to your Dolby.io Real-time Streaming account, as to not expose the secret API Token publicly. If you have not worked with Node.js before, its best to start with a tutorial or one of their basic guides https://nodejs.org/en/docs/guides/getting-started-guide/ to better understand how things are setup. You can also just follow along, learn the concepts, and use the server-side technology of your choice to achieve the same outcome.
 
 * [REST API Client](https://github.com/DolbyIO/dolbyio-rest-apis-client-node): Client sample code for calling REST APIs from a Node environment
 * [Postman Collection](https://www.postman.com/dolbyio): The Dolby.io Streaming API workspace has collections for the
       REST APIs.
-* [API Reference](/millicast/../reference/): The API Reference documentation
+* [API Reference](TODO): The API Reference documentation
 
 
 
 ## Setting up the environment
 
-First we need to setup our secure server layer which is our Node.js server. Download Node.js from **[https://nodejs.org](/millicast///nodejs.org/)** and follow the setup process to install it (note: At the time this was written it was Node.js 11.6.0).
+First we need to setup our secure server layer which is our Node.js server. Download Node.js from [https://nodejs.org](https://nodejs.org/) and follow the setup process to install it (note: At the time this was written it was Node.js 11.6.0).
 
 Begin by creating a new Node.js project, then create a **server.js** file in the root of that project. In addition create two folders labeled **"certs"** and **"public"** respectfully in the same root directory. The _certs_ folder will house SSL certificates that we will need, and public will house the html files. For this example we are going to run our server locally, but you can run it on any Nodejs supported service you would like.
 
-WebRTC requires HTTPS in order to securely grab the users media. That said, we are going to use a self-signed certificate and key in our HTTPS server so it is setup for whatever WebRTC application you decide to build. For an example on how to create a self-signed certificate you can refer to **[this tutorial](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate.html)**.
+WebRTC requires HTTPS in order to securely grab the users media. That said, we are going to use a self-signed certificate and key in our HTTPS server so it is setup for whatever WebRTC application you decide to build. For an example on how to create a self-signed certificate you can refer to [this tutorial](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate.html).
 
 For a free, CA-signed SSL certificate, you can use the service LetsEncrypt: https://letsencrypt.org/. You can also use any valid SSL certificate of your choice.
 
@@ -267,7 +267,7 @@ await fetch(servicePath + "/createToken", {
 });
 ```
 
-To learn more about the other API Calls you can use see our **[API docs](ref:welcome)**.
+To learn more about the other API Calls you can use see our [API docs](ref:welcome).
 
 You can add the rest of the API calls into the server side code, however it best makes sense for your application. Here is an example of what the server code will look like.
 

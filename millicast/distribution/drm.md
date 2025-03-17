@@ -4,7 +4,7 @@ id: drm
 ---
 **Digital Rights Management (DRM)** is a security mechanism that helps protect premium content or intellectual property within a stream from being shared without permission. This mechanism prevents bad actors from screen sharing, taking screenshots, and other unauthorized distribution.
 
-DRM is accomplished through an extra layer of encryption before distributing content for playback. When configuring your [Publish Tokens](/millicast/managing-your-tokens.md) you enable DRM for any associated streams. The video player will contact a licensing server to retrieve a key to decrypt the audio and video. 
+DRM is accomplished through an extra layer of encryption before distributing content for playback. When configuring your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) you enable DRM for any associated streams. The video player will contact a licensing server to retrieve a key to decrypt the audio and video. 
 
 Support is available for:
 
@@ -26,8 +26,8 @@ When streaming with DRM enabled, the content is distributed with an additional l
 
 In order to enable DRM, you will need to follow a few steps:
 
-1. Use the [Streaming Dashboard](/millicast/about-dash.md) or [/api/publish_token](ref:publish-tokens) REST API to set the `drm` parameter to **true**. You should also be sure to use a [Subscribe Token](/millicast/subscribe-tokens.md).
-2. Use the [Web](/millicast/web.md) SDK or [Hosted Millicast Player](/millicast/hosted-viewer.md) with the appropriate DRM setting enabled.
+1. Use the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or [/api/publish_token](ref:publish-tokens) REST API to set the `drm` parameter to **true**. You should also be sure to use a [Subscribe Token](/millicast/streaming-dashboard/subscribe-tokens.md).
+2. Use the [Web](/millicast/client-sdks/web.md) SDK or [Hosted Millicast Player](/millicast/playback/hosted-viewer.md) with the appropriate DRM setting enabled.
 
 Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
 
@@ -37,7 +37,7 @@ Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
 > 
 > Review [Pricing](https://dolby.io/pricing/) for additional details.
 
-<br />
+, 
 
 ## Enabling DRM on a Stream
 
@@ -72,7 +72,7 @@ When updating an existing token, you should also enable the `subscriberRequiresA
 
 ### Using the Hosted Player
 
-The [Hosted Player](/millicast/hosted-viewer.md) has an option to enable DRM. Whether it is a standalone web application or embedded in an iframe within your site you will need to add the `&drm` [publishing parameter](/millicast/broadcast-parameters.md) to the URL.
+The [Hosted Player](/millicast/playback/hosted-viewer.md) has an option to enable DRM. Whether it is a standalone web application or embedded in an iframe within your site you will need to add the `&drm` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) to the URL.
 
 For example:
 
@@ -98,7 +98,7 @@ const tokenGenerator = () => Director.getSubscriber(streamName, accountId,subscr
 
 ```
 
-You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV)** and **key** for decrypting the content.
+You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV) and **key** for decrypting the content.
 
 ```javascript
 await viewer.connect({
@@ -140,7 +140,7 @@ await viewer.project(sourceId, tracksMapping)
 > 
 > For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js)  which demonstrates the use of DRM.
 
-<br />
+, 
 
 # Troubleshooting
 
@@ -169,10 +169,10 @@ There are some specific scenarios that limit compatibility with Firefox. Similar
 
 The use of DRM will limit some of the other platform features.
 
-- [Cloud Transcoder](/millicast/cloud-transcoder.md) for ABR broadcasts are not compatible with DRM at this time.
-- [Multi-Source Broadcasting](/millicast/multi-source-broadcasting.md) with multiple contribution ingests will not use DRM for each layer.
-- [Analytics](/millicast/analytics-1.md) around video stats are not available from encrypted content.
-- [Live Monitoring](/millicast/live-monitoring.md) dashboard will be unable to allow a preview of streams without consuming a license so is unavailable.
+- [Cloud Transcoder](/millicast/distribution/cloud-transcoder.md) for ABR broadcasts are not compatible with DRM at this time.
+- [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) with multiple contribution ingests will not use DRM for each layer.
+- [Analytics](/millicast/analytics/index.md) around video stats are not available from encrypted content.
+- [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) dashboard will be unable to allow a preview of streams without consuming a license so is unavailable.
 
 Please reach out to your account team to discuss the latest status if this will impact your production plans.
 

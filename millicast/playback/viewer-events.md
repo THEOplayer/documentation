@@ -13,8 +13,8 @@ Currently, there are several events that can be listened to when connected to th
 - `active`: Fires when a live stream is or has started broadcasting.
 - `inactive`: Triggers when the stream has stopped broadcasting but is still connected to the publisher.
 - `updated`: Indicates that a new track has been added to an existing feed, such as when audio is added or removed.
-- `layers`: When streaming with [Simulcast](/millicast/using-webrtc-simulcast.md), this event fires when there is an update of the state of the layers in the live stream.
-- `vad`: Fires when the live stream is mixing and layering audio with [Audio Multiplexing](/millicast/audio-multiplexing.md).
+- `layers`: When streaming with [Simulcast](/millicast/distribution/using-webrtc-simulcast.md), this event fires when there is an update of the state of the layers in the live stream.
+- `vad`: Fires when the live stream is mixing and layering audio with [Audio Multiplexing](/millicast/playback/audio-multiplexing.md).
 - `viewercount`: Triggers when the number of viewers changes in the stream published.
 - `stopped`: Fires when the live stream has been disconnected from the publisher.
 - `migrate`: Fires when the server is having problems, is shutting down, or when viewers need to move for load balancing purposes.
@@ -23,9 +23,9 @@ Currently, there are several events that can be listened to when connected to th
 
 > 👍 Not familar with our SDKs?
 > 
-> Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started-creating-real-time-streaming-web-app.md) guide or by leanring about our [Client SDKs](/millicast/client-sdks.md).
+> Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md) guide or by leanring about our [Client SDKs](/millicast/client-sdks/index.md).
 
-To use or "listen" for these events, you first must authenticate and connect to the Dolby.io CDN using one of our [Client SDKs](/millicast/client-sdks.md). When calling the `connect` function you can include a list of all events to listen for:
+To use or "listen" for these events, you first must authenticate and connect to the Dolby.io CDN using one of our [Client SDKs](/millicast/client-sdks/index.md). When calling the `connect` function you can include a list of all events to listen for:
 
 ```javascript
 import { Director, View } from '@millicast/sdk';

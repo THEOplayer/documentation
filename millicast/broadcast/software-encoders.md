@@ -80,45 +80,45 @@ Review these guides for how to setup your preferred tools for real-time streamin
 
 ## Drastic Technologies
 
-**FlowCaster** from Drastic Technologies lets you share high quality video over IP for remote collaboration and review workflows. This tool supports broadcasting with [WHIP](/millicast/webrtc-whip.md).
+**FlowCaster** from Drastic Technologies lets you share high quality video over IP for remote collaboration and review workflows. This tool supports broadcasting with [WHIP](/millicast/broadcast/webrtc-whip.md).
 
-[How-to integrate with Flowcaster](/millicast/using-whip-with-flowcaster.md)
+[How-to integrate with Flowcaster](/millicast/software-encoders/using-whip-with-flowcaster.md)
 
 ## FFmpeg
 
-**FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. The `ffmpeg` command-line tool can be used to forward streams with [RTMP](/millicast/using-rtmp-and-rtmps.md). This can be helpful for quickly streaming a media file from disk.
+**FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. The `ffmpeg` command-line tool can be used to forward streams with [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md). This can be helpful for quickly streaming a media file from disk.
 
-[How-to integrate with FFmpeg](/millicast/using-ffmpeg.md)
+[How-to integrate with FFmpeg](/millicast/software-encoders/using-ffmpeg.md)
 
 ## GStreamer
 
-**GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines. The tools can be used to ingest streams with [WHIP](/millicast/webrtc-whip.md). This can be helpful for complex workflows that operate on media streams.
+**GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines. The tools can be used to ingest streams with [WHIP](/millicast/broadcast/webrtc-whip.md). This can be helpful for complex workflows that operate on media streams.
 
-[How-to integrate with GStreamer](/millicast/using-whip-with-gstreamer.md)
+[How-to integrate with GStreamer](/millicast/software-encoders/using-whip-with-gstreamer.md)
 
 ## Open Broadcaster Software (OBS)
 
-**OBS** is a free open-source application for broadcasting and recording streams from your desktop computer. It supports broadcasting with [WebRTC](/millicast/webrtc-whip.md), [SRT](/millicast/using-srt.md), and [RTMP](/millicast/using-rtmp-and-rtmps.md) to support many different use cases.
+**OBS** is a free open-source application for broadcasting and recording streams from your desktop computer. It supports broadcasting with [WebRTC](/millicast/broadcast/webrtc-whip.md), [SRT](/millicast/broadcast/using-srt.md), and [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) to support many different use cases.
 
-[How-to integrate with OBS](/millicast/using-obs.md)
+[How-to integrate with OBS](/millicast/software-encoders/using-obs.md)
 
 ## LiveU
 
-**LiveU Studio** is a cloud production tool for live video feeds. It supports [WHIP](/millicast/webrtc-whip.md).
+**LiveU Studio** is a cloud production tool for live video feeds. It supports [WHIP](/millicast/broadcast/webrtc-whip.md).
 
-[How-to integrate with LiveU Studio](/millicast/liveu-studio-using-whip.md)
+[How-to integrate with LiveU Studio](/millicast/software-encoders/liveu-studio-using-whip.md)
 
 ## vMix
 
-**vMix** is a Windows desktop applicationi that provides a vision mixer and encoder. You can use this tool as both a [RTMP](/millicast/using-rtmp-and-rtmps.md) or [NDI](/millicast/using-ndi.md) source.
+**vMix** is a Windows desktop applicationi that provides a vision mixer and encoder. You can use this tool as both a [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [NDI](/millicast/broadcast/using-ndi.md) source.
 
-[How-to integrate with vMix](/millicast/broadcasting-with-vmix.md)
+[How-to integrate with vMix](/millicast/software-encoders/broadcasting-with-vmix.md)
 
 ## Zoom
 
-**Zoom** is a video collaboration platform. The application supports streaming use cases with [RTMP](/millicast/using-rtmp-and-rtmps.md) which allows you to distribute your meeting with Dolby.io Real-time Streaming.
+**Zoom** is a video collaboration platform. The application supports streaming use cases with [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) which allows you to distribute your meeting with Dolby.io Real-time Streaming.
 
-[How-to integrate with Zoom Meetings](/millicast/broadcasting-jitsi-or-zoom-meetings.md)
+[How-to integrate with Zoom Meetings](/millicast/software-encoders/broadcasting-jitsi-or-zoom-meetings.md)
 
 # Learn more
 

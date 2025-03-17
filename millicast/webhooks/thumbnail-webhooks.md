@@ -24,7 +24,7 @@ During a broadcast with **thumbnail preview** enabled, while the stream has an a
 
 ## How-to enable thumbnail preview with the dashboard
 
-The [Streaming Dashboard](/millicast/about-dash.md) token settings can be used to toggle the **Thumbnail previews** setting on.
+The [Streaming Dashboard](/millicast/streaming-dashboard/index.md) token settings can be used to toggle the **Thumbnail previews** setting on.
 
 
 ![](https://cdn.TODO.io/docs/readme/dd7fe55-dashboard-publish-thumbnail-setting.png)
@@ -35,7 +35,7 @@ The [Streaming Dashboard](/millicast/about-dash.md) token settings can be used t
 
 > 👍 Using the REST APIs
 > 
-> Review the [REST API](/millicast/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+> Review the [REST API](/millicast/getting-started/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
 The [/api/publish_token](ref:publishtokenv1_createtoken) endpoint when creating or updating a token using the `enableThumbnails` boolean value. Below is an example body for a request to enable thumbnails on a publishing token and stream named _thumbnails_.
 

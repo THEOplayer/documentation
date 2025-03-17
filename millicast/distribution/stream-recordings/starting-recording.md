@@ -2,9 +2,9 @@
 title: "How-to Start Recording"
 id: starting-recording
 ---
-You can keep a recording of a full broadcast and download it to share or provide as video on demand. The recording will be made available shortly after the end of a broadcast. If you want a recording of a live event while it is in progress, you should learn more about [Live Clipping](/millicast/live-clipping.md) feature.
+You can keep a recording of a full broadcast and download it to share or provide as video on demand. The recording will be made available shortly after the end of a broadcast. If you want a recording of a live event while it is in progress, you should learn more about [Live Clipping]((millicast/distribution/stream-recordings/live-clipping.md) feature.
 
-Recording can be started when using the [Dashboard](/millicast/#recording-from-the-dolbyio-dashboard), [Client SDKs](/millicast/#recording-using-client-sdks), or third-party applications such as [OBS](/millicast/#recording-from-obs). These approaches are described below.
+Recording can be started when using the [Dashboard](#recording-from-the-dolbyio-dashboard), [Client SDKs](#recording-using-client-sdks), or third-party applications such as [OBS](#recording-from-obs). These approaches are described below.
 
 ## Recording from the Dolby.io dashboard
 
@@ -12,7 +12,7 @@ Recording can be started when using the [Dashboard](/millicast/#recording-from-t
 > 
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
-1. Enable recording on a [publish token](/millicast/managing-your-tokens.md) by clicking **Record broadcast** when creating a new token. 
+1. Enable recording on a [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) by clicking **Record broadcast** when creating a new token. 
 
 
 ![](https://cdn.TODO.io/docs/readme/0c8b788-Capture_decran_2023-07-19_a_5.33.53_PM.png)
@@ -30,7 +30,7 @@ Recording can be started when using the [Dashboard](/millicast/#recording-from-t
 > 
 > The recording property cannot be updated while the token is being used in a live broadcast; you must stop broadcasting to update it.
 
-2. Go into the [Dolby.io Live broadcast dashboard ](/millicast/how-to-broadcast-in-dashboard.md)and click the **Broadcast** button. Once the record feature is active, a red **Record** indicator will show up next to the **Start** button. Clicking the **Broadcast** button before starting streaming results in recording the stream prior to beginning the stream.
+2. Go into the [Dolby.io Live broadcast dashboard ](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md)and click the **Broadcast** button. Once the record feature is active, a red **Record** indicator will show up next to the **Start** button. Clicking the **Broadcast** button before starting streaming results in recording the stream prior to beginning the stream.
 3. Click the **Start** button to begin broadcasting with recording enabled.
 
 
@@ -44,7 +44,7 @@ Recording can be started when using the [Dashboard](/millicast/#recording-from-t
 
 ## Recording from OBS
 
-You can record your broadcasts if you are using 3rd party applications, such as [OBS](/millicast/https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) or your own custom broadcaster application. If you have not broadcasted to Dolby.io Real-time Streaming from OBS, please read the [Using OBS](/millicast/using-obs.md) page to enable your first broadcast with the software. 
+You can record your broadcasts if you are using 3rd party applications, such as [OBS](/millicast/https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) or your own custom broadcaster application. If you have not broadcasted to Dolby.io Real-time Streaming from OBS, please read the [Using OBS](/millicast/software-encoders/using-obs.md) page to enable your first broadcast with the software. 
 
 1. Set up OBS by visiting the **Settings** button to add the token information required.
 
@@ -59,7 +59,7 @@ You can record your broadcasts if you are using 3rd party applications, such as 
 
 ## Recording using Client SDKs
 
-To start recording a stream using any Client SDK, [enable recording](/millicast/#how-to-record-from-the-dolbyio-dashboard) in your publish token in the dashboard and set an optional recording parameter to true in publisher options, as in the following examples:
+To start recording a stream using any Client SDK, [enable recording](#how-to-record-from-the-dolbyio-dashboard) in your publish token in the dashboard and set an optional recording parameter to true in publisher options, as in the following examples:
 
 ```cplusplus
 millicast::Publisher::Option options;

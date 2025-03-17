@@ -6,7 +6,7 @@ id: videon
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.md) tutorial to start your first broadcast. You'll need your _RTMP publish path_ and _RTMP publish stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.md) tutorial to start your first broadcast. You'll need your _RTMP publish path_ and _RTMP publish stream name_ for the steps described below.
 
 See the official [Videon](https://www.videonlabs.com/) site for documentation, installation instructions, and additional support.
 
@@ -55,7 +55,7 @@ Under **Audio Profiles**, set up your preferred audio encoding and audio bitrate
 
 ### Using RTMP
 
-Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](https://docs.dolby.io/streaming-apis/docs/using-rtmp-and-rtmps). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/multi-source-builder.md) to generate those URLs.
+Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](https://docs.dolby.io/streaming-apis/docs/using-rtmp-and-rtmps). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
 
 Under **Outputs**, for each **RTMP**, select **Video Source** corresponding to the RTMP profile (1080p for the highest profile and 360p for the lowest profile). Make sure to set **Streaming Providers** to _Generic RTMP_ and paste the **Stream URL** from the Dolby.io RTMP dashboard.
 

@@ -2,7 +2,7 @@
 title: "React Native"
 id: rn
 ---
-Dolby.io Streaming APIs support using the [Web SDK](/millicast/web.md) with React Native WebRTC to support creating iOS, Android, AndroidTV, and tvOS applications.
+Dolby.io Streaming APIs support using the [Web SDK](/millicast/client-sdks/web.md) with React Native WebRTC to support creating iOS, Android, AndroidTV, and tvOS applications.
 
 <div class="dolbyio-cards-container">
   
@@ -48,7 +48,7 @@ Before you start, make sure that you use  [React Native WebRTC plugin](https://w
 
 > 📘 
 > 
-> Before we start, you can find more information in the [Web SDK Documentation](/millicast/web.md), which contains more examples and descriptions of the available modules.
+> Before we start, you can find more information in the [Web SDK Documentation](/millicast/client-sdks/web.md), which contains more examples and descriptions of the available modules.
 
 ## Initializing your project
 
@@ -127,7 +127,7 @@ If the application is running natively on iOS, we need to grant the application 
 <string>Need camera access for uploading images</string>
 ```
 
-For additional information, see: [React Native WebRTC iOS Installation](/millicast/https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/iOSInstallation.md).
+For additional information, see: [React Native WebRTC iOS Installation](https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/iOSInstallation.md).
 
 ### Android permissions
 
@@ -155,7 +155,7 @@ Add the following to support Bluetooth:
 <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 ```
 
-For additional information, see the [React Native WebRTC Android Installation](/millicast/https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/AndroidInstallation.md).
+For additional information, see the [React Native WebRTC Android Installation](https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/AndroidInstallation.md).
 
 ## Gradle v3.5
 
@@ -167,7 +167,7 @@ android.enableDexingArtifactTransform.desugaring=false
 
 ## Examples
 
-Prior to using the viewer and publisher examples, you have to get your tokens. Use the [this guide](/millicast/managing-your-tokens.md) to manage your Dolby.io Real-time Streaming tokens.
+Prior to using the viewer and publisher examples, you have to get your tokens. Use the [this guide](/millicast/streaming-dashboard/managing-your-tokens.md) to manage your Dolby.io Real-time Streaming tokens.
 
 In your App.js file, decide whether you want to test a viewer or publisher based on your needs.
 

@@ -6,10 +6,10 @@ Using a drone, unmanned aerial vehicles (UAVs), or other flying cameras can be a
 
 This guide includes some examples:
 
-1. [Capture from a DJI Mavic Mini](/millicast/live-streaming-from-drones-rtmp.md)capture-from-a-dji-mavic-mini)
-2. [Record Drone Footage](/millicast/live-streaming-from-drones-rtmp.md)record-drone-footage)
+1. [Capture from a DJI Mavic Mini](/millicast/capture/live-streaming-from-drones-rtmp.md)capture-from-a-dji-mavic-mini)
+2. [Record Drone Footage](/millicast/capture/live-streaming-from-drones-rtmp.md)record-drone-footage)
 
-If you are using a drone that is not listed, you should be able to use similar settings for configuring streaming with an [RTMP](/millicast/using-rtmp-and-rtmps.md) ingestion source.
+If you are using a drone that is not listed, you should be able to use similar settings for configuring streaming with an [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) ingestion source.
 
 > 🚧 Reliable Networks
 > 
@@ -19,7 +19,7 @@ If you are using a drone that is not listed, you should be able to use similar s
 
 # DJI
 
-[DJI](https://www.dji.com/) is a leader in consumer and professional drones used for aerial videography. Several models support networking and RTMP streaming from the device that can be sent directly to Dolby.io for [distribution](/millicast/distribution) over WebRTC.
+[DJI](https://www.dji.com/) is a leader in consumer and professional drones used for aerial videography. Several models support networking and RTMP streaming from the device that can be sent directly to Dolby.io for [distribution](/millicast/distribution/index.md) over WebRTC.
 
 Some examples:
 
@@ -74,7 +74,7 @@ Choose the **RTMP** option.
 
 > 📘 Dolby.io Dashboard - Publish Token Details
 > 
-> You will need to have your Dolby.io **publishing token** and **stream name** in order to complete this setup. See the [Getting Started](/millicast/getting-started-using-the-dashboard.md) guide for instructions on creating a new app for the first time. You will also need the **RTMP publish path** from the _Publishing_ tab in the Dolby.io Dashboard. See the [RTMP](/millicast/using-rtmp-and-rtmps.md) guide for more detail on where to find it.
+> You will need to have your Dolby.io **publishing token** and **stream name** in order to complete this setup. See the [Getting Started](/millicast/getting-started/getting-started-using-the-dashboard.md) guide for instructions on creating a new app for the first time. You will also need the **RTMP publish path** from the _Publishing_ tab in the Dolby.io Dashboard. See the [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) guide for more detail on where to find it.
 
 For the Livestream settings, you must provide a URL for the **RTMP Address**. This is constructed from a few of your publisher token settings gathered from the Dolby.io Dashboard.
 
@@ -113,9 +113,9 @@ Example:  https://viewer.millicast.com/?streamId=k9Mwad/multiview
 
 ## Record drone footage
 
-By configuring your publish token to [record](/millicast/recordings.md) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/recordings.md)managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
+By configuring your publish token to [record](/millicast/distribution/stream-recordings/index.md) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/distribution/stream-recordings/index.md)managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
 
-<br />
+, 
 
 ### Video: Real-time Streaming drone latency test
 
@@ -178,6 +178,6 @@ Web based broadcaster
 
 ### Learn more
 
-Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.md), [distribution](/millicast/distribution), and [playback](/millicast/playback.md) guides to complete your project.
+Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.md), [distribution](/millicast/distribution/index.md), and [playback](/millicast/playback/index.md) guides to complete your project.
 
 If you have a different type of drone than the ones listed, reach out to our [support team](https://support.dolby.io/) to ask about compatibility.

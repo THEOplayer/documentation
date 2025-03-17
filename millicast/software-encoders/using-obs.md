@@ -8,7 +8,7 @@ See the official <a href="https://obsproject.com/" target="_blank">obsproject.co
 
 # Setting Up a Broadcast
 
-With OBS, you can broadcast using [RTMP](/millicast/using-rtmp-and-rtmps.md), [SRT](/millicast/using-srt.md), or [WHIP](/millicast/webrtc-whip.md).
+With OBS, you can broadcast using [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), or [WHIP](/millicast/broadcast/webrtc-whip.md).
 
 ## RTMP
 
@@ -31,18 +31,18 @@ Open profile **Settings** and select the **Stream** section. From the **Service*
 
 #### 2. Pick Your Server and Enter Your Stream Key
 
-From the **Server** dropdown menu, you can select _Global_ to have your broadcast location automatically determined or choose from any of our [cluster regions](/millicast/multi-region-support.md).
+From the **Server** dropdown menu, you can select _Global_ to have your broadcast location automatically determined or choose from any of our [cluster regions](/millicast/distribution/multi-region-support/index.md).
 
 
 ![](https://cdn.TODO.io/docs/readme/b9088da320a4c2d052b2cc281303150422afa731af6be4c982e171fb79456513-obs-30-stream-server-key.png)
 
 
 
-You'll need to copy your _RTMP publish stream name_ from the [Streaming Dashboard](/millicast/about-dash.md) and enter it as the **Stream Key**. For RTMP, this value would be the name of your stream with the publishing token as a query parameter and can be found on the Publishing tab.
+You'll need to copy your _RTMP publish stream name_ from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) and enter it as the **Stream Key**. For RTMP, this value would be the name of your stream with the publishing token as a query parameter and can be found on the Publishing tab.
 
 #### 3. Start Streaming
 
-You'll be able to start broadcasting by clicking the `Start Streaming` button. You can verify this by using the [Hosted Player](/millicast/hosted-viewer.md) in the dashboard. 
+You'll be able to start broadcasting by clicking the `Start Streaming` button. You can verify this by using the [Hosted Player](/millicast/playback/hosted-viewer.md) in the dashboard. 
 
 ## WHIP
 
@@ -61,7 +61,7 @@ Open profile **Settings** and select the **Stream** section. From the **Service*
 
 #### 2. Copy WHIP Settings
 
-From the [Streaming Dashboard](/millicast/about-dash.md) you can select the _Publishing_ tab to find the WHIP settings you'll need to configure your broadcast.
+From the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) you can select the _Publishing_ tab to find the WHIP settings you'll need to configure your broadcast.
 
 | OBS Setting  | Streaming Dashboard                              |
 | :----------- | :----------------------------------------------- |
@@ -70,13 +70,13 @@ From the [Streaming Dashboard](/millicast/about-dash.md) you can select the _Pub
 
 #### 3. Start Streaming
 
-You'll be able to start broadcasting by clicking the `Start Streaming` button. You can verify this by using the [Hosted Player](/millicast/hosted-viewer.md) in the dashboard.
+You'll be able to start broadcasting by clicking the `Start Streaming` button. You can verify this by using the [Hosted Player](/millicast/playback/hosted-viewer.md) in the dashboard.
 
 ### OBS WebRTC Fork
 
-Prior to OBS 30.0 it was necessary to use a custom fork. For certain workflows this may be desirable so you can continue to download releases from the project GitHub repository: **[OBS-studio-webrtc](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases)**.
+Prior to OBS 30.0 it was necessary to use a custom fork. For certain workflows this may be desirable so you can continue to download releases from the project GitHub repository: [OBS-studio-webrtc](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases).
 
-You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/multi-source-broadcasting.md) or [simulcast](/millicast/using-webrtc-simulcast.md).
+You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.md) or [simulcast](/millicast/distribution/using-webrtc-simulcast.md).
 
 
 ![](https://cdn.TODO.io/docs/readme/220f03a5693bb6cbd1f7c7de44f2809b411c55bde51f363ae941ae23a5c62537-obs-webrtc-stream-settings.png)
@@ -85,7 +85,7 @@ You can choose either WebRTC or RTMP from the Stream menu. There are additional 
 
 ## SRT
 
-Beginning with OBS 25.x you can stream with [SRT](/millicast/using-srt.md). 
+Beginning with OBS 25.x you can stream with [SRT](/millicast/broadcast/using-srt.md). 
 
 ### Configure Custom Stream Settings
 
@@ -102,7 +102,7 @@ Select _Custom_ for the **Service**.
 
 #### 2. Enter Publish Token Settings
 
-You'll need to gather a few details from the [Streaming Dashboard](/millicast/about-dash.md) for your publish token.
+You'll need to gather a few details from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) for your publish token.
 
 
 ![](https://cdn.TODO.io/docs/readme/aaddfd9-obs-set-srt.png)
@@ -116,7 +116,7 @@ You'll need to gather a few details from the [Streaming Dashboard](/millicast/ab
 
 #### 3. Start Streaming
 
-You'll be able to start broadcasting by clicking the `Start Streaming` button. You can verify this by using the [Hosted Player](/millicast/hosted-viewer.md) in the dashboard.
+You'll be able to start broadcasting by clicking the `Start Streaming` button. You can verify this by using the [Hosted Player](/millicast/playback/hosted-viewer.md) in the dashboard.
 
 # Multi-bitrate Simulcast Contribution
 
@@ -136,11 +136,11 @@ The plugin can also be used with standalone encoders and basic configurations (b
 
 > 📘 Enable multisource on your publish token
 > 
-> Make sure you have enabled multi-source on your publish token. For more information explore the [Multi-source guide](/millicast/multi-source-broadcasting.md). The [Multi-source Builder](/millicast/multi-source-builder.md) may also be particularly helpful to get your settings.
+> Make sure you have enabled multi-source on your publish token. For more information explore the [Multi-source guide](/millicast/broadcast/multi-source-broadcasting.md). The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) may also be particularly helpful to get your settings.
 
 ### 3. Add RTMP Destinations
 
-You'll use the **multiple output** dock or panel to enter the RTMP connection details. You'll be using [Publishing Parameters](/millicast/broadcast-parameters.md) to uniquely identify each layer. 
+You'll use the **multiple output** dock or panel to enter the RTMP connection details. You'll be using [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) to uniquely identify each layer. 
 
 The format will follow the pattern:
 
@@ -196,7 +196,7 @@ You may need to click **start streaming in OBS** to update the current configura
 
 ### 5. Playback
 
-You can verify that simulcast is working by using the [Hosted Player](/millicast/hosted-viewer.md) in the dashboard. Selecting the gear / settings menu will show each video quality allowing you to manually switch to a lower quality layer.
+You can verify that simulcast is working by using the [Hosted Player](/millicast/playback/hosted-viewer.md) in the dashboard. Selecting the gear / settings menu will show each video quality allowing you to manually switch to a lower quality layer.
 
 
 ![](https://cdn.TODO.io/docs/readme/f4f5382-rtmp-mbr-webrtc-simulcast.jpeg)
@@ -228,7 +228,7 @@ Next, set the **Base Resolution** and your **Output Resolution** to be matching.
 
 
 
-<br />
+, 
 
 # Troubleshooting
 
@@ -240,7 +240,7 @@ Review your Encoder Settings from the **Output** configuration with _Advanced_ O
 
 ## Surround Sound Audio
 
-Dolby Millicast supports delivering up to 8 audio channels enabling ** surround sound**. The audio channels can be surround sound channels or more general multichannel ones. The [Hosted Player](/millicast/hosted-viewer.md) will support the playback of surround sound.
+Dolby Millicast supports delivering up to 8 audio channels enabling ** surround sound**. The audio channels can be surround sound channels or more general multichannel ones. The [Hosted Player](/millicast/playback/hosted-viewer.md) will support the playback of surround sound.
 
 ### 1. Setup Your DAW
 
@@ -343,7 +343,7 @@ When you open OBS-WebRTC now, you will see the ability to add multiple RTMP targ
 
 
 
-<br />
+, 
 
 ### Mac
 
@@ -371,7 +371,7 @@ Next, go to the **multiple output** dock. If it is not showing up on your OBS, v
 
 
 
-<br />
+, 
 
 # Learn More
 

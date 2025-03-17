@@ -8,11 +8,11 @@ Multi-view lets you ingest and render multiple Dolby.io real-time video and audi
 
 
 
-To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/multi-source-broadcasting.md). Once broadcasting a multi-source stream, you can view the stream using the Dolby.io Millicast viewer app, or by building your own multi-view application. Dolby.io also supports [Audio Multiplexing](/millicast/audio-multiplexing.md) for mixed audio playback.
+To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/broadcast/multi-source-broadcasting.md). Once broadcasting a multi-source stream, you can view the stream using the Dolby.io Millicast viewer app, or by building your own multi-view application. Dolby.io also supports [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) for mixed audio playback.
 
 # Multi-view with the Dolby.io viewer
 
-Once you have created a [Multisource stream](/millicast/multi-source-broadcasting.md), you can open the stream viewer from the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
+Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.md), you can open the stream viewer from the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
 
 ```
 https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]
@@ -33,22 +33,22 @@ https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]&multi
 
 # Creating a Multi-view web application
 
-Dolby.io supports [Multisource Playback](/millicast/source-and-layer-selection.md) via the [Client SDKs](/millicast/client-sdks.md), allowing you to build your own multi-view experience for your app or platform.
+Dolby.io supports [Multisource Playback](/millicast/playback/source-and-layer-selection.md) via the [Client SDKs](/millicast/client-sdks/index.md), allowing you to build your own multi-view experience for your app or platform.
 
 Before getting started building a multi-view application it is worth understanding;
 
-1. How to broadcast [Multisource Streams](/millicast/multi-source-broadcasting.md).
-2. How to [Create a Basic Streaming Web App](/millicast/getting-started-creating-real-time-streaming-web-app.md).
-3. What [Broadcast Events](/millicast/viewer-events.md) are and how to use them.
-4. How the Dolby.io platform organizes and handles [Multisource Playback](/millicast/source-and-layer-selection.md).
+1. How to broadcast [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.md).
+2. How to [Create a Basic Streaming Web App](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md).
+3. What [Broadcast Events](/millicast/playback/viewer-events.md) are and how to use them.
+4. How the Dolby.io platform organizes and handles [Multisource Playback](/millicast/playback/source-and-layer-selection.md).
 
 ## Store and track incoming Multisource feeds
 
 > 📘 Not building a Web App?
 > 
-> All Dolby.io [Client SDKs](/millicast/client-sdks.md) support building Multi-view applications. Although the below example is using JavaScript the principles are the same for each SDK.
+> All Dolby.io [Client SDKs](/millicast/client-sdks/index.md) support building Multi-view applications. Although the below example is using JavaScript the principles are the same for each SDK.
 
-The Dolby.io platform tracks broadcasts by their `account ID` and `stream name` and individual streams within broadcasts by their  `sourceID`, a unique identifier that can be used for selecting feeds to render from the [viewer node](/millicast/source-and-layer-selection.md). Unlike a traditional broadcast where there is only one stream to playback, a multi-view application must account for multiple feeds arriving asynchronously. To accomplish this, the application should [listen for streams using a `broadcastEvent`](/millicast/viewer-events.md#using-events), and store the stream `sourceID` as it becomes active.
+The Dolby.io platform tracks broadcasts by their `account ID` and `stream name` and individual streams within broadcasts by their  `sourceID`, a unique identifier that can be used for selecting feeds to render from the [viewer node](/millicast/playback/source-and-layer-selection.md). Unlike a traditional broadcast where there is only one stream to playback, a multi-view application must account for multiple feeds arriving asynchronously. To accomplish this, the application should [listen for streams using a `broadcastEvent`](/millicast/playback/viewer-events.md#using-events), and store the stream `sourceID` as it becomes active.
 
 ```javascript
 const activeSources = new Set();
@@ -65,7 +65,7 @@ await millicastView.on('broadcastEvent', (event) => {
 
 ## Add video elements and render feeds
 
-Once we've captured the `sourceID` of an incoming stream, we need to signal to the Viewer node which _track_ the stream will play on. The Dolby.io Millicast SDKs include a function that allows you to [dynamically add a track to the Viewer node](/millicast/source-and-layer-selection.md#dynamic-viewer-track) called `addRemoteTrack`.
+Once we've captured the `sourceID` of an incoming stream, we need to signal to the Viewer node which _track_ the stream will play on. The Dolby.io Millicast SDKs include a function that allows you to [dynamically add a track to the Viewer node](/millicast/playback/source-and-layer-selection.md#dynamic-viewer-track) called `addRemoteTrack`.
 
 [addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) requires the media type of the incoming stream (_audio or video_) and a [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream), an interface that signals a stream of media content. `addRemoteTrack`  will then return a promise that will be resolved when the [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver) is assigned a `mid` value.
 
@@ -244,98 +244,3 @@ Dolby.io Real-time Streaming does not limit the number of tracks that a viewer c
 | A 4 Mbps pinned track and two 2 Mbps tracks       | The overall bitrate is is under the 12 Mbps limit.                                          |
 | A 12 Mbps pinned  track and four simulcast tracks | 12 Mbps is allocated to the pinned track and other tracks receive no bandwidth              |
 | A 10 Mbps pinned track and two 2 Mbps tracks      | 10 Mbps is allocated to the pinned track and there is only space for one additional track   |
-
-
-
-
-
-<style> 
-  .blog-widget-container {
-    display: flex;
-    flex-wrap: wrap; 
-    column-gap: 20px; 
-  }
-  
-  .blog-widget {
-    display: flex; 
-    flex: 1; 
-    align-items: center; 
-    justify-content: center; 
-    border: solid 1px rgba(0,0,0,.1);
-    background-color: white;
-    border-radius: 7px;
-    /* text-align: center; centered version */
-    text-decoration: none !important; 
-    box-shadow: 0 4px 10px rgba(62,62,62,.03);
-    transition: all .2s ease .01s !important;
-    color: black !important;
-  }
-  
-  .blog-widget:hover {
-    border: solid 1px #cbadff;
-    top: -2px;
-    box-shadow: 0 5px 8px rgba(81,111,247,.2); 
-  }
-  
-  .blog-widget-inner-container {
-    display: flex; 
-    flex: 1 1 auto;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  
-  .blog-widget-content {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-  }
-  
-  .blog-widget-image {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 15px; 
-  }
-  
-  .blog-widget-image::before {
-    content: "";
-	  display: block;
-    padding-top: 56.25%; 
-  }
-  
-  .card__image--left {
-  background-image: url(https://dolby.io/wp-content/uploads/2022/10/Dolby.io-Start-playing-media-when-beginning-a-stream-V1@2x.png);
-	} 
-  
-  .card__image--center {
-  background-image: url(https://dolby.io/wp-content/uploads/2022/11/Dolby.io_Setting-up-multi-view-for-your-real-time-stream-1-1.png);
-	} 
-  
-    .card__image--right {
-  background-image: url(https://dolby.io/wp-content/uploads/2023/03/Dolby.io_Building-a-one-click-streaming-app-with-React-860x500-1.jpg);
-	} 
-  
-  .blog-widget-title {
-    margin-bottom: 15px; 
-    font-size: 1.25rem;
-    font-weight: 300; 
-  }
-  
-  .blog-widget-description {
-    flex: 1 1 auto; 
-    font-size: 0.875rem; 
-    margin-bottom: 15px; 
-  }
-  
-  .blog-widget-cta-btn {
-    display: block; 
-    width: 100%; 
-    padding: 0.5rem; 
-    background-color: white; 
-    border: 1px solid gray; 
-    cursor: pointer; 
-  }
-  
-</style>

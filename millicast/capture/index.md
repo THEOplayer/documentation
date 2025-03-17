@@ -50,38 +50,25 @@ Any physical camera that supports standard interfaces like SDI, HDMI, NDI or RTS
 [Getting Started with Web Capture](/millicast/getting-started/introduction-to-streaming-apis.md)  
 The **Millicast Web SDK** enables many popular web browsers to capture a video feed from a built-in camera or webcam that is connected to a computer system such as a Mac, Windows PC, or Linux desktop.
 
-[How-to Stream from DJI Drones](/millicast/live-streaming-from-drones-rtmp.md)  
+[How-to Stream from DJI Drones](/millicast/capture/live-streaming-from-drones-rtmp.md)  
 **DJI** creates a number of devices such as the Phantom or Mavic that let you stream directly from the drone to Dolby.io with RTMP.
 
-[How-to Stream from a GoPro](/millicast/gopro-live-streaming.md)  
+[How-to Stream from a GoPro](/millicast/capture/action-cameras.md)  
 **GoPro** is a leading device used for capturing action footage. The latest cameras allow you to stream direct from the device to Dolby.io with RTMP.
 
 ## Virtual cameras
 
-[How-to use NDI® Tools](/millicast/using-ndi.md)  
+[How-to use NDI® Tools](/millicast/broadcast/using-ndi.md)  
 **NDI® Tools** is a free suite of applications that makes it possible to connect to a remote IP camera device and capture video that can be sent for broadcasting.
 
-[How-to Stream Your Screenshare](/millicast/screensharing.md)  
+[How-to Stream Your Screenshare](/millicast/capture/screensharing.md)  
 Screen capture allows sharing the contents of a window, application, or entire computer display.
 
-[How-to use OBS with WebRTC](/millicast/using-obs.md)  
+[How-to use OBS with WebRTC](/millicast/software-encoders/using-obs.md)  
 **Open Broadcaster Software (OBS)** is free and open source software is popular for cross-platform streaming. You will need to download a custom version of OBS that has been extended to provide WebRTC support.
 
 <div style="display: flex; justify-content: center; align-items: center;">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/jUP4vyzbu5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-
-### Game engines
-
-[How-to Stream from a Unity Virtual Camera](/millicast/unity-plugins.md)  
-**Unity** is a popular cross-platform game engine that supports game developers to build desktop, mobile, console, and virtual reality experiences. The virtual camera within the game engine can be used as a streaming source.
-
-[How-to Stream from an Unreal Engine Virtual Camera](/millicast/unreal-publisher-plugin.md)  
-**Unreal Engine** from Epic Games is a 3D computer graphics game engine used for creating photoreal visuals and immersive experiences. The virtual camera within the game engine can be used as a streaming source.
-
-<div style="display: flex; justify-content: center; align-items: center;">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/5lAtRyTrkVU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 

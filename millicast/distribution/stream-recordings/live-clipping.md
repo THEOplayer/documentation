@@ -52,7 +52,7 @@ The **stopTime** is optional and if not specified will use the last segment from
 
 > 👍 Enable Live Clipping
 > 
-> Before beginning a broadcast, you must enable the `clip` setting on the [Publish Token](/millicast/managing-your-tokens.md) being used for the stream. You will not be able to clip media until your broadcast with this setting has started.
+> Before beginning a broadcast, you must enable the `clip` setting on the [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) being used for the stream. You will not be able to clip media until your broadcast with this setting has started.
 
 ## How-to Avoid Duplicate Clips
 
@@ -79,7 +79,7 @@ curl --request POST \
 
 ## How-to Use Your Own Cloud Storage
 
-By default, clips will be kept in Dolby's storage. Alternatively, you can use your own cloud storage such as AWS S3 or Google Cloud Storage. Review the [How-to Setup Media Storage](/millicast/how-to-setup-media-storage.md) tutorial for details on creating storage profiles. 
+By default, clips will be kept in Dolby's storage. Alternatively, you can use your own cloud storage such as AWS S3 or Google Cloud Storage. Review the [How-to Setup Media Storage](/millicast/distribution/stream-recordings/how-to-setup-media-storage.md) tutorial for details on creating storage profiles. 
 
 With a **storage profile**, you can specify where you want a clip to be sent when it is finished processing.
 
@@ -140,7 +140,7 @@ The timeline is stored only temporarily and will expire according to any expirat
 }
 ```
 
-If you see this message, make sure the **startTime** and **stopTime** are within bounds of the available timelines. Use `?type=timeline` to find available timeline media assets as described in: [How-to Get Media Assets](/millicast/how-to-get-media-assets.md).
+If you see this message, make sure the **startTime** and **stopTime** are within bounds of the available timelines. Use `?type=timeline` to find available timeline media assets as described in: [How-to Get Media Assets](/millicast/distribution/stream-recordings/how-to-get-media-assets.md).
 
 ## Name may not contain characters
 

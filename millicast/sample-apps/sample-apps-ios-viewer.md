@@ -22,54 +22,6 @@ The application available in this repository demonstrates the capabilities of Do
  </div>
   </a>
 </div>
-<style> 
- 
- .dolbyio-card-image {
- font-size: 40px; 
- margin-bottom: 15px; 
- }
- 
- .dolbyio-cards-container {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- grid-gap: 0.5rem;
- }
- 
- .dolbyio-card {
- height: 250px;
- margin-left: 20%;      
- margin-right: 20%;
- width: auto; 
- border: solid 1px rgba(0,0,0,.1);
- background-color: white;
- border-radius: 7px;
- text-align: center;
- text-decoration: none !important; 
- box-shadow: 0 4px 10px rgba(62,62,62,.03);
- transition: all .2s ease .01s !important;
- padding: 20px 25px 20px 25px; 
- color: black !important;
- }
- 
- .dolbyio-card:hover {
- border: solid 1px #cbadff;
- top: -2px;
- box-shadow: 0 5px 8px rgba(81,111,247,.2); 
- }
- 
- .dolbyio-card-header {
- margin-bottom: 15px; 
- font-size: 18px;
- font-weight: 600; 
- }
- 
- .dolbyio-card-description {
- margin: 5px 0 5px 0;
- color: rgba(0,0,0,.5);
- }
- 
-</style>
-
 
 This repository demonstrates how to develop a real-time streaming viewer or monitoring app using Dolby.io's Real-time Streaming solution which features ultra low-latency (sub 500ms).
 
@@ -77,7 +29,7 @@ The application provided can be used as it is or with your own modifications to 
 
 You can start monitoring a stream with the stream name and account ID, which you can create and start streaming from the [Dolby.io dashboard](https://dashboard.dolby.io/).
 
-If you run into problems, the full Dolby.io Real-time Streaming SDK for iOS documentation can be found [here](/millicast/ios.md).
+If you run into problems, the full Dolby.io Real-time Streaming SDK for iOS documentation can be found [here](/millicast/client-sdks/ios/index.md).
 
 Supported features:
 

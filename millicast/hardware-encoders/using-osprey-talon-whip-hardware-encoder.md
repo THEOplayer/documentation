@@ -2,16 +2,16 @@
 title: "Osprey"
 id: using-osprey-talon-whip-hardware-encoder
 ---
-**Osprey Video** is a world leader in broadcasting solutions and an early adopter of [WHIP](/millicast/webrtc-whip.md) for their Osprey Talon 4K-SC Encoder. By supporting WHIP, Osprey is able to offer an encoder that can natively encode WebRTC streams at broadcast-level quality for a variety of applications, such as [sports broadcasting](https://dolby.io/solutions/sports-betting/), [live event broadcasting](https://dolby.io/solutions/live-events/), and [auction streaming](https://dolby.io/solutions/auctions/).
+**Osprey Video** is a world leader in broadcasting solutions and an early adopter of [WHIP](/millicast/broadcast/webrtc-whip.md) for their Osprey Talon 4K-SC Encoder. By supporting WHIP, Osprey is able to offer an encoder that can natively encode WebRTC streams at broadcast-level quality for a variety of applications, such as [sports broadcasting](https://dolby.io/solutions/sports-betting/), [live event broadcasting](https://dolby.io/solutions/live-events/), and [auction streaming](https://dolby.io/solutions/auctions/).
 
-You can originate a broadcast from Osprey over a [WHIP](/millicast/webrtc-whip.md) or [SRT](/millicast/using-srt.md) source.
+You can originate a broadcast from Osprey over a [WHIP](/millicast/broadcast/webrtc-whip.md) or [SRT](/millicast/broadcast/using-srt.md) source.
 
 - [Configure WHIP](/millicast/using-osprey-talon-whip-hardware-encoder#how-to-use-osprey-talon-with-whip)
 - [Configure SRT](/millicast/using-osprey-talon-whip-hardware-encoder#how-to-use-osprey-talon-with-srt)
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.md) tutorial to start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.md) tutorial to start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 See the official [Osprey Video](https://www.ospreyvideo.com/) site for documentation, installation instructions, and additional support.
 

@@ -11,29 +11,11 @@ This includes getting media sources, capturing, publishing (with or without Scal
 The CLI also allows saving of config in a file and autocompletion on some platforms. More details can be found on this [readme](https://github.com/millicast/millicast-cli#readme). Get the CLI [here](https://github.com/millicast/millicast-cli/releases).
 
 The CLI is currently supported on the following platforms.
-<table>
-  <thead>
-    <th>Platform</th>
-<th>Versions</th>
-  </thead>
-  <tbody>
-    <tr><td><p>Windows</p>
-</td>
-<td><p>Win10</p>
-</td></tr>
-<tr><td><p>MacOS</p>
-</td>
-<td><ul>
-  <li>Catalina (Intel)</li>
-  <li>Big Sur (Intel)</li>
-</ul>
-</td></tr>
-<tr><td><p>Linux</p>
-</td>
-<td><p>Ubuntu 20</p>
-</td></tr>
-  </tbody>
-</table>
+| Platform | Versions |
+| --- | --- |
+| Windows | Win10 |
+| MacOS | *   Catalina (Intel)<br/>*   Big Sur (Intel) |
+| Linux | Ubuntu 20 |
 
 # Installation
 

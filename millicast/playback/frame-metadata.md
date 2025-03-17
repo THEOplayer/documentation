@@ -16,7 +16,7 @@ These cue points are often used for time synchronizing application state with th
 
 # SEI Metadata
 
-Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks.md) as well as some broadcast encoders that embed **Action Message Format (AMF)** messages. 
+Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.md) as well as some broadcast encoders that embed **Action Message Format (AMF) messages. 
 
 
 ![](https://cdn.TODO.io/docs/readme/c0b9acd-metadata-feature.png)
@@ -48,7 +48,7 @@ For **PIC_TIMING** SEI messages that are inserted by various encoders, there wil
 
 # Web SDK
 
-When using the [Web SDK](/millicast/web.md) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
+When using the [Web SDK](/millicast/client-sdks/web.md) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
 
 ## How-to Publish Frame Metadata
 
@@ -103,7 +103,7 @@ With the method demonstrated here for non-SEI codec support:
 
 Utilizing a <a href="https://developer.mozilla.org/en-US/docs/Web/API/TransformStream" target="_blank">TransformStream</a> object, you can spin up a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Worker</a> to leverage background threads from the web browser and process individual video frames. 
 
-The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using **createEncodedStreams()** while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
+The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using **createEncodedStreams() while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
 
 ### Publishing metadata
 
@@ -275,7 +275,7 @@ function sendMetadata(message) {
 }
 ```
 
-To start publishing a stream, call the function **startPublishing()** and to update the metadata, call the function **sendMetadata()**:
+To start publishing a stream, call the function **startPublishing() and to update the metadata, call the function **sendMetadata():
 
 ```javascript
 await startPublishing(publishToken, streamName, participantName);
@@ -413,7 +413,7 @@ When a new metadata is received, this code will trigger the JavaScript event **m
 
 ## Supporting Non-SEI Metadata for Native Platforms
 
-Using the [Native SDK](/millicast/client-sdks.md) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
+Using the [Native SDK](/millicast/client-sdks/index.md) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
 
 > 📘 Example Project
 > 

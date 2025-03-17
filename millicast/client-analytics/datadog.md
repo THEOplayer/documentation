@@ -4,11 +4,11 @@ id: datadog
 ---
 **Datadog** is a tool for monitoring application performance measurements and user engagement.
 
-This page guides you on some of the metrics that are collected and setps to integrate the [Millicast SDK](/millicast/web.md) to the browser agent.
+This page guides you on some of the metrics that are collected and setps to integrate the [Millicast SDK](/millicast/client-sdks/web.md) to the browser agent.
 
 # Client Analytics
 
-To monitor the health of your application, [client analytics](/millicast/client-analytics-and-monitoring.md) for monitoring and troubleshooting are critical. You can customize Datadog with dashboards to display collected data such as:
+To monitor the health of your application, [client analytics](/millicast/playback/client-analytics-and-monitoring.md) for monitoring and troubleshooting are critical. You can customize Datadog with dashboards to display collected data such as:
 
 ✓ Device analytics such as user agent, browser, operating system, device size, versions
 
@@ -16,7 +16,7 @@ To monitor the health of your application, [client analytics](/millicast/client-
 
 ✓ WebRTC statistics like fps, round trip time, jitter, packet and frame loss rates, and bitrate
 
-When combined with our [Live Monitoring](/millicast/live-monitoring.md) and [Stream Syndication](/millicast/syndication.md) capabilities you can effectively monitor playback issues and track viewer characteristics.
+When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) and [Stream Syndication](/millicast/distribution/syndication.md) capabilities you can effectively monitor playback issues and track viewer characteristics.
 
 # Setting Up Datadog Browser Agent
 
@@ -53,11 +53,11 @@ When receiving a track event after connecting, you can send the event.
  });
 ```
 
-You may also want to capture [Broadcast Events](/millicast/viewer-events.md) for a fuller picture.
+You may also want to capture [Broadcast Events](/millicast/playback/viewer-events.md) for a fuller picture.
 
 ## 3\. Collect WebRTC Stats
 
-See the [Client Analytics](/millicast/client-analytics-and-monitoring.md) guide to learn more about what media statistics and metrics are captured for the WebRTC connection.
+See the [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) guide to learn more about what media statistics and metrics are captured for the WebRTC connection.
 
 ```javascript
  millicastView.webRTCPeer.on("stats", (stats) => {

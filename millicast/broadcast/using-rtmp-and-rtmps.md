@@ -4,7 +4,7 @@ id: using-rtmp-and-rtmps
 ---
 **Real-Time Messaging Protocol (RTMP)** has been well supported by popular hardware and software applications for many years. In addition to WebRTC, Dolby.io Real-time Streaming allows you to broadcast and distribute content from an RTMP or secure RTMPS source.
 
-Dolby.io Real-time streaming also supports the ability to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information, see [Simulcast](/millicast/using-webrtc-simulcast.md)how-to-enable-simulcast-from-an-encoder).
+Dolby.io Real-time streaming also supports the ability to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information, see [Simulcast](/millicast/distribution/using-webrtc-simulcast.md)how-to-enable-simulcast-from-an-encoder).
 
 This document will outline how to set up and broadcast low-latency RTMP streams via the Dolby.io CDN.
 
@@ -23,7 +23,7 @@ Select the publish token that you want to use for your RTMP streaming applicatio
 
 ## How to find your RTMP publish URL
 
-Click on the _Publishing_ tab of the token screen where you will find details for the various protocols such as [WHIP](/millicast/webrtc-whip.md), [SRT](/millicast/using-srt.md), and RTMP.
+Click on the _Publishing_ tab of the token screen where you will find details for the various protocols such as [WHIP](/millicast/broadcast/webrtc-whip.md), [SRT](/millicast/broadcast/using-srt.md), and RTMP.
 
 
 ![](https://cdn.TODO.io/docs/readme/462fb85-rtmp_publish_url.png)
@@ -56,13 +56,13 @@ Each setup can be slightly different, so adjust the below settings to find what 
 
 ### OBS with RTMP
 
-See the [OBS Integration Guide](/millicast/using-obs.md) for more details.
+See the [OBS Integration Guide](/millicast/software-encoders/using-obs.md) for more details.
 
 |                   |                 |
 | :---------------- | :-------------- |
 | Encoder           | **nvenc**       |
 | Rate Control      | **CBR**         |
-| Keyframe Interval | **2 (seconds)** |
+| Keyframe Interval | **2 (seconds) |
 | Preset            | **Max Quality** |
 | Profile           | **high**        |
 | x264 options      | **bframes=0**   |
@@ -73,7 +73,7 @@ Setting **x264 options** to _bframes=0_ or **profile** to _baseline_ is required
 
 ### vMIX with RTMP
 
-See the [vMix Integration Guide](/millicast/broadcasting-with-vmix.md) for more details.
+See the [vMix Integration Guide](/millicast/software-encoders/broadcasting-with-vmix.md) for more details.
 
 |                   |                 |
 | :---------------- | :-------------- |
@@ -83,7 +83,7 @@ See the [vMix Integration Guide](/millicast/broadcasting-with-vmix.md) for more 
 | Preset            | **ultrafast**   |
 | Keyframe Interval | **2 seconds**   |
 | Threads           | **4**           |
-| Net Buffer        | **5 (seconds)** |
+| Net Buffer        | **5 (seconds) |
 
 ### Basic RTMP Settings
 
@@ -102,7 +102,7 @@ If you have any questions or suggestions, feel free to [contact us](https://supp
 
 # Learn more
 
-Find additional integration guides such as [Haivision](/millicast/using-haivision-kb-encoder.md), [Zoom](/millicast/broadcasting-jitsi-or-zoom-meetings.md), [Teradek](/millicast/broadcasting-teradek-vidiu.md), [Videon](/millicast/videon.md), and more. To find examples for how to use this explore RTMP related articles from the [developer blog](https://dolby.io/blog/tag/rtmp/).
+Find additional integration guides such as [Haivision](/millicast/hardware-encoders/using-haivision-kb-encoder.md), [Zoom](/millicast/software-encoders/broadcasting-jitsi-or-zoom-meetings.md), [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md), [Videon](/millicast/hardware-encoders/videon.md), and more. To find examples for how to use this explore RTMP related articles from the [developer blog](https://dolby.io/blog/tag/rtmp/).
 
 
 
