@@ -11,7 +11,7 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '▶️',
       },
-      href: '../theoplayer/how-to-guides/web/theolive/getting-started/',
+      href: '/theoplayer/how-to-guides/web/theolive/getting-started',
     },
     {
       type: 'category',
