@@ -23,7 +23,7 @@ If you are using a drone that is not listed, you should be able to use similar s
 
 Some examples:
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ [DJI Phantom](https://www.dji.com/phantom)
 
@@ -78,7 +78,7 @@ Choose the **RTMP** option.
 
 For the Livestream settings, you must provide a URL for the **RTMP Address**. This is constructed from a few of your publisher token settings gathered from the Dolby.io Dashboard.
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 `RTMP publish path` + `/` + `RTMP publish stream name`
 
@@ -121,7 +121,7 @@ By configuring your publish token to [record](/millicast/distribution/stream-rec
 
 This example demonstrates an archive recording captured from a DJI Mavic for a 1920x1080 latency test.
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/44GWULy5Jlw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 

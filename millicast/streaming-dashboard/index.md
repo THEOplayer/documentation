@@ -4,7 +4,7 @@ id: about-dash
 ---
 The Dolby.io dashboard enables you to easily provision tokens, broadcast streams, and manage account settings.
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
    <iframe width="560" height="315" src="https://www.youtube.com/embed/I6tasX-C2_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 

@@ -4,7 +4,7 @@ id: distribution
 ---
 The Dolby.io Streaming Content Delivery Network (CDN) offers a range of server-side features that users can toggle and adjust via the REST APIs or your account Dashboard to ensure streams are secure, stable, and scalable. 
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ **Scalability** to distribute content to large audiences across [multiple regions](/millicast/distribution/multi-region-support/index.md) in real-time.
 
@@ -18,7 +18,7 @@ Distribution of streaming content requires scalability, stability, and security 
 
 # Start building
 
-<div class="dolbyio-cards-container" style="width: 50%">
+<div class="dolbyio-cards-container" style={{width: "50%"}}>
   
   <a class="dolbyio-card dolbyio-card-1" href="/streaming-apis/docs/getting-started">
     <div class="dolbyio-card-image">
@@ -48,7 +48,7 @@ Distribution of high-value content and intellectual property requires a platform
 [How-to Setup Geo-blocking](/millicast/distribution/access-control/geo-blocking.md)  
 **Geo-blocking** can be enabled to block specific geographic areas, such as countries or regions where you do not want the content to be streamed.
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/n4iXAJuw-aM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 

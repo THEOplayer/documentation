@@ -152,7 +152,7 @@ First open your editor and create a blank html file, save it as index.html. In y
 </head>  
 <body>  
         <button id="fetchButton">Get Account Usage</button>  
-        <div id="chart_div" style="width: 100%; height: 500px;"></div>  
+        <div id="chart_div" style={{width: "100%", height: "500px"}}></div>  
         <script type="text/javascript">  
 
                 const btn = document.getElementById('fetchButton');  
@@ -386,7 +386,7 @@ Below is a sample of the new client index.html code.
         </div>  
         <hr/>  
 
-        <div id="chart_div" style="width: 100%; height: 500px;"></div>  
+        <div id="chart_div" style={{width: "100%", height: "500px"}}></div>  
 
         <script type="text/javascript">  
 

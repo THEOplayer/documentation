@@ -6,7 +6,7 @@ To broadcast content, you either need a physical camera capturing the content, a
 
 Many devices are able to capture a compatible media stream encoding that is ready for [broadcast](/millicast/broadcast/index.md);
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ **SDI & HDMI**, Serial Digital Interface (SDI) and High-Definition Multimedia Interface (HDMI) connections are common across many professional capture devices
 
@@ -22,7 +22,7 @@ Check with your specific hardware provider for direct support of WebRTC or one o
 
 # Start building
 
-<div class="dolbyio-cards-container" style="width: 50%">
+<div class="dolbyio-cards-container" style={{width: "50%"}}>
   
   <a class="dolbyio-card dolbyio-card-1" href="/streaming-apis/docs/getting-started">
     <div class="dolbyio-card-image">
@@ -67,7 +67,7 @@ Screen capture allows sharing the contents of a window, application, or entire c
 [How-to use OBS with WebRTC](/millicast/software-encoders/using-obs.md)  
 **Open Broadcaster Software (OBS)** is free and open source software is popular for cross-platform streaming. You will need to download a custom version of OBS that has been extended to provide WebRTC support.
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/jUP4vyzbu5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 

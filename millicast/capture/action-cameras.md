@@ -17,7 +17,7 @@ If you are using an action camera that is not listed, you should be able to use 
 
 [GoPro](https://gopro.com/) is a leader in action cameras. With the latest models of GoPro cameras, you can achieve sub-second latency by streaming with RTMP from your GoPro directly to Dolby.io for [distribution](/millicast/distribution/index.md) over WebRTC. 
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ GoPro HERO Black
 
@@ -64,7 +64,7 @@ Some of the popular public streaming options are listed. To set up your private 
 
 The _Publishing_ tab of the _Live broadcast - Publish tokens_ section of the Dolby.io dashboard includes the details you need.
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 `RTMP publish path` + `/` + `RTMP publish stream name`
 

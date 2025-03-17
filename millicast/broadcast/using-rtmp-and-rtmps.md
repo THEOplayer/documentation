@@ -34,7 +34,7 @@ In order for you to publish with RTMP, you will need two items from this interfa
 
 Depending on the particular RTMP integration you may need to specify these details separately or as a full URL endpoint:
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 **RTMP Publish URL** = **RTMP publish path** + `/` + **RTMP publish stream name**
 

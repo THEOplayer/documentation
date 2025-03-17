@@ -25,7 +25,7 @@ The standalone streaming player is a hosted web application that allows somebody
 
 When viewed as a single-page application the URL follows this pattern:
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 `https://viewer.millicast.com?streamId={Account ID}/{Stream Name}`
 
@@ -49,7 +49,7 @@ The code would be something similar to this with your own stream name and accoun
 
 If your publish token is configured with the **Secure viewer** requirement than you must also include a [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md) for playback. The token is provided as a query string parameter such as:
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 `https://viewer.millicast.com?streamId={Account ID}/{Stream Name}?token={Subscribe Token}`
 

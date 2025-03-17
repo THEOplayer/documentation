@@ -79,7 +79,7 @@ To [capture](/millicast/broadcast/index.md) content you need either a physical c
 
 Many devices are able to capture a compatible media stream encoding:
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ **SDI & HDMI**, Serial Digital Interface (SDI) and High-Definition Multimedia Interface (HDMI) connections are common across many professional cameras and capture devices.
 
@@ -94,8 +94,8 @@ Check with your specific hardware provider for direct support of WebRTC or one o
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="https://docs.dolby.io/streaming-apis/docs/capture">
-      <div class="model-card"><span style="font-size: 18px">📚</span> Continue to the Capture Guide</div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/capture">
+      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Capture Guide</div>
     </a>
       
   </div>
@@ -108,7 +108,7 @@ Check with your specific hardware provider for direct support of WebRTC or one o
 
 The Dolby.io CDN can ingest streams encoded in a few main formats: 
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ **WebRTC**, an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
 
@@ -123,8 +123,8 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="https://docs.dolby.io/streaming-apis/docs/broadcast">
-      <div class="model-card"><span style="font-size: 18px">📚</span> Continue to the Broadcast Guide</div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/broadcast">
+      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Broadcast Guide</div>
     </a>
       
   </div>
@@ -136,7 +136,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
 The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/https://docs.dolby.io/streaming-apis/docs/basic-api-tutorial) or the Dashboard to ensure [distribution](/millicast/distribution/index.md) of streams is secure, stable, and scalable. 
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ **Scalability** to distribute content to large audiences across multiple regions in real-time.
 
@@ -151,8 +151,8 @@ Distribution of streaming content requires scalability, stability, and security 
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="https://docs.dolby.io/streaming-apis/docs/distribution">
-      <div class="model-card"><span style="font-size: 18px">📚</span> Continue to the Distribution Guide</div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/distribution">
+      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Distribution Guide</div>
     </a>
       
   </div>
@@ -162,7 +162,7 @@ Distribution of streaming content requires scalability, stability, and security 
 
 The final component of the streaming workflow is taking the stream, after it has been passed through the Dolby.io CDN, and playing it back to the end viewer. Similar to the broadcasting side, decoding and [playback](/millicast/playback/index.md) is supported via web and mobile browsers, software, hardware, and via client-side broadcast SDKs.
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ Hosted streaming player with low-code drop-in support for many applications.
 
@@ -181,8 +181,8 @@ The final component of the streaming workflow is taking the stream, after it has
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="https://docs.dolby.io/streaming-apis/docs/playback">
-      <div class="model-card"><span style="font-size: 18px">📚</span> Continue to the Playback Guide</div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/playback">
+      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Playback Guide</div>
     </a>
       
   </div>

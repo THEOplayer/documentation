@@ -151,8 +151,8 @@ To help with understanding and implementing the Audio Multiplexing feature is in
 		<div class="container px-4 mt-4">
 			<div class="row justify-content-around mt-3">
 				<div class="col-8 shadow p-3 mb-5 bg-body rounded text-center">
-					<button onclick="startStream()" id="startBtn" style="height: 50px; width: 150px">Start</button>
-					<button onclick="resetStream()" id="resetBtn" style="height: 50px; width: 150px" disabled>Reset</button>
+					<button onclick="startStream()" id="startBtn" style={{height: "50px", width: "150px"}}>Start</button>
+					<button onclick="resetStream()" id="resetBtn" style={{height: "50px", width: "150px"}} disabled>Reset</button>
 					, 
 					, 
 					<div id="audioTrackDiv" color="grey"></div>

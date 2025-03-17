@@ -248,7 +248,7 @@ class MillicastWidget extends React.Component {
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar style={{}} />
       <MillicastWidget streamName=<YOUR_STREAM_NAME> accountID=<YOUR_ACCOUNT_ID>/>
     </View>
   );

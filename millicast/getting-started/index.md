@@ -14,7 +14,7 @@ For an introduction to the platform overall, start with the [Introduction to Str
 
 Begin by broadcasting directly [using the Dolby.io Streaming Dashboard](/millicast/getting-started/getting-started-using-the-dashboard.md).
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ Create a Publish token
 
@@ -27,8 +27,8 @@ Begin by broadcasting directly [using the Dolby.io Streaming Dashboard](/millica
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="./getting-started-using-the-dashboard">
-      <div class="model-card">Start with Part 1 <span style="font-size: 18px"> ➜ </span></div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="./getting-started-using-the-dashboard">
+      <div class="model-card">Start with Part 1 <span style={{fontSize: "18px"}}> ➜ </span></div>
     </a>
       
   </div>
@@ -41,7 +41,7 @@ Begin by broadcasting directly [using the Dolby.io Streaming Dashboard](/millica
 
 After completing Part 1, you can now progress onto Part 2, building a custom web application using the [Streaming Web SDK](/millicast/client-sdks/web.md) to playback and view a stream or start a new broadcast.
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ Create a web application to playback a stream
 
@@ -52,8 +52,8 @@ After completing Part 1, you can now progress onto Part 2, building a custom web
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="./getting-started-creating-real-time-streaming-web-app">
-      <div class="model-card">Jump to Part 2 <span style="font-size: 18px"> ➜ </span></div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="./getting-started-creating-real-time-streaming-web-app">
+      <div class="model-card">Jump to Part 2 <span style={{fontSize: "18px"}}> ➜ </span></div>
     </a>
       
   </div>
@@ -66,7 +66,7 @@ After completing Part 1, you can now progress onto Part 2, building a custom web
 
 After learning how to stream with the dashboard or by building a web application in parts 1 and 2, you can move on to building your production workflows. Using the REST APIs you can automate creating and managing tokens.
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ Get an API Token
 
@@ -77,8 +77,8 @@ After learning how to stream with the dashboard or by building a web application
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="./basic-api-tutorial">
-      <div class="model-card">Jump to Part 3 <span style="font-size: 18px"> ➜ </span></div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="./basic-api-tutorial">
+      <div class="model-card">Jump to Part 3 <span style={{fontSize: "18px"}}> ➜ </span></div>
     </a>
       
   </div>
@@ -91,7 +91,7 @@ After learning how to stream with the dashboard or by building a web application
 
 To reach larger audiences you may want to consider integrating streaming into your mobile applications.
 
-<div style="margin-left: 20px">
+<div style={{marginLeft: "20px"}}>
 
 ✓ Create Native iOS (Swift) and/or Android (Kotlin)
 
@@ -102,8 +102,8 @@ To reach larger audiences you may want to consider integrating streaming into yo
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style="width: 50%; background-color: rgba(81,111,247,.2);" href="./getting-started-mobile-apps">
-      <div class="model-card">Jump to Part 4 <span style="font-size: 18px"> ➜ </span></div>
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="./getting-started-mobile-apps">
+      <div class="model-card">Jump to Part 4 <span style={{fontSize: "18px"}}> ➜ </span></div>
     </a>
       
   </div>
