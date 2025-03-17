@@ -78,7 +78,7 @@ Download and install [VLC](https://www.videolan.org/vlc/) media player and the l
 Inside OBS-WebRTC, create a scene, and on the "+" icon of Sources, add a new Media Source.
 
 
-![](https://cdn.TODO.io/docs/readme/12dd35e-Capture_decran_2023-07-13_a_2.57.43_PM.png)
+![](/img/millicast/Capture_decran_2023-07-13_a_2.57.43_PM.png)
 
 
 

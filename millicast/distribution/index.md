@@ -56,7 +56,7 @@ Distribution of high-value content and intellectual property requires a platform
 ### ISO/IEC 27001:2022 Certification
 
 
-![](https://cdn.TODO.io/docs/readme/097ae33-ISO-IEC-27001-2022-005.webp)
+![](/img/millicast/ISO-IEC-27001-2022-005.webp)
 
 
 
@@ -80,7 +80,7 @@ With **multiplexing**, this enables end users to receive multiple audio feeds as
 **Simulcast** is a mechanism that allows for the distribution of a media stream composed of multiple bitrates and resolutions. The user can then view a stream that has a quality determined by network or device type allowing low-bandwidth conditions to receive an appropriate quality stream for the most stable experience possible in that scenario.
 
 
-![](https://cdn.TODO.io/docs/readme/44df552-8c0d37a-Simulcast.png)
+![](/img/millicast/8c0d37a-Simulcast.png)
 
 
 

@@ -25,7 +25,7 @@ The Dolby Millicast Service was added as a Stream option in more recent releases
 Open profile **Settings** and select the **Stream** section. From the **Service** dropdown you should see `Dolby Millicast` among the options. 
 
 
-![](https://cdn.TODO.io/docs/readme/64d482f376ea8c7b793066349db9fca2dbd70b0daddaec6e4d47806545cc3e1a-obs-30-stream-dolby-millicast.png)
+![](/img/millicast/76ea8c7b793066349db9fca2dbd70b0daddaec6e4d47806545cc3e1a-obs-30-stream-dolby-millicast.png)
 
 
 
@@ -34,7 +34,7 @@ Open profile **Settings** and select the **Stream** section. From the **Service*
 From the **Server** dropdown menu, you can select _Global_ to have your broadcast location automatically determined or choose from any of our [cluster regions](/millicast/distribution/multi-region-support/index.md).
 
 
-![](https://cdn.TODO.io/docs/readme/b9088da320a4c2d052b2cc281303150422afa731af6be4c982e171fb79456513-obs-30-stream-server-key.png)
+![](/img/millicast/20a4c2d052b2cc281303150422afa731af6be4c982e171fb79456513-obs-30-stream-server-key.png)
 
 
 
@@ -55,7 +55,7 @@ The introduction of WHIP support in OBS 30.0 has made it easier to configure a W
 Open profile **Settings** and select the **Stream** section. From the **Service** dropdown you should see `WHIP` among the options.
 
 
-![](https://cdn.TODO.io/docs/readme/882be12cec5dd07d69aec14ba6a02f2f5c8c07391996292331077f46433d1cda-obs-30-whip-server-token.png)
+![](/img/millicast/ec5dd07d69aec14ba6a02f2f5c8c07391996292331077f46433d1cda-obs-30-whip-server-token.png)
 
 
 
@@ -79,7 +79,7 @@ Prior to OBS 30.0 it was necessary to use a custom fork. For certain workflows t
 You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.md) or [simulcast](/millicast/distribution/using-webrtc-simulcast.md).
 
 
-![](https://cdn.TODO.io/docs/readme/220f03a5693bb6cbd1f7c7de44f2809b411c55bde51f363ae941ae23a5c62537-obs-webrtc-stream-settings.png)
+![](/img/millicast/693bb6cbd1f7c7de44f2809b411c55bde51f363ae941ae23a5c62537-obs-webrtc-stream-settings.png)
 
 
 
@@ -94,7 +94,7 @@ Beginning with OBS 25.x you can stream with [SRT](/millicast/broadcast/using-srt
 Open the **Settings** panel to configure your broadcast.
 
 
-![](https://cdn.TODO.io/docs/readme/37c8d9c-obs-settings.png)
+![](/img/millicast/obs-settings.png)
 
 
 
@@ -105,7 +105,7 @@ Select _Custom_ for the **Service**.
 You'll need to gather a few details from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) for your publish token.
 
 
-![](https://cdn.TODO.io/docs/readme/aaddfd9-obs-set-srt.png)
+![](/img/millicast/obs-set-srt.png)
 
 
 
@@ -188,7 +188,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 Click the **start** button for each target.
 
 
-![](https://cdn.TODO.io/docs/readme/64bd26c-obs3.png)
+![](/img/millicast/obs3.png)
 
 
 
@@ -199,7 +199,7 @@ You may need to click **start streaming in OBS** to update the current configura
 You can verify that simulcast is working by using the [Hosted Player](/millicast/playback/hosted-viewer.md) in the dashboard. Selecting the gear / settings menu will show each video quality allowing you to manually switch to a lower quality layer.
 
 
-![](https://cdn.TODO.io/docs/readme/f4f5382-rtmp-mbr-webrtc-simulcast.jpeg)
+![](/img/millicast/rtmp-mbr-webrtc-simulcast.jpeg)
 
 
 
@@ -210,21 +210,21 @@ You'll need to use the [OBS-studio-webrtc](https://github.com/CoSMoSoftware/OBS-
 Add your stream name and token from your Dolby.io Real-time Streaming token into OBS's settings. Select either _ H.264_ or _VP8_ for the **codec** as Simulcast only works for those two codecs. Click on the **advanced settings** button and check the **Simulcast** box to enable the feature inside OBS. Finally, apply the changes.
 
 
-![](https://cdn.TODO.io/docs/readme/b8309e8-Capture_decran_2023-07-24_a_2.51.38_PM.png)
+![](/img/millicast/Capture_decran_2023-07-24_a_2.51.38_PM.png)
 
 
 
 Next, we are going to set the output settings in OBS to see the different video qualities. Under **stream**, click on **output** and set the **output mode** to _advanced_. Set the **encoder** to _NVIDIA NVENC H.264_ (if available). Next, change the **rate control** to _CBR (Constant Bitrate)_, and modify the **bitrate** to _6000 Kbps_.
 
 
-![](https://cdn.TODO.io/docs/readme/e3357c4-Capture_decran_2023-07-24_a_2.51.44_PM.png)
+![](/img/millicast/Capture_decran_2023-07-24_a_2.51.44_PM.png)
 
 
 
 Next, set the **Base Resolution** and your **Output Resolution** to be matching. Apply all changes, and you are now ready to start your stream.
 
 
-![](https://cdn.TODO.io/docs/readme/80fb1e0-Capture_decran_2023-07-24_a_2.52.27_PM.png)
+![](/img/millicast/Capture_decran_2023-07-24_a_2.52.27_PM.png)
 
 
 
@@ -255,7 +255,7 @@ Digital Audio Workstations (DAW) are used to manage media tracks as inputs for O
 Reroute (from Reaper, with up to 256 channels) if using the [ASIO plugin](https://github.com/Andersama/obs-asio)
 
 
-![](https://cdn.TODO.io/docs/readme/06e2824-surround_3.png)
+![](/img/millicast/surround_3.png)
 
 
 
@@ -264,7 +264,7 @@ Reroute (from Reaper, with up to 256 channels) if using the [ASIO plugin](https:
 If you have an Ambisonic it is also possible to publish spatial audio using the same setup. Here for the demo a [Zoom H3-VR](https://zoomcorp.com/en/us/handheld-recorders/handheld-recorders/h3-vr-360-audio-recorder/) can be used. Set for Dolby.io OBS WebRTC is the same as 5.1 and with Zoom mic you will see for channels to capture and stream to your surround sound set up. 
 
 
-![](https://cdn.TODO.io/docs/readme/2dff50e-amb.png)
+![](/img/millicast/amb.png)
 
 
 
@@ -275,7 +275,7 @@ Properly set up for 4-channel ambisonics. This can be paired with a 360 camera.
 To get started make sure you have OBS installed on your device. Once installed head to **settings** then **audio**.  Select a channel different from _mono_ or _stereo_ in the **channels** list in general. 
 
 
-![](https://cdn.TODO.io/docs/readme/1a62a5d-Surround_1.png)
+![](/img/millicast/Surround_1.png)
 
 
 
@@ -286,7 +286,7 @@ Click **OK** on the warning pop-up and restart OBS.
 Next switch to **output** and select _advanced_ for **output mode**. Select the **audio** tab and pick a large bitrate. By default, OBS-Studio selects 160 kbps for stereo. This is insufficient for surround sound. As a rule of thumb, 64 kbps multiplied by the number of channels should be an appropriate amount of bandwidth.
 
 
-![](https://cdn.TODO.io/docs/readme/f325dec-surround_2.png)
+![](/img/millicast/surround_2.png)
 
 
 
@@ -299,7 +299,7 @@ When you begin streaming with surround sound you'll need an appropriate player t
 Set up requires proper sound settings enabled on your speakers. The setup shown is on a Vizio 5.1.2 Atmos sound bar.
 
 
-![](https://cdn.TODO.io/docs/readme/5c0bf02-Screenshot_2023-03-30_at_9.59.46_AM.png)
+![](/img/millicast/Screenshot_2023-03-30_at_9.59.46_AM.png)
 
 
 
@@ -323,14 +323,14 @@ For Windows broadcasting:
    **OBS WebRTC** default location. `C:\\Program Files\\OBS WebRTC (64bit)\\obs-plugins`
 
 
-![](https://cdn.TODO.io/docs/readme/ceae559-SimulcastR1.png)
+![](/img/millicast/SimulcastR1.png)
 
 
 
 You should see the following `obs-multi-rtmp.dll` in your plugins folder.
 
 
-![](https://cdn.TODO.io/docs/readme/2408266-SimulcastR2.png)
+![](/img/millicast/SimulcastR2.png)
 
 
 
@@ -339,7 +339,7 @@ Once you have the `obs-multi-rtmp.dll` in your `C:\\Program Files\\OBS WebRTC (6
 When you open OBS-WebRTC now, you will see the ability to add multiple RTMP targets.
 
 
-![](https://cdn.TODO.io/docs/readme/ed387f4-SimulcastS3.png)
+![](/img/millicast/SimulcastS3.png)
 
 
 
@@ -360,14 +360,14 @@ For this setup, download the ZIP file and unpack it. Copy the _obs-multi-rtmp.pl
 3. Open OBS-WebRTC, and on the top menu bar, under **docks**, **multiple output** will be checked off. 
 
 
-![](https://cdn.TODO.io/docs/readme/1505954-Capture_decran_2023-07-25_a_10.12.18_AM.png)
+![](/img/millicast/Capture_decran_2023-07-25_a_10.12.18_AM.png)
 
 
 
 Next, go to the **multiple output** dock. If it is not showing up on your OBS, visit the dock menu at the top and reset it. Enable the **multiple output** option. Click on **Add new target** to create an RTMP destination.
 
 
-![](https://cdn.TODO.io/docs/readme/a028c02-Capture_decran_2023-07-25_a_10.27.42_AM.png)
+![](/img/millicast/Capture_decran_2023-07-25_a_10.27.42_AM.png)
 
 
 

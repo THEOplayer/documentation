@@ -5,12 +5,12 @@ id: sample-apps-react
 # Publisher and viewer sample app for react
 
 
-![](https://cdn.TODO.io/docs/readme/473e15d-01.00.00_Publisher_Documentation_1200x600.jpg)
+![](/img/millicast/01.00.00_Publisher_Documentation_1200x600.jpg)
 
 
 
 
-![](https://cdn.TODO.io/docs/readme/3731c56-01.00.00_Viewer_Documentation_1200x600.jpg)
+![](/img/millicast/01.00.00_Viewer_Documentation_1200x600.jpg)
 
 
 

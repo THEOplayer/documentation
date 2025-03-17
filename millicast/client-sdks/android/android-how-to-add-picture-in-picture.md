@@ -5,7 +5,7 @@ id: android-how-to-add-picture-in-picture
 **Picture-in-Picture (PiP) **was introduced with [Android 8.0 (API level 26)](https://developer.android.com/develop/ui/views/picture-in-picture). This feature allows you to support a floating video frame that persists even when the user sends the application to the background or switches to another application.
 
 
-![](https://cdn.TODO.io/docs/readme/38946efd632bcf2c4c46320da939d2dcb89b95c15e2ba9c29826b7fb28d866c8-mobile-picture-in-picture.png)
+![](/img/millicast/632bcf2c4c46320da939d2dcb89b95c15e2ba9c29826b7fb28d866c8-mobile-picture-in-picture.png)
 
 
 

@@ -34,7 +34,7 @@ When an **unsecured** stream is live, you'll be able to view the broadcast at:
 `https://viewer.millicast.com/?streamId=[YOUR ACCOUNT ID]/[YOUR STREAM NAME]`
 
 
-![](https://cdn.TODO.io/docs/readme/dcdff2b-image.png)
+![](/img/millicast/image.png)
 
 
 
@@ -43,14 +43,14 @@ When a stream is **secured**, you'll only be able to view the broadcast with a v
 `https://viewer.millicast.com?streamId=[Account ID]/[Stream Name]&token=[Subscribe Token]`
 
 
-![](https://cdn.TODO.io/docs/readme/2d58054-image.png)
+![](/img/millicast/image.png)
 
 
 
 If you attempt to join the stream without a valid Subscribe token, you'll receive a `401 Unauthorized` error:
 
 
-![](https://cdn.TODO.io/docs/readme/25a57ae-image.png)
+![](/img/millicast/image.png)
 
 
 

@@ -19,7 +19,7 @@ These cue points are often used for time synchronizing application state with th
 Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.md) as well as some broadcast encoders that embed **Action Message Format (AMF) messages. 
 
 
-![](https://cdn.TODO.io/docs/readme/c0b9acd-metadata-feature.png)
+![](/img/millicast/metadata-feature.png)
 
 
 

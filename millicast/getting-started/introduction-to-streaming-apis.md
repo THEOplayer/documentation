@@ -69,7 +69,7 @@ This enables a wider range of use cases where precision matters for timely high-
 Supporting many <a href="https://dolby.io/solutions/" target="_blank">use cases</a>, real-time streaming has components that support the required capabilities for [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.md), [Distribution](/millicast/distribution/index.md), and [Playback](/millicast/playback/index.md).
 
 
-![](https://cdn.TODO.io/docs/readme/b54f4db4cf4a8a2a1d8d4b126bd99fd41dd5708b3feefc91c3a0dd364775d9af-dolby-millicast-real-time-streaming-workflow.png)
+![](/img/millicast/cf4a8a2a1d8d4b126bd99fd41dd5708b3feefc91c3a0dd364775d9af-dolby-millicast-real-time-streaming-workflow.png)
 
 
 

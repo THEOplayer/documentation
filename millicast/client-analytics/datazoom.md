@@ -79,7 +79,7 @@ Datazoom provides connectors on their platform that can be used to aggregate cli
 Here is a preview of what a dashboard might look like in Splunk:
 
 
-![](https://cdn.TODO.io/docs/readme/0394e6f-datazoom-splunk-dashboard.png)
+![](/img/millicast/datazoom-splunk-dashboard.png)
 
 
 
@@ -88,7 +88,7 @@ Here is a preview of what a dashboard might look like in Splunk:
 Here is a preview of what a dashboard might look like in Datadog:
 
 
-![](https://cdn.TODO.io/docs/readme/e83663c-datazoom-and-datadog.png)
+![](/img/millicast/datazoom-and-datadog.png)
 
 
 

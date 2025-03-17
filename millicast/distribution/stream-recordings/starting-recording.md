@@ -15,14 +15,14 @@ Recording can be started when using the [Dashboard](#recording-from-the-dolbyio-
 1. Enable recording on a [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) by clicking **Record broadcast** when creating a new token. 
 
 
-![](https://cdn.TODO.io/docs/readme/0c8b788-Capture_decran_2023-07-19_a_5.33.53_PM.png)
+![](/img/millicast/Capture_decran_2023-07-19_a_5.33.53_PM.png)
 
 
 
   You can also update your existing publish token by enabling the **Record** option from the **Settings** section of **Token details**.
 
 
-![](https://cdn.TODO.io/docs/readme/fbc3612-Capture_decran_2023-07-19_a_5.34.23_PM.png)
+![](/img/millicast/Capture_decran_2023-07-19_a_5.34.23_PM.png)
 
 
 
@@ -34,7 +34,7 @@ Recording can be started when using the [Dashboard](#recording-from-the-dolbyio-
 3. Click the **Start** button to begin broadcasting with recording enabled.
 
 
-![](https://cdn.TODO.io/docs/readme/a388325-Capture_decran_2023-07-19_a_5.47.51_PM.png)
+![](/img/millicast/Capture_decran_2023-07-19_a_5.47.51_PM.png)
 
 
 
@@ -49,7 +49,7 @@ You can record your broadcasts if you are using 3rd party applications, such as 
 1. Set up OBS by visiting the **Settings** button to add the token information required.
 
 
-![](https://cdn.TODO.io/docs/readme/5ea2388-Capture_decran_2023-07-19_a_5.59.23_PM.png)
+![](/img/millicast/Capture_decran_2023-07-19_a_5.59.23_PM.png)
 
 
 

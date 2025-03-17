@@ -52,21 +52,21 @@ When you are ready to setup your device, start the drone and the controller. Con
 Select the menu in the upper right corner to open the available settings.
 
 
-![](https://cdn.TODO.io/docs/readme/7122b95-dolbyio-dji-drone-streaming-menu.jpg)
+![](/img/millicast/dolbyio-dji-drone-streaming-menu.jpg)
 
 
 
 Select the **Transmission** tab and open **Live Streaming Platforms**.
 
 
-![](https://cdn.TODO.io/docs/readme/6d3fc85-dolbyio-dji-drone-transmission-menu.jpg)
+![](/img/millicast/dolbyio-dji-drone-transmission-menu.jpg)
 
 
 
 Choose the **RTMP** option.
 
 
-![](https://cdn.TODO.io/docs/readme/fbbf93b-dolbyio-dji-drone-live-streaming-menu.jpg)
+![](/img/millicast/dolbyio-dji-drone-live-streaming-menu.jpg)
 
 
 
@@ -95,14 +95,14 @@ rtmp://rtmp-auto.millicast.com:1935/v2/pub/${streamName}?token=${publishToken}
 Choose a _Resolution_ and _Bitrate_ that meets your needs, and then select the **Start** button to begin the live stream. These settings will typically persist so that you don't have to configure each flight.
 
 
-![](https://cdn.TODO.io/docs/readme/86cf2de-Screenshot_20220113-112623.jpg)
+![](/img/millicast/Screenshot_20220113-112623.jpg)
 
 
 
 After a countdown, you will see your live stream icon as active on the top of the application.
 
 
-![](https://cdn.TODO.io/docs/readme/8280081-Screenshot_20220113-112908.jpg)
+![](/img/millicast/Screenshot_20220113-112908.jpg)
 
 
 
@@ -140,29 +140,29 @@ This option allows near real time live-streaming with additional codec options, 
 Streams can also benefit from constrained network environments with these options.
 
 
-![](https://cdn.TODO.io/docs/readme/3216306-Dji_Pro_Controller.png)
+![](/img/millicast/Dji_Pro_Controller.png)
 
 
 
 
-![](https://cdn.TODO.io/docs/readme/779e489-DJI_Plus_Controller.png)
+![](/img/millicast/DJI_Plus_Controller.png)
 
 
 
 
-![](https://cdn.TODO.io/docs/readme/c2ab0c7-Autel_Drones_Smart_Controller.png)
+![](/img/millicast/Autel_Drones_Smart_Controller.png)
 
 
 
 
-![](https://cdn.TODO.io/docs/readme/5465ab6-Autel_Live_Deck.png)
+![](/img/millicast/Autel_Live_Deck.png)
 
 
 
 Connect to a PC or Mobile device a simple HDMI capture device can be used.
 
 
-![](https://cdn.TODO.io/docs/readme/4d1e0b8-hdmi.png)
+![](/img/millicast/hdmi.png)
 
 
 

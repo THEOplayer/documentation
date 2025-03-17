@@ -32,14 +32,14 @@ Within vMix, select the _Streaming Settings_ menu to enter your publishing desti
 Set the **Application** to _FFMPEG_.
 
 
-![](https://cdn.TODO.io/docs/readme/0f8d586-vMix_RTMP_settings.png)
+![](/img/millicast/vMix_RTMP_settings.png)
 
 
 
 Select the Quality settings. Make sure the **Profile** is set to _Baseline_. You may experience stutters when using another profile.
 
 
-![](https://cdn.TODO.io/docs/readme/a45da15-vMix2.png)
+![](/img/millicast/vMix2.png)
 
 
 
@@ -62,7 +62,7 @@ The first destination **URL** and **Stream Name** would remain much as it was co
 - **simulcastId**: add this query parameter to indicate it should be a Simulcast stream
 
 
-![](https://cdn.TODO.io/docs/readme/7e2ecf5-vMixMBR1.png)
+![](/img/millicast/vMixMBR1.png)
 
 
 
@@ -82,7 +82,7 @@ You might also adjust the **Quality Settings** to use 1080p for this source.
 Select a second target destination. Update the **sourceId** to reflect that this is the second source.
 
 
-![](https://cdn.TODO.io/docs/readme/382d056-vMixMBR2.png)
+![](/img/millicast/vMixMBR2.png)
 
 
 
@@ -102,7 +102,7 @@ Adjust the quality settings to be a lower framerate, bitrate, and resolution to 
 As with the other example, update the **sourceId** and adjust the quality settings to provide a constrained bandwidth solution.
 
 
-![](https://cdn.TODO.io/docs/readme/4917d44-vMixMBR3.png)
+![](/img/millicast/vMixMBR3.png)
 
 
 
@@ -120,7 +120,7 @@ As with the other example, update the **sourceId** and adjust the quality settin
 In vMix click start all streams. You can then watch this stream from a [playback](/millicast/playback/index.md) viewer. If you select the viewer settings, you can see that there are multiple Video Quality renditions available.
 
 
-![](https://cdn.TODO.io/docs/readme/172b441-vMixABR4.png)
+![](/img/millicast/vMixABR4.png)
 
 
 
@@ -135,7 +135,7 @@ See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on 
 1. Select the **Output / NDI / SRT** settings and configure an output by clicking the gear icon.
 
 
-![](https://cdn.TODO.io/docs/readme/0dfb241-vmix-srt-settings.png)
+![](/img/millicast/vmix-srt-settings.png)
 
 
 
@@ -144,7 +144,7 @@ See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on 
 4. Input the **SRT stream ID** in the `Stream ID` field.
 
 
-![](https://cdn.TODO.io/docs/readme/d46cc52-vmix-srt-settings-paths.png)
+![](/img/millicast/vmix-srt-settings-paths.png)
 
 
 
@@ -157,7 +157,7 @@ vMix can also be set as an [NDI](/millicast/broadcast/using-ndi.md) source with 
 To configure this, choose the Outputs / NDI / SRT configuration.
 
 
-![](https://cdn.TODO.io/docs/readme/05de086-vMix_NDI.png)
+![](/img/millicast/vMix_NDI.png)
 
 
 

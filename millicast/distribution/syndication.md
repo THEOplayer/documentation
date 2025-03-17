@@ -63,7 +63,7 @@ To use the [Create Token](ref:subscribetoken_createtoken) API, add the following
 Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](/millicast/https://dashboard.dolby.io/)  when [creating a Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md)creating-a-subscriber-token). 
 
 
-![](https://cdn.TODO.io/docs/readme/6622e65-sub2.png)
+![](/img/millicast/sub2.png)
 
 
 

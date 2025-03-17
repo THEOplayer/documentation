@@ -40,7 +40,7 @@ Start the webinar as usual by doing one of the following:
 Click the ** More** button on your control panel to view available options.
 
 
-![](https://cdn.TODO.io/docs/readme/371a892-zoom1.png)
+![](/img/millicast/zoom1.png)
 
 
 
@@ -51,7 +51,7 @@ Choose Live on Custom Live Stream Service. A browser window will open to show th
 ## 4. Enter your Dolby.io RTMP publish details
 
 
-![](https://cdn.TODO.io/docs/readme/7b41cd7-zoom2.png)
+![](/img/millicast/zoom2.png)
 
 
 

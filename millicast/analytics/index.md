@@ -206,7 +206,7 @@ First open your editor and create a blank html file, save it as index.html. In y
 On the client end, there is only a simple button to fetch the data using the dates specified on the server. You can design the user application as advanced as you want, however, for the sake of simplicity we are just doing a simple request here to show its function.
 
 
-![](https://cdn.TODO.io/docs/readme/aaded39-analytics-accnt-call-btn.png)
+![](/img/millicast/analytics-accnt-call-btn.png)
 
 
 
@@ -217,7 +217,7 @@ Remember the data is in UTC format which a simple Date object can accept, howeve
 Once the data is sorted and the chart is created, you can push the table data to the Google Chart to display it visually.
 
 
-![](https://cdn.TODO.io/docs/readme/a012cd8-analytics-goog-graph1.png)
+![](/img/millicast/analytics-goog-graph1.png)
 
 
 
@@ -498,7 +498,7 @@ If you noticed in the new method "drawStrmBWChart", the sorting procedure is dif
 The Google chart is updated accordingly and we can see each visual as we switch it out by pressing the corresponding buttons and adding the dates.
 
 
-![](https://cdn.TODO.io/docs/readme/183e715-analytics-goog-graph2.png)
+![](/img/millicast/analytics-goog-graph2.png)
 
 
 
@@ -513,7 +513,7 @@ Calculating the viewers per stream (daily or hourly), which region they viewed f
 > Hourly data is only stored seven days after the stream started. For more information see [Access Restrictions](/millicast/analytics/index.md)access-restrictions).
 
 
-![](https://cdn.TODO.io/docs/readme/0555e4f-millicastViewerCount.png)
+![](/img/millicast/millicastViewerCount.png)
 
 
 

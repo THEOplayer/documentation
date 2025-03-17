@@ -49,7 +49,7 @@ Inside the Videon web UI, under **Video Profiles**, create three profiles of dis
 Under **Audio Profiles**, set up your preferred audio encoding and audio bitrate settings.
 
 
-![](https://cdn.TODO.io/docs/readme/dfc592e-Capture_decran_2023-06-14_a_9.33.46_AM.png)
+![](/img/millicast/Capture_decran_2023-06-14_a_9.33.46_AM.png)
 
 
 
@@ -60,7 +60,7 @@ Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](https://do
 Under **Outputs**, for each **RTMP**, select **Video Source** corresponding to the RTMP profile (1080p for the highest profile and 360p for the lowest profile). Make sure to set **Streaming Providers** to _Generic RTMP_ and paste the **Stream URL** from the Dolby.io RTMP dashboard.
 
 
-![](https://cdn.TODO.io/docs/readme/f0286a1-Capture_decran_2023-06-14_a_10.20.58_AM.png)
+![](/img/millicast/Capture_decran_2023-06-14_a_10.20.58_AM.png)
 
 
 
@@ -75,7 +75,7 @@ Example:
 | RTMP 3      | 360p         | `rtmp://` | `rtmp-auto.millicast.com:1935/v2/pub/lq30pf11?token=bcf5ffca692892ff5f861019316dd8277192698b92b08014398bfe646259c60a&sourceId=3&simulcastId&videoOnly` |
 
 
-![](https://cdn.TODO.io/docs/readme/a75a5c7-videon-rtmp.png)
+![](/img/millicast/videon-rtmp.png)
 
 
 
@@ -92,7 +92,7 @@ Example:
 | SRT 3       | 360p         | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=2&simulcastId&videoOnly` |
 
 
-![](https://cdn.TODO.io/docs/readme/c500327-videon-srt.png)
+![](/img/millicast/videon-srt.png)
 
 
 

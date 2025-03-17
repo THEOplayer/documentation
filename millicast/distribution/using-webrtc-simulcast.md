@@ -5,7 +5,7 @@ id: using-webrtc-simulcast
 Simulcast is a mechanism for distributing streaming content with variations that are optimized for viewers who are under different network conditions or device resolutions. By using a mechanism of WebRTC to distribute content, multiple sources will be available simultaneously that have been encoded with different bitrates and resolutions (HD, SD, LD).
 
 
-![](https://cdn.TODO.io/docs/readme/8c0d37a-Simulcast.png)
+![](/img/millicast/Simulcast.png)
 
 
 
@@ -60,7 +60,7 @@ To activate Simulcast and stream using the [Streaming Dashboard Broadcaster](/mi
 Set the **Bandwidth** as _Custom > 6000_, which will provide sufficient _Kbps_ for a high-quality Simulcast stream. Similarly, the **Width**, **Height**, and **FPS** should be adjusted to match your desired output.
 
 
-![](https://cdn.TODO.io/docs/readme/2047b14-Capture_decran_2023-07-24_a_1.43.22_PM.png)
+![](/img/millicast/Capture_decran_2023-07-24_a_1.43.22_PM.png)
 
 
 
@@ -186,24 +186,24 @@ When using the [Hosted Player](/millicast/playback/hosted-viewer.md), viewers wi
 The desired Video Quality can also be chosen manually. This is done within the viewer by clicking the _gear_ icon in the bottom right and selecting video quality, as shown below.
 
 
-![](https://cdn.TODO.io/docs/readme/3f3a971-Screenshot_2023-11-02_at_10.25.48.png)
+![](/img/millicast/Screenshot_2023-11-02_at_10.25.48.png)
 
 
 
 On the viewer, you can also check the **bitrate throughput** by selecting a quality level and then selecting the [Media Stats](/millicast/analytics/media-stats.md) within the _gear_ settings icon.
 
 
-![](https://cdn.TODO.io/docs/readme/2395378-Screenshot_2023-11-02_at_10.19.08.png)
+![](/img/millicast/Screenshot_2023-11-02_at_10.19.08.png)
 
 
 
 
-![](https://cdn.TODO.io/docs/readme/5dd49a6-Screenshot_2023-11-02_at_10.19.25.png)
+![](/img/millicast/Screenshot_2023-11-02_at_10.19.25.png)
 
 
 
 
-![](https://cdn.TODO.io/docs/readme/ff58923-Screenshot_2023-11-02_at_10.19.42.png)
+![](/img/millicast/Screenshot_2023-11-02_at_10.19.42.png)
 
 
 

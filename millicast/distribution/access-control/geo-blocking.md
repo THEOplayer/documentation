@@ -27,14 +27,14 @@ You can define token defaults that are applied account wide as a global configur
 Log into your account [Streaming Dashboard](/millicast/streaming-dashboard/index.md), click on _Settings_ in the left-side menu. 
 
 
-![](https://cdn.TODO.io/docs/readme/ca67d3f-tokens-main-settings-menu.png)
+![](/img/millicast/tokens-main-settings-menu.png)
 
 
 
 Navigate to the _Token defaults_ tab.
 
 
-![](https://cdn.TODO.io/docs/readme/2ca7dcd-geo-blocking-tab.png)
+![](/img/millicast/geo-blocking-tab.png)
 
 
 
@@ -55,14 +55,14 @@ Open the Streaming section of the [Dolby.io Dashboard](/millicast/streaming-dash
 Toggle the Geo-blocking setting to enable it for a token.
 
 
-![](https://cdn.TODO.io/docs/readme/edf389e-dashboard-publish-geoblocking.png)
+![](/img/millicast/dashboard-publish-geoblocking.png)
 
 
 
 For a new token, you can do this by selecting the **Advanced** tab during creation and toggling the Geo-blocking to be _Enabled_.
 
 
-![](https://cdn.TODO.io/docs/readme/75d7e90-dashboard-create-token-geoblocking.png)
+![](/img/millicast/dashboard-create-token-geoblocking.png)
 
 
 

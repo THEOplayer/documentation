@@ -5,7 +5,7 @@ id: sample-apps-ios-viewer
 # Native viewer sample app for iOS, iPad OS, and tvOS devices
 
 
-![](https://cdn.TODO.io/docs/readme/e350559-iOS_stream_monitor.png)
+![](/img/millicast/iOS_stream_monitor.png)
 
 
 

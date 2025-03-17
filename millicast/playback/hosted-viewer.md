@@ -7,7 +7,7 @@ The **Hosted Player** refers to the streaming video player that can be used as a
 The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) application in the dashboard but is for the audience to use to view the published stream.
 
 
-![](https://cdn.TODO.io/docs/readme/e6fdf25-dolbyio-hosted-viewer-preview.png)
+![](/img/millicast/dolbyio-hosted-viewer-preview.png)
 
 
 
@@ -66,7 +66,7 @@ There are a few controls and status indicators in the hosted player.
 | Viewer count      | Stream status      |
 
 
-![](https://cdn.TODO.io/docs/readme/8adacd1-dolbyio-streaming-dashboard-playback-viewer.png)
+![](/img/millicast/dolbyio-streaming-dashboard-playback-viewer.png)
 
 
 

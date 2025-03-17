@@ -17,7 +17,7 @@ The [Magewell Ultra Encode](https://www.magewell.com/ultra-encode) supports broa
 To begin, first power on your Ultra Encode, connect it to the internet (Ethernet or WiFi), and connect your video capture device. Once connected, [log in](https://www.magewell.com/files/documents/User_Manual/ultra_encode_user_manual_en.pdf) to the Ultra Encode dashboard and navigate to the `Streaming Server` tab on the left side panel. Inside of `Streaming Server` click the `+ Add Server` button and select `RTMP`.
 
 
-![](https://cdn.TODO.io/docs/readme/81d4ba1-rmtp-magewell.png)
+![](/img/millicast/rmtp-magewell.png)
 
 
 
@@ -26,21 +26,21 @@ Next, navigate to your [Dolby.io Dashboard](https://dashboard.dolby.io/signin) a
 Finally, select which network you'd like the encoder to use to connect, and save the settings.
 
 
-![](https://cdn.TODO.io/docs/readme/24339bb-rtmp-dolby-magewell.png)
+![](/img/millicast/rtmp-dolby-magewell.png)
 
 
 
 Once saved, make sure the stream is activated by toggling the server switch on the `Streaming Server` page.
 
 
-![](https://cdn.TODO.io/docs/readme/fe6856f-connect-magewell.png)
+![](/img/millicast/connect-magewell.png)
 
 
 
 With the stream enabled, you can navigate back to the main Dashboard page of the encoder and see your stream connect.
 
 
-![](https://cdn.TODO.io/docs/readme/6a89020-connect-magewell-stream.png)
+![](/img/millicast/connect-magewell-stream.png)
 
 
 
@@ -51,14 +51,14 @@ The [Magewell Ultra Encode](https://www.magewell.com/ultra-encode) supports broa
 To begin, first power on your Ultra Encode, connect it to the internet (Ethernet or WiFi), and connect your video capture device. Once connected, [log in](https://www.magewell.com/files/documents/User_Manual/ultra_encode_user_manual_en.pdf) to the Ultra Encode dashboard and navigate to the `Streaming Server` tab on the left side panel. Inside of `Streaming Server` click the `+ Add Server` button and select `SRT Caller`.
 
 
-![](https://cdn.TODO.io/docs/readme/9ea80ee-srt-caller.png)
+![](/img/millicast/srt-caller.png)
 
 
 
 Next, navigate to your [Dolby.io Dashboard](https://dashboard.dolby.io/signin) and [gather your SRT token credentials](/millicast/broadcast/using-srt.md#how-to-find-your-srt-publish-path). Add the `SRT publish path` from your Dolby.io Dashboard to the `Address`, set the `Port` to `10000`, and add your `SRT Stream ID`, also from the Dolby.io dashboard, to the `Stream ID`.
 
 
-![](https://cdn.TODO.io/docs/readme/bfdc644-srt-setup.png)
+![](/img/millicast/srt-setup.png)
 
 
 
@@ -67,12 +67,12 @@ Additionally, if you have `Passphrase encryption` enabled on the Dolby.io Dashbo
 Once saved, make sure the stream is activated by toggling the server switch on the `Streaming Server` page.
 
 
-![](https://cdn.TODO.io/docs/readme/e761bb5-srt-toggle.png)
+![](/img/millicast/srt-toggle.png)
 
 
 
 With the stream enabled, you can navigate back to the main Dashboard page of the encoder and see your stream connect.
 
 
-![](https://cdn.TODO.io/docs/readme/e2c5fe9-connected.PNG)
+![](/img/millicast/connected.PNG)
 

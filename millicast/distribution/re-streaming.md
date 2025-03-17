@@ -5,7 +5,7 @@ id: re-streaming
 **Re-streaming** enables you to distribute your broadcasts to additional RTMP(S) output destinations while simultaneously providing real-time WebRTC playback. This can be useful for distribution to other B2B media partners or for extending reach to larger audiences on public consumer social media platforms.
 
 
-![](https://cdn.TODO.io/docs/readme/a70fbffbf4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f83af17ac88285-restream.png)
+![](/img/millicast/f4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f83af17ac88285-restream.png)
 
 
 
@@ -36,7 +36,7 @@ The outgoing RTMP(S) stream will be identical to the incoming source stream in t
 When creating or updating a publish token you can enable and configure re-stream from the dashboard. These settings are found under the `Distribution` tab.
 
 
-![](https://cdn.TODO.io/docs/readme/6d57cb6-dashboard-distribution-tab-restream-setup.png)
+![](/img/millicast/dashboard-distribution-tab-restream-setup.png)
 
 
 
@@ -84,14 +84,14 @@ If you are publishing [redundant ingest](https://docs.dolby.io/streaming-apis/do
 You can check the status of re-streams by visiting the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) section of the dashboard. You should see a `Re-stream` token as confirmation.
 
 
-![](https://cdn.TODO.io/docs/readme/8387755-dashboard-re-stream-monitoring-token.png)
+![](/img/millicast/dashboard-re-stream-monitoring-token.png)
 
 
 
 If re-stream is enabled for a stream, the events section of Live Monitoring will display when the re-streamed feed has started and ended. 
 
 
-![](https://cdn.TODO.io/docs/readme/1eaf0c8c75365b6ae803eaa90dcd77f49d1f4ce22ba49be05da1b6a12651a2d1-eventlog.png)
+![](/img/millicast/75365b6ae803eaa90dcd77f49d1f4ce22ba49be05da1b6a12651a2d1-eventlog.png)
 
 
 

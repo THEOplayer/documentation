@@ -30,14 +30,14 @@ Each webhook generates a **Webhook Secret**. This secret can be used for signatu
 From the [Streaming Dashboard](/millicast/streaming-dashboard/index.md), navigate to the Webhooks tab and click the `CREATE` button.
 
 
-![](https://cdn.TODO.io/docs/readme/574f868-dashboard-webhooks.png)
+![](/img/millicast/dashboard-webhooks.png)
 
 
 
 This will open a popup window on your screen to input the **Webhook url**. You also choose which specific event **types** this endpoint should receive.
 
 
-![](https://cdn.TODO.io/docs/readme/e43a3df-dashboard-add-new-webhook.png)
+![](/img/millicast/dashboard-add-new-webhook.png)
 
 
 
@@ -48,21 +48,21 @@ Once created, the URL and event types will be listed.
 Select a webhook from the webhooks listed in the dashboard to modify its settings.
 
 
-![](https://cdn.TODO.io/docs/readme/1509f05-webhooks-management-main.png)
+![](/img/millicast/webhooks-management-main.png)
 
 
 
 Change the URL that will be called by the webhook by pressing the pen icon at the end of the row:
 
 
-![](https://cdn.TODO.io/docs/readme/bf101c1-webhooks-url-edit.png)
+![](/img/millicast/webhooks-url-edit.png)
 
 
 
 Update the URL and **confirm** your decision by clicking the green checkmark. To **cancel**, select the grey button.
 
 
-![](https://cdn.TODO.io/docs/readme/bca694b-webhooks-url-edit.confirm.png)
+![](/img/millicast/webhooks-url-edit.confirm.png)
 
 
 
@@ -73,7 +73,7 @@ To choose the types of event hooks to receive, click the **Enabled** button next
 If you believe your webhook secret has become compromised or want to rotate it regularly for security purposes, click the **Renew** button.
 
 
-![](https://cdn.TODO.io/docs/readme/d0ce113-webhooks-secret-edit.png)
+![](/img/millicast/webhooks-secret-edit.png)
 
 
 

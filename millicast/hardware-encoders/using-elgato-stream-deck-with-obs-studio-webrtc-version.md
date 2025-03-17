@@ -31,7 +31,7 @@ Within this directory, you should see a folder named "obs-studio". Make a duplic
 At the top, on the Top menu bar, you should see the Elgato plugin. 
 
 
-![](https://cdn.TODO.io/docs/readme/1158f44-Capture_decran_2023-07-12_a_4.56.47_PM.png)
+![](/img/millicast/Capture_decran_2023-07-12_a_4.56.47_PM.png)
 
 
 
@@ -53,19 +53,19 @@ Then, copy the above files to your OBS Plugin Folder (C:\\Program Files\\obs-stu
 ## How-to use StreamDeck inside OBS-WebRTC
 
 
-![](https://cdn.TODO.io/docs/readme/676a605-elgato-streamdeck-obs-studio.jpg)
+![](/img/millicast/elgato-streamdeck-obs-studio.jpg)
 
 
 
 The following steps will be the same for either development environment. With OBS open, create two scenes with a different video source each. Here, Scene 1 will be desktop screen sharing, and Scene 2 will be a [NDI source](/millicast/broadcast/using-ndi.md). If you aren't familiar with NDI, [visit our guide](/millicast/broadcast/using-ndi.md) dedicated to this topic. 
 
 
-![](https://cdn.TODO.io/docs/readme/bd7bc3d-Capture_decran_2023-07-12_a_4.47.23_PM.png)
+![](/img/millicast/Capture_decran_2023-07-12_a_4.47.23_PM.png)
 
 
 
 
-![](https://cdn.TODO.io/docs/readme/0be87c2-Capture_decran_2023-07-12_a_4.47.19_PM.png)
+![](/img/millicast/Capture_decran_2023-07-12_a_4.47.19_PM.png)
 
 
 
@@ -74,21 +74,21 @@ At this time, open the [Elgato Stream Deck](https://www.elgato.com/en/stream-dec
 On the available action within OBS Studio is the capacity to assign a key to a specific scene. Therefore, drag and drop the Scene action to an empty key above. There, assign it a title, and if properly connected to OBS, your scenes from OBS will show up; e.g. Scene 1 is assigned to Scene 1 - Desktop screensharing.
 
 
-![](https://cdn.TODO.io/docs/readme/df14166-Capture_decran_2023-07-12_a_4.58.07_PM.png)
+![](/img/millicast/Capture_decran_2023-07-12_a_4.58.07_PM.png)
 
 
 
 Afterward, assign another empty key to the other OBS scene in a similar fashion. Fill out the rest of the keys with any important actions you would like to physically control on the interface. 
 
 
-![](https://cdn.TODO.io/docs/readme/45c2ac6-Capture_decran_2023-07-12_a_4.51.45_PM.png)
+![](/img/millicast/Capture_decran_2023-07-12_a_4.51.45_PM.png)
 
 
 
 Tap between the different keys on the physical Stream Deck to see the actions that occur inside OBS. 
 
 
-![](https://cdn.TODO.io/docs/readme/b697ebb-Capture_decran_2023-07-12_a_4.52.05_PM.png)
+![](/img/millicast/Capture_decran_2023-07-12_a_4.52.05_PM.png)
 
 
 

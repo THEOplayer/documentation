@@ -5,7 +5,7 @@ id: geo-cascading
 **Geo-cascading** is a key component of content delivery networks (CDNs) and streaming platforms that aim to provide a high-quality streaming experience for users around the world. To reduce latency and improve reliability, geo-cascading uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can receive streams from regions that are the closest to their location.
 
 
-![](https://cdn.TODO.io/docs/readme/86f2e37-feature-geo-cascading.png)
+![](/img/millicast/feature-geo-cascading.png)
 
 
 
@@ -43,7 +43,7 @@ Log into the dashboard and select a publish token to modify.
 2. Select the preferred regions from the drop-down list. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer.
 
 
-![](https://cdn.TODO.io/docs/readme/d43963d-Screenshot_2023-12-21_at_07.19.10.png)
+![](/img/millicast/Screenshot_2023-12-21_at_07.19.10.png)
 
 
 
@@ -74,7 +74,7 @@ To define token defaults that are applied account-wide as a global configuration
 4. Select the preferred regions from the drop-down list. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **All** regions.
 
 
-![](https://cdn.TODO.io/docs/readme/8aee8f9-Screenshot_2023-12-21_at_07.18.28.png)
+![](/img/millicast/Screenshot_2023-12-21_at_07.18.28.png)
 
 
 

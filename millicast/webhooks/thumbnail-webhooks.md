@@ -27,7 +27,7 @@ During a broadcast with **thumbnail preview** enabled, while the stream has an a
 The [Streaming Dashboard](/millicast/streaming-dashboard/index.md) token settings can be used to toggle the **Thumbnail previews** setting on.
 
 
-![](https://cdn.TODO.io/docs/readme/dd7fe55-dashboard-publish-thumbnail-setting.png)
+![](/img/millicast/dashboard-publish-thumbnail-setting.png)
 
 
 

@@ -84,7 +84,7 @@ gst-launch-1.0 videotestsrc pattern=ball ! videoconvert ! x264enc ! rtph264pay !
 The default `videotestsrc` shows a more complex stream that includes audio and a color test. To view this locally run `gst-launch-1.0 videotestsrc ! autovideosink`:
 
 
-![](https://cdn.TODO.io/docs/readme/39ff240-gstreamer-videotestsrc.png)
+![](/img/millicast/gstreamer-videotestsrc.png)
 
 
 
@@ -217,14 +217,14 @@ For the example below, if recording is enabled: `https://director.millicast.com/
 If everything is correct, you should see a command output like this:
 
 
-![](https://cdn.TODO.io/docs/readme/c75a12d-cmd_line.png)
+![](/img/millicast/cmd_line.png)
 
 
 
 And if you connect to the viewer, a bouncing ball will be shown:
 
 
-![](https://cdn.TODO.io/docs/readme/b83478a-viewer.png)
+![](/img/millicast/viewer.png)
 
 
 

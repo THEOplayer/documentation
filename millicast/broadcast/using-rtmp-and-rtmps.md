@@ -17,7 +17,7 @@ This document will outline how to set up and broadcast low-latency RTMP streams 
 Select the publish token that you want to use for your RTMP streaming application.
 
 
-![](https://cdn.TODO.io/docs/readme/3f0b0d3-rtmp_publish_token.png)
+![](/img/millicast/rtmp_publish_token.png)
 
 
 
@@ -26,7 +26,7 @@ Select the publish token that you want to use for your RTMP streaming applicatio
 Click on the _Publishing_ tab of the token screen where you will find details for the various protocols such as [WHIP](/millicast/broadcast/webrtc-whip.md), [SRT](/millicast/broadcast/using-srt.md), and RTMP.
 
 
-![](https://cdn.TODO.io/docs/readme/462fb85-rtmp_publish_url.png)
+![](/img/millicast/rtmp_publish_url.png)
 
 
 

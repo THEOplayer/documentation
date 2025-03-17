@@ -9,7 +9,7 @@ https://api.millicast.com/graphql
 To perform requests to the api, you need to authenticate using a bearer Authorization request header with the [API token from the Dolby.io dashboard](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-token).
 
 
-![](https://cdn.TODO.io/docs/readme/02b72b8-settings_api_secrets.png)
+![](/img/millicast/settings_api_secrets.png)
 
 
 

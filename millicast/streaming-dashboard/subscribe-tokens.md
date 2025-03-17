@@ -23,21 +23,21 @@ This guide outlines the following:
 To get started, [login to your Dolby.io Real-time Streaming account](https://dashboard.dolby.io/) and select **Subscribe tokens** from the left menu. Here you can create and manage your subscribe tokens.
 
 
-![](https://cdn.TODO.io/docs/readme/5a583f6-subscribe-tokens-empty.png)
+![](/img/millicast/subscribe-tokens-empty.png)
 
 
 
 Begin by creating a token using the **(+) Create** button. This will open a popup window on your screen containing various options for your new token.
 
 
-![](https://cdn.TODO.io/docs/readme/c154942-image.png)
+![](/img/millicast/image.png)
 
 
 
 Let's go over each option in a bit more detail:
 
 
-![](https://cdn.TODO.io/docs/readme/a146b1f-subscribe-tokens-settings.png)
+![](/img/millicast/subscribe-tokens-settings.png)
 
 
 
@@ -59,14 +59,14 @@ You can switch from the top "_Basic_" tab to the "_Advanced_" tab in the token c
 - [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.md) Enables blocking by location at a country level for this specific token.
 
 
-![](https://cdn.TODO.io/docs/readme/77add98-subscribe-token-add.png)
+![](/img/millicast/subscribe-token-add.png)
 
 
 
 After you have successfully created your token, it will be displayed in a scrollable list.
 
 
-![](https://cdn.TODO.io/docs/readme/2ff053c-subscribe-token-list.png)
+![](/img/millicast/subscribe-token-list.png)
 
 
 
@@ -75,14 +75,14 @@ After you have successfully created your token, it will be displayed in a scroll
 Each token item has a _quick action menu_ that provides you with options for enabling and deleting each token.
 
 
-![](https://cdn.TODO.io/docs/readme/adbe51a-subscribe-token-quick-action.png)
+![](/img/millicast/subscribe-token-quick-action.png)
 
 
 
 For more comprehensive management, open the _manage view_ by simply clicking the token name.
 
 
-![](https://cdn.TODO.io/docs/readme/ff4fb55-subscribe-token-detail.png)
+![](/img/millicast/subscribe-token-detail.png)
 
 
 
@@ -103,7 +103,7 @@ Depending on the scale of your production, it may not be secure or feasible to c
 Once you've finished using a Subscribe token, it is recommended that you retire the token by deleting it to prevent accidental vulnerabilities. Deleting the token can be done from the _quick action menu_ found at the top-level Subscribe Tokens page by clicking on the trash can icon.
 
 
-![](https://cdn.TODO.io/docs/readme/4bf20af-subscribe-token-delete.png)
+![](/img/millicast/subscribe-token-delete.png)
 
 
 

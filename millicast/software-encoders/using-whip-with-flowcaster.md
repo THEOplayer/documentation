@@ -19,21 +19,21 @@ See the official [FlowCaster](https://www.drastic.tv/productsmenu-56/networkstre
 To start off, download the [latest version of FlowCaster](https://www.drastic.tv/productsmenu-56/networkstreaminglist/flowcaster). If you haven't done it yet, [create a Dolby.io account](https://dashboard.dolby.io/signup/) in order to access the stream token information needed. 
 
 
-![](https://cdn.TODO.io/docs/readme/547b783-a51bd5e-Flowcaster-Millicast.png)
+![](/img/millicast/a51bd5e-Flowcaster-Millicast.png)
 
 
 
 Once inside the streaming dashboard,[create a token](/millicast/streaming-dashboard/managing-your-tokens.md) in your Dolby.io dashboard. You will need the stream name and token for the stream label.
 
 
-![](https://cdn.TODO.io/docs/readme/f71e8f6-flowcaster-whip-token.png)
+![](/img/millicast/flowcaster-whip-token.png)
 
 
 
 Open FlowCaster and click on the Config tab. Update the following settings as shown. 
 
 
-![](https://cdn.TODO.io/docs/readme/e582d74-FlowCaster_Whip.png)
+![](/img/millicast/FlowCaster_Whip.png)
 
 
 
@@ -41,7 +41,7 @@ Settings can be adjusted as needed. For this simple test, we will select the inp
 FlowCaster can be used with many different input devices such as NIC IP video, [AJA encoders](https://www.aja.com/family/streaming), [BlackMagic](https://www.blackmagicdesign.com/products/blackmagicwebpresenter), Blue Fish, Ultrascope, Matrox,  Direct Show, and NDI. 
 
 
-![](https://cdn.TODO.io/docs/readme/797cfcf-FlowCaster_Whip_2.png)
+![](/img/millicast/FlowCaster_Whip_2.png)
 
 
 
@@ -49,7 +49,7 @@ Select Enable on FlowCaster and open the Millicast viewer link:
 `<https://viewer.millicast.com/?streamId=TmJiwk/kwky3g6g>`
 
 
-![](https://cdn.TODO.io/docs/readme/bf6ef7f-FlowCaster_Whip_3.png)
+![](/img/millicast/FlowCaster_Whip_3.png)
 
 
 

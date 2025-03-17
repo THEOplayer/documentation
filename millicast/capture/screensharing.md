@@ -19,14 +19,14 @@ Once you have created a Dolby.io account, you can begin using the Dolby.io dashb
 Inside the dashboard, click the Broadcast button located adjacent to the token.
 
 
-![](https://cdn.TODO.io/docs/readme/145db01-image.png)
+![](/img/millicast/image.png)
 
 
 
 Inside the dashboard broadcaster, click on the camera icon in the bottom left corner. To share your screen, select the "Share Screen" option and start sharing.
 
 
-![](https://cdn.TODO.io/docs/readme/7030fd4-image.png)
+![](/img/millicast/image.png)
 
 
 
@@ -39,14 +39,14 @@ With your screen shared to the dashboard broadcaster, you are now set up to capt
 Inside the app, click the plus icon within the Sources tab and add a Display Capture.
 
 
-![](https://cdn.TODO.io/docs/readme/4830e62-dispalycaptureobs.png)
+![](/img/millicast/dispalycaptureobs.png)
 
 
 
 Select the screen you want to share and whether you want OBS to capture the cursor or not.
 
 
-![](https://cdn.TODO.io/docs/readme/d2386da-image.png)
+![](/img/millicast/image.png)
 
 
 

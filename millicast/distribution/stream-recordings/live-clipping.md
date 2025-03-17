@@ -5,7 +5,7 @@ id: live-clipping
 **Live Clipping** allows you to capture one or more simultaneous media files (ie. **clips**) while a broadcast event is in progress. This is in contrast to a recording which is a media file that captures the full duration of a single source only after the completion of a broadcast. The duration of a clip can be customized to capture highlights or shorter segments while still live for use cases that want instant replay, social sharing, or audit reviews. 
 
 
-![](https://cdn.TODO.io/docs/readme/d3166001ac2eb6e3116ef7cdbf78a87b76207ab466689eec4f920c5cf77a38a3-live-clipping-overview.png)
+![](/img/millicast/ac2eb6e3116ef7cdbf78a87b76207ab466689eec4f920c5cf77a38a3-live-clipping-overview.png)
 
 
 
@@ -26,7 +26,7 @@ When setting up your applications and workflows, you'll want to create a service
 This is a typical pattern for application integration.
 
 
-![](https://cdn.TODO.io/docs/readme/93f0b29c602a7d00dfd276b5f220021220a55eaebea6cb8f4692c6fd606a63e8-live-clipping-app-architecture.png)
+![](/img/millicast/602a7d00dfd276b5f220021220a55eaebea6cb8f4692c6fd606a63e8-live-clipping-app-architecture.png)
 
 
 

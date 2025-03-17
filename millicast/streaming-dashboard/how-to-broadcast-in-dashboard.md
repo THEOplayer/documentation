@@ -5,7 +5,7 @@ id: how-to-broadcast-in-dashboard
 The **Live broadcast** section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) is the place to manage all of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). You use these tokens to securely broadcast. You can also launch a hosted **Broadcaster** web app to start a broadcast.
 
 
-![](https://cdn.TODO.io/docs/readme/7b57f82-live-broadcast.png)
+![](/img/millicast/live-broadcast.png)
 
 
 
@@ -40,7 +40,7 @@ Allows you to broadcast a live feed quickly and easily from the dashboard.
 The Live Broadcaster interface is a lightweight hosted web application which allows you to instantly begin broadcasting your live stream to your global audience without installing any software.
 
 
-![](https://cdn.TODO.io/docs/readme/37fcfc6-bcast-pg.png)
+![](/img/millicast/bcast-pg.png)
 
 
 
@@ -64,7 +64,7 @@ By choosing the camera icon you will see the available [capture](/millicast/capt
 There is a **Video Test** option you can use that may be helpful alternative to sharing your video for testing a live streaming setup end-to-end.
 
 
-![](https://cdn.TODO.io/docs/readme/1a5034a-dolbyio-millicast-broadcast-video-test.png)
+![](/img/millicast/dolbyio-millicast-broadcast-video-test.png)
 
 
 
@@ -199,7 +199,7 @@ Within the share panel, there is the option to adjust and change the iFrame code
 After clicking the `Start` button you will begin broadcasting. The status and stream name will be displayed in the upper right corner as confirmation.
 
 
-![](https://cdn.TODO.io/docs/readme/2a39d37-Capture_decran_2023-07-29_a_4.32.56_PM.png)
+![](/img/millicast/Capture_decran_2023-07-29_a_4.32.56_PM.png)
 
 
 

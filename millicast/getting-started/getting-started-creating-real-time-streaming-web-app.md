@@ -26,7 +26,7 @@ In [Part 1 - Using the Streaming Dashboard](/millicast/getting-started/getting-s
 This is the simplest way to get up and running quickly with your own web application. This works well for long-running streams or one-time live events. 
 
 
-![](https://cdn.TODO.io/docs/readme/4cc0a81-dolbyio-web-embedded-viewer-live.png)
+![](/img/millicast/dolbyio-web-embedded-viewer-live.png)
 
 
 
@@ -135,7 +135,7 @@ try {
 If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md), you will then have a simple web app with video playback to continue customizing.
 
 
-![](https://cdn.TODO.io/docs/readme/efedda4-dolbyio-web-playback.png)
+![](/img/millicast/dolbyio-web-playback.png)
 
 
 
@@ -220,7 +220,7 @@ document.getElementById('btn-start').onclick = async () => {
 The `viewerUrl` provides a convenient link to the hosted playback viewer so that you can verify the broadcast is working. 
 
 
-![](https://cdn.TODO.io/docs/readme/ee56768-dolbyio-web-broadcast.png)
+![](/img/millicast/dolbyio-web-broadcast.png)
 
 
 

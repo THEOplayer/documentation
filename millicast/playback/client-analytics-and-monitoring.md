@@ -37,7 +37,7 @@ To help facilitate investigating out why a client is experiencing a degraded exp
 ✓ WebRTC stats such as round-trip time, bitrate, packet rate, mime type, resolution, jitter, etc..
 
 
-![](https://cdn.TODO.io/docs/readme/bf6760d-feature-diagnostics.png)
+![](/img/millicast/feature-diagnostics.png)
 
 
 
@@ -73,7 +73,7 @@ See the Data Dictionary below for examples of some of the data returned.
 It is common practice to proactively monitor all clients for indicators of streaming issues. The [Client SDKs](/millicast/client-sdks/index.md) provide access to a `stats` event that emits a snapshot of WebRTC indicators at a frequent interval. This data can be used in combination with an **Application Performance Monitoring (APM)** solution or Observability tool to alert and integrate with other third-party analytics services for a complete picture of the end-viewer experience.
 
 
-![](https://cdn.TODO.io/docs/readme/14c6c9a-feature-client-analytics.png)
+![](/img/millicast/feature-client-analytics.png)
 
 
 

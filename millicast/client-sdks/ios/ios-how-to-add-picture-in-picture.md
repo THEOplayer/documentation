@@ -5,7 +5,7 @@ id: ios-how-to-add-picture-in-picture
 **Picture-in-Picture (PiP) is compatible with iOS 16+. This feature allows you to support a floating video frame that persists even when the user sends the application to the background or switches to another application.
 
 
-![](https://cdn.TODO.io/docs/readme/38946efd632bcf2c4c46320da939d2dcb89b95c15e2ba9c29826b7fb28d866c8-mobile-picture-in-picture.png)
+![](/img/millicast/632bcf2c4c46320da939d2dcb89b95c15e2ba9c29826b7fb28d866c8-mobile-picture-in-picture.png)
 
 
 

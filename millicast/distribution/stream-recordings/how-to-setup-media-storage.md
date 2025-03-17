@@ -77,23 +77,23 @@ The following procedure explains how to grant Dolby upload access to Google Clou
 2. Within your GCP console, navigate to the bucket you wish to grant access to Dolby.io and select the **Permissions** tab. 
 
    
-![](https://cdn.TODO.io/docs/readme/01682f0-Screenshot_2024-02-14_at_2.30.39_pm.png)
+![](/img/millicast/Screenshot_2024-02-14_at_2.30.39_pm.png)
 
 3. Click the **Grant Access** link. 
 
    
-![](https://cdn.TODO.io/docs/readme/36e3525-Screenshot_2024-02-14_at_2.35.17_pm.png)
+![](/img/millicast/Screenshot_2024-02-14_at_2.35.17_pm.png)
 
 4. On the side panel that appears, enter the Dolby.io service account email ([millicast-recording-service@millicast.iam.gserviceaccount.com](/millicast/mailto:millicast-recording-service@millicast.iam.gserviceaccount.com)) into the **New Principals** text box, and select the **Storage Object Creator** role. These are the minimum recommended permissions for enabling reliable upload access to your storage bucket. 
 
    
-![](https://cdn.TODO.io/docs/readme/1a06cd5-Screenshot_2024-02-14_at_2.37.07_pm.png)
+![](/img/millicast/Screenshot_2024-02-14_at_2.37.07_pm.png)
 
 5. Click **Save** to confirm the provided details.
 6. Check if the newly added service account is visible on the permissions list. 
 
    
-![](https://cdn.TODO.io/docs/readme/38921f1-Screenshot_2024-02-14_at_2.41.23_pm.png)
+![](/img/millicast/Screenshot_2024-02-14_at_2.41.23_pm.png)
 
 
 , 
