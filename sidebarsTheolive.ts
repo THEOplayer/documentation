@@ -3,8 +3,16 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   theolive: [
     'index',
-    'introduction-backend',
-    'introduction-player',
+    'getting-started',
+    {
+      type: 'link',
+      label: 'Player',
+      description: 'THEOlive player documentation',
+      customProps: {
+        icon: '▶️',
+      },
+      href: '../theoplayer/how-to-guides/web/theolive/getting-started/',
+    },
     {
       type: 'category',
       label: 'Guides',
