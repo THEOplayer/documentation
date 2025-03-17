@@ -1,6 +1,7 @@
 ---
 title: "2. Create a Streaming Web App"
 id: getting-started-creating-real-time-streaming-web-app
+sidebar_position: 2
 ---
 In [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) we reviewed how-to log into your Dolby.io Streaming Dashboard, create a publish token, start a broadcast, and playback that broadcast in the hosted web viewer or in an iframe, all without writing any code. We'll continue getting started by substituting the broadcast and playback components with a custom-built web application.
 

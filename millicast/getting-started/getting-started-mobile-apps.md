@@ -1,6 +1,7 @@
 ---
 title: "4. Create Mobile Streaming Apps"
 id: getting-started-mobile-apps
+sidebar_position: 4
 ---
 Dolby Millicast provides Native SDKs for both [Android](/millicast/client-sdks/android/index.md) and [iOS](/millicast/client-sdks/ios/index.md) to speed up development of mobile applications with real-time streaming. Follow the guides below to add playback or broadcasting capabilities for your target platforms.
 
