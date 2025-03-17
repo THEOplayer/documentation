@@ -1,4 +1,4 @@
-	---
+---
 title: "Action Cameras"
 id: action-cameras
 ---
