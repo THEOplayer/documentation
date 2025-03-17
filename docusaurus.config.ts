@@ -441,6 +441,11 @@ const config: Config = {
           position: 'left',
         },
         {
+          label: 'Millicast',
+          href: '/millicast',
+          position: 'left',
+        },
+        {
           type: 'docsVersionDropdown',
           docsPluginId: 'theoplayer',
           position: 'right',

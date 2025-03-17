@@ -19,6 +19,8 @@ function getProductNameByPluginId(pluginId: string): string {
       return 'Contributing';
     case 'theolive':
       return 'THEOlive';
+    case 'millicast':
+      return 'Millicast';
     default:
       throw new Error(`Unknown plugin ID for DocVersionBanner: "${pluginId}"`);
   }

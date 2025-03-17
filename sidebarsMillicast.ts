@@ -2,7 +2,7 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   millicast: [
-    'getting-started/introduction-to-streaming-apis',
+    'index',
     {
       type: 'category',
       label: 'Getting started',
