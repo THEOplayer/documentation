@@ -32,13 +32,10 @@ In case you forgot your secret, or the secret got exposed, you can easily regene
 
 THEOlive makes use of Basic Authentication when making requests to the API. In the 'Authorization' header, make sure to pass your token-secret pair (encoded with base64), prepended with the word 'Basic'.
 
-
-For example, assume the token has value `my-token` and the secret has value `my-secret`:
-    1. Combine them like this: `my-token:my-secret`.
-    2. Encode this value using base64: `bXktdG9rZW46bXktc2VjcmV0`
-    3. Pass the full Authorization header (with `Basic` included) in your REST calls: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
+For example, assume the token has value `my-token` and the secret has value `my-secret`: 1. Combine them like this: `my-token:my-secret`. 2. Encode this value using base64: `bXktdG9rZW46bXktc2VjcmV0` 3. Pass the full Authorization header (with `Basic` included) in your REST calls: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
 
 So to summarize, the final header would be:
+
 ```text
 Authorization: Basic bXktdG9rZW46bXktc2VjcmV0
 ```

@@ -4,32 +4,37 @@ The messages added to your stream using the [Backend Metadata guide](../../../..
 as a metadata text track.
 
 First listen to the event to see if a new metadata track has been added, and add an `onTimeCode` listener:
+
 ```javascript
 player.textTracks.addEventListener('addTrack', (event) => {
-    const track = event.track;
-    if (track.id === 'timecode') {
-        track.mode = 'showing'; // Setting the mode to showing will enable the entercue events
-        track.addEventListener('entercue', this.onTimeCode);
-    }
+  const track = event.track;
+  if (track.id === 'timecode') {
+    track.mode = 'showing'; // Setting the mode to showing will enable the entercue events
+    track.addEventListener('entercue', this.onTimeCode);
+  }
 });
 ```
 
 The actual onTimeCode listener could look like this:
+
 ```javascript
 const onTimeCode = (event) => {
   const timeCode = event.cue.content;
   // Insert other code here
 };
 ```
+
 Where the timecode has the following type:
+
 ```typescript
 export interface TimeCode {
-    readonly hours: number;
-    readonly minutes: number;
-    readonly seconds: number;
-    readonly frames: number;
+  readonly hours: number;
+  readonly minutes: number;
+  readonly seconds: number;
+  readonly frames: number;
 }
 ```
+
 So a full example could be as follows:
 
 You distribute sports matches and want to display an overlay on the player when the score changes. Every time a score change happens, you add a picture timing SEI message to the stream and store in your backend that this time corresponds with this score. (You could also just add the timing message to all frames if this is easier, but this requires more processing both server and player side). This information can then be retrieved by the application running on the device of a viewer. You then add the event listener and listen for the `entercue` events. In the listener you check whether the `TimeCode` corresponds with a score change event you recorded earlier and if so, display an overlay over the player.
