@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Adding a fallback
+# Redundancy
 
 With THEOlive we want to make sure your viewers can continue watching your stream, even if there is an ingest failure or if there are connectivity problems in a certain location. It is hence possible to set up a fallback stream. This means that if one stream is unavailable for a short amount of time, the player checks if the fallback stream is available and switches the player source automatically to this stream. In this case, the viewers only see a small interruption and can continue watching without having to act.
 
@@ -23,7 +23,7 @@ In what follows, we describe the approach to set a fallback for one channel.
 
 ## 1. Create two channels and start them.
 
-You'll need to create two THEOlive channels via the [API](https://developers.theo.live/reference/create-channel) or [management console](https://console.theo.live/). Let's say for example that we h`ave the following channels with fictive IDs:`
+You'll need to create two THEOlive channels via the [API](https://developers.theo.live/reference/create-channel) or [management console](https://console.theo.live/). Let's say for example that we have the following channels with fictive IDs:
 
 - Channel `<channel-in-us-west>` which is located in the `us-west` region
 - Channel `<channel-in-us-east>` which is located in the `us-east` region
