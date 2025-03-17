@@ -34,3 +34,10 @@
   width: 1em;
   height: 1em;
 }
+
+.iconGridButton.large img,
+.iconGridButton.large svg {
+  width: auto;
+  height: auto;
+  padding: 0.5em;
+}
