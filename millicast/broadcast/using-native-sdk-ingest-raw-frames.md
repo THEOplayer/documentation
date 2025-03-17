@@ -2,7 +2,7 @@
 title: "Ingest Raw Frames"
 slug: /using-native-sdk-ingest-raw-frames
 ---
-Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](/millicast/hardware-encoders/index.md) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/capture/live-streaming-from-drones-rtmp.md) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
+Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](./hardware-encoders.md) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/capture/live-streaming-from-drones-rtmp.md) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
 
 This guide is designed to help you leverage the Dolby.io Streaming Native SDKs to ingest raw audio and video frames, allowing the stream encoding to be handled by the SDK. There are three ways to accomplish raw frame ingestion: 
 

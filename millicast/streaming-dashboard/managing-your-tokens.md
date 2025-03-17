@@ -79,7 +79,7 @@ After you have successfully created your token, it will be displayed in a scroll
 
 
 
-Once created, your Publish token can be used to broadcast in a variety of different ways using different [hardware](/millicast/hardware-encoders/index.md) and [software](/millicast/software-encoders/index.md) solutions. To learn more about how to broadcast with your Publish token, explore [the Broadcast guide](/millicast/broadcast/index.md).
+Once created, your Publish token can be used to broadcast in a variety of different ways using different [hardware](../broadcast/hardware-encoders.md) and [software](../broadcast/software-encoders.md) solutions. To learn more about how to broadcast with your Publish token, explore [the Broadcast guide](/millicast/broadcast/index.md).
 
 ## Managing and editing existing publish tokens
 
@@ -145,7 +145,7 @@ The publishing tab includes all information relating to [broadcasting](/millicas
   - RTMP multi-bitrate can be enabled from this section. When enabled, the dashboard will create three RTMP publish stream names for **low** bitrate, **medium** bitrate, and **high** bitrate.
 - [SRT](/millicast/broadcast/using-srt.md): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.
   - Passphrase encryption can be enabled from this section. When enabled, the dashboard will generate a passphrase for encrypting the SRT stream.
-- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/client-sdks/index.md) or compatible [software](/millicast/software-encoders/index.md) and [hardware encoders](/millicast/hardware-encoders/index.md).
+- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/client-sdks/index.md) or compatible [software](../broadcast/software-encoders.md) and [hardware encoders](../broadcast/hardware-encoders.md).
 
 To learn more about publishing and broadcasting with Dolby.io, check out the [Broadcast](/millicast/broadcast/index.md) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
 
