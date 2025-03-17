@@ -63,3 +63,7 @@ pre[class*='language-'] {
 .theme-doc-sidebar-menu hr {
   --ifm-hr-margin-vertical: 0.5rem;
 }
+
+ul.checkBoxList > li {
+  list-style-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text x="0" y="20">✓</text></svg>');
+}

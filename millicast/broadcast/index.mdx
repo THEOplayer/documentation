@@ -1,20 +1,28 @@
 ---
-title: "Broadcast"
+description: Guide to Encoding Content for Broadcasting Streams
 slug: /broadcast
 ---
+
+# Broadcast
+
 Broadcasting content requires access to the public internet and encoding, which can be accomplished in a browser, software, hardware, or with the Dolby.io Client-side broadcaster SDKs.
 
 The Dolby.io CDN can ingest streams encoded in a few main formats:
 
-<div style={{marginLeft: "20px"}}>
-
-✓ [WebRTC](/millicast/broadcast/webrtc-whip.md), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
-
-✓ [SRT](/millicast/broadcast/using-srt.md), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
-
-✓ [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
-
-</div>
+<ul className="checkBoxList">
+  <li>
+    [WebRTC](/millicast/broadcast/webrtc-whip.md), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus
+    audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
+  </li>
+  <li>
+    [SRT](/millicast/broadcast/using-srt.md), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video
+    and AAC audio.
+  </li>
+  <li>
+    [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io
+    CDN that supports only the H.264 video codec.
+  </li>
+</ul>
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
@@ -44,19 +52,19 @@ With different broadcast protocols across the industry comes the need for encode
 
 A few terms to remember are:
 
-<div style={{marginLeft: "20px"}}>
+<ul className="checkBoxList">
 
-✓ **H.264 (AVC)**, Advanced Video Coding, is a widely used video codec that efficiently compresses video data while maintaining video quality. It is widely supported, making it a highly versatile codec for various applications, as the _de facto_ standard for many.
+    <li>**H.264 (AVC)**, Advanced Video Coding, is a widely used video codec that efficiently compresses video data while maintaining video quality. It is widely supported, making it a highly versatile codec for various applications, as the _de facto_ standard for many.</li>
 
-✓ **H.265 (HEVC)**, or High-Efficiency Video Coding, is an advanced video codec that offers even higher compression efficiency compared to H.264. It achieves a significant reduction in file size and bit rate while maintaining or improving video quality. This makes H.265 suitable for applications with limited bandwidth or storage capacity.
+    <li>**H.265 (HEVC)**, or High-Efficiency Video Coding, is an advanced video codec that offers even higher compression efficiency compared to H.264. It achieves a significant reduction in file size and bit rate while maintaining or improving video quality. This makes H.265 suitable for applications with limited bandwidth or storage capacity.</li>
 
-✓ **VP9** is an advanced video codec designed to provide higher compression efficiency and improved video quality compared to its predecessor, VP8. VP9 offers significant bitrate savings, allowing higher-quality video streaming at lower bitrates.
+    <li>**VP9** is an advanced video codec designed to provide higher compression efficiency and improved video quality compared to its predecessor, VP8. VP9 offers significant bitrate savings, allowing higher-quality video streaming at lower bitrates.</li>
 
-✓ **AV1** is designed to deliver high-quality compression while achieving significant bitrate reduction utilizing compression techniques like improved motion prediction, advanced entropy coding, and intra-frame coding. Best suited for applications with limited bandwidth.
+    <li>**AV1** is designed to deliver high-quality compression while achieving significant bitrate reduction utilizing compression techniques like improved motion prediction, advanced entropy coding, and intra-frame coding. Best suited for applications with limited bandwidth.</li>
 
-✓ **AAC**, Advanced Audio Coding, is an audio codec known for its high audio quality while maintaining a low bitrate, resulting in smaller file sizes and efficient transmission. It is widely supported across devices and platforms, making it a versatile choice for various audio applications.
+    <li>**AAC**, Advanced Audio Coding, is an audio codec known for its high audio quality while maintaining a low bitrate, resulting in smaller file sizes and efficient transmission. It is widely supported across devices and platforms, making it a versatile choice for various audio applications.</li>
 
-</div>
+</ul>
 
 ## Encoders
 
@@ -64,8 +72,8 @@ A [hardware encoder](./hardware-encoders.md) can help transform [capture](/milli
 
 Here is a breakdown of some distinct encoders with their corresponding codec and protocol compatibility.
 
-| Encoder                                                      | Protocols                                      | Codecs                                              |
-| :----------------------------------------------------------- | :--------------------------------------------- | :-------------------------------------------------- |
+| Encoder                                                                                  | Protocols                                      | Codecs                                              |
+| :--------------------------------------------------------------------------------------- | :--------------------------------------------- | :-------------------------------------------------- |
 | [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md) Talon | RTMP, RTMPS, RTSP, HLS, RTP, SRT, WebRTC, WHIP | H.264 (AVC), H.265 (HEVC), AAC                      |
 | [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md) Wave               | RTMP, RTMPS, RTSP, SRT, HLS, NDI               | H.264 (AVC), H.265 (HEVC), AAC                      |
 | [Videon](/millicast/hardware-encoders/videon.md) EdgeCaster                              | RTMP, RTMPs, SRT, HLS                          | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
@@ -73,7 +81,7 @@ Here is a breakdown of some distinct encoders with their corresponding codec and
 | [FlowCaster](/millicast/software-encoders/using-whip-with-flowcaster.md)                 | RTMP, RTMPs, WHIP, NDI, HLS, SRT, WebRTC       | H.264 (AVC), H.265 (HEVC)                           |
 | [FFmpeg](/millicast/software-encoders/using-ffmpeg.md)                                   | RTMP, RTMPs, RTSP, HLS                         | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
 | [GStreamer](/millicast/software-encoders/using-whip-with-gstreamer.md)                   | RTMP, RTMPs, RTSP, SRT, HLS, WHIP              | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
-| [OBS](/millicast/software-encoders/using-obs.md)                                          | WebRTC, RTMP, RTMPs, NDI, HLS, SRT, RTSP       | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
+| [OBS](/millicast/software-encoders/using-obs.md)                                         | WebRTC, RTMP, RTMPs, NDI, HLS, SRT, RTSP       | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
 | [LiveU](/millicast/software-encoders/liveu-studio-using-whip.md)                         | RTMP, RTMPs, HLS, RTSP, NDI                    | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
 | [vMix](/millicast/software-encoders/broadcasting-with-vmix.md)                           | RTMP, RTMPs, RTSP, NDI, SRT, WebRTC            | H.264 (AVC), H.265 (HEVC), ProRes, DNxHD/DNxHR, AAC |
 
@@ -101,11 +109,17 @@ The **Osprey Talon** provides exceptional quality with 4k resolution and a plug-
 
 To learn how to create a stream from OBS using WebRTC, see the following video:
 
-<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/jUP4vyzbu5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/jUP4vyzbu5Y"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
 </div>
-
-
 
 ## Encoding with SRT
 
@@ -119,12 +133,17 @@ The Dolby.io dashboard is used to configure the publish path and stream id for a
 
 To learn how to create a stream from OBS using SRT, see the following video:
 
-<div style={{display: "flex", justifycontent: "center"}}>
-  <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/DVk-tNZnsRo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/DVk-tNZnsRo"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
 </div>
-
 
 ## RTMP Ingest
 
@@ -156,27 +175,21 @@ Web and mobile browsers are widely available and have wide encoding support, whe
 
 You can also start broadcasting directly from the Dolby.io dashboard. For more information, see the following video:
 
-<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/I6tasX-C2_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/I6tasX-C2_w"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
 </div>
-
-
 
 # Learn more
 
 You can find examples of using [Avid Media Composer](https://dolby.io/blog/collaborative-post-production-with-avid-media-composer/), [Larix Broadcaster](https://dolby.io/blog/broadcasting-mobile-native-webrtc-streams-with-the-larix-broadcaster/), and more on the [developer blog](https://dolby.io/blog/tag/broadcast/).
 
-<div>
-  <div class="small-text-only-btn-container">
-
-    <a class="small-text-only-btn" href="https://github.com/orgs/dolbyio-samples/repositories?q=broadcast">
-      <div class="model-card"><svg viewBox="0 0 16 16" width="16" height="16" class="octicon octicon-mark-github" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>Explore GitHub sample code</div>
-    </a>
-
-    <a class="small-text-only-btn" href="https://dolby.io/blog/tag/broadcast/">
-      <div class="model-card">Find related blog posts</div>
-    </a>
-
-  </div>
-</div>
-
+- [Explore GitHub sample code](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast)
+- [Find related blog posts](https://dolby.io/blog/tag/broadcast/)
