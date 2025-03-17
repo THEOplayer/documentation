@@ -1,0 +1,14 @@
+---
+sidebar_position: 15
+sidebar_label: HLS
+---
+
+# HLS on older platforms
+
+THEOlive uses the HESP protocol to deliver high quality at very low latencies. However, HESP only works on platforms
+that have streaming HTTP requests. On very old devices like 2015 smart TV's this is not possible and hence low-latency
+streaming is not really possible on those devices. Therefore, when there is no streaming HTTP we fallback to HLS.
+
+HLS has the advantage that it plays on almost any device, but with higher latency. So on those old Smart TV's, you will
+still get playback, but the latency will be a lot higher than on your modern laptop. The latency on HLS will be around
+10 seconds.
