@@ -67,7 +67,7 @@ This enables a wider range of use cases where precision matters for timely high-
 
 # How it works
 
-Supporting many <a href="https://dolby.io/solutions/" target="_blank">use cases</a>, real-time streaming has components that support the required capabilities for [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.md), [Distribution](/millicast/distribution/index.md), and [Playback](/millicast/playback/index.md).
+Supporting many <a href="https://dolby.io/solutions/" target="_blank">use cases</a>, real-time streaming has components that support the required capabilities for [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.mdx), [Distribution](/millicast/distribution/index.md), and [Playback](/millicast/playback/index.md).
 
 
 ![](../assets/img/cf4a8a2a1d8d4b126bd99fd41dd5708b3feefc91c3a0dd364775d9af-dolby-millicast-real-time-streaming-workflow.png)
@@ -76,7 +76,7 @@ Supporting many <a href="https://dolby.io/solutions/" target="_blank">use cases<
 
 ## Capture streaming content
 
-To [capture](/millicast/broadcast/index.md) content you need either a physical camera capturing the content, a virtual camera from within a game engine, or a source of content available via another content creation tools such as OBS or Adobe Premiere. 
+To [capture](/millicast/broadcast/index.mdx) content you need either a physical camera capturing the content, a virtual camera from within a game engine, or a source of content available via another content creation tools such as OBS or Adobe Premiere. 
 
 Many devices are able to capture a compatible media stream encoding:
 
@@ -105,7 +105,7 @@ Check with your specific hardware provider for direct support of WebRTC or one o
 
 ## Broadcast encoded media
 
-[Broadcasting](/millicast/broadcast/index.md) content requires access to the public internet and encoding, which can be accomplished via the browser, software, hardware, and via the [Dolby.io Client-side broadcaster SDKs](https://docs.dolby.io/streaming-apis/docs/client-sdks). 
+[Broadcasting](/millicast/broadcast/index.mdx) content requires access to the public internet and encoding, which can be accomplished via the browser, software, hardware, and via the [Dolby.io Client-side broadcaster SDKs](https://docs.dolby.io/streaming-apis/docs/client-sdks). 
 
 The Dolby.io CDN can ingest streams encoded in a few main formats: 
 

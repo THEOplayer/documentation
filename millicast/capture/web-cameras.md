@@ -12,7 +12,7 @@ This guide outlines three options for managing web camera capture:
 
 # Connecting a web camera to the Dolby.io dashboard broadcaster
 
-Once you have created a Dolby.io account, you can begin using the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) to create and manage tokens, manage your Dolby.io account, and [broadcast](/millicast/broadcast/index.md) and view active streams. 
+Once you have created a Dolby.io account, you can begin using the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) to create and manage tokens, manage your Dolby.io account, and [broadcast](/millicast/broadcast/index.mdx) and view active streams. 
 
 Inside the dashboard, click the Broadcast button located adjacent to the token.
 
@@ -30,7 +30,7 @@ Inside the dashboard broadcaster, click the camera icon in the bottom left corne
 
 Audio input devices function the same way and can be toggled by clicking on the microphone icon next to the camera icon.
 
-With your web camera connected to the dashboard broadcaster, you are now set up to capture content from your web camera. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.md) to learn about the distinct settings.
+With your web camera connected to the dashboard broadcaster, you are now set up to capture content from your web camera. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.mdx) to learn about the distinct settings.
 
 # Connecting a web camera to OBS
 

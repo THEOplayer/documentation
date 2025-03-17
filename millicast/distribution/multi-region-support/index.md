@@ -23,7 +23,7 @@ A _publishing token_ is configured with a specific **cluster region**. This valu
 
 - _Auto_ will use geo-detection to choose a region
 
-When creating a publishing token, selecting the region that is closest to the [broadcast](/millicast/broadcast/index.md) location will improve latency and quality. The publishing cluster region setting can be configured to one of the following specific regions:
+When creating a publishing token, selecting the region that is closest to the [broadcast](/millicast/broadcast/index.mdx) location will improve latency and quality. The publishing cluster region setting can be configured to one of the following specific regions:
 
 ## North America
 

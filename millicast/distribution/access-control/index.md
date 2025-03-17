@@ -10,7 +10,7 @@ Stream security is a priority for the Dolby.io platform. Along with stream proto
 
 # Publishing access control
 
-A [Publish token](/millicast/streaming-dashboard/managing-your-tokens.md) is **required** for [broadcasting](/millicast/broadcast/index.md) a stream. The Publish token protects your account from unauthorized broadcasters and fraudulent users by adding a layer of server-side authentication to the broadcast process. In addition to the token itself, you can add access controls to the Publish token to further limit and secure the broadcast. 
+A [Publish token](/millicast/streaming-dashboard/managing-your-tokens.md) is **required** for [broadcasting](/millicast/broadcast/index.mdx) a stream. The Publish token protects your account from unauthorized broadcasters and fraudulent users by adding a layer of server-side authentication to the broadcast process. In addition to the token itself, you can add access controls to the Publish token to further limit and secure the broadcast. 
 
 During the Publish token creation process, you can further limit access in a few ways:
 

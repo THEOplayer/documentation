@@ -135,7 +135,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 
 # Playback streaming media
 
-The previous stages of [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.md), and [Distribution](/millicast/distribution/index.md) all lead up to making the content available for the end-user to view.
+The previous stages of [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.mdx), and [Distribution](/millicast/distribution/index.md) all lead up to making the content available for the end-user to view.
 
 ## Using the streaming viewer
 

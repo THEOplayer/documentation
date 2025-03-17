@@ -54,7 +54,7 @@ For RTMP and SRT sources, you can specify one or more quality layers. Quality la
 
 
 
-To learn more about publishing and broadcasting with Dolby.io, check out the [Broadcast](/millicast/broadcast/index.md) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
+To learn more about publishing and broadcasting with Dolby.io, check out the [Broadcast](/millicast/broadcast/index.mdx) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
 
 ## Multi-source player
 

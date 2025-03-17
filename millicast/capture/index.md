@@ -4,7 +4,7 @@ slug: /capture
 ---
 To broadcast content, you either need a physical camera capturing the content, a virtual camera from a game engine, or a source of content available via other content creation tools such as OBS or Adobe Premiere.
 
-Many devices are able to capture a compatible media stream encoding that is ready for [broadcast](/millicast/broadcast/index.md);
+Many devices are able to capture a compatible media stream encoding that is ready for [broadcast](/millicast/broadcast/index.mdx);
 
 <div style={{marginLeft: "20px"}}>
 

@@ -2,7 +2,7 @@
 title: "Subscribe Tokens"
 slug: /subscribe-tokens
 ---
-Unlike [publishing a broadcast](/millicast/broadcast/index.md), the subscriber (viewer), by default, **does not need a token** to view a stream. However, if you want to secure your feed from being viewed by non-authenticated users, Dolby.io Streaming provides the ability to use subscribe tokens.
+Unlike [publishing a broadcast](/millicast/broadcast/index.mdx), the subscriber (viewer), by default, **does not need a token** to view a stream. However, if you want to secure your feed from being viewed by non-authenticated users, Dolby.io Streaming provides the ability to use subscribe tokens.
 
 When enabled, streams that require a subscribe token will block access to users not in possession of a valid token coming from a valid domain. This makes subscribe tokens useful for protecting paywalled content or non-public content. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains. 
 

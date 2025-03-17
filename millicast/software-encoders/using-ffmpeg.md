@@ -200,4 +200,4 @@ You can also modify the `-preset` to adjust the compression speed to quality rat
 
 This guide covered broadcasting with `ffmpeg`. To test and view the stream you can use the dashboard or any of the other [playback](/millicast/playback/index.md) methods.
 
-Continue exploring other [software encoders](../broadcast/software-encoders.md) and solutions you can use for [broadcasting](/millicast/broadcast/index.md) your real-time stream.
+Continue exploring other [software encoders](../broadcast/software-encoders.md) and solutions you can use for [broadcasting](/millicast/broadcast/index.mdx) your real-time stream.

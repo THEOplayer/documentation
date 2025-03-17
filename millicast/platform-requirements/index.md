@@ -4,7 +4,7 @@ slug: /network-requirements
 ---
 # Codecs
 
-See the [Broadcast](/millicast/broadcast/index.md) streaming guide for additional details about supported audio and video codecs.
+See the [Broadcast](/millicast/broadcast/index.mdx) streaming guide for additional details about supported audio and video codecs.
 
 # Network Ports
 

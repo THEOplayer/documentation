@@ -18,9 +18,9 @@ The Dolby.io CDN for WebRTC Real-time Streaming supports streaming up to 4k 60fp
 
 > 🚧 Codec support varies between RTMP, RTMPs, SRT, and WebRTC
 > 
-> Since RTMP, RTMPs, and SRT streams are transmuxed into WebRTC via the Dolby.io CDN they each have different audio and video codec support. Learn more in the [broadcast section](/millicast/broadcast/index.md) of the streaming guides.
+> Since RTMP, RTMPs, and SRT streams are transmuxed into WebRTC via the Dolby.io CDN they each have different audio and video codec support. Learn more in the [broadcast section](/millicast/broadcast/index.mdx) of the streaming guides.
 
-Once you have calibrated the camera for the appropriate video resolution and audio resolution for your use case, you will then need to connect the camera to an encoder or calibrate the built-in encoder. Dolby.io supports broadcasting [RTMP and RTMPs streams](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT streams](/millicast/broadcast/using-srt.md), and [WebRTC streams](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md). To start streaming with Dolby.io Real-time Streaming, proceed to the [Broadcast](/millicast/broadcast/index.md) to learn about hardware and software encoder support.
+Once you have calibrated the camera for the appropriate video resolution and audio resolution for your use case, you will then need to connect the camera to an encoder or calibrate the built-in encoder. Dolby.io supports broadcasting [RTMP and RTMPs streams](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT streams](/millicast/broadcast/using-srt.md), and [WebRTC streams](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md). To start streaming with Dolby.io Real-time Streaming, proceed to the [Broadcast](/millicast/broadcast/index.mdx) to learn about hardware and software encoder support.
 
 # Preparing to broadcast with the SalrayWorks raySHOT camera
 

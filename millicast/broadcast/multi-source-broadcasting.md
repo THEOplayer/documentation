@@ -60,7 +60,7 @@ To configure a multi-source broadcast, you will need to construct a unique URL t
 - [Multi-source RTMP](/millicast/broadcast/multi-source-broadcasting.md)multi-source-rtmp)
 - [Multi-source SRT](/millicast/broadcast/multi-source-broadcasting.md)multi-source-srt)
 
-See [Publish Parameters](/millicast/broadcast/index.md)publish-parameters) for descriptions of the supported broadcast parameters for each protocol.
+See [Publish Parameters](/millicast/broadcast/index.mdx)publish-parameters) for descriptions of the supported broadcast parameters for each protocol.
 
 > 👍 Use Multi-Source Builder
 > 

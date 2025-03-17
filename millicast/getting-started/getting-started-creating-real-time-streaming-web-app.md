@@ -35,7 +35,7 @@ If you click the `Customize` button in the Playback Dashboard you'll see there a
 
 # 2.1 Playback from a custom web application
 
-In the previous part, we were able to begin to [broadcast](/millicast/broadcast/index.md) a stream and [playback](/millicast/playback/index.md) that stream in a hosted web viewer application. For more complex projects, you may need more control over the end-user experience. To demonstrate this, we'll build a custom web application to playback and view the stream using the same publish token created from the dashboard. 
+In the previous part, we were able to begin to [broadcast](/millicast/broadcast/index.mdx) a stream and [playback](/millicast/playback/index.md) that stream in a hosted web viewer application. For more complex projects, you may need more control over the end-user experience. To demonstrate this, we'll build a custom web application to playback and view the stream using the same publish token created from the dashboard. 
 
 ## a. Clone the Getting Started repository
 

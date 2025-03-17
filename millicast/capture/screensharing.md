@@ -30,7 +30,7 @@ Inside the dashboard broadcaster, click on the camera icon in the bottom left co
 
 
 
-With your screen shared to the dashboard broadcaster, you are now set up to capture content from your desktop. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.md) to learn about broadcast settings.
+With your screen shared to the dashboard broadcaster, you are now set up to capture content from your desktop. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.mdx) to learn about broadcast settings.
 
 # Screensharing with OBS
 

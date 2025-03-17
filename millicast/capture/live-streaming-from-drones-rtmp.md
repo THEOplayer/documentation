@@ -178,6 +178,6 @@ Web based broadcaster
 
 ### Learn more
 
-Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.md), [distribution](/millicast/distribution/index.md), and [playback](/millicast/playback/index.md) guides to complete your project.
+Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.md), and [playback](/millicast/playback/index.md) guides to complete your project.
 
 If you have a different type of drone than the ones listed, reach out to our [support team](https://support.dolby.io/) to ask about compatibility.
