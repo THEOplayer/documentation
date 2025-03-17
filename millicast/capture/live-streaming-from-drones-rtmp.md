@@ -52,21 +52,21 @@ When you are ready to setup your device, start the drone and the controller. Con
 Select the menu in the upper right corner to open the available settings.
 
 
-![](/img/millicast/dolbyio-dji-drone-streaming-menu.jpg)
+![](../assets/img/dolbyio-dji-drone-streaming-menu.jpg)
 
 
 
 Select the **Transmission** tab and open **Live Streaming Platforms**.
 
 
-![](/img/millicast/dolbyio-dji-drone-transmission-menu.jpg)
+![](../assets/img/dolbyio-dji-drone-transmission-menu.jpg)
 
 
 
 Choose the **RTMP** option.
 
 
-![](/img/millicast/dolbyio-dji-drone-live-streaming-menu.jpg)
+![](../assets/img/dolbyio-dji-drone-live-streaming-menu.jpg)
 
 
 
@@ -95,14 +95,14 @@ rtmp://rtmp-auto.millicast.com:1935/v2/pub/${streamName}?token=${publishToken}
 Choose a _Resolution_ and _Bitrate_ that meets your needs, and then select the **Start** button to begin the live stream. These settings will typically persist so that you don't have to configure each flight.
 
 
-![](/img/millicast/Screenshot_20220113-112623.jpg)
+![](../assets/img/Screenshot_20220113-112623.jpg)
 
 
 
 After a countdown, you will see your live stream icon as active on the top of the application.
 
 
-![](/img/millicast/Screenshot_20220113-112908.jpg)
+![](../assets/img/Screenshot_20220113-112908.jpg)
 
 
 
@@ -140,29 +140,29 @@ This option allows near real time live-streaming with additional codec options, 
 Streams can also benefit from constrained network environments with these options.
 
 
-![](/img/millicast/Dji_Pro_Controller.png)
+![](../assets/img/Dji_Pro_Controller.png)
 
 
 
 
-![](/img/millicast/DJI_Plus_Controller.png)
+![](../assets/img/DJI_Plus_Controller.png)
 
 
 
 
-![](/img/millicast/Autel_Drones_Smart_Controller.png)
+![](../assets/img/Autel_Drones_Smart_Controller.png)
 
 
 
 
-![](/img/millicast/Autel_Live_Deck.png)
+![](../assets/img/Autel_Live_Deck.png)
 
 
 
 Connect to a PC or Mobile device a simple HDMI capture device can be used.
 
 
-![](/img/millicast/hdmi.png)
+![](../assets/img/hdmi.png)
 
 
 

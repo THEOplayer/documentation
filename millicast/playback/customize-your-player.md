@@ -13,28 +13,28 @@ When having a stream, it is possible to set up a loading screen before your even
 Open up the management screen of your stream token and visit the Playback tab. To the right on the _Hosted player path_, there will be a space for an **Offline image URL**.  Here place the image's link with an HTTP-compliant URL. 
 
 
-![](/img/millicast/stream_preview.png)
+![](../assets/img/stream_preview.png)
 
 
 
 Additionally, this feature can be accessed from inside the Broadcaster via the share icon. Under the Hosted Player iFrame URL, click on the Customize button, where a new window will show up with options to customize the player settings. 
 
 
-![](/img/millicast/Capture_decran_2023-08-07_a_4.37.33_PM.png)
+![](../assets/img/Capture_decran_2023-08-07_a_4.37.33_PM.png)
 
 
 
 To ensure the image has been correctly added to the live stream, visit the Hosted player path URL, and you should see the image displayed as the stream is not live. 
 
 
-![](/img/millicast/Capture_decran_2023-08-07_a_4.41.25_PM.png)
+![](../assets/img/Capture_decran_2023-08-07_a_4.41.25_PM.png)
 
 
 
 This is not the only customizable setting available for your event. The following are available to be enabled: 
 
 
-![](/img/millicast/Capture_decran_2023-08-07_a_4.55.22_PM.png)
+![](../assets/img/Capture_decran_2023-08-07_a_4.55.22_PM.png)
 
 
 

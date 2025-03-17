@@ -5,7 +5,7 @@ slug: /multi-source-builder
 The **Multi-source** tab of the Streaming Dashboard is a tool to help you build and configure multiple publishing sources to enable simulcast or power a multi-view experience. You can add multiple [SRT](/millicast/broadcast/using-srt.md), [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [WebRTC](/millicast/broadcast/webrtc-whip.md) sources and use the user-interface to configure multi-bitrate publishing. The Multi-source tab also includes a URL to launch the hosted player with the multi-viewer configuration, customizable `<iframe>` code to embed the hosted player into your webpage, and the ability to export your multi-source configuration as a file.
 
 
-![](/img/millicast/builder.png)
+![](../assets/img/builder.png)
 
 
 
@@ -20,7 +20,7 @@ This guide covers the following:
 Click the `Add a source` button to begin setting up multiple stream sources.
 
 
-![](/img/millicast/add-source.png)
+![](../assets/img/add-source.png)
 
 
 
@@ -31,7 +31,7 @@ The **streaming protocol** helps identify the configuration needed for the broad
 By default, the first source you add will be labeled as the _Main_ source. Dolby.io Real-time Streaming limits the aggregate bitrate of all sources to 12 Mbps. The main source is prioritized and allowed to exceed the 12 Mbps limit, and the other sources share any remaining available bandwidth. See the [Multi-view](/millicast/playback/multiview.md)limitations-of-multi-view) guide for examples of bandwidth allocation.
 
 
-![](/img/millicast/test-sources.png)
+![](../assets/img/test-sources.png)
 
 
 
@@ -50,7 +50,7 @@ By selecting a source, the configuration details and available settings will be 
 For RTMP and SRT sources, you can specify one or more quality layers. Quality layers allows for quality selection when multi-bitrate (simulcast) is used for playback. **Multi-bitrate delivery** allows for adaptive quality RTMP and SRT streams. These streams are selected based on the viewer's available bandwidth and provide a more stable streaming experience. For more information see, [Simulcast](/millicast/distribution/using-webrtc-simulcast.md).
 
 
-![](/img/millicast/rtmp-source.png)
+![](../assets/img/rtmp-source.png)
 
 
 
@@ -63,7 +63,7 @@ You can use the multi-source hosted player, which is a streaming video player, a
 You can use the[Hosted Player](/millicast/playback/hosted-viewer.md) with multi-view enabled to verify your multi-source setup. This streaming video player can be used as a standalone web application or embedded into your website. By copying the **Multi-view player URL** or **Hosted embedded player** code it will already be properly configured for this type of multi-source playback.
 
 
-![](/img/millicast/multi-source-player.png)
+![](../assets/img/multi-source-player.png)
 
 
 

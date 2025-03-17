@@ -53,7 +53,7 @@ To acquire an API Secret, log into the Dolby.io dashboard, and click on "_Settin
 Navigate to the Security tab and click the `+ Create` button to add an API Secret.
 
 
-![](/img/millicast/add-api-token.png)
+![](../assets/img/add-api-token.png)
 
 
 
@@ -68,7 +68,7 @@ Publish tokens are required to start a stream and can be used to control who, wh
 Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
-![](/img/millicast/pubtok.png)
+![](../assets/img/pubtok.png)
 
 
 
@@ -165,7 +165,7 @@ The easiest way to begin learning about creating a subscribe token is by going t
 Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
-![](/img/millicast/subtok.png)
+![](../assets/img/subtok.png)
 
 
 

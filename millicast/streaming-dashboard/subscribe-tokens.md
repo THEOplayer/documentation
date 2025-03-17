@@ -23,21 +23,21 @@ This guide outlines the following:
 To get started, [login to your Dolby.io Real-time Streaming account](https://dashboard.dolby.io/) and select **Subscribe tokens** from the left menu. Here you can create and manage your subscribe tokens.
 
 
-![](/img/millicast/subscribe-tokens-empty.png)
+![](../assets/img/subscribe-tokens-empty.png)
 
 
 
 Begin by creating a token using the **(+) Create** button. This will open a popup window on your screen containing various options for your new token.
 
 
-![](/img/millicast/image.png)
+![](../assets/img/image.png)
 
 
 
 Let's go over each option in a bit more detail:
 
 
-![](/img/millicast/subscribe-tokens-settings.png)
+![](../assets/img/subscribe-tokens-settings.png)
 
 
 
@@ -59,14 +59,14 @@ You can switch from the top "_Basic_" tab to the "_Advanced_" tab in the token c
 - [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.md) Enables blocking by location at a country level for this specific token.
 
 
-![](/img/millicast/subscribe-token-add.png)
+![](../assets/img/subscribe-token-add.png)
 
 
 
 After you have successfully created your token, it will be displayed in a scrollable list.
 
 
-![](/img/millicast/subscribe-token-list.png)
+![](../assets/img/subscribe-token-list.png)
 
 
 
@@ -75,14 +75,14 @@ After you have successfully created your token, it will be displayed in a scroll
 Each token item has a _quick action menu_ that provides you with options for enabling and deleting each token.
 
 
-![](/img/millicast/subscribe-token-quick-action.png)
+![](../assets/img/subscribe-token-quick-action.png)
 
 
 
 For more comprehensive management, open the _manage view_ by simply clicking the token name.
 
 
-![](/img/millicast/subscribe-token-detail.png)
+![](../assets/img/subscribe-token-detail.png)
 
 
 
@@ -103,7 +103,7 @@ Depending on the scale of your production, it may not be secure or feasible to c
 Once you've finished using a Subscribe token, it is recommended that you retire the token by deleting it to prevent accidental vulnerabilities. Deleting the token can be done from the _quick action menu_ found at the top-level Subscribe Tokens page by clicking on the trash can icon.
 
 
-![](/img/millicast/subscribe-token-delete.png)
+![](../assets/img/subscribe-token-delete.png)
 
 
 

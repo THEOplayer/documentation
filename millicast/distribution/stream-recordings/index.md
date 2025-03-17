@@ -14,7 +14,7 @@ You can work with recordings and clips either from the [Streaming Dashboard](/mi
 The collection of recordings and clips is referred to more broadly as **Media Assets** that have been created from your account. There are a few concepts to understand to make best use of the feature.
 
 
-![](/img/millicast/8b5cccab48739f346b2bcd4b9fc3a48f827fb09924f0cb921f1f1825-media-assets-overview.png)
+![](../../assets/img/8b5cccab48739f346b2bcd4b9fc3a48f827fb09924f0cb921f1f1825-media-assets-overview.png)
 
 
 

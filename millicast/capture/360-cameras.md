@@ -17,14 +17,14 @@ Download the Insta360 [App](https://www.insta360.com/download/hot-download).
 5. Select RTMP.
 
 
-![](/img/millicast/insta360.png)
+![](../assets/img/insta360.png)
 
 
 
 6. Enter you Dolby.io RTMP publishing path.
 
 
-![](/img/millicast/insta360rtmp.png)
+![](../assets/img/insta360rtmp.png)
 
 
 

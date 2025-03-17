@@ -17,14 +17,14 @@ Once you have created a Dolby.io account, you can begin using the [Dolby.io dash
 Inside the dashboard, click the Broadcast button located adjacent to the token.
 
 
-![](/img/millicast/broadcast_dash_button.png)
+![](../assets/img/broadcast_dash_button.png)
 
 
 
 Inside the dashboard broadcaster, click the camera icon in the bottom left corner to select your video input device. If the web camera is correctly connected to the device, it will be discoverable alongside other video devices and virtual cameras. 
 
 
-![](/img/millicast/image.png)
+![](../assets/img/image.png)
 
 
 
@@ -46,19 +46,19 @@ Once downloaded and installed, open the app.
 Inside the app, click the "+" icon within the Sources tab and add a Video Capture Device.
 
 
-![](/img/millicast/videocaptureobs.png)
+![](../assets/img/videocaptureobs.png)
 
 
 
 
-![](/img/millicast/videocaptureobs.png)
+![](../assets/img/videocaptureobs.png)
 
 
 
 When adding the Video Capture Device, make sure to select your Web Camera as the device you want to create a capture for.
 
 
-![](/img/millicast/image.png)
+![](../assets/img/image.png)
 
 
 

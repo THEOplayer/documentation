@@ -35,14 +35,14 @@ One example of preparing a professional camera for broadcasting is setting up th
 With our capture profile defined, we can look at our physical setup:
 
 
-![](/img/millicast/Salrayworks-setup.jpg)
+![](../assets/img/Salrayworks-setup.jpg)
 
 
 
 We have the camera, the encoder, and a serial digital interface (SDI) cable to connect the camera to the encoder. We can now power the camera and the encoder, connect the encoder to the internet via an ethernet cable, and connect the camera to the encoder with the SDI cable.
 
 
-![](/img/millicast/Salrayworks-ready-to-stream.jpg)
+![](../assets/img/Salrayworks-ready-to-stream.jpg)
 
 
 

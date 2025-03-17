@@ -19,42 +19,42 @@ To get started, [create a token](/millicast/streaming-dashboard/managing-your-to
 Open LiveU Studio and click on "PUBLISH" in the left-side menu. Click on "ADD OR EDIT PUBLISHING POINTS".
 
 
-![](/img/millicast/liveustudio_1.png)
+![](../assets/img/liveustudio_1.png)
 
 
 
 Select "WHIP" from the menu and Click "+ ADD PUBLISHING POINT".
 
 
-![](/img/millicast/liveustudio_2.png)
+![](../assets/img/liveustudio_2.png)
 
 
 
 Paste the WHIP endpoint URL and your Publishing token copied from the Dolby.io dashboard. Save the publishing point and select it.
 
 
-![](/img/millicast/liveustudio_3.png)
+![](../assets/img/liveustudio_3.png)
 
 
 
 Click "START TEST" from LiveU Studio.
 
 
-![](/img/millicast/liveustudio_4.png)
+![](../assets/img/liveustudio_4.png)
 
 
 
 Click "START PUBLISHING AND RECORD" to start publishing from LiveU Studio to Dolby.io.
 
 
-![](/img/millicast/liveustudio_5.png)
+![](../assets/img/liveustudio_5.png)
 
 
 
 LiveU Studio will publish to the Dolby.io Real-time Streaming service using WHIP. To view the stream, navigate back to your newly created token and switch to the "Playback" tab. From the "Playback" tab, copy the "Hosted Player path" URL and open it in your browser.
 
 
-![](/img/millicast/liveustudio_6.png)
+![](../assets/img/liveustudio_6.png)
 
 
 

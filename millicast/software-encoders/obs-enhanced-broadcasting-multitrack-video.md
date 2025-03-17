@@ -15,14 +15,14 @@ slug: /obs-enhanced-broadcasting-multitrack-video
 Multitrack video in OBS support creating multiple "renditions" or qualities that OBS sends to Millicast so that the end-viewer can choose which quality to watch or let it happen automatically.  This is called Adaptive Bitrate (ABR).
 
 
-![](/img/millicast/842826436d56486b6a0a14b06bbcda1958658d3cfa5d010236934915-abr.png)
+![](../assets/img/842826436d56486b6a0a14b06bbcda1958658d3cfa5d010236934915-abr.png)
 
 
 
 To use this feature, _you will need OBS version 30.2 at a minimum_.  Then, enable Enhanced Broadcasting within the broadcast software settings.
 
 
-![](/img/millicast/7850cb180ea40539c6c3c9755d788a26911d7131aeaf6ca760e0601b-obs-multi-track-video.png)
+![](../assets/img/7850cb180ea40539c6c3c9755d788a26911d7131aeaf6ca760e0601b-obs-multi-track-video.png)
 
 
 

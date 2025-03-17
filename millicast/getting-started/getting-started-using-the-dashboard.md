@@ -19,14 +19,14 @@ We will begin by [broadcasting](/millicast/broadcast/index.md) directly from the
 When you log into your Dolby.io account you should select the **Streaming** tab. If you haven't used your account before, you'll see a screen similar to Figure 1a below.
 
 
-![](/img/millicast/dashboard-tokens-empty.png)
+![](../assets/img/dashboard-tokens-empty.png)
 
 
 
 Click the `+ CREATE` button and you'll be prompted to configure a new token.  The token is used to authenticate an application for publishing a live stream from your account.
 
 
-![](/img/millicast/dolbyio-streaming-add-new-token-popup.png)
+![](../assets/img/dolbyio-streaming-add-new-token-popup.png)
 
 
 
@@ -37,14 +37,14 @@ Give this token a meaningful label such as _gettingStarted_ and click the `CONFI
 Return to the _Live broadcast_ section and click the `BROADCAST` button.
 
 
-![](/img/millicast/dolbyio-streaming-broadcast-button.png)
+![](../assets/img/dolbyio-streaming-broadcast-button.png)
 
 
 
 From the dashboard broadcast application that opens, click the green `Start` button to begin a broadcast. You will need to give permission to access your microphone and camera. Once the stream begins, you can see the _LIVE_ box in the upper right corner and a timecode for the duration of the stream above the `Stop` button.
 
 
-![](/img/millicast/dolbyio-streaming-dashboard-broadcast.png)
+![](../assets/img/dolbyio-streaming-dashboard-broadcast.png)
 
 
 
@@ -59,21 +59,21 @@ In the previous section, you created a publishing token and started to broadcast
 In the lower right-hand corner of the dashboard broadcast application are some icons. Click on the sharing icon like the one circled in Figure 2a.
 
 
-![](/img/millicast/dolbyio-share-broadcast-icon.png)
+![](../assets/img/dolbyio-share-broadcast-icon.png)
 
 
 
 Click the `LAUNCH` button to open the hosted live viewer.
 
 
-![](/img/millicast/dolbyio-share-broadcast-launch.png)
+![](../assets/img/dolbyio-share-broadcast-launch.png)
 
 
 
 It may seem like you are watching a local mirror of your video camera, but this feed is making a full round-trip to the servers and back to the browser again. Note the low delay between capture from the webcam and playback within the browser.
 
 
-![](/img/millicast/dolbyio-streaming-dashboard-playback-viewer.png)
+![](../assets/img/dolbyio-streaming-dashboard-playback-viewer.png)
 
 
 

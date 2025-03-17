@@ -7,7 +7,7 @@ The **Live monitoring** section of the [Streaming Dashboard](/millicast/streamin
 **Note:** The live monitoring page currently only displays ingress statistics, and does not provide information on egress or client-side statistics. 
 
 
-![](/img/millicast/live_monitor_assets_v2_Grid_view.png)
+![](../assets/img/live_monitor_assets_v2_Grid_view.png)
 
 
 
@@ -36,14 +36,14 @@ By default, the Live monitoring page displays all of your streams in a grid view
 You can also toggle to display all of your streams in list view.
 
 
-![](/img/millicast/live_monitor_assets_MVP_list_view.jpg)
+![](../assets/img/live_monitor_assets_MVP_list_view.jpg)
 
 
 
 ## Detailed View
 
 
-![](/img/millicast/live_monitor_assets_MVP_detailed_view_-_not_live.jpg)
+![](../assets/img/live_monitor_assets_MVP_detailed_view_-_not_live.jpg)
 
 
 
@@ -74,7 +74,7 @@ The details page for each stream provides the following ingest statistics:
 ### Redundant Ingest Statistics
 
 
-![](/img/millicast/live-monitoring-detail-redudnant-ingest.png)
+![](../assets/img/live-monitoring-detail-redudnant-ingest.png)
 
 
 
@@ -83,7 +83,7 @@ The details page for each stream also displays redundant ingest statistics if re
 ### Ingest Telemetry
 
 
-![](/img/millicast/live-monitoring-detail-telemetry.png)
+![](../assets/img/live-monitoring-detail-telemetry.png)
 
 
 
@@ -92,7 +92,7 @@ The details page for each stream displays telemetry data for the **Video bitrate
 ### Events
 
 
-![](/img/millicast/live-monitoring-detail-events.png)
+![](../assets/img/live-monitoring-detail-events.png)
 
 
 

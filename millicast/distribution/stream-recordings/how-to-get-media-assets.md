@@ -13,7 +13,7 @@ You can find recordings by visiting the [Streaming Dashboard](/millicast/streami
 To find recordings for a specific token, open your Publish token from the **Live Broadcast** section and click the **Settings** button to open the management screen. Select the **Recordings tab** from the top of the panel. Each thumbnail is displayed with a reference to your recording. A newly created recording can take a few seconds to several minutes to render, depending on length. Once the recording has been processed, you can view it. You can click on the **More Files** button to see all the files recorded with the respective token.
 
 
-![](/img/millicast/0f4fe76-rec-token-recordings.png)
+![](../../assets/img/0f4fe76-rec-token-recordings.png)
 
 
 
@@ -22,12 +22,12 @@ To find recordings for a specific token, open your Publish token from the **Live
 Alternatively, to find all your recordings, open the **Recordings** section of the dashboard. You can view your recordings either as a thumbnail grid or a basic list by clicking the **List View** button on the top right section menu. Additionally, you can see the current total storage used in the top right corner of the Recording page, or get your current billable storage in the **Billing** page.
 
 
-![](/img/millicast/rec-player.png)
+![](../../assets/img/rec-player.png)
 
 
 
 
-![](/img/millicast/rec-list-view-selected.png)
+![](../../assets/img/rec-list-view-selected.png)
 
 
 
@@ -38,7 +38,7 @@ Alternatively, to find all your recordings, open the **Recordings** section of t
 To preview your recordings, click on the thumbnail image which will open the **Preview Player** and begin playing the video. The player also provides more information about your recording including length, quality, and dimensions. Click on the **More Details** button under the player to explore.
 
 
-![](/img/millicast/rec-details.png)
+![](../../assets/img/rec-details.png)
 
 
 
@@ -49,7 +49,7 @@ You can close the player using the close button located on the top right or you 
 To download recordings, click the arrow icon visible on the thumbnail. You can also download your video using the icon menu under the preview player. Clicking the download icon immediately initiates a download.
 
 
-![](/img/millicast/rec-player_1.png)
+![](../../assets/img/rec-player_1.png)
 
 
 
@@ -64,14 +64,14 @@ The retention policy for recordings is determined by your business rules for rem
 Located next to the download button, the delete icon deletes the recording. To delete multiple videos you can select the checkboxes on the thumbnails and then click the **Delete Selected** button from the section menu on the top right.
 
 
-![](/img/millicast/rec-chbx-select2.png)
+![](../../assets/img/rec-chbx-select2.png)
 
 
 
 To delete all items at once, click the **Select All** button from the same top section menu. This will select every thumb on the screen. Then, click the **Delete Selected** button to delete them all.
 
 
-![](/img/millicast/rec-select-all2.png)
+![](../../assets/img/rec-select-all2.png)
 
 
 

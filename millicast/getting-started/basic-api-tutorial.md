@@ -172,7 +172,7 @@ Now that you have your files save, lets run our Nodejs server. Go to your DOS, T
 The server will initiate and display the port that it is listening to. In this case, we are using 8084, so the path to the file in the browser will be https://localhost:8084/. You should see a simple UI for getting a new token and that's it. To test, first open your browser’s developer console, then on the UI enter an arbitrary name for the stream we want to use and click the button. The server will proxy your request to the Dolby.io Real-time Streaming where the service generates your new token and returns the results down to you. You should see the results in the developer console window.
 
 
-![](/img/millicast/basic-api-result.png)
+![](../assets/img/basic-api-result.png)
 
 
 
@@ -250,7 +250,7 @@ Below this is our HTTPS server which listens to a specific port. If you move dow
 Open the index.html file in your text editor and move down to the body tag. You can see that we created very simple markup to show a field and a button. The text field is where the user enters the arbitrary name of the stream they want, and the button is to submit it. It simply calls a method **createToken** which mirrors the name of the call on our server side counterpart.
 
 
-![](/img/millicast/basic-api-index1-snap.png)
+![](../assets/img/basic-api-index1-snap.png)
 
 
 

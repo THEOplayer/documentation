@@ -92,7 +92,7 @@ Log into the Dolby.io dashboard and go to the [Live Broadcast section](https://s
 Open the publishing token's details by clicking the settings button from the item’s action menu.
 
 
-![](/img/millicast/tokens-main-setting.png)
+![](../assets/img/tokens-main-setting.png)
 
 
 
@@ -103,7 +103,7 @@ In order for you to publish to Dolby.io Real-time Streaming with WebRTC you will
 Click on the **Publishing** tab for information on how to connect as a publisher to your Dolby.io account.
 
 
-![](/img/millicast/webrtc-publish.png)
+![](../assets/img/webrtc-publish.png)
 
 
 

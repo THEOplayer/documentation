@@ -5,7 +5,7 @@ slug: /sample-apps-ios-viewer
 # Native viewer sample app for iOS, iPad OS, and tvOS devices
 
 
-![](/img/millicast/iOS_stream_monitor.png)
+![](../assets/img/iOS_stream_monitor.png)
 
 
 

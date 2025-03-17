@@ -32,14 +32,14 @@ Within vMix, select the _Streaming Settings_ menu to enter your publishing desti
 Set the **Application** to _FFMPEG_.
 
 
-![](/img/millicast/vMix_RTMP_settings.png)
+![](../assets/img/vMix_RTMP_settings.png)
 
 
 
 Select the Quality settings. Make sure the **Profile** is set to _Baseline_. You may experience stutters when using another profile.
 
 
-![](/img/millicast/vMix2.png)
+![](../assets/img/vMix2.png)
 
 
 
@@ -62,7 +62,7 @@ The first destination **URL** and **Stream Name** would remain much as it was co
 - **simulcastId**: add this query parameter to indicate it should be a Simulcast stream
 
 
-![](/img/millicast/vMixMBR1.png)
+![](../assets/img/vMixMBR1.png)
 
 
 
@@ -82,7 +82,7 @@ You might also adjust the **Quality Settings** to use 1080p for this source.
 Select a second target destination. Update the **sourceId** to reflect that this is the second source.
 
 
-![](/img/millicast/vMixMBR2.png)
+![](../assets/img/vMixMBR2.png)
 
 
 
@@ -102,7 +102,7 @@ Adjust the quality settings to be a lower framerate, bitrate, and resolution to 
 As with the other example, update the **sourceId** and adjust the quality settings to provide a constrained bandwidth solution.
 
 
-![](/img/millicast/vMixMBR3.png)
+![](../assets/img/vMixMBR3.png)
 
 
 
@@ -120,7 +120,7 @@ As with the other example, update the **sourceId** and adjust the quality settin
 In vMix click start all streams. You can then watch this stream from a [playback](/millicast/playback/index.md) viewer. If you select the viewer settings, you can see that there are multiple Video Quality renditions available.
 
 
-![](/img/millicast/vMixABR4.png)
+![](../assets/img/vMixABR4.png)
 
 
 
@@ -135,7 +135,7 @@ See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on 
 1. Select the **Output / NDI / SRT** settings and configure an output by clicking the gear icon.
 
 
-![](/img/millicast/vmix-srt-settings.png)
+![](../assets/img/vmix-srt-settings.png)
 
 
 
@@ -144,7 +144,7 @@ See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on 
 4. Input the **SRT stream ID** in the `Stream ID` field.
 
 
-![](/img/millicast/vmix-srt-settings-paths.png)
+![](../assets/img/vmix-srt-settings-paths.png)
 
 
 
@@ -157,7 +157,7 @@ vMix can also be set as an [NDI](/millicast/broadcast/using-ndi.md) source with 
 To configure this, choose the Outputs / NDI / SRT configuration.
 
 
-![](/img/millicast/vMix_NDI.png)
+![](../assets/img/vMix_NDI.png)
 
 
 

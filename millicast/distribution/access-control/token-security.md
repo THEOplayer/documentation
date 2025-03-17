@@ -27,7 +27,7 @@ You can manage allowed origins by changing settings from the user interface of t
 Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can edit the _Allowed origins_ to specify a list of domain names.
 
 
-![](/img/millicast/dashboard-allowed-origins.png)
+![](../../assets/img/dashboard-allowed-origins.png)
 
 
 
@@ -79,7 +79,7 @@ You can manage IP filters by changing settings from the user interface of the [S
 Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can change the _IP filter type_ from the dropdown.
 
 
-![](/img/millicast/dashboard-ip-filter-type.png)
+![](../../assets/img/dashboard-ip-filter-type.png)
 
 
 
@@ -159,7 +159,7 @@ Consult the [/api/publish_token](ref:publishtokenv1_updatetoken) and [/api/subsc
 If the IP address detected does not match the IP Filters enabled, the user might be presented an error like this in the broadcast application.
 
 
-![](/img/millicast/broadcast-error.png)
+![](../../assets/img/broadcast-error.png)
 
 
 
@@ -170,7 +170,7 @@ Verify that the IP address you are broadcasting from is static and correctly inp
 If the domain detected does not match the allowed origins, the user might be presented with an error like this in the broadcast application.
 
 
-![](/img/millicast/dashboard-origin-broadcast-error.png)
+![](../../assets/img/dashboard-origin-broadcast-error.png)
 
 
 

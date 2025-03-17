@@ -74,7 +74,7 @@ You can manage cluster regions by changing settings from user interface of the [
 Open the Streaming section of the <a href="https://streaming.dolby.io/#/tokens" target="_new">Dolby.io Dashboard</a>. Select the publishing token you want to modify. Within the **Settings** section you can choose the _Cluster Region_ from the dropdown.
 
 
-![](/img/millicast/cluster-region.png)
+![](../../assets/img/cluster-region.png)
 
 
 
@@ -83,14 +83,14 @@ Open the Streaming section of the <a href="https://streaming.dolby.io/#/tokens" 
 When using the Dolby.io Dashboard [publisher](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) to broadcast or the viewer to playback you can select the gear setting to view the **Media Stats**. 
 
 
-![](/img/millicast/publisher-media-stats-dialog.png)
+![](../../assets/img/publisher-media-stats-dialog.png)
 
 
 
 This will display a modal overlaying the stream with details about resolution, bitrate, etc. and will also display the **Cluster** value using one of the region codes.
 
 
-![](/img/millicast/viewer-media-stats-modal-cluster.png)
+![](../../assets/img/viewer-media-stats-modal-cluster.png)
 
 
 

@@ -19,14 +19,14 @@ To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a D
 From your VidiU app on your mobile device, select `Device > Settings > Broadcast > Platform`. After Platform, select `RTMP(S)` at the bottom of the menu. 
 
 
-![](/img/millicast/0a7f149-vidiu1.png)
+![](../assets/img/0a7f149-vidiu1.png)
 
 
 
 Select "Setup new Destination".
 
 
-![](/img/millicast/094b7e2-vidiu2.png)
+![](../assets/img/094b7e2-vidiu2.png)
 
 
 
@@ -40,7 +40,7 @@ Enter your Dolby.io Real-time Streaming RTMP or RTMPS path, and your RTMP publis
   `myStreamName?token=3bc330607a15a0ecebebd8c9ee2a559fd143c937174bd276e213a96425bb107e`
 
 
-![](/img/millicast/5fab6f1-vidiu3.png)
+![](../assets/img/5fab6f1-vidiu3.png)
 
 
 
@@ -62,7 +62,7 @@ To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a D
   `myStreamName?token=3bc330607a15a0ecebebd8c9ee2a559fd143c937174bd276e213a96425bb107e`
 
 
-![](/img/millicast/18e114a-Teradek_wave.jpg)
+![](../assets/img/18e114a-Teradek_wave.jpg)
 
 
 

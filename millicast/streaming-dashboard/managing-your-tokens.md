@@ -20,14 +20,14 @@ This guide outlines the following:
 Log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin) and select **Live Broadcast** from the left menu. This is where you can view and manage all of your _Publish tokens_.
 
 
-![](/img/millicast/tokens-main.png)
+![](../assets/img/tokens-main.png)
 
 
 
 Select the `Create (+)` button. This opens a pop-up window with options for configuring your new _Publish token_. Each option can be changed again later after the token has been created.
 
 
-![](/img/millicast/token-create.JPG)
+![](../assets/img/token-create.JPG)
 
 
 
@@ -51,7 +51,7 @@ Let's go over each section in a bit more detail:
   - If a token expires in the middle of a broadcast, the broadcast will continue until the publisher ends it or if the [Stop an active stream](ref:stream_stopstream) API is called for that token. The Temporary token feature prevents expired tokens from being able to _start_ new streams, but doesn't impact already running streams.
 
 
-![](/img/millicast/expiredate.JPG)
+![](../assets/img/expiredate.JPG)
 
 
 
@@ -75,7 +75,7 @@ You will also see an **Advanced tab** at the top of the token creation interface
 After you have successfully created your token, it will be displayed in a scrollable list.
 
 
-![](/img/millicast/token-first.png)
+![](../assets/img/token-first.png)
 
 
 
@@ -86,14 +86,14 @@ Once created, your Publish token can be used to broadcast in a variety of differ
 Once a Pubish token is created, it is displayed on the **Live Broadcast** page. From this page, you can [start a broadcast using the Dashboard Broadcaster](/millicast/getting-started/getting-started-using-the-dashboard.md)b-start-broadcast), enable or disable, delete, or edit the settings for each Publish token.
 
 
-![](/img/millicast/tempsnip.png)
+![](../assets/img/tempsnip.png)
 
 
 
 Even though the _quick action menu_ provides you with a certain level of token control, the real control lies within the _manage_ UI for each token. To open the manage view, simply click the **Token Name** on the item’s action menu. 
 
 
-![](/img/millicast/dashboard-tabs.png)
+![](../assets/img/dashboard-tabs.png)
 
 
 
@@ -115,7 +115,7 @@ Once opened, you will see multiple tabs to explore.
 The **Token details** tab allows you to view and edit settings specified during token creation. For a full list of these settings and their definitions, see [Creating a Publishing token](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token). The Token details page also includes the **Publish token** string and the **Account ID** string, which can both be copied and used for [starting a broadcast](/millicast/broadcast/index.md). 
 
 
-![](/img/millicast/publish-token-details.png)
+![](../assets/img/publish-token-details.png)
 
 
 
@@ -130,7 +130,7 @@ As mentioned in [Creating a Publish token](/millicast/streaming-dashboard/managi
 To add a new name, simply click on the **(+) CREATE** button on the Token Streams tab, which will initiate a popup similar to the add token interface.
 
 
-![](/img/millicast/token-add-streamname.png)
+![](../assets/img/token-add-streamname.png)
 
 
 
@@ -163,7 +163,7 @@ The Playback tab includes all relevant information for playing back a live strea
 From this tab, you can customize the player by altering settings such as the inclusion of the "Volume button" or if the stream is "Muted on start". To learn more about the hosted player or how you can build or use your own player, explore the [Playback](/millicast/playback/index.md) guide.
 
 
-![](/img/millicast/playback.png)
+![](../assets/img/playback.png)
 
 
 
@@ -174,7 +174,7 @@ The playback tab also includes a [WHEP](ref:whep_whepsubscribe) endpoint. This c
 The _Recordings_ tab can be used to view and download all recordings associated with this Publish token.
 
 
-![](/img/millicast/recordings.png)
+![](../assets/img/recordings.png)
 
 
 
@@ -194,7 +194,7 @@ The API tab includes information needed to publish a stream with the [Client SDK
 - **API endpoints**: The API endpoints section provides a [Publish API URL](/millicast/streaming-dashboard/token-api.md)publishing-tokens) and a [Subscribe API URL](/millicast/streaming-dashboard/token-api.md)subscribe-tokens), which can be used with the Publish token credentials and[ Subscribe token credentials](/millicast/streaming-dashboard/subscribe-tokens.md), respectively.
 
 
-![](/img/millicast/api.png)
+![](../assets/img/api.png)
 
 
 
@@ -203,7 +203,7 @@ The API tab includes information needed to publish a stream with the [Client SDK
 The multi-source builder is a tool to help you construct and configure publishing endpoint arguments to power a multi-view experience. You can add multiple SRT, RTMP, or WebRTC sources and can configure Multi-Bitrate publishing. The Multi-source tab also includes a URL to launch the hosted player in the multi-viewer configuration, customizable `<iframe>` code to add the hosted embedded player into your webpage, and the ability to export your multi-source file.
 
 
-![](/img/millicast/multi-source.png)
+![](../assets/img/multi-source.png)
 
 
 
@@ -212,7 +212,7 @@ The multi-source builder is a tool to help you construct and configure publishin
 Once you've finished using a Publish token, it is **recommended that you retire the token** by deleting it to prevent accidental vulnerabilities. Deleting the token can be done from the _quick action menu_ found at the top-level Live Broadcast page by clicking on the trash can icon.
 
 
-![](/img/millicast/image.png)
+![](../assets/img/image.png)
 
 
 

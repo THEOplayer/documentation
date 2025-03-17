@@ -21,7 +21,7 @@ https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]
 Once you join, the bottom right gear icon flashes a notification prompting you to enable multi-view. Enable it to begin viewing the streams.
 
 
-![](/img/millicast/Select_multiview.JPG)
+![](../assets/img/Select_multiview.JPG)
 
 
 

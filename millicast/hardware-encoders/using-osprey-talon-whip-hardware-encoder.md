@@ -20,14 +20,14 @@ See the official [Osprey Video](https://www.ospreyvideo.com/) site for documenta
 For cameras that don’t have built-in encoders, you can connect the camera to an external encoder such as the Osprey Talon.
 
 
-![](/img/millicast/b12e768-Osprey_Talon.png)
+![](../assets/img/b12e768-Osprey_Talon.png)
 
 
 
 You'll need to plug an ethernet connection and a power supply into your Talon encoder and power the device on. 
 
 
-![](/img/millicast/Image-6-2.jpg)
+![](../assets/img/Image-6-2.jpg)
 
 
 
@@ -36,7 +36,7 @@ Once powered on, the device will be discoverable on your local network. You can 
 Once found in your browser, you'll be prompted to log into the device. Refer to the [Osprey Talon Encoder User Manual ](https://www.ospreyvideo.com/manuals)to learn about your device's username and password.
 
 
-![](/img/millicast/2B9A2FCC-5901-4390-A7A2-4682899CBD78_1_201_a.jpeg)
+![](../assets/img/2B9A2FCC-5901-4390-A7A2-4682899CBD78_1_201_a.jpeg)
 
 
 
@@ -47,14 +47,14 @@ To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a D
 Inside the encoder UI, click on the _Channels_ tab. From the Channels tab, set the protocol to Dolby.io (WebRTC). Enter your Stream Name and Publishing Token in the corresponding fields.
 
 
-![](/img/millicast/whip-osprey-talon.png)
+![](../assets/img/whip-osprey-talon.png)
 
 
 
 After inputting your credentials, switch to the Dashboard tab and click the green button to start the broadcast.
 
 
-![](/img/millicast/aa7dff6-osprey-broadcast.png)
+![](../assets/img/aa7dff6-osprey-broadcast.png)
 
 
 
@@ -70,7 +70,7 @@ Inside the encoder UI, click on the _Channels_ tab. From the Channels tab, set t
 - The value of the `SRT Stream ID` must be URL encoded. To get that URL encoded value, look for the **SRT publish URL** and copy the string of characters after `_?streamId=_`. For example,  "_lq11zkzu%3Ft%3DVgkvUAa5b3QvoLW5b3QvoLW5b3QvoLW-ak_".
 
 
-![](/img/millicast/osprey-srt.png)
+![](../assets/img/osprey-srt.png)
 
 
 
@@ -81,14 +81,14 @@ Once configured, you can press start and the encoder will begin streaming conten
 To enable SRT encryption for the SRT feed, in the Dolby.io dashboard for your stream token, enable **Passphrase encryption** and copy the **SRT passphrase**.
 
 
-![](/img/millicast/srt-passphrase.png)
+![](../assets/img/srt-passphrase.png)
 
 
 
 In the Osprey Talon dashboard, enable AES-128 Encryption and paste the passphrase.
 
 
-![](/img/millicast/osprey-srt-encryption.png)
+![](../assets/img/osprey-srt-encryption.png)
 
 
 

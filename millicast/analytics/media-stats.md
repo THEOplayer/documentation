@@ -31,5 +31,5 @@ Both the [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-d
 An example of what values from a broadcast might report.
 
 
-![](/img/millicast/dolbyio-broadcaster-media-stats.png)
+![](../assets/img/dolbyio-broadcaster-media-stats.png)
 

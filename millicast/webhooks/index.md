@@ -30,14 +30,14 @@ Each webhook generates a **Webhook Secret**. This secret can be used for signatu
 From the [Streaming Dashboard](/millicast/streaming-dashboard/index.md), navigate to the Webhooks tab and click the `CREATE` button.
 
 
-![](/img/millicast/dashboard-webhooks.png)
+![](../assets/img/dashboard-webhooks.png)
 
 
 
 This will open a popup window on your screen to input the **Webhook url**. You also choose which specific event **types** this endpoint should receive.
 
 
-![](/img/millicast/dashboard-add-new-webhook.png)
+![](../assets/img/dashboard-add-new-webhook.png)
 
 
 
@@ -48,21 +48,21 @@ Once created, the URL and event types will be listed.
 Select a webhook from the webhooks listed in the dashboard to modify its settings.
 
 
-![](/img/millicast/webhooks-management-main.png)
+![](../assets/img/webhooks-management-main.png)
 
 
 
 Change the URL that will be called by the webhook by pressing the pen icon at the end of the row:
 
 
-![](/img/millicast/webhooks-url-edit.png)
+![](../assets/img/webhooks-url-edit.png)
 
 
 
 Update the URL and **confirm** your decision by clicking the green checkmark. To **cancel**, select the grey button.
 
 
-![](/img/millicast/webhooks-url-edit.confirm.png)
+![](../assets/img/webhooks-url-edit.confirm.png)
 
 
 
@@ -73,7 +73,7 @@ To choose the types of event hooks to receive, click the **Enabled** button next
 If you believe your webhook secret has become compromised or want to rotate it regularly for security purposes, click the **Renew** button.
 
 
-![](/img/millicast/webhooks-secret-edit.png)
+![](../assets/img/webhooks-secret-edit.png)
 
 
 

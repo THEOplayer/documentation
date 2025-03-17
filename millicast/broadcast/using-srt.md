@@ -21,7 +21,7 @@ Some examples of encoders supporting SRT include the [Osprey](/millicast/hardwar
 Select a publish token that you will use for your SRT broadcast. 
 
 
-![](/img/millicast/srt-token.png)
+![](../assets/img/srt-token.png)
 
 
 
@@ -30,7 +30,7 @@ Select a publish token that you will use for your SRT broadcast.
 Click on the _Publishing_ tab for information on how to connect as a publisher to your Dolby.io account. There is a section specifically for all of the SRT publish settings.
 
 
-![](/img/millicast/dolbyio-streaming-srt-settings.png)
+![](../assets/img/dolbyio-streaming-srt-settings.png)
 
 
 
@@ -161,7 +161,7 @@ let publishURL = '${srtPublishPath}?streamid=${encodedStreamId}';
 With passphrase encryption you can further protect your stream from unauthorized access. You enable the encryption in the dashboard by toggling the **passphrase encryption** setting to on. This generates a passphrase that must be input when starting to broadcast.
 
 
-![](/img/millicast/Screenshot_2023-10-03_at_09.17.23.png)
+![](../assets/img/Screenshot_2023-10-03_at_09.17.23.png)
 
 
 
@@ -176,7 +176,7 @@ There are some limitations when using SRT with Real-time Streaming:
 - The H.265 video codec is supported on Safari, but will only function if the developer feature is enabled under "Develop > Feature Flags". 
 
   
-![](/img/millicast/srt-h265-enable-feature-flag.png)
+![](../assets/img/srt-h265-enable-feature-flag.png)
 
 
 If you have needs like these, please [contact us](https://dolby.io/contact).

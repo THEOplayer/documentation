@@ -31,7 +31,7 @@ When multi-source is enabled, you use the `sourceId` attribute when publishing a
 - When multi-bitrate publishing is configured, the sources are logically grouped using the `simulcastId`. 
 
 
-![](/img/millicast/multi-source-overview.png)
+![](../assets/img/multi-source-overview.png)
 
 
 
@@ -198,7 +198,7 @@ Publishing with the hosted player is a simple way to test the feature quickly. Y
 In the _Live broadcast_ section and click the `BROADCAST` button.
 
 
-![](/img/millicast/dolbyio-streaming-broadcast-button.png)
+![](../assets/img/dolbyio-streaming-broadcast-button.png)
 
 
 

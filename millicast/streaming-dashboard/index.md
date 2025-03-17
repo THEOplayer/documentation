@@ -14,7 +14,7 @@ The Dolby.io dashboard enables you to easily provision tokens, broadcast streams
 Live broadcasting is instant and secure using the dashboard’s online broadcaster. The interface guides you through creating a secure token allowing your viewers to connect securely to your live stream via WebRTC. Once you have successfully created your [Publish token](/millicast/streaming-dashboard/managing-your-tokens.md), you can publish a live stream instantly. A URL to a Viewer interface is created for you to instantly share your live stream with your audience, making publishing a complete, secure, and simple process. 
 
 
-![](/img/millicast/tokens-main-live-broadcast.png)
+![](../assets/img/tokens-main-live-broadcast.png)
 
 
 
@@ -23,7 +23,7 @@ Live broadcasting is instant and secure using the dashboard’s online broadcast
 The broadcaster interface allows you to stream instantly from your account and gives you a link to share with your viewers. Your video is streamed via WebRTC to the Dolby.io Real-time Streaming service, which globally distributes the feed to all of your viewers with sub-second latency. For more information on how to navigate this interface, go to the [Live Broadcast Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) guide. 
 
 
-![](/img/millicast/newpublisher.png)
+![](../assets/img/newpublisher.png)
 
 
 
@@ -32,7 +32,7 @@ The broadcaster interface allows you to stream instantly from your account and g
 Subscribe tokens are used to give access to a stream. To ensure only authenticated users view a stream, Subscribe tokens work as _passwords_ for viewers to access a stream. Inside them, a _Token_ and a _Token ID_ are provided. These can also be geolocated, specified to a cluster region, or allowed for specific IP addresses. Visit the guide on how to [manage Subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md) for more information.
 
 
-![](/img/millicast/dashboard-subscribe-token.png)
+![](../assets/img/dashboard-subscribe-token.png)
 
 
 
@@ -41,7 +41,7 @@ Subscribe tokens are used to give access to a stream. To ensure only authenticat
 The Live monitoring displays all active ingest streams and streams that have been offline for the last hour. Here you can monitor the status and statistics of your live streams and triage any potential issues.
 
 
-![](/img/millicast/live_monitor_assets_MVP_grid_view.jpg)
+![](../assets/img/live_monitor_assets_MVP_grid_view.jpg)
 
 
 
@@ -50,7 +50,7 @@ The Live monitoring displays all active ingest streams and streams that have bee
 The Recordings section contains your recorded broadcasts, giving you access to preview and download.
 
 
-![](/img/millicast/rec-player.png)
+![](../assets/img/rec-player.png)
 
 
 
@@ -63,7 +63,7 @@ Each item in the list allows you to _download_, _delete_ or _preview_ your recor
 The Analytics page gives you a summary of how your bandwidth was consumed. This can give you good insight, not just into how many people are viewing, but also from where they are viewing. The page is viewed in three parts:** Date Controller**,** Chart**, and** Geographical Chart**. 
 
 
-![](/img/millicast/dashboard-analytics.png)
+![](../assets/img/dashboard-analytics.png)
 
 
 
@@ -72,7 +72,7 @@ The Analytics page gives you a summary of how your bandwidth was consumed. This 
 The first part is the _Date Controller_, which is the main controller of the page. Altering the date will update the rest of the results on the page. You can also change the date range from a day to a week to a month to see the total bandwidth used during that period or event.
 
 
-![](/img/millicast/analytics-datepicker.PNG)
+![](../assets/img/analytics-datepicker.PNG)
 
 
 
@@ -81,14 +81,14 @@ The first part is the _Date Controller_, which is the main controller of the pag
 The next section is the _Chart_. The chart gives you a visual representation of your bandwidth usage broken down by the ingress data coming into the service and the egress data going out, as well as the sum of both.
 
 
-![](/img/millicast/7ae2123-analytics-chart.png)
+![](../assets/img/7ae2123-analytics-chart.png)
 
 
 
 if you prefer to see the data in a nonvisual chart, you can click the _Table_ button to change the view to a data table. This will show the daily or hourly breakdown of the usage. Click the _Chart_ button to return to the chart view.
 
 
-![](/img/millicast/3b2a16c-analytics-table.png)
+![](../assets/img/3b2a16c-analytics-table.png)
 
 
 
@@ -97,14 +97,14 @@ if you prefer to see the data in a nonvisual chart, you can click the _Table_ bu
 The next section is the _Geographical chart_, which displays the data based on your connections' geographical regions. You can see the countries on the left chart display views using a hotspot coloring for ranking, while the table on the right gives you a view of the data.
 
 
-![](/img/millicast/7ed6c75-analytics-geo-chart.png)
+![](../assets/img/7ed6c75-analytics-geo-chart.png)
 
 
 
 Click on the **"Views"** button to toggle the left chart for a bandwidth view of your data usage. This breaks down each region based on bandwidth usage.
 
 
-![](/img/millicast/86f8474-analytics-bw-pie.png)
+![](../assets/img/86f8474-analytics-bw-pie.png)
 
 
 
@@ -117,7 +117,7 @@ Click on the **"Views"** button to toggle the left chart for a bandwidth view of
 Webhooks are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](ref:webhooks_get), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. For how to create a webhook, [check out its guide](/millicast/webhooks/index.md). 
 
 
-![](/img/millicast/dashboard-webhooks.png)
+![](../assets/img/dashboard-webhooks.png)
 
 
 
@@ -126,14 +126,14 @@ Webhooks are callbacks triggered by the platform to notify your application when
 The billing section of the dashboard gives you an overview of the current billing period and lets you manage your payment method, invoices, and plans.
 
 
-![](/img/millicast/billing_1.png)
+![](../assets/img/billing_1.png)
 
 
 
 Dolby.io Real-time Streaming plans include a monthly bandwidth allotment and a per GiB fee for bandwidth used over the amount included with your plan. Here you can see how much bandwidth you have used for your current billing cycle.
 
 
-![](/img/millicast/a3a3e63-acct-bw.png)
+![](../assets/img/a3a3e63-acct-bw.png)
 
 
 
@@ -142,7 +142,7 @@ In addition to streaming bandwidth, plans each also includes a storage allotment
 If you need to scale your account for more storage or to handle more concurrent viewers and bandwidth, simply upgrade by clicking on the **Change Plan** button just below your plan description.
 
 
-![](/img/millicast/7bd4362-account-plan.png)
+![](../assets/img/7bd4362-account-plan.png)
 
 
 
@@ -153,7 +153,7 @@ Located in the top right corner of the dashboard, under your ID is the_ Profile_
 - The _Personal Information_ tab which allows you to update your email, first name, and last name. 
 
 
-![](/img/millicast/dashboard-profile.png)
+![](../assets/img/dashboard-profile.png)
 
 
 
@@ -166,7 +166,7 @@ Inside _Settings_, the account's _Token defaults_ are managed. Changes here are 
  On the _Security_ tab, users can create one or multiple API secrets to connect to [Dolby.io's Streaming API](https://docs.dolby.io/streaming-apis/reference/analytics_accounttotal). 
 
 
-![](/img/millicast/dashboard-settings.png)
+![](../assets/img/dashboard-settings.png)
 
 
 
@@ -175,7 +175,7 @@ Inside _Settings_, the account's _Token defaults_ are managed. Changes here are 
 As a developer platform, we understand that you might not be working alone; therefore, **Users** allows you to add additional developers that might need access to the working streams. These users are managed across all of the Dolby.io platforms, meaning the invited **would also have access to the Communications & Media APIs**. 
 
 
-![](/img/millicast/dashboard-users.png)
+![](../assets/img/dashboard-users.png)
 
 
 
@@ -184,7 +184,7 @@ As a developer platform, we understand that you might not be working alone; ther
 The Resources section of the dashboard is reserved as the space for tutorials, documentation, and examples which might serve as useful in exploring all of the integrations and SDKs. Additionally, it links to Dolby.io's WebRTC version of OBS. If you are beginning your journey, start your first stream with our [Getting Started](/millicast/getting-started/introduction-to-streaming-apis.md) guide. 
 
 
-![](/img/millicast/dashboard-resources.png)
+![](../assets/img/dashboard-resources.png)
 
 
 
@@ -193,14 +193,14 @@ The Resources section of the dashboard is reserved as the space for tutorials, d
 Two-factor authentication provides an extra layer of security and helps to ensure only an authorized user has access to your account, even if the account password is exposed. The second factor of authentication is provided by a 3rd party authenticator application ([IOS](https://apps.apple.com/us/app/microsoft-authenticator/id983156458), [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)), which generates a single-use verification code. The two-factor authentication user will need to provide this code in order to log into the Dolby.io dashboard.
 
 
-![](/img/millicast/2fa-login-code.png)
+![](../assets/img/2fa-login-code.png)
 
 
 
 To enable this feature, navigate to the _Logging in_ section of the Dolby.io dashboard by clicking on your name in the top right corner and selecting _Profile_. Click Set Up to activate the two-factor authentication service. This button will take you through the setup process needed to register your authenticator application.
 
 
-![](/img/millicast/8d27f2e-2fa_accnt_button.png)
+![](../assets/img/8d27f2e-2fa_accnt_button.png)
 
 
 
@@ -211,7 +211,7 @@ To enable this feature, navigate to the _Logging in_ section of the Dolby.io das
 Read the QR code on the screen with your authenticator application. Once the QR code is read, it will then generate a code on your device that will be required on the next window. Make sure you see the code on your device and click the _Next_ button.
 
 
-![](/img/millicast/b95568d-2fa_qr_code.png)
+![](../assets/img/b95568d-2fa_qr_code.png)
 
 
 

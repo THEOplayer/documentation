@@ -5,7 +5,7 @@ slug: /cloud-transcoder
 The **Cloud Transcoders** offered by the Dolby Millicast are responsible for ingesting (SRT or RTMP) and encoding contribution feeds into **adaptive-bitrate (ABR)** streaming renditions for WebRTC delivery. By adjusting the compression level, resolution, and quality of a video stream to match bandwidth availability it is possible to create an improved viewing experience. The adaptability ensures smoother playback but also conserves bandwidth, making the cloud transcoder an efficient and cost-effective solution optimized for ultra-low latency during the encoding process.
 
 
-![](/img/millicast/6bcaeddadb12b382aeab0b113abd8c690633543a04a9d68c2ff7d80a-feature-cloud-transcoder.png)
+![](../assets/img/6bcaeddadb12b382aeab0b113abd8c690633543a04a9d68c2ff7d80a-feature-cloud-transcoder.png)
 
 
 
@@ -164,7 +164,7 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 4. Once the stream begins publishing to the cloud transcoder the full ladder will be available for playback. To quickly verify the transcoder is working we recommend trying out [the hosted web player](/millicast/playback/hosted-viewer.md).
 
 
-![](/img/millicast/Screenshot_2024-06-05_at_4.01.58_PM.png)
+![](../assets/img/Screenshot_2024-06-05_at_4.01.58_PM.png)
 
 
 
