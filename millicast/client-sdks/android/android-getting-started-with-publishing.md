@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Publishing"
-id: android-getting-started-with-publishing
+slug: /android-getting-started-with-publishing
 ---
 Follow these steps to add the publishing capability to your application.
 

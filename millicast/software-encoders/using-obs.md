@@ -1,6 +1,6 @@
 ---
 title: "OBS"
-id: using-obs
+slug: /using-obs
 ---
 **Open Broadcaster Software (OBS)** is a free open-source software created for broadcasting and recording on your desktop. You can take advantage of this tool to stream high-quality video to your viewers in real time using the [Dolby.io Real-time Streaming](https://dolby.io/products/real-time-streaming/) service. 
 

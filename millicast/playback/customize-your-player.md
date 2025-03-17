@@ -1,6 +1,6 @@
 ---
 title: "Stream Preview"
-id: customize-your-player
+slug: /customize-your-player
 ---
 When having a stream, it is possible to set up a loading screen before your event goes live. Having a stream-loading screen is a valuable asset as it serves as a polished introduction to the streaming experience, presenting a seamless and professional image to viewers. Beyond its aesthetic appeal, a **Stream preview ** maintains the audience's engagement during critical moments, as it can serve to provide a buffer for brief technical adjustments or seamless transitions between scenes. 
 

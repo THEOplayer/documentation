@@ -1,6 +1,6 @@
 ---
 title: "Datazoom"
-id: datazoom
+slug: /datazoom
 ---
 **Datazoom** enables the capture of streaming quality analytics, measurement of user engagement, tracking of content consumption, and understanding **Quality of Experience (QoE)** metrics that occur during playback.
 

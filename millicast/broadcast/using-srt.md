@@ -1,6 +1,6 @@
 ---
 title: "SRT"
-id: using-srt
+slug: /using-srt
 ---
 **Secure Reliable Transport (SRT)** is an open-source protocol that uses an intelligent packet retransmit mechanism on top of a UDP data flow, along with AES-128 and 256-bit encryption. [Dolby.io Real-time Streaming](https://dolby.io/products/real-time-streaming/) natively supports publishing from an SRT source.
 

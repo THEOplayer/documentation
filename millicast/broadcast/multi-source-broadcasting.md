@@ -1,6 +1,6 @@
 ---
 title: "Multi-Source Broadcasting"
-id: multi-source-broadcasting
+slug: /multi-source-broadcasting
 ---
 **Multi-source Broadcasting** allows you to ingest and send additional capture sources, such as different camera angles, to the Dolby.io Real-time Streaming platform where they will be logically grouped into an optimized multi-view experience over a single WebRTC connection.
 

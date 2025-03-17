@@ -1,6 +1,6 @@
 ---
 title: "Desktop"
-id: desktop
+slug: /desktop
 ---
 The Native SDK provides C++ APIs for desktop platforms, such as Linux, Mac, and Windows. You may use the SDK in your project to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform. 
 

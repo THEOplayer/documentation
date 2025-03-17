@@ -1,6 +1,6 @@
 ---
 title: "Simulcast"
-id: using-webrtc-simulcast
+slug: /using-webrtc-simulcast
 ---
 Simulcast is a mechanism for distributing streaming content with variations that are optimized for viewers who are under different network conditions or device resolutions. By using a mechanism of WebRTC to distribute content, multiple sources will be available simultaneously that have been encoded with different bitrates and resolutions (HD, SD, LD).
 

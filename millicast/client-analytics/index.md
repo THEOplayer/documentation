@@ -1,5 +1,5 @@
 ---
 title: "Client Analytics"
-id: client-analytics
+slug: /client-analytics
 ---
 placeholder client analytics

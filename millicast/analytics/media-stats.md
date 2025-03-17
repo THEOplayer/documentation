@@ -1,6 +1,6 @@
 ---
 title: "Media Stats"
-id: media-stats
+slug: /media-stats
 ---
 Both the [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/playback/hosted-viewer.md) provide a **Media Stats** option to open a modal overlay during broadcast or playback that displays information that can be helpful in judging the performance or diagnosing issues when troubleshooting.
 

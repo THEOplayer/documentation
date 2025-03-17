@@ -1,6 +1,6 @@
 ---
 title: "Migration Guide for Android SDK"
-id: android-sdk-migration-guide
+slug: /android-sdk-migration-guide
 ---
 This migration guide provides some tips for upgrading or downgrading between releases of the Android SDK.
 

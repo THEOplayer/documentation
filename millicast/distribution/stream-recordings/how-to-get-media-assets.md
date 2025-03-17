@@ -1,6 +1,6 @@
 ---
 title: "How-to Get Media Assets"
-id: how-to-get-media-assets
+slug: /how-to-get-media-assets
 ---
 With [Stream Recordings](/millicast/distribution/stream-recordings/index.md) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or automate workflows using the [Media Assets](ref:media-assets) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media-webhooks.md) available for building event-driven integrations.
 

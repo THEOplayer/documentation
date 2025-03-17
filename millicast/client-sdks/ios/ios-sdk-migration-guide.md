@@ -1,6 +1,6 @@
 ---
 title: "Migration Guide for iOS SDK"
-id: ios-sdk-migration-guide
+slug: /ios-sdk-migration-guide
 ---
 This migration guide provides some tips for upgrading or downgrading between releases of the iOS SDK.
 

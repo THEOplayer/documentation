@@ -1,6 +1,6 @@
 ---
 title: "Broadcast Events"
-id: viewer-events
+slug: /viewer-events
 ---
 Dolby.io Real-time Streaming supports `broadcastEvents`, sometimes called _viewer events_, which allow you to add functionality that triggers when various events occur during the stream. This functionality can be helpful for detecting active feeds, changes in simulcast layers, or even the viewer count of a stream.
 

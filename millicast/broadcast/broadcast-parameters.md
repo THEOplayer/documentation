@@ -1,6 +1,6 @@
 ---
 title: "Publishing Parameters"
-id: broadcast-parameters
+slug: /broadcast-parameters
 ---
 Broadcast URL Parameters allow you to customize the behavior of an individual source feed by modifying the URL used of specific sources when establishing a connection.
 

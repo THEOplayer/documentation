@@ -1,6 +1,6 @@
 ---
 title: "Feed Hooks"
-id: feeds-webhooks
+slug: /feeds-webhooks
 ---
 The **feeds** _type_ of [webhook](/millicast/webhooks/index.md) allows you to receive an activity feed for platform events such as when a stream has started or stopped publishing.
 

@@ -1,6 +1,6 @@
 ---
 title: "Osprey"
-id: using-osprey-talon-whip-hardware-encoder
+slug: /using-osprey-talon-whip-hardware-encoder
 ---
 **Osprey Video** is a world leader in broadcasting solutions and an early adopter of [WHIP](/millicast/broadcast/webrtc-whip.md) for their Osprey Talon 4K-SC Encoder. By supporting WHIP, Osprey is able to offer an encoder that can natively encode WebRTC streams at broadcast-level quality for a variety of applications, such as [sports broadcasting](https://dolby.io/solutions/sports-betting/), [live event broadcasting](https://dolby.io/solutions/live-events/), and [auction streaming](https://dolby.io/solutions/auctions/).
 

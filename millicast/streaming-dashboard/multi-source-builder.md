@@ -1,6 +1,6 @@
 ---
 title: "Multi-source Builder"
-id: multi-source-builder
+slug: /multi-source-builder
 ---
 The **Multi-source** tab of the Streaming Dashboard is a tool to help you build and configure multiple publishing sources to enable simulcast or power a multi-view experience. You can add multiple [SRT](/millicast/broadcast/using-srt.md), [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [WebRTC](/millicast/broadcast/webrtc-whip.md) sources and use the user-interface to configure multi-bitrate publishing. The Multi-source tab also includes a URL to launch the hosted player with the multi-viewer configuration, customizable `<iframe>` code to embed the hosted player into your webpage, and the ability to export your multi-source configuration as a file.
 

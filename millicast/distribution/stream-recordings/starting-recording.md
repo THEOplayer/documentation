@@ -1,6 +1,6 @@
 ---
 title: "How-to Start Recording"
-id: starting-recording
+slug: /starting-recording
 ---
 You can keep a recording of a full broadcast and download it to share or provide as video on demand. The recording will be made available shortly after the end of a broadcast. If you want a recording of a live event while it is in progress, you should learn more about [Live Clipping]((millicast/distribution/stream-recordings/live-clipping.md) feature.
 

@@ -1,6 +1,6 @@
 ---
 title: "Streaming Dashboard"
-id: about-dash
+slug: /about-dash
 ---
 The Dolby.io dashboard enables you to easily provision tokens, broadcast streams, and manage account settings.
 

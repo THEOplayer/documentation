@@ -1,6 +1,6 @@
 ---
 title: "Syndication"
-id: syndication
+slug: /syndication
 ---
 With Dolby.io Real-time Streaming you can syndicate content through multiple distribution partners or channels. This can be helpful to maximize the number of viewers or monetizing content through other platforms. In order to accomplish this, it is important to be able to track syndicated streams for analytics and billing.
 

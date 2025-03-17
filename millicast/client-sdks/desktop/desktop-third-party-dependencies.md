@@ -1,6 +1,6 @@
 ---
 title: "Third-Party Dependencies"
-id: desktop-third-party-dependencies
+slug: /desktop-third-party-dependencies
 ---
 All Native SDKs depend on the dynamic Network Device Interface (NDI) library. Although the application does not interface with the NDI library directly, it is a runtime requirement of the Millicast SDK. Windows and Linux builds also depend on the dynamic FFmpeg library. The location of the additional dynamic libraries depends on the platform:
 

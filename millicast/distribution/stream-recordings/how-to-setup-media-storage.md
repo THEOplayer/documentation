@@ -1,6 +1,6 @@
 ---
 title: "How-to Setup Storage Profiles"
-id: how-to-setup-media-storage
+slug: /how-to-setup-media-storage
 ---
 With [Live Clipping]((millicast/distribution/stream-recordings/live-clipping.md) you can have clips stored directly to your preferred third-party cloud storage provider. This gives you additional control over storage costs and manage usage of media clips. 
 

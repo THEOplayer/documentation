@@ -1,6 +1,6 @@
 ---
 title: "Playback"
-id: playback
+slug: /playback
 ---
 The final stage of the streaming workflow is taking the stream and playing it back for the end user. Similar to broadcasting, decoding the stream for playback is supported with a viewer for a wide range of devices and environments.
 

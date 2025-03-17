@@ -1,6 +1,6 @@
 ---
 title: "OBS Enhanced Multitrack Video"
-id: obs-enhanced-broadcasting-multitrack-video
+slug: /obs-enhanced-broadcasting-multitrack-video
 ---
 > 🚧 Beta: This feature is in the works
 > 

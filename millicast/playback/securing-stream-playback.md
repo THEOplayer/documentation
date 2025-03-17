@@ -1,6 +1,6 @@
 ---
 title: "Securing Stream Playback"
-id: securing-stream-playback
+slug: /securing-stream-playback
 ---
 [Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled. 
 

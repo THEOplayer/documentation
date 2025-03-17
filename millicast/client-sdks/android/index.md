@@ -1,6 +1,6 @@
 ---
 title: "Android"
-id: android
+slug: /android
 ---
 The Native SDK for creating Android applications. You may use it in your Android project to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform.
 

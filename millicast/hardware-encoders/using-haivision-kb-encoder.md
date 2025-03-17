@@ -1,6 +1,6 @@
 ---
 title: "Haivision"
-id: using-haivision-kb-encoder
+slug: /using-haivision-kb-encoder
 ---
 **Haivision** provides professional broadcasting equipment to the streaming industry. The KB series of H.264 & HEVC Internet Media Encoders and Transcoders deliver high-quality video streaming for resolutions up to 4K, available as small form factor portable appliances as well as rack-mountable enterprise-grade servers. The KB Series provides you with multiple options for live event streaming, helping you deliver the highest quality live video to your global internet audience.
 

@@ -1,6 +1,6 @@
 ---
 title: "Distribution"
-id: distribution
+slug: /distribution
 ---
 The Dolby.io Streaming Content Delivery Network (CDN) offers a range of server-side features that users can toggle and adjust via the REST APIs or your account Dashboard to ensure streams are secure, stable, and scalable. 
 

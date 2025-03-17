@@ -1,6 +1,6 @@
 ---
 title: "Token API"
-id: token-api
+slug: /token-api
 ---
 The **Token API** is a REST endpoint that allows you to automate the creation and management of tokens for your applications. You can create, read, update, and delete **publish tokens** and **subscribe tokens** that are used for authorizations with a broadcast stream. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Studio and Player apps"
-id: client-products
+slug: /client-products
 ---
 Millicast Studio allows you to capture and publish to the Millicast Platform, as well as view the published stream via an attached loopback display. The Studio accepts inputs from devices (e.g. camera), screens, NDI and Blackmagic Decklink cards' SDI and HDMI, and comes with command line interface as well as graphical user interface.
 

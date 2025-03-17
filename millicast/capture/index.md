@@ -1,6 +1,6 @@
 ---
 title: "Capture"
-id: capture
+slug: /capture
 ---
 To broadcast content, you either need a physical camera capturing the content, a virtual camera from a game engine, or a source of content available via other content creation tools such as OBS or Adobe Premiere.
 

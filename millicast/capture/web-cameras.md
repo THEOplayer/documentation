@@ -1,6 +1,6 @@
 ---
 title: "Web Cameras"
-id: web-cameras
+slug: /web-cameras
 ---
 Web cameras are an easy and accessible way to capture content for broadcast with Dolby.io Streaming. Since web cameras are ubiquitous, there are many different software solutions to capture from a web camera. 
 

@@ -1,6 +1,6 @@
 ---
 title: "iOS"
-id: ios
+slug: /ios
 ---
 The Native SDK for creating iOS and tvOS applications. You may use it to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform.
 

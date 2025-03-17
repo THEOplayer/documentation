@@ -1,6 +1,6 @@
 ---
 title: "Hosted Player"
-id: hosted-viewer
+slug: /hosted-viewer
 ---
 The **Hosted Player** refers to the streaming video player that can be used as a standalone web application or embedded into a website to meet the needs of many workflows without requiring extensive software development.
 

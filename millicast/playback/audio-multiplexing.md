@@ -1,6 +1,6 @@
 ---
 title: "Audio Multiplexing"
-id: audio-multiplexing
+slug: /audio-multiplexing
 ---
 The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers to receive multiple audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
 

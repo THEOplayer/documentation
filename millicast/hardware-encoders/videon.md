@@ -1,6 +1,6 @@
 ---
 title: "Videon"
-id: videon
+slug: /videon
 ---
 **Videon** is a leading video streaming company offering innovative solutions to enhance content delivery and quality. Their flagship product, [EdgeCaster](https://www.videonlabs.com/edgecaster), optimizes video streaming with low-latency and high-quality playback across platforms, empowering service providers to deliver seamless and engaging viewing experiences.
 

@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Streaming APIs"
-id: introduction-to-streaming-apis
+slug: /introduction-to-streaming-apis
 sidebar_position: 10
 ---
 Dolby.io Streaming APIs were created to make it easier to stream your high-value content at scale with ultra-low latency.

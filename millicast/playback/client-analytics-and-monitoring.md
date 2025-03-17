@@ -1,6 +1,6 @@
 ---
 title: "Client Analytics"
-id: client-analytics-and-monitoring
+slug: /client-analytics-and-monitoring
 ---
 With **Client Analytics**, we are referring to any metrics or KPIs that help provide a better understanding of the end-user **Quality of Experience (QoE)**.  This becomes critical when there are playback issues to troubleshoot or for establishing alerts when monitoring rules meet a particular threshold.
 

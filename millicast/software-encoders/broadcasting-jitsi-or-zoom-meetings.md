@@ -1,6 +1,6 @@
 ---
 title: "Zoom"
-id: broadcasting-jitsi-or-zoom-meetings
+slug: /broadcasting-jitsi-or-zoom-meetings
 ---
 [Zoom](https://zoom.us/) is a video collaboration tool for hosting conferences and meetings. Zoom supports streaming to consumer platforms or any [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) source such as distributing Real-time Streaming content with Dolby.io.
 

@@ -1,6 +1,6 @@
 ---
 title: "React Native"
-id: rn
+slug: /rn
 ---
 Dolby.io Streaming APIs support using the [Web SDK](/millicast/client-sdks/web.md) with React Native WebRTC to support creating iOS, Android, AndroidTV, and tvOS applications.
 

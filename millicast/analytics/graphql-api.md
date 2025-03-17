@@ -1,6 +1,6 @@
 ---
 title: "GraphQL API"
-id: graphql-api
+slug: /graphql-api
 ---
 Dolby.io Real-time Streaming provide a Graph API to query both stats and real time info about the service. The url entry point for the service is:
 

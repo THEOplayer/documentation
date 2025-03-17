@@ -1,6 +1,6 @@
 ---
 title: "Re-streaming"
-id: re-streaming
+slug: /re-streaming
 ---
 **Re-streaming** enables you to distribute your broadcasts to additional RTMP(S) output destinations while simultaneously providing real-time WebRTC playback. This can be useful for distribution to other B2B media partners or for extending reach to larger audiences on public consumer social media platforms.
 

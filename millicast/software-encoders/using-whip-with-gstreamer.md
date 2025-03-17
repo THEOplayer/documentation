@@ -1,6 +1,6 @@
 ---
 title: "Gstreamer"
-id: using-whip-with-gstreamer
+slug: /using-whip-with-gstreamer
 ---
 **GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines that support complex workflows. You may want to broadcast over WebRTC from a file on disk or another Real-time Streaming Protocol ([RTSP](/millicast/broadcast/rtsp.md)). You can originate the broadcast through GStreamer that ingests the stream utilizing [WHIP](/millicast/broadcast/webrtc-whip.md) or forwards with [WHEP](ref:whep_whepsubscribe).
 

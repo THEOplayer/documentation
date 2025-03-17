@@ -1,5 +1,5 @@
 ---
-id: getting-started
+slug: /getting-started
 sidebar_position: 0
 ---
 

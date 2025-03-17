@@ -1,6 +1,6 @@
 ---
 title: "Platform Requirements"
-id: network-requirements
+slug: /network-requirements
 ---
 # Codecs
 

@@ -1,6 +1,6 @@
 ---
 title: "Command Line Interface"
-id: command-line-interface
+slug: /command-line-interface
 ---
 # Overview
 

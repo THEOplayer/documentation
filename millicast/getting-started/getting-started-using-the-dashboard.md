@@ -1,6 +1,6 @@
 ---
 title: "1. Use the Streaming Dashboard"
-id: getting-started-using-the-dashboard
+slug: /getting-started-using-the-dashboard
 sidebar_position: 1
 ---
 This part explains how to get started using just the Dolby.io Streaming Dashboard to both broadcast and playback a real-time stream without writing any code.

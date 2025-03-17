@@ -1,6 +1,6 @@
 ---
 title: "iOS Viewer"
-id: sample-apps-ios-viewer
+slug: /sample-apps-ios-viewer
 ---
 # Native viewer sample app for iOS, iPad OS, and tvOS devices
 

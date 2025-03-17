@@ -1,6 +1,6 @@
 ---
 title: "Drastic Technologies"
-id: using-whip-with-flowcaster
+slug: /using-whip-with-flowcaster
 ---
 Drastic Technologies' **FlowCaster** is a tool that enables cloud-based media workflows. FlowCaster makes it simple to use Dolby.io Real-time Streaming and the [WHIP (WebRTC HTTP Ingest Protocol)](/millicast/broadcast/webrtc-whip.md) with no additional software or hardware requirements.
 

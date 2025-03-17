@@ -1,6 +1,6 @@
 ---
 title: "Screensharing"
-id: screensharing
+slug: /screensharing
 ---
 Screensharing or screen capturing is an important feature for virtual events, webinars, and many other types of broadcasts that involve sharing information. This guide will outline three options for managing screen capture in a way that is compatible with Dolby.io:
 

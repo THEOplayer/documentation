@@ -1,6 +1,6 @@
 ---
 title: "Publish Tokens"
-id: managing-your-tokens
+slug: /managing-your-tokens
 ---
 To [broadcast](/millicast/broadcast/index.md) a real-time stream the connection must be authenticated with a valid **publish token**. The Dolby.io platform uses token authentication for publishing to prevent unauthorized distribution of streaming content from your Dolby.io account. Without a valid token, publish requests will be rejected by the servers.
 

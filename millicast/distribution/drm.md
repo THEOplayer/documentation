@@ -1,6 +1,6 @@
 ---
 title: "DRM"
-id: drm
+slug: /drm
 ---
 **Digital Rights Management (DRM)** is a security mechanism that helps protect premium content or intellectual property within a stream from being shared without permission. This mechanism prevents bad actors from screen sharing, taking screenshots, and other unauthorized distribution.
 

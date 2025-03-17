@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Publishing"
-id: desktop-getting-started-with-publishing
+slug: /desktop-getting-started-with-publishing
 ---
 Follow these steps to add the publishing capability to your application.
 

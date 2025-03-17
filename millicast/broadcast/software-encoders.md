@@ -1,6 +1,6 @@
 ---
 title: "Software Encoders"
-id: software-encoders
+slug: /software-encoders
 ---
 A software encoder can take raw video frames and convert it into a digital format that is compatible for distribution with Dolby.io. This type of integration can typically be done without additional hardware requirements and eases adoption of real-time streaming workflows.
 

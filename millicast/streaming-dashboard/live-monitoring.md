@@ -1,6 +1,6 @@
 ---
 title: "Live Monitoring"
-id: live-monitoring
+slug: /live-monitoring
 ---
 The **Live monitoring** section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) is the place to view all of your active streams. This page displays all active ingest streams and streams that have been offline for the last hour. At a glance, you can check the number of connected viewers, stream duration, and status of your streams. Live monitoring allows you to access information about your streams to quickly diagnose and triage any issues.
 

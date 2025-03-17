@@ -1,6 +1,6 @@
 ---
 title: "Teradek"
-id: broadcasting-teradek-vidiu
+slug: /broadcasting-teradek-vidiu
 ---
 **Teradek** is a designer and manufacturer of professional high-end video equipment and solutions for creating and sharing content. Teradek offers a range of support for different broadcast standards and protocols, including support for [RTMP, RTMPS](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [NDI](/millicast/broadcast/using-ndi.md), all of which can be distributed via the Dolby.io real-time streaming CDN.
 

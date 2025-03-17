@@ -1,6 +1,6 @@
 ---
 title: "Analytics APIs"
-id: analytics-api
+slug: /analytics-api
 ---
 The Analytics APIs allow you to query your usage independent of the Dolby.io dashboard and get details of how your users are consuming your streams.
 

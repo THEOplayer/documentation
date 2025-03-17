@@ -1,6 +1,6 @@
 ---
 title: "NDI"
-id: using-ndi
+slug: /using-ndi
 ---
 **NDI**® Tools is a free suite of applications designed to introduce you to the world of IP. NDI makes it possible to connect to any device, in any location, anywhere in the world – and transmit live video to wherever you are. NDI systems and sources on your network. Combine NDI with Dolby.io Real-time Streaming to deliver real-time video for remote or interactive experiences.
 

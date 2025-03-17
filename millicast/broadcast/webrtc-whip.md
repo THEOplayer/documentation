@@ -1,6 +1,6 @@
 ---
 title: "WebRTC | WHIP"
-id: webrtc-whip
+slug: /webrtc-whip
 ---
 **Web Real-Time Communication (WebRTC) is an open-source project that defines secure voice, audio, and data delivery between peers using web browsers or native clients. Dolby.io Real-time Streaming allows you to broadcast and distribute content using WebRTC for real-time global streaming to large-scale audiences.
 

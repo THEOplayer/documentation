@@ -1,6 +1,6 @@
 ---
 title: "Multi-Region Support"
-id: multi-region-support
+slug: /multi-region-support
 ---
 The WebRTC **Content Delivery Network (CDN)** refers to geographically distributed _clusters_ of servers which work together to provide real-time streaming worldwide at scale. Dolby.io distributes streaming content across multiple _regions_ through a network of cloud hosting providers. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Ingest Raw Frames"
-id: using-native-sdk-ingest-raw-frames
+slug: /using-native-sdk-ingest-raw-frames
 ---
 Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](/millicast/hardware-encoders/index.md) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/capture/live-streaming-from-drones-rtmp.md) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
 

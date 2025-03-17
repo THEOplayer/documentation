@@ -1,6 +1,6 @@
 ---
 title: "Flutter"
-id: flutter
+slug: /flutter
 ---
 Dolby.io Streaming APIs support creating iOS and Android applications using the Flutter SDK.
 

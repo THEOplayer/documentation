@@ -1,6 +1,6 @@
 ---
 title: "vMix"
-id: broadcasting-with-vmix
+slug: /broadcasting-with-vmix
 ---
 **vMix** is a desktop application that provides a software vision mixer and encoder for the Windows operating system. It allows users to switch inputs, mix audio, record output, and live stream cameras, video files, audio, and more. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Magewell"
-id: using-magewell-encoder
+slug: /using-magewell-encoder
 ---
 [Magewell](https://www.magewell.com/) is a leading encoder manufacturer that supports connecting to the Dolby.io Real-time Streaming Service for broadcasting real-time streams. This guide outlines a number of different options for broadcasting streams from a Magewell device to the Dolby.io servers.
 

@@ -1,6 +1,6 @@
 ---
 title: "Allowed Origins"
-id: token-security
+slug: /token-security
 ---
 Impose limits on who may use a token to broadcast or view a stream by defining rules based on the domain name or IP address in which the request originated. **Allowed Origins** enables defining specific domain names or sub-domain patterns that any request must originate from. Similarly, with **IP Address Filters** you can define rules that limit access by specifying the network IP address.
 

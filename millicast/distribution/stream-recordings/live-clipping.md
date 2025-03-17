@@ -1,6 +1,6 @@
 ---
 title: "How-to Start Live Clipping"
-id: live-clipping
+slug: /live-clipping
 ---
 **Live Clipping** allows you to capture one or more simultaneous media files (ie. **clips**) while a broadcast event is in progress. This is in contrast to a recording which is a media file that captures the full duration of a single source only after the completion of a broadcast. The duration of a clip can be customized to capture highlights or shorter segments while still live for use cases that want instant replay, social sharing, or audit reviews. 
 

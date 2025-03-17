@@ -1,6 +1,6 @@
 ---
 title: "3. Automate using REST APIs"
-id: basic-api-tutorial
+slug: /basic-api-tutorial
 sidebar_position: 3
 ---
 The Dolby.io Streaming REST API allows remote management of your Dolby.io Real-time Streaming account. To enable remote access you must first use the Token system to securely authenticate your applications with Dolby.io Real-time Streaming. To acquire an API Token, log into your Dolby.io Real-time Streaming account and follow the directions here: [acquiring your API token](/millicast/streaming-dashboard/token-api#acquiring-your-api-token).

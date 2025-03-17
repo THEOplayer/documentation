@@ -1,6 +1,6 @@
 ---
 title: "Datadog"
-id: datadog
+slug: /datadog
 ---
 **Datadog** is a tool for monitoring application performance measurements and user engagement.
 

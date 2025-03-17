@@ -1,6 +1,6 @@
 ---
 title: "Multi-source Playback"
-id: source-and-layer-selection
+slug: /source-and-layer-selection
 ---
 Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.md) and rendering multiple audio and video streams for building [Multi-view](/millicast/playback/multiview.md) and [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) experiences. 
 

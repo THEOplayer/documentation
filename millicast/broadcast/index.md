@@ -1,6 +1,6 @@
 ---
 title: "Broadcast"
-id: broadcast
+slug: /broadcast
 ---
 Broadcasting content requires access to the public internet and encoding, which can be accomplished in a browser, software, hardware, or with the Dolby.io Client-side broadcaster SDKs. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Geo-cascading"
-id: geo-cascading
+slug: /geo-cascading
 ---
 **Geo-cascading** is a key component of content delivery networks (CDNs) and streaming platforms that aim to provide a high-quality streaming experience for users around the world. To reduce latency and improve reliability, geo-cascading uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can receive streams from regions that are the closest to their location.
 

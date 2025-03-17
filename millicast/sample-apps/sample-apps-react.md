@@ -1,6 +1,6 @@
 ---
 title: "React"
-id: sample-apps-react
+slug: /sample-apps-react
 ---
 # Publisher and viewer sample app for react
 

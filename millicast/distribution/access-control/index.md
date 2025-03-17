@@ -1,6 +1,6 @@
 ---
 title: "Access Control"
-id: access-control
+slug: /access-control
 ---
 Stream security is a priority for the Dolby.io platform. Along with stream protocol encryption, Dolby.io provides a number of different server-side features to help protect both broadcasting (_Publishing_) a stream and viewing (_Subscribing_) to a stream, all managed via their respective tokens.
 

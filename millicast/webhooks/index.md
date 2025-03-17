@@ -1,6 +1,6 @@
 ---
 title: "Webhooks"
-id: webhooks
+slug: /webhooks
 ---
 **Webhooks** are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](ref:webhooks_get), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. 
 

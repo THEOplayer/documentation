@@ -1,6 +1,6 @@
 ---
 title: "LiveU"
-id: liveu-studio-using-whip
+slug: /liveu-studio-using-whip
 ---
 [LiveU Studio](https://www.liveu.tv/products/produce/liveu-studio) is a cloud production studio for live video that supports WebRTC streaming to the Dolby.io platform with [WHIP](/millicast/broadcast/webrtc-whip.md). This guide outlines how to create and broadcast a high-quality low-latency stream globally with Dolby.io streaming.
 

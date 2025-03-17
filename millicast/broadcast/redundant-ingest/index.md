@@ -1,6 +1,6 @@
 ---
 title: "Redundant Ingest"
-id: redundant-ingest
+slug: /redundant-ingest
 ---
 To provide a resilient and reliable streaming experience, the Dolby.io Streaming platform allows broadcasting multiple redundant contribution streams. This solution ensures seamless content delivery to viewers, even in the case of unexpected technical issues.
 

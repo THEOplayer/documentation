@@ -1,6 +1,6 @@
 ---
 title: "Web"
-id: web
+slug: /web
 ---
 The Web SDK lets you connect, capture, publish, and subscribe to streams in your web applications.
 

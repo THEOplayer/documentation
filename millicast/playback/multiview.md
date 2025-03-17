@@ -1,6 +1,6 @@
 ---
 title: "Multi-view"
-id: multiview
+slug: /multiview
 ---
 Multi-view lets you ingest and render multiple Dolby.io real-time video and audio streams simultaneously inside a browser or mobile native applications. Once rendered, you can switch seamlessly between streams, allowing you to control how you view the content. By giving viewers content control, broadcasters can enable real-time experiences and engagement that leave viewers wanting more.
 

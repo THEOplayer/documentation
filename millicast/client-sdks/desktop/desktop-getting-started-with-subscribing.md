@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Subscribing"
-id: desktop-getting-started-with-subscribing
+slug: /desktop-getting-started-with-subscribing
 ---
 Follow these steps to add the subscribing capability to your application.
 

@@ -1,6 +1,6 @@
 ---
 title: "Geo-blocking"
-id: geo-blocking
+slug: /geo-blocking
 ---
 **Geo-blocking** refers to the action of restricting access to certain content based on the geographical location of the user. Filtering can be allowed or denied by countries as well as IP addresses. Geo-blocking enables content providers to adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on private content. 
 

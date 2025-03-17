@@ -1,6 +1,6 @@
 ---
 title: "Hardware Encoders"
-id: hardware-encoders
+slug: /hardware-encoders
 ---
 In today's digital landscape, the demand for real-time streaming content has skyrocketed, prompting broadcasters and video creators to prioritize the efficient delivery of high-quality video and audio streams. Hardware-based encoders play a crucial role in this process with their offerings of superior encoding capabilities and seamless transmission. Needless to say, workflows don't have to be interrupted in order to better a stream. Using the Dolby.io Streaming API protocols like [SRT](/millicast/broadcast/using-srt.md), [NDI](/millicast/broadcast/using-ndi.md), and [WHIP](/millicast/broadcast/webrtc-whip.md) can be ingested directly from the encoders like [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md), [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md), and [Videon](/millicast/hardware-encoders/videon.md) and distributed in WebRTC.
 

@@ -1,6 +1,6 @@
 ---
 title: "RTMP | RTMPS"
-id: using-rtmp-and-rtmps
+slug: /using-rtmp-and-rtmps
 ---
 **Real-Time Messaging Protocol (RTMP)** has been well supported by popular hardware and software applications for many years. In addition to WebRTC, Dolby.io Real-time Streaming allows you to broadcast and distribute content from an RTMP or secure RTMPS source.
 

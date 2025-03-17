@@ -1,6 +1,6 @@
 ---
 title: "High Availability Management"
-id: high-availability-management
+slug: /high-availability-management
 ---
 _Note: To make use of this feature, please be familiar with the concept of [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md)_ 
 

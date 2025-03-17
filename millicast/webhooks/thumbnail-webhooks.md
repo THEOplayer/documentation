@@ -1,6 +1,6 @@
 ---
 title: "Thumbnail Hooks"
-id: thumbnail-webhooks
+slug: /thumbnail-webhooks
 ---
 The **thumbnail** _type_ of [webhook](/millicast/webhooks/index.md) allows you to receive a static image that is captured every 30 seconds during an active stream. This thumbnail would allow somebody to preview what was on a stream at various intervals.
 

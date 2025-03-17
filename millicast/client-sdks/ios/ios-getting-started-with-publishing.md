@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Publishing"
-id: ios-getting-started-with-publishing
+slug: /ios-getting-started-with-publishing
 ---
 Follow these steps to add the publishing capability to your application.
 

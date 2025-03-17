@@ -1,6 +1,6 @@
 ---
 title: "Professional Cameras"
-id: production-cameras
+slug: /production-cameras
 ---
 Dolby.io Real-time Streaming supports broadcast-grade workflows that use professional cameras and encoders to deliver high-quality, real-time video and audio streams globally to massive audiences. Broadcast-grade cameras are typically recommended for sports streaming, live events, and experiences where quality and low latency are prioritized. This guide will outline how to prepare professional cameras for capture so you can broadcast with Dolby.io Real-time Streaming.
 

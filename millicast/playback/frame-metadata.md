@@ -1,6 +1,6 @@
 ---
 title: "Frame Metadata"
-id: frame-metadata
+slug: /frame-metadata
 ---
 In addition to streaming audio and video there are many use cases that require additional metadata about what is happening in the stream. We refer to this as **Frame Metadata** which allows for embedding and extraction of custom application data that has frame-level accuracy.
 

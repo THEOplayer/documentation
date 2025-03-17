@@ -1,6 +1,6 @@
 ---
 title: "Stream Recordings"
-id: recordings
+slug: /recordings
 ---
 With **_Stream Recording_** you can keep a copy of a real-time stream where media can be used for a variety of use cases such as video on demand (VOD) playback, archiving and auditing, event highlights and instant replay, etc. To support this variety of purposes there are options for the type of media assets that you will create from a stream.
 

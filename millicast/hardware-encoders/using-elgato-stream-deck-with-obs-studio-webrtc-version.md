@@ -1,6 +1,6 @@
 ---
 title: "Elgato"
-id: using-elgato-stream-deck-with-obs-studio-webrtc-version
+slug: /using-elgato-stream-deck-with-obs-studio-webrtc-version
 ---
 **Elgato** is a world-leading provider of audiovisual technology for content creators in streaming platforms. Focused on revolutionizing creative workflows, Elgato has a growing ecosystem with cross-compatibility and seamless user experience.
 

@@ -1,5 +1,5 @@
 ---
 title: "Sample Apps"
-id: sample-apps
+slug: /sample-apps
 ---
 placeholder for sample apps

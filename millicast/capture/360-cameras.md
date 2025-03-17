@@ -1,6 +1,6 @@
 ---
 title: "360 VR Cameras"
-id: 360-cameras
+slug: /360-cameras
 ---
 Dolby.io Real-time Streaming allows for 360-degree [Real-time broadcasts](https://dolby.io/products/real-time-streaming/). 
 

@@ -1,6 +1,6 @@
 ---
 title: "Live Broadcast"
-id: how-to-broadcast-in-dashboard
+slug: /how-to-broadcast-in-dashboard
 ---
 The **Live broadcast** section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) is the place to manage all of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). You use these tokens to securely broadcast. You can also launch a hosted **Broadcaster** web app to start a broadcast.
 

@@ -1,6 +1,6 @@
 ---
 title: "FFmpeg"
-id: using-ffmpeg
+slug: /using-ffmpeg
 ---
 **FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. It is common practice to use Ffmpeg in production workflows when broadcasting from a media file on disk.
 
