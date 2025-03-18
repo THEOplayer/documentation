@@ -415,26 +415,32 @@ const config: Config = {
       },
       items: [
         {
-          type: 'custom-platformSidebar',
-          docsPluginId: 'theoplayer',
-          label: 'THEOplayer',
+          type: 'dropdown',
+          label: 'Player',
           href: '/theoplayer',
           position: 'left',
-        } satisfies PlatformSidebarNavbarItemProps,
+          items: [
+            {
+              type: 'custom-platformSidebar',
+              docsPluginId: 'theoplayer',
+              label: 'THEOplayer',
+              href: '/theoplayer',
+            } satisfies PlatformSidebarNavbarItemProps,
+            {
+              type: 'custom-platformSidebar',
+              docsPluginId: 'open-video-ui',
+              label: 'Open Video UI',
+              href: '/open-video-ui',
+            } satisfies PlatformSidebarNavbarItemProps,
+          ],
+        },
         {
-          type: 'custom-platformSidebar',
+          type: 'docSidebar',
           docsPluginId: 'theoads',
-          label: 'THEOads',
-          href: '/theoads',
+          sidebarId: 'theoads',
+          label: 'Ads',
           position: 'left',
-        } satisfies PlatformSidebarNavbarItemProps,
-        {
-          type: 'custom-platformSidebar',
-          docsPluginId: 'open-video-ui',
-          label: 'Open Video UI',
-          href: '/open-video-ui',
-          position: 'left',
-        } satisfies PlatformSidebarNavbarItemProps,
+        },
         {
           type: 'dropdown',
           label: 'Streaming',
