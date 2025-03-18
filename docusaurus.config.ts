@@ -436,14 +436,23 @@ const config: Config = {
           position: 'left',
         } satisfies PlatformSidebarNavbarItemProps,
         {
-          label: 'THEOlive',
-          href: '/theolive',
+          type: 'dropdown',
+          label: 'Streaming',
           position: 'left',
-        },
-        {
-          label: 'Millicast',
-          href: '/millicast',
-          position: 'left',
+          items: [
+            {
+              type: 'docSidebar',
+              docsPluginId: 'theolive',
+              sidebarId: 'theolive',
+              label: 'THEOlive',
+            },
+            {
+              type: 'docSidebar',
+              docsPluginId: 'millicast',
+              sidebarId: 'millicast',
+              label: 'Millicast',
+            },
+          ],
         },
         {
           type: 'docsVersionDropdown',
