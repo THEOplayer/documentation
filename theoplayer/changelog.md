@@ -5,6 +5,15 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.13.2 (2025/03/17)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where player crashed on a call of setSource and reset while rendering video on a custom surface.
+- Fixed an issue where the player would incorrectly resize on manual quality switches when using the Media3 integration.
+
 ## 🚀 8.13.1 (2025/03/14)
 
 ### Android
