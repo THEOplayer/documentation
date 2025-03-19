@@ -1,4 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+import millicastApiSidebar from './millicast/api/sidebar';
 
 const sidebars: SidebarsConfig = {
   millicast: [
@@ -208,7 +209,23 @@ const sidebars: SidebarsConfig = {
         // },
       ],
     },
+    {
+          type: 'link',
+          label: 'Millicast REST API',
+          customProps: {
+            icon: '🛜',
+          },
+          href: '/millicast/api/millicast-api',
+        }
   ],
+  millicastApi: [
+      {
+        type: 'link',
+        label: '« Back',
+        href: '/millicast/',
+      },
+      ...millicastApiSidebar,
+    ],
 };
 
 export default sidebars;

@@ -73,7 +73,7 @@ const docsConfigBase = {
 } satisfies DocsPlugin.Options;
 
 const config: Config = {
-  title: 'THEOdocs',
+  title: 'Dolby PrimeView Docs',
   tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI, THEOlive, and Millicast',
   favicon: 'img/favicon.ico',
 
@@ -87,7 +87,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'THEOplayer', // Usually your GitHub org/user name.
+  organizationName: 'Dolby', // Usually your GitHub org/user name.
   projectName: 'documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -165,8 +165,8 @@ const config: Config = {
     [
       'docusaurus-plugin-openapi-docs',
       {
-        id: 'theoads-api',
-        docsPluginId: 'theoads',
+        id: 'combined-api-reference',
+        docsPluginId: 'combined-api-reference',
         config: {
           signaling: {
             specPath: 'theoads/api/ads-client.swagger.json',
@@ -175,7 +175,15 @@ const config: Config = {
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
-          } satisfies OpenApiPlugin.Options,
+          },
+          millicast: {
+              specPath: 'millicast/api/millicast.swagger.json',
+              outputDir: 'millicast/api',
+              hideSendButton: true,
+              sidebarOptions: {
+                groupPathsBy: 'tag',
+            },
+            } satisfies OpenApiPlugin.Options,
         },
       },
     ],
@@ -257,6 +265,10 @@ const config: Config = {
             from: '/theoads/api/signaling/',
             to: '/theoads/api/signaling/theoads-api/',
           },
+          {
+            from: '/millicast/api/',
+            to: '/millicast/api/millicast-api/',
+          }
         ],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
