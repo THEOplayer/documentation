@@ -5,7 +5,7 @@ import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
-import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/lib/types';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
@@ -163,31 +163,6 @@ const config: Config = {
       } satisfies DocsPlugin.Options,
     ],
     [
-      'docusaurus-plugin-openapi-docs',
-      {
-        id: 'combined-api-reference',
-        docsPluginId: 'combined-api-reference',
-        config: {
-          signaling: {
-            specPath: 'theoads/api/ads-client.swagger.json',
-            outputDir: 'theoads/api/signaling',
-            hideSendButton: true,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-          },
-          millicast: {
-              specPath: 'millicast/api/millicast.swagger.json',
-              outputDir: 'millicast/api',
-              hideSendButton: true,
-              sidebarOptions: {
-                groupPathsBy: 'tag',
-            },
-            } satisfies OpenApiPlugin.Options,
-        },
-      },
-    ],
-    [
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
@@ -227,6 +202,7 @@ const config: Config = {
         path: 'millicast',
         routeBasePath: '/millicast',
         sidebarPath: './sidebarsMillicast.ts',
+        docItemComponent: '@theme/ApiItem',
         versions: {
           current: {
             noIndex: true,
@@ -250,6 +226,40 @@ const config: Config = {
       } satisfies DocsPlugin.Options,
     ],
     [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'theoads-api',
+        docsPluginId: 'theoads',
+        config: {
+          signaling: {
+            specPath: 'theoads/api/ads-client.swagger.json',
+            outputDir: 'theoads/api/signaling',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+        },
+      } satisfies OpenApiPlugin.PluginOptions,
+    ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'millicast-api',
+        docsPluginId: 'millicast',
+        config: {
+          millicast: {
+            specPath: 'millicast/api/millicast.swagger.json',
+            outputDir: 'millicast/api',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+        },
+      } satisfies OpenApiPlugin.PluginOptions,
+    ],
+    [
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
@@ -268,7 +278,7 @@ const config: Config = {
           {
             from: '/millicast/api/',
             to: '/millicast/api/millicast-api/',
-          }
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
@@ -278,6 +288,7 @@ const config: Config = {
         },
       } satisfies ClientRedirectsPlugin.Options,
     ],
+    [
     () => ({
       name: 'webpack-plugin',
       configureWebpack() {
@@ -311,6 +322,8 @@ const config: Config = {
         } satisfies WebpackConfiguration;
       },
     }),
+    {},
+    ],
   ],
 
   themes: ['docusaurus-theme-openapi-docs'],
