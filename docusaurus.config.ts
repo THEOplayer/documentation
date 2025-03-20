@@ -204,11 +204,6 @@ const config: Config = {
         path: 'theolive',
         routeBasePath: '/theolive',
         sidebarPath: './sidebarsTheolive.ts',
-        versions: {
-          current: {
-            noIndex: true,
-          },
-        },
       },
     ],
     [
