@@ -203,11 +203,6 @@ const config: Config = {
         routeBasePath: '/millicast',
         sidebarPath: './sidebarsMillicast.ts',
         docItemComponent: '@theme/ApiItem',
-        versions: {
-          current: {
-            noIndex: true,
-          },
-        },
       },
     ],
     [
