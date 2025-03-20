@@ -284,10 +284,14 @@ const config: Config = {
       } satisfies ClientRedirectsPlugin.Options,
     ],
     [
-    () => ({
-      name: 'webpack-plugin',
-      configureWebpack() {
-        return {
+      (_context, options: { webpack: WebpackConfiguration }) => ({
+        name: 'webpack-plugin',
+        configureWebpack() {
+          return options.webpack;
+        },
+      }),
+      {
+        webpack: {
           module: {
             // https://github.com/WebCoder49/code-input only exports to the global scope.
             // Insert some `import` and `export` statements where needed.
@@ -314,10 +318,8 @@ const config: Config = {
               },
             ],
           },
-        } satisfies WebpackConfiguration;
+        } satisfies WebpackConfiguration,
       },
-    }),
-    {},
     ],
   ],
 
