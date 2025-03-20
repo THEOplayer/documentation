@@ -81,6 +81,12 @@ const FeatureList: FeatureItem[] = [
     ),
     to: '/theolive',
   },
+  {
+    title: 'Millicast',
+    Image: (props) => <h2>Dolby Millicast</h2>, // TODO Logo?
+    description: <>Deliver broadcast quality live streaming at sub-second latency, enabling interactivity and fan engagement.</>,
+    to: '/millicast',
+  },
 ];
 
 function Feature({ title, Image, description, to }: FeatureItem) {
