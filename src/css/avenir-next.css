@@ -17,6 +17,12 @@
     url('fonts/avenir-next-lt-pro/bold.woff') format('woff');
 }
 @font-face {
+  font-family: 'avenir-next-bold-it';
+  src:
+    url('fonts/avenir-next-lt-pro/bold-it.woff2') format('woff2'),
+    url('fonts/avenir-next-lt-pro/bold-it.woff') format('woff');
+}
+@font-face {
   font-family: 'avenir-next-regular';
   src:
     url('fonts/avenir-next-lt-pro/regular.woff2') format('woff2'),
@@ -87,10 +93,4 @@
   src:
     url('fonts/avenir-next-lt-pro/lt-it.woff2') format('woff2'),
     url('fonts/avenir-next-lt-pro/lt-it.woff') format('woff');
-}
-@font-face {
-  font-family: 'avenir-next-bold-it';
-  src:
-    url('fonts/avenir-next-lt-pro/bold-it.woff2') format('woff2'),
-    url('fonts/avenir-next-lt-pro/bold-it.woff') format('woff');
 }
