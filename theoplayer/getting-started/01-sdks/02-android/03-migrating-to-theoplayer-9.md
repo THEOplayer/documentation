@@ -83,6 +83,22 @@ See [our guide on feature integrations](../../../getting-started/01-sdks/02-andr
 If you want to opt-out of this behavior, you can set `THEOplayerConfig.Builder#autoIntegrations(boolean)` to `false`
 and then [add your integrations manually](../../../getting-started/01-sdks/02-android/01-features.md#adding-integrations-manually).
 
+## Kotlin-first approach
+
+Starting with THEOplayer 9.0, we're adopting a Kotlin-first approach for the Android SDK and its integrations,
+similar to [Google's own approach for Android](https://developer.android.com/kotlin/first).
+
+- New APIs will be designed with Kotlin users in mind first. We will make use of Kotlin's more expressive
+  language features where appropriate, such as [named parameters](https://kotlinlang.org/docs/functions.html#named-arguments)
+  and [coroutines](https://kotlinlang.org/docs/coroutines-overview.html).
+  - For example: [`TypedSource`] now has a constructor with named arguments, which is intended to replace [`TypedSource.Builder`].
+- Official documentation and examples will be written in Kotlin. Java examples may be available on a case-by-case basis.
+- While you can still use THEOplayer from Java code, it may result in less idiomatic code,
+  or it may require adding Kotlin libraries to your app's dependencies.
+
+We highly recommend using Kotlin for new Android apps. To add Kotlin to an existing app,
+see [the Android documentation](https://developer.android.com/kotlin/add-kotlin).
+
 ## Replace usages of deprecated APIs
 
 Some properties and methods that were previously deprecated have been removed from the API.
@@ -101,3 +117,6 @@ Update your code to use the new APIs instead.
 - Removed deprecated `GoogleDaiIntegrationFactory.createGoogleDaiIntegration(THEOplayerView, ImaSdkSettings)` API. Use `GoogleDaiIntegrationFactory.createGoogleDaiIntegration(THEOplayerView, GoogleImaConfiguration(ImaSdkSettings))` instead.
 - Removed deprecated `ConaxDRMConfiguration.Builder.fairPlay(FairPlayKeySystemConfiguration)` API. Use `ConaxDRMConfiguration.Builder.fairplay(FairPlayKeySystemConfiguration)` instead.
 - Moved the `GoogleImaAd` API from the package `com.theoplayer.android.api.ads.GoogleImaAd` to `com.theoplayer.android.api.ads.ima`.
+
+[`TypedSource`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/TypedSource.html
+[`TypedSource.Builder`]: pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html
