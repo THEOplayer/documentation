@@ -79,11 +79,14 @@
   font-weight: var(--ifm-font-weight-medium);
 }
 
-.navbar__link {
+/* Border beneath active navbar link and dropdown */
+.navbar__link,
+.dropdown {
   border-bottom: 2px solid transparent;
 }
 
-.navbar__link--active {
+.navbar__link--active,
+.dropdown:has(> .dropdown--active) {
   color: var(--ifm-navbar-link-color);
   border-bottom: 2px solid var(--ifm-color-primary);
 }
