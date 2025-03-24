@@ -4,12 +4,13 @@
  * work well for content-centric websites.
  */
 
+@import 'avenir-next.css';
 @import 'openapi.css';
 
 :root {
-  --ifm-font-family-base: 'Open Sans', sans-serif;
-  --ifm-heading-font-family: 'Francois One', sans-serif;
-  --ifm-heading-font-weight: 400;
+  --ifm-font-family-base: 'avenir-next-regular', sans-serif;
+  --ifm-base-font-weight: 500;
+  --ifm-heading-font-weight: 800;
   --ifm-h4-font-size: 1.15rem;
   --ifm-menu-color-background-active: rgba(125, 51, 255, 0.09);
   --ifm-menu-color-background-hover: rgba(125, 51, 255, 0.09);
