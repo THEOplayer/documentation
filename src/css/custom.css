@@ -9,8 +9,15 @@
 
 :root {
   --ifm-font-family-base: 'avenir-next-lt-pro', sans-serif;
-  --ifm-base-font-weight: 500;
-  --ifm-heading-font-weight: 600;
+  --ifm-font-weight-normal: 400;
+  --ifm-font-weight-medium: 500;
+  --ifm-font-weight-semibold: 600;
+  --ifm-font-weight-bold: 700;
+
+  --ifm-base-font-weight: var(--ifm-font-weight-normal);
+  --ifm-heading-font-weight: var(--ifm-font-weight-semibold);
+  --ifm-dropdown-font-weight: var(--ifm-font-weight-medium);
+
   --ifm-h4-font-size: 1.15rem;
   --ifm-menu-color-background-active: rgba(125, 51, 255, 0.09);
   --ifm-menu-color-background-hover: rgba(125, 51, 255, 0.09);
@@ -64,6 +71,12 @@
 
 .footer a {
   --ifm-link-color: var(--ifm-footer-link-color);
+}
+
+.menu,
+.navbar__link,
+.pagination-nav__sublabel {
+  font-weight: var(--ifm-font-weight-medium);
 }
 
 a:hover {
