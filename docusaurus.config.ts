@@ -73,7 +73,7 @@ const docsConfigBase = {
 } satisfies DocsPlugin.Options;
 
 const config: Config = {
-  title: 'Dolby PrimeView Docs',
+  title: 'Dolby OptiView Docs',
   tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI, THEOlive, and Millicast',
   favicon: 'img/favicon.ico',
 
@@ -432,7 +432,7 @@ const config: Config = {
       title: null,
       logo: {
         alt: 'THEOdocs',
-        src: 'img/logo_dark.svg',
+        src: 'img/dolby-logo-white.png',
       },
       items: [
         {
@@ -473,14 +473,14 @@ const config: Config = {
               type: 'docSidebar',
               docsPluginId: 'theolive',
               sidebarId: 'theolive',
-              label: 'THEOlive',
+              label: 'Live (THEOlive)',
               activeBasePath: '/theolive',
             },
             {
               type: 'docSidebar',
               docsPluginId: 'millicast',
               sidebarId: 'millicast',
-              label: 'Millicast',
+              label: 'Real-time (Millicast)',
               activeBasePath: '/millicast',
             },
           ],
