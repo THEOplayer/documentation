@@ -21,6 +21,12 @@
   --ifm-h4-font-size: 1.15rem;
   --ifm-menu-color-background-active: rgba(125, 51, 255, 0.09);
   --ifm-menu-color-background-hover: rgba(125, 51, 255, 0.09);
+
+  --ifm-navbar-background-color: #000;
+  --ifm-navbar-text-color: #fff;
+  --ifm-navbar-link-color: var(--ifm-navbar-text-color);
+  --ifm-navbar-link-hover-color: #b9b9ba;
+  --ifm-navbar-link-active-color: var(--ifm-navbar-link-color);
 }
 
 /*
@@ -52,14 +58,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.hero--primary {
-  --ifm-hero-background-color: #5c00fc;
-  --ifm-hero-text-color: #ffffff;
-}
-
+.hero--primary,
 [data-theme='dark'] .hero--primary {
-  --ifm-hero-background-color: #445f6e;
-  --ifm-hero-text-color: var(--ifm-font-color-base);
+  --ifm-hero-background-color: #000;
+  --ifm-hero-text-color: #fff;
 }
 
 .footer {
@@ -75,6 +77,42 @@
 .navbar__link,
 .pagination-nav__sublabel {
   font-weight: var(--ifm-font-weight-medium);
+}
+
+.navbar__link {
+  border-bottom: 2px solid transparent;
+}
+
+.navbar__link--active {
+  color: var(--ifm-navbar-link-color);
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+.navbar-sidebar {
+  background-color: var(--ifm-background-surface-color);
+}
+
+.navbar-sidebar__brand {
+  background-color: var(--ifm-navbar-background-color);
+}
+
+.navbar__inner,
+.navbar-sidebar__brand {
+  /* Use dark mode colors in top navbar and in brand of left navbar */
+  --ifm-color-scheme: dark;
+  --ifm-color-emphasis-0: var(--ifm-color-gray-1000);
+  --ifm-color-emphasis-100: var(--ifm-color-gray-900);
+  --ifm-color-emphasis-200: var(--ifm-color-gray-800);
+  --ifm-color-emphasis-300: var(--ifm-color-gray-700);
+  --ifm-color-emphasis-400: var(--ifm-color-gray-600);
+  --ifm-color-emphasis-500: var(--ifm-color-gray-500);
+  --ifm-color-emphasis-600: var(--ifm-color-gray-400);
+  --ifm-color-emphasis-700: var(--ifm-color-gray-300);
+  --ifm-color-emphasis-800: var(--ifm-color-gray-200);
+  --ifm-color-emphasis-900: var(--ifm-color-gray-100);
+  --ifm-color-emphasis-1000: var(--ifm-color-gray-0);
+
+  color: var(--ifm-navbar-text-color);
 }
 
 a:hover {

@@ -432,8 +432,7 @@ const config: Config = {
       title: null,
       logo: {
         alt: 'THEOdocs',
-        src: 'img/logo.svg',
-        srcDark: 'img/logo_dark.svg',
+        src: 'img/logo_dark.svg',
       },
       items: [
         {
