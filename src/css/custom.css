@@ -8,13 +8,12 @@
 @import 'openapi.css';
 
 :root {
-  --ifm-font-family-base: 'avenir-next-regular', sans-serif;
+  --ifm-font-family-base: 'avenir-next-lt-pro', sans-serif;
   --ifm-base-font-weight: 500;
-  --ifm-heading-font-weight: 800;
+  --ifm-heading-font-weight: 600;
   --ifm-h4-font-size: 1.15rem;
   --ifm-menu-color-background-active: rgba(125, 51, 255, 0.09);
   --ifm-menu-color-background-hover: rgba(125, 51, 255, 0.09);
-
 }
 
 /*
