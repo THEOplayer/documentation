@@ -91,6 +91,11 @@
   border-bottom: 2px solid var(--ifm-color-primary);
 }
 
+/* Hide dropdown caret */
+.dropdown > .navbar__link:after {
+  display: none;
+}
+
 .navbar-sidebar {
   background-color: var(--ifm-background-surface-color);
 }
