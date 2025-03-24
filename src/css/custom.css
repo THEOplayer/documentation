@@ -52,12 +52,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-
 .hero--primary {
   --ifm-hero-background-color: #5c00fc;
-  --ifm-hero-text-color: #FFFFFF;
+  --ifm-hero-text-color: #ffffff;
 }
-
 
 [data-theme='dark'] .hero--primary {
   --ifm-hero-background-color: #445f6e;
@@ -80,7 +78,7 @@
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 code[class*='language-'],
