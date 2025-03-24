@@ -105,7 +105,7 @@ To verify everything is working, you view the stream using any suitable [playbac
 
 ## Using the GoPro webcam utility
 
-The GoPro [Webcam](/millicast/https://community.gopro.com/s/article/GoPro-Webcam?language=en_US) desktop utility for Mac or Windows allows you to configure a GoPro HERO8 Black or later camera to capture a stream much like you would any other [web cameras](/millicast/capture/web-cameras.md) attached to a computer. 
+The GoPro [Webcam](https://community.gopro.com/s/article/GoPro-Webcam?language=en_US) desktop utility for Mac or Windows allows you to configure a GoPro HERO8 Black or later camera to capture a stream much like you would any other [web cameras](/millicast/capture/web-cameras.md) attached to a computer. 
 
 The **Webcam Utility** is a GoPro product, so the behavior and instructions may change in future releases from what is described below.  Visit the official [GoPro Support](https://community.gopro.com/s/?language=en_US) for resources like Product Manuals, Help Articles, and Video Tutorials on using the app if you have any questions.
 

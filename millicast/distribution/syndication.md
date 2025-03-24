@@ -60,7 +60,7 @@ To use the [Create Token](ref:subscribetoken_createtoken) API, add the following
 > 
 > The published stream and Subscribe token must originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/millicast/distribution/multi-region-support/index.md).
 
-Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](/millicast/https://dashboard.dolby.io/)  when [creating a Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md)creating-a-subscriber-token). 
+Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](https://dashboard.dolby.io/)  when [creating a Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md)creating-a-subscriber-token). 
 
 
 ![](../assets/img/sub2.png)

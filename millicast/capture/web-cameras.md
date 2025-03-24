@@ -103,7 +103,7 @@ Once you've selected the web camera with `getUserMedia` it is ready to capture v
 You can find similar capabilities to the JavaScript SDK from the other Client SDKs listed below:
 
 <div class="small-image-and-text-btn-container">
-  <a href="https://docs.dolby.io/streaming-apis/docs/web" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/web.md" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/web.svg)
@@ -112,7 +112,7 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
     </div>
   </a>
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/ios" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/ios" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/apple.svg)
@@ -121,7 +121,7 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
     </div>
   </a>
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/android" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/android" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/android.svg)
@@ -130,7 +130,7 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/rn" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/rn.md" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/react.svg)
@@ -139,7 +139,7 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/desktop" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/apple.svg)
@@ -148,7 +148,7 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/desktop" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/electron.svg)
@@ -157,7 +157,7 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/flutter" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/flutter.md" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/flutter.svg)
@@ -165,8 +165,7 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
       <div class="small-image-and-text-btn-title">Flutter SDK</div>
     </div>
   </a>    
-
-    <a href="https://docs.dolby.io/streaming-apis/docs/desktop" class="small-image-and-text-btn">
+    <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/dotnet.svg)
@@ -174,23 +173,5 @@ You can find similar capabilities to the JavaScript SDK from the other Client SD
       <div class="small-image-and-text-btn-title">.NET SDK</div>
     </div>
   </a>
-  
-  <a href="https://docs.dolby.io/streaming-apis/docs/unity-getting-started" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/unity.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Unity plugin</div>
-    </div>
-  </a> 
-  
-  <a href="https://docs.dolby.io/streaming-apis/docs/player-plugin" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/unreal.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Unreal plugin</div>
-    </div>
-  </a> 
 </div>
 

@@ -29,7 +29,7 @@ The Native SDK for creating Android applications. You may use it in your Android
     <div class="dolbyio-card-description">
     </div>
   </a>
-  <a class="dolbyio-card dolbyio-card-4" href="https://docs.dolby.io/streaming-apis/docs/android-getting-started-with-publishing">
+  <a class="dolbyio-card dolbyio-card-4" href="/millicast/client-sdks/android-getting-started-with-publishing">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
     </div>

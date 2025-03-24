@@ -6,10 +6,6 @@ slug: /broadcasting-jitsi-or-zoom-meetings
 
 See the official [zoom](https://zoom.us/) site for documentation, installation instructions, and additional support.
 
-> 📘 Interested in Building Your Own Video Conferencing App?
-> 
-> Dolby.io real-time streaming is great for broadcasting solutions, however, Dolby.io has another product, [Dolby.io Communications](https://dolby.io/products/video-call/) which is designed for building audio and video conferencing solutions. Learn more by exploring the [Dolby.io Communications documentation](https://docs.dolby.io/communications-apis/docs).
-
 # Get your Dolby.io RTMP publish URL
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available.

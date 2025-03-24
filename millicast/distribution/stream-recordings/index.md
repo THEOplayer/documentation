@@ -140,7 +140,7 @@ For `clip` assets you can identify the specific source from which to clip, or if
 
 For `recording` assets, you will get a discrete media file for each source.
 
-You will need to use a separate media tool (such as [Dolby.io Media Transcode API](https://docs.dolby.io/media-apis/docs/transcode-api-guide)) if you want to automate any transizing, transrating, or stitching operations.
+You will need to use a separate media tool if you want to automate any transizing, transrating, or stitching operations.
 
 ## Media Duration
 

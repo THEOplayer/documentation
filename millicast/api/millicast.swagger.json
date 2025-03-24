@@ -14857,7 +14857,7 @@
           },
           "simulcastId": {
             "type": "string",
-            "description": "Optional. <br /> <br /> If this field is omitted, a media asset will be created per available simulcastId <br /> <br /> Otherwise, set the field to `null` to select a source published without a specified simulcastId. <br /> <br />Provide an empty string to select a source published using RTMP/SRT paths where the simulcastId parameter was specified without a defined value as shown in [Multi-source RTMP](https://docs.dolby.io/streaming-apis/docs/multi-source-broadcasting#multi-source-rtmp), i.e. `?simulcastId&...`.<br /> <br />This field can also be set to any standard string.",
+            "description": "Optional. <br /> <br /> If this field is omitted, a media asset will be created per available simulcastId <br /> <br /> Otherwise, set the field to `null` to select a source published without a specified simulcastId. <br /> <br />Provide an empty string to select a source published using RTMP/SRT paths where the simulcastId parameter was specified without a defined value as shown in [Multi-source RTMP](/millicast/broadcast/multi-source-broadcasting#multi-source-rtmp), i.e. `?simulcastId&...`.<br /> <br />This field can also be set to any standard string.",
             "nullable": true
           },
           "priority": {
@@ -14880,7 +14880,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Optional. Provide a label for the live recording clip. If not specified, this value will be assigned. <br /> <br />`name` must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `name` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to us](https://docs.dolby.io/streaming-apis/docs/live-clipping#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />`name` may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
+            "description": "Optional. Provide a label for the live recording clip. If not specified, this value will be assigned. <br /> <br />`name` must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `name` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to us](/millicast/distribution/stream-recordings/live-clipping.md#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />`name` may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
             "maxLength": 256,
             "minLength": 1,
             "nullable": true
@@ -18988,7 +18988,7 @@
           },
           "enableThumbnails": {
             "type": "boolean",
-            "description": "Optional. Set to true to receive webhook notifications for thumbnails for the specified streams. Default is false. See documentation https://docs.dolby.io/streaming-apis/docs/thumbnail-webhooks",
+            "description": "Optional. Set to true to receive webhook notifications for thumbnails for the specified streams. Default is false. See documentation /millicast/webhooks/thumbnail-webhooks.md",
             "default": false,
             "nullable": true
           },
@@ -19749,7 +19749,7 @@
           },
           "clipName": {
             "type": "string",
-            "description": "Optional. Provide a label for the live recording clip. <br /> <br />ClipNames may not exceed 256 characters. ClipNames must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `clipName` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to Dolby.io](https://docs.dolby.io/streaming-apis/docs/live-clipping#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />ClipNames may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
+            "description": "Optional. Provide a label for the live recording clip. <br /> <br />ClipNames may not exceed 256 characters. ClipNames must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `clipName` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to Dolby.io](/millicast/distribution/stream-recordings/live-clipping.md#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />ClipNames may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
             "maxLength": 256,
             "minLength": 1,
             "nullable": true
@@ -20572,7 +20572,7 @@
         ],
         "properties": {
           "tracking": {
-            "description": "Optional. Tracking Information for the Stream Syndication capability. See documentation https://docs.dolby.io/streaming-apis/docs/syndication.",
+            "description": "Optional. Tracking Information for the Stream Syndication capability. See documentation /millicast/distribution/streaming-recordings/syndication.",
             "nullable": true,
             "oneOf": [
               {

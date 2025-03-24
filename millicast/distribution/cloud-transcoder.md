@@ -13,8 +13,6 @@ The transcoder allows ingesting B-frames and reducing the amount of data require
 
 <CalloutBetaFeature />
 
-, 
-
 # Transcoder statuses
 
 Each transcoder has a state that depends on the performed asynchronous operations, such as creating, starting, stopping, or deleting. 
@@ -217,4 +215,4 @@ The Dolby.io Streaming platform allows using cloud transcoders with all other fe
 
 When using transcoding with recording, the platform records only the top layer.
 
-When using transcoding with [Re-streaming](https://docs.dolby.io/streaming-apis/docs/re-streaming), the top layer regardless of passthrough enabled or disabled, will be re-streamed out to the specified re-stream endpoints.
+When using transcoding with [Re-streaming](/millicast/distribution/re-streaming.md), the top layer regardless of passthrough enabled or disabled, will be re-streamed out to the specified re-stream endpoints.

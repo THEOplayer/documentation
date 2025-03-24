@@ -26,7 +26,7 @@ The Native SDK provides C++ APIs for desktop platforms, such as Linux, Mac, and 
  </div>
  </a>
  
- <a class="dolbyio-card dolbyio-card-3" href="https://docs.dolby.io/streaming-apis/docs/desktop-getting-started-with-publishing">
+ <a class="dolbyio-card dolbyio-card-3" href="/millicast/client-sdks/desktop-getting-started-with-publishing">
  <div class="dolbyio-card-image">
  <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
  </div>

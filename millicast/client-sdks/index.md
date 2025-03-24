@@ -6,7 +6,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
 
 <div class="dolbyio-cards-container">
   
-  <a class="dolbyio-card dolbyio-card-1" href="https://docs.dolby.io/streaming-apis/docs/web">
+  <a class="dolbyio-card dolbyio-card-1" href="/millicast/client-sdks/web.md">
      <div class="dolbyio-card-image">
       <img width="40px" src="https://files.readme.io/e3bb9ae-javascript-155-svgrepo-com.svg"/>
     </div>
@@ -16,7 +16,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
     </div>
   </a>
   
-  <a class="dolbyio-card dolbyio-card-2" href="https://docs.dolby.io/streaming-apis/docs/android">
+  <a class="dolbyio-card dolbyio-card-2" href="/millicast/client-sdks/android">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/c7b67fd-android-svgrepo-com.svg"/>
     </div>
@@ -26,7 +26,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
     </div>
   </a>
   
-  <a class="dolbyio-card dolbyio-card-3" href="https://docs.dolby.io/streaming-apis/docs/ios">
+  <a class="dolbyio-card dolbyio-card-3" href="/millicast/client-sdks/ios">
     <div class="dolbyio-card-image">
       <img width="45px" class="dolbyio-card-svg-icon" src="https://files.readme.io/5c709a5-os-ios-dark-svgrepo-com.svg"/>
     </div>
@@ -36,7 +36,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
     </div>
   </a>
   
-  <a class="dolbyio-card dolbyio-card-4" href="https://docs.dolby.io/streaming-apis/docs/flutter">
+  <a class="dolbyio-card dolbyio-card-4" href="/millicast/client-sdks/flutter.md">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/eb58ef6-flutter-svgrepo-com_1.svg"/>
     </div>
@@ -45,7 +45,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
       Flutter SDK for creating Android and iOS applications
     </div>
   </a>
-  <a class="dolbyio-card dolbyio-card-5" href="https://docs.dolby.io/streaming-apis/docs/rn">
+  <a class="dolbyio-card dolbyio-card-5" href="/millicast/client-sdks/rn.md">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/20d2f80-react-svgrepo-com.svg"/>
     </div>
@@ -54,7 +54,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
       JavaScript SDK with the React Native WebRTC plugin for creating Android and iOS applications
     </div>
   </a>
-  <a class="dolbyio-card dolbyio-card-6" href="https://docs.dolby.io/streaming-apis/docs/desktop">
+  <a class="dolbyio-card dolbyio-card-6" href="/millicast/client-sdks/desktop">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/3890a7b-apple-173-svgrepo-com_1.svg"/>
     </div>
@@ -63,7 +63,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
       Native SDK for creating Mac applications
     </div>
   </a>
-  <a class="dolbyio-card dolbyio-card-7" href="https://docs.dolby.io/streaming-apis/docs/desktop">
+  <a class="dolbyio-card dolbyio-card-7" href="/millicast/client-sdks/desktop">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/cd5a0d6-windows-174-svgrepo-com_1.svg"/>
     </div>
@@ -72,7 +72,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
      Native SDK for creating Windows applications
     </div>
   </a>
-  <a class="dolbyio-card dolbyio-card-8" href="https://docs.dolby.io/streaming-apis/docs/desktop">
+  <a class="dolbyio-card dolbyio-card-8" href="/millicast/client-sdks/desktop">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/26dd507-os-linux-svgrepo-com.svg"/>
     </div>

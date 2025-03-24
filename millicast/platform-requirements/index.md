@@ -39,7 +39,7 @@ The service always has servers running ready to receive streams.  Unless you are
 
 For this method of publishing, we dynamically manage the servers for you and cannot guarantee the range of IP addresses used.  Customers with the requirement to whitelist IP ranges can refer to the region-specific IP addresses lists published by our cloud providers.  
 
-You can access a programmatic list of our regions and their abilities with the [Get Clusters](https://docs.dolby.io/streaming-apis/reference/cluster-get) API.
+You can access a programmatic list of our regions and their abilities with the [Get Clusters](/millicast/api/cluster-get-clusters-info/) API.
 
 | Dolby Region       | API ID  | IP Range Information                                                             |
 | :----------------- | :------ | :------------------------------------------------------------------------------- |

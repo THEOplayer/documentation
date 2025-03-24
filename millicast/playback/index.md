@@ -40,7 +40,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 ## Client SDKs
 
 <div class="small-image-and-text-btn-container">
-  <a href="https://docs.dolby.io/streaming-apis/docs/web" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/web.md" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/web.svg)
@@ -49,7 +49,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
     </div>
   </a>
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/ios" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/ios" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/apple.svg)
@@ -58,7 +58,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
     </div>
   </a>
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/android" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/android" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/android.svg)
@@ -67,7 +67,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/rn" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/rn.md" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/react.svg)
@@ -76,7 +76,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/desktop" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/apple.svg)
@@ -85,7 +85,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/desktop" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/electron.svg)
@@ -94,7 +94,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
     </div>
   </a>    
   
-  <a href="https://docs.dolby.io/streaming-apis/docs/flutter" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/flutter.md" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/flutter.svg)
@@ -102,8 +102,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
       <div class="small-image-and-text-btn-title">Flutter SDK</div>
     </div>
   </a>    
-
-    <a href="https://docs.dolby.io/streaming-apis/docs/desktop" class="small-image-and-text-btn">
+    <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/dotnet.svg)
@@ -111,24 +110,6 @@ The final stage of the streaming workflow is taking the stream and playing it ba
       <div class="small-image-and-text-btn-title">.NET SDK</div>
     </div>
   </a>
-  
-  <a href="https://docs.dolby.io/streaming-apis/docs/unity-getting-started" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/unity.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Unity plugin</div>
-    </div>
-  </a> 
-  
-  <a href="https://docs.dolby.io/streaming-apis/docs/player-plugin" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/unreal.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Unreal plugin</div>
-    </div>
-  </a> 
 </div>
 
 

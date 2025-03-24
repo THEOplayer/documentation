@@ -8,9 +8,6 @@ slug: /re-streaming
 ![](../assets/img/f4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f83af17ac88285-restream.png)
 
 
-
-, 
-
 ## Overview
 
 To distribute content to an RTMP(S) output source you will need to update the settings of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). The publish token defines a `restream` property with a list of targets that are identified by:
@@ -71,13 +68,13 @@ To disable re-streaming on specific feeds add the **norestream** boolean [publis
 
 ### Cloud transcoder and Re-streaming
 
-For workflows using both the [Cloud transcoder](https://docs.dolby.io/streaming-apis/docs/cloud-transcoder) and Re-streaming, the highest quality layer of the stream will be re-streamed out to the desired re-stream endpoints.
+For workflows using both the [Cloud transcoder](/millicast/distribution/cloud-transcoder.md) and Re-streaming, the highest quality layer of the stream will be re-streamed out to the desired re-stream endpoints.
 
 If **passthrough** is enabled, the top non-transcoded layer will be re-streamed. If **passthrough** is not enabled, the top transcoder layer will be re-streamed. 
 
 ### Redundant ingests and Re-streaming
 
-If you are publishing [redundant ingest](https://docs.dolby.io/streaming-apis/docs/redundant-ingest) feeds and Re-streaming, the first feed connected will be the one re-streamed out to the specified re-stream endpoints. 
+If you are publishing [redundant ingest](/millicast/broadcast/redundant-ingest) feeds and Re-streaming, the first feed connected will be the one re-streamed out to the specified re-stream endpoints. 
 
 ## Troubleshooting
 

@@ -95,7 +95,7 @@ Check with your specific hardware provider for direct support of WebRTC or one o
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/capture">
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/capture">
       <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Capture Guide</div>
     </a>
       
@@ -105,7 +105,7 @@ Check with your specific hardware provider for direct support of WebRTC or one o
 
 ## Broadcast encoded media
 
-[Broadcasting](/millicast/broadcast/index.mdx) content requires access to the public internet and encoding, which can be accomplished via the browser, software, hardware, and via the [Dolby.io Client-side broadcaster SDKs](https://docs.dolby.io/streaming-apis/docs/client-sdks). 
+[Broadcasting](/millicast/broadcast/index.mdx) content requires access to the public internet and encoding, which can be accomplished via the browser, software, hardware, and via the [Dolby.io Client-side broadcaster SDKs](/millicast/client-sdks). 
 
 The Dolby.io CDN can ingest streams encoded in a few main formats: 
 
@@ -124,7 +124,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/broadcast">
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/broadcast">
       <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Broadcast Guide</div>
     </a>
       
@@ -135,7 +135,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
 ## Distribution with WebRTC CDN
 
-The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/https://docs.dolby.io/streaming-apis/docs/basic-api-tutorial) or the Dashboard to ensure [distribution](/millicast/distribution/index.md) of streams is secure, stable, and scalable. 
+The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/getting-started/basic-api-tutorial.md) or the Dashboard to ensure [distribution](/millicast/distribution/index.md) of streams is secure, stable, and scalable. 
 
 <div style={{marginLeft: "20px"}}>
 
@@ -152,7 +152,7 @@ Distribution of streaming content requires scalability, stability, and security 
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/distribution">
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/distribution">
       <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Distribution Guide</div>
     </a>
       
@@ -182,7 +182,7 @@ The final component of the streaming workflow is taking the stream, after it has
 <div>
   <div class="small-text-only-btn-container">
       
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="https://docs.dolby.io/streaming-apis/docs/playback">
+    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/playback">
       <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Playback Guide</div>
     </a>
       

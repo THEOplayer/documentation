@@ -56,7 +56,7 @@ If you use Multi-bitrate (MBR) contribution where you encode your layers from th
 Notes
 
 - `sourceId` needs to be distinct within the MBR group for each layer but match between your primary and your backup
-- If using MBR and _multi-source_ contribution, your `simulcastId`s and `sourceId`s need to be consistent between primary and backup grouping.  More on how to do MBR and Multi-source contribution can be found in our \[Multi-Source builder guide](https://docs.dolby.io/streaming-apis/docs/multi-source-builder).
+- If using MBR and _multi-source_ contribution, your `simulcastId`s and `sourceId`s need to be consistent between primary and backup grouping.  More on how to do MBR and Multi-source contribution can be found in our \[Multi-Source builder guide](/millicast/streaming-dashboard/multi-source-builder).
 
 ### 5\. Start broadcasting
 

@@ -33,7 +33,7 @@ The Native SDK for creating iOS and tvOS applications. You may use it to connect
  </div>
  </a>
  
- <a class="dolbyio-card dolbyio-card-4" href="https://docs.dolby.io/streaming-apis/docs/ios-getting-started-with-publishing">
+ <a class="dolbyio-card dolbyio-card-4" href="/millicast/client-sdks/ios-getting-started-with-publishing">
  <div class="dolbyio-card-image">
  <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
  </div>
