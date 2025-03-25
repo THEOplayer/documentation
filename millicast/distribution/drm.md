@@ -16,7 +16,7 @@ Support is available for:
 
 Without authorized access, viewers will typically only observe a black or green screen without any audio.
 
-<CalloutPremiumFeature />
+*TODO: \< CalloutPremiumFeature />
 
 # How It Works
 
@@ -66,7 +66,7 @@ PUT https://api.millicast.com/api/publish_token
 
 When updating an existing token, you should also enable the `subscriberRequiresAuth` setting.
 
-<GettingStartedRESTAPI />
+*TODO: \< GettingStartedRESTAPI />
 
 ## Viewing a DRM Stream
 

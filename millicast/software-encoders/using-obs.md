@@ -154,7 +154,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 | :---------- | :---------------------------------------------------- |
 | Name        | 1080p                                                 |
 | RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/       |
-| RTMP Key    | _{StreamName}_?token=_{Token}_&sourceId=1&simulcastId |
+| RTMP Key    | _\{StreamName\}_?token=_\{Token\}_&sourceId=1&simulcastId |
 | Encoder     | x264 or nvenc                                         |
 | Resolution  | 1920x1080                                             |
 | Bitrate     | 6000kbps                                              |
@@ -165,7 +165,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 | :---------- | :-------------------------------------------------------------- |
 | Name        | 720p                                                            |
 | RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/                 |
-| RTMP Key    | _{StreamName}_?token=_{Token}_&sourceId=2&simulcastId&videoOnly |
+| RTMP Key    | _\{StreamName\}_?token=_\{Token\}_&sourceId=2&simulcastId&videoOnly |
 | Encoder     | x264 or nvenc                                                   |
 | Resolution  | 1280x720                                                        |
 | Bitrate     | 2000kbps                                                        |
@@ -176,7 +176,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 | :---------- | :-------------------------------------------------------------- |
 | Name        | 360p                                                            |
 | RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/                 |
-| RTMP Key    | _{StreamName}_?token=_{Token}_&sourceId=3&simulcastId&videoOnly |
+| RTMP Key    | _\{StreamName\}_?token=_\{Token\}_&sourceId=3&simulcastId&videoOnly |
 | Encoder     | x264 or nvenc                                                   |
 | Resolution  | 640x360                                                         |
 | Bitrate     | 500kbps                                                         |

@@ -11,13 +11,13 @@ slug: /live-clipping
 
 This opens up new possibilities for engaging audiences with dynamic and interactive viewing experiences.
 
-<PremiumAPICallout />
+*TODO: \< PremiumAPICallout />
 
 # Creating Clips by API
 
 Many broadcasts have streams that regularly exceed 12 or 24 hours. Maintaining a recording for the entire duration may not always make sense. By using the clipping feature, you can capture a customizable duration or series of shorter clips as part of your application and workflow.
 
-<GettingStartedRESTAPI />
+*TODO: \< GettingStartedRESTAPI />
 
 ## Application Architecture
 

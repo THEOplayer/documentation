@@ -5,9 +5,9 @@ slug: /audience-engagement
 
 
 <p class="image-container" align="middle">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Pubnub-logo.png" alt="Image 1" class="image" style={{width:200, float: left}}/>
-  <img src="https://uploads-ssl.webflow.com/606f20482a9af12002f47ae5/61683d868d2f643db90bcbd6_Singular_Logo_Black.png" alt="Image 2" class="image"  style={{width:200, float: left}}/>
-  <img src="https://storage.googleapis.com/developers.maestro.io/logo.png" alt="Image 3" class="image"  style={{width:200, float: left}}/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Pubnub-logo.png" alt="Image 1" class="image" style={{width:200, float: "left"}}/>
+  <img src="https://uploads-ssl.webflow.com/606f20482a9af12002f47ae5/61683d868d2f643db90bcbd6_Singular_Logo_Black.png" alt="Image 2" class="image"  style={{width:200, float: "left"}}/>
+  <img src="https://storage.googleapis.com/developers.maestro.io/logo.png" alt="Image 3" class="image"  style={{width:200, float: "left"}}/>
 </p>
 
 

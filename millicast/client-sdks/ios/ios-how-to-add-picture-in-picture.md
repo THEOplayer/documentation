@@ -11,7 +11,7 @@ slug: /ios-how-to-add-picture-in-picture
 
 Refer to the [Interactive Player](https://github.com/dolbyio-samples/rts-app-ios-viewer/tree/main/interactive-player) sample application to learn more about implementing the code needed for PiP feature in a fully functioning iOS App.
 
-<GettingStartedIOS />
+*TODO: \< GettingStartedIOS />
 
 ## 1. Setup AVPictureInPictureController
 

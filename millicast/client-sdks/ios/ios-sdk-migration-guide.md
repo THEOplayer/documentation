@@ -4,7 +4,7 @@ slug: /ios-sdk-migration-guide
 ---
 This migration guide provides some tips for upgrading or downgrading between releases of the iOS SDK.
 
-<GettingStartedIOS />
+*TODO: \< GettingStartedIOS />
 
 # 1.8.x to 2.x
 

@@ -85,7 +85,7 @@ To delete all items at once, click the **Select All** button from the same top s
 
 The [Media Assets](ref:media-assets) API can help you with automating workflows with recordings and clips.
 
-<GettingStartedRESTAPI />
+*TODO: \< GettingStartedRESTAPI />
 
 Use the [List Media Assets](ref:media-assets-get) endpoint to query a list of media assets for your account. There are some parameters you can use to filter the results returned.
 
@@ -155,7 +155,7 @@ Recordings will typically be stored on Dolby's servers and made available for re
 
 ### Example GET Response
 
-This is an example of a JSON response from the [/media/asset/{mediaAssetId}](ref:media-assets-mediaassetid-get) endpoint.
+This is an example of a JSON response from the [/media/asset/\{mediaAssetId\}](ref:media-assets-mediaassetid-get) endpoint.
 
 ```json
 {

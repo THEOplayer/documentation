@@ -62,7 +62,7 @@ The following are basic recommended settings for any encoder:
 
 These instructions should help with generating the SRT settings similar to what you would find in the dashboard when using the REST API endpoints to programmatically generate publishing tokens.
 
-You will need to know the **Stream name** as well as the **Publishing token**. You can retrieve these values by making a `GET` request to the [/api/publish_token/{tokenId}](ref:publishtokenv1) endpoint. The SRT Encryption setting (**displaySrtPassphrase**) and **srtPassphrase** can also be retrieved from the API as seen is this example response: 
+You will need to know the **Stream name** as well as the **Publishing token**. You can retrieve these values by making a `GET` request to the [/api/publish_token/\{tokenId\}](ref:publishtokenv1) endpoint. The SRT Encryption setting (**displaySrtPassphrase**) and **srtPassphrase** can also be retrieved from the API as seen is this example response: 
 
 ```json
 {

@@ -44,7 +44,7 @@ The Native SDK for creating iOS and tvOS applications. You may use it to connect
  
 </div>
 
-The package name of the Native SDK for iOS is _millicast-native-sdk-{version}-XCFramework.zip_.
+The package name of the Native SDK for iOS is _millicast-native-sdk-\{version\}-XCFramework.zip_.
 
 > 📘 Note
 > 

@@ -11,7 +11,7 @@ slug: /android-how-to-add-picture-in-picture
 
 Refer to the [Interactive Player](https://github.com/dolbyio-samples/rts-app-android-viewer/tree/main/interactiveplayer) sample application to learn more about implementing the code needed for PiP feature in a fully functioning Android App.
 
-<GettingStartedAndroid />
+*TODO: \< GettingStartedAndroid />
 
 ## 1. Add a Centralized PipViewModel
 

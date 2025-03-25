@@ -71,7 +71,7 @@ You might also adjust the **Quality Settings** to use 1080p for this source.
 | Name        | 1080p                                             |
 | :---------- | :------------------------------------------------ |
 | RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/   |
-| RTMP Key    | {StreamName}?token={Token}&sourceId=1&simulcastId |
+| RTMP Key    | \{StreamName\}?token=\{Token\}&sourceId=1&simulcastId |
 | Encoder     | FFMPEG                                            |
 | Resolution  | 1920x1080                                         |
 | Bitrate     | 6000kbps or as shown 4500kbps                     |
@@ -91,7 +91,7 @@ Adjust the quality settings to be a lower framerate, bitrate, and resolution to 
 | Name        | 720p                                                        |
 | :---------- | :---------------------------------------------------------- |
 | RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/             |
-| RTMP Key    | {StreamName}?token={Token}&sourceId=2&simulcastId&videoOnly |
+| RTMP Key    | \{StreamName\}?token=\{Token\}&sourceId=2&simulcastId&videoOnly |
 | Encoder     | FFMPEG                                                      |
 | Resolution  | 1280x720                                                    |
 | Bitrate     | 2000kbps or as shown 1500kbps                               |
@@ -109,7 +109,7 @@ As with the other example, update the **sourceId** and adjust the quality settin
 | Name        | 360p                                                        |
 | :---------- | :---------------------------------------------------------- |
 | RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/             |
-| RTMP Key    | {StreamName}?token={Token}&sourceId=3&simulcastId&videoOnly |
+| RTMP Key    | \{StreamName\}?token=\{Token\}&sourceId=3&simulcastId&videoOnly |
 | Encoder     | FFMPEG                                                      |
 | Resolution  | 640x360                                                     |
 | Bitrate     | 500kbps                                                     |

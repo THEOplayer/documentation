@@ -6,7 +6,7 @@ The Web SDK lets you connect, capture, publish, and subscribe to streams in your
 
 # Getting Started
 
-<GettingStartedWebCallout />
+*TODO: \< GettingStartedWebCallout />
 
 ## Installation
 

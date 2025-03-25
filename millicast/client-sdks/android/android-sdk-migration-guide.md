@@ -4,7 +4,7 @@ slug: /android-sdk-migration-guide
 ---
 This migration guide provides some tips for upgrading or downgrading between releases of the Android SDK.
 
-<GettingStartedAndroid />
+*TODO: \< GettingStartedAndroid />
 
 , 
 
