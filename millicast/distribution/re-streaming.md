@@ -56,7 +56,7 @@ When creating or updating [Publish Tokens](/millicast/streaming-dashboard/managi
 
 Only the first ten (10) destinations defined will be targets for re-streaming and any additional items or properties will be ignored.
 
-Visit the [/api/publish_token](ref:publishtokenv1_createtoken) specification for more details about using this API.
+Visit the [/api/publish_token](../api/publish-token-v-1-create-token.api.mdx) specification for more details about using this API.
 
 ## Multi-source Re-streaming
 

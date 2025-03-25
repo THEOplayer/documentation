@@ -21,7 +21,7 @@ Any streams broadcasted using the priority parameter under [Publishing Parameter
 
 ## Identifying Primary and Redundant Stream Priority
 
-If you don't know which token (`tokenId`) is being used to publish your primary you can get it from the Monitoring section of the dashboard or use the [List Token By Name](ref:publishtokenv1_listtokensbyname)  API and filter by `StreamName` to get the tokens used for primary and redundant streams that share the same streamName. The response of this endpoint assists with the identification of:
+If you don't know which token (`tokenId`) is being used to publish your primary you can get it from the Monitoring section of the dashboard or use the [List Token By Name](../../api/publish-token-v-1-list-tokens-by-name.api.mdx) API and filter by `StreamName` to get the tokens used for primary and redundant streams that share the same streamName. The response of this endpoint assists with the identification of:
 
 - the token associated with the primary stream i.e. the token in the list with the highest `priority` value
 - the tokens associated with a specific cluster/region
@@ -30,6 +30,6 @@ After identifying the `tokenId` to deprioritize or increase the priority for, yo
 
 ## Reprioritize Stream via TokenId
 
-Using the `tokenId` of the target active stream, call [Reprioritize Stream](ref:stream_reprioritizestream) to assign it a new priority value and reset the primary/redundant stream arrangement. Remember that the highest value "wins" and is the stream that is broadcast to viewers. Reducing the priority of a primary stream below that of a redundant stream essentially renders it redundant and the viewer will show a new primary stream.
+Using the `tokenId` of the target active stream, call [Reprioritize Stream](../../api/stream-reprioritize-stream.api.mdx) to assign it a new priority value and reset the primary/redundant stream arrangement. Remember that the highest value "wins" and is the stream that is broadcast to viewers. Reducing the priority of a primary stream below that of a redundant stream essentially renders it redundant and the viewer will show a new primary stream.
 
-Priority changes should always be made using [Reprioritize Stream](ref:stream_reprioritizestream) for immediate effect rather than changing it on a token. Any changes made through [Update Token](ref:publishtokenv1_updatetoken) will only take effect after the stream is manually restarted. This is because [Reprioritize Stream](ref:stream_reprioritizestream) is effectively a shortcut API that updates the token `priority` then triggers a disconnection of the associated streams. Therefore, to use [Reprioritize Stream](ref:stream_reprioritizestream), encoders and publishing clients must be configured to automatically restart on disconnection.
+Priority changes should always be made using [Reprioritize Stream](../../api/stream-reprioritize-stream.api.mdx) for immediate effect rather than changing it on a token. Any changes made through [Update Token](../../api/publish-token-v-1-update-token.api.mdx) will only take effect after the stream is manually restarted. This is because [Reprioritize Stream](../../api/stream-reprioritize-stream.api.mdx) is effectively a shortcut API that updates the token `priority` then triggers a disconnection of the associated streams. Therefore, to use [Reprioritize Stream](../../api/stream-reprioritize-stream.api.mdx), encoders and publishing clients must be configured to automatically restart on disconnection.

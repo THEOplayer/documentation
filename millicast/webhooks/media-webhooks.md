@@ -21,7 +21,7 @@ The `event` will be one of the following values:
 
 The `data` payload will contain the following details:
 
-- **mediaAssetId** is the unique identifier that can be used with the [Media Assets](ref:media-assets) endpoint to retrieve additional details such as where to find the media file itself.
+- **mediaAssetId** is the unique identifier that can be used with the [Media Assets](../api/media-assets-list-media-assets.api.mdx) endpoint to retrieve additional details such as where to find the media file itself.
 - **type** identifies whether it is a _clip_ or _recording_ that is changing state.
 - **tokenId** is the unique identifier for the token used during a broadcast from which the media is created.
 - **streamName** is the unique label for the stream.

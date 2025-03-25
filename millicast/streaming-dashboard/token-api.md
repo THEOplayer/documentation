@@ -59,20 +59,20 @@ Navigate to the Security tab and click the `+ Create` button to add an API Secre
 
 Once you have created your initial API Secret, you can use the same edit button to refresh the API Secret, and any further access using old tokens will then be rejected. You can also delete the token and **disallow ALL API access to your account** as it was by default when you first signed up.
 
-From here, you can start using any of the APIs in the [API reference](ref:publishtokenv1_readtoken) or continue through the guide below to learn more about managing publish and subscribe tokens.
+From here, you can start using any of the APIs in the [API reference](../api/publish-token-v-1-read-token.api.mdx) or continue through the guide below to learn more about managing publish and subscribe tokens.
 
 ## Creating publishing tokens
 
-Publish tokens are required to start a stream and can be used to control who, where, and what kind of stream can be started. The easiest way to begin learning about programmatically creating a publish token is by going to the [PublishToken Create Token interface of the API reference](ref:publishtokenv1_createtoken).
+Publish tokens are required to start a stream and can be used to control who, where, and what kind of stream can be started. The easiest way to begin learning about programmatically creating a publish token is by going to the [PublishToken Create Token interface of the API reference](../api/publish-token-v-1-create-token.api.mdx).
 
-Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
+Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md#acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
 ![](../assets/img/pubtok.png)
 
 
 
-There are a lot of parameters to adjust when creating a token. For a full list of definitions, refer to the [Creating a Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token) guide, which goes into more detail.
+There are a lot of parameters to adjust when creating a token. For a full list of definitions, refer to the [Creating a Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token) guide, which goes into more detail.
 
 As an example, we can use the API reference UI to create a basic publish token via a cURL request:
 
@@ -136,7 +136,7 @@ In the above example, I also used the `allowedCountries` parameter to limit the 
 
 ### Managing publish tokens
 
-Once you've created a publish token, you can use the REST APIs to manage the token. The REST APIs support [Reading](ref:publishtokenv1_readtoken), [Deleting](ref:publishtokenv1_deletetoken), [Listing](ref:publishtokenv1_listtokens), [Updating](ref:publishtokenv1_updatetoken), [Disabling](ref:publishtokenv1_disabletokens), and [Getting Token IDs](ref:publishtokenv1_getallactivetokensbyaccount).
+Once you've created a publish token, you can use the REST APIs to manage the token. The REST APIs support [Reading](../api/publish-token-v-1-read-token.api.mdx), [Deleting](../api/publish-token-v-1-delete-token.api.mdx), [Listing](../api/publish-token-v-1-list-tokens.api.mdx), [Updating](../api/publish-token-v-1-update-token.api.mdx), [Disabling](../api/publish-token-v-1-disable-tokens.api.mdx), and [Getting Token IDs](../api/publish-token-v-1-get-all-active-tokens-by-account.api.mdx).
 
 For example, If I wanted to list the most recent 30 tokens created on my account, I could run the following command:
 
@@ -160,9 +160,9 @@ curl --request DELETE \
 
 Unlike the publisher, the viewer, by default, does not need a subscribe token to view a broadcast. However, if you want to [secure your feed](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token) from being viewed by unauthorized users, using a subscribe token is recommended. The subscribe token also has its own set of rules you can use to protect your feed. You can create a token with a time limit, set the token to work from single or multiple specified domains, or you can even set it to use a specific IP or IPs as well. 
 
-The easiest way to begin learning about creating a subscribe token is by going to [the _SubscribeToken Create Token_ interface of the API reference](ref:subscribetoken_createtoken).
+The easiest way to begin learning about creating a subscribe token is by going to [the _SubscribeToken Create Token_ interface of the API reference](../api/subscribe-token-v-1-create-token.api.mdx).
 
-Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
+Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md#acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
 ![](../assets/img/subtok.png)
@@ -259,7 +259,7 @@ To learn more about self-signing subscribe tokens, [check out this guide](/milli
 
 ### Managing subscribe tokens
 
-Once you've created a subscribe token, you can use the REST APIs to manage the token. The REST APIs support [Reading](ref:subscribetokenv1_readtoken), [Deleting](ref:subscribetokenv1_deletetoken), [Listing](ref:subscribetokenv1_listtokens), and [Updating](ref:subscribetokenv1_updatetoken).
+Once you've created a subscribe token, you can use the REST APIs to manage the token. The REST APIs support [Reading](../api/subscribe-token-v-1-read-token.api.mdx), [Deleting](../api/subscribe-token-v-1-delete-token.api.mdx), [Listing](../api/subscribe-token-v-1-list-tokens.api.mdx), and [Updating](../api/subscribe-token-v-1-update-token.api.mdx).
 
 For example, if I wanted to list the 30 most recent subscribe tokens, I could run the following request:
 

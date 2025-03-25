@@ -98,8 +98,8 @@ This will display a modal overlaying the stream with details about resolution, b
 
 When working with clusters you can automate workflows using available REST APIs.
 
-- The [/api/cluster](ref:cluster_getclustersinfo) endpoint allows you to query available cluster regions or change the default cluster for your account
-- The [/api/publish_token](ref:publishtokenv1_updatetoken) endpoint allows you to update the cluster for an existing publish token or to define a value when creating a new token
+- The [/api/cluster](../../api/cluster-get-clusters-info.api.mdx) endpoint allows you to query available cluster regions or change the default cluster for your account
+- The [/api/publish_token](../../api/publish-token-v-1-update-token.api.mdx) endpoint allows you to update the cluster for an existing publish token or to define a value when creating a new token
 
 > 👍 Using the REST APIs
 > 
@@ -107,7 +107,7 @@ When working with clusters you can automate workflows using available REST APIs.
 
 ## How-to get the available cluster regions
 
-You make a `GET` request with the [/api/cluster](ref:cluster_getclustersinfo) endpoint to fetch details about the **defaultCluster** and a list of the **availableClusters** to find the list of available cluster regions.
+You make a `GET` request with the [/api/cluster](../../api/cluster-get-clusters-info.api.mdx) endpoint to fetch details about the **defaultCluster** and a list of the **availableClusters** to find the list of available cluster regions.
 
 The results may look like this:
 
@@ -184,7 +184,7 @@ The results may look like this:
 
 ## How-to set the cluster region default
 
-You make a `PUT` request with the [/api/cluster](ref:cluster_updateclusterinfo) endpoint to update the default account cluster that is used when creating new publishing tokens.
+You make a `PUT` request with the [/api/cluster](../../api/cluster-get-clusters-info.api.mdx) endpoint to update the default account cluster that is used when creating new publishing tokens.
 
 For example, you can use `curl` to set the default cluster for any new tokens to Amsterdam.
 
@@ -200,7 +200,7 @@ curl --request PUT \
 
 ## How-to set the cluster region for a publish token
 
-You make a `POST` request to [/api/publish_token](ref:publishtokenv1_createtoken) in order to create a new token. The **originCluster** parameter specifies the cluster to use. This should be specified using the abbreviated code. You can make a `PUT` request to [/api/publish_token/\{tokenId\}](ref:publishtokenv1_updatetoken) to change the cluster region for an existing token.
+You make a `POST` request to [/api/publish_token](../../api/publish-token-v-1-create-token.api.mdx) in order to create a new token. The **originCluster** parameter specifies the cluster to use. This should be specified using the abbreviated code. You can make a `PUT` request to [/api/publish_token/\{tokenId\}](../../api/publish-token-v-1-update-token.api.mdx) to change the cluster region for an existing token.
 
 For example, you can create a new token for Amsterdam.
 

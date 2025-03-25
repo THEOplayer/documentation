@@ -6,7 +6,7 @@ The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers
 
 > 👍 Building a Conference Application?
 > 
-> [Dolby.io Communications](https://dolby-io.readme.io/communications-apis/docs) includes SDKs and APIs explicitly for building conferencing experiences. Dolby.io Communications and Streaming [intergrate](ref:start-rts) to help scale conferences for interactive broadcast solutions.
+> [Dolby.io Communications](https://dolby-io.readme.io/communications-apis/docs) includes SDKs and APIs explicitly for building conferencing experiences. Dolby.io Communications and Streaming [integrate](ref:start-rts) to help scale conferences for interactive broadcast solutions.
 
 ## Understanding Audio Multiplexing
 

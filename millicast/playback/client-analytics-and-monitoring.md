@@ -20,7 +20,7 @@ If the answer is yes to either of those questions, that may indicate a broadcast
 
 > 👍 Broadcast Monitoring
 > 
-> For broadcast issues, the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) tool is available from your account [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by using the [Broadcast Monitoring](ref:broadcast-monitoring) REST API to get more insight into what may cause problems with a stream.
+> For broadcast issues, the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) tool is available from your account [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by using the [Broadcast Monitoring](../api/monitoring-list-recent-streams.api.mdx) REST API to get more insight into what may cause problems with a stream.
 
 ## Diagnostics Report
 

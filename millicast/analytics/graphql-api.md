@@ -6,7 +6,7 @@ Dolby.io Real-time Streaming provide a Graph API to query both stats and real ti
 
 https://api.millicast.com/graphql
 
-To perform requests to the api, you need to authenticate using a bearer Authorization request header with the [API token from the Dolby.io dashboard](/millicast/streaming-dashboard/token-api.md)acquiring-your-api-token).
+To perform requests to the api, you need to authenticate using a bearer Authorization request header with the [API token from the Dolby.io dashboard](../streaming-dashboard/token-api.md#acquiring-your-api-secret).
 
 
 ![](../assets/img/settings_api_secrets.png)

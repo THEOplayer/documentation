@@ -26,7 +26,7 @@ When streaming with DRM enabled, the content is distributed with an additional l
 
 In order to enable DRM, you will need to follow a few steps:
 
-1. Use the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or [/api/publish_token](ref:publish-tokens) REST API to set the `drm` parameter to **true**. You should also be sure to use a [Subscribe Token](/millicast/streaming-dashboard/subscribe-tokens.md).
+1. Use the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or [/api/publish_token](../api/publish-token-v-1-create-token.api.mdx) REST API to set the `drm` parameter to **true**. You should also be sure to use a [Subscribe Token](/millicast/streaming-dashboard/subscribe-tokens.md).
 2. Use the [Web](/millicast/client-sdks/web.md) SDK or [Hosted Millicast Player](/millicast/playback/hosted-viewer.md) with the appropriate DRM setting enabled.
 
 Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
@@ -43,7 +43,7 @@ Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
 
 ### Using the REST API
 
-The [/api/publish_token](ref:publish-tokens) endpoint can be used to create or modify existing publish tokens. The `drm` parameter is used to indicate whether or not a stream should be protected with DRM.
+The [/api/publish_token](../api/publish-token-v-1-create-token.api.mdx) endpoint can be used to create or modify existing publish tokens. The `drm` parameter is used to indicate whether or not a stream should be protected with DRM.
 
 ```curl Create New Token with DRM
 POST https://api.millicast.com/api/publish_token

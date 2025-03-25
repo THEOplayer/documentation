@@ -2,7 +2,7 @@
 title: "Webhooks"
 slug: /webhooks
 ---
-**Webhooks** are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](ref:webhooks_get), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. 
+**Webhooks** are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](../api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. 
 
 This guide covers:
 
@@ -11,7 +11,7 @@ This guide covers:
 
 # Creating webhooks
 
-Defining a webhook requires a **Webhook URL**. This should be any publicly reachable _https\://_ endpoint address that is running a service capable of receiving `POST` requests. You can create a webhook using either the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or the [Webhooks API](ref:webhooks_get).
+Defining a webhook requires a **Webhook URL**. This should be any publicly reachable _https\://_ endpoint address that is running a service capable of receiving `POST` requests. You can create a webhook using either the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or the [Webhooks API](../api/webhooks-get.api.mdx).
 
 You choose from several _types_ of events that can be sent to your service.
 
@@ -87,7 +87,7 @@ If you believe your webhook secret has become compromised or want to rotate it r
 > 
 > Review the [REST API](/millicast/getting-started/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
-The [/api/webhooks](ref:webhooks_addwebhook) endpoint can be used to add new webhooks by making a `POST` request. You must specify the webhook URL and a boolean value for each event type that you want to enable or disable.
+The [/api/webhooks](../api/webhooks-add-webhook.api.mdx) endpoint can be used to add new webhooks by making a `POST` request. You must specify the webhook URL and a boolean value for each event type that you want to enable or disable.
 
 ```shell
 curl --request POST \

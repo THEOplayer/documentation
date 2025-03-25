@@ -268,7 +268,7 @@ await fetch(servicePath + "/createToken", {
 });
 ```
 
-To learn more about the other API Calls you can use see our [API docs](ref:welcome).
+To learn more about the other API Calls you can use see our [API docs](../api/millicast-api.info.mdx).
 
 You can add the rest of the API calls into the server side code, however it best makes sense for your application. Here is an example of what the server code will look like.
 

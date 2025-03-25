@@ -7,7 +7,7 @@ With **_Stream Recording_** you can keep a copy of a real-time stream where medi
 - **Recordings** are full-length copies of a stream that will be processed and made available shortly after a broadcast is complete.
 - Live **Clips** are media files from a broadcast stream that can be processed and retrieved immediately while the live stream is still in progress.
 
-You can work with recordings and clips either from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or using the [Media Assets](ref:media-assets) REST API. 
+You can work with recordings and clips either from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or using the [Media Assets](../../api/media-assets-list-media-assets.api.mdx) REST API.
 
 # How It Works
 
@@ -30,14 +30,12 @@ There are costs associated with storage, so you can configure **expiration rules
 
 You must configure a [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) prior to beginning a broadcast to enable the capture of media.
 
-|Media Type|Enable|Create|
-|:----|:----|:----|
-|Recording|The [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md)  has a `record` property to enable recordings.|Will begin after being enabled from a [Client SDK](/millicast/client-sdks/index.md) with an active publish connection.|
-|Clip|The [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) has a `clip` property to enable live clipping.|
-| |
-|:exclamation: This feature is not available on all plans.|Processed on demand by calling the  [/api/v3/media/assets](ref:media-assets)  ([Create Clip](ref:recordfiles_createrecordclip)) REST endpoint with **start** and **stop** timestamps.|
-
-
+| Media Type                                     | Enable                                                                                                                                                                                                                               | Create                                                                                                                 |
+| :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
+| Recording                                      | The [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) has a `record` property to enable recordings.                                                                                                            | Will begin after being enabled from a [Client SDK](/millicast/client-sdks/index.md) with an active publish connection. |
+| Clip                                           | The [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) has a `clip` property to enable live clipping.                                                                                                           |
+|                                                |
+| ⚠️ This feature is not available on all plans. | Processed on demand by calling the [/api/v3/media/assets](../../api/media-assets-list-media-assets.api.mdx) ([Create Clip](../../api/record-files-create-record-clip.api.mdx)) REST endpoint with **start** and **stop** timestamps. |
 
 For more detailed instructions, review one of the following tutorials:
 
@@ -71,12 +69,12 @@ For more detailed instructions, review one of the following tutorials:
 
 ## Finding Your Media
 
-You can find both recordings and clips in the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by calling the [Media Assets](ref:media-assets) REST endpoint.
+You can find both recordings and clips in the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by calling the [Media Assets](../../api/media-assets-list-media-assets.api.mdx) REST endpoint.
 
-| Media Type | Availability                                                                                                                                                                                    | Storage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Recording  | Recordings will be processed and made available shortly after the completion of a broadcast.                                                                                                    | Recordings are stored within your Dolby account. You can retrieve them from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by downloading them using the [/api/v3/media/assets](ref:media-assets)   ([List Media Assets](ref:media-assets-get) ) REST endpoint.                                                                                                                                                                                                                                        |
-| Clip       | Call the   [/api/v3/media/assets](ref:media-assets)  ([List Media Assets](ref:media-assets-get)) REST endpoint to check the status of a clip or subscribe to [Media Webhooks](/millicast/webhooks/media-webhooks.md). | Clips are stored as configured by a storage profile. This can be set to send media directly to third-party cloud storage providers such as AWS S3 or GCS. You can specify where to store media when you call the  [/api/v3/media/assets](ref:media-assets)  ([Create Clip](ref:recordfiles_createrecordclip)) REST endpoint or as configured for your account from the [/api/v3/account/media/storage](ref:account) ([Get Storage Profile](ref:account-media-storage-id-get)) account configuration. |
+| Media Type | Availability                                                                                                                                                                                                                                                                   | Storage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Recording  | Recordings will be processed and made available shortly after the completion of a broadcast.                                                                                                                                                                                   | Recordings are stored within your Dolby account. You can retrieve them from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by downloading them using the [/api/v3/media/assets](../../api/media-assets-list-media-assets.api.mdx) ([List Media Assets](../../api/media-assets-list-media-assets.api.mdx) ) REST endpoint.                                                                                                                                                                                                                                                      |
+| Clip       | Call the [/api/v3/media/assets](../../api/media-assets-list-media-assets.api.mdx) ([List Media Assets](../../api/media-assets-list-media-assets.api.mdx)) REST endpoint to check the status of a clip or subscribe to [Media Webhooks](/millicast/webhooks/media-webhooks.md). | Clips are stored as configured by a storage profile. This can be set to send media directly to third-party cloud storage providers such as AWS S3 or GCS. You can specify where to store media when you call the [/api/v3/media/assets](../../api/media-assets-list-media-assets.api.mdx) ([Create Clip](../../api/record-files-create-record-clip.api.mdx)) REST endpoint or as configured for your account from the [/api/v3/account/media/storage](../../api/account-create-storage-profile.api.mdx) ([Get Storage Profile](../../api/account-get-storage-profile.api.mdx)) account configuration. |
 
 For more detailed instructions, review one of the following tutorials:
 
@@ -173,7 +171,4 @@ If the dashboard displays recording errors, contact the [Dolby support](http://s
 
 # Learn More
 
-Learn more by exploring the [specification](ref:media-assets), [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
-
-
-
+Learn more by exploring the [specification](../../api/media-assets-list-media-assets.api.mdx), [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).

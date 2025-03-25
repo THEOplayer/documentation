@@ -21,7 +21,7 @@ Many broadcasts have streams that regularly exceed 12 or 24 hours. Maintaining a
 
 ## Application Architecture
 
-When setting up your applications and workflows, you'll want to create a service that can manage your live clipping requests. Your service should call the [/media/assets](ref:media-assets) API to create clips based on the needs of your playback and broadcast workflow. 
+When setting up your applications and workflows, you'll want to create a service that can manage your live clipping requests. Your service should call the [/media/assets](../../api/media-assets-list-media-assets.api.mdx) API to create clips based on the needs of your playback and broadcast workflow. 
 
 This is a typical pattern for application integration.
 
@@ -32,7 +32,7 @@ This is a typical pattern for application integration.
 
 ## How-to Create a Clip
 
-The [Create Media Asset](ref:media-assets-post) endpoint can be used to create a clip by specifying at minimum a **startTime** and **streamName**. 
+The [Create Media Asset](../../api/media-assets-create-media-asset.api.mdx) endpoint can be used to create a clip by specifying at minimum a **startTime** and **streamName**. 
 
 ```curl
 curl --request POST \
@@ -100,7 +100,7 @@ curl --request POST \
 '
 ```
 
-The _default_ profile as configured in your [Account Storage Profiles](ref:account-media-storage-get) will be used by default. Any storage settings on an individual request will supersede the account settings such as using an alternative `profileId` or including an alternative **type**, **objectPrefix**, and **bucketName** directly with the request.
+The _default_ profile as configured in your [Account Storage Profiles](../../api/account-list-storage-profiles.api.mdx) will be used by default. Any storage settings on an individual request will supersede the account settings such as using an alternative `profileId` or including an alternative **type**, **objectPrefix**, and **bucketName** directly with the request.
 
 ## How-to Set an Expiration Time for Clips
 
@@ -121,7 +121,7 @@ curl --request POST \
 '
 ```
 
-The `expiration` on a [Create Media Asset](ref:media-assets-post) request will supersede any [Expiration Rule](ref:account-media-expiration-get) configured as the account default.
+The `expiration` on a [Create Media Asset](../../api/media-assets-create-media-asset.api.mdx) request will supersede any [Expiration Rule](../../api/account-get-expiration-rules.api.mdx) configured as the account default.
 
 # Troubleshooting
 

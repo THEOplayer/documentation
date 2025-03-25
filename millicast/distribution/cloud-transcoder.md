@@ -73,9 +73,9 @@ To create a dedicated transcoder in the dashboard and use it for your stream, fo
 
 The platform offers the Transcoder APIs for managing cloud transcoders. To create a dedicated transcoder, follow these steps:
 
-1. Call the [Add Webhook](ref:webhooks_addwebhook) API with the **isTranscoderHooks** parameter set to true. This way, you will be notified about status changes of your transcoder.
+1. Call the [Add Webhook](../api/webhooks-add-webhook.api.mdx) API with the **isTranscoderHooks** parameter set to true. This way, you will be notified about status changes of your transcoder.
 
-2. Call the [Create Transcoder](ref:transcoder_createtranscoder) API providing values of all the required parameters. If you want to start your transcoder immediately after its creation, set the **startNow** parameter to true. Otherwise, call the [Start Transcoder](ref:transcoder_starttranscoder) API to start the created transcoder.
+2. Call the [Create Transcoder](../api/transcoder-create-transcoder.api.mdx) API providing values of all the required parameters. If you want to start your transcoder immediately after its creation, set the **startNow** parameter to true. Otherwise, call the [Start Transcoder](../api/transcoder-start-transcoder.api.mdx) API to start the created transcoder.
 
    An example of the create request:
 
@@ -166,7 +166,7 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
 
 
-The platform also offers the [Configure Transcoder](ref:transcoder_configuretranscoder) API for updating transcoder settings and the [Stop Transcoder](ref:transcoder_stoptranscoder) and [Delete Transcoder](ref:transcoder_deletetranscoder) API for stopping and deleting a specific transcoder. A list of all available Transcoder APIs is available in the [REST API](ref:transcoder_gettranscoder) documentation.
+The platform also offers the [Configure Transcoder](../api/transcoder-update-transcoder.api.mdx) API for updating transcoder settings and the [Stop Transcoder](../api/transcoder-stop-transcoder.api.mdx) and [Delete Transcoder](../api/transcoder-delete-transcoder.api.mdx) API for stopping and deleting a specific transcoder. A list of all available Transcoder APIs is available in the [REST API](../api/transcoder-list-transcoders.api.mdx) documentation.
 
 ### Cloud Transcoding Ladder
 
