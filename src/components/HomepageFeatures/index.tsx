@@ -45,7 +45,7 @@ const FeatureList: FeatureItem[] = [
     ),
     description: 
       <>
-        Formerly known as THEOads, the Dolby OptiView Ads product enables you to deliver a seamless, less intrusive ad experience with THEOads, designed to boost viewer engagement and maximize ad revenue.
+        Formerly known as THEOads, the Dolby OptiView Ads product enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer engagement and maximize ad revenue.
       </>,
     to: [{ 'link': '/theoads', 'text': 'Get Started'}]
   },
