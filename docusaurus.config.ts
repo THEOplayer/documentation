@@ -432,7 +432,7 @@ const config: Config = {
       title: null,
       logo: {
         alt: 'THEOdocs',
-        src: 'img/dolby-logo-white.svg',
+        src: 'img/dolby-optiview-white.svg',
       },
       items: [
         {
