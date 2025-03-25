@@ -62,11 +62,11 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Formerly known as THEOlive, Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience, whether it’s for sports betting, iGaming or interactive
-        entertainment.  With this soltution, you can choose from different latency targets from 1 second and up.
+        Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience, whether it’s for sports betting, iGaming or interactive
+        entertainment. With this soltution, choose Real-time for interactive latency or manage latency targets from 1 second and up with Live. Use both with the OptiView Player.
       </>
     ),
-    to: [{ 'link': '/millicast', 'text': 'Real-time'}, { 'link': '/theolive', 'text': 'Live'}]
+    to: [{ 'link': '/millicast', 'text': 'Real-time (Millicast)'}, { 'link': '/theolive', 'text': 'Live (THEOlive)'}]
   },
   
   {
