@@ -431,7 +431,7 @@ const config: Config = {
     navbar: {
       title: null,
       logo: {
-        alt: 'THEOdocs',
+        alt: 'Dolby OptiView',
         src: 'img/dolby-optiview-white.svg',
       },
       items: [
