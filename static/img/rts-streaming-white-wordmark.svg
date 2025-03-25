@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 44">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        letter-spacing: .14em;
+      }
+
+      .cls-5 {
+        letter-spacing: .15em;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        font-family: AvenirNext-Medium, 'Avenir Next';
+        font-size: 32.04px;
+        font-weight: 500;
+      }
+
+      .cls-7 {
+        font-family: AvenirNext-Bold, 'Avenir Next';
+        font-size: 9.4px;
+        font-weight: 700;
+      }
+
+      .cls-8 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-9 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <text class="cls-3" transform="translate(68.8 31.18)"><tspan class="cls-9" x="0" y="0">S</tspan><tspan x="18.04" y="0">t</tspan><tspan class="cls-8" x="28.58" y="0">r</tspan><tspan class="cls-9" x="39.61" y="0">e</tspan><tspan class="cls-6" x="57.78" y="0">aming</tspan></text>
+  <g>
+    <path class="cls-2" d="M32.69,30.73c-.7,0-1.25-.64-1.25-1.45V8.64c0-.81.55-1.45,1.25-1.45h28.22c.7,0,1.25.64,1.25,1.45v20.65c0,.81-.55,1.45-1.25,1.45h-28.22Z"/>
+    <path class="cls-2" d="M60.91,8.18c.14,0,.25.21.25.45v20.65c0,.24-.12.45-.25.45h-28.22c-.14,0-.25-.21-.25-.45V8.64c0-.25.12-.45.25-.45h28.22M60.91,6.18h-28.22c-1.26,0-2.25,1.08-2.25,2.45v20.65c0,1.38.99,2.45,2.25,2.45h28.22c1.26,0,2.25-1.08,2.25-2.45V8.64c0-1.38-.99-2.45-2.25-2.45h0Z"/>
+  </g>
+  <text class="cls-7" transform="translate(36.82 22.17)"><tspan class="cls-4" x="0" y="0">R</tspan><tspan class="cls-5" x="7.53" y="0">TS</tspan></text>
+  <line class="cls-1" x1="31.58" y1="36.16" x2="62.02" y2="36.16"/>
+</svg>

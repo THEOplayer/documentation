@@ -19,73 +19,90 @@ const FeatureList: FeatureItem[] = [
       <ThemedImage
         {...props}
         sources={{
-          light: useBaseUrl('/img/theoplayer.svg'),
-          dark: useBaseUrl('/img/theoplayer_dark.svg'),
+          light: useBaseUrl('/img/player-black-wordmark.svg'),
+          dark: useBaseUrl('/img/player-white-wordmark.svg'),
         }}
       />
     ),
     description: (
       <>
-        Deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming
+        Formerly known as THEOplayer, the Dolby OptiView player enables you to deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming
         consoles.
       </>
     ),
     to: '/theoplayer',
   },
   {
-    title: 'THEOads',
+    title: 'Dolby OptiView Ads',
     Image: (props) => (
       <ThemedImage
         {...props}
         sources={{
-          light: useBaseUrl('/img/theoads.svg'),
-          dark: useBaseUrl('/img/theoads_dark.svg'),
+          light: useBaseUrl('/img/ads-black-wordmark.svg'),
+          dark: useBaseUrl('/img/ads-white-wordmark.svg'),
         }}
       />
     ),
-    description: <>Deliver a seamless, less intrusive ad experience with THEOads, designed to boost viewer engagement and maximize ad revenue.</>,
+    description: 
+      <>
+        Formerly known as THEOads, the Dolby OptiView Ads product enables you to deliver a seamless, less intrusive ad experience with THEOads, designed to boost viewer engagement and maximize ad revenue.
+      </>,
     to: '/theoads',
   },
+  {
+    title: 'Dolby Optiview Real-time',
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/rts-streaming-black-wordmark.svg'),
+          dark: useBaseUrl('/img/rts-streaming-white-wordmark.svg'),
+        }}
+      />
+    ),
+    description: 
+      <>
+        Formerly known as Millicast, Dolby OptiView's real-time streaming enables you deliver broadcast quality live streaming at sub-second latency, enabling interactivity and fan engagement.
+      </>,
+    to: '/millicast',
+  },
+  {
+    title: 'Dolby OptiView Live',
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/live-streaming-black-wordmark.svg'),
+          dark: useBaseUrl('/img/live-streaming-white-wordmark.svg'),
+        }}
+      />
+    ),
+    description: (
+      <>
+        Formerly known as THEOlive, Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience, whether it’s for sports betting, iGaming or interactive
+        entertainment.  With this soltution, you can choose from different latency targets from 1 second and up.
+      </>
+    ),
+    to: '/theolive',
+  },
+  
   {
     title: 'Open Video UI',
     Image: (props) => (
       <ThemedImage
         {...props}
         sources={{
-          light: useBaseUrl('/img/open-video-ui.svg'),
-          dark: useBaseUrl('/img/open-video-ui_dark.svg'),
-        }}
-      />
-    ),
-    description: (
-      <>Easily build and customize your video player UI to match your branding style through a comprehensive library of open-source UI components.</>
-    ),
-    to: '/open-video-ui',
-  },
-  {
-    title: 'THEOlive',
-    Image: (props) => (
-      <ThemedImage
-        {...props}
-        sources={{
-          light: useBaseUrl('/img/theolive.svg'),
-          dark: useBaseUrl('/img/theolive_dark.svg'),
+          light: useBaseUrl('/img/openvideoui-black-wordmark.svg'),
+          dark: useBaseUrl('/img/openvideoui-white-wordmark.svg'),
         }}
       />
     ),
     description: (
       <>
-        Stream real-time to any audience size with the best quality of experience, whether it’s for sports betting, iGaming or interactive
-        entertainment.
+        Paired with the OptiView player, the OpenVideoUi enables you to easily build and customize your video player UI to match your branding style through a comprehensive library of open-source UI components.
       </>
     ),
-    to: '/theolive',
-  },
-  {
-    title: 'Millicast',
-    Image: (props) => <h2>Dolby Millicast</h2>, // TODO Logo?
-    description: <>Deliver broadcast quality live streaming at sub-second latency, enabling interactivity and fan engagement.</>,
-    to: '/millicast',
+    to: '/open-video-ui',
   },
 ];
 

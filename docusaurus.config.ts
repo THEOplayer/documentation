@@ -73,8 +73,8 @@ const docsConfigBase = {
 } satisfies DocsPlugin.Options;
 
 const config: Config = {
-  title: 'Dolby OptiView Docs',
-  tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI, THEOlive, and Millicast',
+  title: 'Dolby OptiView Documentation',
+  tagline: 'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, and Open Video UI',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
