@@ -14,7 +14,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'THEOplayer',
+    title: 'Dolby OptiView Player',
     Image: (props) => (
       <ThemedImage
         {...props}
@@ -30,7 +30,7 @@ const FeatureList: FeatureItem[] = [
         consoles.
       </>
     ),
-    to: '/theoplayer',
+    to: [{ 'link': '/theoplayer', 'text': 'Get Started'}]
   },
   {
     title: 'Dolby OptiView Ads',
@@ -47,24 +47,7 @@ const FeatureList: FeatureItem[] = [
       <>
         Formerly known as THEOads, the Dolby OptiView Ads product enables you to deliver a seamless, less intrusive ad experience with THEOads, designed to boost viewer engagement and maximize ad revenue.
       </>,
-    to: '/theoads',
-  },
-  {
-    title: 'Dolby Optiview Real-time',
-    Image: (props) => (
-      <ThemedImage
-        {...props}
-        sources={{
-          light: useBaseUrl('/img/rts-streaming-black-wordmark.svg'),
-          dark: useBaseUrl('/img/rts-streaming-white-wordmark.svg'),
-        }}
-      />
-    ),
-    description: 
-      <>
-        Formerly known as Millicast, Dolby OptiView's real-time streaming enables you deliver broadcast quality live streaming at sub-second latency, enabling interactivity and fan engagement.
-      </>,
-    to: '/millicast',
+    to: [{ 'link': '/theoads', 'text': 'Get Started'}]
   },
   {
     title: 'Dolby OptiView Live',
@@ -83,7 +66,7 @@ const FeatureList: FeatureItem[] = [
         entertainment.  With this soltution, you can choose from different latency targets from 1 second and up.
       </>
     ),
-    to: '/theolive',
+    to: [{ 'link': '/millicast', 'text': 'Real-time'}, { 'link': '/theolive', 'text': 'Live'}]
   },
   
   {
@@ -102,7 +85,7 @@ const FeatureList: FeatureItem[] = [
         Paired with the OptiView player, the OpenVideoUi enables you to easily build and customize your video player UI to match your branding style through a comprehensive library of open-source UI components.
       </>
     ),
-    to: '/open-video-ui',
+    to: [{ 'link': '/open-video-ui', 'text': 'Get Started'}],
   },
 ];
 
@@ -117,9 +100,15 @@ function Feature({ title, Image, description, to }: FeatureItem) {
           <p>{description}</p>
         </div>
         <div className="card__footer text--center">
-          <Link className="button button--secondary button--lg" to={to}>
-            Get started
-          </Link>
+
+          {to.map((item) => (
+            <Link className={clsx(styles.footerButton, "button button--secondary button--lg")} to={item.link}>
+              {item.text}
+            </Link>
+          ))}
+
+
+          
         </div>
       </div>
     </div>

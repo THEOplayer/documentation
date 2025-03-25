@@ -18,3 +18,8 @@
 .featureImage {
   height: 55px;
 }
+
+.footerButton {
+  margin-left: 10px;
+  margin-right: 10px;
+}
