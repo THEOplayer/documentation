@@ -112,9 +112,9 @@ function Feature({ title, Image, description, to }: FeatureItem) {
           <Image className={styles.featureImage} alt={title} />
         </div>
         <div className={clsx('card__body text--center', styles.featureDescription)}>{description}</div>
-        <div className="card__footer text--center">
+        <div className={clsx('card__footer text--center', styles.featureButtons)}>
           {to.map(({ link, text }) => (
-            <Link className={clsx(styles.footerButton, 'button button--secondary button--lg')} to={link}>
+            <Link className="button button--secondary button--lg" to={link}>
               {text}
             </Link>
           ))}

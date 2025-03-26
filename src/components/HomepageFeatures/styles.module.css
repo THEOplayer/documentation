@@ -23,7 +23,10 @@
   text-wrap: pretty;
 }
 
-.footerButton {
-  margin-left: 10px;
-  margin-right: 10px;
+.featureButtons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
