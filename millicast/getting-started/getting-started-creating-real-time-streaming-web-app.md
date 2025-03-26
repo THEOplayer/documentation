@@ -26,10 +26,7 @@ In [Part 1 - Using the Streaming Dashboard](/millicast/getting-started/getting-s
 
 This is the simplest way to get up and running quickly with your own web application. This works well for long-running streams or one-time live events. 
 
-
 ![](../assets/img/dolbyio-web-embedded-viewer-live.png)
-
-
 
 If you click the `Customize` button in the Playback Dashboard you'll see there are lots of options you can use to include or exclude playback behaviors. The [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) page goes through these options in more detail.
 
@@ -56,13 +53,15 @@ a) You can open the file directly from your operating system with a **file://** 
 
 b) You can use a development web server like those available in [python3](https://docs.python.org/3/library/http.server.html) or [node](https://www.npmjs.com/package/live-server) if you have them installed to view the app in your browser.
 
-```Text node
-npx live-server
-```
-```python python3
+```python title="python"
 python3 -m http.server
 ```
-```Text file://
+
+```Text title="node"
+npx live-server
+```
+
+```Text title="local file"
 open index.html
 ```
 
@@ -72,22 +71,24 @@ You'll be editing a single **index.html** file to add streaming capabilities so 
 
 To dynamically generate a viewer you should use the [Web SDK](/millicast/client-sdks/web.md) in your application. You can do this by adding a `<script>` element in the `<head>` section to include the SDK from a hosted location such as a [CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk).
 
-```html
+```html title="playback-app/index.html"
 <!-- Step 2.1b: Include Millicast Web SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.umd.min.js"></script>
 ```
 
-> ❗️ Using the Millicast SDK
-> 
-> Review the [Web SDK](/millicast/client-sdks/web.md) documentation for additional installation methods such as with `npm`. The Streaming API used to be known as Millicast so the SDK uses that name when importing the library.
-> 
-> When importing the SDK from jsdelivr you will automatically be updated to the latest version. This is fine for development, but it is strongly recommended to pin to a specific version release in order to increase stability when you move to production.
+:::danger[Using the Millicast SDK]
+
+Review the [Web SDK](/millicast/client-sdks/web.md) documentation for additional installation methods such as with `npm`. The Streaming API used to be known as Millicast so the SDK uses that name when importing the library.
+
+When importing the SDK from jsdelivr you will automatically be updated to the latest version. This is fine for development, but it is strongly recommended to pin to a specific version release in order to increase stability when you move to production.
+
+:::
 
 ## c. Configure account ID and stream name
 
 In [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) we created a stream with a unique name such as _myStreamName_. You'll need to add that to the code along with the **Account ID** that is associated with the publishing token. You can find both of these values from the Dolby.io Dashboard.
 
-```javascript
+```js
 // Step 2.1c: Set your account id and stream name while Getting Started
 const yourStreamAccountId = 'ENTER ACCOUNT ID';
 const yourStreamName = 'ENTER YOUR STREAM NAME';
@@ -103,10 +104,10 @@ const tokenGenerator = () => millicast.Director.getSubscriber({
 
 The `View` class is used to manage the WebRTC connection with the server that is distributing the real-time stream. The `streaming-video-placeholder` is the **id** of a `<video>` element within the application.
 
-```javascript
+```js
 // Step 2.1d: Attach a millicast view to the placeholder node
 const videoNode = document.getElementById('streaming-video-placeholder');
-const millicastView = new millicast.View(yourStreamName, tokenGenerator);
+const millicastView = new millicast.View(undefined, tokenGenerator);
 millicastView.on('track', (event) => {
     console.log('Stream has started.');
     videoNode.srcObject = event.streams[0];
@@ -119,7 +120,7 @@ millicastView.on('track', (event) => {
 
 The `connect` method can take a few different options which you can learn more about in the [reference documentation](https://millicast.github.io/millicast-sdk/View.html#connect). 
 
-```javascript
+```js
 // Step 2.1e: Start connection to a publishing stream
 try {
     await millicastView.connect();
@@ -135,9 +136,7 @@ try {
 
 If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md), you will then have a simple web app with video playback to continue customizing.
 
-
 ![](../assets/img/dolbyio-web-playback.png)
-
 
 
 # 2.2 Broadcast from a custom web application
@@ -159,7 +158,7 @@ The [Web SDK](/millicast/client-sdks/web.md) is pulled in with a `<script>` elem
 
 You'll need to retrieve the **Publishing Token** from the Dolby.io dashboard that corresponds with the _streamName_ used in the _playback-app_ section. 
 
-```javascript
+```js
 // Step 2.2b: Set your account id and stream name while Getting Started
 const yourPublishingToken = 'ENTER PUBLISHING TOKEN';
 const yourStreamAccountId = 'ENTER ACCOUNT ID';
@@ -171,7 +170,7 @@ const tokenGenerator = () => millicast.Director.getPublisher({
 });
 
 // Callback to generate a publisher token with credentials
-const publisher = new millicast.Publish(yourStreamName, tokenGenerator)
+const publisher = new millicast.Publish(undefined, tokenGenerator)
 ```
 
 ## c. Attach media stream to broadcast
@@ -180,7 +179,7 @@ The `getUserMedia()` function is used to capture an incoming media stream from t
 
 To begin broadcasting, we must `connect()` the publisher to the _mediaStream_. 
 
-```javascript
+```js
 // Step 2.2c: Attach a millicast view to the placeholder node
 const startStreaming = async () => {
     // Request access to the video camera and microphone
@@ -229,7 +228,7 @@ The `viewerUrl` provides a convenient link to the hosted playback viewer so that
 
 For a good end-user experience, you will want to `stop()` publishing when the broadcast is complete.
 
-```javascript
+```js
 // Step 2.2d: Stop the broadcast
 document.getElementById('btn-stop').onclick = () => {
     publisher.stop();

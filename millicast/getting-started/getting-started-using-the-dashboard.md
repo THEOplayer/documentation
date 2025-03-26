@@ -47,10 +47,11 @@ From the dashboard broadcast application that opens, click the green `Start` but
 ![](../assets/img/dolbyio-streaming-dashboard-broadcast.png)
 
 
+:::info[Broadcast Guide]
 
-> 📘 Broadcast Guide
-> 
-> Visit the [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) guide to learn more details about the options available for configuring the publish token and working with this dashboard broadcast application.
+Visit the [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) guide to learn more details about the options available for configuring the publish token and working with this dashboard broadcast application.
+
+:::
 
 # 1.2 Playback content with the streaming viewer
 

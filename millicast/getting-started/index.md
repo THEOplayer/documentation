@@ -7,9 +7,11 @@ sidebar_position: 0
 
 **Dolby.io Real-time Streaming APIs** make it easier to globally stream your high-value content with broadcast-quality color and sound to massive audiences all with sub 500ms latency. Use this tutorial to quickly set up and run your own private stream and begin building applications for a variety of use cases such as remote production, sports, gaming & betting, live events, etc.
 
-> 👍 Create a Dolby.io Account
-> 
-> If you haven't already, please [create a Dolby.io account](https://dashboard.dolby.io/signup/?utm_medium=docs&utm_campaign=getting-started&utm_source=docs) so that you can access the Streaming Dashboard.
+:::tip[Create a Dolby.io Account]
+
+If you haven't already, please [create a Dolby.io account](https://dashboard.dolby.io/signup/?utm_medium=docs&utm_campaign=getting-started&utm_source=docs) so that you can access the Streaming Dashboard.
+
+:::
 
 For an introduction to the platform overall, start with the [Introduction to Streaming APIs](/millicast/getting-started/introduction-to-streaming-apis.md).
 
