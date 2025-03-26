@@ -45,7 +45,7 @@ Select the directory, then press Finish.
   - **src/**
     - The source code of the UI application. Change or replace as desired.
   - **libs/**
-    - (Insert your THEOplayer Tizen SDK here).
+    - (Insert your THEOplayer Tizen SDK here.)
   - **index.html**
     - Entry point of application.
   - **config.xml**
