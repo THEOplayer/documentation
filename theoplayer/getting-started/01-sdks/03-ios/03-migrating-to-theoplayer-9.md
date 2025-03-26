@@ -26,7 +26,7 @@ Over time, that became unneeded as React Native became capable to interact direc
 
 ## API changes to THEOplayerSDK
 
-Removing `IntegrationType` infavor of using `IntegrationKind`:
+Removing `IntegrationType` in favor of using `IntegrationKind`:
 
 Before 9.0:
 
@@ -81,3 +81,5 @@ let src: TypedSource = .init(src: "scheme://host/path")
 ```
 
 `TextTrackCue`'s `uid` is converted to an `Int` from a `Double`. Its `startTime` and `endTime` properties have become non-null `Double`s
+
+The `dai` property is removed from the `Ads` object by default, and will only be available as an extension to the object when adding the `GoogleIMAIntegration`.
