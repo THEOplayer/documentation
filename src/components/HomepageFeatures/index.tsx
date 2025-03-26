@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
@@ -7,9 +7,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type FeatureItem = {
   title: string;
-  Image: (props: Omit<Props, 'sources'>) => JSX.Element;
-  description: JSX.Element;
-  to: string;
+  Image: (props: Omit<Props, 'sources'>) => ReactNode;
+  description: ReactNode;
+  to: ReadonlyArray<{
+    link: string;
+    text: ReactNode;
+  }>;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -100,15 +103,11 @@ function Feature({ title, Image, description, to }: FeatureItem) {
           <p>{description}</p>
         </div>
         <div className="card__footer text--center">
-
-          {to.map((item) => (
-            <Link className={clsx(styles.footerButton, "button button--secondary button--lg")} to={item.link}>
-              {item.text}
+          {to.map(({ link, text }) => (
+            <Link className={clsx(styles.footerButton, 'button button--secondary button--lg')} to={link}>
+              {text}
             </Link>
           ))}
-
-
-          
         </div>
       </div>
     </div>
