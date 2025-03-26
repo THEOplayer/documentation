@@ -28,56 +28,31 @@ Over time, that became unneeded as React Native became capable to interact direc
 
 Removing `IntegrationType` in favor of using `IntegrationKind`:
 
-Before 9.0:
-
-```swift
+```diff
 let theoLiveIntegration = THEOliveIntegrationFactory.createIntegration()
 
-if theoLiveIntegration.type == .THEOlive {
-  // ...
-}
-```
-
-After 9.0:
-
-```swift
-let theoLiveIntegration = THEOliveIntegrationFactory.createIntegration()
-
-if theoLiveIntegration.kind == .THEOlive {
-  // ...
+- if theoLiveIntegration.type == .THEOlive {
++ if theoLiveIntegration.kind == .THEOlive {
+   // ...
 }
 ```
 
 Removing `MillicastSource` initializer in favor of another one whose arguments are more clearly named:
 
-Before 9.0:
-
-```swift
-let source: MillicastSource = .init(streamName: "streamName", accountID: "accountID", token: token, connectOptions: clientOptions)
-```
-
-After 9.0:
-
-```swift
-let source: MillicastSource = .init(src: "streamName", streamAccountId: "accountID", subscriberToken: token, connectOptions: clientOptions)
+```diff
+- let source: MillicastSource = .init(streamName: "streamName", accountID: "accountID", token: token, connectOptions: clientOptions)
++ let source: MillicastSource = .init(src: "streamName", streamAccountId: "accountID", subscriberToken: token, connectOptions: clientOptions)
 ```
 
 Replacing the `TypedSource` initialize which takes a `URL` object as a src with one that takes a URL `String` instead:
 
-Before 9.0:
-
-```swift
-var builder = URLComponents()
-builder.scheme = "scheme"
-builder.host = "host"
-builder.path = "/path"
-let src: TypedSource = .init(src: builder.url!)
-```
-
-After 9.0:
-
-```swift
-let src: TypedSource = .init(src: "scheme://host/path")
+```diff
+- var builder = URLComponents()
+- builder.scheme = "scheme"
+- builder.host = "host"
+- builder.path = "/path"
+- let src: TypedSource = .init(src: builder.url!)
++ let src: TypedSource = .init(src: "scheme://host/path")
 ```
 
 `TextTrackCue`'s `uid` is converted to an `Int` from a `Double`. Its `startTime` and `endTime` properties have become non-null `Double`s
