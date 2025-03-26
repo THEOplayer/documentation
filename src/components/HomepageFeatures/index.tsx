@@ -29,7 +29,7 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Formerly known as THEOplayer, the Dolby OptiView player enables you to deploy cutting-edge video playback experiences, efficiently and on any
+        Dolby OptiView Player (formerly known as THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any
         device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.
       </>
     ),
@@ -48,8 +48,8 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Formerly known as THEOads, the Dolby OptiView Ads product enables you to deliver a seamless, less intrusive ad experience, designed to boost
-        viewer engagement and maximize ad revenue.
+        Dolby OptiView Ads (formerly known as THEOads) enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
+        engagement and maximize ad revenue.
       </>
     ),
     to: [{ link: '/theoads', text: 'Get Started' }],
@@ -68,7 +68,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience,
-        whether it’s for sports betting, iGaming or interactive entertainment. With this soltution, choose Real-time for interactive latency or manage
+        whether it’s for sports betting, iGaming or interactive entertainment. With this solution, choose Real-time for interactive latency or manage
         latency targets from 1 second and up with Live. Use both with the OptiView Player.
       </>
     ),
@@ -91,7 +91,7 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Paired with the OptiView player, the OpenVideoUi enables you to easily build and customize your video player UI to match your branding style
+        Paired with the OptiView Player, the Open Video UI enables you to easily build and customize your video player UI to match your branding style
         through a comprehensive library of open-source UI components.
       </>
     ),
