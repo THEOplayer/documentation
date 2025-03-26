@@ -1,6 +1,6 @@
 ---
 title: "3. Automate using REST APIs"
-slug: /basic-api-tutorial
+slug: /getting-started/using-rest-apis
 sidebar_position: 3
 ---
 The Dolby.io Streaming REST API allows remote management of your Dolby.io Real-time Streaming account. To enable remote access you must first use the Token system to securely authenticate your applications with Dolby.io Real-time Streaming. To acquire an API Token, log into your Dolby.io Real-time Streaming account and follow the directions here: [acquiring your API token](/millicast/streaming-dashboard/token-api#acquiring-your-api-token).
@@ -10,11 +10,8 @@ For security you should always make your API calls from a secure server like Nod
 In this tutorial we will build a very rudimentary example for calling the API service and delivering the results down to the publishing client. You will be using Node.js as a secure layer to your Dolby.io Real-time Streaming account, as to not expose the secret API Token publicly. If you have not worked with Node.js before, its best to start with a tutorial or one of their basic guides https://nodejs.org/en/docs/guides/getting-started-guide/ to better understand how things are setup. You can also just follow along, learn the concepts, and use the server-side technology of your choice to achieve the same outcome.
 
 * [REST API Client](https://github.com/DolbyIO/dolbyio-rest-apis-client-node): Client sample code for calling REST APIs from a Node environment
-* [Postman Collection](https://www.postman.com/dolbyio): The Dolby.io Streaming API workspace has collections for the
-      REST APIs.
+* [Postman Collection](https://www.postman.com/dolbyio): The Dolby.io Streaming API workspace has collections for the REST APIs.
 * [API Reference](TODO): The API Reference documentation
-
-
 
 ## Setting up the environment
 
@@ -32,7 +29,7 @@ Assuming you now have your certificate and key, add them to a folder labeled "ce
 
 From your preferred text editor open the “server.js” file you created earlier in the root directory. Now copy this code into your server.js file:
 
-```javascript Node.JS
+```javascript title="Node.JS"
 const https = require("https");
 const express = require("express");
 const fs = require("fs");
@@ -171,10 +168,7 @@ Now that you have your files save, lets run our Nodejs server. Go to your DOS, T
 
 The server will initiate and display the port that it is listening to. In this case, we are using 8084, so the path to the file in the browser will be https://localhost:8084/. You should see a simple UI for getting a new token and that's it. To test, first open your browser’s developer console, then on the UI enter an arbitrary name for the stream we want to use and click the button. The server will proxy your request to the Dolby.io Real-time Streaming where the service generates your new token and returns the results down to you. You should see the results in the developer console window.
 
-
 ![](../assets/img/basic-api-result.png)
-
-
 
 In addition, if you log into your Dolby.io dashboard, you should now see your new token there in the list. If you are already on the page, a simple page refresh will do.
 
@@ -249,10 +243,7 @@ Below this is our HTTPS server which listens to a specific port. If you move dow
 
 Open the index.html file in your text editor and move down to the body tag. You can see that we created very simple markup to show a field and a button. The text field is where the user enters the arbitrary name of the stream they want, and the button is to submit it. It simply calls a method **createToken** which mirrors the name of the call on our server side counterpart.
 
-
 ![](../assets/img/basic-api-index1-snap.png)
-
-
 
 In the body of the createToken method you can see the data object which has the **label** and **streams** object that contains the **streamName** that we want to use and that we will send to the server. You can also see how we use the route path dynamically to create a request to the specified endpoint.
 
@@ -272,9 +263,7 @@ To learn more about the other API Calls you can use see our [API docs](../api/mi
 
 You can add the rest of the API calls into the server side code, however it best makes sense for your application. Here is an example of what the server code will look like.
 
-#### server.js
-
-```javascript
+```javascript title="server.js"
 const https = require("https");
 const express = require("express");
 const fs = require("fs");
@@ -455,9 +444,7 @@ https.createServer(httpsOptions, app).listen(port, (err) => {
 });
 ```
 
-index.html
-
-```html
+```html title="index.html"
 <!DOCTYPE >
 <html>
   <head>

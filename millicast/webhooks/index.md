@@ -85,7 +85,7 @@ If you believe your webhook secret has become compromised or want to rotate it r
 
 > 👍 Using the REST APIs
 > 
-> Review the [REST API](/millicast/getting-started/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+> Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
 The [/api/webhooks](../api/webhooks-add-webhook.api.mdx) endpoint can be used to add new webhooks by making a `POST` request. You must specify the webhook URL and a boolean value for each event type that you want to enable or disable.
 

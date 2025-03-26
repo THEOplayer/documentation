@@ -8,7 +8,7 @@ This document will guide you on how to [broadcast](/millicast/broadcast/index.md
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
 
 # How-to find the SRT publish settings with the dashboard
 

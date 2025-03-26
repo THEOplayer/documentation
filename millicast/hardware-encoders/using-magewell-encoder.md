@@ -6,7 +6,7 @@ slug: /using-magewell-encoder
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.md) tutorial to start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.mdx) tutorial to start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 See the official [Magewell site](https://www.magewell.com/support-contacts) for documentation, installation instructions, and additional support.
 

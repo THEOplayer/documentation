@@ -23,7 +23,7 @@ Currently, there are several events that can be listened to when connected to th
 
 > 👍 Not familar with our SDKs?
 > 
-> Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md) guide or by leanring about our [Client SDKs](/millicast/client-sdks/index.md).
+> Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.md) guide or by leanring about our [Client SDKs](/millicast/client-sdks/index.md).
 
 To use or "listen" for these events, you first must authenticate and connect to the Dolby.io CDN using one of our [Client SDKs](/millicast/client-sdks/index.md). When calling the `connect` function you can include a list of all events to listen for:
 

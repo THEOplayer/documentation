@@ -35,7 +35,7 @@ The [Streaming Dashboard](/millicast/streaming-dashboard/index.md) token setting
 
 > 👍 Using the REST APIs
 > 
-> Review the [REST API](/millicast/getting-started/basic-api-tutorial.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+> Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
 The [/api/publish_token](../api/publish-token-v-1-create-token.api.mdx) endpoint when creating or updating a token using the `enableThumbnails` boolean value. Below is an example body for a request to enable thumbnails on a publishing token and stream named _thumbnails_.
 

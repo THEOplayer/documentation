@@ -1,19 +1,19 @@
 ---
 title: "2. Create a Streaming Web App"
-slug: /getting-started-creating-real-time-streaming-web-app
+slug: /getting-started/creating-real-time-streaming-web-app
 sidebar_position: 2
 ---
-In [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) we reviewed how-to log into your Dolby.io Streaming Dashboard, create a publish token, start a broadcast, and playback that broadcast in the hosted web viewer or in an iframe, all without writing any code. We'll continue getting started by substituting the broadcast and playback components with a custom-built web application.
+In [Part 1](/millicast/getting-started/using-the-dashboard.md) we reviewed how-to log into your Dolby.io Streaming Dashboard, create a publish token, start a broadcast, and playback that broadcast in the hosted web viewer or in an iframe, all without writing any code. We'll continue getting started by substituting the broadcast and playback components with a custom-built web application.
 
 This tutorial is split into three sections:
 
-- [Embed the Hosted Streaming Viewer in an iFrame](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md)
-- [Playback from a Custom Web Application](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md)21-playback-from-a-custom-web-application)
-- [Broadcast from a Custom Web Application](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md)22-broadcast-from-a-custom-web-application)
+- [Embed the Hosted Streaming Viewer in an iFrame](#20-embed-the-streaming-viewer-in-an-iframe)
+- [Playback from a Custom Web Application](#21-playback-from-a-custom-web-application)
+- [Broadcast from a Custom Web Application](#22-broadcast-from-a-custom-web-application)
 
-# 2.0 Embed the streaming viewer in an iFrame
+## Embed the streaming viewer in an iFrame
 
-In [Part 1 - Using the Streaming Dashboard](/millicast/getting-started/getting-started-using-the-dashboard.md), you may have noticed the **Hosted Viewer iFrame**. You can copy and paste the `<iframe>` directly into your own web application and replace the _streamId_ and _streamName_ with your own. 
+In [Part 1 - Using the Streaming Dashboard](/millicast/getting-started/using-the-dashboard.md), you may have noticed the **Hosted Viewer iFrame**. You can copy and paste the `<iframe>` directly into your own web application and replace the _streamId_ and _streamName_ with your own. 
 
 ```html
 <iframe
@@ -30,11 +30,11 @@ This is the simplest way to get up and running quickly with your own web applica
 
 If you click the `Customize` button in the Playback Dashboard you'll see there are lots of options you can use to include or exclude playback behaviors. The [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) page goes through these options in more detail.
 
-# 2.1 Playback from a custom web application
+## Playback from a custom web application
 
 In the previous part, we were able to begin to [broadcast](/millicast/broadcast/index.mdx) a stream and [playback](/millicast/playback/index.md) that stream in a hosted web viewer application. For more complex projects, you may need more control over the end-user experience. To demonstrate this, we'll build a custom web application to playback and view the stream using the same publish token created from the dashboard. 
 
-## a. Clone the Getting Started repository
+### a. Clone the Getting Started repository
 
 Clone the repository: [dolbyio-samples/stream-sdk-web-getting-started](https://github.com/dolbyio-samples/stream-sdk-web-getting-started). 
 
@@ -45,7 +45,7 @@ cd stream-sdk-web-getting-started/playback-app
 
 This starter project includes a folder for the **playback-app**. The folder includes the scaffolding of a not-yet-functional single-page web application. This application is using [Bootstrap](https://getbootstrap.com/) to add basic layout and functional behaviors. Bootstrap is not a requirement, you can use other libraries that may fit your particular application needs and preferences. What's important is that we've added buttons, which we can assign behavior to as we continue.
 
-### View the app locally
+#### View the app locally
 
 There are many ways you can view static HTML in a web browser.
 
@@ -67,7 +67,7 @@ open index.html
 
 You'll be editing a single **index.html** file to add streaming capabilities so you may need to refresh the application as you make changes in each step that follows.
 
-## b. Include the Web SDK
+### b. Include the Web SDK
 
 To dynamically generate a viewer you should use the [Web SDK](/millicast/client-sdks/web.md) in your application. You can do this by adding a `<script>` element in the `<head>` section to include the SDK from a hosted location such as a [CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk).
 
@@ -84,9 +84,9 @@ When importing the SDK from jsdelivr you will automatically be updated to the la
 
 :::
 
-## c. Configure account ID and stream name
+### c. Configure account ID and stream name
 
-In [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) we created a stream with a unique name such as _myStreamName_. You'll need to add that to the code along with the **Account ID** that is associated with the publishing token. You can find both of these values from the Dolby.io Dashboard.
+In [Part 1](/millicast/getting-started/using-the-dashboard.md) we created a stream with a unique name such as _myStreamName_. You'll need to add that to the code along with the **Account ID** that is associated with the publishing token. You can find both of these values from the Dolby.io Dashboard.
 
 ```js
 // Step 2.1c: Set your account id and stream name while Getting Started
@@ -100,7 +100,7 @@ const tokenGenerator = () => millicast.Director.getSubscriber({
 });
 ```
 
-## d. Attach a view
+### d. Attach a view
 
 The `View` class is used to manage the WebRTC connection with the server that is distributing the real-time stream. The `streaming-video-placeholder` is the **id** of a `<video>` element within the application.
 
@@ -116,7 +116,7 @@ millicastView.on('track', (event) => {
 });
 ```
 
-## e. Connect to the stream
+### e. Connect to the stream
 
 The `connect` method can take a few different options which you can learn more about in the [reference documentation](https://millicast.github.io/millicast-sdk/View.html#connect). 
 
@@ -134,16 +134,16 @@ try {
 }
 ```
 
-If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md), you will then have a simple web app with video playback to continue customizing.
+If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started/using-the-dashboard.md), you will then have a simple web app with video playback to continue customizing.
 
 ![](../assets/img/dolbyio-web-playback.png)
 
 
-# 2.2 Broadcast from a custom web application
+## Broadcast from a custom web application
 
 For this section, you can use the hosted playback viewer or the _playback-app_ you just built in the last section. This section will help you build a separate app that would be used to [Capture](/millicast/capture/index.md) and broadcast streaming content.
 
-## a. Clone the Getting Started repository
+### a. Clone the Getting Started repository
 
 Clone the repository [dolbyio-samples/stream-sdk-web-getting-started](https://github.com/dolbyio-samples/stream-sdk-web-getting-started) as described in the first section but this time we'll be working the with **broadcast-app** folder. You can view the app locally using the same tools described in the previous section.
 
@@ -154,7 +154,7 @@ cd stream-sdk-web-getting-started/broadcast-app
 
 The [Web SDK](/millicast/client-sdks/web.md) is pulled in with a `<script>` element from a CDN in the same way as is done for the playback-app.
 
-## b. Configure publishing token and stream name
+### b. Configure publishing token and stream name
 
 You'll need to retrieve the **Publishing Token** from the Dolby.io dashboard that corresponds with the _streamName_ used in the _playback-app_ section. 
 
@@ -173,7 +173,7 @@ const tokenGenerator = () => millicast.Director.getPublisher({
 const publisher = new millicast.Publish(undefined, tokenGenerator)
 ```
 
-## c. Attach media stream to broadcast
+### c. Attach media stream to broadcast
 
 The `getUserMedia()` function is used to capture an incoming media stream from the user's camera and microphone. To verify that this is working, we provide a mirror of the audio and video in a video element. This is happening locally within the web browser.
 
@@ -224,7 +224,7 @@ The `viewerUrl` provides a convenient link to the hosted playback viewer so that
 
 
 
-## d. Stop the broadcast
+### d. Stop the broadcast
 
 For a good end-user experience, you will want to `stop()` publishing when the broadcast is complete.
 
@@ -236,17 +236,17 @@ document.getElementById('btn-stop').onclick = () => {
 }
 ```
 
-# Continue learning
+## Continue learning
 
 These starter apps were kept simple for the purpose of getting started. You can re-use these samples in your preferred JavaScript framework such as React, VueJS, Angular, etc. as you customize the user experience of joining a stream, handling when a stream hasn't started, maintaining button state, etc.
 
 Continue by exploring the [Streaming Web SDK](/millicast/client-sdks/web.md) documentation for a guide on other functions as you continue building your own project.
 
-# Troubleshooting
+## Troubleshooting
 
-## 400 (Bad Request)
+### 400 (Bad Request)
 
-When you try to connect to a stream that has not yet begun to broadcast, you may see a `400 (Bad Request)` error. This is expected, so you will want to create a user experience that does not attempt to **connect() prematurely, by first checking if a broadcast has begun.
+When you try to connect to a stream that has not yet begun to broadcast, you may see a `400 (Bad Request)` error. This is expected, so you will want to create a user experience that does not attempt to **connect()** prematurely, by first checking if a broadcast has begun.
 
 ```http
 POST https://director.millicast.com/api/director/subscribe 400 (Bad Request)

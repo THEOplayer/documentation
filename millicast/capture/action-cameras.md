@@ -27,7 +27,7 @@ If you are using an action camera that is not listed, you should be able to use 
 
 > 📘 Dolby.io Dashboard - Publish Token Details
 > 
-> You will need to have your Dolby.io **publishing token** and **stream name** in order to complete this setup. See the [Getting Started](/millicast/getting-started/getting-started-using-the-dashboard.md) guide for instructions on creating a new app for the first time. You will also need the **RTMP publish path** from the _Publishing_ tab in the Dolby.io Dashboard. See the [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) guide for more detail on where to find it.
+> You will need to have your Dolby.io **publishing token** and **stream name** in order to complete this setup. See the [Getting Started](/millicast/getting-started/using-the-dashboard.md) guide for instructions on creating a new app for the first time. You will also need the **RTMP publish path** from the _Publishing_ tab in the Dolby.io Dashboard. See the [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) guide for more detail on where to find it.
 
 ## Using the GoPro Quik App
 
@@ -101,7 +101,7 @@ The Quik app will show you a timecode for the duration of the stream as well as 
 
 
 
-To verify everything is working, you view the stream using any suitable [playback](/millicast/playback/index.md) method, such as the hosted web viewer described in the [Getting Started](/millicast/getting-started/introduction-to-streaming-apis.md) guide available directly from the Dolby.io Dashboard.
+To verify everything is working, you view the stream using any suitable [playback](/millicast/playback/index.md) method, such as the hosted web viewer described in the [Getting Started](/millicast/introduction-to-streaming-apis.md) guide available directly from the Dolby.io Dashboard.
 
 ## Using the GoPro webcam utility
 
@@ -111,7 +111,7 @@ The **Webcam Utility** is a GoPro product, so the behavior and instructions may 
 
 ### a) Stream with the Dolby.io dashboard
 
-With the GoPro Webcam utility, your GoPro camera will be present as an option from the media device selection. Follow the same instructions for broadcasting described in [Part 1: Using the Streaming Dashboard](/millicast/getting-started/getting-started-using-the-dashboard.md).
+With the GoPro Webcam utility, your GoPro camera will be present as an option from the media device selection. Follow the same instructions for broadcasting described in [Part 1: Using the Streaming Dashboard](/millicast/getting-started/using-the-dashboard.md).
 
 
 ![](../assets/img/GoPro_Web_Cam.png)

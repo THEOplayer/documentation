@@ -83,7 +83,7 @@ Once created, your Publish token can be used to broadcast in a variety of differ
 
 ## Managing and editing existing publish tokens
 
-Once a Pubish token is created, it is displayed on the **Live Broadcast** page. From this page, you can [start a broadcast using the Dashboard Broadcaster](/millicast/getting-started/getting-started-using-the-dashboard.md)b-start-broadcast), enable or disable, delete, or edit the settings for each Publish token.
+Once a Pubish token is created, it is displayed on the **Live Broadcast** page. From this page, you can [start a broadcast using the Dashboard Broadcaster](/millicast/getting-started/using-the-dashboard.md)b-start-broadcast), enable or disable, delete, or edit the settings for each Publish token.
 
 
 ![](../assets/img/tempsnip.png)
@@ -186,9 +186,9 @@ The API tab includes information needed to publish a stream with the [Client SDK
 
 - **Publish token**:
   - **Publishing token**: The Publishing token is a unique string that is required for authenticating a request to publish via the Dolbyio servers. This string should be protected and **if exposed, should be cycled immediately** to prevent unwanted broadcasts and charges.
-  - **Stream ID**: The Stream ID is a combination of your _Account ID_ and _Stream name_ used for [publishing](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md) or viewing the stream.  If your stream** is not secured** with a [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md), you'll be able to view it at `https://viewer.millicast.com?streamId=[Account ID]/[Stream name]` when it is live.
+  - **Stream ID**: The Stream ID is a combination of your _Account ID_ and _Stream name_ used for [publishing](/millicast/getting-started/creating-real-time-streaming-web-app.md) or viewing the stream.  If your stream** is not secured** with a [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md), you'll be able to view it at `https://viewer.millicast.com?streamId=[Account ID]/[Stream name]` when it is live.
   - **Stream name**: Your Stream name is used to manage and distinguish streams using the same token. You can edit the Stream name in the "[Token streams](/millicast/streaming-dashboard/managing-your-tokens.md)2-token-streams)" tab. 
-  - **Account ID**: The Account ID is a unique account identifier used for [publishing](/millicast/getting-started/getting-started-creating-real-time-streaming-web-app.md) and viewing streams. 
+  - **Account ID**: The Account ID is a unique account identifier used for [publishing](/millicast/getting-started/creating-real-time-streaming-web-app.md) and viewing streams. 
   - **Token ID**: The Token ID can be used for [Reading](../api/publish-token-v-1-read-token.api.mdx), [Deleting](../api/publish-token-v-1-delete-token.api.mdx), and [Updating](../api/publish-token-v-1-update-token.api.mdx) Publish tokens via the [REST APIs](../api/publish-token-v-1-read-token.api.mdx).
 - **Sample API calls**: The Sample API calls section includes some basic examples of [Publishing](../streaming-dashboard/token-api.md#creating-publishing-tokens) and [Subscribing](../streaming-dashboard/token-api.md#creating-subscribe-tokens) calls that can be made with the credentials provided in the Publish token section. To learn more about API calls, explore the [Token API](../streaming-dashboard/token-api.md) guide.
 - **API endpoints**: The API endpoints section provides a [Publish API URL](../streaming-dashboard/token-api.md#creating-publishing-tokens) and a [Subscribe API URL](../streaming-dashboard/token-api.md#creating-subscribe-tokens), which can be used with the Publish token credentials and [Subscribe token credentials](../streaming-dashboard/subscribe-tokens.md), respectively.

@@ -11,9 +11,9 @@ The **Live broadcast** section of the [Streaming Dashboard](/millicast/streaming
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast.
 > 
-> You can follow the steps in [Part 1](/millicast/getting-started/getting-started-using-the-dashboard.md) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/playback/hosted-viewer.md).
+> You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.md) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/playback/hosted-viewer.md).
 
 ## Quick actions
 

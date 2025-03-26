@@ -8,7 +8,7 @@ The WebRTC-HTTP ingest protocol (WHIP) uses an HTTP POST request to perform a si
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.md) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.mdx) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 See the official [FlowCaster](https://www.drastic.tv/productsmenu-56/networkstreaminglist/flowcaster) site for documentation, installation instructions, and additional support.
 

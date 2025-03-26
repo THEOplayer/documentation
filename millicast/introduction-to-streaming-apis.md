@@ -135,7 +135,7 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
 ## Distribution with WebRTC CDN
 
-The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/getting-started/basic-api-tutorial.md) or the Dashboard to ensure [distribution](/millicast/distribution/index.md) of streams is secure, stable, and scalable. 
+The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/getting-started/using-rest-apis.md) or the Dashboard to ensure [distribution](/millicast/distribution/index.md) of streams is secure, stable, and scalable. 
 
 <div style={{marginLeft: "20px"}}>
 
