@@ -28,10 +28,10 @@ const FeatureList: FeatureItem[] = [
       />
     ),
     description: (
-      <>
+      <p>
         Dolby OptiView Player (formerly known as THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any
         device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.
-      </>
+      </p>
     ),
     to: [{ link: '/theoplayer', text: 'Get Started' }],
   },
@@ -47,10 +47,10 @@ const FeatureList: FeatureItem[] = [
       />
     ),
     description: (
-      <>
+      <p>
         Dolby OptiView Ads (formerly known as THEOads) enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
         engagement and maximize ad revenue.
-      </>
+      </p>
     ),
     to: [{ link: '/theoads', text: 'Get Started' }],
   },
@@ -67,9 +67,14 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience,
-        whether it’s for sports betting, iGaming or interactive entertainment. With this solution, choose Real-time for interactive latency or manage
-        latency targets from 1 second and up with Live. Use both with the OptiView Player.
+        <p>
+          Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience,
+          whether it’s for sports betting, iGaming or interactive entertainment.
+        </p>
+        <p>
+          With this solution, choose Real-time for interactive latency or manage latency targets from 1 second and up with Live. Use both with the
+          OptiView Player.
+        </p>
       </>
     ),
     to: [
@@ -90,10 +95,10 @@ const FeatureList: FeatureItem[] = [
       />
     ),
     description: (
-      <>
+      <p>
         Paired with the OptiView Player, the Open Video UI enables you to easily build and customize your video player UI to match your branding style
         through a comprehensive library of open-source UI components.
-      </>
+      </p>
     ),
     to: [{ link: '/open-video-ui', text: 'Get Started' }],
   },
@@ -106,9 +111,7 @@ function Feature({ title, Image, description, to }: FeatureItem) {
         <div className={clsx('card__header text--center', styles.featureHeading)}>
           <Image className={styles.featureImage} alt={title} />
         </div>
-        <div className="card__body text--center">
-          <p>{description}</p>
-        </div>
+        <div className="card__body text--center">{description}</div>
         <div className="card__footer text--center">
           {to.map(({ link, text }) => (
             <Link className={clsx(styles.footerButton, 'button button--secondary button--lg')} to={link}>
