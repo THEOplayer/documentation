@@ -110,6 +110,11 @@ var pathtoroot = "../../../../../../";
                             
                             <code>com.theoplayer.android.api.Integration</code>
                             
+                            ,
+                            
+                            
+                            <code>com.theoplayer.android.api.event.EventDispatcher</code>
+                            
                             
                         </dd>
                     </dl>
@@ -118,7 +123,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public interface <span class="typeNameLabel"><a href=TheoAdsIntegration.html>TheoAdsIntegration</a></span>
- implements <a href=../../Integration.html>Integration</a>
+ implements <a href=../../Integration.html>Integration</a>, <a href=../../event/EventDispatcher.html>EventDispatcher</a>&lt;<a href=event/TheoAdsEvent.html>TheoAdsEvent</a>&lt;?&gt;&gt;
                     </pre>
                     <div class="block"><p>Integration for server-guide ad insertion using THEOads.</p><ul><li><p>Use <a href=TheoAdsIntegrationFactory.html#createTheoAdsIntegration(com.theoplayer.android.api.THEOplayerView)>TheoAdsIntegrationFactory.createTheoAdsIntegration</a> to create this integration.</p></li><li><p>Use Player.addIntegration to attach this integration to the player.</p></li></ul></div>
 
@@ -256,6 +261,22 @@ public interface <span class="typeNameLabel"><a href=TheoAdsIntegration.html>The
                                             <td class="colLast">Replaces all of the ad tag parameters used for upcoming ad requests for a live stream.</td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Interstitial.html>Interstitial</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TheoAdsIntegration.html#getCurrentInterstitials()>getCurrentInterstitials</a>() </code>
+                                            </th>
+                                            <td class="colLast">The currently playing interstitials.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Interstitial.html>Interstitial</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TheoAdsIntegration.html#getScheduledInterstitials()>getScheduledInterstitials</a>() </code>
+                                            </th>
+                                            <td class="colLast">List of interstitials which still need to be played.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -266,6 +287,12 @@ public interface <span class="typeNameLabel"><a href=TheoAdsIntegration.html>The
                                         </a>
                                             <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.Integration</h3>
                                             <code>getType</code></li>
+                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.com.theoplayer.android.api.event.EventDispatcher">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.event.EventDispatcher</h3>
+                                            <code>addEventListener, removeEventListener</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
@@ -310,12 +337,58 @@ public interface <span class="typeNameLabel"><a href=TheoAdsIntegration.html>The
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>replaceAdTagParameters</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=TheoAdsIntegration.html#replaceAdTagParameters(java.util.Map)>replaceAdTagParameters</a>(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adTagParameters)</pre>
                                         <div class="block"><p>Replaces all of the ad tag parameters used for upcoming ad requests for a live stream.</p><p>If set, this value overrides any parameters set on the <a href=TheoAdDescription.html#adTagParameters>TheoAdDescription.adTagParameters</a>.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCurrentInterstitials()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCurrentInterstitials</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Interstitial.html>Interstitial</a>&gt; <a href=TheoAdsIntegration.html#getCurrentInterstitials()>getCurrentInterstitials</a>()</pre>
+                                        <div class="block"><p>The currently playing interstitials.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getScheduledInterstitials()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getScheduledInterstitials</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=Interstitial.html>Interstitial</a>&gt; <a href=TheoAdsIntegration.html#getScheduledInterstitials()>getScheduledInterstitials</a>()</pre>
+                                        <div class="block"><p>List of interstitials which still need to be played.</p></div>
 
                                         <dl>
 

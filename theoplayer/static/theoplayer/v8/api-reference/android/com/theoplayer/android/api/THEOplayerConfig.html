@@ -324,6 +324,14 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                             <td class="colLast">Whether all available integrations should be automatically added on the created <a href=player/Player.html>Player</a>.</td>
                                         </tr>
                                         
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract boolean</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#isTunnelingEnabled()>isTunnelingEnabled</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether multimedia tunneling is enabled for the player or not.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -574,7 +582,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>isAutoIntegrations</h4>
@@ -588,6 +596,32 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>True if integrations should be automatically added.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isTunnelingEnabled()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isTunnelingEnabled</h4>
+                                        <pre class="methodSignature"> abstract boolean <a href=THEOplayerConfig.html#isTunnelingEnabled()>isTunnelingEnabled</a>()</pre>
+                                        <div class="block"><p>Whether multimedia tunneling is enabled for the player or not. </p><ul><li>Only supported with the Media3 integration.</li><li>Only supported if <a href=player/Player.html#setRenderingTarget(com.theoplayer.android.api.player.RenderingTarget)>setRenderingTarget</a> is set to <a href=player/RenderingTarget.html#SURFACE_VIEW>SURFACE_VIEW</a>.</li><li>Only supported if the media being played includes both audio and video.</li><li>Only supported on limited number of video codecs and devices.</li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>True if multimedia tunneling is enabled.</p></dd>
                                         
 
                                         

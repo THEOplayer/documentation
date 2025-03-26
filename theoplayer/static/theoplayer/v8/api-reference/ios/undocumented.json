@@ -275,21 +275,21 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/DefaultEventDispatcher.swift",
-      "line": 150,
+      "line": 129,
       "symbol": "EventDispatchManager",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/PlayerEvents.swift",
-      "line": 375,
+      "line": 376,
       "symbol": "ErrorEvent.init(error:errorObject:date:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/PlayerEvents.swift",
-      "line": 443,
+      "line": 444,
       "symbol": "ResizeEvent.init(date:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -610,6 +610,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
+      "line": 111,
+      "symbol": "EventSource.urlSession(_:task:didCompleteWithError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
+      "line": 123,
+      "symbol": "EventSource.urlSession(_:dataTask:didReceive:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
       "line": 12,
       "symbol": "Encodable.toJSONEncodableDictionary()",
@@ -688,7 +702,7 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Ads/AdsImplNative.swift",
-      "line": 109,
+      "line": 113,
       "symbol": "AdsImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -835,14 +849,14 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1236,
+      "line": 1245,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1274,
+      "line": 1283,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -870,98 +884,98 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 53,
+      "line": 62,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 879,
+      "line": 884,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 890,
+      "line": 895,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 900,
+      "line": 905,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 918,
+      "line": 923,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 925,
+      "line": 930,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 963,
+      "line": 968,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1005,
+      "line": 1010,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1024,
+      "line": 1029,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1042,
+      "line": 1047,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1058,
+      "line": 1063,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1070,
+      "line": 1075,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1076,
+      "line": 1081,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1099,
+      "line": 1104,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

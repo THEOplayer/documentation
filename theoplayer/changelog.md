@@ -5,6 +5,86 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 8.14.0 (2025/03/26)
+
+### Web
+
+#### ✨ Features
+
+- Added the IMA DAI `streamActivityMonitorId` property as a configuration on the `TheoAdDescription`.
+- Added the `retrievePodIdURI` property to `TheoAdDescription` to retrieve the PodID as returned from the EABN service from Google.
+- Added the `sseEndpoint` property to `TheoAdDescription` to retrieve server-sent events for the configured endpoint.
+
+#### ⚡ Improvements
+
+- Improved event dispatching when playing a stream with THEOads.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would stop after an ad in a THEOads stream on smart TVs.
+- Fixed an issue where setting the `skipOffset` in the CSAI configuration to 0 made an ad unskippable instead of immediately skippable.
+- Fixed an issue where the player would keep preloading the same segments when the HLS stream starts with a small gap.
+- Fixed an issue where the player would dispatch a seeking event when preloading an HLS stream that starts with a small gap.
+- Fixed an issue where DRM protected streams fail to play on Tizen or webOS devices due to an error while applying the license.
+- Fixed an issue where an `error` event would not be dispatched for Millicast streams when the initial connection failed.
+
+### Android
+
+#### ✨ Features
+
+- Added `TheoAdsIntegration.currentInterstitials` and `TheoAdsIntegration.scheduledInterstitials` in `TheoAdsIntegration` for managing currently playing and scheduled interstitials and events of interstitials lifecycle. 
+- Added support for multimedia tunneling through `THEOplayerConfig.isTunnelingEnabled` in the Media3 integration.
+- Added support for CEA608 subtitles for HESP / THEOlive streams using the Media3 integration.
+- Added the IMA DAI `streamActivityMonitorId` property as a configuration on the SGAI TheoAdDescription.
+
+#### ⚡ Improvements
+
+- Added support for DRM pre-integrations in Media3.
+- Improved support for forced subtitles in the Media3 integration.
+
+#### 🐛 Issues
+
+- Fixed an issue where `SEEKING` events were emitted while switching from Ad to content while playing THEOAds.
+- Fixed an issue where the `activeQuality` on a video track would not update when playing THEOlive / HESP streams using the Media3 backend.
+- Fixed an issue when using ABR strategy `bandwidth` with the Media3 integration, where the initial bitrate value passed with the ABR configuration would be ignored.
+- Fixed an issue where the player incorrectly attempted to play DRM-protected qualities in MPEG-DASH for which it did not receive a usable key from the DRM license server.
+- Fixed an issue where the measured bandwidth estimate was not preserved across playback sessions in the Media3 integration.
+- Fixed an issue where trying to play a DRM source could error when configuring `null` headers.
+- Fixed an issue where the Media3 integration would throw an error when playback falls behind the live window. Instead, the player now recovers by seeking to live.
+- Fixed an issue where the current time would not progress properly on HESP and THEOlive streams when using the Media3 integration.
+- Fixed an issue where disabling all subtitle tracks would re-enable the default subtitle track in the Media3 integration.
+- Fixed an issue where CEA-608 paint-on captions would flicker with the Media3 integration.
+
+### iOS
+
+#### ✨ Features
+
+- Added the IMA DAI `streamActivityMonitorId` property as a configuration on the `THEOAdDescription`.
+- Added the `retrievePodIdURI` property on the `THEOAdDescription` to retrieve the PodID as returned from the EABN service from Google.
+- Adding `allowsExternalPlayback` option to allow disabling external playback on the player. This is useful for controlling which player instance is allowed to externally playback through Airplay.
+- When the `THEOplayerGoogleIMAIntegration` package is added, it will now be automatically integrated to THEOplayer. This makes explicitly creating and adding the integration unnecessary.
+- `THEOplayerConfigurationBuilder` is extended with the method `setGoogleIMAConfiguration` to help configure the integration when auto-integrating.
+- Added `GoogleIMAConfiguration` and `GoogleIMAConfiguration.Builder` APIs to build and pass arguments to the `setGoogleIMAConfiguration` method.
+- Extended `Ads` API with `ima` property of type `GoogleImaIntegration?`; this helps to get a reference to the auto-integrated instance.
+- When the `THEOplayerGoogleCastIntegration` package is added, it will now be automatically integrated to THEOplayer. This makes explicitly creating and adding the integration unnecessary.
+- `THEOplayerConfigurationBuilder` is extended with the method `setGoogleCastConfiguration` to help configure the integration when auto-integrating.
+- Added `GoogleCastConfiguration` and `GoogleCastConfiguration.Builder` APIs to build and pass arguments to the `setGoogleCastConfiguration` method.
+- Extended `Cast` API with `googlecast` property of type `CastIntegration?`; this helps to get a reference to the auto-integrated instance.
+- When the `THEOplayerTHEOadsIntegration` package is added, it will now be automatically integrated to THEOplayer by default. This makes explicitly creating and adding the integration unnecessary.
+- Extended `Ads` API with `theoAds` property of type `THEOadsIntegration?`; this helps to get a reference to the auto-integrated instance.
+- When the `THEOplayerMillicastIntegration` package is added, it will now be automatically integrated to THEOplayer. This makes explicitly creating and adding the integration unnecessary.
+- Extended `THEOplayer` API with `millicast` property of type `MillicastIntegration?`; this helps to get a reference to the auto-integrated instance.
+- `THEOplayerConfigurationBuilder` is extended with the method `setTHEOliveConfiguration` to help configure the integration when auto-integrating.
+
+#### ⚡ Improvements
+
+- THEOads is now available from iOS 13.0+.
+
+#### 🐛 Issues
+
+- Fixed an issue where THEOads would not play advertisement when playing in Picture-in-Picture.
+- Fixed an issue where adding and removing the THEOads integration twice would result in no events being dispatched.
+
 ## 🚀 8.13.2 (2025/03/17)
 
 ### Android
