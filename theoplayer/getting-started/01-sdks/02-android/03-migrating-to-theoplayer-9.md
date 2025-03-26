@@ -1,6 +1,6 @@
 # Migrating to THEOplayer Android SDK 9.x
 
-This article will guide your through updating from THEOplayer Android SDK version 9 (from version 8),
+This article will guide you through updating from THEOplayer Android SDK version 9 (from version 8),
 and the changes needed in your code.
 
 ## Update THEOplayer
