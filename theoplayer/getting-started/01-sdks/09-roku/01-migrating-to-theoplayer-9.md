@@ -15,6 +15,15 @@ Download the new pkg file from [https://cdn.myth.theoplayer.com/roku/9.0.0/THEOp
 <ComponentLibrary id="THEOsdk" uri="https://cdn.myth.theoplayer.com/roku/9.0.0/THEOplayerSDK.pkg" />
 ```
 
+## Update Connectors to the 9.0 version
+
+If you are using any of the connectors for Roku, update them to the 9.0 version as well.
+
+```xml
+<ComponentLibrary id="THEOConvivaConnector" uri="https://cdn.myth.theoplayer.com/roku/9.0.0/THEOConvivaConnector.pkg" />
+<ComponentLibrary id="THEOComscoreConnector" uri="https://cdn.myth.theoplayer.com/roku/9.0.0/THEOComscoreConnector.pkg" />
+```
+
 ## Replace or remove usages of deprecated APIs
 
 - Removed `THEOplayer.configuration`. Use `THEOplayer.configure(configuration as object)` instead.
