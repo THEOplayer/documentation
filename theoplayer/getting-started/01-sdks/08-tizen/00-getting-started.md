@@ -55,7 +55,7 @@ Select the directory, then press Finish.
 - **minimum-example/**
   - Contains a very minimal Tizen project example. No UI included.
   - **libs/**
-    - (Insert your THEOplayer Tizen SDK here).
+    - (Insert your THEOplayer Tizen SDK here.)
   - **index.html**
     - Entry point of application.
   - **config.xml**
