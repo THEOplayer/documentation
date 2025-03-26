@@ -210,22 +210,22 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
-          type: 'link',
-          label: 'Millicast REST API',
-          customProps: {
-            icon: '🛜',
-          },
-          href: '/millicast/api/millicast-api',
-        }
+      type: 'link',
+      label: 'Millicast REST API',
+      customProps: {
+        icon: '🛜',
+      },
+      href: '/millicast/api/millicast-api',
+    },
   ],
   millicastApi: [
-      {
-        type: 'link',
-        label: '« Back',
-        href: '/millicast/',
-      },
-      ...millicastApiSidebar,
-    ],
+    {
+      type: 'link',
+      label: '« Back',
+      href: '/millicast/',
+    },
+    ...millicastApiSidebar,
+  ],
 };
 
 export default sidebars;

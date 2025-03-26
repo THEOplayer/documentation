@@ -29,11 +29,11 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Formerly known as THEOplayer, the Dolby OptiView player enables you to deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming
-        consoles.
+        Formerly known as THEOplayer, the Dolby OptiView player enables you to deploy cutting-edge video playback experiences, efficiently and on any
+        device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.
       </>
     ),
-    to: [{ 'link': '/theoplayer', 'text': 'Get Started'}]
+    to: [{ link: '/theoplayer', text: 'Get Started' }],
   },
   {
     title: 'Dolby OptiView Ads',
@@ -46,11 +46,13 @@ const FeatureList: FeatureItem[] = [
         }}
       />
     ),
-    description: 
+    description: (
       <>
-        Formerly known as THEOads, the Dolby OptiView Ads product enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer engagement and maximize ad revenue.
-      </>,
-    to: [{ 'link': '/theoads', 'text': 'Get Started'}]
+        Formerly known as THEOads, the Dolby OptiView Ads product enables you to deliver a seamless, less intrusive ad experience, designed to boost
+        viewer engagement and maximize ad revenue.
+      </>
+    ),
+    to: [{ link: '/theoads', text: 'Get Started' }],
   },
   {
     title: 'Dolby OptiView Live',
@@ -65,13 +67,17 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience, whether it’s for sports betting, iGaming or interactive
-        entertainment. With this soltution, choose Real-time for interactive latency or manage latency targets from 1 second and up with Live. Use both with the OptiView Player.
+        Dolby OptiView's Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of experience,
+        whether it’s for sports betting, iGaming or interactive entertainment. With this soltution, choose Real-time for interactive latency or manage
+        latency targets from 1 second and up with Live. Use both with the OptiView Player.
       </>
     ),
-    to: [{ 'link': '/millicast', 'text': 'Real-time (Millicast)'}, { 'link': '/theolive', 'text': 'Live (THEOlive)'}]
+    to: [
+      { link: '/millicast', text: 'Real-time (Millicast)' },
+      { link: '/theolive', text: 'Live (THEOlive)' },
+    ],
   },
-  
+
   {
     title: 'Open Video UI',
     Image: (props) => (
@@ -85,10 +91,11 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <>
-        Paired with the OptiView player, the OpenVideoUi enables you to easily build and customize your video player UI to match your branding style through a comprehensive library of open-source UI components.
+        Paired with the OptiView player, the OpenVideoUi enables you to easily build and customize your video player UI to match your branding style
+        through a comprehensive library of open-source UI components.
       </>
     ),
-    to: [{ 'link': '/open-video-ui', 'text': 'Get Started'}],
+    to: [{ link: '/open-video-ui', text: 'Get Started' }],
   },
 ];
 
