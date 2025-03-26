@@ -1,6 +1,5 @@
 ---
 slug: /getting-started
-sidebar_position: 0
 ---
 
 # Getting started with Millicast
@@ -13,7 +12,7 @@ If you haven't already, please [create a Dolby.io account](https://dashboard.dol
 
 :::
 
-For an introduction to the platform overall, start with the [Introduction to Streaming APIs](/millicast/getting-started/introduction-to-streaming-apis.md).
+For an introduction to the platform overall, start with the [Introduction to Streaming APIs](/millicast/introduction-to-streaming-apis.md).
 
 # Part 1: Use the Streaming Dashboard
 
