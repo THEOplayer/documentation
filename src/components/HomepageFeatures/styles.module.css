@@ -19,6 +19,10 @@
   height: 55px;
 }
 
+.featureDescription {
+  text-wrap: pretty;
+}
+
 .footerButton {
   margin-left: 10px;
   margin-right: 10px;
