@@ -210,11 +210,17 @@ extends <a href=../../source/addescription/AdDescription.html>AdDescription</a>
                                         
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=TheoAdDescription.html#retrievePodIdURI>retrievePodIdURI</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=TheoAdDescription.html#streamActivityMonitorId>streamActivityMonitorId</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=TheoAdDescription.html#retrievePodIdURI>retrievePodIdURI</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=TheoAdDescription.html#useId3>useId3</a></code></th>
                                             <td class="colLast"></td>
@@ -246,7 +252,7 @@ extends <a href=../../source/addescription/AdDescription.html>AdDescription</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#TheoAdDescription(java.lang.String,java.lang.String,java.lang.String,java.lang.String,com.theoplayer.android.api.ads.theoads.TheoAdsLayoutOverride,java.util.Map,java.lang.String,java.lang.Boolean)">TheoAdDescription</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> networkCode, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customAssetKey, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropDoubleBox, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropLShape, <a href=TheoAdsLayoutOverride.html>TheoAdsLayoutOverride</a> overrideLayout, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adTagParameters, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> retrievePodIdURI, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useId3)</code></th>
+                                                        href="#TheoAdDescription(java.lang.String,java.lang.String,java.lang.String,java.lang.String,com.theoplayer.android.api.ads.theoads.TheoAdsLayoutOverride,java.util.Map,java.lang.String,java.lang.String,java.lang.Boolean)">TheoAdDescription</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> networkCode, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customAssetKey, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropDoubleBox, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropLShape, <a href=TheoAdsLayoutOverride.html>TheoAdsLayoutOverride</a> overrideLayout, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adTagParameters, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> streamActivityMonitorId, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> retrievePodIdURI, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useId3)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -350,12 +356,20 @@ extends <a href=../../source/addescription/AdDescription.html>AdDescription</a>
                                         <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
+                                            <th class="colSecond" scope="row"><code><a href=TheoAdDescription.html#getStreamActivityMonitorId()>getStreamActivityMonitorId</a>() </code>
+                                            </th>
+                                            <td class="colLast">The streamActivityMonitorId added to the GAM Pod stream request.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            </td>
                                             <th class="colSecond" scope="row"><code><a href=TheoAdDescription.html#getRetrievePodIdURI()>getRetrievePodIdURI</a>() </code>
                                             </th>
                                             <td class="colLast">The URI from where to retrieve the PodID's as returned from the EABN service from Google.</td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=TheoAdDescription.html#getUseId3()>getUseId3</a>() </code>
@@ -400,11 +414,11 @@ extends <a href=../../source/addescription/AdDescription.html>AdDescription</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="TheoAdDescription(java.lang.String,java.lang.String,java.lang.String,java.lang.String,com.theoplayer.android.api.ads.theoads.TheoAdsLayoutOverride,java.util.Map,java.lang.String,java.lang.Boolean)"></a>
+                                <a name="TheoAdDescription(java.lang.String,java.lang.String,java.lang.String,java.lang.String,com.theoplayer.android.api.ads.theoads.TheoAdsLayoutOverride,java.util.Map,java.lang.String,java.lang.String,java.lang.Boolean)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>TheoAdDescription</h4>
-                                        <pre>TheoAdDescription(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> networkCode, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customAssetKey, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropDoubleBox, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropLShape, <a href=TheoAdsLayoutOverride.html>TheoAdsLayoutOverride</a> overrideLayout, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adTagParameters, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> retrievePodIdURI, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useId3)</pre>
+                                        <pre>TheoAdDescription(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> networkCode, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customAssetKey, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropDoubleBox, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> backdropLShape, <a href=TheoAdsLayoutOverride.html>TheoAdsLayoutOverride</a> overrideLayout, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; adTagParameters, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> streamActivityMonitorId, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> retrievePodIdURI, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useId3)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -548,6 +562,29 @@ extends <a href=../../source/addescription/AdDescription.html>AdDescription</a>
                                         <h4>getAdTagParameters</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; <a href=TheoAdDescription.html#getAdTagParameters()>getAdTagParameters</a>()</pre>
                                         <div class="block"><p>The ad tag parameters added to the stream request.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getStreamActivityMonitorId()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getStreamActivityMonitorId</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=TheoAdDescription.html#getStreamActivityMonitorId()>getStreamActivityMonitorId</a>()</pre>
+                                        <div class="block"><p>The streamActivityMonitorId added to the GAM Pod stream request.</p></div>
 
                                         <dl>
 
