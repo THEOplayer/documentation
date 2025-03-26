@@ -40,8 +40,15 @@ let theoLiveIntegration = THEOliveIntegrationFactory.createIntegration()
 Removing `MillicastSource` initializer in favor of another one whose arguments are more clearly named:
 
 ```diff
-- let source: MillicastSource = .init(streamName: "streamName", accountID: "accountID", token: token, connectOptions: clientOptions)
-+ let source: MillicastSource = .init(src: "streamName", streamAccountId: "accountID", subscriberToken: token, connectOptions: clientOptions)
+  let source: MillicastSource = .init(
+-     streamName: "streamName",
++     src: "streamName",
+-     accountID: "accountID",
++     streamAccountId: "accountID",
+-     token: token,
++     subscriberToken: token,
+      connectOptions: clientOptions
+  )
 ```
 
 Replacing the `TypedSource` initialize which takes a `URL` object as a src with one that takes a URL `String` instead:
