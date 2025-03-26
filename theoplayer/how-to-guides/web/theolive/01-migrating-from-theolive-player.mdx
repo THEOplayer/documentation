@@ -5,36 +5,44 @@ to the recommended [THEOplayer](https://www.npmjs.com/package/theoplayer). If yo
 please follow the [recommended](00-getting-started.mdx) guide instead of this one.
 
 ## Dependencies
+
 First remove the old player dependency:
+
 ```
 npm uninstall @theolive/player
 ```
 
 And replace with theoplayer using:
+
 ```
 npm install theoplayer
 ```
 
 ## Setting up a player
+
 Player creation is quite similar, instead of
+
 ```javascript
 const player = new THEOLive.Player(element);
 ```
+
 Create the player like this:
+
 ```javascript
 var player = new THEOplayer.Player(element, {
   license: 'your-license',
   // This is needed for fallback to work properly
   retryConfiguration: {
-    maxRetries: 6
+    maxRetries: 6,
   },
   theoLive: {
     // these are optional
     externalSessionId: 'my-external-session-id',
-    fallbackEnabled: true
-  }
+    fallbackEnabled: true,
+  },
 });
 ```
+
 Note that you now need a license, either use the THEOplayer license you had before, or use the one provided in the
 [THEOlive console](https://console.theo.live) when creating a channel.
 
@@ -42,11 +50,13 @@ Note that you now need a license, either use the THEOplayer license you had befo
 
 After setting up your THEOplayer on your web page, we will set the source to a channel. The old way was calling loadChannel
 on the player.
+
 ```javascript
-player.loadChannel('<your-channel-id>').catch(console.error)
+player.loadChannel('<your-channel-id>').catch(console.error);
 ```
 
 With THEOplayer you just set a [SourceDescription](pathname:///theoplayer/v8/api-reference/web/interfaces/TheoLiveSource.html).
+
 ```javascript
 player.source = {
   sources: {
