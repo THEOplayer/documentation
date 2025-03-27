@@ -1,5 +1,6 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 import millicastApiSidebar from './millicast/api/sidebar';
+import millicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
 import millicastDirectorApiSidebar from './millicast/api/director/sidebar';
 
 function removeHiddenItems(data) {
@@ -34,6 +35,8 @@ function removeHiddenItems(data) {
 
 // filter "hidden" items
 const filteredMillicastApiSidebar = removeHiddenItems(millicastApiSidebar);
+const filteredMillicastAdvancedReportingApiSidebar = removeHiddenItems(millicastAdvancedReportingApiSidebar);
+const filteredMillicastDirectorApiSidebar = removeHiddenItems(millicastDirectorApiSidebar);
 
 const sidebars: SidebarsConfig = {
   millicast: [
@@ -321,10 +324,17 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Millicast Advanced Reporting API',
+      collapsible: true,
+      collapsed: true,
+      items: [...filteredMillicastAdvancedReportingApiSidebar],
+    },
+    {
+      type: 'category',
       label: 'Millicast Director API',
       collapsible: true,
-      collapsed: false,
-      items: [...millicastDirectorApiSidebar],
+      collapsed: true,
+      items: [...filteredMillicastDirectorApiSidebar],
     },
   ],
 };

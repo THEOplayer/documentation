@@ -43,7 +43,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 
 ## New Regional Clusters in Sao Paulo and Sydney
 
-Deployed new regional clusters that can be [specified by a stream or an account](/millicast/api/millicast-api/cluster_getclustersinfo). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
+Deployed new regional clusters that can be [specified by a stream or an account](/millicast/api/cluster-get-clusters-info). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
 
 # 2024-03-14
 

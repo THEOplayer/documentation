@@ -259,6 +259,14 @@ const config: Config = {
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
+          },
+          millicastReportingApi: {
+            specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json', 
+            outputDir: 'millicast/api/reporting',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
           }
         },
       } satisfies OpenApiPlugin.PluginOptions,

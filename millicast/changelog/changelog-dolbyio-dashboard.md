@@ -1,13 +1,13 @@
 Updates to the Dolby.io Dashboard and Applications.
 
-# 2024-12-12 | Dashboard & Hosted Player
+## 2024-12-12 | Dashboard & Hosted Player
 
 ## Dashboard
 
 On the dashboard, users can now set the account-wide expiration rules rules for their recorded media.  This means that media can be auto-deleted without the need for additional API calls. This includes:
 
-- [Recordings](/millicast/distribution/stream-recordings/): The full-length stream recordings that are created when recording is enabled on a token
-- [Clips](/millicast/distribution/stream-recordings/live-clipping.md): Clips generated from the [Media Asset API](/millicast/api/millicast-api/media-assets) when utilizing Dolby cloud storage
+- [Recordings](/millicast/distribution/stream-recordings/index.md): The full-length stream recordings that are created when recording is enabled on a token
+- [Clips](/millicast/distribution/stream-recordings/live-clipping.md): Clips generated from the [Media Asset API](/millicast/api/media-assets-create-media-asset/) when utilizing Dolby cloud storage
 - [Timelines](/millicast/distribution/stream-recordings/live-clipping.md): Timelines are the "media cache" that clips are generated from and are required to create a clip. They are always stored on Dolby cloud storage.  By default timelines will expire after 1 day.  Users can change this value if they wish to be able to clip  further back in time.
 
 These settings are available in the streaming dashboard under `Settings > Media`
@@ -26,7 +26,7 @@ An image of what the timer looks like can be seen in the red circle below:
 ![](../assets/img/e8a06e7d19e0fb95a528f26bf51a91ee94be340bb5dad90f1834e49c3780b211-Screenshot_2024-12-12_at_10.03.31_AM.png)
 
 
-# 2024-11-07 | Dashboard
+## 2024-11-07 | Dashboard
 
 With this latest dashboard release, we’ve introduced support for RTMPS endpoints in re-stream and enhanced visibility with re-stream events in the Live Monitor event log. Additionally, re-stream usage now appears in your billing overview for easier tracking.
 
@@ -39,7 +39,7 @@ You can now configure RTMPS endpoints in the re-stream section of the distributi
 
 ### Monitor Re-Stream Events
 
-A new event type is now available in the [Live Monitoring](/millicast/live-monitoring) event log, enabling you to view re-stream related events and errors in real-time as they occur.
+A new event type is now available in the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) event log, enabling you to view re-stream related events and errors in real-time as they occur.
 
 ![](../assets/img/252e36192f8369547fff49a7af109c0eeaf9f6d7fde269741cb1f807674258d9-dashboard-live-monitor-restream-events.png)
 
@@ -61,7 +61,7 @@ You can find additional related changes in the [REST APIs and GraphQL Release No
 
 ## :new: Live Clipping
 
-With **live clipping** you can capture a partial clip from an active ongoing stream that is immediately available. This can power many solutions such as social network sharing, replay capabilities, as well as archival and auditing. Learn more from the [Stream Recordings](/millicast/distribution/stream-recordings/) guide.
+With **live clipping** you can capture a partial clip from an active ongoing stream that is immediately available. This can power many solutions such as social network sharing, replay capabilities, as well as archival and auditing. Learn more from the [Stream Recordings](/millicast/distribution/stream-recordings/index.md) guide.
 
 ### Media
 
