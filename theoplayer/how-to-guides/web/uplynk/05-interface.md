@@ -68,7 +68,7 @@ const player = new THEOplayer.Player(element, {...});
 });
 ```
 
-Refer to the [Uplynk API reference](pathname:///theoplayer/v8/api-reference/web/interfaces/Uplynk.html) for more information. Additionally, reviewing [the player configuration in the demo app](https://github.com/THEOplayer/samples-html5-sdk/blob/master/reference-apps/verizon-media-app/src/player.js) helps to understand the `Uplynk` interface.
+Refer to the [Uplynk API reference](pathname:///theoplayer/v9/api-reference/web/interfaces/Uplynk.html) for more information. Additionally, reviewing [the player configuration in the demo app](https://github.com/THEOplayer/samples-html5-sdk/blob/master/reference-apps/verizon-media-app/src/player.js) helps to understand the `Uplynk` interface.
 
 ## Related articles
 

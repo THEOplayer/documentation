@@ -51,4 +51,4 @@ player.load('Label', {
 });
 ```
 
-The MultiViewPlayer has a slightly different API from the general THEOplayer, so for more information we refer to the [documentation](pathname:///theoplayer/v8/api-reference/web/classes/MultiViewPlayer.html).
+The MultiViewPlayer has a slightly different API from the general THEOplayer, so for more information we refer to the [documentation](pathname:///theoplayer/v9/api-reference/web/classes/MultiViewPlayer.html).

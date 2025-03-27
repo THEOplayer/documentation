@@ -62,7 +62,7 @@ val mediaTailorIntegration = MediaTailorIntegrationFactory.createMediaTailorInte
 theoplayerView.player.addIntegration(mediaTailorIntegration)
 ```
 
-Finally, set a [`MediaTailorSource`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/mediatailor/MediaTailorSource.html) to play.
+Finally, set a [`MediaTailorSource`](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/source/mediatailor/MediaTailorSource.html) to play.
 
 ```kotlin
 val mediaTailorSource = MediaTailorSource.Builder()
