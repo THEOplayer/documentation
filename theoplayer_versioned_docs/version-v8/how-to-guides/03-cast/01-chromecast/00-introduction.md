@@ -169,7 +169,7 @@ When a viewer is streaming through a Chromecast device, they are actually castin
 
 If you have implemented THEOplayer in your sender application, you can [enable Chromecast](../../../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md). Furthermore, you can also [specify the application ID](../../../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md#custom-receiver-app) in your sender application.
 
-![Casting approaches](../../../assets/img/casting-approaches.png 'Casting approaches')
+![Casting approaches](../../../../../theoplayer/assets/img/casting-approaches.png 'Casting approaches')
 
 By specifying the application ID, you implicitly connect it with a type of receiver application. The following three types of receiver applications are common:
 

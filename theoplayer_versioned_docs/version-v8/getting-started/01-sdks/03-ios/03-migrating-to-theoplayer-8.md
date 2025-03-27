@@ -24,7 +24,7 @@ Store](https://developer.apple.com/support/app-store/), which shows low number o
 
 In your Xcode project settings, make sure the "Deployment target" is set to 13.0 or higher.
 
-![Screenshot of Xcode project settings](../../../assets/img/xcode-deployment-target.png)
+![Screenshot of Xcode project settings](../../../../../theoplayer/assets/img/xcode-deployment-target.png)
 
 ## Objective-C support is deprecated
 

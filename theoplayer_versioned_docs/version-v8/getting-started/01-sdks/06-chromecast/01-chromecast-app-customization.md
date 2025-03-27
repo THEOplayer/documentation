@@ -1,7 +1,7 @@
 # Chromecast Application Customization
 
 This article provides information on how to customize the look and feel of a Chromecast [Sender application](https://developers.google.com/cast/glossary#sender) or a Chromecast [Receiver Application](https://developers.google.com/cast/glossary#receiver).
-![Casting approaches](../../../assets/img/casting-approaches.png 'Casting approaches')
+![Casting approaches](../../../../../theoplayer/assets/img/casting-approaches.png 'Casting approaches')
 
 ## Background
 
@@ -74,7 +74,7 @@ Generally speaking, there are three types of user interfaces:
 ### Default UI
 
 THEOplayer automatically inserts a Chromecast button in its default video player UI if you are using THEOplayer's default UI.
-![Chromecast button](../../../assets/img/chromecast-active.png 'Chromecast button')
+![Chromecast button](../../../../../theoplayer/assets/img/chromecast-active.png 'Chromecast button')
 The UI of this button changes when the [Chromecast state](pathname:///theoplayer/v8/api-reference/web/types/CastState.html) changes.
 Please see below if you want to alter this default UI.
 

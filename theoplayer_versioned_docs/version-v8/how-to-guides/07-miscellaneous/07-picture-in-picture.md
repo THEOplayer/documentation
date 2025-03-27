@@ -36,7 +36,7 @@ Picture-in-Picture is an interesting option on both desktop and mobile to keep s
 In this SDK, PiP is enabled by default if the player configuration contains any PiP configuration (see below image). For this reason, there is no need to use any specific snippet to enable it.
 Note that in this SDK out-of-app Picture is (currently) not supported.
 
-![Picture-in-Picture](../../assets/img/picture-in-picture.png 'Picture-in-Picture')
+![Picture-in-Picture](../../../../theoplayer/assets/img/picture-in-picture.png 'Picture-in-Picture')
 
 The PiP configuration for this SDK includes 3 properties:
 
