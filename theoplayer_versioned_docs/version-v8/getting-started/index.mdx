@@ -1,0 +1,32 @@
+---
+displayed_sidebar: web
+---
+
+# Getting started
+
+THEOplayer offers a rich portfolio of video SDKs for many platforms and frameworks across desktop, mobile and TV devices.
+
+Our dedicated guides help you get started right away.
+
+<head>
+  <meta name="robots" content="noindex, nofollow" />
+</head>
+
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { getPlatformsByVersion } from '@site/src/util/platform';
+
+<DocCardList
+  items={getPlatformsByVersion('theoplayer', 'v7').map((desc) => {
+    const href =
+      desc.platform === 'react-native' || desc.platform === 'flutter'
+        ? `theoplayer/getting-started/frameworks/${desc.platform}/getting-started`
+        : `theoplayer/getting-started/sdks/${desc.platform}/getting-started`;
+    return {
+      type: 'link',
+      label: desc.label,
+      customProps: { icon: desc.icon },
+      href: useBaseUrl(href),
+    };
+  })}
+/>
