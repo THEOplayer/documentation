@@ -55,7 +55,7 @@ Under **Audio Profiles**, set up your preferred audio encoding and audio bitrate
 
 ### Using RTMP
 
-Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](/millicast/broadcast/using-rtmp-and-rtmps). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
+Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](/millicast/broadcast/using-rtmp-and-rtmps.md). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
 
 Under **Outputs**, for each **RTMP**, select **Video Source** corresponding to the RTMP profile (1080p for the highest profile and 360p for the lowest profile). Make sure to set **Streaming Providers** to _Generic RTMP_ and paste the **Stream URL** from the Dolby.io RTMP dashboard.
 
@@ -81,7 +81,7 @@ Example:
 
 ### Using SRT
 
-Under **Outputs**, for each **SRT**, select **Video Source** corresponding to the SRT profile (1080p for the highest profile and 360p for the lowest profile). For the **URL**, select the _srt://_ protocol, enter the URL of the **SRT publish path** from the Dolby.io dashboard, and enter port 10000. For the **Stream ID**, use the **SRT stream ID** from the dashboard and append **&simulcastId** for the first layer, **&sourceId=1&simulcastId&videoOnly** for the second layer, and **&sourceId=2&simulcastId&videoOnly** for the third layer. You can also use the [Multi-Source builder](/millicast/multi-source-builder) to generate those URLs.
+Under **Outputs**, for each **SRT**, select **Video Source** corresponding to the SRT profile (1080p for the highest profile and 360p for the lowest profile). For the **URL**, select the _srt://_ protocol, enter the URL of the **SRT publish path** from the Dolby.io dashboard, and enter port 10000. For the **Stream ID**, use the **SRT stream ID** from the dashboard and append **&simulcastId** for the first layer, **&sourceId=1&simulcastId&videoOnly** for the second layer, and **&sourceId=2&simulcastId&videoOnly** for the third layer. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
 
 Example:
 
@@ -98,7 +98,7 @@ Example:
 
 ## How-to apply a multi-viewer with Videon EdgeCaster
 
-You can also use the [Multi-Source builder](/millicast/multi-source-builder) to generate the URLs. For information on Simulcast, refer to [the documentation](https://dolby-io.readme.io/streaming-apis/docs/selecting-simulcast-layers) to understand its usage.
+You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate the URLs. For information on Simulcast, refer to [the documentation](https://dolby-io.readme.io/streaming-apis/docs/selecting-simulcast-layers) to understand its usage.
 
 ### Using RTMP
 
@@ -156,9 +156,6 @@ Example:
 |              |             | Medium | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=8&simulcastId=VIP&videoOnly`       |
 |              |             | Low    | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=9&simulcastId=VIP&videoOnly`       |
 
-# Learn more
-
-Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 
 
 

@@ -356,6 +356,90 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "hidden",
+      items: [
+        {
+          type: "doc",
+          id: "api/record-files-v-2-list-media-assets",
+          label: "List Media Assets",
+          className: "menu__list-item--deprecated api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-v-2-read-media-asset",
+          label: "Read Media Asset",
+          className: "menu__list-item--deprecated api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-v-2-delete-media-assets",
+          label: "Delete Media Assets",
+          className: "menu__list-item--deprecated api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-create-record-clip",
+          label: "Create Clip",
+          className: "menu__list-item--deprecated api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-get-clip-request",
+          label: "Get Clip Request",
+          className: "menu__list-item--deprecated api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-delete-clip-request-live",
+          label: "Delete Clip Request",
+          className: "menu__list-item--deprecated api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-list-clip-requests",
+          label: "List Clip Requests",
+          className: "menu__list-item--deprecated api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-list-available-clip-sources",
+          label: "List Available Clip Sources",
+          className: "menu__list-item--deprecated api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-validate-storage-profile",
+          label: "Validate Third Party Storage Setup",
+          className: "menu__list-item--deprecated api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-update-expiry-rule",
+          label: "Update Clip Source Expiry Rule",
+          className: "menu__list-item--deprecated api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-get-expiry-rule",
+          label: "Get Clip Source Expiry Rule",
+          className: "menu__list-item--deprecated api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-delete-expiry-rule",
+          label: "Delete Clip Source Expiry Rule",
+          className: "menu__list-item--deprecated api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/record-files-delete-clip-sources",
+          label: "Delete Clip Sources",
+          className: "menu__list-item--deprecated api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "PublishTokenV2",
       items: [
         {

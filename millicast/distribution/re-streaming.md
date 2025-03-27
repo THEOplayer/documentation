@@ -56,7 +56,7 @@ When creating or updating [Publish Tokens](/millicast/streaming-dashboard/managi
 
 Only the first ten (10) destinations defined will be targets for re-streaming and any additional items or properties will be ignored.
 
-Visit the [/api/publish_token](../api/publish-token-v-1-create-token.api.mdx) specification for more details about using this API.
+Visit the [/api/publish_token]](/millicast/api/publish-token-v-1-create-token.api.mdx) specification for more details about using this API.
 
 ## Multi-source Re-streaming
 
@@ -74,7 +74,7 @@ If **passthrough** is enabled, the top non-transcoded layer will be re-streamed.
 
 ### Redundant ingests and Re-streaming
 
-If you are publishing [redundant ingest](/millicast/broadcast/redundant-ingest) feeds and Re-streaming, the first feed connected will be the one re-streamed out to the specified re-stream endpoints. 
+If you are publishing [redundant ingest](/millicast/broadcast/redundant-ingest/index.md) feeds and Re-streaming, the first feed connected will be the one re-streamed out to the specified re-stream endpoints. 
 
 ## Troubleshooting
 

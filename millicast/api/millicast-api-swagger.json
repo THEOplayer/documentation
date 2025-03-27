@@ -1401,7 +1401,7 @@
     "/api/v2/record_files/list": {
       "get": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "List Media Assets",
         "description": "**Please refer to [List Media Assets](#operation/MediaAssets_ListMediaAssets)**\n \nList media assets, excluding those that have been deleted. \nA media asset can be: \n* A `\"FullRecording\"` that is from the full duration of the stream \n* A `\"Clip\"` which is generated from a clip request \n \n",
@@ -1540,7 +1540,7 @@
     "/api/v2/record_files/{mediaAssetId}": {
       "get": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Read Media Asset",
         "description": "**Please refer to [Read Media Asset](#operation/MediaAssets_ReadMediaAsset)**\n \nGets media asset specified by id. Includes temporary download link if the media asset is complete. ",
@@ -1612,7 +1612,7 @@
     "/api/v2/record_files/delete": {
       "post": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Delete Media Assets",
         "description": "**Please refer to [Delete Media Assets](#operation/MediaAssets_DeleteMediaAssets)**\n \nDeletes multiple media assets from storage. Only media assets with status Complete or Error can be deleted. ",
@@ -11114,7 +11114,7 @@
     "/api/record_files/clip": {
       "post": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Create Clip",
         "description": "**Please refer to [Create Media Asset](#operation/MediaAssets_CreateMediaAsset)**\n \nCreate clip of recording with specified start and stop times. Start and stop times must be at least 10 seconds apart. Use the mediaAssetIds in the response to retrieve the record files. ",
@@ -11187,7 +11187,7 @@
     "/api/record_files/clip/{clipRequestId}": {
       "get": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Get Clip Request",
         "description": "**There is no direct replacement for this endpoint. Media assets can be retrieved using [Get Media Asset](#operation/MediaAssets_ReadMediaAsset).** \n \nGet clip request ",
@@ -11248,7 +11248,7 @@
       },
       "delete": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Delete Clip Request",
         "description": "**There is no direct replacement for this endpoint. Media assets can be deleted using [Delete Media Assets](#operation/MediaAssets_DeleteMediaAssets).**\n \nDelete a clip request and all associated media assets. Clip requests that are InProgress may not be deleted. ",
@@ -11320,7 +11320,7 @@
     "/api/record_files/clip/list": {
       "get": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "List Clip Requests",
         "description": "**There is no direct replacement for this endpoint. Media assets can be retrieved using [List Media Assets](#operation/MediaAssets_ListMediaAssets).** \n \nList clip requests. Captures the requests made for live clips. Entries are removed after expiry time. Use the Get Clip Request endpoint to view the media assets associated with each clip request.",
@@ -11445,7 +11445,7 @@
     "/api/record_files/clip/sources": {
       "get": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "List Available Clip Sources",
         "description": "**Please refer to [List Media Assets](#operation/MediaAssets_ListMediaAssets) and query with `type=timeline`**\n \nIndicates which streams and time frames are available for clipping. ",
@@ -11570,7 +11570,7 @@
     "/api/record_files/storage_profiles/validate": {
       "post": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Validate Third Party Storage Setup",
         "description": "**Please refer to [Validate Third Party Storage Setup](#operation/Account_ValidateThirdPartyStorage)**\n \nValidates third party storage is configured with permissions for Dolby.io to upload media assets. \n \n To track the validation result, keep note of the the `validationId` returned in the response body. If correctly configured, when calling [Read Media Asset](#tag/Beta/operation/RecordFilesV2_ReadMediaAsset), the response should return a successful entry with `id` matching the `validationId`. \n \n Run once to validate write permissions. If successful, optionally run a second time to confirm that overwriting is allowed. \n \n Note that validation results are only available for 1 hour. \n \nIf you provide an empty body or no body your default storage profile will be validated.",
@@ -11633,7 +11633,7 @@
     "/api/record_files/clip/sources/expiry": {
       "post": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Update Clip Source Expiry Rule",
         "description": "**Please refer to [Update Account Media Assets Expiration Rules](#operation/Account_UpdateExpirationRules)**\n \nUpdate account level expiry rule for clip creation. Streams that were published outside this expiry period will not be available for creating clips.  ",
@@ -11694,7 +11694,7 @@
       },
       "get": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Get Clip Source Expiry Rule",
         "description": "**Please refer to [Get Account Media Assets Expiration Rules](#operation/Account_GetExpirationRules)**\n \nGet account level expiry rule for clip creation. Streams that were published outside this expiry period will not be available for creating clips.  ",
@@ -11743,7 +11743,7 @@
       },
       "delete": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Delete Clip Source Expiry Rule",
         "description": "**Please refer to [Update Account Media Assets Expiration Rules](#operation/Account_UpdateExpirationRules)**\n \nDelete account level expiry rule for clip creation and use system default. \n \n This may immediately trigger removal of existing stream data outside of the system default expiry period, thus preventing clips from being created on those expired streams. Use with caution. ",
@@ -11794,7 +11794,7 @@
     "/api/record_files/clip/sources/delete": {
       "post": {
         "tags": [
-          "Beta"
+          "Beta", "hidden"
         ],
         "summary": "Delete Clip Sources",
         "description": "**Please refer to [Delete Media Assets](#operation/MediaAssets_DeleteMediaAssets)**\n \nIndicates to delete via `clipSourceId`. ",
@@ -14857,7 +14857,7 @@
           },
           "simulcastId": {
             "type": "string",
-            "description": "Optional. <br /> <br /> If this field is omitted, a media asset will be created per available simulcastId <br /> <br /> Otherwise, set the field to `null` to select a source published without a specified simulcastId. <br /> <br />Provide an empty string to select a source published using RTMP/SRT paths where the simulcastId parameter was specified without a defined value as shown in [Multi-source RTMP](/millicast/broadcast/multi-source-broadcasting#multi-source-rtmp), i.e. `?simulcastId&...`.<br /> <br />This field can also be set to any standard string.",
+            "description": "Optional. <br /> <br /> If this field is omitted, a media asset will be created per available simulcastId <br /> <br /> Otherwise, set the field to `null` to select a source published without a specified simulcastId. <br /> <br />Provide an empty string to select a source published using RTMP/SRT paths where the simulcastId parameter was specified without a defined value as shown in [Multi-source RTMP](https://docs.dolby.io/streaming-apis/docs/multi-source-broadcasting#multi-source-rtmp), i.e. `?simulcastId&...`.<br /> <br />This field can also be set to any standard string.",
             "nullable": true
           },
           "priority": {
@@ -14880,7 +14880,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Optional. Provide a label for the live recording clip. If not specified, this value will be assigned. <br /> <br />`name` must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `name` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to us](/millicast/distribution/stream-recordings/live-clipping.md#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />`name` may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
+            "description": "Optional. Provide a label for the live recording clip. If not specified, this value will be assigned. <br /> <br />`name` must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `name` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to us](https://docs.dolby.io/streaming-apis/docs/live-clipping#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />`name` may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
             "maxLength": 256,
             "minLength": 1,
             "nullable": true
@@ -15631,6 +15631,11 @@
           },
           "drm": {
             "type": "boolean"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "id": {
             "type": "integer"
@@ -18988,7 +18993,7 @@
           },
           "enableThumbnails": {
             "type": "boolean",
-            "description": "Optional. Set to true to receive webhook notifications for thumbnails for the specified streams. Default is false. See documentation /millicast/webhooks/thumbnail-webhooks.md",
+            "description": "Optional. Set to true to receive webhook notifications for thumbnails for the specified streams. Default is false. See documentation https://docs.dolby.io/streaming-apis/docs/thumbnail-webhooks",
             "default": false,
             "nullable": true
           },
@@ -19749,7 +19754,7 @@
           },
           "clipName": {
             "type": "string",
-            "description": "Optional. Provide a label for the live recording clip. <br /> <br />ClipNames may not exceed 256 characters. ClipNames must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `clipName` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to Dolby.io](/millicast/distribution/stream-recordings/live-clipping.md#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />ClipNames may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
+            "description": "Optional. Provide a label for the live recording clip. <br /> <br />ClipNames may not exceed 256 characters. ClipNames must meet the naming requirements recommended by [Google Cloud Storage](https://cloud.google.com/storage/docs/objects#naming) and [AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines). <br /> <br />If a media asset is uploaded to third party storage, the `clipName` will be used as the name of the uploaded object. To avoid failed uploads the name should be either unique to avoid conflict with existing objects in the upload location or if overwriting existing objects is desired, appropriate permissions must be granted: [DELETE permissions must be granted to Dolby.io](https://docs.dolby.io/streaming-apis/docs/live-clipping#granting-dolbyio-access-to-your-gcp-storage). <br /> <br />ClipNames may not contain carriage return or line feed characters, or any of the characters #, [, ], *, ?, :, \", “, ”, <, >, |, /, {, }, ^, %, `, ~.",
             "maxLength": 256,
             "minLength": 1,
             "nullable": true
@@ -20572,7 +20577,7 @@
         ],
         "properties": {
           "tracking": {
-            "description": "Optional. Tracking Information for the Stream Syndication capability. See documentation /millicast/distribution/streaming-recordings/syndication.",
+            "description": "Optional. Tracking Information for the Stream Syndication capability. See documentation https://docs.dolby.io/streaming-apis/docs/syndication.",
             "nullable": true,
             "oneOf": [
               {

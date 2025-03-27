@@ -4,7 +4,7 @@ slug: /analytics-api
 ---
 The Analytics APIs allow you to query your usage independent of the Dolby.io dashboard and get details of how your users are consuming your streams.
 
-To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api#acquiring-your-api-token).
+To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api.md#acquiring-your-api-token).
 
 Another thing to note is that analytics API calls will not work directly from the Browser, there is no CORS support. To successfully call the API you must use Curl or a back end solution like Nodejs, Java, or anything outside the browser that can do HTTPS requests.
 
@@ -133,7 +133,7 @@ app.get( '/usage', (req, resp, next) => {
 });
 ```
 
-The **GET** call will run a HTTPS request to query the API for the account usage using the **"account/series"** call (see: [Analytics AccountSeries API](../api/analytics-account-series.api.mdx)). It is required that you add a date range which you can adjust yourself using the **"startUTC"** and **"stopUTC"** variables at the top of this example. Remember, the time value you use needs to be set in a UTC format, the data that is returned will also be in UTC time format so please take note of this.
+The **GET** call will run a HTTPS request to query the API for the account usage using the **"account/series"** call (see: [Analytics AccountSeries API]](/millicast/api/analytics-account-series.api.mdx)). It is required that you add a date range which you can adjust yourself using the **"startUTC"** and **"stopUTC"** variables at the top of this example. Remember, the time value you use needs to be set in a UTC format, the data that is returned will also be in UTC time format so please take note of this.
 
 If you wanted to do a quick test without the client counterpart you can run your node server (node app.js) and your webserver, then browse to **"https://localhost:8443/usage"** (again, bypass the security message if you are using a self-signed cert) to see the results.
 
@@ -223,7 +223,7 @@ Once the data is sorted and the chart is created, you can push the table data to
 
 You can add the other API calls in the Nodejs side to load more information about your usage. You could also provide a HTML form to allow the user to specify query dates to send up to Nodejs, just remember to format the date information to UTC before you query it.
 
-See more API calls here: [Account Analytics](../api/analytics-account-total.api.mdx)
+See more API calls here: [Account Analytics]](/millicast/api/analytics-account-total.api.mdx)
 
 ## Bandwidth per stream
 
@@ -506,7 +506,7 @@ Notice, the data sent to the server is in the same format that is expected on th
 
 ## Viewers per stream
 
-Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API](../api/analytics-streams-geo-series.api.mdx). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.md#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
+Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API]](/millicast/api/analytics-streams-geo-series.api.mdx). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.md#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
 
 > 🚧 Get your data before it expires!
 > 
@@ -531,4 +531,4 @@ To get started, you will need the URL entrypoint for the GraphQL API which will 
 
 ### Special Characters in Stream Names
 
-When querying usage with the [Analytics](../api/analytics-streams-series.api.mdx) APIs using `streamNames` it is expected that the streams have not used special characters such as `/`, `*`, or `--` as this will fail to report results. Recommendation is to avoid using special characters in stream names and sticking with alpha-numeric characters and single dashes.
+When querying usage with the [Analytics]](/millicast/api/analytics-streams-series.api.mdx) APIs using `streamNames` it is expected that the streams have not used special characters such as `/`, `*`, or `--` as this will fail to report results. Recommendation is to avoid using special characters in stream names and sticking with alpha-numeric characters and single dashes.

@@ -51,11 +51,11 @@ Any broadcast that uses the publish token configured in this way will take advan
 
 ### Using the REST API
 
-To set geo-cascading for a specific token, set its preferences in either the **geoCascade** object of [Create Token](../../api/publish-token-v-1-create-token.api.mdx) or the **updateGeoCascade** object of the [Update Token](../../api/publish-token-v-1-update-token.api.mdx) REST API. 
+To set geo-cascading for a specific token, set its preferences in either the **geoCascade** object of [Create Token]](/millicast/api/publish-token-v-1-create-token.api.mdx) or the **updateGeoCascade** object of the [Update Token]](/millicast/api/publish-token-v-1-update-token.api.mdx) REST API. 
 
 Both objects contain two parameters: **isEnabled** and **clusters**. To enable geo-cascading, set **isEnabled** to true and provide in the **clusters** parameter the IDs of preferred regions. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **all** regions.
 
-To get the token-specific geo-cascading settings, use the [Read Token](../../api/publish-token-v-1-read-token.api.mdx) REST API.
+To get the token-specific geo-cascading settings, use the [Read Token]](/millicast/api/publish-token-v-1-read-token.api.mdx) REST API.
 
 ## Default Account Token Settings
 
@@ -80,9 +80,9 @@ To define token defaults that are applied account-wide as a global configuration
 
 ### Using the REST API
 
-To define token defaults that are applied account-wide as a global configuration, use the [Update Account Geo Cascade Settings](../../api/account-update-geo-cascade.api.mdx) REST API with the **isEnabled** parameter set to true. In the **clusters** parameter, provide the IDs of preferred regions. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **all** regions.
+To define token defaults that are applied account-wide as a global configuration, use the [Update Account Geo Cascade Settings]](/millicast/api/account-update-geo-cascade.api.mdx) REST API with the **isEnabled** parameter set to true. In the **clusters** parameter, provide the IDs of preferred regions. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **all** regions.
 
-To get the account-wide geo-cascading settings, use the [Read Account Geo Cascade Settings](../../api/account-get-geo-cascade.api.mdx) REST API.
+To get the account-wide geo-cascading settings, use the [Read Account Geo Cascade Settings]](/millicast/api/account-get-geo-cascade.api.mdx) REST API.
 
 ## Troubleshooting
 

@@ -244,13 +244,22 @@ const config: Config = {
         docsPluginId: 'millicast',
         config: {
           millicast: {
-            specPath: 'millicast/api/millicast.swagger.json',
+            // specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
+            specPath: 'millicast/api/millicast-api-swagger.json',
             outputDir: 'millicast/api',
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
           },
+          millicastDirector: {
+            specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
+            outputDir: 'millicast/api/director',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          }
         },
       } satisfies OpenApiPlugin.PluginOptions,
     ],
@@ -271,9 +280,13 @@ const config: Config = {
             to: '/theoads/api/signaling/theoads-api/',
           },
           {
-            from: '/millicast/api/',
+            from: '/millicast/api',
             to: '/millicast/api/millicast-api/',
           },
+          {
+            from: '/millicast/api/director',
+            to: '/millicast/api/director/director-api/',
+          }
         ],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {

@@ -124,13 +124,13 @@ Self-signing your Subscribe token allows you to:
 
 ### Creating a self-signed token
 
-1. Create a Subscribe token using the [Create Token](../api/subscribe-token-v-1-create-token.api.mdx) API. The API returns the `tokenId` and `token`. 
+1. Create a Subscribe token using the [Create Token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API. The API returns the `tokenId` and `token`. 
 2. Create a JWT with the following data:
    - `tokenId`: The ID of the (primary) subscribe token
    - `streamName`: A complete, non-wildcard `streamName` that the subscriber will be allowed access to view
    - `allowedOrigins` (optional): Origins that allow the stream to be viewed from
    - `allowedIpAddresses` (optional): IP ranges that allow the stream to be viewed from
-   - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](../api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
+   - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics]](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
    - `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
    - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/distribution/syndication.md). Using this parameter requires contacting sales.
 3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
@@ -159,4 +159,4 @@ This guide provides a high-level understanding of managing your tokens via the D
 To learn more about using the REST APIs for token creation and management, check out:
 
 - [The Platform Guide for Token APIs](/millicast/streaming-dashboard/token-api.md)
-- [The REST API reference](../api/subscribe-token-v-1-read-token.api.mdx)
+- [The REST API reference]](/millicast/api/subscribe-token-v-1-read-token.api.mdx)

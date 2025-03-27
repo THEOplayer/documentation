@@ -90,7 +90,7 @@ To learn more about other access control features you can enable for your Subscr
 
 To view a secure stream in your own viewer app, you'll need to create a Subscribe token. Depending on the size of your platform, you may want to create these tokens programmatically using a token server and the [Token APIs](/millicast/streaming-dashboard/token-api.md). This part of the guide gives an example of how to programmatically create a Subscribe token, and how to use it to authenticate a connection to a viewer.
 
-To get started we first need to define a function, `getToken` to create our Subscribe token. The [Create Token](../api/subscribe-token-v-1-create-token.api.mdx) API provides a UI to help with defining our API call. Each Subscribe token that our `getToken` function creates will be associated with a single stream denoted by the `streamName`, expire after one hour (3600 seconds), and bind to the IP of the first person who connects to the stream with that token. In other words, this token will only grant access to a specific stream, for one hour, and for one user.
+To get started we first need to define a function, `getToken` to create our Subscribe token. The [Create Token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API provides a UI to help with defining our API call. Each Subscribe token that our `getToken` function creates will be associated with a single stream denoted by the `streamName`, expire after one hour (3600 seconds), and bind to the IP of the first person who connects to the stream with that token. In other words, this token will only grant access to a specific stream, for one hour, and for one user.
 
 ```javascript
 async function getToken(streamName, apiSecretKey) {

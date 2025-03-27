@@ -2,7 +2,7 @@
 title: "How-to Get Media Assets"
 slug: /how-to-get-media-assets
 ---
-With [Stream Recordings](/millicast/distribution/stream-recordings/index.md) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or automate workflows using the [Media Assets](../../api/media-assets-list-media-assets.api.mdx) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media-webhooks.md) available for building event-driven integrations.
+With [Stream Recordings](/millicast/distribution/stream-recordings/index.md) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or automate workflows using the [Media Assets]](/millicast/api/media-assets-list-media-assets.api.mdx) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media-webhooks.md) available for building event-driven integrations.
 
 # Recordings in the Dashboard
 
@@ -83,11 +83,11 @@ To delete all items at once, click the **Select All** button from the same top s
 
 # Finding Media by API
 
-The [Media Assets](../../api/media-assets-list-media-assets.api.mdx) API can help you with automating workflows with recordings and clips.
+The [Media Assets]](/millicast/api/media-assets-list-media-assets.api.mdx) API can help you with automating workflows with recordings and clips.
 
 *TODO: \< GettingStartedRESTAPI />
 
-Use the [List Media Assets](../../api/media-assets-list-media-assets.api.mdx) endpoint to query a list of media assets for your account. There are some parameters you can use to filter the results returned.
+Use the [List Media Assets]](/millicast/api/media-assets-list-media-assets.api.mdx) endpoint to query a list of media assets for your account. There are some parameters you can use to filter the results returned.
 
 ## How-to Find All Recordings and/or Clips
 
@@ -99,7 +99,7 @@ curl --request GET \
   --header 'authorization: Bearer abc123'
 ```
 
-You can use this parameter to find _recording_ or _timeline_ assets as well. See the [List Media Assets](../../api/media-assets-list-media-assets.api.mdx) reference specification for the full list.
+You can use this parameter to find _recording_ or _timeline_ assets as well. See the [List Media Assets]](/millicast/api/media-assets-list-media-assets.api.mdx) reference specification for the full list.
 
 ## How-to Find Recordings Still in Progress
 
@@ -111,7 +111,7 @@ curl --request GET \
   --header 'authorization: Bearer abc123'
 ```
 
-You can use this parameter to find any _errored_ assets as well. See the [List Media Assets](../../api/media-assets-list-media-assets.api.mdx) reference specification for the full list.
+You can use this parameter to find any _errored_ assets as well. See the [List Media Assets]](/millicast/api/media-assets-list-media-assets.api.mdx) reference specification for the full list.
 
 ## How-to Find Media By Name
 
@@ -127,7 +127,7 @@ curl --request GET \
 
 # Removing Media by API
 
-Use the [Delete Media Assets](../../api/media-assets-delete-media-assets.api.mdx) endpoint to remove either recordings or clips. You'll need to first find the **mediaAssetId** before you can delete specific assets. This is given as a query parameter so that you can delete more than one asset at a time.
+Use the [Delete Media Assets]](/millicast/api/media-assets-delete-media-assets.api.mdx) endpoint to remove either recordings or clips. You'll need to first find the **mediaAssetId** before you can delete specific assets. This is given as a query parameter so that you can delete more than one asset at a time.
 
 ```curl
 curl --request DELETE \
@@ -137,7 +137,7 @@ curl --request DELETE \
 
 ## How-to Remove All Media
 
-To remove everything from your account you can use the [Delete All Media Assets](../../api/media-assets-delete-media-assets-2.api.mdx) REST endpoint. This operation works on one `type` at a time so will be called to remove `recording`, `clip`, and `timeline` independently.
+To remove everything from your account you can use the [Delete All Media Assets]](/millicast/api/media-assets-delete-media-assets-2.api.mdx) REST endpoint. This operation works on one `type` at a time so will be called to remove `recording`, `clip`, and `timeline` independently.
 
 > ❗️ Deletion is Permanent
 > 
@@ -147,7 +147,7 @@ To remove everything from your account you can use the [Delete All Media Assets]
 
 # Downloading Media by API
 
-Using the [Media Assets](../../api/media-assets-list-media-assets.api.mdx) API you can identify the cloud storage location where recordings and clips are stored. 
+Using the [Media Assets]](/millicast/api/media-assets-list-media-assets.api.mdx) API you can identify the cloud storage location where recordings and clips are stored. 
 
 ## How-to Retrieve a Recording
 
@@ -155,7 +155,7 @@ Recordings will typically be stored on Dolby's servers and made available for re
 
 ### Example GET Response
 
-This is an example of a JSON response from the [/media/asset/\{mediaAssetId\}](../../api/media-assets-read-media-asset.api.mdx) endpoint.
+This is an example of a JSON response from the [/media/asset/\{mediaAssetId\}]](/millicast/api/media-assets-read-media-asset.api.mdx) endpoint.
 
 ```json
 {

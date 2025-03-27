@@ -124,7 +124,7 @@ The previous stages of [Capture](/millicast/capture/index.md), [Broadcast](/mill
 The quickest and easiest way to test playback is to use your account dashboard. The streaming viewer is built into the Dolby.io Dashboard, so you can test out streaming right away. To build a more customized application, the [Client SDKs](/millicast/client-sdks/index.md) provide support for the most popular programming platforms.
 
 [How-to Create Subscriber Tokens](/millicast/streaming-dashboard/subscribe-tokens.md)  
-To broadcast, you need a _publishing_ token. Similarly, to support playback in your application, you will need to be able to generate a _subscriber_ token. This can be done either in a web application or with an [API](/millicast/distribution/access-control#subscribing-access-control).
+To broadcast, you need a _publishing_ token. Similarly, to support playback in your application, you will need to be able to generate a _subscriber_ token. This can be done either in a web application or with an [API](/millicast/distribution/access-control/index.md#subscribing-access-control).
 
 <div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/Tj4miDHMwSI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
