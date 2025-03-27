@@ -35,3 +35,9 @@ If you are using any of the connectors for Roku, update them to the 9.0 version 
 - Removed the Verizon Media integration (`player.verizonMedia`). This functionality is planned to be re-added in a future release.
 - Removed `THEOplayer.skipAds`. This functionality is planned to be re-added in a future release.
 - Removed `THEOplayer.playerSuiteVersion`.
+- Removed the `content` property on cues in the metadata track in `THEOplayer.textTracks`. Use `rawContent` instead.
+- Removed the `cues` property on tracks in `THEOplayer.textTracks`. Use `activeCues` instead.
+
+## Update metadata cue parsing and retention
+
+The 9.0 release changes how metadata cues are being emitted from the THEOplayer. The `content` property has been renamed `rawContent` and now returns the raw metadata object that is emitted by the Roku video node. This allows for handling a wider variety of metadata schemas, but it does also move some of the parsing responsibility onto the client layer. Also the `cues` property on metadata tracks has been removed in favor of only exposing the current `activeCues`. The logic on how long to retain cues should currently be done in the client application. In future releases we plan to do more fine tuned parsing of different metadata structures, such as emsg, and also improve the logic on how long cues remain active.
