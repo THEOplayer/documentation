@@ -41,3 +41,15 @@ If you are using any of the connectors for Roku, update them to the 9.0 version 
 ## Update metadata cue parsing and retention
 
 The 9.0 release changes how metadata cues are being emitted from the THEOplayer. The `content` property has been renamed `rawContent` and now returns the raw metadata object that is emitted by the Roku video node. This allows for handling a wider variety of metadata schemas, but it does also move some of the parsing responsibility onto the client layer. Also the `cues` property on metadata tracks has been removed in favor of only exposing the current `activeCues`. The logic on how long to retain cues should currently be done in the client application. In future releases we plan to do more fine tuned parsing of different metadata structures, such as emsg, and also improve the logic on how long cues remain active.
+
+## Stream resume behavior changes for live content
+
+When resuming a paused live stream, the behavior now depends on the `setEnableTrickPlay` setting:
+
+- With TrickPlay disabled (`setEnableTrickPlay = false`)
+  stream automatically seeks to the live position upon resume.
+- With TrickPlay enabled (`setEnableTrickPlay = true`)
+  stream resumes from the pause position by default.
+  Exception: If the pause duration is long enough to cause Roku's buffer overflow (`pauseBufferOverflow = true`), the stream will seek to the live position.
+
+Note: These changes only affect live streams. Video-on-Demand (VoD) stream behavior remains unchanged.
