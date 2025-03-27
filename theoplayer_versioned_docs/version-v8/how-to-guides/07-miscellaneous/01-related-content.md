@@ -10,7 +10,7 @@ The article in this section describes how to implement common use-cases related 
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
 |   Yes   |     No      |   Yes   |    No    |       No       |      N/A       |
 
-The Related Content API is a UI feature. It's currently unavailable on the Android (TV) SDK because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it on the Android (TV) SDK by following the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+The Related Content API is a UI feature. It's currently unavailable on the Android (TV) SDK because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it on the Android (TV) SDK by following the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
 
 ## Code examples
 
@@ -152,4 +152,4 @@ The Related Content API is limited to show a maximum of 15 tiles only. By defaul
 
 ## Related articles
 
-- [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)
+- [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)

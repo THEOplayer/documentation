@@ -4,7 +4,7 @@ This article provides information on how developers can add custom buttons to TH
 
 THEOplayer's default UI is based on VideoJS. A WebView is used on the legacy Android and iOS SDKs (4.12.x). HTML, CSS and JavaScript is used to insert a button.
 
-When using the legacy Android or iOS SDKs (4.12.x), THEOplayer exposes a system to include JavaScript and CSS files (as described at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)). This system allows developers to re-use their code-logic.
+When using the legacy Android or iOS SDKs (4.12.x), THEOplayer exposes a system to include JavaScript and CSS files (as described at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)). This system allows developers to re-use their code-logic.
 
 ## Code example
 
@@ -105,11 +105,11 @@ Since JavaScript injection is not available on the native iOS SDK, you can add a
 
 ### Legacy Android SDK (4.12.x)
 
-See [our version 4 documentation](../../../theoplayer_versioned_docs/version-v4/how-to-guides/11-ui/07-how-to-insert-a-button.md#android-sdk) for more information.
+See [our version 4 documentation](../../../version-v4/how-to-guides/11-ui/07-how-to-insert-a-button.md#android-sdk) for more information.
 
 ### Legacy iOS SDK (4.12.x)
 
-See [our version 4 documentation](../../../theoplayer_versioned_docs/version-v4/how-to-guides/11-ui/07-how-to-insert-a-button.md#ios-sdk) for more information.
+See [our version 4 documentation](../../../version-v4/how-to-guides/11-ui/07-how-to-insert-a-button.md#ios-sdk) for more information.
 
 ## Sample resources
 

@@ -10,7 +10,7 @@ Some of these limitations include, but are not limited to, the following:
 - AirPlay does not support VR/360 videos. Instead, you should disable AirPlay for VR/360 videos.
 - AirPlay does not support MPEG-DASH. Instead, you should use HLS if you want to allow AirPlay.
 - AirPlay does not support UI customization.
-  Instead, you could implement a [tvOS application](../../theoplayer_versioned_docs/version-v4/getting-started/01-sdks/05-tvos/00-getting-started.md) to offer a custom playback experience on an Apple TV.
+  Instead, you could implement a [tvOS application](../../version-v4/getting-started/01-sdks/05-tvos/00-getting-started.md) to offer a custom playback experience on an Apple TV.
 - AirPlay does not support some closed captions and subtitle formats, including CEA-608 and [sideloaded (WebVTT) subtitles](../how-to-guides/10-texttrack/04-how-to-insert-subtitles.md).
   Instead, you must use subtitles that are supported natively.
 - AirPlay does not support manual quality switches. Instead, viewers can only rely on automatic quality selection.
