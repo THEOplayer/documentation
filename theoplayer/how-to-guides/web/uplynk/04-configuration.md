@@ -39,7 +39,7 @@ const player = new THEOplayer.Player(element, {
 });
 ```
 
-Refer to the [UplynkConfiguration API reference](pathname:///theoplayer/v8/api-reference/web/interfaces/UplynkConfiguration.html) for more information.
+Refer to the [UplynkConfiguration API reference](pathname:///theoplayer/v9/api-reference/web/interfaces/UplynkConfiguration.html) for more information.
 
 # Related articles
 

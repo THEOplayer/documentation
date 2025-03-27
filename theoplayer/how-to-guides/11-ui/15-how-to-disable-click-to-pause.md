@@ -26,7 +26,7 @@ The following CSS snippet disables pause to click by no longer catching the poin
 }
 ```
 
-The following JavaScript snippet automatically resumes a video when someone tries to pause it by leveraging the [`pause`](pathname:///theoplayer/v8/api-reference/web/interfaces/PlayerEventMap.html#pause) event and the [`play()`](pathname:///theoplayer/v8/api-reference/web/classes/ChromelessPlayer.html#play) method.
+The following JavaScript snippet automatically resumes a video when someone tries to pause it by leveraging the [`pause`](pathname:///theoplayer/v9/api-reference/web/interfaces/PlayerEventMap.html#pause) event and the [`play()`](pathname:///theoplayer/v9/api-reference/web/classes/ChromelessPlayer.html#play) method.
 
 ```javascript
 player.addEventListener('pause', () => {

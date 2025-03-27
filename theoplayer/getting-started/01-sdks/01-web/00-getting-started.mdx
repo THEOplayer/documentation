@@ -356,7 +356,7 @@ var element = document.querySelector('.theoplayer-container');
 
 #### Create THEOplayer instance
 
-The snippet below creates a THEOplayer instance for a container with a specific [Player Configuration](pathname:///theoplayer/v8/api-reference/web/interfaces/PlayerConfiguration.html).
+The snippet below creates a THEOplayer instance for a container with a specific [Player Configuration](pathname:///theoplayer/v9/api-reference/web/interfaces/PlayerConfiguration.html).
 
 ```js
 var player = new THEOplayer.Player(element, {
@@ -458,7 +458,7 @@ Additionally, some of these workers leverage [WebAssembly](https://developer.moz
 - `THEOplayer.transmux.wasm`: the WebAssembly binary for transmuxing MPEG-TS and AAC files.
 
 These files need to be hosted on your app's server, so the main THEOplayer library can locate and load them when needed.
-You tell THEOplayer where you put those files by setting the `libraryLocation` in your [player configuration](pathname:///theoplayer/v8/api-reference/web/interfaces/PlayerConfiguration.html).
+You tell THEOplayer where you put those files by setting the `libraryLocation` in your [player configuration](pathname:///theoplayer/v9/api-reference/web/interfaces/PlayerConfiguration.html).
 
 JavaScript bundlers work by traversing your app's dependencies through `import` or `require()` statements in your source code.
 As such, they can't auto-magically detect that THEOplayer needs these extra files, since they are never directly imported.
@@ -617,5 +617,5 @@ var player = new THEOplayer.Player(element, {
 Ready to learn more?
 
 - Go through our [how-to guides](../../../how-to-guides/index.mdx) to learn about [UI customization](../../../how-to-guides/11-ui/00-introduction.md), [advertising](../../../how-to-guides/01-ads/00-introduction.md), [DRM](../../../how-to-guides/04-drm/00-introduction.md), [casting](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md), [analytics](../../../how-to-guides/02-analytics/00-introduction.md) and other topics.
-- Check out our [API reference](pathname:///theoplayer/v8/api-reference/web/classes/ChromelessPlayer.html).
+- Check out our [API reference](pathname:///theoplayer/v9/api-reference/web/classes/ChromelessPlayer.html).
 - Try out samples from our [GitHub](https://github.com/THEOplayer).
