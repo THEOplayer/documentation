@@ -314,7 +314,7 @@ Fixed an issue on Android where calling the [connect](https://millicast.github.i
 
 ### Features
 
-- Introduced a new asynchronous API for all Apple platforms, such as iOS, tvOS, and macOS. This change impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/client-sdks/ios/) document.
+- Introduced a new asynchronous API for all Apple platforms, such as iOS, tvOS, and macOS. This change impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/client-sdks/ios/index.md) document.
 - Enabled the use of Simulcast and Scalable Video Coding (SVC) at the same time when using the VP8 codec.
 - Reduced the package size of the Android SDK by removing unused NDI library. The total `aar` size is reduced by 7.1 MB. Approximate per-architecture reductions in size:
   - `x86_64`: 2.9 MB, the total `aar` size is 6.5 MB
@@ -338,7 +338,7 @@ Fixed an issue on Android where calling the [connect](https://millicast.github.i
 
 #### Apple platforms
 
-The new asynchronous API replaced the previous synchronous one, which impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/client-sdks/ios/) document.
+The new asynchronous API replaced the previous synchronous one, which impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/client-sdks/ios/index.md) document.
 
 ***
 

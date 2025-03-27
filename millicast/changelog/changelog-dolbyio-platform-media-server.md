@@ -20,7 +20,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 ## Media Server
 
 - Where incorrect (higher then expected) viewer counts were being reported a fix has been implemented to report the correct number of viewers
-- For Metadata workflows with RTMP utilizing AMF OnFi messages for [inserting timestamps](https://docs.dolby.io/streaming-apis/docs/frame-metadata#metadata-source-identification), to improve playback to a bug in Google Chrome, timestamps will only be reported on keyframes.  The issue with Chrome has been patched and will resolve as users update their versions of Chrome.  For more information on this bug, please refer to our [knowledge base article](https://support.dolby.io/hc/en-au/articles/11057317291663-Playback-Issues-with-SEI-Messages-in-H-264-Streaming).
+- For Metadata workflows with RTMP utilizing AMF OnFi messages for [inserting timestamps](/millicast/playback/frame-metadata.md#metadata-source-identification), to improve playback to a bug in Google Chrome, timestamps will only be reported on keyframes.  The issue with Chrome has been patched and will resolve as users update their versions of Chrome.  For more information on this bug, please refer to our [knowledge base article](https://support.dolby.io/hc/en-au/articles/11057317291663-Playback-Issues-with-SEI-Messages-in-H-264-Streaming).
 
 # 2024-05-28
 
@@ -33,7 +33,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 
 ### Fixes
 
-- Fix for an issue where in some cases with [Backup Publishing](/millicast/redundant-ingest) audio did not fail over.
+- Fix for an issue where in some cases with [Backup Publishing](/millicast/broadcast/redundant-ingest/index.md) audio did not fail over.
 - Improvements to error messages with our [Live Clipping](/millicast/distribution/stream-recordings/live-clipping.md) feature.
 - Improvements in certain cases when streaming with AV1.
 - Fixed an issue where the plus character (+) in an SRT URL was not handled as whitespace correctly.
@@ -51,7 +51,7 @@ Deployed new regional clusters that can be [specified by a stream or an account]
 
 ### Features
 
-- Introduced support for obtaining an individual viewer's bandwidth consumption while using syndication. The feature introduces a new `customViewerData` parameter for creating a self-signed token. Customers who have this feature enabled can pass per-viewer metadata via a self-signed subscriber token on a per-viewer basis and then get individual viewer records back as a report via the [Advanced Analytics](/millicast/api/millicast-api/records_getviewerrecords) API. If you want to start using this feature, please contact sales.
+- Introduced support for obtaining an individual viewer's bandwidth consumption while using syndication. The feature introduces a new `customViewerData` parameter for creating a self-signed token. Customers who have this feature enabled can pass per-viewer metadata via a self-signed subscriber token on a per-viewer basis and then get individual viewer records back as a report via the [Advanced Analytics](/millicast/api/reporting/records-get-viewer-records/) API. If you want to start using this feature, please contact sales.
 
 - Introduced server updates to support extracting RTMP Action Message Format (AMF) messages and passing them through to the client. Please contact your sales engineer for a demonstration.
 
@@ -71,9 +71,9 @@ Improved capture timestamps in certain ingest cases.
 
 - Introduced a geo-cascading feature to improve the streaming experience for viewers around the world. The feature uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can connect to clusters located closest to their location and experience reduced latency and improved reliability. For more information, see the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) guide.
 
-- The platform supports publishing multiple redundant feeds into more than one region to improve the reliability of broadcasting. The platform now supports a **priority** publish parameter that lets you specify the priority of each feed. This way, in the case the primary feed disconnects, viewers will automatically receive the available feed with the highest priority. For more information, see the [Redundant Ingest](/millicast/broadcast/redundant-ingest/) document.
+- The platform supports publishing multiple redundant feeds into more than one region to improve the reliability of broadcasting. The platform now supports a **priority** publish parameter that lets you specify the priority of each feed. This way, in the case the primary feed disconnects, viewers will automatically receive the available feed with the highest priority. For more information, see the [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md) document.
 
-- Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/distribution/using-webrtc-simulcast.md) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/#publish-parameters) section of the [Broadcast](/millicast/broadcast/) document.
+- Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/distribution/using-webrtc-simulcast.md) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/index.mdx#publish-parameters) section of the [Broadcast](/millicast/broadcast/index.mdx) document.
 
 ***
 
@@ -113,11 +113,11 @@ Minor fixes and improvements for RTMP publishers.
 
 ## Support for Syndicated Content
 
-The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api/#subscribe-tokens) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md).  
+The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api.md#subscribe-tokens) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md).  
 ​  
 This "syndication" mechanism allows you to send the same stream to multiple cohorts of viewers whilst tying viewer data to a cohort via `trackingId`.  
 ​  
-By querying your aggregated viewer data with the [Analytics API](/millicast/analytics/) you can determine how much bandwidth was consumed, how many viewers were watching for which provider, and a few other statistics.
+By querying your aggregated viewer data with the [Analytics API](/millicast/analytics/index.md) you can determine how much bandwidth was consumed, how many viewers were watching for which provider, and a few other statistics.
 
 For more information, see the [Syndication](/millicast/distribution/syndication.md article.
 
@@ -132,7 +132,7 @@ Added support for ingesting SRT protocol. SRT has become the standard for replac
 For more information, see:
 
 - The [SRT](/millicast/broadcast/using-srt.md) article
-- The [OBS using SRT](/millicast/obs-using-srt) article
+- The [OBS using SRT](/millicast/software-encoders/using-obs.md) article
 
 ***
 
@@ -140,11 +140,11 @@ For more information, see:
 
 ## WHEP support for playback
 
-Introduced support for WebRTC-HTTP Egress Protocol (WHEP) in Millicast to offer standardization of WebRTC playback. This allows streaming services, Content Delivery Networks (CDNs), and WebRTC Transmission Networks (WTNs) to use multiple vendors to support their WebRTC-based services. This specification is based on [this](https://www.ietf.org/archive/id/draft-murillo-whep-00.html) draft and will be updated to upcoming versions as soon as they are available. The WHEP endpoint is available [here](/millicast/api/millicast-api/whep_whepsubscribe).
+Introduced support for WebRTC-HTTP Egress Protocol (WHEP) in Millicast to offer standardization of WebRTC playback. This allows streaming services, Content Delivery Networks (CDNs), and WebRTC Transmission Networks (WTNs) to use multiple vendors to support their WebRTC-based services. This specification is based on [this](https://www.ietf.org/archive/id/draft-murillo-whep-00.html) draft and will be updated to upcoming versions as soon as they are available. The WHEP endpoint is available [here](/millicast/api/director/whep-whep-subscribe).
 
 ## New Regional Cluster in Bangalore
 
-Deployment of a new regional cluster that can be [specified by a stream or an account](/millicast/api/millicast-api/cluster_getclustersinfo). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
+Deployment of a new regional cluster that can be [specified by a stream or an account](/millicast/api/cluster-get-clusters-info). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
 
 ***
 
@@ -169,7 +169,7 @@ For more information, see:
 
 ## New Regional Clusters in Amsterdam and Singapore
 
-Deployed new regional clusters that can be [specified by a stream or an account](/millicast/api/millicast-api/cluster_getclustersinfo). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
+Deployed new regional clusters that can be [specified by a stream or an account](/millicast/api/cluster-get-clusters-info). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
 
 ***
 

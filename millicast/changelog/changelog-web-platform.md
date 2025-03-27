@@ -152,7 +152,7 @@ millicast.Logger.VERSION
 
 ### Broadcast Priority
 
-To set up a broadcast that is resilient to failure (hardware, network, etc.) it is common to configure [Backup Publishing](/millicast/broadcast/redundant-ingest/) where multiple sources are contributing to the same stream. The order in which the streams are started has been used to determine which stream is the primary and which one the backup. This can now be set explicitly with a `priority` value.
+To set up a broadcast that is resilient to failure (hardware, network, etc.) it is common to configure [Backup Publishing](/millicast/broadcast/redundant-ingest/index.md) where multiple sources are contributing to the same stream. The order in which the streams are started has been used to determine which stream is the primary and which one the backup. This can now be set explicitly with a `priority` value.
 
 ```javascript
 try {

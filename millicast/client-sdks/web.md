@@ -108,7 +108,7 @@ There are additional usage examples below, but you may also find some of the res
 </div>
 
 
-You might also check and follow the [Web Platform Release Notes](/millicast/changelog:changelog-web-platform) page for updates and changes to the SDK.
+You might also check and follow the [Web Platform Release Notes](/millicast/changelog/changelog-web-platform.md) page for updates and changes to the SDK.
 
 # Basic Usage
 
