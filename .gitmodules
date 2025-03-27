@@ -74,8 +74,8 @@
 	branch = 7.x
 	shallow = true
 [submodule "ios-connector-v8"]
-	path = theoplayer_versioned_docs/version-v8/external/iOS-connector
-	url = https://github.com/THEOplayer/iOS-connector.git
+	path = theoplayer_versioned_docs/version-v8/external/iOS-Connector
+	url = https://github.com/THEOplayer/iOS-Connector.git
 	branch = 8.x
 	shallow = true
 [submodule "web-ui"]
