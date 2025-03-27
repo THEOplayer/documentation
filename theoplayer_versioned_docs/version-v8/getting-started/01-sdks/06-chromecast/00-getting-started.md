@@ -138,11 +138,11 @@ This has to be done through the [Google Cast SDK Developer Console](https://deve
 
 Your Chromecast Receiver sample application is now in a state where it can be deployed as a real application. If you have a Google Cast SDK Developer Console, you can log in to [https://cast.google.com/u/1/publish/#/overview](https://cast.google.com/u/1/publish/#/overview).
 
-![](../../../assets/img/image2018-5-25_15-31-6.png)
+![](../../../../../theoplayer/assets/img/image2018-5-25_15-31-6.png)
 
-![](../../../assets/img/image2018-5-25_15-31-19.png)
+![](../../../../../theoplayer/assets/img/image2018-5-25_15-31-19.png)
 
-![](../../../assets/img/image2018-5-25_15-31-26.png)
+![](../../../../../theoplayer/assets/img/image2018-5-25_15-31-26.png)
 
 You have to go through the following steps:
 

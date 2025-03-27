@@ -18,7 +18,7 @@ Developers can set an Uplynk configuration when creating their video player inst
 
 You can toggle this features on [our demo page](https://cdn.theoplayer.com/demos/verizon-media/index.html). _(Note: technically, this demo doesn't use `defaultSkipOffset` to configure the skip offset. Instead, this demo uses `player.uplynk.ads.adBreaks[<element>].skipOffset` to adjust this dynamically at run-time.)_
 
-![UplynkDemo](../../../assets/img/VerizonMediaConfiguration.png 'Uplynk Configuration')
+![UplynkDemo](../../../../../theoplayer/assets/img/VerizonMediaConfiguration.png 'Uplynk Configuration')
 
 The examples below demonstrate how to use an Uplynk configuration per platform.
 

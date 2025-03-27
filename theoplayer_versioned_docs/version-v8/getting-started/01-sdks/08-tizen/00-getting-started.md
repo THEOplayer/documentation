@@ -24,11 +24,11 @@ For brevity, set-up is split up over multiple pages:
 
 Go to File -> Open Projects from File System
 
-![](../../../assets/img/import-1.jpg)
+![](../../../../../theoplayer/assets/img/import-1.jpg)
 
 Select the directory. Then press Finish.
 
-![](../../../assets/img/import-2.jpg)
+![](../../../../../theoplayer/assets/img/import-2.jpg)
 
 ### Reference app structure structure
 

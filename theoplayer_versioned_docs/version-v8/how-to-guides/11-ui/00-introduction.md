@@ -3,11 +3,11 @@
 THEOplayer has a default user interface (UI). The default UI is optimized for browsers, mobile devices and tablets.
 As a developer, you may A) use this UI as is, B) customize it, or C) create a brand-new Chromeless UI, as depicted in the screenshot below.
 
-![THEOplayer UI overview](../../assets/img/ui-introduction-overview.png 'THEOplayer UI overview')
+![THEOplayer UI overview](../../../../theoplayer/assets/img/ui-introduction-overview.png 'THEOplayer UI overview')
 
 The default UI is responsive, so it looks different depending on your device, as visualized in the screenshot below.
 
-![THEOplayer default UI](../../assets/img/ui-introduction-default-ui.png 'THEOplayer default UI')
+![THEOplayer default UI](../../../../theoplayer/assets/img/ui-introduction-default-ui.png 'THEOplayer default UI')
 
 The default UI has all the basic controls you'd expect from a video player, ranging from a scrub bar to a fullscreen button.
 
@@ -61,7 +61,7 @@ Changing the colors is quite easy. There's a GUI when building your Web SDK at [
 to generate code (depicted in the screenshot below), or you can use a similar tool at [https://demo.theoplayer.com/ui-skinning](https://demo.theoplayer.com/ui-skinning).
 More information on changing the colors is available at our article on [UI skinning](13-ui-skinning.md).
 
-![UI editor on portal](../../assets/img/ui-introduction-portal.png 'UI editor on portal')
+![UI editor on portal](../../../../theoplayer/assets/img/ui-introduction-portal.png 'UI editor on portal')
 
 The default UI is a fork of Video.js 5, so you may also use the Video.js 5 API to modify the UI, as demonstrated in some of our articles.
 This may - for example - simplify the process of [adding a new button](../../how-to-guides/11-ui/07-how-to-insert-a-button.md) to the default control bar.

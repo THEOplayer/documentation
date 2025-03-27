@@ -31,7 +31,7 @@ Generally speaking, the default control bar is visible when the following scenar
 The control bar is visible in the screenshot below because `vjs-paused` and `vjs-has-started` are classes of the THEOplayer container,
 as highlighted with the yellow rectangles.
 
-![](../../assets/img/ui-control-bar-visibile.png)
+![](../../../../theoplayer/assets/img/ui-control-bar-visibile.png)
 
 If we map that to JavaScript code:
 

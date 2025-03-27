@@ -6,12 +6,12 @@
 
 Go to Tools, then Package Manager
 
-![](../../../assets/img/tizen-extensions-1.jpg)
+![](../../../../../theoplayer/assets/img/tizen-extensions-1.jpg)
 
 Install everything under Tizen SDK tools under Main SDK
 
-![](../../../assets/img/tizen-extensions-2.jpg)
+![](../../../../../theoplayer/assets/img/tizen-extensions-2.jpg)
 
 Install the latest tv extensions under Extension SDK
 
-![](../../../assets/img/tizen-extensions-3.jpg)
+![](../../../../../theoplayer/assets/img/tizen-extensions-3.jpg)

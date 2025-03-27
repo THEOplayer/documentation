@@ -6,7 +6,7 @@ For example, if you're watching a 60 seconds video, and if I would declare that 
 Timed metadata shouldn't be confused with _general metadata_. General metadata describes data related to your entire video content, like the title of the video, its total duration and its PG-rating.
 In this article we use timed metadata and metadata interchangeably, and consider general metadata out-of-scope.
 
-![Metadata Flow](../../assets/img/metadata-flow.png 'Metadata Flow')
+![Metadata Flow](../../../../theoplayer/assets/img/metadata-flow.png 'Metadata Flow')
 
 This article provides information on the different types of timed metadata and how you can leverage it in an application.
 The story is told in the reverse order: first we'll consider some use-cases (e.g. highlights), next we'll talk about the role of a video player versus the application, and finally we'll list the types of metadata (e.g. ID3) you can insert.
@@ -25,7 +25,7 @@ Timed metadata enables all kinds of use-cases in the field across various domain
 
 A popular use-case is to associate some data (text, image, ...) with a specific moment in time to mark a highlight.
 
-![Metadata Markers](../../assets/img/metadata-goals.png 'Metadata Markers')
+![Metadata Markers](../../../../theoplayer/assets/img/metadata-goals.png 'Metadata Markers')
 
 For example, in the screenshot above, we're leveraging metadata to highlight where a goal has been scored.
 If you click on the goal icon, you'll be taken to this moment in time in the video.
@@ -37,7 +37,7 @@ Timed metadata can help you define the start and end of an advertisement. This i
 For example, at https://cdn.theoplayer.com/demos/verizon-media/index.html, the application leverages metadata to render markers in the scrub bar and to count down to the end of the ad break,
 and on top of that, if you try to seek over an ad break, the cursor snaps back to the ad break.
 
-![Metadata Advertising](../../assets/img/metadata-advertising.png 'Metadata Advertising')
+![Metadata Advertising](../../../../theoplayer/assets/img/metadata-advertising.png 'Metadata Advertising')
 
 You can also leverage timed metadata "behind the scenes". For example, the timed metadata might contain info on the creative ID of the advertisement,
 and the URLs of its event trackers. An application could then use this information to communicate with an ad server or analytics server.
@@ -48,7 +48,7 @@ Timed metadata could also be used to initiate events and actions.
 For example, perhaps you want to overlay some text or image when you are at position 00:40.
 Or perhaps you want to disable seeking through the scrub bar for a defined period of time.
 
-![Metadata Actions](../../assets/img/metadata-actions.png 'Metadata Actions')
+![Metadata Actions](../../../../theoplayer/assets/img/metadata-actions.png 'Metadata Actions')
 
 The screenshot showcases a demo where a relevant hyperlink is being overlayed on top of the video within a specific time period.
 This hyperlink (and its start and stop time) was indicated through timed metadata.

@@ -4,11 +4,11 @@ This article is intended to show how to remove any unwanted CC tracks that might
 
 **Unwanted CC in Safari native**
 
-![Unwanted CC in Safari](../assets/img/unwanted-cc-safari.png)
+![Unwanted CC in Safari](../../../theoplayer/assets/img/unwanted-cc-safari.png)
 
 **Unwanted CC in THEOplayer iOS**
 
-![Unwanted CC in iOS](../assets/img/unwanted-cc-ios.png)
+![Unwanted CC in iOS](../../../theoplayer/assets/img/unwanted-cc-ios.png)
 
 ## How to remove unwanted cc tracks?
 

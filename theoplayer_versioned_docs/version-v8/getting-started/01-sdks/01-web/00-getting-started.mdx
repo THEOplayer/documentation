@@ -97,14 +97,14 @@ You sign in with your GitHub or Google account, or with your credentials, throug
 
 On the THEOplayer Developer Portal dashboard, click the <span className={styles.borderRed}>Create</span> button in the licenses panel, as annotated with a red arrow in the following screenshot.
 
-![THEOplayer Developer Portal's dashboard](../../../assets/img/getting-started-web-sdk/portal-dashboard.png)
+![THEOplayer Developer Portal's dashboard](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-dashboard.png)
 
 Alternatively, you create a license through the SDKs page.
 
 - You click the SDKs item in the side navigation panel to navigate to the overview of your existing SDKs.
 - The content panel of the SDKs page presents action buttons. Click the <span className={styles.borderRed}>Create</span> button to initiate the license creation process, as highlighted in the screenshot below.
 
-![THEOplayer Developer Portal SDK Page](../../../assets/img/getting-started-web-sdk/portal-sdk.png)
+![THEOplayer Developer Portal SDK Page](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-sdk.png)
 
 #### Build, configure and publish license
 
@@ -114,11 +114,11 @@ Building your license involves three steps.
 2. Configure license – Name the license and configure your domain whitelisting settings. The latter allows your license to only function for some websites and/or streams.
 3. Review and publish – Validate your configuration and click "Publish", or go back.
 
-![Choose platform](../../../assets/img/getting-started-web-sdk/portal-choose-platform.png)
+![Choose platform](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-choose-platform.png)
 
 After you complete the third step, "Review and Publish", you will get your unique <span className={styles.borderGreen}>LICENSE</span> which should replace `YOUR-LICENSE-STRING` in the examples.
 
-![License generated](../../../assets/img/getting-started-web-sdk/portal-license.png)
+![License generated](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-license.png)
 
 ### Create an SDK through Portal
 
@@ -145,11 +145,11 @@ To create an SDK through Portal similar steps should be followed as generating a
 On the dashboard or in the SDKs menu, also click the <span className={styles.borderRed}>Create</span> button.
 Important here is to make sure you are on the <span className={styles.borderBlue}>CUSTOM</span> tab as this will allow creating a custom SDK with a license instead of only a license.
 
-![THEOplayer Developer Portal's dashboard custom](../../../assets/img/getting-started-web-sdk/portal-custom-sdk.png)
+![THEOplayer Developer Portal's dashboard custom](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-custom-sdk.png)
 
 Alternatively, when following the steps to generate only a license there will be redirect link to the steps for creating a custom THEOplayer SDK.
 
-![Custom SDK redirect](../../../assets/img/getting-started-web-sdk/portal-sdk-redirect.png)
+![Custom SDK redirect](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-sdk-redirect.png)
 
 #### Build, configure and publish SDK {#build-configure-and-publish-sdk}
 
@@ -160,12 +160,12 @@ Building your Web SDK involves four steps.
 3. Select features – Enable certain features (e.g. HLS advertising) and disable others (e.g. Chromecast).
 4. Review and publish – Validate your configuration and click "Publish", or go back.
 
-![Build SDK](../../../assets/img/getting-started-web-sdk/portal-build-sdk.png)
+![Build SDK](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-build-sdk.png)
 
 After you complete the fourth step, "Review and Publish", it'll take the portal a couple of minutes to generate your unique SDK.
 Once you see the <span className={styles.borderRed}>Ready!</span> button, as the screenshot below highlights with the red rectangle, you know that your SDK is available.
 
-![SDK ready](../../../assets/img/getting-started-web-sdk/portal-sdk-ready.png)
+![SDK ready](../../../../../theoplayer/assets/img/getting-started-web-sdk/portal-sdk-ready.png)
 
 The following sections of this guide reference `SDK-LIBRARY-LOCATION` which should be replaced with the SDK <span className={styles.borderBlue}>library location URL</span>.
 Similarly, `YOUR-LICENSE-STRING` should be replaced with the <span className={styles.borderGreen}>LICENSE</span>
@@ -334,7 +334,7 @@ This `<div>` element creates a video player container.
         height: 200px;
     }
     ```
-    ![screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player](../../../assets/img/getting-started-web-sdk/container-height-percent.png)
+    ![screenshot from a sample minimal page with THEOplayer, showing how to use the width and height to change the size of the player](../../../../../theoplayer/assets/img/getting-started-web-sdk/container-height-percent.png)
 
     Alternatively, you set your container to be responsive to its parent node by setting `fluid: true` in your configuration,
     as demonstrated by the following screenshot.
@@ -344,7 +344,7 @@ This `<div>` element creates a video player container.
         // ...other options go here
     });
     ```
-    ![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../assets/img/getting-started-web-sdk/container-height-fluid.png)
+    ![screenshot from a sample minimal page with THEOplayer, showing how to use the playerConfig property fluid to regulate the player size](../../../../../theoplayer/assets/img/getting-started-web-sdk/container-height-fluid.png)
 
     There is no wrong or right. It's up to you to decide which approach is best for your use-case.
 

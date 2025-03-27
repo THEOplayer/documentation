@@ -85,4 +85,4 @@ iOS SDK does not have a built-in UI. It also does not support JavaScript injecti
 
 You can now select multiple qualities of the same MP4 asset!
 
-![Customize quality selection](../../../assets/img/customize-quality-selection.png 'Customize quality selection')
+![Customize quality selection](../../../../../theoplayer/assets/img/customize-quality-selection.png 'Customize quality selection')

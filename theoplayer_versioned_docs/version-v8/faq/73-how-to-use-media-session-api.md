@@ -4,9 +4,9 @@ Developers who implement the Media Session API give viewers the option to contro
 The first screenshot below demonstrates how a viewer can play/resume/seek a video through their iOS home screen,
 and the second screenshot below demonstrates the same level of control on a macOS.
 
-![Media Session API iOS](../assets/img/media-session-api-ios.png)
+![Media Session API iOS](../../../theoplayer/assets/img/media-session-api-ios.png)
 
-![Media Session API macOS](../assets/img/media-session-api-macos.png)
+![Media Session API macOS](../../../theoplayer/assets/img/media-session-api-macos.png)
 
 The Media Session API is available on most modern desktop and mobile browsers as documented at [https://developer.mozilla.org/en-US/docs/Web/API/Media_Session_API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Session_API).
 The W3C working draft of the Media Session standard is available at [https://www.w3.org/TR/mediasession/](https://www.w3.org/TR/mediasession/).

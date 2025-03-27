@@ -6,7 +6,7 @@ The Social Sharing feature adds a component to the UI which enables the viewers 
 
 The Social Sharing feature exposes the Social API. This API allows developers to configure the URLs and (social) channels.
 
-![Social Sharing](../../assets/img/social-sharing.png 'Social Sharing')
+![Social Sharing](../../../../theoplayer/assets/img/social-sharing.png 'Social Sharing')
 
 ## SDKs
 
