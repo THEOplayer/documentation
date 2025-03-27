@@ -1,6 +1,6 @@
 # Introduction
 
-THEOplayer supports FairPlay, PlayReady and Widevine by default. To connect to such a DRM system, developers can use a [ContentProtectionDescription](pathname:///theoplayer/v8/api-reference/web/interfaces/SourceDescription.html) (or DRMConfiguration, depending on the SDK).
+THEOplayer supports FairPlay, PlayReady and Widevine by default. To connect to such a DRM system, developers can use a [ContentProtectionDescription](pathname:///theoplayer/v9/api-reference/web/interfaces/SourceDescription.html) (or DRMConfiguration, depending on the SDK).
 However, more often than not, developers are working with a multi-DRM vendor. These vendors take care of their DRM needs. The last challenge for developers is to integrate the provided DRM solution in a video player.
 THEOplayer is partnered with many multi-DRM vendors to lighten this burden. In our partnerships, we validate the compatibly and often provide integrations.
 
@@ -32,7 +32,7 @@ Developers can use the generic DRM-functionalities in case in-house DRM-solution
 
 ##### Web SDK
 
-To configure DRM on the Web SDK, developers can put a [ContentProtectionDescription](pathname:///theoplayer/v8/api-reference/web/interfaces/SourceDescription.html#sources) inside of a [SourceDescription](pathname:///theoplayer/v8/api-reference/web/interfaces/SourceDescription.html).
+To configure DRM on the Web SDK, developers can put a [ContentProtectionDescription](pathname:///theoplayer/v9/api-reference/web/interfaces/SourceDescription.html#sources) inside of a [SourceDescription](pathname:///theoplayer/v9/api-reference/web/interfaces/SourceDescription.html).
 
 ```js
 if (HLS) {

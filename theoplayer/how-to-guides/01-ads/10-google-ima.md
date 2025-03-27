@@ -57,7 +57,7 @@ player.source = {
 
 ### Limitations
 
-- There's a known issue within the IMA HTML5 SDK where it does not work well with multiple VPAID ads in a VMAP. More specifically when the `ImaSdkSetting` `vpaidMode` is set to `enabled` and the `AdsRenderingSetting` `enablePreloading` is set to `true`, it will not manage to play all ads (these are the default configurations when using the Google IMA integration in THEOplayer). The production IMA SDK doesn't throw any error in this scenario, the [debug SDK](https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js), however, prints `Vpaid Error: VPAID ad called play on video element before start was called on VPAID manager` in the console in this case. This can be resolved by either using `vpaidMode` `insecure` or by disabling preloading. Both can be achieved by specifying your preference in the [AdsConfiguration](pathname:///theoplayer/v8/api-reference/web/interfaces/AdsConfiguration.html).
+- There's a known issue within the IMA HTML5 SDK where it does not work well with multiple VPAID ads in a VMAP. More specifically when the `ImaSdkSetting` `vpaidMode` is set to `enabled` and the `AdsRenderingSetting` `enablePreloading` is set to `true`, it will not manage to play all ads (these are the default configurations when using the Google IMA integration in THEOplayer). The production IMA SDK doesn't throw any error in this scenario, the [debug SDK](https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js), however, prints `Vpaid Error: VPAID ad called play on video element before start was called on VPAID manager` in the console in this case. This can be resolved by either using `vpaidMode` `insecure` or by disabling preloading. Both can be achieved by specifying your preference in the [AdsConfiguration](pathname:///theoplayer/v9/api-reference/web/interfaces/AdsConfiguration.html).
 
 ## Android SDK
 
@@ -101,7 +101,7 @@ theoplayerView.player.addIntegration(imaIntegration)
 
 ### Use a `GoogleImaAdDescription`
 
-Use a [`GoogleImaAdDescription`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.html) to schedule advertisements,
+Use a [`GoogleImaAdDescription`](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.html) to schedule advertisements,
 as demonstrated below:
 
 ```kotlin
@@ -124,9 +124,9 @@ theoplayerView.player.source = sourceDescription
 The Google IMA integration exposes events through the Ads API. More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
 The integration exposes a number of additional methods.
-These are available directly on the [`GoogleImaIntegration`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html) object, or indirectly through `player.ads.ima` (only for Kotlin).
-For example, [`schedule()`](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#schedule(GoogleImaAdDescription)>) can be used to schedule ads dynamically,
-and [`requestAds()`](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#requestAds(AdsRequest,AdsRenderingSettings)>) can be used to request ads through the native Google IMA API.
+These are available directly on the [`GoogleImaIntegration`](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html) object, or indirectly through `player.ads.ima` (only for Kotlin).
+For example, [`schedule()`](<pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#schedule(GoogleImaAdDescription)>) can be used to schedule ads dynamically,
+and [`requestAds()`](<pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegration.html#requestAds(AdsRequest,AdsRenderingSettings)>) can be used to request ads through the native Google IMA API.
 
 ### Updating the Google IMA SDK
 

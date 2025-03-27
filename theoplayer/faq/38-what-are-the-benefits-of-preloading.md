@@ -14,6 +14,6 @@ The following resources provide more information:
 
 - https://www.w3.org/TR/html5/embedded-content-0.html#attr-media-preload: HTML5 specification
 - [Preloading - How-to](../how-to-guides/07-miscellaneous/09-preloading.md)
-- [API reference: preloading](pathname:///theoplayer/v8/api-reference/web/types/PreloadType.html)
-- [API reference: Cache API](pathname:///theoplayer/v8/api-reference/web/interfaces/Cache.html)
-- [API reference: Canvas API](pathname:///theoplayer/v8/api-reference/web/interfaces/Canvas.html)
+- [API reference: preloading](pathname:///theoplayer/v9/api-reference/web/types/PreloadType.html)
+- [API reference: Cache API](pathname:///theoplayer/v9/api-reference/web/interfaces/Cache.html)
+- [API reference: Canvas API](pathname:///theoplayer/v9/api-reference/web/interfaces/Canvas.html)

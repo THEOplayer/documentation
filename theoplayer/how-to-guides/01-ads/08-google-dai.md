@@ -23,7 +23,7 @@ To get THEOplayer to work, you only need to do three things:
 
 1. Reference the THEOplayer JavaScript library (and optionally the default CSS styles).
 2. Add a container which can hold your video player with HTML.
-3. Create your player through JavaScript using our [API](pathname:///theoplayer/v8/api-reference/web/classes/Player.html).
+3. Create your player through JavaScript using our [API](pathname:///theoplayer/v9/api-reference/web/classes/Player.html).
 
 A basic HTML page with a working THEOplayer could like the following:
 
@@ -190,8 +190,8 @@ theoplayerView.player.addIntegration(daiIntegration)
 
 ### Using a Google DAI Source
 
-Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
-or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
+Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
+or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
 to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
 
 ```kotlin
@@ -223,13 +223,13 @@ theoplayerView.player.source = SourceDescription.Builder(
 The Google DAI integration exposes events through the Ads API. More information is available at ["How to subscribe to ad events"](11-how-to-subscribe-to-ad-events.md#android-sdk).
 
 The integration exposes a number of additional methods.
-These are available directly on the [`GoogleDaiIntegration`](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) object,
+These are available directly on the [`GoogleDaiIntegration`](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) object,
 or indirectly through `player.ads.dai` (only for Kotlin).
 For example:
 
-- [requestStream(StreamRequest, AdsRenderingSettings)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
-- [contentTimeForStreamTime(double)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
-  / [streamTimeForContentTime(double)](<pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#streamTimeForContentTime(double)>) can be used to convert content time to stream time and vice versa.
+- [requestStream(StreamRequest, AdsRenderingSettings)](<pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
+- [contentTimeForStreamTime(double)](<pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
+  / [streamTimeForContentTime(double)](<pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#streamTimeForContentTime(double)>) can be used to convert content time to stream time and vice versa.
 
 ## iOS SDK
 
@@ -263,7 +263,7 @@ THEOplayer SDK and Google DAI are fully pre-integrate to deliver Server-Side Ad 
 
 Extra resources:
 
-1. [Google DAI Pre-Integration API](pathname:///theoplayer/v8/api-reference/web/interfaces/GoogleDAIConfiguration.html)
+1. [Google DAI Pre-Integration API](pathname:///theoplayer/v9/api-reference/web/interfaces/GoogleDAIConfiguration.html)
 2. [THEOplayer Getting Started Guide](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 3. [Google DAI website](https://developers.google.com/interactive-media-ads)
 
