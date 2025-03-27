@@ -1,5 +1,39 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 import millicastApiSidebar from './millicast/api/sidebar';
+import millicastDirectorApiSidebar from './millicast/api/director/sidebar';
+
+function removeHiddenItems(data) {
+  
+  // find the "hidden" category and get its item IDs
+  const hiddenCategory = data.find(category => category.type === 'category' && category.label === 'hidden');
+  const hiddenIds = hiddenCategory ? hiddenCategory.items.map(item => item.id) : [];
+
+  // filter out items from other categories that match the hidden IDs
+  const updatedData = data.map(category => {
+    if (category.type === 'category') {
+  
+      // filter out the items that match any of the hidden IDs
+      const filteredItems = category.items.filter(item => !hiddenIds.includes(item.id));
+      
+      // if all items are removed, omit the category entirely
+      if (filteredItems.length === 0) {
+
+        // remove the category the category
+        return null; 
+      }
+      
+      // return the category with filtered items
+      return { ...category, items: filteredItems };
+    }
+    return category;
+  }).filter(category => category !== null); // Remove null categories
+
+  return updatedData;
+}
+
+
+// filter "hidden" items
+const filteredMillicastApiSidebar = removeHiddenItems(millicastApiSidebar);
 
 const sidebars: SidebarsConfig = {
   millicast: [
@@ -218,14 +252,80 @@ const sidebars: SidebarsConfig = {
       },
       href: '/millicast/api/millicast-api',
     },
+    {
+      type: 'link',
+      label: 'Release Notes',
+      customProps: {
+        icon: '📝',
+      },
+      href: '/millicast/changelog/',
+    },
   ],
+  millicastReleaseNotes: [
+    {
+      type: 'link',
+      label: '« Back',
+      href: '/millicast/',
+    },
+    {
+      type: 'category',
+      label: 'Release Notes',
+      customProps: {
+        icon: '📝',
+      },
+      link: { type: 'doc', id: "changelog" },
+      items: [{
+        type: 'doc',
+        label: 'Platform and Media Server',
+        id: 'changelog/changelog-dolbyio-platform-media-server',
+      },
+      {
+        type: 'doc',
+        label: 'REST API Changes',
+        id: 'changelog/changelog-rest-apis',
+      },
+      {
+        type: 'doc',
+        label: 'Dashboard Changes',
+        id: 'changelog/changelog-dolbyio-dashboard',
+      },
+      {
+        type: 'doc',
+        label: 'Native SDK',
+        id: 'changelog/changelog-native-sdk',
+      },
+      {
+        type: 'doc',
+        label: 'Web SDK',
+        id: 'changelog/changelog-web-platform',
+      },
+      {
+        type: 'doc',
+        label: 'OBS WebRTC',
+        id: 'changelog/changelog-obs-webrtc',
+      }]
+    }
+ ],
   millicastApi: [
     {
       type: 'link',
       label: '« Back',
       href: '/millicast/',
     },
-    ...millicastApiSidebar,
+    {
+      type: 'category',
+      label: 'Millicast API',
+      collapsible: true,
+      collapsed: false,
+      items: [...filteredMillicastApiSidebar],
+    },
+    {
+      type: 'category',
+      label: 'Millicast Director API',
+      collapsible: true,
+      collapsed: false,
+      items: [...millicastDirectorApiSidebar],
+    },
   ],
 };
 
