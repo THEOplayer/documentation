@@ -38,7 +38,7 @@ To start this guide you need the following items:
 
 ## System requirements
 
-Roku keeps all devices up-to-date by issuing automatic updates. We aim to support all the up to date Roku devices. At the moment the newest Roku OS version is 11.5 (Oct 2022).
+Roku keeps all devices up-to-date by issuing automatic updates. We aim to support all the up to date Roku devices. At the moment the newest Roku OS version is 14.1 (Mar 2025).
 
 ## Certification changes
 
@@ -56,9 +56,9 @@ In this section, we will go through the process of creating a Roku channel and u
 
 ## Starting point
 
-First of all, we need to create a Roku channel. You can either [create a new Roku project in eclipse](https://www.youtube.com/watch?v=suQ0qxFs0jw) or start from the [Roku “Hello world” channel example](https://github.com/rokudev/hello-world) (Here is some [extra documentation](https://developer.roku.com/en-gb/docs/developer-program/getting-started/hello-world.md) about the “hello world” example).
+First of all, we need to create a Roku channel. You can either [create a new Roku project in eclipse](https://www.youtube.com/watch?v=suQ0qxFs0jw) or [VS Code](https://rokucommunity.github.io/vscode-brightscript-language/index.html) or start from the [Roku “Hello world” channel example](https://github.com/rokudev/hello-world) (Here is some [extra documentation](https://developer.roku.com/en-gb/docs/developer-program/getting-started/hello-world.md) about the “hello world” example).
 
-When you have created a Roku channel, you can copy the THEOplayer Roku SDK (“THEOplayerSDK.pkg“) into the directory of your project.
+When you have created a Roku channel, you can copy the THEOplayer Roku SDK ("THEOplayerSDK.pkg") into the directory of your project. You can download the most recent THEOplayer SDK from [https://portal.theoplayer.com](https://portal.theoplayer.com).
 
 ## Project structure:
 
@@ -456,8 +456,7 @@ Adding an event listener in the Roku THEOplayer SDK is straightforward. All you 
          ]
        }
        m.THEOplayer.setFocus(true)
-       m.THEOplayer.listener = m.top
-       m.THEOplayer.callFunc("addEventListener", "playing", "onPlaying")
+       m.THEOplayer.callFunc("addEventListener", "playing", m.top, "onPlaying")
        m.THEOplayer.callFunc("play")
      end function
 
@@ -515,8 +514,7 @@ Just make sure that `m.THEOplayer` is used in the proper context. For example, i
       ]
     }
     m.THEOplayer.setFocus(true)
-    m.THEOplayer.listener = m.top
-    m.THEOplayer.callFunc("addEventListener", "playing", "onPlaying")
+    m.THEOplayer.callFunc("addEventListener", "playing", m.top, "onPlaying")
     m.THEOplayer.callFunc("play")
   end function
 

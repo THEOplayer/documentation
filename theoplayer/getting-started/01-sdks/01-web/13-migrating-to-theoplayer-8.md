@@ -1,6 +1,6 @@
 # Migrating to THEOplayer Web SDK 8.x
 
-This article will guide your through updating from THEOplayer Web SDK version 8 (from version 7),
+This article will guide you through updating from THEOplayer Web SDK version 8 (from version 7),
 and the changes needed in your code.
 
 ## Update THEOplayer
