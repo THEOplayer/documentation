@@ -73,9 +73,9 @@ To create a dedicated transcoder in the dashboard and use it for your stream, fo
 
 The platform offers the Transcoder APIs for managing cloud transcoders. To create a dedicated transcoder, follow these steps:
 
-1. Call the [Add Webhook]](/millicast/api/webhooks-add-webhook.api.mdx) API with the **isTranscoderHooks** parameter set to true. This way, you will be notified about status changes of your transcoder.
+1. Call the [Add Webhook](/millicast/api/webhooks-add-webhook) API with the **isTranscoderHooks** parameter set to true. This way, you will be notified about status changes of your transcoder.
 
-2. Call the [Create Transcoder]](/millicast/api/transcoder-create-transcoder.api.mdx) API providing values of all the required parameters. If you want to start your transcoder immediately after its creation, set the **startNow** parameter to true. Otherwise, call the [Start Transcoder]](/millicast/api/transcoder-start-transcoder.api.mdx) API to start the created transcoder.
+2. Call the [Create Transcoder](/millicast/api/transcoder-create-transcoder) API providing values of all the required parameters. If you want to start your transcoder immediately after its creation, set the **startNow** parameter to true. Otherwise, call the [Start Transcoder](/millicast/api/transcoder-start-transcoder) API to start the created transcoder.
 
    An example of the create request:
 
@@ -151,7 +151,7 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
    Notice that the response body contains publish URLs required for publishing your stream.
 
-3. Construct a complete publish URL endpoint by adding your stream ID and publish token at the end of the received publish URLs. In the case of RTMP and RTMPS, you can pass your token as a string. SRT requires encoding the token and providing it as Base64-encoded data. For more information, see the [SRT](/millicast/broadcast/using-srt.md#how-to-get-the-srt-publish-settings-using-the-rest-apis) document.
+3. Construct a complete publish URL endpoint by adding your stream ID and publish token at the end of the received publish URLs. In the case of RTMP and RTMPS, you can pass your token as a string. SRT requires encoding the token and providing it as Base64-encoded data. For more information, see the [SRT](/millicast/broadcast/using-srt.md) document.
 
    Examples:
 
@@ -166,7 +166,7 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
 
 
-The platform also offers the [Configure Transcoder]](/millicast/api/transcoder-update-transcoder.api.mdx) API for updating transcoder settings and the [Stop Transcoder]](/millicast/api/transcoder-stop-transcoder.api.mdx) and [Delete Transcoder]](/millicast/api/transcoder-delete-transcoder.api.mdx) API for stopping and deleting a specific transcoder. A list of all available Transcoder APIs is available in the [REST API]](/millicast/api/transcoder-list-transcoders.api.mdx) documentation.
+The platform also offers the [Configure Transcoder](/millicast/api/transcoder-update-transcoder) API for updating transcoder settings and the [Stop Transcoder](/millicast/api/transcoder-stop-transcoder) and [Delete Transcoder](/millicast/api/transcoder-delete-transcoder) API for stopping and deleting a specific transcoder. A list of all available Transcoder APIs is available in the [REST API](/millicast/api/transcoder-list-transcoders) documentation.
 
 ### Cloud Transcoding Ladder
 
@@ -181,9 +181,7 @@ The platform also offers the [Configure Transcoder]](/millicast/api/transcoder-u
 | 720    | passthrough or 2700Kbps             |
 | 480    | passthrough or 1600Kbps             |
 | 360    | passthrough or 750Kbps              |
-| 240    | 400Kbps                             |
-
-, 
+| 240    | 400Kbps                             | 
 
 <!--
 

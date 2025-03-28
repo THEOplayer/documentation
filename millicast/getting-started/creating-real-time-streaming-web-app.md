@@ -7,9 +7,9 @@ In [Part 1](/millicast/getting-started/using-the-dashboard.md) we reviewed how-t
 
 This tutorial is split into three sections:
 
-- [Embed the Hosted Streaming Viewer in an iFrame](#20-embed-the-streaming-viewer-in-an-iframe)
-- [Playback from a Custom Web Application](#21-playback-from-a-custom-web-application)
-- [Broadcast from a Custom Web Application](#22-broadcast-from-a-custom-web-application)
+- [Embed the Hosted Streaming Viewer in an iFrame](#embed-the-streaming-viewer-in-an-iframe)
+- [Playback from a Custom Web Application](#playback-from-a-custom-web-application)
+- [Broadcast from a Custom Web Application](#broadcast-from-a-custom-web-application)
 
 ## Embed the streaming viewer in an iFrame
 

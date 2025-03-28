@@ -113,10 +113,10 @@ Minor fixes and improvements for RTMP publishers.
 
 ## Support for Syndicated Content
 
-The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api.md#subscribe-tokens) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md).  
-​  
+The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api.md) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md).  
+ 
 This "syndication" mechanism allows you to send the same stream to multiple cohorts of viewers whilst tying viewer data to a cohort via `trackingId`.  
-​  
+ 
 By querying your aggregated viewer data with the [Analytics API](/millicast/analytics/index.md) you can determine how much bandwidth was consumed, how many viewers were watching for which provider, and a few other statistics.
 
 For more information, see the [Syndication](/millicast/distribution/syndication.md article.

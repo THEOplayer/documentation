@@ -93,8 +93,8 @@ You then can input the IP addresses or number of addresses to bind, into the for
 
 When working with allowed origins and IP filters you can automate workflows using available REST APIs.
 
-- The [/api/publish_token]](/millicast/api/publish-token-v-1-create-token.api.mdx) endpoint allows you to update the allowed origins or IP addresses for an existing publish token or to define a value when creating a new token
-- The [/api/subscribe_token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) endpoint allows you to update the allowed origins or IP addresses for an existing subscribe token or to define it while creating a new token
+- The [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) endpoint allows you to update the allowed origins or IP addresses for an existing publish token or to define a value when creating a new token
+- The [/api/subscribe_token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) endpoint allows you to update the allowed origins or IP addresses for an existing subscribe token or to define it while creating a new token
 
 > 👍 Using the REST APIs
 > 
@@ -102,7 +102,7 @@ When working with allowed origins and IP filters you can automate workflows usin
 
 ## How-to add allowed origins with the REST API
 
-For both the [/api/publish_token]](/millicast/api/publish-token-v-1-create-token.api.mdx) and the [/api/subscribe_token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) you can define the **allowedOrigins** parameter when you use a `POST` request to create a new token. For existing tokens, you'll use the `PUT` method to change the value using **updateAllowedOrigins**.
+For both the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) and the [/api/subscribe_token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) you can define the **allowedOrigins** parameter when you use a `POST` request to create a new token. For existing tokens, you'll use the `PUT` method to change the value using **updateAllowedOrigins**.
 
 Here is an example of updating the Allowed Origins:
 
@@ -113,11 +113,11 @@ curl -H "Authorization: Bearer [your_api_secret]" \
     -X PUT -d '{"updateAllowedOrigins": ["millicast.com","*.millicast.com"]}'
 ```
 
-Review the [/api/publish_token]](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token]](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
+Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
 
 ## How-to add IP filters with the REST API
 
-For both the [/api/publish_token]](/millicast/api/publish-token-v-1-create-token.api.mdx) and the [/api/subscribe_token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) you can define the **allowedIpAddresses** or **bindIpsOnUsage** parameters when you use a `POST` request to create a new token. For existing tokens, you'll use the `PUT` method to change the value using **updateAllowedIpAddresses** or **updateBindIpsOnUsage** values respectively.
+For both the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) and the [/api/subscribe_token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) you can define the **allowedIpAddresses** or **bindIpsOnUsage** parameters when you use a `POST` request to create a new token. For existing tokens, you'll use the `PUT` method to change the value using **updateAllowedIpAddresses** or **updateBindIpsOnUsage** values respectively.
 
 Here is an example of updating the Allowed IP Addresses:
 
@@ -137,7 +137,7 @@ curl -H "Authorization: Bearer [your_api_secret]" \
     -d '{"bindIpsOnUsage": 1}'
 ```
 
-Review the [/api/publish_token]](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token]](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
+Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
 
 ## How-to remove IP filters
 
@@ -150,7 +150,7 @@ curl -H "Authorization: Bearer [your_api_secret]" \
     -X PUT -d '{"bindIpsOnUsage": 0, "updateAllowedIpAddresses": []}'
 ```
 
-Review the [/api/publish_token]](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token]](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
+Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
 
 # Troubleshooting
 

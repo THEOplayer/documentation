@@ -19,7 +19,7 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
 
 2. Create your [Publishing Token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token).
 
-3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/broadcast/using-srt.md#how-to-find-the-srt-publish-settings-with-the-dashboard).
+3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/broadcast/using-srt.md).
 
 4. Open your Haivision Encoder. 
 

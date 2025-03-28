@@ -59,7 +59,7 @@ You can record your broadcasts if you are using 3rd party applications, such as 
 
 ## Recording using Client SDKs
 
-To start recording a stream using any Client SDK, [enable recording](#how-to-record-from-the-dolbyio-dashboard) in your publish token in the dashboard and set an optional recording parameter to true in publisher options, as in the following examples:
+To start recording a stream using any Client SDK, enable recording in your publish token in the dashboard and set an optional recording parameter to true in publisher options, as in the following examples:
 
 ```cplusplus
 millicast::Publisher::Option options;

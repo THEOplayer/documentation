@@ -12,9 +12,9 @@ With [Live Clipping]((millicast/distribution/stream-recordings/live-clipping.md)
 
 # Configuring Account Storage Profile
 
-You can start by adding a **storage profile** that will persist across the account so that you can reuse the configuration by name on all future [Create Clip]](/millicast/api/media-assets-create-media-asset.api.mdx) requests or as the default setting.
+You can start by adding a **storage profile** that will persist across the account so that you can reuse the configuration by name on all future [Create Clip](/millicast/api/media-assets-create-media-asset.api.mdx) requests or as the default setting.
 
-Use the [Create Account Storage Profile]](/millicast/api/account-create-storage-profile.api.mdx) endpoint to create a new storage profile. 
+Use the [Create Account Storage Profile](/millicast/api/account-create-storage-profile.api.mdx) endpoint to create a new storage profile. 
 
 - `name`: The label you can use to reference the profile.
 - `default`: Whether to use this storage profile for all future requests as the default setting.
@@ -30,7 +30,7 @@ Your choice of storage provider may have a limitation on allowed characters for 
 
 ## How-to Validate the Storage Profile
 
-Use the [Validate Third Party Storage Setup]](/millicast/api/account-validate-third-party-storage.api.mdx) endpoint to test whether or not a storage profile is properly configured. This will transfer a small test file to make sure that it can be written to your cloud storage provider.
+Use the [Validate Third Party Storage Setup](/millicast/api/account-validate-third-party-storage.api.mdx) endpoint to test whether or not a storage profile is properly configured. This will transfer a small test file to make sure that it can be written to your cloud storage provider.
 
 ```curl
 curl --request POST \

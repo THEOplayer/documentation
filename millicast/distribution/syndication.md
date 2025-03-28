@@ -36,9 +36,9 @@ To manage viewing access, there are two types of tokens you use to syndicate:
 
 ### Creating a Subscribe token with tracking ID
 
-You can create a subscribe token with a tracking ID using either the [Create Token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API or the [Dolby.io dashboard](https://dashboard.dolby.io/).
+You can create a subscribe token with a tracking ID using either the [Create Token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API or the [Dolby.io dashboard](https://dashboard.dolby.io/).
 
-To use the [Create Token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API, add the following to your API request body:
+To use the [Create Token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API, add the following to your API request body:
 
 ```json Request body for Create Token
 {
@@ -75,9 +75,9 @@ Once you have created a Subscribe token with a tracking ID, you can self-sign th
 
 With your API Secret found on the Dolby.io dashboard, you can query information based on your viewer's tracking ID and other data using the following REST APIs: 
 
-- [Total bandwidth per TrackingID per stream]](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx)
-- [Series bandwidth per TrackingID per stream]](/millicast/api/analytics-get-tracking-series-for-streams.api.mdx)
-- [Total bandwidth for streams specified by TrackingID]](/millicast/api/analytics-get-total-bandwidth-for-tracking-id.api.mdx)
-- [Series bandwidth for streams specified by TrackingID]](/millicast/api/analytics-get-series-bandwidth-for-tracking-id.api.mdx)
+- [Total bandwidth per TrackingID per stream](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx)
+- [Series bandwidth per TrackingID per stream](/millicast/api/analytics-get-tracking-series-for-streams.api.mdx)
+- [Total bandwidth for streams specified by TrackingID](/millicast/api/analytics-get-total-bandwidth-for-tracking-id.api.mdx)
+- [Series bandwidth for streams specified by TrackingID](/millicast/api/analytics-get-series-bandwidth-for-tracking-id.api.mdx)
 
 To get the bandwidth consumption of a specific viewer, use the [Viewer Records](ref:records_getviewerrecords) REST API.

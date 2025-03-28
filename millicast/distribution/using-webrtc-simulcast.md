@@ -13,22 +13,6 @@ The platform's _Selective Forwarding Unit (SFU)_ is responsible for distributing
 
 This bitrate adaptation is available for [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WHIP](/millicast/broadcast/webrtc-whip.md) broadcast protocols.
 
-This guide covers:
-
-- [Configuring Simulcast](#configuring-simulcast)
-  - [Requirements](#requirements)
-  - [How-to enable Simulcast with the Dolby.io dashboard](#how-to-enable-simulcast-with-the-dolbyio-dashboard)
-  - [How-to enable Simulcast from an encoder](#how-to-enable-simulcast-from-an-encoder)
-    - [Publish URL](#publish-url)
-  - [Recommended settings for Simulcast](#recommended-settings-for-simulcast)
-    - [High quality layer](#high-quality-layer)
-    - [Medium quality layer](#medium-quality-layer)
-    - [Low quality layer](#low-quality-layer)
-- [View multi-bitrate streams with the hosted player](#view-multi-bitrate-streams-with-the-hosted-player)
-- [Simulcast demo video](#simulcast-demo-video)
-- [Troubleshooting](#troubleshooting)
-  - [How-to check network conditions](#how-to-check-network-conditions)
-- [Learn more](#learn-more)
 
 Simulcast provides flexibility that allows viewers to adjust their individual experience for specific circumstances. For _multicast_ use cases of distributing to multiple destinations, review the [Syndication](/millicast/distribution/syndication.md) guide.
 

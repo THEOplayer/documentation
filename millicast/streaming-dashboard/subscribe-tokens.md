@@ -18,7 +18,7 @@ This guide outlines the following:
 
 > 👍 Enable Secure Viewer
 > 
-> Before we can create a Subscribe token, we must first have a stream that requires a Subscribe token. These streams are referred to as **Secure streams** and need to be enabled within a Publish token by enabling "**Secure viewer**". To learn where to enable "Secure viewer", [check out this guide on creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token).
+> Before we can create a Subscribe token, we must first have a stream that requires a Subscribe token. These streams are referred to as **Secure streams** and need to be enabled within a Publish token by enabling "**Secure viewer**". To learn where to enable "Secure viewer", [check out this guide on creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md).
 
 To get started, [login to your Dolby.io Real-time Streaming account](https://dashboard.dolby.io/) and select **Subscribe tokens** from the left menu. Here you can create and manage your subscribe tokens.
 
@@ -51,8 +51,8 @@ Let's go over each option in a bit more detail:
 
 You can switch from the top "_Basic_" tab to the "_Advanced_" tab in the token creation interface for more advanced token settings such as:
 
-- [Allowed origins:](/millicast/distribution/access-control/token-security.md#allowed-origins) Only the domains in the list will be allowed in requests to the [Director API](ref:director_subscribe) with the token.
-- [IP filter type:](/millicast/distribution/access-control/token-security.md#ip-filters) 
+- [Allowed origins:](/millicast/distribution/access-control/token-security.md) Only the domains in the list will be allowed in requests to the [Director API](/millicast/api/director/director-subscribe) with the token.
+- [IP filter type:](/millicast/distribution/access-control/token-security.md) 
   - **IP Address**: May specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage**: If specified, will bind the token to the first **X** IP addresses used with a token in requests to Director API, thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with "IP Addresses" option. Not currently supported with RTMP.
 - [Cluster region:](/millicast/distribution/multi-region-support/index.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If Auto is selected, the regional cluster will be selected based on the publisher's location. 
@@ -124,13 +124,13 @@ Self-signing your Subscribe token allows you to:
 
 ### Creating a self-signed token
 
-1. Create a Subscribe token using the [Create Token]](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API. The API returns the `tokenId` and `token`. 
+1. Create a Subscribe token using the [Create Token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API. The API returns the `tokenId` and `token`. 
 2. Create a JWT with the following data:
    - `tokenId`: The ID of the (primary) subscribe token
    - `streamName`: A complete, non-wildcard `streamName` that the subscriber will be allowed access to view
    - `allowedOrigins` (optional): Origins that allow the stream to be viewed from
    - `allowedIpAddresses` (optional): IP ranges that allow the stream to be viewed from
-   - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics]](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
+   - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
    - `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
    - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/distribution/syndication.md). Using this parameter requires contacting sales.
 3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
@@ -159,4 +159,4 @@ This guide provides a high-level understanding of managing your tokens via the D
 To learn more about using the REST APIs for token creation and management, check out:
 
 - [The Platform Guide for Token APIs](/millicast/streaming-dashboard/token-api.md)
-- [The REST API reference]](/millicast/api/subscribe-token-v-1-read-token.api.mdx)
+- [The REST API reference](/millicast/api/subscribe-token-v-1-read-token.api.mdx)

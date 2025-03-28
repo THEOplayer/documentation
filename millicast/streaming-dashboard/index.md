@@ -114,7 +114,7 @@ Click on the **"Views"** button to toggle the left chart for a bandwidth view of
 
 ## Webhooks
 
-Webhooks are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API]](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. For how to create a webhook, [check out its guide](/millicast/webhooks/index.md). 
+Webhooks are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. For how to create a webhook, [check out its guide](/millicast/webhooks/index.md). 
 
 
 ![](../assets/img/dashboard-webhooks.png)

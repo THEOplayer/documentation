@@ -4,9 +4,6 @@ slug: /client-analytics-and-monitoring
 ---
 With **Client Analytics**, we are referring to any metrics or KPIs that help provide a better understanding of the end-user **Quality of Experience (QoE)**.  This becomes critical when there are playback issues to troubleshoot or for establishing alerts when monitoring rules meet a particular threshold.
 
-- [Troubleshooting Client Playback](#troubleshooting-client-playback-issues) 
-- [Monitoring Client Analytics](#monitoring-client-analytics) 
-
 # Troubleshooting Client Playback Issues
 
 When troubleshooting playback issues it can be helpful to first verify that the problem is not originating from the broadcast source. 
@@ -20,7 +17,7 @@ If the answer is yes to either of those questions, that may indicate a broadcast
 
 > 👍 Broadcast Monitoring
 > 
-> For broadcast issues, the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) tool is available from your account [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by using the [Broadcast Monitoring]](/millicast/api/monitoring-list-recent-streams.api.mdx) REST API to get more insight into what may cause problems with a stream.
+> For broadcast issues, the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) tool is available from your account [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by using the [Broadcast Monitoring](/millicast/api/monitoring-list-recent-streams.api.mdx) REST API to get more insight into what may cause problems with a stream.
 
 ## Diagnostics Report
 
@@ -90,7 +87,6 @@ The same pattern can be used with other tools such as Grafana, Splunk, New Relic
 > 
 > The [Viewer Reporting](ref:analytics-2) REST API is a premium [Analytics APIs](/millicast/analytics/index.md) option made available to enterprise customers. It offers key insights from our server logs to help identify viewers, location, and other metrics. If you would like to use this endpoint, please [submit a support ticket](https://support.dolby.io/hc/en-au) or reach out to your [sales/solutions](https://dolby.io/contact/) contact.
 
-, 
 
 ## How-to Configure Stats Collection Frequency
 

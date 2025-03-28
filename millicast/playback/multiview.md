@@ -116,7 +116,7 @@ In the above code `videoDiv` is where we want the `<video>` tag to show up in th
 4. Created a `<video>` element and associate that element with the newly created media.
 5. Added the `<video>` element and its `mediaStream` to the `<div>` where it will render.
 
-At this stage, all the pieces are together, however, the stream won't yet render. This is because you have yet to tell the Dolby.io Viewer node which stream to project onto the `Transceiver`. This is done using the [`project` function](/millicast/source-and-layer-selection#project-feeds) which tells the node to begin _projecting_ the stream, identified by its `sourceID`, onto the `Transceiver`.
+At this stage, all the pieces are together, however, the stream won't yet render. This is because you have yet to tell the Dolby.io Viewer node which stream to project onto the `Transceiver`. This is done using the [`project` function](/millicast/source-and-layer-selection) which tells the node to begin _projecting_ the stream, identified by its `sourceID`, onto the `Transceiver`.
 
 ```javascript
 await millicastView.project(sourceID, [

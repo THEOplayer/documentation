@@ -222,7 +222,7 @@ More information here:
 
 > 📘 
 > 
-> In order to connect to a stream you'll need the account id and stream name of the broadcast. This information must be provided by the publish owner. For more information, see [Publishing API](/millicast/managing-your-tokens#publishing-api).
+> In order to connect to a stream you'll need the account id and stream name of the broadcast. This information must be provided by the publish owner. For more information, see [Publishing API](/millicast/managing-your-tokens).
 
 The main module to view a stream is the [View module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View-class.html).
 

@@ -62,7 +62,7 @@ The following are basic recommended settings for any encoder:
 
 These instructions should help with generating the SRT settings similar to what you would find in the dashboard when using the REST API endpoints to programmatically generate publishing tokens.
 
-You will need to know the **Stream name** as well as the **Publishing token**. You can retrieve these values by making a `GET` request to the [/api/publish_token/\{tokenId\}]](/millicast/api/publish-token-v-1-read-token.api.mdx) endpoint. The SRT Encryption setting (**displaySrtPassphrase**) and **srtPassphrase** can also be retrieved from the API as seen is this example response: 
+You will need to know the **Stream name** as well as the **Publishing token**. You can retrieve these values by making a `GET` request to the [/api/publish_token/\{tokenId\}](/millicast/api/publish-token-v-1-read-token.api.mdx) endpoint. The SRT Encryption setting (**displaySrtPassphrase**) and **srtPassphrase** can also be retrieved from the API as seen is this example response: 
 
 ```json
 {
@@ -92,7 +92,7 @@ You will need to know the **Stream name** as well as the **Publishing token**. Y
 
 If you've used the **Auto** [region](/millicast/distribution/multi-region-support/index.md)  as your default then the **SRT publish path** will be `srt://srt-auto.millicast.com:10000`.  
 
-For publish tokens configured for specific regions, the **srt://** endpoint will be unique for that region. These URLs can be fetched with a `GET` request to the [/api/cluster]](/millicast/api/cluster-get-clusters-info.api.mdx) endpoint. The response will be similar to this:
+For publish tokens configured for specific regions, the **srt://** endpoint will be unique for that region. These URLs can be fetched with a `GET` request to the [/api/cluster](/millicast/api/cluster-get-clusters-info.api.mdx) endpoint. The response will be similar to this:
 
 ```json
 [{

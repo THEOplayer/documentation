@@ -7,10 +7,10 @@ This part explains how to get started using just the Dolby.io Streaming Dashboar
 
 This tutorial is split into two sections:
 
-- [Broadcast from the Dolby.io Dashboard](#11-capture-and-broadcast-from-the-dolbyio-dashboard)
-- [Playback with the Streaming Viewer](#12-playback-content-with-the-streaming-viewer)
+- [Broadcast from the Dashboard](#capture-and-broadcast-from-the-dashboard)
+- [Playback with the Streaming Viewer](#playback-content-with-the-streaming-viewer)
 
-## Capture and broadcast from the Dolby.io dashboard
+## Capture and broadcast from the dashboard
 
 We will begin by [broadcasting](/millicast/broadcast/index.mdx) directly from the Dolby.io Streaming Dashboard, [capturing](/millicast/capture/index.md) audio and video with a web camera.
 
