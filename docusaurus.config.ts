@@ -244,8 +244,7 @@ const config: Config = {
         docsPluginId: 'millicast',
         config: {
           millicast: {
-            // specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
-            specPath: 'millicast/api/millicast-api-swagger.json',
+            specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api',
             hideSendButton: true,
             sidebarOptions: {
