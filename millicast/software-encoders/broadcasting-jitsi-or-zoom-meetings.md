@@ -12,7 +12,7 @@ In order to broadcast with RTMP, you will need to have your **RTMP publish path*
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
 See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
 

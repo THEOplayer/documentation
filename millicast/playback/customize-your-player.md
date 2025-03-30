@@ -8,7 +8,7 @@ When having a stream, it is possible to set up a loading screen before your even
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 Open up the management screen of your stream token and visit the Playback tab. To the right on the _Hosted player path_, there will be a space for an **Offline image URL**.  Here place the image's link with an HTTP-compliant URL. 
 

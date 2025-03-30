@@ -12,7 +12,7 @@ You can originate a broadcast from vMix and forward that stream over [RTMP](/mil
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
 See the official [vmix.com](https://vmix.com) site for documentation, installation instructions, and additional support.
 

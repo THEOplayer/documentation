@@ -22,7 +22,7 @@ You can manage allowed origins by changing settings from the user interface of t
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
 
 Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can edit the _Allowed origins_ to specify a list of domain names.
 
@@ -74,7 +74,7 @@ You can manage IP filters by changing settings from the user interface of the [S
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
 
 Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can change the _IP filter type_ from the dropdown.
 

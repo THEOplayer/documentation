@@ -83,7 +83,7 @@ WebRTC broadcasting is enabled via WHIP, to learn more about support for WebRTC 
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to gather the necessary WHIP parameters.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to gather the necessary WHIP parameters.
 
 Log into the Dolby.io dashboard and go to the [Live Broadcast section](https://streaming.dolby.io/#/tokens) and select the publish token that you want to use for your WHIP streaming application.
 

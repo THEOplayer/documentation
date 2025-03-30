@@ -181,7 +181,7 @@ As a developer platform, we understand that you might not be working alone; ther
 
 ## Resources
 
-The Resources section of the dashboard is reserved as the space for tutorials, documentation, and examples which might serve as useful in exploring all of the integrations and SDKs. Additionally, it links to Dolby.io's WebRTC version of OBS. If you are beginning your journey, start your first stream with our [Getting Started](/millicast/introduction-to-streaming-apis.md) guide. 
+The Resources section of the dashboard is reserved as the space for tutorials, documentation, and examples which might serve as useful in exploring all of the integrations and SDKs. Additionally, it links to Dolby.io's WebRTC version of OBS. If you are beginning your journey, start your first stream with our [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide. 
 
 
 ![](../assets/img/dashboard-resources.png)

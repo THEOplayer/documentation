@@ -86,7 +86,7 @@ To learn more about other access control features you can enable for your Subscr
 
 > 👍 Building with the Dolby.io SDKs for the first time?
 > 
-> Check out the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial for a quick and easy introduction to using the Dolby.io SDKs and platform.
+> Check out the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial for a quick and easy introduction to using the Dolby.io SDKs and platform.
 
 To view a secure stream in your own viewer app, you'll need to create a Subscribe token. Depending on the size of your platform, you may want to create these tokens programmatically using a token server and the [Token APIs](/millicast/streaming-dashboard/token-api.md). This part of the guide gives an example of how to programmatically create a Subscribe token, and how to use it to authenticate a connection to a viewer.
 

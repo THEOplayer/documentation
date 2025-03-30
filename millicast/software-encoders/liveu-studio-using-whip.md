@@ -6,7 +6,7 @@ slug: /liveu-studio-using-whip
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.mdx) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _bearer token_ and _WHIP endpoint_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _bearer token_ and _WHIP endpoint_ for the steps described below.
 
 See the official [LiveU Studio](https://www.liveu.tv/support) site for documentation, installation instructions, and additional [support](https://knowledge-base.studio.liveu.tv/en/).
 

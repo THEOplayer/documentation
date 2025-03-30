@@ -63,7 +63,7 @@ You can manage cluster regions by changing settings from user interface of the [
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
 
 > 📘 Blocking Regional Access
 > 

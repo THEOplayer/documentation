@@ -10,7 +10,7 @@ Recording can be started when using the [Dashboard](#recording-from-the-dolbyio-
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 1. Enable recording on a [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) by clicking **Record broadcast** when creating a new token. 
 

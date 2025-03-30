@@ -3,58 +3,62 @@ title: "Introduction to Streaming APIs"
 slug: /introduction-to-streaming-apis
 sidebar_position: 10
 ---
+
+import DocCard from '@theme/DocCard';
+
 Dolby.io Streaming APIs were created to make it easier to stream your high-value content at scale with ultra-low latency.
 
 Deliver 4k video and audio streams to massive audiences while maintaining under half a second of latency anywhere in the world. With the scale, speed, and quality of the service, the Dolby.io Real-time Streaming APIs support a range of use cases including live events, sports betting, virtual auctions, remote production, and more.
 
 # Real-time Streaming
 
-<div class="dolbyio-cards-container-4">
-    
-  <a class="dolbyio-card" href="/streaming-apis/docs/capture">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2021/08/dolbyio-icon-hd-video-dark-bg.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Capture</div>
-    <div class="dolbyio-card-description">
-      Capture audio and video from a wide range of devices.
-    </div>
-  </a>
-  
-  <a class="dolbyio-card" href="/streaming-apis/docs/broadcast">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2021/08/dolbyio-icon-live-streaming-dark-bg.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Broadcast</div>
-    <div class="dolbyio-card-description">
-    	Encode content for broadcasting.
-    </div>
-  </a>
+<DocCard item={{
+    type: 'link',
+    href: '/millicast/capture/',
+    customProps: {
+        icon: '🎥',
+    },
+    label: 'Capture',
+    description: 'Capture audio and video from a wide range of devices.',
+  }} />
 
-  
-   <a class="dolbyio-card" href="/streaming-apis/docs/distribution">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2021/08/dolbyio-icon-spatial-dark-bg.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Distribution</div>
-    <div class="dolbyio-card-description">
-      Distribute WebRTC at scale with our WebRTC CDN.
-    </div>
-  </a>
-  
-  <a class="dolbyio-card" href="/streaming-apis/docs/playback">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2022/09/DLB_IO_Icon_FeatBen_Simulcast_rgb_DRK.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Playback</div>
-    <div class="dolbyio-card-description">
-      Decode content for any device with our client SDKs.
-    </div>
-  </a>
-  
-  
-  
-</div>
+<br />
+
+<DocCard item={{
+    type: 'link',
+    href: '/millicast/broadcast/',
+    customProps: {
+        icon: '📡',
+    },
+    label: 'Broadcast',
+    description: 'Encode content for broadcasting.',
+  }} />
+
+<br />
+
+<DocCard item={{
+    type: 'link',
+    href: '/millicast/distribution/',
+    customProps: {
+        icon: '🚚',
+    },
+    label: 'Distribution',
+    description: 'Distribute WebRTC at scale with our WebRTC CDN.',
+  }} />
+
+<br />
+
+<DocCard item={{
+    type: 'link',
+    href: '/millicast/playback/',
+    customProps: {
+        icon: '▶️',
+    },
+    label: 'Playback',
+    description: 'Decode content for any device with our client SDKs.',
+  }} />
+
+<br />
 
 # What is Real-time Streaming?
 

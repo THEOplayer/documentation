@@ -47,7 +47,7 @@ To begin real-time streaming, you will need to capture a live video feed from a 
 
 Any physical camera that supports standard interfaces like SDI, HDMI, NDI or RTSP can be used as a capture device. Below you'll find guides for some of the more common hardware devices being used to stream content. 
 
-[Getting Started with Web Capture](/millicast/introduction-to-streaming-apis.md)  
+[Getting Started with Web Capture](/millicast/introduction-to-streaming-apis.mdx)  
 The **Millicast Web SDK** enables many popular web browsers to capture a video feed from a built-in camera or webcam that is connected to a computer system such as a Mac, Windows PC, or Linux desktop.
 
 [How-to Stream from DJI Drones](/millicast/capture/live-streaming-from-drones-rtmp.md)  

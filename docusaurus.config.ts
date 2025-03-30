@@ -72,6 +72,21 @@ const docsConfigBase = {
   ],
 } satisfies DocsPlugin.Options;
 
+// Remove the index.md[x] from categories
+function removeDocIndexItems(items) {
+  const result = items
+    .filter((item) => item.type !== 'doc' || !item.id.endsWith('/index'))
+    .map((item) => {
+      if (item.type === 'category') {
+        return {...item, items: removeDocIndexItems(item.items)};
+      }
+      return item;
+    });
+
+  return result;
+}
+
+
 const config: Config = {
   title: 'Dolby OptiView Documentation',
   tagline: 'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, and Open Video UI',
@@ -203,7 +218,11 @@ const config: Config = {
         routeBasePath: '/millicast',
         sidebarPath: './sidebarsMillicast.ts',
         docItemComponent: '@theme/ApiItem',
-      },
+        async sidebarItemsGenerator({defaultSidebarItemsGenerator, ...args}) {
+          const sidebarItems = await defaultSidebarItemsGenerator(args);
+          return removeDocIndexItems(sidebarItems);
+        },
+      } satisfies DocsPlugin.Options,
     ],
     [
       '@docusaurus/plugin-content-docs',

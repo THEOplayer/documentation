@@ -22,7 +22,7 @@ You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From t
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
 See the [WHIP](/millicast/broadcast/webrtc-whip.md) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md). 
 

@@ -8,7 +8,7 @@ Within their myriad of products exists Stream Deck, a physical LCD panel with 15
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started.mdx) tutorial to start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 See the official [Elgato](https://www.elgato.com/us/en) site for documentation, installation instructions, and additional support.
 

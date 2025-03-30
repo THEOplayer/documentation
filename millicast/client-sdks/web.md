@@ -112,7 +112,7 @@ You might also check and follow the [Web Platform Release Notes](/millicast/chan
 
 # Basic Usage
 
-The following examples require that you've already followed the [Getting Started](/millicast/getting-started.mdx) tutorial and have available your **publish token** and **stream name**.
+The following examples require that you've already followed the [Getting Started](/millicast/getting-started/index.mdx) tutorial and have available your **publish token** and **stream name**.
 
 ## Publishing a Stream
 

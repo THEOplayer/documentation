@@ -48,7 +48,7 @@ Select from the countries you want to allow or deny from the alphabetical dropdo
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token.
 
 Open the Streaming section of the [Dolby.io Dashboard](/millicast/streaming-dashboard/index.md) and select an existing token or `+ Create` a new one.
 

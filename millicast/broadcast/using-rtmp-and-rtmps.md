@@ -12,7 +12,7 @@ This document will outline how to set up and broadcast low-latency RTMP streams 
 
 > 👍 Getting Started
 > 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.md) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary RTMP details.
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary RTMP details.
 
 Select the publish token that you want to use for your RTMP streaming application.
 
