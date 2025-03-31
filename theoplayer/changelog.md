@@ -956,7 +956,7 @@ THEOplayer 8.0 is **backwards compatible for most features but includes some bre
 
 - The Latency Manager API allows fine-tuned control over live and low-latency playback for DASH, HLS and HESP, available on Web and Android.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-8/), [Android](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-8/) and [iOS](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-8/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/web/migrating-to-theoplayer-8/), [Android](https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/android/migrating-to-theoplayer-8/) and [iOS](https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/).
 
 ### General
 
@@ -990,8 +990,8 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - Due to low number of usage of iOS 12, we decided to raise the minimum supported version of our iOS SDK to 13.0. This decision was based on metrics provided by Apple's iOS usage measures by devices that transacted on the App Store. For more info check `https://developer.apple.com/support/app-store/`.
-- Removed deprecated `GoogleIMAAdsConfiguration` and `GoogleIMAConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-8/
-- Removed deprecated `GoogleDAIAdsConfiguration` and `GoogleDAIAdsConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-8/
+- Removed deprecated `GoogleIMAAdsConfiguration` and `GoogleIMAConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/
+- Removed deprecated `GoogleDAIAdsConfiguration` and `GoogleDAIAdsConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/
 - Removed deprecated `AdsConfiguration` and `AdPreloadType` APIs.
 - Removed deprecated `ScheduledAd` API. Change `Ads.scheduledAds` type from `ScheduledAd` to `Ad`.
 - Removed deprecated `PiPConfiguration.init` API. Use `PiPConfigurationBuilder` instead.

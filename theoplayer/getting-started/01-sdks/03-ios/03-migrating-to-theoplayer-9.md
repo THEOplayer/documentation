@@ -19,7 +19,7 @@ make sure to update them to the latest version too to ensure proper support for 
 ## Objective-C support has been removed
 
 In version 9, the THEOplayer API is no longer available through Objective-C.
-It was [deprecated since version 8](03-migrating-to-theoplayer-8.md#objective-c-support-is-deprecated).
+It was [deprecated since version 8](../../../../theoplayer_versioned_docs/version-v8/getting-started/01-sdks/03-ios/03-migrating-to-theoplayer-8.md#objective-c-support-is-deprecated).
 
 When it was introduced, the goal of the Objective-C APIs was to provide bindings to bridge our native SDK to React Native.
 Over time, that became unneeded as React Native became capable to interact directly with Swift APIs.
