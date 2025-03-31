@@ -279,7 +279,7 @@ const config: Config = {
             },
           },
           millicastReportingApi: {
-            specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json', 
+            specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api/reporting',
             hideSendButton: true,
             sidebarOptions: {

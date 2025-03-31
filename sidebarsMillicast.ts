@@ -5,7 +5,7 @@ import millicastAdvancedReportingApiSidebar from './millicast/api/reporting/side
 import millicastDirectorApiSidebar from './millicast/api/director/sidebar';
 
 function isCategory(item: SidebarItemConfig): item is SidebarItemCategory {
-  return (item as SidebarItemCategory).type === 'category'
+  return (item as SidebarItemCategory).type === 'category';
 }
 
 function isDoc(item: SidebarItem): item is SidebarItemDoc {
@@ -19,31 +19,31 @@ function isHiddenCategory(item: SidebarItemConfig): item is SidebarItemCategory 
 function removeHiddenItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
   // find the "hidden" category and get its item IDs
   const hiddenCategory = data.find(isHiddenCategory);
-  const hiddenIds = new Set(hiddenCategory?.items.filter(isDoc).map(item => item.id) ?? []);
+  const hiddenIds = new Set(hiddenCategory?.items.filter(isDoc).map((item) => item.id) ?? []);
 
   // filter out items from other categories that match the hidden IDs
-  const updatedData = data.map(category => {
-    if (isCategory(category)) {
+  const updatedData = data
+    .map((category) => {
+      if (isCategory(category)) {
+        // filter out the items that match any of the hidden IDs
+        const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIds.has(item.id)));
 
-      // filter out the items that match any of the hidden IDs
-      const filteredItems = category.items.filter(item => !(isDoc(item) && hiddenIds.has(item.id)));
+        // if all items are removed, omit the category entirely
+        if (filteredItems.length === 0) {
+          // remove the category
+          return null;
+        }
 
-      // if all items are removed, omit the category entirely
-      if (filteredItems.length === 0) {
-
-        // remove the category
-        return null;
+        // return the category with filtered items
+        return { ...category, items: filteredItems };
       }
-
-      // return the category with filtered items
-      return { ...category, items: filteredItems };
-    }
-    return category;
-  }).filter(category => category !== null); // Remove null categories
+      return category;
+    })
+    // Remove null categories
+    .filter((category) => category !== null);
 
   return updatedData;
 }
-
 
 // filter "hidden" items
 const filteredMillicastApiSidebar = removeHiddenItems(millicastApiSidebar);
@@ -288,39 +288,41 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '📝',
       },
-      link: { type: 'doc', id: "changelog" },
-      items: [{
-        type: 'doc',
-        label: 'Platform and Media Server',
-        id: 'changelog/changelog-dolbyio-platform-media-server',
-      },
-      {
-        type: 'doc',
-        label: 'REST API Changes',
-        id: 'changelog/changelog-rest-apis',
-      },
-      {
-        type: 'doc',
-        label: 'Dashboard Changes',
-        id: 'changelog/changelog-dolbyio-dashboard',
-      },
-      {
-        type: 'doc',
-        label: 'Native SDK',
-        id: 'changelog/changelog-native-sdk',
-      },
-      {
-        type: 'doc',
-        label: 'Web SDK',
-        id: 'changelog/changelog-web-platform',
-      },
-      {
-        type: 'doc',
-        label: 'OBS WebRTC',
-        id: 'changelog/changelog-obs-webrtc',
-      }]
-    }
- ],
+      link: { type: 'doc', id: 'changelog' },
+      items: [
+        {
+          type: 'doc',
+          label: 'Platform and Media Server',
+          id: 'changelog/changelog-dolbyio-platform-media-server',
+        },
+        {
+          type: 'doc',
+          label: 'REST API Changes',
+          id: 'changelog/changelog-rest-apis',
+        },
+        {
+          type: 'doc',
+          label: 'Dashboard Changes',
+          id: 'changelog/changelog-dolbyio-dashboard',
+        },
+        {
+          type: 'doc',
+          label: 'Native SDK',
+          id: 'changelog/changelog-native-sdk',
+        },
+        {
+          type: 'doc',
+          label: 'Web SDK',
+          id: 'changelog/changelog-web-platform',
+        },
+        {
+          type: 'doc',
+          label: 'OBS WebRTC',
+          id: 'changelog/changelog-obs-webrtc',
+        },
+      ],
+    },
+  ],
   millicastApi: [
     {
       type: 'link',
