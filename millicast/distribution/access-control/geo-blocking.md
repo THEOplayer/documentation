@@ -4,8 +4,8 @@ slug: /geo-blocking
 ---
 **Geo-blocking** refers to the action of restricting access to certain content based on the geographical location of the user. Filtering can be allowed or denied by countries as well as IP addresses. Geo-blocking enables content providers to adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on private content. 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n4iXAJuw-aM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div className="youtube-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/n4iXAJuw-aM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 

@@ -48,7 +48,7 @@ Distribution of high-value content and intellectual property requires a platform
 [How-to Setup Geo-blocking](/millicast/distribution/access-control/geo-blocking.md)  
 **Geo-blocking** can be enabled to block specific geographic areas, such as countries or regions where you do not want the content to be streamed.
 
-<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
+<div className="youtube-container">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/n4iXAJuw-aM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 

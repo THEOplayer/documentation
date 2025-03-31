@@ -141,7 +141,7 @@ If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/m
 
 ## Broadcast from a custom web application
 
-For this section, you can use the hosted playback viewer or the _playback-app_ you just built in the last section. This section will help you build a separate app that would be used to [Capture](/millicast/capture/index.md) and broadcast streaming content.
+For this section, you can use the hosted playback viewer or the _playback-app_ you just built in the last section. This section will help you build a separate app that would be used to [Capture](/millicast/capture/index.mdx) and broadcast streaming content.
 
 ### a. Clone the Getting Started repository
 

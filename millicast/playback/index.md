@@ -116,7 +116,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 
 # Playback streaming media
 
-The previous stages of [Capture](/millicast/capture/index.md), [Broadcast](/millicast/broadcast/index.mdx), and [Distribution](/millicast/distribution/index.md) all lead up to making the content available for the end-user to view.
+The previous stages of [Capture](/millicast/capture/index.mdx), [Broadcast](/millicast/broadcast/index.mdx), and [Distribution](/millicast/distribution/index.md) all lead up to making the content available for the end-user to view.
 
 ## Using the streaming viewer
 
@@ -126,7 +126,7 @@ The quickest and easiest way to test playback is to use your account dashboard. 
 [How-to Create Subscriber Tokens](/millicast/streaming-dashboard/subscribe-tokens.md)  
 To broadcast, you need a _publishing_ token. Similarly, to support playback in your application, you will need to be able to generate a _subscriber_ token. This can be done either in a web application or with an [API](/millicast/distribution/access-control/index.md).
 
-<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
+<div className="youtube-container">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/Tj4miDHMwSI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
@@ -149,7 +149,7 @@ For some applications, you may need to create more than one experience. The **mu
 
 ## Integrating third-party capabilities
 
-<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
+<div className="youtube-container">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/MrCbnQ0NyaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
@@ -158,7 +158,7 @@ You can find examples of more third-party viewer integrations, such as [Adding G
 
 ## Playback events and analytics
 
-<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
+<div className="youtube-container">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/v45XTACc5D8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 

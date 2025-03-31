@@ -57,7 +57,7 @@ More detail about each of these can be found below.
 
 ### Video devices
 
-By choosing the camera icon you will see the available [capture](/millicast/capture/index.md) devices from your computer. This may include built-in cameras or accessories such as a USB camera. Virtual cameras may also be present such as with OBS or NDI devices. You can also begin [screen sharing](/millicast/capture/screensharing.md) from this menu.
+By choosing the camera icon you will see the available [capture](/millicast/capture/index.mdx) devices from your computer. This may include built-in cameras or accessories such as a USB camera. Virtual cameras may also be present such as with OBS or NDI devices. You can also begin [screen sharing](/millicast/capture/screensharing.mdx) from this menu.
 
 #### Video test
 

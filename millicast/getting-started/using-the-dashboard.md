@@ -12,7 +12,7 @@ This tutorial is split into two sections:
 
 ## Capture and broadcast from the dashboard
 
-We will begin by [broadcasting](/millicast/broadcast/index.mdx) directly from the Dolby.io Streaming Dashboard, [capturing](/millicast/capture/index.md) audio and video with a web camera.
+We will begin by [broadcasting](/millicast/broadcast/index.mdx) directly from the Dolby.io Streaming Dashboard, [capturing](/millicast/capture/index.mdx) audio and video with a web camera.
 
 ### a. Create a publish token
 

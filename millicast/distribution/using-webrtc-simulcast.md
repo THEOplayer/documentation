@@ -199,10 +199,9 @@ On the viewer, you can also check the **bitrate throughput** by selecting a qual
 
 Here is a video showing the Simulcast playback using the [hosted player](/millicast/playback/hosted-viewer.md) built with the Javascript [Web SDK](/millicast/client-sdks/web.mdx).
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kXkwNyA6X24?si=_tnQTf2Fympb0K9O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div className="youtube-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/kXkwNyA6X24?si=_tnQTf2Fympb0K9O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-
 
 # Troubleshooting
 

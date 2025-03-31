@@ -370,7 +370,6 @@ Next, go to the **multiple output** dock. If it is not showing up on your OBS, v
 
 This video guide walks through setup and capabilities of an OBS workflow.
 
-<div align= "center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/B1rjc14FzDc?si=Pztx7kiNwtC6GjO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div className="youtube-container">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/B1rjc14FzDc?si=Pztx7kiNwtC6GjO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
-

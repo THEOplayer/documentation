@@ -119,7 +119,7 @@ By configuring your publish token to [record](/millicast/distribution/stream-rec
 
 This example demonstrates an archive recording captured from a DJI Mavic for a 1920x1080 latency test.
 
-<div style={{display: "flex", justifycontent: "center", alignitems: "center"}}>
+<div className="youtube-container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/44GWULy5Jlw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 

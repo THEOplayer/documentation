@@ -69,7 +69,6 @@ FlowCaster is a perfect tool for video and audio professionals to use with their
 
 Below is a video showing the complete workflow to connect Flowcaster to the Dolby.io Real-time Streaming service using WebRTC and WHIP:
 
-<div align="center">
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LHwiQPJo0QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div className="youtube-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/LHwiQPJo0QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
