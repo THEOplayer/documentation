@@ -11,11 +11,13 @@ slug: /android-how-to-add-picture-in-picture
 
 Refer to the [Interactive Player](https://github.com/dolbyio-samples/rts-app-android-viewer/tree/main/interactiveplayer) sample application to learn more about implementing the code needed for PiP feature in a fully functioning Android App.
 
-*TODO: \< GettingStartedAndroid />
+import GettingStartedAndroid from '../../callouts/_getting_started_android.md';
+
+<GettingStartedAndroid />
 
 ## 1. Add a Centralized PipViewModel
 
-Create a ViewModel called `PipViewModel` that manages the state of whether PiP mode is enabled or not. This ViewModel should expose a `StateFlow` or a `Flow` that emits the current state of PiP mode. 
+Create a ViewModel called `PipViewModel` that manages the state of whether PiP mode is enabled or not. This ViewModel should expose a `StateFlow` or a `Flow` that emits the current state of PiP mode.
 
 Here's an example implementation using Hilt for dependency injection:
 
