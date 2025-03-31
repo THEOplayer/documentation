@@ -138,7 +138,7 @@ Added missed layer information in the `view` command. For [Simulcast](/millicast
 
 # 2024-01-22 | Web SDK [0.1.43](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.43)
 
-View the [0.1.43 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.43) tag for the full list of changes. You may also want to review the [Streaming Platform and Media Server Release Notes](changelog:changelog-dolbyio-platform-media-server) for details on the Geo-cascading, Backup Publishing, and Simulcast changes.
+View the [0.1.43 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.43) tag for the full list of changes. You may also want to review the [Streaming Platform and Media Server Release Notes](changelog-dolbyio-platform-media-server.md) for details on the Geo-cascading, Backup Publishing, and Simulcast changes.
 
 ### SDK Version
 
