@@ -1,0 +1,56 @@
+# Getting started with Millicast on Web
+
+import Intro from '../../shared/millicast/_getting-started-intro.mdx';
+
+<Intro />
+
+## Usage
+
+1. Follow [our Getting Started guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx)
+   to set up THEOplayer in your web app or website.
+   The Millicast integration is available in the main [theoplayer](https://www.npmjs.com/package/theoplayer) package on npm.
+2. Add a Millicast source to your player's source.
+
+### Add a Millicast source
+
+After setting up your THEOplayer on your web page, set its source to a `SourceDescription` containing a `MillicastSource`.
+You'll need a Millicast account ID and stream name to identify your Millicast stream:
+
+```javascript
+const player = new THEOplayer.Player(element, configuration);
+player.source = {
+  sources: {
+    type: 'millicast',
+    src: 'multiview',
+    streamAccountId: 'k9Mwad',
+    subscriberToken: '<token>', // This is only required for subscribing to secure streams and should be omitted otherwise.
+  },
+};
+```
+
+### Add configuration
+
+Optionally, you can provide additional configuration to the source, specific for working with Millicast streams. To
+configure these settings, add a `connectOptions` property to the source object and specify the options.
+
+In the example below, the configuration is used to disable any audio from the Millicast stream.
+For an exhaustive list of these options, visit the
+[documentation](https://millicast.github.io/millicast-sdk/View.html#connect).
+
+```javascript
+player.source = {
+  sources: {
+    type: 'millicast',
+    /* ... */
+    connectOptions: {
+      disableAudio: true,
+      /* ... */
+    },
+  },
+};
+```
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/MillicastSource.html)
+- [Millicast documentation](https://docs.dolby.io/streaming-apis/docs/)

@@ -16,5 +16,5 @@ The opposite event, online, is also present in the API, and it is Thrown to indi
 
 The following resources provide more information:
 
-- [Network API events](pathname:///theoplayer/v8/api-reference/web/interfaces/NetworkEventMap.html)
+- [Network API events](pathname:///theoplayer/v9/api-reference/web/interfaces/NetworkEventMap.html)
 - [Network: How to use the Network API](../how-to-guides/08-network/00-introduction.md)
