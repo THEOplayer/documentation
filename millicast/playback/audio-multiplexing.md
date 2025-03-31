@@ -17,15 +17,11 @@ To first understand Audio Multiplexing, we need to understand how the Dolby.io s
 
 If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) and [Multi-view](/millicast/playback/multiview.md) documentation, you may be confused as to why you would use Audio Multiplexing instead of Multiview. Audio multiplexing allows audio sources to overlap, a feature that is useful for
 
-
-|Audio Multiplexing_Let users hear multiple audio sources at once that overlap._|
-|:----|
-|Clubhouse-like apps where hosts chat virtually|
-|Townhall apps or platforms where people may periodically ask questions or present.|
-|Immersive sports apps where a commentary track is combined with an in-stadium ambient noise track.|
-
-
-
+| Audio Multiplexing<br/>_Let users hear multiple audio sources at once that overlap._               |
+| :------------------------------------------------------------------------------------------------- |
+| Clubhouse-like apps where hosts chat virtually                                                     |
+| Townhall apps or platforms where people may periodically ask questions or present.                 |
+| Immersive sports apps where a commentary track is combined with an in-stadium ambient noise track. |
 
 ## Using Audio Multiplexing
 
