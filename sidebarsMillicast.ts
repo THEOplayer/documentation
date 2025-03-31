@@ -52,7 +52,6 @@ const filteredMillicastDirectorApiSidebar = removeHiddenItems(millicastDirectorA
 
 const sidebars: SidebarsConfig = {
   millicast: [
-    'index',
     'introduction-to-streaming-apis',
     {
       type: 'category',
