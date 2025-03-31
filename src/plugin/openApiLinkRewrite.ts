@@ -80,7 +80,15 @@ class MarkdownProcessor {
           //   #tag/MediaAssets/operation/MediaAssets_GetMediaAssets
           const operationMatch = (node.url as string).match(/^#(?:tag\/\w+\/)?operation\/(.+)$/);
           if (operationMatch) {
-            const operationId = operationMatch[1];
+            let operationId = operationMatch[1];
+            // TODO Fix broken links in Millicast REST API
+            if (operationId === 'Account_MediaAssetUsage') {
+              operationId = 'Analytics_MediaAssetUsage';
+            } else if (operationId === 'Account_RecordFileUsageBillable') {
+              operationId = 'Analytics_MediaAssetUsageBillable';
+            } else if (operationId === 'MediaAssets_GetMediaAssets') {
+              operationId = 'MediaAssets_ReadMediaAsset';
+            }
             // https://github.com/PaloAltoNetworks/docusaurus-openapi-docs/blob/v4.3.3/packages/docusaurus-plugin-openapi-docs/src/openapi/openapi.ts#L145-L147
             const operationPageId = kebabCase(operationId);
             node.url = `${operationPageId}.api.mdx`;
