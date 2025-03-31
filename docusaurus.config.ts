@@ -11,6 +11,7 @@ import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
+import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
 import path from 'path';
 import fs from 'fs';
 
@@ -269,6 +270,7 @@ const config: Config = {
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
+            markdownGenerators: openApiLinkRewrite(),
           },
           millicastDirector: {
             specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
