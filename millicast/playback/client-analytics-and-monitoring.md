@@ -85,7 +85,7 @@ The same pattern can be used with other tools such as Grafana, Splunk, New Relic
 
 > 👍 Viewer Reporting Analytics API
 > 
-> The [Viewer Reporting](ref:analytics-2) REST API is a premium [Analytics APIs](/millicast/analytics/index.md) option made available to enterprise customers. It offers key insights from our server logs to help identify viewers, location, and other metrics. If you would like to use this endpoint, please [submit a support ticket](https://support.dolby.io/hc/en-au) or reach out to your [sales/solutions](https://dolby.io/contact/) contact.
+> The [Viewer Reporting](/millicast/api/reporting/advanced-analytics-api.info.mdx) REST API is a premium [Analytics APIs](/millicast/analytics/index.md) option made available to enterprise customers. It offers key insights from our server logs to help identify viewers, location, and other metrics. If you would like to use this endpoint, please [submit a support ticket](https://support.dolby.io/hc/en-au) or reach out to your [sales/solutions](https://dolby.io/contact/) contact.
 
 
 ## How-to Configure Stats Collection Frequency

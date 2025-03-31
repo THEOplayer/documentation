@@ -63,7 +63,7 @@ Let's go over each section in a bit more detail:
 
 You will also see an **Advanced tab** at the top of the token creation interface; in this tab, you can configure more advanced settings.
 
-- [Allowed Origins:](/millicast/distribution/access-control/token-security.md)allowed-origins) If specified, only the domains listed will be allowed in requests to [Director API](ref:director_publish). Wildcard subdomains are also allowed, such as _"\*.demo.com"_. When unspecified (empty), there are no domain restrictions.
+- [Allowed Origins:](/millicast/distribution/access-control/token-security.md)allowed-origins) If specified, only the domains listed will be allowed in requests to [Director API](/millicast/api/director/director-publish.api.mdx). Wildcard subdomains are also allowed, such as _"\*.demo.com"_. When unspecified (empty), there are no domain restrictions.
 - [IP Filter Type:](/millicast/distribution/access-control/token-security.md)ip-filters) 
   - **Allowed IP Addresses:** Allows you to specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage:** If specified, Bind IPs on usage will bind the token to the first _X_ IP addresses used with a token in requests to [Director API](/millicast/api/publish-token-v-1-read-token.api.mdx), thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with the _AllowedIpAddresses_ option. Not currently supported with RTMP.
@@ -167,7 +167,7 @@ From this tab, you can customize the player by altering settings such as the inc
 
 
 
-The playback tab also includes a [WHEP](ref:whep_whepsubscribe) endpoint. This can be used for devices that support WebRTC egress. To learn more about WHEP, explore the [Playback](/millicast/playback/index.md) section of the documentation.
+The playback tab also includes a [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint. This can be used for devices that support WebRTC egress. To learn more about WHEP, explore the [Playback](/millicast/playback/index.md) section of the documentation.
 
 ### 6\. Recordings
 

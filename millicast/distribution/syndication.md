@@ -80,4 +80,4 @@ With your API Secret found on the Dolby.io dashboard, you can query information 
 - [Total bandwidth for streams specified by TrackingID](/millicast/api/analytics-get-total-bandwidth-for-tracking-id.api.mdx)
 - [Series bandwidth for streams specified by TrackingID](/millicast/api/analytics-get-series-bandwidth-for-tracking-id.api.mdx)
 
-To get the bandwidth consumption of a specific viewer, use the [Viewer Records](ref:records_getviewerrecords) REST API.
+To get the bandwidth consumption of a specific viewer, use the [Viewer Records](/millicast/api/reporting/records-get-viewer-records.api.mdx) REST API.

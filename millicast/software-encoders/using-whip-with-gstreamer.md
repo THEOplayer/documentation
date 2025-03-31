@@ -2,7 +2,7 @@
 title: "Gstreamer"
 slug: /using-whip-with-gstreamer
 ---
-**GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines that support complex workflows. You may want to broadcast over WebRTC from a file on disk or another Real-time Streaming Protocol ([RTSP](/millicast/broadcast/rtsp.md)). You can originate the broadcast through GStreamer that ingests the stream utilizing [WHIP](/millicast/broadcast/webrtc-whip.md) or forwards with [WHEP](ref:whep_whepsubscribe).
+**GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines that support complex workflows. You may want to broadcast over WebRTC from a file on disk or another Real-time Streaming Protocol ([RTSP](/millicast/broadcast/rtsp.md)). You can originate the broadcast through GStreamer that ingests the stream utilizing [WHIP](/millicast/broadcast/webrtc-whip.md) or forwards with [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx).
 
 This guide includes a number of examples:
 
@@ -59,11 +59,11 @@ The [1.22.0 release](https://gstreamer.freedesktop.org/releases/1.22/) of GStrea
 The [whipsink](https://gstreamer.freedesktop.org/documentation/webrtchttp/whipsink.html) element can be used to **publish** a gstreamer pipeline out to a Dolby.io real-time stream. The attributes that must be defined:
 
 - `auth-token`: should be set with your publishing bearer token
-- `whip-endpoint`: should be set with the Dolby.io [WHIP](ref:whip_whippublish) endpoint
+- `whip-endpoint`: should be set with the Dolby.io [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint
 
 The [autovideosink](https://gstreamer.freedesktop.org/documentation/autodetect/autovideosink.html) element can be used to **playback** a Dolby.io real-time stream being broadcast into a gstreamer pipeline. The attribute that must be defined:
 
-- `whep-endpoint`: should be set with the Dolby.io [WHEP](ref:whep_whepsubscribe) endpoint
+- `whep-endpoint`: should be set with the Dolby.io [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint
 
 You can use the [Hosted Viewer](/millicast/streaming-dashboard/index.md) and [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) to test your setups.
 
@@ -119,7 +119,7 @@ Instead of using the video test source, this example demonstrates reading and lo
 
 ### Using a specific codec
 
-If there is a requirement to use a specific codec such as with recordings you should use the **codec** query parameter of the [WHIP](ref:whip_whippublish) endpoint. 
+If there is a requirement to use a specific codec such as with recordings you should use the **codec** query parameter of the [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint. 
 
 ```shell bash
 gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=true ! \
