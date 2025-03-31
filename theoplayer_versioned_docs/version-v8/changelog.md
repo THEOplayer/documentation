@@ -355,7 +355,7 @@ toc_max_heading_level: 2
 
 - Added the Media3 integration. This integration installs a new player backend built on top of [Jetpack Media3](https://developer.android.com/media/media3), which aims to provide more stable playback on a wider range of devices.
     - Note that this integration is currently under active development, and some advanced player features may not yet be compatible with this new integration.
-    - For more information, see [our getting started guide](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/media3/getting-started/).
+    - For more information, see [our getting started guide](https://www.theoplayer.com/docs/theoplayer/v8/how-to-guides/android/media3/getting-started/).
 
 #### 🐛 Issues
 
