@@ -53,9 +53,6 @@ The package name of the Native SDK for Android is _millicast-native-sdk-version-
 - A working video camera and microphone
 - Android API [24](https://developer.android.com/tools/releases/platforms#7.0) or later
 - Client SDK [1.8.0](https://github.com/millicast/millicast-native-sdk/releases) or later
-
-, 
-
 # Tutorials
 
 - [Getting Started with Publishing](/millicast/client-sdks/android/android-how-to-add-picture-in-picture.mdx)

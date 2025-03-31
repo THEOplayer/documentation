@@ -114,9 +114,6 @@ Example:  https://viewer.millicast.com/?streamId=k9Mwad/multiview
 ## Record drone footage
 
 By configuring your publish token to [record](/millicast/distribution/stream-recordings/index.mdx) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/distribution/stream-recordings/index.mdx)managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
-
-, 
-
 ### Video: Real-time Streaming drone latency test
 
 This example demonstrates an archive recording captured from a DJI Mavic for a 1920x1080 latency test.

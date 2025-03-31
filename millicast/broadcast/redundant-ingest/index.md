@@ -15,9 +15,6 @@ The following instructions explain how to publish redundant streams using Stream
 > 👍 Geo-cascading Settings
 > 
 > Be aware that all publishers that contribute to the same stream must have the same [geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) settings.
-
-, 
-
 ## Publishing redundant feeds using RTMP or SRT
 
 Follow this procedure to broadcast multiple redundant feeds and provide a reliable streaming experience using RTMP or SRT.

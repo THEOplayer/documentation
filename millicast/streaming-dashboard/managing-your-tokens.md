@@ -107,9 +107,6 @@ Once opened, you will see multiple tabs to explore.
 6. Recordings - media files that are captured from stream recordings
 7. API - publishing token, ids, and endpoints for use with [Client SDKs](/millicast/client-sdks/index.md)
 8. Multi-source - a convenient tool for setting up [multi-source](/millicast/broadcast/multi-source-broadcasting.md) contribution
-
-, 
-
 ### 1\. Token details
 
 The **Token details** tab allows you to view and edit settings specified during token creation. For a full list of these settings and their definitions, see [Creating a Publishing token](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token). The Token details page also includes the **Publish token** string and the **Account ID** string, which can both be copied and used for [starting a broadcast](/millicast/broadcast/index.mdx). 

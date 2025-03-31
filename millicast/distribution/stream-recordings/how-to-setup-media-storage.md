@@ -95,9 +95,6 @@ The following procedure explains how to grant Dolby upload access to Google Clou
    
 ![](../../assets/img/Screenshot_2024-02-14_at_2.41.23_pm.png)
 
-
-, 
-
 ## AWS S3
 
 To configure Amazon's Simple Storage Service (S3) you need to provide authorization to our service.

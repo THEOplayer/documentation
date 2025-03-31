@@ -37,9 +37,6 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
    | :------------------- | :------------------------------------- |
    | Format               | Custom                                 |
    | Stream Publishing ID | Makito?t=Your_Token_From_SRT_Stream_ID |
-
-, 
-
 ## How to use Haivision KB encoder with RTMP
 
 > 👍 Getting Started with RTMP

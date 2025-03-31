@@ -113,22 +113,13 @@ The data measures and metrics gathered for diagnostics are described below.
 | :---------- | :---------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **version** | The version of the Client SDK that generated the analytics. | This can be helpful for debugging if you are using or testing new versions of the SDK to find signs of problems with a specific version.                 |
 | **client**  | An identifier for the Client SDK that was used.             | This can help to distinguish analytics collected between Web, Android, iOS, React-Native, etc. which may be in a mobile browser or a native application. |
-
-, 
-
 ## Client Environment
 
 | Measure       | Definition                                                                                                                                                       | Troubleshooting                                                                                                                                                                              |
 | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **userAgent** | The user agent captured from the device and/or browser. This can identify the operating system, application versions, etc. The string is the raw unparsed value. | Codec support on platforms, devices, and browsers often come into play with playback performance. Being able to identify the user agent can be particularly helpful for diagnosing patterns. |
 | **timestamp** | Identifies the precise date and time of the client when diagnostic measures were collected as a UTC value.                                                       | This can be helpful for correlating with other system-wide or content network events.                                                                                                        |
-
-, 
-
 ## Client Connection
-
-, 
-
 | Measure          | Definition                                                                                                                               | Troubleshooting                                                                                             |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
 | **accountId**    | The unique identifier that is assigned to each Millicast account. It is a required parameter when publishing or subscribing to a stream. | The combination of Account ID and Stream Name can be used to identify the unique playback experience.       |
@@ -138,9 +129,6 @@ The data measures and metrics gathered for diagnostics are described below.
 | **connection**   | The state of the connection according to the client SDK.                                                                                 | This can be helpful context when the client and server do not have an active connection to share analytics. |
 
 ## Content Characteristics
-
-, 
-
 | Measure         | Definition                                                                                                                                             | Troubleshooting                                                                                                                                                              |
 | :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **mid**         | The Media Stream Identifier is an identification tag negotiated and present in both local and remote descriptions for the stream with multiple tracks. |                                                                                                                                                                              |

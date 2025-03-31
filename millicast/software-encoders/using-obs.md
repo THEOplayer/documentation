@@ -227,9 +227,6 @@ Next, set the **Base Resolution** and your **Output Resolution** to be matching.
 ![](../assets/img/Capture_decran_2023-07-24_a_2.52.27_PM.png)
 
 
-
-, 
-
 # Troubleshooting
 
 ## B-Frames May Cause Stream Stuttering
@@ -342,9 +339,6 @@ When you open OBS-WebRTC now, you will see the ability to add multiple RTMP targ
 ![](../assets/img/SimulcastS3.png)
 
 
-
-, 
-
 ### Mac
 
 Additional instructions for installing the [obs-multi-rtmp](https://github.com/kilinbox/obs-multi-rtmp) plugin.
@@ -369,9 +363,6 @@ Next, go to the **multiple output** dock. If it is not showing up on your OBS, v
 
 ![](../assets/img/Capture_decran_2023-07-25_a_10.27.42_AM.png)
 
-
-
-, 
 
 # Learn More
 

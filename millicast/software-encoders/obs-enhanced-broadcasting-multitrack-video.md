@@ -7,9 +7,6 @@ slug: /obs-enhanced-broadcasting-multitrack-video
 > This feature is still under development and may be updated, changed, or deprecated without notice.  We welcome your feedback.
 > 
 > For OBS support, you can follow the following pull-request for the OBS project to merge this functionality with Millicast.  Once this PR is merged the functionality will be put into the next release of OBS: https://github.com/obsproject/obs-studio/pull/11509
-
-, 
-
 # MultiTrack Video with OBS
 
 Multitrack video in OBS support creating multiple "renditions" or qualities that OBS sends to Millicast so that the end-viewer can choose which quality to watch or let it happen automatically.  This is called Adaptive Bitrate (ABR).

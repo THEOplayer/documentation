@@ -28,9 +28,6 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-g 60            | Group of pictures (GOP) size                     |
 | \-f flv           | Package flash video                              |
 | \-preset veryfast | Video encoding speed to compression ratio preset |
-
-, 
-
 # RTMP
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available. See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values. 
@@ -94,9 +91,6 @@ AV1 encoding can be quite processor-intensive and usually requires GPU-enabled h
 ```shell bash
 -speed 10  -qp 63 -g 120 -keyint_min 120 -tile-columns 4 -tile-rows 2
 ```
-
-, 
-
 > 🚧 AV1 Encoder Required
 > 
 > FFmpeg doesn't include an AV1 encoder with standard installs. You must install one separately by following FFmpeg's official [AV1 installation guide](https://trac.ffmpeg.org/wiki/Encode/AV1).
@@ -120,9 +114,6 @@ ffmpeg -re -i rtsp://98.116.xx.xx:5545/axis-media/media.amp \
   -rtmp_playpath $RTMP_PUBLISH_STREAM_NAME \
   -rtmp_live live $RTMP_PUBLISH_PATH
 ```
-
-, 
-
 ## How-to Simulcast a Multi-Source MBR Video Stream
 
 This example demonstrates sending the same video with multiple contribution layers. The `&sourceId` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to distinguish each source while using `&videoOnly` so the audio is only sent with the main feed. Also see the [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) for more about Multi-bitrate contribution.
@@ -133,9 +124,6 @@ ffmpeg -re -stream_loop -1 -i demo.mp4 \
   -c:v libx264 -preset medium -b:v:0 1200k -maxrate:v:0 1280k -bufsize:v:0 1600k -s:v:0 854x480 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=2&simulcastId&videoOnly" \  
   -c:v libx264 -preset medium -b:v:0 2500k -maxrate:v:0 2600k -bufsize:v:0 3000k -s:v:0 1280x720 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=3&simulcastId&videoOnly"
 ```
-
-, 
-
 # SRT
 
 In order to broadcast with SRT, you will need to have your **SRT publish path** and **SRT stream ID** available. See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on how to retrieve these values.
@@ -171,9 +159,6 @@ ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
   -map 0 -vf scale=720:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 3000k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D1" \
   -map 0 -vf scale=480:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 1500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D2"  
 ```
-
-, 
-
 # Troubleshooting
 
 These examples were verified with `ffmpeg` version 6.0 on MacOS.
