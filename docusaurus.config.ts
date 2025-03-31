@@ -534,7 +534,7 @@ const config: Config = {
     },
     footer: {
       style: 'light',
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.theoplayer.com/">Dolby</a>`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby</a>`,
     },
     prism: {
       theme: prismThemes.oneLight,
