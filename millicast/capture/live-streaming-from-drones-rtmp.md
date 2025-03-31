@@ -113,7 +113,7 @@ Example:  https://viewer.millicast.com/?streamId=k9Mwad/multiview
 
 ## Record drone footage
 
-By configuring your publish token to [record](/millicast/distribution/stream-recordings/index.md) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/distribution/stream-recordings/index.md)managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
+By configuring your publish token to [record](/millicast/distribution/stream-recordings/index.mdx) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/distribution/stream-recordings/index.mdx)managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
 
 , 
 

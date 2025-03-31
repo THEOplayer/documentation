@@ -34,7 +34,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 ### Fixes
 
 - Fix for an issue where in some cases with [Backup Publishing](/millicast/broadcast/redundant-ingest/index.md) audio did not fail over.
-- Improvements to error messages with our [Live Clipping](/millicast/distribution/stream-recordings/live-clipping.md) feature.
+- Improvements to error messages with our [Live Clipping](/millicast/distribution/stream-recordings/live-clipping.mdx) feature.
 - Improvements in certain cases when streaming with AV1.
 - Fixed an issue where the plus character (+) in an SRT URL was not handled as whitespace correctly.
 - Fix for certain media streams where the top layer desynchronized from the lower renditions when using Cloud Transcoder with "Passthrough" mode.

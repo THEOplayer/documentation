@@ -33,7 +33,7 @@ In the examples below, these values are referenced as environment variables. You
 
 > 🔴 Recording Streams
 > 
-> If your token has [recordings](/millicast/distribution/stream-recordings/index.md) enabled you will also want to specify the `codec` with the WHIP URL to specify one of the supported recording formats. You can append the query string at the end of the URL such as:
+> If your token has [recordings](/millicast/distribution/stream-recordings/index.mdx) enabled you will also want to specify the `codec` with the WHIP URL to specify one of the supported recording formats. You can append the query string at the end of the URL such as:
 > 
 > ```
 > https://director.millicast.com/api/whip/{Stream Name}?codec=vp8

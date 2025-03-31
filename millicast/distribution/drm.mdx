@@ -4,7 +4,7 @@ slug: /drm
 ---
 **Digital Rights Management (DRM)** is a security mechanism that helps protect premium content or intellectual property within a stream from being shared without permission. This mechanism prevents bad actors from screen sharing, taking screenshots, and other unauthorized distribution.
 
-DRM is accomplished through an extra layer of encryption before distributing content for playback. When configuring your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) you enable DRM for any associated streams. The video player will contact a licensing server to retrieve a key to decrypt the audio and video. 
+DRM is accomplished through an extra layer of encryption before distributing content for playback. When configuring your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) you enable DRM for any associated streams. The video player will contact a licensing server to retrieve a key to decrypt the audio and video.
 
 Support is available for:
 
@@ -32,12 +32,12 @@ In order to enable DRM, you will need to follow a few steps:
 Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
 
 > ❗️ Additional Charges - Licenses
-> 
+>
 > This feature will incur additional charges for licenses. If you would like to use this capability on your projects, please be aware of the pricing impact or reach out to your [sales/solutions](https://dolby.io/contact/) contact with any questions.
-> 
+>
 > Review [Pricing](https://dolby.io/pricing/) for additional details.
 
-, 
+,
 
 ## Enabling DRM on a Stream
 
@@ -93,8 +93,8 @@ Here is an example of initializing the subscriber for a DRM stream:
 
 ```javascript
 const tokenGenerator = () => Director.getSubscriber(streamName, accountId,subscriberToken, enableDRM);
- 
- 
+
+
 
 ```
 
@@ -115,10 +115,10 @@ viewer.on('broadcastEvent', (event) => {
                   videoElement: document.querySelector("video"),
                   audioElement: document.querySelector("audio"),
                   videoEncryptionParams: event.data.encryption,
-                  videoMid: '0',                 
+                  videoMid: '0',
                 }
                 // if there are audio tracks in your stream, add the next two lines
- 
+
                 const audioTrackInfo = event.data.tracks.find((track) => track.type === 'audio')
                 if (audioTrackInfo) {
                   drmOptions.audioMid = audioTrackInfo.mediaId;
@@ -137,10 +137,10 @@ await viewer.project(sourceId, tracksMapping)
 ```
 
 > 📘 Sample Code and Reference
-> 
+>
 > For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js)  which demonstrates the use of DRM.
 
-, 
+,
 
 # Troubleshooting
 
@@ -169,7 +169,7 @@ There are some specific scenarios that limit compatibility with Firefox. Similar
 
 The use of DRM will limit some of the other platform features.
 
-- [Cloud Transcoder](/millicast/distribution/cloud-transcoder.md) for ABR broadcasts are not compatible with DRM at this time.
+- [Cloud Transcoder](/millicast/distribution/cloud-transcoder.mdx) for ABR broadcasts are not compatible with DRM at this time.
 - [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) with multiple contribution ingests will not use DRM for each layer.
 - [Analytics](/millicast/analytics/index.md) around video stats are not available from encrypted content.
 - [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) dashboard will be unable to allow a preview of streams without consuming a license so is unavailable.

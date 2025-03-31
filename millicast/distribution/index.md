@@ -14,7 +14,7 @@ The Dolby.io Streaming Content Delivery Network (CDN) offers a range of server-s
 
 </div>
 
-Distribution of streaming content requires scalability, stability, and security along with a robust platform with features including [stream recordings](/millicast/distribution/stream-recordings/index.md), [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.md), [multi-bitrate delivery](/millicast/distribution/using-webrtc-simulcast.md), [backup publishing](/millicast/broadcast/redundant-ingest/index.md), [stream syndication](/millicast/distribution/syndication.md), and  [streaming analytics](/millicast/analytics/index.md).
+Distribution of streaming content requires scalability, stability, and security along with a robust platform with features including [stream recordings](/millicast/distribution/stream-recordings/index.mdx), [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.md), [multi-bitrate delivery](/millicast/distribution/using-webrtc-simulcast.md), [backup publishing](/millicast/broadcast/redundant-ingest/index.md), [stream syndication](/millicast/distribution/syndication.md), and  [streaming analytics](/millicast/analytics/index.md).
 
 # Start building
 
@@ -97,7 +97,7 @@ We utilize a network of data centers distributed around the globe. This allows s
 [Stream syndication](/millicast/distribution/syndication.md)  
 Through distribution partners, **syndication** allows you to send the same stream to multiple platforms. A tracking id can be used to correlate and analyze distribution data to monitor bandwidth utilization, viewer attendance with each provider, and other statistics that can help with billing.
 
-[Recordings](/millicast/distribution/stream-recordings/index.md)  
+[Recordings](/millicast/distribution/stream-recordings/index.mdx)  
 A live broadcast can be archived by enabling the storage of a recording of the stream.
 
 [Self-signed tokens](/millicast/streaming-dashboard/subscribe-tokens.md#creating-a-self-signed-token)  

@@ -68,7 +68,7 @@ To disable re-streaming on specific feeds add the **norestream** boolean [publis
 
 ### Cloud transcoder and Re-streaming
 
-For workflows using both the [Cloud transcoder](/millicast/distribution/cloud-transcoder.md) and Re-streaming, the highest quality layer of the stream will be re-streamed out to the desired re-stream endpoints.
+For workflows using both the [Cloud transcoder](/millicast/distribution/cloud-transcoder.mdx) and Re-streaming, the highest quality layer of the stream will be re-streamed out to the desired re-stream endpoints.
 
 If **passthrough** is enabled, the top non-transcoded layer will be re-streamed. If **passthrough** is not enabled, the top transcoder layer will be re-streamed. 
 

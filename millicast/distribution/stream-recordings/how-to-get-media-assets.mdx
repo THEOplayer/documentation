@@ -2,7 +2,7 @@
 title: "How-to Get Media Assets"
 slug: /how-to-get-media-assets
 ---
-With [Stream Recordings](/millicast/distribution/stream-recordings/index.md) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or automate workflows using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media-webhooks.md) available for building event-driven integrations.
+With [Stream Recordings](/millicast/distribution/stream-recordings/index.mdx) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or automate workflows using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media-webhooks.md) available for building event-driven integrations.
 
 # Recordings in the Dashboard
 
@@ -31,7 +31,7 @@ Alternatively, to find all your recordings, open the **Recordings** section of t
 
 
 
-, 
+,
 
 ## Preview a Recording
 
@@ -54,7 +54,7 @@ To download recordings, click the arrow icon visible on the thumbnail. You can a
 
 
 > ❗️ Audio Missing?
-> 
+>
 > The downloaded recording will use the Opus audio codec. Playback on various media players may not support Opus and audio may not be heard. You can use [VLC](https://www.videolan.org/) for playback and converting sound to AAC.
 
 ## Delete Recordings
@@ -76,10 +76,10 @@ To delete all items at once, click the **Select All** button from the same top s
 
 
 > ❗️ Deletion is Permanent
-> 
+>
 > If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 
-, 
+,
 
 # Finding Media by API
 
@@ -123,7 +123,7 @@ curl --request GET \
   --header 'authorization: Bearer abc123'
 ```
 
-, 
+,
 
 # Removing Media by API
 
@@ -140,14 +140,14 @@ curl --request DELETE \
 To remove everything from your account you can use the [Delete All Media Assets](/millicast/api/media-assets-delete-media-assets-2.api.mdx) REST endpoint. This operation works on one `type` at a time so will be called to remove `recording`, `clip`, and `timeline` independently.
 
 > ❗️ Deletion is Permanent
-> 
+>
 > If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 
-, 
+,
 
 # Downloading Media by API
 
-Using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) API you can identify the cloud storage location where recordings and clips are stored. 
+Using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) API you can identify the cloud storage location where recordings and clips are stored.
 
 ## How-to Retrieve a Recording
 

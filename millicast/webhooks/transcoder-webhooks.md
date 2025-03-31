@@ -2,7 +2,7 @@
 title: "Transcoder Hooks"
 slug: /transcoder-webhooks
 ---
-The **transcoder** _type_ of [webhook](/millicast/webhooks/index.md) allows you to receive a state transition notification for platform events such as when a [transcoder](/millicast/distribution/cloud-transcoder.md) starts, stops, or is deleted.
+The **transcoder** _type_ of [webhook](/millicast/webhooks/index.md) allows you to receive a state transition notification for platform events such as when a [transcoder](/millicast/distribution/cloud-transcoder.mdx) starts, stops, or is deleted.
 
 > 👍 Setting up Webhooks
 > 
@@ -16,7 +16,7 @@ The `event` will be one of the following values:
 - **STOPPED** is sent when the transcoder transitions to a _Shutdown_ status.
 - **DELETED** is sent when the transcoder transitions to a _Deleted_ status.
 
-Review the [Cloud Transcoder](/millicast/distribution/cloud-transcoder.md) streaming guide for descriptions of the various transcoder statuses.
+Review the [Cloud Transcoder](/millicast/distribution/cloud-transcoder.mdx) streaming guide for descriptions of the various transcoder statuses.
 
 # Data
 

@@ -60,7 +60,7 @@ See our documentation page for [STUN and TURN](/millicast/platform-requirements/
 
 ## IP Addresses with Cloud Transcoders
 
-For customers using our real-time cloud transcoder, a static IP address is provisioned for the duration that the machine is provisioned and in use.  The IP address can be found in the Transcoding section of the dashboard or with the [Cloud Transcoder](/millicast/distribution/cloud-transcoder.md). If the instance is restarted it is possible it will use a new IP address.  A DNS name is also provided for these instances.
+For customers using our real-time cloud transcoder, a static IP address is provisioned for the duration that the machine is provisioned and in use.  The IP address can be found in the Transcoding section of the dashboard or with the [Cloud Transcoder](/millicast/distribution/cloud-transcoder.mdx). If the instance is restarted it is possible it will use a new IP address.  A DNS name is also provided for these instances.
 
 # Restricted Territories
 

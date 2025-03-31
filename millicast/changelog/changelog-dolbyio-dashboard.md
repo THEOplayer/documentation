@@ -6,9 +6,9 @@ Updates to the Dolby.io Dashboard and Applications.
 
 On the dashboard, users can now set the account-wide expiration rules rules for their recorded media.  This means that media can be auto-deleted without the need for additional API calls. This includes:
 
-- [Recordings](/millicast/distribution/stream-recordings/index.md): The full-length stream recordings that are created when recording is enabled on a token
-- [Clips](/millicast/distribution/stream-recordings/live-clipping.md): Clips generated from the [Media Asset API](/millicast/api/media-assets-create-media-asset/) when utilizing Dolby cloud storage
-- [Timelines](/millicast/distribution/stream-recordings/live-clipping.md): Timelines are the "media cache" that clips are generated from and are required to create a clip. They are always stored on Dolby cloud storage.  By default timelines will expire after 1 day.  Users can change this value if they wish to be able to clip  further back in time.
+- [Recordings](/millicast/distribution/stream-recordings/index.mdx): The full-length stream recordings that are created when recording is enabled on a token
+- [Clips](/millicast/distribution/stream-recordings/live-clipping.mdx): Clips generated from the [Media Asset API](/millicast/api/media-assets-create-media-asset/) when utilizing Dolby cloud storage
+- [Timelines](/millicast/distribution/stream-recordings/live-clipping.mdx): Timelines are the "media cache" that clips are generated from and are required to create a clip. They are always stored on Dolby cloud storage.  By default timelines will expire after 1 day.  Users can change this value if they wish to be able to clip  further back in time.
 
 These settings are available in the streaming dashboard under `Settings > Media`
 
@@ -61,7 +61,7 @@ You can find additional related changes in the [REST APIs and GraphQL Release No
 
 ## :new: Live Clipping
 
-With **live clipping** you can capture a partial clip from an active ongoing stream that is immediately available. This can power many solutions such as social network sharing, replay capabilities, as well as archival and auditing. Learn more from the [Stream Recordings](/millicast/distribution/stream-recordings/index.md) guide.
+With **live clipping** you can capture a partial clip from an active ongoing stream that is immediately available. This can power many solutions such as social network sharing, replay capabilities, as well as archival and auditing. Learn more from the [Stream Recordings](/millicast/distribution/stream-recordings/index.mdx) guide.
 
 ### Media
 

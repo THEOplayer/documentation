@@ -36,7 +36,7 @@ Select the `Create (+)` button. This opens a pop-up window with options for conf
 Let's go over each section in a bit more detail:
 
 - **Token label** gives you a naming system you can use to keep track of your tokens. You can use it to label what the tokens are used for by application, event, user or to differentiate testing from production use.
-- **Record broadcast** when enabled will allow you to record broadcasts using this token. After a broadcast is completed, you can find the recordings in the [Recordings](/millicast/distribution/stream-recordings/index.md) section of the dashboard. This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
+- **Record broadcast** when enabled will allow you to record broadcasts using this token. After a broadcast is completed, you can find the recordings in the [Recordings](/millicast/distribution/stream-recordings/index.mdx) section of the dashboard. This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
 - **Secure viewer** has two settings, "_No Restrictions_" (default) which allow anyone with the link to your viewer to watch a live broadcast without requiring authorization. The alternate setting, "_Token Required_", restricts your broadcast to only allow viewing the stream if provided a valid [Subscribe Token](/millicast/streaming-dashboard/subscribe-tokens.md).
 - **Add stream names** allows you to indicate how many broadcasts, called "_Token Streams_", you want to be managed by this _Publishing token_. A token can manage an unlimited number of streams as long as each has a unique alphanumeric name.
   - **Create stream name** allows you to specify a specific stream name such as _"MainCameraFeed"_.
@@ -178,7 +178,7 @@ The _Recordings_ tab can be used to view and download all recordings associated 
 
 
 
-To learn more about recording, visit the [Recordings guide](/millicast/distribution/stream-recordings/index.md).
+To learn more about recording, visit the [Recordings guide](/millicast/distribution/stream-recordings/index.mdx).
 
 ### 7\. API
 

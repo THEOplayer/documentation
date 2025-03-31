@@ -82,7 +82,7 @@ Click the green `Start` button to begin a broadcast. The timecode above the butt
 
 ### Record
 
-When [recording](/millicast/distribution/stream-recordings/index.md) is enabled for a publish token a record button will be present.
+When [recording](/millicast/distribution/stream-recordings/index.mdx) is enabled for a publish token a record button will be present.
 
 You can toggle the record feature only when you are not broadcasting live. If you are in a live broadcasting, you must stop the broadcast first to toggle the button and begin recording.
 

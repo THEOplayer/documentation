@@ -6,7 +6,7 @@ With [Live Clipping]((millicast/distribution/stream-recordings/live-clipping.md)
 
 > 🚧 Not Available for Recordings
 > 
-> At this time, [Recordings](/millicast/distribution/stream-recordings/starting-recording.md) cannot be configured to use a third-party cloud storage provider directly. You should follow the [How-to Get Media Assets](/millicast/distribution/stream-recordings/how-to-get-media-assets.md) guide to identify recordings for download and then you can upload them to your preferred provider of choice.
+> At this time, [Recordings](/millicast/distribution/stream-recordings/starting-recording.md) cannot be configured to use a third-party cloud storage provider directly. You should follow the [How-to Get Media Assets](/millicast/distribution/stream-recordings/how-to-get-media-assets.mdx) guide to identify recordings for download and then you can upload them to your preferred provider of choice.
 > 
 > Similarly, **timelines** will always be stored in Dolby's storage subject to expiration rules.
 

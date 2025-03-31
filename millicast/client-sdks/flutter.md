@@ -159,7 +159,7 @@ For example:
 
 - If you want to start your stream with a bitrate limit, you can use the `bandwidth` option.
 
-- If your stream token in Millicast has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md).
+- If your stream token in Millicast has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx).
 
 - You can start a stream without audio or video setting the `disableAudio` or `disableVideo` respectively.
 
@@ -169,7 +169,7 @@ For example:
 
 - [.connect()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/connect.html)
 
-- [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md)
+- [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx)
 
 ### Managing your active stream
 

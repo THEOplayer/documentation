@@ -56,7 +56,7 @@ The Recordings section contains your recorded broadcasts, giving you access to p
 
 A storage meter above the recording list shows you how much of your storage your files are using. This helps you to better manage the storage space on your account.
 
-Each item in the list allows you to _download_, _delete_ or _preview_ your recorded media. To preview, simply click on the respective item and the preview player will launch. The preview player will display additional information about the media. To learn more, read the [Recordings](/millicast/distribution/stream-recordings/index.md) documentation.
+Each item in the list allows you to _download_, _delete_ or _preview_ your recorded media. To preview, simply click on the respective item and the preview player will launch. The preview player will display additional information about the media. To learn more, read the [Recordings](/millicast/distribution/stream-recordings/index.mdx) documentation.
 
 ## Analytics
 
