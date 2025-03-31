@@ -1,28 +1,40 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+import type { SidebarItemConfig, SidebarItem, SidebarItemDoc, SidebarItemCategory } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
 import millicastApiSidebar from './millicast/api/sidebar';
 import millicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
 import millicastDirectorApiSidebar from './millicast/api/director/sidebar';
 
-function removeHiddenItems(data) {
-  
+function isCategory(item: SidebarItemConfig): item is SidebarItemCategory {
+  return (item as SidebarItemCategory).type === 'category'
+}
+
+function isDoc(item: SidebarItem): item is SidebarItemDoc {
+  return item.type === 'doc';
+}
+
+function isHiddenCategory(item: SidebarItemConfig): item is SidebarItemCategory {
+  return isCategory(item) && item.label === 'hidden';
+}
+
+function removeHiddenItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
   // find the "hidden" category and get its item IDs
-  const hiddenCategory = data.find(category => category.type === 'category' && category.label === 'hidden');
-  const hiddenIds = hiddenCategory ? hiddenCategory.items.map(item => item.id) : [];
+  const hiddenCategory = data.find(isHiddenCategory);
+  const hiddenIds = new Set(hiddenCategory?.items.filter(isDoc).map(item => item.id) ?? []);
 
   // filter out items from other categories that match the hidden IDs
   const updatedData = data.map(category => {
-    if (category.type === 'category') {
-  
+    if (isCategory(category)) {
+
       // filter out the items that match any of the hidden IDs
-      const filteredItems = category.items.filter(item => !hiddenIds.includes(item.id));
-      
+      const filteredItems = category.items.filter(item => !(isDoc(item) && hiddenIds.has(item.id)));
+
       // if all items are removed, omit the category entirely
       if (filteredItems.length === 0) {
 
-        // remove the category the category
-        return null; 
+        // remove the category
+        return null;
       }
-      
+
       // return the category with filtered items
       return { ...category, items: filteredItems };
     }
