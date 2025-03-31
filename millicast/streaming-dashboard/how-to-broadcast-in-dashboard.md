@@ -221,6 +221,6 @@ You are actively publishing live and recording the stream.
 
 ## Learn more
 
-Feel free to use this broadcasting interface as much as you like. If you want to build your own or customize the experience by hosting your own you can by using the [Web SDK](/millicast/client-sdks/web.md) or using a [Sample App](/millicast/sample-apps/index.md) to get started.
+Feel free to use this broadcasting interface as much as you like. If you want to build your own or customize the experience by hosting your own you can by using the [Web SDK](/millicast/client-sdks/web.mdx) or using a [Sample App](/millicast/sample-apps/index.md) to get started.
 
 - [Hosted Viewer](/millicast/playback/hosted-viewer.md)

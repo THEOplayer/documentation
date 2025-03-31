@@ -2,7 +2,7 @@
 title: "React Native"
 slug: /rn
 ---
-Dolby.io Streaming APIs support using the [Web SDK](/millicast/client-sdks/web.md) with React Native WebRTC to support creating iOS, Android, AndroidTV, and tvOS applications.
+Dolby.io Streaming APIs support using the [Web SDK](/millicast/client-sdks/web.mdx) with React Native WebRTC to support creating iOS, Android, AndroidTV, and tvOS applications.
 
 <div class="dolbyio-cards-container">
   
@@ -48,7 +48,7 @@ Before you start, make sure that you use  [React Native WebRTC plugin](https://w
 
 > 📘 
 > 
-> Before we start, you can find more information in the [Web SDK Documentation](/millicast/client-sdks/web.md), which contains more examples and descriptions of the available modules.
+> Before we start, you can find more information in the [Web SDK Documentation](/millicast/client-sdks/web.mdx), which contains more examples and descriptions of the available modules.
 
 ## Initializing your project
 

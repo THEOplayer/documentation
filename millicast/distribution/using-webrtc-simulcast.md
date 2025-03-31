@@ -193,11 +193,11 @@ On the viewer, you can also check the **bitrate throughput** by selecting a qual
 
 > 📘 Building Your Own Custom Player To Support Multi-bitrate Streams
 > 
-> If you are using the Millicast [Web SDK](/millicast/client-sdks/web.md) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
+> If you are using the Millicast [Web SDK](/millicast/client-sdks/web.mdx) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
 
 # Simulcast demo video
 
-Here is a video showing the Simulcast playback using the [hosted player](/millicast/playback/hosted-viewer.md) built with the Javascript [Web SDK](/millicast/client-sdks/web.md).
+Here is a video showing the Simulcast playback using the [hosted player](/millicast/playback/hosted-viewer.md) built with the Javascript [Web SDK](/millicast/client-sdks/web.mdx).
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kXkwNyA6X24?si=_tnQTf2Fympb0K9O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

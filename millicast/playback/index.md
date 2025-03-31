@@ -10,7 +10,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 
 ✓ Interactive playback for streams that support dynamic tracks, multiple layers, multiple views, and playback events.
 
-✓ Support with [Client SDKs](/millicast/client-sdks/index.md) for building custom playback viewers for [Web](/millicast/client-sdks/web.md), [iOS](/millicast/client-sdks/ios/index.md), [Android](/millicast/client-sdks/android/index.md), [React-Native](/millicast/client-sdks/rn.md), [Flutter](/millicast/client-sdks/flutter.md), or desktop environments.
+✓ Support with [Client SDKs](/millicast/client-sdks/index.md) for building custom playback viewers for [Web](/millicast/client-sdks/web.mdx), [iOS](/millicast/client-sdks/ios/index.md), [Android](/millicast/client-sdks/android/index.md), [React-Native](/millicast/client-sdks/rn.md), [Flutter](/millicast/client-sdks/flutter.md), or desktop environments.
 
 ✓ Preview streams with poster images and thumbnails.
 
@@ -40,7 +40,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 ## Client SDKs
 
 <div class="small-image-and-text-btn-container">
-  <a href="/millicast/client-sdks/web.md" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/web.mdx" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/web.svg)

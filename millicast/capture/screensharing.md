@@ -82,7 +82,7 @@ With that, the screen is now being captured. When this function is called, users
 You can find similar capabilities as JavaScript from one of the other Client SDKs listed below:
 
 <div class="small-image-and-text-btn-container">
-  <a href="/millicast/client-sdks/web.md" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/web.mdx" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/web.svg)

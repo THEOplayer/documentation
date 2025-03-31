@@ -120,7 +120,7 @@ async select (layer = {}) {
 
 The layer information available for each video source is provided periodically by the `layers` event as shown above. If you want to switch back to the automatic layer selection, you just need to send a [project](https://millicast.github.io/millicast-sdk/View.html#project) or [select](https://millicast.github.io/millicast-sdk/View.html#select) command without layer details.
 
-To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/client-sdks/web.md)broadcast-events) and then select the active layer using the following command:
+To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/client-sdks/web.mdx)broadcast-events) and then select the active layer using the following command:
 
 ```javascript
 millicastView.select({'encodingId': '1'});

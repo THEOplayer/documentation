@@ -101,5 +101,5 @@ This step downloads and installs all needed dependencies and creates a `.xcworks
 
 - [Getting Started with Publishing](/millicast/client-sdks/ios/ios-getting-started-with-publishing.md)
 - [Getting Started with Subscribing](/millicast/client-sdks/ios/ios-getting-started-with-subscribing.md)
-- [How-to Add Picture in Picture](/millicast/client-sdks/ios/ios-how-to-add-picture-in-picture.md)
-- [Migration Guide for iOS SDK](/millicast/client-sdks/ios/ios-sdk-migration-guide.md)
+- [How-to Add Picture in Picture](/millicast/client-sdks/ios/ios-how-to-add-picture-in-picture.mdx)
+- [Migration Guide for iOS SDK](/millicast/client-sdks/ios/ios-sdk-migration-guide.mdx)

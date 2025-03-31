@@ -6,7 +6,7 @@ Dolby.io Streaming APIs offer Client SDKs for customers who prefer creating thei
 
 <div class="dolbyio-cards-container">
   
-  <a class="dolbyio-card dolbyio-card-1" href="/millicast/client-sdks/web.md">
+  <a class="dolbyio-card dolbyio-card-1" href="/millicast/client-sdks/web.mdx">
      <div class="dolbyio-card-image">
       <img width="40px" src="https://files.readme.io/e3bb9ae-javascript-155-svgrepo-com.svg"/>
     </div>

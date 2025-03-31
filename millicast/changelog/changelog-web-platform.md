@@ -43,7 +43,7 @@ millicastView.on('metadata', (metadata) => {
 
 ## 🆕 Client-side Diagnostics
 
-To diagnose networking issues in your web applications it may be helpful to view [WebRTC statistics](/millicast/client-sdks/web.md#webrtc-stats) related to round-trip time, jitter, etc. This can also power [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) to populate application performance monitoring or observability tools such as [Datazoom](/millicast/datazoom) or [Datadog](/millicast/client-analytics/datadog.md). Using the new `statsIntervalMs`option you can customize the frequency in which the stats events are observed.
+To diagnose networking issues in your web applications it may be helpful to view [WebRTC statistics](/millicast/client-sdks/web.mdx#webrtc-stats) related to round-trip time, jitter, etc. This can also power [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) to populate application performance monitoring or observability tools such as [Datazoom](/millicast/datazoom) or [Datadog](/millicast/client-analytics/datadog.md). Using the new `statsIntervalMs`option you can customize the frequency in which the stats events are observed.
 
 ```javascript
 const options = {

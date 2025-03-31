@@ -28,7 +28,7 @@ The application available in this repository demonstrates the capabilities of Do
   </a>
 </div>
 
-This repository demonstrates how to develop an app that showcases the capabilities of Dolby.io's Real-time Streaming SDK and how it can be used to design solutions that require ultra low-latency (sub 500ms). If you run into problems, the full Dolby.io Real-time Streaming SDK for JavaScript documentation can be found [here](/millicast/client-sdks/web.md).
+This repository demonstrates how to develop an app that showcases the capabilities of Dolby.io's Real-time Streaming SDK and how it can be used to design solutions that require ultra low-latency (sub 500ms). If you run into problems, the full Dolby.io Real-time Streaming SDK for JavaScript documentation can be found [here](/millicast/client-sdks/web.mdx).
 
 The application provided allows you to evaluate solutions offered by Dolby.io Real-time Streaming APIs. You can clone the repository yourself, run the application locally and verify that it meets your requirements. Learn more about Dolby.io’s Real-time Streaming capabilities [here](https://dolby.io/products/real-time-streaming/).
 

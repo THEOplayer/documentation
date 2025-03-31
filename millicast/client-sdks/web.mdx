@@ -16,7 +16,7 @@ To use the SDK in your web applications you have options:
 - add a dependency with [npm](https://www.npmjs.com/package/@millicast/sdk)
 
 > ❗️ Versioning of the Millicast SDK
-> 
+>
 > When installing and importing the SDK you may automatically be updated to the latest version. This is fine for development, but it is _strongly recommended_ to pin to a specific version release in order to increase stability when you move to production.
 
 ### JSDELIVR
@@ -74,7 +74,7 @@ console.log(capabilities);
 There are additional usage examples below, but you may also find some of the resources listed here to be helpful as you start your integration project.
 
 <div class="dolbyio-cards-container">
-  
+
     <a class="dolbyio-card dolbyio-card-1" href="https://github.com/millicast/millicast-sdk">
      <div class="dolbyio-card-image">
       <img width="40px" src="https://files.readme.io/3f65ad7-github_svg.svg"/>
@@ -84,7 +84,7 @@ There are additional usage examples below, but you may also find some of the res
        Source code for the Millicast Web SDK
     </div>
   </a>
-  
+
   <a class="dolbyio-card dolbyio-card-2" href="https://millicast.github.io/millicast-sdk/">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/049dc13-documentation_icon.svg"/>
@@ -94,7 +94,7 @@ There are additional usage examples below, but you may also find some of the res
       Class and object reference
     </div>
   </a>
-  
+
     <a class="dolbyio-card dolbyio-card-3" href="https://github.com/millicast/millicast-sdk/tree/main/packages">
     <div class="dolbyio-card-image">
       <img width="45px" class="dolbyio-card-svg-icon" src="https://files.readme.io/0c11f2f-sampleapp_icon.svg"/>
@@ -104,7 +104,7 @@ There are additional usage examples below, but you may also find some of the res
       Code examples
     </div>
   </a>
-  
+
 </div>
 
 
@@ -127,7 +127,7 @@ import { Director, Publish } from '@millicast/sdk';
 
 const tokenGenerator = () => Director.getPublisher(
 {
-  token: 'my-publishing-token', 
+  token: 'my-publishing-token',
   streamName: 'my-stream-name',
 });
 const publisher = new Publish('my-stream-name', tokenGenerator);
@@ -138,7 +138,7 @@ In order to create an instance of the Publish class, you have to send two parame
 - The first one is the stream name ('my-stream-name') and it is used to set where do you want to publish your stream.
 - The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to stream. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
 
-More information here: 
+More information here:
 
 - [Publish](https://millicast.github.io/millicast-sdk/Publish.html)
 - [getPublisher()](https://millicast.github.io/millicast-sdk/module-Director.html#~getPublisher)
@@ -180,7 +180,7 @@ Once the `connect()` promise resolves, the stream is initialized correctly, othe
 
 The `connect()` can optionally receive more parameters, all of these are described in the [connect() method](https://millicast.github.io/millicast-sdk/Publish.html#connect).
 
-For example: 
+For example:
 
 - If you want to start your stream with a bitrate limit, you can use the `bandwidth` option.
 - If your stream token in Dolby.io Real-time Streaming has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md).
@@ -214,7 +214,7 @@ console.log(capabilities);
 // ]
 ```
 
-More information here: 
+More information here:
 
 - [connect()](https://millicast.github.io/millicast-sdk/Publish.html#connect)
 - [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.md)
@@ -224,7 +224,7 @@ More information here:
 
 The next samples use the `publisher` variable we created in the previous section.
 
-The Publish instance internally uses most of the classes described in the [documentation](https://millicast.github.io/millicast-sdk/index.html).  
+The Publish instance internally uses most of the classes described in the [documentation](https://millicast.github.io/millicast-sdk/index.html).
 If the method is not static (which means you can access it without a Publish instance), you can access it through the Publish instance.
 
 Example:
@@ -238,7 +238,7 @@ Most of the important methods are located directly in the Publisher module but s
 
 #### Change bitrate
 
-During an active stream, you can limit the maximum bitrate in kbps.  
+During an active stream, you can limit the maximum bitrate in kbps.
 To do that, you have to use the [updateBitrate()](https://millicast.github.io/millicast-sdk/PeerConnection.html#updateBitrate) method of your Publish instance that is located inside a subclass called `webRTCPeer`.
 
 Example:
@@ -289,9 +289,9 @@ Like when creating a Publish instance, in order to create a View instance you ne
 - The first one is the stream name ('my-stream-name') and it is used to set the stream you want to connect.
 - The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
 - **(Optional)  mediaElement. This is the HTML media element where you want to mount the stream for example a `video` element.
-- **(Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream. 
+- **(Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream.
 
-More information here: 
+More information here:
 
 - [View](https://millicast.github.io/millicast-sdk/View.html)
 - [getSubscriber()](https://millicast.github.io/millicast-sdk/module-Director.html#~getSubscriber)
@@ -330,7 +330,7 @@ We recommend using the [reconnect()](https://millicast.github.io/millicast-sdk/V
 
 Both the instances of Publish and View have a reconnect event. This event emits when the connection is lost with a timeout and error message in the callback. This event is emitted by the `reconnect()` method that both Publish and View instances have, this method is automatically called by default except specified with the autoReconnect flag of the [constructor](https://millicast.github.io/millicast-sdk/View.html). [SDK Reconnect event](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:reconnect)
 
-Example reconnect event in View instance: 
+Example reconnect event in View instance:
 
 ```javascript
 import { View } from '@millicast/sdk';
@@ -385,8 +385,8 @@ The `broadcastEvents` can be used to detect when a stream is live or offline. Th
 
 - If you are publishing without multisource, the `broadcastEvent` could be `active` which means that the stream is live. When it is `inactive` means that the stream is offline.
 
-- If it is a multisource stream you have the same events but you are going to receive a source ID in the data payload. If you receive it as an `active` event, it means that a new source ID is available and the stream is active.  
-  To detect if the stream is `inactive`, you have to receive an inactive event and remove the incoming source ID from your active ones.  
+- If it is a multisource stream you have the same events but you are going to receive a source ID in the data payload. If you receive it as an `active` event, it means that a new source ID is available and the stream is active.
+  To detect if the stream is `inactive`, you have to receive an inactive event and remove the incoming source ID from your active ones.
   If you don't have active source IDs, it means that the stream is offline.
 
 More information here:
@@ -462,7 +462,7 @@ import { Logger } from '@millicast/sdk';
 Logger.setLevel(Logger.DEBUG); // Set level visibility to DEBUG and prior
 ```
 
-The Logger is always logging, even if the `setLevel()` is disabled.  
+The Logger is always logging, even if the `setLevel()` is disabled.
 You can access the latest logs history using the `.getHistory()` method.
 
 ```javascript
@@ -485,7 +485,7 @@ More information and examples here:
 Stream stats can be accessed by both Publish and View instances. In order to capture them, you have to initialize the stats and then listen for the event through the `webRTCPeer` attribute.
 
 > 🚧 Stats Variations
-> 
+>
 > Keep in mind that the stats that are collected may differ from browser to browser, between browser versions, and may depend on the type of media that is being transferred.
 
 ```javascript View
@@ -548,7 +548,7 @@ const connectionOptions = {
 
 For additional information:
 
-- [View connect() options](https://millicast.github.io/millicast-sdk/View.html#connect) 
+- [View connect() options](https://millicast.github.io/millicast-sdk/View.html#connect)
 
 # Tutorials
 
@@ -560,7 +560,7 @@ You can enable screensharing from a browser as part of the broadcast. If you wan
 
 For screen sharing browser support see [this article on Browser Compatibility for Media Devices](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices#browser_compatibility).
 
-To enable screensharing, first you must define `displayMediaOptions`: 
+To enable screensharing, first you must define `displayMediaOptions`:
 
 ```javascript
 const displayMediaOptions = {

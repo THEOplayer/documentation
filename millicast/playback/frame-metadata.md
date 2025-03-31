@@ -48,7 +48,7 @@ For **PIC_TIMING** SEI messages that are inserted by various encoders, there wil
 
 # Web SDK
 
-When using the [Web SDK](/millicast/client-sdks/web.md) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
+When using the [Web SDK](/millicast/client-sdks/web.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
 
 ## How-to Publish Frame Metadata
 

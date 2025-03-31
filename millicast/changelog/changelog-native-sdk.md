@@ -10,8 +10,8 @@ We've made some major changes including updates that greatly improve the experie
 
 To help transition your applications  with these changes we've created migration guides that may be helpful: 
 
-- [Migration Guide for iOS SDK](/millicast/client-sdks/ios/ios-sdk-migration-guide.md)
-- [Migration Guide for Android SDK](/millicast/client-sdks/android/android-sdk-migration-guide.md)
+- [Migration Guide for iOS SDK](/millicast/client-sdks/ios/ios-sdk-migration-guide.mdx)
+- [Migration Guide for Android SDK](/millicast/client-sdks/android/android-sdk-migration-guide.mdx)
 
 ## :new: Viewer and Track Management
 

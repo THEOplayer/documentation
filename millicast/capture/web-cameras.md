@@ -103,7 +103,7 @@ Once you've selected the web camera with `getUserMedia` it is ready to capture v
 You can find similar capabilities to the JavaScript SDK from the other Client SDKs listed below:
 
 <div class="small-image-and-text-btn-container">
-  <a href="/millicast/client-sdks/web.md" class="small-image-and-text-btn">
+  <a href="/millicast/client-sdks/web.mdx" class="small-image-and-text-btn">
     <div class="small-image-and-text-btn-inner-container">
       <div>
         ![](/img/web.svg)

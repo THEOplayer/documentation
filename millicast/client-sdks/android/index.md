@@ -58,7 +58,7 @@ The package name of the Native SDK for Android is _millicast-native-sdk-version-
 
 # Tutorials
 
-- [Getting Started with Publishing](/millicast/client-sdks/android/android-how-to-add-picture-in-picture.md)
+- [Getting Started with Publishing](/millicast/client-sdks/android/android-how-to-add-picture-in-picture.mdx)
 - [Getting Started with Subscribing](/millicast/client-sdks/android/android-getting-started-with-subscribing.md)
-- [How-to Add Picture in Picture](/millicast/client-sdks/android/android-how-to-add-picture-in-picture.md)
-- [Migration Guide for Android SDK](/millicast/client-sdks/android/android-sdk-migration-guide.md)
+- [How-to Add Picture in Picture](/millicast/client-sdks/android/android-how-to-add-picture-in-picture.mdx)
+- [Migration Guide for Android SDK](/millicast/client-sdks/android/android-sdk-migration-guide.mdx)
