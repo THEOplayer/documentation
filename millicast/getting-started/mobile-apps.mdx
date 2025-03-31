@@ -4,7 +4,7 @@ slug: /getting-started/mobile-apps
 sidebar_position: 4
 ---
 
-import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
 
 Dolby Millicast provides Native SDKs for both [Android](/millicast/client-sdks/android/index.md) and [iOS](/millicast/client-sdks/ios/index.md) to speed up development of mobile applications with real-time streaming. Follow the guides below to add playback or broadcasting capabilities for your target platforms.
 
@@ -12,42 +12,40 @@ Dolby Millicast provides Native SDKs for both [Android](/millicast/client-sdks/a
 
 Add a mobile video player that can subscribe to a stream.
 
-<DocCard item={{
+<DocCardList items={[
+  {
     type: 'link',
     href: '/millicast/android-getting-started-with-subscribing',
     customProps: {icon: 'android'},
     label: 'Android',
     description: 'Getting Started with Playback'
-  }} />
-  
-<br />
-
-<DocCard item={{
+  },
+  {
     type: 'link',
     href: '/millicast/ios-getting-started-with-subscribing',
     customProps: {icon: 'apple'},
     label: 'iOS',
     description: 'Getting Started with Playback'
-  }} />
+  }
+]} />
 
 ## Broadcasting
 
 Add a mobile publisher that can allow users to broadcast from your application.
 
-<DocCard item={{
+<DocCardList items={[
+  {
     type: 'link',
     href: '/millicast/android-getting-started-with-publishing',
     customProps: {icon: 'android'},
     label: 'Android',
     description: 'Getting Started with Broadcasting'
-  }} />
-
-<br />
-
-<DocCard item={{
+  },
+  {
     type: 'link',
     href: '/millicast/ios-getting-started-with-publishing',
     customProps: {icon: 'apple'},
     label: 'iOS',
     description: 'Getting Started with Broadcasting'
-  }} />
+  }
+]} />

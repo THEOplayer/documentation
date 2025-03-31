@@ -1,16 +1,19 @@
 ---
 title: "Screensharing"
 slug: /screensharing
+sidebar_position: 3
 ---
 Screensharing or screen capturing is an important feature for virtual events, webinars, and many other types of broadcasts that involve sharing information. This guide will outline three options for managing screen capture in a way that is compatible with Dolby.io:
 
-1. [Screensharing with the Dolby.io Dashboard Broadcaster](/millicast/capture/screensharing.md)screensharing-with-the-dolbyio-dashboard-broadcaster)
-2. [Screensharing with OBS](/millicast/capture/screensharing.md)screensharing-with-obs)
-3. [Screensharing with JavaScript](/millicast/capture/screensharing.md)screensharing-with-javascript)
+1. [Screensharing with the Dolby.io Dashboard Broadcaster](/millicast/capture/screensharing.mdx#screensharing-with-the-dolbyio-dashboard-broadcaster)
+2. [Screensharing with OBS](/millicast/capture/screensharing.mdx#screensharing-with-obs)
+3. [Screensharing with JavaScript](/millicast/capture/screensharing.mdx#screensharing-with-javascript)
 
-> 🚧 Sharing Screen and Video
-> 
-> If you want to enable both screensharing and share your webcam at the same time, you must enable [multisource](/millicast/broadcast/multi-source-broadcasting.md) on the publishing token to broadcast multiple sources to the same stream.
+:::caution[Sharing Screen and Video]
+
+If you want to enable both screensharing and share your webcam at the same time, you must enable [multisource](/millicast/broadcast/multi-source-broadcasting.md) on the publishing token to broadcast multiple sources to the same stream.
+
+:::
 
 # Screensharing with the Dolby.io dashboard broadcaster
 
@@ -18,17 +21,11 @@ Once you have created a Dolby.io account, you can begin using the Dolby.io dashb
 
 Inside the dashboard, click the Broadcast button located adjacent to the token.
 
-
-![](../assets/img/image.png)
-
-
+![](../assets/img/broadcast_dash_button.png)
 
 Inside the dashboard broadcaster, click on the camera icon in the bottom left corner. To share your screen, select the "Share Screen" option and start sharing.
 
-
-![](../assets/img/image.png)
-
-
+![](../assets/img/7030fd4-image.png)
 
 With your screen shared to the dashboard broadcaster, you are now set up to capture content from your desktop. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.mdx) to learn about broadcast settings.
 
@@ -38,17 +35,11 @@ With your screen shared to the dashboard broadcaster, you are now set up to capt
 
 Inside the app, click the plus icon within the Sources tab and add a Display Capture.
 
-
 ![](../assets/img/dispalycaptureobs.png)
-
-
 
 Select the screen you want to share and whether you want OBS to capture the cursor or not.
 
-
 ![](../assets/img/image.png)
-
-
 
 With your screen selected click "OK". You've now set up your screen for capture via OBS. To start streaming from OBS continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
 
@@ -81,76 +72,15 @@ With that, the screen is now being captured. When this function is called, users
 
 You can find similar capabilities as JavaScript from one of the other Client SDKs listed below:
 
-<div class="small-image-and-text-btn-container">
-  <a href="/millicast/client-sdks/web.mdx" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/web.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Web SDK</div>
-    </div>
-  </a>
-  
-  <a href="/millicast/client-sdks/ios" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/apple.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">iOS SDK</div>
-    </div>
-  </a>
-  
-  <a href="/millicast/client-sdks/android" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/android.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Android SDK</div>
-    </div>
-  </a>    
-  
-  <a href="/millicast/client-sdks/rn.md" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/react.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">React Native</div>
-    </div>
-  </a>    
-  
-  <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/apple.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Mac SDK</div>
-    </div>
-  </a>    
-  
-  <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/electron.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Linux SDK</div>
-    </div>
-  </a>    
-  
-  <a href="/millicast/client-sdks/flutter.md" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/flutter.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">Flutter SDK</div>
-    </div>
-  </a>    
-    <a href="/millicast/client-sdks/desktop" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        ![](/img/dotnet.svg)
-      </div>
-      <div class="small-image-and-text-btn-title">.NET SDK</div>
-    </div>
-  </a>
-</div>
+import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
 
+<IconGrid>
+  <IconGridButton to="/docs/millicast/web">![](/img/web.svg) Web SDK</IconGridButton>
+  <IconGridButton to="/docs/millicast/ios/">![](/img/apple.svg) iOS SDK</IconGridButton>
+  <IconGridButton to="/docs/millicast/android/">![](/img/android.svg) Android SDK</IconGridButton>
+  <IconGridButton to="/docs/millicast/rn/">![](/img/react.svg) React Native</IconGridButton>
+  <IconGridButton to="/docs/millicast/desktop">![](/img/apple.svg) Mac SDK</IconGridButton>
+  <IconGridButton to="/docs/millicast/desktop">![](/img/electron.svg) Linux SDK</IconGridButton>
+  <IconGridButton to="/docs/millicast/flutter/">![](/img/flutter.svg) Flutter SDK</IconGridButton>
+  <IconGridButton to="/docs/millicast/desktop">![](/img/dotnet.svg) .NET SDK</IconGridButton>
+</IconGrid>

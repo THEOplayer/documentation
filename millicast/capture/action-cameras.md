@@ -1,6 +1,7 @@
 ---
 title: "Action Cameras"
 slug: /action-cameras
+sidebar_position: 5
 ---
 Sports and action cameras are designed to capture fast movements or provide a point-of-view perspective while in motion. Many of these types of cameras support WebRTC or RTMP output that can be used as a broadcast streaming source.
 

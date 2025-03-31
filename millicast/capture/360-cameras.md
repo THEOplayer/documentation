@@ -1,6 +1,7 @@
 ---
 title: "360 VR Cameras"
 slug: /360-cameras
+sidebar_position: 4
 ---
 Dolby.io Real-time Streaming allows for 360-degree [Real-time broadcasts](https://dolby.io/products/real-time-streaming/). 
 
@@ -16,17 +17,11 @@ Download the Insta360 [App](https://www.insta360.com/download/hot-download).
 4. Select the shooting mode to "360 Live".
 5. Select RTMP.
 
-
 ![](../assets/img/insta360.png)
-
-
 
 6. Enter you Dolby.io RTMP publishing path.
 
-
 ![](../assets/img/insta360rtmp.png)
-
-
 
 7. Tap the shutter button, and start livestreaming! (Note: During the live stream, please keep the app running in the foreground.)
 8. Scroll down to select Viewing options.
@@ -101,11 +96,3 @@ The player can be downloaded and customized as needed.
 2. Enter your AccountID and StreamName from your Dolby.io developer portal and start player.
 
 ![](https://files.readme.io/54e32f3-vr1.png "vr1.png")
-
-## Video JS
-
-1. Go to this [360 player](https://rnkvogel.github.io/VideoJS-WebRTC/360.html).  
-   _Use codec H264 or VP8 if you would like to view it on mobile devices._
-2. Enter your AccountID and StreamName from your Dolby.io developer portal and start player.
-
-![](https://files.readme.io/6b9fbd4-videoJS360.png "videoJS360.png")

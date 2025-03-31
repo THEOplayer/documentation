@@ -1,6 +1,7 @@
 ---
 title: "Camera Drones"
 slug: /live-streaming-from-drones-rtmp
+sidebar_position: 6
 ---
 Using a drone, unmanned aerial vehicles (UAVs), or other flying cameras can be a way to provide a unique perspective on any real-time activities. Many of these remote-controlled devices can support network connectivity that enables either direct WebRTC or RTMP output that can be used as a broadcast streaming source.
 

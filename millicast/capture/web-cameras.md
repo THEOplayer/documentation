@@ -1,14 +1,15 @@
 ---
 title: "Web Cameras"
 slug: /web-cameras
+sidebar_position: 1
 ---
 Web cameras are an easy and accessible way to capture content for broadcast with Dolby.io Streaming. Since web cameras are ubiquitous, there are many different software solutions to capture from a web camera. 
 
 This guide outlines three options for managing web camera capture:
 
-1. [Connecting a Web Camera to the Dolby.io Dashboard Broadcaster](/millicast/capture/web-cameras.md)connecting-a-web-camera-to-the-dolbyio-dashboard-broadcaster)
-2. [Connecting a Web Camera to OBS](/millicast/capture/web-cameras.md)connecting-a-web-camera-to-obs)
-3. [Capturing from a Web Camera using JavaScript](/millicast/capture/web-cameras.md)capturing-from-a-web-camera-using-javascript)
+1. [Connecting a Web Camera to the Dolby.io Dashboard Broadcaster](/millicast/capture/web-cameras.md)
+2. [Connecting a Web Camera to OBS](/millicast/capture/web-cameras.md)
+3. [Capturing from a Web Camera using JavaScript](/millicast/capture/web-cameras.md)
 
 # Connecting a web camera to the Dolby.io dashboard broadcaster
 
