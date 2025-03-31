@@ -79,14 +79,13 @@ function removeDocIndexItems(items) {
     .filter((item) => item.type !== 'doc' || !item.id.endsWith('/index'))
     .map((item) => {
       if (item.type === 'category') {
-        return {...item, items: removeDocIndexItems(item.items)};
+        return { ...item, items: removeDocIndexItems(item.items) };
       }
       return item;
     });
 
   return result;
 }
-
 
 const config: Config = {
   title: 'Dolby OptiView Documentation',
@@ -219,7 +218,7 @@ const config: Config = {
         routeBasePath: '/millicast',
         sidebarPath: './sidebarsMillicast.ts',
         docItemComponent: '@theme/ApiItem',
-        async sidebarItemsGenerator({defaultSidebarItemsGenerator, ...args}) {
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
           const sidebarItems = await defaultSidebarItemsGenerator(args);
           return removeDocIndexItems(sidebarItems);
         },
@@ -287,7 +286,7 @@ const config: Config = {
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
-          }
+          },
         },
       } satisfies OpenApiPlugin.PluginOptions,
     ],
@@ -314,7 +313,7 @@ const config: Config = {
           {
             from: '/millicast/api/director',
             to: '/millicast/api/director/director-api/',
-          }
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
