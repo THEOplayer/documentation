@@ -24,13 +24,10 @@ If you are using a drone that is not listed, you should be able to use similar s
 
 Some examples:
 
-<div style={{marginLeft: "20px"}}>
-
-✓ [DJI Phantom](https://www.dji.com/phantom)
-
-✓ [DJI Mavic 3](https://www.dji.com/mavic-3)
-
-</div>
+<ul class="checkBoxList">
+<li>[DJI Phantom](https://www.dji.com/phantom)</li>
+<li>[DJI Mavic 3](https://www.dji.com/mavic-3)</li>
+</ul>
 
 ## Simple set up using the DJI Fly App
 

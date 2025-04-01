@@ -93,15 +93,17 @@ To [capture](/millicast/broadcast/index.mdx) content you need either a physical 
 
 Many devices are able to capture a compatible media stream encoding:
 
-<div style={{marginLeft: "20px"}}>
-
-✓ **SDI & HDMI**, Serial Digital Interface (SDI) and High-Definition Multimedia Interface (HDMI) connections are common across many professional cameras and capture devices.
-
-✓ **NDI**, Network Device Interface, is a commonly used protocol for Video over IP that is supported by video mixers, capture cards, and other devices.
-
-✓ **RTSP**, Real-time Streaming Protocol, is commonly supported in media streaming servers that capture and process video and audio feeds.
-
-</div>
+<ul className="checkBoxList">
+  <li>
+    **SDI & HDMI**, Serial Digital Interface (SDI) and High-Definition Multimedia Interface (HDMI) connections are common across many professional
+    cameras and capture devices.
+  </li>
+  <li>
+    **NDI**, Network Device Interface, is a commonly used protocol for Video over IP that is supported by video mixers, capture cards, and other
+    devices.
+  </li>
+  <li>**RTSP**, Real-time Streaming Protocol, is commonly supported in media streaming servers that capture and process video and audio feeds.</li>
+</ul>
 
 Check with your specific hardware provider for direct support of WebRTC or one of these common device interfaces.
 
@@ -124,15 +126,16 @@ Check with your specific hardware provider for direct support of WebRTC or one o
 
 The Dolby.io CDN can ingest streams encoded in a few main formats:
 
-<div style={{marginLeft: "20px"}}>
-
-✓ **WebRTC**, an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
-
-✓ **SRT**, a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio codecs.
-
-✓ **RTMP and RTMPs**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
-
-</div>
+<ul className="checkBoxList">
+  <li>
+    **WebRTC**, an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made
+    possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
+  </li>
+  <li>**SRT**, a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio codecs.</li>
+  <li>
+    **RTMP and RTMPs**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
+  </li>
+</ul>
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
@@ -153,15 +156,17 @@ _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
 The Dolby.io Streaming CDN offers a range of server-side features that users can toggle and adjust via [the REST APIs](/millicast/getting-started/using-rest-apis.md) or the Dashboard to ensure [distribution](/millicast/distribution/index.mdx) of streams is secure, stable, and scalable.
 
-<div style={{marginLeft: "20px"}}>
-
-✓ **Scalability** to distribute content to large audiences across multiple regions in real-time.
-
-✓ **Stability** with features like simulcast that provide redundancy and adaptability to maintain a good user experience across different network and device conditions while maintaining a high uptime and Quality of Experience (QoE).
-
-✓ **Security** through features that protect your content by securing streams with subscriber tokens, self-signed tokens, allowing only specific origins, geo-blocking, and IP filtering.
-
-</div>
+<ul className="checkBoxList">
+  <li>**Scalability** to distribute content to large audiences across multiple regions in real-time.</li>
+  <li>
+    **Stability** with features like simulcast that provide redundancy and adaptability to maintain a good user experience across different network
+    and device conditions while maintaining a high uptime and Quality of Experience (QoE).
+  </li>
+  <li>
+    **Security** through features that protect your content by securing streams with subscriber tokens, self-signed tokens, allowing only specific
+    origins, geo-blocking, and IP filtering.
+  </li>
+</ul>
 
 Distribution of streaming content requires scalability, stability, and security along with a collection of robust features including stream recordings, multi-source streams, multi-bitrate delivery, backup publishing, stream syndication, and streaming analytics.
 
@@ -182,21 +187,17 @@ Distribution of streaming content requires scalability, stability, and security 
 
 The final component of the streaming workflow is taking the stream, after it has been passed through the Dolby.io CDN, and playing it back to the end viewer. Similar to the broadcasting side, decoding and [playback](/millicast/playback/index.mdx) is supported via web and mobile browsers, software, hardware, and via client-side broadcast SDKs.
 
-<div style={{marginLeft: "20px"}}>
-
-✓ Hosted streaming player with low-code drop-in support for many applications.
-
-✓ Interactive playback for streams that support dynamic tracks, multiple layers, multiple views, and playback events.
-
-✓ Support with **Client SDKs** for building custom playback viewers for Web, iOS, Android, React-Native, Flutter, Unity, Unreal, .NET, and desktop applications.
-
-✓ Broad support is made possible through implementations of **WebRTC HTTP Egress Protocol (WHEP)**.
-
-✓ Preview streams with poster images and thumbnails.
-
-✓ **REST and GraphQL APIs** that provide analytics for tracking individual streams and user bandwidth tracking for who is viewing a stream.
-
-</div>
+<ul className="checkBoxList">
+  <li>Hosted streaming player with low-code drop-in support for many applications.</li>
+  <li>Interactive playback for streams that support dynamic tracks, multiple layers, multiple views, and playback events.</li>
+  <li>
+    Support with **Client SDKs** for building custom playback viewers for Web, iOS, Android, React-Native, Flutter, Unity, Unreal, .NET, and desktop
+    applications.
+  </li>
+  <li>Broad support is made possible through implementations of **WebRTC HTTP Egress Protocol (WHEP)**.</li>
+  <li>Preview streams with poster images and thumbnails.</li>
+  <li>**REST and GraphQL APIs** that provide analytics for tracking individual streams and user bandwidth tracking for who is viewing a stream.</li>
+</ul>
 
 <DocCard
   item={{
