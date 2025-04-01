@@ -102,7 +102,7 @@ The Quik app will show you a timecode for the duration of the stream as well as 
 
 
 
-To verify everything is working, you view the stream using any suitable [playback](/millicast/playback/index.md) method, such as the hosted web viewer described in the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide available directly from the Dolby.io Dashboard.
+To verify everything is working, you view the stream using any suitable [playback](/millicast/playback/index.mdx) method, such as the hosted web viewer described in the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide available directly from the Dolby.io Dashboard.
 
 ## Using the GoPro webcam utility
 
@@ -134,6 +134,6 @@ If you run into any trouble, see the official [GoPro Support](https://community.
 
 # Learn more
 
-Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.mdx), and [playback](/millicast/playback/index.md) guides to complete your project.
+Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.mdx), and [playback](/millicast/playback/index.mdx) guides to complete your project.
 
 If you have a different type of action camera than the ones listed, reach out to our [support team](https://support.dolby.io/) to ask about compatibility.

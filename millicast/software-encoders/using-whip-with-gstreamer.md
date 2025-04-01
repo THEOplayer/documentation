@@ -99,7 +99,7 @@ gst-launch-1.0 videotestsrc ! videoconvert ! x264enc ! rtph264pay ! \
   whip-endpoint=$DOLBYIO_WHIP_ENDPOINT
 ```
 
-You can watch these streams from a [playback](/millicast/playback/index.md) viewer.
+You can watch these streams from a [playback](/millicast/playback/index.mdx) viewer.
 
 ## How-to broadcast the audio-only test source
 

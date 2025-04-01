@@ -23,7 +23,7 @@ These restrictions can be implemented in the [Dashboard](https://dashboard.dolby
 
 # Subscribing access control
 
-A Subscribe token is **optional** for [playing back](/millicast/playback/index.md) a stream but can provide extra security for your content. [When enabled](/millicast/streaming-dashboard/subscribe-tokens.md), streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. This makes Subscribe tokens useful for protecting paywalled content or non-public content. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains.
+A Subscribe token is **optional** for [playing back](/millicast/playback/index.mdx) a stream but can provide extra security for your content. [When enabled](/millicast/streaming-dashboard/subscribe-tokens.md), streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. This makes Subscribe tokens useful for protecting paywalled content or non-public content. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains.
 
 During the Subscribe token creation process, you can further limit access in a few ways:
 

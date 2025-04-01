@@ -44,7 +44,7 @@ Visit the [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-
 
 ## Playback content with the streaming viewer
 
-In the previous section, you created a publishing token and started to broadcast. Next, we will open a hosted streaming viewer to [playback](/millicast/playback/index.md) the real-time stream.
+In the previous section, you created a publishing token and started to broadcast. Next, we will open a hosted streaming viewer to [playback](/millicast/playback/index.mdx) the real-time stream.
 
 In the lower right-hand corner of the dashboard broadcast application are some icons. Click on the sharing icon like the one circled in Figure 2a.
 

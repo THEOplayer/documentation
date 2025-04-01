@@ -54,7 +54,7 @@ You can use the [Hosted Player](/millicast/playback/hosted-viewer.md) to check t
 
 ## How-to enable Simulcast from an encoder
 
-You may choose to use a [Hardware Encoder](../broadcast/hardware-encoders.mdx) that can support multi-bitrate encoding directly or [Software Encoders](../broadcast/software-encoders.md) that use additional plugins and configuration to enable separate renditions. Regardless of whether you are using RTMP, SRT, or WHIP as your broadcast protocol, you will need to configure multiple contributions to the broadcast with various quality layer settings.
+You may choose to use a [Hardware Encoder](../broadcast/hardware-encoders.mdx) that can support multi-bitrate encoding directly or [Software Encoders](../broadcast/software-encoders.mdx) that use additional plugins and configuration to enable separate renditions. Regardless of whether you are using RTMP, SRT, or WHIP as your broadcast protocol, you will need to configure multiple contributions to the broadcast with various quality layer settings.
 
 Specific integration examples:
 
@@ -114,7 +114,7 @@ For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 48
 
 ## Recommended settings for Simulcast
 
-The specific settings available may vary depending on your available [Hardware](../broadcast/hardware-encoders.mdx) or [Software](../broadcast/software-encoders.md) encoders. A few settings that are common:
+The specific settings available may vary depending on your available [Hardware](../broadcast/hardware-encoders.mdx) or [Software](../broadcast/software-encoders.mdx) encoders. A few settings that are common:
 
 - **Encoder**: H.264 (AVC), x264, ffmpeg, or nvenc
 - **Encoding Mode**: variable bitrate
@@ -159,7 +159,7 @@ Individual source contributions can be customized however you like, but typicall
 
 # View multi-bitrate streams with the hosted player
 
-During [Playback](/millicast/playback/index.md), stream quality defaults to _Auto_ and will be determined by a few factors:
+During [Playback](/millicast/playback/index.mdx), stream quality defaults to _Auto_ and will be determined by a few factors:
 
 - The stream quality available from the broadcaster
 - The stream quality requested by the receiver if switched from _Auto_

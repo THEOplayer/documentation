@@ -79,7 +79,7 @@ After you have successfully created your token, it will be displayed in a scroll
 
 
 
-Once created, your Publish token can be used to broadcast in a variety of different ways using different [hardware](../broadcast/hardware-encoders.mdx) and [software](../broadcast/software-encoders.md) solutions. To learn more about how to broadcast with your Publish token, explore [the Broadcast guide](/millicast/broadcast/index.mdx).
+Once created, your Publish token can be used to broadcast in a variety of different ways using different [hardware](../broadcast/hardware-encoders.mdx) and [software](../broadcast/software-encoders.mdx) solutions. To learn more about how to broadcast with your Publish token, explore [the Broadcast guide](/millicast/broadcast/index.mdx).
 
 ## Managing and editing existing publish tokens
 
@@ -142,7 +142,7 @@ The publishing tab includes all information relating to [broadcasting](/millicas
   - RTMP multi-bitrate can be enabled from this section. When enabled, the dashboard will create three RTMP publish stream names for **low** bitrate, **medium** bitrate, and **high** bitrate.
 - [SRT](/millicast/broadcast/using-srt.md): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.
   - Passphrase encryption can be enabled from this section. When enabled, the dashboard will generate a passphrase for encrypting the SRT stream.
-- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/client-sdks/index.md) or compatible [software](../broadcast/software-encoders.md) and [hardware encoders](../broadcast/hardware-encoders.mdx).
+- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/client-sdks/index.md) or compatible [software](../broadcast/software-encoders.mdx) and [hardware encoders](../broadcast/hardware-encoders.mdx).
 
 To learn more about publishing and broadcasting with Dolby.io, check out the [Broadcast](/millicast/broadcast/index.mdx) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
 
@@ -157,14 +157,14 @@ The Distribution tab includes settings that can modify how the CDN distributes t
 
 The Playback tab includes all relevant information for playing back a live stream. Dolby.io provides an [out-of-the-box hosted player experience](https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true), which can be viewed at the **Hoster player path** URL or by embedding the **Hosted embedded player** as an `<iframe>` into your webpage.
 
-From this tab, you can customize the player by altering settings such as the inclusion of the "Volume button" or if the stream is "Muted on start". To learn more about the hosted player or how you can build or use your own player, explore the [Playback](/millicast/playback/index.md) guide.
+From this tab, you can customize the player by altering settings such as the inclusion of the "Volume button" or if the stream is "Muted on start". To learn more about the hosted player or how you can build or use your own player, explore the [Playback](/millicast/playback/index.mdx) guide.
 
 
 ![](../assets/img/playback.png)
 
 
 
-The playback tab also includes a [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint. This can be used for devices that support WebRTC egress. To learn more about WHEP, explore the [Playback](/millicast/playback/index.md) section of the documentation.
+The playback tab also includes a [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint. This can be used for devices that support WebRTC egress. To learn more about WHEP, explore the [Playback](/millicast/playback/index.mdx) section of the documentation.
 
 ### 6\. Recordings
 

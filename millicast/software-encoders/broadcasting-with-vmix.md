@@ -117,7 +117,7 @@ As with the other example, update the **sourceId** and adjust the quality settin
 
 ### Start and view streams
 
-In vMix click start all streams. You can then watch this stream from a [playback](/millicast/playback/index.md) viewer. If you select the viewer settings, you can see that there are multiple Video Quality renditions available.
+In vMix click start all streams. You can then watch this stream from a [playback](/millicast/playback/index.mdx) viewer. If you select the viewer settings, you can see that there are multiple Video Quality renditions available.
 
 
 ![](../assets/img/vMixABR4.png)
