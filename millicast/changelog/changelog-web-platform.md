@@ -331,4 +331,4 @@ Added a typescript declaration file and its configuration. The type definition f
 ## Features
 
 - Added typescript configuration corrections.
-- Now the Millicast Web SDK supports integration with the React Native WebRTC plugin. This allows developers to simplify Millicast services integration into their own React Native applications. The previous React Native SDK was deprecated. For more information, see the [React Native documentation](/millicast/client-sdks/rn.md).
+- Now the Millicast Web SDK supports integration with the React Native WebRTC plugin. This allows developers to simplify Millicast services integration into their own React Native applications. The previous React Native SDK was deprecated. For more information, see the [React Native documentation](/millicast/client-sdks/rn.mdx).

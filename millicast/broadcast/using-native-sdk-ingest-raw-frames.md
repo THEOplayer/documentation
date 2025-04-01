@@ -226,7 +226,7 @@ void create_custom_source_and_publish() {
 }
 ```
 
-With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.md) in the Client SDKs section of the documentation.
+With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.mdx) in the Client SDKs section of the documentation.
 
 ## Using the iOS API
 
@@ -500,7 +500,7 @@ func createCustomSourceAndPublish() {
 }
 ```
 
-With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.md) in the Client SDKs section of the documentation.
+With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.mdx) in the Client SDKs section of the documentation.
 
 ## Using the Android API
 
@@ -697,4 +697,4 @@ void create_custom_source_and_publish() {
 }
 ```
 
-With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.md) in the Client SDKs section of the documentation.
+With the audio and video source instantiated, the frames can now be passed as inputs to the `Publisher` object. To learn more about publishing a stream from the native SDKs explore the [Native SDK guides](/millicast/client-sdks/index.mdx) in the Client SDKs section of the documentation.

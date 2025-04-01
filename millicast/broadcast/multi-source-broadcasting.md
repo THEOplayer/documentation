@@ -6,7 +6,7 @@ slug: /multi-source-broadcasting
 
 There are two main use cases where broadcasting multiple video and audio feeds to a stream is useful:
 
-1. [Multi-view streams](/millicast/playback/multiview.md): Multi-view is a feature whereby viewers ingest and render multiple streams simultaneously inside a browser or mobile native applications. Once rendered these streams can be switched between, offering the viewer the ability to control how they view and listen to the content. Multi-view is supported by all of our [Client SDKs](/millicast/client-sdks/index.md)  for playback.
+1. [Multi-view streams](/millicast/playback/multiview.md): Multi-view is a feature whereby viewers ingest and render multiple streams simultaneously inside a browser or mobile native applications. Once rendered these streams can be switched between, offering the viewer the ability to control how they view and listen to the content. Multi-view is supported by all of our [Client SDKs](/millicast/client-sdks/index.mdx)  for playback.
 2. [Audio Multiplexing](/millicast/playback/audio-multiplexing.md): Audio Multiplexing is a feature that allows viewers to receive multiple overlapping audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
 
 Multi-source can ingest contribution streams from sources such as RTMP and SRT. This guide provides the components and best practices for an optimal multi-view experience.
@@ -185,7 +185,7 @@ let publisherOptions = MCClientOptions()
 publisherOptions.sourceId = "MySource"
 ```
 
-For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/index.md)4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/index.md)5-configure-your-publishing-session), and [iOS](/millicast/client-sdks/ios/index.md)3-configure-your-publishing-session). 
+For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/index.mdx)4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/index.mdx)5-configure-your-publishing-session), and [iOS](/millicast/client-sdks/ios/index.mdx)3-configure-your-publishing-session). 
 
 > Note: The `sourceId` should be a unique value and by default is undefined. Identical `sourceId` values should only be used for specifying [redundant streams](/millicast/broadcast/redundant-ingest/index.md).
 
@@ -215,7 +215,7 @@ There are multiple ways to playback and consume a multi-view feed:
 - Use the [Dolby-hosted player](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) (easiest for testing web)
 - Use the Dolby-published iOS and Android [Interactive Player Apps](https://dolby.io/project-gallery/interactive-player-apps/)
 - Build your own [multi-view app for Web](/millicast/getting-started/creating-real-time-streaming-web-app.md)
-- Build your own [multi-view app with the SDK](/millicast/client-sdks/index.md)
+- Build your own [multi-view app with the SDK](/millicast/client-sdks/index.mdx)
 
 ## Troubleshooting
 

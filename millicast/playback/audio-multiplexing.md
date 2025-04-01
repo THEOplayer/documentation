@@ -29,7 +29,7 @@ To get started using Audio Multiplexing, you first need to create a Publishing t
 
 > 📘 Not familar with our JavaScript SDK?
 > 
-> Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/client-sdks/index.md).
+> Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/client-sdks/index.mdx).
 
 Once you're streaming multiple audio sources, the next step is to set up the [Viewer](/millicast/client-sdks/web.mdx)viewer) so that the incoming audio sources can be correctly multiplexed. When connecting to the Viewer, there are a [number of parameters available in the SDK](https://millicast.github.io/millicast-sdk/View.html#connect) you can adjust depending on your workflow. Some parameters of note for audio multiplexing include:
 

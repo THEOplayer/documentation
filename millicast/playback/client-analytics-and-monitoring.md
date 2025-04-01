@@ -23,7 +23,7 @@ If the answer is yes to either of those questions, that may indicate a broadcast
 
 When a broadcast is healthy, there can still be scenarios where an individual playback client may experience poor  player performance due to regional network disruptions, app misconfigurations, client platform versions, codec compatibility, etc.
 
-To help facilitate investigating out why a client is experiencing a degraded experience, there is a utility function available from the [Client SDKs](/millicast/client-sdks/index.md) called `diagnose()`. This method gathers up pertinent details such as: 
+To help facilitate investigating out why a client is experiencing a degraded experience, there is a utility function available from the [Client SDKs](/millicast/client-sdks/index.mdx) called `diagnose()`. This method gathers up pertinent details such as: 
 
 ✓ The version of the SDK being used.
 
@@ -67,7 +67,7 @@ See the Data Dictionary below for examples of some of the data returned.
 
 # Ongoing Monitoring of Client Analytics
 
-It is common practice to proactively monitor all clients for indicators of streaming issues. The [Client SDKs](/millicast/client-sdks/index.md) provide access to a `stats` event that emits a snapshot of WebRTC indicators at a frequent interval. This data can be used in combination with an **Application Performance Monitoring (APM)** solution or Observability tool to alert and integrate with other third-party analytics services for a complete picture of the end-viewer experience.
+It is common practice to proactively monitor all clients for indicators of streaming issues. The [Client SDKs](/millicast/client-sdks/index.mdx) provide access to a `stats` event that emits a snapshot of WebRTC indicators at a frequent interval. This data can be used in combination with an **Application Performance Monitoring (APM)** solution or Observability tool to alert and integrate with other third-party analytics services for a complete picture of the end-viewer experience.
 
 
 ![](../assets/img/feature-client-analytics.png)

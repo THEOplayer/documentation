@@ -16,7 +16,7 @@ These cue points are often used for time synchronizing application state with th
 
 # SEI Metadata
 
-Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.md) as well as some broadcast encoders that embed **Action Message Format (AMF) messages. 
+Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed **Action Message Format (AMF) messages. 
 
 
 ![](../assets/img/metadata-feature.png)
@@ -413,7 +413,7 @@ When a new metadata is received, this code will trigger the JavaScript event **m
 
 ## Supporting Non-SEI Metadata for Native Platforms
 
-Using the [Native SDK](/millicast/client-sdks/index.md) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
+Using the [Native SDK](/millicast/client-sdks/index.mdx) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
 
 > 📘 Example Project
 > 

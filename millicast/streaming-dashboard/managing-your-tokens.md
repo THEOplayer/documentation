@@ -105,7 +105,7 @@ Once opened, you will see multiple tabs to explore.
 4. Distribution - configuration for distribution content such as [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) and [Re-streaming](/millicast/distribution/re-streaming.md)
 5. Playback - path and settings available with the hosted [Millicast Player](/millicast/playback/hosted-viewer.md)
 6. Recordings - media files that are captured from stream recordings
-7. API - publishing token, ids, and endpoints for use with [Client SDKs](/millicast/client-sdks/index.md)
+7. API - publishing token, ids, and endpoints for use with [Client SDKs](/millicast/client-sdks/index.mdx)
 8. Multi-source - a convenient tool for setting up [multi-source](/millicast/broadcast/multi-source-broadcasting.md) contribution
 ### 1\. Token details
 
@@ -142,7 +142,7 @@ The publishing tab includes all information relating to [broadcasting](/millicas
   - RTMP multi-bitrate can be enabled from this section. When enabled, the dashboard will create three RTMP publish stream names for **low** bitrate, **medium** bitrate, and **high** bitrate.
 - [SRT](/millicast/broadcast/using-srt.md): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.
   - Passphrase encryption can be enabled from this section. When enabled, the dashboard will generate a passphrase for encrypting the SRT stream.
-- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/client-sdks/index.md) or compatible [software](../broadcast/software-encoders.mdx) and [hardware encoders](../broadcast/hardware-encoders.mdx).
+- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/client-sdks/index.mdx) or compatible [software](../broadcast/software-encoders.mdx) and [hardware encoders](../broadcast/hardware-encoders.mdx).
 
 To learn more about publishing and broadcasting with Dolby.io, check out the [Broadcast](/millicast/broadcast/index.mdx) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
 
@@ -179,7 +179,7 @@ To learn more about recording, visit the [Recordings guide](/millicast/distribut
 
 ### 7\. API
 
-The API tab includes information needed to publish a stream with the [Client SDKs](/millicast/client-sdks/index.md) or from a [third-party software or hardware source](/millicast/broadcast/index.mdx). The tab includes details in a few sections:
+The API tab includes information needed to publish a stream with the [Client SDKs](/millicast/client-sdks/index.mdx) or from a [third-party software or hardware source](/millicast/broadcast/index.mdx). The tab includes details in a few sections:
 
 - **Publish token**:
   - **Publishing token**: The Publishing token is a unique string that is required for authenticating a request to publish via the Dolbyio servers. This string should be protected and **if exposed, should be cycled immediately** to prevent unwanted broadcasts and charges.
