@@ -2,37 +2,39 @@
 title: "Token API"
 slug: /token-api
 ---
+
 The **Token API** is a REST endpoint that allows you to automate the creation and management of tokens for your applications. You can create, read, update, and delete **publish tokens** and **subscribe tokens** that are used for authorizations with a broadcast stream.
 
-***
+---
 
-<div class="dolbyio-cards-container-4">
+import DocCardList from '@theme/DocCardList';
 
-  <a class="dolbyio-card" href="./managing-your-tokens">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2021/08/dolbyio-icon-hd-video-dark-bg.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Publish tokens</div>
-    <div class="dolbyio-card-description">
-			Used to publish and manage starting a broadcast.
-    </div>
-  </a>
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      href: '/millicast/managing-your-tokens',
+      docId: 'streaming-dashboard/managing-your-tokens',
+      customProps: {
+        icon: '🎥',
+      },
+      label: 'Publish tokens',
+      description: 'Used to publish and manage starting a broadcast.',
+    },
+    {
+      type: 'link',
+      href: '/millicast/subscribe-tokens',
+      docId: 'streaming-dashboard/subscribe-tokens',
+      customProps: {
+        icon: '▶️',
+      },
+      label: 'Subscribe tokens',
+      description: 'Used to subscribe and manage the playback viewing of a stream. (optional)',
+    },
+  ]}
+/>
 
-
-  <a class="dolbyio-card" href="./subscribe-tokens">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2022/09/DLB_IO_Icon_FeatBen_Simulcast_rgb_DRK.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Subscribe tokens<br/>(optional)</div>
-    <div class="dolbyio-card-description">
-      Used to subscribe and manage the playback viewing of a stream.
-    </div>
-  </a>
-
-</div>
-
-
-***
+---
 
 This guide covers the following:
 
