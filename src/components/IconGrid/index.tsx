@@ -1,18 +1,19 @@
-import React, { type ReactNode } from 'react';
+import React, { type ComponentProps, type ReactNode } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import Link, { type Props as LinkProps } from '@docusaurus/Link';
 
-export interface IconGridButtonProps extends LinkProps {
+export interface IconGridButtonProps {
+  className?: string;
   large?: boolean;
   children?: ReactNode;
 }
 
 export function IconGridButton({ className, large, children, ...props }: IconGridButtonProps) {
   return (
-    <Link className={clsx(styles.iconGridButton, { [styles.large]: large }, className)} {...props}>
+    <div className={clsx(styles.iconGridButton, { [styles.large]: large }, className)} {...props}>
       {children}
-    </Link>
+    </div>
   );
 }
 

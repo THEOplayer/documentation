@@ -5,7 +5,7 @@
   margin-bottom: 20px;
 }
 
-.iconGridButton {
+.iconGridButton a {
   --ifm-link-color: var(--ifm-color-emphasis-800);
   --ifm-link-hover-color: var(--ifm-color-emphasis-700);
   --ifm-link-hover-decoration: none;
@@ -24,7 +24,7 @@
   transition-property: border, box-shadow;
 }
 
-.iconGridButton:hover {
+.iconGridButton:hover a {
   border-color: var(--ifm-color-primary);
   box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
 }
