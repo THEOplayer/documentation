@@ -8,68 +8,23 @@ slug: /rtsp
 
 With Dolby.io's support for RTSP, developers can leverage the use of the widely used protocol for controlling the quality and monitoring streaming multimedia content. One of the key features of RTSP is its ability to handle both live streaming and stored media, allowing users to access pre-recorded content as well as real-time broadcast. It also supports various codecs and media formats, providing flexibility in the types of media that can be streamed. Dolby.io includes guides supporting RTSP for the following:
 
-<div class="small-image-and-text-btn-container">
- 	<a href="./using-obs" class="small-image-and-text-btn">
-    <div class="obs-inner-container">
-      <div align="center">
-      <img class="logo-obs" src="https://upload.wikimedia.org/wikipedia/commons/1/14/Open_Broadcaster_Software_Logo.png"/>
-      </div>
-      <div class="small-image-and-text-btn-title"> OBS </div>
-    </div>
-  </a>
-  
-  <a href="./using-ffmpeg" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-        <img class="gray-svg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/FFmpeg_Logo_new.svg/2560px-FFmpeg_Logo_new.svg.png"/>
-      </div>
-      <div class="small-image-and-text-btn-title"> </div>
-    </div>
-  </a>
+import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
 
-  <a href="./liveu-studio-using-whip" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-      <img class="gray-svg" src="https://cdn-liveutv.pressidium.com/wp-content/uploads/2021/06/LiveU_Logo_On_Whtite.png"/>
-      </div>
-      <div class="small-image-and-text-btn-title"> </div>
-    </div>
-  </a> 
-  
-  <a href="./using-whip-with-gstreamer" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-      <img class="gray-svg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Gstreamer-logo.svg/2560px-Gstreamer-logo.svg.png"/>
-      </div>
-      <div class="small-image-and-text-btn-title"> </div>
-    </div>
-  </a>
-  
-  <a href="./using-ndi" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-      <img class="gray-svg" src="https://seeklogo.com/images/N/network-device-interface-logo-88C1BBB203-seeklogo.com.png"/>
-      </div>
-      <div class="small-image-and-text-btn-title"> </div>
-    </div>
-  </a>
-  
+<!-- prettier-ignore-start -->
 
+<IconGrid>
+    <IconGridButton large>[![OBS](https://upload.wikimedia.org/wikipedia/commons/d/d3/OBS_Studio_Logo.svg)](/millicast/software-encoders/using-obs.md)</IconGridButton>
+    <IconGridButton large>[![FFMPEG](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/FFmpeg_Logo_new.svg/2560px-FFmpeg_Logo_new.svg.png)](/millicast/software-encoders/using-ffmpeg.md)</IconGridButton>
+    <IconGridButton large>[![LiveU](https://cdn-liveutv.pressidium.com/wp-content/uploads/2021/06/LiveU_Logo_On_Whtite.png)](/millicast/software-encoders/liveu-studio-using-whip.md)</IconGridButton>
+    <IconGridButton large>[![GStreamer](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Gstreamer-logo.svg/2560px-Gstreamer-logo.svg.png)](/millicast/software-encoders/using-whip-with-gstreamer.md)</IconGridButton>
+    <IconGridButton large>[![NDI](https://seeklogo.com/images/N/network-device-interface-logo-88C1BBB203-seeklogo.com.png)](using-ndi.md)</IconGridButton>
 
-  <!--
-  <a href="./broadcasting-jitsi-or-zoom-meetings" class="small-image-and-text-btn">
-    <div class="small-image-and-text-btn-inner-container">
-      <div>
-      <img class="gray-svg" src="https://logos-world.net/wp-content/uploads/2021/03/Zoom-Logo.png"/>
-      </div>
-      <div class="small-image-and-text-btn-title"> </div>
-    </div>
-  </a>    
-  -->
-  
-</div>
+    <!--
+    <IconGridButton large>[![Zoom](https://logos-world.net/wp-content/uploads/2021/03/Zoom-Logo.png)](/millicast/software-encoders/broadcasting-jitsi-or-zoom-meetings.md)</IconGridButton>
+    -->
 
-
+</IconGrid>
+<!-- prettier-ignore-end -->
 
 ## How-to support RTSP inside OBS-WebRTC
 
