@@ -16,7 +16,7 @@ If you are using an action camera that is not listed, you should be able to use 
 
 ![GoPro](https://dolby.io/wp-content/uploads/2023/01/Dolby.io_Live-Stream-With-GoPro-Via-Dolby.io-Streaming@3x-100-2048x847.jpg)
 
-[GoPro](https://gopro.com/) is a leader in action cameras. With the latest models of GoPro cameras, you can achieve sub-second latency by streaming with RTMP from your GoPro directly to Dolby.io for [distribution](/millicast/distribution/index.md) over WebRTC. 
+[GoPro](https://gopro.com/) is a leader in action cameras. With the latest models of GoPro cameras, you can achieve sub-second latency by streaming with RTMP from your GoPro directly to Dolby.io for [distribution](/millicast/distribution/index.mdx) over WebRTC. 
 
 <div style={{marginLeft: "20px"}}>
 
@@ -134,6 +134,6 @@ If you run into any trouble, see the official [GoPro Support](https://community.
 
 # Learn more
 
-Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.md), and [playback](/millicast/playback/index.md) guides to complete your project.
+Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.mdx), and [playback](/millicast/playback/index.md) guides to complete your project.
 
 If you have a different type of action camera than the ones listed, reach out to our [support team](https://support.dolby.io/) to ask about compatibility.

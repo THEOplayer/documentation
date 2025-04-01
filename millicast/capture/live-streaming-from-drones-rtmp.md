@@ -20,7 +20,7 @@ If you are using a drone that is not listed, you should be able to use similar s
 
 # DJI
 
-[DJI](https://www.dji.com/) is a leader in consumer and professional drones used for aerial videography. Several models support networking and RTMP streaming from the device that can be sent directly to Dolby.io for [distribution](/millicast/distribution/index.md) over WebRTC.
+[DJI](https://www.dji.com/) is a leader in consumer and professional drones used for aerial videography. Several models support networking and RTMP streaming from the device that can be sent directly to Dolby.io for [distribution](/millicast/distribution/index.mdx) over WebRTC.
 
 Some examples:
 
@@ -176,6 +176,6 @@ Web based broadcaster
 
 ### Learn more
 
-Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.md), and [playback](/millicast/playback/index.md) guides to complete your project.
+Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.mdx), and [playback](/millicast/playback/index.md) guides to complete your project.
 
 If you have a different type of drone than the ones listed, reach out to our [support team](https://support.dolby.io/) to ask about compatibility.

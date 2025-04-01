@@ -77,7 +77,7 @@ The Dolby.io CDN for WebRTC Real-time Streaming supports streaming up to 4k 60fp
 > 
 > Dolby.io supports broadcasting [using SRT or RTMP](/millicast/broadcast/index.mdx) as well.
 
-WebRTC broadcasting is enabled via WHIP, to learn more about support for WebRTC egressing and playback learn more about [WHEP](/millicast/distribution/index.md).
+WebRTC broadcasting is enabled via WHIP, to learn more about support for WebRTC egressing and playback learn more about [WHEP](/millicast/distribution/index.mdx).
 
 # How-to find your WHIP publish settings
 
