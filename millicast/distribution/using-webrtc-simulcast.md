@@ -11,7 +11,7 @@ Simulcast is a mechanism for distributing streaming content with variations that
 
 The platform's _Selective Forwarding Unit (SFU)_ is responsible for distributing the media and adjusts the bit rate so that the streaming player will select the highest quality stream it can reliably playback for each viewer. This is known as **Adaptive Bitrate (ABR) streaming**. The decision is made based on factors like available bandwidth but also other considerations such as device size, video layout, and CPU utilization may be considered. With **Multi-bitrate (MBR)** streaming, the end-user can be given controls to choose which resolution they would like to receive instead of letting the SFU _auto_ select it. 
 
-This bitrate adaptation is available for [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WHIP](/millicast/broadcast/webrtc-whip.md) broadcast protocols.
+This bitrate adaptation is available for [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast protocols.
 
 
 Simulcast provides flexibility that allows viewers to adjust their individual experience for specific circumstances. For _multicast_ use cases of distributing to multiple destinations, review the [Syndication](/millicast/distribution/syndication.md) guide.

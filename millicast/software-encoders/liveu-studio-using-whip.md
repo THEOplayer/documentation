@@ -2,7 +2,7 @@
 title: "LiveU"
 slug: /liveu-studio-using-whip
 ---
-[LiveU Studio](https://www.liveu.tv/products/produce/liveu-studio) is a cloud production studio for live video that supports WebRTC streaming to the Dolby.io platform with [WHIP](/millicast/broadcast/webrtc-whip.md). This guide outlines how to create and broadcast a high-quality low-latency stream globally with Dolby.io streaming.
+[LiveU Studio](https://www.liveu.tv/products/produce/liveu-studio) is a cloud production studio for live video that supports WebRTC streaming to the Dolby.io platform with [WHIP](/millicast/broadcast/webrtc-whip.mdx). This guide outlines how to create and broadcast a high-quality low-latency stream globally with Dolby.io streaming.
 
 > 👍 Getting Started
 > 
@@ -14,7 +14,7 @@ See the official [LiveU Studio](https://www.liveu.tv/support) site for documenta
 
 ## How-to use LiveU with WHIP
 
-To get started, [create a token](/millicast/streaming-dashboard/managing-your-tokens.md) in your Dolby.io dashboard. On the Publishing tab of the newly created token, copy the WHIP endpoint URL and your Publishing token as shown in the [WebRTC | WHIP guide](/millicast/broadcast/webrtc-whip.md).
+To get started, [create a token](/millicast/streaming-dashboard/managing-your-tokens.md) in your Dolby.io dashboard. On the Publishing tab of the newly created token, copy the WHIP endpoint URL and your Publishing token as shown in the [WebRTC | WHIP guide](/millicast/broadcast/webrtc-whip.mdx).
 
 Open LiveU Studio and click on "PUBLISH" in the left-side menu. Click on "ADD OR EDIT PUBLISHING POINTS".
 

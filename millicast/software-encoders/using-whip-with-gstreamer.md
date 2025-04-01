@@ -2,7 +2,7 @@
 title: "Gstreamer"
 slug: /using-whip-with-gstreamer
 ---
-**GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines that support complex workflows. You may want to broadcast over WebRTC from a file on disk or another Real-time Streaming Protocol ([RTSP](/millicast/broadcast/rtsp.md)). You can originate the broadcast through GStreamer that ingests the stream utilizing [WHIP](/millicast/broadcast/webrtc-whip.md) or forwards with [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx).
+**GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines that support complex workflows. You may want to broadcast over WebRTC from a file on disk or another Real-time Streaming Protocol ([RTSP](/millicast/broadcast/rtsp.mdx)). You can originate the broadcast through GStreamer that ingests the stream utilizing [WHIP](/millicast/broadcast/webrtc-whip.mdx) or forwards with [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx).
 
 This guide includes a number of examples:
 
@@ -24,7 +24,7 @@ You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From t
 > 
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
-See the [WHIP](/millicast/broadcast/webrtc-whip.md) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md). 
+See the [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md). 
 
 - WHIP endpoint
 - Bearer token

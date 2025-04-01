@@ -23,7 +23,7 @@ Select the publish token that you want to use for your RTMP streaming applicatio
 
 ## How to find your RTMP publish URL
 
-Click on the _Publishing_ tab of the token screen where you will find details for the various protocols such as [WHIP](/millicast/broadcast/webrtc-whip.md), [SRT](/millicast/broadcast/using-srt.md), and RTMP.
+Click on the _Publishing_ tab of the token screen where you will find details for the various protocols such as [WHIP](/millicast/broadcast/webrtc-whip.mdx), [SRT](/millicast/broadcast/using-srt.md), and RTMP.
 
 
 ![](../assets/img/rtmp_publish_url.png)

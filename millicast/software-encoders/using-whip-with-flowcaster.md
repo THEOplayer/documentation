@@ -2,7 +2,7 @@
 title: "Drastic Technologies"
 slug: /using-whip-with-flowcaster
 ---
-Drastic Technologies' **FlowCaster** is a tool that enables cloud-based media workflows. FlowCaster makes it simple to use Dolby.io Real-time Streaming and the [WHIP (WebRTC HTTP Ingest Protocol)](/millicast/broadcast/webrtc-whip.md) with no additional software or hardware requirements.
+Drastic Technologies' **FlowCaster** is a tool that enables cloud-based media workflows. FlowCaster makes it simple to use Dolby.io Real-time Streaming and the [WHIP (WebRTC HTTP Ingest Protocol)](/millicast/broadcast/webrtc-whip.mdx) with no additional software or hardware requirements.
 
 The WebRTC-HTTP ingest protocol (WHIP) uses an HTTP POST request to perform a single shot SDP offer/answer so an ICE/DTLS session can be established between the Flowcaster encoder/media producer (WHIP client) and the Dolby.io Real-time Streaming broadcasting ingestion endpoint (media server).
 

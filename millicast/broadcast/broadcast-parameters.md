@@ -8,7 +8,7 @@ Broadcast URL Parameters allow you to customize the behavior of an individual so
 
 There are some variations depending on which protocol is being used to broadcast.
 
-- [WebRTC](/millicast/broadcast/webrtc-whip.md)
+- [WebRTC](/millicast/broadcast/webrtc-whip.mdx)
 : The query parameter string is appended at the end of a WHIP URL `https` endpoint.
 - [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md)
 : The query parameter string is appended to the end of a RTMP URL `rtmp` or `rtmps` endpoint. Depending on the encoder, this may be appended as a single URL or a two-part server and path.

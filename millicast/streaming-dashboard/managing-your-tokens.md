@@ -101,7 +101,7 @@ Once opened, you will see multiple tabs to explore.
 
 1. Token details - token identification, security, and overall feature capabilities
 2. Token streams - configure stream names that the token can publish
-3. Publishing - settings for configuring broadcast encoders such as [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WebRTC](/millicast/broadcast/webrtc-whip.md) settings
+3. Publishing - settings for configuring broadcast encoders such as [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WebRTC](/millicast/broadcast/webrtc-whip.mdx) settings
 4. Distribution - configuration for distribution content such as [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) and [Re-streaming](/millicast/distribution/re-streaming.md)
 5. Playback - path and settings available with the hosted [Millicast Player](/millicast/playback/hosted-viewer.md)
 6. Recordings - media files that are captured from stream recordings
@@ -137,7 +137,7 @@ To delete a stream name, simply select it from the list and click the remove but
 
 The publishing tab includes all information relating to [broadcasting](/millicast/broadcast/index.mdx) a stream with the Publish token. This tab can be broken down into four sections:
 
-- [WHIP](/millicast/broadcast/webrtc-whip.md): The _WHIP endpoint_ and _Bearer token_ can be used to publish a WebRTC stream with WebRTC-compatible software and hardware.
+- [WHIP](/millicast/broadcast/webrtc-whip.mdx): The _WHIP endpoint_ and _Bearer token_ can be used to publish a WebRTC stream with WebRTC-compatible software and hardware.
 - [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md): The _RTMP/s publish paths_ and _RTMP publish stream name_ can be used for publishing streams with RTMP-compatible software and hardware.
   - RTMP multi-bitrate can be enabled from this section. When enabled, the dashboard will create three RTMP publish stream names for **low** bitrate, **medium** bitrate, and **high** bitrate.
 - [SRT](/millicast/broadcast/using-srt.md): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.

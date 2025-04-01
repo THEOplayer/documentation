@@ -8,7 +8,7 @@ See the official <a href="https://obsproject.com/" target="_blank">obsproject.co
 
 # Setting Up a Broadcast
 
-With OBS, you can broadcast using [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), or [WHIP](/millicast/broadcast/webrtc-whip.md).
+With OBS, you can broadcast using [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), or [WHIP](/millicast/broadcast/webrtc-whip.mdx).
 
 ## RTMP
 

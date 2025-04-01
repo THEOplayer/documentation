@@ -2,7 +2,7 @@
 title: "Multi-source Builder"
 slug: /multi-source-builder
 ---
-The **Multi-source** tab of the Streaming Dashboard is a tool to help you build and configure multiple publishing sources to enable simulcast or power a multi-view experience. You can add multiple [SRT](/millicast/broadcast/using-srt.md), [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [WebRTC](/millicast/broadcast/webrtc-whip.md) sources and use the user-interface to configure multi-bitrate publishing. The Multi-source tab also includes a URL to launch the hosted player with the multi-viewer configuration, customizable `<iframe>` code to embed the hosted player into your webpage, and the ability to export your multi-source configuration as a file.
+The **Multi-source** tab of the Streaming Dashboard is a tool to help you build and configure multiple publishing sources to enable simulcast or power a multi-view experience. You can add multiple [SRT](/millicast/broadcast/using-srt.md), [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [WebRTC](/millicast/broadcast/webrtc-whip.mdx) sources and use the user-interface to configure multi-bitrate publishing. The Multi-source tab also includes a URL to launch the hosted player with the multi-viewer configuration, customizable `<iframe>` code to embed the hosted player into your webpage, and the ability to export your multi-source configuration as a file.
 
 
 ![](../assets/img/builder.png)
@@ -26,7 +26,7 @@ Click the `Add a source` button to begin setting up multiple stream sources.
 
 The **source name** should be a short and descriptive text label. This name will appear within the hosted player multi-view as audio and video sources that can be selected. 
 
-The **streaming protocol** helps identify the configuration needed for the broadcast. The multi-source builder supports [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WHIP](/millicast/broadcast/webrtc-whip.md) broadcast protocols.
+The **streaming protocol** helps identify the configuration needed for the broadcast. The multi-source builder supports [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast protocols.
 
 By default, the first source you add will be labeled as the _Main_ source. Dolby.io Real-time Streaming limits the aggregate bitrate of all sources to 12 Mbps. The main source is prioritized and allowed to exceed the 12 Mbps limit, and the other sources share any remaining available bandwidth. See the [Multi-view](/millicast/playback/multiview.md)limitations-of-multi-view) guide for examples of bandwidth allocation.
 
@@ -43,7 +43,7 @@ By selecting a source, the configuration details and available settings will be 
   - RTMP multi-bitrate can be enabled from this section. When enabled, the dashboard will create three RTMP publish stream names for **low** bitrate, **medium** bitrate, and **high** bitrate.
 - [SRT](/millicast/broadcast/using-srt.md): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.
   - Passphrase encryption can be enabled from this section. When enabled, the dashboard will generate a passphrase for encrypting the SRT stream.
-- [WHIP](/millicast/broadcast/webrtc-whip.md): The _WHIP endpoint_ and _Bearer token_ can be used to publish a WebRTC stream with WebRTC-compatible software and hardware.
+- [WHIP](/millicast/broadcast/webrtc-whip.mdx): The _WHIP endpoint_ and _Bearer token_ can be used to publish a WebRTC stream with WebRTC-compatible software and hardware.
 
 ### Quality layers
 

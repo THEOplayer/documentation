@@ -4,7 +4,7 @@ slug: /using-ffmpeg
 ---
 **FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. It is common practice to use Ffmpeg in production workflows when broadcasting from a media file on disk.
 
-Broadcasts are started using the `ffmpeg` command-line to forward a source using either [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [SRT](/millicast/broadcast/using-srt.md) broadcast contribution protocols which are then streamed as [WebRTC](/millicast/broadcast/webrtc-whip.md) for global real-time distribution. 
+Broadcasts are started using the `ffmpeg` command-line to forward a source using either [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [SRT](/millicast/broadcast/using-srt.md) broadcast contribution protocols which are then streamed as [WebRTC](/millicast/broadcast/webrtc-whip.mdx) for global real-time distribution. 
 
 See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installation instructions and additional support.
 
