@@ -3,6 +3,8 @@ description: Hardware-based Encoders for Broadcasting Real-time Streaming Conten
 slug: /hardware-encoders
 ---
 
+import DocCardList from '@theme/DocCardList';
+
 # Hardware Encoders
 
 In today's digital landscape, the demand for real-time streaming content has skyrocketed, prompting broadcasters and video creators to prioritize the efficient delivery of high-quality video and audio streams. Hardware-based encoders play a crucial role in this process with their offerings of superior encoding capabilities and seamless transmission. Needless to say, workflows don't have to be interrupted in order to better a stream. Using the Dolby.io Streaming API protocols like [SRT](/millicast/broadcast/using-srt.md), [NDI](/millicast/broadcast/using-ndi.md), and [WHIP](/millicast/broadcast/webrtc-whip.md) can be ingested directly from the encoders like [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md), [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md), and [Videon](/millicast/hardware-encoders/videon.md) and distributed in WebRTC.
@@ -57,5 +59,20 @@ The **Haivision KB Encoder** is a high-performance video encoding device that ef
 
 You can find examples of using [Videon EdgeCaster](https://dolby.io/blog/unleash-superior-streaming-harnessing-dolby-io-streaming-api-and-videon-edgecaster-encoder-for-multi-bitrate-simulcasting/), [Osprey Talon](https://dolby.io/blog/webrtc-hardware-encoding-and-streaming/), and more on the [developer blog](https://dolby.io/blog/tag/encoder/).
 
-- [Explore GitHub sample code](https://github.com/orgs/dolbyio-samples/repositories?q=encoder)
-- [Find related blog posts](https://dolby.io/blog/tag/encoder/)
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/orgs/dolbyio-samples/repositories?q=encoder',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'Explore GitHub samples',
+    },
+    {
+      type: 'link',
+      href: 'https://dolby.io/blog/tag/encoder/',
+      label: 'Find related blog posts',
+    },
+  ]}
+/>
