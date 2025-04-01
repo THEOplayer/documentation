@@ -14,16 +14,8 @@ function DocCardListForCurrentSidebarCategory(props: Props) {
   return <DocCardList {...props} items={filteredItems} />;
 }
 
-function isIndexLink(item: PropSidebarItem): boolean {
-  return item.type === 'link' && item.docId && item.docId.endsWith('/index');
-}
-
 function isValidItem(item: PropSidebarItem): boolean {
-  return (
-    (item.type === 'link' || item.type === 'category') &&
-    // Remove link to index page
-    !isIndexLink(item)
-  );
+  return item.type === 'link' || item.type === 'category';
 }
 
 export default function DocCardList(props: Props) {
