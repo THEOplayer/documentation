@@ -9,9 +9,9 @@ slug: /using-haivision-kb-encoder
 
 See the official [Haivision](https://www.haivision.com/) site for documentation, installation instructions, and additional support.
 
-# Haivision Encoders
+## Haivision Encoders
 
-## How to use Haivision Makito X4 encoder with SRT
+### How to use Haivision Makito X4 encoder with SRT
 
 To get started, log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin). 
 
@@ -37,7 +37,7 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
    | :------------------- | :------------------------------------- |
    | Format               | Custom                                 |
    | Stream Publishing ID | Makito?t=Your_Token_From_SRT_Stream_ID |
-## How to use Haivision KB encoder with RTMP
+### How to use Haivision KB encoder with RTMP
 
 > 👍 Getting Started with RTMP
 > 
@@ -56,7 +56,7 @@ Follow the Create Channel Wizard prompts to create a channel as normal:
 
 With the broadcast credentials set up, the stream is ready to go live. To view the stream, navigate back to your newly created token and switch to the _Playback_ tab. From the Playback tab, copy the _Hosted Player path_ URL and open it in your browser.
 
-## Recommended Haivision encoder settings
+### Recommended Haivision encoder settings
 
 Here are some adjustments recommended by the [Haivision support](https://www.haivision.com/support/) team:
 
@@ -71,7 +71,7 @@ Here are some adjustments recommended by the [Haivision support](https://www.hai
 
 \*Note: The timestamp seeding seemed to be the magic change on the KBs.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 

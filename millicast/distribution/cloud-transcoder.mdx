@@ -15,9 +15,9 @@ import CalloutBetaFeature from '../callouts/_beta_feature.md';
 
 <CalloutBetaFeature />
 
-# Transcoder statuses
+## Transcoder statuses
 
-Each transcoder has a state that depends on the performed asynchronous operations, such as creating, starting, stopping, or deleting. 
+Each transcoder has a state that depends on the performed asynchronous operations, such as creating, starting, stopping, or deleting.
 
 | Transition | Status       | Description                                                                                                                                                                                                                                                                                           | Webhook |
 | :--------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
@@ -32,7 +32,7 @@ Each transcoder has a state that depends on the performed asynchronous operation
 
 There are [webhooks](/millicast/webhooks/transcoder-webhooks.md) available to monitor the status change of transcoder instances.
 
-# Parameters
+## Parameters
 
 You can create a transcoder for each video stream and set specific video quality requirements using the following parameters:
 
@@ -45,31 +45,31 @@ The Streaming platform automatically selects default video quality ladders based
 
 When using a transcoder with passthrough enabled, the maximum video resolution is 4k. When passthrough is disabled, the Streaming platform supports a maximum of 1080p resolution and 60 frames per second.
 
-# Starting and managing the cloud transcoder
+## Starting and managing the cloud transcoder
 
 <!--
 
- 
+
 
  Dashboard changes will be probably released later
 
 You can start and manage cloud transcoders either through the dashboard or Transcoder REST APIs.
 
-## Dashboard
+### Dashboard
 
 To create a dedicated transcoder in the dashboard and use it for your stream, follow these steps:
 
 1. [Log in](https://dashboard.dolby.io/) to the dashboard and create a new publish token with a cluster set to Ashburn or Phoenix.
 2. Click the name of the created token and select the **Publishing** tab.
-3. Toggle the **Transcoding** setting to enable transcoding for the token. 
+3. Toggle the **Transcoding** setting to enable transcoding for the token.
 4. Click the **Create new transcoder** button.
-5. Set your preferences in the pop-out window. In the **Basic** tab, enter the **transcoder name** and select the **associated stream** from the drop-down list. In the **Advanced** tab, you can additionally select the preferred **height**, **frame rate**, **profile ID**, and enable **passthrough**. 
+5. Set your preferences in the pop-out window. In the **Basic** tab, enter the **transcoder name** and select the **associated stream** from the drop-down list. In the **Advanced** tab, you can additionally select the preferred **height**, **frame rate**, **profile ID**, and enable **passthrough**.
 6. Click the **Create** button to confirm your settings and create the transcoder.
 7. Open the **Transcoding** tab from the left-side menu to find a list of all created transcoders. Click the name of the created transcoder to access additional information, such as its state, health, active quality layers, and connection log. You can also change its settings.
 8. Click the **Start** button to start the transcoder.
 9. Use the publish URL from the **Endpoint** section to publish your stream.
 
-## REST APIs
+### REST APIs
 
 \-->
 
@@ -170,10 +170,10 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
 The platform also offers the [Configure Transcoder](/millicast/api/transcoder-update-transcoder) API for updating transcoder settings and the [Stop Transcoder](/millicast/api/transcoder-stop-transcoder) and [Delete Transcoder](/millicast/api/transcoder-delete-transcoder) API for stopping and deleting a specific transcoder. A list of all available Transcoder APIs is available in the [REST API](/millicast/api/transcoder-list-transcoders) documentation.
 
-### Cloud Transcoding Ladder
+#### Cloud Transcoding Ladder
 
 > 👍 Quality and Latency
-> 
+>
 > The Dolby Millicast Cloud Transcoder is specially tuned for delivering the highest quality at the lowest latency for the h264 codec.
 
 | Height | Bitrate (varies between framerates) |
@@ -183,13 +183,13 @@ The platform also offers the [Configure Transcoder](/millicast/api/transcoder-up
 | 720    | passthrough or 2700Kbps             |
 | 480    | passthrough or 1600Kbps             |
 | 360    | passthrough or 750Kbps              |
-| 240    | 400Kbps                             | 
+| 240    | 400Kbps                             |
 
 <!--
 
- 
 
-# Webhook events
+
+## Webhook events
 
 The Dolby.io Streaming platform offers the following [webhook events](/millicast/webhooks/transcoder-webhooks.md) to notify about transcoder state changes:
 
@@ -199,17 +199,17 @@ The Dolby.io Streaming platform offers the following [webhook events](/millicast
 
 \-->
 
-# Troubleshooting
+## Troubleshooting
 
-## DNS Propagation Delay - Host
+### DNS Propagation Delay - Host
 
-When a transcoder is stopped and started again, DNS records can be cached by certain encoders. It may take time for the cache to be invalidated and the appropriate routing of a stream through a transcoder to go live. 
+When a transcoder is stopped and started again, DNS records can be cached by certain encoders. It may take time for the cache to be invalidated and the appropriate routing of a stream through a transcoder to go live.
 
 Try to `ping` both the hostname and IP address.
 
 Some encoders have TTL settings that can exceed 60 minutes so a work-around is to use the IP address of the transcoder host in place of the DNS name.
 
-## Feature Compatibility
+### Feature Compatibility
 
 The Dolby.io Streaming platform allows using cloud transcoders with all other features, even with [Multi-view](/millicast/playback/multiview.md) and [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md). However, publishing redundant feeds requires streaming feeds into two transcoders.
 

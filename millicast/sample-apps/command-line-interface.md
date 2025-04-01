@@ -2,7 +2,7 @@
 title: "Command Line Interface"
 slug: /command-line-interface
 ---
-# Overview
+## Overview
 
 This is the Command Line Interface (CLI) by which you can interact with the Millicast Platform from your terminal.
 
@@ -17,11 +17,11 @@ The CLI is currently supported on the following platforms.
 | MacOS | *   Catalina (Intel)<br/>*   Big Sur (Intel) |
 | Linux | Ubuntu 20 |
 
-# Installation
+## Installation
 
 Please refer to the instructions here [readme](https://github.com/millicast/millicast-cli#readme) to install the CLI on your system.
 
-# Using the CLI
+## Using the CLI
 
 The CLI executable is named ``mccli`` (for MilliCast Command Line Interface).
 To check all the available commands and what they do, show the help by typing
@@ -34,7 +34,7 @@ For now the auto-completion is only available for BASH.
 
 With the CLI, you have a command to list available sources, setup a configuration to publish/subscribe with the desired source and your Dolby.io Real-time Streaming credentials, and have the ability to switch between several different configuration.
 
-## List
+### List
 
 With this command, you can list all the input or output sources available and supported codecs.
 Basically, you have two categories  : audio and video.
@@ -61,9 +61,9 @@ For audio, you can get
 
 We will now see how to select one of the source to configure the session.
 
-## Manage your configuration
+### Manage your configuration
 
-### Setup a basic configuration
+#### Setup a basic configuration
 
 With the *config* command, you can set up your configuration.
 There is two categories, **credentials** and **media**.
@@ -95,7 +95,7 @@ $ mccli config media.video.source
 video.source = "ndi://NDI_SOURCE_1"
 ```
 
-### Custom configuration
+#### Custom configuration
 
 You are able to setup several configurations and switch between them. For example, have a fixed configuration for a specific stream name, or with a different camera.
 
@@ -120,7 +120,7 @@ There default config, the one you are using before using any custom config, is n
 $ mccli config credentials use default
 ```
 
-## Publish / Subscribe
+### Publish / Subscribe
 
 Just run :  
 
@@ -134,17 +134,17 @@ If you did not configure the media to use, it will publish the first source foun
 
 Once the publish is successful, you will stay in a blocking state as long as it is publishing. To stop publishing, either type 'q' and then press enter, or send an EOF signal (CTRL-D on bash/zsh).
 
-## Errors that can happen
+### Errors that can happen
 
-### Failed to initialize ADM
+#### Failed to initialize ADM
 
 When using the CLI over SSH on Linux, this error can happen: 
 ```bash
-#
-# Fatal error in: ../../media/engine/adm_helpers.cc, line 39
-# last system error: 88
-# Check failed: 0 == adm->Init() (0 vs. -1)
-# Failed to initialize the ADM.Aborted (core dumped)
+##
+## Fatal error in: ../../media/engine/adm_helpers.cc, line 39
+## last system error: 88
+## Check failed: 0 == adm->Init() (0 vs. -1)
+## Failed to initialize the ADM.Aborted (core dumped)
 ```
 
 This is because of the linux audio stack not initialized when using ssh.

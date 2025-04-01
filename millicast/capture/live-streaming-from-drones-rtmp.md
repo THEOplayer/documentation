@@ -18,7 +18,7 @@ If you are using a drone that is not listed, you should be able to use similar s
 > 
 > _Please observe any safety protocols and regulations for drone usage in your region._
 
-# DJI
+## DJI
 
 [DJI](https://www.dji.com/) is a leader in consumer and professional drones used for aerial videography. Several models support networking and RTMP streaming from the device that can be sent directly to Dolby.io for [distribution](/millicast/distribution/index.mdx) over WebRTC.
 
@@ -29,9 +29,9 @@ Some examples:
 <li>[DJI Mavic 3](https://www.dji.com/mavic-3)</li>
 </ul>
 
-## Simple set up using the DJI Fly App
+### Simple set up using the DJI Fly App
 
-### 1. Download the DJI Fly App
+#### 1. Download the DJI Fly App
 
 Download the [DJI Fly App](https://www.dji.com/au/downloads) compatible with your model. This is a DJI product, so the user interface and instructions may vary from what is shown below. Visit the official [DJI Support](https://www.dji.com/au/support?site=brandsite&from=nav) for resources like product manuals, user guides, and news for the latest instructions.
 
@@ -41,11 +41,11 @@ The DJI Fly App with livestream RTMP supports the following DJI drones:
 
 Many of the DJI controllers already include the DJI Fly App.
 
-### 2. Start the drone, controller, and app
+#### 2. Start the drone, controller, and app
 
 When you are ready to setup your device, start the drone and the controller. Connect to the drone from the DJI  application. 
 
-### 3. Open the settings menu to configure RTMP
+#### 3. Open the settings menu to configure RTMP
 
 Select the menu in the upper right corner to open the available settings.
 
@@ -68,7 +68,7 @@ Choose the **RTMP** option.
 
 
 
-### 4. Enter Livestream settings
+#### 4. Enter Livestream settings
 
 > 📘 Dolby.io Dashboard - Publish Token Details
 > 
@@ -88,7 +88,7 @@ Note that the **RTMP publish stream name** is already a concatenation of the _pu
 rtmp://rtmp-auto.millicast.com:1935/v2/pub/${streamName}?token=${publishToken}
 ```
 
-### 5. Tune settings
+#### 5. Tune settings
 
 Choose a _Resolution_ and _Bitrate_ that meets your needs, and then select the **Start** button to begin the live stream. These settings will typically persist so that you don't have to configure each flight.
 
@@ -104,15 +104,15 @@ After a countdown, you will see your live stream icon as active on the top of th
 
 
 
-### Viewing
+#### Viewing
 
 You can now share your viewer link provided from your Dolby.io developer portal under the API tab.  
 Example:  https://viewer.millicast.com/?streamId=k9Mwad/multiview
 
-## Record drone footage
+### Record drone footage
 
 By configuring your publish token to [record](/millicast/distribution/stream-recordings/index.mdx) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/distribution/stream-recordings/index.mdx#managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
-### Video: Real-time Streaming drone latency test
+#### Video: Real-time Streaming drone latency test
 
 This example demonstrates an archive recording captured from a DJI Mavic for a 1920x1080 latency test.
 
@@ -122,9 +122,9 @@ This example demonstrates an archive recording captured from a DJI Mavic for a 1
 
 
 
-## Additional options to capture and publish your drone live stream
+### Additional options to capture and publish your drone live stream
 
-### Controller or receiver with HDMI output
+#### Controller or receiver with HDMI output
 
 Several drone providers, including enterprise level drones, have hardware devices that include video outputs allowing you to stream using any hardware or software encoder. 
 
@@ -161,7 +161,7 @@ Connect to a PC or Mobile device a simple HDMI capture device can be used.
 
 
 
-### Publishing options
+#### Publishing options
 
 Web based broadcaster
 
@@ -171,7 +171,7 @@ Web based broadcaster
 3. Mobile device with Web broadcaster.
 4. Hardware Encoder
 
-### Learn more
+#### Learn more
 
 Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.mdx), and [playback](/millicast/playback/index.mdx) guides to complete your project.
 

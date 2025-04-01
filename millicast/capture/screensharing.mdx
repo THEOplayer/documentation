@@ -15,7 +15,7 @@ If you want to enable both screensharing and share your webcam at the same time,
 
 :::
 
-# Screensharing with the Dolby.io dashboard broadcaster
+## Screensharing with the Dolby.io dashboard broadcaster
 
 Once you have created a Dolby.io account, you can begin using the Dolby.io dashboard to create and manage tokens, manage your Dolby.io account, and broadcast and view active streams.
 
@@ -29,7 +29,7 @@ Inside the dashboard broadcaster, click on the camera icon in the bottom left co
 
 With your screen shared to the dashboard broadcaster, you are now set up to capture content from your desktop. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.mdx) to learn about broadcast settings.
 
-# Screensharing with OBS
+## Screensharing with OBS
 
 [Open Broadcast Software](https://obsproject.com/), or OBS, is a popular screencasting and streaming app available as free open-source software. To connect a web camera to OBS you first need to [download](https://obsproject.com/) the software appropriate to your operating system. Once downloaded and installed, open the app.
 
@@ -43,7 +43,7 @@ Select the screen you want to share and whether you want OBS to capture the curs
 
 With your screen selected click "OK". You've now set up your screen for capture via OBS. To start streaming from OBS continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
 
-# Screensharing with JavaScript
+## Screensharing with JavaScript
 
 Screen capturing with JavaScript is straightforward thanks to screen capture support with the [`getDisplayMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia) method provided by the `MediaDevices` interface. The `getDisplayMedia` method is supported on both Windows and Mac devices for all major browsers, however, it isn’t currently available for mobile devices. For a full list of support for `getDisplayMedia` [see this table here](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices#browser_compatibility).
 
@@ -68,7 +68,7 @@ const screenCapture = await navigator.mediaDevices.getDisplayMedia(displayMediaO
 
 With that, the screen is now being captured. When this function is called, users will receive a permissions prompt from the browser which they will have to approve for the device to begin capturing content. This screen capture can then be passed as a `mediaStream` into the Dolby.io Millicast JavaScript SDK. To learn more about how you can begin broadcasting a screen capture, explore the Client SDK guides or check out this detailed blog for [screenshare streaming in JavaScript](https://dolby.io/blog/how-to-screen-capture-for-streaming-in-javascript/).
 
-# Additional Client SDKs
+## Additional Client SDKs
 
 You can find similar capabilities as JavaScript from one of the other Client SDKs listed below:
 

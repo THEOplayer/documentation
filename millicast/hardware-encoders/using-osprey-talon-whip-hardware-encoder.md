@@ -15,7 +15,7 @@ You can originate a broadcast from Osprey over a [WHIP](/millicast/broadcast/web
 
 See the official [Osprey Video](https://www.ospreyvideo.com/) site for documentation, installation instructions, and additional support.
 
-# Osprey Talon
+## Osprey Talon
 
 For cameras that don’t have built-in encoders, you can connect the camera to an external encoder such as the Osprey Talon.
 
@@ -40,7 +40,7 @@ Once found in your browser, you'll be prompted to log into the device. Refer to 
 
 
 
-## How-to use Osprey Talon with WHIP
+### How-to use Osprey Talon with WHIP
 
 To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a Dolby.io account. Within the account, you'll need the _Stream Name_ and _Publishing Token_.
 
@@ -60,7 +60,7 @@ After inputting your credentials, switch to the Dashboard tab and click the gree
 
 The stream is now live. To view the stream, navigate back to your newly created token on the Dolby.io Dashboard and switch to the _Playback_ tab. From the Playback tab, copy the _Hosted Player Path_ URL and open it in your browser.
 
-## How-to use Osprey Talon with SRT
+### How-to use Osprey Talon with SRT
 
 To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a Dolby.io account. Within the account, you'll need the _SRT stream ID_ and _SRT publish path_.
 
@@ -76,7 +76,7 @@ Inside the encoder UI, click on the _Channels_ tab. From the Channels tab, set t
 
 Once configured, you can press start and the encoder will begin streaming content.
 
-### Turn on SRT encryption
+#### Turn on SRT encryption
 
 To enable SRT encryption for the SRT feed, in the Dolby.io dashboard for your stream token, enable **Passphrase encryption** and copy the **SRT passphrase**.
 
@@ -94,7 +94,7 @@ In the Osprey Talon dashboard, enable AES-128 Encryption and paste the passphras
 
 Once configured, you can press start and the encoder will begin streaming content.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 

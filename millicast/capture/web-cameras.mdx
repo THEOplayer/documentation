@@ -11,7 +11,7 @@ This guide outlines three options for managing web camera capture:
 2. [Connecting a Web Camera to OBS](/millicast/capture/web-cameras.mdx)
 3. [Capturing from a Web Camera using JavaScript](/millicast/capture/web-cameras.mdx)
 
-# Connecting a web camera to the Dolby.io dashboard broadcaster
+## Connecting a web camera to the Dolby.io dashboard broadcaster
 
 Once you have created a Dolby.io account, you can begin using the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) to create and manage tokens, manage your Dolby.io account, and [broadcast](/millicast/broadcast/index.mdx) and view active streams.
 
@@ -33,7 +33,7 @@ Audio input devices function the same way and can be toggled by clicking on the 
 
 With your web camera connected to the dashboard broadcaster, you are now set up to capture content from your web camera. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.mdx) to learn about the distinct settings.
 
-# Connecting a web camera to OBS
+## Connecting a web camera to OBS
 
 [Open Broadcast Software](https://obsproject.com/), or OBS, is a popular screencasting and streaming tool available as free, open-source software. To connect a web camera to OBS, you first need to [download the software](https://obsproject.com/) appropriate for your operating system.
 
@@ -67,11 +67,11 @@ When adding the Video Capture Device, make sure to select your Web Camera as the
 
 With your camera selected, click "OK". You've now set up your Web Camera for capture via OBS. To start streaming from OBS, continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
 
-# Capturing from a web camera using JavaScript
+## Capturing from a web camera using JavaScript
 
 If you are looking to prepare a Web Camera for capture within your application or platform, you'll need a programmatic solution. Dolby.io streaming supports [a number of SDKs](/millicast/client-sdks/index.mdx) for building streaming solutions bespoke to your project.
 
-## Identify available cameras
+### Identify available cameras
 
 To start capturing from a web camera, you must select the Web Camera device. You can accomplish this by first enumerating the devices with the [`mediaDevices.enumerateDevices()`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) function.
 
@@ -87,7 +87,7 @@ navigator.mediaDevices
 
 The `enumerateDevices` function provides a list of audio and video input devices along with their respective `deviceId`.
 
-## Select the camera
+### Select the camera
 
 Using the `deviceId`, you can select your web camera and "get" it using the [`getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) function.
 
@@ -101,7 +101,7 @@ navigator.mediaDevices.getUserMedia({
 
 Once you've selected the web camera with `getUserMedia` it is ready to capture video and audio.
 
-# Additional Client SDKs
+## Additional Client SDKs
 
 You can find similar capabilities to the JavaScript SDK from the other Client SDKs listed below:
 

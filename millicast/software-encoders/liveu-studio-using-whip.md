@@ -64,7 +64,7 @@ Your LiveU broadcast should now be playing in your browser.
 > 
 > LiveU Studio recommends publishing to the Dolby.io Real-time Streaming service with a max bitrate of 4 Mbps. A bitrate of 4 Mbps up to 6 Mbps may cause instabilities or artifacts. A bitrate above 6 Mbps may cause visible problems and/or your stream will not start.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 

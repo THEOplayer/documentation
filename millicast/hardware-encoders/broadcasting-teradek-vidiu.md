@@ -10,9 +10,9 @@ slug: /broadcasting-teradek-vidiu
 
 See the official [Teradek](https://teradek.com/) site for documentation, installation instructions, and additional support.
 
-# Teradek
+## Teradek
 
-## How-to setup the VidiU for RTMP streaming
+### How-to setup the VidiU for RTMP streaming
 
 To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a Dolby.io account. Within the account, you'll need to create a token and copy RTMP publishing paths. You'll also have to download the [Vidiu or Teradek app](https://teradek.com/pages/vidiu-x) for your mobile device.
 
@@ -48,7 +48,7 @@ With the credentials added, you're ready to start your broadcast. The stream can
 
  To view the stream, navigate back to your newly created token and switch to the "Playback" tab. From the "Playback" tab, copy the "Hosted Player path" URL and open it in your browser as shown in [this video](https://www.youtube.com/watch?v=GRLIT_Xii3M). 
 
-## How-to setup the Teradek Wave for RTMP streaming
+### How-to setup the Teradek Wave for RTMP streaming
 
 To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a Dolby.io account. Within the account, you'll need to create a token and copy RTMP publishing paths. You'll also have to have your Teradek Wave in hand, ready to use.
 
@@ -76,7 +76,7 @@ To view the stream, navigate back to your newly created token and switch to the 
 
 Teredak products that use [RTMP, RTMPS](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [NDI](/millicast/broadcast/using-ndi.md) can all be used with Dolby.io Real-time Streaming for low-latency streams with global delivery.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 

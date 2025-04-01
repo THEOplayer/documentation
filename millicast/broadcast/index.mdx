@@ -28,7 +28,7 @@ The Dolby.io CDN can ingest streams encoded in a few main formats:
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
-# Start building
+## Start building
 
 import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
 
@@ -44,11 +44,11 @@ import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
   <IconGridButton>[![](/img/dotnet.svg) .NET SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
 </IconGrid>
 
-# Encoding
+## Encoding
 
 With different broadcast protocols across the industry comes the need for encoders to create seamless video transmission. By employing encoders, video content can be efficiently compressed, reduce in file size, and conserve bandwidth during streaming. It also ensures compatibility across various devices and platforms, enabling playback and accessibility for viewers. Codecs play a crucial role since it is what encoders utilize to build the compression.
 
-## Codecs
+### Codecs
 
 A few terms to remember are:
 
@@ -66,7 +66,7 @@ A few terms to remember are:
 
 </ul>
 
-## Encoders
+### Encoders
 
 A [hardware encoder](./hardware-encoders.mdx) can help transform [capture](/millicast/capture/index.mdx) devices used in professional broadcast setups into a real-time streaming solution. The typical hardware encoder will have drivers that support interfaces like SDI, HDMI, etc., while optimizing for fast encoding to standards like WHIP or RTMP for streaming broadcast workflows. There are also [software encoders](./software-encoders.mdx) that can help with encoding by using compute resources.
 
@@ -85,11 +85,11 @@ Here is a breakdown of some distinct encoders with their corresponding codec and
 | [LiveU](/millicast/software-encoders/liveu-studio-using-whip.md)                         | RTMP, RTMPs, HLS, RTSP, NDI                    | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
 | [vMix](/millicast/software-encoders/broadcasting-with-vmix.md)                           | RTMP, RTMPs, RTSP, NDI, SRT, WebRTC            | H.264 (AVC), H.265 (HEVC), ProRes, DNxHD/DNxHR, AAC |
 
-# Broadcast protocols
+## Broadcast protocols
 
 The line between how a video feed is [captured](/millicast/capture/index.mdx) and how it is encoded can be a subtle distinction. In order to prepare for [distribution](/millicast/distribution/index.mdx), you need to ensure you have the right encoding to optimize delivery and meet your broadcast requirements.
 
-## Encoding with WHIP
+### Encoding with WHIP
 
 The **WebRTC-HTTP Ingestion Protocol ([WHIP](/millicast/broadcast/webrtc-whip.mdx))** is an IETF standard developed to leverage the capabilities of WebRTC to ingest content into a streaming platform over HTTP. WHIP addresses problems with Real-time Streaming by removing translation layers during encoding.
 
@@ -121,7 +121,7 @@ To learn how to create a stream from OBS using WebRTC, see the following video:
   ></iframe>
 </div>
 
-## Encoding with SRT
+### Encoding with SRT
 
 The **Secure Reliable Transport ([SRT](/millicast/broadcast/using-srt.md))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance.
 
@@ -145,7 +145,7 @@ To learn how to create a stream from OBS using SRT, see the following video:
   ></iframe>
 </div>
 
-## RTMP Ingest
+### RTMP Ingest
 
 **Real-time Messaging Protocol ([RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.
 
@@ -164,12 +164,12 @@ The **Haivision KB** series of media encoders deliver high-quality video streami
 [How-to Setup a Teradek VidiU Go for RTMP](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md)<br/>
 The **Teradek VidiU Go** is a hardware encoder is capable of broadcast quality video that can be sent over RTMP for compatibility with Dolby.io broadcast workflows.
 
-## Publish parameters
+### Publish parameters
 
 [Broadcast URL Parameters](/millicast/broadcast/broadcast-parameters.md)<br/>
 Publish parameters allow modifying broadcasting preferences to customize streaming experience in more complex workflows with multiple sources.
 
-# Begin broadcasting
+## Begin broadcasting
 
 Web and mobile browsers are widely available and have wide encoding support, whether broadcasting from Chrome, Safari, Firefox, or Edge. To start broadcasting, see the [Getting Started with Broadcasting](/millicast/getting-started/index.mdx) guide.
 
@@ -187,7 +187,7 @@ You can also start broadcasting directly from the Dolby.io dashboard. For more i
   ></iframe>
 </div>
 
-# Learn more
+## Learn more
 
 You can find examples of using [Avid Media Composer](https://dolby.io/blog/collaborative-post-production-with-avid-media-composer/), [Larix Broadcaster](https://dolby.io/blog/broadcasting-mobile-native-webrtc-streams-with-the-larix-broadcaster/), and more on the [developer blog](https://dolby.io/blog/tag/broadcast/).
 

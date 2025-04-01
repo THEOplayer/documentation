@@ -6,7 +6,7 @@ slug: /datadog
 
 This page guides you on some of the metrics that are collected and setps to integrate the [Millicast SDK](/millicast/client-sdks/web.mdx) to the browser agent.
 
-# Client Analytics
+## Client Analytics
 
 To monitor the health of your application, [client analytics](/millicast/playback/client-analytics-and-monitoring.md) for monitoring and troubleshooting are critical. You can customize Datadog with dashboards to display collected data such as:
 
@@ -18,9 +18,9 @@ To monitor the health of your application, [client analytics](/millicast/playbac
 
 When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) and [Stream Syndication](/millicast/distribution/syndication.md) capabilities you can effectively monitor playback issues and track viewer characteristics.
 
-# Setting Up Datadog Browser Agent
+## Setting Up Datadog Browser Agent
 
-## 1\. Initialize the Datadog Browser Agent
+### 1\. Initialize the Datadog Browser Agent
 
 Include the browser agent: 
 
@@ -42,7 +42,7 @@ Early in your application you will need to initialize the agent with details fro
   })
 ```
 
-## 2\. Capture Millicast Track Events
+### 2\. Capture Millicast Track Events
 
 When receiving a track event after connecting, you can send the event.
 
@@ -55,7 +55,7 @@ When receiving a track event after connecting, you can send the event.
 
 You may also want to capture [Broadcast Events](/millicast/playback/viewer-events.md) for a fuller picture.
 
-## 3\. Collect WebRTC Stats
+### 3\. Collect WebRTC Stats
 
 See the [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) guide to learn more about what media statistics and metrics are captured for the WebRTC connection.
 
@@ -65,11 +65,11 @@ See the [Client Analytics](/millicast/playback/client-analytics-and-monitoring.m
  });
 ```
 
-## 4\. Setup a Datadog Dashboard
+### 4\. Setup a Datadog Dashboard
 
 As the events are logged in Datadog, you can create a custom Dashboard to display the metrics that are of most interest to you.
 
-# Sample
+## Sample
 
 Here is an example payload from the Datadog agent:
 

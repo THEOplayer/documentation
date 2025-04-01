@@ -12,9 +12,9 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 > 
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
-# General
+## General
 
-## Common Settings
+### Common Settings
 
 | Parameter         | Description                                      |
 | :---------------- | :----------------------------------------------- |
@@ -28,13 +28,13 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-g 60            | Group of pictures (GOP) size                     |
 | \-f flv           | Package flash video                              |
 | \-preset veryfast | Video encoding speed to compression ratio preset |
-# RTMP
+## RTMP
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available. See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values. 
 
 The examples on the remainder of the page will reference these as environment variables: `$RTMP_PUBLISH_PATH` and `$RTMP_PUBLISH_STREAM_NAME`.  You can replace these or set them as appropriate for the shell environment and operating system you are using.
 
-## How-to Publish an H.264 RTMP Video Stream
+### How-to Publish an H.264 RTMP Video Stream
 
 The Millicast platform supports AVC (H264) broadcast pass-through which is widely supported across platforms and browsers. Of note are two flags you should use:
 
@@ -57,7 +57,7 @@ ffmpeg -re -stream_loop -1 -i $VIDEO_FILE_PATH \
   -rtmp_live live $RTMP_PUBLISH_PATH
 ```
 
-## How-to Publish an H.265 RTMP Video Stream
+### How-to Publish an H.265 RTMP Video Stream
 
 The Millicast platform supports HEVC (H265) broadcast pass-through, but playback of this codec is not widely supported across all web browsers and devices. To view an HEVC stream, you should use Safari 17.2+ or the [iOS](/millicast/client-sdks/ios/index.mdx) Client SDK which provide decoding support.
 
@@ -72,7 +72,7 @@ ffmpeg -re -stream_loop -1 -i demo.mp4 -c:v libx265 -x265-params bframes=0 \
 -f flv $YOUR_RTMP_PUBLISH_PATH_WITH_STREAM_NAME
 ```
 
-## How-to Publish an AV1 RTMP Video Stream
+### How-to Publish an AV1 RTMP Video Stream
 
 The Millicast platform supports AV1 broadcast pass-through with an RTMP-enhanced stream, but playback of this codec has varying support across web browsers and devices. To view an AV1 stream [check your chosen platform/device's support](https://caniuse.com/av1). 
 
@@ -95,7 +95,7 @@ AV1 encoding can be quite processor-intensive and usually requires GPU-enabled h
 > 
 > FFmpeg doesn't include an AV1 encoder with standard installs. You must install one separately by following FFmpeg's official [AV1 installation guide](https://trac.ffmpeg.org/wiki/Encode/AV1).
 
-## How-to Publish an RTSP Video Stream
+### How-to Publish an RTSP Video Stream
 
 Support for **Real-time Streaming Protocol (RTSP)** can be done with `ffmpeg` by changing the input source. All of the other parameters are consistent with streaming a media file from disk.
 
@@ -114,7 +114,7 @@ ffmpeg -re -i rtsp://98.116.xx.xx:5545/axis-media/media.amp \
   -rtmp_playpath $RTMP_PUBLISH_STREAM_NAME \
   -rtmp_live live $RTMP_PUBLISH_PATH
 ```
-## How-to Simulcast a Multi-Source MBR Video Stream
+### How-to Simulcast a Multi-Source MBR Video Stream
 
 This example demonstrates sending the same video with multiple contribution layers. The `&sourceId` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to distinguish each source while using `&videoOnly` so the audio is only sent with the main feed. Also see the [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) for more about Multi-bitrate contribution.
 
@@ -124,13 +124,13 @@ ffmpeg -re -stream_loop -1 -i demo.mp4 \
   -c:v libx264 -preset medium -b:v:0 1200k -maxrate:v:0 1280k -bufsize:v:0 1600k -s:v:0 854x480 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=2&simulcastId&videoOnly" \  
   -c:v libx264 -preset medium -b:v:0 2500k -maxrate:v:0 2600k -bufsize:v:0 3000k -s:v:0 1280x720 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=3&simulcastId&videoOnly"
 ```
-# SRT
+## SRT
 
 In order to broadcast with SRT, you will need to have your **SRT publish path** and **SRT stream ID** available. See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on how to retrieve these values.
 
 The examples on the remainder of the page will reference these as environment variables: `$SRT_PUBLISH_PATH` and `$SRT_STREAM_ID`.  You can replace these or set them as appropriate for the shell environment and operating system you are using.
 
-## How-to Check if SRT is Supported in Your Installation
+### How-to Check if SRT is Supported in Your Installation
 
 Some installations of `ffmpeg` may not have SRT available. This can be verified by running:
 
@@ -140,7 +140,7 @@ ffmpeg -buildconf | grep enable-libsrt
 
 The output should show that `--enable-libsrt` is present.
 
-## How-to Simulcast a Redundant Ingest SRT Video Stream
+### How-to Simulcast a Redundant Ingest SRT Video Stream
 
 This example demonstrates [redundant ingest]/millicast/broadcast/redundant-ingest/index.md) where a second publishing source is used to recover from a failed broadcast source. The `&priority=100` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to indicate which is the primary and which is the backup feed. **The SRT URL must be URLencoded.**
 
@@ -159,7 +159,7 @@ ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
   -map 0 -vf scale=720:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 3000k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D1" \
   -map 0 -vf scale=480:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 1500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D2"  
 ```
-# Troubleshooting
+## Troubleshooting
 
 These examples were verified with `ffmpeg` version 6.0 on MacOS.
 
@@ -171,7 +171,7 @@ built with Apple clang version 14.0.3 (clang-1403.0.22.14.1)
 
 If you are using a different version or operating system please include these details when reporting any issues.
 
-## Stuttering video
+### Stuttering video
 
 If you experience stutter in your streaming video, make sure you are using the options:
 
@@ -181,7 +181,7 @@ If you experience stutter in your streaming video, make sure you are using the o
 
 You can also modify the `-preset` to adjust the compression speed to quality ratio.
 
-# Learn more
+## Learn more
 
 This guide covered broadcasting with `ffmpeg`. To test and view the stream you can use the dashboard or any of the other [playback](/millicast/playback/index.mdx) methods.
 

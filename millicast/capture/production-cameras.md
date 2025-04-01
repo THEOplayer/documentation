@@ -23,7 +23,7 @@ The Dolby.io CDN for WebRTC Real-time Streaming supports streaming up to 4k 60fp
 
 Once you have calibrated the camera for the appropriate video resolution and audio resolution for your use case, you will then need to connect the camera to an encoder or calibrate the built-in encoder. Dolby.io supports broadcasting [RTMP and RTMPs streams](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT streams](/millicast/broadcast/using-srt.md), and [WebRTC streams](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md). To start streaming with Dolby.io Real-time Streaming, proceed to the [Broadcast](/millicast/broadcast/index.mdx) to learn about hardware and software encoder support.
 
-# Preparing to broadcast with the SalrayWorks raySHOT camera
+## Preparing to broadcast with the SalrayWorks raySHOT camera
 
 One example of preparing a professional camera for broadcasting is setting up the [SalrayWorks raySHOT Ultra Latency camera](http://salrayworks.com/eng/bbs/board.php?bo_table=pro_05&wr_id=4). The raySHOT Ultra Latency camera specializes in capturing video with a delay between 0-15ms allowing for exceptionally fast streaming when paired with Dolby.io Real-time Streaming. Using the decision list above, we can break down what our capture profile and broadcast workflow will look like for the camera:
 

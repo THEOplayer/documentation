@@ -10,9 +10,9 @@ slug: /videon
 
 See the official [Videon](https://www.videonlabs.com/) site for documentation, installation instructions, and additional support.
 
-# Videon EdgeCaster
+## Videon EdgeCaster
 
-## How-to use multi-bitrate on Videon EdgeCaster
+### How-to use multi-bitrate on Videon EdgeCaster
 
 Inside the Videon web UI, under **Video Profiles**, create three profiles of distinct bitrate (1080p, 720p, 360p): 
 
@@ -53,7 +53,7 @@ Under **Audio Profiles**, set up your preferred audio encoding and audio bitrate
 
 
 
-### Using RTMP
+#### Using RTMP
 
 Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](/millicast/broadcast/using-rtmp-and-rtmps.md). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
 
@@ -79,7 +79,7 @@ Example:
 
 
 
-### Using SRT
+#### Using SRT
 
 Under **Outputs**, for each **SRT**, select **Video Source** corresponding to the SRT profile (1080p for the highest profile and 360p for the lowest profile). For the **URL**, select the _srt://_ protocol, enter the URL of the **SRT publish path** from the Dolby.io dashboard, and enter port 10000. For the **Stream ID**, use the **SRT stream ID** from the dashboard and append **&simulcastId** for the first layer, **&sourceId=1&simulcastId&videoOnly** for the second layer, and **&sourceId=2&simulcastId&videoOnly** for the third layer. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
 
@@ -96,11 +96,11 @@ Example:
 
 
 
-## How-to apply a multi-viewer with Videon EdgeCaster
+### How-to apply a multi-viewer with Videon EdgeCaster
 
 You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate the URLs. For information on Simulcast, refer to [the documentation](https://dolby-io.readme.io/streaming-apis/docs/selecting-simulcast-layers) to understand its usage.
 
-### Using RTMP
+#### Using RTMP
 
 To enable the multi-view, add this to the end of your stream URL, add the `sourceId` parameter with a unique value. Example: `&sourceId=1`. The name of your source will be set using the `simulcastId` parameter. Your main source does not need a value for this parameter so leave it empty `&simulcastId`. Your other feeds must be defined as `&simulcastId=SourceName`.
 
@@ -128,7 +128,7 @@ Example:
 |              |             | Medium | `rtmp://` | `rtmp-auto.millicast.com:1935/v2/pub/lq30pf11?token=bcf5ffca692892ff5f861019316dd8277192698b92b08014398bfe646259c60a&sourceId=8&simulcastId=VIP&videoOnly`       |
 |              |             | Low    | `rtmp://` | `rtmp-auto.millicast.com:1935/v2/pub/lq30pf11?token=bcf5ffca692892ff5f861019316dd8277192698b92b08014398bfe646259c60a&sourceId=9&simulcastId=VIP&videoOnly`       |
 
-### Using SRT
+#### Using SRT
 
 To enable the multi-view, add this to the end of your stream URL, add the `sourceId` parameter with a unique value. Example: `&sourceId=1`. The name of your source will be set using the `simulcastId` parameter. Your main source does not need a value for this parameter so leave it empty `&simulcastId`. Your other feeds must be defined as `&simulcastId=SourceName`.
 

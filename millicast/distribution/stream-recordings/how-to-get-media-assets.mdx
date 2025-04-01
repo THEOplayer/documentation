@@ -4,11 +4,11 @@ slug: /how-to-get-media-assets
 ---
 With [Stream Recordings](/millicast/distribution/stream-recordings/index.mdx) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or automate workflows using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media-webhooks.md) available for building event-driven integrations.
 
-# Recordings in the Dashboard
+## Recordings in the Dashboard
 
 You can find recordings by visiting the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
-## Find Recordings by Token
+### Find Recordings by Token
 
 To find recordings for a specific token, open your Publish token from the **Live Broadcast** section and click the **Settings** button to open the management screen. Select the **Recordings tab** from the top of the panel. Each thumbnail is displayed with a reference to your recording. A newly created recording can take a few seconds to several minutes to render, depending on length. Once the recording has been processed, you can view it. You can click on the **More Files** button to see all the files recorded with the respective token.
 
@@ -17,7 +17,7 @@ To find recordings for a specific token, open your Publish token from the **Live
 
 
 
-## Find All Account Recordings
+### Find All Account Recordings
 
 Alternatively, to find all your recordings, open the **Recordings** section of the dashboard. You can view your recordings either as a thumbnail grid or a basic list by clicking the **List View** button on the top right section menu. Additionally, you can see the current total storage used in the top right corner of the Recording page, or get your current billable storage in the **Billing** page.
 
@@ -31,7 +31,7 @@ Alternatively, to find all your recordings, open the **Recordings** section of t
 
 
 
-## Preview a Recording
+### Preview a Recording
 
 To preview your recordings, click on the thumbnail image which will open the **Preview Player** and begin playing the video. The player also provides more information about your recording including length, quality, and dimensions. Click on the **More Details** button under the player to explore.
 
@@ -42,7 +42,7 @@ To preview your recordings, click on the thumbnail image which will open the **P
 
 You can close the player using the close button located on the top right or you can scroll down to choose another video.
 
-## Download Recordings
+### Download Recordings
 
 To download recordings, click the arrow icon visible on the thumbnail. You can also download your video using the icon menu under the preview player. Clicking the download icon immediately initiates a download.
 
@@ -55,7 +55,7 @@ To download recordings, click the arrow icon visible on the thumbnail. You can a
 >
 > The downloaded recording will use the Opus audio codec. Playback on various media players may not support Opus and audio may not be heard. You can use [VLC](https://www.videolan.org/) for playback and converting sound to AAC.
 
-## Delete Recordings
+### Delete Recordings
 
 The retention policy for recordings is determined by your business rules for removing and deleting the files.
 
@@ -77,7 +77,7 @@ To delete all items at once, click the **Select All** button from the same top s
 >
 > If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 
-# Finding Media by API
+## Finding Media by API
 
 The [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) API can help you with automating workflows with recordings and clips.
 
@@ -87,7 +87,7 @@ import GettingStartedRESTAPI from '../../callouts/_getting_started_rest_apis.md'
 
 Use the [List Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) endpoint to query a list of media assets for your account. There are some parameters you can use to filter the results returned.
 
-## How-to Find All Recordings and/or Clips
+### How-to Find All Recordings and/or Clips
 
 Use the `type` parameter to retrieve assets that match the given type. If you omit the parameter, both recordings and clips will be returned together.
 
@@ -99,7 +99,7 @@ curl --request GET \
 
 You can use this parameter to find _recording_ or _timeline_ assets as well. See the [List Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) reference specification for the full list.
 
-## How-to Find Recordings Still in Progress
+### How-to Find Recordings Still in Progress
 
 Use the `status` parameter to retrieve assets that match a given status.
 
@@ -111,7 +111,7 @@ curl --request GET \
 
 You can use this parameter to find any _errored_ assets as well. See the [List Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) reference specification for the full list.
 
-## How-to Find Media By Name
+### How-to Find Media By Name
 
 Use the `name` parameter to find clips that were given a specific label or `streamName` to find just those that were captured for a specific broadcast.
 
@@ -121,7 +121,7 @@ curl --request GET \
   --header 'authorization: Bearer abc123'
 ```
 
-# Removing Media by API
+## Removing Media by API
 
 Use the [Delete Media Assets](/millicast/api/media-assets-delete-media-assets.api.mdx) endpoint to remove either recordings or clips. You'll need to first find the **mediaAssetId** before you can delete specific assets. This is given as a query parameter so that you can delete more than one asset at a time.
 
@@ -131,7 +131,7 @@ curl --request DELETE \
   --header 'Authorization: Bearer abc123'
 ```
 
-## How-to Remove All Media
+### How-to Remove All Media
 
 To remove everything from your account you can use the [Delete All Media Assets](/millicast/api/media-assets-delete-media-assets-2.api.mdx) REST endpoint. This operation works on one `type` at a time so will be called to remove `recording`, `clip`, and `timeline` independently.
 
@@ -139,15 +139,15 @@ To remove everything from your account you can use the [Delete All Media Assets]
 >
 > If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 
-# Downloading Media by API
+## Downloading Media by API
 
 Using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) API you can identify the cloud storage location where recordings and clips are stored.
 
-## How-to Retrieve a Recording
+### How-to Retrieve a Recording
 
 Recordings will typically be stored on Dolby's servers and made available for retrieval. You'll need to know the `mediaAssetId` of the item you want to download.
 
-### Example GET Response
+#### Example GET Response
 
 This is an example of a JSON response from the [/media/asset/\{mediaAssetId\}](/millicast/api/media-assets-read-media-asset.api.mdx) endpoint.
 

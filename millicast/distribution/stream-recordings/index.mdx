@@ -12,7 +12,7 @@ With **_Stream Recording_** you can keep a copy of a real-time stream where medi
 
 You can work with recordings and clips either from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) REST API.
 
-# How It Works
+## How It Works
 
 The collection of recordings and clips is referred to more broadly as **Media Assets** that have been created from your account. There are a few concepts to understand to make best use of the feature.
 
@@ -29,7 +29,7 @@ import CalloutStorageSurcharge from '../../callouts/_storage_surcharge.md';
 
 <CalloutStorageSurcharge />
 
-## Enable Recording and/or Clipping
+### Enable Recording and/or Clipping
 
 You must configure a [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) prior to beginning a broadcast to enable the capture of media.
 
@@ -61,7 +61,7 @@ For more detailed instructions, review one of the following tutorials:
   ]}
 />
 
-## Finding Your Media
+### Finding Your Media
 
 You can find both recordings and clips in the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by calling the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) REST endpoint.
 
@@ -91,7 +91,7 @@ For more detailed instructions, review one of the following tutorials:
   ]}
 />
 
-## Media Properties
+### Media Properties
 
 Media assets will have matching resolution and bitrate of the broadcasted stream. Any degradation of the broadcast stream due to bad network conditions will persist, however any client playback issues that result from adaptive bitrate playback will not impact the recordings or clips.
 
@@ -104,7 +104,7 @@ The video and audio codecs used during the broadcast will be reflected in the ar
 
 We recommend that encoding settings use an **I-Frame** period of `1s` when using the service to increase precision when aligning keyframes with media segments.
 
-# Troubleshooting
+## Troubleshooting
 
 To diagnose recording issues, such as missing recordings, review the details of the publishing settings, such as:
 
@@ -113,7 +113,7 @@ To diagnose recording issues, such as missing recordings, review the details of 
 - Settings: Bitrate, FPS, Resolution, or Simulcast setting
 - Network: Details about the network used. For example, a cellular connection may create issues with fluctuations in the network.
 
-## Multi-source
+### Multi-source
 
 When using [multi-source](/millicast/broadcast/multi-source-broadcasting.md) broadcasting, multiple independent broadcast timelines will be created.
 
@@ -123,7 +123,7 @@ For `recording` assets, you will get a discrete media file for each source.
 
 You will need to use a separate media tool if you want to automate any transizing, transrating, or stitching operations.
 
-## Media Duration
+### Media Duration
 
 There are some limits to how large any individual media asset will be.
 
@@ -134,7 +134,7 @@ There are some limits to how large any individual media asset will be.
 
 For long-running streams that exceed 12 hours, multiple media assets will be created.
 
-## Media Expiration
+### Media Expiration
 
 Consideration should be made on how long you may want to store media before it expires and is no longer available for retrieval.
 
@@ -144,14 +144,14 @@ Consideration should be made on how long you may want to store media before it e
 | Clip       | none    | 1 day   | account in good standing |
 | Timelines  | 30 days | 1 day   | account in good standing |
 
-## Missing Audio for 5.1
+### Missing Audio for 5.1
 
 When publishing streams using 5.1 audio format, the audio is present on the viewer live stream, but not preserved in the recording. Multi-channel audio is currently not preserved in the recording archive. The audio is only present in the recording archive if using stereo and mono formats. Multi-source stream audio is also affected if the URL is set to `&videoOnly`.
 
-## Dashboard Recording Error
+### Dashboard Recording Error
 
 If the dashboard displays recording errors, contact the [Dolby support](http://support.dolby.io) team and specify as many of your publishing settings as possible.
 
-# Learn More
+## Learn More
 
 Learn more by exploring the [specification](/millicast/api/media-assets-list-media-assets.api.mdx), [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).

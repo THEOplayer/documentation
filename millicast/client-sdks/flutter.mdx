@@ -39,13 +39,13 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
   ]}
 />
 
-# Getting started
+## Getting started
 
-## Importing the library
+### Importing the library
 
 You can import the SDK through flutter pub dev.
 
-### Import as a dependency
+#### Import as a dependency
 
 ```shell install sdk
 flutter pub add millicast_flutter_sdk
@@ -68,7 +68,7 @@ And then using it with the `import` statement.
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 ```
 
-## Publish a stream
+### Publish a stream
 
 > 📘
 >
@@ -76,7 +76,7 @@ import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 
 The main module to publish a stream is the [Publish module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish-class.html).
 
-### Instance the Publish module
+#### Instance the Publish module
 
 To create a new publisher, you have to instance the Publish class:
 
@@ -107,7 +107,7 @@ More information here:
 - [.getPublisher()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Director/getPublisher.html)
 - [Token generator .callback()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/tokenGenerator.html)
 
-### Get your media information
+#### Get your media information
 
 You should get the media information (camera/microphone) you want to stream with. To do that, the SDK uses MediaStream object.
 
@@ -129,7 +129,7 @@ More information about using user media here:
 
 - [.getUserMedia()](https://pub.dev/documentation/webrtc_interface/latest/webrtc_interface/MediaDevices/getUserMedia.html)
 
-### Initialize the stream
+#### Initialize the stream
 
 After all previous steps are completed, you can now initialize the stream using the `.connect()` method inside the Publish module.
 
@@ -169,7 +169,7 @@ For example:
 
 - [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx)
 
-### Managing your active stream
+#### Managing your active stream
 
 > 📘
 >
@@ -188,7 +188,7 @@ publisher.webRTCPeer  // Corresponds to the Peerconnection module.
 
 Most of the important methods are located directly in the Publisher module but some are not, like updating the bitrate or getting the WebRTC stats.
 
-### Change bitrate
+#### Change bitrate
 
 During an active stream, you can limit the maximum bitrate in kbps.
 To do that, you have to use the `.updateBitrate()` method of your Publish instance that is located inside a subclass called `webRTCPeer`.
@@ -204,7 +204,7 @@ More information here:
 
 - [.updateBitrate()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/PeerConnection/updateBitrate.html)
 
-### Stop stream
+#### Stop stream
 
 If you want to stop an active stream, you can use the `.stop()` method of your Publish instance.
 
@@ -216,7 +216,7 @@ More information here:
 
 - [.stop()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/stop.html)
 
-## Viewer
+### Viewer
 
 > 📘
 >
@@ -224,7 +224,7 @@ More information here:
 
 The main module to view a stream is the [View module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View-class.html).
 
-### Instance the View module
+#### Instance the View module
 
 Creating a new View instance:
 
@@ -273,7 +273,7 @@ try {
 }
 ```
 
-### Track event
+#### Track event
 
 In case the mediaElement param is not specified when creating a View instance, a track event containing the media track will be emitted when the stream starts.
 
@@ -285,7 +285,7 @@ view.on('stats', view, (ev, context) {
 });
 ```
 
-### Connecting to a stream
+#### Connecting to a stream
 
 After the previous steps are done then you can connect to the stream using the `.connect()` method from the View instance.
 
@@ -300,7 +300,7 @@ try {
 
 We recommend using the `.reconnect()` method in the catch clause to make sure the View instance keeps trying to reconnect until the stream is live even when an error in the connect occurs.
 
-## Reconnect
+### Reconnect
 
 Both the instances of Publish and View have a reconnect event. This event emits when the connection is lost with a timeout and error message in the callback. This event is emitted by the .reconnect() method, this method is automatically called by default except specified with the [autoReconnect](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View/autoReconnect.html) flag of the constructor. [SDK Reconnect event](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View/setReconnect.html)
 
@@ -325,7 +325,7 @@ view.on('reconnect', view, (event, context) {
 - [Publish reconnect](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/reconnect.html)
 - [View reconnect](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View/reconnect.html)
 
-## Logger
+### Logger
 
 You can get the logs of the connection, SDP, errors, and more. It can be enabled through the Logger module and you can activate it at any time (before/after a new connection).
 
@@ -342,7 +342,7 @@ More information and examples here:
 
 - [Logger](https://pub.dev/documentation/logger/latest/logger/Logger-class.html)
 
-## WebRTC Stats
+### WebRTC Stats
 
 Stream stats can be accessed by both Publish and View instances. In order to capture them, you have to initialize the stats and then listen for the event through the `webRTCPeer` attribute.
 
@@ -395,7 +395,7 @@ More information here:
 
 - [PeerConnection initStats](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/PeerConnection/initStats.html)
 
-## User count
+### User count
 
 The Dolby.io Real-time Streaming server provides the number of current viewers through broadcast events. To start listening to different broadcast events you have to add which events you want to listen to in the Publisher/Subscriber options.
 

@@ -12,7 +12,7 @@ This guide has a few examples:
 
 If you are using an action camera that is not listed, you should be able to use similar settings for configuring streaming with an [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) ingestion source.
 
-# GoPro
+## GoPro
 
 ![GoPro](https://dolby.io/wp-content/uploads/2023/01/Dolby.io_Live-Stream-With-GoPro-Via-Dolby.io-Streaming@3x-100-2048x847.jpg)
 
@@ -27,7 +27,7 @@ If you are using an action camera that is not listed, you should be able to use 
 > 
 > You will need to have your Dolby.io **publishing token** and **stream name** in order to complete this setup. See the [Getting Started](/millicast/getting-started/using-the-dashboard.md) guide for instructions on creating a new app for the first time. You will also need the **RTMP publish path** from the _Publishing_ tab in the Dolby.io Dashboard. See the [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) guide for more detail on where to find it.
 
-## Using the GoPro Quik App
+### Using the GoPro Quik App
 
 The GoPro [Quik App](https://gopro.com/en/us/shop/quik-app-video-photo-editor) allows remote connections to manage the camera and its settings since the GoPro HERO7 Black. 
 
@@ -40,7 +40,7 @@ An overview of the steps to begin capturing from a GoPro include:
 
 The **Quick App** is a GoPro product, so the user interface and instructions may change in future releases from what is described below.  Visit the official [GoPro Support](https://community.gopro.com/s/?language=en_US) for resources like product manuals, help articles, and video tutorials on using the app if you have any questions.
 
-### 1. Select live stream while connected to camera
+#### 1. Select live stream while connected to camera
 
 The _Live Stream_ button begins setup of a live stream for the camera.
 
@@ -49,7 +49,7 @@ The _Live Stream_ button begins setup of a live stream for the camera.
 
 
 
-### 2. Select RTMP as platform
+#### 2. Select RTMP as platform
 
 Some of the popular public streaming options are listed. To set up your private stream using Dolby.io, select _RTMP_ from the options.
 
@@ -58,7 +58,7 @@ Some of the popular public streaming options are listed. To set up your private 
 
 
 
-### 3. Enter your Dolby.io RTMP publish path
+#### 3. Enter your Dolby.io RTMP publish path
 
 The _Publishing_ tab of the _Live broadcast - Publish tokens_ section of the Dolby.io dashboard includes the details you need.
 
@@ -83,7 +83,7 @@ Connect to a local network and include this as the **RTMP URL**. Pick the resolu
 
 Click the _Set Up Live Stream_ button.
 
-### 4. Go live
+#### 4. Go live
 
 When ready to start capturing, click the `Go Live` button.
 
@@ -101,13 +101,13 @@ The Quik app will show you a timecode for the duration of the stream as well as 
 
 To verify everything is working, you view the stream using any suitable [playback](/millicast/playback/index.mdx) method, such as the hosted web viewer described in the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide available directly from the Dolby.io Dashboard.
 
-## Using the GoPro webcam utility
+### Using the GoPro webcam utility
 
 The GoPro [Webcam](https://community.gopro.com/s/article/GoPro-Webcam?language=en_US) desktop utility for Mac or Windows allows you to configure a GoPro HERO8 Black or later camera to capture a stream much like you would any other [web cameras](/millicast/capture/web-cameras.mdx) attached to a computer. 
 
 The **Webcam Utility** is a GoPro product, so the behavior and instructions may change in future releases from what is described below.  Visit the official [GoPro Support](https://community.gopro.com/s/?language=en_US) for resources like Product Manuals, Help Articles, and Video Tutorials on using the app if you have any questions.
 
-### a) Stream with the Dolby.io dashboard
+#### a) Stream with the Dolby.io dashboard
 
 With the GoPro Webcam utility, your GoPro camera will be present as an option from the media device selection. Follow the same instructions for broadcasting described in [Part 1: Using the Streaming Dashboard](/millicast/getting-started/using-the-dashboard.md).
 
@@ -116,7 +116,7 @@ With the GoPro Webcam utility, your GoPro camera will be present as an option fr
 
 
 
-### b) Stream using a GoPro from OBS
+#### b) Stream using a GoPro from OBS
 
 Similar to using the Dolby.io Dashboard, you can select the GoPro Webcam from the list of available devices. See the [OBS](/millicast/software-encoders/using-obs.md) guide for more detail on how to configure OBS to broadcast the captured stream.
 
@@ -125,11 +125,11 @@ Similar to using the Dolby.io Dashboard, you can select the GoPro Webcam from th
 
 
 
-## Troubleshooting
+### Troubleshooting
 
 If you run into any trouble, see the official [GoPro Support](https://community.gopro.com/s/?language=en_US) for resources like Product Manuals, Help Articles, and Video Tutorials on using the app if you have any questions.
 
-# Learn more
+## Learn more
 
 Once you have configured your camera for capture, visit the [broadcast](/millicast/broadcast/index.mdx), [distribution](/millicast/distribution/index.mdx), and [playback](/millicast/playback/index.mdx) guides to complete your project.
 

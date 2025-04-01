@@ -8,7 +8,7 @@ The **media** _type_ of [webhook](/millicast/webhooks/index.md) allows you to re
 > 
 > Review the [Webhooks](/millicast/webhooks/index.md) guide for additional details on creating and receiving webhooks.
 
-# Event
+## Event
 
 The `event` will be one of the following values:
 
@@ -17,7 +17,7 @@ The `event` will be one of the following values:
 - **errored** may occur if there is a problem processing a request such as if a media asset is being generated from an expired timeline and can no longer be retrieved.
 - **deleted** will be sent whenever a media asset is marked for removal.
 
-# Data
+## Data
 
 The `data` payload will contain the following details:
 
@@ -30,9 +30,9 @@ The `data` payload will contain the following details:
 - **expiration** identifies the epoch timestamp for when the media will be marked for removal automatically.
 - **metadata** may optionally include additional details about the media file info.
 
-# Examples
+## Examples
 
-## Media Clip was Requested
+### Media Clip was Requested
 
 ```json
 {
@@ -52,7 +52,7 @@ The `data` payload will contain the following details:
 }
 ```
 
-## Media Clip is Available
+### Media Clip is Available
 
 ```json
 {
@@ -72,7 +72,7 @@ The `data` payload will contain the following details:
 }
 ```
 
-## Error When Recording
+### Error When Recording
 
 ```json
 {

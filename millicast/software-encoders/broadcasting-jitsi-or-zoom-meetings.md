@@ -6,7 +6,7 @@ slug: /broadcasting-jitsi-or-zoom-meetings
 
 See the official [zoom](https://zoom.us/) site for documentation, installation instructions, and additional support.
 
-# Get your Dolby.io RTMP publish URL
+## Get your Dolby.io RTMP publish URL
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available.
 
@@ -16,7 +16,7 @@ In order to broadcast with RTMP, you will need to have your **RTMP publish path*
 
 See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
 
-# How-to stream a Zoom meeting or webinar with RTMP
+## How-to stream a Zoom meeting or webinar with RTMP
 
 First, you must need a Zoom paid account in order to ingest your Zoom meetings into Dolby.io Real-time Streaming via RTMP so you can broadcast it massively in almost real-time.
 
@@ -24,14 +24,14 @@ First, you must need a Zoom paid account in order to ingest your Zoom meetings i
 
 To enable all members of your organization to have access to live-streaming meetings 
 
-## 1. Start a webinar
+### 1. Start a webinar
 
 Start the webinar as usual by doing one of the following:
 
 - From your calendar — if you have added the webinar to your calendar, click the link displayed on your calendar reminder.
 - From the Zoom website — sign into Zoom, find the webinar in the My Webinars tab and click Start.
 
-## 2. View more settings
+### 2. View more settings
 
 Click the ** More** button on your control panel to view available options.
 
@@ -40,11 +40,11 @@ Click the ** More** button on your control panel to view available options.
 
 
 
-## 3. Choose custom live stream service
+### 3. Choose custom live stream service
 
 Choose Live on Custom Live Stream Service. A browser window will open to show the progress as Zoom prepares the live stream of your webinar. If you haven’t set up this webinar for live custom streaming, you should simply enter the values provided in the instructions.
 
-## 4. Enter your Dolby.io RTMP publish details
+### 4. Enter your Dolby.io RTMP publish details
 
 
 ![](../assets/img/zoom2.png)

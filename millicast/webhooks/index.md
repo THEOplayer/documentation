@@ -4,7 +4,7 @@ slug: /webhooks
 ---
 **Webhooks** are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. 
 
-# Creating webhooks
+## Creating webhooks
 
 Defining a webhook requires a **Webhook URL**. This should be any publicly reachable _https\://_ endpoint address that is running a service capable of receiving `POST` requests. You can create a webhook using either the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or the [Webhooks API](/millicast/api/webhooks-get.api.mdx).
 
@@ -20,7 +20,7 @@ Webhooks are not correlated with a specific publishing token. You can have one w
 
 Each webhook generates a **Webhook Secret**. This secret can be used for signature verification that an incoming request to your endpoint originated from the Dolby.io Streaming service.
 
-## How-to add a webhook with the streaming dashboard
+### How-to add a webhook with the streaming dashboard
 
 From the [Streaming Dashboard](/millicast/streaming-dashboard/index.md), navigate to the Webhooks tab and click the `CREATE` button.
 
@@ -38,7 +38,7 @@ This will open a popup window on your screen to input the **Webhook url**. You a
 
 Once created, the URL and event types will be listed. 
 
-## How-to update webhook settings with the streaming dashboard
+### How-to update webhook settings with the streaming dashboard
 
 Select a webhook from the webhooks listed in the dashboard to modify its settings.
 
@@ -63,7 +63,7 @@ Update the URL and **confirm** your decision by clicking the green checkmark. To
 
 To choose the types of event hooks to receive, click the **Enabled** button next to each hook type to toggle it to be enabled or **Disabled**. Click the _trash can_ icon to delete the webhook entirely.
 
-## How-to reset or rotate the webhook secret
+### How-to reset or rotate the webhook secret
 
 If you believe your webhook secret has become compromised or want to rotate it regularly for security purposes, click the **Renew** button.
 
@@ -76,7 +76,7 @@ If you believe your webhook secret has become compromised or want to rotate it r
 > 
 > Once you click to renew the secret this cannot be undone. Please be certain you want to reset this value before proceeding because you may need to redeploy your service that receives the callback.
 
-## How-to add a webhook with the REST API
+### How-to add a webhook with the REST API
 
 > 👍 Using the REST APIs
 > 
@@ -100,7 +100,7 @@ curl --request POST \
 '
 ```
 
-# Receiving webhooks
+## Receiving webhooks
 
 To receive the webhooks, you will need to deploy a service endpoint. This can be accomplished with many different cloud providers or common function-as-a-service implementations.
 
@@ -109,7 +109,7 @@ The platform will send a `POST` request to the _Webhook url_ specified when the 
 - The request will not attempt a _retry_ if the service is unavailable or returns an error code.
 - The events are sent asynchronously, so the order of events is not guaranteed. Use the _timestamp_ if the order must be maintained.
 
-## How-to verify the webhook
+### How-to verify the webhook
 
 A signature verification header,  `X-Millicast-Signature`, is included in the callback request. This SHA1 signature uses the _Webhook secret_ so that you may verify the origin and data integrity.
 
@@ -129,7 +129,7 @@ const webhookSecretBuffer = Buffer.from(webhookSecret, 'base64');
     }
 ```
 
-## Webhook schema
+### Webhook schema
 
 A JSON payload will be included in the body of the request so that you can process the event accordingly.
 
@@ -152,7 +152,7 @@ The [Thumbnail](/millicast/webhooks/thumbnail-webhooks.md) hook does not use thi
 
 The [ViewerConnection](/millicast/webhooks/viewerconnection-webhooks.md) hook guide explains how to use viewer connection events to automate your workflow. 
 
-# Learn more
+## Learn more
 
 Learn more or find examples by exploring the [developer blog](https://dolby.io/blog/tag/webhooks) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=webhooks).
 

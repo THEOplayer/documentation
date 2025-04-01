@@ -17,7 +17,7 @@ This guide covers a few examples:
 > 
 > If you want to learn how to customize how traffic flows across regions, review the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) streaming guide.
 
-# Overview
+## Overview
 
 A _publishing token_ is configured with a specific **cluster region**. This value indicates which data center should be used as the origin when broadcasting. It can be explicitly set independently for each discrete token or be automatically assigned from the account's overall configuration.
 
@@ -25,20 +25,20 @@ A _publishing token_ is configured with a specific **cluster region**. This valu
 
 When creating a publishing token, selecting the region that is closest to the [broadcast](/millicast/broadcast/index.mdx) location will improve latency and quality. The publishing cluster region setting can be configured to one of the following specific regions:
 
-## North America
+### North America
 
 | Cluster Code | Region Location                  |
 | :----------- | :------------------------------- |
 | iad-1        | Ashburn, Virginia, United States |
 | phx-1        | Phoenix, Arizona, United States  |
 
-## South America
+### South America
 
 | Cluster Code | Region Location   |
 | :----------- | :---------------- |
 | sao-1        | Sao Paulo, Brazil |
 
-## Europe
+### Europe
 
 > ❗️ AMS Region Traffic
 > 
@@ -49,7 +49,7 @@ When creating a publishing token, selecting the region that is closest to the [b
 | fra-1        | Frankfurt, Germany |
 | lon-1        | London, England    |
 
-## Asia Pacific
+### Asia Pacific
 
 | Cluster Code | Region Location   |
 | :----------- | :---------------- |
@@ -57,7 +57,7 @@ When creating a publishing token, selecting the region that is closest to the [b
 | sgp-1        | Singapore         |
 | syd-1        | Sydney, Australia |
 
-# Cluster regions in the dashboard
+## Cluster regions in the dashboard
 
 You can manage cluster regions by changing settings from user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
@@ -69,7 +69,7 @@ You can manage cluster regions by changing settings from user interface of the [
 > 
 > If you are looking to stop streaming traffic in a particular geographic region, see the [Geo-blocking](/millicast/distribution/access-control/geo-blocking.md) streaming guide for details on how to restrict access of content distribution.
 
-## How-to set the cluster region using the dashboard
+### How-to set the cluster region using the dashboard
 
 Open the Streaming section of the <a href="https://streaming.dolby.io/#/tokens" target="_new">Dolby.io Dashboard</a>. Select the publishing token you want to modify. Within the **Settings** section you can choose the _Cluster Region_ from the dropdown.
 
@@ -78,7 +78,7 @@ Open the Streaming section of the <a href="https://streaming.dolby.io/#/tokens" 
 
 
 
-## How-to identify the cluster region for an active stream
+### How-to identify the cluster region for an active stream
 
 When using the Dolby.io Dashboard [publisher](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) to broadcast or the viewer to playback you can select the gear setting to view the **Media Stats**. 
 
@@ -94,7 +94,7 @@ This will display a modal overlaying the stream with details about resolution, b
 
 
 
-# REST APIs
+## REST APIs
 
 When working with clusters you can automate workflows using available REST APIs.
 
@@ -105,7 +105,7 @@ When working with clusters you can automate workflows using available REST APIs.
 > 
 > Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
-## How-to get the available cluster regions
+### How-to get the available cluster regions
 
 You make a `GET` request with the [/api/cluster](/millicast/api/cluster-get-clusters-info.api.mdx) endpoint to fetch details about the **defaultCluster** and a list of the **availableClusters** to find the list of available cluster regions.
 
@@ -182,7 +182,7 @@ The results may look like this:
 }
 ```
 
-## How-to set the cluster region default
+### How-to set the cluster region default
 
 You make a `PUT` request with the [/api/cluster](/millicast/api/cluster-get-clusters-info.api.mdx) endpoint to update the default account cluster that is used when creating new publishing tokens.
 
@@ -198,7 +198,7 @@ curl --request PUT \
   
 ```
 
-## How-to set the cluster region for a publish token
+### How-to set the cluster region for a publish token
 
 You make a `POST` request to [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) in order to create a new token. The **originCluster** parameter specifies the cluster to use. This should be specified using the abbreviated code. You can make a `PUT` request to [/api/publish_token/\{tokenId\}](/millicast/api/publish-token-v-1-update-token.api.mdx) to change the cluster region for an existing token.
 
@@ -220,9 +220,9 @@ curl --request POST \
 > 
 > For using multi-source streams, your account must be allowed to use the multi-source feature and the Publish Token must have the `multisource` flag enabled. The default cluster region must not be set to auto, and must be set to the region from which you want to stream. Multi-source will not work if you publish the stream from two different locations that do not fall under same cluster/region coverage and the current default setting has not been modified. For more information, see [Multisource Broadcasting](/millicast/broadcast/multi-source-broadcasting.md).
 
-# Troubleshooting
+## Troubleshooting
 
-## Unauthorized
+### Unauthorized
 
 If you receive an **Unauthorized** error make sure that you are specifying an Authorization header and that it is passing in a valid API Secret from your Streaming dashboard.
 
@@ -230,7 +230,7 @@ If you receive an **Unauthorized** error make sure that you are specifying an Au
 {"status":"fail","data":{"message":"Unauthorized"}}
 ```
 
-## Unsupported media type
+### Unsupported media type
 
 If you receive an **Unsupported Media Type** error make sure you are specifying the `Content-Type` header.
 
@@ -238,7 +238,7 @@ If you receive an **Unsupported Media Type** error make sure you are specifying 
 {"status":"fail","data":{"message":"Unsupported Media Type"}}
 ```
 
-## Validation error: CreateStreamNameModel
+### Validation error: CreateStreamNameModel
 
 If you receive **Validation errors** from a REST request make sure you are providing all of the required parameters. For example, you may see this error if you don't specify the `streams` parameter as a list of dictionaries.
 
@@ -256,7 +256,7 @@ If you receive **Validation errors** from a REST request make sure you are provi
 }
 ```
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
 

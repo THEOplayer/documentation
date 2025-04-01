@@ -10,7 +10,7 @@ Multi-view lets you ingest and render multiple Dolby.io real-time video and audi
 
 To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/broadcast/multi-source-broadcasting.md). Once broadcasting a multi-source stream, you can view the stream using the Dolby.io Millicast viewer app, or by building your own multi-view application. Dolby.io also supports [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) for mixed audio playback.
 
-# Multi-view with the Dolby.io viewer
+## Multi-view with the Dolby.io viewer
 
 Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.md), you can open the stream viewer from the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
 
@@ -31,7 +31,7 @@ Alternatively, you can force the viewer to open to multi-view by including the `
 https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]&multisource=true
 ```
 
-# Creating a Multi-view web application
+## Creating a Multi-view web application
 
 Dolby.io supports [Multisource Playback](/millicast/playback/source-and-layer-selection.md) via the [Client SDKs](/millicast/client-sdks/index.mdx), allowing you to build your own multi-view experience for your app or platform.
 
@@ -42,7 +42,7 @@ Before getting started building a multi-view application it is worth understandi
 3. What [Broadcast Events](/millicast/playback/viewer-events.md) are and how to use them.
 4. How the Dolby.io platform organizes and handles [Multisource Playback](/millicast/playback/source-and-layer-selection.md).
 
-## Store and track incoming Multisource feeds
+### Store and track incoming Multisource feeds
 
 > 📘 Not building a Web App?
 > 
@@ -63,7 +63,7 @@ await millicastView.on('broadcastEvent', (event) => {
 });
 ```
 
-## Add video elements and render feeds
+### Add video elements and render feeds
 
 Once we've captured the `sourceID` of an incoming stream, we need to signal to the Viewer node which _track_ the stream will play on. The Dolby.io Millicast SDKs include a function that allows you to [dynamically add a track to the Viewer node](/millicast/playback/source-and-layer-selection.md#dynamic-viewer-track) called `addRemoteTrack`.
 
@@ -198,14 +198,14 @@ const createVideoElement = (mediaStream, sourceId) => {
 };
 ```
 
-## Final result
+### Final result
 
 Additional features can be added, such as the ability to remove feeds once they stop or a button to switch between feeds. To learn more, explore this [full guide on building a multi-view application from start to finish](https://dolby.io/blog/building-a-webrtc-live-stream-multiviewer-app/) or try it out yourself with this [working sample code](https://github.com/dolbyio-samples/stream-app-web-viewer/tree/Multiviewer).
 
 <video autoplay="" width = "800px" controls="" loop="" muted="" src="https://dolby.io/wp-content/uploads/2022/11/multiview-vid.mp4" playsinline=""></video>
 
 
-# Assigning lower-quality layers to small tiles
+## Assigning lower-quality layers to small tiles
 
 By allocating lower-quality layers to smaller video tiles, you can optimize bandwidth usage and ensure a smoother streaming experience. Small tiles may not require high-resolution details, so using lower-quality layers conserves resources and enables efficient distribution of the available bandwidth.
 
@@ -234,7 +234,7 @@ const updateLayers = async (layers) => {
 };
 ```
 
-# Limitations of Multi-view
+## Limitations of Multi-view
 
 Dolby.io Real-time Streaming does not limit the number of tracks that a viewer can receive, however, it limits the aggregate bitrate of all tracks to 12 Mbps. The pinned source is prioritized and allowed to exceed the 12 Mbps limit, and the other tracks share any remaining available bandwidth. The source with a null `sourceId` is pinned by default. You can change the pinned source by using the `pinnedSourceId` attribute in the `View.connect` command. You should configure the Simulcast/SVC bitrate of each source so that a viewer can receive the desired amount of video tracks in the viewer session while remaining under the aggregate bitrate limit.
 

@@ -24,7 +24,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
   </li>
 </ul>
 
-# Start building
+## Start building
 
 <DocCard
   item={{
@@ -39,7 +39,7 @@ The final stage of the streaming workflow is taking the stream and playing it ba
   }}
 />
 
-## Client SDKs
+### Client SDKs
 
 import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
 
@@ -54,11 +54,11 @@ import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
   <IconGridButton>[![](/img/dotnet.svg) .NET SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
 </IconGrid>
 
-# Playback streaming media
+## Playback streaming media
 
 The previous stages of [Capture](/millicast/capture/index.mdx), [Broadcast](/millicast/broadcast/index.mdx), and [Distribution](/millicast/distribution/index.mdx) all lead up to making the content available for the end-user to view.
 
-## Using the streaming viewer
+### Using the streaming viewer
 
 [Dolby.io Dashboard Viewer](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md)<br/>
 The quickest and easiest way to test playback is to use your account dashboard. The streaming viewer is built into the Dolby.io Dashboard, so you can test out streaming right away. To build a more customized application, the [Client SDKs](/millicast/client-sdks/index.mdx) provide support for the most popular programming platforms.
@@ -71,7 +71,7 @@ To broadcast, you need a _publishing_ token. Similarly, to support playback in y
 </div>
 
 
-## Previewing a stream
+### Previewing a stream
 
 [How-to Add a Poster Image](/millicast/playback/customize-your-player.md)<br/>
 A **poster image** is a graphic that lets the audience know that a session exists but that a broadcast has not yet begun.
@@ -79,7 +79,7 @@ A **poster image** is a graphic that lets the audience know that a session exist
 [How-to Provide Thumbnail Image Previews](/millicast/webhooks/thumbnail-webhooks.md)<br/>
 A **thumbnail** is a static frame image that is captured at regular intervals during a broadcast. The thumbnail image offers a preview of what is being streamed to allow users to preview what is being presented before joining.
 
-## Interactive viewer features
+### Interactive viewer features
 
 [How-to Create a Multi-view Web Application](/millicast/playback/multiview.md)<br/>
 When more than one streaming source is being broadcast, the viewer is capable of presenting a lower-resolution preview of each incoming feed. The application can then let the user choose from these multi-view options.
@@ -87,7 +87,7 @@ When more than one streaming source is being broadcast, the viewer is capable of
 [Source and Layer Selection](/millicast/playback/source-and-layer-selection.md)<br/>
 For some applications, you may need to create more than one experience. The **multi-view application** can allow a host to choose which source layer should be sent as the primary stream that will be distributed for end-user playback. This feature can create the effect of switching between camera feeds and make dynamic cuts over the duration of the stream.
 
-## Integrating third-party capabilities
+### Integrating third-party capabilities
 
 <div className="youtube-container">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/MrCbnQ0NyaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -96,7 +96,7 @@ For some applications, you may need to create more than one experience. The **mu
 
 You can find examples of more third-party viewer integrations, such as [Adding Graphics with Singular.live](https://dolby.io/blog/adding-real-time-graphics-to-your-webrtc-stream-with-singular-live/) on the [developer blog](https://dolby.io/blog/category/streaming/).
 
-## Playback events and analytics
+### Playback events and analytics
 
 <div className="youtube-container">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/v45XTACc5D8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -115,7 +115,7 @@ Viewer events occur when a component of a stream changes, such as when a new sou
 [Streaming analytics](/millicast/analytics/index.md)<br/>
 The account dashboard provides data-rich information about streaming usage for your individual account. There are also **REST** and **GraphQL** endpoints to generate custom reports and behaviors by querying that data.
 
-## Playback on devices
+### Playback on devices
 
 The **WebRTC-HTTP Egress Protocol (WHEP) is an IETF standard developed to leverage the capabilities of WebRTC to distribute and playback content onto a WebRTC-enabled device over HTTP. WHEP addresses problems with Real-time Streaming by removing translation layers during decoding.
 
@@ -127,7 +127,7 @@ The **WebRTC-HTTP Egress Protocol (WHEP) is an IETF standard developed to levera
 
 Download one of these apps or create and customize your own Real-time Streaming Monitor apps with a native [Client SDK](/millicast/client-sdks/index.mdx).
 
-# Learn more
+## Learn more
 
 <DocCardList
   items={[

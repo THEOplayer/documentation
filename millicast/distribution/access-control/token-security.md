@@ -6,7 +6,7 @@ Impose limits on who may use a token to broadcast or view a stream by defining r
 
 These approaches are sometimes referred to as _whitelisting_, a security mechanism to prevent unauthorized access. Even when token credentials are provided, if the domain or IP address does not originate from an expected network location, permission is denied. These types of access restrictions allow only specific known hosts or applications to broadcast with a [publish](/millicast/streaming-dashboard/managing-your-tokens.md) token or playback using a [subscribe](/millicast/streaming-dashboard/subscribe-tokens.md) token.
 
-# Allowed origins
+## Allowed origins
 
 Setting up allowed origins as a means of [access control](/millicast/distribution/access-control/index.md) is done by specifying the domain where a request will originate. If you have deployed a website or application to a cloud provider you may not know the IP address of a server but any usage of a token can be restricted to the domain name for your application.
 
@@ -16,7 +16,7 @@ Setting up allowed origins as a means of [access control](/millicast/distributio
 
 This approach helps prevent unauthorized usage of tokens.
 
-## How-to set allowed domains using the dashboard
+### How-to set allowed domains using the dashboard
 
 You can manage allowed origins by changing settings from the user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
@@ -35,7 +35,7 @@ Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing
 > 
 > By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by origination, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
 
-# IP filters
+## IP filters
 
 Setting up an IP filter as a means of [access control](/millicast/distribution/access-control/index.md) may depend on whether or not you know the originating IP address ahead of time. 
 
@@ -46,7 +46,7 @@ Setting up an IP filter as a means of [access control](/millicast/distribution/a
 > 
 > This access control method is not supported when using RTMP.
 
-## Allowed IP addresses
+### Allowed IP addresses
 
 This approach allows for explicitly defining multiple _IPv4 addresses_ or \_Classless Inter-Domain Routing (CIDR) \_notated network blocks when creating or updating a token. A token will only be accepted when the requesting IP address originates from one of the network addresses that match.
 
@@ -60,7 +60,7 @@ _For example_, to allow only a specific person or persons to broadcast you would
 
 Once IP addresses are set, only requests from that address or network will be permitted to broadcast or view a stream. If the user's network changes, they will be rejected for future connections. The Allowed IP addresses can be updated.
 
-## Bind IP on usage
+### Bind IP on usage
 
 The bind IP on usage approach allows for explicitly defining how _many_ IP addresses to accept rather than specific ones. As they are gathered and bound to the token, any subsequent requests beyond the count will then be rejected.
 
@@ -68,7 +68,7 @@ You might think of this as appending any IP address requests to the _Allowed IP 
 
 _For example_, if you want to be able to share a stream with a specific end-user without allowing that person to re-share the same viewer link with others. The platform will bind to the first IP address encountered and then restrict any additional access using the same token.
 
-## How-to set IP filters using the dashboard
+### How-to set IP filters using the dashboard
 
 You can manage IP filters by changing settings from the user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
@@ -89,7 +89,7 @@ You then can input the IP addresses or number of addresses to bind, into the for
 > 
 > By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by IP address, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
 
-# REST APIs
+## REST APIs
 
 When working with allowed origins and IP filters you can automate workflows using available REST APIs.
 
@@ -100,7 +100,7 @@ When working with allowed origins and IP filters you can automate workflows usin
 > 
 > Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
-## How-to add allowed origins with the REST API
+### How-to add allowed origins with the REST API
 
 For both the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) and the [/api/subscribe_token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) you can define the **allowedOrigins** parameter when you use a `POST` request to create a new token. For existing tokens, you'll use the `PUT` method to change the value using **updateAllowedOrigins**.
 
@@ -115,7 +115,7 @@ curl -H "Authorization: Bearer [your_api_secret]" \
 
 Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
 
-## How-to add IP filters with the REST API
+### How-to add IP filters with the REST API
 
 For both the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) and the [/api/subscribe_token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) you can define the **allowedIpAddresses** or **bindIpsOnUsage** parameters when you use a `POST` request to create a new token. For existing tokens, you'll use the `PUT` method to change the value using **updateAllowedIpAddresses** or **updateBindIpsOnUsage** values respectively.
 
@@ -139,7 +139,7 @@ curl -H "Authorization: Bearer [your_api_secret]" \
 
 Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
 
-## How-to remove IP filters
+### How-to remove IP filters
 
 If you want to reset either a publish or subscribe token to no longer restrict access, you can use a bind value of zero and an empty array to clear out the settings and revert to the default.
 
@@ -152,9 +152,9 @@ curl -H "Authorization: Bearer [your_api_secret]" \
 
 Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) and [/api/subscribe_token](/millicast/api/subscribe-token-v-1-update-token.api.mdx) reference for additional examples.
 
-# Troubleshooting
+## Troubleshooting
 
-## Error initializing the Publisher.Error: Unauthorized: IP Address not allowed
+### Error initializing the Publisher.Error: Unauthorized: IP Address not allowed
 
 If the IP address detected does not match the IP Filters enabled, the user might be presented an error like this in the broadcast application.
 
@@ -165,7 +165,7 @@ If the IP address detected does not match the IP Filters enabled, the user might
 
 Verify that the IP address you are broadcasting from is static and correctly input for the publishing token being used.
 
-## Error initializing the Publisher.Error: Unauthorized: Origin not allowed
+### Error initializing the Publisher.Error: Unauthorized: Origin not allowed
 
 If the domain detected does not match the allowed origins, the user might be presented with an error like this in the broadcast application.
 

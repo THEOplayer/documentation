@@ -20,9 +20,9 @@ Simulcast provides flexibility that allows viewers to adjust their individual ex
 > 
 > If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
-# Configuring Simulcast
+## Configuring Simulcast
 
-## Requirements
+### Requirements
 
 Before broadcasting content using Simulcast, make sure you:
 
@@ -37,7 +37,7 @@ Before broadcasting content using Simulcast, make sure you:
 > 
 > Simulcast is included with plans at no additional cost when enabled. However, since multiple streams will be published, there will be more bits sent to the platform which counts as a bandwidth increase. Conversely, viewers may receive a resolution and bitrate at a lower level which may decrease bandwidth consumption overall.
 
-## How-to enable Simulcast with the Dolby.io dashboard
+### How-to enable Simulcast with the Dolby.io dashboard
 
 To activate Simulcast and stream using the [Streaming Dashboard Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md#broadcaster-interface), open the _Media Settings_ by clicking on the gear icon. This allows you to toggle the option to be on. The bandwidth settings can also be adjusted to achieve the desired bitrate.
 
@@ -52,7 +52,7 @@ You are now ready to send your live stream and can select the _start_ button on 
 
 You can use the [Hosted Player](/millicast/playback/hosted-viewer.md) to check the results.
 
-## How-to enable Simulcast from an encoder
+### How-to enable Simulcast from an encoder
 
 You may choose to use a [Hardware Encoder](../broadcast/hardware-encoders.mdx) that can support multi-bitrate encoding directly or [Software Encoders](../broadcast/software-encoders.mdx) that use additional plugins and configuration to enable separate renditions. Regardless of whether you are using RTMP, SRT, or WHIP as your broadcast protocol, you will need to configure multiple contributions to the broadcast with various quality layer settings.
 
@@ -64,7 +64,7 @@ Specific integration examples:
 
 As long as the WHIP, RTMP, or SRT client makes a Simulcast offer the media server will accept it.
 
-### Publish URL
+#### Publish URL
 
 The following parameters are significant to determine the server endpoint:
 
@@ -86,7 +86,7 @@ Some broadcast tools will use a single **URL** and others may require separate *
 
 For WebRTC Simulcast  append `?simulcastId&sourceId=1` to the stream **URL**, with each quality layer having a different **sourceId**. _(note that the [publishing parameters](/millicast/broadcast/broadcast-parameters.md) are appended to the URL and not the token)._
 
-### RTMP Multi-Bitrate Publishing Example
+#### RTMP Multi-Bitrate Publishing Example
 
 For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 480p, and 360p like so:
 
@@ -99,7 +99,7 @@ For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 48
 - 360p stream URL: `rtmp://rtmp-auto.millicast.com:1935/v2/pub
   myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=3&simulcastId&videoOnly` 
 
-### WebRTC via WHIP and Multi-Bitrate Publishing Example
+#### WebRTC via WHIP and Multi-Bitrate Publishing Example
 
 For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 480p, and 360p:
 
@@ -112,7 +112,7 @@ For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 48
 > 
 > The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) tool within the dashboard can assist with constructing these target endpoints. When using RTMP, SRT, and WHIP contributions you will use a separate publish url for each source. The _Multi-source Builder_ will help construct these URLs which you can export and download the configuration as a reference while setting up each device you will be broadcasting from.
 
-## Recommended settings for Simulcast
+### Recommended settings for Simulcast
 
 The specific settings available may vary depending on your available [Hardware](../broadcast/hardware-encoders.mdx) or [Software](../broadcast/software-encoders.mdx) encoders. A few settings that are common:
 
@@ -124,7 +124,7 @@ The specific settings available may vary depending on your available [Hardware](
 
 Individual source contributions can be customized however you like, but typically follow High, Medium (or Standard), and Low.
 
-### High quality layer
+#### High quality layer
 
 |            |           |
 | :--------- | :-------- |
@@ -135,7 +135,7 @@ Individual source contributions can be customized however you like, but typicall
 | Keyframe   | 2         |
 | B-Frames   | 0         |
 
-### Medium quality layer
+#### Medium quality layer
 
 |            |          |
 | :--------- | :------- |
@@ -146,7 +146,7 @@ Individual source contributions can be customized however you like, but typicall
 | Keyframe   | 2        |
 | B-Frames   | 0        |
 
-### Low quality layer
+#### Low quality layer
 
 |            |         |
 | :--------- | :------ |
@@ -157,7 +157,7 @@ Individual source contributions can be customized however you like, but typicall
 | Keyframe   | 2       |
 | B-Frames   | 0       |
 
-# View multi-bitrate streams with the hosted player
+## View multi-bitrate streams with the hosted player
 
 During [Playback](/millicast/playback/index.mdx), stream quality defaults to _Auto_ and will be determined by a few factors:
 
@@ -195,7 +195,7 @@ On the viewer, you can also check the **bitrate throughput** by selecting a qual
 > 
 > If you are using the Millicast [Web SDK](/millicast/client-sdks/web.mdx) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
 
-# Simulcast demo video
+## Simulcast demo video
 
 Here is a video showing the Simulcast playback using the [hosted player](/millicast/playback/hosted-viewer.md) built with the Javascript [Web SDK](/millicast/client-sdks/web.mdx).
 
@@ -203,7 +203,7 @@ Here is a video showing the Simulcast playback using the [hosted player](/millic
   <iframe width="560" height="315" src="https://www.youtube.com/embed/kXkwNyA6X24?si=_tnQTf2Fympb0K9O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-# Troubleshooting
+## Troubleshooting
 
 To diagnose simulcast issues, it can be helpful to review details about the broadcast source and playback client:
 
@@ -214,7 +214,7 @@ To diagnose simulcast issues, it can be helpful to review details about the broa
 - Video quality selection
 - The [cluster regions](/millicast/distribution/multi-region-support/index.md) used for broadcasting and playback
 
-## How-to check network conditions
+### How-to check network conditions
 
 There are some tools that can test the packet loss and bitrate giving details on the network conditions.
 
@@ -224,7 +224,7 @@ There are some tools that can test the packet loss and bitrate giving details on
 
 There are network limiter test tools that can help simulate conditions when trying to reproduce a problem.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
 

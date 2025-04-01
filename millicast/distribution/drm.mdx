@@ -20,7 +20,7 @@ import CalloutPremiumFeature from '../callouts/_premium_feature.md';
 
 <CalloutPremiumFeature />
 
-# How It Works
+## How It Works
 
 When streaming with DRM enabled, the content is distributed with an additional level of encryption. To decrypt and view the media, the player and platform must enforce protections and be able to fetch a license that is used to decrypt.
 
@@ -39,9 +39,9 @@ Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
 >
 > Review [Pricing](https://dolby.io/pricing/) for additional details.
 
-## Enabling DRM on a Stream
+### Enabling DRM on a Stream
 
-### Using the REST API
+#### Using the REST API
 
 The [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) endpoint can be used to create or modify existing publish tokens. The `drm` parameter is used to indicate whether or not a stream should be protected with DRM.
 
@@ -70,9 +70,9 @@ import GettingStartedRESTAPI from '../callouts/_getting_started_rest_apis.md';
 
 <GettingStartedRESTAPI />
 
-## Viewing a DRM Stream
+### Viewing a DRM Stream
 
-### Using the Hosted Player
+#### Using the Hosted Player
 
 The [Hosted Player](/millicast/playback/hosted-viewer.md) has an option to enable DRM. Whether it is a standalone web application or embedded in an iframe within your site you will need to add the `&drm` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) to the URL.
 
@@ -82,7 +82,7 @@ For example:
 https://viewer.millicast.com?streamId={accountId/streamName}&token={subscriberToken}&drm
 ```
 
-### Using the Web SDK
+#### Using the Web SDK
 
 There are a few things to know when setting up playback.
 
@@ -142,7 +142,7 @@ await viewer.project(sourceId, tracksMapping)
 >
 > For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js)  which demonstrates the use of DRM.
 
-# Troubleshooting
+## Troubleshooting
 
 To diagnose DRM issues such as unauthorized sharing or an inability to view content, review the details of the publishing settings, such as:
 
@@ -150,7 +150,7 @@ To diagnose DRM issues such as unauthorized sharing or an inability to view cont
 - Settings: Bitrate, FPS, Resolution, or Simulcast setting
 - Licenses: An account in good standing with enough licenses for each player instance
 
-## Device Compatibility
+### Device Compatibility
 
 Support for most popular browsers is available on both desktop and mobile devices.
 
@@ -165,7 +165,7 @@ Support for most popular browsers is available on both desktop and mobile device
 
 There are some specific scenarios that limit compatibility with Firefox. Similarly, L3 Widevine is the default configuration due to browser limitations. Please reach out to your account team to discuss the latest status and impact this will have on your plans.
 
-## Feature Compatibility
+### Feature Compatibility
 
 The use of DRM will limit some of the other platform features.
 
@@ -176,10 +176,10 @@ The use of DRM will limit some of the other platform features.
 
 Please reach out to your account team to discuss the latest status if this will impact your production plans.
 
-## OBS Broadcast Failing to Playback
+### OBS Broadcast Failing to Playback
 
 If you are sending a source from OBS and playback doesn't appear to be working as expected, please ensure that you do not have an Active Scene in OBS that could be doing a screen capture or screen recording. Even if that is not the scene being used to stream for this particular event, if a screen capture is happening in the background DRM will still block playback.
 
-## Green Video Playback
+### Green Video Playback
 
 Typically when a license check fails, content will be presented as a black screen. In some cases, a green screen may appear instead and could also indicate video decoding is not working properly. Contact support if that is the case and you need additional help troubleshooting.

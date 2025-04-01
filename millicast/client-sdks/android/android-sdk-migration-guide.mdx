@@ -8,13 +8,13 @@ import GettingStartedAndroid from '../../callouts/_getting_started_android.md';
 
 <GettingStartedAndroid />
 
-# 1.8.x to 2.x
+## 1.8.x to 2.x
 
 Below you'll find examples for migrating your applications from [v1.8.9](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.9) to [v2.0.0](https://github.com/millicast/millicast-native-sdk/releases/tag/v2.0.0) of the [Android](/millicast/client-sdks/android/index.mdx) SDK.
 
 > **_NOTE:_** Publisher classes remain unchanged and do not require any migration.
 
-## Subscribing Single Source Streams
+### Subscribing Single Source Streams
 
 For applications that only have a single source available for playback, track management has changed.
 
@@ -101,7 +101,7 @@ launchDefaultScope {
 
 Video view renderer using `TextureViewRenderer` remains the same in 2.0.0.
 
-## Subscribing Multi-View Streams
+### Subscribing Multi-View Streams
 
 There were a lot of complicated steps involved in projecting the sources for a multi-stream view. This complex workflow requires a lot of understanding of the WebRTC remote tracks. Using the new 2.0.0 implementation removes the need to handle sourceIds, mids and the projection data directly. This solves a lot of complexities from the old implementation.
 
@@ -247,7 +247,7 @@ launchDefaultScope {
 
 The new 2.0.0 implementation for multi-stream is identical to the single stream view.
 
-### Some key differences in track management
+#### Some key differences in track management
 
 | 1.8.x | 2.x |
 | --- | --- |
@@ -260,6 +260,6 @@ The new 2.0.0 implementation for multi-stream is identical to the single stream 
 
 
 
-## Changelog Overview
+### Changelog Overview
 
 Please refer to the changelog for [What's new in 2.0.0 SDK Release](https://github.com/millicast/millicast-native-sdk/releases/tag/v2.0.0)

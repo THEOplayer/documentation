@@ -11,7 +11,7 @@ This guide will outline four options for NDI delivery:
 3. [How-to Publish Video Editor with NDI](/millicast/broadcast/using-ndi.md#how-to-publish-video-editor-with-ndi)
 4. [How-to Publish NDI with vMix](/millicast/broadcast/using-ndi.md#how-to-publish-ndi-with-vmix)
 
-# NDI publishing
+## NDI publishing
 
 > 👍 Getting Started
 > 
@@ -19,7 +19,7 @@ This guide will outline four options for NDI delivery:
 
 Install the [NDI tools](https://ndi.video/type/ndi-tools/) on your computer. If you do not have a NDI camera, you can download NDI HX Camera or similar to test the below workflows on you mobile device.
 
-## How-to publish NDI with Dolby.io dashboard broadcaster
+### How-to publish NDI with Dolby.io dashboard broadcaster
 
 Sign in to your [Dolby.io Real-Time Streaming dashboard](https://dashboard.dolby.io/) and create a stream token. Press the broadcast button, and inside the Broadcaster, select the camera icon on the bottom left. Here you will see a list of possible camera selections. If you have an NDI camera like NewTek, Angekis, or AIDA, it will show up in the dropdown, and you are ready to go. 
 
@@ -58,7 +58,7 @@ Go back into Dolby.io Broadcaster and select NDI Video from the video devices op
 
 From here click the "Start" button to begin broadcasting the camera feed globally in real-time with Dolby.io.
 
-## How-to publish NDI with OBS-WebRTC
+### How-to publish NDI with OBS-WebRTC
 
 [Open Broadcast Software](https://github.com/CoSMoSoftware/OBS-studio-webrtc), OBS, is a popular screencasting and streaming tool available as free, open-source software. After downloading the forked software, open up the program and create a scene by clicking on the "+" of Scenes.
 
@@ -97,7 +97,7 @@ To obtain the stream name and publishing token, go into the stream token's setti
 
 
 
-## How-to publish video editor with NDI
+### How-to publish video editor with NDI
 
 NDI can be very useful for enabling real-time, renderless playback and preview over IP right from the timeline of a video editor. Actions like these can allow remote collaboration with creators all over the globe aside from allowing stakeholders to watch your work, in real-time with minimal delay.
 
@@ -148,11 +148,11 @@ Open up a new Final Cut Pro project with it matching your NDI configuration and 
 
 
 
-## How-to publish NDI with vMix
+### How-to publish NDI with vMix
 
 You can also use [vMix as NDI](/millicast/software-encoders/broadcasting-with-vmix.md) source if you do not wish to purchase the NDI HDX. This allows will allow vMix to be used as your switcher or remote source and flexibility with Dolby.io Real-time Streaming codecs with real-time publishing.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 

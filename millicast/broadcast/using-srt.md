@@ -10,13 +10,13 @@ This document will guide you on how to [broadcast](/millicast/broadcast/index.md
 > 
 > If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
 
-# How-to find the SRT publish settings with the dashboard
+## How-to find the SRT publish settings with the dashboard
 
 The Dolby.io [Streaming Dashboard](/millicast/streaming-dashboard/index.md) helps generate the parameters you can use for configuring your encoders. 
 
 Some examples of encoders supporting SRT include the [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md) Talon, [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md) Wave, [Videon](/millicast/hardware-encoders/videon.md) EdgeCaster, [Haivision](/millicast/hardware-encoders/using-haivision-kb-encoder.md) KB Encoder, [Flowcaster](/millicast/software-encoders/using-whip-with-flowcaster.md), Adobe Premiere Pro, Avid Media Composer, and [vMix](/millicast/software-encoders/broadcasting-with-vmix.md).
 
-## 1. Select a token from _Live broadcast_
+### 1. Select a token from _Live broadcast_
 
 Select a publish token that you will use for your SRT broadcast. 
 
@@ -25,7 +25,7 @@ Select a publish token that you will use for your SRT broadcast.
 
 
 
-## 2. Select the _Publishing_ tab
+### 2. Select the _Publishing_ tab
 
 Click on the _Publishing_ tab for information on how to connect as a publisher to your Dolby.io account. There is a section specifically for all of the SRT publish settings.
 
@@ -34,7 +34,7 @@ Click on the _Publishing_ tab for information on how to connect as a publisher t
 
 
 
-## 3. Configure your encoder with the SRT settings
+### 3. Configure your encoder with the SRT settings
 
 The settings you use will be dependent on the specific encoder being configured. Typically though, the source of the broadcast may be referred to as the caller of the Dolby.io service which will listen for the incoming stream. 
 
@@ -45,7 +45,7 @@ The settings you use will be dependent on the specific encoder being configured.
 > 
 > You may note that these publish settings include your embedded _Publishing token_ that has been further compressed. You can find instructions for how this is done in the section below for using the REST APIs if you are trying to automate generation of the SRT stream ID.
 
-### Basic Encoder Settings
+#### Basic Encoder Settings
 
 The following are basic recommended settings for any encoder:
 
@@ -58,7 +58,7 @@ The following are basic recommended settings for any encoder:
 
 **Note:** If you cannot disable bframes, we recommend setting the Profile to `baseline`.
 
-# How-to get the SRT publish settings using the REST APIs
+## How-to get the SRT publish settings using the REST APIs
 
 These instructions should help with generating the SRT settings similar to what you would find in the dashboard when using the REST API endpoints to programmatically generate publishing tokens.
 
@@ -88,7 +88,7 @@ You will need to know the **Stream name** as well as the **Publishing token**. Y
 }
 ```
 
-## 1. Generate the SRT publish path
+### 1. Generate the SRT publish path
 
 If you've used the **Auto** [region](/millicast/distribution/multi-region-support/index.md)  as your default then the **SRT publish path** will be `srt://srt-auto.millicast.com:10000`.  
 
@@ -105,7 +105,7 @@ For publish tokens configured for specific regions, the **srt://** endpoint will
 
 You may need to prepend the protocol `srt://` and append the port `:10000` to the end of the URL.
 
-## 2. Generate the SRT stream ID
+### 2. Generate the SRT stream ID
 
 The token used with SRT publishing is not the same as the publishing token used for WHIP and RTMP. It is base 64 compressed as binary. This also means substituting certain characters from the original hex values of the original publishing token.
 
@@ -145,7 +145,7 @@ function decode_token(srtToken) {
 }
 ```
 
-## 3. Generate the SRT publish URL
+### 3. Generate the SRT publish URL
 
 When constructing a single publish URL, it is necessary to URL encode the **SRT Stream ID** and any additional parameters so that the endpoint properly passes all the settings through to the listening server.
 
@@ -156,7 +156,7 @@ let publishURL = '${srtPublishPath}?streamid=${encodedStreamId}';
 
 ```
 
-# SRT passphrase encryption
+## SRT passphrase encryption
 
 With passphrase encryption you can further protect your stream from unauthorized access. You enable the encryption in the dashboard by toggling the **passphrase encryption** setting to on. This generates a passphrase that must be input when starting to broadcast.
 
@@ -167,7 +167,7 @@ With passphrase encryption you can further protect your stream from unauthorized
 
 When enabled, a `&e` parameter is appended to the **SRT stream ID**.
 
-# Troubleshooting
+## Troubleshooting
 
 There are some limitations when using SRT with Real-time Streaming:
 
@@ -181,7 +181,7 @@ There are some limitations when using SRT with Real-time Streaming:
 
 If you have needs like these, please [contact us](https://dolby.io/contact).
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 

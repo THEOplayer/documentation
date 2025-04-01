@@ -8,7 +8,7 @@ The **feeds** _type_ of [webhook](/millicast/webhooks/index.md) allows you to re
 > 
 > Review the [Webhooks](/millicast/webhooks/index.md) guide for additional details on creating and receiving webhooks.
 
-# Event
+## Event
 
 The `event` will be one of the following values:
 
@@ -17,7 +17,7 @@ The `event` will be one of the following values:
 
 Each individual stream will send started and ended events.
 
-# Data
+## Data
 
 The `data` payload will contain the following details:
 
@@ -32,9 +32,9 @@ Optionally the webhook may include:
 
 - **ended** is an epoch time for when the publishing feed was ended (only included when the stream has ended).
 
-# Examples
+## Examples
 
-## Feed Started
+### Feed Started
 
 Event callback for when a publishing token begins broadcasting.
 
@@ -54,7 +54,7 @@ Event callback for when a publishing token begins broadcasting.
 }
 ```
 
-## Feed Ended
+### Feed Ended
 
 Event callback for when a publishing token stops broadcasting.
 

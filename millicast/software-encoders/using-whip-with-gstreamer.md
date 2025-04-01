@@ -16,7 +16,7 @@ This guide includes a number of examples:
 
 See the official [gstreamer.freedesktop.org](https://gstreamer.freedesktop.org/) documentation for installation instructions and additional support.
 
-# Get your Dolby.io WHIP publish URL
+## Get your Dolby.io WHIP publish URL
 
 You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [Dolby.io Dashboard](/millicast/streaming-dashboard/index.md), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
 
@@ -39,7 +39,7 @@ In the examples below, these values are referenced as environment variables. You
 > https://director.millicast.com/api/whip/{Stream Name}?codec=vp8
 > ```
 
-# Get your Dolby.io WHEP playback URL
+## Get your Dolby.io WHEP playback URL
 
 The **WHEP endpoint** is available from the _Playback_ tab of your publish token in the [Streaming Dashboard](/millicast/streaming-dashboard/index.md). 
 
@@ -49,7 +49,7 @@ It will follow a pattern similar to:
 https://director.millicast.com/api/whep/{Account ID}/{Stream Name}
 ```
 
-# GStreamer
+## GStreamer
 
 The [1.22.0 release](https://gstreamer.freedesktop.org/releases/1.22/) of GStreamer (January 2023) includes support for WebRTC that enables:
 
@@ -67,7 +67,7 @@ The [autovideosink](https://gstreamer.freedesktop.org/documentation/autodetect/a
 
 You can use the [Hosted Viewer](/millicast/streaming-dashboard/index.md) and [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) to test your setups.
 
-## How-to broadcast the video test source
+### How-to broadcast the video test source
 
 The [videotestsrc](https://gstreamer.freedesktop.org/documentation/videotestsrc/index.html?gi-language=c) element can be used to produce a simple test video and has a few patterns. Here is a simple example of a bouncing ball: 
 
@@ -79,7 +79,7 @@ gst-launch-1.0 videotestsrc pattern=ball ! videoconvert ! x264enc ! rtph264pay !
   whip-endpoint=$DOLBYIO_WHIP_ENDPOINT
 ```
 
-### Video test source with audio
+#### Video test source with audio
 
 The default `videotestsrc` shows a more complex stream that includes audio and a color test. To view this locally run `gst-launch-1.0 videotestsrc ! autovideosink`:
 
@@ -101,7 +101,7 @@ gst-launch-1.0 videotestsrc ! videoconvert ! x264enc ! rtph264pay ! \
 
 You can watch these streams from a [playback](/millicast/playback/index.mdx) viewer.
 
-## How-to broadcast the audio-only test source
+### How-to broadcast the audio-only test source
 
 The [audiotestsrc](https://gstreamer.freedesktop.org/documentation/audiotestsrc/index.html?gi-language=c#audiotestsrc-page) element can be used to produce a simple test of audio-only streaming. Here's an example:
 
@@ -113,11 +113,11 @@ gst-launch-1.0 audiotestsrc wave=sine !
     whip-endpoint=$DOLBYIO_WHIP_ENDPOINT
 ```
 
-## How-to broadcast a media file
+### How-to broadcast a media file
 
 Instead of using the video test source, this example demonstrates reading and looping a media file from disk using the [multifilesrc](https://gstreamer.freedesktop.org/documentation/multifile/multifilesrc.html) element. You can find example media to try this with such as <a href="<https://peach.blender.org/download/>" target="_blank">Big Buck Bunny</a>
 
-### Using a specific codec
+#### Using a specific codec
 
 If there is a requirement to use a specific codec such as with recordings you should use the **codec** query parameter of the [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint. 
 
@@ -131,7 +131,7 @@ gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=t
   whip-endpoint=$DOLBYIO_WHIP_ENDPOINT?codec=vp9
 ```
 
-### Using audio-only MP3 file with custom encoding
+#### Using audio-only MP3 file with custom encoding
 
 This example demonstrates using [opusenc](https://gstreamer.freedesktop.org/documentation/opus/opusenc.html?gi-language=c) with additional configured encoding options. These can also be omitted to use the defaults.
 
@@ -145,7 +145,7 @@ gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=t
   whip-endpoint=$DOLBYIO_WHIP_ENDPOINT?codec=vp9
 ```
 
-## How-to broadcast a RTSP video source
+### How-to broadcast a RTSP video source
 
 This example demonstrates using a RTSP source such as with an IP camera while 
 
@@ -158,7 +158,7 @@ gst-launch-1.0 rtspsrc location="rtsp://192.168.1.168/0" latency=0 name=rtsp ! \
 
 ```
 
-### Source with Opus audio
+#### Source with Opus audio
 
 You can ingest with support for an audio codec such as Opus:
 
@@ -174,11 +174,11 @@ gst-launch-1.0 rtspsrc location="rtsp://192.168.1.168/0" latency=0 \
 
 ```
 
-## How-to broadcast audio in surround sound
+### How-to broadcast audio in surround sound
 
 You can broadcast media files that include surround sound audio.
 
-### Using 5.1 source media
+#### Using 5.1 source media
 
 ```shell
 gst-launch-1.0 multifilesrc location=big_buck_bunny_720p_surround.avi loop=true ! \
@@ -191,7 +191,7 @@ gst-launch-1.0 multifilesrc location=big_buck_bunny_720p_surround.avi loop=true 
   decodebin ! audioconvert ! opusenc ! rtpopuspay ! queue ! ws.
 ```
 
-# Simple WHIP client
+## Simple WHIP client
 
 The [Simple WHIP client](https://github.com/lminiero/simple-whip-client) is an open-source implementation of a WHIP client that can be useful for testing. It requires a build of the C libraries including GStreamer.
 
@@ -199,7 +199,7 @@ You can find more details on the GitHub project:
 
 https://github.com/meetecho/simple-whip-client
 
-## Testing your setup
+### Testing your setup
 
 First test your setup by using a video test source to a WHIP GStreamer pipeline.
 
@@ -228,7 +228,7 @@ And if you connect to the viewer, a bouncing ball will be shown:
 
 
 
-## Publishing an RTSP video-only source
+### Publishing an RTSP video-only source
 
 Now, to connect to an RTSP source like an axis camera, you need to replace the GStreamer pipeline with one that connects to the Camera and passes the video data to Dolby.io Real-time Streaming without transcoding the content.
 
@@ -240,7 +240,7 @@ Now, to connect to an RTSP source like an axis camera, you need to replace the G
       application/x-rtp,media=video,encoding-name=H264"
 ```
 
-## Publishing an RTSP audio and video source
+### Publishing an RTSP audio and video source
 
 If your camera also supports audio, you just need to add the GStreamer audio pipeline:
 
@@ -256,7 +256,7 @@ If your camera also supports audio, you just need to add the GStreamer audio pip
       application/x-rtp,media=video,encoding-name=H264"
 ```
 
-## Publishing an RTSP source with authentication
+### Publishing an RTSP source with authentication
 
 Finally, if your setup requires authentication, pass the username and password to the GStreamer RTSP plugin
 

@@ -8,7 +8,7 @@ The **viewerConnection** _type_ of [webhook](/millicast/webhooks/index.md) allow
 > 
 > Review the [Webhooks](/millicast/webhooks/index.md) guide for additional details on creating and receiving webhooks.
 
-# Event
+## Event
 
 The `event` will be one of the following values:
 
@@ -16,7 +16,7 @@ The `event` will be one of the following values:
 - **firstViewerConnection** is sent once your stream goes live and the first viewer successfully connects to the stream.
 - **noActiveViewers** is sent once there are zero active viewers connected to the stream.  After the last viewer leaves the stream a 60 second timer elapses and then this hook is sent.  The 60 second timer is in place to allow for viewers to leave and come back within a short period of time to help avoid unnecessary starts and stops with the encoder.
 
-# Data
+## Data
 
 The `data` payload will contain the following details:
 
@@ -24,9 +24,9 @@ The `data` payload will contain the following details:
 - **accountId** is the unique identifier for your streaming account.
 - **streamId** is the unique identifier for the stream such `accountId/streamName`.
 
-# Examples
+## Examples
 
-## Viewer attempted to connect to an inactive stream
+### Viewer attempted to connect to an inactive stream
 
 ```json
 {
@@ -41,7 +41,7 @@ The `data` payload will contain the following details:
 }
 ```
 
-## Once the stream started and the first viewer successfully connected
+### Once the stream started and the first viewer successfully connected
 
 ```json
 {
@@ -56,7 +56,7 @@ The `data` payload will contain the following details:
 }
 ```
 
-## The last viewer on the stream disconnected and 60 seconds elapsed
+### The last viewer on the stream disconnected and 60 seconds elapsed
 
 ```json
 {

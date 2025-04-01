@@ -10,7 +10,7 @@ With [Live Clipping]((millicast/distribution/stream-recordings/live-clipping.md)
 > 
 > Similarly, **timelines** will always be stored in Dolby's storage subject to expiration rules.
 
-# Configuring Account Storage Profile
+## Configuring Account Storage Profile
 
 You can start by adding a **storage profile** that will persist across the account so that you can reuse the configuration by name on all future [Create Clip](/millicast/api/media-assets-create-media-asset.api.mdx) requests or as the default setting.
 
@@ -28,7 +28,7 @@ The storage profile will have a unique `profileId` that is an assigned GUID that
 
 Your choice of storage provider may have a limitation on allowed characters for object names. You should follow the same guidelines when choosing clip naming rules.
 
-## How-to Validate the Storage Profile
+### How-to Validate the Storage Profile
 
 Use the [Validate Third Party Storage Setup](/millicast/api/account-validate-third-party-storage.api.mdx) endpoint to test whether or not a storage profile is properly configured. This will transfer a small test file to make sure that it can be written to your cloud storage provider.
 
@@ -48,11 +48,11 @@ curl --request POST \
 '
 ```
 
-# Setting Up Cloud Storage
+## Setting Up Cloud Storage
 
 Dolby storage is used by default, but to use your own storage you will need to provide authorization to access.
 
-## Google Cloud Storage
+### Google Cloud Storage
 
 For the storage profile use the following settings:
 
@@ -69,7 +69,7 @@ Configuration:
 | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
 | Google Cloud Storage | `millicast-recording-service@millicast.iam.gserviceaccount.com` |
 
-### How-to Grant Authorization to a Bucket
+#### How-to Grant Authorization to a Bucket
 
 The following procedure explains how to grant Dolby upload access to Google Cloud Storage buckets. Upon completion, the Dolby service account will have the storage object creator role for the selected storage bucket.
 
@@ -95,14 +95,14 @@ The following procedure explains how to grant Dolby upload access to Google Clou
    
 ![](../../assets/img/Screenshot_2024-02-14_at_2.41.23_pm.png)
 
-## AWS S3
+### AWS S3
 
 To configure Amazon's Simple Storage Service (S3) you need to provide authorization to our service.
 
 1. Create an AWS S3 Bucket. See the official [AWS Getting Started](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html) docs for instructions.
 2. Update the bucket policy with credentials that permit Dolby to read and put objects.
 
-### How-to Set the Bucket Policy
+#### How-to Set the Bucket Policy
 
 Visit the official AWS [Adding a bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html) documentation for instructions.
 

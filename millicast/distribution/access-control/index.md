@@ -8,7 +8,7 @@ Stream security is a priority for the Dolby.io platform. Along with stream proto
 > 
 > To manage access for your team to share the same Dolby.io account, visit the [Dolby.io support portal FAQ section](https://support.dolby.io/hc/en-au/articles/4411755046159-FAQs-Account-Management) to learn more.
 
-# Publishing access control
+## Publishing access control
 
 A [Publish token](/millicast/streaming-dashboard/managing-your-tokens.md) is **required** for [broadcasting](/millicast/broadcast/index.mdx) a stream. The Publish token protects your account from unauthorized broadcasters and fraudulent users by adding a layer of server-side authentication to the broadcast process. In addition to the token itself, you can add access controls to the Publish token to further limit and secure the broadcast. 
 
@@ -21,7 +21,7 @@ During the Publish token creation process, you can further limit access in a few
 
 These restrictions can be implemented in the [Dashboard](https://dashboard.dolby.io/signin) or [via the token REST APIs](/millicast/streaming-dashboard/token-api.md).
 
-# Subscribing access control
+## Subscribing access control
 
 A Subscribe token is **optional** for [playing back](/millicast/playback/index.mdx) a stream but can provide extra security for your content. [When enabled](/millicast/streaming-dashboard/subscribe-tokens.md), streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. This makes Subscribe tokens useful for protecting paywalled content or non-public content. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains.
 

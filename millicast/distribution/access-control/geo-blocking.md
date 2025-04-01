@@ -11,7 +11,7 @@ slug: /geo-blocking
 
 You can set geo-blocking in either your [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) or [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md). Geo-location in both tokens refers to the location from which viewers can watch a stream. If you restrict access to a stream in some countries using the publish token, people from those countries will not be able to watch the streamed content, even if the stream is unauthenticated and does not require the subscribe token. Geo-blocking does not impact broadcasting.
 
-# Geo-blocking in the dashboard
+## Geo-blocking in the dashboard
 
 There are some settings you can use when configuring geo-blocking.
 
@@ -20,7 +20,7 @@ There are some settings you can use when configuring geo-blocking.
 
 End viewers that will be blocked from content will see a message in the player stating _Country not allowed_ when trying to access the viewer. You can test this by blocking the country from which you are based to access the secure viewer link.
 
-## How-to allow or block countries for all tokens
+### How-to allow or block countries for all tokens
 
 You can define token defaults that are applied account wide as a global configuration. They can be overridden on a per-token basis
 
@@ -44,7 +44,7 @@ Select from the countries you want to allow or deny from the alphabetical dropdo
 > 
 > Enabling geo-blocking account wide will have all previous and future publish tokens enabled with this feature. To disable it simply erase the specified countries and the new conditions will be updated.
 
-## How-to allow or block countries for a specific token
+### How-to allow or block countries for a specific token
 
 > 👍 Getting Started
 > 
@@ -72,7 +72,7 @@ Select from the countries you want to allow or deny from the alphabetical dropdo
 > 
 > You can also deny access to content if you know the [domain name](/millicast/distribution/access-control/token-security.md) or [ip address](/millicast/distribution/access-control/token-security.md) that will be used to broadcast or view a stream.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
 

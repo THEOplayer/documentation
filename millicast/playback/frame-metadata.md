@@ -14,7 +14,7 @@ This can be useful for transporting temporal data such as:
 
 These cue points are often used for time synchronizing application state with the action happening in the video player.
 
-# SEI Metadata
+## SEI Metadata
 
 Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed **Action Message Format (AMF) messages. 
 
@@ -23,7 +23,7 @@ Millicast has standardized metadata access in the **Supplemental Enhancement Inf
 
 
 
-## Message Delivery
+### Message Delivery
 
 Metadata is encoded into the frame at broadcast and then extracted by the Client SDK at playback time.
 
@@ -34,7 +34,7 @@ Metadata is encoded into the frame at broadcast and then extracted by the Client
 
 With WebRTC and a UDP connection, latency is prioritized over reliable delivery so the metadata is not guaranteed to always be received and could be lost with any dropped frames making it less suitable for critical notifications. For durable messages or guaranteed delivery you can use third-party peer-to-peer messaging services and synchronize with the client using the **timecode** from SEI and avoid skipping metadata messages.
 
-## Metadata Source Identification
+### Metadata Source Identification
 
 When receiving metadata there is a `uuid` attribute that can be used to uniquely identify the source of the metadata in cases of multiple publishing sources. The table includes a few examples:
 
@@ -46,11 +46,11 @@ When receiving metadata there is a `uuid` attribute that can be used to uniquely
 
 For **PIC_TIMING** SEI messages that are inserted by various encoders, there will not be a UUID assigned and included with the frame.
 
-# Web SDK
+## Web SDK
 
 When using the [Web SDK](/millicast/client-sdks/web.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
 
-## How-to Publish Frame Metadata
+### How-to Publish Frame Metadata
 
 To send metadata use the `sendMetadata()` method which is expecting a string as the parameter.
 
@@ -65,7 +65,7 @@ await publisher.connect(broadcastOptions)
 publisher.sendMetadata('{"score": "4-3"}')
 ```
 
-## How-to View Frame Metadata
+### How-to View Frame Metadata
 
 A separate metadata event is received for each frame when it is decoded so that the application can decide how to handle the metadata.
 
@@ -85,7 +85,7 @@ millicastView.on('metadata', (metadata) => {
 
 The metadata that was published with the Web SDK is found in the `unregistered` attribute. It is common to serialize and deserialize more complex data packages like JSON but is a decision left to the application.
 
-# Codec Support
+## Codec Support
 
 > ❗️ Frame Metadata with SEI is only available for the H.264 (AVC) Codec
 > 
@@ -99,13 +99,13 @@ With the method demonstrated here for non-SEI codec support:
 - The amount of data you can publish is not limited, but it increases the bandwidth and latency requirements so publishing small payloads is recommended.
 - If you add extra bits to the encoded video stream, you must remove them on the viewer side for the video decoder to understand the stream and be able to display it on the screen.
 
-## Supporting Non-SEI Metadata for Web
+### Supporting Non-SEI Metadata for Web
 
 Utilizing a <a href="https://developer.mozilla.org/en-US/docs/Web/API/TransformStream" target="_blank">TransformStream</a> object, you can spin up a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Worker</a> to leverage background threads from the web browser and process individual video frames. 
 
 The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using **createEncodedStreams() while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
 
-### Publishing metadata
+#### Publishing metadata
 
 Start by creating a new JavaScript file for the web worker called **workerSender.js** with the following code. This code of the **TransformStream** is responsible for inserting the metadata into each video frame.
 
@@ -283,7 +283,7 @@ await startPublishing(publishToken, streamName, participantName);
 sendMetadata('{"position": {"x": 100, "y": 200}}');
 ```
 
-### Viewing metadata
+#### Viewing metadata
 
 In a similar way, create a JavaScript file called **workerReceiver.js** for the web worker that hosts the logic of the **TransformStream** that extract the metadata from the video frames.
 
@@ -411,7 +411,7 @@ async function startListening(streamAccountId, streamName) {
 
 When a new metadata is received, this code will trigger the JavaScript event **metadata** in the window.
 
-## Supporting Non-SEI Metadata for Native Platforms
+### Supporting Non-SEI Metadata for Native Platforms
 
 Using the [Native SDK](/millicast/client-sdks/index.mdx) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
 
@@ -421,7 +421,7 @@ Using the [Native SDK](/millicast/client-sdks/index.mdx) you can embed metadata 
 
 If you have specific requirements for the version of libwebrtc in use for your platform [contact us](https://dolby.io/contact) for additional implementation details.
 
-### Enable frame transformer
+#### Enable frame transformer
 
 When the transformer is activated, it will enable inspection of frames for additional metadata appended. 
 
@@ -429,7 +429,7 @@ When the transformer is activated, it will enable inspection of frames for addit
 enable_frame_transformer(true);
 ```
 
-### Listen for transformable frame callback
+#### Listen for transformable frame callback
 
 When the frame is being transformed, a callback is fired allowing additional data to be stored. This example demonstrates storing an x,y position as metadata that might reflect the location of an object in the frame. Note that there is a 4-byte sequence that helps identify the remaining data encoded in the frame is metadata.
 
@@ -470,15 +470,15 @@ void on_transformable_frame([[maybe_unused]] uint32_t ssrc, [[maybe_unused]] uin
 }
 ```
 
-# Troubleshooting
+## Troubleshooting
 
-## Missing Metadata in Chrome
+### Missing Metadata in Chrome
 
 Starting with Chrome version m128, the H.264 depacketizer introduced a bug leading to problems with SEI messages during packet loss. The typical symptoms are low frame rate on Chrome but not on Safari (Mac) or Firefox. The use of SEI messages combined with any level of packet loss may lead to significant playback issues. Customers trialing our DRM solution will also be affected.
 
 See the [Playback issues with SEI Messages in H.264](https://support.dolby.io/hc/en-au/articles/11057317291663-Playback-Issues-with-SEI-Messages-in-H-264-Streaming) knowledge base article for more details on solutions and impacted versions.
 
-# Learn more
+## Learn more
 
 You can find some additional examples of exchanging data during a broadcast and other [messaging](https://dolby.io/blog/tag/messaging/) examples from the [developer blog](https://dolby.io/blog/category/streaming/).
 

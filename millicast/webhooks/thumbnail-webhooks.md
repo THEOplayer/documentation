@@ -14,7 +14,7 @@ To enable thumbnail preview images you must:
 > 
 > Review the [Webhooks](/millicast/webhooks/index.md) guide for additional details on creating and receiving webhooks.
 
-# Thumbnail preview
+## Thumbnail preview
 
 During a broadcast with **thumbnail preview** enabled, while the stream has an active publisher a thumbnail image of an intra frame will be captured every 30 seconds.
 
@@ -22,7 +22,7 @@ During a broadcast with **thumbnail preview** enabled, while the stream has an a
 - The request body is the binary image, not the common JSON schema used by other webhooks
 - Thumbnails are not retained, you'll need to manage storage, delivery, and deletion of thumbnails from your own infrastructure
 
-## How-to enable thumbnail preview with the dashboard
+### How-to enable thumbnail preview with the dashboard
 
 The [Streaming Dashboard](/millicast/streaming-dashboard/index.md) token settings can be used to toggle the **Thumbnail previews** setting on.
 
@@ -31,7 +31,7 @@ The [Streaming Dashboard](/millicast/streaming-dashboard/index.md) token setting
 
 
 
-## How-to enable thumbnail preview with the REST API
+### How-to enable thumbnail preview with the REST API
 
 > 👍 Using the REST APIs
 > 
@@ -55,7 +55,7 @@ The [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) 
 }
 ```
 
-# Receiving the webhook
+## Receiving the webhook
 
 The thumbnail webhook is a POST request that will be sent to the webhook URL with a body of a JPEG image and Content-Type of `image/jpeg`. You will need to host the image in you own infrastructure or CDN for your application.
 
@@ -66,7 +66,7 @@ The following HTTP headers are on the request to identify stream details:
 - **X-Millicast-Stream-Id**: Dolby.io Real-time Streaming stream id.
 - **X-Millicast-Signature**: SHA1 signature using the hook configured secret (The same signature mechanism used by the other webhooks).
 
-# Troubleshooting
+## Troubleshooting
 
 There are a few limitations to be aware of:
 
@@ -75,6 +75,6 @@ There are a few limitations to be aware of:
 - Thumbnails cannot be configured to send more or less frequently than every 30 seconds.
 - Regular intra frames are required to generate the thumbnails.
 
-# Learn more
+## Learn more
 
 We have some sample code to demonstrate receiving a thumbnail hook and saving it to disk: [Webhook Code Example (download and save)](https://github.com/millicast/samples-millicast-webhooks)

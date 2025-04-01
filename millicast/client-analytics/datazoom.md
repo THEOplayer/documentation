@@ -6,7 +6,7 @@ slug: /datazoom
 
 This page guides you on some of the metrics that are collected and steps to integrate the [Millicast SDK](/millicast/client-sdks/web.mdx) as a collector and connect to observability tools such as Splunk, Datadog, New Relic, Amazon Kinesis Firehose, etc.
 
-# Client Analytics
+## Client Analytics
 
 To monitor the health of your application, [client analytics](/millicast/playback/client-analytics-and-monitoring.md) for monitoring and troubleshooting are critical. You can choose among many observability tools for creating a dashboard with collected data such as:
 
@@ -20,11 +20,11 @@ To monitor the health of your application, [client analytics](/millicast/playbac
 
 When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) and [Stream Syndication](/millicast/distribution/syndication.md) capabilities you can effectively monitor playback issues and track viewer characteristics.
 
-# Setting Up Datazoom with the Web SDK
+## Setting Up Datazoom with the Web SDK
 
 This section outlines the steps required to initialize client-side data collection with the Millicast [Web SDK](/millicast/client-sdks/web.mdx). There are also [collectors](https://help.datazoom.io/hc/en-us/sections/360000455512-Collectors) available that will work similarly with Android and iOS.
 
-## 1\. Include Datazoom Beacon
+### 1\. Include Datazoom Beacon
 
 Include the Datazoom library with your configuration id:
 
@@ -32,7 +32,7 @@ Include the Datazoom library with your configuration id:
 <script src="https://platform.datazoom.io/beacon/v1/config?configuration_id=4a1ef...7a"></script>
 ```
 
-## 2\. Track Player Engagement
+### 2\. Track Player Engagement
 
 Attaching a context on the player will gather user engagement details like when the stream is paused and how long it took from play to start displaying video. 
 
@@ -43,7 +43,7 @@ Attaching a context on the player will gather user engagement details like when 
  });
 ```
 
-## 3\. Collect Custom WebRTC Stats
+### 3\. Collect Custom WebRTC Stats
 
 See the [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) guide to learn more about what media statistics and metrics are captured for the WebRTC connection.
 
@@ -70,11 +70,11 @@ millicastView.webRTCPeer.on("stats", (stats) => {
 });
 ```
 
-## 4\. Monitor with a Datazoom Connector
+### 4\. Monitor with a Datazoom Connector
 
 Datazoom provides connectors on their platform that can be used to aggregate client metrics in your observability and monitoring tools.
 
-### Splunk
+#### Splunk
 
 Here is a preview of what a dashboard might look like in Splunk:
 
@@ -83,7 +83,7 @@ Here is a preview of what a dashboard might look like in Splunk:
 
 
 
-### Datadog
+#### Datadog
 
 Here is a preview of what a dashboard might look like in Datadog:
 
@@ -92,7 +92,7 @@ Here is a preview of what a dashboard might look like in Datadog:
 
 
 
-# Sample
+## Sample
 
 Here is an example payload from the Datazoom connector:
 

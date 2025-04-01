@@ -154,7 +154,7 @@ publisher->publish();
 
 Once the publisher starts sending media, the SDK calls the listener's [on_publishing](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_publisher_listener.html#ae3509ed7fac92914761036b014be7f43) method.
 
-# Collecting RTC statistics
+## Collecting RTC statistics
 
 You can periodically collect the WebRTC peer connection statistics if you enable them through the [enable_stats](https://millicast.github.io/doc/latest/cpp/protocol_m_c_client-p.html#ade56fc01941986fd5da5d02b7aba1a18) method of the viewer or publisher. After enabling the statistics, you will get a report every second through the [on_stats_report](https://millicast.github.io/doc/latest/cpp/protocol_m_c_delegate-p.html#a5dc7c879a257706e788f606d04e0ebd0) callback in the listener object. The identifiers and way to browse the stats are following the [RTC specification](https://www.w3.org/TR/webrtc-stats/).  
 The report contains the [StatsReport](https://millicast.github.io/doc/latest/cpp/classmillicast_1_1_stats_report.html) object, which is a collection of several [Stats](https://millicast.github.io/doc/latest/cpp/namespacemillicast.html#aa1e2b03e1cd334be99d54a6318653ef3) objects. They all have a specific type, whether it is inbound, outbound, codec, or media. Inbound is the statistics of incoming transport for the viewer and outbound is a type of outgoing statistics for the publisher.

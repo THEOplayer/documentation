@@ -12,9 +12,9 @@ Within their myriad of products exists Stream Deck, a physical LCD panel with 15
 
 See the official [Elgato](https://www.elgato.com/us/en) site for documentation, installation instructions, and additional support.
 
-# Stream deck
+## Stream deck
 
-## Installing Elgato plug-in on macOS
+### Installing Elgato plug-in on macOS
 
 To configure, install [Elgato software](https://www.elgato.com/us/en/s/downloads) on your computer and make sure you have the latest version of the regular [OBS Studio](https://obsproject.com/download) and the [OBS-WebRTC](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) installed. We are going to need the regular OBS Studio version to download the Elgato plugin. 
 
@@ -37,7 +37,7 @@ At the top, on the Top menu bar, you should see the Elgato plugin.
 
 For any troubleshooting, verify if you have the most up-to-date version of the [forked OBS-WebRTC](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) and the [Elgato Stream Deck](https://www.elgato.com/us/en/s/downloads) software. Remove any previous versions of OBS-WebRTC and the _obs-webrtc_ folder from `/Library/Application` Support is also necessary, as it might conflict with the current version's installation of the plugin.
 
-## Installing Elgato plug-in on Windows
+### Installing Elgato plug-in on Windows
 
 For Windows, there is a couple of extra steps. Download the latest version of [Stream Deck](https://www.elgato.com/us/en/s/downloads) and unzip the files. Right-click the installation file and open the archive. Rename the following files so they end with .dll and .pdb:
 
@@ -50,7 +50,7 @@ For Windows, there is a couple of extra steps. Download the latest version of [S
 
 Then, copy the above files to your OBS Plugin Folder (C:\\Program Files\\obs-studio\\obs-plugins\\64bit). Now, launch OBS-WebRTC and, similarly, go to the Tools tab on the menu bar, and you will see the Elgato plugin available. 
 
-## How-to use StreamDeck inside OBS-WebRTC
+### How-to use StreamDeck inside OBS-WebRTC
 
 
 ![](../assets/img/elgato-streamdeck-obs-studio.jpg)
@@ -98,7 +98,7 @@ Concurrently, the actions can be seen through Dolby.io Streaming dashboard\*. Vi
 
 \*\*Note: Verify in the OBS controls that the streaming has started.
 
-# Learn more
+## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
 
