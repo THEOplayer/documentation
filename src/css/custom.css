@@ -30,6 +30,11 @@
   --ifm-dropdown-hover-background-color: var(--ifm-menu-color-background-hover);
 }
 
+/* TODO Use .theme-announcement-bar in next version of Docusaurus */
+[class^='announcementBar_'] {
+  border-bottom: 1px solid var(--ifm-navbar-background-color) !important;
+}
+
 /*
  * Generated with https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima
  * Primary color (dark):  #6569fe
