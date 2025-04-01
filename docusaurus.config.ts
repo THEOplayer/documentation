@@ -96,7 +96,7 @@ const config: Config = {
   url: 'https://www.theoplayer.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.DOCUSAURUS_BASE_URL || '/docs/',
+  baseUrl: process.env.DOCUSAURUS_BASE_URL || '/',
   trailingSlash: true,
   noIndex: !!process.env.DOCUSAURUS_NO_INDEX,
 
