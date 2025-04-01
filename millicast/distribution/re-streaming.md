@@ -60,7 +60,7 @@ Visit the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api
 
 ## Multi-source Re-streaming
 
-For scenarios such as [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) there may be more than one incoming source stream. Since not all media platforms are capable of accepting multiple RTMP ingest sources you may have unexpected results.
+For scenarios such as [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) there may be more than one incoming source stream. Since not all media platforms are capable of accepting multiple RTMP ingest sources you may have unexpected results.
 
 To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast/broadcast-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/playback/multiview.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
 

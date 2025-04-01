@@ -8,11 +8,11 @@ Multi-view lets you ingest and render multiple Dolby.io real-time video and audi
 
 
 
-To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/broadcast/multi-source-broadcasting.md). Once broadcasting a multi-source stream, you can view the stream using the Dolby.io Millicast viewer app, or by building your own multi-view application. Dolby.io also supports [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) for mixed audio playback.
+To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/broadcast/multi-source-broadcasting.mdx). Once broadcasting a multi-source stream, you can view the stream using the Dolby.io Millicast viewer app, or by building your own multi-view application. Dolby.io also supports [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) for mixed audio playback.
 
 ## Multi-view with the Dolby.io viewer
 
-Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.md), you can open the stream viewer from the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
+Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx), you can open the stream viewer from the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
 
 ```
 https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]
@@ -37,7 +37,7 @@ Dolby.io supports [Multisource Playback](/millicast/playback/source-and-layer-se
 
 Before getting started building a multi-view application it is worth understanding;
 
-1. How to broadcast [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.md).
+1. How to broadcast [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.mdx).
 2. How to [Create a Basic Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.mdx).
 3. What [Broadcast Events](/millicast/playback/viewer-events.md) are and how to use them.
 4. How the Dolby.io platform organizes and handles [Multisource Playback](/millicast/playback/source-and-layer-selection.md).

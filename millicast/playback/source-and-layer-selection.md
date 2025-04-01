@@ -2,7 +2,7 @@
 title: "Multi-source Playback"
 slug: /source-and-layer-selection
 ---
-Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.md) and rendering multiple audio and video streams for building [Multi-view](/millicast/playback/multiview.md) and [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) experiences. 
+Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](/millicast/playback/multiview.md) and [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) experiences. 
 
 To get started building multi-stream experiences it's important to understand how Dolby.io handles multi-source playback. This guide outlines:
 
@@ -15,11 +15,11 @@ To get started building multi-stream experiences it's important to understand ho
 
 > 📘 Multi-source broadcasting
 > 
-> To manage multiple sources, you first must have a [Multi-source Stream](/millicast/broadcast/multi-source-broadcasting.md) broadcasting.
+> To manage multiple sources, you first must have a [Multi-source Stream](/millicast/broadcast/multi-source-broadcasting.mdx) broadcasting.
 
 Dolby.io streaming supports scalable WebRTC streaming thanks to a "smart" cascading node system that manages the peer-to-peer connections. These nodes are key to understanding how to manage multiple sources for playback and can be divided into two types:
 
-- **Publisher nodes**: These nodes manage [the ingest of multiple sources](/millicast/broadcast/multi-source-broadcasting.md) during the broadcast. They can then forward these feeds to the CDN for the Viewer node to manage.
+- **Publisher nodes**: These nodes manage [the ingest of multiple sources](/millicast/broadcast/multi-source-broadcasting.mdx) during the broadcast. They can then forward these feeds to the CDN for the Viewer node to manage.
 - **Viewer nodes**: Viewer nodes are created depending on the quantity and location of viewers, allowing Dolby.io to support large-scale global streams. When rendering streams in your app or platform, you can communicate with the viewer node to negotiate what feeds to project and simulcast layers to receive.
 
 When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/viewer-events.md#using-events) to it:
@@ -36,7 +36,7 @@ viewer.on("broadcastEvent", async (event) => {
 }
 ```
 
-A [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) is triggered whenever a feed is added to the multi-source broadcast. Hence, the platform can trigger several broadcast events as feeds are added or removed. As outlined in [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.md) and [Broadcast](/millicast/broadcast/index.mdx) guides, each stream must be distinguished by a unique source ID. As a [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) are triggered, you can manage which broadcasts to render for the end users by their feed's source ID.
+A [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) is triggered whenever a feed is added to the multi-source broadcast. Hence, the platform can trigger several broadcast events as feeds are added or removed. As outlined in [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and [Broadcast](/millicast/broadcast/index.mdx) guides, each stream must be distinguished by a unique source ID. As a [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) are triggered, you can manage which broadcasts to render for the end users by their feed's source ID.
 
 Here is an example of an `active` [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) event, note the `sourceId`:
 

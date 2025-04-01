@@ -76,7 +76,7 @@ You'll be able to start broadcasting by clicking the `Start Streaming` button. Y
 
 Prior to OBS 30.0 it was necessary to use a custom fork. For certain workflows this may be desirable so you can continue to download releases from the project GitHub repository: [OBS-studio-webrtc](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases).
 
-You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.md) or [simulcast](/millicast/distribution/using-webrtc-simulcast.md).
+You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) or [simulcast](/millicast/distribution/using-webrtc-simulcast.md).
 
 
 ![](../assets/img/693bb6cbd1f7c7de44f2809b411c55bde51f363ae941ae23a5c62537-obs-webrtc-stream-settings.png)
@@ -136,7 +136,7 @@ The plugin can also be used with standalone encoders and basic configurations (b
 
 > 📘 Enable multisource on your publish token
 > 
-> Make sure you have enabled multi-source on your publish token. For more information explore the [Multi-source guide](/millicast/broadcast/multi-source-broadcasting.md). The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) may also be particularly helpful to get your settings.
+> Make sure you have enabled multi-source on your publish token. For more information explore the [Multi-source guide](/millicast/broadcast/multi-source-broadcasting.mdx). The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) may also be particularly helpful to get your settings.
 
 #### 3. Add RTMP Destinations
 

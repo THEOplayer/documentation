@@ -21,7 +21,7 @@ The collection of recordings and clips is referred to more broadly as **Media As
 
 
 
-When a [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) is enabled with recording or clipping, the system will generate a timeline for each incoming source. For simple streams, this may be a single broadcast source but for more complex workflows with [multi-bitrate contribution](/millicast/broadcast/multi-source-broadcasting.md) and [multi-view](/millicast/playback/multiview.md) applications that have multiple sources there may be more than one timeline. The **timeline** is a series of buffered segments that are kept in a cache so that they can be stored as a recording or a clip later. When a stream goes offline, one timeline ends and if it reconnects a new one begins.
+When a [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) is enabled with recording or clipping, the system will generate a timeline for each incoming source. For simple streams, this may be a single broadcast source but for more complex workflows with [multi-bitrate contribution](/millicast/broadcast/multi-source-broadcasting.mdx) and [multi-view](/millicast/playback/multiview.md) applications that have multiple sources there may be more than one timeline. The **timeline** is a series of buffered segments that are kept in a cache so that they can be stored as a recording or a clip later. When a stream goes offline, one timeline ends and if it reconnects a new one begins.
 
 There are costs associated with storage, so you can configure **expiration rules** for how long you want to maintain availability of a media stream and **storage profiles** so that you can have the service transfer files to your own preferred storage provider (AWS S3, GCS, etc.)
 
@@ -115,7 +115,7 @@ To diagnose recording issues, such as missing recordings, review the details of 
 
 ### Multi-source
 
-When using [multi-source](/millicast/broadcast/multi-source-broadcasting.md) broadcasting, multiple independent broadcast timelines will be created.
+When using [multi-source](/millicast/broadcast/multi-source-broadcasting.mdx) broadcasting, multiple independent broadcast timelines will be created.
 
 For `clip` assets you can identify the specific source from which to clip, or if not specified multiple clips will be created.
 

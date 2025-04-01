@@ -69,7 +69,7 @@ You will also see an **Advanced tab** at the top of the token creation interface
   - **Bind IPs on usage:** If specified, Bind IPs on usage will bind the token to the first _X_ IP addresses used with a token in requests to [Director API](/millicast/api/publish-token-v-1-read-token.api.mdx), thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with the _AllowedIpAddresses_ option. Not currently supported with RTMP.
 - [Cluster region:](/millicast/distribution/multi-region-support/index.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If `Auto` is selected, the regional cluster will be selected based on the publisher's location. 
 - [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.md) Enables blocking by location at a country level for this specific Token. 
-- [Multisource:](/millicast/broadcast/multi-source-broadcasting.md) Enables streaming multiple feeds at once with one Publish token and Stream name combination, allowing for [Multi-view playback](/millicast/playback/multiview.md). 
+- [Multisource:](/millicast/broadcast/multi-source-broadcasting.mdx) Enables streaming multiple feeds at once with one Publish token and Stream name combination, allowing for [Multi-view playback](/millicast/playback/multiview.md). 
 - [Thumbnail previews:](/millicast/webhooks/thumbnail-webhooks.md) Enables previewing a thumbnail image of your video stream. Thumbnails are delivered via a webhook. 
 
 After you have successfully created your token, it will be displayed in a scrollable list.
@@ -106,7 +106,7 @@ Once opened, you will see multiple tabs to explore.
 5. Playback - path and settings available with the hosted [Millicast Player](/millicast/playback/hosted-viewer.md)
 6. Recordings - media files that are captured from stream recordings
 7. API - publishing token, ids, and endpoints for use with [Client SDKs](/millicast/client-sdks/index.mdx)
-8. Multi-source - a convenient tool for setting up [multi-source](/millicast/broadcast/multi-source-broadcasting.md) contribution
+8. Multi-source - a convenient tool for setting up [multi-source](/millicast/broadcast/multi-source-broadcasting.mdx) contribution
 ### 1\. Token details
 
 The **Token details** tab allows you to view and edit settings specified during token creation. For a full list of these settings and their definitions, see [Creating a Publishing token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token). The Token details page also includes the **Publish token** string and the **Account ID** string, which can both be copied and used for [starting a broadcast](/millicast/broadcast/index.mdx). 

@@ -27,7 +27,7 @@ Simulcast provides flexibility that allows viewers to adjust their individual ex
 Before broadcasting content using Simulcast, make sure you:
 
 - Enabled the Simulcast setting in the dashboard
-- Use [multisource streams](/millicast/broadcast/multi-source-broadcasting.md) either by using an encoder that is capable of transcoding multiple sources or by using multiple devices that each contribute to the broadcast
+- Use [multisource streams](/millicast/broadcast/multi-source-broadcasting.mdx) either by using an encoder that is capable of transcoding multiple sources or by using multiple devices that each contribute to the broadcast
 - Use either Chrome or Edge
 - Use the H.264 or VP8 video codec
 - Disabled b-frames for better results

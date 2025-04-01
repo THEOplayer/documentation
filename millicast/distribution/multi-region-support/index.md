@@ -218,7 +218,7 @@ curl --request POST \
 
 > ❗️ Enable Multisource on your Stream Token
 > 
-> For using multi-source streams, your account must be allowed to use the multi-source feature and the Publish Token must have the `multisource` flag enabled. The default cluster region must not be set to auto, and must be set to the region from which you want to stream. Multi-source will not work if you publish the stream from two different locations that do not fall under same cluster/region coverage and the current default setting has not been modified. For more information, see [Multisource Broadcasting](/millicast/broadcast/multi-source-broadcasting.md).
+> For using multi-source streams, your account must be allowed to use the multi-source feature and the Publish Token must have the `multisource` flag enabled. The default cluster region must not be set to auto, and must be set to the region from which you want to stream. Multi-source will not work if you publish the stream from two different locations that do not fall under same cluster/region coverage and the current default setting has not been modified. For more information, see [Multisource Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx).
 
 ## Troubleshooting
 

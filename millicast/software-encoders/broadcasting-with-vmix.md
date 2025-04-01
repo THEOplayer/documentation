@@ -48,11 +48,11 @@ Save your publishing profile and you are ready to start publishing with vMix.
 
 ### Setup multi-bitrate RTMP streaming with vMix
 
-With vMix you have the ability to send a live stream simultaneously to up to three separate streaming destinations. This vMix feature combined with Dolby.io [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.md) enables Simulcast of multiple renditions of the stream. Viewers with bandwidth constraints would receive a stream optimized for that condition. Keep in mind, the broadcaster will be sending multiple streams so will need adequate bandwidth.
+With vMix you have the ability to send a live stream simultaneously to up to three separate streaming destinations. This vMix feature combined with Dolby.io [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.mdx) enables Simulcast of multiple renditions of the stream. Viewers with bandwidth constraints would receive a stream optimized for that condition. Keep in mind, the broadcaster will be sending multiple streams so will need adequate bandwidth.
 
 > 📘 Enable Multisource for Your Dolby.io Publish Token
 > 
-> To utilize [multisource](/millicast/broadcast/multi-source-broadcasting.md) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/streaming-dashboard/managing-your-tokens.md).
+> To utilize [multisource](/millicast/broadcast/multi-source-broadcasting.mdx) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/streaming-dashboard/managing-your-tokens.md).
 
 #### Streaming destination 1: 1080p
 

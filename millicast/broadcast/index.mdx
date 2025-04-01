@@ -1,30 +1,18 @@
 ---
+title: Broadcast
 description: Guide to Encoding Content for Broadcasting Streams
 slug: /broadcast
 ---
 
 import DocCardList from '@theme/DocCardList';
 
-# Broadcast
-
 Broadcasting content requires access to the public internet and encoding, which can be accomplished in a browser, software, hardware, or with the Dolby.io Client-side broadcaster SDKs.
 
 The Dolby.io CDN can ingest streams encoded in a few main formats:
 
-<ul className="checkBoxList">
-  <li>
-    [WebRTC](/millicast/broadcast/webrtc-whip.mdx), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus
-    audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
-  </li>
-  <li>
-    [SRT](/millicast/broadcast/using-srt.md), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video
-    and AAC audio.
-  </li>
-  <li>
-    [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io
-    CDN that supports only the H.264 video codec.
-  </li>
-</ul>
+- [WebRTC](/millicast/broadcast/webrtc-whip.mdx), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
+- [SRT](/millicast/broadcast/using-srt.md), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
+- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
@@ -52,19 +40,11 @@ With different broadcast protocols across the industry comes the need for encode
 
 A few terms to remember are:
 
-<ul className="checkBoxList">
-
-    <li>**H.264 (AVC)**, Advanced Video Coding, is a widely used video codec that efficiently compresses video data while maintaining video quality. It is widely supported, making it a highly versatile codec for various applications, as the _de facto_ standard for many.</li>
-
-    <li>**H.265 (HEVC)**, or High-Efficiency Video Coding, is an advanced video codec that offers even higher compression efficiency compared to H.264. It achieves a significant reduction in file size and bit rate while maintaining or improving video quality. This makes H.265 suitable for applications with limited bandwidth or storage capacity.</li>
-
-    <li>**VP9** is an advanced video codec designed to provide higher compression efficiency and improved video quality compared to its predecessor, VP8. VP9 offers significant bitrate savings, allowing higher-quality video streaming at lower bitrates.</li>
-
-    <li>**AV1** is designed to deliver high-quality compression while achieving significant bitrate reduction utilizing compression techniques like improved motion prediction, advanced entropy coding, and intra-frame coding. Best suited for applications with limited bandwidth.</li>
-
-    <li>**AAC**, Advanced Audio Coding, is an audio codec known for its high audio quality while maintaining a low bitrate, resulting in smaller file sizes and efficient transmission. It is widely supported across devices and platforms, making it a versatile choice for various audio applications.</li>
-
-</ul>
+- **H.264 (AVC)**, Advanced Video Coding, is a widely used video codec that efficiently compresses video data while maintaining video quality. It is widely supported, making it a highly versatile codec for various applications, as the _de facto_ standard for many.
+- **H.265 (HEVC)**, or High-Efficiency Video Coding, is an advanced video codec that offers even higher compression efficiency compared to H.264. It achieves a significant reduction in file size and bit rate while maintaining or improving video quality. This makes H.265 suitable for applications with limited bandwidth or storage capacity.
+- **VP9** is an advanced video codec designed to provide higher compression efficiency and improved video quality compared to its predecessor, VP8. VP9 offers significant bitrate savings, allowing higher-quality video streaming at lower bitrates.
+- **AV1** is designed to deliver high-quality compression while achieving significant bitrate reduction utilizing compression techniques like improved motion prediction, advanced entropy coding, and intra-frame coding. Best suited for applications with limited bandwidth.
+- **AAC**, Advanced Audio Coding, is an audio codec known for its high audio quality while maintaining a low bitrate, resulting in smaller file sizes and efficient transmission. It is widely supported across devices and platforms, making it a versatile choice for various audio applications.
 
 ### Encoders
 

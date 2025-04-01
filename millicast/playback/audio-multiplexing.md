@@ -12,10 +12,10 @@ The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers
 
 To first understand Audio Multiplexing, we need to understand how the Dolby.io servers ingest feeds. When [Broadcasting](/millicast/broadcast/index.mdx), the Dolby.io Streaming servers will assign the most recent published stream source as the "_Main Source_", a function that allows broadcasters to seamlessly overwrite streams or add [Redundant Streams](/millicast/broadcast/redundant-ingest/index.md). For basic broadcasts, this is sufficient, for more advanced broadcasts Dolby.io provides two features that are exceptions:
 
-1. Creating a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.md) for [Multi-view](/millicast/playback/multiview.md) experiences.
+1. Creating a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx) for [Multi-view](/millicast/playback/multiview.md) experiences.
 2. Audio Multiplexing, for experiences with multiple audio streams playing at once, such as that seen on "_Clubhouse_" type platforms and apps.
 
-If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) and [Multi-view](/millicast/playback/multiview.md) documentation, you may be confused as to why you would use Audio Multiplexing instead of Multiview. Audio multiplexing allows audio sources to overlap, a feature that is useful for
+If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) and [Multi-view](/millicast/playback/multiview.md) documentation, you may be confused as to why you would use Audio Multiplexing instead of Multiview. Audio multiplexing allows audio sources to overlap, a feature that is useful for
 
 | Audio Multiplexing<br/>_Let users hear multiple audio sources at once that overlap._               |
 | :------------------------------------------------------------------------------------------------- |
@@ -25,7 +25,7 @@ If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-so
 
 ## Using Audio Multiplexing
 
-To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.md) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher. 
+To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher. 
 
 > 📘 Not familar with our JavaScript SDK?
 > 

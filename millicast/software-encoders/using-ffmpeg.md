@@ -116,7 +116,7 @@ ffmpeg -re -i rtsp://98.116.xx.xx:5545/axis-media/media.amp \
 ```
 ### How-to Simulcast a Multi-Source MBR Video Stream
 
-This example demonstrates sending the same video with multiple contribution layers. The `&sourceId` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to distinguish each source while using `&videoOnly` so the audio is only sent with the main feed. Also see the [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.md) for more about Multi-bitrate contribution.
+This example demonstrates sending the same video with multiple contribution layers. The `&sourceId` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to distinguish each source while using `&videoOnly` so the audio is only sent with the main feed. Also see the [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) for more about Multi-bitrate contribution.
 
 ```shell bash
 ffmpeg -re -stream_loop -1 -i demo.mp4 \

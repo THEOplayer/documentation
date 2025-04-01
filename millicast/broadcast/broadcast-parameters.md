@@ -8,16 +8,13 @@ Broadcast URL Parameters allow you to customize the behavior of an individual so
 
 There are some variations depending on which protocol is being used to broadcast.
 
-- [WebRTC](/millicast/broadcast/webrtc-whip.mdx)
-: The query parameter string is appended at the end of a WHIP URL `https` endpoint.
-- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md)
-: The query parameter string is appended to the end of a RTMP URL `rtmp` or `rtmps` endpoint. Depending on the encoder, this may be appended as a single URL or a two-part server and path.
-- [SRT](/millicast/broadcast/using-srt.md)
-: The query parameter string requires special handling to encode it within the SRT stream id.
+- [WebRTC](/millicast/broadcast/webrtc-whip.mdx): The query parameter string is appended at the end of a WHIP URL `https` endpoint.
+- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md): The query parameter string is appended to the end of a RTMP URL `rtmp` or `rtmps` endpoint. Depending on the encoder, this may be appended as a single URL or a two-part server and path.
+- [SRT](/millicast/broadcast/using-srt.md): The query parameter string requires special handling to encode it within the SRT stream id.
 
 ## How-to Add Publishing Parameters to the URL
 
-Parameters allow modifying broadcasting preferences to customize the streaming experience. This is particularly helpful when using [Multi-Source](/millicast/broadcast/multi-source-broadcasting.md)
+Parameters allow modifying broadcasting preferences to customize the streaming experience. This is particularly helpful when using [Multi-Source](/millicast/broadcast/multi-source-broadcasting.mdx)
  that share a common publishing token configuration but may be using a feature that requires modification to only specific input streams.
 
 To use these parameters, add them to the end of the protocol URI as a [query string](https://www.rfc-editor.org/rfc/rfc3986#section-3.4) component.
@@ -27,11 +24,11 @@ To use these parameters, add them to the end of the protocol URI as a [query str
 
 For example, to distinguish different sources you can add a **sourceId** and **priority** parameter to the URL. The  result might look like:
 
-`?token={token}&sourceId=1&priority=1`
+> `?token={token}&sourceId=1&priority=1`
 
 Any parameters that are boolean type can be used without a value. For example, the **audioOnly** and **noRecord** parameters:
 
-`?token={token}&audioOnly&noRecord`
+> `?token={token}&audioOnly&noRecord`
 
 ## Available Parameters
 
@@ -41,7 +38,7 @@ The Dolby.io Streaming APIs platform provides the following parameters:
 | :------------------ | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | audioOnly           | Boolean | Indicates whether the platform should broadcast only audio.                                                                                                                                                                                                                                                                                                          |
 | intraOnlyForwarding | Boolean | Indicates whether the platform should forward only intra frames while transmitting video.                                                                                                                                                                                                                                                                            |
-| noAudio             | Boolean | Instructs the server to ignore any audio tracks from this source. This is often used with [Multi-Bitrate](/millicast/broadcast/multi-source-broadcasting.md) (MBR) contribution streams to only stream the audio of the main feed.                                                                                                                                   |
+| noAudio             | Boolean | Instructs the server to ignore any audio tracks from this source. This is often used with [Multi-Bitrate](/millicast/broadcast/multi-source-broadcasting.mdx) (MBR) contribution streams to only stream the audio of the main feed.                                                                                                                                   |
 | noRecord            | Boolean | When given will not record the given ingest source feed. This overrides the publishing token to avoid recording multiple sources that might only be streaming as a backup or for MBR.                                                                                                                                                                                |
 | noRestream          | Boolean | When broadcasting multiple streams you can choose which sources to [re-stream](/millicast/distribution/re-streaming.md)  and exclude any others from being forwarding to additional media platforms.                                                                                                                                                                 |
 | priority            | Number  | A priority for [redundant streams](/millicast/broadcast/redundant-ingest/index.md) indicates the order in which backup streams should be broadcasted in the case of any problems with the primary stream.                                                                                                                                                            |
