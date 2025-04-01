@@ -2,47 +2,52 @@
 title: "iOS"
 slug: /ios
 ---
+
 The Native SDK for creating iOS and tvOS applications. You may use it to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform.
 
-<div class="dolbyio-cards-container">
+import DocCardList from '@theme/DocCardList';
 
- <a class="dolbyio-card dolbyio-card-1" href="https://github.com/millicast/millicast-native-sdk/releases">
- <div class="dolbyio-card-image">
- <img width="40px" src="https://files.readme.io/3f65ad7-github_svg.svg"/>
- </div>
- <div class="dolbyio-card-header">GitHub</div>
- <div class="dolbyio-card-description">
- </div>
- </a>
-
- <a class="dolbyio-card dolbyio-card-2" href="https://millicast.github.io/doc/latest/apple/documentation/millicastsdk">
- <div class="dolbyio-card-image">
- <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/049dc13-documentation_icon.svg"/>
- </div>
- <div class="dolbyio-card-header">Documentation</div>
- <div class="dolbyio-card-description">
- </div>
- </a>
-
- <a class="dolbyio-card dolbyio-card-3" href="https://github.com/dolbyio-samples/stream-sdk-ios-getting-started">
- <div class="dolbyio-card-image">
- <img width="45px" class="dolbyio-card-svg-icon" src="https://files.readme.io/0c11f2f-sampleapp_icon.svg"/>
- </div>
- <div class="dolbyio-card-header">Sample app</div>
- <div class="dolbyio-card-description">
- </div>
- </a>
-
- <a class="dolbyio-card dolbyio-card-4" href="/millicast/client-sdks/ios-getting-started-with-publishing">
- <div class="dolbyio-card-image">
- <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
- </div>
- <div class="dolbyio-card-header">Getting Started</div>
- <div class="dolbyio-card-description">
- </div>
- </a>
-
-</div>
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-native-sdk/releases',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'GitHub',
+      description: '',
+    },
+    {
+      type: 'link',
+      href: 'https://millicast.github.io/doc/latest/apple/documentation/millicastsdk',
+      customProps: {
+        icon: '📖',
+      },
+      label: 'Documentation',
+      description: '',
+    },
+    {
+      type: 'link',
+      href: 'https://github.com/dolbyio-samples/stream-sdk-ios-getting-started',
+      customProps: {
+        icon: '📱',
+      },
+      label: 'Sample app',
+      description: '',
+    },
+    {
+      type: 'link',
+      href: '/millicast/ios-getting-started-with-publishing',
+      docId: 'client-sdks/ios/ios-getting-started-with-publishing',
+      customProps: {
+        icon: '🚀',
+      },
+      label: 'Getting Started',
+      description: '',
+    },
+  ]}
+/>
 
 The package name of the Native SDK for iOS is _millicast-native-sdk-\{version\}-XCFramework.zip_.
 

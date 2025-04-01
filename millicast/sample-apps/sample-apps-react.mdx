@@ -16,17 +16,19 @@ slug: /sample-apps-react
 
 The application available in this repository demonstrates the capabilities of Dolby.io's Real-time Streaming solution for browser applications, built using React.
 
-<div class="dolbyio-cards-container">
- <a class="dolbyio-card" href="https://github.com/dolbyio-samples/rts-app-react-publisher-viewer">
- <div class="dolbyio-card-image">
- <img width="60px" src="https://files.readme.io/a23db34-React-icon.svg"/>
- </div>
- <div class="dolbyio-card-header">Publisher and Viewer React Sample App</div>
- <div class="dolbyio-card-description">
- Sample app repository on GitHub
- </div>
-  </a>
-</div>
+import DocCard from '@theme/DocCard';
+
+<DocCard
+  item={{
+    type: 'link',
+    href: 'https://github.com/dolbyio-samples/rts-app-react-publisher-viewer',
+    customProps: {
+      icon: '📱',
+    },
+    label: 'Publisher and Viewer React Sample App',
+    description: 'Sample app repository on GitHub',
+  }}
+/>
 
 This repository demonstrates how to develop an app that showcases the capabilities of Dolby.io's Real-time Streaming SDK and how it can be used to design solutions that require ultra low-latency (sub 500ms). If you run into problems, the full Dolby.io Real-time Streaming SDK for JavaScript documentation can be found [here](/millicast/client-sdks/web.mdx).
 

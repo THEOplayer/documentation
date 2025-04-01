@@ -2,44 +2,42 @@
 title: "Flutter"
 slug: /flutter
 ---
+
 Dolby.io Streaming APIs support creating iOS and Android applications using the Flutter SDK.
 
-<div class="dolbyio-cards-container">
-  
-    <a class="dolbyio-card dolbyio-card-1" href="https://github.com/millicast/flutter-sdk/releases">
-     <div class="dolbyio-card-image">
-      <img width="40px" src="https://files.readme.io/3f65ad7-github_svg.svg"/>
-    </div>
-    <div class="dolbyio-card-header">GitHub</div>
-    <div class="dolbyio-card-description">
-       Access the SDK releases
-    </div>
-  </a>
-  
-  <a class="dolbyio-card dolbyio-card-2" href="https://pub.dev/documentation/millicast_flutter_sdk/latest/index.html">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/049dc13-documentation_icon.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Documentation</div>
-    <div class="dolbyio-card-description">
-      Find more information about APIs
-    </div>
-  </a>
-  
-    <a class="dolbyio-card dolbyio-card-3" href="https://github.com/millicast/flutter-sdk/tree/develop/example">
-    <div class="dolbyio-card-image">
-      <img width="45px" class="dolbyio-card-svg-icon" src="https://files.readme.io/0c11f2f-sampleapp_icon.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Sample app</div>
-    <div class="dolbyio-card-description">
-      Test features and capabilities
-    </div>
-  </a>
-  
-</div>
+import ThreeCardList from '@site/src/components/ThreeCardList';
 
-
-
+<ThreeCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/flutter-sdk/releases',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'GitHub',
+      description: 'Access the SDK releases',
+    },
+    {
+      type: 'link',
+      href: 'https://pub.dev/documentation/millicast_flutter_sdk/latest/index.html',
+      customProps: {
+        icon: '📖',
+      },
+      label: 'Documentation',
+      description: 'Find more information about APIs',
+    },
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/flutter-sdk/tree/develop/example',
+      customProps: {
+        icon: '📱',
+      },
+      label: 'Sample app',
+      description: 'Test features and capabilities',
+    },
+  ]}
+/>
 
 # Getting started
 
@@ -55,7 +53,7 @@ flutter pub add millicast_flutter_sdk
 
 For windows you may need to allow installing apps from any source:
 
-You should now see the follwing information in pubspec.yaml file: 
+You should now see the follwing information in pubspec.yaml file:
 
 ```yaml
 dependencies:
@@ -72,8 +70,8 @@ import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 
 ## Publish a stream
 
-> 📘 
-> 
+> 📘
+>
 > You will need to find or create a new stream name with a token in your Dolby.io dashboard. You can do that following this [link](/millicast/streaming-dashboard/managing-your-tokens.md).
 
 The main module to publish a stream is the [Publish module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish-class.html).
@@ -173,8 +171,8 @@ For example:
 
 ### Managing your active stream
 
-> 📘 
-> 
+> 📘
+>
 > The next samples use the `publisher` variable we created in the past steps. Please follow the tutorial.
 
 The Publish instance internally uses most of the classes described in the [documentation](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/millicast_flutter_sdk-library.html).
@@ -192,7 +190,7 @@ Most of the important methods are located directly in the Publisher module but s
 
 ### Change bitrate
 
-During an active stream, you can limit the maximum bitrate in kbps.  
+During an active stream, you can limit the maximum bitrate in kbps.
 To do that, you have to use the `.updateBitrate()` method of your Publish instance that is located inside a subclass called `webRTCPeer`.
 
 Example:
@@ -220,8 +218,8 @@ More information here:
 
 ## Viewer
 
-> 📘 
-> 
+> 📘
+>
 > In order to connect to a stream you'll need the account id and stream name of the broadcast. This information must be provided by the publish owner. For more information, see [Publishing API](/millicast/managing-your-tokens).
 
 The main module to view a stream is the [View module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View-class.html).
@@ -249,7 +247,7 @@ View view =
   View(streamName: 'my-stream-name', tokenGenerator: tokenGenerator);
 ```
 
-Just like in the case of creating a Publish instance, in order to create a View instance you need two params and there's also an optional param.  
+Just like in the case of creating a Publish instance, in order to create a View instance you need two params and there's also an optional param.
 The first one is the stream name (`'my-stream-name'`) and it is used to set the stream you want to connect.
 
 - The second param is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name('my-stream-name') and the token('my-subscriber-token') for the function to be able to be called correctly to generate the token.
@@ -322,7 +320,7 @@ view.on('reconnect', view, (event, context) {
 ```
 
 - The timeout is the time, in milliseconds, informing on when it will retry to establish the connection. It starts at `2000 ms` and then `4000 ms` ... until `32000 ms` (`32 s`). After it reaches `32 s` it starts retrying at `32 s` intervals.
-- The error message contains the cause of failure.  
+- The error message contains the cause of failure.
   More information here:
 - [Publish reconnect](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/reconnect.html)
 - [View reconnect](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View/reconnect.html)
@@ -348,8 +346,8 @@ More information and examples here:
 
 Stream stats can be accessed by both Publish and View instances. In order to capture them, you have to initialize the stats and then listen for the event through the `webRTCPeer` attribute.
 
-> 🚧 
-> 
+> 🚧
+>
 > Stats might defer between different mobiles.
 
 Example of usage:
@@ -399,7 +397,7 @@ More information here:
 
 ## User count
 
-The Dolby.io Real-time Streaming server provides the number of current viewers through broadcast events. To start listening to different broadcast events you have to add which events you want to listen to in the Publisher/Subscriber options. 
+The Dolby.io Real-time Streaming server provides the number of current viewers through broadcast events. To start listening to different broadcast events you have to add which events you want to listen to in the Publisher/Subscriber options.
 
 Both Publisher and Subscriber follow the same workflow.
 

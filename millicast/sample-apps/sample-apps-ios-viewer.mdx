@@ -11,17 +11,19 @@ slug: /sample-apps-ios-viewer
 
 The application available in this repository demonstrates the capabilities of Dolby.io's Real-time Streaming monitoring experience, built for iOS, iPad OS, and tvOS devices.
 
-<div class="dolbyio-cards-container">
- <a class="dolbyio-card" href="https://github.com/dolbyio-samples/rts-app-ios-viewer">
- <div class="dolbyio-card-image">
- <img width="60px" src="https://files.readme.io/e9e1265-swift.png"/>
- </div>
- <div class="dolbyio-card-header">iOS Viewer Sample App</div>
- <div class="dolbyio-card-description">
- Sample app repository on GitHub
- </div>
-  </a>
-</div>
+import DocCard from '@theme/DocCard';
+
+<DocCard
+  item={{
+    type: 'link',
+    href: 'https://github.com/dolbyio-samples/rts-app-ios-viewer',
+    customProps: {
+      icon: '📱',
+    },
+    label: 'iOS Viewer Sample App',
+    description: 'Sample app repository on GitHub',
+  }}
+/>
 
 This repository demonstrates how to develop a real-time streaming viewer or monitoring app using Dolby.io's Real-time Streaming solution which features ultra low-latency (sub 500ms).
 

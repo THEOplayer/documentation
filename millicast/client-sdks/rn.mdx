@@ -2,52 +2,51 @@
 title: "React Native"
 slug: /rn
 ---
+
 Dolby.io Streaming APIs support using the [Web SDK](/millicast/client-sdks/web.mdx) with React Native WebRTC to support creating iOS, Android, AndroidTV, and tvOS applications.
 
-<div class="dolbyio-cards-container">
-  
-  <a class="dolbyio-card dolbyio-card-1" href="https://github.com/millicast/millicast-sdk/releases">
-     <div class="dolbyio-card-image">
-      <img width="40px" src="https://files.readme.io/3f65ad7-github_svg.svg"/>
-    </div>
-    <div class="dolbyio-card-header">GitHub</div>
-    <div class="dolbyio-card-description">
-       Access the Web SDK releases
-    </div>
-  </a>
-  
-  <a class="dolbyio-card dolbyio-card-2" href="https://millicast.github.io/millicast-sdk/">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/049dc13-documentation_icon.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Documentation</div>
-    <div class="dolbyio-card-description">
-      Find more information about Web SDK APIs
-    </div>
-  </a>
-  
-  <a class="dolbyio-card dolbyio-card-3" href="https://github.com/millicast/streaming-sdk-react-native-getting-started">
-    <div class="dolbyio-card-image">
-      <img width="45px" class="dolbyio-card-svg-icon" src="https://files.readme.io/0c11f2f-sampleapp_icon.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Sample app</div>
-    <div class="dolbyio-card-description">
-      Test features and capabilities
-    </div>
-  </a>
-  
-</div>
+import ThreeCardList from '@site/src/components/ThreeCardList';
 
-
+<ThreeCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-sdk/releases',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'GitHub',
+      description: 'Access the Web SDK releases',
+    },
+    {
+      type: 'link',
+      href: 'https://millicast.github.io/millicast-sdk/',
+      customProps: {
+        icon: '📖',
+      },
+      label: 'Documentation',
+      description: 'Find more information about Web SDK APIs',
+    },
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/streaming-sdk-react-native-getting-started',
+      customProps: {
+        icon: '📱',
+      },
+      label: 'Sample app',
+      description: 'Test features and capabilities',
+    },
+  ]}
+/>
 
 # React Native SDK
 
-Before you start, make sure that you use  [React Native WebRTC plugin](https://www.npmjs.com/package/react-native-webrtc) 106.0.0 or later.
+Before you start, make sure that you use [React Native WebRTC plugin](https://www.npmjs.com/package/react-native-webrtc) 106.0.0 or later.
 
 # Getting started
 
-> 📘 
-> 
+> 📘
+>
 > Before we start, you can find more information in the [Web SDK Documentation](/millicast/client-sdks/web.mdx), which contains more examples and descriptions of the available modules.
 
 ## Initializing your project
@@ -73,13 +72,13 @@ yarn add react-native-webrtc
 yarn add @millicast/sdk
 ```
 
-On iOS, install the native Pods that are required for [react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) to run. Navigate to the `ios/`  directory in your `react-native` app and run the following: 
+On iOS, install the native Pods that are required for [react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) to run. Navigate to the `ios/` directory in your `react-native` app and run the following:
 
 ```bash
 pod install --clean-install
- 
+
 # On M1 architectures, you need to prefix with `arch -x86_64` as follows:
- 
+
 arch -x86_64 pod install --clean-install
 ```
 
@@ -91,23 +90,23 @@ Before using the Millicast SDK, import a function from [react-native-webrtc](htt
 
 ```js
 import { registerRootComponent } from 'expo';
-import { registerGlobals } from 'react-native-webrtc';                                                                                                                                
-                           
-// This registers the shim WebRTC data structures, like RTCPeerConnection as global variables so the SDK can find them anywhere.                                                                                                                               
+import { registerGlobals } from 'react-native-webrtc';
+
+// This registers the shim WebRTC data structures, like RTCPeerConnection as global variables so the SDK can find them anywhere.
 registerGlobals();
- 
+
 // Here we can import the SDK and use it normally.
 // The Millicast Logger will help you debug your app.
-import { Logger as MillicastLogger } from '@millicast/sdk'
- 
+import { Logger as MillicastLogger } from '@millicast/sdk';
+
 // Initialize Logger
-window.Logger = MillicastLogger
- 
+window.Logger = MillicastLogger;
+
 Logger.setLevel(MillicastLogger.DEBUG);
- 
+
 // Use either Viewer or Publisher example as the App.js script
 import App from './App';
- 
+
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // The environment is set up appropriately
@@ -118,7 +117,7 @@ registerRootComponent(App);
 
 ### iOS permissions
 
-If the application is running natively on iOS, we need to grant the application permissions to use the camera and microphone, which is required by React Native WebRTC. Navigate to the `Info.plist` file (by default, it is located in the previously mentioned `ios/`  directory mentioned) and add the following dictionary values if they do not exist:  
+If the application is running natively on iOS, we need to grant the application permissions to use the camera and microphone, which is required by React Native WebRTC. Navigate to the `Info.plist` file (by default, it is located in the previously mentioned `ios/` directory mentioned) and add the following dictionary values if they do not exist:
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -138,7 +137,7 @@ Similarly, we need to provide the application with permissions to be able to run
 <uses-feature android:name="android.hardware.camera.autofocus" />
 <uses-feature android:name="android.hardware.audio.output" />
 <uses-feature android:name="android.hardware.microphone" />
- 
+
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -178,7 +177,7 @@ The following example widget subscribes to a stream and uses React Native WebRTC
 Since React Native already has a class called `View`, when subscribing, you must alias Millicast's View class. For example:
 
 ```js
-import { Director, View as MillicastView } from '@millicast/sdk'
+import { Director, View as MillicastView } from '@millicast/sdk';
 ```
 
 ```js
@@ -187,15 +186,15 @@ import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { RTCView } from 'react-native-webrtc';
 import { Director, View as MillicastView } from '@millicast/sdk'
- 
+
 class MillicastWidget extends React.Component {
-  
+
   constructor(props) {
     super(props)
     this.state = {
       streamURL: null
     }
-  
+
     this.styles = StyleSheet.create({
       video: {
         width: 480,
@@ -204,29 +203,29 @@ class MillicastWidget extends React.Component {
     })
     this.subscribe(props.streamName, props.accountID)
   }
-   
+
   async subscribe(streamName, accountID) {
-  
+
     console.log(streamName, accountID)
     const tokenGenerator = () => Director.getSubscriber({
         streamName: streamName,
         streamAccountId: accountID
       })
-     
+
     // Create a new instance
     const millicastView = new MillicastView(streamName, tokenGenerator, null)
-      
+
     // Set track event handler to receive streams from Publisher.
     millicastView.on('track', (event) => {
       console.log(`My event is ${event}`);
       const videoUrl = event.streams[0].toURL()
       if (!videoUrl) return null
-  
+
       this.setState({
         streamURL: videoUrl
       })
     })
-      
+
     // Start connection to viewer
     try {
       await millicastView.connect()
@@ -234,11 +233,11 @@ class MillicastWidget extends React.Component {
       console.log('Connection failed. Reason:', e)
     }
   }
-  
+
   reconnect = () => {
     millicastView.reconnect()
   }
- 
+
   render() {
     return (
         <RTCView streamURL={this.state.streamURL} style ={this.styles.video}/>
@@ -253,7 +252,7 @@ export default function App() {
     </View>
   );
 }
- 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -285,13 +284,13 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import React, { useState } from 'react';
 import { mediaDevices, RTCView } from 'react-native-webrtc';
- 
+
 // Import the required classes
 import { Director, Publish } from '@millicast/sdk'
- 
+
 class MillicastWidget extends React.Component {
- 
-   
+
+
   constructor(props) {
     super(props)
         this.millicastPublish = null
@@ -299,7 +298,7 @@ class MillicastWidget extends React.Component {
             mediaStream: null,
             stream: null
         }
- 
+
         this.styles = StyleSheet.create({
             video: {
               width: '100%',
@@ -307,8 +306,8 @@ class MillicastWidget extends React.Component {
             }
         })
     }
- 
- 
+
+
     start = async () => {
         console.log('start');
         if (!this.state.mediaStream) {
@@ -324,7 +323,7 @@ class MillicastWidget extends React.Component {
             }
         }
     };
- 
+
     stop = () => {
         console.log('stop');
         this.millicastPublish.stop();
@@ -335,16 +334,16 @@ class MillicastWidget extends React.Component {
             });
         }
     };
- 
+
     async publish(streamName, token) {
- 
+
         const tokenGenerator = () => Director.getPublisher({
             token,
             streamName
         })
         // Create a new instance
         this.millicastPublish = new Publish(streamName, tokenGenerator)
- 
+
         this.setState({
             streamURL: this.state.mediaStream
         })
@@ -353,8 +352,8 @@ class MillicastWidget extends React.Component {
             mediaStream: this.state.mediaStream,
             codec: 'vp8'
         }
- 
- 
+
+
         // Start broadcast
         try {
             await this.millicastPublish.connect(broadcastOptions)
@@ -362,7 +361,7 @@ class MillicastWidget extends React.Component {
             console.log('Connection failed, handle error', e)
         }
     }
- 
+
     render() {
         return (
           <View style={styles.body}>
@@ -384,7 +383,7 @@ class MillicastWidget extends React.Component {
         )
     }
 };
- 
+
 export default function App() {
   return (
     <>
@@ -395,8 +394,8 @@ export default function App() {
     </>
     );
 }
- 
- 
+
+
 const styles = StyleSheet.create({
     body: {
         backgroundColor: Colors.white,

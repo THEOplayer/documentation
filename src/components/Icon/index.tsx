@@ -8,6 +8,7 @@ import AppleIcon from '@site/static/img/apple.svg';
 import ComscoreIcon from '@site/static/img/comscore.svg';
 import ChromecastIcon from '@site/static/img/chromecast.svg';
 import FlutterIcon from '@site/static/img/flutter.svg';
+import LinuxIcon from '@site/static/img/linux.svg';
 import NielsenIcon from '@site/static/img/nielsen.svg';
 import NuxtjsIcon from '@site/static/img/nuxtjs.svg';
 import ReactIcon from '@site/static/img/react.svg';
@@ -15,6 +16,7 @@ import RokuIcon from '@site/static/img/roku.svg';
 import UplynkIcon from '@site/static/img/uplynk.svg';
 import VuejsIcon from '@site/static/img/vuejs.svg';
 import WebIcon from '@site/static/img/web.svg';
+import WindowsIcon from '@site/static/img/windows.svg';
 import WordPressIcon from '@site/static/img/wordpress.svg';
 import YospaceIconUrl from '@site/static/img/yospace.png';
 import clsx from 'clsx';
@@ -82,6 +84,8 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
           className={clsx(styles.icon, className)}
         />
       );
+    case 'linux':
+      return <LinuxIcon className={clsx(styles.icon, className)} />;
     case 'nielsen':
       return <NielsenIcon className={clsx(styles.icon, className)} />;
     case 'nuxtjs':
@@ -96,6 +100,8 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
       return <VuejsIcon className={clsx(styles.icon, className)} />;
     case 'web':
       return <WebIcon className={clsx(styles.icon, className)} />;
+    case 'windows':
+      return <WindowsIcon className={clsx(styles.icon, className)} />;
     case 'wordpress':
       return <WordPressIcon className={clsx(styles.icon, className)} />;
     case 'yospace':

@@ -2,43 +2,43 @@
 title: "Desktop"
 slug: /desktop
 ---
-The Native SDK provides C++ APIs for desktop platforms, such as Linux, Mac, and Windows. You may use the SDK in your project to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform. 
 
-<div class="dolbyio-cards-container">
- 
- <a class="dolbyio-card dolbyio-card-1" href="https://github.com/millicast/millicast-native-sdk/releases">
- <div class="dolbyio-card-image">
- <img width="40px" src="https://files.readme.io/3f65ad7-github_svg.svg"/>
- </div>
- <div class="dolbyio-card-header">GitHub</div>
- <div class="dolbyio-card-description">
- Access the Native SDK releases
- </div>
- </a>
- 
- <a class="dolbyio-card dolbyio-card-2" href="https://millicast.github.io/doc/latest/cpp/index.html">
- <div class="dolbyio-card-image">
- <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/049dc13-documentation_icon.svg"/>
- </div>
- <div class="dolbyio-card-header">Documentation</div>
- <div class="dolbyio-card-description">
- Find more information about Desktop APIs
- </div>
- </a>
- 
- <a class="dolbyio-card dolbyio-card-3" href="/millicast/client-sdks/desktop-getting-started-with-publishing">
- <div class="dolbyio-card-image">
- <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
- </div>
- <div class="dolbyio-card-header">Getting Started</div>
- <div class="dolbyio-card-description">
- Start using the SDKs
- </div>
- </a>
- 
-</div>
+The Native SDK provides C++ APIs for desktop platforms, such as Linux, Mac, and Windows. You may use the SDK in your project to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform.
 
+import ThreeCardList from '@site/src/components/ThreeCardList';
 
+<ThreeCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-native-sdk/releases',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'GitHub',
+      description: 'Access the Native SDK releases',
+    },
+    {
+      type: 'link',
+      href: 'https://millicast.github.io/doc/latest/cpp/index.html',
+      customProps: {
+        icon: '📖',
+      },
+      label: 'Documentation',
+      description: 'Find more information about Desktop APIs',
+    },
+    {
+      type: 'link',
+      href: '/millicast/desktop-getting-started-with-publishing',
+      docId: 'client-sdks/desktop/desktop-getting-started-with-publishing',
+      customProps: {
+        icon: '🚀',
+      },
+      label: 'Getting Started',
+      description: 'Start using the SDKs',
+    },
+  ]}
+/>
 
 # Requirements
 
