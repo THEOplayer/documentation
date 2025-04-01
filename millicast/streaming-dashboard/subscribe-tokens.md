@@ -96,7 +96,7 @@ Of note in the manage screen is the **string of the Subscribe token itself**. Th
 > 
 > The above example exposes the subscribe token in the URL. To prevent URL or token sharing, serve each viewer a unique subscribe token with the [BindsIPAddressOnUsage ](/millicast/streaming-dashboard/subscribe-tokens.md#advanced-settings) parameter enabled to bind the token to the user.
 
-Depending on the scale of your production, it may not be secure or feasible to create tokens via the dashboard. Instead, you can create tokens via the [Token API](/millicast/streaming-dashboard/token-api.md), or, for true scalability, [you can self-sign tokens](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens).
+Depending on the scale of your production, it may not be secure or feasible to create tokens via the dashboard. Instead, you can create tokens via the [Token API](/millicast/streaming-dashboard/token-api.mdx), or, for true scalability, [you can self-sign tokens](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens).
 
 ## Deleting subscribe tokens
 
@@ -158,5 +158,5 @@ This guide provides a high-level understanding of managing your tokens via the D
 
 To learn more about using the REST APIs for token creation and management, check out:
 
-- [The Platform Guide for Token APIs](/millicast/streaming-dashboard/token-api.md)
+- [The Platform Guide for Token APIs](/millicast/streaming-dashboard/token-api.mdx)
 - [The REST API reference](/millicast/api/subscribe-token-v-1-read-token.api.mdx)

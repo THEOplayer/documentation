@@ -31,8 +31,8 @@ The Streaming platform lets you track the following data while using syndication
 
 To manage viewing access, there are two types of tokens you use to syndicate:
 
-- [Subscribe tokens](/millicast/streaming-dashboard/token-api.md#creating-subscribe-tokens) can be used to restrict access for "who" may view a stream. You can assign a `trackingId` to each token for correlating usage.
-- [Self-signed Subscribe tokens](/millicast/streaming-dashboard/token-api.md#self-sign-subscribe-tokens) are JSON Web Tokens (JWT) that can be generated using a single _subscribe token_ as the parent. These tokens can also be used to restrict access for "who" may view a stream but are instead created, signed, and managed by the content owner or distributor.
+- [Subscribe tokens](/millicast/streaming-dashboard/token-api.mdx#creating-subscribe-tokens) can be used to restrict access for "who" may view a stream. You can assign a `trackingId` to each token for correlating usage.
+- [Self-signed Subscribe tokens](/millicast/streaming-dashboard/token-api.mdx#self-sign-subscribe-tokens) are JSON Web Tokens (JWT) that can be generated using a single _subscribe token_ as the parent. These tokens can also be used to restrict access for "who" may view a stream but are instead created, signed, and managed by the content owner or distributor.
 
 ### Creating a Subscribe token with tracking ID
 

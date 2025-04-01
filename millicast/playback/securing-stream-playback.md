@@ -12,7 +12,7 @@ To secure broadcast playback, you need to enable the **Secure Viewer** setting w
 
 Subscribe tokens are used to authenticate access to a "Secure stream". When enabled, streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains. Even though restricting access to streamed content in selected geo-locations is possible using the publish token, the subscribe token lets you add additional geo-blocking rules.
 
-To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.md), which outlines how to create a token in the Dolby.io dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.md) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
+To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.md), which outlines how to create a token in the Dolby.io dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
 
 `fff04a5a1c02b2b8d48a9133e8461985aa482066cc3e9ed487baaac89588e26f`
 
@@ -88,7 +88,7 @@ To learn more about other access control features you can enable for your Subscr
 > 
 > Check out the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial for a quick and easy introduction to using the Dolby.io SDKs and platform.
 
-To view a secure stream in your own viewer app, you'll need to create a Subscribe token. Depending on the size of your platform, you may want to create these tokens programmatically using a token server and the [Token APIs](/millicast/streaming-dashboard/token-api.md). This part of the guide gives an example of how to programmatically create a Subscribe token, and how to use it to authenticate a connection to a viewer.
+To view a secure stream in your own viewer app, you'll need to create a Subscribe token. Depending on the size of your platform, you may want to create these tokens programmatically using a token server and the [Token APIs](/millicast/streaming-dashboard/token-api.mdx). This part of the guide gives an example of how to programmatically create a Subscribe token, and how to use it to authenticate a connection to a viewer.
 
 To get started we first need to define a function, `getToken` to create our Subscribe token. The [Create Token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API provides a UI to help with defining our API call. Each Subscribe token that our `getToken` function creates will be associated with a single stream denoted by the `streamName`, expire after one hour (3600 seconds), and bind to the IP of the first person who connects to the stream with that token. In other words, this token will only grant access to a specific stream, for one hour, and for one user.
 

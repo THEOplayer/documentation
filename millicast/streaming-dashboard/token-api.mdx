@@ -2,12 +2,12 @@
 title: "Token API"
 slug: /token-api
 ---
-The **Token API** is a REST endpoint that allows you to automate the creation and management of tokens for your applications. You can create, read, update, and delete **publish tokens** and **subscribe tokens** that are used for authorizations with a broadcast stream. 
+The **Token API** is a REST endpoint that allows you to automate the creation and management of tokens for your applications. You can create, read, update, and delete **publish tokens** and **subscribe tokens** that are used for authorizations with a broadcast stream.
 
 ***
 
 <div class="dolbyio-cards-container-4">
-    
+
   <a class="dolbyio-card" href="./managing-your-tokens">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2021/08/dolbyio-icon-hd-video-dark-bg.svg"/>
@@ -18,30 +18,30 @@ The **Token API** is a REST endpoint that allows you to automate the creation an
     </div>
   </a>
 
-  
+
   <a class="dolbyio-card" href="./subscribe-tokens">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://dolby.io/wp-content/uploads/2022/09/DLB_IO_Icon_FeatBen_Simulcast_rgb_DRK.svg"/>
     </div>
     <div class="dolbyio-card-header">Subscribe tokens<br/>(optional)</div>
     <div class="dolbyio-card-description">
-      Used to subscribe and manage the playback viewing of a stream. 
+      Used to subscribe and manage the playback viewing of a stream.
     </div>
-  </a> 
-  
+  </a>
+
 </div>
 
 
 ***
 
-This guide covers the following: 
+This guide covers the following:
 
-- [Getting Your API Secret](/millicast/streaming-dashboard/token-api.md#acquiring-your-api-secret)
-- [Create and Manage Publish Tokens](/millicast/streaming-dashboard/token-api.md#creating-publishing-tokens)
-- [Create and Manage a Subscribe Tokens](/millicast/streaming-dashboard/token-api.md#creating-subscribe-tokens)
+- [Getting Your API Secret](/millicast/streaming-dashboard/token-api.mdx#acquiring-your-api-secret)
+- [Create and Manage Publish Tokens](/millicast/streaming-dashboard/token-api.mdx#creating-publishing-tokens)
+- [Create and Manage a Subscribe Tokens](/millicast/streaming-dashboard/token-api.mdx#creating-subscribe-tokens)
 
 > 👍 Using the REST APIs
-> 
+>
 > Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
 ## Acquiring your API secret
@@ -65,7 +65,7 @@ From here, you can start using any of the APIs in the [API reference](/millicast
 
 Publish tokens are required to start a stream and can be used to control who, where, and what kind of stream can be started. The easiest way to begin learning about programmatically creating a publish token is by going to the [PublishToken Create Token interface of the API reference](/millicast/api/publish-token-v-1-create-token.api.mdx).
 
-Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md#acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
+Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.mdx#acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
 ![](../assets/img/pubtok.png)
@@ -104,7 +104,7 @@ curl --request POST \
 '
 ```
 
-The above request would use my API secret to create a publish token valid for 30 days that supports three streams: "_MainCam_", "_BackupCam_", and "_StageCam_". 
+The above request would use my API secret to create a publish token valid for 30 days that supports three streams: "_MainCam_", "_BackupCam_", and "_StageCam_".
 
 You can also use Regex for Stream names, giving your token the ability to **use ANY arbitrary stream name** in the publishing path. The only rule to note here is that anyone using their own viewer must know what stream name the broadcaster is using in order to view the stream correctly.
 
@@ -158,11 +158,11 @@ curl --request DELETE \
 
 ## Creating subscribe tokens
 
-Unlike the publisher, the viewer, by default, does not need a subscribe token to view a broadcast. However, if you want to [secure your feed](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token) from being viewed by unauthorized users, using a subscribe token is recommended. The subscribe token also has its own set of rules you can use to protect your feed. You can create a token with a time limit, set the token to work from single or multiple specified domains, or you can even set it to use a specific IP or IPs as well. 
+Unlike the publisher, the viewer, by default, does not need a subscribe token to view a broadcast. However, if you want to [secure your feed](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token) from being viewed by unauthorized users, using a subscribe token is recommended. The subscribe token also has its own set of rules you can use to protect your feed. You can create a token with a time limit, set the token to work from single or multiple specified domains, or you can even set it to use a specific IP or IPs as well.
 
 The easiest way to begin learning about creating a subscribe token is by going to [the _SubscribeToken Create Token_ interface of the API reference](/millicast/api/subscribe-token-v-1-create-token.api.mdx).
 
-Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.md#acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
+Inside the reference, you'll see a section on the right where you can select your preferred programing language, add your [API Secret key](/millicast/streaming-dashboard/token-api.mdx#acquiring-your-api-secret), and see the sample call based on the parameters you've added so far. In the middle, you'll see where you can add and adjust the required and optional parameters, along with the respective parameter definitions.
 
 
 ![](../assets/img/subtok.png)

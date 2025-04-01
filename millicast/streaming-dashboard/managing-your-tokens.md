@@ -187,8 +187,8 @@ The API tab includes information needed to publish a stream with the [Client SDK
   - **Stream name**: Your Stream name is used to manage and distinguish streams using the same token. You can edit the Stream name in the "[Token streams](/millicast/streaming-dashboard/managing-your-tokens.md#2-token-streams)" tab. 
   - **Account ID**: The Account ID is a unique account identifier used for [publishing](/millicast/getting-started/creating-real-time-streaming-web-app.md) and viewing streams. 
   - **Token ID**: The Token ID can be used for [Reading](/millicast/api/publish-token-v-1-read-token.api.mdx), [Deleting](/millicast/api/publish-token-v-1-delete-token.api.mdx), and [Updating](/millicast/api/publish-token-v-1-update-token.api.mdx) Publish tokens via the [REST APIs](/millicast/api/publish-token-v-1-read-token.api.mdx).
-- **Sample API calls**: The Sample API calls section includes some basic examples of [Publishing](../streaming-dashboard/token-api.md#creating-publishing-tokens) and [Subscribing](../streaming-dashboard/token-api.md#creating-subscribe-tokens) calls that can be made with the credentials provided in the Publish token section. To learn more about API calls, explore the [Token API](../streaming-dashboard/token-api.md) guide.
-- **API endpoints**: The API endpoints section provides a [Publish API URL](../streaming-dashboard/token-api.md#creating-publishing-tokens) and a [Subscribe API URL](../streaming-dashboard/token-api.md#creating-subscribe-tokens), which can be used with the Publish token credentials and [Subscribe token credentials](../streaming-dashboard/subscribe-tokens.md), respectively.
+- **Sample API calls**: The Sample API calls section includes some basic examples of [Publishing](../streaming-dashboard/token-api.mdx#creating-publishing-tokens) and [Subscribing](../streaming-dashboard/token-api.mdx#creating-subscribe-tokens) calls that can be made with the credentials provided in the Publish token section. To learn more about API calls, explore the [Token API](../streaming-dashboard/token-api.mdx) guide.
+- **API endpoints**: The API endpoints section provides a [Publish API URL](../streaming-dashboard/token-api.mdx#creating-publishing-tokens) and a [Subscribe API URL](../streaming-dashboard/token-api.mdx#creating-subscribe-tokens), which can be used with the Publish token credentials and [Subscribe token credentials](../streaming-dashboard/subscribe-tokens.md), respectively.
 
 
 ![](../assets/img/api.png)
@@ -219,5 +219,5 @@ This guide provides a high-level understanding of managing your tokens via the D
 
 To learn more about using the REST APIs for token creation and management, check out:
 
-- [The Platform Guide for Token APIs](/millicast/streaming-dashboard/token-api.md)
+- [The Platform Guide for Token APIs](/millicast/streaming-dashboard/token-api.mdx)
 - [The REST API reference](/millicast/api/publish-token-v-1-read-token.api.mdx)

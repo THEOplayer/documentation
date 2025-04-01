@@ -4,7 +4,7 @@ slug: /analytics-api
 ---
 The Analytics APIs allow you to query your usage independent of the Dolby.io dashboard and get details of how your users are consuming your streams.
 
-To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api.md).
+To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api.mdx).
 
 Another thing to note is that analytics API calls will not work directly from the Browser, there is no CORS support. To successfully call the API you must use Curl or a back end solution like Nodejs, Java, or anything outside the browser that can do HTTPS requests.
 
