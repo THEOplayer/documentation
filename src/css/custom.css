@@ -151,3 +151,7 @@ ul.checkBoxList > li {
   justify-content: center;
   align-items: center;
 }
+
+.center-container {
+  text-align: center;
+}

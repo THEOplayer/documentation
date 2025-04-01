@@ -38,7 +38,7 @@ Dolby.io supports [Multisource Playback](/millicast/playback/source-and-layer-se
 Before getting started building a multi-view application it is worth understanding;
 
 1. How to broadcast [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.md).
-2. How to [Create a Basic Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.md).
+2. How to [Create a Basic Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.mdx).
 3. What [Broadcast Events](/millicast/playback/viewer-events.md) are and how to use them.
 4. How the Dolby.io platform organizes and handles [Multisource Playback](/millicast/playback/source-and-layer-selection.md).
 

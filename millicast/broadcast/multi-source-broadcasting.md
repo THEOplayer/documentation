@@ -214,7 +214,7 @@ There are multiple ways to playback and consume a multi-view feed:
 
 - Use the [Dolby-hosted player](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) (easiest for testing web)
 - Use the Dolby-published iOS and Android [Interactive Player Apps](https://dolby.io/project-gallery/interactive-player-apps/)
-- Build your own [multi-view app for Web](/millicast/getting-started/creating-real-time-streaming-web-app.md)
+- Build your own [multi-view app for Web](/millicast/getting-started/creating-real-time-streaming-web-app.mdx)
 - Build your own [multi-view app with the SDK](/millicast/client-sdks/index.mdx)
 
 ## Troubleshooting

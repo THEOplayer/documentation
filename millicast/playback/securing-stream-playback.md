@@ -135,7 +135,7 @@ const tokenGenerator = () =>
   });
 ```
 
-Using code from the [2. Create a Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.md) tutorial, we can put everything together to create a very basic web app that uses a Subscribe token to view a secure stream.
+Using code from the [2. Create a Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) tutorial, we can put everything together to create a very basic web app that uses a Subscribe token to view a secure stream.
 
 > ❗️ API Secret
 > 

@@ -26,7 +26,11 @@ In [Part 1 - Using the Streaming Dashboard](/millicast/getting-started/using-the
 
 This is the simplest way to get up and running quickly with your own web application. This works well for long-running streams or one-time live events. 
 
-![](../assets/img/dolbyio-web-embedded-viewer-live.png)
+import DolbyioWebEmbeddedViewerLive from '../assets/img/dolbyio-web-embedded-viewer-live.png';
+
+<div class="center-container">
+    <img src={DolbyioWebEmbeddedViewerLive} width="500" />
+</div>
 
 If you click the `Customize` button in the Playback Dashboard you'll see there are lots of options you can use to include or exclude playback behaviors. The [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) page goes through these options in more detail.
 
@@ -136,8 +140,11 @@ try {
 
 If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started/using-the-dashboard.md), you will then have a simple web app with video playback to continue customizing.
 
-![](../assets/img/dolbyio-web-playback.png)
+import DolbyioWebPlayback from '../assets/img/dolbyio-web-playback.png';
 
+<div class="center-container">
+    <img src={DolbyioWebPlayback} width="500" />
+</div>
 
 ## Broadcast from a custom web application
 
@@ -219,10 +226,11 @@ document.getElementById('btn-start').onclick = async () => {
 
 The `viewerUrl` provides a convenient link to the hosted playback viewer so that you can verify the broadcast is working. 
 
+import DolbyioWebBroadcast from '../assets/img/dolbyio-web-broadcast.png';
 
-![](../assets/img/dolbyio-web-broadcast.png)
-
-
+<div class="center-container">
+    <img src={DolbyioWebBroadcast} width="500" />
+</div>
 
 ### d. Stop the broadcast
 

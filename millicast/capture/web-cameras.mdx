@@ -17,17 +17,19 @@ Once you have created a Dolby.io account, you can begin using the [Dolby.io dash
 
 Inside the dashboard, click the Broadcast button located adjacent to the token.
 
+import BroadcastDashButton from '../assets/img/broadcast_dash_button.png';
 
-![](../assets/img/broadcast_dash_button.png)
-
-
+<div class="center-container">
+    <img src={BroadcastDashButton} width="500" />
+</div>
 
 Inside the dashboard broadcaster, click the camera icon in the bottom left corner to select your video input device. If the web camera is correctly connected to the device, it will be discoverable alongside other video devices and virtual cameras.
 
+import I08a0c46 from '../assets/img/08a0c46-image.png';
 
-![](../assets/img/image.png)
-
-
+<div class="center-container">
+    <img src={I08a0c46} width="500" />
+</div>
 
 Audio input devices function the same way and can be toggled by clicking on the microphone icon next to the camera icon.
 
@@ -43,27 +45,23 @@ Follow along with this video guide or read the steps below.
   <iframe width="560" height="315" src="https://www.youtube.com/embed/jUP4vyzbu5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-
 Once downloaded and installed, open the app.
 
 Inside the app, click the "+" icon within the Sources tab and add a Video Capture Device.
 
+import VideoCaptureObs from '../assets/img/videocaptureobs.png';
 
-![](../assets/img/videocaptureobs.png)
-
-
-
-
-![](../assets/img/videocaptureobs.png)
-
-
+<div class="center-container">
+    <img src={VideoCaptureObs} width="500" />
+</div>
 
 When adding the Video Capture Device, make sure to select your Web Camera as the device you want to create a capture for.
 
+import Ic9600bb from '../assets/img/c9600bb-image.png';
 
-![](../assets/img/image.png)
-
-
+<div class="center-container">
+    <img src={Ic9600bb} width="500" />
+</div>
 
 With your camera selected, click "OK". You've now set up your Web Camera for capture via OBS. To start streaming from OBS, continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
 
@@ -92,7 +90,7 @@ The `enumerateDevices` function provides a list of audio and video input devices
 Using the `deviceId`, you can select your web camera and "get" it using the [`getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) function.
 
 ```javascript
-navigator.mediaDevices.getUserMedia({
+await navigator.mediaDevices.getUserMedia({
   video: {
     deviceId: myPreferredCameraDeviceId,
   },

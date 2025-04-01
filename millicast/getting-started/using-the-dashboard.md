@@ -62,4 +62,4 @@ The viewer has some user controls to pause the stream, configure settings, and v
 
 ## Continue learning
 
-In this tutorial, we were able to start and view a real-time stream. To continue with your project, you may want to customize the experience. The next part will help with getting started to build [a custom web application](/millicast/getting-started/creating-real-time-streaming-web-app.md).
+In this tutorial, we were able to start and view a real-time stream. To continue with your project, you may want to customize the experience. The next part will help with getting started to build [a custom web application](/millicast/getting-started/creating-real-time-streaming-web-app.mdx).
