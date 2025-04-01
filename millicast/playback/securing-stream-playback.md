@@ -2,13 +2,13 @@
 title: "Securing Stream Playback"
 slug: /securing-stream-playback
 ---
-[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled. 
+[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled. 
 
 To view a secured stream you first need to create a Subscribe token. With your Subscribe token in hand, you can then use it to authenticate a connection and view the broadcast. This guide outlines [how to create a token](/millicast/playback/securing-stream-playback.md#creating-a-subscribe-token-to-playback-a-secure-stream) and [how to view a secure stream](/millicast/playback/securing-stream-playback.md#viewing-a-secured-stream).
 
 ## Creating a subscribe token to playback a secure stream
 
-To secure broadcast playback, you need to enable the **Secure Viewer** setting when creating a Publishing token. For more information on enabling Secure Viewer, explore the [Creating a Publishing Token guide](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token).
+To secure broadcast playback, you need to enable the **Secure Viewer** setting when creating a Publishing token. For more information on enabling Secure Viewer, explore the [Creating a Publishing Token guide](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token).
 
 Subscribe tokens are used to authenticate access to a "Secure stream". When enabled, streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains. Even though restricting access to streamed content in selected geo-locations is possible using the publish token, the subscribe token lets you add additional geo-blocking rules.
 

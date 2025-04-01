@@ -185,7 +185,7 @@ let publisherOptions = MCClientOptions()
 publisherOptions.sourceId = "MySource"
 ```
 
-For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/index.mdx#4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/index.mdx#5-configure-your-publishing-session), and [iOS](/millicast/client-sdks/ios/index.mdx#3-configure-your-publishing-session). 
+For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/desktop-getting-started-with-publishing.md#4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/android-getting-started-with-publishing.md#44-configure-publishing-options), and [iOS](/millicast/client-sdks/ios/ios-getting-started-with-publishing.md#24-configure-publishing-options). 
 
 > Note: The `sourceId` should be a unique value and by default is undefined. Identical `sourceId` values should only be used for specifying [redundant streams](/millicast/broadcast/redundant-ingest/index.md).
 

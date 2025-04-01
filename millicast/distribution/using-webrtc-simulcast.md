@@ -39,7 +39,7 @@ Before broadcasting content using Simulcast, make sure you:
 
 ### How-to enable Simulcast with the Dolby.io dashboard
 
-To activate Simulcast and stream using the [Streaming Dashboard Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md#broadcaster-interface), open the _Media Settings_ by clicking on the gear icon. This allows you to toggle the option to be on. The bandwidth settings can also be adjusted to achieve the desired bitrate.
+To activate Simulcast and stream using the [Streaming Dashboard Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md#broadcaster), open the _Media Settings_ by clicking on the gear icon. This allows you to toggle the option to be on. The bandwidth settings can also be adjusted to achieve the desired bitrate.
 
 Set the **Bandwidth** as _Custom > 6000_, which will provide sufficient _Kbps_ for a high-quality Simulcast stream. Similarly, the **Width**, **Height**, and **FPS** should be adjusted to match your desired output.
 
@@ -58,8 +58,8 @@ You may choose to use a [Hardware Encoder](../broadcast/hardware-encoders.mdx) t
 
 Specific integration examples:
 
-- [How-to Setup Multi-Bitrate Simulcast with OBS](/millicast/software-encoders/using-obs.md#simulcast)
-- [How-to Setup Multi-Bitrate Simulcast with vMix](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-setup-multi-bitrate-streaming-with-vmix)
+- [How-to Setup Multi-Bitrate Simulcast with OBS](/millicast/software-encoders/using-obs.md#multi-bitrate-simulcast-contribution)
+- [How-to Setup Multi-Bitrate Simulcast with vMix](/millicast/software-encoders/broadcasting-with-vmix.md#setup-multi-bitrate-rtmp-streaming-with-vmix)
 - [How-to Setup Multi-Bitrate Simulcast with Videon](/millicast/hardware-encoders/videon.md#how-to-use-multi-bitrate-on-videon-edgecaster)
 
 As long as the WHIP, RTMP, or SRT client makes a Simulcast offer the media server will accept it.

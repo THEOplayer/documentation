@@ -158,7 +158,7 @@ curl --request DELETE \
 
 ## Creating subscribe tokens
 
-Unlike the publisher, the viewer, by default, does not need a subscribe token to view a broadcast. However, if you want to [secure your feed](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token) from being viewed by unauthorized users, using a subscribe token is recommended. The subscribe token also has its own set of rules you can use to protect your feed. You can create a token with a time limit, set the token to work from single or multiple specified domains, or you can even set it to use a specific IP or IPs as well. 
+Unlike the publisher, the viewer, by default, does not need a subscribe token to view a broadcast. However, if you want to [secure your feed](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token) from being viewed by unauthorized users, using a subscribe token is recommended. The subscribe token also has its own set of rules you can use to protect your feed. You can create a token with a time limit, set the token to work from single or multiple specified domains, or you can even set it to use a specific IP or IPs as well. 
 
 The easiest way to begin learning about creating a subscribe token is by going to [the _SubscribeToken Create Token_ interface of the API reference](/millicast/api/subscribe-token-v-1-create-token.api.mdx).
 

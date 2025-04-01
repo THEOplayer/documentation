@@ -6,10 +6,10 @@ Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-so
 
 To get started building multi-stream experiences it's important to understand how Dolby.io handles multi-source playback. This guide outlines:
 
-- [How to manage source selection](/millicast/playback/source-and-layer-selection.md#managing-source-and-layer-selection)
-- [How to project feeds](/millicast/playback/source-and-layer-selection.md#project-feeds)
-- [Media layer forwarding](/millicast/playback/source-and-layer-selection.md#media-layer-forwarding)
-- [How to dynamically manage viewer tracks](/millicast/playback/source-and-layer-selection.md#dynamic-viewer-track)
+- [How to manage source selection](#managing-source-selection)
+- [How to project feeds](#projecting-feeds)
+- [Media layer forwarding](#media-layer-forwarding)
+- [How to dynamically manage viewer tracks](#dynamic-viewer-track)
 
 ## Managing source selection
 

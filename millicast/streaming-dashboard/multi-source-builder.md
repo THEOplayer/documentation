@@ -11,9 +11,9 @@ The **Multi-source** tab of the Streaming Dashboard is a tool to help you build 
 
 This guide covers the following: 
 
-- [Adding a Source](/millicast/streaming-dashboard/multi-source-builder.md#adding-a-source)
-- [Using the Multi-source Player](/millicast/streaming-dashboard/multi-source-builder.md#using-the-multi-source-player)
-- [Exporting a Multi-source File](/millicast/streaming-dashboard/multi-source-builder.md#exporting-a-multi-source-file)
+- [Adding a Source](#adding-a-source)
+- [Using the Multi-source Player](#multi-source-player)
+- [Exporting a Multi-source File](#exporting-a-multi-source-file)
 
 ## Adding a source
 

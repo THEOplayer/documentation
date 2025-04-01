@@ -109,7 +109,7 @@ Once opened, you will see multiple tabs to explore.
 8. Multi-source - a convenient tool for setting up [multi-source](/millicast/broadcast/multi-source-broadcasting.md) contribution
 ### 1\. Token details
 
-The **Token details** tab allows you to view and edit settings specified during token creation. For a full list of these settings and their definitions, see [Creating a Publishing token](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token). The Token details page also includes the **Publish token** string and the **Account ID** string, which can both be copied and used for [starting a broadcast](/millicast/broadcast/index.mdx). 
+The **Token details** tab allows you to view and edit settings specified during token creation. For a full list of these settings and their definitions, see [Creating a Publishing token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token). The Token details page also includes the **Publish token** string and the **Account ID** string, which can both be copied and used for [starting a broadcast](/millicast/broadcast/index.mdx). 
 
 
 ![](../assets/img/publish-token-details.png)
@@ -122,7 +122,7 @@ The **Token details** tab allows you to view and edit settings specified during 
 
 ### 2\. Token streams
 
-As mentioned in [Creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token), when a stream name is specified, it will require the user of the token to use a specific stream name in order to broadcast. Within the management view, you are able to add and delete stream names as you see fit.
+As mentioned in [Creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token), when a stream name is specified, it will require the user of the token to use a specific stream name in order to broadcast. Within the management view, you are able to add and delete stream names as you see fit.
 
 To add a new name, simply click on the **(+) CREATE** button on the Token Streams tab, which will initiate a popup similar to the add token interface.
 
