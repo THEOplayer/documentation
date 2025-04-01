@@ -2,6 +2,9 @@
 title: "Stream Recordings"
 slug: /recordings
 ---
+
+import DocCardList from '@theme/DocCardList';
+
 With **_Stream Recording_** you can keep a copy of a real-time stream where media can be used for a variety of use cases such as video on demand (VOD) playback, archiving and auditing, event highlights and instant replay, etc. To support this variety of purposes there are options for the type of media assets that you will create from a stream.
 
 - **Recordings** are full-length copies of a stream that will be processed and made available shortly after a broadcast is complete.
@@ -39,30 +42,24 @@ You must configure a [Publish Token](/millicast/streaming-dashboard/managing-you
 
 For more detailed instructions, review one of the following tutorials:
 
-<div class="dolbyio-cards-container">
-
-  <a class="dolbyio-card dolbyio-card-1" href="../docs/live-clipping">
-     <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
-    </div>
-    <div class="dolbyio-card-header">How-to Create Live Clips</div>
-    <div class="dolbyio-card-description">
-      Learn how-to setup and create live clips.
-    </div>
-  </a>
-
-  <a class="dolbyio-card dolbyio-card-1" href="../docs/starting-recording">
-     <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
-    </div>
-    <div class="dolbyio-card-header">How-to Start Recordings</div>
-    <div class="dolbyio-card-description">
-      Learn how-to setup and create recordings.
-    </div>
-  </a>
-
-</div>
-
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      href: '/millicast/live-clipping',
+      docId: 'distribution/stream-recordings/live-clipping',
+      label: 'How-to Create Live Clips',
+      description: 'Learn how-to setup and create live clips.',
+    },
+    {
+      type: 'link',
+      href: '/millicast/starting-recording',
+      docId: 'distribution/stream-recordings/starting-recording',
+      label: 'How-to Start Recordings',
+      description: 'Learn how-to setup and create recordings.',
+    },
+  ]}
+/>
 
 ## Finding Your Media
 
@@ -75,29 +72,24 @@ You can find both recordings and clips in the [Streaming Dashboard](/millicast/s
 
 For more detailed instructions, review one of the following tutorials:
 
-<div class="dolbyio-cards-container">
-
-  <a class="dolbyio-card dolbyio-card-1" href="../docs/how-to-get-media-assets">
-     <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
-    </div>
-    <div class="dolbyio-card-header">How-to Get Media Assets</div>
-    <div class="dolbyio-card-description">
-      Learn how to filter and find recordings and clips.
-    </div>
-  </a>
-
-  <a class="dolbyio-card dolbyio-card-1" href="../docs/how-to-setup-media-storage">
-     <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/fceccc3-ClientSDK-default.svg"/>
-    </div>
-    <div class="dolbyio-card-header">How-to Setup Clip Storage</div>
-    <div class="dolbyio-card-description">
-      Learn how to configure third-party cloud storage for clipping.
-    </div>
-  </a>
-
-</div>
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      href: '/millicast/how-to-get-media-assets',
+      docId: 'distribution/stream-recordings/how-to-get-media-assets',
+      label: 'How-to Get Media Assets',
+      description: 'Learn how to filter and find recordings and clips.',
+    },
+    {
+      type: 'link',
+      href: '/millicast/how-to-setup-media-storage',
+      docId: 'distribution/stream-recordings/how-to-setup-media-storage',
+      label: 'How-to Setup Clip Storage',
+      description: 'Learn how to configure third-party cloud storage for clipping.',
+    },
+  ]}
+/>
 
 ## Media Properties
 
@@ -123,9 +115,9 @@ To diagnose recording issues, such as missing recordings, review the details of 
 
 ## Multi-source
 
-When using [multi-source](/millicast/broadcast/multi-source-broadcasting.md) broadcasting, multiple independent broadcast timelines will be created. 
+When using [multi-source](/millicast/broadcast/multi-source-broadcasting.md) broadcasting, multiple independent broadcast timelines will be created.
 
-For `clip` assets you can identify the specific source from which to clip, or if not specified multiple clips will be created. 
+For `clip` assets you can identify the specific source from which to clip, or if not specified multiple clips will be created.
 
 For `recording` assets, you will get a discrete media file for each source.
 
@@ -158,7 +150,7 @@ When publishing streams using 5.1 audio format, the audio is present on the view
 
 ## Dashboard Recording Error
 
-If the dashboard displays recording errors, contact the [Dolby support](http://support.dolby.io) team and specify as many of your publishing settings as possible. 
+If the dashboard displays recording errors, contact the [Dolby support](http://support.dolby.io) team and specify as many of your publishing settings as possible.
 
 # Learn More
 

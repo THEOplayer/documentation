@@ -75,40 +75,39 @@ console.log(capabilities);
 
 There are additional usage examples below, but you may also find some of the resources listed here to be helpful as you start your integration project.
 
-<div class="dolbyio-cards-container">
+import ThreeCardList from '@site/src/components/ThreeCardList';
 
-    <a class="dolbyio-card dolbyio-card-1" href="https://github.com/millicast/millicast-sdk">
-     <div class="dolbyio-card-image">
-      <img width="40px" src="https://files.readme.io/3f65ad7-github_svg.svg"/>
-    </div>
-    <div class="dolbyio-card-header">GitHub</div>
-    <div class="dolbyio-card-description">
-       Source code for the Millicast Web SDK
-    </div>
-  </a>
-
-  <a class="dolbyio-card dolbyio-card-2" href="https://millicast.github.io/millicast-sdk/">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/049dc13-documentation_icon.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Docs</div>
-    <div class="dolbyio-card-description">
-      Class and object reference
-    </div>
-  </a>
-
-    <a class="dolbyio-card dolbyio-card-3" href="https://github.com/millicast/millicast-sdk/tree/main/packages">
-    <div class="dolbyio-card-image">
-      <img width="45px" class="dolbyio-card-svg-icon" src="https://files.readme.io/0c11f2f-sampleapp_icon.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Sample Apps</div>
-    <div class="dolbyio-card-description">
-      Code examples
-    </div>
-  </a>
-
-</div>
-
+<ThreeCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-sdk',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'GitHub',
+      description: 'Source code for the Millicast Web SDK',
+    },
+    {
+      type: 'link',
+      href: 'https://millicast.github.io/millicast-sdk/',
+      customProps: {
+        icon: '*️⃣',
+      },
+      label: 'Docs',
+      description: 'Class and object reference',
+    },
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-sdk/tree/main/packages',
+      customProps: {
+        icon: '📱',
+      },
+      label: 'Samples',
+      description: 'Code examples',
+    },
+  ]}
+/>
 
 You might also check and follow the [Web Platform Release Notes](/millicast/changelog/changelog-web-platform.md) page for updates and changes to the SDK.
 
