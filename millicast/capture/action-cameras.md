@@ -62,11 +62,7 @@ Some of the popular public streaming options are listed. To set up your private 
 
 The _Publishing_ tab of the _Live broadcast - Publish tokens_ section of the Dolby.io dashboard includes the details you need.
 
-<div style={{marginLeft: "20px"}}>
-
-`RTMP publish path` + `/` + `RTMP publish stream name`
-
-</div>
+> `RTMP publish path` + `/` + `RTMP publish stream name`
 
 You can note that the **RTMP publish stream name** is already a concatenation of the _publishing token_ and _stream name_. Typically this will look something similar to:
 

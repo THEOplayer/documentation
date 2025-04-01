@@ -76,11 +76,7 @@ Choose the **RTMP** option.
 
 For the Livestream settings, you must provide a URL for the **RTMP Address**. This is constructed from a few of your publisher token settings gathered from the Dolby.io Dashboard.
 
-<div style={{marginLeft: "20px"}}>
-
-`RTMP publish path` + `/` + `RTMP publish stream name`
-
-</div>
+> `RTMP publish path` + `/` + `RTMP publish stream name`
 
 Note that the **RTMP publish stream name** is already a concatenation of the _publishing token_ and _stream name_. Typically this will look something similar to:
 
