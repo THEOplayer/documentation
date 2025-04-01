@@ -5,7 +5,7 @@ slug: /distribution
 
 import DocCardList from '@theme/DocCardList';
 
-The Dolby.io Streaming Content Delivery Network (CDN) offers a range of server-side features that users can toggle and adjust via the REST APIs or your account Dashboard to ensure streams are secure, stable, and scalable. 
+The Dolby.io Streaming Content Delivery Network (CDN) offers a range of server-side features that users can toggle and adjust via the REST APIs or your account Dashboard to ensure streams are secure, stable, and scalable.
 
 <div style={{marginLeft: "20px"}}>
 
@@ -22,7 +22,7 @@ Distribution of streaming content requires scalability, stability, and security 
 # Start building
 
 <div class="dolbyio-cards-container" style={{width: "50%"}}>
-  
+
   <a class="dolbyio-card dolbyio-card-1" href="/streaming-apis/docs/getting-started">
     <div class="dolbyio-card-image">
       <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
@@ -32,7 +32,7 @@ Distribution of streaming content requires scalability, stability, and security 
       Quick start for using REST APIs to control content distribution.
     </div>
   </a>
-  
+
 </div>
 
 
@@ -42,13 +42,13 @@ Distribution of high-value content and intellectual property requires a platform
 
 ## Security
 
-[How-to Manage Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md)  
+[How-to Manage Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md)<br/>
 **Tokens** are generated to authenticate and give access to a stream for a specific period of time. You will use separate tokens for publishing and subscribing to a stream so that only appropriate authorizations are granted depending on your requirements, such as:
 
 - Specifying specific domain names or allowed origins
 - Identifying IP addresses to filter
 
-[How-to Setup Geo-blocking](/millicast/distribution/access-control/geo-blocking.md)  
+[How-to Setup Geo-blocking](/millicast/distribution/access-control/geo-blocking.md)<br/>
 **Geo-blocking** can be enabled to block specific geographic areas, such as countries or regions where you do not want the content to be streamed.
 
 <div className="youtube-container">
@@ -63,7 +63,7 @@ Distribution of high-value content and intellectual property requires a platform
 
 
 
-The Dolby.io Millicast platform has been assessed and found to be in accordance with the management system requirements in [ISO/IEC 27001:2022](https://www.iso.org/standard/27001). 
+The Dolby.io Millicast platform has been assessed and found to be in accordance with the management system requirements in [ISO/IEC 27001:2022](https://www.iso.org/standard/27001).
 
 ISO 27001 is an internationally recognized standard for information security management systems (ISMS). Dolby.io's conformity to ISO/IEC standards means that we've established systems, plans, and security measures to protect and safely handle user data, along with general information security.
 
@@ -73,13 +73,13 @@ If you'd like confirmation of our certification, please see [the IAF's accredita
 
 Whether the stream has one viewer or hundreds of thousands, the stability of the stream is a top priority. To support stream stability and adaptability, Dolby.io provides several important features.
 
-[Multi-source streaming](/millicast/broadcast/multi-source-broadcasting.md)  
+[Multi-source streaming](/millicast/broadcast/multi-source-broadcasting.md)<br/>
 Add redundancy with multiple independent broadcast sources as part of the same stream. This distribution of multiple audio and video tracks enables the viewer to playback a different feed in case an incoming source becomes unavailable.
 
-[Audio multiplexing](/millicast/playback/audio-multiplexing.md)  
+[Audio multiplexing](/millicast/playback/audio-multiplexing.md)<br/>
 With **multiplexing**, this enables end users to receive multiple audio feeds as part of a single broadcast such that viewers can toggle between different audio tracks, such as variations in language, quality, etc.
 
-[Simulcast](/millicast/distribution/using-webrtc-simulcast.md)  
+[Simulcast](/millicast/distribution/using-webrtc-simulcast.md)<br/>
 **Simulcast** is a mechanism that allows for the distribution of a media stream composed of multiple bitrates and resolutions. The user can then view a stream that has a quality determined by network or device type allowing low-bandwidth conditions to receive an appropriate quality stream for the most stable experience possible in that scenario.
 
 
@@ -87,26 +87,26 @@ With **multiplexing**, this enables end users to receive multiple audio feeds as
 
 
 
-[Backup publishing](/millicast/broadcast/redundant-ingest/index.md)  
+[Backup publishing](/millicast/broadcast/redundant-ingest/index.md)<br/>
 Similar to multi-source streaming, **backup publishing** allows for a parallel broadcast to be ingested from the same encoding source. In case of a failure, the system can fall over to another active backup stream.
 
 ## Scalability
 
 To support global audiences into the hundreds of thousands of viewers, Dolby.io provides features that help with scaling streams to meet those demands without impacting the quality or stability of the stream.
 
-[Multi-region support](/millicast/distribution/multi-region-support/index.md)  
+[Multi-region support](/millicast/distribution/multi-region-support/index.md)<br/>
 We utilize a network of data centers distributed around the globe. This allows streams to maintain ultra-low latency and high scalability to audiences that may be scattered to many different regions.
 
-[Stream syndication](/millicast/distribution/syndication.md)  
+[Stream syndication](/millicast/distribution/syndication.md)<br/>
 Through distribution partners, **syndication** allows you to send the same stream to multiple platforms. A tracking id can be used to correlate and analyze distribution data to monitor bandwidth utilization, viewer attendance with each provider, and other statistics that can help with billing.
 
-[Recordings](/millicast/distribution/stream-recordings/index.mdx)  
+[Recordings](/millicast/distribution/stream-recordings/index.mdx)<br/>
 A live broadcast can be archived by enabling the storage of a recording of the stream.
 
-[Self-signed tokens](/millicast/streaming-dashboard/subscribe-tokens.md#creating-a-self-signed-token)  
+[Self-signed tokens](/millicast/streaming-dashboard/subscribe-tokens.md#creating-a-self-signed-token)<br/>
 To improve performance when tracking many individual streams among your users, you only need to generate one Dolby.io token and can then delegate that authorization by generating new self-signed **JWT tokens** in your application without needing to fetch a new subscriber token from Dolby.io for each new stream.
 
-[Streaming analytics](/millicast/analytics/index.md)  
+[Streaming analytics](/millicast/analytics/index.md)<br/>
 The Dolby.io dashboard provides data-rich information about streaming usage for your individual account. There are also **REST** and **GraphQL** endpoints to generate custom reports and behaviors by querying that data.
 
 # Learn more
