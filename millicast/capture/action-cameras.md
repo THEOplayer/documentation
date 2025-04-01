@@ -8,7 +8,7 @@ Sports and action cameras are designed to capture fast movements or provide a po
 This guide has a few examples:
 
 1. [Using the GoPro Quik App](/millicast/capture/action-cameras.md) using-the-gopro-quik-app)
-2. [Using the GoPro Webcam Utility](/millicast/capture/action-cameras.md)using-the-gopro-webcam-utility)
+2. [Using the GoPro Webcam Utility](/millicast/capture/action-cameras.md#using-the-gopro-webcam-utility)
 
 If you are using an action camera that is not listed, you should be able to use similar settings for configuring streaming with an [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) ingestion source.
 

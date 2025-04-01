@@ -17,7 +17,7 @@ Multi-source broadcasting is accomplished by enabling a token for multi-source a
 
 > 👍 Enable Multi-source
 > 
-> To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.md)advanced-settings)  enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
+> To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.md#advanced-settings)  enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
 > 
 > Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multiview.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md).
 
@@ -57,10 +57,10 @@ See the [Multi-view](/millicast/playback/multiview.md) guide for an explanation 
 
 To configure a multi-source broadcast, you will need to construct a unique URL to configure each of your encoders. Depending on your broadcast protocol and encoder you'll need to understand the parameters to be used.
 
-- [Multi-source RTMP](/millicast/broadcast/multi-source-broadcasting.md)multi-source-rtmp)
-- [Multi-source SRT](/millicast/broadcast/multi-source-broadcasting.md)multi-source-srt)
+- [Multi-source RTMP](/millicast/broadcast/multi-source-broadcasting.md#multi-source-rtmp)
+- [Multi-source SRT](/millicast/broadcast/multi-source-broadcasting.md#multi-source-srt)
 
-See [Publish Parameters](/millicast/broadcast/index.mdx)publish-parameters) for descriptions of the supported broadcast parameters for each protocol.
+See [Publish Parameters](/millicast/broadcast/index.mdx#publish-parameters) for descriptions of the supported broadcast parameters for each protocol.
 
 > 👍 Use Multi-Source Builder
 > 
@@ -73,7 +73,7 @@ See [Publish Parameters](/millicast/broadcast/index.mdx)publish-parameters) for 
 Steps to build a broadcast URL suitable for RTMP encoders:
 
 1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto". 
-2. Gather the **RTMP publish path** and **RTMP publish stream name**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [How to find your RTMP publish URL](/millicast/broadcast/using-rtmp-and-rtmps.md)how-to-find-your-rtmp-publish-url)
+2. Gather the **RTMP publish path** and **RTMP publish stream name**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [How to find your RTMP publish URL](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url)
 
 | RTMP publish path                           | Separator | RTMP publish stream name  |
 | :------------------------------------------ | :-------- | :------------------------ |
@@ -100,7 +100,7 @@ In the hosted player, the `simulcastId` is used to set the video source's on-scr
 Steps to build a broadcast URL suitable for SRT encoders:
 
 1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto".
-2. Gather the **SRT publish path** and **SRT stream ID**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [Generate the SRT publish URL](/millicast/broadcast/using-srt.md)3-generate-the-srt-publish-url).
+2. Gather the **SRT publish path** and **SRT stream ID**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [Generate the SRT publish URL](/millicast/broadcast/using-srt.md#3-generate-the-srt-publish-url).
 
 | SRT publish path                    | Separator | SRT stream ID |
 | :---------------------------------- | :-------- | :------------ |
@@ -140,8 +140,8 @@ srt://srt-phx-1.millicast.com:10000?streamid=myStreamName%253Ft%253D4xd-...vvRrY
 
 There are several ways to broadcast multi-source streams into the dashboard:
 
-- [Publishing with the SDK](/millicast/broadcast/multi-source-broadcasting.md)publishing-with-the-sdk)
-- [Publishing with the hosted broadcaster in the dashboard](/millicast/broadcast/multi-source-broadcasting.md)publishing-with-the-hosted-broadcaster-in-the-dashboard)
+- [Publishing with the SDK](/millicast/broadcast/multi-source-broadcasting.md#publishing-with-the-sdk)
+- [Publishing with the hosted broadcaster in the dashboard](/millicast/broadcast/multi-source-broadcasting.md#publishing-with-the-hosted-broadcaster-in-the-dashboard)
 
 ### Publishing with the SDK
 
@@ -185,7 +185,7 @@ let publisherOptions = MCClientOptions()
 publisherOptions.sourceId = "MySource"
 ```
 
-For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/index.mdx)4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/index.mdx)5-configure-your-publishing-session), and [iOS](/millicast/client-sdks/ios/index.mdx)3-configure-your-publishing-session). 
+For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/index.mdx#4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/index.mdx#5-configure-your-publishing-session), and [iOS](/millicast/client-sdks/ios/index.mdx#3-configure-your-publishing-session). 
 
 > Note: The `sourceId` should be a unique value and by default is undefined. Identical `sourceId` values should only be used for specifying [redundant streams](/millicast/broadcast/redundant-ingest/index.md).
 
@@ -221,12 +221,12 @@ There are multiple ways to playback and consume a multi-view feed:
 
 ### Broadcasting best practices
 
-- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multiview.md)limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
+- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multiview.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
 - If broadcasting with Multi-Bitrate RTMP or SRT and recording is enabled, each quality rendition that you send into the service will be recorded unless you append the `&record=false` flag to your publishing endpoint.
 - If broadcasting with Multi-Bitrate RTMP or SRT, do not send duplicate audio to each layer. If you are unable to send video-only, you can add the `&videoOnly` parameter to have the service ignore the audio.
 
 ### Playback best practices
 
-- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multiview.md)limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
+- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multiview.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
 - In your player client, if you are playing multiple videos at the same time, set smaller tiles to consume the lowest stream quality/bitrate so that the "main" video can utilize bitrate switching.
 - The `priority` parameter lets you set the priority of each feed. For redundant streams the primary feed should be assigned a consistent value for all input feeds, regardless of sourceId or simulcastId, and backups should mirror the primary's sourceID and simulcastId with a lower priority. In the case of any problem with the primary feed, viewers receive the available feed that has the highest priority. Not setting any priorities or setting the same priorities results in receiving the most recently published feed. For more information, see [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md).

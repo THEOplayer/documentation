@@ -11,9 +11,9 @@ The **Multi-source** tab of the Streaming Dashboard is a tool to help you build 
 
 This guide covers the following: 
 
-- [Adding a Source](/millicast/streaming-dashboard/multi-source-builder.md)adding-a-source)
-- [Using the Multi-source Player](/millicast/streaming-dashboard/multi-source-builder.md)using-the-multi-source-player)
-- [Exporting a Multi-source File](/millicast/streaming-dashboard/multi-source-builder.md)exporting-a-multi-source-file)
+- [Adding a Source](/millicast/streaming-dashboard/multi-source-builder.md#adding-a-source)
+- [Using the Multi-source Player](/millicast/streaming-dashboard/multi-source-builder.md#using-the-multi-source-player)
+- [Exporting a Multi-source File](/millicast/streaming-dashboard/multi-source-builder.md#exporting-a-multi-source-file)
 
 ## Adding a source
 
@@ -28,7 +28,7 @@ The **source name** should be a short and descriptive text label. This name will
 
 The **streaming protocol** helps identify the configuration needed for the broadcast. The multi-source builder supports [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast protocols.
 
-By default, the first source you add will be labeled as the _Main_ source. Dolby.io Real-time Streaming limits the aggregate bitrate of all sources to 12 Mbps. The main source is prioritized and allowed to exceed the 12 Mbps limit, and the other sources share any remaining available bandwidth. See the [Multi-view](/millicast/playback/multiview.md)limitations-of-multi-view) guide for examples of bandwidth allocation.
+By default, the first source you add will be labeled as the _Main_ source. Dolby.io Real-time Streaming limits the aggregate bitrate of all sources to 12 Mbps. The main source is prioritized and allowed to exceed the 12 Mbps limit, and the other sources share any remaining available bandwidth. See the [Multi-view](/millicast/playback/multiview.md#limitations-of-multi-view) guide for examples of bandwidth allocation.
 
 
 ![](../assets/img/test-sources.png)
@@ -67,7 +67,7 @@ You can use the[Hosted Player](/millicast/playback/hosted-viewer.md) with multi-
 
 
 
-The embedded player is compatible whether using a CMS like Drupal or Wordpress or more complex custom JavaScript web applications built with frameworks like React, VueJS, or Angular. For more information, see [How to embed the hosted player in a website](/millicast/playback/hosted-viewer.md)how-to-embed-the-hosted-player-in-a-web-site).
+The embedded player is compatible whether using a CMS like Drupal or Wordpress or more complex custom JavaScript web applications built with frameworks like React, VueJS, or Angular. For more information, see [How to embed the hosted player in a website](/millicast/playback/hosted-viewer.md#how-to-embed-the-hosted-player-in-a-web-site).
 
 ## Exporting a multi-source file
 

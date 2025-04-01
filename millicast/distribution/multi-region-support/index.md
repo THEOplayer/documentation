@@ -8,10 +8,10 @@ A traditional CDN needs to cache live stream segments on a network before they a
 
 This guide covers a few examples:
 
-- [How-to Set the Cluster Region Using the Dashboard](/millicast/distribution/multi-region-support/index.md)how-to-set-the-cluster-region-using-the-dashboard)
-- [How-to Identify the Cluster Region for an Active Stream](/millicast/distribution/multi-region-support/index.md)how-to-identify-the-cluster-region-for-an-active-stream)
-- [How-to Get Available Cluster Regions with the REST API](/millicast/distribution/multi-region-support/index.md)how-to-get-the-available-cluster-regions)
-- [How-to Set the Cluster Region for a Publish Token with the REST API](/millicast/distribution/multi-region-support/index.md)how-to-set-the-cluster-region-for-a-publish-token)
+- [How-to Set the Cluster Region Using the Dashboard](/millicast/distribution/multi-region-support/index.md#how-to-set-the-cluster-region-using-the-dashboard)
+- [How-to Identify the Cluster Region for an Active Stream](/millicast/distribution/multi-region-support/index.md#how-to-identify-the-cluster-region-for-an-active-stream)
+- [How-to Get Available Cluster Regions with the REST API](/millicast/distribution/multi-region-support/index.md#how-to-get-the-available-cluster-regions)
+- [How-to Set the Cluster Region for a Publish Token with the REST API](/millicast/distribution/multi-region-support/index.md#how-to-set-the-cluster-region-for-a-publish-token)
 
 > 👍 Geo-Cascading
 > 

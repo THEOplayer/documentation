@@ -6,10 +6,10 @@ Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-so
 
 To get started building multi-stream experiences it's important to understand how Dolby.io handles multi-source playback. This guide outlines:
 
-- [How to manage source selection](/millicast/playback/source-and-layer-selection.md)managing-source-and-layer-selection)
-- [How to project feeds](/millicast/playback/source-and-layer-selection.md)project-feeds)
-- [Media layer forwarding](/millicast/playback/source-and-layer-selection.md)media-layer-forwarding)
-- [How to dynamically manage viewer tracks](/millicast/playback/source-and-layer-selection.md)dynamic-viewer-track)
+- [How to manage source selection](/millicast/playback/source-and-layer-selection.md#managing-source-and-layer-selection)
+- [How to project feeds](/millicast/playback/source-and-layer-selection.md#project-feeds)
+- [Media layer forwarding](/millicast/playback/source-and-layer-selection.md#media-layer-forwarding)
+- [How to dynamically manage viewer tracks](/millicast/playback/source-and-layer-selection.md#dynamic-viewer-track)
 
 ## Managing source selection
 
@@ -22,7 +22,7 @@ Dolby.io streaming supports scalable WebRTC streaming thanks to a "smart" cascad
 - **Publisher nodes**: These nodes manage [the ingest of multiple sources](/millicast/broadcast/multi-source-broadcasting.md) during the broadcast. They can then forward these feeds to the CDN for the Viewer node to manage.
 - **Viewer nodes**: Viewer nodes are created depending on the quantity and location of viewers, allowing Dolby.io to support large-scale global streams. When rendering streams in your app or platform, you can communicate with the viewer node to negotiate what feeds to project and simulcast layers to receive.
 
-When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/viewer-events.md)using-events) to it:
+When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/viewer-events.md#using-events) to it:
 
 ```javascript
 const tokenGenerator = () => millicast.Director.getSubscriber({
@@ -120,7 +120,7 @@ async select (layer = {}) {
 
 The layer information available for each video source is provided periodically by the `layers` event as shown above. If you want to switch back to the automatic layer selection, you just need to send a [project](https://millicast.github.io/millicast-sdk/View.html#project) or [select](https://millicast.github.io/millicast-sdk/View.html#select) command without layer details.
 
-To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/client-sdks/web.mdx)broadcast-events) and then select the active layer using the following command:
+To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/client-sdks/web.mdx#broadcast-events) and then select the active layer using the following command:
 
 ```javascript
 millicastView.select({'encodingId': '1'});

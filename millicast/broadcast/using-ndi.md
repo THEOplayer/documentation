@@ -6,10 +6,10 @@ slug: /using-ndi
 
 This guide will outline four options for NDI delivery:
 
-1. [How-to Publish NDI with Dolby.io Dashboard Broadcaster](/millicast/broadcast/using-ndi.md)how-to-publish-ndi-with-dolbyio-dashboard-broadcaster)
-2. [How-to Publish NDI with OBS-WebRTC](/millicast/broadcast/using-ndi.md)how-to-publish-ndi-with-obs-webrtc)
-3. [How-to Publish Video Editor with NDI](/millicast/broadcast/using-ndi.md)how-to-publish-video-editor-with-ndi)
-4. [How-to Publish NDI with vMix](/millicast/broadcast/using-ndi.md)how-to-publish-ndi-with-vmix)
+1. [How-to Publish NDI with Dolby.io Dashboard Broadcaster](/millicast/broadcast/using-ndi.md#how-to-publish-ndi-with-dolbyio-dashboard-broadcaster)
+2. [How-to Publish NDI with OBS-WebRTC](/millicast/broadcast/using-ndi.md#how-to-publish-ndi-with-obs-webrtc)
+3. [How-to Publish Video Editor with NDI](/millicast/broadcast/using-ndi.md#how-to-publish-video-editor-with-ndi)
+4. [How-to Publish NDI with vMix](/millicast/broadcast/using-ndi.md#how-to-publish-ndi-with-vmix)
 
 # NDI publishing
 

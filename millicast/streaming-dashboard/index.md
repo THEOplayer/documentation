@@ -157,7 +157,7 @@ Located in the top right corner of the dashboard, under your ID is the_ Profile_
 
 
 
-- The_ Logging in_ tab which allows you to update your password and [configure two-factor authentication](/millicast/streaming-dashboard/index.md)two-factor-authentication).
+- The_ Logging in_ tab which allows you to update your password and [configure two-factor authentication](/millicast/streaming-dashboard/index.md#two-factor-authentication).
 
 ## Settings
 

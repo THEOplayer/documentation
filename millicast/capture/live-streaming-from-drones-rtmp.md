@@ -7,8 +7,8 @@ Using a drone, unmanned aerial vehicles (UAVs), or other flying cameras can be a
 
 This guide includes some examples:
 
-1. [Capture from a DJI Mavic Mini](/millicast/capture/live-streaming-from-drones-rtmp.md)capture-from-a-dji-mavic-mini)
-2. [Record Drone Footage](/millicast/capture/live-streaming-from-drones-rtmp.md)record-drone-footage)
+1. [Capture from a DJI Mavic Mini](/millicast/capture/live-streaming-from-drones-rtmp.md#capture-from-a-dji-mavic-mini)
+2. [Record Drone Footage](/millicast/capture/live-streaming-from-drones-rtmp.md#record-drone-footage)
 
 If you are using a drone that is not listed, you should be able to use similar settings for configuring streaming with an [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) ingestion source.
 
@@ -111,7 +111,7 @@ Example:  https://viewer.millicast.com/?streamId=k9Mwad/multiview
 
 ## Record drone footage
 
-By configuring your publish token to [record](/millicast/distribution/stream-recordings/index.mdx) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/distribution/stream-recordings/index.mdx)managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
+By configuring your publish token to [record](/millicast/distribution/stream-recordings/index.mdx) footage you can maintain a copy of anything that is captured to your [Dolby.io Recording Archive](/millicast/distribution/stream-recordings/index.mdx#managing-recording). This feature can incur additional charges, see the [pricing](https://dolby.io/pricing) page for additional detail.
 ### Video: Real-time Streaming drone latency test
 
 This example demonstrates an archive recording captured from a DJI Mavic for a 1920x1080 latency test.

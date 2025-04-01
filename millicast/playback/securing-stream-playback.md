@@ -2,13 +2,13 @@
 title: "Securing Stream Playback"
 slug: /securing-stream-playback
 ---
-[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled. 
+[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled. 
 
-To view a secured stream you first need to create a Subscribe token. With your Subscribe token in hand, you can then use it to authenticate a connection and view the broadcast. This guide outlines [how to create a token](/millicast/playback/securing-stream-playback.md)creating-a-subscribe-token-to-playback-a-secure-stream) and [how to view a secure stream](/millicast/playback/securing-stream-playback.md)viewing-a-secured-stream).
+To view a secured stream you first need to create a Subscribe token. With your Subscribe token in hand, you can then use it to authenticate a connection and view the broadcast. This guide outlines [how to create a token](/millicast/playback/securing-stream-playback.md#creating-a-subscribe-token-to-playback-a-secure-stream) and [how to view a secure stream](/millicast/playback/securing-stream-playback.md#viewing-a-secured-stream).
 
 # Creating a subscribe token to playback a secure stream
 
-To secure broadcast playback, you need to enable the **Secure Viewer** setting when creating a Publishing token. For more information on enabling Secure Viewer, explore the [Creating a Publishing Token guide](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token).
+To secure broadcast playback, you need to enable the **Secure Viewer** setting when creating a Publishing token. For more information on enabling Secure Viewer, explore the [Creating a Publishing Token guide](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token).
 
 Subscribe tokens are used to authenticate access to a "Secure stream". When enabled, streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains. Even though restricting access to streamed content in selected geo-locations is possible using the publish token, the subscribe token lets you add additional geo-blocking rules.
 
@@ -16,7 +16,7 @@ To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/mill
 
 `fff04a5a1c02b2b8d48a9133e8461985aa482066cc3e9ed487baaac89588e26f`
 
-With your token in hand, proceed to [Viewing a Secured Stream](/millicast/playback/securing-stream-playback.md)viewing-a-secured-stream).
+With your token in hand, proceed to [Viewing a Secured Stream](/millicast/playback/securing-stream-playback.md#viewing-a-secured-stream).
 
 # Viewing a secured stream
 
@@ -56,7 +56,7 @@ If you attempt to join the stream without a valid Subscribe token, you'll receiv
 
 > 🚧 Subscribe token exposed in the URL
 > 
-> For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/token-security.md)ip-filters), users can share the URL  and by extention the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to acomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md)preventing-stream-sharing-with-subscribe-tokens).
+> For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/token-security.md#ip-filters), users can share the URL  and by extention the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to acomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
 
 ### Viewing a secured stream with the embedded viewer
 
@@ -68,7 +68,7 @@ You can also embed the Dolby.io Hosted Viewer into your webpage as an `<iframe><
 
 ## Preventing stream sharing with subscribe tokens
 
-Whilst using the Hosted Viewer is a great option, you may have noticed the Subscribe token is exposed in the URL. For a truly secure playback experience, viewers should be served a Subscribe token that is unique to them and can't be shared. This is accomplished with the [Binds IP on Usage](/millicast/distribution/access-control/token-security.md)bind-ip-on-usage) feature, which binds the Subscribe token to the IP address of the first person who joins the stream with that specific Subscribe token. 
+Whilst using the Hosted Viewer is a great option, you may have noticed the Subscribe token is exposed in the URL. For a truly secure playback experience, viewers should be served a Subscribe token that is unique to them and can't be shared. This is accomplished with the [Binds IP on Usage](/millicast/distribution/access-control/token-security.md#bind-ip-on-usage) feature, which binds the Subscribe token to the IP address of the first person who joins the stream with that specific Subscribe token. 
 
 **For example:**
 
@@ -76,11 +76,11 @@ Whilst using the Hosted Viewer is a great option, you may have noticed the Subsc
 > `https://viewer.millicast.com?streamId=DevAcc/WorldCup2023&token=fff04a5a1c02b2b8d48a9133e84619889588e26f`  
 > which she uses to join the stream. 
 >
-> Because this token has [Binds IP on Usage](/millicast/distribution/access-control/token-security.md)bind-ip-on-usage) enabled and set to bind to the first IP address, her IP address is saved by the Dolby.io CDN. If Angelik were to then share the URL to Jayson, he would be unable to join the stream since his IP address doesn't match Angelik's. 
+> Because this token has [Binds IP on Usage](/millicast/distribution/access-control/token-security.md#bind-ip-on-usage) enabled and set to bind to the first IP address, her IP address is saved by the Dolby.io CDN. If Angelik were to then share the URL to Jayson, he would be unable to join the stream since his IP address doesn't match Angelik's. 
 >
 > If Angelik were to leave the stream and return an hour later, she would still be able to join the stream because her IP address is associated with the token.
 
-To learn more about other access control features you can enable for your Subscribe token, check out the [Access Control guide](/millicast/distribution/access-control/index.md)subscribing-access-control).
+To learn more about other access control features you can enable for your Subscribe token, check out the [Access Control guide](/millicast/distribution/access-control/index.md#subscribing-access-control).
 
 ## Viewing secure streams with your own viewer app
 
@@ -274,7 +274,7 @@ Using code from the [2. Create a Streaming Web App](/millicast/getting-started/c
 </html>
 ```
 
-When you run the web app, you'll see three text boxes to input an [account ID](/millicast/streaming-dashboard/managing-your-tokens.md), [Livestream Name](/millicast/streaming-dashboard/managing-your-tokens.md), and [API Secret key](/millicast/streaming-dashboard/index.md)settings). 
+When you run the web app, you'll see three text boxes to input an [account ID](/millicast/streaming-dashboard/managing-your-tokens.md), [Livestream Name](/millicast/streaming-dashboard/managing-your-tokens.md), and [API Secret key](/millicast/streaming-dashboard/index.md#settings). 
 
 ![](https://files.readme.io/083b1aa-image.png)
 

@@ -13,13 +13,13 @@ Broadcast syndication defines a process for leasing the rights to distribute con
 The following is an **example workflow** for setting up syndicated substreams:
 
 1. [Create a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md) for your broadcast. Make sure this token has the **secured** setting enabled.
-2. Before the broadcast begins, create a [Subscribe token with tracking](/millicast/distribution/syndication.md)creating-a-subscribe-token-with-tracking-id) for each 3rd party you are syndicating a stream. These Subscribe tokens function as "master" tokens for each platform you are syndicating content. The master Subscribe token can be used by the 3rd party to [self-sign other Subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md)self-signing-subscribe-tokens) for their users if they need to secure their streams. 
-3. Begin [broadcasting](/millicast/broadcast/index.mdx) your premium content via Dolby.io. The 3rd parties can use the provided Subscribe token to [access the stream](/millicast/playback/index.mdx) for their viewers or to [sign more Subscribe tokens for their viewers](/millicast/streaming-dashboard/subscribe-tokens.md)self-signing-subscribe-tokens).
-4. When the stream is running, the media server will [gather statistics](/millicast/distribution/syndication.md)viewing-statistics) for the viewer associated with the tracking ID information. Since Dolby.io charges based on bandwidth, this data can be used to bill the 3rd parties relative to their consumed data.
+2. Before the broadcast begins, create a [Subscribe token with tracking](/millicast/distribution/syndication.md#creating-a-subscribe-token-with-tracking-id) for each 3rd party you are syndicating a stream. These Subscribe tokens function as "master" tokens for each platform you are syndicating content. The master Subscribe token can be used by the 3rd party to [self-sign other Subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens) for their users if they need to secure their streams. 
+3. Begin [broadcasting](/millicast/broadcast/index.mdx) your premium content via Dolby.io. The 3rd parties can use the provided Subscribe token to [access the stream](/millicast/playback/index.mdx) for their viewers or to [sign more Subscribe tokens for their viewers](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens).
+4. When the stream is running, the media server will [gather statistics](/millicast/distribution/syndication.md#viewing-statistics) for the viewer associated with the tracking ID information. Since Dolby.io charges based on bandwidth, this data can be used to bill the 3rd parties relative to their consumed data.
 
 ### RTMP syndication
 
-In certain circumstances, you may also choose to distribute content with RTMP to share on public commercial streaming platforms. Follow the [Simulcast WebRTC and RTMP on OBS guide](/millicast/software-encoders/using-obs.md)simulcast-both-webrtc-and-rtmp-contributing-sources) to learn how you can use OBS to create a real-time WebRTC stream and an RTMP stream simultaneously. It is important to note that the WebRTC stream will be real-time (_\<500ms_), while the RTMP stream may have more delay (_6s - 30s_).
+In certain circumstances, you may also choose to distribute content with RTMP to share on public commercial streaming platforms. Follow the [Simulcast WebRTC and RTMP on OBS guide](/millicast/software-encoders/using-obs.md#simulcast-both-webrtc-and-rtmp-contributing-sources) to learn how you can use OBS to create a real-time WebRTC stream and an RTMP stream simultaneously. It is important to note that the WebRTC stream will be real-time (_\<500ms_), while the RTMP stream may have more delay (_6s - 30s_).
 
 ## How-to track syndication
 
@@ -31,8 +31,8 @@ The Streaming platform lets you track the following data while using syndication
 
 To manage viewing access, there are two types of tokens you use to syndicate:
 
-- [Subscribe tokens](/millicast/streaming-dashboard/token-api.md)subscribe-tokens) can be used to restrict access for "who" may view a stream. You can assign a `trackingId` to each token for correlating usage.
-- [Self-signed Subscribe tokens](/millicast/streaming-dashboard/token-api.md)self-sign-subscribe-tokens) are JSON Web Tokens (JWT) that can be generated using a single _subscribe token_ as the parent. These tokens can also be used to restrict access for "who" may view a stream but are instead created, signed, and managed by the content owner or distributor.
+- [Subscribe tokens](/millicast/streaming-dashboard/token-api.md#subscribe-tokens) can be used to restrict access for "who" may view a stream. You can assign a `trackingId` to each token for correlating usage.
+- [Self-signed Subscribe tokens](/millicast/streaming-dashboard/token-api.md#self-sign-subscribe-tokens) are JSON Web Tokens (JWT) that can be generated using a single _subscribe token_ as the parent. These tokens can also be used to restrict access for "who" may view a stream but are instead created, signed, and managed by the content owner or distributor.
 
 ### Creating a Subscribe token with tracking ID
 
@@ -60,7 +60,7 @@ To use the [Create Token](/millicast/api/subscribe-token-v-1-create-token.api.md
 > 
 > The published stream and Subscribe token must originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/millicast/distribution/multi-region-support/index.md).
 
-Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](https://dashboard.dolby.io/)  when [creating a Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md)creating-a-subscriber-token). 
+Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](https://dashboard.dolby.io/)  when [creating a Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md#creating-a-subscriber-token). 
 
 
 ![](../assets/img/sub2.png)
@@ -69,7 +69,7 @@ Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](http
 
 ### Tracking with self-signed Subscribe tokens
 
-Once you have created a Subscribe token with a tracking ID, you can self-sign the token by following [this procedure](/millicast/streaming-dashboard/subscribe-tokens.md)creating-a-self-signed-token). Be aware of the [limitations](/millicast/streaming-dashboard/subscribe-tokens.md)limitations).
+Once you have created a Subscribe token with a tracking ID, you can self-sign the token by following [this procedure](/millicast/streaming-dashboard/subscribe-tokens.md#creating-a-self-signed-token). Be aware of the [limitations](/millicast/streaming-dashboard/subscribe-tokens.md#limitations).
 
 ### Viewing statistics
 

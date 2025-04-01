@@ -6,10 +6,10 @@ To [broadcast](/millicast/broadcast/index.mdx) a real-time stream the connection
 
 This guide outlines the following:
 
-1. [How-to Create a Publish Token in the Streaming Dashboard](/millicast/streaming-dashboard/managing-your-tokens.md)create-a-publish-token)
-2. [How-to Manage Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md)managing-and-editing-existing-publish-tokens)
-3. [Deleting a Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md)deleting-a-token)
-4. [Using the Token REST API](/millicast/streaming-dashboard/managing-your-tokens.md)using-the-token-api)
+1. [How-to Create a Publish Token in the Streaming Dashboard](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token)
+2. [How-to Manage Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md#managing-and-editing-existing-publish-tokens)
+3. [Deleting a Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md#deleting-a-token)
+4. [Using the Token REST API](/millicast/streaming-dashboard/managing-your-tokens.md#using-the-token-api)
 
 > 📘 Subscribe Tokens
 > 
@@ -63,8 +63,8 @@ Let's go over each section in a bit more detail:
 
 You will also see an **Advanced tab** at the top of the token creation interface; in this tab, you can configure more advanced settings.
 
-- [Allowed Origins:](/millicast/distribution/access-control/token-security.md)allowed-origins) If specified, only the domains listed will be allowed in requests to [Director API](/millicast/api/director/director-publish.api.mdx). Wildcard subdomains are also allowed, such as _"\*.demo.com"_. When unspecified (empty), there are no domain restrictions.
-- [IP Filter Type:](/millicast/distribution/access-control/token-security.md)ip-filters) 
+- [Allowed Origins:](/millicast/distribution/access-control/token-security.md#allowed-origins) If specified, only the domains listed will be allowed in requests to [Director API](/millicast/api/director/director-publish.api.mdx). Wildcard subdomains are also allowed, such as _"\*.demo.com"_. When unspecified (empty), there are no domain restrictions.
+- [IP Filter Type:](/millicast/distribution/access-control/token-security.md#ip-filters) 
   - **Allowed IP Addresses:** Allows you to specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage:** If specified, Bind IPs on usage will bind the token to the first _X_ IP addresses used with a token in requests to [Director API](/millicast/api/publish-token-v-1-read-token.api.mdx), thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with the _AllowedIpAddresses_ option. Not currently supported with RTMP.
 - [Cluster region:](/millicast/distribution/multi-region-support/index.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If `Auto` is selected, the regional cluster will be selected based on the publisher's location. 
@@ -83,7 +83,7 @@ Once created, your Publish token can be used to broadcast in a variety of differ
 
 ## Managing and editing existing publish tokens
 
-Once a Pubish token is created, it is displayed on the **Live Broadcast** page. From this page, you can [start a broadcast using the Dashboard Broadcaster](/millicast/getting-started/using-the-dashboard.md)b-start-broadcast), enable or disable, delete, or edit the settings for each Publish token.
+Once a Pubish token is created, it is displayed on the **Live Broadcast** page. From this page, you can [start a broadcast using the Dashboard Broadcaster](/millicast/getting-started/using-the-dashboard.md#b-start-broadcast), enable or disable, delete, or edit the settings for each Publish token.
 
 
 ![](../assets/img/tempsnip.png)
@@ -109,7 +109,7 @@ Once opened, you will see multiple tabs to explore.
 8. Multi-source - a convenient tool for setting up [multi-source](/millicast/broadcast/multi-source-broadcasting.md) contribution
 ### 1\. Token details
 
-The **Token details** tab allows you to view and edit settings specified during token creation. For a full list of these settings and their definitions, see [Creating a Publishing token](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token). The Token details page also includes the **Publish token** string and the **Account ID** string, which can both be copied and used for [starting a broadcast](/millicast/broadcast/index.mdx). 
+The **Token details** tab allows you to view and edit settings specified during token creation. For a full list of these settings and their definitions, see [Creating a Publishing token](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token). The Token details page also includes the **Publish token** string and the **Account ID** string, which can both be copied and used for [starting a broadcast](/millicast/broadcast/index.mdx). 
 
 
 ![](../assets/img/publish-token-details.png)
@@ -122,7 +122,7 @@ The **Token details** tab allows you to view and edit settings specified during 
 
 ### 2\. Token streams
 
-As mentioned in [Creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md)creating-a-publishing-token), when a stream name is specified, it will require the user of the token to use a specific stream name in order to broadcast. Within the management view, you are able to add and delete stream names as you see fit.
+As mentioned in [Creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md#creating-a-publishing-token), when a stream name is specified, it will require the user of the token to use a specific stream name in order to broadcast. Within the management view, you are able to add and delete stream names as you see fit.
 
 To add a new name, simply click on the **(+) CREATE** button on the Token Streams tab, which will initiate a popup similar to the add token interface.
 
@@ -184,7 +184,7 @@ The API tab includes information needed to publish a stream with the [Client SDK
 - **Publish token**:
   - **Publishing token**: The Publishing token is a unique string that is required for authenticating a request to publish via the Dolbyio servers. This string should be protected and **if exposed, should be cycled immediately** to prevent unwanted broadcasts and charges.
   - **Stream ID**: The Stream ID is a combination of your _Account ID_ and _Stream name_ used for [publishing](/millicast/getting-started/creating-real-time-streaming-web-app.md) or viewing the stream.  If your stream** is not secured** with a [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md), you'll be able to view it at `https://viewer.millicast.com?streamId=[Account ID]/[Stream name]` when it is live.
-  - **Stream name**: Your Stream name is used to manage and distinguish streams using the same token. You can edit the Stream name in the "[Token streams](/millicast/streaming-dashboard/managing-your-tokens.md)2-token-streams)" tab. 
+  - **Stream name**: Your Stream name is used to manage and distinguish streams using the same token. You can edit the Stream name in the "[Token streams](/millicast/streaming-dashboard/managing-your-tokens.md#2-token-streams)" tab. 
   - **Account ID**: The Account ID is a unique account identifier used for [publishing](/millicast/getting-started/creating-real-time-streaming-web-app.md) and viewing streams. 
   - **Token ID**: The Token ID can be used for [Reading](/millicast/api/publish-token-v-1-read-token.api.mdx), [Deleting](/millicast/api/publish-token-v-1-delete-token.api.mdx), and [Updating](/millicast/api/publish-token-v-1-update-token.api.mdx) Publish tokens via the [REST APIs](/millicast/api/publish-token-v-1-read-token.api.mdx).
 - **Sample API calls**: The Sample API calls section includes some basic examples of [Publishing](../streaming-dashboard/token-api.md#creating-publishing-tokens) and [Subscribing](../streaming-dashboard/token-api.md#creating-subscribe-tokens) calls that can be made with the credentials provided in the Publish token section. To learn more about API calls, explore the [Token API](../streaming-dashboard/token-api.md) guide.

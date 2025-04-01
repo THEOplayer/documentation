@@ -54,14 +54,14 @@ The details page for each stream provides the following ingest statistics:
 - **ID**:  Unique numerical identifier to identify feeds in Live Monitoring dashboard.
 - **Source name**: The name of the source. If a source has been set as the main source by not specifying a `sourceId`(for WebRTC streams) or `simulcastID` (for RTMP or SRT streams), the Main Source tag is displayed, this is the same tag used when [configuring multiple publishing sources](/millicast/streaming-dashboard/multi-source-builder.md).
 - **Resolution**: The video resolution.
-- **Priority**: Indicates the [priority](/millicast/broadcast/redundant-ingest/index.md)4-set-priorities) set for the feed.
+- **Priority**: Indicates the [priority](/millicast/broadcast/redundant-ingest/index.md#4-set-priorities) set for the feed.
 - **Type**: The broadcast protocol - RTMP, SRT, or WebRTC.
 - **Video bitrate**: The ingest video bitrate measured in kbps.
 - **Audio bitrate**: The ingest audio bitrate measured in kbps.
 - **FPS**: Frames per second.
 - **RTT**: The round trip time measured in ms. A lower RTT value is preferred.
 - **Packet loss**: The ratio of number of packets lost to the number of packets received over an average of five seconds. This value is measured as a percentage. Note: For streams using the type RTMP, packet loss will always be 0.
-- **B Frames**: Indicates the presence of b-frames in the feed. For best results, we recommend disabling b-frames in your feed. For more information, see [Configuring Simulcast](/millicast/distribution/using-webrtc-simulcast.md)configuring-simulcast).
+- **B Frames**: Indicates the presence of b-frames in the feed. For best results, we recommend disabling b-frames in your feed. For more information, see [Configuring Simulcast](/millicast/distribution/using-webrtc-simulcast.md#configuring-simulcast).
 - **Video codec**: The video codec detected.
 - **Audio codec**: The audio codec detected.
 - **Publishing started**: The day, month, year, and time the feed was created.
