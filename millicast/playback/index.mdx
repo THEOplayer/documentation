@@ -3,6 +3,7 @@ title: "Playback"
 slug: /playback
 ---
 
+import DocCard from '@theme/DocCard';
 import DocCardList from '@theme/DocCardList';
 
 The final stage of the streaming workflow is taking the stream and playing it back for the end user. Similar to broadcasting, decoding the stream for playback is supported with a viewer for a wide range of devices and environments.
@@ -25,19 +26,18 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 
 # Start building
 
-<div class="dolbyio-cards-container" style={{width: "50%"}}>
-
-  <a class="dolbyio-card dolbyio-card-1" href="/streaming-apis/docs/getting-started">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Getting Started</div>
-    <div class="dolbyio-card-description">
-      Quick start for playback of a stream in your application.
-    </div>
-  </a>
-
-</div>
+<DocCard
+  item={{
+    type: 'link',
+    href: '/millicast/getting-started',
+    docId: 'getting-started/index',
+    customProps: {
+      icon: '🚀',
+    },
+    label: 'Getting Started',
+    description: 'Quick start for playback of a stream in your application.',
+  }}
+/>
 
 ## Client SDKs
 

@@ -13,51 +13,59 @@ Deliver 4k video and audio streams to massive audiences while maintaining under 
 
 # Real-time Streaming
 
-<DocCard item={{
+<DocCard
+  item={{
     type: 'link',
     href: '/millicast/capture/',
     customProps: {
-        icon: '🎥',
+      icon: '🎥',
     },
     label: 'Capture',
     description: 'Capture audio and video from a wide range of devices.',
-  }} />
+  }}
+/>
 
 <br />
 
-<DocCard item={{
+<DocCard
+  item={{
     type: 'link',
     href: '/millicast/broadcast/',
     customProps: {
-        icon: '📡',
+      icon: '📡',
     },
     label: 'Broadcast',
     description: 'Encode content for broadcasting.',
-  }} />
+  }}
+/>
 
 <br />
 
-<DocCard item={{
+<DocCard
+  item={{
     type: 'link',
     href: '/millicast/distribution/',
     customProps: {
-        icon: '🚚',
+      icon: '🚚',
     },
     label: 'Distribution',
     description: 'Distribute WebRTC at scale with our WebRTC CDN.',
-  }} />
+  }}
+/>
 
 <br />
 
-<DocCard item={{
+<DocCard
+  item={{
     type: 'link',
     href: '/millicast/playback/',
     customProps: {
-        icon: '▶️',
+      icon: '▶️',
     },
     label: 'Playback',
     description: 'Decode content for any device with our client SDKs.',
-  }} />
+  }}
+/>
 
 <br />
 
@@ -97,16 +105,18 @@ Many devices are able to capture a compatible media stream encoding:
 
 Check with your specific hardware provider for direct support of WebRTC or one of these common device interfaces.
 
-<div>
-  <div class="small-text-only-btn-container">
-
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/capture">
-      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Capture Guide</div>
-    </a>
-
-  </div>
-</div>
-
+<DocCard
+  item={{
+    type: 'link',
+    href: '/millicast/capture',
+    docId: 'capture/index',
+    customProps: {
+      icon: '➡️',
+    },
+    label: 'Continue to the Capture Guide',
+    description: '',
+  }}
+/>
 
 ## Broadcast encoded media
 
@@ -126,17 +136,18 @@ The Dolby.io CDN can ingest streams encoded in a few main formats:
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
-<div>
-  <div class="small-text-only-btn-container">
-
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/broadcast">
-      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Broadcast Guide</div>
-    </a>
-
-  </div>
-</div>
-
-
+<DocCard
+  item={{
+    type: 'link',
+    href: '/millicast/broadcast',
+    docId: 'broadcast/index',
+    customProps: {
+      icon: '➡️',
+    },
+    label: 'Continue to the Broadcast Guide',
+    description: '',
+  }}
+/>
 
 ## Distribution with WebRTC CDN
 
@@ -154,15 +165,18 @@ The Dolby.io Streaming CDN offers a range of server-side features that users can
 
 Distribution of streaming content requires scalability, stability, and security along with a collection of robust features including stream recordings, multi-source streams, multi-bitrate delivery, backup publishing, stream syndication, and streaming analytics.
 
-<div>
-  <div class="small-text-only-btn-container">
-
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/distribution">
-      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Distribution Guide</div>
-    </a>
-
-  </div>
-</div>
+<DocCard
+  item={{
+    type: 'link',
+    href: '/millicast/distribution',
+    docId: 'distribution/index',
+    customProps: {
+      icon: '➡️',
+    },
+    label: 'Continue to the Distribution Guide',
+    description: '',
+  }}
+/>
 
 ## Playback streaming media
 
@@ -184,13 +198,15 @@ The final component of the streaming workflow is taking the stream, after it has
 
 </div>
 
-<div>
-  <div class="small-text-only-btn-container">
-
-    <a class="small-text-only-btn" style={{width: "50%", backgroundColor: "rgba(81,111,247,.2)"}} href="/millicast/playback">
-      <div class="model-card"><span style={{fontSize: "18px"}}>📚</span> Continue to the Playback Guide</div>
-    </a>
-
-  </div>
-</div>
-
+<DocCard
+  item={{
+    type: 'link',
+    href: '/millicast/playback',
+    docId: 'playback/index',
+    customProps: {
+      icon: '➡️',
+    },
+    label: 'Continue to the Playback Guide',
+    description: '',
+  }}
+/>

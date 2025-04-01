@@ -3,6 +3,7 @@ title: "Distribution"
 slug: /distribution
 ---
 
+import DocCard from '@theme/DocCard';
 import DocCardList from '@theme/DocCardList';
 
 The Dolby.io Streaming Content Delivery Network (CDN) offers a range of server-side features that users can toggle and adjust via the REST APIs or your account Dashboard to ensure streams are secure, stable, and scalable.
@@ -21,20 +22,18 @@ Distribution of streaming content requires scalability, stability, and security 
 
 # Start building
 
-<div class="dolbyio-cards-container" style={{width: "50%"}}>
-
-  <a class="dolbyio-card dolbyio-card-1" href="/streaming-apis/docs/getting-started">
-    <div class="dolbyio-card-image">
-      <img width="40px" class="dolbyio-card-svg-icon" src="https://files.readme.io/dde6508-GettingStarted-default.svg"/>
-    </div>
-    <div class="dolbyio-card-header">Getting Started</div>
-    <div class="dolbyio-card-description">
-      Quick start for using REST APIs to control content distribution.
-    </div>
-  </a>
-
-</div>
-
+<DocCard
+  item={{
+    type: 'link',
+    href: '/millicast/getting-started',
+    docId: 'getting-started/index',
+    customProps: {
+      icon: '🚀',
+    },
+    label: 'Getting Started',
+    description: 'Quick start for using REST APIs to control content distribution.',
+  }}
+/>
 
 # Distribution of streaming content
 
