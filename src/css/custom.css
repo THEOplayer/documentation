@@ -85,9 +85,15 @@
   font-weight: var(--ifm-font-weight-medium);
 }
 
+/* Fix centering of logo because of the descenders on "y" and "p" */
+.navbar__logo img {
+  margin-top: 0.1rem;
+}
+
 /* Border beneath active navbar link and dropdown */
 .navbar__link,
 .dropdown {
+  border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
 }
 
