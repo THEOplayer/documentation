@@ -435,7 +435,8 @@ const config: Config = {
   staticDirectories: ['static', 'theoplayer/static', 'open-video-ui/external/web-ui/docs/static'],
 
   themeConfig: {
-    image: 'img/opengraph.png',
+    // TODO OpenGraph image for OptiView?
+    // image: 'img/opengraph.png',
     announcementBar: process.env.DOCUSAURUS_PR_NUMBER
       ? {
           id: 'pr_preview',
