@@ -56,7 +56,7 @@ You can switch from the top "_Basic_" tab to the "_Advanced_" tab in the token c
   - **IP Address**: May specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage**: If specified, will bind the token to the first **X** IP addresses used with a token in requests to Director API, thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with "IP Addresses" option. Not currently supported with RTMP.
 - [Cluster region:](/millicast/distribution/multi-region-support/index.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If Auto is selected, the regional cluster will be selected based on the publisher's location. 
-- [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.md) Enables blocking by location at a country level for this specific token.
+- [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.mdx) Enables blocking by location at a country level for this specific token.
 
 
 ![](../assets/img/subscribe-token-add.png)

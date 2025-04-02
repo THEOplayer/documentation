@@ -1,6 +1,7 @@
 ---
 title: "Allowed Origins"
 slug: /token-security
+sidebar_position: 1
 ---
 Impose limits on who may use a token to broadcast or view a stream by defining rules based on the domain name or IP address in which the request originated. **Allowed Origins** enables defining specific domain names or sub-domain patterns that any request must originate from. Similarly, with **IP Address Filters** you can define rules that limit access by specifying the network IP address.
 
@@ -20,20 +21,21 @@ This approach helps prevent unauthorized usage of tokens.
 
 You can manage allowed origins by changing settings from the user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
-> 👍 Getting Started
-> 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+:::
 
 Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can edit the _Allowed origins_ to specify a list of domain names.
 
+import DashboardAllowedOrigins from '../../assets/img/dashboard-allowed-origins.png';
 
-![](../../assets/img/dashboard-allowed-origins.png)
+<div class="center-container">
+    <img src={DashboardAllowedOrigins} width="600" />
+</div>
 
-
-
-> 🚧 Restricting Viewers
-> 
-> By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by origination, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
+:::caution Restricting Viewers
+By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by origination, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
+:::
 
 ## IP filters
 
@@ -42,9 +44,9 @@ Setting up an IP filter as a means of [access control](/millicast/distribution/a
 - If you have known _static_ IP addresses that do not change, you can identify specific _**allowed IP addresses**_.
 - If the IP address is  _unknown_ or _dynamic_ and might change between sessions, you can _**bind IP after usage**_ so that the IP address of any initial requests are accepted and the IP address is bound to the token. Any additional usage from that IP address will continue to be accepted but subsequent IP addresses would be rejected.
 
-> ❗️ IP Filters with RTMP
-> 
-> This access control method is not supported when using RTMP.
+:::danger IP Filters with RTMP
+This access control method is not supported when using RTMP.
+:::
 
 ### Allowed IP addresses
 
@@ -72,22 +74,23 @@ _For example_, if you want to be able to share a stream with a specific end-user
 
 You can manage IP filters by changing settings from the user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
-> 👍 Getting Started
-> 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+:::
 
 Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can change the _IP filter type_ from the dropdown.
 
+import DashboardIpFilterType from '../../assets/img/dashboard-ip-filter-type.png';
 
-![](../../assets/img/dashboard-ip-filter-type.png)
-
-
+<div class="center-container">
+    <img src={DashboardIpFilterType} width="600" />
+</div>
 
 You then can input the IP addresses or number of addresses to bind, into the form.
 
-> 🚧 Restricting Viewers
-> 
-> By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by IP address, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
+:::caution Restricting Viewers
+By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by IP address, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
+:::
 
 ## REST APIs
 
@@ -96,9 +99,9 @@ When working with allowed origins and IP filters you can automate workflows usin
 - The [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) endpoint allows you to update the allowed origins or IP addresses for an existing publish token or to define a value when creating a new token
 - The [/api/subscribe_token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) endpoint allows you to update the allowed origins or IP addresses for an existing subscribe token or to define it while creating a new token
 
-> 👍 Using the REST APIs
-> 
-> Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+:::tip Using the REST APIs
+Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+:::
 
 ### How-to add allowed origins with the REST API
 
@@ -158,10 +161,11 @@ Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.ap
 
 If the IP address detected does not match the IP Filters enabled, the user might be presented an error like this in the broadcast application.
 
+import BroadcastError from '../../assets/img/broadcast-error.png';
 
-![](../../assets/img/broadcast-error.png)
-
-
+<div class="center-container">
+    <img src={BroadcastError} width="600" />
+</div>
 
 Verify that the IP address you are broadcasting from is static and correctly input for the publishing token being used.
 
@@ -169,13 +173,14 @@ Verify that the IP address you are broadcasting from is static and correctly inp
 
 If the domain detected does not match the allowed origins, the user might be presented with an error like this in the broadcast application.
 
+import DashOriginBroadcastError from '../../assets/img/dashboard-origin-broadcast-error.png';
 
-![](../../assets/img/dashboard-origin-broadcast-error.png)
-
-
+<div class="center-container">
+    <img src={DashOriginBroadcastError} width="600" />
+</div>
 
 Verify that the domain your application is running from is included. 
 
-> 📘 Allow the Streaming Dashboard
-> 
-> Include _streaming.dolby.io_ in your list of domains if you want to be able to continue broadcasting using the [Dolby.io Streaming Dashboard](/millicast/streaming-dashboard/index.md).
+:::tip Allow the Streaming Dashboard
+Include _streaming.dolby.io_ in your list of domains if you want to be able to continue broadcasting using the [Dolby.io Streaming Dashboard](/millicast/streaming-dashboard/index.md).
+:::

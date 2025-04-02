@@ -28,7 +28,7 @@ The Recording Hooks and Recordings REST endpoints will continue to work but are 
 
 ## :new: Account Settings
 
-For capabilities such as [Geo-blocking](/millicast/distribution/access-control/geo-blocking.md) and [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) there are settings that can default new publish tokens to specific values.
+For capabilities such as [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) and [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) there are settings that can default new publish tokens to specific values.
 
 - The new [Account Security](/millicast/api/account-update-account-security) and [Account Distribution](/millicast/api/account-update-account-distribution) REST endpoints replace the previous endpoints for managing these account-wide settings. You'll find **geo-blocking** as a _security_ setting and **geo-cascading** as a _distribution_ setting.
 - The new [Media Assets Storage Profiles](/millicast/api/account-list-storage-profiles) and [Media Assets Expiration Rules](/millicast/api/account-get-expiration-rules) REST endpoints allow you to configure and validate cloud storage and retention rules respectively. This provides default settings to be used when creating new clips and working with media assets.

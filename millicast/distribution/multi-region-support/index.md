@@ -1,6 +1,7 @@
 ---
 title: "Multi-Region Support"
 slug: /multi-region-support
+sidebar_position: 4
 ---
 The WebRTC **Content Delivery Network (CDN)** refers to geographically distributed _clusters_ of servers which work together to provide real-time streaming worldwide at scale. Dolby.io distributes streaming content across multiple _regions_ through a network of cloud hosting providers. 
 
@@ -67,7 +68,7 @@ You can manage cluster regions by changing settings from user interface of the [
 
 > 📘 Blocking Regional Access
 > 
-> If you are looking to stop streaming traffic in a particular geographic region, see the [Geo-blocking](/millicast/distribution/access-control/geo-blocking.md) streaming guide for details on how to restrict access of content distribution.
+> If you are looking to stop streaming traffic in a particular geographic region, see the [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) streaming guide for details on how to restrict access of content distribution.
 
 ### How-to set the cluster region using the dashboard
 

@@ -68,7 +68,7 @@ You will also see an **Advanced tab** at the top of the token creation interface
   - **Allowed IP Addresses:** Allows you to specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage:** If specified, Bind IPs on usage will bind the token to the first _X_ IP addresses used with a token in requests to [Director API](/millicast/api/publish-token-v-1-read-token.api.mdx), thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with the _AllowedIpAddresses_ option. Not currently supported with RTMP.
 - [Cluster region:](/millicast/distribution/multi-region-support/index.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If `Auto` is selected, the regional cluster will be selected based on the publisher's location. 
-- [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.md) Enables blocking by location at a country level for this specific Token. 
+- [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.mdx) Enables blocking by location at a country level for this specific Token. 
 - [Multisource:](/millicast/broadcast/multi-source-broadcasting.mdx) Enables streaming multiple feeds at once with one Publish token and Stream name combination, allowing for [Multi-view playback](/millicast/playback/multiview.md). 
 - [Thumbnail previews:](/millicast/webhooks/thumbnail-webhooks.md) Enables previewing a thumbnail image of your video stream. Thumbnails are delivered via a webhook. 
 

@@ -161,7 +161,7 @@ Located in the top right corner of the dashboard, under your ID is the_ Profile_
 
 ## Settings
 
-Inside _Settings_, the account's _Token defaults_ are managed. Changes here are permanent across any existing and new tokens. Alternatively, you can alter [Geo-blocking](/millicast/distribution/access-control/geo-blocking.md) and [Cluster Regions](/millicast/distribution/multi-region-support/index.md) on a token-by-token basis instead of an account-wide change.
+Inside _Settings_, the account's _Token defaults_ are managed. Changes here are permanent across any existing and new tokens. Alternatively, you can alter [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) and [Cluster Regions](/millicast/distribution/multi-region-support/index.md) on a token-by-token basis instead of an account-wide change.
 
  On the _Security_ tab, users can create one or multiple API secrets to connect to [Dolby.io's Streaming API](/millicast/api/analytics-account-total/). 
 
