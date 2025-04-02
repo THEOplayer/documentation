@@ -13,7 +13,7 @@ Currently, there are several events that can be listened to when connected to th
 - `active`: Fires when a live stream is or has started broadcasting.
 - `inactive`: Triggers when the stream has stopped broadcasting but is still connected to the publisher.
 - `updated`: Indicates that a new track has been added to an existing feed, such as when audio is added or removed.
-- `layers`: When streaming with [Simulcast](/millicast/distribution/using-webrtc-simulcast.md), this event fires when there is an update of the state of the layers in the live stream.
+- `layers`: When streaming with [Simulcast](/millicast/using-webrtc-simulcast), this event fires when there is an update of the state of the layers in the live stream.
 - `vad`: Fires when the live stream is mixing and layering audio with [Audio Multiplexing](/millicast/playback/audio-multiplexing.md).
 - `viewercount`: Triggers when the number of viewers changes in the stream published.
 - `stopped`: Fires when the live stream has been disconnected from the publisher.

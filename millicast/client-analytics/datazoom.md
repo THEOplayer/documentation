@@ -17,7 +17,7 @@ To monitor the health of your application, [client analytics](/millicast/playbac
 <li>WebRTC statistics like fps, round trip time, jitter, packet and frame loss rates, and bitrate</li>
 </ul>
 
-When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) and [Stream Syndication](/millicast/distribution/syndication.md) capabilities you can effectively monitor playback issues and track viewer characteristics.
+When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) and [Stream Syndication](/millicast/syndication) capabilities you can effectively monitor playback issues and track viewer characteristics.
 
 ## Setting Up Datazoom with the Web SDK
 

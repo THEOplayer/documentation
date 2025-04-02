@@ -76,7 +76,7 @@ You'll be able to start broadcasting by clicking the `Start Streaming` button. Y
 
 Prior to OBS 30.0 it was necessary to use a custom fork. For certain workflows this may be desirable so you can continue to download releases from the project GitHub repository: [OBS-studio-webrtc](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases).
 
-You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) or [simulcast](/millicast/distribution/using-webrtc-simulcast.md).
+You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) or [simulcast](/millicast/using-webrtc-simulcast).
 
 
 ![](../assets/img/693bb6cbd1f7c7de44f2809b411c55bde51f363ae941ae23a5c62537-obs-webrtc-stream-settings.png)

@@ -44,7 +44,7 @@ Let's go over each option in a bit more detail:
 - The **Token Label** gives you a simple labeling system you can use to keep track of your tokens. You can use it to label what the tokens are for or identify testing tokens from your production ones.
 - In the **Add Stream Names** list, select the [Stream names](/millicast/streaming-dashboard/managing-your-tokens.md#2-token-streams) from your current [Publish tokens](/millicast/streaming-dashboard/managing-your-tokens.md) you want to give access to through the Subscribe token you are creating. For example, my new Subscribe token may give access to Stream names "_TestStreamMainFeed_", "_TestStreamCam2_", and "_TestStreamCam3_" all within my Publish token "_LiveConcertPublishToken_".
   - You can also create a** global Subscriber Token** by marking the "_Use ANY name_" option.
-- The **Tracking ID** lets you create an alphanumeric tracking ID that can be used for syndication to associate streaming statistics, such as bandwidth consumption, to various viewers on a stream. For more information, [see Syndication](/millicast/distribution/syndication.md#creating-a-subscribe-token-with-tracking-id).
+- The **Tracking ID** lets you create an alphanumeric tracking ID that can be used for syndication to associate streaming statistics, such as bandwidth consumption, to various viewers on a stream. For more information, [see Syndication](/millicast/syndication#creating-a-subscribe-token-with-tracking-id).
 - **Temporary Token** allows you to make your token temporary by giving the token an expiration date.
 
 ### Advanced settings
@@ -120,7 +120,7 @@ Self-signing your Subscribe token allows you to:
   - `HMACSHA384`
   - `HMACSHA512`
 - Reduce the number of API calls to the Dolby.io Server
-- [Track bandwidth usage with each of the self-signed tokens](/millicast/distribution/syndication.md#how-to-track-syndication)
+- [Track bandwidth usage with each of the self-signed tokens](/millicast/syndication#how-to-track-syndication)
 
 ### Creating a self-signed token
 
@@ -132,7 +132,7 @@ Self-signing your Subscribe token allows you to:
    - `allowedIpAddresses` (optional): IP ranges that allow the stream to be viewed from
    - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
    - `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
-   - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/distribution/syndication.md). Using this parameter requires contacting sales.
+   - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/syndication). Using this parameter requires contacting sales.
 3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
 
 > 📘 Code Examples

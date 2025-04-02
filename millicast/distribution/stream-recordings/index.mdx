@@ -17,10 +17,11 @@ You can work with recordings and clips either from the [Streaming Dashboard](/mi
 
 The collection of recordings and clips is referred to more broadly as **Media Assets** that have been created from your account. There are a few concepts to understand to make best use of the feature.
 
+import MediaAssetsOverview from '../../assets/img/8b5cccab48739f346b2bcd4b9fc3a48f827fb09924f0cb921f1f1825-media-assets-overview.png';
 
-![](../../assets/img/8b5cccab48739f346b2bcd4b9fc3a48f827fb09924f0cb921f1f1825-media-assets-overview.png)
-
-
+<div class="center-container">
+    <img src={MediaAssetsOverview} width="500" />
+</div>
 
 When a [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) is enabled with recording or clipping, the system will generate a timeline for each incoming source. For simple streams, this may be a single broadcast source but for more complex workflows with [multi-bitrate contribution](/millicast/broadcast/multi-source-broadcasting.mdx) and [multi-view](/millicast/playback/multiview.md) applications that have multiple sources there may be more than one timeline. The **timeline** is a series of buffered segments that are kept in a cache so that they can be stored as a recording or a clip later. When a stream goes offline, one timeline ends and if it reconnects a new one begins.
 

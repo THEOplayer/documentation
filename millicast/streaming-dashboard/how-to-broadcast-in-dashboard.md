@@ -142,7 +142,7 @@ Inside the Media settings, there is the option to activate the Simulcast feature
 
 > 📘 Chrome
 >
-> Currently, our browser-based [simulcast](/millicast/distribution/using-webrtc-simulcast.md) feature is supported only when publishing via **Chrome**, however, the stream can be viewed with any browser. Only the broadcaster is required to be using Chrome.
+> Currently, our browser-based [simulcast](/millicast/using-webrtc-simulcast) feature is supported only when publishing via **Chrome**, however, the stream can be viewed with any browser. Only the broadcaster is required to be using Chrome.
 
 </li>
 <li>

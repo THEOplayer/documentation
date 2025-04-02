@@ -5,21 +5,21 @@ sidebar_position: 6
 ---
 Simulcast is a mechanism for distributing streaming content with variations that are optimized for viewers who are under different network conditions or device resolutions. By using a mechanism of WebRTC to distribute content, multiple sources will be available simultaneously that have been encoded with different bitrates and resolutions (HD, SD, LD).
 
+import Simulcast from '../assets/img/Simulcast.png';
 
-![](../assets/img/Simulcast.png)
-
-
+<div class="center-container">
+    <img src={Simulcast} width="500" />
+</div>
 
 The platform's _Selective Forwarding Unit (SFU)_ is responsible for distributing the media and adjusts the bit rate so that the streaming player will select the highest quality stream it can reliably playback for each viewer. This is known as **Adaptive Bitrate (ABR) streaming**. The decision is made based on factors like available bandwidth but also other considerations such as device size, video layout, and CPU utilization may be considered. With **Multi-bitrate (MBR)** streaming, the end-user can be given controls to choose which resolution they would like to receive instead of letting the SFU _auto_ select it. 
 
 This bitrate adaptation is available for [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast protocols.
 
+Simulcast provides flexibility that allows viewers to adjust their individual experience for specific circumstances. For _multicast_ use cases of distributing to multiple destinations, review the [Syndication](/millicast/syndication) guide.
 
-Simulcast provides flexibility that allows viewers to adjust their individual experience for specific circumstances. For _multicast_ use cases of distributing to multiple destinations, review the [Syndication](/millicast/distribution/syndication.md) guide.
-
-> 👍 Getting Started
-> 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+:::
 
 ## Configuring Simulcast
 
@@ -34,9 +34,9 @@ Before broadcasting content using Simulcast, make sure you:
 - Disabled b-frames for better results
 - Have adequate bandwidth at the broadcast source to send multiple contribution sources
 
-> 🚧 Bandwidth Usage
-> 
-> Simulcast is included with plans at no additional cost when enabled. However, since multiple streams will be published, there will be more bits sent to the platform which counts as a bandwidth increase. Conversely, viewers may receive a resolution and bitrate at a lower level which may decrease bandwidth consumption overall.
+:::caution Bandwidth Usage
+Simulcast is included with plans at no additional cost when enabled. However, since multiple streams will be published, there will be more bits sent to the platform which counts as a bandwidth increase. Conversely, viewers may receive a resolution and bitrate at a lower level which may decrease bandwidth consumption overall.
+:::
 
 ### How-to enable Simulcast with the Dolby.io dashboard
 
@@ -44,10 +44,11 @@ To activate Simulcast and stream using the [Streaming Dashboard Broadcaster](/mi
 
 Set the **Bandwidth** as _Custom > 6000_, which will provide sufficient _Kbps_ for a high-quality Simulcast stream. Similarly, the **Width**, **Height**, and **FPS** should be adjusted to match your desired output.
 
+import MediaSettings from '../assets/img/Capture_decran_2023-07-24_a_1.43.22_PM.png';
 
-![](../assets/img/Capture_decran_2023-07-24_a_1.43.22_PM.png)
-
-
+<div class="center-container">
+    <img src={MediaSettings} width="500" />
+</div>
 
 You are now ready to send your live stream and can select the _start_ button on the broadcaster. The browser will provide multi-bitrate contributions during broadcast when using the _Streaming Dashboard_. 
 
@@ -109,9 +110,9 @@ For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 48
 - 480p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=2` + publishing token
 - 360p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=3` + publishing token
 
-> 👍 Multi-Source Builder
-> 
-> The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) tool within the dashboard can assist with constructing these target endpoints. When using RTMP, SRT, and WHIP contributions you will use a separate publish url for each source. The _Multi-source Builder_ will help construct these URLs which you can export and download the configuration as a reference while setting up each device you will be broadcasting from.
+:::tip Multi-Source Builder
+The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) tool within the dashboard can assist with constructing these target endpoints. When using RTMP, SRT, and WHIP contributions you will use a separate publish url for each source. The _Multi-source Builder_ will help construct these URLs which you can export and download the configuration as a reference while setting up each device you will be broadcasting from.
+:::
 
 ### Recommended settings for Simulcast
 
@@ -170,31 +171,27 @@ When using the [Hosted Player](/millicast/playback/hosted-viewer.md), viewers wi
 
 The desired Video Quality can also be chosen manually. This is done within the viewer by clicking the _gear_ icon in the bottom right and selecting video quality, as shown below.
 
+import Screenshot1 from '../assets/img/Screenshot_2023-11-02_at_10.25.48.png';
 
-![](../assets/img/Screenshot_2023-11-02_at_10.25.48.png)
-
-
+<div class="center-container">
+    <img src={Screenshot1} width="500" />
+</div>
 
 On the viewer, you can also check the **bitrate throughput** by selecting a quality level and then selecting the [Media Stats](/millicast/analytics/media-stats.md) within the _gear_ settings icon.
 
+import Screenshot2 from '../assets/img/Screenshot_2023-11-02_at_10.19.08.png';
+import Screenshot3 from '../assets/img/Screenshot_2023-11-02_at_10.19.25.png';
+import Screenshot4 from '../assets/img/Screenshot_2023-11-02_at_10.19.42.png';
 
-![](../assets/img/Screenshot_2023-11-02_at_10.19.08.png)
+<div class="center-container">
+    <img src={Screenshot2} width="500" />
+    <img src={Screenshot3} width="500" />
+    <img src={Screenshot4} width="500" />
+</div>
 
-
-
-
-![](../assets/img/Screenshot_2023-11-02_at_10.19.25.png)
-
-
-
-
-![](../assets/img/Screenshot_2023-11-02_at_10.19.42.png)
-
-
-
-> 📘 Building Your Own Custom Player To Support Multi-bitrate Streams
-> 
-> If you are using the Millicast [Web SDK](/millicast/client-sdks/web.mdx) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
+:::tip Building Your Own Custom Player To Support Multi-bitrate Streams
+If you are using the Millicast [Web SDK](/millicast/client-sdks/web.mdx) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
+:::
 
 ## Simulcast demo video
 
@@ -228,7 +225,3 @@ There are network limiter test tools that can help simulate conditions when tryi
 ## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
-
-
-
-

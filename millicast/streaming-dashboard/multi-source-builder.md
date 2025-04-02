@@ -47,7 +47,7 @@ By selecting a source, the configuration details and available settings will be 
 
 ### Quality layers
 
-For RTMP and SRT sources, you can specify one or more quality layers. Quality layers allows for quality selection when multi-bitrate (simulcast) is used for playback. **Multi-bitrate delivery** allows for adaptive quality RTMP and SRT streams. These streams are selected based on the viewer's available bandwidth and provide a more stable streaming experience. For more information see, [Simulcast](/millicast/distribution/using-webrtc-simulcast.md).
+For RTMP and SRT sources, you can specify one or more quality layers. Quality layers allows for quality selection when multi-bitrate (simulcast) is used for playback. **Multi-bitrate delivery** allows for adaptive quality RTMP and SRT streams. These streams are selected based on the viewer's available bandwidth and provide a more stable streaming experience. For more information see, [Simulcast](/millicast/using-webrtc-simulcast).
 
 
 ![](../assets/img/rtmp-source.png)
@@ -60,7 +60,7 @@ To learn more about publishing and broadcasting with Dolby.io, check out the [Br
 
 You can use the multi-source hosted player, which is a streaming video player, as a standalone web application or embed it into your website with an `<iframe>`. The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) application in the dashboard but is for the audience to use to view the published multi-source stream. For more information, see the [Hosted Player](/millicast/playback/hosted-viewer.md) guide.
 
-You can use the[Hosted Player](/millicast/playback/hosted-viewer.md) with multi-view enabled to verify your multi-source setup. This streaming video player can be used as a standalone web application or embedded into your website. By copying the **Multi-view player URL** or **Hosted embedded player** code it will already be properly configured for this type of multi-source playback.
+You can use the [Hosted Player](/millicast/playback/hosted-viewer.md) with multi-view enabled to verify your multi-source setup. This streaming video player can be used as a standalone web application or embedded into your website. By copying the **Multi-view player URL** or **Hosted embedded player** code it will already be properly configured for this type of multi-source playback.
 
 
 ![](../assets/img/multi-source-player.png)

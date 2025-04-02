@@ -73,7 +73,7 @@ Improved capture timestamps in certain ingest cases.
 
 - The platform supports publishing multiple redundant feeds into more than one region to improve the reliability of broadcasting. The platform now supports a **priority** publish parameter that lets you specify the priority of each feed. This way, in the case the primary feed disconnects, viewers will automatically receive the available feed with the highest priority. For more information, see the [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx) document.
 
-- Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/distribution/using-webrtc-simulcast.md) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/index.mdx#publish-parameters) section of the [Broadcast](/millicast/broadcast/index.mdx) document.
+- Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/using-webrtc-simulcast) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/index.mdx#publish-parameters) section of the [Broadcast](/millicast/broadcast/index.mdx) document.
 
 ***
 
@@ -119,7 +119,7 @@ This "syndication" mechanism allows you to send the same stream to multiple coho
  
 By querying your aggregated viewer data with the [Analytics API](/millicast/analytics/index.md) you can determine how much bandwidth was consumed, how many viewers were watching for which provider, and a few other statistics.
 
-For more information, see the [Syndication](/millicast/distribution/syndication.md article.
+For more information, see the [Syndication](/millicast/syndication) article.
 
 ***
 
@@ -177,4 +177,4 @@ Deployed new regional clusters that can be [specified by a stream or an account]
 
 ## Support for RTMP MBR
 
-Introduced the RTMP MBR support that allows customers to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information see, the [Simulcast](/millicast/distribution/using-webrtc-simulcast.md) document.
+Introduced the RTMP MBR support that allows customers to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information see, the [Simulcast](/millicast/using-webrtc-simulcast) document.

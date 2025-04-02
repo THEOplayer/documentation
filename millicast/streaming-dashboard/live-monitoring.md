@@ -61,7 +61,7 @@ The details page for each stream provides the following ingest statistics:
 - **FPS**: Frames per second.
 - **RTT**: The round trip time measured in ms. A lower RTT value is preferred.
 - **Packet loss**: The ratio of number of packets lost to the number of packets received over an average of five seconds. This value is measured as a percentage. Note: For streams using the type RTMP, packet loss will always be 0.
-- **B Frames**: Indicates the presence of b-frames in the feed. For best results, we recommend disabling b-frames in your feed. For more information, see [Configuring Simulcast](/millicast/distribution/using-webrtc-simulcast.md#configuring-simulcast).
+- **B Frames**: Indicates the presence of b-frames in the feed. For best results, we recommend disabling b-frames in your feed. For more information, see [Configuring Simulcast](/millicast/using-webrtc-simulcast#configuring-simulcast).
 - **Video codec**: The video codec detected.
 - **Audio codec**: The audio codec detected.
 - **Publishing started**: The day, month, year, and time the feed was created.
