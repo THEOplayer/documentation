@@ -139,12 +139,12 @@ const config: Config = {
           },
           v7: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v7/version.txt'), 'utf8').trim(),
-            banner: 'none',
+            banner: 'unmaintained',
             noIndex: true,
           },
           v6: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v6/version.txt'), 'utf8').trim(),
-            banner: 'none',
+            banner: 'unmaintained',
             noIndex: true,
           },
           v4: {
