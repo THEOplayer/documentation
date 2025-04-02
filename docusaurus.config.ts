@@ -444,19 +444,6 @@ const config: Config = {
     },
   ],
 
-  stylesheets: [
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.googleapis.com',
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.gstatic.com',
-      crossOrigin: true,
-    },
-    'https://fonts.googleapis.com/css2?family=Francois+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap',
-  ],
-
   themeConfig: {
     image: 'img/opengraph.png',
     announcementBar: process.env.DOCUSAURUS_PR_NUMBER
