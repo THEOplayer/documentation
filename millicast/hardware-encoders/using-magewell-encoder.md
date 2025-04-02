@@ -74,5 +74,5 @@ Once saved, make sure the stream is activated by toggling the server switch on t
 With the stream enabled, you can navigate back to the main Dashboard page of the encoder and see your stream connect.
 
 
-![](../assets/img/connected.PNG)
+![](../assets/img/connected.png)
 

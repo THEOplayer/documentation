@@ -27,7 +27,7 @@ Log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin) an
 Select the `Create (+)` button. This opens a pop-up window with options for configuring your new _Publish token_. Each option can be changed again later after the token has been created.
 
 
-![](../assets/img/token-create.JPG)
+![](../assets/img/token-create.jpg)
 
 
 
@@ -51,7 +51,7 @@ Let's go over each section in a bit more detail:
   - If a token expires in the middle of a broadcast, the broadcast will continue until the publisher ends it or if the [Stop an active stream](/millicast/api/stream-stop-stream.api.mdx) API is called for that token. The Temporary token feature prevents expired tokens from being able to _start_ new streams, but doesn't impact already running streams.
 
 
-![](../assets/img/expiredate.JPG)
+![](../assets/img/expiredate.jpg)
 
 
 

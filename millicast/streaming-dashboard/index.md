@@ -72,7 +72,7 @@ The Analytics page gives you a summary of how your bandwidth was consumed. This 
 The first part is the _Date Controller_, which is the main controller of the page. Altering the date will update the rest of the results on the page. You can also change the date range from a day to a week to a month to see the total bandwidth used during that period or event.
 
 
-![](../assets/img/analytics-datepicker.PNG)
+![](../assets/img/analytics-datepicker.png)
 
 
 
