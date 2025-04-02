@@ -1,6 +1,7 @@
 ---
 title: "Update to Project and TrackIds"
 slug: /update-to-project-and-trackids
+unlisted: true  # Note: unlisted pages still show up in dev mode
 ---
 This is part of our [Multi-view](/millicast/playback/multiview.md) feature and only impacts users who where using the multiview feature and their own player SDK implementation.  If you are using the hosted video player, there is no update to apply.
 
