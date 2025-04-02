@@ -225,6 +225,14 @@ const config: Config = {
       } satisfies DocsPlugin.Options,
     ],
     [
+      require.resolve('docusaurus-plugin-image-zoom'),
+      {
+        id: 'docusaurus-plugin-image-zoom',
+        path: 'millicast',
+        routeBasePath: '/millicast',
+      }
+    ],
+    [
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
@@ -539,6 +547,16 @@ const config: Config = {
       minHeadingLevel: 2,
       maxHeadingLevel: 4,
     },
+    zoom: {
+      selector: '.markdown :not(em) > img',
+      background: {
+          light: 'rgb(255, 255, 255)',
+          dark: 'rgb(50, 50, 50)'
+      },
+      config: {
+        // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+      }
+    }
   } satisfies Preset.ThemeConfig,
 };
 
