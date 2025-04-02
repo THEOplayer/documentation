@@ -142,7 +142,7 @@ The output should show that `--enable-libsrt` is present.
 
 ### How-to Simulcast a Redundant Ingest SRT Video Stream
 
-This example demonstrates [redundant ingest]/millicast/broadcast/redundant-ingest/index.md) where a second publishing source is used to recover from a failed broadcast source. The `&priority=100` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to indicate which is the primary and which is the backup feed. **The SRT URL must be URLencoded.**
+This example demonstrates [redundant ingest]/millicast/broadcast/redundant-ingest/index.mdx) where a second publishing source is used to recover from a failed broadcast source. The `&priority=100` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to indicate which is the primary and which is the backup feed. **The SRT URL must be URLencoded.**
 
 ```shell bash
 ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \

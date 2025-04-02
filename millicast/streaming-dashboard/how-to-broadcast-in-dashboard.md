@@ -160,7 +160,7 @@ Choose Video or Audio only podcasts.
 <li>
 **Priority**
 
-Set the priority of the feed when publishing multiple backup feeds. For more information, see [backup publishing](/millicast/broadcast/redundant-ingest/index.md).
+Set the priority of the feed when publishing multiple backup feeds. For more information, see [backup publishing](/millicast/broadcast/redundant-ingest/index.mdx).
 
 </li>
 <li>

@@ -70,7 +70,7 @@ The following parameters are significant to determine the server endpoint:
 
 - **simulcastId**: An identifier that assigns feeds produced by a single camera as Simulcast layers. All feeds that have the same **simulcastId** are published together as different quality layers. You can identify each layer using a different **sourceId**.
 - **token**: The publish token used for the broadcast.
-- **sourceId**: A unique identifier for a specific feed. Two feeds can have the same **sourceId** only when they are the same and used as backup feeds in [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md).
+- **sourceId**: A unique identifier for a specific feed. Two feeds can have the same **sourceId** only when they are the same and used as backup feeds in [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).
 
 The following table presents an example of using **simulcastId** and **sourceId** for five different feeds. Video 1 and 2 is published using two Simulcast layers, video 3 is published without Simulcast.
 

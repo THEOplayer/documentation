@@ -29,7 +29,7 @@ By default, the Live monitoring page displays all of your streams in a grid view
 
 8 **Recording enabled status**: Indicates whether recording is enabled on the stream token settings. Note: This does not indicate if the recording is currently active.
 
-9 **Redundant status**: Indicates whether the stream has a redundant option associated with it for failover. For example, if the stream has multiple quality layer feeds, and the highest quality layer has [redundant ingest](/millicast/broadcast/redundant-ingest/index.md) enabled, the stream will be tagged as redundant.
+9 **Redundant status**: Indicates whether the stream has a redundant option associated with it for failover. For example, if the stream has multiple quality layer feeds, and the highest quality layer has [redundant ingest](/millicast/broadcast/redundant-ingest/index.mdx) enabled, the stream will be tagged as redundant.
 
 10 **Secure viewer status**: Indicates whether the stream requires secure subscriber tokens to view. The secure viewer setting is enabled on the stream token settings. If the secure viewer setting is enabled, the hosted player will not play the stream.
 
@@ -54,7 +54,7 @@ The details page for each stream provides the following ingest statistics:
 - **ID**:  Unique numerical identifier to identify feeds in Live Monitoring dashboard.
 - **Source name**: The name of the source. If a source has been set as the main source by not specifying a `sourceId`(for WebRTC streams) or `simulcastID` (for RTMP or SRT streams), the Main Source tag is displayed, this is the same tag used when [configuring multiple publishing sources](/millicast/streaming-dashboard/multi-source-builder.md).
 - **Resolution**: The video resolution.
-- **Priority**: Indicates the [priority](/millicast/broadcast/redundant-ingest/index.md#4-set-priorities) set for the feed.
+- **Priority**: Indicates the [priority](/millicast/broadcast/redundant-ingest/index.mdx#4-set-priorities) set for the feed.
 - **Type**: The broadcast protocol - RTMP, SRT, or WebRTC.
 - **Video bitrate**: The ingest video bitrate measured in kbps.
 - **Audio bitrate**: The ingest audio bitrate measured in kbps.

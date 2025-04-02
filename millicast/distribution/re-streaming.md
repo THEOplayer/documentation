@@ -74,7 +74,7 @@ If **passthrough** is enabled, the top non-transcoded layer will be re-streamed.
 
 ### Redundant ingests and Re-streaming
 
-If you are publishing [redundant ingest](/millicast/broadcast/redundant-ingest/index.md) feeds and Re-streaming, the first feed connected will be the one re-streamed out to the specified re-stream endpoints. 
+If you are publishing [redundant ingest](/millicast/broadcast/redundant-ingest/index.mdx) feeds and Re-streaming, the first feed connected will be the one re-streamed out to the specified re-stream endpoints. 
 
 ## Troubleshooting
 

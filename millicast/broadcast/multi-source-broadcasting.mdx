@@ -14,12 +14,12 @@ Multi-source can ingest contribution streams from sources such as RTMP and SRT. 
 
 ## Multi-source Workflow
 
-Multi-source broadcasting is accomplished by enabling a token for multi-source and then publishing multiple quality layers or contributing sources using the same **publishing token** and **stream name**, but each with a unique **source id** and **simulcast id**. If you do not provide a source id, a second feed will overwrite the previous stream, which is common when trying to setup a [Redundant Ingest ](/millicast/broadcast/redundant-ingest/index.md)  in case of an encoder failure.
+Multi-source broadcasting is accomplished by enabling a token for multi-source and then publishing multiple quality layers or contributing sources using the same **publishing token** and **stream name**, but each with a unique **source id** and **simulcast id**. If you do not provide a source id, a second feed will overwrite the previous stream, which is common when trying to setup a [Redundant Ingest ](/millicast/broadcast/redundant-ingest/index.mdx)  in case of an encoder failure.
 
 :::tip Enable Multi-source
 To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.md#advanced-settings)  enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
 
-Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multiview.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md).
+Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multiview.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).
 :::
 
 When multi-source is enabled, you use the `sourceId` attribute when publishing a stream.
@@ -208,7 +208,7 @@ publisherOptions.sourceId = "MySource"
 
 For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/desktop-getting-started-with-publishing.md#4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/android-getting-started-with-publishing.md#44-configure-publishing-options), and [iOS](/millicast/client-sdks/ios/ios-getting-started-with-publishing.md#24-configure-publishing-options). 
 
-> Note: The `sourceId` should be a unique value and by default is undefined. Identical `sourceId` values should only be used for specifying [redundant streams](/millicast/broadcast/redundant-ingest/index.md).
+> Note: The `sourceId` should be a unique value and by default is undefined. Identical `sourceId` values should only be used for specifying [redundant streams](/millicast/broadcast/redundant-ingest/index.mdx).
 
 In order to improve the performance of the feature and to avoid incurring higher bandwidth costs, it is recommended to enable `dtx` (discontinuous transmission) when publishing, so audio data is only sent when a user’s voice is detected.
 
@@ -251,4 +251,4 @@ There are multiple ways to playback and consume a multi-view feed:
 
 - There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multiview.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
 - In your player client, if you are playing multiple videos at the same time, set smaller tiles to consume the lowest stream quality/bitrate so that the "main" video can utilize bitrate switching.
-- The `priority` parameter lets you set the priority of each feed. For redundant streams the primary feed should be assigned a consistent value for all input feeds, regardless of sourceId or simulcastId, and backups should mirror the primary's sourceID and simulcastId with a lower priority. In the case of any problem with the primary feed, viewers receive the available feed that has the highest priority. Not setting any priorities or setting the same priorities results in receiving the most recently published feed. For more information, see [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md).
+- The `priority` parameter lets you set the priority of each feed. For redundant streams the primary feed should be assigned a consistent value for all input feeds, regardless of sourceId or simulcastId, and backups should mirror the primary's sourceID and simulcastId with a lower priority. In the case of any problem with the primary feed, viewers receive the available feed that has the highest priority. Not setting any priorities or setting the same priorities results in receiving the most recently published feed. For more information, see [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).

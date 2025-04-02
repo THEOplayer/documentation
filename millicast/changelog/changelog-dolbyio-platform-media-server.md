@@ -33,7 +33,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 
 ### Fixes
 
-- Fix for an issue where in some cases with [Backup Publishing](/millicast/broadcast/redundant-ingest/index.md) audio did not fail over.
+- Fix for an issue where in some cases with [Backup Publishing](/millicast/broadcast/redundant-ingest/index.mdx) audio did not fail over.
 - Improvements to error messages with our [Live Clipping](/millicast/distribution/stream-recordings/live-clipping.mdx) feature.
 - Improvements in certain cases when streaming with AV1.
 - Fixed an issue where the plus character (+) in an SRT URL was not handled as whitespace correctly.
@@ -71,7 +71,7 @@ Improved capture timestamps in certain ingest cases.
 
 - Introduced a geo-cascading feature to improve the streaming experience for viewers around the world. The feature uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can connect to clusters located closest to their location and experience reduced latency and improved reliability. For more information, see the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) guide.
 
-- The platform supports publishing multiple redundant feeds into more than one region to improve the reliability of broadcasting. The platform now supports a **priority** publish parameter that lets you specify the priority of each feed. This way, in the case the primary feed disconnects, viewers will automatically receive the available feed with the highest priority. For more information, see the [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.md) document.
+- The platform supports publishing multiple redundant feeds into more than one region to improve the reliability of broadcasting. The platform now supports a **priority** publish parameter that lets you specify the priority of each feed. This way, in the case the primary feed disconnects, viewers will automatically receive the available feed with the highest priority. For more information, see the [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx) document.
 
 - Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/distribution/using-webrtc-simulcast.md) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/index.mdx#publish-parameters) section of the [Broadcast](/millicast/broadcast/index.mdx) document.
 

@@ -32,7 +32,7 @@ You can enable and customize geo-cascading using either the dashboard or the RES
 
 - As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **All** regions.
 - If not specified, **clusters** will use "All" by default.
-- If you have a more complex [multi-source](/millicast/broadcast/multi-source-broadcasting.mdx) broadcast with multiple sources or using [redundant ingest](/millicast/broadcast/redundant-ingest/index.md), each publisher should either use the same publish token or have the same origin and edge cluster configuration.
+- If you have a more complex [multi-source](/millicast/broadcast/multi-source-broadcasting.mdx) broadcast with multiple sources or using [redundant ingest](/millicast/broadcast/redundant-ingest/index.mdx), each publisher should either use the same publish token or have the same origin and edge cluster configuration.
 
 ### Using the Dashboard
 

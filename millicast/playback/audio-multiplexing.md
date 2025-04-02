@@ -10,7 +10,7 @@ The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers
 
 ## Understanding Audio Multiplexing
 
-To first understand Audio Multiplexing, we need to understand how the Dolby.io servers ingest feeds. When [Broadcasting](/millicast/broadcast/index.mdx), the Dolby.io Streaming servers will assign the most recent published stream source as the "_Main Source_", a function that allows broadcasters to seamlessly overwrite streams or add [Redundant Streams](/millicast/broadcast/redundant-ingest/index.md). For basic broadcasts, this is sufficient, for more advanced broadcasts Dolby.io provides two features that are exceptions:
+To first understand Audio Multiplexing, we need to understand how the Dolby.io servers ingest feeds. When [Broadcasting](/millicast/broadcast/index.mdx), the Dolby.io Streaming servers will assign the most recent published stream source as the "_Main Source_", a function that allows broadcasters to seamlessly overwrite streams or add [Redundant Streams](/millicast/broadcast/redundant-ingest/index.mdx). For basic broadcasts, this is sufficient, for more advanced broadcasts Dolby.io provides two features that are exceptions:
 
 1. Creating a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx) for [Multi-view](/millicast/playback/multiview.md) experiences.
 2. Audio Multiplexing, for experiences with multiple audio streams playing at once, such as that seen on "_Clubhouse_" type platforms and apps.
