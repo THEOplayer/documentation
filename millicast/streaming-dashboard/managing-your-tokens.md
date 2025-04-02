@@ -67,7 +67,7 @@ You will also see an **Advanced tab** at the top of the token creation interface
 - [IP Filter Type:](/millicast/distribution/access-control/token-security.md#ip-filters) 
   - **Allowed IP Addresses:** Allows you to specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage:** If specified, Bind IPs on usage will bind the token to the first _X_ IP addresses used with a token in requests to [Director API](/millicast/api/publish-token-v-1-read-token.api.mdx), thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with the _AllowedIpAddresses_ option. Not currently supported with RTMP.
-- [Cluster region:](/millicast/distribution/multi-region-support/index.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If `Auto` is selected, the regional cluster will be selected based on the publisher's location. 
+- [Cluster region:](/millicast/distribution/multi-region-support/index.mdx) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If `Auto` is selected, the regional cluster will be selected based on the publisher's location. 
 - [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.mdx) Enables blocking by location at a country level for this specific Token. 
 - [Multisource:](/millicast/broadcast/multi-source-broadcasting.mdx) Enables streaming multiple feeds at once with one Publish token and Stream name combination, allowing for [Multi-view playback](/millicast/playback/multiview.md). 
 - [Thumbnail previews:](/millicast/webhooks/thumbnail-webhooks.md) Enables previewing a thumbnail image of your video stream. Thumbnails are delivered via a webhook. 
@@ -83,7 +83,7 @@ Once created, your Publish token can be used to broadcast in a variety of differ
 
 ## Managing and editing existing publish tokens
 
-Once a Pubish token is created, it is displayed on the **Live Broadcast** page. From this page, you can [start a broadcast using the Dashboard Broadcaster](/millicast/getting-started/using-the-dashboard.md#b-start-broadcast), enable or disable, delete, or edit the settings for each Publish token.
+Once a Pubish token is created, it is displayed on the **Live Broadcast** page. From this page, you can [start a broadcast using the Dashboard Broadcaster](/millicast/getting-started/using-the-dashboard.mdx#b-start-broadcast), enable or disable, delete, or edit the settings for each Publish token.
 
 
 ![](../assets/img/tempsnip.png)
@@ -102,7 +102,7 @@ Once opened, you will see multiple tabs to explore.
 1. Token details - token identification, security, and overall feature capabilities
 2. Token streams - configure stream names that the token can publish
 3. Publishing - settings for configuring broadcast encoders such as [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [WebRTC](/millicast/broadcast/webrtc-whip.mdx) settings
-4. Distribution - configuration for distribution content such as [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) and [Re-streaming](/millicast/distribution/re-streaming.md)
+4. Distribution - configuration for distribution content such as [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) and [Re-streaming](/millicast/distribution/re-streaming.mdx)
 5. Playback - path and settings available with the hosted [Millicast Player](/millicast/playback/hosted-viewer.md)
 6. Recordings - media files that are captured from stream recordings
 7. API - publishing token, ids, and endpoints for use with [Client SDKs](/millicast/client-sdks/index.mdx)
@@ -150,8 +150,8 @@ To learn more about publishing and broadcasting with Dolby.io, check out the [Br
 
 The Distribution tab includes settings that can modify how the CDN distributes the stream to end viewers. This includes a few important configurations such as:
 
-- [Re-streaming](/millicast/distribution/re-streaming.md): fan-out a stream to multiple endpoints that are able to accept incoming connections for syndicated broadcasting and distribution
-- [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md): configuration of edge servers that handle the last-mile distribution of a stream for playback
+- [Re-streaming](/millicast/distribution/re-streaming.mdx): fan-out a stream to multiple endpoints that are able to accept incoming connections for syndicated broadcasting and distribution
+- [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx): configuration of edge servers that handle the last-mile distribution of a stream for playback
 
 ### 5\. Playback
 

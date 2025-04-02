@@ -28,7 +28,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 
 ### Features
 
-- Introduced initial support for our "re-stream" capability.  This is the ability to stream from Dolby to other platforms via RTMP.  For more details, review our [documentation for Re-stream](/millicast/distribution/re-streaming.md). If you want to start using this feature, please [contact our sales team](https://dolby.io/contact/) .  
+- Introduced initial support for our "re-stream" capability.  This is the ability to stream from Dolby to other platforms via RTMP.  For more details, review our [documentation for Re-stream](/millicast/distribution/re-streaming.mdx). If you want to start using this feature, please [contact our sales team](https://dolby.io/contact/) .  
 - Updates to our Cloud Transcoder to pass RTMP AMF messages to every simulcast layer of the adaptive bitrate ladder.
 
 ### Fixes
@@ -69,7 +69,7 @@ Improved capture timestamps in certain ingest cases.
 
 ### Features
 
-- Introduced a geo-cascading feature to improve the streaming experience for viewers around the world. The feature uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can connect to clusters located closest to their location and experience reduced latency and improved reliability. For more information, see the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) guide.
+- Introduced a geo-cascading feature to improve the streaming experience for viewers around the world. The feature uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can connect to clusters located closest to their location and experience reduced latency and improved reliability. For more information, see the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) guide.
 
 - The platform supports publishing multiple redundant feeds into more than one region to improve the reliability of broadcasting. The platform now supports a **priority** publish parameter that lets you specify the priority of each feed. This way, in the case the primary feed disconnects, viewers will automatically receive the available feed with the highest priority. For more information, see the [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx) document.
 

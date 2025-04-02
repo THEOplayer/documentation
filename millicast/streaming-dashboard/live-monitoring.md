@@ -23,7 +23,7 @@ By default, the Live monitoring page displays all of your streams in a grid view
 
 5 **Publishing started**: The date and time the stream was created.
 
-6 **Cluster regions**: Indicates what [regions](/millicast/distribution/multi-region-support/index.md) the stream is ingesting to. This indicates which data center is used as the origin when broadcasting. Note: The ingest cluster region displays the most common ingest cluster region used for all feeds in the stream, and hovering over displays additional cluster regions associated with the stream. 
+6 **Cluster regions**: Indicates what [regions](/millicast/distribution/multi-region-support/index.mdx) the stream is ingesting to. This indicates which data center is used as the origin when broadcasting. Note: The ingest cluster region displays the most common ingest cluster region used for all feeds in the stream, and hovering over displays additional cluster regions associated with the stream. 
 
 7 **Token**: The [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) associated with the stream.
 
@@ -65,7 +65,7 @@ The details page for each stream provides the following ingest statistics:
 - **Video codec**: The video codec detected.
 - **Audio codec**: The audio codec detected.
 - **Publishing started**: The day, month, year, and time the feed was created.
-- **Cluster region**: Indicates what [regions](/millicast/distribution/multi-region-support/index.md) the stream is ingesting to.
+- **Cluster region**: Indicates what [regions](/millicast/distribution/multi-region-support/index.mdx) the stream is ingesting to.
 - **Publish geo-location**: The location from which the feed is being published.
 - ** IP address:** The IP address from which the feed is publishing from.
 

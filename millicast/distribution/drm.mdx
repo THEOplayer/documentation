@@ -26,7 +26,11 @@ import CalloutPremiumFeature from '../callouts/_premium_feature.md';
 
 When streaming with DRM enabled, the content is distributed with an additional level of encryption. To decrypt and view the media, the player and platform must enforce protections and be able to fetch a license that is used to decrypt.
 
-![](..//assets/img/9fa71d5693c8953b167e73d4ce9ff8cab0275b3b54744eed0373c0128dfc37df-image.png)
+import DrmWorkflow from '../assets/img/9fa71d5693c8953b167e73d4ce9ff8cab0275b3b54744eed0373c0128dfc37df-image.png';
+
+<div class="center-container">
+    <img src={DrmWorkflow} width="500" />
+</div>
 
 In order to enable DRM, you will need to follow a few steps:
 
@@ -35,9 +39,9 @@ In order to enable DRM, you will need to follow a few steps:
 
 Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
 
-> ❗️ Additional Charges - Licenses
->
-> This feature will incur additional charges for licenses. If you would like to use this capability on your projects, please be aware of the pricing impact or reach out to your [sales/solutions](https://dolby.io/contact/) contact with any questions.
+:::danger Additional Charges - Licenses
+This feature will incur additional charges for licenses. If you would like to use this capability on your projects, please be aware of the pricing impact or reach out to your [sales/solutions](https://dolby.io/contact/) contact with any questions.
+:::
 
 ### Enabling DRM on a Stream
 
@@ -45,7 +49,7 @@ Dolby will manage the Customer Right Tokens (CRT) aka licenses for your account.
 
 The [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) endpoint can be used to create or modify existing publish tokens. The `drm` parameter is used to indicate whether or not a stream should be protected with DRM.
 
-```curl Create New Token with DRM
+```curl title="Create New Token with DRM"
 POST https://api.millicast.com/api/publish_token
 {
   "label": "drm-test",
@@ -56,7 +60,8 @@ POST https://api.millicast.com/api/publish_token
   "subscribeRequiresAuth": true
 }
 ```
-```curl Update Token with DRM
+
+```curl title="Update Token with DRM"
 PUT https://api.millicast.com/api/publish_token
 {
   "drm": true,
@@ -95,9 +100,6 @@ Here is an example of initializing the subscriber for a DRM stream:
 
 ```javascript
 const tokenGenerator = () => Director.getSubscriber(streamName, accountId,subscriberToken, enableDRM);
-
-
-
 ```
 
 You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV) and **key** for decrypting the content.
@@ -106,7 +108,7 @@ You should listen for the `active` broadcast event when you connect in order to 
 await viewer.connect({
     drm : true,
     events : ['active', 'inactive', 'layers'],
-})
+});
 
 viewer.on('broadcastEvent', (event) => {
     const {name, data} = event
@@ -121,11 +123,11 @@ viewer.on('broadcastEvent', (event) => {
                 }
                 // if there are audio tracks in your stream, add the next two lines
 
-                const audioTrackInfo = event.data.tracks.find((track) => track.type === 'audio')
+                const audioTrackInfo = event.data.tracks.find((track) => track.type === 'audio');
                 if (audioTrackInfo) {
                   drmOptions.audioMid = audioTrackInfo.mediaId;
                 }
-                viewer.configureDRM(drmOptions)
+                viewer.configureDRM(drmOptions);
             }
     }
 });
@@ -134,13 +136,12 @@ viewer.on('broadcastEvent', (event) => {
 You then can project the source onto your media elements on a web app.
 
 ```javascript
-await viewer.project(sourceId, tracksMapping)
-
+await viewer.project(sourceId, tracksMapping);
 ```
 
-> 📘 Sample Code and Reference
->
-> For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js)  which demonstrates the use of DRM.
+:::tip Sample Code and Reference
+For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js)  which demonstrates the use of DRM.
+:::
 
 ## Troubleshooting
 

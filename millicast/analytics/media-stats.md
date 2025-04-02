@@ -20,7 +20,7 @@ Both the [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-d
 - **Codecs**: The audio and video codecs used by the broadcaster.
 - **Timestamp**: The date and time (UTC) for when the browser gathered media stats.
 - **Server**: This can be provided to our support team as an aid to troubleshooting network issues.
-- **Cluster**: The data center being used for the broadcast origin. See  [Cluster Regions](/millicast/distribution/multi-region-support/index.md) for more details on this data.
+- **Cluster**: The data center being used for the broadcast origin. See  [Cluster Regions](/millicast/distribution/multi-region-support/index.mdx) for more details on this data.
 
 > 📘 Active Broadcast
 > 

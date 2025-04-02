@@ -213,7 +213,7 @@ To diagnose simulcast issues, it can be helpful to review details about the broa
 - Publishing encoder settings (framerate, bitrate, resolution, etc.)
 - Bandwidth of both broadcast source and playback client
 - Video quality selection
-- The [cluster regions](/millicast/distribution/multi-region-support/index.md) used for broadcasting and playback
+- The [cluster regions](/millicast/distribution/multi-region-support/index.mdx) used for broadcasting and playback
 
 ### How-to check network conditions
 

@@ -4,14 +4,15 @@ slug: /geo-cascading
 ---
 **Geo-cascading** is a key component of content delivery networks (CDNs) and streaming platforms that aim to provide a high-quality streaming experience for users around the world. To reduce latency and improve reliability, geo-cascading uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can receive streams from regions that are the closest to their location.
 
+import FeatureGeoCascading from '../../assets/img/feature-geo-cascading.png';
 
-![](../../assets/img/feature-geo-cascading.png)
+<div class="center-container">
+    <img src={FeatureGeoCascading} width="500" />
+</div>
 
-
-
-> 👍 Available Regions
-> 
-> You can find the list of available cluster regions from the [Multi-Region Support](/millicast/distribution/multi-region-support/index.md) streaming guide along with details on how to configure the origin publishing region.
+:::tip Available Regions
+You can find the list of available cluster regions from the [Multi-Region Support](/millicast/distribution/multi-region-support/index.mdx) streaming guide along with details on how to configure the origin publishing region.
+:::
 
 ## Overview
 
@@ -22,7 +23,7 @@ By enabling geo-cascading, a broadcaster publishes a stream to one cluster regio
 The publish token defines a `geoCascade` property.
 
 - **isEnabled** - a boolean for whether or not geo-cascading is enabled for an individual publish token
-- **clusters** - a list of [cluster regions](/millicast/distribution/multi-region-support/index.md) that will be enabled once a viewer in that region attempts to connect
+- **clusters** - a list of [cluster regions](/millicast/distribution/multi-region-support/index.mdx) that will be enabled once a viewer in that region attempts to connect
 
 The origin and clusters to include can be customized depending on your broadcast and playback goals. This capability is available for all platform supported broadcast protocols and codecs.
 
@@ -42,10 +43,11 @@ Log into the dashboard and select a publish token to modify.
 
 2. Select the preferred regions from the drop-down list. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer.
 
+import Screenshot from '../../assets/img/Screenshot_2023-12-21_at_07.19.10.png';
 
-![](../../assets/img/Screenshot_2023-12-21_at_07.19.10.png)
-
-
+<div class="center-container">
+    <img src={Screenshot} width="500" />
+</div>
 
 Any broadcast that uses the publish token configured in this way will take advantage of this content delivery.
 
@@ -73,10 +75,11 @@ To define token defaults that are applied account-wide as a global configuration
 
 4. Select the preferred regions from the drop-down list. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **All** regions.
 
+import Screenshot2 from '../../assets/img/Screenshot_2023-12-21_at_07.18.28.png';
 
-![](../../assets/img/Screenshot_2023-12-21_at_07.18.28.png)
-
-
+<div class="center-container">
+    <img src={Screenshot2} width="500" />
+</div>
 
 ### Using the REST API
 

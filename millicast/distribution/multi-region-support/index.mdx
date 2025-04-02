@@ -9,14 +9,14 @@ A traditional CDN needs to cache live stream segments on a network before they a
 
 This guide covers a few examples:
 
-- [How-to Set the Cluster Region Using the Dashboard](/millicast/distribution/multi-region-support/index.md#how-to-set-the-cluster-region-using-the-dashboard)
-- [How-to Identify the Cluster Region for an Active Stream](/millicast/distribution/multi-region-support/index.md#how-to-identify-the-cluster-region-for-an-active-stream)
-- [How-to Get Available Cluster Regions with the REST API](/millicast/distribution/multi-region-support/index.md#how-to-get-the-available-cluster-regions)
-- [How-to Set the Cluster Region for a Publish Token with the REST API](/millicast/distribution/multi-region-support/index.md#how-to-set-the-cluster-region-for-a-publish-token)
+- [How-to Set the Cluster Region Using the Dashboard](#how-to-set-the-cluster-region-using-the-dashboard)
+- [How-to Identify the Cluster Region for an Active Stream](#how-to-identify-the-cluster-region-for-an-active-stream)
+- [How-to Get Available Cluster Regions with the REST API](#how-to-get-the-available-cluster-regions)
+- [How-to Set the Cluster Region for a Publish Token with the REST API](#how-to-set-the-cluster-region-for-a-publish-token)
 
-> 👍 Geo-Cascading
-> 
-> If you want to learn how to customize how traffic flows across regions, review the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) streaming guide.
+:::tip Geo-Cascading
+If you want to learn how to customize how traffic flows across regions, review the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) streaming guide.
+:::
 
 ## Overview
 
@@ -41,9 +41,9 @@ When creating a publishing token, selecting the region that is closest to the [b
 
 ### Europe
 
-> ❗️ AMS Region Traffic
-> 
-> The `ams-1` region will be discontinued after _September 30, 2024_. For any active publish tokens, you should update them to use either the **lon-1** or **fra-1** regions. If you currently are using **auto** any streaming traffic will be re-routed automatically.
+:::danger AMS Region Traffic
+The `ams-1` region will be discontinued after _September 30, 2024_. For any active publish tokens, you should update them to use either the **lon-1** or **fra-1** regions. If you currently are using **auto** any streaming traffic will be re-routed automatically.
+:::
 
 | Cluster Code | Region Location    |
 | :----------- | :----------------- |
@@ -62,38 +62,41 @@ When creating a publishing token, selecting the region that is closest to the [b
 
 You can manage cluster regions by changing settings from user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
 
-> 👍 Getting Started
-> 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) for more details about tokens.
+:::
 
-> 📘 Blocking Regional Access
-> 
-> If you are looking to stop streaming traffic in a particular geographic region, see the [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) streaming guide for details on how to restrict access of content distribution.
+:::tip Blocking Regional Access
+If you are looking to stop streaming traffic in a particular geographic region, see the [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) streaming guide for details on how to restrict access of content distribution.
+:::
 
 ### How-to set the cluster region using the dashboard
 
 Open the Streaming section of the <a href="https://streaming.dolby.io/#/tokens" target="_new">Dolby.io Dashboard</a>. Select the publishing token you want to modify. Within the **Settings** section you can choose the _Cluster Region_ from the dropdown.
 
+import ClusterRegion from '../../assets/img/cluster-region.png';
 
-![](../../assets/img/cluster-region.png)
-
-
+<div class="center-container">
+    <img src={ClusterRegion} width="500" />
+</div>
 
 ### How-to identify the cluster region for an active stream
 
 When using the Dolby.io Dashboard [publisher](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) to broadcast or the viewer to playback you can select the gear setting to view the **Media Stats**. 
 
+import MediaStatsDialog from '../../assets/img/publisher-media-stats-dialog.png';
 
-![](../../assets/img/publisher-media-stats-dialog.png)
-
-
+<div class="center-container">
+    <img src={MediaStatsDialog} width="500" />
+</div>
 
 This will display a modal overlaying the stream with details about resolution, bitrate, etc. and will also display the **Cluster** value using one of the region codes.
 
+import MediaStatsModal from '../../assets/img/viewer-media-stats-modal-cluster.png';
 
-![](../../assets/img/viewer-media-stats-modal-cluster.png)
-
-
+<div class="center-container">
+    <img src={MediaStatsModal} width="500" />
+</div>
 
 ## REST APIs
 
@@ -102,9 +105,9 @@ When working with clusters you can automate workflows using available REST APIs.
 - The [/api/cluster](/millicast/api/cluster-get-clusters-info.api.mdx) endpoint allows you to query available cluster regions or change the default cluster for your account
 - The [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) endpoint allows you to update the cluster for an existing publish token or to define a value when creating a new token
 
-> 👍 Using the REST APIs
-> 
-> Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+:::tip Using the REST APIs
+Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+:::
 
 ### How-to get the available cluster regions
 
@@ -118,12 +121,6 @@ The results may look like this:
     "data": {
         "defaultCluster": "auto",
         "availableClusters": [
-            {
-                "id": "ams-1",
-                "name": "Amsterdam",
-                "rtmp": "rtmp-ams-1.millicast.com",
-                "srt": "srt-ams-1.millicast.com"
-            },
             {
                 "id": "auto",
                 "name": "Auto",
@@ -196,7 +193,6 @@ curl --request PUT \
   --data '{
     "defaultCluster": "ams-1"
   }'
-  
 ```
 
 ### How-to set the cluster region for a publish token
@@ -217,9 +213,9 @@ curl --request POST \
     }'
 ```
 
-> ❗️ Enable Multisource on your Stream Token
-> 
-> For using multi-source streams, your account must be allowed to use the multi-source feature and the Publish Token must have the `multisource` flag enabled. The default cluster region must not be set to auto, and must be set to the region from which you want to stream. Multi-source will not work if you publish the stream from two different locations that do not fall under same cluster/region coverage and the current default setting has not been modified. For more information, see [Multisource Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx).
+:::caution Enable Multisource on your Stream Token
+For using multi-source streams, your account must be allowed to use the multi-source feature and the Publish Token must have the `multisource` flag enabled. The default cluster region must not be set to auto, and must be set to the region from which you want to stream. Multi-source will not work if you publish the stream from two different locations that do not fall under same cluster/region coverage and the current default setting has not been modified. For more information, see [Multisource Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx).
+:::
 
 ## Troubleshooting
 
@@ -260,6 +256,3 @@ If you receive **Validation errors** from a REST request make sure you are provi
 ## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
-
-
-

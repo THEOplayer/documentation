@@ -5,9 +5,11 @@ sidebar_position: 5
 ---
 **Re-streaming** enables you to distribute your broadcasts to additional RTMP(S) output destinations while simultaneously providing real-time WebRTC playback. This can be useful for distribution to other B2B media partners or for extending reach to larger audiences on public consumer social media platforms.
 
+import ReStream from '../assets/img/f4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f83af17ac88285-restream.png';
 
-![](../assets/img/f4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f83af17ac88285-restream.png)
-
+<div class="center-container">
+    <img src={ReStream} width="500" />
+</div>
 
 ## Overview
 
@@ -33,10 +35,11 @@ The outgoing RTMP(S) stream will be identical to the incoming source stream in t
 
 When creating or updating a publish token you can enable and configure re-stream from the dashboard. These settings are found under the `Distribution` tab.
 
+import ReStreamSetup from '../assets/img/dashboard-distribution-tab-restream-setup.png';
 
-![](../assets/img/dashboard-distribution-tab-restream-setup.png)
-
-
+<div class="center-container">
+    <img src={ReStreamSetup} width="500" />
+</div>
 
 If the feature is enabled for your account plan, you'll be able to add, remove, and update any target endpoints that you want to forward your stream.
 
@@ -81,17 +84,19 @@ If you are publishing [redundant ingest](/millicast/broadcast/redundant-ingest/i
 
 You can check the status of re-streams by visiting the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) section of the dashboard. You should see a `Re-stream` token as confirmation.
 
+import ReStreamMonitoring from '../assets/img/dashboard-re-stream-monitoring-token.png';
 
-![](../assets/img/dashboard-re-stream-monitoring-token.png)
-
-
+<div class="center-container">
+    <img src={ReStreamMonitoring} width="500" />
+</div>
 
 If re-stream is enabled for a stream, the events section of Live Monitoring will display when the re-streamed feed has started and ended. 
 
+import ReStreamEventLog from '../assets/img/75365b6ae803eaa90dcd77f49d1f4ce22ba49be05da1b6a12651a2d1-eventlog.png';
 
-![](../assets/img/75365b6ae803eaa90dcd77f49d1f4ce22ba49be05da1b6a12651a2d1-eventlog.png)
-
-
+<div class="center-container">
+    <img src={ReStreamEventLog} width="500" />
+</div>
 
 ### Re-Stream is Playing Only Audio or Video
 
@@ -101,6 +106,6 @@ The re-stream feed is only showing audio or video. This may be because you are u
 
 If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) dashboard app or a custom built app using the [Web SDK](/millicast/client-sdks/web.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/using-srt.mdx) and [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
 
-> ❗️ We're Here to Help
-> 
-> For any other issues not covered here, please reach out to your sales and solutions team who can review server logs that may help identify any configuration issues.
+:::tip We're Here to Help
+For any other issues not covered here, please reach out to your sales and solutions team who can review server logs that may help identify any configuration issues.
+:::

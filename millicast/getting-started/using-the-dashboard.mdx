@@ -18,11 +18,19 @@ We will begin by [broadcasting](/millicast/broadcast/index.mdx) directly from th
 
 When you log into your Dolby.io account you should select the **Streaming** tab. If you haven't used your account before, you'll see a screen similar to Figure 1a below.
 
-![](../assets/img/dashboard-tokens-empty.png)
+import DashboardTokensEmpty from '../assets/img/dashboard-tokens-empty.png';
+
+<div class="center-container">
+    <img src={DashboardTokensEmpty} width="500" />
+</div>
 
 Click the `+ CREATE` button and you'll be prompted to configure a new token.  The token is used to authenticate an application for publishing a live stream from your account.
 
-![](../assets/img/dolbyio-streaming-add-new-token-popup.png)
+import AddNewTokenPopup from '../assets/img/dolbyio-streaming-add-new-token-popup.png';
+
+<div class="center-container">
+    <img src={AddNewTokenPopup} width="300" />
+</div>
 
 Give this token a meaningful label such as _gettingStarted_ and click the `CONFIRM` button. You can have more than one stream using the same token, so each can be labeled independently such as this one having the default _myStreamName_.
 
@@ -30,16 +38,22 @@ Give this token a meaningful label such as _gettingStarted_ and click the `CONFI
 
 Return to the _Live broadcast_ section and click the `BROADCAST` button.
 
-![](../assets/img/dolbyio-streaming-broadcast-button.png)
+import BroadcastButton from '../assets/img/dolbyio-streaming-broadcast-button.png';
+
+<div class="center-container">
+    <img src={BroadcastButton} width="600" />
+</div>
 
 From the dashboard broadcast application that opens, click the green `Start` button to begin a broadcast. You will need to give permission to access your microphone and camera. Once the stream begins, you can see the _LIVE_ box in the upper right corner and a timecode for the duration of the stream above the `Stop` button.
 
-![](../assets/img/dolbyio-streaming-dashboard-broadcast.png)
+import DashBroadcast from '../assets/img/dolbyio-streaming-dashboard-broadcast.png';
+
+<div class="center-container">
+    <img src={DashBroadcast} width="500" />
+</div>
 
 :::info[Broadcast Guide]
-
 Visit the [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) guide to learn more details about the options available for configuring the publish token and working with this dashboard broadcast application.
-
 :::
 
 ## Playback content with the streaming viewer
@@ -48,15 +62,27 @@ In the previous section, you created a publishing token and started to broadcast
 
 In the lower right-hand corner of the dashboard broadcast application are some icons. Click on the sharing icon like the one circled in Figure 2a.
 
-![](../assets/img/dolbyio-share-broadcast-icon.png)
+import BroadcastIcon from '../assets/img/dolbyio-share-broadcast-icon.png';
+
+<div class="center-container">
+    <img src={BroadcastIcon} width="200" />
+</div>
 
 Click the `LAUNCH` button to open the hosted live viewer.
 
-![](../assets/img/dolbyio-share-broadcast-launch.png)
+import BroadcastLaunch from '../assets/img/dolbyio-share-broadcast-launch.png';
+
+<div class="center-container">
+    <img src={BroadcastLaunch} width="500" />
+</div>
 
 It may seem like you are watching a local mirror of your video camera, but this feed is making a full round-trip to the servers and back to the browser again. Note the low delay between capture from the webcam and playback within the browser.
 
-![](../assets/img/dolbyio-streaming-dashboard-playback-viewer.png)
+import PlaybackViewer from '../assets/img/dolbyio-streaming-dashboard-playback-viewer.png';
+
+<div class="center-container">
+    <img src={PlaybackViewer} width="500" />
+</div>
 
 The viewer has some user controls to pause the stream, configure settings, and view the number of other stream viewers.
 

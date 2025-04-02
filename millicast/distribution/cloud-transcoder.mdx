@@ -5,10 +5,11 @@ sidebar_position: 2
 ---
 The **Cloud Transcoders** offered by the Dolby Millicast are responsible for ingesting (SRT or RTMP) and encoding contribution feeds into **adaptive-bitrate (ABR)** streaming renditions for WebRTC delivery. By adjusting the compression level, resolution, and quality of a video stream to match bandwidth availability it is possible to create an improved viewing experience. The adaptability ensures smoother playback but also conserves bandwidth, making the cloud transcoder an efficient and cost-effective solution optimized for ultra-low latency during the encoding process.
 
+import FeatureCloudTranscoder from '../assets/img/6bcaeddadb12b382aeab0b113abd8c690633543a04a9d68c2ff7d80a-feature-cloud-transcoder.png';
 
-![](../assets/img/6bcaeddadb12b382aeab0b113abd8c690633543a04a9d68c2ff7d80a-feature-cloud-transcoder.png)
-
-
+<div class="center-container">
+    <img src={FeatureCloudTranscoder} width="500" />
+</div>
 
 The transcoder allows ingesting B-frames and reducing the amount of data required for transmission. We support H.264 and H.265 codecs with seamless conversion to H.264.
 
@@ -216,4 +217,4 @@ The Dolby.io Streaming platform allows using cloud transcoders with all other fe
 
 When using transcoding with recording, the platform records only the top layer.
 
-When using transcoding with [Re-streaming](/millicast/distribution/re-streaming.md), the top layer regardless of passthrough enabled or disabled, will be re-streamed out to the specified re-stream endpoints.
+When using transcoding with [Re-streaming](/millicast/distribution/re-streaming.mdx), the top layer regardless of passthrough enabled or disabled, will be re-streamed out to the specified re-stream endpoints.

@@ -15,7 +15,7 @@ The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how
 > 
 > If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. 
 > 
-> You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.md) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Player](/millicast/playback/hosted-viewer.md).
+> You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Player](/millicast/playback/hosted-viewer.md).
 
 ## White label playback
 

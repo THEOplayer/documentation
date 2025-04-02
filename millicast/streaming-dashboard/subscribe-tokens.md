@@ -55,7 +55,7 @@ You can switch from the top "_Basic_" tab to the "_Advanced_" tab in the token c
 - [IP filter type:](/millicast/distribution/access-control/token-security.md) 
   - **IP Address**: May specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage**: If specified, will bind the token to the first **X** IP addresses used with a token in requests to Director API, thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with "IP Addresses" option. Not currently supported with RTMP.
-- [Cluster region:](/millicast/distribution/multi-region-support/index.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If Auto is selected, the regional cluster will be selected based on the publisher's location. 
+- [Cluster region:](/millicast/distribution/multi-region-support/index.mdx) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If Auto is selected, the regional cluster will be selected based on the publisher's location. 
 - [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.mdx) Enables blocking by location at a country level for this specific token.
 
 
@@ -141,7 +141,7 @@ Self-signing your Subscribe token allows you to:
 
 ### Limitations
 
-- The published stream and Subscribe token **must** originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/millicast/distribution/multi-region-support/index.md).
+- The published stream and Subscribe token **must** originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/millicast/distribution/multi-region-support/index.mdx).
 - The only fields in the self-signed token that are added to the primary subscriber token are the _allowedOrigins_ and _allowedIPAddresses_. These do not replace any _allowedOrigins_ or _allowedIPAddresses_ in the primary Subscriber token but are appended onto any existing restrictions. **Anything else packaged into the JWT is ignored.**
 - If the primary Subscriber token contains a_ TrackingID_, the self-signed token must use the same _TrackingID_. However, if the primary Subscriber token does not specify a _TrackingID_, any _TrackingID_ can be used in the self-signed token.
 - The Stream name can differ in the self-signed token when using a regex value. If the primary Subscriber token doesn't validate the Stream name (via regex match) in the self-signed token, then it is rejected.

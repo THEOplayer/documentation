@@ -24,7 +24,7 @@ The `data` payload will contain the following details:
 
 - **transcoderId** is a unique identifier of the transcoder.
 - **transcoderName** is the label given to the transcoder.
-- **cluster** is the [cluster region](/millicast/distribution/multi-region-support/index.md) where the transcoder is running.
+- **cluster** is the [cluster region](/millicast/distribution/multi-region-support/index.mdx) where the transcoder is running.
 - **createdOn** is the timestamp for when the transcoder was created.
 - **status** is the state of the transcoder when the hook fired. 
 

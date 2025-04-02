@@ -31,7 +31,7 @@ Open profile **Settings** and select the **Stream** section. From the **Service*
 
 ##### 2. Pick Your Server and Enter Your Stream Key
 
-From the **Server** dropdown menu, you can select _Global_ to have your broadcast location automatically determined or choose from any of our [cluster regions](/millicast/distribution/multi-region-support/index.md).
+From the **Server** dropdown menu, you can select _Global_ to have your broadcast location automatically determined or choose from any of our [cluster regions](/millicast/distribution/multi-region-support/index.mdx).
 
 
 ![](../assets/img/20a4c2d052b2cc281303150422afa731af6be4c982e171fb79456513-obs-30-stream-server-key.png)

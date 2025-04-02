@@ -108,8 +108,8 @@ From here you'll find additional menu items:
 
 With this dashboard update you can now find a new **Distribution** tab within the publish token with settings that allow you to modify how the CDN distributes the stream to end viewers.
 
-- [Re-streaming](/millicast/distribution/re-streaming.md): fan-out a stream to up to ten (10) endpoints that accept incoming RTMP connections for syndicated broadcasting and distribution.
-- [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md): configuration of edge servers that handle the last-mile distribution of a stream for playback can be found.
+- [Re-streaming](/millicast/distribution/re-streaming.mdx): fan-out a stream to up to ten (10) endpoints that accept incoming RTMP connections for syndicated broadcasting and distribution.
+- [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx): configuration of edge servers that handle the last-mile distribution of a stream for playback can be found.
 
 ![](../assets/img/6d57cb6-dashboard-distribution-tab-restream-setup.png)
 
