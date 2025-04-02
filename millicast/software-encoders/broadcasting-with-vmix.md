@@ -4,7 +4,7 @@ slug: /broadcasting-with-vmix
 ---
 **vMix** is a desktop application that provides a software vision mixer and encoder for the Windows operating system. It allows users to switch inputs, mix audio, record output, and live stream cameras, video files, audio, and more. 
 
-You can originate a broadcast from vMix and forward that stream over [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), or as an [NDI](/millicast/broadcast/using-ndi.md) source.
+You can originate a broadcast from vMix and forward that stream over [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), or as an [NDI](/millicast/broadcast/using-ndi.md) source.
 
 - [Configure RTMP](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-rtmp)
 - [Configure SRT](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-srt)
@@ -20,7 +20,7 @@ See the official [vmix.com](https://vmix.com) site for documentation, installati
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available.
 
-See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
+See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
 
 ### Configure a custom RTMP server
 
@@ -128,7 +128,7 @@ In vMix click start all streams. You can then watch this stream from a [playback
 
 In order to broadcast with SRT, you will need to have your **SRT publish path** and **SRT stream ID** available.
 
-See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on how to retrieve these values.
+See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.mdx) for details on how to retrieve these values.
 
 ### vMix settings
 

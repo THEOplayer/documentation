@@ -4,7 +4,7 @@ slug: /using-ffmpeg
 ---
 **FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. It is common practice to use Ffmpeg in production workflows when broadcasting from a media file on disk.
 
-Broadcasts are started using the `ffmpeg` command-line to forward a source using either [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) or [SRT](/millicast/broadcast/using-srt.md) broadcast contribution protocols which are then streamed as [WebRTC](/millicast/broadcast/webrtc-whip.mdx) for global real-time distribution. 
+Broadcasts are started using the `ffmpeg` command-line to forward a source using either [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) or [SRT](/millicast/broadcast/using-srt.mdx) broadcast contribution protocols which are then streamed as [WebRTC](/millicast/broadcast/webrtc-whip.mdx) for global real-time distribution. 
 
 See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installation instructions and additional support.
 
@@ -30,7 +30,7 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-preset veryfast | Video encoding speed to compression ratio preset |
 ## RTMP
 
-In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available. See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values. 
+In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available. See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values. 
 
 The examples on the remainder of the page will reference these as environment variables: `$RTMP_PUBLISH_PATH` and `$RTMP_PUBLISH_STREAM_NAME`.  You can replace these or set them as appropriate for the shell environment and operating system you are using.
 
@@ -126,7 +126,7 @@ ffmpeg -re -stream_loop -1 -i demo.mp4 \
 ```
 ## SRT
 
-In order to broadcast with SRT, you will need to have your **SRT publish path** and **SRT stream ID** available. See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.md) for details on how to retrieve these values.
+In order to broadcast with SRT, you will need to have your **SRT publish path** and **SRT stream ID** available. See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.mdx) for details on how to retrieve these values.
 
 The examples on the remainder of the page will reference these as environment variables: `$SRT_PUBLISH_PATH` and `$SRT_STREAM_ID`.  You can replace these or set them as appropriate for the shell environment and operating system you are using.
 

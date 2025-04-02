@@ -1,6 +1,7 @@
 ---
 title: "RTSP"
 slug: /rtsp
+sidebar_position: 3
 ---
 
 **Real-Time Streaming Protocol (RTSP)**, is a network control protocol used for controlling the delivery of multimedia data, such as video and audio files, over IP networks. Dolby.io supports RTSP to facilitate seamless integration with existing infrastructure and workflows that rely on this protocol for streaming IP camera feeds.
@@ -33,10 +34,11 @@ Download and install [VLC](https://www.videolan.org/vlc/) media player and the l
 
 Inside OBS-WebRTC, create a scene, and on the "+" icon of Sources, add a new Media Source.
 
+import CaptureScreen from '../assets/img/Capture_decran_2023-07-13_a_2.57.43_PM.png';
 
-![](../assets/img/Capture_decran_2023-07-13_a_2.57.43_PM.png)
-
-
+<div class="center-container">
+    <img src={CaptureScreen} width="500" />
+</div>
 
 Unselect_ Local File_ on Input shows. Enter on _Input_ the URL. Here is an example of an RTSP IP: `rtsp://admin:mypassword@YOUR_IP_ADDRESS/11`
 

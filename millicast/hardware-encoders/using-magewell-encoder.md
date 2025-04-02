@@ -21,7 +21,7 @@ To begin, first power on your Ultra Encode, connect it to the internet (Ethernet
 
 
 
-Next, navigate to your [Dolby.io Dashboard](https://dashboard.dolby.io/signin) and [gather your RTMP token credentials](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url). Add the `RTMP publish path` from your Dolby.io Dashboard to the `URL`, and add your `RTMP Publish Stream Name`, also from the Dolby.io dashboard, to the `Stream key`. 
+Next, navigate to your [Dolby.io Dashboard](https://dashboard.dolby.io/signin) and [gather your RTMP token credentials](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url). Add the `RTMP publish path` from your Dolby.io Dashboard to the `URL`, and add your `RTMP Publish Stream Name`, also from the Dolby.io dashboard, to the `Stream key`. 
 
 Finally, select which network you'd like the encoder to use to connect, and save the settings.
 
@@ -55,7 +55,7 @@ To begin, first power on your Ultra Encode, connect it to the internet (Ethernet
 
 
 
-Next, navigate to your [Dolby.io Dashboard](https://dashboard.dolby.io/signin) and [gather your SRT token credentials](/millicast/broadcast/using-srt.md). Add the `SRT publish path` from your Dolby.io Dashboard to the `Address`, set the `Port` to `10000`, and add your `SRT Stream ID`, also from the Dolby.io dashboard, to the `Stream ID`.
+Next, navigate to your [Dolby.io Dashboard](https://dashboard.dolby.io/signin) and [gather your SRT token credentials](/millicast/broadcast/using-srt.mdx). Add the `SRT publish path` from your Dolby.io Dashboard to the `Address`, set the `Port` to `10000`, and add your `SRT Stream ID`, also from the Dolby.io dashboard, to the `Stream ID`.
 
 
 ![](../assets/img/srt-setup.png)

@@ -19,7 +19,7 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
 
 2. Create your [Publishing Token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token).
 
-3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/broadcast/using-srt.md).
+3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/broadcast/using-srt.mdx).
 
 4. Open your Haivision Encoder. 
 
@@ -41,7 +41,7 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
 
 > 👍 Getting Started with RTMP
 > 
-> If you haven't already, begin by following the [RTMP Getting Started](/millicast/broadcast/using-rtmp-and-rtmps.md) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [RTMP Getting Started](/millicast/broadcast/using-rtmp-and-rtmps.mdx) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 To get started, log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin). Enter your KB web interface, switch views to the Channel Control Center, and create a new channel.
 

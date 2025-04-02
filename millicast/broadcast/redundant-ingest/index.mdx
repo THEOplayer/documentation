@@ -1,6 +1,7 @@
 ---
 title: "Redundant Ingest"
 slug: /redundant-ingest
+sidebar_position: 10
 ---
 To provide a resilient and reliable streaming experience, the Dolby.io Streaming platform allows broadcasting multiple redundant contribution streams. This solution ensures seamless content delivery to viewers, even in the case of unexpected technical issues.
 
@@ -12,9 +13,10 @@ When publishing multiple backup feeds, you can establish an order in which the s
 
 The following instructions explain how to publish redundant streams using Streaming APIs. 
 
-> 👍 Geo-cascading Settings
-> 
-> Be aware that all publishers that contribute to the same stream must have the same [geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) settings.
+:::tip Geo-cascading Settings
+Be aware that all publishers that contribute to the same stream must have the same [geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.md) settings.
+:::
+
 ## Publishing redundant feeds using RTMP or SRT
 
 Follow this procedure to broadcast multiple redundant feeds and provide a reliable streaming experience using RTMP or SRT.
@@ -94,13 +96,22 @@ If you use WHIP, set the **priority** query parameter by adding `&priority=X` at
 
 If you use a Client SDK, set the optional **priority** parameter in publisher options, as in the following examples:
 
-```cplusplus
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+
+<TabItem value="cpp" label="C++">
+```cpp
 millicast::Publisher::Option options;
 options.priority = 1;
 publisher->connect();
 // Wait for the on_connected callback
 publisher->publish(options);
 ```
+</TabItem>
+
+<TabItem value="java" label="Android">
 ```java
 Publisher.Option publisherOption = new Publisher.Option();
 publisherOption.priority = 1;
@@ -108,6 +119,9 @@ publisher.connect();
 // Wait for the onConnected callback
 publisher.publish(publisherOption);
 ```
+</TabItem>
+
+<TabItem value="swift" label="iOS">
 ```swift
 let publisherOptions = MCClientOptions()
 publisherOptions.priority = 1
@@ -115,7 +129,10 @@ publisher!.connect()
 // Wait for the onConnected callback
 publisher!.publish(with: publisherOptions)
 ```
-```javascript
+</TabItem>
+
+<TabItem value="javascript" label="Web SDK">
+```js
 const publishOptions = {
   // Other preferred options
   priority: 1,
@@ -128,6 +145,8 @@ try {
   console.error('Connection failed, handle error', e);
 }
 ```
+</TabItem>
+</Tabs>
 
 ### 5\. Start broadcasting
 

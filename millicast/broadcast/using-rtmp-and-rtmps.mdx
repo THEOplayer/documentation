@@ -1,6 +1,7 @@
 ---
 title: "RTMP | RTMPS"
 slug: /using-rtmp-and-rtmps
+sidebar_position: 2
 ---
 **Real-Time Messaging Protocol (RTMP)** has been well supported by popular hardware and software applications for many years. In addition to WebRTC, Dolby.io Real-time Streaming allows you to broadcast and distribute content from an RTMP or secure RTMPS source.
 
@@ -10,25 +11,27 @@ This document will outline how to set up and broadcast low-latency RTMP streams 
 
 ## RTMP publishing
 
-> 👍 Getting Started
-> 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary RTMP details.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary RTMP details.
+:::
 
 Select the publish token that you want to use for your RTMP streaming application.
 
+import RtmpPublishToken from '../assets/img/rtmp_publish_token.png';
 
-![](../assets/img/rtmp_publish_token.png)
-
-
+<div class="center-container">
+    <img src={RtmpPublishToken} width="600" />
+</div>
 
 ### How to find your RTMP publish URL
 
-Click on the _Publishing_ tab of the token screen where you will find details for the various protocols such as [WHIP](/millicast/broadcast/webrtc-whip.mdx), [SRT](/millicast/broadcast/using-srt.md), and RTMP.
+Click on the _Publishing_ tab of the token screen where you will find details for the various protocols such as [WHIP](/millicast/broadcast/webrtc-whip.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and RTMP.
 
+import RtmpPublishUrl from '../assets/img/rtmp_publish_url.png';
 
-![](../assets/img/rtmp_publish_url.png)
-
-
+<div class="center-container">
+    <img src={RtmpPublishUrl} width="600" />
+</div>
 
 In order for you to publish with RTMP, you will need two items from this interface, the **RTMP publish path** and **RTMP publish stream name**. Note that the _RTMP publish stream name_ value from the dashboard is a concatenation of the _stream name_ and the _publishing token_ as a query string parameter.
 
@@ -54,7 +57,7 @@ Each setup can be slightly different, so adjust the below settings to find what 
 
 See the [OBS Integration Guide](/millicast/software-encoders/using-obs.md) for more details.
 
-|                   |                 |
+| Name              | Value           |
 | :---------------- | :-------------- |
 | Encoder           | **nvenc**       |
 | Rate Control      | **CBR**         |

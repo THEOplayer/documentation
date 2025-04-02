@@ -1,14 +1,15 @@
 ---
 title: "SRT"
 slug: /using-srt
+sidebar_position: 4
 ---
 **Secure Reliable Transport (SRT)** is an open-source protocol that uses an intelligent packet retransmit mechanism on top of a UDP data flow, along with AES-128 and 256-bit encryption. [Dolby.io Real-time Streaming](https://dolby.io/products/real-time-streaming/) natively supports publishing from an SRT source.
 
 This document will guide you on how to [broadcast](/millicast/broadcast/index.mdx) an SRT Stream to Dolby.io Real-time Streaming with SRT-capable software or hardware. 
 
-> 👍 Getting Started
-> 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
+:::
 
 ## How-to find the SRT publish settings with the dashboard
 
@@ -20,19 +21,21 @@ Some examples of encoders supporting SRT include the [Osprey](/millicast/hardwar
 
 Select a publish token that you will use for your SRT broadcast. 
 
+import SrtToken from '../assets/img/srt-token.png';
 
-![](../assets/img/srt-token.png)
-
-
+<div class="center-container">
+    <img src={SrtToken} width="600" />
+</div>
 
 ### 2. Select the _Publishing_ tab
 
 Click on the _Publishing_ tab for information on how to connect as a publisher to your Dolby.io account. There is a section specifically for all of the SRT publish settings.
 
+import SrtSettings from '../assets/img/dolbyio-streaming-srt-settings.png';
 
-![](../assets/img/dolbyio-streaming-srt-settings.png)
-
-
+<div class="center-container">
+    <img src={SrtSettings} width="600" />
+</div>
 
 ### 3. Configure your encoder with the SRT settings
 
@@ -41,15 +44,15 @@ The settings you use will be dependent on the specific encoder being configured.
 - For some encoders, a _single_ target URL parameter is all that is required. For this you use the combined **SRT publish URL** as the configured endpoint.
 - For other encoders, it is a _multi part_ setting comprised of a Hostname (or URL) and a separate Stream ID entry. For this you use the **SRT publish path** and **SRT stream ID** separately. Some encoders will also distinguish the **port** separately from the publish path as a third configurable setting.
 
-> 📘 Compressed SRT Token
-> 
-> You may note that these publish settings include your embedded _Publishing token_ that has been further compressed. You can find instructions for how this is done in the section below for using the REST APIs if you are trying to automate generation of the SRT stream ID.
+:::tip Compressed SRT Token
+You may note that these publish settings include your embedded _Publishing token_ that has been further compressed. You can find instructions for how this is done in the section below for using the REST APIs if you are trying to automate generation of the SRT stream ID.
+:::
 
 #### Basic Encoder Settings
 
 The following are basic recommended settings for any encoder:
 
-|                   |                          |
+| Name              | Value                    |
 | :---------------- | :----------------------- |
 | Codec             | **H.264**                |
 | bframes           | **disabled**             |
@@ -150,20 +153,19 @@ function decode_token(srtToken) {
 When constructing a single publish URL, it is necessary to URL encode the **SRT Stream ID** and any additional parameters so that the endpoint properly passes all the settings through to the listening server.
 
 ```javascript
-
 let encodedStreamId = encodeURIComponent(streamId);
 let publishURL = '${srtPublishPath}?streamid=${encodedStreamId}';
-
 ```
 
 ## SRT passphrase encryption
 
 With passphrase encryption you can further protect your stream from unauthorized access. You enable the encryption in the dashboard by toggling the **passphrase encryption** setting to on. This generates a passphrase that must be input when starting to broadcast.
 
+import PassphraseEnc from '../assets/img/Screenshot_2023-10-03_at_09.17.23.png';
 
-![](../assets/img/Screenshot_2023-10-03_at_09.17.23.png)
-
-
+<div class="center-container">
+    <img src={PassphraseEnc} width="600" />
+</div>
 
 When enabled, a `&e` parameter is appended to the **SRT stream ID**.
 
@@ -175,17 +177,14 @@ There are some limitations when using SRT with Real-time Streaming:
 - Multiple programs or sub-streams are not supported.
 - The H.265 video codec is supported on Safari, but will only function if the developer feature is enabled under "Develop > Feature Flags". 
 
-  
-![](../assets/img/srt-h265-enable-feature-flag.png)
+import SrtH265 from '../assets/img/srt-h265-enable-feature-flag.png';
 
+<div class="center-container">
+    <img src={SrtH265} width="600" />
+</div>
 
 If you have needs like these, please [contact us](https://dolby.io/contact).
 
 ## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
-
-
-
-
-

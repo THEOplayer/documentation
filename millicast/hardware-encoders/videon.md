@@ -55,7 +55,7 @@ Under **Audio Profiles**, set up your preferred audio encoding and audio bitrate
 
 #### Using RTMP
 
-Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](/millicast/broadcast/using-rtmp-and-rtmps.md). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
+Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](/millicast/broadcast/using-rtmp-and-rtmps.mdx). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate those URLs.
 
 Under **Outputs**, for each **RTMP**, select **Video Source** corresponding to the RTMP profile (1080p for the highest profile and 360p for the lowest profile). Make sure to set **Streaming Providers** to _Generic RTMP_ and paste the **Stream URL** from the Dolby.io RTMP dashboard.
 

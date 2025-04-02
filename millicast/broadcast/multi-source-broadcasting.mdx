@@ -1,6 +1,7 @@
 ---
 title: "Multi-Source Broadcasting"
 slug: /multi-source-broadcasting
+sidebar_position: 9
 ---
 **Multi-source Broadcasting** allows you to ingest and send additional capture sources, such as different camera angles, to the Dolby.io Real-time Streaming platform where they will be logically grouped into an optimized multi-view experience over a single WebRTC connection.
 
@@ -74,7 +75,7 @@ Learn more about how to use the [Multi-source Builder](/millicast/streaming-dash
 Steps to build a broadcast URL suitable for RTMP encoders:
 
 1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto". 
-2. Gather the **RTMP publish path** and **RTMP publish stream name**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [How to find your RTMP publish URL](/millicast/broadcast/using-rtmp-and-rtmps.md#how-to-find-your-rtmp-publish-url)
+2. Gather the **RTMP publish path** and **RTMP publish stream name**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [How to find your RTMP publish URL](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url)
 
 | RTMP publish path                           | Separator | RTMP publish stream name  |
 | :------------------------------------------ | :-------- | :------------------------ |
@@ -101,7 +102,7 @@ In the hosted player, the `simulcastId` is used to set the video source's on-scr
 Steps to build a broadcast URL suitable for SRT encoders:
 
 1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto".
-2. Gather the **SRT publish path** and **SRT stream ID**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [Generate the SRT publish URL](/millicast/broadcast/using-srt.md#3-generate-the-srt-publish-url).
+2. Gather the **SRT publish path** and **SRT stream ID**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [Generate the SRT publish URL](/millicast/broadcast/using-srt.mdx#3-generate-the-srt-publish-url).
 
 | SRT publish path                    | Separator | SRT stream ID |
 | :---------------------------------- | :-------- | :------------ |

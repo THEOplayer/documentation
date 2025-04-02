@@ -98,7 +98,7 @@ The re-stream feed is only showing audio or video. This may be because you are u
 
 ### Re-stream is Not Working with Web Broadcasts
 
-If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) dashboard app or a custom built app using the [Web SDK](/millicast/client-sdks/web.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/using-srt.md) and [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
+If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) dashboard app or a custom built app using the [Web SDK](/millicast/client-sdks/web.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/using-srt.mdx) and [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
 
 > ❗️ We're Here to Help
 > 

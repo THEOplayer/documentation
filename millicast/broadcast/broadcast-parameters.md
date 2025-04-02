@@ -1,6 +1,7 @@
 ---
 title: "Publishing Parameters"
 slug: /broadcast-parameters
+sidebar_position: 6
 ---
 Broadcast URL Parameters allow you to customize the behavior of an individual source feed by modifying the URL used of specific sources when establishing a connection.
 
@@ -9,8 +10,8 @@ Broadcast URL Parameters allow you to customize the behavior of an individual so
 There are some variations depending on which protocol is being used to broadcast.
 
 - [WebRTC](/millicast/broadcast/webrtc-whip.mdx): The query parameter string is appended at the end of a WHIP URL `https` endpoint.
-- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md): The query parameter string is appended to the end of a RTMP URL `rtmp` or `rtmps` endpoint. Depending on the encoder, this may be appended as a single URL or a two-part server and path.
-- [SRT](/millicast/broadcast/using-srt.md): The query parameter string requires special handling to encode it within the SRT stream id.
+- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx): The query parameter string is appended to the end of a RTMP URL `rtmp` or `rtmps` endpoint. Depending on the encoder, this may be appended as a single URL or a two-part server and path.
+- [SRT](/millicast/broadcast/using-srt.mdx): The query parameter string requires special handling to encode it within the SRT stream id.
 
 ## How-to Add Publishing Parameters to the URL
 

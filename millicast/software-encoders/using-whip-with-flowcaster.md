@@ -63,7 +63,7 @@ FlowCaster is a perfect tool for video and audio professionals to use with their
 
 > 🚧 FlowCaster's Mac Version
 > 
-> The newest version of the MacOS doesn't support H264/AV1C, therefore, implementing WHIP as the transmit type is not possible. However, it is possible to broadcast low-delay [SRT](/millicast/broadcast/using-srt.md) or [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) streams which are also supported by Dolby.io.
+> The newest version of the MacOS doesn't support H264/AV1C, therefore, implementing WHIP as the transmit type is not possible. However, it is possible to broadcast low-delay [SRT](/millicast/broadcast/using-srt.mdx) or [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) streams which are also supported by Dolby.io.
 
 ## Demonstration video
 

@@ -131,7 +131,7 @@ Added support for ingesting SRT protocol. SRT has become the standard for replac
 
 For more information, see:
 
-- The [SRT](/millicast/broadcast/using-srt.md) article
+- The [SRT](/millicast/broadcast/using-srt.mdx) article
 - The [OBS using SRT](/millicast/software-encoders/using-obs.md) article
 
 ***

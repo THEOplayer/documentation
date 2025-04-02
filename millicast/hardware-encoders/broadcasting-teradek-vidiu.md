@@ -2,11 +2,11 @@
 title: "Teradek"
 slug: /broadcasting-teradek-vidiu
 ---
-**Teradek** is a designer and manufacturer of professional high-end video equipment and solutions for creating and sharing content. Teradek offers a range of support for different broadcast standards and protocols, including support for [RTMP, RTMPS](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [NDI](/millicast/broadcast/using-ndi.md), all of which can be distributed via the Dolby.io real-time streaming CDN.
+**Teradek** is a designer and manufacturer of professional high-end video equipment and solutions for creating and sharing content. Teradek offers a range of support for different broadcast standards and protocols, including support for [RTMP, RTMPS](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [NDI](/millicast/broadcast/using-ndi.md), all of which can be distributed via the Dolby.io real-time streaming CDN.
 
 > 👍 Getting Started with RTMP
 > 
-> If you haven't already, begin by following the [RTMP Getting Started](/millicast/broadcast/using-rtmp-and-rtmps.md) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
+> If you haven't already, begin by following the [RTMP Getting Started](/millicast/broadcast/using-rtmp-and-rtmps.mdx) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 See the official [Teradek](https://teradek.com/) site for documentation, installation instructions, and additional support.
 
@@ -74,7 +74,7 @@ You can also adjust the additional settings on the Teredak Wave, such as:
 
 To view the stream, navigate back to your newly created token and switch to the _Playback_ tab. From the Playback tab, copy the _Hosted Player Path_ URL and open it in your browser.
 
-Teredak products that use [RTMP, RTMPS](/millicast/broadcast/using-rtmp-and-rtmps.md), [SRT](/millicast/broadcast/using-srt.md), and [NDI](/millicast/broadcast/using-ndi.md) can all be used with Dolby.io Real-time Streaming for low-latency streams with global delivery.
+Teredak products that use [RTMP, RTMPS](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [NDI](/millicast/broadcast/using-ndi.md) can all be used with Dolby.io Real-time Streaming for low-latency streams with global delivery.
 
 ## Learn more
 

@@ -11,8 +11,8 @@ Broadcasting content requires access to the public internet and encoding, which 
 The Dolby.io CDN can ingest streams encoded in a few main formats:
 
 - [WebRTC](/millicast/broadcast/webrtc-whip.mdx), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
-- [SRT](/millicast/broadcast/using-srt.md), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
-- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
+- [SRT](/millicast/broadcast/using-srt.mdx), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
+- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
@@ -103,9 +103,9 @@ To learn how to create a stream from OBS using WebRTC, see the following video:
 
 ### Encoding with SRT
 
-The **Secure Reliable Transport ([SRT](/millicast/broadcast/using-srt.md))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance.
+The **Secure Reliable Transport ([SRT](/millicast/broadcast/using-srt.mdx))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance.
 
-[How-to setup a Dolby.io SRT Stream](/millicast/broadcast/using-srt.md)<br/>
+[How-to setup a Dolby.io SRT Stream](/millicast/broadcast/using-srt.mdx)<br/>
 The Dolby.io dashboard is used to configure the publish path and stream id for an incoming SRT media stream.
 
 [How-to use OBS with SRT](/millicast/software-encoders/using-obs.md)<br/>
@@ -127,9 +127,9 @@ To learn how to create a stream from OBS using SRT, see the following video:
 
 ### RTMP Ingest
 
-**Real-time Messaging Protocol ([RTMP](/millicast/broadcast/using-rtmp-and-rtmps.md))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.
+**Real-time Messaging Protocol ([RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.
 
-[How-to setup a Dolby.io RTMP Stream](/millicast/broadcast/using-rtmp-and-rtmps.md)<br/>
+[How-to setup a Dolby.io RTMP Stream](/millicast/broadcast/using-rtmp-and-rtmps.mdx)<br/>
 The Dolby.io dashboard is used to configure the publish path and stream id for an incoming RTMP or RTMPs media stream.
 
 [How-to use FFmpeg with RTMP](/millicast/software-encoders/using-ffmpeg.md)<br/>

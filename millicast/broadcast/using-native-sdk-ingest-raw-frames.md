@@ -1,14 +1,15 @@
 ---
 title: "Ingest Raw Frames"
 slug: /using-native-sdk-ingest-raw-frames
+sidebar_position: 11
 ---
 Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](./hardware-encoders.mdx) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/capture/live-streaming-from-drones-rtmp.mdx) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
 
 This guide is designed to help you leverage the Dolby.io Streaming Native SDKs to ingest raw audio and video frames, allowing the stream encoding to be handled by the SDK. There are three ways to accomplish raw frame ingestion: 
 
-1. [Using the Core API](/millicast/broadcast/using-native-sdk-ingest-raw-frames.md#creating-custom-audio-and-video-frame-classes): For desktop applications such as Windows, Mac, or Linux
-2. [Using the iOS API](/millicast/broadcast/using-native-sdk-ingest-raw-frames.md#using-the-ios-api): Including tvOS
-3. [Using the Android API](/millicast/broadcast/using-native-sdk-ingest-raw-frames.md#using-the-android-api)
+1. [Using the Core API](#creating-custom-audio-and-video-frame-classes): For desktop applications such as Windows, Mac, or Linux
+2. [Using the iOS API](#using-the-ios-api): Including tvOS
+3. [Using the Android API](#using-the-android-api)
 
 ## Using the Core API
 
@@ -18,7 +19,7 @@ To ingest raw frames, you first must download and install the appropriate [Milli
 
 To get started providing custom video and audio frames, we will first create a video frame class that represents a static RGB color and an audio frame class that generates a SINE tone. 
 
-```cplusplus
+```cpp
 #include <vector>
 #include <cmath>
 #include <millicast-sdk/frames.h>
@@ -151,7 +152,7 @@ For audio, you need to instantiate a `millicast::AudioFrame` object, and fill th
 
 With the information above, make sure your audio data buffer's size is equal to the following:
 
-```
+```cpp
 CHUNK_SIZE = 10 // milliseconds. this is an example length of each frame
 NUMBER_OF_FRAMES = CHUNK_SIZE * SAMPLE_RATE
 BUFFER_SIZE = NUMBER_OF_FRAMES * (BIT_DEPTH / 8) * NUMBER_OF_CHANNELS // in bytes.
@@ -163,7 +164,7 @@ In this specific example, we have created a `CustomSineAudioFrame` class that ge
 
 Now that we have our Audio/Video frame classes ready, we can start instantiating an audio and video source:
 
-```cplusplus
+```cpp
 #include <chrono>
 #include <thread>
 
@@ -242,8 +243,8 @@ import MillicastSDK
 class CustomVideoFrame: NSObject, MCVideoFrame {
 
   /**
-  		This should return the correct frame type to what you
-  		store in this frame buffer. Video types supported can be found
+  	This should return the correct frame type to what you
+  	store in this frame buffer. Video types supported can be found
 		here: https://millicast.github.io/doc/latest/cpp/objc_2_millicast_s_d_k_2capabilities_8h.html#ac37bb3c55eced5c69ad84759f23e6c90
   */
   func frameType() -> MCVideoType {
@@ -270,15 +271,15 @@ class CustomVideoFrame: NSObject, MCVideoFrame {
   }
   
   /**
-  		This should return the size of the frame buffer if your frame is an RGB frame. 
+  	This should return the size of the frame buffer if your frame is an RGB frame. 
   */ 
   func sizeRgb() -> UInt32 {
     return UInt32(width() * height() * 4);
   }
 
   /**
-    	This should return the size of the frame buffer if your frame is an I420 frame. For example, the formula
-    	for calculating the size of an I420 frame is frame_size = width * height * 3 / 2 . 
+    This should return the size of the frame buffer if your frame is an I420 frame. For example, the formula
+    for calculating the size of an I420 frame is frame_size = width * height * 3 / 2 . 
 		Ignore this if your frame is not I420.
   */
   func sizeI420() -> UInt32 {
@@ -286,21 +287,21 @@ class CustomVideoFrame: NSObject, MCVideoFrame {
   }
 
   /**
-        Implementing as empty since our frame is RGB.
+    Implementing as empty since our frame is RGB.
   */
   func sizeI444() -> UInt32 {
     return 0;
   }
 
   /**
-        Implementing as empty since our frame is RGB.
+    Implementing as empty since our frame is RGB.
   */
   func getI444Buffer(_ buffer: UnsafeMutablePointer<UInt8>!) {
     return;
   }
   
   /**
-        If your frame buffer is I420, you should implement this instead.
+    If your frame buffer is I420, you should implement this instead.
 		You need to fill the provided buffer with your frame buffer.
   */
   func getI420Buffer(_ buffer: UnsafeMutablePointer<UInt8>!) {
@@ -353,8 +354,6 @@ class CustomSineAudioFrame {
     frame.channelNumber = self._numChannels;
     frame.sampleRate = Int32(self._sampleRate);
     frame.frameNumber = Int(self._sampleRate * self._chunkTime / 1000);
-    
-
     
     for j in stride(from:0, to: self._bufferSize, by: self._numChannels) {
       let constant = 2.0 * Float(CustomSineAudioFrame.TONE_FREQUENCY) * CustomSineAudioFrame.PI;
@@ -510,9 +509,9 @@ To ingest raw frames, you first must download and install the appropriate [Milli
 
 Similar to the core API, we should begin by implementing the `VideoFrame` interface and create a wrapper class for `AudioFrame`:
 
-> 🚧 The Java API uses short to store the audio data.
-> 
-> In generating the sine values, which range between [0-1], we are required to scale the value to a larger range. Therefore, we use an amplitude of 2^15, which is essentially the size of a signed short.
+:::caution The Java API uses short to store the audio data.
+In generating the sine values, which range between [0-1], we are required to scale the value to a larger range. Therefore, we use an amplitude of 2^15, which is essentially the size of a signed short.
+:::
 
 ```java
 import com.millicast.VideoFrame;
@@ -544,7 +543,7 @@ class CustomVideoFrame implements VideoFrame {
 
 	/**
 		Override this to return the corresponding frame type to the frame buffer you store
-    	within the frame buffer. Video types supported can be found here
+    within the frame buffer. Video types supported can be found here
 		https://millicast.github.io/doc/latest/android/com/millicast/VideoType.html
     */
     @Override
@@ -554,7 +553,7 @@ class CustomVideoFrame implements VideoFrame {
 
 	/**
 		Override this to return the size corresponding to the frame type you
-    	store within the frame buffer. For example, for I420 frames, the formula for calculating
+    store within the frame buffer. For example, for I420 frames, the formula for calculating
 		the size is width * height * 3/2
   	*/       
 	@Override
@@ -563,10 +562,10 @@ class CustomVideoFrame implements VideoFrame {
     } 
    
 	/**
-    	Buffer is pre-allocated based on size. You are required to fill
+    Buffer is pre-allocated based on size. You are required to fill
 		the provided buffer with the frames you have, which should also correspond
-    	to the getType() you defined earlier. For example, if you would like to
-    	pass I420 frames, then getType() should return VideoType.I420
+    to the getType() you defined earlier. For example, if you would like to
+    pass I420 frames, then getType() should return VideoType.I420
 		and your buffer should be of that type, and you should copy it into "buffer".
   	*/
     @Override
@@ -634,12 +633,10 @@ Similarly to the Core API example, do the following in order to create and publi
 ```java
 //... Include the frame classes here...
 import com.millicast.CustomSource;
- 
- 
- 
+
 /**
-    We will create timer tasks to perform our audio and video input. Assuming you
-    insert this in your class somewhere.
+  We will create timer tasks to perform our audio and video input. Assuming you
+  insert this in your class somewhere.
 */
 private final Timer videoTimer = new Timer();
 private final Timer audioTimer = new Timer();
@@ -669,7 +666,7 @@ private final TimerTask audioTask = new TimerTask() {
 };
  
 /**
-    Some method in your class
+  Some method in your class
 */
 void create_custom_source_and_publish() {
   CustomSource source = CustomSource.create();
