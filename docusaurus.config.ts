@@ -218,8 +218,8 @@ const config: Config = {
         routeBasePath: '/millicast',
         sidebarPath: './sidebarsMillicast.ts',
         docItemComponent: '@theme/ApiItem',
-        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
-          const sidebarItems = await defaultSidebarItemsGenerator(args);
+        async sidebarItemsGenerator(args) {
+          const sidebarItems = await sidebarItemsGenerator(args);
           return removeDocIndexItems(sidebarItems);
         },
       } satisfies DocsPlugin.Options,
