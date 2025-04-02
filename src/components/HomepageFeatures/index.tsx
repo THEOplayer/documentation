@@ -36,25 +36,6 @@ const FeatureList: FeatureItem[] = [
     to: [{ link: '/theoplayer', text: 'Get Started' }],
   },
   {
-    title: 'Dolby OptiView Ads',
-    Image: (props) => (
-      <ThemedImage
-        {...props}
-        sources={{
-          light: useBaseUrl('/img/ads-black-wordmark.svg'),
-          dark: useBaseUrl('/img/ads-white-wordmark.svg'),
-        }}
-      />
-    ),
-    description: (
-      <p>
-        Dolby OptiView Ads (formerly known as THEOads) enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
-        engagement and maximize ad revenue.
-      </p>
-    ),
-    to: [{ link: '/theoads', text: 'Get Started' }],
-  },
-  {
     title: 'Dolby OptiView Live',
     Image: (props) => (
       <ThemedImage
@@ -82,7 +63,25 @@ const FeatureList: FeatureItem[] = [
       { link: '/theolive', text: 'Live (THEOlive)' },
     ],
   },
-
+  {
+    title: 'Dolby OptiView Ads',
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/ads-black-wordmark.svg'),
+          dark: useBaseUrl('/img/ads-white-wordmark.svg'),
+        }}
+      />
+    ),
+    description: (
+      <p>
+        Dolby OptiView Ads (formerly known as THEOads) enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
+        engagement and maximize ad revenue.
+      </p>
+    ),
+    to: [{ link: '/theoads', text: 'Get Started' }],
+  },
   {
     title: 'Open Video UI',
     Image: (props) => (
