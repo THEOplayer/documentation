@@ -434,16 +434,6 @@ const config: Config = {
 
   staticDirectories: ['static', 'theoplayer/static', 'open-video-ui/external/web-ui/docs/static'],
 
-  scripts: [
-    {
-      // HubSpot Analytics for theoplayer.com
-      src: '//js.hs-scripts.com/2163521.js',
-      id: 'hs-script-loader',
-      async: true,
-      defer: true,
-    },
-  ],
-
   themeConfig: {
     image: 'img/opengraph.png',
     announcementBar: process.env.DOCUSAURUS_PR_NUMBER
