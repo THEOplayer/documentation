@@ -4,10 +4,6 @@ slug: /audio-multiplexing
 ---
 The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers to receive multiple audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
 
-> 👍 Building a Conference Application?
-> 
-> [Dolby.io Communications](https://dolby-io.readme.io/communications-apis/docs) includes SDKs and APIs explicitly for building conferencing experiences. Dolby.io Communications and Streaming [integrate](ref:start-rts) to help scale conferences for interactive broadcast solutions.
-
 ## Understanding Audio Multiplexing
 
 To first understand Audio Multiplexing, we need to understand how the Dolby.io servers ingest feeds. When [Broadcasting](/millicast/broadcast/index.mdx), the Dolby.io Streaming servers will assign the most recent published stream source as the "_Main Source_", a function that allows broadcasters to seamlessly overwrite streams or add [Redundant Streams](/millicast/broadcast/redundant-ingest/index.mdx). For basic broadcasts, this is sufficient, for more advanced broadcasts Dolby.io provides two features that are exceptions:
