@@ -552,12 +552,10 @@ const config: Config = {
       apiKey: '415e178afdd1c3ea819b42fb9a6a1c99',
       indexName: 'theoplayer',
       contextualSearch: true,
-      replaceSearchResultPathname: process.env.DOCUSAURUS_BASE_URL
-        ? {
-            from: '/docs/',
-            to: process.env.DOCUSAURUS_BASE_URL,
-          }
-        : undefined,
+      replaceSearchResultPathname: {
+        from: '/docs/',
+        to: process.env.DOCUSAURUS_BASE_URL || '/',
+      },
     },
     tableOfContents: {
       minHeadingLevel: 2,
