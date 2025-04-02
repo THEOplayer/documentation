@@ -21,15 +21,15 @@ Each token item has a quick action menu that provides various options: Disable/E
 
 <ul>
 <li>
-<img style={{width: "22px"}} src="https://files.readme.io/419574a-success-filled.e1c87488.svg" alt="Icon"/> **Disable/Enable token**<br/>
+![](../assets/img/419574a-success-filled.e1c87488.svg) **Disable/Enable token**<br/>
   This allows you to quickly disable the token to prevent anyone from using it. Note: this will not disrupt any feed that was broadcasting live at the moment it was set.
 </li>
 <li>
-<img style={{width: "22px"}} src="https://files.readme.io/a425c9b-trash.ee2752c7.svg" alt="Icon"/> **Delete token**<br/>
+![](../assets/img/a425c9b-trash.ee2752c7.svg) **Delete token**<br/>
   Simply deletes the selected token. Keep in mind that once your token is deleted, it will not be recoverable, so it is important to be careful when using this feature.
 </li>
 <li>
-<img style={{width: "40px"}} src="https://files.readme.io/050b37e-Capture_decran_2023-07-27_a_11.13.53_AM.png" alt="Icon"/> **Broadcast**<br/>
+![](../assets/img/050b37e-Capture_decran_2023-07-27_a_11.13.53_AM.png) **Broadcast**<br/>
   Allows you to broadcast a live feed quickly and easily from the dashboard.
 </li>
 </ul>
@@ -45,12 +45,12 @@ The Live Broadcaster interface is a lightweight hosted web application which all
 
 The Broadcaster has the following user interface controls:
 
-- <img class="icon-broadcast" style={{width: "22px"}} src="https://files.readme.io/36ebc6b-Capture_decran_2023-07-29_a_4.54.41_PM.png" alt="Icon"/> **Video Devices**
-- <img class="icon-broadcast" style={{width: "22px"}} src="https://files.readme.io/d132e64-Capture_decran_2023-07-29_a_4.54.36_PM.png" alt="Icon"/> **Audio Devices**
-- <img class="icon-broadcast" style={{width: "22px"}} src="https://files.readme.io/e169c1b-Capture_decran_2023-07-29_a_4.54.55_PM.png" alt="Icon"/> **Record**
-- <img class="icon-broadcast" style={{width: "22px"}} src="https://files.readme.io/d592c02-Capture_decran_2023-07-29_a_4.54.08_PM.png" alt="Icon"/> **Settings**
-- <img class="icon-broadcast" style={{width: "22px"}} src="https://files.readme.io/97f2a68-Capture_decran_2023-07-29_a_4.54.15_PM.png" alt="Icon"/> **Picture-in-Picture**
-- <img class="icon-broadcast" style={{width: "22px"}} src="https://files.readme.io/f41bf83-Capture_decran_2023-07-29_a_4.54.24_PM.png" alt="Icon"/> **Share Broadcast**
+![](../assets/img/36ebc6b-Capture_decran_2023-07-29_a_4.54.41_PM.png) **Video Devices**<br/>
+![](../assets/img/d132e64-Capture_decran_2023-07-29_a_4.54.36_PM.png) **Audio Devices**<br/>
+![](../assets/img/e169c1b-Capture_decran_2023-07-29_a_4.54.55_PM.png) **Record**<br/>
+![](../assets/img/d592c02-Capture_decran_2023-07-29_a_4.54.08_PM.png) **Settings**<br/>
+![](../assets/img/97f2a68-Capture_decran_2023-07-29_a_4.54.15_PM.png) **Picture-in-Picture**<br/>
+![](../assets/img/f41bf83-Capture_decran_2023-07-29_a_4.54.24_PM.png) **Share Broadcast**<br/>
 
 More detail about each of these can be found below.
 
@@ -130,13 +130,13 @@ Choose an available bandwidth setting. There are trade-offs between video and au
 
 </li>
 <li>
-<img class="icon" style={{width: "40px"}} src="https://files.readme.io/a94f97b-Capture_decran_2023-07-29_a_4.55.16_PM.png" alt="Icon"/> **Multisource**
+![](../assets/img/a94f97b-Capture_decran_2023-07-29_a_4.55.16_PM.png) **Multisource**
 
 With the multisource feature, you are available to publish different independent feeds (each one identified with a different source id) under the same stream, this enables multiple audio and video tracks from different sources to be available to viewers. The **Source ID** can be specified to identify individual streams.
 
 </li>
 <li>
-<img class="icon" style={{width: "40px"}} src="https://files.readme.io/25536e3-Capture_decran_2023-07-29_a_4.55.22_PM.png" alt="Icon"/> **Simulcast**
+![](../assets/img/25536e3-Capture_decran_2023-07-29_a_4.55.22_PM.png) **Simulcast**
 
 Inside the Media settings, there is the option to activate the Simulcast feature, which will tell the system to make available three alternative quality streams for users that require lower bandwidth settings to gain speed and fluidity.
 
@@ -174,17 +174,17 @@ Set the priority of the feed when publishing multiple backup feeds. For more inf
 <li>
 **FPS**
 
-<img class="icon-online" style={{width: "40px"}} src="https://files.readme.io/ad5bd94-Capture_decran_2023-07-29_a_4.55.47_PM.png" alt="Icon"/>
+![](../assets/img/ad5bd94-Capture_decran_2023-07-29_a_4.55.47_PM.png)
 
 </li>
 <li>
-<img class="icon" style={{width: "40px"}} src="https://files.readme.io/8c733e3-Capture_decran_2023-07-29_a_4.55.38_PM.png" alt="Icon"/> **Echo Cancellation**
+![](../assets/img/8c733e3-Capture_decran_2023-07-29_a_4.55.38_PM.png) **Echo Cancellation**
 
 This feature enables the cancellation of echo on your audio's stream.
 
 </li>
 <li>
-<img class="icon" style={{width: "40px"}} src="https://files.readme.io/d6e73a5-Capture_decran_2023-07-29_a_4.55.29_PM.png" alt="Icon"/> **Audio**
+![](../assets/img/d6e73a5-Capture_decran_2023-07-29_a_4.55.29_PM.png) **Audio**
 
 This feature enabled stereo audio with your Dolby.io Real-time Streaming streams, however, stereo-enabled microphone is required.In addition, echo cancellation must be disabled while using the stereo setting. Doing this may cause an audio feedback loop so it is best practice to use headphones while listening to your stream to prevent echo.
 
@@ -201,19 +201,19 @@ The share button opens up a panel that provides links to the viewer for sharing 
 
 <ul>
 <li>
-<img class="icon-online" style={{width: "60px"}} src="https://files.readme.io/da2e0cc-Capture_decran_2023-07-29_a_4.56.31_PM.png" alt="Icon"/> **Online Viewer Path**
+![](../assets/img/da2e0cc-Capture_decran_2023-07-29_a_4.56.31_PM.png) **Online Viewer Path**
 
 Within the share panel, the viewer path provides a URL to share out to those engaging with your live stream.
 
 </li>
 <li>
-<img class="icon-hosted" style={{width: "60px"}} src="https://files.readme.io/be91d2d-Capture_decran_2023-07-29_a_4.56.08_PM.png" alt="Icon"/> **Hosted Viewer iFrame**
+![](../assets/img/be91d2d-Capture_decran_2023-07-29_a_4.56.08_PM.png) **Hosted Viewer iFrame**
 
 Within the share panel, an iFrame for an embeeded player is provided. This is beneficial if no development wants to be used in building a Broadcaster.
 
 </li>
 <li>
-<img class="icon-online" style={{width: "60px"}} src="https://files.readme.io/dc7cc57-Capture_decran_2023-07-29_a_4.56.19_PM.png" alt="Icon"/> **Customize**
+![](../assets/img/dc7cc57-Capture_decran_2023-07-29_a_4.56.19_PM.png) **Customize**
 
 Within the share panel, there is the option to adjust and change the iFrame code which will load an interface that allows you to manipulate the iFrame code to customize the hosted player.
 
@@ -228,15 +228,15 @@ After clicking the `Start` button you will begin broadcasting. The status and st
 
 <ul>
 <li>
-<img class="icon-live" style={{width: "40px"}} src="https://files.readme.io/fe624c2-Capture_decran_2023-07-29_a_4.35.09_PM.png" alt="Icon"/> **LIVE**<br/>
+![](../assets/img/fe624c2-Capture_decran_2023-07-29_a_4.35.09_PM.png) **LIVE**<br/>
 You are currently broadcasting live.
 </li>
 <li>
-<img class="icon-live" style={{width: "50px"}} src="https://files.readme.io/86a741d-Capture_decran_2023-07-29_a_4.34.56_PM.png" alt="Icon"/> **READY**<br/>
+![](../assets/img/86a741d-Capture_decran_2023-07-29_a_4.34.56_PM.png) **READY**<br/>
 You are not currently broadcasting.
 </li>
 <li>
-<img class="icon-online" style={{width: "60px"}} src="https://files.readme.io/6fb81ae-Capture_decran_2023-07-29_a_4.35.43_PM.png" alt="Icon"/> **LIVE + REC**<br/>
+![](../assets/img/6fb81ae-Capture_decran_2023-07-29_a_4.35.43_PM.png) **LIVE + REC**<br/>
 You are actively publishing live and recording the stream.
 </li>
 </ul>

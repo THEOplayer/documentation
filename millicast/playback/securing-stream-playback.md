@@ -276,7 +276,7 @@ Using code from the [2. Create a Streaming Web App](/millicast/getting-started/c
 
 When you run the web app, you'll see three text boxes to input an [account ID](/millicast/streaming-dashboard/managing-your-tokens.md), [Livestream Name](/millicast/streaming-dashboard/managing-your-tokens.md), and [API Secret key](/millicast/streaming-dashboard/index.md#settings). 
 
-![](https://files.readme.io/083b1aa-image.png)
+![](../assets/img/083b1aa-image.png)
 
 Start a secure broadcast, then add the values into the text box. The app will create a Subscribe token and use it to connect to the stream.
 
