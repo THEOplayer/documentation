@@ -19,11 +19,11 @@ To distribute content to an RTMP(S) output source you will need to update the se
 
 Support is available for:
 
-✓ H.264 and AAC codecs
-
-✓ SRT and RTMP(S) broadcast sources
-
-✓ Up to ten (10) RTMP(S) output destinations
+<ul class="checkBoxList">
+<li>H.264 and AAC codecs</li>
+<li>SRT and RTMP(S) broadcast sources</li>
+<li>Up to ten (10) RTMP(S) output destinations</li>
+</ul>
 
 The outgoing RTMP(S) stream will be identical to the incoming source stream in terms of bitrate, codec, etc.
 

@@ -25,14 +25,12 @@ When a broadcast is healthy, there can still be scenarios where an individual pl
 
 To help facilitate investigating out why a client is experiencing a degraded experience, there is a utility function available from the [Client SDKs](/millicast/client-sdks/index.mdx) called `diagnose()`. This method gathers up pertinent details such as: 
 
-✓ The version of the SDK being used.
-
-✓ User agent of the browser and/or platform.
-
-✓ Connection status, playback cluster, and stream account details.
-
-✓ WebRTC stats such as round-trip time, bitrate, packet rate, mime type, resolution, jitter, etc..
-
+<ul class="checkBoxList">
+<li>The version of the SDK being used.</li>
+<li>User agent of the browser and/or platform.</li>
+<li>Connection status, playback cluster, and stream account details.</li>
+<li>WebRTC stats such as round-trip time, bitrate, packet rate, mime type, resolution, jitter, etc..</li>
+</ul>
 
 ![](../assets/img/feature-diagnostics.png)
 

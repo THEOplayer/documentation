@@ -10,13 +10,12 @@ This page guides you on some of the metrics that are collected and steps to inte
 
 To monitor the health of your application, [client analytics](/millicast/playback/client-analytics-and-monitoring.md) for monitoring and troubleshooting are critical. You can choose among many observability tools for creating a dashboard with collected data such as:
 
-✓ Playback engagement metrics like startup time, playback rate, pause events, and durations
-
-✓ Device analytics such as user agent, browser, operating system, device size, versions
-
-✓ Geolocation details including country, city, IP address, and network details
-
-✓ WebRTC statistics like fps, round trip time, jitter, packet and frame loss rates, and bitrate
+<ul class="checkBoxList">
+<li>Playback engagement metrics like startup time, playback rate, pause events, and durations</li>
+<li>Device analytics such as user agent, browser, operating system, device size, versions</li>
+<li>Geolocation details including country, city, IP address, and network details</li>
+<li>WebRTC statistics like fps, round trip time, jitter, packet and frame loss rates, and bitrate</li>
+</ul>
 
 When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) and [Stream Syndication](/millicast/distribution/syndication.md) capabilities you can effectively monitor playback issues and track viewer characteristics.
 
