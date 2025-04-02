@@ -129,6 +129,12 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        googleTagManager: {
+          containerId: 'GTM-TVR6CV9',
+        },
+        gtag: {
+          trackingID: 'G-VCRXHMHS4M',
+        },
       } satisfies Preset.Options,
     ],
   ],
