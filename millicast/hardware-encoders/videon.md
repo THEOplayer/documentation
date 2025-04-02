@@ -98,7 +98,7 @@ Example:
 
 ### How-to apply a multi-viewer with Videon EdgeCaster
 
-You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate the URLs. For information on Simulcast, refer to [the documentation](https://dolby-io.readme.io/streaming-apis/docs/selecting-simulcast-layers) to understand its usage.
+You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.md) to generate the URLs. For information on Simulcast, refer to [the documentation](/millicast/distribution/using-webrtc-simulcast.md) to understand its usage.
 
 #### Using RTMP
 
