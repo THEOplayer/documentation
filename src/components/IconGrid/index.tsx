@@ -1,7 +1,6 @@
-import React, { type ComponentProps, type ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
-import Link, { type Props as LinkProps } from '@docusaurus/Link';
 
 export interface IconGridButtonProps {
   className?: string;
