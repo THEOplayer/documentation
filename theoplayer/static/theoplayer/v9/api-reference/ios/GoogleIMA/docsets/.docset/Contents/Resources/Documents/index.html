@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Index  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+          <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Index  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+           Docs
+        </a>
+        
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Index</a>
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/GoogleIMAConfiguration.html">GoogleIMAConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/GoogleIMAConfiguration/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/GoogleIMAIntegrationFactory.html">GoogleIMAIntegrationFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/GoogleImaAdErrorEvent.html">GoogleImaAdErrorEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NativeGoogleImaAdDescription.html">NativeGoogleImaAdDescription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Ads.html">Ads</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/THEOplayerConfiguration.html">THEOplayerConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/GoogleImaIntegration.html">GoogleImaIntegration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/NativeGoogleImaAd.html">NativeGoogleImaAd</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h2 id='sample-code' class='heading'>Sample code</h2>
+<h4 id='import-the-google-ima-integration-module' class='heading'>Import the Google IMA integration module</h4>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">THEOplayerGoogleIMAIntegration</span>
+</code></pre>
+<h4 id='create-and-add-a-google-ima-integration-to-your-theoplayer' class='heading'>Create and add a Google IMA integration to your THEOplayer</h4>
+
+<p>As of v8.14.0, the integration will be automatically created and added to THEOplayer when you add the <code>THEOplayerGoogleIMAIntegration</code> package to your project. It is still possible to create and add an integration to override the auto-integration:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">imaIntegration</span> <span class="o">=</span> <span class="kt">GoogleIMAIntegrationFactory</span><span class="o">.</span><span class="nf">createIntegration</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="n">theoplayer</span><span class="p">)</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="nf">addIntegration</span><span class="p">(</span><span class="n">imaIntegration</span><span class="p">)</span>
+</code></pre>
+<h4 id='add-a-source-with-a-google-ima-ad-description' class='heading'>Add a source with a Google IMA ad description</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">adDescription</span> <span class="o">=</span> <span class="kt">GoogleImaAdDescription</span><span class="p">(</span><span class="nv">src</span><span class="p">:</span> <span class="s">"ima_ad_source"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">typedSource</span> <span class="o">=</span> <span class="kt">TypedSource</span><span class="p">(</span><span class="nv">src</span><span class="p">:</span> <span class="s">"https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="s">"application/x-mpegurl"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">sourceDescription</span> <span class="o">=</span> <span class="kt">SourceDescription</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="n">typedSource</span><span class="p">,</span> <span class="nv">ads</span><span class="p">:</span> <span class="p">[</span><span class="n">adDescription</span><span class="p">])</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">sourceDescription</span>
+</code></pre>
+<h4 id='or-add-a-google-dai-source' class='heading'>Or, add a Google DAI source</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">daiConfig</span> <span class="o">=</span> <span class="kt">GoogleDAILiveConfiguration</span><span class="p">(</span>
+    <span class="nv">assetKey</span><span class="p">:</span> <span class="s">"c-rArva4ShKVIAkNfy6HUQ"</span><span class="p">,</span>
+    <span class="nv">apiKey</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+    <span class="nv">authToken</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">streamActivityMonitorID</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">adTagParameters</span><span class="p">:</span> <span class="kc">nil</span>
+<span class="p">)</span>
+<span class="k">let</span> <span class="nv">typedSource</span> <span class="o">=</span> <span class="kt">GoogleDAITypedSource</span><span class="p">(</span><span class="nv">ssai</span><span class="p">:</span> <span class="n">daiConfig</span><span class="p">)</span>
+<span class="n">theoplayer</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">sourceDescription</span>
+<span class="k">return</span> <span class="kt">SourceDescription</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="n">typedSource</span><span class="p">)</span>
+</code></pre>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>© 2025 THEOplayer</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

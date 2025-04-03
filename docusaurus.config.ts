@@ -234,6 +234,10 @@ const config: Config = {
             to: '/open-video-ui/web/getting-started',
           },
           {
+            from: '/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/',
+            to: '/theoplayer/how-to-guides/miscellaneous/vr/',
+          },
+          {
             from: '/theoads/api/signaling/',
             to: '/theoads/api/signaling/theoads-api/',
           },
