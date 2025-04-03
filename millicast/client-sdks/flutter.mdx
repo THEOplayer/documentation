@@ -47,7 +47,7 @@ You can import the SDK through flutter pub dev.
 
 #### Import as a dependency
 
-```shell install sdk
+```shell title="install sdk"
 flutter pub add millicast_flutter_sdk
 ```
 
@@ -64,7 +64,7 @@ dependencies:
 
 And then using it with the `import` statement.
 
-```dart Import SDK
+```dart title="Import SDK"
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 ```
 
@@ -80,7 +80,7 @@ The main module to publish a stream is the [Publish module](https://pub.dev/docu
 
 To create a new publisher, you have to instance the Publish class:
 
-```dart Dart
+```dart title="Dart"
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 
 // Setting subscriber options
@@ -113,7 +113,7 @@ You should get the media information (camera/microphone) you want to stream with
 
 In this example, we are going to get the default user camera and microphone:
 
-```dart Dart
+```dart title="Dart"
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 // Get User camera and microphone
 final _localRenderer = RTCVideoRenderer();
@@ -135,7 +135,7 @@ After all previous steps are completed, you can now initialize the stream using 
 
 Using the instanced Publisher and mediaStream, add the connect method:
 
-```dart Dart
+```dart title="Dart"
 // Publishing Options
 Map<String, dynamic> broadcastOptions = {'mediaStream': mediaStream};
 
@@ -181,7 +181,7 @@ If the method is not static (which means you can access it without a Publish ins
 
 Example:
 
-```dart Dart
+```dart title="Dart"
 publisher.signaling   // Corresponds to the Signaling module.
 publisher.webRTCPeer  // Corresponds to the Peerconnection module.
 ```
@@ -195,7 +195,7 @@ To do that, you have to use the `.updateBitrate()` method of your Publish instan
 
 Example:
 
-```dart Dart
+```dart title="Dart"
 publisher.webRTCPeer.updateBitrate(2000); // Set the active stream with 2000 kbps limit.
 publisher.webRTCPeer.updateBitrate(0);    // Set the active stream with no limit.
 ```
@@ -228,7 +228,7 @@ The main module to view a stream is the [View module](https://pub.dev/documentat
 
 Creating a new View instance:
 
-```dart Dart
+```dart title="Dart"
 import 'dart:convert';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
@@ -260,7 +260,7 @@ More information here:
 - .getSubscriber()
 - Token generator .callback()
 
-```dart Dart
+```dart title="Dart"
 mediaStream = RTCVideoRenderer();
 
 /// Start connection to publisher
@@ -277,7 +277,7 @@ try {
 
 In case the mediaElement param is not specified when creating a View instance, a track event containing the media track will be emitted when the stream starts.
 
-```dart Dart
+```dart title="Dart"
 //...
 view.on('stats', view, (ev, context) {
     MediaStream? stream = ev.eventData as MediaStream?;
@@ -289,7 +289,7 @@ view.on('stats', view, (ev, context) {
 
 After the previous steps are done then you can connect to the stream using the `.connect()` method from the View instance.
 
-```dart Dart
+```dart title="Dart"
 try {
   await view.connect(options)
 } catch (e) {
@@ -306,7 +306,7 @@ Both the instances of Publish and View have a reconnect event. This event emits 
 
 Example of a reconnect event in the View instance:
 
-```dart Dart
+```dart title="Dart"
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 
 View view = View(
@@ -329,7 +329,7 @@ view.on('reconnect', view, (event, context) {
 
 You can get the logs of the connection, SDP, errors, and more. It can be enabled through the Logger module and you can activate it at any time (before/after a new connection).
 
-```dart Dart
+```dart title="Dart"
 import 'package:logger/logger.dart';
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 Logger _logger = getLogger('main');
@@ -352,7 +352,7 @@ Stream stats can be accessed by both Publish and View instances. In order to cap
 
 Example of usage:
 
-```dart Dart
+```dart title="Dart"
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 
 // Initialize and connect your Viewer
@@ -386,7 +386,7 @@ We highly recommend stopping the stats when they're not being used.
 
 Example of stopping stats:
 
-```dart Dart
+```dart title="Dart"
 //...
 view.webRTCPeer.stopStats();
 ```
@@ -403,7 +403,7 @@ Both Publisher and Subscriber follow the same workflow.
 
 Example of usage:
 
-```dart Dart
+```dart title="Dart"
 import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 import 'dart:convert';
 

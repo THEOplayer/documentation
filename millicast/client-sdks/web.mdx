@@ -26,7 +26,7 @@ To use the SDK in your web applications you have options:
 
 You can include the SDK directly in your HTML by adding this element to the `<head>` of your page:
 
-```html Import script
+```html title="Import script"
 <script src="https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.umd.min.js"></script>
 ```
 
@@ -36,7 +36,7 @@ If you want to pin or lock to a specific version, you can find available options
 
 You can install the package directly into your project with `npm`:
 
-```shell bash
+```shell title="bash"
 npm i --save @millicast/sdk
 ```
 
@@ -46,7 +46,7 @@ If you want to pin or lock to a specific version, you can find available options
 
 Testing for browser compatibility is a quick test you can do to make sure the browser supports **video** and that you can reference the SDK.
 
-```javascript NPM
+```javascript title="NPM"
 // Node Package Manager (NPM)
 // You access SDK modules as an import from the @millicast/sdk package.
 
@@ -56,7 +56,7 @@ const capabilities = PeerConnection.getCapabilities('video');
 console.log(capabilities);
 ```
 
-```javascript UMD
+```javascript title="UMD"
 // Universal Module Definition (UMD)
 // You access SDK modules from the window.millicast namespace.
 
@@ -64,7 +64,7 @@ const capabilities = window.millicast.PeerConnection.getCapabilities('video');
 console.log(capabilities);
 ```
 
-```javascript ESM
+```javascript title="ESM"
 // ES Modules
 // You access SDK modules through an import.
 
@@ -477,7 +477,7 @@ Stream stats can be accessed by both Publish and View instances. In order to cap
 >
 > Keep in mind that the stats that are collected may differ from browser to browser, between browser versions, and may depend on the type of media that is being transferred.
 
-```javascript View
+```javascript title="View"
 import { View } from '@millicast/sdk';
 
 // Initialize and connect your Viewer
@@ -490,7 +490,7 @@ millicastView.webRTCPeer.on('stats', (stats) => {
 });
 ```
 
-```javascript Publish
+```javascript title="Publish"
 import { Publish } from '@millicast/sdk';
 
 // Initialize and connect your Publisher

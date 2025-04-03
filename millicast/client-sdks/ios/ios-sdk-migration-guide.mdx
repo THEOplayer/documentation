@@ -19,7 +19,7 @@ Below you'll find examples for migrating your applications from [v1.8.9](https:/
 
 For applications that only have a single source available for playback, track management has changed.
 
-```swift 1.8.x
+```swift title="1.8.x"
 let subscriber = MCSubscriber()
 
 var receivedVideoTrack: MCVideoTrack?
@@ -49,7 +49,7 @@ try await subscriber.subscribe()
 MCVideoSwiftUIView(videoTrack: receivedVideoTrack)
 ```
 
-```swift 2.x
+```swift title="2.x"
 let subscriber = MCSubscriber()
 let renderer = MCAcceleratedVideoRenderer()
 
@@ -80,7 +80,7 @@ MCVideoSwiftUIView(renderer: renderer)
 
 There were a lot of complicated steps involved in projecting the sources for a multi-stream view. This complex workflow requires a lot of understanding of the WebRTC remote tracks. Using the new 2.0.0 implementation removes the need to handle sourceIds, mids and the projection data directly. This solves a lot of complexities from the old implementation.
 
-```swift 1.8.x
+```swift title="1.8.x"
 let subscriber = MCSubscriber()
 
 // Managing tracks
@@ -162,7 +162,7 @@ ForEach(projectedVideoTracks.values) { videoTrack in
 }
 ```
 
-```swift 2.x
+```swift title="2.x"
 var videoRenderers: [String: MCCMSampleBufferVideoRenderer] = [:]
 
 Task {
@@ -231,7 +231,7 @@ ForEach(videoRenderers.values) { renderer in
 
 Initialising a video view for display on the UI has also changed:
 
-```swift 1.8.x
+```swift title="1.8.x"
 // Using SwiftUI
 MCVideoSwiftUIView(videoTrack: videoTrack)
 
@@ -243,7 +243,7 @@ pipView.attach(videoTrack: videoTrack, mirrored: false)
 // Note: Where `videoTrack` is the instance of MCVideoTrack received
 ```
 
-```swift 2.x
+```swift title="2.x"
 // Using SwiftUI
 MCVideoSwiftUIView(renderer: renderer)
 
@@ -259,7 +259,7 @@ let videoView = MCSampleBufferVideoUIView(frame: .zero, renderer: renderer)
 
 These API provide an easy way of querying the videoSize. For example this can be used to set the [preferredContentSize](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621476-preferredcontentsize) in a Picture In Picture presentation.
 
-```swift 1.8.x
+```swift title="1.8.x"
 let renderer = MCIosVideoRenderer()
 videoTrack.add(renderer)
 
@@ -268,7 +268,7 @@ videoTrack.add(renderer)
 let videoSize = CGSizeMake(width: renderer.getWidth(), height: renderer.getHeight())
 ```
 
-```swift 2.x
+```swift title="2.x"
 let videoSize = videoView.videoSize
 
 // In UIKit: listen to the video size changes by conforming to `MCVideoViewDelegate`

@@ -17,7 +17,7 @@ implementation("com.millicast:millicast-sdk-android:2.0.0")
 
 Call the [initialize](https://millicast.github.io/doc/latest/android/android/com.millicast/-core/initialize.html) method to initialize the SDK. This needs to be done only once at the start of the App.
 
-```kotlin Kotlin
+```kotlin title="Kotlin"
 import android.app.Application
 import com.millicast.Core
 

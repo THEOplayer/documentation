@@ -39,7 +39,7 @@ Optionally the webhook may include:
 
 Event callback for when a publishing token begins broadcasting.
 
-```json started feed webhook body
+```json title="started feed webhook body"
 {
   "type": "feeds",
   "event": "started",
@@ -59,7 +59,7 @@ Event callback for when a publishing token begins broadcasting.
 
 Event callback for when a publishing token stops broadcasting.
 
-```json ended feed webhook body
+```json title="ended feed webhook body"
 {
   "type": "feeds",
   "event": "ended",
@@ -77,7 +77,7 @@ Event callback for when a publishing token stops broadcasting.
 
 Here is an example of the webhook body:
 
-```json ended feed webhook body
+```json title="ended feed webhook body"
 {
   "type": "feeds",
   "event": "ended",

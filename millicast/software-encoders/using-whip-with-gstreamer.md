@@ -72,7 +72,7 @@ You can use the [Hosted Viewer](/millicast/streaming-dashboard/index.md) and [Li
 
 The [videotestsrc](https://gstreamer.freedesktop.org/documentation/videotestsrc/index.html?gi-language=c) element can be used to produce a simple test video and has a few patterns. Here is a simple example of a bouncing ball:
 
-```shell bash
+```shell title="bash"
 gst-launch-1.0 videotestsrc pattern=ball ! videoconvert ! x264enc ! rtph264pay ! \
   whip.sink_0 audiotestsrc wave=5 ! audioconvert ! opusenc ! rtpopuspay ! \
   whip.sink_1 whipsink name=whip \
@@ -88,7 +88,7 @@ The default `videotestsrc` shows a more complex stream that includes audio and a
 
 In order to stream this video test variation you need to specify some additional steps for the audio encode settings:
 
-```shell bash
+```shell title="bash"
 gst-launch-1.0 videotestsrc ! videoconvert ! x264enc ! rtph264pay ! \
   'application/x-rtp,media=video,encoding-name=H264,payload=97,clock-rate=90000' ! \
   whip.sink_0 audiotestsrc wave=5 ! audioconvert ! opusenc ! rtpopuspay ! \
@@ -103,7 +103,7 @@ You can watch these streams from a [playback](/millicast/playback/index.mdx) vie
 
 The [audiotestsrc](https://gstreamer.freedesktop.org/documentation/audiotestsrc/index.html?gi-language=c#audiotestsrc-page) element can be used to produce a simple test of audio-only streaming. Here's an example:
 
-```shell bash
+```shell title="bash"
 gst-launch-1.0 audiotestsrc wave=sine !
     audioconvert ! opusenc ! rtpopuspay !
     'application/x-rtp,media=audio,encoding-name=OPUS,payload=96,clock-rate=48000,encoding-params=(string)2' !
@@ -119,7 +119,7 @@ Instead of using the video test source, this example demonstrates reading and lo
 
 If there is a requirement to use a specific codec such as with recordings you should use the **codec** query parameter of the [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint.
 
-```shell bash
+```shell title="bash"
 gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=true ! \
   qtdemux ! decodebin ! videorate ! videoconvert ! timeoverlay ! \
   video/x-raw,format='(string)I420' ! vp9enc target-bitrate=4000000 keyframe-max-dist=2 deadline=1 \
@@ -133,7 +133,7 @@ gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=t
 
 This example demonstrates using [opusenc](https://gstreamer.freedesktop.org/documentation/opus/opusenc.html?gi-language=c) with additional configured encoding options. These can also be omitted to use the defaults.
 
-```shell bash
+```shell title="bash"
 gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=true ! \
   qtdemux ! decodebin ! videorate ! videoconvert ! timeoverlay ! \
   video/x-raw,format='(string)I420' ! vp9enc target-bitrate=4000000 keyframe-max-dist=2 deadline=1 \

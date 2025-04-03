@@ -14,7 +14,7 @@ In the [Broadcast Events](/millicast/playback/viewer-events.md), the `active` ev
 
 Before the 2025-02-12, `trackId`, while [intended to be a dynamic value](https://github.com/millicast/millicast-sdk/blob/460444aa9e7a37ad2c9c77046a97cdaf6448a76f/packages/millicast-sdk/src/View.js#L163) was always returned as `"video"` or `"audio"` depending on the track type.
 
-```json JSON
+```json title="JSON"
 {
   "type": "event",
   "name": "active",
@@ -64,7 +64,7 @@ After the 2025-02-12 media server release, this value will be dynamic when retur
 
 Prior to the release, our code examples showed a hard-coded `trackId` like this:
 
-```javascript JavaScript
+```javascript title="JavaScript"
 await millicastView.project(sourceID, [
   {
     trackId: 'video', // this value is hard-coded in the code example

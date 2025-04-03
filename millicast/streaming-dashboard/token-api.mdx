@@ -72,7 +72,7 @@ There are a lot of parameters to adjust when creating a token. For a full list o
 
 As an example, we can use the API reference UI to create a basic publish token via a cURL request:
 
-```curl cURL
+```curl title="cURL"
 curl --request POST \
      --url https://api.millicast.com/api/publish_token \
      --header 'accept: application/json' \
@@ -104,7 +104,7 @@ The above request would use my API secret to create a publish token valid for 30
 
 You can also use Regex for Stream names, giving your token the ability to **use ANY arbitrary stream name** in the publishing path. The only rule to note here is that anyone using their own viewer must know what stream name the broadcaster is using in order to view the stream correctly.
 
-```curl cURL
+```curl title="cURL"
 curl --request POST \
      --url https://api.millicast.com/api/publish_token \
      --header 'accept: application/json' \

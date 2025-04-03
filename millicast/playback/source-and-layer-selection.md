@@ -68,7 +68,7 @@ An active [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.h
 
 Once a feed has been published to the stream, you can project it using the viewer. The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to map a feed onto the track, signalling to the CDN you are ready to receive data via a peer connection. Once a feed is mapped to a track, it can be rendered natively or in a browser.
 
-```javascript Projecting a source
+```javascript title="Projecting a source"
 viewer.project('uniqueSourceID', [
   {
     trackId: 'audio0',
@@ -87,7 +87,7 @@ The [project](https://millicast.github.io/millicast-sdk/View.html#project) funct
 
 The viewer\` also supports an [unproject](https://millicast.github.io/millicast-sdk/View.html#unproject) function that lets you signal to the CDN that you want to stop receiving media from that source.
 
-```javascript Removing projection
+```javascript title="Removing projection"
 viewer.unproject([videoTransceiver.mid]);
 ```
 
@@ -138,7 +138,7 @@ Where `millicastView` is the instance of the [View](https://millicast.github.io/
 
 To avoid problems with the maximum bitrate per viewer when using multi-view with Simulcast, you can limit the quality of sources by selecting the lowest quality layers. To do it, analyze the received [broadcastEvents](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) to select a layer with the lowest bitrate and project it, as in the following example:
 
-```javascript Layer selection
+```javascript title="Layer selection"
 let lowestLayer = event.data.medias[videoTransceiver.mid].layers.reduce((min, el) => {
   return min.bitrate > el.bitrate ? el : min;
 });
@@ -152,7 +152,7 @@ viewer.project('sourceId2', [
 ]);
 ```
 
-```json Example of the received event
+```json title="Example of the received event"
 {
   "type": "event",
   "name": "layers",
@@ -234,7 +234,7 @@ viewer.project('uniqueSourceID', [
 
 The [addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) event with the added track and transceiver.
 
-```javascript Dynamically adding a remote track on the viewer
+```javascript title="Dynamically adding a remote track on the viewer"
 // Add remote track and wait until the SDP O/A is performed and mid is assigned to the transceiver
 const transceiver = await viewer.addRemoteTrack('video', [new MediaStream()]);
 // Get mid for new created remote track

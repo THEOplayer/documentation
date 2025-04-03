@@ -43,7 +43,7 @@ The Millicast platform supports AVC (H264) broadcast pass-through which is widel
 - `-vcodec libx264` identifies the video codec
 - `-vprofile baseline -level 3.0` is the H.264 profile and level for maximum decoding speed, frame size, and bit rate
 
-```shell bash
+```shell title="bash"
 ffmpeg -re -stream_loop -1 -i $VIDEO_FILE_PATH \
   -vcodec libx264 \
   -preset veryfast \
@@ -65,7 +65,7 @@ The Millicast platform supports HEVC (H265) broadcast pass-through, but playback
 
 To stream HEVC via RTMP you can use the `libx265` codec and the `flv` packager:
 
-```Text bash
+```Text title="bash"
 YOUR_RTMP_PUBLISH_PATH_WITH_STREAM_NAME="rtmp://rtmp-auto.millicast.com:1935/v2/pub"+YOUR_RTMP_STREAM_NAME_AND_TOKEN
 
 ffmpeg -re -stream_loop -1 -i demo.mp4 -c:v libx265 -x265-params bframes=0 \
@@ -80,7 +80,7 @@ The Millicast platform supports AV1 broadcast pass-through with an RTMP-enhanced
 
 To stream AV1 via RTMP you can use `librav1e`, `SVT-av1` or `libaom-av1` and the `flv` packager:
 
-```shell bash
+```shell title="bash"
 ffmpeg -re -stream_loop -1 -i demo.mp4 \
   -b:a 1M -b:v 1M \
   -c:v librav1e  -f flv \
@@ -90,7 +90,7 @@ ffmpeg -re -stream_loop -1 -i demo.mp4 \
 
 AV1 encoding can be quite processor-intensive and usually requires GPU-enabled hardware acceleration. For testing, we recommend including a few additional settings that can boost encoding speed:
 
-```shell bash
+```shell title="bash"
 -speed 10  -qp 63 -g 120 -keyint_min 120 -tile-columns 4 -tile-rows 2
 ```
 
@@ -102,7 +102,7 @@ AV1 encoding can be quite processor-intensive and usually requires GPU-enabled h
 
 Support for **Real-time Streaming Protocol (RTSP)** can be done with `ffmpeg` by changing the input source. All of the other parameters are consistent with streaming a media file from disk.
 
-```shell bash
+```shell title="bash"
 ffmpeg -re -i rtsp://98.116.xx.xx:5545/axis-media/media.amp \
   -vcodec libx264  \
   -preset veryfast \
@@ -122,7 +122,7 @@ ffmpeg -re -i rtsp://98.116.xx.xx:5545/axis-media/media.amp \
 
 This example demonstrates sending the same video with multiple contribution layers. The `&sourceId` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to distinguish each source while using `&videoOnly` so the audio is only sent with the main feed. Also see the [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) for more about Multi-bitrate contribution.
 
-```shell bash
+```shell title="bash"
 ffmpeg -re -stream_loop -1 -i demo.mp4 \
   -c:v libx264 -preset medium -b:v:0 800k -maxrate:v:0 856k -bufsize:v:0 1200k -s:v:0 640x360 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=1&simulcastId" \
   -c:v libx264 -preset medium -b:v:0 1200k -maxrate:v:0 1280k -bufsize:v:0 1600k -s:v:0 854x480 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=2&simulcastId&videoOnly" \
@@ -139,7 +139,7 @@ The examples on the remainder of the page will reference these as environment va
 
 Some installations of `ffmpeg` may not have SRT available. This can be verified by running:
 
-```shell bash
+```shell title="bash"
 ffmpeg -buildconf | grep enable-libsrt
 ```
 
@@ -149,7 +149,7 @@ The output should show that `--enable-libsrt` is present.
 
 This example demonstrates [redundant ingest]/millicast/broadcast/redundant-ingest/index.mdx) where a second publishing source is used to recover from a failed broadcast source. The `&priority=100` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to indicate which is the primary and which is the backup feed. **The SRT URL must be URLencoded.**
 
-```shell bash
+```shell title="bash"
 ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
   -map 0 -vcodec libx264 -c:a copy -b:a 128k -preset veryfast -bf 0 -g 60 -vb 4500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D100" \
   -map 0 -vf scale=720:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 3000k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D100%26videoOnly%26sourceId%3D1" \
@@ -158,7 +158,7 @@ ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
 
 For the backup source, we'd use `&priority=-100` and run it from a secondary piece of hardware or secondary network in case of failures. The rest of the command is identical otherwise.
 
-```shell bash
+```shell title="bash"
 ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
   -map 0 -vcodec libx264 -c:a copy -b:a 128k -preset veryfast -bf 0 -g 60 -vb 4500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-1" \
   -map 0 -vf scale=720:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 3000k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D1" \
@@ -169,7 +169,7 @@ ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
 
 These examples were verified with `ffmpeg` version 6.0 on MacOS.
 
-```shell bash
+```shell title="bash"
 > ffmpeg -version
 ffmpeg version 6.0 Copyright (c) 2000-2023 the FFmpeg developers
 built with Apple clang version 14.0.3 (clang-1403.0.22.14.1)

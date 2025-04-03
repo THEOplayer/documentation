@@ -19,7 +19,7 @@ Below you'll find examples for migrating your applications from [v1.8.9](https:/
 
 For applications that only have a single source available for playback, track management has changed.
 
-```kotlin 1.8.x
+```kotlin title="1.8.x"
 Core.initialize()
 
 val subscriber = Core.createSubscriber()
@@ -62,7 +62,7 @@ launchDefaultScope {
 }
 ```
 
-```kotlin 2.x
+```kotlin title="2.x"
 Core.initialize()
 
 val subscriber = Core.createSubscriber()
@@ -107,7 +107,7 @@ Video view renderer using `TextureViewRenderer` remains the same in 2.0.0.
 
 There were a lot of complicated steps involved in projecting the sources for a multi-stream view. This complex workflow requires a lot of understanding of the WebRTC remote tracks. Using the new 2.0.0 implementation removes the need to handle sourceIds, mids and the projection data directly. This solves a lot of complexities from the old implementation.
 
-```kotlin 1.8.x
+```kotlin title="1.8.x"
 //Using the multi-source feature requires projecting tracks into a specified transceiver using its media ID (mid). When you start subscribing, you will receive the activity flow updates. To forward the selected media to the subscriber, use the project method of the subscriber. It requires providing the source ID you are targeting and an array of the tracks you want to project. And for more advanced cases, you may need to unproject and project tracks again. So you have to store a map of <sourceId, RemoteTrackHolder> for later usage. To achieve this you should listen to the StreamSourceActivity flow, then for every new track add only the new tracks to this stored map. Which is a big effort to do and a lot of stuff to worry about, as an example WHEN to re-init this map and etc.
 
 Core.initialize()
@@ -203,7 +203,7 @@ launchDefaultScope {
 }
 ```
 
-```kotlin 2.x
+```kotlin title="2.x"
 Core.initialize()
 
 val subscriber = Core.createSubscriber()

@@ -22,7 +22,7 @@ and manage their own state. These tracks can be enabled with a renderer/view, qu
 the source they belong to, receive events such as Activity status (Inactive/Active),  
 layers (for video), etc.
 
-```kotlin Kotlin/Android
+```kotlin title="Kotlin/Android"
 subscriber.onRemoteTrack.collect { track ->
     if (track is RemoteVideoTrack) {
         track.enableAsync(videoSink);
@@ -30,7 +30,7 @@ subscriber.onRemoteTrack.collect { track ->
 }
 ```
 
-```swift Swift/iOS
+```swift title="Swift/iOS"
 let subscriber = MCSubscriber()
 
 // iOS views now take renderers in the initializer instead of tracks directly. Keep
@@ -152,7 +152,7 @@ Enrichments made to data that can be valuable for troubleshooting issues such as
   The StreamViewDetails object contains strings describing stream ID, cluster ID, stream viewer ID, subscriber ID.  
   The StreamPublishDetails object contains strings describing stream ID, cluster ID, uuid, feed ID, publisher ID.
 
-```kotlin Kotlin/Android
+```kotlin title="Kotlin/Android"
 data class StreamPublishDetails(
     val publisherId: String,
     val clusterId: String,
@@ -168,7 +168,7 @@ data class StreamViewDetails(
 ) : StreamDetails()
 ```
 
-```swift Swift/iOS
+```swift title="Swift/iOS"
 MILLICAST_API @interface MCStreamPublishDetails: NSObject
 @property(nonatomic, copy) NSString * publisherId;
 @property(nonatomic, copy) NSString * clusterId;

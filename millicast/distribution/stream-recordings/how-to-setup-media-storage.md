@@ -105,7 +105,7 @@ Visit the official AWS [Adding a bucket policy](https://docs.aws.amazon.com/Amaz
 
 Be sure to substitute the name of the bucket in the placeholder field `${BUCKET_NAME}`:
 
-```json Policy
+```json title="Policy"
 {
   "Version": "2012-10-17",
   "Statement": [
