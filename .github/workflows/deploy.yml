@@ -30,17 +30,17 @@ jobs:
       - run: npm run build
         env:
           THEOPLAYER_LICENSE: ${{ vars.THEOPLAYER_LICENSE }}
-          DOCUSAURUS_BASE_URL: /docs/
+          DOCUSAURUS_BASE_URL: /
       # Deploy to S3
       # See https://github.com/aws-actions/configure-aws-credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::108977503313:role/github-documentation
-          aws-region: eu-west-1
+          role-to-assume: arn:aws:iam::548863597864:role/optiview-docs-github
+          aws-region: us-west-2
       - name: Deploy to S3
         run: |
-          aws s3 sync --delete ./build s3://www.theoplayer.com-docs/docs
+          aws s3 sync --delete ./build s3://docs-optiview-dolby-com-0-20250401191057436800000003/
       - name: Invalidate CloudFront
         run: |
-          aws cloudfront create-invalidation --distribution-id E1IOJWYC9REF7X --paths '/docs/*'
+          aws cloudfront create-invalidation --distribution-id EKPRWRE0B1EQ4 --paths '/*'
