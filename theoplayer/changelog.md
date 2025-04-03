@@ -5,6 +5,129 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.0.0 (2025/04/03)
+### Officially announcing THEOplayer 9.0
+Introducing a major version bump to THEOplayer 9.0. This version officially releases all the improvements and developments THEOplayer has achieved since version 8.0.
+
+THEOplayer 9.0 is **backwards compatible for most features but includes some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
+
+- Starting from THEOplayer 9.0, the new Media3 Playback pipeline is now the default for all Android SDK playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices for the Android SDK! Check out our [Getting started with Media3 guide](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
+
+- THEOplayer 9.0 supports playback of Dolby's real time streaming solution Millicast across all of our major SDKs, including React Native! Check out our Getting started with Millicast guides for [Web](https://www.theoplayer.com/docs/theoplayer/how-to-guides/web/millicast/getting-started/), [Android](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/millicast/getting-started/), [iOS](https://www.theoplayer.com/docs/theoplayer/how-to-guides/ios/millicast/getting-started/) and [React Native](https://www.theoplayer.com/docs/theoplayer/getting-started/frameworks/react-native/millicast/) for more information. 
+
+- With THEOplayer 9.0 we are also bumping and upgrading our THEOplayer Roku SDK to 9.0, bringing API and stability improvements along with new connectors for Conviva and Comscore, with more new feature development and connectors to follow! Check out our [Roku docs](https://www.theoplayer.com/docs/theoplayer/roku/) for more information.
+
+- THEOplayer 9.0 now comes with cross platform support for CMCD! We've added CMCD support for our Media3 pipeline as well as for iOS 18+, and made it available cross-platform through React Native too! Check out our CMCD docs for [Web](https://www.theoplayer.com/docs/theoplayer/connectors/web/cmcd/getting-started), [Android](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/cmcd/getting-started/), [iOS](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/cmcd/getting-started/) and [React Native](https://www.theoplayer.com/docs/theoplayer/getting-started/frameworks/react-native/cmcd/) for more information.
+
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-9/), [Android](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-9/), [iOS](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-9/) and [React Native](https://www.theoplayer.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-9.md).
+
+### Web
+
+#### 💥 Breaking Changes
+
+- Virtual reality playback now always uses the WebXR API. The `PlayerConfiguration.vr.useWebXR` configuration flag is now deprecated and ignored.
+- Removed `THEOplayer.playerSuiteVersion`. Use `THEOplayer.version` instead.
+- Removed the Verizon Media integration (`player.verizonMedia`). Use the Uplynk integration (`player.uplynk`) instead.
+- Removed `MillicastSource.streamName`. Use `MillicastSource.src` instead.
+- Removed `SourceDescription.manifestMetadataTrack`.
+- Removed `player.ads.theoads.replaceAdTagParameters`. Use `player.theoads.replaceAdTagParameters` instead.
+- Removed discontinued proof-of-concept integration for Imagine SSAI.
+- Removed the option to use THEOads with a sideloaded manifest.
+
+#### 🐛 Issues
+
+- Fixed an issue for THEOads where the player could error on smart TVs after an adbreak.
+- Fixed an issue where sideloaded text tracks would not appear on iOS Safari when using native fullscreen.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- The Media3 playback pipeline is now enabled by default. This new pipeline is built on top of [Jetpack Media3](https://developer.android.com/media/media3), which aims to provide more stable playback on a wider range of devices.
+    - The legacy playback pipeline from version 8.x is still available, and can be activated by setting `TypedSource.playbackPipeline` to `PlaybackPipeline.LEGACY`.
+    - The legacy playback pipeline is scheduled to be removed in version 10.
+- Newly created caching tasks now use the Media3 storage backend by default.
+    - Sources cached with this backend can only be played using the Media3 playback pipeline. 
+    - Sources previously cached with the legacy storage backend are still playable using the Media3 playback pipeline.
+    - The legacy storage backend from version 8.x is still available, and can be activated by setting `CachingParameters.storageType` to `CacheStorageType.LEGACY`
+      when calling `Cache.createTask()`.
+    - The legacy storage backend is scheduled to be removed in version 10.
+- Removed the Media3 integration package. The Media3 playback pipeline now ships with the THEOplayer Android SDK (`com.theoplayer.theoplayer-sdk-android:core`).
+- The Android SDK and its integrations are now compiled against API 35. Ensure `compileSdk` is set to 35 or higher in your app's `build.gradle` file.
+- Removed deprecated `MillicastSource(Credential, Option)` constructor. Use the primary constructor instead.
+- Removed deprecated `MillicastSource.credential` API. Use `src`, `streamAccountId`, `apiUrl` and `subscriberToken` instead.
+- Removed deprecated `MillicastSource.option` API. Use `connectOptions` instead.
+- Removed deprecated `TypedSource.isHlsDateRange` API. Use `TypedSource.hlsDateRange` instead.
+- Removed deprecated `TypedSource.isLowLatency` API. Use `TypedSource.lowLatency` instead.
+- Removed deprecated `THEOLiveConfig.userId` API.
+- Removed deprecated `THEOLiveConfig.sessionId` API. Use `THEOLiveConfig.externalSessionId` instead.
+- Removed deprecated `ConaxDRMConfiguration.Builder.fairPlay(FairPlayKeySystemConfiguration)` API. Use `ConaxDRMConfiguration.Builder.fairplay(FairPlayKeySystemConfiguration)` instead.
+- Removed deprecated `THEOplayerConfig.getLiveOffset()` API. Use `TypedSource.liveOffset` instead.
+- Removed deprecated `THEOplayerConfig.isHlsDateRange()` API. Use `TypedSource.hlsDateRange` instead.
+- Changed the default value of `THEOplayerConfig.Builder#autoIntegrations(boolean)` to `true`. From now on, all available integrations will be automatically added.
+- Removed deprecated `GoogleImaIntegrationFactory.createGoogleImaIntegration(THEOplayerView, ImaSdkSettings)` API. Use `GoogleImaIntegrationFactory.createGoogleImaIntegration(THEOplayerView, GoogleImaConfiguration(ImaSdkSettings))` instead.
+- Removed deprecated `GoogleDaiIntegrationFactory.createGoogleDaiIntegration(THEOplayerView, ImaSdkSettings)` API. Use `GoogleDaiIntegrationFactory.createGoogleDaiIntegration(THEOplayerView, GoogleImaConfiguration(ImaSdkSettings))` instead.
+- Moved the `GoogleImaAd` API from the package `com.theoplayer.android.api.ads.GoogleImaAd` to `com.theoplayer.android.api.ads.ima`.
+
+#### ✨ Features
+
+- Added the `sseEndpoint` property to `TheoAdDescription` to retrieve server-sent events from the configured endpoint.
+
+#### ⚡ Improvements
+
+- Updated the Google Chromecast dependency from 21.4.0 to 22.0.0.
+- Updated the Gson dependency from 2.10.1 to 2.12.1.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- Removed Objective-C support for all THEOplayer APIs.
+- Removed deprecated `Integration.IntegrationType` API. Use `Integration.IntegrationKind` instead.
+- Removed deprecated `MillicastSource(streamName:accountID:token:connectOptions:)` API. Use `MillicastSource(src:streamAccountId:subscriberToken:connectOptions:)` instead.
+- Removed deprecated `MillicastSource(streamName:accountID:token:connectOptions:)` API. Use `MillicastSource(src:streamAccountId:subscriberToken:connectOptions:)` instead.
+- The `TypedSource` initializer now takes a `String` parameter as a source instead of a `URL` object.
+- The `Ads.dai` property is now only available when the `GoogleIMAIntegration` package is included in the project.
+
+#### 🐛 Issues
+
+- Fixed an issue where when connected to Airplay and playing live content, it does not automatically seek to the live point, and instead starts playing from the earliest DVR window.
+- Fixed an issue where the timeupdate event frequency was too high when playing a Millicast source.
+- Fixed an issue where playing multiple Millicast sources after each other would cause the app the become unresponsive.
+
+### Chromecast CAF
+
+#### 💥 Breaking Changes
+
+- Removed `THEOplayer.playerSuiteVersion`. Use `THEOplayer.version` instead.
+
+### Roku
+
+#### 💥 Breaking Changes
+
+- Removed the `configuration` property. Player configuration such as the player license should be passed using the new `configure` method now instead.
+- Removed support for verizon's SSAI, ads, and other features. This removes the `skipAds` method, ad events and the relevant verizon specific API. A new Uplynk connector will be added in the future to reintroduce this functionality, in the meantime customers relying on this are advised to remain on 1.X and get in contact to notify us of the dependency of Uplynk functionality and desire to upgrade.
+- The `setDestinationRectangle` method now only accept separate parameters instead of also an object containing the rectangle properties.
+- Removed the deprecated `listener` property and changed the signature of the `removeEventListener` and `addEventListener` methods.
+- Removed the `cues` property from the metadata text track and enforced only tracking one active cue in the `activeCues` property.
+- Removed the `content` property from metadata text track cues. Added `rawContent` in its place which exposes the raw metadata object the player received from Roku's video node.
+- The `activeCues` property on the metadata text track now only tracks the single latest timed metadata encountered in the stream. For the time being, tracking more cues should be tackled outside the player by observing the metadata text track and storing the cues oneself.
+- A metadata text track cue will now have its PTS that the player received from the video node on its `startTime`, rather than its `endTime`.
+- Fine-tuned playback control options for live streams. By default seeking into the DVR window will be enabled for live streams and pausing the stream will cause the player to resume from the point where the player was paused. Setting the `enableTrickPlay` API to false will change this behaviour to disallow seeking back into the DVR window and cause the player to resume from the live point after being paused.
+
+#### ✨ Features
+
+- Added the `autoplay` property to control automatic start of playback after setting the source. It defaults to `false`, and when disabled the poster image will now display before playback begins. 
+
+#### ⚡ Improvements
+
+- Updated the Conviva client used in the Conviva connector to 3.5.4 and improved Conviva tracking.
+
+#### 🐛 Issues
+
+- Fixed an issue where license checks would not properly display error messages for different issues with licenses.
+- Fixed an issue where app crashes could occur due to lingering listeners after destroying the player instance.
+
 ## 🚀 8.14.0 (2025/03/26)
 
 ### Web

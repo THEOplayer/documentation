@@ -55,15 +55,15 @@ After setting up a `THEOplayer` in your app, set its source to a `SourceDescript
 You'll need a Millicast account ID and stream name to identify your Millicast stream:
 
 ```swift
-let millicastSource = SourceDescription(source: MillicastSource(streamName: "multiview", accountID: "k9Mwad"))
+let millicastSource = SourceDescription(source: MillicastSource(src: "multiview", streamAccountId: "k9Mwad"))
 theoplayer.source = millicastSource
 ```
 
-Make sure to replace the above `streamName` and `accountID` with your own. If your source is a secure stream, then you will
+Here `src` refers to the stream name. Make sure to replace the above `src` and `streamAccountId` with your own. If your source is a secure stream, then you will
 also need to add a subscriber token to the source as follows:
 
 ```swift
-MillicastSource(streamName: ..., accountID: ..., token: "Your token")
+MillicastSource(src: ..., streamAccountId: ..., subscriberToken: "Your token")
 ```
 
 ### Add configuration
@@ -78,7 +78,7 @@ For an exhaustive list of these options, visit the [documentation](https://milli
 ```swift
 let connectOptions: MCClientOptions = .init()
 connectOptions.disableAudio = true
-MillicastSource(streamName: ..., accountID: ..., connectOptions: connectOptions)
+MillicastSource(src: ..., streamAccountId: ..., connectOptions: connectOptions)
 ```
 
 ### Background playback

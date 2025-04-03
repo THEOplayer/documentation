@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GoogleImaIntegration Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+          <link rel="stylesheet" type="text/css" href="../css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Protocol/GoogleImaIntegration" class="dashAnchor"></a>
+
+    <a title="GoogleImaIntegration Protocol Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+           Docs
+        </a>
+        
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Index</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      <a class="breadcrumb" href="../Protocols.html">Protocols</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      THEOplayerGoogleIMAIntegration.GoogleImaIntegration Protocol Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleIMAConfiguration.html">GoogleIMAConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleIMAConfiguration/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleIMAIntegrationFactory.html">GoogleIMAIntegrationFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GoogleImaAdErrorEvent.html">GoogleImaAdErrorEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NativeGoogleImaAdDescription.html">NativeGoogleImaAdDescription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Ads.html">Ads</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/THEOplayerConfiguration.html">THEOplayerConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/THEOplayerConfigurationBuilder.html">THEOplayerConfigurationBuilder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/GoogleImaIntegration.html">GoogleImaIntegration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NativeGoogleImaAd.html">NativeGoogleImaAd</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>GoogleImaIntegration</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GoogleImaIntegration</span> <span class="p">:</span> <span class="kt">Ads</span><span class="p">,</span> <span class="kt">Integration</span></code></pre>
+
+                </div>
+              </div>
+            <p>The Google IMA Integration API.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/renderingSettings" class="dashAnchor"></a>
+                    <a class="token" href="#/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvp">renderingSettings</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ads rendering settings which will be used when requesting an ad.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    IMA will use this property as the primary rendering settings. The rendering settings can also be provided with each ad defined by <code><a href="../Classes/NativeGoogleImaAdDescription.html">NativeGoogleImaAdDescription</a></code>, <code>GoogleImaIntegration.requestAds</code> or <code>GoogleImaIntegration.schedule</code> as fallback in case this property is nil.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">renderingSettings</span><span class="p">:</span> <span class="kt">IMAAdsRenderingSettings</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds3src17renderingSettingsySS_So015IMAAdsRenderingJ0CSgtF"></a>
+                    <a name="//apple_ref/swift/Method/requestAds(src:renderingSettings:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds3src17renderingSettingsySS_So015IMAAdsRenderingJ0CSgtF">requestAds(src:<wbr>renderingSettings:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Requests a Google IMA ad with the provided adTagUrl source.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">requestAds</span><span class="p">(</span><span class="nv">src</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">renderingSettings</span><span class="p">:</span> <span class="kt">IMAAdsRenderingSettings</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>src</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The adTagUrl source string.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>renderingSettings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>IMAAdsRenderingSettings</code> to be used to request the Google IMA ad.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds11adsResponse17renderingSettingsySS_So015IMAAdsRenderingK0CSgtF"></a>
+                    <a name="//apple_ref/swift/Method/requestAds(adsResponse:renderingSettings:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds11adsResponse17renderingSettingsySS_So015IMAAdsRenderingK0CSgtF">requestAds(adsResponse:<wbr>renderingSettings:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Requests a Google IMA ad with the provided adsResponse.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">requestAds</span><span class="p">(</span><span class="nv">adsResponse</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">renderingSettings</span><span class="p">:</span> <span class="kt">IMAAdsRenderingSettings</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>adsResponse</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The response string returned from a GET request of an adTagUrl.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>renderingSettings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>IMAAdsRenderingSettings</code> to be used to request the Google IMA ad.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP3dai0A3SDK0B3DAI_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/dai" class="dashAnchor"></a>
+                    <a class="token" href="#/s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP3dai0A3SDK0B3DAI_pSgvp">dai</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Google DAI API which can be used to query information about dynamically inserted advertisements.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">dai</span><span class="p">:</span> <span class="kt">GoogleDAI</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>© 2025 THEOplayer</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>
