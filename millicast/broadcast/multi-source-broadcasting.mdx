@@ -156,22 +156,26 @@ The `sourceId` is set when connecting to the publisher as shown below:
 <Tabs>
 
 <TabItem value="js" label="Web SDK">
+
 ```js
-// Create publisher 
-const publisher = new Publish(streamName, () => { return publisherToken });
+// Create publisher
+const publisher = new Publish(streamName, () => {
+  return publisherToken;
+});
 
 // Start publishing
 await publisher.connect({
-mediaStream: mediaStream,
-sourceId: sourceId, // SourceId handles stream identification
-disableVideo,
-dtx: true,
+  mediaStream: mediaStream,
+  sourceId: sourceId, // SourceId handles stream identification
+  disableVideo,
+  dtx: true,
 });
+```
 
-````
 </TabItem>
 
 <TabItem value="cpp" label="C++">
+
 ```cpp
 millicast::Publisher::Option options;
 
@@ -185,11 +189,12 @@ options.stereo = true;
 
 // Set the selected options to the publisher
 publisher->set_options(options);
-````
+```
 
 </TabItem>
 
 <TabItem value="java" label="Android">
+
 ```java
 Publisher.Option publisherOption = new Publisher.Option();
 
@@ -198,14 +203,17 @@ Publisher.Option publisherOption = new Publisher.Option();
 publisherOption.dtx = true;
 
 ````
+
 </TabItem>
 
 <TabItem value="swift" label="iOS">
+
 ```swift
 let publisherOptions = MCClientOptions()
 
 // To use multi-source, set a source ID of the publisher
 publisherOptions.sourceId = "MySource"
+
 ````
 
 </TabItem>

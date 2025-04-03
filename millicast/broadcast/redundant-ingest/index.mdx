@@ -103,21 +103,43 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 
 <TabItem value="cpp" label="C++">
-  ```cpp millicast::Publisher::Option options; options.priority = 1; publisher->connect(); // Wait for the on_connected callback
-  publisher->publish(options); ```
+
+```cpp
+millicast::Publisher::Option options;
+options.priority = 1;
+publisher->connect();
+// Wait for the on_connected callback
+publisher->publish(options);
+```
+
 </TabItem>
 
 <TabItem value="java" label="Android">
-  ```java Publisher.Option publisherOption = new Publisher.Option(); publisherOption.priority = 1; publisher.connect(); // Wait for the onConnected
-  callback publisher.publish(publisherOption); ```
+
+```java
+Publisher.Option publisherOption = new Publisher.Option();
+publisherOption.priority = 1;
+publisher.connect();
+// Wait for the onConnected callback
+publisher.publish(publisherOption);
+```
+
 </TabItem>
 
 <TabItem value="swift" label="iOS">
-  ```swift let publisherOptions = MCClientOptions() publisherOptions.priority = 1 publisher!.connect() // Wait for the onConnected callback
-  publisher!.publish(with: publisherOptions) ```
+
+```swift
+let publisherOptions = MCClientOptions()
+publisherOptions.priority = 1
+publisher!.connect()
+// Wait for the onConnected callback
+publisher!.publish(with: publisherOptions)
+```
+
 </TabItem>
 
 <TabItem value="javascript" label="Web SDK">
+
 ```js
 const publishOptions = {
   // Other preferred options
@@ -126,12 +148,12 @@ const publishOptions = {
 
 // Start publishing a stream
 try {
-await publisher.connect(publishOptions);
+  await publisher.connect(publishOptions);
 } catch (e) {
-console.error('Connection failed, handle error', e);
+  console.error('Connection failed, handle error', e);
 }
-
 ```
+
 </TabItem>
 </Tabs>
 
@@ -144,4 +166,3 @@ Start broadcasting the original feed and all backup feeds. In the case the sourc
 Pricing is determined based on bandwidth consumption, so each feed is billed independently. For playback, only one feed is distributed, so only data sent to the viewer count as usage, regardless of the number of redundant feeds.
 
 If you have any questions or suggestions, feel free to [contact us](https://support.dolby.io/).
-```
