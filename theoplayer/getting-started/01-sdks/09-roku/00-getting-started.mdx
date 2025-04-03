@@ -56,9 +56,9 @@ In this section, we will go through the process of creating a Roku channel and u
 
 ## Starting point
 
-First of all, we need to create a Roku channel. You can either [create a new Roku project in eclipse](https://www.youtube.com/watch?v=suQ0qxFs0jw) or start from the [Roku “Hello world” channel example](https://github.com/rokudev/hello-world) (Here is some [extra documentation](https://developer.roku.com/en-gb/docs/developer-program/getting-started/hello-world.md) about the “hello world” example).
+First of all, we need to create a Roku channel. You can either [create a new Roku project in eclipse](https://www.youtube.com/watch?v=suQ0qxFs0jw) or [VS Code](https://rokucommunity.github.io/vscode-brightscript-language/index.html) or start from the [Roku “Hello world” channel example](https://github.com/rokudev/hello-world) (Here is some [extra documentation](https://developer.roku.com/en-gb/docs/developer-program/getting-started/hello-world.md) about the “hello world” example).
 
-When you have created a Roku channel, you can copy the THEOplayer Roku SDK (“THEOplayerSDK.pkg“) into the directory of your project.
+When you have created a Roku channel, you can copy the THEOplayer Roku SDK ("THEOplayerSDK.pkg") into the directory of your project. You can download the most recent THEOplayer SDK from [https://portal.theoplayer.com](https://portal.theoplayer.com).
 
 ## Project structure:
 
@@ -513,7 +513,6 @@ Just make sure that `m.THEOplayer` is used in the proper context. For example, i
       ]
     }
     m.THEOplayer.setFocus(true)
-    m.THEOplayer.listener = m.top
     m.THEOplayer.callFunc("addEventListener", "playing", m.top, "onPlaying")
     m.THEOplayer.callFunc("play")
   end function
