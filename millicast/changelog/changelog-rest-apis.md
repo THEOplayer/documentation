@@ -1,22 +1,24 @@
+# REST API Changes
+
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
-# 2025-03-19 | REST APIs
+## 2025-03-19 | REST APIs
 
-## Features
+### Features
 
 - Introducing SRT output with the re-stream feature. Now you will have the ability to have Millicast be the SRT Caller (push) and send SRT out just like you can already with RTMP.
 
-## Fixes
+### Fixes
 
 - Fixed an issue where `lowLatencyRtmp` was defaulting to `false` instead of `true` on [Create Publish Token](/millicast/api/publish-token-v-1-create-token) . This API now matches the previously documented behaviour. This will take effect for new tokens created with the API. There are no changes to the tokens created in the dashboard.
 
-# 2024-10-15 | REST APIs & Webhooks
+## 2024-10-15 | REST APIs & Webhooks
 
 You'll find this latest REST API update provides access to the new live clipping feature and ability to manage media assets such as recordings and clips.
 
 You can find additional related changes in the [Dashboard and Applications Release Notes](/millicast/changelog/changelog-dolbyio-dashboard.md).
 
-## :new: Live Clipping
+### :new: Live Clipping
 
 With **live clipping** you can capture a partial clip from an active ongoing stream that is immediately available. This can power many solutions such as social network sharing, replay capabilities, as well as archival and auditing. Learn more from the [Stream Recordings](/millicast/distribution/stream-recordings/index.mdx) guide.
 
@@ -26,7 +28,7 @@ With **live clipping** you can capture a partial clip from an active ongoing str
 
 The Recording Hooks and Recordings REST endpoints will continue to work but are being deprecated so you should transition any applications and services.
 
-## :new: Account Settings
+### :new: Account Settings
 
 For capabilities such as [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) and [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) there are settings that can default new publish tokens to specific values.
 
@@ -36,17 +38,17 @@ For capabilities such as [Geo-blocking](/millicast/distribution/access-control/g
 
 The [Read Account Geo Restrictions](/millicast/api/geo-geo) and [Read Account Geo Cascade Settings](/millicast/api/account-get-geo-cascade) endpoints will continue to work but are being deprecated so you should transition any applications and services.
 
-# 2024-09-30 | Webhooks
+## 2024-09-30 | Webhooks
 
-## :new: ViewerConnection Hooks
+### :new: ViewerConnection Hooks
 
 For long-running streams, it can be helpful to start and stop the stream only when there are viewers connected. Using the new [ViewerConnection](/millicast/webhooks/viewerconnection-webhooks.md) webhook, you can write a service that listens for `viewerAttempt` and `noActiveViewers` events to start or stop a broadcast to better manage your bandwidth usage.
 
 View the [Webhooks](/millicast/webhooks/index.md) guide to learn more about setting up webhooks.
 
-# 2024-04-11 | REST APIs
+## 2024-04-11 | REST APIs
 
-## Features
+### Features
 
 - Introduced a new Live Clipping feature in Limited Availability (LA). Live Clipping provides the ability to record streams and extract a clip, such as a highlight, before the stream is finished. This allows you to share key moments or highlights during an ongoing event, providing mezzanine file for uploading to social media or a VOD platform. The following **Record Files** REST APIs are introduced to support capturing multiple simultaneous recordings while a broadcast event is in progress:
 
@@ -61,9 +63,9 @@ View the [Webhooks](/millicast/webhooks/index.md) guide to learn more about sett
 
 ---
 
-# 2023-03-29 | REST APIs
+## 2023-03-29 | REST APIs
 
-## REST APIs
+### REST APIs
 
 Introduced the following [Analytics REST APIs](/millicast/analytics/index.md) to query information based on the viewer's tracking ID:
 
@@ -75,8 +77,8 @@ Introduced the following [Analytics REST APIs](/millicast/analytics/index.md) to
 
 - [Series bandwidth for streams specified by TrackingID](/millicast/api/analytics-get-series-bandwidth-for-tracking-id)
 
-## REST APIs
+### REST APIs
 
-### Features
+#### Features
 
 Introduced the [stream_stopstream](/millicast/api/stream-stop-stream) and [stream_stopbyaccount](/millicast/api/stream-stop-by-account) REST APIs to stop an active stream, or stop all active streams associated with the account. This allows users to stop a stream that is published to moderate their content.
