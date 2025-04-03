@@ -3,7 +3,7 @@ const path = require('path');
 const serveHandler = require('serve-handler');
 
 const port = 3000;
-const baseUrl = '/docs/';
+const baseUrl = process.env.DOCUSAURUS_BASE_URL || '/';
 const buildDir = 'build';
 const outDir = path.resolve('.', buildDir);
 const servingUrl = `http://localhost:${port}`;

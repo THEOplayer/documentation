@@ -1,0 +1,65 @@
+---
+title: 'Desktop'
+slug: /desktop
+---
+
+The Native SDK provides C++ APIs for desktop platforms, such as Linux, Mac, and Windows. You may use the SDK in your project to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform.
+
+import ThreeCardList from '@site/src/components/ThreeCardList';
+
+<ThreeCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-native-sdk/releases',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'GitHub',
+      description: 'Access the Native SDK releases',
+    },
+    {
+      type: 'link',
+      href: 'https://millicast.github.io/doc/latest/cpp/index.html',
+      customProps: {
+        icon: '📖',
+      },
+      label: 'Documentation',
+      description: 'Find more information about Desktop APIs',
+    },
+    {
+      type: 'link',
+      href: '/millicast/desktop-getting-started-with-publishing',
+      docId: 'client-sdks/desktop/desktop-getting-started-with-publishing',
+      customProps: {
+        icon: '🚀',
+      },
+      label: 'Getting Started',
+      description: 'Start using the SDKs',
+    },
+  ]}
+/>
+
+## Requirements
+
+- [Sign up](https://dashboard.dolby.io/signup) for a free Dolby.io account.
+- Make sure that you have a working video camera and microphone.
+- On Mac, make sure that you use macOS Catalina or later.
+- On Windows, make sure that you use Windows 10 or later and Visual Studio 2022.
+- On Linux, make sure that you have the designated Linux operating system for the package.
+
+## Packages
+
+The following packages are available in for desktop operating systems:
+
+| Platform                               | Package name                                                           |
+| :------------------------------------- | :--------------------------------------------------------------------- |
+| macOS                                  | millicast-native-sdk-version-macos-arm64.zip                           |
+| macOS                                  | millicast-native-sdk-version-macos-x64.zip                             |
+| macOS                                  | millicast-native-sdk-version-macos-Framework.zip                       |
+| Windows                                | millicast-native-sdk-version-windows-x64.zip                           |
+| Ubuntu GNU libstdc++ library           | millicast-native-sdk-version-ubuntu22-x64-gnu-std.deb                  |
+| Ubuntu GNU libstdc++ library           | millicast-native-sdk-version-ubuntu20-x64-gnu-std.deb                  |
+| Ubuntu LLVM libc++ library             | millicast-native-sdk-version-ubuntu22-x64-llvm-std.deb                 |
+| Ubuntu LLVM libc++ library             | millicast-native-sdk-version-ubuntu20-x64-llvm-std.deb                 |
+| Debian11 arm-v8a GNU libstdc++ library | millicast-native-sdk-version-debian11-armv8a-nox11-nopulse-gnu-std.deb |

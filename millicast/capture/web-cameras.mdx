@@ -1,0 +1,124 @@
+---
+title: 'Web Cameras'
+slug: /web-cameras
+sidebar_position: 1
+---
+
+Web cameras are an easy and accessible way to capture content for broadcast with Dolby.io Streaming. Since web cameras are ubiquitous, there are many different software solutions to capture from a web camera.
+
+This guide outlines three options for managing web camera capture:
+
+1. [Connecting a Web Camera to the Dolby.io Dashboard Broadcaster](/millicast/capture/web-cameras.mdx)
+2. [Connecting a Web Camera to OBS](/millicast/capture/web-cameras.mdx)
+3. [Capturing from a Web Camera using JavaScript](/millicast/capture/web-cameras.mdx)
+
+## Connecting a web camera to the Dolby.io dashboard broadcaster
+
+Once you have created a Dolby.io account, you can begin using the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) to create and manage tokens, manage your Dolby.io account, and [broadcast](/millicast/broadcast/index.mdx) and view active streams.
+
+Inside the dashboard, click the Broadcast button located adjacent to the token.
+
+import BroadcastDashButton from '../assets/img/broadcast_dash_button.png';
+
+<div class="center-container">
+  <img src={BroadcastDashButton} width="500" />
+</div>
+
+Inside the dashboard broadcaster, click the camera icon in the bottom left corner to select your video input device. If the web camera is correctly connected to the device, it will be discoverable alongside other video devices and virtual cameras.
+
+import I08a0c46 from '../assets/img/08a0c46-image.png';
+
+<div class="center-container">
+  <img src={I08a0c46} width="500" />
+</div>
+
+Audio input devices function the same way and can be toggled by clicking on the microphone icon next to the camera icon.
+
+With your web camera connected to the dashboard broadcaster, you are now set up to capture content from your web camera. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.mdx) to learn about the distinct settings.
+
+## Connecting a web camera to OBS
+
+[Open Broadcast Software](https://obsproject.com/), or OBS, is a popular screencasting and streaming tool available as free, open-source software. To connect a web camera to OBS, you first need to [download the software](https://obsproject.com/) appropriate for your operating system.
+
+Follow along with this video guide or read the steps below.
+
+<div className="youtube-container">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/jUP4vyzbu5Y"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
+
+Once downloaded and installed, open the app.
+
+Inside the app, click the "+" icon within the Sources tab and add a Video Capture Device.
+
+import VideoCaptureObs from '../assets/img/videocaptureobs.png';
+
+<div class="center-container">
+  <img src={VideoCaptureObs} width="500" />
+</div>
+
+When adding the Video Capture Device, make sure to select your Web Camera as the device you want to create a capture for.
+
+import Ic9600bb from '../assets/img/c9600bb-image.png';
+
+<div class="center-container">
+  <img src={Ic9600bb} width="500" />
+</div>
+
+With your camera selected, click "OK". You've now set up your Web Camera for capture via OBS. To start streaming from OBS, continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
+
+## Capturing from a web camera using JavaScript
+
+If you are looking to prepare a Web Camera for capture within your application or platform, you'll need a programmatic solution. Dolby.io streaming supports [a number of SDKs](/millicast/client-sdks/index.mdx) for building streaming solutions bespoke to your project.
+
+### Identify available cameras
+
+To start capturing from a web camera, you must select the Web Camera device. You can accomplish this by first enumerating the devices with the [`mediaDevices.enumerateDevices()`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) function.
+
+```javascript
+navigator.mediaDevices.enumerateDevices().then((devices) => {
+  devices.forEach((device) => {
+    console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+  });
+});
+```
+
+The `enumerateDevices` function provides a list of audio and video input devices along with their respective `deviceId`.
+
+### Select the camera
+
+Using the `deviceId`, you can select your web camera and "get" it using the [`getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) function.
+
+```javascript
+await navigator.mediaDevices.getUserMedia({
+  video: {
+    deviceId: myPreferredCameraDeviceId,
+  },
+});
+```
+
+Once you've selected the web camera with `getUserMedia` it is ready to capture video and audio.
+
+## Additional Client SDKs
+
+You can find similar capabilities to the JavaScript SDK from the other Client SDKs listed below:
+
+import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
+
+<IconGrid>
+  <IconGridButton>[![](/img/web.svg) Web SDK](/millicast/client-sdks/web.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/apple.svg) iOS SDK](/millicast/client-sdks/ios/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/android.svg) Android SDK](/millicast/client-sdks/android/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/react.svg) React Native](/millicast/client-sdks/rn.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/apple.svg) Mac SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/electron.svg) Linux SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/flutter.svg) Flutter SDK](/millicast/client-sdks/flutter.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/dotnet.svg) .NET SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
+</IconGrid>

@@ -1,0 +1,95 @@
+---
+title: 'Capture'
+slug: /capture
+---
+
+import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
+
+To broadcast content, you either need a physical camera capturing the content, a virtual camera from a game engine, or a source of content available via other content creation tools such as OBS or Adobe Premiere.
+
+Many devices are able to capture a compatible media stream encoding that is ready for [broadcast](/millicast/broadcast/index.mdx);
+
+- **SDI & HDMI**, Serial Digital Interface (SDI) and High-Definition Multimedia Interface (HDMI) connections are common across many professional capture devices
+- **NDI**, Network Device Interface, is a free protocol for Video over IP that is supported by video mixers, capture cards, and other devices
+- **RTSP**, Real-time Streaming Protocol, is commonly supported in media streaming servers that capture and process video and audio feeds
+
+In facilitating efficient and reliable transmission of multimedia content over networks, Dolby.io CDN ingests streams in WebRTC, RTMP and RTMPs, and SRT.
+
+Check with your specific hardware provider for direct support of WebRTC or one of these common device interfaces.
+
+## Start building
+
+<DocCard
+  item={{
+    type: 'link',
+    href: '/millicast/getting-started',
+    customProps: {
+      icon: '🚀',
+    },
+    label: 'Getting Started',
+    description: 'Quick start for capturing video using the Dolby.io dashboard.',
+  }}
+/>
+
+<br />
+
+## Capture streaming content
+
+To begin real-time streaming, you will need to capture a live video feed from a physical or virtual camera.
+
+### Physical cameras
+
+Any physical camera that supports standard interfaces like SDI, HDMI, NDI or RTSP can be used as a capture device. Below you'll find guides for some of the more common hardware devices being used to stream content.
+
+[Getting Started with Web Capture](/millicast/introduction-to-streaming-apis.mdx)<br/>
+The **Millicast Web SDK** enables many popular web browsers to capture a video feed from a built-in camera or webcam that is connected to a computer system such as a Mac, Windows PC, or Linux desktop.
+
+[How-to Stream from DJI Drones](/millicast/capture/live-streaming-from-drones-rtmp.mdx)<br/>
+**DJI** creates a number of devices such as the Phantom or Mavic that let you stream directly from the drone to Dolby.io with RTMP.
+
+[How-to Stream from a GoPro](/millicast/capture/action-cameras.mdx)<br/>
+**GoPro** is a leading device used for capturing action footage. The latest cameras allow you to stream direct from the device to Dolby.io with RTMP.
+
+### Virtual cameras
+
+[How-to use NDI® Tools](/millicast/broadcast/using-ndi.md)<br/>
+**NDI® Tools** is a free suite of applications that makes it possible to connect to a remote IP camera device and capture video that can be sent for broadcasting.
+
+[How-to Stream Your Screenshare](/millicast/capture/screensharing.mdx)<br/>
+Screen capture allows sharing the contents of a window, application, or entire computer display.
+
+[How-to use OBS with WebRTC](/millicast/software-encoders/using-obs.md)<br/>
+**Open Broadcaster Software (OBS)** is free and open source software is popular for cross-platform streaming. You will need to download a custom version of OBS that has been extended to provide WebRTC support.
+
+<div className="youtube-container">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/jUP4vyzbu5Y"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
+
+## Learn more
+
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/orgs/dolbyio-samples/repositories?q=capture',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'Explore GitHub samples',
+    },
+    {
+      type: 'link',
+      href: 'https://dolby.io/blog/tag/capture/',
+      label: 'Find related blog posts',
+    },
+  ]}
+/>

@@ -16,6 +16,17 @@
 }
 
 .featureImage {
-  height: 100px;
-  width: 200px;
+  height: 55px;
+}
+
+.featureDescription {
+  text-wrap: pretty;
+}
+
+.featureButtons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }

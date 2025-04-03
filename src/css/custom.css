@@ -4,55 +4,139 @@
  * work well for content-centric websites.
  */
 
+@import 'avenir-next.css';
 @import 'openapi.css';
 
 :root {
-  --ifm-font-family-base: 'Open Sans', sans-serif;
-  --ifm-heading-font-family: 'Francois One', sans-serif;
-  --ifm-heading-font-weight: 400;
+  --ifm-font-family-base: 'avenir-next-lt-pro', sans-serif;
+  --ifm-font-weight-normal: 400;
+  --ifm-font-weight-medium: 500;
+  --ifm-font-weight-semibold: 600;
+  --ifm-font-weight-bold: 700;
+
+  --ifm-base-font-weight: var(--ifm-font-weight-normal);
+  --ifm-heading-font-weight: var(--ifm-font-weight-semibold);
+  --ifm-dropdown-font-weight: var(--ifm-font-weight-medium);
+
   --ifm-h4-font-size: 1.15rem;
+  --ifm-menu-color-background-active: rgba(125, 51, 255, 0.09);
+  --ifm-menu-color-background-hover: rgba(125, 51, 255, 0.09);
+
+  --ifm-navbar-background-color: #000;
+  --ifm-navbar-text-color: #fff;
+  --ifm-navbar-link-color: var(--ifm-navbar-text-color);
+  --ifm-navbar-link-hover-color: #b9b9ba;
+  --ifm-navbar-link-active-color: var(--ifm-navbar-link-color);
+  --ifm-dropdown-hover-background-color: var(--ifm-menu-color-background-hover);
+}
+
+/* TODO Use .theme-announcement-bar in next version of Docusaurus */
+[class^='announcementBar_'] {
+  border-bottom: 1px solid var(--ifm-navbar-background-color) !important;
 }
 
 /*
  * Generated with https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima
- * Primary color (dark):  #ffc50f = hsl(46, 100%, 53%)
- * Primary color (light): #957100 = hsl(46, 100%, 29%) = #ffc50f + adjust 45
+ * Primary color (dark):  #6569fe
+ * Primary color (light): #6d19ff
  */
+
 :root {
-  --ifm-color-primary: #957100;
-  --ifm-color-primary-dark: #866600;
-  --ifm-color-primary-darker: #7f6000;
-  --ifm-color-primary-darkest: #684f00;
-  --ifm-color-primary-light: #a47c00;
-  --ifm-color-primary-lighter: #ab8200;
-  --ifm-color-primary-lightest: #c29300;
+  --ifm-color-primary: #6d19ff;
+  --ifm-color-primary-dark: #5c00fc;
+  --ifm-color-primary-darker: #5700ee;
+  --ifm-color-primary-darkest: #4800c4;
+  --ifm-color-primary-light: #7f35ff;
+  --ifm-color-primary-lighter: #8843ff;
+  --ifm-color-primary-lightest: #a26dff;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #ffc50f;
-  --ifm-color-primary-dark: #f3b800;
-  --ifm-color-primary-darker: #e6ae00;
-  --ifm-color-primary-darkest: #bd8f00;
-  --ifm-color-primary-light: #ffcc2a;
-  --ifm-color-primary-lighter: #ffcf38;
-  --ifm-color-primary-lightest: #ffd960;
+  --ifm-color-primary: #6569fe;
+  --ifm-color-primary-dark: #4247fe;
+  --ifm-color-primary-darker: #3035fe;
+  --ifm-color-primary-darkest: #0208f7;
+  --ifm-color-primary-light: #888bfe;
+  --ifm-color-primary-lighter: #9a9dfe;
+  --ifm-color-primary-lightest: #cfd0ff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.hero--primary {
-  --ifm-hero-background-color: #9cb9c9;
-  --ifm-hero-text-color: #344a5e;
+.hero--primary,
+[data-theme='dark'] .hero--primary {
+  --ifm-hero-background-color: #000;
+  --ifm-hero-text-color: #fff;
 }
 
-[data-theme='dark'] .hero--primary {
-  --ifm-hero-background-color: #445f6e;
-  --ifm-hero-text-color: var(--ifm-font-color-base);
+.footer {
+  --ifm-footer-background-color: black;
+  --ifm-footer-color: white;
 }
 
 .footer a {
   --ifm-link-color: var(--ifm-footer-link-color);
+}
+
+.menu,
+.navbar__link,
+.pagination-nav__sublabel {
+  font-weight: var(--ifm-font-weight-medium);
+}
+
+/* Fix centering of logo because of the descenders on "y" and "p" */
+.navbar__logo img {
+  margin-top: 0.1rem;
+}
+
+/* Border beneath active navbar link and dropdown */
+.navbar__link,
+.dropdown {
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar__link--active,
+.dropdown:has(> .dropdown--active) {
+  color: var(--ifm-navbar-link-color);
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+/* Hide dropdown caret */
+.dropdown > .navbar__link:after {
+  display: none;
+}
+
+.navbar-sidebar {
+  background-color: var(--ifm-background-surface-color);
+}
+
+.navbar-sidebar__brand {
+  background-color: var(--ifm-navbar-background-color);
+}
+
+.navbar__inner,
+.navbar-sidebar__brand {
+  /* Use dark mode colors in top navbar and in brand of left navbar */
+  --ifm-color-scheme: dark;
+  --ifm-color-emphasis-0: var(--ifm-color-gray-1000);
+  --ifm-color-emphasis-100: var(--ifm-color-gray-900);
+  --ifm-color-emphasis-200: var(--ifm-color-gray-800);
+  --ifm-color-emphasis-300: var(--ifm-color-gray-700);
+  --ifm-color-emphasis-400: var(--ifm-color-gray-600);
+  --ifm-color-emphasis-500: var(--ifm-color-gray-500);
+  --ifm-color-emphasis-600: var(--ifm-color-gray-400);
+  --ifm-color-emphasis-700: var(--ifm-color-gray-300);
+  --ifm-color-emphasis-800: var(--ifm-color-gray-200);
+  --ifm-color-emphasis-900: var(--ifm-color-gray-100);
+  --ifm-color-emphasis-1000: var(--ifm-color-gray-0);
+
+  color: var(--ifm-navbar-text-color);
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 code[class*='language-'],
@@ -62,4 +146,18 @@ pre[class*='language-'] {
 
 .theme-doc-sidebar-menu hr {
   --ifm-hr-margin-vertical: 0.5rem;
+}
+
+ul.checkBoxList > li {
+  list-style-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text x="0" y="20">✓</text></svg>');
+}
+
+.youtube-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-container {
+  text-align: center;
 }

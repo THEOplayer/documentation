@@ -5,12 +5,13 @@ import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
-import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/lib/types';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
+import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
 import path from 'path';
 import fs from 'fs';
 
@@ -72,22 +73,36 @@ const docsConfigBase = {
   ],
 } satisfies DocsPlugin.Options;
 
+// Remove the index.md[x] from categories
+function removeDocIndexItems(items) {
+  const result = items
+    .filter((item) => item.type !== 'doc' || !item.id.endsWith('/index'))
+    .map((item) => {
+      if (item.type === 'category') {
+        return { ...item, items: removeDocIndexItems(item.items) };
+      }
+      return item;
+    });
+
+  return result;
+}
+
 const config: Config = {
-  title: 'THEOdocs',
-  tagline: 'Discover the latest developer documentation and samples for THEOplayer, THEOads, Open Video UI and THEOlive.',
+  title: 'Dolby OptiView Documentation',
+  tagline: 'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, and Open Video UI',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://www.theoplayer.com/',
+  url: 'https://docs.optiview.dolby.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.DOCUSAURUS_BASE_URL || '/docs/',
+  baseUrl: process.env.DOCUSAURUS_BASE_URL || '/',
   trailingSlash: true,
   noIndex: !!process.env.DOCUSAURUS_NO_INDEX,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'THEOplayer', // Usually your GitHub org/user name.
+  organizationName: 'Dolby', // Usually your GitHub org/user name.
   projectName: 'documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -113,6 +128,12 @@ const config: Config = {
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
+        },
+        googleTagManager: {
+          containerId: 'GTM-TVR6CV9',
+        },
+        gtag: {
+          trackingID: 'G-VCRXHMHS4M',
         },
       } satisfies Preset.Options,
     ],
@@ -168,23 +189,6 @@ const config: Config = {
       } satisfies DocsPlugin.Options,
     ],
     [
-      'docusaurus-plugin-openapi-docs',
-      {
-        id: 'theoads-api',
-        docsPluginId: 'theoads',
-        config: {
-          signaling: {
-            specPath: 'theoads/api/ads-client.swagger.json',
-            outputDir: 'theoads/api/signaling',
-            hideSendButton: true,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-          } satisfies OpenApiPlugin.Options,
-        },
-      },
-    ],
-    [
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
@@ -215,6 +219,29 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
+        id: 'millicast',
+        path: 'millicast',
+        routeBasePath: '/millicast',
+        sidebarPath: './sidebarsMillicast.ts',
+        docItemComponent: '@theme/ApiItem',
+        async sidebarItemsGenerator(args) {
+          const sidebarItems = await sidebarItemsGenerator(args);
+          return removeDocIndexItems(sidebarItems);
+        },
+      } satisfies DocsPlugin.Options,
+    ],
+    [
+      require.resolve('docusaurus-plugin-image-zoom'),
+      {
+        id: 'docusaurus-plugin-image-zoom',
+        path: 'millicast',
+        routeBasePath: '/millicast',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
         id: 'contributing',
         path: 'contributing',
         routeBasePath: '/contributing',
@@ -225,6 +252,57 @@ const config: Config = {
           },
         },
       } satisfies DocsPlugin.Options,
+    ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'theoads-api',
+        docsPluginId: 'theoads',
+        config: {
+          signaling: {
+            specPath: 'theoads/api/ads-client.swagger.json',
+            outputDir: 'theoads/api/signaling',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+        },
+      } satisfies OpenApiPlugin.PluginOptions,
+    ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'millicast-api',
+        docsPluginId: 'millicast',
+        config: {
+          millicast: {
+            specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
+            outputDir: 'millicast/api',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          millicastDirector: {
+            specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
+            outputDir: 'millicast/api/director',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+          millicastReportingApi: {
+            specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json',
+            outputDir: 'millicast/api/reporting',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+        },
+      } satisfies OpenApiPlugin.PluginOptions,
     ],
     [
       '@docusaurus/plugin-client-redirects',
@@ -246,6 +324,14 @@ const config: Config = {
             from: '/theoads/api/signaling/',
             to: '/theoads/api/signaling/theoads-api/',
           },
+          {
+            from: '/millicast/api',
+            to: '/millicast/api/millicast-api/',
+          },
+          {
+            from: '/millicast/api/director',
+            to: '/millicast/api/director/director-api/',
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
@@ -255,10 +341,15 @@ const config: Config = {
         },
       } satisfies ClientRedirectsPlugin.Options,
     ],
-    () => ({
-      name: 'webpack-plugin',
-      configureWebpack() {
-        return {
+    [
+      (_context, options: { webpack: WebpackConfiguration }) => ({
+        name: 'webpack-plugin',
+        configureWebpack() {
+          return options.webpack;
+        },
+      }),
+      {
+        webpack: {
           module: {
             // https://github.com/WebCoder49/code-input only exports to the global scope.
             // Insert some `import` and `export` statements where needed.
@@ -285,9 +376,9 @@ const config: Config = {
               },
             ],
           },
-        } satisfies WebpackConfiguration;
+        } satisfies WebpackConfiguration,
       },
-    }),
+    ],
   ],
 
   themes: ['docusaurus-theme-openapi-docs'],
@@ -361,31 +452,9 @@ const config: Config = {
 
   staticDirectories: ['static', 'theoplayer/static', 'open-video-ui/external/web-ui/docs/static'],
 
-  scripts: [
-    {
-      // HubSpot Analytics for theoplayer.com
-      src: '//js.hs-scripts.com/2163521.js',
-      id: 'hs-script-loader',
-      async: true,
-      defer: true,
-    },
-  ],
-
-  stylesheets: [
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.googleapis.com',
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.gstatic.com',
-      crossOrigin: true,
-    },
-    'https://fonts.googleapis.com/css2?family=Francois+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap',
-  ],
-
   themeConfig: {
-    image: 'img/opengraph.png',
+    // TODO OpenGraph image for OptiView?
+    // image: 'img/opengraph.png',
     announcementBar: process.env.DOCUSAURUS_PR_NUMBER
       ? {
           id: 'pr_preview',
@@ -394,40 +463,69 @@ const config: Config = {
           textColor: '#344a5e',
           isCloseable: false,
         }
-      : undefined,
+      : {
+          id: 'dolby_optiview_new_name',
+          content: 'Dolby OptiView is the new home for everything Dolby.io and THEOplayer.',
+          backgroundColor: '#4800c4',
+          textColor: '#fff',
+          isCloseable: true,
+        },
     navbar: {
       title: null,
       logo: {
-        alt: 'THEOdocs',
-        src: 'img/logo.svg',
-        srcDark: 'img/logo_dark.svg',
+        alt: 'Dolby OptiView',
+        src: 'img/dolby-optiview-white.svg',
       },
       items: [
         {
-          type: 'custom-platformSidebar',
-          docsPluginId: 'theoplayer',
-          label: 'THEOplayer',
+          type: 'dropdown',
+          label: 'Player',
           href: '/theoplayer',
           position: 'left',
-        } satisfies PlatformSidebarNavbarItemProps,
+          items: [
+            {
+              type: 'custom-platformSidebar',
+              docsPluginId: 'theoplayer',
+              label: 'THEOplayer',
+              href: '/theoplayer',
+              activeBasePath: '/theoplayer',
+            } satisfies PlatformSidebarNavbarItemProps,
+            {
+              type: 'custom-platformSidebar',
+              docsPluginId: 'open-video-ui',
+              label: 'Open Video UI',
+              href: '/open-video-ui',
+              activeBasePath: '/open-video-ui',
+            } satisfies PlatformSidebarNavbarItemProps,
+          ],
+        },
         {
-          type: 'custom-platformSidebar',
+          type: 'docSidebar',
           docsPluginId: 'theoads',
-          label: 'THEOads',
-          href: '/theoads',
+          sidebarId: 'theoads',
+          label: 'Ads',
           position: 'left',
-        } satisfies PlatformSidebarNavbarItemProps,
+        },
         {
-          type: 'custom-platformSidebar',
-          docsPluginId: 'open-video-ui',
-          label: 'Open Video UI',
-          href: '/open-video-ui',
+          type: 'dropdown',
+          label: 'Streaming',
           position: 'left',
-        } satisfies PlatformSidebarNavbarItemProps,
-        {
-          label: 'THEOlive',
-          href: '/theolive',
-          position: 'left',
+          items: [
+            {
+              type: 'docSidebar',
+              docsPluginId: 'theolive',
+              sidebarId: 'theolive',
+              label: 'Live (THEOlive)',
+              activeBasePath: '/theolive',
+            },
+            {
+              type: 'docSidebar',
+              docsPluginId: 'millicast',
+              sidebarId: 'millicast',
+              label: 'Real-time (Millicast)',
+              activeBasePath: '/millicast',
+            },
+          ],
         },
         {
           type: 'docsVersionDropdown',
@@ -438,7 +536,7 @@ const config: Config = {
     },
     footer: {
       style: 'light',
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.theoplayer.com/">THEO Technologies</a>`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby</a>`,
     },
     prism: {
       theme: prismThemes.oneLight,
@@ -450,16 +548,24 @@ const config: Config = {
       apiKey: '415e178afdd1c3ea819b42fb9a6a1c99',
       indexName: 'theoplayer',
       contextualSearch: true,
-      replaceSearchResultPathname: process.env.DOCUSAURUS_BASE_URL
-        ? {
-            from: '/docs/',
-            to: process.env.DOCUSAURUS_BASE_URL,
-          }
-        : undefined,
+      replaceSearchResultPathname: {
+        from: '/docs/',
+        to: process.env.DOCUSAURUS_BASE_URL || '/',
+      },
     },
     tableOfContents: {
       minHeadingLevel: 2,
       maxHeadingLevel: 4,
+    },
+    zoom: {
+      selector: '.markdown :not(em) > img',
+      background: {
+        light: 'rgb(255, 255, 255)',
+        dark: 'rgb(50, 50, 50)',
+      },
+      config: {
+        // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+      },
     },
   } satisfies Preset.ThemeConfig,
 };

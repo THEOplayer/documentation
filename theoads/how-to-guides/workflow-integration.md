@@ -28,5 +28,5 @@ To integrate the Signaling Service with your workflow, the properties origin and
 
 ## More information
 
-- [Getting Started](/theoads/getting-started/getting-started-signaling-service/)
+- [Getting Started](/theoads/getting-started/index.mdx)
 - [API reference](/theoads/api/signaling/theoads-api/)

@@ -1,0 +1,43 @@
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
+  grid-gap: 20px;
+  margin-bottom: 20px;
+}
+
+.iconGridButton a {
+  --ifm-link-color: var(--ifm-color-emphasis-800);
+  --ifm-link-hover-color: var(--ifm-color-emphasis-700);
+  --ifm-link-hover-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 80px;
+  border-radius: 7px;
+
+  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  transition: all var(--ifm-transition-fast) ease;
+  transition-property: border, box-shadow;
+}
+
+.iconGridButton:hover a {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
+}
+
+.iconGridButton img,
+.iconGridButton svg {
+  width: 1em;
+  height: 1em;
+}
+
+.iconGridButton.large img,
+.iconGridButton.large svg {
+  width: auto;
+  height: auto;
+  padding: 0.5em;
+}

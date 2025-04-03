@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
@@ -7,44 +7,80 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type FeatureItem = {
   title: string;
-  Image: (props: Omit<Props, 'sources'>) => JSX.Element;
-  description: JSX.Element;
-  to: string;
+  Image: (props: Omit<Props, 'sources'>) => ReactNode;
+  description: ReactNode;
+  to: ReadonlyArray<{
+    link: string;
+    text: ReactNode;
+  }>;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'THEOplayer',
+    title: 'Dolby OptiView Player',
     Image: (props) => (
       <ThemedImage
         {...props}
         sources={{
-          light: useBaseUrl('/img/theoplayer.svg'),
-          dark: useBaseUrl('/img/theoplayer_dark.svg'),
+          light: useBaseUrl('/img/player-black-wordmark.svg'),
+          dark: useBaseUrl('/img/player-white-wordmark.svg'),
+        }}
+      />
+    ),
+    description: (
+      <p>
+        Dolby OptiView Player (formerly known as THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any
+        device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.
+      </p>
+    ),
+    to: [{ link: '/theoplayer', text: 'Get Started' }],
+  },
+  {
+    title: 'Dolby OptiView Live',
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/live-streaming-black-wordmark.svg'),
+          dark: useBaseUrl('/img/live-streaming-white-wordmark.svg'),
         }}
       />
     ),
     description: (
       <>
-        Deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming
-        consoles.
+        <p>
+          Dolby OptiView&apos;s Live-streaming solution enables you to stream in ultra-low delay to any audience size with the best quality of
+          experience, whether it’s for sports betting, iGaming or interactive entertainment.
+        </p>
+        <p>
+          With this solution, choose Real-time for interactive latency or manage latency targets from 1 second and up with Live. Use both with the
+          OptiView Player.
+        </p>
       </>
     ),
-    to: '/theoplayer',
+    to: [
+      { link: '/millicast', text: 'Real-time (Millicast)' },
+      { link: '/theolive', text: 'Live (THEOlive)' },
+    ],
   },
   {
-    title: 'THEOads',
+    title: 'Dolby OptiView Ads',
     Image: (props) => (
       <ThemedImage
         {...props}
         sources={{
-          light: useBaseUrl('/img/theoads.svg'),
-          dark: useBaseUrl('/img/theoads_dark.svg'),
+          light: useBaseUrl('/img/ads-black-wordmark.svg'),
+          dark: useBaseUrl('/img/ads-white-wordmark.svg'),
         }}
       />
     ),
-    description: <>Deliver a seamless, less intrusive ad experience with THEOads, designed to boost viewer engagement and maximize ad revenue.</>,
-    to: '/theoads',
+    description: (
+      <p>
+        Dolby OptiView Ads (formerly known as THEOads) enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
+        engagement and maximize ad revenue.
+      </p>
+    ),
+    to: [{ link: '/theoads', text: 'Get Started' }],
   },
   {
     title: 'Open Video UI',
@@ -52,34 +88,18 @@ const FeatureList: FeatureItem[] = [
       <ThemedImage
         {...props}
         sources={{
-          light: useBaseUrl('/img/open-video-ui.svg'),
-          dark: useBaseUrl('/img/open-video-ui_dark.svg'),
+          light: useBaseUrl('/img/openvideoui-black-wordmark.svg'),
+          dark: useBaseUrl('/img/openvideoui-white-wordmark.svg'),
         }}
       />
     ),
     description: (
-      <>Easily build and customize your video player UI to match your branding style through a comprehensive library of open-source UI components.</>
+      <p>
+        Paired with the OptiView Player, the Open Video UI enables you to easily build and customize your video player UI to match your branding style
+        through a comprehensive library of open-source UI components.
+      </p>
     ),
-    to: '/open-video-ui',
-  },
-  {
-    title: 'THEOlive',
-    Image: (props) => (
-      <ThemedImage
-        {...props}
-        sources={{
-          light: useBaseUrl('/img/theolive.svg'),
-          dark: useBaseUrl('/img/theolive_dark.svg'),
-        }}
-      />
-    ),
-    description: (
-      <>
-        Stream real-time to any audience size with the best quality of experience, whether it’s for sports betting, iGaming or interactive
-        entertainment.
-      </>
-    ),
-    to: '/theolive',
+    to: [{ link: '/open-video-ui', text: 'Get Started' }],
   },
 ];
 
@@ -90,13 +110,13 @@ function Feature({ title, Image, description, to }: FeatureItem) {
         <div className={clsx('card__header text--center', styles.featureHeading)}>
           <Image className={styles.featureImage} alt={title} />
         </div>
-        <div className="card__body text--center">
-          <p>{description}</p>
-        </div>
-        <div className="card__footer text--center">
-          <Link className="button button--secondary button--lg" to={to}>
-            Get started
-          </Link>
+        <div className={clsx('card__body text--center', styles.featureDescription)}>{description}</div>
+        <div className={clsx('card__footer text--center', styles.featureButtons)}>
+          {to.map(({ link, text }, index) => (
+            <Link key={index} className="button button--secondary button--lg" to={link}>
+              {text}
+            </Link>
+          ))}
         </div>
       </div>
     </div>
