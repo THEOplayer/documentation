@@ -1,0 +1,139 @@
+---
+sidebar_label: API reference
+sidebar_custom_props: { icon: '*️⃣' }
+---
+
+# Adobe Edge Platform Connector API
+
+The attributes, methods and events for the THEOAEPConnector.
+
+## Attributes
+
+| Name         | Type             | Default          | Access Permission | Description                              |
+| ------------ | ---------------- | ---------------- | ----------------- | ---------------------------------------- |
+| id           | string           |                  | read,write        | The id of the node.                      |
+| ecid         | string           | invalid          | read              | User's Experience Cloud ID.              |
+| MEDIA_EVENTS | associativeArray | AEP Media Events | read              | Constant with the AEP media event enums. |
+
+## Methods
+
+| Method                 | Params                                                                       | Description                                                                                                                                                                               |
+| ---------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| configure              | player: THEOplayer, configuration: THEOAEPConfiguration                      | Adds the THEOplayer instance to monitor, and applies a configuration to the AEP SDK.                                                                                                      |
+| destroy                | none                                                                         | Destroy the connector. It also ends the current session, if any.                                                                                                                          |
+| endSession             | none                                                                         | End the current AEP session, but do not destroy the connector.                                                                                                                            |
+| getExperienceCloudId   | none                                                                         | Retrieves the ECID for the user. The ECID will be added to the `ecid` field on the connector once it has been retrieved.                                                                  |
+| resetIdentities        | none                                                                         | Resets the identities used in the SDK for the user.                                                                                                                                       |
+| sendMediaEvent         | eventXDM: AssociativeArray                                                   | Send a media event to AEP.                                                                                                                                                                |
+| setContentInfo         | contentMetadata: AssociativeArray                                            | Sets or updates the content metadata for the current session. Partials are supported and will be merged with the existing content metadata. See below for the schema of content metadata. |
+| setExperienceCloudId   | ecid: string                                                                 | Sets a pre-existing ECID for the user on the SDK.                                                                                                                                         |
+| startSession           | sessionDetails: THEOAEPMediaSessionDetails, sessionConfig: (optional) object | Starts a AEP session with the supplied session details and optional config. See below for the schema of details and config.                                                               |
+| stopAndStartNewSession | sessionDetails: THEOAEPMediaSessionDetails, sessionConfig: (optional) object | Stops the existing session if any. Starts a AEP session with the supplied session details and optional config. See below for the schema of details and config.                            |
+| updateUserConsent      | consent: THEOAEPUserConsent or string                                        | Updates the user consent data for this user. Either "n" for denied, "y" for consented, or "p" for pending or unknown.                                                                     |
+
+### AEP Connector Config
+
+The configuration the AEP connector is the THEOConnectorConfiguration interface.
+
+```brightscript
+configuration = {
+	configId: "<MY_CONFIGURATION_ID>",
+    domainName: "<MY_EDGE_DOMAIN>",
+    mediaChannel: "My Channel",
+    mediaPlayerName: "My Player",
+    mediaAppVersion: "1.0.0"
+    logLevel: 3
+}
+```
+
+The `logLevel` property is optional. The accepted values are (VERBOSE: `0`, DEBUG: `1`, INFO: `2`, WARNING: `3`, ERROR: `4`).
+
+### Session Details and Config
+
+The session details and session config control the metadata for the session you're starting. See the [AEP SDK documentation](https://github.com/adobe/aepsdk-roku/blob/main/Documentation/api-reference.md#createMediaSession) for expected values. The `customMetadata` property is optional. Values on that object must be strings.
+
+#### THEOAEPMediaSessionDetails
+
+```brightscript
+aepSessionDetails = {
+	streamType: "vod"
+    friendlyName: "My Asset",
+    name: "my-media-id",
+    length: 596,
+    contentType: "video",
+    customMetadata: {
+		key1: "value1",
+		key2: "value2"
+	}
+}
+```
+
+#### Session Config
+
+The optional session config should follow the schema described in the [AEP SDK documentation](https://github.com/adobe/aepsdk-roku/blob/main/Documentation/api-reference.md#createMediaSession).
+
+```brightscript
+aepSessionConfig = {}
+aepSessionConfig["config.channel"] = "My Channel"
+aepSessionConfig["config.adpinginterval"] = 5
+aepSessionConfig["config.mainpinginterval"] = 30
+```
+
+### Getting the Experience Cloud ID
+
+To get an ECID for a user, you'll need to observe the `ecid` field on the connector, and then call `getExperienceCloudId` on the connector. The field will update with the ECID when it is available and trigger your observer.
+
+```brightscript
+m.aepConnector.observeField("ecid", "onEcidChange")
+
+sub onEcidChange( event as object )
+	m.myEcid = event.getData()
+end sub
+
+m.aepConnector.callFunc("getExperienceCloudId")
+```
+
+### Reusing an existing AEP SDK library
+
+The AEP SDK allows you to reuse instances of the SDK in case you're already using the AEP SDK in your application. This is done by adding a Task node to the scene. The THEO AEP Connector can reuse this Task node. In the MainScene.brs:
+
+```brightscript
+m.aepSDK = AdobeAEPSDKInit()
+m.top.appendChild(m.aepSDK.getTaskNode())
+```
+
+As long as the task node is on the Scene before the connector is configured, the THEO AEP connector can pick up the AEP Task node and reuse it.
+
+### Supported media events
+
+The THEO AEP Connector will automatically detect most media events and send them to AEP for you, including player commands such as play or pause and events like bitrate change. It will not send media events related to chapters or ads in this version:
+
+- `media.chapterStart`
+- `media.chapterComplete`
+- `media.chapterSkip`
+- `media.adBreakStart`
+- `media.adStart`
+- `media.adComplete`
+- `media.adSkip`
+- `media.adBreakComplete`
+
+For these you may use the `sendMediaEvent` method and construct your own XDM payload:
+
+```brightscript
+chapterStartXDM = {
+  "xdm": {
+    "eventType": m.aepConnector.MEDIA_EVENTS.CHAPTER_START
+    "mediaCollection": {
+      "playhead": m.theoPlayer.currentTime,
+      "chapterDetails": {
+        "friendlyName": "My Chapter",
+        "index": 1,
+        "length": 300,
+        "offset": 0
+      }
+    }
+  }
+}
+
+m.aepConnector.callFunc("sendMediaEvent", chapterStartXDM)
+```
