@@ -17,6 +17,11 @@
 	url = https://github.com/THEOplayer/react-native-theoplayer.git
 	branch = 7.x
 	shallow = true
+[submodule "react-native-v8"]
+	path = theoplayer_versioned_docs/version-v8/external/react-native-theoplayer
+	url = https://github.com/THEOplayer/react-native-theoplayer.git
+	branch = 8.x
+	shallow = true
 [submodule "flutter"]
 	path = theoplayer/external/flutter-theoplayer-sdk
 	url = https://github.com/THEOplayer/flutter-theoplayer-sdk.git
@@ -26,12 +31,22 @@
 	url = https://github.com/THEOplayer/flutter-theoplayer-sdk.git
 	branch = 7.x
 	shallow = true
+[submodule "flutter-v8"]
+	path = theoplayer_versioned_docs/version-v8/external/flutter-theoplayer-sdk
+	url = https://github.com/THEOplayer/flutter-theoplayer-sdk.git
+	branch = 8.x
+	shallow = true
 [submodule "web-connectors"]
 	path = theoplayer/external/web-connectors
 	url = https://github.com/THEOplayer/web-connectors.git
 	branch = main
 [submodule "web-connectors-v7"]
 	path = theoplayer_versioned_docs/version-v7/external/web-connectors
+	url = https://github.com/THEOplayer/web-connectors.git
+	branch = main
+	shallow = true
+[submodule "web-connectors-v8"]
+	path = theoplayer_versioned_docs/version-v8/external/web-connectors
 	url = https://github.com/THEOplayer/web-connectors.git
 	branch = main
 	shallow = true
@@ -44,6 +59,11 @@
 	url = https://github.com/THEOplayer/android-connector.git
 	branch = 7.x
 	shallow = true
+[submodule "android-connector-v8"]
+	path = theoplayer_versioned_docs/version-v8/external/android-connector
+	url = https://github.com/THEOplayer/android-connector.git
+	branch = 8.x
+	shallow = true
 [submodule "ios-connector"]
 	path = theoplayer/external/iOS-Connector
 	url = https://github.com/THEOplayer/iOS-Connector.git
@@ -52,6 +72,11 @@
 	path = theoplayer_versioned_docs/version-v7/external/iOS-Connector
 	url = https://github.com/THEOplayer/iOS-Connector.git
 	branch = 7.x
+	shallow = true
+[submodule "ios-connector-v8"]
+	path = theoplayer_versioned_docs/version-v8/external/iOS-Connector
+	url = https://github.com/THEOplayer/iOS-Connector.git
+	branch = 8.x
 	shallow = true
 [submodule "web-ui"]
     path = open-video-ui/external/web-ui

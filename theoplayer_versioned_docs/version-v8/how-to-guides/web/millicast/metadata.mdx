@@ -1,0 +1,52 @@
+# Frame metadata with Millicast on Web
+
+In addition to streaming audio and video, Millicast also supports inserting additional metadata about what is happening
+in the stream. This is known as _Frame Metadata_, which allows for embedding and extracting custom application data
+with frame-level accuracy. For example, this can be used to transport timecodes, bounding boxes, and overlays.
+
+## Enable metadata on your Millicast source
+
+First, follow [our Getting Started with Millicast on Web guide](./getting-started.mdx)
+to set up Millicast with THEOplayer in your web app or website.
+
+Then, enable the `metadata` option in your [Millicast source's `connectOptions`](./getting-started.mdx#add-configuration)
+in order to receive frame metadata:
+
+```javascript
+player.source = {
+  sources: {
+    type: 'millicast',
+    /* ... */
+    connectOptions: {
+      // highlight-next-line
+      metadata: true,
+    },
+  },
+};
+```
+
+## Listen for metadata text track events
+
+THEOplayer exposes Millicast metadata as cues on a metadata text track. First, listen for the `addtrack` event
+to receive the Millicast metadata track. Then, listen for the `entercue` event to be notified whenever new metadata
+is added to the track.
+
+```javascript
+player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
+  const track = addTrackEvent.track;
+  if (track.kind === 'metadata' && track.type === 'millicast') {
+    track.addEventListener('entercue', function (event) {
+      const cue = event.cue;
+      console.log(`Received frame metadata at timecode ${cue.timecode} with data:`, cue.unregistered);
+    });
+  }
+});
+```
+
+See [our guide on how to detect active text track cues](../../10-texttrack/08-how-to-detect-active-text-track-cues.md)
+for more information.
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/MillicastMetadataCue.html)
+- [Millicast documentation](https://docs.dolby.io/streaming-apis/docs/frame-metadata)
