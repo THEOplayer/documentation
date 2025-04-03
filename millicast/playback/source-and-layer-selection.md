@@ -26,15 +26,16 @@ Dolby.io streaming supports scalable WebRTC streaming thanks to a "smart" cascad
 When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/viewer-events.md#using-events) to it:
 
 ```javascript
-const tokenGenerator = () => millicast.Director.getSubscriber({
-  streamName: streamName,
-  streamAccountId: streamAccountId,
-});
+const tokenGenerator = () =>
+  millicast.Director.getSubscriber({
+    streamName: streamName,
+    streamAccountId: streamAccountId,
+  });
 
 viewer = new millicast.View(streamName, tokenGenerator);
-viewer.on("broadcastEvent", async (event) => {
-  console.log("broadcastEvent", event);
-}
+viewer.on('broadcastEvent', async (event) => {
+  console.log('broadcastEvent', event);
+});
 ```
 
 A [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) is triggered whenever a feed is added to the multi-source broadcast. Hence, the platform can trigger several broadcast events as feeds are added or removed. As outlined in [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and [Broadcast](/millicast/broadcast/index.mdx) guides, each stream must be distinguished by a unique source ID. As a [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) are triggered, you can manage which broadcasts to render for the end users by their feed's source ID.
@@ -98,7 +99,7 @@ viewer.unproject([videoTransceiver.mid]);
 
 In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
 
-```javascript Projecting with layer selection using `project`
+```javascript title="Projecting with layer selection using project"
 viewer.project('mysource', [
   {
     trackId: 'video0',
@@ -111,11 +112,11 @@ viewer.project('mysource', [
 ]);
 ```
 
-```javascript Projecting with layer selection using `select`
-async select (layer = {}) {
-    logger.debug('Viewer select layer values: ', layer);
-    await this.signaling.cmd('select', "layer");
-    logger.info('Connected to streamName: ', this.streamName);
+```javascript title="Projecting with layer selection using select"
+async function select(layer = {}) {
+  logger.debug('Viewer select layer values: ', layer);
+  await this.signaling.cmd('select', 'layer');
+  logger.info('Connected to streamName: ', this.streamName);
 }
 ```
 
