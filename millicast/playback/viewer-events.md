@@ -1,7 +1,8 @@
 ---
-title: "Broadcast Events"
+title: 'Broadcast Events'
 slug: /viewer-events
 ---
+
 Dolby.io Real-time Streaming supports `broadcastEvents`, sometimes called _viewer events_, which allow you to add functionality that triggers when various events occur during the stream. This functionality can be helpful for detecting active feeds, changes in simulcast layers, or even the viewer count of a stream.
 
 This guide outlines what events are available and how to use them for your app or platform.
@@ -22,7 +23,7 @@ Currently, there are several events that can be listened to when connected to th
 ## Using events
 
 > 👍 Not familar with our SDKs?
-> 
+>
 > Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) guide or by leanring about our [Client SDKs](/millicast/client-sdks/index.mdx).
 
 To use or "listen" for these events, you first must authenticate and connect to the Dolby.io CDN using one of our [Client SDKs](/millicast/client-sdks/index.mdx). When calling the `connect` function you can include a list of all events to listen for:
@@ -31,17 +32,18 @@ To use or "listen" for these events, you first must authenticate and connect to 
 import { Director, View } from '@millicast/sdk';
 
 // Create callback to generate a new token
-const tokenGenerator = () => Director.getSubscriber({
-  streamName: 'publish-stream-name',
-  streamAccountId: 'publish-account-id',
-  subscriberToken: 'subscriber-token' // Optional: This token is needed if you're subscribing to a secure stream.
-});
+const tokenGenerator = () =>
+  Director.getSubscriber({
+    streamName: 'publish-stream-name',
+    streamAccountId: 'publish-account-id',
+    subscriberToken: 'subscriber-token', // Optional: This token is needed if you're subscribing to a secure stream.
+  });
 // Create a new instance
 const millicastView = new View(streamName, tokenGenerator);
 
 // Start connection to publisher listening to as few or many events as you need
 await millicastView.connect({
-  events: ['active', 'inactive', 'vad', 'layers']
+  events: ['active', 'inactive', 'vad', 'layers'],
 });
 ```
 
@@ -51,31 +53,26 @@ Once connected, the event listener becomes available, allowing your app to liste
 
 ```javascript
 millicastView.on('broadcastEvent', (event) => {
-	// Get event name and data
-	const { name, data } = event;
+  // Get event name and data
+  const { name, data } = event;
 
-	switch (name)
-	{
-		case 'active':
-			// A source has been started on the stream
-			break;
-		case 'inactive':
-			// A source has been stopped on the stream
-			break;
-		case 'vad':
-			// A new source was multiplexed over the vad tracks
-			break;
-		case 'layers':
-			// Updated layer information for each simulcast/svc video track
-			break;
-	}
+  switch (name) {
+    case 'active':
+      // A source has been started on the stream
+      break;
+    case 'inactive':
+      // A source has been stopped on the stream
+      break;
+    case 'vad':
+      // A new source was multiplexed over the vad tracks
+      break;
+    case 'layers':
+      // Updated layer information for each simulcast/svc video track
+      break;
+  }
 });
 ```
 
 ## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
-
-
-
-

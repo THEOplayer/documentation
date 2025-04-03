@@ -1,7 +1,8 @@
 ---
-title: "Getting Started with Subscribing"
+title: 'Getting Started with Subscribing'
 slug: /ios-getting-started-with-subscribing
 ---
+
 Follow these steps to add the subscribing capability to your application.
 
 ## 1\. Import the SDK
@@ -33,13 +34,13 @@ let subscriber = MCSubscriber()
 Optionally implement the [MCSubscriberDelegate](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriberdelegate) to receive callbacks. Set this delegate during the initialization of [MCSubscriber](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber). Ensure to keep the delegate alive throughout the lifetime of the subscriber, since it does not retain its reference.
 
 ```swift
-let subscriberDelegate = YourSubscriberDelegate() // where the `YourSubscriberDelegate` is a type that you implement, that conforms to `MCSubscriberDelegate` 
+let subscriberDelegate = YourSubscriberDelegate() // where the `YourSubscriberDelegate` is a type that you implement, that conforms to `MCSubscriberDelegate`
 let subscriber = MCSubscriber(delegate: subscriberDelegate)
 ```
 
 ## 4\. Setup your credentials
 
-Get your **stream name** and **stream ID** from the dashboard and set them up in the SDK using the [setCredentials](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/setcredentials(_:completionhandler:)) method.
+Get your **stream name** and **stream ID** from the dashboard and set them up in the SDK using the [setCredentials](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/setcredentials(_:completionhandler:)>) method.
 
 ```swift
 let credentials = MCSubscriberCredentials()
@@ -56,7 +57,7 @@ Subscribing a stream includes two steps.
 
 ### 5.1\. Connect to the Millicast service
 
-Define your connection preferences and [connect](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/connect(completionhandler:)) to the Millicast platform.
+Define your connection preferences and [connect](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/connect(completionhandler:)>) to the Millicast platform.
 
 ```swift
 let connectionOptions = MCConnectionOptions()
@@ -68,7 +69,7 @@ try await subscriber.connect(with: connectionOptions)
 
 ### 5.2\. Subscribe with the preferences
 
-Call the [subscribe(with:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/subscribe(completionhandler:)) method passing your preferred subscribe options.
+Call the [subscribe(with:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/subscribe(completionhandler:)>) method passing your preferred subscribe options.
 
 ```swift
 let subscriberOptions = MCClientOptions()
@@ -92,14 +93,14 @@ Refer [MCClientOptions](https://millicast.github.io/doc/latest/apple/documentati
 ## 6\. Manage broadcast events
 
 When broadcast events occur, the SDK emits the appropriate event. There are multiple ways to receive those events, using AsyncStream's or by subscribing to Combine Publisher's. Those events can also be received by conforming to [MCSubscriberDelegate](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriberdelegate) delegate methods.
-Note: This listener has to be setup before calling the [subscribe(with:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/subscribe(completionhandler:)) method.
+Note: This listener has to be setup before calling the [subscribe(with:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/subscribe(completionhandler:)>) method.
 
 ### 6.1\. Receive Audio and Video tracks
 
 [MCRTSRemoteTrack](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrack) is a fundamental entity that enables us to view a stream. It can either be a video track or an audio track.
 
 Receive newly added tracks by listening to subscriber's [rtsRemoteTrackAdded()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/rtsremotetrackadded) stream.
-Newly added tracks can alternatively be received using [rtsRemoteTrackAddedPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/rtsremotetrackaddedpublisher) or the delegate method [subscriber(_:didReceiveRTSRemoteTrack:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriberdelegate/subscriber(_:didreceivertsremotetrack:))
+Newly added tracks can alternatively be received using [rtsRemoteTrackAddedPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/rtsremotetrackaddedpublisher) or the delegate method [subscriber(\_:didReceiveRTSRemoteTrack:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriberdelegate/subscriber(_:didreceivertsremotetrack:)>)
 
 Define variables to store the tracks and renderers.
 Important: Audio and Video tracks of the same source will have the same [sourceId](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrack/sourceid)
@@ -165,7 +166,7 @@ subscriber.rtsRemoteTrackAddedPublisher
 Listen to the active and inactive state of a [MCRTSRemoteTrack](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrack) using [activity()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrack/activity) stream.
 Alternatively receive this event using the combine publisher [activityPublisher()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrack/activitypublisher)
 
-If you prefer delegates, conform to [MCRTSRemoteTrackDelegate] of a MCRTSRemoteTrack and the use the delegate methods [rtsRemoteTrackActive(\_:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrackdelegate/rtsremotetrackactive(_:)) and [rtsRemoteTrackInactive(\_:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrackdelegate/rtsremotetrackinactive(_:)).
+If you prefer delegates, conform to [MCRTSRemoteTrackDelegate] of a MCRTSRemoteTrack and the use the delegate methods [rtsRemoteTrackActive(\_:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrackdelegate/rtsremotetrackactive(_:)>) and [rtsRemoteTrackInactive(\_:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrackdelegate/rtsremotetrackinactive(_:)>).
 
 Note: A video track receives video frames only when its enabled.
 
@@ -210,7 +211,7 @@ for await activity in audioTrack.activity() {
 
 If your video track has multiple layers(spatial or temporal), use the [layers()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrack/layers) event to receive the list of active layers. The combine alternative for this event is [layersPublisher()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrack/layerspublisher)
 
-To receive layers from a delegate method, conform to [MCRTSRemoteTrackDelegate], set the delegate of an MCRTSRemoteTrack and then use the delegate method [rtsRemoteTrack(_:didUpdateLayers:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrackdelegate/rtsremotetrack(_:didupdatelayers:)).
+To receive layers from a delegate method, conform to [MCRTSRemoteTrackDelegate], set the delegate of an MCRTSRemoteTrack and then use the delegate method [rtsRemoteTrack(\_:didUpdateLayers:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcrtsremotetrackdelegate/rtsremotetrack(_:didupdatelayers:)>).
 
 To select a particular layer, re-enable the track by passing the layer that you would like to select.
 
@@ -245,7 +246,7 @@ for await state in subscriber.peerConnectionState() {
 
 The delegate method equivalents of these events are defined in [MCDelegate](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate)
 
-See [client(\_:didReceiveRTCPeerConnectionState:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivertcpeerconnectionstate:)) and [client(\_:didReceiveWebsocketConnectionState:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivewebsocketconnectionstate:))
+See [client(\_:didReceiveRTCPeerConnectionState:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivertcpeerconnectionstate:)>) and [client(\_:didReceiveWebsocketConnectionState:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivewebsocketconnectionstate:)>)
 
 ## 8\. Render video on the UI
 
@@ -276,9 +277,9 @@ view.addSubview(videoView)
 
 ## 9\. Collecting RTC statistics
 
-You can periodically collect the WebRTC peer connection statistics if you enable them through the [enableStats](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/enablestats(_:completionhandler:)) method of the subscriber. After enabling the statistics, you will get a report every second through the [statsReport()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/statsreport) async stream or the [statsReportPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/statsreportpublisher) publisher.
+You can periodically collect the WebRTC peer connection statistics if you enable them through the [enableStats](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/enablestats(_:completionhandler:)>) method of the subscriber. After enabling the statistics, you will get a report every second through the [statsReport()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/statsreport) async stream or the [statsReportPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/statsreportpublisher) publisher.
 
-Alternatively use the delegate method[client(_:didreceivestatsreport:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivestatsreport:))
+Alternatively use the delegate method[client(\_:didreceivestatsreport:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivestatsreport:)>)
 
 The identifiers and way to browse the stats are following the [RTC specification](https://www.w3.org/TR/webrtc-stats/).
 The report contains the [MCStatsReport](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcstatsreport) object, which is a collection of several [MCStats](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcstats) objects. They all have a specific type, whether it is inbound, outbound, codec, or media. Inbound is the statistics of incoming transport for the viewer and outbound is a type of outgoing statistics for the publisher.
@@ -335,11 +336,11 @@ subscriber.signalingErrorPublisher()
   }
 ```
 
-The delegate methods to receive http and signalling errors are [client(_:didreceivehttpconnectionerror:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivehttpconnectionerror:)) and [client(_:didreceivesignalingerror:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivesignalingerror:))
+The delegate methods to receive http and signalling errors are [client(\_:didreceivehttpconnectionerror:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivehttpconnectionerror:)>) and [client(\_:didreceivesignalingerror:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivesignalingerror:)>)
 
 ## 11\. Unsubscribe the session
 
-And finally, when you have finished viewing the stream, stop the subscription by calling [unsubscribe()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/unsubscribe(completionhandler:)) which tell the streaming server that the subscriber is no longer interested in receiving audio and video content. Then disconnect the websocket connection with the server by calling [disconnect()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/disconnect(completionhandler:)) method.
+And finally, when you have finished viewing the stream, stop the subscription by calling [unsubscribe()](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/unsubscribe(completionhandler:)>) which tell the streaming server that the subscriber is no longer interested in receiving audio and video content. Then disconnect the websocket connection with the server by calling [disconnect()](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/disconnect(completionhandler:)>) method.
 
 ```swift
 try await subscriber.unsubscribe()

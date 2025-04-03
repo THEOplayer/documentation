@@ -1,8 +1,8 @@
 ---
-title: "DRM"
+title: 'DRM'
 slug: /drm
 sidebar_position: 3
-unlisted: true  # Note: unlisted pages still show up in dev mode
+unlisted: true # Note: unlisted pages still show up in dev mode
 ---
 
 **Digital Rights Management (DRM)** is a security mechanism that helps protect premium content or intellectual property within a stream from being shared without permission. This mechanism prevents bad actors from screen sharing, taking screenshots, and other unauthorized distribution.
@@ -29,7 +29,7 @@ When streaming with DRM enabled, the content is distributed with an additional l
 import DrmWorkflow from '../assets/img/9fa71d5693c8953b167e73d4ce9ff8cab0275b3b54744eed0373c0128dfc37df-image.png';
 
 <div class="center-container">
-    <img src={DrmWorkflow} width="500" />
+  <img src={DrmWorkflow} width="500" />
 </div>
 
 In order to enable DRM, you will need to follow a few steps:
@@ -99,37 +99,37 @@ There are a few things to know when setting up playback.
 Here is an example of initializing the subscriber for a DRM stream:
 
 ```javascript
-const tokenGenerator = () => Director.getSubscriber(streamName, accountId,subscriberToken, enableDRM);
+const tokenGenerator = () => Director.getSubscriber(streamName, accountId, subscriberToken, enableDRM);
 ```
 
-You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV) and **key** for decrypting the content.
+You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV) and **key\*\* for decrypting the content.
 
 ```javascript
 await viewer.connect({
-    drm : true,
-    events : ['active', 'inactive', 'layers'],
+  drm: true,
+  events: ['active', 'inactive', 'layers'],
 });
 
 viewer.on('broadcastEvent', (event) => {
-    const {name, data} = event
-    switch(name) {
-        case 'active' :
-            if(event.data.encryption) {
-                const drmOptions = {
-                  videoElement: document.querySelector("video"),
-                  audioElement: document.querySelector("audio"),
-                  videoEncryptionParams: event.data.encryption,
-                  videoMid: '0',
-                }
-                // if there are audio tracks in your stream, add the next two lines
+  const { name, data } = event;
+  switch (name) {
+    case 'active':
+      if (event.data.encryption) {
+        const drmOptions = {
+          videoElement: document.querySelector('video'),
+          audioElement: document.querySelector('audio'),
+          videoEncryptionParams: event.data.encryption,
+          videoMid: '0',
+        };
+        // if there are audio tracks in your stream, add the next two lines
 
-                const audioTrackInfo = event.data.tracks.find((track) => track.type === 'audio');
-                if (audioTrackInfo) {
-                  drmOptions.audioMid = audioTrackInfo.mediaId;
-                }
-                viewer.configureDRM(drmOptions);
-            }
-    }
+        const audioTrackInfo = event.data.tracks.find((track) => track.type === 'audio');
+        if (audioTrackInfo) {
+          drmOptions.audioMid = audioTrackInfo.mediaId;
+        }
+        viewer.configureDRM(drmOptions);
+      }
+  }
 });
 ```
 
@@ -140,7 +140,7 @@ await viewer.project(sourceId, tracksMapping);
 ```
 
 :::tip Sample Code and Reference
-For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js)  which demonstrates the use of DRM.
+For a full reference implementation sample, please review the [millicast-multiview-demo](https://github.com/millicast/millicast-sdk/blob/main/packages/millicast-multiview-demo/src/multiviewer.js) which demonstrates the use of DRM.
 :::
 
 ## Troubleshooting
@@ -157,12 +157,12 @@ Support for most popular browsers is available on both desktop and mobile device
 
 | Device / Browser | Desktop | Mobile |
 | :--------------- | :------ | :----- |
-| Safari           | ✅       | ✅      |
-| Chrome           | ✅       | ✅      |
-| Edge             | ✅       | ✅      |
+| Safari           | ✅      | ✅     |
+| Chrome           | ✅      | ✅     |
+| Edge             | ✅      | ✅     |
 | Firefox          | ⚠️      | ⚠️     |
 | Native Android   | N/A     | ⚠️     |
-| Native iOS       | N/A     | ❌      |
+| Native iOS       | N/A     | ❌     |
 
 There are some specific scenarios that limit compatibility with Firefox. Similarly, L3 Widevine is the default configuration due to browser limitations. Please reach out to your account team to discuss the latest status and impact this will have on your plans.
 

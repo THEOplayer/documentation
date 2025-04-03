@@ -1,17 +1,18 @@
 ---
-title: "3. Automate using REST APIs"
+title: '3. Automate using REST APIs'
 slug: /getting-started/using-rest-apis
 sidebar_position: 3
 ---
+
 The Dolby.io Streaming REST API allows remote management of your Dolby.io Real-time Streaming account. To enable remote access you must first use the Token system to securely authenticate your applications with Dolby.io Real-time Streaming. To acquire an API Token, log into your Dolby.io Real-time Streaming account and follow the directions here: [acquiring your API token](/millicast/streaming-dashboard/token-api.mdx).
 
 For security you should always make your API calls from a secure server like Node.js, .NET or PHP. If you feel that your token has been compromised you can manage your token from your account by creating a new token or simply disabling access all together. Refer back to [acquiring a token](/millicast/streaming-dashboard/token-api.mdx) to learn how to achieve this.
 
 In this tutorial we will build a very rudimentary example for calling the API service and delivering the results down to the publishing client. You will be using Node.js as a secure layer to your Dolby.io Real-time Streaming account, as to not expose the secret API Token publicly. If you have not worked with Node.js before, its best to start with a tutorial or one of their basic guides https://nodejs.org/en/docs/guides/getting-started-guide/ to better understand how things are setup. You can also just follow along, learn the concepts, and use the server-side technology of your choice to achieve the same outcome.
 
-* [REST API Client](https://github.com/DolbyIO/dolbyio-rest-apis-client-node): Client sample code for calling REST APIs from a Node environment
-* [Postman Collection](https://www.postman.com/dolbyio): The Dolby.io Streaming API workspace has collections for the REST APIs.
-* [API Reference](/millicast/api/millicast-api/): The API Reference documentation
+- [REST API Client](https://github.com/DolbyIO/dolbyio-rest-apis-client-node): Client sample code for calling REST APIs from a Node environment
+- [Postman Collection](https://www.postman.com/dolbyio): The Dolby.io Streaming API workspace has collections for the REST APIs.
+- [API Reference](/millicast/api/millicast-api/): The API Reference documentation
 
 ## Setting up the environment
 
@@ -30,11 +31,11 @@ Assuming you now have your certificate and key, add them to a folder labeled "ce
 From your preferred text editor open the “server.js” file you created earlier in the root directory. Now copy this code into your server.js file:
 
 ```javascript title="Node.JS"
-const https = require("https");
-const express = require("express");
-const fs = require("fs");
-const bodyParser = require("body-parser");
-const path = require("path");
+const https = require('https');
+const express = require('express');
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const apiKey = 'ENTER_API_KEY_HERE';
 const port = '8084';
@@ -135,11 +136,11 @@ Now open your index.html file in the text editor, copy this code and save it:
     <input id="streamName" type="text" value="test" />
     <button onclick="createToken()">Create Token</button>
     <script>
-      const servicePath = "/millicast";
+      const servicePath = '/millicast';
 
       async function createToken() {
-        const name = document.getElementById("streamName").value;
-        console.log("createToken", name);
+        const name = document.getElementById('streamName').value;
+        console.log('createToken', name);
         if (name == null || name.length === 0) return;
 
         const data = {
@@ -147,12 +148,12 @@ Now open your index.html file in the text editor, copy this code and save it:
           streams: [{ streamName: name }],
         };
 
-        const fetchResponse = await fetch(servicePath + "/createToken", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
+        const fetchResponse = await fetch(servicePath + '/createToken', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
         const response = await fetchResponse.json();
         console.log(response);
@@ -179,11 +180,11 @@ Let us go over the code above with a little more detail to understand what is ha
 If you look at your **server.js** code you can see that at the top we are importing a few requirements for the app like our **HTTPS** server for the calls and **express** for serving our files.
 
 ```javascript
-const https = require("https");
-const express = require("express");
-const fs = require("fs");
-const bodyParser = require("body-parser");
-const path = require("path");
+const https = require('https');
+const express = require('express');
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const apiKey = 'ENTER_API_KEY_HERE';
 const port = '8084';
@@ -248,14 +249,14 @@ Open the index.html file in your text editor and move down to the body tag. You 
 In the body of the createToken method you can see the data object which has the **label** and **streams** object that contains the **streamName** that we want to use and that we will send to the server. You can also see how we use the route path dynamically to create a request to the specified endpoint.
 
 ```javascript
-const servicePath = "/millicast";
+const servicePath = '/millicast';
 
-await fetch(servicePath + "/createToken", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-        "Content-Type": "application/json",
-    },
+await fetch(servicePath + '/createToken', {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 ```
 
@@ -264,30 +265,30 @@ To learn more about the other API Calls you can use see our [API docs](/millicas
 You can add the rest of the API calls into the server side code, however it best makes sense for your application. Here is an example of what the server code will look like.
 
 ```javascript title="server.js"
-const https = require("https");
-const express = require("express");
-const fs = require("fs");
-const bodyParser = require("body-parser");
-const path = require("path");
+const https = require('https');
+const express = require('express');
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const path = require('path');
 
-const apiKey = "ENTER_API_KEY_HERE";
-const port = "8084";
-const url = new URL("https://api.millicast.com/api/publish_token/");
+const apiKey = 'ENTER_API_KEY_HERE';
+const port = '8084';
+const url = new URL('https://api.millicast.com/api/publish_token/');
 const defaultOptions = {
   protocol: url.protocol,
   host: url.host,
   port: url.port,
   path: url.path,
   headers: {
-    Authorization: "Bearer " + apiKey,
-    "Content-Type": "application/json",
+    Authorization: 'Bearer ' + apiKey,
+    'Content-Type': 'application/json',
   },
 };
 
 // Secure certs for https
 const httpsOptions = {
-  key: fs.readFileSync("certs/server.key"),
-  cert: fs.readFileSync("certs/server.crt"),
+  key: fs.readFileSync('certs/server.key'),
+  cert: fs.readFileSync('certs/server.crt'),
 };
 
 const app = express();
@@ -295,23 +296,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the public folder
-app.use(express.static(path.join(__dirname, "public")));
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 function sendRequest(opts, data) {
   console.log(`sendRequest opts: ${opts}, data: ${data}`);
 
   return new Promise((resolve, reject) => {
     const req = https.request(opts, (resp) => {
-      let result = "";
-      resp.on("data", (chunk) => {
+      let result = '';
+      resp.on('data', (chunk) => {
         result += chunk;
       });
-      resp.on("end", () => {
-        console.log("Success", result);
+      resp.on('end', () => {
+        console.log('Success', result);
         resolve(result);
       });
-      resp.on("error", (err) => {
+      resp.on('error', (err) => {
         reject(err);
       });
     });
@@ -326,7 +326,7 @@ function sendRequest(opts, data) {
 async function createToken(data) {
   const opts = {
     ...defaultOptions,
-    method: "POST",
+    method: 'POST',
   };
   return await sendRequest(opts, data);
 }
@@ -334,13 +334,13 @@ async function createToken(data) {
 /* Delete token that has id specified  
 @info: { tokenId: 1234 }*/
 async function deleteToken(info) {
-  console.log("deleteToken - ", info);
-  if (!info) info = { tokenId: "" };
+  console.log('deleteToken - ', info);
+  if (!info) info = { tokenId: '' };
 
   const opts = {
     ...defaultOptions,
     path: defaultOptions.path + info.tokenId,
-    method: "DELETE",
+    method: 'DELETE',
   };
   return await sendRequest(opts, data);
 }
@@ -349,19 +349,19 @@ async function updateToken(info) {
   const opts = {
     ...defaultOptions,
     path: defaultOptions.path + info.tokenId,
-    method: "PUT",
+    method: 'PUT',
   };
   return await sendRequest(opts, info.data);
 }
 
 async function getToken(info) {
-  console.log("getToken - ", info);
-  if (!info) info = { tokenId: "" };
+  console.log('getToken - ', info);
+  if (!info) info = { tokenId: '' };
 
   const opts = {
     ...defaultOptions,
     path: defaultOptions.path + info.tokenId,
-    method: "GET",
+    method: 'GET',
   };
   return await sendRequest(opts);
 }
@@ -371,12 +371,12 @@ async function getTokenList(info) {
   let page = info.page ? info.page : 1;
   let items = info.itemsOnPage ? info.itemsOnPage : 100;
 
-  console.log("getTokenList", info);
+  console.log('getTokenList', info);
 
   const opts = {
     ...defaultOptions,
-    path: defaultOptions.path + "list?page=" + page + "&itemsOnPage=" + items,
-    method: "GET",
+    path: defaultOptions.path + 'list?page=' + page + '&itemsOnPage=' + items,
+    method: 'GET',
   };
   return await sendRequest(opts);
 }
@@ -387,49 +387,49 @@ app.use('/millicast/:endpoint', (req, res) => {
   console.log(`on /millicast ${params}, endpoint: ${params.endpoint}, body: ${req.body}`);
 
   switch (params.endpoint) {
-    case "createToken":
+    case 'createToken':
       createToken(req.body)
         .then((data) => {
           res.send(data);
         })
         .catch((err) => {
-          res.send(JSON.stringify({ status: "fail", data: err }));
+          res.send(JSON.stringify({ status: 'fail', data: err }));
         });
       break;
-    case "deleteToken":
+    case 'deleteToken':
       deleteToken(req.body)
         .then((data) => {
           res.send(data);
         })
         .catch((err) => {
-          res.send(JSON.stringify({ status: "fail", data: err }));
+          res.send(JSON.stringify({ status: 'fail', data: err }));
         });
       break;
-    case "getToken":
+    case 'getToken':
       getToken(req.body)
         .then((data) => {
           res.send(data);
         })
         .catch((err) => {
-          res.send(JSON.stringify({ status: "fail", data: err }));
+          res.send(JSON.stringify({ status: 'fail', data: err }));
         });
       break;
-    case "updateToken":
+    case 'updateToken':
       updateToken(req.body)
         .then((data) => {
           res.send(data);
         })
         .catch((err) => {
-          res.send(JSON.stringify({ status: "fail", data: err }));
+          res.send(JSON.stringify({ status: 'fail', data: err }));
         });
       break;
-    case "getList":
+    case 'getList':
       getTokenList()
         .then((data) => {
           res.send(data);
         })
         .catch((err) => {
-          res.send(JSON.stringify({ status: "fail", data: err }));
+          res.send(JSON.stringify({ status: 'fail', data: err }));
         });
       break;
     default:
@@ -524,12 +524,12 @@ https.createServer(httpsOptions, app).listen(port, (err) => {
     </div>
 
     <script>
-      const servicePath = "/millicast";
+      const servicePath = '/millicast';
       let log;
 
       async function createToken() {
-        let name = document.getElementById("crtFeedName").value;
-        console.log("createToken ", name);
+        let name = document.getElementById('crtFeedName').value;
+        console.log('createToken ', name);
         if (name == null || name.length == 0) return; //create payload
         let data = {
           label: name, // Can be any label
@@ -542,81 +542,81 @@ https.createServer(httpsOptions, app).listen(port, (err) => {
         };
 
         try {
-          const response = await sendRequest("POST", "/createToken", data);
+          const response = await sendRequest('POST', '/createToken', data);
           appendLog(`- CREATE TOKEN -\n${JSON.stringify(response)}\n\n- END -\n`);
         } catch (error) {
-            console.error("createToken - error:", error);
-            log.value += "createToken - error: " + error;
+          console.error('createToken - error:', error);
+          log.value += 'createToken - error: ' + error;
         }
       }
 
       async function updateToken() {
-        let id = document.getElementById("updTokenId").value;
-        console.log("updateToken ", id);
+        let id = document.getElementById('updTokenId').value;
+        console.log('updateToken ', id);
         if (id == null || id.length == 0) return false; //create payload
         let data = {
           tokenId: id,
           data: {
-            isActive: document.getElementById("ckActive").checked,
+            isActive: document.getElementById('ckActive').checked,
           },
         };
-        console.log("active: ", data);
+        console.log('active: ', data);
 
         try {
-          const response = await sendRequest("PUT", "/updateToken", data);
+          const response = await sendRequest('PUT', '/updateToken', data);
           appendLog(`- UPDATE TOKEN -\n${JSON.stringify(response)}\n\n- END -\n`);
         } catch (error) {
-            console.error("updateToken - error:", error);
-            log.value += "updateToken - error: " + error;
+          console.error('updateToken - error:', error);
+          log.value += 'updateToken - error: ' + error;
         }
       }
 
       async function deleteToken() {
-        let id = document.getElementById("delTokenId").value;
-        console.log("deleteToken ", id);
+        let id = document.getElementById('delTokenId').value;
+        console.log('deleteToken ', id);
         if (id == null || id.length == 0) return;
 
         try {
-          const response = await sendRequest("DELETE", "/deleteToken", { tokenId: id });
+          const response = await sendRequest('DELETE', '/deleteToken', { tokenId: id });
           appendLog(`- DELETE TOKEN - id: ${id}\n`);
         } catch (error) {
-            console.error("deleteToken - error:", error);
-            log.value += "deleteToken - error: " + error;
+          console.error('deleteToken - error:', error);
+          log.value += 'deleteToken - error: ' + error;
         }
       }
 
       async function getToken() {
-        let id = document.getElementById("getTokenId").value;
-        console.log("getToken ", id);
+        let id = document.getElementById('getTokenId').value;
+        console.log('getToken ', id);
         if (id == null || id.length == 0) return;
 
         try {
-          const response = await sendRequest("POST", "/getToken", { tokenId: id });
+          const response = await sendRequest('POST', '/getToken', { tokenId: id });
 
           const s = `- GET TOKEN - \n\n${response.label}\n---------------\nid: ${response.id}\nactive: ${response.isActive}\ntoken: ${response.token}\nadded: ${response.addedOn}\n- END - \n`;
           appendLog(s);
         } catch (error) {
-            console.error("getToken - error:", error);
-            log.value += "getToken - error: " + error;
+          console.error('getToken - error:', error);
+          log.value += 'getToken - error: ' + error;
         }
       }
 
       async function getTokenList() {
-        console.log("getTokenList");
+        console.log('getTokenList');
 
         try {
-          const response = await sendRequest("GET", "/getList");
+          const response = await sendRequest('GET', '/getList');
 
-          let s = "- GET TOKEN LIST - \n\n";
+          let s = '- GET TOKEN LIST - \n\n';
           for (let i = 0; i < response.length; i++) {
             const item = response[i];
             s += `${item.label}\n---------------\nid: ${item.id}\nactive: ${item.isActive}\ntoken: ${item.token}\nadded: ${item.addedOn}\n`;
           }
-          s += "- END - \n";
+          s += '- END - \n';
           appendLog(s);
         } catch (error) {
-            console.error("getTokenList - error:", error);
-            log.value += "getTokenList - error: " + error;
+          console.error('getTokenList - error:', error);
+          log.value += 'getTokenList - error: ' + error;
         }
       }
 
@@ -625,29 +625,28 @@ https.createServer(httpsOptions, app).listen(port, (err) => {
         console.log(`sendRequest: ${method} path: ${path} data: ${data}`);
 
         const fetchOptions = {
-            method: method,
-            headers: {
-                "Content-Type": "application/json",
-            },
+          method: method,
+          headers: {
+            'Content-Type': 'application/json',
+          },
         };
         if (data) {
           data.body = JSON.stringify(data);
         }
-        
+
         const fetchResponse = await fetch(servicePath + path, fetchOptions);
         return await fetchResponse.json();
       }
 
       // Handle displaying data
       function appendLog(s) {
-        if (!log) log = document.getElementById("logWin");
-        log.value += s + "\n";
+        if (!log) log = document.getElementById('logWin');
+        log.value += s + '\n';
         log.scrollTop = log.scrollHeight;
       }
     </script>
   </body>
 </html>
 ```
-
 
 Please send any feedback, comments or suggestions regarding this tutorial to the [Dolby.io Support](https://support.dolby.io/) team.

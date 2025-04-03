@@ -1,8 +1,9 @@
 ---
-title: "Web Cameras"
+title: 'Web Cameras'
 slug: /web-cameras
 sidebar_position: 1
 ---
+
 Web cameras are an easy and accessible way to capture content for broadcast with Dolby.io Streaming. Since web cameras are ubiquitous, there are many different software solutions to capture from a web camera.
 
 This guide outlines three options for managing web camera capture:
@@ -20,7 +21,7 @@ Inside the dashboard, click the Broadcast button located adjacent to the token.
 import BroadcastDashButton from '../assets/img/broadcast_dash_button.png';
 
 <div class="center-container">
-    <img src={BroadcastDashButton} width="500" />
+  <img src={BroadcastDashButton} width="500" />
 </div>
 
 Inside the dashboard broadcaster, click the camera icon in the bottom left corner to select your video input device. If the web camera is correctly connected to the device, it will be discoverable alongside other video devices and virtual cameras.
@@ -28,7 +29,7 @@ Inside the dashboard broadcaster, click the camera icon in the bottom left corne
 import I08a0c46 from '../assets/img/08a0c46-image.png';
 
 <div class="center-container">
-    <img src={I08a0c46} width="500" />
+  <img src={I08a0c46} width="500" />
 </div>
 
 Audio input devices function the same way and can be toggled by clicking on the microphone icon next to the camera icon.
@@ -42,7 +43,15 @@ With your web camera connected to the dashboard broadcaster, you are now set up 
 Follow along with this video guide or read the steps below.
 
 <div className="youtube-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/jUP4vyzbu5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/jUP4vyzbu5Y"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
 </div>
 
 Once downloaded and installed, open the app.
@@ -52,7 +61,7 @@ Inside the app, click the "+" icon within the Sources tab and add a Video Captur
 import VideoCaptureObs from '../assets/img/videocaptureobs.png';
 
 <div class="center-container">
-    <img src={VideoCaptureObs} width="500" />
+  <img src={VideoCaptureObs} width="500" />
 </div>
 
 When adding the Video Capture Device, make sure to select your Web Camera as the device you want to create a capture for.
@@ -60,7 +69,7 @@ When adding the Video Capture Device, make sure to select your Web Camera as the
 import Ic9600bb from '../assets/img/c9600bb-image.png';
 
 <div class="center-container">
-    <img src={Ic9600bb} width="500" />
+  <img src={Ic9600bb} width="500" />
 </div>
 
 With your camera selected, click "OK". You've now set up your Web Camera for capture via OBS. To start streaming from OBS, continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
@@ -74,13 +83,11 @@ If you are looking to prepare a Web Camera for capture within your application o
 To start capturing from a web camera, you must select the Web Camera device. You can accomplish this by first enumerating the devices with the [`mediaDevices.enumerateDevices()`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) function.
 
 ```javascript
-navigator.mediaDevices
-    .enumerateDevices()
-    .then((devices) => {
-      devices.forEach((device) => {
-        console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-      });
-    })
+navigator.mediaDevices.enumerateDevices().then((devices) => {
+  devices.forEach((device) => {
+    console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+  });
+});
 ```
 
 The `enumerateDevices` function provides a list of audio and video input devices along with their respective `deviceId`.

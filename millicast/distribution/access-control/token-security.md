@@ -1,8 +1,9 @@
 ---
-title: "Allowed Origins"
+title: 'Allowed Origins'
 slug: /token-security
 sidebar_position: 1
 ---
+
 Impose limits on who may use a token to broadcast or view a stream by defining rules based on the domain name or IP address in which the request originated. **Allowed Origins** enables defining specific domain names or sub-domain patterns that any request must originate from. Similarly, with **IP Address Filters** you can define rules that limit access by specifying the network IP address.
 
 These approaches are sometimes referred to as _whitelisting_, a security mechanism to prevent unauthorized access. Even when token credentials are provided, if the domain or IP address does not originate from an expected network location, permission is denied. These types of access restrictions allow only specific known hosts or applications to broadcast with a [publish](/millicast/streaming-dashboard/managing-your-tokens.md) token or playback using a [subscribe](/millicast/streaming-dashboard/subscribe-tokens.md) token.
@@ -34,15 +35,15 @@ import DashboardAllowedOrigins from '../../assets/img/dashboard-allowed-origins.
 </div>
 
 :::caution Restricting Viewers
-By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by origination, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
+By default, a [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by origination, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
 :::
 
 ## IP filters
 
-Setting up an IP filter as a means of [access control](/millicast/distribution/access-control/index.md) may depend on whether or not you know the originating IP address ahead of time. 
+Setting up an IP filter as a means of [access control](/millicast/distribution/access-control/index.md) may depend on whether or not you know the originating IP address ahead of time.
 
 - If you have known _static_ IP addresses that do not change, you can identify specific _**allowed IP addresses**_.
-- If the IP address is  _unknown_ or _dynamic_ and might change between sessions, you can _**bind IP after usage**_ so that the IP address of any initial requests are accepted and the IP address is bound to the token. Any additional usage from that IP address will continue to be accepted but subsequent IP addresses would be rejected.
+- If the IP address is _unknown_ or _dynamic_ and might change between sessions, you can _**bind IP after usage**_ so that the IP address of any initial requests are accepted and the IP address is bound to the token. Any additional usage from that IP address will continue to be accepted but subsequent IP addresses would be rejected.
 
 :::danger IP Filters with RTMP
 This access control method is not supported when using RTMP.
@@ -89,7 +90,7 @@ import DashboardIpFilterType from '../../assets/img/dashboard-ip-filter-type.png
 You then can input the IP addresses or number of addresses to bind, into the form.
 
 :::caution Restricting Viewers
-By default, a  [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by IP address, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
+By default, a [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) does not restrict _viewers_ of the broadcast. If you want to also restrict viewers by IP address, you must also setup [access control](/millicast/distribution/access-control/index.md) with the _secure viewer_ to require a subscribe token authorization to view the stream. There is a similar form value in the **Subscribe tokens** section of the dashboard.
 :::
 
 ## REST APIs
@@ -110,9 +111,9 @@ For both the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.
 Here is an example of updating the Allowed Origins:
 
 ```curl
-curl -H "Authorization: Bearer [your_api_secret]" \  
-    -H "Content-Type: application/json" \  
-    https://api.millicast.com/api/subscribe_token/[token id] \  
+curl -H "Authorization: Bearer [your_api_secret]" \
+    -H "Content-Type: application/json" \
+    https://api.millicast.com/api/subscribe_token/[token id] \
     -X PUT -d '{"updateAllowedOrigins": ["millicast.com","*.millicast.com"]}'
 ```
 
@@ -125,18 +126,18 @@ For both the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.
 Here is an example of updating the Allowed IP Addresses:
 
 ```curl
-curl -H "Authorization: Bearer [your_api_secret]" \  
-    -H "Content-Type: application/json" \  
-    https://api.millicast.com/api/subscribe_token/[token id] \  
+curl -H "Authorization: Bearer [your_api_secret]" \
+    -H "Content-Type: application/json" \
+    https://api.millicast.com/api/subscribe_token/[token id] \
     -X PUT -d '{"updateAllowedIpAddresses": ["255.255.255.255"]}'
 ```
 
 and to update the Bind IP on Usage:
 
 ```curl
-curl -H "Authorization: Bearer [your_api_secret]" \  
-    -H "Content-Type: application/json" \  
-    https://api.millicast.com/api/subscribe_token \  
+curl -H "Authorization: Bearer [your_api_secret]" \
+    -H "Content-Type: application/json" \
+    https://api.millicast.com/api/subscribe_token \
     -d '{"bindIpsOnUsage": 1}'
 ```
 
@@ -147,9 +148,9 @@ Review the [/api/publish_token](/millicast/api/publish-token-v-1-update-token.ap
 If you want to reset either a publish or subscribe token to no longer restrict access, you can use a bind value of zero and an empty array to clear out the settings and revert to the default.
 
 ```curl
-curl -H "Authorization: Bearer [your_api_secret]" \  
-    -H "Content-Type: application/json" \  
-    https://api.millicast.com/api/subscribe_token/100 \  
+curl -H "Authorization: Bearer [your_api_secret]" \
+    -H "Content-Type: application/json" \
+    https://api.millicast.com/api/subscribe_token/100 \
     -X PUT -d '{"bindIpsOnUsage": 0, "updateAllowedIpAddresses": []}'
 ```
 
@@ -179,7 +180,7 @@ import DashOriginBroadcastError from '../../assets/img/dashboard-origin-broadcas
     <img src={DashOriginBroadcastError} width="600" />
 </div>
 
-Verify that the domain your application is running from is included. 
+Verify that the domain your application is running from is included.
 
 :::tip Allow the Streaming Dashboard
 Include _streaming.dolby.io_ in your list of domains if you want to be able to continue broadcasting using the [Dolby.io Streaming Dashboard](/millicast/streaming-dashboard/index.md).

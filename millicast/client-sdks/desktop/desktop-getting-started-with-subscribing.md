@@ -1,7 +1,8 @@
 ---
-title: "Getting Started with Subscribing"
+title: 'Getting Started with Subscribing'
 slug: /desktop-getting-started-with-subscribing
 ---
+
 Follow these steps to add the subscribing capability to your application.
 
 ## 1. Create a subscriber object
@@ -19,10 +20,10 @@ class ViewerListener : public millicast::Viewer::Listener
 {
  public:
   // Your own code
-  
+
   ViewerListener() = default;
   virtual ~ViewerListener() = default;
-  
+
   // Overrides from millicast::Viewer::Listener
   void on_connected()  override { viewer->subscribe(); }
   void on_connection_error(int code, const std::string& message) override {}
@@ -37,7 +38,7 @@ class ViewerListener : public millicast::Viewer::Listener
                 const std::optional<std::string>& mid) override {};
   void on_track(std::weak_ptr<millicast::VideoTrack> track,
                 const std::optional<std::string>& mid) override {};
-  
+
   void on_vad(const std::string& mid, const std::optional<std::string>& source_id) override {};
   void on_stopped() override {};
   void on_active(const std::string& stream_id,
@@ -120,7 +121,7 @@ By default, only one video and audio track is negotiated in the SDP. If there ar
 	/* ... */
     void on_track(std::weak_ptr<VideoTrack> track,
 			  const std::optional<std::string>& mid) {
-     	// Keep the mid value somewhere 
+     	// Keep the mid value somewhere
     }
  }
 
@@ -179,7 +180,7 @@ The SDK provides an interface that lets you implement a class responsible for re
 class MyRenderer : public millicast::VideoRenderer
 {
 	public:
-  
+
   void on_frame(const millicast::VideoFrame& frame) override;
 }
 ```

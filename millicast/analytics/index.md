@@ -1,7 +1,8 @@
 ---
-title: "Analytics APIs"
+title: 'Analytics APIs'
 slug: /analytics-api
 ---
+
 The Analytics APIs allow you to query your usage independent of the Dolby.io dashboard and get details of how your users are consuming your streams.
 
 To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api.mdx).
@@ -45,64 +46,61 @@ npm init
 Create an app.js file that will run the code for the API calls. Then add the following code snippet to your app.js file.
 
 ```javascript
-const express = require('express');  
-const https = require('https');  
-const fs = require('fs');  
+const express = require('express');
+const https = require('https');
+const fs = require('fs');
 
-const port = 8443;  
-const startUTC = '2020-08-01';// UTC year-month-day  
-const stopUTC = '2021-01-01';  
-const token = '__TOKEN__';  
+const port = 8443;
+const startUTC = '2020-08-01'; // UTC year-month-day
+const stopUTC = '2021-01-01';
+const token = '__TOKEN__';
 
-// Dolby.io Real-time Streaming request details  
-const options = {  
-        hostname: 'api.millicast.com',  
-        path: '/api/analytics/account/series?startDate=' + startUTC + '&stopDate=' + stopUTC + '&resolution=Month',  
-        method: 'GET',  
-        headers: {  
-                'Authorization': 'Bearer '+token,  
-                'Content-Type': 'application/json'  
-        }  
-}  
-console.log('options: ',options);  
+// Dolby.io Real-time Streaming request details
+const options = {
+  hostname: 'api.millicast.com',
+  path: '/api/analytics/account/series?startDate=' + startUTC + '&stopDate=' + stopUTC + '&resolution=Month',
+  method: 'GET',
+  headers: {
+    Authorization: 'Bearer ' + token,
+    'Content-Type': 'application/json',
+  },
+};
+console.log('options: ', options);
 
-const app = express();  
+const app = express();
 
-// app.use(bodyParser.json());  
-app.use( (req, resp, next) => {  
-        resp.setHeader('Access-Control-Allow-Origin', '*');  
-        next();  
-});  
+// app.use(bodyParser.json());
+app.use((req, resp, next) => {
+  resp.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
-app.get( '/usage', (req, resp, next) => {  
-        console.log('app.get ',arguments.length);  
-        // Call api  
-        let apiReq = https.request(options, res => {  
-                console.log('result:',res.statusCode);  
-                let body = '';  
-                res.on('data', d => {  
-                        body = body + d;  
-                })  
-                res.on('end', () => {  
-                        let s = JSON.parse(body);  
-                        console.log('END:',s);  
-                        resp.send(body);  
-                })  
-        })  
-        .on('error', e => {  
-                console.log('ERROR',e);  
-                resp.satus(404).json(e);  
-        });  
-        apiReq.end();  
-});  
+app.get('/usage', (req, resp, next) => {
+  console.log('app.get ', arguments.length);
+  // Call api
+  let apiReq = https
+    .request(options, (res) => {
+      console.log('result:', res.statusCode);
+      let body = '';
+      res.on('data', (d) => {
+        body = body + d;
+      });
+      res.on('end', () => {
+        let s = JSON.parse(body);
+        console.log('END:', s);
+        resp.send(body);
+      });
+    })
+    .on('error', (e) => {
+      console.log('ERROR', e);
+      resp.satus(404).json(e);
+    });
+  apiReq.end();
+});
 
-https.createServer(  
-        {key: fs.readFileSync('ssl/key.pem'),  
-        cert: fs.readFileSync('ssl/cert.pem')},  
-        app )  
-.listen(port);
+https.createServer({ key: fs.readFileSync('ssl/key.pem'), cert: fs.readFileSync('ssl/cert.pem') }, app).listen(port);
 
-console.log('running! see port https://localhost:'+port+'/usage');
+console.log('running! see port https://localhost:' + port + '/usage');
 ```
 
 In this example we use the standard Express module along with the built in HTTPS module to handle secure requests coming from the client HTML side and for calls going out to the Dolby.io Real-time Streaming from the server. This example uses openssl self-signed certificates to satisfy the key and conf requirement in the HTTPS module on Nodejs. We are testing locally so we run a simple local web server from the Visual Studio Code editor to do the calls over HTTPS locally (https://localhost:8443/). In this case, you would only need to bypass the browser warning that comes up to access your HTML file.
@@ -110,26 +108,27 @@ In this example we use the standard Express module along with the built in HTTPS
 The express **"get"** method handles the request call to the API when the HTML user makes calls via the "/usage" path specified in the method. The path here is an arbitrary label, feel free to use whatever path name you prefer, just remember the call on the HTML counterpart has to match the path.
 
 ```javascript
-app.get( '/usage', (req, resp, next) => {  
-        console.log('app.get ',arguments.length);  
-        // Call api  
-        let apiReq = https.request(options, res => {  
-                console.log('result:',res.statusCode);  
-                let body = '';  
-                res.on('data', d => {  
-                        body = body + d;  
-                })  
-                res.on('end', () => {  
-                        let s = JSON.parse(body);  
-                        console.log('END:',s);  
-                        resp.send(body);  
-                })  
-        })  
-        .on('error', e => {  
-                console.log('ERROR',e);  
-                resp.satus(404).json(e);  
-        });  
-        apiReq.end();  
+app.get('/usage', (req, resp, next) => {
+  console.log('app.get ', arguments.length);
+  // Call api
+  let apiReq = https
+    .request(options, (res) => {
+      console.log('result:', res.statusCode);
+      let body = '';
+      res.on('data', (d) => {
+        body = body + d;
+      });
+      res.on('end', () => {
+        let s = JSON.parse(body);
+        console.log('END:', s);
+        resp.send(body);
+      });
+    })
+    .on('error', (e) => {
+      console.log('ERROR', e);
+      resp.satus(404).json(e);
+    });
+  apiReq.end();
 });
 ```
 
@@ -142,73 +141,70 @@ Next, we can create our client html code that will do the actual call to our nod
 First open your editor and create a blank html file, save it as index.html. In your editor add the following bit of code into your index.html file.
 
 ```html
-  
-<html lang="en">  
-<head>  
-        <meta charset="UTF-8">  
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        <title>Document</title>  
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
-</head>  
-<body>  
-        <button id="fetchButton">Get Account Usage</button>  
-        <div id="chart_div" style={{width: "100%", height: "500px"}}></div>  
-        <script type="text/javascript">  
 
-                const btn = document.getElementById('fetchButton');  
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+        <button id="fetchButton">Get Account Usage</button>
+        <div id="chart_div" style={{width: "100%", height: "500px"}}></div>
+        <script type="text/javascript">
 
-                var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];  
-                var bwData = {};  
+                const btn = document.getElementById('fetchButton');
 
-                btn.addEventListener('click', e => {  
-                        const url = **'https://localhost:8443/usage'**;  
-                        console.log('fetching data:',url);  
-                        **fetch**(url)  
-                                .then( resp =>{  
-                                        return resp.json();  
-                                }).then( o => {  
-                                        bwData = o.data.bandwidth;  
-                                        google.charts.load('current', {'packages':['corechart']});  
-                                        google.charts.setOnLoadCallback(drawBandwidthChart);  
-                                }).catch( e => {  
-                                        console.log('error: ',e);  
-                                });  
-                })  
+                var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                var bwData = {};
 
-                function drawBandwidthChart(){  
-                        console.log('bw',bwData);  
-                        // table headers  
-                        let o = [ ['Month', 'bytesIn', 'bytesOut'] ];  
-                        let n = 1;//shift array position to next slot  
-                        for(let i in bwData){  
-                                let mth = new Date(i).**getUTCMonth();  
-                                let bw = bwData[i];  
-                                o[n++] = [months[mth], bw.bytesIn, bw.bytesOut];  
-                        }  
-                        console.log('sorted table:',o);  
-                        let data = google.visualization.arrayToDataTable(o);  
+                btn.addEventListener('click', e => {
+                        const url = **'https://localhost:8443/usage'**;
+                        console.log('fetching data:',url);
+                        **fetch**(url)
+                                .then( resp =>{
+                                        return resp.json();
+                                }).then( o => {
+                                        bwData = o.data.bandwidth;
+                                        google.charts.load('current', {'packages':['corechart']});
+                                        google.charts.setOnLoadCallback(drawBandwidthChart);
+                                }).catch( e => {
+                                        console.log('error: ',e);
+                                });
+                })
 
-                        let opt = {  
-                                title: 'Dolby.io Real-time Streaming Usage',  
-                                hAxis: {title: 'Month', titleTextStyle: {color: '#333'}},  
-                                vAxis: {minValue: 0}  
-                        };  
+                function drawBandwidthChart(){
+                        console.log('bw',bwData);
+                        // table headers
+                        let o = [ ['Month', 'bytesIn', 'bytesOut'] ];
+                        let n = 1;//shift array position to next slot
+                        for(let i in bwData){
+                                let mth = new Date(i).**getUTCMonth();
+                                let bw = bwData[i];
+                                o[n++] = [months[mth], bw.bytesIn, bw.bytesOut];
+                        }
+                        console.log('sorted table:',o);
+                        let data = google.visualization.arrayToDataTable(o);
 
-                        let chart = new google.visualization.AreaChart(document.getElementById('chart_div'));  
-                        chart.draw(data, opt);  
-                }  
+                        let opt = {
+                                title: 'Dolby.io Real-time Streaming Usage',
+                                hAxis: {title: 'Month', titleTextStyle: {color: '#333'}},
+                                vAxis: {minValue: 0}
+                        };
 
-        </script>  
-</body>  
+                        let chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                        chart.draw(data, opt);
+                }
+
+        </script>
+</body>
 </html>
 ```
 
 On the client end, there is only a simple button to fetch the data using the dates specified on the server. You can design the user application as advanced as you want, however, for the sake of simplicity we are just doing a simple request here to show its function.
 
-
 ![](../assets/img/analytics-accnt-call-btn.png)
-
-
 
 A simple click on the button will call our Nodejs server counterpart using the **"fetch"** command. Once the data from the API is received on the client JavaScript, we convert the data back into JSON and then sort it in a table that Google Charts can understand and display.
 
@@ -216,10 +212,7 @@ Remember the data is in UTC format which a simple Date object can accept, howeve
 
 Once the data is sorted and the chart is created, you can push the table data to the Google Chart to display it visually.
 
-
 ![](../assets/img/analytics-goog-graph1.png)
-
-
 
 You can add the other API calls in the Nodejs side to load more information about your usage. You could also provide a HTML form to allow the user to specify query dates to send up to Nodejs, just remember to format the date information to UTC before you query it.
 
@@ -236,92 +229,92 @@ You can add up to 10 stream names at a time.
 To begin, below is the new modified app.js code from the example above, that supports a request for the stream data. The calls are modified to accept incoming data from the client side, making our data gathering more dynamic.
 
 ```javascript
-const express = require('express'); const https = require('https');  
-const fs = require('fs');  
+const express = require('express'); const https = require('https');
+const fs = require('fs');
 
-const port = 8443;  
-const token = '__TOKEN__';  
-const app = express();  
+const port = 8443;
+const token = '__TOKEN__';
+const app = express();
 
-app.use(express.urlencoded({extended: false}));  
-app.use( (req, resp, next) => {  
-        resp.setHeader('Access-Control-Allow-Origin', '*');  
-        next();  
-});  
+app.use(express.urlencoded({extended: false}));
+app.use( (req, resp, next) => {
+        resp.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+});
 
-app.get( '/usage', (req, resp, next) => {  
-        console.log('/usage - time start:',req.query.start,' stop:',req.query.stop);  
-        let start = req.query.start;  
-        let stop = req.query.stop;// Must be max 90 day UTC window form today for monthly or 7 days for daily/hourly.  
-        let o = {  
-                hostname: 'api.millicast.com',  
-                path: '/api/analytics/account/series?startDate='+start+'&stopDate='+stop+'&resolution=Month',  
-                method: 'GET',  
-                headers: {  
-                        'Authorization': 'Bearer ' + token,  
-                        'Content-Type': 'application/json'  
-                }  
-        }  
-        // Call api  
-        let apiReq = https.request(o, res => {  
-                console.log('result:',res.statusCode);  
-                let body = '';  
-                res.on('data', d => {  
-                        body = body + d;  
-                })  
-                res.on('end', () => {  
-                        let s = JSON.parse(body);  
-                        resp.send(body);  
-                })  
-        })  
-        .on('error', e => {  
-                console.log('ERROR',e);  
-                resp.satus(404).json(e);  
-        });  
-        apiReq.end();  
-});  
+app.get( '/usage', (req, resp, next) => {
+        console.log('/usage - time start:',req.query.start,' stop:',req.query.stop);
+        let start = req.query.start;
+        let stop = req.query.stop;// Must be max 90 day UTC window form today for monthly or 7 days for daily/hourly.
+        let o = {
+                hostname: 'api.millicast.com',
+                path: '/api/analytics/account/series?startDate='+start+'&stopDate='+stop+'&resolution=Month',
+                method: 'GET',
+                headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                }
+        }
+        // Call api
+        let apiReq = https.request(o, res => {
+                console.log('result:',res.statusCode);
+                let body = '';
+                res.on('data', d => {
+                        body = body + d;
+                })
+                res.on('end', () => {
+                        let s = JSON.parse(body);
+                        resp.send(body);
+                })
+        })
+        .on('error', e => {
+                console.log('ERROR',e);
+                resp.satus(404).json(e);
+        });
+        apiReq.end();
+});
 
-app.**get( '/streamusage'**, (req, resp, next) => {  
-        console.log('/streamusage - streamName:',req.query.streamNames,'time start:',req.query.start,' stop:',req.query.stop);  
-        // Millicast API request details  
-        let **streamNames** = req.query.streamNames;  
-        let start = dreq.query.start;  
-        let stop = req.query.stop;// Must be max 90 day UTC window form today for monthly or 7 days for the daily/hourly data.  
-        let o = {  
-                hostname: 'api.millicast.com',  
-                path: '/api/analytics/streams/series?startDate='+start+'&stopDate='+stop+'&streamNames='+streamNames+'&resolution=Day',  
-                method: 'GET',  
-                headers: {  
-                        'Authorization': 'Bearer '+token,  
-                        'Content-Type': 'application/json'  
-                }  
-        }  
-        console.log('app.get ',o);  
-        // Call api  
-        let apiReq = https.request( o, res => {  
-                console.log('result:',res.statusCode);  
-        let body = '';  
-                res.on('data', d => {  
-                        body = body + d;  
-                })  
-                res.on('end', () => {  
-                        let s = JSON.parse(body);  
-                        console.log('END:',s);  
-                        resp.send(body);  
-                })  
-        })  
-        .on('error', e => {  
-                console.log('ERROR',e);  
-                resp.satus(404).json(e);  
-        });  
-        apiReq.end();  
-});  
+app.**get( '/streamusage'**, (req, resp, next) => {
+        console.log('/streamusage - streamName:',req.query.streamNames,'time start:',req.query.start,' stop:',req.query.stop);
+        // Millicast API request details
+        let **streamNames** = req.query.streamNames;
+        let start = dreq.query.start;
+        let stop = req.query.stop;// Must be max 90 day UTC window form today for monthly or 7 days for the daily/hourly data.
+        let o = {
+                hostname: 'api.millicast.com',
+                path: '/api/analytics/streams/series?startDate='+start+'&stopDate='+stop+'&streamNames='+streamNames+'&resolution=Day',
+                method: 'GET',
+                headers: {
+                        'Authorization': 'Bearer '+token,
+                        'Content-Type': 'application/json'
+                }
+        }
+        console.log('app.get ',o);
+        // Call api
+        let apiReq = https.request( o, res => {
+                console.log('result:',res.statusCode);
+        let body = '';
+                res.on('data', d => {
+                        body = body + d;
+                })
+                res.on('end', () => {
+                        let s = JSON.parse(body);
+                        console.log('END:',s);
+                        resp.send(body);
+                })
+        })
+        .on('error', e => {
+                console.log('ERROR',e);
+                resp.satus(404).json(e);
+        });
+        apiReq.end();
+});
 
-https.createServer(  
-        {key: fs.readFileSync('ssl/key.pem'),  
-                cert: fs.readFileSync('ssl/cert.pem')},  
-        app )  
-.listen(port);  
+https.createServer(
+        {key: fs.readFileSync('ssl/key.pem'),
+                cert: fs.readFileSync('ssl/cert.pem')},
+        app )
+.listen(port);
 
 console.log('running! see port https://localhost:'+port+'/');
 ```
@@ -335,159 +328,159 @@ Notice, in the method, where we receive the start, stop and streamName strings, 
 Below is a sample of the new client index.html code.
 
 ```html
-  
-<html lang="en">  
-<head>  
-        <meta charset="UTF-8">  
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        <title>Document</title>  
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
-        <style>  
-                #forms {  
-                        display: flex;  
-                }  
-                .m-r-20 {  
-                        margin-right: 20px;  
-                }  
-        </style>  
-</head>  
-<body>  
-        <div id="forms">  
-                <div class="m-r-20">  
-                        <h3>Stream </h3>  
-                        <div>  
-                                <p>Stream Name/s:</p>  
-                                <input id="strmNameTxt" type="text" value="myfeed1">  
-                        </div>  
-                        <div>  
-                                <p>Start UTC:</p>  
-                                <input id="startTxt" type="text" value="2021-02-01">  
-                        </div>  
-                        <div>  
-                                <p>Stop UTC:</p>  
-                                <input id="stopTxt" type="text" value="2021-02-13">  
-                        </div>  
-                        <br/>  
-                        <button id="strmButton">Get Stream Usage</button>  
-                </div>  
-                <div>  
-                        <h3>Account </h3>  
-                        <div>  
-                                <p>Start UTC:</p>  
-                                <input id="accStartTxt" type="text" value="2020-10-01">  
-                        </div>  
-                        <div>  
-                                <p>Stop UTC:</p>  
-                                <input id="accStopTxt" type="text" value="2021-02-13">  
-                        </div>  
-                        <br/>  
-                        <button id="acctButton">Get Account Usage</button>  
-                </div>  
-        </div>  
-        <hr/>  
 
-        <div id="chart_div" style={{width: "100%", height: "500px"}}></div>  
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <style>
+                #forms {
+                        display: flex;
+                }
+                .m-r-20 {
+                        margin-right: 20px;
+                }
+        </style>
+</head>
+<body>
+        <div id="forms">
+                <div class="m-r-20">
+                        <h3>Stream </h3>
+                        <div>
+                                <p>Stream Name/s:</p>
+                                <input id="strmNameTxt" type="text" value="myfeed1">
+                        </div>
+                        <div>
+                                <p>Start UTC:</p>
+                                <input id="startTxt" type="text" value="2021-02-01">
+                        </div>
+                        <div>
+                                <p>Stop UTC:</p>
+                                <input id="stopTxt" type="text" value="2021-02-13">
+                        </div>
+                        <br/>
+                        <button id="strmButton">Get Stream Usage</button>
+                </div>
+                <div>
+                        <h3>Account </h3>
+                        <div>
+                                <p>Start UTC:</p>
+                                <input id="accStartTxt" type="text" value="2020-10-01">
+                        </div>
+                        <div>
+                                <p>Stop UTC:</p>
+                                <input id="accStopTxt" type="text" value="2021-02-13">
+                        </div>
+                        <br/>
+                        <button id="acctButton">Get Account Usage</button>
+                </div>
+        </div>
+        <hr/>
 
-        <script type="text/javascript">  
+        <div id="chart_div" style={{width: "100%", height: "500px"}}></div>
 
-                const btnAccnt = document.getElementById('acctButton');  
-                const btnStrm = document.getElementById('strmButton');  
-                const txtStart = document.getElementById('startTxt');  
-                const txtStop = document.getElementById('stopTxt');  
-                const txtStrmName = document.getElementById('strmNameTxt');  
+        <script type="text/javascript">
 
-                var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];  
-                var acctBWData = {};  
-                var strmBWData = {};  
-                var selStreamName = '';  
+                const btnAccnt = document.getElementById('acctButton');
+                const btnStrm = document.getElementById('strmButton');
+                const txtStart = document.getElementById('startTxt');
+                const txtStop = document.getElementById('stopTxt');
+                const txtStrmName = document.getElementById('strmNameTxt');
 
-                btnAccnt.addEventListener('click', e => {  
-                        let startDt = accStartTxt.value;  
-                        let stopDt = accStopTxt.value;  
-                        const url = 'https://localhost:8443/usage?start='+startDt+'&stop='+stopDt;  
-                        console.log('fetching data:',url);  
-                        fetch(url)  
-                                .then( resp =>{  
-                                        return resp.json();  
-                                }).then( o => {  
-                                        acctBWData = o.data.bandwidth;  
-                                        google.charts.load('current', {'packages':['corechart']});  
-                                        google.charts.setOnLoadCallback(drawAcctBWChart);  
-                                }).catch( e => {  
-                                        console.log('error: ',e);  
-                                });  
-                })  
+                var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                var acctBWData = {};
+                var strmBWData = {};
+                var selStreamName = '';
 
-                btnStrm.addEventListener('click', e => {  
-                        // Get user input data  
-                        selStreamName = txtStrmName.value;  
-                        let startDt = txtStart.value;  
-                        let stopDt = txtStop.value;  
-                        const url = 'https://localhost:8443/streamusage?streamNames='+selStreamName+'&start='+startDt+'&stop='+stopDt;  
-                        console.log('fetching data at:',url);  
-                        fetch(url)  
-                                .then( resp =>{  
-                                        return resp.json();  
-                                }).then( o => {  
-                                        console.log('o ',o);  
-                                        let d = o.data[selStreamName];  
-                                        strmBWData = !!d ? d.bandwidth : {};  
-                                        google.charts.load('current', {'packages':['corechart']});  
-                                        google.charts.setOnLoadCallback(drawStrmBWChart);  
-                                }).catch( e => {  
-                                        console.log('error: ',e);  
-                                });  
-                })  
+                btnAccnt.addEventListener('click', e => {
+                        let startDt = accStartTxt.value;
+                        let stopDt = accStopTxt.value;
+                        const url = 'https://localhost:8443/usage?start='+startDt+'&stop='+stopDt;
+                        console.log('fetching data:',url);
+                        fetch(url)
+                                .then( resp =>{
+                                        return resp.json();
+                                }).then( o => {
+                                        acctBWData = o.data.bandwidth;
+                                        google.charts.load('current', {'packages':['corechart']});
+                                        google.charts.setOnLoadCallback(drawAcctBWChart);
+                                }).catch( e => {
+                                        console.log('error: ',e);
+                                });
+                })
 
-                function drawAcctBWChart(){  
-                        console.log('drawAcctBWChart',acctBWData);  
-                        // Table headers  
-                        let o = [ ['Month', 'bytesIn', 'bytesOut'] ];  
-                        let n = 1;//shift array position to next slot  
-                        for(let i in acctBWData){  
-                                let mth = new Date(i).getUTCMonth();  
-                                let bw = acctBWData[i];  
-                                o[n++] = [months[mth], bw.bytesIn, bw.bytesOut];  
-                        }  
-                        console.log('sorted table:',o);  
-                        let data = google.visualization.arrayToDataTable(o);  
+                btnStrm.addEventListener('click', e => {
+                        // Get user input data
+                        selStreamName = txtStrmName.value;
+                        let startDt = txtStart.value;
+                        let stopDt = txtStop.value;
+                        const url = 'https://localhost:8443/streamusage?streamNames='+selStreamName+'&start='+startDt+'&stop='+stopDt;
+                        console.log('fetching data at:',url);
+                        fetch(url)
+                                .then( resp =>{
+                                        return resp.json();
+                                }).then( o => {
+                                        console.log('o ',o);
+                                        let d = o.data[selStreamName];
+                                        strmBWData = !!d ? d.bandwidth : {};
+                                        google.charts.load('current', {'packages':['corechart']});
+                                        google.charts.setOnLoadCallback(drawStrmBWChart);
+                                }).catch( e => {
+                                        console.log('error: ',e);
+                                });
+                })
 
-                        let opt = {  
-                                title: 'Millicast Account Usage',  
-                                hAxis: {title: 'Month', titleTextStyle: {color: '#333'}},  
-                                vAxis: {minValue: 0}  
-                        };  
+                function drawAcctBWChart(){
+                        console.log('drawAcctBWChart',acctBWData);
+                        // Table headers
+                        let o = [ ['Month', 'bytesIn', 'bytesOut'] ];
+                        let n = 1;//shift array position to next slot
+                        for(let i in acctBWData){
+                                let mth = new Date(i).getUTCMonth();
+                                let bw = acctBWData[i];
+                                o[n++] = [months[mth], bw.bytesIn, bw.bytesOut];
+                        }
+                        console.log('sorted table:',o);
+                        let data = google.visualization.arrayToDataTable(o);
 
-                        let chart = new google.visualization.AreaChart(document.getElementById('chart_div'));  
-                        chart.draw(data, opt);  
-                }  
+                        let opt = {
+                                title: 'Millicast Account Usage',
+                                hAxis: {title: 'Month', titleTextStyle: {color: '#333'}},
+                                vAxis: {minValue: 0}
+                        };
 
-                function **drawStrmBWChart(){  
-                        console.log('drawStrmBWChart',strmBWData);  
-                        // Table headers  
-                        let o = [ ['Day', 'bytesIn', 'bytesOut'] ];  
-                        let n = 1;//shift array position to next slot  
-                        for(let i in strmBWData){  
-                                let mth = new Date(i).getUTCMonth();  
-                                let dy = new Date(i).getUTCDate();  
-                                let bw = strmBWData[i];  
-                                o[n++] = [(mth+1)+'/'+dy, bw.bytesIn, bw.bytesOut];  
-                        }  
-                        console.log('sorted table:',o);  
-                        let data = google.visualization.arrayToDataTable(o);  
+                        let chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                        chart.draw(data, opt);
+                }
 
-                        let opt = {  
-                                title: 'Millicast '+selStreamName+' Usage',  
-                                hAxis: {title: 'Days', titleTextStyle: {color: '#333'}},  
-                                vAxis: {minValue: 0}  
-                        };  
+                function **drawStrmBWChart(){
+                        console.log('drawStrmBWChart',strmBWData);
+                        // Table headers
+                        let o = [ ['Day', 'bytesIn', 'bytesOut'] ];
+                        let n = 1;//shift array position to next slot
+                        for(let i in strmBWData){
+                                let mth = new Date(i).getUTCMonth();
+                                let dy = new Date(i).getUTCDate();
+                                let bw = strmBWData[i];
+                                o[n++] = [(mth+1)+'/'+dy, bw.bytesIn, bw.bytesOut];
+                        }
+                        console.log('sorted table:',o);
+                        let data = google.visualization.arrayToDataTable(o);
 
-                        let chart = new google.visualization.AreaChart(document.getElementById('chart_div'));  
-                        chart.draw(data, opt);  
-                }  
+                        let opt = {
+                                title: 'Millicast '+selStreamName+' Usage',
+                                hAxis: {title: 'Days', titleTextStyle: {color: '#333'}},
+                                vAxis: {minValue: 0}
+                        };
 
-        </script>  
-</body>  
+                        let chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                        chart.draw(data, opt);
+                }
+
+        </script>
+</body>
 </html>
 ```
 
@@ -497,10 +490,7 @@ If you noticed in the new method "drawStrmBWChart", the sorting procedure is dif
 
 The Google chart is updated accordingly and we can see each visual as we switch it out by pressing the corresponding buttons and adding the dates.
 
-
 ![](../assets/img/analytics-goog-graph2.png)
-
-
 
 Notice, the data sent to the server is in the same format that is expected on the methods we added to the app.js file earlier. You can try another method using the Geo calls, just remember to format accordingly.
 
@@ -509,13 +499,10 @@ Notice, the data sent to the server is in the same format that is expected on th
 Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API](/millicast/api/analytics-streams-geo-series). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.md#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
 
 > 🚧 Get your data before it expires!
-> 
+>
 > Hourly data is only stored seven days after the stream started. For more information see [Access Restrictions](../analytics/index.md#access-restrictions).
 
-
 ![](../assets/img/millicastViewerCount.png)
-
-
 
 ## Troubleshooting
 

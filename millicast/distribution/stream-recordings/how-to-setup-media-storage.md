@@ -1,8 +1,9 @@
 ---
-title: "How-to Setup Storage Profiles"
+title: 'How-to Setup Storage Profiles'
 slug: /how-to-setup-media-storage
 ---
-With [Live Clipping](/millicast/live-clipping) you can have clips stored directly to your preferred third-party cloud storage provider. This gives you additional control over storage costs and manage usage of media clips. 
+
+With [Live Clipping](/millicast/live-clipping) you can have clips stored directly to your preferred third-party cloud storage provider. This gives you additional control over storage costs and manage usage of media clips.
 
 :::caution Not Available for Recordings
 At this time, [Recordings](/millicast/distribution/stream-recordings/starting-recording.md) cannot be configured to use a third-party cloud storage provider directly. You should follow the [How-to Get Media Assets](/millicast/distribution/stream-recordings/how-to-get-media-assets.mdx) guide to identify recordings for download and then you can upload them to your preferred provider of choice.
@@ -14,7 +15,7 @@ Similarly, **timelines** will always be stored in Dolby's storage subject to exp
 
 You can start by adding a **storage profile** that will persist across the account so that you can reuse the configuration by name on all future [Create Clip](/millicast/api/media-assets-create-media-asset.api.mdx) requests or as the default setting.
 
-Use the [Create Account Storage Profile](/millicast/api/account-create-storage-profile.api.mdx) endpoint to create a new storage profile. 
+Use the [Create Account Storage Profile](/millicast/api/account-create-storage-profile.api.mdx) endpoint to create a new storage profile.
 
 - `name`: The label you can use to reference the profile.
 - `default`: Whether to use this storage profile for all future requests as the default setting.
@@ -65,8 +66,8 @@ For the storage profile use the following settings:
 
 Configuration:
 
-| Cloud Provider       | Service Account                                                                                                                       |
-| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| Cloud Provider       | Service Account                                                 |
+| :------------------- | :-------------------------------------------------------------- |
 | Google Cloud Storage | `millicast-recording-service@millicast.iam.gserviceaccount.com` |
 
 #### How-to Grant Authorization to a Bucket
@@ -74,25 +75,21 @@ Configuration:
 The following procedure explains how to grant Dolby upload access to Google Cloud Storage buckets. Upon completion, the Dolby service account will have the storage object creator role for the selected storage bucket.
 
 1. Log in to your GCP account.
-2. Within your GCP console, navigate to the bucket you wish to grant access to Dolby.io and select the **Permissions** tab. 
+2. Within your GCP console, navigate to the bucket you wish to grant access to Dolby.io and select the **Permissions** tab.
 
-   
 ![](../../assets/img/Screenshot_2024-02-14_at_2.30.39_pm.png)
 
-3. Click the **Grant Access** link. 
+3. Click the **Grant Access** link.
 
-   
 ![](../../assets/img/Screenshot_2024-02-14_at_2.35.17_pm.png)
 
-4. On the side panel that appears, enter the Dolby.io service account email `millicast-recording-service@millicast.iam.gserviceaccount.com` into the **New Principals** text box, and select the **Storage Object Creator** role. These are the minimum recommended permissions for enabling reliable upload access to your storage bucket. 
+4. On the side panel that appears, enter the Dolby.io service account email `millicast-recording-service@millicast.iam.gserviceaccount.com` into the **New Principals** text box, and select the **Storage Object Creator** role. These are the minimum recommended permissions for enabling reliable upload access to your storage bucket.
 
-   
 ![](../../assets/img/Screenshot_2024-02-14_at_2.37.07_pm.png)
 
 5. Click **Save** to confirm the provided details.
-6. Check if the newly added service account is visible on the permissions list. 
+6. Check if the newly added service account is visible on the permissions list.
 
-   
 ![](../../assets/img/Screenshot_2024-02-14_at_2.41.23_pm.png)
 
 ### AWS S3
@@ -110,19 +107,17 @@ Be sure to substitute the name of the bucket in the placeholder field `${BUCKET_
 
 ```json Policy
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "allow-dolby-write",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": [
-                    "arn:aws:iam::548863597864:role/millicast-recording-service"
-                ]
-            },
-            "Action": "s3:PutObject*",
-            "Resource": "arn:aws:s3:::${BUCKET_NAME}/*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "allow-dolby-write",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": ["arn:aws:iam::548863597864:role/millicast-recording-service"]
+      },
+      "Action": "s3:PutObject*",
+      "Resource": "arn:aws:s3:::${BUCKET_NAME}/*"
+    }
+  ]
 }
 ```

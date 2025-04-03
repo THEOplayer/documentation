@@ -6,21 +6,19 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 
 ### Features
 
-- Introducing SRT output with the re-stream feature.  Now you will have the ability to have Millicast be the SRT Caller (push) and send SRT out just like you can already with RTMP.
-- Introducing Auto-Configuration for OBS Broadcaster.  Now you can choose Dolby Millicast as a streaming provider in OBS and enable encoding Adaptive Bitrate (ABR) from OBS to achieve smooth playback on any device without incurring channel fees or using the Real-time Cloud Transcoder.  Read more in our [OBS Enhanced Multitrack Video Guide](/millicast/software-encoders/obs-enhanced-broadcasting-multitrack-video.md).
-- Introducing RTMP Enhanced V2 support!  An encoder has always been able to send multiple video tracks over separate RTMP connections to deliver Adaptive Bitrate (ABR) to viewers, now this is possible with a single RTMP connection and multiple video tracks.
-- Introducing IPV6 support for playback.  For viewers on Internet Service Providers (ISPs) that only provide IPV6 addresses, we have introduced support for IPV6.  This is currently opt-in, please contact your account manager if you would like to test this feature.  This will be available more broadly in a future release.
-- Added the ability to increase the minimum delay for RTMP publishing so that multiple video tracks can be manually timed for sync when an encoder delay exists between ABR layers.   Refer to the `extraLatency` parameter in our [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) section.
-- Introducing High Availability Management. This feature allows for effective switching between primary and redundant stream(s) through reassignment of priority for specified streams. Stream priority can now be set on the Publish Token.  Read more in the [High Availability Management](/millicast/broadcast/redundant-ingest/high-availability-management.md) guide.
-
-
+- Introducing SRT output with the re-stream feature. Now you will have the ability to have Millicast be the SRT Caller (push) and send SRT out just like you can already with RTMP.
+- Introducing Auto-Configuration for OBS Broadcaster. Now you can choose Dolby Millicast as a streaming provider in OBS and enable encoding Adaptive Bitrate (ABR) from OBS to achieve smooth playback on any device without incurring channel fees or using the Real-time Cloud Transcoder. Read more in our [OBS Enhanced Multitrack Video Guide](/millicast/software-encoders/obs-enhanced-broadcasting-multitrack-video.md).
+- Introducing RTMP Enhanced V2 support! An encoder has always been able to send multiple video tracks over separate RTMP connections to deliver Adaptive Bitrate (ABR) to viewers, now this is possible with a single RTMP connection and multiple video tracks.
+- Introducing IPV6 support for playback. For viewers on Internet Service Providers (ISPs) that only provide IPV6 addresses, we have introduced support for IPV6. This is currently opt-in, please contact your account manager if you would like to test this feature. This will be available more broadly in a future release.
+- Added the ability to increase the minimum delay for RTMP publishing so that multiple video tracks can be manually timed for sync when an encoder delay exists between ABR layers. Refer to the `extraLatency` parameter in our [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) section.
+- Introducing High Availability Management. This feature allows for effective switching between primary and redundant stream(s) through reassignment of priority for specified streams. Stream priority can now be set on the Publish Token. Read more in the [High Availability Management](/millicast/broadcast/redundant-ingest/high-availability-management.md) guide.
 
 # 2024-11-14
 
 ## Media Server
 
 - Where incorrect (higher then expected) viewer counts were being reported a fix has been implemented to report the correct number of viewers
-- For Metadata workflows with RTMP utilizing AMF OnFi messages for [inserting timestamps](/millicast/playback/frame-metadata.md#metadata-source-identification), to improve playback to a bug in Google Chrome, timestamps will only be reported on keyframes.  The issue with Chrome has been patched and will resolve as users update their versions of Chrome.  For more information on this bug, please refer to our [knowledge base article](https://support.dolby.io/hc/en-au/articles/11057317291663-Playback-Issues-with-SEI-Messages-in-H-264-Streaming).
+- For Metadata workflows with RTMP utilizing AMF OnFi messages for [inserting timestamps](/millicast/playback/frame-metadata.md#metadata-source-identification), to improve playback to a bug in Google Chrome, timestamps will only be reported on keyframes. The issue with Chrome has been patched and will resolve as users update their versions of Chrome. For more information on this bug, please refer to our [knowledge base article](https://support.dolby.io/hc/en-au/articles/11057317291663-Playback-Issues-with-SEI-Messages-in-H-264-Streaming).
 
 # 2024-05-28
 
@@ -28,7 +26,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 
 ### Features
 
-- Introduced initial support for our "re-stream" capability.  This is the ability to stream from Dolby to other platforms via RTMP.  For more details, review our [documentation for Re-stream](/millicast/distribution/re-streaming.mdx). If you want to start using this feature, please [contact our sales team](https://dolby.io/contact/) .  
+- Introduced initial support for our "re-stream" capability. This is the ability to stream from Dolby to other platforms via RTMP. For more details, review our [documentation for Re-stream](/millicast/distribution/re-streaming.mdx). If you want to start using this feature, please [contact our sales team](https://dolby.io/contact/) .
 - Updates to our Cloud Transcoder to pass RTMP AMF messages to every simulcast layer of the adaptive bitrate ladder.
 
 ### Fixes
@@ -61,7 +59,7 @@ Deployed new regional clusters that can be [specified by a stream or an account]
 
 Improved capture timestamps in certain ingest cases.
 
-***
+---
 
 # 2024-01-22
 
@@ -75,7 +73,7 @@ Improved capture timestamps in certain ingest cases.
 
 - Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/using-webrtc-simulcast) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/index.mdx#publish-parameters) section of the [Broadcast](/millicast/broadcast/index.mdx) document.
 
-***
+---
 
 # 2023-10-30
 
@@ -107,21 +105,21 @@ Minor fixes and improvements for RTMP publishers.
 - Fixed an SRT recording issue where audio playback was impacted by significant audio drops with several hardware encoders such as Kiloview, LiveU, and PVI.
 - Fixed a race condition that could lead to recording errors.
 
-***
+---
 
 # 2023-03-29
 
 ## Support for Syndicated Content
 
-The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api.mdx) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md).  
- 
-This "syndication" mechanism allows you to send the same stream to multiple cohorts of viewers whilst tying viewer data to a cohort via `trackingId`.  
- 
+The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api.mdx) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md).
+
+This "syndication" mechanism allows you to send the same stream to multiple cohorts of viewers whilst tying viewer data to a cohort via `trackingId`.
+
 By querying your aggregated viewer data with the [Analytics API](/millicast/analytics/index.md) you can determine how much bandwidth was consumed, how many viewers were watching for which provider, and a few other statistics.
 
 For more information, see the [Syndication](/millicast/syndication) article.
 
-***
+---
 
 # 2022-12-04
 
@@ -134,7 +132,7 @@ For more information, see:
 - The [SRT](/millicast/broadcast/using-srt.mdx) article
 - The [OBS using SRT](/millicast/software-encoders/using-obs.md) article
 
-***
+---
 
 # 2022-10-31
 
@@ -146,7 +144,7 @@ Introduced support for WebRTC-HTTP Egress Protocol (WHEP) in Millicast to offer 
 
 Deployment of a new regional cluster that can be [specified by a stream or an account](/millicast/api/cluster-get-clusters-info). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
 
-***
+---
 
 # 2022-09-01
 
@@ -154,7 +152,7 @@ Deployment of a new regional cluster that can be [specified by a stream or an ac
 
 Introduced support for VP9 codec that provides better color fidelity with the support of more color formats for remote post-production workflows.
 
-***
+---
 
 # 2022-06-30
 
@@ -171,7 +169,7 @@ For more information, see:
 
 Deployed new regional clusters that can be [specified by a stream or an account](/millicast/api/cluster-get-clusters-info). This increases the global footprint of the service and reduces end-to-end latency in specific regions.
 
-***
+---
 
 # 2022-06-01
 

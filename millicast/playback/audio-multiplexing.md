@@ -1,7 +1,8 @@
 ---
-title: "Audio Multiplexing"
+title: 'Audio Multiplexing'
 slug: /audio-multiplexing
 ---
+
 The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers to receive multiple audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
 
 ## Understanding Audio Multiplexing
@@ -21,10 +22,10 @@ If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-so
 
 ## Using Audio Multiplexing
 
-To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher. 
+To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher.
 
 > 📘 Not familar with our JavaScript SDK?
-> 
+>
 > Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/client-sdks/index.mdx).
 
 Once you're streaming multiple audio sources, the next step is to set up the [Viewer](/millicast/client-sdks/web.mdx#viewing-a-stream) so that the incoming audio sources can be correctly multiplexed. When connecting to the Viewer, there are a [number of parameters available in the SDK](https://millicast.github.io/millicast-sdk/View.html#connect) you can adjust depending on your workflow. Some parameters of note for audio multiplexing include:
@@ -58,34 +59,34 @@ const sourceEvents = [];
 const trackEvents = [];
 const audioElements = [];
 
-viewer.on("track", async (event) => {
-  console.log("track", event);
+viewer.on('track', async (event) => {
+  console.log('track', event);
   trackEvents.push(event);
 });
 
-viewer.on("broadcastEvent", async (event) => {
-  console.log("broadcastEvent", event);
-  if (event.name === "active") {
+viewer.on('broadcastEvent', async (event) => {
+  console.log('broadcastEvent', event);
+  if (event.name === 'active') {
     sourceEvents.push(event);
-    
-    const newAudio = document.createElement("audio");
-    newAudio.id = "audioElement" + audioElements.length.toString();
+
+    const newAudio = document.createElement('audio');
+    newAudio.id = 'audioElement' + audioElements.length.toString();
     audioTrackDiv.appendChild(newAudio);
     audioElements.push(newAudio);
-    projectOn(audioElements.length+1)
-  } 
+    projectOn(audioElements.length + 1);
+  }
 });
 ```
 
 > 🚧 Viewer on "track" events
-> 
+>
 > The Dolby.io SDKs offer `.on("track",async (event) =>{})` functionality for triggering events as tracks are added. When using Audio Multiplexing this event will trigger a number of times equal to the `multiplexedAudioTracks` value, regardless of if those tracks actually contain data.
-> 
+>
 > This means that if `multiplexedAudioTracks` is set to `5` it will trigger once for the first track and five additional times for each multiplexed audio track, regardless of whether there are only two tracks broadcasting or twenty.
 
-The `broadcastEvent` will contain the feeds as they are being published. These feeds need to be linked to Viewer `tracks` to be delivered via a function called `project` which _projects_ the media onto the track. This is because different feeds maybe be coming from different sources and hence may connect or disconnect at different intervals. The relationship between a feed and a track is organized this way so that as feeds disconnect they can be swapped or removed without all the streams being interrupted. 
+The `broadcastEvent` will contain the feeds as they are being published. These feeds need to be linked to Viewer `tracks` to be delivered via a function called `project` which _projects_ the media onto the track. This is because different feeds maybe be coming from different sources and hence may connect or disconnect at different intervals. The relationship between a feed and a track is organized this way so that as feeds disconnect they can be swapped or removed without all the streams being interrupted.
 
-The function below also establishes the relationship between the  `<audio>` tag we created above and the `track`. Allowing the `<audio>` tag to be rendered on a page for the listener to hear.
+The function below also establishes the relationship between the `<audio>` tag we created above and the `track`. Allowing the `<audio>` tag to be rendered on a page for the listener to hear.
 
 ```javascript
 async function projectOn(index) {
@@ -94,10 +95,10 @@ async function projectOn(index) {
   stream.addTrack(trackEvents[index].track);
   audioElement.srcObject = stream;
   audioElement.play();
-  
+
   const sourceEvent = sourceEvents[index];
   const trackEvent = trackEvents[index];
-  console.log("About to project", sourceEvent, trackEvent);
+  console.log('About to project', sourceEvent, trackEvent);
   await viewer.project(sourceEvent.data.sourceId, [
     {
       media: sourceEvent.data.tracks[0].media,
@@ -114,7 +115,7 @@ To recap the above workflow:
 2. As the app connects the Director creates a main track plus an additional number of tracks equal to the `multiplexedAudioTracks` value. This triggers a `track` event for each track added.
 3. An audio feed is connected to the Publisher Node triggering a Broadcast event.
 4. The broadcast event creates an `<audio>` tag and triggers the `projectOn` function.
-5. The `projectOn` function adds a track to the `<audio>` tag and then calls the  `viewer.project` function to project the media onto the track. Allowing the audio feed to be rendered in the `<audio>` tag.
+5. The `projectOn` function adds a track to the `<audio>` tag and then calls the `viewer.project` function to project the media onto the track. Allowing the audio feed to be rendered in the `<audio>` tag.
 6. Steps 3-5 are repeated as more feeds are added.
 
 To help with understanding and implementing the Audio Multiplexing feature is included:
@@ -145,8 +146,8 @@ To help with understanding and implementing the Audio Multiplexing feature is in
 				<div class="col-8 shadow p-3 mb-5 bg-body rounded text-center">
 					<button onclick="startStream()" id="startBtn" style={{height: "50px", width: "150px"}}>Start</button>
 					<button onclick="resetStream()" id="resetBtn" style={{height: "50px", width: "150px"}} disabled>Reset</button>
-					, 
-					, 
+					,
+					,
 					<div id="audioTrackDiv" color="grey"></div>
 				</div>
 			</div>

@@ -1,8 +1,9 @@
 ---
-title: "Screensharing"
+title: 'Screensharing'
 slug: /screensharing
 sidebar_position: 3
 ---
+
 Screensharing or screen capturing is an important feature for virtual events, webinars, and many other types of broadcasts that involve sharing information. This guide will outline three options for managing screen capture in a way that is compatible with Dolby.io:
 
 1. [Screensharing with the Dolby.io Dashboard Broadcaster](/millicast/capture/screensharing.mdx#screensharing-with-the-dolbyio-dashboard-broadcaster)
@@ -24,7 +25,7 @@ Inside the dashboard, click the Broadcast button located adjacent to the token.
 import BroadcastDashButton from '../assets/img/broadcast_dash_button.png';
 
 <div class="center-container">
-    <img src={BroadcastDashButton} width="500" />
+  <img src={BroadcastDashButton} width="500" />
 </div>
 
 Inside the dashboard broadcaster, click on the camera icon in the bottom left corner. To share your screen, select the "Share Screen" option and start sharing.
@@ -32,7 +33,7 @@ Inside the dashboard broadcaster, click on the camera icon in the bottom left co
 import I7030fd4 from '../assets/img/7030fd4-image.png';
 
 <div class="center-container">
-    <img src={I7030fd4} width="500" />
+  <img src={I7030fd4} width="500" />
 </div>
 
 With your screen shared to the dashboard broadcaster, you are now set up to capture content from your desktop. You can click start to begin broadcasting or proceed to [Broadcast](/millicast/broadcast/index.mdx) to learn about broadcast settings.
@@ -46,7 +47,7 @@ Inside the app, click the plus icon within the Sources tab and add a Display Cap
 import DisplayCaptureObs from '../assets/img/dispalycaptureobs.png';
 
 <div class="center-container">
-    <img src={DisplayCaptureObs} width="500" />
+  <img src={DisplayCaptureObs} width="500" />
 </div>
 
 Select the screen you want to share and whether you want OBS to capture the cursor or not.
@@ -54,7 +55,7 @@ Select the screen you want to share and whether you want OBS to capture the curs
 import Id2386da from '../assets/img/d2386da-image.png';
 
 <div class="center-container">
-    <img src={Id2386da} width="500" />
+  <img src={Id2386da} width="500" />
 </div>
 
 With your screen selected click "OK". You've now set up your screen for capture via OBS. To start streaming from OBS continue to the [broadcasting with OBS guide](/millicast/software-encoders/using-obs.md).
@@ -67,10 +68,10 @@ To get started using `getDisplayMedia` we first need to define our display media
 
 ```javascript
 const displayMediaOptions = {
-    video: {
-        displaySurface: "window",
-    },
-    audio: false,
+  video: {
+    displaySurface: 'window',
+  },
+  audio: false,
 };
 ```
 

@@ -1,10 +1,11 @@
 ---
-title: "Frame Metadata"
+title: 'Frame Metadata'
 slug: /frame-metadata
 ---
+
 In addition to streaming audio and video there are many use cases that require additional metadata about what is happening in the stream. We refer to this as **Frame Metadata** which allows for embedding and extraction of custom application data that has frame-level accuracy.
 
-This can be useful for transporting temporal data such as: 
+This can be useful for transporting temporal data such as:
 
 - timecodes
 - bounding boxes
@@ -16,12 +17,9 @@ These cue points are often used for time synchronizing application state with th
 
 ## SEI Metadata
 
-Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed **Action Message Format (AMF) messages. 
-
+Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed \*\*Action Message Format (AMF) messages.
 
 ![](../assets/img/metadata-feature.png)
-
-
 
 ### Message Delivery
 
@@ -56,13 +54,13 @@ To send metadata use the `sendMetadata()` method which is expecting a string as 
 
 ```javascript
 const broadcastOptions = {
-    codec: 'h264',
-    metadata: true
+  codec: 'h264',
+  metadata: true,
 };
 
-await publisher.connect(broadcastOptions)
+await publisher.connect(broadcastOptions);
 
-publisher.sendMetadata('{"score": "4-3"}')
+publisher.sendMetadata('{"score": "4-3"}');
 ```
 
 ### How-to View Frame Metadata
@@ -71,16 +69,16 @@ A separate metadata event is received for each frame when it is decoded so that 
 
 ```javascript
 const playbackOptions = {
-    codec: 'h264',
-    metadata: true
+  codec: 'h264',
+  metadata: true,
 };
 
-await millicastView.connect(playbackOptions)
+await millicastView.connect(playbackOptions);
 
 millicastView.on('metadata', (metadata) => {
   console.log(`Timecode: ${metadata.timecode}`);
   console.log(`Unregistered: ${metadata.unregistered}`);
-});  
+});
 ```
 
 The metadata that was published with the Web SDK is found in the `unregistered` attribute. It is common to serialize and deserialize more complex data packages like JSON but is a decision left to the application.
@@ -88,9 +86,9 @@ The metadata that was published with the Web SDK is found in the `unregistered` 
 ## Codec Support
 
 > ❗️ Frame Metadata with SEI is only available for the H.264 (AVC) Codec
-> 
-> If you are using a codec for your broadcasts such as AV1 or VP8 you can use an alternative method of frame metadata described below. 
-> 
+>
+> If you are using a codec for your broadcasts such as AV1 or VP8 you can use an alternative method of frame metadata described below.
+>
 > _It is important to correctly encode and decode frames or you may experience negative impacts on stream performance._
 
 With the method demonstrated here for non-SEI codec support:
@@ -101,9 +99,9 @@ With the method demonstrated here for non-SEI codec support:
 
 ### Supporting Non-SEI Metadata for Web
 
-Utilizing a <a href="https://developer.mozilla.org/en-US/docs/Web/API/TransformStream" target="_blank">TransformStream</a> object, you can spin up a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Worker</a> to leverage background threads from the web browser and process individual video frames. 
+Utilizing a <a href="https://developer.mozilla.org/en-US/docs/Web/API/TransformStream" target="_blank">TransformStream</a> object, you can spin up a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Worker</a> to leverage background threads from the web browser and process individual video frames.
 
-The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using **createEncodedStreams() while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
+The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using \*\*createEncodedStreams() while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
 
 #### Publishing metadata
 
@@ -111,37 +109,32 @@ Start by creating a new JavaScript file for the web worker called **workerSender
 
 ```javascript
 const transformer = new TransformStream({
-    async transform(frame, controller) {
-        // Data should start with four bytes to signal the upcoming metadata at end of frame
-        const magic_value = [0xca, 0xfe, 0xba, 0xbe];
+  async transform(frame, controller) {
+    // Data should start with four bytes to signal the upcoming metadata at end of frame
+    const magic_value = [0xca, 0xfe, 0xba, 0xbe];
 
-        const data = [
-            ...magic_value,
-            ...[...metadata].map((c) => c.charCodeAt(0)),
-            0, 0, 0,
-            metadata.length,
-        ];
+    const data = [...magic_value, ...[...metadata].map((c) => c.charCodeAt(0)), 0, 0, 0, metadata.length];
 
-        // Create DataView from Array buffer
-        const frame_length = frame.data.byteLength;
-        const buffer = new ArrayBuffer(frame_length + data.length);
-        const view_buffer = new DataView(buffer);
-        const view_frame = new DataView(frame.data);
+    // Create DataView from Array buffer
+    const frame_length = frame.data.byteLength;
+    const buffer = new ArrayBuffer(frame_length + data.length);
+    const view_buffer = new DataView(buffer);
+    const view_frame = new DataView(frame.data);
 
-        // Copy old frame buffer to new frame buffer and then append the metadata
-        // at the end of the buffer
-        for (let i = 0; i < frame_length; ++i) {
-            view_buffer.setUint8(i, view_frame.getUint8(i));
-        }
+    // Copy old frame buffer to new frame buffer and then append the metadata
+    // at the end of the buffer
+    for (let i = 0; i < frame_length; ++i) {
+      view_buffer.setUint8(i, view_frame.getUint8(i));
+    }
 
-        data.forEach((elt, idx) => view_buffer.setUint8(frame_length + idx, elt));
+    data.forEach((elt, idx) => view_buffer.setUint8(frame_length + idx, elt));
 
-        // Set the new frame buffer
-        frame.data = buffer;
+    // Set the new frame buffer
+    frame.data = buffer;
 
-        // Send the frame
-        controller.enqueue(frame);
-    },
+    // Send the frame
+    controller.enqueue(frame);
+  },
 });
 ```
 
@@ -149,34 +142,32 @@ The metadata is passed using the <a href="https://developer.mozilla.org/en-US/do
 
 ```javascript
 // Initialization of the Web Worker by RTCRtpScriptTransform
-addEventListener("rtctransform", (event) => initialize(event.transformer));
+addEventListener('rtctransform', (event) => initialize(event.transformer));
 
 // Metadata to send can be any arbitrary data or a string
 var metadata = '';
 
 // Event triggered when the main thread sends a message to the web worker
 addEventListener('message', (event) => {
-    const { action } = event.data;
-  
-    switch (action) {
-        // Initialization of the Web Worker by Insertable Frames
-        case 'init':
-            initialize(event.data);
-            break;
-        // Update the metadata to add to the frames
-        case 'metadata':
-            metadata = event.data.metadata;
-            break;
-        default:
-            break;
-    }
+  const { action } = event.data;
+
+  switch (action) {
+    // Initialization of the Web Worker by Insertable Frames
+    case 'init':
+      initialize(event.data);
+      break;
+    // Update the metadata to add to the frames
+    case 'metadata':
+      metadata = event.data.metadata;
+      break;
+    default:
+      break;
+  }
 });
 
 // Insert the TransformStream into the video pipeline
 function initialize({ readable, writable }) {
-    readable
-        .pipeThrough(transformer)
-        .pipeTo(writable);
+  readable.pipeThrough(transformer).pipeTo(writable);
 }
 ```
 
@@ -184,10 +175,8 @@ Create another JavaScript file called **scripts.js** that will be used to publis
 
 ```javascript
 // Insertable streams for `MediaStreamTrack` is supported.
-const supportsInsertableStreams = window.RTCRtpSender
-    && !!RTCRtpSender.prototype.createEncodedStreams
-    && window.RTCRtpReceiver
-    && !!RTCRtpReceiver.prototype.createEncodedStreams;
+const supportsInsertableStreams =
+  window.RTCRtpSender && !!RTCRtpSender.prototype.createEncodedStreams && window.RTCRtpReceiver && !!RTCRtpReceiver.prototype.createEncodedStreams;
 
 // WebRTC RTP Script Transform is supported
 const supportsRTCRtpScriptTransform = 'RTCRtpScriptTransform' in window;
@@ -199,65 +188,62 @@ Copy the following function to start publishing a stream, add a video element wi
 var workerSender;
 
 async function startPublishing(publishToken, streamName, participantName) {
-    const tokenGenerator = () => millicast.Director.getPublisher({
-        token: publishToken,
-        streamName: streamName,
+  const tokenGenerator = () =>
+    millicast.Director.getPublisher({
+      token: publishToken,
+      streamName: streamName,
     });
 
-    const millicastPublish = new millicast.Publish(streamName, tokenGenerator);
+  const millicastPublish = new millicast.Publish(streamName, tokenGenerator);
 
-    const mediaStream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: true,
-    });
+  const mediaStream = await navigator.mediaDevices.getUserMedia({
+    audio: true,
+    video: true,
+  });
 
-    // Start publishing to RTS
-    await millicastPublish.connect({
-        mediaStream: mediaStream,
-        sourceId: participantName,
-        peerConfig: {
-            // Indicate you want to use Insertable Streams
-            encodedInsertableStreams: true,
-        },
-    });
+  // Start publishing to RTS
+  await millicastPublish.connect({
+    mediaStream: mediaStream,
+    sourceId: participantName,
+    peerConfig: {
+      // Indicate you want to use Insertable Streams
+      encodedInsertableStreams: true,
+    },
+  });
 
-    // Create a video element
-    const videoElement = document.createElement('video');
-    document.body.appendChild(videoElement);
-    videoElement.muted = true;
-    videoElement.autoplay = true;
-    videoElement.controls = false;
-    videoElement.srcObject = mediaStream;
-    videoElement.play();
+  // Create a video element
+  const videoElement = document.createElement('video');
+  document.body.appendChild(videoElement);
+  videoElement.muted = true;
+  videoElement.autoplay = true;
+  videoElement.controls = false;
+  videoElement.srcObject = mediaStream;
+  videoElement.play();
 
-    workerSender = new Worker('workerSender.js');
+  workerSender = new Worker('workerSender.js');
 
-    const senders = millicastPublish
-        .getRTCPeerConnection()
-        .getSenders()
-        .filter((elt) => elt.track.kind === 'video');
-    const sender = senders[0];
+  const senders = millicastPublish
+    .getRTCPeerConnection()
+    .getSenders()
+    .filter((elt) => elt.track.kind === 'video');
+  const sender = senders[0];
 
-    if (supportsRTCRtpScriptTransform) {
+  if (supportsRTCRtpScriptTransform) {
+    // Initialize the WebRTC RTP Script Transform
+    sender.transform = new RTCRtpScriptTransform(workerSender, {});
+  } else if (supportsInsertableStreams) {
+    const { readable, writable } = sender.createEncodedStreams();
 
-        // Initialize the WebRTC RTP Script Transform
-        sender.transform = new RTCRtpScriptTransform(workerSender, {});
-
-    } else if (supportsInsertableStreams) {
-
-        const { readable, writable } = sender.createEncodedStreams();
-
-        // Initialize the web worker with the stream
-        workerSender.postMessage({
-            action: 'init',
-            readable,
-            writable,
-          }, [
-            readable,
-            writable,
-        ]);
-
-    }
+    // Initialize the web worker with the stream
+    workerSender.postMessage(
+      {
+        action: 'init',
+        readable,
+        writable,
+      },
+      [readable, writable]
+    );
+  }
 }
 ```
 
@@ -265,13 +251,13 @@ Now to inform the web worker about sending a new metadata with the frames, creat
 
 ```javascript
 function sendMetadata(message) {
-    if (workerSender) {
-        console.log(`Send metadata: ${message}`);
-        workerSender.postMessage({
-            action: 'metadata',
-            metadata: message,
-        });
-    }
+  if (workerSender) {
+    console.log(`Send metadata: ${message}`);
+    workerSender.postMessage({
+      action: 'metadata',
+      metadata: message,
+    });
+  }
 }
 ```
 
@@ -291,47 +277,40 @@ In a similar way, create a JavaScript file called **workerReceiver.js** for the 
 var oldMetadata = '';
 
 const transformer = new TransformStream({
-    async transform(frame, controller) {
-        // Convert data from ArrayBuffer to Uint8Array
-        const frame_data = new Uint8Array(frame.data);
-        const total_length = frame_data.length;
+  async transform(frame, controller) {
+    // Convert data from ArrayBuffer to Uint8Array
+    const frame_data = new Uint8Array(frame.data);
+    const total_length = frame_data.length;
 
-        // Shift to left for endianess to retrieve the metadata size from the last
-        // 4 bytes of the buffer
-        let shift = 3;
-        const size = frame_data
-            .slice(total_length - 4)
-            .reduce((acc, v) => acc + (v << shift--), 0);
+    // Shift to left for endianess to retrieve the metadata size from the last
+    // 4 bytes of the buffer
+    let shift = 3;
+    const size = frame_data.slice(total_length - 4).reduce((acc, v) => acc + (v << shift--), 0);
 
-        // Use the byte signal identifying that the remaining data is frame metadata and
-        // confirm that the signal is in the frame.
-        const magic_bytes = frame_data.slice(
-            total_length - size - 2 * 4,
-            total_length - size - 4
-        );
+    // Use the byte signal identifying that the remaining data is frame metadata and
+    // confirm that the signal is in the frame.
+    const magic_bytes = frame_data.slice(total_length - size - 2 * 4, total_length - size - 4);
 
-        // Data should start with four bytes to signal the upcoming metadata at end of frame
-        const magic_value = [0xca, 0xfe, 0xba, 0xbe];
+    // Data should start with four bytes to signal the upcoming metadata at end of frame
+    const magic_value = [0xca, 0xfe, 0xba, 0xbe];
 
-        const has_magic_value = magic_value.every(
-            (v, index) => v === magic_bytes[index]
-        );
+    const has_magic_value = magic_value.every((v, index) => v === magic_bytes[index]);
 
-        // When there is metadata in the frame, get the metadata array and handle it
-        // as needed by your application.
-        if (has_magic_value) {
-            const data = frame_data.slice(total_length - size - 4, total_length - 4);
-            const newMetadata = String.fromCharCode(...data);
-            if (oldMetadata !== newMetadata) {
-                oldMetadata = newMetadata;
-                // Send a message to the main thread with the new metadata
-                self.postMessage(newMetadata);
-            }
-        }
+    // When there is metadata in the frame, get the metadata array and handle it
+    // as needed by your application.
+    if (has_magic_value) {
+      const data = frame_data.slice(total_length - size - 4, total_length - 4);
+      const newMetadata = String.fromCharCode(...data);
+      if (oldMetadata !== newMetadata) {
+        oldMetadata = newMetadata;
+        // Send a message to the main thread with the new metadata
+        self.postMessage(newMetadata);
+      }
+    }
 
-        // Send the frame as is which is supported by video players
-        controller.enqueue(frame);
-    },
+    // Send the frame as is which is supported by video players
+    controller.enqueue(frame);
+  },
 });
 ```
 
@@ -339,16 +318,14 @@ Insert the code to initialize the web worker in the same file as your **Transfor
 
 ```javascript
 // Initialization of the Web Worker by RTCRtpScriptTransform
-addEventListener("rtctransform", (event) => initialize(event.transformer));
+addEventListener('rtctransform', (event) => initialize(event.transformer));
 
 // Initialization of the Web Worker by Insertable Frames
 addEventListener('message', (event) => initialize(event.data));
 
 // Insert the TransformStream into the video pipeline
 function initialize({ readable, writable }) {
-    readable
-        .pipeThrough(transformer)
-        .pipeTo(writable);
+  readable.pipeThrough(transformer).pipeTo(writable);
 }
 ```
 
@@ -356,56 +333,54 @@ Now in the **scripts.js** file, add the following code to connect and listen to 
 
 ```javascript
 async function onTrack(event) {
-    if (event.track.kind === 'video') {
-        const worker = new Worker("workerReceiver.js");
+  if (event.track.kind === 'video') {
+    const worker = new Worker('workerReceiver.js');
 
-        if (supportsRTCRtpScriptTransform) {
+    if (supportsRTCRtpScriptTransform) {
+      // Initialize the WebRTC RTP Script Transform
+      event.receiver.transform = new RTCRtpScriptTransform(worker, {});
+    } else if (supportsInsertableStreams) {
+      const { readable, writable } = event.receiver.createEncodedStreams();
 
-            // Initialize the WebRTC RTP Script Transform
-            event.receiver.transform = new RTCRtpScriptTransform(worker, {});
-
-        } else if (supportsInsertableStreams) {
-
-            const { readable, writable } = event.receiver.createEncodedStreams();
-
-            // Initialize the web worker with the stream
-            worker.postMessage({
-                readable,
-                writable,
-            }, [
-                readable,
-                writable,
-            ]);
-        }
-
-        // Listen to messages sent by the web worker
-        // Each message is a new metadata string
-        worker.addEventListener('message', (evt) => {
-            const mEvent = new CustomEvent('metadata', { detail: evt.data });
-            window.dispatchEvent(mEvent);
-        });
-
-        const videoElement = document.createElement('video');
-        document.body.appendChild(videoElement);
-        videoElement.srcObject = new MediaStream([event.track]);
-        videoElement.play();
+      // Initialize the web worker with the stream
+      worker.postMessage(
+        {
+          readable,
+          writable,
+        },
+        [readable, writable]
+      );
     }
+
+    // Listen to messages sent by the web worker
+    // Each message is a new metadata string
+    worker.addEventListener('message', (evt) => {
+      const mEvent = new CustomEvent('metadata', { detail: evt.data });
+      window.dispatchEvent(mEvent);
+    });
+
+    const videoElement = document.createElement('video');
+    document.body.appendChild(videoElement);
+    videoElement.srcObject = new MediaStream([event.track]);
+    videoElement.play();
+  }
 }
 
 async function startListening(streamAccountId, streamName) {
-    const tokenGenerator = () => millicast.Director.getSubscriber({
-        streamName: streamName,
-        streamAccountId: streamAccountId,
+  const tokenGenerator = () =>
+    millicast.Director.getSubscriber({
+      streamName: streamName,
+      streamAccountId: streamAccountId,
     });
 
-    const viewer = new millicast.View(streamName, tokenGenerator);
-    viewer.on('track', (event) => onTrack(event));
+  const viewer = new millicast.View(streamName, tokenGenerator);
+  viewer.on('track', (event) => onTrack(event));
 
-    await viewer.connect({
-        peerConfig: {
-            encodedInsertableStreams: true,
-        },
-    });
+  await viewer.connect({
+    peerConfig: {
+      encodedInsertableStreams: true,
+    },
+  });
 }
 ```
 
@@ -416,14 +391,14 @@ When a new metadata is received, this code will trigger the JavaScript event **m
 Using the [Native SDK](/millicast/client-sdks/index.mdx) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
 
 > 📘 Example Project
-> 
+>
 > You can find a more complete C implementation example in the <a href="https://github.com/millicast/metadata-publisher-demo" target="_blank">millicast/metadata-publisher-demo</a> project.
 
 If you have specific requirements for the version of libwebrtc in use for your platform [contact us](https://dolby.io/contact) for additional implementation details.
 
 #### Enable frame transformer
 
-When the transformer is activated, it will enable inspection of frames for additional metadata appended. 
+When the transformer is activated, it will enable inspection of frames for additional metadata appended.
 
 ```c
 enable_frame_transformer(true);
@@ -448,7 +423,7 @@ void encode(int32_t value, std::vector<uint8_t>& data)
 void on_transformable_frame([[maybe_unused]] uint32_t ssrc, [[maybe_unused]] uint32_t timestamp, std::vector<uint8_t>& data) override
 {
     constexpr uint8_t SPEED = 10;
- 
+
     if (pos_x == width || pos_x == 0)
     {
         dir_x *= -1;
@@ -481,6 +456,3 @@ See the [Playback issues with SEI Messages in H.264](https://support.dolby.io/hc
 ## Learn more
 
 You can find some additional examples of exchanging data during a broadcast and other [messaging](https://dolby.io/blog/tag/messaging/) examples from the [developer blog](https://dolby.io/blog/category/streaming/).
-
-
-

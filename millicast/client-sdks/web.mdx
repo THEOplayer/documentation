@@ -1,7 +1,8 @@
 ---
-title: "Web"
+title: 'Web'
 slug: /web
 ---
+
 The Web SDK lets you connect, capture, publish, and subscribe to streams in your web applications.
 
 ## Getting Started
@@ -39,7 +40,7 @@ You can install the package directly into your project with `npm`:
 npm i --save @millicast/sdk
 ```
 
-If you want to pin or lock to a specific version, you can find available options from the [NPM @millicast/sdk](https://www.npmjs.com/package/@millicast/sdk)  package releases.
+If you want to pin or lock to a specific version, you can find available options from the [NPM @millicast/sdk](https://www.npmjs.com/package/@millicast/sdk) package releases.
 
 ### Check Browser Capabilities
 
@@ -54,6 +55,7 @@ import { PeerConnection } from '@millicast/sdk';
 const capabilities = PeerConnection.getCapabilities('video');
 console.log(capabilities);
 ```
+
 ```javascript UMD
 // Universal Module Definition (UMD)
 // You access SDK modules from the window.millicast namespace.
@@ -61,6 +63,7 @@ console.log(capabilities);
 const capabilities = window.millicast.PeerConnection.getCapabilities('video');
 console.log(capabilities);
 ```
+
 ```javascript ESM
 // ES Modules
 // You access SDK modules through an import.
@@ -126,11 +129,11 @@ To create a new publisher, you have to instantiate the Publish class:
 ```javascript
 import { Director, Publish } from '@millicast/sdk';
 
-const tokenGenerator = () => Director.getPublisher(
-{
-  token: 'my-publishing-token',
-  streamName: 'my-stream-name',
-});
+const tokenGenerator = () =>
+  Director.getPublisher({
+    token: 'my-publishing-token',
+    streamName: 'my-stream-name',
+  });
 const publisher = new Publish('my-stream-name', tokenGenerator);
 ```
 
@@ -231,8 +234,8 @@ If the method is not static (which means you can access it without a Publish ins
 Example:
 
 ```javascript
-publisher.signaling // Corresponds to the Signaling module.
-publisher.webRTCPeer // Corresponds to the Peerconnection module.
+publisher.signaling; // Corresponds to the Signaling module.
+publisher.webRTCPeer; // Corresponds to the Peerconnection module.
 ```
 
 Most of the important methods are located directly in the Publisher module but some are not, like updating the bitrate or getting the WebRTC stats.
@@ -259,8 +262,6 @@ Example:
 publisher.stop();
 ```
 
-
-
 ### Viewing a Stream
 
 The main module to view a stream is the [View module](https://millicast.github.io/millicast-sdk/View.html).
@@ -273,13 +274,14 @@ Creating a new View instance:
 import { Director, View } from '@millicast/sdk';
 
 // Create callback to generate a new token
-const tokenGenerator = ()  => Director.getSubscriber({
-  streamName: 'publish-stream-name',
-  streamAccountId: 'publish-account-id',
-  // Optional: This token is needed if you're subscribing to a secure stream,
-  // This token should be provided by the publish owner.
-  subscriberToken: 'subscriber-token',
-});
+const tokenGenerator = () =>
+  Director.getSubscriber({
+    streamName: 'publish-stream-name',
+    streamAccountId: 'publish-account-id',
+    // Optional: This token is needed if you're subscribing to a secure stream,
+    // This token should be provided by the publish owner.
+    subscriberToken: 'subscriber-token',
+  });
 
 // Create Millicast instance
 const millicastView = new View('publish-stream-name', tokenGenerator);
@@ -289,8 +291,8 @@ Like when creating a Publish instance, in order to create a View instance you ne
 
 - The first one is the stream name ('my-stream-name') and it is used to set the stream you want to connect.
 - The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
-- **(Optional)  mediaElement. This is the HTML media element where you want to mount the stream for example a `video` element.
-- **(Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream.
+- \*\*(Optional) mediaElement. This is the HTML media element where you want to mount the stream for example a `video` element.
+- \*\*(Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream.
 
 More information here:
 
@@ -325,8 +327,6 @@ We recommend using the [reconnect()](https://millicast.github.io/millicast-sdk/V
 
 ## Managing the Connection
 
-
-
 ### Reconnecting
 
 Both the instances of Publish and View have a reconnect event. This event emits when the connection is lost with a timeout and error message in the callback. This event is emitted by the `reconnect()` method that both Publish and View instances have, this method is automatically called by default except specified with the autoReconnect flag of the [constructor](https://millicast.github.io/millicast-sdk/View.html). [SDK Reconnect event](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:reconnect)
@@ -338,7 +338,7 @@ import { View } from '@millicast/sdk';
 
 const millicastView = new View(streamName, tokenGenerator);
 
-millicastView.on('reconnect', ({timeout, error}) => {
+millicastView.on('reconnect', ({ timeout, error }) => {
   console.log(timeout);
   console.error(error);
 });
@@ -352,23 +352,13 @@ More information here:
 - [Publish reconnect](https://millicast.github.io/millicast-sdk/Publish.html#reconnect)
 - [View reconnect](https://millicast.github.io/millicast-sdk/View.html#reconnect)
 
-
-
 ### Broadcast events
 
 In the connect method, you can send the events that you want to subscribe to, when the connection is done the SDK starts to emit an event called `broadcastEvents` to catch the data of each event:
 
 ```javascript
 await millicastView.connect({
-  events: [
-    'active',
-    'inactive',
-    'stopped',
-    'vad',
-    'layers',
-    'migrate',
-    'viewercount',
-  ]
+  events: ['active', 'inactive', 'stopped', 'vad', 'layers', 'migrate', 'viewercount'],
 });
 ```
 
@@ -449,8 +439,6 @@ view.on('broadcastEvent', (event) => {
 });
 ```
 
-
-
 ## Troubleshooting
 
 ### Logger
@@ -501,20 +489,19 @@ millicastView.webRTCPeer.on('stats', (stats) => {
   console.log('Stats from event: ', stats);
 });
 ```
+
 ```javascript Publish
-import { Publish } from '@millicast/sdk'
+import { Publish } from '@millicast/sdk';
 
 // Initialize and connect your Publisher
-const millicastPublish = new Publish(streamName, tokenGenerator)
-await millicastPublish.connect()
+const millicastPublish = new Publish(streamName, tokenGenerator);
+await millicastPublish.connect();
 
 // Capture new stats events every 1s
 millicastPublish.webRTCPeer.on('stats', (stats) => {
-   console.log('Stats from event: ', stats)
+  console.log('Stats from event: ', stats);
 });
 ```
-
-
 
 ### How-to Disable Stats Collection
 
@@ -542,9 +529,9 @@ The `forcePlayoutDelay` setting can be used to adjust the buffer size used to in
 const connectionOptions = {
   forcePlayoutDelay: {
     min: 3000,
-    max: 5000
-  }
-}
+    max: 5000,
+  },
+};
 ```
 
 For additional information:
@@ -591,10 +578,11 @@ The following example creates a publisher object with the `token` and `streamNam
 ```javascript
 import { Director, Publish } from '@millicast/sdk';
 
-const tokenGenerator = () => Director.getPublisher({
-  token: 'Publishing Token',
-  streamName: 'Stream Name',
-});
+const tokenGenerator = () =>
+  Director.getPublisher({
+    token: 'Publishing Token',
+    streamName: 'Stream Name',
+  });
 
 const publisher = new Publish('Stream Name', tokenGenerator);
 
@@ -614,7 +602,7 @@ You can activate recording to begin shortly after connecting by providing the `r
 ```javascript
 const publishOptions = {
   record: true,
-}
+};
 
 try {
   await publisher.connect(publishOptions);

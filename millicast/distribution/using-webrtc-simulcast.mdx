@@ -1,17 +1,18 @@
 ---
-title: "Simulcast"
+title: 'Simulcast'
 slug: /using-webrtc-simulcast
 sidebar_position: 6
 ---
+
 Simulcast is a mechanism for distributing streaming content with variations that are optimized for viewers who are under different network conditions or device resolutions. By using a mechanism of WebRTC to distribute content, multiple sources will be available simultaneously that have been encoded with different bitrates and resolutions (HD, SD, LD).
 
 import Simulcast from '../assets/img/Simulcast.png';
 
 <div class="center-container">
-    <img src={Simulcast} width="500" />
+  <img src={Simulcast} width="500" />
 </div>
 
-The platform's _Selective Forwarding Unit (SFU)_ is responsible for distributing the media and adjusts the bit rate so that the streaming player will select the highest quality stream it can reliably playback for each viewer. This is known as **Adaptive Bitrate (ABR) streaming**. The decision is made based on factors like available bandwidth but also other considerations such as device size, video layout, and CPU utilization may be considered. With **Multi-bitrate (MBR)** streaming, the end-user can be given controls to choose which resolution they would like to receive instead of letting the SFU _auto_ select it. 
+The platform's _Selective Forwarding Unit (SFU)_ is responsible for distributing the media and adjusts the bit rate so that the streaming player will select the highest quality stream it can reliably playback for each viewer. This is known as **Adaptive Bitrate (ABR) streaming**. The decision is made based on factors like available bandwidth but also other considerations such as device size, video layout, and CPU utilization may be considered. With **Multi-bitrate (MBR)** streaming, the end-user can be given controls to choose which resolution they would like to receive instead of letting the SFU _auto_ select it.
 
 This bitrate adaptation is available for [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast protocols.
 
@@ -47,10 +48,10 @@ Set the **Bandwidth** as _Custom > 6000_, which will provide sufficient _Kbps_ f
 import MediaSettings from '../assets/img/Capture_decran_2023-07-24_a_1.43.22_PM.png';
 
 <div class="center-container">
-    <img src={MediaSettings} width="500" />
+  <img src={MediaSettings} width="500" />
 </div>
 
-You are now ready to send your live stream and can select the _start_ button on the broadcaster. The browser will provide multi-bitrate contributions during broadcast when using the _Streaming Dashboard_. 
+You are now ready to send your live stream and can select the _start_ button on the broadcaster. The browser will provide multi-bitrate contributions during broadcast when using the _Streaming Dashboard_.
 
 You can use the [Hosted Player](/millicast/playback/hosted-viewer.md) to check the results.
 
@@ -86,27 +87,27 @@ The following table presents an example of using **simulcastId** and **sourceId*
 
 Some broadcast tools will use a single **URL** and others may require separate **publish path** and **stream name**.
 
-For WebRTC Simulcast  append `?simulcastId&sourceId=1` to the stream **URL**, with each quality layer having a different **sourceId**. _(note that the [publishing parameters](/millicast/broadcast/broadcast-parameters.md) are appended to the URL and not the token)._
+For WebRTC Simulcast append `?simulcastId&sourceId=1` to the stream **URL**, with each quality layer having a different **sourceId**. _(note that the [publishing parameters](/millicast/broadcast/broadcast-parameters.md) are appended to the URL and not the token)._
 
 #### RTMP Multi-Bitrate Publishing Example
 
 For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 480p, and 360p like so:
 
 - 1080p stream URL (attach audio if desired to this first one): `rtmp://rtmp-auto.millicast.com:1935/v2/pub
-  myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=0&simulcastId`
+myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=0&simulcastId`
 - 720p stream URL: `rtmp://rtmp-auto.millicast.com:1935/v2/pub
-  myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=1&simulcastId&videoOnly`
+myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=1&simulcastId&videoOnly`
 - 480p stream URL: `rtmp://rtmp-auto.millicast.com:1935/v2/pub
-  myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=2&simulcastId&videoOnly`
+myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=2&simulcastId&videoOnly`
 - 360p stream URL: `rtmp://rtmp-auto.millicast.com:1935/v2/pub
-  myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=3&simulcastId&videoOnly` 
+myStreamName?token=9797201bbb26f7f7...bae738464f36b1eb8a05473d03c04b&sourceId=3&simulcastId&videoOnly`
 
 #### WebRTC via WHIP and Multi-Bitrate Publishing Example
 
 For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 480p, and 360p:
 
 - 1080p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=0` + publishing token
-- 720p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=1` +  publishing token
+- 720p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=1` + publishing token
 - 480p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=2` + publishing token
 - 360p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=3` + publishing token
 
@@ -174,7 +175,7 @@ The desired Video Quality can also be chosen manually. This is done within the v
 import Screenshot1 from '../assets/img/Screenshot_2023-11-02_at_10.25.48.png';
 
 <div class="center-container">
-    <img src={Screenshot1} width="500" />
+  <img src={Screenshot1} width="500" />
 </div>
 
 On the viewer, you can also check the **bitrate throughput** by selecting a quality level and then selecting the [Media Stats](/millicast/analytics/media-stats.md) within the _gear_ settings icon.
@@ -184,9 +185,9 @@ import Screenshot3 from '../assets/img/Screenshot_2023-11-02_at_10.19.25.png';
 import Screenshot4 from '../assets/img/Screenshot_2023-11-02_at_10.19.42.png';
 
 <div class="center-container">
-    <img src={Screenshot2} width="500" />
-    <img src={Screenshot3} width="500" />
-    <img src={Screenshot4} width="500" />
+  <img src={Screenshot2} width="500" />
+  <img src={Screenshot3} width="500" />
+  <img src={Screenshot4} width="500" />
 </div>
 
 :::tip Building Your Own Custom Player To Support Multi-bitrate Streams
@@ -198,7 +199,15 @@ If you are using the Millicast [Web SDK](/millicast/client-sdks/web.mdx) to buil
 Here is a video showing the Simulcast playback using the [hosted player](/millicast/playback/hosted-viewer.md) built with the Javascript [Web SDK](/millicast/client-sdks/web.mdx).
 
 <div className="youtube-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/kXkwNyA6X24?si=_tnQTf2Fympb0K9O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/kXkwNyA6X24?si=_tnQTf2Fympb0K9O"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
 </div>
 
 ## Troubleshooting

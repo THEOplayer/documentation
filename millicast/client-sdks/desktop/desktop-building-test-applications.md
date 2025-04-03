@@ -1,7 +1,8 @@
 ---
-title: "Building Test Applications"
+title: 'Building Test Applications'
 slug: /desktop-building-test-applications
 ---
+
 The Native SDK offers simple test applications for checking whether the SDK installation is correct. The following instructions explain how to build the applications.
 
 ## Mac

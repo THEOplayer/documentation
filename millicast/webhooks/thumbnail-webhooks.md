@@ -1,7 +1,8 @@
 ---
-title: "Thumbnail Hooks"
+title: 'Thumbnail Hooks'
 slug: /thumbnail-webhooks
 ---
+
 The **thumbnail** _type_ of [webhook](/millicast/webhooks/index.md) allows you to receive a static image that is captured every 30 seconds during an active stream. This thumbnail would allow somebody to preview what was on a stream at various intervals.
 
 To enable thumbnail preview images you must:
@@ -11,7 +12,7 @@ To enable thumbnail preview images you must:
 3. Deploy your own service that can receive the callback and store the image in cloud storage of your choosing.
 
 > 👍 Setting up Webhooks
-> 
+>
 > Review the [Webhooks](/millicast/webhooks/index.md) guide for additional details on creating and receiving webhooks.
 
 ## Thumbnail preview
@@ -26,32 +27,29 @@ During a broadcast with **thumbnail preview** enabled, while the stream has an a
 
 The [Streaming Dashboard](/millicast/streaming-dashboard/index.md) token settings can be used to toggle the **Thumbnail previews** setting on.
 
-
 ![](../assets/img/dashboard-publish-thumbnail-setting.png)
-
-
 
 ### How-to enable thumbnail preview with the REST API
 
 > 👍 Using the REST APIs
-> 
+>
 > Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 
 The [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api.mdx) endpoint when creating or updating a token using the `enableThumbnails` boolean value. Below is an example body for a request to enable thumbnails on a publishing token and stream named _thumbnails_.
 
 ```json
 {
-     "streams": [
-          {
-               "isRegex": false,
-               "streamName": "thumbnails"
-          }
-     ],
-     "subscribeRequiresAuth": false,
-     "record": false,
-     "multisource": false,
-     "label": "thumbnails",
-     "enableThumbnails": true
+  "streams": [
+    {
+      "isRegex": false,
+      "streamName": "thumbnails"
+    }
+  ],
+  "subscribeRequiresAuth": false,
+  "record": false,
+  "multisource": false,
+  "label": "thumbnails",
+  "enableThumbnails": true
 }
 ```
 

@@ -1,13 +1,11 @@
 ---
-title: "How-to Add Picture in Picture"
+title: 'How-to Add Picture in Picture'
 slug: /ios-how-to-add-picture-in-picture
 ---
-**Picture-in-Picture (PiP) is compatible with iOS 16+. This feature allows you to support a floating video frame that persists even when the user sends the application to the background or switches to another application.
 
+\*\*Picture-in-Picture (PiP) is compatible with iOS 16+. This feature allows you to support a floating video frame that persists even when the user sends the application to the background or switches to another application.
 
 ![](../../assets/img/632bcf2c4c46320da939d2dcb89b95c15e2ba9c29826b7fb28d866c8-mobile-picture-in-picture.png)
-
-
 
 Refer to the [Interactive Player](https://github.com/dolbyio-samples/rts-app-ios-viewer/tree/main/interactive-player) sample application to learn more about implementing the code needed for PiP feature in a fully functioning iOS App.
 
@@ -21,9 +19,9 @@ Once you have subscribed to a stream and have access to the video tracks availab
 
 ### 1.1 Confirm that current OS/Device supports PiP
 
-It is common practice to make sure that PiP is available on the current device given the wide range of applications and iOS versions currently in use. The `isPictureInPictureSupported()` method allows you to check before proceeding with the necessary changes. 
+It is common practice to make sure that PiP is available on the current device given the wide range of applications and iOS versions currently in use. The `isPictureInPictureSupported()` method allows you to check before proceeding with the necessary changes.
 
-For more information on the `isPictureInPictureSupported()` method, check out Apple's [documentation](https://developer.apple.com/documentation/avkit/avpictureinpicturecontroller/ispictureinpicturesupported()).
+For more information on the `isPictureInPictureSupported()` method, check out Apple's [documentation](<https://developer.apple.com/documentation/avkit/avpictureinpicturecontroller/ispictureinpicturesupported()>).
 
 ```swift
 guard AVPictureInPictureController.isPictureInPictureSupported() else { return }
@@ -41,7 +39,7 @@ videoView.layer.bounds = sourceView.bounds
 
 _Note: Only one renderer can be attached to a video track at a given time, so reuse the renderer(MCCMSampleBufferVideoRenderer) used to receive video in the app._
 
-### 1.3  Add the video view to AVPictureInPictureVideoCallViewController
+### 1.3 Add the video view to AVPictureInPictureVideoCallViewController
 
 The **AVPictureInPictureVideoCallViewController** serves as a source for the **AVPictureInPictureController** (iOS Only). Create an instance **AVPictureInPictureVideoCallViewController** and add your video view as a subview.  
 **MCSampleBufferVideoUIView** has properties to query for video size changes and notifies frame changes via **MCVideoViewDelegate**. This can be used to set the `preferredContentSize`.
@@ -60,7 +58,7 @@ NSLayoutConstraint.activate([
 ])
 ```
 
-### 1.4  Create the PiP content source
+### 1.4 Create the PiP content source
 
 Use the `sourceView` and the `pipViewCallViewController` to create a **ContentSource** for **AVPictureInPictureController**.
 
@@ -88,7 +86,7 @@ func pictureInPictureControllerWillStartPictureInPicture(_ pictureInPictureContr
 func pictureInPictureControllerWillStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
     print("Will stop picture in picture")
     // Use the pictureInPictureControllerWillStopPictureInPicture delegate function to clean up the class instances created
-    pipController = nil 
+    pipController = nil
 }
 
 func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {

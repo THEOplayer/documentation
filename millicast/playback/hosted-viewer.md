@@ -1,20 +1,18 @@
 ---
-title: "Hosted Player"
+title: 'Hosted Player'
 slug: /hosted-viewer
 ---
+
 The **Hosted Player** refers to the streaming video player that can be used as a standalone web application or embedded into a website to meet the needs of many workflows without requiring extensive software development.
 
 The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) application in the dashboard but is for the audience to use to view the published stream.
 
-
 ![](../assets/img/dolbyio-hosted-viewer-preview.png)
 
-
-
 > 👍 Getting Started
-> 
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. 
-> 
+>
+> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+>
 > You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Player](/millicast/playback/hosted-viewer.md).
 
 ## White label playback
@@ -36,11 +34,7 @@ You can embed the player in any website or application by using the HTML `<ifram
 The code would be something similar to this with your own stream name and account identifiers:
 
 ```html
-<iframe 
-  src="https://viewer.millicast.com?streamId={Account ID}/{Stream Name}"
-  allowfullscreen
-  width="640" height="480">
-</iframe>
+<iframe src="https://viewer.millicast.com?streamId={Account ID}/{Stream Name}" allowfullscreen width="640" height="480"> </iframe>
 ```
 
 ### How-to secure the hosted player
@@ -55,16 +49,13 @@ See the [Securing Stream Playback](/millicast/playback/securing-stream-playback.
 
 ## Hosted player components
 
-There are a few controls and status indicators in the hosted player. 
+There are a few controls and status indicators in the hosted player.
 
 | Upper Left Corner | Upper Right Corner |
 | :---------------- | :----------------- |
 | Viewer count      | Stream status      |
 
-
 ![](../assets/img/dolbyio-streaming-dashboard-playback-viewer.png)
-
-
 
 | Lower Left Corner                     | Lower Right Corner                       |
 | :------------------------------------ | :--------------------------------------- |
@@ -83,7 +74,7 @@ The controls along the bottom of the stream give the viewer control over a few e
 
 #### Play / Pause
 
-There are some [browser policies](https://github.com/orgs/dolbyio-samples/discussions/3#discussioncomment-6601624) that influence whether or not the audio and video will be available upon page load. 
+There are some [browser policies](https://github.com/orgs/dolbyio-samples/discussions/3#discussioncomment-6601624) that influence whether or not the audio and video will be available upon page load.
 
 The end user is expected to click on the image or play button to begin viewing the stream and receiving audio.
 

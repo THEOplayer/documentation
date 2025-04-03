@@ -1,15 +1,16 @@
 ---
-title: "FFmpeg"
+title: 'FFmpeg'
 slug: /using-ffmpeg
 ---
+
 **FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. It is common practice to use Ffmpeg in production workflows when broadcasting from a media file on disk.
 
-Broadcasts are started using the `ffmpeg` command-line to forward a source using either [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) or [SRT](/millicast/broadcast/using-srt.mdx) broadcast contribution protocols which are then streamed as [WebRTC](/millicast/broadcast/webrtc-whip.mdx) for global real-time distribution. 
+Broadcasts are started using the `ffmpeg` command-line to forward a source using either [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) or [SRT](/millicast/broadcast/using-srt.mdx) broadcast contribution protocols which are then streamed as [WebRTC](/millicast/broadcast/webrtc-whip.mdx) for global real-time distribution.
 
 See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installation instructions and additional support.
 
 > 👍 Getting Started
-> 
+>
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
 ## General
@@ -28,11 +29,12 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-g 60            | Group of pictures (GOP) size                     |
 | \-f flv           | Package flash video                              |
 | \-preset veryfast | Video encoding speed to compression ratio preset |
+
 ## RTMP
 
-In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available. See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values. 
+In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available. See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
 
-The examples on the remainder of the page will reference these as environment variables: `$RTMP_PUBLISH_PATH` and `$RTMP_PUBLISH_STREAM_NAME`.  You can replace these or set them as appropriate for the shell environment and operating system you are using.
+The examples on the remainder of the page will reference these as environment variables: `$RTMP_PUBLISH_PATH` and `$RTMP_PUBLISH_STREAM_NAME`. You can replace these or set them as appropriate for the shell environment and operating system you are using.
 
 ### How-to Publish an H.264 RTMP Video Stream
 
@@ -74,7 +76,7 @@ ffmpeg -re -stream_loop -1 -i demo.mp4 -c:v libx265 -x265-params bframes=0 \
 
 ### How-to Publish an AV1 RTMP Video Stream
 
-The Millicast platform supports AV1 broadcast pass-through with an RTMP-enhanced stream, but playback of this codec has varying support across web browsers and devices. To view an AV1 stream [check your chosen platform/device's support](https://caniuse.com/av1). 
+The Millicast platform supports AV1 broadcast pass-through with an RTMP-enhanced stream, but playback of this codec has varying support across web browsers and devices. To view an AV1 stream [check your chosen platform/device's support](https://caniuse.com/av1).
 
 To stream AV1 via RTMP you can use `librav1e`, `SVT-av1` or `libaom-av1` and the `flv` packager:
 
@@ -91,8 +93,9 @@ AV1 encoding can be quite processor-intensive and usually requires GPU-enabled h
 ```shell bash
 -speed 10  -qp 63 -g 120 -keyint_min 120 -tile-columns 4 -tile-rows 2
 ```
+
 > 🚧 AV1 Encoder Required
-> 
+>
 > FFmpeg doesn't include an AV1 encoder with standard installs. You must install one separately by following FFmpeg's official [AV1 installation guide](https://trac.ffmpeg.org/wiki/Encode/AV1).
 
 ### How-to Publish an RTSP Video Stream
@@ -114,6 +117,7 @@ ffmpeg -re -i rtsp://98.116.xx.xx:5545/axis-media/media.amp \
   -rtmp_playpath $RTMP_PUBLISH_STREAM_NAME \
   -rtmp_live live $RTMP_PUBLISH_PATH
 ```
+
 ### How-to Simulcast a Multi-Source MBR Video Stream
 
 This example demonstrates sending the same video with multiple contribution layers. The `&sourceId` [publishing parameter](/millicast/broadcast/broadcast-parameters.md) is used to distinguish each source while using `&videoOnly` so the audio is only sent with the main feed. Also see the [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) for more about Multi-bitrate contribution.
@@ -121,14 +125,15 @@ This example demonstrates sending the same video with multiple contribution laye
 ```shell bash
 ffmpeg -re -stream_loop -1 -i demo.mp4 \
   -c:v libx264 -preset medium -b:v:0 800k -maxrate:v:0 856k -bufsize:v:0 1200k -s:v:0 640x360 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=1&simulcastId" \
-  -c:v libx264 -preset medium -b:v:0 1200k -maxrate:v:0 1280k -bufsize:v:0 1600k -s:v:0 854x480 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=2&simulcastId&videoOnly" \  
+  -c:v libx264 -preset medium -b:v:0 1200k -maxrate:v:0 1280k -bufsize:v:0 1600k -s:v:0 854x480 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=2&simulcastId&videoOnly" \
   -c:v libx264 -preset medium -b:v:0 2500k -maxrate:v:0 2600k -bufsize:v:0 3000k -s:v:0 1280x720 -profile:v:0 main -f flv "$RTMP_PUBLISH_PATH$RTMP_PUBLISH_STREAM_NAME&sourceId=3&simulcastId&videoOnly"
 ```
+
 ## SRT
 
 In order to broadcast with SRT, you will need to have your **SRT publish path** and **SRT stream ID** available. See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.mdx) for details on how to retrieve these values.
 
-The examples on the remainder of the page will reference these as environment variables: `$SRT_PUBLISH_PATH` and `$SRT_STREAM_ID`.  You can replace these or set them as appropriate for the shell environment and operating system you are using.
+The examples on the remainder of the page will reference these as environment variables: `$SRT_PUBLISH_PATH` and `$SRT_STREAM_ID`. You can replace these or set them as appropriate for the shell environment and operating system you are using.
 
 ### How-to Check if SRT is Supported in Your Installation
 
@@ -148,7 +153,7 @@ This example demonstrates [redundant ingest]/millicast/broadcast/redundant-inges
 ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
   -map 0 -vcodec libx264 -c:a copy -b:a 128k -preset veryfast -bf 0 -g 60 -vb 4500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D100" \
   -map 0 -vf scale=720:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 3000k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D100%26videoOnly%26sourceId%3D1" \
-  -map 0 -vf scale=480:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 1500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D100%26videoOnly%26sourceId%3D2"  
+  -map 0 -vf scale=480:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 1500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D100%26videoOnly%26sourceId%3D2"
 ```
 
 For the backup source, we'd use `&priority=-100` and run it from a secondary piece of hardware or secondary network in case of failures. The rest of the command is identical otherwise.
@@ -157,8 +162,9 @@ For the backup source, we'd use `&priority=-100` and run it from a secondary pie
 ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \
   -map 0 -vcodec libx264 -c:a copy -b:a 128k -preset veryfast -bf 0 -g 60 -vb 4500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-1" \
   -map 0 -vf scale=720:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 3000k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D1" \
-  -map 0 -vf scale=480:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 1500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D2"  
+  -map 0 -vf scale=480:-2,setsar=1:1 -vcodec libx264 -an -preset veryfast -bf 0 -g 60 -vb 1500k -vprofile baseline -level 3.0 -f mpegts "$SRT_URL%26priority%3D-100%26videoOnly%26sourceId%3D2"
 ```
+
 ## Troubleshooting
 
 These examples were verified with `ffmpeg` version 6.0 on MacOS.

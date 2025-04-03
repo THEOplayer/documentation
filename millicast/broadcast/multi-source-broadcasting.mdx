@@ -1,23 +1,24 @@
 ---
-title: "Multi-Source Broadcasting"
+title: 'Multi-Source Broadcasting'
 slug: /multi-source-broadcasting
 sidebar_position: 9
 ---
+
 **Multi-source Broadcasting** allows you to ingest and send additional capture sources, such as different camera angles, to the Dolby.io Real-time Streaming platform where they will be logically grouped into an optimized multi-view experience over a single WebRTC connection.
 
 There are two main use cases where broadcasting multiple video and audio feeds to a stream is useful:
 
-1. [Multi-view streams](/millicast/playback/multiview.md): Multi-view is a feature whereby viewers ingest and render multiple streams simultaneously inside a browser or mobile native applications. Once rendered these streams can be switched between, offering the viewer the ability to control how they view and listen to the content. Multi-view is supported by all of our [Client SDKs](/millicast/client-sdks/index.mdx)  for playback.
+1. [Multi-view streams](/millicast/playback/multiview.md): Multi-view is a feature whereby viewers ingest and render multiple streams simultaneously inside a browser or mobile native applications. Once rendered these streams can be switched between, offering the viewer the ability to control how they view and listen to the content. Multi-view is supported by all of our [Client SDKs](/millicast/client-sdks/index.mdx) for playback.
 2. [Audio Multiplexing](/millicast/playback/audio-multiplexing.md): Audio Multiplexing is a feature that allows viewers to receive multiple overlapping audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
 
 Multi-source can ingest contribution streams from sources such as RTMP and SRT. This guide provides the components and best practices for an optimal multi-view experience.
 
 ## Multi-source Workflow
 
-Multi-source broadcasting is accomplished by enabling a token for multi-source and then publishing multiple quality layers or contributing sources using the same **publishing token** and **stream name**, but each with a unique **source id** and **simulcast id**. If you do not provide a source id, a second feed will overwrite the previous stream, which is common when trying to setup a [Redundant Ingest ](/millicast/broadcast/redundant-ingest/index.mdx)  in case of an encoder failure.
+Multi-source broadcasting is accomplished by enabling a token for multi-source and then publishing multiple quality layers or contributing sources using the same **publishing token** and **stream name**, but each with a unique **source id** and **simulcast id**. If you do not provide a source id, a second feed will overwrite the previous stream, which is common when trying to setup a [Redundant Ingest ](/millicast/broadcast/redundant-ingest/index.mdx) in case of an encoder failure.
 
 :::tip Enable Multi-source
-To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.md#advanced-settings)  enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
+To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.md#advanced-settings) enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
 
 Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multiview.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).
 :::
@@ -25,16 +26,16 @@ Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-c
 When multi-source is enabled, you use the `sourceId` attribute when publishing a stream.
 
 - If the `sourceId` is undefined, the stream is treated as the default or _main_ stream to ensure backward compatibility.
-- When identical `sourceId` settings are given with the same id value, the broadcast will only include the most recently published stream, allowing broadcasters to swap a stream seamlessly. 
+- When identical `sourceId` settings are given with the same id value, the broadcast will only include the most recently published stream, allowing broadcasters to swap a stream seamlessly.
 - When there are multiple unique `sourceId` attributes the stream plays the **Main** source.
   - You can [enable multi-view streams](/millicast/playback/multiview.md) on playback to view the available sources.
 - This functionality is the same regardless of whether the stream is video only, audio only, or video and audio.
-- When multi-bitrate publishing is configured, the sources are logically grouped using the `simulcastId`. 
+- When multi-bitrate publishing is configured, the sources are logically grouped using the `simulcastId`.
 
 import MultiSourceOverview from '../assets/img/multi-source-overview.png';
 
 <div class="center-container">
-    <img src={MultiSourceOverview} width="600" />
+  <img src={MultiSourceOverview} width="600" />
 </div>
 
 ### Multi-Bitrate Contribution and Simulcast
@@ -47,7 +48,7 @@ See the [Simulcast](/millicast/using-webrtc-simulcast) guide for additional deta
 
 ### Publishing sources
 
-You can configure multiple publishing sources to enable simulcast or provide a multi-view experience of different content quickly using the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md). You can also use the multi-source hosted player, which is a streaming video player, as a standalone web application or embed it into your website with an `<iframe>`. 
+You can configure multiple publishing sources to enable simulcast or provide a multi-view experience of different content quickly using the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md). You can also use the multi-source hosted player, which is a streaming video player, as a standalone web application or embed it into your website with an `<iframe>`.
 
 ### Multiple Points of View
 
@@ -74,7 +75,7 @@ Learn more about how to use the [Multi-source Builder](/millicast/streaming-dash
 
 Steps to build a broadcast URL suitable for RTMP encoders:
 
-1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto". 
+1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto".
 2. Gather the **RTMP publish path** and **RTMP publish stream name**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [How to find your RTMP publish URL](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url)
 
 | RTMP publish path                           | Separator | RTMP publish stream name  |
@@ -161,12 +162,13 @@ const publisher = new Publish(streamName, () => { return publisherToken });
 
 // Start publishing
 await publisher.connect({
-	mediaStream: mediaStream,
-	sourceId: sourceId, // SourceId handles stream identification
-	disableVideo,
-	dtx: true,
+mediaStream: mediaStream,
+sourceId: sourceId, // SourceId handles stream identification
+disableVideo,
+dtx: true,
 });
-```
+
+````
 </TabItem>
 
 <TabItem value="cpp" label="C++">
@@ -183,7 +185,8 @@ options.stereo = true;
 
 // Set the selected options to the publisher
 publisher->set_options(options);
-```
+````
+
 </TabItem>
 
 <TabItem value="java" label="Android">
@@ -193,7 +196,8 @@ Publisher.Option publisherOption = new Publisher.Option();
 // To publish several sources from the same application,
 // create a publisher instance for each source
 publisherOption.dtx = true;
-```
+
+````
 </TabItem>
 
 <TabItem value="swift" label="iOS">
@@ -202,11 +206,12 @@ let publisherOptions = MCClientOptions()
 
 // To use multi-source, set a source ID of the publisher
 publisherOptions.sourceId = "MySource"
-```
+````
+
 </TabItem>
 </Tabs>
 
-For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/desktop-getting-started-with-publishing.md#4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/android-getting-started-with-publishing.md#44-configure-publishing-options), and [iOS](/millicast/client-sdks/ios/ios-getting-started-with-publishing.md#24-configure-publishing-options). 
+For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/desktop-getting-started-with-publishing.md#4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/android-getting-started-with-publishing.md#44-configure-publishing-options), and [iOS](/millicast/client-sdks/ios/ios-getting-started-with-publishing.md#24-configure-publishing-options).
 
 > Note: The `sourceId` should be a unique value and by default is undefined. Identical `sourceId` values should only be used for specifying [redundant streams](/millicast/broadcast/redundant-ingest/index.mdx).
 
@@ -214,14 +219,14 @@ In order to improve the performance of the feature and to avoid incurring higher
 
 ### Publishing with the Hosted Broadcaster in the Dashboard
 
-Publishing with the hosted player is a simple way to test the feature quickly. You can open multiple browser tabs to send multiple sources. 
+Publishing with the hosted player is a simple way to test the feature quickly. You can open multiple browser tabs to send multiple sources.
 
 In the _Live broadcast_ section and click the `BROADCAST` button.
 
 import StreamingBroadcastButton from '../assets/img/dolbyio-streaming-broadcast-button.png';
 
 <div class="center-container">
-    <img src={StreamingBroadcastButton} width="600" />
+  <img src={StreamingBroadcastButton} width="600" />
 </div>
 
 The settings menu in the hosted player lets you modify media settings, which includes enabling multi-source. With the multi-source feature, you are available to publish different independent feeds (each one identified with a different source id) under the same stream. This enables multiple audio and video tracks from different sources to be available to viewers. The **Source ID** can be specified to identify individual streams.

@@ -1,5 +1,6 @@
 ---
-title: "Client Analytics"
+title: 'Client Analytics'
 slug: /client-analytics
 ---
+
 Client Analytics

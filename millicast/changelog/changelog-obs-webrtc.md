@@ -6,7 +6,7 @@ Releases of the [open-source WebRTC fork](https://github.com/CoSMoSoftware/OBS-s
 
 The macOS x64 deployment target is now set to 10.14.
 
-***
+---
 
 # 2023-11-07 - [1.5.2](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases/tag/1.5.2-28.1.2-m112)
 
@@ -14,7 +14,7 @@ The macOS x64 deployment target is now set to 10.14.
 
 Fixed an issue where WebRTC did not reach the turn server.
 
-***
+---
 
 # 2023-09-01 - [1.5.1](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases/tag/1.5.1-28.1.2-m112)
 
@@ -30,7 +30,7 @@ Fixed an issue where WebRTC did not reach the turn server.
 - Fixed Rec. 601 color rendering issue.
 - Fixed HDR white color level issue.
 
-***
+---
 
 # 2023-04-18 - [1.5.0](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases/tag/1.5.0-28.1.2-m108)
 

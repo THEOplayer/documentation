@@ -1,14 +1,14 @@
 Updates to the [Native SDK](https://github.com/millicast/millicast-native-sdk) for Android, iOS, macOS, Linux, and Windows applications.
 
 > 📘 Release History
-> 
+>
 > You can find the full history of previous releases with downloadable assets from the [millicast/millicast-native-sdk](https://github.com/millicast/millicast-native-sdk/releases) repository.
 
 # 2024-08-21 | Native SDK [2.0.0](https://github.com/millicast/millicast-native-sdk/releases/tag/v2.0.0)
 
-We've made some major changes including updates that greatly improve the experience of using the SDK but are no longer backward compatible. 
+We've made some major changes including updates that greatly improve the experience of using the SDK but are no longer backward compatible.
 
-To help transition your applications  with these changes we've created migration guides that may be helpful: 
+To help transition your applications with these changes we've created migration guides that may be helpful:
 
 - [Migration Guide for iOS SDK](/millicast/client-sdks/ios/ios-sdk-migration-guide.mdx)
 - [Migration Guide for Android SDK](/millicast/client-sdks/android/android-sdk-migration-guide.mdx)
@@ -29,6 +29,7 @@ subscriber.onRemoteTrack.collect { track ->
     }
 }
 ```
+
 ```swift Swift/iOS
 let subscriber = MCSubscriber()
 
@@ -49,6 +50,7 @@ Task {
   }
 }
 ```
+
 ```cplusplus
 std::vector<millicast::EventConnectionPtr> handlers;
 handlers.push_back(viewer->add_event_handler(
@@ -165,6 +167,7 @@ data class StreamViewDetails(
     val streamViewId: String
 ) : StreamDetails()
 ```
+
 ```swift Swift/iOS
 MILLICAST_API @interface MCStreamPublishDetails: NSObject
 @property(nonatomic, copy) NSString * publisherId;
@@ -184,6 +187,7 @@ MILLICAST_API @interface MCStreamDetails: NSObject
 -(MCStreamViewDetails* _Nullable) asViewDetails;
 @end
 ```
+
 ```cplusplus
 struct MILLICAST_API StreamViewDetails {
   std::string stream_view_id;
@@ -236,8 +240,6 @@ using StreamDetails = std::variant<StreamViewDetails, StreamPublishDetails>;
 - MCIosVideoRenderer has been renamed to MCAcceleratedVideoRenderer and the corresponding  
   header files ios_renderer.h to accelerated_video_renderer.h
 
-
-
 # 2024-04-25 | Native SDK [1.8.4](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.4)
 
 ### Fixes
@@ -253,7 +255,7 @@ using StreamDetails = std::variant<StreamViewDetails, StreamPublishDetails>;
 
 - Added auto collection of WebRTC logs in ObjC SDK. This is inline with what was done for Android in the [1.8.2](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.2) release.
 
-***
+---
 
 # 2024-04-18 - [1.7.5](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.7.5) and [1.8.3](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.3)
 
@@ -265,7 +267,7 @@ using StreamDetails = std::variant<StreamViewDetails, StreamPublishDetails>;
 
 - Fixed an issue where VideoType incorrectly returned the **Unknown** type.
 
-***
+---
 
 # 2024-04-12 - [1.8.2](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.2)
 
@@ -300,15 +302,15 @@ MILLICAST_API static void set_logger(
 - Fixed an issue on Android where decoding H.264 Simulcast streams would result in low frame rates after layer changes.
 - Fixed an issue where applications that set logger callback would not receive logs from WebRTC. The issue was fixed by introducing a new C++ API, as described in the features section.
 
-***
+---
 
 # 2024-04-04 - [1.8.1](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.1)
 
 ### Fixes
 
-Fixed an issue on Android where calling the [connect](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/connect.html?query=suspend%20fun%20connect(connectionOptions:%20ConnectionOptions?%20=%20null):%20Boolean) method on a non-live stream led to unresolved asynchronous operations and hanging the Subscriber until the stream went live, which resulted in blocking subsequent calls to [disconnect](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/disconnect.html). The fix maintains the necessity of calling [subscribe](https://millicast.github.io/doc/latest/android/android/com.millicast/-subscriber/subscribe.html?query=suspend%20fun%20subscribe(options:%20Option%20=%20Option())) after connecting and receiving the SubscriberConnectionState.Connected event.
+Fixed an issue on Android where calling the [connect](<https://millicast.github.io/doc/latest/android/android/com.millicast/-client/connect.html?query=suspend%20fun%20connect(connectionOptions:%20ConnectionOptions?%20=%20null):%20Boolean>) method on a non-live stream led to unresolved asynchronous operations and hanging the Subscriber until the stream went live, which resulted in blocking subsequent calls to [disconnect](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/disconnect.html). The fix maintains the necessity of calling [subscribe](<https://millicast.github.io/doc/latest/android/android/com.millicast/-subscriber/subscribe.html?query=suspend%20fun%20subscribe(options:%20Option%20=%20Option())>) after connecting and receiving the SubscriberConnectionState.Connected event.
 
-***
+---
 
 # 2024-03-20 - [1.8.0](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.0)
 
@@ -340,7 +342,7 @@ Fixed an issue on Android where calling the [connect](https://millicast.github.i
 
 The new asynchronous API replaced the previous synchronous one, which impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/client-sdks/ios/index.mdx) document.
 
-***
+---
 
 # 2024-03-18 - [1.8.0-beta.1](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.0-beta.1)
 
@@ -372,7 +374,7 @@ The new asynchronous API replaced the previous synchronous one, which impacts th
 
 The new asynchronous API replaced the previous synchronous one.
 
-***
+---
 
 # 2024-03-15 - [1.8.0-alpha.2](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.0-alpha.2)
 
@@ -404,7 +406,7 @@ The new asynchronous API replaced the previous synchronous one.
 
 The new asynchronous API replaced the previous synchronous one.
 
-***
+---
 
 # 2024-03-14 - [1.8.0-alpha.1](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.8.0-alpha.1)
 
@@ -419,7 +421,7 @@ The new asynchronous API replaced the previous synchronous one.
 - Fixed the generation of audio and video source statistics.
 - Improved stability.
 
-***
+---
 
 # 2024-03-14 - [1.7.4](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.7.4)
 
@@ -427,7 +429,7 @@ The new asynchronous API replaced the previous synchronous one.
 
 Fixed a string conversion issue that affected UTF-formatted strings on Android.
 
-***
+---
 
 # 2024-02-28 - [1.7.3](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.7.3)
 
@@ -445,7 +447,7 @@ Fixed a string conversion issue that affected UTF-formatted strings on Android.
 - Fixed the missing reset for the subscriber's and publisher's state.
 - Modified the [release](https://millicast.github.io/doc/latest/android/android/com.millicast.devices.source/-source/release.html) function to prevent suspending it.
 
-***
+---
 
 # 2024-02-14 - [1.7.2](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.7.2)
 
@@ -460,7 +462,7 @@ Fixed a string conversion issue that affected UTF-formatted strings on Android.
 
 Introduced the `addRemoteTrackForResult` Android API to improve the management of the subscriber's tracks. The API is similar to [addRemoteTrack](https://millicast.github.io/doc/latest/android/android/com.millicast/-subscriber/add-remote-track.html) but it returns a `TrackHolder` directly. The subscriber's [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-subscriber/state.html) now contains a list of tracks, their activity, and the existing flow.
 
-***
+---
 
 # 2024-02-09 - [1.7.1](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.7.1)
 
@@ -468,7 +470,7 @@ Introduced the `addRemoteTrackForResult` Android API to improve the management o
 
 Fixed a race condition leading to a crash on Linux after stopping video capture.
 
-***
+---
 
 # 2024-02-08 - [1.7.0](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.7.0)
 
@@ -490,13 +492,13 @@ Fixed a race condition leading to a crash on Linux after stopping video capture.
 
 - Introduced Simulcast publishing support for macOS and iOS platforms.
 - Fixed JNI-related issues on Android.
-- Fixed an issue that prevented using the SDK on iOS or tvOS simulators. 
+- Fixed an issue that prevented using the SDK on iOS or tvOS simulators.
 - Introduced stability improvements.
 
 ### Changes
 
-- The SDK now links FFmpeg dynamically on Linux and Windows. The SDK package provides a dynamic FFmpeg library. 
-- Created macOS universal framework. 
+- The SDK now links FFmpeg dynamically on Linux and Windows. The SDK package provides a dynamic FFmpeg library.
+- Created macOS universal framework.
 
 ### Breaking Changes
 
@@ -597,7 +599,7 @@ data class LayerData(
 
 #### Modified Kotlin implementation
 
-In the Kotlin implementation, the **getStats** method is now removed in favor of [enableStats](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/enable-stats.html?query=suspend%20fun%20enableStats(enabled:%20Boolean)), which emits reports asynchronously via the corresponding SharedFlow.
+In the Kotlin implementation, the **getStats** method is now removed in favor of [enableStats](<https://millicast.github.io/doc/latest/android/android/com.millicast/-client/enable-stats.html?query=suspend%20fun%20enableStats(enabled:%20Boolean)>), which emits reports asynchronously via the corresponding SharedFlow.
 
 Using the Kotlin SDK to create a Publisher or Subscriber now requires calling the Core class implementation, as in the following example:
 
@@ -674,12 +676,14 @@ struct MILLICAST_API ClientConnectionOptions {
   bool auto_reconnect{true};
 };
 ```
+
 ```objectivec
 //file: MillicastSDK/client.h
 MILLICAST_API @interface MCConnectionOptions: NSObject
 @property(nonatomic, assign) BOOL autoReconnect;
 @end
 ```
+
 ```kotlin
 package com.millicast.clients;
 
@@ -688,7 +692,7 @@ public class ConnectionOptions {
 }
 ```
 
-***
+---
 
 # 2024-02-04 - [1.7.0-beta.1](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.7.0-beta.1)
 
@@ -710,13 +714,13 @@ public class ConnectionOptions {
 
 - Introduced Simulcast publishing support for macOS and iOS platforms.
 - Fixed JNI-related issues on Android.
-- Fixed an issue that prevented using the SDK on iOS or tvOS simulators. 
+- Fixed an issue that prevented using the SDK on iOS or tvOS simulators.
 - Introduced stability improvements.
 
 ### Changes
 
-- The SDK now links FFmpeg dynamically on Linux and Windows. The SDK package provides a dynamic FFmpeg library. 
-- Created macOS universal framework. 
+- The SDK now links FFmpeg dynamically on Linux and Windows. The SDK package provides a dynamic FFmpeg library.
+- Created macOS universal framework.
 
 ### Breaking Changes
 
@@ -831,7 +835,7 @@ Additionally, the SDK now provides an asynchronous implementation, so to consume
 
 The Listener implementation is now removed and replaced with SharedFlow, which is now provided by both main classes. For the Subscriber class, several new SharedFlow events have been introduced:
 
-- **Subscriber#state**: Provides information about the state of the subscriber. 
+- **Subscriber#state**: Provides information about the state of the subscriber.
 - **Subscriber#signalingError**: Provides all propagated errors.
 - **Subscriber#rtcStatsReport**: Provides WebRTC statistics when stats reporting is enabled. The statistics report provides the Stats object based on a Sealed class. Using a `when` statement helps find various statistics.
 - **Subscriber#track**: Provides all audio and video track events, including the track itself and its associated Media ID identifier.
@@ -893,6 +897,7 @@ struct MILLICAST_API ClientConnectionOptions {
   bool auto_reconnect{true};
 };
 ```
+
 ```objectivec
 //file: MillicastSDK/client.h
 
@@ -902,6 +907,7 @@ MILLICAST_API @interface MCConnectionOptions: NSObject
 
 @end
 ```
+
 ```kotlin
 package com.millicast.clients;
 
@@ -910,7 +916,7 @@ public class ConnectionOptions {
 }
 ```
 
-***
+---
 
 # 2023-12-15 - [1.6.0](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.6.0)
 
@@ -923,7 +929,7 @@ public class ConnectionOptions {
 - Added support for application-level screen sharing on iOS. The following code sample presents how you can use it:
   ```swift
   import MillicastSDK
-  import ReplayKit 
+  import ReplayKit
   func exampleScreenShareFunc() async {
     let publisher = MCPublisher.create()
     let screenShareSource = MCAppShareSource(name: "example-screen-share-source", recorder: RPScreenRecorder.shared())
@@ -960,7 +966,7 @@ Introduced general stability and performance improvements.
 
 - The `enableSimulcast` method is deprecated and replaced with the `simulcast` method from `ClientOptions`.
 
-***
+---
 
 # 2023-09-28 - [1.5.2](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.5.2)
 
@@ -972,7 +978,7 @@ Upgraded WebRTC version to 112.
 
 Refactored WebSocket timeout to prevent logging overload.
 
-***
+---
 
 # 2023-07-04 - [1.5.1](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.5.1)
 
@@ -994,7 +1000,7 @@ Refactored WebSocket timeout to prevent logging overload.
 
 - When publishing in 4:4:4, the client sends 4:2:0 instead of 4:4:4.
 
-***
+---
 
 # 2023-03-16 - [1.5.0](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.5.0)
 
@@ -1012,7 +1018,7 @@ Refactored WebSocket timeout to prevent logging overload.
 - Deprecated the possibility to set the maximum bitrate using the client. Instead, we introduced the ability to set the minimum and maximum bitrate using the options structure.
 - Improved the stream statistics reporting.
 
-***
+---
 
 # 2022-12-09 - [1.4.2](https://github.com/millicast/millicast-native-sdk/releases/tag/v1.4.2)
 

@@ -1,7 +1,8 @@
 ---
-title: "Getting Started with Publishing"
+title: 'Getting Started with Publishing'
 slug: /desktop-getting-started-with-publishing
 ---
+
 Follow these steps to add the publishing capability to your application.
 
 ## 1. Capture audio and video
@@ -17,7 +18,7 @@ auto src = sources[0]; // Get the first available source
 auto audioTrack = src->start_capture();
 if(audioTrack == nullptr)
 {
- 	// Error could not start capture 
+ 	// Error could not start capture
 }
 
 // Get an array of available video sources
@@ -34,7 +35,7 @@ auto src = sources[0]; // Get the first available source
 auto vidoeTrack = src->start_capture();
 if(videoTrack == nullptr)
 {
- 	// Error could not start capture 
+ 	// Error could not start capture
 }
 ```
 
@@ -72,7 +73,7 @@ class PubListener : public millicast::Publisher::Listener
 
   void on_publishing() override {}
   void on_publishing_error(const std::string& reason) override {}
-  
+
   void on_active() override {}
   void on_inactive() override {}
 
@@ -138,7 +139,7 @@ publisher->add_track(audio_track);
 
 ## 6. Authenticate using the Director API
 
-Authenticate to access Dolby.io Real-time Streaming through the Director API. 
+Authenticate to access Dolby.io Real-time Streaming through the Director API.
 
 ```cplusplus
 publisher->connect();

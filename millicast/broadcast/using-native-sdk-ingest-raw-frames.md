@@ -1,11 +1,12 @@
 ---
-title: "Ingest Raw Frames"
+title: 'Ingest Raw Frames'
 slug: /using-native-sdk-ingest-raw-frames
 sidebar_position: 11
 ---
+
 Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](./hardware-encoders.mdx) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/capture/live-streaming-from-drones-rtmp.mdx) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
 
-This guide is designed to help you leverage the Dolby.io Streaming Native SDKs to ingest raw audio and video frames, allowing the stream encoding to be handled by the SDK. There are three ways to accomplish raw frame ingestion: 
+This guide is designed to help you leverage the Dolby.io Streaming Native SDKs to ingest raw audio and video frames, allowing the stream encoding to be handled by the SDK. There are three ways to accomplish raw frame ingestion:
 
 1. [Using the Core API](#creating-custom-audio-and-video-frame-classes): For desktop applications such as Windows, Mac, or Linux
 2. [Using the iOS API](#using-the-ios-api): Including tvOS
@@ -17,13 +18,13 @@ This guide is designed to help you leverage the Dolby.io Streaming Native SDKs t
 
 To ingest raw frames, you first must download and install the appropriate [Millicast Native SDK](https://github.com/millicast/millicast-native-sdk/releases). Before you begin using the SDK, it is recommended you review the list of [supported operating systems](https://github.com/millicast/millicast-native-sdk#millicast-native-sdk), [audio encoding limitations](https://github.com/millicast/millicast-native-sdk#audio-codecs-and-quality---encoding), and [video encoding limitations](https://github.com/millicast/millicast-native-sdk#video-codecs-and-quality---encoding) as various limitations may impact your project. Additionally, if you encounter a bug, please [open an issue](https://github.com/millicast/millicast-native-sdk/issues) on the native project.
 
-To get started providing custom video and audio frames, we will first create a video frame class that represents a static RGB color and an audio frame class that generates a SINE tone. 
+To get started providing custom video and audio frames, we will first create a video frame class that represents a static RGB color and an audio frame class that generates a SINE tone.
 
 ```cpp
 #include <vector>
 #include <cmath>
 #include <millicast-sdk/frames.h>
- 
+
 /**
  We are required to implement the millicast::VideoFrame interface with our
  own logic. Realistically, this class should be more sophisticated in that
@@ -37,29 +38,29 @@ private:
     static constexpr auto HEIGHT = 480;
 public:
   CustomVideoFrame(int r, int g, int b) : _r(r), _g(g), _b(b) {}
-   
+
   int width() const override { return WIDTH; }
   int height() const override { return HEIGHT; }
- 
+
   /**
     Override this to return the corresponding frame type to the frame buffer you store
     within the frame buffer. VideoType values supported can be found here:
     https://millicast.github.io/doc/latest/cpp/namespacemillicast.html#a3e878ddbbd034e20ba1b96575ac0fd2a
   */
   millicast::VideoType frame_type() const override { return millicast::VideoType::ARGB; }
- 
+
   millicast::PrimaryID primaries() const override { return {}; }
   millicast::TransferID transfer() const override { return {}; }
   millicast::MatrixID matrix() const override { return {}; }
   millicast::RangeID range() const override { return {}; }
- 
+
   /**
     This should return the size of the frame buffer, and depends on the frame type. You only need
     to return the size for the frame type that you support in this class. For example, the formula
     for calculating the size of an I420 frame is frame_size = width * height * 3 / 2 .
   */
   uint32_t size(millicast::VideoType type) const override { return width() * height() * 4; };
- 
+
   /**
     Buffer is pre-allocated based on size. You are required to fill
     the provided buffer with the frames you have, which should also correspond
@@ -70,12 +71,12 @@ public:
   {
     // We will always request the type to be the same you declared in frame_type,
     // so no need to worry about other frame types.
- 
+
     using namespace millicast;
- 
+
     if (!buffer) return;
     std::memset(buffer, 0, size(type));
-     
+
     for (int i = 0; i < size(frame_type()); i += 4)
     {
       buffer[i] = 255; // This is the alpha channel which WebRTC does not use.
@@ -85,24 +86,24 @@ public:
     }
   }
 };
- 
- 
+
+
 class CustomSineAudioFrame {
 private:
     std::vector<float> _audio_data;
- 
+
     const int _sample_rate{};
     const size_t _num_channels{}, _chunk_time{};
-     
- 
+
+
     size_t _sini{0};
- 
+
     static constexpr auto PI = 3.14159264;
     static constexpr auto TONE_FREQUENCY = 480; // 480Hz
 public:
     /**
       chunk_time has to be in milliseconds.
-      sample_rate has to be in Hz  
+      sample_rate has to be in Hz
     */
     CustomSineAudioFrame(
         int sample_rate,
@@ -111,21 +112,21 @@ public:
     : _sample_rate(sample_rate),
       _num_channels(num_channels),
       _chunk_time(chunk_time) {
- 
+
         // Calculate buffer size, and resize accordingly.
         const auto buffer_size = num_channels * sample_rate * chunk_time / 1000;
         _audio_data.resize(buffer_size);
     }
- 
+
     millicast::AudioFrame generate_sine_audio_frame() {
       millicast::AudioFrame frame;
       frame.bits_per_sample = sizeof(float) * 8;
       frame.number_of_channels = _num_channels;
       frame.sample_rate = _sample_rate;
       frame.number_of_frames = _sample_rate * _chunk_time / 1000;
-       
 
-  
+
+
       for(int j = 0; j < _audio_data.size(); j+=_num_channels) {
         float value = sin(_sini * TONE_FREQUENCY * 2.f * PI / _sample_rate);
         for(int k = 0; k < _num_channels; k++) _audio_data[j+k] = value;
@@ -133,7 +134,7 @@ public:
         // Our cycle
         _sini = (++_sini) % (_sample_rate / TONE_FREQUENCY);
       }
- 
+
       frame.data = _audio_data.data();
       return frame;
     }
@@ -142,13 +143,13 @@ public:
 
 The video frame class is essentially generating a static RGB frame every time `CustomVideoFrame::get_buffer` gets called. For your scenario, you should create your video frame class so that it takes your raw frame data as input, as well as any other important information, like the size and pixel format. `VideoFrame::get_buffer` should fill the provided buffer, which is pre-allocated before calling the function, with data that is of the same frame type as what is returned by `VideoFrame::get_type`.
 
-For audio, you need to instantiate a `millicast::AudioFrame` object, and fill that object with the following information: 
+For audio, you need to instantiate a `millicast::AudioFrame` object, and fill that object with the following information:
 
 - A pointer to the audio data (for which the SDK holds no ownership and needs to be managed)
 - The bit depth (or bits per sample)
 - The number of channels
 - The sample rate, **which must be 48 kHz**.
-- The number of frames. This is dependent on the length of each frame. For example, if each frame equates to 10 milliseconds, then the number of frames should be `10 ms * 48 kHz = 480 frames`. 
+- The number of frames. This is dependent on the length of each frame. For example, if each frame equates to 10 milliseconds, then the number of frames should be `10 ms * 48 kHz = 480 frames`.
 
 With the information above, make sure your audio data buffer's size is equal to the following:
 
@@ -158,7 +159,7 @@ NUMBER_OF_FRAMES = CHUNK_SIZE * SAMPLE_RATE
 BUFFER_SIZE = NUMBER_OF_FRAMES * (BIT_DEPTH / 8) * NUMBER_OF_CHANNELS // in bytes.
 ```
 
-In this specific example, we have created a `CustomSineAudioFrame` class that generates Sine audio at a specific frequency. 
+In this specific example, we have created a `CustomSineAudioFrame` class that generates Sine audio at a specific frequency.
 
 ### Creating and publishing a custom source
 
@@ -250,36 +251,36 @@ class CustomVideoFrame: NSObject, MCVideoFrame {
   func frameType() -> MCVideoType {
     return ARGB;
   }
-  
+
   static let WIDTH: Int32 = 640;
   static let HEIGHT: Int32 = 480;
-  
+
   var _r, _g, _b: UInt8;
-  
+
   init(_r: UInt8, _g: UInt8, _b: UInt8) {
     self._r = _r
     self._g = _g
     self._b = _b
   }
-  
+
   func width() -> Int32 {
     return CustomVideoFrame.WIDTH;
   }
-  
+
   func height() -> Int32 {
     return CustomVideoFrame.HEIGHT;
   }
-  
+
   /**
-  	This should return the size of the frame buffer if your frame is an RGB frame. 
-  */ 
+  	This should return the size of the frame buffer if your frame is an RGB frame.
+  */
   func sizeRgb() -> UInt32 {
     return UInt32(width() * height() * 4);
   }
 
   /**
     This should return the size of the frame buffer if your frame is an I420 frame. For example, the formula
-    for calculating the size of an I420 frame is frame_size = width * height * 3 / 2 . 
+    for calculating the size of an I420 frame is frame_size = width * height * 3 / 2 .
 		Ignore this if your frame is not I420.
   */
   func sizeI420() -> UInt32 {
@@ -299,7 +300,7 @@ class CustomVideoFrame: NSObject, MCVideoFrame {
   func getI444Buffer(_ buffer: UnsafeMutablePointer<UInt8>!) {
     return;
   }
-  
+
   /**
     If your frame buffer is I420, you should implement this instead.
 		You need to fill the provided buffer with your frame buffer.
@@ -321,40 +322,40 @@ class CustomVideoFrame: NSObject, MCVideoFrame {
 
   func getI420Buffer(_ buffer: UnsafeMutablePointer<UInt8>!) {
 	// If your frame type is I420, you need to fill the buffer
-	// here instead. 
-  } 
+	// here instead.
+  }
 }
 
 class CustomSineAudioFrame {
-  
+
   var _audioData: UnsafeMutablePointer<Float32>;
   var _bufferSize: Int;
-  
+
   var _sampleRate: Int;
   var _numChannels, _chunkTime: Int;
-  
+
   var _sini: Int;
-  
+
   static let PI: Float = 3.14159264;
   static let TONE_FREQUENCY: Int = 480 // 480 Hz
-  
+
   init(_sampleRate: Int, _numChannels: Int, _chunkTime: Int) {
     self._sini = 0;
     self._sampleRate = _sampleRate;
     self._numChannels = _numChannels;
     self._chunkTime = _chunkTime;
-    
+
     self._bufferSize = _numChannels * _sampleRate * _chunkTime / 1000;
     self._audioData = UnsafeMutablePointer<Float32>.allocate(capacity: self._bufferSize);
   }
-  
+
   func generate_sine_audio_frame() -> MCAudioFrame {
     var frame: MCAudioFrame = MCAudioFrame();
     frame.bitsPerSample = 32; // We are using Float32
     frame.channelNumber = self._numChannels;
     frame.sampleRate = Int32(self._sampleRate);
     frame.frameNumber = Int(self._sampleRate * self._chunkTime / 1000);
-    
+
     for j in stride(from:0, to: self._bufferSize, by: self._numChannels) {
       let constant = 2.0 * Float(CustomSineAudioFrame.TONE_FREQUENCY) * CustomSineAudioFrame.PI;
       let x: Float = Float(_sini) *  constant / Float(_sampleRate);
@@ -367,35 +368,35 @@ class CustomSineAudioFrame {
       self._sini += 1 ;
       self._sini %= (self._sampleRate / CustomSineAudioFrame.TONE_FREQUENCY);
     }
-    
+
     frame.data = UnsafeRawPointer(self._audioData);
-    
+
     return frame;
   }
-  
+
   deinit {
     self._audioData.deallocate();
   }
-  
+
 }
 ```
 
-We also will create threads in Swift to handle feeding the source with raw audio and video frames: 
+We also will create threads in Swift to handle feeding the source with raw audio and video frames:
 
 ```swift
 class VideoThread: Thread {
-  
+
   var _source: MCCoreVideoSource;
   let waiter = DispatchGroup()
 
   static let FPS: Int = 60; // Running at 60 frames per second
   static let DURATION: Int = 25 // 25 seconds of playtime per thread
-  
+
   init(_source: MCCoreVideoSource) {
     self._source = _source;
     super.init();
   }
-  
+
   override func start() {
       waiter.enter()
       super.start()
@@ -421,7 +422,7 @@ class VideoThread: Thread {
 }
 
 class AudioThread: Thread {
-  
+
   var _source: MCCustomAudioSource;
   let waiter = DispatchGroup()
 
@@ -434,7 +435,7 @@ class AudioThread: Thread {
     self._source = _source;
     super.init();
   }
-  
+
   override func start() {
       waiter.enter()
       super.start()
@@ -450,7 +451,7 @@ class AudioThread: Thread {
       _sampleRate: AudioThread.SAMPLE_RATE,
       _numChannels: AudioThread.NUM_CHANNELS,
       _chunkTime: AudioThread.CHUNK_TIME);
-    
+
     let duration: Int = Int(AudioThread.TOTAL_TRACK_LENGTH / AudioThread.CHUNK_TIME);
     for _ in 0...duration {
       _source.onAudioFrame(frame_generator.generate_sine_audio_frame());
@@ -487,7 +488,7 @@ func createCustomSourceAndPublish() {
   audioThread.start();
 
   // Connect and publish here ...
-  
+
 
   // Once done, stop the capture
   asource.stopCapture();
@@ -524,13 +525,13 @@ class CustomVideoFrame implements VideoFrame {
 	private static final int HEIGHT = 480;
 
     private byte _r, _g, _b;
-    
+
     public CustomVideoFrame(byte r, byte g, byte b) {
         this._r = r;
         this._g = g;
         this._b = b;
     }
-    
+
     @Override
     public int width() {
         return WIDTH;
@@ -539,7 +540,7 @@ class CustomVideoFrame implements VideoFrame {
     @Override
     public int height() {
         return HEIGHT;
-    }    
+    }
 
 	/**
 		Override this to return the corresponding frame type to the frame buffer you store
@@ -549,18 +550,18 @@ class CustomVideoFrame implements VideoFrame {
     @Override
     public VideoType getType() {
         return VideoType.ARGB;
-    }  	
+    }
 
 	/**
 		Override this to return the size corresponding to the frame type you
     store within the frame buffer. For example, for I420 frames, the formula for calculating
 		the size is width * height * 3/2
-  	*/       
+  	*/
 	@Override
     public int size(VideoType videoType) {
         return width() * height() * 4;
-    } 
-   
+    }
+
 	/**
     Buffer is pre-allocated based on size. You are required to fill
 		the provided buffer with the frames you have, which should also correspond
@@ -640,22 +641,22 @@ import com.millicast.CustomSource;
 */
 private final Timer videoTimer = new Timer();
 private final Timer audioTimer = new Timer();
- 
+
 private final TimerTask videoTask = new TimerTask() {
     // Red frame
     CustomVideoFrame frame = new CustomVideoFrame((byte) 255, (byte) 0, (byte) 0);
- 
+
     @Override
     public void run() {
         customSource.onVideoFrame(frame);
     }
 };
- 
+
 private final TimerTask audioTask = new TimerTask() {
     final int SAMPLE_RATE = 48000; // 48kHz
     final int NUM_CHANNELS = 2; // Stereo
     final int CHUNK_TIME = 10; // Each sample equates to 10ms of playtime.
- 
+
     CustomSineAudioFrame frame_generator = new CustomSineAudioFrame(
             SAMPLE_RATE, NUM_CHANNELS, CHUNK_TIME);
     @Override
@@ -664,19 +665,19 @@ private final TimerTask audioTask = new TimerTask() {
         customSource.onAudioFrame(audio_frame);
     }
 };
- 
+
 /**
   Some method in your class
 */
 void create_custom_source_and_publish() {
   CustomSource source = CustomSource.create();
- 
+
   // Those tracks can now be added just as any other track to our publisher.
   // (Refer to the other documentation to learn how to perform a simple publishing scenario)
   VideoTrack videoTrack = (VideoTrack) source.startCaptureVideo();
   AudioTrack audioTrack = (AudioTrack) source.startCaptureAudio();
-     
- 
+
+
   // Start our timers
   final int CHUNK_TIME = 10; // Each audio chunk is 10ms
   final int FPS = 60; // We will be inputting frames at 60 frames per second.
@@ -690,7 +691,7 @@ void create_custom_source_and_publish() {
 
   // Make sure to join the threads here
   videoThread.join();
-  audioThread.join(); 
+  audioThread.join();
 }
 ```
 

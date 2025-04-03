@@ -1,14 +1,15 @@
 ---
-title: "Cloud Transcoder"
+title: 'Cloud Transcoder'
 slug: /cloud-transcoder
 sidebar_position: 2
 ---
+
 The **Cloud Transcoders** offered by the Dolby Millicast are responsible for ingesting (SRT or RTMP) and encoding contribution feeds into **adaptive-bitrate (ABR)** streaming renditions for WebRTC delivery. By adjusting the compression level, resolution, and quality of a video stream to match bandwidth availability it is possible to create an improved viewing experience. The adaptability ensures smoother playback but also conserves bandwidth, making the cloud transcoder an efficient and cost-effective solution optimized for ultra-low latency during the encoding process.
 
 import FeatureCloudTranscoder from '../assets/img/6bcaeddadb12b382aeab0b113abd8c690633543a04a9d68c2ff7d80a-feature-cloud-transcoder.png';
 
 <div class="center-container">
-    <img src={FeatureCloudTranscoder} width="500" />
+  <img src={FeatureCloudTranscoder} width="500" />
 </div>
 
 The transcoder allows ingesting B-frames and reducing the amount of data required for transmission. We support H.264 and H.265 codecs with seamless conversion to H.264.
@@ -85,14 +86,14 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
    ```json
    {
-       "startNow": true,
-       "passThrough": false,
-       "name": "my example cloud transcoder",
-       "dnsPrefix": "example",
-       "cluster": "iad-1",
-       "height": 1080,
-       "frameRate": 60,
-       "profile": null
+     "startNow": true,
+     "passThrough": false,
+     "name": "my example cloud transcoder",
+     "dnsPrefix": "example",
+     "cluster": "iad-1",
+     "height": 1080,
+     "frameRate": 60,
+     "profile": null
    }
    ```
 
@@ -100,56 +101,57 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
    ```json Provisioning
    {
-       "status": "success",
-       "data": {
-           "transcoderId": "1c649c88-d1cb-4891-bca7-8e07d2604a39",
-           "accountId": 105881,
-           "name": "my example cloud transcoder",
-           "cluster": "iad-1",
-           "dnsName": "example-accountId.transcoder.millicast.com",
-           "profile": "1080p 60fps h264 no passthrough",
-           "passThrough": false,
-           "createdOn": "2024-02-19T12:31:35Z",
-           "instance": {
-               "instanceId": "08d4a61b-3ad5-475f-ace1-dc16bc848dd9",
-               "dnsName": "example-accountId.transcoder.millicast.com",
-               "createdOn": "2024-02-19T12:31:50Z",
-               "status": "Provisioning"
-           },
-           "status": "Provisioning",
-           "publishUrls": {
-               "rtmp": "rtmp://example-accountId.transcoder.millicast.com:1935/v2/pub",
-               "rtmps": "rtmps://example-accountId.transcoder.millicast.com:443/v2/pub",
-               "srt": "srt://example-accountId.transcoder.millicast.com:10000"
-           }
+     "status": "success",
+     "data": {
+       "transcoderId": "1c649c88-d1cb-4891-bca7-8e07d2604a39",
+       "accountId": 105881,
+       "name": "my example cloud transcoder",
+       "cluster": "iad-1",
+       "dnsName": "example-accountId.transcoder.millicast.com",
+       "profile": "1080p 60fps h264 no passthrough",
+       "passThrough": false,
+       "createdOn": "2024-02-19T12:31:35Z",
+       "instance": {
+         "instanceId": "08d4a61b-3ad5-475f-ace1-dc16bc848dd9",
+         "dnsName": "example-accountId.transcoder.millicast.com",
+         "createdOn": "2024-02-19T12:31:50Z",
+         "status": "Provisioning"
+       },
+       "status": "Provisioning",
+       "publishUrls": {
+         "rtmp": "rtmp://example-accountId.transcoder.millicast.com:1935/v2/pub",
+         "rtmps": "rtmps://example-accountId.transcoder.millicast.com:443/v2/pub",
+         "srt": "srt://example-accountId.transcoder.millicast.com:10000"
        }
+     }
    }
    ```
+
    ```json Active
    {
-       "status": "success",
-       "data": {
-           "transcoderId": "1c649c88-d1cb-4891-bca7-8e07d2604a39",
-           "accountId": 105881,
-           "name": "my example cloud transcoder",
-           "cluster": "iad-1",
-           "dnsName": "example-accountId.transcoder.millicast.com",
-           "profile": "1080p 60fps h264 no passthrough",
-           "passThrough": false,
-           "createdOn": "2024-02-19T12:31:35Z",
-           "instance": {
-               "instanceId": "08d4a61b-3ad5-475f-ace1-dc16bc848dd9",
-               "dnsName": "example-accountId.transcoder.millicast.com",
-               "createdOn": "2024-02-19T12:31:50Z",
-               "status": "Provisioning"
-           },
-           "status": "Active",
-           "publishUrls": {
-               "rtmp": "rtmp://example-accountId.transcoder.millicast.com:1935/v2/pub",
-               "rtmps": "rtmps://example-accountId.transcoder.millicast.com:443/v2/pub",
-               "srt": "srt://example-accountId.transcoder.millicast.com:10000"
-           }
+     "status": "success",
+     "data": {
+       "transcoderId": "1c649c88-d1cb-4891-bca7-8e07d2604a39",
+       "accountId": 105881,
+       "name": "my example cloud transcoder",
+       "cluster": "iad-1",
+       "dnsName": "example-accountId.transcoder.millicast.com",
+       "profile": "1080p 60fps h264 no passthrough",
+       "passThrough": false,
+       "createdOn": "2024-02-19T12:31:35Z",
+       "instance": {
+         "instanceId": "08d4a61b-3ad5-475f-ace1-dc16bc848dd9",
+         "dnsName": "example-accountId.transcoder.millicast.com",
+         "createdOn": "2024-02-19T12:31:50Z",
+         "status": "Provisioning"
+       },
+       "status": "Active",
+       "publishUrls": {
+         "rtmp": "rtmp://example-accountId.transcoder.millicast.com:1935/v2/pub",
+         "rtmps": "rtmps://example-accountId.transcoder.millicast.com:443/v2/pub",
+         "srt": "srt://example-accountId.transcoder.millicast.com:10000"
        }
+     }
    }
    ```
 
@@ -165,10 +167,7 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 
 4. Once the stream begins publishing to the cloud transcoder the full ladder will be available for playback. To quickly verify the transcoder is working we recommend trying out [the hosted web player](/millicast/playback/hosted-viewer.md).
 
-
 ![](../assets/img/Screenshot_2024-06-05_at_4.01.58_PM.png)
-
-
 
 The platform also offers the [Configure Transcoder](/millicast/api/transcoder-update-transcoder) API for updating transcoder settings and the [Stop Transcoder](/millicast/api/transcoder-stop-transcoder) and [Delete Transcoder](/millicast/api/transcoder-delete-transcoder) API for stopping and deleting a specific transcoder. A list of all available Transcoder APIs is available in the [REST API](/millicast/api/transcoder-list-transcoders) documentation.
 

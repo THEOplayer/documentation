@@ -1,8 +1,9 @@
 ---
-title: "Multi-source Playback"
+title: 'Multi-source Playback'
 slug: /source-and-layer-selection
 ---
-Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](/millicast/playback/multiview.md) and [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) experiences. 
+
+Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](/millicast/playback/multiview.md) and [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) experiences.
 
 To get started building multi-stream experiences it's important to understand how Dolby.io handles multi-source playback. This guide outlines:
 
@@ -14,7 +15,7 @@ To get started building multi-stream experiences it's important to understand ho
 ## Managing source selection
 
 > 📘 Multi-source broadcasting
-> 
+>
 > To manage multiple sources, you first must have a [Multi-source Stream](/millicast/broadcast/multi-source-broadcasting.mdx) broadcasting.
 
 Dolby.io streaming supports scalable WebRTC streaming thanks to a "smart" cascading node system that manages the peer-to-peer connections. These nodes are key to understanding how to manage multiple sources for playback and can be divided into two types:
@@ -67,23 +68,23 @@ An active [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.h
 Once a feed has been published to the stream, you can project it using the viewer. The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to map a feed onto the track, signalling to the CDN you are ready to receive data via a peer connection. Once a feed is mapped to a track, it can be rendered natively or in a browser.
 
 ```javascript Projecting a source
-viewer.project("uniqueSourceID",[
+viewer.project('uniqueSourceID', [
   {
-    trackId: "audio0",
+    trackId: 'audio0',
     mediaId: audioTransceiver.mid,
-    media: "audio"
+    media: 'audio',
   },
   {
-    trackId: "video0",
+    trackId: 'video0',
     mediaId: videoTransceiver.mid,
-    media: "video"
-  }
+    media: 'video',
+  },
 ]);
 ```
 
 The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to project only audio, only video, or both, each for multiple published sources. These sources can be projected as they are published by triggering [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) or all at once when they all arrive.
 
-The viewer\` also supports an [unproject](https://millicast.github.io/millicast-sdk/View.html#unproject) function that lets you signal to the CDN that you want to stop receiving media from that source. 
+The viewer\` also supports an [unproject](https://millicast.github.io/millicast-sdk/View.html#unproject) function that lets you signal to the CDN that you want to stop receiving media from that source.
 
 ```javascript Removing projection
 viewer.unproject([videoTransceiver.mid]);
@@ -92,44 +93,44 @@ viewer.unproject([videoTransceiver.mid]);
 ## Media layer forwarding
 
 > 👍 Simulcast or SVC layer forwarding
-> 
+>
 > By default, the Dolby.io Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
 
-In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer`  attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
+In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
 
-~~~javascript Projecting with layer selection using \`project\`
-viewer.project("mysource",[
+```javascript Projecting with layer selection using `project`
+viewer.project('mysource', [
   {
-    trackId: "video0",
+    trackId: 'video0',
     mediaId: videoTransceiver.mid,
     layer: {
-      encodingId : "l",
-      temporalLayerId : 1
-    }
-  }
+      encodingId: 'l',
+      temporalLayerId: 1,
+    },
+  },
 ]);
-~~~
+```
 
-~~~javascript Projecting with layer selection using \`select\`
+```javascript Projecting with layer selection using `select`
 async select (layer = {}) {
     logger.debug('Viewer select layer values: ', layer);
     await this.signaling.cmd('select', "layer");
     logger.info('Connected to streamName: ', this.streamName);
 }
-~~~
+```
 
 The layer information available for each video source is provided periodically by the `layers` event as shown above. If you want to switch back to the automatic layer selection, you just need to send a [project](https://millicast.github.io/millicast-sdk/View.html#project) or [select](https://millicast.github.io/millicast-sdk/View.html#select) command without layer details.
 
 To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/client-sdks/web.mdx#broadcast-events) and then select the active layer using the following command:
 
 ```javascript
-millicastView.select({'encodingId': '1'});
+millicastView.select({ encodingId: '1' });
 ```
 
 Where `millicastView` is the instance of the [View](https://millicast.github.io/millicast-sdk/View.html) class and `encodingId` is the field of the layer that you wan to force.
 
 > 📘 Track limits for viewer
-> 
+>
 > Dolby.io Real-time Streaming does not limit the number of tracks that a viewer can receive; it limits the maximum bitrate per viewer to a maximum of 12 Mbps across all media tracks. You should configure the Simulcast or SVC bitrate of all the sources carefully within your applications so they can receive the desired amount of video tracks in the viewer session.
 
 ### Managing layers
@@ -137,11 +138,19 @@ Where `millicastView` is the instance of the [View](https://millicast.github.io/
 To avoid problems with the maximum bitrate per viewer when using multi-view with Simulcast, you can limit the quality of sources by selecting the lowest quality layers. To do it, analyze the received [broadcastEvents](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) to select a layer with the lowest bitrate and project it, as in the following example:
 
 ```javascript Layer selection
-let lowestLayer = event.data.medias[videoTransceiver.mid].layers.reduce((min, el) => { return min.bitrate > el.bitrate ? el : min}) 
+let lowestLayer = event.data.medias[videoTransceiver.mid].layers.reduce((min, el) => {
+  return min.bitrate > el.bitrate ? el : min;
+});
 
 //Specify the source you want to modify and select the lowest layer
-viewer.project('sourceId2', [{media: 'video', layer: {encodingId:lowestLayer.encodingId,spatialLayerId:lowestLayer.spatialLayerId,temporalLayerId:lowestLayer.temporalLayerId} }])
+viewer.project('sourceId2', [
+  {
+    media: 'video',
+    layer: { encodingId: lowestLayer.encodingId, spatialLayerId: lowestLayer.spatialLayerId, temporalLayerId: lowestLayer.temporalLayerId },
+  },
+]);
 ```
+
 ```json Example of the received event
 {
   "type": "event",
@@ -206,27 +215,27 @@ viewer.project('sourceId2', [{media: 'video', layer: {encodingId:lowestLayer.enc
 
 ### Promoting feeds
 
-If you want to remove all existing limitations from the promoted feed, such as restricted bitrate or resolution, set the `promote` attribute to true,  as in the following example:
+If you want to remove all existing limitations from the promoted feed, such as restricted bitrate or resolution, set the `promote` attribute to true, as in the following example:
 
 ```javascript
 // promoting a source
-viewer.project("uniqueSourceID",[
-    {
-        trackId: "video0",
-        mediaId: videoTransceiver.mid,
-        media: "video",
-        promote: true
-    }
-]); 
+viewer.project('uniqueSourceID', [
+  {
+    trackId: 'video0',
+    mediaId: videoTransceiver.mid,
+    media: 'video',
+    promote: true,
+  },
+]);
 ```
 
 ## Dynamic viewer track
 
-The [addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) event with the added track and transceiver. 
+The [addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) event with the added track and transceiver.
 
 ```javascript Dynamically adding a remote track on the viewer
 // Add remote track and wait until the SDP O/A is performed and mid is assigned to the transceiver
-const transceiver = await viewer.addRemoteTrack("video",[new MediaStream()]);
+const transceiver = await viewer.addRemoteTrack('video', [new MediaStream()]);
 // Get mid for new created remote track
 const mediaId = transceiver.mid;
 ```

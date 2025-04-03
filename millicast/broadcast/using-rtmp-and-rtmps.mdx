@@ -1,8 +1,9 @@
 ---
-title: "RTMP | RTMPS"
+title: 'RTMP | RTMPS'
 slug: /using-rtmp-and-rtmps
 sidebar_position: 2
 ---
+
 **Real-Time Messaging Protocol (RTMP)** has been well supported by popular hardware and software applications for many years. In addition to WebRTC, Dolby.io Real-time Streaming allows you to broadcast and distribute content from an RTMP or secure RTMPS source.
 
 Dolby.io Real-time streaming also supports the ability to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information, see [Simulcast](/millicast/using-webrtc-simulcast#how-to-enable-simulcast-from-an-encoder).
@@ -20,7 +21,7 @@ Select the publish token that you want to use for your RTMP streaming applicatio
 import RtmpPublishToken from '../assets/img/rtmp_publish_token.png';
 
 <div class="center-container">
-    <img src={RtmpPublishToken} width="600" />
+  <img src={RtmpPublishToken} width="600" />
 </div>
 
 ### How to find your RTMP publish URL
@@ -30,7 +31,7 @@ Click on the _Publishing_ tab of the token screen where you will find details fo
 import RtmpPublishUrl from '../assets/img/rtmp_publish_url.png';
 
 <div class="center-container">
-    <img src={RtmpPublishUrl} width="600" />
+  <img src={RtmpPublishUrl} width="600" />
 </div>
 
 In order for you to publish with RTMP, you will need two items from this interface, the **RTMP publish path** and **RTMP publish stream name**. Note that the _RTMP publish stream name_ value from the dashboard is a concatenation of the _stream name_ and the _publishing token_ as a query string parameter.
@@ -39,7 +40,7 @@ Depending on the particular RTMP integration you may need to specify these detai
 
 > **RTMP Publish URL** = **RTMP publish path** + `/` + **RTMP publish stream name**
 
-This information will authenticate you as a publisher on Dolby.io Real-time Streaming and allow you to successfully broadcast a live feed using your account.  Typically the URL will look something similar to:
+This information will authenticate you as a publisher on Dolby.io Real-time Streaming and allow you to successfully broadcast a live feed using your account. Typically the URL will look something similar to:
 
 ```
 rtmp://rtmp-auto.millicast.com:1935/v2/pub/myStreamName?token=5c7a1529...bdc8&priority=1&sourceId=YourId
@@ -61,12 +62,12 @@ See the [OBS Integration Guide](/millicast/software-encoders/using-obs.md) for m
 | :---------------- | :-------------- |
 | Encoder           | **nvenc**       |
 | Rate Control      | **CBR**         |
-| Keyframe Interval | **2 (seconds) |
+| Keyframe Interval | \*\*2 (seconds) |
 | Preset            | **Max Quality** |
 | Profile           | **high**        |
 | x264 options      | **bframes=0**   |
 
-**Note:** These are the recommended settings for the NVIDIA NVENC H.264 encoder. If you do not have the NVIDIA NVENC H.264 encoder available, we recommend setting the Rate Control to `CBR` and the profile to `baseline`. 
+**Note:** These are the recommended settings for the NVIDIA NVENC H.264 encoder. If you do not have the NVIDIA NVENC H.264 encoder available, we recommend setting the Rate Control to `CBR` and the profile to `baseline`.
 
 Setting **x264 options** to _bframes=0_ or **profile** to _baseline_ is required to avoid video artifacts on the viewer and recording side.
 
@@ -82,7 +83,7 @@ See the [vMix Integration Guide](/millicast/software-encoders/broadcasting-with-
 | Preset            | **ultrafast**   |
 | Keyframe Interval | **2 seconds**   |
 | Threads           | **4**           |
-| Net Buffer        | **5 (seconds) |
+| Net Buffer        | \*\*5 (seconds) |
 
 #### Basic RTMP Settings
 
@@ -102,6 +103,3 @@ If you have any questions or suggestions, feel free to [contact us](https://supp
 ## Learn more
 
 Find additional integration guides such as [Haivision](/millicast/hardware-encoders/using-haivision-kb-encoder.md), [Zoom](/millicast/software-encoders/broadcasting-jitsi-or-zoom-meetings.md), [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md), [Videon](/millicast/hardware-encoders/videon.md), and more. To find examples for how to use this explore RTMP related articles from the [developer blog](https://dolby.io/blog/tag/rtmp/).
-
-
-

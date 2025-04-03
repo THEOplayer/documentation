@@ -1,7 +1,8 @@
 ---
-title: "Zoom"
+title: 'Zoom'
 slug: /broadcasting-jitsi-or-zoom-meetings
 ---
+
 [Zoom](https://zoom.us/) is a video collaboration tool for hosting conferences and meetings. Zoom supports streaming to consumer platforms or any [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) source such as distributing Real-time Streaming content with Dolby.io.
 
 See the official [zoom](https://zoom.us/) site for documentation, installation instructions, and additional support.
@@ -11,7 +12,7 @@ See the official [zoom](https://zoom.us/) site for documentation, installation i
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available.
 
 > 👍 Getting Started
-> 
+>
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
 See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
@@ -20,9 +21,9 @@ See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how
 
 First, you must need a Zoom paid account in order to ingest your Zoom meetings into Dolby.io Real-time Streaming via RTMP so you can broadcast it massively in almost real-time.
 
-- Note: The account needs to be either a Pro, Business, Education, or Enterprise plan.  
+- Note: The account needs to be either a Pro, Business, Education, or Enterprise plan.
 
-To enable all members of your organization to have access to live-streaming meetings 
+To enable all members of your organization to have access to live-streaming meetings
 
 ### 1. Start a webinar
 
@@ -35,10 +36,7 @@ Start the webinar as usual by doing one of the following:
 
 Click the ** More** button on your control panel to view available options.
 
-
 ![](../assets/img/zoom1.png)
-
-
 
 ### 3. Choose custom live stream service
 
@@ -46,10 +44,7 @@ Choose Live on Custom Live Stream Service. A browser window will open to show th
 
 ### 4. Enter your Dolby.io RTMP publish details
 
-
 ![](../assets/img/zoom2.png)
-
-
 
 Enter your Dolby.io Real-time Streaming RTMP publish token details.
 

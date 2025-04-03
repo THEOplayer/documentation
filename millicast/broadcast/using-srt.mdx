@@ -1,11 +1,12 @@
 ---
-title: "SRT"
+title: 'SRT'
 slug: /using-srt
 sidebar_position: 4
 ---
+
 **Secure Reliable Transport (SRT)** is an open-source protocol that uses an intelligent packet retransmit mechanism on top of a UDP data flow, along with AES-128 and 256-bit encryption. [Dolby.io Real-time Streaming](https://dolby.io/products/real-time-streaming/) natively supports publishing from an SRT source.
 
-This document will guide you on how to [broadcast](/millicast/broadcast/index.mdx) an SRT Stream to Dolby.io Real-time Streaming with SRT-capable software or hardware. 
+This document will guide you on how to [broadcast](/millicast/broadcast/index.mdx) an SRT Stream to Dolby.io Real-time Streaming with SRT-capable software or hardware.
 
 :::tip Getting Started
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
@@ -13,18 +14,18 @@ If you haven't already, begin by following the [Getting Started](/millicast/intr
 
 ## How-to find the SRT publish settings with the dashboard
 
-The Dolby.io [Streaming Dashboard](/millicast/streaming-dashboard/index.md) helps generate the parameters you can use for configuring your encoders. 
+The Dolby.io [Streaming Dashboard](/millicast/streaming-dashboard/index.md) helps generate the parameters you can use for configuring your encoders.
 
 Some examples of encoders supporting SRT include the [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md) Talon, [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.md) Wave, [Videon](/millicast/hardware-encoders/videon.md) EdgeCaster, [Haivision](/millicast/hardware-encoders/using-haivision-kb-encoder.md) KB Encoder, [Flowcaster](/millicast/software-encoders/using-whip-with-flowcaster.md), Adobe Premiere Pro, Avid Media Composer, and [vMix](/millicast/software-encoders/broadcasting-with-vmix.md).
 
 ### 1. Select a token from _Live broadcast_
 
-Select a publish token that you will use for your SRT broadcast. 
+Select a publish token that you will use for your SRT broadcast.
 
 import SrtToken from '../assets/img/srt-token.png';
 
 <div class="center-container">
-    <img src={SrtToken} width="600" />
+  <img src={SrtToken} width="600" />
 </div>
 
 ### 2. Select the _Publishing_ tab
@@ -34,12 +35,12 @@ Click on the _Publishing_ tab for information on how to connect as a publisher t
 import SrtSettings from '../assets/img/dolbyio-streaming-srt-settings.png';
 
 <div class="center-container">
-    <img src={SrtSettings} width="600" />
+  <img src={SrtSettings} width="600" />
 </div>
 
 ### 3. Configure your encoder with the SRT settings
 
-The settings you use will be dependent on the specific encoder being configured. Typically though, the source of the broadcast may be referred to as the caller of the Dolby.io service which will listen for the incoming stream. 
+The settings you use will be dependent on the specific encoder being configured. Typically though, the source of the broadcast may be referred to as the caller of the Dolby.io service which will listen for the incoming stream.
 
 - For some encoders, a _single_ target URL parameter is all that is required. For this you use the combined **SRT publish URL** as the configured endpoint.
 - For other encoders, it is a _multi part_ setting comprised of a Hostname (or URL) and a separate Stream ID entry. For this you use the **SRT publish path** and **SRT stream ID** separately. Some encoders will also distinguish the **port** separately from the publish path as a third configurable setting.
@@ -65,7 +66,7 @@ The following are basic recommended settings for any encoder:
 
 These instructions should help with generating the SRT settings similar to what you would find in the dashboard when using the REST API endpoints to programmatically generate publishing tokens.
 
-You will need to know the **Stream name** as well as the **Publishing token**. You can retrieve these values by making a `GET` request to the [/api/publish_token/\{tokenId\}](/millicast/api/publish-token-v-1-read-token.api.mdx) endpoint. The SRT Encryption setting (**displaySrtPassphrase**) and **srtPassphrase** can also be retrieved from the API as seen is this example response: 
+You will need to know the **Stream name** as well as the **Publishing token**. You can retrieve these values by making a `GET` request to the [/api/publish_token/\{tokenId\}](/millicast/api/publish-token-v-1-read-token.api.mdx) endpoint. The SRT Encryption setting (**displaySrtPassphrase**) and **srtPassphrase** can also be retrieved from the API as seen is this example response:
 
 ```json
 {
@@ -93,7 +94,7 @@ You will need to know the **Stream name** as well as the **Publishing token**. Y
 
 ### 1. Generate the SRT publish path
 
-If you've used the **Auto** [region](/millicast/distribution/multi-region-support/index.mdx)  as your default then the **SRT publish path** will be `srt://srt-auto.millicast.com:10000`.  
+If you've used the **Auto** [region](/millicast/distribution/multi-region-support/index.mdx) as your default then the **SRT publish path** will be `srt://srt-auto.millicast.com:10000`.
 
 For publish tokens configured for specific regions, the **srt://** endpoint will be unique for that region. These URLs can be fetched with a `GET` request to the [/api/cluster](/millicast/api/cluster-get-clusters-info.api.mdx) endpoint. The response will be similar to this:
 
@@ -117,7 +118,7 @@ Generate the compressed SRT token from your publishing token.
 ```javascript
 // Base64 encoding and replace '/' with '_', replace '+' with '-', and remove extra '=' padding if necessary.
 function encode_token(token) {
-    return Buffer.from(token, 'hex').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')
+  return Buffer.from(token, 'hex').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 }
 
 const srtToken = encode_token(`${publishToken}`);
@@ -130,13 +131,13 @@ let streamId = `${streamName}?t=${srtToken}`;
 
 // Append the encryption and any other parameters
 if (isEncrypted) {
-    streamId += '&e';
+  streamId += '&e';
 }
 if (priority) {
-    streamId += `&priority=${priority}`;
+  streamId += `&priority=${priority}`;
 }
 if (sourceId) {
-    streamId += `&sourceId=${sourceId}`;
+  streamId += `&sourceId=${sourceId}`;
 }
 ```
 
@@ -144,7 +145,7 @@ If you only have the SRT token and it becomes necessary to retrieve the original
 
 ```javascript
 function decode_token(srtToken) {
-    return Buffer.from(srtToken.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('hex')
+  return Buffer.from(srtToken.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('hex');
 }
 ```
 
@@ -164,7 +165,7 @@ With passphrase encryption you can further protect your stream from unauthorized
 import PassphraseEnc from '../assets/img/Screenshot_2023-10-03_at_09.17.23.png';
 
 <div class="center-container">
-    <img src={PassphraseEnc} width="600" />
+  <img src={PassphraseEnc} width="600" />
 </div>
 
 When enabled, a `&e` parameter is appended to the **SRT stream ID**.
@@ -175,12 +176,12 @@ There are some limitations when using SRT with Real-time Streaming:
 
 - The SDK supports the H.264 and H.265 video codecs and the AAC audio codec.
 - Multiple programs or sub-streams are not supported.
-- The H.265 video codec is supported on Safari, but will only function if the developer feature is enabled under "Develop > Feature Flags". 
+- The H.265 video codec is supported on Safari, but will only function if the developer feature is enabled under "Develop > Feature Flags".
 
 import SrtH265 from '../assets/img/srt-h265-enable-feature-flag.png';
 
 <div class="center-container">
-    <img src={SrtH265} width="600" />
+  <img src={SrtH265} width="600" />
 </div>
 
 If you have needs like these, please [contact us](https://dolby.io/contact).

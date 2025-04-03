@@ -1,7 +1,8 @@
 ---
-title: "Getting Started with Subscribing"
+title: 'Getting Started with Subscribing'
 slug: /android-getting-started-with-subscribing
 ---
+
 Follow these steps to add the subscribing capability to your application.
 
 ## 1. Add SDK to Gradle

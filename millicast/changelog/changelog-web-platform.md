@@ -1,7 +1,7 @@
 Updates to the [JavaScript Web SDK](https://github.com/millicast/millicast-sdk) for custom web applications, React Native applications, and the [VueJS Web Viewer Plugin](https://github.com/millicast/vue-viewer-plugin).
 
 > 📘 Release History
-> 
+>
 > You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
 
 # 2024-08-14 | Web SDK [0.2.1](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.1)
@@ -12,7 +12,7 @@ This release includes some minor updates:
   See [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) for additional details on how to retrieve and use these values.
 - When working with [Frame Metadata](/millicast/playback/frame-metadata.md), the **uuid** parameter is now optional and allows for improved support from encoders that send **PIC_TIMING** metadata sources.
 
-View the [0.2.1 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.1)  tag for some additional details on these updates.
+View the [0.2.1 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.1) tag for some additional details on these updates.
 
 # 2024-07-17 | Web SDK [0.2.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.0)
 
@@ -28,17 +28,17 @@ This release introduces some major improvements:
 A `metadata` event will be received with every frame as it is decoded for H.264 codecs that support **Supplemental Enhancement Information (SEI)**. This allows for the exchange of arbitrary data between broadcast and playback clients or the extraction of **Action Message Format (AMF)** metadata from many common broadcast encoders.
 
 ```javascript
-await millicastView.connect({codec: 'h264', metadata: true});
+await millicastView.connect({ codec: 'h264', metadata: true });
 
 millicastView.on('metadata', (metadata) => {
-    if (metadata.timecode) {
-      console.log('received timecode messsage', metadata.timecode)
-    }
+  if (metadata.timecode) {
+    console.log('received timecode messsage', metadata.timecode);
+  }
 });
 ```
 
 > 📘 Frame Metadata
-> 
+>
 > Review the [Frame Metadata](/millicast/playback/frame-metadata.md) guide for additional details and instructions.
 
 ## 🆕 Client-side Diagnostics
@@ -47,55 +47,51 @@ To diagnose networking issues in your web applications it may be helpful to view
 
 ```javascript
 const options = {
-    peerConfig : {
-        autoInitStats: true,
-        statsIntervalMs : 5000
-    }
-}  
- 
+  peerConfig: {
+    autoInitStats: true,
+    statsIntervalMs: 5000,
+  },
+};
+
 await millicastView.connect(options);
 
 // This event will be fired every 5s instead of every 1s by default
-millicastView.webRTCPeer.on('stats', (stats) => { console.log(stats) });
+millicastView.webRTCPeer.on('stats', (stats) => {
+  console.log(stats);
+});
 ```
 
 With the `autoInitStats` setting it is no longer necessary to explicitly call `PeerConnection.initStats()`.
 
-Introduced in 0.1.44, the`Logger.diagnose()` function has been extended and can be used to capture a historical snapshot of buffered stats events and application log history. Whenever seeking help to diagnose playback problems, the output of this function can be a valuable snapshot of an end-user problem report. 
+Introduced in 0.1.44, the`Logger.diagnose()` function has been extended and can be used to capture a historical snapshot of buffered stats events and application log history. Whenever seeking help to diagnose playback problems, the output of this function can be a valuable snapshot of an end-user problem report.
 
 > 📘 Diagnostics
-> 
+>
 > Review the [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) guide for more details and instructions.
-
-
 
 ## 🆒 Playback Buffer
 
-Use the `forcePlayoutDelay` parameter as a connection option. This configures the buffer time the server will utilize which can correct for lost frames that may occur under poor network conditions. The values for **min**  and **max** values (in milliseconds) allow for configuring a trade-off between latency and quality.
+Use the `forcePlayoutDelay` parameter as a connection option. This configures the buffer time the server will utilize which can correct for lost frames that may occur under poor network conditions. The values for **min** and **max** values (in milliseconds) allow for configuring a trade-off between latency and quality.
 
 ```javascript
 const options = {
-    forcePlayoutDelay: {
-      min: 200,
-      max: 250
-    }
-}  
- 
+  forcePlayoutDelay: {
+    min: 200,
+    max: 250,
+  },
+};
+
 await millicastView.connect(options);
 ```
 
-
-
 ## Other Updates
 
-View the [0.2.0 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.0)  tag for specific details on these updates.
+View the [0.2.0 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.0) tag for specific details on these updates.
 
 - The `updated` [broadcast event](/millicast/playback/viewer-events.md) will now be available as a default event when connecting as an indication of cases where an audio track is added later and independent of the video feed.
 - The 0.1.46 release included an `onMetadata` event that has been deprecated and replaced with `metadata` as the event type. Both events will continue to be emitted until version 0.3.0 and later.
 - It is no longer necessary to specify a `streamName` to the constructor for **View** and **Publish** when provided to`Director.getSubscriber(streamName)`. It will continue to be accepted but will soon emit a deprecation warning and be removed entirely in the 1.0.0 release.
 - The `updateBitrate()` function has been removed.
-
-
 
 # 2024-03-11 | Web SDK [0.1.44](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.44)
 
@@ -142,12 +138,11 @@ View the [0.1.43 release](https://github.com/millicast/millicast-sdk/releases/ta
 
 ### SDK Version
 
-To improve traceability and reporting of issues, you can introspect the version of the SDK being used from `millicast.Logger.VERSION`. 
+To improve traceability and reporting of issues, you can introspect the version of the SDK being used from `millicast.Logger.VERSION`.
 
 ```javascript
-
-millicast.Logger.VERSION
-'0.1.43'
+millicast.Logger.VERSION;
+('0.1.43');
 ```
 
 ### Broadcast Priority
@@ -168,12 +163,11 @@ Fix to better support Safari browser under slow network conditions and managing 
 
 ### Documentation
 
-The SDK documentation has been simplified so that **Modules** and **Classes** are more clearly identified. 
+The SDK documentation has been simplified so that **Modules** and **Classes** are more clearly identified.
 
 You can find a [class diagram](https://github.com/millicast/millicast-sdk/blob/main/developer-info.md#sdk-components) in the repository that can be helpful to understand the relationships between classes and their properties.
 
 ![](../assets/img/5d94a5d-web-sdk-class-diagram.png)
-
 
 There have also been improvements to descriptions: https://millicast.github.io/millicast-sdk
 
@@ -188,7 +182,7 @@ Added documentation for demo packages.
 - Now when connection is starting with `autoReconnect` set to false, reconnection is canceled properly in case of any connection error.
 - Fixed documentation typos.
 
-***
+---
 
 # 2023-10-17 - Web SDK [0.1.41](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.41)
 
@@ -197,7 +191,7 @@ Added documentation for demo packages.
 - Fixed an issue where enabling iCloud Private Relay impacted audio and video delivery.
 - Security dependency updates.
 
-***
+---
 
 # 2023-10-17 - Vue.js Web Viewer Plugin [1.1.3](https://github.com/millicast/vue-viewer-plugin/releases/tag/v1.1.3)
 
@@ -205,7 +199,7 @@ Added documentation for demo packages.
 
 The plugin now uses the Web SDK [0.1.41](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.41).
 
-***
+---
 
 # 2023-10-12 - Vue.js Web Viewer Plugin [1.1.2](https://github.com/millicast/vue-viewer-plugin/releases/tag/v1.1.2)
 
@@ -217,7 +211,7 @@ The plugin now uses the Web SDK [0.1.40](https://github.com/millicast/millicast-
 
 Improved resolution settings. Now, when multiple quality options have the same resolution, only the highest bitrate is selected.
 
-***
+---
 
 # 2023-10-11 - Web SDK [0.1.40](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.40)
 
@@ -234,7 +228,7 @@ Improved resolution settings. Now, when multiple quality options have the same r
 
 Security dependency updates.
 
-***
+---
 
 # 2023-09-08 - Vue.js Web Viewer Plugin [1.1.1](https://github.com/millicast/vue-viewer-plugin/releases/tag/v1.1.1)
 
@@ -242,7 +236,7 @@ Security dependency updates.
 
 Fixed an issue where the main source label had a wrong value when the source did not arrive at first.
 
-***
+---
 
 # 2023-09-06 - Vue.js Web Viewer Plugin [1.1.0](https://github.com/millicast/vue-viewer-plugin/releases/tag/v1.1.0)
 
@@ -267,7 +261,7 @@ Fixed an issue where the main source label had a wrong value when the source did
 - Fixed an issue where the viewer did not recover correctly from reconnections after stopping all publisher streams.
 - The media stats table now reports the correct video bitrate for each source.
 
-***
+---
 
 # 2023-03-20 - Web SDK [0.1.39](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.39)
 
@@ -280,7 +274,7 @@ Fixed an issue where the main source label had a wrong value when the source did
 
 The [reconnect](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:reconnect) event is now triggered with every reconnection attempt.
 
-***
+---
 
 # 2023-03-06 - Web SDK [0.1.38](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.38)
 
@@ -293,7 +287,7 @@ The [reconnect](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:
 
 Fixed the Viewer and Publisher example codes in the readme file.
 
-***
+---
 
 # 2023-01-13 - Vue.js Web Viewer Plugin [1.0.0](https://github.com/millicast/vue-viewer-plugin/releases/tag/v1.0.0)
 
@@ -301,7 +295,7 @@ Fixed the Viewer and Publisher example codes in the readme file.
 
 Introduced the Vue.js viewer plugin that allows developers to simplify Millicast services integration into their own Vue.js applications. For more information, see the [npmjs](https://www.npmjs.com/package/@millicast/vue-viewer-plugin) repository.
 
-***
+---
 
 # 2023-01-12 - Web SDK [0.1.37](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.37)
 
@@ -311,20 +305,20 @@ Introduced the Vue.js viewer plugin that allows developers to simplify Millicast
 - Changed the name of the declaration types file.
 - Updated documentation describing the `stopped` function in `Signaling.js`.
 
-***
+---
 
 # 2022-12-27 - Web SDK [0.1.36](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.36)
 
 ## Features
 
-Added a typescript declaration file and its configuration. The type definition file is located in `millicast-sdk/packages/millicast-sdk/src/types/`. 
+Added a typescript declaration file and its configuration. The type definition file is located in `millicast-sdk/packages/millicast-sdk/src/types/`.
 
 ## Fixes
 
 - Disabled H.264 hardware accelerated codecs in Opera.
 - Fixed an issue related to the `millicast.esm.js` file located in the `millicast-multiview-demo` folder. We also changed the import to use the CDN version instead of the file.
 
-***
+---
 
 # 2022-10-28 - Web SDK [0.1.35](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.35)
 

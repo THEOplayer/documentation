@@ -1,8 +1,9 @@
 ---
-title: "Professional Cameras"
+title: 'Professional Cameras'
 slug: /production-cameras
 sidebar_position: 2
 ---
+
 Dolby.io Real-time Streaming supports broadcast-grade workflows that use professional cameras and encoders to deliver high-quality, real-time video and audio streams globally to massive audiences. Broadcast-grade cameras are typically recommended for sports streaming, live events, and experiences where quality and low latency are prioritized. This guide will outline how to prepare professional cameras for capture so you can broadcast with Dolby.io Real-time Streaming.
 
 When capturing video and audio for broadcast, there are a number of decisions that need to be made, such as:
@@ -13,7 +14,7 @@ When capturing video and audio for broadcast, there are a number of decisions th
 - Does my camera have a built-in encoder, or will I need to connect to one?
 - Am I planning to broadcast with [RTMP, RTMPs](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), or [WebRTC](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.md)?
 
-These decisions may be impacted by the camera you are capturing with, the encoder you are planning to use to broadcast, and the Dolby.io CDN itself. 
+These decisions may be impacted by the camera you are capturing with, the encoder you are planning to use to broadcast, and the Dolby.io CDN itself.
 
 The Dolby.io CDN for WebRTC Real-time Streaming supports streaming up to 4k 60fps video with 4:4:4 color encoded into H.264, H.265, VP8, VP9, and AV1. Additionally, Dolby.io also fully supports transporting audio via the [Opus codec](https://opus-codec.org/), allowing for bitrates from 6 kb/s to 510 kb/s and sampling rates from 8 kHz (narrowband) to 48 kHz (full-band). RTMP, RTMPs, and SRT streams can also be ingested and will be transmuxed into a WebRTC stream via the Dolby.io CDN, though their codec support may vary.
 
@@ -38,7 +39,7 @@ With our capture profile defined, we can look at our physical setup:
 import SalrayworksSetup from '../assets/img/Salrayworks-setup.jpg';
 
 <div class="center-container">
-    <img src={SalrayworksSetup} width="500" />
+  <img src={SalrayworksSetup} width="500" />
 </div>
 
 We have the camera, the encoder, and a serial digital interface (SDI) cable to connect the camera to the encoder. We can now power the camera and the encoder, connect the encoder to the internet via an ethernet cable, and connect the camera to the encoder with the SDI cable.
@@ -46,7 +47,7 @@ We have the camera, the encoder, and a serial digital interface (SDI) cable to c
 import SalrayworksReadyToStream from '../assets/img/Salrayworks-ready-to-stream.jpg';
 
 <div class="center-container">
-    <img src={SalrayworksReadyToStream} width="500" />
+  <img src={SalrayworksReadyToStream} width="500" />
 </div>
 
 With everything connected, the SalrayWorks camera is now ready to capture broadcast-ready video and transport it to the encoder. At this stage, everything is set up and ready for capture. To learn about the next steps required for broadcasting, check out the [Videon guide](/millicast/hardware-encoders/videon.md) in the broadcasting section of the documentation.

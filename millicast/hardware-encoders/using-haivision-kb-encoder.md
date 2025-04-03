@@ -1,11 +1,12 @@
 ---
-title: "Haivision"
+title: 'Haivision'
 slug: /using-haivision-kb-encoder
 ---
+
 **Haivision** provides professional broadcasting equipment to the streaming industry. The KB series of H.264 & HEVC Internet Media Encoders and Transcoders deliver high-quality video streaming for resolutions up to 4K, available as small form factor portable appliances as well as rack-mountable enterprise-grade servers. The KB Series provides you with multiple options for live event streaming, helping you deliver the highest quality live video to your global internet audience.
 
-- [Haivision Makito X4 Encoder with SRT](#how-to-use-haivision-makito-x4-encoder-with-srt) 
-- [Haivision KB Encoder with RTMP](#how-to-use-haivision-kb-encoder-with-rtmp) 
+- [Haivision Makito X4 Encoder with SRT](#how-to-use-haivision-makito-x4-encoder-with-srt)
+- [Haivision KB Encoder with RTMP](#how-to-use-haivision-kb-encoder-with-rtmp)
 
 See the official [Haivision](https://www.haivision.com/) site for documentation, installation instructions, and additional support.
 
@@ -13,7 +14,7 @@ See the official [Haivision](https://www.haivision.com/) site for documentation,
 
 ### How to use Haivision Makito X4 encoder with SRT
 
-To get started, log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin). 
+To get started, log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin).
 
 1. Select **Live Broadcast** from the left menu.
 
@@ -21,9 +22,9 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
 
 3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/broadcast/using-srt.mdx).
 
-4. Open your Haivision Encoder. 
+4. Open your Haivision Encoder.
 
-5. Specify the following Destination settings: 
+5. Specify the following Destination settings:
 
    |                  |                        |
    | :--------------- | :--------------------- |
@@ -37,10 +38,11 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
    | :------------------- | :------------------------------------- |
    | Format               | Custom                                 |
    | Stream Publishing ID | Makito?t=Your_Token_From_SRT_Stream_ID |
+
 ### How to use Haivision KB encoder with RTMP
 
 > 👍 Getting Started with RTMP
-> 
+>
 > If you haven't already, begin by following the [RTMP Getting Started](/millicast/broadcast/using-rtmp-and-rtmps.mdx) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
 
 To get started, log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin). Enter your KB web interface, switch views to the Channel Control Center, and create a new channel.
@@ -74,7 +76,3 @@ Here are some adjustments recommended by the [Haivision support](https://www.hai
 ## Learn more
 
 Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
-
-
-
-

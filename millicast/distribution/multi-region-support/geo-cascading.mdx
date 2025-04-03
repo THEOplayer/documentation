@@ -1,13 +1,14 @@
 ---
-title: "Geo-cascading"
+title: 'Geo-cascading'
 slug: /geo-cascading
 ---
+
 **Geo-cascading** is a key component of content delivery networks (CDNs) and streaming platforms that aim to provide a high-quality streaming experience for users around the world. To reduce latency and improve reliability, geo-cascading uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can receive streams from regions that are the closest to their location.
 
 import FeatureGeoCascading from '../../assets/img/feature-geo-cascading.png';
 
 <div class="center-container">
-    <img src={FeatureGeoCascading} width="500" />
+  <img src={FeatureGeoCascading} width="500" />
 </div>
 
 :::tip Available Regions
@@ -46,14 +47,14 @@ Log into the dashboard and select a publish token to modify.
 import Screenshot from '../../assets/img/Screenshot_2023-12-21_at_07.19.10.png';
 
 <div class="center-container">
-    <img src={Screenshot} width="500" />
+  <img src={Screenshot} width="500" />
 </div>
 
 Any broadcast that uses the publish token configured in this way will take advantage of this content delivery.
 
 ### Using the REST API
 
-To set geo-cascading for a specific token, set its preferences in either the **geoCascade** object of [Create Token](/millicast/api/publish-token-v-1-create-token.api.mdx) or the **updateGeoCascade** object of the [Update Token](/millicast/api/publish-token-v-1-update-token.api.mdx) REST API. 
+To set geo-cascading for a specific token, set its preferences in either the **geoCascade** object of [Create Token](/millicast/api/publish-token-v-1-create-token.api.mdx) or the **updateGeoCascade** object of the [Update Token](/millicast/api/publish-token-v-1-update-token.api.mdx) REST API.
 
 Both objects contain two parameters: **isEnabled** and **clusters**. To enable geo-cascading, set **isEnabled** to true and provide in the **clusters** parameter the IDs of preferred regions. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **all** regions.
 
@@ -78,7 +79,7 @@ To define token defaults that are applied account-wide as a global configuration
 import Screenshot2 from '../../assets/img/Screenshot_2023-12-21_at_07.18.28.png';
 
 <div class="center-container">
-    <img src={Screenshot2} width="500" />
+  <img src={Screenshot2} width="500" />
 </div>
 
 ### Using the REST API

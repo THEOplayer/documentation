@@ -4,11 +4,11 @@ Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/
 
 ## Features
 
-- Introducing SRT output with the re-stream feature.  Now you will have the ability to have Millicast be the SRT Caller (push) and send SRT out just like you can already with RTMP.
+- Introducing SRT output with the re-stream feature. Now you will have the ability to have Millicast be the SRT Caller (push) and send SRT out just like you can already with RTMP.
 
 ## Fixes
 
-- Fixed an issue where `lowLatencyRtmp` was defaulting to `false` instead of `true` on [Create Publish Token](/millicast/api/publish-token-v-1-create-token) . This API now matches the previously documented behaviour. This will take effect for new tokens created with the API.  There are no changes to the tokens created in the dashboard.
+- Fixed an issue where `lowLatencyRtmp` was defaulting to `false` instead of `true` on [Create Publish Token](/millicast/api/publish-token-v-1-create-token) . This API now matches the previously documented behaviour. This will take effect for new tokens created with the API. There are no changes to the tokens created in the dashboard.
 
 # 2024-10-15 | REST APIs & Webhooks
 
@@ -56,9 +56,10 @@ View the [Webhooks](/millicast/webhooks/index.md) guide to learn more about sett
   - List Available Clip Sources
 
   For more information, see the [Live Clipping](/millicast/distribution/stream-recordings/live-clipping.mdx) document. During the LA phase, this feature is behind a feature flag. Please contact your Dolby account executive or the support team if you would like to try the feature.
+
 - Introduced a new Cloud Transcoder feature in Limited Availability (LA). One of the benefits of Millicast is that the platform can ingest multi-bitrate contribution feeds and deliver them as adaptive bitrate playback. When encoding at the studio or broadcast center, this eliminates channel fees and has the fastest glass-to-glass latency. Sometimes multi-bitrate ingest is not possible and a single, high-quality ingest is sent instead. Cloud Transcoder provides the ability to ingest SRT or RTMP and generate a latency-optimized adaptive bitrate ladder generation. The Cloud Transcoder can accept H.264 or H.265 ingest (including B-frames) and creates WebRTC-optimized adaptive bitrate delivery with only a couple of frames of latency. A new [Create Transcoder](/millicast/api/transcoder-create-transcoder) REST API is introduced for transcoder management. During the LA phase, this feature is behind a feature flag. Please contact your Dolby account executive or the support team if you would like to try the feature. For more information, see the [Cloud Transcoder](/millicast/distribution/cloud-transcoder.mdx) guide.
 
-***
+---
 
 # 2023-03-29 | REST APIs
 
@@ -73,7 +74,6 @@ Introduced the following [Analytics REST APIs](/millicast/analytics/index.md) to
 - [Total bandwidth for streams specified by TrackingID](/millicast/api/analytics-get-total-bandwidth-for-tracking-id)
 
 - [Series bandwidth for streams specified by TrackingID](/millicast/api/analytics-get-series-bandwidth-for-tracking-id)
-
 
 ## REST APIs
 

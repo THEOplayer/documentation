@@ -1,11 +1,12 @@
 ---
-title: "Media Hooks"
+title: 'Media Hooks'
 slug: /media-hooks
 ---
+
 The **media** _type_ of [webhook](/millicast/webhooks/index.md) allows you to receive a series of notifications for when a recording or live clip changes status. This can be helpful for when you want to automate the download or notifications for when media becomes available.
 
 > 👍 Setting up Webhooks
-> 
+>
 > Review the [Webhooks](/millicast/webhooks/index.md) guide for additional details on creating and receiving webhooks.
 
 ## Event
@@ -36,19 +37,19 @@ The `data` payload will contain the following details:
 
 ```json
 {
-    "type": "media",
-    "event": "processing",
-    "timestamp": 1725259930753,
-    "data": {
-        "mediaAssetId": "c6631104197a4091943775697948adbe",
-        "tokenId": 1187282,
-        "streamName": "test-record-clip",
-        "streamId": "dkxfvY/test-record-clip",
-        "startTime": 1725259930643,
-        "type": "clip",
-        "metadata": { },
-        "expiration": 1733900336143
-    }
+  "type": "media",
+  "event": "processing",
+  "timestamp": 1725259930753,
+  "data": {
+    "mediaAssetId": "c6631104197a4091943775697948adbe",
+    "tokenId": 1187282,
+    "streamName": "test-record-clip",
+    "streamId": "dkxfvY/test-record-clip",
+    "startTime": 1725259930643,
+    "type": "clip",
+    "metadata": {},
+    "expiration": 1733900336143
+  }
 }
 ```
 
@@ -56,19 +57,19 @@ The `data` payload will contain the following details:
 
 ```json
 {
-    "type": "media",
-    "event": "completed",
-    "timestamp": 1725260343575,
-    "data": {
-        "mediaAssetId": "e0ca421e3ee748629d073b6991d4d93d",
-        "tokenId": 1187282,
-        "streamName": "test-record-clip",
-        "streamId": "dkxfvY/test-record-clip",
-        "startTime": 1725259874671,
-        "metadata": { },
-        "type": "clip",
-        "expiration": 1733900336143
-    }
+  "type": "media",
+  "event": "completed",
+  "timestamp": 1725260343575,
+  "data": {
+    "mediaAssetId": "e0ca421e3ee748629d073b6991d4d93d",
+    "tokenId": 1187282,
+    "streamName": "test-record-clip",
+    "streamId": "dkxfvY/test-record-clip",
+    "startTime": 1725259874671,
+    "metadata": {},
+    "type": "clip",
+    "expiration": 1733900336143
+  }
 }
 ```
 
@@ -76,17 +77,17 @@ The `data` payload will contain the following details:
 
 ```json
 {
-    "type": "media",
-    "event": "errored",
-    "timestamp": 1725261092922,
-    "data": {
-        "mediaAssetId": "f26120d4443b474b8b1d6e1ecfcbd369",
-        "tokenId": 1090418,
-        "streamName": "qa_test_stream_for_live_clipping",
-        "streamId": "dkxfvY/qa_test_stream_for_live_clipping",
-        "startTime": 1725245888000,
-        "type": "recording",
-        "expiration": 1733896321029
-    }
+  "type": "media",
+  "event": "errored",
+  "timestamp": 1725261092922,
+  "data": {
+    "mediaAssetId": "f26120d4443b474b8b1d6e1ecfcbd369",
+    "tokenId": 1090418,
+    "streamName": "qa_test_stream_for_live_clipping",
+    "streamId": "dkxfvY/qa_test_stream_for_live_clipping",
+    "startTime": 1725245888000,
+    "type": "recording",
+    "expiration": 1733896321029
+  }
 }
 ```

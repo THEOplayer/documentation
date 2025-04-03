@@ -1,7 +1,8 @@
 ---
-title: "Getting Started with Publishing"
+title: 'Getting Started with Publishing'
 slug: /android-getting-started-with-publishing
 ---
+
 Follow these steps to add the publishing capability to your application.
 
 ## 1. Add SDK as Gradle Dependency
@@ -195,7 +196,7 @@ Connect to the Millicast service and publish your streams.
 
 Use the [connect](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/connect.html) method to authenticate and access Dolby.io Real-time Streaming through the Director API. Successful authentication results in opening a WebSocket connection that allows using the Dolby.io Real-time Streaming server and receiving a StateFlow update to [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) as PublisherConnectionState.Connected.
 
-Only after a successful connection, use the [publish](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/publish.html?query=suspend%20fun%20publish():%20Boolean) method to start publishing the stream. Once the publisher starts sending media, the SDK will update [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) to PublisherConnectionState.Started.
+Only after a successful connection, use the [publish](<https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/publish.html?query=suspend%20fun%20publish():%20Boolean>) method to start publishing the stream. Once the publisher starts sending media, the SDK will update [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) to PublisherConnectionState.Started.
 
 ```kotlin
 // Call publish after reaching the PublisherConnectionState.Connected state
@@ -263,7 +264,7 @@ launch {
 ## 6. Collect WebRTC statistics
 
 Set the [enableStats](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/enable-stats.html) method to true to collect statistics.
-You can periodically collect the WebRTC peer connection statistics if you enable them through the enableStats method of the publisher. After enabling the statistics, you will get a report every second through the [onStatsReport](https://millicast.github.io/doc/latest/android/android/com.millicast.clients/-listener/on-stats-report.html?query=abstract%20fun%20onStatsReport(report:%20RtsReport)) callback in the listener object. The identifiers and way to browse the stats are following the RTC specification. The report contains the RTSReport object, which is a collection of several Stats objects. They all have a specific type, whether it is inbound, outbound, codec, or media. Inbound is the statistics of incoming transport for the viewer and outbound is a type of outgoing statistics for the publisher.
+You can periodically collect the WebRTC peer connection statistics if you enable them through the enableStats method of the publisher. After enabling the statistics, you will get a report every second through the [onStatsReport](<https://millicast.github.io/doc/latest/android/android/com.millicast.clients/-listener/on-stats-report.html?query=abstract%20fun%20onStatsReport(report:%20RtsReport)>) callback in the listener object. The identifiers and way to browse the stats are following the RTC specification. The report contains the RTSReport object, which is a collection of several Stats objects. They all have a specific type, whether it is inbound, outbound, codec, or media. Inbound is the statistics of incoming transport for the viewer and outbound is a type of outgoing statistics for the publisher.
 
 ```kotlin
 publisher.rtcStatsReport.collect { report ->

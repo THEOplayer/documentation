@@ -1,8 +1,9 @@
 ---
-title: "Syndication"
+title: 'Syndication'
 slug: /syndication
 sidebar_position: 8
 ---
+
 With Dolby.io Real-time Streaming you can syndicate content through multiple distribution partners or channels. This can be helpful to maximize the number of viewers or monetizing content through other platforms. In order to accomplish this, it is important to be able to track syndicated streams for analytics and billing.
 
 ## Syndication
@@ -14,7 +15,7 @@ Broadcast syndication defines a process for leasing the rights to distribute con
 The following is an **example workflow** for setting up syndicated substreams:
 
 1. [Create a Publish token](/millicast/streaming-dashboard/managing-your-tokens.md) for your broadcast. Make sure this token has the **secured** setting enabled.
-2. Before the broadcast begins, create a [Subscribe token with tracking](/millicast/syndication#creating-a-subscribe-token-with-tracking-id) for each 3rd party you are syndicating a stream. These Subscribe tokens function as "master" tokens for each platform you are syndicating content. The master Subscribe token can be used by the 3rd party to [self-sign other Subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens) for their users if they need to secure their streams. 
+2. Before the broadcast begins, create a [Subscribe token with tracking](/millicast/syndication#creating-a-subscribe-token-with-tracking-id) for each 3rd party you are syndicating a stream. These Subscribe tokens function as "master" tokens for each platform you are syndicating content. The master Subscribe token can be used by the 3rd party to [self-sign other Subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens) for their users if they need to secure their streams.
 3. Begin [broadcasting](/millicast/broadcast/index.mdx) your premium content via Dolby.io. The 3rd parties can use the provided Subscribe token to [access the stream](/millicast/playback/index.mdx) for their viewers or to [sign more Subscribe tokens for their viewers](/millicast/streaming-dashboard/subscribe-tokens.md#self-signing-subscribe-tokens).
 4. When the stream is running, the media server will [gather statistics](/millicast/syndication#viewing-statistics) for the viewer associated with the tracking ID information. Since Dolby.io charges based on bandwidth, this data can be used to bill the 3rd parties relative to their consumed data.
 
@@ -26,7 +27,7 @@ In certain circumstances, you may also choose to distribute content with RTMP to
 
 The Streaming platform lets you track the following data while using syndication:
 
-- Bandwidth consumption per a distribution channel. The **trackingId** parameter, which groups viewers of the same stream, allows you to get the aggregated bandwidth usage of all viewers. This is useful for billing or user engagement analytics. 
+- Bandwidth consumption per a distribution channel. The **trackingId** parameter, which groups viewers of the same stream, allows you to get the aggregated bandwidth usage of all viewers. This is useful for billing or user engagement analytics.
 
 - Bandwidth consumption of a specific viewer. By assigning a unique identifier to each viewer via the **customViewerData** parameter, you can access the bandwidth consumption of each viewer for analytics purposes. This form of tracking is not available for everyone and requires contacting sales.
 
@@ -61,12 +62,12 @@ To use the [Create Token](/millicast/api/subscribe-token-v-1-create-token.api.md
 The published stream and Subscribe token must originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/millicast/distribution/multi-region-support/index.mdx).
 :::
 
-Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](https://dashboard.dolby.io/)  when [creating a Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md#creating-a-subscribe-token). 
+Alternatively, you can specify a tracking ID using the [Dolby.io dashboard](https://dashboard.dolby.io/) when [creating a Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md#creating-a-subscribe-token).
 
 import Sub2 from '../assets/img/sub2.png';
 
 <div class="center-container">
-    <img src={Sub2} width="500" />
+  <img src={Sub2} width="500" />
 </div>
 
 ### Tracking with self-signed Subscribe tokens
@@ -75,7 +76,7 @@ Once you have created a Subscribe token with a tracking ID, you can self-sign th
 
 ### Viewing statistics
 
-With your API Secret found on the Dolby.io dashboard, you can query information based on your viewer's tracking ID and other data using the following REST APIs: 
+With your API Secret found on the Dolby.io dashboard, you can query information based on your viewer's tracking ID and other data using the following REST APIs:
 
 - [Total bandwidth per TrackingID per stream](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx)
 - [Series bandwidth per TrackingID per stream](/millicast/api/analytics-get-tracking-series-for-streams.api.mdx)

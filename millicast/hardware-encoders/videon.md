@@ -1,11 +1,12 @@
 ---
-title: "Videon"
+title: 'Videon'
 slug: /videon
 ---
+
 **Videon** is a leading video streaming company offering innovative solutions to enhance content delivery and quality. Their flagship product, [EdgeCaster](https://www.videonlabs.com/edgecaster), optimizes video streaming with low-latency and high-quality playback across platforms, empowering service providers to deliver seamless and engaging viewing experiences.
 
 > 👍 Getting Started
-> 
+>
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to start your first broadcast. You'll need your _RTMP publish path_ and _RTMP publish stream name_ for the steps described below.
 
 See the official [Videon](https://www.videonlabs.com/) site for documentation, installation instructions, and additional support.
@@ -14,7 +15,7 @@ See the official [Videon](https://www.videonlabs.com/) site for documentation, i
 
 ### How-to use multi-bitrate on Videon EdgeCaster
 
-Inside the Videon web UI, under **Video Profiles**, create three profiles of distinct bitrate (1080p, 720p, 360p): 
+Inside the Videon web UI, under **Video Profiles**, create three profiles of distinct bitrate (1080p, 720p, 360p):
 
 | Name              | 1080p             |
 | :---------------- | :---------------- |
@@ -48,10 +49,7 @@ Inside the Videon web UI, under **Video Profiles**, create three profiles of dis
 
 Under **Audio Profiles**, set up your preferred audio encoding and audio bitrate settings.
 
-
 ![](../assets/img/Capture_decran_2023-06-14_a_9.33.46_AM.png)
-
-
 
 #### Using RTMP
 
@@ -59,12 +57,9 @@ Open your Dolby.io dashboard and copy the [**RTMP publishing paths**](/millicast
 
 Under **Outputs**, for each **RTMP**, select **Video Source** corresponding to the RTMP profile (1080p for the highest profile and 360p for the lowest profile). Make sure to set **Streaming Providers** to _Generic RTMP_ and paste the **Stream URL** from the Dolby.io RTMP dashboard.
 
-
 ![](../assets/img/Capture_decran_2023-06-14_a_10.20.58_AM.png)
 
-
-
-For the **Stream URL**, combine the **RTMP publish path** (use **RTMPS publish path** and select _rtmps://_ if you prefer to publish to an RTMPS endpoint), with the **RTMP multibitrate** corresponding value: **High** for RTMP 1, **Medium** for RTMP 2, and **Low** for RTMP 3. 
+For the **Stream URL**, combine the **RTMP publish path** (use **RTMPS publish path** and select _rtmps://_ if you prefer to publish to an RTMPS endpoint), with the **RTMP multibitrate** corresponding value: **High** for RTMP 1, **Medium** for RTMP 2, and **Low** for RTMP 3.
 
 Example:
 
@@ -74,10 +69,7 @@ Example:
 | RTMP 2      | 720p         | `rtmp://` | `rtmp-auto.millicast.com:1935/v2/pub/lq30pf11?token=bcf5ffca692892ff5f861019316dd8277192698b92b08014398bfe646259c60a&sourceId=2&simulcastId&videoOnly` |
 | RTMP 3      | 360p         | `rtmp://` | `rtmp-auto.millicast.com:1935/v2/pub/lq30pf11?token=bcf5ffca692892ff5f861019316dd8277192698b92b08014398bfe646259c60a&sourceId=3&simulcastId&videoOnly` |
 
-
 ![](../assets/img/videon-rtmp.png)
-
-
 
 #### Using SRT
 
@@ -91,10 +83,7 @@ Example:
 | SRT 2       | 720p         | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=1&simulcastId&videoOnly` |
 | SRT 3       | 360p         | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=2&simulcastId&videoOnly` |
 
-
 ![](../assets/img/videon-srt.png)
-
-
 
 ### How-to apply a multi-viewer with Videon EdgeCaster
 
@@ -155,8 +144,3 @@ Example:
 | EdgeCaster 3 | VIP         | High   | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=7&simulcastId=VIP`                 |
 |              |             | Medium | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=8&simulcastId=VIP&videoOnly`       |
 |              |             | Low    | `srt://` `srt-auto.millicast.com` :`10000` | `lq30pf11?t=vPX_ymkokv9fhhAZMW3YJ3GSaYuSsIAUOYv-ZGJZxgo&sourceId=9&simulcastId=VIP&videoOnly`       |
-
-
-
-
-

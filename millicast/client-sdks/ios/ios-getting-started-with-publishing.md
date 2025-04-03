@@ -1,7 +1,8 @@
 ---
-title: "Getting Started with Publishing"
+title: 'Getting Started with Publishing'
 slug: /ios-getting-started-with-publishing
 ---
+
 Follow these steps to add the publishing capability to your application.
 
 ## 1\. Capture audio and video
@@ -63,12 +64,13 @@ Create a publisher object of type [MCPublisher](https://millicast.github.io/doc/
 ```swift
 let publisher = MCPublisher()
 ```
+
 You can optionally implement the [MCPublisherDelegate](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisherdelegate) to receive callbacks:
 
 You can set this delegate during the initialization of [MCPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher) instead. Ensure to keep the delegate alive throughout the lifetime of the publisher.
 
 ```swift
-let publisherDelegate = YourPublisherDelegate() // where the `YourPublisherDelegate` is a type that you implement, that conforms to `MCPublisherDelegate` 
+let publisherDelegate = YourPublisherDelegate() // where the `YourPublisherDelegate` is a type that you implement, that conforms to `MCPublisherDelegate`
 let publisher = MCPublisher(delegate: publisherDelegate)
 ```
 
@@ -167,7 +169,7 @@ for await state in publisher.websocketState() {
 
 You can also receive other events on the publisher, like [viewer activity](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/activity) and [viewer count](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/viewercount):
 
-The delegate equivalent for this event is defined in [client(_:didreceivewebsocketconnectionstate:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivewebsocketconnectionstate:))
+The delegate equivalent for this event is defined in [client(\_:didreceivewebsocketconnectionstate:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivewebsocketconnectionstate:)>)
 
 ### 3.2 Publishing state
 
@@ -179,12 +181,12 @@ for await state in publisher.peerConnectionState() {
 }
 ```
 
-The delegate equivalent for this event is defined in [client(_:didreceivertcpeerconnectionstate:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivertcpeerconnectionstate:))
+The delegate equivalent for this event is defined in [client(\_:didreceivertcpeerconnectionstate:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivertcpeerconnectionstate:)>)
 
 ### 3.3 Viewers of your stream
 
 Listen to the viewer activity events of your stream using [activity()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/activity) or the combine publisher [activityPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/activitypublisher).
-This event can also be listen from the [publisherDidReceiveFirstViewerActive(\_:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisherdelegate/publisherdidreceivefirstvieweractive(_:)) and [publisherDidReceiveLastViewerInactive(\_:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisherdelegate/publisherdidreceivelastviewerinactive(_:)) delegate methods defined in [MCPublisherDelegate](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisherdelegate)
+This event can also be listen from the [publisherDidReceiveFirstViewerActive(\_:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisherdelegate/publisherdidreceivefirstvieweractive(_:)>) and [publisherDidReceiveLastViewerInactive(\_:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisherdelegate/publisherdidreceivelastviewerinactive(_:)>) delegate methods defined in [MCPublisherDelegate](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisherdelegate)
 
 ```swift
 for await activity in publisher.activity() {
@@ -205,15 +207,15 @@ for await viewerCount in publisher.viewerCount() {
 }
 ```
 
-The Combine Publisher for this event is [viewercountpublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/viewercountpublisher) and the delegate equivalent is [client(_:didreceiveviewercount:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceiveviewercount:))
+The Combine Publisher for this event is [viewercountpublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/viewercountpublisher) and the delegate equivalent is [client(\_:didreceiveviewercount:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceiveviewercount:)>)
 
 ## 4\. Collect WebRTC statistics
 
-Set the [enableStats](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/enablestats(_:completionhandler:)) method to true to collect statistics.
+Set the [enableStats](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/enablestats(_:completionhandler:)>) method to true to collect statistics.
 
-WebRTC peer connection statistics can be periodically collected by enabling them through the [enableStats](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/enablestats(_:completionhandler:)) method of the publisher. After enabling the statistics, you will get a report every second or at the preset frequency you scheduled through the [statsReport()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/statsreport) async stream or the [statsReportPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/statsreportpublisher) publisher.
+WebRTC peer connection statistics can be periodically collected by enabling them through the [enableStats](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/enablestats(_:completionhandler:)>) method of the publisher. After enabling the statistics, you will get a report every second or at the preset frequency you scheduled through the [statsReport()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/statsreport) async stream or the [statsReportPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/statsreportpublisher) publisher.
 
-Alternatively use the delegate method[client(_:didreceivestatsreport:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivestatsreport:))
+Alternatively use the delegate method[client(\_:didreceivestatsreport:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivestatsreport:)>)
 
 The identifiers and way to browse the stats are following the [RTC specification](https://www.w3.org/TR/webrtc-stats/).
 The report contains the [MCStatsReport](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcstatsreport) object, which is a collection of several [MCStats](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcstats) objects. They all have a specific type, whether it is inbound, outbound, codec, or media. Inbound is the statistics of incoming transport for the viewer and outbound is a type of outgoing statistics for the publisher.
@@ -303,11 +305,11 @@ publisher.signalingErrorPublisher()
   }
 ```
 
-The delegate methods to receive http and signalling errors are [client(_:didReceiveHTTPConnectionError:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivehttpconnectionerror:)) and [client(_:didReceiveSignalingError:)](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivesignalingerror:))
+The delegate methods to receive http and signalling errors are [client(\_:didReceiveHTTPConnectionError:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivehttpconnectionerror:)>) and [client(\_:didReceiveSignalingError:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivesignalingerror:)>)
 
 ## 7\. Stop publishing
 
-When you finish publishing your content, stop the publishing by calling [unpublish()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/unpublish(completionhandler:)) and clear the tracks [clearTracks()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/cleartracks(completionhandler:). Then disconnect from the millicast server by calling [disconnect()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/disconnect(completionhandler:)) method.
+When you finish publishing your content, stop the publishing by calling [unpublish()](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/unpublish(completionhandler:)>) and clear the tracks [clearTracks()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher/cleartracks(completionhandler:). Then disconnect from the millicast server by calling [disconnect()](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcclient/disconnect(completionhandler:)>) method.
 
 ```swift
 // Stop publishing your content

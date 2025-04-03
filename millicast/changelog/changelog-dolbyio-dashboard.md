@@ -4,27 +4,23 @@ Updates to the Dolby.io Dashboard and Applications.
 
 ## Dashboard
 
-On the dashboard, users can now set the account-wide expiration rules rules for their recorded media.  This means that media can be auto-deleted without the need for additional API calls. This includes:
+On the dashboard, users can now set the account-wide expiration rules rules for their recorded media. This means that media can be auto-deleted without the need for additional API calls. This includes:
 
 - [Recordings](/millicast/distribution/stream-recordings/index.mdx): The full-length stream recordings that are created when recording is enabled on a token
 - [Clips](/millicast/distribution/stream-recordings/live-clipping.mdx): Clips generated from the [Media Asset API](/millicast/api/media-assets-create-media-asset/) when utilizing Dolby cloud storage
-- [Timelines](/millicast/distribution/stream-recordings/live-clipping.mdx): Timelines are the "media cache" that clips are generated from and are required to create a clip. They are always stored on Dolby cloud storage.  By default timelines will expire after 1 day.  Users can change this value if they wish to be able to clip  further back in time.
+- [Timelines](/millicast/distribution/stream-recordings/live-clipping.mdx): Timelines are the "media cache" that clips are generated from and are required to create a clip. They are always stored on Dolby cloud storage. By default timelines will expire after 1 day. Users can change this value if they wish to be able to clip further back in time.
 
 These settings are available in the streaming dashboard under `Settings > Media`
 
 ![](../assets/img/c96955004739aee7d08248a850a79c53d8774551728b5c8eadcd488f406b4e39-Screenshot_2024-12-12_at_9.59.17_AM.png
 
-
-
-
 ## Hosted Player
 
-In the hosted player, we have hidden the view-timer by default.  This is now able to be toggled on by adding a query parameter to the url (`&showTimer=true`) so that URLs would look like this to enable the timer: `https://viewer.millicast.com/?streamId=k9Mwad/multiview&showTimer=true`.  As a reminder, the timer is how long the viewer has been watching the stream and not how long the stream has been running.
+In the hosted player, we have hidden the view-timer by default. This is now able to be toggled on by adding a query parameter to the url (`&showTimer=true`) so that URLs would look like this to enable the timer: `https://viewer.millicast.com/?streamId=k9Mwad/multiview&showTimer=true`. As a reminder, the timer is how long the viewer has been watching the stream and not how long the stream has been running.
 
 An image of what the timer looks like can be seen in the red circle below:
 
 ![](../assets/img/e8a06e7d19e0fb95a528f26bf51a91ee94be340bb5dad90f1834e49c3780b211-Screenshot_2024-12-12_at_10.03.31_AM.png)
-
 
 ## 2024-11-07 | Dashboard
 
@@ -36,22 +32,17 @@ You can now configure RTMPS endpoints in the re-stream section of the distributi
 
 ![](../assets/img/f3506a57cdbb6ea94f379a631b08946eff022b5e3beac88bf280cf4de4709671-dashboard-restream-rtmps-url.png)
 
-
 ### Monitor Re-Stream Events
 
 A new event type is now available in the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) event log, enabling you to view re-stream related events and errors in real-time as they occur.
 
 ![](../assets/img/252e36192f8369547fff49a7af109c0eeaf9f6d7fde269741cb1f807674258d9-dashboard-live-monitor-restream-events.png)
 
-
 ### Track Re-Stream Usage on Billing Page
 
 Re-stream usage data now appears directly on your billing page, giving you a clear view of number of re-stream minutes consumed.
 
 ![](../assets/img/3a112387ceffd202a53c31da649ab72eb443985f6833a72d9913f343d174cf58-dashboard-restream-billing-usage.png)
-
-
-
 
 # 2024-10-15 | Dashboard
 
@@ -69,24 +60,21 @@ The recordings menu has been replaced with a new **Media** section. This is wher
 
 ![](../assets/img/16cb0b1a5e46ce8fb168ca3085daf45d4a4aa7d99637da5ef58eb6393ba78180-live-clipping-media-menu.png)
 
-
 ### Token Setting
 
 Live clipping is a setting that must be enabled on a token in order to create clips. It is an optional on any [Publish Tokens](/millicast/managing-your-tokens) and has cost implications for storage and usage. This is a premium feature so please work with your account team to have it enabled for your account.
 
 ![](../assets/img/ee7359252643a2c08e31378d67dc8b360c6a857f43eb9f8ee23214ceb62788fa-live-clipping-token-details.png)
 
-
 # 2024-09-26 | Dashboard
 
-You'll find usability improvements included in our latest Dolby.io dashboard release. It is now easier to manage your account profile, organization, team and security settings. 
+You'll find usability improvements included in our latest Dolby.io dashboard release. It is now easier to manage your account profile, organization, team and security settings.
 
 ## Account Profile Dashboard
 
 Select the Profile item from the account dropdown and you'll find additional settings you can use to manage your Dolby.io account.
 
 ![](../assets/img/a7f4a821c575e88396154983a48160272a950376adf1354ad75bc9ff98f8fd68-dashboard-account-dropdown-profile.png)
-
 
 From here you'll find additional menu items:
 
@@ -95,12 +83,7 @@ From here you'll find additional menu items:
 - **Team:** Add additional users to your account to share access with your team.
 - **Security:** Update your password, turn on two-factor, and manage active sessions.
 
-
-
 ![](../assets/img/4a343b769af401e2b7b115b2f7620e3aed8ed851eec56deef46e5425ed3e8989-dashboard-account-profile-and-settings.png)
-
-
-
 
 # 2024-08-19 | Dashboard
 
@@ -113,12 +96,11 @@ With this dashboard update you can now find a new **Distribution** tab within th
 
 ![](../assets/img/6d57cb6-dashboard-distribution-tab-restream-setup.png)
 
-
 # 2024-07-25 | Millicast Player ([1.5.1](https://www.npmjs.com/package/@millicast/vue-viewer-plugin?activeTab=readme))
 
 ## :new: View Metadata
 
-The [Hosted Player](/millicast/playback/hosted-viewer.md) now supports propagation of [metadata](/millicast/playback/frame-metadata.md) events to the application such as timecodes from SEI / AMF / PIC_TIMING.  There is a query parameter `&metadata=true` that will enable the processing of received metadata and displays it to a rendered canvas. Any unregistered metadata is sent to the browser console.
+The [Hosted Player](/millicast/playback/hosted-viewer.md) now supports propagation of [metadata](/millicast/playback/frame-metadata.md) events to the application such as timecodes from SEI / AMF / PIC_TIMING. There is a query parameter `&metadata=true` that will enable the processing of received metadata and displays it to a rendered canvas. Any unregistered metadata is sent to the browser console.
 
 ## :new: Force Playout Delay
 

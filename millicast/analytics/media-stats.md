@@ -1,7 +1,8 @@
 ---
-title: "Media Stats"
+title: 'Media Stats'
 slug: /media-stats
 ---
+
 Both the [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/playback/hosted-viewer.md) provide a **Media Stats** option to open a modal overlay during broadcast or playback that displays information that can be helpful in judging the performance or diagnosing issues when troubleshooting.
 
 - **RTT**: Round trip time in milliseconds for sending and receiving the stream.
@@ -20,16 +21,14 @@ Both the [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-d
 - **Codecs**: The audio and video codecs used by the broadcaster.
 - **Timestamp**: The date and time (UTC) for when the browser gathered media stats.
 - **Server**: This can be provided to our support team as an aid to troubleshooting network issues.
-- **Cluster**: The data center being used for the broadcast origin. See  [Cluster Regions](/millicast/distribution/multi-region-support/index.mdx) for more details on this data.
+- **Cluster**: The data center being used for the broadcast origin. See [Cluster Regions](/millicast/distribution/multi-region-support/index.mdx) for more details on this data.
 
 > 📘 Active Broadcast
-> 
+>
 > The Media Stats are only available during an active broadcast. You may also be interested in other means of gathering [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) and monitoring the playback experience.
 
 ## Example
 
 An example of what values from a broadcast might report.
 
-
 ![](../assets/img/dolbyio-broadcaster-media-stats.png)
-

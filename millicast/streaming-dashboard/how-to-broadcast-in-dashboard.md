@@ -1,18 +1,16 @@
 ---
-title: "Live Broadcast"
+title: 'Live Broadcast'
 slug: /how-to-broadcast-in-dashboard
 ---
-The **Live broadcast** section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) is the place to manage all of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). You use these tokens to securely broadcast. You can also launch a hosted **Broadcaster** web app to start a broadcast.
 
+The **Live broadcast** section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) is the place to manage all of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). You use these tokens to securely broadcast. You can also launch a hosted **Broadcaster** web app to start a broadcast.
 
 ![](../assets/img/live-broadcast.png)
 
-
-
 > 👍 Getting Started
-> 
+>
 > If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
-> 
+>
 > You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/playback/hosted-viewer.md).
 
 ## Quick actions
@@ -38,10 +36,7 @@ Each token item has a quick action menu that provides various options: Disable/E
 
 The Live Broadcaster interface is a lightweight hosted web application which allows you to instantly begin broadcasting your live stream to your global audience without installing any software.
 
-
 ![](../assets/img/bcast-pg.png)
-
-
 
 The Broadcaster has the following user interface controls:
 
@@ -62,16 +57,13 @@ By choosing the camera icon you will see the available [capture](/millicast/capt
 
 There is a **Video Test** option you can use that may be helpful alternative to sharing your video for testing a live streaming setup end-to-end.
 
-
 ![](../assets/img/dolbyio-millicast-broadcast-video-test.png)
-
-
 
 You can also disable the camera option entirely and send an audio-only stream.
 
 ### Audio devices
 
-The Mic input selector allow you to select between the microphone inputs that are active on your computer. 
+The Mic input selector allow you to select between the microphone inputs that are active on your computer.
 
 You can alternatively **mute** the audio entirely for video only streaming.
 
@@ -87,13 +79,13 @@ You can toggle the record feature only when you are not broadcasting live. If yo
 
 ### Settings
 
-The settings menu provides a few options to change the behavior of the broadcaster. It allows you to modify media settings, adjust the video display, and report issues with the Publisher. 
+The settings menu provides a few options to change the behavior of the broadcaster. It allows you to modify media settings, adjust the video display, and report issues with the Publisher.
 
 It allows you to manipulate camera quality, capture size, frame rate and aspect ratio. You can use these controls to tune the stream for quality, size and even codec (eg. H264, VP9 or AV1) which can provide certain benefits and capabilities. These adjustments can be very helpful when streaming to a wide variety of devices and network conditions. For example if the broadcaster is streaming from a very bandwidth-limited location, you have the ability to lower the quality, capture-size and framerate to maintain a smooth stream. More details about this pop-up are described below.
 
 - Media Settings
 - [Media Stats](/millicast/analytics/media-stats.md) provides diagnostic details about the performance of the broadcast stream
-- **Video Display Adjust** 
+- **Video Display Adjust**
 - Report Publisher Issue can be used to request help from support and identify problems that occur while streaming.
 
 ### Media settings
