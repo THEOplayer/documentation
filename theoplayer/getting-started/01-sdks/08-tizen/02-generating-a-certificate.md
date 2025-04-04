@@ -6,15 +6,15 @@ Go to Tools → Certificate Manager
 
 ![](../../../assets/img/tizen-certificate-1.jpg)
 
-In the Certificate Manager click the Add (plus) button to generate a new certificate.
+In the Certificate Manager, click the Add (plus) button to generate a new certificate.
 
 ![](../../../assets/img/tizen-certificate-2.jpg)
 
-Generate a Tizen Certificate
+Generate a Tizen Certificate.
 
 ![](../../../assets/img/tizen-certificate-3.jpg)
 
-Give your certificate a profile name (name is free to pick)
+Give your certificate a profile name (name is free to pick).
 
 ![](../../../assets/img/tizen-certificate-4.jpg)
 
@@ -26,7 +26,7 @@ If you decided to create a new author certificate, you will get this screen. Fil
 
 ![](../../../assets/img/tizen-certificate-6.jpg)
 
-Pick “Use the default Tizen distributor certificate”
+Pick “Use the default Tizen distributor certificate”.
 
 ![](../../../assets/img/tizen-certificate-7.jpg)
 

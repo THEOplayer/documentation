@@ -1,3 +1,7 @@
+---
+pagination_next: getting-started/sdks/tizen/getting-started
+---
+
 # Getting Started on webOS
 
 This guide will help you integrate your THEOplayer SDK on webOS.
