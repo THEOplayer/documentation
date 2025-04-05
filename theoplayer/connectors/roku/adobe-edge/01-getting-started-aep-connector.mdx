@@ -1,0 +1,107 @@
+---
+sidebar_label: Getting started
+sidebar_custom_props: { icon: '🚀' }
+---
+
+# Getting started with the Adobe Edge Connector for the Roku SDK
+
+Here's how to get started integrating the Adobe Edge Connector with the THEOplayer Roku SDK.
+
+## Prerequisites
+
+In order to set up the Adobe Edge Connector in your Roku application, you'll need the following:
+
+- Your Adobe Edge domain and config ID (also known as data stream ID)
+- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
+
+## Integration
+
+1. First you must download the THEO Adobe Edge Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOAEPConnector` and providing the URI for the THEOAEPConnector.pkg:
+
+```xml
+<ComponentLibrary id="THEOAEPConnector" uri="https://cdn.myth.theoplayer.com/roku/9.1.0/THEOAEPConnector.pkg" />
+```
+
+2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+
+```brightscript
+sub Init()
+    THEOAEPNode = m.top.findNode("THEOAEPConnector")
+    THEOAEPNode.observeField("loadStatus", "onLibraryLoadStatusChanged")
+end sub
+
+sub onLibraryLoadStatusChanged(event as object)
+    THEOAEPNode = event.getROSGNode()
+
+    if THEOAEPNode = invalid
+        return
+    end if
+
+    if THEOAEPNode.loadStatus = "ready"
+		' Success
+    else if THEOAEPNode.loadStatus = "failed"
+		? "Failed to load component library, please check URL. "; THEOAEPNode.uri
+	end if
+end sub
+```
+
+3. Add the THEOAEPConnector component to the SceneGraph file where your THEOPlayer is defined
+
+```xml
+<THEOsdk:THEOplayer id="THEOplayer" controls="true" />
+<THEOAEPConnector:THEOAEPConnector id="THEOAEPConnector" />
+```
+
+4. Then in the Brightscript file, configure the connector by calling the configure method, passing the player instance and your Adobe Edge configuration.
+
+```brightscript
+m.player = m.top.findNode("THEOPlayer")
+m.aepConnector = m.top.findNode("THEOAEPConnector")
+aepConfig = {
+    configId: "<MY_AEP_CONFIG_ID>",
+    domainName: "<MY_EDGE_DOMAIN>",
+    mediaChannel: "My Channel",
+    mediaPlayerName: "My Player",
+    mediaAppVersion: "1.0",
+    logLevel: 3
+}
+m.aepConnector.callFunc("configure", m.player, aepConfig)
+```
+
+5. Next, when you start playing the asset, call the `startSession` method and pass it the session details for the asset you're playing. You may also include an optional session configuration:
+
+```brightscript
+m.player.source = sourceDescription
+
+aepSessionConfig = {}
+aepSessionConfig["config.channel"] = "My Channel"
+aepSessionConfig["config.adpinginterval"] = 5
+aepSessionConfig["config.mainpinginterval"] = 30
+
+aepSessionDetails = {
+    name: "my-asset-id",
+    friendlyName: sourceDescription.title,
+    contentType: "video",
+    streamType: "vod",
+    length: 300,
+    customMetadata: {
+        key1: "value1",
+        key2: "value2",
+    }
+}
+m.aepConnector.callFunc("startSession", aepSessionDetails, aepSessionConfig)
+```
+
+See the [API documentation](https://github.com/adobe/aepsdk-roku/blob/main/Documentation/api-reference.md) for more on how to structure the data for Adobe Edge.
+
+6. When the video has stopped playing because it ended or the user exited, end the Adobe Edge session.
+   `m.aepConnector.callFunc("endSession")`
+7. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the SDK:
+
+```brightscript
+m.aepConnector.callFunc("destroy")
+m.aepConnector = invalid
+
+m.player.callFunc("destroy")
+m.player = invalid
+```
