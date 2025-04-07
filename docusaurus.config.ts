@@ -465,7 +465,8 @@ const config: Config = {
         }
       : {
           id: 'dolby_optiview_new_name',
-          content: 'Dolby OptiView is the new home for everything Dolby.io and THEOplayer.',
+          content:
+            'Dolby OptiView is the new home for everything Dolby.io and THEOplayer. <a target="_blank" rel="noopener" href="https://dolby.io/blog/introducing-dolby-optiview-redefining-immersive-streaming-experiences/">Learn more.</a>',
           backgroundColor: '#4800c4',
           textColor: '#fff',
           isCloseable: true,
