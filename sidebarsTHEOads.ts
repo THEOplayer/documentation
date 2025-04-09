@@ -43,13 +43,13 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Web',
           customProps: { icon: 'web' },
-          href: 'pathname:///theoplayer/v8/api-reference/web/interfaces/TheoAdDescription.html',
+          href: 'pathname:///theoplayer/v9/api-reference/web/interfaces/TheoAdDescription.html',
         },
         {
           type: 'link',
           label: 'Android',
           customProps: { icon: 'android' },
-          href: 'pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html',
+          href: 'pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html',
         },
         {
           type: 'link',
