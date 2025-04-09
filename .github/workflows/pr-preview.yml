@@ -10,6 +10,8 @@ concurrency: preview-${{ github.ref }}
 jobs:
   pr-preview:
     runs-on: ubuntu-latest
+    # Do not run on PRs from forks, since they don't have the permissions to deploy to our GitHub pages branch.
+    if: ${{ !github.event.pull_request.head.repo.fork }}
     steps:
       - name: Create app token
         uses: actions/create-github-app-token@v1
