@@ -1,0 +1,29 @@
+name: Build pull request
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+concurrency: build-${{ github.ref }}
+jobs:
+  pr-preview:
+    runs-on: ubuntu-latest
+    # Run only on PRs from forks.
+    if: ${{ github.event.pull_request.head.repo.fork }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: true
+      # Build the website
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Build
+        run: |
+          npm ci
+          npm run build
