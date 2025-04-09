@@ -7,7 +7,7 @@ on:
       - synchronize
 concurrency: build-${{ github.ref }}
 jobs:
-  pr-preview:
+  build:
     runs-on: ubuntu-latest
     # Run only on PRs from forks.
     if: ${{ github.event.pull_request.head.repo.fork }}
