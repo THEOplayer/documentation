@@ -2,6 +2,12 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2025-04-10 | REST APIs
+
+### Features
+
+- Adding iFrameRate, bFrameRate and pFrameRate to the encoding details in the Monitoring Stream Details endpoint.
+
 ## 2025-03-19 | REST APIs
 
 ### Features
