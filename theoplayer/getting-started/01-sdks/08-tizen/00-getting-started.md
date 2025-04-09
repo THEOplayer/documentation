@@ -1,3 +1,7 @@
+---
+pagination_next: getting-started/sdks/tizen/installing-tizen-studio
+---
+
 # Getting started on Tizen
 
 This how-to guide describes how to set up a Tizen application using the THEOplayer SDK on Tizen.
@@ -6,7 +10,7 @@ You may also find the [Getting Started on Web](../01-web/00-getting-started.mdx)
 
 ## Set-up
 
-For brevity, set-up is split up over multiple pages:
+For brevity, the set-up is split up over multiple pages:
 
 - [Setting up Tizen Studio](01-installing-tizen-studio.md)
 - [Generating a certificate](02-generating-a-certificate.md)
@@ -20,13 +24,13 @@ For brevity, set-up is split up over multiple pages:
 - Generate a Tizen SDK build via the [THEOplayer portal](https://portal.theoplayer.com/).
 - Download the [reference app project](https://github.com/THEOplayer/samples-tizen)
 - Read the README to get started. There is one at the root level and one in the two examples.
-- Import the project in Tizen Studio
+- Import the project in Tizen Studio.
 
-Go to File -> Open Projects from File System
+Go to File -> Open Projects from File System.
 
 ![](../../../assets/img/import-1.jpg)
 
-Select the directory. Then press Finish.
+Select the directory, then press Finish.
 
 ![](../../../assets/img/import-2.jpg)
 
@@ -41,7 +45,7 @@ Select the directory. Then press Finish.
   - **src/**
     - The source code of the UI application. Change or replace as desired.
   - **libs/**
-    - (Insert your THEOplayer Tizen SDK here)
+    - (Insert your THEOplayer Tizen SDK here.)
   - **index.html**
     - Entry point of application.
   - **config.xml**
@@ -51,7 +55,7 @@ Select the directory. Then press Finish.
 - **minimum-example/**
   - Contains a very minimal Tizen project example. No UI included.
   - **libs/**
-    - (Insert your THEOplayer Tizen SDK here)
+    - (Insert your THEOplayer Tizen SDK here.)
   - **index.html**
     - Entry point of application.
   - **config.xml**

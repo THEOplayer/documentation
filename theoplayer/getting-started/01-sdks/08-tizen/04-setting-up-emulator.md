@@ -17,5 +17,5 @@ We strongly recommend using a physical Tizen device. If this is not possible, us
 ## Known limitations of emulators:
 
 - AVPlay is unavailable.
-- DRM is unavable due to no Content Decryption Module (CDM)
-- manifest.json permissions are ignored for emulators. Make sure to test on a physical device, as they are more strict.
+- DRM is unavailable due to a missing Content Decryption Module (CDM).
+- `manifest.json` permissions are ignored for emulators. Make sure to test on a physical device, as they are more strict.

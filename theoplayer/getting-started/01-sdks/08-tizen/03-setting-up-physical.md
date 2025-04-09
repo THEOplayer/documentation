@@ -6,7 +6,7 @@ Both the physical Tizen device as the development computer must be on the same n
 
 ### Tizen device
 
-- go to the home menu (home button) and navigate to apps. Launch it.
+- Go to the home menu (home button) and navigate to apps. Launch it.
 - Use the 123-key (or numbers) to type 12345. A menu will prompt.
 - Enable Developer mode.
   - Type in the local IP-address of the laptop you want to deploy a build from. They must be on the same network.
@@ -16,9 +16,9 @@ Both the physical Tizen device as the development computer must be on the same n
 
 - Go to Tizen Studio. Open Tools -> Device Manager.
 - Open Remote Device Manager (the icon with a pc and a smart tv)
-  - Add Tizen device via its IP-address, connect and confirm
-  - The Tizen IP-address can be found under Settings -> General -> Network -> Network Status -> IP Settings
-  - Enable connection with remote device
+  - Add Tizen device via its IP-address, connect and confirm.
+  - The Tizen IP-address can be found under Settings -> General -> Network -> Network Status -> IP Settings.
+  - Enable connection with remote device.
 
 ## Launching on a physical Tizen device
 
