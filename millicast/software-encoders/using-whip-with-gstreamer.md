@@ -113,7 +113,7 @@ gst-launch-1.0 audiotestsrc wave=sine !
 
 ### How-to broadcast a media file
 
-Instead of using the video test source, this example demonstrates reading and looping a media file from disk using the [multifilesrc](https://gstreamer.freedesktop.org/documentation/multifile/multifilesrc.html) element. You can find example media to try this with such as <a href="<https://peach.blender.org/download/>" target="_blank">Big Buck Bunny</a>
+Instead of using the video test source, this example demonstrates reading and looping a media file from disk using the [multifilesrc](https://gstreamer.freedesktop.org/documentation/multifile/multifilesrc.html) element. You can find example media to try this with such as [Big Buck Bunny](https://peach.blender.org/download/).
 
 #### Using a specific codec
 
