@@ -450,42 +450,42 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
-      "line": 55,
+      "line": 59,
       "symbol": "FullscreenViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
-      "line": 71,
+      "line": 75,
       "symbol": "FullscreenViewController.viewDidLayoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
-      "line": 76,
+      "line": 80,
       "symbol": "FullscreenViewController.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
-      "line": 106,
+      "line": 110,
       "symbol": "FullscreenViewController.supportedInterfaceOrientations",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
-      "line": 114,
+      "line": 118,
       "symbol": "FullscreenViewController.prefersHomeIndicatorAutoHidden",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
-      "line": 118,
+      "line": 122,
       "symbol": "FullscreenViewController.prefersStatusBarHidden",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
