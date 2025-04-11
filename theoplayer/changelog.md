@@ -5,6 +5,60 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.1.0 (2025/04/10)
+
+### Web
+
+#### ✨ Features
+
+- Added support for language and label for captions for THEOlive streams.
+
+#### ⚡ Improvements
+
+- Removed `CC` prefix from `TextTrack.label` for CEA-608/708 captions tracks that have a known label or language.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would dispatch wrong THEOads events when playing a THEOads stream in native picture-in-picture.
+- Fixed an issue where chapter indicators on the seek bar were positioned incorrectly when the video is clipped using `player.clip`.
+- Fixed an issue where the player would not play multiple ads when playing a THEOads streams on smartTVs.
+
+### Android
+
+#### ✨ Features
+
+- Added support for `THEOplayerConfig.networkConfiguration` in the Media3 playback pipeline.
+
+#### ⚡ Improvements
+
+- Prefer language over channel number as track label for CEA-608/708 captions.
+
+#### 🐛 Issues
+
+- Fixed an issue for THEOAds where the LShape layout crashed.
+- Fixed an issue where the player would need to occasionally recover on THEOlive / HESP streams resulting in a short spinner.
+- Fixed an issue where the Media3 backend failed to cache HLS streams.
+- Fixed an issue where the Media3 backend would error immediately instead of retrying when encountering a network error for an HTTP request.
+- Fixed an issue where using a Fire TV license would be rejected.
+- Fixed an issue where subtitles from a DASH period after the first period were not presented at the correct time with the Media3 pipeline.
+- Fixed an issue where a selected subtitle track would incorrectly be disabled on a period switch, even though the next period contains a matching subtitle track.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where using THEOads would introduce a memory leak.
+- Fixed an issue where transitioning into an ad break with THEOads would not preserve the volume and muted state.
+- Fixed a memory leak for THEOads where an `Ad` would hold a strong reference to its `adBreak`.
+- Fixed an issue for THEOads where moving the player view to another UIViewController would cause an application crash.
+- Fixed an issue where the Millicast integration framework also included the THEOplayer framework causing applications to be rejected from the App Store.
+
+### Roku
+
+#### ✨ Features
+
+- Added a `stopAndStartNewSession` method to handle cases where a new session should be started on the currently playing media.
+
 ## 🚀 9.0.0 (2025/04/03)
 ### Officially announcing THEOplayer 9.0
 Introducing a major version bump to THEOplayer 9.0. This version officially releases all the improvements and developments THEOplayer has achieved since version 8.0.
