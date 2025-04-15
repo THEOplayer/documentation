@@ -13,7 +13,7 @@ You choose from several _types_ of events that can be sent to your service.
 
 - [Feed Hooks](/millicast/webhooks/feeds-webhooks.md) send a notification for an activity feed of when a stream has started or stopped publishing.
 - [Media Hooks](/millicast/webhooks/media-webhooks.md) send a notification for the start, completion, and deletion of server-side recordings.
-- [Thumbnail Hooks](/millicast/webhooks/thumbnail-webhooks.md) send a notification when static thumbnail images are captured during a live video stream.
+- [Thumbnail Hooks](/millicast/webhooks/thumbnail-webhooks.mdx) send a notification when static thumbnail images are captured during a live video stream.
 - [Transcoder Hooks](/millicast/webhooks/transcoder-webhooks.md) send a notification when a transcoder changes status such as starts or stops.
 - [ViewerConnection Hooks](/millicast/webhooks/viewerconnection-webhooks.md) send a notification when a viewer attempts to connect to an inactive stream or when a stream doesn't have any active viewers remaining. This hook is helpful for automating an encoder to start only when a viewer connects.
 
@@ -25,11 +25,19 @@ Each webhook generates a **Webhook Secret**. This secret can be used for signatu
 
 From the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the Webhooks tab and click the `CREATE` button.
 
-![](../assets/img/dashboard-webhooks.png)
+import DashWebhooks from '../assets/img/dashboard-webhooks.png';
+
+<div class="center-container">
+  <img src={DashWebhooks} width="600" />
+</div>
 
 This will open a popup window on your screen to input the **Webhook url**. You also choose which specific event **types** this endpoint should receive.
 
-![](../assets/img/dashboard-add-new-webhook.png)
+import DashAddNewWebhook from '../assets/img/dashboard-add-new-webhook.png';
+
+<div class="center-container">
+  <img src={DashAddNewWebhook} width="400" />
+</div>
 
 Once created, the URL and event types will be listed.
 
@@ -37,15 +45,27 @@ Once created, the URL and event types will be listed.
 
 Select a webhook from the webhooks listed in the dashboard to modify its settings.
 
-![](../assets/img/webhooks-management-main.png)
+import WebhookManagementMain from '../assets/img/webhooks-management-main.png';
+
+<div class="center-container">
+  <img src={WebhookManagementMain} width="600" />
+</div>
 
 Change the URL that will be called by the webhook by pressing the pen icon at the end of the row:
 
-![](../assets/img/webhooks-url-edit.png)
+import WebhookUrlEdit from '../assets/img/webhooks-url-edit.png';
+
+<div class="center-container">
+  <img src={WebhookUrlEdit} width="600" />
+</div>
 
 Update the URL and **confirm** your decision by clicking the green checkmark. To **cancel**, select the grey button.
 
-![](../assets/img/webhooks-url-edit.confirm.png)
+import WebhookEditConfirm from '../assets/img/webhooks-url-edit.confirm.png';
+
+<div class="center-container">
+  <img src={WebhookEditConfirm} width="600" />
+</div>
 
 To choose the types of event hooks to receive, click the **Enabled** button next to each hook type to toggle it to be enabled or **Disabled**. Click the _trash can_ icon to delete the webhook entirely.
 
@@ -53,17 +73,21 @@ To choose the types of event hooks to receive, click the **Enabled** button next
 
 If you believe your webhook secret has become compromised or want to rotate it regularly for security purposes, click the **Renew** button.
 
-![](../assets/img/webhooks-secret-edit.png)
+import WebhookSecretEdit from '../assets/img/webhooks-secret-edit.png';
 
-> ❗️ Warning
->
-> Once you click to renew the secret this cannot be undone. Please be certain you want to reset this value before proceeding because you may need to redeploy your service that receives the callback.
+<div class="center-container">
+  <img src={WebhookSecretEdit} width="600" />
+</div>
+
+:::danger Warning
+Once you click to renew the secret this cannot be undone. Please be certain you want to reset this value before proceeding because you may need to redeploy your service that receives the callback.
+:::
 
 ### How-to add a webhook with the REST API
 
-> 👍 Using the REST APIs
->
-> Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+:::tip Using the REST APIs
+Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+:::
 
 The [/api/webhooks](/millicast/api/webhooks-add-webhook.api.mdx) endpoint can be used to add new webhooks by making a `POST` request. You must specify the webhook URL and a boolean value for each event type that you want to enable or disable.
 
@@ -120,7 +144,7 @@ Most webhooks will share the same base JSON structure:
 
 ```json title="Common JSON format for Dolby.io Real-time Streaming Webhooks"
 {
-  "type": "...",              // Webhook type: "feeds", "recording", "thumbnail", "transcdoder" or "viewerConnection"
+  "type": "...",              // Webhook type: "feeds", "recording", "thumbnail", "transcoder" or "viewerConnection"
   "event": "...",             // Event name: "started", "ended", etc.
   "timestamp": 1638463486489, // Timestamp (epoch) when the request was sent
   "data": {                   // Event data depending on the type
@@ -131,7 +155,7 @@ Most webhooks will share the same base JSON structure:
 
 See the [Feed Hooks](/millicast/webhooks/feeds-webhooks.md) and [Media Hooks](/millicast/webhooks/media-webhooks.md) guides for additional details on what **data** to expect and how to interpret the **event**.
 
-The [Thumbnail](/millicast/webhooks/thumbnail-webhooks.md) hook does not use this schema and instead only sends the captured image.
+The [Thumbnail](/millicast/webhooks/thumbnail-webhooks.mdx) hook does not use this schema and instead only sends the captured image.
 
 The [ViewerConnection](/millicast/webhooks/viewerconnection-webhooks.md) hook guide explains how to use viewer connection events to automate your workflow.
 
