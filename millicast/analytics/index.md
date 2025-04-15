@@ -41,7 +41,9 @@ As with all API calls to our platform you must have your API token ready, you ca
 
 Let's start by creating a new Nodejs project:
 
+```
 npm init
+```
 
 Create an app.js file that will run the code for the API calls. Then add the following code snippet to your app.js file.
 
@@ -140,8 +142,7 @@ Next, we can create our client html code that will do the actual call to our nod
 
 First open your editor and create a blank html file, save it as index.html. In your editor add the following bit of code into your index.html file.
 
-```html
-
+```html title="index.html"
 <html lang="en">
 <head>
         <meta charset="UTF-8">
@@ -274,7 +275,7 @@ app.get( '/usage', (req, resp, next) => {
         apiReq.end();
 });
 
-app.**get( '/streamusage'**, (req, resp, next) => {
+app.get('/streamusage', (req, resp, next) => {
         console.log('/streamusage - streamName:',req.query.streamNames,'time start:',req.query.start,' stop:',req.query.stop);
         // Millicast API request details
         let **streamNames** = req.query.streamNames;
@@ -327,8 +328,7 @@ Notice, in the method, where we receive the start, stop and streamName strings, 
 
 Below is a sample of the new client index.html code.
 
-```html
-
+```html title="index.html"
 <html lang="en">
 <head>
         <meta charset="UTF-8">

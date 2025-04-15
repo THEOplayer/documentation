@@ -88,7 +88,7 @@ The timecode of the stream is displayed as an indication of the duration for the
 
 #### Settings
 
-From the settings menu you can open the [Media Stats](/millicast/analytics/media-stats.md) and also see the **version** of the player. The details contained there can be very helpful with diagnosing any broadcast or playback issues by the support team. There is also an option to directly _Report Playback Issue_ should something happen.
+From the settings menu you can open the [Media Stats](/millicast/analytics/media-stats.mdx) and also see the **version** of the player. The details contained there can be very helpful with diagnosing any broadcast or playback issues by the support team. There is also an option to directly _Report Playback Issue_ should something happen.
 
 In addition, if [Multi-view](/millicast/playback/multiview.md) is enabled then there will be controls to adjust the layout for multiple incoming streams.
 
@@ -145,4 +145,4 @@ See [Stream Preview](/millicast/playback/customize-your-player.md) for more deta
 
 ### Settings
 
-You can also launch the [Media Stats](/millicast/analytics/media-stats.md) to get diagnostic details about the stream performance from the perspective of the end-user audience experienced during playback.
+You can also launch the [Media Stats](/millicast/analytics/media-stats.mdx) to get diagnostic details about the stream performance from the perspective of the end-user audience experienced during playback.
