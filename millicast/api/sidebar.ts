@@ -236,7 +236,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "MediaAssets",
+      label: "Media Assets",
       items: [
         {
           type: "doc",
@@ -440,25 +440,122 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "PublishTokenV2",
+      label: "Publish Token",
       items: [
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-read-token",
+          label: "Read Token",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-delete-token",
+          label: "Delete Token",
+          className: "api-method delete",
+        },
         {
           type: "doc",
           id: "api/publish-token-v-2-update-token",
           label: "Update Token",
           className: "api-method put",
         },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-list-tokens",
+          label: "List Tokens",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-list-tokens-by-name",
+          label: "List Tokens By Name",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-list-tokens-by-cluster",
+          label: "List Tokens By Cluster",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-create-token",
+          label: "Create Token",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-get-active-token-by-stream-id",
+          label: "Get active Publish Token ID",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-get-all-active-tokens-by-account",
+          label: "Get all active Publish Token IDs",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-disable-tokens",
+          label: "Disable Publish Token(s)",
+          className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/publish-token-v-1-update-token",
+          label: "Update Token",
+          className: "menu__list-item--deprecated api-method put",
+        },
       ],
     },
     {
       type: "category",
-      label: "SubscribeTokenV2",
+      label: "Subscribe Token",
       items: [
+
+        {
+          type: "doc",
+          id: "api/subscribe-token-v-1-read-token",
+          label: "Read Token",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/subscribe-token-v-1-delete-token",
+          label: "Delete Token",
+          className: "api-method delete",
+        },
         {
           type: "doc",
           id: "api/subscribe-token-v-2-update-token",
           label: "Update Token",
           className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api/subscribe-token-v-1-list-tokens",
+          label: "List Tokens",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/subscribe-token-v-1-list-tokens-by-name",
+          label: "List Tokens By Name",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/subscribe-token-v-1-create-token",
+          label: "Create Token",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/subscribe-token-v-1-update-token",
+          label: "Update Token",
+          className: "menu__list-item--deprecated api-method put",
         },
       ],
     },
@@ -548,7 +645,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "TranscoderScheduler",
+      label: "Transcoder Scheduler",
       items: [
         {
           type: "doc",
@@ -608,73 +705,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "PublishTokenV1",
-      items: [
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-read-token",
-          label: "Read Token",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-delete-token",
-          label: "Delete Token",
-          className: "api-method delete",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-update-token",
-          label: "Update Token",
-          className: "menu__list-item--deprecated api-method put",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-list-tokens",
-          label: "List Tokens",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-list-tokens-by-name",
-          label: "List Tokens By Name",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-list-tokens-by-cluster",
-          label: "List Tokens By Cluster",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-create-token",
-          label: "Create Token",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-get-active-token-by-stream-id",
-          label: "Get active Publish Token ID",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-get-all-active-tokens-by-account",
-          label: "Get all active Publish Token IDs",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/publish-token-v-1-disable-tokens",
-          label: "Disable Publish Token(s)",
-          className: "api-method patch",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "RecordFiles",
+      label: "Record Files",
       items: [
         {
           type: "doc",
@@ -752,48 +783,6 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/stream-reprioritize-stream",
           label: "Reprioritize an active stream",
-          className: "api-method post",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "SubscribeTokenV1",
-      items: [
-        {
-          type: "doc",
-          id: "api/subscribe-token-v-1-read-token",
-          label: "Read Token",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/subscribe-token-v-1-delete-token",
-          label: "Delete Token",
-          className: "api-method delete",
-        },
-        {
-          type: "doc",
-          id: "api/subscribe-token-v-1-update-token",
-          label: "Update Token",
-          className: "menu__list-item--deprecated api-method put",
-        },
-        {
-          type: "doc",
-          id: "api/subscribe-token-v-1-list-tokens",
-          label: "List Tokens",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/subscribe-token-v-1-list-tokens-by-name",
-          label: "List Tokens By Name",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/subscribe-token-v-1-create-token",
-          label: "Create Token",
           className: "api-method post",
         },
       ],
