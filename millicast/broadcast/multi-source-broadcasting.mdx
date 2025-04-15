@@ -18,7 +18,7 @@ Multi-source can ingest contribution streams from sources such as RTMP and SRT. 
 Multi-source broadcasting is accomplished by enabling a token for multi-source and then publishing multiple quality layers or contributing sources using the same **publishing token** and **stream name**, but each with a unique **source id** and **simulcast id**. If you do not provide a source id, a second feed will overwrite the previous stream, which is common when trying to setup a [Redundant Ingest ](/millicast/broadcast/redundant-ingest/index.mdx) in case of an encoder failure.
 
 :::tip Enable Multi-source
-To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.md) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.md#advanced-settings) enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
+To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.mdx#advanced-settings) enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
 
 Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multiview.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).
 :::
@@ -48,7 +48,7 @@ See the [Simulcast](/millicast/using-webrtc-simulcast) guide for additional deta
 
 ### Publishing sources
 
-You can configure multiple publishing sources to enable simulcast or provide a multi-view experience of different content quickly using the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md). You can also use the multi-source hosted player, which is a streaming video player, as a standalone web application or embed it into your website with an `<iframe>`.
+You can configure multiple publishing sources to enable simulcast or provide a multi-view experience of different content quickly using the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.mdx). You can also use the multi-source hosted player, which is a streaming video player, as a standalone web application or embed it into your website with an `<iframe>`.
 
 ### Multiple Points of View
 
@@ -68,7 +68,7 @@ See [Publish Parameters](/millicast/broadcast/index.mdx#publish-parameters) for 
 :::tip Use Multi-Source Builder
 The Streaming Dashboard includes a multi-source builder tab to help with constructing multi-source URLs. With this tool, you can generate the proper URLs to use for your broadcast encoders. The methodology is described below for more complex workflows and automation.
 
-Learn more about how to use the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md).
+Learn more about how to use the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.mdx).
 :::
 
 #### Multi-source RTMP
@@ -241,13 +241,13 @@ The settings menu in the hosted player lets you modify media settings, which inc
 
 From the dashboard broadcast application that opens, click the green `Start` button to begin a broadcast. You will need to give permission to access your microphone and camera. Once the stream begins, you can see the _LIVE_ box in the upper right corner and a timecode for the duration of the stream above the `Stop` button.
 
-See the [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) guide to learn more details about the options available for configuring the publish token and working with this dashboard broadcast application.
+See the [How to Broadcast in Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) guide to learn more details about the options available for configuring the publish token and working with this dashboard broadcast application.
 
 ## Playback
 
 There are multiple ways to playback and consume a multi-view feed:
 
-- Use the [Dolby-hosted player](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) (easiest for testing web)
+- Use the [Dolby-hosted player](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) (easiest for testing web)
 - Use the Dolby-published iOS and Android [Interactive Player Apps](https://dolby.io/project-gallery/interactive-player-apps/)
 - Build your own [multi-view app for Web](/millicast/getting-started/creating-real-time-streaming-web-app.mdx)
 - Build your own [multi-view app with the SDK](/millicast/client-sdks/index.mdx)

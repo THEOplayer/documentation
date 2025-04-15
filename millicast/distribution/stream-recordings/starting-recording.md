@@ -13,7 +13,7 @@ Recording can be started when using the [Dashboard](#recording-from-the-dolbyio-
 >
 > If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 
-1. Enable recording on a [publish token](/millicast/streaming-dashboard/managing-your-tokens.md) by clicking **Record broadcast** when creating a new token.
+1. Enable recording on a [publish token](/millicast/streaming-dashboard/managing-your-tokens.mdx) by clicking **Record broadcast** when creating a new token.
 
 ![](../../assets/img/Capture_decran_2023-07-19_a_5.33.53_PM.png)
 
@@ -25,7 +25,7 @@ You can also update your existing publish token by enabling the **Record** optio
 >
 > The recording property cannot be updated while the token is being used in a live broadcast; you must stop broadcasting to update it.
 
-2. Go into the [Dolby.io Live broadcast dashboard ](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md)and click the **Broadcast** button. Once the record feature is active, a red **Record** indicator will show up next to the **Start** button. Clicking the **Broadcast** button before starting streaming results in recording the stream prior to beginning the stream.
+2. Go into the [Dolby.io Live broadcast dashboard ](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx)and click the **Broadcast** button. Once the record feature is active, a red **Record** indicator will show up next to the **Start** button. Clicking the **Broadcast** button before starting streaming results in recording the stream prior to beginning the stream.
 3. Click the **Start** button to begin broadcasting with recording enabled.
 
 ![](../../assets/img/Capture_decran_2023-07-19_a_5.47.51_PM.png)

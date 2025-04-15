@@ -33,7 +33,7 @@ From the **Server** dropdown menu, you can select _Global_ to have your broadcas
 
 ![](../assets/img/20a4c2d052b2cc281303150422afa731af6be4c982e171fb79456513-obs-30-stream-server-key.png)
 
-You'll need to copy your _RTMP publish stream name_ from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) and enter it as the **Stream Key**. For RTMP, this value would be the name of your stream with the publishing token as a query parameter and can be found on the Publishing tab.
+You'll need to copy your _RTMP publish stream name_ from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) and enter it as the **Stream Key**. For RTMP, this value would be the name of your stream with the publishing token as a query parameter and can be found on the Publishing tab.
 
 ##### 3. Start Streaming
 
@@ -53,7 +53,7 @@ Open profile **Settings** and select the **Stream** section. From the **Service*
 
 ##### 2. Copy WHIP Settings
 
-From the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) you can select the _Publishing_ tab to find the WHIP settings you'll need to configure your broadcast.
+From the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) you can select the _Publishing_ tab to find the WHIP settings you'll need to configure your broadcast.
 
 | OBS Setting  | Streaming Dashboard                              |
 | :----------- | :----------------------------------------------- |
@@ -88,7 +88,7 @@ Select _Custom_ for the **Service**.
 
 ##### 2. Enter Publish Token Settings
 
-You'll need to gather a few details from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) for your publish token.
+You'll need to gather a few details from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) for your publish token.
 
 ![](../assets/img/obs-set-srt.png)
 
@@ -119,7 +119,7 @@ The plugin can also be used with standalone encoders and basic configurations (b
 
 > 📘 Enable multisource on your publish token
 >
-> Make sure you have enabled multi-source on your publish token. For more information explore the [Multi-source guide](/millicast/broadcast/multi-source-broadcasting.mdx). The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) may also be particularly helpful to get your settings.
+> Make sure you have enabled multi-source on your publish token. For more information explore the [Multi-source guide](/millicast/broadcast/multi-source-broadcasting.mdx). The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.mdx) may also be particularly helpful to get your settings.
 
 #### 3. Add RTMP Destinations
 

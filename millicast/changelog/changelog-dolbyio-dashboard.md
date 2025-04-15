@@ -36,7 +36,7 @@ You can now configure RTMPS endpoints in the re-stream section of the distributi
 
 #### Monitor Re-Stream Events
 
-A new event type is now available in the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) event log, enabling you to view re-stream related events and errors in real-time as they occur.
+A new event type is now available in the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.mdx) event log, enabling you to view re-stream related events and errors in real-time as they occur.
 
 ![](../assets/img/252e36192f8369547fff49a7af109c0eeaf9f6d7fde269741cb1f807674258d9-dashboard-live-monitor-restream-events.png)
 
@@ -114,7 +114,7 @@ You can adjust the playback buffer to make trade-offs between quality and latenc
 
 #### Live Monitoring
 
-Introduced the [Live Monitoring dashboard](/millicast/streaming-dashboard/live-monitoring.md), which allows customers to view information about stream ingests to quickly diagnose and triage any issues.
+Introduced the [Live Monitoring dashboard](/millicast/streaming-dashboard/live-monitoring.mdx), which allows customers to view information about stream ingests to quickly diagnose and triage any issues.
 
 ## 2023-10-27
 
@@ -122,4 +122,4 @@ Introduced the [Live Monitoring dashboard](/millicast/streaming-dashboard/live-m
 
 #### Multi-source Builder
 
-Introduced the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.md) that allows you to build and configure multiple publishing sources from the Streaming Dashboard. You can add multiple SRT, RTMP or WebRTC sources and use the user-interface to configure multi-bitrate publishing. The Multi-source tab also includes a URL to launch the hosted player with the multi-viewer configuration, customizable `iframe` code to embed the hosted player into your webpage, and the ability to export your multi-source configuration as a file.
+Introduced the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.mdx) that allows you to build and configure multiple publishing sources from the Streaming Dashboard. You can add multiple SRT, RTMP or WebRTC sources and use the user-interface to configure multi-bitrate publishing. The Multi-source tab also includes a URL to launch the hosted player with the multi-viewer configuration, customizable `iframe` code to embed the hosted player into your webpage, and the ability to export your multi-source configuration as a file.

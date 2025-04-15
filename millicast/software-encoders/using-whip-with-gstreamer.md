@@ -19,13 +19,13 @@ See the official [gstreamer.freedesktop.org](https://gstreamer.freedesktop.org/)
 
 ## Get your Dolby.io WHIP publish URL
 
-You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [Dolby.io Dashboard](/millicast/streaming-dashboard/index.md), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
+You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [Dolby.io Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
 
 > 👍 Getting Started
 >
 > If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
-See the [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
+See the [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
 - WHIP endpoint
 - Bearer token
@@ -42,7 +42,7 @@ In the examples below, these values are referenced as environment variables. You
 
 ## Get your Dolby.io WHEP playback URL
 
-The **WHEP endpoint** is available from the _Playback_ tab of your publish token in the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
+The **WHEP endpoint** is available from the _Playback_ tab of your publish token in the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
 It will follow a pattern similar to:
 
@@ -66,7 +66,7 @@ The [autovideosink](https://gstreamer.freedesktop.org/documentation/autodetect/a
 
 - `whep-endpoint`: should be set with the Dolby.io [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint
 
-You can use the [Hosted Viewer](/millicast/streaming-dashboard/index.md) and [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) to test your setups.
+You can use the [Hosted Viewer](/millicast/streaming-dashboard/index.mdx) and [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) to test your setups.
 
 ### How-to broadcast the video test source
 

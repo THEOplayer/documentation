@@ -7,7 +7,7 @@ slug: /webhooks
 
 ## Creating webhooks
 
-Defining a webhook requires a **Webhook URL**. This should be any publicly reachable _https\://_ endpoint address that is running a service capable of receiving `POST` requests. You can create a webhook using either the [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or the [Webhooks API](/millicast/api/webhooks-get.api.mdx).
+Defining a webhook requires a **Webhook URL**. This should be any publicly reachable _https\://_ endpoint address that is running a service capable of receiving `POST` requests. You can create a webhook using either the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) or the [Webhooks API](/millicast/api/webhooks-get.api.mdx).
 
 You choose from several _types_ of events that can be sent to your service.
 
@@ -23,7 +23,7 @@ Each webhook generates a **Webhook Secret**. This secret can be used for signatu
 
 ### How-to add a webhook with the streaming dashboard
 
-From the [Streaming Dashboard](/millicast/streaming-dashboard/index.md), navigate to the Webhooks tab and click the `CREATE` button.
+From the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the Webhooks tab and click the `CREATE` button.
 
 ![](../assets/img/dashboard-webhooks.png)
 

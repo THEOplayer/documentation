@@ -21,7 +21,7 @@ To start off, download the [latest version of FlowCaster](https://www.drastic.tv
 
 ![](../assets/img/a51bd5e-Flowcaster-Millicast.png)
 
-Once inside the streaming dashboard,[create a token](/millicast/streaming-dashboard/managing-your-tokens.md) in your Dolby.io dashboard. You will need the stream name and token for the stream label.
+Once inside the streaming dashboard,[create a token](/millicast/streaming-dashboard/managing-your-tokens.mdx) in your Dolby.io dashboard. You will need the stream name and token for the stream label.
 
 ![](../assets/img/flowcaster-whip-token.png)
 

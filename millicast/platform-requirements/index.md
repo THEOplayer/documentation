@@ -30,9 +30,9 @@ We also recommend whitelisting the following domains:
 
 Some customers have firewalls in place and need to whitelist IP servers for publishing content to Dolby's cloud. We don't publish a list of IP addresses as we cannot guarantee the same range as we dynamically scale up and down the service.
 
-> 👍 Dedicated IP Addresses
->
-> Dedicated publishing ingest servers are possible on enterprise plans at an additional charge. If you would like to use this capability on your projects, please [submit a support ticket](https://support.dolby.io/hc/en-au) or reach out to your [sales/solutions](https://dolby.io/contact/) contact to discuss.
+:::tip Dedicated IP Addresses
+Dedicated publishing ingest servers are possible on enterprise plans at an additional charge. If you would like to use this capability on your projects, please [submit a support ticket](https://support.dolby.io/hc/en-au) or reach out to your [sales/solutions](https://dolby.io/contact/) contact to discuss.
+:::
 
 ### IP Addresses with Standard Publishing
 

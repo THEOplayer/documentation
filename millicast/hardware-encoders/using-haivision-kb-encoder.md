@@ -18,7 +18,7 @@ To get started, log into your [Dolby.io Streaming Account](https://dashboard.dol
 
 1. Select **Live Broadcast** from the left menu.
 
-2. Create your [Publishing Token](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token).
+2. Create your [Publishing Token](/millicast/streaming-dashboard/managing-your-tokens.mdx#create-a-publish-token).
 
 3. Select the _Publishing_ tab to access your [SRT Publish settings](/millicast/broadcast/using-srt.mdx).
 

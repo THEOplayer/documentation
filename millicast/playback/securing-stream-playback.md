@@ -3,17 +3,17 @@ title: 'Securing Stream Playback'
 slug: /securing-stream-playback
 ---
 
-[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled.
+[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.mdx#create-a-publish-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled.
 
 To view a secured stream you first need to create a Subscribe token. With your Subscribe token in hand, you can then use it to authenticate a connection and view the broadcast. This guide outlines [how to create a token](/millicast/playback/securing-stream-playback.md#creating-a-subscribe-token-to-playback-a-secure-stream) and [how to view a secure stream](/millicast/playback/securing-stream-playback.md#viewing-a-secured-stream).
 
 ## Creating a subscribe token to playback a secure stream
 
-To secure broadcast playback, you need to enable the **Secure Viewer** setting when creating a Publishing token. For more information on enabling Secure Viewer, explore the [Creating a Publishing Token guide](/millicast/streaming-dashboard/managing-your-tokens.md#create-a-publish-token).
+To secure broadcast playback, you need to enable the **Secure Viewer** setting when creating a Publishing token. For more information on enabling Secure Viewer, explore the [Creating a Publishing Token guide](/millicast/streaming-dashboard/managing-your-tokens.mdx#create-a-publish-token).
 
 Subscribe tokens are used to authenticate access to a "Secure stream". When enabled, streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains. Even though restricting access to streamed content in selected geo-locations is possible using the publish token, the subscribe token lets you add additional geo-blocking rules.
 
-To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.md), which outlines how to create a token in the Dolby.io dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
+To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.mdx), which outlines how to create a token in the Dolby.io dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
 
 `fff04a5a1c02b2b8d48a9133e8461985aa482066cc3e9ed487baaac89588e26f`
 
@@ -256,7 +256,7 @@ Using code from the [2. Create a Streaming Web App](/millicast/getting-started/c
 </html>
 ```
 
-When you run the web app, you'll see three text boxes to input an [account ID](/millicast/streaming-dashboard/managing-your-tokens.md), [Livestream Name](/millicast/streaming-dashboard/managing-your-tokens.md), and [API Secret key](/millicast/streaming-dashboard/index.md#settings).
+When you run the web app, you'll see three text boxes to input an [account ID](/millicast/streaming-dashboard/managing-your-tokens.mdx), [Livestream Name](/millicast/streaming-dashboard/managing-your-tokens.mdx), and [API Secret key](/millicast/streaming-dashboard/index.mdx#settings).
 
 ![](../assets/img/083b1aa-image.png)
 
@@ -270,7 +270,7 @@ When you try to connect to a stream that has not yet begun to broadcast, you may
 
 ### 401 (Unauthorized)
 
-This error occurs if the Subscribe token, Account ID, or Stream Name is incorrect when attempting to join a stream. Check that you are correctly creating a [Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md), and using the correct [Stream Name](/millicast/streaming-dashboard/managing-your-tokens.md) and [Account ID](/millicast/streaming-dashboard/managing-your-tokens.md).
+This error occurs if the Subscribe token, Account ID, or Stream Name is incorrect when attempting to join a stream. Check that you are correctly creating a [Subscribe token](/millicast/streaming-dashboard/subscribe-tokens.mdx), and using the correct [Stream Name](/millicast/streaming-dashboard/managing-your-tokens.mdx) and [Account ID](/millicast/streaming-dashboard/managing-your-tokens.mdx).
 
 ### CORS related errors
 

@@ -496,7 +496,7 @@ Notice, the data sent to the server is in the same format that is expected on th
 
 ## Viewers per stream
 
-Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API](/millicast/api/analytics-streams-geo-series). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.md#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
+Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API](/millicast/api/analytics-streams-geo-series). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.mdx#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
 
 > 🚧 Get your data before it expires!
 >

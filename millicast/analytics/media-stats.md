@@ -3,7 +3,7 @@ title: 'Media Stats'
 slug: /media-stats
 ---
 
-Both the [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Viewer](/millicast/playback/hosted-viewer.md) provide a **Media Stats** option to open a modal overlay during broadcast or playback that displays information that can be helpful in judging the performance or diagnosing issues when troubleshooting.
+Both the [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) and [Hosted Viewer](/millicast/playback/hosted-viewer.md) provide a **Media Stats** option to open a modal overlay during broadcast or playback that displays information that can be helpful in judging the performance or diagnosing issues when troubleshooting.
 
 - **RTT**: Round trip time in milliseconds for sending and receiving the stream.
 - **Video Resolution**: Width and height of the video frame.

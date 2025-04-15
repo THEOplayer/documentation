@@ -47,7 +47,7 @@ With vMix you have the ability to send a live stream simultaneously to up to thr
 
 > 📘 Enable Multisource for Your Dolby.io Publish Token
 >
-> To utilize [multisource](/millicast/broadcast/multi-source-broadcasting.mdx) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/streaming-dashboard/managing-your-tokens.md).
+> To utilize [multisource](/millicast/broadcast/multi-source-broadcasting.mdx) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx).
 
 #### Streaming destination 1: 1080p
 

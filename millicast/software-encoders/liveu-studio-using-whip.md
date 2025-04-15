@@ -15,7 +15,7 @@ See the official [LiveU Studio](https://www.liveu.tv/support) site for documenta
 
 ## How-to use LiveU with WHIP
 
-To get started, [create a token](/millicast/streaming-dashboard/managing-your-tokens.md) in your Dolby.io dashboard. On the Publishing tab of the newly created token, copy the WHIP endpoint URL and your Publishing token as shown in the [WebRTC | WHIP guide](/millicast/broadcast/webrtc-whip.mdx).
+To get started, [create a token](/millicast/streaming-dashboard/managing-your-tokens.mdx) in your Dolby.io dashboard. On the Publishing tab of the newly created token, copy the WHIP endpoint URL and your Publishing token as shown in the [WebRTC | WHIP guide](/millicast/broadcast/webrtc-whip.mdx).
 
 Open LiveU Studio and click on "PUBLISH" in the left-side menu. Click on "ADD OR EDIT PUBLISHING POINTS".
 

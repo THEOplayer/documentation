@@ -14,7 +14,7 @@ import ReStream from '../assets/img/f4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f8
 
 ## Overview
 
-To distribute content to an RTMP(S) or SRT output source you will need to update the settings of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md). The publish token defines a `restream` property with a list of targets that are identified by:
+To distribute content to an RTMP(S) or SRT output source you will need to update the settings of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx). The publish token defines a `restream` property with a list of targets that are identified by:
 
 - **url** - the media server that is able to accept RTMP(S) or SRT ingest including the rtmp://, rtmps:// and srt:// protocols and port number
 - **key** - the url path and/or additional parameters that should be passed to the server to uniquely identify the incoming RTMP(S) or SRT stream
@@ -46,7 +46,7 @@ If the feature is enabled for your account plan, you'll be able to add, remove, 
 
 ### Using the REST API
 
-When creating or updating [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.md) you will define a `restream` property. This is an array that takes a list of dictionaries each defining the **url**, **key**, and **label** for any RTMP(S) or SRT destination targets.
+When creating or updating [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx) you will define a `restream` property. This is an array that takes a list of dictionaries each defining the **url**, **key**, and **label** for any RTMP(S) or SRT destination targets.
 
 ```json
 {
@@ -83,7 +83,7 @@ If you are publishing [redundant ingest](/millicast/broadcast/redundant-ingest/i
 
 ## Troubleshooting
 
-You can check the status of re-streams by visiting the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) section of the dashboard. You should see a `Re-stream` token as confirmation.
+You can check the status of re-streams by visiting the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.mdx) section of the dashboard. You should see a `Re-stream` token as confirmation.
 
 import ReStreamMonitoring from '../assets/img/dashboard-re-stream-monitoring-token.png';
 
@@ -105,7 +105,7 @@ The re-stream feed is only showing audio or video. This may be because you are u
 
 ### Re-stream is Not Working with Web Broadcasts
 
-If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) dashboard app or a custom built app using the [Web SDK](/millicast/client-sdks/web.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/using-srt.mdx) and [RTMP(S)](/millicast/broadcast/using-rtmp-and-rtmps.mdx) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
+If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) dashboard app or a custom built app using the [Web SDK](/millicast/client-sdks/web.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/using-srt.mdx) and [RTMP(S)](/millicast/broadcast/using-rtmp-and-rtmps.mdx) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
 
 :::tip We're Here to Help
 For any other issues not covered here, please reach out to your sales and solutions team who can review server logs that may help identify any configuration issues.
