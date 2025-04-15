@@ -296,7 +296,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
-          label: 'REST API Changes',
+          label: 'REST APIs Changes',
           id: 'changelog/changelog-rest-apis',
         },
         {

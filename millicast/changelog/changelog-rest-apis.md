@@ -1,4 +1,4 @@
-# REST API Changes
+# REST APIs Changes
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 

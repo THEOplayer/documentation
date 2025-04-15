@@ -50,7 +50,7 @@ You can record your broadcasts if you are using 3rd party applications, such as 
 
 To start recording a stream using any Client SDK, enable recording in your publish token in the dashboard and set an optional recording parameter to true in publisher options, as in the following examples:
 
-```cplusplus
+```cpp
 millicast::Publisher::Option options;
 options.record_stream = true;
 publisher->connect();

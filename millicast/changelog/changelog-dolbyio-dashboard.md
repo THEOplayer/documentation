@@ -14,7 +14,7 @@ On the dashboard, users can now set the account-wide expiration rules rules for 
 
 These settings are available in the streaming dashboard under `Settings > Media`
 
-![](../assets/img/c96955004739aee7d08248a850a79c53d8774551728b5c8eadcd488f406b4e39-Screenshot_2024-12-12_at_9.59.17_AM.png
+![](../assets/img/c96955004739aee7d08248a850a79c53d8774551728b5c8eadcd488f406b4e39-Screenshot_2024-12-12_at_9.59.17_AM.png)
 
 ### Hosted Player
 

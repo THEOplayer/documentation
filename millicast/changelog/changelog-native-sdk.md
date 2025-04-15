@@ -2,9 +2,9 @@
 
 Updates to the [Native SDK](https://github.com/millicast/millicast-native-sdk) for Android, iOS, macOS, Linux, and Windows applications.
 
-> 📘 Release History
->
-> You can find the full history of previous releases with downloadable assets from the [millicast/millicast-native-sdk](https://github.com/millicast/millicast-native-sdk/releases) repository.
+:::tip Release History
+You can find the full history of previous releases with downloadable assets from the [millicast/millicast-native-sdk](https://github.com/millicast/millicast-native-sdk/releases) repository.
+:::
 
 ## 2024-08-21 | Native SDK [2.0.0](https://github.com/millicast/millicast-native-sdk/releases/tag/v2.0.0)
 
@@ -53,7 +53,7 @@ Task {
 }
 ```
 
-```cplusplus
+```cpp
 std::vector<millicast::EventConnectionPtr> handlers;
 handlers.push_back(viewer->add_event_handler(
       [](const millicast::Viewer::RtsTrackAdded& evt) {
@@ -91,7 +91,7 @@ Desktop
 
 To better manage tradeoffs with latency and quality, you can use the `ForcePlayoutDelay` to set a **min** and **max** buffer size.
 
-```cplusplus
+```cpp
   /**
    * @brief Structure describing playout delay to be enforced on the client.
    * https://webrtc.googlesource.com/src/+/refs/heads/main/docs/native-code/rtp-hdrext/playout-delay
@@ -113,7 +113,7 @@ To better manage tradeoffs with latency and quality, you can use the `ForcePlayo
 
 Improve logger so that when applications provide their own logging callback when using the set_logger function default logging to stderr will be disabled (unless force enabled by app):
 
-```cplusplus
+```cpp
 MILLICAST_API static void set_logger(
     std::function<void(const std::string& component,
                        const std::string& msg,
@@ -124,7 +124,7 @@ MILLICAST_API static void set_logger(
 
 The logger method's have been removed. Only a method to set the logger callback remains, which is the one which also takes the component being logged in the lambda
 
-```cplusplus
+```cpp
 class MCLoggerOSLog: NSObject, MCLoggerDelegate {
   func onLog(withMessage message: String, level: MCLogLevel) {
     switch(level) {
@@ -190,7 +190,7 @@ MILLICAST_API @interface MCStreamDetails: NSObject
 @end
 ```
 
-```cplusplus
+```cpp
 struct MILLICAST_API StreamViewDetails {
   std::string stream_view_id;
   std::string subscriber_id;
@@ -510,7 +510,7 @@ This release introduces several braking changes and requires familiarizing with 
 
 The [on_layers](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_viewer_listener.html#ada345cbb1f379fc37b1a5bbbf13e33e4) event has a new signature to accept an array of strings for the inactive layers. The following code presents the current signature of the callback:
 
-```cplusplus
+```cpp
 virtual void on_layers( const std::string& mid,
       const std::vector<ViewerLayerData>& active_layers,
       const std::vector<std::string>& inactive_layers) = 0;
@@ -544,7 +544,7 @@ data class Layers(
 
 Values of the [ViewerLayerData](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_viewer_layer_data.html) structure that may not be present for a layer, such as spatial ID or temporal ID, are now optional. The following example presents the new signature of the structure:
 
-```cplusplus
+```cpp
 struct ViewerLayerData {
   struct Resolution {
     int width;
@@ -671,7 +671,7 @@ data class Layers(
 
 The auto reconnect property is removed from publisher and subscriber options in favour of using connection options. Use **ConnectionOptions** to set the **autoReconnect** ([Android](https://millicast.github.io/doc/latest/android/android/com.millicast.clients/-connection-options/auto-reconnect.html?query=val%20autoReconnect:%20Boolean), [iOS](https://millicast.github.io/doc/latest/cpp/interface_m_c_connection_options.html#af9e0ed6b2affd725634db6d158ea7ab3), [Desktop](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_client_connection_options.html#a78e72d74ccdbb7df4e85725a067b83e1)) property:
 
-```cplusplus
+```cpp
 //file: millicast-sdk/client.h
 
 struct MILLICAST_API ClientConnectionOptions {
@@ -732,7 +732,7 @@ This release introduces several braking changes and requires familiarizing with 
 
 The `millicast::ViewerListener::on_layers` event has a new signature to accept an array of strings for the `inactive` layers. The following code presents the current signature of the callback:
 
-```cplusplus
+```cpp
 virtual void on_layers( const std::string& mid,
       const std::vector<ViewerLayerData>& active_layers,
       const std::vector<std::string>& inactive_layers) = 0;
@@ -766,7 +766,7 @@ data class Layers(
 
 Values of the `millicast::ViewerLayerData` structure that may not be present for a layer, such as spatial ID or temporal ID, are now optional. The following example presents the new signature of the structure:
 
-```cplusplus
+```cpp
 struct ViewerLayerData {
   struct Resolution {
     int width;
@@ -892,7 +892,7 @@ data class Layers(
 
 The `auto_reconnect` property is no longer available in Publisher and Subscriber options. Use `ConnectionOptions` to set the `auto_reconnect` property, as in the following examples:
 
-```cplusplus
+```cpp
 //file: millicast-sdk/client.h
 
 struct MILLICAST_API ClientConnectionOptions {
