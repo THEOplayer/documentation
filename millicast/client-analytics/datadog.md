@@ -24,9 +24,7 @@ When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-mon
 Include the browser agent:
 
 ```html
-<script type="text/javascript"
-        src="https://www.datadoghq-browser-agent.com/us1/v5/datadog-logs.js">
-</script>
+<script type="text/javascript" src="https://www.datadoghq-browser-agent.com/us1/v5/datadog-logs.js"></script>
 ```
 
 Early in your application you will need to initialize the agent with details from your Datadog account. You'll need your **clientToken** and **site**.
