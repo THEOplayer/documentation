@@ -5,9 +5,9 @@ slug: /broadcasting-teradek-vidiu
 
 **Teradek** is a designer and manufacturer of professional high-end video equipment and solutions for creating and sharing content. Teradek offers a range of support for different broadcast standards and protocols, including support for [RTMP, RTMPS](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [NDI](/millicast/broadcast/using-ndi.md), all of which can be distributed via the Dolby.io real-time streaming CDN.
 
-> 👍 Getting Started with RTMP
->
-> If you haven't already, begin by following the [RTMP Getting Started](/millicast/broadcast/using-rtmp-and-rtmps.mdx) tutorial. You'll need your _publish token_ and _stream name_ for the steps described below.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to start your first broadcast. You'll need your _RTMP publish path_ and _RTMP publish stream name_ for the steps described below.
+:::
 
 See the official [Teradek](https://teradek.com/) site for documentation, installation instructions, and additional support.
 
@@ -19,11 +19,19 @@ To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a D
 
 From your VidiU app on your mobile device, select `Device > Settings > Broadcast > Platform`. After Platform, select `RTMP(S)` at the bottom of the menu.
 
-![](../assets/img/0a7f149-vidiu1.png)
+import Vidiu1 from '../assets/img/0a7f149-vidiu1.png';
+
+<div class="center-container">
+  <img src={Vidiu1} width="400" />
+</div>
 
 Select "Setup new Destination".
 
-![](../assets/img/094b7e2-vidiu2.png)
+import Vidiu2 from '../assets/img/094b7e2-vidiu2.png';
+
+<div class="center-container">
+  <img src={Vidiu2} width="400" />
+</div>
 
 Enter your Dolby.io Real-time Streaming RTMP or RTMPS path, and your RTMP publish stream name:
 
@@ -34,7 +42,11 @@ Enter your Dolby.io Real-time Streaming RTMP or RTMPS path, and your RTMP publis
 - For example, StreamName would look similar to:  
   `myStreamName?token=3bc330607a15a0ecebebd8c9ee2a559fd143c937174bd276e213a96425bb107e`
 
-![](../assets/img/5fab6f1-vidiu3.png)
+import Vidiu3 from '../assets/img/5fab6f1-vidiu3.png';
+
+<div class="center-container">
+  <img src={Vidiu3} width="400" />
+</div>
 
 With the credentials added, you're ready to start your broadcast. The stream can be started from the app or via the "broadcast" button on the physical Vidiu encoder.
 
@@ -53,7 +65,11 @@ To get started, you'll have to [login](https://dashboard.dolby.io/signup) to a D
 - Set the StreamName as your RTMP publish stream name. For example:  
   `myStreamName?token=3bc330607a15a0ecebebd8c9ee2a559fd143c937174bd276e213a96425bb107e`
 
-![](../assets/img/18e114a-Teradek_wave.jpg)
+import TeradekWave from '../assets/img/18e114a-Teradek_wave.jpg';
+
+<div class="center-container">
+  <img src={TeradekWave} width="600" />
+</div>
 
 You can also adjust the additional settings on the Teredak Wave, such as:
 
