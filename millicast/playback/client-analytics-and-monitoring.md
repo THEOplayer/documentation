@@ -70,9 +70,9 @@ It is common practice to proactively monitor all clients for indicators of strea
 
 ### Analytics Collectors
 
-There are third-party [Client Analytics](/millicast/client-analytics/index.md) integrations available that can serve as a collector or monitoring tool for storing analytics.
+There are third-party Client Analytics integrations available that can serve as a collector or monitoring tool for storing analytics.
 
-- [Datazoom](/millicast/client-analytics/datazoom.md)
+- [Datazoom](/millicast/client-analytics/datazoom.mdx)
 - [Datadog](/millicast/client-analytics/datadog.md)
 
 The same pattern can be used with other tools such as Grafana, Splunk, New Relic, etc.

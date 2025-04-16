@@ -11,11 +11,9 @@ This page guides you on some of the metrics that are collected and setps to inte
 
 To monitor the health of your application, [client analytics](/millicast/playback/client-analytics-and-monitoring.md) for monitoring and troubleshooting are critical. You can customize Datadog with dashboards to display collected data such as:
 
-<ul class="checkBoxList">
-<li>Device analytics such as user agent, browser, operating system, device size, versions</li>
-<li>Geolocation details including country, city, ip address and network details</li>
-<li>WebRTC statistics like fps, round trip time, jitter, packet and frame loss rates, and bitrate</li>
-</ul>
+- Device analytics such as user agent, browser, operating system, device size, versions
+- Geolocation details including country, city, ip address and network details
+- WebRTC statistics like fps, round trip time, jitter, packet and frame loss rates, and bitrate
 
 When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.mdx) and [Stream Syndication](/millicast/syndication) capabilities you can effectively monitor playback issues and track viewer characteristics.
 
@@ -25,8 +23,10 @@ When combined with our [Live Monitoring](/millicast/streaming-dashboard/live-mon
 
 Include the browser agent:
 
-```javascript
-<script type="text/javascript" src="https://www.datadoghq-browser-agent.com/us1/v5/datadog-logs.js"></script>
+```html
+<script type="text/javascript"
+        src="https://www.datadoghq-browser-agent.com/us1/v5/datadog-logs.js">
+</script>
 ```
 
 Early in your application you will need to initialize the agent with details from your Datadog account. You'll need your **clientToken** and **site**.
