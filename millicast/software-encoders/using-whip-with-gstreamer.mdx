@@ -1,6 +1,7 @@
 ---
-title: 'Gstreamer'
+title: 'GStreamer'
 slug: /using-whip-with-gstreamer
+sidebar_position: 3
 ---
 
 **GStreamer** is a free open-source software project and multimedia framework to build media processing pipelines that support complex workflows. You may want to broadcast over WebRTC from a file on disk or another Real-time Streaming Protocol ([RTSP](/millicast/broadcast/rtsp.mdx)). You can originate the broadcast through GStreamer that ingests the stream utilizing [WHIP](/millicast/broadcast/webrtc-whip.mdx) or forwards with [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx).
@@ -15,15 +16,15 @@ This guide includes a number of examples:
 - GStreamer WHEP Examples
 - Simple WHIP Client
 
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+:::
+
 See the official [gstreamer.freedesktop.org](https://gstreamer.freedesktop.org/) documentation for installation instructions and additional support.
 
 ## Get your Dolby.io WHIP publish URL
 
 You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [Dolby.io Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
-
-> 👍 Getting Started
->
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 
 See the [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
@@ -32,13 +33,14 @@ See the [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast guide for more sp
 
 In the examples below, these values are referenced as environment variables. You may need to adjust how you reference these values depending on the specific `shell` you use when running GStreamer.
 
-> 🔴 Recording Streams
->
-> If your token has [recordings](/millicast/distribution/stream-recordings/index.mdx) enabled you will also want to specify the `codec` with the WHIP URL to specify one of the supported recording formats. You can append the query string at the end of the URL such as:
->
-> ```
-> https://director.millicast.com/api/whip/{Stream Name}?codec=vp8
-> ```
+:::danger Recording Streams
+If your token has [recordings](/millicast/distribution/stream-recordings/index.mdx) enabled you will also want to specify the `codec` with the WHIP URL to specify one of the supported recording formats. You can append the query string at the end of the URL such as:
+
+```
+https://director.millicast.com/api/whip/{Stream Name}?codec=vp8
+```
+
+:::
 
 ## Get your Dolby.io WHEP playback URL
 
@@ -72,7 +74,7 @@ You can use the [Hosted Viewer](/millicast/streaming-dashboard/index.mdx) and [L
 
 The [videotestsrc](https://gstreamer.freedesktop.org/documentation/videotestsrc/index.html?gi-language=c) element can be used to produce a simple test video and has a few patterns. Here is a simple example of a bouncing ball:
 
-```shell title="bash"
+```shell
 gst-launch-1.0 videotestsrc pattern=ball ! videoconvert ! x264enc ! rtph264pay ! \
   whip.sink_0 audiotestsrc wave=5 ! audioconvert ! opusenc ! rtpopuspay ! \
   whip.sink_1 whipsink name=whip \
@@ -84,11 +86,15 @@ gst-launch-1.0 videotestsrc pattern=ball ! videoconvert ! x264enc ! rtph264pay !
 
 The default `videotestsrc` shows a more complex stream that includes audio and a color test. To view this locally run `gst-launch-1.0 videotestsrc ! autovideosink`:
 
-![](../assets/img/gstreamer-videotestsrc.png)
+import GstreamerVideoTestSrc from '../assets/img/gstreamer-videotestsrc.png';
+
+<div class="center-container">
+  <img src={GstreamerVideoTestSrc} width="600" />
+</div>
 
 In order to stream this video test variation you need to specify some additional steps for the audio encode settings:
 
-```shell title="bash"
+```shell
 gst-launch-1.0 videotestsrc ! videoconvert ! x264enc ! rtph264pay ! \
   'application/x-rtp,media=video,encoding-name=H264,payload=97,clock-rate=90000' ! \
   whip.sink_0 audiotestsrc wave=5 ! audioconvert ! opusenc ! rtpopuspay ! \
@@ -103,7 +109,7 @@ You can watch these streams from a [playback](/millicast/playback/index.mdx) vie
 
 The [audiotestsrc](https://gstreamer.freedesktop.org/documentation/audiotestsrc/index.html?gi-language=c#audiotestsrc-page) element can be used to produce a simple test of audio-only streaming. Here's an example:
 
-```shell title="bash"
+```shell
 gst-launch-1.0 audiotestsrc wave=sine !
     audioconvert ! opusenc ! rtpopuspay !
     'application/x-rtp,media=audio,encoding-name=OPUS,payload=96,clock-rate=48000,encoding-params=(string)2' !
@@ -119,7 +125,7 @@ Instead of using the video test source, this example demonstrates reading and lo
 
 If there is a requirement to use a specific codec such as with recordings you should use the **codec** query parameter of the [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint.
 
-```shell title="bash"
+```shell
 gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=true ! \
   qtdemux ! decodebin ! videorate ! videoconvert ! timeoverlay ! \
   video/x-raw,format='(string)I420' ! vp9enc target-bitrate=4000000 keyframe-max-dist=2 deadline=1 \
@@ -133,7 +139,7 @@ gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=t
 
 This example demonstrates using [opusenc](https://gstreamer.freedesktop.org/documentation/opus/opusenc.html?gi-language=c) with additional configured encoding options. These can also be omitted to use the defaults.
 
-```shell title="bash"
+```shell
 gst-launch-1.0 multifilesrc location=bbb_sunflower_1080p_30fps_normal.mp4 loop=true ! \
   qtdemux ! decodebin ! videorate ! videoconvert ! timeoverlay ! \
   video/x-raw,format='(string)I420' ! vp9enc target-bitrate=4000000 keyframe-max-dist=2 deadline=1 \
@@ -193,9 +199,7 @@ gst-launch-1.0 multifilesrc location=big_buck_bunny_720p_surround.avi loop=true 
 
 The [Simple WHIP client](https://github.com/lminiero/simple-whip-client) is an open-source implementation of a WHIP client that can be useful for testing. It requires a build of the C libraries including GStreamer.
 
-You can find more details on the GitHub project:
-
-https://github.com/meetecho/simple-whip-client
+You can find more details on the GitHub project: https://github.com/meetecho/simple-whip-client
 
 ### Testing your setup
 
@@ -214,11 +218,19 @@ For the example below, if recording is enabled: `https://director.millicast.com/
 
 If everything is correct, you should see a command output like this:
 
-![](../assets/img/cmd_line.png)
+import CmdLine from '../assets/img/cmd_line.png';
+
+<div class="center-container">
+  <img src={CmdLine} width="600" />
+</div>
 
 And if you connect to the viewer, a bouncing ball will be shown:
 
-![](../assets/img/viewer.png)
+import ViewerImg from '../assets/img/viewer.png';
+
+<div class="center-container">
+  <img src={ViewerImg} width="600" />
+</div>
 
 ### Publishing an RTSP video-only source
 

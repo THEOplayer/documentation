@@ -1,19 +1,20 @@
 ---
 title: 'vMix'
 slug: /broadcasting-with-vmix
+sidebar_position: 8
 ---
 
 **vMix** is a desktop application that provides a software vision mixer and encoder for the Windows operating system. It allows users to switch inputs, mix audio, record output, and live stream cameras, video files, audio, and more.
 
 You can originate a broadcast from vMix and forward that stream over [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), or as an [NDI](/millicast/broadcast/using-ndi.md) source.
 
-- [Configure RTMP](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-rtmp)
-- [Configure SRT](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-srt)
-- [Configure NDI](/millicast/software-encoders/broadcasting-with-vmix.md#how-to-use-vmix-with-ndi)
+- [Configure RTMP](#how-to-use-vmix-with-rtmp)
+- [Configure SRT](#how-to-use-vmix-with-srt)
+- [Configure NDI](#how-to-use-vmix-with-ndi)
 
-> 👍 Getting Started
->
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+:::
 
 See the official [vmix.com](https://vmix.com) site for documentation, installation instructions, and additional support.
 
@@ -32,11 +33,19 @@ Within vMix, select the _Streaming Settings_ menu to enter your publishing desti
 
 Set the **Application** to _FFMPEG_.
 
-![](../assets/img/vMix_RTMP_settings.png)
+import VmixRtmpSettings from '../assets/img/vMix_RTMP_settings.png';
+
+<div class="center-container">
+  <img src={VmixRtmpSettings} width="600" />
+</div>
 
 Select the Quality settings. Make sure the **Profile** is set to _Baseline_. You may experience stutters when using another profile.
 
-![](../assets/img/vMix2.png)
+import Vmix2 from '../assets/img/vMix2.png';
+
+<div class="center-container">
+  <img src={Vmix2} width="600" />
+</div>
 
 You can configure the other Audio and Video settings based on your preferences and network capacity.  
 Save your publishing profile and you are ready to start publishing with vMix.
@@ -45,9 +54,9 @@ Save your publishing profile and you are ready to start publishing with vMix.
 
 With vMix you have the ability to send a live stream simultaneously to up to three separate streaming destinations. This vMix feature combined with Dolby.io [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.mdx) enables Simulcast of multiple renditions of the stream. Viewers with bandwidth constraints would receive a stream optimized for that condition. Keep in mind, the broadcaster will be sending multiple streams so will need adequate bandwidth.
 
-> 📘 Enable Multisource for Your Dolby.io Publish Token
->
-> To utilize [multisource](/millicast/broadcast/multi-source-broadcasting.mdx) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx).
+:::info Enable Multisource for Your Dolby.io Publish Token
+To utilize [multisource](/millicast/broadcast/multi-source-broadcasting.mdx) it must be enabled for the publish token. You can do this from the Dolby.io dashboard. For more information, review [Managing Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx).
+:::
 
 #### Streaming destination 1: 1080p
 
@@ -56,7 +65,11 @@ The first destination **URL** and **Stream Name** would remain much as it was co
 - **sourceId=1**: add this query parameter to the Stream Name to differentiate from the other sources
 - **simulcastId**: add this query parameter to indicate it should be a Simulcast stream
 
-![](../assets/img/vMixMBR1.png)
+import vMixMBR1 from '../assets/img/vMixMBR1.png';
+
+<div class="center-container">
+  <img src={vMixMBR1} width="600" />
+</div>
 
 You might also adjust the **Quality Settings** to use 1080p for this source.
 
@@ -73,7 +86,11 @@ You might also adjust the **Quality Settings** to use 1080p for this source.
 
 Select a second target destination. Update the **sourceId** to reflect that this is the second source.
 
-![](../assets/img/vMixMBR2.png)
+import vMixMBR2 from '../assets/img/vMixMBR2.png';
+
+<div class="center-container">
+  <img src={vMixMBR2} width="600" />
+</div>
 
 Adjust the quality settings to be a lower framerate, bitrate, and resolution to conserve bandwidth.
 
@@ -90,7 +107,11 @@ Adjust the quality settings to be a lower framerate, bitrate, and resolution to 
 
 As with the other example, update the **sourceId** and adjust the quality settings to provide a constrained bandwidth solution.
 
-![](../assets/img/vMixMBR3.png)
+import vMixMBR3 from '../assets/img/vMixMBR3.png';
+
+<div class="center-container">
+  <img src={vMixMBR3} width="600" />
+</div>
 
 | Name        | 360p                                                            |
 | :---------- | :-------------------------------------------------------------- |
@@ -105,7 +126,11 @@ As with the other example, update the **sourceId** and adjust the quality settin
 
 In vMix click start all streams. You can then watch this stream from a [playback](/millicast/playback/index.mdx) viewer. If you select the viewer settings, you can see that there are multiple Video Quality renditions available.
 
-![](../assets/img/vMixABR4.png)
+import vMixABR4 from '../assets/img/vMixABR4.png';
+
+<div class="center-container">
+  <img src={vMixABR4} width="600" />
+</div>
 
 ## How-to use vMix with SRT
 
@@ -117,24 +142,36 @@ See the [SRT Broadcast Guide](/millicast/broadcast/using-srt.mdx) for details on
 
 1. Select the **Output / NDI / SRT** settings and configure an output by clicking the gear icon.
 
-![](../assets/img/vmix-srt-settings.png)
+import VmixSrtSettings from '../assets/img/vmix-srt-settings.png';
+
+<div class="center-container">
+  <img src={VmixSrtSettings} width="600" />
+</div>
 
 2. Check the `Enable SRT` setting.
 3. Input the **SRT path** in for `Hostname`. The `Port` can be removed and put in the additional field.
 4. Input the **SRT stream ID** in the `Stream ID` field.
 
-![](../assets/img/vmix-srt-settings-paths.png)
+import VmixSrtSettingsPaths from '../assets/img/vmix-srt-settings-paths.png';
+
+<div class="center-container">
+  <img src={VmixSrtSettingsPaths} width="600" />
+</div>
 
 It is recommended to set the `Quality` as \*\*H264 1mbps AAC 0kbps (5 secs).
 
 ## How-to use vMix with NDI
 
-vMix can also be set as an [NDI](/millicast/broadcast/using-ndi.md) source with [OBS](/millicast/software-encoders/using-obs.md). This can give you the flexibility to use vMix as your switcher and OBS with WebRTC and playback in a [Hosted Player](/millicast/playback/hosted-viewer.md).
+vMix can also be set as an [NDI](/millicast/broadcast/using-ndi.md) source with [OBS](/millicast/software-encoders/obs/index.mdx). This can give you the flexibility to use vMix as your switcher and OBS with WebRTC and playback in a [Hosted Player](/millicast/playback/hosted-viewer.md).
 
 To configure this, choose the Outputs / NDI / SRT configuration.
 
-![](../assets/img/vMix_NDI.png)
+import VmixNdi from '../assets/img/vMix_NDI.png';
 
-> 🚧 Network Traffic
->
-> It is recommended to use a hard-wired connection between NDI sources or a dedicated network with Quality of Service (QoS) enabled. You may observer 40 Mbps or more of network traffic with this type of configuration. This network traffic congestion and limited bandwidth can create issues with playback audio and/or video quality.
+<div class="center-container">
+  <img src={VmixNdi} width="600" />
+</div>
+
+:::caution Network Traffic
+It is recommended to use a hard-wired connection between NDI sources or a dedicated network with Quality of Service (QoS) enabled. You may observer 40 Mbps or more of network traffic with this type of configuration. This network traffic congestion and limited bandwidth can create issues with playback audio and/or video quality.
+:::

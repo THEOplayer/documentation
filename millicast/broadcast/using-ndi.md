@@ -101,7 +101,7 @@ import CaptureScreen8 from '../assets/img/Capture_decran_2023-07-07_a_12.36.26_P
     <img src={CaptureScreen8} width="600" />
 </div>
 
-To obtain the stream name and publishing token, go into the stream token's settings, and from Token Details, copy the information. Visit [our OBS guide](/millicast/software-encoders/using-obs.md) for any further questions. Close all of the settings and begin streaming. To see the stream, copy the Hosted Player Path from the stream token's Playback.
+To obtain the stream name and publishing token, go into the stream token's settings, and from Token Details, copy the information. Visit [our OBS guide](/millicast/software-encoders/obs/index.mdx) for any further questions. Close all of the settings and begin streaming. To see the stream, copy the Hosted Player Path from the stream token's Playback.
 
 import CaptureScreen9 from '../assets/img/Capture_decran_2023-07-07_a_12.28.57_PM.png';
 
@@ -165,7 +165,7 @@ import CaptureScreen16 from '../assets/img/Capture_decran_2023-07-07_a_1.15.00_P
 
 ### How-to publish NDI with vMix
 
-You can also use [vMix as NDI](/millicast/software-encoders/broadcasting-with-vmix.md) source if you do not wish to purchase the NDI HDX. This allows will allow vMix to be used as your switcher or remote source and flexibility with Dolby.io Real-time Streaming codecs with real-time publishing.
+You can also use [vMix as NDI](/millicast/software-encoders/broadcasting-with-vmix.mdx) source if you do not wish to purchase the NDI HDX. This allows will allow vMix to be used as your switcher or remote source and flexibility with Dolby.io Real-time Streaming codecs with real-time publishing.
 
 ## Learn more
 

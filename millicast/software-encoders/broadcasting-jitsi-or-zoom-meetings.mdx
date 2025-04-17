@@ -1,19 +1,20 @@
 ---
 title: 'Zoom'
 slug: /broadcasting-jitsi-or-zoom-meetings
+sidebar_position: 9
 ---
 
 [Zoom](https://zoom.us/) is a video collaboration tool for hosting conferences and meetings. Zoom supports streaming to consumer platforms or any [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) source such as distributing Real-time Streaming content with Dolby.io.
 
-See the official [zoom](https://zoom.us/) site for documentation, installation instructions, and additional support.
+See the official [Zoom](https://zoom.us/) site for documentation, installation instructions, and additional support.
 
 ## Get your Dolby.io RTMP publish URL
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available.
 
-> 👍 Getting Started
->
-> If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+:::
 
 See the [RTMP Broadcast Guide](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
 
@@ -34,9 +35,13 @@ Start the webinar as usual by doing one of the following:
 
 ### 2. View more settings
 
-Click the ** More** button on your control panel to view available options.
+Click the **More** button on your control panel to view available options.
 
-![](../assets/img/zoom1.png)
+import Zoom1 from '../assets/img/zoom1.png';
+
+<div class="center-container">
+  <img src={Zoom1} width="600" />
+</div>
 
 ### 3. Choose custom live stream service
 
@@ -44,11 +49,15 @@ Choose Live on Custom Live Stream Service. A browser window will open to show th
 
 ### 4. Enter your Dolby.io RTMP publish details
 
-![](../assets/img/zoom2.png)
+import Zoom2 from '../assets/img/zoom1.png';
+
+<div class="center-container">
+  <img src={Zoom2} width="600" />
+</div>
 
 Enter your Dolby.io Real-time Streaming RTMP publish token details.
 
-| Zoom field | Dolby.io field           | Example value                                                                           |
-| :--------- | :----------------------- | :-------------------------------------------------------------------------------------- |
-| Stream URL | RTMP publish path        | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/                                         |
-| Stream key | RTMP publish stream name | **kxhtzabx**?token=**0a0d272fd50eec7d477aa85d72504cf0968bc82c63b1931386e7c062341807ce** |
+| Zoom field | Dolby.io field           | Example value                                                                       |
+| :--------- | :----------------------- | :---------------------------------------------------------------------------------- |
+| Stream URL | RTMP publish path        | `rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/`                                   |
+| Stream key | RTMP publish stream name | `kxhtzabx`?token=`0a0d272fd50eec7d477aa85d72504cf0968bc82c63b1931386e7c062341807ce` |

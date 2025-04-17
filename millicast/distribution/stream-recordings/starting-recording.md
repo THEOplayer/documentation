@@ -36,7 +36,7 @@ You can also update your existing publish token by enabling the **Record** optio
 
 ## Recording from OBS
 
-You can record your broadcasts if you are using 3rd party applications, such as [OBS](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) or your own custom broadcaster application. If you have not broadcasted to Dolby.io Real-time Streaming from OBS, please read the [Using OBS](/millicast/software-encoders/using-obs.md) page to enable your first broadcast with the software.
+You can record your broadcasts if you are using 3rd party applications, such as [OBS](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) or your own custom broadcaster application. If you have not broadcasted to Dolby.io Real-time Streaming from OBS, please read the [Using OBS](/millicast/software-encoders/obs/index.mdx) page to enable your first broadcast with the software.
 
 1. Set up OBS by visiting the **Settings** button to add the token information required.
 
