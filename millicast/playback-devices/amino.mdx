@@ -1,5 +1,5 @@
 ---
-title: "Amino H200"
+title: 'Amino H200'
 slug: /amino
 ---
 
@@ -92,14 +92,12 @@ The _webapp.lineup_json_ parameter defines the streams that you can toggle betwe
 The format for the JSON will look like this and will be what you enter in as the _Value_ for _webapp.lineup_json_:
 
 ```json
-[  
-   {  
-      "name":"1",  
-      "desc":"Dolby Trailer",  
-      "url":[  
-         "dolbyio://7csQUs/trailer"  
-      ]  
-   }  
+[
+  {
+    "name": "1",
+    "desc": "Dolby Trailer",
+    "url": ["dolbyio://7csQUs/trailer"]
+  }
 ]
 ```
 
@@ -111,7 +109,7 @@ import AminoB from '../assets/img/Screenshot_2024-10-17_at_2.31.18_PM.png';
 
 The url follows the pattern **`dolbyio://{Account ID}/{Stream Name}`** and the name and desc are displayed on the screen briefly upon changing channels.
 
-You can add as many streams as you need to the list, enter this as the value, separated by comma and then click the Save button. Clicking on the _Group reboot_ will restart any devices in the group so that they have the latest channel list.
+You can add as many streams as you need to the list, enter this as the value, separated by comma and then click the Save button. Clicking on the *Group reboot* will restart any devices in the group so that they have the latest channel list.
 
 For the optional _player.dolby.min_jitter_delay_ms_ parameter, you can specify the amount of delay in milliseconds to be added to your stream.
 
