@@ -18,7 +18,7 @@ If the answer is yes to either of those questions, that may indicate a broadcast
 
 > 👍 Broadcast Monitoring
 >
-> For broadcast issues, the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.md) tool is available from your account [Streaming Dashboard](/millicast/streaming-dashboard/index.md) or by using the [Broadcast Monitoring](/millicast/api/monitoring-list-recent-streams.api.mdx) REST API to get more insight into what may cause problems with a stream.
+> For broadcast issues, the [Live Monitoring](/millicast/streaming-dashboard/live-monitoring.mdx) tool is available from your account [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) or by using the [Broadcast Monitoring](/millicast/api/monitoring-list-recent-streams.api.mdx) REST API to get more insight into what may cause problems with a stream.
 
 ### Diagnostics Report
 
@@ -70,9 +70,9 @@ It is common practice to proactively monitor all clients for indicators of strea
 
 ### Analytics Collectors
 
-There are third-party [Client Analytics](/millicast/client-analytics/index.md) integrations available that can serve as a collector or monitoring tool for storing analytics.
+There are third-party Client Analytics integrations available that can serve as a collector or monitoring tool for storing analytics.
 
-- [Datazoom](/millicast/client-analytics/datazoom.md)
+- [Datazoom](/millicast/client-analytics/datazoom.mdx)
 - [Datadog](/millicast/client-analytics/datadog.md)
 
 The same pattern can be used with other tools such as Grafana, Splunk, New Relic, etc.

@@ -9,7 +9,7 @@ Follow these steps to add the publishing capability to your application.
 
 To capture media, get an array of available audio and video sources and choose the preferred sources from the list. After you start capturing audio and video, the SDK will return an audio and video track that you can add to the publisher later.
 
-```cplusplus
+```cpp
 // Get an array of audio sources
 auto sources = millicast::Media::get_audio_sources();
 
@@ -43,7 +43,7 @@ if(videoTrack == nullptr)
 
 Optionally, set your own logger function to print Dolby.io Real-time Streaming logs according to the severity. By default, the SDK prints the standard output, where the severity is first and then the message.
 
-```cplusplus
+```cpp
 millicast::Logger::set_logger([](/millicast/const std::string& msg, millicast::LogLevel lvl) {
   // Print your message here
   std::cout << msg << std::endl;
@@ -54,7 +54,7 @@ millicast::Logger::set_logger([](/millicast/const std::string& msg, millicast::L
 
 Create a publisher object and set a listener object to the publisher to receive proper events. This requires creating a class that inherits the publisher's listener interface. Then, create a stream in your Dolby.io developer dashboard or using the Dolby.io Streaming REST API and set your credentials.
 
-```cplusplus
+```cpp
 // Create a publisher object
 std::unique_ptr<millicast::Publisher> publisher = millicast::Publisher::create();
 
@@ -100,7 +100,7 @@ Additionally, to publish several sources from the same application, create a pub
 
 The SDK also offers Simulcast that allows sending three different resolutions at once. It is disabled by default and only available for VP8 and H264. Optionally, when using the VP9 or AV1 video codec, you can choose to use SVC instead of Simulcast. The SVC mode sends several spatial and temporal layers encoded within the same stream. To enable SVC, set the layer ID you want to use in the options; only the following modes are available: L2T1, L2T2, L2T3, L3T1, L3T2, and L3T3.
 
-```cplusplus
+```cpp
 millicast::Publisher::Option options;
 
 // Get a list of supported codecs
@@ -132,7 +132,7 @@ publisher->set_options(options);
 
 Add the audio and video track that you created earlier when you started capturing media.
 
-```cplusplus
+```cpp
 publisher->add_track(video_track);
 publisher->add_track(audio_track);
 ```
@@ -141,7 +141,7 @@ publisher->add_track(audio_track);
 
 Authenticate to access Dolby.io Real-time Streaming through the Director API.
 
-```cplusplus
+```cpp
 publisher->connect();
 ```
 
@@ -149,7 +149,7 @@ Successful authentication results in opening a WebSocket connection that allows 
 
 ## 7. Start publishing
 
-```cplusplus
+```cpp
 publisher->publish();
 ```
 

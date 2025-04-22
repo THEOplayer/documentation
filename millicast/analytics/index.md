@@ -41,7 +41,9 @@ As with all API calls to our platform you must have your API token ready, you ca
 
 Let's start by creating a new Nodejs project:
 
+```
 npm init
+```
 
 Create an app.js file that will run the code for the API calls. Then add the following code snippet to your app.js file.
 
@@ -140,8 +142,7 @@ Next, we can create our client html code that will do the actual call to our nod
 
 First open your editor and create a blank html file, save it as index.html. In your editor add the following bit of code into your index.html file.
 
-```html
-
+```html title="index.html"
 <html lang="en">
 <head>
         <meta charset="UTF-8">
@@ -274,7 +275,7 @@ app.get( '/usage', (req, resp, next) => {
         apiReq.end();
 });
 
-app.**get( '/streamusage'**, (req, resp, next) => {
+app.get('/streamusage', (req, resp, next) => {
         console.log('/streamusage - streamName:',req.query.streamNames,'time start:',req.query.start,' stop:',req.query.stop);
         // Millicast API request details
         let **streamNames** = req.query.streamNames;
@@ -327,8 +328,7 @@ Notice, in the method, where we receive the start, stop and streamName strings, 
 
 Below is a sample of the new client index.html code.
 
-```html
-
+```html title="index.html"
 <html lang="en">
 <head>
         <meta charset="UTF-8">
@@ -496,7 +496,7 @@ Notice, the data sent to the server is in the same format that is expected on th
 
 ## Viewers per stream
 
-Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API](/millicast/api/analytics-streams-geo-series). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.md#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
+Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API](/millicast/api/analytics-streams-geo-series). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.mdx#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
 
 > 🚧 Get your data before it expires!
 >

@@ -5,7 +5,7 @@ slug: /hosted-viewer
 
 The **Hosted Player** refers to the streaming video player that can be used as a standalone web application or embedded into a website to meet the needs of many workflows without requiring extensive software development.
 
-The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) application in the dashboard but is for the audience to use to view the published stream.
+The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) application in the dashboard but is for the audience to use to view the published stream.
 
 ![](../assets/img/dolbyio-hosted-viewer-preview.png)
 
@@ -13,7 +13,7 @@ The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how
 >
 > If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
 >
-> You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) and [Hosted Player](/millicast/playback/hosted-viewer.md).
+> You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) and [Hosted Player](/millicast/playback/hosted-viewer.md).
 
 ## White label playback
 
@@ -39,7 +39,7 @@ The code would be something similar to this with your own stream name and accoun
 
 ### How-to secure the hosted player
 
-If your publish token is configured with the **Secure viewer** requirement than you must also include a [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.md) for playback. The token is provided as a query string parameter such as:
+If your publish token is configured with the **Secure viewer** requirement than you must also include a [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.mdx) for playback. The token is provided as a query string parameter such as:
 
 ```
 https://viewer.millicast.com?streamId={Account ID}/{Stream Name}?token={Subscribe Token}
@@ -88,7 +88,7 @@ The timecode of the stream is displayed as an indication of the duration for the
 
 #### Settings
 
-From the settings menu you can open the [Media Stats](/millicast/analytics/media-stats.md) and also see the **version** of the player. The details contained there can be very helpful with diagnosing any broadcast or playback issues by the support team. There is also an option to directly _Report Playback Issue_ should something happen.
+From the settings menu you can open the [Media Stats](/millicast/analytics/media-stats.mdx) and also see the **version** of the player. The details contained there can be very helpful with diagnosing any broadcast or playback issues by the support team. There is also an option to directly _Report Playback Issue_ should something happen.
 
 In addition, if [Multi-view](/millicast/playback/multiview.md) is enabled then there will be controls to adjust the layout for multiple incoming streams.
 
@@ -106,7 +106,7 @@ The full screen button will expand the player to take up the full available disp
 
 ## Customize the hosted player
 
-There are some options available for customizing the hosted player to determine whether or not various controls will be made available to the audience. You can update these settings when clicking the **Share** button of the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.md) or from the _Playback_ section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.md).
+There are some options available for customizing the hosted player to determine whether or not various controls will be made available to the audience. You can update these settings when clicking the **Share** button of the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) or from the _Playback_ section of the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
 ### Playback controls
 
@@ -145,4 +145,4 @@ See [Stream Preview](/millicast/playback/customize-your-player.md) for more deta
 
 ### Settings
 
-You can also launch the [Media Stats](/millicast/analytics/media-stats.md) to get diagnostic details about the stream performance from the perspective of the end-user audience experienced during playback.
+You can also launch the [Media Stats](/millicast/analytics/media-stats.mdx) to get diagnostic details about the stream performance from the perspective of the end-user audience experienced during playback.

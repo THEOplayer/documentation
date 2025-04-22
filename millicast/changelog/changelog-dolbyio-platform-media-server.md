@@ -9,7 +9,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 #### Features
 
 - Introducing SRT output with the re-stream feature. Now you will have the ability to have Millicast be the SRT Caller (push) and send SRT out just like you can already with RTMP.
-- Introducing Auto-Configuration for OBS Broadcaster. Now you can choose Dolby Millicast as a streaming provider in OBS and enable encoding Adaptive Bitrate (ABR) from OBS to achieve smooth playback on any device without incurring channel fees or using the Real-time Cloud Transcoder. Read more in our [OBS Enhanced Multitrack Video Guide](/millicast/software-encoders/obs-enhanced-broadcasting-multitrack-video.md).
+- Introducing Auto-Configuration for OBS Broadcaster. Now you can choose Dolby Millicast as a streaming provider in OBS and enable encoding Adaptive Bitrate (ABR) from OBS to achieve smooth playback on any device without incurring channel fees or using the Real-time Cloud Transcoder. Read more in our [OBS Enhanced Multitrack Video Guide](/millicast/software-encoders/obs/obs-enhanced-broadcasting-multitrack-video.mdx).
 - Introducing RTMP Enhanced V2 support! An encoder has always been able to send multiple video tracks over separate RTMP connections to deliver Adaptive Bitrate (ABR) to viewers, now this is possible with a single RTMP connection and multiple video tracks.
 - Introducing IPV6 support for playback. For viewers on Internet Service Providers (ISPs) that only provide IPV6 addresses, we have introduced support for IPV6. This is currently opt-in, please contact your account manager if you would like to test this feature. This will be available more broadly in a future release.
 - Added the ability to increase the minimum delay for RTMP publishing so that multiple video tracks can be manually timed for sync when an encoder delay exists between ABR layers. Refer to the `extraLatency` parameter in our [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) section.
@@ -113,7 +113,7 @@ Minor fixes and improvements for RTMP publishers.
 
 ### Support for Syndicated Content
 
-The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api.mdx) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.md).
+The Dolby.io Real-time Streaming APIs now support the ability to track usage data across multiple streaming partners on a single stream by adding a `trackingId` parameter to an API-generated [Subscribe token](/millicast/streaming-dashboard/token-api.mdx) or [self-signed subscribe tokens](/millicast/streaming-dashboard/subscribe-tokens.mdx).
 
 This "syndication" mechanism allows you to send the same stream to multiple cohorts of viewers whilst tying viewer data to a cohort via `trackingId`.
 
@@ -132,7 +132,7 @@ Added support for ingesting SRT protocol. SRT has become the standard for replac
 For more information, see:
 
 - The [SRT](/millicast/broadcast/using-srt.mdx) article
-- The [OBS using SRT](/millicast/software-encoders/using-obs.md) article
+- The [OBS using SRT](/millicast/software-encoders/obs/index.mdx) article
 
 ---
 

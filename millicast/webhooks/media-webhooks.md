@@ -3,11 +3,11 @@ title: 'Media Hooks'
 slug: /media-hooks
 ---
 
-The **media** _type_ of [webhook](/millicast/webhooks/index.md) allows you to receive a series of notifications for when a recording or live clip changes status. This can be helpful for when you want to automate the download or notifications for when media becomes available.
+The **media** _type_ of [webhook](/millicast/webhooks/index.mdx) allows you to receive a series of notifications for when a recording or live clip changes status. This can be helpful for when you want to automate the download or notifications for when media becomes available.
 
-> 👍 Setting up Webhooks
->
-> Review the [Webhooks](/millicast/webhooks/index.md) guide for additional details on creating and receiving webhooks.
+:::tip Setting up Webhooks
+Review the [Webhooks](/millicast/webhooks/index.mdx) guide for additional details on creating and receiving webhooks.
+:::
 
 ## Event
 

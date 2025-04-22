@@ -7,7 +7,7 @@ Follow these steps to add the subscribing capability to your application.
 
 ## 1. Create a subscriber object
 
-```cplusplus
+```cpp
 std::unique_ptr<millicast::Viewer> viewer = millicast::Viewer::create();
 ```
 
@@ -15,7 +15,7 @@ std::unique_ptr<millicast::Viewer> viewer = millicast::Viewer::create();
 
 Create a viewer's listener class by inheriting the viewer listener's interface.
 
-```cplusplus
+```cpp
 class ViewerListener : public millicast::Viewer::Listener
 {
  public:
@@ -55,7 +55,7 @@ class ViewerListener : public millicast::Viewer::Listener
 
 ## 3. Create an instance and set it to the viewer
 
-```cplusplus
+```cpp
 auto listener = std::make_unique<ViewerListener>();
 viewer->set_listener(listener.get());
 ```
@@ -64,7 +64,7 @@ viewer->set_listener(listener.get());
 
 Get your **stream name** and **stream ID** from the dashboard and set them up in the SDK.
 
-```cplusplus
+```cpp
 auto credentials = viewer->get_credentials(); // Get the current credentials
 credentials.stream_name = "streamName"; // The name of the stream you want to subscribe to
 credentials.account_id = "ACCOUNT"; // The ID of your Dolby.io Real-time Streaming account
@@ -77,7 +77,7 @@ publisher->set_credentials(std::move(credentials)); // Set the new credentials
 
 Configure your stream to receive multi-source content.
 
-```cplusplus
+```cpp
 millicast::Viewer::Option options;
 
 options.multisource.pinned_source_id = "main"; // The main source that will be received by the default media stream
@@ -92,7 +92,7 @@ viewer->set_options(options);
 
 Authenticate and create a WebSocket connection to connect with the Dolby.io Real-time Streaming server.
 
-```cplusplus
+```cpp
 viewer->connect();
 ```
 
@@ -100,7 +100,7 @@ If the connection fails, the listener's [on_connection_error](https://millicast.
 
 ## 7. Subscribe to the streamed content
 
-```cplusplus
+```cpp
 viewer->subscribe();
 ```
 
@@ -112,7 +112,7 @@ If publishers use the multi-source feature, you need to project tracks into a sp
 
 By default, only one video and audio track is negotiated in the SDP. If there are several publishers sending media in one stream, you can dynamically add more tracks using the [add_remote_track](https://millicast.github.io/doc/latest/cpp/classmillicast_1_1promises_1_1_viewer.html#ad8f350406f874776c0b10a6edd9775aa) method each time you receive an active event. The method adds a new transceiver and renegotiates locally SDP. When successful, the SDK creates a new track and calls the [on_track](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_viewer_listener.html#a663a46b27c6626d85089d4150bbd5416) callback, so you can get the track and its corresponding mid.
 
-```cplusplus
+```cpp
 // Get mid either from the `on_track` callback of the listener object or by calling the `get_mid` method with the track ID
 /* option 1 */
 
@@ -149,7 +149,7 @@ When a publisher uses Simulcast or the SVC mode when sending a video feed, the m
 
 For example, if the sender uses Simulcast, it is possible to receive three different encoding IDs: 'h' for the high resolution, 'm' for the medium one, and 'l' for the low. In order to choose the medium resolution, you have to do the following:
 
-```cplusplus
+```cpp
 millicast::Viewer::LayerData data;
 data.encoding_id = "m"; // The encoding ID, which is the ID of the Simulcast or SVC layer
 data.temporal_layer_id = 1; // The ID of the temporary layer
@@ -175,7 +175,7 @@ When broadcast events occur, the SDK calls the corresponding callback in the lis
 
 The SDK provides an interface that lets you implement a class responsible for receiving video frames.
 
-```cplusplus
+```cpp
 // Write a class that inherits _VideoRenderer_
 class MyRenderer : public millicast::VideoRenderer
 {
@@ -191,7 +191,7 @@ To get video data from the [VideoFrame](https://millicast.github.io/doc/latest/c
 
 Then, create an instance of your renderer and add it to a local or remote video track, select one playback device to be able to play audio, adjust the volume of remote tracks, and clean the memory.
 
-```cplusplus
+```cpp
 // Create an instance of your renderer and add it to a local or remote video track
 MyRenderer * renderer = new MyRenderer();
 track->add_renderer(renderer);

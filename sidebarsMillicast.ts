@@ -1,32 +1,25 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import type { SidebarItemConfig, SidebarItem, SidebarItemDoc, SidebarItemCategory } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
-import millicastApiSidebar from './millicast/api/sidebar';
-import millicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
-import millicastDirectorApiSidebar from './millicast/api/director/sidebar';
+import type { SidebarItem, SidebarItemCategory, SidebarItemConfig, SidebarItemDoc } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
+import rawMillicastApiSidebar from './millicast/api/sidebar';
+import rawMillicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
+import rawMillicastDirectorApiSidebar from './millicast/api/director/sidebar';
 
 function isCategory(item: SidebarItemConfig): item is SidebarItemCategory {
-  return (item as SidebarItemCategory).type === 'category';
+  return (item as SidebarItem).type === 'category';
 }
 
-function isDoc(item: SidebarItem): item is SidebarItemDoc {
-  return item.type === 'doc';
+function isDoc(item: SidebarItemConfig): item is SidebarItemDoc {
+  return (item as SidebarItem).type === 'doc';
 }
 
-function isHiddenCategory(item: SidebarItemConfig): item is SidebarItemCategory {
-  return isCategory(item) && item.label === 'hidden';
-}
-
-function removeHiddenItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
-  // find the "hidden" category and get its item IDs
-  const hiddenCategory = data.find(isHiddenCategory);
-  const hiddenIds = new Set(hiddenCategory?.items.filter(isDoc).map((item) => item.id) ?? []);
-
-  // filter out items from other categories that match the hidden IDs
-  const updatedData = data
+function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): SidebarItemConfig[] {
+  const hiddenIdsSet = new Set(hiddenIds);
+  return data
     .map((category) => {
+      // filter out items from other categories that match the hidden IDs
       if (isCategory(category)) {
         // filter out the items that match any of the hidden IDs
-        const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIds.has(item.id)));
+        const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIdsSet.has(item.id)));
 
         // if all items are removed, omit the category entirely
         if (filteredItems.length === 0) {
@@ -39,16 +32,97 @@ function removeHiddenItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
       }
       return category;
     })
-    // Remove null categories
-    .filter((category) => category !== null);
-
-  return updatedData;
+    .filter((category) => {
+      // Remove null categories
+      return category !== null;
+    });
 }
 
-// filter "hidden" items
-const filteredMillicastApiSidebar = removeHiddenItems(millicastApiSidebar);
-const filteredMillicastAdvancedReportingApiSidebar = removeHiddenItems(millicastAdvancedReportingApiSidebar);
-const filteredMillicastDirectorApiSidebar = removeHiddenItems(millicastDirectorApiSidebar);
+function fixLabels(items: SidebarItemConfig[], replacements: Record<string, string> = {}): SidebarItemConfig[] {
+  return items.map((item) => {
+    if (!(isCategory(item) || isDoc(item))) {
+      return item;
+    }
+    let label = item.label;
+    if (label) {
+      if (replacements[label]) {
+        // Replace label
+        label = replacements[label];
+      } else if (isCategory(item)) {
+        // Add spaces between capitalized words
+        label = item.label.replace(/([a-z])([A-Z])/g, '$1 $2');
+      }
+    }
+    if (isCategory(item)) {
+      return { ...item, label, items: fixLabels(item.items, replacements) };
+    } else {
+      return { ...item, label };
+    }
+  });
+}
+
+function mergeCategories(items: SidebarItemConfig[]): SidebarItemConfig[] {
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
+    if (isCategory(item)) {
+      // Merge categories with same label
+      const otherIndex = items.findIndex((other, otherIndex) => {
+        return otherIndex > index && isCategory(other) && other.label === item.label;
+      });
+      if (otherIndex > 0) {
+        const otherItem = items[otherIndex] as SidebarItemCategory;
+        const mergedItems = [...otherItem.items];
+        for (const otherChild of item.items) {
+          // Insert before existing child with same label (if any).
+          // Otherwise, insert at the end.
+          const existingChildIndex = mergedItems.findIndex((existingChild) => {
+            return isDoc(otherChild) && isDoc(existingChild) && existingChild.label === otherChild.label;
+          });
+          if (existingChildIndex >= 0) {
+            mergedItems.splice(existingChildIndex, 0, otherChild);
+          } else {
+            mergedItems.push(otherChild);
+          }
+        }
+        items[index] = { ...item, items: mergedItems };
+        items.splice(otherIndex, 1);
+        index--;
+      }
+    }
+  }
+  return items;
+}
+
+let millicastApiSidebar: SidebarItemConfig[] = removeHiddenItems(rawMillicastApiSidebar, [
+  'api/record-files-v-2-list-media-assets',
+  'api/record-files-v-2-read-media-asset',
+  'api/record-files-v-2-delete-media-assets',
+  'api/record-files-create-record-clip',
+  'api/record-files-get-clip-request',
+  'api/record-files-delete-clip-request-live',
+  'api/record-files-list-clip-requests',
+  'api/record-files-list-available-clip-sources',
+  'api/record-files-validate-storage-profile',
+  'api/record-files-update-expiry-rule',
+  'api/record-files-get-expiry-rule',
+  'api/record-files-delete-expiry-rule',
+  'api/record-files-delete-clip-sources',
+]);
+millicastApiSidebar = fixLabels(millicastApiSidebar, {
+  PublishTokenV1: 'Publish Token',
+  PublishTokenV2: 'Publish Token',
+  SubscribeTokenV1: 'Subscribe Token',
+  SubscribeTokenV2: 'Subscribe Token',
+});
+millicastApiSidebar = mergeCategories(millicastApiSidebar);
+const millicastAdvancedReportingApiSidebar: SidebarItemConfig[] = rawMillicastAdvancedReportingApiSidebar;
+const millicastDirectorApiSidebar: SidebarItemConfig[] = fixLabels(rawMillicastDirectorApiSidebar, {
+  DrmLicence: 'DRM Licence',
+  DrmLicence_GetDrmLicence: 'Get DRM Licence',
+  DrmLicence_GetFairplayCertificate: 'Get Fairplay Certificate',
+  Whep: 'WHEP',
+  Whip: 'WHIP',
+});
 
 const sidebars: SidebarsConfig = {
   millicast: [
@@ -228,7 +302,6 @@ const sidebars: SidebarsConfig = {
           customProps: {
             icon: '📊',
           },
-          link: { type: 'doc', id: 'client-analytics/index' },
           items: [{ type: 'autogenerated', dirName: 'client-analytics' }],
         },
         {
@@ -247,15 +320,14 @@ const sidebars: SidebarsConfig = {
           },
           items: [{ type: 'autogenerated', dirName: 'software-encoders' }],
         },
-        // TODO Port https://docs.dolby.io/streaming-apis/docs/amino
-        // {
-        //   type: 'category',
-        //   label: 'Playback Devices',
-        //   customProps: {
-        //     icon: '📺',
-        //   },
-        //   items: ['amino'],
-        // },
+        {
+          type: 'category',
+          label: 'Playback Devices',
+          customProps: {
+            icon: '📺',
+          },
+          items: [{ type: 'autogenerated', dirName: 'playback-devices' }],
+        },
       ],
     },
     {
@@ -296,7 +368,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
-          label: 'REST API Changes',
+          label: 'REST APIs Changes',
           id: 'changelog/changelog-rest-apis',
         },
         {
@@ -333,21 +405,21 @@ const sidebars: SidebarsConfig = {
       label: 'Millicast API',
       collapsible: true,
       collapsed: false,
-      items: [...filteredMillicastApiSidebar],
+      items: millicastApiSidebar,
     },
     {
       type: 'category',
       label: 'Millicast Advanced Reporting API',
       collapsible: true,
       collapsed: true,
-      items: [...filteredMillicastAdvancedReportingApiSidebar],
+      items: millicastAdvancedReportingApiSidebar,
     },
     {
       type: 'category',
       label: 'Millicast Director API',
       collapsible: true,
       collapsed: true,
-      items: [...filteredMillicastDirectorApiSidebar],
+      items: millicastDirectorApiSidebar,
     },
   ],
 };

@@ -16,7 +16,7 @@ This feature allows for effective switching between primary and redundant stream
 
 ## Assigning Priority to Streams
 
-To enable the High Availability Management feature and allow for dynamic stream switching, stream priority _must_ be assigned via the [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.md). A guide on this topic can be found in our [Redundant Ingest Guide](/millicast/broadcast/redundant-ingest/index.mdx).
+To enable the High Availability Management feature and allow for dynamic stream switching, stream priority _must_ be assigned via the [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx). A guide on this topic can be found in our [Redundant Ingest Guide](/millicast/broadcast/redundant-ingest/index.mdx).
 
 Any streams broadcasted using the priority parameter under [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) will _not_ be responsive to dynamic priority allocation. The priority value specified via [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) overrides the respective setting on the token.
 

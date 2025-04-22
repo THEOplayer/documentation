@@ -1,4 +1,4 @@
-# REST API Changes
+# REST APIs Changes
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
@@ -50,7 +50,7 @@ The [Read Account Geo Restrictions](/millicast/api/geo-geo) and [Read Account Ge
 
 For long-running streams, it can be helpful to start and stop the stream only when there are viewers connected. Using the new [ViewerConnection](/millicast/webhooks/viewerconnection-webhooks.md) webhook, you can write a service that listens for `viewerAttempt` and `noActiveViewers` events to start or stop a broadcast to better manage your bandwidth usage.
 
-View the [Webhooks](/millicast/webhooks/index.md) guide to learn more about setting up webhooks.
+View the [Webhooks](/millicast/webhooks/index.mdx) guide to learn more about setting up webhooks.
 
 ## 2024-04-11 | REST APIs
 

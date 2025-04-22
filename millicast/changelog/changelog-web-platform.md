@@ -2,9 +2,9 @@
 
 Updates to the [JavaScript Web SDK](https://github.com/millicast/millicast-sdk) for custom web applications, React Native applications, and the [VueJS Web Viewer Plugin](https://github.com/millicast/vue-viewer-plugin).
 
-> 📘 Release History
->
-> You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
+:::tip Release History
+You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
+:::
 
 ## 2024-08-14 | Web SDK [0.2.1](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.1)
 
