@@ -31,12 +31,12 @@ You can also update your existing publish token by enabling the **Record** optio
 ![](../../assets/img/Capture_decran_2023-07-19_a_5.47.51_PM.png)
 
 4. Record the broadcast for at least 10 seconds.
-5. Click the **Stop** button to stop the feed. Once you've stopped, close the broadcaster interface. This will return you to the tokens page on the Live broadcast page.
+5. Click the **Stop** button to stop the feed. Once you've stopped, close the broadcaster interface. This will return you to the tokens page on the Live broadcast page.
 6. Revisit the publish token's management screen used for this stream and enter into the **Recordings** tab to access all recording files.
 
 ## Recording from OBS
 
-You can record your broadcasts if you are using 3rd party applications, such as [OBS](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) or your own custom broadcaster application. If you have not broadcasted to Dolby.io Real-time Streaming from OBS, please read the [Using OBS](/millicast/software-encoders/obs/index.mdx) page to enable your first broadcast with the software.
+You can record your broadcasts if you are using 3rd party applications, such as [OBS](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) or your own custom broadcaster application. If you have not broadcasted to Dolby.io Real-time Streaming from OBS, please read the [Using OBS](/millicast/software-encoders/obs/index.mdx) page to enable your first broadcast with the software.
 
 1. Set up OBS by visiting the **Settings** button to add the token information required.
 

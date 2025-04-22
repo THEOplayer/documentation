@@ -11,7 +11,7 @@ slug: /amino
 If you haven't already, begin by following the [Getting Started](https://docs.dolby.io/streaming-apis/docs/getting-started) tutorial to start your first broadcast. You'll need your Millicast account ID and stream name for the steps described below.
 :::
 
-See the official [Amino website](https://www.amino.tv/) for documentation, installation instructions, and additional support. 
+See the official [Amino website](https://www.amino.tv/) for documentation, installation instructions, and additional support.
 
 ## Amino H200
 
@@ -31,7 +31,7 @@ import AminoWebsiteH200Series from '../assets/img/Amino-Website-H200Series.png';
 
 ### 1. Register Your Amino Device
 
-_If you are familiar with the Amino H200 and already registered your device you can skip this step. _
+_If you are familiar with the Amino H200 and already registered your device you can skip this step._
 
 You'll need to take a few steps to get the H200 up and running:
 
@@ -48,7 +48,7 @@ import AminoWelcome from '../assets/img/amino-h200-welcome-screen.jpeg';
   <img src={AminoWelcome} width="600" />
 </div>
 
-You can find more detailed instructions from here: https://www.amino.tv/welcome-to-the-h200
+You can find more detailed instructions from here: https://www.amino.tv/welcome-to-the-h200
 
 ### 2. Create a Management Group and Update Firmware
 
@@ -68,7 +68,7 @@ Select the _Target Firmware_ you want to run on the device. This is maintained b
 
 From the same _Group details_ view, you will need to update your _Application Settings_. The Channel Zapper application is a streamlined and user-friendly interface designed for fast channel switching between streaming sources.
 
-Click the _+ Add / Remove Parameters _ button to add these Application Settings:
+Click the _+ Add / Remove Parameters_ button to add these Application Settings:
 
 - tvapp.package_id
 - webapp.lineup_json
@@ -107,9 +107,9 @@ import AminoB from '../assets/img/Screenshot_2024-10-17_at_2.31.18_PM.png';
   <img src={AminoB} width="600" />
 </div>
 
-The url follows the pattern **`dolbyio://{Account ID}/{Stream Name}`** and the name and desc are displayed on the screen briefly upon changing channels.
+The url follows the pattern **`dolbyio://{Account ID}/{Stream Name}`** and the name and desc are displayed on the screen briefly upon changing channels.
 
-You can add as many streams as you need to the list, enter this as the value, separated by comma and then click the Save button. Clicking on the *Group reboot* will restart any devices in the group so that they have the latest channel list.
+You can add as many streams as you need to the list, enter this as the value, separated by comma and then click the Save button. Clicking on the *Group reboot* will restart any devices in the group so that they have the latest channel list.
 
 For the optional _player.dolby.min_jitter_delay_ms_ parameter, you can specify the amount of delay in milliseconds to be added to your stream.
 
