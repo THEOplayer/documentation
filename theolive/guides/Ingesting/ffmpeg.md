@@ -13,16 +13,17 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 
 ## Common Settings
 
-| Parameter         | Description                                      |
-| :---------------- | :----------------------------------------------- |
-| \-stream_loop -1  | Loop the video indefinitely                      |
-| \-vb 4500k        | Video Bitrate setting of 4.5 Mbps                |
-| \-c:a copy        | Copy the audio codec from the input              |
-| \-bf 0            | Disable bframes                                  |
-| \-g 60            | Group of pictures (GOP) size                     |
-| \-f flv           | Package flash video                              |
-| \-preset veryfast | Video encoding speed to compression ratio preset |
-| \-vprofile main   | H264 video profile                               |
+| Parameter          | Description                                      |
+| :----------------- | :----------------------------------------------- |
+| \-stream_loop -1   | Loop the video indefinitely                      |
+| \-vb 4500k         | Video Bitrate setting of 4.5 Mbps                |
+| \-c:a copy         | Copy the audio codec from the input              |
+| \-bf 0             | Disable bframes                                  |
+| \-g 60             | Group of pictures (GOP) size                     |
+| \-f flv            | Package flash video                              |
+| \-preset veryfast  | Video encoding speed to compression ratio preset |
+| \-tune zerolatency | Good for fast encoding and low-latency streaming |
+| \-vprofile main    | H264 video profile                               |
 
 ## Start the stream
 
@@ -40,6 +41,7 @@ ffmpeg -re -stream_loop -1 -i $VIDEO_FILE_PATH \
   -g 60 \
   -vb 4500k \
   -vprofile main \
+  -tune zerolatency \
   -level 3.0 \
   -c:a copy \
   -f flv \
