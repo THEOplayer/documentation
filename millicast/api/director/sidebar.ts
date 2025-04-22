@@ -26,25 +26,25 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "DRM Licence",
+      label: "DrmLicence",
       items: [
         {
           type: "doc",
           id: "api/director/drm-licence-get-drm-licence",
-          label: "Get DRM Licence",
+          label: "DrmLicence_GetDrmLicence",
           className: "api-method post",
         },
         {
           type: "doc",
           id: "api/director/drm-licence-get-fairplay-certificate",
-          label: "Get Fairplay Certificate",
+          label: "DrmLicence_GetFairplayCertificate",
           className: "api-method get",
         },
       ],
     },
     {
       type: "category",
-      label: "Multi Track Video",
+      label: "MultiTrackVideo",
       items: [
         {
           type: "doc",
@@ -56,7 +56,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "WHEP",
+      label: "Whep",
       items: [
         {
           type: "doc",
@@ -68,7 +68,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "WHIP",
+      label: "Whip",
       items: [
         {
           type: "doc",
