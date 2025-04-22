@@ -1,11 +1,18 @@
 ---
 title: 'Multi-view'
 slug: /multiview
+sidebar_position: 6
 ---
 
 Multi-view lets you ingest and render multiple Dolby.io real-time video and audio streams simultaneously inside a browser or mobile native applications. Once rendered, you can switch seamlessly between streams, allowing you to control how you view the content. By giving viewers content control, broadcasters can enable real-time experiences and engagement that leave viewers wanting more.
 
-<iframe src="https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true&mute=true"></iframe>
+<div className="youtube-container">
+  <iframe
+    width="560"
+    height="315"
+    src="https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true&mute=true"
+  ></iframe>
+</div>
 
 To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/broadcast/multi-source-broadcasting.mdx). Once broadcasting a multi-source stream, you can view the stream using the Dolby.io Millicast viewer app, or by building your own multi-view application. Dolby.io also supports [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) for mixed audio playback.
 
@@ -19,7 +26,11 @@ https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]
 
 Once you join, the bottom right gear icon flashes a notification prompting you to enable multi-view. Enable it to begin viewing the streams.
 
-![](../assets/img/Select_multiview.jpg)
+import SelectMultiview from '../assets/img/Select_multiview.jpg';
+
+<div class="center-container">
+  <img src={SelectMultiview} width="600" />
+</div>
 
 Alternatively, you can force the viewer to open to multi-view by including the `&multisource=true` flag on the URL:
 
@@ -40,9 +51,9 @@ Before getting started building a multi-view application it is worth understandi
 
 ### Store and track incoming Multisource feeds
 
-> 📘 Not building a Web App?
->
-> All Dolby.io [Client SDKs](/millicast/client-sdks/index.mdx) support building Multi-view applications. Although the below example is using JavaScript the principles are the same for each SDK.
+:::info Not building a Web App?
+All Dolby.io [Client SDKs](/millicast/client-sdks/index.mdx) support building Multi-view applications. Although the below example is using JavaScript the principles are the same for each SDK.
+:::
 
 The Dolby.io platform tracks broadcasts by their `account ID` and `stream name` and individual streams within broadcasts by their `sourceID`, a unique identifier that can be used for selecting feeds to render from the [viewer node](/millicast/playback/source-and-layer-selection.md). Unlike a traditional broadcast where there is only one stream to playback, a multi-view application must account for multiple feeds arriving asynchronously. To accomplish this, the application should [listen for streams using a `broadcastEvent`](/millicast/playback/viewer-events.md#using-events), and store the stream `sourceID` as it becomes active.
 

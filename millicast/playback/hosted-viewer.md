@@ -1,19 +1,24 @@
 ---
 title: 'Hosted Player'
 slug: /hosted-viewer
+sidebar_position: 1
 ---
 
 The **Hosted Player** refers to the streaming video player that can be used as a standalone web application or embedded into a website to meet the needs of many workflows without requiring extensive software development.
 
 The player is similar to the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) application in the dashboard but is for the audience to use to view the published stream.
 
-![](../assets/img/dolbyio-hosted-viewer-preview.png)
+import HostedViewerPreview from '../assets/img/dolbyio-hosted-viewer-preview.png';
 
-> 👍 Getting Started
->
-> If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
->
-> You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) and [Hosted Player](/millicast/playback/hosted-viewer.md).
+<div class="center-container">
+  <img src={HostedViewerPreview} width="600" />
+</div>
+
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+
+You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) and [Hosted Player](/millicast/playback/hosted-viewer.md).
+:::
 
 ## White label playback
 
@@ -55,7 +60,11 @@ There are a few controls and status indicators in the hosted player.
 | :---------------- | :----------------- |
 | Viewer count      | Stream status      |
 
-![](../assets/img/dolbyio-streaming-dashboard-playback-viewer.png)
+import PlaybackViewer from '../assets/img/dolbyio-streaming-dashboard-playback-viewer.png';
+
+<div class="center-container">
+  <img src={PlaybackViewer} width="600" />
+</div>
 
 | Lower Left Corner                     | Lower Right Corner                       |
 | :------------------------------------ | :--------------------------------------- |
@@ -66,7 +75,7 @@ There are a few controls and status indicators in the hosted player.
 Along the top of the player are some stream status indicators such as:
 
 - Total number of stream viewers
-- **Live** / **Not Live **status badge
+- **Live** / **Not Live** status badge
 
 ### Player controls
 
