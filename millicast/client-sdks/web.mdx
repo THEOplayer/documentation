@@ -18,9 +18,9 @@ To use the SDK in your web applications you have options:
 - include a hosted version from the [JSDELIVR CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk) CDN
 - add a dependency with [npm](https://www.npmjs.com/package/@millicast/sdk)
 
-> ❗️ Versioning of the Millicast SDK
->
-> When installing and importing the SDK you may automatically be updated to the latest version. This is fine for development, but it is _strongly recommended_ to pin to a specific version release in order to increase stability when you move to production.
+:::danger Versioning of the Millicast SDK
+When installing and importing the SDK you may automatically be updated to the latest version. This is fine for development, but it is _strongly recommended_ to pin to a specific version release in order to increase stability when you move to production.
+:::
 
 #### JSDELIVR
 
@@ -95,9 +95,9 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
       type: 'link',
       href: 'https://millicast.github.io/millicast-sdk/',
       customProps: {
-        icon: '*️⃣',
+        icon: '📖',
       },
-      label: 'Docs',
+      label: 'Rerefence',
       description: 'Class and object reference',
     },
     {
@@ -134,12 +134,13 @@ const tokenGenerator = () =>
     token: 'my-publishing-token',
     streamName: 'my-stream-name',
   });
-const publisher = new Publish('my-stream-name', tokenGenerator);
+
+const publisher = new Publish(undefined, tokenGenerator);
 ```
 
-In order to create an instance of the Publish class, you have to send two parameters.
+In order to create an instance of the `Publish` class, you have to send two parameters.
 
-- The first one is the stream name ('my-stream-name') and it is used to set where do you want to publish your stream.
+- The first one needs to be `undefined` as it has been deprecated.
 - The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to stream. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
 
 More information here:
@@ -155,7 +156,10 @@ You should get the media information (camera/microphone) you want to stream with
 In this example, we are going to get the default user camera and microphone using the browser API [getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia):
 
 ```javascript
-const mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+const mediaStream = await navigator.mediaDevices.getUserMedia({
+  audio: true,
+  video: true,
+});
 ```
 
 This will ask permission in the browser to get the camera and microphone and it will save the mediaStream information if the user accepts.
@@ -248,8 +252,11 @@ To do that, you have to use the [updateBitrate()](https://millicast.github.io/mi
 Example:
 
 ```javascript
-await publisher.webRTCPeer.updateBitrate(2000); // Set the active stream with 2000 kbps limit.
-await publisher.webRTCPeer.updateBitrate(0); // Set the active stream with no limit.
+// Set the active stream with 2000 kbps limit.
+await publisher.webRTCPeer.updateBitrate(2000);
+
+// Set the active stream with no limit.
+await publisher.webRTCPeer.updateBitrate(0);
 ```
 
 ##### Stop stream
@@ -283,13 +290,12 @@ const tokenGenerator = () =>
     subscriberToken: 'subscriber-token',
   });
 
-// Create Millicast instance
-const millicastView = new View('publish-stream-name', tokenGenerator);
+const millicastView = new View(undefined, tokenGenerator);
 ```
 
-Like when creating a Publish instance, in order to create a View instance you need two parameters and there are also two optional parameters.
+Like when creating a `Publish` instance, in order to create a `View` instance you need two parameters and there are also two optional parameters.
 
-- The first one is the stream name ('my-stream-name') and it is used to set the stream you want to connect.
+- The first one needs to be `undefined` as it has been deprecated.
 - The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
 - \*\*(Optional) mediaElement. This is the HTML media element where you want to mount the stream for example a `video` element.
 - \*\*(Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream.
@@ -329,14 +335,14 @@ We recommend using the [reconnect()](https://millicast.github.io/millicast-sdk/V
 
 ### Reconnecting
 
-Both the instances of Publish and View have a reconnect event. This event emits when the connection is lost with a timeout and error message in the callback. This event is emitted by the `reconnect()` method that both Publish and View instances have, this method is automatically called by default except specified with the autoReconnect flag of the [constructor](https://millicast.github.io/millicast-sdk/View.html). [SDK Reconnect event](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:reconnect)
+Both the instances of Publish and View have a [reconnect](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:reconnect) event. This event emits when the connection is lost with a timeout and error message in the callback. This event is emitted by the `reconnect()` method that both Publish and View instances have, this method is automatically called by default except specified with the `autoReconnect` flag of the [constructor](https://millicast.github.io/millicast-sdk/View.html).
 
-Example reconnect event in View instance:
+Listen to the `reconnect` event from the `View` instance:
 
 ```javascript
 import { View } from '@millicast/sdk';
 
-const millicastView = new View(streamName, tokenGenerator);
+const millicastView = new View(undefined, tokenGenerator);
 
 millicastView.on('reconnect', ({ timeout, error }) => {
   console.log(timeout);
@@ -473,18 +479,18 @@ More information and examples here:
 
 Stream stats can be accessed by both Publish and View instances. In order to capture them, you have to initialize the stats and then listen for the event through the `webRTCPeer` attribute.
 
-> 🚧 Stats Variations
->
-> Keep in mind that the stats that are collected may differ from browser to browser, between browser versions, and may depend on the type of media that is being transferred.
+:::caution Stats Variations
+Keep in mind that the stats that are collected may differ from browser to browser, between browser versions, and may depend on the type of media that is being transferred.
+:::
 
 ```javascript title="View"
 import { View } from '@millicast/sdk';
 
 // Initialize and connect your Viewer
-const millicastView = new View(streamName, tokenGenerator);
+const millicastView = new View(undefined, tokenGenerator);
 await millicastView.connect();
 
-// Capture new stats events every 1s
+// Capture new stats every 1s
 millicastView.webRTCPeer.on('stats', (stats) => {
   console.log('Stats from event: ', stats);
 });
@@ -494,10 +500,10 @@ millicastView.webRTCPeer.on('stats', (stats) => {
 import { Publish } from '@millicast/sdk';
 
 // Initialize and connect your Publisher
-const millicastPublish = new Publish(streamName, tokenGenerator);
+const millicastPublish = new Publish(undefined, tokenGenerator);
 await millicastPublish.connect();
 
-// Capture new stats events every 1s
+// Capture new stats every 1s
 millicastPublish.webRTCPeer.on('stats', (stats) => {
   console.log('Stats from event: ', stats);
 });
@@ -548,7 +554,7 @@ You can enable screensharing from a browser as part of the broadcast. If you wan
 
 For screen sharing browser support see [this article on Browser Compatibility for Media Devices](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices#browser_compatibility).
 
-To enable screensharing, first you must define `displayMediaOptions`:
+To enable screensharing, first you must define `displayMediaOptions` and call the `getDisplayMedia` function. For more information, see [getDisplayMedia](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia).
 
 ```javascript
 const displayMediaOptions = {
@@ -557,11 +563,7 @@ const displayMediaOptions = {
   },
   audio: false,
 };
-```
 
-Next, call the `getDisplayMedia` function. For more information, see [getDisplayMedia](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia).
-
-```javascript
 const screenCapture = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
 ```
 
@@ -584,7 +586,7 @@ const tokenGenerator = () =>
     streamName: 'Stream Name',
   });
 
-const publisher = new Publish('Stream Name', tokenGenerator);
+const publisher = new Publish(undefined, tokenGenerator);
 
 try {
   await publisher.connect(broadcastOptions);
@@ -614,11 +616,11 @@ try {
 You can call the [record()](https://millicast.github.io/millicast-sdk/Publish.html#record) function on-demand to activate it after the broadcast is already active:
 
 ```javascript
-publisher.record();
+await publisher.record();
 ```
 
 You can choose when to stop the recording using [unrecord()](https://millicast.github.io/millicast-sdk/Publish.html#unrecord) or wait until the session disconnects.
 
 ```javascript
-publisher.unrecord();
+await publisher.unrecord();
 ```

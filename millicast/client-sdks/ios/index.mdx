@@ -24,7 +24,7 @@ import DocCardList from '@theme/DocCardList';
       customProps: {
         icon: '📖',
       },
-      label: 'Documentation',
+      label: 'Rerefence',
       description: '',
     },
     {
@@ -51,9 +51,9 @@ import DocCardList from '@theme/DocCardList';
 
 The package name of the Native SDK for iOS is _millicast-native-sdk-\{version\}-XCFramework.zip_.
 
-> 📘 Note
->
-> If you want to use Streaming APIs on Android and iOS, you can also use the [Flutter SDK](/millicast/client-sdks/flutter.mdx) or the [React Native](/millicast/client-sdks/rn.mdx) plugin.
+:::tip Note
+If you want to use Streaming APIs on Android and iOS, you can also use the [Flutter SDK](/millicast/client-sdks/flutter.mdx) or the [React Native](/millicast/client-sdks/rn.mdx) plugin.
+:::
 
 ## Requirements
 
@@ -69,21 +69,15 @@ To add the SDK to your project, you can either use Swift Package Manager or Coco
 ### Swift Package Manager
 
 1. Go to your project settings in Xcode.
-
 2. Go to the **Package Dependencies** tab and click on the **+** icon to add a new dependency.
-
 3. In the line edit, enter the following package URL: https://github.com/millicast/millicast-sdk-swift-package. You should see the package appear.
-
 4. Choose the version you want to use and click on **add package**.
 
 ### CocoaPods
 
 1. Install CocoaPods if you have not already.
-
 2. Open a terminal in the root of your XCode project.
-
 3. Type `pod init` to create a `Podfile`.
-
 4. Open the created file in a text editor and add the Millicast SDK as a dependency.
 
 ```ruby

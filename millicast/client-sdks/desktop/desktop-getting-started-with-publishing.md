@@ -16,7 +16,7 @@ auto sources = millicast::Media::get_audio_sources();
 // Choose the preferred audio source and start capturing
 auto src = sources[0]; // Get the first available source
 auto audioTrack = src->start_capture();
-if(audioTrack == nullptr)
+if (audioTrack == nullptr)
 {
  	// Error could not start capture
 }
@@ -33,7 +33,7 @@ source[0]->set_capability(capabilities[0]); // Set the first capability object
 // Start capturing video
 auto src = sources[0]; // Get the first available source
 auto vidoeTrack = src->start_capture();
-if(videoTrack == nullptr)
+if (videoTrack == nullptr)
 {
  	// Error could not start capture
 }
