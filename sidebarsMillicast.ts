@@ -1,32 +1,26 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import type { SidebarItemConfig, SidebarItem, SidebarItemDoc, SidebarItemCategory } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
-import millicastApiSidebar from './millicast/api/sidebar';
-import millicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
-import millicastDirectorApiSidebar from './millicast/api/director/sidebar';
+import type { SidebarItem, SidebarItemCategory, SidebarItemConfig, SidebarItemDoc } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
+import rawMillicastApiSidebar from './millicast/api/sidebar';
+import rawMillicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
+import rawMillicastDirectorApiSidebar from './millicast/api/director/sidebar';
 
 function isCategory(item: SidebarItemConfig): item is SidebarItemCategory {
-  return (item as SidebarItemCategory).type === 'category';
+  return (item as SidebarItem).type === 'category';
 }
 
-function isDoc(item: SidebarItem): item is SidebarItemDoc {
-  return item.type === 'doc';
+function isDoc(item: SidebarItemConfig): item is SidebarItemDoc {
+  return (item as SidebarItem).type === 'doc';
 }
 
-function isHiddenCategory(item: SidebarItemConfig): item is SidebarItemCategory {
-  return isCategory(item) && item.label === 'hidden';
-}
-
-function removeHiddenItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
-  // find the "hidden" category and get its item IDs
-  const hiddenCategory = data.find(isHiddenCategory);
-  const hiddenIds = new Set(hiddenCategory?.items.filter(isDoc).map((item) => item.id) ?? []);
+function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): SidebarItemConfig[] {
+  const hiddenIdsSet = new Set(hiddenIds);
 
   // filter out items from other categories that match the hidden IDs
   const updatedData = data
     .map((category) => {
       if (isCategory(category)) {
         // filter out the items that match any of the hidden IDs
-        const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIds.has(item.id)));
+        const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIdsSet.has(item.id)));
 
         // if all items are removed, omit the category entirely
         if (filteredItems.length === 0) {
@@ -45,10 +39,23 @@ function removeHiddenItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
   return updatedData;
 }
 
-// filter "hidden" items
-const filteredMillicastApiSidebar = removeHiddenItems(millicastApiSidebar);
-const filteredMillicastAdvancedReportingApiSidebar = removeHiddenItems(millicastAdvancedReportingApiSidebar);
-const filteredMillicastDirectorApiSidebar = removeHiddenItems(millicastDirectorApiSidebar);
+const millicastApiSidebar: SidebarItemConfig[] = removeHiddenItems(rawMillicastApiSidebar, [
+  'api/record-files-v-2-list-media-assets',
+  'api/record-files-v-2-read-media-asset',
+  'api/record-files-v-2-delete-media-assets',
+  'api/record-files-create-record-clip',
+  'api/record-files-get-clip-request',
+  'api/record-files-delete-clip-request-live',
+  'api/record-files-list-clip-requests',
+  'api/record-files-list-available-clip-sources',
+  'api/record-files-validate-storage-profile',
+  'api/record-files-update-expiry-rule',
+  'api/record-files-get-expiry-rule',
+  'api/record-files-delete-expiry-rule',
+  'api/record-files-delete-clip-sources',
+]);
+const millicastAdvancedReportingApiSidebar: SidebarItemConfig[] = rawMillicastAdvancedReportingApiSidebar;
+const millicastDirectorApiSidebar: SidebarItemConfig[] = rawMillicastDirectorApiSidebar;
 
 const sidebars: SidebarsConfig = {
   millicast: [
@@ -331,21 +338,21 @@ const sidebars: SidebarsConfig = {
       label: 'Millicast API',
       collapsible: true,
       collapsed: false,
-      items: [...filteredMillicastApiSidebar],
+      items: millicastApiSidebar,
     },
     {
       type: 'category',
       label: 'Millicast Advanced Reporting API',
       collapsible: true,
       collapsed: true,
-      items: [...filteredMillicastAdvancedReportingApiSidebar],
+      items: millicastAdvancedReportingApiSidebar,
     },
     {
       type: 'category',
       label: 'Millicast Director API',
       collapsible: true,
       collapsed: true,
-      items: [...filteredMillicastDirectorApiSidebar],
+      items: millicastDirectorApiSidebar,
     },
   ],
 };
