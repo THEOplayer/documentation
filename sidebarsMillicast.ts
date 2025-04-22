@@ -14,10 +14,9 @@ function isDoc(item: SidebarItemConfig): item is SidebarItemDoc {
 
 function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): SidebarItemConfig[] {
   const hiddenIdsSet = new Set(hiddenIds);
-
-  // filter out items from other categories that match the hidden IDs
-  const updatedData = data
+  return data
     .map((category) => {
+      // filter out items from other categories that match the hidden IDs
       if (isCategory(category)) {
         // filter out the items that match any of the hidden IDs
         const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIdsSet.has(item.id)));
@@ -33,10 +32,10 @@ function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): Side
       }
       return category;
     })
-    // Remove null categories
-    .filter((category) => category !== null);
-
-  return updatedData;
+    .filter((category) => {
+      // Remove null categories
+      return category !== null;
+    });
 }
 
 function fixLabels(items: SidebarItemConfig[], replacements: Record<string, string> = {}): SidebarItemConfig[] {
