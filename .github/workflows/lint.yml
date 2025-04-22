@@ -20,6 +20,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm ci
+      - run: npm run gen-api-docs
       - run: npm run check-format
       - run: npm run lint
       - run: npm run typecheck
