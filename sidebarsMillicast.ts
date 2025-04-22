@@ -39,7 +39,30 @@ function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): Side
   return updatedData;
 }
 
-const millicastApiSidebar: SidebarItemConfig[] = removeHiddenItems(rawMillicastApiSidebar, [
+function fixLabels(items: SidebarItemConfig[], replacements: Record<string, string> = {}): SidebarItemConfig[] {
+  return items.map((item) => {
+    if (!(isCategory(item) || isDoc(item))) {
+      return item;
+    }
+    let label = item.label;
+    if (label) {
+      if (replacements[label]) {
+        // Replace label
+        label = replacements[label];
+      } else if (isCategory(item)) {
+        // Add spaces between capitalized words
+        label = item.label.replace(/([a-z])([A-Z])/g, '$1 $2');
+      }
+    }
+    if (isCategory(item)) {
+      return { ...item, label, items: fixLabels(item.items, replacements) };
+    } else {
+      return { ...item, label };
+    }
+  });
+}
+
+let millicastApiSidebar: SidebarItemConfig[] = removeHiddenItems(rawMillicastApiSidebar, [
   'api/record-files-v-2-list-media-assets',
   'api/record-files-v-2-read-media-asset',
   'api/record-files-v-2-delete-media-assets',
@@ -54,8 +77,20 @@ const millicastApiSidebar: SidebarItemConfig[] = removeHiddenItems(rawMillicastA
   'api/record-files-delete-expiry-rule',
   'api/record-files-delete-clip-sources',
 ]);
+millicastApiSidebar = fixLabels(millicastApiSidebar, {
+  PublishTokenV1: 'Publish Token',
+  PublishTokenV2: 'Publish Token',
+  SubscribeTokenV1: 'Subscribe Token',
+  SubscribeTokenV2: 'Subscribe Token',
+});
 const millicastAdvancedReportingApiSidebar: SidebarItemConfig[] = rawMillicastAdvancedReportingApiSidebar;
-const millicastDirectorApiSidebar: SidebarItemConfig[] = rawMillicastDirectorApiSidebar;
+const millicastDirectorApiSidebar: SidebarItemConfig[] = fixLabels(rawMillicastDirectorApiSidebar, {
+  DrmLicence: 'DRM Licence',
+  DrmLicence_GetDrmLicence: 'Get DRM Licence',
+  DrmLicence_GetFairplayCertificate: 'Get Fairplay Certificate',
+  Whep: 'WHEP',
+  Whip: 'WHIP',
+});
 
 const sidebars: SidebarsConfig = {
   millicast: [
