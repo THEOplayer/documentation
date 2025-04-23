@@ -1,6 +1,7 @@
 ---
 title: 'Broadcast Events'
 slug: /viewer-events
+sidebar_position: 4
 ---
 
 Dolby.io Real-time Streaming supports `broadcastEvents`, sometimes called _viewer events_, which allow you to add functionality that triggers when various events occur during the stream. This functionality can be helpful for detecting active feeds, changes in simulcast layers, or even the viewer count of a stream.
@@ -22,9 +23,9 @@ Currently, there are several events that can be listened to when connected to th
 
 ## Using events
 
-> 👍 Not familar with our SDKs?
->
-> Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) guide or by leanring about our [Client SDKs](/millicast/client-sdks/index.mdx).
+:::tip Not familar with our SDKs?
+Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) guide or by leanring about our [Client SDKs](/millicast/client-sdks/index.mdx).
+:::
 
 To use or "listen" for these events, you first must authenticate and connect to the Dolby.io CDN using one of our [Client SDKs](/millicast/client-sdks/index.mdx). When calling the `connect` function you can include a list of all events to listen for:
 

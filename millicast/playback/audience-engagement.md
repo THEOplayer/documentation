@@ -1,6 +1,7 @@
 ---
 title: 'Audience Engagement'
 slug: /audience-engagement
+sidebar_position: 8
 ---
 
 <div class="row" style={{alignItems: "center", justifyContent: "space-around"}}>

@@ -1,6 +1,7 @@
 ---
 title: 'Audio Multiplexing'
 slug: /audio-multiplexing
+sidebar_position: 7
 ---
 
 The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers to receive multiple audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
@@ -24,9 +25,9 @@ If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-so
 
 To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher.
 
-> 📘 Not familar with our JavaScript SDK?
->
-> Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/client-sdks/index.mdx).
+:::info Not familar with our JavaScript SDK?
+Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/client-sdks/index.mdx).
+:::
 
 Once you're streaming multiple audio sources, the next step is to set up the [Viewer](/millicast/client-sdks/web.mdx#viewing-a-stream) so that the incoming audio sources can be correctly multiplexed. When connecting to the Viewer, there are a [number of parameters available in the SDK](https://millicast.github.io/millicast-sdk/View.html#connect) you can adjust depending on your workflow. Some parameters of note for audio multiplexing include:
 
@@ -78,11 +79,11 @@ viewer.on('broadcastEvent', async (event) => {
 });
 ```
 
-> 🚧 Viewer on "track" events
->
-> The Dolby.io SDKs offer `.on("track",async (event) =>{})` functionality for triggering events as tracks are added. When using Audio Multiplexing this event will trigger a number of times equal to the `multiplexedAudioTracks` value, regardless of if those tracks actually contain data.
->
-> This means that if `multiplexedAudioTracks` is set to `5` it will trigger once for the first track and five additional times for each multiplexed audio track, regardless of whether there are only two tracks broadcasting or twenty.
+:::caution Viewer on "track" events
+The Dolby.io SDKs offer `.on("track",async (event) =>{})` functionality for triggering events as tracks are added. When using Audio Multiplexing this event will trigger a number of times equal to the `multiplexedAudioTracks` value, regardless of if those tracks actually contain data.
+
+This means that if `multiplexedAudioTracks` is set to `5` it will trigger once for the first track and five additional times for each multiplexed audio track, regardless of whether there are only two tracks broadcasting or twenty.
+:::
 
 The `broadcastEvent` will contain the feeds as they are being published. These feeds need to be linked to Viewer `tracks` to be delivered via a function called `project` which _projects_ the media onto the track. This is because different feeds maybe be coming from different sources and hence may connect or disconnect at different intervals. The relationship between a feed and a track is organized this way so that as feeds disconnect they can be swapped or removed without all the streams being interrupted.
 

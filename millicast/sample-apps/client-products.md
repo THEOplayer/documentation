@@ -13,5 +13,5 @@ Each of the following platforms has its own Studio and Player apps.
 | Platform | Studio packages | Player packages |
 | --- | --- | --- |
 | Windows | Win10 | Win10 |
-| Mac | _ MacOS Catalina intel<br/> _ MacOS Big Sur intel | _ MacOS Catalina intel<br/> _ MacOS Big Sur intel |
+| Mac | _MacOS Catalina Intel_<br/> MacOS Big Sur IUntel | _MacOS Catalina Intel_<br/> MacOS Big Sur Intel |
 | Linux | \* Ubuntu 20 | Ubuntu 20 |

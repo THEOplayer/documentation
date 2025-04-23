@@ -15,7 +15,7 @@ The CLI is currently supported on the following platforms.
 | Platform | Versions |
 | --- | --- |
 | Windows | Win10 |
-| MacOS | _ Catalina (Intel)<br/>_ Big Sur (Intel) |
+| MacOS | _Catalina (Intel)_<br/> Big Sur (Intel) |
 | Linux | Ubuntu 20 |
 
 ## Installation

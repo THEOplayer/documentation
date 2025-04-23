@@ -1,7 +1,12 @@
 ---
-title: 'Migration Guide for Android SDK'
+title: 'Migration Guide'
 slug: /android-sdk-migration-guide
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Migration Guide for Android SDK
 
 This migration guide provides some tips for upgrading or downgrading between releases of the Android SDK.
 
@@ -19,50 +24,57 @@ Below you'll find examples for migrating your applications from [v1.8.9](https:/
 
 For applications that only have a single source available for playback, track management has changed.
 
-```kotlin title="1.8.x"
+<Tabs>
+<TabItem value="1.8.x" label="1.8.x">
+
+```kotlin
 Core.initialize()
 
 val subscriber = Core.createSubscriber()
 
 launch {
-    subscriber.state.map { it.connectionState }.distinctUntilChanged().collect {
-        if (it == SubscriberConnectionState.Connected) {
-            subscriber.subscribe()
-        }
+  subscriber.state.map { it.connectionState }.distinctUntilChanged().collect {
+    if (it == SubscriberConnectionState.Connected) {
+      subscriber.subscribe()
     }
+  }
 }
 
 launch {
-    subscriber.track.collect { trackHolder ->
-        when(trackHolder) {
-            is TrackHolder.VideoTrackHolder -> {
-                // Create the renderer:
-                val view = com.millicast.video.TextureViewRenderer(applicationContext)
-                // Add the renderer to the layout:
-                val layout = findViewById<LinearLayout>(R.id.linear_layout_video)
-                layout.addView(view)
-                // Set the renderer as a sink on the video track:
-                trackHolder.videoTrack.setVideoSink(view)
-            }
-            is TrackHolder.AudioTrackHolder -> {
-                // No video, ignore
-            }
-        }
+  subscriber.track.collect { trackHolder ->
+    when(trackHolder) {
+      is TrackHolder.VideoTrackHolder -> {
+        // Create the renderer:
+        val view = com.millicast.video.TextureViewRenderer(applicationContext)
+        // Add the renderer to the layout:
+        val layout = findViewById<LinearLayout>(R.id.linear_layout_video)
+        layout.addView(view)
+        // Set the renderer as a sink on the video track:
+        trackHolder.videoTrack.setVideoSink(view)
+      }
+      is TrackHolder.AudioTrackHolder -> {
+        // No video, ignore
+      }
+    }
 }
 
 launchDefaultScope {
-    val credentials = Credential(
-        streamName = "STREAM_NAME",
-        accountId = "ACCOUNT_ID",
-        apiUrl = "https://director.millicast.com/api/director/subscribe"
-    )
+  val credentials = Credential(
+    streamName = "STREAM_NAME",
+    accountId = "ACCOUNT_ID",
+    apiUrl = "https://director.millicast.com/api/director/subscribe"
+  )
 
-    subscriber.setCredentials(credentials)
-    subscriber.connect()
+  subscriber.setCredentials(credentials)
+  subscriber.connect()
 }
 ```
 
-```kotlin title="2.x"
+</TabItem>
+
+<TabItem value="2.x" label="2.x">
+
+```kotlin
 Core.initialize()
 
 val subscriber = Core.createSubscriber()
@@ -101,13 +113,19 @@ launchDefaultScope {
 }
 ```
 
+</TabItem>
+</Tabs>
+
 Video view renderer using `TextureViewRenderer` remains the same in 2.0.0.
 
 ### Subscribing Multi-View Streams
 
 There were a lot of complicated steps involved in projecting the sources for a multi-stream view. This complex workflow requires a lot of understanding of the WebRTC remote tracks. Using the new 2.0.0 implementation removes the need to handle sourceIds, mids and the projection data directly. This solves a lot of complexities from the old implementation.
 
-```kotlin title="1.8.x"
+<Tabs>
+<TabItem value="1.8.x" label="1.8.x">
+
+```kotlin
 //Using the multi-source feature requires projecting tracks into a specified transceiver using its media ID (mid). When you start subscribing, you will receive the activity flow updates. To forward the selected media to the subscriber, use the project method of the subscriber. It requires providing the source ID you are targeting and an array of the tracks you want to project. And for more advanced cases, you may need to unproject and project tracks again. So you have to store a map of <sourceId, RemoteTrackHolder> for later usage. To achieve this you should listen to the StreamSourceActivity flow, then for every new track add only the new tracks to this stored map. Which is a big effort to do and a lot of stuff to worry about, as an example WHEN to re-init this map and etc.
 
 Core.initialize()
@@ -203,7 +221,11 @@ launchDefaultScope {
 }
 ```
 
-```kotlin title="2.x"
+</TabItem>
+
+<TabItem value="2.x" label="2.x">
+
+```kotlin
 Core.initialize()
 
 val subscriber = Core.createSubscriber()
@@ -247,6 +269,9 @@ launchDefaultScope {
     subscriber.connect()
 }
 ```
+
+</TabItem>
+</Tabs>
 
 The new 2.0.0 implementation for multi-stream is identical to the single stream view.
 

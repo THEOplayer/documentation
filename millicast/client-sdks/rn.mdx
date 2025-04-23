@@ -24,8 +24,8 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
       customProps: {
         icon: '📖',
       },
-      label: 'Documentation',
-      description: 'Find more information about Web SDK APIs',
+      label: 'Reference',
+      description: 'Class and object reference',
     },
     {
       type: 'link',
@@ -45,9 +45,9 @@ Before you start, make sure that you use [React Native WebRTC plugin](https://ww
 
 ## Getting started
 
-> 📘
->
-> Before we start, you can find more information in the [Web SDK Documentation](/millicast/client-sdks/web.mdx), which contains more examples and descriptions of the available modules.
+:::tip Getting started with React Native
+Before we start, you can find more information in the [Web SDK Documentation](/millicast/client-sdks/web.mdx), which contains more examples and descriptions of the available modules.
+:::
 
 ### Initializing your project
 
@@ -64,12 +64,12 @@ expo eject
 
 By default, React Native does not contain a native implementation of WebRTC, which is required by the Millicast SDK. The [react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) project implements all the required WebRTC APIs needed by our SDK to function. A patch has been released that integrates WebRTC's Unified Plan, which is required by the Millicast SDK to function. However, there is still some small setup needed. We need to install the mentioned dependency:
 
-```bash
-npm install --save react-native-webrtc
-npm install @millicast/sdk
-## OR if you use yarn:
-yarn add react-native-webrtc
-yarn add @millicast/sdk
+```bash title="Using NPM"
+npm install react-native-webrtc @millicast/sdk
+```
+
+```bash title="Using YARN"
+yarn add react-native-webrtc @millicast/sdk
 ```
 
 On iOS, install the native Pods that are required for [react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) to run. Navigate to the `ios/` directory in your `react-native` app and run the following:
@@ -190,52 +190,51 @@ import { Director, View as MillicastView } from '@millicast/sdk'
 class MillicastWidget extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       streamURL: null
-    }
+    };
 
     this.styles = StyleSheet.create({
       video: {
         width: 480,
         height: 320
       }
-    })
-    this.subscribe(props.streamName, props.accountID)
+    });
+    this.subscribe(props.streamName, props.accountID);
   }
 
   async subscribe(streamName, accountID) {
-
-    console.log(streamName, accountID)
+    console.log(streamName, accountID);
     const tokenGenerator = () => Director.getSubscriber({
-        streamName: streamName,
-        streamAccountId: accountID
-      })
+      streamName: streamName,
+      streamAccountId: accountID
+    });
 
     // Create a new instance
-    const millicastView = new MillicastView(streamName, tokenGenerator, null)
+    const millicastView = new MillicastView(undefined, tokenGenerator, null);
 
     // Set track event handler to receive streams from Publisher.
     millicastView.on('track', (event) => {
       console.log(`My event is ${event}`);
-      const videoUrl = event.streams[0].toURL()
-      if (!videoUrl) return null
+      const videoUrl = event.streams[0].toURL();
+      if (!videoUrl) return null;
 
       this.setState({
         streamURL: videoUrl
-      })
-    })
+      });
+    });
 
     // Start connection to viewer
     try {
-      await millicastView.connect()
+      await millicastView.connect();
     } catch (e) {
-      console.log('Connection failed. Reason:', e)
+      console.log('Connection failed. Reason:', e);
     }
   }
 
   reconnect = () => {
-    millicastView.reconnect()
+    millicastView.reconnect();
   }
 
   render() {
@@ -293,27 +292,25 @@ class MillicastWidget extends React.Component {
 
   constructor(props) {
     super(props)
-        this.millicastPublish = null
+        this.millicastPublish = null;
         this.state = {
             mediaStream: null,
             stream: null
-        }
+        };
 
         this.styles = StyleSheet.create({
             video: {
               width: '100%',
               height: '100%'
             }
-        })
+        });
     }
-
 
     start = async () => {
         console.log('start');
         if (!this.state.mediaStream) {
-            let s;
             try {
-                s = await mediaDevices.getUserMedia({ video: true, audio: true });
+                let s = await mediaDevices.getUserMedia({ video: true, audio: true });
                 this.setState({
                     mediaStream: s
                 });
@@ -336,23 +333,21 @@ class MillicastWidget extends React.Component {
     };
 
     async publish(streamName, token) {
-
         const tokenGenerator = () => Director.getPublisher({
             token,
             streamName
-        })
+        });
         // Create a new instance
-        this.millicastPublish = new Publish(streamName, tokenGenerator)
+        this.millicastPublish = new Publish(undefined, tokenGenerator);
 
         this.setState({
             streamURL: this.state.mediaStream
-        })
+        });
         // Publishing Options
         const broadcastOptions = {
             mediaStream: this.state.mediaStream,
             codec: 'vp8'
-        }
-
+        };
 
         // Start broadcast
         try {
@@ -392,7 +387,7 @@ export default function App() {
         <MillicastWidget streamName=<YOUR_STREAM_NAME> token=<YOUR_PUBLISHER_TOKEN> />
       </SafeAreaView>
     </>
-    );
+  );
 }
 
 

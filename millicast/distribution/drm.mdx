@@ -102,7 +102,7 @@ Here is an example of initializing the subscriber for a DRM stream:
 const tokenGenerator = () => Director.getSubscriber(streamName, accountId, subscriberToken, enableDRM);
 ```
 
-You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV) and **key\*\* for decrypting the content.
+You should listen for the `active` broadcast event when you connect in order to verify the DRM credentials with the **initial value (IV)** and **key** for decrypting the content.
 
 ```javascript
 await viewer.connect({

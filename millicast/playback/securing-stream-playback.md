@@ -1,6 +1,7 @@
 ---
 title: 'Securing Stream Playback'
 slug: /securing-stream-playback
+sidebar_position: 2
 ---
 
 [Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.mdx#create-a-publish-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled.
@@ -34,21 +35,33 @@ When an **unsecured** stream is live, you'll be able to view the broadcast at:
 
 `https://viewer.millicast.com/?streamId=[YOUR ACCOUNT ID]/[YOUR STREAM NAME]`
 
-![](../assets/img/image.png)
+import Img from '../assets/img/image.png';
+
+<div class="center-container">
+  <img src={Img} width="600" />
+</div>
 
 When a stream is **secured**, you'll only be able to view the broadcast with a valid Subscribe token. This can be done in browser with the Hosted Viewer by appending a `token` flag to the URL:
 
 `https://viewer.millicast.com?streamId=[Account ID]/[Stream Name]&token=[Subscribe Token]`
 
-![](../assets/img/image.png)
+import Img2 from '../assets/img/2d58054-image.png';
+
+<div class="center-container">
+  <img src={Img2} width="600" />
+</div>
 
 If you attempt to join the stream without a valid Subscribe token, you'll receive a `401 Unauthorized` error:
 
-![](../assets/img/image.png)
+import Img3 from '../assets/img/25a57ae-image.png';
 
-> 🚧 Subscribe token exposed in the URL
->
-> For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/token-security.md#ip-filters), users can share the URL and by extention the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to acomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
+<div class="center-container">
+  <img src={Img3} width="600" />
+</div>
+
+:::caution Subscribe token exposed in the URL
+For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/token-security.md#ip-filters), users can share the URL and by extention the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to acomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
+:::
 
 #### Viewing a secured stream with the embedded viewer
 
@@ -81,9 +94,9 @@ To learn more about other access control features you can enable for your Subscr
 
 ### Viewing secure streams with your own viewer app
 
-> 👍 Building with the Dolby.io SDKs for the first time?
->
-> Check out the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial for a quick and easy introduction to using the Dolby.io SDKs and platform.
+:::tip Building with the Dolby.io SDKs for the first time?
+Check out the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial for a quick and easy introduction to using the Dolby.io SDKs and platform.
+:::
 
 To view a secure stream in your own viewer app, you'll need to create a Subscribe token. Depending on the size of your platform, you may want to create these tokens programmatically using a token server and the [Token APIs](/millicast/streaming-dashboard/token-api.mdx). This part of the guide gives an example of how to programmatically create a Subscribe token, and how to use it to authenticate a connection to a viewer.
 
@@ -131,9 +144,9 @@ const tokenGenerator = () =>
 
 Using code from the [2. Create a Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) tutorial, we can put everything together to create a very basic web app that uses a Subscribe token to view a secure stream.
 
-> ❗️ API Secret
->
-> The below example **is for demonstration purposes only** and should not be used in production. You **should never expose your API secret publicly**, and should instead set up a token sever to create and manage tokens rather than the client side example below.
+:::danger API Secret
+The below example **is for demonstration purposes only** and should not be used in production. You **should never expose your API secret publicly**, and should instead set up a token sever to create and manage tokens rather than the client side example below.
+:::
 
 ```html
 <html>
@@ -163,7 +176,6 @@ Using code from the [2. Create a Streaming Web App](/millicast/getting-started/c
     </div>
 
     <div class="container px-4 mt-4">
-      ,
       <label for="fname">Enter Livestream Account ID:</label>
       <input type="text" id="accID" class="input_box" size="21" />, ,
       <label for="fname">Enter the Livestream Name:</label>
@@ -230,7 +242,7 @@ Using code from the [2. Create a Streaming Web App](/millicast/getting-started/c
 
         // Step 2.1d: Attach a millicast view to the placeholder node
         const videoNode = document.getElementById('streaming-video-placeholder');
-        const millicastView = new millicast.View(streamName, tokenGenerator);
+        const millicastView = new millicast.View(undefined, tokenGenerator);
         millicastView.on('track', (event) => {
           console.log('Stream has started.');
           videoNode.srcObject = event.streams[0];
@@ -258,7 +270,11 @@ Using code from the [2. Create a Streaming Web App](/millicast/getting-started/c
 
 When you run the web app, you'll see three text boxes to input an [account ID](/millicast/streaming-dashboard/managing-your-tokens.mdx), [Livestream Name](/millicast/streaming-dashboard/managing-your-tokens.mdx), and [API Secret key](/millicast/streaming-dashboard/index.mdx#settings).
 
-![](../assets/img/083b1aa-image.png)
+import Img4 from '../assets/img/083b1aa-image.png';
+
+<div class="center-container">
+  <img src={Img4} width="600" />
+</div>
 
 Start a secure broadcast, then add the values into the text box. The app will create a Subscribe token and use it to connect to the stream.
 

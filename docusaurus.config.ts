@@ -231,7 +231,7 @@ const config: Config = {
       } satisfies DocsPlugin.Options,
     ],
     [
-      require.resolve('docusaurus-plugin-image-zoom'),
+      'docusaurus-plugin-image-zoom',
       {
         id: 'docusaurus-plugin-image-zoom',
         path: 'millicast',
@@ -559,7 +559,7 @@ const config: Config = {
       maxHeadingLevel: 4,
     },
     zoom: {
-      selector: '.markdown :not(em) > img',
+      selector: '.markdown :not(a, em) > img',
       background: {
         light: 'rgb(255, 255, 255)',
         dark: 'rgb(50, 50, 50)',

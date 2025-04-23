@@ -24,8 +24,8 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
       customProps: {
         icon: '📖',
       },
-      label: 'Documentation',
-      description: 'Find more information about APIs',
+      label: 'Reference',
+      description: 'Class and object reference',
     },
     {
       type: 'link',
@@ -70,9 +70,9 @@ import 'package:millicast_flutter_sdk/millicast_flutter_sdk.dart';
 
 ### Publish a stream
 
-> 📘
->
-> You will need to find or create a new stream name with a token in your Dolby.io dashboard. You can do that following this [link](/millicast/streaming-dashboard/managing-your-tokens.mdx).
+:::tip Getting started
+You will need to find or create a new stream name with a token in your Dolby.io dashboard. You can do that following this [link](/millicast/streaming-dashboard/managing-your-tokens.mdx).
+:::
 
 The main module to publish a stream is the [Publish module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish-class.html).
 
@@ -156,24 +156,18 @@ The `.connect()` can optionally receive more params, all of which are described 
 For example:
 
 - If you want to start your stream with a bitrate limit, you can use the `bandwidth` option.
-
 - If your stream token in Millicast has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx).
-
 - You can start a stream without audio or video setting the `disableAudio` or `disableVideo` respectively.
-
 - You can select which codec you want to stream with using the `codec` option.
-
 - More information here:
-
-- [.connect()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/connect.html)
-
-- [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx)
+  - [.connect()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Publish/connect.html)
+  - [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx)
 
 #### Managing your active stream
 
-> 📘
->
-> The next samples use the `publisher` variable we created in the past steps. Please follow the tutorial.
+:::tip
+The next samples use the `publisher` variable we created in the past steps. Please follow the tutorial.
+:::
 
 The Publish instance internally uses most of the classes described in the [documentation](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/millicast_flutter_sdk-library.html).
 
@@ -218,9 +212,9 @@ More information here:
 
 ### Viewer
 
-> 📘
->
-> In order to connect to a stream you'll need the account id and stream name of the broadcast. This information must be provided by the publish owner. For more information, see [Publishing API](/millicast/managing-your-tokens).
+:::tip
+In order to connect to a stream you'll need the account id and stream name of the broadcast. This information must be provided by the publish owner. For more information, see [Publishing API](/millicast/managing-your-tokens).
+:::
 
 The main module to view a stream is the [View module](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View-class.html).
 
@@ -250,15 +244,15 @@ View view =
 Just like in the case of creating a Publish instance, in order to create a View instance you need two params and there's also an optional param.
 The first one is the stream name (`'my-stream-name'`) and it is used to set the stream you want to connect.
 
-- The second param is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name('my-stream-name') and the token('my-subscriber-token') for the function to be able to be called correctly to generate the token.
-- (Optional) mediaElement. This is the HTML media element where you want to mount the stream; for example a `video` element.
-- (Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream.
+- The second parameter is a callback (`tokenGenerator`) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name('my-stream-name') and the token('my-subscriber-token') for the function to be able to be called correctly to generate the token.
+- (Optional) `mediaElement`. This is the HTML media element where you want to mount the stream; for example a `video` element.
+- (Optional) `autoReconnect`. The Default value is true, enabling auto reconnect to stream.
 
 More information here:
 
-- View
-- .getSubscriber()
-- Token generator .callback()
+- [View](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View-class.html)
+- [.getSubscriber()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/Director/getSubscriber.html)
+- [Token generator .callback()](https://pub.dev/documentation/millicast_flutter_sdk/latest/millicast_flutter_sdk/View/tokenGenerator.html)
 
 ```dart title="Dart"
 mediaStream = RTCVideoRenderer();
@@ -278,7 +272,6 @@ try {
 In case the mediaElement param is not specified when creating a View instance, a track event containing the media track will be emitted when the stream starts.
 
 ```dart title="Dart"
-//...
 view.on('stats', view, (ev, context) {
     MediaStream? stream = ev.eventData as MediaStream?;
     // Manage the track event.
@@ -346,9 +339,9 @@ More information and examples here:
 
 Stream stats can be accessed by both Publish and View instances. In order to capture them, you have to initialize the stats and then listen for the event through the `webRTCPeer` attribute.
 
-> 🚧
->
-> Stats might defer between different mobiles.
+:::caution WebRTC Statistics
+Stats might defer between different mobile devices.
+:::
 
 Example of usage:
 

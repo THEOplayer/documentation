@@ -1,6 +1,7 @@
 ---
 title: 'Frame Metadata'
 slug: /frame-metadata
+sidebar_position: 9
 ---
 
 In addition to streaming audio and video there are many use cases that require additional metadata about what is happening in the stream. We refer to this as **Frame Metadata** which allows for embedding and extraction of custom application data that has frame-level accuracy.
@@ -17,9 +18,13 @@ These cue points are often used for time synchronizing application state with th
 
 ## SEI Metadata
 
-Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed \*\*Action Message Format (AMF) messages.
+Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI)** which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed **Action Message Format (AMF)** messages.
 
-![](../assets/img/metadata-feature.png)
+import MetadataFeature from '../assets/img/metadata-feature.png';
+
+<div class="center-container">
+  <img src={MetadataFeature} width="600" />
+</div>
 
 ### Message Delivery
 
@@ -85,11 +90,11 @@ The metadata that was published with the Web SDK is found in the `unregistered` 
 
 ## Codec Support
 
-> ❗️ Frame Metadata with SEI is only available for the H.264 (AVC) Codec
->
-> If you are using a codec for your broadcasts such as AV1 or VP8 you can use an alternative method of frame metadata described below.
->
-> _It is important to correctly encode and decode frames or you may experience negative impacts on stream performance._
+:::danger Frame Metadata with SEI is only available for the H.264 (AVC) Codec
+If you are using a codec for your broadcasts such as AV1 or VP8 you can use an alternative method of frame metadata described below.
+
+_It is important to correctly encode and decode frames or you may experience negative impacts on stream performance._
+:::
 
 With the method demonstrated here for non-SEI codec support:
 
@@ -101,7 +106,7 @@ With the method demonstrated here for non-SEI codec support:
 
 Utilizing a <a href="https://developer.mozilla.org/en-US/docs/Web/API/TransformStream" target="_blank">TransformStream</a> object, you can spin up a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Worker</a> to leverage background threads from the web browser and process individual video frames.
 
-The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using \*\*createEncodedStreams() while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
+The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using **createEncodedStreams()** while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
 
 #### Publishing metadata
 
@@ -390,9 +395,9 @@ When a new metadata is received, this code will trigger the JavaScript event **m
 
 Using the [Native SDK](/millicast/client-sdks/index.mdx) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
 
-> 📘 Example Project
->
-> You can find a more complete C implementation example in the <a href="https://github.com/millicast/metadata-publisher-demo" target="_blank">millicast/metadata-publisher-demo</a> project.
+:::info Example Project
+You can find a more complete C implementation example in the <a href="https://github.com/millicast/metadata-publisher-demo" target="_blank">millicast/metadata-publisher-demo</a> project.
+:::
 
 If you have specific requirements for the version of libwebrtc in use for your platform [contact us](https://dolby.io/contact) for additional implementation details.
 

@@ -1,6 +1,7 @@
 ---
 title: 'Multi-source Playback'
 slug: /source-and-layer-selection
+sidebar_position: 5
 ---
 
 Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](/millicast/playback/multiview.md) and [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) experiences.
@@ -14,9 +15,9 @@ To get started building multi-stream experiences it's important to understand ho
 
 ## Managing source selection
 
-> 📘 Multi-source broadcasting
->
-> To manage multiple sources, you first must have a [Multi-source Stream](/millicast/broadcast/multi-source-broadcasting.mdx) broadcasting.
+:::info Multi-source broadcasting
+To manage multiple sources, you first must have a [Multi-source Stream](/millicast/broadcast/multi-source-broadcasting.mdx) broadcasting.
+:::
 
 Dolby.io streaming supports scalable WebRTC streaming thanks to a "smart" cascading node system that manages the peer-to-peer connections. These nodes are key to understanding how to manage multiple sources for playback and can be divided into two types:
 
@@ -85,7 +86,7 @@ viewer.project('uniqueSourceID', [
 
 The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to project only audio, only video, or both, each for multiple published sources. These sources can be projected as they are published by triggering [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent) or all at once when they all arrive.
 
-The viewer\` also supports an [unproject](https://millicast.github.io/millicast-sdk/View.html#unproject) function that lets you signal to the CDN that you want to stop receiving media from that source.
+The viewer also supports an [unproject](https://millicast.github.io/millicast-sdk/View.html#unproject) function that lets you signal to the CDN that you want to stop receiving media from that source.
 
 ```javascript title="Removing projection"
 viewer.unproject([videoTransceiver.mid]);
@@ -93,9 +94,9 @@ viewer.unproject([videoTransceiver.mid]);
 
 ## Media layer forwarding
 
-> 👍 Simulcast or SVC layer forwarding
->
-> By default, the Dolby.io Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
+:::tip Simulcast or SVC layer forwarding
+By default, the Dolby.io Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
+:::
 
 In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
 
@@ -130,9 +131,9 @@ millicastView.select({ encodingId: '1' });
 
 Where `millicastView` is the instance of the [View](https://millicast.github.io/millicast-sdk/View.html) class and `encodingId` is the field of the layer that you wan to force.
 
-> 📘 Track limits for viewer
->
-> Dolby.io Real-time Streaming does not limit the number of tracks that a viewer can receive; it limits the maximum bitrate per viewer to a maximum of 12 Mbps across all media tracks. You should configure the Simulcast or SVC bitrate of all the sources carefully within your applications so they can receive the desired amount of video tracks in the viewer session.
+:::info Track limits for viewer
+Dolby.io Real-time Streaming does not limit the number of tracks that a viewer can receive; it limits the maximum bitrate per viewer to a maximum of 12 Mbps across all media tracks. You should configure the Simulcast or SVC bitrate of all the sources carefully within your applications so they can receive the desired amount of video tracks in the viewer session.
+:::
 
 ### Managing layers
 
