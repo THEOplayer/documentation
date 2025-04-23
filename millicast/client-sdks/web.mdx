@@ -97,7 +97,7 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
       customProps: {
         icon: '📖',
       },
-      label: 'Rerefence',
+      label: 'Reference',
       description: 'Class and object reference',
     },
     {
@@ -296,9 +296,9 @@ const millicastView = new View(undefined, tokenGenerator);
 Like when creating a `Publish` instance, in order to create a `View` instance you need two parameters and there are also two optional parameters.
 
 - The first one needs to be `undefined` as it has been deprecated.
-- The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
-- \*\*(Optional) mediaElement. This is the HTML media element where you want to mount the stream for example a `video` element.
-- \*\*(Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream.
+- The second parameter is a callback (`tokenGenerator`) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
+- (Optional) `mediaElement`. This is the HTML media element where you want to mount the stream for example a `video` element.
+- (Optional) `autoReconnect`. The Default value is true, enabling auto reconnect to stream.
 
 More information here:
 

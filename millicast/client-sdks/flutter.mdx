@@ -24,7 +24,7 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
       customProps: {
         icon: '📖',
       },
-      label: 'Rerefence',
+      label: 'Reference',
       description: 'Class and object reference',
     },
     {
@@ -244,9 +244,9 @@ View view =
 Just like in the case of creating a Publish instance, in order to create a View instance you need two params and there's also an optional param.
 The first one is the stream name (`'my-stream-name'`) and it is used to set the stream you want to connect.
 
-- The second param is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name('my-stream-name') and the token('my-subscriber-token') for the function to be able to be called correctly to generate the token.
-- (Optional) mediaElement. This is the HTML media element where you want to mount the stream; for example a `video` element.
-- (Optional) autoReconnect. The Default value is true, enabling auto reconnect to stream.
+- The second parameter is a callback (`tokenGenerator`) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name('my-stream-name') and the token('my-subscriber-token') for the function to be able to be called correctly to generate the token.
+- (Optional) `mediaElement`. This is the HTML media element where you want to mount the stream; for example a `video` element.
+- (Optional) `autoReconnect`. The Default value is true, enabling auto reconnect to stream.
 
 More information here:
 
