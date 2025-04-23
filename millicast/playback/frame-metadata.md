@@ -18,7 +18,7 @@ These cue points are often used for time synchronizing application state with th
 
 ## SEI Metadata
 
-Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI) **which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed \*\*Action Message Format (AMF) messages.
+Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI)** which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed **Action Message Format (AMF)** messages.
 
 import MetadataFeature from '../assets/img/metadata-feature.png';
 
@@ -106,7 +106,7 @@ With the method demonstrated here for non-SEI codec support:
 
 Utilizing a <a href="https://developer.mozilla.org/en-US/docs/Web/API/TransformStream" target="_blank">TransformStream</a> object, you can spin up a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Worker</a> to leverage background threads from the web browser and process individual video frames.
 
-The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using \*\*createEncodedStreams() while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
+The following code uses two different routes to trigger the web worker, so it has cross-browser support. Edge and Chrome are using **createEncodedStreams()** while Safari and Firefox use <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform" target="_blank">RTCRtpScriptTransform</a>.
 
 #### Publishing metadata
 
