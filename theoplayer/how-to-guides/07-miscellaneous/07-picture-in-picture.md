@@ -265,7 +265,7 @@ The following remarks can help:
 
 - This feature is not completely the same on all SDKs, as the options may vary.
 
-- On the Web SDK, support for native picture in picture (i.e, where the player is draggable) is experimental and whilst support is widely adopted, the feature is most notably not supported by FireFox. 
+- On the Web SDK, support for native picture in picture (i.e, where the player is draggable) is experimental and whilst support is widely adopted, the feature is most notably not supported by FireFox.
 
 ## Known Limitations
 
