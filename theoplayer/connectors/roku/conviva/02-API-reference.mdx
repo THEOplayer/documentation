@@ -42,9 +42,9 @@ cdnMappings = {
 ```
 
 Passing a config as the only param will start CDN change monitoring with the provided configuration, or update the config if it is already started.
-`m.theoConvivaConnector.callFunc("monitorCDNChanges", cdnMappings)`
-However, if you want to stop CDN change monitoring, pass `invalid` as the first parameter, and the string you want to use for the defaultReportingResource as the second parameter.
-`m.theoConvivaConnector.callFunc("monitorCDNChanges", invalid)`
+`m.theoConvivaConnector.callFunc("monitorCdnChanges", cdnMappings)`
+However, if you want to stop CDN change monitoring, pass `invalid` as the first parameter.
+`m.theoConvivaConnector.callFunc("monitorCdnChanges", invalid)`
 
 ### Content Metadata
 
