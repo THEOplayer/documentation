@@ -5,6 +5,64 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.2.0 (2025/04/22)
+
+### Web
+
+#### 💥 Breaking Changes
+
+- Updated the LCEVC integration compatibility to LCEVCdecJS SDK version 1.2.1. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
+
+#### ✨ Features
+
+- Added a flag `enableNonce` to `GoogleDAIConfiguration`.
+- Added a flag `allowSeekingForGoogleDai` to enable seeking during an ad break in a Google DAI stream.
+- Added support for automatically setting the "ott_placement" GAM ad tag parameter for THEOads.
+
+#### 🐛 Issues
+
+- Fixed an issue where going to fullscreen when playing an LCEVC stream would result in misaligned player positioning.
+- Fixed an issue where the `startTime` property of a `DateRangeCue` would be wrong when dispatching an `EnterCueEvent` on a quality switch. 
+- Fixed an issue on Tizen 2.4 where playback of a DASH stream stalled due to a usable PlayReady DRM key being ignored.
+- Fixed an issue where the player could get stuck in a loop when encountering a gap in the buffer of an HLS stream when playing on Tizen devices.
+- Fixed an issue where disabling a `MediaTrack` for a HLS CMAF stream would result in an error.
+
+### Android
+
+#### ✨ Features
+
+- Added support for text tracks of type `TextTrackKind.TimeCode` for THEOlive / HESP streams.
+- Added support for Multi-Audio THEOlive streams.
+- Added support for automatically setting the "ott_placement" GAM ad tag parameter for THEOads.
+
+#### ⚡ Improvements
+
+- Adhere to the values of `NetworkConfiguration` for retrying network requests for THEOlive / HESP streams.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for multiple audio tracks for THEOlive sources.
+- Added support for automatically setting the "ott_placement" GAM ad tag parameter for THEOads.
+
+#### 🐛 Issues
+
+- Fixed an issue where the ad tag parameters were not passed to Google when playing a THEOad.
+- Fixed an issue where calling `player.destroy()` did not fully destroy the player.
+- Fixed an issue where a THEOad would already start playing, only audio, before its start date.
+
+### Roku
+
+#### ✨ Features
+
+- Added the THEO Adobe Edge Platform Connector, or THEO AEP connector, for providing media analytics through the AEP SDK.
+
+#### 🐛 Issues
+
+- Corrected the bitrate change detection so it reports video bitrate rather than audio bitrate.
+- Added missing ability to set `isLive` for Conviva content metadata from the `updateContentMetadata` method.
+
 ## 🚀 9.1.0 (2025/04/10)
 
 ### Web
