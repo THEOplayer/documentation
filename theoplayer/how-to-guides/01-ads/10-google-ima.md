@@ -248,6 +248,7 @@ theoplayer.ads.schedule(adDescription: adDescription)
 
 1. Prerolls must be loaded after the player view is fully rendered and ready. This means attempting to load the ad in the `viewDidLoad` lifecycle will result in a failed request.
 2. There is a known bug by Apple that throws runtime warnings concerning the main thread. If you run into this warning while using the IMA SDK, please check [this thread for more information.](https://developer.apple.com/forums/thread/714467?answerId=734799022#734799022)
+3. When using `SwiftUI`, make sure to wrap the `THEOplayer` in a `UIViewControllerRepresentable` rather than a `UIViewRepresentable`, as the Google IMA SDK requires a `UIViewController` as a precondition before making ad requests. Otherwise, the ads will not play.
 
 ## Remarks
 

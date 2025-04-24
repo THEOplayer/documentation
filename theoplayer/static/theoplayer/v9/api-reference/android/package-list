@@ -1,6 +1,5 @@
 $dokka.format:javadoc-v1
 $dokka.linkExtension:html
-$dokka.location:////PointingToDeclaration/[root]/package-summary.html
 $dokka.location:com.theoplayer.android.api.abr/AbrStrategyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.abr/AbrStrategyMetadata.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyMetadata.Builder.html
 $dokka.location:com.theoplayer.android.api.ads.theoads.event/TheoAdsEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/ads/theoads/event/TheoAdsEventTypes.Identifiers.html
