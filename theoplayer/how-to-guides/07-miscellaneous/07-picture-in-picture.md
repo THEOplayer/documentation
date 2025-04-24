@@ -260,8 +260,8 @@ A sample app for Picture-In-Picture could be found here:
 The following remarks can help:
 
 - PiP is a presentation mode of the player. As such, you can listen for a _presentationmodechange_ event or verify the presentationMode of the player in case you need to find out what the presentation mode is at a given moment or detect a change.
-- More details of the PresentationMode Types can be found here:
-  [Web PresentationMode API Reference](https://docs.optiview.dolby.com/theoplayer/v9/api-reference/web/types/PresentationMode.html)
+- More details of the `PresentationMode` types can be found here:
+  [Web PresentationMode API Reference](pathname:///theoplayer/v9/api-reference/web/types/PresentationMode.html)
 
 - This feature is not completely the same on all SDKs, as the options may vary.
 
