@@ -2,6 +2,7 @@ import React, { JSX } from 'react';
 import ThemedImage, { type Props as ThemedImageProps } from '@theme/ThemedImage';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import AmpIcon from '@site/static/img/amp.svg';
+import AdobeIcon from '@site/static/img/adobe.svg';
 import AndroidIcon from '@site/static/img/android.svg';
 import AngularIcon from '@site/static/img/angular.svg';
 import AppleIcon from '@site/static/img/apple.svg';
@@ -50,6 +51,8 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
     return <TextIcon icon={defaultIcon} className={clsx(styles.icon, className)} />;
   }
   switch (icon) {
+    case 'adobe':
+      return <AdobeIcon className={clsx(styles.icon, className)} />;
     case 'amp':
       return <AmpIcon className={clsx(styles.icon, className)} />;
     case 'android':
