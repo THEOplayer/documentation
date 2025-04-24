@@ -260,8 +260,12 @@ A sample app for Picture-In-Picture could be found here:
 The following remarks can help:
 
 - PiP is a presentation mode of the player. As such, you can listen for a _presentationmodechange_ event or verify the presentationMode of the player in case you need to find out what the presentation mode is at a given moment or detect a change.
+- More details of the PresentationMode Types can be found here:
+  [Web PresentationMode API Reference](https://docs.optiview.dolby.com/theoplayer/v9/api-reference/web/types/PresentationMode.html)
 
-- This feature is not completely the same on all SDKs, as the options may vary. For example, in the Web SDK it is not possible to drag and drop the floating player to a new position (PiP is not _movable_).
+- This feature is not completely the same on all SDKs, as the options may vary.
+
+- On the Web SDK, support for native picture in picture (i.e, where the player is draggable) is experimental and whilst support is widely adopted, the feature is most notably not supported by FireFox. 
 
 ## Known Limitations
 
