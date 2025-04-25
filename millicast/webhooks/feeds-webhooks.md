@@ -33,7 +33,7 @@ The `data` payload will contain the following details:
 Optionally the webhook may include:
 
 - **ended** is an epoch time for when the publishing feed was ended (only included when the stream has ended).
-- **simulcastId** is the identifier that associates this feed to a simulcast layer (only included when specified in the publish url).
+- **simulcastId** is the identifier that associates this feed with a simulcast layer (only included when specified in the publish url).
 
 ## Examples
 
