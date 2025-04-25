@@ -1,0 +1,44 @@
+---
+sidebar_position: 11
+sidebar_label: Multi-audio support
+---
+
+# Multi-audio support
+
+---
+
+The Dolby OptiView platform supports multi-audio ingest and delivery with our HESP solution. This functionality is perfect for 
+use cases such as live events where multiple languages or commentary may be required.
+
+:::caution
+This functionality is **only** supported through the SRT Pull ingest method. Playback is **only** supported on web.
+:::
+
+## Configuring multi-audio ingest and playback
+
+To deliver multi audio SRT the following steps must be taken: 
+1. Within your dashboard configure your SRT listener endpoint.
+2. Configure your expected incoming "Audio tracks" by specifying a language, label, and the expected PID.
+
+<div style={{ textAlign: 'center' }}>
+![SRT Multi-audio example with PIDs](../assets/img/srt-multi-audio.png)
+</div>
+
+3. Start the Channel and begin ingesting video and audio into the engine.
+4. Your output will be available for playback on web only via the [channel alias](../multi-channel).
+5. You can validate the audio tracks are being delivered via the demo player : `https://demo.theo.live/?channel=YOUR_CHANNEL_ID`
+
+## Feature Compatibility and Limitations
+- Audio must be encoded as AAC.
+- Only stereo audio is supported.
+- There is a limit of 12 audio tracks per channel.
+
+#### Ingest
+| RTMP Push | RTMP Pull | SRT Pull |
+| :-----: | :---------: | :-----: |
+|   No    |     No     |   Yes  |
+
+#### Playback
+| Web SDK | Android SDK | iOS SDK |
+| :-----: | :---------: | :-----: |
+|   Yes   |     No     |   No   |
