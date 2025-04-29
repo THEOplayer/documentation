@@ -28,12 +28,11 @@ The `data` payload will contain the following details:
 - **streamId** is the combination of account and stream name to identify the playback url.
 - **started** is the epoch time for when the stream was started.
 - **active** is a boolean flag indicating if the feed is still currently active when the hook fired.
-- **sourceId** is the unique identifier for the feed that was specified as a parameter in the publish url.
 
 Optionally the webhook may include:
 
 - **ended** is an epoch time for when the publishing feed was ended (only included when the stream has ended).
-- **simulcastId** is the identifier that associates this feed with a simulcast layer (only included when specified in the publish url).
+- **priority** if specified identifies the priority of a redundant ingest.
 
 ## Examples
 
