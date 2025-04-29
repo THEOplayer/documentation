@@ -5,7 +5,7 @@ slug: /datadog
 
 **Datadog** is a tool for monitoring application performance measurements and user engagement.
 
-This page guides you on some of the metrics that are collected and setps to integrate the [Millicast SDK](/millicast/client-sdks/web.mdx) to the browser agent.
+This page guides you on some of the metrics that are collected and setps to integrate the [Millicast SDK](/millicast/client-sdks/web/sdk/index.mdx) to the browser agent.
 
 ## Client Analytics
 

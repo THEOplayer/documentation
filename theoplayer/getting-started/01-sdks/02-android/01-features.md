@@ -99,7 +99,7 @@ With Android THEOplayer SDK we currently support the following feature integrati
 | AWS MediaTailor | `integration-ads-mediatailor:+` | 4.0.0+  | [AWS MediaTailor Documentation](../../../how-to-guides/01-ads/12-mediatailor.md#android-sdk)            |
 | Google DAI      | `integration-ads-dai:+`         | 4.3.0+  | [Google DAI Documentation](../../../how-to-guides/01-ads/08-google-dai.md#android-sdk)                  |
 | THEOads         | `integration-ads-theoads:+`     | 8.2.0+  | [THEOads Documentation](/theoads/getting-started/getting-started-android/)                              |
-| Millicast       | `integration-millicast:+`       | 8.2.0+  | [Millicast Documentation](../../../how-to-guides/android/millicast/getting-started.mdx)                 |
+| Millicast       | `integration-millicast:+`       | 8.2.0+  | [Millicast Documentation](pathname:///millicast/android-player/)                                        |
 | Jetpack Media3  | `integration-media3:+`          | 8.10.0+ | [Media3 Documentation](../../../how-to-guides/android/media3/getting-started.mdx)                       |
 
 [`GoogleImaIntegrationFactory`]: pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegrationFactory.html

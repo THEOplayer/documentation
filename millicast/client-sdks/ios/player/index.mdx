@@ -1,15 +1,17 @@
+---
+title: 'Player SDK'
+slug: /ios-player
+sidebar_position: 1
+---
+
 # Getting started with Millicast for iOS
 
-import Intro from '../../shared/millicast/_getting-started-intro.mdx';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Intro />
-
 ## Usage
 
-1. Follow [our Getting Started guide](../../../getting-started/01-sdks/03-ios/00-getting-started.mdx)
-   to set up THEOplayer in your iOS app.
+1. Follow our [Getting Started guide](pathname:///theoplayer/getting-started/sdks/ios/getting-started.mdx) to set up THEOplayer in your iOS app.
 2. Add the `THEOplayer-Integration-Millicast` dependency to your project.
 3. Add the `THEOplayerMillicastIntegration` to the player.
 4. Add a `MillicastSource` to your player's source.
@@ -18,21 +20,21 @@ import TabItem from '@theme/TabItem';
 
 Add the Millicast integration as a dependency in to your project:
 
-   <Tabs queryString="lang">
-      <!-- prettier-ignore-start -->
-      <TabItem value="spm" label="Swift Package Manager">
-       ```swift
-       .package(url: "https://github.com/THEOplayer/theoplayer-sdk-apple.git", from: "8.10.0")
-       .product(name: "THEOplayerMillicastIntegration", package: "theoplayer-sdk-apple")
-       ```
-       </TabItem>
-       <TabItem value="cocoapods" label="Cocoapods">
-       ```ruby
-       pod 'THEOplayer-Integration-Millicast', '~> 8.10'
-       ```
-       </TabItem>
-       <!-- prettier-ignore-end -->
-   </Tabs>
+<Tabs queryString="lang">
+    <!-- prettier-ignore-start -->
+    <TabItem value="spm" label="Swift Package Manager">
+    ```swift
+    .package(url: "https://github.com/THEOplayer/theoplayer-sdk-apple.git", from: "8.10.0")
+    .product(name: "THEOplayerMillicastIntegration", package: "theoplayer-sdk-apple")
+    ```
+    </TabItem>
+    <TabItem value="cocoapods" label="Cocoapods">
+    ```ruby
+    pod 'THEOplayer-Integration-Millicast', '~> 8.10'
+    ```
+    </TabItem>
+    <!-- prettier-ignore-end -->
+</Tabs>
 
 ### Add the Millicast integration to the player
 
@@ -97,4 +99,3 @@ theoplayer.backgroundPlaybackDelegate = BackgroundDelegate()
 ## More information
 
 - [API references](pathname:///theoplayer/v9/api-reference/ios/Millicast/index.html)
-- [Millicast documentation](https://docs.dolby.io/streaming-apis/docs/)
