@@ -95,6 +95,67 @@ m.player.source = {
 }
 ```
 
+#### Mixing VAST and VMAP Cues
+
+Currently, this is not supported. Support may be added for this in the future.
+
 ### Listen for ad events
 
-TBD
+To detect events emitted for the ads, you can call the `addEventListener` method on the Ads API. You can see the list of ad events on the API reference page. Note that the method used for the listener needs to be exposed through the interface of the node that owns the listener function.
+
+```brightscript
+adEvents = m.player.ads.events
+m.player.ads.callFunc("addEventListener", adEvents.adbreakbegin, m.top, "onAdBreakBegin")
+m.player.ads.callFunc("addEventListener", adEvents.adbreakend, m.top, "onAdBreakEnd")
+```
+
+To clean up, you can simply call `removeEventListener` the same way.
+
+```brightscript
+m.player.ads.callFunc("removeEventListener", adEvents.adbreakbegin, m.top, "onAdBreakBegin")
+m.player.ads.callFunc("removeEventListener", adEvents.adbreakend, m.top, "onAdBreakEnd")
+```
+
+Also, if you just want to see whether ads are playing or not, observe the `playing` field on the Ads API. You can see the other fields available on the API reference page.
+
+```brightscript
+m.player.ads.observeField("playing", "onAdsPlayingChange")
+
+sub onAdsPlayingChange( event as object )
+    adsPlaying = event.getData()
+end sub
+```
+
+### Monitoring RAF
+
+The THEOplayer Roku SDK does not expose RAF directly. However, you can still get the data from RAF's callbacks for tracking, buffering, and library version. On the Ads API, there is the `rafProxy` node. This field exposes data from RAF on fields of its own. To substitute for the output from RAF's `setTrackingCallback` method, you could do the following:
+
+```brightscript
+m.player.ads.rafProxy.observeField("trackingUpdate", "onRafTrackingUpdate")
+
+sub onRafTrackingUpdate(event as object)
+    update = event.getData()
+    m.myRafObserver.rafTrackingCallback(m, update.eventType, update.ctx)
+end sub
+```
+
+Similarly, you can listen for RAF's `setAdBufferRenderCallback` output by observing the `bufferRenderUpdate` field on the Ads API.
+
+```brightscript
+m.player.ads.rafProxy.observeField("bufferRenderUpdate", "onRafBufferUpdate")
+
+sub onRafBufferUpdate(event as object)
+    update = event.getData()
+    m.myRafObserver.rafBufferingCallback(m, update.eventType, update.ctx)
+end sub
+```
+
+The `rafProxy` field also exposes the library version of RAF via its own `libVersion` field.
+
+### Limitations
+
+Currently the Ads API does not support:
+
+- Mixing and matching VAST and VMAP tags.
+- Adding ads during playback of the asset.
+- Reporting the exact media file that is being played for a creative.
