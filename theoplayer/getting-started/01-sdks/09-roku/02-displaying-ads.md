@@ -101,7 +101,7 @@ Currently, this is not supported. Support may be added for this in the future.
 
 ### Listen for ad events
 
-To detect events emitted for the ads, you can call the `addEventListener` method on the Ads API. You can see the list of ad events on [the API reference page]("../../../../../../api-reference/roku/#ads-api"). Note that the method used for the listener needs to be exposed through the interface of the node that owns the listener function.
+To detect events emitted for the ads, you can call the `addEventListener` method on the Ads API. You can see the list of ad events on [the API reference page](../../../api-reference/roku.md#ads-api). Note that the method used for the listener needs to be exposed through the interface of the node that owns the listener function.
 
 ```brightscript
 adEvents = m.player.ads.events
@@ -116,7 +116,7 @@ m.player.ads.callFunc("removeEventListener", adEvents.adbreakbegin, m.top, "onAd
 m.player.ads.callFunc("removeEventListener", adEvents.adbreakend, m.top, "onAdBreakEnd")
 ```
 
-Also, if you just want to see whether ads are playing or not, observe the `playing` field on the Ads API. You can see the other fields available on [the API reference page]("../../../../../../api-reference/roku/#ads-api").
+Also, if you just want to see whether ads are playing or not, observe the `playing` field on the Ads API. You can see the other fields available on [the API reference page](../../../api-reference/roku.md#ads-api).
 
 ```brightscript
 m.player.ads.observeField("playing", "onAdsPlayingChange")
