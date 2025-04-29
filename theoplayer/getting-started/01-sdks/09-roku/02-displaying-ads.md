@@ -135,7 +135,7 @@ m.player.ads.rafProxy.observeField("trackingUpdate", "onRafTrackingUpdate")
 
 sub onRafTrackingUpdate(event as object)
     update = event.getData()
-    m.myRafObserver.rafTrackingCallback(m, update.eventType, update.ctx)
+    m.myRafObserver.rafTrackingCallback(m.myRafObserver, update.eventType, update.ctx)
 end sub
 ```
 
@@ -146,7 +146,7 @@ m.player.ads.rafProxy.observeField("bufferRenderUpdate", "onRafBufferUpdate")
 
 sub onRafBufferUpdate(event as object)
     update = event.getData()
-    m.myRafObserver.rafBufferingCallback(m, update.eventType, update.ctx)
+    m.myRafObserver.rafBufferingCallback(m.myRafObserver, update.eventType, update.ctx)
 end sub
 ```
 
