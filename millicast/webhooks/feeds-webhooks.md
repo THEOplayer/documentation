@@ -32,7 +32,7 @@ The `data` payload will contain the following details:
 Optionally the webhook may include:
 
 - **ended** is an epoch time for when the publishing feed was ended (only included when the stream has ended).
-- **priority** if specified identifies the priority of a redundant ingest.
+- **priority** is a numeric value identifying the priority of an ingest when using [redundant streams](/millicast/broadcast/redundant-ingest/index.mdx).
 
 ## Examples
 
