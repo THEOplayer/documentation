@@ -296,7 +296,7 @@ publisher.signalingError.distinctUntilChanged().collect {}
 
 To close the publishing stream and handle proper cleanup of resources, first [unpublish](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/unpublish.html) and [disconnect](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/disconnect.html) the publisher, then close and release the publishing sources. Note that unlike publish and connect, these steps don't have to wait for an updated state before being called.
 
-```kotlin title="Kotlin"
+```kotlin
 // With the same coroutine scope
 coroutineScope.safeLaunch {
   // disconnect the publisher

@@ -69,7 +69,7 @@ You'll be editing a single **index.html** file to add streaming capabilities so 
 
 ### b. Include the Web SDK
 
-To dynamically generate a viewer you should use the [Web SDK](/millicast/client-sdks/web.mdx) in your application. You can do this by adding a `<script>` element in the `<head>` section to include the SDK from a hosted location such as a [CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk).
+To dynamically generate a viewer you should use the [Web SDK](/millicast/client-sdks/web/sdk/index.mdx) in your application. You can do this by adding a `<script>` element in the `<head>` section to include the SDK from a hosted location such as a [CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk).
 
 ```html title="playback-app/index.html"
 <!-- Step 2.1b: Include Millicast Web SDK -->
@@ -78,7 +78,7 @@ To dynamically generate a viewer you should use the [Web SDK](/millicast/client-
 
 :::danger[Using the Millicast SDK]
 
-Review the [Web SDK](/millicast/client-sdks/web.mdx) documentation for additional installation methods such as with `npm`. The Streaming API used to be known as Millicast so the SDK uses that name when importing the library.
+Review the [Web SDK](/millicast/client-sdks/web/sdk/index.mdx) documentation for additional installation methods such as with `npm`. The Streaming API used to be known as Millicast so the SDK uses that name when importing the library.
 
 When importing the SDK from jsdelivr you will automatically be updated to the latest version. This is fine for development, but it is strongly recommended to pin to a specific version release in order to increase stability when you move to production.
 
@@ -156,7 +156,7 @@ git clone https://github.com/dolbyio-samples/stream-sdk-web-getting-started.git
 cd stream-sdk-web-getting-started/broadcast-app
 ```
 
-The [Web SDK](/millicast/client-sdks/web.mdx) is pulled in with a `<script>` element from a CDN in the same way as is done for the playback-app.
+The [Web SDK](/millicast/client-sdks/web/sdk/index.mdx) is pulled in with a `<script>` element from a CDN in the same way as is done for the playback-app.
 
 ### b. Configure publishing token and stream name
 
@@ -246,7 +246,7 @@ document.getElementById('btn-stop').onclick = () => {
 
 These starter apps were kept simple for the purpose of getting started. You can re-use these samples in your preferred JavaScript framework such as React, VueJS, Angular, etc. as you customize the user experience of joining a stream, handling when a stream hasn't started, maintaining button state, etc.
 
-Continue by exploring the [Streaming Web SDK](/millicast/client-sdks/web.mdx) documentation for a guide on other functions as you continue building your own project.
+Continue by exploring the [Streaming Web SDK](/millicast/client-sdks/web/sdk/index.mdx) documentation for a guide on other functions as you continue building your own project.
 
 ## Troubleshooting
 

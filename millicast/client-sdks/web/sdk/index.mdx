@@ -1,15 +1,20 @@
 ---
-title: 'Web'
-slug: /web
+title: 'Millicast SDK'
+slug: /web-sdk
+sidebar_position: 2
 ---
 
 The Web SDK lets you connect, capture, publish, and subscribe to streams in your web applications.
 
+:::caution Player vs. SDK
+Dolby OptiView offers a series of SDKs for most platforms to support your real-time streaming scenarios, however, we highly recommend that you leverage our [**Dolby OptiView Player**](../player/index.mdx) for playback.
+:::
+
 ## Getting Started
 
-import GettingStartedWebCallout from '../callouts/_getting_started_web.md';
-
-<GettingStartedWebCallout />
+:::tip Getting Started with Web SDK
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) tutorial to become familiar with the concepts to create an application that can publish and/or subscribe using the Web SDK.
+:::
 
 ### Installation
 
@@ -46,7 +51,14 @@ If you want to pin or lock to a specific version, you can find available options
 
 Testing for browser compatibility is a quick test you can do to make sure the browser supports **video** and that you can reference the SDK.
 
-```javascript title="NPM"
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+
+<TabItem value="npm" label="NPM">
+
+```js
 // Node Package Manager (NPM)
 // You access SDK modules as an import from the @millicast/sdk package.
 
@@ -56,7 +68,11 @@ const capabilities = PeerConnection.getCapabilities('video');
 console.log(capabilities);
 ```
 
-```javascript title="UMD"
+</TabItem>
+
+<TabItem value="umd" label="UMD">
+
+```js
 // Universal Module Definition (UMD)
 // You access SDK modules from the window.millicast namespace.
 
@@ -64,7 +80,11 @@ const capabilities = window.millicast.PeerConnection.getCapabilities('video');
 console.log(capabilities);
 ```
 
-```javascript title="ESM"
+</TabItem>
+
+<TabItem value="esm" label="ESM">
+
+```js
 // ES Modules
 // You access SDK modules through an import.
 
@@ -73,6 +93,10 @@ import { PeerConnection } from 'https://cdn.jsdelivr.net/npm/@millicast/sdk/dist
 const capabilities = PeerConnection.getCapabilities('video');
 console.log(capabilities);
 ```
+
+</TabItem>
+
+</Tabs>
 
 ### Resources
 
