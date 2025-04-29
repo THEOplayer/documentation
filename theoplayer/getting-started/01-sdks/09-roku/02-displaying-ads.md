@@ -95,7 +95,7 @@ m.player.source = {
 }
 ```
 
-#### Mixing VAST and VMAP Cues
+#### Mixing VAST and VMAP Ads
 
 Currently, this is not supported. Support may be added for this in the future.
 
