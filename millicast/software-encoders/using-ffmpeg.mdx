@@ -62,7 +62,7 @@ ffmpeg -re -stream_loop -1 -i $VIDEO_FILE_PATH \
 
 ### How-to Publish an H.265 RTMP Video Stream
 
-The Millicast platform supports HEVC (H265) broadcast pass-through, but playback of this codec is not widely supported across all web browsers and devices. To view an HEVC stream, you should use Safari 17.2+ or the [iOS](/millicast/client-sdks/ios/index.mdx) Client SDK which provide decoding support.
+The Millicast platform supports HEVC (H265) broadcast pass-through, but playback of this codec is not widely supported across all web browsers and devices. To view an HEVC stream, you should use Safari 17.2+ or the [iOS](/millicast/client-sdks/ios/sdk/index.mdx) Client SDK which provide decoding support.
 
 To stream HEVC via RTMP you can use the `libx265` codec and the `flv` packager:
 

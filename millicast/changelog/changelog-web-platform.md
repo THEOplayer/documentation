@@ -45,7 +45,7 @@ millicastView.on('metadata', (metadata) => {
 
 ### 🆕 Client-side Diagnostics
 
-To diagnose networking issues in your web applications it may be helpful to view [WebRTC statistics](/millicast/client-sdks/web.mdx#webrtc-stats) related to round-trip time, jitter, etc. This can also power [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) to populate application performance monitoring or observability tools such as [Datazoom](/millicast/datazoom) or [Datadog](/millicast/client-analytics/datadog.md). Using the new `statsIntervalMs`option you can customize the frequency in which the stats events are observed.
+To diagnose networking issues in your web applications it may be helpful to view [WebRTC statistics](/millicast/client-sdks/web/sdk/index.mdx#webrtc-stats) related to round-trip time, jitter, etc. This can also power [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) to populate application performance monitoring or observability tools such as [Datazoom](/millicast/datazoom) or [Datadog](/millicast/client-analytics/datadog.md). Using the new `statsIntervalMs`option you can customize the frequency in which the stats events are observed.
 
 ```javascript
 const options = {
@@ -327,4 +327,4 @@ Added a typescript declaration file and its configuration. The type definition f
 ### Features
 
 - Added typescript configuration corrections.
-- Now the Millicast Web SDK supports integration with the React Native WebRTC plugin. This allows developers to simplify Millicast services integration into their own React Native applications. The previous React Native SDK was deprecated. For more information, see the [React Native documentation](/millicast/client-sdks/rn.mdx).
+- Now the Millicast Web SDK supports integration with the React Native WebRTC plugin. This allows developers to simplify Millicast services integration into their own React Native applications. The previous React Native SDK was deprecated. For more information, see the [React Native documentation](/millicast/client-sdks/react-native/index.mdx).
