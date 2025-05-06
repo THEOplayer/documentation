@@ -1,0 +1,47 @@
+---
+title: Osprey
+slug: /hardware-encoders/osprey
+---
+
+**Osprey Video** is a world leader in broadcasting solutions and an early adopter of [WHIP](pathname:///millicast/webrtc-whip) for their Osprey Talon 4K-SC Encoder.
+
+See the official [Osprey Video](https://www.ospreyvideo.com/) site for documentation, installation instructions, and additional support.
+
+## Osprey Talon
+
+You'll need to plug an ethernet connection and a power supply into your Talon encoder and power the device on.
+
+import OspreyTalon2 from '../../assets/img/osprey-talon.jpg';
+
+<div class="center-container">
+  <img src={OspreyTalon2} width="600" />
+</div>
+
+### Connect to the encoder
+
+Once powered on, the device will be discoverable on your local network. You can interface with the device by opening the IP address in your browser, or, if you are a Windows user, you can [download the Osprey Boss Pro](https://www.ospreyvideo.com/talon-software-and-firmware), which provides a UI for finding the encoder.
+
+Once found in your browser, you'll be prompted to log into the device. Refer to the [Osprey Talon Encoder User Manual ](https://www.ospreyvideo.com/manuals)to learn about your device's username and password.
+
+import OspreyTalon3 from '../../assets/img/osprey-login.jpeg';
+
+<div class="center-container">
+  <img src={OspreyTalon3} width="600" />
+</div>
+
+### Configure RTMP settings
+
+Inside the encoder UI, click on the _Channels_ tab. From the Channels tab, set the protocol to **RTMP/RTMPS**.
+
+- For the `Destination` copy the RTMP publish path from the Dolby _channel_ you have created.  
+  RTMP URL: `rtmps://rtmp.<my-channel-region>.hesp.live/live`
+- For the `Stream Key` input RTMP publish stream name from the ingest server section.  
+  Stream Name: `<my-stream-key>`
+
+import OspreyTalon4 from '../../assets/img/osprey-rtmp-live.png';
+
+<div class="center-container">
+  <img src={OspreyTalon4} width="600" />
+</div>
+
+Once configured, you can press start and the encoder will begin streaming content.
