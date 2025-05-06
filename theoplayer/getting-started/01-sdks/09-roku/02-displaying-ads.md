@@ -49,7 +49,7 @@ m.player.source = {
 }
 ```
 
-For VMAP ads, the timing is container within the VMAP file itself, so the configuration is simpler:
+For VMAP ads, the timing is contained within the VMAP file itself, so the configuration is simpler:
 
 ```brightscript
 m.player.source = {
