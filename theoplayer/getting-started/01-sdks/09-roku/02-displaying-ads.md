@@ -97,7 +97,7 @@ m.player.source = {
 
 #### Mixing VAST and VMAP Ads
 
-Currently, this is not supported. Support may be added for this in the future.
+Mixing VAST and VMAP ads is supported to an extent. A VMAP tag may contain multiple ad breaks. VAST tags may not be scheduled in between any of the breaks in a single VMAP tag. So, for instance, if you have a VMAP tag that contains a preroll and a postroll, you could not schedule any VAST midrolls between those breaks. However, if the preroll and postroll were in separate VMAP tags, you could schedule a midroll in between them.
 
 ### Listen for ad events
 
@@ -156,6 +156,6 @@ The `rafProxy` field also exposes the library version of RAF via its own `libVer
 
 Currently the Ads API does not support:
 
-- Mixing and matching VAST and VMAP tags.
+- Playing VAST tags in the middle of breaks from a VMAP tag.
 - Adding ads during playback of the asset.
 - Reporting the exact media file that is being played for a creative.
