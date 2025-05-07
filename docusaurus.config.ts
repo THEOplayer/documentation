@@ -321,6 +321,14 @@ const config: Config = {
             to: '/theoplayer/how-to-guides/miscellaneous/vr/',
           },
           {
+            from: '/theoplayer/how-to-guides/drm/verizon-uplynk/',
+            to: '/theoplayer/how-to-guides/drm/uplynk/',
+          },
+          {
+            from: '/theoplayer/faq/what-are-the-edgio-challenges/',
+            to: '/theoplayer/faq/what-are-the-uplynk-challenges/',
+          },
+          {
             from: '/theoads/api/signaling/',
             to: '/theoads/api/signaling/theoads-api/',
           },
