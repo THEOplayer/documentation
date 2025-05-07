@@ -169,10 +169,10 @@ There are some restrictions on what you can schedule:
 
 1. You cannot schedule preroll ads via the `schedule` method.
 2. You cannot schedule an ad at the same time as an already scheduled ad.
-3. You cannot schedule a VMAP before any previously scheduled breaks, unless that previously scheduled break is a postroll.
+3. You cannot schedule a VMAP before any previously scheduled breaks, unless that previously scheduled break is a VAST postroll.
 4. If you schedule a VMAP midroll after it would have already played, it will play immediately.
 5. You cannot schedule a midroll in between ad breaks that are in the same VMAP tag.
-6. You cannot schedule a midroll before a previously scheduled VMAP tag, unless that previously scheduled tag is only a postroll.
+6. You cannot schedule a midroll before a previously scheduled VMAP tag.
 
 ### Limitations
 
