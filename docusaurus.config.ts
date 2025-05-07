@@ -337,6 +337,9 @@ const config: Config = {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
           }
+          if (existingPath.startsWith('/theolive/playback/web/')) {
+            return [existingPath.replace('/theolive/playback/web/', '/theoplayer/how-to-guides/web/theolive/')];
+          }
           return undefined;
         },
       } satisfies ClientRedirectsPlugin.Options,
