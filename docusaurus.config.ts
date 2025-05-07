@@ -321,6 +321,14 @@ const config: Config = {
             to: '/theoplayer/how-to-guides/miscellaneous/vr/',
           },
           {
+            from: '/theoplayer/how-to-guides/drm/verizon-uplynk/',
+            to: '/theoplayer/how-to-guides/drm/uplynk/',
+          },
+          {
+            from: '/theoplayer/faq/what-are-the-edgio-challenges/',
+            to: '/theoplayer/faq/what-are-the-uplynk-challenges/',
+          },
+          {
             from: '/theoads/api/signaling/',
             to: '/theoads/api/signaling/theoads-api/',
           },
@@ -336,6 +344,9 @@ const config: Config = {
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
+          }
+          if (existingPath.startsWith('/theolive/playback/web/')) {
+            return [existingPath.replace('/theolive/playback/web/', '/theoplayer/how-to-guides/web/theolive/')];
           }
           return undefined;
         },
