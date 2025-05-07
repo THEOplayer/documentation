@@ -66,7 +66,7 @@ end for
 'read more : <https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow>
 m.player.textTracks = textTracks
 
-'enable specific track
+'disable specific track
 textTracks =  m.player.textTracks
 textTracks[indexOfRequestedTextTrack].mode = "disabled"
 'assigment of new roAssociativeArray is required because roku deep-copied roAssociativeArray through fields (pass-by-value)
