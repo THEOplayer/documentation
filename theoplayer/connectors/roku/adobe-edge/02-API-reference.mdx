@@ -105,16 +105,11 @@ As long as the task node is on the Scene before the connector is configured, the
 
 ### Supported media events
 
-The THEO AEP Connector will automatically detect most media events and send them to AEP for you, including player commands such as play or pause and events like bitrate change. It will not send media events related to chapters or ads in this version:
+The THEO AEP Connector will automatically detect most media events and send them to AEP for you, including player commands such as play or pause and events like bitrate change. It will not send media events related to chapters in this version:
 
 - `media.chapterStart`
 - `media.chapterComplete`
 - `media.chapterSkip`
-- `media.adBreakStart`
-- `media.adStart`
-- `media.adComplete`
-- `media.adSkip`
-- `media.adBreakComplete`
 
 For these you may use the `sendMediaEvent` method and construct your own XDM payload:
 
