@@ -1,6 +1,5 @@
 ---
-title: 'Webhooks'
-slug: /webhooks
+title: Webhooks
 ---
 
 **Webhooks** are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application.
@@ -11,11 +10,11 @@ Defining a webhook requires a **Webhook URL**. This should be any publicly reach
 
 You choose from several _types_ of events that can be sent to your service.
 
-- [Feed Hooks](/millicast/webhooks/feeds-webhooks.md) send a notification for an activity feed of when a stream has started or stopped publishing.
-- [Media Hooks](/millicast/webhooks/media-webhooks.md) send a notification for the start, completion, and deletion of server-side recordings.
-- [Thumbnail Hooks](/millicast/webhooks/thumbnail-webhooks.mdx) send a notification when static thumbnail images are captured during a live video stream.
-- [Transcoder Hooks](/millicast/webhooks/transcoder-webhooks.md) send a notification when a transcoder changes status such as starts or stops.
-- [ViewerConnection Hooks](/millicast/webhooks/viewerconnection-webhooks.md) send a notification when a viewer attempts to connect to an inactive stream or when a stream doesn't have any active viewers remaining. This hook is helpful for automating an encoder to start only when a viewer connects.
+- [Feed Hooks](/millicast/webhooks/feeds.md) send a notification for an activity feed of when a stream has started or stopped publishing.
+- [Media Hooks](/millicast/webhooks/media.md) send a notification for the start, completion, and deletion of server-side recordings.
+- [Thumbnail Hooks](/millicast/webhooks/thumbnail.mdx) send a notification when static thumbnail images are captured during a live video stream.
+- [Transcoder Hooks](/millicast/webhooks/transcoder.md) send a notification when a transcoder changes status such as starts or stops.
+- [ViewerConnection Hooks](/millicast/webhooks/viewerconnection.md) send a notification when a viewer attempts to connect to an inactive stream or when a stream doesn't have any active viewers remaining. This hook is helpful for automating an encoder to start only when a viewer connects.
 
 Webhooks are not correlated with a specific publishing token. You can have one webhook that responds to all platform events for your account or separate endpoints that each receive only specific types.
 
@@ -86,7 +85,7 @@ Once you click to renew the secret this cannot be undone. Please be certain you 
 ### How-to add a webhook with the REST API
 
 :::tip Using the REST APIs
-Review the [REST API](/millicast/getting-started/using-rest-apis.md) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
+Review the [REST API](/millicast/getting-started/using-rest-apis.mdx) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 :::
 
 The [/api/webhooks](/millicast/api/webhooks-add-webhook.api.mdx) endpoint can be used to add new webhooks by making a `POST` request. You must specify the webhook URL and a boolean value for each event type that you want to enable or disable.
@@ -153,11 +152,11 @@ Most webhooks will share the same base JSON structure:
 }
 ```
 
-See the [Feed Hooks](/millicast/webhooks/feeds-webhooks.md) and [Media Hooks](/millicast/webhooks/media-webhooks.md) guides for additional details on what **data** to expect and how to interpret the **event**.
+See the [Feed Hooks](/millicast/webhooks/feeds.md) and [Media Hooks](/millicast/webhooks/media.md) guides for additional details on what **data** to expect and how to interpret the **event**.
 
-The [Thumbnail](/millicast/webhooks/thumbnail-webhooks.mdx) hook does not use this schema and instead only sends the captured image.
+The [Thumbnail](/millicast/webhooks/thumbnail.mdx) hook does not use this schema and instead only sends the captured image.
 
-The [ViewerConnection](/millicast/webhooks/viewerconnection-webhooks.md) hook guide explains how to use viewer connection events to automate your workflow.
+The [ViewerConnection](/millicast/webhooks/viewerconnection.md) hook guide explains how to use viewer connection events to automate your workflow.
 
 ## Learn more
 

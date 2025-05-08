@@ -1,5 +1,5 @@
 ---
-title: 'Playback'
+title: Playback
 slug: /playback
 ---
 
@@ -12,10 +12,10 @@ The final stage of the streaming workflow is taking the stream and playing it ba
   <li>Hosted streaming player with low-code drop-in support for many applications.</li>
   <li>Interactive playback for streams that support dynamic tracks, multiple layers, multiple views, and playback events.</li>
   <li>
-    Support with [Client SDKs](/millicast/client-sdks/index.mdx) for building custom playback viewers for
-    [Web](/millicast/client-sdks/web/sdk/index.mdx), [iOS](/millicast/client-sdks/ios/sdk/index.mdx),
-    [Android](/millicast/client-sdks/android/sdk/index.mdx), [React-Native](/millicast/client-sdks/react-native/index.mdx),
-    [Flutter](/millicast/client-sdks/flutter/index.mdx), or desktop environments.
+    Support with [Client SDKs](/millicast/playback/players-sdks/index.mdx) for building custom playback viewers for
+    [Web](/millicast/playback/players-sdks/web/sdk/index.mdx), [iOS](/millicast/playback/players-sdks/ios/sdk/index.mdx),
+    [Android](/millicast/playback/players-sdks/android/sdk/index.mdx), [React-Native](/millicast/playback/players-sdks/react-native/index.mdx),
+    [Flutter](/millicast/playback/players-sdks/flutter/index.mdx), or desktop environments.
   </li>
   <li>Preview streams with poster images and thumbnails.</li>
   <li>**REST and GraphQL APIs** that provide analytics for tracking individual streams and user bandwidth tracking for who is viewing a stream.</li>
@@ -45,14 +45,14 @@ The final stage of the streaming workflow is taking the stream and playing it ba
 import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
 
 <IconGrid>
-  <IconGridButton>[![](/img/web.svg) Web SDK](/millicast/client-sdks/web/sdk/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/apple.svg) iOS SDK](/millicast/client-sdks/ios/sdk/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/android.svg) Android SDK](/millicast/client-sdks/android/sdk/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/react.svg) React Native](/millicast/client-sdks/react-native/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/apple.svg) Mac SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/electron.svg) Linux SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/flutter.svg) Flutter SDK](/millicast/client-sdks/flutter/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/dotnet.svg) .NET SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/web.svg) Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/apple.svg) iOS SDK](/millicast/playback/players-sdks/ios/sdk/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/android.svg) Android SDK](/millicast/playback/players-sdks/android/sdk/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/react.svg) React Native](/millicast/playback/players-sdks/react-native/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/apple.svg) Mac SDK](/millicast/playback/players-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/electron.svg) Linux SDK](/millicast/playback/players-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/flutter.svg) Flutter SDK](/millicast/playback/players-sdks/flutter/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/dotnet.svg) .NET SDK](/millicast/playback/players-sdks/desktop/index.mdx)</IconGridButton>
 </IconGrid>
 
 ## Playback streaming media
@@ -62,7 +62,7 @@ The previous stages of [Capture](/millicast/capture/index.mdx), [Broadcast](/mil
 ### Using the streaming viewer
 
 [Dolby.io Dashboard Viewer](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx)<br/>
-The quickest and easiest way to test playback is to use your account dashboard. The streaming viewer is built into the Dolby.io Dashboard, so you can test out streaming right away. To build a more customized application, the [Client SDKs](/millicast/client-sdks/index.mdx) provide support for the most popular programming platforms.
+The quickest and easiest way to test playback is to use your account dashboard. The streaming viewer is built into the Dolby.io Dashboard, so you can test out streaming right away. To build a more customized application, the [Client SDKs](/millicast/playback/players-sdks/index.mdx) provide support for the most popular programming platforms.
 
 [How-to Create Subscriber Tokens](/millicast/streaming-dashboard/subscribe-tokens.mdx)<br/>
 To broadcast, you need a _publishing_ token. Similarly, to support playback in your application, you will need to be able to generate a _subscriber_ token. This can be done either in a web application or with an [API](/millicast/distribution/access-control/index.md).
@@ -81,18 +81,18 @@ To broadcast, you need a _publishing_ token. Similarly, to support playback in y
 
 ### Previewing a stream
 
-[How-to Add a Poster Image](/millicast/playback/customize-your-player.md)<br/>
+[How-to Add a Poster Image](/millicast/playback/hosted-player/customization.md)<br/>
 A **poster image** is a graphic that lets the audience know that a session exists but that a broadcast has not yet begun.
 
-[How-to Provide Thumbnail Image Previews](/millicast/webhooks/thumbnail-webhooks.mdx)<br/>
+[How-to Provide Thumbnail Image Previews](/millicast/webhooks/thumbnail.mdx)<br/>
 A **thumbnail** is a static frame image that is captured at regular intervals during a broadcast. The thumbnail image offers a preview of what is being streamed to allow users to preview what is being presented before joining.
 
 ### Interactive viewer features
 
-[How-to Create a Multi-view Web Application](/millicast/playback/multiview.md)<br/>
+[How-to Create a Multi-view Web Application](multi-view.md)<br/>
 When more than one streaming source is being broadcast, the viewer is capable of presenting a lower-resolution preview of each incoming feed. The application can then let the user choose from these multi-view options.
 
-[Source and Layer Selection](/millicast/playback/source-and-layer-selection.md)<br/>
+[Source and Layer Selection](source-and-layer-selection.md)<br/>
 For some applications, you may need to create more than one experience. The **multi-view application** can allow a host to choose which source layer should be sent as the primary stream that will be distributed for end-user playback. This feature can create the effect of switching between camera feeds and make dynamic cuts over the duration of the stream.
 
 ### Integrating third-party capabilities
@@ -128,7 +128,7 @@ You can find examples of more third-party viewer integrations, such as [Adding G
 [Webhooks](/millicast/webhooks/index.mdx)<br/>
 A **webhook** is a registered URL that will be called back from the Dolby.io platform with details about an event as it occurs. You can create webhooks for when a thumbnail is generated, a recording is complete, or when streams begin and end.
 
-[Viewer events](/millicast/playback/viewer-events.md)<br/>
+[Viewer events](/millicast/playback/players-sdks/viewer-events.md)<br/>
 Viewer events occur when a component of a stream changes, such as when a new source is published, simulcast layer information has changed, etc.
 
 [Syndication](/millicast/syndication)<br/>
@@ -147,7 +147,7 @@ The **WebRTC-HTTP Egress Protocol (WHEP)** is an IETF standard developed to leve
 - [tvOS Stream Monitoring App](https://dolby.io/project-gallery/real-time-streaming-monitor-apps/)
 - [Android TV Stream Monitoring App](https://dolby.io/project-gallery/real-time-streaming-monitor-apps/)
 
-Download one of these apps or create and customize your own Real-time Streaming Monitor apps with a native [Client SDK](/millicast/client-sdks/index.mdx).
+Download one of these apps or create and customize your own Real-time Streaming Monitor apps with a native [Client SDK](/millicast/playback/players-sdks/index.mdx).
 
 ## Learn more
 

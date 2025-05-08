@@ -1,6 +1,5 @@
 ---
-title: 'Access Control'
-slug: /access-control
+title: Access Control
 sidebar_position: 1
 ---
 
@@ -17,8 +16,8 @@ A [Publish token](/millicast/streaming-dashboard/managing-your-tokens.mdx) is **
 During the Publish token creation process, you can further limit access in a few ways:
 
 - [Temporary Token](/millicast/streaming-dashboard/managing-your-tokens.mdx#create-a-publish-token): By making a token expire after a set period of time, you limit the window of opportunity for someone to misuse the resource. Tokens expiration is defined by the number of seconds until it expires, with one second being the shortest possible token duration.
-- [Allowed Origins](/millicast/distribution/access-control/token-security.md#allowed-origins): If specified, only the domains in the list will be allowed to broadcast with the Publish token. Wildcard subdomains are also allowed, e.g.: `*.demo.com`. When unspecified (_an empty list_), there are no domain restrictions.
-- [IP Filtering](/millicast/distribution/access-control/token-security.md#ip-filters): With IP Address Filters, you can impose restrictions that limit access to a real-time stream by specifying specific IP network addresses.
+- [Allowed Origins](/millicast/distribution/access-control/allowed-origins.md#allowed-origins): If specified, only the domains in the list will be allowed to broadcast with the Publish token. Wildcard subdomains are also allowed, e.g.: `*.demo.com`. When unspecified (_an empty list_), there are no domain restrictions.
+- [IP Filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters): With IP Address Filters, you can impose restrictions that limit access to a real-time stream by specifying specific IP network addresses.
 - [Geo-Blocking](/millicast/distribution/access-control/geo-blocking.mdx): Geo-blocking refers to restricting access to certain content based on the geographic location of the user. It can be filtered by "allowed" and "denied" countries. With geo-blocking, providers can adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on classified content.
 
 These restrictions can be implemented in the [Dashboard](https://dashboard.dolby.io/signin) or [via the token REST APIs](/millicast/streaming-dashboard/token-api.mdx).
@@ -30,8 +29,8 @@ A Subscribe token is **optional** for [playing back](/millicast/playback/index.m
 During the Subscribe token creation process, you can further limit access in a few ways:
 
 - [Temporary Token](/millicast/streaming-dashboard/subscribe-tokens.mdx#creating-a-subscribe-token): By making a token expire after a set period of time, you limit the window of opportunity for someone to misuse the resource. Tokens expiration is defined by the number of seconds until it expires, with one second being the shortest possible token duration.
-- [Allowed Origins](/millicast/distribution/access-control/token-security.md#allowed-origins): If specified, only the domains in the list will be allowed in requests to Director API with the Subscribe token. Wildcard subdomains are also allowed, e.g.: `*.demo.com`. When unspecified (_an empty list_), there are no domain restrictions.
-- [IP Filtering](/millicast/distribution/access-control/token-security.md#ip-filters): With IP Address Filters, you can impose restrictions that limit access to a stream by specifying specific IP network addresses.
+- [Allowed Origins](/millicast/distribution/access-control/allowed-origins.md#allowed-origins): If specified, only the domains in the list will be allowed in requests to Director API with the Subscribe token. Wildcard subdomains are also allowed, e.g.: `*.demo.com`. When unspecified (_an empty list_), there are no domain restrictions.
+- [IP Filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters): With IP Address Filters, you can impose restrictions that limit access to a stream by specifying specific IP network addresses.
 - [Geo-Blocking](/millicast/distribution/access-control/geo-blocking.mdx): Geo-blocking refers to restricting access to certain content based on the geographic location of the user. It can be filtered by "allowed" and "denied" countries. With geo-blocking, providers can adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on classified content.
 
 :::tip Tracking bandwidth consumption can help detect stream sharing

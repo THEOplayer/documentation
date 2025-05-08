@@ -1,0 +1,144 @@
+---
+title: Amino
+slug: /playback/devices/amino
+---
+
+**Amino.tv** is a leading provider of media and entertainment technology solutions, specializing in IPTV and hybrid TV devices that deliver content across various platforms. Known for their high-quality set-top boxes and software, Amino empowers service providers to offer seamless streaming experiences. The Amino H200 stands out as a high-performance, flexible set top box supporting the latest streaming protocols and standards. Additionally, Amino's Orchestrate platform offers powerful fleet management, with centralized control and monitoring for efficient and reliable operations across large deployments.
+
+:::tip Getting started
+If you haven't already, begin by following the [Getting Started](https://docs.dolby.io/streaming-apis/docs/getting-started) tutorial to start your first broadcast. You'll need your Millicast account ID and stream name for the steps described below.
+:::
+
+See the official [Amino website](https://www.amino.tv/) for documentation, installation instructions, and additional support.
+
+## Amino H200
+
+You'll need a few things to get started with this integration:
+
+- An Amino H200 device with stable internet connection.
+- A video monitor or TV with HDMI input.
+- The serial number for your Amino H200 device.
+- Appropriate access to Amino Orchestrate System and Manage Dashboards.
+- Installation of the channel Zapper application along with firmware version 25.6.2420.5R or later.
+
+import AminoWebsiteH200Series from '../../assets/img/Amino-Website-H200Series.png';
+
+<div class="center-container">
+  <img src={AminoWebsiteH200Series} width="600" />
+</div>
+
+### 1. Register Your Amino Device
+
+_If you are familiar with the Amino H200 and already registered your device you can skip this step._
+
+You'll need to take a few steps to get the H200 up and running:
+
+- Log into [Amino Orchestrate](https://system.amino-orchestrate.com/system/#dashboard/main).
+- Select Manage Devices and register your new hardware.
+- Enter the unique serial number so the device is available for configuration.
+- Install the Zapper application.
+
+Once successful, you should be able to open the Zapper application from the welcome screen.
+
+import AminoWelcome from '../../assets/img/amino-h200-welcome-screen.jpeg';
+
+<div class="center-container">
+  <img src={AminoWelcome} width="600" />
+</div>
+
+You can find more detailed instructions from here: https://www.amino.tv/welcome-to-the-h200
+
+### 2. Create a Management Group and Update Firmware
+
+Amino Orchestrate uses groups to make fleet management and deploying simple. To create a new group for your device(s), click on the _Manage Groups_ tab and the _Create Group_ button. Give your group a name, device type, and any other tags to help you manage your devices.
+
+Select your group and then click on _Group details_ from the right side of the interface.
+
+import AminoGroupDetails from '../../assets/img/amino-group-details.png';
+
+<div class="center-container">
+  <img src={AminoGroupDetails} width="600" />
+</div>
+
+Select the _Target Firmware_ you want to run on the device. This is maintained by the Amino team and should be 25.6.2420.5R or more recent.
+
+### 3. Add Millicast Streams to Channel Zapper
+
+From the same _Group details_ view, you will need to update your _Application Settings_. The Channel Zapper application is a streamlined and user-friendly interface designed for fast channel switching between streaming sources.
+
+Click the _+ Add / Remove Parameters_ button to add these Application Settings:
+
+- tvapp.package_id
+- webapp.lineup_json
+
+Optional parameter:
+
+- player.dolby.min_jitter_delay_ms
+
+import AminoA from '../../assets/img/Screenshot_2024-10-17_at_2.33.48_PM.png';
+
+<div class="center-container">
+  <img src={AminoA} width="600" />
+</div>
+
+Once you've hit apply on the set of parameters to be added to Application Settings, enter in the corresponding Values for each parameter (Key = Value):
+
+- tvapp.package_id = zapper
+
+The _webapp.lineup_json_ parameter defines the streams that you can toggle between when using the channel up and channel down buttons on the remote and is defined by a JSON.
+
+The format for the JSON will look like this and will be what you enter in as the _Value_ for _webapp.lineup_json_:
+
+```json
+[
+  {
+    "name": "1",
+    "desc": "Dolby Trailer",
+    "url": ["dolbyio://7csQUs/trailer"]
+  }
+]
+```
+
+import AminoB from '../../assets/img/Screenshot_2024-10-17_at_2.31.18_PM.png';
+
+<div class="center-container">
+  <img src={AminoB} width="600" />
+</div>
+
+The url follows the pattern **`dolbyio://{Account ID}/{Stream Name}`** and the name and desc are displayed on the screen briefly upon changing channels.
+
+You can add as many streams as you need to the list, enter this as the value, separated by comma and then click the Save button. Clicking on the _Group reboot_ will restart any devices in the group so that they have the latest channel list.
+
+For the optional _player.dolby.min_jitter_delay_ms_ parameter, you can specify the amount of delay in milliseconds to be added to your stream.
+
+Example:
+
+- player.dolby.minjitter_delay_ms = 100
+
+import AminoC from '../../assets/img/Screenshot_2024-10-17_at_2.53.10_PM.png';
+
+<div class="center-container">
+  <img src={AminoC} width="600" />
+</div>
+
+### 4. View Your Streams
+
+After the devices have restarted, launch the Zapper application and you should begin seeing your real-time streams.
+
+import AminoDolbyTrailer from '../../assets/img/amino-dolby-trailer.jpeg';
+
+<div class="center-container">
+  <img src={AminoDolbyTrailer} width="600" />
+</div>
+
+## Troubleshooting
+
+### Cannot Access Manage Devices or Manage Groups
+
+If you are unable to complete some of the steps above such as Managing Groups or Devices, insure that you have the appropriate levels of access control for setting up the device.
+
+import AminoRoles2 from '../../assets/img/amino-roles_2.png';
+
+<div class="center-container">
+  <img src={AminoRoles2} width="600" />
+</div>

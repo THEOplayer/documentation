@@ -1,11 +1,14 @@
 ---
-title: 'How-to Start Live Clipping'
-slug: /live-clipping
+title: How-to Start Live Clipping
 ---
 
 **Live Clipping** allows you to capture one or more simultaneous media files (ie. **clips**) while a broadcast event is in progress. This is in contrast to a recording which is a media file that captures the full duration of a single source only after the completion of a broadcast. The duration of a clip can be customized to capture highlights or shorter segments while still live for use cases that want instant replay, social sharing, or audit reviews.
 
-![](../../assets/img/ac2eb6e3116ef7cdbf78a87b76207ab466689eec4f920c5cf77a38a3-live-clipping-overview.png)
+import Image1 from '../../assets/img/ac2eb6e3116ef7cdbf78a87b76207ab466689eec4f920c5cf77a38a3-live-clipping-overview.png';
+
+<div class="center-container">
+  <img src={Image1} width="600" />
+</div>
 
 This opens up new possibilities for engaging audiences with dynamic and interactive viewing experiences.
 
@@ -27,7 +30,11 @@ When setting up your applications and workflows, you'll want to create a service
 
 This is a typical pattern for application integration.
 
-![](../../assets/img/602a7d00dfd276b5f220021220a55eaebea6cb8f4692c6fd606a63e8-live-clipping-app-architecture.png)
+import Image2 from '../../assets/img/602a7d00dfd276b5f220021220a55eaebea6cb8f4692c6fd606a63e8-live-clipping-app-architecture.png';
+
+<div class="center-container">
+  <img src={Image2} width="600" />
+</div>
 
 ### How-to Create a Clip
 
@@ -49,9 +56,9 @@ curl --request POST \
 
 The **stopTime** is optional and if not specified will use the last segment from the timeline (ie. "now"). The precise start and stop times of the resulting clip may vary slightly depending on encoding settings. We recommend that encoding settings use an **I-Frame** period of `1s` when using the service to increase precision when aligning keyframes with media segments.
 
-> 👍 Enable Live Clipping
->
-> Before beginning a broadcast, you must enable the `clip` setting on the [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx) being used for the stream. You will not be able to clip media until your broadcast with this setting has started.
+:::tip Enable Live Clipping
+Before beginning a broadcast, you must enable the `clip` setting on the [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx) being used for the stream. You will not be able to clip media until your broadcast with this setting has started.
+:::
 
 ### How-to Avoid Duplicate Clips
 
@@ -72,8 +79,6 @@ curl --request POST \
   "stopTime": "2024-10-01T01:34:33Z"
 }
 '
-
-
 ```
 
 ### How-to Use Your Own Cloud Storage

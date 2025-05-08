@@ -1,6 +1,5 @@
 ---
-title: 'High Availability Management'
-slug: /high-availability-management
+title: High Availability Management
 ---
 
 _Note: To make use of this feature, please be familiar with the concept of [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx)_
@@ -18,7 +17,7 @@ This feature allows for effective switching between primary and redundant stream
 
 To enable the High Availability Management feature and allow for dynamic stream switching, stream priority _must_ be assigned via the [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx). A guide on this topic can be found in our [Redundant Ingest Guide](/millicast/broadcast/redundant-ingest/index.mdx).
 
-Any streams broadcasted using the priority parameter under [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) will _not_ be responsive to dynamic priority allocation. The priority value specified via [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) overrides the respective setting on the token.
+Any streams broadcasted using the priority parameter under [Publishing Parameters](/millicast/broadcast/publishing-parameters.md) will _not_ be responsive to dynamic priority allocation. The priority value specified via [Publishing Parameters](/millicast/broadcast/publishing-parameters.md) overrides the respective setting on the token.
 
 ## Identifying Primary and Redundant Stream Priority
 

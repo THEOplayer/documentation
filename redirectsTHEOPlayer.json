@@ -1,0 +1,22 @@
+[
+    {
+        "from": "/theoplayer/getting-started/sdks/web/getting-started-extended",
+        "to": "/theoplayer/getting-started/sdks/web/getting-started/"
+    },
+    {
+        "from": "/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui",
+        "to": "/open-video-ui/web/getting-started"
+    },
+    {
+        "from": "/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/",
+        "to": "/theoplayer/how-to-guides/miscellaneous/vr/"
+    },
+    {
+        "from": "/theoplayer/how-to-guides/drm/verizon-uplynk/",
+        "to": "/theoplayer/how-to-guides/drm/uplynk/"
+    },
+    {
+        "from": "/theoplayer/faq/what-are-the-edgio-challenges/",
+        "to": "/theoplayer/faq/what-are-the-uplynk-challenges/"
+    }
+]

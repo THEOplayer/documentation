@@ -1,12 +1,11 @@
 ---
-title: 'Update to Project and TrackIds'
-slug: /update-to-project-and-trackids
+title: Update to Project and TrackIds
 unlisted: true # Note: unlisted pages still show up in dev mode
 ---
 
-This is part of our [Multi-view](/millicast/playback/multiview.md) feature and only impacts users who where using the multiview feature and their own player SDK implementation. If you are using the hosted video player, there is no update to apply.
+This is part of our [Multi-view](/millicast/playback/multi-view.md) feature and only impacts users who where using the multiview feature and their own player SDK implementation. If you are using the hosted video player, there is no update to apply.
 
-In the [Broadcast Events](/millicast/playback/viewer-events.md), the `active` event now uses truely dynamic `trackId`. Below you can find the details of what these broadcast events look like. Using `trackId` dynamically has been [documented in the SDK](https://github.com/millicast/millicast-sdk/blob/460444aa9e7a37ad2c9c77046a97cdaf6448a76f/packages/millicast-sdk/src/View.js#L163) for years but we had some hard-coded examples in our multi-view sample code.
+In the [Broadcast Events](/millicast/playback/players-sdks/viewer-events.md), the `active` event now uses truely dynamic `trackId`. Below you can find the details of what these broadcast events look like. Using `trackId` dynamically has been [documented in the SDK](https://github.com/millicast/millicast-sdk/blob/460444aa9e7a37ad2c9c77046a97cdaf6448a76f/packages/millicast-sdk/src/View.js#L163) for years but we had some hard-coded examples in our multi-view sample code.
 
 `trackId` is an optional (future-proofing) parameter when calling the `project()` command and is not required.
 
@@ -37,7 +36,7 @@ Before the 2025-02-12, `trackId`, while [intended to be a dynamic value](https:/
 
 ## After the release
 
-After the 2025-02-12 media server release, this value will be dynamic when returned int he [`active` Broadcast Event](/millicast/playback/viewer-events.md)
+After the 2025-02-12 media server release, this value will be dynamic when returned int he [`active` Broadcast Event](/millicast/playback/players-sdks/viewer-events.md)
 
 ```json
 {

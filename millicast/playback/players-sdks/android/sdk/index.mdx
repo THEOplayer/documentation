@@ -1,0 +1,74 @@
+---
+title: Millicast SDK
+sidebar_position: 2
+---
+
+The Native SDK for creating Android applications. You may use it in your Android project to connect, capture, publish, or subscribe to streams using the Dolby.io Streaming Platform.
+
+:::caution Player vs SDK
+**Dolby OptiView Player** (formerly THEOplayer) now supports real-time streaming (formerly Millicast). Unless directed by your onboarding team, please use the [Dolby OptiView Player](../player/index.mdx) and not the Millicast SDKs.
+:::
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList
+  items={[
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-native-sdk/releases',
+      customProps: {
+        icon: 'github',
+      },
+      label: 'GitHub',
+      description: '',
+    },
+    {
+      type: 'link',
+      href: 'https://millicast.github.io/doc/latest/android/index.html',
+      customProps: {
+        icon: '📖',
+      },
+      label: 'Reference',
+      description: '',
+    },
+    {
+      type: 'link',
+      href: 'https://github.com/millicast/millicast-android-sdk-sample-apps',
+      customProps: {
+        icon: '📱',
+      },
+      label: 'Sample app',
+      description: '',
+    },
+    {
+      type: 'link',
+      href: '/millicast/playback/players-sdks/android/sdk/getting-started-with-publishing',
+      docId: 'playback/players-sdks/android/sdk/getting-started-with-publishing',
+      customProps: {
+        icon: '🚀',
+      },
+      label: 'Getting Started',
+      description: '',
+    },
+  ]}
+/>
+
+The package name of the Native SDK for Android is _millicast-native-sdk-version-Android.zip_.
+
+:::tip Note
+If you want to use Streaming APIs on Android and iOS, you can also use the [Flutter SDK](/millicast/playback/players-sdks/flutter/index.mdx) or the [React Native](/millicast/playback/players-sdks/react-native/index.mdx) plugin.
+:::
+
+## Requirements
+
+- [Dolby.io account](https://streaming.dolby.io)
+- A working video camera and microphone
+- Android API [24](https://developer.android.com/tools/releases/platforms#7.0) or later
+- Client SDK [1.8.0](https://github.com/millicast/millicast-native-sdk/releases) or later
+
+## Tutorials
+
+- [Getting Started with Publishing](/millicast/playback/players-sdks/android/sdk/how-to-add-picture-in-picture.mdx)
+- [Getting Started with Subscribing](/millicast/playback/players-sdks/android/sdk/getting-started-with-subscribing.md)
+- [How-to Add Picture in Picture](/millicast/playback/players-sdks/android/sdk/how-to-add-picture-in-picture.mdx)
+- [Migration Guide for Android SDK](/millicast/playback/players-sdks/android/sdk/sdk-migration-guide.mdx)
