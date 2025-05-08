@@ -226,15 +226,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      id: 'broadcast/hardware-encoders/index'
+      id: 'broadcast/hardware-encoders/index',
     },
     {
       type: 'doc',
-      id: 'broadcast/software-encoders/index'
+      id: 'broadcast/software-encoders/index',
     },
     {
       type: 'doc',
-      id: 'playback/players-sdks/index'
+      id: 'playback/players-sdks/index',
     },
     {
       type: 'link',

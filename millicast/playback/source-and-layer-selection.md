@@ -151,7 +151,7 @@ viewer.project('sourceId2', [
     layer: {
       encodingId: lowestLayer.encodingId,
       spatialLayerId: lowestLayer.spatialLayerId,
-      temporalLayerId: lowestLayer.temporalLayerId
+      temporalLayerId: lowestLayer.temporalLayerId,
     },
   },
 ]);

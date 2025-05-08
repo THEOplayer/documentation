@@ -1,6 +1,6 @@
 [
-    {
-        "from": "/theoads/api/signaling/",
-        "to": "/theoads/api/signaling/theoads-api/"
-    }
+  {
+    "from": "/theoads/api/signaling/",
+    "to": "/theoads/api/signaling/theoads-api/"
+  }
 ]
