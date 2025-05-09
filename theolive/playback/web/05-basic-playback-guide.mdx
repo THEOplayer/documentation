@@ -23,7 +23,7 @@ Once done, your player variable will reference the returned THEOplayer instance 
 
 ## Adjust Volume
 
-To adjust the volume of your stream during playback, you can set the [volume](pathname:///theoplayer/v9/api-reference/web/classes/Player.html#volume) property to a floating point number in the range of `0.0` (0%) minimum and `1.0` (100%) maximum.
+To adjust the volume of your stream during playback, you can set the [`volume`](pathname:///theoplayer/v9/api-reference/web/classes/Player.html#volume) property to a floating point number in the range of `0.0` (0%) minimum and `1.0` (100%) maximum.
 
 The following code sets the player's volume to 60%:
 
@@ -50,11 +50,11 @@ player.play();
 
 ## Enable Full Screen
 
-To make your stream take up the full screen of the device it is being viewed upon, you must use the [requestMode](pathname:///theoplayer/v9/api-reference/web/interfaces/Presentation.html#requestMode) method available on the [presentation](pathname:///theoplayer/v9/api-reference/web/classes/Player.html#presentation) property of your player variable.
+To make your stream take up the full screen of the device it is being viewed upon, you must use the [`requestMode`](pathname:///theoplayer/v9/api-reference/web/interfaces/Presentation.html#requestMode) method available on the [`presentation`](pathname:///theoplayer/v9/api-reference/web/classes/Player.html#presentation) property of your player variable.
 
-Before doing so, check that the player supports other presentation modes (besides the default 'inline') for the device which the stream is viewed on by using the [supportsMode](pathname:///theoplayer/v9/api-reference/web/interfaces/Presentation.html#supportsMode) method on the presentation property.
+Before doing so, check that the player supports other presentation modes (besides the default `'inline'`) for the device which the stream is viewed on by using the [`supportsMode`](pathname:///theoplayer/v9/api-reference/web/interfaces/Presentation.html#supportsMode) method on the presentation property.
 
-Both the requestMode and supportsMode methods require a [presentationMode](pathname:///theoplayer/v9/api-reference/web/types/PresentationMode.html) parameter that can accept the following arguments:
+Both the `requestMode` and `supportsMode` methods require a [`PresentationMode`](pathname:///theoplayer/v9/api-reference/web/types/PresentationMode.html) parameter that can accept the following arguments:
 
 - `'inline'`: The player is shown in its original location on the page. (default presentation mode)
 - `'fullscreen'`: The player fills the entire screen.
@@ -68,16 +68,16 @@ Check if fullscreen is supported with the following code:
 player.presentation.supportsMode('fullscreen');
 ```
 
-If the supportsMode method returns true for the presentationMode you passed into it, then you can move on to the steps below.
+If the `supportsMode` method returns true for the presentation mode you passed into it, then you can move on to the steps below.
 
-To make the current stream take up the full screen, pass a presentationMode of 'fullscreen' to the requestMode method with the following code:
+To make the current stream take up the full screen, pass a presentation mode of `'fullscreen'` to the `requestMode` method with the following code:
 
 ```javascript
 // stream will take up the full screen which it is being viewed on
 player.presentation.requestMode('fullscreen');
 ```
 
-To confirm that the change has occured, check the [currentMode](pathname:///theoplayer/v9/api-reference/web/interfaces/Presentation.html#currentMode) property to ensure it now returns 'fullscreen' as its value:
+To confirm that the change has occurred, check the [`currentMode`](pathname:///theoplayer/v9/api-reference/web/interfaces/Presentation.html#currentMode) property to ensure it now returns `'fullscreen'` as its value:
 
 ```javascript
 // should return a value of 'fullscreen' to the console
@@ -86,9 +86,9 @@ console.log('this is the current presentation mode being used -->', player.prese
 
 ## Select Quality Layer
 
-To select a specific quality layer during the playing of your stream, you must set the [targetQuality](pathname:///theoplayer/v9/api-reference/web/interfaces/MediaTrack.html#targetQuality) property which is accessible on the [videoTracks](pathname:///theoplayer/v9/api-reference/web/classes/Player.html#videoTracks) property of your player variable.
+To select a specific quality layer during the playing of your stream, you must set the [`targetQuality`](pathname:///theoplayer/v9/api-reference/web/interfaces/MediaTrack.html#targetQuality) property which is accessible on the [`videoTracks`](pathname:///theoplayer/v9/api-reference/web/classes/Player.html#videoTracks) property of your player variable.
 
-The videoTracks property leverages the [MediaTrack API](pathname:///theoplayer/v9/api-reference/web/interfaces/MediaTrack.html).
+The `videoTracks` property leverages the [MediaTrack API](pathname:///theoplayer/v9/api-reference/web/interfaces/MediaTrack.html).
 
 To see what qualities you have available, use the following code:
 
