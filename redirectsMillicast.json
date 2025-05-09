@@ -96,10 +96,6 @@
     "to": "/millicast/distribution/re-streaming/"
   },
   {
-    "from": "/millicast/distribution/using-webrtc-simulcast/",
-    "to": "/millicast/distribution/using-webrtc-simulcast/"
-  },
-  {
     "from": "/millicast/recordings/",
     "to": "/millicast/distribution/stream-recordings/"
   },
