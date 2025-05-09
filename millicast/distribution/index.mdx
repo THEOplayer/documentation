@@ -8,10 +8,10 @@ import DocCardList from '@theme/DocCardList';
 The Dolby.io Streaming Content Delivery Network (CDN) offers a range of server-side features that users can toggle and adjust via the REST APIs or your account Dashboard to ensure streams are secure, stable, and scalable.
 
 - **Scalability** to distribute content to large audiences across [multiple regions](/millicast/distribution/multi-region-support/index.mdx) in real-time.
-- **Stability** with features like [simulcast with WebRTC](/millicast/using-webrtc-simulcast) that provide redundancy and adaptability to maintain a good user experience across different network and device conditions while maintaining a high uptime and Quality of Experience (QoE).
+- **Stability** with features like [simulcast with WebRTC](/millicast/distribution/using-webrtc-simulcast) that provide redundancy and adaptability to maintain a good user experience across different network and device conditions while maintaining a high uptime and Quality of Experience (QoE).
 - **Security** through features that protect your content by securing streams with subscriber tokens, [self-signed tokens](/millicast/streaming-dashboard/subscribe-tokens.mdx#creating-a-self-signed-token), allowing only [specific origins](/millicast/distribution/access-control/allowed-origins.md), [geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx), and [IP filtering](/millicast/distribution/access-control/allowed-origins.md).
 
-Distribution of streaming content requires scalability, stability, and security along with a robust platform with features including [stream recordings](/millicast/distribution/stream-recordings/index.mdx), [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx), [multi-bitrate delivery](/millicast/using-webrtc-simulcast), [backup publishing](/millicast/broadcast/redundant-ingest/index.mdx), [stream syndication](/millicast/syndication), and [streaming analytics](/millicast/analytics/index.md).
+Distribution of streaming content requires scalability, stability, and security along with a robust platform with features including [stream recordings](/millicast/distribution/stream-recordings/index.mdx), [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx), [multi-bitrate delivery](/millicast/distribution/using-webrtc-simulcast), [backup publishing](/millicast/broadcast/redundant-ingest/index.mdx), [stream syndication](/millicast/distribution/syndication), and [streaming analytics](/millicast/analytics/index.md).
 
 ## Start building
 
@@ -79,7 +79,7 @@ Add redundancy with multiple independent broadcast sources as part of the same s
 [Audio multiplexing](/millicast/playback/audio-multiplexing.md)<br/>
 With **multiplexing**, this enables end users to receive multiple audio feeds as part of a single broadcast such that viewers can toggle between different audio tracks, such as variations in language, quality, etc.
 
-[Simulcast](/millicast/using-webrtc-simulcast)<br/>
+[Simulcast](/millicast/distribution/using-webrtc-simulcast)<br/>
 **Simulcast** is a mechanism that allows for the distribution of a media stream composed of multiple bitrates and resolutions. The user can then view a stream that has a quality determined by network or device type allowing low-bandwidth conditions to receive an appropriate quality stream for the most stable experience possible in that scenario.
 
 import I8c0d37aSimulcast from '../assets/img/8c0d37a-Simulcast.png';
@@ -98,7 +98,7 @@ To support global audiences into the hundreds of thousands of viewers, Dolby.io 
 [Multi-region support](/millicast/distribution/multi-region-support/index.mdx)<br/>
 We utilize a network of data centers distributed around the globe. This allows streams to maintain ultra-low latency and high scalability to audiences that may be scattered to many different regions.
 
-[Stream syndication](/millicast/syndication)<br/>
+[Stream syndication](/millicast/distribution/syndication)<br/>
 Through distribution partners, **syndication** allows you to send the same stream to multiple platforms. A tracking id can be used to correlate and analyze distribution data to monitor bandwidth utilization, viewer attendance with each provider, and other statistics that can help with billing.
 
 [Recordings](/millicast/distribution/stream-recordings/index.mdx)<br/>

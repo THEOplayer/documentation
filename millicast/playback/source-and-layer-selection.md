@@ -98,7 +98,7 @@ viewer.unproject([videoTransceiver.mid]);
 By default, the Dolby.io Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
 :::
 
-In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
+In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/distribution/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
 
 ```javascript title="Projecting with layer selection using project"
 viewer.project('mysource', [

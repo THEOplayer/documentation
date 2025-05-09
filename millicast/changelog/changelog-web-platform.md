@@ -23,7 +23,7 @@ This release introduces some major improvements:
 - With `sendMetadata()` you can publish metadata with your broadcast and synchronize playback events with frame-level accuracy.
 - The `diagnose()` function can be used to troubleshoot the end-user quality of experience while gathering client-side analytics and key streaming metrics.
 - The `forcePlayoutDelay` setting can be used when connecting to configure the buffer time the server will utilize for any lost frames that may occur under poor network conditions.
-- You can enable [Simulcast](/millicast/using-webrtc-simulcast) (both viewing and publishing) on all chromium-based browsers including Edge.
+- You can enable [Simulcast](/millicast/distribution/using-webrtc-simulcast) (both viewing and publishing) on all chromium-based browsers including Edge.
 
 ### 🆕 Frame Metadata
 
@@ -132,7 +132,7 @@ Introduced a new `Logger.diagnose()` function to gather debugging information fr
 
 ### Fixes
 
-Added missed layer information in the `view` command. For [Simulcast](/millicast/using-webrtc-simulcast) broadcasts, some options specified during `view.connect()` for configuring the available `LayerInfo` were not being configured correctly. Learn more about the available [LayerInfo properties](https://millicast.github.io/millicast-sdk/global.html#LayerInfo).
+Added missed layer information in the `view` command. For [Simulcast](/millicast/distribution/using-webrtc-simulcast) broadcasts, some options specified during `view.connect()` for configuring the available `LayerInfo` were not being configured correctly. Learn more about the available [LayerInfo properties](https://millicast.github.io/millicast-sdk/global.html#LayerInfo).
 
 ## 2024-01-22 | Web SDK [0.1.43](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.43)
 

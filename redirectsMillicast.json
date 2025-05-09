@@ -24,10 +24,6 @@
     "to": "/millicast/capture/live-streaming-from-drones/"
   },
   {
-    "from": "/millicast/broadcast/",
-    "to": "/millicast/broadcast/"
-  },
-  {
     "from": "/millicast/webrtc-whip/",
     "to": "/millicast/broadcast/webrtc-and-whip/"
   },
@@ -50,14 +46,6 @@
   {
     "from": "/millicast/broadcast-parameters/",
     "to": "/millicast/broadcast/publishing-parameters/"
-  },
-  {
-    "from": "/millicast/software-encoders/",
-    "to": "/millicast/software-encoders/"
-  },
-  {
-    "from": "/millicast/hardware-encoders/",
-    "to": "/millicast/hardware-encoders/"
   },
   {
     "from": "/millicast/multi-source-broadcasting/",
@@ -108,7 +96,7 @@
     "to": "/millicast/distribution/re-streaming/"
   },
   {
-    "from": "/millicast/using-webrtc-simulcast/",
+    "from": "/millicast/distribution/using-webrtc-simulcast/",
     "to": "/millicast/distribution/using-webrtc-simulcast/"
   },
   {
@@ -336,10 +324,6 @@
     "to": "/millicast/hardware-encoders/osprey/"
   },
   {
-    "from": "/millicast/videon/",
-    "to": "/millicast/videon/"
-  },
-  {
     "from": "/millicast/using-whip-with-flowcaster/",
     "to": "/millicast/software-encoders/flowcaster/"
   },
@@ -378,9 +362,5 @@
   {
     "from": "/millicast/amino/",
     "to": "/millicast/playback/devices/amino/"
-  },
-  {
-    "from": "/millicast/playback/ipv6-support/",
-    "to": "/millicast/playback/ipv6-support/"
   }
 ]
