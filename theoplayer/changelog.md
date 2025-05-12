@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.3.1 (2025/05/12)
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved the algorithm behind our HESP pipeline to reach the targetLatency.
+
 ## 🚀 9.3.0 (2025/05/05)
 
 ### Web
