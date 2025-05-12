@@ -1,5 +1,5 @@
 ---
-title: 'Analytics APIs'
+title: Analytics APIs
 slug: /analytics-api
 ---
 

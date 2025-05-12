@@ -1,6 +1,5 @@
 ---
-title: 'Re-streaming'
-slug: /re-streaming
+title: Re-streaming
 sidebar_position: 5
 ---
 
@@ -9,7 +8,7 @@ sidebar_position: 5
 import ReStream from '../assets/img/f4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f83af17ac88285-restream.png';
 
 <div class="center-container">
-  <img src={ReStream} width="500" />
+  <img src={ReStream} width="600" />
 </div>
 
 ## Overview
@@ -67,7 +66,7 @@ Visit the [/api/publish_token](/millicast/api/publish-token-v-1-create-token.api
 
 For scenarios such as [Multi-Source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) there may be more than one incoming source stream. Since not all media platforms are capable of accepting multiple RTMP(S) or SRT ingest sources you may have unexpected results.
 
-To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast/broadcast-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/playback/multiview.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
+To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast/publishing-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/playback/multi-view.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
 
 ## Feature compatability
 
@@ -105,7 +104,7 @@ The re-stream feed is only showing audio or video. This may be because you are u
 
 ### Re-stream is Not Working with Web Broadcasts
 
-If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) dashboard app or a custom built app using the [Web SDK](/millicast/client-sdks/web/sdk/index.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/using-srt.mdx) and [RTMP(S)](/millicast/broadcast/using-rtmp-and-rtmps.mdx) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
+If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) dashboard app or a custom built app using the [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/srt.mdx) and [RTMP(S)](/millicast/broadcast/rtmp-and-rtmps.mdx) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
 
 :::tip We're Here to Help
 For any other issues not covered here, please reach out to your sales and solutions team who can review server logs that may help identify any configuration issues.

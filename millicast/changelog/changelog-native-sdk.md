@@ -12,8 +12,8 @@ We've made some major changes including updates that greatly improve the experie
 
 To help transition your applications with these changes we've created migration guides that may be helpful:
 
-- [Migration Guide for iOS SDK](/millicast/client-sdks/ios/sdk/ios-sdk-migration-guide.mdx)
-- [Migration Guide for Android SDK](/millicast/client-sdks/android/sdk/android-sdk-migration-guide.mdx)
+- [Migration Guide for iOS SDK](/millicast/playback/players-sdks/ios/sdk/sdk-migration-guide.mdx)
+- [Migration Guide for Android SDK](/millicast/playback/players-sdks/android/sdk/sdk-migration-guide.mdx)
 
 ### :new: Viewer and Track Management
 
@@ -74,18 +74,18 @@ The synchronous APIs have been fully removed on the publisher and subscriber. Yo
 
 Android / Kotlin
 
-- [Getting Started with Subscribing](/millicast/client-sdks/android/sdk/android-getting-started-with-subscribing.md)
-- [Getting Started with Publishing](/millicast/client-sdks/android/sdk/android-getting-started-with-publishing.md)
+- [Getting Started with Subscribing](/millicast/playback/players-sdks/android/sdk/getting-started-with-subscribing.md)
+- [Getting Started with Publishing](/millicast/playback/players-sdks/android/sdk/getting-started-with-publishing.md)
 
 iOS / Swift
 
-- [Getting Started with Subscribing](/millicast/client-sdks/ios/sdk/ios-getting-started-with-subscribing.md)
-- [Getting Started with Publishing](/millicast/client-sdks/ios/sdk/ios-getting-started-with-publishing.md)
+- [Getting Started with Subscribing](/millicast/playback/players-sdks/ios/sdk/getting-started-with-subscribing.md)
+- [Getting Started with Publishing](/millicast/playback/players-sdks/ios/sdk/getting-started-with-publishing.md)
 
 Desktop
 
-- [Getting Started with Subscribing](/millicast/client-sdks/desktop/desktop-getting-started-with-subscribing.md)
-- [Getting Started with Publishing](/millicast/client-sdks/desktop/desktop-getting-started-with-publishing.md)
+- [Getting Started with Subscribing](/millicast/playback/players-sdks/desktop/getting-started-with-subscribing.md)
+- [Getting Started with Publishing](/millicast/playback/players-sdks/desktop/getting-started-with-publishing.md)
 
 ### :new: Playout Delay
 
@@ -318,7 +318,7 @@ Fixed an issue on Android where calling the [connect](<https://millicast.github.
 
 #### Features
 
-- Introduced a new asynchronous API for all Apple platforms, such as iOS, tvOS, and macOS. This change impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/client-sdks/ios/sdk/index.mdx) document.
+- Introduced a new asynchronous API for all Apple platforms, such as iOS, tvOS, and macOS. This change impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/playback/players-sdks/ios/sdk/index.mdx) document.
 - Enabled the use of Simulcast and Scalable Video Coding (SVC) at the same time when using the VP8 codec.
 - Reduced the package size of the Android SDK by removing unused NDI library. The total `aar` size is reduced by 7.1 MB. Approximate per-architecture reductions in size:
   - `x86_64`: 2.9 MB, the total `aar` size is 6.5 MB
@@ -342,7 +342,7 @@ Fixed an issue on Android where calling the [connect](<https://millicast.github.
 
 ##### Apple platforms
 
-The new asynchronous API replaced the previous synchronous one, which impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/client-sdks/ios/sdk/index.mdx) document.
+The new asynchronous API replaced the previous synchronous one, which impacts the way of publishing streams. For more information, see the updated [Getting Started](/millicast/playback/players-sdks/ios/sdk/index.mdx) document.
 
 ---
 

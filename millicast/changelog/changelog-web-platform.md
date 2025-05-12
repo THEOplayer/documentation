@@ -11,7 +11,7 @@ You can find the full history of previous releases with downloadable assets from
 This release includes some minor updates:
 
 - The **duration** in which a client has been connected is now returned with the `diagnose()` report. Additionally, the `on('stats')` data set has been updated so that **bitrate** is shown in bytes per second and a new value **bitrateBitsPerSecond** will return the bit value.  
-  See [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) for additional details on how to retrieve and use these values.
+  See [Client Analytics](/millicast/playback/client-analytics/index.mdx) for additional details on how to retrieve and use these values.
 - When working with [Frame Metadata](/millicast/playback/frame-metadata.md), the **uuid** parameter is now optional and allows for improved support from encoders that send **PIC_TIMING** metadata sources.
 
 View the [0.2.1 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.1) tag for some additional details on these updates.
@@ -23,7 +23,7 @@ This release introduces some major improvements:
 - With `sendMetadata()` you can publish metadata with your broadcast and synchronize playback events with frame-level accuracy.
 - The `diagnose()` function can be used to troubleshoot the end-user quality of experience while gathering client-side analytics and key streaming metrics.
 - The `forcePlayoutDelay` setting can be used when connecting to configure the buffer time the server will utilize for any lost frames that may occur under poor network conditions.
-- You can enable [Simulcast](/millicast/using-webrtc-simulcast) (both viewing and publishing) on all chromium-based browsers including Edge.
+- You can enable [Simulcast](/millicast/distribution/using-webrtc-simulcast) (both viewing and publishing) on all chromium-based browsers including Edge.
 
 ### 🆕 Frame Metadata
 
@@ -45,7 +45,7 @@ millicastView.on('metadata', (metadata) => {
 
 ### 🆕 Client-side Diagnostics
 
-To diagnose networking issues in your web applications it may be helpful to view [WebRTC statistics](/millicast/client-sdks/web/sdk/index.mdx#webrtc-stats) related to round-trip time, jitter, etc. This can also power [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) to populate application performance monitoring or observability tools such as [Datazoom](/millicast/datazoom) or [Datadog](/millicast/client-analytics/datadog.md). Using the new `statsIntervalMs`option you can customize the frequency in which the stats events are observed.
+To diagnose networking issues in your web applications it may be helpful to view [WebRTC statistics](/millicast/playback/players-sdks/web/sdk/index.mdx#webrtc-stats) related to round-trip time, jitter, etc. This can also power [Client Analytics](/millicast/playback/client-analytics/index.mdx) to populate application performance monitoring or observability tools such as [Datazoom](/millicast/playback/client-analytics/datazoom.mdx) or [Datadog](/millicast/playback/client-analytics/datadog.mdx). Using the new `statsIntervalMs`option you can customize the frequency in which the stats events are observed.
 
 ```javascript
 const options = {
@@ -69,7 +69,7 @@ Introduced in 0.1.44, the`Logger.diagnose()` function has been extended and can 
 
 > 📘 Diagnostics
 >
-> Review the [Client Analytics](/millicast/playback/client-analytics-and-monitoring.md) guide for more details and instructions.
+> Review the [Client Analytics](/millicast/playback/client-analytics/index.mdx) guide for more details and instructions.
 
 ### 🆒 Playback Buffer
 
@@ -90,7 +90,7 @@ await millicastView.connect(options);
 
 View the [0.2.0 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.0) tag for specific details on these updates.
 
-- The `updated` [broadcast event](/millicast/playback/viewer-events.md) will now be available as a default event when connecting as an indication of cases where an audio track is added later and independent of the video feed.
+- The `updated` [broadcast event](/millicast/playback/players-sdks/viewer-events.md) will now be available as a default event when connecting as an indication of cases where an audio track is added later and independent of the video feed.
 - The 0.1.46 release included an `onMetadata` event that has been deprecated and replaced with `metadata` as the event type. Both events will continue to be emitted until version 0.3.0 and later.
 - It is no longer necessary to specify a `streamName` to the constructor for **View** and **Publish** when provided to`Director.getSubscriber(streamName)`. It will continue to be accepted but will soon emit a deprecation warning and be removed entirely in the 1.0.0 release.
 - The `updateBitrate()` function has been removed.
@@ -132,7 +132,7 @@ Introduced a new `Logger.diagnose()` function to gather debugging information fr
 
 ### Fixes
 
-Added missed layer information in the `view` command. For [Simulcast](/millicast/using-webrtc-simulcast) broadcasts, some options specified during `view.connect()` for configuring the available `LayerInfo` were not being configured correctly. Learn more about the available [LayerInfo properties](https://millicast.github.io/millicast-sdk/global.html#LayerInfo).
+Added missed layer information in the `view` command. For [Simulcast](/millicast/distribution/using-webrtc-simulcast) broadcasts, some options specified during `view.connect()` for configuring the available `LayerInfo` were not being configured correctly. Learn more about the available [LayerInfo properties](https://millicast.github.io/millicast-sdk/global.html#LayerInfo).
 
 ## 2024-01-22 | Web SDK [0.1.43](https://github.com/millicast/millicast-sdk/releases/tag/v0.1.43)
 
@@ -327,4 +327,4 @@ Added a typescript declaration file and its configuration. The type definition f
 ### Features
 
 - Added typescript configuration corrections.
-- Now the Millicast Web SDK supports integration with the React Native WebRTC plugin. This allows developers to simplify Millicast services integration into their own React Native applications. The previous React Native SDK was deprecated. For more information, see the [React Native documentation](/millicast/client-sdks/react-native/index.mdx).
+- Now the Millicast Web SDK supports integration with the React Native WebRTC plugin. This allows developers to simplify Millicast services integration into their own React Native applications. The previous React Native SDK was deprecated. For more information, see the [React Native documentation](/millicast/playback/players-sdks/react-native/index.mdx).

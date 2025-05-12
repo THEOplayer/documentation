@@ -29,7 +29,7 @@ You can find additional related changes in the [Dashboard and Applications Relea
 With **live clipping** you can capture a partial clip from an active ongoing stream that is immediately available. This can power many solutions such as social network sharing, replay capabilities, as well as archival and auditing. Learn more from the [Stream Recordings](/millicast/distribution/stream-recordings/index.mdx) guide.
 
 - Use the [Media Assets](/millicast/api/media-assets-list-media-assets) REST endpoint to find all of your recordings and clips. The [Create Media Asset](/millicast/api/media-assets-create-media-asset) allows you to send a clip request that can be configured to be stored in your own cloud storage configuration. Review the [Stream Recordings](/millicast/distribution/stream-recordings/index.mdx) guide to learn more about live clipping and how to manage media assets.
-- For shorter clips processing will happen very quickly, but for longer clips there can be some processing time before the media file is available for retrieval. You can use the [Media Assets](/millicast/api/media-assets-create-media-asset) endpoint to poll for the status or register a callback with the [Media Webhook](/millicast/webhooks/media-webhooks.md) for status changes on any recordings or clips.
+- For shorter clips processing will happen very quickly, but for longer clips there can be some processing time before the media file is available for retrieval. You can use the [Media Assets](/millicast/api/media-assets-create-media-asset) endpoint to poll for the status or register a callback with the [Media Webhook](/millicast/webhooks/media.md) for status changes on any recordings or clips.
 - Be aware that these new endpoints have a `/api/v3` url path.
 
 The Recording Hooks and Recordings REST endpoints will continue to work but are being deprecated so you should transition any applications and services.
@@ -48,7 +48,7 @@ The [Read Account Geo Restrictions](/millicast/api/geo-geo) and [Read Account Ge
 
 ### :new: ViewerConnection Hooks
 
-For long-running streams, it can be helpful to start and stop the stream only when there are viewers connected. Using the new [ViewerConnection](/millicast/webhooks/viewerconnection-webhooks.md) webhook, you can write a service that listens for `viewerAttempt` and `noActiveViewers` events to start or stop a broadcast to better manage your bandwidth usage.
+For long-running streams, it can be helpful to start and stop the stream only when there are viewers connected. Using the new [ViewerConnection](/millicast/webhooks/viewerconnection.md) webhook, you can write a service that listens for `viewerAttempt` and `noActiveViewers` events to start or stop a broadcast to better manage your bandwidth usage.
 
 View the [Webhooks](/millicast/webhooks/index.mdx) guide to learn more about setting up webhooks.
 

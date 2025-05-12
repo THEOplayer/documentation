@@ -1,10 +1,10 @@
 ---
-title: 'Multi-source Playback'
-slug: /source-and-layer-selection
-sidebar_position: 5
+title: Source and Layer Selection
+slug: /playback/source-and-layer-selection
+sidebar_position: 3
 ---
 
-Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](/millicast/playback/multiview.md) and [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) experiences.
+Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](multi-view.md) and [Audio Multiplexing](audio-multiplexing.md) experiences.
 
 To get started building multi-stream experiences it's important to understand how Dolby.io handles multi-source playback. This guide outlines:
 
@@ -24,7 +24,7 @@ Dolby.io streaming supports scalable WebRTC streaming thanks to a "smart" cascad
 - **Publisher nodes**: These nodes manage [the ingest of multiple sources](/millicast/broadcast/multi-source-broadcasting.mdx) during the broadcast. They can then forward these feeds to the CDN for the Viewer node to manage.
 - **Viewer nodes**: Viewer nodes are created depending on the quantity and location of viewers, allowing Dolby.io to support large-scale global streams. When rendering streams in your app or platform, you can communicate with the viewer node to negotiate what feeds to project and simulcast layers to receive.
 
-When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/viewer-events.md#using-events) to it:
+When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/players-sdks/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/players-sdks/viewer-events.md#using-events) to it:
 
 ```javascript
 const tokenGenerator = () =>
@@ -33,7 +33,7 @@ const tokenGenerator = () =>
     streamAccountId: streamAccountId,
   });
 
-viewer = new millicast.View(streamName, tokenGenerator);
+viewer = new millicast.View(undefined, tokenGenerator);
 viewer.on('broadcastEvent', async (event) => {
   console.log('broadcastEvent', event);
 });
@@ -98,7 +98,7 @@ viewer.unproject([videoTransceiver.mid]);
 By default, the Dolby.io Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
 :::
 
-In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
+In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/distribution/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
 
 ```javascript title="Projecting with layer selection using project"
 viewer.project('mysource', [
@@ -123,7 +123,7 @@ async function select(layer = {}) {
 
 The layer information available for each video source is provided periodically by the `layers` event as shown above. If you want to switch back to the automatic layer selection, you just need to send a [project](https://millicast.github.io/millicast-sdk/View.html#project) or [select](https://millicast.github.io/millicast-sdk/View.html#select) command without layer details.
 
-To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/client-sdks/web/sdk/index.mdx#broadcast-events) and then select the active layer using the following command:
+To force layer selection, [listen to the incoming layers in the layer broadcast event](/millicast/playback/players-sdks/web/sdk/index.mdx#broadcast-events) and then select the active layer using the following command:
 
 ```javascript
 millicastView.select({ encodingId: '1' });
@@ -148,7 +148,11 @@ let lowestLayer = event.data.medias[videoTransceiver.mid].layers.reduce((min, el
 viewer.project('sourceId2', [
   {
     media: 'video',
-    layer: { encodingId: lowestLayer.encodingId, spatialLayerId: lowestLayer.spatialLayerId, temporalLayerId: lowestLayer.temporalLayerId },
+    layer: {
+      encodingId: lowestLayer.encodingId,
+      spatialLayerId: lowestLayer.spatialLayerId,
+      temporalLayerId: lowestLayer.temporalLayerId,
+    },
   },
 ]);
 ```
@@ -236,7 +240,8 @@ viewer.project('uniqueSourceID', [
 The [addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) method on [Javascript SDK](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) provides the ability to add new tracks on demand on the viewer side. This method will perform a local renegotiation and create the [track](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) event with the added track and transceiver.
 
 ```javascript title="Dynamically adding a remote track on the viewer"
-// Add remote track and wait until the SDP O/A is performed and mid is assigned to the transceiver
+// Add remote track and wait until the SDP O/A is performed
+// and mid is assigned to the transceiver
 const transceiver = await viewer.addRemoteTrack('video', [new MediaStream()]);
 // Get mid for new created remote track
 const mediaId = transceiver.mid;
