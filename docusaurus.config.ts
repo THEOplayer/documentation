@@ -98,10 +98,10 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.optiview.dolby.com/',
+  url: 'https://optiview.dolby.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.DOCUSAURUS_BASE_URL || '/',
+  baseUrl: process.env.DOCUSAURUS_BASE_URL || '/docs/',
   trailingSlash: true,
   noIndex: !!process.env.DOCUSAURUS_NO_INDEX,
 
