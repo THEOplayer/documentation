@@ -138,7 +138,7 @@ private fun configureTHEOplayer(theoPlayer: Player) {
 }
 ```
 
-This will log important events like play, pause, and errors to the Android logcat, making it easier to identify issues during development. An exhaustive list of events can be found at our [API reference](https://docs.optiview.dolby.com/theoplayer/v9/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html).
+This will log important events like play, pause, and errors to the Android logcat, making it easier to identify issues during development. An exhaustive list of events can be found at our [API reference](pathname:///theoplayer/v9/api-reference/android/api/event/player/PlayerEventTypes.html).
 
 ## Troubleshooting
 
