@@ -147,4 +147,4 @@ This will log important events like play, pause, and errors to the Android logca
 
 ## More information
 
-- [Android Player SDK Reference](https://docs.optiview.dolby.com/theoplayer/v9/api-reference/android/index.html).
+- [Android Player SDK Reference](pathname:///theoplayer/v9/api-reference/android/).
