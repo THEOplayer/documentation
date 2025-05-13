@@ -9,7 +9,7 @@ To begin with the Dolby OptiView platform please review our guide for getting st
 
 ### Installing the THEOPlayer for Android
 
-1. Support for THEOLive comes out of the box with the THEOPlayer for Android. Please follow [this guide for installing the Player SDK](https://docs.optiview.dolby.com/theoplayer/getting-started/sdks/android/getting-started/) for Android development.
+1. Support for THEOLive comes out of the box with the THEOPlayer for Android. Please follow [this guide for installing the Player SDK](/theoplayer/getting-started/sdks/android/getting-started/) for Android development.
 
 2. Once the Player is installed, continue following the guide for setting up the player. Please note that THEOPlayer licenses can be found for streaming customers [here](theolive/getting-started.mdx#obtaining-a-player-license-for-theolive) in the THEOLive dashboard.
 
