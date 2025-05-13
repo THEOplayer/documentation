@@ -47,7 +47,7 @@ private func setLanguage(player: THEOplayer, language: String) {
 
 ##### Roku SDK
 
-In the following example we are iterating through all available text tracks. Once we found a track with a desired language, we simply set the mode to "showing". After that, we have to simply assign testTracks object to a proper THEOplayer attribute. This is all you have to do to make a desired text track visible. Of course, we can modify a visible text track during the video playback.
+In the following example we are iterating through all available text tracks. Once we found a track with a desired language, we simply set the mode to "showing". After that, we have to simply assign textTracks object to a proper THEOplayer attribute. This is all you have to do to make a desired text track visible. Of course, we can modify a visible text track during the video playback.
 
 ```brightscript
 

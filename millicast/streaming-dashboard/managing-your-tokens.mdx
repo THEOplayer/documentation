@@ -68,14 +68,14 @@ Having an expiration date can prevent old or exposed tokens from becoming a long
 
 You will also see an **Advanced tab** at the top of the token creation interface; in this tab, you can configure more advanced settings.
 
-- [Allowed Origins:](/millicast/distribution/access-control/token-security.md#allowed-origins) If specified, only the domains listed will be allowed in requests to [Director API](/millicast/api/director/director-publish.api.mdx). Wildcard subdomains are also allowed, such as _"\*.demo.com"_. When unspecified (empty), there are no domain restrictions.
-- [IP Filter Type:](/millicast/distribution/access-control/token-security.md#ip-filters)
+- [Allowed Origins:](/millicast/distribution/access-control/allowed-origins.md#allowed-origins) If specified, only the domains listed will be allowed in requests to [Director API](/millicast/api/director/director-publish.api.mdx). Wildcard subdomains are also allowed, such as _"\*.demo.com"_. When unspecified (empty), there are no domain restrictions.
+- [IP Filter Type:](/millicast/distribution/access-control/allowed-origins.md#ip-filters)
   - **Allowed IP Addresses:** Allows you to specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
   - **Bind IPs on usage:** If specified, Bind IPs on usage will bind the token to the first _X_ IP addresses used with a token in requests to [Director API](/millicast/api/publish-token-v-1-read-token.api.mdx), thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with the _AllowedIpAddresses_ option. Not currently supported with RTMP.
 - [Cluster region:](/millicast/distribution/multi-region-support/index.mdx) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If `Auto` is selected, the regional cluster will be selected based on the publisher's location.
 - [Geo-Blocking:](/millicast/distribution/access-control/geo-blocking.mdx) Enables blocking by location at a country level for this specific Token.
-- [Multisource:](/millicast/broadcast/multi-source-broadcasting.mdx) Enables streaming multiple feeds at once with one Publish token and Stream name combination, allowing for [Multi-view playback](/millicast/playback/multiview.md).
-- [Thumbnail previews:](/millicast/webhooks/thumbnail-webhooks.mdx) Enables previewing a thumbnail image of your video stream. Thumbnails are delivered via a webhook.
+- [Multisource:](/millicast/broadcast/multi-source-broadcasting.mdx) Enables streaming multiple feeds at once with one Publish token and Stream name combination, allowing for [Multi-view playback](/millicast/playback/multi-view.md).
+- [Thumbnail previews:](/millicast/webhooks/thumbnail.mdx) Enables previewing a thumbnail image of your video stream. Thumbnails are delivered via a webhook.
 
 After you have successfully created your token, it will be displayed in a scrollable list.
 
@@ -85,7 +85,7 @@ import TokenFirst from '../assets/img/token-first.png';
   <img src={TokenFirst} width="600" />
 </div>
 
-Once created, your Publish token can be used to broadcast in a variety of different ways using different [hardware](../broadcast/hardware-encoders.mdx) and [software](../broadcast/software-encoders.mdx) solutions. To learn more about how to broadcast with your Publish token, explore [the Broadcast guide](/millicast/broadcast/index.mdx).
+Once created, your Publish token can be used to broadcast in a variety of different ways using different [hardware](../broadcast/hardware-encoders/index.mdx) and [software](../broadcast/software-encoders/index.mdx) solutions. To learn more about how to broadcast with your Publish token, explore [the Broadcast guide](/millicast/broadcast/index.mdx).
 
 ## Managing and editing existing publish tokens
 
@@ -109,11 +109,11 @@ Once opened, you will see multiple tabs to explore.
 
 1. Token details - token identification, security, and overall feature capabilities
 2. Token streams - configure stream names that the token can publish
-3. Publishing - settings for configuring broadcast encoders such as [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [WebRTC](/millicast/broadcast/webrtc-whip.mdx) settings
+3. Publishing - settings for configuring broadcast encoders such as [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/srt.mdx), and [WebRTC](/millicast/broadcast/webrtc-and-whip.mdx) settings
 4. Distribution - configuration for distribution content such as [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) and [Re-streaming](/millicast/distribution/re-streaming.mdx)
-5. Playback - path and settings available with the hosted [Millicast Player](/millicast/playback/hosted-viewer.md)
+5. Playback - path and settings available with the hosted [Millicast Player](/millicast/playback/hosted-player/index.md)
 6. Recordings - media files that are captured from stream recordings
-7. API - publishing token, ids, and endpoints for use with [Client SDKs](/millicast/client-sdks/index.mdx)
+7. API - publishing token, ids, and endpoints for use with [Client SDKs](/millicast/playback/players-sdks/index.mdx)
 8. Multi-source - a convenient tool for setting up [multi-source](/millicast/broadcast/multi-source-broadcasting.mdx) contribution
 
 ### 1\. Token details
@@ -148,12 +148,12 @@ To delete a stream name, simply select it from the list and click the remove but
 
 The publishing tab includes all information relating to [broadcasting](/millicast/broadcast/index.mdx) a stream with the Publish token. This tab can be broken down into four sections:
 
-- [WHIP](/millicast/broadcast/webrtc-whip.mdx): The _WHIP endpoint_ and _Bearer token_ can be used to publish a WebRTC stream with WebRTC-compatible software and hardware.
-- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx): The _RTMP/s publish paths_ and _RTMP publish stream name_ can be used for publishing streams with RTMP-compatible software and hardware.
+- [WHIP](/millicast/broadcast/webrtc-and-whip.mdx): The _WHIP endpoint_ and _Bearer token_ can be used to publish a WebRTC stream with WebRTC-compatible software and hardware.
+- [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx): The _RTMP/s publish paths_ and _RTMP publish stream name_ can be used for publishing streams with RTMP-compatible software and hardware.
   - RTMP multi-bitrate can be enabled from this section. When enabled, the dashboard will create three RTMP publish stream names for **low** bitrate, **medium** bitrate, and **high** bitrate.
-- [SRT](/millicast/broadcast/using-srt.mdx): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.
+- [SRT](/millicast/broadcast/srt.mdx): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.
   - Passphrase encryption can be enabled from this section. When enabled, the dashboard will generate a passphrase for encrypting the SRT stream.
-- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/client-sdks/index.mdx) or compatible [software](../broadcast/software-encoders.mdx) and [hardware encoders](../broadcast/hardware-encoders.mdx).
+- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/playback/players-sdks/index.mdx) or compatible [software](../broadcast/software-encoders/index.mdx) and [hardware encoders](../broadcast/hardware-encoders/index.mdx).
 
 To learn more about publishing and broadcasting with Dolby.io, check out the [Broadcast](/millicast/broadcast/index.mdx) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
 
@@ -192,7 +192,7 @@ To learn more about recording, visit the [Recordings guide](/millicast/distribut
 
 ### 7\. API
 
-The API tab includes information needed to publish a stream with the [Client SDKs](/millicast/client-sdks/index.mdx) or from a [third-party software or hardware source](/millicast/broadcast/index.mdx). The tab includes details in a few sections:
+The API tab includes information needed to publish a stream with the [Client SDKs](/millicast/playback/players-sdks/index.mdx) or from a [third-party software or hardware source](/millicast/broadcast/index.mdx). The tab includes details in a few sections:
 
 - **Publish token**:
   - **Publishing token**: The Publishing token is a unique string that is required for authenticating a request to publish via the Dolbyio servers. This string should be protected and **if exposed, should be cycled immediately** to prevent unwanted broadcasts and charges.

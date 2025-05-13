@@ -9,10 +9,10 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 #### Features
 
 - Introducing SRT output with the re-stream feature. Now you will have the ability to have Millicast be the SRT Caller (push) and send SRT out just like you can already with RTMP.
-- Introducing Auto-Configuration for OBS Broadcaster. Now you can choose Dolby Millicast as a streaming provider in OBS and enable encoding Adaptive Bitrate (ABR) from OBS to achieve smooth playback on any device without incurring channel fees or using the Real-time Cloud Transcoder. Read more in our [OBS Enhanced Multitrack Video Guide](/millicast/software-encoders/obs/obs-enhanced-broadcasting-multitrack-video.mdx).
+- Introducing Auto-Configuration for OBS Broadcaster. Now you can choose Dolby Millicast as a streaming provider in OBS and enable encoding Adaptive Bitrate (ABR) from OBS to achieve smooth playback on any device without incurring channel fees or using the Real-time Cloud Transcoder. Read more in our [OBS Enhanced Multitrack Video Guide](/millicast/broadcast/software-encoders/obs/obs-enhanced-broadcasting-multitrack-video.mdx).
 - Introducing RTMP Enhanced V2 support! An encoder has always been able to send multiple video tracks over separate RTMP connections to deliver Adaptive Bitrate (ABR) to viewers, now this is possible with a single RTMP connection and multiple video tracks.
 - Introducing IPV6 support for playback. For viewers on Internet Service Providers (ISPs) that only provide IPV6 addresses, we have introduced support for IPV6. This is currently opt-in, please contact your account manager if you would like to test this feature. This will be available more broadly in a future release.
-- Added the ability to increase the minimum delay for RTMP publishing so that multiple video tracks can be manually timed for sync when an encoder delay exists between ABR layers. Refer to the `extraLatency` parameter in our [Publishing Parameters](/millicast/broadcast/broadcast-parameters.md) section.
+- Added the ability to increase the minimum delay for RTMP publishing so that multiple video tracks can be manually timed for sync when an encoder delay exists between ABR layers. Refer to the `extraLatency` parameter in our [Publishing Parameters](/millicast/broadcast/publishing-parameters.md) section.
 - Introducing High Availability Management. This feature allows for effective switching between primary and redundant stream(s) through reassignment of priority for specified streams. Stream priority can now be set on the Publish Token. Read more in the [High Availability Management](/millicast/broadcast/redundant-ingest/high-availability-management.md) guide.
 
 ## 2024-11-14
@@ -73,7 +73,7 @@ Improved capture timestamps in certain ingest cases.
 
 - The platform supports publishing multiple redundant feeds into more than one region to improve the reliability of broadcasting. The platform now supports a **priority** publish parameter that lets you specify the priority of each feed. This way, in the case the primary feed disconnects, viewers will automatically receive the available feed with the highest priority. For more information, see the [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx) document.
 
-- Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/using-webrtc-simulcast) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/index.mdx#publish-parameters) section of the [Broadcast](/millicast/broadcast/index.mdx) document.
+- Introduced the **videoTargetBitrate** publish parameter for defining the target bitrate of the streamed video content when using SRT or RTMP. The parameter helps the service determine what layer to send to viewers while using [Simulcast](/millicast/distribution/using-webrtc-simulcast) to deliver a more consistent viewer experience. For more information, see the [publish parameters](/millicast/broadcast/index.mdx#publish-parameters) section of the [Broadcast](/millicast/broadcast/index.mdx) document.
 
 ---
 
@@ -119,7 +119,7 @@ This "syndication" mechanism allows you to send the same stream to multiple coho
 
 By querying your aggregated viewer data with the [Analytics API](/millicast/analytics/index.md) you can determine how much bandwidth was consumed, how many viewers were watching for which provider, and a few other statistics.
 
-For more information, see the [Syndication](/millicast/syndication) article.
+For more information, see the [Syndication](/millicast/distribution/syndication) article.
 
 ---
 
@@ -131,8 +131,8 @@ Added support for ingesting SRT protocol. SRT has become the standard for replac
 
 For more information, see:
 
-- The [SRT](/millicast/broadcast/using-srt.mdx) article
-- The [OBS using SRT](/millicast/software-encoders/obs/index.mdx) article
+- The [SRT](/millicast/broadcast/srt.mdx) article
+- The [OBS using SRT](/millicast/broadcast/software-encoders/obs/index.mdx) article
 
 ---
 
@@ -177,4 +177,4 @@ Deployed new regional clusters that can be [specified by a stream or an account]
 
 ### Support for RTMP MBR
 
-Introduced the RTMP MBR support that allows customers to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information see, the [Simulcast](/millicast/using-webrtc-simulcast) document.
+Introduced the RTMP MBR support that allows customers to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information see, the [Simulcast](/millicast/distribution/using-webrtc-simulcast) document.

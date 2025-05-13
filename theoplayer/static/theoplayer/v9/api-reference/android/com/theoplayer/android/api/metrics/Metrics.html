@@ -351,7 +351,7 @@ public interface <span class="typeNameLabel"><a href=Metrics.html>Metrics</a></s
                                     <li class="blockList">
                                         <h4>getBufferedSegments</h4>
                                         <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() abstract <a href=BufferedSegments.html>BufferedSegments</a> <a href=Metrics.html#getBufferedSegments()>getBufferedSegments</a>()</pre>
-                                        <div class="block"><p>The total number of audio and video segments in the buffer. </p><ul><li>This value is currently available only for DASH. </li><li>For more details, see <a href=BufferedSegments.html>BufferedSegments</a></li></ul></div>
+                                        <div class="block"><p>The total number of audio and video segments in the buffer. </p><ul><li>This value is currently available only for <a href=../source/PlaybackPipeline.html#LEGACY>LEGACY</a>. </li><li>This value is currently available only for DASH. </li><li>For more details, see <a href=BufferedSegments.html>BufferedSegments</a></li></ul></div>
 
                                         <dl>
 
@@ -374,7 +374,7 @@ public interface <span class="typeNameLabel"><a href=Metrics.html>Metrics</a></s
                                     <li class="blockList">
                                         <h4>getCorruptedVideoFrames</h4>
                                         <pre class="methodSignature"> abstract long <a href=Metrics.html#getCorruptedVideoFrames()>getCorruptedVideoFrames</a>()</pre>
-                                        <div class="block"><p>The total number of corrupted video frames since the last source change.</p></div>
+                                        <div class="block"><p>The total number of corrupted video frames since the last source change. </p><ul><li>This value is currently available only for <a href=../source/PlaybackPipeline.html#LEGACY>LEGACY</a>. </li></ul></div>
 
                                         <dl>
 

@@ -14,6 +14,9 @@ import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
 import path from 'path';
 import fs from 'fs';
+import redirectsMillicast from './redirectsMillicast.json';
+import redirectsTHEOAds from './redirectsTHEOAds.json';
+import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 
 // THEOplayer license URL: /docs/theoplayer-license.txt
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
@@ -307,35 +310,13 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: [
-          {
-            from: '/theoplayer/getting-started/sdks/web/getting-started-extended',
-            to: '/theoplayer/getting-started/sdks/web/getting-started/',
-          },
-          {
-            from: '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui',
-            to: '/open-video-ui/web/getting-started',
-          },
-          {
-            from: '/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/',
-            to: '/theoplayer/how-to-guides/miscellaneous/vr/',
-          },
-          {
-            from: '/theoads/api/signaling/',
-            to: '/theoads/api/signaling/theoads-api/',
-          },
-          {
-            from: '/millicast/api',
-            to: '/millicast/api/millicast-api/',
-          },
-          {
-            from: '/millicast/api/director',
-            to: '/millicast/api/director/director-api/',
-          },
-        ],
+        redirects: [...redirectsMillicast, ...redirectsTHEOAds, ...redirectsTHEOPlayer],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
+          }
+          if (existingPath.startsWith('/theolive/playback/web/')) {
+            return [existingPath.replace('/theolive/playback/web/', '/theoplayer/how-to-guides/web/theolive/')];
           }
           return undefined;
         },
@@ -537,7 +518,7 @@ const config: Config = {
     },
     footer: {
       style: 'light',
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby</a>`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby Laboratories, Inc. All rights reserved.</a>`,
     },
     prism: {
       theme: prismThemes.oneLight,

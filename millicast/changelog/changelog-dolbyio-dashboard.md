@@ -102,7 +102,7 @@ With this dashboard update you can now find a new **Distribution** tab within th
 
 ### :new: View Metadata
 
-The [Hosted Player](/millicast/playback/hosted-viewer.md) now supports propagation of [metadata](/millicast/playback/frame-metadata.md) events to the application such as timecodes from SEI / AMF / PIC_TIMING. There is a query parameter `&metadata=true` that will enable the processing of received metadata and displays it to a rendered canvas. Any unregistered metadata is sent to the browser console.
+The [Hosted Player](/millicast/playback/hosted-player/index.md) now supports propagation of [metadata](/millicast/playback/frame-metadata.md) events to the application such as timecodes from SEI / AMF / PIC_TIMING. There is a query parameter `&metadata=true` that will enable the processing of received metadata and displays it to a rendered canvas. Any unregistered metadata is sent to the browser console.
 
 ### :new: Force Playout Delay
 

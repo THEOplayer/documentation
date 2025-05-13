@@ -1,6 +1,6 @@
 ---
-title: 'Securing Stream Playback'
-slug: /securing-stream-playback
+title: Securing Stream Playback
+slug: /playback/securing-stream-playback
 sidebar_position: 2
 ---
 
@@ -24,12 +24,12 @@ With your token in hand, proceed to [Viewing a Secured Stream](/millicast/playba
 
 There are **two** main ways you can use the Subscribe token:
 
-1. To view a stream via the [Dolby.io Hosted Viewer](/millicast/playback/hosted-viewer.md).
+1. To view a stream via the [Dolby.io Hosted Viewer](/millicast/playback/hosted-player/index.md).
 2. To view a stream via your own streaming app.
 
 ### Viewing a secured stream with the hosted viewer
 
-[Playing back with the Hosted Viewer](/millicast/playback/hosted-viewer.md) is a common way to test the Dolby.io platform. If you haven't already tested out the Hosted Viewer it is recommended you explore the [Hosted Viewer Playback guide](/millicast/playback/hosted-viewer.md).
+[Playing back with the Hosted Viewer](/millicast/playback/hosted-player/index.md) is a common way to test the Dolby.io platform. If you haven't already tested out the Hosted Viewer it is recommended you explore the [Hosted Viewer Playback guide](/millicast/playback/hosted-player/index.md).
 
 When an **unsecured** stream is live, you'll be able to view the broadcast at:
 
@@ -60,7 +60,7 @@ import Img3 from '../assets/img/25a57ae-image.png';
 </div>
 
 :::caution Subscribe token exposed in the URL
-For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/token-security.md#ip-filters), users can share the URL and by extention the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to acomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
+For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters), users can share the URL and by extention the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to acomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
 :::
 
 #### Viewing a secured stream with the embedded viewer
@@ -78,7 +78,7 @@ You can also embed the Dolby.io Hosted Viewer into your webpage as an `<iframe><
 
 ### Preventing stream sharing with subscribe tokens
 
-Whilst using the Hosted Viewer is a great option, you may have noticed the Subscribe token is exposed in the URL. For a truly secure playback experience, viewers should be served a Subscribe token that is unique to them and can't be shared. This is accomplished with the [Binds IP on Usage](/millicast/distribution/access-control/token-security.md#bind-ip-on-usage) feature, which binds the Subscribe token to the IP address of the first person who joins the stream with that specific Subscribe token.
+Whilst using the Hosted Viewer is a great option, you may have noticed the Subscribe token is exposed in the URL. For a truly secure playback experience, viewers should be served a Subscribe token that is unique to them and can't be shared. This is accomplished with the [Binds IP on Usage](/millicast/distribution/access-control/allowed-origins.md#bind-ip-on-usage) feature, which binds the Subscribe token to the IP address of the first person who joins the stream with that specific Subscribe token.
 
 **For example:**
 
@@ -86,7 +86,7 @@ Whilst using the Hosted Viewer is a great option, you may have noticed the Subsc
 > `https://viewer.millicast.com?streamId=DevAcc/WorldCup2023&token=fff04a5a1c02b2b8d48a9133e84619889588e26f`  
 > which she uses to join the stream.
 >
-> Because this token has [Binds IP on Usage](/millicast/distribution/access-control/token-security.md#bind-ip-on-usage) enabled and set to bind to the first IP address, her IP address is saved by the Dolby.io CDN. If Angelik were to then share the URL to Jayson, he would be unable to join the stream since his IP address doesn't match Angelik's.
+> Because this token has [Binds IP on Usage](/millicast/distribution/access-control/allowed-origins.md#bind-ip-on-usage) enabled and set to bind to the first IP address, her IP address is saved by the Dolby.io CDN. If Angelik were to then share the URL to Jayson, he would be unable to join the stream since his IP address doesn't match Angelik's.
 >
 > If Angelik were to leave the stream and return an hour later, she would still be able to join the stream because her IP address is associated with the token.
 

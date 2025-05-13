@@ -1,0 +1,362 @@
+[
+  {
+    "from": "/millicast/web-cameras/",
+    "to": "/millicast/capture/web-cameras/"
+  },
+  {
+    "from": "/millicast/production-cameras/",
+    "to": "/millicast/capture/production-cameras/"
+  },
+  {
+    "from": "/millicast/screensharing/",
+    "to": "/millicast/capture/screensharing/"
+  },
+  {
+    "from": "/millicast/360-cameras/",
+    "to": "/millicast/capture/360-vr-cameras"
+  },
+  {
+    "from": "/millicast/action-cameras/",
+    "to": "/millicast/capture/action-cameras/"
+  },
+  {
+    "from": "/millicast/live-streaming-from-drones-rtmp/",
+    "to": "/millicast/capture/live-streaming-from-drones/"
+  },
+  {
+    "from": "/millicast/webrtc-whip/",
+    "to": "/millicast/broadcast/webrtc-and-whip/"
+  },
+  {
+    "from": "/millicast/using-rtmp-and-rtmps/",
+    "to": "/millicast/broadcast/rtmp-and-rtmps/"
+  },
+  {
+    "from": "/millicast/rtsp/",
+    "to": "/millicast/broadcast/rtsp/"
+  },
+  {
+    "from": "/millicast/using-srt/",
+    "to": "/millicast/broadcast/srt/"
+  },
+  {
+    "from": "/millicast/using-ndi/",
+    "to": "/millicast/broadcast/ndi/"
+  },
+  {
+    "from": "/millicast/broadcast-parameters/",
+    "to": "/millicast/broadcast/publishing-parameters/"
+  },
+  {
+    "from": "/millicast/multi-source-broadcasting/",
+    "to": "/millicast/broadcast/multi-source-broadcasting/"
+  },
+  {
+    "from": "/millicast/redundant-ingest/",
+    "to": "/millicast/broadcast/redundant-ingest/"
+  },
+  {
+    "from": "/millicast/high-availability-management/",
+    "to": "/millicast/broadcast/redundant-ingest/high-availability-management/"
+  },
+  {
+    "from": "/millicast/using-native-sdk-ingest-raw-frames/",
+    "to": "/millicast/broadcast/using-native-sdk-ingest-raw-frames/"
+  },
+  {
+    "from": "/millicast/access-control/",
+    "to": "/millicast/distribution/access-control/"
+  },
+  {
+    "from": "/millicast/token-security/",
+    "to": "/millicast/distribution/access-control/allowed-origins/"
+  },
+  {
+    "from": "/millicast/geo-blocking/",
+    "to": "/millicast/distribution/access-control/geo-blocking/"
+  },
+  {
+    "from": "/millicast/cloud-transcoder/",
+    "to": "/millicast/distribution/cloud-transcoder/"
+  },
+  {
+    "from": "/millicast/drm/",
+    "to": "/millicast/distribution/drm/"
+  },
+  {
+    "from": "/millicast/multi-region-support/",
+    "to": "/millicast/distribution/multi-region-support/"
+  },
+  {
+    "from": "/millicast/geo-cascading/",
+    "to": "/millicast/distribution/multi-region-support/geo-cascading/"
+  },
+  {
+    "from": "/millicast/re-streaming/",
+    "to": "/millicast/distribution/re-streaming/"
+  },
+  {
+    "from": "/millicast/recordings/",
+    "to": "/millicast/distribution/stream-recordings/"
+  },
+  {
+    "from": "/millicast/how-to-get-media-assets/",
+    "to": "/millicast/distribution/stream-recordings/how-to-get-media-assets/"
+  },
+  {
+    "from": "/millicast/how-to-setup-media-storage/",
+    "to": "/millicast/distribution/stream-recordings/how-to-setup-media-storage/"
+  },
+  {
+    "from": "/millicast/live-clipping/",
+    "to": "/millicast/distribution/stream-recordings/live-clipping/"
+  },
+  {
+    "from": "/millicast/starting-recording/",
+    "to": "/millicast/distribution/stream-recordings/start-recording/"
+  },
+  {
+    "from": "/millicast/syndication/",
+    "to": "/millicast/distribution/syndication/"
+  },
+  {
+    "from": "/millicast/hosted-viewer/",
+    "to": "/millicast/playback/hosted-viewer/"
+  },
+  {
+    "from": "/millicast/securing-stream-playback/",
+    "to": "/millicast/playback/securing-stream-playback/"
+  },
+  {
+    "from": "/millicast/customize-your-player/",
+    "to": "/millicast/playback/hosted-player/customization/"
+  },
+  {
+    "from": "/millicast/viewer-events/",
+    "to": "/millicast/playback/players-sdks/viewer-events/"
+  },
+  {
+    "from": "/millicast/source-and-layer-selection/",
+    "to": "/millicast/playback/source-and-layer-selection/"
+  },
+  {
+    "from": "/millicast/multiview/",
+    "to": "/millicast/playback/multiview/"
+  },
+  {
+    "from": "/millicast/audio-multiplexing/",
+    "to": "/millicast/playback/audio-multiplexing/"
+  },
+  {
+    "from": "/millicast/audience-engagement/",
+    "to": "/millicast/playback/audience-engagement/"
+  },
+  {
+    "from": "/millicast/frame-metadata/",
+    "to": "/millicast/playback/frame-metadata/"
+  },
+  {
+    "from": "/millicast/client-analytics-and-monitoring/",
+    "to": "/millicast/playback/client-analytics/"
+  },
+  {
+    "from": "/millicast/stun-and-turn-service/",
+    "to": "/millicast/platform-requirements/stun-and-turn-service/"
+  },
+  {
+    "from": "/millicast/media-stats/",
+    "to": "/millicast/analytics-api/media-stats/"
+  },
+  {
+    "from": "/millicast/feeds-webhooks/",
+    "to": "/millicast/webhooks/feeds/"
+  },
+  {
+    "from": "/millicast/media-hooks/",
+    "to": "/millicast/webhooks/media/"
+  },
+  {
+    "from": "/millicast/thumbnail-webhooks/",
+    "to": "/millicast/webhooks/thumbnail/"
+  },
+  {
+    "from": "/millicast/transcoder-webhooks/",
+    "to": "/millicast/webhooks/transcoder/"
+  },
+  {
+    "from": "/millicast/viewerconnection-hooks/",
+    "to": "/millicast/webhooks/viewerconnection/"
+  },
+  {
+    "from": "/millicast/client-sdks/",
+    "to": "/millicast/playback/players-sdks/"
+  },
+  {
+    "from": "/millicast/web-player/",
+    "to": "/millicast/playback/players-sdks/web/player/"
+  },
+  {
+    "from": "/millicast/web-player-metadata/",
+    "to": "/millicast/playback/players-sdks/web/player/frame-metadata/"
+  },
+  {
+    "from": "/millicast/web-sdk/",
+    "to": "/millicast/playback/players-sdks/web/sdk/"
+  },
+  {
+    "from": "/millicast/sample-apps-react/",
+    "to": "/millicast/playback/players-sdks/web/samples/sample-apps-react/"
+  },
+  {
+    "from": "/millicast/android-player/",
+    "to": "/millicast/playback/players-sdks/android/player/"
+  },
+  {
+    "from": "/millicast/android/",
+    "to": "/millicast/playback/players-sdks/android/sdk/"
+  },
+  {
+    "from": "/millicast/android-getting-started-with-publishing/",
+    "to": "/millicast/playback/players-sdks/android/sdk/getting-started-with-publishing/"
+  },
+  {
+    "from": "/millicast/android-getting-started-with-subscribing/",
+    "to": "/millicast/playback/players-sdks/android/sdk/getting-started-with-subscribing/"
+  },
+  {
+    "from": "/millicast/android-how-to-add-picture-in-picture/",
+    "to": "/millicast/playback/players-sdks/android/sdk/how-to-add-picture-in-picture/"
+  },
+  {
+    "from": "/millicast/android-sdk-migration-guide/",
+    "to": "/millicast/playback/players-sdks/android/sdk/sdk-migration-guide/"
+  },
+  {
+    "from": "/millicast/sample-apps-android-viewer/",
+    "to": "/millicast/playback/players-sdks/android/samples/sample-apps-android-viewer/"
+  },
+  {
+    "from": "/millicast/ios-player/",
+    "to": "/millicast/playback/players-sdks/ios/player/"
+  },
+  {
+    "from": "/millicast/ios/",
+    "to": "/millicast/playback/players-sdks/ios/sdk/"
+  },
+  {
+    "from": "/millicast/ios-getting-started-with-publishing/",
+    "to": "/millicast/playback/players-sdks/ios/sdk/getting-started-with-publishing/"
+  },
+  {
+    "from": "/millicast/ios-getting-started-with-subscribing/",
+    "to": "/millicast/playback/players-sdks/ios/sdk/getting-started-with-subscribing/"
+  },
+  {
+    "from": "/millicast/ios-how-to-add-picture-in-picture/",
+    "to": "/millicast/playback/players-sdks/ios/sdk/how-to-add-picture-in-picture/"
+  },
+  {
+    "from": "/millicast/ios-sdk-migration-guide/",
+    "to": "/millicast/playback/players-sdks/ios/sdk/sdk-migration-guide/"
+  },
+  {
+    "from": "/millicast/sample-apps-ios-viewer/",
+    "to": "/millicast/playback/players-sdks/ios/samples/sample-apps-ios-viewer/"
+  },
+  {
+    "from": "/millicast/react-native/",
+    "to": "/millicast/playback/players-sdks/react-native/"
+  },
+  {
+    "from": "/millicast/flutter/",
+    "to": "/millicast/playback/players-sdks/flutter/"
+  },
+  {
+    "from": "/millicast/desktop/",
+    "to": "/millicast/playback/players-sdks/desktop/"
+  },
+  {
+    "from": "/millicast/desktop-building-test-applications/",
+    "to": "/millicast/playback/players-sdks/desktop/building-test-applications/"
+  },
+  {
+    "from": "/millicast/desktop-getting-started-with-publishing/",
+    "to": "/millicast/playback/players-sdks/desktop/getting-started-with-publishing/"
+  },
+  {
+    "from": "/millicast/desktop-getting-started-with-subscribing/",
+    "to": "/millicast/playback/players-sdks/desktop/getting-started-with-subscribing/"
+  },
+  {
+    "from": "/millicast/desktop-third-party-dependencies/",
+    "to": "/millicast/playback/players-sdks/desktop/third-party-dependencies/"
+  },
+  {
+    "from": "/millicast/datadog/",
+    "to": "/millicast/playback/client-analytics/datadog/"
+  },
+  {
+    "from": "/millicast/datazoom/",
+    "to": "/millicast/playback/client-analytics/datazoom/"
+  },
+  {
+    "from": "/millicast/broadcasting-teradek-vidiu/",
+    "to": "/millicast/hardware-encoders/teradek/"
+  },
+  {
+    "from": "/millicast/using-elgato-stream-deck-with-obs-studio-webrtc-version/",
+    "to": "/millicast/hardware-encoders/elgato/"
+  },
+  {
+    "from": "/millicast/using-haivision-kb-encoder/",
+    "to": "/millicast/hardware-encoders/haivision/"
+  },
+  {
+    "from": "/millicast/using-magewell-encoder/",
+    "to": "/millicast/hardware-encoders/magewell/"
+  },
+  {
+    "from": "/millicast/using-osprey-talon-whip-hardware-encoder/",
+    "to": "/millicast/hardware-encoders/osprey/"
+  },
+  {
+    "from": "/millicast/using-whip-with-flowcaster/",
+    "to": "/millicast/software-encoders/flowcaster/"
+  },
+  {
+    "from": "/millicast/using-ffmpeg/",
+    "to": "/millicast/software-encoders/ffmpeg/"
+  },
+  {
+    "from": "/millicast/using-whip-with-gstreamer/",
+    "to": "/millicast/software-encoders/gstreamer/"
+  },
+  {
+    "from": "/millicast/liveu-studio-using-whip/",
+    "to": "/millicast/software-encoders/liveu-studio/"
+  },
+  {
+    "from": "/millicast/using-obs/",
+    "to": "/millicast/software-encoders/obs/"
+  },
+  {
+    "from": "/millicast/obs-enhanced-broadcasting-multitrack-video/",
+    "to": "/millicast/software-encoders/obs/enhanced-broadcasting-multitrack-video/"
+  },
+  {
+    "from": "/millicast/softvelum-larix-broadcaster/",
+    "to": "/millicast/software-encoders/softvelum/"
+  },
+  {
+    "from": "/millicast/broadcasting-with-vmix/",
+    "to": "/millicast/software-encoders/vmix/"
+  },
+  {
+    "from": "/millicast/broadcasting-jitsi-or-zoom-meetings/",
+    "to": "/millicast/software-encoders/zoom/"
+  },
+  {
+    "from": "/millicast/amino/",
+    "to": "/millicast/playback/devices/amino/"
+  }
+]

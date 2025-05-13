@@ -10,9 +10,9 @@ Broadcasting content requires access to the public internet and encoding, which 
 
 The Dolby.io CDN can ingest streams encoded in a few main formats:
 
-- [WebRTC](/millicast/broadcast/webrtc-whip.mdx), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
-- [SRT](/millicast/broadcast/using-srt.mdx), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
-- [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
+- [WebRTC](/millicast/broadcast/webrtc-and-whip.mdx), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
+- [SRT](/millicast/broadcast/srt.mdx), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
+- [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
@@ -22,14 +22,14 @@ import { IconGrid, IconGridButton } from '@site/src/components/IconGrid';
 
 <IconGrid>
   <IconGridButton>[![](/img/play-circle.svg) Dashboard](/millicast/getting-started/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/web.svg) Web SDK](/millicast/client-sdks/web.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/apple.svg) iOS SDK](/millicast/client-sdks/ios/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/android.svg) Android SDK](/millicast/client-sdks/android/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/react.svg) React Native](/millicast/client-sdks/rn.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/apple.svg) Mac SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/electron.svg) Linux SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/flutter.svg) Flutter SDK](/millicast/client-sdks/flutter.mdx)</IconGridButton>
-  <IconGridButton>[![](/img/dotnet.svg) .NET SDK](/millicast/client-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/web.svg) Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/apple.svg) iOS SDK](/millicast/playback/players-sdks/ios/sdk/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/android.svg) Android SDK](/millicast/playback/players-sdks/android/sdk/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/react.svg) React Native](/millicast/playback/players-sdks/react-native/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/apple.svg) Mac SDK](/millicast/playback/players-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/electron.svg) Linux SDK](/millicast/playback/players-sdks/desktop/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/flutter.svg) Flutter SDK](/millicast/playback/players-sdks/flutter/index.mdx)</IconGridButton>
+  <IconGridButton>[![](/img/dotnet.svg) .NET SDK](/millicast/playback/players-sdks/desktop/index.mdx)</IconGridButton>
 </IconGrid>
 
 ## Encoding
@@ -48,22 +48,22 @@ A few terms to remember are:
 
 ### Encoders
 
-A [hardware encoder](./hardware-encoders.mdx) can help transform [capture](/millicast/capture/index.mdx) devices used in professional broadcast setups into a real-time streaming solution. The typical hardware encoder will have drivers that support interfaces like SDI, HDMI, etc., while optimizing for fast encoding to standards like WHIP or RTMP for streaming broadcast workflows. There are also [software encoders](./software-encoders.mdx) that can help with encoding by using compute resources.
+A [hardware encoder](./hardware-encoders/index.mdx) can help transform [capture](/millicast/capture/index.mdx) devices used in professional broadcast setups into a real-time streaming solution. The typical hardware encoder will have drivers that support interfaces like SDI, HDMI, etc., while optimizing for fast encoding to standards like WHIP or RTMP for streaming broadcast workflows. There are also [software encoders](./software-encoders/index.mdx) that can help with encoding by using compute resources.
 
 Here is a breakdown of some distinct encoders with their corresponding codec and protocol compatibility.
 
-| Encoder                                                                                   | Protocols                                      | Codecs                                              |
-| :---------------------------------------------------------------------------------------- | :--------------------------------------------- | :-------------------------------------------------- |
-| [Osprey](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.mdx) Talon | RTMP, RTMPS, RTSP, HLS, RTP, SRT, WebRTC, WHIP | H.264 (AVC), H.265 (HEVC), AAC                      |
-| [Teradek](/millicast/hardware-encoders/broadcasting-teradek-vidiu.mdx) Wave               | RTMP, RTMPS, RTSP, SRT, HLS, NDI               | H.264 (AVC), H.265 (HEVC), AAC                      |
-| [Videon](/millicast/hardware-encoders/videon.mdx) EdgeCaster                              | RTMP, RTMPs, SRT, HLS                          | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
-| [Haivision](/millicast/hardware-encoders/using-haivision-kb-encoder.mdx) KB Encoder       | RTMP, RTMPS, RTSP, HLS, SRT                    | H.264 (AVC), H.265 (HEVC), AAC                      |
-| [FlowCaster](/millicast/software-encoders/using-whip-with-flowcaster.mdx)                 | RTMP, RTMPs, WHIP, NDI, HLS, SRT, WebRTC       | H.264 (AVC), H.265 (HEVC)                           |
-| [FFmpeg](/millicast/software-encoders/using-ffmpeg.mdx)                                   | RTMP, RTMPs, RTSP, HLS                         | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
-| [GStreamer](/millicast/software-encoders/using-whip-with-gstreamer.mdx)                   | RTMP, RTMPs, RTSP, SRT, HLS, WHIP              | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
-| [OBS](/millicast/software-encoders/obs/index.mdx)                                         | WebRTC, RTMP, RTMPs, NDI, HLS, SRT, RTSP       | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
-| [LiveU](/millicast/software-encoders/liveu-studio-using-whip.mdx)                         | RTMP, RTMPs, HLS, RTSP, NDI                    | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
-| [vMix](/millicast/software-encoders/broadcasting-with-vmix.mdx)                           | RTMP, RTMPs, RTSP, NDI, SRT, WebRTC            | H.264 (AVC), H.265 (HEVC), ProRes, DNxHD/DNxHR, AAC |
+| Encoder                                                                      | Protocols                                      | Codecs                                              |
+| :--------------------------------------------------------------------------- | :--------------------------------------------- | :-------------------------------------------------- |
+| [Osprey](/millicast/broadcast/hardware-encoders/osprey.mdx) Talon            | RTMP, RTMPS, RTSP, HLS, RTP, SRT, WebRTC, WHIP | H.264 (AVC), H.265 (HEVC), AAC                      |
+| [Teradek](/millicast/broadcast/hardware-encoders/teradek.mdx) Wave           | RTMP, RTMPS, RTSP, SRT, HLS, NDI               | H.264 (AVC), H.265 (HEVC), AAC                      |
+| [Videon](/millicast/broadcast/hardware-encoders/videon.mdx) EdgeCaster       | RTMP, RTMPs, SRT, HLS                          | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
+| [Haivision](/millicast/broadcast/hardware-encoders/haivision.mdx) KB Encoder | RTMP, RTMPS, RTSP, HLS, SRT                    | H.264 (AVC), H.265 (HEVC), AAC                      |
+| [FlowCaster](/millicast/broadcast/software-encoders/flowcaster.mdx)          | RTMP, RTMPs, WHIP, NDI, HLS, SRT, WebRTC       | H.264 (AVC), H.265 (HEVC)                           |
+| [FFmpeg](/millicast/broadcast/software-encoders/ffmpeg.mdx)                  | RTMP, RTMPs, RTSP, HLS                         | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
+| [GStreamer](/millicast/broadcast/software-encoders/gstreamer.mdx)            | RTMP, RTMPs, RTSP, SRT, HLS, WHIP              | H.264 (AVC), H.265 (HEVC), VP9, AV1, AAC            |
+| [OBS](/millicast/broadcast/software-encoders/obs/index.mdx)                  | WebRTC, RTMP, RTMPs, NDI, HLS, SRT, RTSP       | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
+| [LiveU](/millicast/broadcast/software-encoders/liveu-studio.mdx)             | RTMP, RTMPs, HLS, RTSP, NDI                    | H.264 (AVC), H.265 (HEVC), VP9, AAC                 |
+| [vMix](/millicast/broadcast/software-encoders/vmix.mdx)                      | RTMP, RTMPs, RTSP, NDI, SRT, WebRTC            | H.264 (AVC), H.265 (HEVC), ProRes, DNxHD/DNxHR, AAC |
 
 ## Broadcast protocols
 
@@ -71,20 +71,20 @@ The line between how a video feed is [captured](/millicast/capture/index.mdx) an
 
 ### Encoding with WHIP
 
-The **WebRTC-HTTP Ingestion Protocol ([WHIP](/millicast/broadcast/webrtc-whip.mdx))** is an IETF standard developed to leverage the capabilities of WebRTC to ingest content into a streaming platform over HTTP. WHIP addresses problems with Real-time Streaming by removing translation layers during encoding.
+The **WebRTC-HTTP Ingestion Protocol ([WHIP](/millicast/broadcast/webrtc-and-whip.mdx))** is an IETF standard developed to leverage the capabilities of WebRTC to ingest content into a streaming platform over HTTP. WHIP addresses problems with Real-time Streaming by removing translation layers during encoding.
 
 WHIP acts like a signaler, handling the creation and deletion of endpoints needed during transport while maintaining the benefits of WebRTC, such as end-to-end encryption and ultra-low latency.
 
-[How-to use GStreamer with WHIP](/millicast/software-encoders/using-whip-with-gstreamer.mdx)<br/>
+[How-to use GStreamer with WHIP](/millicast/broadcast/software-encoders/gstreamer.mdx)<br/>
 **GStreamer** is a popular pipeline-based media framework that links together multiple nodes into a media processing workflow. Using WHIP, you can encode an output node to broadcast streaming content through Dolby.io.
 
-[How-to use FlowCaster with WHIP](/millicast/software-encoders/using-whip-with-flowcaster.mdx)<br/>
+[How-to use FlowCaster with WHIP](/millicast/broadcast/software-encoders/flowcaster.mdx)<br/>
 **FlowCaster** software provides a secure connection to provide IP streaming for editors and remote collaboration.
 
-[How-to use LiveU Studio with WHIP](/millicast/software-encoders/liveu-studio-using-whip.mdx)<br/>
+[How-to use LiveU Studio with WHIP](/millicast/broadcast/software-encoders/liveu-studio.mdx)<br/>
 **LiveU Studio** is a cloud-based SaaS solution for live video production. By supporting WHIP, media streams ingested from LiveU Studio and can be broadcast by Dolby.io.
 
-[How-to Setup an Osprey Talon for WHIP](/millicast/hardware-encoders/using-osprey-talon-whip-hardware-encoder.mdx)<br/>
+[How-to Setup an Osprey Talon for WHIP](/millicast/broadcast/hardware-encoders/osprey.mdx)<br/>
 The **Osprey Talon** provides exceptional quality with 4k resolution and a plug-and-play interface. There are some recommended settings to enable broadcasting to the Dolby.io platform by using this encoder in the pipeline.
 
 To learn how to create a stream from OBS using WebRTC, see the following video:
@@ -103,12 +103,12 @@ To learn how to create a stream from OBS using WebRTC, see the following video:
 
 ### Encoding with SRT
 
-The **Secure Reliable Transport ([SRT](/millicast/broadcast/using-srt.mdx))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance.
+The **Secure Reliable Transport ([SRT](/millicast/broadcast/srt.mdx))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance.
 
-[How-to setup a Dolby.io SRT Stream](/millicast/broadcast/using-srt.mdx)<br/>
+[How-to setup a Dolby.io SRT Stream](/millicast/broadcast/srt.mdx)<br/>
 The Dolby.io dashboard is used to configure the publish path and stream id for an incoming SRT media stream.
 
-[How-to use OBS with SRT](/millicast/software-encoders/obs/index.mdx)<br/>
+[How-to use OBS with SRT](/millicast/broadcast/software-encoders/obs/index.mdx)<br/>
 **Open Broadcaster Software (OBS)** is free and open source software is popular for cross-platform streaming. You will need to download a recent version of OBS that has been extended to provide SRT support.
 
 To learn how to create a stream from OBS using SRT, see the following video:
@@ -127,26 +127,26 @@ To learn how to create a stream from OBS using SRT, see the following video:
 
 ### RTMP Ingest
 
-**Real-time Messaging Protocol ([RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.
+**Real-time Messaging Protocol ([RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.
 
-[How-to setup a Dolby.io RTMP Stream](/millicast/broadcast/using-rtmp-and-rtmps.mdx)<br/>
+[How-to setup a Dolby.io RTMP Stream](/millicast/broadcast/rtmp-and-rtmps.mdx)<br/>
 The Dolby.io dashboard is used to configure the publish path and stream id for an incoming RTMP or RTMPs media stream.
 
-[How-to use FFmpeg with RTMP](/millicast/software-encoders/using-ffmpeg.mdx)<br/>
+[How-to use FFmpeg with RTMP](/millicast/broadcast/software-encoders/ffmpeg.mdx)<br/>
 **FFmpeg** is a free and open-source software project that is commonly used in legacy media workflows. It is a command-line tool that is capable of outputing streaming content via RTMP, RTMPS, and RTSP.
 
-[How-to use vMix with RTMP](/millicast/software-encoders/broadcasting-with-vmix.mdx)<br/>
+[How-to use vMix with RTMP](/millicast/broadcast/software-encoders/vmix.mdx)<br/>
 **vMix** is a software vision mixer available for Windows. It is useful for certain live video production workflows and supports RTMP output that can be broadcast by Dolby.io.
 
-[How-to Setup a Haivision KB encoder for RTMP](/millicast/hardware-encoders/using-haivision-kb-encoder.mdx)<br/>
+[How-to Setup a Haivision KB encoder for RTMP](/millicast/broadcast/hardware-encoders/haivision.mdx)<br/>
 The **Haivision KB** series of media encoders deliver high-quality video streaming with 4k resolution and a plug-and-play interface with a small rack-mountable form factor. There are some recommended encoding sessions to optimize this encoder in the broadcast pipeline.
 
-[How-to Setup a Teradek VidiU Go for RTMP](/millicast/hardware-encoders/broadcasting-teradek-vidiu.mdx)<br/>
+[How-to Setup a Teradek VidiU Go for RTMP](/millicast/broadcast/hardware-encoders/teradek.mdx)<br/>
 The **Teradek VidiU Go** is a hardware encoder is capable of broadcast quality video that can be sent over RTMP for compatibility with Dolby.io broadcast workflows.
 
 ### Publish parameters
 
-[Broadcast URL Parameters](/millicast/broadcast/broadcast-parameters.md)<br/>
+[Broadcast URL Parameters](/millicast/broadcast/publishing-parameters.md)<br/>
 Publish parameters allow modifying broadcasting preferences to customize streaming experience in more complex workflows with multiple sources.
 
 ## Begin broadcasting

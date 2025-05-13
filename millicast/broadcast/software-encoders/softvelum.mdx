@@ -1,0 +1,62 @@
+---
+title: Softvelum
+slug: /software-encoders/softvelum
+---
+
+# Softvelum
+
+**Softvelum** provides software solutions for streaming media on mobile devices such as iOS and Android. There is support for both [WHIP](/millicast/broadcast/webrtc-and-whip.mdx) and [SRT](/millicast/streaming-dashboard/index.mdx) workflows.
+
+- [Configure WHIP](#how-to-use-larix-broadcaster-with-whip)
+- [Configure SRT](#how-to-use-larix-broadcaster-with-srt)
+
+See the official [Softvelum](https://softvelum.com/larix/) site for documentation, installation instructions, and additional support.
+
+## Larix Broadcaster
+
+Download the Larix Broadcaster from the App Store for your mobile device ([iOS](https://softvelum.com/larix/ios/), [Android](https://softvelum.com/larix/android/)). It supports H.264 video and Opus audio.
+
+### How-to use Larix Broadcaster with WHIP
+
+As described in the [WHIP](/millicast/broadcast/webrtc-and-whip.mdx) guide you will need your **WHIP endpoint** and **Publishing token**.
+
+1. Open the Larix Broadcaster **Settings**.
+
+import Larix1 from '../../assets/img/larix-1.png';
+
+<div class="center-container">
+  <img src={Larix1} width="400" />
+</div>
+
+2. Select **Connections** and click the `+` button to add a _New WebRTC connection_.
+
+import Larix2 from '../../assets/img/larix-2.png';
+
+<div class="center-container">
+  <img src={Larix2} width="400" />
+</div>
+
+3. Given the connection a name and set the `URL` to your **WHIP endpoint**. You will also set `Authentication` to **WHIP** and for the `Token` use your **Publishing token** from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
+
+### How-to use Larix Broadcaster with SRT
+
+As described in the [SRT](/millicast/streaming-dashboard/index.mdx) guide you will need your **SRT publish path** and **SRT stream ID**.
+
+1. Open the Larix Broadcaster **Settings**. This is similar to the screenshot shown above under the WHIP setup instructinos.
+2. Select **Connections** and click the `+` button to add a new connection.
+3. Set the `URL` to the **SRT publish path**.
+4. Set the `streamid` to your **SRT stream ID**.
+
+import Larix3 from '../../assets/img/larix-3.png';
+
+<div class="center-container">
+  <img src={Larix3} width="400" />
+</div>
+
+Exit the settings and you can start the stream by pressing the record / start button on the broadcaster.
+
+import Larix4 from '../../assets/img/larix-4.png';
+
+<div class="center-container">
+  <img src={Larix4} width="600" />
+</div>
