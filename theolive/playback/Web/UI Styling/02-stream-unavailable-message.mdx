@@ -1,0 +1,101 @@
+---
+title: Customise the error message
+description: Customise the Dolby OptiView Live UI including buttons, poster image, logo overlays, and stream messaging.
+authors: [jedd.pestugia]
+---
+
+For a more detailed overview about player customisation, please see the [Player documentation](/theoplayer/getting-started/sdks/web/getting-started/).
+
+If no stream is currently available or token authentication fails, show a fallback message:
+
+
+## SDKs
+
+Error handling is available across platforms and SDKs.
+
+| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
+| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
+|   Yes   |     Yes     |   Yes   |   Yes    |      Yes       |      Yes       |
+
+## Intercepting errors
+
+Developers can programmatically interact with errors in two ways:
+
+1. Through an event listener, and attaching an event handler to this listener
+2. Through a getter, which holds data when an error has occurred.
+
+### Event Listener
+
+Developers can subscribe to events and attach a callback function.
+This callback function implements the error handling.
+
+This section describes how to use event handlers for the "top-level", "generic", "player" `error` event.
+This is the [`error`](pathname:///theoplayer/v9/api-reference/web/interfaces/PlayerEventMap.html#error) event which is dispatched through the `Player` interface.
+This event is fatal and prevents playback.
+(There are also `error` events, for example the [`error`](pathname:///theoplayer/v9/api-reference/web/interfaces/ChromecastEventMap.html#error) event which is dispatched through the `Chromecast` interface.
+You handle these `error` events in the same fashion.)
+
+#### Web
+
+```js
+player.addEventListener('error', function (errorEvent) {
+  console.log(errorEvent);
+});
+```
+
+#### Android
+
+```java
+theoPlayerView.getPlayer().addEventListener(PlayerEventTypes.ERROR, new EventListener<ErrorEvent>() {
+    @Override
+    public void handleEvent(ErrorEvent errorEvent) {
+        System.out.println(errorEvent.getErrorObject());
+    }
+});
+```
+
+#### iOS
+
+```swift
+let listener = self.theoplayer?.addEventListener(type: PlayerEventTypes.ERROR, listener: { error in print(error.error)})
+```
+
+### Getter
+
+Developers can query an occurred "generic player error" through the `errorObject` property of its related interface.
+For example, if the `error` event of the top-level `Player` interface would be dispatched for the Web SDK,
+then you can access the `errorObject` property of this interface.
+
+```js
+player.addEventListener('error', function (errorEvent) {
+  // console.log(errorEvent);
+  console.log(player.errorObject);
+});
+```
+
+Note that other types of errors are not available through this approach.
+
+---
+
+## Adding a Logo Overlay
+
+To display your logo in the corner of the player:
+
+```html
+<div class="player-wrapper">
+  <div id="theoplayer"></div>
+  <img src="/logo.png" class="logo-overlay" alt="Brand Logo" />
+</div>
+```
+
+```css
+.logo-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  z-index: 10;
+}
+```
+
+Ensure your parent container has `position: relative;` to align overlays properly.
