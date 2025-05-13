@@ -1,0 +1,28 @@
+---
+title: Adding a logo overlay
+description: Customise the Dolby OptiView Live UI including buttons, poster image, logo overlays, and stream messaging.
+authors: [jedd.pestugia]
+---
+
+For a more detailed overview about player customisation, please see the [Player documentation](/theoplayer/getting-started/sdks/web/getting-started/).
+
+To display your logo in the corner of the player:
+
+```html
+<div class="player-wrapper">
+  <div id="theoplayer"></div>
+  <img src="/logo.png" class="logo-overlay" alt="Brand Logo" />
+</div>
+```
+
+```css
+.logo-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  z-index: 10;
+}
+```
+
+Ensure your parent container has `position: relative;` to align overlays properly.

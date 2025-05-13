@@ -1,0 +1,29 @@
+---
+title: Adding a Poster image
+description: Customise the Dolby OptiView Live UI including buttons, poster image, logo overlays, and stream messaging.
+authors: [jedd.pestugia]
+---
+
+For a more detailed overview about player customisation, please see the [Player documentation](/theoplayer/getting-started/sdks/web/getting-started/).
+
+You can show a poster image before playback starts by setting the `poster` attribute on the player container or via JavaScript:
+
+```html
+<div id="theoplayer" poster="https://yourdomain.com/poster.jpg"></div>
+```
+
+Or dynamically:
+
+```js
+player.source = {
+  poster: 'https://yourdomain.com/poster.jpg',
+  sources: [
+    {
+      src: 'https://yourstream.com/hls/live.m3u8',
+      type: 'application/x-mpegURL',
+    },
+  ],
+};
+```
+
+---
