@@ -3,15 +3,15 @@ sidebar_position: 1
 sidebar_label: Getting Started with Native Android
 ---
 
-# Getting started with THEOLive streaming for Native Android
+# Getting started with THEOlive streaming for Native Android
 
 To begin with the Dolby OptiView platform please review our guide for getting started with [OptiView Streaming](../../getting-started.mdx).
 
-### Installing the THEOPlayer for Android
+### Installing the THEOplayer for Android
 
-1. Support for THEOLive comes out of the box with the THEOPlayer for Android. Please follow [this guide for installing the Player SDK](/theoplayer/getting-started/sdks/android/getting-started/) for Android development.
+1. Support for THEOlive comes out of the box with the THEOplayer for Android. Please follow [this guide for installing the Player SDK](/theoplayer/getting-started/sdks/android/getting-started/) for Android development.
 
-2. Once the Player is installed, continue following the guide for setting up the player. Please note that THEOPlayer licenses can be found for streaming customers [here](theolive/getting-started.mdx#obtaining-a-player-license-for-theolive) in the THEOLive dashboard.
+2. Once the Player is installed, continue following the guide for setting up the player. Please note that THEOplayer licenses can be found for streaming customers [here](theolive/getting-started.mdx#obtaining-a-player-license-for-theolive) in the THEOlive dashboard.
 
 3. With the player installed and set up with a valid license, you can now import the `THEOliveSource` object from the SDK:
 
@@ -19,7 +19,7 @@ To begin with the Dolby OptiView platform please review our guide for getting st
 import com.theoplayer.android.api.theolive.TheoLiveSource
 ```
 
-Rather than set your Player `source` as a manifest as you would for a HLS stream, you can now instead set it as a `THEOLiveSource` including your [channel alias](../../platform/multi-channel.md):
+Rather than set your Player `source` as a manifest as you would for a HLS stream, you can now instead set it as a `TheoLiveSource` including your [channel alias](../../platform/multi-channel.md):
 
 ```Kotlin
 theoPlayer.source = SourceDescription
@@ -33,11 +33,11 @@ theoPlayer.source = SourceDescription
 
 For testing, you can use this HESP demo source: `ar5c53uzm3si4h4zgkzrju44h` which the OptiView team [keeps live 24/7](https://demo.theo.live/?channel=ar5c53uzm3si4h4zgkzrju44h).
 
-From here you THEOLive source should be ready to playback in THEOPlayer.
+From here, your THEOlive source should be ready to playback in THEOplayer.
 
 ### Adding Player Controls
 
-At this stage in implementation, you should have a THEOLive stream playing within your Android app. The Player SDK provides functionality for controlling stream playback which can be extended to users in the form of controls or buttons. The platform also supports an [Open Video UI for the Android SDK](pathname:///open-video-ui/android/getting-started), which provides a component library for advanced styling and control of UI components.
+At this stage in implementation, you should have a THEOlive stream playing within your Android app. The Player SDK provides functionality for controlling stream playback which can be extended to users in the form of controls or buttons. The platform also supports an [Open Video UI for the Android SDK](pathname:///open-video-ui/android/getting-started), which provides a component library for advanced styling and control of UI components.
 
 #### 1. Adding Play/Pause Controls
 
