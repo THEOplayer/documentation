@@ -37,7 +37,7 @@ From here you THEOLive source should be ready to playback in THEOPlayer.
 
 ### Adding Player Controls
 
-At this stage in implementation, you should have a THEOLive stream playing within your Android app. The Player SDK provides functionality for controlling stream playback which can be extended to users in the form of controls or buttons.
+At this stage in implementation, you should have a THEOLive stream playing within your Android app. The Player SDK provides functionality for controlling stream playback which can be extended to users in the form of controls or buttons. The platform also supports an [Open Video UI for the Android SDK](pathname:///open-video-ui/android/getting-started), which provides a component library for advanced styling and control of UI components.
 
 #### 1. Adding Play/Pause Controls
 
@@ -120,6 +120,10 @@ findViewById<Button>(R.id.fullscreenButton).setOnClickListener {
     Log.i(TAG, "Fullscreen enabled")
 }
 ```
+
+:::tip
+Looking for a UI component library to style the player experience? We recommend using our [Open Video UI for Android](pathname:///open-video-ui/android/getting-started) for faster development and control over UI components in the player.
+:::
 
 ### Adding Logging
 
