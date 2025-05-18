@@ -5,7 +5,7 @@ sidebar_label: Further Feature Support in the Player
 
 # Further Feature Support
 
-The Dolby OptiView Streaming platform uses the [OptiView Player](https://docs.optiview.dolby.com/theoplayer/getting-started/sdks/web/getting-started/), for playback. Because this player operates on the client side, it may support additional features beyond basic streaming — such as UI controls, ad insertion, or advanced APIs.
+The Dolby OptiView Streaming platform uses the [OptiView Player](https://docs.optiview.dolby.com/theoplayer/getting-started/sdks/web/getting-started/) for playback. Because this player operates on the client side, it may support additional features beyond basic streaming — such as UI controls, ad insertion, or advanced APIs.
 
 However, not all features available in the OptiView Player have been tested or verified with HESP-based OptiView streams. Some capabilities may work as expected, while others might be incompatible or require additional integration.
 
