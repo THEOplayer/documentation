@@ -65,8 +65,7 @@
 }
 
 .hero__title {
-  display: flex;
-  justify-content: center;
+  font-size: clamp(2rem, 10vw, 3rem);
 }
 
 .hero--primary,
