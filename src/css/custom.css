@@ -64,6 +64,11 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.hero__title {
+  display: flex;
+  justify-content: center;
+}
+
 .hero--primary,
 [data-theme='dark'] .hero--primary {
   --ifm-hero-background-color: #000;
