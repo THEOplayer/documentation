@@ -4,40 +4,52 @@ sidebar_position: 1
 
 # Authorization
 
-Making secure calls to our REST API requires authentication and authorization. THEOlive makes use of token-secret pairs to authorize requests.
+To make secure calls to the THEOlive REST API, both authentication and authorization are required. THEOlive uses token–secret pairs to authorize API requests and ensure secure access.
 
 ## 1. Getting a token-secret pair
 
-To generate a token-secret pair, you should be registered for an account at on our [management console](https://console.theo.live/). Under the section "Tokens", click on the "Generate Token" button, and enter a name before clicking "Generate".
+To generate a token–secret pair, you must first have an account on the [THEOlive management console](https://console.theo.live/).
+
+1. Navigate to the _Developers section_ and click on "Tokens".
+2. Click the "Generate Token" button.
+3. Enter a name for your token.
+4. Click "Generate" to create the token–secret pair.
 
 ![](../assets/img/c0aca77-1.-THEOlive-console-generate-token.PNG)
 
-This will give a pop-up which shows your token "key" and the corresponding secret.
+This will open a pop-up displaying your token "key" and its corresponding secret.
 
 ![](../assets/img/bb9b4a6-2.-THEOlive-console-generated-token-and-secret.PNG)
 
 :::warning[Please store the secret]
 
-Make sure to store the secret somewhere, as this will be shown to you only once, and THEOlive only stores a hash of the secret, so it cannot be recovered afterward.
+Make sure to securely store the secret, as it will only be shown once. THEOlive stores a hashed version of the secret, meaning it cannot be recovered afterward.
 
 :::
 
-Once you "Close" the pop-up window, the new token will be visible in your list of tokens.
+Once you close the pop-up window, the new token will be visible in your list of active tokens.
 
 ![](../assets/img/5361242-3.-THEOlive-console-token-list.PNG)
 
-In case you forgot your secret, or the secret got exposed, you can easily regenerate a pair at all times.
+If you forget your secret or if it gets exposed, you can easily regenerate a new token–secret pair at any time.
+
+To revoke a token, click the arrow icon under the "Actions" column and the token will be moved to the list of revoked tokens after confirmation.
 
 ## 2. Using the token-secret pair with Basic Authentication
 
-THEOlive makes use of Basic Authentication when making requests to the API. In the 'Authorization' header, make sure to pass your token-secret pair (encoded with base64), prepended with the word 'Basic'.
+THEOlive uses Basic Authentication for API requests. To authenticate, include your token-secret pair (base64-encoded) in the 'Authorization' header, prepended with the word 'Basic'.
 
-For example, assume the token has value `my-token` and the secret has value `my-secret`: 1. Combine them like this: `my-token:my-secret`. 2. Encode this value using base64: `bXktdG9rZW46bXktc2VjcmV0` 3. Pass the full Authorization header (with `Basic` included) in your REST calls: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
+Here’s an example of how to set up the header:
 
-So to summarize, the final header would be:
+1. Combine your token and secret in the format `token:secret`.
+   Example: `my-token:my-secret`
 
-```text
-Authorization: Basic bXktdG9rZW46bXktc2VjcmV0
-```
+2. Base64 encode the combined value.
+   Example: `bXktdG9rZW46bXktc2VjcmV0`
 
-You can now make authenticated requests to our THEOlive API.
+3. Include the encoded string in the Authorization header, prefixed with the word Basic.
+   Example header: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
+
+4. The final Authorization header should look like this: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
+
+You’re now ready to make authenticated requests to the THEOlive API.
