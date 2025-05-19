@@ -6,13 +6,16 @@ sidebar_position: 7
 
 ## Easily monitor and analyze viewer behavior of your live stream
 
-Interested to know how many viewers are watching your live stream at any moment in time, and where they are located? Do you know when additional viewers have joined the live stream and when they have left? These are just a few of the viewer insights which will be interesting to analyze, to see how you can optimize your next live stream.
+Curious about who's watching your live stream in real time—and where they're located? Want to track when viewers join or leave your stream? These are just a few of the valuable viewer insights you can access to better understand audience behavior and optimize future streams.THEOlive provides detailed viewer insights for every user.
 
-Viewer insights are made available for every THEOlive user. This guide describes which viewer insights are available for your THEOlive channel, and where to find them.
+This guide explains the types of viewer insights available for your THEOlive channel and shows you where to find them in the platform.
 
 ## How to access viewer insights
 
-Viewer insights are available for each channel, and can be accessed on your channel page under _Details_ by clicking _Viewer Insights_. The below picture illustrates where to find this. Each channel has its dedicated viewer insights page, so when running multiple channels simultaneously (including failover channels, if any), you'll have to repeat this step for every channel.
+Viewer insights are available for each channel and can be accessed from your channel page.
+To view them, go to the _Details_ tab and click on _Viewer Insights_. The screenshot below highlights where to find this option.
+
+Each channel has its own dedicated viewer insights page. If you're running multiple channels at the same time (including any failover channels), you'll need to repeat this process for each one individually.
 
 ![](../assets/img/e409065-where-insights3.PNG 'insights location')
 
@@ -20,34 +23,54 @@ Viewer insights are available for each channel, and can be accessed on your chan
 
 The viewer insights page of your channel includes:
 
+- Main channel information
+- Viewer sessions
+- Viewer latency
+- Viewer locations
+- Top browser and operating systems
+
+:::warning[Must use THEOlive in THEOplayer to recieve viewer insights]
+
+Viewer insights will only work if you are using THEOlive inside a THEOplayer. Please refer to [this guide](../playback/web/00-getting-started.mdx) for implementation details.
+
+:::
+
 ### Main channel information
 
-The first section contains information such as the **channel ID** and **name** as well as its **status**. This way, you can make sure that you're consulting the right viewer insights at any moment in time and whether or not your channel is live.
+The top section displays key information about your channel, including the **channel ID**, channel **name**, and current **status**. This helps you confirm that you're viewing the correct channel data and whether the stream is currently live.
 
-The last field in this section allows you to select the **period** for the viewer insights graphs. You can select different periods, from _Last hour_ to the _Last 30 days_. What you see in the following sections is determined by the value you select here.
+At the bottom of this section, you’ll find a selector to choose the **period** for the viewer insights graphs. You can choose from several time periods—ranging from _Last hour_ to _Last 30 days_. The data shown in the sections below will adjust based on the selected time range.
 
 ![](../assets/img/5513864-1.viewer_insights.PNG 'viewer insights')
 
 ### Viewer sessions
 
-This graph shows how many concurrent viewer sessions are active within the selected period. In addition, it also shows the active session right now, so that you know at any moment in time how many viewers are watching your live stream.
+This graph displays the number of concurrent viewer sessions during the selected time period. It also highlights the current number of active sessions, giving you real-time insight into how many viewers are watching your live stream at any given moment.
 
 ![](../assets/img/7918a6d-viewer-panel.png 'viewer panel')
 
 ### Viewer latency
 
-When interactivity is key, you want to make sure that you're live streaming at ultra-low latency. The next graph shows the latency your viewers are experiencing for the selected period. This is defined as the percentage of viewers who experienced a specific (median) latency. The graph below shows for example a typical latency between 550ms and 950ms and the overall median latency was 834ms.
+When interactivity matters, ultra-low latency is crucial.
+
+The next graph displays the viewer latency over the selected time period, showing the percentage of viewers who experienced a specific median latency value. For example, the graph may indicate that most viewers had a latency between 550ms and 950ms, with an overall median latency of 834ms. This helps you assess how closely your stream approaches real-time delivery.
 
 ![](../assets/img/e631989-latency-panel2.png 'latency panel')
 
 ### Viewer locations
 
-Curious to see where your viewers are located? The next table shows where viewers were connecting from, and how many connections were established for each reported city/place. You can sort the data in this chart by increasing or decreasing value for each column, and select how many rows per page are shown.
+Want to know where your viewers are tuning in from? The next table displays the geographic distribution of your viewers, showing the cities or locations they connected from and the number of connections per location.
+
+You can sort the table by any column (in ascending or descending order) and adjust the number of rows displayed per page to better explore the data.
 
 ![](../assets/img/71ca1fd-platform-panel1.png 'platform panel')
 
 ### Top browser and operating systems
 
-Are your viewers using mobile phones, or do they typically use a desktop, or other platform? And which operating system are they using? These are just a few of things you can find in the last table on your _viewer insights_ page. In this section, the viewer count is reported by browser, browser version, OS and OS version. You can sort the data in this chart by increasing or decreasing value for Browser, OS and Amount of sessions as well as select how many rows per page are shown.
+Curious about how your viewers are watching your stream—on mobile, desktop, or other platforms?
+
+The final table on the Viewer Insights page breaks down viewership by browser, browser version, operating system, and OS version. This helps you understand what devices and environments your audience is using.
+
+You can sort the table by browser, operating system, or session count (ascending or descending), and adjust the number of rows displayed per page to suit your needs.
 
 ![](../assets/img/230b3c5-platform-panel2.png 'platform panel')
