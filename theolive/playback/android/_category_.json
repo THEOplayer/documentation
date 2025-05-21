@@ -1,4 +1,7 @@
 {
   "label": "Android",
-  "position": 2
+  "position": 2,
+  "customProps": {
+    "icon": "android"
+  }
 }

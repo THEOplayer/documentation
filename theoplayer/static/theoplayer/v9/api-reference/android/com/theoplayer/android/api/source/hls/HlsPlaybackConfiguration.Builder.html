@@ -114,7 +114,7 @@ var pathtoroot = "../../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builder.html>HlsPlaybackConfiguration.Builder</a></span>
+public final class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builder.html>HlsPlaybackConfiguration.Builder</a></span>
 
                     </pre>
                     <div class="block"><p>The builder for the HLS playback configuration.</p></div>
@@ -199,7 +199,7 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builde
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
                                                         href="#HlsPlaybackConfiguration.Builder()">HlsPlaybackConfiguration.Builder</a></span>()</code></th>
-                                                <td class="colLast">Creates a builder for the HLS playback configuration.</td>
+                                                <td class="colLast"></td>
                                             </tr>
                                         
 
@@ -252,15 +252,15 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builde
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=HlsPlaybackConfiguration.Builder.html>HlsPlaybackConfiguration.Builder</a></code>
+                                            <td class="colFirst"><code>final <a href=HlsPlaybackConfiguration.Builder.html>HlsPlaybackConfiguration.Builder</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.Builder.html#delaySubtitlePreload(boolean)>delaySubtitlePreload</a>(boolean delaySubtitlePreload) </code>
+                                            <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.Builder.html#delaySubtitlePreload(java.lang.Boolean)>delaySubtitlePreload</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> delaySubtitlePreload) </code>
                                             </th>
                                             <td class="colLast">Flag for delaying preloading of subtitles until after video/audio for HLS streams, intended to be used for MediaTailor streams.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code><a href=HlsPlaybackConfiguration.html>HlsPlaybackConfiguration</a></code>
+                                            <td class="colFirst"><code>final <a href=HlsPlaybackConfiguration.html>HlsPlaybackConfiguration</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=HlsPlaybackConfiguration.Builder.html#build()>build</a>() </code>
                                             </th>
@@ -303,7 +303,7 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builde
                                     <li class="blockList">
                                         <h4>HlsPlaybackConfiguration.Builder</h4>
                                         <pre>HlsPlaybackConfiguration.Builder()</pre>
-                                        <div class="block">Creates a builder for the HLS playback configuration.</div>
+                                        <div class="block"></div>
                                         
                                     </li>
                                 </ul>
@@ -321,7 +321,7 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builde
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="delaySubtitlePreload(boolean)">
+                                <a id="delaySubtitlePreload(java.lang.Boolean)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -329,8 +329,8 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builde
                                           >
                                     <li class="blockList">
                                         <h4>delaySubtitlePreload</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=HlsPlaybackConfiguration.Builder.html>HlsPlaybackConfiguration.Builder</a> <a href=HlsPlaybackConfiguration.Builder.html#delaySubtitlePreload(boolean)>delaySubtitlePreload</a>(boolean delaySubtitlePreload)</pre>
-                                        <div class="block"><p>Flag for delaying preloading of subtitles until after video/audio for HLS streams, intended to be used for MediaTailor streams. </p><p> A bug on the MediaTailor server side is currently causing them to return manifests without ads if the subtitle request is handled before video/audio. Enabling this flag will cause the player to delay starting subtitle loading until after video/audio manifests have successfully been requested, in order to work around the issue.</p></div>
+                                        <pre class="methodSignature"> final <a href=HlsPlaybackConfiguration.Builder.html>HlsPlaybackConfiguration.Builder</a> <a href=HlsPlaybackConfiguration.Builder.html#delaySubtitlePreload(java.lang.Boolean)>delaySubtitlePreload</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> delaySubtitlePreload)</pre>
+                                        <div class="block"><p>Flag for delaying preloading of subtitles until after video/audio for HLS streams, intended to be used for MediaTailor streams.</p><p>A bug on the MediaTailor server side is currently causing them to return manifests without ads if the subtitle request is handled before video/audio. Enabling this flag will cause the player to delay starting subtitle loading until after video/audio manifests have successfully been requested, in order to work around the issue.</p></div>
 
                                         <dl>
 
@@ -352,7 +352,7 @@ public class <span class="typeNameLabel"><a href=HlsPlaybackConfiguration.Builde
                                           >
                                     <li class="blockList">
                                         <h4>build</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=HlsPlaybackConfiguration.html>HlsPlaybackConfiguration</a> <a href=HlsPlaybackConfiguration.Builder.html#build()>build</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=HlsPlaybackConfiguration.html>HlsPlaybackConfiguration</a> <a href=HlsPlaybackConfiguration.Builder.html#build()>build</a>()</pre>
                                         <div class="block"><p>Builds the HLS playback configuration.</p></div>
 
                                         <dl>
