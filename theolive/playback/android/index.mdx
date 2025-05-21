@@ -1,9 +1,8 @@
 ---
-sidebar_position: 1
-sidebar_label: Getting Started with Native Android
+title: Android
 ---
 
-# Getting started with THEOlive streaming for Native Android
+# Getting started with THEOlive on Android
 
 To begin with the Dolby OptiView platform please review our guide for getting started with [OptiView Streaming](../../getting-started.mdx).
 
@@ -23,12 +22,12 @@ Rather than set your Player `source` as a manifest as you would for a HLS stream
 
 ```Kotlin
 theoPlayer.source = SourceDescription
-            .Builder(
-                TheoLiveSource(
-                    src = "YOUR_THEOLIVE_CHANNEL_ALIAS"
-                )
-            )
-            .build()
+    .Builder(
+        TheoLiveSource(
+            src = "YOUR_THEOLIVE_CHANNEL_ALIAS"
+        )
+    )
+    .build()
 ```
 
 For testing, you can use this HESP demo source: `ar5c53uzm3si4h4zgkzrju44h` which the OptiView team [keeps live 24/7](https://demo.theo.live/?channel=ar5c53uzm3si4h4zgkzrju44h).

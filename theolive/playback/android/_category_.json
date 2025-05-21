@@ -1,4 +1,8 @@
 {
   "label": "Android",
-  "position": 2
+  "description": "Start with THEOlive on the Android platform.",
+  "position": 2,
+  "customProps": {
+    "icon": "android"
+  }
 }

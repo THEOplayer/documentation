@@ -1,7 +1,8 @@
 {
   "label": "Web",
+  "description": "Start with THEOlive on web with the JavaScript player.",
   "position": 1,
   "customProps": {
-    "icon": "🚀"
+    "icon": "web"
   }
 }

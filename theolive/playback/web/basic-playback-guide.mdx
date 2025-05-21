@@ -1,7 +1,11 @@
+---
+title: Basic Playback Guide
+sidebar_position: 2
+---
+
 # Basic Playback Guide
 
-After following our [Getting Started on Web guide](./00-getting-started.mdx) or the [Player Setup](#player-setup) section below, you will be ready to programmatically perform common playback actions. These include increasing/decreasing
-the volume, playing/pausing the stream, enabling full screen, and selecting quality layers.
+After following our [Getting Started on Web guide](./index.mdx) or the [Player Setup](#player-setup) section below, you will be ready to programmatically perform common playback actions. These include increasing/decreasing the volume, playing/pausing the stream, enabling full screen, and selecting quality layers.
 
 ## Player Setup
 
@@ -56,10 +60,10 @@ Before doing so, check that the player supports other presentation modes (beside
 
 Both the `requestMode` and `supportsMode` methods require a [`PresentationMode`](pathname:///theoplayer/v9/api-reference/web/types/PresentationMode.html) parameter that can accept the following arguments:
 
-- `'inline'`: The player is shown in its original location on the page. (default presentation mode)
-- `'fullscreen'`: The player fills the entire screen.
-- `'picture-in-picture'`: The player is shown on top of the page (see PiPConfiguration for more options).
-- `'native-picture-in-picture'`: (Experimental) The player requests out-of-app picture-in-picture mode. Not supported on Firefox.
+- `inline`: The player is shown in its original location on the page. (default presentation mode)
+- `fullscreen`: The player fills the entire screen.
+- `picture-in-picture`: The player is shown on top of the page (see PiPConfiguration for more options).
+- `native-picture-in-picture`: (Experimental) The player requests out-of-app picture-in-picture mode. Not supported on Firefox.
 
 Check if fullscreen is supported with the following code:
 

@@ -4,10 +4,10 @@ Geo-blocking allows you to block content in certain countries ("blacklisting"), 
 
 ## How it works
 
-You can enable geo-blocking on the main channel by [updating](https://developers.theo.live/reference/update-channel) the `publicationConfig` object of a channel. There are two` mode`s available:
+You can enable geo-blocking on the main channel by [updating](https://developers.theo.live/reference/update-channel) the `publicationConfig` object of a channel. There are two `mode`s available:
 
-- `"whitelist"`: used by default when no `mode` is passed. This will only make the content (your stream) available in the countries that have been passed in the `countries` property. Other countries won't have access to your stream.
-- `"blacklist"`: will bock the content in the countries that have been passed, and allow it in all other countries.
+- `whitelist`: used by default when no `mode` is passed. This will only make the content (your stream) available in the countries that have been passed in the `countries` property. Other countries won't have access to your stream.
+- `blacklist`: will bock the content in the countries that have been passed, and allow it in all other countries.
 
 For example: if you want to enable geo-blocking and restrict the viewers to only Belgium and Germany, you have to pass the following request. **Note that countries should be passed in [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).**
 
