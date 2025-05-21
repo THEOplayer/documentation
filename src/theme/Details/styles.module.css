@@ -1,7 +1,8 @@
 .details {
   --docusaurus-details-summary-arrow-size: 0.38rem;
   --docusaurus-details-decoration-color: var(--ifm-alert-border-color, grey);
-  --docusaurus-details-transition: transform var(--ifm-transition-fast, 200ms) ease;
+  --docusaurus-details-transition-duration: var(--ifm-transition-fast, 200ms);
+  --docusaurus-details-transition: transform var(--docusaurus-details-transition-duration) ease;
   margin: 0 0 var(--ifm-spacing-vertical);
   border: 1px solid var(--ifm-alert-border-color);
 }
@@ -52,4 +53,26 @@
 
 .details > summary > p:last-child {
   margin-bottom: 0;
+}
+
+/* https://nerdy.dev/open-and-close-transitions-for-the-details-element */
+@media (prefers-reduced-motion: no-preference) {
+  .details {
+    interpolate-size: allow-keywords;
+  }
+}
+
+.details::details-content {
+  opacity: 0;
+  height: 0;
+  overflow-y: clip;
+  transition:
+    content-visibility var(--docusaurus-details-transition-duration) allow-discrete,
+    opacity var(--docusaurus-details-transition-duration),
+    height var(--docusaurus-details-transition-duration);
+}
+
+.details[open]::details-content {
+  opacity: 1;
+  height: auto;
 }
