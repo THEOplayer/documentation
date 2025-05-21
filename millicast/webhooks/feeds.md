@@ -32,6 +32,8 @@ Optionally the webhook may include:
 
 - **ended** is an epoch time for when the publishing feed was ended (only included when the stream has ended).
 - **priority** is a numeric value identifying the priority of an ingest when using [redundant streams](/millicast/broadcast/redundant-ingest/index.mdx).
+- **sourceId** is a string identifying the source of an ingest when using [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting/index.mdx).
+- **simulcastId** is a string identifying the simulcast source of an ingest when using [multi-bitrate broadcast contribution](/millicast/broadcast/multi-source-broadcasting/index.mdx).
 
 ## Examples
 
