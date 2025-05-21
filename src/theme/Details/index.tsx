@@ -1,6 +1,5 @@
 import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
-import { Details as DetailsGeneric } from '@docusaurus/theme-common/Details';
 import type { Props } from '@theme/Details';
 
 import styles from './styles.module.css';
@@ -9,6 +8,13 @@ import styles from './styles.module.css';
 // alert classes?
 const InfimaClasses = 'alert alert--info';
 
-export default function Details({ ...props }: Props): ReactNode {
-  return <DetailsGeneric {...props} className={clsx(InfimaClasses, styles.details, props.className)} />;
+export default function Details({ summary, className, children, ...props }: Props): ReactNode {
+  const summaryElement = React.isValidElement(summary) ? summary : <summary>{summary ?? 'Details'}</summary>;
+
+  return (
+    <details {...props} className={clsx(InfimaClasses, styles.details, className)}>
+      {summaryElement}
+      <div className={styles.collapsibleContent}>{children}</div>
+    </details>
+  );
 }
