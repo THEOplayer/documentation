@@ -114,7 +114,7 @@ var pathtoroot = "../../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>HespPlaybackConfiguration</a></span>
+public final class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>HespPlaybackConfiguration</a></span>
 
                     </pre>
                     <div class="block"><p>The configuration for controlling playback of an HESP stream.</p></div>
@@ -150,7 +150,7 @@ public class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public class</code></td>
+                                            <td class="colFirst"><code>public final class</code></td>
                                             <th class="colSecond" scope="row"><code><a href="HespPlaybackConfiguration.Builder.html">HespPlaybackConfiguration.Builder</a></span></code>
                                             </th>
                                             <td class="colLast"><p>The builder for the HESP playback configuration.</p></td>
@@ -180,7 +180,7 @@ public class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
                                             <th class="colSecond" scope="row"><code><a href=HespPlaybackConfiguration.html#customConfiguration>customConfiguration</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -208,6 +208,12 @@ public class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>
                                             <th class="colLast" scope="col">Description</th>
                                         </tr>
 
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#HespPlaybackConfiguration(java.util.Map)">HespPlaybackConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; customConfiguration)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
                                         
 
                                         </tbody>
@@ -259,27 +265,11 @@ public class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=HespPlaybackConfiguration.html#getCustomConfiguration()>getCustomConfiguration</a>() </code>
                                             </th>
-                                            <td class="colLast">Returns the custom configuration.</td>
-                                        </tr>
-                                        
-                                        <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>boolean</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=HespPlaybackConfiguration.html#equals(Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> o) </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>int</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=HespPlaybackConfiguration.html#hashCode()>hashCode</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">The custom configuration.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -313,6 +303,16 @@ public class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
+                                <a name="HespPlaybackConfiguration(java.util.Map)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>HespPlaybackConfiguration</h4>
+                                        <pre>HespPlaybackConfiguration(<a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; customConfiguration)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
                             </li>
                         </ul>
                     </section>
@@ -330,58 +330,12 @@ public class <span class="typeNameLabel"><a href=HespPlaybackConfiguration.html>
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getCustomConfiguration</h4>
-                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; <a href=HespPlaybackConfiguration.html#getCustomConfiguration()>getCustomConfiguration</a>()</pre>
-                                        <div class="block"><p>Returns the custom configuration.</p></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="equals(Object)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>equals</h4>
-                                        <pre class="methodSignature"> boolean <a href=HespPlaybackConfiguration.html#equals(Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> o)</pre>
-                                        <div class="block"></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="hashCode()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>hashCode</h4>
-                                        <pre class="methodSignature"> int <a href=HespPlaybackConfiguration.html#hashCode()>hashCode</a>()</pre>
-                                        <div class="block"></div>
+                                        <h4>getCustomConfiguration</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; <a href=HespPlaybackConfiguration.html#getCustomConfiguration()>getCustomConfiguration</a>()</pre>
+                                        <div class="block"><p>The custom configuration.</p></div>
 
                                         <dl>
 
