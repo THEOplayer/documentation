@@ -216,7 +216,8 @@ const config: Config = {
         path: 'theolive',
         routeBasePath: '/theolive',
         sidebarPath: './sidebarsTheolive.ts',
-      },
+        docItemComponent: '@theme/ApiItem',
+      } satisfies DocsPlugin.Options,
     ],
     [
       '@docusaurus/plugin-content-docs',
@@ -303,6 +304,60 @@ const config: Config = {
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
+          },
+        },
+      } satisfies OpenApiPlugin.PluginOptions,
+    ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'theolive-api',
+        docsPluginId: 'theoliveapi',
+        config: {
+          channels: {
+            specPath: 'theolive/api/channels.json',
+            outputDir: 'theolive/api/channels',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          events: {
+            specPath: 'theolive/api/events.json',
+            outputDir: 'theolive/api/events',
+            hideSendButton: true,
+            sidebarOptions: { 
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          reports: {
+            specPath: 'theolive/api/reports.json',
+            outputDir: 'theolive/api/reports',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          schedulers: {
+            specPath: 'theolive/api/schedulers.json',
+            outputDir: 'theolive/api/schedulers',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          webhooks: {
+            specPath: 'theolive/api/webhooks.json',
+            outputDir: 'theolive/api/webhooks',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
           },
         },
       } satisfies OpenApiPlugin.PluginOptions,
