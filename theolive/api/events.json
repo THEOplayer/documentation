@@ -1,0 +1,229 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Events",
+        "version": "1.1"
+    },
+    "servers":
+    [
+        {
+            "url": "https://api.theo.live/events"
+        }
+    ],
+    "components": {
+        "securitySchemes": {}
+    },
+    "security":
+    [
+        {}
+    ],
+    "tags":
+    [
+        {
+            "name": "Events",
+            "description": "Operations for retrieving event data"
+        }
+    ],
+    "paths": {
+        "/{id}": {
+            "get": {
+                "tags": ["Events"],
+                "summary": "Get event",
+                "description": "Gets a specific event",
+                "operationId": "get-event",
+                "parameters":
+                [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of an event",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "Result": {
+                                        "value": "{\n  \"eventId\": \"<id-of-event>\",\n  \"objectId\": \"<id-of-alias>\",\n  \"timestamp\": \"<timestamp>\",\n  \"type\": \"<type-of-event>\",\n  \"data\": {},\n  \"organizationId\": \"<id-of-organization>\"\n}"
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "eventId": {
+                                            "type": "string",
+                                            "example": "<id-of-event>"
+                                        },
+                                        "objectId": {
+                                            "type": "string",
+                                            "example": "<id-of-alias>"
+                                        },
+                                        "timestamp": {
+                                            "type": "string",
+                                            "example": "<timestamp>"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "example": "<type-of-event>"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {}
+                                        },
+                                        "organizationId": {
+                                            "type": "string",
+                                            "example": "<id-of-organization>"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "400",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "Result": {
+                                        "value": "{}"
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/": {
+            "get": {
+                "tags": ["Events"],
+                "summary": "Get events",
+                "description": "Gets a list of events that happened in your organization. Think about channels created, started, stopped, webhooks enabled or disabled, ...",
+                "operationId": "get-events",
+                "parameters":
+                [
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "The starting timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "description": "The ending timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Optional page of results to query. Defaults to the first one.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "Result": {
+                                        "value": "{\n   \"events\": [\n     {\n       \"eventId\": \"<id-of-event>\",\n       \"objectId\": \"<id-of-object>\",\n       \"timestamp\": \"<timestamp>\",\n       \"type\": \"<type-of-event>\",\n       \"data\": {},\n       \"organizationId\": \"<id-of-organization>\"\n     }\n  ],\n \t\"pagination\": {\n    \"page\": 1,\n    \"hasMore\": true\n  }\n}"
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "events": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "eventId": {
+                                                        "type": "string",
+                                                        "example": "<id-of-event>"
+                                                    },
+                                                    "objectId": {
+                                                        "type": "string",
+                                                        "example": "<id-of-object>"
+                                                    },
+                                                    "timestamp": {
+                                                        "type": "string",
+                                                        "example": "<timestamp>"
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "example": "<type-of-event>"
+                                                    },
+                                                    "data": {
+                                                        "type": "object",
+                                                        "properties": {}
+                                                    },
+                                                    "organizationId": {
+                                                        "type": "string",
+                                                        "example": "<id-of-organization>"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "pagination": {
+                                            "type": "object",
+                                            "properties": {
+                                                "page": {
+                                                    "type": "integer",
+                                                    "example": 1,
+                                                    "default": 0
+                                                },
+                                                "hasMore": {
+                                                    "type": "boolean",
+                                                    "example": true,
+                                                    "default": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "400",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "Result": {
+                                        "value": "{}"
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    }
+}
