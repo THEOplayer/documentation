@@ -312,7 +312,7 @@ const config: Config = {
       'docusaurus-plugin-openapi-docs',
       {
         id: 'theolive-api',
-        docsPluginId: 'theoliveapi',
+        docsPluginId: 'theolive',
         config: {
           channels: {
             specPath: 'theolive/api/channels.json',
