@@ -7,7 +7,8 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Getting started',
-      description: 'Set up your first stream with THEOads!',
+      description: 'Set up your first stream with OptiView Ads!',
+      collapsed: false,
       customProps: {
         icon: '🚀',
       },
@@ -17,7 +18,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'How-to guides',
-      description: 'Learn how to integrate THEOads with your setup',
+      description: 'Learn how to integrate OptiView Ads with your setup',
       customProps: {
         icon: '📖',
       },
@@ -27,7 +28,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'API references',
-      description: 'Discover all functions of THEOads.',
+      description: 'Discover all functions of OptiView Ads.',
       customProps: {
         icon: '*️⃣',
       },
