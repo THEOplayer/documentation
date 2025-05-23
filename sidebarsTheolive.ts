@@ -89,7 +89,7 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: false,
       items: webhooksApiSidebar,
-    }
+    },
   ],
 };
 

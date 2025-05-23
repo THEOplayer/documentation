@@ -327,7 +327,7 @@ const config: Config = {
             specPath: 'theolive/api/events.json',
             outputDir: 'theolive/api/events',
             hideSendButton: true,
-            sidebarOptions: { 
+            sidebarOptions: {
               groupPathsBy: 'tag',
             },
             markdownGenerators: openApiLinkRewrite(),
