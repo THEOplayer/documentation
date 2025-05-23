@@ -1,25 +1,22 @@
 ---
-sidebar_position: 0.3
+sidebar_position: 3
 sidebar_label: Android
 sidebar_custom_props: { 'icon': 'android' }
 ---
 
-# Getting started with THEOads on Android
+# Getting started with OptiView Ads on Android
 
-This guide will get you started to integrate THEOads in your THEOplayer Android SDK: configure the license, update dependencies and set the source description.
+This guide will get you started to integrate OptiView Ads in your THEOplayer Android SDK: configure the license, update dependencies and set the source description.
 
 ## Prerequisites
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-1. You need to have a THEOplayer license which is compatible with THEOads.
-   This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
-2. You need a working [THEOads signaling service](00-getting-started-signaling-service.mdx).
-3. Add the THEOplayer Android SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/android/getting-started) guide.
-   Make sure to [set up a THEOads-compatible license](/theoplayer/getting-started/sdks/android/getting-started/#setting-up-the-license)
-   in your app.
-4. Add the THEOads integration as a dependency in your module-level `build.gradle` file:
+1. You need to have a THEOplayer license which is compatible with OptiView Ads. This can be done through the [player portal](https://portal.theoplayer.com).
+2. You need a working [OptiView Ads signaling service](signaling-service.mdx).
+3. Add the THEOplayer Android SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/android/getting-started) guide. Make sure to [set up a OptiView Ads-compatible license](/theoplayer/getting-started/sdks/android/getting-started/#setting-up-the-license) in your app.
+4. Add the OptiView Ads integration as a dependency in your module-level `build.gradle` file:
    <Tabs queryString="lang">
       <!-- prettier-ignore-start -->
       <TabItem value="groovy" label="Groovy">
@@ -45,7 +42,7 @@ import TabItem from '@theme/TabItem';
 
 ## Integration
 
-To make use of the THEOads integration, create and add the `TheoAdsIntegration` to your `THEOplayerView`:
+To make use of the OptiView Ads integration, create and add the `TheoAdsIntegration` to your `THEOplayerView`:
 
 ```kotlin
 import com.theoplayer.android.api.THEOplayerView
@@ -91,16 +88,13 @@ theoPlayerView.player.source = SourceDescription.Builder(
 ).build()
 ```
 
-- Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
-  More information can be found [here](00-getting-started-signaling-service.mdx).
+- Notice that the `src` is different as usual. For OptiView Ads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials. More information can be found [here](signaling-service.mdx).
 - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
 - The `ads` object needs to be a `TheoAdDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
 
 ## Integrating with Open Video UI
 
-When using the [Open Video UI for Android](/open-video-ui/android/), you need to create and add
-the `TheoAdsIntegration` before creating your `DefaultUI` or `UIController`. You can then create a
-THEOads-enabled source and set it as `player.source`:
+When using the [Open Video UI for Android](/open-video-ui/android/), you need to create and add the `TheoAdsIntegration` before creating your `DefaultUI` or `UIController`. You can then create a OptiView Ads-enabled source and set it as `player.source`:
 
 ```kotlin
 import androidx.activity.compose.setContent
@@ -136,7 +130,6 @@ setContent {
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html)
-- [What is THEOads?](https://www.theoplayer.com/product/theoads/)
-- [The Advantages of Server-Guided Ad Insertion](https://www.theoplayer.com/solutions/server-guided-ad-insertion-sgai/)
-- [Flexible, Usage-Based Pricing](https://www.theoplayer.com/product/theoads/pricing/)
-- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://www.theoplayer.com/blog/server-guided-ad-insertion-sgai-revolutionizing-streaming-monetization/)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
+- [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)
