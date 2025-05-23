@@ -2053,7 +2053,7 @@
     "/{id}/aliases/${aliasId}/token-security/enable": {
       "post": {
         "tags": ["Security"],
-        "summary": "Enable token security for alias (deprecated)",
+        "summary": "Enable token security for alias",
         "description": "",
         "operationId": "enable-token-security-for-alias",
         "parameters": [
@@ -2131,13 +2131,13 @@
             }
           }
         },
-        "deprecated": false
+        "deprecated": true
       }
     },
     "/{id}/aliases/${aliasId}/token-security/disable": {
       "post": {
         "tags": ["Security"],
-        "summary": "Disable token security for alias (deprecated)",
+        "summary": "Disable token security for alias",
         "description": "",
         "operationId": "disable-token-security-for-alias",
         "parameters": [
@@ -2200,13 +2200,13 @@
             }
           }
         },
-        "deprecated": false
+        "deprecated": true
       }
     },
     "/{id}/aliases/${aliasId}/token-security": {
       "get": {
         "tags": ["Security"],
-        "summary": "Get token security of alias (deprecated)",
+        "summary": "Get token security of alias",
         "description": "",
         "operationId": "get-token-security-for-alias",
         "parameters": [
@@ -2269,13 +2269,13 @@
             }
           }
         },
-        "deprecated": false
+        "deprecated": true
       }
     },
     "/{id}/token-security/enable": {
       "post": {
         "tags": ["Security"],
-        "summary": "Enable token security for channel (deprecated)",
+        "summary": "Enable token security for channel",
         "description": "",
         "operationId": "enable-token-security-for-channel",
         "parameters": [
@@ -2344,13 +2344,13 @@
             }
           }
         },
-        "deprecated": false
+        "deprecated": true
       }
     },
     "/{id}/token-security/disable": {
       "post": {
         "tags": ["Security"],
-        "summary": "Disable token security for channel (deprecated)",
+        "summary": "Disable token security for channel",
         "description": "",
         "operationId": "disable-token-security-for-channel",
         "parameters": [
@@ -2404,7 +2404,7 @@
             }
           }
         },
-        "deprecated": false
+        "deprecated": true
       }
     },
     "/{channelId}/cdn-security/keys": {
