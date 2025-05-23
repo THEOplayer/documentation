@@ -1,7 +1,7 @@
-import React, {type ReactNode} from 'react';
+import React, { type ReactNode } from 'react';
 import Head from '@docusaurus/Head';
-import {useBreadcrumbsStructuredData} from '@site/src/util/structuredDataUtils';
-import type {PropSidebarBreadcrumbsItem} from '@docusaurus/plugin-content-docs';
+import { useBreadcrumbsStructuredData } from '@site/src/util/structuredDataUtils';
+import type { PropSidebarBreadcrumbsItem } from '@docusaurus/plugin-content-docs';
 
 export interface Props {
   readonly breadcrumbs: PropSidebarBreadcrumbsItem[];
@@ -13,9 +13,7 @@ export default function DocBreadcrumbsStructuredData(props: Props): ReactNode {
   });
   return (
     <Head>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
     </Head>
   );
 }
