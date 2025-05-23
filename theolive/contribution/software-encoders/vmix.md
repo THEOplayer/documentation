@@ -57,4 +57,4 @@ You can now save and exit out of all the _Streaming Settings_ menus and click th
 
 ## 4. Start your THEOlive channel
 
-This can be done either through the [API](https://developers.theo.live/reference/start-channel) or via the [management console](https://console.theo.live/).
+This can be done either through the [API](/theolive/api/channels/start-channel) or via the [management console](https://console.theo.live/).
