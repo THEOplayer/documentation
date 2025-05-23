@@ -7,7 +7,7 @@ sidebar_label: Alias
 
 This guide describes the multi-channel approach of THEOlive: ingest only once, and create multiple channel aliases to configure unique playouts. Next to a different configuration for each alias, THEOlive offers the possibility to apply some security settings (like Geoblocking and token based security) on each alias.
 
-All of this is possible via the [THEOlive management console](https://console.theo.live), as well via the [THEOlive API](/theolive/api/channels/create-channel/-alias).
+All of this is possible via the [THEOlive management console](https://console.theo.live), as well via the [THEOlive API](/theolive/api/channels/create-channel-alias).
 
 ## Multi-channel: player aliases
 

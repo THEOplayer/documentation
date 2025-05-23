@@ -28,7 +28,7 @@ When you want to disable geo-blocking, you can pass the same request as above, b
 - `"enabled": false`
 - `countries` can be omitted as it will be ignored
 
-The same can be done for channel alias. You just have to use [the right endpoint](/theolive/api/channels/update-channel/-alias) for it.
+The same can be done for channel alias. You just have to use [the right endpoint](/theolive/api/channels/update-channel-alias) for it.
 
 Other example: we want to make our stream available anywhere, but not in Belgium:
 
