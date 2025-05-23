@@ -18,6 +18,7 @@ theoplayer_versioned_docs/*/static/theoplayer/*/api-reference
 theoads/api/ads-client.swagger.json
 theoads/api/signaling/
 millicast/api/
+theolive/api/
 
 # Submodules
 theoplayer/external/
