@@ -47,4 +47,4 @@ Close the window and click on _Start Streaming_ in the same _Controls_ section
 
 ## 4. Start your THEOlive channel
 
-This can be done either [through the API](https://developers.theo.live/reference/start-channel) or via [the management console](https://console.theo.live/).
+This can be done either [through the API](/theolive/api/channels/start-channel) or via [the management console](https://console.theo.live/).

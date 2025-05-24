@@ -1,0 +1,3114 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Channels",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.theo.live/channels"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Channels",
+      "description": "Operations for managing channels"
+    },
+    {
+      "name": "Channel Status",
+      "description": "Operations for managing channel status"
+    },
+    {
+      "name": "Channel Aliases",
+      "description": "Operations for managing channel aliases"
+    },
+    {
+      "name": "Analytics",
+      "description": "Operations for retrieving analytics data"
+    },
+    {
+      "name": "Events",
+      "description": "Operations for retrieving event data"
+    },
+    {
+      "name": "Security",
+      "description": "Operations for managing security settings"
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "tags": ["Channels"],
+        "summary": "Create channel",
+        "description": "Create a channel for real-time streaming at scale",
+        "operationId": "create-channel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["ingestLocation"],
+                "properties": {
+                  "ingestLocation": {
+                    "type": "string",
+                    "description": "Region where the channel should be created.",
+                    "default": "europe-west",
+                    "enum": ["us-east", "us-west", "europe-west"]
+                  },
+                  "metadata": {
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "A name for your channel",
+                        "default": "my-channel-name"
+                      }
+                    },
+                    "required": ["name"],
+                    "type": "object"
+                  },
+                  "streamConfig": {
+                    "properties": {
+                      "abr": {
+                        "type": "boolean",
+                        "description": "Boolean to determine if ABR should be enabled.",
+                        "default": true
+                      },
+                      "bitrate": {
+                        "type": "number",
+                        "description": "Optional: the max bitrate of your stream, in Mbps. Please refer to the [Stream configuration](doc:stream-configuration) guide for all possible values.",
+                        "default": 4.5,
+                        "format": "double"
+                      },
+                      "resolution": {
+                        "type": "string",
+                        "description": "Optional: the max resolution of your stream.",
+                        "default": "1080p",
+                        "enum": ["1080p", "720p", "576p", "360p"]
+                      },
+                      "fps": {
+                        "type": "number",
+                        "description": "Optional: the fps being used. Can be 25, 29.97, 30, 50, 59.97, 60",
+                        "default": 30,
+                        "format": "double"
+                      },
+                      "drm": {
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Optional: boolean to determine if DRM should be enabled for this channel. Defaults to `false`"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "bitrateMode": {
+                        "type": "string",
+                        "default": "constant",
+                        "enum": ["constant", "variable"]
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "ingestConfig": {
+                    "properties": {
+                      "abr": {
+                        "type": "boolean",
+                        "description": "Boolean to determine if ABR should be used or not. Deprecated: please use the `streamConfig` object instead.",
+                        "default": true
+                      },
+                      "fps": {
+                        "type": "number",
+                        "description": "Optional fps value. Defaults to 30. Valid values: 25, 29.97, 30, 50, 59.94, 60.  Deprecated: please use the `streamConfig` object instead.",
+                        "default": 30,
+                        "format": "double"
+                      },
+                      "aspectRatio": {
+                        "type": "string",
+                        "description": "Optional aspect ratio. Defaults to 1080p when not passed.  Deprecated: please use the `streamConfig` object instead.",
+                        "default": "1080p",
+                        "enum": ["1080p", "720p", "480p", "360p"]
+                      },
+                      "preset": {
+                        "type": "string",
+                        "description": "Optional preset (stream configuration) you can choose. For more information, please refer to the [Stream Configuration guide](doc:stream-configuration).  Deprecated: please use the `streamConfig` object instead.",
+                        "default": "default",
+                        "enum": ["default", "sport", "presentation"]
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "ingestTimeout": {
+                    "type": "integer",
+                    "description": "Amount of seconds after which channel will stop automatically when no ingest is received. When 0 is passed, the channel will never stop automatically. Defaults to 3600 seconds.",
+                    "default": 3600,
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"channelId\": \"<newly-created-channel-id>\",\n    \"metadata\": {\n        \"name\": \"My new channel\"\n    },\n    \"channelMode\": \"production\",\n    \"streamKey\": \"<my-channel>\",\n    \"creationDate\": \"<a timestamp>\",\n    \"region\": \"<region>\",\n    \"ingestType\": \"push\",\n    \"streamConfig\": {\n      \t\"abr\": true,\n        \"resolution\": \"1080p\",\n        \"bitrate\": 4.5,\n        \"fps\": 30\n    },\n    \"ingestProtocol\": \"rtmp\",\n    \"ingestType\": \"push\",\n    \"rtmpPushUrl\": \"rtmps://rtmp.europe-west.sneezysparrow.com/live\",\n    \"ingestConfig\": {\n        \"abr\": true,\n        \"fps\": 30,\n        \"aspectRatio\": \"1080p\",\n        \"preset\": \"default\"\n    },\n    \"status\": {\n        \"code\": \"creating\",\n        \"message\": \"Channel is being created\"\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "channelId": {
+                      "type": "string",
+                      "example": "<newly-created-channel-id>"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "My new channel"
+                        }
+                      }
+                    },
+                    "channelMode": {
+                      "type": "string",
+                      "example": "production"
+                    },
+                    "streamKey": {
+                      "type": "string",
+                      "example": "<my-channel>"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "example": "<a timestamp>"
+                    },
+                    "region": {
+                      "type": "string",
+                      "example": "<region>"
+                    },
+                    "ingestType": {
+                      "type": "string",
+                      "example": "push"
+                    },
+                    "streamConfig": {
+                      "type": "object",
+                      "properties": {
+                        "abr": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "resolution": {
+                          "type": "string",
+                          "example": "1080p"
+                        },
+                        "bitrate": {
+                          "type": "number",
+                          "example": 4.5,
+                          "default": 0
+                        },
+                        "fps": {
+                          "type": "integer",
+                          "example": 30,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "ingestProtocol": {
+                      "type": "string",
+                      "example": "rtmp"
+                    },
+                    "rtmpPushUrl": {
+                      "type": "string",
+                      "example": "rtmps://rtmp.europe-west.sneezysparrow.com/live"
+                    },
+                    "ingestConfig": {
+                      "type": "object",
+                      "properties": {
+                        "abr": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "fps": {
+                          "type": "integer",
+                          "example": 30,
+                          "default": 0
+                        },
+                        "aspectRatio": {
+                          "type": "string",
+                          "example": "1080p"
+                        },
+                        "preset": {
+                          "type": "string",
+                          "example": "default"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "creating"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Channel is being created"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/start": {
+      "post": {
+        "tags": ["Channels"],
+        "summary": "Start channel",
+        "description": "Start real-time streaming on a channel previously created",
+        "operationId": "start-channel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of your channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rtmpPullUrl": {
+                    "type": "string",
+                    "description": "DEPRECATED: Your RTMP Pull URL that you can use instead of the provided RTMP Push URL. Please use the `ingestType` and `ingestPullUrl`"
+                  },
+                  "ingestTimeout": {
+                    "type": "integer",
+                    "description": "Optional parameter to overwrite the `ingestTimeout` set for this channel only for the run that will start after making this call.",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/stop": {
+      "post": {
+        "tags": ["Channels"],
+        "summary": "Stop channel",
+        "description": "Stop real-time streaming on a channel",
+        "operationId": "stop-channel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}": {
+      "delete": {
+        "tags": ["Channels"],
+        "summary": "Delete channel",
+        "description": "Remove a channel",
+        "operationId": "delete-channel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of your channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "tags": ["Channels"],
+        "summary": "Update channel",
+        "description": "Edit information about your channel and change the look & feel",
+        "operationId": "update-channel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of your channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customization": {
+                    "properties": {
+                      "targetLatency": {
+                        "type": "number",
+                        "description": "Target latency of the player: can be used to add some additional latency when sub-second latency is not possible due to bad network conditions. Possible values: 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5",
+                        "default": 0,
+                        "format": "double"
+                      },
+                      "colors": {
+                        "properties": {
+                          "primary": {
+                            "type": "string",
+                            "description": "Change the primary color of the player"
+                          },
+                          "secondary": {
+                            "type": "string",
+                            "description": "Change the secondary color of the player"
+                          },
+                          "tertiary": {
+                            "type": "string",
+                            "description": "Change the tertiary color of the player"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "posterImg": {
+                        "type": "string",
+                        "description": "Set an image that will be shown in the player when the live stream isn't active yet. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
+                      },
+                      "announcement": {
+                        "type": "string",
+                        "description": "Change the text that will be shown in the player when the live stream isn't active yet."
+                      },
+                      "logo": {
+                        "type": "string",
+                        "description": "Set a logo that will be shown at the top left of the active video track. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
+                      },
+                      "autoplay": {
+                        "type": "boolean",
+                        "description": "Setting to switch on/off automatic playback",
+                        "default": false
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "streamConfig": {
+                    "properties": {
+                      "abr": {
+                        "type": "boolean",
+                        "description": "Boolean to determine if ABR should be enabled."
+                      },
+                      "bitrate": {
+                        "type": "number",
+                        "description": "Optional: the max bitrate of your stream, in Mbps. Please refer to the [Stream configuration](doc:stream-configuration) guide for all possible values.",
+                        "format": "double"
+                      },
+                      "resolution": {
+                        "type": "string",
+                        "description": "Optional: the max resolution of your stream.",
+                        "enum": ["1080p", "720p", "576p", "360p"]
+                      },
+                      "fps": {
+                        "type": "number",
+                        "description": "Optional: the fps being used. Can be 25, 29.97, 30, 50, 59.97, 60",
+                        "format": "double"
+                      },
+                      "drm": {
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Boolean to determine if DRM should be enabled on this channel"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "audio": {
+                        "type": "array",
+                        "description": "Only applicable when passing a SRT pull URL",
+                        "items": {
+                          "properties": {
+                            "pid": {
+                              "type": "string"
+                            },
+                            "lang": {
+                              "type": "string"
+                            },
+                            "label": {
+                              "type": "string",
+                              "description": "Defaults to lang value when not pased"
+                            }
+                          },
+                          "required": ["pid", "lang"],
+                          "type": "object"
+                        }
+                      },
+                      "bitrateMode": {
+                        "type": "string",
+                        "default": "constant",
+                        "enum": ["constant", "variable"]
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "failoverId": {
+                    "type": "string",
+                    "description": "DEPRECATED: please use `fallback` object instead. An ID of another channel in your organization that can be used a backup. For more info see  [Adding a failover](doc:adding-a-failover)"
+                  },
+                  "ingestProtocol": {
+                    "type": "string",
+                    "description": "Ingest protocol to use",
+                    "default": "rtmp",
+                    "enum": ["rtmp", "srt"]
+                  },
+                  "ingestType": {
+                    "type": "string",
+                    "description": "Set the ingest type to push or pull. `rtmpPullUrl` should be passed when setting it to \"pull\"",
+                    "default": "push",
+                    "enum": ["push", "pull"]
+                  },
+                  "ingestPullUrl": {
+                    "type": "string",
+                    "description": "URL to pull content from in case `ingestType` is set to \"pull\""
+                  },
+                  "rtmpPullUrl": {
+                    "type": "string",
+                    "description": "Deprecated: Change the URL to pull content from in case `ingestType` is set to \"pull\""
+                  },
+                  "ingestConfig": {
+                    "properties": {
+                      "abr": {
+                        "type": "boolean",
+                        "description": "Change if channel should use ABR or not. Deprecated: please use the `streamConfig` object instead."
+                      },
+                      "fps": {
+                        "type": "number",
+                        "description": "Change the fps that the channel should use. Possible values: 25, 29.97, 30, 50, 59.94, 60. Deprecated: please use the `streamConfig` object instead.",
+                        "format": "double"
+                      },
+                      "aspectRatio": {
+                        "type": "string",
+                        "description": "Aspect ratio that the channel should use. Deprecated: please use the `streamConfig` object instead.",
+                        "enum": ["1080p", "720p", "480p", "320p"]
+                      },
+                      "preset": {
+                        "type": "string",
+                        "description": "Change the preset of your stream. For more information, please refer to the [Stream Configuration guide](doc:stream-configuration). Deprecated: please use the `streamConfig` object instead.",
+                        "enum": ["default", "sport", "presentation"]
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "publicationConfig": {
+                    "properties": {
+                      "geoBlocking": {
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Optional boolean to enable geo blocking on the channel"
+                          },
+                          "mode": {
+                            "type": "string",
+                            "description": "The mode of geo-blocking: `whitelist` allows the `countries` passed, `blacklist` will block them",
+                            "enum": ["whitelist", "blacklist"]
+                          },
+                          "countries": {
+                            "type": "array",
+                            "description": "List of alpha-2 country codes where. Based on the `mode` value these countries will have access to the stream, or be blocked from it",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "ipBlocking": {
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Optional boolean to enable IP blocking on the channel",
+                            "default": false
+                          },
+                          "mode": {
+                            "type": "string",
+                            "description": "The mode of IP blocking: `whitelist` allows the `cidrs` passed, `blacklist` will block them",
+                            "default": "whitelist",
+                            "enum": ["whitelist", "blacklist"]
+                          },
+                          "cidrs": {
+                            "type": "array",
+                            "description": "List of CIDRs that are (not) allowed to view the stream, depending on the `mode` passed",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "fallback": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "description": "Optional: boolean to determine if a fallback should be enabled or not.",
+                        "default": false
+                      },
+                      "src": {
+                        "type": "string",
+                        "description": "An ID of another channel or alias to which the channel should fallback when an error occurs."
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "ingestTimeout": {
+                    "type": "integer",
+                    "description": "Amount of seconds after which channel will stop automatically when no ingest is received. When 0 is passed, the channel will never stop automatically. Defaults to 3600 seconds.",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": ["Channels"],
+        "summary": "Get channel",
+        "description": "",
+        "operationId": "get-channel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the channel to be requested",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"channelId\": \"<channel-id>\",\n    \"metadata\": {\n      \"name\": \"<name-of-channel>\"\n    },\n    \"channelMode\": \"<mode-of-channel>\",\n    \"streamKey\": \"<streamkey-for-channel>\",\n    \"creationDate\": \"<date-of-creation>\",\n    \"region\": \"<region-of-channel>\",\n    \"ingestType\": \"<pull-or-push>\",\n    \"ingestConfig\": {\n      \"abr\": true,\n      \"fps\": 30,\n      \"aspectRatio\": \"1080p\",\n      \"preset\": \"sport\"\n    },\n    \"streamConfig\": {\n      \"abr\": true,\n      \"resolution\": \"1080p\",\n      \"fps\": 30,\n      \"bitrate\": 4.5\n    },\n    \"status\": {\n      \"code\": \"playing\",\n      \"message\": \"message\"\n    },\n    \"publicationConfig\": {\n      \"geoBlocking\" : {}\n    }    \n  }"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "channelId": {
+                      "type": "string",
+                      "example": "<channel-id>"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "<name-of-channel>"
+                        }
+                      }
+                    },
+                    "channelMode": {
+                      "type": "string",
+                      "example": "<mode-of-channel>"
+                    },
+                    "streamKey": {
+                      "type": "string",
+                      "example": "<streamkey-for-channel>"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "example": "<date-of-creation>"
+                    },
+                    "region": {
+                      "type": "string",
+                      "example": "<region-of-channel>"
+                    },
+                    "ingestType": {
+                      "type": "string",
+                      "example": "<pull-or-push>"
+                    },
+                    "ingestConfig": {
+                      "type": "object",
+                      "properties": {
+                        "abr": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "fps": {
+                          "type": "integer",
+                          "example": 30,
+                          "default": 0
+                        },
+                        "aspectRatio": {
+                          "type": "string",
+                          "example": "1080p"
+                        },
+                        "preset": {
+                          "type": "string",
+                          "example": "sport"
+                        }
+                      }
+                    },
+                    "streamConfig": {
+                      "type": "object",
+                      "properties": {
+                        "abr": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "resolution": {
+                          "type": "string",
+                          "example": "1080p"
+                        },
+                        "fps": {
+                          "type": "integer",
+                          "example": 30,
+                          "default": 0
+                        },
+                        "bitrate": {
+                          "type": "number",
+                          "example": 4.5,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "playing"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "message"
+                        }
+                      }
+                    },
+                    "publicationConfig": {
+                      "type": "object",
+                      "properties": {
+                        "geoBlocking": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/status": {
+      "get": {
+        "tags": ["Channel Status"],
+        "summary": "Get channel status",
+        "description": "Get the current status of a channel",
+        "operationId": "get-channel-status",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  code: \"status-code\",\n  message: \"status-message\"\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/aliases": {
+      "post": {
+        "tags": ["Channel Aliases"],
+        "summary": "Create channel alias",
+        "description": "Create an alias for your channel",
+        "operationId": "create-channel-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "metadata": {
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name for the channel alias"
+                      }
+                    },
+                    "required": ["name"],
+                    "type": "object"
+                  },
+                  "publicationConfig": {
+                    "properties": {
+                      "geoBlocking": {
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Optional boolean to enable geoblockign on the channel",
+                            "default": false
+                          },
+                          "mode": {
+                            "type": "string",
+                            "description": "The mode of geo-blocking: `whitelist` allows the `countries` passed, `blacklist` will block them",
+                            "default": "whitelist",
+                            "enum": ["whitelist", "blacklist"]
+                          },
+                          "countries": {
+                            "type": "array",
+                            "description": "List of alpha-2 country codes where. Based on the `mode` value these countries will have access to the stream, or be blocked from it",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "ipBlocking": {
+                        "properties": {
+                          "enabled": {
+                            "type": "string",
+                            "description": "Optional boolean to enable IP blocking on the channel",
+                            "default": "false"
+                          },
+                          "mode": {
+                            "type": "string",
+                            "description": "The mode of IP blocking: `whitelist` allows the `cidrs` passed, `blacklist` will block them",
+                            "default": "whitelist",
+                            "enum": ["whitelist", "blacklist"]
+                          },
+                          "cidrs": {
+                            "type": "array",
+                            "description": "List of CIDRs that are (not) allowed to view the stream, depending on the `mode` passed",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"channelId\": \"id-of-alias\",\n    \"metadata\": {\n        \"name\": \"Name of alias\"\n    },\n    \"active\": true,\n    \"parentChannelId\": \"id-of-parent\",\n    \"creationDate\": \"unix-timestamp\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "channelId": {
+                      "type": "string",
+                      "example": "id-of-alias"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "Name of alias"
+                        }
+                      }
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "example": true,
+                      "default": true
+                    },
+                    "parentChannelId": {
+                      "type": "string",
+                      "example": "id-of-parent"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "example": "unix-timestamp"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": ["Channel Aliases"],
+        "summary": "Get channel aliases",
+        "description": "Get all the aliases of a specific channel",
+        "operationId": "get-all-channel-aliases",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "[\n  {\n    \"channelId\": \"id-of-alias-1\",\n    \"metadata\": {\n        \"name\": \"Name of alias 1\"\n    },\n    \"active\": true,\n    \"parentChannelId\": \"id-of-parent\",\n    \"creationDate\": \"unix-timestamp\"\n\t},\n  {\n    \"channelId\": \"id-of-alias-2\",\n    \"metadata\": {\n        \"name\": \"Name of alias 2\"\n    },\n    \"active\": true,\n    \"parentChannelId\": \"id-of-parent\",\n    \"creationDate\": \"unix-timestamp\"\n}\n]"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "channelId": {
+                        "type": "string",
+                        "example": "id-of-alias-1"
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "Name of alias 1"
+                          }
+                        }
+                      },
+                      "active": {
+                        "type": "boolean",
+                        "example": true,
+                        "default": true
+                      },
+                      "parentChannelId": {
+                        "type": "string",
+                        "example": "id-of-parent"
+                      },
+                      "creationDate": {
+                        "type": "string",
+                        "example": "unix-timestamp"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/aliases/{aliasId}/enable": {
+      "post": {
+        "tags": ["Channel Aliases"],
+        "summary": "Enable channel alias",
+        "description": "Enable a channel alias that was previously disabled",
+        "operationId": "enable-channel-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of the alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/aliases/{aliasId}/disable": {
+      "post": {
+        "tags": ["Channel Aliases"],
+        "summary": "Disable channel alias",
+        "description": "Disable a channel alias",
+        "operationId": "disable-channel-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of the alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/aliases/{aliasId}": {
+      "patch": {
+        "tags": ["Channel Aliases"],
+        "summary": "Update channel alias",
+        "description": "Update a channel alias",
+        "operationId": "update-channel-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of the alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customization": {
+                    "properties": {
+                      "targetLatency": {
+                        "type": "number",
+                        "description": "Target latency of the player: can be used to add some additional latency when sub-second latency is not possible due to bad network conditions. Possible values: 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5",
+                        "format": "double"
+                      },
+                      "colors": {
+                        "properties": {
+                          "primary": {
+                            "type": "string",
+                            "description": "Change the primary color of the player"
+                          },
+                          "secondary": {
+                            "type": "string",
+                            "description": "Change the secondary color of the player"
+                          },
+                          "tertiary": {
+                            "type": "string",
+                            "description": "Change the tertiary color of the player"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "posterImg": {
+                        "type": "string",
+                        "description": "Set an image that will be shown in the player when the live stream isn't active yet. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
+                      },
+                      "announcement": {
+                        "type": "string",
+                        "description": "Change the text that will be shown in the player when the live stream isn't active yet."
+                      },
+                      "logo": {
+                        "type": "string",
+                        "description": "Set a logo that will be shown at the top left of the active video track. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
+                      },
+                      "autoplay": {
+                        "type": "boolean",
+                        "description": "Setting to switch on/off automatic playback"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "publicationConfig": {
+                    "properties": {
+                      "geoBlocking": {
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Optional boolean to enable geoblockign on the channel"
+                          },
+                          "mode": {
+                            "type": "string",
+                            "description": "The mode of geo-blocking: `whitelist` allows the `countries` passed, `blacklist` will block them",
+                            "enum": ["whitelist", "blacklist"]
+                          },
+                          "countries": {
+                            "type": "array",
+                            "description": "List of alpha-2 country codes where. Based on the `mode` value these countries will have access to the stream, or be blocked from it",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "ipBlocking": {
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Optional boolean to enable IP blocking on the channel",
+                            "default": false
+                          },
+                          "mode": {
+                            "type": "string",
+                            "description": "The mode of IP blocking: `whitelist` allows the `cidrs` passed, `blacklist` will block them",
+                            "default": "whitelist",
+                            "enum": ["whitelist", "blacklist"]
+                          },
+                          "cidrs": {
+                            "type": "array",
+                            "description": "List of CIDRs that are (not) allowed to view the stream, depending on the `mode` passed",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "failoverId": {
+                    "type": "string",
+                    "description": "DEPRECATED: please use `fallback` object instead. An ID of another channel in your organization that can be used a backup."
+                  },
+                  "fallback": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "description": "Optional: boolean to determine if a fallback should be enabled or not."
+                      },
+                      "src": {
+                        "type": "string",
+                        "description": "An ID of another channel or alias to which the alias should fallback when an error occurs."
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": ["Channel Aliases"],
+        "summary": "Get channel alias",
+        "description": "Get one specific alias of a specific channel",
+        "operationId": "get-channel-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of an alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"channelId\": \"id-of-alias-1\",\n    \"metadata\": {\n      \"name\": \"Name of alias 1\"\n    },\n    \"active\": true,\n    \"parentChannelId\": \"id-of-parent\",\n    \"creationDate\": \"unix-timestamp\"\n}\n  "
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "channelId": {
+                      "type": "string",
+                      "example": "id-of-alias-1"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "Name of alias 1"
+                        }
+                      }
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "example": true,
+                      "default": true
+                    },
+                    "parentChannelId": {
+                      "type": "string",
+                      "example": "id-of-parent"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "example": "unix-timestamp"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": ["Channel Aliases"],
+        "summary": "Delete channel alias",
+        "description": "Delete one specific alias of a specific channel",
+        "operationId": "delete-channel-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of an alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"channelId\": \"id-of-alias-1\",\n    \"metadata\": {\n      \"name\": \"Name of alias 1\"\n    },\n    \"active\": true,\n    \"parentChannelId\": \"id-of-parent\",\n    \"creationDate\": \"unix-timestamp\"\n}\n  "
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "channelId": {
+                      "type": "string",
+                      "example": "id-of-alias-1"
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "Name of alias 1"
+                        }
+                      }
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "example": true,
+                      "default": true
+                    },
+                    "parentChannelId": {
+                      "type": "string",
+                      "example": "id-of-parent"
+                    },
+                    "creationDate": {
+                      "type": "string",
+                      "example": "unix-timestamp"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/aliases/{aliasId}/analytics": {
+      "get": {
+        "tags": ["Analytics"],
+        "summary": "Get channel alias analytics",
+        "description": "See how many minutes people watched to a specific alias on a given timestamp",
+        "operationId": "get-channel-alias-analytics",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the parent channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of an alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "The starting timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "The ending timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "[\n  {\n   \t\"timestamp\": \"2022-08-23T10:00:00.000Z\",\n    \"amount\": 10\n  }\n]"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "timestamp": {
+                        "type": "string",
+                        "example": "2022-08-23T10:00:00.000Z"
+                      },
+                      "amount": {
+                        "type": "integer",
+                        "example": 10,
+                        "default": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/events": {
+      "get": {
+        "tags": ["Events"],
+        "summary": "Get channel events",
+        "description": "Gets a list of events that happened with a specific alias. Max 30 days old.",
+        "operationId": "get-channel-events",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "The starting timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "The ending timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Optional page of results to query. Defaults to the first one.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n   \"events\": [\n     {\n       \"eventId\": \"<id-of-event>\",\n       \"objectId\": \"<id-of-channel>\",\n       \"timestamp\": \"<timestamp>\",\n       \"type\": \"<type-of-event>\",\n       \"data\": {},\n       \"organizationId\": \"<id-of-organization>\"\n     }\n  ],\n \t\"pagination\": {\n    \"page\": 1,\n    \"hasMore\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "eventId": {
+                            "type": "string",
+                            "example": "<id-of-event>"
+                          },
+                          "objectId": {
+                            "type": "string",
+                            "example": "<id-of-channel>"
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "example": "<timestamp>"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "<type-of-event>"
+                          },
+                          "data": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "organizationId": {
+                            "type": "string",
+                            "example": "<id-of-organization>"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "page": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/aliases/{aliasId}/events": {
+      "get": {
+        "tags": ["Events"],
+        "summary": "Get channel alias events",
+        "description": "Gets a list of events that happened with a specific alias. Max 30 days old.",
+        "operationId": "get-channel-alias-events",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "The starting timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "The ending timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Optional page of results to query. Defaults to the first one.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of an alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n   \"events\": [\n     {\n       \"eventId\": \"<id-of-event>\",\n       \"objectId\": \"<id-of-alias>\",\n       \"timestamp\": \"<timestamp>\",\n       \"type\": \"<type-of-event>\",\n       \"data\": {},\n       \"organizationId\": \"<id-of-organization>\"\n     }\n  ],\n \t\"pagination\": {\n    \"page\": 1,\n    \"hasMore\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "eventId": {
+                            "type": "string",
+                            "example": "<id-of-event>"
+                          },
+                          "objectId": {
+                            "type": "string",
+                            "example": "<id-of-alias>"
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "example": "<timestamp>"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "<type-of-event>"
+                          },
+                          "data": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "organizationId": {
+                            "type": "string",
+                            "example": "<id-of-organization>"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "page": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        },
+                        "hasMore": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/aliases/${aliasId}/token-security/enable": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Enable token security for alias",
+        "description": "",
+        "operationId": "enable-token-security-for-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "description": "Public or shared key to use. Mandatory when first enabling, optional when already existing."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"enabled\": true\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "example": true,
+                      "default": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/{id}/aliases/${aliasId}/token-security/disable": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Disable token security for alias",
+        "description": "",
+        "operationId": "disable-token-security-for-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"enabled\": false\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "example": false,
+                      "default": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/{id}/aliases/${aliasId}/token-security": {
+      "get": {
+        "tags": ["Security"],
+        "summary": "Get token security of alias",
+        "description": "",
+        "operationId": "get-token-security-for-alias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"enabled\": true\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "example": true,
+                      "default": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/{id}/token-security/enable": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Enable token security for channel",
+        "description": "",
+        "operationId": "enable-token-security-for-channel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "description": "Public or shared key to use. Mandatory when first enabling, optional when already existing."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"enabled\": true\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "example": true,
+                      "default": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/{id}/token-security/disable": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Disable token security for channel",
+        "description": "",
+        "operationId": "disable-token-security-for-channel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"enabled\": false\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "example": false,
+                      "default": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/{channelId}/cdn-security/keys": {
+      "get": {
+        "tags": ["Security"],
+        "summary": "Get channel CDN security keys",
+        "description": "",
+        "operationId": "get-cdn-security-keys",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n   \"keys\": [\n     {\"id\" : \"key-id\"}\n   ] \n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "key-id"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["Security"],
+        "summary": "Add channel CDN security keys",
+        "description": "",
+        "operationId": "add-channel-cdn-security-key",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["key"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Optional ID of the key. If not passed, THEOlive will create one for you"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "Public or shared key to use"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"id\" : \"key-id\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "key-id"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": ["Security"],
+        "summary": "Disable CDN security (deleting all keys)",
+        "description": "Disables CDN security for a channel. It will remove all assigned keys",
+        "operationId": "delete-channel-cdn-security",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{channelId}/aliases/{aliasId}/cdn-security/keys": {
+      "get": {
+        "tags": ["Security"],
+        "summary": "Get channel alias CDN security keys",
+        "description": "",
+        "operationId": "get-channel-alias-cdn-security-keys",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "Id of the alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n   \"keys\": [\n     {\"id\" : \"key-id\"}\n   ] \n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "key-id"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["Security"],
+        "summary": "Add channel alias CDN security key",
+        "description": "",
+        "operationId": "add-channel-alias-cdn-security-keys",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["key"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Optional ID of the key. If not passed, THEOlive will create one for you"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "Public or shared key to use"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"id\" : \"key-id\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "key-id"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": ["Security"],
+        "summary": "Disable CDN security for alias (deleting all keys)",
+        "description": "",
+        "operationId": "delete-channel-alias-cdn-security",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{channelId}/aliases/{aliasId}/cdn-security/keys/{keyId}": {
+      "delete": {
+        "tags": ["Security"],
+        "summary": "Delete channel alias CDN security key",
+        "description": "",
+        "operationId": "delete-channel-alias-cdn-security-key",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "aliasId",
+            "in": "path",
+            "description": "ID of alias",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "keyId",
+            "in": "path",
+            "description": "ID of the key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{channelId}/cdn-security/keys/{keyId} (COPY)": {
+      "delete": {
+        "tags": ["Security"],
+        "summary": "Delete channel CDN security key (COPY)",
+        "description": "",
+        "operationId": "delete-channel-cdn-security-key-copy",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "path",
+            "description": "ID of the channel",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "keyId",
+            "in": "path",
+            "description": "ID of the key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/#": {
+      "get": {
+        "tags": ["Channels"],
+        "summary": "Get channels",
+        "description": "Get a list of all channels connected to your account",
+        "operationId": "get-channels",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "[\n  {\n    \"channelId\": \"<channel-id>\",\n    \"metadata\": {\n      \"name\": \"<name-of-channel>\"\n    },\n    \"channelMode\": \"<mode-of-channel>\",\n    \"streamKey\": \"<streamkey-for-channel>\",\n    \"creationDate\": \"<date-of-creation>\",\n    \"region\": \"<region-of-channel>\",\n    \"ingestType\": \"<pull-or-push>\",\n    \"ingestConfig\": {\n      \"abr\": true,\n      \"fps\": 30,\n      \"aspectRatio\": \"1080p\",\n      \"preset\": \"sport\"\n    },\n    \"streamConfig\": {\n      \"abr\": true,\n      \"resolution\": \"1080p\",\n      \"fps\": 30,\n      \"bitrate\": 4.5\n    },\n    \"status\": {\n      \"code\": \"playing\",\n      \"message\": \"message\"\n    },\n    \"publicationConfig\": {\n      \"geoBlocking\" : {}\n    }    \n  },\n  {\n    \"channelId\": \"<channel-id>\",\n    \"metadata\": {\n      \"name\": \"<name-of-channel>\"\n    },\n    \"channelMode\": \"<mode-of-channel>\",\n    \"streamKey\": \"<streamkey-for-channel>\",\n    \"creationDate\": \"<date-of-creation>\",\n    \"region\": \"<region-of-channel>\",\n    \"ingestType\": \"<pull-or-push>\",\n    \"streamConfig\": {\n      \"abr\": true,\n      \"resolution\": \"1080p\",\n      \"fps\": 30,\n      \"bitrate\": 4.5\n    },\n    \"ingestConfig\": {\n      \"abr\": true,\n      \"fps\": 30,\n      \"aspectRatio\": \"1080p\",\n      \"preset\": \"sport\"\n    },\n    \"status\": {\n      \"code\": \"playing\",\n      \"message\": \"message\"\n    },\n    \"publicationConfig\": {\n      \"geoBlocking\" : {}\n    }    \n  }\n]\n"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "channelId": {
+                        "type": "string",
+                        "example": "<channel-id>"
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "<name-of-channel>"
+                          }
+                        }
+                      },
+                      "channelMode": {
+                        "type": "string",
+                        "example": "<mode-of-channel>"
+                      },
+                      "streamKey": {
+                        "type": "string",
+                        "example": "<streamkey-for-channel>"
+                      },
+                      "creationDate": {
+                        "type": "string",
+                        "example": "<date-of-creation>"
+                      },
+                      "region": {
+                        "type": "string",
+                        "example": "<region-of-channel>"
+                      },
+                      "ingestType": {
+                        "type": "string",
+                        "example": "<pull-or-push>"
+                      },
+                      "ingestConfig": {
+                        "type": "object",
+                        "properties": {
+                          "abr": {
+                            "type": "boolean",
+                            "example": true,
+                            "default": true
+                          },
+                          "fps": {
+                            "type": "integer",
+                            "example": 30,
+                            "default": 0
+                          },
+                          "aspectRatio": {
+                            "type": "string",
+                            "example": "1080p"
+                          },
+                          "preset": {
+                            "type": "string",
+                            "example": "sport"
+                          }
+                        }
+                      },
+                      "streamConfig": {
+                        "type": "object",
+                        "properties": {
+                          "abr": {
+                            "type": "boolean",
+                            "example": true,
+                            "default": true
+                          },
+                          "resolution": {
+                            "type": "string",
+                            "example": "1080p"
+                          },
+                          "fps": {
+                            "type": "integer",
+                            "example": 30,
+                            "default": 0
+                          },
+                          "bitrate": {
+                            "type": "number",
+                            "example": 4.5,
+                            "default": 0
+                          }
+                        }
+                      },
+                      "status": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "example": "playing"
+                          },
+                          "message": {
+                            "type": "string",
+                            "example": "message"
+                          }
+                        }
+                      },
+                      "publicationConfig": {
+                        "type": "object",
+                        "properties": {
+                          "geoBlocking": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  }
+}

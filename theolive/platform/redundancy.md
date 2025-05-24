@@ -23,7 +23,7 @@ In what follows, we describe the approach to set a fallback for one channel.
 
 ## 1. Create two channels and start them.
 
-You'll need to create two THEOlive channels via the [API](https://developers.theo.live/reference/create-channel) or [management console](https://console.theo.live/). Let's say for example that we have the following channels with fictive IDs:
+You'll need to create two THEOlive channels via the [API](/theolive/api/channels/create-channel) or [management console](https://console.theo.live/). Let's say for example that we have the following channels with fictive IDs:
 
 - Channel `<channel-in-us-west>` which is located in the `us-west` region
 - Channel `<channel-in-us-east>` which is located in the `us-east` region
@@ -52,7 +52,7 @@ This will work as follows:
 5. This process will continue to work this way. If both streams are unavailable, the pre-live settings will be shown (an announcement message and optionally a poster image too).
 6. When the primary channel is stopped, all players will stop playing (even if the fallback channel is still streaming).
 
-For more information, please visit our [API Reference](https://developers.theo.live/reference/update-channel).
+For more information, please visit our [API Reference](/theolive/api/channels/update-channel).
 
 Note that the fallback can also easily be set in our management console on the Channel Details page. Scroll down to the **Playout Configurations** section and select the _Fallback_ tab.
 
