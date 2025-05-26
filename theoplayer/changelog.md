@@ -5,6 +5,19 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.4.1 (2025/05/23)
+
+### Web
+
+#### ⚡ Improvements
+
+- When playing a multiperiod DASH stream that has identical adaptation sets and representations across subsequent periods, a previously configured `targetQuality` will now remain active when transitioning to a new period rather than resetting to `undefined`.
+
+#### 🐛 Issues
+
+- Fixed an issue where DASH streams with very small variations in `presentationTimeOffset`s across periods with aligned media would encounter stalls on period transitions. 
+- Fixed an issue where `targetQuality` would get overridden with an incorrect configuration for DRM-enabled DASH streams where no `default_KID`s are present in the manifest.
+
 ## 🚀 9.4.0 (2025/05/20)
 
 ### General
@@ -33,6 +46,10 @@ toc_max_heading_level: 2
 - Fixed an issue where a DASH stream with adaptation set switching enabled and with different codecs between the adaptation sets doesn't play on Chrome, Edge and Safari.
 
 ### Android
+
+#### 💥 Breaking Changes
+
+- The type of `GoogleDaiVodConfiguration.adTagParameters` changed from `Map` to `MutableMap` as part of the Kotlin update. This was an unintended breaking change that will be reverted in 9.5.
 
 #### ✨ Features
 
