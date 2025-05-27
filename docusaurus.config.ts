@@ -15,7 +15,7 @@ import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
 import path from 'path';
 import fs from 'fs';
 import redirectsMillicast from './redirectsMillicast.json';
-import redirectsTHEOAds from './redirectsTHEOAds.json';
+import redirectsAds from './redirectsAds.json';
 import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 
 // THEOplayer license URL: /docs/theoplayer-license.txt
@@ -187,7 +187,7 @@ const config: Config = {
         id: 'theoads',
         path: 'theoads',
         routeBasePath: '/theoads',
-        sidebarPath: './sidebarsOptiViewAds.ts',
+        sidebarPath: './sidebarsAds.ts',
         docItemComponent: '@theme/ApiItem',
         async sidebarItemsGenerator(args) {
           const sidebarItems = await sidebarItemsGenerator(args);
@@ -314,7 +314,7 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: [...redirectsMillicast, ...redirectsTHEOAds, ...redirectsTHEOPlayer],
+        redirects: [...redirectsMillicast, ...redirectsAds, ...redirectsTHEOPlayer],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
