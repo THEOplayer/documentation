@@ -1,16 +1,15 @@
 # Basic Playback Guide
 
-After following our [Getting Started with Flutter guide](pathname:///theolive/playback/flutter/getting-started/) or the [Player Setup](#player-setup) section below, you will be ready to programmatically perform common playback actions. These include increasing/decreasing
+After following our [Getting Started with Flutter guide](./00-getting-started.mdx) or the [Player Setup](#player-setup) section below, you will be ready to programmatically perform common playback actions. These include increasing/decreasing
 the volume, playing/pausing the stream, enabling full screen, and selecting quality layers.
 
 ## Player Setup
 
-To get started with THEOlive playback using Flutter THEOplayer SDK, you must first initialize your player with reference to your THEOlive channel as the source.
+To get started with THEOlive playback using Flutter, you must first initialize a THEOplayer instance and set a THEOlive source.
 
 Here is example code of initializing a THEOplayer instance with Flutter:
 
 ```dart
-// Written with Dart
 late THEOplayer player;
 
 @override
@@ -74,6 +73,7 @@ To make the current stream take up the full screen, pass a presentationMode of '
 // stream will take up the full screen which it is being viewed on
 player.setPresentationMode('FULLSCREEN');
 ```
+
 To confirm that the change has occured, check the `getPresentationMode` property to ensure it now returns `fullscreen` as its value:
 
 ```dart
@@ -90,12 +90,15 @@ The `videoTracks` property leverages the Video Tracks API and will allow you to 
 To see what qualities you have available, use the following code:
 
 ```dart
-// print all available quality layers
+// import needed to use the 'inspect' function
+import 'dart:developer';
+
+// inspect all available quality layers
 var qualities = player.videoTracks.first.qualities.innerList;
 inspect("this is an array containing all available qualities --> ${qualities}");
 ```
 
-Once you know what options you have available, you can set the stream to be a specific quality by doing the following:
+Once you know what options you have available, you can set the stream to be a specific quality with the following:
 
 ```dart
 // set the first quality layer in the array to be the target quality layer
@@ -104,4 +107,4 @@ player.videoTracks.first.targetQuality = player.videoTracks.first.qualities.firs
 
 ## More information
 
-- [THEOplayer Flutter SDK](pathname:///theoplayer/v9/api-reference/web/classes/Player.html)
+- [THEOplayer Flutter SDK](/theoplayer/v9/api-reference/web/classes/Player.html)
