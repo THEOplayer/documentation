@@ -4,7 +4,90 @@
     "to": "/ads/"
   },
   {
-    "from": ["/theoads/api/signaling/", "/theoads/api/signaling/theoads-api/"],
-    "to": "/ads/api/signaling/ads-api/"
+    "from": "/theoads/api/",
+    "to": "/ads/api/"
+  },
+  {
+    "from": "/theoads/api/signaling/create-monetized-stream-break/",
+    "to": "/ads/api/signaling/create-monetized-stream-break/"
+  },
+  {
+    "from": "/theoads/api/signaling/create-monetized-stream-overlay/",
+    "to": "/ads/api/signaling/create-monetized-stream-overlay/"
+  },
+  {
+    "from": "/theoads/api/signaling/create-monetized-stream/",
+    "to": "/ads/api/signaling/create-monetized-stream/"
+  },
+  {
+    "from": "/theoads/api/signaling/delete-monetized-stream-breaks/",
+    "to": "/ads/api/signaling/delete-monetized-stream-breaks/"
+  },
+  {
+    "from": "/theoads/api/signaling/delete-monetized-stream-overlay/",
+    "to": "/ads/api/signaling/delete-monetized-stream-overlay/"
+  },
+  {
+    "from": "/theoads/api/signaling/delete-monetized-stream/",
+    "to": "/ads/api/signaling/delete-monetized-stream/"
+  },
+  {
+    "from": "/theoads/api/signaling/get-monetized-stream-breaks/",
+    "to": "/ads/api/signaling/get-monetized-stream-breaks/"
+  },
+  {
+    "from": "/theoads/api/signaling/get-monetized-stream-overlays/",
+    "to": "/ads/api/signaling/get-monetized-stream-overlays/"
+  },
+  {
+    "from": "/theoads/api/signaling/get-monetized-stream/",
+    "to": "/ads/api/signaling/get-monetized-stream/"
+  },
+  {
+    "from": "/theoads/api/signaling/get-monetized-streams/",
+    "to": "/ads/api/signaling/get-monetized-streams/"
+  },
+  {
+    "from": "/theoads/api/signaling/status/",
+    "to": "/ads/api/signaling/status/"
+  },
+  {
+    "from": [
+      "/theoads/api/signaling/",
+      "/theoads/api/signaling/theoads-api/"
+    ],
+    "to": "/ads/api/signaling/theoads-api/"
+  },
+  {
+    "from": "/theoads/api/signaling/update-monetized-stream-layout/",
+    "to": "/ads/api/signaling/update-monetized-stream-layout/"
+  },
+  {
+    "from": "/theoads/api/signaling/update-monetized-stream/",
+    "to": "/ads/api/signaling/update-monetized-stream/"
+  },
+  {
+    "from": "/theoads/getting-started/",
+    "to": "/ads/getting-started/"
+  },
+  {
+    "from": "/theoads/getting-started/android/",
+    "to": "/ads/getting-started/android/"
+  },
+  {
+    "from": "/theoads/getting-started/ios/",
+    "to": "/ads/getting-started/ios/"
+  },
+  {
+    "from": "/theoads/getting-started/react-native/",
+    "to": "/ads/getting-started/react-native/"
+  },
+  {
+    "from": "/theoads/getting-started/signaling-service/",
+    "to": "/ads/getting-started/signaling-service/"
+  },
+  {
+    "from": "/theoads/getting-started/web/",
+    "to": "/ads/getting-started/web/"
   }
 ]

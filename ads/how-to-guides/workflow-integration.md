@@ -29,4 +29,4 @@ To integrate the Signaling Service with your workflow, the properties origin and
 ## More information
 
 - [Getting Started](/ads/getting-started/index.mdx)
-- [API reference](/ads/api/signaling/ads-api/)
+- [API reference](/ads/api/signaling/theoads-api/)
