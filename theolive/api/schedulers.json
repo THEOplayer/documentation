@@ -1,0 +1,667 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Schedulers",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.theo.live/schedulers"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Schedulers",
+      "description": "Operations for scheduling channels and reports."
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "tags": ["Schedulers"],
+        "summary": "Create scheduler",
+        "description": "Define when a list of channels should be started",
+        "operationId": "create-scheduler",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "channelIds"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "A name for the scheduler"
+                  },
+                  "start": {
+                    "type": "string",
+                    "description": "The starting timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC! If left empty, the scheduler will start immediately."
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "The ending timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC! If left empty, the scheduler won't terminate automatically."
+                  },
+                  "channelIds": {
+                    "type": "array",
+                    "description": "List of channel IDs",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "clientId": {
+                    "type": "string",
+                    "description": "Optional: a string that you could set yourself."
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "An optional object of key values pairs",
+                    "properties": {}
+                  },
+                  "report": {
+                    "properties": {
+                      "start": {
+                        "type": "string",
+                        "description": "Optional starting timestamp in ISO string format of report. Defauls to the scheduler start time, and should lay between the scheduler start and end when passed"
+                      },
+                      "end": {
+                        "type": "string",
+                        "description": "Optional starting timestamp in ISO string format of report. Defauls to the scheduler end time, and should lay between the scheduler start and end when passed"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"schedulerId\": \"<id-of-scheduler>\",\n  \"name\": \"<name-of-scheduler>\",\n  \"start\": \"<start-of-scheduler>\",\n  \"end\": \"<end-of-scheduler>\",\n  \"channelIds\": [\"<channel-id-1>\", \"<channel-id-2>\"],\n  \"phase\": \"pending\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schedulerId": {
+                      "type": "string",
+                      "example": "<id-of-scheduler>"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "<name-of-scheduler>"
+                    },
+                    "start": {
+                      "type": "string",
+                      "example": "<start-of-scheduler>"
+                    },
+                    "end": {
+                      "type": "string",
+                      "example": "<end-of-scheduler>"
+                    },
+                    "channelIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "<channel-id-1>"
+                      }
+                    },
+                    "phase": {
+                      "type": "string",
+                      "example": "pending"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": ["Schedulers"],
+        "summary": "Get schedulers",
+        "description": "Get the list of schedulers that are connected to your organization. The result set is limited to 100 schedulers. Schedulers are sorted by creation date, oldest ones first. You can navigate between multiple pages by using the `startingAfter` query parameter. When passing a scheduler ID here, results will be returned starting after this specific scheduler.",
+        "operationId": "get-schedulers",
+        "parameters": [
+          {
+            "name": "startingAfter",
+            "in": "query",
+            "description": "Optional string which should contain an ID of a scheduler after which the list should start. Schedulers are sorted by creation date, oldest first.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "[\n  {\n    \"schedulerId\": \"<id-of-scheduler>\",\n    \"name\": \"<name-of-scheduler>\",\n    \"start\": \"<start-of-scheduler>\",\n    \"end\": \"<end-of-scheduler>\",\n    \"channelIds\": [\"<channel-id-1>\", \"<channel-id-2>\"],\n    \"phase\": \"pending\"\n  }\n]"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "schedulerId": {
+                        "type": "string",
+                        "example": "<id-of-scheduler>"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "<name-of-scheduler>"
+                      },
+                      "start": {
+                        "type": "string",
+                        "example": "<start-of-scheduler>"
+                      },
+                      "end": {
+                        "type": "string",
+                        "example": "<end-of-scheduler>"
+                      },
+                      "channelIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "<channel-id-1>"
+                        }
+                      },
+                      "phase": {
+                        "type": "string",
+                        "example": "pending"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}": {
+      "get": {
+        "tags": ["Schedulers"],
+        "summary": "Get scheduler",
+        "description": "Get a specific scheduler",
+        "operationId": "get-scheduler",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of scheduler to request",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"schedulerId\": \"<id-of-scheduler>\",\n  \"name\": \"<name-of-scheduler>\",\n  \"start\": \"<start-of-scheduler>\",\n  \"end\": \"<end-of-scheduler>\",\n  \"channelIds\": [\"<channel-id-1>\", \"<channel-id-2>\"],\n  \"phase\": \"pending\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schedulerId": {
+                      "type": "string",
+                      "example": "<id-of-scheduler>"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "<name-of-scheduler>"
+                    },
+                    "start": {
+                      "type": "string",
+                      "example": "<start-of-scheduler>"
+                    },
+                    "end": {
+                      "type": "string",
+                      "example": "<end-of-scheduler>"
+                    },
+                    "channelIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "<channel-id-1>"
+                      }
+                    },
+                    "phase": {
+                      "type": "string",
+                      "example": "pending"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": ["Schedulers"],
+        "summary": "Delete scheduler",
+        "description": "Removes a scheduler. This action can't be done when a scheduler is active, only when it's pending or terminated",
+        "operationId": "delete-scheduler",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a scheduler",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "tags": ["Schedulers"],
+        "summary": "Update scheduler",
+        "description": "Edit an existing scheduler object",
+        "operationId": "update-scheduler",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "A name for the scheduler"
+                  },
+                  "start": {
+                    "type": "string",
+                    "description": "The starting timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!"
+                  },
+                  "end": {
+                    "type": "string",
+                    "description": "The ending timestamp in ISO 8601 format. Example: 2022-08-23T10:00:00.000Z. Timestamps should be in UTC!"
+                  },
+                  "channelIds": {
+                    "type": "array",
+                    "description": "List of channel IDs",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "clientId": {
+                    "type": "string",
+                    "description": "An optional string you could set yourself"
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "An object of key-value pairs",
+                    "properties": {}
+                  },
+                  "report": {
+                    "properties": {
+                      "start": {
+                        "type": "string",
+                        "description": "Optional starting timestamp in ISO string format of report. Defauls to the scheduler start time, and should lay between the scheduler start and end when passed"
+                      },
+                      "end": {
+                        "type": "string",
+                        "description": "Optional ending timestamp in ISO string format of report. Defauls to the scheduler start time, and should lay between the scheduler start and end when passed"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"schedulerId\": \"<id-of-scheduler>\",\n  \"name\": \"<name-of-scheduler>\",\n  \"start\": \"<start-of-scheduler>\",\n  \"end\": \"<end-of-scheduler>\",\n  \"channelIds\": [\"<channel-id-1>\", \"<channel-id-2>\"],\n  \"phase\": \"pending\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "schedulerId": {
+                      "type": "string",
+                      "example": "<id-of-scheduler>"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "<name-of-scheduler>"
+                    },
+                    "start": {
+                      "type": "string",
+                      "example": "<start-of-scheduler>"
+                    },
+                    "end": {
+                      "type": "string",
+                      "example": "<end-of-scheduler>"
+                    },
+                    "channelIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "<channel-id-1>"
+                      }
+                    },
+                    "phase": {
+                      "type": "string",
+                      "example": "pending"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/report": {
+      "get": {
+        "tags": ["Schedulers"],
+        "summary": "Get scheduler report",
+        "description": "Get the usage report of a terminated scheduler",
+        "operationId": "get-scheduler-report",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of scheduler to get report for",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n \t\"status\": \"\",\n  \"link\": \"\"\n}\n"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "link": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/terminate": {
+      "post": {
+        "tags": ["Schedulers"],
+        "summary": "Terminate scheduler",
+        "description": "Terminate a scheduler manually",
+        "operationId": "terminate-scheduler",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the scheduler to be terminated",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{id}/start": {
+      "post": {
+        "tags": ["Schedulers"],
+        "summary": "Start scheduler now",
+        "description": "Start a scheduler manually and immeditaly",
+        "operationId": "terminate-scheduler-copy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the scheduler to be started immediately",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  }
+}

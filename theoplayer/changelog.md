@@ -5,6 +5,96 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.4.1 (2025/05/23)
+
+### Web
+
+#### ⚡ Improvements
+
+- When playing a multiperiod DASH stream that has identical adaptation sets and representations across subsequent periods, a previously configured `targetQuality` will now remain active when transitioning to a new period rather than resetting to `undefined`.
+
+#### 🐛 Issues
+
+- Fixed an issue where DASH streams with very small variations in `presentationTimeOffset`s across periods with aligned media would encounter stalls on period transitions. 
+- Fixed an issue where `targetQuality` would get overridden with an incorrect configuration for DRM-enabled DASH streams where no `default_KID`s are present in the manifest.
+
+## 🚀 9.4.0 (2025/05/20)
+
+### General
+
+#### ⚡ Improvements
+
+- Improved the ABR algorithm for OptiView live streams.
+
+### Web
+
+#### ✨ Features
+
+- Added support for subtitles in native fullscreen on iOS Safari for OptiView live streams.
+- Exposed VAST `<Extensions>` tag contents on `LinearAd`s.
+- Added `skipAdBreak()` method to the Ads API, to allow seeking out of an ad break when using the `csai` integration.
+
+#### ⚡ Improvements
+
+- Added CMCD v2 headers for all types of OptiView live HLS streams.
+- Improved the recovery speed of OptiView live streams when the network is interrupted for a very short time.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `manifestupdate` event was not dispatched for iOS Safari.
+- Fixed an issue where dispatching of ads using the `csai` integration was erroneous when preload is enabled.
+- Fixed an issue where a DASH stream with adaptation set switching enabled and with different codecs between the adaptation sets doesn't play on Chrome, Edge and Safari.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- The type of `GoogleDaiVodConfiguration.adTagParameters` changed from `Map` to `MutableMap` as part of the Kotlin update. This was an unintended breaking change that will be reverted in 9.5.
+
+#### ✨ Features
+
+- Added DASH thumbnail track support for Media3.
+
+#### ⚡ Improvements
+
+- Added Kotlin constructor for `SourceDescription`, as an alternative for `SourceDescription.Builder`.
+- Added Kotlin constructors for `DRMConfiguration` and `KeySystemConfiguration`, as an alternative for `DRMConfiguration.Builder` and `KeySystemConfiguration.Builder`.
+- Media and text tracks are now available on `loadedmetadata` when using the Media3 playback pipeline.
+
+#### 🐛 Issues
+
+- Fixed playback of DRM protected HESP streams.
+- Fixed an issue where a source with a `CustomSsaiDescription` (e.g. using the Uplynk or Yospace connector) could not be played with the Media3 pipeline.
+- Fixed an issue where the player would sometimes crash on play-out of an HLS source with `#EXT-X-DATERANGE` metadata.
+- Fixed an issue where date range cues were not properly removed in the Media3 pipeline once they are entirely before the start of the latest HLS playlist.
+- Fixed an issue where cues of text tracks that contain bitmap content would not be rendered.
+- Fixed an issue where the player would not free all resources after ad play-out.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fix issue on iOS with Chromecast where when the app goes to background and a Chromecast session is currently active, audio playback starts on the phone.
+- Fix issue on iOS with Chromecast where playback rate cannot be set back to `1.0`.
+- Fixed an issue where caching tasks would store multiple files on disk.
+
+### Roku
+
+#### ✨ Features
+
+- Added THEOlive support using backup HLS stream.
+- Added in ability to mix VMAP and VAST ads, and to schedule ads.
+- Added the ability to set headers on the media requests, and solved the issue of application headers bleeding over into media requests.
+
+#### ⚡ Improvements
+
+- Handled more unusual cases for scheduling ads during playback.
+- Handled more cases for scheduling ads, including scheduling ads when no ads have previously been configured.
+
+#### 🐛 Issues
+
+- Solved an issue with multi-ad VMAP postrolls by disabling Inter Pod Stitching for them.
+
 ## 🚀 9.3.2 (2025/05/13)
 
 ### Android
@@ -270,7 +360,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 #### ⚠ Known Limitations
 
-- Availability of media and text tracks has moved from the `loadedmetadata` event to the `loadeddata` event when using the Media3 playback pipeline.
+- ~~Availability of media and text tracks has moved from the `loadedmetadata` event to the `loadeddata` event when using the Media3 playback pipeline.~~ (Fixed in version 9.4.0.)
 - Text track styling embedded in the source take precedence over user text track style configuration.
 
 #### ✨ Features

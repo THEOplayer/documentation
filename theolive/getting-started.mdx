@@ -5,7 +5,7 @@ sidebar_label: Getting started
 
 # Backend
 
-THEOlive provides a REST api to manage channels, configure them and start / stop them. Each possible call can be found at our [API Reference](https://developers.theo.live/reference/create-channel).
+THEOlive provides a REST API to manage channels, configure them and start / stop them. Each possible call can be found at our [API Reference](/theolive/api/channels/create-channel).
 
 However, to make things easier for non-developers, we built a management console on top of these API calls which makes it straightforward to perform the basic actions. To be able to create and use a THEOlive channel, you should register for an account and get a token to perform [authenticated requests](./platform/authorization.mdx) to our API.
 
@@ -19,7 +19,7 @@ Once you've entered your username and password, you can already create your firs
 
 :::info 📘 API reference
 
-This guide describes how to get started with the THEOlive management console. Please consult the [API reference](https://developers.theo.live/reference/create-channel) and [Authorization](./platform/authorization.mdx) if you would like to work with API calls.
+This guide describes how to get started with the THEOlive management console. Please consult the [API reference](/theolive/api/channels/create-channel) and [Authorization](./platform/authorization.mdx) if you would like to work with API calls.
 :::
 
 ## 2. Create your first channel
@@ -32,7 +32,7 @@ When hitting 'Create', you will be navigated towards the Details page of your ne
 
 ![](assets/img/467abb8-overview.PNG 'Management console: Details page with the possibility to start your channel and options to customize your player.')
 
-A channel can also be created through an API call to the `channels` endpoint, passing an ingest location and a name. It will return an `id` that you can use to start, stop, update or delete the channel later on. Also, a `streamKey` and `rtmpPushUrl` will be returned to stream your content to. More information about the Create channel endpoint and how to pass advanced properties can be found [here](https://developers.theo.live/reference/create-channel).
+A channel can also be created through an API call to the `channels` endpoint, passing an ingest location and a name. It will return an `id` that you can use to start, stop, update or delete the channel later on. Also, a `streamKey` and `rtmpPushUrl` will be returned to stream your content to. More information about the Create channel endpoint and how to pass advanced properties can be found [here](/theolive/api/channels/create-channel).
 
 ```curl
 curl --location --request POST 'https://api.theo.live/channels'
@@ -57,7 +57,7 @@ Using the RTMP push URL and the stream key you have received when creating a cha
 If you would like to do pull-based streaming instead of push-based streaming, you can also use your own RTMP pull endpoint and specify this when starting the channel in the next step.
 :::
 
-One option to start streaming content is making use of [OBS](https://obsproject.com/). It's an easy, free and quick way to get you started. More information on how to get started with OBS can be found in our guide [Using OBS with THEOlive](./contribution/Encoder Guides/obs.md). If you would be using [Wirecast](https://www.telestream.net/wirecast) for your live streaming, then more information on how to get started can be found in the guide [Using Wirecast with THEOlive](./contribution/Encoder Guides/wirecast.md). There are also guides for [vMix](./contribution/Encoder Guides/vmix.md) and [Videon Edgecaster](./contribution/Encoder Guides/videon.mdx).
+One option to start streaming content is making use of [OBS](https://obsproject.com/). It's an easy, free and quick way to get you started. More information on how to get started with OBS can be found in our guide [Using OBS with THEOlive](./contribution/software-encoders/obs.md). If you would be using [Wirecast](https://www.telestream.net/wirecast) for your live streaming, then more information on how to get started can be found in the guide [Using Wirecast with THEOlive](./contribution/software-encoders/wirecast.md). There are also guides for [vMix](./contribution/software-encoders/vmix.md) and [Videon Edgecaster](./contribution/hardware-encoders/videon.mdx).
 
 :::info ❗️ RTMPS vs RTMP
 
@@ -95,7 +95,7 @@ You can easily start your channel on the channel details page, by clicking on th
 
 ![](assets/img/cbe288c-start.PNG)
 
-In the background this will make a `POST` request to the `channels/start` endpoint. You can also start a channel via the Start channel API call, for which you can find more information [here](https://developers.theo.live/reference/start-channel). As mentioned in the last section, you can optionally pass the `rtmpPullUrl` property in the body of the request for pull-based streaming. Don't forget to stop streaming when you are done!
+In the background this will make a `POST` request to the `channels/start` endpoint. You can also start a channel via the Start channel API call, for which you can find more information [here](/theolive/api/channels/start-channel). As mentioned in the last section, you can optionally pass the `rtmpPullUrl` property in the body of the request for pull-based streaming. Don't forget to stop streaming when you are done!
 
 ```curl
 curl --location --request POST 'https://api.theo.live/channels/{channel-id}/start' \
@@ -108,7 +108,7 @@ curl --location --request POST 'https://api.theo.live/channels/{channel-id}/star
 
 ## 6. Stop the channel
 
-Have you finished your real-time streaming? Make sure to stop your channel by making a request to the `channels/stop` endpoint, either through a [Stop channel](https://developers.theo.live/reference/stop-channel) API call or by pressing the red "stop" button in the management console.
+Have you finished your real-time streaming? Make sure to stop your channel by making a request to the `channels/stop` endpoint, either through a [Stop channel](/theolive/api/channels/stop-channel) API call or by pressing the red "stop" button in the management console.
 
 ```curl
 curl --location --request POST 'https://api.theo.live/channels/{channel-id}/stop' \

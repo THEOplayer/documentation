@@ -26,7 +26,7 @@ jobs:
         id: check_pr_exists
         shell: bash
         run: |
-          pr_count=$(gh pr list --base main --head $GITHUB_REF --state open --limit 1 --json number --jq length)
+          pr_count=$(gh pr list --base main --head $GITHUB_REF_NAME --state open --limit 1 --json number --jq length)
           if ((pr_count > 0)); then
             echo "exists=true" >> "$GITHUB_OUTPUT"
           fi

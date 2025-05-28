@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-sidebar_label: Getting Started with Native Android
+sidebar_label: Getting started with Native Android
 ---
 
 # Getting started with THEOlive streaming for Native Android
