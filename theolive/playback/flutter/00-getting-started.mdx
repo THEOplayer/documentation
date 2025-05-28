@@ -1,0 +1,77 @@
+---
+sidebar_position: 1
+sidebar_label: Getting Started with Flutter
+---
+
+# Getting Started with Flutter
+
+## Usage
+
+To use Flutter for THEOlive playback, you must use the THEOplayer SDK which now supports Web, Android, and iOS devices.
+
+1. Review the [THEOplayer Flutter SDK limitations](https://github.com/THEOplayer/flutter-theoplayer-sdk/blob/main/doc/limitations.md) to ensure your use case needs are supported before starting development.
+2. Install [Flutter](https://docs.flutter.dev/get-started/install?_gl=1*1p3c1i6*_ga*MTU3OTQxMjU1Ny4xNzQ2NzM3MjA5*_ga_04YGWK0175*czE3NDcxNTgyMTEkbzE2JGcxJHQxNzQ3MTU4MjU5JGowJGwwJGgw) onto your machine and setup in a compatible IDE.
+
+For customers currently using the now deprecated THEOlive SDK for playback, please migrate to using the THEOplayer SDK with the following [THEOlive migration guide](https://docs.optiview.dolby.com/theoplayer/flutter/guides/theolive/#migration-from-theolive-flutter-sdk-to-theoplayer-flutter-sdk)
+to always have the latest updates.
+
+### Flutter setup
+
+Make sure that you choose the right development platform (Windows, Linux, macOS, or ChromeOS) and type of app (iOS, Android, Web, or Desktop) when setting up Flutter on your machine for development.
+
+Once done with setup, you can run the following script to generate a boilerplate Flutter project:
+
+```bash
+$ flutter create -a kotlin -i swift -t app --org com.theoplayer --description "New THEOlive project" --project-name "theolive_sample_app" --platform ios,android theolive_sample_app
+```
+
+### Initializing a THEOplayer instance
+
+We currently are migrating THEOlive Flutter playback support to be mainly a feature of the THEOplayer Flutter SDK.
+
+when developing your Flutter application for THEOlive playback, use the [THEOplayer Flutter SDK minimal app setup](https://github.com/THEOplayer/flutter-theoplayer-sdk/blob/main/doc/creating-minimal-app.md) along with the [THEOlive support guide](https://github.com/THEOplayer/flutter-theoplayer-sdk/blob/main/doc/theolive.md) for THEOplayer.
+
+Configure the THEOplayer by adding your THEOplayer `license` and optionally providing extra `theolive` configuration:
+
+```dart
+// Written with Dart
+late THEOplayer player;
+
+@override
+void initState() {
+  super.initState();
+
+  player = THEOplayer(
+      theoPlayerConfig: THEOplayerConfig(
+        license: "YOUR_PLAYER_LICENSE_STRING",
+        // Extra THEOlive configuration - set a custom sessionId to follow the requests on the backend
+        theolive: TheoLiveConfiguration(externalSessionId: "mySessionID"),
+      ),
+      onCreate: () {
+        print("THEOplayer is created and ready to use");
+      });
+}
+```
+
+### Add a THEOlive source
+
+After setting up your THEOplayer in your Flutter project, set its source to a `SourceDescription` containing a `TheoLiveSource`.
+
+```
+// channel ID is entered for the 'src' property
+player.source = SourceDescription(sources: [
+    TheoLiveSource(src: "2vqqekesftg9zuvxu9tdme6kl"),
+]);
+```
+
+### Next steps
+
+If you've followed the steps above, you should now have a great boilerplate to further develop your project. 
+
+Use Flutter documentation along with our basic playback guide for Flutter to develop your project.
+
+## More information
+
+- [THEOPlayer Flutter SDK GitHub](https://github.com/THEOplayer/flutter-theoplayer-sdk/tree/main)
+- [THEOPlayer Flutter SDK Package](https://pub.dev/packages/theoplayer)
+- [Flutter Documentation](https://docs.flutter.dev/)
