@@ -4,13 +4,13 @@ sidebar_position: 5
 
 # Scheduling overlays
 
-THEOads can insert overlays into your content, but it requires placement information to do so. This page will outline the various options for scheduling overlays.
+OptiView Ads can insert overlays into your content, but it requires placement information to do so. This page will outline the various options for scheduling overlays.
 
-## Using the THEOads service REST API
+## Using the OptiView Ads service REST API
 
-The recommended way to schedule overlays is through the THEOads service API.
+The recommended way to schedule overlays is through the OptiView Ads service API.
 
-This can be done by a POST request to `{path}/overlay` where path is the usual url to interact with the THEOads service for a specific monetized stream: `{theoads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamOverlay](/theoads/api/signaling/create-monetized-stream-overlay/).
+This can be done by a POST request to `{path}/overlay` where path is the usual url to interact with the OptiView Ads service for a specific monetized stream: `{optiview-ads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamOverlay](/ads/api/signaling/create-monetized-stream-overlay/).
 
 The body of the post request can have the following properties:
 
@@ -92,7 +92,7 @@ An example of a schedule overlay request body for a GAM based image overlay can 
       "tv": "400x225"
     }
   },
-  "clickThroughURI": "https://www.theoplayer.com/product/theoads"
+  "clickThroughURI": "https://optiview.dolby.com"
 }
 ```
 
@@ -128,7 +128,7 @@ An example of a schedule overlay request body for a custom image overlay can be 
       "tv": "https://<PATH_TO_IMAGE>/image_tv.png"
     }
   ],
-  "clickThroughURI": "https://www.theoplayer.com/product/theoads"
+  "clickThroughURI": "https://optiview.dolby.com"
 }
 ```
 
@@ -136,9 +136,9 @@ An example of a schedule overlay request body for a custom image overlay can be 
 
 When using GAM for delivering dynamic image overlays through the `gamProperties` property of the overlay object, you need to first configure corresponding Creatives in the GAM console.
 
-First off, you need to define a custom creative template specifically for THEOads image overlays as documented [here](https://support.google.com/admanager/answer/1138308#custom-templates).
+First off, you need to define a custom creative template specifically for OptiView Ads image overlays as documented [here](https://support.google.com/admanager/answer/1138308#custom-templates).
 
-You can either import this [pre-defined template](../assets/json/THEOads_Image_Overlay_gam_template.json), or follow the steps below.
+You can either import this [pre-defined template](../assets/json/OptiView_Ads_Image_Overlay_gam_template.json), or follow the steps below.
 
 Apart from assigning a `Name` and optional `Description`, you need to perform the following changes:
 

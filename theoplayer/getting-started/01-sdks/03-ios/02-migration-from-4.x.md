@@ -43,7 +43,7 @@ Some features, like:
 
 - DRM pre-integrations
 - Analytics pre-integrations: Agama, Moat, Conviva, Youbora
-- Advertisement pre-integrations: THEOAds, Spotx
+- Advertisement pre-integrations: OptiView Ads, Spotx
 - Server-side ad insertion: Google DAI (coming soon), Yospace, MediaTailor, Verizon Media
 - VR
 

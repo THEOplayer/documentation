@@ -1,5 +1,5 @@
 ---
-sidebar_position: 0.1
+sidebar_position: 2
 sidebar_label: Signaling service
 sidebar_custom_props: { 'icon': '🛜' }
 ---
@@ -8,21 +8,21 @@ sidebar_custom_props: { 'icon': '🛜' }
 
 The Signaling Service is provided as a service and can be integrated into any existing content management workflow through its APIs, enabling seamless adoption without significant changes to your current setup.
 
-Developed and provided by THEO Technologies, this service operates on your infrastructure, integrated between your CDN and media origin. It performs manifest manipulation to insert ad breaks and additional metadata for the player. Additionally, it ensures scalability of the end-to-end system through early ad break notifications to ad decisioning servers.
+Developed and provided by Dolby OptiView, this service operates on your infrastructure, integrated between your CDN and media origin. It performs manifest manipulation to insert ad breaks and additional metadata for the player. Additionally, it ensures scalability of the end-to-end system through early ad break notifications to ad decisioning servers.
 
-![THEOads architecture](../assets/img/how_theoads_works-light.svg)
+![OptiView Ads architecture](../assets/img/how_ads_works-light.svg)
 
 ## Infrastructure integration
 
-The service is deployed and operated by THEO Technologies within the customer’s infrastructure. This setup ensures smooth integration into the existing video workflow with minimal disruption. During onboarding, THEO Technologies provides the specific infrastructure and network requirements. Once set up, THEO Technologies bootstraps the service, after which the customer can manage their streams and monitor the service through the REST API.
+The service is deployed and operated by Dolby OptiView within the customer’s infrastructure. This setup ensures smooth integration into the existing video workflow with minimal disruption. During onboarding, Dolby OptiView provides the specific infrastructure and network requirements. Once set up, Dolby OptiView bootstraps the service, after which the customer can manage their streams and monitor the service through the REST API.
 
-In collaboration with the customer and THEO's solutions team, the integration of the service into the existing video workflow is designed. Deploying the Signaling Service between the CDN and Origin ensures that regionalization, security, and localization features remain unaffected.
+In collaboration with the customer and Dolby OptiView's solutions team, the integration of the service into the existing video workflow is designed. Deploying the Signaling Service between the CDN and Origin ensures that regionalization, security, and localization features remain unaffected.
 
 > To ensure high availability, we recommend maintaining the original origin stream on a CDN as a backup, while the Signaling Service provides redundancy and failover capabilities to further enhance reliability.
 
 ## Monetized streams
 
-After deployment of the Signaling Service has been completed, the next step is the creation of monetized streams. A monetized stream represents an instance of a origin stream that is processed by the Signaling Service to enable THEOads for this origin stream. Created via the locally deployed REST API, it exposes a standardized HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. This setup ensures seamless ad insertion without needing CDN reconfiguration, even if the monetized stream is stopped and recreated.
+After deployment of the Signaling Service has been completed, the next step is the creation of monetized streams. A monetized stream represents an instance of a origin stream that is processed by the Signaling Service to enable OptiView Ads for this origin stream. Created via the locally deployed REST API, it exposes a standardized HTTPS (or HTTP) endpoint for the CDN to fetch the augmented manifest. This setup ensures seamless ad insertion without needing CDN reconfiguration, even if the monetized stream is stopped and recreated.
 
 The monetized stream holds the following information:
 
@@ -30,7 +30,7 @@ The monetized stream holds the following information:
 - `name`: Self defined descriptive name for the monetized stream.
 - `description`: Optional descriptive information for the monetized stream.
 - `labels`: Array of self defined labels (string).
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
 - `origin`: Your media origin host.
 - `segmentOrigin`: Your publicly available segments origin host.
 - `assetKey`: Google DAI Asset-Key linked to this stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
@@ -41,9 +41,9 @@ The monetized stream holds the following information:
 
 ```json
 {
-  "streamId": "theoads-demo",
-  "name": "THEOads Demo",
-  "description": "SGAI THEOads Demo",
+  "streamId": "optiview-ads-demo",
+  "name": "OptiView Ads Demo",
+  "description": "SGAI OptiView Ads Demo",
   "labels": [],
   "layout": "DOUBLE",
   "origin": "https://domain.com",
@@ -62,26 +62,26 @@ The following API endpoint creates a new monetized stream, mandatory parameters 
 - `streamId`: Unique identifier for the monetized stream within the environment.
 - `name`: Self defined descriptive name for the monetized stream.
 - `description`: Optional descriptive information for the monetized stream.
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 
-```curl
-curl -L 'https://<theoads-host>/ads-client/api/v1/monetized-streams' \
--H 'Content-Type: application/json' \
--H 'Accept: application/json' \
--d '{
-  "streamId": "string",
-  "name": "string",
-  "description": "string",
-  "layout": "SINGLE",
-  "origin": "string",
-  "segmentOrigin": "string",
-  "assetKey": "string",
-  "networkCode": "string"
-}'
+```bash
+curl -L 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams' \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -d '{
+      "streamId": "string",
+      "name": "string",
+      "description": "string",
+      "layout": "SINGLE",
+      "origin": "string",
+      "segmentOrigin": "string",
+      "assetKey": "string",
+      "networkCode": "string"
+  }'
 ```
 
 ### Updating an existing monetized stream
@@ -92,46 +92,45 @@ The following API endpoint updates an existing monetized stream based on it's st
 - `name`: Self defined descriptive name for the monetized stream.
 - `description`: Additional descriptive information for the monetized stream.
 - `labels`: Array of self defined labels (string).
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 - `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
 
-```curl
-curl -L -X PATCH 'https://<theoads-host>/ads-client/api/v1/monetized-streams/:streamId' \
--H 'Content-Type: application/json' \
--H 'Accept: application/json' \
--d '{
-  "streamId": "string",
-  "name": "string",
-  "description": "string",
-  "labels": [
-    "string"
-  ],
-  "origin": "string",
-  "segmentOrigin": "string",
-  "assetKey": "string",
-  "networkCode": "string"
-}'
+```bash
+curl -L -X PATCH 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -d '{
+      "streamId": "string",
+      "name": "string",
+      "description": "string",
+      "labels": [
+        "string"
+      ],
+      "origin": "string",
+      "segmentOrigin": "string",
+      "assetKey": "string",
+      "networkCode": "string"
+  }'
 ```
 
 ### Deleting an existing monetized stream
 
 The following API endpoint deletes an existing monetized stream based on it's streamId.
 
-```curl
-curl -L -X DELETE 'https://<theoads-host>/ads-client/api/v1/monetized-streams/:streamId' \
--H 'Accept: application/json'
+```bash
+curl -L -X DELETE 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
+  -H 'Accept: application/json'
 ```
 
 ### Retrieving all monetized streams
 
 The following API endpoint returns all existing monetized streams in the deployed environment.
 
-```curl
-curl -X 'GET' \
-  'https://<theoads-host>/ads-client/api/v1/monetized-streams' \
+```bash
+curl -X GET 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams' \
   -H 'accept: application/json'
 ```
 
@@ -140,11 +139,11 @@ The response is an array of the existing monetized stream resources.
 ```json
 [
   {
-    "id": "theoads-demo",
+    "id": "optiview-ads-demo",
     "payload": {
-      "streamId": "theoads-demo",
-      "name": "THEOads Demo",
-      "description": "SGAI THEOads Demo",
+      "streamId": "optiview-ads-demo",
+      "name": "OptiView Ads Demo",
+      "description": "SGAI OptiView Ads Demo",
       "labels": [],
       "layout": "DOUBLE",
       "origin": "https://domain.com",
@@ -162,20 +161,20 @@ The response is an array of the existing monetized stream resources.
 
 The following API endpoint returns an existing monetized stream based on its identifier (streamId).
 
-```curl
-curl -L 'https://<theoads-host>/ads-client/api/v1/monetized-streams/:streamId' \
--H 'Accept: application/json'
+```bash
+curl -L 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
+  -H 'Accept: application/json'
 ```
 
 The response is the monetized stream resource.
 
 ```json
 {
-  "id": "theoads-demo",
+  "id": "optiview-ads-demo",
   "payload": {
-    "streamId": "theoads-demo",
-    "name": "THEOads Demo",
-    "description": "SGAI THEOads Demo",
+    "streamId": "optiview-ads-demo",
+    "name": "OptiView Ads Demo",
+    "description": "SGAI OptiView Ads Demo",
     "labels": [],
     "layout": "DOUBLE",
     "origin": "https://domain.com",
@@ -188,23 +187,23 @@ The response is the monetized stream resource.
 }
 ```
 
-Please refer to the [API reference](/theoads/api/signaling/theoads-api/) for even more detailed information on the REST API.
+Please refer to the [API reference](/ads/api/signaling/theoads-api/) for even more detailed information on the REST API.
 
 ### Player source
 
-When playing a THEOads source corresponding to a monetized stream, it is expected to pass a source that looks like this:
+When playing a OptiView Ads source corresponding to a monetized stream, it is expected to pass a source that looks like this:
 
 ```js
-src: 'https://<theoads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/MANIFEST-URI';
+src: 'https://<optiview-ads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/MANIFEST-URI';
 ```
 
-In this URI, the `<theoads-host>` points to the network endpoint where the THEOads service is deployed, preferably a DNS entry pointing to the service IP endpoint and reachable from the CDN.
+In this URI, the `<optiview-ads-host>` points to the network endpoint where the OptiView Ads service is deployed, preferably a DNS entry pointing to the service IP endpoint and reachable from the CDN.
 Secondly, the `<monetized-stream-id>` corresponds to the `streamId` for the monetized stream.
 Finally, the `MANIFEST-URI` part points to the origin's manifest relative to the configured `origin` property of the monetized stream.
 For example:
 
 ```js
-src: 'https://<theoads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/manifest.m3u8';
+src: 'https://<optiview-ads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/manifest.m3u8';
 ```
 
 Segment URLs in the media playlists should be absolute URLs however.
@@ -232,10 +231,10 @@ Optionally, SCTE markers can be included with the tags for extra metadata.
 
 ### REST API
 
-For scheduling ad breaks through the REST API, please refer to the [API definitions](/theoads/api/signaling/create-monetized-stream-break/) and the example below.
+For scheduling ad breaks through the REST API, please refer to the [API definitions](/ads/api/signaling/create-monetized-stream-break/) and the example below.
 
 ```bash
-curl --location 'https://<theoads-host>/ads-client/api/v1/monetized-streams/stream-1/break' \
+curl --location 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/stream-1/break' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data '{
@@ -247,14 +246,13 @@ curl --location 'https://<theoads-host>/ads-client/api/v1/monetized-streams/stre
 }'
 ```
 
-For more in depth information on scheduling ad breaks we refer to our [How-to guide: Scheduling breaks](/theoads/how-to-guides/scheduling-breaks/)
+For more in depth information on scheduling ad breaks we refer to our [How-to guide: Scheduling breaks](/ads/how-to-guides/scheduling-breaks/)
 
-For more information on this topic we refer to our [workflow integration](/theoads/how-to-guides/workflow-integration/).
+For more information on this topic we refer to our [workflow integration](/ads/how-to-guides/workflow-integration/).
 
 # More information
 
-- [API reference](/theoads/api/signaling/theoads-api/)
-- [What is THEOads?](https://www.theoplayer.com/product/theoads/)
-- [The Advantages of Server-Guided Ad Insertion](https://www.theoplayer.com/solutions/server-guided-ad-insertion-sgai/)
-- [Flexible, Usage-Based Pricing](https://www.theoplayer.com/product/theoads/pricing/)
-- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://www.theoplayer.com/blog/server-guided-ad-insertion-sgai-revolutionizing-streaming-monetization/)
+- [API reference](/ads/api/signaling/theoads-api/)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
+- [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)

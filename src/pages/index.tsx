@@ -23,7 +23,7 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   return (
-    <Layout description="Developer documentation, guides and APIs for THEOplayer, THEOads, Open Video UI, Millicast and THEOlive.">
+    <Layout description="Developer documentation, guides and APIs for THEOplayer, OptiView Ads, Open Video UI, Millicast and THEOlive.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
