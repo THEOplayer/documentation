@@ -30,7 +30,7 @@ The monetized stream holds the following information:
 - `name`: Self defined descriptive name for the monetized stream.
 - `description`: Optional descriptive information for the monetized stream.
 - `labels`: Array of self defined labels (string).
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
 - `origin`: Your media origin host.
 - `segmentOrigin`: Your publicly available segments origin host.
 - `assetKey`: Google DAI Asset-Key linked to this stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
@@ -62,7 +62,7 @@ The following API endpoint creates a new monetized stream, mandatory parameters 
 - `streamId`: Unique identifier for the monetized stream within the environment.
 - `name`: Self defined descriptive name for the monetized stream.
 - `description`: Optional descriptive information for the monetized stream.
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
@@ -92,7 +92,7 @@ The following API endpoint updates an existing monetized stream based on it's st
 - `name`: Self defined descriptive name for the monetized stream.
 - `description`: Additional descriptive information for the monetized stream.
 - `labels`: Array of self defined labels (string).
-- `layout`: Default experience layout, see [ad experience layout](/theoads/how-to-guides/override-layout/).
+- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
 - `origin`: Your media Origin host.
 - `segmentOrigin`: Your publicly available segments origin.
 - `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
@@ -187,7 +187,7 @@ The response is the monetized stream resource.
 }
 ```
 
-Please refer to the [API reference](/theoads/api/signaling/theoads-api/) for even more detailed information on the REST API.
+Please refer to the [API reference](/ads/api/signaling/ads-api/) for even more detailed information on the REST API.
 
 ### Player source
 
@@ -231,7 +231,7 @@ Optionally, SCTE markers can be included with the tags for extra metadata.
 
 ### REST API
 
-For scheduling ad breaks through the REST API, please refer to the [API definitions](/theoads/api/signaling/create-monetized-stream-break/) and the example below.
+For scheduling ad breaks through the REST API, please refer to the [API definitions](/ads/api/signaling/create-monetized-stream-break/) and the example below.
 
 ```bash
 curl --location 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/stream-1/break' \
@@ -246,13 +246,13 @@ curl --location 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams
 }'
 ```
 
-For more in depth information on scheduling ad breaks we refer to our [How-to guide: Scheduling breaks](/theoads/how-to-guides/scheduling-breaks/)
+For more in depth information on scheduling ad breaks we refer to our [How-to guide: Scheduling breaks](/ads/how-to-guides/scheduling-breaks/)
 
-For more information on this topic we refer to our [workflow integration](/theoads/how-to-guides/workflow-integration/).
+For more information on this topic we refer to our [workflow integration](/ads/how-to-guides/workflow-integration/).
 
 # More information
 
-- [API reference](/theoads/api/signaling/theoads-api/)
+- [API reference](/ads/api/signaling/ads-api/)
 - [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
 - [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
 - [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)

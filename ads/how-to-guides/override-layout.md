@@ -10,7 +10,7 @@ OptiView Ads is able to insert ad breaks into your content via the signaling ser
 - `DOUBLE`: Allows content to continue playing side-by-side with an advertisement and its companion background.
 - `LSHAPE_AD`: Displays advertisements in a scaled window alongside a companion background.
 
-When your signaling service is created, the default layout should be defined. Look at our [API references](/theoads/api/signaling/create-monetized-stream/) for more information.
+When your signaling service is created, the default layout should be defined. Look at our [API references](/ads/api/signaling/create-monetized-stream/) for more information.
 
 The rest of this page will go over how to override this initial chosen layout in the [signaling service](#override-layout-through-the-signaling-service) itself,
 or override it on the [player side](#override-the-layout-through-the-player).
@@ -21,13 +21,13 @@ There are two ways to update the layout in the signaling service.
 
 ### Setting a new default layout
 
-It is possible to update the default layout value on the signaling service. This can be done by making an [UpdateMonetizedStreamLayout](/theoads/api/signaling/update-monetized-stream-layout/) API request to the signaling service with the new layout. The updated layout value will be the new default for all ad breaks.
+It is possible to update the default layout value on the signaling service. This can be done by making an [UpdateMonetizedStreamLayout](/ads/api/signaling/update-monetized-stream-layout/) API request to the signaling service with the new layout. The updated layout value will be the new default for all ad breaks.
 
 ### Signaling an ad break through the API
 
 When scheduling ad breaks through the signaling service API it is possible to choose the layout of the ad break. The passed layout will be used, unless it is left `undefined`. In this case the default layout is still used.
 
-For more information on the scheduling API refer to the following section: [Scheduling breaks through the signaling service](/theoads/how-to-guides/scheduling-breaks/#using-the-theoads-service-rest-api).
+For more information on the scheduling API refer to the following section: [Scheduling breaks through the signaling service](/ads/how-to-guides/scheduling-breaks/#using-the-optiview-ads-service-rest-api).
 
 ## Override the layout through the player
 

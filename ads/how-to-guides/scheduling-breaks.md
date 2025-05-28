@@ -90,7 +90,7 @@ An example snippet for an `#EXT-OATCLS-SCTE35` tag can be found below:
 
 If the ad information won't be present in the provided manifest, it is possible to schedule one through the OptiView Ads service API.
 
-This can be done by a POST request to `{path}/break` where path is the usual url to interact with the OptiView Ads service for a specific monetized stream: `{optiview-ads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamBreak](/theoads/api/signaling/create-monetized-stream-break/).
+This can be done by a POST request to `{path}/break` where path is the usual url to interact with the OptiView Ads service for a specific monetized stream: `{optiview-ads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamBreak](/ads/api/signaling/create-monetized-stream-break/).
 
 The body of the post request can have the following properties:
 
@@ -109,7 +109,7 @@ The body of the post request can have the following properties:
 - `startDate` denotes when the ad break should start. It should be in a Program Date Time format such as such as `YYYY-MM-DDThh:mm:ss.SSSZ`.
 - `duration` is the total duration of the ad break (seconds).
 - `source` is the optional identifier of the source for which the ad needs to be scheduled. The signaling service will only insert the ad for playlists containing part of this in their URL. If not set the ad is scheduled in every playlist.
-- `layout` is the optional THEOads layout, which can be set to `SINGLE`, `DOUBLE` or `LSHAPE_AD`. If it is `undefined` the default layout of the signaling service will be chosen.
+- `layout` is the optional OptiView Ads layout, which can be set to `SINGLE`, `DOUBLE` or `LSHAPE_AD`. If it is `undefined` the default layout of the signaling service will be chosen.
 - `assetURI` is the optional manifest URI of an alternative ad source. If set it will use this URI during the scheduled ad break instead of Google Pod Serving.
 
 An example of a schedule ad break request body can be found below:

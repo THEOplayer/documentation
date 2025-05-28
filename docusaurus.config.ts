@@ -184,9 +184,9 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
-        id: 'theoads',
-        path: 'theoads',
-        routeBasePath: '/theoads',
+        id: 'ads',
+        path: 'ads',
+        routeBasePath: '/ads',
         sidebarPath: './sidebarsAds.ts',
         docItemComponent: '@theme/ApiItem',
         async sidebarItemsGenerator(args) {
@@ -263,12 +263,12 @@ const config: Config = {
     [
       'docusaurus-plugin-openapi-docs',
       {
-        id: 'theoads-api',
-        docsPluginId: 'theoads',
+        id: 'ads-api',
+        docsPluginId: 'ads',
         config: {
           signaling: {
-            specPath: 'theoads/api/ads-client.swagger.json',
-            outputDir: 'theoads/api/signaling',
+            specPath: 'ads/api/ads-client.swagger.json',
+            outputDir: 'ads/api/signaling',
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
@@ -487,8 +487,8 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          docsPluginId: 'theoads',
-          sidebarId: 'theoads',
+          docsPluginId: 'ads',
+          sidebarId: 'ads',
           label: 'Ads',
           position: 'left',
         },

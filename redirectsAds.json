@@ -1,6 +1,10 @@
 [
   {
-    "from": "/theoads/api/signaling/",
-    "to": "/theoads/api/signaling/theoads-api/"
+    "from": "/theoads/",
+    "to": "/ads/"
+  },
+  {
+    "from": ["/theoads/api/signaling/", "/theoads/api/signaling/theoads-api/"],
+    "to": "/ads/api/signaling/ads-api/"
   }
 ]

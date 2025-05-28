@@ -10,7 +10,7 @@ OptiView Ads can insert overlays into your content, but it requires placement in
 
 The recommended way to schedule overlays is through the OptiView Ads service API.
 
-This can be done by a POST request to `{path}/overlay` where path is the usual url to interact with the OptiView Ads service for a specific monetized stream: `{optiview-ads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamOverlay](/theoads/api/signaling/create-monetized-stream-overlay/).
+This can be done by a POST request to `{path}/overlay` where path is the usual url to interact with the OptiView Ads service for a specific monetized stream: `{optiview-ads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamOverlay](/ads/api/signaling/create-monetized-stream-overlay/).
 
 The body of the post request can have the following properties:
 
