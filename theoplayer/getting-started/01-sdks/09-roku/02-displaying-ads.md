@@ -97,7 +97,7 @@ m.player.source = {
 
 #### Mixing VAST and VMAP Ads
 
-Currently, this is not supported. Support may be added for this in the future.
+Mixing VAST and VMAP ads is supported to an extent. A VMAP tag may contain multiple ad breaks. VAST tags may not be scheduled in between any of the breaks in a single VMAP tag. So, for instance, if you have a VMAP tag that contains a preroll and a postroll, you could not schedule any VAST midrolls between those breaks. However, if the preroll and postroll were in separate VMAP tags, you could schedule a midroll in between them.
 
 ### Listen for ad events
 
@@ -152,10 +152,31 @@ end sub
 
 The `rafProxy` field also exposes the library version of RAF via its own `libVersion` field.
 
+### Scheduling Ads at Runtime
+
+If you need to add an ad break to your asset when the asset has already begun playing, you can use the `schedule` method on the Ads API. It takes an ad description as the parameter. It will return a true or false value, based on whether adding the ad appears to have succeeded. In some cases when adding VMAP, it may not be able to report accurately whether the ad break was added or not. In that case you can observe the `scheduledAdBreaks` property to see if the ad break was correctly added.
+
+```brightscript
+adDesc = {
+    integration: "csai",
+    sources: "https://exampleadserver.com/midroll.xml",
+    timeOffset: "00:05:30"
+}
+success = m.player.ads.callFunc("schedule", adDesc)
+```
+
+There are some restrictions on what you can schedule:
+
+1. You cannot schedule preroll ads via the `schedule` method.
+2. You cannot schedule an ad at the same time as an already scheduled ad.
+3. You cannot schedule a VMAP before any previously scheduled breaks, unless that previously scheduled break is a VAST postroll.
+4. If you schedule a VMAP midroll after it would have already played, it will play immediately.
+5. You cannot schedule a midroll in between ad breaks that are in the same VMAP tag.
+6. You cannot schedule a midroll before a previously scheduled VMAP tag.
+
 ### Limitations
 
 Currently the Ads API does not support:
 
-- Mixing and matching VAST and VMAP tags.
-- Adding ads during playback of the asset.
+- Playing VAST tags in the middle of breaks from a VMAP tag.
 - Reporting the exact media file that is being played for a creative.
