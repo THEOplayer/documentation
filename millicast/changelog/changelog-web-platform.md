@@ -10,7 +10,7 @@ You can find the full history of previous releases with downloadable assets from
 
 This release includes some minor updates:
 
-⚡ Improvements
+⚡ **Improvements**
 
 - Updated stats to v1.0.4.
 - Added metadata event to the documentation.
@@ -18,7 +18,7 @@ This release includes some minor updates:
 - Updated docs links to Dolby Optiview.
 - Added forcePlayoutDelay to TypeScript definition.
 
-🐛 Issues
+🐛 **Issues**
 
 - Fixed inconsistencies with disableVideo/disableAudio flags.
 - Fixed the acceptable value types for sourceId to ensure consistency.
