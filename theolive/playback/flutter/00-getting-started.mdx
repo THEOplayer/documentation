@@ -9,7 +9,7 @@ sidebar_label: Getting Started with Flutter
 
 We have migrated THEOlive Flutter support to be a feature of the THEOplayer Flutter SDK.
 
-To use Flutter for THEOlive playback, you must use the [THEOplayer Flutter SDK](https://pub.dev/packages/theoplayer) which now supports Web, Android, and iOS devices.
+To use Flutter for THEOlive playback, you must use the [THEOplayer Flutter SDK](https://pub.dev/packages/theoplayer) which now supports Web, Android, and iOS devices. The following steps will ensure your project is setup optimally:
 
 1. Review the [THEOplayer Flutter SDK limitations](/theoplayer/flutter/guides/limitations/) to ensure your use case needs are supported before starting development.
 2. Follow along with the [THEOplayer Flutter SDK minimal setup guide](/theoplayer/flutter/guides/creating-minimal-app/) to setup a basic THEOlive project.
@@ -20,7 +20,7 @@ to always have the latest updates.
 
 ### Flutter project setup
 
-Run the following script to generate a boilerplate code for your Flutter project:
+Run the following script to generate boilerplate code for your Flutter project:
 
 ```bash
 $ flutter create -a kotlin -i swift -t app --org com.theoplayer --description "New THEOlive project" --project-name "theolive_sample_app" --platform ios,android theolive_sample_app
@@ -28,7 +28,7 @@ $ flutter create -a kotlin -i swift -t app --org com.theoplayer --description "N
 
 ### Initializing a THEOplayer instance
 
-Configure the THEOplayer by adding your THEOplayer license to the `license` property and optionally providing a `theolive` property for custom configuration:
+Configure the THEOplayer by setting your THEOplayer license on the `license` property and optionally providing a `theolive` property for custom configuration:
 
 ```dart
 late THEOplayer player;
@@ -64,7 +64,7 @@ player.source = SourceDescription(sources: [
 
 If you've followed the steps above, you should now have a boilerplate THEOlive Flutter application to further develop your project from.
 
-Use Flutter documentation along with our [basic playback guide](./01-basic-playback-guide/) for Flutter to develop your project.
+Use Flutter documentation along with our [basic playback guide](/theolive/playback/flutter/basic-playback-guide/) for Flutter to develop your project.
 
 ## More information
 
