@@ -2,6 +2,12 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2025-05-30 | REST APIs
+
+### Fixes
+
+- Update publish token deletion behaviour to trigger immediate termination of all associated live streams. Previously, live streams from deleted tokens may continue to run until disconnection of publishing client.
+
 ## 2025-04-10 | REST APIs
 
 ### Features
