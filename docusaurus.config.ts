@@ -22,6 +22,8 @@ import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
 fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplayerLicense);
 
+const isProductionDeployment = process.env.NODE_ENV === 'production' && !process.env.DOCUSAURUS_PR_NUMBER;
+
 const docsConfigBase = {
   include: [
     '**/*.{md,mdx}',
@@ -379,14 +381,18 @@ const config: Config = {
       } satisfies ClientRedirectsPlugin.Options,
     ],
     [
-      (_context, options: { webpack: WebpackConfiguration }) => ({
+      (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
         name: 'webpack-plugin',
-        configureWebpack() {
-          return options.webpack;
+        configureWebpack(_config, isServer) {
+          return options.webpack(isServer);
         },
       }),
       {
-        webpack: {
+        webpack: (isServer: boolean): WebpackConfiguration => ({
+          optimization: {
+            // https://github.com/facebook/docusaurus/discussions/11199
+            concatenateModules: isProductionDeployment ? !isServer : false,
+          },
           module: {
             // https://github.com/WebCoder49/code-input only exports to the global scope.
             // Insert some `import` and `export` statements where needed.
@@ -413,7 +419,7 @@ const config: Config = {
               },
             ],
           },
-        } satisfies WebpackConfiguration,
+        }),
       },
     ],
   ],
