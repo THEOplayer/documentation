@@ -582,6 +582,10 @@ const config: Config = {
       style: 'light',
       copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby Laboratories, Inc. All rights reserved.</a>`,
     },
+    colorMode: {
+      defaultMode: 'light',
+      respectPrefersColorScheme: true,
+    },
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.oneDark,
