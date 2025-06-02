@@ -112,6 +112,7 @@ const config: Config = {
   onBrokenAnchors: 'throw',
   onBrokenMarkdownLinks: 'throw',
   future: {
+    v4: true,
     experimental_faster: true,
   },
 
