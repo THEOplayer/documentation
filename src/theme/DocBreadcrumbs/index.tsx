@@ -8,7 +8,7 @@ import { useHomePageRoute } from '@docusaurus/theme-common/internal';
 import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
 import HomeBreadcrumbItem from '@theme/DocBreadcrumbs/Items/Home';
-import DocBreadcrumbsStructuredData from './StructuredData';
+import DocBreadcrumbsStructuredData from '@theme/DocBreadcrumbs/StructuredData';
 
 import styles from './styles.module.css';
 
