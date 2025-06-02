@@ -27,17 +27,29 @@ function useCategoryItemsPlural() {
     );
 }
 
-function CardContainer({ href, children }: { href: string; children: ReactNode }) {
+function CardContainer({ className, href, children }: { className?: string; href: string; children: ReactNode }): ReactNode {
   return (
-    <Link href={href} className={clsx('card padding--lg', styles.cardContainer)}>
+    <Link href={href} className={clsx('card padding--lg', styles.cardContainer, className)}>
       {children}
     </Link>
   );
 }
 
-function CardLayout({ href, icon, title, description }: { href: string; icon: ReactNode; title: string; description: ReactNode }) {
+function CardLayout({
+  className,
+  href,
+  icon,
+  title,
+  description,
+}: {
+  className?: string;
+  href: string;
+  icon: ReactNode;
+  title: string;
+  description?: ReactNode;
+}): ReactNode {
   return (
-    <CardContainer href={href}>
+    <CardContainer href={href} className={className}>
       <Heading as="h2" className={clsx('text--truncate', styles.cardTitle)} title={title}>
         {icon} {title}
       </Heading>
@@ -59,7 +71,7 @@ function CardIcon({ item, defaultIcon }: SidebarItemCardIconProps): JSX.Element 
   return <Icon className={styles.cardIcon} icon={(item.customProps as SidebarItemCustomProps)?.icon} defaultIcon={defaultIcon} />;
 }
 
-function CardCategory({ item }: { item: PropSidebarItemCategory }) {
+function CardCategory({ item }: { item: PropSidebarItemCategory }): ReactNode {
   const icon = <CardIcon item={item} defaultIcon="🗃️" />;
   const href = findFirstSidebarItemLink(item);
   const categoryItemsPlural = useCategoryItemsPlural();
@@ -68,16 +80,25 @@ function CardCategory({ item }: { item: PropSidebarItemCategory }) {
   if (!href) {
     return null;
   }
-  return <CardLayout href={href} icon={icon} title={item.label} description={item.description ?? categoryItemsPlural(item.items.length)} />;
+
+  return (
+    <CardLayout
+      className={item.className}
+      href={href}
+      icon={icon}
+      title={item.label}
+      description={item.description ?? categoryItemsPlural(item.items.length)}
+    />
+  );
 }
 
-function CardLink({ item }: { item: PropSidebarItemLink }) {
+function CardLink({ item }: { item: PropSidebarItemLink }): ReactNode {
   const icon = <CardIcon item={item} defaultIcon={isInternalUrl(item.href) ? '📄️' : '🔗'} />;
   const doc = useDocById(item.docId ?? undefined);
-  return <CardLayout href={item.href} icon={icon} title={item.label} description={item.description ?? doc?.description} />;
+  return <CardLayout className={item.className} href={item.href} icon={icon} title={item.label} description={item.description ?? doc?.description} />;
 }
 
-export default function DocCard({ item }: Props) {
+export default function DocCard({ item }: Props): ReactNode {
   switch (item.type) {
     case 'link':
       return <CardLink item={item} />;
