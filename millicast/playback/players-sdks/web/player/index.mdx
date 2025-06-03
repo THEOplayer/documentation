@@ -50,6 +50,40 @@ player.source = {
 };
 ```
 
+### Recommended Connection Configurations
+
+#### ABR Range Control
+
+For users viewing streams with multiple quality layers available, you may want to limit the maximum resolution of the stream they can consume. This could be to reduce egress traffic for certain users or to improve performance on low-end devices. The ABR range can be adjusted when connecting to a stream via the `layer` parameter by specifying a `maxHeight` or `maxWidth` that the client can consume.
+
+For example, to limit a client to a maximum resolution of 720p, you would specify a `maxHeight` of `720`:
+```javascript
+connectOptions: {
+   layer: {
+      maxHeight: 720,
+   },
+}
+```
+Setting a `maxHeight` of `0` will use the full ABR range available. Setting the `maxHeight` to an arbitrarily low value, such as `20`, will force the user onto the layer with the lowest resolution.
+
+#### Playout Delay
+
+Because of the complexities of last-mile delivery, some packets for video playback may arrive late. In higher-latency streaming protocols such as HESP or HLS, a client buffer helps smooth out playback so that these minor fluctuations are unnoticeable. Dolby's real-time streaming solution supports adding a playout buffer, which can similarly assist with these fluctuations. The `forcePlayoutDelay` buffer uses a `min` and a `max` value measured in milliseconds (ms) to specify the range the playout buffer should occupy. The player buffer will then dynamically shift between the `min` and `max` values depending on client conditions.
+
+You can determine how many frames of buffer you are using by dividing 1 second by your frame rate.  For example, if your frame rate is 30fps, you would divide `1s/30fps`, showing that each frame has a duration of `0.0333` or `33` milliseconds.
+
+This buffer is specified when connecting to a stream as shown below:
+```javascript
+connectOptions: {
+   forcePlayoutDelay: {
+      min: 50,
+      max: 120,
+   },
+}
+```
+The performance gains of the buffer diminish significantly beyond a buffer of 300ms. Typically, the team recommends a buffer between 0 and 5 frames for smooth playback.
+
+
 ## More information
 
 - [API references](pathname:///theoplayer/v9/api-reference/web/interfaces/MillicastSource.html)
