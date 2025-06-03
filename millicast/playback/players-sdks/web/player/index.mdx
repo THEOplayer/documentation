@@ -70,7 +70,7 @@ Setting a `maxHeight` of `0` will use the full ABR range available. Setting the 
 
 Because of the complexities of last-mile delivery, some packets for video playback may arrive late. In higher-latency streaming protocols such as HESP or HLS, a client buffer helps smooth out playback so that these minor fluctuations are unnoticeable. Dolby's real-time streaming solution supports adding a playout buffer, which can similarly assist with these fluctuations. The `forcePlayoutDelay` buffer uses a `min` and a `max` value measured in milliseconds (ms) to specify the range the playout buffer should occupy. The player buffer will then dynamically shift between the `min` and `max` values depending on client conditions.
 
-You can determine how many frames of buffer you are using by dividing 1 second by your frame rate.  For example, if your frame rate is 30fps, you would divide `1/3`, showing that each frame has a duration of `0.0333` or `33` milliseconds.
+You can determine how many frames of buffer you are using by dividing 1 second by your frame rate.  For example, if your frame rate is 30fps, you would divide `1s/30fps`, showing that each frame has a duration of `0.0333` or `33` milliseconds.
 
 This buffer is specified when connecting to a stream as shown below:
 ```javascript
