@@ -286,7 +286,7 @@ const config: Config = {
           millicast: {
             specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -295,7 +295,7 @@ const config: Config = {
           millicastDirector: {
             specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api/director',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -303,7 +303,7 @@ const config: Config = {
           millicastReportingApi: {
             specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api/reporting',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -320,7 +320,7 @@ const config: Config = {
           channels: {
             specPath: 'theolive/api/channels.json',
             outputDir: 'theolive/api/channels',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -329,7 +329,7 @@ const config: Config = {
           events: {
             specPath: 'theolive/api/events.json',
             outputDir: 'theolive/api/events',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -338,7 +338,7 @@ const config: Config = {
           reports: {
             specPath: 'theolive/api/reports.json',
             outputDir: 'theolive/api/reports',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -347,7 +347,7 @@ const config: Config = {
           schedulers: {
             specPath: 'theolive/api/schedulers.json',
             outputDir: 'theolive/api/schedulers',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -356,7 +356,7 @@ const config: Config = {
           webhooks: {
             specPath: 'theolive/api/webhooks.json',
             outputDir: 'theolive/api/webhooks',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
