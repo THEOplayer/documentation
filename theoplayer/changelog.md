@@ -5,6 +5,83 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.5.0 (2025/06/03)
+
+### General
+
+#### ✨ Features
+
+- Added support for HLS-only THEOlive channels.
+
+### Web
+
+#### ✨ Features
+
+- Added `player.millicast` API to access Millicast specific diagnostics and stats. See the [diagnostics doc page](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/frame-metadata/) for more information.
+- Added support for Dolby Digital (`ac-3`) codecs in HLS when the platform supports it.
+- Added a default value for the `ott_placement` GAM ad tag parameter for THEOads.
+
+#### ⚡ Improvements
+
+- Improved the latency of THEOlive streams on iOS Chrome.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would sometimes not end properly when playing an HLS stream that starts with a gap.
+- Fixed an issue where the player would crash when playing an HLS stream when all variant streams are offline. Instead, the player will now continue trying to request variant streams until one comes online.
+- Fixed an issue where a segment in an HLS stream marked with `EXT-X-GAP` was still being downloaded and buffered.
+
+### Android
+
+#### ✨ Features
+
+- Added `TextTrackStyle.marginRight` and `.marginBottom`.
+- Added the `CHANGE` event to `AudioTrackEventTypes` and `VideoTrackEventTypes`.
+- Added a default value for the `ott_placement` GAM ad tag parameter for THEOads.
+
+#### ⚡ Improvements
+
+- Improved the subtitle renderer to better handle margins. The relative position of each subtitle is now preserved, and subtitles are shifted only when they would otherwise cross a margin.
+- The Google IMA, Google DAI and THEOads integrations now automatically call `ImaSdkFactory.initialize()` to begin loading necessary IMA SDK resources before the first ad request, which improves load times. To improve load times even further, we recommend calling `ImaSdkFactory.initialize()` with your `ImaSdkSettings` manually when your app starts, even before creating your `THEOplayerView`. See [the Google Ads developer blog](https://ads-developers.googleblog.com/2025/05/optimize-ima-android-monetization-with.html) and [this Google IMA guide](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/load-time#call_imasdkfactoryinitialize) for more information.
+- Added an optional `googleImaConfiguration` parameter to `TheoAdsIntegrationFactory.createTheoAdsIntegration()`.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `TRACKLISTCHANGE` event was not firing in the Media3 pipeline.
+- Fixed an issue where text tracks would not be selectable in the sender app when casting to a Chromecast receiver.
+- Fixed an issue where setting `MediaTrack.targetQuality` on a disabled track (e.g. inside an `ADDTRACK` event listener) would be silently ignored in the Media3 pipeline.
+- Fixed an issue where trick play variants (such as `#EXT-X-I-FRAME-STREAM-INF` in HLS) were incorrectly added as qualities of a video `MediaTrack` in the Media3 pipeline.
+- Fixed a regression where `GoogleDaiConfiguration.adTagParameters` incorrectly required a `MutableMap` parameter instead of a regular `Map`.
+- Fixed an issue where caching a DRM protected stream would pause after starting when using the Media3 pipeline.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for adbreak to adbreak transition with THEOAds.
+- Added a default value for the `ott_placement` GAM ad tag parameter for THEOads.
+
+#### ⚡ Improvements
+
+- Improved smoothness of startup when playing THEOlive streams.
+
+### Roku
+
+#### ✨ Features
+
+- Added separate text tracks for HLS daterange and ID3 metadata. These will also still appear in the `metadata` text track.
+- Added the ability to add and remove integrations to the player.
+- Added support for EMSG and EMSG metadata tracks, available on the text tracks API.
+- Added ID3 tag parsing for EMSG ID3 tags received in DASH.
+- Added the ability to signal an embedded text track that is not in the manifest.
+- Added the ability to configure midroll ads to replace content when they play.
+
+#### 🐛 Issues
+
+- Changed caption suppression logic so it would not get triggered by switching languages.
+- Fixed closed captions for HLS so captions don't end up suppressed when a captions track starts as "disabled".
+- Fixed an issue where sometimes THEOlive assets would not autoplay.
+
 ## 🚀 9.4.1 (2025/05/23)
 
 ### Web
