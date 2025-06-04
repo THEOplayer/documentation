@@ -43,7 +43,6 @@ const sidebars: SidebarsConfig = {
     {
       type: 'html',
       value: '<hr />',
-      defaultStyle: true,
     },
     {
       type: 'doc',
