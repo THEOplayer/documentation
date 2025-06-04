@@ -19,12 +19,12 @@ It's possible to configure the frequency at which these events are dispatched th
 
 ```javascript
 player.source = {
-    sources: {
-        type: 'millicast',
-        src: 'multiview',
-        streamAccountId: 'k9Mwad',
-        statsIntervalMs: 5000 // <= This property configures the stats interval in milliseconds
-    },
+  sources: {
+    type: 'millicast',
+    src: 'multiview',
+    streamAccountId: 'k9Mwad',
+    statsIntervalMs: 5000, // <= This property configures the stats interval in milliseconds
+  },
 };
 ```
 
@@ -33,12 +33,14 @@ player.source = {
 Diagnostics data can be accessed through the `diagnose` API on the player Millicast API. This method expects a diagnostics configuration as defined in [the Millicast SDK API reference](https://millicast.github.io/millicast-sdk/module-Logger.html#~diagnose), for example:
 
 ```javascript
-console.log(player.millicast.diagnose({
+console.log(
+  player.millicast.diagnose({
     historySize: 10,
     minLogLevel: 'DEBUG',
     statsCount: 10,
-    statsFormat: 'JSON'
-}));
+    statsFormat: 'JSON',
+  })
+);
 ```
 
 ## More information
