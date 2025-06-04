@@ -1,6 +1,5 @@
 ---
-title: 'Multi-Source Broadcasting'
-slug: /multi-source-broadcasting
+title: Multi-Source Broadcasting
 sidebar_position: 9
 ---
 
@@ -8,7 +7,7 @@ sidebar_position: 9
 
 There are two main use cases where broadcasting multiple video and audio feeds to a stream is useful:
 
-1. [Multi-view streams](/millicast/playback/multiview.md): Multi-view is a feature whereby viewers ingest and render multiple streams simultaneously inside a browser or mobile native applications. Once rendered these streams can be switched between, offering the viewer the ability to control how they view and listen to the content. Multi-view is supported by all of our [Client SDKs](/millicast/client-sdks/index.mdx) for playback.
+1. [Multi-view streams](/millicast/playback/multi-view.md): Multi-view is a feature whereby viewers ingest and render multiple streams simultaneously inside a browser or mobile native applications. Once rendered these streams can be switched between, offering the viewer the ability to control how they view and listen to the content. Multi-view is supported by all of our [Client SDKs](/millicast/playback/players-sdks/index.mdx) for playback.
 2. [Audio Multiplexing](/millicast/playback/audio-multiplexing.md): Audio Multiplexing is a feature that allows viewers to receive multiple overlapping audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
 
 Multi-source can ingest contribution streams from sources such as RTMP and SRT. This guide provides the components and best practices for an optimal multi-view experience.
@@ -20,7 +19,7 @@ Multi-source broadcasting is accomplished by enabling a token for multi-source a
 :::tip Enable Multi-source
 To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.mdx#advanced-settings) enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
 
-Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multiview.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).
+Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multi-view.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).
 :::
 
 When multi-source is enabled, you use the `sourceId` attribute when publishing a stream.
@@ -28,7 +27,7 @@ When multi-source is enabled, you use the `sourceId` attribute when publishing a
 - If the `sourceId` is undefined, the stream is treated as the default or _main_ stream to ensure backward compatibility.
 - When identical `sourceId` settings are given with the same id value, the broadcast will only include the most recently published stream, allowing broadcasters to swap a stream seamlessly.
 - When there are multiple unique `sourceId` attributes the stream plays the **Main** source.
-  - You can [enable multi-view streams](/millicast/playback/multiview.md) on playback to view the available sources.
+  - You can [enable multi-view streams](/millicast/playback/multi-view.md) on playback to view the available sources.
 - This functionality is the same regardless of whether the stream is video only, audio only, or video and audio.
 - When multi-bitrate publishing is configured, the sources are logically grouped using the `simulcastId`.
 
@@ -44,7 +43,7 @@ With WebRTC broadcast workflows you get Adaptive Bitrate through Simulcast. With
 
 This allows for **Adaptive Bitrate** delivery of streams for a better user experience on a range of devices and network conditions. It also makes it possible to pass through from the studio or broadcast facility and deliver adaptive bitrate without any channel fees.
 
-See the [Simulcast](/millicast/using-webrtc-simulcast) guide for additional details on setting up these workflows.
+See the [Simulcast](/millicast/distribution/using-webrtc-simulcast) guide for additional details on setting up these workflows.
 
 ### Publishing sources
 
@@ -54,7 +53,7 @@ You can configure multiple publishing sources to enable simulcast or provide a m
 
 You can configure multiple discrete points of view as sources so that they can be independently selected during playback. We refer to this as **Multi-view**. As with multi-bitrate contribution, each source will be given a distinct label for each view.
 
-See the [Multi-view](/millicast/playback/multiview.md) guide for an explanation of that workflow for configuring playback.
+See the [Multi-view](/millicast/playback/multi-view.md) guide for an explanation of that workflow for configuring playback.
 
 ### Broadcast URLs
 
@@ -76,7 +75,7 @@ Learn more about how to use the [Multi-source Builder](/millicast/streaming-dash
 Steps to build a broadcast URL suitable for RTMP encoders:
 
 1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto".
-2. Gather the **RTMP publish path** and **RTMP publish stream name**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [How to find your RTMP publish URL](/millicast/broadcast/using-rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url)
+2. Gather the **RTMP publish path** and **RTMP publish stream name**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [How to find your RTMP publish URL](/millicast/broadcast/rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url)
 
 | RTMP publish path                           | Separator | RTMP publish stream name  |
 | :------------------------------------------ | :-------- | :------------------------ |
@@ -103,7 +102,7 @@ In the hosted player, the `simulcastId` is used to set the video source's on-scr
 Steps to build a broadcast URL suitable for SRT encoders:
 
 1. Choose your broadcast cluster region. This should be the geographically closest location from which you will be broadcasting and cannot be "Auto".
-2. Gather the **SRT publish path** and **SRT stream ID**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [Generate the SRT publish URL](/millicast/broadcast/using-srt.mdx#3-generate-the-srt-publish-url).
+2. Gather the **SRT publish path** and **SRT stream ID**. Depending on your choice of encoder, these may be configured as a single combined URL or as a separate URL and token. For more detailed instructions on locating these, see [Generate the SRT publish URL](/millicast/broadcast/srt.mdx#3-generate-the-srt-publish-url).
 
 | SRT publish path                    | Separator | SRT stream ID |
 | :---------------------------------- | :-------- | :------------ |
@@ -219,7 +218,7 @@ publisherOptions.sourceId = "MySource"
 </TabItem>
 </Tabs>
 
-For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/client-sdks/desktop/desktop-getting-started-with-publishing.md#4-configure-your-publishing-session), [Android](/millicast/client-sdks/android/android-getting-started-with-publishing.md#44-configure-publishing-options), and [iOS](/millicast/client-sdks/ios/ios-getting-started-with-publishing.md#24-configure-publishing-options).
+For the native desktop client, the `sourceId` is set through a parameter for the publish function. For more information on setting the `sourceId`, see "Configure your publishing session" for [desktop](/millicast/playback/players-sdks/desktop/getting-started-with-publishing.md#4-configure-your-publishing-session), [Android](/millicast/playback/players-sdks/android/sdk/getting-started-with-publishing.md#44-configure-publishing-options), and [iOS](/millicast/playback/players-sdks/ios/sdk/getting-started-with-publishing.md#24-configure-publishing-options).
 
 > Note: The `sourceId` should be a unique value and by default is undefined. Identical `sourceId` values should only be used for specifying [redundant streams](/millicast/broadcast/redundant-ingest/index.mdx).
 
@@ -250,18 +249,18 @@ There are multiple ways to playback and consume a multi-view feed:
 - Use the [Dolby-hosted player](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) (easiest for testing web)
 - Use the Dolby-published iOS and Android [Interactive Player Apps](https://dolby.io/project-gallery/interactive-player-apps/)
 - Build your own [multi-view app for Web](/millicast/getting-started/creating-real-time-streaming-web-app.mdx)
-- Build your own [multi-view app with the SDK](/millicast/client-sdks/index.mdx)
+- Build your own [multi-view app with the SDK](/millicast/playback/players-sdks/index.mdx)
 
 ## Troubleshooting
 
 ### Broadcasting best practices
 
-- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multiview.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
+- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multi-view.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
 - If broadcasting with Multi-Bitrate RTMP or SRT and recording is enabled, each quality rendition that you send into the service will be recorded unless you append the `&record=false` flag to your publishing endpoint.
 - If broadcasting with Multi-Bitrate RTMP or SRT, do not send duplicate audio to each layer. If you are unable to send video-only, you can add the `&videoOnly` parameter to have the service ignore the audio.
 
 ### Playback best practices
 
-- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multiview.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
+- There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multi-view.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
 - In your player client, if you are playing multiple videos at the same time, set smaller tiles to consume the lowest stream quality/bitrate so that the "main" video can utilize bitrate switching.
 - The `priority` parameter lets you set the priority of each feed. For redundant streams the primary feed should be assigned a consistent value for all input feeds, regardless of sourceId or simulcastId, and backups should mirror the primary's sourceID and simulcastId with a lower priority. In the case of any problem with the primary feed, viewers receive the available feed that has the highest priority. Not setting any priorities or setting the same priorities results in receiving the most recently published feed. For more information, see [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).

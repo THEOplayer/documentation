@@ -1,0 +1,118 @@
+---
+title: Osprey
+slug: /hardware-encoders/osprey
+---
+
+**Osprey Video** is a world leader in broadcasting solutions and an early adopter of [WHIP](/millicast/broadcast/webrtc-and-whip.mdx) for their Osprey Talon 4K-SC Encoder. By supporting WHIP, Osprey is able to offer an encoder that can natively encode WebRTC streams at broadcast-level quality for a variety of applications, such as [sports broadcasting](https://dolby.io/solutions/sports-betting/), [live event broadcasting](https://dolby.io/solutions/live-events/), and [auction streaming](https://dolby.io/solutions/auctions/).
+
+You can originate a broadcast from Osprey over a [WHIP](/millicast/broadcast/webrtc-and-whip.mdx), [SRT](/millicast/broadcast/srt.mdx) or [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx) source.
+
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to start your first broadcast. You'll need your _RTMP publish path_ and _RTMP publish stream name_ for the steps described below.
+:::
+
+See the official [Osprey Video](https://www.ospreyvideo.com/) site for documentation, installation instructions, and additional support.
+
+## Osprey Talon
+
+For cameras that don’t have built-in encoders, you can connect the camera to an external encoder such as the Osprey Talon.
+
+import OspreyTalon from '../../assets/img/hardware-encoders/osprey_talon.png';
+
+<div class="center-container">
+  <img src={OspreyTalon} width="600" />
+</div>
+
+You'll need to plug an ethernet connection and a power supply into your Talon encoder and power the device on.
+
+import OspreyTalon2 from '../../assets/img/hardware-encoders/osprey_talon_4k_sc.jpg';
+
+<div class="center-container">
+  <img src={OspreyTalon2} width="600" />
+</div>
+
+Once powered on, the device will be discoverable on your local network. You can interface with the device by opening the IP address in your browser, or, if you are a Windows user, you can [download the Osprey Boss Pro](https://www.ospreyvideo.com/talon-software-and-firmware), which provides a UI for finding the encoder.
+
+Once found in your browser, you'll be prompted to log into the device. Refer to the [Osprey Talon Encoder User Manual ](https://www.ospreyvideo.com/manuals)to learn about your device's username and password.
+
+import OspreyTalon3 from '../../assets/img/hardware-encoders/osprey_login.jpeg';
+
+<div class="center-container">
+  <img src={OspreyTalon3} width="600" />
+</div>
+
+### How-to use Osprey Talon with WHIP
+
+To get started, you'll have to [login](https://streaming.dolby.io) to a Dolby.io account. Within the account, you'll need the _Stream Name_ and _Publishing Token_.
+
+Inside the encoder UI, click on the _Channels_ tab. From the Channels tab, set the protocol to Dolby.io (WebRTC). Enter your Stream Name and Publishing Token in the corresponding fields.
+
+import WhipOsprey from '../../assets/img/hardware-encoders/osprey_talon_whip.png';
+
+<div class="center-container">
+  <img src={WhipOsprey} width="600" />
+</div>
+
+After inputting your credentials, switch to the Dashboard tab and click the green button to start the broadcast.
+
+import OspreyBroadcast from '../../assets/img/hardware-encoders/osprey_broadcast.png';
+
+<div class="center-container">
+  <img src={OspreyBroadcast} width="600" />
+</div>
+
+The stream is now live. To view the stream, navigate back to your newly created token on the Dolby.io Dashboard and switch to the _Playback_ tab. From the Playback tab, copy the _Hosted Player Path_ URL and open it in your browser.
+
+### How-to use Osprey Talon with SRT
+
+To get started, you'll have to [login](https://streaming.dolby.io) to a Dolby.io account. Within the account, you'll need the _SRT stream ID_ and _SRT publish path_.
+
+Inside the encoder UI, click on the _Channels_ tab. From the Channels tab, set the protocol to **TS over SRT**.
+
+- For the `SRT Dest Address` input the **SRT publish path** with the port kept separate in the `SRT Port`.
+- The value of the `SRT Stream ID` must be URL encoded. To get that URL encoded value, look for the **SRT publish URL** and copy the string of characters after `_?streamId=_`. For example, "_lq11zkzu%3Ft%3DVgkvUAa5b3QvoLW5b3QvoLW5b3QvoLW-ak_".
+
+import OspreySrt from '../../assets/img/hardware-encoders/osprey_srt.png';
+
+<div class="center-container">
+  <img src={OspreySrt} width="600" />
+</div>
+
+Once configured, you can press start and the encoder will begin streaming content.
+
+#### Turn on SRT encryption
+
+To enable SRT encryption for the SRT feed, in the Dolby.io dashboard for your stream token, enable **Passphrase encryption** and copy the **SRT passphrase**.
+
+import StrPassphrase from '../../assets/img/hardware-encoders/osprey_srt_passphrase.png';
+
+<div class="center-container">
+  <img src={StrPassphrase} width="600" />
+</div>
+
+In the Osprey Talon dashboard, enable AES-128 Encryption and paste the passphrase.
+
+import StrEncryption from '../../assets/img/hardware-encoders/osprey_srt_encryption.png';
+
+<div class="center-container">
+  <img src={StrEncryption} width="600" />
+</div>
+
+Once configured, you can press start and the encoder will begin streaming content.
+
+### How-to use Osprey Talon with RTMP
+
+To get started, you'll have to [login](https://streaming.dolby.io) to a Dolby.io account. Within the account, you'll need the _RTMP publish path_ and _RTMP publish stream name_.
+
+Inside the encoder UI, click on the _Channels_ tab. From the Channels tab, set the protocol to **RTMP/RTMPS**.
+
+- For the `Destination` input the **RTMP publish path**.
+- For the `Stream Key` input the **RTMP publish stream name**.
+
+import OspreyRtmp from '../../assets/img/hardware-encoders/osprey_rtmp_millicast.png';
+
+<div class="center-container">
+  <img src={OspreyRtmp} width="600" />
+</div>
+
+Once configured, you can press start and the encoder will begin streaming content.

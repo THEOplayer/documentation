@@ -1,6 +1,5 @@
 ---
-title: 'Simulcast'
-slug: /using-webrtc-simulcast
+title: Simulcast
 sidebar_position: 6
 ---
 
@@ -14,9 +13,9 @@ import Simulcast from '../assets/img/Simulcast.png';
 
 The platform's _Selective Forwarding Unit (SFU)_ is responsible for distributing the media and adjusts the bit rate so that the streaming player will select the highest quality stream it can reliably playback for each viewer. This is known as **Adaptive Bitrate (ABR) streaming**. The decision is made based on factors like available bandwidth but also other considerations such as device size, video layout, and CPU utilization may be considered. With **Multi-bitrate (MBR)** streaming, the end-user can be given controls to choose which resolution they would like to receive instead of letting the SFU _auto_ select it.
 
-This bitrate adaptation is available for [RTMP](/millicast/broadcast/using-rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/using-srt.mdx), and [WHIP](/millicast/broadcast/webrtc-whip.mdx) broadcast protocols.
+This bitrate adaptation is available for [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx), [SRT](/millicast/broadcast/srt.mdx), and [WHIP](/millicast/broadcast/webrtc-and-whip.mdx) broadcast protocols.
 
-Simulcast provides flexibility that allows viewers to adjust their individual experience for specific circumstances. For _multicast_ use cases of distributing to multiple destinations, review the [Syndication](/millicast/syndication) guide.
+Simulcast provides flexibility that allows viewers to adjust their individual experience for specific circumstances. For _multicast_ use cases of distributing to multiple destinations, review the [Syndication](/millicast/distribution/syndication) guide.
 
 :::tip Getting Started
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast.
@@ -53,17 +52,17 @@ import MediaSettings from '../assets/img/Capture_decran_2023-07-24_a_1.43.22_PM.
 
 You are now ready to send your live stream and can select the _start_ button on the broadcaster. The browser will provide multi-bitrate contributions during broadcast when using the _Streaming Dashboard_.
 
-You can use the [Hosted Player](/millicast/playback/hosted-viewer.md) to check the results.
+You can use the [Hosted Player](/millicast/playback/hosted-player/index.md) to check the results.
 
 ### How-to enable Simulcast from an encoder
 
-You may choose to use a [Hardware Encoder](../broadcast/hardware-encoders.mdx) that can support multi-bitrate encoding directly or [Software Encoders](../broadcast/software-encoders.mdx) that use additional plugins and configuration to enable separate renditions. Regardless of whether you are using RTMP, SRT, or WHIP as your broadcast protocol, you will need to configure multiple contributions to the broadcast with various quality layer settings.
+You may choose to use a [Hardware Encoder](../broadcast/hardware-encoders/index.mdx) that can support multi-bitrate encoding directly or [Software Encoders](../broadcast/software-encoders/index.mdx) that use additional plugins and configuration to enable separate renditions. Regardless of whether you are using RTMP, SRT, or WHIP as your broadcast protocol, you will need to configure multiple contributions to the broadcast with various quality layer settings.
 
 Specific integration examples:
 
-- [How-to Setup Multi-Bitrate Simulcast with OBS](/millicast/software-encoders/obs/index.mdx#multi-bitrate-simulcast-contribution)
-- [How-to Setup Multi-Bitrate Simulcast with vMix](/millicast/software-encoders/broadcasting-with-vmix.mdx#setup-multi-bitrate-rtmp-streaming-with-vmix)
-- [How-to Setup Multi-Bitrate Simulcast with Videon](/millicast/hardware-encoders/videon.mdx#how-to-use-multi-bitrate-on-videon-edgecaster)
+- [How-to Setup Multi-Bitrate Simulcast with OBS](/millicast/broadcast/software-encoders/obs/index.mdx#multi-bitrate-simulcast-contribution)
+- [How-to Setup Multi-Bitrate Simulcast with vMix](/millicast/broadcast/software-encoders/vmix.mdx#setup-multi-bitrate-rtmp-streaming-with-vmix)
+- [How-to Setup Multi-Bitrate Simulcast with Videon](/millicast/broadcast/hardware-encoders/videon.mdx#how-to-use-multi-bitrate-on-videon-edgecaster)
 
 As long as the WHIP, RTMP, or SRT client makes a Simulcast offer the media server will accept it.
 
@@ -87,7 +86,7 @@ The following table presents an example of using **simulcastId** and **sourceId*
 
 Some broadcast tools will use a single **URL** and others may require separate **publish path** and **stream name**.
 
-For WebRTC Simulcast append `?simulcastId&sourceId=1` to the stream **URL**, with each quality layer having a different **sourceId**. _(note that the [publishing parameters](/millicast/broadcast/broadcast-parameters.md) are appended to the URL and not the token)._
+For WebRTC Simulcast append `?simulcastId&sourceId=1` to the stream **URL**, with each quality layer having a different **sourceId**. _(note that the [publishing parameters](/millicast/broadcast/publishing-parameters.md) are appended to the URL and not the token)._
 
 #### RTMP Multi-Bitrate Publishing Example
 
@@ -117,7 +116,7 @@ The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.m
 
 ### Recommended settings for Simulcast
 
-The specific settings available may vary depending on your available [Hardware](../broadcast/hardware-encoders.mdx) or [Software](../broadcast/software-encoders.mdx) encoders. A few settings that are common:
+The specific settings available may vary depending on your available [Hardware](../broadcast/hardware-encoders/index.mdx) or [Software](../broadcast/software-encoders/index.mdx) encoders. A few settings that are common:
 
 - **Encoder**: H.264 (AVC), x264, ffmpeg, or nvenc
 - **Encoding Mode**: variable bitrate
@@ -168,7 +167,7 @@ During [Playback](/millicast/playback/index.mdx), stream quality defaults to _Au
 - The stream quality requested by the receiver if switched from _Auto_
 - The stream quality is estimated based on the receiver's available bandwidth
 
-When using the [Hosted Player](/millicast/playback/hosted-viewer.md), viewers will be automatically served video quality with an adaptive bitrate appropriate for them. It may take a brief amount of time for the bandwidth estimation to determine the ideal quality setting. Setting the bandwidth to the highest quality setting of 6000kbps during broadcast can help reduce the amount of time this adaptation takes.
+When using the [Hosted Player](/millicast/playback/hosted-player/index.md), viewers will be automatically served video quality with an adaptive bitrate appropriate for them. It may take a brief amount of time for the bandwidth estimation to determine the ideal quality setting. Setting the bandwidth to the highest quality setting of 6000kbps during broadcast can help reduce the amount of time this adaptation takes.
 
 The desired Video Quality can also be chosen manually. This is done within the viewer by clicking the _gear_ icon in the bottom right and selecting video quality, as shown below.
 
@@ -191,12 +190,12 @@ import Screenshot4 from '../assets/img/Screenshot_2023-11-02_at_10.19.42.png';
 </div>
 
 :::tip Building Your Own Custom Player To Support Multi-bitrate Streams
-If you are using the Millicast [Web SDK](/millicast/client-sdks/web.mdx) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
+If you are using the Millicast [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
 :::
 
 ## Simulcast demo video
 
-Here is a video showing the Simulcast playback using the [hosted player](/millicast/playback/hosted-viewer.md) built with the Javascript [Web SDK](/millicast/client-sdks/web.mdx).
+Here is a video showing the Simulcast playback using the [hosted player](/millicast/playback/hosted-player/index.md) built with the Javascript [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx).
 
 <div className="youtube-container">
   <iframe

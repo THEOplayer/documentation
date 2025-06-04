@@ -176,6 +176,15 @@ export function getPlatformDoc(docsPluginId: string, version: GlobalVersion, doc
 
 function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platformName: PlatformName): GlobalDoc | undefined {
   const docPath = doc.path.replace(version.path, '');
+  // Millicast React Native guide to Web/iOS/Android guide
+  if (platformName === 'web' || platformName === 'android' || platformName === 'ios') {
+    const millicastMatch = docPath.match(/^\/getting-started\/frameworks\/react-native\/millicast$/);
+    if (millicastMatch) {
+      const prefix = `${version.path}/how-to-guides/${platformName}/millicast`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, '', '/getting-started');
+      if (matchingDoc) return matchingDoc;
+    }
+  }
   // Getting Started
   const gettingStartedMatch = docPath.match(/^\/getting-started\/(?:sdks|frameworks)\/([a-z-]+)(|\/.*)$/);
   if (gettingStartedMatch && isPlatformName(gettingStartedMatch[1])) {
@@ -198,6 +207,15 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
     if (uplynkConnectorMatch && isPlatformName(uplynkConnectorMatch[1])) {
       const prefix = `${version.path}/how-to-guides/web/uplynk`;
       const matchingDoc = findMatchingDoc(version, doc, prefix, uplynkConnectorMatch[2], '/introduction');
+      if (matchingDoc) return matchingDoc;
+    }
+  }
+  // Millicast Web/iOS/Android guide to React Native guide
+  if (platformName === 'react-native') {
+    const millicastMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)\/millicast(|\/.*)$/);
+    if (millicastMatch && isPlatformName(millicastMatch[1])) {
+      const prefix = `${version.path}/getting-started/frameworks/react-native/millicast/`;
+      const matchingDoc = findMatchingDoc(version, doc, prefix, '', '');
       if (matchingDoc) return matchingDoc;
     }
   }

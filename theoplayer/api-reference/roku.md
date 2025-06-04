@@ -21,7 +21,9 @@ The attributes, methods and events.
 
 | Name                         | Type                        | Default | Access Permission | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ---------------------------- | --------------------------- | ------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ads                          | Ads                         | Ads     | read              | Provides events, properties and methods relating to ad playback in the player. See below for more info.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | audioTracks                  | array of associative arrays | []      | read              | Provides information about audio tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track name, language - track language, enabled - true if track is current track                                                                                                                                                                                                                                                                                                                   |
+| autoplay                     | boolean                     | false   | read,write        | Whether the player should play the video as soon as it is able after the source has been set.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | controls                     | boolean                     | true    | read,write        | Allows to enable or disable player controls ( `true` to show controls, `false` to hide controls).                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | currentTime                  | integer                     |         | read,write        | Current timestamp of video.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | duration                     | integer                     |         | read              | Duration of video.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -29,14 +31,14 @@ The attributes, methods and events.
 | subtitleSelectionPreferences | associative array           |         | write             | The significance and priority order of the attributes and values for the subtitle tracks available in the video stream. The selected subtitle track is reflected in the `textTracks` with `mode` as "showing" when visible in full screen or "hidden" when not in full screen. Refer to `subtitleSelectionPreferences` section of Roku's [video node](https://developer.roku.com/en-au/docs/references/scenegraph/media-playback-nodes/video.md) documentation. To select a subtitle track, based on user input, use the `mode` field of the `textTracks`. |
 | ended                        | boolean                     | false   | read              | Whether playback of the media is ended.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | errorObject                  | associative array           |         | read              | The last error that occurred for the current source, if any.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| listener (Deprecated)        | node                        |         | read,write        | The listener node (component) required to be set before using addEventListener or removeEventListener methods.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | loop                         | boolean                     | false   | read,write        | Whether playback of the media is looped.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| muted                        | boolean                     | false   | read,write        | Set `true` to mute and `false` to un-mute the currently playing video                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | paused                       | boolean                     | true    | read              | Whether the player is paused.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | poster                       | string                      |         | read,write        | The poster of the current source.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | seeking                      | boolean                     |         | read              | `true` when player is seeking, `false` when player is not seeking now.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | source                       | Source Description          |         | read,write        | Describes source of current video.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | src                          | string                      |         | read              | The current URL of the media resource.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| textTracks                   | array of associative arrays | []      | read              | Provides information about Closed Captions tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track description, language - track language,mode - determines track state, available values: disabled, showing, hidden                                                                                                                                                                                                                                                                 |
+| textTracks                   | array of associative arrays | []      | read,write        | Provides information about Closed Captions tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track description, language - track language,mode - determines track state, available values: disabled, showing, hidden                                                                                                                                                                                                                                                                 |
 
 ### Source Description
 
@@ -45,27 +47,44 @@ The following key/value pairs are supported on the `source` attribute of the `TH
 | Name                | Type               | Description                                                                                                                                                                                                                                               |
 | ------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sources             | roArray            | An array of Typed Sources. When specifying multiple source descriptions, the sources attribute will be interpreted as a playlist where the first typed source will play first and subsequent sources will play when its preceding typed source has ended. |
-| poster              | string             | The URL of an image to use as the poster for the media source. This is used for SDPosterUrl, HDPosterUrl, and FHDPosterUrl.                                                                                                                               |
+| poster              | string             | The URL of an image to optionally use as the poster for the media source. This is used for SDPosterUrl, HDPosterUrl, and FHDPosterUrl.                                                                                                                    |
 | live                | boolean            | Whether the asset is live or not.                                                                                                                                                                                                                         |
-| drmHttpAgentHeaders | roAssociativeArray | A key-value dictionary that contains additional HTTP headers that will be sent for DRM key/license requests. The keys represent the HTTP header names and the values represent their corresponding values.                                                |
+| drmHttpAgentHeaders | roAssociativeArray | An optional key-value dictionary that contains additional HTTP headers that will be sent for DRM key/license requests. The keys represent the HTTP header names and the values represent their corresponding values.                                      |
+| ads                 | roArray            | An optional array of AdDescriptions.                                                                                                                                                                                                                      |
 
 ### Typed Source
 
 The following key/value pairs are supported on the `sources` attribute of a Source Description:
 
-| **Name**          | **Type**           | **Description**                                                                                                            |
-| :---------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| src               | String             | The URL of the media resource.                                                                                             |
-| type              | String             | The content type (MIME type) of the media resource. Possible values are `application/dash+xml` and `application/x-mpegURL` |
-| title             | String             | The title of the media resource.                                                                                           |
-| description       | String             | The description of the media resource.                                                                                     |
-| playStart         | Number             | The position in the stream the user starts playback at. Use negative numbers to offset from the live edge.                 |
-| contentProtection | Content Protection | Parameters for DRM playback                                                                                                |
-| SDBifUrl          | String             | "Base Index Frames" URL for SD trick mode.                                                                                 |
-| HDBifUrl          | String             | "Base Index Frames" URL for HD trick mode.                                                                                 |
-| FHDBifUrl         | String             | "Base Index Frames" URL for FHD trick mode.                                                                                |
+| Name              | Type                      | Description                                                                                                                |
+| ----------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| src               | String                    | The URL of the media resource.                                                                                             |
+| type              | String                    | The content type (MIME type) of the media resource. Possible values are `application/dash+xml` and `application/x-mpegURL` |
+| title             | String                    | The title of the media resource.                                                                                           |
+| description       | String                    | The description of the media resource.                                                                                     |
+| playStart         | Number                    | The position in the stream the user starts playback at. Use negative numbers to offset from the live edge.                 |
+| contentProtection | Content Protection        | Parameters for DRM playback                                                                                                |
+| SDBifUrl          | String                    | "Base Index Frames" URL for SD trick mode.                                                                                 |
+| HDBifUrl          | String                    | "Base Index Frames" URL for HD trick mode.                                                                                 |
+| FHDBifUrl         | String                    | "Base Index Frames" URL for FHD trick mode.                                                                                |
+| ads               | roArray of AdDescriptions | Array of the ad description for the ads to play during the content.                                                        |
 
 "Base Index Frames" or BIF, is an archive file format that contains a set of still images, also known as "trick play thumbnails", supporting enhanced fast-forward and rewind modes during video playback.
+
+### Ad Descriptions
+
+| Name        | Type               | Description                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sources     | AdSource or string | Either an AdSource or the URL of the ad XML to load.                                                                                                                                                                                                                                                                                                                                                                       |
+| integration | string             | The kind of ad integration this uses. Currently the only supported value is `csai`.                                                                                                                                                                                                                                                                                                                                        |
+| timeOffset  | string or number   | An optional value determining when to show the ad. It can either be the number of seconds representing the timecode in the video when the ad should play, or it can be `start` or `end` to play the ad either before or after the video. Additionally it could be a percent of the content's duration, like `25%`, or a timecode in the format `HH:MM:SS`. NOTE: This is for VAST ads only. Do not use this with VMAP ads. |
+
+#### Ad Sources
+
+| Name | Type   | Description                                                                                                                                                        |
+| ---- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| src  | string | The URL of the XML file to load for the ad break.                                                                                                                  |
+| type | string | The optional type of the ad. Supported values are either `vast` or `vmap`. Otherwise the default value is inferred from the AdDescription's `timeOffset` property. |
 
 ### Content Protection
 
@@ -82,7 +101,7 @@ The following key/value pairs are supported on the `contentProtection` attribute
 
 To play videos protected using VUDRM, you need to supply a token. Replace the token `vualto-demo|2018-06-19T09:18:24Z|YSnJPmEceo` in the code below with your own token as well as the associated values of the keys `src` and `licenseUrl`.
 
-```brightscript
+```
 vuDrmSource = {
   sources: [
     {
@@ -108,40 +127,130 @@ The following key/value pairs are supported on the `drmParams` attribute of a Co
 | Name             | Type   | Description                                                                                                                                                                                                                                                                                                                                                        |
 | ---------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | KeySystem        | String | "playready" or "widevine". This value is case-insensitive. The default is an empty string.                                                                                                                                                                                                                                                                         |
-| licenseRenewURL  | String | A URL location for sending license renewal requests. If not specified, the Roku OS will send renewal requests to the URL specified in the licenseServerURL. This only works with Widevine.                                                                                                                                                                         |
+| licenseRenewURL  | String | A URL location for sending license renewal requests. If not specified, the Roku OS will send renewal requests to the URL specified in the licenseServerURL. This only works with widevine.                                                                                                                                                                         |
 | licenseServerURL | String | A URL location of a license server. This URL may include CGI parameters.                                                                                                                                                                                                                                                                                           |
 | serializationURL | String | A server address used for device provisioning                                                                                                                                                                                                                                                                                                                      |
 | serviceCert      | String | The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. Leave this unset unless Widevine is used for DRM.                                                                                                                                                                                                    |
 | lic_acq_window   | String | The maximum amount of time (in milliseconds) that a channel waits before rotating its Widevine DRM keys. The channel can generate a random wait time between 0 and the value specified in the **lic_acq_window** field, and use the random wait time to instruct when the Video node should make its next Widevine license request. _Available since Roku OS 10.5_ |
 
-## Verizon Media specific Attributes
+### Ads API
 
-| name   | type                       | description                                                   |
-| ------ | -------------------------- | ------------------------------------------------------------- |
-| ads    | verizonMediaAds            | Verizon media ads API, contains ads and ad breaks information |
-| assets | array of verizonMediaAsset | Verizon media assets API, contains assets information         |
+The Ads API exposes the following properties, methods, and events.
+
+| Property          | Type                 | Access Permission | Description                                                                                                   |
+| ----------------- | -------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| currentAdBreak    | AdBreak              | read              | The current AdBreak if ads are playing, or invalid if they are not playing.                                   |
+| currentAds        | array of Ads         | read              | Array of the current Ads in the current AdBreak, or invalid if ads are not playing.                           |
+| events            | assocarray           | read              | Map of the event types the Ads API will emit.                                                                 |
+| playing           | boolean              | read              | Whether an ad is currently playing.                                                                           |
+| rafProxy          | RafProxyNode         | read              | roSGNode that exposes data from the internal RAF library.                                                     |
+| scheduledAdBreaks | array of assocarrays | read              | Array of the scheduled breaks that haven't played. These may either be a source object or a resolved AdBreak. |
+| scheduledAds      | array of Ads         | read              | Array of the ads that are scheduled and have not played. Only shows one break's ads with VAST.                |
+
+| Method                                                                                       | Description                                       |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.    |
+| removeEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string) | Remove a listener for the specified player event. |
+| schedule(adDescription as AdDescription)                                                     | Schedule an ad break.                             |
+
+| Event            | Class        | Description                                                  |
+| ---------------- | ------------ | ------------------------------------------------------------ |
+| adbegin          | AdEvent      | The current creative has begun playing.                      |
+| adbreakbegin     | AdBreakEvent | The player is entering an ad break.                          |
+| adbreakend       | AdBreakEvent | The player is exiting an ad break.                           |
+| adbuffering      | AdEvent      | The current ad is buffering during playback.                 |
+| addadbreak       | AdBreakEvent | An ad break has been manually added.                         |
+| adend            | AdEvent      | The current ad has completed playing.                        |
+| aderror          | Event        | There was an error loading or playing an ad.                 |
+| adfirstquartile  | AdEvent      | The viewer has watched the first quartile of the current ad. |
+| adimpression     | AdEvent      | The ad has begun playing.                                    |
+| adloaded         | Event        | The XML for an ad has been loaded.                           |
+| admidpoint       | AdEvent      | The viewer has watched the half of the current ad.           |
+| adsmanagerloaded | Event        | When the RAF ad manager has been initialized.                |
+| adthirdquartile  | AdEvent      | The viewer has watched the third quartile of the current ad. |
+
+#### AdEvent and AdBreakEvent
+
+The AdEvent is an event object with the follow properties:
+
+| Property | Type    | Description                                                                 |
+| -------- | ------- | --------------------------------------------------------------------------- |
+| type     | string  | The current AdBreak if ads are playing, or invalid if they are not playing. |
+| date     | integer | The current epoch time in milliseconds.                                     |
+| ad       | Ad      | The ad associated with the event.                                           |
+
+The AdBreakEvent exposes the same properties as the AdEvent, but adds in a property with the current ad break:
+
+| Event   | Class   | Description                        |
+| ------- | ------- | ---------------------------------- |
+| adBreak | AdBreak | The ad break the event relates to. |
+
+#### AdBreak
+
+The AdBreak object is an associative array that can have the following properties:
+
+| Property    | Type       | Description                                                                                                          |
+| ----------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
+| ads         | roArray    | An array containing the Ads in the AdBreak.                                                                          |
+| customData  | assocarray | An associative array with any additional information for this ad break.                                              |
+| integration | string     | The integration that generated the AdBreak. Currently the only supported value is `csai`.                            |
+| maxDuration | integer    | The length of the break in seconds.                                                                                  |
+| timeOffset  | integer    | The time in the video at which the ad break should play, in seconds. 0 indicates preroll, and -1 indicates postroll. |
+
+The Ad object is an associative array that can have the following properties:
+
+| Property     | Type       | Description                                                                          |
+| ------------ | ---------- | ------------------------------------------------------------------------------------ |
+| adBreak      | AdBreak    | The AdBreak this Ad belongs to.                                                      |
+| adSystem     | string     | The ad system used to load this ad.                                                  |
+| clickThrough | string     | The clickthrough URL for this ad.                                                    |
+| companions   | roArray    | An array of any CompanionAds associated with this ad.                                |
+| creativeId   | string     | The creative ID for this ad.                                                         |
+| customData   | assocarray | An associative array with any additional information for this ad.                    |
+| duration     | integer    | The duration of this ad.                                                             |
+| height       | integer    | The height of the creative for this ad.                                              |
+| id           | string     | The ad ID for this ad.                                                               |
+| integration  | string     | The integration that generated the ad. Currently the only supported value is `csai`. |
+| resourceUri  | string     | The URI for the creative played in this Ad.                                          |
+| type         | string     | The type of ad. Currently only `linear` is supported.                                |
+| width        | integer    | The width of the creative for this ad.                                               |
+
+The CompanionAd object is an associative array that can have the following properties:
+
+| Property     | Type    | Description                                         |
+| ------------ | ------- | --------------------------------------------------- |
+| adSlotId     | string  | The ad slot id for this companion ad, if any.       |
+| clickthrough | string  | The clickthrough URL for this companion ad, if any. |
+| height       | integer | The height of the creative.                         |
+| resourceUri  | string  | The URI of the creative.                            |
+| provider     | string  | The provider of the companion ad, if any.           |
+| width        | integer | The width of the creative.                          |
+
+#### RafProxyNode
+
+The RAF proxy node has several fields that can be observed to consume data generated by the internal RAF library. This way, an application can access information traditionally available via the `getLibVersion`, `setRafTrackingCallback` and `setAdBufferRenderCallback` methods on RAF.
+
+| Property           | Type       | Access Permission | Description                                                     |
+| ------------------ | ---------- | ----------------- | --------------------------------------------------------------- |
+| bufferRenderUpdate | assocarray | read              | An associative array with the properties `eventType` and `ctx`. |
+| libVersion         | string     | read              | The string indicating the version of the RAF library.           |
+| trackingUpdate     | assocarray | read              | An associative array with the properties `eventType` and `ctx`. |
 
 ## Methods
 
 | Method                                                                                       | Description                                                                                                                                                                        |
 | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| addEventListener(eventType as string, eventListener as string, listenerOwner as roSGNode)    | Add a listener for the specified player event.                                                                                                                                     |
+| addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                                                     |
+| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (`{license: "MY_THEO_LICENSE"}`).                                                                                                        |
 | destroy                                                                                      | Destroy the player.                                                                                                                                                                |
 | getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                                              |
 | pause                                                                                        | Pause playback.                                                                                                                                                                    |
 | play                                                                                         | Start playback.                                                                                                                                                                    |
-| removeEventListener(eventType as string, eventListener as string, listenerOwner as roSGNode) | Remove the specified listener for the specified player event.                                                                                                                      |
+| removeEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string) | Remove the specified listener for the specified player event.                                                                                                                      |
 | setCopyGuardManagementSystem(cgms as Integer)                                                | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted.                             |
-| setDestinationRectangle(rect \{w,h,x,y} as roAssociativeArray)                               | Sets width, height, x, y of player.                                                                                                                                                |
 | setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer)              | Sets width, height, x, y of player.                                                                                                                                                |
 | setMaxVideoResolution(width as Integer, height as Integer)                                   | Sets maximum video resolution.                                                                                                                                                     |
 | setPlayerFocus(focused as Boolean, focusReceiver (optional) as roSGNode)                     | Gives or removes the focus from the internal player. If passing `false`, you may pass an optional roSGNode to receive the focus. If not passed, the THEOplayer SDK receives focus. |
-
-## Verizon Media specific Methods
-
-| Method | Description                                                                                                     |
-| ------ | --------------------------------------------------------------------------------------------------------------- |
-| skipAd | Skips Ad break if it is possible. This method is assigned directly to Player, due to roku specific architecture |
 
 ## Events
 
@@ -158,7 +267,7 @@ There are several player events being emitted.
 - `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
 - `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
 - `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
-- `destroy`: Fired when the player is destroyed, there is no extra data emitted along
+- `destroy`: Fired when the the player is destroyed, there is no extra data emitted along
 - `durationchange`: Fired when the duration changes, the extra data emitted is the duration
 - `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
 - `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
@@ -205,194 +314,3 @@ There are several player events being emitted.
 ```
 
 - `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
-
-## Verizon Media specific Events
-
-all events contain following data:
-
-- `date` (timestamp) of occurrence
-- `type` (string) of the event
-
-### Ads events:
-
-All ads events contain additional field `ad` of type VerizonMediaAd e.g.:
-
-```brightscript
-{
-    apiFramework: invalid
-    companions: [...]
-    creative: "b1dcbf39be7941338d91e0a68664875a"
-    duration: 15.0694
-    endTime: 431.729
-    events: {...}
-    extensions: [...]
-    freeWheelParameters: {...}
-    height: 0
-    mimeType: "uplynk/m3u8"
-    startTime: 416.66
-    width: 0
-}
-```
-
-- `adbegin `: fired when an ad begins
-- `adcomplete`: fired when ad is completed
-- `adend`: fired when ad ends
-- `removead`: fired when ad is removed
-- `adfirstquartile`: fired when the ad reaches the first quartile
-- `admidpoint`: fired when the ad reaches the midpoint
-- `adthirdquartile`: fired when the ad reaches the third quartile
-
-### Ad break events:
-
-All ads events contain additional field `adBreak` of type VerizonMediaAdBreak e.g.:
-
-```brightscript
-{
-    ads: [
-	    {
-		    apiFramework: invalid
-		    companions: [...]
-		    creative: "b813270206374fd0bc6ebafc6d60c551"
-		    duration: 15.0462
-		    endTime: 431.706
-		    events: {...}
-		    extensions: [...]
-		    freeWheelParameters: {...}
-		    height: 0
-		    mimeType: "uplynk/m3u8"
-		    startTime: 416.66
-		    width: 0
-		}
-	]
-    duration: 30.0692
-    endTime: 446.729
-    skipOffset: -1
-    startTime: 416.66
-}
-```
-
-- `adbreakbegin`: fired when ad break begins
-- `adbreakend`: fired when ad break ends
-- `updateadbreak`: fired when the ad break is updated
-- `adbreakskip`: fired when ad break is skipped
-- `addadbreak`: fired when ad break is added
-- `removeadbreak`: fired when ad break is removed
-
-### assets events:
-
-All assets events contain additional field `asset` of type VerizonMediaAsset e.g.:
-
-```brightscript
-{
-    assetId: "41afc04d34ad4cbd855db52402ef210e"
-    audioOnly: 0
-    boundaryDetails: invalid
-    defaultPosterUrl: "https://x-default-stgec.uplynk.com/ausw/slices/41a/fb3a4cb9965b46678fa101477ffad8fb/41afc04d34ad4cbd855db52402ef210e/00000014.jpg"
-    description: "Yahoo News - Unfiltered: GWAR Halloween - 3/1/19"
-    duration: 415.659
-    endTime: 415.659
-    error: false
-    externalId: ""
-    hasAdultLanguage: false
-    hasDrugSituations: false
-    hasSexualSituations: false
-    hasViolence: false
-    isAd: false
-    maxSlice: 101
-    metadata: invalid
-    movieRating: -1
-    ownerId: "fb3a4cb9965b46678fa101477ffad8fb"
-    posterUrl: "https://x-default-stgec.uplynk.com/ausw/slices/41a/fb3a4cb9965b46678fa101477ffad8fb/41afc04d34ad4cbd855db52402ef210e/00000014.jpg"
-    rates: [
-	    209
-	    399
-	    729
-	    1620
-	    2535
-	]
-    sliceDuration: 4.096
-    startTime: 0
-    thumbnailResolutions: [
-	    {
-		    bh: 128
-		    bw: 128
-		    height: 72
-		    prefix: ""
-		    width: 128
-		}
-	]
-    thumbPrefix: "https://x-default-stgec.uplynk.com/ausw/slices/41a/fb3a4cb9965b46678fa101477ffad8fb/41afc04d34ad4cbd855db52402ef210e/"
-    tvRating: -1
-}
-```
-
-- `addasset`: fired when asset has been added
-- `assetinforesponse`: fired when an asset info response is received. This event does not contain `asset` field but `response` VerizonMediaAssetInfoResponse.
-- `removeasset`: fired when asset has been removed
-
-### Ping events:
-
-- `pingerror`: fired when a Ping error has been received. Contains additional `error` (string) field.
-- `pingresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPingResponse field e.g.:
-
-```brightscript
-{
-    ad_data: <Component: roAssociativeArray>
-    aspect_ratio: 1.77778
-    asset: "bcf7d78c4ff94c969b2668a6edc64278"
-    audio_only: 0
-    boundary_details: invalid
-    default_poster_url: "https://x-default-stgec.uplynk.com/ausw/slices/bcf/fb3a4cb9965b46678fa101477ffad8fb/bcf7d78c4ff94c969b2668a6edc64278/00000014.jpg"
-    desc: "Build Series NYC - Allen Leech - 10/31/18"
-    duration: 1178.03
-    error: 0
-    external_id: ""
-    is_ad: 0
-    max_slice: 287
-    meta: <Component: roAssociativeArray>
-    movie_rating: -1
-    owner: "fb3a4cb9965b46678fa101477ffad8fb"
-    poster_url: "https://x-default-stgec.uplynk.com/ausw/slices/bcf/fb3a4cb9965b46678fa101477ffad8fb/bcf7d78c4ff94c969b2668a6edc64278/00000014.jpg"
-    rates: <Component: roArray>
-    rating_flags: 0
-    slice_dur: 4.096
-    storage_partitions: <Component: roArray>
-    thumb_prefix: "https://x-default-stgec.uplynk.com/ausw/slices/bcf/fb3a4cb9965b46678fa101477ffad8fb/bcf7d78c4ff94c969b2668a6edc64278/"
-    thumbs: <Component: roArray>
-    tv_rating: -1
-}
-
-```
-
-### Preplay events:
-
-- `preplayresponse`: fired when a Ping response is received. Contains additional `response` of type VerizonMediaPreplayResponse field e.g.:
-
-```brightscript
-{
-    ad_data: {...}
-    aspect_ratio: 1.77778
-    asset: "bcf7d78c4ff94c969b2668a6edc64278"
-    audio_only: 0
-    boundary_details: invalid
-    default_poster_url: "https://x-default-stgec.uplynk.com/ausw/slices/bcf/fb3a4cb9965b46678fa101477ffad8fb/bcf7d78c4ff94c969b2668a6edc64278/00000014.jpg"
-    desc: "Build Series NYC - Allen Leech - 10/31/18"
-    duration: 1178.03
-    error: 0
-    external_id: ""
-    is_ad: 0
-    max_slice: 287
-    meta: {...}
-    movie_rating: -1
-    owner: "fb3a4cb9965b46678fa101477ffad8fb"
-    poster_url: "https://x-default-stgec.uplynk.com/ausw/slices/bcf/fb3a4cb9965b46678fa101477ffad8fb/bcf7d78c4ff94c969b2668a6edc64278/00000014.jpg"
-    rates: [...]
-    rating_flags: 0
-    slice_dur: 4.096
-    storage_partitions: [...]
-    thumb_prefix: "https://x-default-stgec.uplynk.com/ausw/slices/bcf/fb3a4cb9965b46678fa101477ffad8fb/bcf7d78c4ff94c969b2668a6edc64278/"
-    thumbs: [...]
-    tv_rating: -1
-}
-
-```

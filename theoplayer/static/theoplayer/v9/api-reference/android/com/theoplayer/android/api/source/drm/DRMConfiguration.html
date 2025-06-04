@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../../";
 public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfiguration</a></span>
 
                     </pre>
-                    <div class="block"><p>The configuration of digital rights management(DRM).</p></div>
+                    <div class="block"><p>The configuration of digital rights management (DRM).</p></div>
 
                     <dl>
 
@@ -150,7 +150,7 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public class</code></td>
+                                            <td class="colFirst"><code>public final class</code></td>
                                             <th class="colSecond" scope="row"><code><a href="DRMConfiguration.Builder.html">DRMConfiguration.Builder</a></span></code>
                                             </th>
                                             <td class="colLast"><p>The builder for the DRM configuration.</p></td>
@@ -180,44 +180,44 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#fairplay>fairplay</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>public final <a href=KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#playready>playready</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#widevine>widevine</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>public final <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#playready>playready</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#clearkey>clearkey</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#integrationParameters>integrationParameters</a></code></th>
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#fairplay>fairplay</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>public final <a href=DRMIntegrationId.html>DRMIntegrationId</a></code></td>
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=DRMIntegrationId.html>DRMIntegrationId</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#integration>integration</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#customIntegrationId>customIntegrationId</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#integrationParameters>integrationParameters</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -247,7 +247,13 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#DRMConfiguration(com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,java.util.Map,java.lang.String,com.theoplayer.android.api.source.drm.DRMIntegrationId)">DRMConfiguration</a></span>(<a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customIntegrationId, <a href=DRMIntegrationId.html>DRMIntegrationId</a> integration)</code></th>
+                                                        href="#DRMConfiguration(com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,java.lang.String,java.util.Map)">DRMConfiguration</a></span>(<a href=KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customIntegrationId, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</code></th>
+                                                <td class="colLast">Creates a <a href=DRMConfiguration.html>DRMConfiguration</a>.</td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#DRMConfiguration(com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,com.theoplayer.android.api.source.drm.DRMIntegrationId,java.lang.String,java.util.Map)">DRMConfiguration</a></span>(<a href=KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=DRMIntegrationId.html>DRMIntegrationId</a> integration, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customIntegrationId, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -301,11 +307,11 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a></code>
+                                            <td class="colFirst"><code><a href=KeySystemConfiguration.html>KeySystemConfiguration</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getFairplay()>getFairplay</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getWidevine()>getWidevine</a>() </code>
                                             </th>
-                                            <td class="colLast">The Fairplay key system configuration.</td>
+                                            <td class="colLast">The Widevine key system configuration.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -317,14 +323,6 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code><a href=KeySystemConfiguration.html>KeySystemConfiguration</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getWidevine()>getWidevine</a>() </code>
-                                            </th>
-                                            <td class="colLast">The Widevine key system configuration.</td>
-                                        </tr>
-                                        
-                                        <tr id="i3" class="rowColor">
                                             <td class="colFirst"><code><a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getClearkey()>getClearkey</a>() </code>
@@ -332,42 +330,50 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                             <td class="colLast">The ClearKey key system configuration.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code>
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code><a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getIntegrationParameters()>getIntegrationParameters</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getFairplay()>getFairplay</a>() </code>
                                             </th>
-                                            <td class="colLast">A map which can be used to pass in specific parameters related to a source into a ContentProtectionIntegration.</td>
+                                            <td class="colLast">The FairPlay key system configuration.</td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code><a href=DRMIntegrationId.html>DRMIntegrationId</a></code>
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>final <a href=DRMIntegrationId.html>DRMIntegrationId</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getIntegration()>getIntegration</a>() </code>
                                             </th>
                                             <td class="colLast">The identifier of the DRM integration.</td>
                                         </tr>
                                         
-                                        <tr id="i6" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getCustomIntegrationId()>getCustomIntegrationId</a>() </code>
                                             </th>
                                             <td class="colLast">The custom integration identifier of the DRM integration.</td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
-                                            <td class="colFirst"><code>boolean</code>
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/ConaxDRMConfiguration.html#equals(Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> o) </code>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/XstreamConfiguration.html#getIntegrationParameters()>getIntegrationParameters</a>() </code>
+                                            </th>
+                                            <td class="colLast">A map which can be used to pass in specific parameters related to a source into a <a href=../../contentprotection/ContentProtectionIntegration.html>ContentProtectionIntegration</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/VudrmDRMConfiguration.html#equals(java.lang.Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> other) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i8" class="altColor">
-                                            <td class="colFirst"><code>int</code>
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=preintegration/ConaxDRMConfiguration.html#hashCode()>hashCode</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/VudrmDRMConfiguration.html#hashCode()>hashCode</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -403,11 +409,50 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="DRMConfiguration(com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,java.util.Map,java.lang.String,com.theoplayer.android.api.source.drm.DRMIntegrationId)"></a>
+                                <a name="DRMConfiguration(com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,java.lang.String,java.util.Map)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>DRMConfiguration</h4>
-                                        <pre>DRMConfiguration(<a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customIntegrationId, <a href=DRMIntegrationId.html>DRMIntegrationId</a> integration)</pre>
+                                        <pre>DRMConfiguration(<a href=KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customIntegrationId, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</pre>
+                                        <div class="block">Creates a <a href=DRMConfiguration.html>DRMConfiguration</a>.</div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>widevine</code> - The Widevine key system configuration.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>playready</code> - The PlayReady key system configuration.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>clearkey</code> - The ClearKey key system configuration.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>fairplay</code> - The FairPlay key system configuration.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>customIntegrationId</code> - The custom integration identifier of the DRM integration.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>integrationParameters</code> - A map which can be used to pass in specific parameters related to a source into a <a href=../../contentprotection/ContentProtectionIntegration.html>ContentProtectionIntegration</a>.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="DRMConfiguration(com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,com.theoplayer.android.api.source.drm.DRMIntegrationId,java.lang.String,java.util.Map)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>DRMConfiguration</h4>
+                                        <pre>DRMConfiguration(<a href=KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=DRMIntegrationId.html>DRMIntegrationId</a> integration, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> customIntegrationId, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -426,24 +471,21 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="getFairplay()">
+                                <a id="getWidevine()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getFairplay</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getFairplay()>getFairplay</a>()</pre>
-                                        <div class="block"><p>The Fairplay key system configuration.</p></div>
+                                        <h4>getWidevine</h4>
+                                        <pre class="methodSignature"> <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getWidevine()>getWidevine</a>()</pre>
+                                        <div class="block"><p>The Widevine key system configuration. (Nullable)</p></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a>. (Nullable)</p></dd>
                                         
 
                                         
@@ -460,42 +502,13 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                           >
                                     <li class="blockList">
                                         <h4>getPlayready</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getPlayready()>getPlayready</a>()</pre>
-                                        <div class="block"><p>The PlayReady key system configuration.</p></div>
+                                        <pre class="methodSignature"> <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getPlayready()>getPlayready</a>()</pre>
+                                        <div class="block"><p>The PlayReady key system configuration. (Nullable)</p></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The PlayReady <a href=KeySystemConfiguration.html>KeySystemConfiguration</a>. (Nullable)</p></dd>
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="getWidevine()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getWidevine</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=KeySystemConfiguration.html>KeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getWidevine()>getWidevine</a>()</pre>
-                                        <div class="block"><p>The Widevine key system configuration.</p></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The Widevine <a href=KeySystemConfiguration.html>KeySystemConfiguration</a>. (Nullable)</p></dd>
                                         
 
                                         
@@ -512,16 +525,13 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                           >
                                     <li class="blockList">
                                         <h4>getClearkey</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getClearkey()>getClearkey</a>()</pre>
-                                        <div class="block"><p>The ClearKey key system configuration.</p></div>
+                                        <pre class="methodSignature"> <a href=ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getClearkey()>getClearkey</a>()</pre>
+                                        <div class="block"><p>The ClearKey key system configuration. (Nullable)</p></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The ClearKey <a href=KeySystemConfiguration.html>KeySystemConfiguration</a>. (Nullable)</p></dd>
                                         
 
                                         
@@ -530,16 +540,16 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                     </li>
                                 </ul>
                                 
-                                <a id="getIntegrationParameters()">
+                                <a id="getFairplay()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getIntegrationParameters</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; <a href=preintegration/XstreamConfiguration.html#getIntegrationParameters()>getIntegrationParameters</a>()</pre>
-                                        <div class="block"><p>A map which can be used to pass in specific parameters related to a source into a ContentProtectionIntegration.</p></div>
+                                        <h4>getFairplay</h4>
+                                        <pre class="methodSignature"> <a href=FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> <a href=preintegration/XstreamConfiguration.html#getFairplay()>getFairplay</a>()</pre>
+                                        <div class="block"><p>The FairPlay key system configuration. (Nullable)</p></div>
 
                                         <dl>
 
@@ -561,16 +571,13 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                           >
                                     <li class="blockList">
                                         <h4>getIntegration</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=DRMIntegrationId.html>DRMIntegrationId</a> <a href=preintegration/XstreamConfiguration.html#getIntegration()>getIntegration</a>()</pre>
-                                        <div class="block"><p>The identifier of the DRM integration.</p></div>
+                                        <pre class="methodSignature"> final <a href=DRMIntegrationId.html>DRMIntegrationId</a> <a href=preintegration/XstreamConfiguration.html#getIntegration()>getIntegration</a>()</pre>
+                                        <div class="block"><p>The identifier of the DRM integration. (NonNull)</p></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The <a href=DRMIntegrationId.html>DRMIntegrationId</a>. (NonNull)</p></dd>
                                         
 
                                         
@@ -587,8 +594,8 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                           >
                                     <li class="blockList">
                                         <h4>getCustomIntegrationId</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=preintegration/XstreamConfiguration.html#getCustomIntegrationId()>getCustomIntegrationId</a>()</pre>
-                                        <div class="block"><p>The custom integration identifier of the DRM integration.</p></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=preintegration/XstreamConfiguration.html#getCustomIntegrationId()>getCustomIntegrationId</a>()</pre>
+                                        <div class="block"><p>The custom integration identifier of the DRM integration. (Nullable)</p></div>
 
                                         <dl>
 
@@ -602,7 +609,30 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                     </li>
                                 </ul>
                                 
-                                <a id="equals(Object)">
+                                <a id="getIntegrationParameters()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getIntegrationParameters</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; <a href=preintegration/XstreamConfiguration.html#getIntegrationParameters()>getIntegrationParameters</a>()</pre>
+                                        <div class="block"><p>A map which can be used to pass in specific parameters related to a source into a <a href=../../contentprotection/ContentProtectionIntegration.html>ContentProtectionIntegration</a>.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="equals(java.lang.Object)">
                                     <!--   -->
                                 </a>
                                 <ul class=
@@ -610,7 +640,7 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                           >
                                     <li class="blockList">
                                         <h4>equals</h4>
-                                        <pre class="methodSignature"> boolean <a href=preintegration/ConaxDRMConfiguration.html#equals(Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> o)</pre>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=preintegration/VudrmDRMConfiguration.html#equals(java.lang.Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> other)</pre>
                                         <div class="block"></div>
 
                                         <dl>
@@ -633,7 +663,7 @@ public class <span class="typeNameLabel"><a href=DRMConfiguration.html>DRMConfig
                                           >
                                     <li class="blockList">
                                         <h4>hashCode</h4>
-                                        <pre class="methodSignature"> int <a href=preintegration/ConaxDRMConfiguration.html#hashCode()>hashCode</a>()</pre>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=preintegration/VudrmDRMConfiguration.html#hashCode()>hashCode</a>()</pre>
                                         <div class="block"></div>
 
                                         <dl>

@@ -1,6 +1,5 @@
 ---
-title: 'STUN and TURN Service'
-slug: /stun-and-turn-service
+title: STUN and TURN Service
 ---
 
 ### What is STUN and TURN?

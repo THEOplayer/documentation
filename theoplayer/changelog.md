@@ -5,6 +5,183 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.4.1 (2025/05/23)
+
+### Web
+
+#### ⚡ Improvements
+
+- When playing a multiperiod DASH stream that has identical adaptation sets and representations across subsequent periods, a previously configured `targetQuality` will now remain active when transitioning to a new period rather than resetting to `undefined`.
+
+#### 🐛 Issues
+
+- Fixed an issue where DASH streams with very small variations in `presentationTimeOffset`s across periods with aligned media would encounter stalls on period transitions. 
+- Fixed an issue where `targetQuality` would get overridden with an incorrect configuration for DRM-enabled DASH streams where no `default_KID`s are present in the manifest.
+
+## 🚀 9.4.0 (2025/05/20)
+
+### General
+
+#### ⚡ Improvements
+
+- Improved the ABR algorithm for OptiView live streams.
+
+### Web
+
+#### ✨ Features
+
+- Added support for subtitles in native fullscreen on iOS Safari for OptiView live streams.
+- Exposed VAST `<Extensions>` tag contents on `LinearAd`s.
+- Added `skipAdBreak()` method to the Ads API, to allow seeking out of an ad break when using the `csai` integration.
+
+#### ⚡ Improvements
+
+- Added CMCD v2 headers for all types of OptiView live HLS streams.
+- Improved the recovery speed of OptiView live streams when the network is interrupted for a very short time.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `manifestupdate` event was not dispatched for iOS Safari.
+- Fixed an issue where dispatching of ads using the `csai` integration was erroneous when preload is enabled.
+- Fixed an issue where a DASH stream with adaptation set switching enabled and with different codecs between the adaptation sets doesn't play on Chrome, Edge and Safari.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- The type of `GoogleDaiVodConfiguration.adTagParameters` changed from `Map` to `MutableMap` as part of the Kotlin update. This was an unintended breaking change that will be reverted in 9.5.
+
+#### ✨ Features
+
+- Added DASH thumbnail track support for Media3.
+
+#### ⚡ Improvements
+
+- Added Kotlin constructor for `SourceDescription`, as an alternative for `SourceDescription.Builder`.
+- Added Kotlin constructors for `DRMConfiguration` and `KeySystemConfiguration`, as an alternative for `DRMConfiguration.Builder` and `KeySystemConfiguration.Builder`.
+- Media and text tracks are now available on `loadedmetadata` when using the Media3 playback pipeline.
+
+#### 🐛 Issues
+
+- Fixed playback of DRM protected HESP streams.
+- Fixed an issue where a source with a `CustomSsaiDescription` (e.g. using the Uplynk or Yospace connector) could not be played with the Media3 pipeline.
+- Fixed an issue where the player would sometimes crash on play-out of an HLS source with `#EXT-X-DATERANGE` metadata.
+- Fixed an issue where date range cues were not properly removed in the Media3 pipeline once they are entirely before the start of the latest HLS playlist.
+- Fixed an issue where cues of text tracks that contain bitmap content would not be rendered.
+- Fixed an issue where the player would not free all resources after ad play-out.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fix issue on iOS with Chromecast where when the app goes to background and a Chromecast session is currently active, audio playback starts on the phone.
+- Fix issue on iOS with Chromecast where playback rate cannot be set back to `1.0`.
+- Fixed an issue where caching tasks would store multiple files on disk.
+
+### Roku
+
+#### ✨ Features
+
+- Added THEOlive support using backup HLS stream.
+- Added in ability to mix VMAP and VAST ads, and to schedule ads.
+- Added the ability to set headers on the media requests, and solved the issue of application headers bleeding over into media requests.
+
+#### ⚡ Improvements
+
+- Handled more unusual cases for scheduling ads during playback.
+- Handled more cases for scheduling ads, including scheduling ads when no ads have previously been configured.
+
+#### 🐛 Issues
+
+- Solved an issue with multi-ad VMAP postrolls by disabling Inter Pod Stitching for them.
+
+## 🚀 9.3.2 (2025/05/13)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where communication with Google IMA backend was interrupted after an ad break on THEOAds.
+
+## 🚀 9.3.1 (2025/05/12)
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved the algorithm behind our HESP pipeline to reach the targetLatency.
+
+## 🚀 9.3.0 (2025/05/05)
+
+### Web
+
+#### ✨ Features
+
+- Added support for DRM protected OptiView Streaming HLS.
+
+#### ⚡ Improvements
+
+- The VR integration now initializes itself lazily when the first VR-enabled source is set, rather than when the player is created.
+- Improved the transition from content to ad for THEOads streams on smart TVs.
+- Improved playback stability of HESP streams on Xbox.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would show a blank screen on Tizen 2.4 when playing a non THEOads stream and the `theoads` feature is enabled in the `PlayerConfiguration`.
+- Fixed an issue for THEOads where scheduling an ad break through SSE could cause it to be played twice in a row.
+- Fixed an issue for THEOads where the player did not resume the content at the correct time after an ad break.
+- Fixed an issue where switching between audio tracks with an incompatible codec in an HLS stream causes the player to crash, even though the codecs are supported by the browser.
+- Fixed an issue where the Chromeless player would freeze when switching to an adbreak when playing a THEOads stream unmuted on iOS Safari.
+
+### Android
+
+#### ✨ Features
+
+- Added support for the `Metrics` API in the Media3 playback pipeline.
+
+#### 🐛 Issues
+
+- Fixed an issue where a previously removed caching task would sometimes re-appear after restarting the app.
+- Fixed an issue where calling `CachingTask.start()` on a task for a DASH stream with persistent DRM would immediately pause the task after the DRM license has been cached.
+- Fixed an issue where `CachingTask.percentageCached` was not properly updated to `1.0` (i.e. 100%) after the caching task becomes done.
+- Fixed an issue where calling `play()` when the player is ended did not correctly seek back to the start using the Media3 pipeline.
+- Fixed an issue where the THEOads session was not cleaned up properly when setting a new source.
+- Fixed an issue where `player.abr.strategy` did not work on HLS streams with the Media3 pipeline.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved the IMA pod stream request for THEOads which is now sent on source change instead of when a THEOad starts preloading.
+- Updated Millicast integration dependency on Millicast SDK to v2.4.1.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `ended` event would be dispatched twice while playing MPEG format sources.
+- Fixed an issue where a new source would autoplay when preload is set to auto.
+- Fixed an issue where the metadata of a THEOad was not passed to Google IMA.
+- Fixed an issue where some events were not being dispatched for THEOads with Google IMA.
+- Fixed an issue where the ID3 based ad events were dispatched too early for THEOads.
+- Fixed an issue where PiPConfiguration was not respected after setting a source.
+
+### tvOS
+
+#### ✨ Features
+
+- Added support for THEOads.
+
+### Roku
+
+#### ✨ Features
+
+- Added `suppressCaptions` functionality based on `textTracks` `mode` field.  Captions are automatically suppressed when `textTracks` `mode` is `"disabled"`.
+- Added the `muted` API to control the video node's mute state.
+- Added support for Client Side Ad Insertion using the player `Ads` API. Check out the [getting started with ads on Roku](https://docs.optiview.dolby.com/theoplayer/getting-started/sdks/roku/displaying-ads/) docs for more information.
+
+#### 🐛 Issues
+
+- Fixed an issue where bitrate changes were not being correctly reported to the Adobe Edge connector.
+
 ## 🚀 9.2.0 (2025/04/22)
 
 ### Web
@@ -180,6 +357,11 @@ For more info on navigating our breaking changes, take a look at our migration g
 - Removed deprecated `GoogleImaIntegrationFactory.createGoogleImaIntegration(THEOplayerView, ImaSdkSettings)` API. Use `GoogleImaIntegrationFactory.createGoogleImaIntegration(THEOplayerView, GoogleImaConfiguration(ImaSdkSettings))` instead.
 - Removed deprecated `GoogleDaiIntegrationFactory.createGoogleDaiIntegration(THEOplayerView, ImaSdkSettings)` API. Use `GoogleDaiIntegrationFactory.createGoogleDaiIntegration(THEOplayerView, GoogleImaConfiguration(ImaSdkSettings))` instead.
 - Moved the `GoogleImaAd` API from the package `com.theoplayer.android.api.ads.GoogleImaAd` to `com.theoplayer.android.api.ads.ima`.
+
+#### ⚠ Known Limitations
+
+- ~~Availability of media and text tracks has moved from the `loadedmetadata` event to the `loadeddata` event when using the Media3 playback pipeline.~~ (Fixed in version 9.4.0.)
+- Text track styling embedded in the source take precedence over user text track style configuration.
 
 #### ✨ Features
 

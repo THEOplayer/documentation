@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { type ComponentProps, type ReactNode } from 'react';
 import clsx from 'clsx';
-import { filterDocCardListItems, useCurrentSidebarCategory, useDoc } from '@docusaurus/plugin-content-docs/client';
-import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
+import { filterDocCardListItems, useCurrentSidebarSiblings, useDoc } from '@docusaurus/plugin-content-docs/client';
 import type { Props } from '@theme/DocCardList';
 import DocCard from '@theme/DocCard';
+import styles from './styles.module.css';
 
-function DocCardListForCurrentSidebarCategory(props: Props) {
+function DocCardListForCurrentSidebarCategory({ className }: Props) {
   const doc = useDoc();
-  const category = useCurrentSidebarCategory();
-  const filteredItems = category.items
+  const items = useCurrentSidebarSiblings();
+  const filteredItems = items
     // Hide the current doc page from list
     .filter((item) => !(item.type === 'link' && item.docId === doc.metadata.id));
-  return <DocCardList {...props} items={filteredItems} />;
+  return <DocCardList items={filteredItems} className={className} />;
 }
 
-function isValidItem(item: PropSidebarItem): boolean {
+function isValidItem(item: ComponentProps<typeof DocCard>['item']): boolean {
   return item.type === 'link' || item.type === 'category';
 }
 
-export default function DocCardList(props: Props) {
+function DocCardListItem({ item }: { item: ComponentProps<typeof DocCard>['item'] }) {
+  return (
+    <article className={clsx(styles.docCardListItem, 'col col--6')}>
+      <DocCard item={item} />
+    </article>
+  );
+}
+
+export default function DocCardList(props: Props): ReactNode {
   const { items, className } = props;
   if (!items) {
     return <DocCardListForCurrentSidebarCategory {...props} />;
@@ -27,9 +35,7 @@ export default function DocCardList(props: Props) {
   return (
     <section className={clsx('row', className)}>
       {filteredItems.map((item, index) => (
-        <article key={index} className="col col--6 margin-bottom--lg">
-          <DocCard item={item} />
-        </article>
+        <DocCardListItem key={index} item={item} />
       ))}
     </section>
   );

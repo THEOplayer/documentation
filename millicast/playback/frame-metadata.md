@@ -1,7 +1,7 @@
 ---
-title: 'Frame Metadata'
-slug: /frame-metadata
-sidebar_position: 9
+title: Frame Metadata
+slug: /playback/frame-metadata
+sidebar_position: 7
 ---
 
 In addition to streaming audio and video there are many use cases that require additional metadata about what is happening in the stream. We refer to this as **Frame Metadata** which allows for embedding and extraction of custom application data that has frame-level accuracy.
@@ -18,7 +18,7 @@ These cue points are often used for time synchronizing application state with th
 
 ## SEI Metadata
 
-Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI)** which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/client-sdks/index.mdx) as well as some broadcast encoders that embed **Action Message Format (AMF)** messages.
+Millicast has standardized metadata access in the **Supplemental Enhancement Information (SEI)** which is available for codecs like _H.264 (AVC)_. It can be inserted directly by using our [Client SDKs](/millicast/playback/players-sdks/index.mdx) as well as some broadcast encoders that embed **Action Message Format (AMF)** messages.
 
 import MetadataFeature from '../assets/img/metadata-feature.png';
 
@@ -51,7 +51,7 @@ For **PIC_TIMING** SEI messages that are inserted by various encoders, there wil
 
 ## Web SDK
 
-When using the [Web SDK](/millicast/client-sdks/web.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
+When using the [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
 
 ### How-to Publish Frame Metadata
 
@@ -393,7 +393,7 @@ When a new metadata is received, this code will trigger the JavaScript event **m
 
 ### Supporting Non-SEI Metadata for Native Platforms
 
-Using the [Native SDK](/millicast/client-sdks/index.mdx) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
+Using the [Native SDK](/millicast/playback/players-sdks/index.mdx) you can embed metadata with the frame. The way this metadata is embedded allows playback video players to be backward compatible even if they are unable to read and display the metadata.
 
 :::info Example Project
 You can find a more complete C implementation example in the <a href="https://github.com/millicast/metadata-publisher-demo" target="_blank">millicast/metadata-publisher-demo</a> project.

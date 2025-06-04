@@ -14,10 +14,15 @@ import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
 import path from 'path';
 import fs from 'fs';
+import redirectsMillicast from './redirectsMillicast.json';
+import redirectsTHEOAds from './redirectsTHEOAds.json';
+import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 
 // THEOplayer license URL: /docs/theoplayer-license.txt
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
 fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplayerLicense);
+
+const isProductionDeployment = process.env.NODE_ENV === 'production' && !process.env.DOCUSAURUS_PR_NUMBER;
 
 const docsConfigBase = {
   include: [
@@ -109,6 +114,7 @@ const config: Config = {
   onBrokenAnchors: 'throw',
   onBrokenMarkdownLinks: 'throw',
   future: {
+    v4: true,
     experimental_faster: true,
   },
 
@@ -213,7 +219,8 @@ const config: Config = {
         path: 'theolive',
         routeBasePath: '/theolive',
         sidebarPath: './sidebarsTheolive.ts',
-      },
+        docItemComponent: '@theme/ApiItem',
+      } satisfies DocsPlugin.Options,
     ],
     [
       '@docusaurus/plugin-content-docs',
@@ -305,51 +312,87 @@ const config: Config = {
       } satisfies OpenApiPlugin.PluginOptions,
     ],
     [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'theolive-api',
+        docsPluginId: 'theolive',
+        config: {
+          channels: {
+            specPath: 'theolive/api/channels.json',
+            outputDir: 'theolive/api/channels',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          events: {
+            specPath: 'theolive/api/events.json',
+            outputDir: 'theolive/api/events',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          reports: {
+            specPath: 'theolive/api/reports.json',
+            outputDir: 'theolive/api/reports',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          schedulers: {
+            specPath: 'theolive/api/schedulers.json',
+            outputDir: 'theolive/api/schedulers',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          webhooks: {
+            specPath: 'theolive/api/webhooks.json',
+            outputDir: 'theolive/api/webhooks',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+        },
+      } satisfies OpenApiPlugin.PluginOptions,
+    ],
+    [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: [
-          {
-            from: '/theoplayer/getting-started/sdks/web/getting-started-extended',
-            to: '/theoplayer/getting-started/sdks/web/getting-started/',
-          },
-          {
-            from: '/theoplayer/getting-started/sdks/web/getting-started-with-the-open-source-web-ui',
-            to: '/open-video-ui/web/getting-started',
-          },
-          {
-            from: '/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/',
-            to: '/theoplayer/how-to-guides/miscellaneous/vr/',
-          },
-          {
-            from: '/theoads/api/signaling/',
-            to: '/theoads/api/signaling/theoads-api/',
-          },
-          {
-            from: '/millicast/api',
-            to: '/millicast/api/millicast-api/',
-          },
-          {
-            from: '/millicast/api/director',
-            to: '/millicast/api/director/director-api/',
-          },
-        ],
+        redirects: [...redirectsMillicast, ...redirectsTHEOAds, ...redirectsTHEOPlayer],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
+          }
+          if (existingPath.startsWith('/theolive/playback/web/')) {
+            return [existingPath.replace('/theolive/playback/web/', '/theoplayer/how-to-guides/web/theolive/')];
           }
           return undefined;
         },
       } satisfies ClientRedirectsPlugin.Options,
     ],
     [
-      (_context, options: { webpack: WebpackConfiguration }) => ({
+      (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
         name: 'webpack-plugin',
-        configureWebpack() {
-          return options.webpack;
+        configureWebpack(_config, isServer) {
+          return options.webpack(isServer);
         },
       }),
       {
-        webpack: {
+        webpack: (isServer: boolean): WebpackConfiguration => ({
+          optimization: {
+            // https://github.com/facebook/docusaurus/discussions/11199
+            concatenateModules: isProductionDeployment ? !isServer : false,
+          },
           module: {
             // https://github.com/WebCoder49/code-input only exports to the global scope.
             // Insert some `import` and `export` statements where needed.
@@ -376,7 +419,7 @@ const config: Config = {
               },
             ],
           },
-        } satisfies WebpackConfiguration,
+        }),
       },
     ],
   ],
@@ -537,7 +580,11 @@ const config: Config = {
     },
     footer: {
       style: 'light',
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby</a>`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby Laboratories, Inc. All rights reserved.</a>`,
+    },
+    colorMode: {
+      defaultMode: 'light',
+      respectPrefersColorScheme: true,
     },
     prism: {
       theme: prismThemes.oneLight,

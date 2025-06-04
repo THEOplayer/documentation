@@ -42,14 +42,19 @@ $dokka.location:com.theoplayer.android.api.source.drm.preintegration/XstreamConf
 $dokka.location:com.theoplayer.android.api.source.drm/ClearkeyKeySystemConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/ClearkeyKeySystemConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.drm/ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey///PointingToDeclaration/com/theoplayer/android/api/source/drm/ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey.html
 $dokka.location:com.theoplayer.android.api.source.drm/DRMConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/DRMConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.drm/DRMIntegrationId.Companion///PointingToDeclaration/com/theoplayer/android/api/source/drm/DRMIntegrationId.Companion.html
 $dokka.location:com.theoplayer.android.api.source.drm/FairPlayKeySystemConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/FairPlayKeySystemConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.drm/KeySystemConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/drm/KeySystemConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.hesp/HespPlaybackConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/hesp/HespPlaybackConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.hls/HlsPlaybackConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/hls/HlsPlaybackConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.mediatailor/MediaTailorSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/mediatailor/MediaTailorSource.Builder.html
 $dokka.location:com.theoplayer.android.api.source.metadata/ChromecastMetadataDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/metadata/ChromecastMetadataDescription.Builder.html
+$dokka.location:com.theoplayer.android.api.source.metadata/ChromecastMetadataType.Companion///PointingToDeclaration/com/theoplayer/android/api/source/metadata/ChromecastMetadataType.Companion.html
 $dokka.location:com.theoplayer.android.api.source.ssai.dai/GoogleDaiLiveConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.ssai.dai/GoogleDaiVodConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.ssai/GoogleDaiConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/GoogleDaiConfiguration.Builder.html
+$dokka.location:com.theoplayer.android.api.source.ssai/SsaiIntegration.Companion///PointingToDeclaration/com/theoplayer/android/api/source/ssai/SsaiIntegration.Companion.html
+$dokka.location:com.theoplayer.android.api.source.ssai/StreamType.Companion///PointingToDeclaration/com/theoplayer/android/api/source/ssai/StreamType.Companion.html
 $dokka.location:com.theoplayer.android.api.source/GoogleDaiTypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/GoogleDaiTypedSource.Builder.html
 $dokka.location:com.theoplayer.android.api.source/SourceDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/SourceDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TextTrackDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TextTrackDescription.Builder.html
@@ -110,6 +115,7 @@ com.theoplayer.android.api.source.addescription
 com.theoplayer.android.api.source.dash
 com.theoplayer.android.api.source.drm
 com.theoplayer.android.api.source.drm.preintegration
+com.theoplayer.android.api.source.hesp
 com.theoplayer.android.api.source.hls
 com.theoplayer.android.api.source.mediatailor
 com.theoplayer.android.api.source.metadata

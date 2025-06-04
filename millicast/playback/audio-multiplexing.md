@@ -1,7 +1,7 @@
 ---
-title: 'Audio Multiplexing'
-slug: /audio-multiplexing
-sidebar_position: 7
+title: Audio Multiplexing
+slug: /playback/audio-multiplexing
+sidebar_position: 5
 ---
 
 The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers to receive multiple audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
@@ -10,10 +10,10 @@ The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers
 
 To first understand Audio Multiplexing, we need to understand how the Dolby.io servers ingest feeds. When [Broadcasting](/millicast/broadcast/index.mdx), the Dolby.io Streaming servers will assign the most recent published stream source as the "_Main Source_", a function that allows broadcasters to seamlessly overwrite streams or add [Redundant Streams](/millicast/broadcast/redundant-ingest/index.mdx). For basic broadcasts, this is sufficient, for more advanced broadcasts Dolby.io provides two features that are exceptions:
 
-1. Creating a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx) for [Multi-view](/millicast/playback/multiview.md) experiences.
+1. Creating a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx) for [Multi-view](multi-view.md) experiences.
 2. Audio Multiplexing, for experiences with multiple audio streams playing at once, such as that seen on "_Clubhouse_" type platforms and apps.
 
-If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) and [Multi-view](/millicast/playback/multiview.md) documentation, you may be confused as to why you would use Audio Multiplexing instead of Multiview. Audio multiplexing allows audio sources to overlap, a feature that is useful for
+If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) and [Multi-view](multi-view.md) documentation, you may be confused as to why you would use Audio Multiplexing instead of Multiview. Audio multiplexing allows audio sources to overlap, a feature that is useful for
 
 | Audio Multiplexing<br/>_Let users hear multiple audio sources at once that overlap._               |
 | :------------------------------------------------------------------------------------------------- |
@@ -26,10 +26,10 @@ If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-so
 To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher.
 
 :::info Not familar with our JavaScript SDK?
-Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/client-sdks/index.mdx).
+Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/playback/players-sdks/index.mdx).
 :::
 
-Once you're streaming multiple audio sources, the next step is to set up the [Viewer](/millicast/client-sdks/web.mdx#viewing-a-stream) so that the incoming audio sources can be correctly multiplexed. When connecting to the Viewer, there are a [number of parameters available in the SDK](https://millicast.github.io/millicast-sdk/View.html#connect) you can adjust depending on your workflow. Some parameters of note for audio multiplexing include:
+Once you're streaming multiple audio sources, the next step is to set up the [Viewer](/millicast/playback/players-sdks/web/sdk/index.mdx#viewing-a-stream) so that the incoming audio sources can be correctly multiplexed. When connecting to the Viewer, there are a [number of parameters available in the SDK](https://millicast.github.io/millicast-sdk/View.html#connect) you can adjust depending on your workflow. Some parameters of note for audio multiplexing include:
 
 - `multiplexedAudioTracks`: This is required to enable multiplexing. It denotes the number (`int`) of audio tracks to receive as Voice Activity Detection (VAD) multiplexed audio. This value must be greater than or equal to the number of audio tracks on the stream. Additional audio tracks will overwrite existing audio tracks. There isn't a limit to the number of audio tracks that can be rendered in the browser, only the amount of data. The current limit is a bitrate of 12 Mbps.
 - `dtx`: Discontinousous transmision or DTX is a `boolean` value that signals to the viewer to only deliver audio when audio is detected such as when a person is talking. Enabling DTX will reduce bandwidth costs for audio transmission but may cause non-voice audio such as instruments to become choppy.

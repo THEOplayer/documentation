@@ -1,0 +1,92 @@
+---
+title: Player SDK
+sidebar_position: 1
+---
+
+# Getting started with THEOPlayer for Millicast on Web
+
+## Usage
+
+1. Follow [our Getting Started guide](pathname:///theoplayer/getting-started/sdks/web/getting-started/) to set up THEOplayer in your web app or website.
+   The Millicast integration is available in the main [theoplayer](https://www.npmjs.com/package/theoplayer) package on npm.
+2. Add a Millicast source to your player's source.
+
+### Add a Millicast source
+
+After setting up your THEOplayer on your web page, set its source to a `SourceDescription` containing a `MillicastSource`.
+You'll need a Millicast account ID and stream name to identify your Millicast stream:
+
+```javascript
+const player = new THEOplayer.Player(element, configuration);
+player.source = {
+  sources: {
+    type: 'millicast',
+    src: 'multiview',
+    streamAccountId: 'k9Mwad',
+    subscriberToken: '<token>', // This is only required for subscribing to secure streams and should be omitted otherwise.
+  },
+};
+```
+
+### Add configuration
+
+Optionally, you can provide additional configuration to the source, specific for working with Millicast streams. To
+configure these settings, add a `connectOptions` property to the source object and specify the options.
+
+In the example below, the configuration is used to disable any audio from the Millicast stream.
+For an exhaustive list of these options, visit the
+[documentation](https://millicast.github.io/millicast-sdk/View.html#connect).
+
+```javascript
+player.source = {
+  sources: {
+    type: 'millicast',
+    /* ... */
+    connectOptions: {
+      disableAudio: true,
+      /* ... */
+    },
+  },
+};
+```
+
+### Recommended Connection Configurations
+
+#### ABR Range Control
+
+For users viewing streams with multiple quality layers available, you may want to limit the maximum resolution of the stream they can consume. This could be to reduce egress traffic for certain users or to improve performance on low-end devices. The ABR range can be adjusted when connecting to a stream via the `layer` parameter by specifying a `maxHeight` or `maxWidth` that the client can consume.
+
+For example, to limit a client to a maximum resolution of 720p, you would specify a `maxHeight` of `720`:
+
+```javascript
+connectOptions: {
+   layer: {
+      maxHeight: 720,
+   },
+}
+```
+
+Setting a `maxHeight` of `0` will use the full ABR range available. Setting the `maxHeight` to an arbitrarily low value, such as `20`, will force the user onto the layer with the lowest resolution.
+
+#### Playout Delay
+
+Because of the complexities of last-mile delivery, some packets for video playback may arrive late. In higher-latency streaming protocols such as HESP or HLS, a client buffer helps smooth out playback so that these minor fluctuations are unnoticeable. Dolby's real-time streaming solution supports adding a playout buffer, which can similarly assist with these fluctuations. The `forcePlayoutDelay` buffer uses a `min` and a `max` value measured in milliseconds (ms) to specify the range the playout buffer should occupy. The player buffer will then dynamically shift between the `min` and `max` values depending on client conditions.
+
+You can determine how many frames of buffer you are using by dividing 1 second by your frame rate. For example, if your frame rate is 30fps, you would divide `1s/30fps`, showing that each frame has a duration of `0.0333` or `33` milliseconds.
+
+This buffer is specified when connecting to a stream as shown below:
+
+```javascript
+connectOptions: {
+   forcePlayoutDelay: {
+      min: 50,
+      max: 120,
+   },
+}
+```
+
+The performance gains of the buffer diminish significantly beyond a buffer of 300ms. Typically, the team recommends a buffer between 0 and 5 frames for smooth playback.
+
+## More information
+
+- [API references](pathname:///theoplayer/v9/api-reference/web/interfaces/MillicastSource.html)
