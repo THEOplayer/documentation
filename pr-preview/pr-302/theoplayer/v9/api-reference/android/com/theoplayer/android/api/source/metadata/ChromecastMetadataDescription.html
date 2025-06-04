@@ -114,7 +114,7 @@ var pathtoroot = "../../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public class <span class="typeNameLabel"><a href=ChromecastMetadataDescription.html>ChromecastMetadataDescription</a></span>
+public final class <span class="typeNameLabel"><a href=ChromecastMetadataDescription.html>ChromecastMetadataDescription</a></span>
 extends <a href=MetadataDescription.html>MetadataDescription</a>
                     </pre>
                     <div class="block"><p>The description of the metadata used by Chromecast.</p></div>
@@ -150,7 +150,7 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public class</code></td>
+                                            <td class="colFirst"><code>public final class</code></td>
                                             <th class="colSecond" scope="row"><code><a href="ChromecastMetadataDescription.Builder.html">ChromecastMetadataDescription.Builder</a></span></code>
                                             </th>
                                             <td class="colLast"><p>The builder for the Chromecast metadata description.</p></td>
@@ -177,6 +177,42 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                             <th class="colFirst" scope="col">Modifier and Type</th>
                                             <th class="colSecond" scope="col">Field</th>
                                             <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=ChromecastMetadataImage.html>ChromecastMetadataImage</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#images>images</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#releaseDate>releaseDate</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#title>title</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#subtitle>subtitle</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=ChromecastMetadataType.html>ChromecastMetadataType</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#type>type</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=MetadataDescription.html#data>data</a></code></th>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                     </table>
@@ -253,43 +289,43 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=ChromecastMetadataImage.html>ChromecastMetadataImage</a>&gt;</code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=ChromecastMetadataImage.html>ChromecastMetadataImage</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#getImages()>getImages</a>() </code>
                                             </th>
-                                            <td class="colLast">List of content images for the current source.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#getReleaseDate()>getReleaseDate</a>() </code>
                                             </th>
-                                            <td class="colLast">The release date of the current source.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#getTitle()>getTitle</a>() </code>
                                             </th>
-                                            <td class="colLast">The title of the content.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#getSubtitle()>getSubtitle</a>() </code>
                                             </th>
-                                            <td class="colLast">The subtitle of the content.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code><a href=ChromecastMetadataType.html>ChromecastMetadataType</a></code>
+                                            <td class="colFirst"><code>final <a href=ChromecastMetadataType.html>ChromecastMetadataType</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=ChromecastMetadataDescription.html#getType()>getType</a>() </code>
                                             </th>
-                                            <td class="colLast">The <a href=ChromecastMetadataType.html>ChromecastMetadataType</a> of the current source.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -301,7 +337,7 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;com.theoplayer.android.internal.util.ReadOnlyMap</h3>
-                                            <code>containsKey, equals, get, getData, hashCode</code></li>
+                                            <code>containsKey, equals, get, getData, hashCode, put</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
@@ -350,16 +386,13 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                           >
                                     <li class="blockList">
                                         <h4>getImages</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=ChromecastMetadataImage.html>ChromecastMetadataImage</a>&gt; <a href=ChromecastMetadataDescription.html#getImages()>getImages</a>()</pre>
-                                        <div class="block"><p>List of content images for the current source. </p><ul><li>Multiple images can be specified for multiple resolutions. </li><li>Trying to modify this object will result in a runtime error being thrown. </li></ul></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=ChromecastMetadataImage.html>ChromecastMetadataImage</a>&gt; <a href=ChromecastMetadataDescription.html#getImages()>getImages</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>Unmodifiable list of content images. (Nullable)</p></dd>
                                         
 
                                         
@@ -376,8 +409,8 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                           >
                                     <li class="blockList">
                                         <h4>getReleaseDate</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ChromecastMetadataDescription.html#getReleaseDate()>getReleaseDate</a>()</pre>
-                                        <div class="block"><p>The release date of the current source. (Nullable) </p><ul><li>The format is &quot;YYYY-MM-DD&quot;. </li></ul></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ChromecastMetadataDescription.html#getReleaseDate()>getReleaseDate</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
@@ -399,8 +432,8 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                           >
                                     <li class="blockList">
                                         <h4>getTitle</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ChromecastMetadataDescription.html#getTitle()>getTitle</a>()</pre>
-                                        <div class="block"><p>The title of the content. (Nullable)</p></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ChromecastMetadataDescription.html#getTitle()>getTitle</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
@@ -422,8 +455,8 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                           >
                                     <li class="blockList">
                                         <h4>getSubtitle</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ChromecastMetadataDescription.html#getSubtitle()>getSubtitle</a>()</pre>
-                                        <div class="block"><p>The subtitle of the content. (Nullable) </p><ul><li>This should be a short explanation about the content. </li></ul></div>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=ChromecastMetadataDescription.html#getSubtitle()>getSubtitle</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
@@ -445,8 +478,8 @@ extends <a href=MetadataDescription.html>MetadataDescription</a>
                                           >
                                     <li class="blockList">
                                         <h4>getType</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=ChromecastMetadataType.html>ChromecastMetadataType</a> <a href=ChromecastMetadataDescription.html#getType()>getType</a>()</pre>
-                                        <div class="block"><p>The <a href=ChromecastMetadataType.html>ChromecastMetadataType</a> of the current source. (NonNull) </p><p>Default: <a href=ChromecastMetadataType.html#GENERIC>GENERIC</a></p></div>
+                                        <pre class="methodSignature"> final <a href=ChromecastMetadataType.html>ChromecastMetadataType</a> <a href=ChromecastMetadataDescription.html#getType()>getType</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
