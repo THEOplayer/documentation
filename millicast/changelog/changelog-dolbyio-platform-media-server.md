@@ -16,7 +16,6 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 - Improved A/V sync in recordings when there is packetloss on the ingest
 - Fixed undercalculation of usage for WebRTC and RTMP ingests
 
-
 ## 2025-03-13
 
 ### Media Server
