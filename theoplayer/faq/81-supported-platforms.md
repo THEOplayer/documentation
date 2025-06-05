@@ -1,3 +1,7 @@
+---
+description: List of supported platforms for the different THEOplayer SDKs
+---
+
 # List of supported platforms
 
 ## THEOplayer HTML5 / Tizen / webOS SDK
