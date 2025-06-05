@@ -29,13 +29,13 @@ Select _Settings_ in the _Controls_ section at the bottom right of the OBS appli
 - Copy your `rtmpPushUrl` from the channel details page in the THEOlive dashboard URL as _Server_
 - Copy your `streamKey` from the channel details page in the THEOlive dashboard as _Stream Key_
 
-![Defining stream settings](../../assets/img/obssettings.png)
+![Defining stream settings](../../assets/img/obsoutputsettings.png)
 
 Next, go to the _Output_ tab in the _Settings_ menu, and configure the following settings in order to achieve the lowest possible latency using THEOlive.
 
 - Output Mode: `Advanced`
 - Bitrate: match the max bitrate of the profile used in your channel (e.g.: 4500Kbps for "sport"). [More details](../stream-configuration.mdx).
-- Keyframe interval: `0s`
+- Keyframe interval: `2s`
 - CPU Usage Preset (higher = less CPU): `veryfast`
 - Profile: `main`
 - Tune: `zerolatency`
