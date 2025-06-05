@@ -15,7 +15,7 @@ import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
 import path from 'path';
 import fs from 'fs';
 import redirectsMillicast from './redirectsMillicast.json';
-import redirectsTHEOAds from './redirectsTHEOAds.json';
+import redirectsAds from './redirectsAds.json';
 import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 
 // THEOplayer license URL: /docs/theoplayer-license.txt
@@ -187,11 +187,15 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         ...docsConfigBase,
-        id: 'theoads',
-        path: 'theoads',
-        routeBasePath: '/theoads',
-        sidebarPath: './sidebarsTHEOads.ts',
+        id: 'ads',
+        path: 'ads',
+        routeBasePath: '/ads',
+        sidebarPath: './sidebarsAds.ts',
         docItemComponent: '@theme/ApiItem',
+        async sidebarItemsGenerator(args) {
+          const sidebarItems = await sidebarItemsGenerator(args);
+          return removeDocIndexItems(sidebarItems);
+        },
       } satisfies DocsPlugin.Options,
     ],
     [
@@ -263,12 +267,12 @@ const config: Config = {
     [
       'docusaurus-plugin-openapi-docs',
       {
-        id: 'theoads-api',
-        docsPluginId: 'theoads',
+        id: 'ads-api',
+        docsPluginId: 'ads',
         config: {
           signaling: {
-            specPath: 'theoads/api/ads-client.swagger.json',
-            outputDir: 'theoads/api/signaling',
+            specPath: 'ads/api/ads-client.swagger.json',
+            outputDir: 'ads/api/signaling',
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
@@ -368,7 +372,7 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: [...redirectsMillicast, ...redirectsTHEOAds, ...redirectsTHEOPlayer],
+        redirects: [...redirectsMillicast, ...redirectsAds, ...redirectsTHEOPlayer],
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
@@ -545,8 +549,8 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          docsPluginId: 'theoads',
-          sidebarId: 'theoads',
+          docsPluginId: 'ads',
+          sidebarId: 'ads',
           label: 'Ads',
           position: 'left',
         },

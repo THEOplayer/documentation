@@ -59,7 +59,7 @@ If your use-cases rely on missing features and you can not implement them on top
 Some features, like:
 
 - Analytics pre-integrations: Agama, Moat, Conviva, Youbora
-- Advertisement pre-integrations: THEOAds, Spotx
+- Advertisement pre-integrations: OptiView Ads, Spotx
 - Server-side ad insertion: Yospace, Verizon Media
 - VR
 

@@ -3,15 +3,15 @@
 The developer documentation website for Dolby OptiView products, including:
 
 - Player (THEOplayer),
-- Ads (THEOads),
+- Ads (OptiView Ads),
 - Streaming (THEOlive and Millicast)
 - Open Video UI
 
-Find the documentation at https://www.theoplayer.com/docs/
+Find the documentation at https://docs.optiview.dolby.com/
 
 ## Contributing
 
-If you're looking to contribute to the developer documentation itself, see https://www.theoplayer.com/docs/contributing/
+If you're looking to contribute to the developer documentation itself, see https://docs.optiview.dolby.com/contributing/
 
 ## Usage
 

@@ -80,7 +80,7 @@ const FeatureList: FeatureItem[] = [
         engagement and maximize ad revenue.
       </p>
     ),
-    to: [{ link: '/theoads', text: 'Get Started' }],
+    to: [{ link: '/ads', text: 'Get Started' }],
   },
   {
     title: 'Open Video UI',
