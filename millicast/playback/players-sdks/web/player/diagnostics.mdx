@@ -15,7 +15,7 @@ Stream stats can be accessed from the Millicast `stats` event. To capture these 
 player.millicast.addEventListener('stats', console.log);
 ```
 
-It's possible to configure the frequency at which these events are dispatched through the Millicast source:
+It's possible to configure the frequency at which these events are dispatched through the Millicast source, the value is set in milliseconds:
 
 ```javascript
 player.source = {
@@ -23,24 +23,108 @@ player.source = {
     type: 'millicast',
     src: 'multiview',
     streamAccountId: 'k9Mwad',
-    statsIntervalMs: 5000, // <= This property configures the stats interval in milliseconds
+    statsIntervalMs: 5000, // <= This property configures the stats interval to 5 seconds
   },
 };
 ```
 
 ## Millicast diagnostics
 
-Diagnostics data can be accessed through the `diagnose` API on the player Millicast API. This method expects a diagnostics configuration as defined in [the Millicast SDK API reference](https://millicast.github.io/millicast-sdk/module-Logger.html#~diagnose), for example:
+Diagnostics data can be accessed through the `diagnose` API on the player Millicast API. For a more detailed guide on what the data means, refer to the [client analytics documentation](/millicast/playback/client-analytics/#data-dictionary). This method expects a diagnostics configuration as defined in [the Millicast SDK API reference](https://millicast.github.io/millicast-sdk/module-Logger.html#~diagnose), for example:
 
 ```javascript
 console.log(
   player.millicast.diagnose({
-    historySize: 10,
+    historySize: 1,
     minLogLevel: 'DEBUG',
     statsCount: 10,
     statsFormat: 'JSON',
   })
 );
+```
+
+In the report you will find many statistics from the client perspective. It is how you can obtain useful statistics for the stream connection including `clusterId`, `connectionDurationMs`, `streamName`, and `streamViewId`. There is also history of the connection details. For more information on the meanings of these values, refer to our [client analytics documentation](/millicast/playback/client-analytics/#data-dictionary).
+
+Here is a sample response:
+
+```json
+{
+  "client": "@millicast/millicast-sdk",
+  "version": "0.3.2",
+  "timestamp": "2025-06-04T19:42:59.673Z",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+  "clusterId": "phx-1",
+  "accountId": "k9Mwad",
+  "streamName": "multiview",
+  "subscriberId": "a2836c0185ff44f39a3980ad963e9bfc",
+  "connection": "connected",
+  "stats": [
+    {
+      "timestamp": "2025-06-04T19:42:59.383Z",
+      "totalRoundTripTime": 0.415,
+      "currentRoundTripTime": 0.021,
+      "responsesReceived": 14,
+      "availableOutgoingBitrate": 300000,
+      "audio": {
+        "inbounds": [
+          {
+            "packetsLostRatioPerSecond": 0,
+            "packetsLostDeltaPerSecond": 0,
+            "bitrateBitsPerSecond": 101026.87059479472,
+            "bitrate": 12628.35882434934,
+            "id": "IT01A1089016740",
+            "timestamp": 1749066179382.572,
+            "mid": "1",
+            "trackIdentifier": "f2a496a4-2bd4-45de-b161-24caeb71dc5c",
+            "jitter": 0.001,
+            "jitterBufferDelay": 65174.4,
+            "jitterBufferEmittedCount": 1331520,
+            "totalBytesReceived": 343842,
+            "totalPacketsReceived": 1390,
+            "totalPacketsLost": 0,
+            "packetRate": 50.90470281708949,
+            "mimeType": "audio/opus"
+          }
+        ],
+        "outbounds": []
+      },
+      "video": {
+        "inbounds": [
+          {
+            "packetsLostRatioPerSecond": 0,
+            "packetsLostDeltaPerSecond": 0,
+            "bitrateBitsPerSecond": 2747049.3305013957,
+            "bitrate": 343381.16631267447,
+            "id": "IT01V879180907",
+            "timestamp": 1749066179382.572,
+            "mid": "0",
+            "trackIdentifier": "22cc0e61-d849-440e-8b7c-be13fa6c3dc1",
+            "jitter": 0,
+            "jitterBufferDelay": 20.386015,
+            "jitterBufferEmittedCount": 655,
+            "totalBytesReceived": 9934994,
+            "totalPacketsReceived": 8695,
+            "totalPacketsLost": 0,
+            "packetRate": 301.4356911913927,
+            "mimeType": "video/H264",
+            "keyFramesDecoded": 65,
+            "frameHeight": 1080,
+            "frameWidth": 1920,
+            "framesDecoded": 655,
+            "framesDropped": 0,
+            "framesPerSecond": 23,
+            "framesReceived": 655
+          }
+        ],
+        "outbounds": []
+      },
+      "raw": {}
+    }
+  ],
+  "connectionDurationMs": 28087,
+  "streamViewId": "3fa01369-c650-4ea9-ba86-f42e0d1d43ab",
+  "history": ["[PeerConnection] 2025-06-04T19:42:31.586Z - INFO - Peer connection state change:  connected"]
+}
 ```
 
 ## More information
