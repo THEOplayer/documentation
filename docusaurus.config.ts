@@ -180,7 +180,10 @@ const config: Config = {
             noIndex: true,
           },
         },
-        sidebarItemsGenerator,
+        async sidebarItemsGenerator(args) {
+          const sidebarItems = await sidebarItemsGenerator(args);
+          return removeDocIndexItems(sidebarItems);
+        },
       } satisfies DocsPlugin.Options,
     ],
     [

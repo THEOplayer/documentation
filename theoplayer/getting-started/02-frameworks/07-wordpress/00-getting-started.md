@@ -119,7 +119,7 @@ All of this should result in a demo similar to the screenshot below.
 ## Note
 
 <!--
-* A 4' video walk-through is available at [https://demo.theoplayer.com/test-your-stream-with-statistics?url=https://content.uplynk.com/98550a2350ee4bfa8eeea6d54e40e096.m3u8](https://demo.theoplayer.com/test-your-stream-with-statistics?url=https://content.uplynk.com/98550a2350ee4bfa8eeea6d54e40e096.m3u8).
+* A 4' video walk-through is available at [https://www.theoplayer.com/test-your-stream-hls-dash-hesp?u=https://content.uplynk.com/98550a2350ee4bfa8eeea6d54e40e096.m3u8](https://www.theoplayer.com/test-your-stream-hls-dash-hesp?u=https://content.uplynk.com/98550a2350ee4bfa8eeea6d54e40e096.m3u8).
 -->
 
 - Steps 4-6 are similar to our [Getting Started guide for Web SDK](../../../getting-started/01-sdks/01-web/00-getting-started.mdx) so you might want to consider checking out that article as well.

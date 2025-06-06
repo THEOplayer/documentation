@@ -1,3 +1,7 @@
+---
+sidebar_custom_props: { 'faqCategory': 'Error handling' }
+---
+
 # What is the "`WebAssembly.compileStreaming` failed" warning and what does it mean?
 
 When starting playback in THEOplayer, you might be seeing a warning in console that reads  

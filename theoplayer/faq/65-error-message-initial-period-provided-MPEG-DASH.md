@@ -1,3 +1,7 @@
+---
+sidebar_custom_props: { 'faqCategory': 'Error handling' }
+---
+
 # What does the error message “Something went wrong determining the initial period of the provided MPEG-DASH stream” mean
 
 This error, "Something went wrong determining the initial period of the provided MPEG-DASH stream", occurs whenever the player struggles to play a DASH stream due to problems determining the availability of the segments for that stream. The recommended solution for this is to make sure that the segments result available, based on the data provided in the manifest, at the time at which the manifest is requested.

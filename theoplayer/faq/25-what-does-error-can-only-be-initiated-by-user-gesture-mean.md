@@ -1,3 +1,7 @@
+---
+sidebar_custom_props: { 'faqCategory': 'Error handling' }
+---
+
 # What does the error message 'can only be initiated by a user gesture' imply? Can I still force the desired action
 
 You may get this error if you are trying to have the player execute an action without it being initiated by the user. A typical example is going fullscreen or automatically starting playback (often on mobile).

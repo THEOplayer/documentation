@@ -1,3 +1,7 @@
+---
+sidebar_custom_props: { 'faqCategory': 'Error handling' }
+---
+
 # Which error related events does the player expose
 
 THEOplayer exposes different types of errors. Refer to "[How to do error handling](../how-to-guides/07-miscellaneous/04-error/01-how-to-do-error-handling.md)"

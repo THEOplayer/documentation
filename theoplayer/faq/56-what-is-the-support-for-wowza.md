@@ -1,3 +1,7 @@
+---
+sidebar_custom_props: { 'faqCategory': 'Support' }
+---
+
 # What is the support for Wowza
 
 Wowza and THEOplayer are partners in the streaming industry. When developers use both products,

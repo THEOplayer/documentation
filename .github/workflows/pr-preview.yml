@@ -26,11 +26,11 @@ jobs:
           fetch-depth: 1
           submodules: true
       # Build the website
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         if: github.event.action != 'closed'
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
       - name: Build
         if: github.event.action != 'closed'

@@ -1,3 +1,7 @@
+---
+sidebar_custom_props: { 'faqCategory': 'Support' }
+---
+
 # How to create a (great) ticket
 
 Customers can create tickets through our Jira Service Desk at https://servicedesk.theoplayer.com.
