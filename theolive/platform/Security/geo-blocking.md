@@ -1,15 +1,23 @@
 # Geo-blocking
 
-Geo-blocking allows you to block content in certain countries ("blacklisting"), or only allow a set of countries to have access to it ("whitelisting"). You can easily enable/disable it through the management console or via the API. We'll discuss both approaches in this guide.
+Geo-blocking refers to the action of restricting ("blacklisting") or allowing ("whitelisting") access to certain content based on the geographical location of the user. Filtering can be allowed or denied by countries as well as [IP addresses](/theolive/platform/Security/ip-blocking). Geo-blocking enables content providers to adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on private content.
 
-## How it works
+Geo-blocking can be configured via the API or the console.
 
-You can enable geo-blocking on the main channel by [updating](/theolive/api/channels/update-channel) the `publicationConfig` object of a channel. There are two `mode`s available:
+## Geo-blocking via the API
 
-- `whitelist`: used by default when no `mode` is passed. This will only make the content (your stream) available in the countries that have been passed in the `countries` property. Other countries won't have access to your stream.
-- `blacklist`: will bock the content in the countries that have been passed, and allow it in all other countries.
+### Main channel
 
-For example: if you want to enable geo-blocking and restrict the viewers to only Belgium and Germany, you have to pass the following request. **Note that countries should be passed in [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).**
+You can enable geo-blocking on a channel by [updating](/theolive/api/channels/update-channel) the `geoBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
+
+- `whitelist`: Used by default when no `mode` is passed. This will make the content only available in the countries that have been specified in the `countries` property. Countries not listed in the `countries` property will not recieve the stream.
+- `blacklist`: Blocks the content in the countries that have been specified in the `countries` property. All other countries not specified in the `countries` property will be able to view the content.
+
+:::tip
+Countries should be passed in [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+:::
+
+For example: If you want to restrict the viewers of your content to only Belgium and Germany, you can pass the following request:
 
 ```json Enable geo-blocking on a channel
 {
@@ -23,14 +31,23 @@ For example: if you want to enable geo-blocking and restrict the viewers to only
 }
 ```
 
-When you want to disable geo-blocking, you can pass the same request as above, but with:
+If you would like to disable geo-blocking on this channel, you can pass the same request as above, but with:
 
 - `"enabled": false`
 - `countries` can be omitted as it will be ignored
 
-The same can be done for channel alias. You just have to use [the right endpoint](/theolive/api/channels/update-channel-alias) for it.
+```json Enable geo-blocking on a channel
+{
+  "publicationConfig": {
+    "geoBlocking": {
+      "enabled": false,
+      "mode": "whitelist"
+    }
+  }
+}
+```
 
-Other example: we want to make our stream available anywhere, but not in Belgium:
+If you would like to make your content available anywhere **except** Belgium, you can pass the following request:
 
 ```json Use blacklist geo-block
 {
@@ -44,28 +61,43 @@ Other example: we want to make our stream available anywhere, but not in Belgium
 }
 ```
 
-## Example: combination of channel and alias geo-blocking
+### Channel alias
 
-Suppose you provide a stream that you'll distribute to end customers:
+Geo-blocking can also be done on a [channel alias](/theolive/platform/multi-channel) using the specified channel alias [endpoint](/theolive/api/channels/update-channel-alias) or via the console.
 
-- One customer has the rights to share the stream with Belgian viewers
-- The other one can show the stream in the UK and USA
-- A third one only in France
+## Geo-blocking on main channel and alias
 
-In such a case, you can create 3 aliases, one for each customer, so you can easily[ track customer specific analytics](../multi-channel.md) as well later on.
+Combining geo-blocking rules on both the main channel and aliases can allow you to create custom rules on where your content can be viewed in the world.
 
-As the main channel id `channel-id` won't be used, we can geo-block it completely: someone using this channel ID won't be able to see it anywhere in the world.
+For example, a stream you have created must adhere to the following rules:
 
-For our first customer, we share the channel ID `alias-1`, we can enable geo-blocking and restrict the access to Belgium.  
-Our second customer gets channel ID `alias-2`, we do the same, but restrict to the US and UK.  
-Lastly, our third customer will receive `alias-3` from us. This stream will be geo-blocked everywhere, but not in France.
+- Customer 1 can only show the stream to Belgian viewers
+- Customer 2 can only show the stream to UK and USA viewers
+- Customer 3 can only show the stream to French viewers
+
+In this scenario, you can create 3 aliases of your main channel, one for each customer. This allows you to set custom geo-blocking rules for each customer as well as [track customer specific analytics](../multi-channel.md).
+
+The main channel's `channel-id` won't be used, we so can geo-block it completely. This means someone using this channel ID will not be able to see it anywhere in the world.
+
+We will configure the 3 aliases with the following configurations:
+
+- Customer 1 will use channel ID `alias-1` where we `enable` geo-blocking and restrict the access to `BE` using `whitelist` in the the `mode` property.
+- Customer 2 will use channel ID `alias-2` where we `enable` geo-blocking and restrict the access to `UK` and `US` using `whitelist` in the the `mode` property.
+- Customer 3 will use channel ID `alias-3` where we `enable` geo-blocking and restrict the access to `FR` using `whitelist` in the the `mode` property.
 
 ![Example of geo-blocking setup with channel and aliases](../../assets/img/48b69bf-Geoblocking.png)
 
-## Managing geo-blocking in the console
+## Geo-blocking via the console
 
-You can change your geo-blocking settings per channel and channel alias. Just navigate to a channel details page and scroll down to the different playout configurations. Clicking on the security tab will give you a few options.  
-Enabling and disabling geo-blocking can easily be done by the switch. When enabled, a mode can be selected and countries can be added to the list.  
-Don't forget to hit "Save" to confirm your changes!
+Updating geo-blocking settings can also be done via the console. Navigate to your channel's details page and scroll down to the playout configurations panel. Select the your default channel or alias and click on the security tabs. If you don't have an alias, click the _Create Alias_ button on the top right of the panel.
 
-![Geo-blocking settings in the console](../../assets/img/a24f145-geoblock.PNG)
+Clicking the toggle button can enable and disable geo-blocking on the specified channel. When enabled, a mode can be selected and countries can be added to the list.
+
+Don't forget to hit "Save" to apply your changes.
+
+![Geo-blocking settings in the console](../../assets/img/geoblockconsole.png)
+
+## Feature compatibility and limitations
+
+- Geo-blocking can be enabled or disabled during the middle of a stream without needing to restart the channel or restart ingests
+- IP-blocking for a specified CIDR will not work if geo-blocking is enabled for the country or region where the CIDR originates from
