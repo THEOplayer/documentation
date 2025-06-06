@@ -24,9 +24,7 @@ function isValidItem(item: ComponentProps<typeof DocCard>['item']): boolean {
 function FaqListItem({ item }: { item: PropSidebarItemLink }) {
   return (
     <li className={clsx(styles.faqListItem, item.className)}>
-      <Link href={item.href} >
-          {item.label}
-      </Link>
+      <Link href={item.href}>{item.label}</Link>
     </li>
   );
 }
@@ -38,21 +36,19 @@ export default function FaqList(props: Props): ReactNode {
   }
 
   const filteredItems = filterDocCardListItems(items).filter(isValidItem);
-  const grouped = Object.groupBy(filteredItems, ({customProps}) => customProps?.faqCategory as string ?? 'Questions');
+  const grouped = Object.groupBy(filteredItems, ({ customProps }) => (customProps?.faqCategory as string) ?? 'Questions');
 
-  return (
-    Object.keys(grouped).map((key) => (
-      <>
-        <Heading as="h2" className={clsx('text--truncate', styles.faqTitle)} title={key}>
-          {key}
-        </Heading>
+  return Object.keys(grouped).map((key) => (
+    <>
+      <Heading as="h2" className={clsx('text--truncate', styles.faqTitle)} title={key}>
+        {key}
+      </Heading>
 
-        <ul className={clsx(styles.faqList, className)}>
-          {grouped[key].map((item, index) => (
-              <FaqListItem key={index} item={item as PropSidebarItemLink} />
-          ))}
-        </ul>
-      </>
-    ))
-  );
+      <ul className={clsx(styles.faqList, className)}>
+        {grouped[key].map((item, index) => (
+          <FaqListItem key={index} item={item as PropSidebarItemLink} />
+        ))}
+      </ul>
+    </>
+  ));
 }
