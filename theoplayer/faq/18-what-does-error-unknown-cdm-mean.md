@@ -1,3 +1,7 @@
+---
+sidebar_custom_props: { 'faqCategory': 'Error handling' }
+---
+
 # What does the error message 'Unknown CDM error' mean
 
 If you got to see this page, you probably know that CDM stands for Content Decryption Module, which is a component in the DRM pipeline, a part of the content protection process.

@@ -1,7 +1,7 @@
 # How to disable click to pause
 
 When you use the default UI of THEOplayer you can pause (and resume) the video by clicking anywhere on the video (except in the control bar).
-You can confirm this behavior at [https://demo.theoplayer.com/test-your-stream-with-statistics](https://demo.theoplayer.com/test-your-stream-with-statistics).
+You can confirm this behavior at [https://www.theoplayer.com/test-your-stream-hls-dash-hesp](https://www.theoplayer.com/test-your-stream-hls-dash-hesp).
 
 You might be interested in disabling this behavior because your functional requirements don't allow you to pause the video.
 
