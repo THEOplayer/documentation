@@ -45,7 +45,7 @@ An example snippet can be found below:
 
 ### CUE-OUT (Manifest) {#cue-out}
 
-Inside the manifest the ad break start can be signaled by adding an `#EXT-X-CUE-OUT` tag. The duration of the ad break should be specified after it. The end of the ad break and start of content would be signaled by an `#EXT-X-CUE-IN` tag. The `CUE-OUT` tag can be accompanied by a [daterange](#daterange). This is interesting if the ad break start does not correspond with the start of a new segment.
+Inside the manifest the ad break start can be signaled by adding an `#EXT-X-CUE-OUT` tag. The duration of the ad break should be specified after it. The end of the ad break and start of content would be signaled by an `#EXT-X-CUE-IN` tag. The `CUE-OUT` tag can be accompanied by a [daterange](#daterange). This is relevant if the ad break start does not correspond with the start of a new segment.
 
 It is also recommended to add `#EXT-X-CUE-OUT-CONT` tags for each segment inside of the ad break.
 This enables the tune-in feature which is able to show parts of the ad break even if the viewer joins in the middle of one.
