@@ -2,6 +2,20 @@
 
 Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com/medooze/media-server-node).
 
+## 2025-05-03
+
+### Media Server
+
+#### Features
+
+- Added `sourceId` and `simulcastId` metadata to the payload of [Feed Webhooks](/millicast/webhooks/feeds/)
+
+#### Fixes
+
+- Fixed packet loss metrics in the Live Monitor being incorrect when the first few packets were lost
+- Improved A/V sync in recordings when there is packetloss on the ingest
+- Fixed undercalculation of usage for WebRTC and RTMP ingests
+
 ## 2025-03-13
 
 ### Media Server

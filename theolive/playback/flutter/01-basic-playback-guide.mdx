@@ -1,0 +1,110 @@
+# Basic Playback Guide
+
+After following our [Getting Started with Flutter guide](./00-getting-started.mdx) or the [Player Setup](#player-setup) section below, you will be ready to programmatically perform common playback actions. These include increasing/decreasing
+the volume, playing/pausing the stream, enabling full screen, and selecting quality layers.
+
+## Player Setup
+
+To get started with THEOlive playback using Flutter, you must first initialize a THEOplayer instance and set a THEOlive source.
+
+Here is example code of initializing a THEOplayer instance with Flutter:
+
+```dart
+late THEOplayer player;
+
+@override
+void initState() {
+  super.initState();
+
+  player = THEOplayer(
+      theoPlayerConfig: THEOplayerConfig(
+        license: "YOUR_PLAYER_LICENSE_STRING",
+        // Extra THEOlive configuration - set a custom sessionId to follow the requests on the backend
+        theolive: TheoLiveConfiguration(externalSessionId: "mySessionID"),
+      ),
+  )
+}
+
+player.source = SourceDescription(sources: [
+    TheoLiveSource(src: "2vqqekesftg9zuvxu9tdme6kl"),
+]);
+```
+
+## Adjust Volume
+
+To adjust the volume of your stream during playback, you can set the `volume` property to a floating point number in the range of 0.0 (0%) minimum and 1.0 (100%) maximum.
+
+The following code sets the player's volume to 50%:
+
+```dart
+// the stream's volume will now be 50%
+player.volume = 0.5;
+```
+
+## Play/Pause Stream
+
+To play or pause your stream, you can use the `play` and `pause` methods available on your player variable.
+
+To pause your stream:
+
+```dart
+player.pause();
+```
+
+To play your stream:
+
+```dart
+player.play();
+```
+
+## Enable Full Screen
+
+To make your stream take up the full screen of the device it is being viewed upon, you must use the `setPresentationMode` method.
+
+The `setPresentationMode` method can accept the following arguments:
+
+- `'INLINE'`: The player is shown in its original location on the page. (default presentation mode)
+- `'FULLSCREEN'`: The player fills the entire screen.
+- `'PIP'`: (Picture-in-picture) The player is shown on top of the page (see PiPConfiguration for more options).
+
+To make the current stream take up the full screen, pass a presentationMode of 'fullscreen' to the requestMode method with the following code:
+
+```dart
+// stream will take up the full screen which it is being viewed on
+player.setPresentationMode('FULLSCREEN');
+```
+
+To confirm that the change has occured, check the `getPresentationMode` property to ensure it now returns `fullscreen` as its value:
+
+```dart
+// should return a value of 'fullscreen' to the console
+print('this is the current presentation mode being used --> ${player.getPresentationMode()}');
+```
+
+## Select Quality Layer
+
+To select a specific quality layer during the playing of your stream, you must set the `targetQuality` property of your player's `videoTracks` property.
+
+The `videoTracks` property leverages the Video Tracks API and will allow you to see all quality layers available, the current active quality layer, and set a new target quality layer.
+
+To see what qualities you have available, use the following code:
+
+```dart
+// import needed to use the 'inspect' function
+import 'dart:developer';
+
+// inspect all available quality layers
+var qualities = player.videoTracks.first.qualities.innerList;
+inspect("this is an array containing all available qualities --> ${qualities}");
+```
+
+Once you know what options you have available, you can set the stream to be a specific quality with the following:
+
+```dart
+// set the first quality layer in the array to be the target quality layer
+player.videoTracks.first.targetQuality = player.videoTracks.first.qualities.first;
+```
+
+## More information
+
+- [THEOplayer Flutter SDK](/theoplayer/flutter/)

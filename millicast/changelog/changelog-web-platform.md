@@ -6,6 +6,25 @@ Updates to the [JavaScript Web SDK](https://github.com/millicast/millicast-sdk) 
 You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
 :::
 
+## 2025-05-29 | Web SDK [0.4.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.4.0)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- Updated stats to v1.0.4.
+- Added metadata event to the documentation.
+- Updated DRM SDK which disabled debug logs by default.
+- Updated docs links to Dolby Optiview.
+- Added forcePlayoutDelay to TypeScript definition.
+
+🐛 **Issues**
+
+- Fixed inconsistencies with disableVideo/disableAudio flags.
+- Fixed the acceptable value types for sourceId to ensure consistency.
+
+View the [0.4.0 release](https://github.com/millicast/millicast-sdk/releases/tag/v0.4.0) tag for some additional details on these updates.
+
 ## 2024-08-14 | Web SDK [0.2.1](https://github.com/millicast/millicast-sdk/releases/tag/v0.2.1)
 
 This release includes some minor updates:

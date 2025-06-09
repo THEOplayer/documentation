@@ -22,6 +22,8 @@ import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
 fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplayerLicense);
 
+const isProductionDeployment = process.env.NODE_ENV === 'production' && !process.env.DOCUSAURUS_PR_NUMBER;
+
 const docsConfigBase = {
   include: [
     '**/*.{md,mdx}',
@@ -112,6 +114,7 @@ const config: Config = {
   onBrokenAnchors: 'throw',
   onBrokenMarkdownLinks: 'throw',
   future: {
+    v4: true,
     experimental_faster: true,
   },
 
@@ -177,7 +180,10 @@ const config: Config = {
             noIndex: true,
           },
         },
-        sidebarItemsGenerator,
+        async sidebarItemsGenerator(args) {
+          const sidebarItems = await sidebarItemsGenerator(args);
+          return removeDocIndexItems(sidebarItems);
+        },
       } satisfies DocsPlugin.Options,
     ],
     [
@@ -287,7 +293,7 @@ const config: Config = {
           millicast: {
             specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -296,7 +302,7 @@ const config: Config = {
           millicastDirector: {
             specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api/director',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -304,7 +310,7 @@ const config: Config = {
           millicastReportingApi: {
             specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api/reporting',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -321,7 +327,7 @@ const config: Config = {
           channels: {
             specPath: 'theolive/api/channels.json',
             outputDir: 'theolive/api/channels',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -330,7 +336,7 @@ const config: Config = {
           events: {
             specPath: 'theolive/api/events.json',
             outputDir: 'theolive/api/events',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -339,7 +345,7 @@ const config: Config = {
           reports: {
             specPath: 'theolive/api/reports.json',
             outputDir: 'theolive/api/reports',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -348,7 +354,7 @@ const config: Config = {
           schedulers: {
             specPath: 'theolive/api/schedulers.json',
             outputDir: 'theolive/api/schedulers',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -357,7 +363,7 @@ const config: Config = {
           webhooks: {
             specPath: 'theolive/api/webhooks.json',
             outputDir: 'theolive/api/webhooks',
-            hideSendButton: true,
+            hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -382,14 +388,18 @@ const config: Config = {
       } satisfies ClientRedirectsPlugin.Options,
     ],
     [
-      (_context, options: { webpack: WebpackConfiguration }) => ({
+      (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
         name: 'webpack-plugin',
-        configureWebpack() {
-          return options.webpack;
+        configureWebpack(_config, isServer) {
+          return options.webpack(isServer);
         },
       }),
       {
-        webpack: {
+        webpack: (isServer: boolean): WebpackConfiguration => ({
+          optimization: {
+            // https://github.com/facebook/docusaurus/discussions/11199
+            concatenateModules: isProductionDeployment ? !isServer : false,
+          },
           module: {
             // https://github.com/WebCoder49/code-input only exports to the global scope.
             // Insert some `import` and `export` statements where needed.
@@ -416,7 +426,7 @@ const config: Config = {
               },
             ],
           },
-        } satisfies WebpackConfiguration,
+        }),
       },
     ],
   ],
@@ -578,6 +588,10 @@ const config: Config = {
     footer: {
       style: 'light',
       copyright: `Copyright © ${new Date().getFullYear()} <a href="https://www.dolby.com/">Dolby Laboratories, Inc. All rights reserved.</a>`,
+    },
+    colorMode: {
+      defaultMode: 'light',
+      respectPrefersColorScheme: true,
     },
     prism: {
       theme: prismThemes.oneLight,

@@ -5,46 +5,65 @@ sidebar_label: OBS
 
 # Using OBS with THEOlive
 
-This guide will shortly describe how to set up [OBS Studio](https://obsproject.com) correctly so it can be used to stream content to THEOlive.
+**Open Broadcaster Software (OBS)** is a free open-source software created for broadcasting and recording on your desktop. You can take advantage of this tool to stream high-quality video to your viewers using THEOlive.
 
-## 1. Add a source
+See the official [obsproject.com](https://obsproject.com) documentation for installation instructions and additional support about using OBS.
 
-In the _Source_ section at the bottom of the application, hit the + sign. You can choose any source you want. As an example, we can select "Display Capture", which will record your screen.
+:::tip Getting Started
+If you haven't already, begin by following the [Getting Started](/theolive/getting-started.mdx) tutorial to create a THEOlive channel and start your first broadcast.
+:::
 
-![Selecting a source](../../assets/img/5edb67a-OBS_snipping_1.PNG)
+## Setting up a broadcast
 
-## 2. Define the settings
+### 1. Add a source
 
-Select _Settings_ in the _Controls_ section at the right bottom of the application. Click on the _Stream_ tab and enter your credentials:
+In the _Source_ section at the bottom of the OBS application, hit the + sign to add a new source. For example, selecting "Media Source" allows you to select an existing media file stored on your machine. Selecting "Display Capture" will record your screen. Selecting "Video capture device" will allow you to select a video input device like a webcam.
+
+![Selecting a source](../../assets/img/obssource.png)
+
+### 2. Configure stream settings
+
+Select _Settings_ in the _Controls_ section at the bottom right of the OBS application. Click on the _Stream_ tab on the left menu bar and configure the following:
 
 - Select "Custom..." as the _Service_
-- Pass the `rtmpPushUrl` URL as _Server_
-- Make sure to enter the `streamKey` as _Stream Key_
+- Copy your `rtmpPushUrl` from the channel details page in the THEOlive dashboard URL as _Server_
+- Copy your `streamKey` from the channel details page in the THEOlive dashboard as _Stream Key_
 
-![Defining stream settings](../../assets/img/a688033-OBS_snipping_2.PNG)
+![Defining stream settings](../../assets/img/obsoutputsettings.png)
 
-As a next step, go to the _Output_ tab in the _Settings_ menu, and configure the following settings in order to achieve the lowest possible latency with THEOlive.
+Next, go to the _Output_ tab in the _Settings_ menu, and configure the following settings in order to achieve the lowest possible latency using THEOlive.
 
 - Output Mode: `Advanced`
 - Bitrate: match the max bitrate of the profile used in your channel (e.g.: 4500Kbps for "sport"). [More details](../stream-configuration.mdx).
+- Keyframe interval: `2s`
 - CPU Usage Preset (higher = less CPU): `veryfast`
 - Profile: `main`
 - Tune: `zerolatency`
 
-![Defining output settings](../../assets/img/4f50555-settingsOBS.PNG)
+![Defining output settings](../../assets/img/obsoutput.png)
 
-Go to the _Video_ tab and set the frame rate to the same value you are using in your channel. See [Stream configuration](../stream-configuration.mdx) for more details.
+Lastly, go to the _Video_ tab and set the frame rate to the same value you have set in your THEOlive channel. See [Stream configuration](../stream-configuration.mdx) for more details.
+
+![Defining output settings](../../assets/img/obsfps.png)
 
 :::info 🚧 Upload bandwidth
 Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the THEOlive channel.
 :::
 
-## 3. Start streaming
+### 3. Start streaming
 
-Close the window and click on _Start Streaming_ in the same _Controls_ section
+Hit apply on settings, close the window, and click on _Start Streaming_ in the _Controls_ panel in the bottom right corner of the OBS application.
 
-![Start streaming your video content](../../assets/img/74ca092-OBS_snipping_3.PNG)
+![Start streaming your video content](../../assets/img/obsstartstreaming.png)
 
-## 4. Start your THEOlive channel
+### 4. Start your THEOlive channel
 
-This can be done either [through the API](/theolive/api/channels/start-channel) or via [the management console](https://console.theo.live/).
+Your THEOlive channel must be started in order to recieve video ingest from OBS. You can choose to start up your channel before or after you start streaming via OBS.
+
+Starting a channel can be done either [through the API](pathname:///docs.optiview.dolby.com/theolive/api/channels/start-channel/) or via [the console](https://console.theo.live/).
+
+![Start your channel](../../assets/img/consolechannelstart.png)
+
+## Feature compatibility and limitations
+
+- Ingest protocol must be RTMP push
