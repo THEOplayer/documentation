@@ -15,8 +15,8 @@ theoplayer/changelog.md
 theoplayer/static/theoplayer/*/api-reference
 theoplayer_versioned_docs/*/changelog.md
 theoplayer_versioned_docs/*/static/theoplayer/*/api-reference
-theoads/api/ads-client.swagger.json
-theoads/api/signaling/
+ads/api/ads-client.swagger.json
+ads/api/signaling/
 millicast/api/
 theolive/api/
 

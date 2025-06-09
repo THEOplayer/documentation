@@ -1,18 +1,17 @@
 ---
-sidebar_position: 0.2
+sidebar_position: 2
 sidebar_label: Web
 sidebar_custom_props: { 'icon': 'web' }
 ---
 
-# Getting started with THEOads on Web
+# Getting started with OptiView Ads on Web
 
-This guide will get you started with THEOads in your THEOplayer Web SDK: configure the license, update dependencies and set the source description.
+This guide will get you started with OptiView Ads in your THEOplayer Web SDK: configure the license, update dependencies and set the source description.
 
 ## Prerequisites
 
-1. You need to have a THEOplayer license which is compatible with THEOads.
-   This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
-2. You need a working [THEOads signaling service](00-getting-started-signaling-service.mdx).
+1. You need to have a THEOplayer license which is compatible with OptiView Ads. This can be done through the [player portal](https://portal.theoplayer.com).
+2. You need a working [OptiView Ads signaling service](signaling-service.mdx).
 3. Your THEOplayer SDK needs to have the `theoads` feature enabled.
 
    As of THEOplayer version 8.2.0, this feature is enabled in the main `theoplayer` package.
@@ -28,7 +27,7 @@ This guide assumes you know how to set up THEOplayer. For more information regar
 
 ### Google DAI library
 
-Since THEOads integrates with Google DAI Pod Serving, it is required to load the Google DAI script on your page:
+Since OptiView Ads integrates with Google DAI Pod Serving, it is required to load the Google DAI script on your page:
 
 ```html
 <script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
@@ -36,19 +35,19 @@ Since THEOads integrates with Google DAI Pod Serving, it is required to load the
 
 ### Player configuration
 
-To make use of the THEOads integration, first enable the feature in your player configuration:
+To make use of the OptiView Ads integration, first enable the feature in your player configuration:
 
 ```javascript
 const player = new THEOplayer.Player(element, {
   libraryLocation: 'YOUR-LIBRARY-LOCATION',
-  license: 'YOUR-LICENSE-WITH-THEOADS',
+  license: 'YOUR-LICENSE-WITH-OPTIVIEW-ADS',
   ads: {
     theoads: true,
   },
 });
 ```
 
-Then, specify a source with a THEOads-enabled ad description:
+Then, specify a source with a OptiView Ads-enabled ad description:
 
 ```javascript
 player.source = {
@@ -69,15 +68,13 @@ player.source = {
 };
 ```
 
-- Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
-  More information can be found [here](00-getting-started-signaling-service.mdx).
+- Notice that the `src` is different as usual. For OptiView Ads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials. More information can be found [here](signaling-service.mdx).
 - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
 - The `ads` object needs to have its integration set to `theoads`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
 
 ## Integrating with Open Video UI
 
-THEOads works seamlessly together with [Open Video UI for Web](/open-video-ui/web/).
-You can pass your THEOads-enabled source directly to the UI's `source` property:
+OptiView Ads works seamlessly together with [Open Video UI for Web](/open-video-ui/web/). You can pass your OptiView Ads-enabled source directly to the UI's `source` property:
 
 ```html
 <theoplayer-default-ui></theoplayer-default-ui>
@@ -85,7 +82,7 @@ You can pass your THEOads-enabled source directly to the UI's `source` property:
   const ui = document.querySelector('theoplayer-default-ui');
   ui.configuration = {
     libraryLocation: 'YOUR-LIBRARY-LOCATION',
-    license: 'YOUR-LICENSE-WITH-THEOADS',
+    license: 'YOUR-LICENSE-WITH-OPTIVIEW-ADS',
     ads: {
       theoads: true,
     },
@@ -109,12 +106,11 @@ You can pass your THEOads-enabled source directly to the UI's `source` property:
 
 It should look something like this:
 
-![Screenshot of Open Video UI playing a THEOads stream](../assets/img/theoads-web-ui.png)
+![Screenshot of Open Video UI playing a OptiView Ads stream](../assets/img/web-ui.png)
 
 ## More information
 
 - [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/TheoAdDescription.html)
-- [What is THEOads?](https://www.theoplayer.com/product/theoads/)
-- [The Advantages of Server-Guided Ad Insertion](https://www.theoplayer.com/solutions/server-guided-ad-insertion-sgai/)
-- [Flexible, Usage-Based Pricing](https://www.theoplayer.com/product/theoads/pricing/)
-- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://www.theoplayer.com/blog/server-guided-ad-insertion-sgai-revolutionizing-streaming-monetization/)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
+- [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)

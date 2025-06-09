@@ -1,28 +1,25 @@
 ---
-sidebar_position: 0.3
+sidebar_position: 3
 sidebar_label: iOS
 sidebar_custom_props: { 'icon': 'apple' }
 ---
 
-# Getting started with THEOads on iOS
+# Getting started with OptiView Ads on iOS
 
-This guide will get you started to integrate THEOads in your THEOplayer iOS SDK: configure the license, update dependencies and set the source description.
+This guide will get you started to integrate OptiView Ads in your THEOplayer iOS SDK: configure the license, update dependencies and set the source description.
 
 ## Prerequisites
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-1.  You need to have a THEOplayer license which is compatible with THEOads.
-    This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
-2.  You need a working [THEOads signaling service](00-getting-started-signaling-service.mdx).
-3.  Add the THEOplayer iOS SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/ios/getting-started) guide.
-    Make sure to [set up a THEOads-compatible license](/theoplayer/getting-started/sdks/ios/getting-started/#theoplayer-license)
-    in your app.
-4.  Add the THEOads integration as a dependency to your project:
+1.  You need to have a THEOplayer license which is compatible with OptiView Ads. This can be done through the [player portal](https://portal.theoplayer.com).
+2.  You need a working [OptiView Ads signaling service](signaling-service.mdx).
+3.  Add the THEOplayer iOS SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/ios/getting-started) guide. Make sure to [set up a OptiView Ads-compatible license](/theoplayer/getting-started/sdks/ios/getting-started/#theoplayer-license) in your app.
+4.  Add the OptiView Ads integration as a dependency to your project:
     <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
-       <TabItem value="cocoapods" label="CocoaPods">
+    <!-- prettier-ignore-start -->
+    <TabItem value="cocoapods" label="CocoaPods">
         1. Add the `THEOplayer-Integration-THEOads` pod to your Podfile:
         ```sh
         pod 'THEOplayer-Integration-THEOads', '~> 8.10.0'
@@ -31,54 +28,54 @@ import TabItem from '@theme/TabItem';
         ```sh
         pod install
         ```
-        </TabItem>
-       <TabItem value="swiftpm" label="SwiftPM">
+    </TabItem>
+    <TabItem value="swiftpm" label="SwiftPM">
          1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
-         ![Screenshot of Xcode file menu](../assets/img/theoads-ios-xcode-file-menu.png)
+         ![Screenshot of Xcode file menu](../assets/img/ios-xcode-file-menu.png)
 
          2. Add `theoplayer-sdk-apple` package by entering the following url:
          ```sh
          https://github.com/THEOplayer/theoplayer-sdk-apple
          ```
-         ![Screenshot of SwiftPM menu](../assets/img/theoads-ios-swiftpm-menu.png)
+         ![Screenshot of SwiftPM menu](../assets/img/ios-swiftpm-menu.png)
 
          3. Select `THEOplayerTHEOadsIntegration` from the package products list and add it to your target.
 
-         ![Screenshot of SwiftPM  product selection](../assets/img/theoads-ios-swiftpm-product-selection.png)
-        </TabItem>
-        <!-- prettier-ignore-end -->
+         ![Screenshot of SwiftPM  product selection](../assets/img/ios-swiftpm-product-selection.png)
 
+    </TabItem>
+    <!-- prettier-ignore-end -->
     </Tabs>
 
 5.  Add Google IMA SDK as a dependency to your project:
     <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
-       <TabItem value="cocoapods" label="CocoaPods">
+    <!-- prettier-ignore-start -->
+    <TabItem value="cocoapods" label="CocoaPods">
         1. The `THEOplayer-Integration-THEOads` pod has a dependency on `GoogleAds-IMA-iOS-SDK` which should be installed automatically.
-        </TabItem>
-       <TabItem value="swiftpm" label="SwiftPM">
+    </TabItem>
+    <TabItem value="swiftpm" label="SwiftPM">
          1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
-         ![Screenshot of Xcode file menu](../assets/img/theoads-ios-xcode-file-menu.png)
+         ![Screenshot of Xcode file menu](../assets/img/ios-xcode-file-menu.png)
 
          2. Add `swift-package-manager-google-interactive-media-ads-ios` package by entering the following url:
          ```sh
          https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios
          ```
-         ![Screenshot of SwiftPM menu](../assets/img/theoads-ios-swiftpm-menu-google.png)
+         ![Screenshot of SwiftPM menu](../assets/img/ios-swiftpm-menu-google.png)
 
          3. Select `GoogleInteractiveMediaAds` from the package products list and add it to your target.
 
-         ![Screenshot of SwiftPM  product selection](../assets/img/theoads-ios-swiftpm-product-selection-google.png)
-        </TabItem>
-        <!-- prettier-ignore-end -->
+         ![Screenshot of SwiftPM  product selection](../assets/img/ios-swiftpm-product-selection-google.png)
 
+    </TabItem>
+    <!-- prettier-ignore-end -->
     </Tabs>
 
 ## Integration
 
-To make use of the THEOads integration, create and add the `THEOadsIntegration` to your `THEOplayer` instance:
+To make use of the OptiView Ads integration, create and add the `THEOadsIntegration` to your `THEOplayer` instance:
 
 ```swift
 import UIKit
@@ -138,14 +135,13 @@ class ViewController: UIViewController {
 }
 ```
 
-- Notice that the `src` is different as usual. For THEOads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
-  More information can be found [here](00-getting-started-signaling-service.mdx).
+- Notice that the `src` is different as usual. For OptiView Ads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials.
+  More information can be found [here](signaling-service.mdx).
 - The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
 - The `ads` array needs to contain a `THEOAdDescription`. Furthermore, the `networkCode` and `customAssetKey` needs to be set according to your configured Google account.
 
 ## More information
 
-- [What is THEOads?](https://www.theoplayer.com/product/theoads/)
-- [The Advantages of Server-Guided Ad Insertion](https://www.theoplayer.com/solutions/server-guided-ad-insertion-sgai/)
-- [Flexible, Usage-Based Pricing](https://www.theoplayer.com/product/theoads/pricing/)
-- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://www.theoplayer.com/blog/server-guided-ad-insertion-sgai-revolutionizing-streaming-monetization/)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
+- [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
+- [Is Server-Guided Ad Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)
