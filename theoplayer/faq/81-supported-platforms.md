@@ -1332,5 +1332,4 @@ description: List of supported platforms for the different THEOplayer SDKs
 
 [^na]: N/A: Not available due to platform limitations.
 
-
 [^hesp]: HESP support is not standardly available in THEOplayer. Contact our team for more information.
