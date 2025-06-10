@@ -12,7 +12,7 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th></th>
       <th colspan="2">HLS</th>
       <th colspan="2">MPEG-DASH</th>
-      <th colspan="2">HESP (*)</th>
+      <th colspan="2">HESP [^hesp] [^protocols]</th>
     </tr>
   </thead>
   <tbody>
@@ -31,7 +31,7 @@ description: List of supported platforms for the different THEOplayer SDKs
       <tr>
         <th>Chrome (and Chromium based)</th>
         <td>
-          Evergreen<br />
+          Evergreen [^evergreen]<br />
           (last 3 major versions)
         </td>
         <td>
@@ -194,7 +194,7 @@ description: List of supported platforms for the different THEOplayer SDKs
           SAMPLE-AES<br />
           Fairplay DRM
         </td>
-        <td>N/A</td>
+        <td>N/A [^na]</td>
         <td>N/A</td>
         <td>iOS 14+</td>
         <td>Fairplay DRM</td>
@@ -1328,10 +1328,10 @@ description: List of supported platforms for the different THEOplayer SDKs
   </tbody>
 </table>
 
-Evergreen: Evergreen means this platform receives automatic software updates. Customers will be using the last version of software, but for users lagging behind in updates, we ensure compatibility with the latest three versions.
+[^evergreen]: Evergreen means this platform receives automatic software updates. Customers will be using the last version of software, but for users lagging behind in updates, we ensure compatibility with the latest three versions.
 
-N/A: Not available due to platform limitations.
+[^na]: N/A: Not available due to platform limitations.
 
-Note other streaming protocols such as Smooth Streaming, progressive MP4, Icecast... are supported. Contact our team for more information.
+[^protocols]: Note other streaming protocols such as Smooth Streaming, progressive MP4, Icecast... are supported. Contact our team for more information.
 
-(\*) Not standardly available in THEOplayer. Contact our team for more information.
+[^hesp]: HESP support is not standardly available in THEOplayer. Contact our team for more information.
