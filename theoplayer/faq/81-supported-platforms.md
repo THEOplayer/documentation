@@ -1332,6 +1332,5 @@ description: List of supported platforms for the different THEOplayer SDKs
 
 [^na]: N/A: Not available due to platform limitations.
 
-[^protocols]: Note other streaming protocols such as Smooth Streaming, progressive MP4, Icecast... are supported. Contact our team for more information.
 
 [^hesp]: HESP support is not standardly available in THEOplayer. Contact our team for more information.
