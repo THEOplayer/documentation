@@ -42,6 +42,7 @@ The following parameters can be provided used to configure the hosted player. _N
 - `autoPlay`: _(default `false`)._ A boolean whether to enable playback to automatically start when the page loads.
 - `muted`: _(default `true`)._ A boolean whether to start the stream playback muted or not. _Note that if `autoPlay` is set to `true`, playback will begin muted due to browser restrictions._
 - `poster`: a publicly accessible poster frame image to show when the stream is offline
+- `playerColor`: _(default `4D5963`)_ a hex color code value to set the play button and scrub bar. _Note that the value is an integer and should NOT contain the `#` at the beginning._
 
 ### Optional Parameters (realtime only configurations)
 
@@ -52,12 +53,29 @@ The following parameters are only valid with Dolby OptiView real-time streaming 
 - `maxHeight`: The maximum height resolution height (pixels) in the ABR range control to load in the given playback session. See [Documentation](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/#abr-range-control). Intended to be used mutually exclusively with `maxWidth`.
 - `maxWidth`: The maximum width resolution (pixels) in the ABR range control to load in the given playback session. See [Documentation](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/#abr-range-control). Intended to be used mutually exclusively with `maxHeight`.
 
-### Examples
+## Player Events
+
+Basic [player events](https://docs.optiview.dolby.com/theoplayer/v9/api-reference/web/interfaces/AdBreakEvent.html) are sent with [window post messages](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to the parent page in case the embedding application wishes to utilize them. Events include:
+
+- ended
+- pause
+- play
+- playing
+- resize
+- volumechange
+
+### Configuration Examples
 
 This is a basic example of a player that is configured in a basic way to play a real-time source:
 
 ```
 https://sbp.optiview.dolby.com/?sourceType=realtime&source=k9Mwad/multiview&license=LICENSE_STRING
+```
+
+This is an example of a player that is configured to play a real-time stream with token protection and other customizations:
+
+```
+https://sbp.optiview.dolby.com/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING&token=TOKEN_STRING
 ```
 
 This is an example to load an OptiView low-delay stream and start with automatic playback:
