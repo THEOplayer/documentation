@@ -173,44 +173,44 @@ extends <a href=../DRMConfiguration.html>DRMConfiguration</a>
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=../FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#fairplay>fairplay</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>public final <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#playready>playready</a></code></th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#widevine>widevine</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>public final <a href=../ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a></code></td>
+                                            <td class="colFirst"><code>private final <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#playready>playready</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=../ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#clearkey>clearkey</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
-                                            <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#integrationParameters>integrationParameters</a></code></th>
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=../FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#fairplay>fairplay</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="rowColor">
-                                            <td class="colFirst"><code>public final <a href=../DRMIntegrationId.html>DRMIntegrationId</a></code></td>
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=../DRMIntegrationId.html>DRMIntegrationId</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#integration>integration</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr class="altColor">
-                                            <td class="colFirst"><code>public final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#customIntegrationId>customIntegrationId</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=XstreamConfiguration.html#integrationParameters>integrationParameters</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -240,8 +240,8 @@ extends <a href=../DRMConfiguration.html>DRMConfiguration</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#DRMPreIntegrationConfiguration(com.theoplayer.android.api.source.drm.DRMIntegrationId,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration)">DRMPreIntegrationConfiguration</a></span>(<a href=../DRMIntegrationId.html>DRMIntegrationId</a> integration, <a href=../FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=../ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey)</code></th>
-                                                <td class="colLast">Creates a DRMConfiguration with the given optional parameters: a DRMIntegrationId, FairPlayKeySystemConfiguration and/or a widevine/playready KeySystemConfiguration.</td>
+                                                        href="#DRMPreIntegrationConfiguration(com.theoplayer.android.api.source.drm.DRMIntegrationId,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration)">DRMPreIntegrationConfiguration</a></span>(<a href=../DRMIntegrationId.html>DRMIntegrationId</a> integration, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=../ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=../FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay)</code></th>
+                                                <td class="colLast"></td>
                                             </tr>
                                         
 
@@ -330,35 +330,12 @@ extends <a href=../DRMConfiguration.html>DRMConfiguration</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="DRMPreIntegrationConfiguration(com.theoplayer.android.api.source.drm.DRMIntegrationId,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration)"></a>
+                                <a name="DRMPreIntegrationConfiguration(com.theoplayer.android.api.source.drm.DRMIntegrationId,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.KeySystemConfiguration,com.theoplayer.android.api.source.drm.ClearkeyKeySystemConfiguration,com.theoplayer.android.api.source.drm.FairPlayKeySystemConfiguration)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>DRMPreIntegrationConfiguration</h4>
-                                        <pre>DRMPreIntegrationConfiguration(<a href=../DRMIntegrationId.html>DRMIntegrationId</a> integration, <a href=../FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=../ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey)</pre>
-                                        <div class="block">Creates a DRMConfiguration with the given optional parameters: a DRMIntegrationId, FairPlayKeySystemConfiguration and/or a widevine/playready KeySystemConfiguration.</div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>integration</code> - A <a href=../DRMIntegrationId.html>DRMIntegrationId</a> representing an integration.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>fairplay</code> - A <a href=../FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> representing a fairplay integration configuration.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>playready</code> - A <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> representing a playready integration configuration.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>widevine</code> - A <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> representing a widevine integration configuration.</dd>
-                                            
-                                            
-                                            
-                                            
-                                        </dl>
+                                        <pre>DRMPreIntegrationConfiguration(<a href=../DRMIntegrationId.html>DRMIntegrationId</a> integration, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> widevine, <a href=../KeySystemConfiguration.html>KeySystemConfiguration</a> playready, <a href=../ClearkeyKeySystemConfiguration.html>ClearkeyKeySystemConfiguration</a> clearkey, <a href=../FairPlayKeySystemConfiguration.html>FairPlayKeySystemConfiguration</a> fairplay)</pre>
+                                        <div class="block"></div>
                                         
                                     </li>
                                 </ul>
