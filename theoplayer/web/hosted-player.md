@@ -64,6 +64,21 @@ Basic [player events](https://docs.optiview.dolby.com/theoplayer/v9/api-referenc
 - resize
 - volumechange
 
+Here is an example of how to consume these messages, logging them to the console:
+
+```javascript
+<script>
+  window.addEventListener("message", (event) => {
+    // confirm origin for security
+    if (event.origin !== "https://sbp.optiview.dolby.com") {
+      return;
+    }
+
+    console.log("iframe event", event.data);
+  });
+</script>
+```
+
 ### Configuration Examples
 
 This is a basic example of a player that is configured in a basic way to play a real-time source:
@@ -88,4 +103,46 @@ This is an example to load an HLS stream and start with automatic playback:
 
 ```
 https://sbp.optiview.dolby.com/?sourceType=live&source=https://stream.theo.live/europe-west/e2c4220c-3cf4-4499-ab3a-ea5e904d0406/ar5c53uzm3si4h4zgkzrju44h/stream/main.m3u8&autoPlay=true&muted=false&license=LICENSE_STRING
+```
+
+## A Complete Example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dolby Stream Embed</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      src="https://sbp.optiview.dolby.com/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING"
+      allowfullscreen
+      allow="autoplay; encrypted-media"
+    ></iframe>
+    <script>
+      window.addEventListener('message', (event) => {
+        // confirm origin for security
+        if (event.origin !== 'https://sbp.optiview.dolby.com') {
+          return;
+        }
+
+        console.log('iframe event', event.data);
+      });
+    </script>
+  </body>
+</html>
 ```
