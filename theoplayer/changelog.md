@@ -499,7 +499,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 - Fixed an issue where license checks would not properly display error messages for different issues with licenses.
 - Fixed an issue where app crashes could occur due to lingering listeners after destroying the player instance.
 
-<details name="major-version">
+<details>
 <summary>Version 8</summary>
 
 ## 🚀 8.14.0 (2025/03/26)
@@ -1518,7 +1518,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 - Deprecating all THEOplayer Objective-C API support. Existing APIs will still continue to work until next major release, but additional support for new APIs will discontinue. When it was introduced, the goal of the Objective-C APIs was to provide bindings to bridge our native SDK to React Native. Over time that became unneeded as Swift became capable of accomplishing the goal. Please contact us for support in case your codebase relies on the Objective-C APIs.
 
 </details>
-<details name="major-version">
+<details>
 <summary>Version 7</summary>
 
 ## 🚀 7.12.0 (2024/09/05)
@@ -2134,7 +2134,7 @@ THEOplayer 7.0 is **backwards compatible for most features but includes some bre
 - Removed deprecated `MenuItem` and `MenuLayoutConfigurator` types.
 
 </details>
-<details name="major-version">
+<details>
 <summary>Version 6</summary>
 
 ## 🚀 6.13.0 (2024/03/28)
@@ -2883,7 +2883,7 @@ THEOplayer 6.0 is **backwards compatible for most features but includes some bre
 - Deprecated `THEOplayer.requestSeekable` in favor of `THEOplayer.seekable`.
 
 </details>
-<details name="major-version">
+<details>
 <summary>Version 5</summary>
 
 ## 🚀 5.11.0 (2023/09/11)
@@ -3633,7 +3633,7 @@ THEOplayer 5.0 is **backwards compatible for most features but includes some bre
 - Added `THEOplayer.developerSettings` API to host developer-friendly settings and experimental features
 
 </details>
-<details name="major-version">
+<details>
 <summary>Version 4</summary>
 
 ## 🚀 4.12.9 (2024/05/13)
@@ -4681,7 +4681,7 @@ Introducing a major version bump to THEOplayer 4.0. This version officially rele
 - Please start migrating your projects to be compatible with the Swift 5.5 compiler (Xcode 13) or later. Starting from THEOplayerSDK 5.0.0 we will only support Swift 5.5 or higher.
 
 </details>
-<details name="major-version">
+<details>
 <summary>Version 3</summary>
 
 ## 🚀 3.7.0 (2022/08/01)
@@ -5290,7 +5290,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 - Fix an issue where fullscreen device orientation was broken when using fullscreenOrientationCoupling.
 
 </details>
-<details name="major-version">
+<details>
 <summary>Version 2</summary>
 
 ## 🚀 2.92.0 (2021/12/17)
