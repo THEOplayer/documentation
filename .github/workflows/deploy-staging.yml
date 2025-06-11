@@ -1,8 +1,5 @@
-name: Deploy to production
+name: Deploy to staging
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}
