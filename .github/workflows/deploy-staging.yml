@@ -41,4 +41,4 @@ jobs:
           aws s3 sync --delete ./build s3://docs-staging-optiview-dolby-com-0-20250610142618642800000001/docs/
       - name: Invalidate CloudFront
         run: |
-          aws cloudfront create-invalidation --distribution-id E15SU691K20UEP --paths '/docs/*'
+          aws cloudfront create-invalidation --distribution-id E15SU691K20UEP --paths '/*'
