@@ -5,6 +5,16 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.5.1 (2025/06/11)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed a crash when casting a source with a `ChromecastMetadataDescription` without a `releaseDate` or `subtitle`.
+- Fixed an issue where a crash could occur due to an invalid playback rate when stopping Chromecast and stopping the player.
+- Fixed an issue where setting `AbrStrategyType.BANDWIDTH` would ignore the historic data of the network conditions.
+
 ## 🚀 9.5.0 (2025/06/03)
 
 ### General
