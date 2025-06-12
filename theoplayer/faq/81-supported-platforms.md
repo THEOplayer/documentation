@@ -14,17 +14,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP [^hesp] [^protocols]</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th colspan="7">
         ### Desktop Browser Platforms
@@ -377,17 +377,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th>iOS</th>
         <td>13+</td>
@@ -440,17 +440,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th>Android</th>
         <td>5.0+</td>
@@ -529,17 +529,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th>Roku OS</th>
         <td>
@@ -622,17 +622,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th colspan="7">
         ### Desktop Browser Platforms
@@ -1057,17 +1057,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th colspan="7">
         ### Desktop Browser Platforms
