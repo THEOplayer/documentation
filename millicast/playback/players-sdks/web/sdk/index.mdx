@@ -538,7 +538,9 @@ In earlier SDK versions, it was necessary to `initStats()` to enable this collec
 
 ```javascript
 await millicastView.connect({
-  autoInitStats: false,
+  peerConfig: {
+    autoInitStats: false,
+  }
 });
 
 // or alternatively stop them explicitly and remove listeners if unnecessary
