@@ -27,7 +27,15 @@ The following parameters can be provided used to configure the hosted player. _N
 
 ### Required Parameters
 
-- `license`: a OptiView player license obtained through the dashboard. If using the hosted version of the player, the playback domain `sbp.optiview.dolby.com` must be enabled. If you wish to limit sources for playback, you can utilize "Source Domain" restrictions in the player portal. If using streams from Dolby, you must enable `stream.theo.live`.
+- `license`: a OptiView player license obtained through the dashboard. If using the hosted version of the player you should limit sources for playback, you can utilize "Source Domain" restrictions in the player portal. This will prevent viewers from stealing your license and using it for their own streams. If using streams from Dolby, you must white list the following
+  - _Whitelist Page Domains_
+    - `sbp.optiview.dolby.com`
+    - _Note: at this time it is not possible to whitelist the end-application domain for whitelisted page domains in the license. If you wish to secure your streams by page domain, please contact Dolby to get your own license and player implementation._
+  - _Whitelist Source Domains_
+    - `cdn.tla-prd.theostream.live`
+    - `discovery.theo.live`
+    - `stream.anywhere.theo.live`
+    - `stream.theo.live`
 - `sourceType`: the type of source to configure the player to play back. Choose one of:
   - `realtime`: Real-time WebRTC playback with OptiView's real-time streaming solution (formerly Millicast)
   - `lowdelay`: Low-delay HESP playback with OptiVIew's live streaming solution (formerly THEOlive)
@@ -105,7 +113,7 @@ This is an example to load an HLS stream and start with automatic playback:
 https://sbp.optiview.dolby.com/?sourceType=live&source=https://stream.theo.live/europe-west/e2c4220c-3cf4-4499-ab3a-ea5e904d0406/ar5c53uzm3si4h4zgkzrju44h/stream/main.m3u8&autoPlay=true&muted=false&license=LICENSE_STRING
 ```
 
-## A Complete Example:
+## A Complete Example
 
 ```html
 <!DOCTYPE html>
