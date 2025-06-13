@@ -12,21 +12,23 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th></th>
       <th colspan="2">HLS</th>
       <th colspan="2">MPEG-DASH</th>
-      <th colspan="2">HESP [^hesp] [^protocols]</th>
+      <th colspan="2">HESP [^hesp]</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
     </tr>
   </thead>
   <tbody>
       <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
-      <tr>
-        <th colspan="7">Desktop Browser Platforms</th>
+        <th colspan="7">
+        ### Desktop Browser Platforms
+        </th>
       </tr>
       <tr>
         <th>Chrome (and Chromium based)</th>
@@ -131,7 +133,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>Fairplay DRM</td>
       </tr>
       <tr>
-        <th colspan="7">Mobile Browser Platforms</th>
+        <th colspan="7">
+        ### Mobile Browser Platforms
+        </th>
       </tr>
       <tr>
         <th>Chrome for Android</th>
@@ -200,7 +204,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>Fairplay DRM</td>
       </tr>
       <tr>
-        <th colspan="7">Connected devices and smart TV platforms</th>
+        <th colspan="7">
+        ### Connected devices and smart TV platforms
+        </th>
       </tr>
       <tr>
         <th>Samsung Tizen</th>
@@ -371,17 +377,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th>iOS</th>
         <td>13+</td>
@@ -434,17 +440,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th>Android</th>
         <td>5.0+</td>
@@ -523,17 +529,17 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
-      <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
       <tr>
         <th>Roku OS</th>
         <td>
@@ -559,7 +565,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td><a href="https://optiview.dolby.com/contact/">Contact us</a></td>
       </tr>
       <tr>
-        <th colspan="7">Casting</th>
+        <th colspan="7">
+        ### Casting
+        </th>
       </tr>
       <tr>
         <th>Apple Airplay</th>
@@ -614,19 +622,21 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
       <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
-      <tr>
-        <th colspan="7">Desktop Browser Platforms</th>
+        <th colspan="7">
+        ### Desktop Browser Platforms
+        </th>
       </tr>
       <tr>
         <th>Chrome (and Chromium based)</th>
@@ -731,7 +741,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>Fairplay DRM</td>
       </tr>
       <tr>
-        <th colspan="7">Mobile Browser Platforms</th>
+        <th colspan="7">
+        ### Mobile Browser Platforms
+        </th>
       </tr>
       <tr>
         <th>Chrome for Android</th>
@@ -800,7 +812,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>Fairplay DRM</td>
       </tr>
       <tr>
-        <th colspan="7">Connected devices and smart TV platforms</th>
+        <th colspan="7">
+        ### Connected devices and smart TV platforms
+        </th>
       </tr>
       <tr>
         <th>Samsung Tizen</th>
@@ -870,7 +884,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td><a href="https://optiview.dolby.com/contact/">Contact us</a></td>
       </tr>
       <tr>
-        <th colspan="7">Native Apps</th>
+        <th colspan="7">
+        ### Native Apps
+        </th>
       </tr>
       <tr>
         <th>iOS</th>
@@ -984,7 +1000,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td><a href="https://optiview.dolby.com/contact/">Contact us</a></td>
       </tr>
       <tr>
-        <th colspan="7">Casting</th>
+        <th colspan="7">
+        ### Casting
+        </th>
       </tr>
       <tr>
         <th>Apple Airplay</th>
@@ -1039,19 +1057,21 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th colspan="2">MPEG-DASH</th>
       <th colspan="2">HESP (*)</th>
     </tr>
+    <tr>
+      <th></th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+      <th>Version</th>
+      <th>Content Protection & DRM</th>
+    </tr>
   </thead>
   <tbody>
       <tr>
-        <td></td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-        <td>Version</td>
-        <td>Content Protection & DRM</td>
-      </tr>
-      <tr>
-        <th colspan="7">Desktop Browser Platforms</th>
+        <th colspan="7">
+        ### Desktop Browser Platforms
+        </th>
       </tr>
       <tr>
         <th>Chrome (and Chromium based)</th>
@@ -1156,7 +1176,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>Fairplay DRM</td>
       </tr>
       <tr>
-        <th colspan="7">Mobile Browser Platforms</th>
+        <th colspan="7">
+        ### Mobile Browser Platforms
+        </th>
       </tr>
       <tr>
         <th>Chrome for Android</th>
@@ -1225,7 +1247,9 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>Fairplay DRM</td>
       </tr>
       <tr>
-        <th colspan="7">Native Apps</th>
+        <th colspan="7">
+        ### Native Apps
+        </th>
       </tr>
       <tr>
         <th>iOS</th>
