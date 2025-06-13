@@ -12,7 +12,7 @@ description: List of supported platforms for the different THEOplayer SDKs
       <th></th>
       <th colspan="2">HLS</th>
       <th colspan="2">MPEG-DASH</th>
-      <th colspan="2">HESP [^hesp] [^protocols]</th>
+      <th colspan="2">HESP [^hesp]</th>
     </tr>
     <tr>
       <th></th>
