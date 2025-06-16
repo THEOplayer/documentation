@@ -37,7 +37,7 @@ You may also find the [Getting Started on Web](../01-web/00-getting-started.mdx)
 
 ### Prerequisites
 
-1. Make sure you have created an [LG Developer Account](https://webostv.developer.lge.com/develop/getting-started/preparing-lg-account). You will need this to login to the Developer Tools app on the physical device.
+1. Make sure you have created an [LG Developer Account](https://webostv.developer.lge.com/login). You will need this to login to the Developer Tools app on the physical device.
 2. Download the Developer Tools app to the TV from the LG Content Store, login with your LG account and follow the instructions to set the device in developer mode (a restart is required).
 
 ### Make a connection
