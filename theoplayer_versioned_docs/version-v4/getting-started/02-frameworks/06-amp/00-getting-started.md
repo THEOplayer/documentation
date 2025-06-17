@@ -111,7 +111,7 @@ Accelerated Mobile Pages (AMP) is an open-source HTML framework. More informatio
 </html>
 ```
 
-5. Once again: upload page A to a different (sub) domain than page B in order to adhere to the [iframe origin policy](https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md). For example, you can put page B on https://iframe.website.com/player.html and page A on https://www.website.com/a-random-video.html
+5. Once again: upload page A to a different (sub) domain than page B in order to adhere to the [iframe origin policy](https://github.com/ampproject/amphtml/blob/main/docs/spec/amp-iframe-origin-policy.md). For example, you can put page B on https://iframe.website.com/player.html and page A on https://www.website.com/a-random-video.html
 
 An example application of this step-by-step guide is available [here](https://f.hubspotusercontent20.net/hubfs/2163521/Demo_zone/amp-iframe-example.html).
 
