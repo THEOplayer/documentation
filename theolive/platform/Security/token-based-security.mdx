@@ -133,7 +133,7 @@ self.addEventListener('fetch', (event) => {
       try {
         const url = new URL(event.request.url);
         // Only intercept requests made by the player and not other requests
-        if (url.origin.endsWith("theo.live")) {
+        if (url.origin.endsWith('theo.live')) {
           const jwt = await sign(
             {
               exp: Math.floor(Date.now() / 1000) + 300, // 5 minutes
