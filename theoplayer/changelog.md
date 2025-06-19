@@ -5,6 +5,87 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.6.0 (2025/06/18)
+
+### Web
+
+#### ✨ Features
+
+- Added support for using the `"keyids"` initialization data format in EME, as defined by [W3C](https://www.w3.org/TR/eme-initdata-keyids/).
+- Added support for ClearKey content protection signaled by the DASH-IF system ID (`e2719d58-a985-b3c9-781a-b030af78d30e`) in the context of a DASH stream. (ClearKey signaled by the W3C system ID was already supported.)
+- Added support for ABR strategies for OptiView live streams.
+
+#### ⚡ Improvements
+
+- Improved latency control, especially on CPU-restricted devices.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player did not recognize a PlayReady PRO object as valid initialization data in an HLS `#EXT-X-KEY` tag.
+- Fixed an issue where seeking to an area of buffer right before a gap on WebOS devices would cause the player to get stuck indefinitely.
+- Fixed an issue where video qualities in a Millicast stream did not report their correct width and height.
+- Fixed an issue where an incorrect intent to autoplay was sent to Google IMA.
+
+### Android
+
+#### ✨ Features
+
+- Added support for [16 KB page sizes](https://developer.android.com/guide/practices/page-sizes) in the Core SDK. This prepares for the [upcoming Google Play compatibility requirement](https://android-developers.googleblog.com/2025/05/prepare-play-apps-for-devices-with-16kb-page-size.html) where new apps or app updates submitted after November 1st 2025 and targeting Android 15 or higher must support 16 KB page sizes.
+
+#### 🐛 Issues
+
+- Fixed a regression where MediaTailor sources failed to play.
+- Fixed an issue where video qualities in a Millicast stream did not report their correct width and height.
+- Fixed an issue where some caching notifications would be stuck if multiple tasks run in parallel.
+- Fixed a crash when casting a source with a `ChromecastMetadataDescription` without a `releaseDate` or `subtitle`.
+- Fixed an issue where a crash could occur due to an invalid playback rate when stopping Chromecast and then stopping the player.
+- Fixed an issue where THEOads showed a black screen instead of an advertisement.
+- Fixed an issue where setting `AbrStrategyType.BANDWIDTH` would ignore the historic data of the network conditions.
+- Fixed an issue where no `TimeUpdateEvent` would be dispatched after seeking using the Media3 playback pipeline.
+- Fixed an issue where a large amount of `AddCueEvent`s from a thumbnail track would delay other player events.
+
+#### ⚠ Known Limitations
+
+- The Millicast integration does not yet support [16 KB page sizes](https://developer.android.com/guide/practices/page-sizes). This will be fixed in an upcoming THEOplayer release.
+
+### iOS
+
+#### ✨ Features
+
+- Added `unlocalizedLabel` property to tracks. Where applicable, this refers to the label before it gets automatically localized by Apple's AVFramework. 
+
+#### ⚡ Improvements
+
+- `THEOplayer.source` now returns the exact same `SourceDescription` (without modifications) that was last set on the property.
+
+#### 🐛 Issues
+
+- Fixed an issue where accessing the player after the `destroy` method was called would crash the application.
+- Fixed an issue where entering the background during a THEOad would not let you resume the content.
+
+#### 👎 Deprecations
+
+- Deprecated the `destroy` method. Instead destroy the player by removing its reference `self.player = nil`.
+
+### Chromecast CAF
+
+#### ⚡ Improvements
+
+- Fixed playout of streams where the manifest extension was not the protocol default (.m3u8 or .mpd), but the type was correctly given in the source description.
+
+### Roku
+
+#### ✨ Features
+
+- Added tracking of CMCD states for THEOlens.
+- Added Common Media Client Data (CMCD) Status header on media requests to track rebuffering.
+- Added Network API for adding custom headers to media requests during playback.
+
+#### 🐛 Issues
+
+- Stopped ads from playing after a stream has fatally errored.
+- Fixed an issue with an event firing after calling `destroy` that caused a crash when switching streams. 
+
 ## 🚀 9.5.1 (2025/06/11)
 
 ### Android
