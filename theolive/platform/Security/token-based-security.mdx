@@ -131,9 +131,9 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     (async function () {
       try {
-        const url = event.request.url;
+        const url = new URL(event.request.url);
         // Only intercept requests made by the player and not other requests
-        if (url.includes('manifest.json') || url.includes('hspi') || url.includes('hspc')) {
+        if (url.origin.endsWith("theo.live")) {
           const jwt = await sign(
             {
               exp: Math.floor(Date.now() / 1000) + 300, // 5 minutes
