@@ -77,6 +77,10 @@ The service worker needs to intercept the `fetch` requests originating from the 
 
 A code snippet for the service worker code is shared below.
 
+:::note
+Service worker registration and the usage of the crypto object (used for signing the JWT) are only posssible in a secure environment (`https://`) or on `localhost`.
+:::
+
 ```javascript Service Worker for iOS Safari
 // If you are using a symmetric key, then this is the same key as configured in your console.
 const YOUR_JWT_SIGNING_KEY = 'YOUR-SIGNING-KEY-GOES-HERE';
@@ -178,7 +182,7 @@ const registerServiceWorker = () => {
   }
 };
 // Initialise the service worker some time early in the processs.
-if (!(window.MediaSource || window.WebKitMediaSource || window.ManagedMediaSource)) {
+if (!(window.MediaSource || window.ManagedMediaSource)) {
   registerServiceWorker();
 }
 ```
