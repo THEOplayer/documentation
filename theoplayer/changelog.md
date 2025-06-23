@@ -5,6 +5,15 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.6.1 (2025/06/23)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where an MPEG-DASH thumbnail adaptation set with a large amount of thumbnails could cause the player to temporarily lock up the main thread on lower end devices. The player now parses these thumbnails in a background thread instead.
+- Fixed an issue where MPEG-DASH streams with duplicate service descriptors in their CEA-608 `<Accessibility>` descriptor would result in scrambled closed captions.
+
 ## 🚀 9.6.0 (2025/06/18)
 
 ### Web
