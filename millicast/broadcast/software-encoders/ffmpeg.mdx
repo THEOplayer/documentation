@@ -26,6 +26,10 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-f flv           | Package flash video                              |
 | \-preset veryfast | Video encoding speed to compression ratio preset |
 
+:::warning -re flag
+Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
+:::
+
 ## RTMP
 
 In order to broadcast with RTMP, you will need to have your **RTMP publish path** and **RTMP publish stream name** available. See the [RTMP Broadcast Guide](/millicast/broadcast/rtmp-and-rtmps.mdx#how-to-find-your-rtmp-publish-url) for details on how to retrieve these values.
@@ -192,6 +196,10 @@ If you experience stutter in your streaming video, make sure you are using the o
 ```
 
 You can also modify the `-preset` to adjust the compression speed to quality ratio.
+
+### High latency
+
+If your input is an actual capture device or a live stream, make sure you are not using the `-re` flag as it may cause packet loss and higher latency.
 
 ## Learn more
 
