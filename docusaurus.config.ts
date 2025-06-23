@@ -500,7 +500,7 @@ const config: Config = {
     },
   },
 
-  staticDirectories: ['static', 'theoplayer/static', 'open-video-ui/external/web-ui/docs/static'],
+  staticDirectories: ['static', 'theoplayer/static', 'ads/static', 'open-video-ui/external/web-ui/docs/static'],
 
   themeConfig: {
     // TODO OpenGraph image for OptiView?
