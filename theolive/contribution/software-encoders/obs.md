@@ -60,7 +60,7 @@ Hit apply on settings, close the window, and click on _Start Streaming_ in the _
 
 Your THEOlive channel must be started in order to recieve video ingest from OBS. You can choose to start up your channel before or after you start streaming via OBS.
 
-Starting a channel can be done either [through the API](pathname:///docs.optiview.dolby.com/theolive/api/channels/start-channel/) or via [the console](https://console.theo.live/).
+Starting a channel can be done either [through the API](/theolive/api/channels/start-channel) or via [the console](https://console.theo.live/).
 
 ![Start your channel](../../assets/img/consolechannelstart.png)
 
