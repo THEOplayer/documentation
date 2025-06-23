@@ -138,7 +138,7 @@ When using GAM for delivering dynamic image overlays through the `gamProperties`
 
 First off, you need to define a custom creative template specifically for OptiView Ads image overlays as documented [here](https://support.google.com/admanager/answer/1138308#custom-templates).
 
-You can either import this [pre-defined template](../assets/json/OptiView_Ads_Image_Overlay_gam_template.json), or follow the steps below.
+You can either import this [pre-defined template](pathname:///ads/templates/OptiView_Ads_Image_Overlay_gam_template.json), or follow the steps below.
 
 Apart from assigning a `Name` and optional `Description`, you need to perform the following changes:
 
