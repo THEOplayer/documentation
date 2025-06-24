@@ -17,18 +17,18 @@ In the bearer token that gets sent to us, we _require_ the following properties 
 - `exp`: date in epoch format until which the JWT token is valid
 - `nbf`: optional date in epoch format. Stands for "not before" and acts as a "start date" of the JWT to be valid.
 
-When not passing a bearer token for a secured channel, the request will be rejected.  If the channel is not secured, you may still pass a token but it is not required.
+When not passing a bearer token for a secured channel, the request will be rejected. If the channel is not secured, you may still pass a token but it is not required.
 
 ![token based security](../../assets/img/dcdfc37-token_security.png)
 
 Putting it all together, here is an example of a token `payload`:
+
 ```json
 {
   "nbf": 1750786626 // optional, viewers attempting to connect before this time will not be permitted
   "exp": 1750796626 // required, must be a valid time in the future to allow viewer access
 }
 ```
-
 
 ## Enable or disable token security for an alias
 

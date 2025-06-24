@@ -3,28 +3,31 @@ sidebar_position: 7
 sidebar_label: Viewer Tracking
 title: Viewer Tracking
 ---
+
 import CalloutPremiumFeature from '../callouts/_premium_feature.md';
 
 <CalloutPremiumFeature />
 
 # Tracking Viewers
+
 With THEOlive, you can syndicate content through multiple distribution partners while utilizing the same channel, or alternatively track different groups through aliases. This can be helpful for aggregating viewing and billing data for a group of viewers.
 
-Additionally, when using the advanced reporting feature, you might want to assign tracking metadata to individual viewers to post-process later in your data and BI analysis tools.  This is all possible with our viewer tracking workflows.
+Additionally, when using the advanced reporting feature, you might want to assign tracking metadata to individual viewers to post-process later in your data and BI analysis tools. This is all possible with our viewer tracking workflows.
 
 ## Tracking Workflow
 
 The following is an **example workflow** for setting up stream tracking:
 
 1. Create a THEOlive channel
-1. Enable [*Token Security*](security/token-based-security.mdx) on the channel or alias
+1. Enable [_Token Security_](security/token-based-security.mdx) on the channel or alias
 1. When you create your self-signed token, add one or both of the following parameters to the `payload` of your JWT:
-	* **trackingId**: Groups viewers of the same channel, allows you to get the aggregated bandwidth usage of all viewers. This is useful for billing a single channel or alias if you use multiple distribution partners and want aggregated billing metrics back or viewer reports for groups of viewers
-	* **customViewerData** : Access the bandwidth consumption of each viewer for analytics purposes and passthrough metadata from your CMS for a viewer and be able to retrieve it in a viewer report.  This data is not parsed by our system and can be a series of key-value pairs for you to extract later
-1. Pass the JWT through to the player as described in the [*Token Security*](security/token-based-security.mdx) section
+   - **trackingId**: Groups viewers of the same channel, allows you to get the aggregated bandwidth usage of all viewers. This is useful for billing a single channel or alias if you use multiple distribution partners and want aggregated billing metrics back or viewer reports for groups of viewers
+   - **customViewerData** : Access the bandwidth consumption of each viewer for analytics purposes and passthrough metadata from your CMS for a viewer and be able to retrieve it in a viewer report. This data is not parsed by our system and can be a series of key-value pairs for you to extract later
+1. Pass the JWT through to the player as described in the [_Token Security_](security/token-based-security.mdx) section
 1. To get _Advanced Reports_, including user-reports, please contact your Dolby representative for access.
 
 To put it all together, here is an example `payload` for a JWT that includes sample `trackingId` and `customViewerData`:
+
 ```json
 {
   "customViewerData": "user=user123;appVersion=x.y.x",
@@ -34,5 +37,6 @@ To put it all together, here is an example `payload` for a JWT that includes sam
 ```
 
 ### Notes
-* Tracking can be used independently of secure channels.  You can pass the same payload parameters in a JWT, however, we require that the token is "valid".  This means that the required date fields _must_ be valid or the token will be ignored.  If a channel does not have token security enabled, however, be aware that anyone can view the channel with or without a jwt token
-* If you are combining our OptiView real-time (Millicast) streaming solution and our live streaming solution (THEOlive), you may use the *secret* from the Millicast subscriber token as the secret you provide to THEOlive and you can use the same JWTs across both streaming products
+
+- Tracking can be used independently of secure channels. You can pass the same payload parameters in a JWT, however, we require that the token is "valid". This means that the required date fields _must_ be valid or the token will be ignored. If a channel does not have token security enabled, however, be aware that anyone can view the channel with or without a jwt token
+- If you are combining our OptiView real-time (Millicast) streaming solution and our live streaming solution (THEOlive), you may use the _secret_ from the Millicast subscriber token as the secret you provide to THEOlive and you can use the same JWTs across both streaming products
