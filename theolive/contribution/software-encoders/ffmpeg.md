@@ -25,6 +25,10 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-tune zerolatency | Good for fast encoding and low-latency streaming |
 | \-vprofile main    | H264 video profile                               |
 
+:::warning -re flag
+Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
+:::
+
 ## Start the stream
 
 Run the following command with the proper settings in order to start publishing to your channel.
