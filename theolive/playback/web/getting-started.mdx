@@ -18,7 +18,7 @@ latency play-out of THEOlive streams.
 
 ```javascript
 function needsServiceWorkerForTHEOlive() {
-  const canPlayMSE = !!(window.MediaSource || window.WebKitMediaSource || window.ManagedMediaSource);
+  const canPlayMSE = !!(window.MediaSource || window.ManagedMediaSource);
   const videoElement = document.createElement('video');
   const canPlayHLS = videoElement.canPlayType && videoElement.canPlayType('application/vnd.apple.mpegURL') !== '';
   return canPlayHLS && !canPlayMSE;
