@@ -1,0 +1,47 @@
+---
+sidebar_position: 5
+sidebar_label: Thumbnails and HLS
+---
+
+# Thumbnails Images and HLS
+
+Thumbnail images representing what is currently happening in a live stream are available for populating a player poster frame, a scrollable list of available streams, and the like.
+
+Manifests for HLS fallback of THEOlive streams are available for serving a stream to a device that cannot deploy an OptiView player.
+
+Both thumbnails and HLS manifests are available from a deterministic URL.
+
+## Getting Thumbnail Images
+
+Thumbnails are available as jpeg images with URLs in the following format:
+
+```text
+http://discovery.theo.live/channels/<channelId>/stream/thumbnail.jpeg
+```
+
+- `channelId` is the `channelId` of the channel you wish to get the thumbnail for
+- there is currently no ability to control the size or compression level of a thumbnail image
+
+An example thumbnail image and URL for a channel:
+
+```text
+http://discovery.theo.live/channels/ar5c53uzm3si4h4zgkzrju44h/stream/thumbnail.jpeg
+```
+
+![](http://discovery.theo.live/channels/ar5c53uzm3si4h4zgkzrju44h/stream/thumbnail.jpeg)
+
+## Getting HLS Manifests
+
+HLS manifests are available in the following URL format:
+
+```text
+http://discovery.theo.live/channels/<channelId>/stream/main.m3u8
+```
+
+- `channelId` is the `channelId` of the channel you wish to get the thumbnail for
+
+An example hls manifest URL for a channel:
+
+```text
+http://discovery.theo.live/channels/ar5c53uzm3si4h4zgkzrju44h/stream/main.m3u8
+```
