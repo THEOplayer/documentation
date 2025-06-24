@@ -161,7 +161,7 @@ if (!(window.MediaSource || window.ManagedMediaSource)) {
 }
 ```
 
-The snippet above assumes the existence of a function `sign(payload, secret)` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. (Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudo-code :
+The snippet above assumes the existence of a function `sign(payload, secret)` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. [(Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudo-code :
 
 ```javascript
 const sign = async (payload, secret) => {
