@@ -18,13 +18,20 @@ To distribute content to an RTMP(S) or SRT output source you will need to update
 - **url** - the media server that is able to accept RTMP(S) or SRT ingest including the rtmp://, rtmps:// and srt:// protocols and port number
 - **key** - the url path and/or additional parameters that should be passed to the server to uniquely identify the incoming RTMP(S) or SRT stream
 - **label** - a text value to help with identifying and distinguishing multiple re-stream target endpoints
+- **enabled** - a boolean as to whether or not this re-stream should be used or not
+
+_Note: When changing a re-stream settings for a running stream, the configuration changes will be saved but not applied. To apply the changes click the `sync` button in the dashboard or in the API endpoint to apply the changes immediately._
+
+|             ![](../assets/img/restream.jpg)              |
+| :------------------------------------------------------: |
+| This is an image showing the parameters in the dashboard |
 
 Support is available for:
 
 <ul class="checkBoxList">
   <li>H.264 and AAC codecs</li>
   <li>SRT and RTMP(S) broadcast sources</li>
-  <li>Up to ten (10) RTMP(S) and SRT output destinations</li>
+  <li>Up to ten (10) RTMP(S) or SRT output destinations</li>
 </ul>
 
 The outgoing RTMP(S) or SRT stream will be identical to the incoming source stream in terms of bitrate, codec, etc.
@@ -53,7 +60,8 @@ When creating or updating [Publish Tokens](/millicast/streaming-dashboard/managi
     "restream": [{
         "url": "rtmp://...",
         "key": "***",
-        "label": "Popular Social Media Site"
+        "label": "Popular Social Media Site",
+        "enabled": true
     }]
 }
 ```
