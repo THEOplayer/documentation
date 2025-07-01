@@ -2,6 +2,10 @@
 
 Updates to the Dolby.io Dashboard and Applications.
 
+## 2025-06-23 | Dashboard
+
+Re-stream has had an update which will allow you to add, enable, and disable re-streams for a running stream so that you can restart an individual re-stream without having to restart your entire contribution stream. See more in our [re-stream](/millicast/distribution/re-streaming) guide including how to do this from our dashboard
+
 ## 2024-12-12 | Dashboard & Hosted Player
 
 ### Dashboard
