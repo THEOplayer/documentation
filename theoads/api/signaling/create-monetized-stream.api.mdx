@@ -1,0 +1,109 @@
+---
+id: create-monetized-stream
+title: 'CreateMonetizedStream'
+description: 'Creates and deploys a new monetized stream in the environment, resulting in a deployment of a signaling service.'
+sidebar_label: 'CreateMonetizedStream'
+hide_title: true
+hide_table_of_contents: true
+api: eJztVt9v2zYQ/lcIPm2A7bQB9pI311Fbo55txE6xIQgKRrrIbChRIym7nuH/fXekLcq2MmzDsL00Dw7F+8G74/fdccd1BUY4qctxxm/4yIBw8LMuwcnfIVs4/C54jxuwlS4tWH6z49dv3tK/DGxqZEW2jWWGuqkuHZSOVERVKZl691dfLentuE1XUAhaVYYOdzJ4lRn9um0F6M06I8uc73u4QreXkh6Hsi74zQNPm4MzUECrRzQL2q9bFccU+zbk+NjjZa2UeFKo/yyUBfRSia3SIrsMthRFh3u0WIOxMiTakQqdNH4tTxIuD2Efw5yMPycY9efZLQV4noyTjqLlZ/flnaBLbWQuXwkF8gLvaPa6hhJbXbt2LIvx9MOEormd3b/zi8ni43CefBnexvVoNl0m0+XfiHYSDsIjhbXgPsG2Mx602WjzMtJZd+FDsnPhVp1i7/v+btwpfBLpS4b32y3fE/x/q6VBaGEZmltsCnxezqZ4sQj66SukDiUiyyTRQah5C1Aeb7FC43MCnscg6fTAjMMREav/1qHDSt4dWI/n7ymELsZbJsqMZVApvcU1K2HDGnKxUCwmS+ZWwKBcS6NLKlWPYUuplcMKk1QcPJCI6Wf8tjLHeElswaxlCgNKVeSW8m9C7S8a9lpIayMdoufhkaphkKIO2Ri+qXpg3TudbS971xJju4gZ29izzOvQHHm7/s7U8I/b3PfO8b1z/Ied45y0fwHqgetInpWmJ0GlrfPtherDr84Hp/VJmHVg2o7XRpGaqOTV+i3ft4i5IEYEEqAUb2tYn5Q8bKK7QBH+S384H/c/Jb/iFkGNr0BkYHxZiWV3kdLJN1FUCiK/InYaWsWtyKbzvUCiI3eOLGhpnYI/Co6Yj1CPkIxaJ0iM220Axt2Iu7h3ArcWDGX5rH0lDzBYfkxmIrMMe/hJCa5/GlwP3nSC4mhylyyWDAvPhFJ6YxnmxZxm4ZXle30hSpFfosj22GYl0xUTBlrd3FI7v2jmdsASgbodUDThrYmh4LGiZKE6R7lbCcekbRnWlvwew/9h8WE4/nHA3muDQTghFapQeUzh0c10GEVrYaSuLYtzwueGImnQJSbYY4goYQEH1TMYCobscnB+ZuHwNfjWZHktMz+acAAAjcoIwfvpZDxKpovklq6IxoVIqS0SfolUWMeWdpimrOEv6ybwLs6d/2UAB4I4+OauKiWQBJiMp/zu0CEun9aWutmKuggKd7snrOm9Ufs9bSODzWFi042E1/cDPeAPZKeW8uJZNAp595fhubMWqg5d42z27ntHi2GaQuX+VPex1ejms8WSOHZ4IhSBpUZsaPjj7w0nrvp78E3M7+2Q+mVeI15QHnzS3x/h+Zzd
+sidebar_class_name: 'post api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'CreateMonetizedStream'}></Heading>
+
+<MethodEndpoint method={'post'} path={'/monetized-streams'} context={'endpoint'}></MethodEndpoint>
+
+Creates and deploys a new monetized stream in the environment, resulting in a deployment of a signaling service.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails parameters={[]}></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    description: 'The monetized stream configuration',
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            name: { type: 'string' },
+            version: { type: 'string' },
+            streamId: { type: 'string' },
+            streamType: { enum: ['LIVE', 'VOD'], type: 'string', title: 'MonetizedStreamType' },
+            origin: { type: 'string' },
+            segmentOrigin: { type: 'string' },
+            layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+            assetKey: { type: 'string' },
+            networkCode: { type: 'string' },
+            originPath: { type: 'string' },
+            assetURI: { type: 'string' },
+            backdropURI: { type: 'string' },
+          },
+          required: ['streamId', 'origin', 'segmentOrigin', 'layout'],
+          type: 'object',
+          additionalProperties: false,
+          title: 'IMonetizedStream',
+          description: 'The monetized stream configuration',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Created',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['monetized-stream'], nullable: false },
+              payload: {
+                properties: {
+                  name: { type: 'string' },
+                  version: { type: 'string' },
+                  streamId: { type: 'string' },
+                  streamType: { enum: ['LIVE', 'VOD'], type: 'string', title: 'MonetizedStreamType' },
+                  origin: { type: 'string' },
+                  segmentOrigin: { type: 'string' },
+                  layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+                  assetKey: { type: 'string' },
+                  networkCode: { type: 'string' },
+                  originPath: { type: 'string' },
+                  assetURI: { type: 'string' },
+                  backdropURI: { type: 'string' },
+                },
+                required: ['streamId', 'origin', 'segmentOrigin', 'layout'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IMonetizedStream',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IMonetizedStreamApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

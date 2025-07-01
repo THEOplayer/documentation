@@ -1,0 +1,118 @@
+---
+id: delete-monetized-stream-overlay
+title: 'DeleteMonetizedStreamOverlay'
+description: 'Deletes an overlay linked to the monetized stream'
+sidebar_label: 'DeleteMonetizedStreamOverlay'
+hide_title: true
+hide_table_of_contents: true
+api: eJytV01v4zYQ/SsET7uAE6cBevHNaNytsZ+IHaBFkAMtjiVuKJFLUk69hv57ZyTKli15600LGLEszgzfG868YXbcWHAiKFPMJZ/wO9AQ4KMpIKjvIBfBgcg/b8BpseUj7sBbU3jwfLLjtzc39CXBJ05ZCoEBpixvnZmvvdEtMUWAIpC1sFarpN5w/NWTy477JINc0JN1BCeoZgMl6W/YWsDAGEwVKa9G+CQC9FdGHIoy55NHnuC2ASS+kTUdyZ/QrbE+72Uiy6cRL0qtxUqj2VpoD+hsxVYbIfsYC5EPREWP8+BduBskUBEWeXZNls05dRYR+QocclgblwvML5emJNwdui09lYsUiNwp/6ACMeXxlJe47CmANV61+x1zXpkQTH4pDmMvtHQqzcKFthrWl5nuM8HN6iskoT4DrM4+qwx+Yv8XJUN2KQAH30rlsAzxGOIubYSnAXjGikSF7YVIUpF/OeJxzMp/778Lm8ECsxl27nDpwVqUOgysnbBrDYdoqfLf/RFtbTjkj9pjSpfAw/28FocA+QDf/5Fbv4ds3TB+k17QRwgzttKZHMUIQ1TjC+Ec6hH+TlAyn5eZM2WaRfo/zqMi8TtITUc8YvBOe8d+6OEYcSFlbSJ0t8JqSTzQnbfT4RyGev920yij/3WzqVX3cRThvlVVn2N3DDVzzDNRsKjrTKviGYdSMCxkMDSlgkg9Ad9Pv6tm/BFaD0np6qZ8fCIaDmU/gCP70wm4xOgfT6IzJXH+qbUCd00VTnZWYP+P4gDh+fHInUvezWZwJWbhMCd7p78bihmZ/2Qs5IfcMkPXgWZ+1gdHcsfHe5hXDTE/3vWQV+O48Xi3R1BRLYDbtCkrnaZwwqrx5hdedTK8IGBNL+Pqe9hOyyOlbV4eSP55Nf0yv3o/+6vNawZColhSTahibWrXWD7LP2afhfQMywetCUxzZLe/Xt9e3/DTIqKTbF3uZ4slw52Y0Nq8eLY1JZVSc9XAMpMsFwVO2F5h+RF7yVSSMeGASbDabHOsBc/MmnmVYr1j2hnlRiXgr9lMoO1pEJYY19y9EApuS2WN41IV7XrIRGDKdxxLT3Fb+G8W76bzt9fsd+MQRBBKowmlh+YJsmX4obbYCKdM6dmhwmtuuKQchkSCI2Y1CA/MwRpc204phFDzIM3B0GmJFU+ljsoF1KX7qxJ/+PRh/tvs02J2V0sbXg1FQvJbNXeOgHnsWDeN3GmopsrY4U56dGa7w13zdRrQFFmAv8PYaoEFhajqYt3FHnjkvR5Av8lQ/5o9xsmhFbHUM2RJgXa7FSbywemqotffSnBRYOgYmgsoyYvy9Cz3aniW8Zv72OVv2QUqNMi17bKCYG+ELukXPj5jzw2pFEnPqwC+DsAhjxXd6WOvU5aa9WmSgA0dz97/G0f6djf7MFvOUCv+AXusfrU=
+sidebar_class_name: 'delete api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'DeleteMonetizedStreamOverlay'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/monetized-streams/{monetizedStreamId}/overlay/{overlayId}'} context={'endpoint'}></MethodEndpoint>
+
+Deletes an overlay linked to the monetized stream
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+    { in: 'path', name: 'overlayId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A monetized stream',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['overlay'], nullable: false },
+              payload: {
+                properties: {
+                  name: { type: 'string' },
+                  id: { type: 'string' },
+                  startDate: { type: 'string' },
+                  endDate: { type: 'string' },
+                  duration: { type: 'number', format: 'double' },
+                  type: { enum: ['image'], type: 'string', title: 'OverlayTypes' },
+                  position: {
+                    properties: {
+                      bottom: { type: 'number', format: 'double' },
+                      top: { type: 'number', format: 'double' },
+                      right: { type: 'number', format: 'double' },
+                      left: { type: 'number', format: 'double' },
+                    },
+                    type: 'object',
+                  },
+                  size: {
+                    properties: { height: { type: 'number', format: 'double' }, width: { type: 'number', format: 'double' } },
+                    required: ['height', 'width'],
+                    type: 'object',
+                  },
+                  opacity: { type: 'number', format: 'double' },
+                  gamProperties: {
+                    properties: {
+                      sz: {
+                        properties: { tv: { type: 'string' }, phone: { type: 'string' }, default: { type: 'string' } },
+                        required: ['default'],
+                        type: 'object',
+                      },
+                      iu: { type: 'string' },
+                    },
+                    required: ['sz', 'iu'],
+                    type: 'object',
+                  },
+                  resourceURI: {
+                    items: {
+                      properties: {
+                        tv: { type: 'string' },
+                        phone: { type: 'string' },
+                        default: { type: 'string' },
+                        type: { enum: ['png', 'svg'], type: 'string', title: 'OverlayURITypes' },
+                      },
+                      required: ['default', 'type'],
+                      type: 'object',
+                    },
+                    type: 'array',
+                  },
+                  clickThroughURI: { type: 'string' },
+                },
+                required: ['id', 'startDate', 'duration', 'type', 'position', 'size'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IOverlay',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IOverlayApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

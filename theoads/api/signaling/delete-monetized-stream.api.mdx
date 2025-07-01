@@ -1,0 +1,82 @@
+---
+id: delete-monetized-stream
+title: 'DeleteMonetizedStream'
+description: 'Deletes a single monetized stream (signaling service) based on its identifier.'
+sidebar_label: 'DeleteMonetizedStream'
+hide_title: true
+hide_table_of_contents: true
+api: eJy1VlFv4jgQ/iuWn1qJQq/SvfSNK9ndaFmoGrq606paufFAvDVx1nbocYj/fjNxSCAB6U66e2kN45n5Zvx9M+y4KcAKr0weS37PJ6DBwxeTg1d/gUy8BbHmA27BFSZ34Pj9jt/d3tI/CS61qiBf9Jy/4bXU5B5yT1ZRFFqlVeTRD0dXdtylGawFnQpLeb0KAZWkv35bAAZy3qp8xfcDPAkPfcuAQ16u+f03niI6DxK/kRVuyV/QLdy+7LU+VHfjQnkvA56XWotXjfeXQjvAKIXYaiNkH2wu1mfCo8cGrFOh0DOlUKb4Up1kXNSwDzCn8dcIUX+dTwhgtxivPKHlnaeqgmBIY9VKXYACqzW+0fzyDS22pvTHWJJ49nFKaCbz59+qwzT5NH6Mvo8n7flhPltEs8W/QDsNiTClcA78Z9iexYM+78a+PRh5vvGh2Efhs7PmKvbzU3zW+CrSN4nve96+J+b/LJVFamEbmldsGtxtZ9O8tgnm9QekHi1CSkVyEPrxiFAV39oOxV3tdTEoyh6UUadoufpfJR0X6qkWPObfE4RTsYcx4ZhgDvukgTWaYqFH7MqpFSZFK3NgNyqFa/YqHF4wOVPeMSWxa2qpwA6pELFyVF0D5CZptOkgLa3yyI1vL1SrRQF61Bp+7g6hRQbsSxfKaSbiPAZBrgxqKbcDIWnft225tyW2qh1dXYogJsSTGRqfYQxVL0Jk5KPurHGjXS/bvmKR3RxKKq0mV1Go0eYXvj/qQEIgwhRCK8plXJ5wPnzZFvb7zfgxvvkc/XGoOwMhwVacUvnSVK41BxaformQjuHb86NZxu9+Hd4Nb3mXAdTpg8tTlCwYZmJCa/PuGAqAecPCdGYil2wtcrHqs8QN2Hum0owJC0xCoc2WtOSYWbIef9yQRQLv9qiWGhvWE0LBtCJnQZwHu8+EZ8odOZbE2gb+VfJxHF8P2QdjEYQXSuMVao9dV+uLGOux3I2wypSOtQysakOTshgSCxywQgOSnFlYgiUw5LcC76s6vLC4o9iqREYSFXE/AkmsWSr8eTaNH6JZEk1oNtE2FSkNYnqwwjiPfTy6HVR4RPhmXZ+81a5dy/+DcAPzPPzpR4UWyDKEWjF4V4ugv3Ad+t33RYdEz7BG8tjtKOWz1fs9ff2zBFvLnx4hLGoSv3J0ls1Au1j31VOt52v2D2bE2aIOGstJYBuhS/qExzfaWmdmyJ5+i9SCI7Dh3jhNofBHEXq/k04GyiSaRosIBfs3JVdYbg==
+sidebar_class_name: 'delete api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'DeleteMonetizedStream'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/monetized-streams/{monetizedStreamId}'} context={'endpoint'}></MethodEndpoint>
+
+Deletes a single monetized stream (signaling service) based on its identifier.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'Ok',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['monetized-stream'], nullable: false },
+              payload: {
+                properties: {
+                  name: { type: 'string' },
+                  version: { type: 'string' },
+                  streamId: { type: 'string' },
+                  streamType: { enum: ['LIVE', 'VOD'], type: 'string', title: 'MonetizedStreamType' },
+                  origin: { type: 'string' },
+                  segmentOrigin: { type: 'string' },
+                  layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+                  assetKey: { type: 'string' },
+                  networkCode: { type: 'string' },
+                  originPath: { type: 'string' },
+                  assetURI: { type: 'string' },
+                  backdropURI: { type: 'string' },
+                },
+                required: ['streamId', 'origin', 'segmentOrigin', 'layout'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IMonetizedStream',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IMonetizedStreamApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

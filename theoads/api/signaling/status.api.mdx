@@ -1,0 +1,60 @@
+---
+id: status
+title: 'Status'
+description: 'Get the status of the API.'
+sidebar_label: 'Status'
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVE1vEzEQ/SuWTyClSanEJbcIQomKSkVaCVT1MNmdZF28a3c8Tgmr/Hdmskm6BCSoInXt+X7veVobIhKwC82stGM7Z+Cc7MASphiahMmOW3txfq7/SkwFuajO4npboUk7dxOWhuU0uZkNJbQIDWPDGgExelfs0o8ek4a1NhUV1qBfkbQ4u65Il0u/eBNRCiQm16zsdmCRKNCfloFtsvew8HLHlFE8s3RXY8+1yfUCSVyXgWqQpmwZskaIs7pK1Tr+p/8aKbluiJMWtwrYU3aEAuL9YZRD48e2+iVf0j0MDunC4hELFhOUpVPQwN/0MFqCT6g5WCe2sz1ZW/0bnLBzibzj5K8MMayS9rlPIA0kLDI53sitnCIQ1MjSX3eW7yqoPFao3UXgSg6j45gJad05tzaTVxtEN1q/sdte7rkS33Et1ivcTLLmOYLZXSqroBTar2fS7tnV9JtcOZ2pQiiFGx3WNcuwC91jcftx+hnKZCbR9ZAd24u3w4vhuT1FR7V7CPkynd8qMAa8D8/JbEI2HExBCIwGmtLU0MAKTR0aZPcTSwFVjHUamOfKFZUBQlNi9GFTi+53YCe3EvJEG0axcQWmoZmC+J4mMUWg7q1JK1IWGhPIrVxzsHMFbFzqBeakeQ/tv5pfTmavh+ZDIGmCwXlxUXhUvjKtkZ9SvwZyQZTwwu1uNjE5kpQy4MBEj5DQEC6RtBmNE8p5NwcDsaReZVeiikgeNsqCUBb2hN1df5q9m17Pp+/1tegagELXgBIWQ2LBsed9XDW/UdO+rI9/aLgTDeMPHkUPIhB9/iq+di/Q4zsUDVZSXm/adiET3pHfbvX6KSPtNa/4dKvk/kEy7bWmiv4uohzbSVFgVPWvwedOrie7bdt/KZfTWxHqL16u17I=
+sidebar_class_name: 'get api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Status'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/status'} context={'endpoint'}></MethodEndpoint>
+
+Get the status of the API.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails parameters={[]}></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'The status of the API.',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              status: { type: 'string' },
+              error: { type: 'string', nullable: true },
+              uptime: { type: 'number', format: 'double' },
+              timestamp: { type: 'number', format: 'double' },
+              version: { type: 'string' },
+            },
+            required: ['status', 'error', 'uptime', 'timestamp', 'version'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IStatus',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

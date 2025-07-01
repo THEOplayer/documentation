@@ -1,0 +1,82 @@
+---
+id: get-monetized-stream-breaks
+title: 'GetMonetizedStreamBreaks'
+description: 'Retrieves all adbreaks linked to the monetized stream'
+sidebar_label: 'GetMonetizedStreamBreaks'
+hide_title: true
+hide_table_of_contents: true
+api: eJydVluP2joQ/iuWn1qJy3alvvBGuzlb1C27AlZqtapWQzwQFydObYc9HMR/70wuECBHOjoSAidzn++bMXtpc3QQtM0mSo7kPYZvNsOg/0E1Dw4h/URfGy970qHPbebRy9Fe3t7c8I9CHzudszkZj0Xa2ApfGpNZbLOAWWBtyHOj4zLY8Jdnk730cYIp8Cl3nErQVYAcdsaC4qMOmPprDV0Kwy5HCk3hdLaWhx6dwIU7CNgpxUx1y3pyZV0KlKdUpNAPOkU2UEXVnZZFVqRLdGcWtliaUt3bwsXdoQ3sbFH2AcmDHL3I+WR6/xCRo7vH50/l4WH+ZfwUvY7vTufPj9NFNF3In72rjIMOhl9cIPZQBaKQ4D2G59mkM59S+LrBXaeUPL5Zt3mNreouZwnxRhEg3e4PzJffhXaouFLCqo1Mq62nsuzyF8aBZKCUZhmYpxbgKzAeTzVPxqpkJqdSOwDnYHd6vka46Tuo/rK0peBZYQwweFWAikDdBGnMY7INyBUpNMinn2TWSceLNjSkrlNsYpXGHY24rNWPcz2rp5B8H9j9+QTOkALjFr0AYwSoskwvjM42NJPBipBg15AGWHtO8MikfkUlzspjXDgdiCYv9JSDg5SKdqx/uQAW5P3bhXehFY2/Xml0A66U9XIICZ0z8kRP6Tl9J0q2uxZcQbCf1sRlhyknyiexvL3WyG0rvY/k8Oi3X2Xih/urUIdhxQQu022bqgpn2AHkerj9IA+tJsw5j2r/kPQr7sYFBzumVb081fa9P36a9L9GP5rSEwRFy4Oh09nKlqY1zIsv0SMoLwhl0uZkqq7efhzcDm7kJdbc7MZkFs0XgiIx7PbNC1oAjHbFVAGZEilksL7G3vfEW6LjRIBDoTA3dpcSXF7YlfB6TTNIXRbcGx2jH4gISPfSiYitq24HSoXCQias02udNfKQQBDatwwLz36b9N/N78eT9wPxl3WURABtSIXbw/uVqhX0YeZuwWlbeHEiYVkbibQjl1RgT+QGwaNwuELXMJ54Eco6eAOR63VBpGQ20nWEPEyEQg3Y8/Rh8jmazqM73iR8eUHMS5sBy60P1MeWNl2XLcJXpBLHG/MMr/3pJvz/Y1qRLODfYZgbIEJRViVZ9zXrX+QV68lu1DVixxWYUFlsud8vqXPPzhwO/Pp3ga4eeu57tSR55LXnszqu5H8t892snuL34j9shs7imrHKeKa2YAp+omN5bXVsjgOv4nrGONlKbxzHmIeWh6t/Imdr5D5a0ID+ASXFI9E=
+sidebar_class_name: 'get api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'GetMonetizedStreamBreaks'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/monetized-streams/{monetizedStreamId}/break'} context={'endpoint'}></MethodEndpoint>
+
+Retrieves all adbreaks linked to the monetized stream
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A monetized stream',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              payload: {
+                items: {
+                  properties: {
+                    id: { type: 'string' },
+                    startDate: { type: 'string' },
+                    endDate: { type: 'string', format: 'date-time' },
+                    duration: { type: 'number', format: 'double' },
+                    source: { type: 'string' },
+                    layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+                    assetURI: { type: 'string' },
+                    asset_key: { type: 'string' },
+                    network_code: { type: 'string' },
+                    backdropURI: { type: 'string' },
+                  },
+                  required: ['id', 'startDate', 'duration'],
+                  type: 'object',
+                  additionalProperties: false,
+                  title: 'IAdBreak',
+                },
+                type: 'array',
+              },
+              type: { type: 'string', enum: ['ad-break'], nullable: false },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              id: { type: 'string' },
+            },
+            required: ['payload', 'type', 'state', 'id'],
+            type: 'object',
+            title: 'IAdBreaksApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

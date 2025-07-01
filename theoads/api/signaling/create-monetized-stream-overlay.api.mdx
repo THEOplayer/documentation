@@ -1,0 +1,183 @@
+---
+id: create-monetized-stream-overlay
+title: 'CreateMonetizedStreamOverlay'
+description: 'Creates an overlay on an existing monetized stream (signaling service).'
+sidebar_label: 'CreateMonetizedStreamOverlay'
+hide_title: true
+hide_table_of_contents: true
+api: eJztWEtz2zYQ/isYnOwZ2VI804tvrqO2mjSxx5Jn2vHoABErEglJsAAoW9Hwv2eX4EsilSptjvJBJonFvrD7fUvuuM7ACKd0OpP8lt8bEA4+6hSc+gpy7vA+ediAicWWj7gBm+nUguW3O34zeUf/JNjAqIxUNAokygY6dZA6EhFZFqugtDL+bElux20QQSLoKjPkg1Neq5L067YZoDbrjEpDXozwCtX2V0Yc0jzhty88aAxLiIGulrjNSx/fpavQliOe5nEsVjGKrUVsATdnYhtrIfs+piIZ0Io7jjtv3PvBAAryRR5dk7k/nM4ier4CgzGstUkE5pdLnZPfnXDr8FQiQqDgDuN3ylGkvDraBS5bUpBpq2p7+zGvtHM6OdUPnZ0oaVQYuRNlY1ifJtpkguvVZwhceQZYz/2oIvgB+69KuuhUBwz8kyuDZYjHUFmpNSwH3NOZCJTbnuhJKJLHvTj2o7Jf+8/cZrDAsgh7fbj0YC3y2A2sHURXCw6FpfJ/34/eloJD+xFwdG4CeH6aleDgIBmI9yfG1u+hrGwYuwlP6CN0s2qlIzmqNAyFWj0QxiAe4X2AkPllERmdh1EV/vfzqAj8WqjpgEelvNPeVT/0/BhxIWUpIuJuhZWQ2IY7qynhmA+l/dpoBaP/19hdpp4q/kG7RVGeY597LBMpq3Cd6ZTu4E1ZhyljSU1szJbMxi6sCtE6rVkwGxXA5TV5LkJL4TREeOWZkGKwEOSmbNWXJQVnkAwcGJI/JMNFBOzjoUklkRXVWoEhS4rkMoGoMKpohSf77DuTvJtjZ3LMTcuehzWx9MJg3a9abvsETT7V2UGKXquwrZJDK/+Rws/0eKbHMz2e6fFMj4cMdRx8PZ8hk0Sa3sPQE1dSJ3UUHzeUcOVJxI53PZYoxrqxSlxWU1JuYlIhMjXevONFh8HmhN++RHD1A2zv8r0G9g9bYvrr6u5xdvVh+nfNWxEIiT1InhMnPLW8M30TSRZDywZtTRAJtHcd7O++ncnDRy3ST5pD8fC9j8o1Dk8qlJ00GDqpEXLSgbsa4CYNfE26aDMZwBKPHtRTrXdVK3XcrTuoy3753u1e7778uMYmDdSBdKy9jujaTte6dLuq0MUf0wchLcOZChVRrfgCvfnl+uZ6Mli39Zan6XzBsBCYiGP9atlW58xp5t+/cdqSLBEpHkxv2LIj9hqpIGLCAJOQxXqb4HRhmV6z3hhmr9lUoGxvYgu08V8h0BU0S7MeHrBK63UXCceU7WzMLemt3b+Y/343u7xmv2mDTjihYhSh9BCLYLQ0MjoMdyOM0rll7YBXxoZLyqBKDHDEsMKFBWZgDYacoX0huHLULAsbVYc5Dnw06eHpAI2ubUs8f/pzdj/9NJ++LwENhy0REOgWftJwmMeOtJ9uO/Okb3x2BGt27fT2MwdjX3IO3tw4iwWiAPpaIsyuAqsX3gMr3Hc7NNR2Pr5EhHe4d7dbYUafTVwU9BjxxFSDNp2H/zxDY7aydC0b5D0a+sVTRQGX7IRpfDC8Gg1TyvFGxDnd4eUXxMahab2gD08VNJKzXu7eu3S18FRT6+nN1cWo3nEXBJC578ouO5Tx+DBfoPCqmvoTLWmPEa802ONv6bMuU1TiWPlsx2ORhjnh6C33OunvGz/z6GY=
+sidebar_class_name: 'post api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'CreateMonetizedStreamOverlay'}></Heading>
+
+<MethodEndpoint method={'post'} path={'/monetized-streams/{monetizedStreamId}/overlay'} context={'endpoint'}></MethodEndpoint>
+
+Creates an overlay on an existing monetized stream (signaling service).
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    description: 'The overlay configuration',
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            name: { type: 'string' },
+            id: { type: 'string' },
+            startDate: { type: 'string' },
+            endDate: { type: 'string' },
+            duration: { type: 'number', format: 'double' },
+            type: { enum: ['image'], type: 'string', title: 'OverlayTypes' },
+            position: {
+              properties: {
+                bottom: { type: 'number', format: 'double' },
+                top: { type: 'number', format: 'double' },
+                right: { type: 'number', format: 'double' },
+                left: { type: 'number', format: 'double' },
+              },
+              type: 'object',
+            },
+            size: {
+              properties: { height: { type: 'number', format: 'double' }, width: { type: 'number', format: 'double' } },
+              required: ['height', 'width'],
+              type: 'object',
+            },
+            opacity: { type: 'number', format: 'double' },
+            gamProperties: {
+              properties: {
+                sz: {
+                  properties: { tv: { type: 'string' }, phone: { type: 'string' }, default: { type: 'string' } },
+                  required: ['default'],
+                  type: 'object',
+                },
+                iu: { type: 'string' },
+              },
+              required: ['sz', 'iu'],
+              type: 'object',
+            },
+            resourceURI: {
+              items: {
+                properties: {
+                  tv: { type: 'string' },
+                  phone: { type: 'string' },
+                  default: { type: 'string' },
+                  type: { enum: ['png', 'svg'], type: 'string', title: 'OverlayURITypes' },
+                },
+                required: ['default', 'type'],
+                type: 'object',
+              },
+              type: 'array',
+            },
+            clickThroughURI: { type: 'string' },
+          },
+          required: ['id', 'startDate', 'duration', 'type', 'position', 'size'],
+          type: 'object',
+          additionalProperties: false,
+          title: 'IOverlay',
+          description: 'The overlay configuration',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Created',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['overlay'], nullable: false },
+              payload: {
+                properties: {
+                  name: { type: 'string' },
+                  id: { type: 'string' },
+                  startDate: { type: 'string' },
+                  endDate: { type: 'string' },
+                  duration: { type: 'number', format: 'double' },
+                  type: { enum: ['image'], type: 'string', title: 'OverlayTypes' },
+                  position: {
+                    properties: {
+                      bottom: { type: 'number', format: 'double' },
+                      top: { type: 'number', format: 'double' },
+                      right: { type: 'number', format: 'double' },
+                      left: { type: 'number', format: 'double' },
+                    },
+                    type: 'object',
+                  },
+                  size: {
+                    properties: { height: { type: 'number', format: 'double' }, width: { type: 'number', format: 'double' } },
+                    required: ['height', 'width'],
+                    type: 'object',
+                  },
+                  opacity: { type: 'number', format: 'double' },
+                  gamProperties: {
+                    properties: {
+                      sz: {
+                        properties: { tv: { type: 'string' }, phone: { type: 'string' }, default: { type: 'string' } },
+                        required: ['default'],
+                        type: 'object',
+                      },
+                      iu: { type: 'string' },
+                    },
+                    required: ['sz', 'iu'],
+                    type: 'object',
+                  },
+                  resourceURI: {
+                    items: {
+                      properties: {
+                        tv: { type: 'string' },
+                        phone: { type: 'string' },
+                        default: { type: 'string' },
+                        type: { enum: ['png', 'svg'], type: 'string', title: 'OverlayURITypes' },
+                      },
+                      required: ['default', 'type'],
+                      type: 'object',
+                    },
+                    type: 'array',
+                  },
+                  clickThroughURI: { type: 'string' },
+                },
+                required: ['id', 'startDate', 'duration', 'type', 'position', 'size'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IOverlay',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IOverlayApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

@@ -1,0 +1,108 @@
+---
+id: create-monetized-stream-break
+title: 'CreateMonetizedStreamBreak'
+description: 'Creates an ad break on an existing monetized stream (signaling service).'
+sidebar_label: 'CreateMonetizedStreamBreak'
+hide_title: true
+hide_table_of_contents: true
+api: eJztVttu4zYQ/RVCTwngOxps6zcnUXeNzTqB7QDdDYKAFsc2N5KoklQS1/C/d4aULMVSi0XRx82DQ5Fz5zkz3AcqA82tVOlUBOPgSgO38EWlYOVfIBYWv5NL/HkOOoEGk6nUgAnG+2A0GNI/ASbSMiMDR3WBspFKLaSWRHiWxTJyPvrfDcntAxNtIeG0yjRFYKW3mvFdrLhoHki3Z3cZoBtjtUw3waGDK67tNfpsPYVUtJ91grXSCcfwAoECXSsTIAWR+1rUNNI8WYF+p6HyVezEjcp11O465juVu/QBLQTjh2AxnX28CdHQ9e39pVvcLD5N7sKnyXW1vrqdLcPZMnjsNCK20sa0cXI5N94RuuTGgL2fT1vjcYdPz7BrPUWLr0o/P0VKtKez4tGzwAtpN38gbPyZS41Xj5lKAkB1M7WyVmmp1XeILJ5xISSd8fiuduFrHhuocp5OhAfhoTTQvNGyzlx0V04WnaV5HHO6LG/QA6YdEKV6dISwgBho9YhqrfA7SbvEbhFi6csptyR+mtskk/OCYGj6QNbbyGUYTxkXzOXIVEqf8CaNxZBYUmKDGQcOdmbkBktLZwb0i4zgvEe++cZQyEcsdT2YKE4DUa6lRaA84FfGNU+wDJrkT+m+3AL7cupSCuS9XEvQ5EmSXMbtFtcpWsKv5D2ApyKo19HqHC++6g+nNX/0wmDspRK7ZguimI7lwS60lpsSfU03/7FL/WxGP5uRm4g/DD3PZyTSVtGYzZQhd44X46B/ZETXc8j09w2SHPqrwikRueRjrmMywDPZfxkGhxp9F4RdD1c8/Qy7SU7OjuXymxUr/+hO7qbdz+HXkrRb4AKxRnETH+YV6cI3nmQxlEyoUFEjQL2xFrjHJ8Pol+7gQ3f023J4Mb4Yjke/9gYfht/qlzIeVEiubJQArnBb4auSqsGq2nyPpmr/HYhq4JLpWrkyFbe9/BTecmEYtmfUosL7yx5d9Ea9QSsGSpV5uFgyrCrjcaxeDcMcmFXMTxjs24IlPOUbaLRt02GvWxltGdfABGSx2iXYpgxTa9Zo6KbHQo6yjd4fKe1fbBgKusU5obTcyLQ8t1tumTQ1xdyQ3TL8s8XHyfS8x35XGoOwXMYoQuWh1oPZ0vCxmO4L11LlhlWjwuWGR1KjSUywwxAu3ADTsAZNwZDeBqwbWg41aHqT4+igmYF9GGgK4i0U4Lyf3UyvwtkivKYroq7NI+pnBE7iEtaxJu0HZW0yeQ6xVtbuqyHwv05YzzILb7afxRwZhaE6tu4L2j8EDdqj3rhtOh7fM1vqG6i536+wnPc6PhxoG5mpi3lNl+FfPDStpaG1OLawf8z8bF60zHP2A0O9Nbmyr6TUVF54nNMXLj0fm2kd6F1VNBkK1std+ZC6S/+EKu00pvOhU2pMoggy+6+yj7XWe3e7WFJJi8dD4tuC5q/0PMBfF7NyJXLN0+3tsQOlmxyhjOfeJv39DSfoiRA=
+sidebar_class_name: 'post api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'CreateMonetizedStreamBreak'}></Heading>
+
+<MethodEndpoint method={'post'} path={'/monetized-streams/{monetizedStreamId}/break'} context={'endpoint'}></MethodEndpoint>
+
+Creates an ad break on an existing monetized stream (signaling service).
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    description: 'The ad break configuration',
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            id: { type: 'string' },
+            startDate: { type: 'string' },
+            endDate: { type: 'string', format: 'date-time' },
+            duration: { type: 'number', format: 'double' },
+            source: { type: 'string' },
+            layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+            assetURI: { type: 'string' },
+            asset_key: { type: 'string' },
+            network_code: { type: 'string' },
+            backdropURI: { type: 'string' },
+          },
+          required: ['id', 'startDate', 'duration'],
+          type: 'object',
+          additionalProperties: false,
+          title: 'IAdBreak',
+          description: 'The ad break configuration',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '201': {
+      description: 'Created',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              payload: {
+                properties: {
+                  id: { type: 'string' },
+                  startDate: { type: 'string' },
+                  endDate: { type: 'string', format: 'date-time' },
+                  duration: { type: 'number', format: 'double' },
+                  source: { type: 'string' },
+                  layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+                  assetURI: { type: 'string' },
+                  asset_key: { type: 'string' },
+                  network_code: { type: 'string' },
+                  backdropURI: { type: 'string' },
+                },
+                required: ['id', 'startDate', 'duration'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IAdBreak',
+              },
+              type: { type: 'string', enum: ['ad-break'], nullable: false },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              id: { type: 'string' },
+            },
+            required: ['payload', 'type', 'state', 'id'],
+            type: 'object',
+            title: 'IAdBreakApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

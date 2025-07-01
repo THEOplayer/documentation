@@ -1,0 +1,82 @@
+---
+id: get-monetized-stream
+title: 'GetMonetizedStream'
+description: 'Retrieves a single monetized stream (signaling service) based on its identifier, along with its configuration details.'
+sidebar_label: 'GetMonetizedStream'
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVlFv4jgQ/iuWn1qJQq/SvfSNbXNdtCxUQFd3WlWnaTIk3po4azt0OcR/v5kkJDQJ0p200koITMbj+Wb8fTPZS5OhBa9MOonkrXxA/9mk6NU/GC29RdjIgbToMpM6dPJ2L2+ur/knQhdalbEjuY3F5ugl3NEtNKnH1PNuyDKtwiLM6Jtjl710YYIb4FVmGYRXZQAV8bffZUgH02EqjeVhQCvw2LUMJKb5Rt5+lSGF9RjRkwg18uqZ3Mrd571q3FcV7ueBTHOt4UXT/jVoh3RKBjttIOqCTWHTczx5bNE6VSbakwpHmpzLk42rCvYR5nTyJSDUX+b3DLCdjFee0crW1RWH0JHGqlidgYLxhu5ofn6Hhp3J/SmW5WT2MGU09/OnD8Viuvw4fgz+Ht8367v5bBXMVv8D7bQMRCHBOfSfcNeLh3zejH29M1F/4ctkH8Envebi7KfFpNf4AuFrRPfbbz+wEr7nyhK1qAz1LdYFbpezLl5TBPPyDUNPFogixXIA/XhCqIJvTYUmbS22MSiOXiqjCtFw9WcFHWdqUTUAin9gCO/Fv0AqEG7RCRCOKqWx0w3EhVMxhSWrcGi3KsRL8QKONphUKO+Eiqhuaq3QDgRoQ/velE8KE/WRtYrzskuJCD0o7YacMMSOq1ADvlrWGnYY5lZ54tDXZ66JJaF60iT9bzevVYLicxtwg4cjsTboEOLUoJJ80ziWDQ+aq/E2p5I2La5NJcJEeBLDPTdGX1wbM1aO2g3JjfadUIeCanZ7zCe3ml0hU6Ptb/Jwkv6SEZStiqykqXH+ThjlwyarP6/Gj5OrT8Ffx6QThAhtQTyVrk3hWhFl9TGYQ+QEEUSeNDx58/vwZngt2zThMh9dFsFyJSgSXbU2b06QSoQ3omzhAtJIbCCFuEskNxBviQoTARaJCpk2OxacE2YtOhRzQxEA7e2wMTS2nGkEhcJCKkoFH+0+AS+UO3HMmdg1/Ivlw3hyORR/GFvxkbZweeymJCl9PKW7BatM7kRDvyI3MilLR1KCA5FpJB0Ii2u0DIb9iBG+yMODpUEm4pzoyDykIYqsw3ryyKfZdHIXzJbBPTcwHrkQcrfmC8uM81THk9003k+oXg/4dxe1bwb3L5R2SU+PP/wo00BUpHwKmu8rpXRHtyO/264sSQ0JFYI99nsG9mT14cCPv+doqwbBN1WOfG4PyvE6qlvj2fpcLCrFX4r/0EV6kzoKMWUVbkHn/I+Wrzz/errMgd9qKlUy2HLfOAwx8ycndN643rWch2BFkv4XwON4mA==
+sidebar_class_name: 'get api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'GetMonetizedStream'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/monetized-streams/{monetizedStreamId}'} context={'endpoint'}></MethodEndpoint>
+
+Retrieves a single monetized stream (signaling service) based on its identifier, along with its configuration details.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A monetized stream',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['monetized-stream'], nullable: false },
+              payload: {
+                properties: {
+                  name: { type: 'string' },
+                  version: { type: 'string' },
+                  streamId: { type: 'string' },
+                  streamType: { enum: ['LIVE', 'VOD'], type: 'string', title: 'MonetizedStreamType' },
+                  origin: { type: 'string' },
+                  segmentOrigin: { type: 'string' },
+                  layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+                  assetKey: { type: 'string' },
+                  networkCode: { type: 'string' },
+                  originPath: { type: 'string' },
+                  assetURI: { type: 'string' },
+                  backdropURI: { type: 'string' },
+                },
+                required: ['streamId', 'origin', 'segmentOrigin', 'layout'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IMonetizedStream',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IMonetizedStreamApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

@@ -1,0 +1,98 @@
+---
+id: update-monetized-stream-layout
+title: 'UpdateMonetizedStreamLayout'
+description: 'Updates the default layout for an existing monetized stream (signaling service).'
+sidebar_label: 'UpdateMonetizedStreamLayout'
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vl1v4jgU/SuWn1qJj26lfekbQzNTVAYQH6NdjdDKxJfgaYiztkPLoPz3vTdOCIUwml3tblVBiO3rc+8959gHrlMwwimdDCR/4ItUCgefdQJOfQc5cwbEdij2OnO8xQ3YVCcWLH848Pu7O/qSYEOjUoqA68fPOC3UiYPE0ahI01iFRfzuN0tTDtyGG9gKekoN7e6UD6gkfbp9ChjIOqOSiOctfEJElyMtDkm25Q9feYgYHUh8IyEGelriMj/7+qptlWPbFknyZYsnWRyLVYzz1yK2gFFSsY+1kJdgE7FtCI8rdmCs8ok2pEI7Da7lSYPzEnYFczj4EiDqL+NHAniejFOO0PKzhhVBMKQ2KlJXoEC0xR6Nr8+IfddPsMwGo09DQvM4XnwoHoazp94k+KP3WD/3x6N5MJr/DbQlvXBLYS24Z9g34sE1r9q89LVsLrxPdiLcpnG4iL2YDhoHVyJ8kdjf5vGcmP9npgxSC8tw7OKxwOflPBavLoJefYOQNCSkVCQHEU9OCFXwra7Q4KxEFxgU7e6VUW5Rc/Xf2rSXqmkpeNw/Jwjvxe7NwjK3ASZhLbLYMZ84W2vDRMLgTVmHNWRHtTFfPXZjVYRwaMyC2akQbjuUiogs5XeE0p4d1WkhzIxyyI6vS8rWoAQdqg1/n9vQHBF9Pt9SSeyQWiswtBOxHoMgW1qlmGtLmNUdrovuTIbFqs3rnCRLPxms+6Dl/tIaCVNZHTTItYoy77sNm/xDA/3fFXtGyuuk/8lKeJJhVzda+u6Em4LYpGnePbds2z1ctCzvxtVpRbyq6JGZmCKIVHV3v/D8hE0zKqavH46i+fSydw7iX9Yk+a3dmwzaz8HvFYc2ICSYohjUoGnNgeBNbNMYTltTdSSnxWtd7FPWeP4UjIW0DGXHT44Rfv9r575z11jEask0mM0ZwmIijvWrZbgXc5r5gxF1KNlWJCKCCxnaFnvdqHDDhCEJp7Hek41ZptfsQqC2wwKBcy+0HGrjbwYIBbdF3XtfrMbdRjim7MnCzFLcCv7N7FNvcNthH9E0JDihYpxC5THbghcM/8ljdsIonVlWS7/IDYeUwZCYYIthvYUFZmANhsDQughcYULolwavByzK0ArIA1BZQO52PM/5YjQc9IPRLHikFpEORUiKou6m2jqs4+nswgBPnMazkB0vTO9adqh1/Z9Yp+ergzfXTWOB3ETMBe8PpYIuLz0W1z002V4t5Q1mTUsPhxUWdmHiPKfXSHJTOjG1xd+ayIeVpWd5PF2uluBmWlrHLfsJu27MrpJoQvrciTijX/j4QleIBjvP6WJY6pXA+nl9D6k998doFefCefNWtaIXhpC6H85dnvjYpDfvP+HsVXkubIsrDDfilbwfPwvQuqhRYUTFOzKNJMqQ1Tjug9LfXwtoDWU=
+sidebar_class_name: 'patch api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'UpdateMonetizedStreamLayout'}></Heading>
+
+<MethodEndpoint method={'patch'} path={'/monetized-streams/{monetizedStreamId}/layout'} context={'endpoint'}></MethodEndpoint>
+
+Updates the default layout for an existing monetized stream (signaling service).
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    description: 'The layout configuration',
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          properties: { layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' } },
+          required: ['layout'],
+          type: 'object',
+          description: 'The layout configuration',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'OK',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['monetized-stream'], nullable: false },
+              payload: {
+                properties: {
+                  name: { type: 'string' },
+                  version: { type: 'string' },
+                  streamId: { type: 'string' },
+                  streamType: { enum: ['LIVE', 'VOD'], type: 'string', title: 'MonetizedStreamType' },
+                  origin: { type: 'string' },
+                  segmentOrigin: { type: 'string' },
+                  layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+                  assetKey: { type: 'string' },
+                  networkCode: { type: 'string' },
+                  originPath: { type: 'string' },
+                  assetURI: { type: 'string' },
+                  backdropURI: { type: 'string' },
+                },
+                required: ['streamId', 'origin', 'segmentOrigin', 'layout'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IMonetizedStream',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IMonetizedStreamApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

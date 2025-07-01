@@ -1,0 +1,111 @@
+---
+id: update-monetized-stream
+title: 'UpdateMonetizedStream'
+description: 'Updates a single monetized stream (signaling service) based on its identifier, along with its configuration update.'
+sidebar_label: 'UpdateMonetizedStream'
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01v4zYQ/SuETglgx2mAXnLzOurGiNc2/LFosTAKRqQlbmRRJSl7vYb/e2dESZQludgWAdpDg8ChOUPyzfDNG+bkyZQraoRMxsx79NYpo4Z/kgk34jtnS6M43Xk9T3GdykRz7T2evIf7e/zDuA6USHEtrJy9gFsgE8MTg1aaprEI8p0HXzW6nDwdRHxHcZQqPNcIu6Fg+GmOKYeNtFEiCb1zD0aApW3peTzJdt7jFy8AdIYzmGE85jjawDLrfX3Vroyur214m56XZHFMX2Pw39JYc9glpcdYUtYGm9Bdx/awYs+VFjbQjlDwpPG1ONG4KmCXMCfjzz6g/jx7QoDNYIwwiNZrXFW+CWwplQjFFSg83MEdza57xPQoM1PHshxPP04QzdNs/SEfTJbPw7n/+/DJjUez6cqfrv4G2ok9CI6kWnPzwo+deGDNQaq3kWTdibfBzqmJOs353uvFuNP4SoM3BvfbbT8j8//IhAJqQRqqW6wS3ExnlTyXBPn6lQcGLJQxgeVA43mNUDnfXIbGzdprYhB4uq2M4gjH1fc6dJiKRVHwcP4ZIVwWu5UJTSjRkKeYk6qmiM0RudEihEPBSjRXexHwW/JKNTjIhAijiWCQNbEVXPUIjSX4HYSJchOoyFaEmZUlkuVn3WG0NNSYggptf1kVsOZBpoQBAn3ZYEIUVKmBgoTvTaVaRZx8auJ1cPAkLAzYBAjVK+rdqcbSkcDdi1EZ5NPpW5NHG+vMtfkg2bGtnoiplcOuPHSc+sOi+8+PfDcF/F/k/pMi9y6qYUXBs3oB1RdJZqsoiHKNQuTeoNl99eDUKq1zrqtqX9ZvpmJcSlMx2P/knWvlvkRyW1aCFXI7zC4SZCddFf/aH87H/Rf/t7LII04ZV3kSsGAWrkj9b3SXxtwR3t10xXM3Vad3yeqSnzWvS1o6Q8lGR0JHFud1wRE3XaeGm3WMcHMXRKgRRCRbmWetuNrVsz+jTBNoBBfhPvx893B37zXbAUpJuWThL1cEkgyiHsuDJhAXMZLYpxqhCSM7mtCwrT26Rw6RCCJCFSeMp7E8Yq40kVvSaib6jvgUfDsETNm3KkCBY2lCbHZKu4moIULXFmbYwir4N8uPw/HtHflFKgBhqIjBBdOjdlYT4ddAuHuqhMw0cZ0mjw1MQsGWEGCPAHug4xHFt1whGFwXcmPyOAxV8GAlYQadB1sO6DbHfuvotp5OxiN/uvSf8IpQ5WmAgoVcTaU2kMe6d159tcZWvd0v7urk2sW/1cVtjRj+zQzSmEIdQDx5hZ8KkWg/0TWse2x3YBCCCBKBK04nxLVW8fmM01DFqngL4E3Zpz2+BITGMavE7GpybhZFm70lP/Bg6Ayq1KAEBWhP4wy/wfAtr+p2OGf876UQJARr/UYWUn9l33rlPq1Wf+6VK4ZBwFPzl76bmkLPh6vRM4pD8TLZWXlR9ICPDfjMQcs8R7nS5nMn0KwkzIDoYLeb4s+fmy713Q==
+sidebar_class_name: 'patch api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'UpdateMonetizedStream'}></Heading>
+
+<MethodEndpoint method={'patch'} path={'/monetized-streams/{monetizedStreamId}'} context={'endpoint'}></MethodEndpoint>
+
+Updates a single monetized stream (signaling service) based on its identifier, along with its configuration update.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    description: 'The monetized stream configuration update',
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          description: 'The monetized stream configuration update',
+          properties: {
+            name: { type: 'string' },
+            version: { type: 'string' },
+            streamType: { enum: ['LIVE', 'VOD'], type: 'string', title: 'MonetizedStreamType' },
+            origin: { type: 'string' },
+            segmentOrigin: { type: 'string' },
+            layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+            assetKey: { type: 'string' },
+            networkCode: { type: 'string' },
+            originPath: { type: 'string' },
+            assetURI: { type: 'string' },
+            backdropURI: { type: 'string' },
+          },
+          type: 'object',
+          additionalProperties: false,
+          title: 'IMonetizedStreamUpdate',
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'OK',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['monetized-stream'], nullable: false },
+              payload: {
+                properties: {
+                  name: { type: 'string' },
+                  version: { type: 'string' },
+                  streamId: { type: 'string' },
+                  streamType: { enum: ['LIVE', 'VOD'], type: 'string', title: 'MonetizedStreamType' },
+                  origin: { type: 'string' },
+                  segmentOrigin: { type: 'string' },
+                  layout: { enum: ['SINGLE', 'DOUBLE', 'LSHAPE_AD', 'LSHAPE_CONTENT'], type: 'string', title: 'MonetizedStreamLayout' },
+                  assetKey: { type: 'string' },
+                  networkCode: { type: 'string' },
+                  originPath: { type: 'string' },
+                  assetURI: { type: 'string' },
+                  backdropURI: { type: 'string' },
+                },
+                required: ['streamId', 'origin', 'segmentOrigin', 'layout'],
+                type: 'object',
+                additionalProperties: false,
+                title: 'IMonetizedStream',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IMonetizedStreamApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

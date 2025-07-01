@@ -1,0 +1,120 @@
+---
+id: get-monetized-stream-overlays
+title: 'GetMonetizedStreamOverlays'
+description: 'Retrieves all overlays linked to the monetized stream'
+sidebar_label: 'GetMonetizedStreamOverlays'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVlmP4jgQ/iuWn2YkGnpb2pd+QztsL5qdQ0BLu2r1g4mLxNNO7PFBL4Py36cqBwQSZtlDQhDiqvL31b3nxoITQZliLvk9f4DwwRQQ1DeQy+BA5J+24LTYeT7iDrw1hQfP7/f87vaWfiT4xClLBlB9yvJWm/lKHdUSUwQoAkkLa7VKqusmXzyp7LlPMsgFPVlHYIKqL1CSvsPOAhpGY6pIeTnCJxGgfzLiUMSc3z/xBK8NIPGNBA309IxqtfRlLVPT5M8jXkStxVqj2EZoD6hsxU4bUeFRAXLfB1uIfMA8ql5m4cK7QSYlgZIXz2Ssw9U5RAprcEhmY1wu0NFcmkgEOrxbnioXKRDLc0cEFYgyb+K9wmNPBqzxqr3vlPPahGDya3EYe6WkU2kWrpTVsLlO9OAJbtZfIAlVDDBN+6wy+Af3vyoZsmsBOPgalcN8xDA0t7QWngfgGSsSFXZXIklF/vmExykr/63/LmwHE8xmWMLDqQcbEXUYODtj1woO0VLx7/URbSU4pI9NyESXwONi/oN6/B+59WvIVgXjt+kVdYQwm1K64KPGwhDV5oVwDhsT/k+wd76sMmdimjX0f+xHRV3w2Go6zaMx3invph56OEZcSFmJCN3NsKo3HunOG7593BcwVXhaEE1//a+X+6lVi2ZI4cVlWQW2O6AWgJ6CLXgmtGZN0/dMq+IFR1YwLGQwNMOCSD2hPwzHm3o6EmQPSXRVpT49ExeHsyCAI/nz+bhC6x/OrDMlcTqqjQI3prQnOSuwKYyaqcLz04k8l7zr0uAiuuI4Rc9TAjEhnszQeE8hVO6mpsUnB7s3NRI/2feuKiftZCSibtvyik6TCWHVZPsTLztuWBKSugrx9D3spvGkR9Yvj+z+uJl+nt+8n/3Zks9ASGxzFDxVbEyl2gR69dvsk5CeYZxRmsDUfr37eXw3vuXn0SZ3tyqL2XLF8CYKvHn1bGcixbveFpgoJMtFgbOxF30/Yq+ZSjImHDAJVptdjgHzzGyYVylmJvqZkW9UAn7MZgJlz42wxLh6fUIoeK0omMFBp4r2PGQiMOU7itGT3Rb+m+XDdP52zH41DkEEoTSKkHtoEiBbhh/K3a1wykTPjmlYccMj5dAkEhwxq0F4YA424Nqcx8wIFQ/qFmg6jZiWlI/Yc4DK6bDk8MePv89/mX1czt5VTQm3O5FQ4yzrbSGgHzvSuFF2Ur5OK9ZZKk8itj8ui/++VOs0C/BXmFgtMKUQV5Wu+ybzn3gv81HvfqjMOmthhtRId79fo/cenS5Lev01gmtKn3xfL45U+MrTszw0q4tE3yyaWn7LrugPg/Ta0iqorrZCR/qHjy9YaEP9o6SVuKkzAlvLTZMEbOhY6K3rJ83kYbbCIv0Owb48ng==
+sidebar_class_name: 'get api-method'
+info_path: theoads/api/signaling/theoads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'GetMonetizedStreamOverlays'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/monetized-streams/{monetizedStreamId}/overlay'} context={'endpoint'}></MethodEndpoint>
+
+Retrieves all overlays linked to the monetized stream
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'The Monetized stream identifier.', in: 'path', name: 'monetizedStreamId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: 'A monetized stream',
+      content: {
+        'application/json': {
+          schema: {
+            properties: {
+              id: { type: 'string' },
+              state: { type: 'string', enum: ['created', 'deleted'] },
+              type: { type: 'string', enum: ['overlay'], nullable: false },
+              payload: {
+                items: {
+                  properties: {
+                    name: { type: 'string' },
+                    id: { type: 'string' },
+                    startDate: { type: 'string' },
+                    endDate: { type: 'string' },
+                    duration: { type: 'number', format: 'double' },
+                    type: { enum: ['image'], type: 'string', title: 'OverlayTypes' },
+                    position: {
+                      properties: {
+                        bottom: { type: 'number', format: 'double' },
+                        top: { type: 'number', format: 'double' },
+                        right: { type: 'number', format: 'double' },
+                        left: { type: 'number', format: 'double' },
+                      },
+                      type: 'object',
+                    },
+                    size: {
+                      properties: { height: { type: 'number', format: 'double' }, width: { type: 'number', format: 'double' } },
+                      required: ['height', 'width'],
+                      type: 'object',
+                    },
+                    opacity: { type: 'number', format: 'double' },
+                    gamProperties: {
+                      properties: {
+                        sz: {
+                          properties: { tv: { type: 'string' }, phone: { type: 'string' }, default: { type: 'string' } },
+                          required: ['default'],
+                          type: 'object',
+                        },
+                        iu: { type: 'string' },
+                      },
+                      required: ['sz', 'iu'],
+                      type: 'object',
+                    },
+                    resourceURI: {
+                      items: {
+                        properties: {
+                          tv: { type: 'string' },
+                          phone: { type: 'string' },
+                          default: { type: 'string' },
+                          type: { enum: ['png', 'svg'], type: 'string', title: 'OverlayURITypes' },
+                        },
+                        required: ['default', 'type'],
+                        type: 'object',
+                      },
+                      type: 'array',
+                    },
+                    clickThroughURI: { type: 'string' },
+                  },
+                  required: ['id', 'startDate', 'duration', 'type', 'position', 'size'],
+                  type: 'object',
+                  additionalProperties: false,
+                  title: 'IOverlay',
+                },
+                type: 'array',
+              },
+            },
+            required: ['id', 'state', 'type', 'payload'],
+            type: 'object',
+            additionalProperties: false,
+            title: 'IOverlaysApiResponse',
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>
