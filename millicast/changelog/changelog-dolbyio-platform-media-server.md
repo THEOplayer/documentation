@@ -2,9 +2,25 @@
 
 Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com/medooze/media-server-node).
 
+## 2025-06-23
+
+### Media Server
+
+<!-- 3.0.2 -->
+
+#### Features
+
+- Re-stream has had an update which will allow you to add, enable, and disable re-streams for a running stream so that you can restart an individual re-stream without having to restart your entire contribution stream. See more in our [re-stream](/millicast/distribution/re-streaming) guide
+
+#### Fixes
+
+- Minor improvements such as RTT added for SRT connections in Live Monitor
+
 ## 2025-05-03
 
 ### Media Server
+
+<!-- 3.0.1 -->
 
 #### Features
 
