@@ -159,7 +159,6 @@ The platform offers the Transcoder APIs for managing cloud transcoders. To creat
 3. Construct a complete publish URL endpoint by adding your stream ID and publish token at the end of the received publish URLs. In the case of RTMP and RTMPS, you can pass your token as a string. SRT requires encoding the token and providing it as Base64-encoded data. For more information, see the [SRT](/millicast/broadcast/srt.mdx) document.
 
    Examples:
-
    - rtmp://example-accountId.transcoder.millicast.com:1935/v2/pub**/streamName?token=publishToken**
    - rtmps://example-accountId.transcoder.millicast.com:443/v2/pub**/streamName?token=publishToken**
    - srt://example-accountId.transcoder.millicast.com:10000**?streamid=streamName?token=encodedPublishToken**
