@@ -5,23 +5,23 @@ and the changes needed in your code.
 
 ## Verizon Media is not included
 
-NOTE: If you're using the Verizon Media version of the SDK (including Uplynk SSAI), that functionality has been removed in the 9.0 version of the SDK. The functionality is planned to be re-added in a future release, but is unsupported for 9.0.
+NOTE: If you're using the Verizon Media version of the SDK (including Uplynk SSAI), that functionality has been removed in the 9.0 version of the SDK. The functionality is planned to be re-added in a future release, but is unsupported for 9.x.
 
 ## Update THEOplayer
 
-Download the new pkg file from [https://cdn.myth.theoplayer.com/roku/9.0.0/THEOplayerSDK.pkg](https://cdn.myth.theoplayer.com/roku/9.0.0/THEOplayerSDK.pkg). If you're including the pkg file when packaging your application, replace the previous pkg file with the 9.0 pkg file. Note that the file name is no longer `THEOplayerSDK-default.pkg`. It is now `THEOplayerSDK.pkg`. If you're loading the pkg from the remote URL at runtime, change the URL in your ComponentLibrary node to point to the new SDK.
+Download the new pkg file from [the THEOplayer portal](https://portal.theoplayer.com). If you're including the pkg file when packaging your application, replace the previous pkg file with the new pkg file. Note that the file name is no longer `THEOplayerSDK-default.pkg`. It is now `THEOplayerSDK.pkg`. If you're loading the pkg from the remote URL at runtime, change the URL in your ComponentLibrary node to point to the new SDK's URL.
 
 ```xml
-<ComponentLibrary id="THEOsdk" uri="https://cdn.myth.theoplayer.com/roku/9.0.0/THEOplayerSDK.pkg" />
+<ComponentLibrary id="THEOsdk" uri="pkg:/components/THEOplayerSDK.pkg" />
 ```
 
-## Update Connectors to the 9.0 version
+## Update Connectors to the 9.x version
 
-If you are using any of the connectors for Roku, update them to the 9.0 version as well.
+If you are using any of the connectors for Roku, update them to the 9.x version as well. Either download them from the [the THEOplayer portal](https://portal.theoplayer.com) and add them to your application, or load them directly from a URL.
 
 ```xml
-<ComponentLibrary id="THEOConvivaConnector" uri="https://cdn.myth.theoplayer.com/roku/9.0.0/THEOConvivaConnector.pkg" />
-<ComponentLibrary id="THEOComscoreConnector" uri="https://cdn.myth.theoplayer.com/roku/9.0.0/THEOComscoreConnector.pkg" />
+<ComponentLibrary id="THEOConvivaConnector" uri="pkg:/components/THEOConvivaConnector.pkg" />
+<ComponentLibrary id="THEOComscoreConnector" uri="pkg:/components/THEOComscoreConnector.pkg" />
 ```
 
 ## Replace or remove usages of deprecated APIs
