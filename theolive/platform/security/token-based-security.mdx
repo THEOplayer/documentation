@@ -56,16 +56,13 @@ First thing to do is to create a header provider function. In this function you 
 
 ```typescript Creating header provider
 const interceptor = (request) => {
-  // Only add 'Authorization' header for THEOlive request to avoid CORS issues
-  if (new URL(request.url).hostname.endsWith("theo.live")) {
-    const headers = {
-      ...request.headers,
-      Authorization: `Bearer ${params.token}`,
-    }
-    request.redirect({
-      headers,
-    });
-  }
+  const headers = {
+    ...request.headers,
+    Authorization: 'Bearer <token-generated-by-you>',
+  };
+  request.redirect({
+    headers,
+  });
 };
 ```
 
