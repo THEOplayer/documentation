@@ -60,7 +60,7 @@ const interceptor = (request) => {
   if (new URL(request.url).hostname.endsWith("theo.live")) {
     const headers = {
       ...request.headers,
-      Authorization: `Bearer ${params.token}`,
+      Authorization: `Bearer <token-generated-by-you>`,
     }
     request.redirect({
       headers,
