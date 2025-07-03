@@ -38,17 +38,17 @@ described in the [MediaTailor documentation](https://docs.aws.amazon.com/mediata
 
 ```js
 player.source = {
-    sources: [
-        {
-            src: '...',
-            integration: 'mediatailor',
-            adsParams: {
-                "param1": "value1",     // key is not case sensitive
-                "param2": "value2",     // Values can contain spaces. For example, 'value 2' is an allowed value.
-            }
-        }
-    ]
-}
+  sources: [
+    {
+      src: '...',
+      integration: 'mediatailor',
+      adsParams: {
+        param1: 'value1', // key is not case sensitive
+        param2: 'value2', // Values can contain spaces. For example, 'value 2' is an allowed value.
+      },
+    },
+  ],
+};
 ```
 
 #### Limitations
@@ -92,10 +92,10 @@ theoplayerView.player.source = SourceDescription(listOf(mediaTailorSource))
 val mediaTailorSource = MediaTailorSource
     .Builder("<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
     .build()
-    
+
 theoplayerView.player.source = SourceDescription
     .Builder(mediaTailorSource)
-    .build() 
+    .build()
 ```
 
 Optionally, you can pass parameters regarding e.g. session data and device type by using the `adsParams` property, as
