@@ -5,6 +5,112 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.7.0 (2025/07/02)
+
+### General
+
+#### ✨ Features
+
+- Added support for OptiView Ads in combination with OptiView Live streaming.
+
+### Web
+
+#### ✨ Features
+
+- Added the ability to play two adbreaks seamlessly after each other for THEOads.
+- Added new `DistributionLoadStartEvent`, `EndpointLoadedEvent` and `DistributionOfflineEvent` events to the `theoLive` API as part of OptiView Live API V2 support.
+- Added support for MPEG-TS segments with multiple SPS/PPS NALs in the MPEG-TS transmux worker.
+
+#### ⚡ Improvements
+
+- Changed the default amount of retries for OptiView live streams to 3 so that all the recovery mechanisms work without the need to explicitly set a finite value.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player's content is zoomed in when going in fullscreen when playing a THEOads stream.
+- Fixed an issue where not all representations are shown for a DASH stream with adaptation set switching.
+- Fixed an issue where the player would dispatch events with incorrect `currentTime` when playing a THEOads stream on smartTVs.
+- Fixed an issue where the `currentTime` and `currentProgramDateTime` values would be incorrect for a short time after a transition from adbreak to content using THEOads.
+- Fixed an issue where switching OptiView live streams with DRM enabled would sometimes fail on Safari.
+- Fixed content protection events not being dispatched for OptiView live streams.
+- Fixed an issue where an HLS live stream would not start at the live point on iOS Safari.
+- Fixed an issue where an empty VAST/VMAP response would block content if `blockContentIfAdError` was enabled in the player source description.
+- Fixed an issue where quality or track switches with non-identical codecs would cause a fatal error on Edge browsers.
+- Fixed an issue where the defined ad parameters for a MediaTailor source are not being passed correctly to MediaTailor.
+
+#### 👎 Deprecations
+
+- Renamed `adParams` to `adsParams` in the MediaTailor source definition in the Web SDK. The old name still works, but is now deprecated.
+
+### Android
+
+#### ✨ Features
+
+- Added support for adbreak to adbreak transition with THEOAds.
+- Added `THEOplayerGlobal.logger` API to enable logs for specific tags and ability to add listeners to receive log messages.
+- Added a new `EndpointLoadedEvent` that fires when an OptiView Live endpoint is successfully loaded. 
+- Improved debug logging for the Media3 playback pipeline.
+- Added support for MPEG-TS segments with multiple SPS/PPS NALs in the MPEG-TS transmux worker for the legacy playback pipeline.
+- Added support for GAM properties in THEOads overlays.
+- Added ClearKey DRM support to the media3 pipeline.
+
+#### ⚡ Improvements
+
+- Fixed video artifacting on older FireTV devices when playing OptiView live streams.
+- Added support for `"maxBitrate"` when setting up a `SourceDescription`. This can be set by defining an `abr` property for the source.
+- Improved the latency measurement available in the latency API.
+- Manifest and segment requests now have the proper `Request.type`, `.subType` and `.mediaType` in the Media3 pipeline.
+- Added `LinearAd.durationAsDouble` to retrieve an linear ad’s duration with sub-second precision.
+
+#### 🐛 Issues
+
+- Fixed an issue where subtitle styles set through the `TextTrackStyle` API were not being applied to subtitles with embedded styles.
+- Fixed an issue where subtitles with a background color set by an embedded style were always rendered with the default background color instead.
+- Fixed an issue wherein OptiView Live streams were not honouring the set `AbrStrategyConfiguation` on the player.  
+- Fixed an issue where the player would crash on ad playback in MediaTailor streams.
+- Fixed an issue where `PlayEvent` and `PauseEvent` weren't fired immediately on `play()` and `pause()` API calls. Also ensured `PlayEvent` fires when a source is invalid.
+- Fixed an issue where the `PauseEvent` did not fire when the player becomes ended.
+- Fixed an issue where the defined ad parameters for a MediaTailor source are not being passed correctly to MediaTailor.
+
+#### 👎 Deprecations
+
+- Renamed `adParams` to `adsParams` in the MediaTailor source definition in the Android SDK. The old name still works, but is now deprecated.
+
+### iOS
+
+#### ✨ Features
+
+- Added a target latency override to THEOlive source description.
+- Added `THEOliveConfiguration.discoveryUrl` and `THEOliveConfiguration.discoveryUrls` to support custom discovery URLs for OptiView live streams.
+
+#### ⚡ Improvements
+
+- Update Millicast SDK to v2.4.3
+
+#### 🐛 Issues
+
+- Fixed an issue where closed caption text tracks were automatically selected and bypassing accessibility settings.
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added support for GAM hosted interstitial image overlays.
+- Added in the ability to display THEOads interstitial overlays included in HLS manifests.
+- Added support for VOD assets with THEOads overlay images.
+
+### Roku
+
+#### ✨ Features
+
+- Added support for OptiView live v2 streams.
+- When an OptiView live stream has an error, the player will now attempt to fallback to other sources for the stream.
+
+#### 🐛 Issues
+
+- Fixed crash on start up when using an array for `source.sources`.
+- Fixed an issue where a THEOlive source would not work when passed as an element in a sources array in the source description.
+
 ## 🚀 9.6.1 (2025/06/23)
 
 ### Android

@@ -253,10 +253,18 @@ public interface <span class="typeNameLabel"><a href=LinearAd.html>LinearAd</a><
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=LinearAd.html#getDuration()>getDuration</a>() </code>
                                             </th>
-                                            <td class="colLast">The duration of the LinearAd, as provided by the VAST file, in seconds.</td>
+                                            <td class="colLast">The duration of the LinearAd in seconds.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract double</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=LinearAd.html#getDurationAsDouble()>getDurationAsDouble</a>() </code>
+                                            </th>
+                                            <td class="colLast">The duration of the LinearAd in seconds.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=MediaFile.html>MediaFile</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=LinearAd.html#getMediaFiles()>getMediaFiles</a>() </code>
@@ -323,7 +331,33 @@ public interface <span class="typeNameLabel"><a href=LinearAd.html>LinearAd</a><
                                     <li class="blockList">
                                         <h4>getDuration</h4>
                                         <pre class="methodSignature"> abstract int <a href=LinearAd.html#getDuration()>getDuration</a>()</pre>
-                                        <div class="block"><p>The duration of the LinearAd, as provided by the VAST file, in seconds. </p><p>Default: 0</p></div>
+                                        <div class="block"><p>The duration of the LinearAd in seconds. </p><p>Default: 0</p><p>For sub-second precision, use <a href=LinearAd.html#getDurationAsDouble()>getDurationAsDouble</a>.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The duration of the LinearAd, in seconds.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getDurationAsDouble()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getDurationAsDouble</h4>
+                                        <pre class="methodSignature"> abstract double <a href=LinearAd.html#getDurationAsDouble()>getDurationAsDouble</a>()</pre>
+                                        <div class="block"><p>The duration of the LinearAd in seconds. </p><p>Default: 0.0</p></div>
 
                                         <dl>
 

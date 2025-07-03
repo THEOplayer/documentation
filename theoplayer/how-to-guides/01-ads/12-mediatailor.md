@@ -33,6 +33,24 @@ player.source = {
 }
 ```
 
+Optionally, you can pass parameters regarding e.g. session data and device type by using the `adsParams` property, as
+described in the [MediaTailor documentation](https://docs.aws.amazon.com/mediatailor/latest/ug/ad-reporting-client-side.html#ad-reporting-client-side-enabling).
+
+```js
+player.source = {
+    sources: [
+        {
+            src: '...',
+            integration: 'mediatailor',
+            adsParams: {
+                "param1": "value1",     // key is not case sensitive
+                "param2": "value2",     // Values can contain spaces. For example, 'value 2' is an allowed value.
+            }
+        }
+    ]
+}
+```
+
 #### Limitations
 
 The scope of the MediaTailor integration for now is limited to sending the tracking beacons. This encapsulates only the events that can be sent with the default implementation of THEOplayer. For example skipping an ad is not yet supported so the events that correspond to skipping an ad will never occur.
@@ -65,29 +83,44 @@ theoplayerView.player.addIntegration(mediaTailorIntegration)
 Finally, set a [`MediaTailorSource`](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/source/mediatailor/MediaTailorSource.html) to play.
 
 ```kotlin
-val mediaTailorSource = MediaTailorSource.Builder()
-    .src("<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
-    .build()
+val mediaTailorSource = MediaTailorSource(src = "<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
 
-theoplayerView.player.source = SourceDescription.Builder()
-    .sources(mediaTailorSource)
+theoplayerView.player.source = SourceDescription(listOf(mediaTailorSource))
+
+// or using the Builder pattern
+
+val mediaTailorSource = MediaTailorSource
+    .Builder("<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
     .build()
+    
+theoplayerView.player.source = SourceDescription
+    .Builder(mediaTailorSource)
+    .build() 
 ```
 
-### Legacy iOS/tvOS SDK (4.12.x)
+Optionally, you can pass parameters regarding e.g. session data and device type by using the `adsParams` property, as
+described in the [MediaTailor documentation](https://docs.aws.amazon.com/mediatailor/latest/ug/ad-reporting-client-side.html#ad-reporting-client-side-enabling).
 
-To use a MediaTailor stream with THEOplayer on the iOS SDK, you have to:
-
-- make sure that your SDK build has the `mediatailor` flag enabled (similarly to the other SDKs)
-- set a MediaTailorSource to play, as follows
-
-```swift
-player.source = SourceDescription(
-    source: MediaTailorSource(
-        src: "<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>",
-        type: "application/x-mpegurl"
-    )
+```kotlin
+val adsParams = emptyMap<String, String>().toMutableMap()
+adsParams["param1"] = "value1"
+adsParams["param2"] = "value 2"
+val mediaTailorSource = MediaTailorSource(
+    src = "<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>",
+    adParams = adsParams    // Note the deprecated parameter name
 )
+
+// or using the Builder pattern
+
+val mediaTailorSource = MediaTailorSource
+    .Builder("<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
+    .adsParams(adsParams)
+    .build()
 ```
 
-Note that the MediaTailor URL must have the same structure as described above (Web SDK). Different URL structures may result in playback errors.
+:::note Deprecated
+
+The source definition currently still uses the deprecated `adParams` property. This will be
+replaced by the `adsParams` property in a future version.
+
+:::
