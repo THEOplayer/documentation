@@ -110,6 +110,11 @@ var pathtoroot = "../../../../../../";
                             
                             <code>com.theoplayer.android.api.ads.Ad</code>
                             
+                            ,
+                            
+                            
+                            <code>com.theoplayer.android.api.ads.LinearAd</code>
+                            
                             
                         </dd>
                     </dl>
@@ -118,7 +123,7 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=THEOAd.html>THEOAd</a></span>
- implements <a href=../Ad.html>Ad</a>
+ implements <a href=../LinearAd.html>LinearAd</a>
                     </pre>
                     <div class="block"><p>The Ad API used in THEOAds</p></div>
 
@@ -213,7 +218,7 @@ public final class <span class="typeNameLabel"><a href=THEOAd.html>THEOAd</a></s
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#THEOAd(java.lang.String,com.theoplayer.android.api.ads.theoads.THEOAdBreak,java.util.List,java.lang.String,java.lang.String)">THEOAd</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> id, <a href=THEOAdBreak.html>THEOAdBreak</a> adBreak, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../CompanionAd.html>CompanionAd</a>&gt; companionAds, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> creativeId, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> adSystem)</code></th>
+                                                        href="#THEOAd(java.lang.String,com.theoplayer.android.api.ads.theoads.THEOAdBreak,java.lang.Double,java.util.List,java.lang.String,java.lang.String)">THEOAd</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> id, <a href=THEOAdBreak.html>THEOAdBreak</a> adBreak, <a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a> duration, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../CompanionAd.html>CompanionAd</a>&gt; companionAds, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> creativeId, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> adSystem)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -346,6 +351,30 @@ public final class <span class="typeNameLabel"><a href=THEOAd.html>THEOAd</a></s
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOAd.html#getDurationAsDouble()>getDurationAsDouble</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOAd.html#getDuration()>getDuration</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../MediaFile.html>MediaFile</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOAd.html#getMediaFiles()>getMediaFiles</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -377,11 +406,11 @@ public final class <span class="typeNameLabel"><a href=THEOAd.html>THEOAd</a></s
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="THEOAd(java.lang.String,com.theoplayer.android.api.ads.theoads.THEOAdBreak,java.util.List,java.lang.String,java.lang.String)"></a>
+                                <a name="THEOAd(java.lang.String,com.theoplayer.android.api.ads.theoads.THEOAdBreak,java.lang.Double,java.util.List,java.lang.String,java.lang.String)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>THEOAd</h4>
-                                        <pre>THEOAd(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> id, <a href=THEOAdBreak.html>THEOAdBreak</a> adBreak, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../CompanionAd.html>CompanionAd</a>&gt; companionAds, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> creativeId, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> adSystem)</pre>
+                                        <pre>THEOAd(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> id, <a href=THEOAdBreak.html>THEOAdBreak</a> adBreak, <a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a> duration, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../CompanionAd.html>CompanionAd</a>&gt; companionAds, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> creativeId, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> adSystem)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -611,11 +640,80 @@ public final class <span class="typeNameLabel"><a href=THEOAd.html>THEOAd</a></s
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getCustomData</h4>
                                         <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> <a href=THEOAd.html#getCustomData()>getCustomData</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getDurationAsDouble()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getDurationAsDouble</h4>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Double.html>Double</a> <a href=THEOAd.html#getDurationAsDouble()>getDurationAsDouble</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getDuration()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getDuration</h4>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a> <a href=THEOAd.html#getDuration()>getDuration</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getMediaFiles()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getMediaFiles</h4>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=../MediaFile.html>MediaFile</a>&gt; <a href=THEOAd.html#getMediaFiles()>getMediaFiles</a>()</pre>
                                         <div class="block"></div>
 
                                         <dl>

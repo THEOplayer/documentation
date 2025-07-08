@@ -215,6 +215,12 @@ public final class <span class="typeNameLabel"><a href=SourceDescription.html>So
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=SourceAbrConfiguration.html>SourceAbrConfiguration</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=SourceDescription.html#abr>abr</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -241,7 +247,7 @@ public final class <span class="typeNameLabel"><a href=SourceDescription.html>So
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#SourceDescription(java.util.List,java.util.List,java.util.List,java.lang.String,com.theoplayer.android.api.source.metadata.MetadataDescription,java.lang.String)">SourceDescription</a></span>(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TextTrackDescription.html>TextTrackDescription</a>&gt; textTracks, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> poster, <a href=metadata/MetadataDescription.html>MetadataDescription</a> metadata, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> timeServer)</code></th>
+                                                        href="#SourceDescription(java.util.List,java.util.List,java.util.List,java.lang.String,com.theoplayer.android.api.source.metadata.MetadataDescription,java.lang.String,com.theoplayer.android.api.source.SourceAbrConfiguration)">SourceDescription</a></span>(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TextTrackDescription.html>TextTrackDescription</a>&gt; textTracks, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> poster, <a href=metadata/MetadataDescription.html>MetadataDescription</a> metadata, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> timeServer, <a href=SourceAbrConfiguration.html>SourceAbrConfiguration</a> abr)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -342,6 +348,14 @@ public final class <span class="typeNameLabel"><a href=SourceDescription.html>So
                                             <td class="colLast">The URL of the time server.</td>
                                         </tr>
                                         
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>final <a href=SourceAbrConfiguration.html>SourceAbrConfiguration</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=SourceDescription.html#getAbr()>getAbr</a>() </code>
+                                            </th>
+                                            <td class="colLast">Describes the ABR configuration for a specific source.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -373,11 +387,11 @@ public final class <span class="typeNameLabel"><a href=SourceDescription.html>So
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="SourceDescription(java.util.List,java.util.List,java.util.List,java.lang.String,com.theoplayer.android.api.source.metadata.MetadataDescription,java.lang.String)"></a>
+                                <a name="SourceDescription(java.util.List,java.util.List,java.util.List,java.lang.String,com.theoplayer.android.api.source.metadata.MetadataDescription,java.lang.String,com.theoplayer.android.api.source.SourceAbrConfiguration)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>SourceDescription</h4>
-                                        <pre>SourceDescription(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TextTrackDescription.html>TextTrackDescription</a>&gt; textTracks, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> poster, <a href=metadata/MetadataDescription.html>MetadataDescription</a> metadata, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> timeServer)</pre>
+                                        <pre>SourceDescription(<a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TypedSource.html>TypedSource</a>&gt; sources, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=addescription/AdDescription.html>AdDescription</a>&gt; ads, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=TextTrackDescription.html>TextTrackDescription</a>&gt; textTracks, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> poster, <a href=metadata/MetadataDescription.html>MetadataDescription</a> metadata, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> timeServer, <a href=SourceAbrConfiguration.html>SourceAbrConfiguration</a> abr)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -515,12 +529,35 @@ public final class <span class="typeNameLabel"><a href=SourceDescription.html>So
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getTimeServer</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=SourceDescription.html#getTimeServer()>getTimeServer</a>()</pre>
                                         <div class="block"><p>The URL of the time server. (Nullable)</p><ul><li><p>The time server should return time in ISO-8601 format.</p></li><li><p>Applies for all sources.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getAbr()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getAbr</h4>
+                                        <pre class="methodSignature"> final <a href=SourceAbrConfiguration.html>SourceAbrConfiguration</a> <a href=SourceDescription.html#getAbr()>getAbr</a>()</pre>
+                                        <div class="block"><p>Describes the ABR configuration for a specific source.</p></div>
 
                                         <dl>
 

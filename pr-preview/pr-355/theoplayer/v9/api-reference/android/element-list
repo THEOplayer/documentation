@@ -60,6 +60,8 @@ $dokka.location:com.theoplayer.android.api.source/SourceDescription.Builder///Po
 $dokka.location:com.theoplayer.android.api.source/TextTrackDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TextTrackDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TypedSource.Builder.html
 $dokka.location:com.theoplayer.android.api.theolive/THEOLiveConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/theolive/THEOLiveConfig.Builder.html
+$dokka.location:com.theoplayer.android.api.util/Logger.Companion///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Companion.html
+$dokka.location:com.theoplayer.android.api.util/Logger.Listener///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Listener.html
 $dokka.location:com.theoplayer.android.api/THEOplayerConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/THEOplayerConfig.Builder.html
 com.theoplayer.android.api
 com.theoplayer.android.api.abr
