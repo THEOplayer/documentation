@@ -64,7 +64,7 @@ function tokenWillExpireSoon(token as String) as Boolean
     ba.FromBase64String(payloadBase64)
     decodedJson = ParseJson(ba.ToAsciiString())
     if decodedJson = invalid then return true
-			
+
     exp = decodedJson.exp
     if exp = invalid then return true
     now = Int(CreateObject("roDateTime").AsSeconds())
