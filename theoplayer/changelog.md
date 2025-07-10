@@ -223,7 +223,7 @@ toc_max_heading_level: 2
 
 #### ✨ Features
 
-- Added `player.millicast` API to access Millicast specific diagnostics and stats. See the [diagnostics doc page](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/frame-metadata/) for more information.
+- Added `player.millicast` API to access Millicast specific diagnostics and stats. See the [diagnostics doc page](https://optiview.dolby.com/docs/millicast/playback/players-sdks/web/player/frame-metadata/) for more information.
 - Added support for Dolby Digital (`ac-3`) codecs in HLS when the platform supports it.
 - Added a default value for the `ott_placement` GAM ad tag parameter for THEOads.
 
@@ -459,7 +459,7 @@ toc_max_heading_level: 2
 
 - Added `suppressCaptions` functionality based on `textTracks` `mode` field.  Captions are automatically suppressed when `textTracks` `mode` is `"disabled"`.
 - Added the `muted` API to control the video node's mute state.
-- Added support for Client Side Ad Insertion using the player `Ads` API. Check out the [getting started with ads on Roku](https://docs.optiview.dolby.com/theoplayer/getting-started/sdks/roku/displaying-ads/) docs for more information.
+- Added support for Client Side Ad Insertion using the player `Ads` API. Check out the [getting started with ads on Roku](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/roku/displaying-ads/) docs for more information.
 
 #### 🐛 Issues
 
