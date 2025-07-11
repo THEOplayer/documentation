@@ -7,11 +7,11 @@ The developer documentation website for Dolby OptiView products, including:
 - Streaming (THEOlive and Millicast)
 - Open Video UI
 
-Find the documentation at https://docs.optiview.dolby.com/
+Find the documentation at https://optiview.dolby.com/docs/
 
 ## Contributing
 
-If you're looking to contribute to the developer documentation itself, see https://docs.optiview.dolby.com/contributing/
+If you're looking to contribute to the developer documentation itself, see https://optiview.dolby.com/docs/contributing/
 
 ## Usage
 

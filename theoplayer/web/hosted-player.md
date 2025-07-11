@@ -56,14 +56,14 @@ The following parameters can be provided used to configure the hosted player. _N
 
 The following parameters are only valid with Dolby OptiView real-time streaming and will be ignored with other `sourceTypes`.
 
-- `minDelay`: _(default: `50`)._ a small minimum playout delay set to improve performance in degraded network conditions. Specified in milliseconds. See [Documentation](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/#playout-delay).
+- `minDelay`: _(default: `50`)._ a small minimum playout delay set to improve performance in degraded network conditions. Specified in milliseconds. See [Documentation](/millicast/playback/players-sdks/web/player/#playout-delay).
 - `maxDelay`: _(default: `120`)._ a small maximum playout delay set to improve performance in degraded network conditions. Specified in milliseconds.
-- `maxHeight`: The maximum height resolution height (pixels) in the ABR range control to load in the given playback session. See [Documentation](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/#abr-range-control). Intended to be used mutually exclusively with `maxWidth`.
-- `maxWidth`: The maximum width resolution (pixels) in the ABR range control to load in the given playback session. See [Documentation](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/#abr-range-control). Intended to be used mutually exclusively with `maxHeight`.
+- `maxHeight`: The maximum height resolution height (pixels) in the ABR range control to load in the given playback session. See [Documentation](/millicast/playback/players-sdks/web/player/#abr-range-control). Intended to be used mutually exclusively with `maxWidth`.
+- `maxWidth`: The maximum width resolution (pixels) in the ABR range control to load in the given playback session. See [Documentation](/millicast/playback/players-sdks/web/player/#abr-range-control). Intended to be used mutually exclusively with `maxHeight`.
 
 ## Player Events
 
-Basic [player events](https://docs.optiview.dolby.com/theoplayer/v9/api-reference/web/interfaces/AdBreakEvent.html) are sent with [window post messages](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to the parent page in case the embedding application wishes to utilize them. Events include:
+Basic [player events](pathname:///theoplayer/v9/api-reference/web/interfaces/AdBreakEvent.html) are sent with [window post messages](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to the parent page in case the embedding application wishes to utilize them. Events include:
 
 - ended
 - pause
