@@ -258,6 +258,24 @@ The RAF proxy node has several fields that can be observed to consume data gener
 | setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer)              | Sets width, height, x, y of player.                                                                                                                    |
 | setMaxVideoResolution(width as Integer, height as Integer)                                   | Sets maximum video resolution.                                                                                                                         |
 
+### Player Configuration
+
+The PlayerConfiguration object is passed to the configure method. It is an associative array with the following properties:
+
+| Property   | Type       | Description                                                                       |
+| ---------- | ---------- | --------------------------------------------------------------------------------- |
+| license    | string     | Your THEO license. Optional if `licenseUrl` is specified.                         |
+| licenseUrl | string     | The URL from which to load your THEO license. Optional if `license` is specified. |
+| theolive   | assocarray | The configuration for OptiView Live. Optional.                                    |
+
+#### OptiView Live Configuration
+
+| Property          | Type             | Description                                                                                                                                                    |
+| ----------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| discoveryUrl      | string           | Optional. The discovery URL for your OptiView Live deployment. If present, it will be tried before `discoveryUrls`.                                            |
+| discoveryUrls     | Array of strings | Array of discovery URLs for your OptiView Live deployment. If `theoLive` config is omitted, the default URL is 'https://discovery.theo.live/v2/publications/'. |
+| externalSessionId | string           | A session ID to use for your OptiView Live session. This can tie an application session to a THEOlens session.                                                 |
+
 ## Events
 
 The event consists of:
