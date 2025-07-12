@@ -1,6 +1,6 @@
-# PallyCon
+# DoveRunner
 
-This article describes how to configure [PallyCon Multi-DRM](https://pallycon.com/docs/en/multidrm/) with THEOplayer. This content is based on PallyCon's documentation.
+This article describes how to configure [DoveRunner Multi-DRM](https://doverunner.com/docs/content-security/multi-drm/) with THEOplayer. This content is based on DoveRunner's documentation.
 
 Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information.
 
@@ -8,7 +8,7 @@ Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for mor
 
 | Web SDK | Android SDK |  iOS SDK   |  tvOS SDK  | Android TV SDK | Chromecast SDK |
 | :-----: | :---------: | :--------: | :--------: | :------------: | :------------: |
-|   Yes   | Unverified  | Unverified | Unverified |   Unverified   |   Unverified   |
+|   Yes   |     Yes     |    Yes     |    Yes     |      Yes       |   Unverified   |
 
 ## Code Examples
 
@@ -16,24 +16,24 @@ Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for mor
 
 ```js
 if (HLS) {
-    let certificateUrl = "<CERTIFICATE_URL>";
+    const certificateUrl = "<CERTIFICATE_URL>";
 
     // a response interceptor for the certificate URL might be required.
     player.network.addResponseInterceptor(function(response) {
         if(response.url == certificateUrl) {
-            let rawResponse = response.body;
-            var responseText = String.fromCharCode.apply(null, new Uint8Array(rawResponse));
-            var raw = window.atob(responseText);
-            var rawLength = raw.length;
-            var certificate = new Uint8Array(new ArrayBuffer(rawLength));
+            const rawResponse = response.body;
+            const responseText = String.fromCharCode.apply(null, new Uint8Array(rawResponse));
+            const raw = window.atob(responseText);
+            const rawLength = raw.length;
+            let certificate = new Uint8Array(new ArrayBuffer(rawLength));
 
-            for(var i = 0; i < rawLength; i++)
+            for(let i = 0; i < rawLength; i++)
                 certificate[i] = raw.charCodeAt(i);
             response.respondWith({body: certificate})
         }
     });
 
-    let drmConfiguration = {
+    const drmConfiguration = {
         "fairplay": {
             "licenseAcquisitionURL": "<LICENSE_KEY_URL_FAIRPLAY>",
             "certificateURL": certificateUrl,
@@ -50,7 +50,7 @@ if (HLS) {
         }
     }
 } else if (DASH) {
-    let drmConfiguration = {
+    const drmConfiguration = {
         "playready": {
             "licenseAcquisitionURL": "<LICENSE_KEY_URL_PLAYREADY>",
             "headers": {
@@ -111,8 +111,10 @@ theoplayer.source = sourceDescription
 
 ## Resources
 
-- https://pallycon.com/docs/en/multidrm/
-- https://pallycon.com/docs/en/multidrm/clients/html5-player/
+- https://doverunner.com/docs/content-security/multi-drm/
+- https://doverunner.com/docs/content-security/multi-drm/clients/html5-player/
+- https://doverunner.com/docs/content-security/multi-drm/clients/widevine-android/
+- https://doverunner.com/docs/content-security/multi-drm/clients/fairplay-ios/
 
 ## Related Articles
 
