@@ -1,0 +1,8 @@
+{
+  "label": "iOS",
+  "description": "Start with THEOlive on iOS/tvOS.",
+  "position": 2,
+  "customProps": {
+    "icon": "🍎"
+  }
+}
