@@ -4,7 +4,7 @@ This article describes how to configure [DoveRunner Multi-DRM](https://doverunne
 
 Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information.
 
-**Note**: The details in the guide apply for DoveRunner (formally known as "PallyCon").  While most details, API hostnames and variables have been updated to reflect DoveRunner, certain configurations such as the `pallycon-customdata-v2` HTTP request header will still apply.
+**Note**: The details in the guide apply for DoveRunner (formerly known as "PallyCon").  While most details, API hostnames and variables have been updated to reflect DoveRunner, certain configurations such as the `pallycon-customdata-v2` HTTP request header will still apply.
 
 ## SDKs
 
