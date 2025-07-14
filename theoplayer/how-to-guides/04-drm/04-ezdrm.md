@@ -106,5 +106,5 @@ The EZDRM connector can be found in [here](https://github.com/THEOplayer/samples
 - [Vualto VuDRM](11-vualto-vudrm.md)
 - [Vimond](10-vimond.md)
 - [Verimatrix MultiRights](09-verimatrix-multirights.md)
-- [PallyCon](15-pallycon.md)
+- [DoveRunner](15-doverunner.md)
 - [Nagra Conax Contego](08-nagra-conax-contego.md)
