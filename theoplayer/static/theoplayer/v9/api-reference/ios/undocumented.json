@@ -23,8 +23,8 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/THEOAdDescription.swift",
-      "line": 52,
-      "symbol": "THEOAdDescription.init(networkCode:customAssetKey:backdropDoubleBox:backdropLShape:overrideLayout:overrideAdSrc:adTagParameters:useId3:streamActivityMonitorId:sseEndpoint:retrievePodIdURI:)",
+      "line": 55,
+      "symbol": "THEOAdDescription.init(networkCode:customAssetKey:backdropDoubleBox:backdropLShape:overrideLayout:overrideAdSrc:adTagParameters:useId3:streamActivityMonitorId:sseEndpoint:retrievePodIdURI:initializationDelay:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -617,6 +617,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Utils/SwitchingAsyncSequence.swift",
+      "line": 31,
+      "symbol": "SwitchingAsyncSequence",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/THEOplayer_API+DeveloperSettings.swift",
       "line": 12,
       "symbol": "THEOplayer.developerSettings",
@@ -758,14 +765,14 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1221,
+      "line": 1211,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1259,
+      "line": 1249,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -779,14 +786,14 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerMetadataOutputNative.swift",
-      "line": 91,
+      "line": 78,
       "symbol": "AVPlayerMetadataOutputNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerTextTracksController.swift",
-      "line": 339,
+      "line": 335,
       "symbol": "AVPlayerTextTracksController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -912,7 +919,7 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TextTrackListImplNative.swift",
-      "line": 206,
+      "line": 212,
       "symbol": "TextTrackListImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -926,7 +933,7 @@
     },
     {
       "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TrackListRouter.swift",
-      "line": 198,
+      "line": 204,
       "symbol": "TextTrackListRouter",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

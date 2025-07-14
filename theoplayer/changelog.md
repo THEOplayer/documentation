@@ -5,6 +5,68 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.8.0 (2025/07/12)
+
+### Web
+
+#### ✨ Features
+
+- Added an `initializationDelay` property to `TheoAdDescription` to delay the initialization of OptiView Ads.
+
+#### ⚡ Improvements
+
+- Improved stability of OptiView live streams on VIZIO devices.
+- Improved the transition from ads to content when playing an HESP stream in combination with OptiView ads.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would become paused when switching tabs while in native picture-in-picture on Chromium based browsers on OptiView live streams.
+- Fixed an issue where Millicast streams with `connectOptions.disableVideo` set to `true` would fail to play.
+
+### Android
+
+#### ✨ Features
+
+- Added an `initializationDelay` property to `TheoAdDescription` to delay the initialization of OptiView Ads.
+
+#### ⚡ Improvements
+
+- Fixed an issue where chapter tracks were not marked as `TextTrackKind.CHAPTERS` in the Media3 pipeline.
+
+#### 🐛 Issues
+
+- Fixed an issue where an `ActiveQualityChangedEvent` would either be sent with a wrong value or not sent at all in a multi-period DASH stream. 
+- Fixed an issue where waiting events would not be dispatched on OptiView live streams.
+- Fixed an issue where using a View-based UI with THEOplayer and playing Millicast stream will cause a crash.
+- Expose actual bandwidth of audio qualities for HESP / OptiView live streams.
+
+### iOS
+
+#### ✨ Features
+
+- Added an `initializationDelay` property to `THEOAdDescription` to delay the initialization of OptiView Ads.
+
+#### 🐛 Issues
+
+- Fix issue where network connectivity errors were not forwarded to the NetworkEventTypes.ERROR event listener
+- Fixed an issue where id3 metadata tracks would be notified in advance, causing issues i.e. for Google DAI. 
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added support for VOD assets with THEOads overlay images.
+
+### Roku
+
+#### ⚡ Improvements
+
+- Added discoveryUrl property to THEOlive config and removed need for a trailing slash on discovery URLs.
+
+#### 🐛 Issues
+
+- Fixed an issue where source descriptions without the `live` property would fail.
+
 ## 🚀 9.7.0 (2025/07/02)
 
 ### General
