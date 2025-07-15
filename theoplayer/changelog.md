@@ -5,6 +5,27 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.8.1 (2025/07/15)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Ads were crashing when the `initializationDelay` parameter was `NaN`.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where ABR would not switch up to higher qualities for THEOlive sources.
+- Fixed an issue where the `ActiveQualityChangedEvent` was not dispatched for THEOlive sources.
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where the Conviva connector could cause a crash when the `isLive` property was missing from source metadata.
+
 ## 🚀 9.8.0 (2025/07/12)
 
 ### Web
