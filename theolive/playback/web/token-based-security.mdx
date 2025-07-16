@@ -1,0 +1,205 @@
+---
+sidebar_position: 6
+---
+
+# Token based security
+
+THEOlive offers the option to enable JWT token security on a channel (including channel aliases). This can be interesting if you only want valid users to access your stream. Read more about the feature and configuring it on your channels on the [token based security guide](/theolive/platform/security/token-based-security).
+
+This page will demonstrate how to configure the Web SDK for playback of channels with token based security enabled.
+
+## Setting up the Web THEOplayer SDK for THEOlive
+
+Refer to the [getting started guide](../getting-started) for the prerequisite steps in getting the web SDK up and running for THEOlive playback.
+
+## Configuring THEOplayer to pass the token
+
+The token needs to be passed along with player requests as a Bearer token in the `Authorization` header of the requests. To do so we can make use of the Network API of the player, which works as follows:
+
+```javascript
+const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
+player.network.setHeader('Authorization', `Bearer ${token}`);
+```
+
+This will ensure the player includes your authorization header on all subsequent requests it performs for playback of your THEOlive channel.
+
+## Dealing with token expiry and rotation
+
+If your tokens are short-lived, you want to make sure to update the token being passed to the player and requests before it expires, to allow playback to continue beyond expiry. This can simply be done by updating the header on the player in the same way. For example, one could check on an interval that makes sense for your token lifespan whether the token is about to expire and update when necessary, for example:
+
+```javascript
+let token;
+
+// Helper function to check whether your token will expire within one minute from now
+function tokenWillExpireSoon() {
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  const exp = payload.exp; // in seconds
+  const now = Math.floor(Date.now() / 1000); // current time in seconds
+  return exp - now <= 60;
+}
+
+function maybeUpdateToken() {
+  if (!token || tokenWillExpireSoon(token)) {
+    token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
+    player.network.setHeader('Authorization', `Bearer ${token}`);
+  }
+}
+
+maybeUpdateToken();
+setInterval(maybeUpdateToken, 30000); // Check every 30 seconds
+```
+
+## Clearing the token
+
+If the token isn't needed anymore, e.g. when switching to an unprotected channel or a non-THEOlive source altogether, the header can be simply removed as follows:
+
+```javascript
+player.network.removeHeader('Authorization');
+```
+
+## Enabling Token Based Security for Safari browsers on iOS \<17
+
+Apple devices running an iOS version lower than 17.1 do not support MSE, therefore there are limitations with what is possible when playing a THEOlive stream. One such limitation is that the above network API approach does not work on those devices. Instead, a service worker needs to be registered to support playback of JWT enabled streams.
+
+The service worker needs to intercept the `fetch` requests originating from the app, to be able to include the `Authorization` header to the requests.
+
+A code snippet for the service worker code is shared below.
+
+:::note
+Service worker registration is only possible in a secure environment (`https://`) or on `localhost`. There can also only be one service worker active, so if your environment or application already has a service worker active, you will need to include the additional functionality in that service worker.
+:::
+
+```javascript title="iOS Safari service worker"
+self.addEventListener('install', () => {
+  console.log('Service worker installed!');
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('Service Worker activated');
+  // Claim clients so the service worker is in effect immediately
+  event.waitUntil(self.clients.claim());
+});
+
+// Intercept the fetch event and add in your JWT
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    (async function () {
+      try {
+        const url = new URL(event.request.url);
+        if (!url.origin.endsWith('theo.live')) {
+          // Requests not made by the player for playback of the THEOlive channel should not be modified.
+          return fetch(event.request);
+        }
+        const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
+        // Clone the request and add the JWT header
+        const modifiedRequest = new Request(event.request, {
+          headers: {
+            ...Object.fromEntries(event.request.headers.entries()),
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        return fetch(modifiedRequest);
+      } catch (error) {
+        console.error('Error in fetch handler:', error);
+        return new Response('Service Worker Error', { status: 500 });
+      }
+    })()
+  );
+});
+```
+
+:::note
+In order for the service worker to be able to intercept requests made from the player library, its scope must include the player sdk files. That means the player and service worker must be hosted on the same path or the player must be hosted in a subfolder of the path where the service worker is hosted.
+:::
+
+To register this service worker in to your code, you can attach it this way.
+
+```javascript title="Register service worker"
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) {
+    console.error('Service worker not supported!');
+    return;
+  }
+  const serviceWorkerScope = "/service/worker/path" // Replace with your own path to the service worker location.
+  const serviceWorkerPath = "${root}/service-worker.js"; // Replace with the filename of your service worker.
+
+  // We recommend unregistering actively before (re-)registering as we've seen issues where hard reloads could cause issues if the service worker wasn't unregistered.
+  const registration = await navigator.serviceWorker.getRegistration(serviceWorkerPath);
+  await registration?.unregister();
+
+  navigator.serviceWorker
+    .register(serviceWorkerPath, {
+      scope: serviceWorkerScope,
+    })
+    .then((reg) => {
+      if (reg.active) console.log('Service worker registered!');
+    })
+    .catch((err) => {
+      console.error('Could not register service worker!', err);
+    });
+};
+
+// Initialise the service worker some time early in the processs.
+if (!(window.MediaSource || window.ManagedMediaSource)) {
+  registerServiceWorker();
+}
+```
+
+The snippet above assumes the existence of a function `getToken()` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. [(Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudo-code :
+
+```javascript
+const getToken = () => {
+  const YOUR_JWT_SIGNING_KEY = 'YOUR-SIGNING-KEY-GOES-HERE';
+  const payload ={
+    exp: Math.floor(Date.now() / 1000) + 300, // 5 minutes
+  }
+
+  return await sign(payload, YOUR_JWT_SIGNING_KEY);
+}
+
+```
+
+You can use an existing library like [Jose](https://github.com/panva/jose), or you can use our example implementation:
+
+<details>
+
+<summary> JWT `sign` function </summary>
+
+```js
+const base64UrlEncode = (str) => {
+  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+};
+
+const utf8ToUint8Array = (str) => {
+  return new TextEncoder().encode(str);
+};
+
+const sign = async (payload, secret) => {
+  const header = { alg: 'HS256', typ: 'JWT' };
+
+  const encodedHeader = base64UrlEncode(JSON.stringify(header));
+  const encodedPayload = base64UrlEncode(JSON.stringify(payload));
+
+  const data = `${encodedHeader}.${encodedPayload}`;
+  const secretBytes = utf8ToUint8Array(secret);
+
+  const key = await crypto.subtle.importKey('raw', secretBytes, { name: 'HMAC', hash: { name: 'SHA-256' } }, false, ['sign']);
+
+  const signature = await crypto.subtle.sign({ name: 'HMAC' }, key, utf8ToUint8Array(data));
+
+  const signatureStr = String.fromCharCode(...new Uint8Array(signature));
+
+  return `${data}.${base64UrlEncode(signatureStr)}`;
+};
+```
+
+:::info
+You can validate the token generated by inspecting it using the JWT decoder on [JWT.io](https://jwt.io/). The header and payload will be decoded immediately. If you provide your HMAC key, you can validate that the signature is also valid.
+:::
+
+</details>
+
+:::note
+If you are using a bundler such as Vite or Rollup etc, you will need to ensure that your service worker also gets copied to your output directory and is `registered` from the correct path.
+:::
