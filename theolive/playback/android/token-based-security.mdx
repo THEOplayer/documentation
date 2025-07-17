@@ -41,10 +41,10 @@ private fun tokenWillExpireSoon(): Boolean {
 
         val payload = String(Base64.decode(parts[1], Base64.DEFAULT))
         val jsonPayload = JSONObject(payload)
-        val exp = jsonPayload.getLong("exp") // in seconds
-        val now = System.currentTimeMillis() / 1000 // current time in seconds
+        val exp = jsonPayload.getLong("exp").seconds // Convert to Duration
+        val now = System.currentTimeMillis().milliseconds // Convert to Duration
 
-        exp - now <= 60
+        exp - now <= 60.seconds
     } catch (e: Exception) {
         true // If parsing fails, assume token needs refresh
     }
