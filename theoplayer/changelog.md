@@ -5,6 +5,32 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.8.2 (2025/07/17)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved support for frame metadata extraction with Optiview RealTime streams on older browsers, all the way back to Chrome v87.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not do the IMA streamRequest on startup when using SSE for an OptiView Ads stream.
+- Fixed an issue where the player would always update the ad tag parameters on the StreamManager on every ad break when playing an OptiView Ads stream.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where a stream request happened on every AdBreak for OptiView Ads.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where loading a THEOad could fail, causing a black screen.
+- Fixed an issue where the THEOadDescription would not be used when playing an OptiView live stream with ads enabled.
+
 ## 🚀 9.8.1 (2025/07/15)
 
 ### Android
