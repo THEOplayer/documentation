@@ -6,6 +6,22 @@ Updates to the [JavaScript Web SDK](https://github.com/millicast/millicast-sdk) 
 You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
 :::
 
+## 2025-07-17 | Web SDK [0.5.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.5.0)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- Added forceSmooth to viewer connect options.
+- Optimized the bundle size.
+
+🐛 **Issues**
+
+- Fixed an issue that prevented frame metadata extraction on older browsers. Frame metadata now works with versions of Chrome all the way back to v87.
+  💥 **Breaking Changes**
+
+- Removed the `onMetadata` event, which was already deprecated. This has been superceded by metadata as of v0.3.0.
+
 ## 2025-05-29 | Web SDK [0.4.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.4.0)
 
 This release includes some minor updates:
