@@ -1,6 +1,6 @@
 # Token based security
 
-THEOlive offers the option to enable JWT token security for channels (including channel aliases). This can be interesting if you only want valid users to access your stream.
+THEOlive offers the option to enable JWT token security for your distribution aliases. This can be interesting if you only want valid users to access your stream.
 
 In this document, we will
 
@@ -10,14 +10,14 @@ In this document, we will
 
 ## How it works
 
-When enabling token security on a channel, we expect you to share the shared (private) key in case of HS256/HS512 or the public key in case of RS256/RS512 encryption. This will be used on CDN level to determine if a request (with a Bearer token passed in the `Authorization` header) is valid or not. It's up to you to configure this header correctly through our player. Later in this document we will explain how.
+When enabling token security on a distribution alias, we expect you to share the shared (private) key in case of HS256/HS512 or the public key in case of RS256/RS512 encryption. This will be used on CDN level to determine if a request (with a Bearer token passed in the `Authorization` header) is valid or not. It's up to you to configure this header correctly through our player. Later in this document we will explain how.
 
 In the bearer token that gets sent to us, we _require_ the following properties to be provided in the `payload`:
 
 - `exp`: date in epoch format until which the JWT token is valid
 - `nbf`: optional date in epoch format. Stands for "not before" and acts as a "start date" of the JWT to be valid.
 
-When not passing a bearer token for a secured channel, the request will be rejected. If the channel is not secured, you may still pass a token but it is not required.
+When not passing a bearer token for a secured distribution alias, the request will be rejected. If the distribution alias is not secured, you may still pass a token but it is not required.
 
 ![token based security](../../assets/img/dcdfc37-token_security.png)
 
