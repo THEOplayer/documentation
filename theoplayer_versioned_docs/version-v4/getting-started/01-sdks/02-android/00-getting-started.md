@@ -61,6 +61,7 @@ When you select **Project** view, you can see a lot more files and directories. 
 ![](../../../../../theoplayer/assets/img/android-getting-started-06.png)
 
 - **app/**
+
   - Contains all module files:
 
 - - **build/**

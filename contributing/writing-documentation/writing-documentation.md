@@ -31,6 +31,7 @@ articles at once.
 5. If you're not a THEO employee, you'll need to fork the repository first.  
    ![Screenshot of "Fork this repository" prompt](assets/github-fork-to-propose.png)
 6. This will take you to a page where you can edit the article.
+
    - In the "Edit" view, you can make changes to the Markdown source. See
      the [Markdown features article from Docusaurus](https://docusaurus.io/docs/markdown-features) for an overview of
      the available Markdown features supported by Docusaurus.

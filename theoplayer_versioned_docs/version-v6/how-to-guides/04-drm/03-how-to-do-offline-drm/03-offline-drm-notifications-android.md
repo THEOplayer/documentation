@@ -5,27 +5,35 @@
 To customize the text or add translations to the notifications, you can override the following string resources:
 
 1. `<string name="theo_download_progress_title">Downloading video</string>`
+
    - This resource represents the title displayed during the progress of video downloading.
 
 2. `<string name="theo_download_status_title">Download %s</string>`
+
    - This resource represents the title displayed during the download process. The `%s` placeholder will be replaced with the actual file name.
 
 3. `<string name="theo_download_status_percentage">%d%%</string>`
+
    - This resource represents the percentage of download progress displayed in the notification. The `%d` placeholder will be replaced with the actual progress value.
 
 4. `<string name="theo_download_finished_status_title">Download finished</string>`
+
    - This resource represents the title displayed when the download is completed successfully.
 
 5. `<string name="theo_download_paused_status_title">Download paused</string>`
+
    - This resource represents the title displayed when the download is paused.
 
 6. `<string name="theo_download_failed_status_title">Download failed</string>`
+
    - This resource represents the title displayed when the download fails.
 
 7. `<string name="theo_download_stopped_status_title">Download stopped</string>`
+
    - This resource represents the title displayed when the download is manually stopped.
 
 8. `<string name="theo_cache_notifications_channel_name">Media downloader</string>`
+
    - This resource represents the name of the notification channel used for media downloading.
 
 9. `<string name="theo_cache_notifications_channel_description">Downloads media to make it available for offline playback</string>`
