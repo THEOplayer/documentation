@@ -4,9 +4,9 @@ slug: /software-encoders/obs/enhanced-broadcasting-multitrack-video
 ---
 
 :::caution Beta: This feature is in the works
-This feature is still under development and may be updated, changed, or deprecated without notice. We welcome your feedback.
+This feature is still under development and may be updated, changed, or deprecated without notice. We welcome your feedback. For the moment, "Additonal Canvases" is ignored.
 
-For OBS support, you can follow the following pull-request for the OBS project to merge this functionality with Millicast. Once this PR is merged the functionality will be put into the next release of OBS: https://github.com/obsproject/obs-studio/pull/11509
+See [System Requirements](#minimum-system-requirements) below for details.
 :::
 
 # Enhanced Broadcasting in OBS
@@ -19,9 +19,9 @@ import AbrImg from '../../../assets/img/842826436d56486b6a0a14b06bbcda1958658d3c
   <img src={AbrImg} width="600" />
 </div>
 
-To use this feature, _you will need OBS version 30.2 at a minimum_. Then, enable Enhanced Broadcasting within the broadcast software settings.
+To use this feature, _you will need OBS version `31.1` at a minimum_. Then, after choosing "Dolby Millicast" from the `Stream > Service`, enable _Enhanced Broadcasting_ e.
 
-import ObsMultiTrackVideo from '../../../assets/img/7850cb180ea40539c6c3c9755d788a26911d7131aeaf6ca760e0601b-obs-multi-track-video.png';
+import ObsMultiTrackVideo from '../../../assets/img/obs-millicast-ertmp.jpg';
 
 <div class="center-container">
   <img src={ObsMultiTrackVideo} width="600" />
@@ -29,18 +29,29 @@ import ObsMultiTrackVideo from '../../../assets/img/7850cb180ea40539c6c3c9755d78
 
 ## Automatic Stream Configuration
 
-Understanding complicated video settings to achieve the highest video quality can be time consuming and frustrating. By sending information about your setup to Dolby Millicast, automatic stream configuration removes the need for offline trial and error to find the correct settings. A server-side algorithm then returns the best possible configuration for broadcast software that optimizes the viewer experience given constraints in your setup.
+Understanding complicated video settings to achieve the highest video quality can be time consuming and frustrating and challenging if you are instructing remote streamers. By selecting "☑️ Auto", OBS sends information about your setup to Dolby Millicast and the service tells OBS how to configure itself. Automatic stream configuration removes the need for offline trial and error to find the correct settings. A server-side algorithm then returns the best possible configuration for broadcast software that optimizes the viewer experience given constraints in your setup.
+
+### Custom Layer Count
+
+import ObsMultiTrackVideoManualLayers from '../../../assets/img/obs-millicast-ertmp-manual-layers.jpg';
+
+<div class="center-container">
+  <img src={ObsMultiTrackVideoManualLayers} width="600" />
+</div>
+
+A user can uncheck the _Auto_ box and choose the number of ABR tracks to send. Based on the resolution, bitrate, and number of layers requested, the streaming service will configure the ladder.
 
 ## Minimum System Requirements
 
 While we work to increase support for other systems, these are the minimum requirements:
 
-- GPU and Driver Version
-  - NVIDIA GeForce 900-series or newer with NVIDIA driver 545.92 or newer
-  - AMD Radeon RX 6000/7000 Series or newer with AMD Adrenalin 24.4.1 minimum
-- Operating System
+- **GPU and Driver Version**
+  - NVIDIA GeForce 900-series or newer with NVIDIA driver version `31.0.15.4500` or newer
+  - Apple M1 and newer GPUs
+  - _Experimental_: Intel GPUs
+- **Operating System**
   - Windows 10 or Windows 11
-- Broadcast Software
-  - OBS Studio v30.2 (or newer), XSplit Broadcaster 4.5.2406.1801 (or newer)
-- Network
-  - We recommend a minimum sustained upload bandwith availability of 12 mbps
+- **Broadcast Software**
+  - OBS Studio version `31.1` (or newer)
+- **Network**
+  - We recommend a minimum sustained upload bandwidth availability of 12 mbps and a contribution bitrate between 6000 and 2000 Kbps depending on the number of layers, content, and use-case
