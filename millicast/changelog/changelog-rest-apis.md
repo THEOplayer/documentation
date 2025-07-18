@@ -63,7 +63,6 @@ View the [Webhooks](/millicast/webhooks/index.mdx) guide to learn more about set
 ### Features
 
 - Introduced a new Live Clipping feature in Limited Availability (LA). Live Clipping provides the ability to record streams and extract a clip, such as a highlight, before the stream is finished. This allows you to share key moments or highlights during an ongoing event, providing mezzanine file for uploading to social media or a VOD platform. The following **Record Files** REST APIs are introduced to support capturing multiple simultaneous recordings while a broadcast event is in progress:
-
   - Create Clip
   - Get Clip Request
   - List Clip Requests

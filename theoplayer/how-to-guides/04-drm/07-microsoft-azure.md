@@ -93,7 +93,7 @@ theoplayer.source = sourceDescription
 ## Related articles
 
 - [Comcast](03-comcast.md)
-- [PallyCon](15-pallycon.md)
+- [DoveRunner](15-doverunner.md)
 - [BuyDRM KeyOS](01-buydrm-keyos/00-introduction.md)
 - [Arris Titanium](01-arris-titanium.md)
 - [Uplynk](12-uplynk.md)

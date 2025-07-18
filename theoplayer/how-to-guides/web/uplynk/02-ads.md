@@ -44,7 +44,6 @@ Calling the `player.uplynk.ads.skip()` function on a live stream will not have a
 In addition, event listeners are available to listen to new ad breaks:
 
 - For adbreaks, the following events are defined:
-
   - _adbreakbegin_
   - _adbreakend_
   - _adbreakskip_
@@ -52,7 +51,6 @@ In addition, event listeners are available to listen to new ad breaks:
   - _removeadbreak_
 
 - For ads, the following events are defined:
-
   - _adbegin_
   - _adchange_
   - _adend_

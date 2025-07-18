@@ -5,6 +5,221 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.8.2 (2025/07/17)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved support for frame metadata extraction with Optiview RealTime streams on older browsers, all the way back to Chrome v87.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not do the IMA streamRequest on startup when using SSE for an OptiView Ads stream.
+- Fixed an issue where the player would always update the ad tag parameters on the StreamManager on every ad break when playing an OptiView Ads stream.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where a stream request happened on every AdBreak for OptiView Ads.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where loading a THEOad could fail, causing a black screen.
+- Fixed an issue where the THEOadDescription would not be used when playing an OptiView live stream with ads enabled.
+
+## 🚀 9.8.1 (2025/07/15)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Ads were crashing when the `initializationDelay` parameter was `NaN`.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where ABR would not switch up to higher qualities for THEOlive sources.
+- Fixed an issue where the `ActiveQualityChangedEvent` was not dispatched for THEOlive sources.
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where the Conviva connector could cause a crash when the `isLive` property was missing from source metadata.
+
+## 🚀 9.8.0 (2025/07/12)
+
+### Web
+
+#### ✨ Features
+
+- Added an `initializationDelay` property to `TheoAdDescription` to delay the initialization of OptiView Ads.
+
+#### ⚡ Improvements
+
+- Improved stability of OptiView live streams on VIZIO devices.
+- Improved the transition from ads to content when playing an HESP stream in combination with OptiView ads.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would become paused when switching tabs while in native picture-in-picture on Chromium based browsers on OptiView live streams.
+- Fixed an issue where Millicast streams with `connectOptions.disableVideo` set to `true` would fail to play.
+
+### Android
+
+#### ✨ Features
+
+- Added an `initializationDelay` property to `TheoAdDescription` to delay the initialization of OptiView Ads.
+
+#### ⚡ Improvements
+
+- Fixed an issue where chapter tracks were not marked as `TextTrackKind.CHAPTERS` in the Media3 pipeline.
+
+#### 🐛 Issues
+
+- Fixed an issue where an `ActiveQualityChangedEvent` would either be sent with a wrong value or not sent at all in a multi-period DASH stream. 
+- Fixed an issue where waiting events would not be dispatched on OptiView live streams.
+- Fixed an issue where using a View-based UI with THEOplayer and playing Millicast stream will cause a crash.
+- Expose actual bandwidth of audio qualities for HESP / OptiView live streams.
+
+### iOS
+
+#### ✨ Features
+
+- Added an `initializationDelay` property to `THEOAdDescription` to delay the initialization of OptiView Ads.
+
+#### 🐛 Issues
+
+- Fix issue where network connectivity errors were not forwarded to the NetworkEventTypes.ERROR event listener
+- Fixed an issue where id3 metadata tracks would be notified in advance, causing issues i.e. for Google DAI. 
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added support for VOD assets with THEOads overlay images.
+
+### Roku
+
+#### ⚡ Improvements
+
+- Added discoveryUrl property to THEOlive config and removed need for a trailing slash on discovery URLs.
+
+#### 🐛 Issues
+
+- Fixed an issue where source descriptions without the `live` property would fail.
+
+## 🚀 9.7.0 (2025/07/02)
+
+### General
+
+#### ✨ Features
+
+- Added support for OptiView Ads in combination with OptiView Live streaming.
+
+### Web
+
+#### ✨ Features
+
+- Added the ability to play two adbreaks seamlessly after each other for THEOads.
+- Added new `DistributionLoadStartEvent`, `EndpointLoadedEvent` and `DistributionOfflineEvent` events to the `theoLive` API as part of OptiView Live API V2 support.
+- Added support for MPEG-TS segments with multiple SPS/PPS NALs in the MPEG-TS transmux worker.
+
+#### ⚡ Improvements
+
+- Changed the default amount of retries for OptiView live streams to 3 so that all the recovery mechanisms work without the need to explicitly set a finite value.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player's content is zoomed in when going in fullscreen when playing a THEOads stream.
+- Fixed an issue where not all representations are shown for a DASH stream with adaptation set switching.
+- Fixed an issue where the player would dispatch events with incorrect `currentTime` when playing a THEOads stream on smartTVs.
+- Fixed an issue where the `currentTime` and `currentProgramDateTime` values would be incorrect for a short time after a transition from adbreak to content using THEOads.
+- Fixed an issue where switching OptiView live streams with DRM enabled would sometimes fail on Safari.
+- Fixed content protection events not being dispatched for OptiView live streams.
+- Fixed an issue where an HLS live stream would not start at the live point on iOS Safari.
+- Fixed an issue where an empty VAST/VMAP response would block content if `blockContentIfAdError` was enabled in the player source description.
+- Fixed an issue where quality or track switches with non-identical codecs would cause a fatal error on Edge browsers.
+- Fixed an issue where the defined ad parameters for a MediaTailor source are not being passed correctly to MediaTailor.
+
+#### 👎 Deprecations
+
+- Renamed `adParams` to `adsParams` in the MediaTailor source definition in the Web SDK. The old name still works, but is now deprecated.
+
+### Android
+
+#### ✨ Features
+
+- Added support for adbreak to adbreak transition with THEOAds.
+- Added `THEOplayerGlobal.logger` API to enable logs for specific tags and ability to add listeners to receive log messages.
+- Added a new `EndpointLoadedEvent` that fires when an OptiView Live endpoint is successfully loaded. 
+- Improved debug logging for the Media3 playback pipeline.
+- Added support for MPEG-TS segments with multiple SPS/PPS NALs in the MPEG-TS transmux worker for the legacy playback pipeline.
+- Added support for GAM properties in THEOads overlays.
+- Added ClearKey DRM support to the media3 pipeline.
+
+#### ⚡ Improvements
+
+- Fixed video artifacting on older FireTV devices when playing OptiView live streams.
+- Added support for `"maxBitrate"` when setting up a `SourceDescription`. This can be set by defining an `abr` property for the source.
+- Improved the latency measurement available in the latency API.
+- Manifest and segment requests now have the proper `Request.type`, `.subType` and `.mediaType` in the Media3 pipeline.
+- Added `LinearAd.durationAsDouble` to retrieve an linear ad’s duration with sub-second precision.
+
+#### 🐛 Issues
+
+- Fixed an issue where subtitle styles set through the `TextTrackStyle` API were not being applied to subtitles with embedded styles.
+- Fixed an issue where subtitles with a background color set by an embedded style were always rendered with the default background color instead.
+- Fixed an issue wherein OptiView Live streams were not honouring the set `AbrStrategyConfiguation` on the player.  
+- Fixed an issue where the player would crash on ad playback in MediaTailor streams.
+- Fixed an issue where `PlayEvent` and `PauseEvent` weren't fired immediately on `play()` and `pause()` API calls. Also ensured `PlayEvent` fires when a source is invalid.
+- Fixed an issue where the `PauseEvent` did not fire when the player becomes ended.
+- Fixed an issue where the defined ad parameters for a MediaTailor source are not being passed correctly to MediaTailor.
+
+#### 👎 Deprecations
+
+- Renamed `adParams` to `adsParams` in the MediaTailor source definition in the Android SDK. The old name still works, but is now deprecated.
+
+### iOS
+
+#### ✨ Features
+
+- Added a target latency override to THEOlive source description.
+- Added `THEOliveConfiguration.discoveryUrl` and `THEOliveConfiguration.discoveryUrls` to support custom discovery URLs for OptiView live streams.
+
+#### ⚡ Improvements
+
+- Update Millicast SDK to v2.4.3
+
+#### 🐛 Issues
+
+- Fixed an issue where closed caption text tracks were automatically selected and bypassing accessibility settings.
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added support for GAM hosted interstitial image overlays.
+- Added in the ability to display THEOads interstitial overlays included in HLS manifests.
+- Added support for VOD assets with THEOads overlay images.
+
+### Roku
+
+#### ✨ Features
+
+- Added support for OptiView live v2 streams.
+- When an OptiView live stream has an error, the player will now attempt to fallback to other sources for the stream.
+
+#### 🐛 Issues
+
+- Fixed crash on start up when using an array for `source.sources`.
+- Fixed an issue where a THEOlive source would not work when passed as an element in a sources array in the source description.
+
 ## 🚀 9.6.1 (2025/06/23)
 
 ### Android
@@ -117,7 +332,7 @@ toc_max_heading_level: 2
 
 #### ✨ Features
 
-- Added `player.millicast` API to access Millicast specific diagnostics and stats. See the [diagnostics doc page](https://docs.optiview.dolby.com/millicast/playback/players-sdks/web/player/frame-metadata/) for more information.
+- Added `player.millicast` API to access Millicast specific diagnostics and stats. See the [diagnostics doc page](https://optiview.dolby.com/docs/millicast/playback/players-sdks/web/player/frame-metadata/) for more information.
 - Added support for Dolby Digital (`ac-3`) codecs in HLS when the platform supports it.
 - Added a default value for the `ott_placement` GAM ad tag parameter for THEOads.
 
@@ -353,7 +568,7 @@ toc_max_heading_level: 2
 
 - Added `suppressCaptions` functionality based on `textTracks` `mode` field.  Captions are automatically suppressed when `textTracks` `mode` is `"disabled"`.
 - Added the `muted` API to control the video node's mute state.
-- Added support for Client Side Ad Insertion using the player `Ads` API. Check out the [getting started with ads on Roku](https://docs.optiview.dolby.com/theoplayer/getting-started/sdks/roku/displaying-ads/) docs for more information.
+- Added support for Client Side Ad Insertion using the player `Ads` API. Check out the [getting started with ads on Roku](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/roku/displaying-ads/) docs for more information.
 
 #### 🐛 Issues
 

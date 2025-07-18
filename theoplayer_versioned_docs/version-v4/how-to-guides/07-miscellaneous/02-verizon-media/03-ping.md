@@ -130,7 +130,6 @@ Where:
 
 - `{event}`: Is the current Ping event. An event should only be passed when playback starts or when a viewer seeks to a new position.
   Valid values are:
-
   - **start**: Pass this event, along `withpt=0`, when the player starts playback. This lets the server know where playback starts and allows the server to fire start events as needed.
   - **seek**: Pass this event when a viewer seeks. This resets the timeline to prevent inadvertently firing events for skipped ads.
 
@@ -143,7 +142,6 @@ When performed correctly, a Ping request will return a JSON response. THEOplayer
 - next_time: A new beacon will be scheduled when the player's currentTime passes this value. In case the value is -1, no further beacons will be scheduled.
 - currentBreakEnd: Will be used to update the end time of an ongoing ad-break in case the breakEnd was previously unknown. (Note Verizon Media by default requests 240s of ads in case the break length is unknown and will return all ads in the Ping response.)
 - ads: Will be interpreted in order to display markers in the timeline as well as expose ad information through the player.verizonMedia.ads property.
-
   - ads.breaks.timeOffset will be used in order to determine the start time of the ad break (in seconds).
   - ads.breaks.ads will be looped in order to extract the ad information to be exposed in VerizonMediaAd in the THEO API:
     - ad.duration will serve as duration in VerizonMediaAd (in seconds)

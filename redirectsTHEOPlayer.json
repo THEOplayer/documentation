@@ -18,5 +18,9 @@
   {
     "from": "/theoplayer/faq/what-are-the-edgio-challenges/",
     "to": "/theoplayer/faq/what-are-the-uplynk-challenges/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/pallycon/",
+    "to": "/theoplayer/how-to-guides/drm/doverunner/"
   }
 ]

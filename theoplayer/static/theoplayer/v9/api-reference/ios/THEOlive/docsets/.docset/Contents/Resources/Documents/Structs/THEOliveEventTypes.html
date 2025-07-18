@@ -51,6 +51,15 @@
             <a class="nav-group-name-link" href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DistributionLoadStartEvent.html">DistributionLoadStartEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DistributionOfflineEvent.html">DistributionOfflineEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes.html#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)EndpointLoadedEvent">EndpointLoadedEvent</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes.html#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)IntentToFallbackEvent">IntentToFallbackEvent</a>
               </li>
               <li class="nav-group-task">
@@ -100,6 +109,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/THEOplayerSDK/THEOplayer.html">– THEOplayer</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:ScT">Task</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -119,6 +131,9 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HESPLatencies.html">HESPLatencies</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/THEOliveConfiguration.html">THEOliveConfiguration</a>
               </li>
@@ -169,7 +184,35 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">PUBLICATION_LOAD_START</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/PublicationLoadStartEvent.html">PublicationLoadStartEvent</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, renamed: "DISTRIBUTION_LOAD_START", message: "Use DISTRIBUTION_LOAD_START instead")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">PUBLICATION_LOAD_START</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/PublicationLoadStartEvent.html">PublicationLoadStartEvent</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:29THEOplayerTHEOliveIntegration0B10EventTypesV23DISTRIBUTION_LOAD_START0A3SDK0D4TypeCyAA021DistributionLoadStartD0CGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/DISTRIBUTION_LOAD_START" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration0B10EventTypesV23DISTRIBUTION_LOAD_START0A3SDK0D4TypeCyAA021DistributionLoadStartD0CGvpZ">DISTRIBUTION_LOAD_START</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fired when the loading of a THEOlive distribution starts.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">DISTRIBUTION_LOAD_START</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/DistributionLoadStartEvent.html">DistributionLoadStartEvent</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -196,7 +239,36 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">PUBLICATION_LOADED</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/PublicationLoadedEvent.html">PublicationLoadedEvent</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, renamed: "ENDPOINT_LOADED", message: "Use ENDPOINT_LOADED instead")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">PUBLICATION_LOADED</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/PublicationLoadedEvent.html">PublicationLoadedEvent</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:29THEOplayerTHEOliveIntegration0B10EventTypesV15ENDPOINT_LOADED0A3SDK0D4TypeCyAA014EndpointLoadedD0CGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/ENDPOINT_LOADED" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration0B10EventTypesV15ENDPOINT_LOADED0A3SDK0D4TypeCyAA014EndpointLoadedD0CGvpZ">ENDPOINT_LOADED</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fired when the loading of a THEOlive endpoint is complete and playback can start. This event is dispatched on every endpoint load, when an error
+is encountered and the player recovers by choosing a new one.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">ENDPOINT_LOADED</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes.html#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)EndpointLoadedEvent">EndpointLoadedEvent</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -223,7 +295,35 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">PUBLICATION_OFFLINE</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/PublicationOfflineEvent.html">PublicationOfflineEvent</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, renamed: "DISTRIBUTION_OFFLINE", message: "Use DISTRIBUTION_OFFLINE instead")</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">PUBLICATION_OFFLINE</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/PublicationOfflineEvent.html">PublicationOfflineEvent</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:29THEOplayerTHEOliveIntegration0B10EventTypesV20DISTRIBUTION_OFFLINE0A3SDK0D4TypeCyAA019DistributionOfflineD0CGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/DISTRIBUTION_OFFLINE" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration0B10EventTypesV20DISTRIBUTION_OFFLINE0A3SDK0D4TypeCyAA019DistributionOfflineD0CGvpZ">DISTRIBUTION_OFFLINE</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fired when loading a THEOlive distribution that cannot be played, for example because the publication is stopped or is still starting up.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">DISTRIBUTION_OFFLINE</span><span class="p">:</span> <span class="kt">THEOplayerSDK</span><span class="o">.</span><span class="kt">EventType</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/DistributionOfflineEvent.html">DistributionOfflineEvent</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
