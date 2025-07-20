@@ -18,9 +18,10 @@ This release includes some minor updates:
 🐛 **Issues**
 
 - Fixed an issue that prevented frame metadata extraction on older browsers. Frame metadata now works with versions of Chrome all the way back to v87.
-  💥 **Breaking Changes**
 
-- Removed the `onMetadata` event, which was already deprecated. This has been superceded by metadata as of v0.3.0.
+💥 **Breaking Changes**
+
+- Removed the `onMetadata` event, which was already deprecated. This has been superceded by `metadata` as of v0.3.0.
 
 ## 2025-05-29 | Web SDK [0.4.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.4.0)
 
