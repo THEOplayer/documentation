@@ -293,7 +293,7 @@ const config: Config = {
           millicast: {
             specPath: 'https://api.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api',
-            hideSendButton: false,
+            hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -302,7 +302,7 @@ const config: Config = {
           millicastDirector: {
             specPath: 'https://director.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api/director',
-            hideSendButton: false,
+            hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
@@ -310,7 +310,7 @@ const config: Config = {
           millicastReportingApi: {
             specPath: 'https://analyticsapi.millicast.com/openapi/v1/openapi.json',
             outputDir: 'millicast/api/reporting',
-            hideSendButton: false,
+            hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
             },
