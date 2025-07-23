@@ -98,5 +98,5 @@ dependencies {
 If the token isn't needed anymore, e.g. when switching to an unprotected distribution or a non-THEOlive source altogether, the header can be simply removed as follows:
 
 ```kotlin
-player.network.removeHeader("Authorization");
+player.theoLive.setAuthToken(null);
 ```
