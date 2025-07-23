@@ -41,7 +41,8 @@ To make a `MultiViewPlayer`, one has to add the following code to their page:
 Now that the `MultiViewPlayer` is instantiated, you'll need to load each view separately:
 
 ```js
-player.load('Star Wars', { // set the name of the source
+// set the name of the source
+player.load('Star Wars', {
   sources: [
     {
       src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8', // sets HLS source
@@ -50,7 +51,8 @@ player.load('Star Wars', { // set the name of the source
   ],
 });
 
-player.load('Big Buck Bunny', { // set the name of the source
+// set the name of the source
+player.load('Big Buck Bunny', {
   sources: [
     {
       src: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', // sets HLS source
