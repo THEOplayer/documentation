@@ -18,7 +18,7 @@ The token needs to be passed along with player requests as a Bearer token in the
 
 ```kotlin
 val token = getToken() // Generate or request your token, for more information check the token based security guide linked above.
-player.theoLive.setAuthHeader(token)
+player.theoLive.authToken = token
 ```
 
 This will ensure the player includes your authorization header on all subsequent requests it performs for playback of your THEOlive distribution.
@@ -54,7 +54,7 @@ private fun maybeUpdateToken() {
     if (token == null || tokenWillExpireSoon()) {
         token = getToken() // Generate or request your token
         token?.let { newToken ->
-            player.theoLive.setAuthHeader(newToken)
+            player.theoLive.authToken = newToken
         }
     }
 }
@@ -98,5 +98,5 @@ dependencies {
 If the token isn't needed anymore, e.g. when switching to an unprotected distribution or a non-THEOlive source altogether, the header can be simply removed as follows:
 
 ```kotlin
-player.theoLive.setAuthToken(null);
+player.theoLive.authToken = null;
 ```
