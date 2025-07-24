@@ -13,8 +13,8 @@ function getProductNameByPluginId(pluginId: string): string {
       return 'THEOplayer';
     case 'open-video-ui':
       return 'Open Video UI';
-    case 'theoads':
-      return 'THEOads';
+    case 'ads':
+      return 'OptiView Ads';
     case 'contributing':
       return 'Contributing';
     case 'theolive':

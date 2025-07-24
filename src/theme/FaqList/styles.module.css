@@ -1,0 +1,12 @@
+.faqTitle {
+}
+
+.faqList {
+}
+
+.faqListItem {
+}
+
+.faqListItem > * {
+  height: 100%;
+}

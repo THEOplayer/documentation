@@ -3,10 +3,10 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "target": "es2021",
-    "lib": ["es2021", "dom"],
+    "lib": ["es2024", "dom"],
     "types": ["@docusaurus/module-type-aliases", "@docusaurus/theme-classic"],
     "baseUrl": "."
   },
-  "include": ["sidebars*.ts", "src/", "theoplayer/", "theoads/", "open-video-ui/", "contributing/", "theolive/", "millicast/"],
+  "include": ["sidebars*.ts", "src/", "theoplayer/", "ads/", "open-video-ui/", "contributing/", "theolive/", "millicast/"],
   "exclude": ["theoplayer/external/", "open-video-ui/external/", "theoplayer_versioned_docs/"]
 }
