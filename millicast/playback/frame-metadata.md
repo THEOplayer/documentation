@@ -399,7 +399,7 @@ Using the [Native SDK](/millicast/playback/players-sdks/index.mdx) you can embed
 You can find a more complete C implementation example in the <a href="https://github.com/millicast/metadata-publisher-demo" target="_blank">millicast/metadata-publisher-demo</a> project.
 :::
 
-If you have specific requirements for the version of libwebrtc in use for your platform [contact us](https://dolby.io/contact) for additional implementation details.
+If you have specific requirements for the version of libwebrtc in use for your platform [contact us](https://optiview.dolby.com/contact/) for additional implementation details.
 
 #### Enable frame transformer
 
@@ -460,4 +460,4 @@ See the [Playback issues with SEI Messages in H.264](https://support.dolby.io/hc
 
 ## Learn more
 
-You can find some additional examples of exchanging data during a broadcast and other [messaging](https://dolby.io/blog/tag/messaging/) examples from the [developer blog](https://dolby.io/blog/category/streaming/).
+You can find some additional examples of exchanging data during a broadcast and other [messaging](https://optiview.dolby.com/resources/blog/tag/messaging/) examples from the [developer blog](https://optiview.dolby.com/resources/blog/category/streaming/).

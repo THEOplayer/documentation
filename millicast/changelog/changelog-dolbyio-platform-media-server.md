@@ -58,7 +58,7 @@ Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com
 
 #### Features
 
-- Introduced initial support for our "re-stream" capability. This is the ability to stream from Dolby to other platforms via RTMP. For more details, review our [documentation for Re-stream](/millicast/distribution/re-streaming.mdx). If you want to start using this feature, please [contact our sales team](https://dolby.io/contact/) .
+- Introduced initial support for our "re-stream" capability. This is the ability to stream from Dolby to other platforms via RTMP. For more details, review our [documentation for Re-stream](/millicast/distribution/re-streaming.mdx). If you want to start using this feature, please [contact our sales team](https://optiview.dolby.com/contact/) .
 - Updates to our Cloud Transcoder to pass RTMP AMF messages to every simulcast layer of the adaptive bitrate ladder.
 
 #### Fixes
@@ -194,8 +194,7 @@ Introduced the Web Viewer multi-view support that allows customers to display mu
 
 For more information, see:
 
-- The [Enabling Multiview for a Dolby.io Livestream](https://dolby.io/blog/enabling-multiview-for-dolby-io-livestreaming/) blog post
-- The [Building a WebRTC Live Stream Multiviewer App](https://dolby.io/blog/building-a-webrtc-live-stream-multiviewer-app/) blog post
+- The [Building a WebRTC Live Stream Multiviewer App](https://optiview.dolby.com/resources/blog/streaming/building-a-webrtc-live-stream-multiviewer-app/) blog post
 
 ### New Regional Clusters in Amsterdam and Singapore
 

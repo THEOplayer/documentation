@@ -97,4 +97,4 @@ This feature will hide all options from the viewer's perspective.
 
 ## Learn more
 
-Learn more by exploring the [developer blog](https://dolby.io/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).
+Learn more by exploring the [developer blog](https://optiview.dolby.com/resources/blog/tag/distribution/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution).

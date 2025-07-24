@@ -168,4 +168,4 @@ You can also use [vMix as NDI](/millicast/broadcast/software-encoders/vmix.mdx) 
 
 ## Learn more
 
-Learn more by exploring the [developer blog](https://dolby.io/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
+Learn more by exploring the [developer blog](https://optiview.dolby.com/resources/blog/tag/broadcast/) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=broadcast).
