@@ -22,15 +22,15 @@ This can be done through [https://portal.theoplayer.com](https://portal.theoplay
 
 ## Basic setup
 
-To make a MultiViewPlayer, one has to add the following code to their page:
+To make a `MultiViewPlayer`, add the following code to your page:
 
 ```html
 <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
 <script src="/path/to/THEOplayer.js"></script>
 <script>
-  var element = document.querySelector('.theoplayer-container'); // fetch THEOplayer container div
+  const element = document.querySelector('.theoplayer-container'); // fetch THEOplayer container div
 
-  var player = new THEOplayer.MultiViewPlayer(element, {
+  const player = new THEOplayer.MultiViewPlayer(element, {
     // instantiates the MultiView player
     libraryLocation: '/path/to/your-theoplayer-folder/', // references folder containing your THEOplayer library files (THEOplayer.js, ...)
     license: 'your_license_string', // references your THEOplayer SDK license
@@ -38,10 +38,11 @@ To make a MultiViewPlayer, one has to add the following code to their page:
 </script>
 ```
 
-Now that the MultiViewPlayer is instantiated, you'll need to load each view separately:
+Now that the `MultiViewPlayer` is instantiated, you'll need to load each view separately:
 
 ```js
-player.load('Label', {
+// set the name of the source
+player.load('Star Wars', {
   sources: [
     {
       src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8', // sets HLS source
@@ -49,6 +50,16 @@ player.load('Label', {
     },
   ],
 });
+
+// set the name of the source
+player.load('Big Buck Bunny', {
+  sources: [
+    {
+      src: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8', // sets HLS source
+      type: 'application/x-mpegurl', // sets type to HLS
+    },
+  ],
+});
 ```
 
-The MultiViewPlayer has a slightly different API from the general THEOplayer, so for more information we refer to the [documentation](pathname:///theoplayer/v9/api-reference/web/classes/MultiViewPlayer.html).
+The `MultiViewPlayer` has a slightly different API from the general THEOplayer, so for more information we refer to the [documentation](pathname:///theoplayer/v9/api-reference/web/classes/MultiViewPlayer.html).
