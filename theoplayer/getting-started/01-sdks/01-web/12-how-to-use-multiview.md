@@ -22,7 +22,7 @@ This can be done through [https://portal.theoplayer.com](https://portal.theoplay
 
 ## Basic setup
 
-To make a `MultiViewPlayer`, one has to add the following code to their page:
+To make a `MultiViewPlayer`, add the following code to your page:
 
 ```html
 <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
