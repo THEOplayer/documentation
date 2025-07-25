@@ -1,6 +1,6 @@
 ---
 title: Millicast Web SDK
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 :::caution Player vs SDK
@@ -8,98 +8,6 @@ sidebar_position: 3
 :::
 
 The Web SDK lets you connect, capture, publish, and subscribe to streams in your web applications.
-
-## Getting Started
-
-:::tip Getting Started with Web SDK
-If you haven't already, begin by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) tutorial to become familiar with the concepts to create an application that can publish and/or subscribe using the Web SDK.
-:::
-
-### Installation
-
-To use the SDK in your web applications you have options:
-
-- include a hosted version from the [JSDELIVR CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk) CDN
-- add a dependency with [npm](https://www.npmjs.com/package/@millicast/sdk)
-
-:::danger Versioning of the Millicast SDK
-When installing and importing the SDK you may automatically be updated to the latest version. This is fine for development, but it is _strongly recommended_ to pin to a specific version release in order to increase stability when you move to production.
-:::
-
-#### JSDELIVR
-
-You can include the SDK directly in your HTML by adding this element to the `<head>` of your page:
-
-```html title="Import script"
-<script src="https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.umd.min.js"></script>
-```
-
-If you want to pin or lock to a specific version, you can find available options from the [JSDELIVR @millicast/sdk](https://www.jsdelivr.com/package/npm/@millicast/sdk) package releases.
-
-#### NPM
-
-You can install the package directly into your project with `npm`:
-
-```shell title="bash"
-npm i --save @millicast/sdk
-```
-
-If you want to pin or lock to a specific version, you can find available options from the [NPM @millicast/sdk](https://www.npmjs.com/package/@millicast/sdk) package releases.
-
-### Check Browser Capabilities
-
-Testing for browser compatibility is a quick test you can do to make sure the browser supports **video** and that you can reference the SDK.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-
-<TabItem value="npm" label="NPM">
-
-```js
-// Node Package Manager (NPM)
-// You access SDK modules as an import from the @millicast/sdk package.
-
-import { PeerConnection } from '@millicast/sdk';
-
-const capabilities = PeerConnection.getCapabilities('video');
-console.log(capabilities);
-```
-
-</TabItem>
-
-<TabItem value="umd" label="UMD">
-
-```js
-// Universal Module Definition (UMD)
-// You access SDK modules from the window.millicast namespace.
-
-const capabilities = window.millicast.PeerConnection.getCapabilities('video');
-console.log(capabilities);
-```
-
-</TabItem>
-
-<TabItem value="esm" label="ESM">
-
-```js
-// ES Modules
-// You access SDK modules through an import.
-
-import { PeerConnection } from 'https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.esm.js';
-
-const capabilities = PeerConnection.getCapabilities('video');
-console.log(capabilities);
-```
-
-</TabItem>
-
-</Tabs>
-
-### Resources
-
-There are additional usage examples below, but you may also find some of the resources listed here to be helpful as you start your integration project.
 
 import ThreeCardList from '@site/src/components/ThreeCardList';
 
@@ -135,7 +43,44 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
   ]}
 />
 
-You might also check and follow the [Web Platform Release Notes](/millicast/changelog/changelog-web-platform.md) page for updates and changes to the SDK.
+## Getting Started
+
+:::tip Getting Started with Web SDK
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) tutorial to become familiar with the concepts to create an application that can publish and/or subscribe using the Web SDK.
+:::
+
+Please check and follow the [Web Platform Release Notes](/millicast/changelog/changelog-web-platform.md) page for updates and changes to the SDK.
+
+### Installation
+
+To use the SDK in your web applications you have options:
+
+- include a hosted version from the [JSDELIVR CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk) CDN
+- add a dependency with [npm](https://www.npmjs.com/package/@millicast/sdk)
+
+:::danger Versioning of the Millicast SDK
+When installing and importing the SDK you may automatically be updated to the latest version. This is fine for development, but it is _strongly recommended_ to pin to a specific version release in order to increase stability when you move to production.
+:::
+
+#### JSDELIVR
+
+You can include the SDK directly in your HTML by adding this element to the `<head>` of your page:
+
+```html title="Import script"
+<script src="https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.umd.min.js"></script>
+```
+
+If you want to pin or lock to a specific version, you can find available options from the [JSDELIVR @millicast/sdk](https://www.jsdelivr.com/package/npm/@millicast/sdk) package releases.
+
+#### NPM
+
+You can install the package directly into your project with `npm`:
+
+```shell title="bash"
+npm i --save @millicast/sdk
+```
+
+If you want to pin or lock to a specific version, you can find available options from the [NPM @millicast/sdk](https://www.npmjs.com/package/@millicast/sdk) package releases.
 
 ## Basic Usage
 
@@ -216,40 +161,80 @@ For example:
 - If you want to start your stream with a bitrate limit, you can use the `bandwidth` option.
 - If your stream token in Dolby.io Real-time Streaming has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx).
 - You can start a stream without audio or video setting the `disableAudio` or `disableVideo` respectively.
-- You can select which codec you want to stream using the `codec` option. If you want to know the supported codecs of your browser, you can use [getCapabilities()](https://millicast.github.io/millicast-sdk/PeerConnection.html#.getCapabilities)
+- You can select which codec you want to stream using the `codec` option [Check Browser Capabilities](#check-browser-capabilities).
 
-```javascript
+#### Check Browser Capabilities
+
+You can test the browser capabilities to get the list of video codec supported by the browser using [getCapabilities()](https://millicast.github.io/millicast-sdk/PeerConnection.html#.getCapabilities).
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+
+<TabItem value="npm" label="NPM">
+
+```js
+// Node Package Manager (NPM)
+// You access SDK modules as an import from the @millicast/sdk package.
+
 import { PeerConnection } from '@millicast/sdk';
 
 const capabilities = PeerConnection.getCapabilities('video');
 console.log(capabilities);
-
-// Output:
-// [
-//     {
-//         "codec": "vp8",
-//         "mimeType": "video/VP8",
-//     },
-//     {
-//         "codec": "vp9",
-//         "mimeType": "video/VP9",
-//     },
-//     {
-//         "codec": "h264",
-//         "mimeType": "video/H264"
-//     },
-//     {
-//         "codec": "av1",
-//         "mimeType": "video/AV1",
-//     }
-// ]
 ```
 
-More information here:
+</TabItem>
 
-- [connect()](https://millicast.github.io/millicast-sdk/Publish.html#connect)
-- [Dashboard Recordings section](/millicast/distribution/stream-recordings/index.mdx)
-- [getCapabilities()](https://millicast.github.io/millicast-sdk/PeerConnection.html#.getCapabilities)
+<TabItem value="umd" label="UMD">
+
+```js
+// Universal Module Definition (UMD)
+// You access SDK modules from the window.millicast namespace.
+
+const capabilities = window.millicast.PeerConnection.getCapabilities('video');
+console.log(capabilities);
+```
+
+</TabItem>
+
+<TabItem value="esm" label="ESM">
+
+```js
+// ES Modules
+// You access SDK modules through an import.
+
+import { PeerConnection } from 'https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.esm.js';
+
+const capabilities = PeerConnection.getCapabilities('video');
+console.log(capabilities);
+```
+
+</TabItem>
+
+</Tabs>
+
+```json
+// Output:
+[
+  {
+    "codec": "vp8",
+    "mimeType": "video/VP8"
+  },
+  {
+    "codec": "vp9",
+    "mimeType": "video/VP9"
+  },
+  {
+    "codec": "h264",
+    "mimeType": "video/H264"
+  },
+  {
+    "codec": "av1",
+    "mimeType": "video/AV1"
+  }
+]
+```
 
 #### Managing your active stream
 
@@ -321,7 +306,7 @@ Like when creating a `Publish` instance, in order to create a `View` instance yo
 - The first one needs to be `undefined` as it has been deprecated.
 - The second parameter is a callback (`tokenGenerator`) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
 - (Optional) `mediaElement`. This is the HTML media element where you want to mount the stream for example a `video` element.
-- (Optional) `autoReconnect`. The Default value is true, enabling auto reconnect to stream.
+- (Optional) `autoReconnect`. The default value is `true`, enabling auto reconnect to stream.
 
 More information here:
 

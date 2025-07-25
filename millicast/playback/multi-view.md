@@ -207,7 +207,7 @@ const createVideoElement = (mediaStream, sourceId) => {
 
 ### Final result
 
-Additional features can be added, such as the ability to remove feeds once they stop or a button to switch between feeds. To learn more, explore this [full guide on building a multi-view application from start to finish](https://dolby.io/blog/building-a-webrtc-live-stream-multiviewer-app/) or try it out yourself with this [working sample code](https://github.com/dolbyio-samples/stream-app-web-viewer/tree/Multiviewer).
+Additional features can be added, such as the ability to remove feeds once they stop or a button to switch between feeds. To learn more, explore this [full guide on building a multi-view application from start to finish](https://optiview.dolby.com/resources/blog/streaming/building-a-webrtc-live-stream-multiviewer-app/) or try it out yourself with this [working sample code](https://github.com/dolbyio-samples/stream-app-web-viewer/tree/Multiviewer).
 
 <video autoplay="" width = "800px" controls="" loop="" muted="" src="https://dolby.io/wp-content/uploads/2022/11/multiview-vid.mp4" playsinline=""></video>
 
