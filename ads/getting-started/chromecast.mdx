@@ -1,0 +1,78 @@
+---
+sidebar_position: 6
+sidebar_label: Chromecast CAF
+sidebar_custom_props: { 'icon': 'web' }
+---
+
+# Getting started with OptiView Ads on Chromecast CAF
+
+This guide will get you started with OptiView Ads using the THEOplayer Chromecast CAF SDK: configure the license, update dependencies and set the source description. If you are implementing a Chromecast v2 receiver, use the Web guide instead.
+
+## Prerequisites
+
+1. You need to have a THEOplayer license which is compatible with OptiView Ads. This can be done through the [player portal](https://portal.theoplayer.com).
+2. You need a working [OptiView Ads signaling service](signaling-service.mdx).
+3. Your THEOplayer SDK needs to have the `theoads` feature enabled.
+
+   As of THEOplayer version 8.2.0, this feature is enabled in the main `theoplayer` package.
+   You can install this package with the following command:
+
+   ```bash
+   npm install theoplayer
+   ```
+
+## Integration
+
+This guide assumes you know how to set up THEOplayer. For more information regarding this check out the [THEOplayer getting started](/theoplayer/getting-started/sdks/web/getting-started/).
+
+NOTE: Currently the Chromecast CAF SDK only supports image overlays from OptiView Ads.
+
+### Configuring the Chromecast player
+
+OptiView Ads is supported using the Shaka player for HLS on Chromecast. To enable this, before starting the Chromecast application, configure it to use Shaka.
+
+```javascript
+let castReceiverOptions = new cast.framework.CastReceiverOptions();
+castReceiverOptions.useShakaForHls = true;
+cast.framework.CastReceiverContext.getInstance().start(castReceiverOptions);
+```
+
+### Chromecast Load Request
+
+When sending a load request to the CAF application, specify a source with a OptiView Ads-enabled ad description:
+
+```json
+{
+  "media": {
+    "contentUrl": "PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI",
+    "streamType": "LIVE",
+    "contentType": "application/x-mpegurl"
+  },
+  "customData": {
+    "sourceDescription": {
+      "sources": {
+        "src": "PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI",
+        "type": "application/x-mpegurl",
+        "hlsDateRange": true
+      },
+      "ads": [
+        {
+          "integration": "theoads"
+        }
+      ]
+    }
+  }
+}
+```
+
+- Notice that the `src` is different than usual. For OptiView Ads, a signaling server needs to be set up which acts as a proxy to parse the given manifest and insert the ad interstitials. More information can be found [here](signaling-service.mdx).
+- Also notice the value for `src` is repeated as the value for the `contentUrl`. These should be the same value.
+- The `hlsDateRange` flag needs to be set to `true` as the ad markers are done using `EXT-X-DATERANGE` tags.
+- The `ads` object needs to have its integration set to `theoads`.
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/TheoAdDescription.html)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
+- [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)
