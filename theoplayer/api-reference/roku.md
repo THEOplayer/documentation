@@ -33,6 +33,7 @@ The attributes, methods and events.
 | errorObject                  | associative array           |         | read              | The last error that occurred for the current source, if any.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | loop                         | boolean                     | false   | read,write        | Whether playback of the media is looped.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | muted                        | boolean                     | false   | read,write        | Set `true` to mute and `false` to un-mute the currently playing video                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| network                      | NetworkApi                  |         | read              | API node for network operations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | paused                       | boolean                     | true    | read              | Whether the player is paused.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | poster                       | string                      |         | read,write        | The poster of the current source.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | seeking                      | boolean                     |         | read              | `true` when player is seeking, `false` when player is not seeking now.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -57,19 +58,19 @@ The following key/value pairs are supported on the `source` attribute of the `TH
 
 The following key/value pairs are supported on the `sources` attribute of a Source Description:
 
-| Name              | Type                      | Description                                                                                                                             |
-| ----------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| src               | String                    | The URL of the media resource.                                                                                                          |
-| type              | String                    | The content type (MIME type) of the media resource. Possible values are `application/dash+xml`, `application/x-mpegURL`, and `theolive` |
-| title             | String                    | The title of the media resource.                                                                                                        |
-| description       | String                    | The description of the media resource.                                                                                                  |
-| playStart         | Number                    | The position in the stream the user starts playback at. Use negative numbers to offset from the live edge.                              |
-| contentProtection | Content Protection        | Parameters for DRM playback                                                                                                             |
-| SDBifUrl          | String                    | "Base Index Frames" URL for SD trick mode.                                                                                              |
-| HDBifUrl          | String                    | "Base Index Frames" URL for HD trick mode.                                                                                              |
-| FHDBifUrl         | String                    | "Base Index Frames" URL for FHD trick mode.                                                                                             |
-| ads               | roArray of AdDescriptions | Array of the ad description for the ads to play during the content.                                                                     |
-| embeddedTextTrack | string                    | Name of the embedded text track in the asset. Not necessary if the track is explicitly defined in the manifest.                         |
+| Name              | Type                      | Description                                                                                                                            |
+| ----------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| src               | String                    | The URL of the media resource.                                                                                                         |
+| type              | String                    | The content type (MIME type) of the media resource. Possible values are `application/dash+xml`, `application/x-mpegURL` and `theolive` |
+| title             | String                    | The title of the media resource.                                                                                                       |
+| description       | String                    | The description of the media resource.                                                                                                 |
+| playStart         | Number                    | The position in the stream the user starts playback at. Use negative numbers to offset from the live edge.                             |
+| contentProtection | Content Protection        | Parameters for DRM playback                                                                                                            |
+| SDBifUrl          | String                    | "Base Index Frames" URL for SD trick mode.                                                                                             |
+| HDBifUrl          | String                    | "Base Index Frames" URL for HD trick mode.                                                                                             |
+| FHDBifUrl         | String                    | "Base Index Frames" URL for FHD trick mode.                                                                                            |
+| ads               | roArray of AdDescriptions | Array of the ad description for the ads to play during the content.                                                                    |
+| embeddedTextTrack | string                    | Name of the embedded text track in the asset. Not necessary if the track is explicitly defined in the manifest.                        |
 
 "Base Index Frames" or BIF, is an archive file format that contains a set of still images, also known as "trick play thumbnails", supporting enhanced fast-forward and rewind modes during video playback.
 
@@ -243,20 +244,21 @@ The RAF proxy node has several fields that can be observed to consume data gener
 
 ## Methods
 
-| Method                                                                                       | Description                                                                                                                                            |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                         |
-| addIntegration                                                                               | Adds an Integration.                                                                                                                                   |
-| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (\{license: "MY_THEO_LICENSE"\}).                                                                            |
-| destroy                                                                                      | Destroy the player.                                                                                                                                    |
-| getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                  |
-| pause                                                                                        | Pause playback.                                                                                                                                        |
-| play                                                                                         | Start playback.                                                                                                                                        |
-| removeEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string) | Remove the specified listener for the specified player event.                                                                                          |
-| removeIntegration                                                                            | Removes an Integration.                                                                                                                                |
-| setCopyGuardManagementSystem(cgms as Integer)                                                | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted. |
-| setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer)              | Sets width, height, x, y of player.                                                                                                                    |
-| setMaxVideoResolution(width as Integer, height as Integer)                                   | Sets maximum video resolution.                                                                                                                         |
+| Method                                                                                       | Description                                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                                                     |
+| addIntegration                                                                               | Adds an Integration.                                                                                                                                                               |
+| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (`{license: "MY_THEO_LICENSE"}`).                                                                                                        |
+| destroy                                                                                      | Destroy the player.                                                                                                                                                                |
+| getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                                              |
+| pause                                                                                        | Pause playback.                                                                                                                                                                    |
+| play                                                                                         | Start playback.                                                                                                                                                                    |
+| removeEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string) | Remove the specified listener for the specified player event.                                                                                                                      |
+| removeIntegration                                                                            | Removes an Integration.                                                                                                                                                            |
+| setCopyGuardManagementSystem(cgms as Integer)                                                | Sets Copy Guard Management System. Acceptable Values: `0` - No Copy Restriction,`1` - Copy No More,`2` - Copy Once Allowed,`3` - No Copying Permitted.                             |
+| setDestinationRectangle(w as Integer, h as Integer, x as Integer, y as Integer)              | Sets width, height, x, y of player.                                                                                                                                                |
+| setMaxVideoResolution(width as Integer, height as Integer)                                   | Sets maximum video resolution.                                                                                                                                                     |
+| setPlayerFocus(focused as Boolean, focusReceiver (optional) as roSGNode)                     | Gives or removes the focus from the internal player. If passing `false`, you may pass an optional roSGNode to receive the focus. If not passed, the THEOplayer SDK receives focus. |
 
 ### Player Configuration
 
@@ -275,6 +277,15 @@ The PlayerConfiguration object is passed to the configure method. It is an assoc
 | discoveryUrl      | string           | Optional. The discovery URL for your OptiView Live deployment. If present, it will be tried before `discoveryUrls`.                                            |
 | discoveryUrls     | Array of strings | Array of discovery URLs for your OptiView Live deployment. If `theoLive` config is omitted, the default URL is 'https://discovery.theo.live/v2/publications/'. |
 | externalSessionId | string           | A session ID to use for your OptiView Live session. This can tie an application session to a THEOlens session.                                                 |
+
+## Network API
+
+The Network API exposes the following methods.
+
+| Method                                                 | Description                                                                                      |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| setHeader(headerName as string, headerValue as string) | Adds or overwrites a header for all media requests. Returns true if successful, false if not.    |
+| removeHeader(headerName as string)                     | Sets the value of the named header to an empty string. Returns true if successful, false if not. |
 
 ## Events
 
@@ -307,11 +318,15 @@ There are several player events being emitted.
 }
 ```
 
+- `intenttofallback`: Fired when the player has encountered an error playing a THEOlive stream and is going to try to playback a different stream. It also includes data about the error that is triggering fallback.
 - `loadeddata`: Fired when the player can render the media data at the current playback position for the first time, the extra data emitted is the currentTime
 - `loadedmetadata`: Fired when the player determines the duration and dimensions of the media resource, the extra data emitted is the currentTime
 - `pause`: Fired when the "paused" changes to true, the extra data emitted is the currentTime
 - `play`: Fired when the "paused" changes to false, the extra data emitted is the currentTime
 - `playing`: Fired when playback is ready to start after having been paused or delayed due to lack of media data, the extra data emitted is the currentTime
+- `endpointloaded`: Fired when the player has loaded the data for a THEOlive source and is ready to begin loading the stream
+- `distributionloadstart`: Fired when the player begins to load the data for a THEOlive source
+- `distributionoffline`: Fired when a THEOlive stream is not available for playback
 - `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
 - `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime
 - `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:

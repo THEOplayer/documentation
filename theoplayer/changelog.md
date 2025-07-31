@@ -5,6 +5,79 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.9.0 (2025/07/31)
+
+### Web
+
+#### ✨ Features
+
+- Added the possibility to schedule OptiView Ads Overlays through SSE.
+- Added the `authToken` property to the `theoLive` API for JWT auth token configuration.
+
+#### ⚡ Improvements
+
+- Improved support for frame metadata extraction with Optiview RealTime streams on older browsers, all the way back to Chrome v87.
+- Delayed loading of OptiView Live streams until `play` is called.
+- Improved stability of OptiView Live streams on Tizen platforms.
+- Improved stability of OptiView Live streams on WebOS devices.
+
+#### 🐛 Issues
+
+- Fixed an issue with OptiView Ads where a playback error during an ad break would fully stop playback.
+- Fixed an issue where WebVTT default text background colors (e.g. `<c.bg_yellow>`) were not working correctly.
+- Fixed an issue where WebVTT default text colors and default text background colors were not working when using Open Video UI.
+- Fixed an issue where the player would not show the OptiView Ads Overlays anymore when it stopped casting to Chromecast.
+
+### Android
+
+#### ✨ Features
+
+- Added support for `ClearkeyKeySystemConfiguration.keys` in the Media3 pipeline.
+- Added `TextTrackStyle.getFont()` and `.setFont(Typeface)`.
+- Added the `authToken` property to the `theoLive` API for JWT auth token configuration.
+- Implemented clickthrough URL on OptiView Ads Overlays.
+
+#### ⚡ Improvements
+
+- Cues from sideloaded subtitles are no longer eagerly added to their `TextTrack` in the Media3 pipeline, to avoid stalling the player while loading a large subtitle file. Instead, these subtitle cues are now added in a just-in-time fashion.
+- Added `SourceType.THEOLIVE` to more easily distinguish between THEOlive sources and plain HESP sources.
+- Fixed an issue where sideloaded chapter and metadata tracks were included when `MediaInfo` gets loaded into the player on a Cast Receiver.
+- Delayed loading of OptiView Live streams until `play` is called.
+
+#### 🐛 Issues
+
+- Fixed `TextTrackStyle.setFont(fontFile, fontStyle)` not correctly loading the font file.
+- Fixed an issue where caching an invalid source crashes the player.
+
+### iOS
+
+#### ✨ Features
+
+- Added the `authToken` property to the `theoLive` API for JWT auth token configuration.
+- Added support for image Overlays in OptiView Ads.
+- Added `MediaPlaylistInterceptor` protocol for HLS playlist interception and
+  manipulation.
+
+#### ⚡ Improvements
+
+- Added the `reason` property to `IntentToFallbackEvent` which indicates why the player chose to fall back.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `destroy` event would be dispatched twice.
+- Fixed an issue where incorrect query params were sent with the discovery call of OptiView Live stream.
+
+### Roku
+
+#### ⚡ Improvements
+
+- Delayed loading of OptiView Live streams until `play` is called.
+
+#### 🐛 Issues
+
+- Fixed an issue where source descriptions without the `live` property would fail to play.
+- Fixed an issue where the Conviva connector could cause a crash when the `isLive` property was missing from source metadata.
+
 ## 🚀 9.8.2 (2025/07/17)
 
 ### Web
