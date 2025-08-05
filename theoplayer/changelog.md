@@ -16,7 +16,6 @@ toc_max_heading_level: 2
 
 #### ⚡ Improvements
 
-- Improved support for frame metadata extraction with Optiview RealTime streams on older browsers, all the way back to Chrome v87.
 - Delayed loading of OptiView Live streams until `play` is called.
 - Improved stability of OptiView Live streams on Tizen platforms.
 - Improved stability of OptiView Live streams on WebOS devices.
