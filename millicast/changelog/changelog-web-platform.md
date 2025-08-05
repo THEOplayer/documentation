@@ -6,6 +6,14 @@ Updates to the [JavaScript Web SDK](https://github.com/millicast/millicast-sdk) 
 You can find the full history of previous releases with downloadable assets from the [millicast/millicast-sdk](https://github.com/millicast/millicast-sdk/releases) repository.
 :::
 
+## 2025-09-04 | Web SDK [0.6.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.6.0)
+
+This release includes some minor updates:
+
+⚡ **Improvements**
+
+- Added support for ABR strategies and initial bitrate for the viewer.
+
 ## 2025-07-17 | Web SDK [0.5.0](https://github.com/millicast/millicast-sdk/releases/tag/v0.5.0)
 
 This release includes some minor updates:
