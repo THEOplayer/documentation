@@ -1,6 +1,22 @@
 # Platform and Media Server Changes
 
-Updates to the Dolby.io Streaming Platform and [Media Server](https://github.com/medooze/media-server-node).
+Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
+
+## 2025-08-04
+
+### Media Server
+
+<!-- 3.1.0 -->
+
+#### Features
+
+- With [OBS 31.1](https://github.com/obsproject/obs-studio/releases/tag/31.1.2), you can now use [Enhanced Broadcasting](/millicast/software-encoders/obs/enhanced-broadcasting-multitrack-video/) to do all of the ABR generation at the edge. See the linked page for more details on how to work with eRTMP and OBS. In a future release look for full ladder control from the server-side. For more information, please reach out to your account representative
+- There is a new beta feature to correct audio and video timestamps that are delayed or suddenly change in an incoming stream. As the feature is in beta, please contact your Dolby OptiView account representative to have this enabled for your account. The same feature can improve recording audio-video sync in packet-loss.
+- The [Cloud Transcoder](/millicast/distribution/cloud-transcoder/) now supports fraction frame rates (`59.94` and `29.97`). These frame rates need to be enabled on your account so please contact your account representative to get started
+
+#### Fixes
+
+- In the enhanced RTMP workflow, there were some cases where ABR layers were not always viewable in neighboring regions. This is now fixed and all layers will be available in all regions with eRTMP
 
 ## 2025-06-23
 
