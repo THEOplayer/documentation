@@ -39,6 +39,7 @@ The attributes, methods and events.
 | seeking                      | boolean                     |         | read              | `true` when player is seeking, `false` when player is not seeking now.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | source                       | Source Description          |         | read,write        | Describes source of current video.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | src                          | string                      |         | read              | The current URL of the media resource.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| theolive                     | THEOlive API                |         | read              | API node for THEOlive operations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | textTracks                   | array of associative arrays | []      | read,write        | Provides information about text and metadata tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track description, language - track language, mode - determines track state, available values: disabled, showing, hidden, activeCues: the current cue for this track                                                                                                                                                                                                                  |
 
 ### Source Description
@@ -268,15 +269,23 @@ The PlayerConfiguration object is passed to the configure method. It is an assoc
 | ---------- | ---------- | --------------------------------------------------------------------------------- |
 | license    | string     | Your THEO license. Optional if `licenseUrl` is specified.                         |
 | licenseUrl | string     | The URL from which to load your THEO license. Optional if `license` is specified. |
-| theolive   | assocarray | The configuration for OptiView Live. Optional.                                    |
+| theolive   | assocarray | The configuration for THEOlive. Optional.                                         |
 
-#### OptiView Live Configuration
+#### THEOlive Configuration
 
-| Property          | Type             | Description                                                                                                                                                    |
-| ----------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| discoveryUrl      | string           | Optional. The discovery URL for your OptiView Live deployment. If present, it will be tried before `discoveryUrls`.                                            |
-| discoveryUrls     | Array of strings | Array of discovery URLs for your OptiView Live deployment. If `theoLive` config is omitted, the default URL is 'https://discovery.theo.live/v2/publications/'. |
-| externalSessionId | string           | A session ID to use for your OptiView Live session. This can tie an application session to a THEOlens session.                                                 |
+| Property          | Type             | Description                                                                                                                                               |
+| ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| discoveryUrl      | string           | Optional. The discovery URL for your THEOlive deployment. If present, it will be tried before `discoveryUrls`.                                            |
+| discoveryUrls     | Array of strings | Array of discovery URLs for your THEOlive deployment. If `theoLive` config is omitted, the default URL is 'https://discovery.theo.live/v2/publications/'. |
+| externalSessionId | string           | A session ID to use for your THEOlive session. This can tie an application session to a THEOlens session.                                                 |
+
+## THEOlive API
+
+The THEOlive API exposes the following property.
+
+| Property  | Type   | Description                                                                                                |
+| --------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| authToken | string | Optional. The JWT to be included on THEOlive media requests in the Authorization header as a bearer token. |
 
 ## Network API
 
