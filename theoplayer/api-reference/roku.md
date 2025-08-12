@@ -320,10 +320,10 @@ There are several player events being emitted.
 
 ```brightscript
 {
-    "error": "<string:error>",
+    "error": "\<string:error\>",
     "errorObject": {
-        "code": <integer:code>,
-        "message": <string:message>
+        "code": \<integer:code\>,
+        "message": \<string:message\>
     }
 }
 ```
