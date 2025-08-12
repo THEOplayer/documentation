@@ -108,6 +108,9 @@ var pathtoroot = "../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>java.io.Serializable</code>
+                            
+                            
                         </dd>
                     </dl>
                     
@@ -115,7 +118,7 @@ var pathtoroot = "../../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=CachingTaskError.html>CachingTaskError</a></span>
-
+extends <a href=https://developer.android.com/reference/kotlin/java/lang/Exception.html>Exception</a>
                     </pre>
                     <div class="block"><p>The caching task error.</p></div>
 
@@ -186,7 +189,13 @@ public final class <span class="typeNameLabel"><a href=CachingTaskError.html>Cac
                                         
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a></code></td>
-                                            <th class="colSecond" scope="row"><code><a href=CachingTaskError.html#cause>cause</a></code></th>
+                                            <th class="colSecond" scope="row"><code><a href=../error/THEOplayerException.html#cause>cause</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=../error/THEOplayerException.html#message>message</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -291,19 +300,17 @@ public final class <span class="typeNameLabel"><a href=CachingTaskError.html>Cac
                                             <td class="colLast">The description of the caching task error.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=CachingTaskError.html#getCause()>getCause</a>() </code>
-                                            </th>
-                                            <td class="colLast">The cause of the caching task error.</td>
-                                        </tr>
-                                        
                                         </tbody>
                                     </table>
                                 </div>
                                 <ul class="blockList">
                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.kotlin.Throwable">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;kotlin.Throwable</h3>
+                                            <code>addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, printStackTrace, printStackTrace, setStackTrace</code></li>
+                                 
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
                                     </a>
@@ -390,35 +397,12 @@ public final class <span class="typeNameLabel"><a href=CachingTaskError.html>Cac
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockList"
+                                              "blockListLast"
                                           >
                                     <li class="blockList">
                                         <h4>getDescription</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=CachingTaskError.html#getDescription()>getDescription</a>()</pre>
                                         <div class="block"><p>The description of the caching task error. (NonNull)</p></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="getCause()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockListLast"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getCause</h4>
-                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Throwable.html>Throwable</a> <a href=CachingTaskError.html#getCause()>getCause</a>()</pre>
-                                        <div class="block"><p>The cause of the caching task error. (&lt;b&gt;Nullable&lt;/b&gt;)</p></div>
 
                                         <dl>
 

@@ -656,14 +656,6 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Network%20API.html">Network API</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Network%20API.html#/s:13THEOplayerSDK7NetworkP">Network</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Network%20Events.html">Network Events</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -943,6 +935,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/ManifestInterceptor.html">ManifestInterceptor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/MediaPlaylistInterceptor.html">MediaPlaylistInterceptor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NetworkAPI.html">NetworkAPI</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/UniversalAdId.html">UniversalAdId</a>
@@ -2480,6 +2478,116 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">MILLCAST_WEBRTC_SIGNALING_ERROR</span> <span class="o">=</span> <span class="mi">14008</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK13THEOErrorCodeO17DVR_UNKNOWN_ERRORyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/DVR_UNKNOWN_ERROR" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK13THEOErrorCodeO17DVR_UNKNOWN_ERRORyA2CmF">DVR_UNKNOWN_ERROR</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A fatal error occurred during seeking in DVR with THEOlive or Millicast usecases.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">DVR_UNKNOWN_ERROR</span> <span class="o">=</span> <span class="mi">15000</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK13THEOErrorCodeO21DVR_SEEK_OUT_OF_RANGEyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/DVR_SEEK_OUT_OF_RANGE" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK13THEOErrorCodeO21DVR_SEEK_OUT_OF_RANGEyA2CmF">DVR_SEEK_OUT_OF_RANGE</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An error when attempting to seek outside of the available DVR window.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">DVR_SEEK_OUT_OF_RANGE</span> <span class="o">=</span> <span class="mi">15001</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK13THEOErrorCodeO27DVR_SEEK_RANGES_UNAVAILABLEyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/DVR_SEEK_RANGES_UNAVAILABLE" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK13THEOErrorCodeO27DVR_SEEK_RANGES_UNAVAILABLEyA2CmF">DVR_SEEK_RANGES_UNAVAILABLE</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An error when the seek ranges are not available.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">DVR_SEEK_RANGES_UNAVAILABLE</span> <span class="o">=</span> <span class="mi">15002</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK13THEOErrorCodeO18DVR_INVALID_SOURCEyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/DVR_INVALID_SOURCE" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK13THEOErrorCodeO18DVR_INVALID_SOURCEyA2CmF">DVR_INVALID_SOURCE</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An error when the source provided is not a valid source for DVR.
+This happens if there is no fallback DVR enabled HLS TypedSource provided with
+a THEOlive or Millicast TypedSource</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">DVR_INVALID_SOURCE</span> <span class="o">=</span> <span class="mi">15003</span></code></pre>
 
                         </div>
                       </div>
