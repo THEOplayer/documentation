@@ -306,7 +306,7 @@ public interface <span class="typeNameLabel"><a href=SslSettings.html>SslSetting
                                     <li class="blockList">
                                         <h4>setKeyStore</h4>
                                         <pre class="methodSignature"> abstract void <a href=SslSettings.html#setKeyStore(java.security.KeyStore)>setKeyStore</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html>NonNull</a>() <a href=https://developer.android.com/reference/kotlin/java/security/KeyStore.html>KeyStore</a> keyStore)</pre>
-                                        <div class="block"><p>Sets the KeyStore. </p><ul><li>Adds a key store which contains custom certificate authorities (CAs). </li><li>The custom key store will be checked in case the default key store does not trust the server. </li></ul></div>
+                                        <div class="block"><p>Sets the KeyStore. </p><p>This is not supported when <a href=../player/NetworkConfiguration.html#useHttpEngine>useHttpEngine</a></p> is set to `true`.<ul><li>Adds a key store which contains custom certificate authorities (CAs). </li><li>The custom key store will be checked in case the default key store does not trust the server. </li></ul></div>
 
                                         <dl>
 

@@ -234,6 +234,18 @@ extends <a href=KeySystemConfiguration.html>KeySystemConfiguration</a>
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#forceSoftwareDecrypt>forceSoftwareDecrypt</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#integrationParameters>integrationParameters</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -260,7 +272,7 @@ extends <a href=KeySystemConfiguration.html>KeySystemConfiguration</a>
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#ClearkeyKeySystemConfiguration(java.lang.String,kotlin.Array,java.util.Map,java.lang.Boolean,java.util.Map)">ClearkeyKeySystemConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey.html>ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey</a>&gt; keys, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters)</code></th>
+                                                        href="#ClearkeyKeySystemConfiguration(java.lang.String,kotlin.Array,java.util.Map,java.lang.Boolean,java.util.Map,java.util.Map)">ClearkeyKeySystemConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey.html>ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey</a>&gt; keys, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -346,7 +358,7 @@ extends <a href=KeySystemConfiguration.html>KeySystemConfiguration</a>
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;com.theoplayer.android.api.source.drm.KeySystemConfiguration</h3>
-                                            <code>getCertificate, getHeaders, getLicenseAcquisitionURL, getLicenseType, getQueryParameters, getUseCredentials, isUseCredentials</code></li>
+                                            <code>getCertificate, getForceSoftwareDecrypt, getHeaders, getIntegrationParameters, getLicenseAcquisitionURL, getLicenseType, getQueryParameters, getUseCredentials, isUseCredentials</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
                                         <!--   -->
@@ -374,11 +386,11 @@ extends <a href=KeySystemConfiguration.html>KeySystemConfiguration</a>
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="ClearkeyKeySystemConfiguration(java.lang.String,kotlin.Array,java.util.Map,java.lang.Boolean,java.util.Map)"></a>
+                                <a name="ClearkeyKeySystemConfiguration(java.lang.String,kotlin.Array,java.util.Map,java.lang.Boolean,java.util.Map,java.util.Map)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>ClearkeyKeySystemConfiguration</h4>
-                                        <pre>ClearkeyKeySystemConfiguration(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey.html>ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey</a>&gt; keys, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters)</pre>
+                                        <pre>ClearkeyKeySystemConfiguration(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey.html>ClearkeyKeySystemConfiguration.ClearkeyDecryptionKey</a>&gt; keys, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</pre>
                                         <div class="block"></div>
                                         
                                     </li>

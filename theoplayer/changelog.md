@@ -5,6 +5,82 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.10.0 (2025/08/08)
+
+### Web
+
+#### ✨ Features
+
+- Added support for multiple video instances on Sony PlayStation® 5.
+
+#### ⚡ Improvements
+
+- Improved order of events on stream startup for OptiView Live streams.
+- Improved the OptiView Ad to content transition to be more consistent while also requiring less bandwidth.
+
+#### 🐛 Issues
+
+- Fixed an issue where WebVTT cue timestamps were not correctly adjusted for 33-bit PES timestamp wraparound when playing an HLS stream with fMP4 audio/video segments.
+- Fixed an issue where a short HLS stream containing exactly one segment would stall near the end of the video instead.
+- Fixed an issue where a WideVine L1 protected DASH stream would fail to play on Android Fire TV (model AFTMM).
+- Fixed an issue where closed captions tracks in an HLS stream were sometimes missing information from their associated `#EXT-X-MEDIA:TYPE=CLOSED-CAPTIONS` tag.
+- Fixed playback when using OptiView Live Streaming on Tizen 3.0.
+- Fixed an issue where the player fatally errors when going offline during a DASH live stream, instead of playing out the remaining buffer and trying to recover first.
+- Fixed an issue where starting or ending AirPlay might trigger an unhandled promise rejection in Safari.
+- Fixed an issue where the player did not resume buffering after a temporary network disconnection when playing an MPEG-DASH stream.
+- Fixed an issue where a stream using OptiView Ads could get stuck after playing an ad break in PiP.
+- Fixed an issue where sometimes multiple ad events were dispatched while playing OptiView Ads in PiP.
+- Fixed an issue where ad events could be desynced when using OptiView Ads in Picture-in-Picture.
+
+### Android
+
+#### ✨ Features
+
+- Added `KeySystemConfiguration.forceSoftwareDecrypt` in order to force the player to always use Widevine L3. Note that this may prevent the player from switching to a high-definition quality, and should only be used to work around issues on specific devices.
+- Added `KeySystemConfiguration.integrationParameters` to allow passing integration-specific parameters to a custom `ContentProtectionIntegration` which are also specific to the selected key system.
+- Added `NetworkConfiguration.useHttpEngine` to allow the player to use `android.net.http.HttpEngine` or [Cronet](https://developer.android.com/develop/connectivity/cronet) for its network requests. These more modern network stacks allow the player to use HTTP/3 instead of HTTP/1.1, which can be more efficient.
+
+#### ⚡ Improvements
+
+- Improved error messages from the audio/video decoder.
+- Improved order of events on stream startup for OptiView Live streams.
+
+#### 🐛 Issues
+
+- Fixed an edge case where a `TypedSource` without a `type` whose `src` ends with `.m3u8` but also contains the substring `mpd` would incorrectly be detected as MPEG-DASH instead of HLS. We highly recommend always setting an explicit `type` to avoid similar issues with confusing URLs.
+- Fixed a crash due to a `ConcurrentModificationException` when playing a DASH livestream containing a thumbnails track.
+- Fixed an issue where `CachingTask.bytesCached` would return `0` for caching tasks that were already fully downloaded before the app was started.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved the ABR algorithm of our OptiView Live streams for HESP playback. 
+
+#### 🐛 Issues
+
+- Fixed an issue where when setting a new OptiView Live source the previous one would continue playing until `play()` was called.
+- Fixed an issue where the `seeking` property would return `false` while the player was seeking in OptiView Live streams.
+
+### tvOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the `maxMobileBitrate` from a distribution was incorrectly being applied on tvOS for OptiView Live streams.
+
+### Roku
+
+#### ✨ Features
+
+- Added support for protected OptiView Live content using the `player.theoLive.authToken` API.
+- Added Conviva reporting of OptiView Live endpoint loading and fallback, along with reporting of the OptiView Live CDN.
+- Added the `getHeader` method on the Network API.
+
+#### 🐛 Issues
+
+- Made autofocus behavior reflect the client selected focus so the player doesn't grab focus after the client has removed focus.
+- Added session ID to bye call so THEOlive sessions complete properly.
+
 ## 🚀 9.9.0 (2025/07/31)
 
 ### Web

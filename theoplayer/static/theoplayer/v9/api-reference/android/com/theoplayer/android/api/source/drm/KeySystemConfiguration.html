@@ -221,6 +221,18 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#forceSoftwareDecrypt>forceSoftwareDecrypt</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#integrationParameters>integrationParameters</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
                                     </table>
                                 </div>
                             </li>
@@ -247,7 +259,7 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#KeySystemConfiguration(java.lang.String,java.util.Map,java.lang.Boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,kotlin.ByteArray)">KeySystemConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> certificate)</code></th>
+                                                        href="#KeySystemConfiguration(java.lang.String,java.util.Map,java.lang.Boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,kotlin.ByteArray,java.lang.Boolean,java.util.Map)">KeySystemConfiguration</a></span>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> certificate, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> forceSoftwareDecrypt, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -357,6 +369,22 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                         </tr>
                                         
                                         <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#getForceSoftwareDecrypt()>getForceSoftwareDecrypt</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether to force decryption to happen in software.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=preintegration/KeyOSKeySystemConfiguration.html#getIntegrationParameters()>getIntegrationParameters</a>() </code>
+                                            </th>
+                                            <td class="colLast">The integration-specific parameters to be used by a <a href=../../contentprotection/ContentProtectionIntegration.html>ContentProtectionIntegration</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=KeySystemConfiguration.html#equals(java.lang.Object)>equals</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a> other) </code>
@@ -364,7 +392,7 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
+                                        <tr id="i10" class="altColor">
                                             <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Integer.html>Integer</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=KeySystemConfiguration.html#hashCode()>hashCode</a>() </code>
@@ -403,11 +431,11 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="KeySystemConfiguration(java.lang.String,java.util.Map,java.lang.Boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,kotlin.ByteArray)"></a>
+                                <a name="KeySystemConfiguration(java.lang.String,java.util.Map,java.lang.Boolean,java.util.Map,com.theoplayer.android.api.source.drm.LicenseType,kotlin.ByteArray,java.lang.Boolean,java.util.Map)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>KeySystemConfiguration</h4>
-                                        <pre>KeySystemConfiguration(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> certificate)</pre>
+                                        <pre>KeySystemConfiguration(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> licenseAcquisitionURL, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; headers, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> useCredentials, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; queryParameters, <a href=LicenseType.html>LicenseType</a> licenseType, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-byte-array/index.html>ByteArray</a> certificate, <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> forceSoftwareDecrypt, <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; integrationParameters)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -527,7 +555,7 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                     <li class="blockList">
                                         <h4>getQueryParameters</h4>
                                         <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>&gt; <a href=preintegration/KeyOSKeySystemConfiguration.html#getQueryParameters()>getQueryParameters</a>()</pre>
-                                        <div class="block"><p>The map of query parameters for the license acquisition request. (Nullable)</p><ul><li><p>Each entry contains a query parameter name with associated value.</p></li></ul></div>
+                                        <div class="block"><p>The map of query parameters for the license acquisition request. (NonNull)</p><ul><li><p>Each entry contains a query parameter name with associated value.</p></li></ul></div>
 
                                         <dl>
 
@@ -582,6 +610,52 @@ public class <span class="typeNameLabel"><a href=KeySystemConfiguration.html>Key
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>The certificate. (Nullable)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getForceSoftwareDecrypt()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getForceSoftwareDecrypt</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=preintegration/KeyOSKeySystemConfiguration.html#getForceSoftwareDecrypt()>getForceSoftwareDecrypt</a>()</pre>
+                                        <div class="block"><p>Whether to force decryption to happen in software.</p><ul><li><p>Only supported for Widevine.</p></li><li><p>If set, the player will always use Widevine L3 (even if Widevine L1 is supported).</p></li><li><p>This may prevent the player from switching to a high-definition quality, and should only be used to work around issues on specific devices.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getIntegrationParameters()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getIntegrationParameters</h4>
+                                        <pre class="methodSignature"> final <a href=https://developer.android.com/reference/kotlin/java/util/Map.html>Map</a>&lt;<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a>, <a href=https://developer.android.com/reference/kotlin/java/lang/Object.html>Object</a>&gt; <a href=preintegration/KeyOSKeySystemConfiguration.html#getIntegrationParameters()>getIntegrationParameters</a>()</pre>
+                                        <div class="block"><p>The integration-specific parameters to be used by a <a href=../../contentprotection/ContentProtectionIntegration.html>ContentProtectionIntegration</a>.</p></div>
+
+                                        <dl>
+
+                                        
+
                                         
 
                                         
