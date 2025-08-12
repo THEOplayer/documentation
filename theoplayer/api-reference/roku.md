@@ -246,7 +246,7 @@ The RAF proxy node has several fields that can be observed to consume data gener
 ## Methods
 
 | Method                                                                                       | Description                                                                                                                                                                        |
-| -------------------------------------------------------------------------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                                                     |
 | addIntegration                                                                               | Adds an Integration.                                                                                                                                                               |
 | configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (\{license: "MY_THEO_LICENSE"\}).                                                                                                        |
