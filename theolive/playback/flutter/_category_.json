@@ -1,7 +1,7 @@
 {
   "label": "Flutter",
   "description": "Start with THEOlive on cross-platform apps with Flutter.",
-  "position": 2,
+  "position": 3,
   "customProps": {
     "icon": "flutter"
   }
