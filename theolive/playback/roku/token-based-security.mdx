@@ -51,7 +51,7 @@ end sub
 sub maybeUpdateToken()
     if m.token = "" or tokenWillExpireSoon(m.token) then
         m.token = getToken() ' Generate or request your token, for more information check the token based security guide linked above.
-        m.player.theolive.authToken = token
+        m.player.theolive.authToken = m.token
     end if
 end sub
 
