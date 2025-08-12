@@ -109,22 +109,22 @@ The following key/value pairs are supported on the `contentProtection` attribute
 To play videos protected using VUDRM, you need to supply a token. Replace the token `vualto-demo|2018-06-19T09:18:24Z|YSnJPmEceo` in the code below with your own token as well as the associated values of the keys `src` and `licenseUrl`.
 
 ```
-vuDrmSource = {
+vuDrmSource = \{
   sources: [
-    {
+    \{
       src: "https://d1chyo78gdexn4.cloudfront.net/vualto-demo/big-buck-bunny/big-buck-bunny.ism/manifest.mpd"
       type: "application/dash+xml"
-      contentProtection: {
+      contentProtection: \{
         integration: "widevine"
         licenseUrl: "https://widevine-proxy.drm.technology/proxy"
-      }
-    }
+      \}
+    \}
   ]
-  drmHttpAgentHeaders: {
+  drmHttpAgentHeaders: \{
     "x-vudrm-token": "vualto-demo|2018-06-19T09:18:24Z|YSnJPmEceo"
     "Content-Type": "application/json"
-  }
-}
+  \}
+\}
 ```
 
 ### DRM Parameters
@@ -246,10 +246,10 @@ The RAF proxy node has several fields that can be observed to consume data gener
 ## Methods
 
 | Method                                                                                       | Description                                                                                                                                                                        |
-| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------------------------------------------------------------------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                                                     |
 | addIntegration                                                                               | Adds an Integration.                                                                                                                                                               |
-| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license ({license: "MY_THEO_LICENSE"}).                                                                                                          |
+| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (\{license: "MY_THEO_LICENSE"\}).                                                                                                        |
 | destroy                                                                                      | Destroy the player.                                                                                                                                                                |
 | getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                                              |
 | pause                                                                                        | Pause playback.                                                                                                                                                                    |
@@ -319,13 +319,13 @@ There are several player events being emitted.
 - `error`: Fired when an error occurs, the extra data emitted is an associative array e.g.:
 
 ```brightscript
-{
+\{
     "error": "\<string:error\>",
-    "errorObject": {
+    "errorObject": \{
         "code": \<integer:code\>,
         "message": \<string:message\>
-    }
-}
+    \}
+\}
 ```
 
 - `intenttofallback`: Fired when the player has encountered an error playing a THEOlive stream and is going to try to playback a different stream. It also includes data about the error that is triggering fallback.
@@ -342,24 +342,24 @@ There are several player events being emitted.
 - `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:
 
 ```brightscript
-{
-    "source": {
+\{
+    "source": \{
         "sources": [
-            {
+            \{
                 "liveOffset": 4,
                 "nativeUiRendering": false,
-                "contentProtection": {
-                    "drmParams": {
+                "contentProtection": \{
+                    "drmParams": \{
                         KeySystem: "widevine"
                         licenseServerURL: "https://example.com/license"
-                    }
-                },
+                    \}
+                \},
                 "src": https://example.com/stream.mpd,
                 "type": "dash"
-            }
+            \}
         ]
-    }
-}
+    \}
+\}
 ```
 
 - `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
