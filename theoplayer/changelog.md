@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.10.1 (2025/08/13)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the player did not throw an ErrorEvent when it could not fetch the playlist.
+
 ## 🚀 9.10.0 (2025/08/08)
 
 ### Web

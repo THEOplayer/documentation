@@ -301,22 +301,22 @@ The Network API exposes the following methods.
 
 The event consists of:
 
-- date (timestamp) of occurrence
-- type (string) of the event
-- extra data
+-   date (timestamp) of occurrence
+-   type (string) of the event
+-   extra data
 
 There are several player events being emitted.
 
-- `addedaudiotrack`: Fired when audio track has been added
-- `addedtexttrack`: Fired when text track has been added
-- `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
-- `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
-- `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
-- `destroy`: Fired when the the player is destroyed, there is no extra data emitted along
-- `durationchange`: Fired when the duration changes, the extra data emitted is the duration
-- `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
-- `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
-- `error`: Fired when an error occurs, the extra data emitted is an associative array e.g.:
+-   `addedaudiotrack`: Fired when audio track has been added
+-   `addedtexttrack`: Fired when text track has been added
+-   `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
+-   `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
+-   `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
+-   `destroy`: Fired when the the player is destroyed, there is no extra data emitted along
+-   `durationchange`: Fired when the duration changes, the extra data emitted is the duration
+-   `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
+-   `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
+-   `error`: Fired when an error occurs, the extra data emitted is an associative array e.g.:
 
 ```brightscript
 \{
@@ -328,18 +328,18 @@ There are several player events being emitted.
 \}
 ```
 
-- `intenttofallback`: Fired when the player has encountered an error playing a THEOlive stream and is going to try to playback a different stream. It also includes data about the error that is triggering fallback.
-- `loadeddata`: Fired when the player can render the media data at the current playback position for the first time, the extra data emitted is the currentTime
-- `loadedmetadata`: Fired when the player determines the duration and dimensions of the media resource, the extra data emitted is the currentTime
-- `pause`: Fired when the "paused" changes to true, the extra data emitted is the currentTime
-- `play`: Fired when the "paused" changes to false, the extra data emitted is the currentTime
-- `playing`: Fired when playback is ready to start after having been paused or delayed due to lack of media data, the extra data emitted is the currentTime
-- `endpointloaded`: Fired when the player has loaded the data for a THEOlive source and is ready to begin loading the stream
-- `distributionloadstart`: Fired when the player begins to load the data for a THEOlive source
-- `distributionoffline`: Fired when a THEOlive stream is not available for playback
-- `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
-- `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime
-- `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:
+-   `intenttofallback`: Fired when the player has encountered an error playing a THEOlive stream and is going to try to playback a different stream. It also includes data about the error that is triggering fallback.
+-   `loadeddata`: Fired when the player can render the media data at the current playback position for the first time, the extra data emitted is the currentTime
+-   `loadedmetadata`: Fired when the player determines the duration and dimensions of the media resource, the extra data emitted is the currentTime
+-   `pause`: Fired when the "paused" changes to true, the extra data emitted is the currentTime
+-   `play`: Fired when the "paused" changes to false, the extra data emitted is the currentTime
+-   `playing`: Fired when playback is ready to start after having been paused or delayed due to lack of media data, the extra data emitted is the currentTime
+-   `endpointloaded`: Fired when the player has loaded the data for a THEOlive source and is ready to begin loading the stream
+-   `distributionloadstart`: Fired when the player begins to load the data for a THEOlive source
+-   `distributionoffline`: Fired when a THEOlive stream is not available for playback
+-   `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
+-   `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime
+-   `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:
 
 ```brightscript
 \{
@@ -362,4 +362,4 @@ There are several player events being emitted.
 \}
 ```
 
-- `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
+-   `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
