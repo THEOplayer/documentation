@@ -96,10 +96,6 @@ val mediaTailorSource = MediaTailorSource
 theoplayerView.player.source = SourceDescription
     .Builder(mediaTailorSource)
     .build()
-
-theoplayerView.player.source = SourceDescription
-    .Builder(mediaTailorSource)
-    .build()
 ```
 
 Optionally, you can pass parameters regarding e.g. session data and device type by using the `adsParams` property, as
