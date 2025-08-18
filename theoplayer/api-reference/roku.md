@@ -317,17 +317,15 @@ There are several player events being emitted.
 - `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
 - `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
 - `error`: Fired when an error occurs, the extra data emitted is an associative array e.g.:
-
-```brightscript
-{
-    "error": "<string:error>",
-    "errorObject": {
-        "code": <integer:code>,
-        "message": <string:message>
-    }
-}
-```
-
+  ```brightscript
+  {
+      "error": "<string:error>",
+      "errorObject": {
+          "code": <integer:code>,
+          "message": <string:message>
+      }
+  }
+  ```
 - `intenttofallback`: Fired when the player has encountered an error playing a THEOlive stream and is going to try to playback a different stream. It also includes data about the error that is triggering fallback.
 - `loadeddata`: Fired when the player can render the media data at the current playback position for the first time, the extra data emitted is the currentTime
 - `loadedmetadata`: Fired when the player determines the duration and dimensions of the media resource, the extra data emitted is the currentTime
@@ -340,26 +338,24 @@ There are several player events being emitted.
 - `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
 - `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime
 - `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:
-
-```brightscript
-{
-    "source": {
-        "sources": [
-            {
-                "liveOffset": 4,
-                "nativeUiRendering": false,
-                "contentProtection": {
-                    "drmParams": {
-                        KeySystem: "widevine"
-                        licenseServerURL: "https://example.com/license"
-                    }
-                },
-                "src": https://example.com/stream.mpd,
-                "type": "dash"
-            }
-        ]
-    }
-}
-```
-
+  ```brightscript
+  {
+      "source": {
+          "sources": [
+              {
+                  "liveOffset": 4,
+                  "nativeUiRendering": false,
+                  "contentProtection": {
+                      "drmParams": {
+                          KeySystem: "widevine"
+                          licenseServerURL: "https://example.com/license"
+                      }
+                  },
+                  "src": https://example.com/stream.mpd,
+                  "type": "dash"
+              }
+          ]
+      }
+  }
+  ```
 - `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
