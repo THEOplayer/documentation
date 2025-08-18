@@ -400,32 +400,6 @@ const config: Config = {
             // https://github.com/facebook/docusaurus/discussions/11199
             concatenateModules: isProductionDeployment ? !isServer : false,
           },
-          module: {
-            // https://github.com/WebCoder49/code-input only exports to the global scope.
-            // Insert some `import` and `export` statements where needed.
-            rules: [
-              {
-                test: require.resolve('@webcoder49/code-input/code-input'),
-                loader: 'exports-loader',
-                options: {
-                  type: 'commonjs',
-                  exports: 'single codeInput',
-                },
-              },
-              {
-                test: require.resolve('@webcoder49/code-input/plugins/indent'),
-                loader: 'imports-loader',
-                options: {
-                  type: 'commonjs',
-                  imports: {
-                    syntax: 'single',
-                    name: 'codeInput',
-                    moduleName: '@webcoder49/code-input/code-input',
-                  },
-                },
-              },
-            ],
-          },
         }),
       },
     ],
