@@ -108,7 +108,7 @@ The following key/value pairs are supported on the `contentProtection` attribute
 
 To play videos protected using VUDRM, you need to supply a token. Replace the token `vualto-demo|2018-06-19T09:18:24Z|YSnJPmEceo` in the code below with your own token as well as the associated values of the keys `src` and `licenseUrl`.
 
-```
+```brightscript
 vuDrmSource = {
   sources: [
     {
@@ -249,7 +249,7 @@ The RAF proxy node has several fields that can be observed to consume data gener
 | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                                                     |
 | addIntegration                                                                               | Adds an Integration.                                                                                                                                                               |
-| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license ({license: "MY_THEO_LICENSE"}).                                                                                                          |
+| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (`{license: "MY_THEO_LICENSE"}`).                                                                                                        |
 | destroy                                                                                      | Destroy the player.                                                                                                                                                                |
 | getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                                              |
 | pause                                                                                        | Pause playback.                                                                                                                                                                    |
