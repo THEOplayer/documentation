@@ -351,7 +351,7 @@ There are several player events being emitted.
                           licenseServerURL: "https://example.com/license"
                       }
                   },
-                  "src": https://example.com/stream.mpd,
+                  "src": "https://example.com/stream.mpd",
                   "type": "dash"
               }
           ]
