@@ -249,7 +249,7 @@ The RAF proxy node has several fields that can be observed to consume data gener
 | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                                                     |
 | addIntegration                                                                               | Adds an Integration.                                                                                                                                                               |
-| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license ({license: "MY_THEO_LICENSE"}).                                                                                                          |
+| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (`{license: "MY_THEO_LICENSE"}`).                                                                                                        |
 | destroy                                                                                      | Destroy the player.                                                                                                                                                                |
 | getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                                              |
 | pause                                                                                        | Pause playback.                                                                                                                                                                    |
@@ -301,9 +301,9 @@ The Network API exposes the following methods.
 
 The event consists of:
 
--   date (timestamp) of occurrence
--   type (string) of the event
--   extra data
+- date (timestamp) of occurrence
+- type (string) of the event
+- extra data
 
 There are several player events being emitted.
 
