@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.10.2 (2025/08/20)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not switch up to a higher video quality as long as it didn't reach the target latency for OptiView Live streams.
+
 ## 🚀 9.10.1 (2025/08/13)
 
 ### iOS
