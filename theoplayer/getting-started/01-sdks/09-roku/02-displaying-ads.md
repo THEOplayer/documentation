@@ -232,3 +232,24 @@ When you set the source on the player, it should play with any ads that are traf
 ### SSAI and THEOlive
 
 If you are trying to play a THEOlive stream with SSAI, make sure you have configured your stream for SSAI via the THEOlive console. Only v2 THEOlive streams support this on Roku. The THEO Roku SDK will detect the SSAI configuration on your THEOlive stream and use the Google DAI library to play it back. Although there is no configuration needed on the client side for this, make sure that you include the Google IMA library in your application's manifest file to enable playback, as mentioned above.
+
+### Listening for ad events
+
+You can listen for ad events from SSAI using the same API as documented above for CSAI.
+
+### Monitoring Google DAI
+
+The THEOplayer Roku SDK does not expose Google DAI directly. However, you can still get the events from Google IMA's callbacks for ad beacons and errors. This may be useful if you have code that expects ads in the Google DAI format.
+
+On the THEOplayer's Ads API, there is the `googleDaiProxy` node. This field exposes data from Google DAI on a field of its own. The data passed is the same as that emitted to callbacks by Google DAI, with the exception of an added `type` field to identify the ad event type. To get the last ad event output from Google DAI, you could do the following:
+
+```brightscript
+m.player.ads.googleDaiProxy.observeField("lastEvent", "onGoogleDaiEvent")
+
+sub onGoogleDaiEvent(event as object)
+    adEvent = event.getData()
+    if adEvent.type = "start"
+        m.myGoogleDaiObserver.onAdStart(adEvent)
+    end if
+end sub
+```
