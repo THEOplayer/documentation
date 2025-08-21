@@ -4,13 +4,15 @@ This article will provide the steps needed to play video ads with your content u
 
 ## First Steps
 
-- Make sure you are using a version of the SDK that supports ads. CSAI is available for VOD content in v9.3 and higher of the SDK.
+- Make sure you are using a version of the SDK that supports ads. CSAI is available for VOD content in v9.3 and higher of the SDK. SSAI via Google DAI is available for live and VOD content in v9.11 and higher.
 - Include the RAF advertising library in your application's manifest file by adding this line:
   `bs_libs_required=roku_ads_lib`
+- If you are implementing SSAI, also add in the Google IMA library to that line:
+  `bs_libs_required=roku_ads_lib,googleima3`
 
 ## Clientside Ad Insertion
 
-The THEOplayer Roku SDK currently only supports Clientside Ad Insertion (CSAI) for VOD assets. It does not yet support Clientside Ad Stitching (CSAS), Serverside Ad Insertion (SSAI), Server Guided Ad Insertion (SGAI) or live ads. It supports CSAI by using the Roku Advertising Framework (RAF), which is provided by Roku. It supports VMAP and VAST ad tags. For more information about specific features of VAST or VMAP supported by RAF, please visit their [support page](https://developer.roku.com/docs/developer-program/advertising/roku-advertising-framework.md).
+The THEOplayer Roku SDK currently only supports Clientside Ad Insertion (CSAI) for VOD assets. It does not yet support Clientside Ad Stitching (CSAS), Server Guided Ad Insertion (SGAI) or live CSAI ads. It supports CSAI by using the Roku Advertising Framework (RAF), which is provided by Roku. It supports VMAP and VAST ad tags. For more information about specific features of VAST or VMAP supported by RAF, please visit their [support page](https://developer.roku.com/docs/developer-program/advertising/roku-advertising-framework.md).
 
 ### Create your ad descriptions
 
@@ -180,3 +182,53 @@ Currently the Ads API does not support:
 
 - Playing VAST tags in the middle of breaks from a VMAP tag.
 - Reporting the exact media file that is being played for a creative.
+
+## Serverside Ad Insertion
+
+Serverside Ad Insertion (SSAI) is currently only supported via Google DAI. It works for both live and VOD assets.
+
+### Create your SSAI configuration
+
+To configure a source for SSAI, add an `ssai` property to your source description:
+
+```brightscript
+m.player.source = {
+    "title": "My Live Asset",
+    "live": true,
+    "sources": {
+        "src": "https://example.com/my_vod_asset.m3u8",
+        "type": "application/x-mpegurl"
+    },
+    "ssai": {
+        integration: "google-dai",
+        availabilityType: "live",
+        assetKey: "<my-asset-key>",
+        networkCode: "<my-network-code>",
+        apiKey: "<my-api-key>",
+    }
+}
+```
+
+For a VOD stream, the configuration would look something like this:
+
+```brightscript
+m.player.source = {
+    "title": "My VOD Asset",
+    "sources": {
+        "src": "https://example.com/my_vod_asset.m3u8",
+        "type": "application/x-mpegurl"
+    },
+    "ssai": {
+        integration: "google-dai",
+        availabilityType: "vod",
+        assetKey: "<my-asset-key>",
+        apiKey: "<my-api-key>",
+    }
+}
+```
+
+When you set the source on the player, it should play with any ads that are trafficked for that stream.
+
+### SSAI and THEOlive
+
+If you are trying to play a THEOlive stream with SSAI, make sure you have configured your stream for SSAI via the THEOlive console. Only v2 THEOlive streams support this on Roku. The THEO Roku SDK will detect the SSAI configuration on your THEOlive stream and use the Google DAI library to play it back. Although there is no configuration needed on the client side for this, make sure that you include the Google IMA library in your application's manifest file to enable playback, as mentioned above.
