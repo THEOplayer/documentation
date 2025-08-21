@@ -71,6 +71,7 @@ The following key/value pairs are supported on the `sources` attribute of a Sour
 | HDBifUrl          | String                    | "Base Index Frames" URL for HD trick mode.                                                                                             |
 | FHDBifUrl         | String                    | "Base Index Frames" URL for FHD trick mode.                                                                                            |
 | ads               | roArray of AdDescriptions | Array of the ad description for the ads to play during the content.                                                                    |
+| ssai              | GoogleDaiConfiguration    | Optional. The configuration for playing this as a dynamic ad insertion asset.                                                          |
 | embeddedTextTrack | string                    | Name of the embedded text track in the asset. Not necessary if the track is explicitly defined in the manifest.                        |
 
 "Base Index Frames" or BIF, is an archive file format that contains a set of still images, also known as "trick play thumbnails", supporting enhanced fast-forward and rewind modes during video playback.
@@ -92,6 +93,22 @@ NOTE: when scheduling ads, VAST ads cannot be scheduled in the middle of the tim
 | ---- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | src  | string | The URL of the XML file to load for the ad break.                                                                                                                  |
 | type | string | The optional type of the ad. Supported values are either `vast` or `vmap`. Otherwise the default value is inferred from the AdDescription's `timeOffset` property. |
+
+### SSAI/DAI Configuration
+
+The player supports Dynamic Ad Insertion (DAI) using Google DAI. This integration currently supports doing Server Side Ad Insertion (SSAI) on live streams. To enable this, add the `ssai` property to your source with your Google DAI information. You can listen for ad events emitted by Google DAI on the Ads API.
+
+The following key/value pairs are supported on the `ssai` attribute of a Typed Source:
+
+| Name             | Type   | Description                                                                      |
+| ---------------- | ------ | -------------------------------------------------------------------------------- |
+| integration      | string | The type of DAI integration. Currently the only supported value is "google-dai". |
+| apiKey           | string | The API key for your DAI account.                                                |
+| availabilityType | string | The type of asset you are playing ("live" or "vod").                             |
+| networkCode      | string | The network code for your DAI account.                                           |
+| assetKey         | string | Optional. The asset key for your live asset. Not required for VOD assets.        |
+
+NOTE: It is not supported to use SSAI through this API at the same time as Client-side Ad Insertion (CSAI) through the Ad Sources configuration.
 
 ### Content Protection
 
