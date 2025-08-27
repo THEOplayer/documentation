@@ -5,6 +5,68 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.11.0 (2025/08/26)
+
+### Web
+
+#### ✨ Features
+
+- Added support for the L-shape content layout for OptiView Ads.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not be able to play DRM enabled OptiView Live streaming channels that use the V1 API.
+- Fixed a regression where `player.duration` incorrectly returned `+Infinity` instead of `NaN` for an HLS stream that has not yet started loading.
+
+### Android
+
+#### ✨ Features
+
+- Added the possibility to schedule OptiView Ads Overlays through SSE.
+- Added L-shape content support for OptiView Ads.
+- Added `TextTrackDescription.format` to specify the content type of a sideloaded subtitle track in advance. When set, this allows the player to load the subtitle track only when enabled, instead of needing to load all subtitles at startup to detect their content type.
+
+#### ⚡ Improvements
+
+- Updated Media3 to [version 1.8.0](https://github.com/androidx/media/releases/tag/1.8.0).
+
+#### 🐛 Issues
+
+- Fixed an issue where the `play` and `pause` events were missing for an OptiView Ads ad break.
+- Fixed an issue where the player would not wait for subtitles to be loaded before initiating playback, which could result in the first few subtitles not being displayed.
+- Fixed an out-of-memory crash when playing a large MP4 file on certain low-end devices.
+- Fixed an issue where the player would error when a sideloaded subtitle track fails to load. The player will now disable the track instead and continue playing without it.
+- Fixed an issue where the player was unnecessarily trying to download images from a thumbnails track.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for the L-shape content layout for OptiView Ads.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player configuration was not passed to the chromecast receiver causing image overlays to not work.
+- Fixed an issue where an HLS live stream would not recover after a network offline recovery.
+
+### tvOS
+
+#### ⚡ Improvements
+
+- Allow the player on Apple TV to choose the higher quality video track with the same resolution when playing OptiView Live streams.
+
+### Roku
+
+#### ✨ Features
+
+- Added sideloading of the HLS master manifest to enable reporting of bitrate, average bitrate, and encoded framerate to Conviva.
+- Added support for DPI analytics through the THEOConvivaConnector.
+
+#### 🐛 Issues
+
+- Fixed an issue where an invalid license message would flicker on start up.
+- Fixed an issue where postroll ads were not being reported to Conviva.
+
 ## 🚀 9.10.2 (2025/08/20)
 
 ### iOS
