@@ -24,7 +24,7 @@ The attributes, methods and events.
 | ads                          | Ads                         | Ads     | read              | Provides events, properties and methods relating to ad playback in the player. See below for more info.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | audioTracks                  | array of associative arrays | []      | read              | Provides information about audio tracks detected automatically in video. Each Associative array has the following fields: id - track identifier, label - track name, language - track language, enabled - true if track is current track                                                                                                                                                                                                                                                                                                                   |
 | autoplay                     | boolean                     | false   | read,write        | Whether the player should play the video as soon as it is able after the source has been set.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| controls                     | boolean                     | true    | read,write        | Allows to enable or disable player controls (`true` to show controls, `false` to hide controls).                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| controls                     | boolean                     | true    | read,write        | Allows to enable or disable player controls ( `true` to show controls, `false` to hide controls).                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | currentTime                  | integer                     |         | read,write        | Current timestamp of video.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | duration                     | integer                     |         | read              | Duration of video.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | enableTrickPlay              | boolean                     | true    | read,write        | Whether trick playback of the media is enabled, and whether the remote buttons will allow trickplay. NOTE: `controls` must be set to `true` for this to have any effect.                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -53,7 +53,7 @@ The following key/value pairs are supported on the `source` attribute of the `TH
 | live                | boolean            | Whether the asset is live or not.                                                                                                                                                                                                                         |
 | drmHttpAgentHeaders | roAssociativeArray | An optional key-value dictionary that contains additional HTTP headers that will be sent for DRM key/license requests. The keys represent the HTTP header names and the values represent their corresponding values.                                      |
 | ads                 | roArray            | An optional array of AdDescriptions.                                                                                                                                                                                                                      |
-| headers             | roArray            | An optional array of strings representing headers to include on the content requests. The strings follow the format of `"headerName:headerValue"`. Defaults to an empty array to clear any headers that were set on HttpAgent.                            |
+| headers             | roArray            | An optional array of strings representing headers to include on the content requests. The strings follow the format of `"headerName:headerValue". Defaults to an empty array to clear any headers that were set on HttpAgent.                             |
 
 ### Typed Source
 
@@ -99,8 +99,8 @@ The following key/value pairs are supported on the `contentProtection` attribute
 
 | Name        | Type           | Description                                                                                                                                                     |
 | ----------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| integration | String         | _Optional attribute._ The key system the player should use. Possible values are `playready`, `widevine`.                                                        |
-| licenseUrl  | String         | The license acquisition URL                                                                                                                                     |
+| integration | String         | _Optional attribute._ The key system the player should use. Possible values are `playready` , `widevine`.                                                       |
+| licenseUrl  | String         | The licence acquisition URL                                                                                                                                     |
 | certificate | String         | The actual certificate string for Widevine purposes, which must be obtained out-of-band (OOB) by the channel. Leave this unset unless Widevine is used for DRM. |
 | drmParams   | DRM Parameters | An alternative way to set parameters for DRM playback. _This attribute is only used when the `integration` attribute is not set._                               |
 
@@ -108,7 +108,7 @@ The following key/value pairs are supported on the `contentProtection` attribute
 
 To play videos protected using VUDRM, you need to supply a token. Replace the token `vualto-demo|2018-06-19T09:18:24Z|YSnJPmEceo` in the code below with your own token as well as the associated values of the keys `src` and `licenseUrl`.
 
-```brightscript
+```
 vuDrmSource = {
   sources: [
     {
@@ -249,7 +249,7 @@ The RAF proxy node has several fields that can be observed to consume data gener
 | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                                                                                                     |
 | addIntegration                                                                               | Adds an Integration.                                                                                                                                                               |
-| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license (`{license: "MY_THEO_LICENSE"}`).                                                                                                        |
+| configure(configuration as THEOPlayerConfiguration)                                          | Configure the SDK, passing in the license ({license: "MY_THEO_LICENSE"}).                                                                                                          |
 | destroy                                                                                      | Destroy the player.                                                                                                                                                                |
 | getVideoNode                                                                                 | Returns the interior Roku video node.                                                                                                                                              |
 | pause                                                                                        | Pause playback.                                                                                                                                                                    |
@@ -317,15 +317,17 @@ There are several player events being emitted.
 - `emptied`: Fired when the player's source is cleared, there is no extra data emitted along
 - `ended`: Fired when playback has stopped because the end of the media resource was reached, the extra data emitted is the currentTime
 - `error`: Fired when an error occurs, the extra data emitted is an associative array e.g.:
-  ```brightscript
-  {
-      "error": "<string:error>",
-      "errorObject": {
-          "code": <integer:code>,
-          "message": <string:message>
-      }
-  }
-  ```
+
+```brightscript
+{
+    "error": "<string:error>",
+    "errorObject": {
+        "code": <integer:code>,
+        "message": <string:message>
+    }
+}
+```
+
 - `intenttofallback`: Fired when the player has encountered an error playing a THEOlive stream and is going to try to playback a different stream. It also includes data about the error that is triggering fallback.
 - `loadeddata`: Fired when the player can render the media data at the current playback position for the first time, the extra data emitted is the currentTime
 - `loadedmetadata`: Fired when the player determines the duration and dimensions of the media resource, the extra data emitted is the currentTime
@@ -338,24 +340,26 @@ There are several player events being emitted.
 - `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
 - `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime
 - `sourcechange`: Fired when the player's source changes, the extra data emitted is an associative array e.g.:
-  ```brightscript
-  {
-      "source": {
-          "sources": [
-              {
-                  "liveOffset": 4,
-                  "nativeUiRendering": false,
-                  "contentProtection": {
-                      "drmParams": {
-                          KeySystem: "widevine"
-                          licenseServerURL: "https://example.com/license"
-                      }
-                  },
-                  "src": "https://example.com/stream.mpd",
-                  "type": "dash"
-              }
-          ]
-      }
-  }
-  ```
+
+```brightscript
+{
+    "source": {
+        "sources": [
+            {
+                "liveOffset": 4,
+                "nativeUiRendering": false,
+                "contentProtection": {
+                    "drmParams": {
+                        KeySystem: "widevine"
+                        licenseServerURL: "https://example.com/license"
+                    }
+                },
+                "src": https://example.com/stream.mpd,
+                "type": "dash"
+            }
+        ]
+    }
+}
+```
+
 - `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously, the extra data emitted is the currentTime
