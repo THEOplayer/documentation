@@ -26,6 +26,7 @@ $dokka.location:com.theoplayer.android.api.player.track.texttrack.id3/ID3Frame.Y
 $dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.EdgeType///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.EdgeType.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.FontFamily///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.FontFamily.html
 $dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackStyle.FontStyle///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackStyle.FontStyle.html
+$dokka.location:com.theoplayer.android.api.player.track.texttrack/TextTrackType.Companion///PointingToDeclaration/com/theoplayer/android/api/player/track/texttrack/TextTrackType.Companion.html
 $dokka.location:com.theoplayer.android.api.player/NetworkConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/player/NetworkConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.addescription/GoogleImaAdDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source.dash/DashPlaybackConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/dash/DashPlaybackConfiguration.Builder.html
@@ -63,6 +64,7 @@ $dokka.location:com.theoplayer.android.api.theolive/THEOLiveConfig.Builder///Poi
 $dokka.location:com.theoplayer.android.api.util/Logger.Companion///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Companion.html
 $dokka.location:com.theoplayer.android.api.util/Logger.Listener///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Listener.html
 $dokka.location:com.theoplayer.android.api/THEOplayerConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/THEOplayerConfig.Builder.html
+androidx.media3.exoplayer.source
 com.theoplayer.android.api
 com.theoplayer.android.api.abr
 com.theoplayer.android.api.ads
