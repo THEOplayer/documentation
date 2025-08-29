@@ -1,0 +1,70 @@
+---
+sidebar_position: 6
+sidebar_label: Chromecast CAF
+sidebar_custom_props: { 'icon': 'web' }
+---
+
+# Getting started with OptiView Ads on Chromecast CAF
+
+This guide will get you started with OptiView Ads using the THEOplayer Chromecast CAF SDK.
+NOTE: Currently the Chromecast CAF SDK only supports image overlays from OptiView Ads.
+
+## Prerequisites
+
+1. You need to have a THEOplayer license which is compatible with OptiView Ads. This can be done through the [player portal](https://portal.theoplayer.com).
+2. You need a correctly deployed [OptiView Ads signaling service](signaling-service.mdx).
+3. Your THEOplayer SDK needs to have the `theoads` feature enabled.
+
+   As of THEOplayer version 8.2.0, this feature is enabled by default in the main `theoplayer` package so we recommend to use at least this version and preferable the latest available version.
+   You can install this package with the following command:
+
+   ```bash
+   npm install theoplayer
+   ```
+4. You need to have a Chromecast Developer account to deploy your custom CAF receiver.
+
+## Integration
+
+### Configuring the Chromecast receiver
+
+OptiView Ads is supported using the default Chromecast Shaka player for HLS on Chromecast CAF. To enable this, before starting the Chromecast application, configure it to use Shaka.
+Also, you need to load the THEOplayer Chromecast CAF SDK.
+
+Here is an example of a bare-bones CAF receiver app you can use as a starting point for basic playback without any custom UI:
+
+```html
+<html>
+    <head>
+        <title>Optiview Chromecast Receiver App</title>
+
+        <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+
+        <script type="text/javascript" src="https://cdn.theoplayer.com/chromecast-caf/release/THEOplayer-chromecast-caf-receiver.js"></script>
+    </head>
+
+    <body>
+        <cast-media-player class="unbranded"></cast-media-player>
+
+        <script>
+            const player = new THEOplayer.Player();
+
+            let castReceiverOptions = new cast.framework.CastReceiverOptions();
+            castReceiverOptions.useShakaForHls = true;
+            cast.framework.CastReceiverContext.getInstance().start(castReceiverOptions);
+        </script>
+    </body>
+</html>
+```
+
+### Configuring the Chromecast sender
+The Optiview Chromecast features are only available through our own player SDK. Setting up the Chromecast functionality is documented on our main documentation portal:
+https://optiview.dolby.com/docs/theoplayer/how-to-guides/cast/chromecast/introduction/
+
+Our player SDKs will take care of handling the communication between the Chromecast sender and receiver.
+
+## More information
+
+- [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/TheoAdDescription.html)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
+- [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
+- [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)
