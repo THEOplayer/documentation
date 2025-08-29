@@ -21,6 +21,7 @@ NOTE: Currently the Chromecast CAF SDK only supports image overlays from OptiVie
    ```bash
    npm install theoplayer
    ```
+
 4. You need to have a Chromecast Developer account to deploy your custom CAF receiver.
 
 ## Integration
@@ -34,29 +35,30 @@ Here is an example of a bare-bones CAF receiver app you can use as a starting po
 
 ```html
 <html>
-    <head>
-        <title>Optiview Chromecast Receiver App</title>
+  <head>
+    <title>Optiview Chromecast Receiver App</title>
 
-        <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
 
-        <script type="text/javascript" src="https://cdn.theoplayer.com/chromecast-caf/release/THEOplayer-chromecast-caf-receiver.js"></script>
-    </head>
+    <script type="text/javascript" src="https://cdn.theoplayer.com/chromecast-caf/release/THEOplayer-chromecast-caf-receiver.js"></script>
+  </head>
 
-    <body>
-        <cast-media-player class="unbranded"></cast-media-player>
+  <body>
+    <cast-media-player class="unbranded"></cast-media-player>
 
-        <script>
-            const player = new THEOplayer.Player();
+    <script>
+      const player = new THEOplayer.Player();
 
-            let castReceiverOptions = new cast.framework.CastReceiverOptions();
-            castReceiverOptions.useShakaForHls = true;
-            cast.framework.CastReceiverContext.getInstance().start(castReceiverOptions);
-        </script>
-    </body>
+      let castReceiverOptions = new cast.framework.CastReceiverOptions();
+      castReceiverOptions.useShakaForHls = true;
+      cast.framework.CastReceiverContext.getInstance().start(castReceiverOptions);
+    </script>
+  </body>
 </html>
 ```
 
 ### Configuring the Chromecast sender
+
 The Optiview Chromecast features are only available through our own player SDK. Setting up the Chromecast functionality is documented on our main documentation portal:
 https://optiview.dolby.com/docs/theoplayer/how-to-guides/cast/chromecast/introduction/
 
