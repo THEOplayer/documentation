@@ -8,7 +8,7 @@ With the Google DAI Pod Serving, there is the possibility to pass [a limited set
 In the player you can easily pass these parameters as key-value pairs via the `TheoAdDescription`.
 
 :::note
-The player will automatically add the custom parameter `theoads_slot` in the `cust_params` when requesting an ad.
+The player will automatically add the custom parameter `theoads_slot` in the `cust_params` field when requesting an ad.
 The value of this parameter will be determined by the layout mode.
 :::
 
