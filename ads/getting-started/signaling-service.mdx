@@ -8,7 +8,7 @@ sidebar_custom_props: { 'icon': '🛜' }
 
 The Signaling Service is provided as a service and can be integrated into any existing content management workflow through its APIs, enabling seamless adoption without significant changes to your current setup.
 
-Developed and provided by Dolby OptiView, this service operates on your infrastructure, integrated between your CDN and media origin. It performs manifest manipulation to insert ad breaks and additional metadata for the player. Additionally, it ensures scalability of the end-to-end system through early ad break notifications to ad decisioning servers.
+Developed and provided by Dolby OptiView, this service operates on your infrastructure, integrated between your CDN and media origin. It performs manifest manipulation to insert adbreaks and additional metadata for the player. Additionally, it ensures scalability of the end-to-end system through early adbreak notifications to ad decisioning servers.
 
 ![OptiView Ads architecture](../assets/img/how_ads_works-light.svg)
 
@@ -31,13 +31,13 @@ The monetized stream holds the following information:
 - `description`: Optional descriptive information for the monetized stream.
 - `labels`: Array of self defined labels (string).
 - `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
-- `origin`: Your media origin host.
-- `segmentOrigin`: Your publicly available segments origin host.
-- `assetKey`: Google DAI Asset-Key linked to this stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `assetURI`: Optional custom asset URI which is to be used during ad breaks. If not set it will request an adbreak through Google Pod Serving.
-- `backdropURI`: Optional URI containing the back-drop to be used during the double box or L-shape ad.
-- `streamType`: Optional property to specify this stream's type to be either 'LIVE' (the default) or 'VOD'. Note: this is only relevant for scheduling overlays for now.
+- `origin`: Your media origin host from where the origin manifests are loaded.
+- `segmentOrigin`: Your publicly available segments origin host from where the stream's video and audio segments are hosted. In most cases this is identical to the `origin` parameter.
+- `assetKey`: Optional Google DAI Asset-Key linked to this stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+- `networkCode`: Optional Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+- `assetURI`: Optional default custom asset URI which is to be used during adbreaks. If not set it will request an adbreak through Google Pod Serving using the `assetKey` and `networkCode` parameters.
+- `backdropURI`: Optional URI containing the default back-drop to be used during the double box or L-shape ads.
+- `streamType`: Optional property to specify this stream's type to be either 'LIVE' (the default) or 'VOD'. Note: this is only relevant for scheduling overlays for now and mostly takes care of expiry of scheduled adbreaks for 'LIVE'.
 
 ```json
 {
@@ -49,7 +49,7 @@ The monetized stream holds the following information:
   "origin": "https://domain.com",
   "segmentOrigin": "https://segment-domain.com",
   "assetKey": "google-sgai-demo",
-  "networkCode": "89053",
+  "networkCode": "12345",
   "assetURI": "https://asset.m3u8",
   "backdropURI": "https://backdrop.svg"
 }
@@ -57,16 +57,7 @@ The monetized stream holds the following information:
 
 ### Creating a new monetized stream
 
-The following API endpoint creates a new monetized stream, mandatory parameters are:
-
-- `streamId`: Unique identifier for the monetized stream within the environment.
-- `name`: Self defined descriptive name for the monetized stream.
-- `description`: Optional descriptive information for the monetized stream.
-- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
-- `origin`: Your media Origin host.
-- `segmentOrigin`: Your publicly available segments origin.
-- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+The following API endpoint creates a bare minimal new monetized stream with GAM360 Pod serving for the adbreaks using the 'SINGLE' layout:
 
 ```bash
 curl -L 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams' \
@@ -75,28 +66,33 @@ curl -L 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams' \
   -d '{
       "streamId": "string",
       "name": "string",
-      "description": "string",
       "layout": "SINGLE",
       "origin": "string",
       "segmentOrigin": "string",
       "assetKey": "string",
-      "networkCode": "string"
+      "networkCode": "string",
+  }'
+```
+
+Alternatively, you can use the assetURI variant when GAM360 Pod serving is not required:
+
+```bash
+curl -L 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams' \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -d '{
+      "streamId": "string",
+      "name": "string",
+      "layout": "SINGLE",
+      "origin": "string",
+      "segmentOrigin": "string",
+      "assetURI": "string"
   }'
 ```
 
 ### Updating an existing monetized stream
 
-The following API endpoint updates an existing monetized stream based on it's streamId, mandatory parameters are:
-
-- `streamId`: Unique identifier for the monetized stream within the environment.
-- `name`: Self defined descriptive name for the monetized stream.
-- `description`: Additional descriptive information for the monetized stream.
-- `labels`: Array of self defined labels (string).
-- `layout`: Default experience layout, see [ad experience layout](/ads/how-to-guides/override-layout/).
-- `origin`: Your media Origin host.
-- `segmentOrigin`: Your publicly available segments origin.
-- `assetKey`: Google DAI Asset-Key representing the stream, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
-- `networkCode`: Google DAI Network-Code, see [Google DAI](https://support.google.com/admanager/topic/7062524?hl=en).
+The following API endpoint updates the properties of an existing monetized stream based on it's `streamId`:
 
 ```bash
 curl -L -X PATCH 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
@@ -112,13 +108,14 @@ curl -L -X PATCH 'https://<optiview-ads-host>/ads-client/api/v1/monetized-stream
       "origin": "string",
       "segmentOrigin": "string",
       "assetKey": "string",
-      "networkCode": "string"
+      "networkCode": "string",
+      "assetURI": "string"
   }'
 ```
 
 ### Deleting an existing monetized stream
 
-The following API endpoint deletes an existing monetized stream based on it's streamId.
+The following API endpoint deletes an existing monetized stream based on it's `streamId`.
 
 ```bash
 curl -L -X DELETE 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
@@ -149,7 +146,7 @@ The response is an array of the existing monetized stream resources.
       "origin": "https://domain.com",
       "segmentOrigin": "https://segment-domain.com",
       "assetKey": "google-sgai-demo",
-      "networkCode": "89053"
+      "networkCode": "12345"
     },
     "state": "created",
     "type": "monetized-stream"
@@ -159,7 +156,7 @@ The response is an array of the existing monetized stream resources.
 
 ### Retrieving an individual monetized stream
 
-The following API endpoint returns an existing monetized stream based on its identifier (streamId).
+The following API endpoint returns an existing monetized stream based on its identifier (`streamId`).
 
 ```bash
 curl -L 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
@@ -180,7 +177,7 @@ The response is the monetized stream resource.
     "origin": "https://domain.com",
     "segmentOrigin": "https://segment-domain.com",
     "assetKey": "google-sgai-demo",
-    "networkCode": "89053"
+    "networkCode": "12345"
   },
   "state": "created",
   "type": "monetized-stream"
@@ -191,7 +188,7 @@ Please refer to the [API reference](/ads/api/signaling/theoads-api/) for even mo
 
 ### Player source
 
-When playing a OptiView Ads source corresponding to a monetized stream, it is expected to pass a source that looks like this:
+When playing an OptiView Ads source corresponding to a monetized stream, it is expected to pass a source that looks like this:
 
 ```js
 src: 'https://<optiview-ads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/MANIFEST-URI';
@@ -199,23 +196,22 @@ src: 'https://<optiview-ads-host>/signaling-service/api/v1/<monetized-stream-id>
 
 In this URI, the `<optiview-ads-host>` points to the network endpoint where the OptiView Ads service is deployed, preferably a DNS entry pointing to the service IP endpoint and reachable from the CDN.
 Secondly, the `<monetized-stream-id>` corresponds to the `streamId` for the monetized stream.
-Finally, the `MANIFEST-URI` part points to the origin's manifest relative to the configured `origin` property of the monetized stream.
+Finally, the `MANIFEST-URI` part points to the origin's manifest relative to the configured `origin` property of the monetized stream. The signaling service will concatenate the `origin` property and the MANIFEST-URI to build the origin manifest URI.
 For example:
 
 ```js
 src: 'https://<optiview-ads-host>/signaling-service/api/v1/<monetized-stream-id>/hls/manifest.m3u8';
 ```
 
-Segment URLs in the media playlists should be absolute URLs however.
-Segment requests don't need to pass through the Signaling Service but should be fetched directly from the CDN to the origin so as to keep the benefit of scaling via the CDN.
-The `segmentOrigin` parameter should contain this publicly available endpoint to fetch the segments directly.
+Segment URLs in the media playlists should be absolute URLs however. Segment requests don't need to pass through the Signaling Service but should be fetched directly from the CDN to the origin so as to keep the benefit of scaling via the CDN.
+The `segmentOrigin` parameter should contain this publicly available endpoint to fetch the segments directly. The signaling service will concatenate the `segmentOrigin` parameter with the segment URI's in the playlists to build an absolute segment URI.
 
-## Scheduling ad breaks
+## Scheduling adbreaks
 
-Once all the required monetized streams are configured, the next step is scheduling ad breaks for these monetized streams.
-To accurately schedule breaks, the origin manifest must be valid and include date and time indications.
+Once all the required monetized streams are configured, the next step is scheduling adbreaks for these monetized streams.
+To accurately schedule adbreaks, the origin manifest must be valid and include date and time indications.
 For HLS, this means the `EXT-X-PROGRAM-DATE-TIME` tag must be present.
-Ad breaks can be signaled through either the provided REST API or by including the relevant information in the manifest itself.
+Adbreaks can be signaled through either the provided REST API or by including the relevant information in the manifest itself.
 
 ### Manifest
 
@@ -225,13 +221,12 @@ When using manifest signaling, the following tags are supported:
   - this is recommended because of its standardization and ability to provide more comprehensive data for improved integration.
 - `#EXT-X-OATCLS-SCTE35` tag
 - `#EXT-X-CUE-OUT` and `#EXT-X-CUE-OUT-CONT` tags
-- To use the tune-in feature, `#EXT-X-CUE-OUT-CONT` tags must be present between `#EXT-X-CUE-OUT` and `#EXT-X-CUE-IN` markers.
 
 Optionally, SCTE markers can be included with the tags for extra metadata.
 
 ### REST API
 
-For scheduling ad breaks through the REST API, please refer to the [API definitions](/ads/api/signaling/create-monetized-stream-break/) and the example below.
+For scheduling adbreaks through the REST API, please refer to the [API definitions](/ads/api/signaling/create-monetized-stream-break/) and the example below.
 
 ```bash
 curl --location 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/stream-1/break' \
@@ -246,7 +241,7 @@ curl --location 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams
 }'
 ```
 
-For more in depth information on scheduling ad breaks we refer to our [How-to guide: Scheduling breaks](/ads/how-to-guides/scheduling-breaks/)
+For more in depth information on scheduling adbreaks we refer to our [How-to guide: Scheduling breaks](/ads/how-to-guides/scheduling-breaks/)
 
 For more information on this topic we refer to our [workflow integration](/ads/how-to-guides/workflow-integration/).
 

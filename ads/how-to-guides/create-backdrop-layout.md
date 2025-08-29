@@ -4,8 +4,8 @@ sidebar_position: 7
 
 # Create backdrop images
 
-A backdrop is an image that is shown along with the player during an ad.
-This image is intended to provide some additional information about an advertisement.
+A backdrop is an companion mage that is shown along with the player during an ad.
+This image is intended to provide either some additional information about an advertisement or a companion advertisement next to the main content.
 
 ## Backdrop Layout Options
 
@@ -24,10 +24,10 @@ Below is a template for the Double Box layout tailored for 1080p resolution:
 
 ![Double box Template.png](../assets/img/backdrop-doublebox-template.png)
 
-### 2. L-Shape Layout
+### 2. L-Shape Layouts
 
-The **L-Shape** layout positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image.
-This configuration allows viewers to see the ad and the backdrop image simultaneously.
+The **L-Shape** layouts positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image.
+This configuration allows viewers to see the content or an ad and the backdrop image simultaneously.
 
 - **Screen Ratio**: 16:9, ensuring compatibility with most screens.
 - **Positioning**: The player is moved to the top-left corner, with the backdrop image filling the remaining space.
@@ -42,6 +42,6 @@ Below is a template for the L-Shape layout:
 
 While both layouts serve distinct purposes, certain limitations should be considered:
 
-- **Device Compatibility**: Some smart TVs may not support the Double Box layout due to the lack of capability to show multiple video streams at the same time. For these devices, the L-Shape layout is a better option, as it displays only one active video stream along with the backdrop image.
+- **Device Compatibility**: Most Smart TVs do not support the Double Box layout due to the lack of capability to show multiple video streams at the same time. For these devices, the L-Shape layout is a better option, as it displays only one active video stream along with the backdrop image. We currently disable Double Box for Smart TVs for this reason and fallback to Single layout.
 - **Resolution Adaptability**: Templates are made for 1080p resolution, but scaling considerations should be taken into account for lower or higher resolutions to maintain the quality and layout proportions.
 - **File Size and Load Times**: To ensure smooth playback and quick loading times, backdrop images should be optimized, especially for mobile and lower-capability devices.

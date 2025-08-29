@@ -4,11 +4,12 @@ sidebar_position: 3
 
 # Override ad experience layout
 
-OptiView Ads is able to insert ad breaks into your content via the signaling server. The layout that is used while playing is usually determined by the signaling server. Currently, you can have the following layout modes :
+OptiView Ads is able to insert adbreaks into your content via the signaling server. The layout that is used while playing is usually determined by the signaling server. Currently, you can have the following layout modes :
 
 - `SINGLE`: Replaces the content with an advertisement.
 - `DOUBLE`: Allows content to continue playing side-by-side with an advertisement and its companion background.
 - `LSHAPE_AD`: Displays advertisements in a scaled window alongside a companion background.
+- `LSHAPE_CONTENT`: Displays the original content video in a scaled window alongside a companion background.
 
 When your signaling service is created, the default layout should be defined. Look at our [API references](/ads/api/signaling/create-monetized-stream/) for more information.
 
@@ -63,7 +64,7 @@ player.source = {
 ```
 
 :::note
-There is a limitation that double box (`DOUBLE`) is not supported on older smartTV's. If you want to play OptiView Ads on these devices, please override to another layout.
+There is a limitation that double box (`DOUBLE`) is not supported on Chromecast and older smartTV's. These revert the single layout automatically.
 :::
 
 ### React Native SDK
