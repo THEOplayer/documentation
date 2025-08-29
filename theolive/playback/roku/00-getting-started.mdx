@@ -28,6 +28,21 @@ m.THEOsdk.source = {
 
 Please note that the playlist feature cannot be used with THEOlive. On Roku the THEOlive source falls back to the HLS stream.
 
+### Configure THEOlive
+
+On the player configuration object, you may add extra configuration using the `theoLive` property on the player configuration. For instance, if you would like to provide an external ID to track the session, you may add it to the `theoLive` configuration:
+
+```brightscript
+playerConfiguration = {
+  license: "<YOUR_LICENSE_HERE>",
+  theoLive: {
+    externalSessionId: "my-unique-id"
+  }
+}
+m.player.callFunc("configure", playerConfiguration)
+```
+
 ## More information
 
 - [API references](/theoplayer/api-reference/roku)
+- [Migrating to THEOlive v2](/theolive/playback/roku/02-migrating-to-v2.mdx)
