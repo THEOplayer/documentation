@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Override ad experience layout
 
-OptiView Ads is able to insert adbreaks into your content via the signaling server. The layout that is used while playing is usually determined by the signaling server. Currently, you can have the following layout modes :
+OptiView Ads is able to insert ad breaks into your content via the signaling server. The layout that is used while playing is usually determined by the signaling server. Currently, you can have the following layout modes :
 
 - `SINGLE`: Replaces the content with an advertisement.
 - `DOUBLE`: Allows content to continue playing side-by-side with an advertisement and its companion background.
