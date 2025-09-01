@@ -12,7 +12,7 @@ The ad impression is beaconed simultaneously with the firing of the player's `ad
 
 ## Information tracked
 
-The information passed only contains an identifier of the THEOplayer license build so the impressions are linked to the customer. It also includes the ad experience type
+The information passed only contains an identifier of the THEOplayer license build so the impressions are linked to the customer. It also includes the ad experience type.
 No information about the viewers is passed along.
 
 ## View my impression usage

@@ -64,7 +64,7 @@ player.source = {
 ```
 
 :::note
-There is a limitation that double box (`DOUBLE`) is not supported on Chromecast and older smartTV's. These revert the single layout automatically.
+There is a limitation that double box (`DOUBLE`) is not supported on Chromecast and older smart TV's. These revert to the single layout automatically.
 :::
 
 ### React Native SDK

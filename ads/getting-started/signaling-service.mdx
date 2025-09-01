@@ -92,7 +92,7 @@ curl -L 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams' \
 
 ### Updating an existing monetized stream
 
-The following API endpoint updates the properties of an existing monetized stream based on it's `streamId`:
+The following API endpoint updates the properties of an existing monetized stream based on its `streamId`:
 
 ```bash
 curl -L -X PATCH 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
@@ -115,7 +115,7 @@ curl -L -X PATCH 'https://<optiview-ads-host>/ads-client/api/v1/monetized-stream
 
 ### Deleting an existing monetized stream
 
-The following API endpoint deletes an existing monetized stream based on it's `streamId`.
+The following API endpoint deletes an existing monetized stream based on its `streamId`.
 
 ```bash
 curl -L -X DELETE 'https://<optiview-ads-host>/ads-client/api/v1/monetized-streams/:streamId' \
@@ -204,7 +204,7 @@ src: 'https://<optiview-ads-host>/signaling-service/api/v1/<monetized-stream-id>
 ```
 
 Segment URLs in the media playlists should be absolute URLs however. Segment requests don't need to pass through the Signaling Service but should be fetched directly from the CDN to the origin so as to keep the benefit of scaling via the CDN.
-The `segmentOrigin` parameter should contain this publicly available endpoint to fetch the segments directly. The signaling service will concatenate the `segmentOrigin` parameter with the segment URI's in the playlists to build an absolute segment URI.
+The `segmentOrigin` parameter should contain this publicly available endpoint to fetch the segments directly. The signaling service will concatenate the `segmentOrigin` parameter with the segment URIs in the playlists to build an absolute segment URI.
 
 ## Scheduling ad breaks
 

@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # Create backdrop images
 
-A backdrop is an companion mage that is shown along with the player during an ad.
+A backdrop is an companion image that is shown along with the player during an ad.
 This image is intended to provide either some additional information about an advertisement or a companion advertisement next to the main content.
 
 ## Backdrop Layout Options
@@ -26,7 +26,7 @@ Below is a template for the Double Box layout tailored for 1080p resolution:
 
 ### 2. L-Shape Layouts
 
-The **L-Shape** layouts positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image.
+The **L-Shape** layout positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image.
 This configuration allows viewers to see the content or an ad and the backdrop image simultaneously.
 
 - **Screen Ratio**: 16:9, ensuring compatibility with most screens.
