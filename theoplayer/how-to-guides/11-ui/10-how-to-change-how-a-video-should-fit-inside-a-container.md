@@ -52,7 +52,7 @@ for (let i = 0; i < videos.length; i++) {
 
 ##### Legacy Android SDK (4.12.x)
 
-For SDK version **3.6.1** and above, you can use the API described at [Player#setAspectRatio(AspectRatio)](<pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/player/Player.html#setAspectRatio(AspectRatio)>) to set the [AspectRatio](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/player/AspectRatio.html) values.
+For SDK version **3.6.1** and above, you can use the API described at [Player#setAspectRatio(AspectRatio)](<pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/player/Player.html#setAspectRatio(AspectRatio)>) to set the [AspectRatio](pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/player/AspectRatio.html) values.
 
 The snippet below demonstrates how you could use this API:
 
@@ -67,7 +67,7 @@ The sample project at [How to insert a button](../../how-to-guides/11-ui/07-how-
 
 ### iOS (tvOS) SDK
 
-You can use the API described at [THEOplayerFullscreen](<pathname:///theoplayer/v9/api-reference/ios/Protocols/Fullscreen_Objc.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerFullscreen(im)setAspectRatioWithAspectRatio:>) to set the [video gravity](https://developer.apple.com/documentation/avfoundation/avplayerlayer/1388915-videogravity) values.
+You can use the API described at [THEOplayerFullscreen](<pathname:///theoplayer/v10/api-reference/ios/Protocols/Fullscreen_Objc.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerFullscreen(im)setAspectRatioWithAspectRatio:>) to set the [video gravity](https://developer.apple.com/documentation/avfoundation/avplayerlayer/1388915-videogravity) values.
 
 The snippet below demonstrates how you could use this API:
 

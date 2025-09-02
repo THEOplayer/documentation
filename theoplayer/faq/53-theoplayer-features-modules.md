@@ -29,7 +29,7 @@ Once you're there, you further navigate to your desired SDK and check how you've
 
 If you're a developer (and you're only interested in this answer for the THEOplayer Web SDK),
 then you can also figure this out at runtime through JavaScript.
-You can call [`THEOplayer.features`](pathname:///theoplayer/v9/api-reference/web/variables/features.html) to identify which features are enabled.
+You can call [`THEOplayer.features`](pathname:///theoplayer/v10/api-reference/web/variables/features.html) to identify which features are enabled.
 
 ```js
 THEOplayer.features;
@@ -45,5 +45,5 @@ After optimizing your SDK, by enabling and disabling certain features, you might
 - You could [measure the loading time of your THEOplayer library](https://codesandbox.io/s/github/THEOplayer/samples-web?file=/reference-apps/utility/measure-loading-time/index.html).
 
 Note that optimizing a video player goes way beyond reducing your file size.
-As a developer, you could consider [async library loading](https://demo.theoplayer.com/async-library-loading), you could change your [ABR strategy](pathname:///theoplayer/v9/api-reference/web/types/ABRStrategyType.html) (as [demonstrated](https://demo.theoplayer.com/increase-viewer-experience-optimizing-video-abr)),
+As a developer, you could consider [async library loading](https://demo.theoplayer.com/async-library-loading), you could change your [ABR strategy](pathname:///theoplayer/v10/api-reference/web/types/ABRStrategyType.html) (as [demonstrated](https://demo.theoplayer.com/increase-viewer-experience-optimizing-video-abr)),
 you want to optimize your [time-to-first-frame](../how-to-guides/09-player/02-how-to-measure-time-to-first-frame.md), and much more!

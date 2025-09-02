@@ -39,8 +39,8 @@ The AirPlay interface is a sub-interface of the Cast interface on both the THEOp
 
 The API reference is available through the following links:
 
-- Web SDK: [AirPlay](pathname:///theoplayer/v9/api-reference/web/interfaces/AirPlay.html), which inherits from [VendorCast](pathname:///theoplayer/v9/api-reference/web/interfaces/VendorCast.html)
-- iOS SDK: [AirPlay](pathname:///theoplayer/v9/api-reference/ios/Protocols/AirPlay.html)
+- Web SDK: [AirPlay](pathname:///theoplayer/v10/api-reference/web/interfaces/AirPlay.html), which inherits from [VendorCast](pathname:///theoplayer/v10/api-reference/web/interfaces/VendorCast.html)
+- iOS SDK: [AirPlay](pathname:///theoplayer/v10/api-reference/ios/Protocols/AirPlay.html)
 
 For the **THEOplayer Web SDK**, you could use the API as demonstrated below:
 

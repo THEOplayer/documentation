@@ -102,7 +102,7 @@ With Android THEOplayer SDK we currently support the following feature integrati
 | Millicast       | `integration-millicast:+`       | 8.2.0+  | [Millicast Documentation](pathname:///millicast/android-player/)                                        |
 | Jetpack Media3  | `integration-media3:+`          | 8.10.0+ | [Media3 Documentation](../../../how-to-guides/android/media3/getting-started.mdx)                       |
 
-[`GoogleImaIntegrationFactory`]: pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegrationFactory.html
-[`CastIntegrationFactory`]: pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/cast/CastIntegrationFactory.html
-[Player.addIntegration]: pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/player/Player.html#addIntegration(com.theoplayer.android.api.Integration)
-[`THEOplayerConfig.autoIntegrations`]: pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/THEOplayerConfig.Builder.html#autoIntegrations(boolean)
+[`GoogleImaIntegrationFactory`]: pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegrationFactory.html
+[`CastIntegrationFactory`]: pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/cast/CastIntegrationFactory.html
+[Player.addIntegration]: pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/player/Player.html#addIntegration(com.theoplayer.android.api.Integration)
+[`THEOplayerConfig.autoIntegrations`]: pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/THEOplayerConfig.Builder.html#autoIntegrations(boolean)

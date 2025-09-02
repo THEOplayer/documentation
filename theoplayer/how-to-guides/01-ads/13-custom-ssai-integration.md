@@ -111,7 +111,7 @@ Finally, when the playback of the Ad is completed, `endAd(ad: Ad)` should be cal
 ### CustomSsaiDescriptionSerializer
 
 To hold the configuration parameters specific to your integration, you can create a new class that inherits from `CustomSsaiDescription`.
-This allows it to be set on a `TypedSource` through [`TypedSource.Builder.ssai()`](<pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html#ssai(com.theoplayer.android.api.source.ssai.SsaiDescription)>).
+This allows it to be set on a `TypedSource` through [`TypedSource.Builder.ssai()`](<pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/source/TypedSource.Builder.html#ssai(com.theoplayer.android.api.source.ssai.SsaiDescription)>).
 Then, register a `CustomSsaiDescriptionSerializer` using the integration ID and provide a way to serialize/deserialize the new `CustomSsaiDescription`.
 
 Below is an example of a [YoSpace integration](https://github.com/THEOplayer/android-connector/tree/master/connectors/yospace) showing `YospaceSsaiDescription` extending `CustomSsaiDescription`:
