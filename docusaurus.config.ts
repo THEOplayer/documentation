@@ -156,6 +156,11 @@ const config: Config = {
         sidebarPath: './sidebarsTheoplayer.ts',
         lastVersion: 'v9',
         includeCurrentVersion: !isProductionDeployment,
+        onlyIncludeVersions: isProductionDeployment
+          ? undefined
+          : // v6 and v7 aren't being updated anymore.
+            // We still have links to v4 and v8 docs, so we always need to build those.
+            ['current', 'v9', 'v8', 'v4'],
         versions: {
           current: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
