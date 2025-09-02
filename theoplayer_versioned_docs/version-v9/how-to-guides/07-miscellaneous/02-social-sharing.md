@@ -14,7 +14,7 @@ The Social Sharing feature exposes the Social API. This API allows developers to
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
 |   Yes   |     No      |   No    |    No    |       No       |      N/A       |
 
-The Social Sharing API is a UI feature. It's currently unavailable on all SDKs except the Web SDK because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it using the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
+The Social Sharing API is a UI feature. It's currently unavailable on all SDKs except the Web SDK because the underlying THEOplayer CSS and JavaScript modules aren't activated. This means that you also can't enable it using the guide located at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
 
 ## Code examples
 
