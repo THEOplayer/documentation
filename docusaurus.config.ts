@@ -9,6 +9,7 @@ import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/lib/types';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
+import archivedVersions from './theoplayer_archived_versions.json';
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
@@ -162,21 +163,6 @@ const config: Config = {
           v8: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v8/version.txt'), 'utf8').trim(),
             banner: 'none',
-            noIndex: true,
-          },
-          v7: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v7/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
-            noIndex: true,
-          },
-          v6: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v6/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
-            noIndex: true,
-          },
-          v4: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v4/version.txt'), 'utf8').trim(),
-            banner: 'unmaintained',
             noIndex: true,
           },
         },
@@ -582,6 +568,18 @@ const config: Config = {
           type: 'docsVersionDropdown',
           docsPluginId: 'theoplayer',
           position: 'right',
+          dropdownItemsAfter: [
+            {
+              type: 'html',
+              value: '<hr class="dropdown-separator">',
+            },
+            {
+              type: 'html',
+              className: 'dropdown-archived-versions',
+              value: '<b>Archived versions</b>',
+            },
+            ...archivedVersions,
+          ],
         },
       ],
     },
