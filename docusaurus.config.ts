@@ -154,10 +154,14 @@ const config: Config = {
         path: 'theoplayer',
         routeBasePath: '/theoplayer',
         sidebarPath: './sidebarsTheoplayer.ts',
-        lastVersion: 'current',
+        lastVersion: 'v9',
+        includeCurrentVersion: !isProductionDeployment,
         versions: {
           current: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
+          },
+          v9: {
+            label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v9/version.txt'), 'utf8').trim(),
           },
           v8: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v8/version.txt'), 'utf8').trim(),
