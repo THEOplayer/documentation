@@ -162,9 +162,11 @@ const config: Config = {
             // We still have links to v4 and v8 docs, so we always need to build those.
             ['current', 'v9', 'v8', 'v4'],
         versions: {
-          current: {
-            label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
-          },
+          ...(!isProductionDeployment && {
+            current: {
+              label: fs.readFileSync(path.join(__dirname, 'theoplayer/version.txt'), 'utf8').trim(),
+            },
+          }),
           v9: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v9/version.txt'), 'utf8').trim(),
           },
