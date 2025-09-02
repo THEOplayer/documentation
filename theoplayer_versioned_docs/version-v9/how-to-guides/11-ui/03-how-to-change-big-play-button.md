@@ -70,4 +70,4 @@ In the CSS file you created, add the code reported above in the Web SDK section.
 
 The snippet above also removes some default behavior, such as the shadow-effect when hovering the big play button.
 
-![Big Play Button](../../assets/img/big-play-button.png 'Big Play Button')
+![Big Play Button](../../../../theoplayer/assets/img/big-play-button.png 'Big Play Button')

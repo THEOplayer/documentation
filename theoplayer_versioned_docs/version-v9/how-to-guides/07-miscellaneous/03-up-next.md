@@ -6,7 +6,7 @@ The Up Next feature adds a component to the UI which enables the viewers to navi
 
 The Up Next feature exposes the Up Next API. This API allows developers to configure the upcoming asset and its loading settings.
 
-![Up Next](../../assets/img/up-next.png 'Up Next')
+![Up Next](../../../../theoplayer/assets/img/up-next.png 'Up Next')
 
 ## SDKs
 
