@@ -1,6 +1,6 @@
 # Migrating to THEOplayer Roku SDK 9.x
 
-This article will guide you through updating from THEOplayer Roku SDK version 9 (from version 1.5.0),
+This article will guide you through updating to THEOplayer Roku SDK version 9 (from version 1.5.0),
 and the changes needed in your code.
 
 ## Verizon Media is not included
@@ -17,7 +17,7 @@ Download the new pkg file from [the THEOplayer portal](https://portal.theoplayer
 
 ## Update Connectors to the 9.x version
 
-If you are using any of the connectors for Roku, update them to the 9.x version as well. Either download them from the [the THEOplayer portal](https://portal.theoplayer.com) and add them to your application, or load them directly from a URL.
+If you are using any of the connectors for Roku, update them to the 9.x version as well. Either download them from [the THEOplayer portal](https://portal.theoplayer.com) and add them to your application, or load them directly from a URL.
 
 ```xml
 <ComponentLibrary id="THEOConvivaConnector" uri="pkg:/components/THEOConvivaConnector.pkg" />
