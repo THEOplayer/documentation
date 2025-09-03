@@ -11,10 +11,10 @@ This guide will get you started with OptiView Ads in your THEOplayer Web SDK: co
 ## Prerequisites
 
 1. You need to have a THEOplayer license which is compatible with OptiView Ads. This can be done through the [player portal](https://portal.theoplayer.com).
-2. You need a working [OptiView Ads signaling service](signaling-service.mdx).
+2. You need a correctly deployed [OptiView Ads signaling service](signaling-service.mdx).
 3. Your THEOplayer SDK needs to have the `theoads` feature enabled.
 
-   As of THEOplayer version 8.2.0, this feature is enabled in the main `theoplayer` package.
+   As of THEOplayer version 8.2.0, this feature is enabled by default in the main `theoplayer` package so we recommend to use at least this version, preferable the latest available version.
    You can install this package with the following command:
 
    ```bash
@@ -23,7 +23,7 @@ This guide will get you started with OptiView Ads in your THEOplayer Web SDK: co
 
 ## Integration
 
-This guide assumes you know how to set up THEOplayer. For more information regarding this check out the [THEOplayer getting started](/theoplayer/getting-started/sdks/web/getting-started/).
+This guide assumes you know how to set up THEOplayer. For more information regarding this, check out the [THEOplayer getting started](/theoplayer/getting-started/sdks/web/getting-started/).
 
 ### Google DAI library
 
@@ -47,7 +47,7 @@ const player = new THEOplayer.Player(element, {
 });
 ```
 
-Then, specify a source with a OptiView Ads-enabled ad description:
+Then, specify a source with an OptiView Ads-enabled ad description:
 
 ```javascript
 player.source = {
@@ -110,7 +110,7 @@ It should look something like this:
 
 ## More information
 
-- [API references](pathname:///theoplayer/v8/api-reference/web/interfaces/TheoAdDescription.html)
+- [API references](pathname:///theoplayer/v9/api-reference/web/interfaces/TheoAdDescription.html)
 - [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
 - [The Advantages of Server-Guided Ad Insertion](https://optiview.dolby.com/solutions/personalized-advertising/)
 - [Is Server-Guided Ad-Insertion (SGAI) revolutionizing streaming monetization? (blog)](https://optiview.dolby.com/resources/blog/advertising/what-is-sgai-server-guided-ad-insertion-in-streaming/)
