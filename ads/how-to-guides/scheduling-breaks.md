@@ -117,7 +117,7 @@ An example of a schedule ad break request body can be found below:
 ```json
 {
   "id": "1",
-  "startDate": "2025-09-09T07:30:11.274Z",
+  "startDate": "YYYY-MM-DDTHH:MM:SS.000Z",
   "duration": "10",
   "layout": "DOUBLE"
 }
