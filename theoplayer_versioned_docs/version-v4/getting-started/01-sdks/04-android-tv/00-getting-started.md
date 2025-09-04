@@ -4,7 +4,7 @@
 
 The latest THEOplayer Android SDK (5.0.0+) is compatible both with Android mobile and Android TV. We do not have a separate SDK for each platform.
 
-You can follow the guide: [Getting started on Android](../../../../../theoplayer/getting-started/01-sdks/02-android/00-getting-started.mdx).
+You can follow the guide: [Getting started on Android](../../../../version-v9/getting-started/01-sdks/02-android/00-getting-started.mdx).
 
 :::
 

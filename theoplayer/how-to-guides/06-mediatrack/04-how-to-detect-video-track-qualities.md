@@ -17,7 +17,7 @@ The code examples below how to implement the detection of video track qualities 
 
 ##### Web SDK
 
-The Web SDK leverages the [MediaTrack API](pathname:///theoplayer/v9/api-reference/web/interfaces/MediaTrack.html).
+The Web SDK leverages the [MediaTrack API](pathname:///theoplayer/v10/api-reference/web/interfaces/MediaTrack.html).
 
 ```js
 function handleAddTrackEvent(addTrackEvent) {
@@ -28,7 +28,7 @@ player.videoTracks.addEventListener('addtrack', handleAddTrackEvent);
 
 ##### Android (TV) SDK
 
-The Android SDK leverages the [MediaTrack API](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
+The Android SDK leverages the [MediaTrack API](pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html).
 
 ```java
 EventListener<AddTrackEvent> handleAddTrackEvent = new EventListener<AddTrackEvent>() {

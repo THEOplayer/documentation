@@ -1,0 +1,96 @@
+---
+sidebar_label: Getting started
+sidebar_custom_props: { icon: '🚀' }
+---
+
+# Getting started with the Conviva Connector for the Roku SDK
+
+Here's how to get started integrating the Conviva Connector with the THEOplayer Roku SDK.
+
+## Prerequisites
+
+In order to set up the Conviva Connector in your Roku application, you'll need the following:
+
+- Your Conviva customer key (available in your Conviva Pulse dashboard)
+- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
+- Optionally for debug and testing, your Conviva Touchstone gateway URL, which should be in the format of `"https://MY_TOUCHSTONE_DOMAIN.ts-testonly.conviva.com/"`
+
+## Integration
+
+1. First you must download the THEO Conviva Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOConvivaConnector` and providing the URI for the THEOConvivaConnector.pkg:
+
+```xml
+<ComponentLibrary id="THEOConvivaConnector" uri="https://cdn.myth.theoplayer.com/roku/1.5.0/THEOConvivaConnector.pkg" />
+```
+
+2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+
+```brightscript
+sub Init()
+    THEOConvivaNode = m.top.findNode("THEOConvivaConnector")
+    THEOConvivaNode.observeField("loadStatus", "onLibraryLoadStatusChanged")
+end sub
+
+sub onLibraryLoadStatusChanged(event as object)
+    THEOConvivaNode = event.getROSGNode()
+
+    if THEOConvivaNode = invalid
+        return
+    end if
+
+    if THEOConvivaNode.loadStatus = "ready"
+		' Success
+    else if THEOConvivaNode.loadStatus = "failed"
+		? "Failed to load component library, please check URL. "; THEOConvivaNode.uri
+	end if
+end sub
+```
+
+3. Add the THEOConvivaConnector component to the SceneGraph file where your THEOPlayer is defined
+
+```xml
+<THEOsdk:THEOplayer id="THEOplayer" controls="true" />
+<THEOConvivaConnector:THEOConvivaConnector id="THEOConvivaConnector" />
+```
+
+4. Then in the Brightscript file, configure the connector by calling the configure method, passing the player instance and your Conviva customer key.
+
+```brightscript
+m.player = m.top.findNode("THEOPlayer")
+m.convivaConnector = m.top.findNode("THEOConvivaConnector")
+m.convivaConnector.callFunc("configure", m.player, "MY_CUSTOMER_KEY")
+```
+
+NOTE: that if you want to debug first and use Conviva's Touchstone service to validate your integration, you can include the gateway URL and a debug parameter in the configure call:
+`m.convivaConnector.callFunc("configure", m.player, "MY_CUSTOMER_KEY", "MY_TOUCHSTONE_GATEWAY_URL", true)`
+
+5. Next, when you start playing the asset, call the `startSession` method and pass it the content metadata for the asset you're playing:
+
+```brightscript
+m.player.source = sourceDescription
+contentMetadata = {
+    defaultReportingResource: "MyCDN",
+    playerName: "My Player",
+    assetName: "My Asset Name",
+    encodedFramerate: 24
+}
+m.convivaConnector.callFunc("startSession", contentMetadata)
+```
+
+See the [API documentation](https://www.theoplayer.com/docs/theoplayer/connectors/roku/conviva/API-reference/) for more on how to structure the content metadata for Conviva.
+
+6. If you desire to monitor for CDN changes, you can optionally add a configuration for that after starting the session.
+   `m.convivaConnector.callFunc("monitorCdnChanges", { mycdn: ["my-cdn.net"], theo: ["cdn.theoplayer.com"] })`
+7. If the content metadata needs to change, you can update it by calling `setContentInfo`. This method accepts partial content metadata:
+   `m.convivaConnector.callFunc( "setContentInfo", {assetName: "New Program"})`
+8. When the video has stopped playing because it ended or the user exited, end the Conviva session
+   `m.convivaConnector.callFunc("endSession")`
+9. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the SDK:
+
+```brightscript
+m.convivaConnector.callFunc("destroy")
+m.convivaConnector = invalid
+
+m.player.callFunc("destroy")
+m.player = invalid
+```

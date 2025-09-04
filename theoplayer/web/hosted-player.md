@@ -65,7 +65,7 @@ The following parameters are only valid with Dolby OptiView real-time streaming 
 
 ## Player Events
 
-Basic [player events](pathname:///theoplayer/v9/api-reference/web/interfaces/AdBreakEvent.html) are sent with [window post messages](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to the parent page in case the embedding application wishes to utilize them. Events include:
+Basic [player events](pathname:///theoplayer/v10/api-reference/web/interfaces/AdBreakEvent.html) are sent with [window post messages](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to the parent page in case the embedding application wishes to utilize them. Events include:
 
 - ended
 - pause

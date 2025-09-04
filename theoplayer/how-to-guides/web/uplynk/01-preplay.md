@@ -56,7 +56,7 @@ player.source = {
 };
 ```
 
-The snippet above gives a quick overview of the structure of an Uplynk-specific source, also known as an [UplynkSource](pathname:///theoplayer/v9/api-reference/web/interfaces/UplynkSource.html). More information on certain properties:
+The snippet above gives a quick overview of the structure of an Uplynk-specific source, also known as an [UplynkSource](pathname:///theoplayer/v10/api-reference/web/interfaces/UplynkSource.html). More information on certain properties:
 
 - `id`: The ID field identifies the asset. Instead of a single string, developers can also specify an array of asset IDs as strings, which will be stitched into a continuous stream. The same goes for the `externalId` property in case an external ID is used in the source.
 - `preplayParameters`: The `preplayParameters` object should have string-key-string-value combinations, which will be used as query parameters for the Preplay API call. Nested objects are not supported.
@@ -69,7 +69,7 @@ The snippet above gives a quick overview of the structure of an Uplynk-specific 
 
 ## Stream Configuration (with ads)
 
-The examples below demonstrate how to configure a stream with server-side ads through an [UplynkSource](pathname:///theoplayer/v9/api-reference/web/interfaces/UplynkSource.html).
+The examples below demonstrate how to configure a stream with server-side ads through an [UplynkSource](pathname:///theoplayer/v10/api-reference/web/interfaces/UplynkSource.html).
 
 ```js
 player.source = {
@@ -121,7 +121,7 @@ A token is (typically) generated on back-end using an API key and a set of param
 > Note the confusion that the provided link only mentions signing the **playback URL**, even though we are describing using
 > tokens for the call to the Preplay API. However, this process is also valid for signing the `preplayParameters`.
 
-This set of parameters should also be passed along to the `preplayParameters` in an [UplynkSource](pathname:///theoplayer/v9/api-reference/web/interfaces/UplynkSource.html).
+This set of parameters should also be passed along to the `preplayParameters` in an [UplynkSource](pathname:///theoplayer/v10/api-reference/web/interfaces/UplynkSource.html).
 If you do not configure the `preplayParameters` correctly in relation to your signature parameters, then the Preplay request made by THEOplayer will most likely return an invalid Preplay response, preventing THEOplayer from setting up your stream.
 
 Let's consider a set-up where an Uplynk customer uses both URL signatures and multi-DRM.

@@ -62,4 +62,4 @@ player.load('Big Buck Bunny', {
 });
 ```
 
-The `MultiViewPlayer` has a slightly different API from the general THEOplayer, so for more information we refer to the [documentation](pathname:///theoplayer/v9/api-reference/web/classes/MultiViewPlayer.html).
+The `MultiViewPlayer` has a slightly different API from the general THEOplayer, so for more information we refer to the [documentation](pathname:///theoplayer/v10/api-reference/web/classes/MultiViewPlayer.html).

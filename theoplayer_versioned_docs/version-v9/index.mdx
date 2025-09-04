@@ -1,0 +1,23 @@
+---
+displayed_sidebar: web
+sidebar_label: Introduction
+sidebar_position: 1
+---
+
+# THEOplayer
+
+import Intro from './shared/_intro.mdx';
+import DocCardList from '@theme/DocCardList';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { getPlatformsByVersion } from '@site/src/util/platform';
+
+<Intro />
+<DocCardList
+  items={getPlatformsByVersion('theoplayer', 'v7').map((desc) => ({
+    type: 'link',
+    label: desc.label,
+    description: desc.description,
+    customProps: { icon: desc.icon },
+    href: useBaseUrl(`theoplayer/${desc.platform}`),
+  }))}
+/>

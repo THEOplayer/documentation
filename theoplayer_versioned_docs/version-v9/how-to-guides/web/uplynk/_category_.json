@@ -1,0 +1,13 @@
+{
+  "label": "Uplynk",
+  "position": 103,
+  "customProps": {
+    "icon": "uplynk",
+    "additionalItems": [
+      {
+        "type": "doc",
+        "id": "faq/what-are-the-uplynk-challenges"
+      }
+    ]
+  }
+}

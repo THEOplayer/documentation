@@ -21,7 +21,7 @@ This means that on older and some buggy devices, switching to fullscreen will ma
 
 ### Solution: Fullscreen without detaching the SurfaceView from the window
 
-If an implementer does not want the Surface to be destroyed when going fullscreen, the implementer needs to implement this themself to fit within the Activity.
+If an implementer does not want the Surface to be destroyed when going fullscreen, the implementer needs to implement this themselves to fit within the Activity.
 
 A few things are needed for this:
 
