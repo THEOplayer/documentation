@@ -2,6 +2,25 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2025-09-09
+
+### Media Server
+
+<!-- 3.1.2  -->
+
+#### Features
+
+Introducing Adaptive Bitrate (ABR) Strategies for WebRTC. This feature introduces the ability to choose on a viewer-by-viewer basis how aggressively to apply ABR switching when ABR steaming is used. It is in-line with [OptiView Player's existing strategies](/frameworks/react-native/abr/#abr-configuration). For now, users must set this value when choosing playback to utilize the feature, in the future we will set `quality` to be the default.
+
+The options are:
+
+- `quality`: This strategy is more aggressive at up-switching and will try to maximize available bandwidth at any given moment. It tries to connect on the highest quality possible and stay there. Recommended for audiences with good networking and where quality is most important.
+- `bandwidth`: This strategy is in between `quality` and `performance` and isn't as aggressive as `quality`. It will more quickly switch down layers in cases of poor network and will attempt to switch back up more conservatively. It is recommended as a balance between `quality` and `performance`
+- `performance`: This strategy will prioritize smooth playback over highest quality. It will start with the lower layer available and will switch up more slowly when network performance is consistent and stable.
+- _null_: Omitting this value will preserve the legacy behavior of our ABR algorithm as it is today
+
+As this is a new feature, we welcome customer feedback. For even more information, please see our [player documentation](/millicast/playback/players-sdks/web/player/).
+
 ## 2025-08-04
 
 ### Media Server

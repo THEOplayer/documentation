@@ -152,6 +152,13 @@ Choose whether the stream should begin muted or with audio.
 
 See [Stream Preview](/millicast/playback/hosted-player/customization.md) for more details about setting the poster image.
 
+### Adjusting Adaptive Bitrate (ABR) behavior
+
+Control how the adaptive bitrate of the player behaves and choose an [ABR strategy](/millicast/playback/players-sdks/web/player/#ABR-Strategies).
+
+- `&abrStrategy=quality`: an example of setting the `quality` ABR strategy
+- `&abrStrategy=quality&abrBandwidth=1200000`: an example choosing the `quality` ABR strategy with a 1.2 Mbps bitrate (this value is in bits-per-second)
+
 ### Settings
 
 You can also launch the [Media Stats](/millicast/analytics/media-stats.mdx) to get diagnostic details about the stream performance from the perspective of the end-user audience experienced during playback.
