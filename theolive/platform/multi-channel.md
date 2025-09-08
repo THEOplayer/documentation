@@ -41,5 +41,5 @@ THEOlive also offers an API endpoint where you can query the minutes viewed on a
 
 Creating channel aliases can serve useful in a couple of different ways. Here are a couple of examples where creating a channel alias can simplify your workflow
 
-- Creating a stream that requires multiple stream [redundancy](/theolive/platform/redundancy/) or fallback solutions 
+- Creating a stream that requires multiple stream [redundancy](/theolive/platform/redundancy/) or fallback solutions
 - Creating a stream that requires different [geo-blocking](/theolive/platform/security/geo-blocking) rules for different countries
