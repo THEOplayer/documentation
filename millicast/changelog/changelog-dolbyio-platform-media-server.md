@@ -10,7 +10,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 #### Features
 
-Introducing Adaptive Bitrate (ABR) Strategies for WebRTC. This feature introduces the ability to choose on a viewer-by-viewer basis how aggressively to apply ABR switching when ABR streaming is used. It is inline with [OptiView Player's existing strategies](/frameworks/react-native/abr/#abr-configuration).
+Introducing Adaptive Bitrate (ABR) Strategies for WebRTC. This feature introduces the ability to choose on a viewer-by-viewer basis how aggressively to apply ABR switching when ABR streaming is used. It is inline with [OptiView Player's existing strategies](/theoplayer/getting-started/frameworks/react-native/abr/#abr-configuration).
 
 For now, users must set this value when choosing playback to utilize the feature, in the future we will set `quality` to be the default.
 
