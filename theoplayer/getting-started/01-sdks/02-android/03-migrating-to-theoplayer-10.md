@@ -16,6 +16,20 @@ dependencies {
 If you're using the [Open Video UI for Android](/open-video-ui/android/) or one of [our connectors](/theoplayer/connectors/android/),
 make sure to update them to the latest version too to ensure proper support for THEOplayer version 10.
 
+## Update `minSdkVersion` to API 23 or higher
+
+The [minimum supported Android version](https://developer.android.com/build#android_sdk_settings) of the THEOplayer Android SDK has been raised from API 21 (Android 5.0 "Lollipop") to API 23 (Android 6.0 "Marshmallow"). This aligns with [other Android Jetpack libraries requiring API 23 as of June 2025](https://developer.android.com/jetpack/androidx/versions#version-table).
+
+Update the `minSdkVersion` to be 23 (or higher) in your **module-level** `build.gradle` file:
+
+```groovy
+android {
+    defaultConfig {
+        minSdkVersion 23
+    }
+}
+```
+
 ## Media3 as single playback pipeline
 
 THEOplayer now always uses [Jetpack Media3](https://developer.android.com/media/media3) as its playback pipeline,
