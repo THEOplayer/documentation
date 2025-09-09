@@ -28,7 +28,39 @@ player.source = {
 };
 ```
 
-### Add configuration
+### Controlling ABR Strategies
+
+For greater control over how Adaptive Bitrate (ABR) behaves, applications can set the ABR strategies for WebRTC. This feature provides the ability to choose on a viewer-by-viewer basis how aggressively to apply ABR switching when ABR streaming is used. It is inline with [OptiView Player's existing strategies](https://docs.optiview.dolby.com/theoplayer/v9/api-reference/web/interfaces/ABRStrategyConfiguration.html). For now, users must set this value when choosing playback to utilize the feature, in the future we will set `quality` to be the default.
+
+The options are:
+
+- `quality`: This strategy is more aggressive at up-switching and will try to maximize available bandwidth at any given moment. It tries to connect on the highest quality possible and stay there. Recommended for audiences with good networking and where quality is most important.
+- `bandwidth`: This strategy is in between `quality` and `performance` and isn't as aggressive as `quality`. It will more quickly switch down layers in cases of poor network and will attempt to switch back up more conservatively. It is recommended as a balance between `quality` and `performance`
+- `performance`: This strategy will prioritize smooth playback over highest quality. It will start with the lower layer available and will switch up more slowly when network performance is consistent and stable.
+- _null_: Omitting this value will preserve the legacy behavior of our ABR algorithm as it is today
+
+As this is a new feature, we welcome customer feedback.
+
+Set this right after initializing your player by configuring the `abr` object and before setting the `player.source`:
+
+```javascipt
+player.abr.strategy = {
+  type: 'bandwidth'
+}
+```
+
+For additional control you can specify to the player what estimated bandwidth value the player should start with to avoid auto-detection when the player first loads the source. Add the `metadata.bitrate` value in bits-per-second. This example shows selecting the `bandwidth` strategy with a starting bitrate of 1.2 Mbps.
+
+```javascipt
+player.abr.strategy = {
+    type: 'bandwidth',
+    metadata: {
+        bitrate: 1200000
+    }
+}
+```
+
+### Additional Player Configuration
 
 Optionally, you can provide additional configuration to the source, specific for working with Millicast streams. To
 configure these settings, add a `connectOptions` property to the source object and specify the options.

@@ -548,11 +548,30 @@ const connectionOptions = {
     max: 5000,
   },
 };
+
+viewer.connect(connectionOptions);
 ```
 
 For additional information:
 
 - [View connect() options](https://millicast.github.io/millicast-sdk/View.html#connect)
+
+### How-to Control ABR Strategies
+
+This is an example of using `abrConfiguration` in the SDK to control the ABR behavior. For more details on how this works, please refer to the description in the [OptiView Player Page](/millicast/playback/players-sdks/web/player/#controlling-abr-strategies).
+
+```javascript
+connectionOptions = {
+  abrConfiguration: {
+    type: 'bandwidth',
+    metadata: {
+      bitrate: 1200000,
+    },
+  },
+};
+
+viewer.connect(connectionOptions);
+```
 
 ## Tutorials
 
