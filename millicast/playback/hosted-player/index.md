@@ -154,7 +154,7 @@ See [Stream Preview](/millicast/playback/hosted-player/customization.md) for mor
 
 ### Adjusting Adaptive Bitrate (ABR) behavior
 
-Control how the adaptive bitrate of the player behaves and choose an [ABR strategy](/millicast/playback/players-sdks/web/player/#ABR-Strategies).
+Control how the adaptive bitrate of the player behaves and choose an [ABR strategy](/millicast/playback/players-sdks/web/player/#controlling-abr-strategies).
 
 - `&abrStrategy=quality`: an example of setting the `quality` ABR strategy
 - `&abrStrategy=quality&abrBandwidth=1200000`: an example choosing the `quality` ABR strategy with a 1.2 Mbps bitrate (this value is in bits-per-second)
