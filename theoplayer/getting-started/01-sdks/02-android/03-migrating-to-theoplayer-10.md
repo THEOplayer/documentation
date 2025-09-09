@@ -62,11 +62,11 @@ Update your code to use the new APIs instead.
 
 - Removed `TypedSource.playbackPipeline` and `SourceChangeEvent.playbackPipeline`. The player will now always use the Media3 playback pipeline.
 - Removed unused `GoogleDaiConfiguration.format`.
-- Removed `MediaTailorSource.adParams`, use `MediaTailorSource.adsParams` instead.
-- Remove the `DashPlaybackConfiguration.ignoreAvailabilityWindow()` method, use the `.ignoreAvailabilityWindow` property instead.
-- Removed `KeySystemConfiguration.isUseCredentials`, use `KeySystemConfiguration.useCredentials` instead.
-- Removed `ConaxDRMConfiguration.Builder.fairPlay()`, use `ConaxDRMConfiguration.Builder.fairplay()` instead.
-- Removed THEOlive publication events (`PublicationLoadStartEvent`, `PublicationLoadedEvent` and `PublicationOfflineEvent`), use the equivalent distribution events instead (`DistributionLoadStartEvent`, `EndpointLoadedEvent` and `DistributionOfflineEvent` respectively).
+- Removed `MediaTailorSource.adParams`. Use `MediaTailorSource.adsParams` instead.
+- Remove the `DashPlaybackConfiguration.ignoreAvailabilityWindow()` method. Use the `.ignoreAvailabilityWindow` property instead.
+- Removed `KeySystemConfiguration.isUseCredentials`. Use `KeySystemConfiguration.useCredentials` instead.
+- Removed `ConaxDRMConfiguration.Builder.fairPlay()`. Use `ConaxDRMConfiguration.Builder.fairplay()` instead.
+- Removed THEOlive publication events (`PublicationLoadStartEvent`, `PublicationLoadedEvent` and `PublicationOfflineEvent`). Use the equivalent distribution events instead (`DistributionLoadStartEvent`, `EndpointLoadedEvent` and `DistributionOfflineEvent` respectively).
 - Removed `THEOplayerGlobal.playbackSettings`.
 
 [`HttpEngine`]: https://developer.android.com/reference/android/net/http/HttpEngine
