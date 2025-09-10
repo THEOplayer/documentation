@@ -154,8 +154,7 @@ const config: Config = {
         path: 'theoplayer',
         routeBasePath: '/theoplayer',
         sidebarPath: './sidebarsTheoplayer.ts',
-        lastVersion: 'v9',
-        includeCurrentVersion: !isProductionDeployment,
+        lastVersion: 'current',
         onlyIncludeVersions: isProductionDeployment
           ? undefined
           : // v6 and v7 aren't being updated anymore.
