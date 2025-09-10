@@ -487,6 +487,15 @@ const config: Config = {
       if (docPath.endsWith('changelog.md') || docPath.includes('/changelog/')) {
         // Fix changelog titles
         frontMatter.title ??= 'Changelog';
+        if (!frontMatter.description) {
+          if (docPluginId === 'open-video-ui') {
+            frontMatter.description = "Find out what's new in Open Video UI.";
+          } else if (docPluginId === 'theoplayer' && !docPath.includes('connector')) {
+            frontMatter.description = "Find out what's new in THEOplayer.";
+          } else {
+            frontMatter.description = "Find out what's new.";
+          }
+        }
         frontMatter.sidebar_custom_props ??= { icon: '📰' };
         // Don't show nested headings in table of contents for changelog
         frontMatter.toc_min_heading_level = 2;
