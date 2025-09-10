@@ -5,6 +5,63 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 9.12.0 (2025/09/09)
+
+### Web
+
+#### ✨ Features
+
+- Added support for handling backdrop GAM properties for OptiView Ads streams.
+- Added Google IMA VAST support to OptiView Ads.
+- Added support for ABR strategies and bitrates for OptiView Real-time streams.
+
+#### 🐛 Issues
+
+- Fixed the styling of the L-shape layout when playing an OptiView Ads stream.
+- Fixed an issue where the `currentTime` was `NaN` when using the MultiViewPlayer and an undefined `offset`.
+- Fixed an issue on Firefox where sometimes the audio and video are desynced at the start of a live stream.
+- Fixed an issue for OptiView Ads where an L-shape content ad break would not stop showing when playing a VOD source.
+- Fixed an issue where the player would fail to play an HLS stream containing MPEG-TS segments with a non-trivial scaling list in their H.264 SPS.
+- Fixed an issue where the player would play a single layout ad in L-shape layout when it previously played in an L-shape content layout for an OptiView ads stream.
+
+### Android
+
+#### ✨ Features
+
+- Added support for loading background images from GAM properties for OptiView Ads.
+
+#### ⚡ Improvements
+
+- Updated the Millicast integration's dependency on the Millicast SDK to version 2.5.0.
+
+#### 🐛 Issues
+
+- Fixed an issue where cancelling one caching task when multiple are downloading and then stopping the app would leave caching progress notifications that could not be dismissed.
+- Fixed an issue where quartile events were missing for alternative ad sources in OptiView Ads.
+- Fixed an issue where `setTargetQuality` did not work as intended for OptiView Live Streams.
+- Fixed an issue where `readyState` was not updated while playing a Google IMA ad.
+
+### iOS
+
+#### ✨ Features
+
+- Added the `DOUBLE` layout for OptiView Ads.
+- Added the OptiView Ads API via `player.theoads`. This is API specific to the [OptiView Ads](https://optiview.dolby.com/products/server-guided-ad-insertion) feature that exposes information about playing and scheduled interstitials and allows configuration of THEOads specific properties.
+- Added support for handling backdrop GAM properties for OptiView Ads streams.
+
+#### ⚡ Improvements
+
+- Exposed more details on an `ErrorEvent` when the underlying `errorObject` is an `AVPlayerError`.
+- Updated the Millicast SDK to v2.5.1 (for iOS & tvOS).
+
+#### 🐛 Issues
+
+- Fixed an issue where sideloaded text tracks would not cache correctly.
+- Fixed an issue where fatal errors were not properly dispatched.
+- Fixed playback rate not being reflected properly when using the GoogleCastIntegration.
+- Fixed an issue where an overlay would not show due to incorrect encoding of query parameters for OptiView Ads.
+- Fixed an issue where a fatal error would be dispatched when the app does not support background playback and the player is backgrounded while playing an OptiView Live stream.
+
 ## 🚀 9.11.0 (2025/08/26)
 
 ### Web
@@ -496,7 +553,7 @@ toc_max_heading_level: 2
 
 #### ⚠ Known Limitations
 
-- The Millicast integration does not yet support [16 KB page sizes](https://developer.android.com/guide/practices/page-sizes). This will be fixed in an upcoming THEOplayer release.
+- The Millicast integration does not yet support [16 KB page sizes](https://developer.android.com/guide/practices/page-sizes). This has been fixed in THEOplayer version 9.12.0.
 
 ### iOS
 
