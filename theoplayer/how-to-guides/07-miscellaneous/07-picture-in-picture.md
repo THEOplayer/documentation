@@ -21,7 +21,7 @@ The below table makes a comparison of the available THEOplayer APIs specifically
 
 <sup>2</sup> While using out-of-app picture-in-picture, the visibility of the PiP windows is not contained to the inside of the app. It can remain visible while the user navigates to other views, pages or apps.
 
-<sup>3</sup> On Android/Fire TV SDK, there is no API to explicitly only allow in-app PiP. The existing [PiP API](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/pip/package-summary.html) activates both in and out of app PiP.
+<sup>3</sup> On Android/Fire TV SDK, there is no API to explicitly only allow in-app PiP. The existing [PiP API](pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/pip/package-summary.html) activates both in and out of app PiP.
 
 ## How to use Picture-in-Picture
 
@@ -44,10 +44,10 @@ The PiP configuration for this SDK includes 3 properties:
   The corner in which the player should be shown while in PiP mode. Defaults to the bottom right corner.
 
 - `visibility`: (optional, a number from 0 to 1)  
-  The maximum percentage of the original player position that should be visible to enable PiP automatically. If not configured, PiP can only be turned on by setting [presentationMode](pathname:///theoplayer/v9/api-reference/web/types/PresentationMode.html) to "picture-in-picture".
+  The maximum percentage of the original player position that should be visible to enable PiP automatically. If not configured, PiP can only be turned on by setting [presentationMode](pathname:///theoplayer/v10/api-reference/web/types/PresentationMode.html) to "picture-in-picture".
 
 - `retainPresentationModeOnSourceChange`: (optional, possible values: true or false)  
-  If set to true, the previous [presentationMode](pathname:///theoplayer/v9/api-reference/web/types/PresentationMode.html) is retained even as the source changes. It is set to false by default.
+  If set to true, the previous [presentationMode](pathname:///theoplayer/v10/api-reference/web/types/PresentationMode.html) is retained even as the source changes. It is set to false by default.
 
 ```js
 var playerConfig = {
@@ -220,7 +220,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(onPiPMoved), na
 ###### out-of-app Picture in Picture
 
 By using your own implementation of the [AVPictureinpictureControllerDelegate](https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate) you are able to listen to a number of events.
-These contain, but are not limited to, when the player will enter/exit PiP, has entered/exited PiP, ... To achieve this you just have to set your implementation of the delegate as the one of the [PictureInPictureController](pathname:///theoplayer/v9/api-reference/ios/Protocols/PictureInPicture.html).
+These contain, but are not limited to, when the player will enter/exit PiP, has entered/exited PiP, ... To achieve this you just have to set your implementation of the delegate as the one of the [PictureInPictureController](pathname:///theoplayer/v10/api-reference/ios/Protocols/PictureInPicture.html).
 
 ```swift
 class CustomPiPDelegate: NSObject, AVPictureInPictureControllerDelegate {
@@ -261,7 +261,7 @@ The following remarks can help:
 
 - PiP is a presentation mode of the player. As such, you can listen for a _presentationmodechange_ event or verify the presentationMode of the player in case you need to find out what the presentation mode is at a given moment or detect a change.
 - More details of the `PresentationMode` types can be found here:
-  [Web PresentationMode API Reference](pathname:///theoplayer/v9/api-reference/web/types/PresentationMode.html)
+  [Web PresentationMode API Reference](pathname:///theoplayer/v10/api-reference/web/types/PresentationMode.html)
 
 - This feature is not completely the same on all SDKs, as the options may vary.
 
@@ -280,15 +280,15 @@ The following resources provide more information:
 
 ##### Web SDK
 
-- [PipConfiguration API Reference](pathname:///theoplayer/v9/api-reference/web/interfaces/PiPConfiguration.html)
-- [PlayerConfiguration API Reference](pathname:///theoplayer/v9/api-reference/web/interfaces/PlayerConfiguration.html)
+- [PipConfiguration API Reference](pathname:///theoplayer/v10/api-reference/web/interfaces/PiPConfiguration.html)
+- [PlayerConfiguration API Reference](pathname:///theoplayer/v10/api-reference/web/interfaces/PlayerConfiguration.html)
 
 ##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-- [PipConfiguration API Reference](pathname:///theoplayer/v9/api-reference/ios/Classes/PiPConfiguration.html)
-- [PictureInPicture API Reference](pathname:///theoplayer/v9/api-reference/ios/Protocols/PictureInPicture.html)
+- [PipConfiguration API Reference](pathname:///theoplayer/v10/api-reference/ios/Classes/PiPConfiguration.html)
+- [PictureInPicture API Reference](pathname:///theoplayer/v10/api-reference/ios/Protocols/PictureInPicture.html)
 
 ##### Android SDK
 
-- [PipConfiguration API Reference](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/pip/PipConfiguration.Builder.html)
-- [PiPManager API Reference](pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/pip/PiPManager.html)
+- [PipConfiguration API Reference](pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/pip/PipConfiguration.Builder.html)
+- [PiPManager API Reference](pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/pip/PiPManager.html)

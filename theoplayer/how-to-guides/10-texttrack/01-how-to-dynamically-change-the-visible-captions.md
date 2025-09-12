@@ -2,7 +2,7 @@
 
 When working with the captions / text-track options, you can dynamically change the currently selected language (or set a default language) using following methods.
 
-This method assumes that you are using text-tracks that are loaded with the manifest. If you add the text-track separately, you can just use this API: [TextTrackDescription](pathname:///theoplayer/v9/api-reference/web/interfaces/TextTrackDescription.html)
+This method assumes that you are using text-tracks that are loaded with the manifest. If you add the text-track separately, you can just use this API: [TextTrackDescription](pathname:///theoplayer/v10/api-reference/web/interfaces/TextTrackDescription.html)
 
 ## Step-by-step guide
 
