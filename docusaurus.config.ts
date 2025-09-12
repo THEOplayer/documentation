@@ -166,10 +166,12 @@ const config: Config = {
           },
           v9: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v9/version.txt'), 'utf8').trim(),
+            banner: 'none',
+            noIndex: true,
           },
           v8: {
             label: fs.readFileSync(path.join(__dirname, 'theoplayer_versioned_docs/version-v8/version.txt'), 'utf8').trim(),
-            banner: 'none',
+            banner: 'unmaintained',
             noIndex: true,
           },
           v7: {
