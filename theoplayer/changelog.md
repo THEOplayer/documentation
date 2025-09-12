@@ -5,6 +5,86 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.0.0 (2025/09/12)
+
+### Announcing THEOplayer 10.0
+
+We are happy to announce the tenth major version of THEOplayer, releasing all the improvements and developments our team has achieved since version 9.0.
+
+THEOplayer 10.0 includes **some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
+
+- On Android, THEOplayer now always uses the Media3 pipeline for all playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices! Check out our [Media3 guide](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
+
+- The Android SDK will now automatically use modern network stacks with HTTP/2 and HTTP/3 support when available, optimizing media delivery to your viewers.
+
+- [OptiView Ads](https://www.theoplayer.com/docs/theoads/) is now fully supported on iOS. This brings our personalized advertising solution to all major platforms.
+
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-10/), [Android](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-10/), [iOS](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-10/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10/).
+
+### Web
+
+#### 💥 Breaking Changes
+
+- Removed `AdBreakEvent.ad`, use `AdBreakEvent.adBreak` instead.
+- Removed `THEOplayerAdDescription` type, use `CsaiAdDescription` instead.
+- Removed `WebVTTRegion.identifier`, use `WebVTTRegion.id` instead.
+- Removed `PlayerConfiguration.vr`. This configuration was already ignored since version 9.0.0, because the player always uses WebXR.
+    - Note that `SourceDescription.vr` is not affected, and is still required to play a virtual reality source.
+- Removed `MediaTailorSource.adParams`, use `MediaTailorSource.adsParams` instead.
+- Removed `PlayerConfiguration.verizonMedia`, use `PlayerConfiguration.uplynk` instead.
+- Removed `'verizon-media'` as a valid source integration ID for Uplynk sources (previously Verizon Media). Uplynk sources must now have their `integration` set to `'uplynk'` instead.
+- Removed THEOlive publication events (`publicationloadstart`, `publicationloaded` and `publicationoffline`), use the equivalent distribution events instead (`distributionloadstart`, `endpointloaded` and `distributionoffline` respectively).
+- Enabled `GoogleImaConfiguration.useAdUiElementForSsai` by default, allowing Google DAI to show additional ad UI elements on top of the player if needed (such as a skip button for skippable ads).
+- Removed support for THEOlive sources using `source.integration = 'theolive'`. THEOlive sources must now have their `type` set to `'theolive'` instead.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- Updated `minSdk` to API 23 ("Marshmallow"). This aligns with [other Android Jetpack libraries requiring API 23 as of June 2025](https://developer.android.com/jetpack/androidx/versions#version-table).
+- Updated to target Kotlin 2.0 language level, to [align with AndroidX Core 1.17.0](https://developer.android.com/jetpack/androidx/releases/core#core_and_core-ktx_version_117_2). This requires Kotlin Gradle Plugin 2.0.0 or newer.
+- Removed support for the legacy playback pipeline (using `TypedSource.playbackPipeline = PlaybackPipeline.LEGACY`). The player will now always use the Media3 playback pipeline.
+    - This brings down the `.aar` size of the Core SDK from ~33 MB to ~2 MB (excluding dependencies).
+- Removed support for the legacy cache backend (using `CachingParameters.storageType = CacheStorageType.LEGACY`). All caching tasks will now use the Media3 cache backend, and any previously cached streams that used the legacy backend will need to be re-downloaded.
+- Changed `NetworkConfiguration.useHttpEngine` to be enabled by default, allowing the player to switch to a modern network stack with HTTP/2 and HTTP/3 support if available.
+- Removed unused `GoogleDaiConfiguration.format`.
+- Removed `MediaTailorSource.adParams`, use `MediaTailorSource.adsParams` instead.
+- Removed the `DashPlaybackConfiguration.ignoreAvailabilityWindow()` method, use the `.ignoreAvailabilityWindow` property instead.
+- Removed `KeySystemConfiguration.isUseCredentials`, use `KeySystemConfiguration.useCredentials` instead.
+- Removed `ConaxDRMConfiguration.Builder.fairPlay()`, use `ConaxDRMConfiguration.Builder.fairplay()` instead.
+- Removed THEOlive publication events (`PublicationLoadStartEvent`, `PublicationLoadedEvent` and `PublicationOfflineEvent`), use the equivalent distribution events instead (`DistributionLoadStartEvent`, `EndpointLoadedEvent` and `DistributionOfflineEvent` respectively).
+- Removed `THEOplayerGlobal.playbackSettings`. This API is not supported in the Media3 playback pipeline.
+- Removed `SourceChangeEvent.playbackPipeline`.
+
+#### 🐛 Issues
+
+- Fixed an issue where a THEOlive stream would not start playing on `play()` after first playing a different stream.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- In an effort to align with the changes made by Apple regarding the [App Store publishing policy](https://developer.apple.com/news/upcoming-requirements/?id=02212025a), starting from THEOplayer 10.0 we will distribute our SDK builds using Xcode 16. Effectively, this means that developing a client application using THEOplayer iOS/tvOS SDK will require a minimum version of Xcode 16.
+- Removed the flag `useLegacyPlaybackEngine` in the initializer of `THEOliveConfiguration`.
+- Removed THEOlive publication events (`PublicationLoadStartEvent`, `PublicationLoadedEvent` and `PublicationOfflineEvent`), use the equivalent distribution events instead (`DistributionLoadStartEvent`, `EndpointLoadedEvent` and `DistributionOfflineEvent` respectively).
+- Removed the `destroy` method. Instead, destroy the player by removing its reference `self.player = nil`.
+- Removed the `set` from the subscript of the `TextTrackList` API. The `TextTrackList` is a read-only list.
+
+#### ✨ Features
+
+- Added Google IMA VAST support to OptiView Ads.
+
+### Roku
+
+#### 💥 Breaking Changes
+
+- Removed the `getHeader` method from the Network API in favor of the new `getHeaders` method.
+
+#### ⚡ Improvements
+
+- Added the `getHeaders` method to Network API.
+- Added protection against race conditions during destruction of the player.
+
 ## 🚀 9.12.0 (2025/09/09)
 
 ### Web
@@ -478,6 +558,10 @@ toc_max_heading_level: 2
 #### ⚡ Improvements
 
 - Update Millicast SDK to v2.4.3
+- Added a new improved OptiView live streaming (formerly known as THEOlive) playback pipeline.
+  - The new pipeline is enabled by default as it brings significant improvements.
+  - The legacy playback pipeline is still available, and can be activated by setting `THEOliveConfiguration.useLegacyPlaybackEngine` to `true`.
+  - The legacy playback pipeline is scheduled to be removed in version 10.
 
 #### 🐛 Issues
 
@@ -573,6 +657,7 @@ toc_max_heading_level: 2
 #### 👎 Deprecations
 
 - Deprecated the `destroy` method. Instead destroy the player by removing its reference `self.player = nil`.
+- Deprecated the `set` from the subscript of the `TextTrackList` API. The `TextTrackList` is a readonly list.
 
 ### Chromecast CAF
 
@@ -903,6 +988,10 @@ toc_max_heading_level: 2
 - Fixed an issue where the ad tag parameters were not passed to Google when playing a THEOad.
 - Fixed an issue where calling `player.destroy()` did not fully destroy the player.
 - Fixed an issue where a THEOad would already start playing, only audio, before its start date.
+
+#### 👎 Deprecations
+
+- Deprecated the `set` from the subscript of the `MediaTrackList` API. The `MediaTrackList` is a readonly list.
 
 ### Roku
 
