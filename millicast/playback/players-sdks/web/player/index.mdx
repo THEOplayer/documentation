@@ -43,21 +43,21 @@ As this is a new feature, we welcome customer feedback.
 
 Set this right after initializing your player by configuring the `abr` object and before setting the `player.source`:
 
-```javascipt
+```javascript
 player.abr.strategy = {
-  type: 'bandwidth'
-}
+  type: 'bandwidth',
+};
 ```
 
 For additional control you can specify to the player what estimated bandwidth value the player should start with to avoid auto-detection when the player first loads the source. Add the `metadata.bitrate` value in bits-per-second. This example shows selecting the `bandwidth` strategy with a starting bitrate of 1.2 Mbps.
 
-```javascipt
+```javascript
 player.abr.strategy = {
-    type: 'bandwidth',
-    metadata: {
-        bitrate: 1200000
-    }
-}
+  type: 'bandwidth',
+  metadata: {
+    bitrate: 1200000,
+  },
+};
 ```
 
 ### Additional Player Configuration
