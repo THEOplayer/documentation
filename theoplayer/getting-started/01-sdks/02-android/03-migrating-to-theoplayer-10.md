@@ -30,6 +30,34 @@ android {
 }
 ```
 
+## Update `compileSdk` to 36 or higher
+
+THEOplayer depends on the AndroidX Core library, which [requires `compileSdk` 36 as of version 1.17.0](https://developer.android.com/jetpack/androidx/releases/core#core_and_core-ktx_version_117_2).
+
+Update the `compileSdk` to be 36 (or higher) in your **module-level** `build.gradle` file:
+
+```groovy
+android {
+    compileSdk 36
+}
+```
+
+We also recommend [updating the Android Gradle Plugin](https://developer.android.com/build/releases/gradle-plugin#updating-plugin) to the latest version.
+In Android Studio, go to Tools &rarr; AGP Upgrade Assistant and follow the steps to update AGP in your project.
+
+## Update to Kotlin Gradle plugin 2.0.0 or higher
+
+THEOplayer now targets the Kotlin 2.0 language level, so you must build your app with Kotlin Gradle Plugin 2.0 or higher.
+This aligns with [the AndroidX Core library also targeting Kotlin 2.0 as of version 1.17.0](https://developer.android.com/jetpack/androidx/releases/core#core_and_core-ktx_version_117_2).
+
+Update the version of the `org.jetbrains.kotlin.android` plugin to be 2.0.0 (or higher) in your **project-level** `build.gradle` file:
+
+```groovy
+plugins {
+    id 'org.jetbrains.kotlin.android' version '2.2.20' apply false
+}
+```
+
 ## Media3 as single playback pipeline
 
 THEOplayer now always uses [Jetpack Media3](https://developer.android.com/media/media3) as its playback pipeline,
