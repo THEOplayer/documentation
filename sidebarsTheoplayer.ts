@@ -772,26 +772,6 @@ function iosConnectorItems(): SidebarItemConfig[] {
     },
     {
       type: 'category',
-      label: 'Conviva with Verizon Media',
-      description: 'Integrate with Conviva and Verizon Media for player analytics.',
-      customProps: {
-        icon: 'conviva',
-      },
-      link: {
-        type: 'generated-index',
-        title: 'Conviva & Verizon Media Connector for iOS & tvOS',
-        slug: 'connectors/ios/conviva-verizonmedia',
-      },
-      items: [
-        'external/iOS-Connector/Code/Conviva-VerizonMedia/README',
-        'external/iOS-Connector/Code/Conviva-VerizonMedia-Examples/README',
-        githubLink({
-          href: 'https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva-VerizonMedia',
-        }),
-      ],
-    },
-    {
-      type: 'category',
       label: 'Nielsen',
       description: 'Integrate with Nielsen for player analytics.',
       customProps: {
