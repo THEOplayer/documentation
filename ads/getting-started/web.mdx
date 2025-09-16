@@ -42,8 +42,8 @@ const player = new THEOplayer.Player(element, {
   libraryLocation: 'YOUR-LIBRARY-LOCATION',
   license: 'YOUR-LICENSE-WITH-OPTIVIEW-ADS',
   ads: {
-    theoads: true,
-  },
+    theoads: true
+  }
 });
 ```
 
@@ -54,17 +54,15 @@ player.source = {
   sources: {
     src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI',
     type: 'application/x-mpegurl',
-    hlsDateRange: true,
+    hlsDateRange: true
   },
   ads: [
     {
       integration: 'theoads',
       networkCode: 'NETWORK-CODE',
-      customAssetKey: 'CUSTOM-ASSET-KEY',
-      backdropDoubleBox: 'PATH-TO-DOUBLE-BOX-BACKDROP-IMAGE', // Optional
-      backdropLShape: 'PATH-TO-L-SHAPE-BACKDROP-IMAGE', // Optional
-    },
-  ],
+      customAssetKey: 'CUSTOM-ASSET-KEY'
+    }
+  ]
 };
 ```
 
@@ -84,22 +82,22 @@ OptiView Ads works seamlessly together with [Open Video UI for Web](/open-video-
     libraryLocation: 'YOUR-LIBRARY-LOCATION',
     license: 'YOUR-LICENSE-WITH-OPTIVIEW-ADS',
     ads: {
-      theoads: true,
-    },
+      theoads: true
+    }
   };
   ui.source = {
     sources: {
       src: 'PATH-TO-SIGNALING-SERVER/hls/MANIFEST-URI',
       type: 'application/x-mpegurl',
-      hlsDateRange: true,
+      hlsDateRange: true
     },
     ads: [
       {
         integration: 'theoads',
         networkCode: 'NETWORK-CODE',
-        customAssetKey: 'CUSTOM-ASSET-KEY',
-      },
-    ],
+        customAssetKey: 'CUSTOM-ASSET-KEY'
+      }
+    ]
   };
 </script>
 ```
