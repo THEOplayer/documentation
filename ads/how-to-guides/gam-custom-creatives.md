@@ -30,13 +30,13 @@ Apart from assigning a `Name` and optional `Description`, you need to perform th
 }
 ```
 
-Note the `impression` field which is needed for the player to properly handle impression tracking. The special macro `%%VIEW_URL_ESC%%` is supplied by GAM and will contain a GAM specfic impression URL which is called when the backdrop is shown on the client.
+Note the `impression` field which is needed for the player to properly handle impression tracking. The special macro `%%VIEW_URL_ESC%%` is supplied by GAM and will contain a GAM specific impression URL which is called when the backdrop is shown on the client.
 
 In the end it should look like this:
 
 ![Create custom creative template](../assets/img/gam_image_3.png)
 
-Now that the template is set up, you can start adding creatives as you would otherwise when using standard image creative, except you need to select this Custom creative template when adding the new creatives:
+Now that the template is set up, you can start adding creatives as you would otherwise when using standard image creatives, except you need to select this Custom creative template when adding the new creatives:
 
 ![Create custom creative template](../assets/img/gam_image_4.png)
 

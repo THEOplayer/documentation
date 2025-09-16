@@ -113,8 +113,8 @@ The body of the post request can have the following properties:
 - `source` is the optional identifier of the source for which the ad needs to be scheduled. The signaling service will only insert the ad for playlists containing part of this in their URL. If not set the ad is scheduled in every playlist.
 - `layout` is the optional OptiView Ads layout, which can be set to `SINGLE`, `DOUBLE`, `LSHAPE_AD` or `LSHAPE_CONTENT`. If it is `undefined` the default layout of the signaling service will be chosen.
 - `assetURI` is the optional manifest URI of an alternative ad source. If set it will use this URI during the scheduled ad break instead of Google Pod Serving.
-- `backdropURI`: Optional URI containing the back-drop to be used for this ad break.
-- `backdropURIGamProperties`: Optional property with configuration values for a dynamic back-drop loaded via GAM to be used for this ad break. This property has priority over `backdropURI`.
+- `backdropURI`: Optional URI containing the backdrop to be used for this ad break.
+- `backdropURIGamProperties`: Optional property with configuration values for a dynamic backdrop loaded via GAM to be used for this ad break. This property has priority over `backdropURI`.
 
 Note: for properties that are set on both the monetised stream and the ad break, the values on the ad break have priority.
 
