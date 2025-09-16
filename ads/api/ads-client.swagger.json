@@ -1882,7 +1882,7 @@
 		},
 		"/v2/monetized-streams/{monetizedStreamId}/break": {
 			"get": {
-				"operationId": "GetMonetizedStreamBreaks",
+				"operationId": "GetMonetizedStreamBreaksPaginated",
 				"responses": {
 					"200": {
 						"description": "A monetized stream",
@@ -1940,7 +1940,7 @@
 		},
 		"/v2/monetized-streams/{monetizedStreamId}/overlay": {
 			"get": {
-				"operationId": "GetMonetizedStreamOverlays",
+				"operationId": "GetMonetizedStreamOverlaysPaginated",
 				"responses": {
 					"200": {
 						"description": "A monetized stream",
