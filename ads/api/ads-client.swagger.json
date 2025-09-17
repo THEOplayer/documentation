@@ -6,6 +6,178 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"IStatus": {
+				"properties": {
+					"status": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string",
+						"nullable": true
+					},
+					"uptime": {
+						"type": "number",
+						"format": "double"
+					},
+					"timestamp": {
+						"type": "number",
+						"format": "double"
+					},
+					"version": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"status",
+					"error",
+					"uptime",
+					"timestamp",
+					"version"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MonetizedStreamEvent": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"endDate": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					},
+					"monetizedStream": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"description",
+					"startDate",
+					"endDate",
+					"id",
+					"monetizedStream"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PaginationDetails": {
+				"properties": {
+					"total_records": {
+						"type": "number",
+						"format": "double"
+					},
+					"current_page": {
+						"type": "number",
+						"format": "double"
+					},
+					"total_pages": {
+						"type": "number",
+						"format": "double"
+					},
+					"next_page": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"prev_page": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					}
+				},
+				"required": [
+					"total_records",
+					"current_page",
+					"total_pages",
+					"next_page",
+					"prev_page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"StreamEventResponse": {
+				"properties": {
+					"monetizedStream": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/MonetizedStreamEvent"
+						},
+						"type": "array"
+					},
+					"pagination": {
+						"$ref": "#/components/schemas/PaginationDetails"
+					}
+				},
+				"required": [
+					"monetizedStream",
+					"data",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReturnType_typeofStreamEventUpdateSchema.validateSync_": {
+				"properties": {
+					"endDate": {
+						"type": "string"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"StreamEventUpdate": {
+				"$ref": "#/components/schemas/ReturnType_typeofStreamEventUpdateSchema.validateSync_"
+			},
+			"IStreamEvent": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"endDate": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"description",
+					"startDate",
+					"endDate"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResourceType.MONETIZED_STREAM": {
+				"enum": [
+					"monetized-stream"
+				],
+				"type": "string"
+			},
 			"MonetizedStreamType": {
 				"enum": [
 					"LIVE",
@@ -21,6 +193,79 @@
 					"LSHAPE_CONTENT"
 				],
 				"type": "string"
+			},
+			"DynamicDetail": {
+				"properties": {},
+				"additionalProperties": {
+					"type": "string"
+				},
+				"type": "object"
+			},
+			"AssetKeyDetails": {
+				"properties": {
+					"podDuration": {
+						"type": "number",
+						"format": "double"
+					},
+					"eabnAdTagParameters": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					},
+					"adBreakSelectionParameters": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					},
+					"assetKey": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"assetKey"
+				],
+				"type": "object"
+			},
+			"IGamProperties": {
+				"properties": {
+					"iu": {
+						"type": "string"
+					},
+					"sz": {
+						"properties": {
+							"tv": {
+								"type": "string"
+							},
+							"phone": {
+								"type": "string"
+							},
+							"default": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"default"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"iu",
+					"sz"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EABNVersion": {
+				"enum": [
+					"V1",
+					"V2"
+				],
+				"type": "string"
+			},
+			"BumperAdDetails": {
+				"properties": {
+					"eabnAdTagParameters": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					}
+				},
+				"type": "object"
 			},
 			"IMonetizedStream": {
 				"properties": {
@@ -59,12 +304,13 @@
 					},
 					"backdropURI": {
 						"type": "string"
+					},
+					"backdropURIGamProperties": {
+						"$ref": "#/components/schemas/IGamProperties"
 					}
 				},
 				"required": [
 					"streamId",
-					"origin",
-					"segmentOrigin",
 					"layout"
 				],
 				"type": "object",
@@ -83,11 +329,7 @@
 						]
 					},
 					"type": {
-						"type": "string",
-						"enum": [
-							"monetized-stream"
-						],
-						"nullable": false
+						"$ref": "#/components/schemas/ResourceType.MONETIZED_STREAM"
 					},
 					"payload": {
 						"$ref": "#/components/schemas/IMonetizedStream"
@@ -98,6 +340,106 @@
 					"state",
 					"type",
 					"payload"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResourceType.MONETIZED_STREAM_REFERENCE_TIME": {
+				"enum": [
+					"monetized-stream-reference-time"
+				],
+				"type": "string"
+			},
+			"IMonetizedStreamReferenceTime": {
+				"properties": {
+					"date": {
+						"type": "string"
+					},
+					"pts": {
+						"type": "number",
+						"format": "double"
+					},
+					"engineId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"date",
+					"pts"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IMonetizedStreamReferenceTimeApiResponse": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/ResourceType.MONETIZED_STREAM_REFERENCE_TIME"
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"created",
+							"deleted",
+							"updated"
+						]
+					},
+					"payload": {
+						"$ref": "#/components/schemas/IMonetizedStreamReferenceTime"
+					}
+				},
+				"required": [
+					"id",
+					"type",
+					"state",
+					"payload"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ScteParams": {
+				"properties": {
+					"uniqueProgramId": {
+						"type": "number",
+						"format": "double"
+					},
+					"segmentationTypeId": {
+						"type": "number",
+						"format": "double"
+					},
+					"eabnAdTagParameters": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IMonetizedStreamEarlyReturn": {
+				"properties": {
+					"date": {
+						"type": "string"
+					},
+					"pts": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "string"
+					},
+					"spliceEvent": {
+						"$ref": "#/components/schemas/ScteParams"
+					},
+					"engineId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"date"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -122,12 +464,6 @@
 					"layout": {
 						"$ref": "#/components/schemas/MonetizedStreamLayout"
 					},
-					"assetKey": {
-						"type": "string"
-					},
-					"networkCode": {
-						"type": "string"
-					},
 					"originPath": {
 						"type": "string"
 					},
@@ -136,10 +472,56 @@
 					},
 					"backdropURI": {
 						"type": "string"
+					},
+					"backdropURIGamProperties": {
+						"$ref": "#/components/schemas/IGamProperties"
 					}
 				},
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ResourceType.AD_BREAK": {
+				"enum": [
+					"adbreak"
+				],
+				"type": "string"
+			},
+			"AdBreakInsertionType": {
+				"enum": [
+					"REPLACE",
+					"INSERT"
+				],
+				"type": "string"
+			},
+			"SignaledAdBreakStatus": {
+				"enum": [
+					"new",
+					"future",
+					"signaled",
+					"finished",
+					"error",
+					"continuous"
+				],
+				"type": "string"
+			},
+			"AdbreakInternalType": {
+				"enum": [
+					"BUMPER",
+					"ORIGINAL"
+				],
+				"type": "string"
+			},
+			"LifeCycle": {
+				"enum": [
+					"NEW",
+					"FUTURE",
+					"ERROR",
+					"SCHEDULED",
+					"DECISIONED",
+					"COMPLETED",
+					"ENDED"
+				],
+				"type": "string"
 			},
 			"IAdBreak": {
 				"properties": {
@@ -151,7 +533,8 @@
 					},
 					"endDate": {
 						"type": "string",
-						"format": "date-time"
+						"format": "date-time",
+						"nullable": true
 					},
 					"duration": {
 						"type": "number",
@@ -166,6 +549,9 @@
 					"assetURI": {
 						"type": "string"
 					},
+					"status": {
+						"$ref": "#/components/schemas/SignaledAdBreakStatus"
+					},
 					"asset_key": {
 						"type": "string"
 					},
@@ -174,12 +560,21 @@
 					},
 					"backdropURI": {
 						"type": "string"
+					},
+					"backdropURIGamProperties": {
+						"$ref": "#/components/schemas/IGamProperties"
+					},
+					"startPts": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
 					}
 				},
 				"required": [
 					"id",
-					"startDate",
-					"duration"
+					"startDate"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -190,11 +585,7 @@
 						"$ref": "#/components/schemas/IAdBreak"
 					},
 					"type": {
-						"type": "string",
-						"enum": [
-							"ad-break"
-						],
-						"nullable": false
+						"$ref": "#/components/schemas/ResourceType.AD_BREAK"
 					},
 					"state": {
 						"type": "string",
@@ -224,11 +615,7 @@
 						"type": "array"
 					},
 					"type": {
-						"type": "string",
-						"enum": [
-							"ad-break"
-						],
-						"nullable": false
+						"$ref": "#/components/schemas/ResourceType.AD_BREAK"
 					},
 					"state": {
 						"type": "string",
@@ -248,6 +635,55 @@
 					"id"
 				],
 				"type": "object"
+			},
+			"IAdBreakUpdate": {
+				"properties": {
+					"startDate": {
+						"type": "string"
+					},
+					"endDate": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"source": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"status": {
+						"$ref": "#/components/schemas/SignaledAdBreakStatus"
+					},
+					"asset_key": {
+						"type": "string"
+					},
+					"network_code": {
+						"type": "string"
+					},
+					"backdropURI": {
+						"type": "string"
+					},
+					"backdropURIGamProperties": {
+						"$ref": "#/components/schemas/IGamProperties"
+					},
+					"startPts": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
 			},
 			"OverlayTypes": {
 				"enum": [
@@ -326,33 +762,7 @@
 						"format": "double"
 					},
 					"gamProperties": {
-						"properties": {
-							"sz": {
-								"properties": {
-									"tv": {
-										"type": "string"
-									},
-									"phone": {
-										"type": "string"
-									},
-									"default": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"default"
-								],
-								"type": "object"
-							},
-							"iu": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"sz",
-							"iu"
-						],
-						"type": "object"
+						"$ref": "#/components/schemas/IGamProperties"
 					},
 					"resourceURI": {
 						"items": {
@@ -460,34 +870,413 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"IStatus": {
+			"ScteParamsResponse": {
 				"properties": {
-					"status": {
-						"type": "string"
-					},
-					"error": {
-						"type": "string",
-						"nullable": true
-					},
-					"uptime": {
+					"uniqueProgramId": {
 						"type": "number",
 						"format": "double"
 					},
-					"timestamp": {
+					"segmentationTypeId": {
 						"type": "number",
 						"format": "double"
 					},
-					"version": {
+					"eabnAdTagParameters": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					},
+					"id": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"status",
-					"error",
-					"uptime",
-					"timestamp",
-					"version"
+					"id"
 				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IScteParamMappingApiResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ScteParamsResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MonetizedStreamApiResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/IMonetizedStream"
+						},
+						"type": "array"
+					},
+					"pagination": {
+						"$ref": "#/components/schemas/PaginationDetails"
+					}
+				},
+				"required": [
+					"data",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AdbreakApiResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/IAdBreak"
+						},
+						"type": "array"
+					},
+					"pagination": {
+						"$ref": "#/components/schemas/PaginationDetails"
+					}
+				},
+				"required": [
+					"data",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OverlayApiResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/IOverlay"
+						},
+						"type": "array"
+					},
+					"pagination": {
+						"$ref": "#/components/schemas/PaginationDetails"
+					}
+				},
+				"required": [
+					"data",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReturnType_typeofISharedTemplateSchema.validateSync_": {
+				"properties": {
+					"metadata": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					},
+					"backdropURI": {
+						"type": "string"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"source": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"ISharedTemplateType": {
+				"$ref": "#/components/schemas/ReturnType_typeofISharedTemplateSchema.validateSync_"
+			},
+			"ReturnType_typeofTemplateAssignmentSchema.validateSync_": {
+				"properties": {
+					"templateId": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"TemplateAssignmentType": {
+				"$ref": "#/components/schemas/ReturnType_typeofTemplateAssignmentSchema.validateSync_"
+			},
+			"ReturnType_typeofAssignedTemplateDataSchema.validateSync_": {
+				"properties": {
+					"notReadyReason": {
+						"type": "string"
+					},
+					"isReady": {
+						"type": "boolean"
+					},
+					"metadata": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					},
+					"backdropURI": {
+						"type": "string"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"source": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"AssignedTemplateDataType": {
+				"$ref": "#/components/schemas/ReturnType_typeofAssignedTemplateDataSchema.validateSync_"
+			},
+			"TemplateAssignmentMultipleResponse": {
+				"properties": {
+					"eventId": {
+						"type": "string"
+					},
+					"monetizedStream": {
+						"type": "string"
+					},
+					"templates": {
+						"items": {
+							"$ref": "#/components/schemas/AssignedTemplateDataType"
+						},
+						"type": "array"
+					},
+					"pagination": {
+						"$ref": "#/components/schemas/PaginationDetails"
+					}
+				},
+				"required": [
+					"eventId",
+					"monetizedStream",
+					"templates",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReturnType_typeofTemplateAssignmentSingleResponseSchema.validateSync_": {
+				"properties": {
+					"template": {
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"notReadyReason": {
+								"type": "string"
+							},
+							"isReady": {
+								"type": "boolean"
+							},
+							"metadata": {
+								"$ref": "#/components/schemas/DynamicDetail"
+							},
+							"backdropURI": {
+								"type": "string"
+							},
+							"assetURI": {
+								"type": "string"
+							},
+							"layout": {
+								"$ref": "#/components/schemas/MonetizedStreamLayout"
+							},
+							"source": {
+								"type": "string"
+							},
+							"duration": {
+								"type": "number",
+								"format": "double"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"monetizedStream": {
+						"type": "string"
+					},
+					"eventId": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"TemplateAssignmentSingleResponseType": {
+				"$ref": "#/components/schemas/ReturnType_typeofTemplateAssignmentSingleResponseSchema.validateSync_"
+			},
+			"ReturnType_typeofAssignedTemplateDataUpdateSchema.validateSync_": {
+				"properties": {
+					"metadata": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					},
+					"backdropURI": {
+						"type": "string"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"source": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"AssignedTemplateDataUpdateType": {
+				"$ref": "#/components/schemas/ReturnType_typeofAssignedTemplateDataUpdateSchema.validateSync_"
+			},
+			"ReturnType_typeofSharedTemplateSchema.validateSync_": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"notReadyReason": {
+						"type": "string"
+					},
+					"isReady": {
+						"type": "boolean"
+					},
+					"metadata": {
+						"$ref": "#/components/schemas/DynamicDetail"
+					},
+					"backdropURI": {
+						"type": "string"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"source": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Obtain the return type of a function type"
+			},
+			"SharedTemplateType": {
+				"$ref": "#/components/schemas/ReturnType_typeofSharedTemplateSchema.validateSync_"
+			},
+			"SharedTemplateResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/SharedTemplateType"
+						},
+						"type": "array"
+					},
+					"pagination": {
+						"$ref": "#/components/schemas/PaginationDetails"
+					}
+				},
+				"required": [
+					"data",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ISharedTemplate": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"source": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"backdropURI": {
+						"type": "string"
+					},
+					"metadata": {
+						"properties": {},
+						"additionalProperties": {
+							"type": "string"
+						},
+						"type": "object"
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ISharedTemplateUpdate": {
+				"properties": {
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"source": {
+						"type": "string"
+					},
+					"layout": {
+						"$ref": "#/components/schemas/MonetizedStreamLayout"
+					},
+					"assetURI": {
+						"type": "string"
+					},
+					"backdropURI": {
+						"type": "string"
+					},
+					"metadata": {
+						"properties": {},
+						"additionalProperties": {
+							"type": "string"
+						},
+						"type": "object"
+					}
+				},
 				"type": "object",
 				"additionalProperties": false
 			}
@@ -502,7 +1291,7 @@
 	},
 	"info": {
 		"title": "THEOads Api",
-		"version": "25.2.0",
+		"version": "25.9.0",
 		"description": "The THEOads REST API allows you to create and manage monetized streams, which are deployments of signaling services. Each monetized stream corresponds to an origin stream that is monetized using THEOads (SGAI). For detailed information on the various parameters and their usage, please refer to the getting started guide.",
 		"license": {
 			"name": "UNLICENSED"
@@ -511,7 +1300,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/monetized-streams": {
+		"/v1/monetized-streams": {
 			"get": {
 				"operationId": "GetMonetizedStreams",
 				"responses": {
@@ -520,10 +1309,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
-									},
-									"type": "array"
+									"anyOf": [
+										{
+											"items": {
+												"$ref": "#/components/schemas/IMonetizedStreamApiResponse"
+											},
+											"type": "array"
+										},
+										{
+											"type": "string"
+										}
+									]
 								}
 							}
 						}
@@ -570,7 +1366,7 @@
 				}
 			}
 		},
-		"/monetized-streams/{monetizedStreamId}": {
+		"/v1/monetized-streams/{monetizedStreamId}": {
 			"get": {
 				"operationId": "GetMonetizedStream",
 				"responses": {
@@ -677,7 +1473,7 @@
 				]
 			}
 		},
-		"/monetized-streams/{monetizedStreamId}/layout": {
+		"/v1/monetized-streams/{monetizedStreamId}/layout": {
 			"patch": {
 				"operationId": "UpdateMonetizedStreamLayout",
 				"responses": {
@@ -730,7 +1526,7 @@
 				}
 			}
 		},
-		"/monetized-streams/{monetizedStreamId}/break": {
+		"/v1/monetized-streams/{monetizedStreamId}/break": {
 			"post": {
 				"operationId": "CreateMonetizedStreamBreak",
 				"responses": {
@@ -739,7 +1535,14 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IAdBreakApiResponse"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IAdBreakApiResponse"
+										},
+										{
+											"type": "string"
+										}
+									]
 								}
 							}
 						}
@@ -782,13 +1585,20 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IAdBreaksApiResponse"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IAdBreaksApiResponse"
+										},
+										{
+											"type": "string"
+										}
+									]
 								}
 							}
 						}
 					}
 				},
-				"description": "Retrieves all adbreaks linked to the monetized stream",
+				"description": "Retrieves all adbreaks linked to the monetized sctream",
 				"tags": [
 					"Monetized-Stream"
 				],
@@ -806,12 +1616,12 @@
 				]
 			}
 		},
-		"/monetized-streams/{monetizedStreamId}/break/{adbreakId}": {
+		"/v1/monetized-streams/{monetizedStreamId}/break/{adbreakId}": {
 			"delete": {
 				"operationId": "DeleteMonetizedStreamBreaks",
 				"responses": {
 					"200": {
-						"description": "A monetized stream",
+						"description": "An abreak",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -821,7 +1631,7 @@
 						}
 					}
 				},
-				"description": "Deletes an adbreak linked to the monetized stream",
+				"description": "Deletes an adbreak linked to the monetized sctream",
 				"tags": [
 					"Monetized-Stream"
 				],
@@ -837,6 +1647,7 @@
 						}
 					},
 					{
+						"description": "The adbreak identifier.",
 						"in": "path",
 						"name": "adbreakId",
 						"required": true,
@@ -845,9 +1656,59 @@
 						}
 					}
 				]
+			},
+			"patch": {
+				"operationId": "UpdateMonetizedStreamBreaks",
+				"responses": {
+					"200": {
+						"description": "An adbreak",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAdBreakApiResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Patches an adbreak linked to the monetized sctream",
+				"tags": [
+					"Monetized-Stream"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The adbreak identifier.",
+						"in": "path",
+						"name": "adbreakId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IAdBreakUpdate"
+							}
+						}
+					}
+				}
 			}
 		},
-		"/monetized-streams/{monetizedStreamId}/overlay": {
+		"/v1/monetized-streams/{monetizedStreamId}/overlay": {
 			"post": {
 				"operationId": "CreateMonetizedStreamOverlay",
 				"responses": {
@@ -899,13 +1760,20 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IOverlaysApiResponse"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IOverlaysApiResponse"
+										},
+										{
+											"type": "string"
+										}
+									]
 								}
 							}
 						}
 					}
 				},
-				"description": "Retrieves all overlays linked to the monetized stream",
+				"description": "Retrieves all overlays linked to the monetized sctream",
 				"tags": [
 					"Monetized-Stream"
 				],
@@ -923,7 +1791,7 @@
 				]
 			}
 		},
-		"/monetized-streams/{monetizedStreamId}/overlay/{overlayId}": {
+		"/v1/monetized-streams/{monetizedStreamId}/overlay/{overlayId}": {
 			"delete": {
 				"operationId": "DeleteMonetizedStreamOverlay",
 				"responses": {
@@ -938,7 +1806,7 @@
 						}
 					}
 				},
-				"description": "Deletes an overlay linked to the monetized stream",
+				"description": "Deletes an overlay linked to the monetized sctream",
 				"tags": [
 					"Monetized-Stream"
 				],
@@ -964,33 +1832,174 @@
 				]
 			}
 		},
-		"/status": {
+		"/v2/monetized-streams": {
 			"get": {
-				"operationId": "Status",
+				"operationId": "GetMonetizedStreamsPaginated",
 				"responses": {
 					"200": {
-						"description": "The status of the API.",
+						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IStatus"
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/MonetizedStreamApiResponse"
+										},
+										{
+											"type": "string"
+										}
+									]
 								}
 							}
 						}
 					}
 				},
-				"description": "Get the status of the API.",
 				"tags": [
-					"Status"
+					"Monetized-Stream-V2"
 				],
 				"security": [],
-				"parameters": []
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "skip",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/v2/monetized-streams/{monetizedStreamId}/break": {
+			"get": {
+				"operationId": "GetMonetizedStreamBreaksPaginated",
+				"responses": {
+					"200": {
+						"description": "A monetized stream",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/AdbreakApiResponse"
+										},
+										{
+											"type": "string"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieves all adbreaks linked to the monetized stream",
+				"tags": [
+					"Monetized-Stream-V2"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "skip",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/v2/monetized-streams/{monetizedStreamId}/overlay": {
+			"get": {
+				"operationId": "GetMonetizedStreamOverlaysPaginated",
+				"responses": {
+					"200": {
+						"description": "A monetized stream",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/OverlayApiResponse"
+										},
+										{
+											"type": "string"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieves all overlays linked to the monetized sctream",
+				"tags": [
+					"Monetized-Stream-V2"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "The Monetized stream identifier.",
+						"in": "path",
+						"name": "monetizedStreamId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "skip",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
 			}
 		}
 	},
 	"servers": [
 		{
-			"url": "/api/v1"
+			"url": "/ads-client/api"
 		}
 	]
 }

@@ -24,9 +24,9 @@ Below is a template for the Double Box layout tailored for 1080p resolution:
 
 ![Double box Template.png](../assets/img/backdrop-doublebox-template.png)
 
-### 2. L-Shape Layouts
+### 2. L-shape Layouts
 
-The **L-Shape** layout positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image.
+The **L-shape** layout positions the video player in the top-left corner of the screen, scaling it down to create space for the backdrop image.
 This configuration allows viewers to see the content or an ad and the backdrop image simultaneously.
 
 - **Screen Ratio**: 16:9, ensuring compatibility with most screens.
@@ -34,14 +34,14 @@ This configuration allows viewers to see the content or an ad and the backdrop i
 
 #### Example Template
 
-Below is a template for the L-Shape layout:
+Below is a template for the L-shape layout:
 
-![L-Shape Template.png](../assets/img/backdrop-lshape-template.png)
+![L-shape Template.png](../assets/img/backdrop-lshape-template.png)
 
 ## Considerations and Limitations
 
 While both layouts serve distinct purposes, certain limitations should be considered:
 
-- **Device Compatibility**: Most Smart TVs do not support the Double Box layout due to the lack of capability to show multiple video streams at the same time. For these devices, the L-Shape layout is a better option, as it displays only one active video stream along with the backdrop image. We currently disable Double Box for Smart TVs for this reason and fallback to Single layout.
+- **Device Compatibility**: Most Smart TVs do not support the Double Box layout due to the lack of capability to show multiple video streams at the same time. For these devices, the L-shape layout is a better option, as it displays only one active video stream along with the backdrop image. We currently disable Double Box for Smart TVs for this reason and fallback to Single layout.
 - **Resolution Adaptability**: Templates are made for 1080p resolution, but scaling considerations should be taken into account for lower or higher resolutions to maintain the quality and layout proportions.
 - **File Size and Load Times**: To ensure smooth playback and quick loading times, backdrop images should be optimized, especially for mobile and lower-capability devices.

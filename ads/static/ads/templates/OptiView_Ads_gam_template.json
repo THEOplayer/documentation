@@ -1,12 +1,12 @@
 {
-  "name": "OptiView Ads Image Overlay",
-  "description": "OptiView Ads Image Overlay",
+  "name": "OptiView Ads Image",
+  "description": "OptiView Ads Image",
   "variables": [
     {
       "mimeTypes": [],
       "label": "Image",
       "uniqueName": "Image",
-      "description": "The image to use for the overlay",
+      "description": "The image to use",
       "isRequired": true,
       "variableType": "ASSET"
     },

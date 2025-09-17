@@ -48,10 +48,6 @@
     "to": "/ads/api/signaling/get-monetized-streams/"
   },
   {
-    "from": "/theoads/api/signaling/status/",
-    "to": "/ads/api/signaling/status/"
-  },
-  {
     "from": ["/theoads/api/signaling/", "/theoads/api/signaling/theoads-api/"],
     "to": "/ads/api/signaling/theoads-api/"
   },
