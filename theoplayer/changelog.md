@@ -5,6 +5,15 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.0.1 (2025/09/16)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where HTTP POST requests made by the player (such as DRM license requests) failed to be sent using the new default network stack on Android 14 or higher (or when using Cronet).
+- Fixed `MillicastSource` referencing types from the native Millicast SDK that were not correctly included in the published API of the Millicast integration.
+
 ## 🚀 10.0.0 (2025/09/12)
 
 ### Announcing THEOplayer 10.0
