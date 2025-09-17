@@ -4,7 +4,7 @@ sidebar_position: 8
 
 # Dynamic backdrops
 
-Some layouts, such as L-shape and Double Box, make use of a backdrop. These can be specified on both the monetised stream and the ad break in 2 ways:
+Some layouts, such as L-shape and Double Box, make use of a backdrop. These can be specified on both the monetized stream and the ad break in 2 ways:
 
 - `backdropURI`: Optional URI containing the default backdrop to be used during the Double Box or L-shape ads.
 - `backdropURIGamProperties`: Optional property with configuration values for a dynamic backdrop loaded via GAM to be used during the Double Box or L-shape ads. This property has priority over `backdropURI`.

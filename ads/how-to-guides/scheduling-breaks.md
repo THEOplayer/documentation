@@ -116,7 +116,7 @@ The body of the post request can have the following properties:
 - `backdropURI`: Optional URI containing the backdrop to be used for this ad break.
 - `backdropURIGamProperties`: Optional property with configuration values for a dynamic backdrop loaded via GAM to be used for this ad break. This property has priority over `backdropURI`.
 
-Note: for properties that are set on both the monetised stream and the ad break, the values on the ad break have priority.
+Note: for properties that are set on both the monetized stream and the ad break, the values on the ad break have priority.
 
 An example of a schedule ad break request body can be found below:
 
