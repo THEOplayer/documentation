@@ -11,9 +11,9 @@ Some layouts, such as L-shape and Double Box, make use of a backdrop. These can 
 
 ## Using the OptiView Ads service REST API
 
-The way to specify backdrops is through the OptiView Ads service API when creating or updating both monetised streams and adbreaks.
+The way to specify backdrops is through the OptiView Ads service API when creating or updating both monetized streams and adbreaks.
 
-The body of the post request for both monetised streams and ad breaks can have the following properties:
+The body of the post request for both monetized streams and ad breaks can have the following properties:
 
 ```ts
 {
