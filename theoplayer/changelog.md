@@ -5,6 +5,57 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.1.0 (2025/09/24)
+
+### General
+
+#### ✨ Features
+
+- Added the `adTagParameters` property to OptiView `Interstitial`.
+
+### Web
+
+#### ⚡ Improvements
+
+- Added `segmenterror` and `manifesterror` events to be used for detecting offline status. 
+
+#### 🐛 Issues
+
+- Fixed an issue where live streams on Chromecast would start at the beginning of their DVR window if the current time was unknown.
+- Fixed an issue where the player would sometimes stall about 10 seconds after stream start on devices with slow appends on certain HLS streams.
+
+#### 👎 Deprecations
+
+- Deprecated the `segmentnotfound`, `manifestnotfound`, `offline`, and `online` events. Use the new `manifesterror` and `segmenterror` events to detect offline status. Use the `manifestupdate` event to detect online status.
+
+### Android
+
+#### ✨ Features
+
+- Added Google IMA VAST support to OptiView Ads.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would crash with an `IllegalArgumentException` when playing certain low-latency HLS streams.
+- Fixed an issue where the player could stall indefinitely when enabling an embedded subtitle track containing no actual subtitles.
+- Fixed an issue where some HLS streams with gzip compressed playlists failed to play when using the new default network stack on Android 14 or higher (or when using Cronet).
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the quartile events would not be dispatched for OptiView Ads.
+- Fixed an issue where the player would not switch to the next adbreak when playing adbreak to adbreak with OptiView Ads.
+- Fixed an issue that causes a crash after listening to `TextTrackListEventTypes.ADD_TRACK` and loading webVTT subtitles in an app that is compiled using Swift 6 and is using `@preconcurrency import THEOplayerSDK`.
+- Fixed an issue where Dolby OptiView Streams would crash in a rare race condition during playback.
+
+### Roku
+
+#### ✨ Features
+
+- Made the Conviva connector able take a new player instance after the previous instance was destroyed.
+- Added `encoding_type` to custom metadata sent to Conviva.
+
 ## 🚀 10.0.1 (2025/09/16)
 
 ### Android
@@ -93,6 +144,14 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 - Added the `getHeaders` method to Network API.
 - Added protection against race conditions during destruction of the player.
+
+## 🚀 9.12.1 (2025/09/19)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would sometimes stall about 10 seconds after stream start on devices with slow appends on certain HLS streams.
 
 ## 🚀 9.12.0 (2025/09/09)
 
@@ -864,6 +923,22 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 - Solved an issue with multi-ad VMAP postrolls by disabling Inter Pod Stitching for them.
 
+## 🚀 9.3.4 (2025/09/22)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where deinitializing the player during the loading of a THEOlive (OptiView Streaming) stream would cause a crash. 
+
+## 🚀 9.3.3 (2025/09/17)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where THEOlive streams would not restart after app backgrounding.
+
 ## 🚀 9.3.2 (2025/05/13)
 
 ### Android
@@ -1134,7 +1209,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### ⚠ Known Limitations
 
 - ~~Availability of media and text tracks has moved from the `loadedmetadata` event to the `loadeddata` event when using the Media3 playback pipeline.~~ (Fixed in version 9.4.0.)
-- Text track styling embedded in the source take precedence over user text track style configuration.
+- ~~Text track styling embedded in the source take precedence over user text track style configuration.~~ (Fixed in version 9.7.0.)
 
 #### ✨ Features
 
