@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.1.1 (2025/09/30)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would run into a fatal decode error on HESP streams on Chromium based browsers without hardware acceleration.
+
 ## 🚀 10.1.0 (2025/09/24)
 
 ### General
