@@ -16,6 +16,7 @@ export interface CodeInputElement extends CodeInputNamespace.CodeInput {
 
 export interface Props extends DetailedHTMLProps<HTMLAttributes<CodeInputElement>, CodeInputElement> {
   template?: string;
+  value?: string;
 }
 
 declare module 'react' {
@@ -26,9 +27,13 @@ declare module 'react' {
   }
 }
 
-export function CodeInput(props: Props) {
+export function CodeInput({ value, defaultValue, onInput, ...props }: Props) {
   useEffect(() => {
     codeInput.setupTemplate();
   }, []);
-  return <code-input template="syntax-highlighted" {...props}></code-input>;
+  return (
+    <code-input template="syntax-highlighted" {...props} onInput={onInput}>
+      <textarea data-code-input-fallback value={value} defaultValue={defaultValue} />
+    </code-input>
+  );
 }
