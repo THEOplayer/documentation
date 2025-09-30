@@ -148,6 +148,10 @@ pre[class*='language-'] {
   text-shadow: none !important;
 }
 
+code-input {
+  font-family: var(--ifm-font-family-monospace, monospace) !important;
+}
+
 .theme-doc-sidebar-menu hr {
   --ifm-hr-margin-vertical: 0.5rem;
 }
