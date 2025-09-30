@@ -112,7 +112,6 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
-  onBrokenMarkdownLinks: 'throw',
   future: {
     v4: true,
     experimental_faster: true,
@@ -444,6 +443,9 @@ const config: Config = {
   themes: ['docusaurus-theme-openapi-docs'],
 
   markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw'
+    },
     parseFrontMatter: async (params) => {
       const result = await params.defaultParseFrontMatter(params);
       const { frontMatter } = result;
