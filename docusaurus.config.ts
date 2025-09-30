@@ -418,7 +418,7 @@ const config: Config = {
 
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: 'throw'
+      onBrokenMarkdownLinks: 'throw',
     },
     parseFrontMatter: async (params) => {
       const result = await params.defaultParseFrontMatter(params);
