@@ -137,7 +137,7 @@ Self-signing your Subscribe token allows you to:
 ### Creating a self-signed token
 
 1. Create a Subscribe token using the [Create Token](/millicast/api/subscribe-token-v-1-create-token.api.mdx) API. The API returns the `tokenId` and `token`.
-2. Create a JWT with the following data:
+2. Create a JWT with the following data inside a `streaming` object:
    - `tokenId`: The ID of the (primary) subscribe token
    - `streamName`: A complete, non-wildcard `streamName` that the subscriber will be allowed access to view
    - `allowedOrigins` (optional): Origins that allow the stream to be viewed from
@@ -146,6 +146,31 @@ Self-signing your Subscribe token allows you to:
    - `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
    - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/distribution/syndication). Using this parameter requires contacting sales.
 3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
+
+_Note: Either or both `trackingId` and/or `customViewerData` may be used depending on what kind of tracking you need to achieve._
+
+To put it all together, here is an example `payload` for a JWT that includes sample `trackingId` and `customViewerData`:
+
+```json
+{
+  "streaming": {
+    "tracking": {
+      "trackingId": "groupAbc"
+    },
+    "customViewerData": "user=user123;appVersion=x.y.x"
+  },
+  "iat": 1750813271,
+  "exp": 1750813871 // required for the token to be valid
+}
+```
+
+Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY).
+
+```text
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY
+```
+
+To see the validation tool validate the token, insert the random token used to sign the JWT: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
 
 :::info Code Examples
 Examples of self-singing a token can be found at this [GitHub repository](https://github.com/millicast/selfsign-jwt-reference).

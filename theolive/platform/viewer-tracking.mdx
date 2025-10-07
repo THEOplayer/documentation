@@ -20,7 +20,7 @@ The following is an **example workflow** for setting up stream tracking:
 
 1. Create a THEOlive channel
 1. Enable [_Token Security_](security/token-based-security.mdx) on the channel or alias
-1. When you create your self-signed token, add one or both of the following parameters to the `payload.tracking` of your JWT:
+1. When you create your self-signed token, add one or both of the following parameters to a `streaming` object in the `payload` of your JWT:
    - **trackingId**: Groups viewers of the same channel, allows you to get the aggregated bandwidth usage of all viewers. This is useful for billing a single channel or alias if you use multiple distribution partners and want aggregated billing metrics back or viewer reports for groups of viewers. The maximum size is 128 characters
    - **customViewerData** : Access the bandwidth consumption of each viewer for analytics purposes and passthrough metadata from your CMS for a viewer and be able to retrieve it in a viewer report. This data is not parsed by our system and can be a series of key-value pairs for you to extract later. The maxium size is 1024 characters
 1. Pass the JWT through to the player as described in the [_Token Security_](security/token-based-security.mdx) section
@@ -32,8 +32,10 @@ To put it all together, here is an example `payload` for a JWT that includes sam
 
 ```json
 {
-  "tracking": {
-    "trackingId": "groupAbc",
+  "streaming": {
+    "tracking": {
+      "trackingId": "groupAbc"
+    },
     "customViewerData": "user=user123;appVersion=x.y.x"
   },
   "iat": 1750813271,
@@ -41,10 +43,10 @@ To put it all together, here is an example `payload` for a JWT that includes sam
 }
 ```
 
-Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMiLCJjdXN0b21WaWV3ZXJEYXRhIjoidXNlcj11c2VyMTIzO2FwcFZlcnNpb249eC55LngifSwiaWF0IjoxNzUwODEzMjcxLCJleHAiOjE3NTA4MTM4NzF9.pgvw10HvMVd-Uw-7DLAlxe4g84jwWGEP3kIbjQEFof0).
+Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY).
 
 ```text
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMiLCJjdXN0b21WaWV3ZXJEYXRhIjoidXNlcj11c2VyMTIzO2FwcFZlcnNpb249eC55LngifSwiaWF0IjoxNzUwODEzMjcxLCJleHAiOjE3NTA4MTM4NzF9.pgvw10HvMVd-Uw-7DLAlxe4g84jwWGEP3kIbjQEFof0
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY
 ```
 
 To see the validation tool validate the token, insert the random secret used to sign the token: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
