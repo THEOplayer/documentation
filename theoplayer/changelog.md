@@ -5,6 +5,89 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.2.0 (2025/10/09)
+
+### Web
+
+#### ✨ Features
+
+- Added VAST ad support for Smart TVs with OptiView Ads.
+- Added support for adding an authToken to OptiView live streams when casting (given that a cast receiver is used with the [useShakaForHls](https://developers.google.com/cast/docs/web_receiver/shaka_migration/) flag set).
+- The [`@theoplayer/extended` package on npm](https://www.npmjs.com/package/@theoplayer/extended) now also supports OptiView Live streams.
+- Added support for adTagParameters on gamProperties for Overlays and backdropURIGamProperties for backdrops on OptiView Ads.
+
+#### ⚡ Improvements
+
+- Improved the startup times on certain smart TVs.
+- Improved the ABR to select higher resolutions on smart TVs whose `devicePixelRatio` is greater than `1.0`.
+- `InterceptableRequest.redirect()` and `.respondWith()` now accept iterables and native `Headers` objects when replacing the request/response headers.
+
+#### 🐛 Issues
+
+- Fixed an issue where a VAST ad could be invisible in combination with OptiView Ads.
+- Fixed an issue where the player shows a black screen when it tries to load an l-shape content interstitial during native fullscreen or native picture-in-picture for an OptiView Ads stream.
+- Fixed an issue where the player would sometimes show a black screen instead of video while falling back on OptiView live streams.
+- Fixed an issue where the seekable was not correct on certain HLS streams.
+- Fixed an issue where the player would sometimes stall for a very short time on Safari right after starting playback on some HLS streams.
+- Fixed an issue where old devices without WebAssembly support could not transmux MPEG-TS segments.
+- Fixed an issue where an HLS live stream with a very short DVR window would stall immediately on iOS Safari when initiating playback.
+- Fixed an issue where the player would not switch back to the content after playing back to back l-shape content interstitials on an OptiView Ads stream.
+- Fixed an issue where OptiView live streams didn't start playing after a channel transitioned from offline to playing.
+
+### Android
+
+#### ✨ Features
+
+- Added `Player.poster` API for displaying the poster image in the player.
+- Added `CurrentSourceChangeEvent`, which is dispatched when the player receives a new source from `SourceDescripion.sources`.
+- Allow overriding `adTagParameters` for an individual overlay interstitial.
+
+#### ⚡ Improvements
+
+- Increased the maximum number of HTTP 3xx redirects to follow to 20, to align with standard browser behavior.
+
+#### 🐛 Issues
+
+- Setting `SourceDescription.poster` will now display the poster both in the  player UI and when casting to Chromecast.
+- Fixed an issue where live streams on Chromecast would start at the beginning of their DVR window if the current time was unknown.
+- Fixed an issue for OptiView Ads where the current time was incorrect during  an ad break with `DOUBLE` layout.
+- Fixed an issue where the `Content-Length` header was not available in `HTTPResponse.headers` when using the new default network stack. Note that when the response body is compressed, this header will still be unavailable.
+- Fixed an occasional `InterruptedException` being logged to Logcat while playing an LL-HLS stream when the `Logger.Media3` logs are enabled.
+- Fixed an issue where SVG overlay images might not be visible in an OptiView Ads stream.
+- Fixed a regression where `Player.readyState` was not updated while playing a Google IMA ad.
+- Fixed an issue where the selected text track would get disabled on multi-period DASH streams if the codec of the text tracks between the periods were different.
+
+### iOS
+
+#### ✨ Features
+
+- Added `Quality` and `VideoQuality` protocols. `ActiveQualityChangedEvent` now has a `quality` property.
+- Added the option to override `adTagParameters` for an individual overlay interstitial.
+- Added the CurrentSourceChangeEvent, which is dispatched when the player starts playing a new source.
+- Added `qualities` property to `MediaTrack`.
+- The player now dispatches `EncryptedEvent` and `ContentProtectionSuccessEvent` during a DRM flow. `EncryptedEvent` indicates the start of a DRM flow, while `ContentProtectionSuccessEvent` indicates the success. Use `PlayerEventTypes.ENCRYPTED` and `PlayerEventTypes.CONTENT_PROTECTION_SUCCESS` to listen to these events.
+
+#### ⚡ Improvements
+
+- Reporting errors for THEOlive (OptiView Streaming) streams via CMCD headers
+
+#### 🐛 Issues
+
+- Fixed an issue where THEOlive (OptiView Streaming) would not start playing after coming back from the background.
+- Fixed an issue where deinitializing the player during the loading of a THEOlive (OptiView Streaming) stream would cause a crash.
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added support for adTagParameters on gamProperties for Overlays on OptiView Ads.
+
+### Roku
+
+#### ⚡ Improvements
+
+- Improved URL rewriting in `THEOM3u8TagRemover` so relative URLs that begin with a slash are handled correctly.
+
 ## 🚀 10.1.1 (2025/09/30)
 
 ### Web
@@ -450,7 +533,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 #### ⚡ Improvements
 
-- Improved support for frame metadata extraction with Optiview RealTime streams on older browsers, all the way back to Chrome v87.
+- Improved support for frame metadata extraction with OptiView RealTime streams on older browsers, all the way back to Chrome v87.
 
 #### 🐛 Issues
 
