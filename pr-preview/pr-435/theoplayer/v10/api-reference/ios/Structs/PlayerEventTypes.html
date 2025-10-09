@@ -873,6 +873,15 @@
                 <a class="nav-group-task-link" href="../Classes/CachingTaskIdleStateChangeEvent.html">CachingTaskIdleStateChangeEvent</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)ContentProtectionSuccessEvent">ContentProtectionSuccessEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CurrentSourceChangeEvent.html">CurrentSourceChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)EncryptedEvent">EncryptedEvent</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/KeySystemConfigurationCollection.html">KeySystemConfigurationCollection</a>
               </li>
               <li class="nav-group-task">
@@ -943,7 +952,16 @@
                 <a class="nav-group-task-link" href="../Protocols/NetworkAPI.html">NetworkAPI</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Quality.html">Quality</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/QualityList.html">QualityList</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/UniversalAdId.html">UniversalAdId</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/VideoQuality.html">VideoQuality</a>
               </li>
             </ul>
           </li>
@@ -1497,6 +1515,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:13THEOplayerSDK16PlayerEventTypesV21CURRENT_SOURCE_CHANGEAA0D4TypeCyAA019CurrentSourceChangeD0CGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/CURRENT_SOURCE_CHANGE" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK16PlayerEventTypesV21CURRENT_SOURCE_CHANGEAA0D4TypeCyAA019CurrentSourceChangeD0CGvpZ">CURRENT_SOURCE_CHANGE</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fired when the current source, which is chosen from <code><a href="../Classes/SourceDescription.html#/s:13THEOplayerSDK17SourceDescriptionC7sourcesSayAA05TypedC0CGvp">SourceDescription.sources</a></code>, changes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">CURRENT_SOURCE_CHANGE</span><span class="p">:</span> <span class="kt"><a href="../Classes/EventType.html">EventType</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/CurrentSourceChangeEvent.html">CurrentSourceChangeEvent</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:13THEOplayerSDK16PlayerEventTypesV24PRESENTATION_MODE_CHANGEAA0D4TypeCyAA022PresentationModeChangeD0CGvpZ"></a>
                     <a name="//apple_ref/swift/Variable/PRESENTATION_MODE_CHANGE" class="dashAnchor"></a>
                     <a class="token" href="#/s:13THEOplayerSDK16PlayerEventTypesV24PRESENTATION_MODE_CHANGEAA0D4TypeCyAA022PresentationModeChangeD0CGvpZ">PRESENTATION_MODE_CHANGE</a>
@@ -1623,6 +1668,60 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">DESTROY</span><span class="p">:</span> <span class="kt"><a href="../Classes/EventType.html">EventType</a></span><span class="o">&lt;</span><span class="kt"><a href="../Player%20Events.html#/c:@M@THEOplayerSDK@objc(cs)DestroyEvent">DestroyEvent</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK16PlayerEventTypesV9ENCRYPTEDAA0D4TypeCyAA09EncryptedD0CGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/ENCRYPTED" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK16PlayerEventTypesV9ENCRYPTEDAA0D4TypeCyAA09EncryptedD0CGvpZ">ENCRYPTED</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fired when the player encounters key system initialization data in the media data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">ENCRYPTED</span><span class="p">:</span> <span class="kt"><a href="../Classes/EventType.html">EventType</a></span><span class="o">&lt;</span><span class="kt"><a href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)EncryptedEvent">EncryptedEvent</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK16PlayerEventTypesV26CONTENT_PROTECTION_SUCCESSAA0D4TypeCyAA024ContentProtectionSuccessD0CGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/CONTENT_PROTECTION_SUCCESS" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK16PlayerEventTypesV26CONTENT_PROTECTION_SUCCESSAA0D4TypeCyAA024ContentProtectionSuccessD0CGvpZ">CONTENT_PROTECTION_SUCCESS</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fired when the key is usable for decryption.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">CONTENT_PROTECTION_SUCCESS</span><span class="p">:</span> <span class="kt"><a href="../Classes/EventType.html">EventType</a></span><span class="o">&lt;</span><span class="kt"><a href="../Other%20Classes.html#/c:@M@THEOplayerSDK@objc(cs)ContentProtectionSuccessEvent">ContentProtectionSuccessEvent</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
