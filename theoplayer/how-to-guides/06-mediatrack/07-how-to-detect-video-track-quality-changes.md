@@ -9,7 +9,7 @@ Implementing this functionality is a common use-case for developers who want to 
 
 | Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
-|   Yes   |     Yes     |   No    |    No    |      Yes       |      Yes       |
+|   Yes   |     Yes     |   Yes   |   Yes    |      Yes       |      Yes       |
 
 ## Code examples
 
@@ -51,7 +51,19 @@ tpv.getPlayer().getVideoTracks().addEventListener(VideoTrackListEventTypes.ADDTR
 
 ##### iOS (/tvOS) SDK
 
-Currently not available due to iOS limitations.
+```swift
+player.videoTracks.addEventListener(type: VideoTrackListEventTypes.ADD_TRACK, listener: { addTrackEvent in
+    guard let videoTrack = addTrackEvent.track as? VideoTrack else { return }
+    videoTrack.addEventListener(type: MediaTrackEventTypes.ACTIVE_QUALITY_CHANGED, listener: { qualityChangeEvent in
+        let quality = qualityChangeEvent.quality
+        var msg = "Quality changed: bandwidth = \(quality.bandwidth)"
+        if let videoQuality = quality as? VideoQuality {
+            msg.append(", width = \(videoQuality.width), height = \(videoQuality.height)")
+        }
+        print(msg)
+    })
+})
+```
 
 ## Remarks
 
