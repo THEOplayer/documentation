@@ -5,6 +5,23 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.2.1 (2025/10/13)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where the `TheoAdDescription.adTagParameters` were not used for backdrops on OptiView Ads.
+- Fixed a regression in Chromium-based browsers on macOS where HESP streams would sometimes fail to start.
+- Fixed an issue where the player would not play any ads after the player has errored on playing a l-shape content interstitial during native fullscreen for an OptiView Ads stream.
+- Fixed an issue where the player would show a black screen during native fullscreen when the player already errored on playing a l-shape content interstitial during native fullscreen and then switched back to inline playback for an OptiView Ads stream.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the `THEOAdDescription.adTagParameters` were not used for backdrops on OptiView Ads.
+
 ## 🚀 10.2.0 (2025/10/09)
 
 ### Web
