@@ -5,6 +5,26 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.2.2 (2025/10/14)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where the `TheoAdDescription.adTagParameters` were not used for interstitial with the `LSHAPE_CONTENT` layout on OptiView Ads.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where the second and following Ad breaks were not playing for Optiview Ads.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where playing OptiView Streaming (THEOlive) streams could crash due to a race condition.
+
 ## 🚀 10.2.1 (2025/10/13)
 
 ### Web
