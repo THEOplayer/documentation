@@ -5,6 +5,70 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.3.0 (2025/10/23)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where embedded subtitles could sometimes disappear after repeatedly seeking back and forth in an MPEG-DASH stream.
+- Fixed an issue where disconnecting a headset while playing an MPEG-DASH live stream causes the player to stall.
+
+### Android
+
+#### ✨ Features
+
+- Added SSAI fallback through DAI for OptiView Ads if an ad blocker prevents ads from playing when using OptiView Streaming.
+- Added support for `adTagParameters` on `gamProperties` for overlays and `backdropURIGamProperties` for backdrops on OptiView Ads.
+- Added support for DAI SSAI as a primary stream source via OptiView Streaming.
+
+#### 🐛 Issues
+
+- Fixed an issue where EZDRM ClearKey license responses were not correctly handled and could result in playback failures.
+- Fixed an issue where HLS streams with gzip compressed playlists failed to play on older Android devices when the HTTP response contains a `Content-Encoding` header with a lowercased header name (i.e. `content-encoding`).
+- Fixed an issue where OptiView Ads playback was broken after the application comes back from background.
+
+#### 👎 Deprecations
+
+- Deprecated `THEOplayerConfig.getPipConfiguration()`, use `THEOplayerConfig.getPip()` instead.
+- Deprecated `THEOplayerConfig.getNetworkConfiguration()`, use `THEOplayerConfig.getNetwork()` instead.
+- Deprecated `THEOplayerConfig.getTHEOLiveConfiguration()`, use `THEOplayerConfig.getTheoLive()` instead.
+- Deprecated `THEOplayerConfig.castConfiguration`, use `THEOplayerConfig.cast` instead.
+- Deprecated `THEOplayerConfig.googleImaConfiguration`, use `THEOplayerConfig.googleIma` instead.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for `adTagParameters` on `gamProperties` for overlays and `backdropURIGamProperties` for backdrops on OptiView Ads.
+- Added `averageBandwidth` property to the `Quality` API.
+- Added `activeQuality` property to the `MediaTrack` API.
+- Deprecated `activeQualityBandwidth` property from the `MediaTrack` API, use `activeQuality` instead. To access the bandwidth value, use the `bandwidth` property of `activeQuality`.
+- Added `Ad.isSlate` API to indicate whether the ad is slate or not. 
+- Added `playerMetrics` API with `droppedVideoFrames` property.
+- Added `renderedFramerate` property to `Metrics` API.
+
+#### ⚡ Improvements
+
+- Improved ad break reporting for Google DAI by already creating an ad break when not all information is known from Google DAI. We will dispatch `UpdateAdBreakEvent` when more information is known from Google DAI.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `player.muted` and `player.volume` properties were not preserved when setting a source when OptiView Ads is included.
+- Fixed an issue where `player.ads.playing` would return `false` when joining a Google DAI stream in the middle of an advertisement.
+- Fixed an issue where the `TextTrackListEventTypes.REMOVE_TRACK` event listener would not trigger.
+- Fixed an issue where the `aspectRatio` and `videoRect` APIs were not working correctly.
+
+#### 👎 Deprecations
+
+- Deprecated return type of `metrics` API. The type will change from `Any?` to `Metrics` with the next major version.
+
+### Roku
+
+#### ✨ Features
+
+- Added Google DAI support for OptiView Live streams.
+
 ## 🚀 10.2.2 (2025/10/14)
 
 ### Web
