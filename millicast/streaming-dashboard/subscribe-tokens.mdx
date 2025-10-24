@@ -140,6 +140,7 @@ Self-signing your Subscribe token allows you to:
 2. Create a JWT with the following data inside a `streaming` object:
    - `tokenId`: The ID of the (primary) subscribe token
    - `streamName`: A complete, non-wildcard `streamName` that the subscriber will be allowed access to view
+   - `tokenType`: Assign the string `"Subscribe"` to indicate that it is a Subscribe token
    - `allowedOrigins` (optional): Origins that allow the stream to be viewed from
    - `allowedIpAddresses` (optional): IP ranges that allow the stream to be viewed from
    - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
@@ -154,6 +155,9 @@ To put it all together, here is an example `payload` for a JWT that includes sam
 ```json
 {
   "streaming": {
+    "tokenId": 12345, //required
+    "streamName": "myStreamName", //required
+    "tokenType": "Subscribe", //required
     "tracking": {
       "trackingId": "groupAbc"
     },
@@ -164,10 +168,10 @@ To put it all together, here is an example `payload` for a JWT that includes sam
 }
 ```
 
-Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY).
+Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54In0sImlhdCI6MTc1MDgxMzI3MSwiZXhwIjoxNzUwODEzODcxfQ.pP5Kg6fCJfTaCc_OaV1FV5votZjy8x1gfJ2F7tQXj7c).
 
 ```text
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54In0sImlhdCI6MTc1MDgxMzI3MSwiZXhwIjoxNzUwODEzODcxfQ.pP5Kg6fCJfTaCc_OaV1FV5votZjy8x1gfJ2F7tQXj7c
 ```
 
 To see the validation tool validate the token, insert the random token used to sign the JWT: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
