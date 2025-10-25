@@ -16,7 +16,7 @@ import ReStream from '../assets/img/f4258c0c072e9b7b4c8b297df5a3cd2e3f0a616131f8
 To distribute content to an RTMP(S) or SRT output source you will need to update the settings of your [Publish Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx). The publish token defines a `restream` property with a list of targets that are identified by:
 
 - **url** - the media server that is able to accept RTMP(S) or SRT ingest including the rtmp://, rtmps:// and srt:// protocols and port number
-- **key** - the url path and/or additional parameters that should be passed to the server to uniquely identify the incoming RTMP(S) or SRT stream
+- **key** - for RTMP(s), use the stream key provided by the 3rd party RTMP service. For SRT, this value is the `streamid`
 - **label** - a text value to help with identifying and distinguishing multiple re-stream target endpoints
 - **enabled** - a boolean as to whether or not this re-stream should be used or not
 
@@ -76,7 +76,7 @@ For scenarios such as [Multi-Source Broadcasting](/millicast/broadcast/multi-sou
 
 To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast/publishing-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/playback/multi-view.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
 
-## Feature compatability
+## Feature compatibility
 
 ### Cloud transcoder and Re-streaming
 
@@ -110,9 +110,13 @@ import ReStreamEventLog from '../assets/img/75365b6ae803eaa90dcd77f49d1f4ce22ba4
 
 The re-stream feed is only showing audio or video. This may be because you are using an unsupported codec in the source broadcast. If you are using something other than H.264 or AAC you may experience dropped frames.
 
-### Re-stream is Not Working with Web Broadcasts
+### Re-Stream is Not Working with Web Broadcasts
 
 If you are streaming using the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) dashboard app or a custom built app using the [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) you are using WebRTC to broadcast. Re-streaming is only available for [SRT](/millicast/broadcast/srt.mdx) and [RTMP(S)](/millicast/broadcast/rtmp-and-rtmps.mdx) so you will need to use an encoder that supports one of those broadcast protocols in order for re-stream to be successful.
+
+### Re-Stream codec support
+
+_Note: Only the h264 codec is currently supported for re-streaming._
 
 :::tip We're Here to Help
 For any other issues not covered here, please reach out to your sales and solutions team who can review server logs that may help identify any configuration issues.
