@@ -36,17 +36,18 @@ To put it all together, here is an example `payload` for a JWT that includes sam
     "tracking": {
       "trackingId": "groupAbc"
     },
-    "customViewerData": "user=user123;appVersion=x.y.x"
+    "customViewerData": "user=user123;appVersion=x.y.x",
+    "tokenType": "Subscribe"
   },
   "iat": 1750813271,
   "exp": 1750813871 // required for the token to be valid
 }
 ```
 
-Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY).
+Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCIsInRva2VuVHlwZSI6IlN1YnNjcmliZSJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.OvIZAvs6XL4KQ8YTtIdjdJNZ5oS6Jkosj3mq274gdrw).
 
 ```text
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.KFBOVmRq7i0W829mu0Og06NrQg_lAWRAOFLCLmuNSJY
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCIsInRva2VuVHlwZSI6IlN1YnNjcmliZSJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.OvIZAvs6XL4KQ8YTtIdjdJNZ5oS6Jkosj3mq274gdrw
 ```
 
 To see the validation tool validate the token, insert the random secret used to sign the token: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
@@ -55,3 +56,4 @@ To see the validation tool validate the token, insert the random secret used to 
 
 - Tracking can be used independently of secure channels. You can pass the same payload parameters in a JWT, however, we require that the token is "valid". This means that the required date fields _must_ be valid or the token will be ignored. If a channel does not have token security enabled, however, be aware that anyone can view the channel with or without a jwt token. If secure channels are not enabled, the signature is not validated, so there is a risk that a user _could_ change the values
 - If you are combining our OptiView real-time (Millicast) streaming solution and our live streaming solution (THEOlive), you may use the _secret_ from the Millicast subscriber token as the secret you provide to THEOlive and you can use the same JWTs across both streaming products
+- `tokenType` should be set to `Subscribe`
