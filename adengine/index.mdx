@@ -1,0 +1,77 @@
+---
+sidebar_position: 0
+sidebar_label: Introduction
+---
+
+# Dolby OptiView Ad Engine Introduction
+
+The OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream. This ensures smooth, consistent ad playback, improving the overall viewing experience and enhancing audience satisfaction. Because the Ad Engine operates just-in-time, it can prepare ads for playback within the span of an Early Ad Break Notification (EABN). The Ad Engine is compatible with any ad server, streaming engine, or player. Beyond transforming ads, it can also be used to integrate other types of content, such as editorial segments.
+
+A key capability of the Ad Engine is its ability to rapidly perform **quality control** checks on the ad master during the conformance process. These checks confirm that the ad meets required specifications such as duration, bitrate, and resolution, while also identifying failures such as mismatched audio/video lengths or missing tracks. The verification process is fast enough to allow time for fallback to an alternate ad if needed.
+
+In addition to video conformance, the Ad Engine performs **audio normalization** to ensure ad volume matches the primary content. This prevents sudden shifts in loudness that can disrupt the viewing experience. The Ad Engine can also upconvert SDR/stereo ads into Dolby Vision and Dolby Atmos, improving overall ad quality and enabling seamless playback alongside premium Dolby-formatted content.
+
+Here is an outline of how the Ad Engine would be integrated into a typical Server-Side Ad Insertion workflow:
+
+![OptiView Ad Engine Architecture](./assets/img/ad_engine_server_side_ad_insertion.svg)
+
+### RASP
+
+The OptiView Ad Engine uses an underlying processing system called Dolby RASP - Resource Agnostic Swarm Processing. RASP manages tens of thousands of computing units spread across the major web services like Amazon AWS, Microsoft Azure, Google GCP, and Oracle OCI. You will see the RASP name show up in endpoints and in some schema values.
+
+### Galaxies
+
+A "galaxy" is a specific endpoint assigned to a specific customer. Each galaxy is independent of another. All content is unique to the galaxy it was created in. For example, if you created an Ad Profile in one galaxy, that profile will not exist in another. The API endpoint you are assigned will look like: 
+
+`https://api.my_galaxy.dolbyrasp.com`
+
+In the API documentation, any reference to `{galaxy}` is a placeholder for the galaxy you have been assisgned.
+
+### API-Less JIT Operation
+
+The OptiView Ad Engine can convert ads synchronously, eliminating the need for job submission or scheduling. This avoids the common “Creative Not Available” errors when ads are not ready for playback. Once ad profiles are defined, you simply “wrap” the location of an ad master with the Ad Engine service, which acts as a virtual proxy and delivers the ad in the desired format.
+
+For example, if your original ad file is located at:
+
+`https://ad_server.com/ad123.mp4`
+
+Wrapping it with the Ad Engine entry point provides the converted HLS stream at:
+
+`https://api.{galaxy}.dolbyrasp.com/ad_engine/conform/my_ad_profile?url=https://ad_server.com/ad123.mp4&output_format=media`
+
+This is a synchronous `GET` operation, making integration into existing workflows seamless. The resulting HLS output can be streamed directly from the Ad Engine origin or transferred to the same origin as the primary content and distributed through your CDN. This approach also makes ad blocking more difficult since both primary and ad content originate from the same source.
+
+
+
+### Conformance Operations
+
+The OptiView Ad Engine supports the following conversions:
+
+
+- Media → MP4 
+- Media → HLS 
+- Media → VAST 
+- VAST → HLS  
+- VAST → VAST  
+
+### Ad Profiles
+
+You configure the Ad Engine using **ad profiles**, which define encoding parameters such as the number of video/audio layers, bitrates, codecs, and more. Different profiles can be created for different content or regions. For example, one region might support a maximum bitrate of 12 Mbps, while another supports only 6 Mbps. A single ad can be processed with multiple profiles to ensure it matches the source stream perfectly in each region.
+
+### VAST Files
+
+The Ad Engine supports **VAST (Video Ad Serving Template) files**, which are XML documents that enable video players to communicate with ad servers. A VAST file includes details such as:
+
+- Ad type (linear, non-linear, companion)  
+- Media file location (e.g., MP4 URLs)  
+- Duration and click-through URLs  
+- Tracking events (start, quartiles, complete, mute, pause, etc.)  
+
+VAST files typically reference the ad master stored on the ad server. The OptiView Ad Engine can take a VAST file as input and generate a new VAST file that points to the processed HLS output. This allows for seamless integration with existing ad bidding and playback workflows. If the VAST file is pointing to another VAST file (a VAST reference), then the Ad Engine will replace the reference with a encoded HLS location.
+
+### OptiView Ecosystem
+
+The Ad Engine can be used as part of the OptiView suite of services, including the OptiView Player, Streaming, and Ads. The Ad Engine facilitates preparing ads for any scenario, including Server-Guided Ad Insertion (SGAI). The low latency of the Ad Engine is particularly important when the OptiView Player is getting ads directly without them being stitched into the stream by the streaming engine. OptiView Ads manages the ad signaling and coordination between the various components. Here is an outline of the architecture in this scenario:
+
+![OptiView Ad Engine Architecture](./assets/img/ad-engine-sgai-ad-insertion.svg)
+

@@ -15,6 +15,8 @@ function getProductNameByPluginId(pluginId: string): string {
       return 'Open Video UI';
     case 'ads':
       return 'OptiView Ads';
+    case 'adengine':
+      return 'OptiView Ad Engine';
     case 'contributing':
       return 'Contributing';
     case 'theolive':

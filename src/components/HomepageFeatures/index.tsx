@@ -83,6 +83,24 @@ const FeatureList: FeatureItem[] = [
     to: [{ link: '/ads', text: 'Get Started' }],
   },
   {
+    title: 'Dolby OptiView Ad Engine',
+    Image: (props) => (
+      <ThemedImage
+        {...props}
+        sources={{
+          light: useBaseUrl('/img/ads-black-wordmark.svg'),
+          dark: useBaseUrl('/img/ads-white-wordmark.svg'),
+        }}
+      />
+    ),
+    description: (
+      <p>
+        The OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream.
+      </p>
+    ),
+    to: [{ link: '/ad-engine', text: 'Get Started' }],
+  },
+  {
     title: 'Open Video UI',
     Image: (props) => (
       <ThemedImage
