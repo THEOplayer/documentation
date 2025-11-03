@@ -21,7 +21,7 @@ The OptiView Ad Engine uses an underlying processing system called Dolby RASP - 
 
 ### Galaxies
 
-A "galaxy" is a specific endpoint assigned to a specific customer. Each galaxy is independent of another. All content is unique to the galaxy it was created in. For example, if you created an Ad Profile in one galaxy, that profile will not exist in another. The API endpoint you are assigned will look like: 
+A "galaxy" is a specific endpoint assigned to a specific customer. Each galaxy is independent of another. All content is unique to the galaxy it was created in. For example, if you created an Ad Profile in one galaxy, that profile will not exist in another. The API endpoint you are assigned will look like:
 
 `https://api.my_galaxy.dolbyrasp.com`
 
@@ -41,18 +41,15 @@ Wrapping it with the Ad Engine entry point provides the converted HLS stream at:
 
 This is a synchronous `GET` operation, making integration into existing workflows seamless. The resulting HLS output can be streamed directly from the Ad Engine origin or transferred to the same origin as the primary content and distributed through your CDN. This approach also makes ad blocking more difficult since both primary and ad content originate from the same source.
 
-
-
 ### Conformance Operations
 
 The OptiView Ad Engine supports the following conversions:
 
-
-- Media → MP4 
-- Media → HLS 
-- Media → VAST 
-- VAST → HLS  
-- VAST → VAST  
+- Media → MP4
+- Media → HLS
+- Media → VAST
+- VAST → HLS
+- VAST → VAST
 
 ### Ad Profiles
 
@@ -62,10 +59,10 @@ You configure the Ad Engine using **ad profiles**, which define encoding paramet
 
 The Ad Engine supports **VAST (Video Ad Serving Template) files**, which are XML documents that enable video players to communicate with ad servers. A VAST file includes details such as:
 
-- Ad type (linear, non-linear, companion)  
-- Media file location (e.g., MP4 URLs)  
-- Duration and click-through URLs  
-- Tracking events (start, quartiles, complete, mute, pause, etc.)  
+- Ad type (linear, non-linear, companion)
+- Media file location (e.g., MP4 URLs)
+- Duration and click-through URLs
+- Tracking events (start, quartiles, complete, mute, pause, etc.)
 
 VAST files typically reference the ad master stored on the ad server. The OptiView Ad Engine can take a VAST file as input and generate a new VAST file that points to the processed HLS output. This allows for seamless integration with existing ad bidding and playback workflows. If the VAST file is pointing to another VAST file (a VAST reference), then the Ad Engine will replace the reference with a encoded HLS location.
 
@@ -74,4 +71,3 @@ VAST files typically reference the ad master stored on the ad server. The OptiVi
 The Ad Engine can be used as part of the OptiView suite of services, including the OptiView Player, Streaming, and Ads. The Ad Engine facilitates preparing ads for any scenario, including Server-Guided Ad Insertion (SGAI). The low latency of the Ad Engine is particularly important when the OptiView Player is getting ads directly without them being stitched into the stream by the streaming engine. OptiView Ads manages the ad signaling and coordination between the various components. Here is an outline of the architecture in this scenario:
 
 ![OptiView Ad Engine Architecture](./assets/img/ad-engine-sgai-ad-insertion.svg)
-

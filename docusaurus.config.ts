@@ -94,7 +94,8 @@ function removeDocIndexItems(items) {
 
 const config: Config = {
   title: 'Dolby OptiView Documentation',
-  tagline: 'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, Ad Engine, and Open Video UI',
+  tagline:
+    'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, Ad Engine, and Open Video UI',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -237,7 +238,7 @@ const config: Config = {
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
-            }
+            },
           },
         },
       } satisfies OpenApiPlugin.PluginOptions,

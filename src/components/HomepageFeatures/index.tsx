@@ -95,7 +95,8 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <p>
-        The OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream.
+        The OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a
+        streaming format that matches the primary content stream.
       </p>
     ),
     to: [{ link: '/ad-engine', text: 'Get Started' }],
