@@ -5,6 +5,56 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.4.0 (2025/11/05)
+
+### General
+
+#### ⚡ Improvements
+
+- Aligned the position of the video during an OptiView Ads L-Shape interstitial to be consistent across SDKs.
+
+### Web
+
+#### ✨ Features
+
+- Added DVR switching for OptiView Live streams so users can seek between live sources (HESP/Millicast) and DVR sources (HLS) on DVR-enabled channels.
+- Added support for DAI SSAI as the primary stream for OptiView Live streaming.
+
+#### 🐛 Issues
+
+- Fixed an issue for OptiView Ads where Overlay interstitials did not update during an ad break interstitial where the content continues playing.
+- Fixed an issue for OptiView Ads where the backdrop set in the source description wasn't used correctly.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed a regression where `TheoLiveSource.headers` were no longer being passed to the discovery call for OptiView Live streams.
+- Fixed an issue where sideloaded WebVTT chapters and thumbnails tracks could not both be enabled at the same time.
+- Fixed an issue where ad configuration parameters were not being applied to DAI OptiView Live streams.
+- Fixed an issue where the player could crash while loading an OptiView Live channel that is unavailable.
+
+#### 👎 Deprecations
+
+- Deprecated `TheoAdsErrorEvent`. Use the `AdErrorEvent` on the Ads API instead.
+
+### iOS
+
+#### ✨ Features
+
+- Added a convenience initializer to `GoogleDAITypedSource` to enable DRM with Google DAI. 
+- Added support for DAI SSAI as the primary stream for OptiView Live streaming.
+
+#### 🐛 Issues
+
+- Fixed an issue for OptiView Ads where the backdrop set in the source description wasn't used correctly.
+
+### Roku
+
+#### 🐛 Issues
+
+- Added protection against unexpected values being set for `encoding_type` on Conviva metadata.
+
 ## 🚀 10.3.0 (2025/10/23)
 
 ### Web
