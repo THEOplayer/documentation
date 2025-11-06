@@ -31,7 +31,7 @@ function cleanItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
     });
 }
 
-let sidebarItems: SidebarItemConfig[] = cleanItems(apiSidebar);
+const sidebarItems: SidebarItemConfig[] = cleanItems(apiSidebar);
 
 const sidebars: SidebarsConfig = {
   adengine: [
