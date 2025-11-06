@@ -8,7 +8,7 @@ slug: /software-encoders/obs
 See the official [obsproject.com](https://obsproject.com) documentation for installation instructions and additional support about using OBS.
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to create a Dolby.io application and start your first broadcast.
+If you haven't already, begin by following the [Getting Started](/millicast/getting-started/index.mdx) tutorial to start your first broadcast.
 :::
 
 ## Setting Up a Broadcast
@@ -17,19 +17,19 @@ With OBS, you can broadcast using [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx
 
 ### RTMP
 
-Setting up an RTMP broadcast with OBS is a common workflow. You can use the Dolby Millicast Service provider to configure your broadcast.
+Setting up an RTMP broadcast with OBS is a common workflow. You can use the Dolby OptiView Real-time Service provider to configure your broadcast.
 
 It should be noted that broadcasting with RTMP may add some additional latency between the broadcast location and the origin server.
 
-#### Dolby Millicast Service
+#### Dolby OptiView Real-time Service
 
-The Dolby Millicast Service was added as a Stream option in more recent releases (after 30.x) of OBS.
+The Dolby OptiView Real-time Service was added as a Stream option in more recent releases (after 30.x) of OBS.
 
-##### 1. Choose Dolby Millicast as the Stream Service
+##### 1. Choose Dolby OptiView Real-time as the Stream Service
 
-Open profile **Settings** and select the **Stream** section. From the **Service** dropdown you should see `Dolby Millicast` among the options.
+Open profile **Settings** and select the **Stream** section. From the **Service** dropdown you should see `Dolby OptiView Real-time` (`Dolby Millicast` in OBS version older than 32.0.2) among the options.
 
-import Obs30a from '../../../assets/img/76ea8c7b793066349db9fca2dbd70b0daddaec6e4d47806545cc3e1a-obs-30-stream-dolby-millicast.png';
+import Obs30a from '../../../assets/img/software-encoders/obs-30-stream-dolby-millicast.png';
 
 <div class="center-container">
   <img src={Obs30a} width="600" />
@@ -39,7 +39,7 @@ import Obs30a from '../../../assets/img/76ea8c7b793066349db9fca2dbd70b0daddaec6e
 
 From the **Server** dropdown menu, you can select _Global_ to have your broadcast location automatically determined or choose from any of our [cluster regions](/millicast/distribution/multi-region-support/index.mdx).
 
-import Obs30b from '../../../assets/img/20a4c2d052b2cc281303150422afa731af6be4c982e171fb79456513-obs-30-stream-server-key.png';
+import Obs30b from '../../../assets/img/software-encoders/obs-30-stream-server-key.png';
 
 <div class="center-container">
   <img src={Obs30b} width="600" />
@@ -61,7 +61,7 @@ The introduction of WHIP support in OBS 30.0 has made it easier to configure a W
 
 Open profile **Settings** and select the **Stream** section. From the **Service** dropdown you should see `WHIP` among the options.
 
-import Obs30c from '../../../assets/img/ec5dd07d69aec14ba6a02f2f5c8c07391996292331077f46433d1cda-obs-30-whip-server-token.png';
+import Obs30c from '../../../assets/img/software-encoders/obs-30-whip-server-token.png';
 
 <div class="center-container">
   <img src={Obs30c} width="600" />
@@ -86,7 +86,7 @@ Prior to OBS 30.0 it was necessary to use a custom fork. For certain workflows t
 
 You can choose either WebRTC or RTMP from the Stream menu. There are additional configuration options as well for [multi-source broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx) or [simulcast](/millicast/distribution/using-webrtc-simulcast).
 
-import Obs30d from '../../../assets/img/693bb6cbd1f7c7de44f2809b411c55bde51f363ae941ae23a5c62537-obs-webrtc-stream-settings.png';
+import Obs30d from '../../../assets/img/software-encoders/obs-webrtc-stream-settings.png';
 
 <div class="center-container">
   <img src={Obs30d} width="600" />
@@ -102,7 +102,7 @@ Beginning with OBS 25.x you can stream with [SRT](/millicast/broadcast/srt.mdx).
 
 Open the **Settings** panel to configure your broadcast.
 
-import ObsSettings from '../../../assets/img/obs-settings.png';
+import ObsSettings from '../../../assets/img/software-encoders/obs-settings.png';
 
 <div class="center-container">
   <img src={ObsSettings} width="400" />
@@ -114,7 +114,7 @@ Select _Custom_ for the **Service**.
 
 You'll need to gather a few details from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) for your publish token.
 
-import ObsSetSrt from '../../../assets/img/obs-set-srt.png';
+import ObsSetSrt from '../../../assets/img/software-encoders/obs-set-srt.png';
 
 <div class="center-container">
   <img src={ObsSetSrt} width="600" />
@@ -166,7 +166,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 | RTMP 1      |                                                           |
 | :---------- | :-------------------------------------------------------- |
 | Name        | 1080p                                                     |
-| RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/           |
+| RTMP Server | rtmp://rtmp-auto.millicast.com:1935/v2/pub/               |
 | RTMP Key    | _\{StreamName\}_?token=_\{Token\}_&sourceId=1&simulcastId |
 | Encoder     | x264 or nvenc                                             |
 | Resolution  | 1920x1080                                                 |
@@ -177,7 +177,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 | RTMP 2      |                                                                     |
 | :---------- | :------------------------------------------------------------------ |
 | Name        | 720p                                                                |
-| RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/                     |
+| RTMP Server | rtmp://rtmp-auto.millicast.com:1935/v2/pub/               |
 | RTMP Key    | _\{StreamName\}_?token=_\{Token\}_&sourceId=2&simulcastId&videoOnly |
 | Encoder     | x264 or nvenc                                                       |
 | Resolution  | 1280x720                                                            |
@@ -188,7 +188,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 | RTMP 2      |                                                                     |
 | :---------- | :------------------------------------------------------------------ |
 | Name        | 360p                                                                |
-| RTMP Server | rtmp://live-rtmp-pub.millicast.com:1935/v2/pub/                     |
+| RTMP Server | rtmp://rtmp-auto.millicast.com:1935/v2/pub/               |
 | RTMP Key    | _\{StreamName\}_?token=_\{Token\}_&sourceId=3&simulcastId&videoOnly |
 | Encoder     | x264 or nvenc                                                       |
 | Resolution  | 640x360                                                             |
@@ -200,7 +200,7 @@ Here is example using 3 bitrates (1080p, 720p, 360p) as inputs using the obs-mul
 
 Click the **start** button for each target.
 
-import Obs3 from '../../../assets/img/obs3.png';
+import Obs3 from '../../../assets/img/software-encoders/obs3.png';
 
 <div class="center-container">
   <img src={Obs3} width="600" />
