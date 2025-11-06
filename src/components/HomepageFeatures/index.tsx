@@ -88,14 +88,14 @@ const FeatureList: FeatureItem[] = [
       <ThemedImage
         {...props}
         sources={{
-          light: useBaseUrl('/img/ads-black-wordmark.svg'),
-          dark: useBaseUrl('/img/ads-white-wordmark.svg'),
+          light: useBaseUrl('/img/ad-engine-black-wordmark.svg'),
+          dark: useBaseUrl('/img/ad-engine-white-wordmark.svg'),
         }}
       />
     ),
     description: (
       <p>
-        The OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a
+        The Dolby OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a
         streaming format that matches the primary content stream.
       </p>
     ),

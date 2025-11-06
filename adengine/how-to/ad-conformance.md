@@ -16,7 +16,7 @@ Which conversion you create depends on the items: (1) the ad profile and (2) the
 
 The output format of your media is defined by the Ad Profile. If you set the profile to encode to an MP4, then you will get a single MP4 output rather than an HLS multi-layer output. Let's say that you have created the ad profile named `my_mp4_ad_profile` shown below:
 
-```
+```json
 {
     "encode_profile": {
         "container": {

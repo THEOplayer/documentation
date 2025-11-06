@@ -29,7 +29,7 @@ The output formats include the following:
 
 The `media` option gives you either MP4 or HLS depending on your ad profile. The `vast` option gives you a VAST output. The `media_vurl_info` gives you summary metadata on what was created. An example of `media_vurl_info` is below. This example gives you the url of the conformed ad, as well as other info such as the maximum bitrate and codec type.
 
-```
+```json
 {
     "vurl": "https://api.galaxy.dolbyrasp.com/asset/d6f17663-c5be-56f4-a8b3-c3ea6919fc4c/ad_profile_1.m3u8",
     "meta": {
