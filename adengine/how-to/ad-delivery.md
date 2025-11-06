@@ -31,17 +31,17 @@ The `media` option gives you either MP4 or HLS depending on your ad profile. The
 
 ```json
 {
-    "vurl": "https://api.galaxy.dolbyrasp.com/asset/d6f17663-c5be-56f4-a8b3-c3ea6919fc4c/ad_profile_1.m3u8",
-    "meta": {
-        "id": "dolby_rasp_ruid_d6f17663-c5be-56f4-a8b3-c3ea6919fc4c",
-        "media": {
-            "delivery": "streaming",
-            "type": "application/vnd.apple.mpegurl",
-            "width": 1920,
-            "height": 1080,
-            "codec": "h265",
-            "bitrate": 5000
-        }
+  "vurl": "https://api.galaxy.dolbyrasp.com/asset/d6f17663-c5be-56f4-a8b3-c3ea6919fc4c/ad_profile_1.m3u8",
+  "meta": {
+    "id": "dolby_rasp_ruid_d6f17663-c5be-56f4-a8b3-c3ea6919fc4c",
+    "media": {
+      "delivery": "streaming",
+      "type": "application/vnd.apple.mpegurl",
+      "width": 1920,
+      "height": 1080,
+      "codec": "h265",
+      "bitrate": 5000
     }
+  }
 }
 ```

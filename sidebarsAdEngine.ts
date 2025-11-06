@@ -22,7 +22,7 @@ function cleanItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
       if (isCategory(item) && item.label === 'Ad Engine') {
         item.label = 'REST APIs';
       }
-      
+
       return item;
     })
     .filter((item) => {
