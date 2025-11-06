@@ -1,1349 +1,1349 @@
 {
   "warnings": [
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/ServerSideAdIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/ServerSideAdIntegration.swift",
       "line": 26,
       "symbol": "AdInit.init(type:timeOffset:companions:id:skipOffset:resourceURI:width:height:duration:clickThrough:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/ServerSideAdIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/ServerSideAdIntegration.swift",
       "line": 48,
       "symbol": "AdBreakInit.init(timeOffset:maxDuration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/ServerSideAdIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/ServerSideAdIntegration.swift",
       "line": 55,
       "symbol": "AdBreakInit.init(with:maxDuration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/THEOAdDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Ads/THEOAdDescription.swift",
       "line": 61,
       "symbol": "THEOAdDescription.init(networkCode:customAssetKey:backdropDoubleBox:backdropLShape:overrideLayout:overrideAdSrc:adTagParameters:useId3:streamActivityMonitorId:sseEndpoint:retrievePodIdURI:initializationDelay:returnToLive:daiAssetKey:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/EventListener_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/EventListener_API.swift",
       "line": 7,
       "symbol": "EventListener",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/EventedArray.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/EventedArray.swift",
       "line": 11,
       "symbol": "EventedArray",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
       "line": 101,
       "symbol": "CertificateRequestCallback.request(request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
       "line": 108,
       "symbol": "CertificateResponseCallback.respond(certificate:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
       "line": 109,
       "symbol": "CertificateResponseCallback.error(error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
       "line": 116,
       "symbol": "LicenseRequestCallback.request(request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
       "line": 123,
       "symbol": "LicenseResponseCallback.respond(license:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
       "line": 124,
       "symbol": "LicenseResponseCallback.error(error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
       "line": 127,
       "symbol": "ExtractContentIdCallback",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegrationFactory.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegrationFactory.swift",
       "line": 13,
       "symbol": "ContentProtectionIntegrationFactory.build(configuration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/KeySystemId.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/KeySystemId.swift",
       "line": 13,
       "symbol": "KeySystemId.WIDEVINE",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/KeySystemId.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/KeySystemId.swift",
       "line": 14,
       "symbol": "KeySystemId.FAIRPLAY",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/KeySystemId.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/KeySystemId.swift",
       "line": 15,
       "symbol": "KeySystemId.PLAYREADY",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Network_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Network_API.swift",
       "line": 12,
       "symbol": "HlsPlaylistType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Network_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/Network_API.swift",
       "line": 114,
       "symbol": "Network",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/SourceDescription_API.swift",
-      "line": 175,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/SourceDescription_API.swift",
+      "line": 209,
       "symbol": "SourceType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/THEOplayer_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/THEOplayer_API.swift",
       "line": 16,
       "symbol": "THEOplayer.isDestroyed",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TextTrackKind_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TextTrackKind_API.swift",
       "line": 13,
       "symbol": "TextTrackKind.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TextTrackKind_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TextTrackKind_API.swift",
       "line": 92,
       "symbol": "TextTrackFormat.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TypedSource_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TypedSource_API.swift",
       "line": 11,
       "symbol": "CrossOrigin",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TypedSource_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/API/TypedSource_API.swift",
       "line": 17,
       "symbol": "CrossOrigin",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/AVAssetResourceLoaderProxy.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/AVAssetResourceLoaderProxy.swift",
       "line": 286,
       "symbol": "AVAssetResourceLoaderProxy",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
       "line": 11,
       "symbol": "AdEventProtocol",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
       "line": 15,
       "symbol": "AdErrorEventProtocol",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
       "line": 20,
       "symbol": "AdBreakEventProtocol",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
       "line": 24,
       "symbol": "AdEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
       "line": 118,
       "symbol": "AdErrorEvent.ad",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
       "line": 119,
       "symbol": "AdErrorEvent.error",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Ads/AdsEvents.swift",
       "line": 164,
       "symbol": "AdBreakEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/DefaultEventDispatcher.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/DefaultEventDispatcher.swift",
       "line": 129,
       "symbol": "EventDispatchManager",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Network/NetworkEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Network/NetworkEvents.swift",
       "line": 42,
       "symbol": "ExitBadNetworkModeEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Network/NetworkEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Network/NetworkEvents.swift",
       "line": 51,
       "symbol": "EnterBadNetworkModeEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/PlayerEvents.swift",
-      "line": 351,
-      "symbol": "ErrorEvent.init(error:errorObject:date:)",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/PlayerEvents.swift",
+      "line": 355,
+      "symbol": "ErrorEvent.init(error:errorObject:source:date:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/PlayerEvents.swift",
-      "line": 425,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/PlayerEvents.swift",
+      "line": 430,
       "symbol": "ResizeEvent.init(date:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/TrackLists/TextTrackList/TextTrack/Cue/CueEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/TrackLists/TextTrackList/TextTrack/Cue/CueEvents.swift",
       "line": 14,
       "symbol": "CueEventProtocol.cue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/TrackLists/TextTrackList/TextTrack/TextTrackEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/TrackLists/TextTrackList/TextTrack/TextTrackEvents.swift",
       "line": 36,
       "symbol": "TextTrackCueEventProtocol.cue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/TrackLists/TrackListEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Event/Player/TrackLists/TrackListEvents.swift",
       "line": 13,
       "symbol": "TrackEventProtocol.track",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Error/AVPlayerErrorManager.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Error/AVPlayerErrorManager.swift",
       "line": 137,
       "symbol": "AVPlayerErrorManager",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Error/Errors/GenericSwiftError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Error/Errors/GenericSwiftError.swift",
       "line": 1,
       "symbol": "GenericSwiftError",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Error/Errors/InvalidUrlError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Error/Errors/InvalidUrlError.swift",
       "line": 1,
       "symbol": "InvalidUrlError",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/Configurations/NetworkConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/Configurations/NetworkConfiguration.swift",
       "line": 30,
       "symbol": "NetworkConfigurationBuilder.build()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/Ads/AdDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/Ads/AdDescription.swift",
       "line": 23,
       "symbol": "AdIntegration.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/Ads/AdDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/Ads/AdDescription.swift",
       "line": 24,
       "symbol": "AdIntegration.theoAds",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/Ads/AdDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/Ads/AdDescription.swift",
       "line": 25,
       "symbol": "AdIntegration.google_ima",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 110,
       "symbol": "FairPlayDRMConfigurationProtocol.fairplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 115,
       "symbol": "WidevineDRMConfigurationProtocol.widevine",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 120,
       "symbol": "LicenseType.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 121,
       "symbol": "LicenseType.temporary",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 122,
       "symbol": "LicenseType.persistent",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 175,
       "symbol": "DRMIntegration.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 176,
       "symbol": "DRMIntegration.azure",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 177,
       "symbol": "DRMIntegration.uplynk",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 178,
       "symbol": "DRMIntegration.vimond",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 179,
       "symbol": "DRMIntegration.ezdrm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 180,
       "symbol": "DRMIntegration.axinom",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 181,
       "symbol": "DRMIntegration.keyos",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 182,
       "symbol": "DRMIntegration.verimatrix",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 183,
       "symbol": "DRMIntegration.comcast",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 184,
       "symbol": "DRMIntegration.irdeto",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 185,
       "symbol": "DRMIntegration.drmtoday",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 186,
       "symbol": "DRMIntegration.xstream",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 187,
       "symbol": "DRMIntegration.vudrm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
       "line": 188,
       "symbol": "DRMIntegration.custom",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/MultiplatformDRMConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/MultiplatformDRMConfiguration.swift",
       "line": 115,
       "symbol": "MultiplatformDRMConfiguration.fairplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/SourceAbrConfiguration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/SourceAbrConfiguration.swift",
       "line": 22,
       "symbol": "SourceAbrConfiguration.init(maxBitrate:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/Cue/CustomAttribute.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/Cue/CustomAttribute.swift",
       "line": 68,
       "symbol": "DateRangeCustomAttributesError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/Cue/CustomAttribute.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/Cue/CustomAttribute.swift",
       "line": 103,
       "symbol": "CustomAttributes.getBase64EncodedStringToData(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
       "line": 12,
       "symbol": "TextTrackMode.showing",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
       "line": 13,
       "symbol": "TextTrackMode.hidden",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
       "line": 14,
       "symbol": "TextTrackMode.disabled",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/TrackList/Track/TextTrackMode.swift",
       "line": 33,
       "symbol": "TextTrackMode.init(_rawValue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
       "line": 59,
       "symbol": "FullscreenViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
       "line": 75,
       "symbol": "FullscreenViewController.viewDidLayoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
       "line": 80,
       "symbol": "FullscreenViewController.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
       "line": 110,
       "symbol": "FullscreenViewController.supportedInterfaceOrientations",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
       "line": 118,
       "symbol": "FullscreenViewController.prefersHomeIndicatorAutoHidden",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Presentation Mode/Fullscreen/FullscreenViewController.swift",
       "line": 122,
       "symbol": "FullscreenViewController.prefersStatusBarHidden",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/TimeRange.swift",
-      "line": 28,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/TimeRange.swift",
+      "line": 29,
       "symbol": "TimeRange.==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/TimeRange.swift",
-      "line": 32,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/TimeRange.swift",
+      "line": 33,
       "symbol": "TimeRange.isEqual(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/TimeRange.swift",
-      "line": 37,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/TimeRange.swift",
+      "line": 38,
       "symbol": "TimeRange.contains(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
       "line": 111,
       "symbol": "EventSource.urlSession(_:task:didCompleteWithError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
       "line": 123,
       "symbol": "EventSource.urlSession(_:dataTask:didReceive:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
       "line": 13,
       "symbol": "Encodable.toJSON()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
       "line": 17,
       "symbol": "Encodable.toJSONString()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
       "line": 21,
       "symbol": "Encodable.toJSONEncodableDictionary()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableUtil.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/CodableUtil.swift",
       "line": 24,
       "symbol": "serializeObjectToJSON(object:dateEncodingStrategy:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
       "line": 11,
       "symbol": "THEOArray",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
       "line": 23,
       "symbol": "THEOArray",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
       "line": 51,
       "symbol": "THEOArray",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
       "line": 146,
       "symbol": "THEOArray",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Util/THEOArray.swift",
       "line": 160,
       "symbol": "THEOArray",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Utils/SwitchingAsyncSequence.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Utils/SwitchingAsyncSequence.swift",
       "line": 31,
       "symbol": "SwitchingAsyncSequence",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/THEOplayer_API+DeveloperSettings.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/THEOplayer_API+DeveloperSettings.swift",
       "line": 12,
       "symbol": "THEOplayer.developerSettings",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
       "line": 86,
       "symbol": "TextTrackStyleRuleColor.init(_:textSelector:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
       "line": 108,
       "symbol": "TextTrackStyleRuleString.init(_:textSelector:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
       "line": 129,
       "symbol": "TextTrackStyleRuleNumber.init(_:textSelector:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Ads/SSAI/SsaiIntegrationController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Ads/SSAI/SsaiIntegrationController.swift",
       "line": 177,
       "symbol": "SsaiIntegrationController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Ads/SSAI/SsaiIntegrationController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Ads/SSAI/SsaiIntegrationController.swift",
       "line": 295,
       "symbol": "SsaiIntegrationController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CacheInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CacheInternalNative.swift",
       "line": 138,
       "symbol": "CacheInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CacheInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CacheInternalNative.swift",
       "line": 146,
       "symbol": "CacheInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
       "line": 276,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
       "line": 282,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
       "line": 339,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
       "line": 271,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 436,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
+      "line": 437,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/Integration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/Integration.swift",
       "line": 11,
       "symbol": "IntegrationError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/Integration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/Integration.swift",
       "line": 15,
       "symbol": "IntegrationKind",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/Integration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/Integration.swift",
       "line": 56,
       "symbol": "Integration",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/InternalIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/InternalIntegration.swift",
       "line": 11,
       "symbol": "InternalIntegrationActivationDelegate",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/InternalIntegration.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Integrations/InternalIntegration.swift",
       "line": 17,
       "symbol": "InternalIntegration",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/License/License.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/License/License.swift",
       "line": 174,
       "symbol": "License",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/AVMediaItem.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/AVMediaItem.swift",
       "line": 371,
       "symbol": "AVMediaItem",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1326,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
+      "line": 1347,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1368,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
+      "line": 1389,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1430,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
+      "line": 1451,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1540,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
+      "line": 1561,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerMetadataCollectorNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerMetadataCollectorNative.swift",
       "line": 125,
       "symbol": "AVPlayerMetadataCollectorNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerMetadataOutputNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerMetadataOutputNative.swift",
       "line": 78,
       "symbol": "AVPlayerMetadataOutputNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerTextTracksController.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerTextTracksController.swift",
       "line": 339,
       "symbol": "AVPlayerTextTracksController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVQueingContentPlayer.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVQueingContentPlayer.swift",
       "line": 458,
       "symbol": "AVQueuingContentPlayer",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/ContentPlayerNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/ContentPlayerNative.swift",
       "line": 650,
       "symbol": "ContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/ContentPlayerNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/ContentPlayerNative.swift",
       "line": 678,
       "symbol": "ContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/DVRContentPlayer.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/DVRContentPlayer.swift",
       "line": 11,
       "symbol": "DVRIntegration",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/DVRContentPlayer.swift",
-      "line": 364,
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/DVRContentPlayer.swift",
+      "line": 429,
       "symbol": "DVRContentPlayer",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/PlayerView/PlayerView.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/PlayerView/PlayerView.swift",
       "line": 366,
       "symbol": "PlayerView",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 62,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 887,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 898,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 908,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 932,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 939,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 977,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 993,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 1005,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 1011,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
       "line": 1035,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackCues/TextTrackCueImplNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackCues/TextTrackCueImplNative.swift",
       "line": 38,
       "symbol": "TextTrackCueImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/MediaTrackListImpl.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/MediaTrackListImpl.swift",
       "line": 92,
       "symbol": "MediaTrackListImpl",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/MediaTrackListImpl.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/MediaTrackListImpl.swift",
       "line": 102,
       "symbol": "MediaTrackListImpl",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TextTrackListImplNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TextTrackListImplNative.swift",
       "line": 212,
       "symbol": "TextTrackListImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TrackListRouter.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TrackListRouter.swift",
       "line": 97,
       "symbol": "TrackListRouter",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TrackListRouter.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/TrackListRouter.swift",
       "line": 204,
       "symbol": "TextTrackListRouter",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/Tracks/MediaTrackImpl.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/Tracks/MediaTrackImpl.swift",
       "line": 95,
       "symbol": "MediaTrackImpl",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/Tracks/TextTrackImplNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/Tracks/TextTrackImplNative.swift",
       "line": 493,
       "symbol": "TextTrackImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Presentation Mode/PictureInPicture/NativePictureInPictureControllerNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Presentation Mode/PictureInPicture/NativePictureInPictureControllerNative.swift",
       "line": 152,
       "symbol": "NativePictureInPictureControllerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Presentation Mode/PictureInPicture/NativePictureInPictureControllerNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Presentation Mode/PictureInPicture/NativePictureInPictureControllerNative.swift",
       "line": 208,
       "symbol": "NativePictureInPictureControllerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
       "line": 76,
       "symbol": "AirPlayImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
       "line": 87,
       "symbol": "AirPlayImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Player/Fullscreen/FullscreenImplNative.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Player/Fullscreen/FullscreenImplNative.swift",
       "line": 56,
       "symbol": "FullscreenImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Player/THEOplayerInternalNative_iOS.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Player/THEOplayerInternalNative_iOS.swift",
       "line": 163,
       "symbol": "THEOplayerInternalNative_iOS",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Player/THEOplayerInternalNative_iOS.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/iOS/Models/Player/THEOplayerInternalNative_iOS.swift",
       "line": 177,
       "symbol": "THEOplayerInternalNative_iOS",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 66,
       "symbol": "CacheStatus.uninitialised",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 67,
       "symbol": "CacheStatus.initialised",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 151,
       "symbol": "CachingParameters.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 242,
       "symbol": "CachingTaskStatus.idle",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 243,
       "symbol": "CachingTaskStatus.loading",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 244,
       "symbol": "CachingTaskStatus.done",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 245,
       "symbol": "CachingTaskStatus.error",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 246,
       "symbol": "CachingTaskStatus.evicted",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 257,
       "symbol": "CacheStatusIdleReason.notStarted",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 258,
       "symbol": "CacheStatusIdleReason.paused",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
       "line": 259,
       "symbol": "CacheStatusIdleReason.lostNetwork",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 27,
       "symbol": "ErrorCode.cancel",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 28,
       "symbol": "ErrorCode.timeout",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 29,
       "symbol": "ErrorCode.receiverUnavailable",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 30,
       "symbol": "ErrorCode.extensionMissing",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 31,
       "symbol": "ErrorCode.sessionError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 32,
       "symbol": "ErrorCode.channelError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 33,
       "symbol": "ErrorCode.invalidParameter",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 34,
       "symbol": "ErrorCode.loadMediaFailed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 35,
       "symbol": "ErrorCode.extensionNotCompatible",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 36,
       "symbol": "ErrorCode.apiNotInitialized",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 37,
       "symbol": "ErrorCode.setPlaybackRateFailed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/CastError.swift",
       "line": 38,
       "symbol": "ErrorCode.setActiveTrackIdFailed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastConnectionDelegate.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastConnectionDelegate.swift",
       "line": 11,
       "symbol": "ChromecastConnectionDelegate",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
       "line": 131,
       "symbol": "ChromecastMetadataType.NONE",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
       "line": 132,
       "symbol": "ChromecastMetadataType.AUDIO",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
       "line": 133,
       "symbol": "ChromecastMetadataType.TV_SHOW",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
       "line": 134,
       "symbol": "ChromecastMetadataType.GENERIC",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/ChromecastMetadataDescription.swift",
       "line": 135,
       "symbol": "ChromecastMetadataType.MOVIE",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/Event/ChromecastEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/Event/ChromecastEvents.swift",
       "line": 9,
       "symbol": "ChromeCastEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/Event/ChromecastEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/Event/ChromecastEvents.swift",
       "line": 26,
       "symbol": "StateChangeEvent.init(state:date:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/Event/ChromecastEvents.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/Chromecast/Event/ChromecastEvents.swift",
       "line": 37,
       "symbol": "CastErrorEvent.init(error:date:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/PlayerCastState.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/API/Cast/PlayerCastState.swift",
       "line": 11,
       "symbol": "PlayerCastState.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
       "line": 31,
       "symbol": "PictureInPictureCorner.topLeft",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
       "line": 32,
       "symbol": "PictureInPictureCorner.topRight",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
       "line": 33,
       "symbol": "PictureInPictureCorner.bottomLeft",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/iOS/Models/Presentation Mode/PictureInPicture/InAppPictureInPicture/PictureInPictureCorner.swift",
       "line": 34,
       "symbol": "PictureInPictureCorner.bottomRight",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/jenkins/jenkins-agent/workspace/Documentation/SDK/0_API_Ref-iOS/ios"
+  "source_directory": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios"
 }
