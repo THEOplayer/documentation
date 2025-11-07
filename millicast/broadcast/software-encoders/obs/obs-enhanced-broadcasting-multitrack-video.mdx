@@ -11,7 +11,7 @@ See [System Requirements](#minimum-system-requirements) below for details.
 
 # Enhanced Broadcasting in OBS
 
-Enhanced Broadcasting in OBS enables multitrack video support creating multiple "renditions" or qualities that OBS sends to Millicast so that the end-viewer can choose which quality to watch or let it happen automatically. This is called Adaptive Bitrate (ABR).
+Enhanced Broadcasting in OBS enables multitrack video support creating multiple "renditions" or qualities that OBS sends to Dolby OptiView Real-time so that the end-viewer can choose which quality to watch or let it happen automatically. This is called Adaptive Bitrate (ABR).
 
 import AbrImg from '../../../assets/img/842826436d56486b6a0a14b06bbcda1958658d3cfa5d010236934915-abr.png';
 
@@ -19,9 +19,9 @@ import AbrImg from '../../../assets/img/842826436d56486b6a0a14b06bbcda1958658d3c
   <img src={AbrImg} width="600" />
 </div>
 
-To use this feature, _you will need OBS version `31.1` at a minimum_. Then, after choosing "Dolby Millicast" from the `Stream > Service`, enable _Enhanced Broadcasting_.
+To use this feature, _you will need OBS version `31.1` at a minimum_. Then, after choosing `Dolby OptiView Real-time` (`Dolby Millicast` in OBS version older than 32.0.2) from the `Stream > Service`, enable _Enhanced Broadcasting_.
 
-import ObsMultiTrackVideo from '../../../assets/img/obs-millicast-ertmp.jpg';
+import ObsMultiTrackVideo from '../../../assets/img/software-encoders/obs-millicast-ertmp.jpg';
 
 <div class="center-container">
   <img src={ObsMultiTrackVideo} width="600" />
@@ -29,11 +29,11 @@ import ObsMultiTrackVideo from '../../../assets/img/obs-millicast-ertmp.jpg';
 
 ## Automatic Stream Configuration
 
-Understanding complicated video settings to achieve the highest video quality can be time consuming and frustrating and challenging if you are instructing remote streamers. By selecting "☑️ Auto", OBS sends information about your setup to Dolby Millicast and the service tells OBS how to configure itself. Automatic stream configuration removes the need for offline trial and error to find the correct settings. A server-side algorithm then returns the best possible configuration for broadcast software that optimizes the viewer experience given constraints in your setup.
+Understanding complicated video settings to achieve the highest video quality can be time consuming and frustrating and challenging if you are instructing remote streamers. By selecting "☑️ Auto", OBS sends information about your setup to Dolby OptiView Real-time and the service tells OBS how to configure itself. Automatic stream configuration removes the need for offline trial and error to find the correct settings. A server-side algorithm then returns the best possible configuration for broadcast software that optimizes the viewer experience given constraints in your setup.
 
 ### Custom Layer Count
 
-import ObsMultiTrackVideoManualLayers from '../../../assets/img/obs-millicast-ertmp-manual-layers.jpg';
+import ObsMultiTrackVideoManualLayers from '../../../assets/img/software-encoders/obs-millicast-ertmp-manual-layers.jpg';
 
 <div class="center-container">
   <img src={ObsMultiTrackVideoManualLayers} width="600" />
