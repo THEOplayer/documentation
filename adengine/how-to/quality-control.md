@@ -16,7 +16,7 @@ A QC object is added to the ad profile. In this case, we are checking that the s
 {
   "encode_profile": {
     "container": {
-      "kind": "hls",
+      "kind": "hls/fmp4",
       "segment_duration_sec": 2
     },
     "video": [

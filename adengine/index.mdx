@@ -3,9 +3,9 @@ sidebar_position: 0
 sidebar_label: Introduction
 ---
 
-# Dolby OptiView Ad Engine Introduction
+# Dolby OptiView Ad Engine
 
-The Dolby OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream. This ensures smooth, consistent ad playback, improving the overall viewing experience and enhancing audience satisfaction. Because the Ad Engine operates just-in-time, it can prepare ads for playback within the span of an Early Ad Break Notification (EABN). The Ad Engine is compatible with any ad server, streaming engine, or player. Beyond transforming ads, it can also be used to integrate other types of content, such as editorial segments.
+The OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream. This ensures smooth, consistent ad playback, improving the overall viewing experience and enhancing audience satisfaction. Because the Ad Engine operates just-in-time, it can prepare ads for playback within the span of an Early Ad Break Notification (EABN). The Ad Engine is compatible with any ad server, streaming engine, or player. Beyond transforming ads, it can also be used to integrate other types of content, such as editorial segments.
 
 A key capability of the Ad Engine is its ability to rapidly perform **quality control** checks on the ad master during the conformance process. These checks confirm that the ad meets required specifications such as duration, bitrate, and resolution, while also identifying failures such as mismatched audio/video lengths or missing tracks. The verification process is fast enough to allow time for fallback to an alternate ad if needed.
 
@@ -37,7 +37,7 @@ For example, if your original ad file is located at:
 
 Wrapping it with the Ad Engine entry point provides the converted HLS stream at:
 
-`https://api.galaxy.dolbyrasp.com/ad_engine/conform?profile=my_ad_profile?url=https://ad_server.com/ad123.mp4&output_format=media`
+`https://api.galaxy.dolbyrasp.com/ad_engine/conform?profile=my_ad_profile&url=https://ad_server.com/ad123.mp4&output_format=media`
 
 This is a synchronous `GET` operation, making integration into existing workflows seamless. The resulting HLS output can be streamed directly from the Ad Engine origin or transferred to the same origin as the primary content and distributed through your CDN. This approach also makes ad blocking more difficult since both primary and ad content originate from the same source.
 
