@@ -22,27 +22,27 @@ The output format of your media is defined by the Ad Profile. If you set the pro
 
 ```json
 {
-    "encode_profile": {
-        "container": {
-            "kind": "mp4",
-        },
-        "video": [
-            {
-                "width": 1280,
-                "height": 720,
-                "bitrate_kb": 2500,
-                "codec": "h264",
-                "frame_rate": "30000/1001"
-            }
-        ],
-        "audio": [
-            {
-                "codec": "aac",
-                "bitrate_kb": 128,
-                "channels": 2
-            }
-        ]
-    }
+  "encode_profile": {
+    "container": {
+      "kind": "mp4"
+    },
+    "video": [
+      {
+        "width": 1280,
+        "height": 720,
+        "bitrate_kb": 2500,
+        "codec": "h264",
+        "frame_rate": "30000/1001"
+      }
+    ],
+    "audio": [
+      {
+        "codec": "aac",
+        "bitrate_kb": 128,
+        "channels": 2
+      }
+    ]
+  }
 }
 ```
 
