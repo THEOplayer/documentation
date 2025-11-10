@@ -2,6 +2,8 @@ openapi: 3.0.3
 info:
   title: Dolby OptiView Ad Engine
   version: 1.0.0
+servers:
+- url: https://api.galaxy.dolbyrasp.com
 paths:
   /ad-engine/profile:
     post:
