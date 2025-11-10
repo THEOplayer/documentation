@@ -1367,17 +1367,54 @@ paths:
                         description: Each audio track is an element of the array.
                   additionalProperties: false
                   examples:
-                  - container:
-                      kind: hls
-                      segment_duration_sec: 2
-                    video:
-                    - width: 1280
-                      height: 720
-                      bitrate_kb: 2500
-                      frame_rate: 30000/1001
-                    audio:
-                    - codec: aac
-                      bitrate_kb: 128
+                  - encode_profile:
+                      container:
+                        kind: hls/fmp4
+                        segment_duration_sec: 2
+                      video:
+                      - width: 1280
+                        height: 720
+                        codec: h264
+                        profile: high
+                        level: '3.1'
+                        bitrate_mode: vbr
+                        bitrate_kb: 2500
+                        min_bitrate_kb: 2380
+                        max_bitrate_kb: 2620
+                        vbv_buffer_size_kb: 2650
+                        frame_rate: 30000/1001
+                      - width: 854
+                        height: 480
+                        codec: h264
+                        profile: high
+                        level: '3.1'
+                        bitrate_mode: vbr
+                        bitrate_kb: 1200
+                        min_bitrate_kb: 1140
+                        max_bitrate_kb: 1260
+                        vbv_buffer_size_kb: 1260
+                        frame_rate: 30000/1001
+                      - width: 640
+                        height: 360
+                        codec: h264
+                        profile: high
+                        level: '3.0'
+                        bitrate_mode: vbr
+                        bitrate_kb: 600
+                        min_bitrate_kb: 570
+                        max_bitrate_kb: 630
+                        vbv_buffer_size_kb: 630
+                        frame_rate: 30000/1001
+                      audio:
+                      - codec: aac
+                        bitrate_kb: 128
+                        channels: 2
+                        filters:
+                        - kind: normalize
+                          payload:
+                            kind: ebur128
+                            payload:
+                              integrated_lufs: -23
                 qc:
                   type: object
                   properties:
@@ -1413,17 +1450,54 @@ paths:
                   additionalProperties: false
               examples:
               - &id001
-                container:
-                  kind: hls
-                  segment_duration_sec: 2
-                video:
-                - width: 1280
-                  height: 720
-                  bitrate_kb: 2500
-                  frame_rate: 30000/1001
-                audio:
-                - codec: aac
-                  bitrate_kb: 128
+                encode_profile:
+                  container:
+                    kind: hls/fmp4
+                    segment_duration_sec: 2
+                  video:
+                  - width: 1280
+                    height: 720
+                    codec: h264
+                    profile: high
+                    level: '3.1'
+                    bitrate_mode: vbr
+                    bitrate_kb: 2500
+                    min_bitrate_kb: 2380
+                    max_bitrate_kb: 2620
+                    vbv_buffer_size_kb: 2650
+                    frame_rate: 30000/1001
+                  - width: 854
+                    height: 480
+                    codec: h264
+                    profile: high
+                    level: '3.1'
+                    bitrate_mode: vbr
+                    bitrate_kb: 1200
+                    min_bitrate_kb: 1140
+                    max_bitrate_kb: 1260
+                    vbv_buffer_size_kb: 1260
+                    frame_rate: 30000/1001
+                  - width: 640
+                    height: 360
+                    codec: h264
+                    profile: high
+                    level: '3.0'
+                    bitrate_mode: vbr
+                    bitrate_kb: 600
+                    min_bitrate_kb: 570
+                    max_bitrate_kb: 630
+                    vbv_buffer_size_kb: 630
+                    frame_rate: 30000/1001
+                  audio:
+                  - codec: aac
+                    bitrate_kb: 128
+                    channels: 2
+                    filters:
+                    - kind: normalize
+                      payload:
+                        kind: ebur128
+                        payload:
+                          integrated_lufs: -23
             example: *id001
       parameters:
       - name: x-rasp-auth-token
@@ -2806,17 +2880,54 @@ paths:
                         description: Each audio track is an element of the array.
                   additionalProperties: false
                   examples:
-                  - container:
-                      kind: hls
-                      segment_duration_sec: 2
-                    video:
-                    - width: 1280
-                      height: 720
-                      bitrate_kb: 2500
-                      frame_rate: 30000/1001
-                    audio:
-                    - codec: aac
-                      bitrate_kb: 128
+                  - encode_profile:
+                      container:
+                        kind: hls/fmp4
+                        segment_duration_sec: 2
+                      video:
+                      - width: 1280
+                        height: 720
+                        codec: h264
+                        profile: high
+                        level: '3.1'
+                        bitrate_mode: vbr
+                        bitrate_kb: 2500
+                        min_bitrate_kb: 2380
+                        max_bitrate_kb: 2620
+                        vbv_buffer_size_kb: 2650
+                        frame_rate: 30000/1001
+                      - width: 854
+                        height: 480
+                        codec: h264
+                        profile: high
+                        level: '3.1'
+                        bitrate_mode: vbr
+                        bitrate_kb: 1200
+                        min_bitrate_kb: 1140
+                        max_bitrate_kb: 1260
+                        vbv_buffer_size_kb: 1260
+                        frame_rate: 30000/1001
+                      - width: 640
+                        height: 360
+                        codec: h264
+                        profile: high
+                        level: '3.0'
+                        bitrate_mode: vbr
+                        bitrate_kb: 600
+                        min_bitrate_kb: 570
+                        max_bitrate_kb: 630
+                        vbv_buffer_size_kb: 630
+                        frame_rate: 30000/1001
+                      audio:
+                      - codec: aac
+                        bitrate_kb: 128
+                        channels: 2
+                        filters:
+                        - kind: normalize
+                          payload:
+                            kind: ebur128
+                            payload:
+                              integrated_lufs: -23
                 qc:
                   type: object
                   properties:
@@ -2852,17 +2963,54 @@ paths:
                   additionalProperties: false
               examples:
               - &id002
-                container:
-                  kind: hls
-                  segment_duration_sec: 2
-                video:
-                - width: 1280
-                  height: 720
-                  bitrate_kb: 2500
-                  frame_rate: 30000/1001
-                audio:
-                - codec: aac
-                  bitrate_kb: 128
+                encode_profile:
+                  container:
+                    kind: hls/fmp4
+                    segment_duration_sec: 2
+                  video:
+                  - width: 1280
+                    height: 720
+                    codec: h264
+                    profile: high
+                    level: '3.1'
+                    bitrate_mode: vbr
+                    bitrate_kb: 2500
+                    min_bitrate_kb: 2380
+                    max_bitrate_kb: 2620
+                    vbv_buffer_size_kb: 2650
+                    frame_rate: 30000/1001
+                  - width: 854
+                    height: 480
+                    codec: h264
+                    profile: high
+                    level: '3.1'
+                    bitrate_mode: vbr
+                    bitrate_kb: 1200
+                    min_bitrate_kb: 1140
+                    max_bitrate_kb: 1260
+                    vbv_buffer_size_kb: 1260
+                    frame_rate: 30000/1001
+                  - width: 640
+                    height: 360
+                    codec: h264
+                    profile: high
+                    level: '3.0'
+                    bitrate_mode: vbr
+                    bitrate_kb: 600
+                    min_bitrate_kb: 570
+                    max_bitrate_kb: 630
+                    vbv_buffer_size_kb: 630
+                    frame_rate: 30000/1001
+                  audio:
+                  - codec: aac
+                    bitrate_kb: 128
+                    channels: 2
+                    filters:
+                    - kind: normalize
+                      payload:
+                        kind: ebur128
+                        payload:
+                          integrated_lufs: -23
             example: *id002
       parameters:
       - name: x-rasp-auth-token
