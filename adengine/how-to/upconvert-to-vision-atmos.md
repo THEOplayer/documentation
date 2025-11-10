@@ -1,6 +1,10 @@
+---
+sidebar_position: 5
+---
+
 # Up-Converting Ads to Dolby Vision and Atmos
 
-The vast majority of ads are produced in SDR (Standard Dynamic Range) video and stereo audio. Many premium VOD and live assets are delivered, however, in Dolby Vision and Atmos. Dolby Vision is the leading HDR (High Dynamic Range) format and Dolby Atmos is the leading object-oriented audio format. You can optimize the viewing experience for your customers by up-converting the ad video and audio. Converting the ad video to Dolby Vision gives the ad more color depth and makes it look stunning. And most importantly, viewers are not switching back and forth between HDR primary content and SDR ads.
+The vast majority of ads are produced in SDR (Standard Dynamic Range) video and stereo audio. Many premium VOD and live assets are delivered, however, in Dolby Vision and Atmos. Dolby Vision is the leading HDR (High Dynamic Range) format and Dolby Atmos is the leading object-oriented audio format. You can optimize the viewing experience for your customers by up-converting the ad video and audio to match the primary content. Converting the ad video to Dolby Vision gives the ad more color depth and makes it look stunning. And most importantly, viewers are not switching back and forth between HDR primary content and SDR ads.
 
 On the audio front, if you have primary content in Dolby Atmos and ads in stereo, there can be switching problems in some devices as they change audio modes. By converting the ad content on-the-fly to Dolby Atmos, you can ensure smooth playback without audio format switching.
 
@@ -52,7 +56,7 @@ As an example, the following ad profile takes SDR/stereo ads and creates a Dolby
       {
         "codec": "ddp_joc",
         "bitrate_kb": 384,
-        "channels": 6
+        "channels": 10
       }
     ]
   }
@@ -69,4 +73,4 @@ The strength of the SDR enhancement can be set with the `mode` parameter.
 
 The Dolby Atmos encoding uses the Dolby Digital Plus JOC (Joint Object Coding) codec.
 
-Please see the API Reference for the complete list of available encoding parameters.
+Please see the **API Reference** for the complete list of available encoding parameters.

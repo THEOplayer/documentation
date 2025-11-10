@@ -1,8 +1,12 @@
+---
+sidebar_position: 0
+---
+
 # Ad Profiles
 
-Before any ads can be processed by the OptiView Ad Engine, you must specify one or more **ad profiles**. The purpose of an ad profile is to define the parameters of your encoding, such as resolution, bitrate, etc. This is also where you define the audio normalization you desire and any quality control checks that should be performed.
+Before any ads can be processed by the OptiView Ad Engine, you must create one or more **ad profiles**. The purpose of an ad profile is to define the parameters of your encoding, such as resolution, bitrate, etc. This is also where you define the audio normalization you desire and any quality control checks that should be performed.
 
-If you serve different types of streaming content, for example you use a high bitrate ladder for in one region and a completely different encoding ladder in a different region, you could create different ad profiles. The goal is to match the ad to the content, so that you have the best possible experience.
+If you serve different bitrates in different regions, for example, you could create different ad profiles for each region. The goal is to match the ad to the content, so that you have the best possible experience.
 
 ### Simple Example
 
@@ -12,7 +16,7 @@ A profile is described by a JSON object. Let's look at a simple example that is 
 {
   "encode_profile": {
     "container": {
-      "kind": "hls",
+      "kind": "hls/fmp4",
       "segment_duration_sec": 2
     },
     "video": [
@@ -41,7 +45,7 @@ A profile is described by a JSON object. Let's look at a simple example that is 
     "audio": [
       {
         "codec": "aac",
-        "bitrate_kb": 96,
+        "bitrate_kb": 128,
         "channels": 2
       }
     ]
@@ -59,7 +63,7 @@ POST https://api.galaxy.dolbyrasp.com/ad-engine/profile?key=ad_profile_1
 
 ### Encoding Parameters
 
-There are many encoding parameters that can be set for an output. We recommend that you use the **least** number of explicit parameters, and allow the Ad Engine to select the appropriate values. If you don't set a frame_rate, for example, the Ad Engine will use the frame_rate of the source file. If you don't set a codec profile, the Ad Engine will set a profile that is appropriate for the dimensions and bitrate of your output. If you know the explicit settings you want, you can set a wide range of parameters, including:
+There are many encoding parameters that can be set for an output. We recommend that you use the **least** number of explicit parameters, and allow the Ad Engine to select the appropriate values. If you don't set a codec profile, the Ad Engine will set a profile that is appropriate for the dimensions and bitrate of your output. If you know the explicit settings you want, you can set a wide range of parameters, including:
 
 - video properties - codec, bitrate, width, height, dar, etc.
 - video codec parameters - profile, level, crf, bitrate_mode, etc.
@@ -73,4 +77,4 @@ For a complete list of all properties, please refer to the **API Reference**.
 
 ### Listing, Editing, and Deleting Profiles
 
-The API allows you to get a list of your profiles, edit a proofile, and delete a profile. Please see the API Reference for details on how to perform these actions.
+The API allows you to get a list of your profiles, edit a profile, and delete a profile. Please see the API Reference for details on how to perform these actions.

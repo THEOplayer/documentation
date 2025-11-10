@@ -1,16 +1,20 @@
+---
+sidebar_position: 3
+---
+
 # Audio Normalization
 
 An area of importance for ad processing is to have the ads match the source content in terms of audio volume. It will drive away viewers if your ads have wildly different volume than your primary content. Whether by accident or intent, ads are often set to very high volume. You can use the OptiView Ad Engine to normalize these ads so that all your ads are (1) consistent and (2) match your primary content.
 
 ### Example
 
-In this example, we are using the EBU R128 audio normalization standad set to -23 LUFS (Loudness Units Relative to Full Sclae). This also sets a maimum level of -1 dB to prevent distortion. The Ad Engine analyzes the content first, and then modifies the audio to match the desired audio level.
+In this example, we are using the EBU R128 audio normalization standad set to -23 LUFS (Loudness Units Relative to Full Sclae). The Ad Engine analyzes the content first, and then modifies the audio to match the desired audio level.
 
 ```json
 {
   "encode_profile": {
     "container": {
-      "kind": "hls",
+      "kind": "hls/fmp4",
       "segment_duration_sec": 2
     },
     "video": [
@@ -39,7 +43,7 @@ In this example, we are using the EBU R128 audio normalization standad set to -2
     "audio": [
       {
         "codec": "aac",
-        "bitrate_kb": 96,
+        "bitrate_kb": 128,
         "channels": 2,
         "filters": [
           {

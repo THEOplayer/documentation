@@ -21,6 +21,7 @@ function cleanItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
       // Rename the REST APIs title
       if (isCategory(item) && item.label === 'Ad Engine') {
         item.label = 'REST APIs';
+        item.collapsed = false;
       }
 
       return item;

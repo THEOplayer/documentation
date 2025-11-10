@@ -1,12 +1,16 @@
+---
+sidebar_position: 6
+---
+
 # Quality Control
 
-One of the realities of ads is that there are many instances where the ad source can be problematic. These types of problems can include things like too long duration, too short duration, too small dimensions, too low of a bitrate, etc. A bad ad can look bad, sound bad, or simple stall your player, so it is important to verify the quality of the ad.
+One of the realities of ads is that there are many instances where the ad source can be problematic. These types of problems can include things like too long duration, too short duration, too small dimensions, too low of a bitrate, etc. A bad ad can look bad, sound bad, or simply stall your player, so it is important to verify the quality of the ad.
 
 The OptiView Ad Engine includes the ability to do quality control on the source and output of the ad. The quality control parameters are set in the **ad profile**.
 
 ### QC Example
 
-A QC object is added to the ad profile. In this case, we are checking that the source file is less than 3 minutes in duration and that the source height is 720p or larger.
+A QC object is added to the ad profile. In this case, we are checking that the source file is less than 2 minutes in duration and that the source height is 720p or larger.
 
 ```json
 {
@@ -51,8 +55,8 @@ A QC object is added to the ad profile. In this case, we are checking that the s
       "conditions": {
         "pass": [
           {
-            "condition": "source.container.duration <= 180",
-            "message_fail": "FAIL: Source duration must be less than 3 minutes."
+            "condition": "source.container.duration <= 120",
+            "message_fail": "FAIL: Source duration must be less than or equal to 2 minutes."
           },
           {
             "condition": "source.height >= 720",

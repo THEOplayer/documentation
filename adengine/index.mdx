@@ -23,9 +23,9 @@ The OptiView Ad Engine uses an underlying processing system called Dolby RASP - 
 
 A "galaxy" is a specific endpoint assigned to a specific customer. Each galaxy is independent of another. All content is unique to the galaxy it was created in. For example, if you created an Ad Profile in one galaxy, that profile will not exist in another. The API endpoint you are assigned will look like:
 
-`https://api.my_galaxy.dolbyrasp.com`
+`https://api.galaxy.dolbyrasp.com`
 
-In the API documentation, any reference to `{galaxy}` is a placeholder for the galaxy you have been assisgned.
+In the API documentation, any reference to `galaxy` is a placeholder for the galaxy you have been assisgned.
 
 ### API-Less JIT Operation
 
@@ -37,7 +37,7 @@ For example, if your original ad file is located at:
 
 Wrapping it with the Ad Engine entry point provides the converted HLS stream at:
 
-`https://api.{galaxy}.dolbyrasp.com/ad_engine/conform/my_ad_profile?url=https://ad_server.com/ad123.mp4&output_format=media`
+`https://api.galaxy.dolbyrasp.com/ad_engine/conform?profile=my_ad_profile?url=https://ad_server.com/ad123.mp4&output_format=media`
 
 This is a synchronous `GET` operation, making integration into existing workflows seamless. The resulting HLS output can be streamed directly from the Ad Engine origin or transferred to the same origin as the primary content and distributed through your CDN. This approach also makes ad blocking more difficult since both primary and ad content originate from the same source.
 
