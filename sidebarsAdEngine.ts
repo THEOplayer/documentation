@@ -39,7 +39,7 @@ const sidebars: SidebarsConfig = {
     'index',
     {
       type: 'category',
-      label: 'How to',
+      label: 'How-to guides',
       description: 'How to use OptiView Ad Engine',
       collapsed: false,
       collapsible: false,

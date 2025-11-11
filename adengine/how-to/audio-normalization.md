@@ -8,7 +8,7 @@ An area of importance for ad processing is to have the ads match the source cont
 
 ### Example
 
-In this example, we are using the EBU R128 audio normalization standad set to -23 LUFS (Loudness Units Relative to Full Sclae). The Ad Engine analyzes the content first, and then modifies the audio to match the desired audio level.
+In this example, we are using the EBU R128 audio normalization standad set to -23 LUFS (Loudness Units Relative to Full Scale). The Ad Engine analyzes the content first, and then modifies the audio to match the desired audio level.
 
 ```json
 {

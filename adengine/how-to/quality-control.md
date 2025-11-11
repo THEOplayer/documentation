@@ -75,4 +75,4 @@ The Ad Engine inlcludes both source and output QC. The `pre` object defines the 
 
 ### QC Conditions
 
-The QC `conditions` is an object that defines `pass` and `fail` conditions. You can define a condition either as a `pass` condition that must be true, or a `fail` condition that will generate a failure. In our above example, we are using the `pass` condition -- meaning that each condition must evaluate to `true` in order for the file to pass QC. The QC decision can be defined by a `math.js` string, which allows for complex operations if needed.
+The QC `conditions` is an object that defines `pass` and `fail` conditions. You can define a condition either as a `pass` condition that must be true, or a `fail` condition that will generate a failure. In our above example, we are using the `pass` condition -- meaning that each condition must evaluate to `true` in order for the file to pass QC. The QC decision can be defined by a [math.js](https://mathjs.org/) string, which allows for complex operations if needed.
