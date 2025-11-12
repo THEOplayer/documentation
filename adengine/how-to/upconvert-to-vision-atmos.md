@@ -63,13 +63,17 @@ As an example, the following ad profile takes SDR/stereo ads and creates a Dolby
 }
 ```
 
-Ad profiles can include both enhanced and regular outputs. The available SDR enhancement to HDR output includes:
+Ad profiles can include both enhanced and regular outputs. The available color ranges are:
 
-- Dolby Vision - Profile 5
-- Dolby Vision - Profile 8.1 (HDR10 base layer with Dolby Vision enhancement)
-- HDR10
+| Color Range | Output  |
+|---|:---:|
+| `sdr` |Standard Dynamic Range|
+| `dolby_vision_5` |Dolby Vision Profile 5|
+| `dolby_vision_8.1` |Dolby Vision Profile 8.1|
+| `hdr10` |HDR10|
 
-The strength of the SDR enhancement can be set with the `mode` parameter.
+
+The strength of the SDR enhancement Look-Up Table (LUT) can be set with the `mode` parameter. These values include `lut_low`, `lut_med`, and `lut_high`. The default is `lut_med`.
 
 The Dolby Atmos encoding uses the Dolby Digital Plus JOC (Joint Object Coding) codec.
 
