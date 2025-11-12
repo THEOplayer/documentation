@@ -48,6 +48,8 @@ function getMainDocTitle(docPluginId: string): string | null {
       return 'Open Video UI';
     case 'theoads':
       return 'Ads';
+    case 'adengine':
+      return 'Ad Engine';
     case 'theolive':
       return 'Live Streaming';
     case 'millicast':

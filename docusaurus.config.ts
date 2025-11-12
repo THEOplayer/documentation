@@ -94,7 +94,8 @@ function removeDocIndexItems(items) {
 
 const config: Config = {
   title: 'Dolby OptiView Documentation',
-  tagline: 'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, and Open Video UI',
+  tagline:
+    'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, Ad Engine, and Open Video UI',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -209,6 +210,38 @@ const config: Config = {
           return removeDocIndexItems(sidebarItems);
         },
       } satisfies DocsPlugin.Options,
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        ...docsConfigBase,
+        id: 'adengine',
+        path: 'adengine',
+        routeBasePath: '/ad-engine',
+        sidebarPath: './sidebarsAdEngine.ts',
+        docItemComponent: '@theme/ApiItem',
+        async sidebarItemsGenerator(args) {
+          const sidebarItems = await sidebarItemsGenerator(args);
+          return removeDocIndexItems(sidebarItems);
+        },
+      } satisfies DocsPlugin.Options,
+    ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'ad-engine-api',
+        docsPluginId: 'adengine',
+        config: {
+          reference: {
+            specPath: 'adengine/static/ad-engine.yaml',
+            outputDir: 'adengine/reference',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+        },
+      } satisfies OpenApiPlugin.PluginOptions,
     ],
     [
       '@docusaurus/plugin-content-docs',
@@ -495,7 +528,7 @@ const config: Config = {
     },
   },
 
-  staticDirectories: ['static', 'theoplayer/static', 'ads/static', 'open-video-ui/external/web-ui/docs/static'],
+  staticDirectories: ['static', 'theoplayer/static', 'ads/static', 'adengine/static', 'open-video-ui/external/web-ui/docs/static'],
 
   themeConfig: {
     // TODO OpenGraph image for OptiView?
@@ -546,11 +579,25 @@ const config: Config = {
           ],
         },
         {
-          type: 'docSidebar',
-          docsPluginId: 'ads',
-          sidebarId: 'ads',
+          type: 'dropdown',
           label: 'Ads',
           position: 'left',
+          items: [
+            {
+              type: 'docSidebar',
+              docsPluginId: 'ads',
+              sidebarId: 'ads',
+              label: 'OptiView Ads',
+              activeBasePath: '/ads',
+            },
+            {
+              type: 'docSidebar',
+              docsPluginId: 'adengine',
+              sidebarId: 'adengine',
+              label: 'OptiView Ad Engine',
+              activeBasePath: '/ad-engine',
+            },
+          ],
         },
         {
           type: 'dropdown',
