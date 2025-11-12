@@ -2,14 +2,13 @@ openapi: 3.0.3
 info:
   title: Dolby OptiView Ad Engine
   version: 1.0.0
-servers:
-- url: https://api.galaxy.dolbyrasp.com
 paths:
   /ad-engine/profile:
     post:
       summary: Create Ad Profile
       tags:
       - Ad Engine
+      description: Creates an ad encoding profile.
       requestBody:
         required: true
         content:
@@ -1519,10 +1518,13 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: create-ad-profile
+      x-displayName: Create Ad Profile
     put:
-      summary: Modify Ad Profile
+      summary: Update Ad Profile
       tags:
       - Ad Engine
+      description: Updates an ad encoding profile.
       requestBody:
         required: true
         content:
@@ -3032,10 +3034,13 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: update-ad-profile
+      x-displayName: Update Ad Profile
     delete:
       summary: Delete Ad Profile
       tags:
       - Ad Engine
+      description: 'Deletes a specific ad profile. '
       parameters:
       - name: x-rasp-auth-token
         in: header
@@ -3054,10 +3059,13 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: delete-ad-profile
+      x-displayName: Delete Ad Profile
     get:
       summary: Get Ad Profile
       tags:
       - Ad Engine
+      description: 'Requests the properties of a specific ad profile. '
       parameters:
       - name: x-rasp-auth-token
         in: header
@@ -3076,11 +3084,14 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: get-ad-profile
+      x-displayName: Get Ad Profile
   /ad-engine/profiles:
     get:
-      summary: List Ad Profiles
+      summary: Get All Ad Profiles
       tags:
       - Ad Engine
+      description: Gets a list of all current ad profiles.
       parameters:
       - name: x-rasp-auth-token
         in: header
@@ -3090,11 +3101,14 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: list-ad-profiles
+      x-displayName: Get Ad Profile
   /ad-engine/conform:
     get:
-      summary: Create Conformed Ad
+      summary: Conform Ad
       tags:
       - Ad Engine
+      description: 'Conforms a single ad to a specified encoding profile. '
       parameters:
       - name: x-rasp-auth-token
         in: header
@@ -3173,11 +3187,14 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: conform-ad
+      x-displayName: Conform Ad
   /ad-engine/conform-pod:
     post:
-      summary: Create Conformed Ad Pod
+      summary: Conform Ad Pod
       tags:
       - Ad Engine
+      description: Conforms multiple ads (an ad pod) to a specified encoding profile.
       requestBody:
         required: true
         content:
@@ -3332,5 +3349,9 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: conform-ad-pod
+      x-displayName: Conform Ad Pod
 components:
   schemas: {}
+servers:
+- url: https://api.galaxy.dolbyrasp.com
