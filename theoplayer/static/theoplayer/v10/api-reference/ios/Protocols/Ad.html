@@ -1018,13 +1018,19 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A reference to the <code><a href="../Protocols/AdBreak.html">AdBreak</a></code> of which the ad is a part of.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    The <code><a href="../Protocols/AdBreak.html">AdBreak</a></code> property can be already deallocated if no reference is kept elsewhere.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">adBreak</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AdBreak.html">AdBreak</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="s">"In the next major version, this property will become optional."</span><span class="p">)</span>
+<span class="k">var</span> <span class="nv">adBreak</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AdBreak.html">AdBreak</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
