@@ -5,6 +5,30 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.4.1 (2025/11/14)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved the performance of CEA-608 parsing and rendering.
+
+#### 🐛 Issues
+
+- Fixed an issue where the cues of text tracks would never be pruned on HLS live streams.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where accessing the ad break of a Google DAI ad would crash the application.
+- Fixed an issue where unmuting the player on iOS failed after muting a stream that contains an IMA ad.
+- Fixed an issue where after loading a VMAP ad, additional VMAP ads would fail to load and playout would be broken.
+
+#### 👎 Deprecations
+
+- Deprecated the `adBreak` property of the `Ad` protocol, this property can continue to be used but will become optional with the next major version.
+
 ## 🚀 10.4.0 (2025/11/05)
 
 ### General
