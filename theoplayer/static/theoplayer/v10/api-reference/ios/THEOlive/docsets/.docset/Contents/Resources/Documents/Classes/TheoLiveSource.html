@@ -204,9 +204,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatencyACSS_SDyS2SGSgSdSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(channelId:headers:targetLatency:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatencyACSS_SDyS2SGSgSdSgtcfc">init(channelId:<wbr>headers:<wbr>targetLatency:<wbr>)</a>
+                    <a name="/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatency3drmACSS_SDyS2SGSgSdSg0A3SDK16DRMConfiguration_pSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(channelId:headers:targetLatency:drm:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatency3drmACSS_SDyS2SGSgSdSg0A3SDK16DRMConfiguration_pSgtcfc">init(channelId:<wbr>headers:<wbr>targetLatency:<wbr>drm:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -221,7 +221,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">channelId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">targetLatency</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">channelId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">targetLatency</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">drm</span><span class="p">:</span> <span class="kt">DRMConfiguration</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -262,6 +262,18 @@
                               <td>
                                 <div>
                                   <p>The live offset that the player will aim for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>drm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This optional property can be used to specify required DRM parameters for a playback source.</p>
                                 </div>
                               </td>
                             </tr>

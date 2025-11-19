@@ -1110,6 +1110,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:13THEOplayerSDK29MultiplatformDRMConfigurationC15queryParametersSDyS2SGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/queryParameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK29MultiplatformDRMConfigurationC15queryParametersSDyS2SGSgvp">queryParameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Record of query parameters for the licence acquisition request. Each entry contains a query parameter name with associated value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">queryParameters</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:13THEOplayerSDK29MultiplatformDRMConfigurationC23keySystemConfigurationsAcA03KeyF23ConfigurationCollectionC_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(keySystemConfigurations:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:13THEOplayerSDK29MultiplatformDRMConfigurationC23keySystemConfigurationsAcA03KeyF23ConfigurationCollectionC_tcfc">init(keySystemConfigurations:<wbr>)</a>
@@ -1156,9 +1183,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13THEOplayerSDK29MultiplatformDRMConfigurationC19customIntegrationId21integrationParameters23keySystemConfigurationsACSS_SDySSypGAA03KeyK23ConfigurationCollectionCtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(customIntegrationId:integrationParameters:keySystemConfigurations:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13THEOplayerSDK29MultiplatformDRMConfigurationC19customIntegrationId21integrationParameters23keySystemConfigurationsACSS_SDySSypGAA03KeyK23ConfigurationCollectionCtcfc">init(customIntegrationId:<wbr>integrationParameters:<wbr>keySystemConfigurations:<wbr>)</a>
+                    <a name="/s:13THEOplayerSDK29MultiplatformDRMConfigurationC19customIntegrationId21integrationParameters23keySystemConfigurations05queryI0ACSS_SDySSypGAA03KeyK23ConfigurationCollectionCSDyS2SGSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(customIntegrationId:integrationParameters:keySystemConfigurations:queryParameters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK29MultiplatformDRMConfigurationC19customIntegrationId21integrationParameters23keySystemConfigurations05queryI0ACSS_SDySSypGAA03KeyK23ConfigurationCollectionCSDyS2SGSgtcfc">init(customIntegrationId:<wbr>integrationParameters:<wbr>keySystemConfigurations:<wbr>queryParameters:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1176,7 +1203,8 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
     <span class="nv">customIntegrationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
     <span class="nv">integrationParameters</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Any</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[:],</span>
-    <span class="nv">keySystemConfigurations</span><span class="p">:</span> <span class="kt"><a href="../Classes/KeySystemConfigurationCollection.html">KeySystemConfigurationCollection</a></span>
+    <span class="nv">keySystemConfigurations</span><span class="p">:</span> <span class="kt"><a href="../Classes/KeySystemConfigurationCollection.html">KeySystemConfigurationCollection</a></span><span class="p">,</span>
+    <span class="nv">queryParameters</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
 <span class="p">)</span></code></pre>
 
                         </div>
@@ -1218,6 +1246,18 @@
                               <td>
                                 <div>
                                   <p>the configurations for one or more key systems</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>queryParameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>record of query parameters for the licence acquisition request. Each entry contains a query parameter name with associated value.</p>
                                 </div>
                               </td>
                             </tr>

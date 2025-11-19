@@ -100,13 +100,14 @@ The player supports Dynamic Ad Insertion (DAI) using Google DAI. This integratio
 
 The following key/value pairs are supported on the `ssai` attribute of a Typed Source:
 
-| Name             | Type   | Description                                                                      |
-| ---------------- | ------ | -------------------------------------------------------------------------------- |
-| integration      | string | The type of DAI integration. Currently the only supported value is "google-dai". |
-| apiKey           | string | The API key for your DAI account.                                                |
-| availabilityType | string | The type of asset you are playing ("live" or "vod").                             |
-| networkCode      | string | The network code for your DAI account.                                           |
-| assetKey         | string | Optional. The asset key for your live asset. Not required for VOD assets.        |
+| Name             | Type               | Description                                                                      |
+| ---------------- | ------------------ | -------------------------------------------------------------------------------- |
+| integration      | string             | The type of DAI integration. The supported values are "google-dai" or "theoads". |
+| apiKey           | string             | The API key for your DAI account.                                                |
+| availabilityType | string             | The type of asset you are playing ("live" or "vod").                             |
+| networkCode      | string             | The network code for your DAI account.                                           |
+| assetKey         | string             | Optional. The asset key for your live asset. Not required for VOD assets.        |
+| adTagParameters  | roAssociativeArray | Optional. Map of ad tag parameters configurable for ad targeting.                |
 
 NOTE: It is not supported to use SSAI through this API at the same time as Client-side Ad Insertion (CSAI) through the Ad Sources configuration.
 
