@@ -1110,9 +1110,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headersACSSSg_AhA07LicenseJ0OSgSDyS2SGSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(licenseAcquisitionURL:certificateURL:licenseType:headers:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headersACSSSg_AhA07LicenseJ0OSgSDyS2SGSgtcfc">init(licenseAcquisitionURL:<wbr>certificateURL:<wbr>licenseType:<wbr>headers:<wbr>)</a>
+                    <a name="/s:13THEOplayerSDK22KeySystemConfigurationC15queryParametersSDyS2SGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/queryParameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK22KeySystemConfigurationC15queryParametersSDyS2SGSgvp">queryParameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Record of query parameters for the licence acquisition request. Each entry contains a query parameter name with associated value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">queryParameters</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headers15queryParametersACSSSg_AiA07LicenseJ0OSgSDyS2SGSgANtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(licenseAcquisitionURL:certificateURL:licenseType:headers:queryParameters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK22KeySystemConfigurationC21licenseAcquisitionURL011certificateH00F4Type7headers15queryParametersACSSSg_AiA07LicenseJ0OSgSDyS2SGSgANtcfc">init(licenseAcquisitionURL:<wbr>certificateURL:<wbr>licenseType:<wbr>headers:<wbr>queryParameters:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1127,7 +1154,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">licenseAcquisitionURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">certificateURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">licenseType</span><span class="p">:</span> <span class="kt"><a href="../Enums/LicenseType.html">LicenseType</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">licenseAcquisitionURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">certificateURL</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">licenseType</span><span class="p">:</span> <span class="kt"><a href="../Enums/LicenseType.html">LicenseType</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">queryParameters</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1168,6 +1195,18 @@
                               <td>
                                 <div>
                                   <p>The type of license, defaults to nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>queryParameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>record of query parameters for the licence acquisition request. Each entry contains a query parameter name with associated value.</p>
                                 </div>
                               </td>
                             </tr>

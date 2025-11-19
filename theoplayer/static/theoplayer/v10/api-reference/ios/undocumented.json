@@ -338,140 +338,140 @@
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 110,
+      "line": 137,
       "symbol": "FairPlayDRMConfigurationProtocol.fairplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 115,
+      "line": 142,
       "symbol": "WidevineDRMConfigurationProtocol.widevine",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 120,
+      "line": 147,
       "symbol": "LicenseType.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 121,
+      "line": 148,
       "symbol": "LicenseType.temporary",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 122,
+      "line": 149,
       "symbol": "LicenseType.persistent",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 175,
+      "line": 202,
       "symbol": "DRMIntegration.none",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 176,
+      "line": 203,
       "symbol": "DRMIntegration.azure",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 177,
+      "line": 204,
       "symbol": "DRMIntegration.uplynk",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 178,
+      "line": 205,
       "symbol": "DRMIntegration.vimond",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 179,
+      "line": 206,
       "symbol": "DRMIntegration.ezdrm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 180,
+      "line": 207,
       "symbol": "DRMIntegration.axinom",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 181,
+      "line": 208,
       "symbol": "DRMIntegration.keyos",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 182,
+      "line": 209,
       "symbol": "DRMIntegration.verimatrix",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 183,
+      "line": 210,
       "symbol": "DRMIntegration.comcast",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 184,
+      "line": 211,
       "symbol": "DRMIntegration.irdeto",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 185,
+      "line": 212,
       "symbol": "DRMIntegration.drmtoday",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 186,
+      "line": 213,
       "symbol": "DRMIntegration.xstream",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 187,
+      "line": 214,
       "symbol": "DRMIntegration.vudrm",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/DRMConfiguration.swift",
-      "line": 188,
+      "line": 215,
       "symbol": "DRMIntegration.custom",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/Models/Player/SourceDescription/DRMConfiguration/MultiplatformDRMConfiguration.swift",
-      "line": 115,
+      "line": 128,
       "symbol": "MultiplatformDRMConfiguration.fairplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -590,15 +590,29 @@
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
-      "line": 111,
+      "line": 161,
       "symbol": "EventSource.urlSession(_:task:didCompleteWithError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
-      "line": 123,
+      "line": 165,
       "symbol": "EventSource.urlSession(_:dataTask:didReceive:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
+      "line": 170,
+      "symbol": "EventSource.urlSession(_:dataTask:didReceive:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
+      "line": 229,
+      "symbol": "EventSource.networkConnectionDidChange(state:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -898,7 +912,7 @@
     },
     {
       "file": "/Users/admin/jenkins/workspace/Documentation/SDK/0_API_Ref-iOS/ios/THEOplayer_SDK/Native/Models/Player/PlayerView/PlayerView.swift",
-      "line": 366,
+      "line": 376,
       "symbol": "PlayerView",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

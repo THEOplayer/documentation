@@ -5,6 +5,96 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.5.0 (2025/11/19)
+
+### Web
+
+#### ✨ Features
+
+- Added support for targeted bitrate limiting on OptiView Live streams with OptiView Ads enabled.
+- Added the `fallback` event to the `theoads` API to indicate when the player falls back to Google DAI when OptiView Ads is not supported or blocked.
+- Added support for configuring query parameters that are common to multiple key system configurations. The parameters defined in `contentProtection.queryParameters` will be merged with any query parameters that are explicitly defined on a key system configuration, whereby the latter takes precedence.
+
+#### ⚡ Improvements
+
+- Updated OptiView Ads overlays to be available during the whole DVR range instead of being removed after it was shown.
+- Improved the transition from content to ad on Safari for OptiView Ads.
+
+#### 🐛 Issues
+
+- Fixed an issue for OptiView Ads where the player could get stuck when scheduling multiple ad breaks close together. 
+- Fixed an issue where the player would not dispatch an `AdErrorEvent` when failing to play an ad during an OptiView Ads stream.
+- Fixed a regression since 10.2.0 for OptiView Ads where a scheduled overlay could be rendered multiple times.
+- Fixed an issue where incorrect events were dispatched when transitioning between content and ads for OptiView Ads.
+- Fixed an issue where the cues of text tracks would never be pruned on HLS live streams.
+- Fixed an issue where the player would sometimes throw a media decode error on PS5 when playing multi period DASH streams.
+- Fixed an issue where the Uplynk UI was creating unnecessary DOM nodes on every `timeupdate` event, even when the Uplynk integration was not in use.
+- Fixed an issue for OptiView Ads where L-Shape ad breaks on iOS would show the content instead of the backdrop.
+- Fixed an issue where multiple quartile events could be dispatched when playing a Google DAI source.
+
+### Android
+
+#### ✨ Features
+
+- Added `TheoAdsFallbackEvent` to indicate when the player falls back to Google DAI when OptiView Ads is not supported or blocked.
+- Added support for targeted bitrate limiting on OptiView Live streams with OptiView Ads enabled.
+- Added support for configuring query parameters that are common to multiple key system configurations. The parameters defined in `contentProtection.queryParameters` will be merged with any query parameters that are explicitly defined on a key system configuration, whereby the latter takes precedence.
+
+#### 🐛 Issues
+
+- Fixed an issue where an `InterstitialError` event was incorrectly emitted for single ads in OptiView Ads.
+- Fixed an issue where the `AddAdBreakEvent` would fire multiple times while playing a Google DAI ad.
+- Fixed an issue on OptiView Ads where an additional `AdBegin` event was fired in case of an ad error or very short slate.
+- Fixed an issue where the player did not always fall back to a configured Google DAI stream when it encounters a problem with the main OptiView Ads stream.
+- Fixed an issue where `AdBreakBeginEvent` was fired at the start of each ad in a Google IMA/DAI ad break, instead of just once at the start of the ad break.
+- Fixed an issue where a crash could occur due to locally stored bandwidth properties being null unexpectedly.
+- Fixed an issue where `AdBreak.timeOffset` was always 0 for midrolls in a Google DAI livestream.
+- Fixed an issue where different midroll ad breaks in a Google DAI livestream were incorrectly represented by the same `AdBreak` object.
+- Fixed an issue where ad breaks in a Google DAI livestream were never removed from the Ads API after being played.
+- Fixed an issue where OptiView Live was incorrectly skipping endpoints with higher priority.
+
+### iOS
+
+#### ✨ Features
+
+- Added `THEOadsFallbackEvent` to indicate when the player falls back to Google DAI when OptiView Ads is not supported or blocked.
+- Added support for targeted bitrate limiting on OptiView Live streams with OptiView Ads enabled.
+- Added support for configuring query parameters that are common to multiple key system configurations. The parameters defined in `DRMConfiguration.queryParameters` will be merged with any query parameters that are explicitly defined on a key system configuration, whereby the latter takes precedence.
+
+#### 🐛 Issues
+
+- Fixed an issue where both SGAI and SSAI were enabled for a SSAI only OptiView Live stream.
+- Fixed an issue where accessing the ad break of a Google DAI ad would crash the application.
+- Fixed an issue where playback would not automatically start when setting a new source and calling play after connecting to AirPlay. 
+- Fixed an issue where the picture-in-picture presentation mode was not preserved when an adbreak ended for OptiView Ads.
+- Fixed an issue where player controls and API's were broken when returning from a Chromecast session. 
+
+#### 👎 Deprecations
+
+- Deprecated the `adBreak` property of the `Ad` protocol, this property can still be used but will become optional with the next major version.
+
+### Chromecast
+
+#### 🐛 Issues
+
+- Fixed an issue where a mismatch could occur between enabled tracks on the sender versus the receiver, causing unexpected behaviour in audio track selection.
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added support for configuring query parameters that are common to multiple key system configurations.
+
+### Roku
+
+#### ✨ Features
+
+- Added support for targeted bitrate limiting on OptiView Live streams with OptiView Ads enabled.
+
+#### 🐛 Issues
+
+- Fixed an issue where a crash could occur due to event listener cleanup during player destruction.
+
 ## 🚀 10.4.1 (2025/11/14)
 
 ### Web
