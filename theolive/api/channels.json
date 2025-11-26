@@ -1325,6 +1325,16 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "hls": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "description": "Whether HLS should be available on this alias."
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
                   "customization": {
                     "properties": {
                       "targetLatency": {
