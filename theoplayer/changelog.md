@@ -5,6 +5,21 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.5.1 (2025/11/26)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where seeking back in an OptiView Live stream with a DVR window on iOS Safari would make the player jump to the live edge instead of the desired time.
+- Fixed an issue where the current time was incorrect when returning from casting a DVR asset.
+
+### Android
+
+#### 🐛 Issues
+
+- Removed dependency on `kotlinx-datetime` library from OptiView Ads integration.
+
 ## 🚀 10.5.0 (2025/11/19)
 
 ### Web
