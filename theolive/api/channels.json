@@ -500,41 +500,6 @@
                         "description": "Target latency of the player: can be used to add some additional latency when sub-second latency is not possible due to bad network conditions. Possible values: 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5",
                         "default": 0,
                         "format": "double"
-                      },
-                      "colors": {
-                        "properties": {
-                          "primary": {
-                            "type": "string",
-                            "description": "Change the primary color of the player"
-                          },
-                          "secondary": {
-                            "type": "string",
-                            "description": "Change the secondary color of the player"
-                          },
-                          "tertiary": {
-                            "type": "string",
-                            "description": "Change the tertiary color of the player"
-                          }
-                        },
-                        "required": [],
-                        "type": "object"
-                      },
-                      "posterImg": {
-                        "type": "string",
-                        "description": "Set an image that will be shown in the player when the live stream isn't active yet. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
-                      },
-                      "announcement": {
-                        "type": "string",
-                        "description": "Change the text that will be shown in the player when the live stream isn't active yet."
-                      },
-                      "logo": {
-                        "type": "string",
-                        "description": "Set a logo that will be shown at the top left of the active video track. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
-                      },
-                      "autoplay": {
-                        "type": "boolean",
-                        "description": "Setting to switch on/off automatic playback",
-                        "default": false
                       }
                     },
                     "required": [],
@@ -1360,46 +1325,22 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "hls": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "description": "Whether HLS should be available on this alias."
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
                   "customization": {
                     "properties": {
                       "targetLatency": {
                         "type": "number",
                         "description": "Target latency of the player: can be used to add some additional latency when sub-second latency is not possible due to bad network conditions. Possible values: 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5",
                         "format": "double"
-                      },
-                      "colors": {
-                        "properties": {
-                          "primary": {
-                            "type": "string",
-                            "description": "Change the primary color of the player"
-                          },
-                          "secondary": {
-                            "type": "string",
-                            "description": "Change the secondary color of the player"
-                          },
-                          "tertiary": {
-                            "type": "string",
-                            "description": "Change the tertiary color of the player"
-                          }
-                        },
-                        "required": [],
-                        "type": "object"
-                      },
-                      "posterImg": {
-                        "type": "string",
-                        "description": "Set an image that will be shown in the player when the live stream isn't active yet. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
-                      },
-                      "announcement": {
-                        "type": "string",
-                        "description": "Change the text that will be shown in the player when the live stream isn't active yet."
-                      },
-                      "logo": {
-                        "type": "string",
-                        "description": "Set a logo that will be shown at the top left of the active video track. Should be a valid image URL, ending in .jpg, .jpeg, .png, .gif or .svg"
-                      },
-                      "autoplay": {
-                        "type": "boolean",
-                        "description": "Setting to switch on/off automatic playback"
                       }
                     },
                     "required": [],
