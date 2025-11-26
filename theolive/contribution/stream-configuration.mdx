@@ -10,7 +10,7 @@ Settings related to the THEOlive stream output
 
 THEOlive offers pre-defined ABR profiles (or "presets") which allows you to adjust the stream settings according to your use case. Different pricing per minute transcoded and viewed applies to each profile.
 
-**Note:** this is a breaking change compared to the method where you had to passed a `ingestConfig` object in the past. This old approach is still available for the time being. More information can be found later on in this [document](#setting-the-stream-configuration-via-the-ingestconfig-object-deprecated). You can pass as well the `streamConfig` as `ingestConfig` object (the API won't throw an error), but `streamConfig` will take precedence.
+**Note:** this is a breaking change compared to the method where you had to pass a `ingestConfig` object in the past. This old approach is still available for the time being. More information can be found later on in this [document](#setting-the-stream-configuration-via-the-ingestconfig-object-deprecated). You can pass both a `streamConfig` as well as a `ingestConfig` object (the API won't throw an error), but `streamConfig` will take precedence.
 
 ## Setting the stream configuration via the `streamConfig` object
 
