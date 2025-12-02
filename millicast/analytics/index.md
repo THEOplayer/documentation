@@ -13,13 +13,13 @@ All requests made to the analytics APIs require that you provide a **start** and
 
 ## Access restrictions
 
-There are few restrictions to note regarding the Analytics APIs. Currently the stats are updated every 15 minutes of the hour (ex: XX:00, XX:15, XX:30, XX:45). Also, analytics providing a daily breakdown of your usage (Day) are stored for a window of **90 days**, and the hourly data (Hour) is stored for a window of **7 days**. This means you can query your data using the **Day** format for a maximum timeframe of the last 90 days. **Hourly** data is available to be queried for a maximum timeframe of last 7 days from the current day of your query. After the respective timeframes, this detailed data is purged from our system and you will then only have access to summarized monthly data.
+There are few restrictions to note regarding the Analytics APIs. Currently the stats are updated every 15 minutes of the hour (ex: XX:00, XX:15, XX:30, XX:45). Also, analytics providing a daily breakdown of your usage (Day) are stored for a window of **365 days**, and the hourly data (Hour) is stored for a window of **7 days**. This means you can query your data using the **Day** format for a maximum timeframe of the last 365 days. **Hourly** data is available to be queried for a maximum timeframe of last 7 days from the current day of your query. After the respective timeframes, this detailed data is purged from our system and you will then only have access to summarized monthly data.
 
 A breakdown of per-stream data is also only available within a 7 day window. This includes geographic data as well as detailed bandwidth usage information per stream. If this detailed usage data is valuable to you, it is advised that you regularly download this data before it expires and is no longer available for querying.
 
 To query for a particular month’s data, the API requires the date range to be from **day 1** of the month in question to **day 1** of the next month. An example of the query would look like this: startDate=2021-**01-01**&stopDate=2021-**02-01**&resolution=**Month**. This query would return the total bandwidth usage for the month of January 2021.
 
-It is advised that you save your Daily and Hourly data if you feel that you would need it beyond the 90 and 7 day retention provided by Dolby.io Real-time Streaming.
+It is advised that you save your Daily and Hourly data if you feel that you would need it beyond the 365 and 7 day retention provided by Dolby.io Real-time Streaming.
 
 Wildcards
 
@@ -246,7 +246,7 @@ app.use( (req, resp, next) => {
 app.get( '/usage', (req, resp, next) => {
         console.log('/usage - time start:',req.query.start,' stop:',req.query.stop);
         let start = req.query.start;
-        let stop = req.query.stop;// Must be max 90 day UTC window form today for monthly or 7 days for daily/hourly.
+        let stop = req.query.stop;// Must be max 365 day UTC window from today for daily or 7 days for hourly
         let o = {
                 hostname: 'api.millicast.com',
                 path: '/api/analytics/account/series?startDate='+start+'&stopDate='+stop+'&resolution=Month',
@@ -280,7 +280,7 @@ app.get('/streamusage', (req, resp, next) => {
         // Millicast API request details
         let **streamNames** = req.query.streamNames;
         let start = dreq.query.start;
-        let stop = req.query.stop;// Must be max 90 day UTC window form today for monthly or 7 days for the daily/hourly data.
+        let stop = req.query.stop;// Must be max 365 day UTC window from today for daily or 7 days for hourly
         let o = {
                 hostname: 'api.millicast.com',
                 path: '/api/analytics/streams/series?startDate='+start+'&stopDate='+stop+'&streamNames='+streamNames+'&resolution=Day',
