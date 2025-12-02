@@ -5,6 +5,14 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.6.1 (2025/12/02)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where ID3 metadata from an HLS alternative audio rendition was not being parsed.
+
 ## 🚀 10.6.0 (2025/12/02)
 
 ### Web
