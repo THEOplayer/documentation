@@ -53,6 +53,17 @@ theoplayer.getPlayer().getVideoTracks().getItem(0).setTargetQualities(Collection
 
 ##### iOS (/tvOS) SDK
 
+For HESP streams:
+
+```swift
+let videoTrack = player.videoTracks[0]
+videoTrack.targetQualities = [videoTrack.qualities[indexOfRequestedVideoTrackQuality]]
+// or
+videoTrack.targetQualities = [videoTrack.qualities[0], videoTrack.qualities[1]]
+```
+
+For HLS streams:
+
 The iOS SDK leverages the [ABR API](pathname:///theoplayer/v10/api-reference/ios/Protocols/ABRConfiguration.html). The underlying AVFoundation stack, which THEOplayer has to use, brings along the technical limitation that you cannot select a specific video quality. Instead, you can set a maximum resolution or bitrate.
 
 ```swift
