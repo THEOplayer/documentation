@@ -5,6 +5,75 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.6.0 (2025/12/02)
+
+### Web
+
+#### ✨ Features
+
+- Added a fallback to the Google DAI server-side beaconing stream when an OptiView Ads stream or OptiView Live stream with ads enabled is played via Airplay and a `daiAssetKey` is defined.
+- Added support for personalized discovery call responses by configuring the `profile` property on an OptiView Live source.
+
+#### ⚡ Improvements
+
+- Added `ActiveQualityChanged` event for OptiView RealTime streams.
+- Improved HLS segment selection on ABR changes to not download segments that had already been buffered in a different quality.
+- The query parameters on the endpoint license acquisition URL of a DRM protected OptiView Live stream now take precedence over the query parameters that are defined in `contentProtection.queryParameters` or in the corresponding key system configuration.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would always preload the Google DAI manifest when setting a Google DAI source.
+- Fixed an issue where audio labels would not default to the language for HESP streams.
+- Fixed an issue where the player could stall shortly on a discontinuity switch if the stream contained a small gap.
+- Fixed issue where failover of OptiView Live sources during HLS playback would return the player to non-HLS playback.
+
+#### 👎 Deprecations
+
+- Deprecated `preloadPublications` on the THEOliveAPI. This will be removed in a future version.
+
+### Android
+
+#### ✨ Features
+
+- Added Chromecast support for DVR-enabled OptiView Live streams.
+- Added support for personalized discovery call responses by configuring the `profile` property on an OptiView Live source.
+
+#### ⚡ Improvements
+
+- The query parameters on the endpoint license acquisition URL of a DRM protected OptiView Live stream now take precedence over the query parameters that are defined in `contentProtection.queryParameters` or in the corresponding key system configuration.
+
+#### 👎 Deprecations
+
+- Deprecated `preloadPublications` on the THEOliveAPI. This will be removed in a future version.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- THEOplayer SDK and all its integrations frameworks will now be built with Xcode 16 instead of 15. We expect no impact on applications since Apple enforced the policy of building with Xcode 16 to publish to the app store since April 24, 2025. Categorizing this as "Breaking change" since the compiler is bumped from Swift 5.10 to 6.0 with the Xcode version bump.
+
+#### ✨ Features
+
+- Added `targetQualities` property to `MediaTrack` API. Only supported for THEOlive.
+- Added support for personalized discovery call responses by configuring the `profile` property on an OptiView Live source.
+- Added a new experimental pipeline for chromecast, which enables new features, i.e. OptiView Live DVR. To use the new pipeline enable the `enableExperimentalPipeline` on the `CastConfiguration` object when creating the CastIntegration.
+
+#### 🐛 Issues
+
+- Fixed an issue where sometimes playback would pause after ending an OptiView Ads ad break on iPadOS.
+- Fixed an issue where `player.buffered` would return the same as `player.seekable`.
+- Fixed an issue where adding multiple drm query parameters would not work as expected.
+
+#### 👎 Deprecations
+
+- Deprecated `preloadPublications` on the THEOliveAPI. This will be removed in a future version.
+
+### Roku
+
+#### ✨ Features
+
+- Added support for personalized discovery call responses by configuring the `profile` property on an OptiView Live source.
+
 ## 🚀 10.5.1 (2025/11/26)
 
 ### Web
