@@ -246,33 +246,65 @@ public interface <span class="typeNameLabel"><a href=ChromecastConnectionCallbac
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onStart(com.theoplayer.android.api.source.SourceDescription)>onStart</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onStartAsync(com.theoplayer.android.api.source.SourceDescription)>onStartAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
                                             </th>
                                             <td class="colLast">Called after the player has started the connection to the receiver.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onStop(com.theoplayer.android.api.source.SourceDescription)>onStop</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onStart(com.theoplayer.android.api.source.SourceDescription)>onStart</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            </th>
+                                            <td class="colLast">Called after the player has started the connection to the receiver.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onStopAsync(com.theoplayer.android.api.source.SourceDescription)>onStopAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
                                             </th>
                                             <td class="colLast">Called after the player has stopped the connection to the receiver.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onJoin(com.theoplayer.android.api.source.SourceDescription)>onJoin</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onStop(com.theoplayer.android.api.source.SourceDescription)>onStop</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            </th>
+                                            <td class="colLast">Called after the player has stopped the connection to the receiver.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onJoinAsync(com.theoplayer.android.api.source.SourceDescription)>onJoinAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
                                             </th>
                                             <td class="colLast">Called after the player has joined an already existing connection to the receiver.</td>
                                         </tr>
                                         
-                                        <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onLeave(com.theoplayer.android.api.source.SourceDescription)>onLeave</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onJoin(com.theoplayer.android.api.source.SourceDescription)>onJoin</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            </th>
+                                            <td class="colLast">Called after the player has joined an already existing connection to the receiver.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onLeaveAsync(com.theoplayer.android.api.source.SourceDescription)>onLeaveAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
+                                            </th>
+                                            <td class="colLast">Called after the player has left the connection to the receiver.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code><a href=../../source/SourceDescription.html>SourceDescription</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=ChromecastConnectionCallback.html#onLeave(com.theoplayer.android.api.source.SourceDescription)>onLeave</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription) </code>
                                             </th>
                                             <td class="colLast">Called after the player has left the connection to the receiver.</td>
                                         </tr>
@@ -321,16 +353,16 @@ public interface <span class="typeNameLabel"><a href=ChromecastConnectionCallbac
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="onStart(com.theoplayer.android.api.source.SourceDescription)">
+                                <a id="onStartAsync(com.theoplayer.android.api.source.SourceDescription)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>onStart</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onStart(com.theoplayer.android.api.source.SourceDescription)>onStart</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
-                                        <div class="block"><p>Called after the player has started the connection to the receiver. </p><ul><li>At this point we are trying to load the media from the sender to the receiver. </li><li>Returning null will behave same as returning the provided SourceDescription. </li></ul></div>
+                                        <h4>onStartAsync</h4>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onStartAsync(com.theoplayer.android.api.source.SourceDescription)>onStartAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has started the connection to the receiver.</p><ul><li><p>At this point we are trying to load the media from the sender to the receiver.</p></li><li><p>Returning null will behave same as returning the provided SourceDescription.</p></li><li><p>This is the asynchronous version of <a href=ChromecastConnectionCallback.html#onStart(com.theoplayer.android.api.source.SourceDescription)>onStart</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onStart(com.theoplayer.android.api.source.SourceDescription)>onStart</a> or <a href=ChromecastConnectionCallback.html#onStartAsync(com.theoplayer.android.api.source.SourceDescription)>onStartAsync</a>.</p></li></ul></div>
 
                                         <dl>
 
@@ -354,16 +386,49 @@ public interface <span class="typeNameLabel"><a href=ChromecastConnectionCallbac
                                     </li>
                                 </ul>
                                 
-                                <a id="onStop(com.theoplayer.android.api.source.SourceDescription)">
+                                <a id="onStart(com.theoplayer.android.api.source.SourceDescription)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>onStop</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onStop(com.theoplayer.android.api.source.SourceDescription)>onStop</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
-                                        <div class="block"><p>Called after the player has stopped the connection to the receiver. </p><ul><li>At this point we are trying to load the media from the receiver to the sender. </li><li>Returning null will behave same as returning the provided SourceDescription. </li></ul></div>
+                                        <h4>onStart</h4>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onStart(com.theoplayer.android.api.source.SourceDescription)>onStart</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has started the connection to the receiver.</p><ul><li><p>At this point we are trying to load the media from the sender to the receiver.</p></li><li><p>Returning null will behave same as returning the provided SourceDescription.</p></li><li><p>This is the synchronous version of <a href=ChromecastConnectionCallback.html#onStartAsync(com.theoplayer.android.api.source.SourceDescription)>onStartAsync</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onStart(com.theoplayer.android.api.source.SourceDescription)>onStart</a> or <a href=ChromecastConnectionCallback.html#onStartAsync(com.theoplayer.android.api.source.SourceDescription)>onStartAsync</a>.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>sourceDescription</code> - The current SourceDescription on the sender device.</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The SourceDescription to be loaded on the receiver device. (Nullable)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="onStopAsync(com.theoplayer.android.api.source.SourceDescription)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onStopAsync</h4>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onStopAsync(com.theoplayer.android.api.source.SourceDescription)>onStopAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has stopped the connection to the receiver.</p><ul><li><p>At this point we are trying to load the media from the receiver to the sender.</p></li><li><p>Returning null will behave same as returning the provided SourceDescription.</p></li><li><p>This is the asynchronous version of <a href=ChromecastConnectionCallback.html#onStop(com.theoplayer.android.api.source.SourceDescription)>onStop</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onStop(com.theoplayer.android.api.source.SourceDescription)>onStop</a> or <a href=ChromecastConnectionCallback.html#onStopAsync(com.theoplayer.android.api.source.SourceDescription)>onStopAsync</a>.</p></li></ul></div>
 
                                         <dl>
 
@@ -387,16 +452,49 @@ public interface <span class="typeNameLabel"><a href=ChromecastConnectionCallbac
                                     </li>
                                 </ul>
                                 
-                                <a id="onJoin(com.theoplayer.android.api.source.SourceDescription)">
+                                <a id="onStop(com.theoplayer.android.api.source.SourceDescription)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>onJoin</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onJoin(com.theoplayer.android.api.source.SourceDescription)>onJoin</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
-                                        <div class="block"><p>Called after the player has joined an already existing connection to the receiver. </p><ul><li>At this point it's possible to load a new media from the sender to the receiver. </li><li>Returning null will not change the source on the receiver. </li></ul></div>
+                                        <h4>onStop</h4>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onStop(com.theoplayer.android.api.source.SourceDescription)>onStop</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has stopped the connection to the receiver.</p><ul><li><p>At this point we are trying to load the media from the receiver to the sender.</p></li><li><p>Returning null will behave same as returning the provided SourceDescription.</p></li><li><p>This is the synchronous version of <a href=ChromecastConnectionCallback.html#onStopAsync(com.theoplayer.android.api.source.SourceDescription)>onStopAsync</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onStop(com.theoplayer.android.api.source.SourceDescription)>onStop</a> or <a href=ChromecastConnectionCallback.html#onStopAsync(com.theoplayer.android.api.source.SourceDescription)>onStopAsync</a>.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>sourceDescription</code> - The current SourceDescription on the receiver device.</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The SourceDescription to be loaded on the sender device. (Nullable)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="onJoinAsync(com.theoplayer.android.api.source.SourceDescription)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onJoinAsync</h4>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onJoinAsync(com.theoplayer.android.api.source.SourceDescription)>onJoinAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has joined an already existing connection to the receiver.</p><ul><li><p>At this point it's possible to load a new media from the sender to the receiver.</p></li><li><p>Returning null will not change the source on the receiver.</p></li><li><p>This is the asynchronous version of <a href=ChromecastConnectionCallback.html#onJoin(com.theoplayer.android.api.source.SourceDescription)>onJoin</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onJoin(com.theoplayer.android.api.source.SourceDescription)>onJoin</a> or <a href=ChromecastConnectionCallback.html#onJoinAsync(com.theoplayer.android.api.source.SourceDescription)>onJoinAsync</a>.</p></li></ul></div>
 
                                         <dl>
 
@@ -420,6 +518,72 @@ public interface <span class="typeNameLabel"><a href=ChromecastConnectionCallbac
                                     </li>
                                 </ul>
                                 
+                                <a id="onJoin(com.theoplayer.android.api.source.SourceDescription)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onJoin</h4>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onJoin(com.theoplayer.android.api.source.SourceDescription)>onJoin</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has joined an already existing connection to the receiver.</p><ul><li><p>At this point it's possible to load a new media from the sender to the receiver.</p></li><li><p>Returning null will not change the source on the receiver.</p></li><li><p>This is the synchronous version of <a href=ChromecastConnectionCallback.html#onJoinAsync(com.theoplayer.android.api.source.SourceDescription)>onJoinAsync</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onJoin(com.theoplayer.android.api.source.SourceDescription)>onJoin</a> or <a href=ChromecastConnectionCallback.html#onJoinAsync(com.theoplayer.android.api.source.SourceDescription)>onJoinAsync</a>.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>sourceDescription</code> - The current SourceDescription on the current sender device.</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The SourceDescription to be loaded on the receiver device. (Nullable)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="onLeaveAsync(com.theoplayer.android.api.source.SourceDescription)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onLeaveAsync</h4>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onLeaveAsync(com.theoplayer.android.api.source.SourceDescription)>onLeaveAsync</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has left the connection to the receiver.</p><ul><li><p>At this point we are trying to load the media from the receiver to the sender.</p></li><li><p>Returning null will behave same as returning the provided SourceDescription.</p></li><li><p>This is the asynchronous version of <a href=ChromecastConnectionCallback.html#onLeaveAsync(com.theoplayer.android.api.source.SourceDescription)>onLeaveAsync</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onLeave(com.theoplayer.android.api.source.SourceDescription)>onLeave</a> or <a href=ChromecastConnectionCallback.html#onLeaveAsync(com.theoplayer.android.api.source.SourceDescription)>onLeaveAsync</a>.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>sourceDescription</code> - The current SourceDescription on the receiver device.</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The SourceDescription to be loaded on the sender device. (Nullable)</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
                                 <a id="onLeave(com.theoplayer.android.api.source.SourceDescription)">
                                     <!--   -->
                                 </a>
@@ -428,8 +592,8 @@ public interface <span class="typeNameLabel"><a href=ChromecastConnectionCallbac
                                           >
                                     <li class="blockList">
                                         <h4>onLeave</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onLeave(com.theoplayer.android.api.source.SourceDescription)>onLeave</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
-                                        <div class="block"><p>Called after the player has left the connection to the receiver. </p><ul><li>At this point we are trying to load the media from the receiver to the sender. </li><li>Returning null will behave same as returning the provided SourceDescription. </li></ul></div>
+                                        <pre class="methodSignature"> <a href=../../source/SourceDescription.html>SourceDescription</a> <a href=ChromecastConnectionCallback.html#onLeave(com.theoplayer.android.api.source.SourceDescription)>onLeave</a>(<a href=../../source/SourceDescription.html>SourceDescription</a> sourceDescription)</pre>
+                                        <div class="block"><p>Called after the player has left the connection to the receiver.</p><ul><li><p>At this point we are trying to load the media from the receiver to the sender.</p></li><li><p>Returning null will behave same as returning the provided SourceDescription.</p></li><li><p>This is the synchronous version of <a href=ChromecastConnectionCallback.html#onLeaveAsync(com.theoplayer.android.api.source.SourceDescription)>onLeaveAsync</a>. Only implement one of <a href=ChromecastConnectionCallback.html#onLeave(com.theoplayer.android.api.source.SourceDescription)>onLeave</a> or <a href=ChromecastConnectionCallback.html#onLeaveAsync(com.theoplayer.android.api.source.SourceDescription)>onLeaveAsync</a>.</p></li></ul></div>
 
                                         <dl>
 
