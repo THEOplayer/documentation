@@ -74,6 +74,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/TheoLiveSource.html">TheoLiveSource</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WebrtcOptions.html">WebrtcOptions</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -136,6 +139,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/HESPLatencies.html">HESPLatencies</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayoutDelay.html">PlayoutDelay</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/THEOliveConfiguration.html">THEOliveConfiguration</a>
@@ -231,9 +237,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatency3drm7profileACSS_SDyS2SGSgSdSg0A3SDK16DRMConfiguration_pSgSSSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(channelId:headers:targetLatency:drm:profile:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatency3drm7profileACSS_SDyS2SGSgSdSg0A3SDK16DRMConfiguration_pSgSSSgtcfc">init(channelId:<wbr>headers:<wbr>targetLatency:<wbr>drm:<wbr>profile:<wbr>)</a>
+                    <a name="/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC6webrtcAA13WebrtcOptionsCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/webrtc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC6webrtcAA13WebrtcOptionsCSgvp">webrtc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>WebRTC configuration for a THEOlive Millicast source.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">webrtc</span><span class="p">:</span> <span class="kt"><a href="../Classes/WebrtcOptions.html">WebrtcOptions</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatency3drm7profile6webrtcACSS_SDyS2SGSgSdSg0A3SDK16DRMConfiguration_pSgSSSgAA13WebrtcOptionsCSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(channelId:headers:targetLatency:drm:profile:webrtc:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration14TheoLiveSourceC9channelId7headers13targetLatency3drm7profile6webrtcACSS_SDyS2SGSgSdSg0A3SDK16DRMConfiguration_pSgSSSgAA13WebrtcOptionsCSgtcfc">init(channelId:<wbr>headers:<wbr>targetLatency:<wbr>drm:<wbr>profile:<wbr>webrtc:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -248,7 +281,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">channelId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">targetLatency</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">drm</span><span class="p">:</span> <span class="kt">DRMConfiguration</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">profile</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">channelId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">targetLatency</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">drm</span><span class="p">:</span> <span class="kt">DRMConfiguration</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">profile</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">webrtc</span><span class="p">:</span> <span class="kt"><a href="../Classes/WebrtcOptions.html">WebrtcOptions</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -304,6 +337,18 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>webrtc</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>WebRTC configuration for a THEOlive Millicast source.</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -329,7 +374,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -345,7 +390,7 @@
     </div>
     <section class="footer">
       <p>© 2025 THEOplayer</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
 </html>
