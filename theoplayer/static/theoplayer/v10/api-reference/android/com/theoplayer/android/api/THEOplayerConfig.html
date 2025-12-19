@@ -393,7 +393,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                     <li class="blockList">
                                         <h4>isMultiSession</h4>
                                         <pre class="methodSignature"> abstract boolean <a href=THEOplayerConfig.html#isMultiSession()>isMultiSession</a>()</pre>
-                                        <div class="block"><p>Returns whether the player supports multi-key content when the license server doesn't respond with all keys at once. </p><ul><li>When using the experimental rendering multi-key content is only supported for license servers who return all key at once. </li><li>Setting this parameter to true also supports license server who doesn't return all keys at once. </li><li>When using this flag adaptation between streams that use different keys will not be completely seamless. </li></ul><p>Default: false</p></div>
+                                        <div class="block"><p>Returns whether the player supports multi-key content when the license server doesn't respond with all keys at once. </p><ul><li>Set to <code>false</code> when a single key request will obtain all keys required to decrypt the stream. </li><li>Set to <code>true</code> when a different key request is needed for different qualities of the stream, or when the stream uses key rotation. </li></ul><p>Default: false</p></div>
 
                                         <dl>
 

@@ -71,6 +71,7 @@ The following key/value pairs are supported on the `sources` attribute of a Sour
 | HDBifUrl          | String                    | "Base Index Frames" URL for HD trick mode.                                                                                             |
 | FHDBifUrl         | String                    | "Base Index Frames" URL for FHD trick mode.                                                                                            |
 | ads               | roArray of AdDescriptions | Array of the ad description for the ads to play during the content.                                                                    |
+| profile           | String                    | Optional. The profile to use when making the discovery call for THEOlive streams.                                                      |
 | ssai              | GoogleDaiConfiguration    | Optional. The configuration for playing this as a dynamic ad insertion asset.                                                          |
 | embeddedTextTrack | string                    | Name of the embedded text track in the asset. Not necessary if the track is explicitly defined in the manifest.                        |
 

@@ -5,6 +5,68 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.7.0 (2025/12/16)
+
+### General
+
+### Web
+
+#### ✨ Features
+
+- Added the ability to override connect options for OptiView Real-time streams.
+- Added support for casting token-protected OptiView Live DVR streams to Chromecast.
+- Added Millicast connect options to the OptiView Live discovery response.
+
+#### ⚡ Improvements
+
+- Added `RetryConfiguration` support for OptiView Real-time streams.
+- Improved OptiView Real-time stream stability by automatically attempting to reconnect when errors occur mid-stream.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not play from the live point when exiting an errored casting session.
+- Fixed an issue for OptiView Ads where using a CSAI adbreak would not be handled properly when going into PiP or native fullscreen.
+- Fixed a regression where `currentProgramDateTime` was no longer returning `null` for non-DVR streams without program date time information.
+- Fixed an issue with consecutive ad breaks on an OptiView Ads Stream where the second ad break would not play if its duration was smaller than the preceding ad break.
+- Fixed an issue where the player would play a CSAI ad break muted in a double box layout for an Optiview Ads stream.
+- Fixed an issue where pausing OptiView Real-time streams would show a frozen frame on browsers on Android devices.
+- Fixed an issue where CEA-608 captions from the content continued showing during an SSAI ad break.
+
+### Android
+
+#### ✨ Features
+
+- Added `DRMConfiguration.multiSession` to enable multi-session support for streams that require different key requests for different qualities, or for streams that use key rotation.
+- Added support for casting token-protected OptiView Live DVR streams to Chromecast.
+- Added the ability to override connect options for OptiView Real-time streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where subtitles could not be turned off while using Chromecast.
+- Fixed an issue where failover of OptiView Live sources during HLS playback would return the player to non-HLS playback.
+
+#### 👎 Deprecations
+
+- Deprecated `THEOplayerConfig.isMultiSession`, use `DRMConfiguration.multiSession` instead.
+
+### iOS
+
+#### ✨ Features
+
+- Added Chromecast support for DVR-enabled OptiView Live streams.
+- Added the ability to override connect options for OptiView Real-time streams.
+
+#### 🐛 Issues
+
+- Fixed a regression where PiP was not retained when the `retainPresentationModeOnSourceChange` setting was enabled in the `PipConfiguration`. 
+- Fixed an issue where the auth token was not being passed correctly with DVR enabled OptiView Live streams.
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where closed captions would be disabled when destroying the player while buffering.
+
 ## 🚀 10.6.1 (2025/12/02)
 
 ### Android
