@@ -22,15 +22,15 @@ It will also explain how to play a video, and how you can add an event listener.
 
 To start this guide you need the following items:
 
-1. A ROKU account ([read more about ROKU account](https://support.roku.com/en-gb/article/115004382968)) linked with a ROKU device ([see how to activate and link a ROKU device](https://support.roku.com/en-gb/article/235180868)).
+1. A Roku account ([read more about Roku account](https://support.roku.com/en-gb/article/115004382968)) linked with a Roku device ([see how to activate and link a Roku device](https://support.roku.com/en-gb/article/235180868)).
 
-2. A Roku device with development mode activated ([read more about how to enable roku developer mode](https://blog.roku.com/developer/developer-setup-guide)). It is worth mentioning that you need to enroll for a developer program in order to activate the development mode on a ROKU device ([you can enroll for a developer program here](https://developer.roku.com/enrollment/standard)).
+2. A Roku device with development mode activated ([read more about how to enable roku developer mode](https://blog.roku.com/developer/developer-setup-guide)). It is worth mentioning that you need to enroll for a developer program in order to activate the development mode on a Roku device ([you can enroll for a developer program here](https://developer.roku.com/enrollment/standard)).
 
 3. A television/screen which supports an HDMI input.
 
 4. Development workstation with an IDE and a web browser (Firefox, Chrome, Safari etc.).
 
-5. Make sure that the ROKU device and workstation are on the same local network (you should be able to ping the Roku device from your workstation).
+5. Make sure that the Roku device and workstation are on the same local network (you should be able to ping the Roku device from your workstation).
 
 6. An internet connection.
 
@@ -38,7 +38,7 @@ To start this guide you need the following items:
 
 ## System requirements
 
-Roku keeps all devices up-to-date by issuing automatic updates. We aim to support all the up to date Roku devices. At the moment the newest Roku OS version is 14.1 (Mar 2025).
+Roku keeps all devices up-to-date by issuing automatic updates. We aim to support all the up to date Roku devices.
 
 ## Certification changes
 
@@ -86,7 +86,7 @@ To include the THEOplayer SDK into the channel, follow these steps:
    <ComponentLibrary id="THEOsdk" uri="pkg:/THEOplayer.pkg"/>
    ```
 
-   It is worth mentioning that the "URI" field can also be an HTTPS link to the THEOplayer package. (In Our case, we will add it to the: "pkg:\components\MainScene\MainScene.xml" file.)
+   It is worth mentioning that the "URI" field can also be an HTTPS link to the THEOplayer package. (In our case, we will add it to the: "pkg:\components\MainScene\MainScene.xml" file.)
 
 2. Add the THEOplayerContainer group.
 
@@ -251,9 +251,7 @@ In this project, `MainScene.xml` loads the SDK, and the instance is created thro
 You need to configure your THEOplayer Roku SDK license value through the following snippet:
 
 ```brightscript
-m.THEOplayer.configuration = {
-  "license": "your-license"
-}
+m.THEOplayer.callFunc("configure", {license: "your-license"})
 ```
 
 Add these 3 lines after `m.playerContainer.appendChild(m.THEOplayer)`.
@@ -275,9 +273,7 @@ To play videos using the THEOplayer SDK, we need to take a few steps:
      m.THEOplayer = CreateObject("RoSGNode","THEOsdk:THEOplayer")
      m.playerContainer = m.top.findNode("THEOplayerContainer")
      m.playerContainer.appendChild(m.THEOplayer)
-     m.THEOplayer.configuration = {
-       "license": "your-license"
-     }
+     m.THEOplayer.callFunc("configure", {license: "your-license"})
      m.THEOplayer.source = {
        "sources": [
          {
@@ -296,9 +292,7 @@ To play videos using the THEOplayer SDK, we need to take a few steps:
      m.THEOplayer = CreateObject("RoSGNode","THEOsdk:THEOplayer")
      m.playerContainer = m.top.findNode("THEOplayerContainer")
      m.playerContainer.appendChild(m.THEOplayer)
-     m.THEOplayer.configuration = {
-       "license": "your-license"
-     }
+     m.THEOplayer.callFunc("configure", {license: "your-license"})
      m.THEOplayer.source = {
        "sources": [
          {
@@ -317,9 +311,7 @@ To play videos using the THEOplayer SDK, we need to take a few steps:
      m.THEOplayer = CreateObject("RoSGNode","THEOsdk:THEOplayer")
      m.playerContainer = m.top.findNode("THEOplayerContainer")
      m.playerContainer.appendChild(m.THEOplayer)
-     m.THEOplayer.configuration = {
-       "license": "your-license"
-     }
+     m.THEOplayer.callFunc("configure", {license: "your-license"})
      m.THEOplayer.source = {
        "sources": [
          {
@@ -353,9 +345,7 @@ After these 4 steps, your `helloworld.xml` file should resemble the following sn
     m.THEOplayer = CreateObject("RoSGNode","THEOsdk:THEOplayer")
     m.playerContainer = m.top.findNode("THEOplayerContainer")
     m.playerContainer.appendChild(m.THEOplayer)
-    m.THEOplayer.configuration = {
-      "license": "your-license"
-    }
+    m.THEOplayer.callFunc("configure", {license: "your-license"})
     m.THEOplayer.source = {
       "sources": [
         {
@@ -443,9 +433,7 @@ Adding an event listener in the Roku THEOplayer SDK is straightforward. All you 
        m.THEOplayer = CreateObject("RoSGNode","THEOsdk:THEOplayer")
        m.playerContainer = m.top.findNode("THEOplayerContainer")
        m.playerContainer.appendChild(m.THEOplayer)
-       m.THEOplayer.configuration = {
-         "license": "your-license"
-       }
+       m.THEOplayer.callFunc("configure", {license: "your-license"})
        m.THEOplayer.source = {
          "sources": [
            {
@@ -501,9 +489,7 @@ Just make sure that `m.THEOplayer` is used in the proper context. For example, i
     m.THEOplayer = CreateObject("RoSGNode","THEOsdk:THEOplayer")
     m.playerContainer = m.top.findNode("THEOplayerContainer")
     m.playerContainer.appendChild(m.THEOplayer)
-    m.THEOplayer.configuration = {
-      "license": "your-license"
-    }
+    m.THEOplayer.callFunc("configure", {license: "your-license"})
     m.THEOplayer.source = {
       "sources": [
         {
@@ -538,22 +524,9 @@ Use this section if you are already familiar with setting up the THEOplayer Roku
 1. Build a THEOplayer Roku SDK at [https://portal.theoplayer.com](https://portal.theoplayer.com).
 2. Setup Roku's [`hello-world` sample project](https://github.com/rokudev/hello-world).
 3. Add (and rename) your THEOplayer Roku SDK to the `hello-world` project.
-4. Replace the code in `source/components/helloworld.xml` with [this gist](https://gist.github.com/thijsl/203b37bbe426dac5635467e0575e3107).
+4. Replace the code in `source/components/helloworld.xml` with the codeblock above.
 5. Update the value of `license` in your updated `source/components/helloworld.xml` with your actual license value according to [https://portal.theoplayer.com](https://portal.theoplayer.com).
 6. Confirm playback by deploying this project to your local Roku device.
-
-The following video playlist demonstrates these six steps.
-
-<iframe
-  src="https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=https://cdn.theoplayer.com/video/getting-started/roku-sdk/quickstart/playlist.m3u8"
-  title="Embedded THEOplayer"
-  frameBorder="0"
-  scrolling="no"
-  width="100%"
-  style={{ width: '100%', aspectRatio: '16/10' }}
-  allow="accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture"
-  allowFullScreen
-></iframe>
 
 ## Next steps
 
