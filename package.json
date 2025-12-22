@@ -64,9 +64,6 @@
   "overrides": {
     "docusaurus-theme-openapi-docs": {
       "react": "$react"
-    },
-    "serve-handler": {
-      "path-to-regexp": "^3.3.0"
     }
   },
   "browserslist": {
