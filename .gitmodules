@@ -104,7 +104,7 @@
 [submodule "web-ui"]
     path = open-video-ui/external/web-ui
     url = https://github.com/THEOplayer/web-ui.git
-    branch = main
+    branch = docs-v2
 [submodule "android-ui"]
     path = open-video-ui/external/android-ui
     url = https://github.com/THEOplayer/android-ui.git
