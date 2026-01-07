@@ -16,10 +16,10 @@ In order to set up the Adobe Edge Connector in your Roku application, you'll nee
 
 ## Integration
 
-1. First you must download the THEO Adobe Edge Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOAEPConnector` and providing the URI for the THEOAEPConnector.pkg:
+1. First you must download the THEO Adobe Edge Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOAEPConnector` and providing the URI for the THEOAEPConnector.pkg. Replace the `{SDK_VERSION}` tag with the version of the THEO Roku SDK you're using. The earliest version of the connector is 9.2.0:
 
 ```xml
-<ComponentLibrary id="THEOAEPConnector" uri="https://cdn.myth.theoplayer.com/roku/9.1.0/THEOAEPConnector.pkg" />
+<ComponentLibrary id="THEOAEPConnector" uri="https://cdn.myth.theoplayer.com/roku/{SDK_VERSION}/THEOAEPConnector.pkg" />
 ```
 
 2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
