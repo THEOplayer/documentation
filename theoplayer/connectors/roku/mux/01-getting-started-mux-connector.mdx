@@ -1,0 +1,104 @@
+---
+sidebar_label: Getting started
+sidebar_custom_props: { icon: '🚀' }
+---
+
+# Getting started with the Mux Connector for the Roku SDK
+
+Here's how to get started integrating the Mux Connector with the THEOplayer Roku SDK.
+
+## Prerequisites
+
+In order to set up the Mux Connector in your Roku application, you'll need the following:
+
+- Your Mux environment key
+- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
+
+## Integration
+
+1. First you must download the THEO Mux Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOMuxConnector` and providing the URI for the THEOMuxConnector.pkg. Replace the `{SDK_VERSION}` tag with the version you want. The earliest version is 10.8.0:
+
+```xml
+<ComponentLibrary id="THEOMuxConnector" uri="https://cdn.myth.theoplayer.com/roku/{SDK_VERSION}/THEOMuxConnector.pkg" />
+```
+
+2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+
+```brightscript
+sub Init()
+    THEOMuxNode = m.top.findNode("THEOMuxConnector")
+    THEOMuxNode.observeField("loadStatus", "onLibraryLoadStatusChanged")
+end sub
+
+sub onLibraryLoadStatusChanged(event as object)
+    THEOMuxNode = event.getROSGNode()
+
+    if THEOMuxNode = invalid
+        return
+    end if
+
+    if THEOMuxNode.loadStatus = "ready"
+		' Success
+    else if THEOMuxNode.loadStatus = "failed"
+		? "Failed to load component library, please check URL. "; THEOMuxNode.uri
+	end if
+end sub
+```
+
+3. Add the THEOMuxConnector component to the SceneGraph file where your THEOPlayer is defined.
+
+```xml
+<THEOsdk:THEOplayer id="THEOplayer" controls="true" />
+<THEOMuxConnector:THEOMuxConnector id="THEOMuxConnector" />
+```
+
+4. Then in the Brightscript file, configure the connector by calling the configure method, passing the player instance and your Mux configuration.
+
+```brightscript
+m.player = m.top.findNode("THEOPlayer")
+m.muxConnector = m.top.findNode("THEOMuxConnector")
+muxConfig = {
+    env_key: "<MY_MUX_ENV_KEY>",
+}
+m.muxConnector.callFunc("configure", m.player, muxConfig)
+```
+
+5. Next, when you start playing the asset, call the `startSession` method and pass it the metadata for the asset you're playing:
+
+```brightscript
+m.player.source = sourceDescription
+
+muxContentMetadata = {
+    video_id: "<MY_VIDEO_ID>",
+    video_title: "<MY_VIDEO_TITLE>"
+}
+
+m.muxConnector.callFunc("startSession", muxContentMetadata)
+```
+
+There are more properties available to add to the metadata, but `video_id` and `video_title` are required. See [Mux's schema for streaming metadata](https://www.mux.com/docs/guides/make-your-data-actionable-with-metadata#optional-configurable-metadata) for more properties that are available for Mux.
+
+6. If you are using the THEOplayer in a size other than fullscreen, before you start the session, you can set the presentation mode to reflect the different size. This is also referred to as the playback mode.
+
+```brightscript
+m.muxConnector.callFunc("setPresentation", m.muxConnector.PRESENTATION_MODES.INLINE)
+m.muxConnector.callFunc("startSession", muxContentMetadata)
+```
+
+The `setPresentation` method can also be called mid-session if the presentation mode changes during a session. The available presentation modes are `FULLSCREEN`, `INLINE`, `MINI`, and `PIP`.
+
+7. If you desire to monitor for CDN changes, you can optionally add a configuration for that to start monitoring.
+   `m.muxConnector.callFunc("monitorCdnChanges", { mycdn: ["my-cdn.net"], theo: ["cdn.theoplayer.com"] })`
+
+8. When the video has stopped playing because it ended or the user exited, end the Mux session.
+   `m.muxConnector.callFunc("endSession")`
+
+9. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the player:
+
+```brightscript
+m.muxConnector.callFunc("destroy")
+m.muxConnector = invalid
+
+m.player.callFunc("destroy")
+m.player = invalid
+```
