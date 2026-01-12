@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Quality Control
+# Ad Quality Control
 
 One of the realities of ads is that there are many instances where the ad source can be problematic. These types of problems can include things like too long duration, too short duration, too small dimensions, too low of a bitrate, etc. A bad ad can look bad, sound bad, or simply stall your player, so it is important to verify the quality of the ad.
 
@@ -75,4 +75,4 @@ The Ad Engine inlcludes both source and output QC. The `pre` object defines the 
 
 ### QC Conditions
 
-The QC `conditions` is an object that defines `pass` and `fail` conditions. You can define a condition either as a `pass` condition that must be true, or a `fail` condition that will generate a failure. In our above example, we are using the `pass` condition -- meaning that each condition must evaluate to `true` in order for the file to pass QC. The QC decision can be defined by a [math.js](https://mathjs.org/) string, which allows for complex operations if needed.
+The QC `conditions` is an object that defines `pass` and `fail` conditions. You can define a condition either as a `pass` condition that must be true, or a `fail` condition that will generate a failure. In our above example, we are using the `pass` condition -- meaning that each condition must evaluate to `true` in order for the file to pass QC. The QC decision can be defined by a `math.js` string, which allows for complex operations if needed.
