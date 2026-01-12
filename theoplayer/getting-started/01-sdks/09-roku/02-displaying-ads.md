@@ -1,16 +1,18 @@
 # Playing ads with THEOplayer Roku SDK
 
-This article will provide the steps needed to play video ads with your content using the THEOplayer Roku SDK.
+This article will provide the steps needed to play video ads with your content using the THEOplayer Roku SDK. The THEOplayer Roku SDK currently only supports Clientside Ad Insertion (CSAI) for VOD assets and some Serverside Ad Insertion (SSAI) using Google Ad Manager or THEOads. It does not yet support Clientside Ad Stitching (CSAS), Server Guided Ad Insertion (SGAI) or live CSAI ads.
 
 ## First Steps
 
-- Make sure you are using a version of the SDK that supports ads. CSAI is available for VOD content in v9.3 and higher of the SDK.
+- Make sure you are using a version of the SDK that supports ads. CSAI is available for VOD content in v9.3 and higher of the SDK. SSAI with Google IMA is available starting in v10.3.
 - Include the RAF advertising library in your application's manifest file by adding this line:
   `bs_libs_required=roku_ads_lib`
+- To support Google DAI, include the Google IMA library as well by adding `googleima3` after the RAF ads library:
+  `bs_libs_required=roku_ads_lib,googleima3`
 
 ## Clientside Ad Insertion
 
-The THEOplayer Roku SDK currently only supports Clientside Ad Insertion (CSAI) for VOD assets. It does not yet support Clientside Ad Stitching (CSAS), Serverside Ad Insertion (SSAI), Server Guided Ad Insertion (SGAI) or live ads. It supports CSAI by using the Roku Advertising Framework (RAF), which is provided by Roku. It supports VMAP and VAST ad tags. For more information about specific features of VAST or VMAP supported by RAF, please visit their [support page](https://developer.roku.com/docs/developer-program/advertising/roku-advertising-framework.md).
+The THEOplayer Roku SDK supports CSAI by using the Roku Advertising Framework (RAF), which is provided by Roku. It supports VMAP and VAST ad tags. For more information about specific features of VAST or VMAP supported by RAF, please visit their [support page](https://developer.roku.com/docs/developer-program/advertising/roku-advertising-framework.md).
 
 ### Create your ad descriptions
 
@@ -180,3 +182,52 @@ Currently the Ads API does not support:
 
 - Playing VAST tags in the middle of breaks from a VMAP tag.
 - Reporting the exact media file that is being played for a creative.
+
+## Serverside Ad Insertion
+
+The THEOplayer Roku SDK supports SSAI by using the Google IMA library, which is provided by Roku and can be added in your application's manifest file. It supports SSAI through two methods: Google-registered streams and THEOlive streams with THEOads.
+
+### Google IMA Streams
+
+To play a DAI stream that is registered with Google IMA, add an `ssai` config on the source description you pass to the THEOplayer. Set the `src` property of the `sources` object to an arbitrary, non-empty string and set the `type` to the MIME type for the manifest. Then fill in your Google DAI information in the `ssai` config, making sure to set the `integration` property of the `ssai` config to `"google-dai"`.
+
+```brightscript
+m.player.source = {
+    "title": "Google DAI Stream",
+    "sources": {
+        "src": "ssai",
+        "type": "application/x-mpegurl",
+        "ssai": {
+            integration: "google-dai",
+            availabilityType: "live",
+            assetKey: "<MY_ASSET_KEY>",
+            networkCode: "<MY_NETWORK_CODE>",
+            apiKey: "<MY_API_KEY>",
+        },
+    }
+},
+```
+
+### THEOlive and THEOads
+
+To play a THEOlive SSAI stream that is configured in THEOlive to use THEOads with Google IMA, add an `ssai` config on the source description you pass to the THEOplayer. Set the `src` property of the `sources` object to your THEOlive distribution ID and set the `type` to `"theolive"`. Then on the `ssai` config, set the `integration` property to `"theoads"`. You may additionally add ad tag parameters for Google IMA by setting the `adTagParameters` property of the `ssai` config to an associative array with the URL params as properties and values.
+
+```brightscript
+m.player.source = {
+    "title": "THEOlive DAI Stream",
+    "sources": {
+        "src": "<MY_THEOLIVE_DISTRIBUTION_ID>",
+        "type": "theolive",
+        "ssai": {
+            integration: "theoads",
+            adTagParameters: {
+                "iu": "<MY_IU_VALUE>"
+            }
+        }
+    }
+},
+```
+
+### Listening for Ad Events
+
+With SSAI, the AdsAPI still will emit ad beacon events. You can add listeners for these ad events on the AdsAPI just like CSAI by following the instructions in the CSAI section. Unfortunately, monitoring RAF via the RAF proxy is not available for SSAI.
