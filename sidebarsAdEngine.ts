@@ -20,7 +20,11 @@ function cleanItems(data: SidebarItemConfig[]): SidebarItemConfig[] {
 
       // Rename the REST APIs title
       if (isCategory(item) && item.label === 'Ad Engine') {
-        item.label = 'REST APIs';
+        item.label = 'Ad Engine APIs';
+        item.collapsed = false;
+      }
+      if (isCategory(item) && item.label === 'Cloud Preview') {
+        item.label = 'Cloud Preview APIs';
         item.collapsed = false;
       }
 

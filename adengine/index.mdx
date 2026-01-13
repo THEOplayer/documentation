@@ -71,3 +71,16 @@ VAST files typically reference the ad master stored on the ad server. The OptiVi
 The Ad Engine can be used as part of the OptiView suite of services, including the OptiView Player, Streaming, and Ads. The Ad Engine facilitates preparing ads for any scenario, including Server-Guided Ad Insertion (SGAI). The low latency of the Ad Engine is particularly important when the OptiView Player is getting ads directly without them being stitched into the stream by the streaming engine. OptiView Ads manages the ad signaling and coordination between the various components. Here is an outline of the architecture in this scenario:
 
 ![OptiView Ad Engine Architecture](./assets/img/ad-engine-sgai-ad-insertion.svg)
+
+### Cloud Preview Capabilities
+
+In addition to rapid ad processing, the Ad Engine can generate **cloud-based previews** of media assets that are not natively streamable. A common use case is previewing high-quality master files encoded in formats such as Dolby Vision and Dolby Atmos. These master assets often have extremely high bitrates (for example, 800 Mbps or more) and are therefore unsuitable for direct streaming.
+
+The Ad Engine addresses this by **transcoding master files on-the-fly into streamable formats**, enabling immediate playback in a web browser. This allows customers to perform quality control directly in the cloud, without the need to generate or store intermediate proxy files.
+
+Cloud Preview output is compatible with any HLS-capable player. In addition, Dolby provides built-in support for the following multi-track players:
+
+- **Codemill Accurate Player** — https://www.codemill.com
+- **Omakase Player** — https://player.byomakase.org
+
+These multi-track players allow you to view multiple video, audio, and sub-title files in a single timeline with video thumbnails and audio waveforms.
