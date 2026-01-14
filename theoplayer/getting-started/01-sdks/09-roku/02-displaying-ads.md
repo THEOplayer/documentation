@@ -10,7 +10,7 @@ This article will provide the steps needed to play video ads with your content u
 - To support Google DAI, include the Google IMA library as well by adding `googleima3` after the RAF ads library:
   `bs_libs_required=roku_ads_lib,googleima3`
 
-## Clientside Ad Insertion
+## Client-side Ad Insertion
 
 The THEOplayer Roku SDK supports CSAI by using the Roku Advertising Framework (RAF), which is provided by Roku. It supports VMAP and VAST ad tags. For more information about specific features of VAST or VMAP supported by RAF, please visit their [support page](https://developer.roku.com/docs/developer-program/advertising/roku-advertising-framework.md).
 
@@ -183,7 +183,7 @@ Currently the Ads API does not support:
 - Playing VAST tags in the middle of breaks from a VMAP tag.
 - Reporting the exact media file that is being played for a creative.
 
-## Serverside Ad Insertion
+## Server-side Ad Insertion
 
 The THEOplayer Roku SDK supports SSAI by using the Google IMA library, which is provided by Roku and can be added in your application's manifest file. It supports SSAI through two methods: Google-registered streams and THEOlive streams with THEOads.
 
