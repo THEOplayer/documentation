@@ -1,6 +1,6 @@
 # Playing ads with THEOplayer Roku SDK
 
-This article will provide the steps needed to play video ads with your content using the THEOplayer Roku SDK. The THEOplayer Roku SDK currently only supports Clientside Ad Insertion (CSAI) for VOD assets and some Serverside Ad Insertion (SSAI) using Google Ad Manager or THEOads. It does not yet support Clientside Ad Stitching (CSAS), Server Guided Ad Insertion (SGAI) or live CSAI ads.
+This article will provide the steps needed to play video ads with your content using the THEOplayer Roku SDK. The THEOplayer Roku SDK currently only supports Client-side Ad Insertion (CSAI) for VOD assets and some Server-side Ad Insertion (SSAI) using Google Ad Manager or THEOads. It does not yet support Client-side Ad Stitching (CSAS), Server Guided Ad Insertion (SGAI) or live CSAI ads.
 
 ## First Steps
 
