@@ -208,3 +208,55 @@ This is an example of a JSON response from the [/media/asset/\{mediaAssetId\}](/
 ```
 
 The `downloadUrl` gives you the storage location where a file is available to download using whichever software or libraries are most appropriate for your application needs.
+
+## Managing Media Security
+For fine-grain control over access to media assets, use media distributions and the `url` media asset field.
+
+A media distribution in an object defining security settings for a subset of media assets on your account. 
+You may have multiple media distributions with different security settings.
+Create and manage media distributions using the [Media Distributions](/millicast/api/media-distributions-create-media-distribution.api.mdx) API.
+
+Each media asset can be associated with one media distribution in one of the following ways:
+1. Specify the `mediaDistributionId` when creating a clip using the [Create Media Asset](/millicast/api/media-assets-create-media-asset.api.mdx) endpoint.
+2. Update the `mediaDistributionId` on an existing media asset using the [Update Media Asset](/millicast/api/media-assets-update-media-asset.api.mdx) endpoint.
+3. Set a default media distribution for your account using the [Create Media Distribution](/millicast/api/media-distributions-create-media-distribution.api.mdx) endpoint or [Update Media Distribution](/millicast/api/media-distributions-update-media-distribution.api.mdx) endpoint. Any new media assets created on your account will be associated with the default media distribution.
+
+### Secured Playback
+[Add a security key](/millicast/api/media-distributions-create-security-key.api.mdx) to your media distribution, noting the `id` in the response. 
+Keep a record of your secret key since you will not be able to retrieve it again via the OptiView APIs.
+Any media assets associated with a media distribution with a security key cannot be viewed without a valid JWT.
+
+Create a JWT with a payload including the `id` of your media distribution security key and an expiry time. Use your secret key to sign the JWT.
+This JWT can be used to view any media asset associated with the media distribution.
+Below is an example JWT payload.
+```
+{
+  "mediaKeyId": "qwertyui-opas-dfgh-jklz-xcvbnm123456",
+  "exp": 1770330326
+}
+```
+
+Retrieve the base download `url` from the [Read Media Asset](/millicast/api/media-assets-read-media-asset.api.mdx) response. 
+Append the JWT as a `token` query parameter. The resulting url will look like 
+```
+https://cdn.optiview.dolby.com/vod/{organisationId}/{mediaAssetId}/{filename}.{fileExtension}?token={jwt}
+```
+
+You may add a second security key to a media distribution for the purpose of key rotation. Either key can be used to sign your JWTs.
+
+### Unsecured Playback
+Media assets can be viewed without a token if they are associated with an "unsecured" media distribution. That is, one without any security keys. 
+The base download `url` can be used without a token to view any media asset associated with an unsecured media distribution.
+
+
+## Predictable Paths
+Generally the url to download a media asset looks like 
+```
+https://cdn.optiview.dolby.com/vod/{organisationId}/{mediaAssetId}/{filename}.{fileExtension}
+```
+When creating or uploading a media asset you may provide a `customPath` that will replace the `mediaAssetId` in the download path.
+The resulting url will look like 
+```
+https://cdn.optiview.dolby.com/vod/{organisationId}/{customPath}/{filename}.{fileExtension}
+```
+Using custom paths enables prediction of the download url path without reading the `mediaAssetId` from the API response.

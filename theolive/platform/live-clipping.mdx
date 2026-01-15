@@ -1,0 +1,28 @@
+---
+sidebar_position: 11
+---
+
+# Live Clipping
+
+Live clipping allows you to create media files from your HLS stream while it is in progress. This requires a Real-time streaming account and [API key](/millicast/api/millicast-api).
+
+To create a clip call the [Create Media Asset](/millicast/api/media-assets-create-media-asset) endpoint, specifying your `channelId`, `startTime` and "Hls" as the `targetFormat`. See below for an example request.
+```curl
+curl --request POST \
+  --url https://api.millicast.com/api/v3/media/assets \
+  --header 'Authorization: Bearer abc123' \
+  --data '
+{
+  "channelId": <channelId>,
+  "startTime": "2026-01-15T01:33:33Z",
+  "stopTime": "2026-01-15T01:34:33Z",
+  "targetFormat": "Hls"
+}
+'
+```
+
+Use the `mediaAssetId` in the response to check the completion status of the clip and retrieve a download URL via the [Read Media Asset](/millicast/api/media-assets-read-media-asset/) endpoint.
+
+For more information on live clipping please see [here](/millicast/distribution/stream-recordings/live-clipping). For more information on how to retrieve your clips please see [here](/millicast/distribution/stream-recordings/how-to-get-media-assets).
+
+Please contact support if you would like to have this feature enabled.
