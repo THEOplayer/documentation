@@ -73,7 +73,7 @@ For content type metadata values, there is an enum property on the THEOMuxConnec
 
 ### Presentation Modes
 
-The THEOMuxConnector supports reporting changes in the presentation mode (also called presentation mode) your application uses the player in, such as fullscreen or inline. The `PRESENTATION_MODES` enum property on the THEOMuxConnector holds the possible values (FULLSCREEN, INLINE, MINI, and PIP). For example, if your application changes the THEO player so it is in a list row component, you could call:
+The THEOMuxConnector supports reporting changes in the presentation mode (also called playback mode) your application uses the player in, such as fullscreen or inline. The `PRESENTATION_MODES` enum property on the THEOMuxConnector holds the possible values (FULLSCREEN, INLINE, MINI, and PIP). For example, if your application changes the THEO player so it is in a list row component, you could call:
 
 ```brightscript
 m.muxConnector.callFunc("setPresentation", m.muxConnector.PRESENTATION_MODES.INLINE)
