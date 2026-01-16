@@ -17,10 +17,10 @@ In order to set up the Conviva Connector in your Roku application, you'll need t
 
 ## Integration
 
-1. First you must download the THEO Conviva Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOConvivaConnector` and providing the URI for the THEOConvivaConnector.pkg:
+1. First you must download the THEO Conviva Connector as a component library. Add a ComponentLibrary node to your MainScene.brs file, giving it an id of `THEOConvivaConnector` and providing the URI for the THEOConvivaConnector.pkg. Replace the `{SDK_VERSION}` tag with the version of the THEO Roku SDK you're using. The earliest version of the connector is 1.5.0:
 
 ```xml
-<ComponentLibrary id="THEOConvivaConnector" uri="https://cdn.myth.theoplayer.com/roku/1.5.0/THEOConvivaConnector.pkg" />
+<ComponentLibrary id="THEOConvivaConnector" uri="https://cdn.myth.theoplayer.com/roku/{SDK_VERSION}/THEOConvivaConnector.pkg" />
 ```
 
 2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.

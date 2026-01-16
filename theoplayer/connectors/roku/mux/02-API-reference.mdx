@@ -1,0 +1,87 @@
+---
+sidebar_label: API reference
+sidebar_custom_props: { icon: '*️⃣' }
+---
+
+# Mux Connector API
+
+The attributes, methods and events for the THEOMuxConnector.
+
+## Attributes
+
+| Name               | Type             | Default                | Access Permission | Description                                    |
+| ------------------ | ---------------- | ---------------------- | ----------------- | ---------------------------------------------- |
+| id                 | string           |                        | read,write        | The id of the node.                            |
+| CONTENT_TYPES      | AssociativeArray | Mux Content Types      | read              | Constant with the Mux content types enums.     |
+| PRESENTATION_MODES | AssociativeArray | Mux Presentation Modes | read              | Constant with the Mux presentation mode enums. |
+
+## Methods
+
+| Method            | Params                                                                                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| configure         | player: THEOplayer, configuration: THEOMuxConfiguration, metadata: (optional) AssociativeArray                                   | Add a player to monitor, configure the Mux SDK, and also pass in optional metadata for your content.                                                                                                                                                                                                                                                                                                            |
+| destroy           | none                                                                                                                             | Destroy the connector. It also ends the current session, if any.                                                                                                                                                                                                                                                                                                                                                |
+| endSession        | none                                                                                                                             | End the current Mux session, but do not destroy the connector.                                                                                                                                                                                                                                                                                                                                                  |
+| monitorCdnChanges | mappings: CDNMonitoringConfig, defaultCdn: string (optional)                                                                     | Updates the CDN monitoring settings. If passed a CDN monitoring config (see below), it will begin monitoring the downloaded segments for changes in CDN. This will update the defaultReportingResource for the current session if a CDN change is detected If passed invalid as the first parameter, it will stop the monitoring and use any string passed as the second param as the defaultReportingResource. |
+| notifyError       | code: integer, message: string, context: string (optional), severity: string (optional), isBusinessException: boolean (optional) | Report an error to Mux. Note that most errors should be automatically reported. Severity defaults to "fatal".                                                                                                                                                                                                                                                                                                   |
+| setPresentation   | presentationMode: MuxPresentationModes, data: (optional) AssociativeArray                                                        | Change the reported presentation mode (also called playback mode) for the player. Can also take optional arbitrary data about the mode.                                                                                                                                                                                                                                                                         |
+| startSession      | mediaType: string, metadata: (optional) THEOMuxReadableMetadata or THEOMuxTagMetadata                                            | Starts a Mux streaming session with the specified media type, and optionally applies the content metadata. See below for the schema of content. If not passing content metadata, you will need to add it separately with the `update` method before calling `startSession`                                                                                                                                      |
+
+### Mux Config
+
+The configuration the Mux connector is the THEOMuxConfiguration interface. All properties except for `env_key` are optional.
+
+```brightscript
+configuration = {
+  env_key: "<MY_MUX_ENV_KEY>",
+  viewer_user_id: "<END_USER_ID>",
+  mux_base_url: "<CUSTOM_MUX_BASE_URL>"
+}
+```
+
+In order to get debug output from Mux in your console, you need to add the settings to your application's manifest file.
+
+```
+mux_debug_events=partial
+mux_debug_beacons=partial
+```
+
+The accepted values for the debug properties are `full`, `partial`, and `none`, defaulting to `none`.
+
+### CDN Monitoring Config
+
+The configuration for CDN monitoring should be an AssociativeArray with keys that are the name of the CDN and values that are arrays of strings to search for in segment URLs.
+
+```brightscript
+cdnMappings = {
+	akamai: ["akamaized.net"],
+	theo: ["dev.theoads.live", "cdn.theoplayer.com"]
+	level3: ["llnw.com"]
+}
+```
+
+Passing a config as the only param will start CDN change monitoring with the provided configuration, or update the config if it is already started.
+`m.theoMuxConnector.callFunc("monitorCDNChanges", cdnMappings)`
+However, if you want to stop CDN change monitoring, pass `invalid` as the first parameter, and the string you want to use for the defaultReportingResource as the second parameter.
+`m.theoMuxConnector.callFunc("monitorCDNChanges", invalid, "theo")`
+
+### Content Metadata
+
+Content metadata should be an AssociativeArray following [Mux's schema for streaming tags](https://www.mux.com/docs/guides/make-your-data-actionable-with-metadata#optional-configurable-metadata). All properties on it are optional, except for `video_id` and `video_title`.
+
+For content type metadata values, there is an enum property on the THEOMuxConnector named `CONTENT_TYPES`. Its values are SHORT, MOVIE, CLIP, EPISODE, TRAILER, and EVENT. For example: `metadata.video_content_type = m.muxConnector.CONTENT_TYPES.MOVIE`.
+
+### Presentation Modes
+
+The THEOMuxConnector supports reporting changes in the presentation mode (also called playback mode) your application uses the player in, such as fullscreen or inline. The `PRESENTATION_MODES` enum property on the THEOMuxConnector holds the possible values (FULLSCREEN, INLINE, MINI, and PIP). For example, if your application changes the THEO player so it is in a list row component, you could call:
+
+```brightscript
+m.muxConnector.callFunc("setPresentation", m.muxConnector.PRESENTATION_MODES.INLINE)
+```
+
+There is also an optional `data` parameter for that method that can be an arbitrary associative array, as long as it can be converted to JSON.
+
+```brightscript
+presentationModeData = { reason: "Viewed Asset", timestamp: 1767735434 }
+m.muxConnector.callFunc("setPresentation", m.muxConnector.PRESENTATION_MODES.FULLSCREEN, presentationModeData)
+```
