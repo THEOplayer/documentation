@@ -5,6 +5,48 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.8.0 (2026/01/15)
+
+### Web
+
+#### ✨ Features
+
+- Added support for MPEG-DASH content steering.
+- Added support for `player.metrics.bufferedSegments` when playing an HLS stream.
+
+#### ⚡ Improvements
+
+- OptiView Streaming sources now support more `TypedSource` properties, such as `TypedSource.abr` and `TypedSource.crossOrigin`.
+
+#### 🐛 Issues
+
+- Fixed an issue where some HLS live streams could stall indefinitely when playing over an `#EXT-X-DISCONTINUITY` on Samsung Tizen devices.
+- Fixed an issue where the `player.currentTime` could be incorrect after playing a CSAI ad with OptiView Ads.
+- Fixed an issue where `player.metrics.currentBandwidthEstimate` was not set when playing an HESP stream.
+- Fixed an issue where the player would sometimes jump back to the first ad of an OptiView Ads break instead of continuing with the second ad of that break.
+- Fixed an issue for OptiView Ads where a VAST ad break in Safari native fullscreen could stutter.
+
+### iOS
+
+#### ✨ Features
+
+- Added the `Network` API to `CachingTask` to help enable media playlist interception.
+
+#### 🐛 Issues
+
+- Fixed an issue where seeking to the live point could cause unnecessary buffering on OptiView Streaming (THEOlive) sources.
+
+#### 👎 Deprecations
+
+- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to https://optiview.dolby.com/docs/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/.
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Live streams would not properly fall back to a backup feed in case of a streaming error.
+- Fixed an issue where OptiView Live streams could experience endless buffering without recovering.
+
 ## 🚀 10.7.0 (2025/12/16)
 
 ### General
