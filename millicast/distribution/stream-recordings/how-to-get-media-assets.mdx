@@ -219,7 +219,7 @@ Create and manage media distributions using the [Media Distributions](/millicast
 Each media asset can be associated with one media distribution in one of the following ways:
 1. Specify the `mediaDistributionId` when creating a clip using the [Create Media Asset](/millicast/api/media-assets-create-media-asset.api.mdx) endpoint.
 2. Update the `mediaDistributionId` on an existing media asset using the [Update Media Asset](/millicast/api/media-assets-update-media-asset.api.mdx) endpoint.
-3. Set a default media distribution for your account using the [Create Media Distribution](/millicast/api/media-distributions-create-media-distribution.api.mdx) endpoint or [Update Media Distribution](/millicast/api/media-distributions-update-media-distribution.api.mdx) endpoint. Any new media assets created on your account will be associated with the default media distribution.
+3. Set a default media distribution for each type of media using the Update Default Media Distribution Settings endpoint. Any new media assets created on your account will be associated with the default media distribution.
 
 ### Secured Playback
 [Add a security key](/millicast/api/media-distributions-create-security-key.api.mdx) to your media distribution, noting the `id` in the response. 
