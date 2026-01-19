@@ -51,14 +51,14 @@
     "eslint": "^9.39.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "lodash": "^4.17.21",
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.0",
     "raw-loader": "^4.0.2",
     "remark": "^15.0.1",
     "serve-handler": "^6.1.6",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0",
+    "typescript-eslint": "^8.53.0",
     "unist-util-visit": "^5.0.0"
   },
   "overrides": {
