@@ -2,6 +2,12 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-01-23 | REST APIs
+
+### Fixes
+
+- Update [Advanced Analytics API](millicast/api/reporting/advanced-analytics-api) with a data retention period of 1 year. This will take effect in 30 days.
+
 ## 2025-05-30 | REST APIs
 
 ### Fixes
