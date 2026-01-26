@@ -42,3 +42,5 @@ player.addEventListener('contentsteeringerror', console.log)
 
 - `PATHWAY-CLONE` from the Content Steering server response is not supported yet.
 - Extended HTTP GET request parametrization instructions are not supported yet. You can add custom parameters to Content Steering requests by using a `RequestInterceptor` to intercept and modify network requests with the type `content-steering`.
+- Targeting a specific set of clients as part of a ServiceDescription element is not supported.
+
