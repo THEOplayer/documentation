@@ -32,7 +32,7 @@ jobs:
       # Deploy to S3
       # See https://github.com/aws-actions/configure-aws-credentials
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: arn:aws:iam::823129359776:role/optiview-docs-github
           aws-region: us-west-2
