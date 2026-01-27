@@ -1,0 +1,924 @@
+<!DOCTYPE HTML>
+<!-- NewPage -->
+<html lang="en"><head>
+    <title>THEOplayerFragmentedMp4Extractor </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="dc.created" content="2020-03-25">
+    <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../dokka-javadoc-stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.css" title="Style">
+    <script type="text/javascript" src="../../../../jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../../../jquery/jquery-migrate-3.4.0.min.js"></script>
+    <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../../../search.js"></script>
+    <script async type="text/javascript" src="../../../../module-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../package-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../type-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../member-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../tag-search-index.js"></script>
+</head><body>
+<script type="text/javascript">
+var pathtoroot = "../../../../";
+</script>
+<noscript>
+    <div>JavaScript is disabled on your browser.</div>
+</noscript><header role="banner">
+    <nav role="navigation">
+        <div class="fixedNav">
+            <!-- ========= START OF TOP NAVBAR ======= -->
+            <div class="topNav"><a id="navbar.top">
+                <!--   -->
+            </a>
+                <div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a>
+                </div>
+                <a id="navbar.top.firstrow">
+                    <!--   -->
+                </a>
+                <ul class="navList" title="Navigation">
+    <li><a href="../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li class="navBarCell1Rev">Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+            <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+
+<ul class="navListSearch">
+<li><label for="search">SEARCH:</label>
+<input type="text" id="search" value="search" class="ui-autocomplete-input" autocomplete="off" placeholder="Search">
+<input type="reset" id="reset" value="reset">
+</li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ========= END OF TOP NAVBAR ========= -->
+        </div>
+        <div class="navPadding">&nbsp;</div>
+        <script type="text/javascript"><!--
+        $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
+        //-->
+        </script>
+    </nav>
+</header>
+
+<main role="main">
+    <div class="header">
+        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">androidx.media3.extractor.mp4</a></div>
+        <h2 title="Class THEOplayerFragmentedMp4Extractor" class="title">Class THEOplayerFragmentedMp4Extractor</h2>
+    </div>
+    <div class="contentContainer">
+        <!-- <ul class="inheritance">
+            <li>java.lang.Object</li>
+            <li>
+                <ul class="inheritance">
+                    <li>adaptation.Adaptation</li>
+                </ul>
+            </li>
+        </ul> TODO inheritance tree -->
+        <div class="description">
+            <ul class="blockList">
+                <li class="blockList">
+                    
+                    <dl>
+                        <dt>All Implemented Interfaces:</dt>
+                        <dd>
+                            
+                            <code>androidx.media3.extractor.Extractor</code>
+                            
+                            
+                        </dd>
+                    </dl>
+                    
+                    <hr>
+                    <pre class="wrap-overflow">
+@<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/UnstableApi.html>UnstableApi</a>() 
+public class <span class="typeNameLabel"><a href=THEOplayerFragmentedMp4Extractor.html>THEOplayerFragmentedMp4Extractor</a></span>
+ implements <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/Extractor.html>Extractor</a>
+                    </pre>
+                    <div class="block"><p>Extracts data from the FMP4 container format. This is copied from androidx.media 1.8 and tweaked with the fix for calculation of presentation time of EMSG when SIDX is present</p></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="summary">
+            <ul class="blockList">
+                <li class="blockList">
+                <!-- ======== NESTED CLASS SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="nested.class.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Nested Class Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Class</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public @interface</code></td>
+                                            <th class="colSecond" scope="row"><code><a href="THEOplayerFragmentedMp4Extractor.Flags.html">THEOplayerFragmentedMp4Extractor.Flags</a></span></code>
+                                            </th>
+                                            <td class="colLast"><p>Flags controlling the behavior of the extractor. Possible flag values are <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_WORKAROUND_EVERY_VIDEO_FRAME_IS_SYNC_FRAME>FLAG_WORKAROUND_EVERY_VIDEO_FRAME_IS_SYNC_FRAME</a>, <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_WORKAROUND_IGNORE_TFDT_BOX>FLAG_WORKAROUND_IGNORE_TFDT_BOX</a>, <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_ENABLE_EMSG_TRACK>FLAG_ENABLE_EMSG_TRACK</a>, <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_WORKAROUND_IGNORE_EDIT_LISTS>FLAG_WORKAROUND_IGNORE_EDIT_LISTS</a>, <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_EMIT_RAW_SUBTITLE_DATA>FLAG_EMIT_RAW_SUBTITLE_DATA</a>, <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES>FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES</a>, <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES_H265>FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES_H265</a> and <a href=androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.html#FLAG_MERGE_FRAGMENTED_SIDX>FLAG_MERGE_FRAGMENTED_SIDX</a>.</p></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== FIELD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="field.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Field Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Field</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_WORKAROUND_EVERY_VIDEO_FRAME_IS_SYNC_FRAME>FLAG_WORKAROUND_EVERY_VIDEO_FRAME_IS_SYNC_FRAME</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_WORKAROUND_IGNORE_TFDT_BOX>FLAG_WORKAROUND_IGNORE_TFDT_BOX</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_ENABLE_EMSG_TRACK>FLAG_ENABLE_EMSG_TRACK</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_WORKAROUND_IGNORE_EDIT_LISTS>FLAG_WORKAROUND_IGNORE_EDIT_LISTS</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_EMIT_RAW_SUBTITLE_DATA>FLAG_EMIT_RAW_SUBTITLE_DATA</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES>FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES_H265>FLAG_READ_WITHIN_GOP_SAMPLE_DEPENDENCIES_H265</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FLAG_MERGE_FRAGMENTED_SIDX>FLAG_MERGE_FRAGMENTED_SIDX</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final static <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorsFactory.html>ExtractorsFactory</a></code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#FACTORY>FACTORY</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#RESULT_CONTINUE>RESULT_CONTINUE</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#RESULT_SEEK>RESULT_SEEK</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>public final static int</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#RESULT_END_OF_INPUT>RESULT_END_OF_INPUT</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ======== CONSTRUCTOR SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tbody>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Constructor</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor()">THEOplayerFragmentedMp4Extractor</a></span>()</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(androidx.media3.extractor.text.SubtitleParser.Factory)">THEOplayerFragmentedMp4Extractor</a></span>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory)</code></th>
+                                                <td class="colLast">Constructs an instance.</td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(int)">THEOplayerFragmentedMp4Extractor</a></span>(int flags)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(androidx.media3.extractor.text.SubtitleParser.Factory,int)">THEOplayerFragmentedMp4Extractor</a></span>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory, int flags)</code></th>
+                                                <td class="colLast">Constructs an instance.</td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster)">THEOplayerFragmentedMp4Extractor</a></span>(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track)">THEOplayerFragmentedMp4Extractor</a></span>(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track,java.util.List)">THEOplayerFragmentedMp4Extractor</a></span>(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/Format.html>Format</a>&gt; closedCaptionFormats)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track,java.util.List,androidx.media3.extractor.TrackOutput)">THEOplayerFragmentedMp4Extractor</a></span>(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/Format.html>Format</a>&gt; closedCaptionFormats, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/TrackOutput.html>TrackOutput</a> additionalEmsgTrackOutput)</code></th>
+                                                <td class="colLast"></td>
+                                            </tr>
+                                        
+                                            <tr class="altColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#THEOplayerFragmentedMp4Extractor(androidx.media3.extractor.text.SubtitleParser.Factory,int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track,java.util.List,androidx.media3.extractor.TrackOutput)">THEOplayerFragmentedMp4Extractor</a></span>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory, int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/Format.html>Format</a>&gt; closedCaptionFormats, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/TrackOutput.html>TrackOutput</a> additionalEmsgTrackOutput)</code></th>
+                                                <td class="colLast">Constructs an instance.</td>
+                                            </tr>
+                                        
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== ENUM CONSTANT SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="enum.constant.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Enum Constant Summary</h3>
+                                <table class="memberSummary">
+                                    <caption><span>Enum Constants</span><span class="tabEnd">&nbsp;</span></caption>
+                                    <tr>
+                                        <th class="colFirst" scope="col">Enum Constant</th>
+                                        <th class="colLast" scope="col">Description</th>
+                                    </tr>
+                                    
+                                </table>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ========== METHOD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Method Summary</h3>
+                                <div class="memberSummary">
+                                    <div role="tablist" aria-orientation="horizontal">
+                                        <button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button>
+                                        <!-- TODO: Instance and Concrete Methods #1118 -->
+                                    </div>
+                                    <div id="memberSummary_tabpanel" role="tabpanel">
+                                    <table aria-labelledby="t0">
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Method</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code>static <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorsFactory.html>ExtractorsFactory</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#newFactory(androidx.media3.extractor.text.SubtitleParser.Factory)>newFactory</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory) </code>
+                                            </th>
+                                            <td class="colLast">Creates a factory for <a href=THEOplayerFragmentedMp4Extractor.html>THEOplayerFragmentedMp4Extractor</a> instances with the provided .</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>static int</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#codecsToParseWithinGopSampleDependenciesAsFlags(int)>codecsToParseWithinGopSampleDependenciesAsFlags</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/C.VideoCodecFlags.html>C.VideoCodecFlags</a>() int videoCodecFlags) </code>
+                                            </th>
+                                            <td class="colLast">Returns <a href=THEOplayerFragmentedMp4Extractor.Flags.html>Flags</a> denoting if an extractor should parse within GOP sample dependencies.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>boolean</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#sniff(androidx.media3.extractor.ExtractorInput)>sniff</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorInput.html>ExtractorInput</a> input) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>ImmutableList&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/SniffFailure.html>SniffFailure</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#getSniffFailureDetails()>getSniffFailureDetails</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#init(androidx.media3.extractor.ExtractorOutput)>init</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorOutput.html>ExtractorOutput</a> output) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#seek(long,long)>seek</a>(long position, long timeUs) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#release()>release</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>int</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#read(androidx.media3.extractor.ExtractorInput,androidx.media3.extractor.PositionHolder)>read</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorInput.html>ExtractorInput</a> input, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/PositionHolder.html>PositionHolder</a> seekPosition) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerFragmentedMp4Extractor.html#modifyTrack(androidx.media3.extractor.mp4.Track)>modifyTrack</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> track) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="blockList">
+                                
+                                    <li class="blockList"><a id="methods.inherited.from.class.androidx.media3.extractor.Extractor">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;androidx.media3.extractor.Extractor</h3>
+                                            <code>getUnderlyingImplementation</code></li>
+                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+                                        <!--   -->
+                                    </a>
+                                        <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+                                        <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString,
+                                            wait, wait, wait</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+            <ul class="blockList">
+                <li class="blockList">
+                    <!-- ========= CONSTRUCTOR DETAIL ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Detail</h3>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor()"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor()</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(androidx.media3.extractor.text.SubtitleParser.Factory)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory)</pre>
+                                        <div class="block">Constructs an instance.</div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>subtitleParserFactory</code> - The <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> for parsing subtitles during extraction.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(int)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(int flags)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(androidx.media3.extractor.text.SubtitleParser.Factory,int)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory, int flags)</pre>
+                                        <div class="block">Constructs an instance.</div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>subtitleParserFactory</code> - The <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> for parsing subtitles during extraction.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>flags</code> - Flags that control the extractor's behavior.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track,java.util.List)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/Format.html>Format</a>&gt; closedCaptionFormats)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track,java.util.List,androidx.media3.extractor.TrackOutput)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/Format.html>Format</a>&gt; closedCaptionFormats, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/TrackOutput.html>TrackOutput</a> additionalEmsgTrackOutput)</pre>
+                                        <div class="block"></div>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="THEOplayerFragmentedMp4Extractor(androidx.media3.extractor.text.SubtitleParser.Factory,int,androidx.media3.common.util.TimestampAdjuster,androidx.media3.extractor.mp4.Track,java.util.List,androidx.media3.extractor.TrackOutput)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>THEOplayerFragmentedMp4Extractor</h4>
+                                        <pre>THEOplayerFragmentedMp4Extractor(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory, int flags, <a href=https://developer.android.com/reference/kotlin/androidx/media3/common/util/TimestampAdjuster.html>TimestampAdjuster</a> timestampAdjuster, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> sideloadedTrack, <a href=https://developer.android.com/reference/kotlin/java/util/List.html>List</a>&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/Format.html>Format</a>&gt; closedCaptionFormats, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/TrackOutput.html>TrackOutput</a> additionalEmsgTrackOutput)</pre>
+                                        <div class="block">Constructs an instance.</div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>subtitleParserFactory</code> - The <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> for parsing subtitles during extraction.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>flags</code> - Flags that control the extractor's behavior.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>timestampAdjuster</code> - Adjusts sample timestamps.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>sideloadedTrack</code> - Sideloaded track information, in the case that the extractor will not receive a moov box in the input data.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>closedCaptionFormats</code> - For tracks that contain SEI messages, the formats of the closed caption channels to expose.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>additionalEmsgTrackOutput</code> - An extra track output that will receive all emsg messages targeting the player, even if <a href=THEOplayerFragmentedMp4Extractor.html#FLAG_ENABLE_EMSG_TRACK>FLAG_ENABLE_EMSG_TRACK</a> is not set.</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ============ METHOD DETAIL ========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Method Detail</h3>
+                                
+                                <a id="newFactory(androidx.media3.extractor.text.SubtitleParser.Factory)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>newFactory</h4>
+                                        <pre class="methodSignature"> static <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorsFactory.html>ExtractorsFactory</a> <a href=THEOplayerFragmentedMp4Extractor.html#newFactory(androidx.media3.extractor.text.SubtitleParser.Factory)>newFactory</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/text/SubtitleParser.Factory.html>SubtitleParser.Factory</a> subtitleParserFactory)</pre>
+                                        <div class="block"><p>Creates a factory for <a href=THEOplayerFragmentedMp4Extractor.html>THEOplayerFragmentedMp4Extractor</a> instances with the provided .</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="codecsToParseWithinGopSampleDependenciesAsFlags(int)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>codecsToParseWithinGopSampleDependenciesAsFlags</h4>
+                                        <pre class="methodSignature">@<a href=THEOplayerFragmentedMp4Extractor.Flags.html>THEOplayerFragmentedMp4Extractor.Flags</a>() static int <a href=THEOplayerFragmentedMp4Extractor.html#codecsToParseWithinGopSampleDependenciesAsFlags(int)>codecsToParseWithinGopSampleDependenciesAsFlags</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/media3/common/C.VideoCodecFlags.html>C.VideoCodecFlags</a>() int videoCodecFlags)</pre>
+                                        <div class="block"><p>Returns <a href=THEOplayerFragmentedMp4Extractor.Flags.html>Flags</a> denoting if an extractor should parse within GOP sample dependencies.</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>videoCodecFlags</code> - The set of codecs for which to parse within GOP sample dependencies.</dd>
+                                            
+                                            
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="sniff(androidx.media3.extractor.ExtractorInput)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>sniff</h4>
+                                        <pre class="methodSignature"> boolean <a href=THEOplayerFragmentedMp4Extractor.html#sniff(androidx.media3.extractor.ExtractorInput)>sniff</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorInput.html>ExtractorInput</a> input)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSniffFailureDetails()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSniffFailureDetails</h4>
+                                        <pre class="methodSignature"> ImmutableList&lt;<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/SniffFailure.html>SniffFailure</a>&gt; <a href=THEOplayerFragmentedMp4Extractor.html#getSniffFailureDetails()>getSniffFailureDetails</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="init(androidx.media3.extractor.ExtractorOutput)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>init</h4>
+                                        <pre class="methodSignature"> void <a href=THEOplayerFragmentedMp4Extractor.html#init(androidx.media3.extractor.ExtractorOutput)>init</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorOutput.html>ExtractorOutput</a> output)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="seek(long,long)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>seek</h4>
+                                        <pre class="methodSignature"> void <a href=THEOplayerFragmentedMp4Extractor.html#seek(long,long)>seek</a>(long position, long timeUs)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="release()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>release</h4>
+                                        <pre class="methodSignature"> void <a href=THEOplayerFragmentedMp4Extractor.html#release()>release</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="read(androidx.media3.extractor.ExtractorInput,androidx.media3.extractor.PositionHolder)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>read</h4>
+                                        <pre class="methodSignature"> int <a href=THEOplayerFragmentedMp4Extractor.html#read(androidx.media3.extractor.ExtractorInput,androidx.media3.extractor.PositionHolder)>read</a>(<a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/ExtractorInput.html>ExtractorInput</a> input, <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/PositionHolder.html>PositionHolder</a> seekPosition)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="modifyTrack(androidx.media3.extractor.mp4.Track)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>modifyTrack</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> <a href=THEOplayerFragmentedMp4Extractor.html#modifyTrack(androidx.media3.extractor.mp4.Track)>modifyTrack</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/androidx/media3/extractor/mp4/Track.html>Track</a> track)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer role="contentinfo">
+    <nav role="navigation">
+        <!-- ======= START OF BOTTOM NAVBAR ====== -->
+        <div class="bottomNav"><a id="navbar.bottom">
+            <!--   -->
+        </a>
+            <div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a>
+            </div>
+            <a id="navbar.bottom.firstrow">
+                <!--   -->
+            </a>
+            <ul class="navList" title="Navigation">
+    <li><a href="../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li class="navBarCell1Rev">Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+        <a id="skip.navbar.bottom">
+            <!--   -->
+        </a>
+        <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ======== END OF BOTTOM NAVBAR ======= -->
+    </nav>
+</footer><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+    style="display: none;"></ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
+</html>
