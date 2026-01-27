@@ -13,6 +13,10 @@ updates:
         patterns:
           - '@docusaurus*'
           - 'docusaurus*'
+      production-dependencies:
+        dependency-type: 'production'
+      development-dependencies:
+        dependency-type: 'development'
   - package-ecosystem: gitsubmodule
     directory: /
     schedule:
