@@ -11,8 +11,8 @@ updates:
     groups:
       docusaurus:
         patterns:
-          - "@docusaurus*"
-          - "docusaurus*"
+          - '@docusaurus*'
+          - 'docusaurus*'
   - package-ecosystem: gitsubmodule
     directory: /
     schedule:
@@ -20,5 +20,5 @@ updates:
     groups:
       submodules:
         patterns:
-          - "*"
+          - '*'
     open-pull-requests-limit: 1
