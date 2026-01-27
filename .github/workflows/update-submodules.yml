@@ -17,7 +17,7 @@ jobs:
       UPDATE_BRANCH: update-submodules
     steps:
       - name: Create app token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         id: app-token
         with:
           app-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
