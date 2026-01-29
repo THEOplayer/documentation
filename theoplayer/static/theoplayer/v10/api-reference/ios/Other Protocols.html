@@ -941,6 +941,12 @@
                 <a class="nav-group-task-link" href="Protocols/GoogleDAI.html">GoogleDAI</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/LatencyConfiguration.html">LatencyConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/LatencyManager.html">LatencyManager</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/ManifestInterceptor.html">ManifestInterceptor</a>
               </li>
               <li class="nav-group-task">
@@ -966,6 +972,9 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/THEOAdDescription.html">THEOAdDescription</a>
               </li>
@@ -1040,6 +1049,69 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GoogleDAI</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK20LatencyConfigurationP"></a>
+                    <a name="//apple_ref/swift/Protocol/LatencyConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK20LatencyConfigurationP">LatencyConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Latency configuration on player level.</p>
+
+<p>According to the selected SourceLatencyConfiguration, the player will create this latency configuration and make it available on player level.</p>
+
+                        <a href="Protocols/LatencyConfiguration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">LatencyConfiguration</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK14LatencyManagerP"></a>
+                    <a name="//apple_ref/swift/Protocol/LatencyManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK14LatencyManagerP">LatencyManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The latency manager, used to control low-latency live playback.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This is only used for live playback.
+
+</div>
+
+                        <a href="Protocols/LatencyManager.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">LatencyManager</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                         </div>
                       </div>

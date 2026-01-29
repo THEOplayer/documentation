@@ -5,6 +5,75 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.9.0 (2026/01/29)
+
+### Web
+
+#### ✨ Features
+
+- Added `DashPlaybackConfiguration.contentSteering` to control whether content steering is enabled in MPEG-DASH streams.
+
+#### ⚡ Improvements
+
+- Added the ability to set a `RetryConfiguration` on a per-source basis.
+
+#### 🐛 Issues
+
+- Fixed an issue for OptiView Ads where the layout could be incorrect when playing a VAST ad in double box or L-shape layout.
+- Fixed an issue where the player could not switch sources after a DAI stream errored.
+- Fixed an issue where a WideVine L1 protected DASH stream would occasionally fail to play on certain Android FireTV models (AFTSS & AFTSSS).
+- Fixed an issue where an `#EXT-X-KEY` with a base64 `data:` URI was sometimes parsed incorrectly from the HLS playlist.
+- Fixed an issue where playback of subsequent OptiView Live sources would cause incorrect endpoints to be selected.
+- Fixed an isse where MPEG-DASH content steering was sometimes not switching to a different `serviceLocation` when segment downloads failed.
+- Fixed an issue where a PS4 WebMAF app could freeze upon requesting a media segment.
+- Fixed an issue where the timecode text track would not be present on HESP streams that contain SEI timecodes.
+- Fixed an issue in MPEG-DASH Content Steering where the `Retry-After` header was not respected when the server returned status code `429`.
+- Fixed an issue where a crash would occur when playing an unsupported VPAID ad during native fullscreen on iOS Safari for an OptiView Ads stream.
+- Fixed an issue in MPEG-DASH Content Steering where the `_DASH_throughput` and `_DASH_pathway` query parameters only supported a single pathway.
+- Fixed an issue in MPEG-DASH Content Steering where sometimes a `serviceLocation` was chosen that was outside the provided `PATHWAY-PRIORITY` list.
+- Fixed an issue in MPEG-DASH Content Steering where `_DASH_throughput` would report a pathway that was not actually downloaded.
+- Fixed an issue in MPEG-DASH Content Steering where the default serviceLocation was not respected with `queryBeforeStart="false"`.
+- Fixed an issue where the player would dispatch play/pause events incorrectly when playing ad break to ad break on an OptiView Ads stream.
+- Fixed an issue for OptiView Ads where an IMA ad break could error when playing in iOS Safari native fullscreen.
+- Fixed an issue for OptiView Ads where the audio could play multiple times for a VAST ad in Picture-in-Picture.
+- Fixed an issue for OptiView Ads where the same ad could sometimes be scheduled multiple times.
+- Fixed an issue where the `playing` event was sometimes not dispatched when resuming playback after fallback of an OptiView Live stream.
+
+### Android
+
+#### ⚡ Improvements
+
+- The player will now automatically switch to a different quality when the current quality needs a DRM key that is missing in the DRM license. (Previously, the player would crash with a `MediaCodec.CryptoException` instead.)
+
+#### 🐛 Issues
+
+- Fixed an issue where `Ads.getCurrentAds()` could contain `null` ads.
+- Fixed an issue where `player.duration` was incorrectly reported as `Infinity` for MP3 files when using the `HttpEngine` network stack.
+- Fixed an issue where `TrackListChangeEvent` was not triggered when the subtitles were turned off.
+- Fixed an issue where the subtitle state was not maintained between the sender and receiver apps.
+
+#### ⚠ Known Limitations
+
+- When the player's ABR strategy is set to `QUALITY`, but the highest quality is missing a required DRM key, the player will fall back to *any* other quality (not necessarily the highest quality with an available DRM key).
+
+### iOS
+
+#### ✨ Features
+
+- Added a `LatencyManager` to control offset from live in HLS livestreams.
+
+### Roku
+
+#### ✨ Features
+
+- Created the THEOMuxConnector to enable Mux analytics in the THEO Roku SDK.
+
+#### 🐛 Issues
+
+- Fixed an issue where Comscore and Adobe connectors could spawn multiple lingering task threads after multiple instantiations.
+- Fixed an issue where VOD Google SSAI assets would not play.
+- Fixed an issue where the stall detection would wrongly say a stream with no audio was stalled.
+
 ## 🚀 10.8.0 (2026/01/15)
 
 ### Web
@@ -47,9 +116,23 @@ toc_max_heading_level: 2
 - Fixed an issue where OptiView Live streams would not properly fall back to a backup feed in case of a streaming error.
 - Fixed an issue where OptiView Live streams could experience endless buffering without recovering.
 
-## 🚀 10.7.0 (2025/12/16)
+## 🚀 10.7.2 (2026/01/27)
 
-### General
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where HLS playback on lower spec devices could error on a quality change between qualities with identical initializers.
+
+## 🚀 10.7.1 (2026/01/26)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where HLS playback on lower spec devices could error on a quality change briefly after starting playback.
+
+## 🚀 10.7.0 (2025/12/16)
 
 ### Web
 
@@ -131,6 +214,7 @@ toc_max_heading_level: 2
 - Added `ActiveQualityChanged` event for OptiView RealTime streams.
 - Improved HLS segment selection on ABR changes to not download segments that had already been buffered in a different quality.
 - The query parameters on the endpoint license acquisition URL of a DRM protected OptiView Live stream now take precedence over the query parameters that are defined in `contentProtection.queryParameters` or in the corresponding key system configuration.
+- The `player.ads.dai` API is now undefined when there the DAI library is not loaded.
 
 #### 🐛 Issues
 

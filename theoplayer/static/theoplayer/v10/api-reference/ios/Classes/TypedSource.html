@@ -943,6 +943,12 @@
                 <a class="nav-group-task-link" href="../Protocols/GoogleDAI.html">GoogleDAI</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/LatencyConfiguration.html">LatencyConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/LatencyManager.html">LatencyManager</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/ManifestInterceptor.html">ManifestInterceptor</a>
               </li>
               <li class="nav-group-task">
@@ -968,6 +974,9 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Other%20Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/THEOAdDescription.html">THEOAdDescription</a>
               </li>
@@ -1247,9 +1256,38 @@ are wrapped in an object implementing the ServerSideAdInsertionConfiguration pro
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headers4cmcdACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgSDyS2SGSgAStcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(src:type:drm:crossOrigin:ssai:hlsDateRange:headers:cmcd:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headers4cmcdACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgSDyS2SGSgAStcfc">init(src:<wbr>type:<wbr>drm:<wbr>crossOrigin:<wbr>ssai:<wbr>hlsDateRange:<wbr>headers:<wbr>cmcd:<wbr>)</a>
+                    <a name="/s:13THEOplayerSDK11TypedSourceC20latencyConfigurationAA0d7LatencyF0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/latencyConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK11TypedSourceC20latencyConfigurationAA0d7LatencyF0VSgvp">latencyConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Latency configuration for livestreams. Ignored for VOD playback.</p>
+
+<p>Setting this to a non-nil value will enable the <code><a href="../Protocols/LatencyManager.html">LatencyManager</a></code> on <code><a href="../Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C7latencyAA14LatencyManager_pvp">latency</a></code> when it selects this source.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">latencyConfiguration</span><span class="p">:</span> <span class="kt"><a href="../Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headers4cmcd20latencyConfigurationACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA021ServerSideAdInsertionQ0_pSgSbSgSDyS2SGSgAtA0d7LatencyQ0VSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(src:type:drm:crossOrigin:ssai:hlsDateRange:headers:cmcd:latencyConfiguration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headers4cmcd20latencyConfigurationACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA021ServerSideAdInsertionQ0_pSgSbSgSDyS2SGSgAtA0d7LatencyQ0VSgtcfc">init(src:<wbr>type:<wbr>drm:<wbr>crossOrigin:<wbr>ssai:<wbr>hlsDateRange:<wbr>headers:<wbr>cmcd:<wbr>latencyConfiguration:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1264,7 +1302,7 @@ are wrapped in an object implementing the ServerSideAdInsertionConfiguration pro
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">src</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">drm</span><span class="p">:</span> <span class="kt"><a href="../Protocols/DRMConfiguration.html">DRMConfiguration</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">crossOrigin</span><span class="p">:</span> <span class="kt">CrossOrigin</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">ssai</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ServerSideAdInsertionConfiguration.html">ServerSideAdInsertionConfiguration</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hlsDateRange</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">cmcd</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">src</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">drm</span><span class="p">:</span> <span class="kt"><a href="../Protocols/DRMConfiguration.html">DRMConfiguration</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">crossOrigin</span><span class="p">:</span> <span class="kt">CrossOrigin</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">ssai</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ServerSideAdInsertionConfiguration.html">ServerSideAdInsertionConfiguration</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">hlsDateRange</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">cmcd</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">latencyConfiguration</span><span class="p">:</span> <span class="kt"><a href="../Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1365,6 +1403,18 @@ are wrapped in an object implementing the ServerSideAdInsertionConfiguration pro
                               <td>
                                 <div>
                                   <p>Whether to send Common Media Client Data (CTA-5004) as HTTP request headers, defaults to nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>latencyConfiguration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Latency configuration to use for this source</p>
                                 </div>
                               </td>
                             </tr>
