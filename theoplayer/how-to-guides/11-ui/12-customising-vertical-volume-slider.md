@@ -6,7 +6,7 @@ This article provides information regarding the implementation of a vertical vol
 
 **In other words, this is a first step in a work in progress as it does not yet account for color and aspect customization, as well as for a series of other small details.**
 
-There is currently no ready-made option in THEOplayer for changing the orientation of the volume slider with a simple parameter. However, good results can be achieved with a [custom button]([http://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer](https://www.theoplayer.com/theoplayer-demo-adding-buttons-to-the-ui-with-custom-logic)).
+There is currently no ready-made option in THEOplayer for changing the orientation of the volume slider with a simple parameter. However, good results can be achieved with a [custom button](https://www.theoplayer.com/theoplayer-demo-adding-buttons-to-the-ui-with-custom-logic).
 
 Notes about the current example:
 
