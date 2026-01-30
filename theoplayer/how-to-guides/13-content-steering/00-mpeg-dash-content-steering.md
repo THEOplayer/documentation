@@ -12,7 +12,7 @@ By default, Content Steering in MPEG-DASH is enabled, however, it can be explici
 your `SourceDescription`.
 
 You can also override the `clientRequirement="false"` property in the MPEG-DASH manifest to enable Content Steering for 
-a specific playback session. by explicitly setting it to `true`.
+a specific playback session by explicitly setting it to `true`.
 
 ```javascript
 player.source = {
