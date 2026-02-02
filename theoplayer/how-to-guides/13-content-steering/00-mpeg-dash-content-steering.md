@@ -1,10 +1,14 @@
 # MPEG-DASH Content Steering on web
 
-This article explains how to implement MPEG-DASH Content Steering with THEOplayer Web SDK.
+This guide shows you how to use MPEG-DASH Content Steering in the THEOplayer Web SDK.
 
-MPEG-DASH Content Steering allows the player to communicate with a steering server to receive a personalized priority list 
-for all the available CDN endpoints. This helps optimize the streaming experience by directing the player to use the 
-best possible CDN based on various factors such as network conditions, user location, and server load.
+MPEG-DASH Content Steering is a server-driven mechanism that allows content providers to dynamically control CDN selection
+across large groups of clients. While players can independently respond to local network conditions and switch between CDNs,
+Content Steering enables centralized decision-making at scale. By communicating with a steering server, the player receives
+a prioritized list of CDN endpoints that reflects real-time information about CDN performance, capacity, and cost across
+your entire user base. This allows you to proactively route traffic away from overloaded or underperforming CDNs,
+balance load across multiple providers, or implement cost optimization strategies—all without requiring player-side logic
+or client updates.
 
 ## Enabling/Disabling Content Steering
 
