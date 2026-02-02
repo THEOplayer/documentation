@@ -1,4 +1,4 @@
-# MPEG-DASH Content Steering on web
+# MPEG-DASH Content Steering
 
 This guide shows you how to use MPEG-DASH Content Steering in the THEOplayer Web SDK.
 
@@ -32,7 +32,7 @@ player.source = {
 ## Events for Content Steering
 
 THEOplayer provides events to monitor the Content Steering process. For more details, check the
-[API documentation](pathname:///theoplayer/v10/api-reference/web/#ContentSteeringStartEvent-1).
+[API documentation](pathname:///theoplayer/v10/api-reference/web/#ContentSteeringStartEvent).
 
 ```javascript
 player.addEventListener('contentsteeringstart', console.log);
