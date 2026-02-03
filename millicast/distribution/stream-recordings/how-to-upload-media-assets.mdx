@@ -1,0 +1,60 @@
+---
+title: How-to Upload Media Assets
+---
+
+You can upload your own media assets to OptiView storage to be played back via the OptiView CDN.
+
+## Generate Upload Credentials
+Use the [Generate Upload Credentials](/millicast/api/media-assets-get-upload-credentials.api.mdx) endpoint to generate AWS credentials and an S3 upload location.
+These credentials will last for 1 hour. Please upload and register media assets within the hour.
+
+This is an example response.
+```
+{
+  "status": "success",
+  "data": {
+    "path": "string",
+    "bucketName": "string",
+    "objectPrefix": "string",
+    "accessKeyId": "string",
+    "secretAccessKey": "string",
+    "sessionToken": "string",
+    "expiration": "2026-01-12T01:27:13Z"
+  }
+}
+```
+
+## Upload to AWS
+Using the response fields from the previous API call, upload the media asset files to the specified S3 location.
+```
+$ AWS_ACCESS_KEY_ID=<from-above> AWS_SECRET_ACCESS_KEY=<from-above> AWS_SESSION_TOKEN=<from-above> \ aws s3 cp <filepath> s3://<bucketName>/<objectPrefix>
+```
+
+## Register Media Asset
+After completing upload make a [registration call](/millicast/api/media-assets-register-media-asset.api.mdx).
+
+The `mediaAssetId` returned in the response body can be used for inspecting, retrieving and deleting the media asset.
+
+This endpoint does not give immediate feedback on whether the media asset has been successfully created. Please use the [Read Media Asset](/millicast/api/media-assets-read-media-asset.api.mdx) endpoint to inspect the outcome of registration and retrieve the download url.
+
+### Example Usage 1 - Upload A Single File Asset
+If your asset has a single file such as an mp4 file, append the filename to the `objectPrefix` obtained from the [Generate Upload Credentials](/millicast/api/media-assets-get-upload-credentials.api.mdx) response. 
+The [Register Media Asset](/millicast/api/media-assets-register-media-asset.api.mdx) request would look like
+```
+{
+  "objectPrefix": <object-prefix-from-above>/user-file.mp4
+}
+```
+Assuming on inspection our service finds an object key that is an exact match of `objectPrefix`, OptiView will obtain and serve that single file.
+If there are any additional files uploaded to `s3://<bucketName>/<objectPrefix>/*` they will be ignored.
+
+### Example Usage 2 - Upload A Multi File Asset
+If your asset has multiple files such as an HLS asset, the [Register Media Asset](/millicast/api/media-assets-register-media-asset.api.mdx) request should look like this.
+```
+{
+  "objectPrefix": <object-prefix-from-above>,
+  "entrypoint": "main.m3u8"
+}
+```
+Assuming on inspection our service *does not* find an object key which exactly matches the `objectPrefix`, OptiView will obtain and serve all the contents uploaded to `s3://<bucketName>/<objectPrefix>/*`.
+Since the `entrypoint` is specified, the discovery url for downloading the media asset via the CDN will be a link to a copy of `main.m3u8`.
