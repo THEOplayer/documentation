@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      docusaurus:
+        patterns:
+          - '@docusaurus*'
+          - 'docusaurus*'
+      production-dependencies:
+        dependency-type: 'production'
+      development-dependencies:
+        dependency-type: 'development'
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: daily
+    groups:
+      submodules:
+        patterns:
+          - '*'
+    open-pull-requests-limit: 1

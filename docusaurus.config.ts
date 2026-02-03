@@ -5,7 +5,7 @@ import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
-import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/lib/types';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/src/types';
 import type { Props as PlatformSidebarNavbarItemProps } from './src/theme/NavbarItem/PlatformSidebarNavbarItem';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import { version as webUiVersion } from './open-video-ui/external/web-ui/package.json';
