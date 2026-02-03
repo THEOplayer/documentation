@@ -51,7 +51,7 @@
     "eslint": "^9.39.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^17.1.0",
+    "globals": "^17.3.0",
     "lodash": "^4.17.23",
     "prettier": "^3.8.1",
     "raw-loader": "^4.0.2",
