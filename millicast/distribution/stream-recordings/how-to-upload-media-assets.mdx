@@ -2,11 +2,17 @@
 title: How-to Upload Media Assets
 ---
 
-You can upload your own media assets to OptiView storage to be played back via the OptiView CDN.
+You can upload your own media assets to OptiView storage to be played back via the OptiView CDN. These are files that are pre-transcoded before upload for distribution and are served over Dolby's CDN and can be a single asset such as an MP4 or a multi-file asset such as an HLS asset that has a series of manifests and media files.
+
+The steps are as follows.
+
+1. Generate Upload Credentials
+1. Upload to Dolby's S3-Compatible Storage
+1. Register Media Asset
 
 ## Generate Upload Credentials
 
-Use the [Generate Upload Credentials](/millicast/api/media-assets-get-upload-credentials.api.mdx) endpoint to generate AWS credentials and an S3 upload location.
+Use the [Generate Upload Credentials](/millicast/api/media-assets-get-upload-credentials.api.mdx) endpoint to generate credentials and an S3 compatible upload location.
 These credentials will last for 1 hour. Please upload and register media assets within the hour.
 
 This is an example response.
@@ -26,9 +32,9 @@ This is an example response.
 }
 ```
 
-## Upload to AWS
+## Upload to Dolby's S3-Compatible Storage
 
-Using the response fields from the previous API call, upload the media asset files to the specified S3 location.
+Using the response fields _from the previous API call_, upload the media asset files to the specified S3 location.
 
 ```
 $ AWS_ACCESS_KEY_ID=<from-above> AWS_SECRET_ACCESS_KEY=<from-above> AWS_SESSION_TOKEN=<from-above> \ aws s3 cp <filepath> s3://<bucketName>/<objectPrefix>
@@ -58,14 +64,15 @@ If there are any additional files uploaded to `s3://<bucketName>/<objectPrefix>/
 
 ### Example Usage 2 - Upload A Multi File Asset
 
-If your asset has multiple files such as an HLS asset, the [Register Media Asset](/millicast/api/media-assets-register-media-asset.api.mdx) request should look like this.
+If your asset has multiple files such as an HLS asset with a main manifest and related manifests/media files, the [Register Media Asset](/millicast/api/media-assets-register-media-asset.api.mdx) request should look like this.
 
 ```
 {
-  "objectPrefix": <object-prefix-from-above>,
+  "objectPrefix": <object-prefix-from-api-response>,
   "entrypoint": "main.m3u8"
 }
 ```
 
-Assuming on inspection our service _does not_ find an object key which exactly matches the `objectPrefix`, OptiView will obtain and serve all the contents uploaded to `s3://<bucketName>/<objectPrefix>/*`.
 Since the `entrypoint` is specified, the discovery url for downloading the media asset via the CDN will be a link to a copy of `main.m3u8`.
+
+Assuming on inspection our service _does not_ find an object key which exactly matches the `objectPrefix`, OptiView will obtain and serve all the contents uploaded to `s3://<bucketName>/<objectPrefix>/*`.

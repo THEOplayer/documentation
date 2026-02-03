@@ -5,10 +5,11 @@ sidebar_position: 7
 
 import DocCardList from '@theme/DocCardList';
 
-With **_Stream Recording_** you can keep a copy of a real-time stream where media can be used for a variety of use cases such as video on demand (VOD) playback, archiving and auditing, event highlights and instant replay, etc. To support this variety of purposes there are options for the type of media assets that you will create from a stream.
+With **_Media Assets_** you can keep a copy of a real-time stream where media can be used for a variety of use cases such as video on demand (VOD) playback, archiving and auditing, event highlights and instant replay, etc. To support this variety of purposes there are options for the type of media assets that you will create from a stream. Here are the different types of media assets on the platform:
 
-- **Recordings** are full-length copies of a stream that will be processed and made available shortly after a broadcast is complete.
-- Live **Clips** are media files from a broadcast stream that can be processed and retrieved immediately while the live stream is still in progress.
+- **[Stream Recordings](/millicast/distribution/stream-recordings/):** Media captured by enabling _recording_ on a token, the entire stream from first to last frame is stored in the cloud as a single-layer "mezzanine" recording, usually stored in an MP4 container
+- **[Live-to-VOD clips](/millicast/distribution/stream-recordings/live-clipping/):** These assets are "clipped" out of a live streaming workflow as a servable HLS manifest that can be used for distribution and replays of the stream. These are referred to as "live clips" or "live clipping"
+- **[Media Uploads](<(/millicast/distribution/stream-recordings/how-to-upload-media-assets/)>):** Files that are pre-transcoded before upload for distribution and are served over Dolby's CDN
 
 You can work with recordings and clips either from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) or using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) REST API.
 
