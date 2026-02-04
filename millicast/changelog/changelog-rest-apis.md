@@ -2,6 +2,12 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-02-06 | REST APIs
+
+### Features
+
+- Added live-to-VOD functionality and updated documentation to describe the wide array of recording capabilities and use-cases. See [Stream Recordings](/millicast/distribution/stream-recordings/) for more info
+
 ## 2026-01-23 | REST APIs
 
 ### Fixes
