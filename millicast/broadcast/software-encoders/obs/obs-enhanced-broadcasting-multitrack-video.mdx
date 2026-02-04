@@ -4,14 +4,14 @@ slug: /software-encoders/obs/enhanced-broadcasting-multitrack-video
 ---
 
 :::caution Beta: This feature is in the works
-This feature is still under development and may be updated, changed, or deprecated without notice. We welcome your feedback. For the moment, "Additonal Canvases" is ignored.
+This feature is still under development and may be updated, changed, or deprecated without notice. We welcome your feedback. For the moment, "Additional Canvases" in OBS is ignored.
 
 See [System Requirements](#minimum-system-requirements) below for details.
 :::
 
 # Enhanced Broadcasting in OBS
 
-Enhanced Broadcasting in OBS enables multitrack video support creating multiple "renditions" or qualities that OBS sends to Dolby OptiView Real-time so that the end-viewer can choose which quality to watch or let it happen automatically. This is called Adaptive Bitrate (ABR).
+Enhanced Broadcasting in OBS enables multitrack video support creating multiple "renditions" or qualities that OBS sends to Dolby OptiView Real-time so that the end-viewer can choose which quality to watch or let the service choose automatically. This is called Adaptive Bitrate (ABR).
 
 import AbrImg from '../../../assets/img/842826436d56486b6a0a14b06bbcda1958658d3cfa5d010236934915-abr.png';
 
@@ -41,6 +41,26 @@ import ObsMultiTrackVideoManualLayers from '../../../assets/img/software-encoder
 
 A user can uncheck the _Auto_ box and choose the number of ABR tracks to send. Based on the resolution, bitrate, and number of layers requested, the streaming service will configure the ladder.
 
+## Server-side Stream Configuration
+
+Most powerful of all, it is possible to define the renditions in the ABR ladder to match your needs for when you have strict delivery requirements. This is very helpful when you want to simplify the lives of your stream operators or if you work with distributed streamers who don't want to have to configure their streaming settings at all.
+
+Let's say that you want to deliver low-bitrate 720p and 360p only at specific birates. You can work with Dolby to define that exact profile which will automatically configure any instance of OBS that uses your Dolby publishing token.
+
+Here's how it works:
+
+1. Contact Dolby support or your account team to define and test your desired profile
+1. The profile will be created in the system and will be accessible to your account
+1. You can associate the enhanced broadcasting profile with a specific publishing token via the API or the Dashboard
+1. Once you have assigned a profile to your token, you operator only needs to insert the token from the RTMP portion of the dashboard and need to check the **Enable Enhanced Broadcasting** in OBS.
+1. Once the OBS instance calls out to the Dolby service, it will receive instructions on how to configure for the profile you associated with the publishing token.
+
+import ObsMultiTrackVideoRedBox from '../../../assets/img/software-encoders/obs-millicast-ertmp-redbox.jpg';
+
+<div class="center-container">
+  <img src={ObsMultiTrackVideo} width="600" />
+</div>
+
 ## Minimum System Requirements
 
 While we work to increase support for other systems, these are the minimum requirements:
@@ -55,3 +75,5 @@ While we work to increase support for other systems, these are the minimum requi
   - OBS Studio version `31.1` (or newer)
 - **Network**
   - We recommend a minimum sustained upload bandwidth availability of 12 mbps and a contribution bitrate between 6000 and 2000 Kbps depending on the number of layers, content, and use-case
+
+_Note: If you are trying this feature and it is not working with your encoder, please contact Dolby Support or your account team so we can work to enable your hardware._
