@@ -51,14 +51,14 @@ Here's how it works:
 
 1. Contact Dolby support or your account team to define and test your desired profile
 1. The profile will be created in the system and will be accessible to your account
-1. You can associate the enhanced broadcasting profile with a specific publishing token via the API or the Dashboard
+1. You can associate the enhanced broadcasting profile with a specific publishing token via the API (_Dashboard control coming soon_)
 1. Once you have assigned a profile to your token, you operator only needs to insert the token from the RTMP portion of the dashboard and need to check the **Enable Enhanced Broadcasting** in OBS.
 1. Once the OBS instance calls out to the Dolby service, it will receive instructions on how to configure for the profile you associated with the publishing token.
 
 import ObsMultiTrackVideoRedBox from '../../../assets/img/software-encoders/obs-millicast-ertmp-redbox.jpg';
 
 <div class="center-container">
-  <img src={ObsMultiTrackVideo} width="600" />
+  <img src={ObsMultiTrackVideoRedBox} width="600" />
 </div>
 
 There are 3 different profiles you can choose from out of the box but please contact us so we can define one that meets your requirements.
@@ -67,7 +67,7 @@ The available server-side profiles are:
 
 ### 1080p profile
 
-Layers:
+For the profile `1080p`, the pre-configured layers are:
 
 - 1080
   - resolution: `1920x1080`
@@ -88,6 +88,8 @@ Layers:
 
 Layers:
 
+For the profile `720p`, the pre-configured layers are:
+
 - 720
   - resolution: `1280x720`
   - bitrate: `2500 kbps`
@@ -102,7 +104,7 @@ Layers:
 
 ### 720p_low_bitrate profile
 
-Layers:
+For the profile `720p_low_bitrate`, the pre-configured layers are:
 
 - 720
   - resolution: `1280x720`
