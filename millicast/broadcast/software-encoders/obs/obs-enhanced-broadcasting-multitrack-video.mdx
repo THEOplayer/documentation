@@ -43,6 +43,8 @@ A user can uncheck the _Auto_ box and choose the number of ABR tracks to send. B
 
 ## Server-side Stream Configuration
 
+<!-- internal docs: https://confluence.dolby.net/kb/spaces/DLBCLS/pages/821054540/Client+Encoder+Profiles  -->
+
 Most powerful of all, it is possible to define the renditions in the ABR ladder to match your needs for when you have strict delivery requirements. This is very helpful when you want to simplify the lives of your stream operators or if you work with distributed streamers who don't want to have to configure their streaming settings at all.
 
 Let's say that you want to deliver low-bitrate 720p and 360p only at specific birates. You can work with Dolby to define that exact profile which will automatically configure any instance of OBS that uses your Dolby publishing token.
@@ -114,6 +116,34 @@ For the profile `720p_low_bitrate`, the pre-configured layers are:
   - bitrate: `500 kbps`
 - audio
   - bitrate: `128kbps`
+
+### Associating a Profile to a Token
+
+In order to use the feature of server-side controlled ABR with Enhanced Broadcasting in OBS, you need to do the following:
+
+1. Choose a profile
+1. Assign the profile to a publishing Token
+
+Here is an example calling the [Encoder Profiles](/millicast/api/encoders/profiles) API to discover the available profiles to your account
+
+`GET /encoders/profiles`
+
+```
+{
+  TODO
+}
+
+```
+
+Here is an example calling the [Publishing Token API](/millicast/api/publish-token-v-2-update-token/) to update an existing publishing token to use a specific profile:
+
+`PUT /publish_token/{tokenId}`
+
+```json
+{
+    "encoderProfileId": null or <encoder_profile_id>
+}
+```
 
 ## Minimum System Requirements
 
