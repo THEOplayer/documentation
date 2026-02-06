@@ -54,7 +54,7 @@ Here's how it works:
 1. Contact Dolby support or your account team to define and test your desired profile
 1. The profile will be created in the system and will be accessible to your account
 1. You can associate the enhanced broadcasting profile with a specific publishing token via the API (_Dashboard control coming soon_)
-1. Once you have assigned a profile to your token, you operator only needs to insert the token from the RTMP portion of the dashboard and need to check the **Enable Enhanced Broadcasting** in OBS.
+1. Once you have assigned a profile to your token, your operator only needs to insert the token from the RTMP portion of the dashboard and need to check the **Enable Enhanced Broadcasting** in OBS.
 1. Once the OBS instance calls out to the Dolby service, it will receive instructions on how to configure for the profile you associated with the publishing token.
 
 import ObsMultiTrackVideoRedBox from '../../../assets/img/software-encoders/obs-millicast-ertmp-redbox.jpg';
@@ -124,13 +124,59 @@ In order to use the feature of server-side controlled ABR with Enhanced Broadcas
 1. Choose a profile
 1. Assign the profile to a publishing Token
 
-Here is an example calling the [Encoder Profiles](/millicast/api/encoders/profiles) API to discover the available profiles to your account
+Here is an example calling the [Encoder Profiles](/millicast/api/encoders/profiles) API to discover the available profiles to your account, you can see the profile `name` and the configuration including the resolution and bitrate.
 
 `GET /encoders/profiles`
 
 ```
 {
-  TODO
+    "status": "success",
+    "data": [
+  {
+      "id": "c4fe11eeeeda4339b80c1cd30eb3f05e",
+      "name": "720p_low_bitrate",
+      "isGlobal": true,
+      "configuration": {
+          "encoderConfigurations": [
+              {
+                  "bitrateInterpolationPoints": [
+                      0,
+                      400,
+                      800,
+                      1200
+                  ],
+                  "width": 1280,
+                  "height": 720,
+                  "settings": {
+                      "bitrate": 1000
+                  }
+              },
+              {
+                  "bitrateInterpolationPoints": [
+                      0,
+                      800,
+                      800,
+                      800
+                  ],
+                  "width": 640,
+                  "height": 360,
+                  "settings": {
+                      "bitrate": 500
+                  }
+              }
+          ],
+          "audioConfigurations": {
+              "live": [
+                  {
+                      "codec": "aac",
+                      "settings": {
+                          "bitrate": 128
+                      }
+                  }
+              ]
+          }
+      }
+  }
 }
 
 ```
