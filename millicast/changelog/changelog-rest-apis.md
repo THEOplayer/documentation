@@ -4,6 +4,12 @@ Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/
 
 ## 2026-01-23 | REST APIs
 
+### Features
+
+- Enhanced Broadcasting with OBS now has been updated to allow customers to select a profile when using the OBS _Enhanced Broadcasting Mode_ with Millicast to select the server-side profile on the Millicast Publishing Token. More details in our [documentation](/millicast/software-encoders/obs/enhanced-broadcasting-multitrack-video/#server-side-stream-configuration)
+
+## 2026-01-23 | REST APIs
+
 ### Fixes
 
 - Update [Advanced Analytics API](/millicast/api/reporting/advanced-analytics-api) with a data retention period of 1 year. This will take effect in 30 days.
