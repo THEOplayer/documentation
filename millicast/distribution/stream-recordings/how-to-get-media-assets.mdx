@@ -2,15 +2,23 @@
 title: How-to Get Media Assets
 ---
 
+Media assets are media recordings that are created one of several ways:
+
+- **[Stream Recordings](/millicast/distribution/stream-recordings/):** Media captured by enabling _recording_ on a token, the entire stream from first to last frame is stored in the cloud as a single-layer "mezzanine" recording, usually stored in an MP4 container
+- **[Live-to-VOD clips](/millicast/distribution/stream-recordings/live-clipping/):** These assets are "clipped" out of a live streaming workflow as a servable HLS manifest that can be used for distribution and replays of the stream. These are referred to as "live clips" or "live clipping". You can also extract a single MP4 mezzanine "clip" appropriate or social sharing or archive
+- **[Media Uploads](<(/millicast/distribution/stream-recordings/how-to-upload-media-assets/)>):** Files that are pre-transcoded before upload for distribution and are served over Dolby's CDN
+
 With [Stream Recordings](/millicast/distribution/stream-recordings/index.mdx) you will want to be able to retrieve and operate on any media assets that are created. You can do this manually using the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) or automate workflows using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) REST endpoints. There are also [Media Webhooks](/millicast/webhooks/media.md) available for building event-driven integrations.
 
-## Recordings in the Dashboard
+_Note: At this time, **Stream Recordings** are currently visible in the dashboard, for **live-to-vod** and **media uploads**, you must use the API to retrieve your assets. Creating live-to-vod assets requires consultation with the Dolby team to enable the workflow._
+
+## Stream Recordings in the Dashboard
 
 You can find recordings by visiting the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
-### Find Recordings by Token
+### Find Stream Recordings by Token
 
-To find recordings for a specific token, open your Publish token from the **Live Broadcast** section and click the **Settings** button to open the management screen. Select the **Recordings tab** from the top of the panel. Each thumbnail is displayed with a reference to your recording. A newly created recording can take a few seconds to several minutes to render, depending on length. Once the recording has been processed, you can view it. You can click on the **More Files** button to see all the files recorded with the respective token.
+To find stream recordings for a specific token, open your Publish token from the **Live Broadcast** section and click the **Settings** button to open the management screen. Select the **Recordings tab** from the top of the panel. Each thumbnail is displayed with a reference to your stream recording. A newly created stream recording can take a few seconds to several minutes to render, depending on length. Once the stream recording has been processed, you can view it. You can click on the **More Files** button to see all the files recorded with the respective token.
 
 import RecTokenRecordings from '../../assets/img/0f4fe76-rec-token-recordings.png';
 
@@ -82,7 +90,7 @@ If you delete a recording or clip it is immediate and permanent. We are unable t
 
 ## Finding Media by API
 
-The [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) API can help you with automating workflows with recordings and clips.
+The [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) API can help you with automating workflows with stream recordings, live-to-vod clips, and media uploads.
 
 import GettingStartedRESTAPI from '../../callouts/_getting_started_rest_apis.md';
 
@@ -146,9 +154,9 @@ If you delete a recording or clip it is immediate and permanent. We are unable t
 
 Using the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) API you can identify the cloud storage location where recordings and clips are stored.
 
-### How-to Retrieve a Recording
+### How-to Retrieve a Media Asset
 
-Recordings will typically be stored on Dolby's servers and made available for retrieval. You'll need to know the `mediaAssetId` of the item you want to download.
+Media Assets are typically be stored on Dolby's servers and made available for retrieval. You'll need to know the `mediaAssetId` of the item you want to download. This includes all media types including stream recordings, live-to-vod clips, and media uploads.
 
 #### Example GET Response
 
@@ -201,10 +209,114 @@ This is an example of a JSON response from the [/media/asset/\{mediaAssetId\}](/
     },
     "download": {
       "downloadUrl": "string",
-      "downloadExpiresOn": "2024-10-01T18:47:26.836Z"
+      "downloadExpiresOn": "2024-10-01T18:47:26.836Z",
+      "url": "string"
     }
   }
 }
 ```
 
-The `downloadUrl` gives you the storage location where a file is available to download using whichever software or libraries are most appropriate for your application needs.
+The `downloadUrl` gives you the storage location where a file is available to download using whichever software or libraries are most appropriate for your application needs. Generally this is a short-lived encrypted link intended for a one-time download.
+
+After your `downloadUrl` expires call the [/media/asset/\{mediaAssetId\}](/millicast/api/media-assets-read-media-asset.api.mdx) endpoint to retrieve a new one.
+
+## Managing Media Security
+
+If you want to construct download URLs without repeated API calls, or want fine-grain control over access to media assets, use the base `url` field and media distributions. These links are usually of the form `https://cdn.optiview.dolby.com/vod/...` and are intended to be served over Dolby's CDN. In order to use this you need to configure a **Media Distribution**.
+
+### Media Distributions
+
+A _media distribution_ is an object defining security settings for a subset of media assets on your account.
+You may have multiple media distributions with different security settings.
+Create and manage media distributions using the [Media Distributions](/millicast/api/media-distributions-create-media-distribution.api.mdx) API.
+
+Each media asset can be associated with one media distribution in one of the following ways:
+
+1. Specify the `mediaDistributionId` when creating a live-to-vod clip using the [Create Media Asset](/millicast/api/media-assets-create-media-asset.api.mdx) endpoint.
+2. Update the `mediaDistributionId` on an existing media asset using the [Update Media Asset](/millicast/api/media-assets-update-media-asset.api.mdx) endpoint.
+3. Set a default media distribution for your account using the [Create Media Distribution](/millicast/api/media-distributions-create-media-distribution.api.mdx) or [Update Media Distribution](/millicast/api/media-distributions-update-media-distribution.api.mdx) endpoint. Any new media assets created on your account will be associated with the default media distribution.
+
+If a media asset is not associated with a media distribution it cannot be viewed using the base `url`. There is no default media distribution created for you. This is because your assets would be unsecured if we made the distribution public and in order to create secure playback (assets protected by a JWT viewer token), you must provide a secret when creating the media distribution.
+
+### Unsecured Playback
+
+An unsecured media distribution is one with no security keys. Create an unsecured media distribution using the following curl command.
+
+```curl
+curl --request POST \
+  --url https://api.millicast.com/api/v3/media/distributions \
+  --header 'Authorization: Bearer abc123' \
+  --data '
+{
+  "name": "myUnsecuredDistribution"
+}
+'
+```
+
+To view a media asset associated with this distribution, simply use the `url` field from the [Read Media Asset](/millicast/api/media-assets-read-media-asset.api.mdx) response. You will see that the asset `url` is publicly readable by anyone with the link.
+
+### Secured Playback
+
+If you want to secure your media assets so that a signed JWT is required to view them, create a secured media distribution with your secret key.
+
+```curl
+curl --request POST \
+  --url https://api.millicast.com/api/v3/media/distributions \
+  --header 'Authorization: Bearer abc123' \
+  --data '
+{
+  "name": "mySecuredDistribution",
+  "security": {
+    "keys": [
+      {
+        "name": "mySecurityKey",
+        "key": "abcdefghijklmnopqrstuvwxyz1234567890"
+      }
+    ]
+  }
+}
+'
+```
+
+Retrieve the `id` of your security key from the response. Keep a record of your secret key since you will not be able to retrieve it again via the OptiView APIs.
+
+Any media assets associated with a media distribution with a security key cannot be viewed without a valid JWT.
+
+Create a JWT with a payload including the `id` of your media distribution security key as `mediaKeyId`, an expiry time and optionally a mediaAssetId. Use your secret key to sign the JWT.
+Below is an example JWT payload.
+
+```
+{
+  "mediaKeyId": "4d2ec682-12aa-4d20-b7d2-ffcf1825f735",
+  "mediaAssetId": "718f44d9319044fa908a5c6e6f70e26d"
+  "exp": 1770330326
+}
+```
+
+You may omit the `mediaAssetId` if you wish to create a token that is valid for all media assets associated with this media distribution.
+
+Retrieve the base download `url` from the [Read Media Asset](/millicast/api/media-assets-read-media-asset.api.mdx) response.
+Append the JWT as a `token` query parameter. The resulting url will look like
+
+```
+https://cdn.optiview.dolby.com/vod/{organisationId}/{mediaAssetId}/{filename}.{fileExtension}?token={jwt}
+```
+
+You may add a second security key to a media distribution for the purpose of key rotation. Either key can be used to sign your JWTs.
+
+## Predictable Paths
+
+Generally the url to download a media asset looks like
+
+```
+https://cdn.optiview.dolby.com/vod/{organisationId}/{mediaAssetId}/{filename}.{fileExtension}
+```
+
+When creating or uploading a media asset you may provide a `customPath` that will replace the `mediaAssetId` in the download path.
+The resulting url will look like
+
+```
+https://cdn.optiview.dolby.com/vod/{organisationId}/{customPath}/{filename}.{fileExtension}
+```
+
+Using custom paths enables prediction of the download url path without reading the `mediaAssetId` from the API response. This is commonly used in order to give 3rd parties predicable access to regular recordings without having them integrate with an API. In this case the `customPath` might be a date or `eventName-date`.
