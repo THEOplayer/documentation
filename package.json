@@ -37,7 +37,7 @@
     "prism-react-renderer": "^2.4.1",
     "prismjs": "^1.30.0",
     "react": "^19.2.4",
-    "react-aria-components": "^1.14.0",
+    "react-aria-components": "^1.15.1",
     "react-dom": "^19.2.4",
     "schema-dts": "^1.1.5",
     "url": "^0.11.4"
