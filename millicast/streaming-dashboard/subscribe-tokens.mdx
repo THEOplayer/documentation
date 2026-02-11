@@ -143,7 +143,8 @@ Self-signing your Subscribe token allows you to:
    - `tokenType`: Assign the string `"Subscribe"` to indicate that it is a Subscribe token
    - `allowedOrigins` (optional): Origins that allow the stream to be viewed from
    - `allowedIpAddresses` (optional): IP ranges that allow the stream to be viewed from
-   - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
+   - `tracking` (optional): An object to contain viewer tracking fields
+     - `trackingId` (optional): A group ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.  _Note: This is intended for tracking groups of viewers and should **NOT** be unique per-viewer.  If you want to track individual viewers, see `customViewerData`_
    - `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
    - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/distribution/syndication). Using this parameter requires contacting sales.
 3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
