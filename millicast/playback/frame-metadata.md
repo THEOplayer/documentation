@@ -30,7 +30,7 @@ import MetadataFeature from '../assets/img/metadata-feature.png';
 
 Metadata is encoded into the frame at broadcast and then extracted by the Client SDK at playback time.
 
-- There is a **timecode** that will be supplied by the broadcaster and carried through the platform and available at playback.
+- There is a **timecode** that will be supplied by the broadcaster and carried through the platform and available at playback. (See [Timecode Metadata](#timecode-metadata))
 - Application supplied metadata is incorporated as **unregistered** SEI messages. These are received as `Byte` arrays if unable to be converted into JSON objects.
 - It is recommended to limit the amount of data that is packaged with the frame as this increases the size of each frame for distribution (impacting latency and bandwidth costs).
 - There may be marginal overhead in encoding and decoding messages, so you must enable **metadata** when establishing a connection if you want to send or receive.
@@ -41,13 +41,66 @@ With WebRTC and a UDP connection, latency is prioritized over reliable delivery 
 
 When receiving metadata there is a `uuid` attribute that can be used to uniquely identify the source of the metadata in cases of multiple publishing sources. The table includes a few examples:
 
-| UUID                                 | Description                                          |
-| :----------------------------------- | :--------------------------------------------------- |
-| 9a21f3be-31f0-4b78-b0be-c7f7dbb97250 | SEI metadata inserted from AMF OnFi message feeds.   |
-| d40e38ea-d419-4c62-94ed-20ac37b4e4fa | SEI metadata inserted by the Web SDK.                |
-| dc45e9bd-e6d9-48b7-962c-d820d923eeef | SEI metadata inserted by libavc such as with ffmpeg. |
+| UUID                                 | Description                                        |
+| :----------------------------------- | :------------------------------------------------- |
+| 9a21f3be-31f0-4b78-b0be-c7f7dbb97250 | SEI metadata inserted from AMF OnFi message feeds. |
+| d40e38ea-d419-4c62-94ed-20ac37b4e4fa | SEI metadata inserted by the Web SDK.              |
 
 For **PIC_TIMING** SEI messages that are inserted by various encoders, there will not be a UUID assigned and included with the frame.
+
+### Timecode Metadata
+
+There are several ways to send and recieve timecode into the service which can be extracted in the player.
+
+1. Embed pic_timing (part of SEI metadata) in the `h264` video stream (this is automatically inserted with some encoders)
+1. Send RTMP with onFi (part of OnMetaData in AMF metadata). The service will read this value from the RTMP and insert it into the SEI metadata of the timecode (See [Metadata Source Identification](#metadata-source-identification))
+
+Here is an example of a frame's metadata that has pic_timing from the SEI in the `metadata` callback:
+
+```json
+{
+  "seiPicTimingTimeCodeArray": [
+    {
+      "n_frames": 20,
+      "seconds_value": 57,
+      "minutes_value": 51,
+      "hours_value": 19,
+      "time_offset": 0
+    }
+  ],
+  "mid": "0",
+  "track": {}
+}
+```
+
+If you have metadata from onFi, here is what that metadata will look like (note the UUID indicating the source from onFi):
+
+```json
+{
+  "uuid": "9a21f3be-31f0-4b78-b0be-c7f7dbb97250",
+  "timecode": "2026-02-11T19:49:16.299Z",
+  "seiPicTimingTimeCodeArray": [
+    {
+      "n_frames": 9,
+      "seconds_value": 16,
+      "minutes_value": 49,
+      "hours_value": 19,
+      "time_offset": 0
+    }
+  ],
+  "mid": "0",
+  "track": {}
+}
+```
+
+Here is an example of consuming this metadata in JavaScript:
+
+```javascript
+millicastView.on('metadata', (metadata) => {
+  updateMetadataDisplay(metadata);
+  processTimecodeDisplay(metadata);
+});
+```
 
 ## Web SDK
 
