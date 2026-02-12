@@ -53,7 +53,7 @@ For **PIC_TIMING** SEI messages that are inserted by various encoders, there wil
 There are several ways to send and receive timecode into the service which can be extracted in the player.
 
 1. Embed pic_timing (part of SEI metadata) in the `h264` video stream (this is automatically inserted with some encoders)
-1. Send RTMP with onFi (part of OnMetaData in AMF metadata). The service will read this value from the RTMP and insert it into the SEI metadata of the timecode (See [Metadata Source Identification](#metadata-source-identification))
+1. Send RTMP with onFi (part of OnMetaData in AMF metadata). The service will read this value from the RTMP stream and insert it into the SEI metadata of the timecode (See [Metadata Source Identification](#metadata-source-identification))
 
 Here is an example of a frame's metadata that has pic_timing from the SEI in the `metadata` callback:
 
