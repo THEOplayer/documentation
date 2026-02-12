@@ -1,6 +1,5 @@
 $dokka.format:javadoc-v1
 $dokka.linkExtension:html
-$dokka.location:androidx.media3.extractor.mp4/THEOplayerFragmentedMp4Extractor.Flags///PointingToDeclaration/androidx/media3/extractor/mp4/THEOplayerFragmentedMp4Extractor.Flags.html
 $dokka.location:com.theoplayer.android.api.abr/AbrStrategyConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.abr/AbrStrategyMetadata.Builder///PointingToDeclaration/com/theoplayer/android/api/abr/AbrStrategyMetadata.Builder.html
 $dokka.location:com.theoplayer.android.api.ads.theoads.event/TheoAdsEventTypes.Identifiers///PointingToDeclaration/com/theoplayer/android/api/ads/theoads/event/TheoAdsEventTypes.Identifiers.html
@@ -65,7 +64,6 @@ $dokka.location:com.theoplayer.android.api.theolive/THEOLiveConfig.Builder///Poi
 $dokka.location:com.theoplayer.android.api.util/Logger.Companion///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Companion.html
 $dokka.location:com.theoplayer.android.api.util/Logger.Listener///PointingToDeclaration/com/theoplayer/android/api/util/Logger.Listener.html
 $dokka.location:com.theoplayer.android.api/THEOplayerConfig.Builder///PointingToDeclaration/com/theoplayer/android/api/THEOplayerConfig.Builder.html
-androidx.media3.extractor.mp4
 com.theoplayer.android.api
 com.theoplayer.android.api.abr
 com.theoplayer.android.api.ads
