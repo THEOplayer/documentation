@@ -353,6 +353,7 @@ There are several player events being emitted.
 - `playing`: Fired when playback is ready to start after having been paused or delayed due to lack of media data, the extra data emitted is the currentTime
 - `endpointloaded`: Fired when the player has loaded the data for a THEOlive source and is ready to begin loading the stream
 - `distributionloadstart`: Fired when the player begins to load the data for a THEOlive source
+- `distributionloaded`: Fired when a THEOlive distribution has been successfully loaded.
 - `distributionoffline`: Fired when a THEOlive stream is not available for playback
 - `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
 - `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime

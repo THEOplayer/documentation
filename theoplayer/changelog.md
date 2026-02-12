@@ -5,6 +5,61 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.10.0 (2026/02/11)
+
+### General
+
+#### ✨ Features
+
+- Added the `distributionloaded` event to the `player.theolive` API.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where DRM-enabled HLS streams could error on rendition switches due to missing keys.
+- Fixed an issue where quality changes during HLS playback could cause an error on low-end devices.
+- Fixed an issue where an HESP source with a relative manifest URL could not be played.
+- Fixed an issue on Safari where sometimes the `ended` event would not be fired when the player reaches the end of a stream.
+- Fixed an issue where multiple subtitle cues within a segment would not display correctly.
+- Fixed an issue where an HLS live stream would not start playback after a pre-roll ad on iOS Safari.
+- Fixed an issue where the player would dispatch the `pause` and `ended` event in an incorrect order when seeking to the end of a stream.
+- Fixed an issue where a track's `activeQuality` could be `undefined` on a playing event with OptiView Live streams.
+- Fixed an issue where an OptiView Ads stream with disabled VPAID ads could cause the player to stop serving ads.
+- Fixed an issue where playing ads using Google IMA and OptiView Ads together could cause the Google IMA ad to not play.
+- Fixed an issue where an incorrect waiting event could be dispatched during an ad break to ad break transition on an OptiView Ads stream.
+
+### Android
+
+#### ✨ Features
+
+- Added `NetworkConfiguration` support for retries for OptiView Real-time streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where the bandwidth caching parameter was ignored when caching DRM-protected streams.
+- Fixed an issue during offline playback where playing a not fully downloaded content-protected (DRM) stream could cause a crash.  
+- Fixed an issue where a stall during playback on Chromecast for OptiView Live streams was not handled correctly.
+
+### iOS
+
+#### ✨ Features
+
+- Made the `contentProtection` property public on the `EndpointAPI` protocol.
+
+#### ⚡ Improvements
+
+- Fixed an issue where recovery from network errors while playing and OptiView Live stream could take longer than expected due to platform limitations.
+
+#### 🐛 Issues
+
+- Fixed an issue where using `player.ads.schedule(adDescription:)` API did not trigger an ad playback.
+- Fixed an issue where the recovery logic during playback of OptiView Live streams could check incorrect endpoints.
+- Fixed an issue where playback was stuck when receiving an empty VAST for OptiView Ads.
+- Fixed a bug that reset the `autoplay` flag whenever an integration was added to the player.
+- Fixed an issue where OptiView Ads with VAST would not play in picture-in-picture mode.
+- Fixed an issue where track selection was not respected during Chromecast.
+
 ## 🚀 10.9.0 (2026/01/29)
 
 ### Web
