@@ -1,4 +1,4 @@
-# Removing context menu/'Powered by THEOplayer v2...'
+# Removing context menu 'Powered by THEOplayer...'
 
 The context menu can be removed while building your player by disabling the "contextmenu" feature or by adding a CSS rule on your page.
 

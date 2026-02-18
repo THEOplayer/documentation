@@ -55,6 +55,7 @@ For additional control you can specify to the player what estimated bandwidth va
 player.abr.strategy = {
   type: 'bandwidth',
   metadata: {
+    // highlight-next-line
     bitrate: 1200000,
   },
 };
@@ -74,10 +75,12 @@ player.source = {
   sources: {
     type: 'millicast',
     /* ... */
+    // highlight-start
     connectOptions: {
       disableAudio: true,
       /* ... */
     },
+    // highlight-end
   },
 };
 ```

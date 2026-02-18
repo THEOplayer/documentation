@@ -9,6 +9,7 @@ In order for the Airplay title text to be changed, you will need to add a Metada
 ```swift
  public static var bigBuckBunny : SourceDescription {
     let typedSource = TypedSource(src: bigBuckBunnyURL, type: StreamType.hls)
-    return SourceDescription(source : typedSource, metadata: MetadataDescription(metadataKeys: nil, title: "A title"))
+    let metadataDescription = MetadataDescription(metadataKeys: nil, title: "A title")
+    return SourceDescription(source : typedSource, metadata: metadataDescription)
 }
 ```

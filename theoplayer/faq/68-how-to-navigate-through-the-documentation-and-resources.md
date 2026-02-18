@@ -14,7 +14,7 @@ THEOplayer offers documentation and resources through a number of channels.
   - Sample connectors to integration analytics (e.g. [Conviva](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)) and [DRM connectors](https://github.com/THEOplayer/samples-drm-integration)
   - Sample integrations for development frameworks (e.g. [Next.js with TypeScript and NPM](https://github.com/THEOplayer/samples-nextjs/tree/master/typescript-npm))
 - Web demos at https://www.theoplayer.com/demo-zone
-- White papers, webinars, blog posts and more at https://www.theoplayer.com/guides
+- White papers, webinars, blog posts and more at https://optiview.dolby.com/resources/blog/
 
 Customers manage their THEOplayer SDKs through the THEOplayer Developer Portal at https://portal.theoplayer.com.
 You can also use this portal to view your impressions or to acquire (or manage) a support plan.
