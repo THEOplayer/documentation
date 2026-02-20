@@ -4526,8 +4526,8 @@ THEOplayer 6.0 is **backwards compatible for most features but includes some bre
 
 - Added `source.abr.restrictToPlayerSize`, to control whether the ABR algorithm should only select qualities whose resolution fits within the player's size.
 - Added support for the `PRECISE` attribute in an HLS `#EXT-X-START` tag. This removes the limitation from THEOplayer 4.7.0, so a missing `PRECISE` attribute is now treated as `PRECISE=NO` to conform with the HLS specification.
-- Filtered out ac-3 audio on Tizen and WebOS by default as most devices fail playout and thecodec support check is not usable.
-- Added support for setting a live offseton streams for multiview.
+- Filtered out ac-3 audio on Tizen and WebOS by default as most devices fail playout and the codec support check is not usable.
+- Added support for setting a live offset on streams for multiview.
 
 #### ⚡ Improvements
 
@@ -4963,7 +4963,7 @@ THEOplayer 5.0 is **backwards compatible for most features but includes some bre
 
 - **Customizable UI modules**: No need to build a UI yourself - save time and money by starting from the open source THEOplayer UI for [Web](https://github.com/THEOplayer/web-ui), [Android](https://github.com/THEOplayer/android-ui) and [React Native](https://github.com/THEOplayer/react-native-theoplayer), and tailor it for your use case. Keep an eye open for the new iOS UI next quarter!
 
-- **WebXR support**: We’ve added WebXR support for browseto enhance the ARAR and VR experiences on Web. [Get started now!](https://docs.theoplayer.com/getting-started/01-sdks/01-web/10-how-to-use-vr-using-webxr.md)
+- **WebXR support**: We’ve added WebXR support for browser to enhance the AR and VR experiences on Web. [Get started now!](https://docs.theoplayer.com/getting-started/01-sdks/01-web/10-how-to-use-vr-using-webxr.md)
 
 - **React Native SDK 2.0**: We’ve further expanded our React Native support for Web, Android and iOS-based platforms, through bridging items such as casting, Picture-in-Picture, background audio, DRM connectors and analytics connectors. Check our [GitHub](https://github.com/THEOplayer/react-native-theoplayer) and the [react-native-theoplayer v2 migration guide](https://github.com/THEOplayer/react-native-theoplayer/blob/master/doc/migrating_v2.md) for more information.
 

@@ -26,7 +26,7 @@ If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-so
 To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher.
 
 :::info Not familiar with our JavaScript SDK?
-Audio Multiplexing is a compelx feature made available through our [Client SDKs](/millicast/playback/players-sdks/index.mdx).
+Audio Multiplexing is a complex feature made available through our [Client SDKs](/millicast/playback/players-sdks/index.mdx).
 :::
 
 Once you're streaming multiple audio sources, the next step is to set up the [Viewer](/millicast/playback/players-sdks/web/sdk/index.mdx#viewing-a-stream) so that the incoming audio sources can be correctly multiplexed. When connecting to the Viewer, there are a [number of parameters available in the SDK](https://millicast.github.io/millicast-sdk/View.html#connect) you can adjust depending on your workflow. Some parameters of note for audio multiplexing include:
