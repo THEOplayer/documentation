@@ -4,7 +4,7 @@ This article provides information on how developers can add custom buttons to TH
 
 THEOplayer's default UI is based on VideoJS. A WebView is used on the legacy Android and iOS SDKs (4.12.x). HTML, CSS and JavaScript is used to insert a button.
 
-When using the legacy Android or iOS SDKs (4.12.x), THEOplayer exposes a system to include JavaScript and CSS files (as described at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)). This system allows developers to re-use their code-logic.
+When using the legacy Android or iOS SDKs (4.12.x), THEOplayer exposes a system to include JavaScript and CSS files (as described at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)). This system allows developers to reuse their code-logic.
 
 ## Code example
 

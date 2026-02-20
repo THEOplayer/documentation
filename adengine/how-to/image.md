@@ -59,7 +59,7 @@ GET https://api.galaxy.dolbyrasp.com/image?url=https://my_bucket/my_folder/my_fi
 
 ### Using Credentials
 
-Typically, cloud content is not publicly accessable. If the provided `url` is an encrypted link, remember to use `encodeURI()` to encode the URL inside the GET call. If you have registered cloud credentials with the Dolby OptiView Engine, you can reference those credentials in the call.
+Typically, cloud content is not publicly accessible. If the provided `url` is an encrypted link, remember to use `encodeURI()` to encode the URL inside the GET call. If you have registered cloud credentials with the Dolby OptiView Engine, you can reference those credentials in the call.
 
 ```
 GET https://api.galaxy.dolbyrasp.com/image?url=s3://my_bucket/my_folder/my_file.mxf&format=png&height=280&credentials_key=my_s3_creds

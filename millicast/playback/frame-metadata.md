@@ -340,7 +340,7 @@ const transformer = new TransformStream({
     const frame_data = new Uint8Array(frame.data);
     const total_length = frame_data.length;
 
-    // Shift to left for endianess to retrieve the metadata size from the last
+    // Shift to left for endianness to retrieve the metadata size from the last
     // 4 bytes of the buffer
     let shift = 3;
     const size = frame_data.slice(total_length - 4).reduce((acc, v) => acc + (v << shift--), 0);
