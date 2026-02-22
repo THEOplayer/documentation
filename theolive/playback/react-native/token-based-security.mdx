@@ -136,7 +136,7 @@ function registerServiceWorker() {
     });
 };
 
-// Initialise the service worker some time early in the processs.
+// Initialise the service worker some time early in the process.
 if (!(window.MediaSource || window.ManagedMediaSource)) {
   registerServiceWorker();
 }

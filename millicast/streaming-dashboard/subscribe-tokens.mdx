@@ -103,8 +103,8 @@ Of note in the manage screen is the **string of the Subscribe token itself**. Th
 https://viewer.millicast.com?streamId=[Account ID]/[Stream Name]&token=[Subscribe Token]
 ```
 
-:::caution Unsecure URL
-The above example exposes the subscribe token in the URL. To prevent URL or token sharing, serve each viewer a unique subscribe token with the [BindsIPAddressOnUsage ](#advanced-settings) parameter enabled to bind the token to the user.
+:::caution Insecure URL
+The above example exposes the subscribe token in the URL. To prevent URL or token sharing, serve each viewer a unique subscribe token with the [BindsIPAddressOnUsage](#advanced-settings) parameter enabled to bind the token to the user.
 :::
 
 Depending on the scale of your production, it may not be secure or feasible to create tokens via the dashboard. Instead, you can create tokens via the [Token API](/millicast/streaming-dashboard/token-api.mdx), or, for true scalability, [you can self-sign tokens](#self-signing-subscribe-tokens).

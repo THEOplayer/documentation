@@ -79,7 +79,7 @@ toc_max_heading_level: 2
 - Fixed an issue where a WideVine L1 protected DASH stream would occasionally fail to play on certain Android FireTV models (AFTSS & AFTSSS).
 - Fixed an issue where an `#EXT-X-KEY` with a base64 `data:` URI was sometimes parsed incorrectly from the HLS playlist.
 - Fixed an issue where playback of subsequent OptiView Live sources would cause incorrect endpoints to be selected.
-- Fixed an isse where MPEG-DASH content steering was sometimes not switching to a different `serviceLocation` when segment downloads failed.
+- Fixed an issue where MPEG-DASH content steering was sometimes not switching to a different `serviceLocation` when segment downloads failed.
 - Fixed an issue where a PS4 WebMAF app could freeze upon requesting a media segment.
 - Fixed an issue where the timecode text track would not be present on HESP streams that contain SEI timecodes.
 - Fixed an issue in MPEG-DASH Content Steering where the `Retry-After` header was not respected when the server returned status code `429`.
@@ -2768,7 +2768,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 #### 🐛 Issues
 
-- Fixed an audio glitch that occured when transitioning to background audio playback.
+- Fixed an audio glitch that occurred when transitioning to background audio playback.
 - Fixed an issue on Android where the player would sometimes crash when setting a new source after play-out of the old source had already started.
 
 ## 🚀 8.2.1 (2024/10/14)
@@ -2970,7 +2970,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 #### 💥 Breaking Changes
 
-- Raising the tvOS mimimum supported version of our tvOS SDK to 13.0 for consistency with iOS version.
+- Raising the tvOS minimum supported version of our tvOS SDK to 13.0 for consistency with iOS version.
 
 #### 👎 Deprecations
 
@@ -3734,7 +3734,7 @@ THEOplayer 7.0 is **backwards compatible for most features but includes some bre
 
 #### 🐛 Issues
 
-- Fixed an issue where VMAPs would not be scheduled in the Google IMA intergration if `player.currentTime` was set before initial playback.
+- Fixed an issue where VMAPs would not be scheduled in the Google IMA integration if `player.currentTime` was set before initial playback.
 - Fixed an issue where the browser tab could hang when removing the player from the DOM without calling `player.destroy()`, while the player is rendering WebVTT subtitles.
 - Fixed a CSS issue where the control bar could sometimes have a very small vertical overflow, which could lead to unwanted scrollbars when the player is embedded in an `<iframe>`.
 - Fixed an issue where very old browsers could not play using MSE.
@@ -4526,7 +4526,7 @@ THEOplayer 6.0 is **backwards compatible for most features but includes some bre
 
 - Added `source.abr.restrictToPlayerSize`, to control whether the ABR algorithm should only select qualities whose resolution fits within the player's size.
 - Added support for the `PRECISE` attribute in an HLS `#EXT-X-START` tag. This removes the limitation from THEOplayer 4.7.0, so a missing `PRECISE` attribute is now treated as `PRECISE=NO` to conform with the HLS specification.
-- Filtered out ac-3 audio on Tizen and WebOS by default as most devices fail playout and the codec support check is not useable.
+- Filtered out ac-3 audio on Tizen and WebOS by default as most devices fail playout and the codec support check is not usable.
 - Added support for setting a live offset on streams for multiview.
 
 #### ⚡ Improvements
@@ -4963,7 +4963,7 @@ THEOplayer 5.0 is **backwards compatible for most features but includes some bre
 
 - **Customizable UI modules**: No need to build a UI yourself - save time and money by starting from the open source THEOplayer UI for [Web](https://github.com/THEOplayer/web-ui), [Android](https://github.com/THEOplayer/android-ui) and [React Native](https://github.com/THEOplayer/react-native-theoplayer), and tailor it for your use case. Keep an eye open for the new iOS UI next quarter!
 
-- **WebXR support**: We’ve added WebXR support for browser to enchance the AR and VR experiences on Web. [Get started now!](https://docs.theoplayer.com/getting-started/01-sdks/01-web/10-how-to-use-vr-using-webxr.md)
+- **WebXR support**: We’ve added WebXR support for browser to enhance the AR and VR experiences on Web. [Get started now!](https://docs.theoplayer.com/getting-started/01-sdks/01-web/10-how-to-use-vr-using-webxr.md)
 
 - **React Native SDK 2.0**: We’ve further expanded our React Native support for Web, Android and iOS-based platforms, through bridging items such as casting, Picture-in-Picture, background audio, DRM connectors and analytics connectors. Check our [GitHub](https://github.com/THEOplayer/react-native-theoplayer) and the [react-native-theoplayer v2 migration guide](https://github.com/THEOplayer/react-native-theoplayer/blob/master/doc/migrating_v2.md) for more information.
 
@@ -6399,7 +6399,7 @@ Introducing a major version bump to THEOplayer 4.0. This version officially rele
 
 - Fixed an issue that caused the player to ignore the sub second part of IMA ad time offsets.
 - Fixed an issue where the player would not give a clear error when setting an invalid Yospace source.
-- Fixed an issue on Tizen 2.4 where the player would occassionally throw an `InvalidStateError` for certain HTTP requests.
+- Fixed an issue on Tizen 2.4 where the player would occasionally throw an `InvalidStateError` for certain HTTP requests.
 - Fixed an issue on Tizen 2.4 where the LL-HLS pipeline would crash on certain MPEG-TS segments containing large media timestamps.
 - Fixed a bug where Google IMA ads would stop being scheduled after receiving an empty ad break.
 - Fixed a bug where player.ads.scheduledAdBreaks would contain ads that have already played.
@@ -7046,7 +7046,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 
 #### ⚠ Known Limitations
 
-- Filtered out ec-3 audio on Tizen and WebOS by default as most devices failed playout and the codec support check was not useable.
+- Filtered out ec-3 audio on Tizen and WebOS by default as most devices failed playout and the codec support check was not usable.
 
 ### Android
 
@@ -7358,7 +7358,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 
 #### ⚡ Improvements
 
-- Improved the ABR logic to also consider qualities with higher dimensions than the player's dimesions, if there is no exact match.
+- Improved the ABR logic to also consider qualities with higher dimensions than the player's dimensions, if there is no exact match.
 - Optimized handling of DASH MPDs with long `SegmentTimeline`s.
 - Improved the performance of the player on DASH streams.
 
@@ -9381,7 +9381,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 #### 🐛 Issues
 
 - Fixed an issue with Airplay DRM protected streams
-- Fixed an issue when leaving fullscreen mode the orienation behaviour was incorrect
+- Fixed an issue when leaving fullscreen mode the orientation behaviour was incorrect
 
 ## 🚀 2.50.0 (2018/12/04)
 
@@ -9611,7 +9611,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 #### 🐛 Issues
 
 - Fix an issue where the player would stall indefinitely on some DASH live streams from Microsoft Azure.
-- Fixed an issue where ABR bandwith calculation was affected by network interceptors
+- Fixed an issue where ABR bandwidth calculation was affected by network interceptors
 - Fix an issue where the player would not start playback on some DASH live streams.
 - Fix an issue where the Xstream ticket acquisition URL could not be specified through the API
 - Fix an issue where ended state could not always be reached for MPEG-DASH playback

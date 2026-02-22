@@ -22,7 +22,7 @@ The following is an **example workflow** for setting up stream tracking:
 1. Enable [_Token Security_](security/token-based-security.mdx) on the channel or alias
 1. When you create your self-signed token, add one or both of the following parameters to a `streaming` object in the `payload` of your JWT:
    - **trackingId**: Groups viewers of the same channel, allows you to get the aggregated bandwidth usage of all viewers. This is useful for billing a single channel or alias if you use multiple distribution partners and want aggregated billing metrics back or viewer reports for groups of viewers. The maximum size is 128 characters
-   - **customViewerData** : Access the bandwidth consumption of each viewer for analytics purposes and passthrough metadata from your CMS for a viewer and be able to retrieve it in a viewer report. This data is not parsed by our system and can be a series of key-value pairs for you to extract later. The maxium size is 1024 characters
+   - **customViewerData** : Access the bandwidth consumption of each viewer for analytics purposes and passthrough metadata from your CMS for a viewer and be able to retrieve it in a viewer report. This data is not parsed by our system and can be a series of key-value pairs for you to extract later. The maximum size is 1024 characters
 1. Pass the JWT through to the player as described in the [_Token Security_](security/token-based-security.mdx) section
 1. To get _Advanced Reports_, including user-reports, please contact your Dolby representative for access.
 

@@ -71,7 +71,7 @@ A QC object is added to the ad profile. In this case, we are checking that the s
 
 ### Pre and Post QC
 
-The Ad Engine inlcludes both source and output QC. The `pre` object defines the pre-conversion QC parameters, and the `post` object defines the post-conversion. The vast majority of QC will be `pre` encoding, in order to weed out bad input files.
+The Ad Engine includes both source and output QC. The `pre` object defines the pre-conversion QC parameters, and the `post` object defines the post-conversion. The vast majority of QC will be `pre` encoding, in order to weed out bad input files.
 
 ### QC Conditions
 
