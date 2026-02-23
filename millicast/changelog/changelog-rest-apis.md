@@ -9,7 +9,7 @@ Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/
 - Allow creation of multiple media distributions
 - Prepare CDN distribution for recordings. There will be a staged update to serve recording downloads from our CDN instead of S3 pre‑signed URLs.
 
-## Fixes 
+### Improvements
 
 - Refactor media asset functionality for improved maintainability
 
