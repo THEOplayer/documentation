@@ -1,7 +1,9 @@
 export default [
   'THEOplayer',
+  "THEOplayer's",
   'theoplayer',
   'Dolby',
+  "Dolby's",
   'OptiView',
   'SDK',
   'SDKs',
@@ -37,4 +39,9 @@ export default [
   /IE\d*/, // Internet Explorer 11
   /[uU]nmuted/,
   /[tT]ooltip[s]?/,
+  /programmatical(ly)?/,
+  'VoiceOver', // VoiceOver on Mac
+  'playhead',
+  /[cC]hromeless/,
+  /[pP]reload/,
 ];
