@@ -5,13 +5,7 @@
     "node_modules/spellchecker-cli/dictionaries/react.txt",
     ".github/dictionary.mjs"
   ],
-  "plugins": [
-    "spell",
-    "indefinite-article",
-    "repeated-words",
-    "syntax-mentions",
-    "syntax-urls"
-  ],
+  "plugins": ["spell", "indefinite-article", "repeated-words", "syntax-mentions", "syntax-urls"],
   "ignore": [
     // file sizes
     "[.0-9]+([Kk][Bb]|[Mm][Bb]|[Gg][Bb])",

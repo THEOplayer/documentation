@@ -2,5 +2,13 @@
   "trailingComma": "es5",
   "tabWidth": 2,
   "singleQuote": true,
-  "printWidth": 150
+  "printWidth": 150,
+  "overrides": [
+    {
+      "files": ["*.json", "*.jsonc"],
+      "options": {
+        "trailingComma": "none"
+      }
+    }
+  ]
 }
