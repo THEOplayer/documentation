@@ -19,6 +19,8 @@ export default [
   'Android',
   'iOS',
   'iPhone',
+  'iPad',
+  'iPadOS',
   'tvOS',
   'Tizen',
   'webOS',
