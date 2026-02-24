@@ -9,6 +9,7 @@ export default [
   'theolive',
   'Millicast',
   'millicast',
+  'THEOportal',
   /SDK[s]?/,
   'HLS',
   'MPEG',
@@ -42,6 +43,7 @@ export default [
   'SGAI', // Server-Guided Ad Insertion
   'IMA', // Google Interactive Media Ads
   'DAI', // Google Dynamic Ad Insertion
+  'CAF', // Google Cast Application Framework
   'AGWG', // https://www.w3.org/WAI/about/groups/agwg/
   'UAAG', // https://www.w3.org/WAI/standards-guidelines/uaag/
   /[fF]ullscreen/,
