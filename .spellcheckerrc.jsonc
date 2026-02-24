@@ -1,6 +1,8 @@
 {
   "language": "en-US",
   "dictionaries": [
+    "node_modules/spellchecker-cli/dictionaries/base.txt",
+    "node_modules/spellchecker-cli/dictionaries/react.txt",
     ".github/dictionary.mjs"
   ],
   "plugins": [
