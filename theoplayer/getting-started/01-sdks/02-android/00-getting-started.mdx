@@ -103,7 +103,7 @@ THEOplayer can be added to an Android application either:
 1. **Through a layout (XML)**: By adding the `THEOplayerView` to your layout XML file (e.g., `activity_main.xml`), or
 2. **Programmatically using the Constructor API**: This approach also allows you to configure the license string through a programmatic configuration instead of the `AndroidManifest.xml`.
 
-### Adding THEOplayerView via XML layout
+### Adding `THEOplayerView` via XML layout
 
 You can add the `THEOplayerView` to the layout of the `MainActivity` with the snippet below.
 
@@ -122,7 +122,7 @@ At least the `id`, `width` and `height` attributes need to be specified on the n
 
 ![](../../../assets/img/android-getting-started-14_2.png)
 
-### Adding THEOplayerView programmatically (Constructor API)
+### Adding `THEOplayerView` programmatically (Constructor API)
 
 In the Activity/Fragment, you can use the [constructor API](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerView.html) to create a THEOplayer instance
 by passing along a context and a [`THEOplayerConfig`](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerConfig.html).
@@ -300,7 +300,7 @@ Then set an `OnClickListener()` on the button in our `MainActivity` code to trig
 
 The next step is listening for player events.
 
-First, we need to create two more TextViews in the `activity_main.xml` file.
+First, we need to create two more `TextView`s in the `activity_main.xml` file.
 
 ```xml
 <TextView
@@ -370,7 +370,7 @@ We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
         <!-- spellchecker-enable -->
 </Tabs>
 
-When the events are triggered, we will update the **MainActivity** UI with the corresponding state.
+When the events are triggered, we will update the `MainActivity` UI with the corresponding state.
 
 ### 5. Play fullscreen video in landscape mode
 
