@@ -36,6 +36,7 @@ export default [
   'fMP4',
   'MSE',
   'URI',
+  /[bB]itrate/,
   'CSAI', // Client-Side Ad Insertion
   'SSAI', // Server-Side Ad Insertion
   'SGAI', // Server-Guided Ad Insertion
