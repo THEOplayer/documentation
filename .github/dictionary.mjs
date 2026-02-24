@@ -40,6 +40,7 @@ export default [
   'CSAI', // Client-Side Ad Insertion
   'SSAI', // Server-Side Ad Insertion
   'SGAI', // Server-Guided Ad Insertion
+  'IMA', // Google Interactive Media Ads
   'DAI', // Google Dynamic Ad Insertion
   'AGWG', // https://www.w3.org/WAI/about/groups/agwg/
   'UAAG', // https://www.w3.org/WAI/standards-guidelines/uaag/
@@ -63,4 +64,16 @@ export default [
   'Uplynk', // https://www.uplynk.com/
   'lifecycle',
   'TabItem',
+  'AGP', // Android Gradle Plugin
+  'AndroidX',
+  'Cronet', // Chromium network stack
+  'Gradle',
+  /[iI]ntegration[s]?/,
+  /[jJ]etpack/, // Android Jetpack
+  'Media3',
+  'MediaTailor',
+  /[mM]odularized/,
+  'Xcode',
+  /[iI]nitializer/,
+  'CocoaPods',
 ];
