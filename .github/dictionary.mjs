@@ -57,4 +57,8 @@ export default [
   /[pP]reload/,
   'LCEVC',
   'LCEVCdecJS',
+  'async',
+  /[sS]kippable/,
+  'onwards',
+  'Uplynk', // https://www.uplynk.com/
 ];

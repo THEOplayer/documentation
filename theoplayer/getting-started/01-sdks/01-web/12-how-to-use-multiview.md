@@ -1,6 +1,6 @@
-# How to use MultiView
+# How to use multi-view
 
-This article will go over how to work with THEOplayer's MultiViewPlayer. As the setup is very similar to using
+This article will go over how to work with THEOplayer's `MultiViewPlayer`. As the setup is very similar to using
 normal THEOplayer, we strongly recommend reading the [getting started documentation for web](00-getting-started.mdx) first.
 
 ## SDKs
@@ -16,7 +16,7 @@ normal THEOplayer, we strongly recommend reading the [getting started documentat
 You can quickly check using `THEOplayer.features`. The feature is only available from THEOplayer 4.3 and onwards.
 This feature is included by default in the [@theoplayer/extended](https://www.npmjs.com/package/@theoplayer/extended) npm package.
 
-#### 2. You need to have a THEOplayer license which is compatible with MultiView
+#### 2. You need to have a THEOplayer license which is compatible with multi-view
 
 This can be done through [https://portal.theoplayer.com](https://portal.theoplayer.com).
 
@@ -31,7 +31,7 @@ To make a `MultiViewPlayer`, add the following code to your page:
   const element = document.querySelector('.theoplayer-container'); // fetch THEOplayer container div
 
   const player = new THEOplayer.MultiViewPlayer(element, {
-    // instantiates the MultiView player
+    // instantiates the multi-view player
     libraryLocation: '/path/to/your-theoplayer-folder/', // references folder containing your THEOplayer library files (THEOplayer.js, ...)
     license: 'your_license_string', // references your THEOplayer SDK license
   });
