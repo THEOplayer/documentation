@@ -1,6 +1,6 @@
-# How to get frame-accurate currentTime display in the UI Control bar
+# How to get frame-accurate `currentTime` display in the UI Control bar
 
-This article will show you how to display a frame-accurate currentTime on your THEOplayer instance UI control bar. For more information regarding the currentTime itself, please refer to the [reference API](pathname:///theoplayer/v10/api-reference/web/classes/ChromelessPlayer.html).
+This article will show you how to display a frame-accurate `currentTime` on your THEOplayer instance UI control bar. For more information regarding the `currentTime` itself, please refer to the [reference API](pathname:///theoplayer/v10/api-reference/web/classes/ChromelessPlayer.html).
 
 ## SDKs
 
@@ -8,9 +8,9 @@ This article will show you how to display a frame-accurate currentTime on your T
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
 |   Yes   |     Yes     |   Yes   |    No    |      Yes       |      N/A       |
 
-## Changing the currentTime UI display
+## Changing the `currentTime` UI display
 
-At this moment there is no official THEOplayer feature to display a frame-accurate currentTime in the UI Controlbar. The following snippets rewrite the innerHTMLText of the currentTime element.
+At this moment there is no official THEOplayer feature to display a frame-accurate `currentTime` in the UI Controlbar. The following snippets rewrite the innerHTMLText of the `currentTime` element.
 
 ##### Web SDK
 

@@ -2,11 +2,11 @@
 
 This page contains an overview of examples, demonstrating the capabilities of the THEOplayer API and custom JavaScript. With these examples, we try to explain the fundamentals of how to use our API:
 
-- Accessing **player properties** and using **methods** (e.g. _currentTime_, _duration_, ...) ,
+- Accessing **player properties** and using **methods** (e.g. `currentTime`, `duration`, ...) ,
 
 - Hooking to **events**,
 
-- Inserting DOM-elements (buttons, text, ...) in the **UI**
+- Inserting DOM elements (buttons, text, ...) in the **UI**
 
 - ...
 
@@ -19,7 +19,7 @@ If you are new to THEOplayer, please read our [Getting Started on Web](./00-gett
 
 - [http://demo.theoplayer.com/creating-bookmarks-with-js-css-theoplayer](http://demo.theoplayer.com/creating-bookmarks-with-js-css-theoplayer) — Demonstrates how to use basic player properties and the _play()_ method to create your own bookmarks, and load those settings into your active player.
 
-- [http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate](http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate) — Demonstrates a use case of the _currentTime_, _played_ and _buffered_ properties.
+- [http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate](http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate) — Demonstrates a use case of the `currentTime`, `played` and `buffered` properties.
 
 - [http://demo.theoplayer.com/adblock-detection](http://demo.theoplayer.com/adblock-detection) — Demonstrates how to use ad block detection.
 
@@ -27,9 +27,9 @@ If you are new to THEOplayer, please read our [Getting Started on Web](./00-gett
 
 ## Events
 
-- [http://demo.theoplayer.com/using-events-examples](http://demo.theoplayer.com/using-events-examples) — Demonstrates how to listen to player events as _playing_ and _pause_, and ad events as _adbegin_.
+- [http://demo.theoplayer.com/using-events-examples](http://demo.theoplayer.com/using-events-examples) — Demonstrates how to listen to player events as `playing` and `pause`, and ad events as `adbegin`.
 
-- [http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate](http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate) — Demonstrates a use case of the _timeupdate_ and _loadeddata_ event.
+- [http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate](http://demo.theoplayer.com/keeping-track-of-currenttime-timeupdate) — Demonstrates a use case of the `timeupdate` and `loadeddata` event.
 
 - [http://demo.theoplayer.com/implementing-continuous-play-with-js-cookies-theoplayer](http://demo.theoplayer.com/implementing-continuous-play-with-js-cookies-theoplayer) — Demonstrates how to save the playhead position and restore it, using cookies.
 
