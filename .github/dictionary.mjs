@@ -50,7 +50,7 @@ export default [
   /IE\d*/, // Internet Explorer 11
   /[uU]nmuted/,
   /[tT]ooltip[s]?/,
-  /programmatical(ly)?/,
+  /[pP]rogrammatical(ly)?/,
   'VoiceOver', // VoiceOver on Mac
   'playhead',
   /[cC]hromeless/,
@@ -61,4 +61,6 @@ export default [
   /[sS]kippable/,
   'onwards',
   'Uplynk', // https://www.uplynk.com/
+  'lifecycle',
+  'TabItem',
 ];
