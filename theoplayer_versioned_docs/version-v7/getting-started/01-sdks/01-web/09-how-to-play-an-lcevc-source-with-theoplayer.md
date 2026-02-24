@@ -10,7 +10,7 @@ first.
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
 |   Yes   |     No      |   No    |    No    |       No       |       No       |
 
-## Pre-requirements
+## Prerequisites
 
 #### 1. Your THEOplayer SDK needs to have the 'lcevc' feature enabled.
 
