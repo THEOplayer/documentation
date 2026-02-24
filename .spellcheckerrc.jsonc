@@ -9,5 +9,11 @@
     "repeated-words",
     "syntax-mentions",
     "syntax-urls"
+  ],
+  "ignore": [
+    // file sizes
+    "[.0-9]+([Kk][Bb]|[Mm][Bb]|[Gg][Bb])",
+    // version numbers
+    "\\b[Vv]?(\\d+\\.)?(\\d+\\.)?(\\d+)\\b"
   ]
 }
