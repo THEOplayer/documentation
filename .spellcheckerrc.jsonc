@@ -1,7 +1,7 @@
 {
   "language": "en-US",
   "dictionaries": [
-    ".github/dictionary.txt"
+    ".github/dictionary.mjs"
   ],
   "plugins": [
     "spell",
