@@ -5,15 +5,20 @@ export default [
   'Dolby',
   "Dolby's",
   'OptiView',
-  'SDK',
-  'SDKs',
+  'THEOlive',
+  'theolive',
+  'Millicast',
+  'millicast',
+  /SDK[s]?/,
   'HLS',
   'MPEG',
   'DASH',
   'DRM',
+  'CDN', // content delivery network
   'Android',
   'iOS',
   'iPhone',
+  'tvOS',
   'Tizen',
   'webOS',
   'Chromecast',
@@ -29,7 +34,12 @@ export default [
   'AAC',
   'MP4',
   'fMP4',
+  'MSE',
   'URI',
+  'CSAI', // Client-Side Ad Insertion
+  'SSAI', // Server-Side Ad Insertion
+  'SGAI', // Server-Guided Ad Insertion
+  'DAI', // Google Dynamic Ad Insertion
   'AGWG', // https://www.w3.org/WAI/about/groups/agwg/
   'UAAG', // https://www.w3.org/WAI/standards-guidelines/uaag/
   /[fF]ullscreen/,
@@ -44,4 +54,6 @@ export default [
   'playhead',
   /[cC]hromeless/,
   /[pP]reload/,
+  'LCEVC',
+  'LCEVCdecJS',
 ];
