@@ -48,6 +48,7 @@ jobs:
         uses: tj-actions/changed-files@v47.0.4
         with:
           base_sha: ${{ github.event.pull_request.base.sha }}
+          exclude_submodules: true
           files: |
             **/*.md
             **/*.mdx
