@@ -63,7 +63,7 @@ jobs:
         env:
           CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
       - name: Upload spellchecker results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         if: ${{ steps.spellchecker.conclusion == 'success' }}
         with:
           path: spell-check.json
