@@ -15,7 +15,7 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
 
 1. Add the THEOplayer Maven repository.
 <Tabs queryString="lang">
-   <!-- prettier-ignore-start -->
+   {/* <!-- prettier-ignore-start --> */}
    <TabItem value="groovy" label="Groovy">
     ```groovy
     dependencyResolutionManagement {
@@ -38,13 +38,13 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
     }
     ```
     </TabItem>
-    <!-- prettier-ignore-end -->
+    {/* <!-- prettier-ignore-end --> */}
 </Tabs>
 
 1. Next, we need to edit the `build.gradle` on the **module-level** (**app/build.gradle**)
 
 <Tabs queryString="lang">
-   <!-- prettier-ignore-start -->
+   {/* <!-- prettier-ignore-start --> */}
    <TabItem value="groovy" label="Groovy">
     ```groovy
     implementation "com.theoplayer.theoplayer-sdk-android:core:+"
@@ -59,7 +59,7 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
     implementation("androidx.appcompat:appcompat:1.7.0")
     ```
     </TabItem>
-    <!-- prettier-ignore-end -->
+    {/* <!-- prettier-ignore-end --> */}
 </Tabs>
 
 <u>Note</u>: It's possible to replace the `+` with a particular version of THEOplayer that should be used, for example:
@@ -126,7 +126,7 @@ by passing along a context and a [`THEOplayerConfig`](https://docs.theoplayer.co
 In this `THEOplayerConfig`, you can configure your license string, as demonstrated in the snippet below.
 
 <Tabs queryString="lang">
-   <!-- prettier-ignore-start -->
+   {/* <!-- prettier-ignore-start --> */}
    <TabItem value="kotlin" label="Kotlin">
     ```kotlin
     val playerConfig = THEOplayerConfig.Builder()
@@ -145,7 +145,7 @@ In this `THEOplayerConfig`, you can configure your license string, as demonstrat
     THEOplayerView theoPlayerView = new THEOplayerView(this, playerConfig);
     ```
     </TabItem>
-    <!-- prettier-ignore-end -->
+    {/* <!-- prettier-ignore-end --> */}
 
 </Tabs>
 
@@ -158,7 +158,7 @@ Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we se
 ### 1. Get the THEOplayer instance
 
 <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
+       {/* <!-- prettier-ignore-start --> */}
        <TabItem value="kotlin" label="Kotlin">
             ```kotlin
             ...
@@ -192,7 +192,7 @@ Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we se
             }
             ```
         </TabItem>
-        <!-- prettier-ignore-end -->
+        {/* <!-- prettier-ignore-end --> */}
     </Tabs>
 
 ### 2. Configure source
@@ -200,7 +200,7 @@ Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we se
 To play a video in THEOplayer, we need to configure a source for the player in our `MainActivity`:
 
 <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
+       {/* <!-- prettier-ignore-start --> */}
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val typedSource = TypedSource
@@ -230,7 +230,7 @@ To play a video in THEOplayer, we need to configure a source for the player in o
         theoPlayerView.getPlayer().setSource(sourceDescription);
         ```
         </TabItem>
-        <!-- prettier-ignore-end -->
+        {/* <!-- prettier-ignore-end --> */}
     </Tabs>
 
 ### 3. Control THEOplayer through the API
@@ -252,7 +252,7 @@ First add the button to our `activity_main.xml` layout file.
 Then set an `OnClickListener()` on the button in our `MainActivity` code to trigger `play()` and `pause()` on the player.
 
 <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
+       {/* <!-- prettier-ignore-start --> */}
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val btnPlayPause = findViewById<Button>(R.id.btn_playpause)
@@ -280,7 +280,7 @@ Then set an `OnClickListener()` on the button in our `MainActivity` code to trig
         });
         ```
         </TabItem>
-        <!-- prettier-ignore-end -->
+        {/* <!-- prettier-ignore-end --> */}
 </Tabs>
 
 ![](../../../assets/img/android-getting-started-17_2.png)
@@ -308,7 +308,7 @@ First, we need to create two more `TextView`s in the `activity_main.xml` file.
 We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
 
 <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
+       {/* <!-- prettier-ignore-start --> */}
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val txtPlayStatus = findViewById<TextView>(R.id.txt_playstatus)
@@ -354,7 +354,7 @@ We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
         });
         ```
         </TabItem>
-        <!-- prettier-ignore-end -->
+        {/* <!-- prettier-ignore-end --> */}
 
 </Tabs>
 
@@ -367,7 +367,7 @@ THEOplayer SDK contains a default fullscreen activity which can be started autom
 We have to configure our player instance in the `MainActivity` to react to orientation changes and start the Fullscreen activity.
 
 <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
+       {/* <!-- prettier-ignore-start --> */}
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -389,7 +389,7 @@ We have to configure our player instance in the `MainActivity` to react to orien
         }
         ```
         </TabItem>
-        <!-- prettier-ignore-end -->
+        {/* <!-- prettier-ignore-end --> */}
 </Tabs>
 
 ![](../../../assets/img/android-getting-started-21_2.png)
@@ -416,7 +416,7 @@ In order for THEOplayer to work properly and in sync with the [Activity lifecycl
 We need to call the `onResume`, `onPause` and `onDestroy` methods of the `THEOplayerView` when the matching methods are called in the Activity.
 
 <Tabs queryString="lang">
-       <!-- prettier-ignore-start -->
+       {/* <!-- prettier-ignore-start --> */}
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         class MainActivity : ComponentActivity() {
@@ -471,7 +471,7 @@ We need to call the `onResume`, `onPause` and `onDestroy` methods of the `THEOpl
         }
         ```
         </TabItem>
-        <!-- prettier-ignore-end -->
+        {/* <!-- prettier-ignore-end --> */}
 
 </Tabs>
 
