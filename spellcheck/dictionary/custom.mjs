@@ -10,7 +10,8 @@ export default [
   'Millicast',
   'millicast',
   'THEOportal',
-  /SDK[s]?/,
+  'SDK',
+  'SDKs',
   'HLS',
   'MPEG',
   'DASH',
@@ -26,10 +27,11 @@ export default [
   'webOS',
   'Chromecast',
   'AirPlay',
-  /[bB]undler[s]?/,
-  /[wW]ebpack/,
-  /[vV]ite/,
-  /[rR]ollup/,
+  'bundler',
+  'bundlers',
+  'webpack',
+  'vite',
+  'rollup',
   'WebAssembly',
   'transmux',
   'transmuxing',
@@ -39,7 +41,7 @@ export default [
   'fMP4',
   'MSE',
   'URI',
-  /[bB]itrate/,
+  'bitrate',
   'CSAI', // Client-Side Ad Insertion
   'SSAI', // Server-Side Ad Insertion
   'SGAI', // Server-Guided Ad Insertion
@@ -48,22 +50,26 @@ export default [
   'CAF', // Google Cast Application Framework
   'AGWG', // https://www.w3.org/WAI/about/groups/agwg/
   'UAAG', // https://www.w3.org/WAI/standards-guidelines/uaag/
-  /[fF]ullscreen/,
-  /iframe[s]?/,
-  /[aA]utoplay/,
+  'fullscreen',
+  'iframe',
+  'iframes',
+  'autoplay',
   'CMS', // Content Management System
-  /IE\d*/, // Internet Explorer 11
-  /[uU]nmuted/,
-  /[tT]ooltip[s]?/,
-  /[pP]rogrammatical(ly)?/,
+  'IE', // Internet Explorer
+  'IE11', // Internet Explorer 11
+  'unmuted',
+  'tooltip',
+  'tooltips',
+  'programmatical',
+  'programmatically',
   'VoiceOver', // VoiceOver on Mac
   'playhead',
-  /[cC]hromeless/,
-  /[pP]reload/,
+  'chromeless',
+  'preload',
   'LCEVC',
   'LCEVCdecJS',
   'async',
-  /[sS]kippable/,
+  'skippable',
   'onwards',
   'Uplynk', // https://www.uplynk.com/
   'lifecycle',
@@ -72,12 +78,13 @@ export default [
   'AndroidX',
   'Cronet', // Chromium network stack
   'Gradle',
-  /[iI]ntegration[s]?/,
-  /[jJ]etpack/, // Android Jetpack
+  'integration',
+  'integrations',
+  'jetpack', // Android Jetpack
   'Media3',
   'MediaTailor',
-  /[mM]odularized/,
+  'modularized',
   'Xcode',
-  /[iI]nitializer/,
+  'initializer',
   'CocoaPods',
 ];
