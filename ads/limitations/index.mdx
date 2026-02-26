@@ -1,0 +1,26 @@
+---
+sidebar_position: 3
+sidebar_label: Limitations and known issues
+---
+
+# Limitations and known issues
+
+This page lists the current limitations and known issues of OptiView Ads.
+
+## Using OptiView Ads with Picture-in-Picture (PiP) on Firefox for Web
+
+Using OptiView Ads with Picture-in-Picture (PiP) on Firefox for Web is currently not supported. Since it is not
+possible to fully disable PiP on Firefox, you can use the following workaround to hide the PiP button on the video on
+Firefox:
+
+```js
+player.addEventListener('play', function () {
+  if (/firefox/i.test(navigator.userAgent)) {
+    document.querySelectorAll('video').forEach(function (video) {
+      video.disablePictureInPicture = true;
+    });
+  }
+});
+```
+
+Note that users will still be able to trigger PiP using the button in the browser's address bar.
