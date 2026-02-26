@@ -22,6 +22,10 @@ toc_max_heading_level: 2
 - Fixed an issues in MPEG-DASH Content Steering where successful manifest location downloads were reported in the `_DASH_pathway` search param.
 - Fixed an issue where layer configuration passed in `MillicastSource.connectOptions` was not kept into account when switching layers after the source had been set.
 
+#### ⚠ Known Limitations
+
+- The issue in HLS streams with TS segments where setting a `targetQuality` could sometimes cause an infinite loop, which was fixed in 10.10.1, is present in this release. This will be resolved again in the next release.
+
 ### Android
 
 #### ⚡ Improvements
