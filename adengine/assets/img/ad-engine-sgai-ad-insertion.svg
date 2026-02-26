@@ -17,6 +17,9 @@
 	.st10{font-size:12.96px;}
 	.st11{fill:none;}
 	.st12{fill:none;stroke:#344A5E;stroke-width:1.44;stroke-miterlimit:10;}
+
+	/* Dark mode support */
+	:root{color-scheme: dark light;fill:CanvasText;}
 </style>
 <path class="st0" d="M376.9,204.9l5.8-10h-11.5L376.9,204.9z M375.9,144.9v51h2v-51H375.9z"/>
 <rect x="374.3" y="317.8" class="st1" width="0.4" height="102.5"/>

@@ -16,6 +16,9 @@
 	.st9{fill:none;}
 	.st10{fill:none;stroke:#344A5E;stroke-width:1.44;stroke-miterlimit:10;}
 	.st11{fill:#344A5E;}
+
+	/* Dark mode support */
+	:root{color-scheme: dark light;fill:CanvasText;}
 </style>
 <g>
 	<path class="st0" d="M843.2,311.5h122c5.5,0,10,4.5,10,10v92c0,5.5-4.5,10-10,10h-122c-5.5,0-10-4.5-10-10v-92
