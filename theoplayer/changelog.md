@@ -5,6 +5,73 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.11.0 (2026/02/25)
+
+### Web
+
+#### ⚡ Improvements
+
+- Updated the OptiView Real-time streaming retry logic. Minimum backoff time for a OptiView Real-time source is now 1 second.
+- OptiView Live streams played on mobile Safari will fallback faster when segments would be unavailable.
+- Improved the resiliency for MPEG-DASH Content Steering when the steering server is unstable.
+
+#### 🐛 Issues
+
+- Fixed an issue where a PS4 WebMAF app could freeze when autoplay is enabled.
+- Fixed an issue where autoplay on an ended stream could fire a play event before the sourcechange event, causing duplicate analytics sessions.
+- Fixed an issues in MPEG-DASH Content Steering where successful manifest location downloads were reported in the `_DASH_pathway` search param.
+- Fixed an issue where layer configuration passed in `MillicastSource.connectOptions` was not kept into account when switching layers after the source had been set.
+
+### Android
+
+#### ⚡ Improvements
+
+- Updated Media3 to [version 1.9.2](https://github.com/androidx/media/releases/tag/1.9.2).
+
+#### 🐛 Issues
+
+- Fixed an issue where ABR was not switching to a lower quality on very low bandwidth.
+- Fixed an issue where `TextTrackStyle.fontSize` was not correctly applied to TTML subtitles with a `tts:fontSize` attribute.
+- Fixed an issue where changing the `player.textTrackStyle` of one player could accidentally also change the text track style of other players.
+- Fixed an issue where using Picture-in-Picture with `PiPType.ACTIVITY` on apps without `Theme.AppCompat` theme could crash the application.
+- Fixed an issue where autoplay on an ended stream could fire a play event before the sourcechange event, causing duplicate analytics sessions.
+- Updated the Millicast SDK to version 2.5.3, which adds a necessary consumer ProGuard rule to prevent a missing symbol crash from occurring when enabling minification.
+- Fixed an issue where the backdrop would not be visible for OptiView Ads.
+- Fixed an issue where the player would restart a VOD source when a scheduled interstitial would not have a resume time for OptiView Ads.
+- Fixed an issue where the target latency was not applied for OptiView Live v1 channels.
+
+### iOS
+
+#### ✨ Features
+
+- Added mobile layout support for OptiView Ads to override the ad layout when playing on iOS.
+
+#### ⚡ Improvements
+
+- Bumped the Millicast SDK version to 2.5.3
+
+#### 🐛 Issues
+
+- Fixed an issue where playing OptiView Live streams would cause an initial audio stutter.
+- Fixed an issue in OptiView Ads where subsequent adbreak requests on monetized streams would fail after receiving an ad error.
+- Fixed an issue where playing a VAST ad pod would only play the first ad for OptiView Ads.
+- Fixed an issue in OptiView ads where the player would pause instead of playing the main content when an ad fails to load.
+- Fixed an issue where the target latency was not applied for OptiView Live v1 channels.
+
+### Roku
+
+#### 👎 Deprecations
+
+- Deprecated the `bitratechange` event in favor of the `activequalitychanged` event.
+
+## 🚀 10.10.1 (2026/02/25)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue in HLS streams with TS segments where setting a `targetQuality` could sometimes cause an infinite loop.
+
 ## 🚀 10.10.0 (2026/02/11)
 
 ### General
@@ -1030,6 +1097,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### ⚡ Improvements
 
 - Improved the ABR algorithm of our OptiView Live streams for HESP playback. 
+- Improved playback stability of OptiView Live streams on iOS 17 and below by using the HLS fallback stream.
 
 #### 🐛 Issues
 
