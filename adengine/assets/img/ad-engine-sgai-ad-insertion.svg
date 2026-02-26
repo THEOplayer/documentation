@@ -12,7 +12,7 @@
 	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
 	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;stroke:#FFFFFF;}
 	.st7{fill-rule:evenodd;clip-rule:evenodd;fill:#2BA24C;}
-	.st8{font-family:'MyriadPro-Regular';}
+	.st8{font-family:'MyriadPro-Regular',sans-serif;}
 	.st9{font-size:14.4px;}
 	.st10{font-size:12.96px;}
 	.st11{fill:none;}

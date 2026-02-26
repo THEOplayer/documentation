@@ -10,7 +10,7 @@
 	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
 	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;stroke:#FFFFFF;}
 	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#2BA24C;}
-	.st6{font-family:'MyriadPro-Regular';}
+	.st6{font-family:'MyriadPro-Regular',sans-serif;}
 	.st7{font-size:14.4px;}
 	.st8{font-size:12.96px;}
 	.st9{fill:none;}
