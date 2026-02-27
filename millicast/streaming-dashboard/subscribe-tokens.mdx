@@ -147,6 +147,7 @@ Self-signing your Subscribe token allows you to:
      - `trackingId` (optional): A group ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes. _Note: This is intended for tracking groups of viewers and should **NOT** be unique per-viewer. If you want to track individual viewers, see `customViewerData`_
    - `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
    - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/distribution/syndication). Using this parameter requires contacting sales.
+   - `originCluster` (optional): Specify cluster to route subscriber to, provided it is a subset of the `originCluster` set on the (primary) subscribe token.
 3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
 
 _Note: Either or both `trackingId` and/or `customViewerData` may be used depending on what kind of tracking you need to achieve._
@@ -162,17 +163,18 @@ To put it all together, here is an example `payload` for a JWT that includes sam
     "tracking": {
       "trackingId": "groupAbc"
     },
-    "customViewerData": "user=user123;appVersion=x.y.x"
+    "customViewerData": "user=user123;appVersion=x.y.x",
+    "originCluster": "cluster-id"
   },
   "iat": 1750813271,
   "exp": 1750813871 // required for the token to be valid
 }
 ```
 
-Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54In0sImlhdCI6MTc1MDgxMzI3MSwiZXhwIjoxNzUwODEzODcxfQ.pP5Kg6fCJfTaCc_OaV1FV5votZjy8x1gfJ2F7tQXj7c).
+Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54Iiwib3JpZ2luQ2x1c3RlciI6ImNsdXN0ZXItaWQifSwiaWF0IjoxNzUwODEzMjcxLCJleHAiOjE3NTA4MTM4NzF9.btau2liawfvZeYdgV2RwV5F3CrV_Vl0a2ePSV1anDII).
 
 ```text
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54In0sImlhdCI6MTc1MDgxMzI3MSwiZXhwIjoxNzUwODEzODcxfQ.pP5Kg6fCJfTaCc_OaV1FV5votZjy8x1gfJ2F7tQXj7c
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54Iiwib3JpZ2luQ2x1c3RlciI6ImNsdXN0ZXItaWQifSwiaWF0IjoxNzUwODEzMjcxLCJleHAiOjE3NTA4MTM4NzF9.btau2liawfvZeYdgV2RwV5F3CrV_Vl0a2ePSV1anDII
 ```
 
 To see the validation tool validate the token, insert the random token used to sign the JWT: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.

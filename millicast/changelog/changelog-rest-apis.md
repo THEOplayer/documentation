@@ -2,6 +2,12 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-02-26 | REST APIs
+
+### Features
+
+- Allow specification of `originCluster` via [Self Signed Subscribe Tokens](/millicast/subscribe-tokens/#creating-a-self-signed-token)
+
 ## 2026-02-26 | Usage Reporting
 
 ### Improvements
