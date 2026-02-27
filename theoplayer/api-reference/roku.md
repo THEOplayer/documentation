@@ -326,9 +326,10 @@ The event consists of:
 
 There are several player events being emitted.
 
+- `activequalitychanged`: Fired when the playing rendition changes, the extra data emitted is the rendition's quality
 - `addedaudiotrack`: Fired when audio track has been added
 - `addedtexttrack`: Fired when text track has been added
-- `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
+- `bitratechange`: Deprecated. Use `activequalitychanged` instead. Fired when the bitrate changes, the extra data emitted is the bitrate
 - `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
 - `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
 - `destroy`: Fired when the the player is destroyed, there is no extra data emitted along
