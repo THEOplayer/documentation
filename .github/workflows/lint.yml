@@ -7,6 +7,7 @@ on:
       - synchronize
 jobs:
   pr-lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,3 +25,51 @@ jobs:
       - run: npm run check-format
       - run: npm run lint
       - run: npm run typecheck
+
+  pr-spellcheck:
+    # https://github.com/austenstone/spellchecker-cli-action-summary/blob/v1.0/.github/workflows/spellcheck.yml
+    name: Spellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          submodules: true
+      - name: Use Node.js 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: 'npm'
+      - run: npm ci
+      - name: Get changed files
+        id: changed-files
+        if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+        uses: tj-actions/changed-files@v47.0.4
+        with:
+          base_sha: ${{ github.event.pull_request.base.sha }}
+          exclude_submodules: true
+          files: |
+            **/*.md
+            **/*.mdx
+      - name: Run spellchecker
+        id: spellchecker
+        if: ${{ steps.changed-files.outputs.any_changed }}
+        continue-on-error: true
+        # language=bash
+        run: |
+          npm run spellcheck -- \
+            --files $CHANGED_FILES \
+            --reports "spell-check.json"
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+      - name: Upload spellchecker results
+        uses: actions/upload-artifact@v6
+        if: ${{ steps.spellchecker.conclusion == 'success' }}
+        with:
+          path: spell-check.json
+      - name: Create summary
+        uses: austenstone/spellchecker-cli-action-summary@v1.0
+        with:
+          file-json: spell-check.json
+          files-changed: ${{ steps.changed-files.outputs.all_changed_files }}

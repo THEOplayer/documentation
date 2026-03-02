@@ -19,7 +19,9 @@
     "check-format": "prettier --check .",
     "format": "prettier --write .",
     "lint": "eslint docusaurus.config.ts \"sidebars*.ts\" src",
-    "fix-lint": "npm run lint -- --fix"
+    "fix-lint": "npm run lint -- --fix",
+    "spellcheck": "spellchecker --config .spellcheckerrc.jsonc",
+    "spellcheck-all": "npm run spellcheck -- --files \"**/*.md\" \"**/*.mdx\""
   },
   "dependencies": {
     "@docusaurus/core": "^3.9.2",
@@ -57,6 +59,7 @@
     "raw-loader": "^4.0.2",
     "remark": "^15.0.1",
     "serve-handler": "^6.1.6",
+    "spellchecker-cli": "^7.0.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0",
     "unist-util-visit": "^5.1.0"

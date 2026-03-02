@@ -16,17 +16,17 @@ This means you'll have to insert a bit of custom code to enable this functionali
 
 The script below will implement the following shortcuts:
 
-- Spacebar : Toggles between Pause and Play.
+- Space bar : Toggles between Pause and Play.
 - Left Arrow: Rewinds the video. (default: 5s)
 - Right Arrow: Forwards the video. (default: 5s)
 - Up Arrow: Increases the volume.
 - Down Arrow: Lowers the volume.
-- ' F ' Key: Toggles fullscreen mode.
-- ' M ' Key: Toggles audio mute.
+- `F` Key: Toggles fullscreen mode.
+- `M` Key: Toggles audio mute.
 
 ## Step-by-step Guide
 
-### 1. THEOplayer-wrapper
+### 1. THEOplayer wrapper
 
 Because the hotkeys we're about to include also have default browser functionality
 (e.g. space bar skipping down the page),
@@ -57,7 +57,7 @@ Next up are the individual functions:
 
 ### 2.1 Disabling Default browser hotkeys
 
-#### preventStandardHotKeyActions()
+#### `preventStandardHotKeyActions()`
 
 With event[.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) we prevent the pressed key from performing their default browser functionality.
 
@@ -72,9 +72,9 @@ function preventStandardHotKeyActions(event) {
 
 ### 2.2 Pause and Play
 
-#### togglePlay()
+#### `togglePlay()`
 
-Switches between pausing and playing the video. This function is triggered by pressing the spacebar.
+Switches between pausing and playing the video. This function is triggered by pressing the space bar.
 
 ```javascript
 function togglePlay() {
@@ -88,7 +88,7 @@ function togglePlay() {
 
 ### 2.3 Rewinding and Skipping
 
-#### rewind()
+#### `rewind()`
 
 Rewinds the video 5 seconds (default) back in time when triggered.
 
@@ -98,7 +98,7 @@ function rewind() {
 }
 ```
 
-#### forward()
+#### `forward()`
 
 Skips the video 5 seconds (default) forward in time when triggered.
 
@@ -110,7 +110,7 @@ function forward() {
 
 ### 2.4 Volume Settings
 
-#### increaseVolume()
+#### `increaseVolume()`
 
 Increases the THEOplayer's volume in 5% increments (default).
 
@@ -120,7 +120,7 @@ function increaseVolume() {
 }
 ```
 
-#### decreaseVolume():
+#### `decreaseVolume()`
 
 Lowers the THEOplayer's volume in 5% increments (default).
 
@@ -132,7 +132,7 @@ function decreaseVolume() {
 
 ### 2.5 Toggle Fullscreen
 
-#### toggleFullScreen()
+#### `toggleFullScreen()`
 
 Checks what presentation mode THEOplayer is in and switches the presentation mode to 'fullscreen' or 'inline' accordingly.
 
@@ -148,7 +148,7 @@ function toggleFullScreen() {
 
 ### 2.6 Toggle Mute
 
-#### toggleMute()
+#### `toggleMute()`
 
 Turns THEOplayer's audio on or off.
 
@@ -158,15 +158,15 @@ function toggleMute() {
 }
 ```
 
-### 2.7 KeyPressed Event
+### 2.7 Key pressed event
 
-#### getPressedKey()
+#### `getPressedKey()`
 
-This function gets the 'key' property of the event object that triggered it (In our case a 'keydown' event). [List of Key values](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
+This function gets the `key` property of the event object that triggered it (In our case a `keydown` event). [List of Key values](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
 
-Start by initiating a variable for any key's that are pressed ('pressedKey') and a variable called 'action' that's going to call one of the functions we made earlier.
+Start by initiating a variable for any key's that are pressed (`pressedKey`) and a variable called 'action' that's going to call one of the functions we made earlier.
 
-Next we make a switch case where we check the event's 'key' property for the ones we want to catch (e.g. ArrowLeft, " " for space, ... etc).
+Next we make a switch case where we check the event's `key` property for the ones we want to catch (e.g. `ArrowLeft`, `" "` for space, etc.).
 If there's a match, we assign the corresponding function to 'action' to call after our conditions have been met.
 
 ```javascript
@@ -205,7 +205,7 @@ function getPressedKey(event) {
 
 ### 2.8 Enable hotkeys with focus
 
-#### playerFocused():
+#### `playerFocused()`
 
 Next we will allow the use of the THEOplayer hotkeys whenever the active element on the site is an element inside the player.
 
@@ -223,17 +223,17 @@ function playerFocused() {
 }
 ```
 
-### 2.9 Enable Hotkeys on mouseEnter
+### 2.9 Enable hotkeys on mouse enter
 
 Since browsers have default hotkey functionality (like skipping down the page by pressing space), you may only want to allow the use of the hotkeys whenever the viewer is actively watching the player.
 
 The following functions will handle that use-case.
 
-#### mouseInPlayer()
+#### `mouseInPlayer()`
 
 Gets called when a viewer enters the specified wrapper area with their cursor.
 
-Creates an eventListener for both 'keydown' events and when the viewer's mouse leaves the wrapper area we specified at the beginning.
+Creates an event listener for both `keydown` events and when the viewer's mouse leaves the wrapper area we specified at the beginning.
 
 ```javascript
 function mouseInPlayer() {
@@ -243,11 +243,11 @@ function mouseInPlayer() {
 }
 ```
 
-#### mouseOutPlayer()
+#### `mouseOutPlayer()`
 
 Gets called when a viewer exits the wrapper area.
 
-When the viewer has left the wrapper area, the unused eventListeners are removed.
+When the viewer has left the wrapper area, the unused event listeners are removed.
 
 ```javascript
 function mouseOutPlayer() {
@@ -259,7 +259,7 @@ function mouseOutPlayer() {
 
 ### 3.0 Enabling the Hotkeys
 
-#### enableShortcuts()
+#### `enableShortcuts()`
 
 This function lets you choose between enabling the hotkeys site-wide, or only enabling them when the viewer's mouse is inside the player or the player is focused.
 
@@ -428,8 +428,8 @@ enableShortcuts(); //Always enable shortcuts.
 
 ## Additional Resources
 
-- [preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
+- [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
 
-- [stopPropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
+- [`stopPropagation()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
 
 - [List of Key values](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)

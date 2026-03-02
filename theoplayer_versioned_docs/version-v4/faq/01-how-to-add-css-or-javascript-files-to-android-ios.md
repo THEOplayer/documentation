@@ -17,7 +17,7 @@ Through JavaScript, you have access to some THEOplayer features which aren't exp
 
 How to communicate with messages between your Android/iOS application, and your JavaScript logic, will be discussed in a follow-up article.
 
-## Pre-requirements
+## Prerequisites
 
 ### Android
 

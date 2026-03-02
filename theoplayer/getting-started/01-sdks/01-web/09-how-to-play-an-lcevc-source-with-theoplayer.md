@@ -10,7 +10,7 @@ first.
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
 |   Yes   |     No      |   No    |    No    |       No       |       No       |
 
-## Pre-requirements
+## Prerequisites
 
 #### 1. Your THEOplayer SDK needs to have the 'lcevc' feature enabled.
 
@@ -27,7 +27,7 @@ This example below uses the latest version of the LCEVCdecJS library that is mai
 ## Setting the source
 
 After your player is correctly configured you can set your LCEVC source, but you need to also include `lcevc: true` on
-the SourceDescription so that the player knows how to configure the correct playback pipeline:
+the `SourceDescription` so that the player knows how to configure the correct playback pipeline:
 
 ##### DASH example
 

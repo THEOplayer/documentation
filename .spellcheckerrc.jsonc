@@ -1,0 +1,15 @@
+{
+  "language": "en-US",
+  "dictionaries": [
+    "node_modules/spellchecker-cli/dictionaries/base.txt",
+    "node_modules/spellchecker-cli/dictionaries/react.txt",
+    ".github/dictionary.mjs"
+  ],
+  "plugins": ["spell", "indefinite-article", "repeated-words", "syntax-mentions", "syntax-urls"],
+  "ignore": [
+    // file sizes
+    "[.0-9]+([Kk][Bb]|[Mm][Bb]|[Gg][Bb])",
+    // version numbers
+    "\\b[Vv]?(\\d+\\.)?(\\d+\\.)?(\\d+)\\b"
+  ]
+}

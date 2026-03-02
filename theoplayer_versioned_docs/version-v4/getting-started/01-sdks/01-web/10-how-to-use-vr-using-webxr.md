@@ -11,7 +11,7 @@ first.
 | :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
 |   Yes   |     No      |   No    |    No    |       No       |       No       |
 
-## Pre-requirements
+## Prerequisites
 
 #### 1. You need THEOplayer version 5.0 or greater.
 

@@ -10,9 +10,7 @@ You may need an answer to this question if you want to play one video after the 
 
 You can find the code of the page here below, opportunely commented to clarify how it works (hint: all interesting comments start with "COMMENT:" to aid the search).
 
-Seamless video transitionExpand source
-
-```html
+```html title="Seamless video transition"
 <!doctype html>
 <html lang="en">
   <head>

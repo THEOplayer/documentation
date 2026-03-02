@@ -15,6 +15,7 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
 
 1. Add the THEOplayer Maven repository.
 <Tabs queryString="lang">
+   <!-- spellchecker-disable -->
    <!-- prettier-ignore-start -->
    <TabItem value="groovy" label="Groovy">
     ```groovy
@@ -39,11 +40,13 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
     ```
     </TabItem>
     <!-- prettier-ignore-end -->
+    <!-- spellchecker-enable -->
 </Tabs>
 
 1. Next, we need to edit the `build.gradle` on the **module-level** (**app/build.gradle**)
 
 <Tabs queryString="lang">
+   <!-- spellchecker-disable -->
    <!-- prettier-ignore-start -->
    <TabItem value="groovy" label="Groovy">
     ```groovy
@@ -60,6 +63,7 @@ We have to modify the `build.gradle` files to be able to fetch the Android SDK a
     ```
     </TabItem>
     <!-- prettier-ignore-end -->
+    <!-- spellchecker-enable -->
 </Tabs>
 
 <u>Note</u>: It's possible to replace the `+` with a particular version of THEOplayer that should be used, for example:
@@ -99,7 +103,7 @@ THEOplayer can be added to an Android application either:
 1. **Through a layout (XML)**: By adding the `THEOplayerView` to your layout XML file (e.g., `activity_main.xml`), or
 2. **Programmatically using the Constructor API**: This approach also allows you to configure the license string through a programmatic configuration instead of the `AndroidManifest.xml`.
 
-### Adding THEOplayerView via XML layout
+### Adding `THEOplayerView` via XML layout
 
 You can add the `THEOplayerView` to the layout of the `MainActivity` with the snippet below.
 
@@ -118,7 +122,7 @@ At least the `id`, `width` and `height` attributes need to be specified on the n
 
 ![](../../../assets/img/android-getting-started-14_2.png)
 
-### Adding THEOplayerView programmatically (Constructor API)
+### Adding `THEOplayerView` programmatically (Constructor API)
 
 In the Activity/Fragment, you can use the [constructor API](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerView.html) to create a THEOplayer instance
 by passing along a context and a [`THEOplayerConfig`](https://docs.theoplayer.com/api-reference/android/index.html?com/theoplayer/android/api/THEOplayerConfig.html).
@@ -126,6 +130,7 @@ by passing along a context and a [`THEOplayerConfig`](https://docs.theoplayer.co
 In this `THEOplayerConfig`, you can configure your license string, as demonstrated in the snippet below.
 
 <Tabs queryString="lang">
+   <!-- spellchecker-disable -->
    <!-- prettier-ignore-start -->
    <TabItem value="kotlin" label="Kotlin">
     ```kotlin
@@ -146,6 +151,7 @@ In this `THEOplayerConfig`, you can configure your license string, as demonstrat
     ```
     </TabItem>
     <!-- prettier-ignore-end -->
+    <!-- spellchecker-enable -->
 
 </Tabs>
 
@@ -158,6 +164,7 @@ Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we se
 ### 1. Get the THEOplayer instance
 
 <Tabs queryString="lang">
+       <!-- spellchecker-disable -->
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
             ```kotlin
@@ -193,6 +200,7 @@ Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we se
             ```
         </TabItem>
         <!-- prettier-ignore-end -->
+        <!-- spellchecker-enable -->
     </Tabs>
 
 ### 2. Configure source
@@ -200,6 +208,7 @@ Now in the `MainActivity` we can retrieve the `THEOplayerView` by the `id` we se
 To play a video in THEOplayer, we need to configure a source for the player in our `MainActivity`:
 
 <Tabs queryString="lang">
+       <!-- spellchecker-disable -->
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
@@ -231,6 +240,7 @@ To play a video in THEOplayer, we need to configure a source for the player in o
         ```
         </TabItem>
         <!-- prettier-ignore-end -->
+        <!-- spellchecker-enable -->
     </Tabs>
 
 ### 3. Control THEOplayer through the API
@@ -252,6 +262,7 @@ First add the button to our `activity_main.xml` layout file.
 Then set an `OnClickListener()` on the button in our `MainActivity` code to trigger `play()` and `pause()` on the player.
 
 <Tabs queryString="lang">
+       <!-- spellchecker-disable -->
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
@@ -281,7 +292,8 @@ Then set an `OnClickListener()` on the button in our `MainActivity` code to trig
         ```
         </TabItem>
         <!-- prettier-ignore-end -->
-    </Tabs>
+        <!-- spellchecker-enable -->
+</Tabs>
 
 ![](../../../assets/img/android-getting-started-17_2.png)
 
@@ -289,7 +301,7 @@ Then set an `OnClickListener()` on the button in our `MainActivity` code to trig
 
 The next step is listening for player events.
 
-First, we need to create two more TextViews in the `activity_main.xml` file.
+First, we need to create two more `TextView`s in the `activity_main.xml` file.
 
 ```xml
 <TextView
@@ -308,6 +320,7 @@ First, we need to create two more TextViews in the `activity_main.xml` file.
 We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
 
 <Tabs queryString="lang">
+       <!-- spellchecker-enable -->
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
@@ -355,9 +368,11 @@ We will now listen for `PLAY`, `PAUSE` and `TIMEUPDATE` in this example.
         ```
         </TabItem>
         <!-- prettier-ignore-end -->
-    </Tabs>
+        <!-- spellchecker-enable -->
 
-When the events are triggered, we will update the **MainActivity** UI with the corresponding state.
+</Tabs>
+
+When the events are triggered, we will update the `MainActivity` UI with the corresponding state.
 
 ### 5. Play fullscreen video in landscape mode
 
@@ -366,6 +381,7 @@ THEOplayer SDK contains a default fullscreen activity which can be started autom
 We have to configure our player instance in the `MainActivity` to react to orientation changes and start the Fullscreen activity.
 
 <Tabs queryString="lang">
+       <!-- spellchecker-disable -->
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
@@ -389,7 +405,8 @@ We have to configure our player instance in the `MainActivity` to react to orien
         ```
         </TabItem>
         <!-- prettier-ignore-end -->
-    </Tabs>
+        <!-- spellchecker-enable -->
+</Tabs>
 
 ![](../../../assets/img/android-getting-started-21_2.png)
 
@@ -415,6 +432,7 @@ In order for THEOplayer to work properly and in sync with the [Activity lifecycl
 We need to call the `onResume`, `onPause` and `onDestroy` methods of the `THEOplayerView` when the matching methods are called in the Activity.
 
 <Tabs queryString="lang">
+       <!-- spellchecker-disable -->
        <!-- prettier-ignore-start -->
        <TabItem value="kotlin" label="Kotlin">
         ```kotlin
@@ -471,7 +489,9 @@ We need to call the `onResume`, `onPause` and `onDestroy` methods of the `THEOpl
         ```
         </TabItem>
         <!-- prettier-ignore-end -->
-    </Tabs>
+        <!-- spellchecker-enable -->
+
+</Tabs>
 
 ## Run your application
 

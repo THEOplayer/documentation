@@ -8,7 +8,7 @@ Yospace is a Server-Side Ad Insertion solution. A demo for the Web SDK can be fo
 | :-----: | :---------: | :-----: | :--------: | :------------: | :------------: |
 |   Yes   |     Yes     |   Yes   | Unverified |      Yes       |      Yes       |
 
-## Pre-requirements
+## Prerequisites
 
 ##### Web SDK
 

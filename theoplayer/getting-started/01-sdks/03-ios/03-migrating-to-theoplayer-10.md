@@ -5,7 +5,7 @@ and the changes needed in your code.
 
 ## Update THEOplayer
 
-Update THEOplayer iOS/tvOS SDK to version 10 in your Podfile:
+Update THEOplayer iOS/tvOS SDK to version 10 in your `Podfile`:
 
 ```ruby
 target 'MyApp' do
@@ -34,6 +34,6 @@ The legacy playback pipeline is now has been fully retired, and the `useLegacyPl
 
 - Removed the `destroy()` method. Instead, destroy the player by removing its reference `self.player = nil`.
 - Removed the `set` from the subscript of the `MediaTrackList` API. The `MediaTrackList` is a read-only list.
-- Removed the `goLive()` method from THEOliveAPI. Instead, use `player.play()` which will seek to live and play.
+- Removed the `goLive()` method from `THEOliveAPI`. Instead, use `player.play()` which will seek to live and play.
 - Removed the flag `useLegacyPlaybackEngine` in the initializer of `THEOliveConfiguration`
 - Removed THEOlive publication events (`PublicationLoadStartEvent`, `PublicationLoadedEvent` and `PublicationOfflineEvent`), use the equivalent distribution events instead (`DistributionLoadStartEvent`, `EndpointLoadedEvent` and `DistributionOfflineEvent` respectively).

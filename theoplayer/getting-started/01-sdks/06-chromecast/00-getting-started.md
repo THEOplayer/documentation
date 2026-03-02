@@ -54,7 +54,7 @@ By including the THEOplayer Chromecast Receiver SDK, you have access to the THEO
 
 Setting up a THEOplayer instance in a Chromecast Receiver application is similar to our Web SDK. More information on setting up the THEOplayer Web SDK can be found at [Getting Started on Web](../01-web/00-getting-started.mdx).
 
-You need to add a DOM-element which will contain the user interface of THEOplayer, and you need to initialize the THEOplayer instance through JavaScript code.
+You need to add a DOM element which will contain the user interface of THEOplayer, and you need to initialize the THEOplayer instance through JavaScript code.
 
 ```html
 <!doctype html>
@@ -82,8 +82,8 @@ You need to add a DOM-element which will contain the user interface of THEOplaye
 
 The CSS snippet added to the code-block below have the following effect:
 
-1.  `.THEO-cast-receiver-player .THEO-cast-receiver-logo`: Change the default splash image when your receiver app is loading. This default splash image will show a THEOplayer-branded image, but you might want to replace it with a different image.
-2.  `.THEO-cast-receiver-player .THEO-cast-receiver-watermark`: Change the default watermark logo which is shown when pausing (or buffering). This default watermark logo will show a THEOplayer-branded image, but you might want to replace it with a different image.
+1.  `.THEO-cast-receiver-player .THEO-cast-receiver-logo`: Change the default splash image when your receiver app is loading. This default splash image will show a THEOplayer branded image, but you might want to replace it with a different image.
+2.  `.THEO-cast-receiver-player .THEO-cast-receiver-watermark`: Change the default watermark logo which is shown when pausing (or buffering). This default watermark logo will show a THEOplayer branded image, but you might want to replace it with a different image.
 
 In each of the examples, be sure to set the image source correctly, by replacing the '...'.
 
@@ -153,11 +153,11 @@ You have to go through the following steps:
 
 ## Test it
 
-Once your application is published, you can start casting from your THEOplayer Web SDK, iOS SDK or Android SDK. You need to set the correct [appID](pathname:///theoplayer/v10/api-reference/web/interfaces/CastConfiguration.html), enable Chromecast and press the Chromecast icon. Additionally, you can start casting through the [Cast API](pathname:///theoplayer/v10/api-reference/web/interfaces/GlobalCast.html).
+Once your application is published, you can start casting from your THEOplayer Web SDK, iOS SDK or Android SDK. You need to set the correct [`appID`](pathname:///theoplayer/v10/api-reference/web/interfaces/CastConfiguration.html), enable Chromecast and press the Chromecast icon. Additionally, you can start casting through the [Cast API](pathname:///theoplayer/v10/api-reference/web/interfaces/GlobalCast.html).
 
 ## Related articles
 
 - [Pass subtitle selection on to Chromecast](../../../how-to-guides/03-cast/01-chromecast/05-pass-subtitle-section-on-to-chromecast.md)
 - [How to configure a different stream to Chromecast](../../../how-to-guides/03-cast/01-chromecast/03-how-to-configure-to-a-different-stream.md)
-- [Chromecast on my webplayer does not work any longer despite no change in my implementation](../../../faq/54-chromecast-on-weblayer-does-not-longer-work.md)
+- [Chromecast on my web player does not work any longer despite no change in my implementation](../../../faq/54-chromecast-on-weblayer-does-not-longer-work.md)
 - [Connecting from custom Sender applications](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md)
