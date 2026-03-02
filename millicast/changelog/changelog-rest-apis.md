@@ -2,6 +2,17 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-02-27 | REST APIs
+
+### Improvements
+
+- Improvements to data aggregation logic in the [Advanced Reporting API](/millicast/api/reporting/records-get-viewer-records/)
+- Improvements to the media assets functionality
+
+### Fixes
+
+- Fix input validation for [Update Transcoder](/millicast/api/transcoder-update-transcoder/)
+
 ## 2026-02-26 | Usage Reporting
 
 ### Improvements
