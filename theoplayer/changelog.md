@@ -5,6 +5,15 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.11.1 (2026/03/05)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where versions 10.10.0 to 10.11.0 of the [`@theoplayer/basic-hls`](https://www.npmjs.com/package/@theoplayer/basic-hls) variant were published with an incorrect feature set.
+- Fixed an issue where setting a second OptiView Live source in a row would sometimes cause the stream to fail to start.
+
 ## 🚀 10.11.0 (2026/02/25)
 
 ### Web
@@ -24,7 +33,7 @@ toc_max_heading_level: 2
 
 #### ⚠ Known Limitations
 
-- The issue in HLS streams with TS segments where setting a `targetQuality` could sometimes cause an infinite loop, which was fixed in 10.10.1, is present in this release. This will be resolved again in the next release.
+- [`@theoplayer/basic-hls` version 10.11.0](https://www.npmjs.com/package/@theoplayer/basic-hls/v/10.11.0) was incorrectly published with the `basic-dash` feature set. If you're using this variant, please update to version 10.11.1 or higher for the correct feature set.
 
 ### Android
 
@@ -76,6 +85,10 @@ toc_max_heading_level: 2
 
 - Fixed an issue in HLS streams with TS segments where setting a `targetQuality` could sometimes cause an infinite loop.
 
+#### ⚠ Known Limitations
+
+- [`@theoplayer/basic-hls` version 10.10.1](https://www.npmjs.com/package/@theoplayer/basic-hls/v/10.10.1) was incorrectly published with the `basic-dash` feature set. If you're using this variant, please update to version 10.11.1 or higher for the correct feature set.
+
 ## 🚀 10.10.0 (2026/02/11)
 
 ### General
@@ -99,6 +112,10 @@ toc_max_heading_level: 2
 - Fixed an issue where an OptiView Ads stream with disabled VPAID ads could cause the player to stop serving ads.
 - Fixed an issue where playing ads using Google IMA and OptiView Ads together could cause the Google IMA ad to not play.
 - Fixed an issue where an incorrect waiting event could be dispatched during an ad break to ad break transition on an OptiView Ads stream.
+
+#### ⚠ Known Limitations
+
+- [`@theoplayer/basic-hls` version 10.10.0](https://www.npmjs.com/package/@theoplayer/basic-hls/v/10.10.0) was incorrectly published with the `basic-dash` feature set. If you're using this variant, please update to version 10.11.1 or higher for the correct feature set.
 
 ### Android
 
