@@ -79,8 +79,9 @@ There are a few limitations to be aware of:
 
 ## On demand thumbnails
 
-If the thumbnails generated every 30 seconds are not interesting or timed appropriately, you may instead create 'on-demand' thumbnails. 
+If the thumbnails generated every 30 seconds are not interesting or timed appropriately, you may instead create 'on-demand' thumbnails.
 Call the /api/thumbnails endpoint to immediately generate a thumbnail for a streamName and/or tokenId and send it to any configured webhooks.
+
 ```
 curl --request POST \
      --url https://api.millicast.com/api/thumbnails \
@@ -99,8 +100,6 @@ Note that the thumbnail setting on the publish token only controls the regularly
 On demand thumbnails and scheduled thumbnails may be used in parallel.
 
 On demand thumbnails are rate limited to 6 per minute per streamName/tokenId combination.
-
-
 
 ## Learn more
 
