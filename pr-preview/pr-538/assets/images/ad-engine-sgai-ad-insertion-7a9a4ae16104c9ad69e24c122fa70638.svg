@@ -12,11 +12,14 @@
 	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
 	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;stroke:#FFFFFF;}
 	.st7{fill-rule:evenodd;clip-rule:evenodd;fill:#2BA24C;}
-	.st8{font-family:'MyriadPro-Regular';}
+	.st8{font-family:'MyriadPro-Regular',sans-serif;}
 	.st9{font-size:14.4px;}
 	.st10{font-size:12.96px;}
 	.st11{fill:none;}
 	.st12{fill:none;stroke:#344A5E;stroke-width:1.44;stroke-miterlimit:10;}
+
+	/* Dark mode support */
+	:root{color-scheme: dark light;fill:CanvasText;}
 </style>
 <path class="st0" d="M376.9,204.9l5.8-10h-11.5L376.9,204.9z M375.9,144.9v51h2v-51H375.9z"/>
 <rect x="374.3" y="317.8" class="st1" width="0.4" height="102.5"/>
@@ -180,7 +183,7 @@
 		<path class="st3" d="M174.4,76.6c-0.4,0-0.7,0.4-0.7,0.8v1.5c0,0.4,0.3,0.8,0.7,0.8c0.5,0,0.9-0.3,0.9-0.8v-1.5
 			C175.3,76.9,174.9,76.5,174.4,76.6z"/>
 	</g>
-	<text transform="matrix(1 0 0 1 146.2371 134.2341)" class="st3 st8 st9">Advertiser</text>
+	<text transform="matrix(1 0 0 1 176.2371 134.2341)" class="st3 st8 st9" text-anchor="middle">Advertiser</text>
 </g>
 <g>
 	<g>
@@ -211,7 +214,7 @@
 				C386.7,93.6,380.7,94.7,374.4,94.7z"/>
 		</g>
 	</g>
-	<text transform="matrix(1 0 0 1 348.3565 134.2342)" class="st3 st8 st9">Ad Server</text>
+	<text transform="matrix(1 0 0 1 378.3565 134.2342)" class="st3 st8 st9" text-anchor="middle">Ad Server</text>
 </g>
 <g>
 	<g>
@@ -304,16 +307,16 @@
 			c0.2,0.1,0.3,0.2,0.5,0.4c0.1,0.1,0.3,0.3,0.4,0.5c0.1,0.2,0.2,0.3,0.3,0.5s0.1,0.4,0.2,0.6C699.8,262.9,699.9,263.1,699.9,263.3z
 			"/>
 	</g>
-	<text transform="matrix(1 0 0 1 632.2843 303.1425)" class="st3 st8 st9">Ad Decisioning</text>
+	<text transform="matrix(1 0 0 1 677.2843 303.1425)" class="st3 st8 st9" text-anchor="middle">Ad Decisioning</text>
 </g>
-<text transform="matrix(1 0 0 1 314.3858 302.8366)" class="st3 st8 st9">OptiView Ad Engine</text>
-<text transform="matrix(1 0 0 1 215.8986 474.6278)" class="st3 st8 st9">OptiView Streaming</text>
-<text transform="matrix(1 0 0 1 456.3713 474.6277)" class="st3 st8 st9">CDN</text>
-<text transform="matrix(1 0 0 1 627.7427 474.6275)" class="st3 st8 st9">OptiView Player</text>
-<text transform="matrix(1 0 0 1 317.3943 181.6855)" class="st8 st10">Ad Master</text>
-<text transform="matrix(1 0 0 1 290.1788 351.3403)" class="st8 st10">Conformed Ad</text>
+<text transform="matrix(1 0 0 1 374.3858 302.8366)" class="st3 st8 st9" text-anchor="middle">OptiView Ad Engine</text>
+<text transform="matrix(1 0 0 1 275.8986 474.6278)" class="st3 st8 st9" text-anchor="middle">OptiView Streaming</text>
+<text transform="matrix(1 0 0 1 476.3713 474.6277)" class="st3 st8 st9" text-anchor="middle">CDN</text>
+<text transform="matrix(1 0 0 1 677.7427 474.6275)" class="st3 st8 st9" text-anchor="middle">OptiView Player</text>
+<text transform="matrix(1 0 0 1 367.3943 181.6855)" class="st8 st10" text-anchor="end">Ad Master</text>
+<text transform="matrix(1 0 0 1 367.3943 351.3403)" class="st8 st10" text-anchor="end">Conformed Ad</text>
 <polygon class="st11" points="340,342.5 381.3,342.5 381.3,342.5 "/>
-<text transform="matrix(1 0 0 1 32.9893 438.412)" class="st8 st9">Primary Content</text>
+<text transform="matrix(1 0 0 1 132.9893 438.412)" class="st8 st9" text-anchor="end">Primary Content</text>
 <g>
 	<line class="st11" x1="248.6" y1="95" x2="306.1" y2="95"/>
 	<g>
