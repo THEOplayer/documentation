@@ -10,7 +10,7 @@ sidebar_label: OBS
 See the official [obsproject.com](https://obsproject.com) documentation for installation instructions and additional support about using OBS.
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/theolive/getting-started.mdx) tutorial to create a THEOlive channel and start your first broadcast.
+If you haven't already, begin by following the [Getting Started](../../getting-started.mdx) tutorial to create a THEOlive channel and start your first broadcast.
 :::
 
 ## Setting up a broadcast
@@ -60,7 +60,7 @@ Hit apply on settings, close the window, and click on _Start Streaming_ in the _
 
 Your THEOlive channel must be started in order to receive video ingest from OBS. You can choose to start up your channel before or after you start streaming via OBS.
 
-Starting a channel can be done either [through the API](/theolive/api/channels/start-channel) or via [the console](https://console.theo.live/).
+Starting a channel can be done either [through the API](../../api/start-a-channel-by-id.api.mdx) or via [the console](https://console.theo.live/).
 
 ![Start your channel](../../assets/img/consolechannelstart.png)
 

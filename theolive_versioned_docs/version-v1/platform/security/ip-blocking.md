@@ -1,6 +1,6 @@
 # IP-blocking
 
-IP-blocking (or IP-banning) refers to a security measure that restricts access to content for specific IP addresses. Filtering can be allowed or denied by IP addresses or by [countries](/theolive/platform/security/geo-blocking) as well. Only IPv4 and IPv6 CIDRs (Classless Inter-Domain Routing) are allowed.
+IP-blocking (or IP-banning) refers to a security measure that restricts access to content for specific IP addresses. Filtering can be allowed or denied by IP addresses or by [countries](./geo-blocking.md) as well. Only IPv4 and IPv6 CIDRs (Classless Inter-Domain Routing) are allowed.
 
 IP-blocking can be configured via the API or the console.
 
@@ -8,7 +8,7 @@ IP-blocking can be configured via the API or the console.
 
 ### Main channel
 
-You can enable IP-blocking on a channel by [updating](/theolive/api/channels/update-channel) the `ipBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
+You can enable IP-blocking on a channel by [updating](../../api/channels/update-channel.api.mdx) the `ipBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
 
 - `whitelist`: Used by default when no `mode` is passed. This will make the content only available for the CIDRs that have been specified in the `cidrs` property. CIDRs not listed in the `cidrs` property will not receive the stream.
 - `blacklist`: Blocks the content for the CIDRs that have been specified in the `cidrs` property. All CIDRs not specified in the `cidrs` property will be able to view the content.
@@ -29,7 +29,7 @@ For example: If you want to restrict certain CIDRs from viewing your content, yo
 
 ### Channel Alias
 
-IP-blocking can also be done on a [channel alias](/theolive/platform/multi-channel) using the specified channel alias [endpoint](/theolive/api/channels/update-channel-alias) or via the console.
+IP-blocking can also be done on a [channel alias](../multi-channel.md) using the specified channel alias [endpoint](../../api/channels/update-channel-alias.api.mdx) or via the console.
 
 ## IP-blocking via the console
 
