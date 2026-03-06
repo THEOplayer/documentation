@@ -54,14 +54,14 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '🛜',
       },
-      href: '/theolive/api/',
+      href: '/theolive/next/api/',
     },
   ],
   theoLiveApi: [
     {
       type: 'link',
       label: '« Back',
-      href: '/theolive/',
+      href: '/theolive/next/',
     },
     'api/index',
     ...apiSidebar.slice(1),
