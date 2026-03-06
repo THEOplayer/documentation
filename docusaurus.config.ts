@@ -693,6 +693,7 @@ function theoLiveOpenApiOptions(name: string): OpenApiPlugin.APIOptions {
     hideSendButton: false,
     sidebarOptions: {
       groupPathsBy: 'tag',
+      sidebarCollapsible: true,
     },
     versions: {
       v1: {

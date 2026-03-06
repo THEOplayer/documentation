@@ -94,6 +94,7 @@
         {
           "type": "category",
           "label": "Channels",
+          "collapsible": true,
           "items": [
             {
               "type": "doc",
@@ -142,6 +143,7 @@
         {
           "type": "category",
           "label": "Channel Status",
+          "collapsible": true,
           "items": [
             {
               "type": "doc",
@@ -154,6 +156,7 @@
         {
           "type": "category",
           "label": "Channel Aliases",
+          "collapsible": true,
           "items": [
             {
               "type": "doc",
@@ -202,6 +205,7 @@
         {
           "type": "category",
           "label": "Analytics",
+          "collapsible": true,
           "items": [
             {
               "type": "doc",
@@ -214,6 +218,7 @@
         {
           "type": "category",
           "label": "Events",
+          "collapsible": true,
           "items": [
             {
               "type": "doc",
@@ -232,6 +237,7 @@
         {
           "type": "category",
           "label": "Security",
+          "collapsible": true,
           "items": [
             {
               "type": "doc",

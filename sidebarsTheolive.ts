@@ -76,28 +76,24 @@ const sidebars: SidebarsConfig = {
       items: channelsApiSidebar.slice(1),
     },
     {
+      ...eventsApiSidebar[1],
       type: 'category',
       label: 'Events API',
-      collapsible: true,
-      items: eventsApiSidebar[1].items,
     },
     {
+      ...reportsApiSidebar[1],
       type: 'category',
       label: 'Reports API',
-      collapsible: true,
-      items: reportsApiSidebar[1].items,
     },
     {
+      ...schedulersApiSidebar[1],
       type: 'category',
       label: 'Schedulers API',
-      collapsible: true,
-      items: schedulersApiSidebar[1].items,
     },
     {
+      ...webhooksApiSidebar[1],
       type: 'category',
       label: 'Webhooks API',
-      collapsible: true,
-      items: webhooksApiSidebar[1].items,
     },
   ],
 };
