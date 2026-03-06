@@ -8,7 +8,7 @@ Geo-blocking can be configured via the API or the console.
 
 ### Main channel
 
-You can enable geo-blocking on a channel by [updating](/theolive/api/channels/update-channel) the `geoBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
+You can enable geo-blocking on a channel by [updating](../../api/update-a-channel-by-id.api.mdx) the `geoBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
 
 - `whitelist`: Used by default when no `mode` is passed. This will make the content only available in the countries that have been specified in the `countries` property. Countries not listed in the `countries` property will not receive the stream.
 - `blacklist`: Blocks the content in the countries that have been specified in the `countries` property. All other countries not specified in the `countries` property will be able to view the content.
