@@ -378,106 +378,11 @@ const config: Config = {
         id: 'theolive-api',
         docsPluginId: 'theolive',
         config: {
-          channels: {
-            version: 'v2',
-            label: 'v2',
-            baseUrl: '/theolive/next/api/channels',
-            specPath: 'theolive/api/channels.json',
-            outputDir: 'theolive/api/channels',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            versions: {
-              v1: {
-                label: 'v1',
-                baseUrl: '/theolive/api/channels',
-                specPath: 'theolive_versioned_docs/version-v1/api/channels.json',
-                outputDir: 'theolive_versioned_docs/version-v1/api/channels',
-              },
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
-          events: {
-            version: 'v2',
-            label: 'v2',
-            baseUrl: '/theolive/next/api/events',
-            specPath: 'theolive/api/events.json',
-            outputDir: 'theolive/api/events',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            versions: {
-              v1: {
-                label: 'v1',
-                baseUrl: '/theolive/api/events',
-                specPath: 'theolive_versioned_docs/version-v1/api/events.json',
-                outputDir: 'theolive_versioned_docs/version-v1/api/events',
-              },
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
-          reports: {
-            version: 'v2',
-            label: 'v2',
-            baseUrl: '/theolive/next/api/reports',
-            specPath: 'theolive/api/reports.json',
-            outputDir: 'theolive/api/reports',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            versions: {
-              v1: {
-                label: 'v1',
-                baseUrl: '/theolive/api/reports',
-                specPath: 'theolive_versioned_docs/version-v1/api/reports.json',
-                outputDir: 'theolive_versioned_docs/version-v1/api/reports',
-              },
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
-          schedulers: {
-            version: 'v2',
-            label: 'v2',
-            baseUrl: '/theolive/next/api/schedulers',
-            specPath: 'theolive/api/schedulers.json',
-            outputDir: 'theolive/api/schedulers',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            versions: {
-              v1: {
-                label: 'v1',
-                baseUrl: '/theolive/api/schedulers',
-                specPath: 'theolive_versioned_docs/version-v1/api/schedulers.json',
-                outputDir: 'theolive_versioned_docs/version-v1/api/schedulers',
-              },
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
-          webhooks: {
-            version: 'v2',
-            label: 'v2',
-            baseUrl: '/theolive/next/api/webhooks',
-            specPath: 'theolive/api/webhooks.json',
-            outputDir: 'theolive/api/webhooks',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            versions: {
-              v1: {
-                label: 'v1',
-                baseUrl: '/theolive/api/webhooks',
-                specPath: 'theolive_versioned_docs/version-v1/api/webhooks.json',
-                outputDir: 'theolive_versioned_docs/version-v1/api/webhooks',
-              },
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
+          channels: theoLiveOpenApiOptions('channels'),
+          events: theoLiveOpenApiOptions('events'),
+          reports: theoLiveOpenApiOptions('reports'),
+          schedulers: theoLiveOpenApiOptions('schedulers'),
+          webhooks: theoLiveOpenApiOptions('webhooks'),
         },
       } satisfies OpenApiPlugin.PluginOptions,
     ],
@@ -776,6 +681,29 @@ function isMarkdownUrl(href: string): boolean {
 function externalDocUrl(docPath: string): string {
   const [, projectName, externalDocPath] = docPath.match(/\bexternal\/([^/]+)\/(.+)$/);
   return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
+}
+
+function theoLiveOpenApiOptions(name: string): OpenApiPlugin.APIOptions {
+  return {
+    version: 'v2',
+    label: 'v2',
+    baseUrl: `/theolive/next/api/${name}`,
+    specPath: `theolive/api/${name}.json`,
+    outputDir: `theolive/api/${name}`,
+    hideSendButton: false,
+    sidebarOptions: {
+      groupPathsBy: 'tag',
+    },
+    versions: {
+      v1: {
+        label: 'v1',
+        baseUrl: `/theolive/api/${name}`,
+        specPath: `theolive_versioned_docs/version-v1/api/${name}.json`,
+        outputDir: `theolive_versioned_docs/version-v1/api/${name}`,
+      },
+    },
+    markdownGenerators: openApiLinkRewrite(),
+  };
 }
 
 export default config;
