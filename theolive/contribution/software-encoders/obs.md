@@ -10,7 +10,7 @@ sidebar_label: OBS
 See the official [obsproject.com](https://obsproject.com) documentation for installation instructions and additional support about using OBS.
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/theolive/getting-started.mdx) tutorial to create a THEOlive channel and start your first broadcast.
+If you haven't already, begin by following the [Getting Started](../../getting-started.mdx) tutorial to create a THEOlive channel and start your first broadcast.
 :::
 
 ## Setting up a broadcast
