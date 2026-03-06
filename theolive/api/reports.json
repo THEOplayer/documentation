@@ -2,11 +2,11 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Reports",
-    "version": "1.1"
+    "version": "2"
   },
   "servers": [
     {
-      "url": "https://api.theo.live/reports"
+      "url": "https://api.theo.live/v2/reports"
     }
   ],
   "components": {

@@ -2,11 +2,11 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Channels",
-    "version": "1.1"
+    "version": "2"
   },
   "servers": [
     {
-      "url": "https://api.theo.live/channels"
+      "url": "https://api.theo.live/v2/channels"
     }
   ],
   "components": {
