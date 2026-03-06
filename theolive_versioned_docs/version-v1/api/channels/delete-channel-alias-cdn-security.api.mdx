@@ -1,0 +1,50 @@
+---
+id: delete-channel-alias-cdn-security
+title: 'Disable CDN security for alias (deleting all keys)'
+description: ''
+sidebar_label: 'Disable CDN security for alias (deleting all keys)'
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVE1v2zAM/SsGTy2g1OnQk29D00OBYYd2OxU5MDITq1NkVaKDBob++0DZTtI2A/ZxWC6BRerx8fFRPTBuIlRP8Ei6C4b3sFRQU9TBeDatgwpAQespoHze11BBTZaYZrpB58jO0BqMM127WZwwFHgMuCWmIOA9ONwSVDBeua9BgRFsj9zA+4L3i6JdF9xQMeaDgqgb2iJUPfDeC1TkYNwGkoJAL50JVEPFoaOkDtUysd+qlTP/qMpSTqJvXaQo+Z/mc/l7Cy6HCnTrmBxLGL23Rmcly+coOT3QK269HVAeKHY2Z+7QdkKgT5DSGWLt6pk0i9BBhsMmAyT5Kbg5R+bmv5BJIrgPpJFFuzXaSAq2xE17tFL2CzdQQdkfLJLKPBWKZT8OMpWnJit/0D7PjMJuslkXLFTQMPtYlSV6c8UNtVfW7KgcgSPI7A5OlVuR9Byqp+Vp4FF6HHQYwodmBX2yinyvMBqddTFu3eZEw1Yit1NFBcJwGMP11bXYybeRt5g1H926MBFXlorbxddiYlGs2zCYs7jIUhm3KdDaQnq/fG/m/jhdWdqRL9Mrl96icVI3K9SPcj9BdbqRo96goDquzru9zqIvFTRtZAHo+xVG+h5sSnL80lEQUZcKdhiMNJQlrofmjg74JfGLh3HRLotz78DZpsZDdMJwMutA9s2jI2/DPzCZXom/4DDpmZZJQUNYU8i6DNHPWpPnk3sfVlOseViaxd2Xu293kNJP09nzNA==
+sidebar_class_name: 'delete api-method'
+info_path: theolive/api/channels/channels
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Disable CDN security for alias (deleting all keys)'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/{channelId}/aliases/{aliasId}/cdn-security/keys'} context={'endpoint'}></MethodEndpoint>
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[
+    { name: 'channelId', in: 'path', description: 'ID of the channel', schema: { type: 'string' }, required: true },
+    { name: 'aliasId', in: 'path', description: 'ID of alias', schema: { type: 'string' }, required: true },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '200': {
+      description: '200',
+      content: { 'application/json': { examples: { Result: { value: '{}' } }, schema: { type: 'object', properties: {} } } },
+    },
+    '400': {
+      description: '400',
+      content: { 'application/json': { examples: { Result: { value: '{}' } }, schema: { type: 'object', properties: {} } } },
+    },
+  }}
+></StatusCodes>

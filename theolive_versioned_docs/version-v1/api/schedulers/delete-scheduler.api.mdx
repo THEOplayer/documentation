@@ -1,0 +1,49 @@
+---
+id: delete-scheduler
+title: 'Delete scheduler'
+description: "Removes a scheduler. This action can't be done when a scheduler is active, only when it's pending or terminated"
+sidebar_label: 'Delete scheduler'
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVE1v2zAM/SsCL90ALU6HnnQb0BwK7JRlpyAHRWZidbKkSnTWwNB/H2g7X2t73XyxTVL0e3yP7oH0PoNaww/TYN05TBk2EmrMJtlINnhQsMQ2HDALLfKpaiZWjc1CGy4RRvs7ElsUdfAofjfor2vFVHhAKYJ3x7HA0l0WEX1t/V6EJAhTa70mrEFCiJg0t36qQUGNDgm/nBuChKiTbpEYrlr34HWLoMDyWcuQo6YG/uaxalA8PYqwu0YHEvi51aB6oGPkPpmS9XsoEhK+dDZhDYpSh2XDkRyDz5i5/uv8gW+3n+GgBBM8oSdO6xidNQOf6jlzTQ/4qtvoxi5LzJ0bKg/adQygL1DKO8DC9hkNMf/EIyI7NCh8SXiYz9+C4eC/B1N49DGhGfRUO+0ySmiRmnARdJCRGlBQ9bYuLASmw0nSLjlQ0BDFrKpKRzujBsPM2QNW+WJWliSj6ZKl43Auo5mDWm+uE2zudqQ3ps8cuP/JAfy+1dmaga71uzAUWnKcuVoQCYxynO/97J59EkOmVg/DnLz4OHC88dmNMv1FlP+wYBN9wleqotPWM4lh5P0kyhqUrflf0IRM/Nr3W53xZ3KlcPilw8QT30g46GT1lqe07qG2mZ8vqn/I+tNyWq7P4qPNfBfmFNT+yEpMJgUJv/A4/gPKpkhoUNeYBkhj4psxGOnqyJtNYMucPfq4+L5YLaCUPyv+woY=
+sidebar_class_name: 'delete api-method'
+info_path: theolive/api/schedulers/schedulers
+custom_edit_url: null
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete scheduler'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/{id}'} context={'endpoint'}></MethodEndpoint>
+
+Removes a scheduler. This action can't be done when a scheduler is active, only when it's pending or terminated
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'} children={'Request'}></Heading>
+
+<ParamsDetails
+  parameters={[{ name: 'id', in: 'path', description: 'The ID of a scheduler', schema: { type: 'string' }, required: true }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    '204': {
+      description: '204',
+      content: { 'application/json': { examples: { Result: { value: '{}' } }, schema: { type: 'object', properties: {} } } },
+    },
+    '400': {
+      description: '400',
+      content: { 'application/json': { examples: { Result: { value: '{}' } }, schema: { type: 'object', properties: {} } } },
+    },
+  }}
+></StatusCodes>
