@@ -2,6 +2,12 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-03-02 | REST APIs
+
+### Features
+
+- Re-streaming is now supported for WebRTC ingests using H.264 and Opus codecs
+
 ## 2026-02-27 | REST APIs
 
 ### Improvements
