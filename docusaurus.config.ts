@@ -378,11 +378,23 @@ const config: Config = {
         id: 'theolive-api',
         docsPluginId: 'theolive',
         config: {
-          channels: theoLiveOpenApiOptions('channels'),
-          events: theoLiveOpenApiOptions('events'),
-          reports: theoLiveOpenApiOptions('reports'),
-          schedulers: theoLiveOpenApiOptions('schedulers'),
-          webhooks: theoLiveOpenApiOptions('webhooks'),
+          theolive: {
+            version: 'v2',
+            label: 'v2',
+            specPath: 'https://api.theo.live/v2/api-docs/swagger.json',
+            outputDir: `theolive/api/`,
+            hideSendButton: false,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              sidebarCollapsible: true,
+            },
+            markdownGenerators: openApiLinkRewrite(),
+          },
+          channels: theoLiveV1OpenApiOptions('channels'),
+          events: theoLiveV1OpenApiOptions('events'),
+          reports: theoLiveV1OpenApiOptions('reports'),
+          schedulers: theoLiveV1OpenApiOptions('schedulers'),
+          webhooks: theoLiveV1OpenApiOptions('webhooks'),
         },
       } satisfies OpenApiPlugin.PluginOptions,
     ],
@@ -683,25 +695,16 @@ function externalDocUrl(docPath: string): string {
   return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
 }
 
-function theoLiveOpenApiOptions(name: string): OpenApiPlugin.APIOptions {
+function theoLiveV1OpenApiOptions(name: string): OpenApiPlugin.APIOptions {
   return {
-    version: 'v2',
-    label: 'v2',
-    baseUrl: `/theolive/next/api/${name}`,
-    specPath: `theolive/api/${name}.json`,
-    outputDir: `theolive/api/${name}`,
+    version: 'v1',
+    label: 'v1',
+    specPath: `theolive_versioned_docs/version-v1/api/${name}.json`,
+    outputDir: `theolive_versioned_docs/version-v1/api/${name}`,
     hideSendButton: false,
     sidebarOptions: {
       groupPathsBy: 'tag',
       sidebarCollapsible: true,
-    },
-    versions: {
-      v1: {
-        label: 'v1',
-        baseUrl: `/theolive/api/${name}`,
-        specPath: `theolive_versioned_docs/version-v1/api/${name}.json`,
-        outputDir: `theolive_versioned_docs/version-v1/api/${name}`,
-      },
     },
     markdownGenerators: openApiLinkRewrite(),
   };

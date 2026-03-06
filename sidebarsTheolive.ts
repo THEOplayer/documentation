@@ -1,9 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import channelsApiSidebar from './theolive/api/channels/sidebar';
-import eventsApiSidebar from './theolive/api/events/sidebar';
-import reportsApiSidebar from './theolive/api/reports/sidebar';
-import schedulersApiSidebar from './theolive/api/schedulers/sidebar';
-import webhooksApiSidebar from './theolive/api/webhooks/sidebar';
+import apiSidebar from './theolive/api/sidebar';
 
 const sidebars: SidebarsConfig = {
   theolive: [
@@ -68,33 +64,7 @@ const sidebars: SidebarsConfig = {
       href: '/theolive/',
     },
     'api/index',
-    {
-      type: 'category',
-      label: 'Channel API',
-      collapsible: true,
-      collapsed: false,
-      items: channelsApiSidebar.slice(1),
-    },
-    {
-      ...eventsApiSidebar[1],
-      type: 'category',
-      label: 'Events API',
-    },
-    {
-      ...reportsApiSidebar[1],
-      type: 'category',
-      label: 'Reports API',
-    },
-    {
-      ...schedulersApiSidebar[1],
-      type: 'category',
-      label: 'Schedulers API',
-    },
-    {
-      ...webhooksApiSidebar[1],
-      type: 'category',
-      label: 'Webhooks API',
-    },
+    ...apiSidebar.slice(1),
   ],
 };
 
