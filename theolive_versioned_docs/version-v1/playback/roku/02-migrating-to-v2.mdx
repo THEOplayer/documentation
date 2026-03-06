@@ -1,0 +1,28 @@
+---
+sidebar_position: 2
+sidebar_label: Migrating to THEOlive v2
+---
+
+# Migrating to THEOlive v2
+
+If you are using THEOlive v2 for your live streams, you will need to do some extra configuration to successfully play back your THEOlive streams on Roku.
+
+## Initial Setup
+
+1. Follow [our Getting Started guide](/theoplayer/getting-started/sdks/roku/getting-started)
+   to set up THEOplayer in your Roku app.
+2. Add a THEOlive source to your player's source.
+
+### Configure THEOlive for v2
+
+THEOlive v2 sources do not use the default discovery URL (https://discovery.theo.live/v2/publications/). In order to use v2, you will need to specify one or more discovery URLs. On the player configuration object, you may add the discovery URLs using the `theoLive` property on the player configuration.
+
+```brightscript
+playerConfiguration = {
+  license: "<YOUR_LICENSE_HERE>",
+  theoLive: {
+    discoveryUrls: ["https://discovery.theo.live/v2/distributions/"]
+  }
+}
+m.player.callFunc("configure", playerConfiguration)
+```

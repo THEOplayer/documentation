@@ -1,0 +1,102 @@
+---
+sidebar_position: 2
+---
+
+# Token based security
+
+THEOlive offers the option to enable JWT token security on a distribution (formerly referred to as an alias) level. This can be interesting if you only want valid users to access your stream. Read more about the feature and configuring it on your channels on the [token based security guide](/theolive/platform/security/token-based-security).
+
+This page will demonstrate how to configure the Android SDK for playback of channels with token based security enabled.
+
+## Setting up the Android THEOplayer SDK for THEOlive
+
+Refer to the [getting started guide](../getting-started) for the prerequisite steps in getting the web SDK up and running for THEOlive playback.
+
+## Configuring THEOplayer to pass the token
+
+The token needs to be passed along with player requests as a Bearer token in the `Authorization` header of the requests. To do so we can make use of the Network API of the player, which works as follows:
+
+```kotlin
+val token = getToken() // Generate or request your token, for more information check the token based security guide linked above.
+player.theoLive.authToken = token
+```
+
+This will ensure the player includes your authorization header on all subsequent requests it performs for playback of your THEOlive distribution.
+
+## Dealing with token expiry and rotation
+
+If your tokens are short-lived, you want to make sure to update the token being passed to the player and requests before it expires, to allow playback to continue beyond expiry. This can simply be done by updating the header on the player in the same way. For example, one could check on an interval that makes sense for your token lifespan whether the token is about to expire and update when necessary, for example:
+
+```kotlin
+private var token: String? = null
+private var tokenUpdateJob: Job? = null
+
+// Helper function to check whether your token will expire within one minute from now
+private fun tokenWillExpireSoon(): Boolean {
+    val currentToken = token ?: return true
+
+    return try {
+        val parts = currentToken.split(".")
+        if (parts.size < 2) return true
+
+        val payload = String(Base64.decode(parts[1], Base64.DEFAULT))
+        val jsonPayload = JSONObject(payload)
+        val exp = jsonPayload.getLong("exp").seconds
+        val now = System.currentTimeMillis().milliseconds
+
+        exp - now <= 60.seconds
+    } catch (e: Exception) {
+        true // If parsing fails, assume token needs refresh
+    }
+}
+
+private fun maybeUpdateToken() {
+    if (token == null || tokenWillExpireSoon()) {
+        token = getToken() // Generate or request your token
+        token?.let { newToken ->
+            player.theoLive.authToken = newToken
+        }
+    }
+}
+
+// Start the token management
+private fun startTokenManagement(scope: CoroutineScope) {
+    scope.launch {
+        maybeUpdateToken() // Initial token update
+
+        // Check every 30 seconds
+        tokenUpdateJob = scope.launch {
+            while (isActive) {
+                delay(30.seconds)
+                maybeUpdateToken()
+            }
+        }
+    }
+}
+
+fun stopTokenManagement() {
+    tokenUpdateJob?.cancel()
+}
+```
+
+:::info
+For coroutine support with kotlin, ensure you have the `kotlinx-coroutines-android` dependency installed.
+
+```groovy
+dependencies {
+    // ... Other dependencies
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion'
+}
+```
+
+`coroutineVersion` represents the library version as defined elsewhere in your project setup.
+
+:::
+
+## Clearing the token
+
+If the token isn't needed anymore, e.g. when switching to an unprotected distribution or a non-THEOlive source altogether, the header can be simply removed as follows:
+
+```kotlin
+player.theoLive.authToken = null;
+```

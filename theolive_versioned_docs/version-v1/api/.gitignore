@@ -2,4 +2,3 @@
 **/*.api.mdx
 **/*.info.mdx
 **/sidebar.ts
-**/versions.json

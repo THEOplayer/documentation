@@ -1,0 +1,48 @@
+---
+sidebar_position: 1
+sidebar_label: Getting started with Roku
+---
+
+# Getting started with THEOlive on Roku
+
+## Usage
+
+1. Follow [our Getting Started guide](/theoplayer/getting-started/sdks/roku/getting-started)
+   to set up THEOplayer in your Roku app.
+2. Add a THEOlive source to your player's source.
+
+### Add a THEOlive source
+
+After setting up your THEOplayer on your App, set its source to a `SourceDescription` containing a `THEOliveSource`.
+You'll need a THEOlive channel ID:
+
+```brightscript
+m.THEOsdk.source = {
+    "live": true,
+    "sources": {
+      "src": "your-channel-id",
+      "type": "theolive"
+    }
+}
+```
+
+Please note that the playlist feature cannot be used with THEOlive. On Roku the THEOlive source falls back to the HLS stream.
+
+### Configure THEOlive
+
+On the player configuration object, you may add extra configuration using the `theoLive` property on the player configuration. For instance, if you would like to provide an external ID to track the session, you may add it to the `theoLive` configuration:
+
+```brightscript
+playerConfiguration = {
+  license: "<YOUR_LICENSE_HERE>",
+  theoLive: {
+    externalSessionId: "my-unique-id"
+  }
+}
+m.player.callFunc("configure", playerConfiguration)
+```
+
+## More information
+
+- [API references](/theoplayer/api-reference/roku)
+- [Migrating to THEOlive v2](/theolive/playback/roku/02-migrating-to-v2.mdx)
