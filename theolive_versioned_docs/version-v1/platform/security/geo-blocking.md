@@ -1,6 +1,6 @@
 # Geo-blocking
 
-Geo-blocking refers to the action of restricting ("blacklisting") or allowing ("whitelisting") access to certain content based on the geographical location of the user. Filtering can be allowed or denied by countries as well as [IP addresses](/theolive/platform/security/ip-blocking). Geo-blocking enables content providers to adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on private content.
+Geo-blocking refers to the action of restricting ("blacklisting") or allowing ("whitelisting") access to certain content based on the geographical location of the user. Filtering can be allowed or denied by countries as well as [IP addresses](./ip-blocking.md). Geo-blocking enables content providers to adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on private content.
 
 Geo-blocking can be configured via the API or the console.
 
@@ -8,7 +8,7 @@ Geo-blocking can be configured via the API or the console.
 
 ### Main channel
 
-You can enable geo-blocking on a channel by [updating](/theolive/api/channels/update-channel) the `geoBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
+You can enable geo-blocking on a channel by [updating](../../api/channels/update-channel.api.mdx) the `geoBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
 
 - `whitelist`: Used by default when no `mode` is passed. This will make the content only available in the countries that have been specified in the `countries` property. Countries not listed in the `countries` property will not receive the stream.
 - `blacklist`: Blocks the content in the countries that have been specified in the `countries` property. All other countries not specified in the `countries` property will be able to view the content.
@@ -63,7 +63,7 @@ If you would like to make your content available anywhere **except** Belgium, yo
 
 ### Channel alias
 
-Geo-blocking can also be done on a [channel alias](/theolive/platform/multi-channel) using the specified channel alias [endpoint](/theolive/api/channels/update-channel-alias) or via the console.
+Geo-blocking can also be done on a [channel alias](../multi-channel.md) using the specified channel alias [endpoint](../../api/channels/update-channel-alias.api.mdx) or via the console.
 
 ## Geo-blocking on main channel and alias
 

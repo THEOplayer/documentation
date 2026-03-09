@@ -7,7 +7,7 @@ sidebar_label: Alias
 
 This guide outlines THEOlive’s multi-channel approach: ingest your stream once and create multiple channel aliases, each with its own unique playout configuration. In addition to customized settings per alias, THEOlive also allows you to apply individual security features—such as geoblocking and token-based authentication on a per-alias basis.
 
-You can configure this via the [THEOlive management console](https://console.theo.live), as well via the [THEOlive API](/theolive/api/channels/create-channel-alias).
+You can configure this via the [THEOlive management console](https://console.theo.live), as well via the [THEOlive API](../api/channels/create-channel-alias.api.mdx).
 
 ## Multi-channel: player aliases
 
@@ -25,7 +25,7 @@ Including an alias is straightforward: Copy the alias’s Channel ID and paste i
 
 ### Managing your alias
 
-At any time, you can [update](/theolive/api/channels/update-channel-alias), [enable](/theolive/api/channels/enable-channel-alias), [disable](/theolive/api/channels/disable-channel-alias) or [delete](/theolive/api/channels/delete-channel-alias) a channel alias. The default alias can't be deleted, you'll have to delete your whole channel in case you want to do so.
+At any time, you can [update](../api/channels/update-channel-alias.api.mdx), [enable](../api/channels/enable-channel-alias.api.mdx), [disable](../api/channels/disable-channel-alias.api.mdx) or [delete](../api/channels/delete-channel-alias.api.mdx) a channel alias. The default alias can't be deleted, you'll have to delete your whole channel in case you want to do so.
 
 ![Icon buttons to disable, enable or delete an alias](../assets/img/8751d4a-alias-settings.PNG)
 
@@ -33,7 +33,7 @@ At any time, you can [update](/theolive/api/channels/update-channel-alias), [ena
 
 You can visualize data for each channel alias individually. In the Console, the Analytics section of the Channel Details page provides insights such as concurrent viewers, latency, viewer locations, browser and operating system breakdowns, and total viewing minutes. Click on any of the links in the Analytics section to view detailed metrics for a specific alias.
 
-THEOlive also offers an API endpoint where you can query the minutes viewed on an hourly basis per channel alias. You can read more about it [here](/theolive/api/channels/get-channel-alias-analytics).
+THEOlive also offers an API endpoint where you can query the minutes viewed on an hourly basis per channel alias. You can read more about it [here](../api/channels/get-channel-alias-analytics.api.mdx).
 
 ![Link to viewing insights and channel usage page where analytics are stored per channel alias](../assets/img/3c77b57-channel-alias-analytics.png)
 
@@ -41,5 +41,5 @@ THEOlive also offers an API endpoint where you can query the minutes viewed on a
 
 Creating channel aliases can serve useful in a couple of different ways. Here are a couple of examples where creating a channel alias can simplify your workflow
 
-- Creating a stream that requires multiple stream [redundancy](/theolive/platform/redundancy/) or fallback solutions
-- Creating a stream that requires different [geo-blocking](/theolive/platform/security/geo-blocking) rules for different countries
+- Creating a stream that requires multiple stream [redundancy](./redundancy.md) or fallback solutions
+- Creating a stream that requires different [geo-blocking](./security/geo-blocking.md) rules for different countries
