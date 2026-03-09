@@ -1,4 +1,4 @@
-# Chromecast on my webplayer does not work any longer despite no change in my implementation
+# Chromecast on my web player does not work any longer despite no change in my implementation
 
 This or a similar question may be asked in case your Chromecast stops working. There may indeed be different causes why your Chromecast is not working, especially if
 

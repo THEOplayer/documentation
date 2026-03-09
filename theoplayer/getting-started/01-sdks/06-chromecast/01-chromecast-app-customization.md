@@ -45,7 +45,7 @@ The default controls (e.g. play, pause, scrub bar) are used to control the Recei
 
 **In a Sender application, you use either the THEOplayer [Web](https://www.theoplayer.com/sdk/html5), [iOS](https://www.theoplayer.com/sdk/ios) or [Android](https://www.theoplayer.com/sdk/android) SDK.**
 
-A **Chromecast Receiver application** is the application which is loaded on your Chromecast-enabled device (e.g. Chromecast Ultra, Android TV, ...).
+A **Chromecast Receiver application** is the application which is loaded on your Chromecast enabled device (e.g. Chromecast Ultra, Android TV, ...).
 The UI of a Receiver application is typically quite simple:
 
 1. When a video is playing, the video is playing fullscreen without any elements overlaying it.
@@ -93,7 +93,7 @@ Familiarize yourself with the above APIs if you want to change the appearance of
 
 ### Altering Default UI
 
-If you are using THEOplayer's default UI, but want to use your own button instead, then you can hide THEO's default button, and [insert a new one](../../../how-to-guides/11-ui/07-how-to-insert-a-button.md) instead. You also need to use our Cast API described in the above "Chromeless UI" section.
+If you are using THEOplayer's default UI, but want to use your own button instead, then you can hide THEOplayer's default button, and [insert a new one](../../../how-to-guides/11-ui/07-how-to-insert-a-button.md) instead. You also need to use our Cast API described in the above "Chromeless UI" section.
 
 ## Customizing a Receiver application
 
@@ -137,7 +137,7 @@ for your use-cases.
 
 ## Notes
 
-- Google describes their Chromecast UX guideliness at https://developers.google.com/cast/docs/ux_guidelines/.
+- Google describes their Chromecast UX guidelines at https://developers.google.com/cast/docs/ux_guidelines/.
 - This article is currently categorized under the "Getting Started" guides of our Chromecast SDK, which is also known as our Chromecast Receiver SDK.
   Naturally: you leverage a Chromecast Receiver SDK in a Chromecast Receiver application. In result, this categorization might be confusing to some readers,
   because we have discussed concepts and APIs which relate to a Sender application.

@@ -4,7 +4,7 @@ In some cases you may experience problems related to cached versions of the THEO
 
 Related questions may be:
 
-- Can I implement a cachebuster on the THEOplayer library load?
+- Can I implement a cache buster on the THEOplayer library load?
 - Can I force a file to be called always from the server to prevent it from being fetched from the cache?
 - How can I make sure that users always get the newest version of THEOplayer libraries I deployed?
 
@@ -57,7 +57,7 @@ The downside of adding a variable at the end of the filename is that these worke
 
 You can make sure that the variable is a different one for each call, thus requesting the server version of the file each time (and ignoring the cached version).
 
-Here's an example on how to dynamically generate such a cachebuster variable in JavaScript (taken from [this original article](https://www.virendrachandak.com/techtalk/cachebuster-code-in-javascript/)):
+Here's an example on how to dynamically generate such a `cachebuster` variable in JavaScript (taken from [this original article](https://www.virendrachandak.com/techtalk/cachebuster-code-in-javascript/)):
 
 ```html
 <script type="text/javascript">
