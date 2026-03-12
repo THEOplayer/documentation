@@ -5,6 +5,93 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.12.0 (2026/03/12)
+
+### Web
+
+#### ✨ Features
+
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+- Added the `AdBreak.id` API.
+- Added the experimental `View.player` property to the MultiView API to access the player underlying that view.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not parse Nielsen cues when playing an OptiView Live stream.
+- Fixed an issue where the player would not dispatch ad events when playing a Google DAI DASH live stream.
+- Fixed an issue in HLS streams with TS segments where setting a `targetQuality` could sometimes cause an infinite loop.
+- Fixed an issue where the player would still receive id3 events from the previous Google DAI source after resetting the source to a non Google DAI source.
+- Fixed an issue where, when playing an OptiView Ads enabled stream, subsequent switches from ad to content would take longer and longer each time.
+- Fixed an issue where the backdrop doesn't respect the aspect ratio when an ad is played with another aspect ratio in an OptiView Ads stream.
+- Fixed an issue where the player would not pause the content in double box layout when clicking on an ad clickthrough for an OptiView Ads stream.
+- Fixed an issue where OptiView Live streaming fallback functionality was not behaving as expected when playing HESP streams.
+- Fixed an issue where the player would sometimes play a Google IMA preroll ad again when switching from ad to content while playing an OptiView Ads stream in native fullscreen or native PiP.
+- Fixed an issue where the content would be paused when playing an OptiView Ads double-box advertisement.
+- Fixed an issue where the double box layout would not dismiss when the VAST ad creative was unavailable for OptiView Ads.
+- Fixed an issue where the player would sometimes not play the VAST ad unmuted on iOS Safari for an OptiView Ads stream.
+
+#### ⚠ Known Limitations
+
+- Using OptiView Ads with Picture-in-Picture (PiP) on Firefox is not supported. The default PiP button will be hidden in this scenario to discourage usage.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- `LatencyManager.currentLatency` now returns `null` when the player is not actively playing.
+
+#### ✨ Features
+
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+- Added the `AdBreak.idAsString` API.
+- Added `Logger.HESP` logging tag for debugging HESP playback issues.
+
+#### 👎 Deprecations
+
+- Deprecated `MediaTailorAdAvail.id` in favor of `AdBreak.idAsString`.
+
+### iOS
+
+#### ✨ Features
+
+- Added the `bytes` property to the `CachingTask` API which estimates the total amount of bytes that the task will download.
+- Added the `AdBreak.id` API.
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+- Added better error handling for HESP loading during startup with bad network conditions.
+
+#### ⚡ Improvements
+
+- Improved performance when accessing the `bytesCached` property of `CachingTask`.
+- Improved error handling during ABR switches when playing OptiView Live sources.
+- Improve error details (error code and message) when storage is low during a caching task. In a future major version, we will send better error metadata where possible: ie. send `THEOErrorCode.CACHE_SOURCE_ERROR` instead of `THEOErrorCode.NETWORK_ERROR`.
+
+#### 🐛 Issues
+
+- Fixed an issue where text tracks were not synced properly with Chromecast.
+- Fixed an issue where HESP playout would occasionally fail to start or stall shortly after startup.
+- Fixed an issue where a `CastError` was thrown during Chromecast connection establishment.
+- Fixed an issue where retrying segment downloads for OptiView Live sources in bad network conditions would cause a fallback instead of continuing with the retried segment download.
+- Fixed an issue where autoplay would not work when setting Millicast sources.
+- Fixed an issue where setting `muted` on the player before setting a `MillicastSource` would be ignored.
+- Fixed an issue where a quality switch on an OptiView Live HESP source caused unintended fallbacks.
+- Fixed an issue where the ABR controller would switch up too fast after startup or after a previous quality switch.
+- Fixed an issue during HESP playback where sometimes a `playing` event would be missing after resuming playback.
+
+### Roku
+
+#### ✨ Features
+
+- Added the `AdBreak.id` API.
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+
+#### ⚡ Improvements
+
+- Updated the Mux SDK in the THEOMuxConnector to 2.6.0.
+
+#### 🐛 Issues
+
+- Fixed an issue in the THEOMuxConnector where the poster URL was not being recorded.
+
 ## 🚀 10.11.1 (2026/03/05)
 
 ### Web
