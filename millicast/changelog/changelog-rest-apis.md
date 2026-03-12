@@ -2,6 +2,18 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-03-12 | REST APIs
+
+### Features
+
+- Introduced [on demand thumbnails](/millicast/webhooks/thumbnail/#on-demand-thumbnails)
+- Added storage usage analytics for media type VOD
+
+### Fixes
+
+- Fixed packet loss calculation for RTMP streams
+- Improved token validation on publishing and subscribing
+
 ## 2026-03-02 | REST APIs
 
 ### Features
