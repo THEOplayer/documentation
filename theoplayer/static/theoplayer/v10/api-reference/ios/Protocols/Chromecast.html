@@ -1135,6 +1135,11 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The ChromecastConnectionDelegate to be used when the Chromecast connection changes.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    The delegate is not retained when integrating the cast integration with the new pipeline.  See <code><a href="../Classes/CastConfiguration.html#/s:13THEOplayerSDK17CastConfigurationC26enableExperimentalPipelineSbvp">CastConfiguration.enableExperimentalPipeline</a></code>. You need to immediately set the delegate after adding the cast integration via <code>THEOplayer.addIntegration</code>.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1273,6 +1278,10 @@
 <div class="aside aside-remark">
     <p class="aside-title">Remark</p>
     <p>When attaching a listener on the wrong object the application will crash.</p>
+
+</div><div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>The event listeners are not retained when integrating the cast integration with the new pipeline.  See <code><a href="../Classes/CastConfiguration.html#/s:13THEOplayerSDK17CastConfigurationC26enableExperimentalPipelineSbvp">CastConfiguration.enableExperimentalPipeline</a></code>. You need to immediately set the event listeners after adding the cast integration via <code>THEOplayer.addIntegration</code>.</p>
 
 </div>
 

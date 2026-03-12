@@ -219,6 +219,7 @@ The AdBreak object is an associative array that can have the following propertie
 | ----------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | ads         | roArray    | An array containing the Ads in the AdBreak.                                                                          |
 | customData  | assocarray | An associative array with any additional information for this ad break.                                              |
+| id          | string     | The identifier of the ad break. For Google DAI, this is the pod index of the ad break.                               |
 | integration | string     | The integration that generated the AdBreak. Currently the only supported value is `csai`.                            |
 | maxDuration | integer    | The length of the break in seconds.                                                                                  |
 | timeOffset  | integer    | The time in the video at which the ad break should play, in seconds. 0 indicates preroll, and -1 indicates postroll. |
