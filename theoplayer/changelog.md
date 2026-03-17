@@ -5,6 +5,18 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.12.1 (2026/03/17)
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved startup time for HESP-enabled OptiView Live streams on slower networks.
+
+#### 🐛 Issues
+
+- Fixed an issue where the first video frame would appear stuck for a while when starting playback of an HESP OptiView Live stream.
+
 ## 🚀 10.12.0 (2026/03/12)
 
 ### Web
