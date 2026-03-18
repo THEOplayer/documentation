@@ -1,10 +1,3 @@
----
-title: Changelog
-description: Find out what's new in THEOplayer.
-sidebar_custom_props: { 'icon': '📰' }
-toc_max_heading_level: 2
----
-
 ## 🚀 10.12.1 (2026/03/17)
 
 ### iOS
