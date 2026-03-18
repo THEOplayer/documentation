@@ -134,7 +134,7 @@
 
 - Added support for caching sources using the Media3 integration by setting `CachingParameters.storageType` to `CacheStorageType.MEDIA3`. Sources cached with this method will only be playable using the Media3 integration.
 - Added `TextTrackCue.getTrack()` getter.
-- Added support for CMCD in THEOplayer. This is only supported with the Media3 integration. Read more about it [on our Android CMCD docs](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/cmcd/getting-started/).
+- Added support for CMCD in THEOplayer. This is only supported with the Media3 integration. Read more about it [on our Android CMCD docs](/theoplayer/how-to-guides/android/cmcd/getting-started/).
 - Added support for automatically adding all available integrations to a new `THEOplayerView` instance. This can be enabled with `THEOplayerConfig.Builder.autoIntegrations()`, and will be enabled by default starting with THEOplayer version 9.0.
 - Added support for the Latency Manager API (`player.latency`) in the Media3 integration.
 - Added support for THEOlive and HESP streams with the Media3 integration.
@@ -165,7 +165,7 @@
 
 #### ✨ Features
 
-- Added support for CMCD in THEOplayer. This is only supported on iOS 18.0+. Read more about it [on our iOS CMCD docs](https://www.theoplayer.com/docs/theoplayer/how-to-guides/ios/cmcd/getting-started/).
+- Added support for CMCD in THEOplayer. This is only supported on iOS 18.0+. Read more about it [on our iOS CMCD docs](/theoplayer/how-to-guides/ios/cmcd/getting-started/).
 - Added `player.theoLive` API for THEOlive-specific features
 
 #### 🐛 Issues
@@ -259,7 +259,7 @@
 
 #### 💥 Breaking Changes
 
-- Updated the LCEVC integration compatibility for the new LCEVCdecJS SDK version 1.2.0. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
+- Updated the LCEVC integration compatibility for the new LCEVCdecJS SDK version 1.2.0. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](/theoplayer/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
 
 #### ✨ Features
 
@@ -299,7 +299,7 @@
 
 - Added `connectOptions` property to `MillicastSource` initializer to help configure client options for a specific source.
 - Added `preventsDisplaySleepDuringVideoPlayback` API to help configure enabling screen locking.
-- Introduced `MillicastEventTypes.ERROR` to `THEOplayerMillicastIntegration` for error dispatching. Use the `addEventListener` method on `MillicastIntegration` to listen to Millicast related events. For more info check the API reference at https://www.theoplayer.com/docs/theoplayer/v8/api-reference/ios/Millicast/
+- Introduced `MillicastEventTypes.ERROR` to `THEOplayerMillicastIntegration` for error dispatching. Use the `addEventListener` method on `MillicastIntegration` to listen to Millicast related events. For more info check the API reference at /theoplayer/v8/api-reference/ios/Millicast/
 
 #### ⚡ Improvements
 
@@ -354,7 +354,7 @@
 
 - Added the Media3 integration. This integration installs a new player backend built on top of [Jetpack Media3](https://developer.android.com/media/media3), which aims to provide more stable playback on a wider range of devices.
     - Note that this integration is currently under active development, and some advanced player features may not yet be compatible with this new integration.
-    - For more information, see [our getting started guide](https://www.theoplayer.com/docs/theoplayer/v8/how-to-guides/android/media3/getting-started/).
+    - For more information, see [our getting started guide](/theoplayer/v8/how-to-guides/android/media3/getting-started/).
 
 #### 🐛 Issues
 
@@ -366,7 +366,7 @@
 
 #### ✨ Features
 
-- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/ios/millicast/getting-started/) integration for real-time streaming. The integration is available on Cocoapods and SPM.
+- Added [Millicast](/theoplayer/how-to-guides/ios/millicast/getting-started/) integration for real-time streaming. The integration is available on Cocoapods and SPM.
 
 #### 🐛 Issues
 
@@ -378,7 +378,7 @@
 
 #### ✨ Features
 
-- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/ios/millicast/getting-started/) integration for real-time streaming. The integration is available on Cocoapods and SPM.
+- Added [Millicast](/theoplayer/how-to-guides/ios/millicast/getting-started/) integration for real-time streaming. The integration is available on Cocoapods and SPM.
 
 ## 🚀 8.9.0 (2025/01/15)
 
@@ -673,7 +673,7 @@
 
 #### ✨ Features
 
-- Added `MillicastSource.option` to set additional subscriber options for a [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/millicast/getting-started/) stream.
+- Added `MillicastSource.option` to set additional subscriber options for a [Millicast](/theoplayer/how-to-guides/android/millicast/getting-started/) stream.
 - Added support for CMCD in TheoLive.
 
 #### 🐛 Issues
@@ -720,7 +720,7 @@
 
 #### ✨ Features
 
-- Added `MillicastSource.connectOptions` to set additional subscriber options for a [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/web/millicast/getting-started/) stream.
+- Added `MillicastSource.connectOptions` to set additional subscriber options for a [Millicast](/theoplayer/how-to-guides/web/millicast/getting-started/) stream.
 
 #### ⚡ Improvements
 
@@ -758,7 +758,7 @@
 
 #### ✨ Features
 
-- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/web/millicast/getting-started/) support for real-time streaming.
+- Added [Millicast](/theoplayer/how-to-guides/web/millicast/getting-started/) support for real-time streaming.
 
 #### ⚡ Improvements
 
@@ -780,7 +780,7 @@
 
 - Fixed an issue where the ReadyState and the relevant events were not correctly dispatched while playing an MP3 source.
 - Fixed an issue where tracks were not loaded by the time the `LOADEDMETADATA` event was triggered.
-- Fixed missing API documentation for the Millicast integration. It is now available on [our documentation website](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/android/com/theoplayer/android/api/millicast/package-summary.html).
+- Fixed missing API documentation for the Millicast integration. It is now available on [our documentation website](/theoplayer/v8/api-reference/android/com/theoplayer/android/api/millicast/package-summary.html).
 - Fixed an issue in the Millicast integration where the player would incorrectly try to re-subscribe to an already subscribed stream after returning the app from the background.
 
 ### iOS
@@ -850,7 +850,7 @@
 
 #### 💥 Breaking Changes
 
-- In order to use THEOads, you now need to set [`PlayerConfiguration.ads.theoads`](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/web/interfaces/AdsConfiguration.html#theoads) to `true`. Users of the [@theoplayer/theoads](https://www.npmjs.com/package/@theoplayer/theoads) package can temporarily keep using THEOads without updating their player configuration.
+- In order to use THEOads, you now need to set [`PlayerConfiguration.ads.theoads`](/theoplayer/v8/api-reference/web/interfaces/AdsConfiguration.html#theoads) to `true`. Users of the [@theoplayer/theoads](https://www.npmjs.com/package/@theoplayer/theoads) package can temporarily keep using THEOads without updating their player configuration.
 
 #### ✨ Features
 
@@ -866,7 +866,7 @@
 
 #### ✨ Features
 
-- Added [Millicast](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/millicast/getting-started/) integration for real-time streaming. The integration is available on [our Maven repository](https://maven.theoplayer.com/) as `com.theoplayer.theoplayer-sdk-android:integration-millicast`.
+- Added [Millicast](/theoplayer/how-to-guides/android/millicast/getting-started/) integration for real-time streaming. The integration is available on [our Maven repository](https://maven.theoplayer.com/) as `com.theoplayer.theoplayer-sdk-android:integration-millicast`.
 - Added `TheoAdsIntegration.replaceAdTagParameters()` to allow changing ad tag parameters for THEOads dynamically.
 
 #### 🐛 Issues
@@ -951,26 +951,26 @@ THEOplayer 8.0 is **backwards compatible for most features but includes some bre
 
 - THEOplayer 8.0 is the first official release with support for [THEOads](https://www.theoplayer.com/product/theoads), our new product for delivering seamless and novel ad experiences through Server Guided Ad Insertion.  
 
-- The Custom Server Side Ad Insertion API allows custom SSAI integrations to control the player Ad API, and forms the basis for our new Yospace connectors for [Web](https://www.theoplayer.com/docs/theoplayer/connectors/web/yospace/), [Android](https://www.theoplayer.com/docs/theoplayer/connectors/android/yospace/) and [iOS](https://www.theoplayer.com/docs/theoplayer/connectors/ios/yospace/) as well as our upcoming Edgio Uplynk connectors.
+- The Custom Server Side Ad Insertion API allows custom SSAI integrations to control the player Ad API, and forms the basis for our new Yospace connectors for [Web](/theoplayer/connectors/web/yospace/), [Android](/theoplayer/connectors/android/yospace/) and [iOS](/theoplayer/connectors/ios/yospace/) as well as our upcoming Edgio Uplynk connectors.
 
 - The Latency Manager API allows fine-tuned control over live and low-latency playback for DASH, HLS and HESP, available on Web and Android.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/web/migrating-to-theoplayer-8/), [Android](https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/android/migrating-to-theoplayer-8/) and [iOS](https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/v8/getting-started/sdks/web/migrating-to-theoplayer-8/), [Android](/theoplayer/v8/getting-started/sdks/android/migrating-to-theoplayer-8/) and [iOS](/theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/).
 
 ### General
 
 #### ✨ Features
 
-- Custom server-side advertisement integrations are now stable. See the API documentation for [web](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/web/interfaces/Ads.html#registerServerSideIntegration.registerServerSideIntegration-1), [Android](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory)) and [iOS](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/ios/Protocols/Ads.html).
+- Custom server-side advertisement integrations are now stable. See the API documentation for [web](/theoplayer/v8/api-reference/web/interfaces/Ads.html#registerServerSideIntegration.registerServerSideIntegration-1), [Android](/theoplayer/v8/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory)) and [iOS](/theoplayer/v8/api-reference/ios/Protocols/Ads.html).
 
 ### Web
 
 #### 💥 Breaking Changes
 
-- Removed the Yospace pre-integration in favor of the new [Yospace web connector](https://www.theoplayer.com/docs/theoplayer/connectors/web/yospace/).
-- Removed the Conviva pre-integration in favor of the new [Conviva web connector](https://www.theoplayer.com/docs/theoplayer/connectors/web/conviva/).
+- Removed the Yospace pre-integration in favor of the new [Yospace web connector](/theoplayer/connectors/web/yospace/).
+- Removed the Conviva pre-integration in favor of the new [Conviva web connector](/theoplayer/connectors/web/conviva/).
 - Removed the empty `player.analytics` API.
-- Renamed the default integration for client-side VAST and VMAP ads from `'theo'` to `'csai'`. Ad descriptions that don't specify an [integration](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/web/interfaces/AdDescription.html#integration) or use the old name will continue to work, but will have their integration replaced with `'csai'` in the API. The new name was chosen to avoid confusion with our new THEOads solution for server-guided ad insertion.
+- Renamed the default integration for client-side VAST and VMAP ads from `'theo'` to `'csai'`. Ad descriptions that don't specify an [integration](/theoplayer/v8/api-reference/web/interfaces/AdDescription.html#integration) or use the old name will continue to work, but will have their integration replaced with `'csai'` in the API. The new name was chosen to avoid confusion with our new THEOads solution for server-guided ad insertion.
 
 ### Android
 
@@ -989,8 +989,8 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - Due to low number of usage of iOS 12, we decided to raise the minimum supported version of our iOS SDK to 13.0. This decision was based on metrics provided by Apple's iOS usage measures by devices that transacted on the App Store. For more info check `https://developer.apple.com/support/app-store/`.
-- Removed deprecated `GoogleIMAAdsConfiguration` and `GoogleIMAConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/
-- Removed deprecated `GoogleDAIAdsConfiguration` and `GoogleDAIAdsConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://www.theoplayer.com/docs/theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/
+- Removed deprecated `GoogleIMAAdsConfiguration` and `GoogleIMAConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check /theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/
+- Removed deprecated `GoogleDAIAdsConfiguration` and `GoogleDAIAdsConfigurationBuilder` APIs. Use `IMASettings` instead and pass it to `GoogleIMAIntegrationFactory.createIntegration`. For more info check /theoplayer/v8/getting-started/sdks/ios/migrating-to-theoplayer-8/
 - Removed deprecated `AdsConfiguration` and `AdPreloadType` APIs.
 - Removed deprecated `ScheduledAd` API. Change `Ads.scheduledAds` type from `ScheduledAd` to `Ad`.
 - Removed deprecated `PiPConfiguration.init` API. Use `PiPConfigurationBuilder` instead.

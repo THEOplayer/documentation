@@ -1,11 +1,11 @@
 # Changelog
 
 These are the release notes for THEOplayer 10.0.0 and higher. For older versions, see:
-* [Version 9.x](/theoplayer/v9/changelog)
-* [Version 8.x](/theoplayer/v8/changelog)
-* [Version 7.x](/theoplayer/v7/changelog)
-* [Version 5.x and 6.x](/theoplayer/v6/changelog)
-* [Version 2.x, 3.x and 4.x](/theoplayer/v4/changelog)
+* [Version 9.x](/theoplayer/v9/changelog/)
+* [Version 8.x](/theoplayer/v8/changelog/)
+* [Version 7.x](/theoplayer/v7/changelog/)
+* [Version 5.x and 6.x](/theoplayer/v6/changelog/)
+* [Version 2.x, 3.x and 4.x](/theoplayer/v4/changelog/)
 
 ## 🚀 10.12.1 (2026/03/17)
 
@@ -351,7 +351,7 @@ These are the release notes for THEOplayer 10.0.0 and higher. For older versions
 
 #### 👎 Deprecations
 
-- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to https://optiview.dolby.com/docs/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/.
+- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to [our documentation](/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/).
 
 ### Roku
 
@@ -953,13 +953,13 @@ We are happy to announce the tenth major version of THEOplayer, releasing all th
 
 THEOplayer 10.0 includes **some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
 
-- On Android, THEOplayer now always uses the Media3 pipeline for all playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices! Check out our [Media3 guide](https://www.theoplayer.com/docs/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
+- On Android, THEOplayer now always uses the Media3 pipeline for all playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices! Check out our [Media3 guide](/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
 
 - The Android SDK will now automatically use modern network stacks with HTTP/2 and HTTP/3 support when available, optimizing media delivery to your viewers.
 
-- [OptiView Ads](https://www.theoplayer.com/docs/theoads/) is now fully supported on iOS. This brings our personalized advertising solution to all major platforms.
+- [OptiView Ads](/theoads/) is now fully supported on iOS. This brings our personalized advertising solution to all major platforms.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-10/), [Android](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-10/), [iOS](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-10/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-10/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-10/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-10/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10/).
 
 ### Web
 
