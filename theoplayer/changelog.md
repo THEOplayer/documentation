@@ -1,3 +1,10 @@
+These are the release notes for THEOplayer 10.0.0 and higher. For older versions, see:
+* [Version 9.x](/theoplayer/v9/changelog)
+* [Version 8.x](/theoplayer/v8/changelog)
+* [Version 7.x](/theoplayer/v7/changelog)
+* [Version 5.x and 6.x](/theoplayer/v6/changelog)
+* [Version 2.x, 3.x and 4.x](/theoplayer/v4/changelog)
+
 ## 🚀 10.12.1 (2026/03/17)
 
 ### iOS
