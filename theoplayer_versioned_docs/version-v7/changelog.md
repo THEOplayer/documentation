@@ -16,7 +16,7 @@
 
 #### ✨ Features
 
-- Added `Ad.customData` and `AdBreak.customData`, which can be populated with integration-specific data by a [custom SSAI integration](/theoplayer/v7/api-reference/web/interfaces/Ads.html#registerServerSideIntegration).
+- Added `Ad.customData` and `AdBreak.customData`, which can be populated with integration-specific data by a [custom SSAI integration](https://optiview.dolby.com/docs/theoplayer/v7/api-reference/web/interfaces/Ads.html#registerServerSideIntegration).
 
 #### ⚡ Improvements
 
@@ -27,7 +27,7 @@
 #### ✨ Features
 
 - Added `headers` property to `TypedSource`. The player will add the headers to the HTTP requests for the given `TypedSource`, only for mp3 and mp4 sources.
-- Added `Ad.customData` and `AdBreak.customData`, which can be populated with integration-specific data by a [custom SSAI integration](/theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory)).
+- Added `Ad.customData` and `AdBreak.customData`, which can be populated with integration-specific data by a [custom SSAI integration](https://optiview.dolby.com/docs/theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory)).
 
 #### 🐛 Issues
 
@@ -111,7 +111,7 @@
 
 #### ⚡ Improvements
 
-- Added support for generic ad event types (defined in [`AdsEventTypes`](/theoplayer/v7/api-reference/android/com/theoplayer/android/api/event/ads/AdsEventTypes.html)) to the Google IMA, Google DAI and MediaTailor integrations.
+- Added support for generic ad event types (defined in [`AdsEventTypes`](https://optiview.dolby.com/docs/theoplayer/v7/api-reference/android/com/theoplayer/android/api/event/ads/AdsEventTypes.html)) to the Google IMA, Google DAI and MediaTailor integrations.
 - All events will now be dispatched on the main thread.
 
 #### 🐛 Issues
@@ -292,7 +292,7 @@
 
 #### ✨ Features
 
-- Added [`player.ads.registerServerSideIntegration()`](/theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory))  API for registering custom server-side advertisement integrations. This API is currently experimental.
+- Added [`player.ads.registerServerSideIntegration()`](https://optiview.dolby.com/docs/theoplayer/v7/api-reference/android/com/theoplayer/android/api/ads/Ads.html#registerServerSideIntegration(java.lang.String,com.theoplayer.android.api.ads.ServerSideAdIntegrationFactory))  API for registering custom server-side advertisement integrations. This API is currently experimental.
 
 #### 🐛 Issues
 
@@ -361,7 +361,7 @@
 
 - Added support for managing low-latency live playback for HLS and DASH streams via `player.latency`.
 - Added support for LL-DASH `ServiceDescription` elements, used as the default `player.latency` configuration for LL-DASH live playback. 
-- Added [`player.ads.registerServerSideIntegration()`](/theoplayer/v7/api-reference/web/interfaces/Ads.html#registerServerSideIntegration.registerServerSideIntegration-1)  API for registering custom server-side advertisement integrations. This API is currently experimental.
+- Added [`player.ads.registerServerSideIntegration()`](https://optiview.dolby.com/docs/theoplayer/v7/api-reference/web/interfaces/Ads.html#registerServerSideIntegration.registerServerSideIntegration-1)  API for registering custom server-side advertisement integrations. This API is currently experimental.
 
 #### 🐛 Issues
 

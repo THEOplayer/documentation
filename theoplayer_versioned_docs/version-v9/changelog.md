@@ -628,7 +628,7 @@
 
 #### ✨ Features
 
-- Added `player.millicast` API to access Millicast specific diagnostics and stats. See the [diagnostics doc page](/millicast/playback/players-sdks/web/player/frame-metadata/) for more information.
+- Added `player.millicast` API to access Millicast specific diagnostics and stats. See the [diagnostics doc page](https://optiview.dolby.com/docs/millicast/playback/players-sdks/web/player/frame-metadata/) for more information.
 - Added support for Dolby Digital (`ac-3`) codecs in HLS when the platform supports it.
 - Added a default value for the `ott_placement` GAM ad tag parameter for THEOads.
 
@@ -1010,13 +1010,13 @@ THEOplayer 9.0 is **backwards compatible for most features but includes some bre
 
 - Starting from THEOplayer 9.0, the new Media3 Playback pipeline is now the default for all Android SDK playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices for the Android SDK! Check out our [Getting started with Media3 guide](/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
 
-- THEOplayer 9.0 supports playback of Dolby's real time streaming solution Millicast across all of our major SDKs, including React Native! Check out our Getting started with Millicast guides for [Web](/theoplayer/how-to-guides/web/millicast/getting-started/), [Android](/theoplayer/how-to-guides/android/millicast/getting-started/), [iOS](/theoplayer/how-to-guides/ios/millicast/getting-started/) and [React Native](/theoplayer/getting-started/frameworks/react-native/millicast/) for more information. 
+- THEOplayer 9.0 supports playback of Dolby's real time streaming solution Millicast across all of our major SDKs, including React Native! Check out our Getting started with Millicast guides for [Web](https://optiview.dolby.com/docs/millicast/playback/players-sdks/web/player/), [Android](https://optiview.dolby.com/docs/millicast/playback/players-sdks/android/player/), [iOS](https://optiview.dolby.com/docs/millicast/playback/players-sdks/ios/player/) and [React Native](/theoplayer/getting-started/frameworks/react-native/millicast/) for more information. 
 
 - With THEOplayer 9.0 we are also bumping and upgrading our THEOplayer Roku SDK to 9.0, bringing API and stability improvements along with new connectors for Conviva and Comscore, with more new feature development and connectors to follow! Check out our [Roku docs](/theoplayer/roku/) for more information.
 
 - THEOplayer 9.0 now comes with cross platform support for CMCD! We've added CMCD support for our Media3 pipeline as well as for iOS 18+, and made it available cross-platform through React Native too! Check out our CMCD docs for [Web](/theoplayer/connectors/web/cmcd/getting-started), [Android](/theoplayer/how-to-guides/android/cmcd/getting-started/), [iOS](/theoplayer/how-to-guides/android/cmcd/getting-started/) and [React Native](/theoplayer/getting-started/frameworks/react-native/cmcd/) for more information.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/v9/getting-started/sdks/web/migrating-to-theoplayer-9/), [Android](/theoplayer/v9/getting-started/sdks/android/migrating-to-theoplayer-9/), [iOS](/theoplayer/v9/getting-started/sdks/ios/migrating-to-theoplayer-9/) and [React Native](/theoplayer/v9/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-9).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/sdks/web/migrating-to-theoplayer-9/), [Android](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/sdks/android/migrating-to-theoplayer-9/), [iOS](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/sdks/ios/migrating-to-theoplayer-9/) and [React Native](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-9).
 
 ### Web
 
