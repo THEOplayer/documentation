@@ -5,6 +5,10 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+<head>
+  <meta name="robots" content="index, follow" />
+</head>
+
 ## 🚀 4.12.9 (2024/05/13)
 
 ### iOS

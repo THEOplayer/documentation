@@ -5,6 +5,10 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+<head>
+  <meta name="robots" content="index, follow" />
+</head>
+
 ## 🚀 7.12.0 (2024/09/05)
 
 ### General

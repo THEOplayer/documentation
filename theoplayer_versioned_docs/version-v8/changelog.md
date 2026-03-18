@@ -5,6 +5,10 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+<head>
+  <meta name="robots" content="index, follow" />
+</head>
+
 ## 🚀 8.14.0 (2025/03/26)
 
 ### Web
