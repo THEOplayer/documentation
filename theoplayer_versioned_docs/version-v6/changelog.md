@@ -1,3 +1,5 @@
+# Changelog for version 5.x and 6.x
+
 <head>
   <meta name="robots" content="index, follow" />
 </head>

@@ -1,3 +1,5 @@
+# Changelog
+
 These are the release notes for THEOplayer 10.0.0 and higher. For older versions, see:
 * [Version 9.x](/theoplayer/v9/changelog)
 * [Version 8.x](/theoplayer/v8/changelog)
