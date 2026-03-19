@@ -34,6 +34,20 @@ jobs:
           fi
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+      - name: Replace absolute links in changelog
+        if: ${{ !steps.check_pr_exists.outputs.exists }}
+        shell: bash
+        # Replace absolute links to https://optiview.dolby.com/docs/ with relative links
+        # - Only change Markdown links, e.g. [title](url)
+        # - Don't change versioned links
+        # language=bash
+        run: |
+          sed -i -E 's|\(https://optiview.dolby.com/docs/(theoplayer/[^v])|\(/\1|g' theoplayer/changelog.md
+          if ! git diff --quiet; then
+            git add theoplayer/changelog.md
+            git commit -m "Replace absolute links in changelog"
+            git push origin
+          fi
       - name: Create pull request
         if: ${{ !steps.check_pr_exists.outputs.exists }}
         shell: bash
