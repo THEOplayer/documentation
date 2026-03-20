@@ -269,6 +269,18 @@ const config: Config = {
         routeBasePath: '/theolive',
         sidebarPath: './sidebarsTheolive.ts',
         docItemComponent: '@theme/ApiItem',
+        lastVersion: 'v1',
+        versions: {
+          // TODO: Make 'current' the lastVersion when v2 docs are finalized
+          current: {
+            label: 'v2',
+            banner: 'none',
+            noIndex: true,
+          },
+          v1: {
+            label: 'v1',
+          },
+        },
       } satisfies DocsPlugin.Options,
     ],
     [
@@ -366,51 +378,23 @@ const config: Config = {
         id: 'theolive-api',
         docsPluginId: 'theolive',
         config: {
-          channels: {
-            specPath: 'theolive/api/channels.json',
-            outputDir: 'theolive/api/channels',
+          theolive: {
+            version: 'v2',
+            label: 'v2',
+            specPath: 'https://api.theo.live/v2/api-docs/swagger.json',
+            outputDir: `theolive/api/`,
             hideSendButton: false,
             sidebarOptions: {
               groupPathsBy: 'tag',
+              sidebarCollapsible: true,
             },
             markdownGenerators: openApiLinkRewrite(),
           },
-          events: {
-            specPath: 'theolive/api/events.json',
-            outputDir: 'theolive/api/events',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
-          reports: {
-            specPath: 'theolive/api/reports.json',
-            outputDir: 'theolive/api/reports',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
-          schedulers: {
-            specPath: 'theolive/api/schedulers.json',
-            outputDir: 'theolive/api/schedulers',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
-          webhooks: {
-            specPath: 'theolive/api/webhooks.json',
-            outputDir: 'theolive/api/webhooks',
-            hideSendButton: false,
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-            markdownGenerators: openApiLinkRewrite(),
-          },
+          channels: theoLiveV1OpenApiOptions('channels'),
+          events: theoLiveV1OpenApiOptions('events'),
+          reports: theoLiveV1OpenApiOptions('reports'),
+          schedulers: theoLiveV1OpenApiOptions('schedulers'),
+          webhooks: theoLiveV1OpenApiOptions('webhooks'),
         },
       } satisfies OpenApiPlugin.PluginOptions,
     ],
@@ -625,6 +609,12 @@ const config: Config = {
           docsPluginId: 'theoplayer',
           position: 'right',
         },
+        // TODO: Enable theolive version dropdown when v2 docs are finalized
+        // {
+        //   type: 'docsVersionDropdown',
+        //   docsPluginId: 'theolive',
+        //   position: 'right',
+        // },
       ],
     },
     footer: {
@@ -703,6 +693,21 @@ function isMarkdownUrl(href: string): boolean {
 function externalDocUrl(docPath: string): string {
   const [, projectName, externalDocPath] = docPath.match(/\bexternal\/([^/]+)\/(.+)$/);
   return `https://github.com/THEOplayer/${projectName}/blob/-/${externalDocPath}`;
+}
+
+function theoLiveV1OpenApiOptions(name: string): OpenApiPlugin.APIOptions {
+  return {
+    version: 'v1',
+    label: 'v1',
+    specPath: `theolive_versioned_docs/version-v1/api/${name}.json`,
+    outputDir: `theolive_versioned_docs/version-v1/api/${name}`,
+    hideSendButton: false,
+    sidebarOptions: {
+      groupPathsBy: 'tag',
+      sidebarCollapsible: true,
+    },
+    markdownGenerators: openApiLinkRewrite(),
+  };
 }
 
 export default config;

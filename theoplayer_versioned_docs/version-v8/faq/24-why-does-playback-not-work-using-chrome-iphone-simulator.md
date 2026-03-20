@@ -4,7 +4,7 @@ You might need an answer to this question if you are testing your page using the
 
 Similar questions are:
 
-- hy does the playback not work when using Mozilla in Responsive Design Mode?
+- Why does the playback not work when using Mozilla in Responsive Design Mode?
 - Why does the playback not work when using the Edge emulator to test my page on other platforms?
 - Why does the playback not work when testing device-specific viewports with the browser dev tools?
 

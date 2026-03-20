@@ -8,15 +8,15 @@ You can change the language localization in the player configuration.
 
 ```js
 ui: {
-      // your other ui configuration
-      language: 'fr',
-      languages: { 'fr':
-                          {
-                           "Something went wrong during native playback." : "Insert your desired text here"
-                           // any other translation
-                           }
-                     }
-      }
+    // your other ui configuration
+    language: 'fr',
+    languages: { 'fr':
+        {
+            "Something went wrong during native playback." : "Une erreur s'est produite pendant la lectue native."
+            // any other translation
+        }
+    }
+}
 ```
 
-An example on how to use language localization can be found [here](http://demo.theoplayer.com/language-localization-feature).
+An example on how to use language localization can be found [here](https://www.theoplayer.com/theoplayer-demo-language-localization).

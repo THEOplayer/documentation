@@ -219,6 +219,7 @@ The AdBreak object is an associative array that can have the following propertie
 | ----------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | ads         | roArray    | An array containing the Ads in the AdBreak.                                                                          |
 | customData  | assocarray | An associative array with any additional information for this ad break.                                              |
+| id          | string     | The identifier of the ad break. For Google DAI, this is the pod index of the ad break.                               |
 | integration | string     | The integration that generated the AdBreak. Currently the only supported value is `csai`.                            |
 | maxDuration | integer    | The length of the break in seconds.                                                                                  |
 | timeOffset  | integer    | The time in the video at which the ad break should play, in seconds. 0 indicates preroll, and -1 indicates postroll. |
@@ -326,9 +327,10 @@ The event consists of:
 
 There are several player events being emitted.
 
+- `activequalitychanged`: Fired when the playing rendition changes, the extra data emitted is the rendition's quality
 - `addedaudiotrack`: Fired when audio track has been added
 - `addedtexttrack`: Fired when text track has been added
-- `bitratechange`: Fired when the bitrate changes, the extra data emitted is the bitrate
+- `bitratechange`: Deprecated. Use `activequalitychanged` instead. Fired when the bitrate changes, the extra data emitted is the bitrate
 - `canplay`: Fired when the player can resume playback of the media data, the extra data emitted is the currentTime
 - `canplaythrough`: Fired when the player can resume playback of the media data and buffering is unlikely, the extra data emitted is the currentTime
 - `destroy`: Fired when the the player is destroyed, there is no extra data emitted along
@@ -353,6 +355,7 @@ There are several player events being emitted.
 - `playing`: Fired when playback is ready to start after having been paused or delayed due to lack of media data, the extra data emitted is the currentTime
 - `endpointloaded`: Fired when the player has loaded the data for a THEOlive source and is ready to begin loading the stream
 - `distributionloadstart`: Fired when the player begins to load the data for a THEOlive source
+- `distributionloaded`: Fired when a THEOlive distribution has been successfully loaded.
 - `distributionoffline`: Fired when a THEOlive stream is not available for playback
 - `seeked`: Fired when the "seeking" changes to false after the current playback position was changed, the extra data emitted is the currentTime
 - `seeking`: Fired when "seeking" changes to true, and the player has started seeking to a new position, the extra data emitted is the currentTime

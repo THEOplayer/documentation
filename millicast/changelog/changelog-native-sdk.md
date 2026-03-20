@@ -220,7 +220,7 @@ using StreamDetails = std::variant<StreamViewDetails, StreamPublishDetails>;
 **Android**
 
 - Improved Android SDK playback experience following simulcast layer switches.
-  - Fixed extended freeze of frame during the switch between simulcast layers, especially prevelant during frequent switchines.
+  - Fixed extended freeze of frame during the switch between simulcast layers, especially prevalent during frequent switches.
     - Greatly reduced the number of freezes when packet loss experienced.
 - Improved Android SDK playback in constrained bandwidth scenarios.
 - Added multiple MCCMSampleBufferVideoRendererDelegate to MCCMSampleBufferVideoRenderer

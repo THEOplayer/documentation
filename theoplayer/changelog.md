@@ -5,6 +5,248 @@ sidebar_custom_props: { 'icon': '📰' }
 toc_max_heading_level: 2
 ---
 
+## 🚀 10.12.1 (2026/03/17)
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved startup time for HESP-enabled OptiView Live streams on slower networks.
+
+#### 🐛 Issues
+
+- Fixed an issue where the first video frame would appear stuck for a while when starting playback of an HESP OptiView Live stream.
+
+## 🚀 10.12.0 (2026/03/12)
+
+### Web
+
+#### ✨ Features
+
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+- Added the `AdBreak.id` API.
+- Added the experimental `View.player` property to the MultiView API to access the player underlying that view.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not parse Nielsen cues when playing an OptiView Live stream.
+- Fixed an issue where the player would not dispatch ad events when playing a Google DAI DASH live stream.
+- Fixed an issue in HLS streams with TS segments where setting a `targetQuality` could sometimes cause an infinite loop.
+- Fixed an issue where the player would still receive id3 events from the previous Google DAI source after resetting the source to a non Google DAI source.
+- Fixed an issue where, when playing an OptiView Ads enabled stream, subsequent switches from ad to content would take longer and longer each time.
+- Fixed an issue where the backdrop doesn't respect the aspect ratio when an ad is played with another aspect ratio in an OptiView Ads stream.
+- Fixed an issue where the player would not pause the content in double box layout when clicking on an ad clickthrough for an OptiView Ads stream.
+- Fixed an issue where OptiView Live streaming fallback functionality was not behaving as expected when playing HESP streams.
+- Fixed an issue where the player would sometimes play a Google IMA preroll ad again when switching from ad to content while playing an OptiView Ads stream in native fullscreen or native PiP.
+- Fixed an issue where the content would be paused when playing an OptiView Ads double-box advertisement.
+- Fixed an issue where the double box layout would not dismiss when the VAST ad creative was unavailable for OptiView Ads.
+- Fixed an issue where the player would sometimes not play the VAST ad unmuted on iOS Safari for an OptiView Ads stream.
+
+#### ⚠ Known Limitations
+
+- Using OptiView Ads with Picture-in-Picture (PiP) on Firefox is not supported. The default PiP button will be hidden in this scenario to discourage usage.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- `LatencyManager.currentLatency` now returns `null` when the player is not actively playing.
+
+#### ✨ Features
+
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+- Added the `AdBreak.idAsString` API.
+- Added `Logger.HESP` logging tag for debugging HESP playback issues.
+
+#### 👎 Deprecations
+
+- Deprecated `MediaTailorAdAvail.id` in favor of `AdBreak.idAsString`.
+
+### iOS
+
+#### ✨ Features
+
+- Added the `bytes` property to the `CachingTask` API which estimates the total amount of bytes that the task will download.
+- Added the `AdBreak.id` API.
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+- Added better error handling for HESP loading during startup with bad network conditions.
+
+#### ⚡ Improvements
+
+- Improved performance when accessing the `bytesCached` property of `CachingTask`.
+- Improved error handling during ABR switches when playing OptiView Live sources.
+- Improve error details (error code and message) when storage is low during a caching task. In a future major version, we will send better error metadata where possible: ie. send `THEOErrorCode.CACHE_SOURCE_ERROR` instead of `THEOErrorCode.NETWORK_ERROR`.
+
+#### 🐛 Issues
+
+- Fixed an issue where text tracks were not synced properly with Chromecast.
+- Fixed an issue where HESP playout would occasionally fail to start or stall shortly after startup.
+- Fixed an issue where a `CastError` was thrown during Chromecast connection establishment.
+- Fixed an issue where retrying segment downloads for OptiView Live sources in bad network conditions would cause a fallback instead of continuing with the retried segment download.
+- Fixed an issue where autoplay would not work when setting Millicast sources.
+- Fixed an issue where setting `muted` on the player before setting a `MillicastSource` would be ignored.
+- Fixed an issue where a quality switch on an OptiView Live HESP source caused unintended fallbacks.
+- Fixed an issue where the ABR controller would switch up too fast after startup or after a previous quality switch.
+- Fixed an issue during HESP playback where sometimes a `playing` event would be missing after resuming playback.
+
+### Roku
+
+#### ✨ Features
+
+- Added the `AdBreak.id` API.
+- Added default values for the `mpt` and `mpv` ad tag parameters for Google DAI.
+
+#### ⚡ Improvements
+
+- Updated the Mux SDK in the THEOMuxConnector to 2.6.0.
+
+#### 🐛 Issues
+
+- Fixed an issue in the THEOMuxConnector where the poster URL was not being recorded.
+
+## 🚀 10.11.1 (2026/03/05)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where versions 10.10.0 to 10.11.0 of the [`@theoplayer/basic-hls`](https://www.npmjs.com/package/@theoplayer/basic-hls) variant were published with an incorrect feature set.
+- Fixed an issue where setting a second OptiView Live source in a row would sometimes cause the stream to fail to start.
+
+## 🚀 10.11.0 (2026/02/25)
+
+### Web
+
+#### ⚡ Improvements
+
+- Updated the OptiView Real-time streaming retry logic. Minimum backoff time for a OptiView Real-time source is now 1 second.
+- OptiView Live streams played on mobile Safari will fallback faster when segments would be unavailable.
+- Improved the resiliency for MPEG-DASH Content Steering when the steering server is unstable.
+
+#### 🐛 Issues
+
+- Fixed an issue where a PS4 WebMAF app could freeze when autoplay is enabled.
+- Fixed an issue where autoplay on an ended stream could fire a play event before the sourcechange event, causing duplicate analytics sessions.
+- Fixed an issues in MPEG-DASH Content Steering where successful manifest location downloads were reported in the `_DASH_pathway` search param.
+- Fixed an issue where layer configuration passed in `MillicastSource.connectOptions` was not kept into account when switching layers after the source had been set.
+
+#### ⚠ Known Limitations
+
+- [`@theoplayer/basic-hls` version 10.11.0](https://www.npmjs.com/package/@theoplayer/basic-hls/v/10.11.0) was incorrectly published with the `basic-dash` feature set. If you're using this variant, please update to version 10.11.1 or higher for the correct feature set.
+
+### Android
+
+#### ⚡ Improvements
+
+- Updated Media3 to [version 1.9.2](https://github.com/androidx/media/releases/tag/1.9.2).
+
+#### 🐛 Issues
+
+- Fixed an issue where ABR was not switching to a lower quality on very low bandwidth.
+- Fixed an issue where `TextTrackStyle.fontSize` was not correctly applied to TTML subtitles with a `tts:fontSize` attribute.
+- Fixed an issue where changing the `player.textTrackStyle` of one player could accidentally also change the text track style of other players.
+- Fixed an issue where using Picture-in-Picture with `PiPType.ACTIVITY` on apps without `Theme.AppCompat` theme could crash the application.
+- Fixed an issue where autoplay on an ended stream could fire a play event before the sourcechange event, causing duplicate analytics sessions.
+- Updated the Millicast SDK to version 2.5.3, which adds a necessary consumer ProGuard rule to prevent a missing symbol crash from occurring when enabling minification.
+- Fixed an issue where the backdrop would not be visible for OptiView Ads.
+- Fixed an issue where the player would restart a VOD source when a scheduled interstitial would not have a resume time for OptiView Ads.
+- Fixed an issue where the target latency was not applied for OptiView Live v1 channels.
+
+### iOS
+
+#### ✨ Features
+
+- Added mobile layout support for OptiView Ads to override the ad layout when playing on iOS.
+
+#### ⚡ Improvements
+
+- Bumped the Millicast SDK version to 2.5.3
+
+#### 🐛 Issues
+
+- Fixed an issue where playing OptiView Live streams would cause an initial audio stutter.
+- Fixed an issue in OptiView Ads where subsequent adbreak requests on monetized streams would fail after receiving an ad error.
+- Fixed an issue where playing a VAST ad pod would only play the first ad for OptiView Ads.
+- Fixed an issue in OptiView ads where the player would pause instead of playing the main content when an ad fails to load.
+- Fixed an issue where the target latency was not applied for OptiView Live v1 channels.
+
+### Roku
+
+#### 👎 Deprecations
+
+- Deprecated the `bitratechange` event in favor of the `activequalitychanged` event.
+
+## 🚀 10.10.1 (2026/02/25)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue in HLS streams with TS segments where setting a `targetQuality` could sometimes cause an infinite loop.
+
+#### ⚠ Known Limitations
+
+- [`@theoplayer/basic-hls` version 10.10.1](https://www.npmjs.com/package/@theoplayer/basic-hls/v/10.10.1) was incorrectly published with the `basic-dash` feature set. If you're using this variant, please update to version 10.11.1 or higher for the correct feature set.
+
+## 🚀 10.10.0 (2026/02/11)
+
+### General
+
+#### ✨ Features
+
+- Added the `distributionloaded` event to the `player.theolive` API.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where DRM-enabled HLS streams could error on rendition switches due to missing keys.
+- Fixed an issue where quality changes during HLS playback could cause an error on low-end devices.
+- Fixed an issue where an HESP source with a relative manifest URL could not be played.
+- Fixed an issue on Safari where sometimes the `ended` event would not be fired when the player reaches the end of a stream.
+- Fixed an issue where multiple subtitle cues within a segment would not display correctly.
+- Fixed an issue where an HLS live stream would not start playback after a pre-roll ad on iOS Safari.
+- Fixed an issue where the player would dispatch the `pause` and `ended` event in an incorrect order when seeking to the end of a stream.
+- Fixed an issue where a track's `activeQuality` could be `undefined` on a playing event with OptiView Live streams.
+- Fixed an issue where an OptiView Ads stream with disabled VPAID ads could cause the player to stop serving ads.
+- Fixed an issue where playing ads using Google IMA and OptiView Ads together could cause the Google IMA ad to not play.
+- Fixed an issue where an incorrect waiting event could be dispatched during an ad break to ad break transition on an OptiView Ads stream.
+
+#### ⚠ Known Limitations
+
+- [`@theoplayer/basic-hls` version 10.10.0](https://www.npmjs.com/package/@theoplayer/basic-hls/v/10.10.0) was incorrectly published with the `basic-dash` feature set. If you're using this variant, please update to version 10.11.1 or higher for the correct feature set.
+
+### Android
+
+#### ✨ Features
+
+- Added `NetworkConfiguration` support for retries for OptiView Real-time streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where the bandwidth caching parameter was ignored when caching DRM-protected streams.
+- Fixed an issue during offline playback where playing a not fully downloaded content-protected (DRM) stream could cause a crash.  
+- Fixed an issue where a stall during playback on Chromecast for OptiView Live streams was not handled correctly.
+
+### iOS
+
+#### ✨ Features
+
+- Made the `contentProtection` property public on the `EndpointAPI` protocol.
+
+#### ⚡ Improvements
+
+- Fixed an issue where recovery from network errors while playing and OptiView Live stream could take longer than expected due to platform limitations.
+
+#### 🐛 Issues
+
+- Fixed an issue where using `player.ads.schedule(adDescription:)` API did not trigger an ad playback.
+- Fixed an issue where the recovery logic during playback of OptiView Live streams could check incorrect endpoints.
+- Fixed an issue where playback was stuck when receiving an empty VAST for OptiView Ads.
+- Fixed a bug that reset the `autoplay` flag whenever an integration was added to the player.
+- Fixed an issue where OptiView Ads with VAST would not play in picture-in-picture mode.
+- Fixed an issue where track selection was not respected during Chromecast.
+
 ## 🚀 10.9.0 (2026/01/29)
 
 ### Web
@@ -24,7 +266,7 @@ toc_max_heading_level: 2
 - Fixed an issue where a WideVine L1 protected DASH stream would occasionally fail to play on certain Android FireTV models (AFTSS & AFTSSS).
 - Fixed an issue where an `#EXT-X-KEY` with a base64 `data:` URI was sometimes parsed incorrectly from the HLS playlist.
 - Fixed an issue where playback of subsequent OptiView Live sources would cause incorrect endpoints to be selected.
-- Fixed an isse where MPEG-DASH content steering was sometimes not switching to a different `serviceLocation` when segment downloads failed.
+- Fixed an issue where MPEG-DASH content steering was sometimes not switching to a different `serviceLocation` when segment downloads failed.
 - Fixed an issue where a PS4 WebMAF app could freeze upon requesting a media segment.
 - Fixed an issue where the timecode text track would not be present on HESP streams that contain SEI timecodes.
 - Fixed an issue in MPEG-DASH Content Steering where the `Retry-After` header was not respected when the server returned status code `429`.
@@ -975,6 +1217,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### ⚡ Improvements
 
 - Improved the ABR algorithm of our OptiView Live streams for HESP playback. 
+- Improved playback stability of OptiView Live streams on iOS 17 and below by using the HLS fallback stream.
 
 #### 🐛 Issues
 
@@ -2713,7 +2956,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 #### 🐛 Issues
 
-- Fixed an audio glitch that occured when transitioning to background audio playback.
+- Fixed an audio glitch that occurred when transitioning to background audio playback.
 - Fixed an issue on Android where the player would sometimes crash when setting a new source after play-out of the old source had already started.
 
 ## 🚀 8.2.1 (2024/10/14)
@@ -2915,7 +3158,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 #### 💥 Breaking Changes
 
-- Raising the tvOS mimimum supported version of our tvOS SDK to 13.0 for consistency with iOS version.
+- Raising the tvOS minimum supported version of our tvOS SDK to 13.0 for consistency with iOS version.
 
 #### 👎 Deprecations
 
@@ -3679,7 +3922,7 @@ THEOplayer 7.0 is **backwards compatible for most features but includes some bre
 
 #### 🐛 Issues
 
-- Fixed an issue where VMAPs would not be scheduled in the Google IMA intergration if `player.currentTime` was set before initial playback.
+- Fixed an issue where VMAPs would not be scheduled in the Google IMA integration if `player.currentTime` was set before initial playback.
 - Fixed an issue where the browser tab could hang when removing the player from the DOM without calling `player.destroy()`, while the player is rendering WebVTT subtitles.
 - Fixed a CSS issue where the control bar could sometimes have a very small vertical overflow, which could lead to unwanted scrollbars when the player is embedded in an `<iframe>`.
 - Fixed an issue where very old browsers could not play using MSE.
@@ -4471,7 +4714,7 @@ THEOplayer 6.0 is **backwards compatible for most features but includes some bre
 
 - Added `source.abr.restrictToPlayerSize`, to control whether the ABR algorithm should only select qualities whose resolution fits within the player's size.
 - Added support for the `PRECISE` attribute in an HLS `#EXT-X-START` tag. This removes the limitation from THEOplayer 4.7.0, so a missing `PRECISE` attribute is now treated as `PRECISE=NO` to conform with the HLS specification.
-- Filtered out ac-3 audio on Tizen and WebOS by default as most devices fail playout and the codec support check is not useable.
+- Filtered out ac-3 audio on Tizen and WebOS by default as most devices fail playout and the codec support check is not usable.
 - Added support for setting a live offset on streams for multiview.
 
 #### ⚡ Improvements
@@ -4908,7 +5151,7 @@ THEOplayer 5.0 is **backwards compatible for most features but includes some bre
 
 - **Customizable UI modules**: No need to build a UI yourself - save time and money by starting from the open source THEOplayer UI for [Web](https://github.com/THEOplayer/web-ui), [Android](https://github.com/THEOplayer/android-ui) and [React Native](https://github.com/THEOplayer/react-native-theoplayer), and tailor it for your use case. Keep an eye open for the new iOS UI next quarter!
 
-- **WebXR support**: We’ve added WebXR support for browser to enchance the AR and VR experiences on Web. [Get started now!](https://docs.theoplayer.com/getting-started/01-sdks/01-web/10-how-to-use-vr-using-webxr.md)
+- **WebXR support**: We’ve added WebXR support for browser to enhance the AR and VR experiences on Web. [Get started now!](https://docs.theoplayer.com/getting-started/01-sdks/01-web/10-how-to-use-vr-using-webxr.md)
 
 - **React Native SDK 2.0**: We’ve further expanded our React Native support for Web, Android and iOS-based platforms, through bridging items such as casting, Picture-in-Picture, background audio, DRM connectors and analytics connectors. Check our [GitHub](https://github.com/THEOplayer/react-native-theoplayer) and the [react-native-theoplayer v2 migration guide](https://github.com/THEOplayer/react-native-theoplayer/blob/master/doc/migrating_v2.md) for more information.
 
@@ -6344,7 +6587,7 @@ Introducing a major version bump to THEOplayer 4.0. This version officially rele
 
 - Fixed an issue that caused the player to ignore the sub second part of IMA ad time offsets.
 - Fixed an issue where the player would not give a clear error when setting an invalid Yospace source.
-- Fixed an issue on Tizen 2.4 where the player would occassionally throw an `InvalidStateError` for certain HTTP requests.
+- Fixed an issue on Tizen 2.4 where the player would occasionally throw an `InvalidStateError` for certain HTTP requests.
 - Fixed an issue on Tizen 2.4 where the LL-HLS pipeline would crash on certain MPEG-TS segments containing large media timestamps.
 - Fixed a bug where Google IMA ads would stop being scheduled after receiving an empty ad break.
 - Fixed a bug where player.ads.scheduledAdBreaks would contain ads that have already played.
@@ -6991,7 +7234,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 
 #### ⚠ Known Limitations
 
-- Filtered out ec-3 audio on Tizen and WebOS by default as most devices failed playout and the codec support check was not useable.
+- Filtered out ec-3 audio on Tizen and WebOS by default as most devices failed playout and the codec support check was not usable.
 
 ### Android
 
@@ -7303,7 +7546,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 
 #### ⚡ Improvements
 
-- Improved the ABR logic to also consider qualities with higher dimensions than the player's dimesions, if there is no exact match.
+- Improved the ABR logic to also consider qualities with higher dimensions than the player's dimensions, if there is no exact match.
 - Optimized handling of DASH MPDs with long `SegmentTimeline`s.
 - Improved the performance of the player on DASH streams.
 
@@ -9326,7 +9569,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 #### 🐛 Issues
 
 - Fixed an issue with Airplay DRM protected streams
-- Fixed an issue when leaving fullscreen mode the orienation behaviour was incorrect
+- Fixed an issue when leaving fullscreen mode the orientation behaviour was incorrect
 
 ## 🚀 2.50.0 (2018/12/04)
 
@@ -9556,7 +9799,7 @@ Some features are not yet supported, therefore, only the above-mentioned feature
 #### 🐛 Issues
 
 - Fix an issue where the player would stall indefinitely on some DASH live streams from Microsoft Azure.
-- Fixed an issue where ABR bandwith calculation was affected by network interceptors
+- Fixed an issue where ABR bandwidth calculation was affected by network interceptors
 - Fix an issue where the player would not start playback on some DASH live streams.
 - Fix an issue where the Xstream ticket acquisition URL could not be specified through the API
 - Fix an issue where ended state could not always be reached for MPEG-DASH playback

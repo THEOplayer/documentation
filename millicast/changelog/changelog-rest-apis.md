@@ -2,11 +2,63 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
-## 2026-02-06 | REST APIs
+## 2026-03-20 | REST APIs
 
 ### Features
 
 - Added live-to-VOD functionality and updated documentation to describe the wide array of recording capabilities and use-cases. See [Stream Recordings](/millicast/distribution/stream-recordings/) for more info
+
+## 2026-03-12 | REST APIs
+
+### Features
+
+- Introduced [on demand thumbnails](/millicast/webhooks/thumbnail/#on-demand-thumbnails)
+- Added storage usage analytics for media type VOD
+
+### Fixes
+
+- Fixed packet loss calculation for RTMP streams
+- Improved token validation on publishing and subscribing
+
+## 2026-03-02 | REST APIs
+
+### Features
+
+- Re-streaming is now supported for WebRTC ingests using H.264 and Opus codecs
+
+## 2026-02-27 | REST APIs
+
+### Improvements
+
+- Improvements to data aggregation logic in the [Advanced Reporting API](/millicast/api/reporting/records-get-viewer-records/)
+- Improvements to the media assets functionality
+
+### Fixes
+
+- Fix input validation for [Update Transcoder](/millicast/api/transcoder-update-transcoder/)
+
+## 2026-02-26 | Usage Reporting
+
+### Improvements
+
+- Improve accuracy of firstRequest time in Millicast reports.
+
+## 2026-02-23 | REST APIs
+
+### Features
+
+- Allow creation of multiple media distributions
+- Prepare CDN distribution for recordings. There will be a staged update to serve recording downloads from our CDN instead of S3 pre‑signed URLs.
+
+### Improvements
+
+- Refactor media asset functionality for improved maintainability
+
+## 2026-01-23 | REST APIs
+
+### Features
+
+- Enhanced Broadcasting with OBS now has been updated to allow customers to select a profile when using the OBS _Enhanced Broadcasting Mode_ with Millicast to select the server-side profile on the Millicast Publishing Token. More details in our [documentation](/millicast/software-encoders/obs/enhanced-broadcasting-multitrack-video/#server-side-stream-configuration)
 
 ## 2026-01-23 | REST APIs
 
