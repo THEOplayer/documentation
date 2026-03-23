@@ -1,20 +1,26 @@
 ---
 sidebar_position: 1
 sidebar_label: FFmpeg
+description: Free open-source command-line tool for streaming media files.
 ---
 
-# Using FFmpeg with THEOlive
+# Using FFmpeg with Optiview Live
 
-**FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. It is common practice to use Ffmpeg in production workflows when broadcasting from a media file on disk.
+**FFmpeg** is a free open-source command-line tool for handling video, audio, and other multimedia. It is commonly used in production workflows to broadcast a media file using RTMP to Optiview Live.
 
-Broadcasts are started using the `ffmpeg` command-line to forward a source using RTMP broadcast contribution protocol to stream content to THEOlive.
-
+:::tip
 See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installation instructions and additional support.
+:::
 
 ## Common Settings
 
+:::warning -re flag
+Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
+:::
+
 | Parameter          | Description                                      |
 | :----------------- | :----------------------------------------------- |
+| \-re               | Read input at native frame rate (for file-based sources only) |
 | \-stream_loop -1   | Loop the video indefinitely                      |
 | \-vb 4500k         | Video Bitrate setting of 4.5 Mbps                |
 | \-c:a copy         | Copy the audio codec from the input              |
@@ -24,10 +30,6 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-preset veryfast  | Video encoding speed to compression ratio preset |
 | \-tune zerolatency | Good for fast encoding and low-latency streaming |
 | \-vprofile main    | H264 video profile                               |
-
-:::warning -re flag
-Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
-:::
 
 ## Start the stream
 
@@ -54,5 +56,5 @@ ffmpeg -re -stream_loop -1 -i $VIDEO_FILE_PATH \
 ```
 
 :::info Upload bandwidth
-Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the THEOlive channel.
+Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the Optiview Live channel.
 :::
