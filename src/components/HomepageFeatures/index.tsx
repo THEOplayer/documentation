@@ -49,8 +49,8 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         <p>
-          Dolby OptiView's Live-streaming solution enables you to stream with consistency to any audience size with the best quality of experience,
-          whether it's for a large live broadcast event, sports betting, or interactive entertainment.
+          Dolby OptiView&apos;s Live-streaming solution enables you to stream with consistency to any audience size with the best quality of
+          experience, whether it&apos;s for a large live broadcast event, sports betting, or interactive entertainment.
         </p>
         <p>
           With this solution, choose Real-time for interactive latency or manage latency targets from 1 second and up with Live. Use both with the
