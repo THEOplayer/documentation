@@ -1,11 +1,12 @@
 ---
 sidebar_position: 3
 sidebar_label: vMix
+description: Windows desktop application that provides a vision mixer and encoder.
 ---
 
-# Using vMix with THEOlive
+# Using vMix with OptiView Live
 
-This guide explains to you how to set up vMix correctly so it can be used to stream your content with THEOlive.
+This guide explains to you how to set up vMix correctly so it can be used to stream your content with OptiView Live.
 
 ## 1. Set up sources
 
@@ -33,7 +34,7 @@ If you want to burn in a clock you can follow the steps documented by vMix. You 
 
 ![vMix streaming settings](../../assets/img/38e11d9-vmix-streaming-setting.PNG)
 
-**Note:** You can find your RTMP push URL and streamkey in the THEOlive management console.
+**Note:** You can find your RTMP push URL and streamkey in the management dashboard.
 
 - Next, choose a set of stream values such as aspect ratio and bitrate from the _Quality_ list and click the cogwheel for advanced _Streaming Quality_ settings.
 
@@ -41,20 +42,20 @@ If you want to burn in a clock you can follow the steps documented by vMix. You 
 
 **Note:** If you have the hardware available: it's always a good idea to enable the _Hardware Ecoder_ setting.
 
-- In the _Streaming Quality_ menu you can make some more advanced changes to your stream settings. Please use the settings that are highlighted in yellow in the following image to achieve optimal performance when streaming to THEOlive. You are free to change the _Video Bit Rates_ and _Encode Size_ settings depending on your use case.
+- In the _Streaming Quality_ menu you can make some more advanced changes to your stream settings. Please use the settings that are highlighted in yellow in the following image to achieve optimal performance when streaming to OptiView Live. You are free to change the _Video Bit Rates_ and _Encode Size_ settings depending on your use case.
 
 ![stream quality settings](../../assets/img/fae9921-streaming-quality-settings.jpg)
 
-**Note:\*** You are free to experiment with your encoding settings but the values shown in this image reflect the encoding setting THEOlive uses on the server side.
+**Note:\*** You are free to experiment with your encoding settings but the values shown in this image reflect the encoding setting used on the server side.
 
 :::info 🚧 Frame rate and bandwidth
-Remember to set the frame rate to the same value as in your THEOlive channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](../../platform/stream-configuration.mdx) for more details.
+Remember to set the frame rate to the same value as in your channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](../../platform/stream-configuration.mdx) for more details.
 :::
 
 ## 3. Start streaming
 
 You can now save and exit out of all the _Streaming Settings_ menus and click the _Stream_ button to start streaming.
 
-## 4. Start your THEOlive channel
+## 4. Start your channel
 
-This can be done either through the [API](../../api/start-channel.api.mdx) or via the [management console](https://console.theo.live/).
+Your channel must be started in order to receive video ingest from vMix. You can choose to start up your channel before or after you start streaming via vMix.

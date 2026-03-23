@@ -4,9 +4,9 @@ sidebar_label: FFmpeg
 description: Free open-source command-line tool for streaming media files.
 ---
 
-# Using FFmpeg with Optiview Live
+# Using FFmpeg with OptiView Live
 
-**FFmpeg** is a free open-source command-line tool for handling video, audio, and other multimedia. It is commonly used in production workflows to broadcast a media file using RTMP to Optiview Live.
+**FFmpeg** is a free open-source command-line tool for handling video, audio, and other multimedia. It is commonly used in production workflows to broadcast a media file using RTMP to OptiView Live.
 
 :::tip
 See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installation instructions and additional support.
@@ -34,12 +34,12 @@ Do not use the `-re` flag when the input is an actual capture device or a live s
 :::
 
 :::info Upload bandwidth
-Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the Optiview Live channel.
+Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the OptiView Live channel.
 :::
 
 ## Low Latency Encoding Settings
 
-The following settings are recommended to achieve the lowest possible latency when re-encoding when streaming to Optiview Live. These prioritize encoding speed and reduced buffering at the cost of some video quality.
+The following settings are recommended to achieve the lowest possible latency when re-encoding when streaming to OptiView Live. These prioritize encoding speed and reduced buffering at the cost of some video quality.
 
 | Parameter          | Description                                      |
 | :----------------- | :----------------------------------------------- |
