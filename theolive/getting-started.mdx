@@ -3,115 +3,108 @@ sidebar_position: 2
 sidebar_label: Getting started
 ---
 
-# Backend
+# Getting started
 
-THEOlive provides a REST API to manage channels, configure them and start / stop them. Each possible call can be found at our [API Reference](./api/create-channel.api.mdx).
+This guide walks you through creating your first stream, from setting up an account to embedding the player on your page.
 
-However, to make things easier for non-developers, we built a management console on top of these API calls which makes it straightforward to perform the basic actions. To be able to create and use a THEOlive channel, you should register for an account and get a token to perform [authenticated requests](./platform/authorization.mdx) to our API.
+Optiview live streaming provides a REST API to manage channels, configure them and start / stop them. Each possible call can be found in the [API Reference](./api/create-a-new-channel.api.mdx). On top there also is a [management dashboard](https://dashboard.optiview.dolby.com/) on top of these API calls, making it straightforward to perform the basic actions without writing code.
 
-## 1. Create an account in the management console
+### Prerequisites
 
-To start your journey, you'll have to create a THEOlive account in the [management console](https://console.theo.live/) .
+- An OptiView account
+- An RTMP/SRT-capable encoder — see our [software encoder](./contribution/software-encoders/index.mdx) and [hardware encoder](./contribution/hardware-encoders/index.mdx) guides
+- A web page or app to embed the player
 
-Once you've entered your username and password, you can already create your first channel and start streaming.
+## 1. Create your first channel
 
-![](assets/img/302e789-dashboard.png 'Homepage of the THEOlive management console')
+Time to start streaming! In the management console, click "create channel" and fill in a name. You will end up on the overview page for your channel, where you can configure the different components.
 
-:::info 📘 API reference
+There are other options during channel creation that are more advanced and are explained in their respective guides, you can ignore them for now:
 
-This guide describes how to get started with the THEOlive management console. Please consult the [API reference](./api/create-channel.api.mdx) and [Authorization](./platform/authorization.mdx) if you would like to work with API calls.
+- [DVR](./platform/dvr.mdx)
+- [Ads](./platform/advertisements.mdx)
+- [Nielsen](./platform/nielsen.mdx)
+
+![](assets/img/channel-overview.PNG 'Management console: Details page with the possibility to configure and start your channel.')
+
+## 2. Configure your channel
+
+A channel consists of three main components that need to be configured:
+
+- **Ingest** — where the media is retrieved from. This is the entry point for your content and multiple protocols are supported like RTMP and SRT.
+- **Engine** — processes the incoming media, handling transcoding and packaging.
+- **Distributions** — different output versions of an engine. Each distribution lets you enable or disable protocols, choose CDNs, and more.
+
+<figure style={{ textAlign: 'center' }}>
+![](assets/img/channel.drawio.svg)
+<figcaption>Example diagram of a channel setup with redundant ingests</figcaption>
+</figure>
+
+### 2.1 Ingest
+
+Create a new ingest, give it a name, and select the protocol you want to use (RTMP or SRT) and which mode (pull or push).
+
+:::tip
+You only need a single ingest to start streaming but are free to create multiple ones for redundancy purposes for example.
 :::
 
-## 2. Create your first channel
+<div style={{ textAlign: 'center' }}>![](assets/img/create-ingest.png 'Create an ingest')</div>
 
-Time to start streaming! In the management console, please click "create channel", which will return the following screen: here you can enter a name for your channel, choose the ingest location, and define your [Stream configuration](./contribution/stream-configuration.mdx). It is important to choose a location as close as possible to you to reduce latency.
+### 2.2 Engine
 
-![](assets/img/b636bf5-create-channel.PNG 'Create a channel')
+The engine is responsible for transcoding and packaging the incoming media. Create a new engine and configure the following properties:
 
-When hitting 'Create', you will be navigated towards the Details page of your newly created channel.
+<div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+<div style={{ flex: '0 0 35%', maxWidth: '35%' }}>
 
-![](assets/img/467abb8-overview.PNG 'Management console: Details page with the possibility to start your channel and options to customize your player.')
+![](assets/img/create-engine.png 'Create an engine')
 
-A channel can also be created through an API call to the `channels` endpoint, passing an ingest location and a name. It will return an `id` that you can use to start, stop, update or delete the channel later on. Also, a `streamKey` and `rtmpPushUrl` will be returned to stream your content to. More information about the Create channel endpoint and how to pass advanced properties can be found [here](./api/create-channel.api.mdx).
+</div>
+<div style={{ flex: '1 1 65%' }}>
 
-```curl
-curl --location --request POST 'https://api.theo.live/channels'
---header 'Authorization: Basic dG9rZW46c2VjcmV0' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "ingestLocation": "europe-west",
-    "metadata": {
-        "name": "a-name"
-    }
-}'
-```
+- **Name** — a descriptive name for your engine.
+- **Priority** — determines which engine takes precedence when multiple engines are configured. A lower number means higher priority.
+- **Ingest** — select which ingest this engine should use as its source.
+- **Region** — the region where the transcoding takes place. Choose one close to your ingest location.
+- **ABR Ladder** — the adaptive bitrate ladder used for transcoding, defining the resolution and bitrate combinations.
+- **Enable DRM** — secure your content with Digital Rights Management.
+- **Enable HESP** — output content in HESP format for low latency delivery.
+- **Enable HLS** — output content in HLS format for broad platform compatibility.
+- **Enable HLS MPEG-TS** — output content in HLS MPEG-TS format. Only recommended for very specific platforms that don't support HLS with CMAF segments.
+- **DAI Asset Key** — asset key for Dynamic Ad Insertion.
 
-Note that for this API call you'll need a token that you can generate in the management console. More information can be found at the [Authorization](./platform/authorization.mdx) guide.
+</div>
+</div>
 
-## 3. Start streaming
+### 2.3 Distributions
 
-Using the RTMP push URL and the stream key you have received when creating a channel, you can start streaming content to that RTMP endpoint.
+A distribution represents an output version of an engine. Create a new distribution, give it a name and a connected engine. The default properties are fine to get started, but a lot of properties can be configured:
 
-:::info 🚧 RTMP pull
+![](assets/img/configure-distribution.png 'Configure a distribution')
 
-If you would like to do pull-based streaming instead of push-based streaming, you can also use your own RTMP pull endpoint and specify this when starting the channel in the next step.
-:::
+- **Endpoints** — the connected engines that feed into this distribution.
+- **Outputs** — enable or disable streaming protocols (HESP, HLS, HLS MPEG-TS).
+- **Player** — configure player settings such as target latency and max bitrate.
+- **WebRTC** — optional WebRTC configuration for real-time delivery.
+- **Overrides** — add custom overrides for specific settings.
+- **Security** — configure access restrictions including geo blocking, IP blocking, referrer blocking and JWT security.
 
-One option to start streaming content is making use of [OBS](https://obsproject.com/). It's an easy, free and quick way to get you started. More information on how to get started with OBS can be found in our guide [Using OBS with THEOlive](./contribution/software-encoders/obs.md). If you would be using [Wirecast](https://www.telestream.net/wirecast) for your live streaming, then more information on how to get started can be found in the guide [Using Wirecast with THEOlive](./contribution/software-encoders/wirecast.md). There are also guides for [vMix](./contribution/software-encoders/vmix.md) and [Videon Edgecaster](./contribution/hardware-encoders/videon.mdx).
+## 3. Start the channel
 
-:::info ❗️ RTMPS vs RTMP
+When you're all set, you can start your channel from the channel details page by clicking the `Start all` button. This will start all engines at once. Starting your channel means your transcoding time will start counting for billing purposes.
 
-The RTMP push URL generated by THEOlive shows as RTMPS. If you would like to do RTMP streaming then you will have to change "rtmps" to "rtmp". As an example, `rtmps://rtmp.europe-west.theo.live/live` will have to be changed to `rtmp://rtmp.europe-west.theo.live/live` for RTMP-based streaming.
-:::
+For advanced use cases such as production updates, you can start and stop individual engines separately. However, for most use cases all engines will be started and stopped at the same time.
 
-## 4. Player embed script
+<div style={{ textAlign: 'center' }}>![](assets/img/start-channel.png)</div>
 
-Now we have to make sure that our viewers have access to the stream! Including a THEOlive channel on your page is very simple: all you need is our embed script and the channel ID. The [Player](./playback/web/getting-started.mdx) guide gives more information on how to do this, including a code snippet example.
+## 4. Verify playback
 
-### Obtaining a Player License for THEOlive
+Now we have to make sure that our viewers have access to the stream. In the dashboard you can already see the preview of the stream.
 
-THEOlive customers have access to THEOplayer Licenses with support for the following platforms:
+<div style={{ textAlign: 'center' }}>![](assets/img/optiview-live-preview.png 'Live stream preview in the dashboard')</div>
 
-- `html5`
-- `android`
-- `androidtv`
-- `firetv`
-- `ios`
-- `tizen`
-- `tvos`
-- `webos`
+For production use cases, you should connect [THEOplayer](./playback/web/getting-started.mdx).
 
-These licenses can be found in the "Playout Configurations" section for each of your created Channels on your [THEOlive dashboard](https://console.theo.live/login) as pictured below:
+## 5. Stop the channel
 
-![](assets/img/theolive-license.png)
-
-Licenses will be automatically generated for each new channel you create. Aliases on the same channel will share the same license.
-
-## 5. Start the channel
-
-When you're all set, you can start your THEOlive channel. Starting your channel also means your [transcoding time](https://www.theoplayer.com/pricing/theolive) will start counting for billing purposes.
-
-You can easily start your channel on the channel details page, by clicking on the green "start" button.
-
-![](assets/img/cbe288c-start.PNG)
-
-In the background this will make a `POST` request to the `channels/start` endpoint. You can also start a channel via the Start channel API call, for which you can find more information [here](./api/start-channel.api.mdx). As mentioned in the last section, you can optionally pass the `rtmpPullUrl` property in the body of the request for pull-based streaming. Don't forget to stop streaming when you are done!
-
-```curl
-curl --location --request POST 'https://api.theo.live/channels/{channel-id}/start' \
---header 'Authorization: Basic dG9rZW46c2VjcmV0' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "rtmpPullUrl": "your-optional-rtmp-pull-url"
-}'
-```
-
-## 6. Stop the channel
-
-Have you finished your real-time streaming? Make sure to stop your channel by making a request to the `channels/stop` endpoint, either through a [Stop channel](./api/stop-channel.api.mdx) API call or by pressing the red "stop" button in the management console.
-
-```curl
-curl --location --request POST 'https://api.theo.live/channels/{channel-id}/stop' \
---header 'Authorization: Basic dG9rZW46c2VjcmV0' \
---header 'Content-Type: application/json'
-```
+When you are done streaming, make sure to stop your channel to avoid unnecessary transcoding costs.
