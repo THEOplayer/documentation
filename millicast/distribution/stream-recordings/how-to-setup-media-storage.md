@@ -4,8 +4,10 @@ title: How-to Setup Storage Profiles
 
 With [Live Clipping](live-clipping.mdx) you can have clips stored directly to your preferred third-party cloud storage provider. This gives you additional control over storage costs and manage usage of media clips.
 
-:::caution Not Available for Recordings
+:::caution Not Available for Recordings or live-to-VOD assets
 At this time, [Recordings](start-recording.mdx) cannot be configured to use a third-party cloud storage provider directly. You should follow the [How-to Get Media Assets](how-to-get-media-assets.mdx) guide to identify recordings for download and then you can upload them to your preferred provider of choice.
+
+Additionally, if you are using our workflow for [live-to-VOD clipping](/theolive/platform/live-clipping/) with a CDN servable HLS asset, this must be stored to Dolby's cloud storage in order to orchestrate the CDN.
 
 Similarly, **timelines** will always be stored in Dolby's storage subject to expiration rules.
 :::
