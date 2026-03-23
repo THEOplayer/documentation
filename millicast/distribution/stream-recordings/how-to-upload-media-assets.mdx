@@ -66,7 +66,7 @@ If there are any additional files uploaded to `s3://<bucketName>/<objectPrefix>/
 
 If your asset has multiple files such as an HLS asset with a main manifest and related manifests/media files, the [Register Media Asset](/millicast/api/media-assets-register-media-asset.api.mdx) request should look like this.
 
-```
+```json
 {
   "objectPrefix": "<object-prefix-from-api-response>",
   "entrypoint": "main.m3u8"
