@@ -1,16 +1,15 @@
 ---
 sidebar_position: 2
 sidebar_label: OBS
+description: Free open-source application for broadcasting and recording streams.
 ---
 
 # Using OBS with THEOlive
 
 **Open Broadcaster Software (OBS)** is a free open-source software created for broadcasting and recording on your desktop. You can take advantage of this tool to stream high-quality video to your viewers using THEOlive.
 
-See the official [obsproject.com](https://obsproject.com) documentation for installation instructions and additional support about using OBS.
-
-:::tip Getting Started
-If you haven't already, begin by following the [Getting Started](../../getting-started.mdx) tutorial to create a THEOlive channel and start your first broadcast.
+:::tip
+See the official [obsproject.com](https://obsproject.com) documentation for installation instructions and additional support.
 :::
 
 ## Setting up a broadcast

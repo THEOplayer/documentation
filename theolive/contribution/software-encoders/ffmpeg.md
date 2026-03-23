@@ -12,49 +12,49 @@ description: Free open-source command-line tool for streaming media files.
 See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installation instructions and additional support.
 :::
 
-## Common Settings
+## Streaming a file
+
+```shell
+ffmpeg -re -stream_loop -1 -i /path/to/file.mp4 \
+  -c:v copy -c:a copy -f flv \
+  -rtmp_playpath "your-stream-key" \
+  -rtmp_live live "rtmps://rtmp.<region>.theo.live/live"
+```
+
+| Parameter        | Description                                              |
+| :--------------- | :------------------------------------------------------- |
+| \-re             | Read input at native frame rate (for file-based sources only) |
+| \-stream_loop -1 | Loop the video indefinitely                              |
+| \-c:v copy       | Copy the video codec from the input                      |
+| \-c:a copy       | Copy the audio codec from the input                      |
+| \-f flv          | Package flash video                                      |
 
 :::warning -re flag
 Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
 :::
 
-| Parameter          | Description                                      |
-| :----------------- | :----------------------------------------------- |
-| \-re               | Read input at native frame rate (for file-based sources only) |
-| \-stream_loop -1   | Loop the video indefinitely                      |
-| \-vb 4500k         | Video Bitrate setting of 4.5 Mbps                |
-| \-c:a copy         | Copy the audio codec from the input              |
-| \-bf 0             | Disable bframes                                  |
-| \-g 60             | Group of pictures (GOP) size                     |
-| \-f flv            | Package flash video                              |
-| \-preset veryfast  | Video encoding speed to compression ratio preset |
-| \-tune zerolatency | Good for fast encoding and low-latency streaming |
-| \-vprofile main    | H264 video profile                               |
-
-## Start the stream
-
-Run the following command with the proper settings in order to start publishing to your channel.
-
-```shell
-MEDIA_FILE="/path/to/file.mp4"
-RTMP_PUBLISH_URL="rtmps://rtmp.<region>.theo.live/live"
-RTMP_STREAM_KEY="Your stream key"
-
-ffmpeg -re -stream_loop -1 -i $VIDEO_FILE_PATH \
-  -vcodec libx264 \
-  -preset veryfast \
-  -bf 0 \
-  -g 60 \
-  -vb 4500k \
-  -vprofile main \
-  -tune zerolatency \
-  -level 3.0 \
-  -c:a copy \
-  -f flv \
-  -rtmp_playpath $RTMP_STREAM_KEY \
-  -rtmp_live live $RTMP_PUBLISH_URL
-```
-
 :::info Upload bandwidth
 Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the Optiview Live channel.
 :::
+
+## Low Latency Encoding Settings
+
+The following settings are recommended to achieve the lowest possible latency when re-encoding when streaming to Optiview Live. These prioritize encoding speed and reduced buffering at the cost of some video quality.
+
+| Parameter          | Description                                      |
+| :----------------- | :----------------------------------------------- |
+| \-vb 4500k         | Video Bitrate setting of 4.5 Mbps                |
+| \-vprofile main    | H264 video profile                               |
+| \-g 60             | Group of pictures (GOP) size                     |
+| \-preset veryfast  | Faster encoding speed at the cost of compression efficiency |
+| \-tune zerolatency | Disables internal buffering for low-latency streaming |
+| \-bf 0             | Disable B-frames to reduce encoding delay        |
+
+```shell
+ffmpeg -f decklink -i "DeckLink Mini Recorder" \
+  -vcodec libx264 -vb 4500k -vprofile main -g 60 \
+  -preset veryfast -tune zerolatency -bf 0 \
+  -c:a aac -ab 128k -f flv \
+  -rtmp_playpath "your-stream-key" \
+  -rtmp_live live "rtmps://rtmp.<region>.theo.live/live"
+```
