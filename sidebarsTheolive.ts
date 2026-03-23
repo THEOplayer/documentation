@@ -41,16 +41,8 @@ const sidebars: SidebarsConfig = {
       value: '<hr />',
     },
     {
-      type: 'doc',
-      id: 'contribution/hardware-encoders/index',
-    },
-    {
-      type: 'doc',
-      id: 'contribution/software-encoders/index',
-    },
-    {
       type: 'link',
-      label: 'THEOlive REST API',
+      label: 'REST API',
       customProps: {
         icon: '🛜',
       },
