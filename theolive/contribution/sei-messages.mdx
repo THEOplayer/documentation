@@ -1,14 +1,16 @@
 ---
-sidebar_position: 4
-sidebar_label: In-stream Metadata
+sidebar_position: 5
+sidebar_label: In-stream SEI metadata
 ---
 
-# In-stream metadata through SEI messages
+# In-stream SEI metadata
 
 ---
 
-THEOlive allows you to embed metadata into your stream that is preserved throughout the THEOlive pipeline and can be accessed by the player.
+The Dolby OptiView Live platform allows you to embed metadata into your stream using SEI (Supplemental Enhancement Information) messages. This metadata is preserved throughout the pipeline and can be accessed by the player during playback.
 
-The first step is adding the metadata to your (h264) input stream in the form of picture timing SEI messages as defined in ITUT H264 Annex D 1.3. These messages allow you to add a timestamp to your frames and associate the timestamp with an event that happened on your backend.
+## Configuring in-stream SEI metadata
 
-The next step is [listening to these messages in the player](../playback/web/metadata.mdx).
+1. Add metadata to your H.264 input stream in the form of picture timing SEI messages, as defined in ITU-T H.264 Annex D 1.3. These messages allow you to attach a timestamp to individual frames and associate it with an event on your backend.
+2. Start your channel and begin ingesting video with embedded SEI data.
+3. [Listen to these messages in the player](../playback/web/metadata.mdx) to consume the metadata during playback.
