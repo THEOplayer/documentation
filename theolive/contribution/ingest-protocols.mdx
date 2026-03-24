@@ -1,0 +1,35 @@
+---
+sidebar_position: 0
+sidebar_label: Ingest protocols
+---
+
+# Ingest protocols
+
+---
+
+The Dolby OptiView Live platform supports low latency live streaming through two ingest protocols: **RTMP** and **SRT**.
+
+## RTMP — Real-Time Messaging Protocol
+
+RTMP is a widely adopted protocol originally developed by Adobe for transmitting audio, video, and data over the internet. It remains one of the most commonly supported protocols across hardware and software encoders.
+
+- **Pros**
+  - **Broad encoder support** — Nearly all hardware and software encoders support RTMP out of the box.
+  - **Simple setup** — Requires minimal configuration, typically just a server URL and stream key.
+  - **Low latency** — Provides low latency contribution suitable for most live streaming use cases.
+- **Cons**
+  - **Container limitation** — RTMP uses the FLV container, which only supports H.264 video and AAC audio. Newer codecs such as H.265/HEVC are not supported.
+  - **Single audio track** — RTMP is limited to a single audio track per stream, making it unsuitable for multi-audio use cases.
+
+## SRT — Secure Reliable Transport
+
+SRT is an open-source protocol designed for low latency, secure, and reliable video transport across unpredictable networks. It is increasingly adopted as a modern alternative to RTMP.
+
+- **Pros**
+  - **Resilient on unreliable networks** — SRT uses UDP with built-in error correction (ARQ), making it well suited for contribution over the public internet or unstable connections.
+  - **Multi-audio support** — SRT uses the MPEG-TS container, which supports multiple audio tracks within a single stream.
+  - **Closed captions and metadata** — The MPEG-TS container also supports embedded closed captions (CEA-608/708) and SEI metadata pass-through.
+  - **Codec flexibility** — MPEG-TS supports a broader range of codecs compared to FLV.
+- **Cons**
+  - **Less universal encoder support** — While adoption is growing, not all encoders support SRT, especially older hardware models.
+  - **More complex configuration** — SRT may require tuning parameters such as latency, overhead bandwidth, and encryption settings for optimal performance.
