@@ -48,7 +48,7 @@
     "@docusaurus/types": "^3.9.2",
     "@eslint/js": "~9.39.4",
     "dotenv": "^17.3.1",
-    "eslint": "~9.39.4",
+    "eslint": "~10.1.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^17.4.0",
@@ -57,8 +57,8 @@
     "raw-loader": "^4.0.2",
     "remark": "^15.0.1",
     "serve-handler": "^6.1.7",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.1",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.57.2",
     "unist-util-visit": "^5.1.0"
   },
   "overrides": {
