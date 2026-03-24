@@ -5,6 +5,7 @@ const sidebars: SidebarsConfig = {
   theolive: [
     'index',
     'getting-started',
+    'architecture',
     {
       type: 'category',
       label: 'Contribution',

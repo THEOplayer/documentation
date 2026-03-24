@@ -1,0 +1,41 @@
+---
+sidebar_label: Architecture
+---
+
+# Architecture
+
+---
+
+The core building block of the Dolby OptiView Live platform is the **channel**. A channel represents a complete live streaming pipeline, from media ingestion through to viewer delivery. Each channel is composed of three main components: **ingests**, **engines**, and **distributions**.
+
+<figure style={{ textAlign: 'center' }}>
+![](assets/img/channel.drawio.svg)
+<figcaption>Example diagram of a channel setup with redundant ingests</figcaption>
+</figure>
+
+## Ingest
+
+An ingest is the entry point for your media into the platform. It defines where and how live content is received, supporting protocols such as [RTMP and SRT](./contribution/ingest-protocols.mdx).
+
+A channel can have **multiple ingests**, allowing you to set up redundant sources for failover or to receive content from different locations simultaneously.
+
+## Engine
+
+An engine is responsible for transcoding and packaging the incoming media. It takes the raw input from an ingest and processes it into the configured output formats and quality levels (ABR ladder).
+
+A channel can have **multiple engines**, enabling different levels of redundancy depending on your needs:
+
+- **Transcoder redundancy** — connect two engines to the same ingest. If one engine fails, the other continues processing the same source. This protects against transcoding failures while keeping a single ingest path.
+- **Full path redundancy** — connect each engine to a separate ingest. This protects the entire pipeline from ingest to transcoding — if either the ingest or the engine fails on one path, the other path remains fully operational.
+
+In both cases, the engine **priority** setting determines which engine is active. A lower priority number means higher precedence, so the platform automatically falls back to the next engine when the primary one becomes unavailable.
+
+## Distribution
+
+A distribution represents an output endpoint of an engine. It defines how the processed content is delivered to viewers, including CDN configuration, player settings, and security policies.
+
+A channel can have **multiple distributions** per engine, allowing you to serve different viewer groups with different configurations from the same source. This gives a lot of flexibility, for example:
+
+- **Regional reselling** — create separate distributions with different geo-blocking rules, so each reseller or region only has access to the content they are licensed for.
+- **Testing and beta rollouts** — spin up a dedicated distribution for beta testers to try out new settings or features without affecting your production audience.
+- **Live engine management** — if a certain ingest or engine path is misbehaving, you can remove that engine from the distribution live in production. New viewers will no longer be routed to the problematic flow, while existing viewers on that engine will remain on it until they encounter issues themselves.
