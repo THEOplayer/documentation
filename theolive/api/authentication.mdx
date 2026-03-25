@@ -1,12 +1,15 @@
 ---
-sidebar_position: 1
+sidebar_label: Authentication
+sidebar_position: 0
 ---
 
-# Authorization
+# Authentication
 
-To make secure calls to the THEOlive REST API, both authentication and authorization are required. THEOlive uses token–secret pairs to authorize API requests and ensure secure access.
+---
 
-## 1. Getting a token-secret pair
+To make secure calls to the REST API, both authentication and authorization are required. THEOlive uses token–secret pairs to authorize API requests and ensure secure access.
+
+## Getting a token-secret pair
 
 To generate a token–secret pair, you must first have an account on the [THEOlive management console](https://console.theo.live/).
 
@@ -35,11 +38,9 @@ If you forget your secret or if it gets exposed, you can easily regenerate a new
 
 To revoke a token, click the arrow icon under the "Actions" column and the token will be moved to the list of revoked tokens after confirmation.
 
-## 2. Using the token-secret pair with Basic Authentication
+## Using the token-secret pair with Basic Authentication
 
-THEOlive uses Basic Authentication for API requests. To authenticate, include your token-secret pair (base64-encoded) in the 'Authorization' header, prepended with the word 'Basic'.
-
-Here’s an example of how to set up the header:
+THEOlive uses Basic Authentication for API requests. To authenticate, include your token-secret pair (base64-encoded) in the `Authorization` header, prepended with the word `Basic`.
 
 1. Combine your token and secret in the format `token:secret`.
    Example: `my-token:my-secret`
@@ -50,6 +51,4 @@ Here’s an example of how to set up the header:
 3. Include the encoded string in the Authorization header, prefixed with the word Basic.
    Example header: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
 
-4. The final Authorization header should look like this: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
-
-You’re now ready to make authenticated requests to the THEOlive API.
+You're now ready to make authenticated requests to the THEOlive API.

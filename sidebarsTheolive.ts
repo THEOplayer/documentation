@@ -87,6 +87,7 @@ const sidebars: SidebarsConfig = {
       href: '/theolive/next/',
     },
     'api/index',
+    'api/authentication',
     ...apiSidebar.slice(1),
   ],
 };
