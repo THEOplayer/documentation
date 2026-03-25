@@ -49,7 +49,7 @@ If you want to burn in a clock you can follow the steps documented by vMix. You 
 **Note:\*** You are free to experiment with your encoding settings but the values shown in this image reflect the encoding setting used on the server side.
 
 :::info 🚧 Frame rate and bandwidth
-Remember to set the frame rate to the same value as in your channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](../../stream-configuration/abr.mdx) for more details.
+Remember to set the frame rate to the same value as in your channel ingest configuration and make sure that your encoder has a stable connection and enough upload bandwidth. See [Stream configuration](../../media-engine/abr.mdx) for more details.
 :::
 
 ## 3. Start streaming
