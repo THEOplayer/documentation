@@ -1,6 +1,9 @@
 ---
 sidebar_position: 2
 sidebar_label: Alias
+sidebar_custom_props:
+  icon: 🔗
+description: Create multiple aliases for a single channel with independent settings.
 ---
 
 # Multi-channel: aliases for channels

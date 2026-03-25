@@ -1,5 +1,9 @@
 ---
 sidebar_position: 3
+sidebar_label: Redundancy
+sidebar_custom_props:
+  icon: 🔄
+description: Configure failover and redundancy for high-availability streaming.
 ---
 
 # Redundancy
