@@ -63,7 +63,7 @@ If you would like to make your content available anywhere **except** Belgium, yo
 
 ### Channel alias
 
-Geo-blocking can also be done on a [channel alias](../multi-channel.md) using the specified channel alias [endpoint](/theolive/api/channels/update-channel-alias) or via the console.
+Geo-blocking can also be done on a channel alias using the specified channel alias [endpoint](/theolive/api/channels/update-channel-alias) or via the console.
 
 ## Geo-blocking on main channel and alias
 
@@ -75,7 +75,7 @@ For example, a stream you have created must adhere to the following rules:
 - Customer 2 can only show the stream to UK and USA viewers
 - Customer 3 can only show the stream to French viewers
 
-In this scenario, you can create 3 aliases of your main channel, one for each customer. This allows you to set custom geo-blocking rules for each customer as well as [track customer specific analytics](../multi-channel.md).
+In this scenario, you can create 3 aliases of your main channel, one for each customer. This allows you to set custom geo-blocking rules for each customer as well as track customer specific analytics.
 
 The main channel's `channel-id` won't be used, we so can geo-block it completely. This means someone using this channel ID will not be able to see it anywhere in the world.
 

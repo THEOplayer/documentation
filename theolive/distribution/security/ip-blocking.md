@@ -29,7 +29,7 @@ For example: If you want to restrict certain CIDRs from viewing your content, yo
 
 ### Channel Alias
 
-IP-blocking can also be done on a [channel alias](../multi-channel.md) using the specified channel alias [endpoint](/theolive/api/channels/update-channel-alias) or via the console.
+IP-blocking can also be done on a channel alias using the specified channel alias [endpoint](/theolive/api/channels/update-channel-alias) or via the console.
 
 ## IP-blocking via the console
 
