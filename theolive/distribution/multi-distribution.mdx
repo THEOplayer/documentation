@@ -1,0 +1,42 @@
+---
+sidebar_position: 1
+sidebar_label: Multi-distribution
+sidebar_custom_props:
+  icon: 🤝
+description: Serve a single stream through multiple distributions with independent settings.
+---
+
+# Multi-distribution
+
+---
+
+A single engine can serve multiple distributions, each with its own configuration. Rather than duplicating the entire pipeline, you can create separate distributions on one engine to serve different audiences, regions, or partners independently.
+
+## How it works
+
+A channel only needs one ingest and one engine to transcode and package the stream once. From that engine, you can create multiple distributions. Each distribution acts as an independent output endpoint with its own configuration, including geo-blocking rules, security policies, and player settings.
+
+This means the stream is transcoded and packaged **once**, but delivered **many times** under different conditions — keeping costs and complexity low.
+
+## Example: regional rights management
+
+Suppose you are streaming a live event and have sold the rights to three resellers:
+
+- **Reseller A** has the rights for Europe
+- **Reseller B** has the rights for North America
+- **Reseller C** has the rights for Asia-Pacific
+
+You would set up your channel as follows:
+
+1. Create a single **ingest** and **engine** for transcoding.
+2. Create three **distributions** on that engine — one per reseller.
+3. Apply [geo-blocking](./security/geo-blocking.md) rules to each distribution so that only viewers in the licensed region can access the stream.
+4. Optionally, apply [token-based security](./security/token-based-security.mdx) per distribution so each reseller authenticates their own viewers.
+
+Each reseller receives their own channel alias and can only serve the stream to viewers within their licensed territory. From an operational perspective, you manage a single pipeline while maintaining full control over regional access.
+
+## Benefits
+
+- **Cost-efficient** — transcoding and packaging happens once, regardless of the number of resellers.
+- **Independent configuration** — each distribution has its own security, geo-blocking, and delivery settings.
+- **Scalable** — adding a new reseller is as simple as creating a new distribution with the appropriate rules.
