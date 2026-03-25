@@ -1,0 +1,30 @@
+---
+sidebar_position: 2
+sidebar_label: Streaming protocols
+---
+
+# Streaming protocols
+
+---
+
+The media engine outputs your live stream in multiple protocols to ensure broad device and player compatibility. The following output protocols are supported: **HESP** and **HLS**.
+
+### HESP — High Efficiency Streaming Protocol
+
+HESP is a next-generation streaming protocol designed for ultra-low latency live delivery. It is the default and recommended output protocol for the Dolby OptiView Live platform.
+
+- **Ultra-low latency** — delivers end-to-end latency in the 1 to 5 seconds range, significantly lower than traditional HLS.
+- **Fast channel switching** — viewers experience near-instant startup and channel changes.
+
+### HLS — HTTP Live Streaming
+
+HLS is the industry-standard protocol developed by Apple for delivering live and on-demand content over HTTP. The media engine outputs HLS using modern fragmented MP4 segments.
+
+- **Broad compatibility** — supported by virtually all modern browsers, devices and players.
+- **Higher latency** — compared to HESP, HLS typically introduces several seconds of additional latency.
+
+---
+
+:::note Legacy support
+For legacy compatibility, HLS with MPEG-TS segments is also available but discouraged for new integrations. Contact us if you need it enabled for legacy use cases like specific set-top box requirements for example.
+:::
