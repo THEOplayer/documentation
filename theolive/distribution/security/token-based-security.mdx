@@ -5,61 +5,38 @@ sidebar_custom_props:
 description: Require JWT tokens for viewer authentication.
 ---
 
-# Token based security
+# Token-based security
 
-THEOlive offers the option to enable JWT token security for your distribution (formerly referred to as an alias). This can be interesting if you only want valid users to access your stream.
+---
 
-In this document, we will
-
-- explain how it works
-- how to enable/disable it via the console and API
-- how to configure your THEOplayer to pass the mandatory headers
+Token-based security restricts access to your stream by requiring a valid JWT (JSON Web Token) on every playback request. This ensures that only authenticated viewers — those who have received a token from your backend — can access the stream.
 
 ## How it works
 
-When enabling token security on a distribution, we expect you to share the shared (private) key in case of HS256/HS512 or the public key in case of RS256/RS512 encryption. This will be used on CDN level to determine if a request (with a Bearer token passed in the `Authorization` header) is valid or not. It's up to you to configure this header correctly through our player. Later in this document we will explain how.
+When token security is enabled on a distribution, the CDN validates an `Authorization` header containing a Bearer token on each request. The token is signed with a shared secret (HS256/HS512) or a public/private key pair (RS256/RS512) that you provide when enabling the feature.
 
-In the bearer token that gets sent to us, we _require_ the following properties to be provided in the `payload`:
+The token payload must include:
 
-- `exp`: date in epoch format until which the JWT token is valid
-- `nbf`: optional date in epoch format. Stands for "not before" and acts as a "start date" of the JWT to be valid.
+- **`exp`** — expiration time in epoch format. The token is rejected after this time.
+- **`nbf`** *(optional)* — "not before" time in epoch format. The token is rejected before this time.
 
-When not passing a bearer token for a secured distribution, the request will be rejected. If the distribution is not secured, you may still pass a token but it is not required.
+Requests without a valid token are rejected. If the distribution does not have token security enabled, the `Authorization` header is ignored.
 
-![token based security](../../assets/img/dcdfc37-token_security.png)
+## Configuration
 
-Putting it all together, here is an example of a token `payload`:
+To enable token-based security, navigate to your distribution's security settings and enable the token security toggle. Provide the shared secret or public key used to verify tokens.
 
-```json
-{
-  "nbf": 1750786626 // optional, viewers attempting to connect before this time will not be permitted
-  "exp": 1750796626 // required, must be a valid time in the future to allow viewer access
-}
-```
+<figure style={{ textAlign: 'center' }}>
 
-To view an example token, you can paste the following token into the [jwt.io debugger](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NTA4MTM5NDAsImV4cCI6MTc1MDgxNDU0MH0.hGnLRGO09AXNzMHgHLLz1HJ-9mRfDf-PnOd20w9CQmI):
+![Token-based security settings](../../assets/img/token-security.png)
 
-```
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NTA4MTM5NDAsImV4cCI6MTc1MDgxNDU0MH0.hGnLRGO09AXNzMHgHLLz1HJ-9mRfDf-PnOd20w9CQmI
-```
+</figure>
 
-It was signed with the following random secret: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
+## Player configuration
 
-## Enable or disable token security for an alias
+The player needs to be configured to pass the `Authorization` header with each request. Refer to the platform-specific guides:
 
-Please refer to the [Enable token security for alias](/theolive/api/channels/enable-token-security-for-alias) and [Disable token security for alias](/theolive/api/channels/disable-token-security-for-alias) API endpoints to manage the token security settings for an alias.
-
-When enabling for the first time, you have to pass the `key` property in the body. If you disable token security later on, and make it active again, you can omit this property if it should stay the same.
-
-If you're using the [THEOlive management console](https://console.theo.live), you can navigate to the player details page and select the alias you want to enable/disable token security for. When enabling, please pass the correct shared or public key to use. **Don't forget to confirm your changes by hitting the save button!**
-
-![Managing token security in the console](../../assets/img/51376b6-token.png)
-
-## Configuring THEOplayer to pass the necessary headers
-
-Refer to our platform specific guides for details on how to setup JWT security for your channels and information on any known limitations.
-
-- [React Native](../../playback/react-native/token-based-security.mdx)
 - [Web](../../playback/web/token-based-security.mdx)
 - [Android](../../playback/android/token-based-security.mdx)
+- [React Native](../../playback/react-native/token-based-security.mdx)
 - [Roku](../../playback/roku/01-token-based-security.mdx)
