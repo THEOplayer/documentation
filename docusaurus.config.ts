@@ -614,12 +614,11 @@ const config: Config = {
           docsPluginId: 'theoplayer',
           position: 'right',
         },
-        // TODO: Enable theolive version dropdown when v2 docs are finalized
-        // {
-        //   type: 'docsVersionDropdown',
-        //   docsPluginId: 'theolive',
-        //   position: 'right',
-        // },
+        {
+          type: 'docsVersionDropdown',
+          docsPluginId: 'theolive',
+          position: 'right',
+        },
       ],
     },
     footer: {
