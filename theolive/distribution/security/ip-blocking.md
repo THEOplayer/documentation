@@ -1,3 +1,10 @@
+---
+sidebar_label: IP-blocking
+sidebar_custom_props:
+  icon: 🚫
+description: Block or allow access based on IP addresses.
+---
+
 # IP-blocking
 
 IP-blocking (or IP-banning) refers to a security measure that restricts access to content for specific IP addresses. Filtering can be allowed or denied by IP addresses or by [countries](./geo-blocking.md) as well. Only IPv4 and IPv6 CIDRs (Classless Inter-Domain Routing) are allowed.
