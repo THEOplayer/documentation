@@ -33,7 +33,7 @@ Select _Settings_ in the _Controls_ section at the bottom right of the OBS appli
 Next, go to the _Output_ tab in the _Settings_ menu, and configure the following settings in order to achieve the lowest possible latency using OptiView Live.
 
 - Output Mode: `Advanced`
-- Bitrate: match the max bitrate of the profile used in your channel (e.g.: 4500Kbps for "sport"). [More details](../../stream-configuration/stream-configuration.mdx).
+- Bitrate: match the max bitrate of the profile used in your channel (e.g.: 4500Kbps for "sport"). [More details](../../stream-configuration/abr.mdx).
 - Keyframe interval: `2s`
 - CPU Usage Preset (higher = less CPU): `veryfast`
 - Profile: `main`
@@ -41,7 +41,7 @@ Next, go to the _Output_ tab in the _Settings_ menu, and configure the following
 
 ![Defining output settings](../../assets/img/obsoutput.png)
 
-Lastly, go to the _Video_ tab and set the frame rate to the same value you have set in your channel. See [Stream configuration](../../stream-configuration/stream-configuration.mdx) for more details.
+Lastly, go to the _Video_ tab and set the frame rate to the same value you have set in your channel. See [Stream configuration](../../stream-configuration/abr.mdx) for more details.
 
 ![Defining output settings](../../assets/img/obsfps.png)
 
