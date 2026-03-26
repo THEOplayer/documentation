@@ -1390,6 +1390,58 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:13THEOplayerSDK11CachingTaskP4move2toy10Foundation3URLV_tKF"></a>
+                    <a name="//apple_ref/swift/Method/move(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK11CachingTaskP4move2toy10Foundation3URLV_tKF">move(to:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Moves the downloaded stream assets to the specified URL.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>Remark:</p>
+
+<ul>
+<li>Using this method before the task is completed will throw an error.</li>
+<li>To avoid errors, make sure that the URL is valid and that the directory exists.</li>
+<li>It is advised by Apple to avoid this approach: <a href="https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/urlsession(_:assetdownloadtask:didfinishdownloadingto:)?language=objc#Discussion">https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/urlsession(_:assetdownloadtask:didfinishdownloadingto:)?language=objc#Discussion</a></li>
+<li>Limit the URL usage to the application&rsquo;s sandbox directory. For more info check the <code>iOS Standard Directories: Where Files Reside</code> section at <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html">https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html</a></li>
+<li>Please consult with THEOplayer support or engineering before usage.</li>
+</ul>
+
+</div><ul>
+<li><p>Example:</p>
+<pre class="highlight swift"><code><span class="k">guard</span> <span class="k">let</span> <span class="nv">cachingTask</span><span class="p">,</span>
+     <span class="k">let</span> <span class="nv">destinationURL</span> <span class="o">=</span> <span class="kt">FileManager</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">urls</span><span class="p">(</span>
+       <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">documentDirectory</span><span class="p">,</span>
+       <span class="nv">in</span><span class="p">:</span> <span class="o">.</span><span class="n">userDomainMask</span><span class="p">)</span><span class="o">.</span><span class="n">first</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+<span class="k">do</span> <span class="p">{</span>
+   <span class="k">try</span> <span class="n">cachingTask</span><span class="o">.</span><span class="nf">move</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">destinationURL</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+   <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">move</span><span class="p">(</span><span class="n">to</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:13THEOplayerSDK11CachingTaskP7licenseAA0cD7License_pvp"></a>
                     <a name="//apple_ref/swift/Property/license" class="dashAnchor"></a>
                     <a class="token" href="#/s:13THEOplayerSDK11CachingTaskP7licenseAA0cD7License_pvp">license</a>

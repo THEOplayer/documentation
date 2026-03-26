@@ -333,6 +333,14 @@ public interface <span class="typeNameLabel"><a href=TextTrack.html>TextTrack</a
                                             <td class="colLast">Indicates whether the track contains Forced Narrative cues.</td>
                                         </tr>
                                         
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=TextTrack.html#getCaptionChannel()>getCaptionChannel</a>() </code>
+                                            </th>
+                                            <td class="colLast">The closed caption service number of the text track.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -628,7 +636,7 @@ public interface <span class="typeNameLabel"><a href=TextTrack.html>TextTrack</a
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>isForced</h4>
@@ -642,6 +650,32 @@ public interface <span class="typeNameLabel"><a href=TextTrack.html>TextTrack</a
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>Whether the text track is forced.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getCaptionChannel()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getCaptionChannel</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html>Integer</a> <a href=TextTrack.html#getCaptionChannel()>getCaptionChannel</a>()</pre>
+                                        <div class="block"><p>The closed caption service number of the text track. </p><ul><li>For CEA-608 caption tracks, this holds the channel number.</li><li>For CEA-708 caption tracks, this holds the service number.</li><li>Otherwise, not set.</li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The text track channel, or <code>null</code> if not set.</p></dd>
                                         
 
                                         
