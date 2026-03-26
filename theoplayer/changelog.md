@@ -7,6 +7,65 @@ These are the release notes for THEOplayer 10.0.0 and higher. For older versions
 * [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 * [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 10.13.0 (2026/03/25)
+
+### Web
+
+#### ✨ Features
+
+- Added support for `clearBufferWhenSettingTargetQuality` for DASH streams. This allows manual quality switches on DASH to occur immediately.
+
+#### ⚡ Improvements
+
+- Improved handling of unreachable `csai` ad break URLs by adding a timeout of 3s. If the download times out, the player will now throw an ad error and not play the ad break.
+
+#### 🐛 Issues
+
+- Fixed issue where very small periods in DASH manifests would cause the player to crash.
+- Fixed an issue where no content steering was done for text track `AdaptationSet`s in a DASH stream.
+- Fixed an issue in low performant Android WebViews where playback stalls were made worse by trying to recover too fast.
+- Fixed an issue where the player would not use the cached segments of the streaming `csai` ad.
+- Fixed an issue where the player would not preload the next `csai` ad breaks when it already preloaded another `csai` ad break.
+- Fixed an issue where the player would not play the scheduled `csai` ad breaks when one of the ad breaks starting at the same time could not be fetched.
+- Fixed an issue where OptiView Lens CMCD headers were being duplicated when playing a DVR-enabled OptiView Live source.
+- Fixed an issue where the player would have an incorrect `currentProgramDateTime` during the second ad break when playing multiple consecutive ad breaks on an OptiView Ads stream.
+- Fixed an issue where playback would end when transitioning between ad breaks in an OptiView Ads stream on iOS Safari.
+
+### Android
+
+#### ✨ Features
+
+- Added `TextTrack.captionChannel` property to retrieve the CEA-608 channel and/or CEA-708 service numbers of closed caption text tracks.
+
+#### 🐛 Issues
+
+- Fixed an issue where all but the first CEA-608/CEA-708 channel was ignored.
+- Fixed an issue where `AdBreak.getTimeOffset` would always return 0 for IMA ads.
+- Fixed Nielsen ID3 tags not being reported during HESP playback.
+- Fixed an issue where the `CHANGE` event was missing when an audio or video track was automatically enabled by the player (e.g. for a default track).
+- Fixed an issue when selecting specific video qualities may lead player to choose a completely different, sometimes invalid, quality.
+
+### iOS
+
+#### ✨ Features
+
+- Added `move` method to `CachingTask` to help move the cached stream assets to a specified directory URL.
+
+#### 🐛 Issues
+
+- Fixed an issue where the downloaded assets were not properly cleared from storage after calling `remove()` on an active `CachingTask`.
+- Fixed an issue where `Ads.Omid` APIs would not apply correctly.
+
+### Roku
+
+#### ⚡ Improvements
+
+- Updated Mux SDK to version 2.6.2 in the Roku Mux connector.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `emptied` event was no longer being dispatched.
+
 ## 🚀 10.12.1 (2026/03/17)
 
 ### iOS
@@ -351,7 +410,7 @@ These are the release notes for THEOplayer 10.0.0 and higher. For older versions
 
 #### 👎 Deprecations
 
-- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to [our documentation](/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/).
+- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to [our documentation](https://optiview.dolby.com/docs/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/).
 
 ### Roku
 
@@ -953,13 +1012,13 @@ We are happy to announce the tenth major version of THEOplayer, releasing all th
 
 THEOplayer 10.0 includes **some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
 
-- On Android, THEOplayer now always uses the Media3 pipeline for all playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices! Check out our [Media3 guide](/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
+- On Android, THEOplayer now always uses the Media3 pipeline for all playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices! Check out our [Media3 guide](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
 
 - The Android SDK will now automatically use modern network stacks with HTTP/2 and HTTP/3 support when available, optimizing media delivery to your viewers.
 
 - [OptiView Ads](https://optiview.dolby.com/docs/theoads/) is now fully supported on iOS. This brings our personalized advertising solution to all major platforms.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-10/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-10/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-10/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-10/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-10/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-10/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10/).
 
 ### Web
 

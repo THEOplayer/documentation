@@ -743,6 +743,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Ads/AdsImpl.swift",
+      "line": 109,
+      "symbol": "AdsImpl",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Ads/SSAI/SsaiIntegrationController.swift",
       "line": 177,
       "symbol": "SsaiIntegrationController",
@@ -772,42 +779,42 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 290,
+      "line": 298,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 296,
+      "line": 304,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 357,
+      "line": 366,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 373,
+      "line": 382,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 282,
+      "line": 328,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 472,
+      "line": 527,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -1164,63 +1171,56 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 151,
-      "symbol": "CachingParameters.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 251,
+      "line": 283,
       "symbol": "CachingTaskStatus.idle",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 252,
+      "line": 284,
       "symbol": "CachingTaskStatus.loading",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 253,
+      "line": 285,
       "symbol": "CachingTaskStatus.done",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 254,
+      "line": 286,
       "symbol": "CachingTaskStatus.error",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 255,
+      "line": 287,
       "symbol": "CachingTaskStatus.evicted",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 266,
+      "line": 298,
       "symbol": "CacheStatusIdleReason.notStarted",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 267,
+      "line": 299,
       "symbol": "CacheStatusIdleReason.paused",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/iOS/API/Cache_API.swift",
-      "line": 268,
+      "line": 300,
       "symbol": "CacheStatusIdleReason.lostNetwork",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
