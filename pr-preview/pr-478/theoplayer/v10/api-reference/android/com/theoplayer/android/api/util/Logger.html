@@ -262,7 +262,7 @@ public interface <span class="typeNameLabel"><a href=Logger.html>Logger</a></spa
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Logger.html#enableTags(java.lang.String)>enableTags</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> tags) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Logger.html#enableTags(java.lang.String)>enableTags</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> tags) </code>
                                             </th>
                                             <td class="colLast">Enables logs with the provided tags.</td>
                                         </tr>
@@ -278,7 +278,7 @@ public interface <span class="typeNameLabel"><a href=Logger.html>Logger</a></spa
                                         <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Logger.html#disableTags(java.lang.String)>disableTags</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> tags) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Logger.html#disableTags(java.lang.String)>disableTags</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> tags) </code>
                                             </th>
                                             <td class="colLast">Disables logs with the provided tags.</td>
                                         </tr>
@@ -305,6 +305,22 @@ public interface <span class="typeNameLabel"><a href=Logger.html>Logger</a></spa
                                             <th class="colSecond" scope="row"><code><a href=Logger.html#removeListener(com.theoplayer.android.api.util.Logger.Listener)>removeListener</a>(<a href=Logger.Listener.html>Logger.Listener</a> listener) </code>
                                             </th>
                                             <td class="colLast">Removes a listener from receiving the log messages.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html>Set</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Logger.html#availableTags()>availableTags</a>() </code>
+                                            </th>
+                                            <td class="colLast">Returns the set of all available log tags.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Logger.html#isTagEnabled(java.lang.String)>isTagEnabled</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> tag) </code>
+                                            </th>
+                                            <td class="colLast">Returns whether the given log tag is currently enabled.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -359,7 +375,7 @@ public interface <span class="typeNameLabel"><a href=Logger.html>Logger</a></spa
                                           >
                                     <li class="blockList">
                                         <h4>enableTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=Logger.html#enableTags(java.lang.String)>enableTags</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> tags)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=Logger.html#enableTags(java.lang.String)>enableTags</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> tags)</pre>
                                         <div class="block"><p>Enables logs with the provided tags.</p></div>
 
                                         <dl>
@@ -405,7 +421,7 @@ public interface <span class="typeNameLabel"><a href=Logger.html>Logger</a></spa
                                           >
                                     <li class="blockList">
                                         <h4>disableTags</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=Logger.html#disableTags(java.lang.String)>disableTags</a>(<a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> tags)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=Logger.html#disableTags(java.lang.String)>disableTags</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> tags)</pre>
                                         <div class="block"><p>Disables logs with the provided tags.</p></div>
 
                                         <dl>
@@ -470,12 +486,58 @@ public interface <span class="typeNameLabel"><a href=Logger.html>Logger</a></spa
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>removeListener</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=Logger.html#removeListener(com.theoplayer.android.api.util.Logger.Listener)>removeListener</a>(<a href=Logger.Listener.html>Logger.Listener</a> listener)</pre>
                                         <div class="block"><p>Removes a listener from receiving the log messages.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="availableTags()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>availableTags</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html>Set</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt; <a href=Logger.html#availableTags()>availableTags</a>()</pre>
+                                        <div class="block"><p>Returns the set of all available log tags.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isTagEnabled(java.lang.String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isTagEnabled</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=Logger.html#isTagEnabled(java.lang.String)>isTagEnabled</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> tag)</pre>
+                                        <div class="block"><p>Returns whether the given log tag is currently enabled.</p></div>
 
                                         <dl>
 
