@@ -6,8 +6,6 @@ sidebar_label: OptiView Player
 
 The Dolby OptiView Streaming platform uses the [OptiView Player](/theoplayer/) for playback. The player is available on a wide range of platforms and supports HESP and HLS streaming, along with features like UI controls, ad insertion, and advanced APIs.
 
-Not all features available in the OptiView Player have been tested or verified with HESP-based OptiView streams. Some capabilities may work as expected, while others might be incompatible or require additional integration. For guidance on implementation or to confirm compatibility, please reach out to the OptiView support team.
-
 ## Supported platforms
 
 For platform-specific guides on integrating THEOlive playback, refer to:
@@ -21,6 +19,6 @@ For platform-specific guides on integrating THEOlive playback, refer to:
 
 ## HESP limitations
 
-THEOlive uses the HESP protocol to deliver high quality at very low latencies. However, HESP requires support for streaming HTTP requests, which is not available on very old devices such as 2015 smart TVs. On those devices, the player automatically falls back to HLS.
+THEOlive uses the HESP protocol to deliver high quality at sub-second latencies. However, HESP requires support for streaming HTTP requests, which is not available on very old devices such as 2015 smart TVs. On those devices, the player automatically falls back to HLS, which plays on almost any device but with higher latency — typically around 10 seconds.
 
-HLS plays on almost any device, but with higher latency — typically around 10 seconds compared to the sub-second latency of HESP.
+Additionally, not all features available in the OptiView Player have been tested or verified with HESP-based streams. Some capabilities may work as expected, while others might be incompatible or require additional integration. Features not explicitly documented for OptiView Streaming are not officially supported. For guidance on compatibility, please reach out to the OptiView support team.
