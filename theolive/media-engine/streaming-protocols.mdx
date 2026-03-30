@@ -19,17 +19,19 @@ HESP is a next-generation streaming protocol designed for ultra-low latency live
 - **Ultra-low latency** — delivers end-to-end latency in the 1 to 5 seconds range, significantly lower than traditional HLS.
 - **Fast channel switching** — viewers experience near-instant startup and channel changes.
 
-### HLS — HTTP Live Streaming
+### HLS (CMAF) — HTTP Live Streaming
 
-HLS is the industry-standard protocol developed by Apple for delivering live and on-demand content over HTTP. The media engine outputs HLS using modern fragmented MP4 segments.
+HLS is the industry-standard protocol developed by Apple for delivering live and on-demand content over HTTP. The media engine outputs HLS using modern CMAF (fragmented MP4) segments.
 
 - **Broad compatibility** — supported by virtually all modern browsers, devices and players.
 - **Higher latency** — compared to HESP, HLS typically introduces several seconds of additional latency.
 
----
+### HLS (MPEG-TS)
 
-:::note Legacy support
-For legacy compatibility, HLS with MPEG-TS segments is also available but discouraged for new integrations. Contact us if you need it enabled for legacy use cases like specific set-top box requirements for example.
+HLS with MPEG-TS segments is an older variant of HLS that uses traditional transport stream segments instead of CMAF.
+
+:::warning
+Only use HLS MPEG-TS if you are targeting a platform that genuinely does not support CMAF-based HLS — for example, certain legacy set-top boxes or embedded devices. In all other cases, use the standard CMAF HLS output, which offers better performance and broader modern device support.
 :::
 
 ## API example
@@ -47,7 +49,8 @@ You can configure output protocols via the API using the `outputs` object when [
   },
   "outputs": {
     "hesp": true,
-    "hls": true
+    "hls": true,
+    "hlsTs": false
   }
 }
 ```
