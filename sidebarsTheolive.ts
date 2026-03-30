@@ -100,6 +100,7 @@ const sidebars: SidebarsConfig = {
     },
     'api/index',
     'api/authentication',
+    'api/full-example',
     'api/rate-limiting',
     ...apiSidebar.slice(1),
   ],
