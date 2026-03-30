@@ -1,15 +1,20 @@
 import React, { JSX } from 'react';
 import ThemedImage, { type Props as ThemedImageProps } from '@theme/ThemedImage';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
-import AmpIcon from '@site/static/img/amp.svg';
 import AdobeIcon from '@site/static/img/adobe.svg';
+import AgamaIcon from '@site/static/img/agama.png';
+import AmpIcon from '@site/static/img/amp.svg';
 import AndroidIcon from '@site/static/img/android.svg';
 import AngularIcon from '@site/static/img/angular.svg';
 import AppleIcon from '@site/static/img/apple.svg';
+import BitmovinIcon from '@site/static/img/bitmovin.svg';
 import ComscoreIcon from '@site/static/img/comscore.svg';
 import ChromecastIcon from '@site/static/img/chromecast.svg';
 import FlutterIcon from '@site/static/img/flutter.svg';
+import GemiusIcon from '@site/static/img/gemius.svg';
+import GoogleIcon from '@site/static/img/google.svg';
 import LinuxIcon from '@site/static/img/linux.svg';
+import MuxIcon from '@site/static/img/mux.png';
 import NielsenIcon from '@site/static/img/nielsen.svg';
 import NuxtjsIcon from '@site/static/img/nuxtjs.svg';
 import ReactIcon from '@site/static/img/react.svg';
@@ -19,7 +24,8 @@ import VuejsIcon from '@site/static/img/vuejs.svg';
 import WebIcon from '@site/static/img/web.svg';
 import WindowsIcon from '@site/static/img/windows.svg';
 import WordPressIcon from '@site/static/img/wordpress.svg';
-import YospaceIconUrl from '@site/static/img/yospace.png';
+import YospaceIcon from '@site/static/img/yospace.png';
+import YouboraIcon from '@site/static/img/youbora.png';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -53,6 +59,8 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
   switch (icon) {
     case 'adobe':
       return <AdobeIcon className={clsx(styles.icon, className)} />;
+    case 'agama':
+      return <img src={AgamaIcon} className={clsx(styles.icon, className)} />;
     case 'amp':
       return <AmpIcon className={clsx(styles.icon, className)} />;
     case 'android':
@@ -61,6 +69,8 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
       return <AngularIcon className={clsx(styles.icon, className)} />;
     case 'apple':
       return <AppleIcon className={clsx(styles.icon, className)} />;
+    case 'bitmovin':
+      return <BitmovinIcon className={clsx(styles.icon, className)} />;
     case 'chromecast':
       return <ChromecastIcon className={clsx(styles.icon, className)} />;
     case 'comscore':
@@ -77,6 +87,10 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
       );
     case 'flutter':
       return <FlutterIcon className={clsx(styles.icon, className)} />;
+    case 'gemius':
+      return <GemiusIcon className={clsx(styles.icon, className)} />;
+    case 'google':
+      return <GoogleIcon className={clsx(styles.icon, className)} />;
     case 'github':
       return (
         <ThemedImageWithBaseUrl
@@ -93,6 +107,8 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
       return <NielsenIcon className={clsx(styles.icon, className)} />;
     case 'nuxtjs':
       return <NuxtjsIcon className={clsx(styles.icon, className)} />;
+    case 'mux':
+      return <img src={MuxIcon} className={clsx(styles.icon, className)} />;
     case 'react':
       return <ReactIcon className={clsx(styles.icon, className)} />;
     case 'roku':
@@ -108,7 +124,9 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
     case 'wordpress':
       return <WordPressIcon className={clsx(styles.icon, className)} />;
     case 'yospace':
-      return <img src={YospaceIconUrl} className={clsx(styles.icon, className)} />;
+      return <img src={YospaceIcon} className={clsx(styles.icon, className)} />;
+    case 'youbora':
+      return <img src={YouboraIcon} className={clsx(styles.icon, className)} />;
     default:
       return <TextIcon icon={icon} className={clsx(styles.icon, className)} />;
   }
