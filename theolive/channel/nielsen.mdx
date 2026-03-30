@@ -20,3 +20,19 @@ This guide explains how to enable Nielsen audience tracking on your streams in a
    That is all the backend configuration work that is required. This will make sure your markers are converted to the correct ID3 messages that a player can then read and report back to Nielsen.
 
 3. The final step is enabling Nielsen on your player. For THEOplayer on web for example, you can find the steps in our [guide to integrating Nielsen on Web](/theoplayer/connectors/web/nielsen).
+
+## API example
+
+You can also enable Nielsen via the API by setting `nielsen.enabled` to `true` when creating or updating your channel:
+
+```bash
+curl -X POST https://api.theo.live/v2/channels \
+  -H "Authorization: Basic <YOUR_CREDENTIALS>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-channel",
+    "nielsen": {
+      "enabled": true
+    }
+  }'
+```

@@ -23,3 +23,20 @@ To enable DVR, set a **window size** in seconds on your channel. This determines
 </figure>
 
 When DVR is enabled, viewers can scrub back through the live stream within the configured window. Once the window is exceeded, older content is no longer available for playback.
+
+## API example
+
+You can also enable DVR via the API by setting `dvr.enabled` to `true` and `dvr.windowInSeconds` to your desired window size (60–86400 seconds) when creating or updating your channel:
+
+```bash
+curl -X POST https://api.theo.live/v2/channels \
+  -H "Authorization: Basic <YOUR_CREDENTIALS>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-channel",
+    "dvr": {
+      "enabled": true,
+      "windowInSeconds": 3600
+    }
+  }'
+```
