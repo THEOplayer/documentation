@@ -3,18 +3,18 @@ sidebar_position: 1
 sidebar_label: Getting started with Roku
 ---
 
-# Getting started with THEOlive on Roku
+# Getting started with OptiView Live on Roku
 
 ## Usage
 
 1. Follow [our Getting Started guide](/theoplayer/getting-started/sdks/roku/getting-started)
    to set up THEOplayer in your Roku app.
-2. Add a THEOlive source to your player's source.
+2. Add an OptiView Live source to your player's source.
 
-### Add a THEOlive source
+### Add an OptiView Live source
 
 After setting up your THEOplayer on your App, set its source to a `SourceDescription` containing a `THEOliveSource`.
-You'll need a THEOlive channel ID:
+You'll need an OptiView Live channel ID:
 
 ```brightscript
 m.THEOsdk.source = {
@@ -26,9 +26,9 @@ m.THEOsdk.source = {
 }
 ```
 
-Please note that the playlist feature cannot be used with THEOlive. On Roku the THEOlive source falls back to the HLS stream.
+Please note that the playlist feature cannot be used with OptiView Live. On Roku the OptiView Live source falls back to the HLS stream.
 
-### Configure THEOlive
+### Configure OptiView Live
 
 On the player configuration object, you may add extra configuration using the `theoLive` property on the player configuration. For instance, if you would like to provide an external ID to track the session, you may add it to the `theoLive` configuration:
 
@@ -45,4 +45,4 @@ m.player.callFunc("configure", playerConfiguration)
 ## More information
 
 - [API references](/theoplayer/api-reference/roku)
-- [Migrating to THEOlive v2](./02-migrating-to-v2.mdx)
+- [Migrating to OptiView Live v2](./02-migrating-to-v2.mdx)

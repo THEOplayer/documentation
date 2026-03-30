@@ -1,23 +1,23 @@
 # Token based security
 
-THEOlive offers the option to enable JWT token security on channel distribution level. This can be interesting if you only want valid users to access your stream. Read more about the feature and configuring it on your channels on the [token based security guide](/theolive/next/distribution/security/token-based-security/).
+OptiView Live offers the option to enable JWT token security on channel distribution level. This can be interesting if you only want valid users to access your stream. Read more about the feature and configuring it on your channels on the [token based security guide](/theolive/next/distribution/security/token-based-security/).
 
 This page will demonstrate how to configure the React Native Player SDK for playback of channels with token based security enabled.
 
-## Setting up the React Native THEOplayer SDK for THEOlive
+## Setting up the React Native THEOplayer SDK for OptiView Live
 
-Refer to the [getting started guide](./00-getting-started.mdx) for the prerequisite steps in getting the React Native SDK up and running for THEOlive playback.
+Refer to the [getting started guide](./00-getting-started.mdx) for the prerequisite steps in getting the React Native SDK up and running for OptiView Live playback.
 
 ## Configuring THEOplayer to pass the token
 
-The THEOlive API provides a simple property to configure your token:
+The OptiView Live API provides a simple property to configure your token:
 
 ```javascript
 const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
 player.theolive.authToken = token;
 ```
 
-This will ensure the player includes your token in the authorization header on all subsequent requests it performs for playback of your THEOlive channel.
+This will ensure the player includes your token in the authorization header on all subsequent requests it performs for playback of your OptiView Live channel.
 
 ## Dealing with token expiry and rotation
 
@@ -47,7 +47,7 @@ setInterval(maybeUpdateToken, 30000); // Check every 30 seconds
 
 ## Clearing the token
 
-If the token isn't needed anymore, e.g. when switching to an unprotected channel or a non-THEOlive source altogether, the header can be simply removed as follows:
+If the token isn't needed anymore, e.g. when switching to an unprotected channel or a non-OptiView Live source altogether, the header can be simply removed as follows:
 
 ```javascript
 player.theolive.authToken = undefined;
@@ -55,7 +55,7 @@ player.theolive.authToken = undefined;
 
 ## Enabling Token Based Security for Safari browsers on iOS \<17
 
-Apple devices running an iOS version lower than 17.1 do not support MSE, therefore there are limitations with what is possible when playing a THEOlive stream. One such limitation is that the above network API approach does not work on those devices. Instead, a service worker needs to be registered to support playback of JWT enabled streams.
+Apple devices running an iOS version lower than 17.1 do not support MSE, therefore there are limitations with what is possible when playing an OptiView Live stream. One such limitation is that the above network API approach does not work on those devices. Instead, a service worker needs to be registered to support playback of JWT enabled streams.
 
 The service worker needs to intercept the `fetch` requests originating from the app, to be able to include the `Authorization` header to the requests.
 
@@ -84,7 +84,7 @@ self.addEventListener('fetch', (event) => {
       try {
         const url = new URL(event.request.url);
         if (!url.origin.endsWith('theo.live')) {
-          // Requests not made by the player for playback of the THEOlive channel should not be modified.
+          // Requests not made by the player for playback of the OptiView Live channel should not be modified.
           return fetch(event.request);
         }
         const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
