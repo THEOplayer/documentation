@@ -81,42 +81,40 @@ When using the API, recurrence is expressed as an [RRULE](https://datatracker.ie
 
 Click **Create** to save the scheduler.
 
-### API call — Create a scheduler
+### API example — Create a scheduler
 
 **One-time schedule:**
 
-```bash
-curl -X POST https://api.theo.live/v2/schedulers \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Product launch stream",
-    "startDate": "2026-04-15",
-    "startTime": "14:00",
-    "endDate": "2026-04-15",
-    "endTime": "16:00",
-    "timeZone": "Europe/Brussels",
-    "channelIds": ["ch_abc123", "ch_def456"],
-    "enabled": true
-  }'
+`POST https://api.theo.live/v2/schedulers`
+
+```json
+{
+  "name": "Product launch stream",
+  "startDate": "2026-04-15",
+  "startTime": "14:00",
+  "endDate": "2026-04-15",
+  "endTime": "16:00",
+  "timeZone": "Europe/Brussels",
+  "channelIds": ["ch_abc123", "ch_def456"],
+  "enabled": true
+}
 ```
 
 **Recurring schedule:**
 
-```bash
-curl -X POST https://api.theo.live/v2/schedulers \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Weekday morning show",
-    "startDate": "2026-04-01",
-    "startTime": "08:00",
-    "endTime": "12:00",
-    "timeZone": "Europe/Brussels",
-    "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR",
-    "channelIds": ["ch_abc123"],
-    "enabled": true
-  }'
+`POST https://api.theo.live/v2/schedulers`
+
+```json
+{
+  "name": "Weekday morning show",
+  "startDate": "2026-04-01",
+  "startTime": "08:00",
+  "endTime": "12:00",
+  "timeZone": "Europe/Brussels",
+  "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR",
+  "channelIds": ["ch_abc123"],
+  "enabled": true
+}
 ```
 
 ---
@@ -133,12 +131,9 @@ The **Schedulers** page shows a table of all your schedulers with:
 
 ![](../assets/img/schedulers-overview.jpg 'Schedulers overview')
 
-### API call — List all schedulers
+### API example — List all schedulers
 
-```bash
-curl -X GET "https://api.theo.live/v2/schedulers?limit=20&sortBy=name&sortDirection=asc" \
-  -H "Authorization: Basic <key:secret>"
-```
+`GET https://api.theo.live/v2/schedulers`
 
 Optional query parameters:
 
@@ -150,12 +145,9 @@ Optional query parameters:
 | `sortBy`        | Sort field: `status`, `name`, `startDate`, or `startTime` |
 | `sortDirection` | `asc` or `desc`                                           |
 
-### API call — Get a single scheduler
+### API example — Get a single scheduler
 
-```bash
-curl -X GET https://api.theo.live/v2/schedulers/<scheduler_id> \
-  -H "Authorization: Basic <key:secret>"
-```
+`GET https://api.theo.live/v2/schedulers/{schedulerId}`
 
 ---
 
@@ -174,19 +166,18 @@ Any non-terminated scheduler can be edited.
 
 Click **Save changes** to apply your edits.
 
-### API call — Update a scheduler
+### API example — Update a scheduler
 
 All fields are optional; only include the fields you want to change.
 
-```bash
-curl -X PATCH https://api.theo.live/v2/schedulers/<scheduler_id> \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Updated scheduler name",
-    "endDate": "2026-06-30",
-    "endTime": "18:00"
-  }'
+`PATCH https://api.theo.live/v2/schedulers/{schedulerId}`
+
+```json
+{
+  "name": "Updated scheduler name",
+  "endDate": "2026-06-30",
+  "endTime": "18:00"
+}
 ```
 
 ---
@@ -200,24 +191,18 @@ When editing a scheduler, you can toggle the **Scheduler enabled** switch.
 
 This is useful when you want to temporarily pause a recurring schedule without deleting it.
 
-### API call — Enable or disable a scheduler
+### API example — Enable or disable a scheduler
 
 Use the update endpoint with the `enabled` field:
 
-```bash
-# Disable
-curl -X PATCH https://api.theo.live/v2/schedulers/<scheduler_id> \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{ "enabled": false }'
+`PATCH https://api.theo.live/v2/schedulers/{schedulerId}`
+
+```json
+{ "enabled": false }
 ```
 
-```bash
-# Re-enable
-curl -X PATCH https://api.theo.live/v2/schedulers/<scheduler_id> \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{ "enabled": true }'
+```json
+{ "enabled": true }
 ```
 
 ---
@@ -229,19 +214,13 @@ You can override the schedule at any time:
 - **Start** — Available when a scheduler is **idle**. Immediately starts the connected channels regardless of the configured schedule.
 - **Stop** — Available when a scheduler is **active**. Immediately stops the connected channels.
 
-### API call — Manually start a scheduler
+### API example — Manually start a scheduler
 
-```bash
-curl -X POST https://api.theo.live/v2/schedulers/<scheduler_id>/start \
-  -H "Authorization: Basic <key:secret>"
-```
+`POST https://api.theo.live/v2/schedulers/{schedulerId}/start`
 
-### API call — Manually stop a scheduler
+### API example — Manually stop a scheduler
 
-```bash
-curl -X POST https://api.theo.live/v2/schedulers/<scheduler_id>/stop \
-  -H "Authorization: Basic <key:secret>"
-```
+`POST https://api.theo.live/v2/schedulers/{schedulerId}/stop`
 
 ---
 
@@ -251,12 +230,9 @@ A confirmation dialog will appear. Deletion of a non-active scheduler can be don
 
 > **Note:** You cannot delete a scheduler while it is active. Stop it first, then delete.
 
-### API call — Delete a scheduler
+### API example — Delete a scheduler
 
-```bash
-curl -X DELETE https://api.theo.live/v2/schedulers/<scheduler_id> \
-  -H "Authorization: Basic <key:secret>"
-```
+`DELETE https://api.theo.live/v2/schedulers/{schedulerId}`
 
 ---
 

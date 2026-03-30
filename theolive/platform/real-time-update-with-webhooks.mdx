@@ -110,32 +110,30 @@ You can also use the **wildcard** (`*`) to listen to all events at once.
 
 After creation, you are redirected to the webhook detail page where you can view the signing secret.
 
-### API call — Create a webhook
+### API example — Create a webhook
 
 **Listen to specific events:**
 
-```bash
-curl -X POST https://api.theo.live/v2/webhooks \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Production event handler",
-    "url": "https://example.com/webhooks",
-    "events": ["channel.created", "channel.stopped", "engine.error"]
-  }'
+`POST https://api.theo.live/v2/webhooks`
+
+```json
+{
+  "name": "Production event handler",
+  "url": "https://example.com/webhooks",
+  "events": ["channel.created", "channel.stopped", "engine.error"]
+}
 ```
 
 **Listen to all events:**
 
-```bash
-curl -X POST https://api.theo.live/v2/webhooks \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Catch-all webhook",
-    "url": "https://example.com/webhooks",
-    "events": ["*"]
-  }'
+`POST https://api.theo.live/v2/webhooks`
+
+```json
+{
+  "name": "Catch-all webhook",
+  "url": "https://example.com/webhooks",
+  "events": ["*"]
+}
 ```
 
 ---
@@ -150,12 +148,9 @@ The **Webhooks** page shows a table of all your webhooks with:
 - **Events** — Shows "All events" for wildcard webhooks, or the count of subscribed events.
 - **Actions** — Edit or delete the webhook.
 
-### API call — List all webhooks
+### API example — List all webhooks
 
-```bash
-curl -X GET "https://api.theo.live/v2/webhooks" \
-  -H "Authorization: Basic <key:secret>"
-```
+`GET https://api.theo.live/v2/webhooks`
 
 Optional query parameters:
 
@@ -164,12 +159,9 @@ Optional query parameters:
 | `cursor`  | Pagination cursor for the next page |
 | `limit`   | Number of results per page          |
 
-### API call — Get a single webhook
+### API example — Get a single webhook
 
-```bash
-curl -X GET https://api.theo.live/v2/webhooks/<webhook_id> \
-  -H "Authorization: Basic <key:secret>"
-```
+`GET https://api.theo.live/v2/webhooks/{webhookId}`
 
 ---
 
@@ -208,19 +200,18 @@ You can change:
 
 Click **Save** to apply your changes.
 
-### API call — Update a webhook
+### API example — Update a webhook
 
 All fields are optional; only include the fields you want to change.
 
-```bash
-curl -X PATCH https://api.theo.live/v2/webhooks/<webhook_id> \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Updated webhook name",
-    "url": "https://example.com/new-endpoint",
-    "events": ["channel.created", "channel.stopped"]
-  }'
+`PATCH https://api.theo.live/v2/webhooks/{webhookId}`
+
+```json
+{
+  "name": "Updated webhook name",
+  "url": "https://example.com/new-endpoint",
+  "events": ["channel.created", "channel.stopped"]
+}
 ```
 
 ---
@@ -234,24 +225,18 @@ When editing a webhook, you can toggle the **Active / Inactive** switch.
 
 This is useful when you want to temporarily stop receiving events without deleting the webhook.
 
-### API call — Activate or deactivate a webhook
+### API example — Activate or deactivate a webhook
 
 Use the update endpoint with the `active` field:
 
-```bash
-# Deactivate
-curl -X PATCH https://api.theo.live/v2/webhooks/<webhook_id> \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{ "active": false }'
+`PATCH https://api.theo.live/v2/webhooks/{webhookId}`
+
+```json
+{ "active": false }
 ```
 
-```bash
-# Re-activate
-curl -X PATCH https://api.theo.live/v2/webhooks/<webhook_id> \
-  -H "Authorization: Basic <key:secret>" \
-  -H "Content-Type: application/json" \
-  -d '{ "active": true }'
+```json
+{ "active": true }
 ```
 
 ---
@@ -262,12 +247,9 @@ Click the **trash icon** on the webhooks list, or click **Delete** on the webhoo
 
 > **Note:** You must deactivate a webhook before deleting it.
 
-### API call — Delete a webhook
+### API example — Delete a webhook
 
-```bash
-curl -X DELETE https://api.theo.live/v2/webhooks/<webhook_id> \
-  -H "Authorization: Basic <key:secret>"
-```
+`DELETE https://api.theo.live/v2/webhooks/{webhookId}`
 
 ---
 
@@ -374,12 +356,9 @@ app.listen(port, () => {
 });
 ```
 
-### API call — Get the webhook secret
+### API example — Get the webhook secret
 
-```bash
-curl -X GET https://api.theo.live/v2/webhooks/<webhook_id>/secret \
-  -H "Authorization: Basic <key:secret>"
-```
+`GET https://api.theo.live/v2/webhooks/{webhookId}/secret`
 
 ---
 
