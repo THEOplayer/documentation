@@ -34,3 +34,23 @@ The engine **priority** determines which engine is active. A lower priority numb
 ## What the viewer experiences
 
 When a failover occurs, the player detects that the current engine is no longer available and switches to the other engine on the distribution. Viewers may see a brief interruption but do not need to reload or take any action.
+
+### Example: geo-redundant setup with priorities
+
+Consider a sports broadcaster streaming a live match from a stadium in London. To protect against failures, they set up the following:
+
+| Component      | Location   | Details                          |
+|----------------|------------|----------------------------------|
+| **Ingest A**   | London     | SRT feed from the on-site encoder |
+| **Ingest B**   | Frankfurt  | SRT feed from a backup encoder    |
+| **Engine A**   | London     | Connected to Ingest A, priority **1** |
+| **Engine B**   | Frankfurt  | Connected to Ingest B, priority **2** |
+| **Distribution** | —        | Both engines attached             |
+
+**Normal operation:** Engine A (priority 1) is active. All viewers receive the stream processed in London.
+
+**Engine A fails** (e.g. a network issue at the London data center): The platform detects the failure and the player automatically switches to Engine B in Frankfurt. Viewers experience a brief interruption but playback resumes without any manual action.
+
+**Engine A recovers:** Once Engine A is healthy again, new viewer sessions will connect to Engine A because it has the higher precedence (lower priority number). Existing sessions remain on Engine B and will only switch back to Engine A if Engine B also experiences issues.
+
+This setup provides both **geographic redundancy** — the two engines run in separate locations, protecting against regional outages — and **priority-based failover** — the platform always prefers the highest-precedence engine that is available.
