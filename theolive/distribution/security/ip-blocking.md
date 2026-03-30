@@ -26,6 +26,25 @@ Add CIDRs to the list to define which IP addresses are affected.
 
 </figure>
 
+## API example
+
+You can also configure IP-blocking via the API using the `security.ipBlocking` object when [creating](../../api/create-channel-distribution.api.mdx) or [updating](../../api/update-distribution.api.mdx) a distribution.
+
+`POST https://api.theo.live/v2/channels/{channelId}/distributions`
+
+```json
+{
+  "name": "my-distribution",
+  "security": {
+    "ipBlocking": {
+      "enabled": true,
+      "mode": "allow",
+      "cidrs": ["203.0.113.0/24", "198.51.100.0/24"]
+    }
+  }
+}
+```
+
 ## Notes
 
 - IP-blocking can be enabled or disabled while a stream is live — no restart is needed.

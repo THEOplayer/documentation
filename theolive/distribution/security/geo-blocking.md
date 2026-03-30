@@ -38,6 +38,25 @@ Create a separate distribution for each customer and configure geo-blocking with
 
 ![Example of geo-blocking setup with multiple distributions](../../assets/img/48b69bf-Geoblocking.png)
 
+## API example
+
+You can also configure geo-blocking via the API using the `security.geoBlocking` object when [creating](../../api/create-channel-distribution.api.mdx) or [updating](../../api/update-distribution.api.mdx) a distribution.
+
+`POST https://api.theo.live/v2/channels/{channelId}/distributions`
+
+```json
+{
+  "name": "my-distribution",
+  "security": {
+    "geoBlocking": {
+      "enabled": true,
+      "mode": "allow",
+      "countries": ["BE", "NL"]
+    }
+  }
+}
+```
+
 ## Notes
 
 - Geo-blocking can be enabled or disabled while a stream is live — no restart is needed.

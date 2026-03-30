@@ -24,3 +24,22 @@ Referrer blocking can be configured via the API or the console on a per-distribu
 <figure style={{ textAlign: 'center' }}>
 ![Referrer blocking settings](../../assets/img/referrer-blocking.png)
 </figure>
+
+## API example
+
+You can also configure referrer blocking via the API using the `security.refererBlocking` object when [creating](../../api/create-channel-distribution.api.mdx) or [updating](../../api/update-distribution.api.mdx) a distribution.
+
+`POST https://api.theo.live/v2/channels/{channelId}/distributions`
+
+```json
+{
+  "name": "my-distribution",
+  "security": {
+    "refererBlocking": {
+      "enabled": true,
+      "allowedDomains": ["example.com", "partner.com"],
+      "allowNativeApps": true
+    }
+  }
+}
+```
