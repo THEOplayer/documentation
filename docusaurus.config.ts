@@ -36,6 +36,8 @@ const docsConfigBase = {
     'external/android-connector/connectors/uplynk/docs/*.md',
     'external/iOS-Connector/Code/**/README.md',
     'external/iOS-Connector/Code/Uplynk/docs/*.md',
+    'external/react-native-connectors/*/README.md',
+    'external/react-native-connectors/*/CHANGELOG.md',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk/{CHANGELOG,README}.md',
     'external/*/{doc,docs}/**/*.{md,mdx}',
@@ -463,6 +465,9 @@ const config: Config = {
           .replace('flutter-theoplayer-sdk/doc/', '/flutter/guides/')
           .replace('react-native-theoplayer-ui/CHANGELOG', '/react-native/changelog')
           .replace('react-native-theoplayer-ui/doc/', '/react-native/')
+          .replace(/react-native-connectors\/([^/]+)\/CHANGELOG/, '/connectors/react-native/$1/changelog')
+          .replace(/react-native-connectors\/([^/]+)\/README/, '/connectors/react-native/$1/getting-started')
+          .replace(/react-native-connectors\/([^/]+)\/doc\//, '/connectors/react-native/$1/')
           .replace(/web-connectors\/([^/]+)\/CHANGELOG/, '/connectors/web/$1/changelog')
           .replace(/web-connectors\/([^/]+)\/README/, '/connectors/web/$1/getting-started')
           .replace(/web-connectors\/([^/]+)\/doc\//, '/connectors/web/$1/')
