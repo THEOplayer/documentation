@@ -8,7 +8,7 @@ IP-blocking can be configured via the API or the console.
 
 ### Main channel
 
-You can enable IP-blocking on a channel by [updating](../../api/update-a-channel-by-id.api.mdx) the `ipBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
+You can enable IP-blocking on a channel by [updating](../../api/update-channel.api.mdx) the `ipBlocking` object within `publicationConfig`. The `mode` of geo-blocking can also be configured:
 
 - `whitelist`: Used by default when no `mode` is passed. This will make the content only available for the CIDRs that have been specified in the `cidrs` property. CIDRs not listed in the `cidrs` property will not receive the stream.
 - `blacklist`: Blocks the content for the CIDRs that have been specified in the `cidrs` property. All CIDRs not specified in the `cidrs` property will be able to view the content.
