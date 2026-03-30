@@ -1,0 +1,7 @@
+{
+  "label": "THEOlive",
+  "description": "Integrate THEOlive real-time streaming into your Flutter app.",
+  "customProps": {
+    "icon": "🚀"
+  }
+}

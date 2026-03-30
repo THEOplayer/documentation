@@ -1,8 +1,0 @@
-{
-  "label": "Roku",
-  "description": "Start with THEOlive on Roku smart TVs.",
-  "position": 4,
-  "customProps": {
-    "icon": "📺"
-  }
-}
