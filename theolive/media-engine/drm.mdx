@@ -19,3 +19,20 @@ DRM is essential for content that requires legal or contractual protection, such
 DRM is configured per engine, allowing fine-grained control over which streams are protected. To enable DRM, simply enable the DRM option on an engine.
 
 ![Enabling DRM on an engine](../assets/img/engine-drm.png)
+
+## API example
+
+You can also enable DRM via the API by setting `drm` to `true` when [creating](../api/create-channel-engine.api.mdx) or [updating](../api/update-engine.api.mdx) an engine.
+
+`POST https://api.theo.live/v2/channels/{channelId}/engines`
+
+```json
+{
+  "name": "my-engine",
+  "region": "europe-west",
+  "quality": {
+    "abrLadderId": "your-abr-ladder-id"
+  },
+  "drm": true
+}
+```
