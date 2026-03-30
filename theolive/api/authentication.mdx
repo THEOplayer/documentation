@@ -37,4 +37,11 @@ OptiView Live uses Basic Authentication for API requests. To authenticate, inclu
 3. Include the encoded string in the Authorization header, prefixed with the word Basic.
    Example header: `Authorization: Basic bXktdG9rZW46bXktc2VjcmV0`
 
+## Full example
+
+```bash
+curl -X GET https://api.theo.live/v2/channels \
+  -H "Authorization: Basic bXktdG9rZW46bXktc2VjcmV0"
+```
+
 You're now ready to make authenticated requests to the OptiView Live API.
