@@ -1,0 +1,34 @@
+---
+sidebar_position: 3
+sidebar_label: Encoding quality
+sidebar_custom_props:
+  icon: 🎞️
+description: Configure encoding quality settings for your media engine.
+---
+
+# Encoding quality
+
+---
+
+The choice of output protocols on your media engine directly impacts the encoding quality of your stream. This is because different protocols have different latency budgets, which affect how much time the encoder has to optimize each frame.
+
+## How protocol choice affects quality
+
+### Low latency (HESP enabled)
+
+When HESP is enabled on the engine, the encoder operates with a tight latency budget to achieve the ultra-low latency that HESP is designed for. This means fewer frames are available for look-ahead and reference, resulting in quality comparable to other low-latency encoders on the market. The trade-off is intentional: you get low latency at the cost of some encoding efficiency.
+
+### Higher quality (HLS only)
+
+If low latency is not a requirement for your use case, configure your engine to output **HLS only**. Without the constraint of a low-latency target, the encoder has a significantly larger latency budget. This allows it to use more advanced encoding techniques — such as longer GOP structures and deeper look-ahead — resulting in noticeably higher image quality at the same bitrate.
+
+## Choosing the right configuration
+
+| Use case | Recommended outputs | Latency | Image quality |
+|---|---|---|---|
+| Live sports betting, interactive entertainment | HESP + HLS | Ultra-low (1–5s) | Good |
+| Linear broadcast, non-interactive live events | HLS only | Standard (10–30s) | Higher |
+
+:::tip
+You can create multiple engines on the same channel with different output configurations. For example, use one engine with HESP for low-latency viewers and another with HLS only for viewers who prioritize quality over latency. Attach each to a separate distribution to serve both audiences from the same ingest.
+:::
