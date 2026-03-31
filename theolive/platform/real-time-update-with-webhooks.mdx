@@ -308,40 +308,37 @@ To verify the signature, you recreate the hash yourself:
 ### Full code sample
 
 ```javascript
-const express = require("express");
-const crypto = require("crypto");
+const express = require('express');
+const crypto = require('crypto');
 const port = 3400;
 
 var app = express();
 app.use(express.json());
 
-app.post("/webhooks", (req, res) => {
-  res.send("ok"); // acknowledge receipt ASAP
+app.post('/webhooks', (req, res) => {
+  res.send('ok'); // acknowledge receipt ASAP
 
-  const secret = "dolby_sec_myverylittlesecret"; // secret received on creation
+  const secret = 'dolby_sec_myverylittlesecret'; // secret received on creation
   const data = req.body;
 
   // 1. Grab Dolby-Signature from header
-  const signatureHeader = req.header("Dolby-Signature");
+  const signatureHeader = req.header('Dolby-Signature');
   // t=1659622850,h=6bbe0553922a31ea48cb3af9903616c3a8b65351434653251949480f2a91c037
 
   // 2. Split string: you'll receive a timestamp (t) and hash (h)
-  const timestampPart = signatureHeader.split(",")[0]; // t=1659622850
-  const hashPart = signatureHeader.split(",")[1]; // h=6bbe05...
+  const timestampPart = signatureHeader.split(',')[0]; // t=1659622850
+  const hashPart = signatureHeader.split(',')[1]; // h=6bbe05...
 
   // 3. Get the values for both the timestamp and hash
-  const timestampValue = timestampPart.split("=")[1]; // 1659622850
-  const hashValue = hashPart.split("=")[1]; // 6bbe05...
+  const timestampValue = timestampPart.split('=')[1]; // 1659622850
+  const hashValue = hashPart.split('=')[1]; // 6bbe05...
 
   // 4. Prepare the hash string: stringify the request body
   const dataAsString = JSON.stringify(data);
   const stringToBeHashed = `${timestampValue}.${dataAsString}`;
 
   // 5. Make a HMAC SHA-256 hash, using your secret as a key
-  const hashToCheck = crypto
-    .createHmac("sha256", secret)
-    .update(stringToBeHashed)
-    .digest("hex");
+  const hashToCheck = crypto.createHmac('sha256', secret).update(stringToBeHashed).digest('hex');
 
   // 6. Check if both hashes are the same
   if (hashToCheck === hashValue) {
@@ -370,4 +367,3 @@ app.listen(port, () => {
 - **Monitor delivery logs.** Check the delivery logs on the webhook detail page to verify events are being delivered successfully and your endpoint is responding correctly.
 - **Deactivate instead of deleting.** If you need to temporarily stop receiving events, deactivate the webhook rather than deleting and recreating it.
 - **Verify signatures in production.** Use the signing secret to verify that incoming requests are authentic before processing the payload.
-

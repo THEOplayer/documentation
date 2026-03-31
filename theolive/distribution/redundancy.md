@@ -39,13 +39,13 @@ When a failover occurs, the player detects that the current engine is no longer 
 
 Consider a sports broadcaster streaming a live match from a stadium in London. To protect against failures, they set up the following:
 
-| Component      | Location   | Details                          |
-|----------------|------------|----------------------------------|
-| **Ingest A**   | London     | SRT feed from the on-site encoder |
-| **Ingest B**   | Frankfurt  | SRT feed from a backup encoder    |
-| **Engine A**   | London     | Connected to Ingest A, priority **1** |
-| **Engine B**   | Frankfurt  | Connected to Ingest B, priority **2** |
-| **Distribution** | —        | Both engines attached             |
+| Component        | Location  | Details                               |
+| ---------------- | --------- | ------------------------------------- |
+| **Ingest A**     | London    | SRT feed from the on-site encoder     |
+| **Ingest B**     | Frankfurt | SRT feed from a backup encoder        |
+| **Engine A**     | London    | Connected to Ingest A, priority **1** |
+| **Engine B**     | Frankfurt | Connected to Ingest B, priority **2** |
+| **Distribution** | —         | Both engines attached                 |
 
 **Normal operation:** Engine A (priority 1) is active. All viewers receive the stream processed in London.
 

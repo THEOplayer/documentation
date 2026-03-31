@@ -18,7 +18,7 @@ When token security is enabled on a distribution, the CDN validates an `Authoriz
 The token payload must include:
 
 - **`exp`** — expiration time in epoch format. The token is rejected after this time.
-- **`nbf`** *(optional)* — "not before" time in epoch format. The token is rejected before this time.
+- **`nbf`** _(optional)_ — "not before" time in epoch format. The token is rejected before this time.
 
 Requests without a valid token are rejected. If the distribution does not have token security enabled, the `Authorization` header is ignored.
 

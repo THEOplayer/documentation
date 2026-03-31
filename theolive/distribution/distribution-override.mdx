@@ -23,12 +23,12 @@ When a viewer requests a distribution, the platform checks the override rules in
 
 ### Matching criteria
 
-| Field | Type | Values | Description |
-|---|---|---|---|
-| `deviceType` | string \| null | `tv`, `mobile`, `desktop`, `other` | The type of device the viewer is using. |
-| `sdkType` | string \| null | `native`, `web` | Whether the viewer is using a native SDK or a web-based player. |
-| `osName` | string \| null | `apple`, `android`, `windows`, `roku`, `other` | The operating system of the viewer's device. |
-| `profileId` | string \| null | any string | A custom profile identifier for advanced targeting. |
+| Field        | Type           | Values                                         | Description                                                     |
+| ------------ | -------------- | ---------------------------------------------- | --------------------------------------------------------------- |
+| `deviceType` | string \| null | `tv`, `mobile`, `desktop`, `other`             | The type of device the viewer is using.                         |
+| `sdkType`    | string \| null | `native`, `web`                                | Whether the viewer is using a native SDK or a web-based player. |
+| `osName`     | string \| null | `apple`, `android`, `windows`, `roku`, `other` | The operating system of the viewer's device.                    |
+| `profileId`  | string \| null | any string                                     | A custom profile identifier for advanced targeting.             |
 
 Setting a criterion to `null` (or leaving it out) means it matches **all** values for that field.
 
@@ -56,10 +56,10 @@ You would set up the following:
 3. Create a **TV distribution** (Distribution C) on an engine that has HLS MPEG-TS output enabled.
 4. Add override rules to Distribution A:
 
-| Rule | `deviceType` | `sdkType` | `osName` | Target |
-|---|---|---|---|---|
-| 1 | `mobile` | — | — | Distribution B |
-| 2 | `tv` | — | — | Distribution C |
+| Rule | `deviceType` | `sdkType` | `osName` | Target         |
+| ---- | ------------ | --------- | -------- | -------------- |
+| 1    | `mobile`     | —         | —        | Distribution B |
+| 2    | `tv`         | —         | —        | Distribution C |
 
 Viewers connecting to Distribution A on a mobile device are transparently redirected to Distribution B. TV viewers are redirected to Distribution C. Everyone else stays on Distribution A.
 
@@ -99,9 +99,9 @@ By using weighted targets, you can split traffic across multiple distributions t
 2. Create **Distribution B** with a lower target latency (e.g. 1.5 seconds).
 3. Add an override rule to your main distribution that sends 80% of desktop viewers to Distribution A and 20% to Distribution B:
 
-| Rule | `deviceType` | `sdkType` | `osName` | Targets |
-|---|---|---|---|---|
-| 1 | `desktop` | — | — | 80% Distribution A, 20% Distribution B |
+| Rule | `deviceType` | `sdkType` | `osName` | Targets                                |
+| ---- | ------------ | --------- | -------- | -------------------------------------- |
+| 1    | `desktop`    | —         | —        | 80% Distribution A, 20% Distribution B |
 
 You can then monitor the results and gradually shift the weights as confidence grows — for example moving to a 50/50 split or rolling out the new configuration to 100% of viewers.
 
@@ -136,9 +136,9 @@ Suppose your main distribution serves HESP to all viewers, and you start receivi
 1. Prepare a **fallback distribution** connected to the same engine with HLS output enabled.
 2. Add an override rule to redirect Roku viewers to the fallback distribution while the issue is being investigated:
 
-| Rule | `deviceType` | `sdkType` | `osName` | Target |
-|---|---|---|---|---|
-| 1 | — | — | `roku` | Fallback distribution |
+| Rule | `deviceType` | `sdkType` | `osName` | Target                |
+| ---- | ------------ | --------- | -------- | --------------------- |
+| 1    | —            | —         | `roku`   | Fallback distribution |
 
 Using the API, you can apply this fix with a single `PATCH` call:
 

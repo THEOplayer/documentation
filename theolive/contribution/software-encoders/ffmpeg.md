@@ -21,13 +21,13 @@ ffmpeg -re -stream_loop -1 -i /path/to/file.mp4 \
   -rtmp_live live "rtmps://rtmp.<region>.theo.live/live"
 ```
 
-| Parameter        | Description                                              |
-| :--------------- | :------------------------------------------------------- |
+| Parameter        | Description                                                   |
+| :--------------- | :------------------------------------------------------------ |
 | \-re             | Read input at native frame rate (for file-based sources only) |
-| \-stream_loop -1 | Loop the video indefinitely                              |
-| \-c:v copy       | Copy the video codec from the input                      |
-| \-c:a copy       | Copy the audio codec from the input                      |
-| \-f flv          | Package flash video                                      |
+| \-stream_loop -1 | Loop the video indefinitely                                   |
+| \-c:v copy       | Copy the video codec from the input                           |
+| \-c:a copy       | Copy the audio codec from the input                           |
+| \-f flv          | Package flash video                                           |
 
 :::warning -re flag
 Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
@@ -41,14 +41,14 @@ Make sure that your encoder has a stable connection and enough upload bandwidth.
 
 The following settings are recommended to achieve the lowest possible latency when re-encoding when streaming to OptiView Live. These prioritize encoding speed and reduced buffering at the cost of some video quality.
 
-| Parameter          | Description                                      |
-| :----------------- | :----------------------------------------------- |
-| \-vb 4500k         | Video Bitrate setting of 4.5 Mbps                |
-| \-vprofile main    | H264 video profile                               |
-| \-g 60             | Group of pictures (GOP) size                     |
+| Parameter          | Description                                                 |
+| :----------------- | :---------------------------------------------------------- |
+| \-vb 4500k         | Video Bitrate setting of 4.5 Mbps                           |
+| \-vprofile main    | H264 video profile                                          |
+| \-g 60             | Group of pictures (GOP) size                                |
 | \-preset veryfast  | Faster encoding speed at the cost of compression efficiency |
-| \-tune zerolatency | Disables internal buffering for low-latency streaming |
-| \-bf 0             | Disable B-frames to reduce encoding delay        |
+| \-tune zerolatency | Disables internal buffering for low-latency streaming       |
+| \-bf 0             | Disable B-frames to reduce encoding delay                   |
 
 ```shell
 ffmpeg -f decklink -i "DeckLink Mini Recorder" \
