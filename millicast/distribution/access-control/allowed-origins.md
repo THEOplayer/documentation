@@ -50,7 +50,7 @@ This access control method is not supported when using RTMP.
 
 ### Allowed IP addresses
 
-This approach allows for explicitly defining multiple _IPv4 addresses_ or \_Classless Inter-Domain Routing (CIDR) \_notated network blocks when creating or updating a token. A token will only be accepted when the requesting IP address originates from one of the network addresses that match.
+This approach allows for explicitly defining multiple _IPv4 addresses_ or _Classless Inter-Domain Routing (CIDR)_ notated network blocks when creating or updating a token. A token will only be accepted when the requesting IP address originates from one of the network addresses that match.
 
 _For example_, to allow only a specific person or persons to broadcast you would specify the publisher's IP address in this property. If you wanted only a specific organization to be able to watch, you might specify the series of IP addresses in a subscribe token so that content can only be viewed within a specific network.
 
