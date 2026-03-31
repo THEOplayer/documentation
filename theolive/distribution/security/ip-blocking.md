@@ -7,7 +7,6 @@ description: Block or allow access based on IP addresses.
 
 # IP-blocking
 
-
 IP-blocking restricts access to your stream based on specific IP addresses. This can be used to lock down access to known networks or block unwanted traffic. Only IPv4 and IPv6 CIDRs (Classless Inter-Domain Routing) are supported.
 
 ## Configuration

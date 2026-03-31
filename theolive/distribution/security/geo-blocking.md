@@ -7,7 +7,6 @@ description: Restrict or allow access to your streams based on viewer location.
 
 # Geo-blocking
 
-
 Geo-blocking restricts or allows access to your stream based on the geographical location of the viewer. This is commonly used to comply with licensing agreements, enforce regional distribution rights, or protect content from unauthorized access.
 
 ## Configuration

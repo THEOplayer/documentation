@@ -8,7 +8,6 @@ description: Configure failover and redundancy for high-availability streaming.
 
 # Redundancy
 
-
 Redundancy ensures that viewers can continue watching even if part of the streaming pipeline fails. By connecting multiple engines to a single distribution, the platform can automatically fail over to a healthy engine when one becomes unavailable.
 
 ## How it works

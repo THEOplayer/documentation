@@ -8,7 +8,6 @@ description: Limit the output qualities on a distribution by setting a maximum b
 
 # Max bitrate
 
-
 A distribution can be configured with a maximum bitrate. When set, the platform filters the output of the connected engines so that only qualities with a bitrate at or below the configured limit are delivered to viewers.
 
 This is useful when you want to control bandwidth usage per distribution without changing the ABR ladder on the engine itself. For example, you may have a high-quality engine producing multiple rungs up to 8 Mbps, but a specific distribution intended for mobile viewers where you want to cap delivery at 3 Mbps.
