@@ -185,7 +185,7 @@ Examples of self-singing a token can be found at this [GitHub repository](https:
 
 - The published stream and Subscribe token **must** originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/millicast/distribution/multi-region-support/index.mdx).
 - The only fields in the self-signed token that are added to the primary subscriber token are the _allowedOrigins_ and _allowedIPAddresses_. These do not replace any _allowedOrigins_ or _allowedIPAddresses_ in the primary Subscriber token but are appended onto any existing restrictions. **Anything else packaged into the JWT is ignored.**
-- If the primary Subscriber token contains a *TrackingID*, the self-signed token must use the same _TrackingID_. However, if the primary Subscriber token does not specify a _TrackingID_, any _TrackingID_ can be used in the self-signed token.
+- If the primary Subscriber token contains a _TrackingID_, the self-signed token must use the same _TrackingID_. However, if the primary Subscriber token does not specify a _TrackingID_, any _TrackingID_ can be used in the self-signed token.
 - The Stream name can differ in the self-signed token when using a regex value. If the primary Subscriber token doesn't validate the Stream name (via regex match) in the self-signed token, then it is rejected.
 - Self-signed tokens are **not revocable** and must be cycled if exposed.
 - If the parent Subscribe token has specific streams in it, then the self-signed Subscribe token must match one of them.
