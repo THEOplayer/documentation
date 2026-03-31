@@ -91,6 +91,7 @@ const sidebars: SidebarsConfig = {
       },
       href: '/theolive/next/api/',
     },
+    'api/migration-from-v1',
   ],
   theoLiveApi: [
     {
