@@ -4,7 +4,7 @@ This question is asked when developers want to change the appearance of the curr
 
 Please note that this article isn't final.
 
-![Align timeline middle](../../assets/img/align-timeline-middle.png 'Align timeline middle')
+![Align timeline middle](../../../../theoplayer/assets/img/align-timeline-middle.png 'Align timeline middle')
 
 ## SDKs
 

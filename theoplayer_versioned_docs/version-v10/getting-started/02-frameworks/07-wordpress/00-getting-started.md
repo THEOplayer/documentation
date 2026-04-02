@@ -59,7 +59,7 @@ First off, you want to include the THEOplayer CSS file and THEOplayer JavaScript
 ```
 
 The screenshot below shows you how to access such a "Custom HTML block".
-![WordPress Custom HTML](../../../assets/img/wordpress-custom-html.png 'WordPres Custom HTML')
+![WordPress Custom HTML](../../../../../theoplayer/assets/img/wordpress-custom-html.png 'WordPres Custom HTML')
 
 ### 5. Create container
 
@@ -114,7 +114,7 @@ You can achieve this by expanding your Custom HTML block to resemble the snippet
 ```
 
 All of this should result in a demo similar to the screenshot below.
-![WordPress Demo Screenshot](../../../assets/img/wordpress-demo-screenshot.png 'WordPres Demo Screenshot')
+![WordPress Demo Screenshot](../../../../../theoplayer/assets/img/wordpress-demo-screenshot.png 'WordPres Demo Screenshot')
 
 ## Note
 

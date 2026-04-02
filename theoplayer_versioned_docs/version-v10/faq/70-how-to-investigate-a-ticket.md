@@ -27,7 +27,7 @@ Investigating an issue typically consists of 4 phases:
 3. Pre-investigating the issue, and narrowing down the scope;
 4. Investigating the root cause and determine the next action item.
 
-![THEOplayer Jira Service Desk](../assets/img/ticket-4-stages.png)
+![THEOplayer Jira Service Desk](../../../theoplayer/assets/img/ticket-4-stages.png)
 
 ### Reproduce the issue
 
@@ -36,7 +36,7 @@ The first step is to reproduce the issue. Take the reproduction stream/page/appl
 - If the issue can be reproduced: continue the investigation.
 - If the issue cannot be reproduced: request more information from the reporter.
 
-![THEOplayer Jira Service Desk](../assets/img/ticket-reproduce.png)
+![THEOplayer Jira Service Desk](../../../theoplayer/assets/img/ticket-reproduce.png)
 
 ### Check other versions
 
@@ -58,7 +58,7 @@ After this phase, we want to determine the influence of the following components
 - Affected THEOplayer versions;
 - Affected video players.
 
-![THEOplayer Jira Service Desk](../assets/img/tickets-scope.png)
+![THEOplayer Jira Service Desk](../../../theoplayer/assets/img/tickets-scope.png)
 
 #### Scope affected platforms
 
