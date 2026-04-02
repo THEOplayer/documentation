@@ -6,6 +6,8 @@ sidebar_label: Introduction
 # Dolby OptiView Ads Introduction
 
 import SidebarDocCardList from '@site/src/components/SidebarDocCardList';
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 OptiView Ads is an ad insertion service for LIVE content (VoD support coming soon), utilizing Server-Guided Ad Insertion (SGAI). On these pages, you'll learn how to get started with OptiView Ads, how to configure the player and integrate the signaling service APIs.
 
@@ -23,7 +25,13 @@ OptiView Ads is an advanced ad insertion service consisting of two key component
 
 2. **OptiView Player**: The player fetches and replaces ads within the content, working closely with the Signaling Service to optimize the viewer experience across platforms.
 
-![OptiView Ads architecture](./assets/img/how_ads_works-light.svg)
+<ThemedImage
+  alt="OptiView Ads architecture"
+  sources={{
+    light: useBaseUrl('/ads/img/how_ads_works-light.svg'),
+    dark: useBaseUrl('/ads/img/how_ads_works-dark.svg'),
+  }}
+/>
 
 The Signaling Service is provided as a service and can be integrated into any existing content management workflow through its APIs, allowing for seamless adoption without significant changes to your current setup.
 

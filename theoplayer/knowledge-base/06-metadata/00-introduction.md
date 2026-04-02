@@ -50,7 +50,7 @@ Or perhaps you want to disable seeking through the scrub bar for a defined perio
 
 ![Metadata Actions](../../assets/img/metadata-actions.png 'Metadata Actions')
 
-The screenshot showcases a demo where a relevant hyperlink is being overlayed on top of the video within a specific time period.
+The screenshot showcases a demo where a relevant hyperlink is being overlaid on top of the video within a specific time period.
 This hyperlink (and its start and stop time) was indicated through timed metadata.
 
 **Other**

@@ -100,7 +100,7 @@ Note: we use 5 # here, it will have a different style on Gatsby so it pops out
 
 ## Sample Applications
 
-The sample application below demonstates how to do X.
+The sample application below demonstrates how to do X.
 
 - Code: (if applicable)
 - Demo: (if applicable)

@@ -103,8 +103,8 @@ Of note in the manage screen is the **string of the Subscribe token itself**. Th
 https://viewer.millicast.com?streamId=[Account ID]/[Stream Name]&token=[Subscribe Token]
 ```
 
-:::caution Unsecure URL
-The above example exposes the subscribe token in the URL. To prevent URL or token sharing, serve each viewer a unique subscribe token with the [BindsIPAddressOnUsage ](#advanced-settings) parameter enabled to bind the token to the user.
+:::caution Insecure URL
+The above example exposes the subscribe token in the URL. To prevent URL or token sharing, serve each viewer a unique subscribe token with the [BindsIPAddressOnUsage](#advanced-settings) parameter enabled to bind the token to the user.
 :::
 
 Depending on the scale of your production, it may not be secure or feasible to create tokens via the dashboard. Instead, you can create tokens via the [Token API](/millicast/streaming-dashboard/token-api.mdx), or, for true scalability, [you can self-sign tokens](#self-signing-subscribe-tokens).
@@ -143,7 +143,8 @@ Self-signing your Subscribe token allows you to:
    - `tokenType`: Assign the string `"Subscribe"` to indicate that it is a Subscribe token
    - `allowedOrigins` (optional): Origins that allow the stream to be viewed from
    - `allowedIpAddresses` (optional): IP ranges that allow the stream to be viewed from
-   - `trackingID` (optional): ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes.
+   - `tracking` (optional): An object to contain viewer tracking fields
+     - `trackingId` (optional): A group ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/millicast/api/analytics-get-tracking-total-for-streams.api.mdx) purposes. _Note: This is intended for tracking groups of viewers and should **NOT** be unique per-viewer. If you want to track individual viewers, see `customViewerData`_
    - `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
    - `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/millicast/distribution/syndication). Using this parameter requires contacting sales.
 3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
@@ -184,7 +185,7 @@ Examples of self-singing a token can be found at this [GitHub repository](https:
 
 - The published stream and Subscribe token **must** originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/millicast/distribution/multi-region-support/index.mdx).
 - The only fields in the self-signed token that are added to the primary subscriber token are the _allowedOrigins_ and _allowedIPAddresses_. These do not replace any _allowedOrigins_ or _allowedIPAddresses_ in the primary Subscriber token but are appended onto any existing restrictions. **Anything else packaged into the JWT is ignored.**
-- If the primary Subscriber token contains a* TrackingID*, the self-signed token must use the same _TrackingID_. However, if the primary Subscriber token does not specify a _TrackingID_, any _TrackingID_ can be used in the self-signed token.
+- If the primary Subscriber token contains a _TrackingID_, the self-signed token must use the same _TrackingID_. However, if the primary Subscriber token does not specify a _TrackingID_, any _TrackingID_ can be used in the self-signed token.
 - The Stream name can differ in the self-signed token when using a regex value. If the primary Subscriber token doesn't validate the Stream name (via regex match) in the self-signed token, then it is rejected.
 - Self-signed tokens are **not revocable** and must be cycled if exposed.
 - If the parent Subscribe token has specific streams in it, then the self-signed Subscribe token must match one of them.

@@ -25,14 +25,14 @@ If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-so
 
 To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher.
 
-:::info Not familar with our JavaScript SDK?
-Audio Multiplexing is a compelx feature made availible through our [Client SDKs](/millicast/playback/players-sdks/index.mdx).
+:::info Not familiar with our JavaScript SDK?
+Audio Multiplexing is a complex feature made available through our [Client SDKs](/millicast/playback/players-sdks/index.mdx).
 :::
 
 Once you're streaming multiple audio sources, the next step is to set up the [Viewer](/millicast/playback/players-sdks/web/sdk/index.mdx#viewing-a-stream) so that the incoming audio sources can be correctly multiplexed. When connecting to the Viewer, there are a [number of parameters available in the SDK](https://millicast.github.io/millicast-sdk/View.html#connect) you can adjust depending on your workflow. Some parameters of note for audio multiplexing include:
 
 - `multiplexedAudioTracks`: This is required to enable multiplexing. It denotes the number (`int`) of audio tracks to receive as Voice Activity Detection (VAD) multiplexed audio. This value must be greater than or equal to the number of audio tracks on the stream. Additional audio tracks will overwrite existing audio tracks. There isn't a limit to the number of audio tracks that can be rendered in the browser, only the amount of data. The current limit is a bitrate of 12 Mbps.
-- `dtx`: Discontinousous transmision or DTX is a `boolean` value that signals to the viewer to only deliver audio when audio is detected such as when a person is talking. Enabling DTX will reduce bandwidth costs for audio transmission but may cause non-voice audio such as instruments to become choppy.
+- `dtx`: Discontinuous transmission or DTX is a `boolean` value that signals to the viewer to only deliver audio when audio is detected such as when a person is talking. Enabling DTX will reduce bandwidth costs for audio transmission but may cause non-voice audio such as instruments to become choppy.
 - `pinnedSourceId`: Pinned Source ID is a `String` that denotes the main source that will be received by the default MediaStream. This value is useful for denoting your default audio stream that will always load regardless of how many other audio channels are present.
 - `excludedSourceIds`: Exclude Source IDs is an `Array` of `Strings` that denotes audio streams that should not be included in the multiplex. This feature is useful for conference-type applications where a user's **own** audio shouldn't be heard.
 

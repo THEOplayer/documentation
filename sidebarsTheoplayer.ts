@@ -170,6 +170,10 @@ const sidebars: SidebarsConfig = {
         },
       ],
     }),
+    connectorsCategory({
+      link: { type: 'doc', id: 'connectors/react-native/index' },
+      items: reactNativeConnectorItems(),
+    }),
     'external/react-native-theoplayer/CHANGELOG',
     apiReferencesLink({
       href: 'https://theoplayer.github.io/react-native-theoplayer/api/',
@@ -742,6 +746,347 @@ function androidConnectorItems(): SidebarItemConfig[] {
   ];
 }
 
+function reactNativeConnectorItems(): SidebarItemConfig[] {
+  return [
+    {
+      type: 'category',
+      label: 'Adobe',
+      description: 'Integrate with Adobe analytics.',
+      customProps: {
+        icon: 'adobe',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Adobe Connector for React Native',
+        slug: 'connectors/react-native/adobe',
+      },
+      items: [
+        'external/react-native-connectors/adobe/README',
+        'external/react-native-connectors/adobe/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Adobe connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Adobe_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/adobe',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Adobe Edge',
+      description: 'Integrate with Adobe Edge analytics.',
+      customProps: {
+        icon: 'adobe',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Adobe Edge Connector for React Native',
+        slug: 'connectors/react-native/adobe-edge',
+      },
+      items: [
+        'external/react-native-connectors/adobe-edge/README',
+        'external/react-native-connectors/adobe-edge/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Adobe Edge connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Adobe_Edge_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/adobe-edge',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Adscript',
+      description: 'Integrate with Adscript analytics.',
+      customProps: {
+        icon: 'nielsen',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Adscript Connector for React Native',
+        slug: 'connectors/react-native/adscript',
+      },
+      items: [
+        'external/react-native-connectors/adscript/README',
+        'external/react-native-connectors/adscript/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Adscript connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/AdScript_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/adscript',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Agama',
+      description: 'Integrate with Agama analytics.',
+      customProps: {
+        icon: 'agama',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Agama Connector for React Native',
+        slug: 'connectors/react-native/agama',
+      },
+      items: [
+        'external/react-native-connectors/agama/README',
+        'external/react-native-connectors/agama/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Agama connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Agama_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/agama',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Bitmovin',
+      description: 'Integrate with Bitmovin analytics.',
+      customProps: {
+        icon: 'bitmovin',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Bitmovin Connector for React Native',
+        slug: 'connectors/react-native/bitmovin',
+      },
+      items: [
+        'external/react-native-connectors/bitmovin/README',
+        'external/react-native-connectors/bitmovin/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Bitmovin connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Bitmovin_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/bitmovin',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Comscore',
+      description: 'Integrate with Comscore analytics.',
+      customProps: {
+        icon: 'comscore',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Comscore Connector for React Native',
+        slug: 'connectors/react-native/comscore',
+      },
+      items: [
+        'external/react-native-connectors/comscore/README',
+        'external/react-native-connectors/comscore/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Comscore connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Comscore_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/comscore',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Conviva',
+      description: 'Integrate with Conviva analytics.',
+      customProps: {
+        icon: 'conviva',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Conviva Connector for React Native',
+        slug: 'connectors/react-native/conviva',
+      },
+      items: [
+        'external/react-native-connectors/conviva/README',
+        'external/react-native-connectors/conviva/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Conviva connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Conviva_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/conviva',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'DRM',
+      description: 'Integrate with the DRM connector.',
+      customProps: {
+        icon: '🔒',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'DRM Connector for React Native',
+        slug: 'connectors/react-native/drm',
+      },
+      items: [
+        'external/react-native-connectors/drm/README',
+        'external/react-native-connectors/drm/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the DRM connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/DRM_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/drm',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Engage',
+      description: 'Integrate with the Engage connector.',
+      customProps: {
+        icon: 'google',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Engage Connector for React Native',
+        slug: 'connectors/react-native/engage',
+      },
+      items: [
+        'external/react-native-connectors/engage/README',
+        'external/react-native-connectors/engage/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Engage connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Engage_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/engage',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Gemius',
+      description: 'Integrate with Gemius analytics.',
+      customProps: {
+        icon: 'gemius',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Gemius Connector for React Native',
+        slug: 'connectors/react-native/gemius',
+      },
+      items: [
+        'external/react-native-connectors/gemius/README',
+        'external/react-native-connectors/gemius/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Gemius connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Gemius_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/gemius',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Mux',
+      description: 'Integrate with Mux analytics.',
+      customProps: {
+        icon: 'mux',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Mux Connector for React Native',
+        slug: 'connectors/react-native/mux',
+      },
+      items: [
+        'external/react-native-connectors/mux/README',
+        'external/react-native-connectors/mux/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Mux connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Mux_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/mux',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Nielsen',
+      description: 'Integrate with Nielsen analytics.',
+      customProps: {
+        icon: 'nielsen',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Nielsen Connector for React Native',
+        slug: 'connectors/react-native/nielsen',
+      },
+      items: [
+        'external/react-native-connectors/nielsen/README',
+        'external/react-native-connectors/nielsen/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Nielsen connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Nielsen_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/nielsen',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Yospace',
+      description: 'Integrate with Yospace analytics.',
+      customProps: {
+        icon: 'yospace',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Yospace Connector for React Native',
+        slug: 'connectors/react-native/yospace',
+      },
+      items: [
+        'external/react-native-connectors/yospace/README',
+        'external/react-native-connectors/yospace/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Yospace connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Yospace_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/yospace',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Youbora',
+      description: 'Integrate with Youbora analytics.',
+      customProps: {
+        icon: 'youbora',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Youbora Connector for React Native',
+        slug: 'connectors/react-native/youbora',
+      },
+      items: [
+        'external/react-native-connectors/youbora/README',
+        'external/react-native-connectors/youbora/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Youbora connector for React Native.',
+          href: 'https://theoplayer.github.io/react-native-connectors/api/modules/Youbora_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/react-native-connectors/tree/main/youbora',
+        }),
+      ],
+    },
+  ];
+}
+
 function iosConnectorItems(): SidebarItemConfig[] {
   return [
     {
@@ -808,7 +1153,7 @@ function iosConnectorItems(): SidebarItemConfig[] {
       label: 'Yospace',
       description: 'Integrate with Yospace for server-side ad insertion (SSAI).',
       customProps: {
-        icon: '💬',
+        icon: 'yospace',
       },
       link: {
         type: 'generated-index',

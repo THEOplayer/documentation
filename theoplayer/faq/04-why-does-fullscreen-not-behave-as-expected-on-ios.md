@@ -19,7 +19,7 @@ Alternatively, developers can use the [allowNativeFullscreen](pathname:///theopl
         allowNativeFullscreen: true,
         ui : {
             width : '500px',
-            heigth : '100px'
+            height : '100px'
         }
     });
 

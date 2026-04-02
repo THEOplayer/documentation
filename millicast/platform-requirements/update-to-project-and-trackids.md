@@ -5,7 +5,7 @@ unlisted: true # Note: unlisted pages still show up in dev mode
 
 This is part of our [Multi-view](/millicast/playback/multi-view.md) feature and only impacts users who where using the multiview feature and their own player SDK implementation. If you are using the hosted video player, there is no update to apply.
 
-In the [Broadcast Events](/millicast/playback/players-sdks/viewer-events.md), the `active` event now uses truely dynamic `trackId`. Below you can find the details of what these broadcast events look like. Using `trackId` dynamically has been [documented in the SDK](https://github.com/millicast/millicast-sdk/blob/460444aa9e7a37ad2c9c77046a97cdaf6448a76f/packages/millicast-sdk/src/View.js#L163) for years but we had some hard-coded examples in our multi-view sample code.
+In the [Broadcast Events](/millicast/playback/players-sdks/viewer-events.md), the `active` event now uses truly dynamic `trackId`. Below you can find the details of what these broadcast events look like. Using `trackId` dynamically has been [documented in the SDK](https://github.com/millicast/millicast-sdk/blob/460444aa9e7a37ad2c9c77046a97cdaf6448a76f/packages/millicast-sdk/src/View.js#L163) for years but we had some hard-coded examples in our multi-view sample code.
 
 `trackId` is an optional (future-proofing) parameter when calling the `project()` command and is not required.
 
@@ -89,7 +89,7 @@ await millicastView.project(sourceID, [
   },
   {
     // when calling project() trackId is optional and we are removing it from our examples.  By specifying a "media" value (eg, "audio") the correct media track will be used
-    // in the future we will support multi-audio in which case you will need to project the correct trackId to select the correct audio track as recieved from the broadcast event
+    // in the future we will support multi-audio in which case you will need to project the correct trackId to select the correct audio track as received from the broadcast event
     mediaId: audioTransceiver.mid,
     media: 'audio',
   },

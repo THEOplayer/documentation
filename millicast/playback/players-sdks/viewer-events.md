@@ -23,7 +23,7 @@ Currently, there are several events that can be listened to when connected to th
 
 ## Using events
 
-:::tip Not familar with our SDKs?
+:::tip Not familiar with our SDKs?
 Learn more about the Dolby.io Millicast streaming SDKs by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) guide or by learning about our [Client SDKs](/millicast/playback/players-sdks/index.mdx).
 :::
 

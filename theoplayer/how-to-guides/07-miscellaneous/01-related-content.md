@@ -99,7 +99,7 @@ The Related Content API is available on the iOS SDK, but not on the tvOS SDK. Th
 ```swift
 //Prerequisite: You would need THEOplayer iOS SDK enabled with Related Content feature.
 
-//create a variable to decalare related content sources to the player.
+//create a variable to declare related content sources to the player.
 var relatedContent = self.theoplayer?.related
 
 //Create an array variable with your related content sources.

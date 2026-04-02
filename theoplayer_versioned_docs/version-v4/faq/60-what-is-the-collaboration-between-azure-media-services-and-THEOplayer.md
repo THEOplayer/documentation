@@ -1,5 +1,9 @@
 # What is the collaboration between Azure Media Services and THEOplayer
 
+:::warning
+Azure Media Services has been retired since June 30th, 2024.
+:::
+
 Azure Media Services has a rich ecosystem of partners that provide their customers with the flexibility of choosing the best solution for their needs.
 
 ### What is the collaboration about?
@@ -13,4 +17,3 @@ With the collaboration with THEOplayer, customers now have an additional choice 
 Azure Media Services has set up a GitHub repository to help get users started. Here, users can insert the streaming URLs they get from the Microsoft Azure Management portal and see them in action. They can also find all the information on getting started with THEOplayer.
 
 - https://github.com/Azure-Samples/media-services-3rdparty-player-samples/tree/master/docs/THEOplayer
-- https://azure.microsoft.com/en-us/blog/azure-media-services-announces-new-collaboration-with-theoplayer/

@@ -1,5 +1,9 @@
 # Microsoft Azure
 
+:::warning
+Azure Media Services has been retired since June 30th, 2024.
+:::
+
 This article describes how to configure Microsoft Azure DRM with THEOplayer.
 
 Head to our page on [DRM](../../how-to-guides/04-drm/00-introduction.md) for more general information or head to [Azure Media Services 3rd Party Player Samples - THEOplayer](https://github.com/Azure-Samples/media-services-3rdparty-player-samples/tree/master/docs/THEOplayer) for an implementation reference sample.
@@ -84,11 +88,6 @@ let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpeg
 let sourceDescription = SourceDescription(source: typedSource)
 theoplayer.source = sourceDescription
 ```
-
-## Resources
-
-- [https://azure.microsoft.com/nl-nl/services/media-services/content-protection/](https://azure.microsoft.com/nl-nl/services/media-services/content-protection/)
-- [https://azure.microsoft.com/en-us/blog/azure-media-services-announces-new-collaboration-with-theoplayer/](https://azure.microsoft.com/en-us/blog/azure-media-services-announces-new-collaboration-with-theoplayer/)
 
 ## Related articles
 

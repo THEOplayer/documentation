@@ -4,7 +4,7 @@ import type {
   MarkdownGenerator,
   SchemaPageMetadata,
   TagPageMetadata,
-} from 'docusaurus-plugin-openapi-docs/lib/types';
+} from 'docusaurus-plugin-openapi-docs/src/types';
 import { createApiPageMD, createInfoPageMD, createSchemaPageMD, createTagPageMD } from 'docusaurus-plugin-openapi-docs/lib/markdown';
 import kebabCase from 'lodash/kebabCase';
 import { remark } from 'remark';

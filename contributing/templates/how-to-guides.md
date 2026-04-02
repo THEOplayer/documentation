@@ -57,7 +57,7 @@ Some information about the piece of code (optional).
 
 ## Sample Applications
 
-The sample application below demonstates how to do X.
+The sample application below demonstrates how to do X.
 
 - Code: (if applicable)
 - Demo: (if applicable)

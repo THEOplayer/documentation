@@ -6,11 +6,20 @@ sidebar_custom_props: { 'icon': '🛜' }
 
 # Signaling service
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 The Signaling Service is provided as a service and can be integrated into any existing content management workflow through its APIs, enabling seamless adoption without significant changes to your current setup.
 
 Developed and provided by Dolby OptiView, this service operates on your infrastructure, integrated between your CDN and media origin. It performs manifest manipulation to insert ad breaks and additional metadata for the player. Additionally, it ensures scalability of the end-to-end system through early ad break notifications to ad decisioning servers.
 
-![OptiView Ads architecture](../assets/img/how_ads_works-light.svg)
+<ThemedImage
+  alt="OptiView Ads architecture"
+  sources={{
+    light: useBaseUrl('/ads/img/how_ads_works-light.svg'),
+    dark: useBaseUrl('/ads/img/how_ads_works-dark.svg'),
+  }}
+/>
 
 ## Infrastructure integration
 

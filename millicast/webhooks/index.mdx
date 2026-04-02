@@ -158,6 +158,14 @@ The [Thumbnail](/millicast/webhooks/thumbnail.mdx) hook does not use this schema
 
 The [ViewerConnection](/millicast/webhooks/viewerconnection.md) hook guide explains how to use viewer connection events to automate your workflow.
 
+## Filtered webhooks
+
+You may wish to send webhooks for different groups of streams to different webhook URLs. For example you may set up different targets for webhooks relating to different environments, customers or regions.
+
+You can do this by configuring a **filter** on your webhook. A filter is a regular expression. Only events matching the filter will be sent to the webhook.
+
+For event types 'feeds', 'media', 'thumbnail' and 'viewerConnection' the filter will be applied to the `streamName` data field. For event type 'transcoder' the filter will be applied to the `transcoderName` data field.
+
 ## Learn more
 
 Learn more or find examples by exploring the [developer blog](https://optiview.dolby.com/resources/blog/tag/webhooks) and [code samples](https://github.com/orgs/dolbyio-samples/repositories?q=webhooks).

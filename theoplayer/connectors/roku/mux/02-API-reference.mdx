@@ -25,7 +25,7 @@ The attributes, methods and events for the THEOMuxConnector.
 | monitorCdnChanges | mappings: CDNMonitoringConfig, defaultCdn: string (optional)                                                                     | Updates the CDN monitoring settings. If passed a CDN monitoring config (see below), it will begin monitoring the downloaded segments for changes in CDN. This will update the defaultReportingResource for the current session if a CDN change is detected If passed invalid as the first parameter, it will stop the monitoring and use any string passed as the second param as the defaultReportingResource. |
 | notifyError       | code: integer, message: string, context: string (optional), severity: string (optional), isBusinessException: boolean (optional) | Report an error to Mux. Note that most errors should be automatically reported. Severity defaults to "fatal".                                                                                                                                                                                                                                                                                                   |
 | setPresentation   | presentationMode: MuxPresentationModes, data: (optional) AssociativeArray                                                        | Change the reported presentation mode (also called playback mode) for the player. Can also take optional arbitrary data about the mode.                                                                                                                                                                                                                                                                         |
-| startSession      | mediaType: string, metadata: (optional) THEOMuxReadableMetadata or THEOMuxTagMetadata                                            | Starts a Mux streaming session with the specified media type, and optionally applies the content metadata. See below for the schema of content. If not passing content metadata, you will need to add it separately with the `update` method before calling `startSession`                                                                                                                                      |
+| startSession      | metadata: (optional) THEOMuxMetadata                                                                                             | Starts a Mux streaming session with the specified media type, and optionally applies the content metadata. See below for the schema of content. If not passing content metadata, you will need to add it separately with the `update` method before calling `startSession`                                                                                                                                      |
 
 ### Mux Config
 
@@ -61,9 +61,9 @@ cdnMappings = {
 ```
 
 Passing a config as the only param will start CDN change monitoring with the provided configuration, or update the config if it is already started.
-`m.theoMuxConnector.callFunc("monitorCDNChanges", cdnMappings)`
+`m.muxConnector.callFunc("monitorCDNChanges", cdnMappings)`
 However, if you want to stop CDN change monitoring, pass `invalid` as the first parameter, and the string you want to use for the defaultReportingResource as the second parameter.
-`m.theoMuxConnector.callFunc("monitorCDNChanges", invalid, "theo")`
+`m.muxConnector.callFunc("monitorCDNChanges", invalid, "theo")`
 
 ### Content Metadata
 
@@ -73,7 +73,7 @@ For content type metadata values, there is an enum property on the THEOMuxConnec
 
 ### Presentation Modes
 
-The THEOMuxConnector supports reporting changes in the presentation mode (also called presentation mode) your application uses the player in, such as fullscreen or inline. The `PRESENTATION_MODES` enum property on the THEOMuxConnector holds the possible values (FULLSCREEN, INLINE, MINI, and PIP). For example, if your application changes the THEO player so it is in a list row component, you could call:
+The THEOMuxConnector supports reporting changes in the presentation mode (also called playback mode) your application uses the player in, such as fullscreen or inline. The `PRESENTATION_MODES` enum property on the THEOMuxConnector holds the possible values (FULLSCREEN, INLINE, MINI, and PIP). For example, if your application changes the THEO player so it is in a list row component, you could call:
 
 ```brightscript
 m.muxConnector.callFunc("setPresentation", m.muxConnector.PRESENTATION_MODES.INLINE)

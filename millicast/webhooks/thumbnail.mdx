@@ -65,6 +65,7 @@ The following HTTP headers are on the request to identify stream details:
 - **X-Millicast-Timestamp**: timestamp of the generated thumbnail.
 - **X-Millicast-Feed-Id**: Dolby.io Real-time Streaming feed id.
 - **X-Millicast-Stream-Id**: Dolby.io Real-time Streaming stream id.
+- **X-Millicast-Token-Id**: Dolby.io Real-time Streaming publish token id.
 - **X-Millicast-Signature**: SHA1 signature using the hook configured secret (The same signature mechanism used by the other webhooks).
 
 ## Troubleshooting
@@ -75,6 +76,30 @@ There are a few limitations to be aware of:
 - Rescaling is not supported. The thumbnail will be the same resolution as the incoming stream.
 - Thumbnails cannot be configured to send more or less frequently than every 30 seconds.
 - Regular intra frames are required to generate the thumbnails.
+
+## On demand thumbnails
+
+If the thumbnails generated every 30 seconds are not interesting or timed appropriately, you may instead create 'on-demand' thumbnails.
+Call the /api/thumbnails endpoint to immediately generate a thumbnail for a streamName and/or tokenId and send it to any configured webhooks.
+
+```
+curl --request POST \
+     --url https://api.millicast.com/api/thumbnails \
+     --header 'accept: application/json' \
+     --header 'authorization: Bearer {YOUR_API_SECRET}' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "streamName": "myStreamName",
+  "tokenId": 12345
+}
+'
+```
+
+Note that the thumbnail setting on the publish token only controls the regularly scheduled thumbnails every 30 seconds and is not required for on demand thumbnails.
+On demand thumbnails and scheduled thumbnails may be used in parallel.
+
+On demand thumbnails are rate limited to 6 per minute per streamName/tokenId combination.
 
 ## Learn more
 

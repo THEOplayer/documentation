@@ -155,7 +155,7 @@ In-case the issue is related to adding DRM:
 ## Remarks
 
 - The following resources might assist in your debugging efforts:
-  - https://www.theoplayer.com/test-your-stream-hls-dash-hesp: logs a number of events and states.
+  - https://optiview.dolby.com/resources/demos/test-stream/: logs a number of events and states.
   - https://www.chromium.org/audio-video/media-internals: chrome://media-internals can help with identifying A/V decoding issues.
   - [ffprobe](https://ffmpeg.org/ffprobe.html) can help with analyzing streams and segments.
   - [MP4Box.js](https://gpac.github.io/mp4box.js/test/filereader.html) can help with analyzing MP4 files.

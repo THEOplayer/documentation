@@ -21,6 +21,7 @@ adengine/static/ad-engine.yaml
 adengine/reference/
 millicast/api/
 theolive/api/
+theolive_versioned_docs/*/api/
 
 # Submodules
 theoplayer/external/

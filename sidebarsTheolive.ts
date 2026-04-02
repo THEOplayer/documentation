@@ -1,9 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import channelsApiSidebar from './theolive/api/channels/sidebar';
-import eventsApiSidebar from './theolive/api/events/sidebar';
-import reportsApiSidebar from './theolive/api/reports/sidebar';
-import schedulersApiSidebar from './theolive/api/schedulers/sidebar';
-import webhooksApiSidebar from './theolive/api/webhooks/sidebar';
+import apiSidebar from './theolive/api/sidebar';
 
 const sidebars: SidebarsConfig = {
   theolive: [
@@ -58,47 +54,17 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '🛜',
       },
-      href: '/theolive/api/',
+      href: '/theolive/next/api/',
     },
   ],
   theoLiveApi: [
     {
       type: 'link',
       label: '« Back',
-      href: '/theolive/',
+      href: '/theolive/next/',
     },
     'api/index',
-    {
-      type: 'category',
-      label: 'Channel API',
-      collapsible: true,
-      collapsed: false,
-      items: channelsApiSidebar.slice(1),
-    },
-    {
-      type: 'category',
-      label: 'Events API',
-      collapsible: true,
-      items: eventsApiSidebar[1].items,
-    },
-    {
-      type: 'category',
-      label: 'Reports API',
-      collapsible: true,
-      items: reportsApiSidebar[1].items,
-    },
-    {
-      type: 'category',
-      label: 'Schedulers API',
-      collapsible: true,
-      items: schedulersApiSidebar[1].items,
-    },
-    {
-      type: 'category',
-      label: 'Webhooks API',
-      collapsible: true,
-      items: webhooksApiSidebar[1].items,
-    },
+    ...apiSidebar.slice(1),
   ],
 };
 

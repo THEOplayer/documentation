@@ -1,6 +1,6 @@
 # Getting started on Chromecast
 
-This how-to guide describes how to set up a Chromecast Receiver application using the THEOplayer SDK.
+This how-to guide describes how to set up a Chromecast Receiver application using the Dolby OptiView Player SDK.
 
 :::info
 

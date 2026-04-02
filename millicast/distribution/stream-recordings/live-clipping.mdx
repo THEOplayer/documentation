@@ -56,6 +56,8 @@ curl --request POST \
 
 The **stopTime** is optional and if not specified will use the last segment from the timeline (ie. "now"). The precise start and stop times of the resulting clip may vary slightly depending on encoding settings. We recommend that encoding settings use an **I-Frame** period of `1s` when using the service to increase precision when aligning keyframes with media segments.
 
+_Note: It is possible to generate CDN servable VOD assets with the service but requires advanced configuration with transcoding and packaging. Please contact your Dolby Account Team to learn about this workflow. You can [read more](/theolive/platform/live-clipping/) on how this feature is enabled._
+
 :::tip Enable Live Clipping
 Before beginning a broadcast, you must enable the `clip` setting on the [Publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx) being used for the stream. You will not be able to clip media until your broadcast with this setting has started.
 :::

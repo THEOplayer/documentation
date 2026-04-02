@@ -4,7 +4,7 @@ pagination_next: getting-started/sdks/tizen/getting-started
 
 # Getting Started on webOS
 
-This guide will help you integrate your THEOplayer SDK on webOS.
+This guide will help you integrate your Dolby OptiView Player SDK on webOS.
 
 Since webOS IDE is [no longer available](https://webostv.developer.lge.com/develop/tools/ide-introduction) as of February 2022, you will need to set up [webOS CLI](https://webostv.developer.lge.com/develop/tools/cli-installation), optionally in combination with the [webOS TV VS Code Extension](https://webostv.developer.lge.com/develop/tools/vsce-installation).
 

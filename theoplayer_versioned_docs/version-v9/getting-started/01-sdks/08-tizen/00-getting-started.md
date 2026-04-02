@@ -4,7 +4,7 @@ pagination_next: getting-started/sdks/tizen/installing-tizen-studio
 
 # Getting started on Tizen
 
-This how-to guide describes how to set up a Tizen application using the THEOplayer SDK on Tizen.
+This how-to guide describes how to set up a Tizen application using the Dolby OptiView Player SDK on Tizen.
 
 You may also find the [Getting Started on Web](../01-web/00-getting-started.mdx) to be useful.
 

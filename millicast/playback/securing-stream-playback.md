@@ -60,7 +60,7 @@ import Img3 from '../assets/img/25a57ae-image.png';
 </div>
 
 :::caution Subscribe token exposed in the URL
-For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters), users can share the URL and by extention the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to acomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
+For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters), users can share the URL and by extension the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to accomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
 :::
 
 #### Viewing a secured stream with the embedded viewer

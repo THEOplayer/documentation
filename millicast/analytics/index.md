@@ -95,7 +95,7 @@ app.get('/usage', (req, resp, next) => {
     })
     .on('error', (e) => {
       console.log('ERROR', e);
-      resp.satus(404).json(e);
+      resp.status(404).json(e);
     });
   apiReq.end();
 });
@@ -128,7 +128,7 @@ app.get('/usage', (req, resp, next) => {
     })
     .on('error', (e) => {
       console.log('ERROR', e);
-      resp.satus(404).json(e);
+      resp.status(404).json(e);
     });
   apiReq.end();
 });
@@ -270,7 +270,7 @@ app.get( '/usage', (req, resp, next) => {
         })
         .on('error', e => {
                 console.log('ERROR',e);
-                resp.satus(404).json(e);
+                resp.status(404).json(e);
         });
         apiReq.end();
 });
@@ -306,7 +306,7 @@ app.get('/streamusage', (req, resp, next) => {
         })
         .on('error', e => {
                 console.log('ERROR',e);
-                resp.satus(404).json(e);
+                resp.status(404).json(e);
         });
         apiReq.end();
 });
@@ -510,4 +510,4 @@ Calculating the viewers per stream (daily or hourly), which region they viewed f
 
 #### Special Characters in Stream Names
 
-When querying usage with the [Analytics](/millicast/api/analytics-streams-series) APIs using `streamNames` it is expected that the streams have not used special characters such as `/`, `*`, or `--` as this will fail to report results. Recommendation is to avoid using special characters in stream names and sticking with alpha-numeric characters and single dashes.
+When querying usage with the [Analytics](/millicast/api/analytics-streams-series) APIs using `streamNames` it is expected that the streams have not used special characters such as `/`, `*`, or `--` as this will fail to report results. Recommendation is to avoid using special characters in stream names and sticking with alphanumeric characters and single dashes.
