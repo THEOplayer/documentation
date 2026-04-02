@@ -61,13 +61,14 @@ You only need a single ingest to start streaming but are free to create multiple
 
 The engine is responsible for transcoding and packaging the incoming media. Create a new engine and configure the following properties:
 
-<div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
-<div style={{ flex: '0 0 35%', maxWidth: '35%' }}>
+<div class="container">
+<div class="row">
+<div class="col col--4">
 
 ![](assets/img/create-engine.png 'Create an engine')
 
 </div>
-<div style={{ flex: '1 1 65%' }}>
+<div class="col col--8">
 
 - **Name** — a descriptive name for your engine.
 - **Priority** — determines which engine takes precedence when multiple engines are configured. A lower number means higher priority.
@@ -80,6 +81,7 @@ The engine is responsible for transcoding and packaging the incoming media. Crea
 - **Enable HLS MPEG-TS** — output content in HLS MPEG-TS format. Only recommended for very specific platforms that don't support HLS with CMAF segments.
 - **DAI Asset Key** — asset key for Dynamic Ad Insertion.
 
+</div>
 </div>
 </div>
 
