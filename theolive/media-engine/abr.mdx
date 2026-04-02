@@ -8,8 +8,19 @@ description: ABR ladder configuration with resolution and bitrate rungs.
 
 # ABR
 
-When creating a media engine, you need to specify an ABR ladder. This ladder contains all the separate rungs with a resolution, bitrate and framerate.
-Since this ladder has impact on pricing and is difficult to get right, setting up available ABR ladders is done during onboarding. If later on new ladders are needed, don't hesitate to contact us.
+ABR (Adaptive Bitrate) streaming allows the player to automatically switch between different quality levels based on the viewer's available bandwidth and device capabilities. When bandwidth drops, the player steps down to a lower quality to avoid buffering; when bandwidth improves, it steps back up for a better picture.
+
+The set of available quality levels is defined by an **ABR ladder**. Each rung on the ladder specifies a resolution, bitrate, and frame rate. The media engine transcodes the incoming stream into all configured rungs simultaneously, so the player can pick the best one in real time.
+
+Here is an example of a typical ABR ladder:
+
+| Resolution | Bitrate    | Frame rate |
+| ---------- | ---------- | ---------- |
+| 1920×1080  | 4 500 kbps | 30 fps     |
+| 1280×720   | 2 500 kbps | 30 fps     |
+| 640×360    | 1 000 kbps | 30 fps     |
+
+Since the ladder has impact on pricing and is difficult to get right, setting up available ABR ladders is done during onboarding. If later on new ladders are needed, don't hesitate to contact us.
 
 ## Important considerations
 

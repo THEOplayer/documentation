@@ -30,6 +30,8 @@ HLS with MPEG-TS segments is an older variant of HLS that uses traditional trans
 
 :::warning
 Only use HLS MPEG-TS if you are targeting a platform that genuinely does not support CMAF-based HLS — for example, certain legacy set-top boxes or embedded devices. In all other cases, use the standard CMAF HLS output, which offers better performance and broader modern device support.
+
+HLS MPEG-TS does not support all platform features. For example, [DVR](../channel/dvr.mdx), [Nielsen](../channel/nielsen.mdx), and [DRM](./drm.mdx) are not available with this output format.
 :::
 
 ## API example
