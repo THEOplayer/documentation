@@ -23,10 +23,10 @@ When a viewer requests a distribution, the platform checks the override rules in
 
 | Field        | Type           | Values                                         | Description                                                     |
 | ------------ | -------------- | ---------------------------------------------- | --------------------------------------------------------------- |
-| `deviceType` | string \| null | `tv`, `mobile`, `desktop`, `other`             | The type of device the viewer is using.                         |
-| `sdkType`    | string \| null | `native`, `web`                                | Whether the viewer is using a native SDK or a web-based player. |
-| `osName`     | string \| null | `apple`, `android`, `windows`, `roku`, `other` | The operating system of the viewer's device.                    |
-| `profileId`  | string \| null | any string                                     | A custom profile identifier for advanced targeting.             |
+| `deviceType` | `string \| null` | `tv`, `mobile`, `desktop`, `other`             | The type of device the viewer is using.                         |
+| `sdkType`    | `string \| null` | `native`, `web`                                | Whether the viewer is using a native SDK or a web-based player. |
+| `osName`     | `string \| null` | `apple`, `android`, `windows`, `roku`, `other` | The operating system of the viewer's device.                    |
+| `profileId`  | `string \| null` | any string                                     | A custom profile identifier for advanced targeting.             |
 
 Setting a criterion to `null` (or leaving it out) means it matches **all** values for that field.
 
