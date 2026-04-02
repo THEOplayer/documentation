@@ -20,9 +20,12 @@ If you are using any of the connectors for Roku, update them to the 11.x version
 <ComponentLibrary id="THEOConvivaConnector" uri="pkg:/components/THEOConvivaConnector.pkg" />
 <ComponentLibrary id="THEOComscoreConnector" uri="pkg:/components/THEOComscoreConnector.pkg" />
 <ComponentLibrary id="THEOAEPConnector" uri="pkg:/components/THEOAEPConnector.pkg" />
+<ComponentLibrary id="THEOMuxConnector" uri="pkg:/components/THEOMuxConnector.pkg" />
 ```
 
 ## Replace or remove usages of deprecated APIs
 
 Some properties and methods that were previously deprecated have been removed from the API.
 Update your code to use the new APIs instead.
+
+- Removed the `THEOplayer.events.bitratechange` event type. Use the `THEOplayer.events.activequalitychanged` event type instead.
