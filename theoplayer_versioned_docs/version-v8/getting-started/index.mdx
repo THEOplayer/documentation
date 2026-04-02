@@ -16,12 +16,10 @@ import DocCardList from '@theme/DocCardList';
 import { usePlatforms } from '@site/src/util/platform';
 
 <DocCardList
-  items={usePlatforms().map((desc) => {
-    return {
-      type: 'link',
-      label: desc.label,
-      customProps: { icon: desc.icon },
-      href: desc.gettingStartedDocUrl,
-    };
-  })}
+  items={usePlatforms().map((desc) => ({
+    type: 'link',
+    label: desc.label,
+    customProps: { icon: desc.icon },
+    href: desc.gettingStartedDocUrl,
+  }))}
 />
