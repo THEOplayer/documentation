@@ -31,14 +31,15 @@ A channel can have **multiple engines**, enabling different levels of redundancy
 
 - **Transcoder redundancy** — connect two engines to the same ingest. If one engine fails, the other continues processing the same source. This protects against transcoding failures while keeping a single ingest path.
 - **Full path redundancy** — connect each engine to a separate ingest. This protects the entire pipeline from ingest to transcoding — if either the ingest or the engine fails on one path, the other path remains fully operational.
+- **Regional redundancy** — deploy engines in separate datacenters across different regions for geographic resilience. If an entire datacenter goes down, the engine in the other region takes over. Contact our support team to explore multi-region setups for your use case.
 
 In both cases, the engine **priority** setting determines which engine is active. A lower priority number means higher precedence, so the platform automatically falls back to the next engine when the primary one becomes unavailable.
 
 ## Distribution
 
-A distribution represents an output endpoint of an engine. It defines how the processed content is delivered to viewers, including CDN configuration, player settings, and security policies.
+A distribution represents a collection of engines and how they are delivered and secured over a CDN.
 
-A channel can have **multiple distributions** per engine, allowing you to serve different viewer groups with different configurations from the same source. This gives a lot of flexibility, for example:
+A channel can have **multiple distributions**, each connecting to one or more engines, allowing you to serve different viewer groups with different configurations from the same source. This gives a lot of flexibility, for example:
 
 - **Regional reselling** — create separate distributions with different geo-blocking rules, so each reseller or region only has access to the content they are licensed for.
 - **Testing and beta rollouts** — spin up a dedicated distribution for beta testers to try out new settings or features without affecting your production audience.
