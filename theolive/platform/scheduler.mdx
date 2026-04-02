@@ -10,7 +10,6 @@ description: Automatically start and stop channels on a schedule.
 
 Schedulers let you automate when your channels go live and stop streaming. Instead of manually starting and stopping channels, you define a schedule and let the system handle it.
 
----
 
 ## What is a Scheduler?
 
@@ -26,7 +25,6 @@ Each scheduler has a **status** that reflects where it is in its lifecycle:
 | **Stopping**   | The connected channels are being taken offline.       |
 | **Terminated** | The schedule has completed and will not run again.    |
 
----
 
 ## Creating a Scheduler in the dashboard
 
@@ -117,7 +115,6 @@ Click **Create** to save the scheduler.
 }
 ```
 
----
 
 ## Viewing Schedulers
 
@@ -149,7 +146,6 @@ Optional query parameters:
 
 `GET https://api.theo.live/v2/schedulers/{schedulerId}`
 
----
 
 ## Editing a Scheduler
 
@@ -180,7 +176,6 @@ All fields are optional; only include the fields you want to change.
 }
 ```
 
----
 
 ## Enabling and Disabling a Scheduler
 
@@ -201,7 +196,6 @@ Use the update endpoint with the `enabled` field:
 { "enabled": false }
 ```
 
----
 
 ## Manually Starting and Stopping
 
@@ -218,7 +212,6 @@ You can override the schedule at any time:
 
 `POST https://api.theo.live/v2/schedulers/{schedulerId}/stop`
 
----
 
 ## Deleting a Scheduler
 
@@ -230,7 +223,6 @@ A confirmation dialog will appear. Deletion of a non-active scheduler can be don
 
 `DELETE https://api.theo.live/v2/schedulers/{schedulerId}`
 
----
 
 ## Schedulers on the Channel Detail Page
 
@@ -242,7 +234,6 @@ When viewing an individual channel, the **Channel Details** card shows a **Sched
 
 ![Channel details: connected schedulers](../assets/img/scheduler-channel-details.jpg)
 
----
 
 ## Tips
 
