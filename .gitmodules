@@ -83,6 +83,7 @@
     path = theoplayer_versioned_docs/version-v9/external/android-connector
     url = https://github.com/THEOplayer/android-connector.git
     branch = 9.x
+	shallow = true
 [submodule "ios-connector"]
 	path = theoplayer/external/iOS-Connector
 	url = https://github.com/THEOplayer/iOS-Connector.git
@@ -101,6 +102,7 @@
 	path = theoplayer_versioned_docs/version-v9/external/iOS-Connector
 	url = https://github.com/THEOplayer/iOS-Connector.git
 	branch = 9.x
+	shallow = true
 [submodule "react-native-connectors"]
 	path = theoplayer/external/react-native-connectors
 	url = https://github.com/THEOplayer/react-native-connectors.git
