@@ -90,6 +90,7 @@ const sidebars: SidebarsConfig = {
     },
     'api/index',
     'api/authentication',
+    'api/pagination',
     'api/full-example',
     ...apiSidebar.slice(1),
   ],
