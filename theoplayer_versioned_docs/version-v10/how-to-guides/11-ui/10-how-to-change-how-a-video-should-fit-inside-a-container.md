@@ -62,7 +62,7 @@ theoPlayerView.getPlayer().setAspectRatio(AspectRatio.FIT);
 
 If you are using one of `minApi21`, `androidTV` or `fireTV` SDK with version below 3.6.1, the Web SDK code above should be included in your Android (TV) project .
 
-The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
+The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
 The sample project at [How to insert a button](../../how-to-guides/11-ui/07-how-to-insert-a-button.md) demonstrates this.
 
 ### iOS (tvOS) SDK

@@ -77,7 +77,7 @@ We recommend switching to our [Open Video UI](/open-video-ui/android/) (for Andr
 or our [React Native UI](https://github.com/THEOplayer/react-native-theoplayer-ui) (for Android and iOS).
 
 For THEOplayer version 4 and lower, the default UI is the same UI as our Web SDK.
-See [our version 4 documentation](../../../theoplayer_versioned_docs/version-v4/how-to-guides/11-ui/00-introduction.md#ios-and-android-sdk) for more information.
+See [our version 4 documentation](../../../version-v4/how-to-guides/11-ui/00-introduction.md#ios-and-android-sdk) for more information.
 
 #### Related articles
 

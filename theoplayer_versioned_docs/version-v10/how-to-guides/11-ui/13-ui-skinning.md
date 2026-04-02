@@ -81,7 +81,7 @@ After this tutorial, you should be able to style your THEOplayer to your own nee
 
 ## Mobile
 
-Our mobile player uses the same class naming as our web version, so this is applicable to mobile as well. The CSS changes are to be gathered in a custom .CSS file, added to your project and then loaded into the PlayerConfiguration. More information on [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) .
+Our mobile player uses the same class naming as our web version, so this is applicable to mobile as well. The CSS changes are to be gathered in a custom .CSS file, added to your project and then loaded into the PlayerConfiguration. More information on [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) .
 
 ##### Legacy iOS/tvOS SDK (4.12.x)
 

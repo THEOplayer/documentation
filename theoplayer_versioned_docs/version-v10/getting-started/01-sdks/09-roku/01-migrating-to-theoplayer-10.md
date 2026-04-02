@@ -2,7 +2,7 @@
 
 This article will guide you through updating to THEOplayer Roku SDK version 10 (from version 9.x),
 and the changes needed in your code. If you are upgrading from a version before 9.x, please follow
-the [migration guide for 9.x](../../../../theoplayer_versioned_docs/version-v9/getting-started/01-sdks/09-roku/01-migrating-to-theoplayer-9.md) first.
+the [migration guide for 9.x](../../../../version-v9/getting-started/01-sdks/09-roku/01-migrating-to-theoplayer-9.md) first.
 
 ## Update THEOplayer
 
