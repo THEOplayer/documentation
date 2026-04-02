@@ -22,7 +22,7 @@ This guide explains to you how to set up Wirecast correctly so it can be used to
 - Go to the management dashboard, and copy the RTMP Push URL and Stream key of your channel.
 - Paste the RTMP Push URL into "Address".
 
-:::warning ❗️ Not all versions/editions of Wirecast support RTMPS
+:::warning Not all versions/editions of Wirecast support RTMPS
 Definitely check whether your Wirecast version/edition supports RTMPS. Older versions typically do not support RTMPS, whereas for example the most recent version Professional version does support RTMPS. In case your version/edition does not accept RTMPS, then definitely change "RTMPS" to "RTMP" in your RTMP push URL. As an example rtmps://rtmp.europe-west.hesp.live/live will have to be changed to rtmp://rtmp.europe-west.hesp.live/live for RTMP-based streaming.
 :::
 
