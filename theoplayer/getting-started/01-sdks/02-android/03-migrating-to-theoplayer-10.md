@@ -100,4 +100,4 @@ Update your code to use the new APIs instead.
 [`HttpEngine`]: https://developer.android.com/reference/android/net/http/HttpEngine
 [`HttpURLConnection`]: https://developer.android.com/reference/java/net/HttpURLConnection
 [Cronet]: https://developer.android.com/develop/connectivity/cronet
-[`NetworkConfiguration.useHttpEngine`]: pathname:///theoplayer/v10/api-reference/android/com/theoplayer/android/api/player/NetworkConfiguration.html#useHttpEngine
+[`NetworkConfiguration.useHttpEngine`]: pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/NetworkConfiguration.html#useHttpEngine
