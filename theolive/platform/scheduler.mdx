@@ -10,7 +10,6 @@ description: Automatically start and stop channels on a schedule.
 
 Schedulers let you automate when your channels go live and stop streaming. Instead of manually starting and stopping channels, you define a schedule and let the system handle it.
 
-
 ## What is a Scheduler?
 
 A scheduler is a time-based rule that automatically starts and stops one or more streaming channels. You can create **one-time** schedules for a single event, or **recurring** schedules for repeated broadcasts like daily shows or weekly streams.
@@ -24,7 +23,6 @@ Each scheduler has a **status** that reflects where it is in its lifecycle:
 | **Active**     | The connected channels are live.                      |
 | **Stopping**   | The connected channels are being taken offline.       |
 | **Terminated** | The schedule has completed and will not run again.    |
-
 
 ## Creating a Scheduler in the dashboard
 
@@ -115,7 +113,6 @@ Click **Create** to save the scheduler.
 }
 ```
 
-
 ## Viewing Schedulers
 
 The **Schedulers** page shows a table of all your schedulers with:
@@ -146,7 +143,6 @@ Optional query parameters:
 
 `GET https://api.theo.live/v2/schedulers/{schedulerId}`
 
-
 ## Editing a Scheduler
 
 Any non-terminated scheduler can be edited.
@@ -176,7 +172,6 @@ All fields are optional; only include the fields you want to change.
 }
 ```
 
-
 ## Enabling and Disabling a Scheduler
 
 When editing a scheduler, you can toggle the **Scheduler enabled** switch.
@@ -196,7 +191,6 @@ Use the update endpoint with the `enabled` field:
 { "enabled": false }
 ```
 
-
 ## Manually Starting and Stopping
 
 You can override the schedule at any time:
@@ -212,7 +206,6 @@ You can override the schedule at any time:
 
 `POST https://api.theo.live/v2/schedulers/{schedulerId}/stop`
 
-
 ## Deleting a Scheduler
 
 A confirmation dialog will appear. Deletion of a non-active scheduler can be done at any time and is permanent and cannot be undone.
@@ -223,7 +216,6 @@ A confirmation dialog will appear. Deletion of a non-active scheduler can be don
 
 `DELETE https://api.theo.live/v2/schedulers/{schedulerId}`
 
-
 ## Schedulers on the Channel Detail Page
 
 When viewing an individual channel, the **Channel Details** card shows a **Schedulers** section:
@@ -233,7 +225,6 @@ When viewing an individual channel, the **Channel Details** card shows a **Sched
 - Click any scheduler row in the dialog to navigate to the schedulers overview page.
 
 ![Channel details: connected schedulers](../assets/img/scheduler-channel-details.jpg)
-
 
 ## Tips
 

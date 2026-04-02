@@ -10,7 +10,6 @@ description: Receive real-time notifications when channel events occur.
 
 Webhooks let you receive real-time notifications when events happen in your streaming infrastructure. Instead of polling for changes, you register an endpoint URL and the system pushes event data to it automatically.
 
-
 ## What is a Webhook?
 
 A webhook is an HTTP callback that sends a `POST` request to your endpoint whenever a subscribed event occurs — for example, when a channel starts, an engine encounters an error, or a distribution is updated.
@@ -22,7 +21,6 @@ Each webhook has:
 - **Events** — The specific event types the webhook listens to, or all events via a wildcard.
 - **Active / Inactive** — Whether the webhook is currently receiving events.
 - **Secret** — A signing secret used to verify that incoming requests are genuinely from Dolby OptiView.
-
 
 ## Supported Events
 
@@ -92,7 +90,6 @@ Events are grouped by resource type:
 
 You can also use the **wildcard** (`*`) to listen to all events at once.
 
-
 ## Creating a Webhook in the [dashboard](https://dashboard.optiview.dolby.com/)
 
 1. Navigate to **Streaming → Webhooks**.
@@ -131,7 +128,6 @@ After creation, you are redirected to the webhook detail page where you can view
 }
 ```
 
-
 ## Viewing Webhooks
 
 The **Webhooks** page shows a table of all your webhooks with:
@@ -157,7 +153,6 @@ Optional query parameters:
 
 `GET https://api.theo.live/v2/webhooks/{webhookId}`
 
-
 ## Webhook Detail Page
 
 Click any webhook row to open its detail page. This shows:
@@ -177,7 +172,6 @@ The detail page includes a **Delivery logs** section that shows the history of w
 - The **status code** badge shows the HTTP response code returned by your endpoint.
 
 > **Note:** The status code reflects what your endpoint returned. A `400` status code means your endpoint rejected the request, not that delivery failed.
-
 
 ## Editing a Webhook
 
@@ -206,7 +200,6 @@ All fields are optional; only include the fields you want to change.
 }
 ```
 
-
 ## Activating and Deactivating a Webhook
 
 When editing a webhook, you can toggle the **Active / Inactive** switch.
@@ -230,7 +223,6 @@ Use the update endpoint with the `active` field:
 { "active": true }
 ```
 
-
 ## Deleting a Webhook
 
 Click the **trash icon** on the webhooks list, or click **Delete** on the webhook detail page. A confirmation dialog will appear. Deletion is permanent and cannot be undone.
@@ -240,7 +232,6 @@ Click the **trash icon** on the webhooks list, or click **Delete** on the webhoo
 ### API example — Delete a webhook
 
 `DELETE https://api.theo.live/v2/webhooks/{webhookId}`
-
 
 ## Webhook Payload Format
 
@@ -265,7 +256,6 @@ When an event fires, Dolby sends a `POST` request to your endpoint with a JSON b
 | `object.type` | The resource type: `channel`, `engine`, `ingest`, `distribution`, or `webhook` |
 | `object.id`   | The ID of the resource that triggered the event                                |
 | `data`        | Event-specific payload with additional details                                 |
-
 
 ## Verifying Webhook Signatures
 
@@ -344,7 +334,6 @@ app.listen(port, () => {
 ### API example — Get the webhook secret
 
 `GET https://api.theo.live/v2/webhooks/{webhookId}/secret`
-
 
 ## Tips
 
