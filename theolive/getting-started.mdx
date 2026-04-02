@@ -39,7 +39,7 @@ A channel consists of three main components that need to be configured:
 - **Engine** — processes the incoming media, handling transcoding and packaging.
 - **Distributions** — different output versions of an engine. Each distribution lets you enable or disable protocols, choose CDNs, and more.
 
-<figure style={{ textAlign: 'center' }}>
+<figure className="center-container">
 
 ![](assets/img/full-channel-pipeline.svg)
 
@@ -55,7 +55,7 @@ Create a new ingest, give it a name, and select the protocol you want to use (RT
 You only need a single ingest to start streaming but are free to create multiple ones for redundancy purposes for example.
 :::
 
-<div style={{ textAlign: 'center' }}>![](assets/img/create-ingest.png 'Create an ingest')</div>
+<div className="center-container">![](assets/img/create-ingest.png 'Create an ingest')</div>
 
 ### 2.2 Engine
 
@@ -102,13 +102,13 @@ When you're all set, you can start your channel from the channel details page by
 
 For advanced use cases such as production updates, you can start and stop individual engines separately. However, for most use cases all engines will be started and stopped at the same time.
 
-<div style={{ textAlign: 'center' }}>![](assets/img/start-channel.png)</div>
+<div className="center-container">![](assets/img/start-channel.png)</div>
 
 ## 4. Verify playback
 
 Now we have to make sure that our viewers have access to the stream. In the dashboard you can already see the preview of the stream.
 
-<div style={{ textAlign: 'center' }}>![](assets/img/optiview-live-preview.png 'Live stream preview in the dashboard')</div>
+<div className="center-container">![](assets/img/optiview-live-preview.png 'Live stream preview in the dashboard')</div>
 
 For production use cases, you should connect [THEOplayer](/theoplayer/how-to-guides/web/theolive/getting-started/).
 
