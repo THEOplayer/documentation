@@ -1,4 +1,5 @@
-import type { GlobalDoc, GlobalVersion } from '@docusaurus/plugin-content-docs/client';
+import { type GlobalDoc, type GlobalVersion, useActivePluginAndVersion } from '@docusaurus/plugin-content-docs/client';
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 
 /**
  * The names of SDK platforms.
@@ -19,8 +20,14 @@ interface PlatformDescription {
   label: string;
   shortLabel?: string;
   description: string;
+  gettingStartedDoc: string;
   icon: string;
   minVersion: number;
+}
+
+interface PlatformDescriptionWithUrl extends PlatformDescription {
+  baseUrl: string;
+  gettingStartedDocUrl: string;
 }
 
 const theoplayerPlatforms: readonly PlatformDescription[] = [
@@ -29,6 +36,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
     label: 'THEOplayer Web SDK',
     shortLabel: 'Web SDK',
     description: 'For desktop and mobile web browsers, and smart TVs like Tizen and WebOS',
+    gettingStartedDoc: 'getting-started/sdks/web/getting-started',
     icon: 'web',
     minVersion: 1,
   },
@@ -37,6 +45,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
     label: 'THEOplayer Android SDK',
     shortLabel: 'Android SDK',
     description: 'For smartphones, tablets and Android TVs',
+    gettingStartedDoc: 'getting-started/sdks/android/getting-started',
     icon: 'android',
     minVersion: 1,
   },
@@ -45,6 +54,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
     label: 'THEOplayer iOS & tvOS SDK',
     shortLabel: 'iOS & tvOS SDK',
     description: 'For iPhone, iPad and Apple TV',
+    gettingStartedDoc: 'getting-started/sdks/ios/getting-started',
     icon: 'apple',
     minVersion: 1,
   },
@@ -53,6 +63,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
     label: 'THEOplayer React Native SDK',
     shortLabel: 'React Native SDK',
     description: 'For cross-platform apps targeting web, Android and iOS',
+    gettingStartedDoc: 'getting-started/frameworks/react-native/getting-started',
     icon: 'react',
     minVersion: 1,
   },
@@ -61,6 +72,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
     label: 'THEOplayer Flutter SDK',
     shortLabel: 'Flutter SDK',
     description: 'For cross-platform apps targeting web, Android and iOS',
+    gettingStartedDoc: 'getting-started/frameworks/flutter/getting-started',
     icon: 'flutter',
     minVersion: 7,
   },
@@ -69,6 +81,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
     label: 'THEOplayer Chromecast SDK',
     shortLabel: 'Chromecast SDK',
     description: 'For custom Chromecast receiver apps',
+    gettingStartedDoc: 'getting-started/sdks/chromecast/getting-started',
     icon: 'chromecast',
     minVersion: 1,
   },
@@ -77,6 +90,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
     label: 'THEOplayer Roku SDK',
     shortLabel: 'Roku SDK',
     description: 'For Roku smart TVs',
+    gettingStartedDoc: 'getting-started/sdks/roku/getting-started',
     icon: 'roku',
     minVersion: 1,
   },
@@ -87,6 +101,7 @@ const openVideoUiPlatforms: readonly PlatformDescription[] = [
     platform: 'web',
     label: 'Open Video UI for Web',
     description: 'For desktop and mobile web browsers using Web Components',
+    gettingStartedDoc: 'web/getting-started',
     icon: 'web',
     minVersion: 1,
   },
@@ -94,6 +109,7 @@ const openVideoUiPlatforms: readonly PlatformDescription[] = [
     platform: 'android',
     label: 'Open Video UI for Android',
     description: 'For Android smartphones and tablets using Jetpack Compose',
+    gettingStartedDoc: 'android/getting-started',
     icon: 'android',
     minVersion: 1,
   },
@@ -101,6 +117,7 @@ const openVideoUiPlatforms: readonly PlatformDescription[] = [
     platform: 'react',
     label: 'Open Video UI for React',
     description: 'For web apps using React components',
+    gettingStartedDoc: 'react/getting-started',
     icon: 'react',
     minVersion: 1,
   },
@@ -109,6 +126,7 @@ const openVideoUiPlatforms: readonly PlatformDescription[] = [
     label: 'React Native THEOplayer UI',
     shortLabel: 'React Native UI',
     description: 'For cross-platform apps using React Native components',
+    gettingStartedDoc: 'react-native/getting-started',
     icon: 'react',
     minVersion: 1,
   },
@@ -131,6 +149,17 @@ export function getPlatformsByVersion(docsPluginId: string, version?: string): r
     platforms = platforms.filter((desc) => desc.minVersion <= versionNumber);
   }
   return platforms;
+}
+
+export function usePlatforms(): readonly PlatformDescriptionWithUrl[] {
+  const { activePlugin, activeVersion } = useActivePluginAndVersion({ failfast: true });
+  const { withBaseUrl } = useBaseUrlUtils();
+  if (!activeVersion) return [];
+  return getPlatformsByVersion(activePlugin.pluginId, activeVersion.name).map((desc) => ({
+    ...desc,
+    baseUrl: withBaseUrl(`${activeVersion.path}/${desc.platform}`),
+    gettingStartedDocUrl: withBaseUrl(`${activeVersion.path}/${desc.gettingStartedDoc}`),
+  }));
 }
 
 type PlatformDescriptionsByName = Record<PlatformName, PlatformDescription>;
