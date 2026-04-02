@@ -16,7 +16,7 @@ dependencies {
 If you're using the [Open Video UI for Android](/open-video-ui/android/) or one of [our connectors](/theoplayer/connectors/android/),
 make sure to update them to the latest version too to ensure proper support for THEOplayer version 11.
 
-## Replace usages of deprecated APIs
+## Replace or remove usages of deprecated APIs
 
 Some properties and methods that were previously deprecated have been removed from the API.
 Update your code to use the new APIs instead.

@@ -20,7 +20,7 @@ npm update @theoplayer/web-ui
 npm update @theoplayer/conviva-connector-web
 ```
 
-## Replace usages of deprecated APIs
+## Replace or remove usages of deprecated APIs
 
 Some properties and methods that were previously deprecated have been removed from the API.
 Update your code to use the new APIs instead.

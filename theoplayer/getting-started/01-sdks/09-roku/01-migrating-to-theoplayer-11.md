@@ -23,3 +23,6 @@ If you are using any of the connectors for Roku, update them to the 11.x version
 ```
 
 ## Replace or remove usages of deprecated APIs
+
+Some properties and methods that were previously deprecated have been removed from the API.
+Update your code to use the new APIs instead.
