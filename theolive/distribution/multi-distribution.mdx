@@ -3,18 +3,18 @@ sidebar_position: 1
 sidebar_label: Multi-distribution
 sidebar_custom_props:
   icon: 🤝
-description: Serve a single stream through multiple distributions with independent settings.
+description: Serve streams through multiple distributions, each connecting to one or more engines.
 ---
 
 # Multi-distribution
 
-A single engine can serve multiple distributions, each with its own configuration. Rather than duplicating the entire pipeline, you can create separate distributions on one engine to serve different audiences, regions, or partners independently.
+A distribution connects to one or more engines and delivers the stream to viewers with its own configuration. Multiple distributions can share the same engines, and a single distribution can draw from multiple engines for redundancy. This many-to-many relationship gives you full flexibility to serve different audiences, regions, or partners independently.
 
 ## How it works
 
-A channel only needs one ingest and one engine to transcode and package the stream once. From that engine, you can create multiple distributions. Each distribution acts as an independent output endpoint with its own configuration, including geo-blocking rules, security policies, and player settings.
+A channel only needs one ingest and one engine to transcode and package the stream once. You can then create multiple distributions that connect to that engine. Each distribution acts as an independent output endpoint with its own configuration, including geo-blocking rules, security policies, and player settings.
 
-This means the stream is transcoded and packaged **once**, but delivered **many times** under different conditions — keeping costs and complexity low.
+Because distributions can also connect to multiple engines, you get both **redundancy** (multiple engines backing the same distribution) and **flexibility** (different distributions with different settings) — all while keeping transcoding costs low.
 
 ## Example: regional rights management
 
@@ -27,7 +27,7 @@ Suppose you are streaming a live event and have sold the rights to three reselle
 You would set up your channel as follows:
 
 1. Create a single **ingest** and **engine** for transcoding.
-2. Create three **distributions** on that engine — one per reseller.
+2. Create three **distributions** connected to that engine — one per reseller.
 3. Apply [geo-blocking](./security/geo-blocking.md) rules to each distribution so that only viewers in the licensed region can access the stream.
 4. Optionally, apply [token-based security](./security/token-based-security.mdx) per distribution so each reseller authenticates their own viewers.
 
