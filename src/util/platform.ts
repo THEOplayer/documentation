@@ -1,4 +1,5 @@
-import type { GlobalDoc, GlobalVersion } from '@docusaurus/plugin-content-docs/client';
+import { type GlobalDoc, type GlobalVersion, useActivePluginAndVersion } from '@docusaurus/plugin-content-docs/client';
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 
 /**
  * The names of SDK platforms.
@@ -21,6 +22,10 @@ interface PlatformDescription {
   description: string;
   icon: string;
   minVersion: number;
+}
+
+interface PlatformDescriptionWithUrl extends PlatformDescription {
+  baseUrl: string;
 }
 
 const theoplayerPlatforms: readonly PlatformDescription[] = [
@@ -131,6 +136,16 @@ export function getPlatformsByVersion(docsPluginId: string, version?: string): r
     platforms = platforms.filter((desc) => desc.minVersion <= versionNumber);
   }
   return platforms;
+}
+
+export function usePlatforms(): readonly PlatformDescriptionWithUrl[] {
+  const { activePlugin, activeVersion } = useActivePluginAndVersion({ failfast: true });
+  const { withBaseUrl } = useBaseUrlUtils();
+  if (!activeVersion) return [];
+  return getPlatformsByVersion(activePlugin.pluginId, activeVersion.name).map((desc) => ({
+    ...desc,
+    baseUrl: withBaseUrl(`${activeVersion.path}/${desc.platform}`),
+  }));
 }
 
 type PlatformDescriptionsByName = Record<PlatformName, PlatformDescription>;

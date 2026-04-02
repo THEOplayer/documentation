@@ -8,16 +8,15 @@ sidebar_position: 1
 
 import Intro from './shared/_intro.mdx';
 import DocCardList from '@theme/DocCardList';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import { getPlatformsByVersion } from '@site/src/util/platform';
+import { usePlatforms } from '@site/src/util/platform';
 
 <Intro />
 <DocCardList
-  items={getPlatformsByVersion('theoplayer', 'v8').map((desc) => ({
+  items={usePlatforms().map((desc) => ({
     type: 'link',
     label: desc.label,
     description: desc.description,
     customProps: { icon: desc.icon },
-    href: useBaseUrl(`theoplayer/v8/${desc.platform}`),
+    href: desc.baseUrl,
   }))}
 />
