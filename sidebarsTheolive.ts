@@ -80,6 +80,7 @@ const sidebars: SidebarsConfig = {
       },
       href: '/theolive/next/api/',
     },
+    'changelog',
     'api/migration-from-v1',
   ],
   theoLiveApi: [
