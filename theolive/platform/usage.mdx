@@ -1,0 +1,104 @@
+---
+sidebar_position: 20
+sidebar_label: Usage monitoring
+sidebar_custom_props:
+  icon: 📊
+description: Track viewing minutes, bytes transferred, and transcoding minutes per channel.
+---
+
+# Usage monitoring
+
+The usage monitoring page lets you track how your streams are consumed and how much transcoding capacity is used. The [dashboard](https://dashboard.optiview.dolby.com/) shows these metrics visually under **Streaming → Usage monitoring**. You can also query them directly through the API.
+
+Your usage — and pricing — is made up of two independent components:
+
+1. **Transcoding** — the time your engines spend actively transcoding video. This is measured in **transcoding minutes**.
+2. **Viewing** — the consumption by your viewers. Depending on your contract, this is measured either in **viewing minutes** (time spent watching) or **bytes transferred** (data delivered).
+
+## Common parameters
+
+All three endpoints share the same base parameters:
+
+| Parameter    | Type     | Required | Description                                                                 |
+| ------------ | -------- | -------- | --------------------------------------------------------------------------- |
+| `start`      | `string` | Yes      | Start date for the analytics period.                                        |
+| `end`        | `string` | Yes      | End date for the analytics period.                                          |
+| `resolution` | `string` | Yes      | Time granularity: `15min`, `hour`, `day`, or `month`.                       |
+| `utcOffset`  | `string` | No       | UTC offset in minutes. Adjusts how data points align to time boundaries.    |
+
+## Viewing minutes
+
+Returns how many minutes viewers spent watching a channel's streams.
+
+`GET https://api.theo.live/v2/channels/{channelId}/analytics/viewing-minutes`
+
+| Parameter         | Type     | Required | Description                                                      |
+| ----------------- | -------- | -------- | ---------------------------------------------------------------- |
+| `groupBy`         | `string` | No       | `channel`, `distribution`, or `streaming-format`.                |
+| `distributionIds` | `string` | No       | Comma-separated list of distribution IDs to filter by.           |
+| `streamingFormats` | `string` | No      | Comma-separated list of streaming formats to filter by.          |
+
+### Example
+
+```
+GET /v2/channels/{channelId}/analytics/viewing-minutes?start=2025-01-01&end=2025-01-31&resolution=day&groupBy=distribution
+```
+
+## Bytes transferred
+
+Returns the total amount of data delivered to viewers for a channel.
+
+`GET https://api.theo.live/v2/channels/{channelId}/analytics/bytes-transferred`
+
+| Parameter          | Type     | Required | Description                                                      |
+| ------------------ | -------- | -------- | ---------------------------------------------------------------- |
+| `groupBy`          | `string` | No       | `channel`, `distribution`, or `streaming-format`.                |
+| `streamingFormats` | `string` | No       | Comma-separated list of streaming formats to filter by.          |
+
+### Example
+
+```
+GET /v2/channels/{channelId}/analytics/bytes-transferred?start=2025-01-01&end=2025-01-31&resolution=day&groupBy=streaming-format
+```
+
+## Transcoding minutes
+
+Returns how many minutes of transcoding capacity was used by a channel's engines.
+
+`GET https://api.theo.live/v2/channels/{channelId}/analytics/transcoding-minutes`
+
+| Parameter   | Type     | Required | Description                                                      |
+| ----------- | -------- | -------- | ---------------------------------------------------------------- |
+| `groupBy`   | `string` | No       | `engine` or `channel`.                                           |
+| `engineIds` | `string` | No       | Comma-separated list of engine IDs to filter by.                 |
+
+### Example
+
+```
+GET /v2/channels/{channelId}/analytics/transcoding-minutes?start=2025-01-01&end=2025-01-31&resolution=month&groupBy=engine
+```
+
+## Response format
+
+All three endpoints return the same response structure:
+
+```json
+{
+  "data": [
+    {
+      "timestamp": "2025-01-01T00:00:00.000Z",
+      "records": [
+        {
+          "id": "channel-id-or-group-id",
+          "amount": 1234.5
+        }
+      ]
+    }
+  ]
+}
+```
+
+- **`timestamp`** — the start of the time bucket, based on the chosen `resolution`.
+- **`records`** — one entry per group (e.g. per distribution, per engine). When no `groupBy` is specified, there is a single record per bucket.
+  - **`id`** — identifier of the grouped entity (channel ID, distribution ID, engine ID, or streaming format name).
+  - **`amount`** — the metric value for that time bucket.
