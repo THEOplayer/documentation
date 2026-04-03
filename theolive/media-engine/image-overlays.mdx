@@ -31,7 +31,7 @@ The `position` object accepts the following properties, all specified in **pixel
 | `left`   | `number` | Distance from the left edge of the video frame.       |
 | `right`  | `number` | Distance from the right edge. Ignored if `left` is set. |
 
-Use a combination of one vertical (`top` or `bottom`) and one horizontal (`left` or `right`) property to anchor the overlay.
+Use a combination of one vertical (`top` or `bottom`) and one horizontal (`left` or `right`) property to anchor the overlay. The pixel values are relative to the **ingest resolution** (i.e. the width and height of the incoming source stream).
 
 ## API example
 
@@ -59,34 +59,8 @@ Add a logo overlay in the bottom-right corner when [creating](../api/create-chan
 }
 ```
 
-### Multiple overlays
-
-You can add multiple overlays to a single engine. For example, a logo in the bottom-right and a "LIVE" badge in the top-left:
-
-```json
-{
-  "overlays": [
-    {
-      "url": "https://example.com/logo.png",
-      "position": {
-        "bottom": 20,
-        "right": 20
-      }
-    },
-    {
-      "url": "https://example.com/live-badge.png",
-      "position": {
-        "top": 10,
-        "left": 10
-      },
-      "opacity": 0.9
-    }
-  ]
-}
-```
-
 ## Notes
 
 - Use **PNG images with transparency** for clean overlays that blend naturally with the video.
 - The overlay is burned into the transcoded output, so it will appear on all quality levels and all output protocols.
-- To remove overlays, update the engine with an empty `overlays` array.
+- To remove overlays, update the engine with an empty `overlays` array and restart the engine.
