@@ -14,21 +14,21 @@ Image overlays let you burn static images — such as logos or watermarks — di
 
 Each engine supports one or more overlays. An overlay is defined by:
 
-| Property   | Type     | Required | Description                                                                                                    |
-| ---------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------- |
-| `url`      | `string` | Yes      | URL of the overlay image.                                                                                      |
-| `position` | `object` | No       | Where to place the overlay on the video frame. If omitted, the image is placed at the top-left corner (0, 0).  |
-| `opacity`  | `number` | No       | Overlay opacity, from `0` (invisible) to `1` (fully visible). Defaults to `1`.                                 |
+| Property   | Type     | Required | Description                                                                                                   |
+| ---------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------- |
+| `url`      | `string` | Yes      | URL of the overlay image.                                                                                     |
+| `position` | `object` | No       | Where to place the overlay on the video frame. If omitted, the image is placed at the top-left corner (0, 0). |
+| `opacity`  | `number` | No       | Overlay opacity, from `0` (invisible) to `1` (fully visible). Defaults to `1`.                                |
 
 ### Position
 
 The `position` object accepts the following properties, all specified in **pixels**:
 
-| Property | Type     | Description                                           |
-| -------- | -------- | ----------------------------------------------------- |
-| `top`    | `number` | Distance from the top edge of the video frame.        |
+| Property | Type     | Description                                             |
+| -------- | -------- | ------------------------------------------------------- |
+| `top`    | `number` | Distance from the top edge of the video frame.          |
 | `bottom` | `number` | Distance from the bottom edge. Ignored if `top` is set. |
-| `left`   | `number` | Distance from the left edge of the video frame.       |
+| `left`   | `number` | Distance from the left edge of the video frame.         |
 | `right`  | `number` | Distance from the right edge. Ignored if `left` is set. |
 
 Use a combination of one vertical (`top` or `bottom`) and one horizontal (`left` or `right`) property to anchor the overlay. The pixel values are relative to the **ingest resolution** (i.e. the width and height of the incoming source stream).
