@@ -1,0 +1,11 @@
+{
+  "label": "Security",
+  "customProps": {
+    "icon": "🔐"
+  },
+  "description": "Geo-blocking, IP-blocking and token-based security for your distributions.",
+  "link": {
+    "type": "generated-index",
+    "slug": "distribution/security"
+  }
+}

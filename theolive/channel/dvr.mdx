@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+sidebar_label: DVR window
+sidebar_custom_props:
+  icon: ⏪
+description: Enable time-shifted playback so viewers can rewind and catch up on live content.
+---
+
+# DVR window
+
+DVR (Digital Video Recording) enables viewers to pause, rewind, and replay your live stream content. The DVR window defines how far back viewers can seek during your live broadcast.
+
+:::info
+DVR must be explicitly enabled on your account by a Dolby administrator, as it has a cost impact. Contact your account manager to get started.
+:::
+
+## Configuration
+
+To enable DVR, set a **window size** in seconds on your channel. This determines the length of the rewindable buffer available to viewers. For example, a window size of 3600 seconds allows viewers to seek up to one hour back in the live stream.
+
+<figure style={{ textAlign: 'center' }}>
+
+![DVR configuration](../assets/img/configure-dvr.png)
+
+</figure>
+
+When DVR is enabled, viewers can scrub back through the live stream within the configured window. Once the window is exceeded, older content is no longer available for playback.
+
+## API example
+
+You can also enable DVR via the API by setting `dvr.enabled` to `true` and `dvr.windowInSeconds` to your desired window size (60–86400 seconds) when [creating](../api/create-channel.api.mdx) or [updating](../api/update-channel.api.mdx) your channel.
+
+`POST https://api.theo.live/v2/channels`
+
+```json
+{
+  "name": "my-channel",
+  "dvr": {
+    "enabled": true,
+    "windowInSeconds": 3600
+  }
+}
+```

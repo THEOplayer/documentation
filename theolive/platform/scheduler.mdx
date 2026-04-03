@@ -1,80 +1,235 @@
 ---
 sidebar_position: 10
-sidebar_label: Scheduler
+sidebar_label: Schedulers
+sidebar_custom_props:
+  icon: 🗓️
+description: Automatically start and stop channels on a schedule.
 ---
 
-# Schedule THEOlive channel start & stop
+# How to Use Schedulers
 
-## Define when a channel should be ready and when it should be stopped
+Schedulers let you automate when your channels go live and stop streaming. Instead of manually starting and stopping channels, you define a schedule and let the system handle it.
 
-THEOlive allows you to automatically schedule the start and stop of a channel, offering several key advantages:
+## What is a Scheduler?
 
-- System readiness: All necessary components of the THEOlive stack will be up and running at the scheduled time.
-- Lower development effort: No need to build and maintain your own scheduling system, saving time and reducing costs.
-- Avoid wasted resources: Prevent unnecessary transcoding minutes by ensuring channels stop automatically when no longer needed.
+A scheduler is a time-based rule that automatically starts and stops one or more streaming channels. You can create **one-time** schedules for a single event, or **recurring** schedules for repeated broadcasts like daily shows or weekly streams.
 
-## How it works
+Each scheduler has a **status** that reflects where it is in its lifecycle:
 
-**What is a Scheduler in THEOlive?**
+| Status         | Meaning                                               |
+| -------------- | ----------------------------------------------------- |
+| **Idle**       | Waiting for the next scheduled run or a manual start. |
+| **Starting**   | The connected channels are being brought online.      |
+| **Active**     | The connected channels are live.                      |
+| **Stopping**   | The connected channels are being taken offline.       |
+| **Terminated** | The schedule has completed and will not run again.    |
 
-A scheduler is a configuration that includes a **start time**, an optional **end time**, and a **list of channels** to start and stop automatically at those times.
+## Creating a Scheduler in the dashboard
 
-- **End time** is optional: If you don’t specify one, you’ll need to manually terminate the scheduler. This can be useful if you're unsure when your event will end.
+1. Navigate to **Streaming → Schedulers**.
+2. Click the **New** button in the top right.
+3. A two-step form opens.
 
-**How Scheduled Start Works**
+### Step 1 — Configure the schedule
 
-15 minutes before the scheduled start time, the associated channels enter a `scheduled` state. During this period:
+- **Name** — Give your scheduler a descriptive name (e.g. "Weekday morning show").
+- **Timezone** — Select the timezone the schedule should operate in. Start searching to filter the list.
+- **Schedule type** — Choose between:
+  - **One time** — The scheduler fires once at the specified date and time.
+  - **Recurring** — The scheduler repeats according to a pattern you define.
 
-- The entire THEOlive stack begins spinning up.
-- The THEOlive player will show no content—just as if the channel were in a stopped state.
+#### One-time schedule
 
-Start times under 15 minutes: You can create a scheduler with a start time less than 15 minutes in the future or even immediately by omitting the `start` property in the API. While the channels will still attempt to go live, THEOlive cannot guarantee the stream will be ready exactly on time due to infrastructure startup time.
+- Set the **start date** and **start time**. This is when your channels will go live.
+- Optionally enable **Set end time** and provide an end date and time. If set, your channels will be automatically stopped at that point.
 
-At the scheduled start time, the channel switches to `playing` mode and begins streaming to viewers.
+![One-time schedule](../assets/img/scheduler-one-time.jpg)
 
-At the end time (or if the scheduler is manually terminated) the channel will stop.
+#### Recurring schedule
 
-**Post-stream Usage Report**
+- Set the **first occurrence date** — the date from which the recurring schedule begins.
+- Set the **start time** and **end time** — each occurrence will run between these times.
+- Optionally set a **Repeat until** date. If left empty, the schedule repeats indefinitely.
+- Configure the **recurrence pattern**:
+  - **Frequency** — Daily, Weekly, or Monthly.
+  - **Interval** — e.g. every 1 week, every 2 days.
+  - **Days of the week** — (Weekly only) Select which days the schedule should run on.
+- A live preview shows a summary of the pattern, e.g. _"Every week on Mon, Wed, Fri from 08:00 to 12:00 (Europe/Brussels)"_.
 
-Approximately 15 minutes after the scheduler ends, THEOlive generates a usage report. This report includes:
+![Recurring scheduler](../assets/img/scheduler-recurring.jpg)
 
-- Seconds viewed per channel
-- Channel alias
-- Viewer data by country
-- Viewer platform data (OS, browser, versions, etc.)
-- And more detailed insights
+When using the API, recurrence is expressed as an [RRULE](https://datatracker.ietf.org/doc/html/rfc5545#section-3.3.10) string in the `recurrence` field. Examples:
 
-## Creating and managing a scheduler through the API
+| Pattern                                 | RRULE                                      |
+| --------------------------------------- | ------------------------------------------ |
+| Every day                               | `RRULE:FREQ=DAILY`                         |
+| Every 2 days                            | `RRULE:FREQ=DAILY;INTERVAL=2`              |
+| Every week on Monday, Wednesday, Friday | `RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR`         |
+| Every 2 weeks on Tuesday and Thursday   | `RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TU,TH` |
+| Every month                             | `RRULE:FREQ=MONTHLY`                       |
+| Every 3 months                          | `RRULE:FREQ=MONTHLY;INTERVAL=3`            |
+| Every week on Saturday                  | `RRULE:FREQ=WEEKLY;BYDAY=SA`               |
 
-Setting up a schedule via the THEOlive API is quick and straightforward. For full implementation details, refer to the [Create scheduler](/theolive/api/schedulers/create-scheduler) API documentation.
+### Step 2 — Select channels
 
-- **Updating a scheduler**: You can modify a scheduler at any time before or during its active period.
-- **Manual termination**: If your events ends early or you didn't set an end time, you can manually stop the scheduler using the [Terminate scheduler](/theolive/api/schedulers/terminate-scheduler) endpoint.
-- **Deleting a scheduler**: If the scheduler hasn’t started yet, it can be removed using the [Delete scheduler](/theolive/api/schedulers/delete-scheduler) endpoint.
-- **Accessing usage reports**: About 15 minutes after a scheduler has ended or been terminated, a detailed report becomes available via the [Get scheduler report](/theolive/api/schedulers/get-scheduler-report) endpoint.
+- Search and browse your streaming channels.
+- Click a channel row to select or deselect it. At least one channel is required.
 
-## Scheduler management in the console
+Click **Create** to save the scheduler.
 
-You can view the status of all schedulers at any time, including those that are active, pending, or terminated.
+### API example — Create a scheduler
 
-Active schedulers cannot be deleted.
+**One-time schedule:**
 
-![](../assets/img/cd5c594-scheduler-overview.png 'Scheduler overview')
+`POST https://api.theo.live/v2/schedulers`
 
-When creating a new or managing an existing scheduler, you can pass a name, start and (optional) end date, and select the channels that are part of this scheduler and should start and stop at the given timestamps.
+```json
+{
+  "name": "Product launch stream",
+  "startDate": "2026-04-15",
+  "startTime": "14:00",
+  "endDate": "2026-04-15",
+  "endTime": "16:00",
+  "timeZone": "Europe/Brussels",
+  "channelIds": ["ch_abc123", "ch_def456"],
+  "enabled": true
+}
+```
 
-As a user, you can also pass an optional _Client ID_, which is an ID you can use for your reference. You can also pass a metadata object, which consists of key-value pairs.
+**Recurring schedule:**
 
-When creating a new scheduler or managing an existing one, you can specify the following:
+`POST https://api.theo.live/v2/schedulers`
 
-- **Name**: A custom name for the scheduler.
-- **Start and End Dates**: Define the start time, and optionally, the end time.
-- **Channels**: Select the channels that will be part of this scheduler, specifying which should start and stop at the defined times.
-- **Repeat schedule**: Allow the specified schedule to be repeated based on settings.
+```json
+{
+  "name": "Weekday morning show",
+  "startDate": "2026-04-01",
+  "startTime": "08:00",
+  "endTime": "12:00",
+  "timeZone": "Europe/Brussels",
+  "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR",
+  "channelIds": ["ch_abc123"],
+  "enabled": true
+}
+```
 
-In addition, you can include the following optional fields as a user:
+## Viewing Schedulers
 
-- **Client ID**: A unique identifier for your reference.
-- **Metadata Object**: A set of key-value pairs that you can use to store additional custom information.
+The **Schedulers** page shows a table of all your schedulers with:
 
-![](../assets/img/8ce9112-create-scheduler.PNG 'Creating a new scheduler')
+- **Status** — Current lifecycle state. Disabled schedulers show a yellow "Disabled" badge.
+- **Name** — The scheduler name.
+- **Schedule** — A human-readable summary of the schedule. For idle recurring schedulers, a "Next run" date is shown below the summary.
+- **Timezone** — The timezone the schedule operates in.
+- **Channels** — A badge showing the number of connected channels. Click it to see the full list and navigate to individual channels.
+
+![Schedulers overview](../assets/img/schedulers-overview.jpg)
+
+### API example — List all schedulers
+
+`GET https://api.theo.live/v2/schedulers`
+
+Optional query parameters:
+
+| Parameter       | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| `cursor`        | [Pagination](../api/pagination.mdx) cursor for the next page |
+| `limit`         | Number of results per page                                   |
+| `status`        | Comma-separated filter, e.g. `idle,active`                   |
+| `sortBy`        | Sort field: `status`, `name`, `startDate`, or `startTime`    |
+| `sortDirection` | `asc` or `desc`                                              |
+
+### API example — Get a single scheduler
+
+`GET https://api.theo.live/v2/schedulers/{schedulerId}`
+
+## Editing a Scheduler
+
+Any non-terminated scheduler can be edited.
+
+- For **idle or stopped schedulers**, you can change all fields including the schedule timing, channels, and recurrence pattern.
+- For **active schedulers**, some fields are locked and cannot be changed while channels are live:
+  - Start date and start time
+  - Schedule type (one-time vs. recurring)
+  - Timezone
+  - Connected channels
+
+  You can still change the scheduler name, end time, and recurrence pattern.
+
+Click **Save changes** to apply your edits.
+
+### API example — Update a scheduler
+
+All fields are optional; only include the fields you want to change.
+
+`PATCH https://api.theo.live/v2/schedulers/{schedulerId}`
+
+```json
+{
+  "name": "Updated scheduler name",
+  "endDate": "2026-06-30",
+  "endTime": "18:00"
+}
+```
+
+## Enabling and Disabling a Scheduler
+
+When editing a scheduler, you can toggle the **Scheduler enabled** switch.
+
+- **Enabled** — The scheduler will run according to its configured schedule.
+- **Disabled** — Scheduled runs will be skipped until the scheduler is re-enabled. The scheduler remains in the system and can be re-enabled at any time.
+
+This is useful when you want to temporarily pause a recurring schedule without deleting it.
+
+### API example — Enable or disable a scheduler
+
+Use the update endpoint with the `enabled` field:
+
+`PATCH https://api.theo.live/v2/schedulers/{schedulerId}`
+
+```json
+{ "enabled": false }
+```
+
+## Manually Starting and Stopping
+
+You can override the schedule at any time:
+
+- **Start** — Available when a scheduler is **idle**. Immediately starts the connected channels regardless of the configured schedule.
+- **Stop** — Available when a scheduler is **active**. Immediately stops the connected channels.
+
+### API example — Manually start a scheduler
+
+`POST https://api.theo.live/v2/schedulers/{schedulerId}/start`
+
+### API example — Manually stop a scheduler
+
+`POST https://api.theo.live/v2/schedulers/{schedulerId}/stop`
+
+## Deleting a Scheduler
+
+A confirmation dialog will appear. Deletion of a non-active scheduler can be done at any time and is permanent and cannot be undone.
+
+> **Note:** You cannot delete a scheduler while it is active. Stop it first, then delete.
+
+### API example — Delete a scheduler
+
+`DELETE https://api.theo.live/v2/schedulers/{schedulerId}`
+
+## Schedulers on the Channel Detail Page
+
+When viewing an individual channel, the **Channel Details** card shows a **Schedulers** section:
+
+- If the channel has connected schedulers, a badge shows the count (e.g. "2 schedulers") and an "Active" indicator if any scheduler is currently running.
+- Click the badge to open a dialog listing all non-terminated schedulers connected to that channel, along with their schedule summaries and next-run dates.
+- Click any scheduler row in the dialog to navigate to the schedulers overview page.
+
+![Channel details: connected schedulers](../assets/img/scheduler-channel-details.jpg)
+
+## Tips
+
+- **Plan your timezone carefully.** The scheduler operates in the timezone you select, not your local browser timezone. All start/end times are interpreted in the selected timezone.
+- **Use recurring schedules for regular events.** Rather than creating a new one-time scheduler for each event, set up a recurring schedule once and let it run.
+- **Disable instead of deleting.** If you need to pause a recurring schedule temporarily, disable it rather than deleting and recreating it.
+- **Check the "Next run" indicator.** For idle recurring schedulers, the table shows when the next occurrence will fire, so you can verify the schedule is correct.
+- **Start dates must be in the future.** When creating a new scheduler, the start date and time must be in the future (relative to the selected timezone).

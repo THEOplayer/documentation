@@ -1,0 +1,41 @@
+---
+sidebar_position: 3
+sidebar_label: Nielsen
+sidebar_custom_props:
+  icon: 📊
+description: Track real-time audience measurement with Nielsen markers.
+---
+
+# Nielsen audience tracking
+
+[Nielsen](https://www.nielsen.com/) is an industry-standard audience measurement system that tracks viewership data across media platforms. By embedding Nielsen markers in your audio stream, you can measure and report on your live audience in real time, providing actionable insights into viewer engagement and reach.
+
+:::info
+Nielsen must be explicitly enabled on your account by a Dolby administrator. Contact your account manager to get started.
+:::
+
+This guide explains how to enable Nielsen audience tracking on your streams in a few simple steps.
+
+1. Ensure that your ingest stream contains the Nielsen markers in your audio. This is crucial for our transcoder to pick them up and process them.
+
+2. The next step is enabling the feature when creating your channel like this:
+   ![Enable Nielsen](../assets/img/nielsen.png)
+
+   That is all the backend configuration work that is required. This will make sure your markers are converted to the correct ID3 messages that a player can then read and report back to Nielsen.
+
+3. The final step is enabling Nielsen on your player. For THEOplayer on web for example, you can find the steps in our [guide to integrating Nielsen on Web](/theoplayer/connectors/web/nielsen).
+
+## API example
+
+You can also enable Nielsen via the API by setting `nielsen.enabled` to `true` when [creating](../api/create-channel.api.mdx) or [updating](../api/update-channel.api.mdx) your channel.
+
+`POST https://api.theo.live/v2/channels`
+
+```json
+{
+  "name": "my-channel",
+  "nielsen": {
+    "enabled": true
+  }
+}
+```

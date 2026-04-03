@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+sidebar_label: Streaming protocols
+sidebar_custom_props:
+  icon: 📡
+description: Output protocols supported by the media engine (HESP and HLS).
+---
+
+# Streaming protocols
+
+The media engine outputs your live stream in multiple protocols to ensure broad device and player compatibility. The following output protocols are supported: **HESP** and **HLS**.
+
+### HESP — High Efficiency Streaming Protocol
+
+HESP is a next-generation streaming protocol designed for ultra-low latency live delivery. It is the default and recommended output protocol for the Dolby OptiView Live platform.
+
+- **Ultra-low latency** — delivers end-to-end latency in the 1 to 5 seconds range, significantly lower than traditional HLS.
+- **Fast channel switching** — viewers experience near-instant startup and channel changes.
+
+### HLS (CMAF) — HTTP Live Streaming
+
+HLS is the industry-standard protocol developed by Apple for delivering live and on-demand content over HTTP. The media engine outputs HLS using modern CMAF (fragmented MP4) segments.
+
+- **Broad compatibility** — supported by virtually all modern browsers, devices and players.
+- **Higher latency** — compared to HESP, HLS typically introduces several seconds of additional latency.
+
+### HLS (MPEG-TS)
+
+HLS with MPEG-TS segments is an older variant of HLS that uses traditional transport stream segments instead of CMAF.
+
+:::warning
+Only use HLS MPEG-TS if you are targeting a platform that genuinely does not support CMAF-based HLS — for example, certain legacy set-top boxes or embedded devices. In all other cases, use the standard CMAF HLS output, which offers better performance and broader modern device support.
+
+HLS MPEG-TS does not support all platform features. For example, [DVR](../channel/dvr.mdx), [Nielsen](../channel/nielsen.mdx), and [DRM](./drm.mdx) are not available with this output format.
+:::
+
+## API example
+
+You can configure output protocols via the API using the `outputs` object when [creating](../api/create-channel-engine.api.mdx) or [updating](../api/update-engine.api.mdx) an engine.
+
+`POST https://api.theo.live/v2/channels/{channelId}/engines`
+
+```json
+{
+  "name": "my-engine",
+  "region": "europe-west",
+  "quality": {
+    "abrLadderId": "your-abr-ladder-id"
+  },
+  "outputs": {
+    "hesp": true,
+    "hls": true,
+    "hlsTs": false
+  }
+}
+```

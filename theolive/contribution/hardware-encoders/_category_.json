@@ -1,4 +1,8 @@
 {
   "label": "Hardware Encoders",
-  "position": 4
+  "position": 2,
+  "description": "Setup guides for hardware encoders like Videon, Haivision, Magewell and Osprey.",
+  "customProps": {
+    "icon": "🖥️"
+  }
 }

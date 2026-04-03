@@ -1,4 +1,8 @@
 {
   "label": "Software Encoders",
-  "position": 5
+  "position": 1,
+  "description": "Setup guides for software encoders like OBS, vMix and Wirecast.",
+  "customProps": {
+    "icon": "💻"
+  }
 }

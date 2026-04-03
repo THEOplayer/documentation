@@ -1,11 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: Wirecast
+description: Live video streaming production tool by Telestream.
 ---
 
-# Using Wirecast with THEOlive
+# Using Wirecast with OptiView Live
 
-This guide explains to you how to set up Wirecast correctly so it can be used to stream your content with THEOlive.
+This guide explains to you how to set up Wirecast correctly so it can be used to stream your content with OptiView Live.
 
 ## 1. Configure Output Settings
 
@@ -18,10 +19,10 @@ This guide explains to you how to set up Wirecast correctly so it can be used to
 
 ![Selecting RTMP server as Destination](../../assets/img/94e8600-Wirecast_-_Output_Destination.JPG)
 
-- Go to the THEOlive management console, and copy the RTMP Push URL and Stream key of your channel.
+- Go to the management dashboard, and copy the RTMP Push URL and Stream key of your channel.
 - Paste the RTMP Push URL into "Address".
 
-:::warning ❗️ Not all versions/editions of Wirecast support RTMPS
+:::warning Not all versions/editions of Wirecast support RTMPS
 Definitely check whether your Wirecast version/edition supports RTMPS. Older versions typically do not support RTMPS, whereas for example the most recent version Professional version does support RTMPS. In case your version/edition does not accept RTMPS, then definitely change "RTMPS" to "RTMP" in your RTMP push URL. As an example rtmps://rtmp.europe-west.hesp.live/live will have to be changed to rtmp://rtmp.europe-west.hesp.live/live for RTMP-based streaming.
 :::
 
@@ -36,14 +37,14 @@ Definitely check whether your Wirecast version/edition supports RTMPS. Older ver
 
 - Define the appropriate encoder latency, taking into account your computer performance. "1 - (Ultra Fast encoding)" will give the lowest latency as it requires the least CPU time.
 - Also select the encoding "Profile". For example, "Main" will give lower latencies than "High" but on the other hand "High" will provide for better quality than "Main".
-- Lastly, set "Frames per second" to the same value used in the THEOlive channel ingest config and set "Average bit rate" to match the max bitrate of the channel preset. See [Stream configuration](../stream-configuration.mdx) for more details.
+- Lastly, set "Frames per second" to the same value used in the channel ingest config and set "Average bit rate" to match the max bitrate of the channel preset. See [Stream configuration](../../media-engine/abr.mdx) for more details.
 - Click "OK" and move to step 2 to add your live stream.
 
 ![Wirecast encoding quality](../../assets/img/48bc7d6-Wirecast_-_Encoding_Quality.png)
 
 :::info 🚧 Upload bandwidth
 
-Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the THEOlive channel.
+Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the channel.
 :::
 
 ## 2. Add a New Layer
@@ -62,10 +63,10 @@ Make sure that your encoder has a stable connection and enough upload bandwidth.
 
 ## 3. Start Streaming
 
-Click the "Stream" button. Wirecast will make a connection to the THEOlive RTMP server.
+Click the "Stream" button. Wirecast will make a connection to the OptiView Live RTMP server.
 
 ![Start streaming](../../assets/img/2416285-Wirecast_-_Start_Streaming.jpg)
 
-## 4. Start your THEOlive channel
+## 4. Start your channel
 
-This can be done either through the [API](../../api/start-channel.api.mdx) or via the [management console](https://console.theo.live/).
+Your channel must be started in order to receive video ingest from Wirecast. You can choose to start up your channel before or after you start streaming via Wirecast.

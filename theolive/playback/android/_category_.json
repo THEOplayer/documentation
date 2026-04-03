@@ -1,8 +1,0 @@
-{
-  "label": "Android",
-  "description": "Start with THEOlive on Android smartphones, tablets and TVs.",
-  "position": 2,
-  "customProps": {
-    "icon": "android"
-  }
-}

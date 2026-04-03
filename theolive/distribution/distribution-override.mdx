@@ -1,0 +1,176 @@
+---
+sidebar_position: 6
+sidebar_label: Distribution override
+sidebar_custom_props:
+  icon: 🔀
+description: Redirect viewers to a different distribution based on their platform.
+---
+
+# Distribution override
+
+Distribution overrides are an advanced but powerful feature that allow you to redirect viewers to a different distribution based on their platform. When a viewer connects, the platform evaluates the override rules on the distribution and, if a match is found, transparently serves them the target distribution instead. This lets you use a single distribution URL while delivering platform-specific settings — such as a different [max bitrate](./max-bitrate.mdx), different output protocols, or different [security](../security) rules — without any changes on the viewer side.
+
+## How it works
+
+Each distribution can have an `overrides` array. Every entry in the array is a **rule** that consists of:
+
+1. **Matching criteria** — zero or more conditions that identify which viewers the rule applies to. A field set to `null` (or omitted) matches any value.
+2. **Targets** — one or more target distributions that matching viewers are redirected to, each with a `weight` for traffic splitting.
+
+When a viewer requests a distribution, the platform checks the override rules in order. The first rule where **all** specified criteria match the viewer's platform is applied, and the viewer is served one of the target distributions according to the configured weights.
+
+### Matching criteria
+
+| Field        | Type             | Values                                         | Description                                                     |
+| ------------ | ---------------- | ---------------------------------------------- | --------------------------------------------------------------- |
+| `deviceType` | `string \| null` | `tv`, `mobile`, `desktop`, `other`             | The type of device the viewer is using.                         |
+| `sdkType`    | `string \| null` | `native`, `web`                                | Whether the viewer is using a native SDK or a web-based player. |
+| `osName`     | `string \| null` | `apple`, `android`, `windows`, `roku`, `other` | The operating system of the viewer's device.                    |
+| `profileId`  | `string \| null` | any string                                     | A custom profile identifier for advanced targeting.             |
+
+Setting a criterion to `null` (or leaving it out) means it matches **all** values for that field.
+
+### Targets
+
+Each rule contains a `targets` array. Every target specifies:
+
+- **`distributionId`** — the ID of the distribution to redirect to.
+- **`weight`** — a value between 0 and 100 that determines how traffic is split when multiple targets are present. For a single target, set the weight to `100`.
+
+The target distributions can be connected to the same engine as the original distribution, or to a completely different engine — giving you full control over protocol, bitrate, and transcoding settings per platform.
+
+## Example: platform-specific delivery
+
+Suppose you are streaming a live event and want to optimize delivery per platform:
+
+- **Mobile viewers** should receive a capped bitrate to save bandwidth.
+- **TV viewers** (e.g. smart TVs, set-top boxes) should receive HLS MPEG-TS because their player does not support CMAF.
+- **All other viewers** should receive the default high-quality HESP stream.
+
+You would set up the following:
+
+1. Create the **main distribution** (Distribution A) connected to your engine, configured with HESP output and a high max bitrate. This is the distribution URL you share publicly.
+2. Create a **mobile distribution** (Distribution B) on the same engine with a lower [max bitrate](./max-bitrate.mdx) (e.g. 3 Mbps).
+3. Create a **TV distribution** (Distribution C) on an engine that has HLS MPEG-TS output enabled.
+4. Add override rules to Distribution A:
+
+| Rule | `deviceType` | `sdkType` | `osName` | Target         |
+| ---- | ------------ | --------- | -------- | -------------- |
+| 1    | `mobile`     | —         | —        | Distribution B |
+| 2    | `tv`         | —         | —        | Distribution C |
+
+Viewers connecting to Distribution A on a mobile device are transparently redirected to Distribution B. TV viewers are redirected to Distribution C. Everyone else stays on Distribution A.
+
+Using the API, you can configure this by setting the `overrides` field when [creating](../api/create-channel-distribution.api.mdx) or [updating](../api/update-distribution.api.mdx) a distribution:
+
+```json
+{
+  "name": "main-distribution",
+  "overrides": [
+    {
+      "deviceType": "mobile",
+      "targets": [
+        {
+          "distributionId": "<mobile-distribution-id>",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "deviceType": "tv",
+      "targets": [
+        {
+          "distributionId": "<tv-distribution-id>",
+          "weight": 100
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Example: A/B testing
+
+By using weighted targets, you can split traffic across multiple distributions to compare different configurations. For example, suppose you want to test whether a lower target latency improves the viewing experience for desktop users:
+
+1. Create **Distribution A** with the current target latency (e.g. 3 seconds).
+2. Create **Distribution B** with a lower target latency (e.g. 1.5 seconds).
+3. Add an override rule to your main distribution that sends 80% of desktop viewers to Distribution A and 20% to Distribution B:
+
+| Rule | `deviceType` | `sdkType` | `osName` | Targets                                |
+| ---- | ------------ | --------- | -------- | -------------------------------------- |
+| 1    | `desktop`    | —         | —        | 80% Distribution A, 20% Distribution B |
+
+You can then monitor the results and gradually shift the weights as confidence grows — for example moving to a 50/50 split or rolling out the new configuration to 100% of viewers.
+
+Using the API, this would look like:
+
+```json
+{
+  "overrides": [
+    {
+      "deviceType": "desktop",
+      "targets": [
+        {
+          "distributionId": "<distribution-a-id>",
+          "weight": 80
+        },
+        {
+          "distributionId": "<distribution-b-id>",
+          "weight": 20
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Example: live platform switching for incident response
+
+Because overrides can be updated while a channel is live, they can be used as an operational tool to react to issues in real time. If a specific platform experiences playback problems — for example, HESP not working correctly on a certain smart TV firmware — you can instantly redirect those viewers to a different distribution without interrupting the stream for everyone else.
+
+Suppose your main distribution serves HESP to all viewers, and you start receiving reports that Roku devices are failing to play. You can:
+
+1. Prepare a **fallback distribution** connected to the same engine with HLS output enabled.
+2. Add an override rule to redirect Roku viewers to the fallback distribution while the issue is being investigated:
+
+| Rule | `deviceType` | `sdkType` | `osName` | Target                |
+| ---- | ------------ | --------- | -------- | --------------------- |
+| 1    | —            | —         | `roku`   | Fallback distribution |
+
+Using the API, you can apply this fix with a single `PATCH` call:
+
+`PATCH https://api.theo.live/v2/distributions/{distributionId}`
+
+```json
+{
+  "overrides": [
+    {
+      "osName": "roku",
+      "targets": [
+        {
+          "distributionId": "<fallback-distribution-id>",
+          "weight": 100
+        }
+      ]
+    }
+  ]
+}
+```
+
+Once the issue is resolved, remove the override to restore normal routing:
+
+```json
+{
+  "overrides": []
+}
+```
+
+This approach lets you keep fallback distributions ready ahead of time and activate them on demand, avoiding downtime for affected viewers.
+
+## Notes
+
+- Override rules are evaluated in order — the first matching rule wins.
+- Criteria fields that are `null` or omitted act as wildcards and match any viewer.
+- Overrides can be updated while a channel is live — no restart is needed.
+- Target distributions can be on any engine within the same channel, allowing completely different transcoding and delivery configurations per platform.

@@ -1,0 +1,200 @@
+---
+sidebar_label: Migration from V1
+sidebar_custom_props:
+  icon: ⬆️
+description: Key differences between the V1 and V2 REST APIs and how to migrate.
+---
+
+# Migration from V1
+
+
+This guide covers the key differences between the V1 and V2 REST APIs and explains how to migrate your integration.
+
+## Base URL
+
+The V1 API used separate base URLs per resource type. The V2 API uses a single, versioned base URL for all resources.
+
+| V1 | V2 |
+|---|---|
+| `https://api.theo.live/channels` | `https://api.theo.live/v2/channels` |
+| `https://api.theo.live/webhooks` | `https://api.theo.live/v2/webhooks` |
+| `https://api.theo.live/events` | `https://api.theo.live/v2/logs` |
+| `https://api.theo.live/schedulers` | `https://api.theo.live/v2/schedulers` |
+| `https://api.theo.live/reports` | _(removed)_ |
+
+Authentication remains the same — HTTP Basic Auth with your API credentials.
+
+## Architecture: from flat channels to a component model
+
+The most significant change in V2 is the introduction of a **component-based architecture**. In V1, a channel was a single monolithic resource that combined ingest, transcoding, and delivery settings. In V2, these are split into separate resources:
+
+| V1 | V2 |
+|---|---|
+| Channel (contains everything) | **Channel** → **Ingest** → **Engine** → **Distribution** |
+
+- **Channel** — a container that groups all components together.
+- **Ingest** — defines how media enters the platform (RTMP push, RTMP pull, SRT pull).
+- **Engine** — handles transcoding and packaging. Connected to an ingest and configured with an ABR ladder, DRM, output formats, etc.
+- **Distribution** — represents an output endpoint for viewers. Connected to one or more engines. Holds security, delivery, and player settings.
+
+This means that creating a channel in V2 requires multiple API calls: one to create the channel, then one each for the ingest, engine, and distribution. See the [full example](./full-example.mdx) for a complete walkthrough.
+
+### V1 create channel → V2 equivalent
+
+**V1** — a single call created the entire pipeline:
+
+```json
+POST https://api.theo.live/channels
+{
+  "ingestLocation": "europe-west",
+  "metadata": { "name": "my-channel" },
+  "streamConfig": {
+    "abr": true,
+    "resolution": "1080p",
+    "bitrate": 4.5,
+    "fps": 30
+  }
+}
+```
+
+**V2** — four calls to set up the same pipeline:
+
+```json
+// 1. Create channel
+POST https://api.theo.live/v2/channels
+{ "name": "my-channel" }
+
+// 2. Create ingest
+POST https://api.theo.live/v2/channels/{channelId}/ingests
+{ "name": "my-ingest", "type": "rtmp-push" }
+
+// 3. Create engine
+POST https://api.theo.live/v2/channels/{channelId}/engines
+{
+  "name": "my-engine",
+  "ingestId": "<ingestId>",
+  "region": "<regionId>",
+  "quality": { "abrLadderId": "<abrLadderId>" }
+}
+
+// 4. Create distribution
+POST https://api.theo.live/v2/channels/{channelId}/distributions
+{
+  "name": "my-distribution",
+  "endpoints": { "engineIds": ["<engineId>"] }
+}
+```
+
+Available regions and ABR ladders can be retrieved via `GET /v2/regions` and `GET /v2/abr`.
+
+## Channel aliases → distributions
+
+V1 channel aliases are replaced by **distributions** in V2. The mapping is as follows:
+
+| V1 alias field | V2 distribution field |
+|---|---|
+| `metadata.name` | `name` |
+| `active` | `enabled` |
+| `customization.targetLatency` | `targetLatency` |
+| `hls.enabled` | `outputs.hls` |
+| `publicationConfig.geoBlocking` | `security.geoBlocking` |
+| `publicationConfig.ipBlocking` | `security.ipBlocking` |
+| `fallback.enabled` / `fallback.src` | Use [redundancy](../distribution/redundancy.md) (multiple engines on one distribution) |
+| _(not available)_ | `outputs.hesp`, `outputs.hlsMpegTs`, `maxBitrate`, `overrides`, `webRtc`, `dvr`, `security.refererBlocking` |
+
+### Geo-blocking mode values
+
+The geo-blocking mode names changed:
+
+| V1 | V2 |
+|---|---|
+| `whitelist` | `allow` |
+| `blacklist` | `deny` |
+
+## Stream configuration → ABR ladders
+
+In V1, stream settings (`resolution`, `bitrate`, `fps`, `abr`) were configured directly on the channel. In V2, transcoding is configured on the **engine** using an **ABR ladder** — a predefined set of resolution and bitrate combinations managed at the organization level.
+
+Retrieve available ABR ladders with `GET /v2/abr` and pass the desired `abrLadderId` when creating an engine.
+
+## Ingest configuration
+
+In V1, ingest settings (`ingestProtocol`, `ingestType`, `ingestPullUrl`) were part of the channel. In V2, ingest is a **separate resource** created under a channel.
+
+| V1 | V2 |
+|---|---|
+| `ingestProtocol: "rtmp"`, `ingestType: "push"` | `type: "rtmp-push"` |
+| `ingestProtocol: "rtmp"`, `ingestType: "pull"` | `type: "rtmp-pull"`, `url: "<pull-url>"` |
+| `ingestProtocol: "srt"`, `ingestType: "pull"` | `type: "srt-pull"`, `url: "<pull-url>"` |
+
+## Security
+
+### Geo-blocking and IP blocking
+
+In V1, these were part of `publicationConfig` on channels and aliases. In V2, they are part of the `security` object on distributions. See the [mode value changes](#geo-blocking-mode-values) above.
+
+### Token security → security keys
+
+V1 had dedicated endpoints to enable/disable token security on channels and aliases:
+
+- `POST /channels/{id}/token-security/enable`
+- `POST /channels/{id}/aliases/{aliasId}/token-security/enable`
+
+V2 uses **security keys** managed as sub-resources on distributions:
+
+- `POST /v2/distributions/{id}/security/keys` — add a key
+- `DELETE /v2/distributions/{id}/security/keys` — remove all keys
+- `GET /v2/distributions/{id}/security/keys` — list keys
+
+### CDN security keys
+
+V1 had CDN security key endpoints on both channels and aliases. In V2, security keys are managed exclusively on distributions using the endpoints above.
+
+## Webhooks
+
+The core webhook model is similar, but with some differences:
+
+| V1 | V2 |
+|---|---|
+| `webhookId` | `id` |
+| `creationDate` | `createdAt` |
+| Separate `POST /{id}/enable` and `POST /{id}/disable` endpoints | Set `active: true` or `active: false` via `PATCH /v2/webhooks/{id}` |
+| Events reference channels and aliases | Events reference channels, ingests, engines, and distributions |
+
+V2 webhooks also support additional event types for the new resource types (e.g. `engine.deploying`, `engine.playing`, `ingest.created`, `distribution.created`, etc.). See the [API reference](./index.mdx) for the full list.
+
+## Pagination
+
+V1 used page-based pagination (`page` parameter) or `startingAfter` with an ID. V2 uses [cursor-based pagination](./pagination.mdx) across all list endpoints:
+
+```json
+{
+  "data": [...],
+  "pagination": {
+    "hasMore": true,
+    "cursor": "<cursor-string>"
+  }
+}
+```
+
+Pass the `cursor` value as a query parameter to fetch the next page.
+
+## Removed V1 endpoints
+
+The following V1 APIs do not have a direct equivalent in V2:
+
+| V1 API | V2 alternative |
+|---|---|
+| **Reports** (`/reports`) | Removed. Use the analytics endpoints on channels (e.g. `/v2/channels/{id}/analytics/viewing-minutes`). |
+| **Channel status** (`/channels/{id}/status`) | The `status` field is included directly in the channel response from `GET /v2/channels/{id}`. |
+
+## Starting and stopping
+
+The intended way to start and stop streaming remains the same — you start and stop the **channel**, which controls all engines at once:
+
+| V1 | V2 |
+|---|---|
+| `POST /channels/{id}/start` | `POST /v2/channels/{id}/start` |
+| `POST /channels/{id}/stop` | `POST /v2/channels/{id}/stop` |
+
+In addition, V2 gives you the option to start or stop **individual engines** via `POST /v2/engines/{id}/start` and `POST /v2/engines/{id}/stop`. This is useful for live operations — for example, stopping a failing engine while keeping the rest of the channel running.

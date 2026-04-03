@@ -1,0 +1,65 @@
+---
+sidebar_label: Pagination
+sidebar_position: 1
+---
+
+# Pagination
+
+All list endpoints in the OptiView Live API use **cursor-based pagination**. This provides efficient, consistent paging — even when new items are added between requests.
+
+## Query parameters
+
+Every list endpoint accepts the following optional query parameters:
+
+| Parameter | Type     | Description                                                    |
+| --------- | -------- | -------------------------------------------------------------- |
+| `limit`   | `number` | Maximum number of items to return per page. Defaults to `20`.  |
+| `cursor`  | `string` | Cursor from a previous response to fetch the next page.        |
+
+## Response format
+
+List responses include a `pagination` object alongside the data:
+
+```json
+{
+  "data": [...],
+  "pagination": {
+    "hasMore": true,
+    "cursor": "eyJpZCI6ImNoXzEyMyJ9"
+  }
+}
+```
+
+- **`hasMore`** — `true` if there are more items to fetch, `false` if this is the last page.
+- **`cursor`** — An opaque string to pass as the `cursor` query parameter in the next request. Only present when `hasMore` is `true`.
+
+## Example
+
+Fetch the first page of channels:
+
+```bash
+curl -X GET "https://api.theo.live/v2/channels?limit=10" \
+  -H "Authorization: Basic $AUTH"
+```
+
+If the response contains `"hasMore": true`, use the returned cursor to fetch the next page:
+
+```bash
+curl -X GET "https://api.theo.live/v2/channels?limit=10&cursor=eyJpZCI6ImNoXzEyMyJ9" \
+  -H "Authorization: Basic $AUTH"
+```
+
+Continue until `hasMore` is `false`.
+
+## Paginated endpoints
+
+Cursor-based pagination is available on all list endpoints, including:
+
+- `GET /v2/channels`
+- `GET /v2/channels/{channelId}/ingests`
+- `GET /v2/channels/{channelId}/engines`
+- `GET /v2/channels/{channelId}/distributions`
+- `GET /v2/channels/{channelId}/runs`
+- `GET /v2/schedulers`
+- `GET /v2/webhooks`
+- `GET /v2/webhooks/{webhookId}/logs`

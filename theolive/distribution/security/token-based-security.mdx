@@ -1,0 +1,40 @@
+---
+sidebar_label: Token-based security
+sidebar_custom_props:
+  icon: 🔑
+description: Require JWT tokens for viewer authentication.
+---
+
+# Token-based security
+
+Token-based security restricts access to your stream by requiring a valid JWT (JSON Web Token) on every playback request. This ensures that only authenticated viewers — those who have received a token from your backend — can access the stream.
+
+## How it works
+
+When token security is enabled on a distribution, the CDN validates an `Authorization` header containing a Bearer token on each request. The token is signed with a shared secret (HS256/HS512) or a public/private key pair (RS256/RS512) that you provide when enabling the feature.
+
+The token payload must include:
+
+- **`exp`** — expiration time in epoch format. The token is rejected after this time.
+- **`nbf`** _(optional)_ — "not before" time in epoch format. The token is rejected before this time.
+
+Requests without a valid token are rejected. If the distribution does not have token security enabled, the `Authorization` header is ignored.
+
+## Configuration
+
+To enable token-based security, navigate to your distribution's security settings and enable the token security toggle. Provide the shared secret or public key used to verify tokens.
+
+<figure style={{ textAlign: 'center' }}>
+
+![Token-based security settings](../../assets/img/token-security.png)
+
+</figure>
+
+## Player configuration
+
+The player needs to be configured to pass the `Authorization` header with each request. Refer to the platform-specific guides:
+
+- [Web](/theoplayer/how-to-guides/web/theolive/token-based-security/)
+- [Android](/theoplayer/how-to-guides/android/theolive/token-based-security/)
+- [React Native](/theoplayer/how-to-guides/react-native/theolive/token-based-security/)
+- [Roku](/theoplayer/how-to-guides/roku/theolive/token-based-security/)
