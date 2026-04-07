@@ -5,9 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "prestart": "npm run gen-api-docs && npm run fetch-theolive-changelog",
+    "prestart": "npm run gen-api-docs",
     "build": "docusaurus build",
-    "prebuild": "npm run gen-api-docs && npm run fetch-theolive-changelog",
+    "prebuild": "npm run gen-api-docs",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "serve": "node serve.js",
