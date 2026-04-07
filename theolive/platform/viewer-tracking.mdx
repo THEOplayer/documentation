@@ -1,0 +1,59 @@
+---
+sidebar_position: 8
+sidebar_label: Viewer tracking
+sidebar_custom_props:
+  icon: 📍
+description: Track viewers and syndication partners using tracking IDs and custom viewer data.
+---
+
+# Viewer tracking
+
+You can syndicate content through multiple distribution partners while utilizing the same channel, or alternatively track different groups through distributions. This can be helpful for aggregating viewing and billing data for a group of viewers.
+
+Additionally, when using the advanced reporting feature, you might want to assign tracking metadata to individual viewers to post-process later in your data and BI analysis tools. This is all possible with our viewer tracking workflows.
+
+## Tracking workflow
+
+The following is an example workflow for setting up stream tracking:
+
+1. Create a channel.
+2. Enable [token security](../distribution/security/token-based-security.mdx) on the channel or alias.
+3. When you create your self-signed token, add one or both of the following parameters to a `streaming` object in the payload of your JWT:
+   - **`trackingId`** — Groups viewers of the same channel, allows you to get the aggregated bandwidth usage of all viewers. This is useful for billing a single channel or alias if you use multiple distribution partners and want aggregated billing metrics back or viewer reports for groups of viewers. The maximum size is 128 characters.
+   - **`customViewerData`** — Access the bandwidth consumption of each viewer for analytics purposes and pass through metadata from your CMS for a viewer and be able to retrieve it in a viewer report. This data is not parsed by our system and can be a series of key-value pairs for you to extract later. The maximum size is 1024 characters.
+4. Pass the JWT through to the player as described in the [token security](../distribution/security/token-based-security.mdx) section.
+5. To get Advanced Reports, including user-reports, please contact your Dolby representative for access.
+
+:::note
+Either or both `trackingId` and/or `customViewerData` may be used depending on what kind of tracking you need to achieve.
+:::
+
+Here is an example `payload` for a JWT that includes sample `trackingId` and `customViewerData`:
+
+```json
+{
+  "streaming": {
+    "tracking": {
+      "trackingId": "groupAbc"
+    },
+    "customViewerData": "user=user123;appVersion=x.y.x",
+    "tokenType": "Subscribe"
+  },
+  "iat": 1750813271,
+  "exp": 1750813871
+}
+```
+
+Here is the JWT that is generated from this payload. You can paste it into [jwt.io](https://jwt.io/) to inspect it:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidHJhY2tpbmciOnsidHJhY2tpbmdJZCI6Imdyb3VwQWJjIn0sImN1c3RvbVZpZXdlckRhdGEiOiJ1c2VyPXVzZXIxMjM7YXBwVmVyc2lvbj14LnkueCIsInRva2VuVHlwZSI6IlN1YnNjcmliZSJ9LCJpYXQiOjE3NTA4MTMyNzEsImV4cCI6MTc1MDgxMzg3MX0.OvIZAvs6XL4KQ8YTtIdjdJNZ5oS6Jkosj3mq274gdrw
+```
+
+To validate the token, use the following secret: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
+
+### Notes
+
+- Tracking can be used independently of secure channels. You can pass the same payload parameters in a JWT, however, the token must be "valid" — the required date fields must be valid or the token will be ignored. If a channel does not have token security enabled, be aware that anyone can view the channel with or without a JWT. Without secure channels, the signature is not validated, so there is a risk that a user could change the values.
+- If you are combining the OptiView real-time streaming solution and the live streaming solution, you may use the secret from the real-time subscriber token as the secret you provide to OptiView live streaming and use the same JWTs across both streaming products.
+- `tokenType` should be set to `Subscribe`.
