@@ -117,7 +117,7 @@ const config: Config = {
   onBrokenAnchors: 'throw',
   future: {
     v4: true,
-    experimental_faster: true,
+    faster: true,
   },
 
   // Even if you don't use internationalization, you can use this field to set
