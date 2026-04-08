@@ -10,6 +10,8 @@ description: Supported ingest protocols (RTMP and SRT) and their trade-offs.
 
 The Dolby OptiView Live platform supports low latency live streaming through two ingest protocols: **RTMP** and **SRT**.
 
+RTMP supports both **pull** and **push** mode out of the box. SRT works out of the box in **pull mode** only, where the platform connects to your encoder to pull the stream. If you need SRT push mode, contact your account representative to have it enabled.
+
 ## RTMP — Real-Time Messaging Protocol
 
 RTMP is a widely adopted protocol originally developed by Adobe for transmitting audio, video, and data over the internet. It remains one of the most commonly supported protocols across hardware and software encoders.
@@ -34,3 +36,9 @@ SRT is an open-source protocol designed for low latency, secure, and reliable vi
 - **Cons**
   - **Less universal encoder support** — While adoption is growing, not all encoders support SRT, especially older hardware models.
   - **More complex configuration** — SRT may require tuning parameters such as latency, overhead bandwidth, and encryption settings for optimal performance.
+
+### SRT passphrase
+
+In **pull mode**, you can secure the connection by including the passphrase directly in the SRT URL that you configure on your channel (e.g. `srt://encoder-host:port?passphrase=my-secret`).
+
+In **push mode**, the Dolby team configures the passphrase for you and provides an SRT URL with the passphrase included.

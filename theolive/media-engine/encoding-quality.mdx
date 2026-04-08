@@ -22,10 +22,10 @@ If low latency is not a requirement for your use case, configure your engine to 
 
 ## Choosing the right configuration
 
-| Use case                                       | Recommended outputs | Latency           | Image quality |
-| ---------------------------------------------- | ------------------- | ----------------- | ------------- |
-| Live sports betting, interactive entertainment | HESP + HLS          | Ultra-low (1–5s)  | Good          |
-| Linear broadcast, non-interactive live events  | HLS only            | Standard (10–30s) | Higher        |
+| Use case                                       | Recommended outputs | Latency          | Image quality |
+| ---------------------------------------------- | ------------------- | ---------------- | ------------- |
+| Live sports betting, interactive entertainment | HESP + HLS          | Ultra-low (1–5s) | Good          |
+| Linear broadcast, non-interactive live events  | HLS only            | Standard (8s+)   | Higher        |
 
 :::tip
 You can create multiple engines on the same channel with different output configurations. For example, use one engine with HESP for low-latency viewers and another with HLS only for viewers who prioritize quality over latency. Attach each to a separate distribution to serve both audiences from the same ingest.

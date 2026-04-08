@@ -8,7 +8,6 @@
 .docusaurus
 .cache-loader
 static/theoplayer-license.txt
-theolive/changelog.md
 
 # Misc
 .DS_Store
