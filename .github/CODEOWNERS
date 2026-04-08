@@ -3,6 +3,8 @@
 # OptiView Player
 theoplayer/                     @THEOplayer/player-reviewers
 theoplayer_versioned_docs/      @THEOplayer/player-reviewers
+open-video-ui/                  @THEOplayer/player-reviewers
+open-video-ui_versioned_docs/   @THEOplayer/player-reviewers
 
 # OptiView Ads
 ads/                            @THEOplayer/ads-reviewers
