@@ -1,1 +1,19 @@
-* @THEOplayer/documentation-reviewers
+*                               @THEOplayer/documentation-reviewers
+
+# OptiView Player
+theoplayer/                     @THEOplayer/player-reviewers
+theoplayer_versioned_docs/      @THEOplayer/player-reviewers
+open-video-ui/                  @THEOplayer/player-reviewers
+open-video-ui_versioned_docs/   @THEOplayer/player-reviewers
+
+# OptiView Ads
+ads/                            @THEOplayer/ads-reviewers
+ads_versioned_docs/             @THEOplayer/ads-reviewers
+
+# OptiView Live Streaming
+theolive/                       @THEOplayer/live-reviewers
+theolive_versioned_docs/        @THEOplayer/live-reviewers
+
+# OptiView Real-time Streaming (Millicast)
+millicast/                      @THEOplayer/millicast-reviewers
+millicast_versioned_docs/       @THEOplayer/millicast-reviewers
