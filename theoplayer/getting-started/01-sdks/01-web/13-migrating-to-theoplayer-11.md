@@ -24,3 +24,5 @@ npm update @theoplayer/conviva-connector-web
 
 Some properties and methods that were previously deprecated have been removed from the API.
 Update your code to use the new APIs instead.
+
+- Removed `preloadPublications` in THEOlive API.
