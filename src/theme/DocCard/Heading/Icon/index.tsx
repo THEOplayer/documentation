@@ -12,9 +12,5 @@ interface SidebarItemCustomProps {
 
 export default function DocCardHeadingIcon({ item, icon }: Props): ReactNode {
   const customIcon = (item.customProps as SidebarItemCustomProps)?.icon;
-  if (customIcon) {
-    return <Icon icon={customIcon} defaultIcon="" className={clsx(ThemeClassNames.docs.docCard.icon, styles.cardTitleIcon)} />;
-  } else {
-    return <span className={clsx(ThemeClassNames.docs.docCard.icon, styles.cardTitleIcon)}>{icon}</span>;
-  }
+  return <Icon icon={customIcon} defaultIcon={icon} className={clsx(ThemeClassNames.docs.docCard.icon, styles.cardTitleIcon)} />;
 }
