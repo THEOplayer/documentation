@@ -10,6 +10,8 @@ description: Receive real-time notifications when channel events occur.
 
 Webhooks let you receive real-time notifications when events happen in your streaming infrastructure. Instead of polling for changes, you register an endpoint URL and the system pushes event data to it automatically.
 
+For the full endpoint specification, see the [Webhooks API reference](../api/create-webhook.api.mdx).
+
 ## What is a Webhook?
 
 A webhook is an HTTP callback that sends a `POST` request to your endpoint whenever a subscribed event occurs — for example, when a channel starts, an engine encounters an error, or a distribution is updated.
@@ -102,7 +104,7 @@ You can also use the **wildcard** (`*`) to listen to all events at once.
 
 After creation, you are redirected to the webhook detail page where you can view the signing secret.
 
-### API example — Create a webhook
+### API example — [Create a webhook](../api/create-webhook.api.mdx)
 
 **Listen to specific events:**
 
@@ -138,7 +140,7 @@ The **Webhooks** page shows a table of all your webhooks with:
 - **Events** — Shows "All events" for wildcard webhooks, or the count of subscribed events.
 - **Actions** — Edit or delete the webhook.
 
-### API example — List all webhooks
+### API example — [List all webhooks](../api/get-webhooks.api.mdx)
 
 `GET https://api.theo.live/v2/webhooks`
 
@@ -149,7 +151,7 @@ Optional query parameters:
 | `cursor`  | [Pagination](../api/pagination.mdx) cursor for the next page |
 | `limit`   | Number of results per page                                   |
 
-### API example — Get a single webhook
+### API example — [Get a single webhook](../api/get-webhook.api.mdx)
 
 `GET https://api.theo.live/v2/webhooks/{webhookId}`
 
@@ -186,7 +188,7 @@ You can change:
 
 Click **Save** to apply your changes.
 
-### API example — Update a webhook
+### API example — [Update a webhook](../api/update-webhook.api.mdx)
 
 All fields are optional; only include the fields you want to change.
 
@@ -209,7 +211,7 @@ When editing a webhook, you can toggle the **Active / Inactive** switch.
 
 This is useful when you want to temporarily stop receiving events without deleting the webhook.
 
-### API example — Activate or deactivate a webhook
+### API example — [Activate or deactivate a webhook](../api/update-webhook.api.mdx)
 
 Use the update endpoint with the `active` field:
 
@@ -229,7 +231,7 @@ Click the **trash icon** on the webhooks list, or click **Delete** on the webhoo
 
 > **Note:** You must deactivate a webhook before deleting it.
 
-### API example — Delete a webhook
+### API example — [Delete a webhook](../api/delete-webhook.api.mdx)
 
 `DELETE https://api.theo.live/v2/webhooks/{webhookId}`
 
@@ -331,7 +333,7 @@ app.listen(port, () => {
 });
 ```
 
-### API example — Get the webhook secret
+### API example — [Get the webhook secret](../api/get-webhook-secret.api.mdx)
 
 `GET https://api.theo.live/v2/webhooks/{webhookId}/secret`
 
