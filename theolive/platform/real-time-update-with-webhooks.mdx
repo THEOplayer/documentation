@@ -242,22 +242,30 @@ When an event fires, Dolby sends a `POST` request to your endpoint with a JSON b
 ```json
 {
   "type": "channel.stopped",
-  "created": 1711900800,
+  "createdAt": 1711900800,
   "object": {
     "type": "channel",
-    "id": "ch_abc123"
+    "id": "ch_abc123",
+    "name": "name-of-channel",
+    "organizationId": "organization-id",
+    // optionally information about the parent object (id, type and name)
   },
-  "data": { ... }
+  "data": { ... },
 }
 ```
 
-| Field         | Description                                                                    |
-| ------------- | ------------------------------------------------------------------------------ |
-| `type`        | The event type string (e.g. `channel.stopped`, `engine.error`)                 |
-| `created`     | Unix timestamp of when the event occurred                                      |
-| `object.type` | The resource type: `channel`, `engine`, `ingest`, `distribution`, or `webhook` |
-| `object.id`   | The ID of the resource that triggered the event                                |
-| `data`        | Event-specific payload with additional details                                 |
+| Field                   | Description                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| `type`                  | The event type string (e.g. `channel.stopped`, `engine.error`)                 |
+| `createdAt`             | Unix timestamp of when the event occurred                                      |
+| `object.type`           | The resource type: `channel`, `engine`, `ingest`, `distribution`, or `webhook` |
+| `object.id`             | The ID of the resource that triggered the event                                |
+| `object.name`           | The name of the resource that triggered the event                              |
+| `object.organizationId` | The ID of the organization that owns the resource                              |
+| `object.parent.id`      | Optionally: the ID of the parent resource that triggered the event             |
+| `object.parent.name`    | Optionally: the name of the parent resource that triggered the event           |
+| `object.parent.type`    | Optionally: the type of the parent resource that triggered the event           |
+| `data`                  | Event-specific payload with additional details                                 |
 
 ## Verifying Webhook Signatures
 
