@@ -1,4 +1,4 @@
-import React, { JSX } from 'react';
+import React, { JSX, type ReactNode } from 'react';
 import ThemedImage, { type Props as ThemedImageProps } from '@theme/ThemedImage';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import AdobeIcon from '@site/static/img/adobe.svg';
@@ -32,10 +32,10 @@ import styles from './styles.module.css';
 interface IconProps {
   className?: string;
   icon?: string;
-  defaultIcon: string;
+  defaultIcon: ReactNode;
 }
 
-function TextIcon({ className, icon }: { className?: string; icon: string }): JSX.Element | string {
+function TextIcon({ className, icon }: { className?: string; icon: ReactNode }): ReactNode {
   return className ? <span className={className}>{icon}</span> : icon;
 }
 
