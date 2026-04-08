@@ -9,11 +9,12 @@ export default function DocCardDescription({ description }: Props): ReactNode {
   return (
     <p
       className={clsx(
-        'text--truncate',
+        /* 'text--truncate', */
         ThemeClassNames.docs.docCard.description,
-        styles.cardDescription,
+        styles.cardDescription
       )}
-      title={description}>
+      /* title={description} */
+    >
       {description}
     </p>
   );
