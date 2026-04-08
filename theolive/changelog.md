@@ -1,10 +1,15 @@
 # Changelog
 
-## [10.13.0] - 2026-03-25
+## [10.13.0] - 2026-03-31
 
 - Added image overlay support
+- Fixed MPEG-TS HLS not returning 404 when sub playlists do not exist yet
 - Upgraded to GStreamer 1.28.1
 - Upgraded to Rust 1.94
+
+## [10.12.1] - 2026-03-26
+
+- Make protection optional in HESP manifest instead of returning an empty one when no DRM is configured
 
 ## [10.12.0] - 2026-03-06
 
