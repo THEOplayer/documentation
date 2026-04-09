@@ -1065,7 +1065,7 @@ THEOplayer 10.0 includes **some breaking changes per SDK**. Please review them c
 
 - [OptiView Ads](https://optiview.dolby.com/docs/theoads/) is now fully supported on iOS. This brings our personalized advertising solution to all major platforms.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-10/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-10/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-10/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/v10/getting-started/sdks/web/migrating-to-theoplayer-10/), [Android](/theoplayer/v10/getting-started/sdks/android/migrating-to-theoplayer-10/), [iOS](/theoplayer/v10/getting-started/sdks/ios/migrating-to-theoplayer-10/) and [React Native](/theoplayer/v10/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10/).
 
 ### Web
 
