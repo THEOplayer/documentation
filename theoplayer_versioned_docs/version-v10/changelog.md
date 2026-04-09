@@ -1,11 +1,8 @@
-# Changelog
+# Changelog for version 10.x
 
-These are the release notes for THEOplayer 10.0.0 and higher. For older versions, see:
-* [Version 9.x](https://optiview.dolby.com/docs/theoplayer/v9/changelog/)
-* [Version 8.x](https://optiview.dolby.com/docs/theoplayer/v8/changelog/)
-* [Version 7.x](https://optiview.dolby.com/docs/theoplayer/v7/changelog/)
-* [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
-* [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
+<head>
+  <meta name="robots" content="index, follow" />
+</head>
 
 ## 🚀 10.14.0 (2026/04/08)
 
