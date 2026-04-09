@@ -60,22 +60,36 @@ The following key/value pairs are supported on the `source` attribute of the `TH
 
 The following key/value pairs are supported on the `sources` attribute of a Source Description:
 
-| Name              | Type                      | Description                                                                                                                            |
-| ----------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| src               | String                    | The URL of the media resource.                                                                                                         |
-| type              | String                    | The content type (MIME type) of the media resource. Possible values are `application/dash+xml`, `application/x-mpegURL` and `theolive` |
-| description       | String                    | The description of the media resource.                                                                                                 |
-| playStart         | Number                    | The position in the stream the user starts playback at. Use negative numbers to offset from the live edge.                             |
-| contentProtection | Content Protection        | Parameters for DRM playback                                                                                                            |
-| SDBifUrl          | String                    | "Base Index Frames" URL for SD trick mode.                                                                                             |
-| HDBifUrl          | String                    | "Base Index Frames" URL for HD trick mode.                                                                                             |
-| FHDBifUrl         | String                    | "Base Index Frames" URL for FHD trick mode.                                                                                            |
-| ads               | roArray of AdDescriptions | Array of the ad description for the ads to play during the content.                                                                    |
-| profile           | String                    | Optional. The profile to use when making the discovery call for THEOlive streams.                                                      |
-| ssai              | GoogleDaiConfiguration    | Optional. The configuration for playing this as a dynamic ad insertion asset.                                                          |
-| embeddedTextTrack | string                    | Name of the embedded text track in the asset. Not necessary if the track is explicitly defined in the manifest.                        |
+| Name              | Type                             | Description                                                                                                                            |
+| ----------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| src               | String                           | The URL of the media resource.                                                                                                         |
+| type              | String                           | The content type (MIME type) of the media resource. Possible values are `application/dash+xml`, `application/x-mpegURL` and `theolive` |
+| description       | String                           | The description of the media resource.                                                                                                 |
+| playStart         | Number                           | The position in the stream the user starts playback at. Use negative numbers to offset from the live edge.                             |
+| contentProtection | Content Protection               | Parameters for DRM playback                                                                                                            |
+| SDBifUrl          | String                           | "Base Index Frames" URL for SD trick mode.                                                                                             |
+| HDBifUrl          | String                           | "Base Index Frames" URL for HD trick mode.                                                                                             |
+| FHDBifUrl         | String                           | "Base Index Frames" URL for FHD trick mode.                                                                                            |
+| ads               | roArray of AdDescriptions        | Array of the ad description for the ads to play during the content.                                                                    |
+| profile           | String                           | Optional. The profile to use when making the discovery call for THEOlive streams.                                                      |
+| ssai              | GoogleDaiConfiguration           | Optional. The configuration for playing this as a dynamic ad insertion asset.                                                          |
+| embeddedTextTrack | string                           | Name of the embedded text track in the asset. Not necessary if the track is explicitly defined in the manifest.                        |
+| textTracks        | roArray of TextTrackDescriptions | Optional. An array of descriptions representing external text track files.                                                             |
 
 "Base Index Frames" or BIF, is an archive file format that contains a set of still images, also known as "trick play thumbnails", supporting enhanced fast-forward and rewind modes during video playback.
+
+### Text Track Descriptions
+
+| Name    | Type    | Description                                                                                                                           |
+| ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| default | Boolean | Optional. Is this the default text track. If true and no track is currently selected, this will be used over the Roku system default. |
+| format  | String  | Optional. The format of the text track. Valid values are "ttml" and "webvtt". Use "ttml" for SMPTE-TT files.                          |
+| kind    | String  | Optional. The kind of text track. Supported values are "captions" and "subtitles".                                                    |
+| label   | String  | Optional. The label to show in menus for the text track.                                                                              |
+| src     | String  | The URL for the text track file.                                                                                                      |
+| srclang | String  | Optional. The language used in the text track. Can be the language name or an ISO 2 or 3 letter abbreviation.                         |
+
+See [Roku's caption support guide](https://developer.roku.com/docs/developer-program/media-playback/closed-caption.md#closed-caption-support-summary) for what is supported for different stream and text track combinations.
 
 ### Ad Descriptions
 

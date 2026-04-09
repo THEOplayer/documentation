@@ -7,6 +7,53 @@ These are the release notes for THEOplayer 10.0.0 and higher. For older versions
 * [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 * [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 10.14.0 (2026/04/08)
+
+### Web
+
+#### ✨ Features
+
+- Added support for ClearKey license URLs in MPEG-DASH streams using `<dashif:Laurl>`.
+- Added the `TextTrack.captionChannel` property to retrieve the CEA-608 channel and/or CEA-708 service numbers of closed caption text tracks.
+
+#### ⚡ Improvements
+
+- Added various playback enhancements for the Sky Q STB.
+
+#### 🐛 Issues
+
+- Fixed an issue where `currentTime` did not advance linearly after playing an OptiView Ads ad.
+- Fixed an issue where the `ended` event would not dispatch in the native Safari player.
+- Fixed an issue where seeking on a webOS device could cause endless buffering.
+- Fixed an issue where seeking to the end of stream in native Chrome would cause endless buffering.
+- Fixed an issue where streams would sometimes not start on a Sky Q STB if autoplay was enabled and preload was set to `auto`.
+
+### Android
+
+#### ✨ Features
+
+- Added the ability to use system-wide caption styles when showing subtitles. Use `THEOplayerConfig.Builder.useSystemCaptionStyle(Boolean)` to enable.
+
+#### ⚡ Improvements
+
+- When the player is in picture-in-picture mode, it can now be expanded to span the screen's width by double-tapping or pinching the PIP view.
+- Added a default director URL for `MillicastSource`, so callers no longer need to explicitly provide the `apiUrl` parameter for standard Millicast connections.
+
+#### 🐛 Issues
+
+- Fixed an issue where seeking in a progressive source (e.g. an MP4 or MP3 file) could cause a fatal error when using certain servers or CDNs. The player will now always send an open-ended HTTP `Range` request header for such seeks.
+- Fixed an issue where `AdBreak.timeOffset` would incorrectly return 0 for VMAP ads.
+
+### Roku
+
+#### ✨ Features
+
+- Added the ability to use sideloaded text tracks for DASH and HLS.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `aderror` event was not dispatched for malformed ads.
+
 ## 🚀 10.13.0 (2026/03/25)
 
 ### Web
