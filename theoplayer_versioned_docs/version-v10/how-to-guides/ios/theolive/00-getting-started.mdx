@@ -1,0 +1,25 @@
+---
+sidebar_position: 1
+sidebar_label: Getting started
+---
+
+# Getting started
+
+## Usage
+
+1. Follow [our Getting Started guide](/theoplayer/getting-started/sdks/ios/getting-started)
+   to set up THEOplayer in your iOS app.
+2. Add an OptiView Live source to your player's source.
+
+### Add an OptiView Live source
+
+After setting up your THEOplayer in your app, set its source to a `SourceDescription` containing a `TheoLiveSource`.
+You'll need an OptiView Live channel ID:
+
+```swift
+theoplayer.source = SourceDescription(source: TheoLiveSource(channelId: "3aa5qylwwk7gijsobayq09yee"))
+```
+
+## More information
+
+- [API references](pathname:///theoplayer/v9/api-reference/ios/)

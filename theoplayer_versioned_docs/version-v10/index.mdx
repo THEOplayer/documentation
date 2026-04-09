@@ -1,0 +1,22 @@
+---
+displayed_sidebar: web
+sidebar_label: Introduction
+sidebar_position: 1
+---
+
+# THEOplayer
+
+import Intro from './shared/_intro.mdx';
+import DocCardList from '@theme/DocCardList';
+import { usePlatforms } from '@site/src/util/platform';
+
+<Intro />
+<DocCardList
+  items={usePlatforms().map((desc) => ({
+    type: 'link',
+    label: desc.label,
+    description: desc.description,
+    customProps: { icon: desc.icon },
+    href: desc.baseUrl,
+  }))}
+/>
