@@ -525,22 +525,6 @@ const config: Config = {
   themeConfig: {
     // TODO OpenGraph image for OptiView?
     // image: 'img/opengraph.png',
-    announcementBar: process.env.DOCUSAURUS_PR_NUMBER
-      ? {
-          id: 'pr_preview',
-          content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
-          backgroundColor: '#9cb9c9',
-          textColor: '#344a5e',
-          isCloseable: false,
-        }
-      : {
-          id: 'dolby_optiview_new_name',
-          content:
-            'Dolby OptiView is the new home for everything Dolby.io and THEOplayer. <a target="_blank" rel="noopener" href="https://dolby.io/blog/introducing-dolby-optiview-redefining-immersive-streaming-experiences/">Learn more.</a>',
-          backgroundColor: '#4800c4',
-          textColor: '#fff',
-          isCloseable: true,
-        },
     navbar: {
       title: null,
       logo: {
