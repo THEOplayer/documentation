@@ -22,10 +22,10 @@ This approach helps prevent unauthorized usage of tokens.
 You can manage allowed origins by changing settings from the user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx) for more details about tokens.
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a OptiView Real-time application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx) for more details about tokens.
 :::
 
-Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can edit the _Allowed origins_ to specify a list of domain names.
+Open the Live Broadcast section of the OptiView Streaming Dashboard. Select the publishing token you want to secure. Within the **Security** section you can edit the _Allowed origins_ to specify a list of domain names.
 
 import DashboardAllowedOrigins from '../../assets/img/dashboard-allowed-origins.png';
 
@@ -75,10 +75,10 @@ _For example_, if you want to be able to share a stream with a specific end-user
 You can manage IP filters by changing settings from the user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx) for more details about tokens.
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a OptiView Real-time application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx) for more details about tokens.
 :::
 
-Open the Live Broadcast section of the Dolby.io Dashboard. Select the publishing token you want to secure. Within the **Security** section you can change the _IP filter type_ from the dropdown.
+Open the Live Broadcast section of the OptiView Streaming Dashboard. Select the publishing token you want to secure. Within the **Security** section you can change the _IP filter type_ from the dropdown.
 
 import DashboardIpFilterType from '../../assets/img/dashboard-ip-filter-type.png';
 
@@ -182,5 +182,5 @@ import DashOriginBroadcastError from '../../assets/img/dashboard-origin-broadcas
 Verify that the domain your application is running from is included.
 
 :::tip Allow the Streaming Dashboard
-Include _streaming.dolby.io_ in your list of domains if you want to be able to continue broadcasting using the [Dolby.io Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
+Include _streaming.dolby.io_ in your list of domains if you want to be able to continue broadcasting using the [OptiView Real-time Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 :::

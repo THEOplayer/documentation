@@ -4,11 +4,11 @@ slug: /playback/audio-multiplexing
 sidebar_position: 5
 ---
 
-The Dolby.io platform supports Audio Multiplexing, a feature that allows viewers to receive multiple audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
+The OptiView Real-time platform supports Audio Multiplexing, a feature that allows viewers to receive multiple audio streams in a conference-like experience, where each audio stream is emphasized or deemphasized based on activity.
 
 ## Understanding Audio Multiplexing
 
-To first understand Audio Multiplexing, we need to understand how the Dolby.io servers ingest feeds. When [Broadcasting](/millicast/broadcast/index.mdx), the Dolby.io Streaming servers will assign the most recent published stream source as the "_Main Source_", a function that allows broadcasters to seamlessly overwrite streams or add [Redundant Streams](/millicast/broadcast/redundant-ingest/index.mdx). For basic broadcasts, this is sufficient, for more advanced broadcasts Dolby.io provides two features that are exceptions:
+To first understand Audio Multiplexing, we need to understand how the OptiView Real-time servers ingest feeds. When [Broadcasting](/millicast/broadcast/index.mdx), the OptiView Real-time Streaming servers will assign the most recent published stream source as the "_Main Source_", a function that allows broadcasters to seamlessly overwrite streams or add [Redundant Streams](/millicast/broadcast/redundant-ingest/index.mdx). For basic broadcasts, this is sufficient, for more advanced broadcasts OptiView Real-time Streaming provides two features that are exceptions:
 
 1. Creating a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx) for [Multi-view](multi-view.md) experiences.
 2. Audio Multiplexing, for experiences with multiple audio streams playing at once, such as that seen on "_Clubhouse_" type platforms and apps.
@@ -80,7 +80,7 @@ viewer.on('broadcastEvent', async (event) => {
 ```
 
 :::caution Viewer on "track" events
-The Dolby.io SDKs offer `.on("track",async (event) =>{})` functionality for triggering events as tracks are added. When using Audio Multiplexing this event will trigger a number of times equal to the `multiplexedAudioTracks` value, regardless of if those tracks actually contain data.
+The OptiView Real-time SDKs offer `.on("track",async (event) =>{})` functionality for triggering events as tracks are added. When using Audio Multiplexing this event will trigger a number of times equal to the `multiplexedAudioTracks` value, regardless of if those tracks actually contain data.
 
 This means that if `multiplexedAudioTracks` is set to `5` it will trigger once for the first track and five additional times for each multiplexed audio track, regardless of whether there are only two tracks broadcasting or twenty.
 :::
@@ -112,7 +112,7 @@ async function projectOn(index) {
 
 To recap the above workflow:
 
-1. The app authenticates and connects with the Dolby.io Streaming (Millicast) Director.
+1. The app authenticates and connects with the OptiView Real-time Streaming (Millicast) Director.
 2. As the app connects the Director creates a main track plus an additional number of tracks equal to the `multiplexedAudioTracks` value. This triggers a `track` event for each track added.
 3. An audio feed is connected to the Publisher Node triggering a Broadcast event.
 4. The broadcast event creates an `<audio>` tag and triggers the `projectOn` function.
@@ -126,7 +126,7 @@ To help with understanding and implementing the Audio Multiplexing feature is in
 	<head>
 		<title>Dolby.io Audio Multiplexing Demo</title>
 		<link rel="shortcut icon" href="https://go.dolby.io/hubfs/Dolby_April2021/images/favicon-32x32.png" />
-        <!-- Dolby.io Streaming Millicast JavaScript SDK -->
+        <!-- OptiView Real-time Streaming Millicast JavaScript SDK -->
 		<script src="https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.umd.min.js"></script>
 		<!-- Bootstrap Bundle -->
 		<link

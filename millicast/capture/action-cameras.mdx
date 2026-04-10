@@ -16,13 +16,13 @@ If you are using an action camera that is not listed, you should be able to use 
 
 ![GoPro](https://dolby.io/wp-content/uploads/2023/01/Dolby.io_Live-Stream-With-GoPro-Via-Dolby.io-Streaming@3x-100-2048x847.jpg)
 
-[GoPro](https://gopro.com/) is a leader in action cameras. With the latest models of GoPro cameras, you can achieve sub-second latency by streaming with RTMP from your GoPro directly to Dolby.io for [distribution](/millicast/distribution/index.mdx) over WebRTC.
+[GoPro](https://gopro.com/) is a leader in action cameras. With the latest models of GoPro cameras, you can achieve sub-second latency by streaming with RTMP from your GoPro directly to OptiView Real-time Streaming for [distribution](/millicast/distribution/index.mdx) over WebRTC.
 
 - GoPro HERO Black
 - GoPro MAX
 
-:::tip Dolby.io Dashboard - Publish Token Details
-You will need to have your Dolby.io **publishing token** and **stream name** in order to complete this setup. See the [Getting Started](/millicast/getting-started/using-the-dashboard.mdx) guide for instructions on creating a new app for the first time. You will also need the **RTMP publish path** from the _Publishing_ tab in the Dolby.io Dashboard. See the [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx) guide for more detail on where to find it.
+:::tip OptiView Streaming Dashboard - Publish Token Details
+You will need to have your OptiView **publishing token** and **stream name** in order to complete this setup. See the [Getting Started](/millicast/getting-started/using-the-dashboard.mdx) guide for instructions on creating a new app for the first time. You will also need the **RTMP publish path** from the _Publishing_ tab in the OptiView Streaming Dashboard. See the [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx) guide for more detail on where to find it.
 :::
 
 ### Using the GoPro Quik App
@@ -33,7 +33,7 @@ An overview of the steps to begin capturing from a GoPro include:
 
 1. Select Live Stream While Connected to Camera
 2. Select RTMP as Platform
-3. Enter your Dolby.io RTMP Publish URL
+3. Enter your OptiView RTMP Publish URL
 4. Go Live
 
 The **Quick App** is a GoPro product, so the user interface and instructions may change in future releases from what is described below. Visit the official [GoPro Support](https://community.gopro.com/s/?language=en_US) for resources like product manuals, help articles, and video tutorials on using the app if you have any questions.
@@ -50,7 +50,7 @@ import GoProLiveStream from '../assets/img/go-pro-hero8-camera-quik-app-live-str
 
 #### 2. Select RTMP as platform
 
-Some of the popular public streaming options are listed. To set up your private stream using Dolby.io, select _RTMP_ from the options.
+Some of the popular public streaming options are listed. To set up your private stream using OptiView Real-time Streaming, select _RTMP_ from the options.
 
 import GoProLiveStreamRtmp from '../assets/img/go-pro-quik-live-stream-rtmp.jpg';
 
@@ -58,9 +58,9 @@ import GoProLiveStreamRtmp from '../assets/img/go-pro-quik-live-stream-rtmp.jpg'
   <img src={GoProLiveStreamRtmp} width="400" />
 </div>
 
-#### 3. Enter your Dolby.io RTMP publish path
+#### 3. Enter your OptiView RTMP publish path
 
-The _Publishing_ tab of the _Live broadcast - Publish tokens_ section of the Dolby.io dashboard includes the details you need.
+The _Publishing_ tab of the _Live broadcast - Publish tokens_ section of the OptiView Streaming Dashboard includes the details you need.
 
 > `RTMP publish path` + `/` + `RTMP publish stream name`
 
@@ -98,7 +98,7 @@ import GoProStreamHealth from '../assets/img/gopro-stream-health.png';
   <img src={GoProStreamHealth} width="400" />
 </div>
 
-To verify everything is working, you view the stream using any suitable [playback](/millicast/playback/index.mdx) method, such as the hosted web viewer described in the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide available directly from the Dolby.io Dashboard.
+To verify everything is working, you view the stream using any suitable [playback](/millicast/playback/index.mdx) method, such as the hosted web viewer described in the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide available directly from the OptiView Streaming Dashboard.
 
 ### Using the GoPro webcam utility
 
@@ -106,7 +106,7 @@ The GoPro [Webcam](https://community.gopro.com/s/article/GoPro-Webcam?language=e
 
 The **Webcam Utility** is a GoPro product, so the behavior and instructions may change in future releases from what is described below. Visit the official [GoPro Support](https://community.gopro.com/s/?language=en_US) for resources like Product Manuals, Help Articles, and Video Tutorials on using the app if you have any questions.
 
-#### Stream with the Dolby.io dashboard
+#### Stream with the OptiView Streaming Dashboard
 
 With the GoPro Webcam utility, your GoPro camera will be present as an option from the media device selection. Follow the same instructions for broadcasting described in [Part 1: Using the Streaming Dashboard](/millicast/getting-started/using-the-dashboard.mdx).
 
@@ -118,7 +118,7 @@ import GoProWebCam from '../assets/img/GoPro_Web_Cam.png';
 
 #### Stream using a GoPro from OBS
 
-Similar to using the Dolby.io Dashboard, you can select the GoPro Webcam from the list of available devices. See the [OBS](/millicast/broadcast/software-encoders/obs/index.mdx) guide for more detail on how to configure OBS to broadcast the captured stream.
+Similar to using the OptiView Streaming Dashboard, you can select the GoPro Webcam from the list of available devices. See the [OBS](/millicast/broadcast/software-encoders/obs/index.mdx) guide for more detail on how to configure OBS to broadcast the captured stream.
 
 import GoProObs from '../assets/img/GoProOBS.png';
 

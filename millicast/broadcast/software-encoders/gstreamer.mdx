@@ -17,9 +17,9 @@ This guide includes a number of examples:
 
 See the official [gstreamer.freedesktop.org](https://gstreamer.freedesktop.org/) documentation for installation instructions and additional support.
 
-## Get your Dolby.io WHIP publish URL
+## Get your OptiView WHIP publish URL
 
-You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [Dolby.io Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
+You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [OptiView Streaming Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
 
 See the [WHIP](/millicast/broadcast/webrtc-and-whip.mdx) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
@@ -37,7 +37,7 @@ https://director.millicast.com/api/whip/{Stream Name}?codec=vp8
 
 :::
 
-## Get your Dolby.io WHEP playback URL
+## Get your OptiView WHEP playback URL
 
 The **WHEP endpoint** is available from the _Playback_ tab of your publish token in the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
@@ -54,14 +54,14 @@ The [1.22.0 release](https://gstreamer.freedesktop.org/releases/1.22/) of GStrea
 - WebRTC HTTP ingest (WHIP) to a MediaServer (whipsink)
 - WebRTC HTTP egress (WHEP) from a MediaServer (whepsrc)
 
-The [whipsink](https://gstreamer.freedesktop.org/documentation/webrtchttp/whipsink.html) element can be used to **publish** a gstreamer pipeline out to a Dolby.io real-time stream. The attributes that must be defined:
+The [whipsink](https://gstreamer.freedesktop.org/documentation/webrtchttp/whipsink.html) element can be used to **publish** a gstreamer pipeline out to an OptiView real-time stream. The attributes that must be defined:
 
 - `auth-token`: should be set with your publishing bearer token
-- `whip-endpoint`: should be set with the Dolby.io [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint
+- `whip-endpoint`: should be set with the OptiView [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint
 
-The [autovideosink](https://gstreamer.freedesktop.org/documentation/autodetect/autovideosink.html) element can be used to **playback** a Dolby.io real-time stream being broadcast into a gstreamer pipeline. The attribute that must be defined:
+The [autovideosink](https://gstreamer.freedesktop.org/documentation/autodetect/autovideosink.html) element can be used to **playback** an OptiView real-time stream being broadcast into a gstreamer pipeline. The attribute that must be defined:
 
-- `whep-endpoint`: should be set with the Dolby.io [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint
+- `whep-endpoint`: should be set with the OptiView [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint
 
 You can use the [Hosted Viewer](/millicast/streaming-dashboard/index.mdx) and [Live Broadcaster](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) to test your setups.
 
@@ -229,7 +229,7 @@ import ViewerImg from '../../assets/img/viewer.png';
 
 ### Publishing an RTSP video-only source
 
-Now, to connect to an RTSP source like an axis camera, you need to replace the GStreamer pipeline with one that connects to the Camera and passes the video data to Dolby.io Real-time Streaming without transcoding the content.
+Now, to connect to an RTSP source like an axis camera, you need to replace the GStreamer pipeline with one that connects to the Camera and passes the video data to OptiView Real-time Streaming without transcoding the content.
 
 ```shell
 ./whip-client -u https://director.millicast.com/api/whip/kxhqovek \

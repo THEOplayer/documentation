@@ -67,7 +67,7 @@ Get your **stream name** and **stream ID** from the dashboard and set them up in
 ```cpp
 auto credentials = viewer->get_credentials(); // Get the current credentials
 credentials.stream_name = "streamName"; // The name of the stream you want to subscribe to
-credentials.account_id = "ACCOUNT"; // The ID of your Dolby.io Real-time Streaming account
+credentials.account_id = "ACCOUNT"; // The ID of your OptiView Real-time Streaming account
 credentials.token = "aefea56153765316754fe"; // Optionally set the subscribing token
 credentials.api_url = "https://director.millicast.com/api/director/subscribe"; // The subscribe API URL
 publisher->set_credentials(std::move(credentials)); // Set the new credentials
@@ -90,7 +90,7 @@ viewer->set_options(options);
 
 ## 6. Create a WebSocket connection
 
-Authenticate and create a WebSocket connection to connect with the Dolby.io Real-time Streaming server.
+Authenticate and create a WebSocket connection to connect with the OptiView Real-time Streaming server.
 
 ```cpp
 viewer->connect();

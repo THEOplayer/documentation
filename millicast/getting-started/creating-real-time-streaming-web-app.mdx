@@ -4,7 +4,7 @@ slug: /getting-started/creating-real-time-streaming-web-app
 sidebar_position: 2
 ---
 
-In [Part 1](/millicast/getting-started/using-the-dashboard.mdx) we reviewed how-to log into your Dolby.io Streaming Dashboard, create a publish token, start a broadcast, and playback that broadcast in the hosted web viewer or in an iframe, all without writing any code. We'll continue getting started by substituting the broadcast and playback components with a custom-built web application.
+In [Part 1](/millicast/getting-started/using-the-dashboard.mdx) we reviewed how-to log into your OptiView Streaming Dashboard, create a publish token, start a broadcast, and playback that broadcast in the hosted web viewer or in an iframe, all without writing any code. We'll continue getting started by substituting the broadcast and playback components with a custom-built web application.
 
 This tutorial is split into three sections:
 
@@ -105,7 +105,7 @@ When importing the SDK from jsdelivr you will automatically be updated to the la
 
 ### c. Configure account ID and stream name
 
-In [Part 1](/millicast/getting-started/using-the-dashboard.mdx) we created a stream with a unique name such as _myStreamName_. You'll need to add that to the code along with the **Account ID** that is associated with the publishing token. You can find both of these values from the Dolby.io Dashboard.
+In [Part 1](/millicast/getting-started/using-the-dashboard.mdx) we created a stream with a unique name such as _myStreamName_. You'll need to add that to the code along with the **Account ID** that is associated with the publishing token. You can find both of these values from the OptiView Streaming Dashboard.
 
 ```js
 // Step 2.1c: Set your account id and stream name while Getting Started
@@ -154,7 +154,7 @@ try {
 }
 ```
 
-If you start broadcasting using the Dolby.io Dashboard as you did in [Part 1](/millicast/getting-started/using-the-dashboard.mdx), you will then have a simple web app with video playback to continue customizing.
+If you start broadcasting using the OptiView Streaming Dashboard as you did in [Part 1](/millicast/getting-started/using-the-dashboard.mdx), you will then have a simple web app with video playback to continue customizing.
 
 import DolbyioWebPlayback from '../assets/img/dolbyio-web-playback.png';
 
@@ -179,7 +179,7 @@ The [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) is pulled in w
 
 ### b. Configure publishing token and stream name
 
-You'll need to retrieve the **Publishing Token** from the Dolby.io dashboard that corresponds with the _streamName_ used in the _playback-app_ section.
+You'll need to retrieve the **Publishing Token** from the OptiView Streaming Dashboard that corresponds with the _streamName_ used in the _playback-app_ section.
 
 ```js
 // Step 2.2b: Set your account id and stream name while Getting Started

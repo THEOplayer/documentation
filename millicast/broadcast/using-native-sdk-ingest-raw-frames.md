@@ -5,7 +5,7 @@ sidebar_position: 11
 
 Ingesting raw video and audio frames can be useful for creating and managing unique WebRTC encoding workflows. Whilst [traditional encoders](./hardware-encoders/index.mdx) provide general-purpose encoding solutions, there are some use cases such as [real-time streaming from drones](/millicast/capture/live-streaming-from-drones.mdx) where traditional encoding solutions are too heavy, power consumptive, or expensive to suffice.
 
-This guide is designed to help you leverage the Dolby.io Streaming Native SDKs to ingest raw audio and video frames, allowing the stream encoding to be handled by the SDK. There are three ways to accomplish raw frame ingestion:
+This guide is designed to help you leverage the OptiView Real-time Streaming Native SDKs to ingest raw audio and video frames, allowing the stream encoding to be handled by the SDK. There are three ways to accomplish raw frame ingestion:
 
 1. [Using the Core API](#creating-custom-audio-and-video-frame-classes): For desktop applications such as Windows, Mac, or Linux
 2. [Using the iOS API](#using-the-ios-api): Including tvOS

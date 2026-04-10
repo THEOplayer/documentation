@@ -3,10 +3,10 @@ title: Access Control
 sidebar_position: 1
 ---
 
-Stream security is a priority for the Dolby.io platform. Along with stream protocol encryption, Dolby.io provides a number of different server-side features to help protect both broadcasting (_Publishing_) a stream and viewing (_Subscribing_) to a stream, all managed via their respective tokens.
+Stream security is a priority for the OptiView Real-time platform. Along with stream protocol encryption, OptiView Real-time Streaming provides a number of different server-side features to help protect both broadcasting (_Publishing_) a stream and viewing (_Subscribing_) to a stream, all managed via their respective tokens.
 
 :::tip Looking for Dolby.io Account Access Management?
-To manage access for your team to share the same Dolby.io account, visit the [Dolby.io support portal FAQ section](https://support.dolby.io/hc/en-au/articles/4411755046159-FAQs-Account-Management) to learn more.
+To manage access for your team to share the same OptiView Real-time account, visit the [Dolby.io support portal FAQ section](https://support.dolby.io/hc/en-au/articles/4411755046159-FAQs-Account-Management) to learn more.
 :::
 
 ## Publishing access control

@@ -3,9 +3,9 @@ title: Screensharing
 sidebar_position: 3
 ---
 
-Screensharing or screen capturing is an important feature for virtual events, webinars, and many other types of broadcasts that involve sharing information. This guide will outline three options for managing screen capture in a way that is compatible with Dolby.io:
+Screensharing or screen capturing is an important feature for virtual events, webinars, and many other types of broadcasts that involve sharing information. This guide will outline three options for managing screen capture in a way that is compatible with OptiView Real-time Streaming:
 
-1. [Screensharing with the Dolby.io Dashboard Broadcaster](/millicast/capture/screensharing.mdx#screensharing-with-the-dolbyio-dashboard-broadcaster)
+1. [Screensharing with the OptiView Streaming Dashboard Broadcaster](/millicast/capture/screensharing.mdx#screensharing-with-the-dolbyio-dashboard-broadcaster)
 2. [Screensharing with OBS](/millicast/capture/screensharing.mdx#screensharing-with-obs)
 3. [Screensharing with JavaScript](/millicast/capture/screensharing.mdx#screensharing-with-javascript)
 
@@ -15,9 +15,9 @@ If you want to enable both screensharing and share your webcam at the same time,
 
 :::
 
-## Screensharing with the Dolby.io dashboard broadcaster
+## Screensharing with the OptiView Streaming Dashboard broadcaster
 
-Once you have created a Dolby.io account, you can begin using the Dolby.io dashboard to create and manage tokens, manage your Dolby.io account, and broadcast and view active streams.
+Once you have created a OptiView Real-time account, you can begin using the OptiView Streaming Dashboard to create and manage tokens, manage your OptiView Real-time account, and broadcast and view active streams.
 
 Inside the dashboard, click the Broadcast button located adjacent to the token.
 
@@ -82,7 +82,7 @@ With our options defined, we can use the `getDisplayMedia` method to capture our
 const screenCapture = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
 ```
 
-With that, the screen is now being captured. When this function is called, users will receive a permissions prompt from the browser which they will have to approve for the device to begin capturing content. This screen capture can then be passed as a `mediaStream` into the Dolby.io Millicast JavaScript SDK. To learn more about how you can begin broadcasting a screen capture, explore the Client SDK guides or check out this detailed blog for [screenshare streaming in JavaScript](https://optiview.dolby.com/resources/blog/streaming/how-to-screen-capture-for-streaming-in-javascript/).
+With that, the screen is now being captured. When this function is called, users will receive a permissions prompt from the browser which they will have to approve for the device to begin capturing content. This screen capture can then be passed as a `mediaStream` into the OptiView Real-time JavaScript SDK. To learn more about how you can begin broadcasting a screen capture, explore the Client SDK guides or check out this detailed blog for [screenshare streaming in JavaScript](https://optiview.dolby.com/resources/blog/streaming/how-to-screen-capture-for-streaming-in-javascript/).
 
 ## Additional Client SDKs
 

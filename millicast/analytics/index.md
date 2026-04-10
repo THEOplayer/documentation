@@ -3,7 +3,7 @@ title: Analytics APIs
 slug: /analytics-api
 ---
 
-The Analytics APIs allow you to query your usage independent of the Dolby.io dashboard and get details of how your users are consuming your streams.
+The Analytics APIs allow you to query your usage independent of the OptiView Streaming Dashboard and get details of how your users are consuming your streams.
 
 To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api.mdx).
 
@@ -19,11 +19,11 @@ A breakdown of per-stream data is also only available within a 7 day window. Thi
 
 To query for a particular month’s data, the API requires the date range to be from **day 1** of the month in question to **day 1** of the next month. An example of the query would look like this: startDate=2021-**01-01**&stopDate=2021-**02-01**&resolution=**Month**. This query would return the total bandwidth usage for the month of January 2021.
 
-It is advised that you save your Daily and Hourly data if you feel that you would need it beyond the 365 and 7 day retention provided by Dolby.io Real-time Streaming.
+It is advised that you save your Daily and Hourly data if you feel that you would need it beyond the 365 and 7 day retention provided by OptiView Real-time Streaming.
 
 Wildcards
 
-The Dolby.io Real-time Streaming publisher token provides a Wildcard option which allows you to use an arbitrary stream name on-the-fly, rather than specifying the stream name in advance. This is beneficial if you are dynamically generating streams and are not sure how many streams you will need to generate or which names you will need to use. Because queries for stream analytics require a stream name, it is important for you to keep track of which stream names are being used if you would later like to query the analytics data for these individual streams.
+The OptiView Real-time Streaming publisher token provides a Wildcard option which allows you to use an arbitrary stream name on-the-fly, rather than specifying the stream name in advance. This is beneficial if you are dynamically generating streams and are not sure how many streams you will need to generate or which names you will need to use. Because queries for stream analytics require a stream name, it is important for you to keep track of which stream names are being used if you would later like to query the analytics data for these individual streams.
 
 ## Basic call structure
 
@@ -33,11 +33,11 @@ In this example we want to query the API to get usage information for our entire
 
 ## Example tutorial: JS / Nodejs
 
-In the following example, we will use the Analytics APIs to query a Dolby.io Real-time Streaming account for a date range of usage and display it in a graph using Google Charts (see: https://developers.google.com/chart/interactive/docs/gallery/areachart)
+In the following example, we will use the Analytics APIs to query an OptiView Real-time Streaming account for a date range of usage and display it in a graph using Google Charts (see: https://developers.google.com/chart/interactive/docs/gallery/areachart)
 
 Before proceeding we assume you are familiar with Nodejs and have some familiarity with Google Charts. For this example we used a Nodejs server version 12.19 (the latest stable version as of February 2021).
 
-As with all API calls to our platform you must have your API token ready, you can find this in your Dolby.io dashboard.
+As with all API calls to our platform you must have your API token ready, you can find this in your OptiView Streaming Dashboard.
 
 Let's start by creating a new Nodejs project:
 
@@ -57,7 +57,7 @@ const startUTC = '2020-08-01'; // UTC year-month-day
 const stopUTC = '2021-01-01';
 const token = '__TOKEN__';
 
-// Dolby.io Real-time Streaming request details
+// OptiView Real-time Streaming request details
 const options = {
   hostname: 'api.millicast.com',
   path: '/api/analytics/account/series?startDate=' + startUTC + '&stopDate=' + stopUTC + '&resolution=Month',
@@ -105,7 +105,7 @@ https.createServer({ key: fs.readFileSync('ssl/key.pem'), cert: fs.readFileSync(
 console.log('running! see port https://localhost:' + port + '/usage');
 ```
 
-In this example we use the standard Express module along with the built in HTTPS module to handle secure requests coming from the client HTML side and for calls going out to the Dolby.io Real-time Streaming from the server. This example uses openssl self-signed certificates to satisfy the key and conf requirement in the HTTPS module on Nodejs. We are testing locally so we run a simple local web server from the Visual Studio Code editor to do the calls over HTTPS locally (https://localhost:8443/). In this case, you would only need to bypass the browser warning that comes up to access your HTML file.
+In this example we use the standard Express module along with the built in HTTPS module to handle secure requests coming from the client HTML side and for calls going out to the OptiView Real-time Streaming from the server. This example uses openssl self-signed certificates to satisfy the key and conf requirement in the HTTPS module on Nodejs. We are testing locally so we run a simple local web server from the Visual Studio Code editor to do the calls over HTTPS locally (https://localhost:8443/). In this case, you would only need to bypass the browser warning that comes up to access your HTML file.
 
 The express **"get"** method handles the request call to the API when the HTML user makes calls via the "/usage" path specified in the method. The path here is an arbitrary label, feel free to use whatever path name you prefer, just remember the call on the HTML counterpart has to match the path.
 
@@ -189,7 +189,7 @@ First open your editor and create a blank html file, save it as index.html. In y
                         let data = google.visualization.arrayToDataTable(o);
 
                         let opt = {
-                                title: 'Dolby.io Real-time Streaming Usage',
+                                title: 'OptiView Real-time Streaming Usage',
                                 hAxis: {title: 'Month', titleTextStyle: {color: '#333'}},
                                 vAxis: {minValue: 0}
                         };
@@ -496,7 +496,7 @@ Notice, the data sent to the server is in the same format that is expected on th
 
 ## Viewers per stream
 
-Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the Dolby.io API reference and select the [Analytics Streams Geo Series API](/millicast/api/analytics-streams-geo-series). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.mdx#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
+Calculating the viewers per stream (daily or hourly), which region they viewed from, and how much bandwidth they consumed is a straightforward process. Navigate to the OptiView API reference and select the [Analytics Streams Geo Series API](/millicast/api/analytics-streams-geo-series). Add your startDate, stopDate, resolution, and streamName. Additionally, in the top right corner, add your API Secret key found in the [Settings Tab](../streaming-dashboard/index.mdx#settings) of the dashboard. Once all the fields have correct values click the `Try It!` button to get your data.
 
 > 🚧 Get your data before it expires!
 >

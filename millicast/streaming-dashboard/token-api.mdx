@@ -47,7 +47,7 @@ Review the [REST API](/millicast/getting-started/using-rest-apis.mdx) platform g
 
 To use the REST APIs, you must provide an API Secret to authenticate your application. Without a valid secret, API calls will be rejected with an Unauthorized error.
 
-To acquire an API Secret, log into the Dolby.io dashboard, and click on "_Settings_" in the left-side menu.
+To acquire an API Secret, log into the OptiView Streaming Dashboard, and click on "_Settings_" in the left-side menu.
 
 Navigate to the Security tab and click the `+ Create` button to add an API Secret.
 
@@ -255,7 +255,7 @@ curl --request GET \
 
 ### Self-sign subscribe tokens
 
-Depending on how secure you want your stream to be, you may need to create many subscribe tokens. Dolby.io Real-Time Streaming supports the ability to self-sign subscribe tokens without having to make an API call to the Dolby.io server. Self-signing subscribe tokens locally allows you to generate your subscribe token more efficiently. The self-signed token is a user-generated JSON Web Token (JWT) that is generated from an existing subscribe token.
+Depending on how secure you want your stream to be, you may need to create many subscribe tokens. OptiView Real-time Streaming supports the ability to self-sign subscribe tokens without having to make an API call to the OptiView Real-time server. Self-signing subscribe tokens locally allows you to generate your subscribe token more efficiently. The self-signed token is a user-generated JSON Web Token (JWT) that is generated from an existing subscribe token.
 
 To learn more about self-signing subscribe tokens, [check out this guide](/millicast/streaming-dashboard/subscribe-tokens.mdx#self-signing-subscribe-tokens).
 

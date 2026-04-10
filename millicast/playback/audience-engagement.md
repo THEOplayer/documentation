@@ -26,4 +26,4 @@ Real-time streaming enables broadcasters to engage with audiences by providing a
 **Singular.live** provides cloud-managed graphics that can be rendered on the broadcast side or on the client side to allow for user engagement and interaction with the stream.
 
 [Add Monetization into your Stream and Change the Way Streamers Interact](https://dolby.io/blog/maestro-x-dolbyio/)<br/>
-Combining **Maestro**'s robust video monetization and interactivity features with Dolby.io's real-time streaming technology enhances viewers' experiences enabling more lifelike interactions, ultimately revolutionizing the landscape of interactive live streaming for increased engagement and revenue opportunities.
+Combining **Maestro**'s robust video monetization and interactivity features with OptiView Real-time Streaming's real-time streaming technology enhances viewers' experiences enabling more lifelike interactions, ultimately revolutionizing the landscape of interactive live streaming for increased engagement and revenue opportunities.

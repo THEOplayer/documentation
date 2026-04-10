@@ -3,7 +3,7 @@ title: 'Streaming Dashboard'
 slug: /about-dash
 ---
 
-The Dolby.io dashboard enables you to easily provision tokens, broadcast streams, and manage account settings.
+The OptiView Streaming Dashboard enables you to easily provision tokens, broadcast streams, and manage account settings.
 
 <div className="youtube-container">
   <iframe
@@ -29,7 +29,7 @@ import TokensMainLiveBroadcast from '../assets/img/tokens-main-live-broadcast.pn
 
 ## Broadcaster
 
-The broadcaster interface allows you to stream instantly from your account and gives you a link to share with your viewers. Your video is streamed via WebRTC to the Dolby.io Real-time Streaming service, which globally distributes the feed to all of your viewers with sub-second latency. For more information on how to navigate this interface, go to the [Live Broadcast Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) guide.
+The broadcaster interface allows you to stream instantly from your account and gives you a link to share with your viewers. Your video is streamed via WebRTC to the OptiView Real-time Streaming service, which globally distributes the feed to all of your viewers with sub-second latency. For more information on how to navigate this interface, go to the [Live Broadcast Dashboard](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) guide.
 
 import NewPublisher from '../assets/img/newpublisher.png';
 
@@ -133,7 +133,7 @@ The analytic information in this area has an access window of 7 days, after that
 
 ## Webhooks
 
-Webhooks are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application. For how to create a webhook, [check out its guide](/millicast/webhooks/index.mdx).
+Webhooks are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the OptiView Real-time platform to your application. For how to create a webhook, [check out its guide](/millicast/webhooks/index.mdx).
 
 import DashWebhooks from '../assets/img/dashboard-webhooks.png';
 
@@ -151,7 +151,7 @@ import Billing1 from '../assets/img/billing_1.png';
   <img src={Billing1} width="600" />
 </div>
 
-Dolby.io Real-time Streaming plans include a monthly bandwidth allotment and a per GiB fee for bandwidth used over the amount included with your plan. Here you can see how much bandwidth you have used for your current billing cycle.
+OptiView Real-time Streaming plans include a monthly bandwidth allotment and a per GiB fee for bandwidth used over the amount included with your plan. Here you can see how much bandwidth you have used for your current billing cycle.
 
 import AcctBw from '../assets/img/a3a3e63-acct-bw.png';
 
@@ -181,7 +181,7 @@ import DashProfile from '../assets/img/dashboard-profile.png';
 
 Inside _Settings_, the account's _Token defaults_ are managed. Changes here are permanent across any existing and new tokens. Alternatively, you can alter [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) and [Cluster Regions](/millicast/distribution/multi-region-support/index.mdx) on a token-by-token basis instead of an account-wide change.
 
-On the _Security_ tab, users can create one or multiple API secrets to connect to [Dolby.io's Streaming API](/millicast/api/analytics-account-total/).
+On the _Security_ tab, users can create one or multiple API secrets to connect to [OptiView's Streaming API](/millicast/api/analytics-account-total/).
 
 import DashSettings from '../assets/img/dashboard-settings.png';
 
@@ -191,7 +191,7 @@ import DashSettings from '../assets/img/dashboard-settings.png';
 
 ## Users
 
-As a developer platform, we understand that you might not be working alone; therefore, **Users** allows you to add additional developers that might need access to the working streams. These users are managed across all of the Dolby.io platforms, meaning the invited **would also have access to the Media APIs**.
+As a developer platform, we understand that you might not be working alone; therefore, **Users** allows you to add additional developers that might need access to the working streams. These users are managed across all of the OptiView platforms, meaning the invited **would also have access to the Media APIs**.
 
 import DashUsers from '../assets/img/dashboard-users.png';
 
@@ -201,7 +201,7 @@ import DashUsers from '../assets/img/dashboard-users.png';
 
 ## Resources
 
-The Resources section of the dashboard is reserved as the space for tutorials, documentation, and examples which might serve as useful in exploring all of the integrations and SDKs. Additionally, it links to Dolby.io's WebRTC version of OBS. If you are beginning your journey, start your first stream with our [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide.
+The Resources section of the dashboard is reserved as the space for tutorials, documentation, and examples which might serve as useful in exploring all of the integrations and SDKs. Additionally, it links to the WebRTC version of OBS. If you are beginning your journey, start your first stream with our [Getting Started](/millicast/introduction-to-streaming-apis.mdx) guide.
 
 import DashResources from '../assets/img/dashboard-resources.png';
 
@@ -211,7 +211,7 @@ import DashResources from '../assets/img/dashboard-resources.png';
 
 ## Two-factor authentication
 
-Two-factor authentication provides an extra layer of security and helps to ensure only an authorized user has access to your account, even if the account password is exposed. The second factor of authentication is provided by a 3rd party authenticator application ([IOS](https://apps.apple.com/us/app/microsoft-authenticator/id983156458), [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)), which generates a single-use verification code. The two-factor authentication user will need to provide this code in order to log into the Dolby.io dashboard.
+Two-factor authentication provides an extra layer of security and helps to ensure only an authorized user has access to your account, even if the account password is exposed. The second factor of authentication is provided by a 3rd party authenticator application ([IOS](https://apps.apple.com/us/app/microsoft-authenticator/id983156458), [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)), which generates a single-use verification code. The two-factor authentication user will need to provide this code in order to log into the OptiView Streaming Dashboard.
 
 import TwoFaLoginCode from '../assets/img/2fa-login-code.png';
 
@@ -219,7 +219,7 @@ import TwoFaLoginCode from '../assets/img/2fa-login-code.png';
   <img src={TwoFaLoginCode} width="400" />
 </div>
 
-To enable this feature, navigate to the _Logging in_ section of the Dolby.io dashboard by clicking on your name in the top right corner and selecting _Profile_. Click Set Up to activate the two-factor authentication service. This button will take you through the setup process needed to register your authenticator application.
+To enable this feature, navigate to the _Logging in_ section of the OptiView Streaming Dashboard by clicking on your name in the top right corner and selecting _Profile_. Click Set Up to activate the two-factor authentication service. This button will take you through the setup process needed to register your authenticator application.
 
 import AcctButton from '../assets/img/8d27f2e-2fa_accnt_button.png';
 

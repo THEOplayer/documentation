@@ -86,7 +86,7 @@ val publisher = Core.createPublisher()
 
 ### 4.2 Set publisher credentials
 
-Make sure to use the publisher's methods in a coroutine context. Then, create a stream in your Dolby.io developer dashboard or using the Dolby.io Streaming REST API and [set your credentials](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/set-credentials.html). Collecting the [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) of the publisher object from its StateFlow is important for handling errors and knowing if the SDK is ready for the [publish](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/publish.html) call to happen.
+Make sure to use the publisher's methods in a coroutine context. Then, create a stream in your OptiView Streaming Dashboard or using the OptiView Real-time Streaming REST API and [set your credentials](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/set-credentials.html). Collecting the [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) of the publisher object from its StateFlow is important for handling errors and knowing if the SDK is ready for the [publish](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/publish.html) call to happen.
 
 ```kotlin
 // Helper for later usage
@@ -193,7 +193,7 @@ coroutineScope.safeLaunch {
 
 Connect to the Millicast service and publish your streams.
 
-Use the [connect](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/connect.html) method to authenticate and access Dolby.io Real-time Streaming through the Director API. Successful authentication results in opening a WebSocket connection that allows using the Dolby.io Real-time Streaming server and receiving a StateFlow update to [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) as PublisherConnectionState.Connected.
+Use the [connect](https://millicast.github.io/doc/latest/android/android/com.millicast/-client/connect.html) method to authenticate and access OptiView Real-time Streaming through the Director API. Successful authentication results in opening a WebSocket connection that allows using the OptiView Real-time Streaming server and receiving a StateFlow update to [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) as PublisherConnectionState.Connected.
 
 Only after a successful connection, use the [publish](<https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/publish.html?query=suspend%20fun%20publish():%20Boolean>) method to start publishing the stream. Once the publisher starts sending media, the SDK will update [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) to PublisherConnectionState.Started.
 

@@ -4,7 +4,7 @@ slug: /playback/multiview
 sidebar_position: 4
 ---
 
-Multi-view lets you ingest and render multiple Dolby.io real-time video and audio streams simultaneously inside a browser or mobile native applications. Once rendered, you can switch seamlessly between streams, allowing you to control how you view the content. By giving viewers content control, broadcasters can enable real-time experiences and engagement that leave viewers wanting more.
+Multi-view lets you ingest and render multiple OptiView real-time video and audio streams simultaneously inside a browser or mobile native applications. Once rendered, you can switch seamlessly between streams, allowing you to control how you view the content. By giving viewers content control, broadcasters can enable real-time experiences and engagement that leave viewers wanting more.
 
 <div className="youtube-container">
   <iframe
@@ -14,11 +14,11 @@ Multi-view lets you ingest and render multiple Dolby.io real-time video and audi
   ></iframe>
 </div>
 
-To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/broadcast/multi-source-broadcasting.mdx). Once broadcasting a multi-source stream, you can view the stream using the Dolby.io Millicast viewer app, or by building your own multi-view application. Dolby.io also supports [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) for mixed audio playback.
+To create a multi-view experience you must capture multiple video or audio feeds and then broadcast them as a [multi-source stream](/millicast/broadcast/multi-source-broadcasting.mdx). Once broadcasting a multi-source stream, you can view the stream using the OptiView viewer app, or by building your own multi-view application. OptiView Real-time Streaming also supports [Audio Multiplexing](/millicast/playback/audio-multiplexing.md) for mixed audio playback.
 
-## Multi-view with the Dolby.io viewer
+## Multi-view with the OptiView viewer
 
-Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx), you can open the stream viewer from the [Dolby.io dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
+Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx), you can open the stream viewer from the [OptiView Streaming Dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
 
 ```
 https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]
@@ -40,22 +40,22 @@ https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]&multi
 
 ## Creating a Multi-view web application
 
-Dolby.io supports [Multisource Playback](/millicast/playback/source-and-layer-selection.md) via the [Client SDKs](/millicast/playback/players-sdks/index.mdx), allowing you to build your own multi-view experience for your app or platform.
+OptiView Real-time Streaming supports [Multisource Playback](/millicast/playback/source-and-layer-selection.md) via the [Client SDKs](/millicast/playback/players-sdks/index.mdx), allowing you to build your own multi-view experience for your app or platform.
 
 Before getting started building a multi-view application it is worth understanding;
 
 1. How to broadcast [Multisource Streams](/millicast/broadcast/multi-source-broadcasting.mdx).
 2. How to [Create a Basic Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.mdx).
 3. What [Broadcast Events](/millicast/playback/players-sdks/viewer-events.md) are and how to use them.
-4. How the Dolby.io platform organizes and handles [Multisource Playback](/millicast/playback/source-and-layer-selection.md).
+4. How the OptiView Real-time platform organizes and handles [Multisource Playback](/millicast/playback/source-and-layer-selection.md).
 
 ### Store and track incoming Multisource feeds
 
 :::info Not building a Web App?
-All Dolby.io [Client SDKs](/millicast/playback/players-sdks/index.mdx) support building Multi-view applications. Although the below example is using JavaScript the principles are the same for each SDK.
+All OptiView Real-time [Client SDKs](/millicast/playback/players-sdks/index.mdx) support building Multi-view applications. Although the below example is using JavaScript the principles are the same for each SDK.
 :::
 
-The Dolby.io platform tracks broadcasts by their `account ID` and `stream name` and individual streams within broadcasts by their `sourceID`, a unique identifier that can be used for selecting feeds to render from the [viewer node](source-and-layer-selection.md). Unlike a traditional broadcast where there is only one stream to playback, a multi-view application must account for multiple feeds arriving asynchronously. To accomplish this, the application should [listen for streams using a `broadcastEvent`](/millicast/playback/players-sdks/viewer-events.md#using-events), and store the stream `sourceID` as it becomes active.
+The OptiView Real-time platform tracks broadcasts by their `account ID` and `stream name` and individual streams within broadcasts by their `sourceID`, a unique identifier that can be used for selecting feeds to render from the [viewer node](source-and-layer-selection.md). Unlike a traditional broadcast where there is only one stream to playback, a multi-view application must account for multiple feeds arriving asynchronously. To accomplish this, the application should [listen for streams using a `broadcastEvent`](/millicast/playback/players-sdks/viewer-events.md#using-events), and store the stream `sourceID` as it becomes active.
 
 ```javascript
 const activeSources = new Set();
@@ -72,7 +72,7 @@ await millicastView.on('broadcastEvent', (event) => {
 
 ### Add video elements and render feeds
 
-Once we've captured the `sourceID` of an incoming stream, we need to signal to the Viewer node which _track_ the stream will play on. The Dolby.io Millicast SDKs include a function that allows you to [dynamically add a track to the Viewer node](source-and-layer-selection.md#dynamic-viewer-track) called `addRemoteTrack`.
+Once we've captured the `sourceID` of an incoming stream, we need to signal to the Viewer node which _track_ the stream will play on. The OptiView Real-time SDKs include a function that allows you to [dynamically add a track to the Viewer node](source-and-layer-selection.md#dynamic-viewer-track) called `addRemoteTrack`.
 
 [addRemoteTrack](https://millicast.github.io/millicast-sdk/View.html#addRemoteTrack) requires the media type of the incoming stream (_audio or video_) and a [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream), an interface that signals a stream of media content. `addRemoteTrack` will then return a promise that will be resolved when the [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver) is assigned a `mid` value.
 
@@ -123,7 +123,7 @@ In the above code `videoDiv` is where we want the `<video>` tag to show up in th
 4. Created a `<video>` element and associate that element with the newly created media.
 5. Added the `<video>` element and its `mediaStream` to the `<div>` where it will render.
 
-At this stage, all the pieces are together, however, the stream won't yet render. This is because you have yet to tell the Dolby.io Viewer node which stream to project onto the `Transceiver`. This is done using the [`project` function](/millicast/playback/source-and-layer-selection) which tells the node to begin _projecting_ the stream, identified by its `sourceID`, onto the `Transceiver`.
+At this stage, all the pieces are together, however, the stream won't yet render. This is because you have yet to tell the OptiView Viewer node which stream to project onto the `Transceiver`. This is done using the [`project` function](/millicast/playback/source-and-layer-selection) which tells the node to begin _projecting_ the stream, identified by its `sourceID`, onto the `Transceiver`.
 
 ```javascript
 await millicastView.project(sourceID, [
@@ -143,7 +143,7 @@ Once projected the stream will begin playing within the `<video>` tag.
 Put all together, a basic multi-view application would look something like this:
 
 ```javascript
-// Authenticate a Connection to the Dolby.io CDN
+// Authenticate a Connection to the OptiView Real-time CDN
 const tokenGenerator = () =>
   millicast.Director.getSubscriber({
     streamName: 'YOUR STREAM NAME',
@@ -242,7 +242,7 @@ const updateLayers = async (layers) => {
 
 ## Limitations of Multi-view
 
-Dolby.io Real-time Streaming does not limit the number of tracks that a viewer can receive, however, it limits the aggregate bitrate of all tracks to 12 Mbps. The pinned source is prioritized and allowed to exceed the 12 Mbps limit, and the other tracks share any remaining available bandwidth. The source with a null `sourceId` is pinned by default. You can change the pinned source by using the `pinnedSourceId` attribute in the `View.connect` command. You should configure the Simulcast/SVC bitrate of each source so that a viewer can receive the desired amount of video tracks in the viewer session while remaining under the aggregate bitrate limit.
+OptiView Real-time Streaming does not limit the number of tracks that a viewer can receive, however, it limits the aggregate bitrate of all tracks to 12 Mbps. The pinned source is prioritized and allowed to exceed the 12 Mbps limit, and the other tracks share any remaining available bandwidth. The source with a null `sourceId` is pinned by default. You can change the pinned source by using the `pinnedSourceId` attribute in the `View.connect` command. You should configure the Simulcast/SVC bitrate of each source so that a viewer can receive the desired amount of video tracks in the viewer session while remaining under the aggregate bitrate limit.
 
 | Example                                          | Bandwidth Allocation                                                                        |
 | :----------------------------------------------- | :------------------------------------------------------------------------------------------ |

@@ -41,7 +41,7 @@ if (videoTrack == nullptr)
 
 ## 2. Set logger
 
-Optionally, set your own logger function to print Dolby.io Real-time Streaming logs according to the severity. By default, the SDK prints the standard output, where the severity is first and then the message.
+Optionally, set your own logger function to print OptiView Real-time Streaming logs according to the severity. By default, the SDK prints the standard output, where the severity is first and then the message.
 
 ```cpp
 millicast::Logger::set_logger([](/millicast/const std::string& msg, millicast::LogLevel lvl) {
@@ -52,7 +52,7 @@ millicast::Logger::set_logger([](/millicast/const std::string& msg, millicast::L
 
 ## 3. Publish a stream
 
-Create a publisher object and set a listener object to the publisher to receive proper events. This requires creating a class that inherits the publisher's listener interface. Then, create a stream in your Dolby.io developer dashboard or using the Dolby.io Streaming REST API and set your credentials.
+Create a publisher object and set a listener object to the publisher to receive proper events. This requires creating a class that inherits the publisher's listener interface. Then, create a stream in your OptiView Streaming Dashboard or using the OptiView Real-time Streaming REST API and set your credentials.
 
 ```cpp
 // Create a publisher object
@@ -139,13 +139,13 @@ publisher->add_track(audio_track);
 
 ## 6. Authenticate using the Director API
 
-Authenticate to access Dolby.io Real-time Streaming through the Director API.
+Authenticate to access OptiView Real-time Streaming through the Director API.
 
 ```cpp
 publisher->connect();
 ```
 
-Successful authentication results in opening a WebSocket connection that allows using the Dolby.io Real-time Streaming server and calling the listener's [on_connected](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_client_listener.html#a50511fbcaf9ac3dd4fc54c4e94e74982) method.
+Successful authentication results in opening a WebSocket connection that allows using the OptiView Real-time Streaming server and calling the listener's [on_connected](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_client_listener.html#a50511fbcaf9ac3dd4fc54c4e94e74982) method.
 
 ## 7. Start publishing
 
