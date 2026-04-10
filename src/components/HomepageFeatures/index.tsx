@@ -59,8 +59,8 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     to: [
-      { link: '/millicast', text: 'Real-time (Millicast)' },
-      { link: '/theolive', text: 'Live (THEOlive)' },
+      { link: '/millicast', text: 'Real-time' },
+      { link: '/theolive', text: 'Live' },
     ],
   },
   {
@@ -76,7 +76,7 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <p>
-        Dolby OptiView Ads (formerly known as THEOads) enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
+        Dolby OptiView Ads enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
         engagement and maximize ad revenue.
       </p>
     ),

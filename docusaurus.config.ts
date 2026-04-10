@@ -97,7 +97,7 @@ function removeDocIndexItems(items) {
 const config: Config = {
   title: 'Dolby OptiView Documentation',
   tagline:
-    'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, Ad Engine, and Open Video UI',
+    'Discover the latest developer documentation and samples for OptiView products',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -584,14 +584,14 @@ const config: Config = {
               type: 'docSidebar',
               docsPluginId: 'theolive',
               sidebarId: 'theolive',
-              label: 'Live (THEOlive)',
+              label: 'Live',
               activeBasePath: '/theolive',
             },
             {
               type: 'docSidebar',
               docsPluginId: 'millicast',
               sidebarId: 'millicast',
-              label: 'Real-time (Millicast)',
+              label: 'Real-time',
               activeBasePath: '/millicast',
             },
           ],
