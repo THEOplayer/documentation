@@ -76,8 +76,8 @@ const FeatureList: FeatureItem[] = [
     ),
     description: (
       <p>
-        Dolby OptiView Ads enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer
-        engagement and maximize ad revenue.
+        Dolby OptiView Ads enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer engagement and maximize ad
+        revenue.
       </p>
     ),
     to: [{ link: '/ads', text: 'Get Started' }],

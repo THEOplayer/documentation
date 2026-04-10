@@ -96,8 +96,7 @@ function removeDocIndexItems(items) {
 
 const config: Config = {
   title: 'Dolby OptiView Documentation',
-  tagline:
-    'Discover the latest developer documentation and samples for OptiView products',
+  tagline: 'Discover the latest developer documentation and samples for OptiView products',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
