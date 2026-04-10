@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 sidebar_label: Getting started
+title: 'Getting started'
 sidebar_custom_props:
   icon: 🚀
 description: Create your first stream, from setup to embedding the player.
@@ -9,7 +10,6 @@ description: Create your first stream, from setup to embedding the player.
 import RebrandingNotice from '@site/theolive/callouts/_rebranding_notice.md';
 
 <RebrandingNotice />
-# Getting started
 
 This guide walks you through creating your first stream, from setting up an account to embedding the player on your page.
 
@@ -40,7 +40,7 @@ A channel consists of three main components that need to be configured:
 
 - **Ingest** — where the media is retrieved from. This is the entry point for your content and multiple protocols are supported like RTMP and SRT.
 - **Engine** — processes the incoming media, handling transcoding and packaging.
-- **Distributions** — different output versions of an engine. Each distribution lets you enable or disable protocols, choose CDNs, and more.
+- **Distributions** — different output versions of an engine. Each distribution lets you enable or disable protocols, set security, choose latency targets, and more.
 
 <figure className="center-container">
 
@@ -55,7 +55,7 @@ A channel consists of three main components that need to be configured:
 Create a new ingest, give it a name, and select the protocol you want to use (RTMP or SRT) and which mode (pull or push).
 
 :::tip
-You only need a single ingest to start streaming but are free to create multiple ones for redundancy purposes for example.
+You only need a single ingest to start streaming but for high availablity and redundancy multiple ingests and engines should be utilized.
 :::
 
 <div className="center-container">![Create an ingest](assets/img/create-ingest.png)</div>
@@ -73,7 +73,7 @@ The engine is responsible for transcoding and packaging the incoming media. Crea
 </div>
 <div class="col col--8">
 
-- **Name** — a descriptive name for your engine.
+- **Name** — a human-readable, descriptive name for your engine.
 - **Priority** — determines which engine takes precedence when multiple engines are configured. A lower number means higher priority.
 - **Ingest** — select which ingest this engine should use as its source.
 - **Region** — the region where the transcoding takes place. Choose one close to your ingest location.
@@ -82,7 +82,7 @@ The engine is responsible for transcoding and packaging the incoming media. Crea
 - **Enable HESP** — output content in HESP format for low latency delivery.
 - **Enable HLS** — output content in HLS format for broad platform compatibility.
 - **Enable HLS MPEG-TS** — output content in HLS MPEG-TS format. Only recommended for very specific platforms that don't support HLS with CMAF segments. This feature needs to be explicitly enabled in your account by an admin and isn't compatible with some other features like DRM.
-- **DAI Asset Key** — asset key for OptiView ads. To learn more, contact your Dolby team.
+- **DAI Asset Key** — asset key for [OptiView Ads](/ads/getting-started/). To learn more, contact your Dolby team.
 
 </div>
 </div>
@@ -90,20 +90,20 @@ The engine is responsible for transcoding and packaging the incoming media. Crea
 
 ### 2.3 Distributions
 
-A distribution represents an output version of an engine. Create a new distribution, give it a name and a connected engine. The default properties are fine to get started, but a lot of properties can be configured:
+A distribution represents an output media stream from an engine. Create a new distribution, give it a name and a connected engine. The default properties are fine to get started, but a lot of properties can be configured:
 
 ![Configure a distribution](assets/img/configure-distribution.png)
 
 - **Endpoints** — the connected engines that feed into this distribution.
 - **Outputs** — enable or disable streaming protocols (HESP, HLS, HLS MPEG-TS).
 - **Player** — configure player settings such as target latency and max bitrate.
-- **WebRTC** — optional WebRTC configuration for real-time delivery.
+- **WebRTC** — optional WebRTC configuration for real-time delivery with [OptiView Real-time streaming](/millicast/getting-started/).
 - **Overrides** — add custom overrides for specific settings.
 - **Security** — configure access restrictions including geo blocking, IP blocking, referrer blocking and JWT security.
 
 ## 3. Start the channel
 
-When you're all set, you can start your channel from the channel details page by clicking the `Start all` button. This will start all engines at once. Starting your channel means your transcoding time will start counting for billing purposes.
+When you're all set, you can start your channel from the channel details page by clicking the `Start all` button. This will start all engines at once. Starting your channel means your transcoding time will start counting for billing purposes, even if a stream is not connected.
 
 For advanced use cases such as production updates, you can start and stop individual engines separately. However, for most use cases all engines will be started and stopped at the same time.
 
