@@ -15,7 +15,7 @@ import HostedViewerPreview from '../../assets/img/dolbyio-hosted-viewer-preview.
 </div>
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a OptiView Real-time application and start your first broadcast.
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast.
 
 You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) and [Hosted Player](/millicast/playback/hosted-player/index.md).
 :::

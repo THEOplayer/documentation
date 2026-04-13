@@ -52,7 +52,7 @@ millicast::Logger::set_logger([](/millicast/const std::string& msg, millicast::L
 
 ## 3. Publish a stream
 
-Create a publisher object and set a listener object to the publisher to receive proper events. This requires creating a class that inherits the publisher's listener interface. Then, create a stream in your OptiView Streaming Dashboard or using the OptiView Real-time Streaming REST API and set your credentials.
+Create a publisher object and set a listener object to the publisher to receive proper events. This requires creating a class that inherits the publisher's listener interface. Then, create a stream in your OptiView Real-time Streaming Dashboard or using the OptiView Real-time Streaming REST API and set your credentials.
 
 ```cpp
 // Create a publisher object

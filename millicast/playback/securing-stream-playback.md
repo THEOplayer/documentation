@@ -14,7 +14,7 @@ To secure broadcast playback, you need to enable the **Secure Viewer** setting w
 
 Subscribe tokens are used to authenticate access to a "Secure stream". When enabled, streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains. Even though restricting access to streamed content in selected geo-locations is possible using the publish token, the subscribe token lets you add additional geo-blocking rules.
 
-To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.mdx), which outlines how to create a token in the OptiView Streaming Dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
+To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.mdx), which outlines how to create a token in the OptiView Real-time Streaming Dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
 
 `fff04a5a1c02b2b8d48a9133e8461985aa482066cc3e9ed487baaac89588e26f`
 

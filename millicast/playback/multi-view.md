@@ -4,7 +4,7 @@ slug: /playback/multiview
 sidebar_position: 4
 ---
 
-Multi-view lets you ingest and render multiple OptiView real-time video and audio streams simultaneously inside a browser or mobile native applications. Once rendered, you can switch seamlessly between streams, allowing you to control how you view the content. By giving viewers content control, broadcasters can enable real-time experiences and engagement that leave viewers wanting more.
+Multi-view lets you ingest and render multiple OptiView Real-time video and audio streams simultaneously inside a browser or mobile native applications. Once rendered, you can switch seamlessly between streams, allowing you to control how you view the content. By giving viewers content control, broadcasters can enable real-time experiences and engagement that leave viewers wanting more.
 
 <div className="youtube-container">
   <iframe
@@ -18,7 +18,7 @@ To create a multi-view experience you must capture multiple video or audio feeds
 
 ## Multi-view with the OptiView viewer
 
-Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx), you can open the stream viewer from the [OptiView Streaming Dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
+Once you have created a [Multisource stream](/millicast/broadcast/multi-source-broadcasting.mdx), you can open the stream viewer from the [OptiView Real-time Streaming Dashboard](https://streaming.dolby.io/#/tokens) or by navigating to:
 
 ```
 https://viewer.millicast.com?streamId=[YOUR_ACCOUNT_ID]/[YOUR_STREAM_NAME]
