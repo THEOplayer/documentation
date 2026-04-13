@@ -534,7 +534,7 @@ const config: Config = {
           textColor: '#344a5e',
           isCloseable: false,
         }
-      : null, // don't use announce bar in production
+      : undefined,
     
     navbar: {
       title: null,
