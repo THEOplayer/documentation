@@ -7,7 +7,7 @@ sidebar_position: 5
 
 This guide will outline four options for NDI delivery:
 
-1. [How-to Publish NDI with OptiView Real-time Streaming Dashboard Broadcaster](#how-to-publish-ndi-with-optiview-streaming-dashboard-broadcaster)
+1. [How-to Publish NDI with OptiView Real-time Streaming Dashboard Broadcaster](#how-to-publish-ndi-with-optiview-real-time-streaming-dashboard-broadcaster)
 2. [How-to Publish NDI with OBS-WebRTC](#how-to-publish-ndi-with-obs-webrtc)
 3. [How-to Publish Video Editor with NDI](#how-to-publish-video-editor-with-ndi)
 4. [How-to Publish NDI with vMix](#how-to-publish-ndi-with-vmix)
