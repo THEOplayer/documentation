@@ -19,7 +19,7 @@ See the official [gstreamer.freedesktop.org](https://gstreamer.freedesktop.org/)
 
 ## Get your OptiView WHIP publish URL
 
-You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [OptiView Streaming Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
+You will need a _WHIP endpoint_ and _Bearer token_ in order to broadcast. From the [OptiView Real-time Streaming Dashboard](/millicast/streaming-dashboard/index.mdx), navigate to the _Publishing_ tab of your token. Under the _Live broadcast - Publish tokens_ section, retrieve the _WHIP endpoint_ and _Bearer token_.
 
 See the [WHIP](/millicast/broadcast/webrtc-and-whip.mdx) broadcast guide for more specific instructions on retrieving these values from the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
@@ -54,12 +54,12 @@ The [1.22.0 release](https://gstreamer.freedesktop.org/releases/1.22/) of GStrea
 - WebRTC HTTP ingest (WHIP) to a MediaServer (whipsink)
 - WebRTC HTTP egress (WHEP) from a MediaServer (whepsrc)
 
-The [whipsink](https://gstreamer.freedesktop.org/documentation/webrtchttp/whipsink.html) element can be used to **publish** a gstreamer pipeline out to an OptiView real-time stream. The attributes that must be defined:
+The [whipsink](https://gstreamer.freedesktop.org/documentation/webrtchttp/whipsink.html) element can be used to **publish** a gstreamer pipeline out to an OptiView Real-time stream. The attributes that must be defined:
 
 - `auth-token`: should be set with your publishing bearer token
 - `whip-endpoint`: should be set with the OptiView [WHIP](/millicast/api/director/whip-whip-publish.api.mdx) endpoint
 
-The [autovideosink](https://gstreamer.freedesktop.org/documentation/autodetect/autovideosink.html) element can be used to **playback** an OptiView real-time stream being broadcast into a gstreamer pipeline. The attribute that must be defined:
+The [autovideosink](https://gstreamer.freedesktop.org/documentation/autodetect/autovideosink.html) element can be used to **playback** an OptiView Real-time stream being broadcast into a gstreamer pipeline. The attribute that must be defined:
 
 - `whep-endpoint`: should be set with the OptiView [WHEP](/millicast/api/director/whep-whep-subscribe.api.mdx) endpoint
 

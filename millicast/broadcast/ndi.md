@@ -7,7 +7,7 @@ sidebar_position: 5
 
 This guide will outline four options for NDI delivery:
 
-1. [How-to Publish NDI with OptiView Streaming Dashboard Broadcaster](#how-to-publish-ndi-with-optiview-streaming-dashboard-broadcaster)
+1. [How-to Publish NDI with OptiView Real-time Streaming Dashboard Broadcaster](#how-to-publish-ndi-with-optiview-streaming-dashboard-broadcaster)
 2. [How-to Publish NDI with OBS-WebRTC](#how-to-publish-ndi-with-obs-webrtc)
 3. [How-to Publish Video Editor with NDI](#how-to-publish-video-editor-with-ndi)
 4. [How-to Publish NDI with vMix](#how-to-publish-ndi-with-vmix)
@@ -15,12 +15,12 @@ This guide will outline four options for NDI delivery:
 ## NDI publishing
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a OptiView Real-time application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 :::
 
 Install the [NDI tools](https://ndi.video/type/ndi-tools/) on your computer. If you do not have a NDI camera, you can download NDI HX Camera or similar to test the below workflows on you mobile device.
 
-### How-to publish NDI with OptiView Streaming Dashboard broadcaster
+### How-to publish NDI with OptiView Real-time Streaming Dashboard broadcaster
 
 Sign in to your [OptiView Real-time Streaming dashboard](https://dashboard.dolby.io/) and create a stream token. Press the broadcast button, and inside the Broadcaster, select the camera icon on the bottom left. Here you will see a list of possible camera selections. If you have an NDI camera like NewTek, Angekis, or AIDA, it will show up in the dropdown, and you are ready to go.
 

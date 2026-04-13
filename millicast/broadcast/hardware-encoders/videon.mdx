@@ -57,7 +57,7 @@ import AudioProfiles from '../../assets/img/hardware-encoders/videon_audio_profi
 
 #### Using RTMP
 
-Open your OptiView Streaming Dashboard and copy the [**RTMP publishing paths**](/millicast/broadcast/rtmp-and-rtmps.mdx). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.mdx) to generate those URLs.
+Open your OptiView Real-time Streaming Dashboard and copy the [**RTMP publishing paths**](/millicast/broadcast/rtmp-and-rtmps.mdx). Additionally, enable the** RTMP multi-bitrate** toggle. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.mdx) to generate those URLs.
 
 Under **Outputs**, for each **RTMP**, select **Video Source** corresponding to the RTMP profile (1080p for the highest profile and 360p for the lowest profile). Make sure to set **Streaming Providers** to _Generic RTMP_ and paste the **Stream URL** from the OptiView RTMP dashboard.
 
@@ -85,7 +85,7 @@ import VideonRtmp from '../../assets/img/hardware-encoders/videon-rtmp.png';
 
 #### Using SRT
 
-Under **Outputs**, for each **SRT**, select **Video Source** corresponding to the SRT profile (1080p for the highest profile and 360p for the lowest profile). For the **URL**, select the _srt://_ protocol, enter the URL of the **SRT publish path** from the OptiView Streaming Dashboard, and enter port 10000. For the **Stream ID**, use the **SRT stream ID** from the dashboard and append **&simulcastId** for the first layer, **&sourceId=1&simulcastId&videoOnly** for the second layer, and **&sourceId=2&simulcastId&videoOnly** for the third layer. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.mdx) to generate those URLs.
+Under **Outputs**, for each **SRT**, select **Video Source** corresponding to the SRT profile (1080p for the highest profile and 360p for the lowest profile). For the **URL**, select the _srt://_ protocol, enter the URL of the **SRT publish path** from the OptiView Real-time Streaming Dashboard, and enter port 10000. For the **Stream ID**, use the **SRT stream ID** from the dashboard and append **&simulcastId** for the first layer, **&sourceId=1&simulcastId&videoOnly** for the second layer, and **&sourceId=2&simulcastId&videoOnly** for the third layer. You can also use the [Multi-Source builder](/millicast/streaming-dashboard/multi-source-builder.mdx) to generate those URLs.
 
 Example:
 

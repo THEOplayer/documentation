@@ -3,7 +3,7 @@ title: Analytics APIs
 slug: /analytics-api
 ---
 
-The Analytics APIs allow you to query your usage independent of the OptiView Streaming Dashboard and get details of how your users are consuming your streams.
+The Analytics APIs allow you to query your usage independent of the OptiView Real-time Streaming Dashboard and get details of how your users are consuming your streams.
 
 To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api.mdx).
 
@@ -37,7 +37,7 @@ In the following example, we will use the Analytics APIs to query an OptiView Re
 
 Before proceeding we assume you are familiar with Nodejs and have some familiarity with Google Charts. For this example we used a Nodejs server version 12.19 (the latest stable version as of February 2021).
 
-As with all API calls to our platform you must have your API token ready, you can find this in your OptiView Streaming Dashboard.
+As with all API calls to our platform you must have your API token ready, you can find this in your OptiView Real-time Streaming Dashboard.
 
 Let's start by creating a new Nodejs project:
 

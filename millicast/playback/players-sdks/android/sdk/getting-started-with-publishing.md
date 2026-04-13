@@ -86,7 +86,7 @@ val publisher = Core.createPublisher()
 
 ### 4.2 Set publisher credentials
 
-Make sure to use the publisher's methods in a coroutine context. Then, create a stream in your OptiView Streaming Dashboard or using the OptiView Real-time Streaming REST API and [set your credentials](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/set-credentials.html). Collecting the [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) of the publisher object from its StateFlow is important for handling errors and knowing if the SDK is ready for the [publish](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/publish.html) call to happen.
+Make sure to use the publisher's methods in a coroutine context. Then, create a stream in your OptiView Real-time Streaming Dashboard or using the OptiView Real-time Streaming REST API and [set your credentials](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/set-credentials.html). Collecting the [state](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/current-state.html) of the publisher object from its StateFlow is important for handling errors and knowing if the SDK is ready for the [publish](https://millicast.github.io/doc/latest/android/android/com.millicast/-publisher/publish.html) call to happen.
 
 ```kotlin
 // Helper for later usage
