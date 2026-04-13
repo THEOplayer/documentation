@@ -123,7 +123,7 @@ const openVideoUiPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'react-native',
-    label: 'React Native OptiView Player UI',
+    label: 'Open Video UI for React Native',
     shortLabel: 'React Native UI',
     description: 'For cross-platform apps using React Native components',
     gettingStartedDoc: 'react-native/getting-started',
