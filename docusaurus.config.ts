@@ -535,7 +535,7 @@ const config: Config = {
           isCloseable: false,
         }
       : undefined,
-    
+
     navbar: {
       title: null,
       logo: {
