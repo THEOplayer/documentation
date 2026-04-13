@@ -524,6 +524,18 @@ const config: Config = {
   themeConfig: {
     // TODO OpenGraph image for OptiView?
     // image: 'img/opengraph.png',
+
+    // announcement bar for PR preview only
+    announcementBar: process.env.DOCUSAURUS_PR_NUMBER
+      ? {
+          id: 'pr_preview',
+          content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
+          backgroundColor: '#9cb9c9',
+          textColor: '#344a5e',
+          isCloseable: false,
+        }
+      : null, // don't use announce bar in production
+    
     navbar: {
       title: null,
       logo: {
