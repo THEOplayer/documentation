@@ -1,5 +1,11 @@
 # Changelog
 
+## [11.0.0] - 2026-04-07
+
+- Fixed MPEG-TS HLS not returning 404 when sub playlists do not exist yet
+- Migrated engine config from env vars + JSON to file-based YAML config
+- Skip ffprobe on pipeline retry when ingest was never successfully playing
+
 ## [10.13.0] - 2026-03-31
 
 - Added image overlay support
