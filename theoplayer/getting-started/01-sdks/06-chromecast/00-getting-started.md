@@ -1,5 +1,9 @@
 # Getting started on Chromecast
 
+import RebrandingNotice from '../../../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
 This how-to guide describes how to set up a Chromecast Receiver application using the Dolby OptiView Player SDK.
 
 :::info
