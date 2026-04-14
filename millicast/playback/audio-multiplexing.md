@@ -112,7 +112,7 @@ async function projectOn(index) {
 
 To recap the above workflow:
 
-1. The app authenticates and connects with the OptiView Real-time Streaming (Millicast) Director.
+1. The app authenticates and connects with the OptiView Real-time Streaming Director.
 2. As the app connects the Director creates a main track plus an additional number of tracks equal to the `multiplexedAudioTracks` value. This triggers a `track` event for each track added.
 3. An audio feed is connected to the Publisher Node triggering a Broadcast event.
 4. The broadcast event creates an `<audio>` tag and triggers the `projectOn` function.
