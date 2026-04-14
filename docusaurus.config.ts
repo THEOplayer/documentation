@@ -490,7 +490,7 @@ const config: Config = {
           if (docPluginId === 'open-video-ui') {
             frontMatter.description = "Find out what's new in Open Video UI.";
           } else if (docPluginId === 'theoplayer' && !docPath.includes('connector')) {
-            frontMatter.description = "Find out what's new in THEOplayer.";
+            frontMatter.description = "Find out what's new in the OptiView Player.";
           } else {
             frontMatter.description = "Find out what's new.";
           }
@@ -510,7 +510,7 @@ const config: Config = {
           } else if (docPath.includes('connector')) {
             frontMatter.description = 'Set up your connector in just a few minutes!';
           } else {
-            frontMatter.description = 'Set up your first THEOplayer in just a few minutes!';
+            frontMatter.description = 'Set up your first OptiView Player in just a few minutes!';
           }
         }
         frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
@@ -552,7 +552,7 @@ const config: Config = {
             {
               type: 'custom-platformSidebar',
               docsPluginId: 'theoplayer',
-              label: 'THEOplayer',
+              label: 'OptiView Player',
               href: '/theoplayer',
               activeBasePath: '/theoplayer',
             } satisfies PlatformSidebarNavbarItemProps,
