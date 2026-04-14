@@ -229,7 +229,7 @@ function initialize({ readable, writable }) {
 }
 ```
 
-Create another JavaScript file called **scripts.js** that will be used to publish a stream to the Dolby.io Real-time Streaming and start the web worker to insert the metadata. First, in order to know what capabilities the web browser supports (insertable frames or WebRTC Script Transform), add the following logic to your file.
+Create another JavaScript file called **scripts.js** that will be used to publish a stream to the OptiView Real-time Streaming and start the web worker to insert the metadata. First, in order to know what capabilities the web browser supports (insertable frames or WebRTC Script Transform), add the following logic to your file.
 
 ```javascript
 // Insertable streams for `MediaStreamTrack` is supported.

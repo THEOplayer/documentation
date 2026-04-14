@@ -76,7 +76,7 @@ Configuration:
 The following procedure explains how to grant Dolby upload access to Google Cloud Storage buckets. Upon completion, the Dolby service account will have the storage object creator role for the selected storage bucket.
 
 1. Log in to your GCP account.
-2. Within your GCP console, navigate to the bucket you wish to grant access to Dolby.io and select the **Permissions** tab.
+2. Within your GCP console, navigate to the bucket you wish to grant access to OptiView Real-time Streaming and select the **Permissions** tab.
 
 ![](../../assets/img/Screenshot_2024-02-14_at_2.30.39_pm.png)
 
@@ -84,7 +84,7 @@ The following procedure explains how to grant Dolby upload access to Google Clou
 
 ![](../../assets/img/Screenshot_2024-02-14_at_2.35.17_pm.png)
 
-4. On the side panel that appears, enter the Dolby.io service account email `millicast-recording-service@millicast.iam.gserviceaccount.com` into the **New Principals** text box, and select the **Storage Object Creator** role. These are the minimum recommended permissions for enabling reliable upload access to your storage bucket.
+4. On the side panel that appears, enter the OptiView service account email `millicast-recording-service@millicast.iam.gserviceaccount.com` into the **New Principals** text box, and select the **Storage Object Creator** role. These are the minimum recommended permissions for enabling reliable upload access to your storage bucket.
 
 ![](../../assets/img/Screenshot_2024-02-14_at_2.37.07_pm.png)
 

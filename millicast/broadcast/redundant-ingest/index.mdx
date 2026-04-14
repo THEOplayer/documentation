@@ -3,13 +3,13 @@ title: Redundant Ingest
 sidebar_position: 10
 ---
 
-To provide a resilient and reliable streaming experience, the Dolby.io Streaming platform allows broadcasting multiple redundant contribution streams. This solution ensures seamless content delivery to viewers, even in the case of unexpected technical issues.
+To provide a resilient and reliable streaming experience, the OptiView Real-time Streaming platform allows broadcasting multiple redundant contribution streams. This solution ensures seamless content delivery to viewers, even in the case of unexpected technical issues.
 
 ## Recovery mechanism
 
-To ensure that streamed content will be delivered to viewers, you have to consider the potential problems that may affect broadcasting, such as equipment malfunctions or service interruptions caused by technical glitches or network failures. To avoid such problems during an important event, consider using multiple layers of redundancy including encoders, internet service providers (ISPs), and publishing regions offered by Streaming APIs. Using Dolby.io Streaming, you can publish additional redundant streams, which will be automatically delivered to viewers in the case of a problem with the original stream. For example, in the case of a malfunctioning encoder in the primary broadcast, the platform can seamlessly continue the broadcast as long as there is another live contribution stream that uses a different encoder.
+To ensure that streamed content will be delivered to viewers, you have to consider the potential problems that may affect broadcasting, such as equipment malfunctions or service interruptions caused by technical glitches or network failures. To avoid such problems during an important event, consider using multiple layers of redundancy including encoders, internet service providers (ISPs), and publishing regions offered by Streaming APIs. Using OptiView Real-time Streaming, you can publish additional redundant streams, which will be automatically delivered to viewers in the case of a problem with the original stream. For example, in the case of a malfunctioning encoder in the primary broadcast, the platform can seamlessly continue the broadcast as long as there is another live contribution stream that uses a different encoder.
 
-When publishing multiple backup feeds, you can establish an order in which the streams should fail over. The Dolby.io Streaming platform provides the **priority** parameter that lets you set the priority of each contribution stream. In the case of any problem with the primary stream, viewers receive the available stream that has the _highest_ priority. Not setting any `priority` is equivalent setting the lowest priority to that stream.
+When publishing multiple backup feeds, you can establish an order in which the streams should fail over. The OptiView Real-time Streaming platform provides the **priority** parameter that lets you set the priority of each contribution stream. In the case of any problem with the primary stream, viewers receive the available stream that has the _highest_ priority. Not setting any `priority` is equivalent setting the lowest priority to that stream.
 
 The following instructions explain how to publish redundant streams using Streaming APIs.
 

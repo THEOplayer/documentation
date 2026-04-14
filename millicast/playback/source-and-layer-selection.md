@@ -4,9 +4,9 @@ slug: /playback/source-and-layer-selection
 sidebar_position: 3
 ---
 
-Dolby.io supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](multi-view.md) and [Audio Multiplexing](audio-multiplexing.md) experiences.
+OptiView Real-time Streaming supports ingesting [Multi-source Streams](/millicast/broadcast/multi-source-broadcasting.mdx) and rendering multiple audio and video streams for building [Multi-view](multi-view.md) and [Audio Multiplexing](audio-multiplexing.md) experiences.
 
-To get started building multi-stream experiences it's important to understand how Dolby.io handles multi-source playback. This guide outlines:
+To get started building multi-stream experiences it's important to understand how OptiView Real-time Streaming handles multi-source playback. This guide outlines:
 
 - [How to manage source selection](#managing-source-selection)
 - [How to project feeds](#projecting-feeds)
@@ -19,10 +19,10 @@ To get started building multi-stream experiences it's important to understand ho
 To manage multiple sources, you first must have a [Multi-source Stream](/millicast/broadcast/multi-source-broadcasting.mdx) broadcasting.
 :::
 
-Dolby.io streaming supports scalable WebRTC streaming thanks to a "smart" cascading node system that manages the peer-to-peer connections. These nodes are key to understanding how to manage multiple sources for playback and can be divided into two types:
+OptiView Real-time Streaming supports scalable WebRTC streaming thanks to a "smart" cascading node system that manages the peer-to-peer connections. These nodes are key to understanding how to manage multiple sources for playback and can be divided into two types:
 
 - **Publisher nodes**: These nodes manage [the ingest of multiple sources](/millicast/broadcast/multi-source-broadcasting.mdx) during the broadcast. They can then forward these feeds to the CDN for the Viewer node to manage.
-- **Viewer nodes**: Viewer nodes are created depending on the quantity and location of viewers, allowing Dolby.io to support large-scale global streams. When rendering streams in your app or platform, you can communicate with the viewer node to negotiate what feeds to project and simulcast layers to receive.
+- **Viewer nodes**: Viewer nodes are created depending on the quantity and location of viewers, allowing OptiView Real-time Streaming to support large-scale global streams. When rendering streams in your app or platform, you can communicate with the viewer node to negotiate what feeds to project and simulcast layers to receive.
 
 When the publisher node has a feed ready to be passed to a viewer node, it triggers a [broadcastEvent](/millicast/playback/players-sdks/viewer-events.md). This event can be listened to by taking the [millicast.View](https://millicast.github.io/millicast-sdk/View.html) object and [adding an event listener](/millicast/playback/players-sdks/viewer-events.md#using-events) to it:
 
@@ -95,10 +95,10 @@ viewer.unproject([videoTransceiver.mid]);
 ## Media layer forwarding
 
 :::tip Simulcast or SVC layer forwarding
-By default, the Dolby.io Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
+By default, the OptiView Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
 :::
 
-In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/distribution/using-webrtc-simulcast) or SVC layer for each video track delivered by the Dolby.io Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
+In addition to selecting the origin source for the media, it is also possible to choose a specific [Simulcast](/millicast/distribution/using-webrtc-simulcast) or SVC layer for each video track delivered by the OptiView Real-time Streaming server. You can do it either by specifying the `layer` attribute on the [project](https://millicast.github.io/millicast-sdk/View.html#project) command or using the [select](https://millicast.github.io/millicast-sdk/View.html#select) command for the main video track:
 
 ```javascript title="Projecting with layer selection using project"
 viewer.project('mysource', [
@@ -132,7 +132,7 @@ millicastView.select({ encodingId: '1' });
 Where `millicastView` is the instance of the [View](https://millicast.github.io/millicast-sdk/View.html) class and `encodingId` is the field of the layer that you wan to force.
 
 :::info Track limits for viewer
-Dolby.io Real-time Streaming does not limit the number of tracks that a viewer can receive; it limits the maximum bitrate per viewer to a maximum of 12 Mbps across all media tracks. You should configure the Simulcast or SVC bitrate of all the sources carefully within your applications so they can receive the desired amount of video tracks in the viewer session.
+OptiView Real-time Streaming does not limit the number of tracks that a viewer can receive; it limits the maximum bitrate per viewer to a maximum of 12 Mbps across all media tracks. You should configure the Simulcast or SVC bitrate of all the sources carefully within your applications so they can receive the desired amount of video tracks in the viewer session.
 :::
 
 ### Managing layers

@@ -4,7 +4,7 @@ slug: /managing-your-tokens
 sidebar_position: 1
 ---
 
-To [broadcast](/millicast/broadcast/index.mdx) a real-time stream the connection must be authenticated with a valid **publish token**. The Dolby.io platform uses token authentication for publishing to prevent unauthorized distribution of streaming content from your Dolby.io account. Without a valid token, publish requests will be rejected by the servers.
+To [broadcast](/millicast/broadcast/index.mdx) a real-time stream the connection must be authenticated with a valid **publish token**. The OptiView Real-time platform uses token authentication for publishing to prevent unauthorized distribution of streaming content from your OptiView Real-time account. Without a valid token, publish requests will be rejected by the servers.
 
 This guide outlines the following:
 
@@ -19,7 +19,7 @@ To restrict who may _view_ a stream, you would use a separate [subscribe token](
 
 ## Create a publish token
 
-Log into your [Dolby.io Streaming Account](https://dashboard.dolby.io/signin) and select **Live Broadcast** from the left menu. This is where you can view and manage all of your _Publish tokens_.
+Log into your [OptiView Real-time Streaming Account](https://streaming.dolby.io/signin) and select **Live Broadcast** from the left menu. This is where you can view and manage all of your _Publish tokens_.
 
 import TokenMain from '../assets/img/tokens-main.png';
 
@@ -153,9 +153,9 @@ The publishing tab includes all information relating to [broadcasting](/millicas
   - RTMP multi-bitrate can be enabled from this section. When enabled, the dashboard will create three RTMP publish stream names for **low** bitrate, **medium** bitrate, and **high** bitrate.
 - [SRT](/millicast/broadcast/srt.mdx): The _SRT publish path_, _SRT stream ID_, and _SRT publish URL_ can be used for publishing with SRT-compatible software and hardware.
   - Passphrase encryption can be enabled from this section. When enabled, the dashboard will generate a passphrase for encrypting the SRT stream.
-- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [Dolby.io Streaming Client SDKs](/millicast/playback/players-sdks/index.mdx) or compatible [software](../broadcast/software-encoders/index.mdx) and [hardware encoders](../broadcast/hardware-encoders/index.mdx).
+- Publish token: The _Publishing token_ and _Stream name_ can be used to authenticate and start a broadcast from the [OptiView Real-time Streaming Client SDKs](/millicast/playback/players-sdks/index.mdx) or compatible [software](../broadcast/software-encoders/index.mdx) and [hardware encoders](../broadcast/hardware-encoders/index.mdx).
 
-To learn more about publishing and broadcasting with Dolby.io, check out the [Broadcast](/millicast/broadcast/index.mdx) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
+To learn more about publishing and broadcasting with OptiView Real-time Streaming, check out the [Broadcast](/millicast/broadcast/index.mdx) guide, which provides more in-depth resources and examples on how to use the Publish token once it is created.
 
 ### 4\. Distribution
 
@@ -166,7 +166,7 @@ The Distribution tab includes settings that can modify how the CDN distributes t
 
 ### 5\. Playback
 
-The Playback tab includes all relevant information for playing back a live stream. Dolby.io provides an [out-of-the-box hosted player experience](https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true), which can be viewed at the **Hoster player path** URL or by embedding the **Hosted embedded player** as an `<iframe>` into your webpage.
+The Playback tab includes all relevant information for playing back a live stream. OptiView Real-time Streaming provides an [out-of-the-box hosted player experience](https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true), which can be viewed at the **Hoster player path** URL or by embedding the **Hosted embedded player** as an `<iframe>` into your webpage.
 
 From this tab, you can customize the player by altering settings such as the inclusion of the "Volume button" or if the stream is "Muted on start". To learn more about the hosted player or how you can build or use your own player, explore the [Playback](/millicast/playback/index.mdx) guide.
 
@@ -225,7 +225,7 @@ Once you've finished using a Publish token, it is **recommended that you retire 
 
 ## Using the Token API
 
-This guide provides a high-level understanding of managing your tokens via the Dolby.io dashboard. Whilst the dashboard is a great choice for managing Publish and [Subscribe](/millicast/streaming-dashboard/subscribe-tokens.mdx) tokens, **all aspects of token creation and management can be programmatically controlled via the Dolby.io Streaming Token REST APIs**. By utilizing the Token APIs to automate workflows, you can create scalable streaming solutions for your application or platform.
+This guide provides a high-level understanding of managing your tokens via the OptiView Real-time Streaming Dashboard. Whilst the dashboard is a great choice for managing Publish and [Subscribe](/millicast/streaming-dashboard/subscribe-tokens.mdx) tokens, **all aspects of token creation and management can be programmatically controlled via the OptiView Real-time Streaming Token REST APIs**. By utilizing the Token APIs to automate workflows, you can create scalable streaming solutions for your application or platform.
 
 To learn more about using the REST APIs for token creation and management, check out:
 

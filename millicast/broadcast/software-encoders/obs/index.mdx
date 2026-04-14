@@ -3,7 +3,7 @@ title: OBS
 slug: /software-encoders/obs
 ---
 
-**Open Broadcaster Software (OBS)** is a free open-source software created for broadcasting and recording on your desktop. You can take advantage of this tool to stream high-quality video to your viewers in real time using the [Dolby.io Real-time Streaming](https://optiview.dolby.com/solutions/real-time-streaming/) service.
+**Open Broadcaster Software (OBS)** is a free open-source software created for broadcasting and recording on your desktop. You can take advantage of this tool to stream high-quality video to your viewers in real time using the [OptiView Real-time Streaming](https://optiview.dolby.com/solutions/real-time-streaming/) service.
 
 See the official [obsproject.com](https://obsproject.com) documentation for installation instructions and additional support about using OBS.
 
@@ -206,7 +206,7 @@ import Obs3 from '../../../assets/img/software-encoders/obs3.png';
   <img src={Obs3} width="600" />
 </div>
 
-You may need to click **start streaming in OBS** to update the current configuration, then click **stop streaming** and return to the **multiple output panel**. When you click **start streaming** again, the config will be updated, and the RTMP MBR renditions will stream to Dolby.io Real-time Streaming CDN.
+You may need to click **start streaming in OBS** to update the current configuration, then click **stop streaming** and return to the **multiple output panel**. When you click **start streaming** again, the config will be updated, and the RTMP MBR renditions will stream to OptiView Real-time Streaming CDN.
 
 #### 5. Playback
 
@@ -222,7 +222,7 @@ import RtmpMbrSimulcast from '../../../assets/img/rtmp-mbr-webrtc-simulcast.jpeg
 
 You'll need to use the [OBS-studio-webrtc](https://github.com/CoSMoSoftware/OBS-studio-webrtc/releases) fork because advanced simulcast settings are not yet available in OBS 30.x with WHIP support.
 
-Add your stream name and token from your Dolby.io Real-time Streaming token into OBS's settings. Select either _ H.264_ or _VP8_ for the **codec** as Simulcast only works for those two codecs. Click on the **advanced settings** button and check the **Simulcast** box to enable the feature inside OBS. Finally, apply the changes.
+Add your stream name and token from your OptiView Real-time Streaming token into OBS's settings. Select either _ H.264_ or _VP8_ for the **codec** as Simulcast only works for those two codecs. Click on the **advanced settings** button and check the **Simulcast** box to enable the feature inside OBS. Finally, apply the changes.
 
 import ObsImg1 from '../../../assets/img/Capture_decran_2023-07-24_a_2.51.38_PM.png';
 
@@ -278,7 +278,7 @@ import Surround3 from '../../../assets/img/surround_3.png';
 
 ##### Ambisonics
 
-If you have an Ambisonic it is also possible to publish spatial audio using the same setup. Here for the demo a [Zoom H3-VR](https://zoomcorp.com/en/us/handheld-recorders/handheld-recorders/h3-vr-360-audio-recorder/) can be used. Set for Dolby.io OBS WebRTC is the same as 5.1 and with Zoom mic you will see for channels to capture and stream to your surround sound set up.
+If you have an Ambisonic it is also possible to publish spatial audio using the same setup. Here for the demo a [Zoom H3-VR](https://zoomcorp.com/en/us/handheld-recorders/handheld-recorders/h3-vr-360-audio-recorder/) can be used. Set for OptiView OBS WebRTC is the same as 5.1 and with Zoom mic you will see for channels to capture and stream to your surround sound set up.
 
 import AmbImg from '../../../assets/img/amb.png';
 
@@ -328,7 +328,7 @@ On your Windows make sure you are using Chrome browser for your viewer.
 
 ##### Mac
 
-Surround sound playback should be enabled by default on your Mac. You can listen to the stream in-browser or via the Dolby.io Stream Monitor app can be installed for free on your iPad or AppleTV.
+Surround sound playback should be enabled by default on your Mac. You can listen to the stream in-browser or via the OptiView Stream Monitor app can be installed for free on your iPad or AppleTV.
 
 ### Installing OBS-Multi-RTMP Plugin
 

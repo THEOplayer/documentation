@@ -96,8 +96,7 @@ function removeDocIndexItems(items) {
 
 const config: Config = {
   title: 'Dolby OptiView Documentation',
-  tagline:
-    'Discover the latest developer documentation and samples for OptiView products including: Player, Streaming, Ads, Ad Engine, and Open Video UI',
+  tagline: 'Discover the latest developer documentation and samples for OptiView products',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -491,7 +490,7 @@ const config: Config = {
           if (docPluginId === 'open-video-ui') {
             frontMatter.description = "Find out what's new in Open Video UI.";
           } else if (docPluginId === 'theoplayer' && !docPath.includes('connector')) {
-            frontMatter.description = "Find out what's new in THEOplayer.";
+            frontMatter.description = "Find out what's new in the OptiView Player.";
           } else {
             frontMatter.description = "Find out what's new.";
           }
@@ -511,7 +510,7 @@ const config: Config = {
           } else if (docPath.includes('connector')) {
             frontMatter.description = 'Set up your connector in just a few minutes!';
           } else {
-            frontMatter.description = 'Set up your first THEOplayer in just a few minutes!';
+            frontMatter.description = 'Set up your first OptiView Player in just a few minutes!';
           }
         }
         frontMatter.sidebar_custom_props ??= { icon: '🚀 ' };
@@ -525,6 +524,8 @@ const config: Config = {
   themeConfig: {
     // TODO OpenGraph image for OptiView?
     // image: 'img/opengraph.png',
+
+    // announcement bar for PR preview only
     announcementBar: process.env.DOCUSAURUS_PR_NUMBER
       ? {
           id: 'pr_preview',
@@ -533,14 +534,8 @@ const config: Config = {
           textColor: '#344a5e',
           isCloseable: false,
         }
-      : {
-          id: 'dolby_optiview_new_name',
-          content:
-            'Dolby OptiView is the new home for everything Dolby.io and THEOplayer. <a target="_blank" rel="noopener" href="https://dolby.io/blog/introducing-dolby-optiview-redefining-immersive-streaming-experiences/">Learn more.</a>',
-          backgroundColor: '#4800c4',
-          textColor: '#fff',
-          isCloseable: true,
-        },
+      : undefined,
+
     navbar: {
       title: null,
       logo: {
@@ -557,7 +552,7 @@ const config: Config = {
             {
               type: 'custom-platformSidebar',
               docsPluginId: 'theoplayer',
-              label: 'THEOplayer',
+              label: 'OptiView Player',
               href: '/theoplayer',
               activeBasePath: '/theoplayer',
             } satisfies PlatformSidebarNavbarItemProps,
@@ -600,14 +595,14 @@ const config: Config = {
               type: 'docSidebar',
               docsPluginId: 'theolive',
               sidebarId: 'theolive',
-              label: 'Live (THEOlive)',
+              label: 'Live',
               activeBasePath: '/theolive',
             },
             {
               type: 'docSidebar',
               docsPluginId: 'millicast',
               sidebarId: 'millicast',
-              label: 'Real-time (Millicast)',
+              label: 'Real-time',
               activeBasePath: '/millicast',
             },
           ],

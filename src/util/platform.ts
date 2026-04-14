@@ -33,7 +33,7 @@ interface PlatformDescriptionWithUrl extends PlatformDescription {
 const theoplayerPlatforms: readonly PlatformDescription[] = [
   {
     platform: 'web',
-    label: 'THEOplayer Web SDK',
+    label: 'OptiView Player Web SDK',
     shortLabel: 'Web SDK',
     description: 'For desktop and mobile web browsers, and smart TVs like Tizen and WebOS',
     gettingStartedDoc: 'getting-started/sdks/web/getting-started',
@@ -42,7 +42,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'android',
-    label: 'THEOplayer Android SDK',
+    label: 'OptiView Player Android SDK',
     shortLabel: 'Android SDK',
     description: 'For smartphones, tablets and Android TVs',
     gettingStartedDoc: 'getting-started/sdks/android/getting-started',
@@ -51,7 +51,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'ios',
-    label: 'THEOplayer iOS & tvOS SDK',
+    label: 'OptiView Player iOS & tvOS SDK',
     shortLabel: 'iOS & tvOS SDK',
     description: 'For iPhone, iPad and Apple TV',
     gettingStartedDoc: 'getting-started/sdks/ios/getting-started',
@@ -60,7 +60,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'react-native',
-    label: 'THEOplayer React Native SDK',
+    label: 'OptiView Player React Native SDK',
     shortLabel: 'React Native SDK',
     description: 'For cross-platform apps targeting web, Android and iOS',
     gettingStartedDoc: 'getting-started/frameworks/react-native/getting-started',
@@ -69,7 +69,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'flutter',
-    label: 'THEOplayer Flutter SDK',
+    label: 'OptiView Player Flutter SDK',
     shortLabel: 'Flutter SDK',
     description: 'For cross-platform apps targeting web, Android and iOS',
     gettingStartedDoc: 'getting-started/frameworks/flutter/getting-started',
@@ -78,7 +78,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'chromecast',
-    label: 'THEOplayer Chromecast SDK',
+    label: 'OptiView Player Chromecast SDK',
     shortLabel: 'Chromecast SDK',
     description: 'For custom Chromecast receiver apps',
     gettingStartedDoc: 'getting-started/sdks/chromecast/getting-started',
@@ -87,7 +87,7 @@ const theoplayerPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'roku',
-    label: 'THEOplayer Roku SDK',
+    label: 'OptiView Player Roku SDK',
     shortLabel: 'Roku SDK',
     description: 'For Roku smart TVs',
     gettingStartedDoc: 'getting-started/sdks/roku/getting-started',
@@ -123,7 +123,7 @@ const openVideoUiPlatforms: readonly PlatformDescription[] = [
   },
   {
     platform: 'react-native',
-    label: 'React Native THEOplayer UI',
+    label: 'Open Video UI for React Native',
     shortLabel: 'React Native UI',
     description: 'For cross-platform apps using React Native components',
     gettingStartedDoc: 'react-native/getting-started',

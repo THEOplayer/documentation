@@ -36,7 +36,7 @@ To opt-in to with the Millicast iOS SDK, set the apiUrl in the credentials objec
 ```swift
 let credentials = MCSubscriberCredentials()
 credentials.streamName =  "STREAM_NAME"; // The name of the stream you want to subscribe to
-credentials.accountId = "ACCOUNT_ID"; // The ID of your Dolby.io Real-time Streaming account
+credentials.accountId = "ACCOUNT_ID"; // The ID of your OptiView Real-time Streaming account
 credentials.apiUrl = "https://director-ipv6.millicast.com/api/director/subscribe"; // The subscribe API URL
 
 try await subscriber.setCredentials(credentials)

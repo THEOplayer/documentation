@@ -3,17 +3,17 @@ title: SRT
 sidebar_position: 4
 ---
 
-**Secure Reliable Transport (SRT)** is an open-source protocol that uses an intelligent packet retransmit mechanism on top of a UDP data flow, along with AES-128 and 256-bit encryption. [Dolby.io Real-time Streaming](https://optiview.dolby.com/solutions/real-time-streaming/) natively supports publishing from an SRT source.
+**Secure Reliable Transport (SRT)** is an open-source protocol that uses an intelligent packet retransmit mechanism on top of a UDP data flow, along with AES-128 and 256-bit encryption. [OptiView Real-time Streaming](https://optiview.dolby.com/solutions/real-time-streaming/) natively supports publishing from an SRT source.
 
-This document will guide you on how to [broadcast](/millicast/broadcast/index.mdx) an SRT Stream to Dolby.io Real-time Streaming with SRT-capable software or hardware.
+This document will guide you on how to [broadcast](/millicast/broadcast/index.mdx) an SRT Stream to OptiView Real-time Streaming with SRT-capable software or hardware.
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
 :::
 
 ## How-to find the SRT publish settings with the dashboard
 
-The Dolby.io [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) helps generate the parameters you can use for configuring your encoders.
+The OptiView [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx) helps generate the parameters you can use for configuring your encoders.
 
 Some examples of encoders supporting SRT include the [Osprey](/millicast/broadcast/hardware-encoders/osprey.mdx) Talon, [Teradek](/millicast/broadcast/hardware-encoders/teradek.mdx) Wave, [Videon](/millicast/broadcast/hardware-encoders/videon.mdx) EdgeCaster, [Haivision](/millicast/broadcast/hardware-encoders/haivision.mdx) KB Encoder, [Flowcaster](/millicast/broadcast/software-encoders/flowcaster.mdx), Adobe Premiere Pro, Avid Media Composer, and [vMix](/millicast/broadcast/software-encoders/vmix.mdx).
 
@@ -29,7 +29,7 @@ import SrtToken from '../assets/img/srt-token.png';
 
 ### 2. Select the _Publishing_ tab
 
-Click on the _Publishing_ tab for information on how to connect as a publisher to your Dolby.io account. There is a section specifically for all of the SRT publish settings.
+Click on the _Publishing_ tab for information on how to connect as a publisher to your OptiView Real-time account. There is a section specifically for all of the SRT publish settings.
 
 import SrtSettings from '../assets/img/dolbyio-streaming-srt-settings.png';
 
@@ -39,7 +39,7 @@ import SrtSettings from '../assets/img/dolbyio-streaming-srt-settings.png';
 
 ### 3. Configure your encoder with the SRT settings
 
-The settings you use will be dependent on the specific encoder being configured. Typically though, the source of the broadcast may be referred to as the caller of the Dolby.io service which will listen for the incoming stream.
+The settings you use will be dependent on the specific encoder being configured. Typically though, the source of the broadcast may be referred to as the caller of the OptiView Real-time service which will listen for the incoming stream.
 
 - For some encoders, a _single_ target URL parameter is all that is required. For this you use the combined **SRT publish URL** as the configured endpoint.
 - For other encoders, it is a _multi part_ setting comprised of a Hostname (or URL) and a separate Stream ID entry. For this you use the **SRT publish path** and **SRT stream ID** separately. Some encoders will also distinguish the **port** separately from the publish path as a third configurable setting.

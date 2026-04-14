@@ -3,10 +3,10 @@ title: Access Control
 sidebar_position: 1
 ---
 
-Stream security is a priority for the Dolby.io platform. Along with stream protocol encryption, Dolby.io provides a number of different server-side features to help protect both broadcasting (_Publishing_) a stream and viewing (_Subscribing_) to a stream, all managed via their respective tokens.
+Stream security is a priority for the OptiView Real-time platform. Along with stream protocol encryption, OptiView Real-time Streaming provides a number of different server-side features to help protect both broadcasting (_Publishing_) a stream and viewing (_Subscribing_) to a stream, all managed via their respective tokens.
 
 :::tip Looking for Dolby.io Account Access Management?
-To manage access for your team to share the same Dolby.io account, visit the [Dolby.io support portal FAQ section](https://support.dolby.io/hc/en-au/articles/4411755046159-FAQs-Account-Management) to learn more.
+To manage access for your team to share the same OptiView Real-time account, visit the [Dolby.io support portal FAQ section](https://support.dolby.io/hc/en-au/articles/4411755046159-FAQs-Account-Management) to learn more.
 :::
 
 ## Publishing access control
@@ -20,7 +20,7 @@ During the Publish token creation process, you can further limit access in a few
 - [IP Filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters): With IP Address Filters, you can impose restrictions that limit access to a real-time stream by specifying specific IP network addresses.
 - [Geo-Blocking](/millicast/distribution/access-control/geo-blocking.mdx): Geo-blocking refers to restricting access to certain content based on the geographic location of the user. It can be filtered by "allowed" and "denied" countries. With geo-blocking, providers can adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on classified content.
 
-These restrictions can be implemented in the [Dashboard](https://dashboard.dolby.io/signin) or [via the token REST APIs](/millicast/streaming-dashboard/token-api.mdx).
+These restrictions can be implemented in the [Dashboard](https://streaming.dolby.io/signin) or [via the token REST APIs](/millicast/streaming-dashboard/token-api.mdx).
 
 ## Subscribing access control
 
@@ -37,4 +37,4 @@ During the Subscribe token creation process, you can further limit access in a f
 The **Tracking ID** lets you create an alphanumeric ID that can be used to track and associate streaming statistics, such as bandwidth consumption, to various viewers on a stream. This can be useful for detecting token sharing and disabling misused tokens. For more information, see [Syndication](/millicast/distribution/syndication#creating-a-subscribe-token-with-tracking-id).
 :::
 
-These restrictions can be implemented in the [Dashboard](https://dashboard.dolby.io/signin) or via the [token REST APIs](/millicast/streaming-dashboard/token-api.mdx).
+These restrictions can be implemented in the [Dashboard](https://streaming.dolby.io/signin) or via the [token REST APIs](/millicast/streaming-dashboard/token-api.mdx).

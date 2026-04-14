@@ -6,13 +6,13 @@ slug: /broadcast
 
 import DocCardList from '@theme/DocCardList';
 
-Broadcasting content requires access to the public internet and encoding, which can be accomplished in a browser, software, hardware, or with the Dolby.io Client-side broadcaster SDKs.
+Broadcasting content requires access to the public internet and encoding, which can be accomplished in a browser, software, hardware, or with the OptiView Real-time client-side broadcaster SDKs.
 
-The Dolby.io CDN can ingest streams encoded in a few main formats:
+The OptiView Real-time CDN can ingest streams encoded in a few main formats:
 
 - [WebRTC](/millicast/broadcast/webrtc-and-whip.mdx), an internet transfer protocol that supports video codecs H.264, H.265, VP8, VP9, AV1, and the Opus audio codec. Broad support is made possible through implementations of **WebRTC HTTP Ingest Protocol (WHIP)**.
-- [SRT](/millicast/broadcast/srt.mdx), a video transfer protocol that can be transmuxed to WebRTC via the Dolby.io CDN and supports H.264 video and AAC audio.
-- [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the Dolby.io CDN that supports only the H.264 video codec.
+- [SRT](/millicast/broadcast/srt.mdx), a video transfer protocol that can be transmuxed to WebRTC via the OptiView Real-time CDN and supports H.264 video and AAC audio.
+- [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx) **and RTMPS**, internet transfer protocols that can be transmuxed to WebRTC via the OptiView Real-time CDN that supports only the H.264 video codec.
 
 _SRT and RTMP will automatically have AAC audio converted to Opus via the CDN_
 
@@ -76,16 +76,16 @@ The **WebRTC-HTTP Ingestion Protocol ([WHIP](/millicast/broadcast/webrtc-and-whi
 WHIP acts like a signaler, handling the creation and deletion of endpoints needed during transport while maintaining the benefits of WebRTC, such as end-to-end encryption and ultra-low latency.
 
 [How-to use GStreamer with WHIP](/millicast/broadcast/software-encoders/gstreamer.mdx)<br/>
-**GStreamer** is a popular pipeline-based media framework that links together multiple nodes into a media processing workflow. Using WHIP, you can encode an output node to broadcast streaming content through Dolby.io.
+**GStreamer** is a popular pipeline-based media framework that links together multiple nodes into a media processing workflow. Using WHIP, you can encode an output node to broadcast streaming content through OptiView Real-time Streaming.
 
 [How-to use FlowCaster with WHIP](/millicast/broadcast/software-encoders/flowcaster.mdx)<br/>
 **FlowCaster** software provides a secure connection to provide IP streaming for editors and remote collaboration.
 
 [How-to use LiveU Studio with WHIP](/millicast/broadcast/software-encoders/liveu-studio.mdx)<br/>
-**LiveU Studio** is a cloud-based SaaS solution for live video production. By supporting WHIP, media streams ingested from LiveU Studio and can be broadcast by Dolby.io.
+**LiveU Studio** is a cloud-based SaaS solution for live video production. By supporting WHIP, media streams ingested from LiveU Studio can be broadcast by OptiView Real-time Streaming.
 
 [How-to Setup an Osprey Talon for WHIP](/millicast/broadcast/hardware-encoders/osprey.mdx)<br/>
-The **Osprey Talon** provides exceptional quality with 4k resolution and a plug-and-play interface. There are some recommended settings to enable broadcasting to the Dolby.io platform by using this encoder in the pipeline.
+The **Osprey Talon** provides exceptional quality with 4k resolution and a plug-and-play interface. There are some recommended settings to enable broadcasting to the OptiView Real-time platform by using this encoder in the pipeline.
 
 To learn how to create a stream from OBS using WebRTC, see the following video:
 
@@ -105,8 +105,8 @@ To learn how to create a stream from OBS using WebRTC, see the following video:
 
 The **Secure Reliable Transport ([SRT](/millicast/broadcast/srt.mdx))** is an open-source protocol that uses an intelligent packet retransmission mechanism on otp of a UDP data flow along with AES-128 and 256-bit encryption. Dolby is part of the _SRT Alliance_, an organization to promote the technology for optimizing streaming performance.
 
-[How-to setup a Dolby.io SRT Stream](/millicast/broadcast/srt.mdx)<br/>
-The Dolby.io dashboard is used to configure the publish path and stream id for an incoming SRT media stream.
+[How-to setup an OptiView Real-time SRT Stream](/millicast/broadcast/srt.mdx)<br/>
+The OptiView Real-time Streaming Dashboard is used to configure the publish path and stream id for an incoming SRT media stream.
 
 [How-to use OBS with SRT](/millicast/broadcast/software-encoders/obs/index.mdx)<br/>
 **Open Broadcaster Software (OBS)** is free and open source software is popular for cross-platform streaming. You will need to download a recent version of OBS that has been extended to provide SRT support.
@@ -129,20 +129,20 @@ To learn how to create a stream from OBS using SRT, see the following video:
 
 **Real-time Messaging Protocol ([RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx))** is well-established in many hardware and software applications. With many years of use, RTMP is a good option for compatibility while sacrificing some latency in order to handle transmuxing the incoming stream to WebRTC.
 
-[How-to setup a Dolby.io RTMP Stream](/millicast/broadcast/rtmp-and-rtmps.mdx)<br/>
-The Dolby.io dashboard is used to configure the publish path and stream id for an incoming RTMP or RTMPs media stream.
+[How-to setup an OptiView Real-time RTMP Stream](/millicast/broadcast/rtmp-and-rtmps.mdx)<br/>
+The OptiView Real-time Streaming Dashboard is used to configure the publish path and stream id for an incoming RTMP or RTMPs media stream.
 
 [How-to use FFmpeg with RTMP](/millicast/broadcast/software-encoders/ffmpeg.mdx)<br/>
 **FFmpeg** is a free and open-source software project that is commonly used in legacy media workflows. It is a command-line tool that is capable of outputting streaming content via RTMP, RTMPS, and RTSP.
 
 [How-to use vMix with RTMP](/millicast/broadcast/software-encoders/vmix.mdx)<br/>
-**vMix** is a software vision mixer available for Windows. It is useful for certain live video production workflows and supports RTMP output that can be broadcast by Dolby.io.
+**vMix** is a software vision mixer available for Windows. It is useful for certain live video production workflows and supports RTMP output that can be broadcast by OptiView Real-time Streaming.
 
 [How-to Setup a Haivision KB encoder for RTMP](/millicast/broadcast/hardware-encoders/haivision.mdx)<br/>
 The **Haivision KB** series of media encoders deliver high-quality video streaming with 4k resolution and a plug-and-play interface with a small rack-mountable form factor. There are some recommended encoding sessions to optimize this encoder in the broadcast pipeline.
 
 [How-to Setup a Teradek VidiU Go for RTMP](/millicast/broadcast/hardware-encoders/teradek.mdx)<br/>
-The **Teradek VidiU Go** is a hardware encoder is capable of broadcast quality video that can be sent over RTMP for compatibility with Dolby.io broadcast workflows.
+The **Teradek VidiU Go** is a hardware encoder is capable of broadcast quality video that can be sent over RTMP for compatibility with OptiView Real-time broadcast workflows.
 
 ### Publish parameters
 
@@ -153,7 +153,7 @@ Publish parameters allow modifying broadcasting preferences to customize streami
 
 Web and mobile browsers are widely available and have wide encoding support, whether broadcasting from Chrome, Safari, Firefox, or Edge. To start broadcasting, see the [Getting Started with Broadcasting](/millicast/getting-started/index.mdx) guide.
 
-You can also start broadcasting directly from the Dolby.io dashboard. For more information, see the following video:
+You can also start broadcasting directly from the OptiView Real-time Streaming Dashboard. For more information, see the following video:
 
 <div className="youtube-container">
   <iframe

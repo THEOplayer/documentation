@@ -4,7 +4,7 @@ slug: /playback/securing-stream-playback
 sidebar_position: 2
 ---
 
-[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.mdx#create-a-publish-token) is one of the most important features provided by the Dolby.io platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled.
+[Securing the playback of your Broadcast](/millicast/streaming-dashboard/managing-your-tokens.mdx#create-a-publish-token) is one of the most important features provided by the OptiView Real-time platform. Although securing your stream is _optional_, it is **highly recommended** for broadcasts that are non-public or paywalled.
 
 To view a secured stream you first need to create a Subscribe token. With your Subscribe token in hand, you can then use it to authenticate a connection and view the broadcast. This guide outlines [how to create a token](/millicast/playback/securing-stream-playback.md#creating-a-subscribe-token-to-playback-a-secure-stream) and [how to view a secure stream](/millicast/playback/securing-stream-playback.md#viewing-a-secured-stream).
 
@@ -14,7 +14,7 @@ To secure broadcast playback, you need to enable the **Secure Viewer** setting w
 
 Subscribe tokens are used to authenticate access to a "Secure stream". When enabled, streams that require a Subscribe token will block access to users not in possession of a valid token coming from a valid domain. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains. Even though restricting access to streamed content in selected geo-locations is possible using the publish token, the subscribe token lets you add additional geo-blocking rules.
 
-To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.mdx), which outlines how to create a token in the Dolby.io dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
+To create a Subscribe token, follow the[ Creating a Subscribe Token guide](/millicast/streaming-dashboard/subscribe-tokens.mdx), which outlines how to create a token in the OptiView Real-time Streaming Dashboard, or the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide which outlines how to create tokens programmatically. Once created, your token will be a string of alphanumeric characters looking something like the following:
 
 `fff04a5a1c02b2b8d48a9133e8461985aa482066cc3e9ed487baaac89588e26f`
 
@@ -24,12 +24,12 @@ With your token in hand, proceed to [Viewing a Secured Stream](/millicast/playba
 
 There are **two** main ways you can use the Subscribe token:
 
-1. To view a stream via the [Dolby.io Hosted Viewer](/millicast/playback/hosted-player/index.md).
+1. To view a stream via the [OptiView Hosted Viewer](/millicast/playback/hosted-player/index.md).
 2. To view a stream via your own streaming app.
 
 ### Viewing a secured stream with the hosted viewer
 
-[Playing back with the Hosted Viewer](/millicast/playback/hosted-player/index.md) is a common way to test the Dolby.io platform. If you haven't already tested out the Hosted Viewer it is recommended you explore the [Hosted Viewer Playback guide](/millicast/playback/hosted-player/index.md).
+[Playing back with the Hosted Viewer](/millicast/playback/hosted-player/index.md) is a common way to test the OptiView Real-time platform. If you haven't already tested out the Hosted Viewer it is recommended you explore the [Hosted Viewer Playback guide](/millicast/playback/hosted-player/index.md).
 
 When an **unsecured** stream is live, you'll be able to view the broadcast at:
 
@@ -65,7 +65,7 @@ For both the Embedded Viewer and the Hosted Viewer the Subscribe token is expose
 
 #### Viewing a secured stream with the embedded viewer
 
-You can also embed the Dolby.io Hosted Viewer into your webpage as an `<iframe></iframe>`. To secure the embedded viewer, include the Subscribe token in the iframe:
+You can also embed the OptiView Hosted Viewer into your webpage as an `<iframe></iframe>`. To secure the embedded viewer, include the Subscribe token in the iframe:
 
 ```html
 <iframe
@@ -86,7 +86,7 @@ Whilst using the Hosted Viewer is a great option, you may have noticed the Subsc
 > `https://viewer.millicast.com?streamId=DevAcc/WorldCup2023&token=fff04a5a1c02b2b8d48a9133e84619889588e26f`  
 > which she uses to join the stream.
 >
-> Because this token has [Binds IP on Usage](/millicast/distribution/access-control/allowed-origins.md#bind-ip-on-usage) enabled and set to bind to the first IP address, her IP address is saved by the Dolby.io CDN. If Angelik were to then share the URL to Jayson, he would be unable to join the stream since his IP address doesn't match Angelik's.
+> Because this token has [Binds IP on Usage](/millicast/distribution/access-control/allowed-origins.md#bind-ip-on-usage) enabled and set to bind to the first IP address, her IP address is saved by the OptiView Real-time CDN. If Angelik were to then share the URL to Jayson, he would be unable to join the stream since his IP address doesn't match Angelik's.
 >
 > If Angelik were to leave the stream and return an hour later, she would still be able to join the stream because her IP address is associated with the token.
 
@@ -94,8 +94,8 @@ To learn more about other access control features you can enable for your Subscr
 
 ### Viewing secure streams with your own viewer app
 
-:::tip Building with the Dolby.io SDKs for the first time?
-Check out the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial for a quick and easy introduction to using the Dolby.io SDKs and platform.
+:::tip Building with the OptiView Real-time SDKs for the first time?
+Check out the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial for a quick and easy introduction to using the OptiView Real-time SDKs and platform.
 :::
 
 To view a secure stream in your own viewer app, you'll need to create a Subscribe token. Depending on the size of your platform, you may want to create these tokens programmatically using a token server and the [Token APIs](/millicast/streaming-dashboard/token-api.mdx). This part of the guide gives an example of how to programmatically create a Subscribe token, and how to use it to authenticate a connection to a viewer.
@@ -127,7 +127,7 @@ async function getToken(streamName, apiSecretKey) {
 
 Creating Subscribe tokens **should take place on a secure server, not in the client-side application**. You should create a "Token Server", which serves a Subscribe token to the client-side application, which uses it to connect.
 
-In this case, for demonstration purposes, `getToken` function will return a Subscribe token, which can then be used for authenticating a connection to Dolby.io along with the `streamName` and the `accID`.
+In this case, for demonstration purposes, `getToken` function will return a Subscribe token, which can then be used for authenticating a connection to OptiView Real-time Streaming along with the `streamName` and the `accID`.
 
 ```javascript
 const response = await getToken(streamName, apiSecretKey);
