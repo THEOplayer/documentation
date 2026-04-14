@@ -1,6 +1,6 @@
 # Getting started on Chromecast
 
-import RebrandingNotice from '../../../callouts/_rebranding_notice.md';
+import RebrandingNotice from '../../../callouts/\_rebranding_notice.md';
 
 <RebrandingNotice />
 
