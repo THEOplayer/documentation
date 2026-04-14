@@ -227,7 +227,7 @@ Introduced support for VP9 codec that provides better color fidelity with the su
 
 ### Web Viewer Multi-view Support
 
-Introduced the Web Viewer multi-view support that allows customers to display multiple streams in a single viewer and interactively switch between them. The multi-view web viewer can be configured in the [Dolby.io dashboard](https://dashboard.dolby.io/) with a no-code hosted player, removing the need to deploy multiple player instances to view multiple streams.
+Introduced the Web Viewer multi-view support that allows customers to display multiple streams in a single viewer and interactively switch between them. The multi-view web viewer can be configured in the [Dolby.io dashboard](https://streaming.dolby.io/) with a no-code hosted player, removing the need to deploy multiple player instances to view multiple streams.
 
 For more information, see:
 

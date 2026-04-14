@@ -22,7 +22,7 @@ Install the [NDI tools](https://ndi.video/type/ndi-tools/) on your computer. If 
 
 ### How-to publish NDI with OptiView Real-time Streaming Dashboard broadcaster
 
-Sign in to your [OptiView Real-time Streaming dashboard](https://dashboard.dolby.io/) and create a stream token. Press the broadcast button, and inside the Broadcaster, select the camera icon on the bottom left. Here you will see a list of possible camera selections. If you have an NDI camera like NewTek, Angekis, or AIDA, it will show up in the dropdown, and you are ready to go.
+Sign in to your [OptiView Real-time Streaming dashboard](https://streaming.dolby.io/) and create a stream token. Press the broadcast button, and inside the Broadcaster, select the camera icon on the bottom left. Here you will see a list of possible camera selections. If you have an NDI camera like NewTek, Angekis, or AIDA, it will show up in the dropdown, and you are ready to go.
 
 import CaptureScreen1 from '../assets/img/Capture_decran_2023-07-07_a_12.10.26_PM.png';
 
