@@ -1,10 +1,15 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import type { SidebarItem, SidebarItemCategory, SidebarItemConfig, SidebarItemDoc } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
+import type {
+  SidebarItem,
+  SidebarItemCategoryConfig,
+  SidebarItemConfig,
+  SidebarItemDoc,
+} from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
 import rawMillicastApiSidebar from './millicast/api/sidebar';
 import rawMillicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
 import rawMillicastDirectorApiSidebar from './millicast/api/director/sidebar';
 
-function isCategory(item: SidebarItemConfig): item is SidebarItemCategory {
+function isCategory(item: SidebarItemConfig): item is SidebarItemCategoryConfig {
   return (item as SidebarItem).type === 'category';
 }
 
@@ -17,7 +22,7 @@ function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): Side
   return data
     .map((category) => {
       // filter out items from other categories that match the hidden IDs
-      if (isCategory(category)) {
+      if (isCategory(category) && Array.isArray(category.items)) {
         // filter out the items that match any of the hidden IDs
         const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIdsSet.has(item.id)));
 
@@ -52,7 +57,7 @@ function fixLabels(items: SidebarItemConfig[], replacements: Record<string, stri
         item = { ...item, label };
       }
     }
-    if (isCategory(item)) {
+    if (isCategory(item) && Array.isArray(item.items)) {
       const items = fixLabels(item.items, replacements);
       item = { ...item, items };
     }
@@ -63,7 +68,7 @@ function fixLabels(items: SidebarItemConfig[], replacements: Record<string, stri
 function mergeCategories(items: SidebarItemConfig[]): SidebarItemConfig[] {
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
-    if (!isCategory(item)) {
+    if (!isCategory(item) || !Array.isArray(item.items)) {
       continue;
     }
     // Merge categories with same label
@@ -73,7 +78,10 @@ function mergeCategories(items: SidebarItemConfig[]): SidebarItemConfig[] {
     if (otherIndex < 0) {
       continue;
     }
-    const otherItem = items[otherIndex] as SidebarItemCategory;
+    const otherItem = items[otherIndex] as SidebarItemCategoryConfig;
+    if (!Array.isArray(otherItem.items)) {
+      continue;
+    }
     const mergedItems = [...otherItem.items];
     for (const otherChild of item.items) {
       // Insert before existing child with same label (if any).
