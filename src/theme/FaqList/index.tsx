@@ -38,14 +38,14 @@ export default function FaqList(props: Props): ReactNode {
   const filteredItems = filterDocCardListItems(items).filter(isValidItem);
   const grouped = Object.groupBy(filteredItems, ({ customProps }) => (customProps?.faqCategory as string) ?? 'Questions');
 
-  return Object.keys(grouped).map((key) => (
+  return Object.entries(grouped).map(([key, group]) => (
     <>
       <Heading as="h2" className={clsx('text--truncate', styles.faqTitle)} title={key}>
         {key}
       </Heading>
 
       <ul className={clsx(styles.faqList, className)}>
-        {grouped[key]!.map((item, index) => (
+        {group!.map((item, index) => (
           <FaqListItem key={index} item={item as PropSidebarItemLink} />
         ))}
       </ul>
