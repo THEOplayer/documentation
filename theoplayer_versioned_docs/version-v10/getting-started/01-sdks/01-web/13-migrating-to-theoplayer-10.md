@@ -1,6 +1,6 @@
 # Migrating to THEOplayer Web SDK 10.x
 
-This article will guide you through updating from THEOplayer Web SDK version 10 (from version 9),
+This article will guide you through updating to THEOplayer Web SDK version 10 (from version 9),
 and the changes needed in your code.
 
 ## Update THEOplayer

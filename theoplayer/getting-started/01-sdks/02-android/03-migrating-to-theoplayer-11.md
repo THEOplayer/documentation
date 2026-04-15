@@ -1,6 +1,6 @@
 # Migrating to THEOplayer Android SDK 11.x
 
-This article will guide you through updating from THEOplayer Android SDK version 11 (from version 10),
+This article will guide you through updating to THEOplayer Android SDK version 11 (from version 10),
 and the changes needed in your code.
 
 ## Update THEOplayer
