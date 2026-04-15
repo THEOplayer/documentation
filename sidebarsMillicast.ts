@@ -64,31 +64,33 @@ function fixLabels(items: SidebarItemConfig[], replacements: Record<string, stri
 function mergeCategories(items: SidebarItemConfig[]): SidebarItemConfig[] {
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
-    if (isCategory(item)) {
-      // Merge categories with same label
-      const otherIndex = items.findIndex((other, otherIndex) => {
-        return otherIndex > index && isCategory(other) && other.label === item.label;
+    if (!isCategory(item)) {
+      continue;
+    }
+    // Merge categories with same label
+    const otherIndex = items.findIndex((other, otherIndex) => {
+      return otherIndex > index && isCategory(other) && other.label === item.label;
+    });
+    if (otherIndex < 0) {
+      continue;
+    }
+    const otherItem = items[otherIndex] as SidebarItemCategory;
+    const mergedItems = [...otherItem.items];
+    for (const otherChild of item.items) {
+      // Insert before existing child with same label (if any).
+      // Otherwise, insert at the end.
+      const existingChildIndex = mergedItems.findIndex((existingChild) => {
+        return isDoc(otherChild) && isDoc(existingChild) && existingChild.label === otherChild.label;
       });
-      if (otherIndex > 0) {
-        const otherItem = items[otherIndex] as SidebarItemCategory;
-        const mergedItems = [...otherItem.items];
-        for (const otherChild of item.items) {
-          // Insert before existing child with same label (if any).
-          // Otherwise, insert at the end.
-          const existingChildIndex = mergedItems.findIndex((existingChild) => {
-            return isDoc(otherChild) && isDoc(existingChild) && existingChild.label === otherChild.label;
-          });
-          if (existingChildIndex >= 0) {
-            mergedItems.splice(existingChildIndex, 0, otherChild);
-          } else {
-            mergedItems.push(otherChild);
-          }
-        }
-        items[index] = { ...item, items: mergedItems };
-        items.splice(otherIndex, 1);
-        index--;
+      if (existingChildIndex >= 0) {
+        mergedItems.splice(existingChildIndex, 0, otherChild);
+      } else {
+        mergedItems.push(otherChild);
       }
     }
+    items[index] = { ...item, items: mergedItems };
+    items.splice(otherIndex, 1);
+    index--;
   }
   return items;
 }
