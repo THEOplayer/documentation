@@ -63,10 +63,10 @@ function useSidebarBreadcrumbsWithMainDoc(): PropSidebarBreadcrumbsItem[] | null
   const breadcrumbs = useSidebarBreadcrumbs();
   const { pluginId } = useActivePlugin({ failfast: true })!;
   const { activeVersion, activeDoc } = useActiveDocContext(pluginId);
-  const versionMainDoc = activeVersion?.docs.find((doc) => doc.id === activeVersion.mainDocId)!;
-  const mainDocUrl = useBaseUrl(versionMainDoc.path);
+  const versionMainDoc = activeVersion?.docs.find((doc) => doc.id === activeVersion.mainDocId);
+  const mainDocUrl = useBaseUrl(versionMainDoc?.path);
   const mainDocTitle = getMainDocTitle(pluginId);
-  if (!breadcrumbs || !mainDocTitle) {
+  if (!breadcrumbs || !versionMainDoc || !mainDocTitle) {
     return breadcrumbs;
   }
   const mainDocItem: PropSidebarItemLink = {
