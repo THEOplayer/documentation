@@ -1,7 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
-import type { Props } from '@theme/DocCardList';
+import type { Props as DocCardProps } from '@theme/DocCardList';
+import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
 import DocCard from '@theme/DocCard';
+
+export interface Props extends DocCardProps {
+  readonly items: PropSidebarItem[];
+}
 
 export default function ThreeCardList(props: Props) {
   const { items, className } = props;

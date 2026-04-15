@@ -9,13 +9,13 @@ import { isDocSharedWithPlatform } from '@site/src/util/platform';
 type Props = WrapperProps<typeof LayoutType>;
 
 function PlatformSidebarProvider({ children }: { children: ReactNode }) {
-  const { pluginId } = useActivePlugin({ failfast: true });
+  const { pluginId } = useActivePlugin({ failfast: true })!;
   const { activeDoc } = useActiveDocContext(pluginId);
   const versionMetadata = useDocsVersion();
   const { lastPlatformName } = useLastPlatform();
 
   // Override sidebar for certain docs that are shared across platforms
-  if (isDocSharedWithPlatform(pluginId, activeDoc, lastPlatformName)) {
+  if (isDocSharedWithPlatform(pluginId, activeDoc!, lastPlatformName)) {
     return (
       <DocsSidebarProvider name={lastPlatformName} items={versionMetadata.docsSidebars[lastPlatformName]}>
         {children}

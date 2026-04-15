@@ -54,6 +54,8 @@ function getMainDocTitle(docPluginId: string): string | null {
       return 'Live Streaming';
     case 'millicast':
       return 'Real-time Streaming';
+    default:
+      return null;
   }
 }
 
@@ -61,15 +63,15 @@ function useSidebarBreadcrumbsWithMainDoc(): PropSidebarBreadcrumbsItem[] | null
   const breadcrumbs = useSidebarBreadcrumbs();
   const { pluginId } = useActivePlugin({ failfast: true })!;
   const { activeVersion, activeDoc } = useActiveDocContext(pluginId);
-  const versionMainDoc = activeVersion.docs.find((doc) => doc.id === activeVersion.mainDocId)!;
-  const mainDocUrl = useBaseUrl(versionMainDoc.path);
+  const versionMainDoc = activeVersion?.docs.find((doc) => doc.id === activeVersion.mainDocId);
+  const mainDocUrl = useBaseUrl(versionMainDoc?.path);
   const mainDocTitle = getMainDocTitle(pluginId);
-  if (!breadcrumbs || !mainDocTitle) {
+  if (!breadcrumbs || !versionMainDoc || !mainDocTitle) {
     return breadcrumbs;
   }
   const mainDocItem: PropSidebarItemLink = {
     type: 'link',
-    href: activeDoc.id === activeVersion.mainDocId ? undefined : mainDocUrl,
+    href: activeDoc?.id === activeVersion?.mainDocId ? '' : mainDocUrl,
     label: mainDocTitle,
     docId: versionMainDoc.id,
   };

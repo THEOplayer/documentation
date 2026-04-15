@@ -1,10 +1,15 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import type { SidebarItem, SidebarItemCategory, SidebarItemConfig, SidebarItemDoc } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
+import type {
+  SidebarItem,
+  SidebarItemCategoryConfig,
+  SidebarItemConfig,
+  SidebarItemDoc,
+} from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
 import rawMillicastApiSidebar from './millicast/api/sidebar';
 import rawMillicastAdvancedReportingApiSidebar from './millicast/api/reporting/sidebar';
 import rawMillicastDirectorApiSidebar from './millicast/api/director/sidebar';
 
-function isCategory(item: SidebarItemConfig): item is SidebarItemCategory {
+function isCategory(item: SidebarItemConfig): item is SidebarItemCategoryConfig {
   return (item as SidebarItem).type === 'category';
 }
 
@@ -17,7 +22,7 @@ function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): Side
   return data
     .map((category) => {
       // filter out items from other categories that match the hidden IDs
-      if (isCategory(category)) {
+      if (isCategory(category) && Array.isArray(category.items)) {
         // filter out the items that match any of the hidden IDs
         const filteredItems = category.items.filter((item) => !(isDoc(item) && hiddenIdsSet.has(item.id)));
 
@@ -40,55 +45,59 @@ function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): Side
 
 function fixLabels(items: SidebarItemConfig[], replacements: Record<string, string> = {}): SidebarItemConfig[] {
   return items.map((item) => {
-    if (!(isCategory(item) || isDoc(item))) {
-      return item;
-    }
-    let label = item.label;
-    if (label) {
+    if ((isCategory(item) || isDoc(item)) && item.label) {
+      let label = item.label;
       if (replacements[label]) {
         // Replace label
         label = replacements[label];
+        item = { ...item, label };
       } else if (isCategory(item)) {
         // Add spaces between capitalized words
         label = item.label.replace(/([a-z])([A-Z])/g, '$1 $2');
+        item = { ...item, label };
       }
     }
-    if (isCategory(item)) {
-      return { ...item, label, items: fixLabels(item.items, replacements) };
-    } else {
-      return { ...item, label };
+    if (isCategory(item) && Array.isArray(item.items)) {
+      const items = fixLabels(item.items, replacements);
+      item = { ...item, items };
     }
+    return item;
   });
 }
 
 function mergeCategories(items: SidebarItemConfig[]): SidebarItemConfig[] {
   for (let index = 0; index < items.length; index++) {
     const item = items[index];
-    if (isCategory(item)) {
-      // Merge categories with same label
-      const otherIndex = items.findIndex((other, otherIndex) => {
-        return otherIndex > index && isCategory(other) && other.label === item.label;
+    if (!isCategory(item) || !Array.isArray(item.items)) {
+      continue;
+    }
+    // Merge categories with same label
+    const otherIndex = items.findIndex((other, otherIndex) => {
+      return otherIndex > index && isCategory(other) && other.label === item.label;
+    });
+    if (otherIndex < 0) {
+      continue;
+    }
+    const otherItem = items[otherIndex] as SidebarItemCategoryConfig;
+    if (!Array.isArray(otherItem.items)) {
+      continue;
+    }
+    const mergedItems = [...otherItem.items];
+    for (const otherChild of item.items) {
+      // Insert before existing child with same label (if any).
+      // Otherwise, insert at the end.
+      const existingChildIndex = mergedItems.findIndex((existingChild) => {
+        return isDoc(otherChild) && isDoc(existingChild) && existingChild.label === otherChild.label;
       });
-      if (otherIndex > 0) {
-        const otherItem = items[otherIndex] as SidebarItemCategory;
-        const mergedItems = [...otherItem.items];
-        for (const otherChild of item.items) {
-          // Insert before existing child with same label (if any).
-          // Otherwise, insert at the end.
-          const existingChildIndex = mergedItems.findIndex((existingChild) => {
-            return isDoc(otherChild) && isDoc(existingChild) && existingChild.label === otherChild.label;
-          });
-          if (existingChildIndex >= 0) {
-            mergedItems.splice(existingChildIndex, 0, otherChild);
-          } else {
-            mergedItems.push(otherChild);
-          }
-        }
-        items[index] = { ...item, items: mergedItems };
-        items.splice(otherIndex, 1);
-        index--;
+      if (existingChildIndex >= 0) {
+        mergedItems.splice(existingChildIndex, 0, otherChild);
+      } else {
+        mergedItems.push(otherChild);
       }
     }
+    items[index] = { ...item, items: mergedItems };
+    items.splice(otherIndex, 1);
+    index--;
   }
   return items;
 }

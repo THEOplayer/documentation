@@ -22,7 +22,7 @@ function BackLink({ item, ...props }: Props): JSX.Element {
   // Replace back link with last platform's main sidebar link (if available)
   const {
     activePlugin: { pluginId },
-  } = useActivePluginAndVersion({ failfast: true });
+  } = useActivePluginAndVersion({ failfast: true })!;
   const href = useLastPlatformMainLink(pluginId) || item.href;
   return <Link item={{ ...item, href }} {...props} />;
 }

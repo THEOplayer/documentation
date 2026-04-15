@@ -14,7 +14,7 @@ function isCategory(item: PropSidebarItem): item is PropSidebarItemCategory {
 
 export default function SidebarCategoryDocCardList({ headingLevel, ...props }: Props) {
   const sidebar = useDocsSidebar();
-  const categories = sidebar.items.filter(isCategory);
+  const categories = sidebar?.items.filter(isCategory) ?? [];
   return categories.map((category) => (
     <Fragment key={category.label}>
       <Heading as={headingLevel ?? 'h2'}>{category.label}</Heading>

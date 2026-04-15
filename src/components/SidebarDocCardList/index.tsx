@@ -15,7 +15,7 @@ function isCategory(item: PropSidebarItem): item is PropSidebarItemCategory {
 export default function SidebarDocCardList({ headingLevel, ...props }: Props) {
   const doc = useDoc();
   const sidebar = useDocsSidebar();
-  const items = sidebar.items
+  const items = (sidebar?.items ?? [])
     // Hide the current doc page from list
     .filter((item) => !(item.type === 'link' && item.docId === doc.metadata.id));
   if (headingLevel) {

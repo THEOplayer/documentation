@@ -152,7 +152,7 @@ export function getPlatformsByVersion(docsPluginId: string, version?: string): r
 }
 
 export function usePlatforms(): readonly PlatformDescriptionWithUrl[] {
-  const { activePlugin, activeVersion } = useActivePluginAndVersion({ failfast: true });
+  const { activePlugin, activeVersion } = useActivePluginAndVersion({ failfast: true })!;
   const { withBaseUrl } = useBaseUrlUtils();
   if (!activeVersion) return [];
   return getPlatformsByVersion(activePlugin.pluginId, activeVersion.name).map((desc) => ({
