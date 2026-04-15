@@ -9,11 +9,11 @@ import { defaultPlatformName } from '@site/src/util/platform';
 
 const isDocsPluginEnabled: boolean = !!useAllDocsData;
 
-type LastPlatformName = PlatformName | null;
+type LastPlatformName = PlatformName;
 
 /** State for a single docs plugin instance */
 type DocsLastPlatformPluginState = {
-  lastPlatformName: LastPlatformName;
+  lastPlatformName: LastPlatformName | null;
 };
 
 /**
@@ -75,7 +75,7 @@ function LastPlatformContextProviderUnsafe({ children }: { children: ReactNode }
   const lastPlatformName = state[pluginId].lastPlatformName;
   if (activeDoc && (!lastPlatformName || lastPlatformName !== docSidebarName)) {
     if (isDocSharedWithPlatform(pluginId, activeDoc, lastPlatformName || defaultPlatformName)) {
-      if (lastPlatformName && activeVersion.sidebars[lastPlatformName]) {
+      if (lastPlatformName && activeVersion?.sidebars?.[lastPlatformName]) {
         // Prefer last platform for cross-platform docs
       } else {
         // No last platform yet or platform not in this version, so update to default platform
@@ -113,7 +113,7 @@ export function useLastPlatform(): {
   lastPlatformName: LastPlatformName;
   saveLastPlatform: (lastPlatform: LastPlatformName) => void;
 } {
-  const { pluginId } = useActivePlugin({ failfast: true });
+  const { pluginId } = useActivePlugin({ failfast: true })!;
   return useLastPlatformByPluginId(pluginId);
 }
 
@@ -154,5 +154,5 @@ export function useLastPlatformMainLink(pluginId: string): string | null {
   }
 
   const sidebar = findSidebarInVersions(platformName, versionCandidates);
-  return sidebar.link.path;
+  return sidebar?.link?.path ?? null;
 }

@@ -35,7 +35,7 @@ export default function PlatformSelect({ docsPluginId, version, className, ...pr
           // selectedItem is always null during SSR, so look up the initial platform manually
           platforms.find((desc) => desc.platform === lastPlatformName) ??
           // last platform does not exist in the active doc version, fall back to default platform
-          platforms.find((desc) => desc.platform === defaultPlatformName);
+          platforms.find((desc) => desc.platform === defaultPlatformName)!;
         return (
           <span className={clsx(styles.platformValue)}>
             <Icon className={styles.platformIcon} icon={icon} defaultIcon="" />
@@ -48,8 +48,8 @@ export default function PlatformSelect({ docsPluginId, version, className, ...pr
     >
       {(desc) => {
         const { platform, label, description, icon } = desc;
-        const sidebar = findSidebarInVersions(platform, versionCandidates);
-        const sidebarLink = (activeDoc && getPlatformDoc(docsPluginId, activeVersion, activeDoc, platform)?.path) ?? sidebar.link.path;
+        const sidebar = findSidebarInVersions(platform, versionCandidates)!;
+        const sidebarLink = (activeDoc && getPlatformDoc(docsPluginId, activeVersion!, activeDoc, platform)?.path) ?? sidebar.link!.path;
         return (
           <Item
             id={platform}

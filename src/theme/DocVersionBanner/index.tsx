@@ -30,7 +30,7 @@ function getProductNameByPluginId(pluginId: string): string {
 
 export default function DocVersionBannerWrapper(props: Props) {
   const originalContext: DocusaurusContext = useDocusaurusContext();
-  const { pluginId } = useActivePlugin({ failfast: true });
+  const { pluginId } = useActivePlugin({ failfast: true })!;
   // <DocVersionBanner> uses siteConfig.title from the DocusaurusContext in its message,
   // but we want to show the product name instead (derived from the current doc plugin ID).
   // HACK: create a new context and replace the title with the product name.

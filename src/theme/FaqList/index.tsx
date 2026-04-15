@@ -45,7 +45,7 @@ export default function FaqList(props: Props): ReactNode {
       </Heading>
 
       <ul className={clsx(styles.faqList, className)}>
-        {grouped[key].map((item, index) => (
+        {grouped[key]!.map((item, index) => (
           <FaqListItem key={index} item={item as PropSidebarItemLink} />
         ))}
       </ul>
