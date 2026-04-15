@@ -40,24 +40,23 @@ function removeHiddenItems(data: SidebarItemConfig[], hiddenIds: string[]): Side
 
 function fixLabels(items: SidebarItemConfig[], replacements: Record<string, string> = {}): SidebarItemConfig[] {
   return items.map((item) => {
-    if (!(isCategory(item) || isDoc(item))) {
-      return item;
-    }
-    let label = item.label;
-    if (label) {
+    if ((isCategory(item) || isDoc(item)) && item.label) {
+      let label = item.label;
       if (replacements[label]) {
         // Replace label
         label = replacements[label];
+        item = { ...item, label };
       } else if (isCategory(item)) {
         // Add spaces between capitalized words
         label = item.label.replace(/([a-z])([A-Z])/g, '$1 $2');
+        item = { ...item, label };
       }
     }
     if (isCategory(item)) {
-      return { ...item, label, items: fixLabels(item.items, replacements) };
-    } else {
-      return { ...item, label };
+      const items = fixLabels(item.items, replacements);
+      item = { ...item, items };
     }
+    return item;
   });
 }
 
