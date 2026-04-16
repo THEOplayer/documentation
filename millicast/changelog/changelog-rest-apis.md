@@ -118,7 +118,7 @@ The [Read Account Geo Restrictions](/millicast/api/geo-geo) and [Read Account Ge
 
 ### :new: ViewerConnection Hooks
 
-For long-running streams, it can be helpful to start and stop the stream only when there are viewers connected. Using the new [ViewerConnection](/millicast/webhooks/viewerconnection.md) webhook, you can write a service that listens for `viewerAttempt` and `noActiveViewers` events to start or stop a broadcast to better manage your bandwidth usage.
+For long-running streams, it can be helpful to start and stop the stream only when there are viewers connected. Using the new [ViewerConnection](/millicast/webhooks/viewerconnection.md) webhook, you can write a service that listens for `ViewerAttempt` and `NoActiveViewers` events to start or stop a broadcast to better manage your bandwidth usage.
 
 View the [Webhooks](/millicast/webhooks/index.mdx) guide to learn more about setting up webhooks.
 

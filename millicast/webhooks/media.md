@@ -43,6 +43,7 @@ The `data` payload will contain the following details:
   "data": {
     "mediaAssetId": "c6631104197a4091943775697948adbe",
     "tokenId": 1187282,
+    "channelId": "abc123",
     "streamName": "test-record-clip",
     "streamId": "dkxfvY/test-record-clip",
     "startTime": 1725259930643,
@@ -63,6 +64,7 @@ The `data` payload will contain the following details:
   "data": {
     "mediaAssetId": "e0ca421e3ee748629d073b6991d4d93d",
     "tokenId": 1187282,
+    "channelId": "abc123",
     "streamName": "test-record-clip",
     "streamId": "dkxfvY/test-record-clip",
     "startTime": 1725259874671,
@@ -83,6 +85,7 @@ The `data` payload will contain the following details:
   "data": {
     "mediaAssetId": "f26120d4443b474b8b1d6e1ecfcbd369",
     "tokenId": 1090418,
+    "channelId": "def456",
     "streamName": "qa_test_stream_for_live_clipping",
     "streamId": "dkxfvY/qa_test_stream_for_live_clipping",
     "startTime": 1725245888000,
