@@ -19,7 +19,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -32,7 +32,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.
