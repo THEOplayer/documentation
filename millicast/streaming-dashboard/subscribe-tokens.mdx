@@ -4,7 +4,7 @@ slug: /subscribe-tokens
 sidebar_position: 2
 ---
 
-Unlike [publishing a broadcast](/millicast/broadcast/index.mdx), the subscriber (viewer), by default, **does not need a token** to view a stream. However, if you want to secure your feed from being viewed by non-authenticated users, Dolby.io Streaming provides the ability to use subscribe tokens.
+Unlike [publishing a broadcast](/millicast/broadcast/index.mdx), the subscriber (viewer), by default, **does not need a token** to view a stream. However, if you want to secure your feed from being viewed by non-authenticated users, OptiView Real-time Streaming provides the ability to use subscribe tokens.
 
 When enabled, streams that require a subscribe token will block access to users not in possession of a valid token coming from a valid domain. This makes subscribe tokens useful for protecting paywalled content or non-public content. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains.
 
@@ -22,7 +22,7 @@ This guide outlines the following:
 Before we can create a Subscribe token, we must first have a stream that requires a Subscribe token. These streams are referred to as **Secure streams** and need to be enabled within a Publish token by enabling "**Secure viewer**". To learn where to enable "Secure viewer", [check out this guide on creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.mdx).
 :::
 
-To get started, [login to your Dolby.io Real-time Streaming account](https://dashboard.dolby.io/) and select **Subscribe tokens** from the left menu. Here you can create and manage your subscribe tokens.
+To get started, [login to your OptiView Real-time Streaming account](https://streaming.dolby.io/) and select **Subscribe tokens** from the left menu. Here you can create and manage your subscribe tokens.
 
 import SubTokensEmpty from '../assets/img/subscribe-tokens-empty.png';
 
@@ -121,9 +121,9 @@ import SubTokenDelete from '../assets/img/subscribe-token-delete.png';
 
 ## Self-signing subscribe tokens
 
-The Dolby.io Real-Time Streaming APIs support the ability to self-sign Subscribe tokens without having to make an API call. Self-signing the token locally allows you to generate your Subscribe token more efficiently. The self-signed token is a user-generated JSON Web Token (JWT) that is generated from an existing Subscribe token.
+The OptiView Real-time Streaming APIs support the ability to self-sign Subscribe tokens without having to make an API call. Self-signing the token locally allows you to generate your Subscribe token more efficiently. The self-signed token is a user-generated JSON Web Token (JWT) that is generated from an existing Subscribe token.
 
-The Subscribe token functions as a parent token, and any self-signed token generated from this **will inherit any restrictions or parameters** that are specified when the Subscribe token is created. The self-signed token can be passed to the Dolby.io Real-time Streaming service, the same as any regular Subscribe token, but is then validated against the Subscribe token that was originally used to sign it.
+The Subscribe token functions as a parent token, and any self-signed token generated from this **will inherit any restrictions or parameters** that are specified when the Subscribe token is created. The self-signed token can be passed to the OptiView Real-time Streaming service, the same as any regular Subscribe token, but is then validated against the Subscribe token that was originally used to sign it.
 
 Self-signing your Subscribe token allows you to:
 
@@ -131,7 +131,7 @@ Self-signing your Subscribe token allows you to:
   - `HMACSHA256`
   - `HMACSHA384`
   - `HMACSHA512`
-- Reduce the number of API calls to the Dolby.io Server
+- Reduce the number of API calls to the OptiView Real-time server
 - [Track bandwidth usage with each of the self-signed tokens](/millicast/distribution/syndication#how-to-track-syndication)
 
 ### Creating a self-signed token
@@ -196,7 +196,7 @@ Examples of self-singing a token can be found at this [GitHub repository](https:
 Using the Token API is great for producing a few tokens, but for true scalability and speed you should [self-sign your tokens](#self-signing-subscribe-tokens).
 :::
 
-This guide provides a high-level understanding of managing your tokens via the Dolby.io dashboard. Whilst the dashboard is a great choice for managing publish and subscribe tokens, **all aspects of token creation and management can be programmatically controlled via the Dolby.io Streaming Token REST APIs**. By utilizing the Token APIs to automate workflows, you can create scalable streaming solutions for your application or platform.
+This guide provides a high-level understanding of managing your tokens via the OptiView Real-time Streaming Dashboard. Whilst the dashboard is a great choice for managing publish and subscribe tokens, **all aspects of token creation and management can be programmatically controlled via the OptiView Real-time Streaming Token REST APIs**. By utilizing the Token APIs to automate workflows, you can create scalable streaming solutions for your application or platform.
 
 To learn more about using the REST APIs for token creation and management, check out:
 

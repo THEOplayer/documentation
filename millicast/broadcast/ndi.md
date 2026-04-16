@@ -3,11 +3,11 @@ title: NDI
 sidebar_position: 5
 ---
 
-**NDI**® Tools is a free suite of applications designed to introduce you to the world of IP. NDI makes it possible to connect to any device, in any location, anywhere in the world – and transmit live video to wherever you are. NDI systems and sources on your network. Combine NDI with Dolby.io Real-time Streaming to deliver real-time video for remote or interactive experiences.
+**NDI**® Tools is a free suite of applications designed to introduce you to the world of IP. NDI makes it possible to connect to any device, in any location, anywhere in the world – and transmit live video to wherever you are. NDI systems and sources on your network. Combine NDI with OptiView Real-time Streaming to deliver real-time video for remote or interactive experiences.
 
 This guide will outline four options for NDI delivery:
 
-1. [How-to Publish NDI with Dolby.io Dashboard Broadcaster](#how-to-publish-ndi-with-dolbyio-dashboard-broadcaster)
+1. [How-to Publish NDI with OptiView Real-time Streaming Dashboard Broadcaster](#how-to-publish-ndi-with-optiview-real-time-streaming-dashboard-broadcaster)
 2. [How-to Publish NDI with OBS-WebRTC](#how-to-publish-ndi-with-obs-webrtc)
 3. [How-to Publish Video Editor with NDI](#how-to-publish-video-editor-with-ndi)
 4. [How-to Publish NDI with vMix](#how-to-publish-ndi-with-vmix)
@@ -15,14 +15,14 @@ This guide will outline four options for NDI delivery:
 ## NDI publishing
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 :::
 
 Install the [NDI tools](https://ndi.video/type/ndi-tools/) on your computer. If you do not have a NDI camera, you can download NDI HX Camera or similar to test the below workflows on you mobile device.
 
-### How-to publish NDI with Dolby.io dashboard broadcaster
+### How-to publish NDI with OptiView Real-time Streaming Dashboard broadcaster
 
-Sign in to your [Dolby.io Real-Time Streaming dashboard](https://dashboard.dolby.io/) and create a stream token. Press the broadcast button, and inside the Broadcaster, select the camera icon on the bottom left. Here you will see a list of possible camera selections. If you have an NDI camera like NewTek, Angekis, or AIDA, it will show up in the dropdown, and you are ready to go.
+Sign in to your [OptiView Real-time Streaming dashboard](https://streaming.dolby.io/) and create a stream token. Press the broadcast button, and inside the Broadcaster, select the camera icon on the bottom left. Here you will see a list of possible camera selections. If you have an NDI camera like NewTek, Angekis, or AIDA, it will show up in the dropdown, and you are ready to go.
 
 import CaptureScreen1 from '../assets/img/Capture_decran_2023-07-07_a_12.10.26_PM.png';
 
@@ -54,7 +54,7 @@ import CaptureScreen3 from '../assets/img/Capture_decran_2023-07-07_a_12.07.13_P
     <img src={CaptureScreen3} width="600" />
 </div>
 
-Go back into Dolby.io Broadcaster and select NDI Video from the video devices option in the camera icon. Now, point your mobile device anywhere, and you will see the stream coming in.
+Go back into OptiView Broadcaster and select NDI Video from the video devices option in the camera icon. Now, point your mobile device anywhere, and you will see the stream coming in.
 
 import CaptureScreen4 from '../assets/img/Capture_decran_2023-07-07_a_12.11.03_PM.png';
 
@@ -62,7 +62,7 @@ import CaptureScreen4 from '../assets/img/Capture_decran_2023-07-07_a_12.11.03_P
     <img src={CaptureScreen4} width="600" />
 </div>
 
-From here click the "Start" button to begin broadcasting the camera feed globally in real-time with Dolby.io.
+From here click the "Start" button to begin broadcasting the camera feed globally in real-time with OptiView Real-time Streaming.
 
 ### How-to publish NDI with OBS-WebRTC
 
@@ -92,7 +92,7 @@ import CaptureScreen7 from '../assets/img/Capture_decran_2023-07-07_a_12.21.16_P
     <img src={CaptureScreen7} width="600" />
 </div>
 
-After that, OBS needs to connect to our Dolby.io account. Go to Settings and click on the Stream button to add our stream token information.
+After that, OBS needs to connect to our OptiView Real-time account. Go to Settings and click on the Stream button to add our stream token information.
 
 import CaptureScreen8 from '../assets/img/Capture_decran_2023-07-07_a_12.36.26_PM.png';
 
@@ -136,7 +136,7 @@ import CaptureScreen12 from '../assets/img/Capture_decran_2023-07-07_a_12.56.47_
     <img src={CaptureScreen12} width="600" />
 </div>
 
-Inside Dolby.io's Broadcaster, select the camera option to be the NDI video, and you should see the playback before going live on your stream. Afterward, share the viewer link by pressing on the bottom right corner of the Broadcaster. These same steps can be repeated with Adobe After Effect.
+Inside OptiView's Broadcaster, select the camera option to be the NDI video, and you should see the playback before going live on your stream. Afterward, share the viewer link by pressing on the bottom right corner of the Broadcaster. These same steps can be repeated with Adobe After Effect.
 
 import CaptureScreen13 from '../assets/img/Capture_decran_2023-07-07_a_1.03.28_PM.png';
 
@@ -154,7 +154,7 @@ import CaptureScreen15 from '../assets/img/Capture_decran_2023-07-07_a_1.12.41_P
     <img src={CaptureScreen15} width="600" />
 </div>
 
-Open up a new Final Cut Pro project with it matching your NDI configuration and enable A/V Output in the Window menu. Check that your NDI Virtual Input is selected as Final Cut Pro, and the NDI Video is checked off in the Dolby.io Broadcaster to see the playback on the stream.
+Open up a new Final Cut Pro project with it matching your NDI configuration and enable A/V Output in the Window menu. Check that your NDI Virtual Input is selected as Final Cut Pro, and the NDI Video is checked off in the OptiView Broadcaster to see the playback on the stream.
 
 import CaptureScreen16 from '../assets/img/Capture_decran_2023-07-07_a_1.15.00_PM.png';
 
@@ -164,7 +164,7 @@ import CaptureScreen16 from '../assets/img/Capture_decran_2023-07-07_a_1.15.00_P
 
 ### How-to publish NDI with vMix
 
-You can also use [vMix as NDI](/millicast/broadcast/software-encoders/vmix.mdx) source if you do not wish to purchase the NDI HDX. This allows will allow vMix to be used as your switcher or remote source and flexibility with Dolby.io Real-time Streaming codecs with real-time publishing.
+You can also use [vMix as NDI](/millicast/broadcast/software-encoders/vmix.mdx) source if you do not wish to purchase the NDI HDX. This allows will allow vMix to be used as your switcher or remote source and flexibility with OptiView Real-time Streaming codecs with real-time publishing.
 
 ## Learn more
 

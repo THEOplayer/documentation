@@ -3,16 +3,16 @@ title: RTMP | RTMPS
 sidebar_position: 2
 ---
 
-**Real-Time Messaging Protocol (RTMP)** has been well supported by popular hardware and software applications for many years. In addition to WebRTC, Dolby.io Real-time Streaming allows you to broadcast and distribute content from an RTMP or secure RTMPS source.
+**Real-Time Messaging Protocol (RTMP)** has been well supported by popular hardware and software applications for many years. In addition to WebRTC, OptiView Real-time Streaming allows you to broadcast and distribute content from an RTMP or secure RTMPS source.
 
-Dolby.io Real-time streaming also supports the ability to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information, see [Simulcast](/millicast/distribution/using-webrtc-simulcast#how-to-enable-simulcast-from-an-encoder).
+OptiView Real-time Streaming also supports the ability to live stream multiple bitrates from professional RTMP encoders and deliver WebRTC Simulcast. For more information, see [Simulcast](/millicast/distribution/using-webrtc-simulcast#how-to-enable-simulcast-from-an-encoder).
 
-This document will outline how to set up and broadcast low-latency RTMP streams via the Dolby.io CDN.
+This document will outline how to set up and broadcast low-latency RTMP streams via the OptiView Real-time CDN.
 
 ## RTMP publishing
 
 :::tip Getting Started
-If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create a Dolby.io application and start your first broadcast. You will need to create a publish token to generate the necessary RTMP details.
+If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You will need to create a publish token to generate the necessary RTMP details.
 :::
 
 Select the publish token that you want to use for your RTMP streaming application.
@@ -39,7 +39,7 @@ Depending on the particular RTMP integration you may need to specify these detai
 
 > **RTMP Publish URL** = **RTMP publish path** + `/` + **RTMP publish stream name**
 
-This information will authenticate you as a publisher on Dolby.io Real-time Streaming and allow you to successfully broadcast a live feed using your account. Typically the URL will look something similar to:
+This information will authenticate you as a publisher on OptiView Real-time Streaming and allow you to successfully broadcast a live feed using your account. Typically the URL will look something similar to:
 
 ```
 rtmp://rtmp-auto.millicast.com:1935/v2/pub/myStreamName?token=5c7a1529...bdc8&priority=1&sourceId=YourId

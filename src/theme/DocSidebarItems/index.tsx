@@ -12,8 +12,9 @@ type Props = WrapperProps<typeof DocSidebarItemsType>;
 function DocSidebarHeader(): JSX.Element | null {
   const {
     activePlugin: { pluginId },
-    activeVersion: { name: versionName },
-  } = useActivePluginAndVersion({ failfast: true });
+    activeVersion,
+  } = useActivePluginAndVersion({ failfast: true })!;
+  const versionName = activeVersion!.name;
   const platforms = getPlatformsByVersion(pluginId, versionName);
   if (!platforms.length) {
     return null;

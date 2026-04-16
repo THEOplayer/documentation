@@ -75,7 +75,7 @@ let publisher = MCPublisher(delegate: publisherDelegate)
 
 ### 2.2 Set publisher credentials
 
-Create a stream in your Dolby.io developer dashboard or using the Dolby.io Streaming REST API. Then, set the credentials from the dashboard. All of the [MCPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher) APIs are asynchronous, so call them from asynchronous contexts.
+Create a stream in your OptiView Real-time Streaming Dashboard or using the OptiView Real-time Streaming REST API. Then, set the credentials from the dashboard. All of the [MCPublisher](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcpublisher) APIs are asynchronous, so call them from asynchronous contexts.
 
 ```swift
 // Get the credentials structure from your publisher instance, fill it in,

@@ -1,8 +1,13 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import type { SidebarItem, SidebarItemCategory, SidebarItemConfig, SidebarItemDoc } from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
+import type {
+  SidebarItem,
+  SidebarItemCategoryConfig,
+  SidebarItemConfig,
+  SidebarItemDoc,
+} from '@docusaurus/plugin-content-docs/lib/sidebars/types.d.ts';
 import apiSidebar from './adengine/reference/sidebar';
 
-function isCategory(item: SidebarItemConfig): item is SidebarItemCategory {
+function isCategory(item: SidebarItemConfig): item is SidebarItemCategoryConfig {
   return (item as SidebarItem).type === 'category';
 }
 

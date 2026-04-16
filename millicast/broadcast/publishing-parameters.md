@@ -33,7 +33,7 @@ Any parameters that are boolean type can be used without a value. For example, t
 
 ## Available Parameters
 
-The Dolby.io Streaming APIs platform provides the following parameters:
+The OptiView Real-time Streaming APIs platform provides the following parameters:
 
 | Parameter name      | Type    | Description                                                                                                                                                                                                                                                                                                                                                                              |
 | :------------------ | :------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

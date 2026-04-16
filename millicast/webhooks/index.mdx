@@ -2,7 +2,7 @@
 title: Webhooks
 ---
 
-**Webhooks** are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the Dolby.io platform to your application.
+**Webhooks** are callbacks triggered by the platform to notify your application when an event occurs. As an alternative to polling solutions built with the [REST API](/millicast/api/webhooks-get.api.mdx), you can build asynchronous services and integrations that react only when real-time notifications are pushed from the OptiView Real-time platform to your application.
 
 ## Creating webhooks
 
@@ -18,7 +18,7 @@ You choose from several _types_ of events that can be sent to your service.
 
 Webhooks are not correlated with a specific publishing token. You can have one webhook that responds to all platform events for your account or separate endpoints that each receive only specific types.
 
-Each webhook generates a **Webhook Secret**. This secret can be used for signature verification that an incoming request to your endpoint originated from the Dolby.io Streaming service.
+Each webhook generates a **Webhook Secret**. This secret can be used for signature verification that an incoming request to your endpoint originated from the OptiView Real-time Streaming service.
 
 ### How-to add a webhook with the streaming dashboard
 
@@ -141,7 +141,7 @@ A JSON payload will be included in the body of the request so that you can proce
 
 Most webhooks will share the same base JSON structure:
 
-```json title="Common JSON format for Dolby.io Real-time Streaming Webhooks"
+```json title="Common JSON format for OptiView Real-time Streaming Webhooks"
 {
   "type": "...",              // Webhook type: "feeds", "recording", "thumbnail", "transcoder" or "viewerConnection"
   "event": "...",             // Event name: "started", "ended", etc.

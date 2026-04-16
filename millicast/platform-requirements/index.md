@@ -9,7 +9,7 @@ See the [Broadcast](/millicast/broadcast/index.mdx) streaming guide for addition
 
 ## Network Ports
 
-If you have an environment that is behind a restrictive network, use the following information to create the proper firewall whitelist configuration to enable the Dolby.io Real-time Streaming services to pass:
+If you have an environment that is behind a restrictive network, use the following information to create the proper firewall whitelist configuration to enable the OptiView Real-time Streaming services to pass:
 
 | Traffic Type        | Ports           | Type        |
 | :------------------ | :-------------- | :---------- |

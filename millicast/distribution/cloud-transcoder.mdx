@@ -61,7 +61,7 @@ You can start and manage cloud transcoders either through the dashboard or Trans
 
 To create a dedicated transcoder in the dashboard and use it for your stream, follow these steps:
 
-1. [Log in](https://dashboard.dolby.io/) to the dashboard and create a new publish token with a cluster set to Ashburn or Phoenix.
+1. [Log in](https://streaming.dolby.io/) to the dashboard and create a new publish token with a cluster set to Ashburn or Phoenix.
 2. Click the name of the created token and select the **Publishing** tab.
 3. Toggle the **Transcoding** setting to enable transcoding for the token.
 4. Click the **Create new transcoder** button.
@@ -190,7 +190,7 @@ The platform also offers the [Configure Transcoder](/millicast/api/transcoder-up
 
 ## Webhook events
 
-The Dolby.io Streaming platform offers the following [webhook events](/millicast/webhooks/transcoder.md) to notify about transcoder state changes:
+The OptiView Real-time Streaming platform offers the following [webhook events](/millicast/webhooks/transcoder.md) to notify about transcoder state changes:
 
 - **Transcoder started**: Triggered whenever a transcoder is started and ready to use.
 - **Transcoder stopped**: Triggered whenever a transcoder is stopped.
@@ -210,7 +210,7 @@ Some encoders have TTL settings that can exceed 60 minutes so a work-around is t
 
 ### Feature Compatibility
 
-The Dolby.io Streaming platform allows using cloud transcoders with all other features, even with [Multi-view](/millicast/playback/multi-view.md) and [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx). However, publishing redundant feeds requires streaming feeds into two transcoders.
+The OptiView Real-time Streaming platform allows using cloud transcoders with all other features, even with [Multi-view](/millicast/playback/multi-view.md) and [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx). However, publishing redundant feeds requires streaming feeds into two transcoders.
 
 When using transcoding with recording, the platform records only the top layer.
 

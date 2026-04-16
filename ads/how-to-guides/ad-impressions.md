@@ -12,11 +12,11 @@ The ad impression is beaconed simultaneously with the firing of the player's `ad
 
 ## Information tracked
 
-The information passed only contains an identifier of the THEOplayer license build so the impressions are linked to the customer. It also includes the ad experience type.
+The information passed only contains an identifier of the OptiView Player license build so the impressions are linked to the customer. It also includes the ad experience type.
 No information about the viewers is passed along.
 
 ## View my impression usage
 
-You can view your ad impressions on the portal dashboard underneath the THEOplayer license impressions.
+You can view your ad impressions on the portal dashboard underneath the OptiView Player license impressions.
 
 ![Portal dashboard](../assets/img/impressions.png)
