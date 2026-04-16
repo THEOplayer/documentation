@@ -24,6 +24,7 @@ The `data` payload will contain the following details:
 - **mediaAssetId** is the unique identifier that can be used with the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) endpoint to retrieve additional details such as where to find the media file itself.
 - **type** identifies whether it is a _clip_ or _recording_ that is changing state.
 - **tokenId** is the unique identifier for the token used during a broadcast from which the media is created.
+- **channelId** is the channel identifier associated with the media asset.
 - **streamName** is the unique label for the stream.
 - **streamId** is the unique identifier for the stream such `accountId/streamName`.
 - **startTime** identifies the epoch timestamp for when the media is requested.

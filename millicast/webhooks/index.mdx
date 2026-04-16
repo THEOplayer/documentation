@@ -143,7 +143,7 @@ Most webhooks will share the same base JSON structure:
 
 ```json title="Common JSON format for OptiView Real-time Streaming Webhooks"
 {
-  "type": "...",              // Webhook type: "feeds", "recording", "thumbnail", "transcoder" or "viewerConnection"
+  "type": "...",              // Webhook type: "feeds", "recordings", "media", "thumbnail", "transcoder" or "viewerConnection"
   "event": "...",             // Event name: "started", "ended", etc.
   "timestamp": 1638463486489, // Timestamp (epoch) when the request was sent
   "data": {                   // Event data depending on the type
