@@ -390,7 +390,7 @@ description: List of supported platforms for the different THEOplayer SDKs
   <tbody>
       <tr>
         <th>iOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
@@ -398,33 +398,33 @@ description: List of supported platforms for the different THEOplayer SDKs
         </td>
         <td>N/A</td>
         <td>N/A</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
       <tr>
         <th>iPadOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
           Fairplay DRM
         </td>
-        <td>13+</td>
+        <td>15+</td>
         <td>ClearKey</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
       <tr>
         <th>tvOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
           Fairplay DRM
         </td>
-        <td>13+</td>
+        <td>15+</td>
         <td>ClearKey</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
   </tbody>
@@ -890,7 +890,7 @@ description: List of supported platforms for the different THEOplayer SDKs
       </tr>
       <tr>
         <th>iOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
@@ -898,33 +898,33 @@ description: List of supported platforms for the different THEOplayer SDKs
         </td>
         <td>N/A</td>
         <td>N/A</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
       <tr>
         <th>iPadOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
           Fairplay DRM
         </td>
-        <td>13+</td>
+        <td>15+</td>
         <td>ClearKey</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
       <tr>
         <th>tvOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
           Fairplay DRM
         </td>
-        <td>13+</td>
+        <td>15+</td>
         <td>ClearKey</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
       <tr>
@@ -1253,7 +1253,7 @@ description: List of supported platforms for the different THEOplayer SDKs
       </tr>
       <tr>
         <th>iOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
@@ -1261,20 +1261,20 @@ description: List of supported platforms for the different THEOplayer SDKs
         </td>
         <td>N/A</td>
         <td>N/A</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
       <tr>
         <th>iPadOS</th>
-        <td>13+</td>
+        <td>15+</td>
         <td>
           AES-128<br />
           SAMPLE-AES<br />
           Fairplay DRM
         </td>
-        <td>13+</td>
+        <td>15+</td>
         <td>ClearKey</td>
-        <td>13+</td>
+        <td>15+</td>
         <td>Fairplay DRM</td>
       </tr>
       <tr>
