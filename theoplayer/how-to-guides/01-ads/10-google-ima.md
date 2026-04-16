@@ -72,11 +72,23 @@ Using Google IMA in the Android SDK consists of 3 steps:
 Add `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:+'` to your module `build.gradle` file, as demonstrated below:
 
 ```groovy
+android {
+    // ...
+    compileOptions {
+        // Required by IMA SDK v3.37.0+
+        coreLibraryDesugaringEnabled = true
+    }
+}
 
 dependencies {
     // ...
+
     implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
     implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-ima:+'
+
+    // Required by IMA SDK v3.37.0+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+
     // ...
 }
 ```
@@ -136,6 +148,8 @@ By adding the THEOplayer IMA integration to your Gradle dependencies, the Google
 Our integration is tested with a specific version of the Google IMA SDK, and by default Gradle will automatically add the same version to your app.
 However, you can overwrite this [with a later version](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/history) (at your own risk)
 by manually adding a dependency on `com.google.ads.interactivemedia.v3:interactivemedia` to your `build.gradle`.
+
+[Starting with IMA SDK version 3.37.0](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/history), `coreLibraryDesugaring` must be enabled in your app. Without this, your app will not build. See the [Android documentation](https://developer.android.com/studio/write/java8-support#library-desugaring) for instructions on how to enable it.
 
 ## iOS SDK
 
