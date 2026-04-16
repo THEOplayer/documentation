@@ -1,0 +1,18 @@
+# Getting started with CMCD on iOS
+
+import Intro from '../../shared/cmcd/_getting-started-intro.mdx';
+
+<Intro />
+## Usage
+
+To enable CMCD, developers can set the `cmcd` parameter inside a SourceDescription.
+
+```swift
+let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", cmcd: true)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+## Remarks
+
+Note that CMCD is only supported on iOS 18.0+.

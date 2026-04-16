@@ -1,0 +1,31 @@
+# Media3 pipeline for Android
+
+The THEOplayer Android Media3 pipeline is a new and rebuilt base layer for playback of video and audio files for the THEOplayer Android SDK.
+It is based on [Jetpack Media3](https://developer.android.com/media/media3) components, and it provides more stable playback covering a broader range of use cases, all while being lighter in size and more performant.
+
+## Usage
+
+The Media3 pipeline is part of the THEOplayer Android SDK.
+Follow [our Getting Started guide](../../../getting-started/01-sdks/02-android/00-getting-started.mdx)
+to set up THEOplayer in your Android app.
+
+:::info
+
+In THEOplayer version 9.x, the Media3 and legacy pipelines were available side-by-side.
+Starting with version 10.0, the THEOplayer Android SDK has fully switched over to the Media3 pipeline,
+and the legacy pipeline has been retired.
+
+See [our migration guide](../../../getting-started/01-sdks/02-android/03-migrating-to-theoplayer-10.md)
+for more information.
+
+:::
+
+## FAQ
+
+### How does Media3 affect the THEOplayer Android SDK?
+
+Media3 replaces the media playback layer of the THEOplayer Android SDK, offering improvements in performance and stability for playback over our current implementation. As only core media playback is affected, all player APIs remain identical and other features and integrations (such as ads, analytics or Chromecast) are not affected and will function the same.
+
+### Does this use ExoPlayer?
+
+While we make use of ExoPlayer components, this is not a plain ExoPlayer implementation. In addition to the integrations, features and support already offered by the THEOplayer Android SDK, we've reused what makes sense to implement our own playback pipeline that offers improvements, bugfixes and additional functionality over ExoPlayer.

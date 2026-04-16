@@ -157,7 +157,7 @@ You have to go through the following steps:
 
 ## Test it
 
-Once your application is published, you can start casting from your THEOplayer Web SDK, iOS SDK or Android SDK. You need to set the correct [appID](pathname:///theoplayer/v10/api-reference/web/interfaces/CastConfiguration.html), enable Chromecast and press the Chromecast icon. Additionally, you can start casting through the [Cast API](pathname:///theoplayer/v10/api-reference/web/interfaces/GlobalCast.html).
+Once your application is published, you can start casting from your THEOplayer Web SDK, iOS SDK or Android SDK. You need to set the correct [appID](pathname:///theoplayer/v11/api-reference/web/interfaces/CastConfiguration.html), enable Chromecast and press the Chromecast icon. Additionally, you can start casting through the [Cast API](pathname:///theoplayer/v11/api-reference/web/interfaces/GlobalCast.html).
 
 ## Related articles
 

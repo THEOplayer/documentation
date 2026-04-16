@@ -32,7 +32,7 @@ player.source = {
 ## Events for Content Steering
 
 THEOplayer provides events to monitor the Content Steering process. For more details, check the
-[API documentation](pathname:///theoplayer/v10/api-reference/web/#ContentSteeringStartEvent).
+[API documentation](pathname:///theoplayer/v11/api-reference/web/#ContentSteeringStartEvent).
 
 ```javascript
 player.addEventListener('contentsteeringstart', console.log);
