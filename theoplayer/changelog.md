@@ -9,7 +9,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
-## 🚀 11.0.0 (2026/04/09)
+## 🚀 11.0.0 (2026/04/16)
 
 We are happy to announce the eleventh major version of THEOplayer, releasing all the improvements and developments our team has achieved since version 10.0.
 

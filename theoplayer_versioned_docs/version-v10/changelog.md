@@ -110,6 +110,14 @@
 
 - Fixed an issue where the `emptied` event was no longer being dispatched.
 
+## 🚀 10.12.2 (2026/04/15)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Ads triggered through ID3 would fail to load correctly.
+
 ## 🚀 10.12.1 (2026/03/17)
 
 ### iOS
@@ -351,6 +359,14 @@
 - Fixed a bug that reset the `autoplay` flag whenever an integration was added to the player.
 - Fixed an issue where OptiView Ads with VAST would not play in picture-in-picture mode.
 - Fixed an issue where track selection was not respected during Chromecast.
+
+## 🚀 10.9.1 (2026/04/15)
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where the license expired text would show momentarily while renewing a license.
 
 ## 🚀 10.9.0 (2026/01/29)
 
