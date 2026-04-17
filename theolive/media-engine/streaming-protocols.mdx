@@ -3,12 +3,12 @@ sidebar_position: 1
 sidebar_label: Streaming protocols
 sidebar_custom_props:
   icon: 📡
-description: Output protocols supported by the media engine (HESP and HLS).
+description: Output protocols supported by the platform (HESP, HLS, and WebRTC).
 ---
 
 # Streaming protocols
 
-The media engine outputs your live stream in multiple protocols to ensure broad device and player compatibility. The following output protocols are supported: **HESP** and **HLS**.
+The media engine outputs your live stream in multiple protocols to ensure broad device and player compatibility. The following output protocols are supported: **HESP** and **HLS**. Additionally, **WebRTC** can be configured at the distribution level for sub-second real-time delivery.
 
 ### HESP — High Efficiency Streaming Protocol
 
@@ -33,6 +33,15 @@ Only use HLS MPEG-TS if you are targeting a platform that genuinely does not sup
 
 HLS MPEG-TS does not support all platform features. For example, [DVR](../channel/dvr.mdx), [Nielsen](../channel/nielsen.mdx), and [DRM](./drm.mdx) are not available with this output format.
 :::
+
+### WebRTC
+
+WebRTC enables sub-second, real-time delivery by connecting a distribution to an [OptiView Real-time streaming](/millicast/getting-started/) source. Unlike HESP and HLS — which are configured on the engine — WebRTC is configured per distribution. This allows you to add real-time delivery to specific distributions while keeping standard protocol delivery on others.
+
+- **Sub-second latency** — delivers end-to-end latency under 500 ms, the lowest of all supported protocols.
+- **Hybrid delivery** — works alongside HESP and HLS. The player automatically selects the best available protocol based on priority.
+
+See the [WebRTC distribution guide](../distribution/webrtc.mdx) for configuration details and API examples.
 
 ## API example
 
