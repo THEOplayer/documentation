@@ -275,13 +275,10 @@ const config: Config = {
         routeBasePath: '/theolive',
         sidebarPath: './sidebarsTheolive.ts',
         docItemComponent: '@theme/ApiItem',
-        lastVersion: 'v1',
+        lastVersion: 'current',
         versions: {
-          // TODO: Make 'current' the lastVersion when v2 docs are finalized
           current: {
             label: 'v2',
-            banner: 'none',
-            noIndex: true,
           },
           v1: {
             label: 'v1',

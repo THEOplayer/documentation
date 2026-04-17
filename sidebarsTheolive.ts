@@ -83,7 +83,7 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '🛜',
       },
-      href: '/theolive/next/api/',
+      href: '/theolive/api/',
     },
     'changelog',
     'api/migration-from-v1',
@@ -92,7 +92,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'link',
       label: '« Back',
-      href: '/theolive/next/',
+      href: '/theolive/',
     },
     'api/index',
     'api/authentication',
