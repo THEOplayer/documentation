@@ -2,6 +2,12 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-04-21 | REST APIs
+
+### Features
+
+- Introduced [Monitoring Summary](/millicast/api/monitoring-list-stream-summary) endpoints which provide abridged information about live streams
+
 ## 2026-03-20 | REST APIs
 
 ### Features
