@@ -36,9 +36,9 @@
     "docusaurus-theme-openapi-docs": "^5.0.0",
     "prism-react-renderer": "^2.4.1",
     "prismjs": "^1.30.0",
-    "react": "^19.2.4",
+    "react": "^19.2.5",
     "react-aria-components": "^1.16.0",
-    "react-dom": "^19.2.4",
+    "react-dom": "^19.2.5",
     "url": "^0.11.4"
   },
   "devDependencies": {
