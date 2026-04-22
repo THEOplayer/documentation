@@ -32,13 +32,13 @@
     "@webcoder49/code-input": "^2.8.2",
     "clsx": "^2.1.1",
     "docusaurus-plugin-image-zoom": "^3.0.1",
-    "docusaurus-plugin-openapi-docs": "^5.0.0",
-    "docusaurus-theme-openapi-docs": "^5.0.0",
+    "docusaurus-plugin-openapi-docs": "^5.0.1",
+    "docusaurus-theme-openapi-docs": "^5.0.1",
     "prism-react-renderer": "^2.4.1",
     "prismjs": "^1.30.0",
-    "react": "^19.2.4",
-    "react-aria-components": "^1.16.0",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.5",
+    "react-aria-components": "^1.17.0",
+    "react-dom": "^19.2.5",
     "url": "^0.11.4"
   },
   "devDependencies": {
