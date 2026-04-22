@@ -30,8 +30,7 @@
   --ifm-dropdown-hover-background-color: var(--ifm-menu-color-background-hover);
 }
 
-/* TODO Use .theme-announcement-bar in next version of Docusaurus */
-[class^='announcementBar_'] {
+.theme-announcement-bar {
   border-bottom: 1px solid var(--ifm-navbar-background-color) !important;
 }
 
