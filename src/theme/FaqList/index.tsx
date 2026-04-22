@@ -1,4 +1,4 @@
-import React, { type ComponentProps, type ReactNode } from 'react';
+import React, { type ComponentProps, Fragment, type ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import type { PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
@@ -39,7 +39,7 @@ export default function FaqList(props: Props): ReactNode {
   const grouped = Object.groupBy(filteredItems, ({ customProps }) => (customProps?.faqCategory as string) ?? 'Questions');
 
   return Object.entries(grouped).map(([key, group]) => (
-    <>
+    <Fragment key={key}>
       <Heading as="h2" className={clsx('text--truncate', styles.faqTitle)} title={key}>
         {key}
       </Heading>
@@ -49,6 +49,6 @@ export default function FaqList(props: Props): ReactNode {
           <FaqListItem key={index} item={item as PropSidebarItemLink} />
         ))}
       </ul>
-    </>
+    </Fragment>
   ));
 }
