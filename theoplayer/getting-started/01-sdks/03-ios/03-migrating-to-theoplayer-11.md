@@ -33,7 +33,7 @@ In your Xcode project settings, make sure the "Deployment target" is set to 15.0
 
 ## Builds generated with Xcode 26
 
-In an effort to align with the changes made by Apple regarding the [App Store publishing policy](https://developer.apple.com/news/?id=ueeok6yw), we will start building the THEOplayer iOS SDK and its integrations with Xcode 26 (instead of Xcode 16) in an upcoming 11.x version. Effectively, this means that developing a client application using THEOplayer iOS/tvOS SDK will require a minimum version of Xcode 26.
+Starting with version 11.1.0, in an effort to align with the changes made by Apple regarding the [App Store publishing policy](https://developer.apple.com/news/?id=ueeok6yw), we now build the THEOplayer iOS SDK and its integrations with Xcode 26 (instead of Xcode 16). Effectively, this means that developing a client application using THEOplayer iOS/tvOS SDK will require a minimum version of Xcode 26.
 
 ## Self-hosted spec repo for CocoaPods
 
