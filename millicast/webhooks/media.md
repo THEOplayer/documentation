@@ -23,11 +23,12 @@ The `data` payload will contain the following details:
 
 - **mediaAssetId** is the unique identifier that can be used with the [Media Assets](/millicast/api/media-assets-list-media-assets.api.mdx) endpoint to retrieve additional details such as where to find the media file itself.
 - **type** identifies whether it is a _clip_ or _recording_ that is changing state.
-- **tokenId** is the unique identifier for the token used during a broadcast from which the media is created.
-- **streamName** is the unique label for the stream.
-- **streamId** is the unique identifier for the stream such `accountId/streamName`.
+- **tokenId** may optionally include the unique identifier for the publish token used during a broadcast from which the media is created. Present when the media asset originates from a publish token.
+- **channelId** may optionally include the channel identifier of the channel used as the source for the media asset. Present when the media asset originates from an Optiview Live channel. Mutually exclusive with **streamName**, **streamId**, and **tokenId**.
+- **streamName** is the unique label for the stream. Present when the media asset originates from an Optiview ULL stream. Mutually exclusive with **channelId**.
+- **streamId** is the unique identifier for the stream such as `accountId/streamName`. Present when the media asset originates from an Optiview ULL stream. Mutually exclusive with **channelId**.
 - **startTime** identifies the epoch timestamp for when the media is requested.
-- **expiration** identifies the epoch timestamp for when the media will be marked for removal automatically.
+- **expiration** may optionally include the epoch timestamp for when the media will be marked for removal automatically.
 - **metadata** may optionally include additional details about the media file info.
 
 ## Examples
@@ -87,6 +88,23 @@ The `data` payload will contain the following details:
     "startTime": 1725245888000,
     "type": "recording",
     "expiration": 1733896321029
+  }
+}
+```
+
+### Channel-based Media Clip is Available
+
+```json
+{
+  "type": "media",
+  "event": "completed",
+  "timestamp": 1725260343575,
+  "data": {
+    "mediaAssetId": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+    "channelId": "a1b2c3d4e5f6g7h8u9j0k1l2m",
+    "startTime": 1725259874671,
+    "type": "clip",
+    "expiration": 1733900336143
   }
 }
 ```
