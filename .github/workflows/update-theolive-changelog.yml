@@ -36,6 +36,7 @@ jobs:
             'https://engine-changelog.s3.eu-west-3.amazonaws.com/CHANGELOG.md'
       - name: Check for changes
         id: check_changes
+        # language=bash
         run: |
           if git diff --quiet theolive/changelog.md; then
             echo "No changelog changes detected."
@@ -44,6 +45,7 @@ jobs:
           fi
       - name: Commit and push changes
         if: ${{ steps.check_changes.outputs.changed }}
+        # language=bash
         run: |
           git checkout -b $UPDATE_BRANCH
           git add theolive/changelog.md
@@ -52,6 +54,7 @@ jobs:
       - name: Check if pull request already exists
         if: ${{ steps.check_changes.outputs.changed }}
         id: check_pr_exists
+        # language=bash
         run: |
           pr_count=$(gh pr list --base main --head "$UPDATE_BRANCH" --state open --limit 1 --json number --jq length)
           if ((pr_count > 0)); then
@@ -61,6 +64,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Create pull request
         if: ${{ steps.check_changes.outputs.changed && !steps.check_pr_exists.outputs.exists }}
+        # language=bash
         run: |
           gh pr create \
             --base main \
