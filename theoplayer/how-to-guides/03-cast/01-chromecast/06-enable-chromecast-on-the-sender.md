@@ -20,7 +20,7 @@ The JavaScript snippet below illustrates how you include this Sender SDK. You ca
 <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 ```
 
-Once this SDK is imported, THEOplayer will automatically add the Chromecast casting capability to your player (if you've enabled the Chromecast feature for your THEOplayer SDK).
+Once this SDK is imported, THEOplayer will automatically add the Chromecast casting capability to your player (if you've enabled the Chromecast feature for your THEOplayer SDK). THEOplayer will use its default Chromecast receiver application if you do not specify an `appID` value on the configuration.
 
 ### Android SDK
 
@@ -203,7 +203,7 @@ In order to enable Chromecast on the iOS SDK:
 ## Connect with custom Chromecast Receiver application {#custom-receiver-app}
 
 The THEOplayer SDK on your Sender application connects with THEO Chromecast Receiver application by default,
-but you can connect it to a custom Chromecast Receiver application instead.
+but you can connect it to a custom Chromecast Receiver application instead. The default THEO Chromecast Receiver application has THEOplayer functionality, but uses Shaka for media playback. If you want to use Google's legacy Media Player Library (MPL) for playback, you will need to use either a custom application or connect to THEO's MPL Receiver application. Note that the MPL receiver does not support HLS-CMAF streams.
 
 ### Web SDK
 
@@ -221,6 +221,8 @@ let player = new THEOplayer.Player(element, {
   },
 });
 ```
+
+If you do not specify an `appID` value, the player will cast to the default THEOplayer Chromecast application. This is a Receiver application that has THEOplayer functionality integrated into it, but uses the Shaka player for media playback. If you require a Receiver application that uses Google's legacy Media Player Library (MPL), there is a Receiver application with THEOplayer functionality that uses MPL. Note that the MPL receiver does not support HLS-CMAF streams.
 
 ### Android SDK
 
