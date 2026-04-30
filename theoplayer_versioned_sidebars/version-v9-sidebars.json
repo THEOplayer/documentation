@@ -86,7 +86,7 @@
             {
               "type": "link",
               "label": "Getting started",
-              "href": "/theolive/playback/web/getting-started/"
+              "href": "/theolive/v1/playback/web/getting-started/"
             }
           ]
         },
@@ -394,7 +394,7 @@
             {
               "type": "link",
               "label": "Getting started",
-              "href": "/theolive/playback/android/getting-started/"
+              "href": "/theolive/v1/playback/android/getting-started/"
             }
           ]
         },
@@ -1761,7 +1761,7 @@
             {
               "type": "link",
               "label": "Getting started",
-              "href": "/theolive/playback/roku/getting-started/"
+              "href": "/theolive/v1/playback/roku/getting-started/"
             }
           ]
         }

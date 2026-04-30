@@ -75,14 +75,14 @@
       "customProps": {
         "icon": "🛜"
       },
-      "href": "/theolive/api/"
+      "href": "/theolive/v1/api/"
     }
   ],
   "theoLiveApi": [
     {
       "type": "link",
       "label": "« Back",
-      "href": "/theolive/"
+      "href": "/theolive/v1/"
     },
     "api/index",
     {
