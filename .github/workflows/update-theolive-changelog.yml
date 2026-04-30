@@ -30,6 +30,14 @@ jobs:
         run: |
           git config user.name 'theoplayer-bot[bot]'
           git config user.email '873105+theoplayer-bot[bot]@users.noreply.github.com'
+      - name: Create or checkout update branch
+        # language=bash
+        run: |
+          if git fetch --depth 1 origin refs/heads/$UPDATE_BRANCH ; then
+            git checkout -b $UPDATE_BRANCH FETCH_HEAD
+          else
+            git checkout -b $UPDATE_BRANCH HEAD
+          fi
       - name: Fetch THEOlive changelog
         run: |
           curl -fsSL -o theolive/changelog.md \
@@ -47,7 +55,6 @@ jobs:
         if: ${{ steps.check_changes.outputs.changed }}
         # language=bash
         run: |
-          git checkout -b $UPDATE_BRANCH
           git add theolive/changelog.md
           git commit -m 'Update THEOlive changelog'
           git push --force origin HEAD:$UPDATE_BRANCH
