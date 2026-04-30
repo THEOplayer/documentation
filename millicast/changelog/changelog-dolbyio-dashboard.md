@@ -2,6 +2,24 @@
 
 Updates to the Dolby.io Dashboard and Applications.
 
+## 2026-04-29 | Dashboard
+
+Updated the dashboard branding to Dolby OptiView, including a new logo.
+
+- Fixed an issue where stream names containing `/` characters would not load correctly in Live Monitoring
+
+## 2026-03-13 | Dashboard
+
+- VOD upload usage is now displayed on the billing page under the current period
+
+## 2026-03-03 | Dashboard
+
+- Added the ability to select an Enhanced Broadcasting encoder profile on a publish token for use with OBS Enhanced Broadcasting
+
+## 2025-10-15 | Dashboard
+
+- Webhooks now support a regex filter to limit which events are sent to a webhook endpoint based on stream name or transcoder name
+
 ## 2025-08-14 | Dashboard
 
 Some minor fixes were made to the streaming dashboard:
