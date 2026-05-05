@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.1.0] - 2026-04-20
+
+- Added recurring TLA status update
+- Use Kafka for ingest metrics
+- Added support for PlayReady
+- Added support for DRM with both CENC and CBCS encryption.
+
 ## [11.0.0] - 2026-04-07
 
 - Fixed MPEG-TS HLS not returning 404 when sub playlists do not exist yet
