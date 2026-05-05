@@ -58,7 +58,7 @@
     "remark": "^15.0.1",
     "serve-handler": "^6.1.7",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.0",
+    "typescript-eslint": "^8.59.1",
     "unist-util-visit": "^5.1.0"
   },
   "overrides": {
