@@ -111,29 +111,27 @@ In order for the service worker to be able to intercept requests made from the p
 To register this service worker in to your code, you can attach it this way.
 
 ```javascript title="Register service worker"
-function registerServiceWorker() {
+async function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) {
     console.error('Service worker not supported!');
     return;
   }
-  const serviceWorkerScope = "/service/worker/path" // Replace with your own path to the service worker location.
-  const serviceWorkerPath = "${root}/service-worker.js"; // Replace with the filename of your service worker.
+  const serviceWorkerScope = '/service/worker/path'; // Replace with your own path to the service worker location.
+  const serviceWorkerPath = '${root}/service-worker.js'; // Replace with the filename of your service worker.
 
   // We recommend unregistering actively before (re-)registering as we've seen issues where hard reloads could cause issues if the service worker wasn't unregistered.
-  const registration = await navigator.serviceWorker.getRegistration(serviceWorkerPath);
-  await registration?.unregister();
+  const oldRegistration = await navigator.serviceWorker.getRegistration(serviceWorkerPath);
+  await oldRegistration?.unregister();
 
-  navigator.serviceWorker
-    .register(serviceWorkerPath, {
+  try {
+    const registration = await navigator.serviceWorker.register(serviceWorkerPath, {
       scope: serviceWorkerScope,
-    })
-    .then((reg) => {
-      if (reg.active) console.log('Service worker registered!');
-    })
-    .catch((err) => {
-      console.error('Could not register service worker!', err);
     });
-};
+    if (registration.active) console.log('Service worker registered!');
+  } catch (err) {
+    console.error('Could not register service worker!', err);
+  }
+}
 
 // Initialise the service worker some time early in the process.
 if (!(window.MediaSource || window.ManagedMediaSource)) {
@@ -141,18 +139,17 @@ if (!(window.MediaSource || window.ManagedMediaSource)) {
 }
 ```
 
-The snippet above assumes the existence of a function `getToken()` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. [(Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudo-code :
+The snippet above assumes the existence of a function `getToken()` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. [(Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudocode:
 
 ```javascript
-const getToken = () => {
+const getToken = async () => {
   const YOUR_JWT_SIGNING_KEY = 'YOUR-SIGNING-KEY-GOES-HERE';
-  const payload ={
+  const payload = {
     exp: Math.floor(Date.now() / 1000) + 300, // 5 minutes
-  }
+  };
 
   return await sign(payload, YOUR_JWT_SIGNING_KEY);
-}
-
+};
 ```
 
 You can use an existing library like [Jose](https://github.com/panva/jose), or you can use our example implementation:
