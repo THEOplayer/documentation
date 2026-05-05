@@ -203,7 +203,7 @@ In order to enable Chromecast on the iOS SDK:
 ## Connect with custom Chromecast Receiver application {#custom-receiver-app}
 
 The THEOplayer SDK on your Sender application connects with THEO Chromecast Receiver application by default,
-but you can connect it to a custom Chromecast Receiver application instead. The default THEO Chromecast Receiver application has THEOplayer functionality, but uses Shaka for media playback. If you want to use Google's legacy Media Player Library (MPL) for playback, you will need to use either a custom application or connect to THEO's MPL Receiver application, using the `appID` value of `44BAE7D1`. Note that the MPL receiver does not support HLS-CMAF streams.
+but you can connect it to a custom Chromecast Receiver application instead. The default Dolby OptiView Chromecast Receiver application has OptiView Player functionality, but uses Shaka for media playback. If you want to use Google's legacy Media Player Library (MPL) for playback, you will need to use either a custom application or connect to Dolby OptiView's MPL Receiver application, using the `appID` value of `44BAE7D1`. Note that the MPL receiver does not support HLS-CMAF streams.
 
 ### Web SDK
 
