@@ -62,6 +62,18 @@ player.theoLive.authToken = undefined;
 Apple devices running an iOS version lower than 17.1 do not support MSE, therefore there are limitations with what is possible when playing an OptiView Live stream. One such limitation is that the above network API approach does not work on those devices. Instead, a service worker needs to be registered to support playback of JWT enabled streams.
 
 The service worker needs to intercept the `fetch` requests originating from the app, to be able to include the `Authorization` header to the requests.
+This requires the player to make all HTTP requests with [CORS](../../../knowledge-base/05-cors/00-introduction.md) enabled, even when using Safari's native playback. Make sure to set [the `crossOrigin` property](pathname:///theoplayer/v11/api-reference/web/interfaces/TypedSource.html#crossOrigin) on your OptiView Live source:
+
+```javascript
+player.source = {
+  sources: {
+    type: 'theolive',
+    src: 'your-channel-id',
+    // highlight-next-line
+    crossOrigin: 'anonymous',
+  },
+};
+```
 
 A code snippet for the service worker code is shared below.
 
