@@ -91,11 +91,10 @@ self.addEventListener('fetch', (event) => {
     }
     const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
     // Clone the request and add the JWT header
+    const modifiedHeaders = new Headers(event.request.headers);
+    modifiedHeaders.set('Authorization', `Bearer ${token}`);
     const modifiedRequest = new Request(event.request, {
-      headers: {
-        ...Object.fromEntries(event.request.headers.entries()),
-        Authorization: `Bearer ${token}`,
-      },
+      headers: modifiedHeaders,
     });
     return event.respondWith(fetch(modifiedRequest));
   } catch (error) {
