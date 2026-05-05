@@ -222,7 +222,7 @@ let player = new THEOplayer.Player(element, {
 });
 ```
 
-If you do not specify an `appID` value, the player will cast to the default THEOplayer Chromecast application. This is a Receiver application that has THEOplayer functionality integrated into it, but uses the Shaka player for media playback. If you require a Receiver application that uses Google's legacy Media Player Library (MPL), there is a Receiver application with THEOplayer functionality that uses MPL. Its `appID` is `44BAE7D1`. Note that the MPL receiver does not support HLS-CMAF streams.
+If you do not specify an `appID` value, the player will cast to the default OptiView Player Chromecast application. This is a Receiver application that has OptiView Player functionality integrated into it, but uses the Shaka player for media playback. If you require a Receiver application that uses Google's legacy Media Player Library (MPL), there is a Receiver application with OptiView Player functionality that uses MPL. Its `appID` is `44BAE7D1`. Note that the MPL receiver does not support HLS-CMAF streams.
 
 ### Android SDK
 
