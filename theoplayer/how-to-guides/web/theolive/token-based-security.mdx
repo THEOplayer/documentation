@@ -83,13 +83,11 @@ self.addEventListener('activate', (event) => {
 
 // Intercept the fetch event and add in your JWT
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    (async function () {
       try {
         const url = new URL(event.request.url);
         if (!url.origin.endsWith('theo.live')) {
           // Requests not made by the player for playback of the OptiView Live distribution should not be modified.
-          return fetch(event.request);
+          return;
         }
         const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
         // Clone the request and add the JWT header
@@ -99,13 +97,11 @@ self.addEventListener('fetch', (event) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        return fetch(modifiedRequest);
+        return event.respondWith(fetch(modifiedRequest));
       } catch (error) {
         console.error('Error in fetch handler:', error);
-        return new Response('Service Worker Error', { status: 500 });
+        return event.respondWith(new Response('Service Worker Error', { status: 500 }));
       }
-    })()
-  );
 });
 ```
 
