@@ -20,7 +20,7 @@ The JavaScript snippet below illustrates how you include this Sender SDK. You ca
 <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 ```
 
-Once this SDK is imported, THEOplayer will automatically add the Chromecast casting capability to your player (if you've enabled the Chromecast feature for your THEOplayer SDK). THEOplayer will use its default Chromecast receiver application if you do not specify an `appID` value on the configuration.
+Once this SDK is imported, OptiView Player will automatically add the Chromecast casting capability to your player (if you've enabled the Chromecast feature for your OptiView Player SDK). OptiView Player will use its default Chromecast receiver application if you do not specify an `appID` value on the configuration.
 
 ### Android SDK
 
