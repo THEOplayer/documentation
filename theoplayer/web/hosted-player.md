@@ -7,9 +7,6 @@ slug: /web/hosted-player
 
 Dolby hosts a special version of the OptiView video player for use with customers intended to be used for `<iframe>` embedding. This version of the player is configurable with query parameters to make it easy to setup and configure without having to host the player yourself.
 
-
-
-
 The player is hosted at:
 
 ```
@@ -17,11 +14,12 @@ https://sbp.optiview.dolby.com/latest/
 ```
 
 ## Versioning
+
 The hosted player is versioned and will automatically update when new releases are published. The latest version is always available at `https://sbp.optiview.dolby.com/latest/`.
 
 For production, we recommend that you lock to a specific version, you can use the version number in the URL. Example: `https://sbp.optiview.dolby.com/11.1.0/`.
 
-These versions of the player map directly to the [changelog](/theoplayer/changelog/).  The first version available for the hosted player is `11.1.0`.
+These versions of the player map directly to the [changelog](/theoplayer/changelog/). The first version available for the hosted player is `11.1.0`.
 
 ## Configuration
 
