@@ -83,25 +83,25 @@ self.addEventListener('activate', (event) => {
 
 // Intercept the fetch event and add in your JWT
 self.addEventListener('fetch', (event) => {
-      try {
-        const url = new URL(event.request.url);
-        if (!url.origin.endsWith('theo.live')) {
-          // Requests not made by the player for playback of the OptiView Live distribution should not be modified.
-          return;
-        }
-        const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
-        // Clone the request and add the JWT header
-        const modifiedRequest = new Request(event.request, {
-          headers: {
-            ...Object.fromEntries(event.request.headers.entries()),
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        return event.respondWith(fetch(modifiedRequest));
-      } catch (error) {
-        console.error('Error in fetch handler:', error);
-        return event.respondWith(new Response('Service Worker Error', { status: 500 }));
-      }
+  try {
+    const url = new URL(event.request.url);
+    if (!url.origin.endsWith('theo.live')) {
+      // Requests not made by the player for playback of the OptiView Live distribution should not be modified.
+      return;
+    }
+    const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
+    // Clone the request and add the JWT header
+    const modifiedRequest = new Request(event.request, {
+      headers: {
+        ...Object.fromEntries(event.request.headers.entries()),
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return event.respondWith(fetch(modifiedRequest));
+  } catch (error) {
+    console.error('Error in fetch handler:', error);
+    return event.respondWith(new Response('Service Worker Error', { status: 500 }));
+  }
 });
 ```
 
