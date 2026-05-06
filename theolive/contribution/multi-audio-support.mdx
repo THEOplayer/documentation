@@ -15,6 +15,10 @@ use cases such as live events where multiple languages or commentary may be requ
 This functionality is **only** supported through the SRT ingest protocol.
 :::
 
+:::info
+If multi-audio is not configured, the first audio track in the stream is used by default. Any other audio tracks that are not configured are discarded.
+:::
+
 ## Configuring multi-audio ingest and playback
 
 To deliver multi audio SRT the following steps must be taken:
@@ -22,7 +26,7 @@ To deliver multi audio SRT the following steps must be taken:
 1. Within the dashboard configure your SRT listener endpoint.
 2. Configure your expected incoming "Audio tracks" by specifying a language, label, and the expected PID.
 
-<div style={{ textAlign: 'center' }}>![SRT Multi-audio example with PIDs](../assets/img/srt-pull-ingest.png)</div>
+<div style={{ textAlign: 'center' }}>![SRT Multi-audio example with PIDs](../assets/img/srt-multi-audio-2.png)</div>
 
 3. Start the Channel and begin ingesting video and audio into the engine.
 4. Check the preview in the dashboard to validate the audio tracks are being received correctly.
