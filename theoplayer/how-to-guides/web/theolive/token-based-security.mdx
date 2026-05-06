@@ -10,7 +10,7 @@ This page will demonstrate how to configure the Web SDK for playback of channels
 
 ## Setting up the Web THEOplayer SDK for OptiView Live
 
-Refer to the [getting started guide](./getting-started.mdx) for the prerequisite steps in getting the web SDK up and running for OptiView Live playback.
+Refer to the [getting started guide](./getting-started.mdx) for the prerequisite steps in getting the Web SDK up and running for OptiView Live playback.
 
 ## Configuring THEOplayer to pass the token
 
@@ -62,6 +62,18 @@ player.theoLive.authToken = undefined;
 Apple devices running an iOS version lower than 17.1 do not support MSE, therefore there are limitations with what is possible when playing an OptiView Live stream. One such limitation is that the above network API approach does not work on those devices. Instead, a service worker needs to be registered to support playback of JWT enabled streams.
 
 The service worker needs to intercept the `fetch` requests originating from the app, to be able to include the `Authorization` header to the requests.
+This requires the player to make all HTTP requests with [CORS](../../../knowledge-base/05-cors/00-introduction.md) enabled, even when using Safari's native playback. Make sure to set [the `crossOrigin` property](pathname:///theoplayer/v11/api-reference/web/interfaces/TypedSource.html#crossOrigin) on your OptiView Live source:
+
+```javascript
+player.source = {
+  sources: {
+    type: 'theolive',
+    src: 'your-channel-id',
+    // highlight-next-line
+    crossOrigin: 'anonymous',
+  },
+};
+```
 
 A code snippet for the service worker code is shared below.
 
@@ -83,62 +95,55 @@ self.addEventListener('activate', (event) => {
 
 // Intercept the fetch event and add in your JWT
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    (async function () {
-      try {
-        const url = new URL(event.request.url);
-        if (!url.origin.endsWith('theo.live')) {
-          // Requests not made by the player for playback of the OptiView Live distribution should not be modified.
-          return fetch(event.request);
-        }
-        const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
-        // Clone the request and add the JWT header
-        const modifiedRequest = new Request(event.request, {
-          headers: {
-            ...Object.fromEntries(event.request.headers.entries()),
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        return fetch(modifiedRequest);
-      } catch (error) {
-        console.error('Error in fetch handler:', error);
-        return new Response('Service Worker Error', { status: 500 });
-      }
-    })()
-  );
+  try {
+    const url = new URL(event.request.url);
+    if (!url.origin.endsWith('theo.live')) {
+      // Requests not made by the player for playback of the OptiView Live distribution should not be modified.
+      return;
+    }
+    const token = getToken(); // Generate or request your token. For more information, check the token based security guide linked above.
+    // Clone the request and add the JWT header
+    const modifiedHeaders = new Headers(event.request.headers);
+    modifiedHeaders.set('Authorization', `Bearer ${token}`);
+    const modifiedRequest = new Request(event.request, {
+      headers: modifiedHeaders,
+    });
+    return event.respondWith(fetch(modifiedRequest));
+  } catch (error) {
+    console.error('Error in fetch handler:', error);
+    return event.respondWith(new Response('Service Worker Error', { status: 500 }));
+  }
 });
 ```
 
 :::note
-In order for the service worker to be able to intercept requests made from the player library, its scope must include the player sdk files. That means the player and service worker must be hosted on the same path or the player must be hosted in a subfolder of the path where the service worker is hosted.
+In order for the service worker to be able to intercept requests made from the player library, its scope must include the player SDK files. That means the player and service worker must be hosted on the same path or the player must be hosted in a subfolder of the path where the service worker is hosted.
 :::
 
 To register this service worker in to your code, you can attach it this way.
 
 ```javascript title="Register service worker"
-function registerServiceWorker() {
+async function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) {
     console.error('Service worker not supported!');
     return;
   }
-  const serviceWorkerScope = "/service/worker/path" // Replace with your own path to the service worker location.
-  const serviceWorkerPath = "${root}/service-worker.js"; // Replace with the filename of your service worker.
+  const serviceWorkerScope = '/service/worker/path'; // Replace with your own path to the service worker location.
+  const serviceWorkerPath = '${root}/service-worker.js'; // Replace with the filename of your service worker.
 
   // We recommend unregistering actively before (re-)registering as we've seen issues where hard reloads could cause issues if the service worker wasn't unregistered.
-  const registration = await navigator.serviceWorker.getRegistration(serviceWorkerPath);
-  await registration?.unregister();
+  const oldRegistration = await navigator.serviceWorker.getRegistration(serviceWorkerPath);
+  await oldRegistration?.unregister();
 
-  navigator.serviceWorker
-    .register(serviceWorkerPath, {
+  try {
+    const registration = await navigator.serviceWorker.register(serviceWorkerPath, {
       scope: serviceWorkerScope,
-    })
-    .then((reg) => {
-      if (reg.active) console.log('Service worker registered!');
-    })
-    .catch((err) => {
-      console.error('Could not register service worker!', err);
     });
-};
+    if (registration.active) console.log('Service worker registered!');
+  } catch (err) {
+    console.error('Could not register service worker!', err);
+  }
+}
 
 // Initialise the service worker some time early in the process.
 if (!(window.MediaSource || window.ManagedMediaSource)) {
@@ -146,18 +151,17 @@ if (!(window.MediaSource || window.ManagedMediaSource)) {
 }
 ```
 
-The snippet above assumes the existence of a function `getToken()` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. [(Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudo-code :
+The snippet above assumes the existence of a function `getToken()` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. [(Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudocode:
 
 ```javascript
-const getToken = () => {
+const getToken = async () => {
   const YOUR_JWT_SIGNING_KEY = 'YOUR-SIGNING-KEY-GOES-HERE';
-  const payload ={
+  const payload = {
     exp: Math.floor(Date.now() / 1000) + 300, // 5 minutes
-  }
+  };
 
   return await sign(payload, YOUR_JWT_SIGNING_KEY);
-}
-
+};
 ```
 
 You can use an existing library like [Jose](https://github.com/panva/jose), or you can use our example implementation:
