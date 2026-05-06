@@ -101,7 +101,7 @@ self.addEventListener('fetch', (event) => {
       // Requests not made by the player for playback of the OptiView Live distribution should not be modified.
       return;
     }
-    const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
+    const token = getToken(); // Generate or request your token. For more information, check the token based security guide linked above.
     // Clone the request and add the JWT header
     const modifiedHeaders = new Headers(event.request.headers);
     modifiedHeaders.set('Authorization', `Bearer ${token}`);
