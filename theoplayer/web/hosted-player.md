@@ -5,21 +5,21 @@ slug: /web/hosted-player
 
 # OptiView Hosted Player
 
-Dolby hosts a special version of the OptiView video player for use with customers intended to be used for `<iframe>` embedding. This version of the player is configurable with query parameters to make it easy to setup and configure.
-
-:::caution Hosted Player Under Construction
-This version of the player is under development.
-:::
-
-:::caution Player Updates
-This version of the player will automatically be updated when new releases are published.
-:::
+Dolby hosts a special version of the OptiView video player for use with customers intended to be used for `<iframe>` embedding. This version of the player is configurable with query parameters to make it easy to setup and configure without having to host the player yourself.
 
 The player is hosted at:
 
 ```
-https://sbp.optiview.dolby.com
+https://sbp.optiview.dolby.com/latest/
 ```
+
+## Versioning
+
+The hosted player is versioned and will automatically update when new releases are published. The latest version is always available at `https://sbp.optiview.dolby.com/latest/`.
+
+For production, we recommend that you lock to a specific version, you can use the version number in the URL. Example: `https://sbp.optiview.dolby.com/11.1.0/`.
+
+These versions of the player map directly to the [changelog](/theoplayer/changelog/). The first version available for the hosted player is `11.1.0`.
 
 ## Configuration
 
@@ -40,12 +40,12 @@ The following parameters can be provided used to configure the hosted player. _N
     - `stream.theo.live`
 - `sourceType`: the type of source to configure the player to play back. Choose one of:
   - `realtime`: Real-time WebRTC playback with OptiView's real-time streaming solution (formerly Millicast)
-  - `lowdelay`: Low-delay HESP playback with OptiVIew's live streaming solution (formerly THEOlive).
+  - `lowdelay`: Low-delay HESP/HLS playback with OptiView's live streaming solution (formerly THEOlive).
   - `live`: HLS playback with an .m3u8 manifest
   - `vod`: used for MP4 progressive download playback or for HLS/DASH non-live assets. The type is determined by the file extension.
 - `source`: the source itself based on the `sourceType`. Here are some examples:
   - for `realtime`, the source looks like `accountId/streamname`. Example: `k9Mwad/multiview`.
-  - for `lowdelay`, the source looks like `channelId`. Example: `ar5c53uzm3si4h4zgkzrju44h`.
+  - for `lowdelay`, the source looks like `distributionId`. Example: `af5d8187-1af0-46af-92da-a9333719f296`. _Note: if you are using the V1 of the THEOlive API, you will need to use the channel ID instead of the distribution ID._
 
 ### Optional Parameters
 
@@ -95,25 +95,25 @@ Here is an example of how to consume these messages, logging them to the console
 This is a basic example of a player that is configured in a basic way to play a real-time source:
 
 ```
-https://sbp.optiview.dolby.com/?sourceType=realtime&source=k9Mwad/multiview&license=LICENSE_STRING
+https://sbp.optiview.dolby.com/latest/?sourceType=realtime&source=k9Mwad/multiview&license=LICENSE_STRING
 ```
 
 This is an example of a player that is configured to play a real-time stream with token protection and other customizations:
 
 ```
-https://sbp.optiview.dolby.com/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING&token=TOKEN_STRING
+https://sbp.optiview.dolby.com/latest/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING&token=TOKEN_STRING
 ```
 
 This is an example to load an OptiView low-delay stream and start with automatic playback:
 
 ```
-https://sbp.optiview.dolby.com/?sourceType=lowdelay&source=ar5c53uzm3si4h4zgkzrju44h&autoPlay=true&muted=true&license=LICENSE_STRING
+https://sbp.optiview.dolby.com/latest/?sourceType=lowdelay&source=ar5c53uzm3si4h4zgkzrju44h&autoPlay=true&muted=true&license=LICENSE_STRING
 ```
 
 This is an example to load an HLS stream and start with automatic playback:
 
 ```
-https://sbp.optiview.dolby.com/?sourceType=live&source=https://stream.theo.live/europe-west/e2c4220c-3cf4-4499-ab3a-ea5e904d0406/ar5c53uzm3si4h4zgkzrju44h/stream/main.m3u8&autoPlay=true&muted=false&license=LICENSE_STRING
+https://sbp.optiview.dolby.com/latest/?sourceType=live&source=https://stream.theo.live/europe-west/e2c4220c-3cf4-4499-ab3a-ea5e904d0406/ar5c53uzm3si4h4zgkzrju44h/stream/main.m3u8&autoPlay=true&muted=false&license=LICENSE_STRING
 ```
 
 ## A Complete Example
@@ -140,7 +140,7 @@ https://sbp.optiview.dolby.com/?sourceType=live&source=https://stream.theo.live/
   </head>
   <body>
     <iframe
-      src="https://sbp.optiview.dolby.com/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING"
+      src="https://sbp.optiview.dolby.com/latest/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING"
       allowfullscreen
       allow="autoplay; encrypted-media"
     ></iframe>
