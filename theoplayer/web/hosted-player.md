@@ -40,7 +40,7 @@ The following parameters can be provided used to configure the hosted player. _N
     - `stream.theo.live`
 - `sourceType`: the type of source to configure the player to play back. Choose one of:
   - `realtime`: Real-time WebRTC playback with OptiView's real-time streaming solution (formerly Millicast)
-  - `lowdelay`: Low-delay HESP/HLS playback with OptiVIew's live streaming solution (formerly THEOlive).
+  - `lowdelay`: Low-delay HESP/HLS playback with OptiView's live streaming solution (formerly THEOlive).
   - `live`: HLS playback with an .m3u8 manifest
   - `vod`: used for MP4 progressive download playback or for HLS/DASH non-live assets. The type is determined by the file extension.
 - `source`: the source itself based on the `sourceType`. Here are some examples:
