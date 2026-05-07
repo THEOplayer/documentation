@@ -9,6 +9,82 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.2.0 (2026/05/07)
+
+### Web
+
+#### ✨ Features
+
+- Exposed `traffickingParametersString` for ads in `google-dai` sources.
+- Added support for `#EXT-X-KEY` tags for PlayReady with CENC encryption for HLS streams.
+- Added support for `replaceContent` for OptiView Ads streams.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would not have the correct `seekable`, `buffered` and `duration` during ad playback in a VOD OptiView Ads stream.
+- Fixed an issue where the player would stutter when playing a muxed HLS stream on MacOS Safari unmuted.
+- Fixed an issue where switching to an OptiView Live stream with JWT token security enabled while casting to Chromecast did not correctly pass along the JWT token to the receiver.
+- Fixed an issue where the playhead would snap back during scrubbing on mobile browsers.
+
+### Android
+
+#### 💥 Breaking Changes
+
+- Ads insertion metadata request will now be postponed from `setSource` call till the `play` call happens as the default `PreloadType` is `NONE`. Changing `PreloadType` to `AUTO` or `METADATA` brings the old behaviour back: `setSource` will fetch ads insertion metadata.
+
+#### ✨ Features
+
+- Added support for loading Google DAI metadata in a lazy manner. Use `PreloadType.NONE` to delay loading metadata until `Player.play()` is called. If `PreloadType` is `AUTO` or `METADATA` the behaviour stays unchanged: the load request will be executed as soon as `setSource` is called.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `PLAYING` event was fired again after the end of an ad break when using OptiView Ads.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Updated the minimum required Google IMA SDK version to 3.31 to include the latest improvements.
+
+#### 🐛 Issues
+
+- Fixed an issue where subtitles were not correctly positioned when changing the player `aspectRatio` property.
+- Fixed an issue where no duration change event was dispatched before an HLS live source ended.
+- Fixed an issue where the player does not retain picture-in-picture mode when main content is resumed after an ad playback.
+- Fixed an issue where non-fatal coreMediaError surfaced as fatal errors.
+
+### tvOS
+
+#### ⚡ Improvements
+
+- Updated the minimum required Google IMA SDK version to 4.16 to include the latest improvements.
+
+### Chromecast CAF
+
+#### ✨ Features
+
+- Added support for playing Axinom DRM streams on Chromecast.
+
+#### ⚡ Improvements
+
+- Updated all CAF Chromecast applications to use Shaka 4.15.36 by default to enable HLS-CMAF streams and improve OptiView Live playback. Also introduced an MPL-only CAF Chromecast application that does not use Shaka.
+
+#### 🐛 Issues
+
+- Fixed an issue with OptiView Live streams reloading after being cast.
+- Fixed an issue with keyOS DRM streams where the `customdata` property was lost when casting to the Chromecast CAF app.
+
+### Roku
+
+#### ✨ Features
+
+- Added in support for DRM on THEOlive streams. Also added new configuration options for content protection.
+
+#### 🐛 Issues
+
+- Fixed an issue with no playback when switching between two SSAI streams.
+- Fixed an issue where the Adobe analytics task node was not being properly cleaned up when the connector is destroyed. Added a param to the connector's `destroy` method to force the Adobe analytics task node to be destroyed when the connector is destroyed.
+
 ## 🚀 11.1.0 (2026/04/28)
 
 ### Web
@@ -70,7 +146,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -83,7 +159,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.

@@ -177,9 +177,9 @@ In case where the integrator would want to manage fetching a specific version of
 
 ```ruby
 pod 'THEOplayer-Integration-GoogleIMA/Base'
-pod 'GoogleAds-IMA-iOS-SDK', '3.24.0' # specify the desired version
+pod 'GoogleAds-IMA-iOS-SDK', '3.31.0' # specify the desired version
 # or
-pod 'GoogleAds-IMA-tvOS-SDK', '4.14.1' # specify the desired version
+pod 'GoogleAds-IMA-tvOS-SDK', '4.16.0' # specify the desired version
 ```
 
 #### Swift Package Manager
@@ -188,6 +188,10 @@ Please check the [installation instruction found here](https://github.com/THEOpl
 
 :::info
 This will not get the IMA SDK, but only the THEOplayer IMA integration. The IMA SDKs can be found at https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios and https://github.com/googleads/swift-package-manager-google-interactive-media-ads-tvos. You should add these to your Xcode project's `Package Dependencies` for SPM to fetch.
+:::
+
+:::warning Minimum supported IMA SDK versions
+The THEOplayer GoogleIMA integration requires a minimum IMA SDK version of **3.31.0** for iOS and **4.16.0** for tvOS. Using an older version will result in compilation errors due to new APIs used by the integration.
 :::
 
 ### Import
