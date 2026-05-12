@@ -128,10 +128,14 @@ sub onAdsPlayingChange( event as object )
 end sub
 ```
 
-IMPORTANT NOTE: when playing CSAI ads, if the user presses the back button on the remote, the back button press will not be
+:::info
+
+When playing CSAI ads, if the user presses the back button on the remote, the back button press will not be
 captured by `onKeyEvent` listeners. To allow your application to handle this back button press, the application
 should listen for the `adexitrequested` event on the Ads API and handle the exit logic there. Otherwise, it takes
 a second back button press to exit the player.
+
+:::
 
 ### Monitoring RAF
 
