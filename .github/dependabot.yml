@@ -19,8 +19,14 @@ updates:
           - 'docusaurus*'
       production-dependencies:
         dependency-type: 'production'
+        exclude-patterns:
+          - '@docusaurus*'
+          - 'docusaurus*'
       development-dependencies:
         dependency-type: 'development'
+        exclude-patterns:
+          - '@docusaurus*'
+          - 'docusaurus*'
   - package-ecosystem: gitsubmodule
     directory: /
     schedule:
