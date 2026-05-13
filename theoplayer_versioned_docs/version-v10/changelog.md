@@ -110,6 +110,14 @@
 
 - Fixed an issue where the `emptied` event was no longer being dispatched.
 
+## 🚀 10.12.3 (2026/05/13)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would crash during deinitialization.
+
 ## 🚀 10.12.2 (2026/04/15)
 
 ### iOS
