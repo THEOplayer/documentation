@@ -1,0 +1,63 @@
+---
+sidebar_position: 2
+sidebar_label: Metadata insertion
+sidebar_custom_props:
+  icon: 📨
+description: Push timed metadata into a running channel via the API and have it travel through the pipeline to the player.
+---
+
+# Metadata insertion
+
+Metadata insertion lets you push custom timed data into a running channel via the API. The metadata is carried through the OptiView Live pipeline alongside the live stream, so it arrives at the player synchronized with the video. Use it for cuepoints, score updates, statistics, ad markers, or any other event-driven information you want to deliver to viewers in real time.
+
+This is an alternative to embedding [SEI metadata](../contribution/sei-messages.mdx) at the encoder. Instead of adding messages to the source signal, you send metadata directly from your backend to a running channel whenever an event occurs.
+
+:::info
+Metadata insertion must be explicitly enabled on your account by a Dolby administrator. Contact your account manager to get started.
+:::
+
+## How it works
+
+1. Enable metadata insertion on your channel and declare a list of UUIDs. Each UUID acts as a namespace that identifies a particular kind of metadata you intend to send.
+2. While the channel is running, send a binary payload to the dedicated endpoint, addressing it with the channel ID and one of the configured UUIDs.
+3. The payload is attached to the live stream at the moment it is received and is delivered to the player as part of playback.
+
+## Configuration
+
+Enable metadata insertion on your channel by setting `instreamMetadata.enabled` to `true` and listing the UUIDs you want to use when [creating](../api/create-channel.api.mdx) or [updating](../api/update-channel.api.mdx) your channel.
+
+`POST https://api.theo.live/v2/channels`
+
+```json
+{
+  "name": "my-channel",
+  "instreamMetadata": {
+    "enabled": true,
+    "uuids": ["11111111-1111-1111-1111-111111111111", "22222222-2222-2222-2222-222222222222"]
+  }
+}
+```
+
+Only payloads sent with one of the configured UUIDs are accepted. You can use any valid UUID — generate them yourself and reuse them across sessions, or pick a separate UUID per metadata type (for example, one for score updates and another for cuepoints).
+
+## Sending metadata
+
+Once your channel is running, send a binary payload to the metadata insertion endpoint. The body is opaque to the platform — you decide its format (for example UTF-8 encoded JSON, protobuf, or your own binary layout) and your application is responsible for parsing it on the player side.
+
+`POST https://api.theo.live/v2/channels/{channelId}/instream-metadata/{uuid}`
+
+```bash
+curl -X POST \
+  "https://api.theo.live/v2/channels/ch_abc123/instream-metadata/11111111-1111-1111-1111-111111111111" \
+  -H "Authorization: Basic $AUTH" \
+  -H "Content-Type: application/octet-stream" \
+  --data-binary '{"event":"goal","team":"home","score":"1-0"}'
+```
+
+A `200` response indicates the metadata was accepted and queued for delivery on the stream.
+
+See the API reference for [Send instream metadata](../api/send-channel-instream-metadata.api.mdx) for the full request specification.
+
+## Consuming on the player
+
+The platform exposes the inserted payloads to the player as cues on a metadata text track. See the [metadata guide for OptiView Player on web](/theoplayer/how-to-guides/web/theolive/metadata/) for how to listen for and parse these cues in your application.
