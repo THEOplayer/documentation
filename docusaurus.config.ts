@@ -408,6 +408,8 @@ const config: Config = {
         createRedirects(existingPath) {
           if (existingPath.startsWith('/theoplayer/how-to-guides/web/uplynk/')) {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
+          } else if (existingPath.startsWith('/theolive/v1/api/')) {
+            return [existingPath.replace('/theolive/v1/api/', '/theolive/api/')];
           }
           return undefined;
         },
