@@ -282,6 +282,7 @@ const config: Config = {
           },
           v1: {
             label: 'v1',
+            banner: 'none',
           },
         },
       } satisfies DocsPlugin.Options,
