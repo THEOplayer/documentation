@@ -11,7 +11,7 @@ as a metadata text track.
 First listen to the event to see if a new metadata track has been added, and add an `onTimeCode` listener:
 
 ```javascript
-player.textTracks.addEventListener('addTrack', (event) => {
+player.textTracks.addEventListener('addtrack', (event) => {
   const track = event.track;
   if (track.id === 'timecode') {
     track.mode = 'showing'; // Setting the mode to showing will enable the entercue events
