@@ -56,3 +56,15 @@ See the API reference for [Send instream metadata](../api/send-channel-instream-
 ## Consuming on the player
 
 The platform exposes the inserted payloads to the player as cues on a metadata text track. See the [text tracks introduction](/theoplayer/how-to-guides/texttrack/introduction/) for how to listen for and parse these cues in your application.
+Suppose your uuid is `11111111-1111-1111-1111-111111111111`, then this is a full code example for web:
+
+
+```javascript
+player.textTracks.addEventListener('addtrack', (event) => {
+    if (event.track.type === 'emsg' && event.track.inBandMetadataTrackDispatchType === "urn:uuid:11111111-1111-1111-1111-111111111111") {
+        event.track.addEventListener('addcue', (e) => {
+            console.log('cue', e.cue.content);
+        })
+    }
+});
+```
