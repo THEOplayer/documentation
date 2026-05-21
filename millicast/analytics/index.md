@@ -9,7 +9,7 @@ To access the analytics APIs you must have an API token. To learn more on how to
 
 Another thing to note is that analytics API calls will not work directly from the Browser, there is no CORS support. To successfully call the API you must use Curl or a back end solution like Nodejs, Java, or anything outside the browser that can do HTTPS requests.
 
-All requests made to the analytics APIs require that you provide a **start** and **stop** date range. The date must be structured in a UTC format containing the year, month, day and hour (eg 2020-01-01T00:00:00Z). These series based requests require you to set an analytics formatting resolution value of "Month", "Day" or "Hour", the resulting data will follow the specified format accordingly. The time part of your date string is optional and used only if you're querying the API for hourly information.
+All requests made to the analytics APIs require that you provide a **start** and **stop** date range. The date must be structured in a UTC format containing the year, month, day and hour (eg 2020-01-01T00:00:00Z). Note that `stopDate` is **exclusive**: data is returned for the period starting from `startDate` up to but not including `stopDate`. These series based requests require you to set an analytics formatting resolution value of "Month", "Day" or "Hour", the resulting data will follow the specified format accordingly. The time part of your date string is optional and used only if you're querying the API for hourly information.
 
 ## Access restrictions
 
@@ -17,7 +17,7 @@ There are few restrictions to note regarding the Analytics APIs. Currently the s
 
 A breakdown of per-stream data is also only available within a 7 day window. This includes geographic data as well as detailed bandwidth usage information per stream. If this detailed usage data is valuable to you, it is advised that you regularly download this data before it expires and is no longer available for querying.
 
-To query for a particular month’s data, the API requires the date range to be from **day 1** of the month in question to **day 1** of the next month. An example of the query would look like this: startDate=2021-**01-01**&stopDate=2021-**02-01**&resolution=**Month**. This query would return the total bandwidth usage for the month of January 2021.
+To query for a particular month’s data, the API requires the date range to be from **day 1** of the month in question to **day 1** of the next month. An example of the query would look like this: startDate=2021-**01-01**&stopDate=2021-**02-01**&resolution=**Month**. Because `stopDate` is exclusive, this query returns the total bandwidth usage for the month of January 2021 only — data for February 1st is not included in the results.
 
 It is advised that you save your Daily and Hourly data if you feel that you would need it beyond the 365 and 7 day retention provided by OptiView Real-time Streaming.
 
