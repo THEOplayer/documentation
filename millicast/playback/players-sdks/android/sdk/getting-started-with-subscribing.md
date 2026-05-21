@@ -9,7 +9,7 @@ Follow these steps to add the subscribing capability to your application.
 You can get the SDK library from [MavenCentral](https://central.sonatype.com/artifact/com.millicast/millicast-sdk-android). If you haven't already, add the following to your gradle dependencies.
 
 ```kotlin
-implementation("com.millicast:millicast-sdk-android:2.0.0")
+implementation("com.millicast:millicast-sdk-android:2.5.+")
 ```
 
 ## 2. Initialize the SDK

@@ -8,24 +8,24 @@ OptiView Live offers the option to enable JWT token security on a distribution (
 
 This page will demonstrate how to configure the Web SDK for playback of channels with token based security enabled.
 
-## Setting up the Web THEOplayer SDK for OptiView Live
+## Setting up the Web SDK for OptiView Live
 
 Refer to the [getting started guide](./getting-started.mdx) for the prerequisite steps in getting the Web SDK up and running for OptiView Live playback.
 
-## Configuring THEOplayer to pass the token
+## Configuring the player to pass the token
 
-The token needs to be passed along with player requests as a Bearer token in the `Authorization` header of the requests. To do so we can make use of the Network API of the player, which works as follows:
+Use the `player.theoLive.authToken` API to have the player pass your JWT token along with all HTTP requests it makes while playing your OptiView Live distribution:
 
 ```javascript
 const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
 player.theoLive.authToken = token;
 ```
 
-This will ensure the player includes your authorization header on all subsequent requests it performs for playback of your OptiView Live distribution.
+This will ensure the player includes the correct `Authorization` HTTP request header on all subsequent requests.
 
 ## Dealing with token expiry and rotation
 
-If your tokens are short-lived, you want to make sure to update the token being passed to the player and requests before it expires, to allow playback to continue beyond expiry. This can simply be done by updating the header on the player in the same way. For example, one could check on an interval that makes sense for your token lifespan whether the token is about to expire and update when necessary, for example:
+If your tokens are short-lived, you want to make sure to update the token being passed to the player and requests before it expires, to allow playback to continue beyond expiry. This can be done by simply updating the `authToken` property. For example, one could check on an interval that makes sense for your token lifespan whether the token is about to expire and update when necessary, for example:
 
 ```javascript
 let token;
@@ -57,12 +57,29 @@ If the token isn't needed anymore, e.g. when switching to an unprotected distrib
 player.theoLive.authToken = undefined;
 ```
 
-## Enabling Token Based Security for Safari browsers on iOS \<17
+## Known limitations
 
-Apple devices running an iOS version lower than 17.1 do not support MSE, therefore there are limitations with what is possible when playing an OptiView Live stream. One such limitation is that the above network API approach does not work on those devices. Instead, a service worker needs to be registered to support playback of JWT enabled streams.
+### Safari on iOS \<17
 
-The service worker needs to intercept the `fetch` requests originating from the app, to be able to include the `Authorization` header to the requests.
-This requires the player to make all HTTP requests with [CORS](../../../knowledge-base/05-cors/00-introduction.md) enabled, even when using Safari's native playback. Make sure to set [the `crossOrigin` property](pathname:///theoplayer/v11/api-reference/web/interfaces/TypedSource.html#crossOrigin) on your OptiView Live source:
+Apple devices running an iOS version lower than 17.1 do not support [MSE](https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API), therefore the player must fall back to Safari's built-in HLS support. Since the player is no longer making the HTTP requests by itself, it cannot automatically append the necessary `Authorization` header.
+
+To continue using token based security on those devices, we recommend either switching to long-lived tokens, or using a service worker to intercept the HTTP requests and append the header in your code.
+
+#### Long-lived tokens
+
+For JWT tokens that are valid for the entire duration of a typical playback session, you can continue using the `authToken` API as normal. When the player uses Safari's native HLS support, it will automatically append the token as a _query parameter_ to the URL, and the OptiView Live backend will use that instead of the `Authorization` header to authenticate the viewer.
+
+Note that the player **cannot change** the query parameter on the stream without interrupting playback. Hence, the token must not expire before the end of the playback session.
+
+:::note
+Long-lived tokens are supported as of version 11.3.0 of the OptiView Player Web SDK.
+:::
+
+#### Short-lived tokens using service worker
+
+For JWT tokens with a short validity duration, you will need to register a service worker that intercepts the HTTP requests made by Safari's native HLS playback and append the necessary `Authorization` header.
+
+This requires the player to make all HTTP requests with [CORS](../../../knowledge-base/05-cors/00-introduction.md) enabled. Make sure to set [the `crossOrigin` property](pathname:///theoplayer/v11/api-reference/web/interfaces/TypedSource.html#crossOrigin) on your OptiView Live source:
 
 ```javascript
 player.source = {
@@ -207,3 +224,13 @@ You can validate the token generated by inspecting it using the JWT decoder on [
 :::note
 If you are using a bundler such as Vite or Rollup etc, you will need to ensure that your service worker also gets copied to your output directory and is `registered` from the correct path.
 :::
+
+### FairPlay-protected DRM streams on Safari
+
+Currently, the OptiView Player Web SDK always uses Safari's built-in HLS support for FairPlay-protected DRM streams. As such, the same limitations apply as for [Safari versions without MSE](#safari-on-ios-17).
+
+### Chromecast and AirPlay
+
+When the player casts an OptiView Live stream to a remote receiver (such as Chromecast or AirPlay), it is no longer in control of the HTTP requests for that stream. As such, it cannot append the necessary `Authorization` header by itself, similar to [when using Safari's native HLS playback](#safari-on-ios-17).
+
+We recommend using [long-lived tokens](#long-lived-tokens) to support remote playback. The player will automatically append the token as a query parameter to the URL when starting the remote session.

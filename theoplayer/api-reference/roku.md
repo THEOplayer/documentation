@@ -213,21 +213,27 @@ The Ads API exposes the following properties, methods, and events.
 | removeEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string) | Remove a listener for the specified player event. |
 | schedule(adDescription as AdDescription)                                                     | Schedule an ad break.                             |
 
-| Event            | Class        | Description                                                  |
-| ---------------- | ------------ | ------------------------------------------------------------ |
-| adbegin          | AdEvent      | The current creative has begun playing.                      |
-| adbreakbegin     | AdBreakEvent | The player is entering an ad break.                          |
-| adbreakend       | AdBreakEvent | The player is exiting an ad break.                           |
-| adbuffering      | AdEvent      | The current ad is buffering during playback.                 |
-| addadbreak       | AdBreakEvent | An ad break has been manually added.                         |
-| adend            | AdEvent      | The current ad has completed playing.                        |
-| aderror          | Event        | There was an error loading or playing an ad.                 |
-| adfirstquartile  | AdEvent      | The viewer has watched the first quartile of the current ad. |
-| adimpression     | AdEvent      | The ad has begun playing.                                    |
-| adloaded         | Event        | The XML for an ad has been loaded.                           |
-| admidpoint       | AdEvent      | The viewer has watched the half of the current ad.           |
-| adsmanagerloaded | Event        | When the RAF ad manager has been initialized.                |
-| adthirdquartile  | AdEvent      | The viewer has watched the third quartile of the current ad. |
+| Event            | Class        | Description                                                   |
+| ---------------- | ------------ | ------------------------------------------------------------- |
+| adbegin          | AdEvent      | The current creative has begun playing.                       |
+| adbreakbegin     | AdBreakEvent | The player is entering an ad break.                           |
+| adbreakend       | AdBreakEvent | The player is exiting an ad break.                            |
+| adbuffering      | AdEvent      | The current ad is buffering during playback.                  |
+| addadbreak       | AdBreakEvent | An ad break has been manually added.                          |
+| adend            | AdEvent      | The current ad has completed playing.                         |
+| aderror          | Event        | There was an error loading or playing an ad.                  |
+| adexitrequested  | Event        | The user pressed the back button while a CSAI ad was playing. |
+| adfirstquartile  | AdEvent      | The viewer has watched the first quartile of the current ad.  |
+| adimpression     | AdEvent      | The ad has begun playing.                                     |
+| adloaded         | Event        | The XML for an ad has been loaded.                            |
+| admidpoint       | AdEvent      | The viewer has watched the half of the current ad.            |
+| adsmanagerloaded | Event        | When the RAF ad manager has been initialized.                 |
+| adthirdquartile  | AdEvent      | The viewer has watched the third quartile of the current ad.  |
+
+NOTE: when playing CSAI ads, if the user presses the back button on the remote, the back button press will not be
+captured by `onKeyEvent` listeners. To allow your application to handle this back button press, the application
+should listen for the `adexitrequested` event on the Ads API and handle the exit logic there. Otherwise, it takes
+a second back button press to exit the player.
 
 #### AdEvent and AdBreakEvent
 

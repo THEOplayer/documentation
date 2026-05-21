@@ -22,10 +22,21 @@ dependencies {
     // ...
     implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
     implementation 'com.theoplayer.theoplayer-sdk-android:integration-millicast:+'
-    implementation "com.millicast:millicast-sdk-android:2.0.0"
+    implementation "com.millicast:millicast-sdk-android:2.5.+"
     // ...
 }
 ```
+
+The required Millicast SDK version depends on your THEOplayer version:
+
+| THEOplayer version | Millicast SDK version |
+| :----------------- | :-------------------- |
+| 11.3.0+            | 2.5.x+                |
+| 10.11.0 – 11.2.x   | 2.5.3                 |
+| 9.12.0 – 10.10.x   | 2.5.0                 |
+| 9.7.0 – 9.11.x     | 2.4.3                 |
+| 9.6.0 – 9.6.x      | 2.4.2                 |
+| 8.10.0 – 9.5.x     | 2.0.0                 |
 
 ### Add the Millicast integration to the player
 
