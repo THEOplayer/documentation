@@ -9,6 +9,42 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.3.0 (2026/05/18)
+
+### Web
+
+#### ✨ Features
+
+- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
+- Added support for DRM-protected OptiView Live Streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
+
+#### 🐛 Issues
+
+- Fixed an issue where date range cues were not correctly created when playing an HLS media playlist (without multi-variant playlist) on iOS Safari.
+- Fixed an issue where the player would still switch to an ad layout when seeking into the ad while the ad is not available for an OptiView Ads Stream.
+
+### Android
+
+#### ⚡ Improvements
+
+- Modify the Millicast SDK dependency in the Millicast Integration to start accepting patch version updates (2.5.x)
+
+#### 🐛 Issues
+
+- Fixed an issue where `TextTrackStyle.setFont()` did not override the font family defined in the subtitle within the stream.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Modify the Millicast SDK dependency in THEOplayerMillicastIntegration to allow patch version updates (2.5.x).
+
+### Roku
+
+#### 🐛 Issues
+
+- Added `adexitrequested` event to Ads API to allow applications to handle back button presses during clientside ad playback.
+
 ## 🚀 11.2.0 (2026/05/07)
 
 ### Web
@@ -146,7 +182,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -159,7 +195,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.
