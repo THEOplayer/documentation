@@ -2,6 +2,13 @@
 
 Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/millicast/webhooks/).
 
+## 2026-05-25 | REST APIs
+
+### Features
+
+- Introduced ability to specify engine priority when creating HLS clips
+- Enabled deletion of all VOD type media assets via [Delete All Media Assets](/millicast/api/media-assets-delete-media-assets-2)
+
 ## 2026-04-21 | REST APIs
 
 ### Features
