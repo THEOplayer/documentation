@@ -411,6 +411,8 @@ const config: Config = {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
           } else if (existingPath.startsWith('/theolive/v1/api/')) {
             return [existingPath.replace('/theolive/v1/api/', '/theolive/api/')];
+          } else if (existingPath === '/theolive/channel/metadata-insertion') {
+            return ['/theolive/contribution/sei-messages'];
           }
           return undefined;
         },
