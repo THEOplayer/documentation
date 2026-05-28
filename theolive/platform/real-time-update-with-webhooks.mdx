@@ -269,7 +269,7 @@ When an event fires, Dolby sends a `POST` request to your endpoint with a JSON b
 
 ## Verifying Webhook Signatures
 
-Dolby uses webhook signatures to verify that the webhook request is genuinely coming from us, and not from a server acting like Dolby. On every request, Dolby sends a `Dolby-Signature` header that you can use to verify authenticity.
+Dolby uses webhook signatures to verify that the webhook request is genuinely coming from us, and not from a server acting like Dolby. On every request, Dolby sends a `x-dolby-streaming-signature` header that you can use to verify authenticity.
 
 ### How does the verification work?
 
@@ -310,7 +310,7 @@ app.post('/webhooks', (req, res) => {
   const data = req.body;
 
   // 1. Grab Dolby-Signature from header
-  const signatureHeader = req.header('Dolby-Signature');
+  const signatureHeader = req.header('x-dolby-streaming-signature');
   // t=1659622850,h=6bbe0553922a31ea48cb3af9903616c3a8b65351434653251949480f2a91c037
 
   // 2. Split string: you'll receive a timestamp (t) and hash (h)
