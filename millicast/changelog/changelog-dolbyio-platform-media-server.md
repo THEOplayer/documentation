@@ -2,6 +2,17 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-05-28
+
+### Media Server
+
+<!-- 3.3.1  -->
+
+#### Features
+
+- Improves the stability and consistency of the Adaptive Bitrate (ABR) layer selection for WebRTC and changes the default ABR strategy to "bandwidth" mode consistent with OptiView Player instead of the old legacy mode that is now deprecated and no longer available except through special request.
+- Bandwidth strategy now starts on the highest quality layer instead of the lowest quality layer to remain consistent with the OptiView Player.
+
 ## 2025-09-09
 
 ### Media Server
