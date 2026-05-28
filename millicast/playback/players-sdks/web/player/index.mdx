@@ -37,7 +37,7 @@ The options are:
 - `quality`: This strategy is more aggressive at up-switching and will try to maximize available bandwidth at any given moment. It tries to connect on the highest quality possible and stay there. Recommended for audiences with good networking and where quality is most important.
 - `bandwidth`: This strategy is in between `quality` and `performance` and isn't as aggressive as `quality`. It will more quickly switch down layers in cases of poor network and will attempt to switch back up more conservatively. It is recommended as a balance between `quality` and `performance`
 - `performance`: This strategy will prioritize smooth playback over highest quality. It will start with the lower layer available and will switch up more slowly when network performance is consistent and stable.
-- _null_: Omitting this value will preserve the legacy behavior of our ABR algorithm as it is today
+- _null_: Omitting this value will default to bandwidth mode
 
 As this is a new feature, we welcome customer feedback.
 
