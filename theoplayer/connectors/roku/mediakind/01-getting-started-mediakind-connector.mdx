@@ -56,15 +56,15 @@ end sub
 
 ```brightscript
 m.player = m.top.findNode("THEOPlayer")
-m.MediaKindConnector = m.top.findNode("THEOMediaKindConnector")
-MediaKindConfig = {
+m.mediaKindConnector = m.top.findNode("THEOMediaKindConnector")
+mediaKindConfig = {
     requestBaseUrl: "<MY_MK_BASE_URL>",
     AuthorizationToken: "<MY_MK_STS_TOKEN>",
     AzukiIMC: "<MY_MK_AZUKI_IMC>",
     DeviceProfile: "<BASE64_ENCODED_DEVICE_INFO>",
     key_id: "<MY_MK_DRM_KEY>",
 }
-m.MediaKindConnector.callFunc("configure", m.player, MediaKindConfig)
+m.mediaKindConnector.callFunc("configure", m.player, mediaKindConfig)
 ```
 
 5. Next, make your roll call to MediaKind to get the response for the media you're playing
@@ -74,7 +74,7 @@ rollCallResponse = makeMyMediaKindRollCall()
 ```
 
 6. Construct your source description for playback. The player needs to be provided with a `theolive`-type stream description, which will initiate Dolby’s discovery and failover logic.
-   Currently, while still depending on OptiView ≤ v11.3 player SDK versions, the player needs to be configured with this Discovery v2-style url:
+   Currently, while still depending on OptiView ≤ v11.3 player SDK versions, the player needs to be configured with this Discovery v2-style URL:
 
 ```brightscript
 sourceDescription = {
@@ -97,7 +97,7 @@ sourceDescription = {
 ```brightscript
 m.player.source = sourceDescription
 
-MediaKindSession = {
+mediaKindSession = {
     mediaId: "<MY_VIDEO_ID>",
     ApplicationToken: "<MY_MK_TOKEN>",
     sessionId: "<MY_SESSION_ID>",
@@ -106,7 +106,7 @@ MediaKindSession = {
     cdns: rollCallResponse.cdns,
 }
 
-m.MediaKindConnector.callFunc("startSession", MediaKindSession)
+m.mediaKindConnector.callFunc("startSession", mediaKindSession)
 ```
 
 There are more properties available to add to the metadata, but `mediaId`, `ApplicationToken`, `sessionId`, and `ownerUid` are required. See [the THEOMediaKindConnector API docs](02-API-reference.mdx) for more properties that are available for MediaKind.
@@ -114,8 +114,8 @@ There are more properties available to add to the metadata, but `mediaId`, `Appl
 8. If you are exiting the player screen altogether, and destroying the player, make sure to destroy the connector at the same time, but before calling destroy on the player:
 
 ```brightscript
-m.MediaKindConnector.callFunc("destroy")
-m.MediaKindConnector = invalid
+m.mediaKindConnector.callFunc("destroy")
+m.mediaKindConnector = invalid
 
 m.player.callFunc("destroy")
 m.player = invalid
