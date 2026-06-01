@@ -1,6 +1,6 @@
 # Dashboard Changes
 
-Updates to the Dolby.io Dashboard and Applications.
+Updates to the Dolby OptiView Real-time Dashboard and Applications.
 
 ## 2026-06-01 | Dashboard
 
