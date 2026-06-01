@@ -1,6 +1,17 @@
 # Dashboard Changes
 
-Updates to the Dolby.io Dashboard and Applications.
+Updates to the Dolby OptiView Real-time Dashboard and Applications.
+
+## 2026-06-01 | Dashboard
+
+- Bandwidth, storage, and usage are now displayed in decimal units (GB/TB, base-1000) instead of binary units (GiB/TiB) across plan limits, billing, analytics, media, and broadcaster stats
+- Rebuilt the analytics world map for cleaner rendering and improved color contrast, and fixed an issue where countries stayed highlighted after moving the mouse away
+- The transcoder profile dropdown is now available in the Advanced section, with the passthrough toggle moved to the top of the quality layers table; profile, height, frame rate, and passthrough selections now stay in sync, and enabling passthrough no longer asks for confirmation
+- Token creation with expiry now uses an editable date and time field with a 12-hour AM/PM toggle, local timezone display, and future-date validation
+- Tokens with a sub-hour expiry now show meaningful labels such as "45 minutes" or "30 seconds" instead of "0 hours"
+- Fixed an issue where spillover dates from adjacent months in the date range picker appeared selected and were clickable
+- Fixed a regression where error and success banners and card subtitle text were not displayed in several areas, including duplicate stream name errors, webhook and subscriber token modals, billing reactivation, the card payment form, invoices, and API secrets
+- Fixed many small cosmetic issues
 
 ## 2026-04-29 | Dashboard
 
