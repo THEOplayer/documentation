@@ -92,11 +92,9 @@ sourceDescription = {
 }
 ```
 
-7. Next, when you start playing the asset, call the `startSession` method and pass it the metadata for the asset you're playing, including information from the roll call response:
+7. Next, before you start playing the asset, call the `startSession` method and pass it the metadata for the asset you're playing, including information from the roll call response:
 
 ```brightscript
-m.player.source = sourceDescription
-
 mediaKindSession = {
     mediaId: "<MY_VIDEO_ID>",
     ApplicationToken: "<MY_MK_TOKEN>",
@@ -107,6 +105,7 @@ mediaKindSession = {
 }
 
 m.mediaKindConnector.callFunc("startSession", mediaKindSession)
+m.player.source = sourceDescription
 ```
 
 There are more properties available to add to the metadata, but `mediaId`, `ApplicationToken`, `sessionId`, and `ownerUid` are required. See [the THEOMediaKindConnector API docs](02-API-reference.mdx) for more properties that are available for MediaKind.
