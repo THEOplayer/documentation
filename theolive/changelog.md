@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.4.0] - 2026-06-04
+
+- Added support for single ingest
+- Fixed Kafka publisher stopping permanently after an interruption
+- Log incoming AMQP messages
+- Added timestamps to metrics
+
 ## [11.3.0] - 2026-05-19 (unavailable)
 
 - Improved error logging
