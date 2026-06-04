@@ -1,6 +1,6 @@
 # Changelog
 
-## [11.3.0] - 2026-05-19
+## [11.3.0] - 2026-05-19 (unavailable)
 
 - Improved error logging
 - Added `targetBuffer` to HESP manifest
@@ -8,6 +8,7 @@
 - Added support for packaging multiple frames per chunk in HESP
 - Added support for SEI metadata to EMSG metadata conversion
 - Added margin to bandwidth in HESP manifest
+- Added support for single ingest
 
 ## [11.1.0] - 2026-04-20
 
