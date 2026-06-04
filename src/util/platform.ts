@@ -257,15 +257,6 @@ function findMatchingTheoplayerDoc(version: GlobalVersion, doc: GlobalDoc, platf
       if (matchingDoc) return matchingDoc;
     }
   }
-  // CMCD Android/iOS guide to Web connector
-  if (platformName === 'web') {
-    const cmcdGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)\/cmcd(|\/.*)$/);
-    if (cmcdGuideMatch && isPlatformName(cmcdGuideMatch[1])) {
-      const prefix = `${version.path}/connectors/web/cmcd`;
-      const matchingDoc = findMatchingDoc(version, doc, prefix, cmcdGuideMatch[2], '/getting-started');
-      if (matchingDoc) return matchingDoc;
-    }
-  }
   // How-to guides
   const howToGuideMatch = docPath.match(/^\/how-to-guides\/([a-z-]+)(|\/.*)$/);
   if (howToGuideMatch && isPlatformName(howToGuideMatch[1])) {

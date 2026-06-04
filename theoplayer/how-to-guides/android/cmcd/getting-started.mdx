@@ -4,12 +4,13 @@ import Intro from '../../shared/cmcd/_getting-started-intro.mdx';
 
 <Intro />
 
-## Usage
+## Request Mode
 
 To enable CMCD, developers can add a CMCDTransmissionMode inside a SourceDescription.
 
 ```kotlin
 val typedSource = TypedSource.Builder("<HLS_STREAM_URL>")
+    // highlight-next-line
     .cmcdTransmissionMode(CMCDTransmissionMode.HTTP_HEADER)
     .build()
 
@@ -33,6 +34,52 @@ val sourceDescription = SourceDescription.Builder(typedSource)
 theoPlayerView.player.source = sourceDescription
 ```
 
-## Remarks
+## Event Mode
 
-Note that CMCD is only supported with the [Media3 integration](../media3/getting-started.mdx).
+Event mode allows posting CMCD events to configured HTTP endpoints.
+
+:::info
+Event mode is supported starting from version 11.4.0.
+:::
+
+### Player-level configuration
+
+```kotlin
+val config = THEOplayerConfig.Builder()
+    .cmcd(CMCDConfiguration(
+        externalSessionId = "YOUR-EXTERNAL-SESSION-ID", // optional
+        userId = "YOUR-USER-ID", // optional
+        eventEndpoints = listOf(
+            CMCDEndpointConfiguration(url = "https://example.com/cmcd-event-endpoint")
+        )
+    ))
+    .build()
+
+val player = THEOplayerView(context, config)
+```
+
+### Source-level configuration
+
+```kotlin
+player.player.source = SourceDescription.Builder(
+    TypedSource("<HLS_STREAM_URL>")
+)
+    .cmcd(CMCDSourceConfiguration(
+        externalSessionId = "YOUR-EXTERNAL-SESSION-ID", // optional
+        sessionId = "YOUR-SESSION-ID", // optional
+        userId = "YOUR-USER-ID", // optional
+        eventEndpoints = listOf(
+            CMCDEndpointConfiguration(url = "https://example.com/cmcd-event-other-endpoint")
+        )
+    ))
+    .build()
+```
+
+### Merging behavior
+
+- Source-level values take precedence for `externalSessionId` and `userId`.
+- `eventEndpoints` from both levels are **merged** (both player and source endpoints receive events).
+
+:::warning
+Event mode reporting currently only supports DRM and ad events.
+:::

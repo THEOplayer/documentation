@@ -969,6 +969,15 @@
             <a class="nav-group-name-link" href="../Other%20Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CMCDConfiguration.html">CMCDConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CMCDEndpointConfiguration.html">CMCDEndpointConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CMCDSourceConfiguration.html">CMCDSourceConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a>
               </li>
               <li class="nav-group-task">
@@ -993,7 +1002,7 @@
 
                 </div>
               </div>
-            <p>A request, either for a <code><a href="../External%20Content%20Protection%20integration%20API.html#/c:@M@THEOplayerSDK@objc(cs)CertificateRequest">CertificateRequest</a></code> or a <code><a href="../Classes/LicenseRequest.html">LicenseRequest</a></code>.</p>
+            <p>Represents an HTTP request made by the player, such as a certificate request, license request, or discovery request.</p>
 
           </div>
         </section>
@@ -1015,7 +1024,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The URL for the certificate server. By default, this will equal the certificate URL configured in the <code><a href="../Classes/KeySystemConfiguration.html">KeySystemConfiguration</a></code>`.</p>
+                        <p>The URL of the server to which the request is sent.</p>
 
                       </div>
                       <div class="declaration">
@@ -1043,14 +1052,6 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The method of the HTTP request, for example: GET, POST or PUT.</p>
-<div class="aside aside-remark">
-    <p class="aside-title">Remark</p>
-    <ul>
-<li>Will be equal to GET for Fairplay certificate requests and POST for Widevine certificate requests.</li>
-<li>Will be equal to POST for all license requests.</li>
-</ul>
-
-</div>
 
                       </div>
                       <div class="declaration">
@@ -1104,15 +1105,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The body of the certificate request.</p>
-<div class="aside aside-remark">
-    <p class="aside-title">Remark</p>
-    <ul>
-<li>For GET requests (such as with Fairplay), the body will be empty (nil).</li>
-<li>For POST requests (such as with Widevine): the body will contain the two bytes in an array as specified in the certificate request protocol.</li>
-</ul>
-
-</div>
+                        <p>The body of the request. Will be nil for GET requests.</p>
 
                       </div>
                       <div class="declaration">
@@ -1139,7 +1132,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates a new HTTP request for the given URL.</p>
+                        <p>Creates a new HTTP request.</p>
 
                       </div>
                       <div class="declaration">
@@ -1162,7 +1155,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The URL of the license or certificate server.</p>
+                                  <p>The URL of the server.</p>
                                 </div>
                               </td>
                             </tr>
