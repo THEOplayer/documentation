@@ -9,6 +9,80 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.4.0 (2026/06/03)
+
+### Web
+
+#### ✨ Features
+
+- Added basic support for CMCD event mode reporting of DRM and ad events.
+- Added `Quality.enabled` to enable or disable a quality. When a quality is disabled, it will be ignored during ABR selection or when setting `MediaTrack.targetQuality`.
+- Added support for `breakManifestUrl` for OptiView Ads streams.
+
+#### 🐛 Issues
+
+- Fixed an issue with Optiview Ads where setting overlay positions (top/bottom/left/right) to 0 was not supported.
+- Fixed an issue where the player could crash on Sky Glass/Puck when `autoplay` is set to `true`.
+- Fixed an issue where using WebXR on iOS Safari was preventing VR video from being rendered inline.
+- Fixed an issue where clicking the "LIVE" button on an HLS live stream would sometimes seek to the start of the DVR window instead of the live edge when using native HLS playback on macOS/iOS Safari.
+- Fixed an issue on the FireTV AFTM model where playback stalls were made worse by trying to recover too fast.
+- Fixed an issue where HESP streams with PlayReady DRM would repeatedly stall while playing in Edge on Windows.
+- Fixed an issue where VAST ads containing both an ad pod and an ad buffet failed to play through the Google IMA integration.
+
+#### ⚠ Known Limitations
+
+- When starting a Chromecast session while playing a Google IMA ad break with multiple ads, the Chromecast receiver may start playing from the first ad in the ad break even if it was already played before.
+
+### Android
+
+#### ✨ Features
+
+- Added basic support for CMCD event mode reporting of DRM and ad events.
+- Added support for OptiView Discovery V3 distributions.
+- Added support for Break Manifest in OptiView Ads.
+- Added `CustomAdDescription`, allowing custom ad integrations to create custom ad descriptions that can be passed through `SourceDescription.ads`.
+
+#### 🐛 Issues
+
+- Fixed an issue when the player suddenly switched to the highest possible quality right after a stall while playing an HESP stream.
+- Fixed an issue when player crashed if there was a cache download background task and the system required to stop it.
+
+### iOS
+
+#### ✨ Features
+
+- Enabled OptiView Ads overlays to be signaled through SSE.
+- Added basic support for CMCD event mode reporting of DRM and ad events.
+
+#### ⚡ Improvements
+
+- Improved OptiView Streaming (THEOlive) endpoint fallback selection logic.
+- Improved fallback recovery speed for OptiView Streaming (THEOlive) on iOS 26.
+
+#### 🐛 Issues
+
+- Fixed an issue where IMA ad errors caused content playback to fail completely.
+- Fixed an issue in the IMA integration where pausing ad playback did not work when scheduled via `requestAds`.
+- Fixed an issue where no `error` event was sent during playback on iOS 26 with a bad network connection.
+- Fixed an issue in OptiView Ads where dismissing the player would cause a crash.
+
+### Chromecast CAF
+
+#### 🐛 Issues
+
+- Fixed an issue with Optiview Ads where setting overlay positions (top/bottom/left/right) to 0 was not supported.
+
+### Roku
+
+#### ✨ Features
+
+- Added `currentsourcechange` event when the currently playing stream changes.
+- Added ability to call `setContentId`, `setContentLength`, and `setContentGenre` on RAF via methods of the same names on `player.ads.rafProxy`. Also added the `setRafMetadata` method to `player.ads.dai` for setting the same data during DAI playback.
+
+#### 🐛 Issues
+
+- Fixed the order of events on startup so they emit at the correct times.
+
 ## 🚀 11.3.0 (2026/05/18)
 
 ### Web

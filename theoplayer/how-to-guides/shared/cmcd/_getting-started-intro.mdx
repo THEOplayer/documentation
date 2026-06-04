@@ -1,3 +1,8 @@
 Media player clients can transmit useful information to Content Delivery Networks (CDNs) with each object request.
-This implementation supports Common Media Client Data (CMCD) as defined in
-[CTA-5004](https://cdn.cta.tech/cta/media/media/resources/standards/pdfs/cta-5004-final.pdf), published in September 2020.
+This implementation is planned to fully support Common Media Client Data (CMCD) as defined in
+[CTA-5004-B](https://cta-wave.github.io/Resources/common-media-client-data--cta-5004-b.html), published in April 2026.
+
+CMCD supports two modes of transmission:
+
+- **Request mode**: CMCD data is sent as HTTP headers or query parameters on manifest and media segment requests.
+- **Event mode** (available since v11.4.0): CMCD events are POSTed to configured HTTP endpoints.
