@@ -385,7 +385,7 @@ const config: Config = {
           theolive: {
             version: 'v2',
             label: 'v2',
-            specPath: 'https://api.theo.live/v2/api-docs/swagger.json',
+            specPath: 'https://api.sneezysparrow.com/v2/api-docs/swagger.json',
             outputDir: `theolive/api/`,
             hideSendButton: false,
             sidebarOptions: {
