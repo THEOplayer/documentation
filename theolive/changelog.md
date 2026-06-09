@@ -1,7 +1,9 @@
 # Changelog
 
-## [11.4.0] - 2026-06-04
+## [11.4.0] - 2026-06-08
 
+- Fixed Kafka publisher lagging behind and dropping metric messages
+- Fixed bitrate metric being reported too high
 - Added support for single ingest
 - Fixed Kafka publisher stopping permanently after an interruption
 - Log incoming AMQP messages
