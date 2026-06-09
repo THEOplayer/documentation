@@ -30,6 +30,9 @@ updates:
         exclude-patterns:
           - '@docusaurus*'
           - 'docusaurus*'
+        update-types:
+          - major
+          - minor
   - package-ecosystem: gitsubmodule
     directory: /
     schedule:
