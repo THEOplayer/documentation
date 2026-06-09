@@ -2,11 +2,13 @@ version: 2
 updates:
   - package-ecosystem: github-actions
     directory: /
-    version-update: semver-major
     schedule:
       interval: weekly
     cooldown:
       default-days: 7
+    allow:
+      - update-types:
+          - "version-update:semver-major"
   - package-ecosystem: npm
     directory: /
     schedule:
