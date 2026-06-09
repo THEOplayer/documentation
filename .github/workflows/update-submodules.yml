@@ -17,13 +17,13 @@ jobs:
       UPDATE_BRANCH: update-submodules
     steps:
       - name: Create app token
-        uses: actions/create-github-app-token@v3.2.0
+        uses: actions/create-github-app-token@v3
         id: app-token
         with:
           client-id: ${{ vars.THEOPLAYER_BOT_CLIENT_ID }}
           private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
       - name: Checkout
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6
         with:
           token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 1
