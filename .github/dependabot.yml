@@ -8,7 +8,7 @@ updates:
       default-days: 7
     allow:
       - update-types:
-          - "version-update:semver-major"
+          - 'version-update:semver-major'
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -30,6 +30,9 @@ updates:
         exclude-patterns:
           - '@docusaurus*'
           - 'docusaurus*'
+        update-types:
+          - major
+          - minor
   - package-ecosystem: gitsubmodule
     directory: /
     schedule:
