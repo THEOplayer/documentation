@@ -2,6 +2,7 @@ version: 2
 updates:
   - package-ecosystem: github-actions
     directory: /
+    version-update: semver-major
     schedule:
       interval: weekly
     cooldown:
