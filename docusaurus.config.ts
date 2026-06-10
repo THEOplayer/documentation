@@ -422,7 +422,7 @@ const config: Config = {
       'docusaurus-plugin-llms-txt',
       {
         title: 'Dolby OptiView Documentation',
-        description: 'Developer documentation for Dolby OptiView streaming products.',
+        description: 'Developer documentation for Dolby OptiView products.',
         fullLLMsTxt: true,
       },
     ],
