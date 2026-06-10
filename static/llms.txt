@@ -1,0 +1,49 @@
+# Dolby OptiView Documentation
+
+> Developer documentation for Dolby OptiView streaming products.
+> URL: https://optiview.dolby.com/docs/
+
+## Important: Product Name Changes (Rebranding)
+
+All products below were rebranded under the "Dolby OptiView" umbrella. Legacy names still appear in code, npm packages, API references, CSS class names, and older documentation pages. The old and new names refer to the same products.
+
+| Current Name | Former Name(s) | Notes |
+|---|---|---|
+| Dolby OptiView Player | THEOplayer | npm: `theoplayer`, JS class: `THEOplayer.Player`, CSS: `.theoplayer-container` |
+| Dolby OptiView Ads | THEOads | Server-Guided Ad Insertion (SGAI) service |
+| Dolby OptiView Live Streaming | THEOlive | Low-latency HESP streaming; config key: `theoLive`, source: `TheoLiveSource` |
+| Dolby OptiView Real-time Streaming | Millicast, Dolby.io Streaming | WebRTC-based sub-500ms latency; dashboard: https://streaming.dolby.io |
+| Open Video UI | (same) | Open-source UI components for OptiView Player (formerly THEOplayer) |
+| Dolby OptiView Ad Engine | (same) | Just-in-time ad conformance |
+
+Note: The GitHub organization is still named "THEOplayer", npm packages use "theoplayer", and many code-level identifiers retain the old naming. When searching for documentation or code, try both the old and new names.
+
+## Products
+
+- [OptiView Player](https://optiview.dolby.com/docs/theoplayer/): Multi-platform video player SDK (Web, Android, iOS, Roku, React Native, Flutter)
+- [Open Video UI](https://optiview.dolby.com/docs/open-video-ui/): Open-source UI component library for OptiView Player
+- [OptiView Ads](https://optiview.dolby.com/docs/ads/): Server-Guided Ad Insertion (SGAI) for live content
+- [OptiView Ad Engine](https://optiview.dolby.com/docs/ad-engine/): Just-in-time ad conformance
+- [OptiView Live](https://optiview.dolby.com/docs/theolive/): Low-latency live streaming (HESP protocol)
+- [OptiView Real-time Streaming](https://optiview.dolby.com/docs/millicast/): WebRTC real-time streaming (<500ms latency)
+
+## Getting Started
+
+- [Player Web Getting Started](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/getting-started/)
+- [Player Android Getting Started](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/getting-started/)
+- [Player iOS Getting Started](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/getting-started/)
+- [Real-time Streaming Getting Started](https://optiview.dolby.com/docs/millicast/getting-started/)
+- [OptiView Ads Getting Started](https://optiview.dolby.com/docs/ads/)
+- [OptiView Live Getting Started](https://optiview.dolby.com/docs/theolive/)
+
+## Frameworks
+
+- [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/)
+- [Flutter](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/flutter/getting-started/)
+
+## Connectors
+
+- [Web Connectors](https://optiview.dolby.com/docs/theoplayer/connectors/web/)
+- [Android Connectors](https://optiview.dolby.com/docs/theoplayer/connectors/android/)
+- [iOS Connectors](https://optiview.dolby.com/docs/theoplayer/connectors/ios/)
+- [React Native Connectors](https://optiview.dolby.com/docs/theoplayer/connectors/react-native/)

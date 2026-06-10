@@ -419,6 +419,14 @@ const config: Config = {
       } satisfies ClientRedirectsPlugin.Options,
     ],
     [
+      'docusaurus-plugin-llms-txt',
+      {
+        title: 'Dolby OptiView Documentation',
+        description: 'Developer documentation for Dolby OptiView streaming products.',
+        fullLLMsTxt: true,
+      },
+    ],
+    [
       (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
         name: 'webpack-plugin',
         configureWebpack(_config, isServer) {
