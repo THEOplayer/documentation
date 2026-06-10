@@ -21,11 +21,11 @@ Note: The GitHub organization is still named "THEOplayer", npm packages use "the
 ## Products
 
 - [OptiView Player](https://optiview.dolby.com/docs/theoplayer/): Multi-platform video player SDK (Web, Android, iOS, Roku, React Native, Flutter)
-- [Open Video UI](https://optiview.dolby.com/docs/open-video-ui/): Open-source UI component library for OptiView Player
-- [OptiView Ads](https://optiview.dolby.com/docs/ads/): Server-Guided Ad Insertion (SGAI) for live content
-- [OptiView Ad Engine](https://optiview.dolby.com/docs/ad-engine/): Just-in-time ad conformance
-- [OptiView Live](https://optiview.dolby.com/docs/theolive/): Low-latency live streaming (HESP protocol)
-- [OptiView Real-time Streaming](https://optiview.dolby.com/docs/millicast/): WebRTC real-time streaming (<500ms latency)
+- [Open Video UI](https://optiview.dolby.com/docs/open-video-ui/): Open-source UI component library for OptiView Player enabling complete customization of the player experience
+- [OptiView Ads](https://optiview.dolby.com/docs/ads/): an end-to-end Server-Guided Ad Insertion and Server-Side Ad Insertion solution for live streaming content
+- [OptiView Ad Engine](https://optiview.dolby.com/docs/ad-engine/): Instant virtualized or just-in-time ad creative QC, conformance/transcoding, and packaging.  mp4, mov, vast, hls (any to any conversion). Includes support for Dolby Vision and Dolby Atmos encoding. Can be used for VOD transcoding/transformation in addition to ads.
+- [OptiView Live](https://optiview.dolby.com/docs/theolive/): High quality live video streaming.  Consistent latency with a operator settable latency from 2 to 10 seconds to keep viewers in syncLow-latency live streaming (HESP protocol) and HLS support.
+- [OptiView Real-time Streaming](https://optiview.dolby.com/docs/millicast/): WebRTC real-time streaming (<500ms latency) for interactive use-cases.
 
 ## Getting Started
 
