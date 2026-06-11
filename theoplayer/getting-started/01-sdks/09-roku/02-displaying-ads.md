@@ -128,6 +128,15 @@ sub onAdsPlayingChange( event as object )
 end sub
 ```
 
+:::info
+
+When playing CSAI ads, if the user presses the back button on the remote, the back button press will not be
+captured by `onKeyEvent` listeners. To allow your application to handle this back button press, the application
+should listen for the `adexitrequested` event on the Ads API and handle the exit logic there. Otherwise, it takes
+a second back button press to exit the player.
+
+:::
+
 ### Monitoring RAF
 
 The THEOplayer Roku SDK does not expose RAF directly. However, you can still get the data from RAF's callbacks for tracking, buffering, and library version. On the Ads API, there is the `rafProxy` node. This field exposes data from RAF on fields of its own. To substitute for the output from RAF's `setTrackingCallback` method, you could do the following:
