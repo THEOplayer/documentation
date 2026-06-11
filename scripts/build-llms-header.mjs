@@ -32,6 +32,4 @@ const sections = firstSection >= 0 ? generated.slice(firstSection) : generated;
 const combined = `${header}\n\n${sections}`;
 fs.writeFileSync(generatedPath, combined);
 
-console.log(
-  `[build-llms-header] Wrote ${generatedPath} (${combined.length} bytes, header ${header.length} + sections ${sections.length})`
-);
+console.log(`[build-llms-header] Wrote ${generatedPath} (${combined.length} bytes, header ${header.length} + sections ${sections.length})`);
