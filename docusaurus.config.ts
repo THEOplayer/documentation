@@ -419,11 +419,77 @@ const config: Config = {
       } satisfies ClientRedirectsPlugin.Options,
     ],
     [
-      'docusaurus-plugin-llms-txt',
+      '@signalwire/docusaurus-plugin-llms-txt',
       {
-        title: 'Dolby OptiView Documentation',
-        description: 'Developer documentation for Dolby OptiView products.',
-        fullLLMsTxt: true,
+        markdown: {
+          enableFiles: true,
+          includeDocs: true,
+          includeBlog: false,
+          includePages: false,
+          includeVersionedDocs: false,
+        },
+        llmsTxt: {
+          enableLlmsFullTxt: false,
+          // Header (title, description, rebranding, getting started, etc.) is sourced from
+          // static/llms.txt and prepended via the postbuild script (see package.json).
+          siteTitle: 'Dolby OptiView Documentation',
+          siteDescription: 'Developer documentation for Dolby OptiView streaming products.',
+          includeDocs: true,
+          includeBlog: false,
+          includePages: false,
+          includeVersionedDocs: false,
+          excludeRoutes: ['/docs/search', '/docs/search/**', '/search', '/search/**'],
+          sections: [
+            {
+              id: 'player',
+              name: 'OptiView Player',
+              description: 'Multi-platform video player SDK (Web, Android, iOS, Roku, React Native, Flutter). Formerly THEOplayer.',
+              position: 1,
+              routes: [{ route: '/docs/theoplayer/**' }],
+            },
+            {
+              id: 'open-video-ui',
+              name: 'Open Video UI',
+              description: 'Open-source UI component library for OptiView Player enabling complete customization of the player experience.',
+              position: 2,
+              routes: [{ route: '/docs/open-video-ui/**' }],
+            },
+            {
+              id: 'ads',
+              name: 'OptiView Ads',
+              description: 'End-to-end Server-Guided Ad Insertion (SGAI) and Server-Side Ad Insertion solution for live streaming. Formerly THEOads.',
+              position: 3,
+              routes: [{ route: '/docs/ads/**' }],
+            },
+            {
+              id: 'ad-engine',
+              name: 'OptiView Ad Engine',
+              description: 'Instant virtualized or just-in-time ad creative QC, conformance/transcoding, and packaging (mp4, mov, vast, hls). Includes Dolby Vision and Atmos encoding support.',
+              position: 4,
+              routes: [{ route: '/docs/ad-engine/**' }],
+            },
+            {
+              id: 'live',
+              name: 'OptiView Live',
+              description: 'High-quality live video streaming with operator-settable latency (2-10s). HESP and HLS protocols. Formerly THEOlive.',
+              position: 5,
+              routes: [{ route: '/docs/theolive/**' }],
+            },
+            {
+              id: 'real-time',
+              name: 'OptiView Real-time Streaming',
+              description: 'WebRTC real-time streaming (<500ms latency) for interactive use-cases. Formerly Millicast / Dolby.io Streaming.',
+              position: 6,
+              routes: [{ route: '/docs/millicast/**' }],
+            },
+            {
+              id: 'contributing',
+              name: 'Contributing',
+              position: 99,
+              routes: [{ route: '/docs/contributing/**' }],
+            },
+          ],
+        },
       },
     ],
     [
