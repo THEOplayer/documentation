@@ -1,0 +1,361 @@
+# Webhooks
+
+Webhooks let you receive real-time notifications when events happen in your streaming infrastructure. Instead of polling for changes, you register an endpoint URL and the system pushes event data to it automatically.
+
+For the full endpoint specification, see the [Webhooks API reference](/documentation/pr-preview/pr-690/theolive/api/create-webhook.md).
+
+## What is a Webhook?[​](#what-is-a-webhook "Direct link to What is a Webhook?")
+
+A webhook is an HTTP callback that sends a `POST` request to your endpoint whenever a subscribed event occurs — for example, when a channel starts, an engine encounters an error, or a distribution is updated.
+
+Each webhook has:
+
+* **Name** — A human-readable label.
+* **Endpoint URL** — The URL that will receive the event payloads.
+* **Events** — The specific event types the webhook listens to, or all events via a wildcard.
+* **Active / Inactive** — Whether the webhook is currently receiving events.
+* **Secret** — A signing secret used to verify that incoming requests are genuinely from Dolby OptiView.
+
+## Supported Events[​](#supported-events "Direct link to Supported Events")
+
+Events are grouped by resource type:
+
+### Channel events[​](#channel-events "Direct link to Channel events")
+
+| Event               | Triggered when              |
+| ------------------- | --------------------------- |
+| `channel.created`   | A channel is created        |
+| `channel.updated`   | A channel is updated        |
+| `channel.deploying` | A channel starts deploying  |
+| `channel.stopping`  | A channel begins stopping   |
+| `channel.stopped`   | A channel has fully stopped |
+| `channel.deleted`   | A channel is deleted        |
+
+### Engine events[​](#engine-events "Direct link to Engine events")
+
+| Event              | Triggered when                 |
+| ------------------ | ------------------------------ |
+| `engine.created`   | An engine is created           |
+| `engine.updated`   | An engine is updated           |
+| `engine.deploying` | An engine starts deploying     |
+| `engine.waiting`   | An engine is waiting for input |
+| `engine.starting`  | An engine is starting up       |
+| `engine.playing`   | An engine begins playing       |
+| `engine.ingesting` | An engine begins ingesting     |
+| `engine.stopping`  | An engine begins stopping      |
+| `engine.stopped`   | An engine has fully stopped    |
+| `engine.deleting`  | An engine is being deleted     |
+| `engine.deleted`   | An engine has been deleted     |
+| `engine.error`     | An engine encounters an error  |
+| `engine.log.info`  | An engine emits an info log    |
+| `engine.log.warn`  | An engine emits a warning log  |
+| `engine.log.error` | An engine emits an error log   |
+
+### Ingest events[​](#ingest-events "Direct link to Ingest events")
+
+| Event            | Triggered when             |
+| ---------------- | -------------------------- |
+| `ingest.created` | An ingest point is created |
+| `ingest.updated` | An ingest point is updated |
+| `ingest.deleted` | An ingest point is deleted |
+
+### Distribution events[​](#distribution-events "Direct link to Distribution events")
+
+| Event                                | Triggered when                                    |
+| ------------------------------------ | ------------------------------------------------- |
+| `distribution.created`               | A distribution is created                         |
+| `distribution.updated`               | A distribution is updated                         |
+| `distribution.enabled`               | A distribution is enabled                         |
+| `distribution.disabled`              | A distribution is disabled                        |
+| `distribution.deleted`               | A distribution is deleted                         |
+| `distribution.security.key.added`    | A security key is added to a distribution         |
+| `distribution.security.key.deleted`  | A security key is removed from a distribution     |
+| `distribution.security.keys.deleted` | All security keys are removed from a distribution |
+
+### Webhook events[​](#webhook-events "Direct link to Webhook events")
+
+| Event              | Triggered when           |
+| ------------------ | ------------------------ |
+| `webhook.created`  | A webhook is created     |
+| `webhook.updated`  | A webhook is updated     |
+| `webhook.enabled`  | A webhook is activated   |
+| `webhook.disabled` | A webhook is deactivated |
+| `webhook.deleted`  | A webhook is deleted     |
+
+You can also use the **wildcard** (`*`) to listen to all events at once.
+
+## Creating a Webhook in the [dashboard](https://dashboard.optiview.dolby.com/)[​](#creating-a-webhook-in-the-dashboard "Direct link to creating-a-webhook-in-the-dashboard")
+
+1. Navigate to **Streaming → Webhooks**.
+
+2. Click the **New** button in the top right.
+
+3. Fill in the form:
+
+   <!-- -->
+
+   * **Name** — Give your webhook a descriptive name (e.g. "Production event handler").
+   * **Endpoint URL** — The HTTPS URL that will receive event payloads (e.g. `https://example.com/webhooks`).
+   * **Events** — Either toggle **Listen to all events**, or expand the event groups and select individual events. Events are grouped by category (Channel, Engine, Ingest, Distribution, Webhook) and you can toggle an entire group at once.
+
+4. Click **Create** to save the webhook.
+
+After creation, you are redirected to the webhook detail page where you can view the signing secret.
+
+### API example — [Create a webhook](/documentation/pr-preview/pr-690/theolive/api/create-webhook.md)[​](#api-example--create-a-webhook "Direct link to api-example--create-a-webhook")
+
+**Listen to specific events:**
+
+`POST https://api.theo.live/v2/webhooks`
+
+```json
+{
+  "name": "Production event handler",
+  "url": "https://example.com/webhooks",
+  "events": ["channel.created", "channel.stopped", "engine.error"]
+}
+
+```
+
+**Listen to all events:**
+
+`POST https://api.theo.live/v2/webhooks`
+
+```json
+{
+  "name": "Catch-all webhook",
+  "url": "https://example.com/webhooks",
+  "events": ["*"]
+}
+
+```
+
+## Viewing Webhooks[​](#viewing-webhooks "Direct link to Viewing Webhooks")
+
+The **Webhooks** page shows a table of all your webhooks with:
+
+* **Name** — The webhook name. Click a row to navigate to the detail page.
+* **URL** — The endpoint URL.
+* **Status** — Active (green) or Inactive (red).
+* **Events** — Shows "All events" for wildcard webhooks, or the count of subscribed events.
+* **Actions** — Edit or delete the webhook.
+
+### API example — [List all webhooks](/documentation/pr-preview/pr-690/theolive/api/get-webhooks.md)[​](#api-example--list-all-webhooks "Direct link to api-example--list-all-webhooks")
+
+`GET https://api.theo.live/v2/webhooks`
+
+Optional query parameters:
+
+| Parameter | Description                                                                                        |
+| --------- | -------------------------------------------------------------------------------------------------- |
+| `cursor`  | [Pagination](/documentation/pr-preview/pr-690/theolive/api/pagination.md) cursor for the next page |
+| `limit`   | Number of results per page                                                                         |
+
+### API example — [Get a single webhook](/documentation/pr-preview/pr-690/theolive/api/get-webhook.md)[​](#api-example--get-a-single-webhook "Direct link to api-example--get-a-single-webhook")
+
+`GET https://api.theo.live/v2/webhooks/{webhookId}`
+
+## Webhook Detail Page[​](#webhook-detail-page "Direct link to Webhook Detail Page")
+
+Click any webhook row to open its detail page. This shows:
+
+* **Name** and **URL** — The webhook configuration.
+* **Status** — Active or Inactive, with a colored indicator.
+* **Events** — Either "Listening to all events" or an expandable list of subscribed event types.
+* **Secret** — The signing secret (hidden by default). Click the eye icon to reveal it, and click the secret to copy it to your clipboard.
+
+### Delivery Logs[​](#delivery-logs "Direct link to Delivery Logs")
+
+The detail page includes a **Delivery logs** section that shows the history of webhook deliveries:
+
+* Filter logs by **start date** and **end date** (defaults to the last 7 days).
+* The left panel lists deliveries with a success (green check) or failure (red cross) indicator, the event type, and timestamp.
+* Click a log entry to view the full **request data** payload in the right panel.
+* The **status code** badge shows the HTTP response code returned by your endpoint.
+
+> **Note:** The status code reflects what your endpoint returned. A `400` status code means your endpoint rejected the request, not that delivery failed.
+
+## Editing a Webhook[​](#editing-a-webhook "Direct link to Editing a Webhook")
+
+Click the **edit icon** on the webhooks list, or click **Edit** on the webhook detail page.
+
+You can change:
+
+* **Name**
+* **Endpoint URL**
+* **Active / Inactive** toggle — Control whether the webhook receives events.
+* **Events** — Update which events the webhook listens to.
+
+Click **Save** to apply your changes.
+
+### API example — [Update a webhook](/documentation/pr-preview/pr-690/theolive/api/update-webhook.md)[​](#api-example--update-a-webhook "Direct link to api-example--update-a-webhook")
+
+All fields are optional; only include the fields you want to change.
+
+`PATCH https://api.theo.live/v2/webhooks/{webhookId}`
+
+```json
+{
+  "name": "Updated webhook name",
+  "url": "https://example.com/new-endpoint",
+  "events": ["channel.created", "channel.stopped"]
+}
+
+```
+
+## Activating and Deactivating a Webhook[​](#activating-and-deactivating-a-webhook "Direct link to Activating and Deactivating a Webhook")
+
+When editing a webhook, you can toggle the **Active / Inactive** switch.
+
+* **Active** — The webhook is receiving events. Shown with a green indicator.
+* **Inactive** — The webhook is disabled and will not receive events. Shown with a red indicator.
+
+This is useful when you want to temporarily stop receiving events without deleting the webhook.
+
+### API example — [Activate or deactivate a webhook](/documentation/pr-preview/pr-690/theolive/api/update-webhook.md)[​](#api-example--activate-or-deactivate-a-webhook "Direct link to api-example--activate-or-deactivate-a-webhook")
+
+Use the update endpoint with the `active` field:
+
+`PATCH https://api.theo.live/v2/webhooks/{webhookId}`
+
+```json
+{ "active": false }
+
+```
+
+```json
+{ "active": true }
+
+```
+
+## Deleting a Webhook[​](#deleting-a-webhook "Direct link to Deleting a Webhook")
+
+Click the **trash icon** on the webhooks list, or click **Delete** on the webhook detail page. A confirmation dialog will appear. Deletion is permanent and cannot be undone.
+
+> **Note:** You must deactivate a webhook before deleting it.
+
+### API example — [Delete a webhook](/documentation/pr-preview/pr-690/theolive/api/delete-webhook.md)[​](#api-example--delete-a-webhook "Direct link to api-example--delete-a-webhook")
+
+`DELETE https://api.theo.live/v2/webhooks/{webhookId}`
+
+## Webhook Payload Format[​](#webhook-payload-format "Direct link to Webhook Payload Format")
+
+When an event fires, Dolby sends a `POST` request to your endpoint with a JSON body:
+
+```json
+{
+  "type": "channel.stopped",
+  "createdAt": 1711900800,
+  "object": {
+    "type": "channel",
+    "id": "ch_abc123",
+    "name": "name-of-channel",
+    "organizationId": "organization-id",
+    // optionally information about the parent object (id, type and name)
+  },
+  "data": { ... },
+}
+
+```
+
+| Field                   | Description                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| `type`                  | The event type string (e.g. `channel.stopped`, `engine.error`)                 |
+| `createdAt`             | Unix timestamp of when the event occurred                                      |
+| `object.type`           | The resource type: `channel`, `engine`, `ingest`, `distribution`, or `webhook` |
+| `object.id`             | The ID of the resource that triggered the event                                |
+| `object.name`           | The name of the resource that triggered the event                              |
+| `object.organizationId` | The ID of the organization that owns the resource                              |
+| `object.parent.id`      | Optionally: the ID of the parent resource that triggered the event             |
+| `object.parent.name`    | Optionally: the name of the parent resource that triggered the event           |
+| `object.parent.type`    | Optionally: the type of the parent resource that triggered the event           |
+| `data`                  | Event-specific payload with additional details                                 |
+
+## Verifying Webhook Signatures[​](#verifying-webhook-signatures "Direct link to Verifying Webhook Signatures")
+
+Dolby uses webhook signatures to verify that the webhook request is genuinely coming from us, and not from a server acting like Dolby. On every request, Dolby sends a `x-dolby-streaming-signature` header that you can use to verify authenticity.
+
+### How does the verification work?[​](#how-does-the-verification-work "Direct link to How does the verification work?")
+
+Upon the creation of a webhook, you receive a **secret** that looks like `dolby_sec_some-random-characters`. You can retrieve this secret at any time from the webhook detail page or via the API.
+
+When receiving a webhook request, the `Dolby-Signature` header is always included and looks similar to:
+
+```text
+t=1659622850,h=6bbe0553922a31ea48cb3af9903616c3a8b65351434653251949480f2a91c037
+
+```
+
+This string contains two parts that you need to extract:
+
+* **`t`** — The Unix timestamp when the request was made. This is included to prevent replay attacks.
+* **`h`** — A hexadecimal HMAC SHA-256 hash, which is a combination of the timestamp `t` and the JSON body of the request, signed with your secret.
+
+To verify the signature, you recreate the hash yourself:
+
+1. Take the timestamp `t` from the header.
+2. Append a `.` and the stringified JSON body of the request.
+3. Hash the resulting string with HMAC SHA-256, using your secret as the key.
+4. Compare the result with `h`. If they match, the request is authentic. If not, someone is impersonating Dolby.
+
+### Full code sample[​](#full-code-sample "Direct link to Full code sample")
+
+```javascript
+const express = require('express');
+const crypto = require('crypto');
+const port = 3400;
+
+var app = express();
+app.use(express.json());
+
+app.post('/webhooks', (req, res) => {
+  res.send('ok'); // acknowledge receipt ASAP
+
+  const secret = 'dolby_sec_myverylittlesecret'; // secret received on creation
+  const data = req.body;
+
+  // 1. Grab Dolby-Signature from header
+  const signatureHeader = req.header('x-dolby-streaming-signature');
+  // t=1659622850,h=6bbe0553922a31ea48cb3af9903616c3a8b65351434653251949480f2a91c037
+
+  // 2. Split string: you'll receive a timestamp (t) and hash (h)
+  const timestampPart = signatureHeader.split(',')[0]; // t=1659622850
+  const hashPart = signatureHeader.split(',')[1]; // h=6bbe05...
+
+  // 3. Get the values for both the timestamp and hash
+  const timestampValue = timestampPart.split('=')[1]; // 1659622850
+  const hashValue = hashPart.split('=')[1]; // 6bbe05...
+
+  // 4. Prepare the hash string: stringify the request body
+  const dataAsString = JSON.stringify(data);
+  const stringToBeHashed = `${timestampValue}.${dataAsString}`;
+
+  // 5. Make a HMAC SHA-256 hash, using your secret as a key
+  const hashToCheck = crypto.createHmac('sha256', secret).update(stringToBeHashed).digest('hex');
+
+  // 6. Check if both hashes are the same
+  if (hashToCheck === hashValue) {
+    // all good, continue with code
+  } else {
+    // data not coming from Dolby, throw an error
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
+```
+
+### API example — [Get the webhook secret](/documentation/pr-preview/pr-690/theolive/api/get-webhook-secret.md)[​](#api-example--get-the-webhook-secret "Direct link to api-example--get-the-webhook-secret")
+
+`GET https://api.theo.live/v2/webhooks/{webhookId}/secret`
+
+## Tips[​](#tips "Direct link to Tips")
+
+* **Use HTTPS endpoints.** Always use HTTPS for your webhook URLs to ensure event data is encrypted in transit.
+* **Return a 2xx status code quickly.** Your endpoint should acknowledge the webhook with a `200` or `204` response as fast as possible. Process the payload asynchronously if needed.
+* **Use the wildcard sparingly.** Subscribing to all events (`*`) is convenient for development but may generate a high volume of requests in production. Subscribe only to the events you need.
+* **Monitor delivery logs.** Check the delivery logs on the webhook detail page to verify events are being delivered successfully and your endpoint is responding correctly.
+* **Deactivate instead of deleting.** If you need to temporarily stop receiving events, deactivate the webhook rather than deleting and recreating it.
+* **Verify signatures in production.** Use the signing secret to verify that incoming requests are authentic before processing the payload.

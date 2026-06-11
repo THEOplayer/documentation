@@ -1,0 +1,112 @@
+# Media Hooks
+
+The **media** *type* of [webhook](/documentation/pr-preview/pr-690/millicast/webhooks.md) allows you to receive a series of notifications for when a recording or live clip changes status. This can be helpful for when you want to automate the download or notifications for when media becomes available.
+
+Setting up Webhooks
+
+Review the [Webhooks](/documentation/pr-preview/pr-690/millicast/webhooks.md) guide for additional details on creating and receiving webhooks.
+
+## Event[​](#event "Direct link to Event")
+
+The `event` will be one of the following values:
+
+* **completed** is sent when the media asset processing is complete and available.
+* **processing** is sent when a media asset has been requested and begins processing to generate the appropriate media file.
+* **errored** may occur if there is a problem processing a request such as if a media asset is being generated from an expired timeline and can no longer be retrieved.
+* **deleted** will be sent whenever a media asset is marked for removal.
+
+## Data[​](#data "Direct link to Data")
+
+The `data` payload will contain the following details:
+
+* **mediaAssetId** is the unique identifier that can be used with the [Media Assets](/documentation/pr-preview/pr-690/millicast/api/media-assets-list-media-assets.md) endpoint to retrieve additional details such as where to find the media file itself.
+* **type** identifies whether it is a *clip* or *recording* that is changing state.
+* **tokenId** may optionally include the unique identifier for the publish token used during a broadcast from which the media is created. Present when the media asset originates from a publish token.
+* **channelId** may optionally include the channel identifier of the channel used as the source for the media asset. Present when the media asset originates from an Optiview Live channel. Mutually exclusive with **streamName**, **streamId**, and **tokenId**.
+* **streamName** is the unique label for the stream. Present when the media asset originates from an Optiview ULL stream. Mutually exclusive with **channelId**.
+* **streamId** is the unique identifier for the stream such as `accountId/streamName`. Present when the media asset originates from an Optiview ULL stream. Mutually exclusive with **channelId**.
+* **startTime** identifies the epoch timestamp for when the media is requested.
+* **expiration** may optionally include the epoch timestamp for when the media will be marked for removal automatically.
+* **metadata** may optionally include additional details about the media file info.
+
+## Examples[​](#examples "Direct link to Examples")
+
+### Media Clip was Requested[​](#media-clip-was-requested "Direct link to Media Clip was Requested")
+
+```json
+{
+  "type": "media",
+  "event": "processing",
+  "timestamp": 1725259930753,
+  "data": {
+    "mediaAssetId": "c6631104197a4091943775697948adbe",
+    "tokenId": 1187282,
+    "streamName": "test-record-clip",
+    "streamId": "dkxfvY/test-record-clip",
+    "startTime": 1725259930643,
+    "type": "clip",
+    "metadata": {},
+    "expiration": 1733900336143
+  }
+}
+
+```
+
+### Media Clip is Available[​](#media-clip-is-available "Direct link to Media Clip is Available")
+
+```json
+{
+  "type": "media",
+  "event": "completed",
+  "timestamp": 1725260343575,
+  "data": {
+    "mediaAssetId": "e0ca421e3ee748629d073b6991d4d93d",
+    "tokenId": 1187282,
+    "streamName": "test-record-clip",
+    "streamId": "dkxfvY/test-record-clip",
+    "startTime": 1725259874671,
+    "metadata": {},
+    "type": "clip",
+    "expiration": 1733900336143
+  }
+}
+
+```
+
+### Error When Recording[​](#error-when-recording "Direct link to Error When Recording")
+
+```json
+{
+  "type": "media",
+  "event": "errored",
+  "timestamp": 1725261092922,
+  "data": {
+    "mediaAssetId": "f26120d4443b474b8b1d6e1ecfcbd369",
+    "tokenId": 1090418,
+    "streamName": "qa_test_stream_for_live_clipping",
+    "streamId": "dkxfvY/qa_test_stream_for_live_clipping",
+    "startTime": 1725245888000,
+    "type": "recording",
+    "expiration": 1733896321029
+  }
+}
+
+```
+
+### Channel-based Media Clip is Available[​](#channel-based-media-clip-is-available "Direct link to Channel-based Media Clip is Available")
+
+```json
+{
+  "type": "media",
+  "event": "completed",
+  "timestamp": 1725260343575,
+  "data": {
+    "mediaAssetId": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+    "channelId": "a1b2c3d4e5f6g7h8u9j0k1l2m",
+    "startTime": 1725259874671,
+    "type": "clip",
+    "expiration": 1733900336143
+  }
+}
+
+```

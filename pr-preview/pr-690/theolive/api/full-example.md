@@ -1,0 +1,282 @@
+# Full example
+
+This guide walks through setting up a complete channel via the API — from creating the channel to starting the stream. By the end, you will have a fully configured channel ready for playback.
+
+tip
+
+All requests require authentication. See the [Authentication](/documentation/pr-preview/pr-690/theolive/api/authentication.md) guide for how to obtain and use your API credentials.
+
+## Overview[​](#overview "Direct link to Overview")
+
+Setting up a channel involves the following steps:
+
+1. **Create a channel** — the top-level container.
+2. **Create an ingest** — defines where the live source enters the platform.
+3. **Create an engine** — processes and packages the incoming media.
+4. **Create a distribution** — defines how the stream is delivered to viewers.
+5. **Start the channel** — begins transcoding and makes the stream available.
+
+## 1. Get available regions and ABR ladders[​](#1-get-available-regions-and-abr-ladders "Direct link to 1. Get available regions and ABR ladders")
+
+Before creating ingests and engines, retrieve the available regions and ABR ladders for your organization.
+
+`GET https://api.theo.live/v2/regions`
+
+```bash
+curl -X GET https://api.theo.live/v2/regions \
+  -H "Authorization: Basic $AUTH"
+
+```
+
+Response
+
+```json
+{
+  "data": [
+    { "id": "europe-west", "name": "Europe West" },
+    { "id": "us-east", "name": "US East" }
+  ]
+}
+
+```
+
+`GET https://api.theo.live/v2/abr`
+
+```bash
+curl -X GET https://api.theo.live/v2/abr \
+  -H "Authorization: Basic $AUTH"
+
+```
+
+Response
+
+```json
+{
+  "data": [
+    {
+      "id": "abr_abc123",
+      "name": "1080p ladder",
+      "video": [
+        { "id": "v1", "label": "1080p", "width": 1920, "height": 1080, "bitrate": 6000000 },
+        { "id": "v2", "label": "720p", "width": 1280, "height": 720, "bitrate": 3000000 },
+        { "id": "v3", "label": "480p", "width": 854, "height": 480, "bitrate": 1500000 }
+      ]
+    }
+  ]
+}
+
+```
+
+Note the `id` values — you will need the region ID and ABR ladder ID in the next steps.
+
+## 2. Create a channel[​](#2-create-a-channel "Direct link to 2. Create a channel")
+
+`POST https://api.theo.live/v2/channels`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels \
+  -H "Authorization: Basic $AUTH" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "My first channel"
+  }'
+
+```
+
+Response
+
+```json
+{
+  "data": {
+    "id": "ch_abc123",
+    "name": "My first channel",
+    "status": "stopped",
+    "timeout": 600,
+    "createdAt": "2026-03-30T12:00:00.000Z",
+    "organizationId": "org_xyz"
+  }
+}
+
+```
+
+Note the channel `id` — you will use it in all subsequent calls.
+
+## 3. Create an ingest[​](#3-create-an-ingest "Direct link to 3. Create an ingest")
+
+Create an RTMP push ingest so you can push your live feed to the platform.
+
+`POST https://api.theo.live/v2/channels/{channelId}/ingests`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels/ch_abc123/ingests \
+  -H "Authorization: Basic $AUTH" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Primary ingest",
+    "type": "rtmp-push",
+    "region": "europe-west"
+  }'
+
+```
+
+Response
+
+```json
+{
+  "data": {
+    "id": "ing_def456",
+    "name": "Primary ingest",
+    "type": "rtmp-push",
+    "url": "rtmp://ingest.theo.live/live",
+    "streamKey": "sk_xxxxxxxxxx",
+    "createdAt": "2026-03-30T12:01:00.000Z",
+    "tracks": { "audio": [] },
+    "captions": []
+  }
+}
+
+```
+
+Use the returned `url` and `streamKey` to configure your encoder (e.g. OBS, vMix, or a hardware encoder).
+
+## 4. Create an engine[​](#4-create-an-engine "Direct link to 4. Create an engine")
+
+Create an engine that connects to the ingest and transcodes the stream.
+
+`POST https://api.theo.live/v2/channels/{channelId}/engines`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels/ch_abc123/engines \
+  -H "Authorization: Basic $AUTH" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Primary engine",
+    "ingestId": "ing_def456",
+    "region": "europe-west",
+    "priority": 1,
+    "quality": {
+      "abrLadderId": "abr_abc123"
+    },
+    "outputs": {
+      "hesp": true,
+      "hls": true
+    }
+  }'
+
+```
+
+Response
+
+```json
+{
+  "data": {
+    "id": "eng_ghi789",
+    "name": "Primary engine",
+    "createdAt": "2026-03-30T12:02:00.000Z",
+    "updatedAt": "2026-03-30T12:02:00.000Z",
+    "quality": { "abrLadderId": "abr_abc123" },
+    "drm": false,
+    "priority": 1,
+    "daiAssetKey": null,
+    "outputs": { "hesp": true, "hls": true },
+    "overlays": []
+  }
+}
+
+```
+
+## 5. Create a distribution[​](#5-create-a-distribution "Direct link to 5. Create a distribution")
+
+Create a distribution that connects to the engine and delivers the stream to viewers.
+
+`POST https://api.theo.live/v2/channels/{channelId}/distributions`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels/ch_abc123/distributions \
+  -H "Authorization: Basic $AUTH" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Main distribution",
+    "enabled": true,
+    "endpoints": {
+      "engineIds": ["eng_ghi789"]
+    }
+  }'
+
+```
+
+Response
+
+```json
+{
+  "data": {
+    "id": "dist_jkl012",
+    "name": "Main distribution",
+    "enabled": true,
+    "createdAt": "2026-03-30T12:03:00.000Z",
+    "updatedAt": "2026-03-30T12:03:00.000Z",
+    "endpoints": { "engineIds": ["eng_ghi789"] },
+    "security": {
+      "geoBlocking": { "enabled": false, "mode": "deny", "countries": [] },
+      "ipBlocking": { "enabled": false, "mode": "deny", "cidrs": [] },
+      "keys": []
+    },
+    "dvr": { "enabled": false }
+  }
+}
+
+```
+
+## 6. Start the channel[​](#6-start-the-channel "Direct link to 6. Start the channel")
+
+Once everything is configured and your encoder is streaming, start the channel.
+
+`POST https://api.theo.live/v2/channels/{channelId}/start`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels/ch_abc123/start \
+  -H "Authorization: Basic $AUTH"
+
+```
+
+This starts all engines on the channel. The channel status will transition through `deploying` → `starting` → `ingesting` → `playing`.
+
+## 7. Verify and play[​](#7-verify-and-play "Direct link to 7. Verify and play")
+
+Use the distribution ID to play the stream. With [OptiView Player on web](/documentation/pr-preview/pr-690/theolive/playback/optiview-player.md):
+
+```javascript
+player.source = {
+  sources: {
+    type: 'theolive',
+    src: 'dist_jkl012',
+  },
+};
+
+```
+
+Or access the [HLS manifest directly](/documentation/pr-preview/pr-690/theolive/playback/other-hls-player.md):
+
+```text
+https://discovery.theo.live/v2/distributions/dist_jkl012/hls/main.m3u8
+
+```
+
+## 8. Stop the channel[​](#8-stop-the-channel "Direct link to 8. Stop the channel")
+
+When done, stop the channel to avoid unnecessary transcoding costs.
+
+`POST https://api.theo.live/v2/channels/{channelId}/stop`
+
+```bash
+curl -X POST https://api.theo.live/v2/channels/ch_abc123/stop \
+  -H "Authorization: Basic $AUTH"
+
+```
+
+## Next steps[​](#next-steps "Direct link to Next steps")
+
+* Add [redundancy](/documentation/pr-preview/pr-690/theolive/distribution/redundancy.md) with a second ingest and engine
+* Configure [security](/documentation/pr-preview/pr-690/theolive/distribution/security/geo-blocking.md) on your distribution
+* Set up [webhooks](/documentation/pr-preview/pr-690/theolive/platform/real-time-update-with-webhooks.md) for real-time event notifications
+* Automate start/stop with [schedulers](/documentation/pr-preview/pr-690/theolive/platform/scheduler.md)

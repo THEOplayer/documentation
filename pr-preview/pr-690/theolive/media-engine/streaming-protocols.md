@@ -1,0 +1,58 @@
+# Streaming protocols
+
+The media engine outputs your live stream in multiple protocols to ensure broad device and player compatibility. The following output protocols are supported: **HESP** and **HLS**. Additionally, **WebRTC** can be configured at the distribution level for sub-second real-time delivery.
+
+### HESP — High Efficiency Streaming Protocol[​](#hesp--high-efficiency-streaming-protocol "Direct link to HESP — High Efficiency Streaming Protocol")
+
+HESP is a next-generation streaming protocol designed for ultra-low latency live delivery. It is the default and recommended output protocol for the Dolby OptiView Live platform.
+
+* **Ultra-low latency** — delivers end-to-end latency in the 1 to 5 seconds range, significantly lower than traditional HLS.
+* **Fast channel switching** — viewers experience near-instant startup and channel changes.
+
+### HLS (CMAF) — HTTP Live Streaming[​](#hls-cmaf--http-live-streaming "Direct link to HLS (CMAF) — HTTP Live Streaming")
+
+HLS is the industry-standard protocol developed by Apple for delivering live and on-demand content over HTTP. The media engine outputs HLS using modern CMAF (fragmented MP4) segments.
+
+* **Broad compatibility** — supported by virtually all modern browsers, devices and players.
+* **Higher latency** — HLS typically delivers latency of 8 seconds or more, compared to 1–5 seconds with HESP.
+
+### HLS (MPEG-TS)[​](#hls-mpeg-ts "Direct link to HLS (MPEG-TS)")
+
+HLS with MPEG-TS segments is an older variant of HLS that uses traditional transport stream segments instead of CMAF.
+
+warning
+
+Only use HLS MPEG-TS if you are targeting a platform that genuinely does not support CMAF-based HLS — for example, certain legacy set-top boxes or embedded devices. In all other cases, use the standard CMAF HLS output, which offers better performance and broader modern device support.
+
+HLS MPEG-TS does not support all platform features. For example, [DVR](/documentation/pr-preview/pr-690/theolive/channel/dvr.md), [Nielsen](/documentation/pr-preview/pr-690/theolive/channel/nielsen.md), and [DRM](/documentation/pr-preview/pr-690/theolive/media-engine/drm.md) are not available with this output format.
+
+### WebRTC[​](#webrtc "Direct link to WebRTC")
+
+WebRTC enables sub-second, real-time delivery by connecting a distribution to an [OptiView Real-time streaming](/documentation/pr-preview/pr-690/millicast/getting-started.md) source. Unlike HESP and HLS — which are configured on the engine — WebRTC is configured per distribution. This allows you to add real-time delivery to specific distributions while keeping standard protocol delivery on others.
+
+* **Sub-second latency** — delivers end-to-end latency under 500 ms, the lowest of all supported protocols.
+* **Hybrid delivery** — works alongside HESP and HLS. The player automatically selects the best available protocol based on priority.
+
+See the [WebRTC distribution guide](/documentation/pr-preview/pr-690/theolive/distribution/webrtc.md) for configuration details and API examples.
+
+## API example[​](#api-example "Direct link to API example")
+
+You can configure output protocols via the API using the `outputs` object when [creating](/documentation/pr-preview/pr-690/theolive/api/create-channel-engine.md) or [updating](/documentation/pr-preview/pr-690/theolive/api/update-engine.md) an engine.
+
+`POST https://api.theo.live/v2/channels/{channelId}/engines`
+
+```json
+{
+  "name": "my-engine",
+  "region": "europe-west",
+  "quality": {
+    "abrLadderId": "your-abr-ladder-id"
+  },
+  "outputs": {
+    "hesp": true,
+    "hls": true,
+    "hlsTs": false
+  }
+}
+
+```

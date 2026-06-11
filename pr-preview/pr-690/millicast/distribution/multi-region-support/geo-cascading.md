@@ -1,0 +1,92 @@
+# Geo-cascading
+
+**Geo-cascading** is a key component of content delivery networks (CDNs) and streaming platforms that aim to provide a high-quality streaming experience for users around the world. To reduce latency and improve reliability, geo-cascading uses a network of clusters that are strategically placed in various geographical locations. This way, viewers can receive streams from regions that are the closest to their location.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/feature-geo-cascading-4278319fe8757eeb78a61d8f49241f73.png)
+
+Available Regions
+
+You can find the list of available cluster regions from the [Multi-Region Support](/documentation/pr-preview/pr-690/millicast/distribution/multi-region-support.md) streaming guide along with details on how to configure the origin publishing region.
+
+## Overview[​](#overview "Direct link to Overview")
+
+For simple scenarios without geo-cascading, the ingress and egress of streamed content flows through only a single origin cluster region as specified in the publish token. This solution works wells when the playback viewers are geographically located near the broadcaster within the same region. Any viewers who are consuming content in other regions may experience additional network latency.
+
+By enabling geo-cascading, a broadcaster publishes a stream to one cluster region and the service will cascade the content out to the edge network so that viewers will connect automatically to the cluster region closest to them and insure the best experience.
+
+The publish token defines a `geoCascade` property.
+
+* **isEnabled** - a boolean for whether or not geo-cascading is enabled for an individual publish token
+* **clusters** - a list of [cluster regions](/documentation/pr-preview/pr-690/millicast/distribution/multi-region-support.md) that will be enabled once a viewer in that region attempts to connect
+
+The origin and clusters to include can be customized depending on your broadcast and playback goals. This capability is available for all platform supported broadcast protocols and codecs.
+
+## How-to Setup Geo-cascading[​](#how-to-setup-geo-cascading "Direct link to How-to Setup Geo-cascading")
+
+You can enable and customize geo-cascading using either the dashboard or the REST APIs to enable the feature on a publish token.
+
+* As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **All** regions.
+* If not specified, **clusters** will use "All" by default.
+* If you have a more complex [multi-source](/documentation/pr-preview/pr-690/millicast/broadcast/multi-source-broadcasting.md) broadcast with multiple sources or using [redundant ingest](/documentation/pr-preview/pr-690/millicast/broadcast/redundant-ingest.md), each publisher should either use the same publish token or have the same origin and edge cluster configuration.
+
+### Using the Dashboard[​](#using-the-dashboard "Direct link to Using the Dashboard")
+
+Log into the dashboard and select a publish token to modify.
+
+1. Select the **Distribution** tab. Use the toggle to enable geo-cascading.
+
+2. Select the preferred regions from the drop-down list. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/Screenshot_2023-12-21_at_07.19.10-d9ec3dc9382c0cf0cfb88b4e6575dcc8.png)
+
+Any broadcast that uses the publish token configured in this way will take advantage of this content delivery.
+
+### Using the REST API[​](#using-the-rest-api "Direct link to Using the REST API")
+
+To set geo-cascading for a specific token, set its preferences in either the **geoCascade** object of [Create Token](/documentation/pr-preview/pr-690/millicast/api/publish-token-v-1-create-token.md) or the **updateGeoCascade** object of the [Update Token](/documentation/pr-preview/pr-690/millicast/api/publish-token-v-1-update-token.md) REST API.
+
+Both objects contain two parameters: **isEnabled** and **clusters**. To enable geo-cascading, set **isEnabled** to true and provide in the **clusters** parameter the IDs of preferred regions. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **all** regions.
+
+To get the token-specific geo-cascading settings, use the [Read Token](/documentation/pr-preview/pr-690/millicast/api/publish-token-v-1-read-token.md) REST API.
+
+## Default Account Token Settings[​](#default-account-token-settings "Direct link to Default Account Token Settings")
+
+You can enable and customize this feature by default for all new tokens or on a per-token basis. Any publishing token specific settings will take precedence.
+
+### Using the Dashboard[​](#using-the-dashboard-1 "Direct link to Using the Dashboard")
+
+To define token defaults that are applied account-wide as a global configuration, log into the dashboard.
+
+1. Select **Settings** from the left-side menu.
+
+2. Select the **Default settings** tab.
+
+3. Use the toggle to enable geo-cascading.
+
+4. Select the preferred regions from the drop-down list. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **All** regions.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/Screenshot_2023-12-21_at_07.18.28-42bd14a20aed5934d2fe6a2a53c44f6b.png)
+
+### Using the REST API[​](#using-the-rest-api-1 "Direct link to Using the REST API")
+
+To define token defaults that are applied account-wide as a global configuration, use the [Update Account Geo Cascade Settings](/documentation/pr-preview/pr-690/millicast/api/account-update-geo-cascade.md) REST API with the **isEnabled** parameter set to true. In the **clusters** parameter, provide the IDs of preferred regions. Not specifying any preferred regions results in the automatic selection of the most suitable cluster for each viewer. As streams will only cascade to additional clusters when viewers connect to those clusters, we recommend choosing **all** regions.
+
+To get the account-wide geo-cascading settings, use the [Read Account Geo Cascade Settings](/documentation/pr-preview/pr-690/millicast/api/account-get-geo-cascade.md) REST API.
+
+## Troubleshooting[​](#troubleshooting "Direct link to Troubleshooting")
+
+### Understanding Costs for Geo-cascading[​](#understanding-costs-for-geo-cascading "Direct link to Understanding Costs for Geo-cascading")
+
+Pricing for plans is determined based on bandwidth consumption. This is calculated based on the number of bytes transmitted between the following components:
+
+* A broadcaster and the origin cluster
+* An origin cluster and any additional clusters where viewers are connected
+* A cluster and individual viewers
+
+You typically can forecast costs as though each additional region is one additional viewer.

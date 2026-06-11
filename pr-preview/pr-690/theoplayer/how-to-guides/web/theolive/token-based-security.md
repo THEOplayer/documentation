@@ -1,0 +1,239 @@
+# Token based security
+
+OptiView Live offers the option to enable JWT token security on a distribution (formerly referred to as an alias) level. This can be interesting if you only want valid users to access your stream. Read more about the feature and configuring it on your channels on the [token based security guide](/documentation/pr-preview/pr-690/theolive/distribution/security/token-based-security.md).
+
+This page will demonstrate how to configure the Web SDK for playback of channels with token based security enabled.
+
+## Setting up the Web SDK for OptiView Live[​](#setting-up-the-web-sdk-for-optiview-live "Direct link to Setting up the Web SDK for OptiView Live")
+
+Refer to the [getting started guide](/documentation/pr-preview/pr-690/theoplayer/how-to-guides/web/theolive/getting-started.md) for the prerequisite steps in getting the Web SDK up and running for OptiView Live playback.
+
+## Configuring the player to pass the token[​](#configuring-the-player-to-pass-the-token "Direct link to Configuring the player to pass the token")
+
+Use the `player.theoLive.authToken` API to have the player pass your JWT token along with all HTTP requests it makes while playing your OptiView Live distribution:
+
+```javascript
+const token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
+player.theoLive.authToken = token;
+
+```
+
+This will ensure the player includes the correct `Authorization` HTTP request header on all subsequent requests.
+
+## Dealing with token expiry and rotation[​](#dealing-with-token-expiry-and-rotation "Direct link to Dealing with token expiry and rotation")
+
+If your tokens are short-lived, you want to make sure to update the token being passed to the player and requests before it expires, to allow playback to continue beyond expiry. This can be done by simply updating the `authToken` property. For example, one could check on an interval that makes sense for your token lifespan whether the token is about to expire and update when necessary, for example:
+
+```javascript
+let token;
+
+// Helper function to check whether your token will expire within one minute from now
+function tokenWillExpireSoon() {
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  const exp = payload.exp; // in seconds
+  const now = Math.floor(Date.now() / 1000); // current time in seconds
+  return exp - now <= 60;
+}
+
+function maybeUpdateToken() {
+  if (!token || tokenWillExpireSoon(token)) {
+    token = getToken(); // Generate or request your token, for more information check the token based security guide linked above.
+    player.theoLive.authToken = token;
+  }
+}
+
+maybeUpdateToken();
+setInterval(maybeUpdateToken, 30000); // Check every 30 seconds
+
+```
+
+## Clearing the token[​](#clearing-the-token "Direct link to Clearing the token")
+
+If the token isn't needed anymore, e.g. when switching to an unprotected distribution or a non-OptiView Live source altogether, the header can be simply removed as follows:
+
+```javascript
+player.theoLive.authToken = undefined;
+
+```
+
+## Known limitations[​](#known-limitations "Direct link to Known limitations")
+
+### Safari on iOS <17[​](#safari-on-ios-17 "Direct link to Safari on iOS <17")
+
+Apple devices running an iOS version lower than 17.1 do not support [MSE](https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API), therefore the player must fall back to Safari's built-in HLS support. Since the player is no longer making the HTTP requests by itself, it cannot automatically append the necessary `Authorization` header.
+
+To continue using token based security on those devices, we recommend either switching to long-lived tokens, or using a service worker to intercept the HTTP requests and append the header in your code.
+
+#### Long-lived tokens[​](#long-lived-tokens "Direct link to Long-lived tokens")
+
+For JWT tokens that are valid for the entire duration of a typical playback session, you can continue using the `authToken` API as normal. When the player uses Safari's native HLS support, it will automatically append the token as a *query parameter* to the URL, and the OptiView Live backend will use that instead of the `Authorization` header to authenticate the viewer.
+
+Note that the player **cannot change** the query parameter on the stream without interrupting playback. Hence, the token must not expire before the end of the playback session.
+
+note
+
+Long-lived tokens are supported as of version 11.3.0 of the OptiView Player Web SDK.
+
+#### Short-lived tokens using service worker[​](#short-lived-tokens-using-service-worker "Direct link to Short-lived tokens using service worker")
+
+For JWT tokens with a short validity duration, you will need to register a service worker that intercepts the HTTP requests made by Safari's native HLS playback and append the necessary `Authorization` header.
+
+This requires the player to make all HTTP requests with [CORS](/documentation/pr-preview/pr-690/theoplayer/knowledge-base/cors/introduction.md) enabled. Make sure to set [the `crossOrigin` property](/documentation/pr-preview/pr-690/theoplayer/v11/api-reference/web/interfaces/TypedSource.html#crossOrigin) on your OptiView Live source:
+
+```javascript
+player.source = {
+  sources: {
+    type: 'theolive',
+    src: 'your-channel-id',
+    crossOrigin: 'anonymous',
+  },
+};
+
+```
+
+A code snippet for the service worker code is shared below.
+
+note
+
+Service worker registration is only possible in a secure environment (`https://`) or on `localhost`. There can also only be one service worker active, so if your environment or application already has a service worker active, you will need to include the additional functionality in that service worker.
+
+iOS Safari service worker
+
+```javascript
+self.addEventListener('install', () => {
+  console.log('Service worker installed!');
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('Service Worker activated');
+  // Claim clients so the service worker is in effect immediately
+  event.waitUntil(self.clients.claim());
+});
+
+// Intercept the fetch event and add in your JWT
+self.addEventListener('fetch', (event) => {
+  try {
+    const url = new URL(event.request.url);
+    if (!url.origin.endsWith('theo.live')) {
+      // Requests not made by the player for playback of the OptiView Live distribution should not be modified.
+      return;
+    }
+    const token = getToken(); // Generate or request your token. For more information, check the token based security guide linked above.
+    // Clone the request and add the JWT header
+    const modifiedHeaders = new Headers(event.request.headers);
+    modifiedHeaders.set('Authorization', `Bearer ${token}`);
+    const modifiedRequest = new Request(event.request, {
+      headers: modifiedHeaders,
+    });
+    return event.respondWith(fetch(modifiedRequest));
+  } catch (error) {
+    console.error('Error in fetch handler:', error);
+    return event.respondWith(new Response('Service Worker Error', { status: 500 }));
+  }
+});
+
+```
+
+note
+
+In order for the service worker to be able to intercept requests made from the player library, its scope must include the player SDK files. That means the player and service worker must be hosted on the same path or the player must be hosted in a subfolder of the path where the service worker is hosted.
+
+To register this service worker in to your code, you can attach it this way.
+
+Register service worker
+
+```javascript
+async function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) {
+    console.error('Service worker not supported!');
+    return;
+  }
+  const serviceWorkerScope = '/service/worker/path'; // Replace with your own path to the service worker location.
+  const serviceWorkerPath = '${root}/service-worker.js'; // Replace with the filename of your service worker.
+
+  // We recommend unregistering actively before (re-)registering as we've seen issues where hard reloads could cause issues if the service worker wasn't unregistered.
+  const oldRegistration = await navigator.serviceWorker.getRegistration(serviceWorkerPath);
+  await oldRegistration?.unregister();
+
+  try {
+    const registration = await navigator.serviceWorker.register(serviceWorkerPath, {
+      scope: serviceWorkerScope,
+    });
+    if (registration.active) console.log('Service worker registered!');
+  } catch (err) {
+    console.error('Could not register service worker!', err);
+  }
+}
+
+// Initialise the service worker some time early in the process.
+if (!(window.MediaSource || window.ManagedMediaSource)) {
+  registerServiceWorker();
+}
+
+```
+
+The snippet above assumes the existence of a function `getToken()` that generates a JSON Web Token (JWT) and signs it using the default HMAC SHA-256 algorithm. [(Refer to docs on jwt.io)](https://jwt.io/introduction). In pseudocode:
+
+```javascript
+const getToken = async () => {
+  const YOUR_JWT_SIGNING_KEY = 'YOUR-SIGNING-KEY-GOES-HERE';
+  const payload = {
+    exp: Math.floor(Date.now() / 1000) + 300, // 5 minutes
+  };
+
+  return await sign(payload, YOUR_JWT_SIGNING_KEY);
+};
+
+```
+
+You can use an existing library like [Jose](https://github.com/panva/jose), or you can use our example implementation:
+
+JWT `sign` function
+
+```js
+const base64UrlEncode = (str) => {
+  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+};
+
+const utf8ToUint8Array = (str) => {
+  return new TextEncoder().encode(str);
+};
+
+const sign = async (payload, secret) => {
+  const header = { alg: 'HS256', typ: 'JWT' };
+
+  const encodedHeader = base64UrlEncode(JSON.stringify(header));
+  const encodedPayload = base64UrlEncode(JSON.stringify(payload));
+
+  const data = `${encodedHeader}.${encodedPayload}`;
+  const secretBytes = utf8ToUint8Array(secret);
+
+  const key = await crypto.subtle.importKey('raw', secretBytes, { name: 'HMAC', hash: { name: 'SHA-256' } }, false, ['sign']);
+
+  const signature = await crypto.subtle.sign({ name: 'HMAC' }, key, utf8ToUint8Array(data));
+
+  const signatureStr = String.fromCharCode(...new Uint8Array(signature));
+
+  return `${data}.${base64UrlEncode(signatureStr)}`;
+};
+
+```
+
+info
+
+You can validate the token generated by inspecting it using the JWT decoder on [JWT.io](https://jwt.io/). The header and payload will be decoded immediately. If you provide your HMAC key, you can validate that the signature is also valid.
+
+note
+
+If you are using a bundler such as Vite or Rollup etc, you will need to ensure that your service worker also gets copied to your output directory and is `registered` from the correct path.
+
+### FairPlay-protected DRM streams on Safari[​](#fairplay-protected-drm-streams-on-safari "Direct link to FairPlay-protected DRM streams on Safari")
+
+Currently, the OptiView Player Web SDK always uses Safari's built-in HLS support for FairPlay-protected DRM streams. As such, the same limitations apply as for [Safari versions without MSE](#safari-on-ios-17).
+
+### Chromecast and AirPlay[​](#chromecast-and-airplay "Direct link to Chromecast and AirPlay")
+
+When the player casts an OptiView Live stream to a remote receiver (such as Chromecast or AirPlay), it is no longer in control of the HTTP requests for that stream. As such, it cannot append the necessary `Authorization` header by itself, similar to [when using Safari's native HLS playback](#safari-on-ios-17).
+
+We recommend using [long-lived tokens](#long-lived-tokens) to support remote playback. The player will automatically append the token as a query parameter to the URL when starting the remote session.

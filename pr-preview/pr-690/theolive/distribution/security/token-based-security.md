@@ -1,0 +1,107 @@
+# Token-based security
+
+Token-based security restricts access to your stream by requiring a valid JWT (JSON Web Token) on every playback request. This ensures that only authenticated viewers — those who have received a token from your backend — can access the stream.
+
+## How it works[​](#how-it-works "Direct link to How it works")
+
+When token security is enabled on a distribution, the CDN validates the JWT on each request. The token is signed with a shared secret (HS256/HS512) or a public/private key pair (RS256/RS512) that you provide when enabling the feature.
+
+The token can be provided in one of two ways:
+
+* As an `Authorization` header with a Bearer token:
+
+  ```http
+  Authorization: Bearer <JWT>
+
+  ```
+
+* As a `token` query parameter:
+
+  ```text
+  ?token=<JWT>
+
+  ```
+
+The token payload must include:
+
+* **`exp`** — expiration time in epoch format. The token is rejected after this time.
+* **`nbf`** *(optional)* — "not before" time in epoch format. The token is rejected before this time.
+
+Additionally, the following standard optional claims are supported:
+
+| Claim | Type   | Description                                                                       |
+| ----- | ------ | --------------------------------------------------------------------------------- |
+| `sub` | string | Subject. If present, a SHA-256 hash of this value is used as the viewer identity. |
+| `iss` | string | Issuer. Identifies the system that created the token.                             |
+
+Requests without a valid token are rejected. If the distribution does not have token security enabled, the `Authorization` header is ignored.
+
+## Custom claims[​](#custom-claims "Direct link to Custom claims")
+
+### The `optiview` claim[​](#the-optiview-claim "Direct link to the-optiview-claim")
+
+The JWT token supports a custom `optiview` claim that enables fine-grained access control. When present, the claim restricts token usage based on channel, geography, or device type.
+
+| Property | Type       | Description                                                                                                                                                                                                                                                                                                                                     |
+| -------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ch`     | `string[]` | Channel ID(s). If present, the token can exclusively be used for a channel in this list.                                                                                                                                                                                                                                                        |
+| `cc`     | `string[]` | Country code(s) in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) format (e.g. `"US"`, `"BE"`). If present, the token can exclusively be used for a country in this list.                                                                                                                                                       |
+| `rgn`    | `string[]` | Region code(s) using the subdivision codes defined in [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2), only supported for the United States and Canada regions (e.g. `"US-CA"`, `"US-NY"`). If present, the token can exclusively be used for a region in this list. If the viewer's region cannot be determined, the request is denied. |
+| `dma`    | `number[]` | DMA (Designated Market Area) code(s), only supported for the United States and Canada (e.g. `501`, `803`). If present, the token can exclusively be used for a DMA region in this list.                                                                                                                                                         |
+| `hw`     | `string[]` | Device type(s). If present, the token can exclusively be used by a device type in this list. Possible values: `"desktop"`, `"mobile"`, `"tv"`. If the viewer's device type cannot be determined, this restriction is skipped.                                                                                                                   |
+| `tid`    | string     | Tracking ID. A group identifier string used to correlate viewers.                                                                                                                                                                                                                                                                               |
+| `cvd`    | string     | Custom viewer data. Arbitrary string attached to the session, e.g. an individual identifier to uniquely identify a viewer.                                                                                                                                                                                                                      |
+
+All properties are optional. When a property is omitted, no restriction is applied for that dimension.
+
+#### Device type mapping[​](#device-type-mapping "Direct link to Device type mapping")
+
+The `hw` device types are derived from the viewer's `User-Agent` header:
+
+| Detected device         | Mapped type |
+| ----------------------- | ----------- |
+| Desktop / Media player  | `desktop`   |
+| Smart Phone / Tablet    | `mobile`    |
+| Smart TV / Game console | `tv`        |
+
+**Example payload:**
+
+```json
+{
+  "sub": "user-12345",
+  "iat": 1516239022,
+  "exp": 1672531200,
+  "optiview": {
+    "ch": ["channel_1", "channel_2"],
+    "cc": ["US"],
+    "rgn": ["US-CA", "US-NY"],
+    "dma": [807, 501],
+    "hw": ["mobile", "tv"],
+    "tid": "group-abc",
+    "cvd": "viewer-98765"
+  }
+}
+
+```
+
+## Configuration[​](#configuration "Direct link to Configuration")
+
+To enable token-based security, navigate to your distribution's security settings and enable the token security toggle. Provide the shared secret or public key used to verify tokens.
+
+![Token-based security settings](/documentation/pr-preview/pr-690/assets/images/token-security-9ace2d49a6162d2ac79dec0cbcad4687.png)
+
+## Supported signing algorithms[​](#supported-signing-algorithms "Direct link to Supported signing algorithms")
+
+| Algorithm family | Key type         | Description                            |
+| ---------------- | ---------------- | -------------------------------------- |
+| HS256 / HS512    | HMAC (symmetric) | Signed with a shared secret.           |
+| RS256 / RS512    | RSA (asymmetric) | Signed with a public/private key pair. |
+
+## Player configuration[​](#player-configuration "Direct link to Player configuration")
+
+The player needs to be configured to pass the token with each request. Refer to the platform-specific guides:
+
+* [Web](/documentation/pr-preview/pr-690/theoplayer/how-to-guides/web/theolive/token-based-security.md)
+* [Android](/documentation/pr-preview/pr-690/theoplayer/how-to-guides/android/theolive/token-based-security.md)
+* [React Native](/documentation/pr-preview/pr-690/theoplayer/how-to-guides/react-native/theolive/token-based-security.md)
+* [Roku](/documentation/pr-preview/pr-690/theoplayer/how-to-guides/roku/theolive/token-based-security.md)

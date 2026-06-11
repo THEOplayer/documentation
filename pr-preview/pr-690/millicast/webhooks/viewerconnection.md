@@ -1,0 +1,73 @@
+# ViewerConnection Hooks
+
+The **viewerConnection** *type* of [webhook](/documentation/pr-preview/pr-690/millicast/webhooks.md) allows you to receive a series of notifications for when a viewer attempts to connect to a stream or alert when there are no longer viewers watching the stream. This can be helpful for when you want to automate starting and stopping your encoder when a viewer connects.
+
+Setting up Webhooks
+
+Review the [Webhooks](/documentation/pr-preview/pr-690/millicast/webhooks.md) guide for additional details on creating and receiving webhooks.
+
+## Event[​](#event "Direct link to Event")
+
+The `event` will be one of the following values:
+
+* **ViewerAttempt** is sent when a viewer attempts to connect to a stream that is offline and not actively streaming. It can signal your backend to start broadcasting. This event will fire every 10 seconds that at least one viewer has attempted to connect to a stream. If additional viewers attempt to connect in between that interval, no additional events will occur allowing time for the broadcast to begin. There will only be one event total every ten (10) seconds until the stream starts or viewers stop attempting to connect.
+* **FirstViewerConnection** is sent once your stream goes live and the first viewer successfully connects to the stream.
+* **NoActiveViewers** is sent once there are zero active viewers connected to the stream. After the last viewer leaves the stream a 60 second timer elapses and then this hook is sent. The 60 second timer is in place to allow for viewers to leave and come back within a short period of time to help avoid unnecessary starts and stops with the encoder.
+
+## Data[​](#data "Direct link to Data")
+
+The `data` payload will contain the following details:
+
+* **name** is the label for the stream that the viewer attempted to connect.
+* **accountId** is the unique identifier for your streaming account.
+* **streamId** is the unique identifier for the stream such `accountId/streamName`.
+
+## Examples[​](#examples "Direct link to Examples")
+
+### Viewer attempted to connect to an inactive stream[​](#viewer-attempted-to-connect-to-an-inactive-stream "Direct link to Viewer attempted to connect to an inactive stream")
+
+```json
+{
+  "type": "viewerConnection",
+  "event": "ViewerAttempt",
+  "timestamp": 1727442713604,
+  "data": {
+    "name": "myAwesomeStream",
+    "accountId": "ABC123",
+    "streamId": "ABC123/myAwesomeStream"
+  }
+}
+
+```
+
+### Once the stream started and the first viewer successfully connected[​](#once-the-stream-started-and-the-first-viewer-successfully-connected "Direct link to Once the stream started and the first viewer successfully connected")
+
+```json
+{
+  "type": "viewerConnection",
+  "event": "FirstViewerConnection",
+  "timestamp": 1727442762361,
+  "data": {
+    "name": "myAwesomeStream",
+    "accountId": "ABC123",
+    "streamId": "ABC123/myAwesomeStream"
+  }
+}
+
+```
+
+### The last viewer on the stream disconnected and 60 seconds elapsed[​](#the-last-viewer-on-the-stream-disconnected-and-60-seconds-elapsed "Direct link to The last viewer on the stream disconnected and 60 seconds elapsed")
+
+```json
+{
+  "type": "viewerConnection",
+  "event": "NoActiveViewers",
+  "timestamp": 1727442841663,
+  "data": {
+    "name": "myAwesomeStream",
+    "accountId": "ABC123",
+    "streamId": "ABC123/myAwesomeStream"
+  }
+}
+
+```

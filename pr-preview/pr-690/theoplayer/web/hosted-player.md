@@ -1,0 +1,175 @@
+# OptiView Hosted Player
+
+Dolby hosts a special version of the OptiView video player for use with customers intended to be used for `<iframe>` embedding. This version of the player is configurable with query parameters to make it easy to setup and configure without having to host the player yourself.
+
+The player is hosted at:
+
+```text
+https://sbp.optiview.dolby.com/latest/
+
+```
+
+## Versioning[​](#versioning "Direct link to Versioning")
+
+The hosted player is versioned and will automatically update when new releases are published. The latest version is always available at `https://sbp.optiview.dolby.com/latest/`.
+
+For production, we recommend that you lock to a specific version, you can use the version number in the URL. Example: `https://sbp.optiview.dolby.com/11.1.0/`.
+
+These versions of the player map directly to the [changelog](/documentation/pr-preview/pr-690/theoplayer/changelog.md). The first version available for the hosted player is `11.1.0`.
+
+## Configuration[​](#configuration "Direct link to Configuration")
+
+The following parameters can be provided used to configure the hosted player. *Note: query parameters are case sensitive!*
+
+### Required Parameters[​](#required-parameters "Direct link to Required Parameters")
+
+* `license`: a OptiView player license obtained through the dashboard. If using the hosted version of the player you should limit sources for playback, you can utilize "Source Domain" restrictions in the player portal. This will prevent viewers from stealing your license and using it for their own streams. If using streams from Dolby, you must white list the following
+
+  <!-- -->
+
+  * *Whitelist Page Domains*
+
+    * `sbp.optiview.dolby.com`
+    * *Note: at this time it is not possible to whitelist the end-application domain for whitelisted page domains in the license. If you wish to secure your streams by page domain, please contact Dolby to get your own license and player implementation.*
+
+  * *Whitelist Source Domains*
+
+    * `cdn.theo.live`
+    * `cdn.anywhere.theo.live`
+    * `cdn.tla-prd.theostream.live`
+    * `discovery.theo.live`
+    * `stream.anywhere.theo.live`
+    * `stream.theo.live`
+
+* `sourceType`: the type of source to configure the player to play back. Choose one of:
+
+  <!-- -->
+
+  * `realtime`: Real-time WebRTC playback with OptiView's real-time streaming solution (formerly Millicast)
+  * `lowdelay`: Low-delay HESP/HLS playback with OptiView's live streaming solution (formerly THEOlive).
+  * `live`: HLS playback with an .m3u8 manifest
+  * `vod`: used for MP4 progressive download playback or for HLS/DASH non-live assets. The type is determined by the file extension.
+
+* `source`: the source itself based on the `sourceType`. Here are some examples:
+
+  <!-- -->
+
+  * for `realtime`, the source looks like `accountId/streamname`. Example: `k9Mwad/multiview`.
+  * for `lowdelay`, the source looks like `distributionId`. Example: `af5d8187-1af0-46af-92da-a9333719f296`. *Note: if you are using the V1 of the THEOlive API, you will need to use the channel ID instead of the distribution ID.*
+
+### Optional Parameters[​](#optional-parameters "Direct link to Optional Parameters")
+
+* `token`: an optional playback token for enabling stream protection. The type of token must be matched to the `sourceType`.
+* `autoPlay`: *(default `false`).* A boolean whether to enable playback to automatically start when the page loads.
+* `muted`: *(default `true`).* A boolean whether to start the stream playback muted or not. *Note that if `autoPlay` is set to `true`, playback will begin muted due to browser restrictions.*
+* `poster`: a publicly accessible poster frame image to show when the stream is offline
+* `playerColor`: *(default `4D5963`)* a hex color code value to set the play button and scrub bar. *Note that the value is an integer and should NOT contain the `#` at the beginning.*
+
+### Optional Parameters (realtime only configurations)[​](#optional-parameters-realtime-only-configurations "Direct link to Optional Parameters (realtime only configurations)")
+
+The following parameters are only valid with Dolby OptiView real-time streaming and will be ignored with other `sourceTypes`.
+
+* `minDelay`: *(default: `50`).* a small minimum playout delay set to improve performance in degraded network conditions. Specified in milliseconds. See [Documentation](/documentation/pr-preview/pr-690/millicast/playback/players-sdks/web/player.md#playout-delay).
+* `maxDelay`: *(default: `120`).* a small maximum playout delay set to improve performance in degraded network conditions. Specified in milliseconds.
+* `maxHeight`: The maximum height resolution height (pixels) in the ABR range control to load in the given playback session. See [Documentation](/documentation/pr-preview/pr-690/millicast/playback/players-sdks/web/player.md#abr-range-control). Intended to be used mutually exclusively with `maxWidth`.
+* `maxWidth`: The maximum width resolution (pixels) in the ABR range control to load in the given playback session. See [Documentation](/documentation/pr-preview/pr-690/millicast/playback/players-sdks/web/player.md#abr-range-control). Intended to be used mutually exclusively with `maxHeight`.
+
+## Player Events[​](#player-events "Direct link to Player Events")
+
+Basic [player events](/documentation/pr-preview/pr-690/theoplayer/v11/api-reference/web/interfaces/AdBreakEvent.html) are sent with [window post messages](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to the parent page in case the embedding application wishes to utilize them. Events include:
+
+* ended
+* pause
+* play
+* playing
+* resize
+* volumechange
+
+Here is an example of how to consume these messages, logging them to the console:
+
+```javascript
+<script>
+  window.addEventListener("message", (event) => {
+    // confirm origin for security
+    if (event.origin !== "https://sbp.optiview.dolby.com") {
+      return;
+    }
+
+    console.log("iframe event", event.data);
+  });
+</script>
+
+```
+
+### Configuration Examples[​](#configuration-examples "Direct link to Configuration Examples")
+
+This is a basic example of a player that is configured in a basic way to play a real-time source:
+
+```text
+https://sbp.optiview.dolby.com/latest/?sourceType=realtime&source=k9Mwad/multiview&license=LICENSE_STRING
+
+```
+
+This is an example of a player that is configured to play a real-time stream with token protection and other customizations:
+
+```text
+https://sbp.optiview.dolby.com/latest/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING&token=TOKEN_STRING
+
+```
+
+This is an example to load an OptiView low-delay stream and start with automatic playback:
+
+```text
+https://sbp.optiview.dolby.com/latest/?sourceType=lowdelay&source=ar5c53uzm3si4h4zgkzrju44h&autoPlay=true&muted=true&license=LICENSE_STRING
+
+```
+
+This is an example to load an HLS stream and start with automatic playback:
+
+```text
+https://sbp.optiview.dolby.com/latest/?sourceType=live&source=https://stream.theo.live/europe-west/e2c4220c-3cf4-4499-ab3a-ea5e904d0406/ar5c53uzm3si4h4zgkzrju44h/stream/main.m3u8&autoPlay=true&muted=false&license=LICENSE_STRING
+
+```
+
+## A Complete Example[​](#a-complete-example "Direct link to A Complete Example")
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dolby Stream Embed</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      src="https://sbp.optiview.dolby.com/latest/?sourceType=realtime&source=k9Mwad/multiview&autoPlay=false&muted=true&playerColor=58007a&license=LICENSE_STRING"
+      allowfullscreen
+      allow="autoplay; encrypted-media"
+    ></iframe>
+    <script>
+      window.addEventListener('message', (event) => {
+        // confirm origin for security
+        if (event.origin !== 'https://sbp.optiview.dolby.com') {
+          return;
+        }
+
+        console.log('iframe event', event.data);
+      });
+    </script>
+  </body>
+</html>
+
+```

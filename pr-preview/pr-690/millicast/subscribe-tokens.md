@@ -1,0 +1,203 @@
+# Subscribe Tokens
+
+Unlike [publishing a broadcast](/documentation/pr-preview/pr-690/millicast/broadcast.md), the subscriber (viewer), by default, **does not need a token** to view a stream. However, if you want to secure your feed from being viewed by non-authenticated users, OptiView Real-time Streaming provides the ability to use subscribe tokens.
+
+When enabled, streams that require a subscribe token will block access to users not in possession of a valid token coming from a valid domain. This makes subscribe tokens useful for protecting paywalled content or non-public content. Subscribe tokens also allow you to add time limits, specify IPs, and even set the token to only work from single or multiple specified domains.
+
+This guide outlines the following:
+
+1. [How to Create a Subscribe Token](#creating-a-subscribe-token)
+2. [How to Manage or Edit Existing Subscribe Tokens](#managing-and-editing-existing-subscribe-tokens)
+3. [How to Delete a Subscribe Token](#deleting-subscribe-tokens)
+4. [How to Self-Signing Subscribe Tokens](#self-signing-subscribe-tokens)
+5. [Using the Token API](#using-the-token-api)
+
+## Creating a subscribe token[​](#creating-a-subscribe-token "Direct link to Creating a subscribe token")
+
+Enable Secure Viewer
+
+Before we can create a Subscribe token, we must first have a stream that requires a Subscribe token. These streams are referred to as **Secure streams** and need to be enabled within a Publish token by enabling "**Secure viewer**". To learn where to enable "Secure viewer", [check out this guide on creating a Publish token](/documentation/pr-preview/pr-690/millicast/managing-your-tokens.md).
+
+To get started, [login to your OptiView Real-time Streaming account](https://streaming.dolby.io/) and select **Subscribe tokens** from the left menu. Here you can create and manage your subscribe tokens.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/subscribe-tokens-empty-d18f97d9ae8346e1dc6e944adef0e9c7.png)
+
+Begin by creating a token using the **(+) Create** button. This will open a popup window on your screen containing various options for your new token.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/token-create-4975c967581908f3de52838bbb82d750.jpg)
+
+Let's go over each option in a bit more detail:
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/subscribe-tokens-settings-6cac79698ac3cd5b27d698d6f31c3f68.png)
+
+* The **Token Label** gives you a simple labeling system you can use to keep track of your tokens. You can use it to label what the tokens are for or identify testing tokens from your production ones.
+* In the **Add Stream Names** list, select the [Stream names](/documentation/pr-preview/pr-690/millicast/managing-your-tokens.md#2-token-streams) from your current [Publish tokens](/documentation/pr-preview/pr-690/millicast/managing-your-tokens.md) you want to give access to through the Subscribe token you are creating. For example, my new Subscribe token may give access to Stream names "*TestStreamMainFeed*", "*TestStreamCam2*", and "*TestStreamCam3*" all within my Publish token "*LiveConcertPublishToken*".
+  <!-- -->
+  * You can also create a **global Subscriber Token** by marking the "*Use ANY name*" option.
+* The **Tracking ID** lets you create an alphanumeric tracking ID that can be used for syndication to associate streaming statistics, such as bandwidth consumption, to various viewers on a stream. For more information, [see Syndication](/documentation/pr-preview/pr-690/millicast/distribution/syndication.md#creating-a-subscribe-token-with-tracking-id).
+* **Temporary Token** allows you to make your token temporary by giving the token an expiration date.
+
+### Advanced settings[​](#advanced-settings "Direct link to Advanced settings")
+
+You can switch from the top "*Basic*" tab to the "*Advanced*" tab in the token creation interface for more advanced token settings such as:
+
+* [Allowed origins:](/documentation/pr-preview/pr-690/millicast/distribution/access-control/allowed-origins.md) Only the domains in the list will be allowed in requests to the [Director API](/documentation/pr-preview/pr-690/millicast/api/director/director-subscribe.md) with the token.
+
+* [IP filter type:](/documentation/pr-preview/pr-690/millicast/distribution/access-control/allowed-origins.md)
+
+  * **IP Address**: May specify multiple IPv4 addresses or CIDR notated network blocks. If specified, the token will only be usable by those addresses.
+  * **Bind IPs on usage**: If specified, will bind the token to the first **X** IP addresses used with a token in requests to Director API, thus restricting the token to those IP addresses without them being known beforehand. Mutually exclusive with "IP Addresses" option. Not currently supported with RTMP.
+
+* [Cluster region:](/documentation/pr-preview/pr-690/millicast/distribution/multi-region-support.md) Specifies the cluster used for streaming. This setting is configured to use the default regional cluster set for the account. If Auto is selected, the regional cluster will be selected based on the publisher's location.
+
+* [Geo-Blocking:](/documentation/pr-preview/pr-690/millicast/distribution/access-control/geo-blocking.md) Enables blocking by location at a country level for this specific token.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/subscribe-token-add-98f4e6c173ff3100fce1d5c4d3d35f67.png)
+
+After you have successfully created your token, it will be displayed in a scrollable list.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/subscribe-token-list-8ac343a39bfeac110fd3d2d73b6a6a48.png)
+
+## Managing and editing existing subscribe tokens[​](#managing-and-editing-existing-subscribe-tokens "Direct link to Managing and editing existing subscribe tokens")
+
+Each token item has a *quick action menu* that provides you with options for enabling and deleting each token.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/subscribe-token-quick-action-fa64d1c42640f3fd1944fc566a80fe82.png)
+
+For more comprehensive management, open the *manage view* by simply clicking the token name.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/subscribe-token-detail-d63c9996800840a13df6f9459c4a8c98.png)
+
+The manage view allows you to edit and view details attached to your token, including stream names, labels, status, renew token, geo-blocking, and deletion. You can learn about these settings in the [Creating a Subscribe Token](#creating-a-subscribe-token) section.
+
+Of note in the manage screen is the **string of the Subscribe token itself**. This token can be copied and used to authenticate a connection to view the stream. For example, if you want to use the in-browser viewer to watch a live broadcast, **append the Subscribe token on the end to use the unsecured URL**:
+
+```text
+https://viewer.millicast.com?streamId=[Account ID]/[Stream Name]&token=[Subscribe Token]
+
+```
+
+Insecure URL
+
+The above example exposes the subscribe token in the URL. To prevent URL or token sharing, serve each viewer a unique subscribe token with the [BindsIPAddressOnUsage](#advanced-settings) parameter enabled to bind the token to the user.
+
+Depending on the scale of your production, it may not be secure or feasible to create tokens via the dashboard. Instead, you can create tokens via the [Token API](/documentation/pr-preview/pr-690/millicast/token-api.md), or, for true scalability, [you can self-sign tokens](#self-signing-subscribe-tokens).
+
+## Deleting subscribe tokens[​](#deleting-subscribe-tokens "Direct link to Deleting subscribe tokens")
+
+Once you've finished using a Subscribe token, it is recommended that you retire the token by deleting it to prevent accidental vulnerabilities. Deleting the token can be done from the *quick action menu* found at the top-level Subscribe Tokens page by clicking on the trash can icon.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/subscribe-token-delete-540771f6d60cb2a801f5bad4384acf23.png)
+
+## Self-signing subscribe tokens[​](#self-signing-subscribe-tokens "Direct link to Self-signing subscribe tokens")
+
+The OptiView Real-time Streaming APIs support the ability to self-sign Subscribe tokens without having to make an API call. Self-signing the token locally allows you to generate your Subscribe token more efficiently. The self-signed token is a user-generated JSON Web Token (JWT) that is generated from an existing Subscribe token.
+
+The Subscribe token functions as a parent token, and any self-signed token generated from this **will inherit any restrictions or parameters** that are specified when the Subscribe token is created. The self-signed token can be passed to the OptiView Real-time Streaming service, the same as any regular Subscribe token, but is then validated against the Subscribe token that was originally used to sign it.
+
+Self-signing your Subscribe token allows you to:
+
+* Sign the Subscribe token locally in the programming language of your choice as long as it uses one of the following signing algorithms:
+
+  <!-- -->
+
+  * `HMACSHA256`
+  * `HMACSHA384`
+  * `HMACSHA512`
+
+* Reduce the number of API calls to the OptiView Real-time server
+
+* [Track bandwidth usage with each of the self-signed tokens](/documentation/pr-preview/pr-690/millicast/distribution/syndication.md#how-to-track-syndication)
+
+### Creating a self-signed token[​](#creating-a-self-signed-token "Direct link to Creating a self-signed token")
+
+1. Create a Subscribe token using the [Create Token](/documentation/pr-preview/pr-690/millicast/api/subscribe-token-v-1-create-token.md) API. The API returns the `tokenId` and `token`.
+
+2. Create a JWT with the following data inside a `streaming` object:
+
+   <!-- -->
+
+   * `tokenId`: The ID of the (primary) subscribe token
+   * `streamName`: A complete, non-wildcard `streamName` that the subscriber will be allowed access to view
+   * `tokenType`: Assign the string `"Subscribe"` to indicate that it is a Subscribe token
+   * `allowedOrigins` (optional): Origins that allow the stream to be viewed from
+   * `allowedIpAddresses` (optional): IP ranges that allow the stream to be viewed from
+   * `tracking` (optional): An object to contain viewer tracking fields
+     <!-- -->
+     * `trackingId` (optional): A group ID to syndicate content across multiple partners or providers. This ID can be used to group viewers of the same stream for [analytics](/documentation/pr-preview/pr-690/millicast/api/analytics-get-tracking-total-for-streams.md) purposes. *Note: This is intended for tracking groups of viewers and should **NOT** be unique per-viewer. If you want to track individual viewers, see `customViewerData`*
+   * `expires_in` (optional): Number of seconds before the token expires. If the parent token expires before the self-signed token, the self-signed token will also expire.
+   * `customViewerData` (optional): A unique identifier of a viewer that allows getting the viewer's bandwidth consumption while using [syndication](/documentation/pr-preview/pr-690/millicast/distribution/syndication.md). Using this parameter requires contacting sales.
+
+3. Sign the JWT using the Subscribe token as the key and set an expiration for the JWT.
+
+*Note: Either or both `trackingId` and/or `customViewerData` may be used depending on what kind of tracking you need to achieve.*
+
+To put it all together, here is an example `payload` for a JWT that includes sample `trackingId` and `customViewerData`:
+
+```json
+{
+  "streaming": {
+    "tokenId": 12345, //required
+    "streamName": "myStreamName", //required
+    "tokenType": "Subscribe", //required
+    "tracking": {
+      "trackingId": "groupAbc"
+    },
+    "customViewerData": "user=user123;appVersion=x.y.x"
+  },
+  "iat": 1750813271,
+  "exp": 1750813871 // required for the token to be valid
+}
+
+```
+
+Here is the JWT that is used to generate this token, you can paste it into [jwt.io](https://jwt.io/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54In0sImlhdCI6MTc1MDgxMzI3MSwiZXhwIjoxNzUwODEzODcxfQ.pP5Kg6fCJfTaCc_OaV1FV5votZjy8x1gfJ2F7tQXj7c).
+
+```text
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInRva2VuVHlwZSI6IlN1YnNjcmliZSIsInN0cmVhbU5hbWUiOiJteVN0cmVhbU5hbWUiLCJ0cmFja2luZyI6eyJ0cmFja2luZ0lkIjoiZ3JvdXBBYmMifSwiY3VzdG9tVmlld2VyRGF0YSI6InVzZXI9dXNlcjEyMzthcHBWZXJzaW9uPXgueS54In0sImlhdCI6MTc1MDgxMzI3MSwiZXhwIjoxNzUwODEzODcxfQ.pP5Kg6fCJfTaCc_OaV1FV5votZjy8x1gfJ2F7tQXj7c
+
+```
+
+To see the validation tool validate the token, insert the random token used to sign the JWT: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
+
+Code Examples
+
+Examples of self-singing a token can be found at this [GitHub repository](https://github.com/millicast/selfsign-jwt-reference).
+
+### Limitations[​](#limitations "Direct link to Limitations")
+
+* The published stream and Subscribe token **must** originate from the same cluster region. The "Auto" region may be selected for both if the broadcast region changes from stream to stream. For more information, see [Multi-region Support](/documentation/pr-preview/pr-690/millicast/distribution/multi-region-support.md).
+* The only fields in the self-signed token that are added to the primary subscriber token are the *allowedOrigins* and *allowedIPAddresses*. These do not replace any *allowedOrigins* or *allowedIPAddresses* in the primary Subscriber token but are appended onto any existing restrictions. **Anything else packaged into the JWT is ignored.**
+* If the primary Subscriber token contains a *TrackingID*, the self-signed token must use the same *TrackingID*. However, if the primary Subscriber token does not specify a *TrackingID*, any *TrackingID* can be used in the self-signed token.
+* The Stream name can differ in the self-signed token when using a regex value. If the primary Subscriber token doesn't validate the Stream name (via regex match) in the self-signed token, then it is rejected.
+* Self-signed tokens are **not revocable** and must be cycled if exposed.
+* If the parent Subscribe token has specific streams in it, then the self-signed Subscribe token must match one of them.
+
+## Using the Token API[​](#using-the-token-api "Direct link to Using the Token API")
+
+Self-sign your Subscribe tokens!
+
+Using the Token API is great for producing a few tokens, but for true scalability and speed you should [self-sign your tokens](#self-signing-subscribe-tokens).
+
+This guide provides a high-level understanding of managing your tokens via the OptiView Real-time Streaming Dashboard. Whilst the dashboard is a great choice for managing publish and subscribe tokens, **all aspects of token creation and management can be programmatically controlled via the OptiView Real-time Streaming Token REST APIs**. By utilizing the Token APIs to automate workflows, you can create scalable streaming solutions for your application or platform.
+
+To learn more about using the REST APIs for token creation and management, check out:
+
+* [The Platform Guide for Token APIs](/documentation/pr-preview/pr-690/millicast/token-api.md)
+* [The REST API reference](/documentation/pr-preview/pr-690/millicast/api/subscribe-token-v-1-read-token.md)

@@ -1,0 +1,42 @@
+# Ingest protocols
+
+The Dolby OptiView Live platform supports low latency live streaming through two ingest protocols: **RTMP** and **SRT**.
+
+RTMP supports both **pull** and **push** mode out of the box. SRT works out of the box in **pull mode** only, where the platform connects to your encoder to pull the stream. If you need SRT push mode, contact your account representative to have it enabled.
+
+## RTMP — Real-Time Messaging Protocol[​](#rtmp--real-time-messaging-protocol "Direct link to RTMP — Real-Time Messaging Protocol")
+
+RTMP is a widely adopted protocol originally developed by Adobe for transmitting audio, video, and data over the internet. It remains one of the most commonly supported protocols across hardware and software encoders.
+
+* **Pros**
+
+  * **Broad encoder support** — Nearly all hardware and software encoders support RTMP out of the box.
+  * **Simple setup** — Requires minimal configuration, typically just a server URL and stream key.
+  * **Low latency** — Provides low latency contribution suitable for most live streaming use cases.
+
+* **Cons**
+
+  * **Container limitation** — RTMP uses the FLV container, which only supports H.264 video and AAC audio. Newer codecs such as H.265/HEVC are not supported.
+  * **Single audio track** — RTMP is limited to a single audio track per stream, making it unsuitable for multi-audio use cases.
+
+## SRT — Secure Reliable Transport[​](#srt--secure-reliable-transport "Direct link to SRT — Secure Reliable Transport")
+
+SRT is an open-source protocol designed for low latency, secure, and reliable video transport across unpredictable networks. It is increasingly adopted as a modern alternative to RTMP.
+
+* **Pros**
+
+  * **Resilient on unreliable networks** — SRT uses UDP with built-in error correction (ARQ), making it well suited for contribution over the public internet or unstable connections.
+  * **Multi-audio support** — SRT uses the MPEG-TS container, which supports multiple audio tracks within a single stream.
+  * **Closed captions and metadata** — The MPEG-TS container also supports embedded closed captions (CEA-608/708) and SEI metadata pass-through.
+  * **Codec flexibility** — MPEG-TS supports a broader range of codecs compared to FLV.
+
+* **Cons**
+
+  * **Less universal encoder support** — While adoption is growing, not all encoders support SRT, especially older hardware models.
+  * **More complex configuration** — SRT may require tuning parameters such as latency, overhead bandwidth, and encryption settings for optimal performance.
+
+### SRT passphrase[​](#srt-passphrase "Direct link to SRT passphrase")
+
+In **pull mode**, you can secure the connection by including the passphrase directly in the SRT URL that you configure on your channel (e.g. `srt://encoder-host:port?passphrase=my-secret`).
+
+In **push mode**, the Dolby team configures the passphrase for you and provides an SRT URL with the passphrase included.

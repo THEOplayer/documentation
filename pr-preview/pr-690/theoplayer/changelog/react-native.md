@@ -1,0 +1,1581 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## \[11.2.1] - 26-06-09[​](#1121---26-06-09 "Direct link to \[11.2.1] - 26-06-09")
+
+### Fixed[​](#fixed "Direct link to Fixed")
+
+* Fixed an issue on iOS where setting the targetVideoQuality uids was causing a crash due to an unsafe bounds-check.
+
+## \[11.2.0] - 26-06-04[​](#1120---26-06-04 "Direct link to \[11.2.0] - 26-06-04")
+
+### Added[​](#added "Direct link to Added")
+
+* Added support for `CustomAdIntegrationKind`, allowing custom ad integrations on top of the player API.
+* Added support for `breakManifestUrl` for OptiView Ads streams.
+
+## \[11.1.0] - 26-05-27[​](#1110---26-05-27 "Direct link to \[11.1.0] - 26-05-27")
+
+### Added[​](#added-1 "Direct link to Added")
+
+* Added `useSystemCaptionStyle` flag to `PlayerConfiguration` on Android. When set to `true`, the player will apply the caption styles as configured in the system settings.
+* Added support on iOS for controlling the targetQualities on THEOlive streams.
+
+### Fixed[​](#fixed-1 "Direct link to Fixed")
+
+* Fixed an issue where on iOS the contentProtection queryParameters were not converted to string values, resulting in missing parameters in the urls.
+
+## \[11.0.0] - 26-04-16[​](#1100---26-04-16 "Direct link to \[11.0.0] - 26-04-16")
+
+### Added[​](#added-2 "Direct link to Added")
+
+* Added support for player SDK v11. More info on the [migration documentation](/documentation/pr-preview/pr-690/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11.md) page.
+* Enabled core library desugaring for Android to support version 3.39.0 of the Google IMA SDK.
+* Added `TextTrack.captionChannel` to retrieve the CEA-608 channel and/or CEA-708 service numbers of closed caption text tracks.
+
+### Changed[​](#changed "Direct link to Changed")
+
+* Upgraded example app to React-Native v0.84.1.
+* Changed the minimum supported iOS/tvOS version to 15.0, dropping support for iOS/tvOS 13 and 14.
+
+### Fixed[​](#fixed-2 "Direct link to Fixed")
+
+* Fixed an issue on Web where Google IMA could fail to initialize when used with `react-reverse-portal` due to the player container not being attached to the document yet.
+
+### Removed[​](#removed "Direct link to Removed")
+
+* Removed deprecated `ResizeEvent` in favor of `DimensionChangeEvent`.
+* Removed deprecated `player.theolive` property in favor of `player.theoLive`.
+* Removed deprecated `source.integration` property in favor of `source.type`.
+
+## \[10.13.0] - 26-03-27[​](#10130---26-03-27 "Direct link to \[10.13.0] - 26-03-27")
+
+### Fixed[​](#fixed-3 "Direct link to Fixed")
+
+* Fixed an issue on Android where the Ads API would sometimes return an empty map instead of an array when querying the list of current ads or scheduled ad breaks.
+* Fixed an issue on iOS where the transition from PiP to fullscreen was not smooth.
+
+## \[10.12.1] - 26-03-19[​](#10121---26-03-19 "Direct link to \[10.12.1] - 26-03-19")
+
+### Fixed[​](#fixed-4 "Direct link to Fixed")
+
+* Fixed an issue on Android where play-out of a Google DAI stream would crash the app.
+
+## \[10.12.0] - 26-03-12[​](#10120---26-03-12 "Direct link to \[10.12.0] - 26-03-12")
+
+### Added[​](#added-3 "Direct link to Added")
+
+* Added `currentsourcechange` event to the player API, which is dispatched when the current source, chosen from the source description's sources, changes.
+* Added `debugLogsEnabled` flag to `PlayerConfiguration` to allow enabling all debug logs from the underlying Android SDK.
+* Added the `id` property to `AdBreak`, representing the identifier of the ad break.
+
+### Fixed[​](#fixed-5 "Direct link to Fixed")
+
+* Fixed an issue on Android where the build process would pick up version from the snapshot repository instead of the release repository, causing build failures.
+* Fixed an issue on iOS & Android where, when using `<StrictMode>`, the player's list of text tracks would be empty.
+
+## \[10.11.0] - 26-03-10[​](#10110---26-03-10 "Direct link to \[10.11.0] - 26-03-10")
+
+### Fixed[​](#fixed-6 "Direct link to Fixed")
+
+* Fixed an issue on Android where transitioning from picture-in-picture presentation mode would fail when using Expo Router.
+* Fixed an issue where the player would remove all listeners when using `<StrictMode>` on mobile platforms.
+
+### Changed[​](#changed-1 "Direct link to Changed")
+
+* Updated `NativeAdBreak` to prevent iOS build failure caused by changed `AdBreak` protocol.
+
+## \[10.10.0] - 26-02-17[​](#10100---26-02-17 "Direct link to \[10.10.0] - 26-02-17")
+
+### Fixed[​](#fixed-7 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the `onPlayerStateSync` callback was not called from the main thread.
+
+### Added[​](#added-4 "Direct link to Added")
+
+* Added the `DistributionLoaded` event for THEOlive.
+* Added contentProtection extraction for THEOlive endpoints on iOS.
+
+## \[10.9.0] - 26-01-29[​](#1090---26-01-29 "Direct link to \[10.9.0] - 26-01-29")
+
+### Fixed[​](#fixed-8 "Direct link to Fixed")
+
+* Fixed an issue on Android where the player could disrupt the layout by sending an unexpected dimension change event.
+* Fixed an issue on Android where the default properties of the player's `backgroundAudioConfiguration` would not be properly applied.
+
+### Added[​](#added-5 "Direct link to Added")
+
+* Added functionality to synchronize the player state from the native mobile players to React Native.
+* Added a bypass property on iOS to control the THEOplayerView's ability to detach from its superView.
+* Trigger an update for the iOS control centers (nowPlayingInfo and remoteCommands) to reflect a player state sync.
+
+### Changed[​](#changed-2 "Direct link to Changed")
+
+* Changed license to BSD 3-Cause Clear. See [LICENSE](https://github.com/THEOplayer/react-native-theoplayer/blob/-/LICENSE) file for more information.
+
+## \[10.8.0] - 26-01-22[​](#1080---26-01-22 "Direct link to \[10.8.0] - 26-01-22")
+
+### Added[​](#added-6 "Direct link to Added")
+
+* Added support on iOS to push the initial state of the player from the iOS bridge to the React native adapter.
+* Added RNRepo support for Android to the example app. More info on the official [documentation](https://rnrepo.org/) page.
+
+### Fixed[​](#fixed-9 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the integrationParameters from the contentProtection section of the source were not processed correctly, resulting in failures for DRM connectors that depend on them.
+* Fixed an issue on iOS where the player could crash when terminating the app while the player is backgrounded in fullscreen.
+* Fixed an issue on Android where `player.ads.currentAds` would not return an array of ads due to a native error.
+* Fixed an issue on Android where the player would sometimes have wrong dimensions after transitioning to fullscreen presentation mode.
+* Fixed an issue on Android where the `useEMSG` property was not included when setting a TheoAds source description.
+
+## \[10.7.1] - 26-01-06[​](#1071---26-01-06 "Direct link to \[10.7.1] - 26-01-06")
+
+### Added[​](#added-7 "Direct link to Added")
+
+* Added a `multiSession` property to `DRMConfiguration` to enable multi-key content on Android platforms.
+
+## \[10.7.0] - 25-12-19[​](#1070---25-12-19 "Direct link to \[10.7.0] - 25-12-19")
+
+### Added[​](#added-8 "Direct link to Added")
+
+* Added a webrtc configuration property `webrtc` in `TheoLiveSource`, to enable configuring the playout delay for Millicast streams consumed through OptiView Live.
+
+## \[10.6.1] - 25-12-18[​](#1061---25-12-18 "Direct link to \[10.6.1] - 25-12-18")
+
+### Fixed[​](#fixed-10 "Direct link to Fixed")
+
+* Fixed an issue on AndroidTV and FireTV devices, where pressing the center D-pad button during play-out of an ad configured with a click-through URL would cause the player to pause, without the ability to resume playback.
+
+### Added[​](#added-9 "Direct link to Added")
+
+* Added `useExperimentalPipeline` to `CastConfiguration` for iOS, that controls the usage of an experimental, alternative implementation of the chromecast pipeline with a different feature set.
+
+## \[10.6.0] - 25-12-02[​](#1060---25-12-02 "Direct link to \[10.6.0] - 25-12-02")
+
+### Added[​](#added-10 "Direct link to Added")
+
+* Added support for personalized discovery call responses by configuring the `profile` property on an OptiView Live source.
+
+## \[10.5.1] - 25-11-28[​](#1051---25-11-28 "Direct link to \[10.5.1] - 25-11-28")
+
+### Added[​](#added-11 "Direct link to Added")
+
+* Support for contentProtection query parameters on THEOlive sources.
+* Added `LatencyConfiguration` to `SourceDescription` for Android and Web.
+
+### Fixed[​](#fixed-11 "Direct link to Fixed")
+
+* Fixed an issue on tvOS where unsupported pip logic was used on older tvOS target versions (< 14.0).
+
+## \[10.5.0] - 25-11-24[​](#1050---25-11-24 "Direct link to \[10.5.0] - 25-11-24")
+
+### Fixed[​](#fixed-12 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the scrim of an IMA ad was in a wrong position due to incorrect `safeAreaInsets`.
+
+### Added[​](#added-12 "Direct link to Added")
+
+* Added `stopOnBackground` property to `BackgroundAudioConfiguration` to control whether playback should stop when the app goes to the background.
+* Added `millicastSrc` to `TheoLiveEndpoint` for Web and Android.
+* Added support for configuring query parameters that are common to multiple key system configurations. The parameters defined in `contentProtection.queryParameters` will be merged with any query parameters that are explicitly defined on a key system configuration, whereby the latter takes precedence.
+
+### Changed[​](#changed-3 "Direct link to Changed")
+
+* Updated the active quality info extraction on iOS to use the activeQualityChange event data instead of player API.
+* On iOS, we now also pass all available qualities and the current active quality when bridging video- and audio track data.
+
+## \[10.4.0] - 25-11-13[​](#1040---25-11-13 "Direct link to \[10.4.0] - 25-11-13")
+
+### Fixed[​](#fixed-13 "Direct link to Fixed")
+
+* Fixed an issue on Android, where the app could crash when a `THEOads` error event was dispatched.
+* Fixed an issue on Web, where the contents of the `reason` property of the THEOads `intenttofallback` event did not conform to its declared `PlayerError` type.
+
+### Added[​](#added-13 "Direct link to Added")
+
+* Pass `streamActivityMonitorId` property for `THEOAdDescription` on iOS and Android.
+* Added `allowLivePlayPause` and `seekToLiveOnResume` properties to `PlayerConfiguration.mediaControl` to control pausing and resuming behavior on live streams from the lockscreen controls.
+
+### Changed[​](#changed-4 "Direct link to Changed")
+
+* Upgraded example app to React-Native v0.82.
+
+## \[10.3.0] - 25-10-27[​](#1030---25-10-27 "Direct link to \[10.3.0] - 25-10-27")
+
+### Fixed[​](#fixed-14 "Direct link to Fixed")
+
+* Fixed an issue on Web, where adbreak related AdEvents did no longer contain the adBreak info.
+
+### Changed[​](#changed-5 "Direct link to Changed")
+
+* When the player's `currentTime` is set to `Infinity` on mobile platforms, the player will seek to the live edge rather than the end of the `seekable` range.
+* Added `useHttpEngine` to `PlayerConfiguration` to allow toggling the use of HttpEngine for network requests on Android.
+
+## \[10.2.2] - 25-10-23[​](#1022---25-10-23 "Direct link to \[10.2.2] - 25-10-23")
+
+### Fixed[​](#fixed-15 "Direct link to Fixed")
+
+* Fixed a build issue on iOS/tvOS due to a breaking change on the THEOplayerSDK.Ad protocol in iOS SDK 10.3.0 .
+
+## \[10.2.1] - 25-10-21[​](#1021---25-10-21 "Direct link to \[10.2.1] - 25-10-21")
+
+### Fixed[​](#fixed-16 "Direct link to Fixed")
+
+* Fixed an issue on web where the `<THEOplayerView>` would be re-rendered non-stop.
+
+## \[10.2.0] - 25-10-20[​](#1020---25-10-20 "Direct link to \[10.2.0] - 25-10-20")
+
+### Added[​](#added-14 "Direct link to Added")
+
+* React Native THEOplayer now supports [React Compiler](https://react.dev/learn/react-compiler).
+  <!-- -->
+  * For Expo users: refer to the [Expo docs](https://docs.expo.dev/guides/react-compiler/) to set up React Compiler in your app.
+
+### Fixed[​](#fixed-17 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the player crashed when it was destroyed while in fullscreen.
+* Fixed an issue on Android where creating a caching task with `MediaCache.createTask` would not return the created `task`.
+* Fixed an issue where setting `player.theoLive.authToken = undefined` would cause a crash on Android.
+
+### Changed[​](#changed-6 "Direct link to Changed")
+
+* Added `THEOplayer.theoLive` and deprecated `THEOplayer.theolive`, to be consistent with the THEOplayer SDKs for other platforms.
+* Moved the `hlsDateRange` property from `SourceConfiguration` to its correct location in `TypedSource`.
+
+## \[10.1.0] - 25-10-06[​](#1010---25-10-06 "Direct link to \[10.1.0] - 25-10-06")
+
+### Added[​](#added-15 "Direct link to Added")
+
+* Added an explicit clearing of the NowPlayingInfo on iOS, when the app receives a `willTerminateNotification`, to make sure all NowPlayingInfo is removed from the lock screen when an app is closed.
+* Added `videoWidth` and `videoHeight` properties to `THEOplayer` containing the active video's resolution in pixels.
+* Added `videoresize` player event enabling monitoring of video rendition resizes.
+* Added `dimensionchange` player event enabling monitoring of player resizes. This event is set to replace the now deprecated `resize` player event.
+* Added `fontPath` to `TextTrackStyle` to allow loading custom fonts from the Android assets folder.
+
+### Fixed[​](#fixed-18 "Direct link to Fixed")
+
+* Fixed an issue on Android where play-out of Millicast sources in the example app would fail. The Android NDK version needs to be at least v28.
+* Fixed an issue on Web where on older devices the `display: contents` style property is sometimes not supported.
+* Fixed an issue on Android where the `MediaPlaybackService` could be restarted after the app was closed, in some cases causing a `ForegroundServiceDidNotStartInTimeException`. A conditional receiver makes sure the service is never restarted.
+* Fixed an issue on iOS where a setup with multiple players could cause a view index NSInternalInconsistencyException after moving players in and out of fullscreen.
+* Fixed an issue on Android where some event listeners were not properly disposed of after destroying the player.
+* Fixed an issue on Web where the `width` and `height` properties on `THEOplayer` would show the active video rendition's resolution width and height instead of the width and height of the video element.
+
+## \[10.0.0] - 25-09-15[​](#1000---25-09-15 "Direct link to \[10.0.0] - 25-09-15")
+
+### Added[​](#added-16 "Direct link to Added")
+
+* Added support for player SDK v10. More info on the [migration documentation](/documentation/pr-preview/pr-690/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-10.md) page.
+* Added iOS and Android support for THEOads API and THEOads events.
+
+### Fixed[​](#fixed-19 "Direct link to Fixed")
+
+* Fixed an issue on Android where the app could still enter picture-in-picture presentation mode after closing the player.
+
+### Changed[​](#changed-7 "Direct link to Changed")
+
+* Upgraded the example app to React-Native v0.81.
+* All child views of `<THEOplayerView>` are being hidden when transitioning to picture-in-picture presentation mode on Android.
+
+## \[9.10.0] - 25-08-19[​](#9100---25-08-19 "Direct link to \[9.10.0] - 25-08-19")
+
+### Fixed[​](#fixed-20 "Direct link to Fixed")
+
+* Fixed an issue on Android where transitioning into picture-in-picture presentation mode with the `THEOplayer_reparent_on_PiP` flag enabled would sometimes break the lay-out.
+* Fixed an issue where the player's `currentTime` would not be immediately updated when dispatching `seeking` and `seeked` events.
+* Fixed an issue on iOS where a listener for `seeked` events was not properly created.
+
+## \[9.9.1] - 25-07-31[​](#991---25-07-31 "Direct link to \[9.9.1] - 25-07-31")
+
+### Fixed[​](#fixed-21 "Direct link to Fixed")
+
+* Fixed an issue on Web in case the `aspect-ratio` CSS property is not supported on older browsers.
+* Prevented passing infinite or NaN for intializationDelay in TheoAdDescription, on the Android bridge.
+* Fixed and issue on Android where transitioning automatically into PiP presentation mode would fail on Android 16+.
+* Fixed sources without an explicit `type` not being correctly recognized on Android when the URL contains query parameters.
+
+### Added[​](#added-17 "Direct link to Added")
+
+* Added support for Clearkey DRM on Android.
+* Added `endpoint` property to THEOlive `EndpointLoaded` event.
+* Added support for `ABRStrategyConfiguration` on iOS.
+
+## \[9.9.0] - 25-07-14[​](#990---25-07-14 "Direct link to \[9.9.0] - 25-07-14")
+
+### Added[​](#added-18 "Direct link to Added")
+
+* Added initializationDelay to TheoAdsDecription, to delay THEOads session creation for more optimal ads monetisation.
+
+### Fixed[​](#fixed-22 "Direct link to Fixed")
+
+* Fixed an issue on iOS where on iPads the fullscreen dimensions were not correctly updated after the first device orientation change.
+
+## \[9.8.0] - 25-07-08[​](#980---25-07-08 "Direct link to \[9.8.0] - 25-07-08")
+
+### Changed[​](#changed-8 "Direct link to Changed")
+
+* Deprecated the `BaseSource.integration` property in favor of `TypedSource.type`.
+
+### Added[​](#added-19 "Direct link to Added")
+
+* Added support for `THEOlive` events.
+
+### Fixed[​](#fixed-23 "Direct link to Fixed")
+
+* Fixed an issue on Android where, depending on the project structure, the Maven repository list would be incorrect.
+
+## \[9.7.1] - 25-07-03[​](#971---25-07-03 "Direct link to \[9.7.1] - 25-07-03")
+
+### Fixed[​](#fixed-24 "Direct link to Fixed")
+
+* Fixed a build issue on Android when using player SDK v9.7.0.
+
+## \[9.7.0] - 25-07-01[​](#970---25-07-01 "Direct link to \[9.7.0] - 25-07-01")
+
+### Added[​](#added-20 "Direct link to Added")
+
+* Added the theolive discoveryUrl to the PlayerConfiguration's theolive properties.
+* Added focusguides (@THEOplayer/react-native-ui feature) to the example app for tvOS.
+
+## \[9.6.0] - 25-06-27[​](#960---25-06-27 "Direct link to \[9.6.0] - 25-06-27")
+
+### Added[​](#added-21 "Direct link to Added")
+
+* Added, for HLS on iOS, the `unlocalizedLabel` to the text-, audio- and videoTracks API, which contains the unmodified label as extracted from the manifest.
+* Added a flag `focusSkipButtonWhenAvailable` to `GoogleImaConfiguration`.
+
+## \[9.5.0] - 25-06-20[​](#950---25-06-20 "Direct link to \[9.5.0] - 25-06-20")
+
+### Added[​](#added-22 "Direct link to Added")
+
+* Added Expo plugin support for iOS. More info on the [documentation](/documentation/pr-preview/pr-690/theoplayer/getting-started/frameworks/react-native/expo.md) page.
+* Added `currentProgramDateTime` to player API.
+
+### Fixed[​](#fixed-25 "Direct link to Fixed")
+
+* Fixed an issue where a delayed `PresentationModeChange` event on Android could cause lay-out issues when going in to fullscreen mode.
+
+## \[9.4.0] - 25-06-12[​](#940---25-06-12 "Direct link to \[9.4.0] - 25-06-12")
+
+### Fixed[​](#fixed-26 "Direct link to Fixed")
+
+* Fixed an issue with the Expo plugin where Android extensions would not be properly enabled.
+
+### Added[​](#added-23 "Direct link to Added")
+
+* Added `theoads` and `millicast` support for Android Expo plugin.
+* Added support for the new `TextTrackStyle.marginBottom` and `TextTrackStyle.marginRight` API's on THEOplayer Android SDK v9.5.0.
+
+## \[9.3.0] - 25-06-02[​](#930---25-06-02 "Direct link to \[9.3.0] - 25-06-02")
+
+### Fixed[​](#fixed-27 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the fullscreen dimensions could become wrong when the device is Flat Up or Flat Down on the table, or in an angle close to these.
+* Fixed an issue on Android where switching to the PiP window during an IMA ad caused a crash on Android 8-11.
+
+### Added[​](#added-24 "Direct link to Added")
+
+* Added `currentTime` property to `SeekingEvent` and `SeekedEvent`, indicating the player time to which is being seeked.
+
+## \[9.2.0] - 25-05-20[​](#920---25-05-20 "Direct link to \[9.2.0] - 25-05-20")
+
+### Added[​](#added-25 "Direct link to Added")
+
+* Added support for Millicast on iOS, Android and Web.
+* Added support for `TextTrackStyle.edgeColor` on Android.
+* Added support for THEOads on tvOS.
+
+### Fixed[​](#fixed-28 "Direct link to Fixed")
+
+* Fixed an issue where the last cue of a VTT was not parsed if there is no newline after it.
+* Fixed an issue on Android where a conversion build error would occur when targeting SDK version 9.4.
+
+### Changed[​](#changed-9 "Direct link to Changed")
+
+* Changed the fullscreen dimensions calculation on iOS to make use of the native screen width and height, while taking into account the device orientation.
+
+## \[9.1.2] - 25-05-14[​](#912---25-05-14 "Direct link to \[9.1.2] - 25-05-14")
+
+### Fixed[​](#fixed-29 "Direct link to Fixed")
+
+* Prevented a possible crash on iOS/tvOS by deallocating the player instance without calling an explicit 'destroy' that brings the native player API at risk. The erroneous destroy method will be deprecated on the native SDK.
+
+## \[9.1.1] - 25-04-24[​](#911---25-04-24 "Direct link to \[9.1.1] - 25-04-24")
+
+### Fixed[​](#fixed-30 "Direct link to Fixed")
+
+* Fixed an issue on Android where a muted player would still be paused by the `AudioFocusManager`.
+
+## \[9.1.0] - 25-04-23[​](#910---25-04-23 "Direct link to \[9.1.0] - 25-04-23")
+
+### Added[​](#added-26 "Direct link to Added")
+
+* Added iOS support for `sseEndpoint` property to `TheoAdDescription`.
+* Added iOS support for side-loaded chapter TextTracks.
+
+### Changed[​](#changed-10 "Direct link to Changed")
+
+* Changed the `playbackPipeline` parameter in `SourceConfiguration` to be an optional parameter.
+
+## \[9.0.1] - 25-04-08[​](#901---25-04-08 "Direct link to \[9.0.1] - 25-04-08")
+
+### Fixed[​](#fixed-31 "Direct link to Fixed")
+
+* Fixed an issue on Android where an app would sometimes crash while receiving the license response when using a custom DRM integration.
+
+### Added[​](#added-27 "Direct link to Added")
+
+* Added supported for multimedia tunneling on Android using the Media3 playback pipeline. More info on the [documentation](/documentation/pr-preview/pr-690/theoplayer/getting-started/frameworks/react-native/media3.md#multimedia-tunneling) page.
+
+## \[9.0.0] - 25-04-04[​](#900---25-04-04 "Direct link to \[9.0.0] - 25-04-04")
+
+### Removed[​](#removed-1 "Direct link to Removed")
+
+* Removed `chromeless` property from `PlayerConfiguration`. Only React Native based UIs are supported.
+* Removed ad integration kind `theo`.
+* Removed `enableTHEOlive` property from `PlayerConfiguration` as THEOlive is always enabled.
+
+### Added[​](#added-28 "Direct link to Added")
+
+* Added `liveOffset` property to `SourceDescription` for Web and Android platforms.
+* Added `description` property for Google IMA ads on Web and Android platforms.
+* Added `networkCode` property for Google DAI configuration on Web platforms.
+* Added `segmentRelativeVttTiming` property on `DashPlaybackConfiguration` for Web to indicate whether segmented WebVTT files' timestamps should be considered relative to the segment start time.
+* Added `storageType` to `CachingTaskParameters` to allow writing to either the legacy cache or Media3 cache on Android.
+
+### Changed[​](#changed-11 "Direct link to Changed")
+
+* Reverted DataRangeCue timings calculation on iOS (based on programDateTime offset). Correct values are provided by the native SDK.
+
+## \[8.18.0] - 25-04-02[​](#8180---25-04-02 "Direct link to \[8.18.0] - 25-04-02")
+
+### Changed[​](#changed-12 "Direct link to Changed")
+
+* No longer showing poster after setting the source when the player has been configured to use autoplay. With autoplay enabled, displaying the poster will only result in a brief flash of the image.
+* Changed the fullscreen screen dimension calculation on Android, taking into account edgeToEdge layouts.
+
+### Added[​](#added-29 "Direct link to Added")
+
+* Exposed THEOads API through the Player API.
+* Added support for Common Media Client Data (CMCD) on all platforms. More info on the [documentation](/documentation/pr-preview/pr-690/theoplayer/getting-started/frameworks/react-native/cmcd.md) page.
+
+### Fixed[​](#fixed-32 "Direct link to Fixed")
+
+* Fixed an issue on Android where the transition to a PiP window would not focus on the player window.
+
+## \[8.17.0] - 25-03-20[​](#8170---25-03-20 "Direct link to \[8.17.0] - 25-03-20")
+
+### Fixed[​](#fixed-33 "Direct link to Fixed")
+
+* Fixed an issue on Web where the metadata on the lockscreen was not showing correctly or missing occasionally.
+* Fixed a crash on Android when setting a source with THEOads without the Media3 extension being enabled.
+* Fixed an issue on iOS where the AdTapped and AdClicked events were not correctly cleaned up.
+* Fixed an issue on Android where the player would sometimes crash when passing a DRM protected source without an `integration` property.
+
+### Added[​](#added-30 "Direct link to Added")
+
+* Added SeekTo functionality to the web lockscreen controls, allowing to drag the lockscreen slider and seek to a specific time value.
+* Added the IMA DAI `streamActivityMonitorId` property as a configuration on the SGAI `TheoAdDescription` for web.
+* Added the THEOads API for Web.
+* Added `retrievePodIdURI` property to `TheoAdsDescription` for Android and iOS.
+
+## \[8.16.0] - 25-02-28[​](#8160---25-02-28 "Direct link to \[8.16.0] - 25-02-28")
+
+### Changed[​](#changed-13 "Direct link to Changed")
+
+* Delegating the autoplay functionality to the underlying native Android and iOS SDKs, making that logic independent from player events.
+* On Android, sources with THEOads will always use the media3 player pipeline.
+
+### Fixed[​](#fixed-34 "Direct link to Fixed")
+
+* Fixed an issue on iOS where `hlsDateRange` was not passed from RN towards iOS native
+* Fixed an issue on Android, where the player would sometimes not initialise correctly in case New Architecture was not being used, resulting in a black screen.
+* Fixed an issue on iOS Safari browsers, where the `presentationmodechange` event would not be dispatched when entering or exiting fullscreen.
+
+## \[8.15.0] - 25-02-12[​](#8150---25-02-12 "Direct link to \[8.15.0] - 25-02-12")
+
+### Changed[​](#changed-14 "Direct link to Changed")
+
+* Transitioning to `fullscreen` presentation mode on Web platforms now puts only the `THEOplayerView` element and its child elements, such as the UI, in fullscreen. Previously, the whole page would transition to fullscreen.
+* Changed `presentationmodechange` event dispatching on iOS to take into account if the change actually happened on the native player.
+
+### Fixed[​](#fixed-35 "Direct link to Fixed")
+
+* Fixed an issue on iOS Safari where transitioning to `fullscreen` presentation mode would not work.
+* Fixed an issue on Web where `presentationmodechange` events would sometimes be dispatched more than once.
+* Fixed an issue on iOS where the view origin in fullscreen presentationMode was wrong when running under the RN new architecture / interop layer
+
+## \[8.14.0] - 25-02-10[​](#8140---25-02-10 "Direct link to \[8.14.0] - 25-02-10")
+
+### Added[​](#added-31 "Direct link to Added")
+
+* Added a `theoLive` property to `PlayerConfiguration` to enable THEOlive configuration.
+
+### Fixed[​](#fixed-36 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the `currentTime` on `NowPlayingInfoCenter` would go out of sync or reset when changing playback rate.
+* Fixed an issue on Android where the player would crash in case resolving the `THEOplayerView` instance fails.
+
+## \[8.13.1] - 25-01-27[​](#8131---25-01-27 "Direct link to \[8.13.1] - 25-01-27")
+
+### Fixed[​](#fixed-37 "Direct link to Fixed")
+
+* Fixed an issue on iOS where fullscreen-inline transitions would cause a UIViewControllerHierarchyInconsistency when the current view's viewcController has sibling viewControllers that manage views that don't descend of the moving view.
+
+## \[8.13.0] - 25-01-15[​](#8130---25-01-15 "Direct link to \[8.13.0] - 25-01-15")
+
+### Added[​](#added-32 "Direct link to Added")
+
+* Added support for New Architecture's through the Interop Layer. More info on the [React Native developer pages](https://reactnative.dev/architecture/landing-page).
+
+### Fixed[​](#fixed-38 "Direct link to Fixed")
+
+* Fixed an issue on Web where picture-in-picture presentation mode would sometimes fail.
+
+### Changed[​](#changed-15 "Direct link to Changed")
+
+* Upgraded the example app to use react-native-tvos\@0.76.5-0.
+
+## \[8.12.0] - 25-01-09[​](#8120---25-01-09 "Direct link to \[8.12.0] - 25-01-09")
+
+### Fixed[​](#fixed-39 "Direct link to Fixed")
+
+* Fixed a memory leak on iOS, where the presentationModeManager was holding a strong reference to the fullscreen's target and return views
+* Fixed an issue on iOS where the destruction of the THEOplayerView was not always propagated correctly over the iOS Bridge, resulting in an occasional memory leak.
+* Fixed an issue where, when requesting a text track's cues, the time properties would sometimes be in seconds instead of milliseconds.
+* Fixed a rare crash on Android due to a `java.lang.NullPointerException` when creating the THEOplayerView.
+* Fixed an issue on Android where R8 minification would obfuscate some API class names, which could lead to a crash.
+
+### Added[​](#added-33 "Direct link to Added")
+
+* Added a `adLoadTimeout` property to `GoogleImaConfiguration` to control the amount of time that the SDK will wait before moving onto the next ad or main content.
+
+## \[8.11.1] - 24-12-18[​](#8111---24-12-18 "Direct link to \[8.11.1] - 24-12-18")
+
+### Fixed[​](#fixed-40 "Direct link to Fixed")
+
+* Fixed the picture-in-picture presentationMode for THEOlive sources on Web.
+
+### Changed[​](#changed-16 "Direct link to Changed")
+
+* Deprecated the use of the `enableTHEOlive` flag in `PlayerConfiguration` as THEOlive support is always enabled.
+
+## \[8.11.0] - 24-12-13[​](#8110---24-12-13 "Direct link to \[8.11.0] - 24-12-13")
+
+### Added[​](#added-34 "Direct link to Added")
+
+* Added support for THEOlive on tvOS.
+
+## \[8.10.0] - 24-12-06[​](#8100---24-12-06 "Direct link to \[8.10.0] - 24-12-06")
+
+### Added[​](#added-35 "Direct link to Added")
+
+* Added support for THEOlive on iOS.
+
+## \[8.9.1] - 24-12-04[​](#891---24-12-04 "Direct link to \[8.9.1] - 24-12-04")
+
+### Added[​](#added-36 "Direct link to Added")
+
+* Added a `enableTHEOlive` flag to `PlayerConfiguration` to enable play-out of THEOlive sources.
+
+## \[8.9.0] - 24-11-29[​](#890---24-11-29 "Direct link to \[8.9.0] - 24-11-29")
+
+### Added[​](#added-37 "Direct link to Added")
+
+* Added support for the `SURFACE_CONTROL` rendering target on Android, which improves switching from/to fullscreen presentation mode. Rendering target `SURFACE_CONTROL` will be selected instead of `SURFACE_VIEW` on API level 29+.
+
+### Fixed[​](#fixed-41 "Direct link to Fixed")
+
+* Fixed a memory leak on iOS, caused by the wrapping ViewController that was keeping a strong reference to the THEOplayerRCTView.
+
+### Added[​](#added-38 "Direct link to Added")
+
+* Added support for the experimental media3 player pipeline on Android.
+
+### Changed[​](#changed-17 "Direct link to Changed")
+
+* **BREAKING**: Changed the `view` parameter in the `Omid` API from a ref container to a native node handle when registering "friendly" obstructions.
+
+## \[8.8.1] - 24-11-20[​](#881---24-11-20 "Direct link to \[8.8.1] - 24-11-20")
+
+### Fixed[​](#fixed-42 "Direct link to Fixed")
+
+* Fixed build issue on tvOS caused by HomeIndicatorViewController
+
+## \[8.8.0] - 24-11-19[​](#880---24-11-19 "Direct link to \[8.8.0] - 24-11-19")
+
+### Added[​](#added-39 "Direct link to Added")
+
+* Added `HomeIndicatorViewController` to iOS, which can be used as an alternative `rootViewController` for the native App. It will automatically show/hide the home indicator when transitioning from/to fullscreen presentationMode.
+
+### Changed[​](#changed-18 "Direct link to Changed")
+
+* Simplified the `viewController` reparenting mechanism on iOS that is applied when changing the presentationMode to/from fullscreen.
+* The `MediaPlaybackService` on Android is never restarted if a MediaButton event is received after the app was closed.
+* Added a consumer R8 config file on Android, telling R8 not to throw errors or warnings because of classes that are expected to be missing.
+
+## \[8.7.0] - 24-11-05[​](#870---24-11-05 "Direct link to \[8.7.0] - 24-11-05")
+
+### Fixed[​](#fixed-43 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the dynamic island (iphone 14 plus and higher) briefly disappeared when updating the nowPlayingInfo on for example backgrounding the app.
+* Fixed an issue on Android when using Expo, where the Expo plugin would not add THEOplayer's Maven repo to the project's repositories list.
+
+### Added[​](#added-40 "Direct link to Added")
+
+* Added the `Omid` API for ads, which can be used to manage friendly video controls overlay obstructions.
+
+## \[8.6.0] - 24-10-25[​](#860---24-10-25 "Direct link to \[8.6.0] - 24-10-25")
+
+### Added[​](#added-41 "Direct link to Added")
+
+* Added `AdEvent.AD_CLICKED` and `AdEvent.AD_TAPPED` ad events for iOS and Android. The events are dispatched when a user taps or clicks on an ad that has a `clickThrough` link.
+
+### Changed[​](#changed-19 "Direct link to Changed")
+
+* Upgrade example app to support React Native v0.75.
+
+## \[8.5.0] - 24-10-21[​](#850---24-10-21 "Direct link to \[8.5.0] - 24-10-21")
+
+### Added[​](#added-42 "Direct link to Added")
+
+* Added `SdkVersion` interface to be used by the sdk and its connectors to report version info.
+* Added the `THEOads` SGAI ad integration for Android. See [THEOads](https://www.theoplayer.com/product/theoads) for more details.
+
+### Fixed[​](#fixed-44 "Direct link to Fixed")
+
+* Fixed an issue on Web where all text tracks other than the selected would be set to `disabled` when enabling a text track.
+* Fixed an issue on iOS where the player would crash when changing the presentationMode from fullscreen to picture-in-picture during ad playout.
+
+### Changed[​](#changed-20 "Direct link to Changed")
+
+* On iOS, after closing picture-in-picture the player returns back to the previous presentationMode instead of always returning to inline.
+
+## \[8.4.0] - 24-10-10[​](#840---24-10-10 "Direct link to \[8.4.0] - 24-10-10")
+
+### Added[​](#added-43 "Direct link to Added")
+
+* Added a `posterStyle` property on `THEOplayerView` to allow overriding the default 16:9 poster style.
+* Added a `theoads` property on `PlayerConfiguration.ads` to allow play-out of THEOads sources on Web platforms.
+* Added a `hlsDateRange` property on `SourceDescription` to enable parsing and exposing date ranges from HLS playlists. This flag was already available on `PlayerConfiguration`, which applies for all HLS sources.
+
+### Fixed[​](#fixed-45 "Direct link to Fixed")
+
+* Added support for a breaking change to `ContentProtectionIntegrationFactory`'s signature in THEOplayer Android 8.2.0.
+
+## \[8.3.1] - 24-10-07[​](#831---24-10-07 "Direct link to \[8.3.1] - 24-10-07")
+
+### Fixed[​](#fixed-46 "Direct link to Fixed")
+
+* Fixed an issue on Android where on some Android SDK versions controlling playback with the notification buttons would not work.
+* Fixed an issue on Web and Android where a text track with attribute `DEFAULT` was not set as the player's `selectedTextTrack` property.
+
+### Added[​](#added-44 "Direct link to Added")
+
+* Added `sdkVersions` to react-native-theoplayer, which contains the current RN SDK version and the version of the underlying native THEOplayer SDK.
+
+## \[8.3.0] - 24-09-30[​](#830---24-09-30 "Direct link to \[8.3.0] - 24-09-30")
+
+### Added[​](#added-45 "Direct link to Added")
+
+* Added the option to specify the AVAudioSession mode for iOS (moviePlayback versus spokenAudio).
+
+## \[8.2.2] - 24-09-28[​](#822---24-09-28 "Direct link to \[8.2.2] - 24-09-28")
+
+* Fixed a build issue on iOS for applications that run without the GOOGLE\_IMA feature flag
+
+## \[8.2.1] - 24-09-27[​](#821---24-09-27 "Direct link to \[8.2.1] - 24-09-27")
+
+### Fixed[​](#fixed-47 "Direct link to Fixed")
+
+* Fixed a build issue on Android when pinning a specific Android player SDK version, while also disabling the Google IMA extension.
+
+## \[8.2.0] - 24-09-26[​](#820---24-09-26 "Direct link to \[8.2.0] - 24-09-26")
+
+### Added[​](#added-46 "Direct link to Added")
+
+* Added the `PlaybackSettings` API for Android, allowing control of playback behaviour across all THEOplayer instances.
+
+## \[8.1.0] - 24-09-23[​](#810---24-09-23 "Direct link to \[8.1.0] - 24-09-23")
+
+### Added[​](#added-47 "Direct link to Added")
+
+* Added support for `bitrate` config on the GoogleIMAConfiguration, to be passed to the IMA SDK rendering settings.
+* Added support on iOS and Android for `allowedMimeTypes` config on the AdsConfiguration, to be passed to the IMA SDK rendering settings.
+
+### Fixed[​](#fixed-48 "Direct link to Fixed")
+
+* Fixed an issue where cast events were not forwarded from the native Android SDK.
+* Fixed an issue where presentationMode changes on iOS would cause a UIViewControllerHierarchyInconsistency when an ad is playing.
+* Fixed an issue where some ad event types could not be resolved at runtime when excluding the IMA integration on Android.
+
+## \[8.0.3] - 24-09-14[​](#803---24-09-14 "Direct link to \[8.0.3] - 24-09-14")
+
+### Fixed[​](#fixed-49 "Direct link to Fixed")
+
+* Fixed an issue on Android where the THEO Maven repository would not be picked up by all dependencies.
+
+## \[8.0.2] - 24-09-14[​](#802---24-09-14 "Direct link to \[8.0.2] - 24-09-14")
+
+### Fixed[​](#fixed-50 "Direct link to Fixed")
+
+* Fixed an issue on Android where not all dependencies would be correctly resolved.
+
+## \[8.0.1] - 24-09-11[​](#801---24-09-11 "Direct link to \[8.0.1] - 24-09-11")
+
+### Fixed[​](#fixed-51 "Direct link to Fixed")
+
+* Fixed an issue on Android where registering a content protection integration would fail.
+
+## \[8.0.0] - 24-09-11[​](#800---24-09-11 "Direct link to \[8.0.0] - 24-09-11")
+
+### Added[​](#added-48 "Direct link to Added")
+
+* Added support for THEOplayer 8.0.
+
+### Changed[​](#changed-21 "Direct link to Changed")
+
+* Deprecated Jitpack.io in favor of the THEOplayer Maven repository on Android.
+
+### Fixed[​](#fixed-52 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the initial `duration` property of the player would be `0` instead of `NaN`.
+
+## \[7.9.0] - 24-09-06[​](#790---24-09-06 "Direct link to \[7.9.0] - 24-09-06")
+
+### Added[​](#added-49 "Direct link to Added")
+
+* Added THEOlive source integration type to `SourceDescription`.
+* Added THEOads as `AdIntegrationKind`.
+* Added a `headers` property to `TypedSource`. The player will add the headers to the HTTP requests for the given resource.
+
+## \[7.8.2] - 24-08-21[​](#782---24-08-21 "Direct link to \[7.8.2] - 24-08-21")
+
+### Changed[​](#changed-22 "Direct link to Changed")
+
+* Modified the poster behavior on iOS and Android to remain visible until the first frame is displayed.
+
+## \[7.8.1] - 24-08-14[​](#781---24-08-14 "Direct link to \[7.8.1] - 24-08-14")
+
+### Fixed[​](#fixed-53 "Direct link to Fixed")
+
+* Fixed an issue on Android where the notification background would be displayed in low resolution on recent Android versions.
+
+### Added[​](#added-50 "Direct link to Added")
+
+* Added support on iOS for 'album' and 'artist' in the nowPlayingInfo.
+
+## \[7.8.0] - 24-08-09[​](#780---24-08-09 "Direct link to \[7.8.0] - 24-08-09")
+
+### Added[​](#added-51 "Direct link to Added")
+
+* Added shouldResumeAfterInterruptions to the BackgroundAudioConfiguration which toggles playback resume after an interruption (e.g. phone call) on the lockscreen.
+* Added the option to set a nil source on the iOS Bridge, to 'unset' the previous source.
+* Added the fast-forward & rewind buttons for the Android notification when `mediaControl.mediaSessionEnabled` is set to `true`.
+* Added a `mediaControl.convertSkipToSeek` player config property to allow seeking with the `NEXT` and `PREVIOUS` media buttons. Its default value is `false`.
+
+### Fixed[​](#fixed-54 "Direct link to Fixed")
+
+* Fixed an issue where the Lockscreen showed enabled controls when the player has no valid source.
+* Fixed an issue on Android where the notification would not disappear when setting an undefined source.
+
+### Changed[​](#changed-23 "Direct link to Changed")
+
+* Replaced the `MediaBrowserService` with a regular `Service` to facilitate background playback on Android.
+
+## \[7.7.1] - 24-07-29[​](#771---24-07-29 "Direct link to \[7.7.1] - 24-07-29")
+
+### Fixed[​](#fixed-55 "Direct link to Fixed")
+
+* Fixed an issue on tvOS where native cache functionality was not excluded correctly resulting in build errors.
+
+## \[7.7.0] - 24-07-25[​](#770---24-07-25 "Direct link to \[7.7.0] - 24-07-25")
+
+### Added[​](#added-52 "Direct link to Added")
+
+* Added ActiveQualityChanged event support for iOS.
+
+### Fixed[​](#fixed-56 "Direct link to Fixed")
+
+* Fixed an issue where on iOS a cached asset would not play when setting the tasks's source on the player.
+* Fixed an issue where on iOS the createTask method (CacheAPI) was not returning the created task.
+* Fixed an issue where on iOS the Ad and AdBreak protocols where extended in the underlying native SDK and required some modifications.
+* Fixed an issue where on Android the native module preparation would fail due to a change in the Android SDK 7.8.0 on eventDispatching.
+
+## \[7.6.0] - 24-07-01[​](#760---24-07-01 "Direct link to \[7.6.0] - 24-07-01")
+
+### Added[​](#added-53 "Direct link to Added")
+
+* Added `'root'` as an alternative id for the root div element in Web applications, supporting fullscreen presentation mode in Expo-based apps.
+* Added `renderingTarget` property to `THEOplayer` API for Android, enabling the option to choose between either rendering to a `SurfaceView` (default) or `TextureView`.
+
+### Changed[​](#changed-24 "Direct link to Changed")
+
+* Lowered the required node version to v16+.
+
+## \[7.5.1] - 24-06-20[​](#751---24-06-20 "Direct link to \[7.5.1] - 24-06-20")
+
+### Added[​](#added-54 "Direct link to Added")
+
+* Added ad event support for custom SSAI integrations.
+
+## \[7.5.0] - 24-06-18[​](#750---24-06-18 "Direct link to \[7.5.0] - 24-06-18")
+
+### Fixed[​](#fixed-57 "Direct link to Fixed")
+
+* Fixed an issue where the Cast API wouldn't be initialized yet when in the `onPlayerReady` callback.
+* Added support for THEOplayer Android v7.6.0.
+
+## \[7.4.0] - 24-06-11[​](#740---24-06-11 "Direct link to \[7.4.0] - 24-06-11")
+
+### Added[​](#added-55 "Direct link to Added")
+
+* Added support for `SourceDescription.poster` for Android & iOS.
+* Made the intervals for the forward and backward skip buttons on the iOS lockScreen configurable.
+* Added preferredPeakBitRate and preferredMaximumResolution to ABRConfiguration for iOS
+
+## \[7.3.0] - 24-06-03[​](#730---24-06-03 "Direct link to \[7.3.0] - 24-06-03")
+
+### Changed[​](#changed-25 "Direct link to Changed")
+
+* Disabled skip forward/backward remote control buttons by default for Live content on Android TV platforms.
+
+### Added[​](#added-56 "Direct link to Added")
+
+* Added support for React Native 0.74 and upgraded the example application to depend on `react-native-tvos` 0.74.1.
+
+### Fixed[​](#fixed-58 "Direct link to Fixed")
+
+* Fixed an issue where on the iOS bridge the wrong value was extracted from the CachingParameters to configure the bandwidth setting on the MediaCache.
+
+## \[7.2.0] - 24-05-12[​](#720---24-05-12 "Direct link to \[7.2.0] - 24-05-12")
+
+### Added[​](#added-57 "Direct link to Added")
+
+* Added `resize` player event enabling monitoring of player resizes.
+* Added `width` and `height` properties to `THEOplayer` containing the player's current dimensions in pixels.
+* Added the possibility to set the player volume on iOS programmatically via the player API.
+* Added `AD_CLICKED`, `AD_TAPPED`, `AD_ICON_TAPPED` and `AD_ICON_FALLBACK_IMAGE_CLOSED` ad events for Android platforms.
+
+### Fixed[​](#fixed-59 "Direct link to Fixed")
+
+* Fixed an issue on Android where the `scheduledAdBreaks` list did not include the pre-roll ad on play-out of a Google DAI stream.
+
+## \[7.1.1] - 24-04-26[​](#711---24-04-26 "Direct link to \[7.1.1] - 24-04-26")
+
+### Fixed[​](#fixed-60 "Direct link to Fixed")
+
+* Fixed an issue where the selectedAudioTrack and selectedVideoTrack were not in sync with the actual selected mediatracks on the native player.
+
+## \[7.1.0] - 24-04-23[​](#710---24-04-23 "Direct link to \[7.1.0] - 24-04-23")
+
+### Fixed[​](#fixed-61 "Direct link to Fixed")
+
+* Fixed a build issue on tvOS example app due to the deprecated `prepare` method.
+
+### Added[​](#added-58 "Direct link to Added")
+
+* Added multiple configuration options to `GoogleImaConfiguration` for both iOS and Android. These map to the corresponding IMASettings from the underlying native Google IMA SDKs.
+* Added `skipForwardInterval` and `skipBackwardInterval` properties to `MediaControlConfiguration` for Android and Web, enabling configurable skip intervals for media sessions.
+* Added ios bridging code to make 'forced' property available from native iOS TextTrack API.
+
+### Removed[​](#removed-2 "Direct link to Removed")
+
+* Removed support for the web-based native iOS SDK on the RN iOS Bridge.
+
+## \[7.0.0] - 24-04-10[​](#700---24-04-10 "Direct link to \[7.0.0] - 24-04-10")
+
+### Fixed[​](#fixed-62 "Direct link to Fixed")
+
+* Fixed an issue where the player had the wrong layout in fullscreen presentationMode, after changing the source.
+* Fixed an issue where not enabling autoplay would explicitly pause the stream, reverting a possible play() request right after setting up the source.
+
+### Added[​](#added-59 "Direct link to Added")
+
+* Added support for THEOplayer native SDK 7.0.
+* Aligned SDK major version with native player SDKs.
+
+### Changed[​](#changed-26 "Direct link to Changed")
+
+* Raise minimal ios deployment target to 13.4, to match react native 0.73's minimal deployment target
+
+## \[3.10.3] - 24-03-22[​](#3103---24-03-22 "Direct link to \[3.10.3] - 24-03-22")
+
+### Fixed[​](#fixed-63 "Direct link to Fixed")
+
+* Fixed a crash on iOS when playing an IMA Ad after reparenting the THEOplayerView to a different native Viewcontroller.
+
+## \[3.10.2] - 24-03-22[​](#3102---24-03-22 "Direct link to \[3.10.2] - 24-03-22")
+
+### Changed[​](#changed-27 "Direct link to Changed")
+
+* Downgraded default `androidx.core:core-ktx` dependency version to support Android target sdk 33.
+
+## \[3.10.1] - 24-03-19[​](#3101---24-03-19 "Direct link to \[3.10.1] - 24-03-19")
+
+### Changed[​](#changed-28 "Direct link to Changed")
+
+* Updated ios sdk version to 6.12.1
+
+## \[3.10.0] - 24-03-15[​](#3100---24-03-15 "Direct link to \[3.10.0] - 24-03-15")
+
+### Changed[​](#changed-29 "Direct link to Changed")
+
+* Updated dependencies and example app to support ReactNative v0.73.
+* Updated ios sdk version to 6.11
+
+### Fixed[​](#fixed-64 "Direct link to Fixed")
+
+* Improved NowPlayingInfo updates for iOS by setting playbackRate on pause/playing events and processing the final info on player desctruction.
+* Fixed an issue with misinterpretation of `targetVideoQuality = 0` (use video track with `uid == 0`) as `targetVideoQuality = undefined` (use ABR across all video qualities).
+* Fixed an issue where the `srclang` property of a `textTrack` passed to a `SourceDescription` would not be parsed on Android.
+
+### Added[​](#added-60 "Direct link to Added")
+
+* Added an optional `THEOplayer_reparent_on_fullscreen` build property on Android to disable `THEOplayerView` reparenting when transitioning to fullscreen presentation mode.
+
+## \[3.9.2] - 24-03-06[​](#392---24-03-06 "Direct link to \[3.9.2] - 24-03-06")
+
+### Changed[​](#changed-30 "Direct link to Changed")
+
+* Never pause play-out when losing audio focus while playing an advertisement.
+
+## \[3.9.1] - 24-03-05[​](#391---24-03-05 "Direct link to \[3.9.1] - 24-03-05")
+
+### Changed[​](#changed-31 "Direct link to Changed")
+
+* Bumped google-cast-sdk dependency to v4.8.0 for iOS.
+
+## \[3.9.0] - 24-03-04[​](#390---24-03-04 "Direct link to \[3.9.0] - 24-03-04")
+
+### Changed[​](#changed-32 "Direct link to Changed")
+
+* Reduce audio volume (duck) on Android when another app gains transient audio focus and ducking is allowed. In other cases the player will pause, and optionally resume if the audio focus loss was transient.
+
+### Fixed[​](#fixed-65 "Direct link to Fixed")
+
+* Fixed an issue on iOS where the lockscreen controls and displayed asset metadata would remain visible after the player has been destroyed.
+* Fixed an issue on iOS where the castState was not initialized correctly.
+
+## \[3.8.0] - 24-02-23[​](#380---24-02-23 "Direct link to \[3.8.0] - 24-02-23")
+
+### Changed[​](#changed-33 "Direct link to Changed")
+
+* Renamed native modules to avoid name collisions with external packages.
+
+### Added[​](#added-61 "Direct link to Added")
+
+* Added `adbreakbegin` and `adbreakend` events for Google IMA on Android.
+* Added `liveOffset` property to `PlayerConfiguration`, allowing to set a custom offset from the live point.
+* Added a second, alternative config filename to the iOS podspec setup to prevent a react-native-theoplayer module resolving clash.
+
+## \[3.7.1] - 24-02-09[​](#371---24-02-09 "Direct link to \[3.7.1] - 24-02-09")
+
+### Fixed[​](#fixed-66 "Direct link to Fixed")
+
+* Fixed a dependency issue on iOS when using chromecast or Google IMA features.
+
+## \[3.7.0] - 24-02-09[​](#370---24-02-09 "Direct link to \[3.7.0] - 24-02-09")
+
+### Added[​](#added-62 "Direct link to Added")
+
+* Added fullscreen presentation mode support for iOS and Android. More info on the [documentation](/documentation/pr-preview/pr-690/theoplayer/getting-started/frameworks/react-native/fullscreen.md) page.
+
+## \[3.6.0] - 24-02-02[​](#360---24-02-02 "Direct link to \[3.6.0] - 24-02-02")
+
+### Fixed[​](#fixed-67 "Direct link to Fixed")
+
+* Fixed a build issue on the iOS bridge caused by the deprecated DispatchDispatch protocol.
+* Fixed an issue on Android where the `MediaPlaybackService` would sometimes crash with a `ForegroundServiceDidNotStartInTimeException` exception.
+
+### Added[​](#added-63 "Direct link to Added")
+
+* Added the ability to override both small and large notification icons in Android with `ic_notification_small` and `ic_notification_large` resources respectively.
+
+## \[3.5.0] - 24-01-30[​](#350---24-01-30 "Direct link to \[3.5.0] - 24-01-30")
+
+### Added[​](#added-64 "Direct link to Added")
+
+* Added the ability to toggle `keepScreenOn` on Android. By default, screen timeout is disabled while the player is visible.
+
+## \[3.4.2] - 23-12-22[​](#342---23-12-22 "Direct link to \[3.4.2] - 23-12-22")
+
+### Fixed[​](#fixed-68 "Direct link to Fixed")
+
+* Fixed an issue in the Expo plugin for Android where it would fail to execute when no properties are passed.
+
+## \[3.4.1] - 23-12-21[​](#341---23-12-21 "Direct link to \[3.4.1] - 23-12-21")
+
+### Changed[​](#changed-34 "Direct link to Changed")
+
+* Take the Kotlin Gradle plugin version from the root project, if specified.
+
+## \[3.4.0] - 23-12-21[​](#340---23-12-21 "Direct link to \[3.4.0] - 23-12-21")
+
+### Added[​](#added-65 "Direct link to Added")
+
+* Added `ui` configuration object to `PlayerConfiguration` to configure the ads UI language.
+* Added support for Android 14.
+* Added Expo plugin to support Android dependency configuration.
+
+### Changed[​](#changed-35 "Direct link to Changed")
+
+* Changed the Android notification channel name to `Notification channel`. It can be renamed by defining the `notification_channel_name` resource string.
+
+## \[3.3.2] - 23-12-12[​](#332---23-12-12 "Direct link to \[3.3.2] - 23-12-12")
+
+### Fixed[​](#fixed-69 "Direct link to Fixed")
+
+* Fixed an issue on iOS & Android where timestamps in ad events were not consistently defined in seconds.
+* Fixed an issue on tvOS where unknown AdIntegrationKind values resulted in build issues.
+
+## \[3.3.1] - 23-12-11[​](#331---23-12-11 "Direct link to \[3.3.1] - 23-12-11")
+
+### Fixed[​](#fixed-70 "Direct link to Fixed")
+
+* Fixed an issue on Android where a `ContentResumeRequested` ad event was never broadcasted.
+* Fixed an issue on iOS where the ad duration was provided in milliseconds instead of seconds.
+
+## \[3.3.0] - 23-12-11[​](#330---23-12-11 "Direct link to \[3.3.0] - 23-12-11")
+
+### Changed[​](#changed-36 "Direct link to Changed")
+
+* Extended event dispatching mechanism with broadcast functionality.
+
+## \[3.2.1] - 23-12-07[​](#321---23-12-07 "Direct link to \[3.2.1] - 23-12-07")
+
+### Fixed[​](#fixed-71 "Direct link to Fixed")
+
+* Fixed an issue on Android where `EnterCue` and `ExitCue` text track events did not contain the `trackUid` property.
+
+## \[3.2.0] - 23-11-29[​](#320---23-11-29 "Direct link to \[3.2.0] - 23-11-29")
+
+### Fixed[​](#fixed-72 "Direct link to Fixed")
+
+* Fixed an issue on iOS and Android were selecting an audio, video or text track that has a `uid` with value `0`, would fail.
+
+### Added[​](#added-66 "Direct link to Added")
+
+* Added support for HLS #EXT-X-DATERANGE timed metadata tags. The tags appear as cues in a dedicated text track with type `daterange`.
+
+## \[3.1.0] - 23-10-27[​](#310---23-10-27 "Direct link to \[3.1.0] - 23-10-27")
+
+### Changed[​](#changed-37 "Direct link to Changed")
+
+* Revised audio focus protocol on Android. When resuming an app, audio focus is retrieved only if the player is not paused.
+* Changed the behaviour of the Android component supporting background playback. It is stopped but not disabled when setting `backgroundAudioConfiguration.enabled = true`.
+
+### Fixed[​](#fixed-73 "Direct link to Fixed")
+
+* Fixed an issue on Android where during play-out of a locally stored media asset the `seekable` property would not update.
+* Fixed an issue on iOS where the error was not forwarded to theoplayer if a drm request fails on the iOS bridge
+
+## \[3.0.2] - 23-10-17[​](#302---23-10-17 "Direct link to \[3.0.2] - 23-10-17")
+
+### Fixed[​](#fixed-74 "Direct link to Fixed")
+
+* Fixed an issue on Android where compilation would fail when depending on player SDK 6.2.0.
+
+## \[3.0.1] - 23-10-12[​](#301---23-10-12 "Direct link to \[3.0.1] - 23-10-12")
+
+### Fixed[​](#fixed-75 "Direct link to Fixed")
+
+* Fixed compilation issues caused by Caching API not being supported on tvOS
+
+## \[3.0.0] - 23-10-06[​](#300---23-10-06 "Direct link to \[3.0.0] - 23-10-06")
+
+### Fixed[​](#fixed-76 "Direct link to Fixed")
+
+* Fixed sourceDescription processing on iOS for offline playback.
+
+### Changed[​](#changed-38 "Direct link to Changed")
+
+* Added support for THEOplayer 6.0. See [THEOplayer's changelog](https://www.theoplayer.com/docs/theoplayer/changelog/) for details.
+* Bumped minimal version for SideloadedTextTracks connection on iOS to v6.1.1 which contains fix for iOS 17.0.
+
+### Added[​](#added-67 "Direct link to Added")
+
+* Added `MediaCache` API, enabling download of media assets for offline playback.
+
+## \[2.16.1] - 23-09-27[​](#2161---23-09-27 "Direct link to \[2.16.1] - 23-09-27")
+
+### Added[​](#added-68 "Direct link to Added")
+
+* For iOS, added a subtitlePTS property to the TextTrackDescription that syncs a sideloaded textTrack with the video content.
+
+## \[2.15.0] - 23-09-26[​](#2150---23-09-26 "Direct link to \[2.15.0] - 23-09-26")
+
+### Changed[​](#changed-39 "Direct link to Changed")
+
+* Upgraded the iOS side-loaded text track connector.
+
+### Fixed[​](#fixed-77 "Direct link to Fixed")
+
+* Fixed an issue where the Android mediaSession connector would still process media button events when the app was in the background, and `enableBackgroundPlayback` was false.
+* Fixed an issue on Android where play-out would still start when the app was put to the background during initial buffering, and `enableBackgroundPlayback` was false.
+* Fixed an issue on Android where the MediaButtonReceiver would crash the app when it did not find a registered MediaBrowserService instance, when setting `enableBackgroundPlayback` to false while backgrounding the app.
+
+## \[2.14.0] - 23-09-25[​](#2140---23-09-25 "Direct link to \[2.14.0] - 23-09-25")
+
+### Fixed[​](#fixed-78 "Direct link to Fixed")
+
+* Fixed an issue on Android where the MediaButtonReceiver would crash the app when it did not find a registered MediaBrowserService instance.
+
+### Added[​](#added-69 "Direct link to Added")
+
+* Added support for side-loaded metadata tracks on iOS.
+
+## \[2.13.0] - 23-09-15[​](#2130---23-09-15 "Direct link to \[2.13.0] - 23-09-15")
+
+### Fixed[​](#fixed-79 "Direct link to Fixed")
+
+* Fixed an issue where setting a new source on iOS, during DRM handling, would crash the application due to unsafe array access by different threads.
+
+## \[2.12.1] - 23-09-14[​](#2121---23-09-14 "Direct link to \[2.12.1] - 23-09-14")
+
+### Fixed[​](#fixed-80 "Direct link to Fixed")
+
+* Fixed an issue on Android where the player SDK dependency could resolve to version 6.+.
+* Fixed an issue on iOS where the player integration dependencies could resolve to version 6.+.
+
+## \[2.12.0] - 23-09-04[​](#2120---23-09-04 "Direct link to \[2.12.0] - 23-09-04")
+
+### Added[​](#added-70 "Direct link to Added")
+
+* Added an `AnalyticsDescription` property to `SourceDescription` to configure additional source-specific properties for analytics connectors.
+* Added support for sideloaded webVTT and SRT texttracks on iOS.
+* Added Audio Focus for Android, pausing play-out on audio focus loss and resuming play-out once focus has been regained.
+* Added Audio Focus and Audio Becoming Noisy manager for Android.
+
+### Fixed[​](#fixed-81 "Direct link to Fixed")
+
+* Fixed an issue on Android that would cause the player not to reset when setting an empty source.
+* Fixed an issue where a text track cue was not properly removed from the cue list on a TextTrackEventType.REMOVE\_CUE event.
+* Fixed an issue on tvOS that allowed the user to pause a CSAI ad using the apple remote control.
+* Fixed an issue on iOS where the cue event listeners were not cleanup up when destroying the player instance, resulting in memory build-up.
+
+## \[2.11.0] - 23-08-10[​](#2110---23-08-10 "Direct link to \[2.11.0] - 23-08-10")
+
+### Added[​](#added-71 "Direct link to Added")
+
+* Added DAI support through iOS Native pipeline, using new THEOplayerGoogleIMAIntegration functionality
+* Added `TextTrackStyle` API for iOS and Android.
+
+### Fixed[​](#fixed-82 "Direct link to Fixed")
+
+* Fixed an issue on Android where the player would sometimes crash when requesting the current active video track.
+
+### Changed[​](#changed-40 "Direct link to Changed")
+
+* Switched to 'displayIconUri' in sourceDescription.metadata as primary field for artwork selection in NowplayingInfo/MediaSession, 'poster' in sourceDescription is now the fallback.
+* Removed the play/pause icon in the PiP window on Android while playing an ad.
+
+## \[2.10.0] - 23-07-25[​](#2100---23-07-25 "Direct link to \[2.10.0] - 23-07-25")
+
+### Fixed[​](#fixed-83 "Direct link to Fixed")
+
+* Fixed an issue on Android where the media button receiver would not accept button events in case multiple receivers are registered.
+* Fixed an issue on Android where `react-native-theoplayer` would not build when depending on Android player SDK v5.6.0.
+* Fixed an issue on Android where a `pause` event would not be dispatched when putting the app to the background during play-out of an ad, while background playback is enabled. The ad would also restart when bringing the app back to the foreground.
+
+### Changed[​](#changed-41 "Direct link to Changed")
+
+* Removed restrictions on media session playback actions for AndroidTV.
+* Upgraded `react-native` version of the example app to `react-native-tvos@0.71.12-0`.
+
+### Added[​](#added-72 "Direct link to Added")
+
+* Added a `version` property to `THEOplayer` for querying the `player` version (e.g., `'5.5.0'`) and `playerSuite` (e.g., `'2023.3.0'`) versions.
+
+## \[2.9.0] - 23-06-16[​](#290---23-06-16 "Direct link to \[2.9.0] - 23-06-16")
+
+### Changed[​](#changed-42 "Direct link to Changed")
+
+* Moved React Native UI to separate `@theoplayer/react-native-ui` package.
+
+### Removed[​](#removed-3 "Direct link to Removed")
+
+* Removed `react-native-theoplayer` dependencies on packages `@react-native-community/slider`, `react-native-google-cast`, `react-native-svg`, `react-native-svg-web`, `react-native-url-polyfill` and `url-polyfill`.
+
+### Added[​](#added-73 "Direct link to Added")
+
+* Added an overview of the available React Native connectors.
+
+### Fixed[​](#fixed-84 "Direct link to Fixed")
+
+* Fixed an issue on Android where the background media service would crash the app in case it was started from the background.
+* Fixed an issue on iOS where the delayed contentId extraction resulted in an incorrect value being passed to the license request setup.
+
+## \[2.8.0] - 23-06-01[​](#280---23-06-01 "Direct link to \[2.8.0] - 23-06-01")
+
+### Added[​](#added-74 "Direct link to Added")
+
+* Added `ignoreAvailabilityWindow` property to `SourceDescription.dash` for Android and Web.
+* Added `needsTimescaleShifting`, `desiredTimescale` and `forceSeekToSynchronize` properties to `SourceDescription.dash` for Web.
+
+### Fixed[​](#fixed-85 "Direct link to Fixed")
+
+* Fixed an issue where text track cue changes were not applied to the TextTrack's `cue` property.
+* Fixed an issue on Android where play-out of an MP4 stream would sometimes crash the player.
+* Fixed an issue on Android where a `pause` event would not be dispatched while pausing during play-out of an ad.
+* Fixed an issue on Android where hardware buttons, such as `play` and `pause`, were not handled anymore after toggling background audio support.
+* Fixed an issue on Android where the app would crash when toggling background playback while multiple `MediaBrowserServiceCompat` instances are registered.
+
+### Changed[​](#changed-43 "Direct link to Changed")
+
+* Improved fullscreen support to use non-native fullscreen on Safari for iPad and Mac.
+* Limited the set of available media session actions on Android when an ad or live stream is playing.
+* Removed pausing the stream when disabling background playback on Android.
+
+## \[2.7.0] - 23-05-15[​](#270---23-05-15 "Direct link to \[2.7.0] - 23-05-15")
+
+### Changed[​](#changed-44 "Direct link to Changed")
+
+* Approved player behaviour on iOS and Android when doing player operations such as `play` and `pause` in case no source was set.
+
+### Fixed[​](#fixed-86 "Direct link to Fixed")
+
+* Fixed an issue on Android where if an invalid view tag is passed to the native bridge, it would crash the player.
+* Fixed an issue on Web where preview thumbnails would fail to load.
+
+### Added[​](#added-75 "Direct link to Added")
+
+* Updated UI documentation with necessary dependencies.
+* Added improved debug logging on iOS.
+
+## \[2.6.0] - 23-05-05[​](#260---23-05-05 "Direct link to \[2.6.0] - 23-05-05")
+
+### Fixed[​](#fixed-87 "Direct link to Fixed")
+
+* Fixed an issue on Android where the `currentProgramDateTime` property of `TimeUpdateEvent` would not be formatted in milliseconds.
+* Fixed an issue on Android where the order of text and media tracks would change when adding tracks.
+* Fixed an issue on Web where an exception would be thrown when accessing the player API after the player had been destroyed.
+* Fixed an issue with Google IMA where the main content wasn't resumed after a pre-roll ended.
+
+### Changed[​](#changed-45 "Direct link to Changed")
+
+* Use `enum` instead of a string union for `ABRStrategyType`.
+* Changed the way artwork is fetched for NowPlayingInfo on the iOS Lockscreen, to prevent a crash caused by threading issues.
+
+## \[2.5.0] - 23-04-26[​](#250---23-04-26 "Direct link to \[2.5.0] - 23-04-26")
+
+### Added[​](#added-76 "Direct link to Added")
+
+* Added an `aspectRatio` property on the `THEOplayer` instance that can be either `FIT` (default), `FILL` or `ASPECT_FILL`.
+
+### Changed[​](#changed-46 "Direct link to Changed")
+
+* Set `theoplayer` Web SDK as optional peer dependency.
+
+## \[2.4.0] - 23-04-21[​](#240---23-04-21 "Direct link to \[2.4.0] - 23-04-21")
+
+### Fixed[​](#fixed-88 "Direct link to Fixed")
+
+* Fixed an issue on iOS and Android where cue event properties `startTime` and `endTime` with value `Infinity` or `NaN` were not passed correctly.
+* Fixed an issue on iOS Safari where switching to fullscreen presentation during an ad would not work.
+* Fixed an issue on iOS Safari where an ad could be skipped during unmuted autoplay.
+* Fixed a memory leak on iOS where the player would be allocated after being destroyed.
+* Fixed an issue on Android where building the SDK would require IMA to be enabled.
+
+### Changed[​](#changed-47 "Direct link to Changed")
+
+* Changed Web media session controls to only show trick-play buttons if the player is in foreground, or `backgroundAudioEnabled` is `true`, and never for ads and live stream.
+* Changed Web media session controls to only show a play/pause button if the player is in foreground, or `backgroundAudioEnabled` is `true`, and never for ads.
+
+### Added[​](#added-77 "Direct link to Added")
+
+* Added the `crossOrigin` property to `SourceDescription` for requesting CORS access to content.
+
+## \[2.3.0] - 23-04-14[​](#230---23-04-14 "Direct link to \[2.3.0] - 23-04-14")
+
+### Changed[​](#changed-48 "Direct link to Changed")
+
+* Updated picture-in-picture controls on Android to include forward/rewind buttons and disabled pause button for ads.
+
+## \[2.2.0] - 23-04-12[​](#220---23-04-12 "Direct link to \[2.2.0] - 23-04-12")
+
+### Fixed[​](#fixed-89 "Direct link to Fixed")
+
+* Fixed an issue on Android and iOS where error codes were not correctly formatted.
+
+### Added[​](#added-78 "Direct link to Added")
+
+* Added `RetryConfiguration` on `PlayerConfiguration` for Web and Android.
+
+### Changed[​](#changed-49 "Direct link to Changed")
+
+* Set minimum THEOplayer dependency version to 5.0.1 for Web, iOS and Android.
+* Set `MediaPlaybackService` disabled by default on Android.
+
+## \[2.1.0] - 23-04-09[​](#210---23-04-09 "Direct link to \[2.1.0] - 23-04-09")
+
+### Fixed[​](#fixed-90 "Direct link to Fixed")
+
+* Fixed invalid location of the typescript declaration file.
+* Fixed an issue on Android where the player would not pause when closing the app while background playback is disabled.
+
+### Changed[​](#changed-50 "Direct link to Changed")
+
+* Removed `backgroundAudioConfiguration.mediaPlaybackServiceEnabled` property on Android. Disabling background playback disables the service as well.
+
+## \[2.0.0] - 23-04-06[​](#200---23-04-06 "Direct link to \[2.0.0] - 23-04-06")
+
+### Added[​](#added-79 "Direct link to Added")
+
+* Released 2.0.0 version.
+
+## \[Unreleased 2.0.0-pre9][​](#unreleased-200-pre9 "Direct link to \[Unreleased 2.0.0-pre9]")
+
+### Changed[​](#changed-51 "Direct link to Changed")
+
+* Set the player container on Web to by default have a width and height not larger than the devices width and height.
+* Use `enum` type for `PresentationMode`, `CastState` and`AdIntegrationKind`.
+* Changed the methods of the Cast API, such as `casting` and `state`, to be synchronous.
+* Applied `backgroundAudioConfig` properties on Android when closing picture-in-picture window.
+* Applied `backgroundAudioConfig` properties on Android when showing Notifications.
+* Disable iOS lockscreen controls when backgroundAudioConfig is set to `disabled`.
+
+### Added[​](#added-80 "Direct link to Added")
+
+* Added `enableMediaPlaybackService` option to `backgroundAudioConfiguration` to optionally disable the MediaBrowserService that provides background audio support on Android.
+* Added support for the `enabled` flag of `BackgroundAudioConfiguration` for Web.
+* Added serviceId and contentId to NowPlayingInfo
+* Feature flag extraction from custom iOS builds
+
+### Fixed[​](#fixed-91 "Direct link to Fixed")
+
+* Fixed an issue on Android where the media session would become inactive when going to picture-in-picture mode, removing all transport controls.
+* Fixed an issue where removing a player listener within a listener callback would sometimes result in events not being dispatched.
+
+## \[Unreleased 2.0.0-pre7][​](#unreleased-200-pre7 "Direct link to \[Unreleased 2.0.0-pre7]")
+
+### Fixed[​](#fixed-92 "Direct link to Fixed")
+
+* Fixed an issue where the media session connector for Web would report an error when passing an Infinite duration for live streams.
+* Fixed an issue on iOS where ID3 metadata content would not be correctly passed to cue instances.
+* Fixed an issue on Android where the `'picture-in-picture'` permission was not checked.
+* Fixed an issue on Android where the aspect ratio of the `'picture-in-picture'` window could be outside the valid range.
+* Fixed an issue on iOS and Android where for a live stream the `duration` property of a `loadedmetadata` event was not properly passed as being `Infinite`.
+
+### Changed[​](#changed-52 "Direct link to Changed")
+
+* Replaced deprecated systemUiVisibility code in Android's PresentationManager.
+* Use `enum` types for `TextTrackMode`, `TextTrackType` and `TextTrackKind`.
+* Allow go-to-live on iOS and Android by setting `currentTime` to `Infinity`.
+
+### Added[​](#added-81 "Direct link to Added")
+
+* Added a `mediaControl` property to `PlayerConfiguration` to configure Media Session, Now Playing and Remote Command Center functionality across all platforms. It currently only contains a media session toggle for Web.
+* Added a `backgroundAudioConfiguration` property to `THEOplayer` to allow dynamically configuring background audio functionality.
+* Added a `pipConfiguration` property to `THEOplayer` to allow dynamically configuring picture-in-picture behavior.
+* Added support for background audio playback on iOS and Android.
+* Added `keepScreenOn` as a default player view property on Android to keep the device awake.
+
+## \[Unreleased 2.0.0-pre6][​](#unreleased-200-pre6 "Direct link to \[Unreleased 2.0.0-pre6]")
+
+### Fixed[​](#fixed-93 "Direct link to Fixed")
+
+* Fixed an issue where the IMA player container would be rendered collapsed on Web.
+* Fixed a missing check for picture-in-picture permission on Android.
+
+### Added[​](#added-82 "Direct link to Added")
+
+* Added media session connector for Web.
+
+## \[Unreleased 2.0.0-pre5][​](#unreleased-200-pre5 "Direct link to \[Unreleased 2.0.0-pre5]")
+
+### Added[​](#added-83 "Direct link to Added")
+
+* Added `onPlayerReady` callback on `THEOplayerView` to pass a `THEOplayer` instance once it is ready for access. More info on the [migration documentation](https://github.com/THEOplayer/react-native-theoplayer/blob/v7.0.0/doc/migrating-v2.md) page.
+* Added `canplay` event, which is dispatched when the player can start play-out.
+* Added `waiting` event, which is dispatched when the player has stopped play-out because of a temporary lack of data.
+* Added `nativeHandle` property on `THEOplayer` to access the native player instance on web, and view id on mobile.
+* Added `entercue` and `exitcue` events for text tracks, which are dispatched when a cue becomes (in)active.
+* Added `ratechange` event, which is dispatched when the player's playback rate was changed.
+* Added `seekable` property on `THEOplayer`, containing the time ranges of the media the player is able to seek to.
+* Added `buffered` property on `THEOplayer`, containing the time ranges of the media the player has currently buffered.
+* Added `buffered` property to the payload of the `onprogress` event.
+* Added `duration`, `seeking`, `preload`, `textTrack`, `videoTracks` and `audioTracks` properties to `THEOplayer`.
+* Added `libraryLocation` property to `PlayerConfiguration` to allow passing custom location for web workers.
+* Added `mutedAutoplay` property to `PlayerConfiguration` to allow autoplay on web browsers with different autoplay policies.
+* Added mode `hidden` as a value for a text track's `TextTrackMode` property, which is typically used for metadata tracks.
+* Added `TextTrackStyle` API to support text track styling. This feature is currently supported on web only.
+* Added support for 'picture-in-picture' presentation mode. More information on the [documentation page](/documentation/pr-preview/pr-690/theoplayer/getting-started/frameworks/react-native/pip.md)
+* Added `muted` state in `volumechange` event payload.
+* Added media session connector for Android.
+* Added public accessor on the `THEOplayerRCTView` that exposes the underlying iOS `THEOplayer` instance. So you can use the underlying THEOplayer from other packages.
+
+### Changed[​](#changed-53 "Direct link to Changed")
+
+* Moved all player properties such as `paused`, `muted` and `volume`, from `THEOplayerView` component to `THEOplayer` instance. More info on the [migration documentation](https://github.com/THEOplayer/react-native-theoplayer/blob/v7.0.0/doc/migrating-v2.md) page.
+* Removed `onEventName` callback methods from `THEOplayerView` component in favor of `THEOplayer` event listener's interface. More info on the [migration documentation](https://github.com/THEOplayer/react-native-theoplayer/blob/v7.0.0/doc/migrating-v2.md) page.
+* Changed documentation sample code to reflect API changes.
+* Exposed the `activeQuality` of a `MediaTrack` as a `Quality` instance instead of the quality's `uid`.
+* Set the default container style for web to let the player cover the whole container.
+
+### Removed[​](#removed-4 "Direct link to Removed")
+
+* Removed `seek` method on `THEOplayer`. It is replaced with a `currentTime` setter.
+* Removed `fullscreen` setter and getter in favor of `presentationMode`.
+
+### Fixed[​](#fixed-94 "Direct link to Fixed")
+
+* Fixed an issue on Android where an exception is thrown when an empty source description would be passed.
+* Fixed the Webpack configuration in the sample application to copy web workers to `libraryLocation`.
+* Fixed an issue on web where in case multiple player instances are created, the players would overlap.
+* Fixed an issue on iOS Safari where switching to fullscreen presentation would not work.
+* Fixed an issue on Android where passing an invalid empty source description would result in a crash.
+* Fixed an issue on Android where the `framerate` property of a `VideoQuality` instance would not be filled in.
+* Fixed an issue on iOS where the `TextTrackMode` property of a text track would be incorrect.
+* Fixed an issue on iOS where after enabling/disabling a text track, metadata tracks would be set to `disabled` as well.
+* Fixed missing `volumechange` events on mobile platforms.
+* Fixed an issue on iOS where after toggling the mute state during an ad playout, succeeding mute toggles had no effect.
+
+## \[1.8.4] - 23-04-27[​](#184---23-04-27 "Direct link to \[1.8.4] - 23-04-27")
+
+### Fixed[​](#fixed-95 "Direct link to Fixed")
+
+* Fixed an issue on Android where the `pause` event was not dispatched during play-out of an ad.
+
+### Added[​](#added-84 "Direct link to Added")
+
+* Added a `videoAspectRatio` property on the `THEOplayerView` for iOS and Android.
+* Added a `PlayerEventTypes.WAITING` event that is dispatched when play-back stops due to lack of media data.
+
+## \[1.8.3] - 23-04-06[​](#183---23-04-06 "Direct link to \[1.8.3] - 23-04-06")
+
+### Fixed[​](#fixed-96 "Direct link to Fixed")
+
+* Fixed an issue on Android where building the SDK would fail when depending on player SDK v5.x.
+
+## \[1.8.2] - 23-04-05[​](#182---23-04-05 "Direct link to \[1.8.2] - 23-04-05")
+
+### Fixed[​](#fixed-97 "Direct link to Fixed")
+
+* Fixed an issue on Android where building the SDK would fail when depending on player SDK v4.12.0.
+
+## \[1.8.1] - 23-02-09[​](#181---23-02-09 "Direct link to \[1.8.1] - 23-02-09")
+
+### Changed[​](#changed-54 "Direct link to Changed")
+
+* Restructured iOS bridge code to extensions based on features.
+
+### Fixed[​](#fixed-98 "Direct link to Fixed")
+
+* Fixed an issue on Android where the system UI would not be restored when unmounting THEOplayerView with `fullscreen` enabled.
+* Fixed an issue with the availability of the cast button and play buttons in the example application.
+* Fixed an issue on iOS where the player was not destroyed correctly on the iOS bridge.
+* Added support for `DRMConfig` through `SourceDescription` for SSAI sources on iOS.
+
+## \[1.8.0] - 23-01-16[​](#180---23-01-16 "Direct link to \[1.8.0] - 23-01-16")
+
+### Added[​](#added-85 "Direct link to Added")
+
+* Support for Chromecast and Airplay.
+
+### Fixed[​](#fixed-99 "Direct link to Fixed")
+
+* Fixed an issue where moving the sender app to the background while playing a DAI source on an Airplay device, would pause playback.
+
+### Changed[​](#changed-55 "Direct link to Changed")
+
+* Upgraded Web SDK to v4.6.0.
+* Updated the custom build setup to support both iOS and tvOS.
+
+## \[1.7.2] - 22-12-05[​](#172---22-12-05 "Direct link to \[1.7.2] - 22-12-05")
+
+### Fixed[​](#fixed-100 "Direct link to Fixed")
+
+* Fixed an issue on tvOS where a feature flag was incorrectly used for ads-related code.
+
+## \[1.7.1] - 22-11-28[​](#171---22-11-28 "Direct link to \[1.7.1] - 22-11-28")
+
+### Fixed[​](#fixed-101 "Direct link to Fixed")
+
+* Fixed an issue on Android where the player would consider unusable custom drm integrations.
+* Fixed missing kotlin classpath property on Android.
+
+## \[1.7.0] - 22-11-23[​](#170---22-11-23 "Direct link to \[1.7.0] - 22-11-23")
+
+### Added[​](#added-86 "Direct link to Added")
+
+* Support for content protection integration (DRM connectors).
+* Support for subscribing to ad events.
+* Support for Google DAI ads.
+* Support for Google IMA ads.
+* Support for ABR configuration on Android and Web.
+* Support for video quality selection on Android and Web.
+
+### Fixed[​](#fixed-102 "Direct link to Fixed")
+
+* Fixed an issue where the player would not be correctly released when destroying the view on Android.
+* Fixed a warning during debugging when a stream would have duration INF or NaN.
+* Fixed an issue in the example app where it would not be possible to select a specific text track.
+* Fixed conflicting npm dependencies in the example app.
+
+## \[1.6.1] - 22-10-07[​](#161---22-10-07 "Direct link to \[1.6.1] - 22-10-07")
+
+### Added[​](#added-87 "Direct link to Added")
+
+* Improved source handling for iOS.
+
+## \[1.6.0] - 22-09-28[​](#160---22-09-28 "Direct link to \[1.6.0] - 22-09-28")
+
+### Fixed[​](#fixed-103 "Direct link to Fixed")
+
+* Fixed jitpack.io repository url for Android.
+* Fixed an issue where play-out of HLS streams would fail on Android.
+
+### Changed[​](#changed-56 "Direct link to Changed")
+
+* Excluded folders from bob build config.
+* Upgraded gradle versions for Android.
+
+## \[1.5.0] - 22-09-26[​](#150---22-09-26 "Direct link to \[1.5.0] - 22-09-26")
+
+### Fixed[​](#fixed-104 "Direct link to Fixed")
+
+* Fixed disabling all debug logs for iOS/tvOS release builds.
+* Fixed duration from seconds to milliseconds on iOS/tvOS.
+
+### Added[​](#added-88 "Direct link to Added")
+
+* Support for DRM pre-integrations on Android.
+* Support for additional source properties on Android: `liveOffset`, `hlsDateRange`, `timeServer` and `hls`.
+
+## \[1.4.0] - 22-08-11[​](#140---22-08-11 "Direct link to \[1.4.0] - 22-08-11")
+
+### Fixed[​](#fixed-105 "Direct link to Fixed")
+
+* Fixed an issue on iOS where subtitles upon disappearing would sometimes leave a thin black line on the image.
+* Fixed an issue on iOS where the player would not be destroyed after going to fullscreen.
+
+### Added[​](#added-89 "Direct link to Added")
+
+* Improved determination of the stream source type on Android.
+
+## \[1.3.0] - 22-07-26[​](#130---22-07-26 "Direct link to \[1.3.0] - 22-07-26")
+
+### Fixed[​](#fixed-106 "Direct link to Fixed")
+
+* Fixed an issue where the app would crash due to the configured Flipper version.
+* Fixed duplicate classes issue for Android when having dependencies on local libs folder.
+* Fixed documentation feature matrix.
+* Fixed duration scale in loadedmetadata event properties for Web.
+
+## \[1.2.0] - 22-06-30[​](#120---22-06-30 "Direct link to \[1.2.0] - 22-06-30")
+
+### Fixed[​](#fixed-107 "Direct link to Fixed")
+
+* Fixed a crash when removing text tracks event listeners on iOS.
+* Fixed a number of broken links in the documentation.
+* Removed unused files.
+
+## \[1.1.0] - 22-06-06[​](#110---22-06-06 "Direct link to \[1.1.0] - 22-06-06")
+
+### Added[​](#added-90 "Direct link to Added")
+
+* Initial release.

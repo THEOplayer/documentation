@@ -1,0 +1,50 @@
+# Migrating to THEOplayer React Native SDK 10.x
+
+This article will guide you through updating to THEOplayer React Native SDK version 10 (from version 9), and the changes needed in your code.
+
+## Update React Native THEOplayer[​](#update-react-native-theoplayer "Direct link to Update React Native THEOplayer")
+
+Run the following command to install THEOplayer React Native SDK version 10:
+
+```bash
+npm install react-native-theoplayer@10
+
+```
+
+## Breaking Changes on Web[​](#breaking-changes-on-web "Direct link to Breaking Changes on Web")
+
+The breaking changes for the native Web SDK are listed in the v10 [changelog](https://optiview.dolby.com/docs/theoplayer/changelog/#-breaking-changes).
+
+## Breaking Changes on iOS[​](#breaking-changes-on-ios "Direct link to Breaking Changes on iOS")
+
+The breaking changes for the native Web SDK are listed in the v10 [changelog](https://optiview.dolby.com/docs/theoplayer/changelog/#-breaking-changes-2).
+
+## Breaking Changes on Android[​](#breaking-changes-on-android "Direct link to Breaking Changes on Android")
+
+The breaking changes for the native Android SDK are listed in the v10 [changelog](https://optiview.dolby.com/docs/theoplayer/changelog/#-breaking-changes-1).
+
+The following updates in particular impact the React Native SDK on Android.
+
+### Media3 became the only available playback pipeline on Android[​](#media3-became-the-only-available-playback-pipeline-on-android "Direct link to Media3 became the only available playback pipeline on Android")
+
+On Android platforms, the Media3 playback pipeline is now the only available pipeline. **The legacy pipeline has been removed.**
+
+### Cache storage type `legacy` removed[​](#cache-storage-type-legacy-removed "Direct link to cache-storage-type-legacy-removed")
+
+With the removal of the legacy pipeline, the option to cache media content for this pipeline by setting `CachingTaskParameters.storageType` was also removed.
+
+### PlaybackSettingsAPI removed on Android[​](#playbacksettingsapi-removed-on-android "Direct link to PlaybackSettingsAPI removed on Android")
+
+The `PlaybackSettingsAPI`, which allowed to control start-up and lip sync correction on the legacy pipeline, has been removed.
+
+### Update `compileSdk` to 36 or higher[​](#update-compilesdk-to-36-or-higher "Direct link to update-compilesdk-to-36-or-higher")
+
+The underlying Android SDK depends on the AndroidX Core library, which requires `compileSdk 36` as of version 1.17.0.
+
+Update the `compileSdk` to be `36` (or higher) in your module-level `build.gradle` file.
+
+We also recommend updating the Android Gradle Plugin to the latest version. In Android Studio, go to Tools → AGP Upgrade Assistant and follow the steps to update AGP in your project.
+
+### Updated `minSdk` to API 23 on Android[​](#updated-minsdk-to-api-23-on-android "Direct link to updated-minsdk-to-api-23-on-android")
+
+This aligns with [other Android Jetpack libraries requiring API 23 as of June 2025](https://developer.android.com/jetpack/androidx/versions#version-table).

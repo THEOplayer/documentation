@@ -1,0 +1,3 @@
+# Chromecast
+
+OptiView Live streams have support for Chromecast. However, a limitation for now is that the latency is higher while casting (about 12 seconds). Configuring it is exactly the same as for other streams you would play with THEOplayer. The instructions are described in the [Chromecast guide](/documentation/pr-preview/pr-690/theoplayer/how-to-guides/cast/chromecast/enable-chromecast-on-the-sender.md).

@@ -1,0 +1,654 @@
+# Millicast Web SDK
+
+Player vs SDK
+
+**Dolby OptiView Player** (formerly THEOplayer) now supports real-time streaming (formerly Millicast). Unless directed by your onboarding team, please use the [Dolby OptiView Player](/documentation/pr-preview/pr-690/millicast/playback/players-sdks/web/player.md) and not the Millicast SDKs.
+
+The Web SDK lets you connect, capture, publish, and subscribe to streams in your web applications.
+
+<!-- -->
+
+## [![](/documentation/pr-preview/pr-690/img/github.svg)![](/documentation/pr-preview/pr-690/img/github_dark.svg)GitHub](https://github.com/millicast/millicast-sdk)
+
+[Source code for the Millicast Web SDK](https://github.com/millicast/millicast-sdk)
+
+## [📖Reference](https://millicast.github.io/millicast-sdk/)
+
+[Class and object reference](https://millicast.github.io/millicast-sdk/)
+
+## [📱Samples](https://github.com/millicast/millicast-sdk/tree/main/packages)
+
+[Code examples](https://github.com/millicast/millicast-sdk/tree/main/packages)
+
+## Getting Started[​](#getting-started "Direct link to Getting Started")
+
+Getting Started with Web SDK
+
+If you haven't already, begin by following the [Getting Started](/documentation/pr-preview/pr-690/millicast/getting-started/creating-real-time-streaming-web-app.md) tutorial to become familiar with the concepts to create an application that can publish and/or subscribe using the Web SDK.
+
+Please check and follow the [Web Platform Release Notes](/documentation/pr-preview/pr-690/millicast/changelog/changelog-web-platform.md) page for updates and changes to the SDK.
+
+### Installation[​](#installation "Direct link to Installation")
+
+To use the SDK in your web applications you have options:
+
+* include a hosted version from the [JSDELIVR CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk) CDN
+* add a dependency with [npm](https://www.npmjs.com/package/@millicast/sdk)
+
+Versioning of the Millicast SDK
+
+When installing and importing the SDK you may automatically be updated to the latest version. This is fine for development, but it is *strongly recommended* to pin to a specific version release in order to increase stability when you move to production.
+
+#### JSDELIVR[​](#jsdelivr "Direct link to JSDELIVR")
+
+You can include the SDK directly in your HTML by adding this element to the `<head>` of your page:
+
+Import script
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.umd.min.js"></script>
+
+```
+
+If you want to pin or lock to a specific version, you can find available options from the [JSDELIVR @millicast/sdk](https://www.jsdelivr.com/package/npm/@millicast/sdk) package releases.
+
+#### NPM[​](#npm "Direct link to NPM")
+
+You can install the package directly into your project with `npm`:
+
+bash
+
+```shell
+npm i --save @millicast/sdk
+
+```
+
+If you want to pin or lock to a specific version, you can find available options from the [NPM @millicast/sdk](https://www.npmjs.com/package/@millicast/sdk) package releases.
+
+## Basic Usage[​](#basic-usage "Direct link to Basic Usage")
+
+The following examples require that you've already followed the [Getting Started](/documentation/pr-preview/pr-690/millicast/getting-started.md) tutorial and have available your **publish token** and **stream name**.
+
+### Publishing a Stream[​](#publishing-a-stream "Direct link to Publishing a Stream")
+
+The main module to publish a stream is the [Publish module](https://millicast.github.io/millicast-sdk/Publish.html).
+
+#### Instantiate the Publish module[​](#instantiate-the-publish-module "Direct link to Instantiate the Publish module")
+
+To create a new publisher, you have to instantiate the Publish class:
+
+```javascript
+import { Director, Publish } from '@millicast/sdk';
+
+const tokenGenerator = () =>
+  Director.getPublisher({
+    token: 'my-publishing-token',
+    streamName: 'my-stream-name',
+  });
+
+const publisher = new Publish(undefined, tokenGenerator);
+
+```
+
+In order to create an instance of the `Publish` class, you have to send two parameters.
+
+* The first one needs to be `undefined` as it has been deprecated.
+* The second parameter is a callback (tokenGenerator) and it is used to get the necessary data of the stream name where you want to stream. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
+
+More information here:
+
+* [Publish](https://millicast.github.io/millicast-sdk/Publish.html)
+* [getPublisher()](https://millicast.github.io/millicast-sdk/module-Director.html#~getPublisher)
+* [Token generator callback](https://millicast.github.io/millicast-sdk/global.html#tokenGeneratorCallback)
+
+#### Get your media information[​](#get-your-media-information "Direct link to Get your media information")
+
+You should get the media information (camera/microphone) you want to stream with. To do that, the SDK uses [MediaStream](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream) object.
+
+In this example, we are going to get the default user camera and microphone using the browser API [getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia):
+
+```javascript
+const mediaStream = await navigator.mediaDevices.getUserMedia({
+  audio: true,
+  video: true,
+});
+
+```
+
+This will ask permission in the browser to get the camera and microphone and it will save the mediaStream information if the user accepts.
+
+#### Initialize the stream[​](#initialize-the-stream "Direct link to Initialize the stream")
+
+After all previous steps are completed, you can now initialize the stream using the `connect()` method inside the Publish module.
+
+Using the instance of Publisher and mediaStream, add the connect method:
+
+```javascript
+// Publishing Options
+const publishOptions = {
+  mediaStream: mediaStream,
+};
+
+// Start publishing a stream
+try {
+  await publisher.connect(publishOptions);
+} catch (e) {
+  console.error('Connection failed, handle error', e);
+}
+
+```
+
+Once the `connect()` promise resolves, the stream is initialized correctly, otherwise it'll throw an error.
+
+The `connect()` can optionally receive more parameters, all of these are described in the [connect() method](https://millicast.github.io/millicast-sdk/Publish.html#connect).
+
+For example:
+
+* If you want to start your stream with a bitrate limit, you can use the `bandwidth` option.
+* If your stream token in OptiView Real-time Streaming has the recording enabled, you can enable it with the `record` option. Once you have finished your stream, you can see the recording in the [Dashboard Recordings section](/documentation/pr-preview/pr-690/millicast/distribution/stream-recordings.md).
+* You can start a stream without audio or video setting the `disableAudio` or `disableVideo` respectively.
+* You can select which codec you want to stream using the `codec` option [Check Browser Capabilities](#check-browser-capabilities).
+
+#### Check Browser Capabilities[​](#check-browser-capabilities "Direct link to Check Browser Capabilities")
+
+You can test the browser capabilities to get the list of video codec supported by the browser using [getCapabilities()](https://millicast.github.io/millicast-sdk/PeerConnection.html#.getCapabilities).
+
+<!-- -->
+
+* NPM
+* UMD
+* ESM
+
+```js
+// Node Package Manager (NPM)
+// You access SDK modules as an import from the @millicast/sdk package.
+
+import { PeerConnection } from '@millicast/sdk';
+
+const capabilities = PeerConnection.getCapabilities('video');
+console.log(capabilities);
+
+```
+
+```js
+// Universal Module Definition (UMD)
+// You access SDK modules from the window.millicast namespace.
+
+const capabilities = window.millicast.PeerConnection.getCapabilities('video');
+console.log(capabilities);
+
+```
+
+```js
+// ES Modules
+// You access SDK modules through an import.
+
+import { PeerConnection } from 'https://cdn.jsdelivr.net/npm/@millicast/sdk/dist/millicast.esm.js';
+
+const capabilities = PeerConnection.getCapabilities('video');
+console.log(capabilities);
+
+```
+
+```json
+// Output:
+[
+  {
+    "codec": "vp8",
+    "mimeType": "video/VP8"
+  },
+  {
+    "codec": "vp9",
+    "mimeType": "video/VP9"
+  },
+  {
+    "codec": "h264",
+    "mimeType": "video/H264"
+  },
+  {
+    "codec": "av1",
+    "mimeType": "video/AV1"
+  }
+]
+
+```
+
+#### Managing your active stream[​](#managing-your-active-stream "Direct link to Managing your active stream")
+
+The next samples use the `publisher` variable we created in the previous section.
+
+The Publish instance internally uses most of the classes described in the [documentation](https://millicast.github.io/millicast-sdk/index.html). If the method is not static (which means you can access it without a Publish instance), you can access it through the Publish instance.
+
+Example:
+
+```javascript
+publisher.signaling; // Corresponds to the Signaling module.
+publisher.webRTCPeer; // Corresponds to the Peerconnection module.
+
+```
+
+Most of the important methods are located directly in the Publisher module but some are not, like updating the bitrate or getting the WebRTC stats.
+
+##### Change bitrate[​](#change-bitrate "Direct link to Change bitrate")
+
+During an active stream, you can limit the maximum bitrate in kbps. To do that, you have to use the [updateBitrate()](https://millicast.github.io/millicast-sdk/PeerConnection.html#updateBitrate) method of your Publish instance that is located inside a subclass called `webRTCPeer`.
+
+Example:
+
+```javascript
+// Set the active stream with 2000 kbps limit.
+await publisher.webRTCPeer.updateBitrate(2000);
+
+// Set the active stream with no limit.
+await publisher.webRTCPeer.updateBitrate(0);
+
+```
+
+##### Stop stream[​](#stop-stream "Direct link to Stop stream")
+
+If you want to stop an active stream, you can use the [stop()](https://millicast.github.io/millicast-sdk/Publish.html#stop) method of your Publish instance.
+
+Example:
+
+```javascript
+publisher.stop();
+
+```
+
+### Viewing a Stream[​](#viewing-a-stream "Direct link to Viewing a Stream")
+
+The main module to view a stream is the [View module](https://millicast.github.io/millicast-sdk/View.html).
+
+#### Instantiate the View module[​](#instantiate-the-view-module "Direct link to Instantiate the View module")
+
+Creating a new View instance:
+
+```javascript
+import { Director, View } from '@millicast/sdk';
+
+// Create callback to generate a new token
+const tokenGenerator = () =>
+  Director.getSubscriber({
+    streamName: 'publish-stream-name',
+    streamAccountId: 'publish-account-id',
+    // Optional: This token is needed if you're subscribing to a secure stream,
+    // This token should be provided by the publish owner.
+    subscriberToken: 'subscriber-token',
+  });
+
+const millicastView = new View(undefined, tokenGenerator);
+
+```
+
+Like when creating a `Publish` instance, in order to create a `View` instance you need two parameters and there are also two optional parameters.
+
+* The first one needs to be `undefined` as it has been deprecated.
+* The second parameter is a callback (`tokenGenerator`) and it is used to get the necessary data of the stream name where you want to connect. Also, it is used to set auto reconnection if you are streaming and then lose connection. You have to set the stream name and the token of those.
+* (Optional) `mediaElement`. This is the HTML media element where you want to mount the stream for example a `video` element.
+* (Optional) `autoReconnect`. The default value is `true`, enabling auto reconnect to stream.
+
+More information here:
+
+* [View](https://millicast.github.io/millicast-sdk/View.html)
+* [getSubscriber()](https://millicast.github.io/millicast-sdk/module-Director.html#~getSubscriber)
+* [Token generator callback](https://millicast.github.io/millicast-sdk/global.html#tokenGeneratorCallback)
+
+#### Track event[​](#track-event "Direct link to Track event")
+
+In case the mediaElement parameter is not specified when creating a View instance a [track event](https://millicast.github.io/millicast-sdk/PeerConnection.html#event:track) will be emitted when the stream starts containing the media track.
+
+```javascript
+millicastView.on('track', (event) => {
+  addStreamToYourVideoTag(event.streams[0]); // Manage the track event.
+});
+
+```
+
+#### Connecting to a stream[​](#connecting-to-a-stream "Direct link to Connecting to a stream")
+
+After the previous steps are done then you can connect to the stream using the [connect()](https://millicast.github.io/millicast-sdk/View.html#connect) method from the View instance.
+
+```javascript
+try {
+  await millicastView.connect(options);
+} catch (e) {
+  console.error('Connection failed, handle error', e);
+  await millicastView.reconnect();
+}
+
+```
+
+We recommend using the [reconnect()](https://millicast.github.io/millicast-sdk/View.html#reconnect) method in the `catch` clause to make sure the View instance keeps trying to reconnect until the stream is live even when an error in the connect occurs.
+
+## Managing the Connection[​](#managing-the-connection "Direct link to Managing the Connection")
+
+### Reconnecting[​](#reconnecting "Direct link to Reconnecting")
+
+Both the instances of Publish and View have a [reconnect](https://millicast.github.io/millicast-sdk/BaseWebRTC.html#event:reconnect) event. This event emits when the connection is lost with a timeout and error message in the callback. This event is emitted by the `reconnect()` method that both Publish and View instances have, this method is automatically called by default except specified with the `autoReconnect` flag of the [constructor](https://millicast.github.io/millicast-sdk/View.html).
+
+Listen to the `reconnect` event from the `View` instance:
+
+```javascript
+import { View } from '@millicast/sdk';
+
+const millicastView = new View(undefined, tokenGenerator);
+
+millicastView.on('reconnect', ({ timeout, error }) => {
+  console.log(timeout);
+  console.error(error);
+});
+
+```
+
+* The timeout is the time, in milliseconds, when is going to retry the connection. It starts at `2000 ms` and then `4000 ms` ... until `32000 ms` (`32 s`). After it goes to `32 s` then it keeps retrying in `32 s`.
+* The error message contains the cause of failure.
+
+More information here:
+
+* [Publish reconnect](https://millicast.github.io/millicast-sdk/Publish.html#reconnect)
+* [View reconnect](https://millicast.github.io/millicast-sdk/View.html#reconnect)
+
+### Broadcast events[​](#broadcast-events "Direct link to Broadcast events")
+
+In the connect method, you can send the events that you want to subscribe to, when the connection is done the SDK starts to emit an event called `broadcastEvents` to catch the data of each event:
+
+```javascript
+await millicastView.connect({
+  events: ['active', 'inactive', 'stopped', 'vad', 'layers', 'migrate', 'viewercount'],
+});
+
+```
+
+* `active`: Fires when the live stream is starting, or has started broadcasting.
+* `inactive`: Fires when the stream has stopped broadcasting but is still available.
+* `stopped`: Fires when the live stream has been disconnected and is no longer available.
+* `vad`: Fires when the live stream is using multiplexed tracks for audio.
+* `layers`: The live stream has to be broadcasting with simulcast. Fires when there is an update of the state of the layers in the live stream.
+* `migrate`: Fires when the server is having problems, is shutting down or when viewers need to move for load balancing purposes.
+* `viewercount`: Fires when the number of viewers changes in the stream published.
+
+#### Managing online/offline status[​](#managing-onlineoffline-status "Direct link to Managing online/offline status")
+
+The `broadcastEvents` can be used to detect when a stream is live or offline. There are two approaches to do this, it depends if you are contemplating multisource or not.
+
+* If you are publishing without multisource, the `broadcastEvent` could be `active` which means that the stream is live. When it is `inactive` means that the stream is offline.
+
+* If it is a multisource stream you have the same events but you are going to receive a source ID in the data payload. If you receive it as an `active` event, it means that a new source ID is available and the stream is active. To detect if the stream is `inactive`, you have to receive an inactive event and remove the incoming source ID from your active ones. If you don't have active source IDs, it means that the stream is offline.
+
+More information here:
+
+* [Broadcast event](https://millicast.github.io/millicast-sdk/Signaling.html#event:broadcastEvent)
+* [Multi-source broadcasting](/documentation/pr-preview/pr-690/millicast/broadcast/multi-source-broadcasting.md)
+
+Example of usage (contemplating both cases):
+
+```javascript
+const view = new View(streamName, tokenGenerator, video);
+
+const activeSources = new Set();
+
+view.on('broadcastEvent', (event) => {
+  const { name, data } = event;
+  switch (name) {
+    // There is a new active source
+    case 'active':
+      activeSources.add(data.sourceId);
+      console.log('Active Stream.');
+      break;
+    // A source became inactive
+    case 'inactive':
+      activeSources.delete(data.sourceId);
+      if (activeSources.size === 0) {
+        console.log('No active Stream.');
+      }
+      break;
+    default:
+      break;
+  }
+});
+
+try {
+  await view.connect();
+} catch (e) {
+  console.error('Connection failed, handle error', e);
+}
+
+```
+
+#### User count[​](#user-count "Direct link to User count")
+
+Also with the `broadcastEvent` you can manage the number of active viewers in the stream. When receive the event with the name 'viewercount' in it you can get the updated viewercount info.
+
+Example of usage:
+
+```javascript
+view.on('broadcastEvent', (event) => {
+  const { name, data } = event;
+  switch (name) {
+    //...
+    case 'viewercount':
+      updateViewerCount(data.viewercount);
+      break;
+    default:
+      break;
+  }
+});
+
+```
+
+## Troubleshooting[​](#troubleshooting "Direct link to Troubleshooting")
+
+### Logger[​](#logger "Direct link to Logger")
+
+You can get the logs of the connection, SDP, errors, and more. It can be enabled through the Logger module and you can activate it at any time (before/after a new connection).
+
+```javascript
+import { Logger } from '@millicast/sdk';
+
+Logger.setLevel(Logger.DEBUG); // Set level visibility to DEBUG and prior
+
+```
+
+The Logger is always logging, even if the `setLevel()` is disabled. You can access the latest logs history using the `.getHistory()` method.
+
+```javascript
+Logger.getHistory();
+
+// Output
+// [
+//   "[Director] 2021-04-05T14:09:26.625Z - Getting publisher connection data for stream name:  1xxx2",
+//   "[Director] 2021-04-05T14:09:27.064Z - Getting publisher response",
+//   "[Publish]  2021-04-05T14:09:27.066Z - Broadcasting"
+// ]
+
+```
+
+More information and examples here:
+
+* [Logger](https://millicast.github.io/millicast-sdk/module-Logger.html)
+
+### WebRTC stats[​](#webrtc-stats "Direct link to WebRTC stats")
+
+Stream stats can be accessed by both Publish and View instances. In order to capture them, you have to initialize the stats and then listen for the event through the `webRTCPeer` attribute.
+
+Stats Variations
+
+Keep in mind that the stats that are collected may differ from browser to browser, between browser versions, and may depend on the type of media that is being transferred.
+
+View
+
+```javascript
+import { View } from '@millicast/sdk';
+
+// Initialize and connect your Viewer
+const millicastView = new View(undefined, tokenGenerator);
+await millicastView.connect();
+
+// Capture new stats every 1s
+millicastView.webRTCPeer.on('stats', (stats) => {
+  console.log('Stats from event: ', stats);
+});
+
+```
+
+Publish
+
+```javascript
+import { Publish } from '@millicast/sdk';
+
+// Initialize and connect your Publisher
+const millicastPublish = new Publish(undefined, tokenGenerator);
+await millicastPublish.connect();
+
+// Capture new stats every 1s
+millicastPublish.webRTCPeer.on('stats', (stats) => {
+  console.log('Stats from event: ', stats);
+});
+
+```
+
+### How-to Disable Stats Collection[​](#how-to-disable-stats-collection "Direct link to How-to Disable Stats Collection")
+
+In earlier SDK versions, it was necessary to `initStats()` to enable this collection. This is now auto-initialized by default so will always be available. If you do not need stats you can disable this behavior.
+
+```javascript
+await millicastView.connect({
+  peerConfig: {
+    autoInitStats: false,
+  },
+});
+
+// or alternatively stop them explicitly and remove listeners if unnecessary
+millicastView.webRTCPeer.stopStats();
+millicastView.webRTCPeer.removeAllListeners('stats');
+
+```
+
+For additional information:
+
+* [PeerConnection initStats](https://millicast.github.io/millicast-sdk/PeerConnection.html#initStats)
+
+### How-to Tune Latency and Quality[​](#how-to-tune-latency-and-quality "Direct link to How-to Tune Latency and Quality")
+
+The `forcePlayoutDelay` setting can be used to adjust the buffer size used to in a connection to insure smooth playback. You can override the default settings and modify the values to better suit any known network conditions during playout.
+
+```javascript
+const connectionOptions = {
+  forcePlayoutDelay: {
+    min: 3000,
+    max: 5000,
+  },
+};
+
+viewer.connect(connectionOptions);
+
+```
+
+For additional information:
+
+* [View connect() options](https://millicast.github.io/millicast-sdk/View.html#connect)
+
+### How-to Control ABR Strategies[​](#how-to-control-abr-strategies "Direct link to How-to Control ABR Strategies")
+
+This is an example of using `abrConfiguration` in the SDK to control the ABR behavior. For more details on how this works, please refer to the description in the [OptiView Player Page](/documentation/pr-preview/pr-690/millicast/playback/players-sdks/web/player.md#controlling-abr-strategies).
+
+```javascript
+connectionOptions = {
+  abrConfiguration: {
+    strategy: 'bandwidth',
+    metadata: {
+      bitrate: 1200000,
+    },
+  },
+};
+
+viewer.connect(connectionOptions);
+
+```
+
+## Tutorials[​](#tutorials "Direct link to Tutorials")
+
+Additional tutorials for using specific features and capabilities.
+
+### How-to Screenshare[​](#how-to-screenshare "Direct link to How-to Screenshare")
+
+You can enable screensharing from a browser as part of the broadcast. If you want to enable screen sharing and share your webcam at the same time, you must enable [multisource](/documentation/pr-preview/pr-690/millicast/broadcast/multi-source-broadcasting.md) since you are broadcasting multiple streams. Alternately, you can share your screen using OBS.
+
+For screen sharing browser support see [this article on Browser Compatibility for Media Devices](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices#browser_compatibility).
+
+To enable screensharing, first you must define `displayMediaOptions` and call the `getDisplayMedia` function. For more information, see [getDisplayMedia](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia).
+
+```javascript
+const displayMediaOptions = {
+  video: {
+    displaySurface: 'window',
+  },
+  audio: false,
+};
+
+const screenCapture = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+
+```
+
+Set the `screenCapture` to the `mediaStream` object:
+
+```javascript
+const broadcastOptions = {
+  mediaStream: screenCapture,
+};
+
+```
+
+The following example creates a publisher object with the `token` and `streamName`. Then we connect using the publisher object and `broadcastOptions`.
+
+```javascript
+import { Director, Publish } from '@millicast/sdk';
+
+const tokenGenerator = () =>
+  Director.getPublisher({
+    token: 'Publishing Token',
+    streamName: 'Stream Name',
+  });
+
+const publisher = new Publish(undefined, tokenGenerator);
+
+try {
+  await publisher.connect(broadcastOptions);
+} catch (e) {
+  console.error('Connection failed, handle error', e);
+}
+
+```
+
+### How-to Record a Stream[​](#how-to-record-a-stream "Direct link to How-to Record a Stream")
+
+See the [Stream Recordings](/documentation/pr-preview/pr-690/millicast/distribution/stream-recordings.md) guide for more details about this platform capability. You must use a [Publish Token](/documentation/pr-preview/pr-690/millicast/managing-your-tokens.md) that has recording enabled for the client to be able to activate recordings.
+
+You can activate recording to begin shortly after connecting by providing the `record` option to [connect()](https://millicast.github.io/millicast-sdk/Publish.html#connect):
+
+```javascript
+const publishOptions = {
+  record: true,
+};
+
+try {
+  await publisher.connect(publishOptions);
+} catch (e) {
+  console.error('Connection failed, handle error', e);
+}
+
+```
+
+You can call the [record()](https://millicast.github.io/millicast-sdk/Publish.html#record) function on-demand to activate it after the broadcast is already active:
+
+```javascript
+await publisher.record();
+
+```
+
+You can choose when to stop the recording using [unrecord()](https://millicast.github.io/millicast-sdk/Publish.html#unrecord) or wait until the session disconnects.
+
+```javascript
+await publisher.unrecord();
+
+```

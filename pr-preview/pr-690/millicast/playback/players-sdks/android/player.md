@@ -1,0 +1,88 @@
+# Getting started with THEOPlayer for Millicast on Android
+
+## Usage[​](#usage "Direct link to Usage")
+
+1. Follow our [Getting Started guide](/documentation/pr-preview/pr-690/theoplayer/getting-started/sdks/android/getting-started.md) to set up THEOplayer in your Android app.
+2. Add the `integration-millicast` dependency to your module's `build.gradle`.
+3. Add the `MillicastIntegration` to the player.
+4. Add a `MillicastSource` to your player's source.
+
+### Add the `integration-millicast` dependency[​](#add-the-integration-millicast-dependency "Direct link to add-the-integration-millicast-dependency")
+
+Add the Millicast integration along with the [Millicast SDK](/documentation/pr-preview/pr-690/millicast/playback/players-sdks/android/sdk.md) to your module `build.gradle` file, as demonstrated below:
+
+```groovy
+dependencies {
+    // ...
+    implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
+    implementation 'com.theoplayer.theoplayer-sdk-android:integration-millicast:+'
+    implementation "com.millicast:millicast-sdk-android:2.0.0"
+    // ...
+}
+
+```
+
+### Add the Millicast integration to the player[​](#add-the-millicast-integration-to-the-player "Direct link to Add the Millicast integration to the player")
+
+tip
+
+If you're using [automatic integrations](/documentation/pr-preview/pr-690/theoplayer/getting-started/sdks/android/features.md#adding-integrations-automatically), you can skip this step.
+
+Create and add the `MillicastIntegration` to your `THEOplayerView`:
+
+```kotlin
+val millicastIntegration = MillicastIntegrationFactory.createMillicastIntegration()
+theoplayerView.player.addIntegration(millicastIntegration)
+
+```
+
+### Add a `MillicastSource`[​](#add-a-millicastsource "Direct link to add-a-millicastsource")
+
+After setting up a `THEOplayerView` in your app's activity, set its source to a `SourceDescription` containing a `MillicastSource`. You'll need a Millicast account ID and stream name to identify your Millicast stream:
+
+```kotlin
+import com.theoplayer.android.api.millicast.MillicastSource
+
+theoplayerView.player.source = SourceDescription.Builder(
+    MillicastSource(
+        src = "multiview",
+        streamAccountId = "k9Mwad",
+        apiUrl = "https://director.millicast.com/api/director/subscribe",
+        subscriberToken = "<token>" // This is only required for subscribing to secure streams and should be omitted otherwise.
+    )
+).build()
+
+```
+
+### Add configuration[​](#add-configuration "Direct link to Add configuration")
+
+Optionally, you can provide additional configuration to the source, specific for working with Millicast streams. To configure these settings, add an `Option` object as the `connectOptions` parameter of the source object and specify the options.
+
+In the example below, the configuration is used to disable any audio from the Millicast stream. For an exhaustive list of these options, visit the [documentation](https://millicast.github.io/doc/latest/android/android/com.millicast.subscribers/-option/index.html).
+
+```kotlin
+import com.millicast.subscribers.Option
+import com.theoplayer.android.api.millicast.MillicastSource
+
+theoplayerView.player.source = SourceDescription.Builder(
+    MillicastSource(
+        // ...
+        connectOptions = Option(
+            disableAudio = true
+        )
+    )
+).build()
+
+```
+
+### Background playback[​](#background-playback "Direct link to Background playback")
+
+Known issue on Android Millicast background playback
+
+Currently there is a known issue where after an indeterminate amount of time background playback of Millicast sources can stop playing unexpectedly. This issue is being investigated and will be fixed in an upcoming release.
+
+In order to play Millicast sources in the background, ensure you've configured allowing background playback using the [setAllowBackgroundPlayback](https://www.theoplayer.com/docs/theoplayer/v8/api-reference/android/com/theoplayer/android/api/THEOplayerSettings.html#setAllowBackgroundPlayback\(boolean\)) API on the player.
+
+## More information[​](#more-information "Direct link to More information")
+
+* [API references](/documentation/pr-preview/pr-690/theoplayer/v11/api-reference/android/com/theoplayer/android/api/millicast/package-summary.html)

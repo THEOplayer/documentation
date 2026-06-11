@@ -1,0 +1,120 @@
+# Getting started with THEOPlayer for Millicast on Web
+
+## Usage[​](#usage "Direct link to Usage")
+
+1. Follow [our Getting Started guide](/documentation/pr-preview/pr-690/theoplayer/getting-started/sdks/web/getting-started.md) to set up THEOplayer in your web app or website. The Millicast integration is available in the main [theoplayer](https://www.npmjs.com/package/theoplayer) package on npm.
+2. Add a Millicast source to your player's source.
+
+### Add a Millicast source[​](#add-a-millicast-source "Direct link to Add a Millicast source")
+
+After setting up your THEOplayer on your web page, set its source to a `SourceDescription` containing a `MillicastSource`. You'll need a Millicast account ID and stream name to identify your Millicast stream:
+
+```javascript
+const player = new THEOplayer.Player(element, configuration);
+player.source = {
+  sources: {
+    type: 'millicast',
+    src: 'multiview',
+    streamAccountId: 'k9Mwad',
+    subscriberToken: '<token>', // This is only required for subscribing to secure streams and should be omitted otherwise.
+  },
+};
+
+```
+
+### Controlling ABR Strategies[​](#controlling-abr-strategies "Direct link to Controlling ABR Strategies")
+
+For greater control over how Adaptive Bitrate (ABR) behaves, applications can set the ABR strategies for WebRTC. This feature provides the ability to choose on a viewer-by-viewer basis how aggressively to apply ABR switching when ABR streaming is used. It is inline with [OptiView Player's existing strategies](/documentation/pr-preview/pr-690/theoplayer/v11/api-reference/web/interfaces/ABRStrategyConfiguration.html) . For now, users must set this value when choosing playback to utilize the feature, in the future we will set `quality` to be the default.
+
+The options are:
+
+* `quality`: This strategy is more aggressive at up-switching and will try to maximize available bandwidth at any given moment. It tries to connect on the highest quality possible and stay there. Recommended for audiences with good networking and where quality is most important.
+* `bandwidth`: This strategy is in between `quality` and `performance` and isn't as aggressive as `quality`. It will more quickly switch down layers in cases of poor network and will attempt to switch back up more conservatively. It is recommended as a balance between `quality` and `performance`
+* `performance`: This strategy will prioritize smooth playback over highest quality. It will start with the lower layer available and will switch up more slowly when network performance is consistent and stable.
+* *null*: Omitting this value will default to bandwidth mode
+
+As this is a new feature, we welcome customer feedback.
+
+Set this right after initializing your player by configuring the `abr` object and before setting the `player.source`:
+
+```javascript
+player.abr.strategy = {
+  type: 'bandwidth',
+};
+
+```
+
+For additional control you can specify to the player what estimated bandwidth value the player should start with to avoid auto-detection when the player first loads the source. Add the `metadata.bitrate` value in bits-per-second. This example shows selecting the `bandwidth` strategy with a starting bitrate of 1.2 Mbps.
+
+```javascript
+player.abr.strategy = {
+  type: 'bandwidth',
+  metadata: {
+    bitrate: 1200000,
+  },
+};
+
+```
+
+### Additional Player Configuration[​](#additional-player-configuration "Direct link to Additional Player Configuration")
+
+Optionally, you can provide additional configuration to the source, specific for working with Millicast streams. To configure these settings, add a `connectOptions` property to the source object and specify the options.
+
+In the example below, the configuration is used to disable any audio from the Millicast stream. For an exhaustive list of these options, visit the [documentation](https://millicast.github.io/millicast-sdk/View.html#connect).
+
+```javascript
+player.source = {
+  sources: {
+    type: 'millicast',
+    /* ... */
+    connectOptions: {
+      disableAudio: true,
+      /* ... */
+    },
+  },
+};
+
+```
+
+### Recommended Connection Configurations[​](#recommended-connection-configurations "Direct link to Recommended Connection Configurations")
+
+#### ABR Range Control[​](#abr-range-control "Direct link to ABR Range Control")
+
+For users viewing streams with multiple quality layers available, you may want to limit the maximum resolution of the stream they can consume. This could be to reduce egress traffic for certain users or to improve performance on low-end devices. The ABR range can be adjusted when connecting to a stream via the `layer` parameter by specifying a `maxHeight` or `maxWidth` that the client can consume.
+
+For example, to limit a client to a maximum resolution of 720p, you would specify a `maxHeight` of `720`:
+
+```javascript
+connectOptions: {
+   layer: {
+      maxHeight: 720,
+   },
+}
+
+```
+
+Setting a `maxHeight` of `0` will use the full ABR range available. Setting the `maxHeight` to an arbitrarily low value, such as `20`, will force the user onto the layer with the lowest resolution.
+
+#### Playout Delay[​](#playout-delay "Direct link to Playout Delay")
+
+Because of the complexities of last-mile delivery, some packets for video playback may arrive late. In higher-latency streaming protocols such as HESP or HLS, a client buffer helps smooth out playback so that these minor fluctuations are unnoticeable. Dolby's real-time streaming solution supports adding a playout buffer, which can similarly assist with these fluctuations. The `forcePlayoutDelay` buffer uses a `min` and a `max` value measured in milliseconds (ms) to specify the range the playout buffer should occupy. The player buffer will then dynamically shift between the `min` and `max` values depending on client conditions.
+
+You can determine how many frames of buffer you are using by dividing 1 second by your frame rate. For example, if your frame rate is 30fps, you would divide `1s/30fps`, showing that each frame has a duration of `0.0333` or `33` milliseconds.
+
+This buffer is specified when connecting to a stream as shown below:
+
+```javascript
+connectOptions: {
+   forcePlayoutDelay: {
+      min: 50,
+      max: 120,
+   },
+}
+
+```
+
+The performance gains of the buffer diminish significantly beyond a buffer of 300ms. Typically, the team recommends a buffer between 0 and 5 frames for smooth playback.
+
+## More information[​](#more-information "Direct link to More information")
+
+* [API references](/documentation/pr-preview/pr-690/theoplayer/v11/api-reference/web/interfaces/MillicastSource.html)

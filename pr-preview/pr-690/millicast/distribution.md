@@ -1,0 +1,78 @@
+# Distribution
+
+The OptiView Real-time Content Delivery Network (CDN) offers a range of server-side features that users can toggle and adjust via the REST APIs or your account Dashboard to ensure streams are secure, stable, and scalable.
+
+* **Scalability** to distribute content to large audiences across [multiple regions](/documentation/pr-preview/pr-690/millicast/distribution/multi-region-support.md) in real-time.
+* **Stability** with features like [simulcast with WebRTC](/documentation/pr-preview/pr-690/millicast/distribution/using-webrtc-simulcast.md) that provide redundancy and adaptability to maintain a good user experience across different network and device conditions while maintaining a high uptime and Quality of Experience (QoE).
+* **Security** through features that protect your content by securing streams with subscriber tokens, [self-signed tokens](/documentation/pr-preview/pr-690/millicast/subscribe-tokens.md#creating-a-self-signed-token), allowing only [specific origins](/documentation/pr-preview/pr-690/millicast/distribution/access-control/allowed-origins.md), [geo-blocking](/documentation/pr-preview/pr-690/millicast/distribution/access-control/geo-blocking.md), and [IP filtering](/documentation/pr-preview/pr-690/millicast/distribution/access-control/allowed-origins.md).
+
+Distribution of streaming content requires scalability, stability, and security along with a robust platform with features including [stream recordings](/documentation/pr-preview/pr-690/millicast/distribution/stream-recordings.md), [multi-source broadcasting](/documentation/pr-preview/pr-690/millicast/broadcast/multi-source-broadcasting.md), [multi-bitrate delivery](/documentation/pr-preview/pr-690/millicast/distribution/using-webrtc-simulcast.md), [backup publishing](/documentation/pr-preview/pr-690/millicast/broadcast/redundant-ingest.md), [stream syndication](/documentation/pr-preview/pr-690/millicast/distribution/syndication.md), and [streaming analytics](/documentation/pr-preview/pr-690/millicast/analytics-api.md).
+
+## Start building[​](#start-building "Direct link to Start building")
+
+## [🚀Getting Started](/documentation/pr-preview/pr-690/millicast/getting-started.md)
+
+[Quick start for using REST APIs to control content distribution.](/documentation/pr-preview/pr-690/millicast/getting-started.md)
+
+## Distribution of streaming content[​](#distribution-of-streaming-content "Direct link to Distribution of streaming content")
+
+Distribution of high-value content and intellectual property requires a platform that values security, stability, and scalability.
+
+### Security[​](#security "Direct link to Security")
+
+[How-to Manage Your Tokens](/documentation/pr-preview/pr-690/millicast/managing-your-tokens.md)<br />**Tokens** are generated to authenticate and give access to a stream for a specific period of time. You will use separate tokens for publishing and subscribing to a stream so that only appropriate authorizations are granted depending on your requirements, such as:
+
+* Specifying specific domain names or allowed origins
+* Identifying IP addresses to filter
+
+[How-to Setup Geo-blocking](/documentation/pr-preview/pr-690/millicast/distribution/access-control/geo-blocking.md)<br />**Geo-blocking** can be enabled to block specific geographic areas, such as countries or regions where you do not want the content to be streamed.
+
+[YouTube video player](https://www.youtube.com/embed/n4iXAJuw-aM)
+
+#### ISO/IEC 27001:2022 Certification[​](#isoiec-270012022-certification "Direct link to ISO/IEC 27001:2022 Certification")
+
+<!-- -->
+
+![](data:image/webp;base64,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)
+
+The OptiView Real-time platform has been assessed and found to be in accordance with the management system requirements in [ISO/IEC 27001:2022](https://www.iso.org/standard/27001).
+
+ISO 27001 is an internationally recognized standard for information security management systems (ISMS). Dolby's conformity to ISO/IEC standards means that we've established systems, plans, and security measures to protect and safely handle user data, along with general information security.
+
+If you'd like confirmation of our certification, please see [the IAF's accreditation verification tool](https://www.iafcertsearch.org/certification/DQmrsq4w4DnUf2KBVA3WYdmR).
+
+### Stability[​](#stability "Direct link to Stability")
+
+Whether the stream has one viewer or hundreds of thousands, the stability of the stream is a top priority. To support stream stability and adaptability, OptiView Real-time Streaming provides several important features.
+
+[Multi-source streaming](/documentation/pr-preview/pr-690/millicast/broadcast/multi-source-broadcasting.md)<br />Add redundancy with multiple independent broadcast sources as part of the same stream. This distribution of multiple audio and video tracks enables the viewer to playback a different feed in case an incoming source becomes unavailable.
+
+[Audio multiplexing](/documentation/pr-preview/pr-690/millicast/playback/audio-multiplexing.md)<br />With **multiplexing**, this enables end users to receive multiple audio feeds as part of a single broadcast such that viewers can toggle between different audio tracks, such as variations in language, quality, etc.
+
+[Simulcast](/documentation/pr-preview/pr-690/millicast/distribution/using-webrtc-simulcast.md)<br />**Simulcast** is a mechanism that allows for the distribution of a media stream composed of multiple bitrates and resolutions. The user can then view a stream that has a quality determined by network or device type allowing low-bandwidth conditions to receive an appropriate quality stream for the most stable experience possible in that scenario.
+
+<!-- -->
+
+![](/documentation/pr-preview/pr-690/assets/images/8c0d37a-Simulcast-242872eee2799927ce18b43803c611f4.png)
+
+[Backup publishing](/documentation/pr-preview/pr-690/millicast/broadcast/redundant-ingest.md)<br />Similar to multi-source streaming, **backup publishing** allows for a parallel broadcast to be ingested from the same encoding source. In case of a failure, the system can fall over to another active backup stream.
+
+### Scalability[​](#scalability "Direct link to Scalability")
+
+To support global audiences into the hundreds of thousands of viewers, OptiView Real-time Streaming provides features that help with scaling streams to meet those demands without impacting the quality or stability of the stream.
+
+[Multi-region support](/documentation/pr-preview/pr-690/millicast/distribution/multi-region-support.md)<br />We utilize a network of data centers distributed around the globe. This allows streams to maintain ultra-low latency and high scalability to audiences that may be scattered to many different regions.
+
+[Stream syndication](/documentation/pr-preview/pr-690/millicast/distribution/syndication.md)<br />Through distribution partners, **syndication** allows you to send the same stream to multiple platforms. A tracking id can be used to correlate and analyze distribution data to monitor bandwidth utilization, viewer attendance with each provider, and other statistics that can help with billing.
+
+[Recordings](/documentation/pr-preview/pr-690/millicast/distribution/stream-recordings.md)<br />A live broadcast can be archived by enabling the storage of a recording of the stream.
+
+[Self-signed tokens](/documentation/pr-preview/pr-690/millicast/subscribe-tokens.md#creating-a-self-signed-token)<br />To improve performance when tracking many individual streams among your users, you only need to generate one token and can then delegate that authorization by generating new self-signed **JWT tokens** in your application without needing to fetch a new subscriber token for each new stream.
+
+[Streaming analytics](/documentation/pr-preview/pr-690/millicast/analytics-api.md)<br />The OptiView Real-time Streaming Dashboard provides data-rich information about streaming usage for your individual account. There are also **REST** and **GraphQL** endpoints to generate custom reports and behaviors by querying that data.
+
+## Learn more[​](#learn-more "Direct link to Learn more")
+
+## [![](/documentation/pr-preview/pr-690/img/github.svg)![](/documentation/pr-preview/pr-690/img/github_dark.svg)Explore GitHub samples](https://github.com/orgs/dolbyio-samples/repositories?q=distribution)
+
+## [🔗Find related blog posts](https://optiview.dolby.com/resources/blog/tag/distribution/)
