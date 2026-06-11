@@ -111,7 +111,7 @@ player.videoTracks[0].targetQuality = qualities[indexOfDesiredQualityLayer];
 
 ## Tracking Streaming Protocols
 
-In OptiView Live, an [`Endpoint`](https://optiview.dolby.com/docs/theoplayer/v11/api-reference/web/interfaces/Endpoint.html) can contain sources for multiple streaming protocols. For instance, it can be configured to load a WebRTC source for real time streaming but load a HLS source to allow seeking into a DVR window. Another use case is one where HESP is used as the primary streaming protocol, but the player could fall back to a HLS source if the platform doesn't support HESP playback.
+In OptiView Live, an [`Endpoint`](pathname:///theoplayer/v11/api-reference/web/interfaces/Endpoint.html) can contain sources for multiple streaming protocols. For instance, it can be configured to load a WebRTC source for real time streaming but load a HLS source to allow seeking into a DVR window. Another use case is one where HESP is used as the primary streaming protocol, but the player could fall back to a HLS source if the platform doesn't support HESP playback.
 
 To track switches between the possible streaming protocols, you can listen for the `currentsourcechange` event. The `currentSource` property in the payload shows which source is being used under the hood.
 
