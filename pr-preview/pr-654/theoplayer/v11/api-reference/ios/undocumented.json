@@ -23,8 +23,8 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/Ads/THEOAdDescription.swift",
-      "line": 61,
-      "symbol": "THEOAdDescription.init(networkCode:customAssetKey:backdropDoubleBox:backdropLShape:overrideLayout:overrideAdSrc:adTagParameters:useId3:streamActivityMonitorId:sseEndpoint:retrievePodIdURI:initializationDelay:returnToLive:daiAssetKey:)",
+      "line": 64,
+      "symbol": "THEOAdDescription.init(networkCode:customAssetKey:backdropDoubleBox:backdropLShape:overrideLayout:overrideAdSrc:adTagParameters:useId3:streamActivityMonitorId:sseEndpoint:retrievePodIdURI:initializationDelay:returnToLive:daiAssetKey:breakManifestUrl:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -149,7 +149,7 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/SourceDescription_API.swift",
-      "line": 203,
+      "line": 224,
       "symbol": "SourceType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
@@ -191,7 +191,7 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/AVAssetResourceLoaderProxy.swift",
-      "line": 286,
+      "line": 290,
       "symbol": "AVAssetResourceLoaderProxy",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -310,7 +310,7 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Models/Error/AVPlayerErrorManager.swift",
-      "line": 149,
+      "line": 154,
       "symbol": "AVPlayerErrorManager",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -828,7 +828,7 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Integrations/IntegrationsContentPlayer.swift",
-      "line": 137,
+      "line": 141,
       "symbol": "IntegrationsContentPlayer",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -863,28 +863,28 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1351,
+      "line": 1365,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1393,
+      "line": 1407,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1454,
+      "line": 1468,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1564,
+      "line": 1582,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -961,63 +961,63 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 901,
+      "line": 903,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 912,
+      "line": 914,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 922,
+      "line": 924,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 946,
+      "line": 948,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 953,
+      "line": 955,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 991,
+      "line": 993,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1007,
+      "line": 1009,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1013,
+      "line": 1015,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1031,
+      "line": 1033,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

@@ -56,6 +56,7 @@ $dokka.location:com.theoplayer.android.api.source.ssai.dai/GoogleDaiVodConfigura
 $dokka.location:com.theoplayer.android.api.source.ssai/GoogleDaiConfiguration.Builder///PointingToDeclaration/com/theoplayer/android/api/source/ssai/GoogleDaiConfiguration.Builder.html
 $dokka.location:com.theoplayer.android.api.source.ssai/SsaiIntegration.Companion///PointingToDeclaration/com/theoplayer/android/api/source/ssai/SsaiIntegration.Companion.html
 $dokka.location:com.theoplayer.android.api.source.ssai/StreamType.Companion///PointingToDeclaration/com/theoplayer/android/api/source/ssai/StreamType.Companion.html
+$dokka.location:com.theoplayer.android.api.source/AdIntegration.Companion///PointingToDeclaration/com/theoplayer/android/api/source/AdIntegration.Companion.html
 $dokka.location:com.theoplayer.android.api.source/GoogleDaiTypedSource.Builder///PointingToDeclaration/com/theoplayer/android/api/source/GoogleDaiTypedSource.Builder.html
 $dokka.location:com.theoplayer.android.api.source/SourceDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/SourceDescription.Builder.html
 $dokka.location:com.theoplayer.android.api.source/TextTrackDescription.Builder///PointingToDeclaration/com/theoplayer/android/api/source/TextTrackDescription.Builder.html

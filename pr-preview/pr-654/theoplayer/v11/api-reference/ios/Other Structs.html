@@ -967,6 +967,15 @@
             <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/CMCDConfiguration.html">CMCDConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/CMCDEndpointConfiguration.html">CMCDEndpointConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/CMCDSourceConfiguration.html">CMCDSourceConfiguration</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Other%20Structs.html#/s:13THEOplayerSDK26SourceLatencyConfigurationV">SourceLatencyConfiguration</a>
               </li>
               <li class="nav-group-task">
@@ -1015,6 +1024,112 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">THEOAdDescription</span> <span class="p">:</span> <span class="kt"><a href="Protocols/AdDescription.html">AdDescription</a></span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK25CMCDEndpointConfigurationV"></a>
+                    <a name="//apple_ref/swift/Struct/CMCDEndpointConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK25CMCDEndpointConfigurationV">CMCDEndpointConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configuration for a CMCD endpoint.</p>
+
+<p>Used to specify where CMCD events should be sent.</p>
+
+                        <a href="Structs/CMCDEndpointConfiguration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CMCDEndpointConfiguration</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK17CMCDConfigurationV"></a>
+                    <a name="//apple_ref/swift/Struct/CMCDConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK17CMCDConfigurationV">CMCDConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configuration for Common Media Client Data (CMCD) at the player level.</p>
+
+<p>CMCD is a specification (CTA-5004) that defines a standard way for media players to communicate
+information about playback to CDNs and other infrastructure components.</p>
+
+<p>Currently exposed for event reporting. Configure <code>eventEndpoints</code> to receive CMCD event reports.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This configuration is set at the player level via <code><a href="Classes/THEOplayerConfiguration.html">THEOplayerConfiguration</a></code>.
+For source-level configuration (which can additionally specify a session ID), use <code><a href="Structs/CMCDSourceConfiguration.html">CMCDSourceConfiguration</a></code>.
+
+</div>
+
+                        <a href="Structs/CMCDConfiguration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CMCDConfiguration</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13THEOplayerSDK23CMCDSourceConfigurationV"></a>
+                    <a name="//apple_ref/swift/Struct/CMCDSourceConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13THEOplayerSDK23CMCDSourceConfigurationV">CMCDSourceConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configuration for Common Media Client Data (CMCD) at the source level.</p>
+
+<p>This extends the player-level configuration by additionally allowing a session ID to be specified
+per source. Source-level values take precedence over player-level values for overlapping fields,
+except for <code>eventEndpoints</code> which are merged (both player and source endpoints receive events).</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This configuration is set per source via <code><a href="Classes/TypedSource.html">TypedSource</a></code>.
+
+</div>
+
+                        <a href="Structs/CMCDSourceConfiguration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CMCDSourceConfiguration</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
 
                         </div>
                       </div>
