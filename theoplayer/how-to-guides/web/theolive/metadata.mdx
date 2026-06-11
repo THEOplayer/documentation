@@ -47,14 +47,14 @@ Here the `frame.data` carries the binary payload exactly as it was sent — your
 
 ## Picture timing SEI
 
-Picture timing SEI cues surface on a text track with `id === 'timecode'`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
+Picture timing SEI cues surface on a text track with [`TextTrack.id`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#id) equal to `'timecode'`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
 
 ```javascript
 player.textTracks.addEventListener('addtrack', (event) => {
   const track = event.track;
   if (track.id === 'timecode') {
     track.mode = 'showing'; // Setting the mode to showing will enable the entercue events
-    track.addEventListener('entercue', this.onTimeCode);
+    track.addEventListener('entercue', onTimeCode);
   }
 });
 ```
