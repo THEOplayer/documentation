@@ -21,7 +21,7 @@ UDU SEI and API-pushed payloads surface on a text track with [`TextTrack.type`](
 - `addcue` fires as soon as a cue becomes available on the track, before playback reaches it — useful when you want to prefetch data or update application state ahead of time.
 - `entercue` fires when playback enters the cue — useful when you want to act in sync with the video, for example to render an overlay at the moment the cue was inserted.
 
-The metadata will be contained in `cue.content` as an ID3 `PRIV` frame (represented by an [ID3PrivateFrame](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3PrivateFrame.html)) with `ownerIdentifier` equal to `urn:uuid:<your-uuid>`.
+The metadata will be contained in `cue.content` as an ID3 `PRIV` frame (represented by an [ID3PrivateFrame](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3PrivateFrame.html)) with `ownerIdentifier` equal to `optiview.live:meta:<your-uuid>`.
 
 :::important
 Make sure to always check the frame's `id` and `ownerIdentifier` before using it, to avoid processing unrelated ID3 frames.
@@ -35,7 +35,7 @@ player.textTracks.addEventListener('addtrack', (event) => {
   if (track.type === 'id3') {
     track.addEventListener('addcue' /* or 'entercue' */, (e) => {
       const frame = e.cue.content;
-      if (frame.id === 'PRIV' && frame.ownerIdentifier === 'urn:uuid:11111111-1111-1111-1111-111111111111') {
+      if (frame.id === 'PRIV' && frame.ownerIdentifier === 'optiview.live:meta:11111111-1111-1111-1111-111111111111') {
         console.log('metadata', frame.data);
       }
     });
