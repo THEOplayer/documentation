@@ -52,6 +52,41 @@ player.textTracks.addEventListener('addtrack', (event) => {
 
 Here the `frame.data` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
 
+<details>
+<summary>Using third-party players</summary>
+
+When using a third-party player SDK, please refer to their respective documentation on how to retrieve ID3 from the stream.
+
+For example, with [Shaka Player](https://github.com/shaka-project/shaka-player),
+you can listen for the [`metadata` event](https://shaka-player-demo.appspot.com/docs/api/shaka.Player.html#.event:MetadataEvent):
+
+```javascript
+player.addEventListener('metadata', (event) => {
+  if (event.metadataType === 'org.id3') {
+    const frame = event.payload; // see https://shaka-player-demo.appspot.com/docs/api/shaka.extern.html#.MetadataFrame
+    if (frame.key === 'PRIV' && frame.description === 'optiview.live:meta:11111111-1111-1111-1111-111111111111') {
+      console.log('metadata', frame.data);
+    }
+  }
+});
+```
+
+With [hls.js](https://github.com/video-dev/hls.js/), you can listen for the `FRAG_PARSING_METADATA` event.
+However, hls.js doesn't come with a built-in ID3 parser, so you'll need to parse the ID3 tag manually:
+
+```javascript
+hls.on(Hls.Events.FRAG_PARSING_METADATA, (event, data) => {
+  for (const sample of data.samples) {
+    if (sample.type === Hls.MetadataSchema.emsg) {
+      const tag = sample.data;
+      // TODO Parse ID3 tag and look for ID3 PRIV frame with correct owner identifier
+    }
+  }
+});
+```
+
+</details>
+
 ## Picture timing SEI
 
 Picture timing SEI cues surface on a text track with [`TextTrack.id`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#id) equal to `'timecode'`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
