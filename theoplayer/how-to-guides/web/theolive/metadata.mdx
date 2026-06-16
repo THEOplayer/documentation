@@ -16,12 +16,19 @@ The properties you match on, the cue event you subscribe to, and the shape of `c
 
 ## User-data-unregistered SEI and API push
 
-UDU SEI and API-pushed payloads surface on a text track with [`TextTrack.type`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#type) equal to `'id3'`. Listen for the cue event that matches when you want to react:
+UDU SEI and API-pushed payloads surface as ID3 `PRIV` frames inside an ID3 v2.4 tag embedded in an `emsg` box, carried by the CMAF segments of the stream.
+
+- The owner identifier of the `PRIV` frame will be set to: `optiview.live:meta:<your-uuid>`
+- The frame's private data will contain your metadata as raw binary data.
+
+(See [section 4.27 of the ID3 v2.4 Native Frames specification](https://id3.org/id3v2.4.0-frames) and [ID3 in CMAF](https://aomediacodec.github.io/id3-emsg/) for more details.)
+
+The OptiView Player SDK exposes these ID3 frames on a text track with [`TextTrack.type`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#type) equal to `'id3'`. Listen for the cue event that matches when you want to react:
 
 - `addcue` fires as soon as a cue becomes available on the track, before playback reaches it — useful when you want to prefetch data or update application state ahead of time.
 - `entercue` fires when playback enters the cue — useful when you want to act in sync with the video, for example to render an overlay at the moment the cue was inserted.
 
-The metadata will be contained in `cue.content` as an ID3 `PRIV` frame (represented by an [ID3PrivateFrame](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3PrivateFrame.html)) with `ownerIdentifier` equal to `optiview.live:meta:<your-uuid>`.
+The ID3 frame will be contained in `cue.content` as a [ID3PrivateFrame](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3PrivateFrame.html) with `ownerIdentifier` equal to `optiview.live:meta:<your-uuid>`.
 
 :::important
 Make sure to always check the frame's `id` and `ownerIdentifier` before using it, to avoid processing unrelated ID3 frames.
