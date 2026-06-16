@@ -17,6 +17,8 @@ There are few restrictions to note regarding the Analytics APIs. Currently the s
 
 A breakdown of per-stream data is also only available within a 7 day window. This includes geographic data as well as detailed bandwidth usage information per stream. If this detailed usage data is valuable to you, it is advised that you regularly download this data before it expires and is no longer available for querying.
 
+The list of available stream names returned by the Analytics API is limited to streams that have had activity within the last **90 days**. Streams that have not been active within this window will not appear in the stream list, though their daily aggregate data may still be available for up to 365 days if queried directly by stream name.
+
 To query for a particular month’s data, the API requires the date range to be from **day 1** of the month in question to **day 1** of the next month. An example of the query would look like this: startDate=2021-**01-01**&stopDate=2021-**02-01**&resolution=**Month**. Because `stopDate` is exclusive, this query returns the total bandwidth usage for the month of January 2021 only — data for February 1st is not included in the results.
 
 It is advised that you save your Daily and Hourly data if you feel that you would need it beyond the 365 and 7 day retention provided by OptiView Real-time Streaming.
