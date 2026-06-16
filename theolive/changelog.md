@@ -1,5 +1,24 @@
 # Changelog
 
+## [11.4.0] - 2026-06-08
+
+- Fixed Kafka publisher lagging behind and dropping metric messages
+- Fixed bitrate metric being reported too high
+- Added support for single ingest
+- Fixed Kafka publisher stopping permanently after an interruption
+- Log incoming AMQP messages
+- Added timestamps to metrics
+
+## [11.3.0] - 2026-05-19 (unavailable)
+
+- Improved error logging
+- Added `targetBuffer` to HESP manifest
+- Added `holdBack` to HLS media playlists
+- Added support for packaging multiple frames per chunk in HESP
+- Added support for SEI metadata to EMSG metadata conversion
+- Added margin to bandwidth in HESP manifest
+- Added support for single ingest
+
 ## [11.1.0] - 2026-04-20
 
 - Added recurring TLA status update
