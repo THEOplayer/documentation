@@ -1,5 +1,18 @@
 # Changelog
 
+## [11.5.0] - 2026-06-16
+
+- Fixed duplicate per-frame closed-caption SEI when encoding below the source frame rate
+- Fixed SCTE-35 segmentation descriptor parsing failing when optional sub-segment fields are absent
+- Carried custom in-stream metadata as ID3
+- Fixed Nielsen ID3 `emsg` event duration
+- Exposed the active codec in the CMSD header
+- Added `CODECS` attribute to the HLS multivariant playlist
+- Add support for h265 HLS
+- Add support for Nvidia NVENC encoding / decoding
+- Add support for Apple VTENC encoding / decoding
+- Stopped engine going into Error state when ingest not available yet
+
 ## [11.4.0] - 2026-06-08
 
 - Fixed Kafka publisher lagging behind and dropping metric messages
