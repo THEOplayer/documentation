@@ -3,6 +3,7 @@
 ## [11.5.0] - 2026-06-16
 
 - Fixed duplicate per-frame closed-caption SEI when encoding below the source frame rate
+- Added BT.709 SDR to HDR10 conversion following the Dolby + MovieLabs best practices
 - Fixed SCTE-35 segmentation descriptor parsing failing when optional sub-segment fields are absent
 - Carried custom in-stream metadata as ID3
 - Fixed Nielsen ID3 `emsg` event duration
