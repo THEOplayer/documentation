@@ -9,6 +9,92 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.5.0 (2026/06/16)
+
+### General
+
+#### ⚡ Improvements
+
+- Changed the CMCD event report MIME type to `application/cmcd` per the CTA-5004-B specification.
+
+### Web
+
+#### ✨ Features
+
+- Added support for OptiView Discovery V3 distributions.
+- Added support for `ignoreEmbeddedTextTrackTypes` for HESP streams.
+
+#### ⚡ Improvements
+
+- Improved ABR performance on HESP streams, which should result in fewer stalling and increased stable playback at higher quality.
+
+#### 🐛 Issues
+
+- Fixed an issue where calling `player.destroy()` while playing an ad would throw an uncaught `TypeError`.
+- Fixed an issue where [ID3 metadata carried inside CMAF](https://aomediacodec.github.io/id3-emsg/) would end up in separate ID3 text tracks if the `scheme_id_uri` or `value` of the encapsulating `emsg` boxes were different. All ID3 cues will now always end up in a single ID3 text track, and the `value` of the `emsg` is ignored. This matches the existing behavior on Android and iOS.
+- Fixed an issue where an HESP stream failed to load on an iOS WebView.
+- Fixed an issue where `emsg` cues were never removed while playing an HESP stream.
+- Fixed a regression where the "exit fullscreen" button was no longer visible when the player encounters a fatal error while playing in fullscreen mode using the legacy UI.
+- Fixed an issue where the `encrypted` event was not properly dispatched when playing a DRM-protected stream.
+- Fixed an issue where the player stalls for a while when switching back from ad to content with an OptiView Ads stream.
+
+#### 👎 Deprecations
+
+- `player.theoLive.badNetworkMode` is no longer supported. The player's ABR has been improved to quickly switch to a lower quality when the network conditions worsen, even when playing at very low latency. This API is now a no-op, and will be removed in the next major version.
+
+### Android
+
+#### ✨ Features
+
+- Added `Abr.preferredMaximumResolution` to cap the maximum video resolution selected at runtime. Also `player.abr.abrStrategy` is now used for  Millicast playback when `MillicastSource.connectOptions` is not set. 
+- Added `hlsDateRange` property to `THEOplayerConfig` to enable HLS date range parsing at the player level.
+
+#### ⚡ Improvements
+
+- Updated the Millicast SDK to version 2.6.0 which adds `maxWidth` and `maxHeight` constraints to viewer layer selection, allowing resolution-based filtering without selecting a specific simulcast layer.
+- `THEOplayerConfig` now fully supports using Kotlin property syntax.
+
+#### 🐛 Issues
+
+- Fixed an issue where an ad with Double Box layout shifted the content and ad players outside the video frame.
+- Fixed an issue when `CastStrategy.AUTO` had no effect on startup and a Cast device was not re-connected due to regression in Cast SDK. Cast Framework has been downgraded to the latest stable version `21.5.0`.
+- Fixed an issue where a `NullPointerException` could be thrown if the player enters  picture-in-picture mode when its `THEOplayerView` is not properly attached to a parent `Activity`.
+- Fixed a crash when `setSource` was called on a destroyed player.
+
+### iOS
+
+#### 💥 Breaking Changes
+
+- For non OptiView Live sources, a `CMCDConfiguration` or `CMCDSourceConfiguration` is now expected to enable CMCD reporting.
+
+#### ✨ Features
+
+- Added support for OptiView Discovery V3 distributions.
+- Introduce configuring ABR strategy and maximum resolution for Millicast sources.
+
+#### 🐛 Issues
+
+- Fixed an issue where the startTimes of DateRangeCues are incorrect if the player applies a seek while the cues are being processed.
+- Fixed an issue in OptiView Ads where no `AD_BREAK_END` error was dispatched after an interstitial error.
+- Fixed an EXC_BREAKPOINT crash in CMCDState.Builder.build() caused by NaN or infinite values in CMCD measurements during DVR seek operations.
+- Fixed an issue where CMCD would be active even when not configured.
+- Fixed an issue where daterange cues with identical startTimes were not processed correctly.
+- Fixed an issue where OptiView Live specific CMCD status would not be reported.
+
+### Roku
+
+#### ✨ Features
+
+- Added basic support for CMCD event mode reporting of DRM and ad events.
+- Added in support for custom SSAI integrations and SSAI ad descriptions that use ad tag parameters.
+- Added support for OptiView Live discovery v3 distributions.
+- Added MediaKind connector with support for playback of DRM streams.
+- Added the Capabilities API to the SDK for help getting device capabilities.
+
+#### 🐛 Issues
+
+- Fixed an issue with tag remover's handling of URIs that started with "data:".
+
 ## 🚀 11.4.0 (2026/06/03)
 
 ### Web
@@ -89,7 +175,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
+- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
 - Added support for DRM-protected OptiView Live Streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
 
 #### 🐛 Issues
@@ -256,7 +342,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -269,7 +355,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.

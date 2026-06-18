@@ -35,6 +35,31 @@ Add the Millicast integration as a dependency in to your project:
     <!-- prettier-ignore-end -->
 </Tabs>
 
+### Add the Millicast SDK dependency
+
+The Millicast integration requires the Millicast SDK as a direct dependency. The required version depends on your THEOplayer version:
+
+| THEOplayer version | Millicast SDK version |
+| :----------------- | :-------------------- |
+| 11.5.0+            | 2.6.x+                |
+| 11.3.0 – 11.4.x    | 2.5.x+                |
+| 10.11.0 – 11.2.x   | 2.5.3                 |
+| 9.12.0 – 10.10.x   | 2.5.1                 |
+| 9.7.0 – 9.11.x     | 2.4.3                 |
+| 9.5.0 – 9.6.x      | 2.4.1                 |
+| 8.10.0 – 9.4.x     | 2.2.0                 |
+
+:::note
+If you are using CocoaPods, the `THEOplayer-Integration-Millicast` pod already specifies the Millicast SDK dependency, so you do not need to add it manually.
+:::
+
+Add the Millicast SDK via Swift Package Manager:
+
+```swift
+.package(url: "https://github.com/millicast/millicast-sdk-swift-package.git", "2.6.0"..<"2.7.0")
+.product(name: "MillicastSDK", package: "millicast-sdk-swift-package")
+```
+
 ### Add the Millicast integration to the player
 
 First import the integration into your project:

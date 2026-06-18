@@ -84,6 +84,12 @@
             <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/DiscoveryErrors.html">DiscoveryErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/DiscoveryErrors.html#/s:29THEOplayerTHEOliveIntegration15DiscoveryErrorsO15ChannelNotFoundV">– ChannelNotFound</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions.html#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)ProxiedHespContentPlayer">ProxiedHespContentPlayer</a>
               </li>
               <li class="nav-group-task">
@@ -174,94 +180,6 @@
           <div class="section-content">
             <div class="task-group">
               <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@THEOplayerTHEOliveIntegration@objc(cs)THEOliveIntegrationFactory"></a>
-                    <a name="//apple_ref/swift/Class/THEOliveIntegrationFactory" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)THEOliveIntegrationFactory">THEOliveIntegrationFactory</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Utility to instantiate a THEOlive Integration.</p>
-
-<p>By default a THEOlive integration is automatically added to THEOplayer.
-Whenever a THEOplayer is added and the Bundle containing this Factory is loaded, THEOplayer will use this factory to create an integration and add it automatically to its integrations.</p>
-
-                        <a href="Classes/THEOliveIntegrationFactory.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">THEOliveIntegrationFactory</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
-<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">THEOliveIntegrationFactory</span><span class="p">:</span> <span class="kt">CustomReflectable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@THEOplayerTHEOliveIntegration@objc(cs)WebrtcOptions"></a>
-                    <a name="//apple_ref/swift/Class/WebrtcOptions" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)WebrtcOptions">WebrtcOptions</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>WebRTC configuration for a Millicast source.</p>
-
-                        <a href="Classes/WebrtcOptions.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WebrtcOptions</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@THEOplayerTHEOliveIntegration@objc(cs)TheoLiveSource"></a>
-                    <a name="//apple_ref/swift/Class/TheoLiveSource" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)TheoLiveSource">TheoLiveSource</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Source that points to a channel on theo.live</p>
-
-                        <a href="Classes/TheoLiveSource.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">TheoLiveSource</span> <span class="p">:</span> <span class="kt">TypedSource</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -448,6 +366,94 @@ is encountered and the player recovers by choosing a new one.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">IntentToFallbackEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/THEOliveEvent.html">THEOliveEvent</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerTHEOliveIntegration@objc(cs)THEOliveIntegrationFactory"></a>
+                    <a name="//apple_ref/swift/Class/THEOliveIntegrationFactory" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)THEOliveIntegrationFactory">THEOliveIntegrationFactory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Utility to instantiate a THEOlive Integration.</p>
+
+<p>By default a THEOlive integration is automatically added to THEOplayer.
+Whenever a THEOplayer is added and the Bundle containing this Factory is loaded, THEOplayer will use this factory to create an integration and add it automatically to its integrations.</p>
+
+                        <a href="Classes/THEOliveIntegrationFactory.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">THEOliveIntegrationFactory</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">THEOliveIntegrationFactory</span><span class="p">:</span> <span class="kt">CustomReflectable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerTHEOliveIntegration@objc(cs)WebrtcOptions"></a>
+                    <a name="//apple_ref/swift/Class/WebrtcOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)WebrtcOptions">WebrtcOptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>WebRTC configuration for a Millicast source.</p>
+
+                        <a href="Classes/WebrtcOptions.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WebrtcOptions</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@THEOplayerTHEOliveIntegration@objc(cs)TheoLiveSource"></a>
+                    <a name="//apple_ref/swift/Class/TheoLiveSource" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@THEOplayerTHEOliveIntegration@objc(cs)TheoLiveSource">TheoLiveSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Source that points to a channel on theo.live</p>
+
+                        <a href="Classes/TheoLiveSource.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">TheoLiveSource</span> <span class="p">:</span> <span class="kt">TypedSource</span></code></pre>
 
                         </div>
                       </div>
