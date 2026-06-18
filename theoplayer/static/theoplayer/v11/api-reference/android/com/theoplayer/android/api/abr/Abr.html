@@ -282,6 +282,22 @@ public interface <span class="typeNameLabel"><a href=Abr.html>Abr</a></span>
                                             <td class="colLast">Sets the adaptive bitrate strategy configuration.</td>
                                         </tr>
                                         
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/android/util/Size.html>Size</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Abr.html#getPreferredMaximumResolution()>getPreferredMaximumResolution</a>() </code>
+                                            </th>
+                                            <td class="colLast">The desired maximum resolution of a video that is to be downloaded.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Abr.html#setPreferredMaximumResolution(android.util.Size)>setPreferredMaximumResolution</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/android/util/Size.html>Size</a> maximumResolution) </code>
+                                            </th>
+                                            <td class="colLast">Sets the desired maximum resolution of a video that is to be downloaded.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -412,7 +428,7 @@ public interface <span class="typeNameLabel"><a href=Abr.html>Abr</a></span>
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>setAbrStrategy</h4>
@@ -426,6 +442,62 @@ public interface <span class="typeNameLabel"><a href=Abr.html>Abr</a></span>
                                             
                                             
                                             <dd><code>abrStrategyConfiguration</code> - The new <a href=AbrStrategyConfiguration.html>AbrStrategyConfiguration</a>.</dd>
+                                            
+                                            
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPreferredMaximumResolution()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPreferredMaximumResolution</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/MainThread.html>MainThread</a>()@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://developer.android.com/reference/kotlin/android/util/Size.html>Size</a> <a href=Abr.html#getPreferredMaximumResolution()>getPreferredMaximumResolution</a>()</pre>
+                                        <div class="block"><p>The desired maximum resolution of a video that is to be downloaded. </p><p>A value of <code>null</code> indicates there is no limit on the video resolution. Setting this value during playback re-evaluates track selection so the player stops switching to variants whose width or height exceeds the cap.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The maximum resolution, or <code>null</code> if no cap is set.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPreferredMaximumResolution(android.util.Size)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setPreferredMaximumResolution</h4>
+                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/MainThread.html>MainThread</a>() abstract void <a href=Abr.html#setPreferredMaximumResolution(android.util.Size)>setPreferredMaximumResolution</a>(@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=https://developer.android.com/reference/kotlin/android/util/Size.html>Size</a> maximumResolution)</pre>
+                                        <div class="block"><p>Sets the desired maximum resolution of a video that is to be downloaded.</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>maximumResolution</code> - The maximum resolution, or <code>null</code> to remove the cap.</dd>
                                             
                                             
                                         

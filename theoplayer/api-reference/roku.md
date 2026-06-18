@@ -58,6 +58,7 @@ The following key/value pairs are supported on the `source` attribute of the `TH
 | headers             | roArray                                 | An optional array of strings representing headers to include on the content requests. The strings follow the format of `"headerName:headerValue"`. Defaults to an empty array to clear any headers that were set on HttpAgent.                                                                                                                 |
 | streamType          | string                                  | Optional. Whether the stream is `"vod"`, `"live"`, or `"dvr"`. Will override `live` if set.                                                                                                                                                                                                                                                    |
 | textTracks          | roArray of TextTrackDescriptions        | Optional. An array of descriptions representing external text track files. If specified at this level, it will be applied to all sources in the `sources` array                                                                                                                                                                                |
+| cmcd                | CmcdSourceConfiguration                 | Optional. CMCD configuration for this source. Overrides player-level CMCD configuration. See [CMCD Configuration](#cmcd-configuration).                                                                                                                                                                                                        |
 
 ### Typed Source
 
@@ -208,11 +209,11 @@ The Ads API exposes the following properties, methods, and events.
 | scheduledAdBreaks | roArray of roAssociativeArrays | read              | Array of the scheduled breaks that haven't played. These may either be a source object or a resolved AdBreak. |
 | scheduledAds      | roArray of Ads                 | read              | Array of the ads that are scheduled and have not played. Only shows one break's ads with VAST.                |
 
-| Method                                                                                       | Description                                       |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.    |
-| removeEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string) | Remove a listener for the specified player event. |
-| schedule(adDescription as AdDescription)                                                     | Schedule an ad break.                             |
+| Method                                                                                       | Description                                                                                                |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| addEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string)    | Add a listener for the specified player event.                                                             |
+| removeEventListener(eventType as string, listenerOwner as roSGNode, eventListener as string) | Remove a listener for the specified player event.                                                          |
+| schedule(adDescription as AdDescription, sourceDescription as roAssociativeArray)            | Schedule an ad break. Optionally, pass a source description for use in custom server-side ad integrations. |
 
 | Event            | Class        | Description                                                   |
 | ---------------- | ------------ | ------------------------------------------------------------- |
@@ -375,11 +376,12 @@ The DAI API emits the following ad events, which can be listened to via `addEven
 
 The PlayerConfiguration object is passed to the configure method. It is an associative array with the following properties:
 
-| Property   | Type               | Description                                                                       |
-| ---------- | ------------------ | --------------------------------------------------------------------------------- |
-| license    | string             | Your THEO license. Optional if `licenseUrl` is specified.                         |
-| licenseUrl | string             | The URL from which to load your THEO license. Optional if `license` is specified. |
-| theolive   | roAssociativeArray | The configuration for THEOlive. Optional.                                         |
+| Property   | Type               | Description                                                                          |
+| ---------- | ------------------ | ------------------------------------------------------------------------------------ |
+| license    | string             | Your THEO license. Optional if `licenseUrl` is specified.                            |
+| licenseUrl | string             | The URL from which to load your THEO license. Optional if `license` is specified.    |
+| theolive   | roAssociativeArray | The configuration for THEOlive. Optional.                                            |
+| cmcd       | CmcdConfiguration  | The configuration for CMCD. Optional. See [CMCD Configuration](#cmcd-configuration). |
 
 #### THEOlive Configuration
 
@@ -388,6 +390,35 @@ The PlayerConfiguration object is passed to the configure method. It is an assoc
 | discoveryUrl      | string             | Optional. The discovery URL for your THEOlive deployment. If present, it will be tried before `discoveryUrls`.                                            |
 | discoveryUrls     | roArray of strings | Array of discovery URLs for your THEOlive deployment. If `theoLive` config is omitted, the default URL is 'https://discovery.theo.live/v2/publications/'. |
 | externalSessionId | string             | A session ID to use for your THEOlive session. This can tie an application session to a THEOlens session.                                                 |
+
+#### CMCD Configuration
+
+The CMCD configuration enables Common Media Client Data reporting. It can be set at the player level (in `PlayerConfiguration.cmcd`) or at the source level (in `SourceDescription.cmcd`). CMCDv1 will be used for all streams. CMCDv2 events will also be used if `eventEndpoints` is set.
+
+**CmcdConfiguration** (player-level):
+
+| Property          | Type                                 | Description                                          |
+| ----------------- | ------------------------------------ | ---------------------------------------------------- |
+| externalSessionId | string                               | Optional. External session identifier for CMCD.      |
+| userId            | string                               | Optional. User identifier for CMCD reporting.        |
+| eventEndpoints    | roArray of CmcdEndpointConfiguration | Optional. Array of endpoints to send CMCD events to. |
+
+**CmcdSourceConfiguration** (source-level, extends CmcdConfiguration):
+
+| Property          | Type                                 | Description                                                                                                                         |
+| ----------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| externalSessionId | string                               | Optional. External session identifier for CMCD. This is recommended to use to join CMCDv1 and CMCDv2 sessions together.             |
+| userId            | string                               | Optional. User identifier for CMCD reporting.                                                                                       |
+| eventEndpoints    | roArray of CmcdEndpointConfiguration | Optional. Array of endpoints to send CMCD events to.                                                                                |
+| sessionId         | string                               | Optional. Session identifier for this source. Only used for CMCDv2 event mode. A Roku-generated ID is used for CMCDv1 request mode. |
+
+**CmcdEndpointConfiguration**:
+
+| Property | Type   | Description                                     |
+| -------- | ------ | ----------------------------------------------- |
+| url      | string | The URL of the endpoint to send CMCD events to. |
+
+**Merge Behavior**: When CMCD is configured at both the player and source level, the source configuration takes precedence for scalar properties (`externalSessionId`, `userId`, `sessionId`). The `eventEndpoints` arrays from both configurations are combined, with duplicates removed based on URL (source endpoints take priority).
 
 ## THEOlive API
 
@@ -468,3 +499,75 @@ There are several player events being emitted.
   }
   ```
 - `timeupdate`: Fired when the current playback position changed as part of normal playback or in an especially interesting way, for example discontinuously. The event data is the currentTime.
+
+### THEOlive Data
+
+The THEOlive events provide additional information about the THEOlive distribution and endpoint. The `distributionloadstart` event has the distribution ID as the `src` property. The `distributionoffline` event has the distribution ID as the `distributionId` property. The `intenttofallback` event contains the reason for the fallback as the `reason` property. However, the other THEOlive events contain more detailed information about the distribution and endpoint.
+
+For the `distributionloaded` event, the following properties are available on the Distribution object:
+
+| Property       | Type                 | Description                                          |
+| -------------- | -------------------- | ---------------------------------------------------- |
+| deleted        | boolean              | Optional. Whether the distribution has been deleted. |
+| endpoints      | roArray of Endpoints | An array of endpoints.                               |
+| id             | string               | The distribution's ID.                               |
+| maxBitrate     | integer              | Optional. The maximum bitrate of the distribution.   |
+| name           | string               | The distribution's name.                             |
+| organizationId | string               | Optional. The organization's THEOlive ID.            |
+
+The `endpointloaded` event comes with the following properties:
+
+| Property       | Type               | Description                                       |
+| -------------- | ------------------ | ------------------------------------------------- |
+| channelName    | string             | The channel/distribution's name.                  |
+| distributionId | string             | The ID used as the `src` for the THEOlive source. |
+| endpoint       | roAssociativeArray | The Endpoint that loaded.                         |
+
+The `endpoint` property contains an Endpoint object with the following information:
+
+| Property     | Type   | Description                                                                          |
+| ------------ | ------ | ------------------------------------------------------------------------------------ |
+| cdn          | string | Optional. The CDN used for this endpoint.                                            |
+| provider     | string | Optional. The provider of this endpoint.                                             |
+| src          | string | The URL of the stream for this endpoint.                                             |
+| srcType      | string | The type of the stream for this endpoint.                                            |
+| adSrc        | string | _Deprecated_ Optional. The URL for the ad stream. Only for v1/v2 endpoints.          |
+| daiAssetKey  | string | _Deprecated_ Optional. The DAI identifier for this stream. Only for v1/v2 endpoints. |
+| hlsMpegTsSrc | string | _Deprecated_ Optional. The HLS MPEG-TS stream URL. Only for v1/v2 endpoints.         |
+| hlsSrc       | string | _Deprecated_ Optional. The HLS stream URL. Only for v1/v2 endpoints.                 |
+
+# Capabilities API
+
+The THEO SDK now also exposes a couple of helper methods for getting the capabilities of the Roku device. These methods are available on the `Capabilities` object, which can be accessed via `THEOsdk:Capabilities`, separate from the THEOplayer.
+
+The Capabilities object has the following methods
+
+| Method             | Description                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| getWidevineLevel() | Returns an object with information about the Widevine level supported by the device. |
+| getHevcSupport()   | Returns an object with information about the HEVC support on the device.             |
+
+The `getWidevineLevel` method returns an object with the following properties:
+
+| Property | Type    | Description                                                                           |
+| -------- | ------- | ------------------------------------------------------------------------------------- |
+| level    | string  | A string of a number representing the Widevine level supported by the device.         |
+| multikey | boolean | A boolean indicating whether the device supports multiple keys.                       |
+| tee      | boolean | A boolean indicating whether the device supports Trusted Execution Environment (TEE). |
+| version  | string  | A string representing the Widevine version supported by the device.                   |
+
+The `getHevcSupport` method returns an object with the following properties:
+
+| Property              | Type    | Description                                                           |
+| --------------------- | ------- | --------------------------------------------------------------------- |
+| isSupported           | boolean | A boolean indicating whether the device supports HEVC.                |
+| supportsMain10Profile | boolean | A boolean indicating whether the device supports the Main 10 profile. |
+| videoMode             | string  | A string representing the video mode supported by the device.         |
+
+Example usage:
+
+```brightscript
+m.capabilities = createObject("roSgNode", "THEOsdk:Capabilities")
+widevineLevel = m.capabilities.callFunc("getWidevineLevel")
+hevcSupport = m.capabilities.callFunc("getHevcSupport")
+```

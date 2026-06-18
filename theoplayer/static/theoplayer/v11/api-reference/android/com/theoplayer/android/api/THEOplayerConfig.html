@@ -150,7 +150,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                         </tr>
                                         
                                         <tr class="altColor">
-                                            <td class="colFirst"><code>public class</code></td>
+                                            <td class="colFirst"><code>public final class</code></td>
                                             <th class="colSecond" scope="row"><code><a href="THEOplayerConfig.Builder.html">THEOplayerConfig.Builder</a></span></code>
                                             </th>
                                             <td class="colLast"><p>The builder for <a href=com/theoplayer/android/api/THEOplayerConfig.html>THEOplayerConfig</a>.</p></td>
@@ -253,30 +253,38 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>abstract boolean</code>
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#useSystemCaptionStyle()>useSystemCaptionStyle</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether captions should automatically apply a system-defined style.</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#isMultiSession()>isMultiSession</a>() </code>
                                             </th>
                                             <td class="colLast">Returns whether the player supports multi-key content when the license server doesn't respond with all keys at once.</td>
                                         </tr>
                                         
-                                        <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a></code>
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getLicense()>getLicense</a>() </code>
                                             </th>
                                             <td class="colLast">The license.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a></code>
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getLicenseUrl()>getLicenseUrl</a>() </code>
                                             </th>
                                             <td class="colLast">The licenseUrl.</td>
                                         </tr>
                                         
-                                        <tr id="i3" class="rowColor">
+                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=pip/PipConfiguration.html>PipConfiguration</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getPip()>getPip</a>() </code>
@@ -284,15 +292,15 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                             <td class="colLast">The Picture in Picture configuration of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code><a href=pip/PipConfiguration.html>PipConfiguration</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getPipConfiguration()>getPipConfiguration</a>() </code>
                                             </th>
-                                            <td class="colLast">The Picture in Picture configuration of the player.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
+                                        <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=player/NetworkConfiguration.html>NetworkConfiguration</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getNetwork()>getNetwork</a>() </code>
@@ -300,15 +308,15 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                             <td class="colLast">The network and retry configuration of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i6" class="altColor">
+                                        <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code><a href=player/NetworkConfiguration.html>NetworkConfiguration</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getNetworkConfiguration()>getNetworkConfiguration</a>() </code>
                                             </th>
-                                            <td class="colLast">The network and retry configuration of the player.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=theolive/THEOLiveConfig.html>THEOLiveConfig</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getTheoLive()>getTheoLive</a>() </code>
@@ -316,44 +324,60 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                             <td class="colLast">The THEOlive configuration of the player.</td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code><a href=theolive/THEOLiveConfig.html>THEOLiveConfig</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getTHEOLiveConfiguration()>getTHEOLiveConfiguration</a>() </code>
                                             </th>
-                                            <td class="colLast">The THEOlive configuration of the player.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i9" class="rowColor">
-                                            <td class="colFirst"><code>abstract boolean</code>
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#isAutoIntegrations()>isAutoIntegrations</a>() </code>
                                             </th>
                                             <td class="colLast">Whether all available integrations should be automatically added on the created <a href=player/Player.html>Player</a>.</td>
                                         </tr>
                                         
-                                        <tr id="i10" class="altColor">
-                                            <td class="colFirst"><code>abstract boolean</code>
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#isTunnelingEnabled()>isTunnelingEnabled</a>() </code>
                                             </th>
                                             <td class="colLast">Whether multimedia tunneling is enabled for the player or not.</td>
                                         </tr>
                                         
-                                        <tr id="i11" class="rowColor">
-                                            <td class="colFirst"><code>abstract boolean</code>
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#useSystemCaptionStyle()>useSystemCaptionStyle</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getUseSystemCaptionStyle()>getUseSystemCaptionStyle</a>() </code>
                                             </th>
                                             <td class="colLast">Whether captions should automatically apply a system-defined style.</td>
                                         </tr>
                                         
-                                        <tr id="i12" class="altColor">
+                                        <tr id="i13" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=cmcd/CMCDConfiguration.html>CMCDConfiguration</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getCmcd()>getCmcd</a>() </code>
                                             </th>
                                             <td class="colLast">The CMCD configuration for the player.</td>
+                                        </tr>
+                                        
+                                        <tr id="i14" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#getHlsDateRange()>getHlsDateRange</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether date ranges will be parsed from HLS manifests.</td>
+                                        </tr>
+                                        
+                                        <tr id="i15" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=THEOplayerConfig.html#isHlsDateRange()>isHlsDateRange</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -400,6 +424,29 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                             </a>
                                 <h3>Method Detail</h3>
                                 
+                                <a id="useSystemCaptionStyle()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>useSystemCaptionStyle</h4>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use useSystemCaptionStyle instead&quot;, replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {}, expression = &quot;useSystemCaptionStyle&quot;)) <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#useSystemCaptionStyle()>useSystemCaptionStyle</a>()</pre>
+                                        <div class="block"><p>Whether captions should automatically apply a system-defined style.</p><ul><li><p>Default: <code>false</code></p></li><li><p>Any user-defined overrides are still respected.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
                                 <a id="isMultiSession()">
                                     <!--   -->
                                 </a>
@@ -408,8 +455,8 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>isMultiSession</h4>
-                                        <pre class="methodSignature"> abstract boolean <a href=THEOplayerConfig.html#isMultiSession()>isMultiSession</a>()</pre>
-                                        <div class="block"><p>Returns whether the player supports multi-key content when the license server doesn't respond with all keys at once. </p><ul><li>Set to <code>false</code> when a single key request will obtain all keys required to decrypt the stream. </li><li>Set to <code>true</code> when a different key request is needed for different qualities of the stream, or when the stream uses key rotation. </li></ul><p>Default: false</p></div>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use DRMConfiguration.multiSession instead&quot;) abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#isMultiSession()>isMultiSession</a>()</pre>
+                                        <div class="block"><p>Returns whether the player supports multi-key content when the license server doesn't respond with all keys at once.</p><ul><li><p>Set to <code>false</code> when a single key request will obtain all keys required to decrypt the stream.</p></li><li><p>Set to <code>true</code> when a different key request is needed for different qualities of the stream, or when the stream uses key rotation.</p></li></ul><p>Default: false</p></div>
 
                                         <dl>
 
@@ -431,7 +478,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getLicense</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=THEOplayerConfig.html#getLicense()>getLicense</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=THEOplayerConfig.html#getLicense()>getLicense</a>()</pre>
                                         <div class="block"><p>The license.</p></div>
 
                                         <dl>
@@ -457,7 +504,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getLicenseUrl</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=THEOplayerConfig.html#getLicenseUrl()>getLicenseUrl</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/String.html>String</a> <a href=THEOplayerConfig.html#getLicenseUrl()>getLicenseUrl</a>()</pre>
                                         <div class="block"><p>The licenseUrl.</p></div>
 
                                         <dl>
@@ -483,7 +530,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getPip</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=pip/PipConfiguration.html>PipConfiguration</a> <a href=THEOplayerConfig.html#getPip()>getPip</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=pip/PipConfiguration.html>PipConfiguration</a> <a href=THEOplayerConfig.html#getPip()>getPip</a>()</pre>
                                         <div class="block"><p>The Picture in Picture configuration of the player.</p></div>
 
                                         <dl>
@@ -509,16 +556,13 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getPipConfiguration</h4>
-                                        <pre class="methodSignature">@<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Deprecated.html>Deprecated</a>(forRemoval = true)@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=pip/PipConfiguration.html>PipConfiguration</a> <a href=THEOplayerConfig.html#getPipConfiguration()>getPipConfiguration</a>()</pre>
-                                        <div class="block"><p>The Picture in Picture configuration of the player.</p></div>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use pip instead&quot;, replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {}, expression = &quot;pip&quot;)) <a href=pip/PipConfiguration.html>PipConfiguration</a> <a href=THEOplayerConfig.html#getPipConfiguration()>getPipConfiguration</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The PiP configuration. (Nullable)</p></dd>
                                         
 
                                         
@@ -535,7 +579,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getNetwork</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=player/NetworkConfiguration.html>NetworkConfiguration</a> <a href=THEOplayerConfig.html#getNetwork()>getNetwork</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=player/NetworkConfiguration.html>NetworkConfiguration</a> <a href=THEOplayerConfig.html#getNetwork()>getNetwork</a>()</pre>
                                         <div class="block"><p>The network and retry configuration of the player.</p></div>
 
                                         <dl>
@@ -561,16 +605,13 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getNetworkConfiguration</h4>
-                                        <pre class="methodSignature">@<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Deprecated.html>Deprecated</a>(forRemoval = true)@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=player/NetworkConfiguration.html>NetworkConfiguration</a> <a href=THEOplayerConfig.html#getNetworkConfiguration()>getNetworkConfiguration</a>()</pre>
-                                        <div class="block"><p>The network and retry configuration of the player.</p></div>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use network instead&quot;, replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {}, expression = &quot;network&quot;)) <a href=player/NetworkConfiguration.html>NetworkConfiguration</a> <a href=THEOplayerConfig.html#getNetworkConfiguration()>getNetworkConfiguration</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The network and retry configuration. (Nullable)</p></dd>
                                         
 
                                         
@@ -587,7 +628,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getTheoLive</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=theolive/THEOLiveConfig.html>THEOLiveConfig</a> <a href=THEOplayerConfig.html#getTheoLive()>getTheoLive</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=theolive/THEOLiveConfig.html>THEOLiveConfig</a> <a href=THEOplayerConfig.html#getTheoLive()>getTheoLive</a>()</pre>
                                         <div class="block"><p>The THEOlive configuration of the player.</p></div>
 
                                         <dl>
@@ -613,16 +654,13 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>getTHEOLiveConfiguration</h4>
-                                        <pre class="methodSignature">@<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Deprecated.html>Deprecated</a>(forRemoval = true)@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() <a href=theolive/THEOLiveConfig.html>THEOLiveConfig</a> <a href=THEOplayerConfig.html#getTHEOLiveConfiguration()>getTHEOLiveConfiguration</a>()</pre>
-                                        <div class="block"><p>The THEOlive configuration of the player.</p></div>
+                                        <pre class="methodSignature">@<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-deprecated/index.html>Deprecated</a>(message = &quot;use theoLive instead&quot;, replaceWith = @<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-replace-with/index.html>ReplaceWith</a>(imports = {}, expression = &quot;theoLive&quot;)) <a href=theolive/THEOLiveConfig.html>THEOLiveConfig</a> <a href=THEOplayerConfig.html#getTHEOLiveConfiguration()>getTHEOLiveConfiguration</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
                                         
 
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>The THEOlive configuration.</p></dd>
                                         
 
                                         
@@ -639,7 +677,7 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>isAutoIntegrations</h4>
-                                        <pre class="methodSignature"> abstract boolean <a href=THEOplayerConfig.html#isAutoIntegrations()>isAutoIntegrations</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#isAutoIntegrations()>isAutoIntegrations</a>()</pre>
                                         <div class="block"><p>Whether all available integrations should be automatically added on the created <a href=player/Player.html>Player</a>.</p></div>
 
                                         <dl>
@@ -665,8 +703,8 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                           >
                                     <li class="blockList">
                                         <h4>isTunnelingEnabled</h4>
-                                        <pre class="methodSignature"> abstract boolean <a href=THEOplayerConfig.html#isTunnelingEnabled()>isTunnelingEnabled</a>()</pre>
-                                        <div class="block"><p>Whether multimedia tunneling is enabled for the player or not. </p><ul><li>Only supported with the Media3 integration.</li><li>Only supported if <a href=player/Player.html#setRenderingTarget(com.theoplayer.android.api.player.RenderingTarget)>setRenderingTarget</a> is set to <a href=player/RenderingTarget.html#SURFACE_VIEW>SURFACE_VIEW</a>.</li><li>Only supported if the media being played includes both audio and video.</li><li>Only supported on limited number of video codecs and devices.</li></ul></div>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#isTunnelingEnabled()>isTunnelingEnabled</a>()</pre>
+                                        <div class="block"><p>Whether multimedia tunneling is enabled for the player or not.</p><ul><li><p>Only supported with the Media3 integration.</p></li><li><p>Only supported if Player.setRenderingTarget is set to <a href=player/RenderingTarget.html#SURFACE_VIEW>RenderingTarget.SURFACE_VIEW</a>.</p></li><li><p>Only supported if the media being played includes both audio and video.</p></li><li><p>Only supported on limited number of video codecs and devices.</p></li></ul></div>
 
                                         <dl>
 
@@ -683,16 +721,16 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                     </li>
                                 </ul>
                                 
-                                <a id="useSystemCaptionStyle()">
+                                <a id="getUseSystemCaptionStyle()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>useSystemCaptionStyle</h4>
-                                        <pre class="methodSignature"> abstract boolean <a href=THEOplayerConfig.html#useSystemCaptionStyle()>useSystemCaptionStyle</a>()</pre>
-                                        <div class="block"><p>Whether captions should automatically apply a system-defined style. </p><ul><li>Default: <code>false</code></li><li>Any user-defined overrides are still respected.</li></ul></div>
+                                        <h4>getUseSystemCaptionStyle</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#getUseSystemCaptionStyle()>getUseSystemCaptionStyle</a>()</pre>
+                                        <div class="block"><p>Whether captions should automatically apply a system-defined style.</p><ul><li><p>Default: <code>false</code></p></li><li><p>Any user-defined overrides are still respected.</p></li></ul></div>
 
                                         <dl>
 
@@ -710,12 +748,61 @@ public interface <span class="typeNameLabel"><a href=THEOplayerConfig.html>THEOp
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getCmcd</h4>
-                                        <pre class="methodSignature">@<a href=https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html>Nullable</a>() abstract <a href=cmcd/CMCDConfiguration.html>CMCDConfiguration</a> <a href=THEOplayerConfig.html#getCmcd()>getCmcd</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=cmcd/CMCDConfiguration.html>CMCDConfiguration</a> <a href=THEOplayerConfig.html#getCmcd()>getCmcd</a>()</pre>
                                         <div class="block"><p>The CMCD configuration for the player.</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getHlsDateRange()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getHlsDateRange</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#getHlsDateRange()>getHlsDateRange</a>()</pre>
+                                        <div class="block"><p>Whether date ranges will be parsed from HLS manifests.</p><ul><li><p>Default: <code>false</code></p></li><li><p>Can be overridden per source using <a href=theolive/TheoLiveSource.html#hlsDateRange>com.theoplayer.android.api.source.TypedSource.hlsDateRange</a>.</p></li></ul></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>Whether date range parsing is enabled.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="isHlsDateRange()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isHlsDateRange</h4>
+                                        <pre class="methodSignature"> <a href=https://developer.android.com/reference/kotlin/java/lang/Boolean.html>Boolean</a> <a href=THEOplayerConfig.html#isHlsDateRange()>isHlsDateRange</a>()</pre>
+                                        <div class="block"></div>
 
                                         <dl>
 
