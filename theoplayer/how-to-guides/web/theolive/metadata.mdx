@@ -37,15 +37,23 @@ Make sure to always check the frame's `id` and `ownerIdentifier` before using it
 Suppose your UUID is `11111111-1111-1111-1111-111111111111`:
 
 ```javascript
-player.textTracks.addEventListener('addtrack', (event) => {
+player.textTracks.addEventListener('addtrack', function trackListener(event) {
   const track = event.track;
   if (track.type === 'id3') {
+    // ID3 track was added. Listen for incoming ID3 cues.
     track.addEventListener('addcue' /* or 'entercue' */, (e) => {
       const frame = e.cue.content;
       if (frame.id === 'PRIV' && frame.ownerIdentifier === 'optiview.live:meta:11111111-1111-1111-1111-111111111111') {
         console.log('metadata', frame.data);
       }
     });
+    track.removeEventListener('typechange', trackListener);
+  } else if (track.type === '') {
+    // Track type is not yet known. Check again when it becomes known.
+    track.addEventListener('typechange', trackListener);
+  } else {
+    // Track type is known, but is not ID3. Stop listening.
+    track.removeEventListener('typechange', trackListener);
   }
 });
 ```
