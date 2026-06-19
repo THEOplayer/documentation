@@ -1,5 +1,9 @@
 # Changelog
 
+## [11.5.1] - 2026-06-17
+
+- Enable PlayReady key system by default
+
 ## [11.5.0] - 2026-06-16
 
 - Fixed duplicate per-frame closed-caption SEI when encoding below the source frame rate
