@@ -15,7 +15,7 @@ import SeiIntro from '../../shared/theolive/_metadata-sei-intro.mdx';
 
 <SeiIntro />
 
-The OptiView Player SDK exposes these ID3 frames on a text track with [`TextTrack.type`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#type) equal to `'id3'`. Listen for the cue event that matches when you want to react:
+The OptiView Player Web SDK exposes these ID3 frames on a text track with [`TextTrack.type`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#type) equal to `'id3'`. Listen for the cue event that matches when you want to react:
 
 - `addcue` fires as soon as a cue becomes available on the track, before playback reaches it — useful when you want to prefetch data or update application state ahead of time.
 - `entercue` fires when playback enters the cue — useful when you want to act in sync with the video, for example to render an overlay at the moment the cue was inserted.
