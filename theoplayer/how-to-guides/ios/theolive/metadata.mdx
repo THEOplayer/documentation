@@ -15,12 +15,12 @@ import SeiIntro from '../../shared/theolive/_metadata-sei-intro.mdx';
 
 <SeiIntro />
 
-The OptiView Player Web SDK exposes these ID3 frames on a text track with [`TextTrack.type`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#type) equal to `'id3'`. Listen for the cue event that matches when you want to react:
+The OptiView Player iOS SDK exposes these ID3 frames on a text track with [`TextTrack.type`](pathname:///theoplayer/v11/api-reference/api-reference/ios/Protocols/TextTrack.html) equal to `TextTrackType.id3`. Listen for the cue event that matches when you want to react:
 
-- `addcue` fires as soon as a cue becomes available on the track, before playback reaches it — useful when you want to prefetch data or update application state ahead of time.
-- `entercue` fires when playback enters the cue — useful when you want to act in sync with the video, for example to render an overlay at the moment the cue was inserted.
+- `TextTrackEventTypes.ADD_CUE` fires as soon as a cue becomes available on the track, before playback reaches it — useful when you want to prefetch data or update application state ahead of time.
+- `TextTrackEventTypes.ENTER_CUE` fires when playback enters the cue — useful when you want to act in sync with the video, for example to render an overlay at the moment the cue was inserted.
 
-The ID3 frame will be contained in `cue.content` as a [ID3PrivateFrame](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3PrivateFrame.html) with `ownerIdentifier` equal to `optiview.live:meta:<your-uuid>`.
+The ID3 frame will be contained in `cue.contentDictionary` with `id` equal to `"PRIV"` and `ownerIdentifier` equal to `optiview.live:meta:<your-uuid>`.
 
 :::important
 Make sure to always check the frame's `id` and `ownerIdentifier` before using it, to avoid processing unrelated ID3 frames.
@@ -28,62 +28,20 @@ Make sure to always check the frame's `id` and `ownerIdentifier` before using it
 
 Suppose your UUID is `11111111-1111-1111-1111-111111111111`:
 
-```javascript
-player.textTracks.addEventListener('addtrack', function trackListener(event) {
-  const track = event.track;
-  if (track.type === 'id3') {
-    // ID3 track was added. Listen for incoming ID3 cues.
-    track.addEventListener('addcue' /* or 'entercue' */, (e) => {
-      const frame = e.cue.content;
-      if (frame.id === 'PRIV' && frame.ownerIdentifier === 'optiview.live:meta:11111111-1111-1111-1111-111111111111') {
-        console.log('metadata', frame.data);
-      }
-    });
-    track.removeEventListener('typechange', trackListener);
-  } else if (track.type === '') {
-    // Track type is not yet known. Check again when it becomes known.
-    track.addEventListener('typechange', trackListener);
-  } else {
-    // Track type is known, but is not ID3. Stop listening.
-    track.removeEventListener('typechange', trackListener);
-  }
-});
+```swift
+_ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: { (addTrackEvent) in
+  let track = addTrackEvent.track
+  guard track.type == TextTrackType.ID3.rawValue else { return }
+  // ID3 track was added. Listen for incoming ID3 cues.
+  _ = track.addEventListener(type: TextTrackEventTypes.ADD_CUE, listener: { (addCueEvent) in
+      guard let cue = addCueEvent.cue as? Id3Cue,
+            let frame = cue.contentDictionary else { return }
+      guard frame["id"] == "PRIV",
+            frame["ownerIdentifier"] == "optiview.live:meta:11111111-1111-1111-1111-111111111111"
+            else { return }
+      print("Metadata: \(frame["data"])")
+  })
+})
 ```
 
-Here the `frame.data` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
-
-<details>
-<summary>Using third-party players</summary>
-
-When using a third-party player SDK, please refer to their respective documentation on how to retrieve ID3 from the stream.
-
-For example, with [Shaka Player](https://github.com/shaka-project/shaka-player),
-you can listen for the [`metadata` event](https://shaka-player-demo.appspot.com/docs/api/shaka.Player.html#.event:MetadataEvent):
-
-```javascript
-player.addEventListener('metadata', (event) => {
-  if (event.metadataType === 'org.id3') {
-    const frame = event.payload; // see https://shaka-player-demo.appspot.com/docs/api/shaka.extern.html#.MetadataFrame
-    if (frame.key === 'PRIV' && frame.description === 'optiview.live:meta:11111111-1111-1111-1111-111111111111') {
-      console.log('metadata', frame.data);
-    }
-  }
-});
-```
-
-With [hls.js](https://github.com/video-dev/hls.js/), you can listen for the `FRAG_PARSING_METADATA` event.
-However, hls.js doesn't come with a built-in ID3 parser, so you'll need to parse the ID3 tag manually:
-
-```javascript
-hls.on(Hls.Events.FRAG_PARSING_METADATA, (event, data) => {
-  for (const sample of data.samples) {
-    if (sample.type === Hls.MetadataSchema.emsg) {
-      const tag = sample.data;
-      // TODO Parse ID3 tag and look for ID3 PRIV frame with correct owner identifier
-    }
-  }
-});
-```
-
-</details>
-
+Here the `frame["data"]` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
