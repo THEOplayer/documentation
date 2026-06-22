@@ -1,0 +1,87 @@
+---
+title: Metadata
+sidebar_position: 3
+---
+
+# Metadata
+
+import Intro from '../../shared/theolive/_metadata-intro.mdx';
+
+<Intro />
+
+## User-data-unregistered SEI and API push
+
+import SeiIntro from '../../shared/theolive/_metadata-sei-intro.mdx';
+
+<SeiIntro />
+
+The OptiView Player Android SDK exposes these ID3 frames on a text track with [`TextTrack.type`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html#getType()>) equal to `TextTrackType.ID3`. Listen for the cue event that matches when you want to react:
+
+- `TextTrackEventTypes.ADDCUE` fires as soon as a cue becomes available on the track, before playback reaches it — useful when you want to prefetch data or update application state ahead of time.
+- `TextTrackEventTypes.ENTERCUE` fires when playback enters the cue — useful when you want to act in sync with the video, for example to render an overlay at the moment the cue was inserted.
+
+The ID3 frame will be contained in `cue.frame` as a [ID3Frame.Private](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/id3/ID3Frame.Private.html) with `ownerIdentifier` equal to `optiview.live:meta:<your-uuid>`.
+
+:::important
+Make sure to always check the frame's type and `ownerIdentifier` before using it, to avoid processing unrelated ID3 frames.
+:::
+
+Suppose your UUID is `11111111-1111-1111-1111-111111111111`:
+
+```kotlin
+val addCueListener = EventListener<AddCueEvent> { event ->
+    val cue = event.cue as? ID3Cue ?: return@EventListener
+    val frame = cue.frame as? ID3Frame.Private ?: return@EventListener
+    if (frame.ownerIdentifier == "optiview.live:meta:11111111-1111-1111-1111-111111111111") {
+        Log.d("MyApp", "Metadata: ${frame.data.decodeToString()}")
+    }
+}
+theoplayerView.player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRACK) { event ->
+    val track = event.track as TextTrack
+    if (track.type == TextTrackType.ID3) {
+        // ID3 track was added. Listen for incoming ID3 cues.
+        track.addEventListener(TextTrackEventTypes.ADDCUE /* or TextTrackEventTypes.ENTERCUE */, addCueListener)
+    }
+}
+```
+
+Here the `frame.data` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
+
+## Picture timing SEI
+
+Picture timing SEI cues surface on a text track with [`TextTrack.type`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html#getType()>) equal to `TextTrackType.TIMECODE`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
+
+```kotlin
+theoplayerView.player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRACK) { event ->
+    val track = event.track as TextTrack
+    if (track.type == TextTrackType.TIMECODE) {
+        // Timecode track was added. Listen for incoming timecode cues.
+        track.addEventListener(TextTrackEventTypes.ENTERCUE, onTimeCode)
+    }
+}
+```
+
+The cue `content` is a `TimeCode` object encoded as a `JSONObject`:
+
+```kotlin
+@Serializable
+data class TimeCode(
+    val hours: Int,
+    val minutes: Int,
+    val seconds: Int,
+    val frames: Int
+)
+```
+
+A handler can then turn that timecode into whatever action your app needs:
+
+```kotlin
+val onTimeCode = EventListener<EnterCueEvent> { event ->
+    val cue = event.cue
+    val content = checkNotNull(cue.content)
+    val timeCode = Json.decodeFromString<TimeCode>(content.toString())
+    Log.d("MyApp", "Timecode: ${timeCode.hours}h ${timeCode.minutes}m ${timeCode.seconds}s ${timeCode.frames}f")
+}
+```
+
+A full example could be as follows: you distribute sports matches and want to display an overlay on the player when the score changes. Every time a score change happens, you add a picture timing SEI message to the stream and store in your backend that this time corresponds with this score. (You could also just add the timing message to all frames if this is easier, but this requires more processing both server and player side.) This information can then be retrieved by the application running on the device of a viewer. You then add the event listener and listen for the `entercue` events. In the listener you check whether the `TimeCode` corresponds with a score change event you recorded earlier and if so, display an overlay over the player.

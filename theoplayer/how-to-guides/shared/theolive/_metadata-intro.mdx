@@ -1,0 +1,8 @@
+Metadata that travels through your OptiView Live stream — whether [pushed via the API or embedded as SEI](/theolive/channel/metadata-insertion/) — surfaces on the player as cues on a text track. The general approach is the same in every case:
+
+1. Listen for `addtrack` on `player.textTracks` so you find out when a new metadata track shows up.
+2. Subscribe to a cue event on that track.
+3. Inspect the cue to make sure it carries the metadata you care about.
+4. Read the payload from `cue.content`.
+
+The properties you match on, the cue event you subscribe to, and the shape of `cue.content` all depend on which kind of metadata is being delivered.

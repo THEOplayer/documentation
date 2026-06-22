@@ -1,0 +1,6 @@
+UDU SEI and API-pushed payloads surface as ID3 `PRIV` frames inside an ID3 v2.4 tag embedded in an `emsg` box, carried by the CMAF segments of the stream.
+
+- The owner identifier of the `PRIV` frame will be set to: `optiview.live:meta:<your-uuid>`
+- The frame's private data will contain your metadata as raw binary data.
+
+(See [section 4.27 of the ID3 v2.4 Native Frames specification](https://id3.org/id3v2.4.0-frames) and [ID3 in CMAF](https://aomediacodec.github.io/id3-emsg/) for more details.)
