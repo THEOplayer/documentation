@@ -31,7 +31,7 @@ Suppose your UUID is `11111111-1111-1111-1111-111111111111`:
 ```swift
 _ = theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: { (addTrackEvent) in
   let track = addTrackEvent.track
-  guard track.type == TextTrackType.ID3.rawValue else { return }
+  guard track.type == TextTrackType.id3.rawValue else { return }
   // ID3 track was added. Listen for incoming ID3 cues.
   _ = track.addEventListener(type: TextTrackEventTypes.ADD_CUE, listener: { (addCueEvent) in
       guard let cue = addCueEvent.cue as? Id3Cue,
