@@ -87,38 +87,3 @@ hls.on(Hls.Events.FRAG_PARSING_METADATA, (event, data) => {
 
 </details>
 
-## Picture timing SEI
-
-Picture timing SEI cues surface on a text track with [`TextTrack.id`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#id) equal to `'timecode'`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
-
-```javascript
-player.textTracks.addEventListener('addtrack', (event) => {
-  const track = event.track;
-  if (track.id === 'timecode') {
-    track.mode = 'showing'; // Setting the mode to showing will enable the entercue events
-    track.addEventListener('entercue', onTimeCode);
-  }
-});
-```
-
-The cue `content` is a structured `TimeCode` object:
-
-```typescript
-export interface TimeCode {
-  readonly hours: number;
-  readonly minutes: number;
-  readonly seconds: number;
-  readonly frames: number;
-}
-```
-
-A handler can then turn that timecode into whatever action your app needs:
-
-```javascript
-const onTimeCode = (event) => {
-  const timeCode = event.cue.content;
-  // Insert other code here
-};
-```
-
-A full example could be as follows: you distribute sports matches and want to display an overlay on the player when the score changes. Every time a score change happens, you add a picture timing SEI message to the stream and store in your backend that this time corresponds with this score. (You could also just add the timing message to all frames if this is easier, but this requires more processing both server and player side.) This information can then be retrieved by the application running on the device of a viewer. You then add the event listener and listen for the `entercue` events. In the listener you check whether the `TimeCode` corresponds with a score change event you recorded earlier and if so, display an overlay over the player.
