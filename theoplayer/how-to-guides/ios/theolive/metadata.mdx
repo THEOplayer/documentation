@@ -1,0 +1,124 @@
+---
+title: Metadata
+sidebar_position: 3
+---
+
+# Metadata
+
+import Intro from '../../shared/theolive/_metadata-intro.mdx';
+
+<Intro />
+
+## User-data-unregistered SEI and API push
+
+import SeiIntro from '../../shared/theolive/_metadata-sei-intro.mdx';
+
+<SeiIntro />
+
+The OptiView Player Web SDK exposes these ID3 frames on a text track with [`TextTrack.type`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#type) equal to `'id3'`. Listen for the cue event that matches when you want to react:
+
+- `addcue` fires as soon as a cue becomes available on the track, before playback reaches it — useful when you want to prefetch data or update application state ahead of time.
+- `entercue` fires when playback enters the cue — useful when you want to act in sync with the video, for example to render an overlay at the moment the cue was inserted.
+
+The ID3 frame will be contained in `cue.content` as a [ID3PrivateFrame](pathname:///theoplayer/v11/api-reference/web/interfaces/ID3PrivateFrame.html) with `ownerIdentifier` equal to `optiview.live:meta:<your-uuid>`.
+
+:::important
+Make sure to always check the frame's `id` and `ownerIdentifier` before using it, to avoid processing unrelated ID3 frames.
+:::
+
+Suppose your UUID is `11111111-1111-1111-1111-111111111111`:
+
+```javascript
+player.textTracks.addEventListener('addtrack', function trackListener(event) {
+  const track = event.track;
+  if (track.type === 'id3') {
+    // ID3 track was added. Listen for incoming ID3 cues.
+    track.addEventListener('addcue' /* or 'entercue' */, (e) => {
+      const frame = e.cue.content;
+      if (frame.id === 'PRIV' && frame.ownerIdentifier === 'optiview.live:meta:11111111-1111-1111-1111-111111111111') {
+        console.log('metadata', frame.data);
+      }
+    });
+    track.removeEventListener('typechange', trackListener);
+  } else if (track.type === '') {
+    // Track type is not yet known. Check again when it becomes known.
+    track.addEventListener('typechange', trackListener);
+  } else {
+    // Track type is known, but is not ID3. Stop listening.
+    track.removeEventListener('typechange', trackListener);
+  }
+});
+```
+
+Here the `frame.data` carries the binary payload exactly as it was sent — your application is responsible for parsing it (for example UTF-8 JSON, protobuf, or your own format).
+
+<details>
+<summary>Using third-party players</summary>
+
+When using a third-party player SDK, please refer to their respective documentation on how to retrieve ID3 from the stream.
+
+For example, with [Shaka Player](https://github.com/shaka-project/shaka-player),
+you can listen for the [`metadata` event](https://shaka-player-demo.appspot.com/docs/api/shaka.Player.html#.event:MetadataEvent):
+
+```javascript
+player.addEventListener('metadata', (event) => {
+  if (event.metadataType === 'org.id3') {
+    const frame = event.payload; // see https://shaka-player-demo.appspot.com/docs/api/shaka.extern.html#.MetadataFrame
+    if (frame.key === 'PRIV' && frame.description === 'optiview.live:meta:11111111-1111-1111-1111-111111111111') {
+      console.log('metadata', frame.data);
+    }
+  }
+});
+```
+
+With [hls.js](https://github.com/video-dev/hls.js/), you can listen for the `FRAG_PARSING_METADATA` event.
+However, hls.js doesn't come with a built-in ID3 parser, so you'll need to parse the ID3 tag manually:
+
+```javascript
+hls.on(Hls.Events.FRAG_PARSING_METADATA, (event, data) => {
+  for (const sample of data.samples) {
+    if (sample.type === Hls.MetadataSchema.emsg) {
+      const tag = sample.data;
+      // TODO Parse ID3 tag and look for ID3 PRIV frame with correct owner identifier
+    }
+  }
+});
+```
+
+</details>
+
+## Picture timing SEI
+
+Picture timing SEI cues surface on a text track with [`TextTrack.id`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#id) equal to `'timecode'`. Each cue is anchored to a frame, so `entercue` is usually the most useful event: it fires when playback reaches the cue, letting you react in sync with the video.
+
+```javascript
+player.textTracks.addEventListener('addtrack', (event) => {
+  const track = event.track;
+  if (track.id === 'timecode') {
+    track.mode = 'showing'; // Setting the mode to showing will enable the entercue events
+    track.addEventListener('entercue', onTimeCode);
+  }
+});
+```
+
+The cue `content` is a structured `TimeCode` object:
+
+```typescript
+export interface TimeCode {
+  readonly hours: number;
+  readonly minutes: number;
+  readonly seconds: number;
+  readonly frames: number;
+}
+```
+
+A handler can then turn that timecode into whatever action your app needs:
+
+```javascript
+const onTimeCode = (event) => {
+  const timeCode = event.cue.content;
+  // Insert other code here
+};
+```
+
+A full example could be as follows: you distribute sports matches and want to display an overlay on the player when the score changes. Every time a score change happens, you add a picture timing SEI message to the stream and store in your backend that this time corresponds with this score. (You could also just add the timing message to all frames if this is easier, but this requires more processing both server and player side.) This information can then be retrieved by the application running on the device of a viewer. You then add the event listener and listen for the `entercue` events. In the listener you check whether the `TimeCode` corresponds with a score change event you recorded earlier and if so, display an overlay over the player.
