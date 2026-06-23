@@ -27,3 +27,35 @@ https://discovery.theo.live/v2/distributions/<distributionId>/hls-ts/main.m3u8
 :::warning
 The HLS-TS URL only works if HLS-TS output is enabled on the engine. See the [streaming protocols](../media-engine/streaming-protocols.mdx) guide for more information.
 :::
+
+## Additional query parameters
+
+When using OptiView Player, the player automatically detects the viewer's platform — such as their device type and operating system — and passes this context along when discovering a distribution. This information is used to evaluate [distribution override](../distribution/distribution-override.mdx) rules.
+
+When you request the HLS manifest directly, this automatic detection is not available. To make sure override rules are still evaluated correctly, you can provide the platform context manually as URL query parameters. These parameters work the same way as the distribution override matching criteria:
+
+| Parameter    | Values                                         | Description                                                     |
+| ------------ | ---------------------------------------------- | --------------------------------------------------------------- |
+| `deviceType` | `tv`, `mobile`, `desktop`, `other`             | The type of device the viewer is using.                         |
+| `sdkType`    | `native`, `web`                                | Whether the viewer is using a native SDK or a web-based player. |
+| `osName`     | `apple`, `android`, `windows`, `roku`, `other` | The operating system of the viewer's device.                    |
+| `profileId`  | any string                                     | A custom profile identifier for advanced targeting.             |
+
+For example, to identify the viewer as a Roku TV device:
+
+```text
+https://discovery.theo.live/v2/distributions/<distributionId>/hls/main.m3u8?osName=roku&deviceType=tv
+```
+
+## DRM
+
+If [DRM](../media-engine/drm.mdx) is enabled on the engine, the HLS manifest served at the URLs above is encrypted. The platform supports two encryption schemes:
+
+- **CENC** — the default, because it is supported on most platforms.
+- **CBCS** — required for playback on Apple devices (FairPlay).
+
+Because CENC is served by default, a manifest requested directly on an Apple device will not play DRM-protected content. To receive a CBCS-encrypted manifest, pass `osName=apple` as a [query parameter](#additional-query-parameters):
+
+```text
+https://discovery.theo.live/v2/distributions/<distributionId>/hls/main.m3u8?osName=apple
+```
