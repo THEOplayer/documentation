@@ -2,6 +2,16 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-06-22
+
+### Media Server
+
+<!-- 3.3.4 -->
+
+#### Fixes
+
+- Fixed a bug where `maxBitrate` in the view request was ignored for non-legacy ABR strategies.
+
 ## 2026-05-28
 
 ### Media Server
