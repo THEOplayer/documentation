@@ -76,13 +76,11 @@ For scenarios such as [Multi-Source Broadcasting](/millicast/broadcast/multi-sou
 
 To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast/publishing-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/playback/multi-view.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
 
-:::info Token-scoped dedup behavior
-Re-streaming is deduplicated **per publish token on each publisher node**. Only one stream per publish token can actively re-stream on a given node at a time. If a new feed starts publishing with the same token that is already re-streaming, the existing re-stream is stopped and the new feed takes over.
+## Re-streaming scope per publish token
 
-This means that when multiple streams share the same publish token, only the most recently connected feed will re-stream. To prevent this, add `&norestream` to the publishing URLs of any feeds that should not re-stream.
+Re-streaming is scoped to the **publish token**. Only one active ingest per publish token will be re-streamed at a time. If a new ingest starts using the same publish token while another is already re-streaming, the existing re-stream is stopped and the new ingest takes over.
 
-Note that this dedup is **node-local** — if feeds using the same token connect to different publisher nodes, each node will independently re-stream its feed, which may result in duplicate re-streams to the same destination.
-:::
+To re-stream different ingests independently, use a **separate publish token** for each ingest. If multiple ingests must share the same publish token, add `&norestream` to the publishing URLs of any ingests that should not re-stream.
 
 ## Feature compatibility
 
