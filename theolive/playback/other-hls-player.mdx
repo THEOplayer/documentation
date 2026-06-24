@@ -47,9 +47,29 @@ For example, to identify the viewer as a Roku TV device:
 https://discovery.theo.live/v2/distributions/<distributionId>/hls/main.m3u8?osName=roku&deviceType=tv
 ```
 
+## Token security
+
+If [token-based security](../distribution/security/token-based-security.mdx) is enabled on the distribution, every request to the manifest URL must include a valid JWT. When using a third-party player, provide the token as a `token` query parameter:
+
+```text
+https://discovery.theo.live/v2/distributions/<distributionId>/hls/main.m3u8?token=<JWT>
+```
+
+The token can be combined with any of the [platform query parameters](#additional-query-parameters) above — for example, `?osName=apple&token=<JWT>`.
+
+See the [token-based security](../distribution/security/token-based-security.mdx) guide for details on generating and signing tokens.
+
 ## DRM
 
-If [DRM](../media-engine/drm.mdx) is enabled on the engine, the HLS manifest served at the URLs above is encrypted. The platform supports two encryption schemes:
+If [DRM](../media-engine/drm.mdx) is enabled on the engine, the HLS manifest served at the URLs above is encrypted. When using OptiView Player, DRM is handled for you automatically. When you play through a third-party player, you are responsible for the DRM integration yourself — both requesting the manifest with the right encryption scheme and configuring license acquisition.
+
+:::info
+The platform uses **EZDRM** as its DRM service provider, so your player must be integrated with EZDRM.
+:::
+
+### Encryption schemes
+
+The platform supports two encryption schemes:
 
 - **CENC** — the default, because it is supported on most platforms.
 - **CBCS** — required for playback on Apple devices (FairPlay).
@@ -58,4 +78,35 @@ Because CENC is served by default, a manifest requested directly on an Apple dev
 
 ```text
 https://discovery.theo.live/v2/distributions/<distributionId>/hls/main.m3u8?osName=apple
+```
+
+### License acquisition URLs
+
+Configure your player with the **license acquisition URL** that matches the encryption scheme it is using, so it can request decryption licenses from the DRM license server:
+
+- **Widevine** and **PlayReady** — for CENC-encrypted streams.
+- **FairPlay** — for CBCS-encrypted streams (Apple devices). FairPlay additionally requires a **certificate URL**.
+
+Retrieve the license acquisition URLs for a channel with the [Get EZDRM content protection configuration](https://api.theo.live/v2/api-docs/#/Channels/get-channel-drm-config-ezdrm) endpoint:
+
+`GET https://api.theo.live/v2/channels/{channelId}/drm/config/ezdrm`
+
+The response contains the license acquisition URL — and, for FairPlay, the certificate URL — for each key system:
+
+```json
+{
+  "contentProtection": {
+    "integration": "ezdrm",
+    "widevine": {
+      "licenseUrl": "<widevine-license-url>"
+    },
+    "playready": {
+      "licenseUrl": "<playready-license-url>"
+    },
+    "fairplay": {
+      "licenseUrl": "<fairplay-license-url>",
+      "certificateUrl": "<fairplay-certificate-url>"
+    }
+  }
+}
 ```
