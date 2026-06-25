@@ -78,9 +78,12 @@ To disable re-streaming on specific feeds add the **norestream** boolean [publis
 
 ## Re-streaming scope per publish token
 
-Re-streaming is scoped to the **publish token**. Only one active ingest per publish token will be re-streamed at a time. If a new ingest starts using the same publish token while another is already re-streaming, the existing re-stream would be stopped and replaced by the new ingest. Because of this, **re-streaming multiple ingests with the same publish token is not recommended** — the behavior may be unpredictable.
+Re-streaming is scoped to the **publish token**. When multiple ingests share the same publish token, the system's load balancer may route them to different internal nodes, resulting in undefined behavior:
 
-To re-stream different ingests independently, use a **separate publish token** for each ingest. If multiple ingests must share the same publish token, add `&norestream` to the publishing URLs of any ingests that should not re-stream.
+- If two ingests are routed to the same node, one re-stream may be stopped and replaced by the other.
+- If they are routed to different nodes, both may attempt to re-stream to the same endpoint simultaneously, causing errors or corrupted statistics at the re-stream destination.
+
+Because of this, **re-streaming multiple ingests with the same publish token is not supported**. To re-stream different ingests independently, use a **separate publish token** for each ingest. If multiple ingests must share the same publish token, add `&norestream` to the publishing URLs of any ingests that should not re-stream.
 
 ## Feature compatibility
 
