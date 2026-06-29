@@ -76,6 +76,12 @@ For scenarios such as [Multi-Source Broadcasting](/millicast/broadcast/multi-sou
 
 To disable re-streaming on specific feeds add the **norestream** boolean [publishing parameter](/millicast/broadcast/publishing-parameters.md) to your configured publishing URLs. This is used to indicate which sources specifically should be used or not. For example, in a Multi-bitrate (MBR) configuration where there are multiple quality layers being ingested, you might re-stream only the highest quality layer and then add `&norestream` to any additional contribution layers. Similarly, if you have an interactive [multi-view](/millicast/playback/multi-view.md) broadcast where multiple sources are sharing the same publishing token, you can configure the URLs to only re-stream your intended source.
 
+## Re-streaming scope per publish token
+
+Re-streaming is scoped to the **publish token**. If multiple ingests share the same publish token while re-streaming is active, the behavior is undefined — the existing re-stream may be stopped, or multiple ingests may attempt to re-stream to the same endpoint simultaneously. Either case can result in errors or corrupted statistics at the re-stream destination.
+
+To re-stream different ingests independently, use a **separate publish token** for each ingest. If multiple ingests must share the same publish token, add `&norestream` to the publishing URLs of any ingests that should not re-stream.
+
 ## Feature compatibility
 
 ### Cloud transcoder and Re-streaming
