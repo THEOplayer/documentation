@@ -32,6 +32,7 @@ The following parameters can be provided used to configure the hosted player. _N
     - `sbp.optiview.dolby.com`
     - _Note: at this time it is not possible to whitelist the end-application domain for whitelisted page domains in the license. If you wish to secure your streams by page domain, please contact Dolby to get your own license and player implementation._
   - _Whitelist Source Domains_
+    - `cdn.optiview.dolby.com`
     - `cdn.theo.live`
     - `cdn.anywhere.theo.live`
     - `cdn.tla-prd.theostream.live`
