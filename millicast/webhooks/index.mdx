@@ -123,9 +123,7 @@ Here is a code sample for how to use the signature to check the data.
 
 ```javascript title="Node.js"
 const webhookSecretBuffer = Buffer.from(webhookSecret, 'base64');
-const calculatedSignature = 'sha1=' + Crypto.createHmac('sha1', webhookSecretBuffer)
-  .update(body)
-  .digest('hex');
+const calculatedSignature = 'sha1=' + Crypto.createHmac('sha1', webhookSecretBuffer).update(body).digest('hex');
 const headerSignature = request.get('x-millicast-signature');
 
 if (calculatedSignature !== headerSignature) {
