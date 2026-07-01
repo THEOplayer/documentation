@@ -1,5 +1,9 @@
 # Changelog
 
+## [11.5.2] - 2026-07-01
+
+- Fixed ingest failing to negotiate for high-bit-depth or 4:2:2 sources (e.g. H.264 High 4:2:2 10-bit) by converting decoded video to a supported pixel format
+
 ## [11.5.1] - 2026-06-17
 
 - Enable PlayReady key system by default
