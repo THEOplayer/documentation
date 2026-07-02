@@ -28,12 +28,21 @@ const FeatureList: FeatureItem[] = [
       />
     ),
     description: (
-      <p>
-        Dolby OptiView Player (formerly known as THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any
-        device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.
-      </p>
+      <>
+        <p>
+          Dolby OptiView Player (formerly known as THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any
+          device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.
+        </p>
+        <p>
+          Pair it with Open Video UI to easily build and customize your video player UI to match your branding style through a comprehensive library
+          of open-source UI components.
+        </p>
+      </>
     ),
-    to: [{ link: '/theoplayer', text: 'Get Started' }],
+    to: [
+      { link: '/theoplayer', text: 'OptiView Player' },
+      { link: '/open-video-ui', text: 'Open Video UI' },
+    ],
   },
   {
     title: 'Dolby OptiView Live',
@@ -100,25 +109,6 @@ const FeatureList: FeatureItem[] = [
       </p>
     ),
     to: [{ link: '/ad-engine', text: 'Get Started' }],
-  },
-  {
-    title: 'Open Video UI',
-    Image: (props) => (
-      <ThemedImage
-        {...props}
-        sources={{
-          light: useBaseUrl('/img/openvideoui-black-wordmark.svg'),
-          dark: useBaseUrl('/img/openvideoui-white-wordmark.svg'),
-        }}
-      />
-    ),
-    description: (
-      <p>
-        Paired with the OptiView Player, the Open Video UI enables you to easily build and customize your video player UI to match your branding style
-        through a comprehensive library of open-source UI components.
-      </p>
-    ),
-    to: [{ link: '/open-video-ui', text: 'Get Started' }],
   },
 ];
 
