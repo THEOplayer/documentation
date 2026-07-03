@@ -9,6 +9,79 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.6.0 (2026/07/03)
+
+### General
+
+#### ✨ Features
+
+- Added `externalId` to OptiView Live distribution metadata exposed by the `distributionloaded` event.
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where an OptiView Live stream was incorrectly flagged as offline during slow startup.
+- Fixed an issue where ID3 text tracks did not initially have a `TextTrack.type` set when playing inside a `WKWebView` on iOS.
+- Fixed an issue where the player would error on some specific HLS streams with TTML subtitles.
+- Fixed an issue where the player would create gaps in the buffer around discontinuities in certain HLS streams, which could result in undesirable gap jumps or short freezes during playback.
+- Fixed an issue where the player sometimes would play only audio after a stall when playing an HESP stream.
+- Fixed an issue where the device motion controls were not working in VR on mobile Chrome browsers.
+- Fixed an issue where the device motion orientation in VR was inverted on mobile Chrome browsers.
+- Fixed an issue where VR videos were being rendered upside down on iPad Safari.
+
+### Android
+
+#### ✨ Features
+
+- CMCD ad event reporting is now supported for all ad integrations (and no longer limited to just OptiView Ads).
+
+#### ⚡ Improvements
+
+- Added optional provider information to OptiView Live endpoints.
+
+#### 🐛 Issues
+
+- Fixed an issue where an OptiView Ads overlay stays onscreen indefinitely after it has expired.
+- Fixed an issue where Double Box and L-shape layouts were incorrectly shown in Picture-in-Picture mode with OptiView Ads.
+- Fixed an issue where the player would crash if OptiView Ads playback was started while in Picture-in-Picture mode.
+- Fixed an issue where the ads UI could get stuck after playing two consecutive ad breaks with OptiView Ads.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for customData on the  Ad and AdBreak protocols.
+
+#### 🐛 Issues
+
+- Fixed an issue where the duration of OptiView Break Manifest Ads were not respected.
+- Fixed an issue where changing or clearing `player.source` while playing an HESP stream could cause the app to crash due to an internal race condition.
+- Fixed an issue where transitioning between IMA prerolls would cause the PiP window to close.
+- Fixed an issue where sources with multiple IMA prerolls would load trailing prerolls after the main content.
+- Fixed an issue where setting a source with an IMA ad while another source with an ad is playing would cause a crash.
+- Fixed an issue where scheduling IMA ads causes a momentary black screen in main content.
+- Fixed an issue where ads from different systems would overlap with OptiView Ads.
+- Fixed an issue in OptiView Ads where the layout would switch to single momentarily in between companion ads.
+- Fixed an issue where during ad playback in PiP, the original player view continues to playback main content.
+- Fixed an issue where double box and L-shape ads don't show in PiP.
+- Fixed an issue where Ads would remain in double box layout after finishing.
+
+### Roku
+
+#### ✨ Features
+
+- Added client-side ad beaconing for MediaKind SSAI streams.
+- Added session beacons for the MediaKind connector.
+
+#### ⚡ Improvements
+
+- Removed automatic use of `START=Live` for live MediaKind streams. The client now can specify the live stream URL params.
+
+#### 🐛 Issues
+
+- Fixed an issue where during fallback on an OptiView Live stream the wrong endpoint was selected.
+
 ## 🚀 11.5.1 (2026/07/03)
 
 ### iOS
@@ -115,7 +188,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### 🐛 Issues
 
-- Fixed an issue with Optiview Ads where setting overlay positions (top/bottom/left/right) to 0 was not supported.
+- Fixed an issue with OptiView Ads where setting overlay positions (top/bottom/left/right) to 0 was not supported.
 - Fixed an issue where the player could crash on Sky Glass/Puck when `autoplay` is set to `true`.
 - Fixed an issue where using WebXR on iOS Safari was preventing VR video from being rendered inline.
 - Fixed an issue where clicking the "LIVE" button on an HLS live stream would sometimes seek to the start of the DVR window instead of the live edge when using native HLS playback on macOS/iOS Safari.
@@ -164,7 +237,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### 🐛 Issues
 
-- Fixed an issue with Optiview Ads where setting overlay positions (top/bottom/left/right) to 0 was not supported.
+- Fixed an issue with OptiView Ads where setting overlay positions (top/bottom/left/right) to 0 was not supported.
 
 ### Roku
 

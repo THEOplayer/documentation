@@ -1024,7 +1024,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The delegate defining behavior for background playback</p>
+                        <p>The delegate defining behavior for background playback.</p>
 
                       </div>
                       <div class="declaration">
@@ -1109,10 +1109,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>THEOplayer&rsquo;s Version.</p>
+                        <p>The version of THEOplayer.</p>
 <div class="aside aside-remark">
     <p class="aside-title">Remark</p>
-    Example: <code>&quot;2.77.0&quot;</code>
+    Example: <code>&quot;11.5.0&quot;</code>
 
 </div>
 
@@ -1812,10 +1812,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Whether to allow the player to playback externally (Airplay).
-    - Remark:
-       - Default is set to <strong>true</strong>
-       - This is not supported for THEOlive sources.</p>
+                        <p>Whether to allow the player to playback externally (AirPlay).</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>Default is set to <code>true</code>.</li>
+<li>This is not supported for THEOlive sources.</li>
+</ul>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -2114,7 +2119,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns the unique ID of the player</p>
+                        <p>Returns the unique ID of the player.</p>
 
                       </div>
                       <div class="declaration">
@@ -2317,13 +2322,16 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>After invoking this method, the player stops playback completely and unloads all loaded resources.</p>
-<pre class="highlight swift"><code><span class="o">-</span> <span class="kt">Remark</span><span class="p">:</span>
-   <span class="o">-</span> <span class="kt">If</span> <span class="n">the</span> <span class="n">operation</span> <span class="n">completes</span><span class="p">,</span> <span class="n">the</span> <span class="n">success</span> <span class="n">flag</span> <span class="k">is</span> <span class="kc">true</span> <span class="n">and</span> <span class="n">the</span> <span class="n">error</span> <span class="k">is</span> <span class="kc">nil</span><span class="o">.</span>
-   <span class="o">-</span> <span class="kt">If</span> <span class="n">the</span> <span class="n">operation</span> <span class="n">fails</span><span class="p">,</span> <span class="n">the</span> <span class="n">success</span> <span class="n">flag</span> <span class="k">is</span> <span class="kc">false</span> <span class="n">and</span> <span class="n">the</span> <span class="n">error</span> <span class="n">indicates</span> <span class="n">the</span> <span class="n">problem</span><span class="o">.</span>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>Remark:</p>
 
-<span class="o">-</span> <span class="kt">Parameters</span><span class="p">:</span>
-   <span class="o">-</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">An</span> <span class="kd">optional</span> <span class="n">closure</span> <span class="n">to</span> <span class="n">invoke</span> <span class="n">when</span> <span class="n">operation</span> <span class="n">completes</span> <span class="n">or</span> <span class="n">fails</span><span class="p">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="kc">nil</span><span class="o">.</span> <span class="kt">The</span> <span class="n">closure</span> <span class="n">takes</span> <span class="n">two</span> <span class="kd">optional</span> <span class="nv">arguments</span><span class="p">:</span> <span class="kt">A</span> <span class="n">success</span> <span class="n">flag</span> <span class="n">and</span> <span class="n">an</span> <span class="n">error</span><span class="o">.</span>
-</code></pre>
+<ul>
+<li>If the operation completes, the success flag is true and the error is nil.</li>
+<li>If the operation fails, the success flag is false and the error indicates the problem.</li>
+</ul>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -2333,6 +2341,25 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stop</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">?,</span> <span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional closure to invoke when operation completes or fails, defaults to nil. The closure takes two optional arguments: A success flag and an error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -3033,7 +3060,7 @@ with the given <code><a href="../Enums/KeySystemId.html">KeySystemId</a></code>,
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns all registered <code>Integration</code>s  on the THEOplayer instance</p>
+                        <p>Returns all registered <code>Integration</code>s  on the THEOplayer instance.</p>
 
                       </div>
                       <div class="declaration">
@@ -3087,12 +3114,7 @@ with the given <code><a href="../Enums/KeySystemId.html">KeySystemId</a></code>,
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>API to configure TextTrack styles (for subtitles)</p>
-<div class="aside aside-remark">
-    <p class="aside-title">Remark</p>
-    Only available on the native pipeline.
-
-</div>
+                        <p>API to configure TextTrack styles (for subtitles).</p>
 
 <p>Sample usage</p>
 <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">tts</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">theoplayer</span><span class="p">?</span><span class="o">.</span><span class="n">textTrackStyle</span>
@@ -3160,7 +3182,7 @@ with the given <code><a href="../Enums/KeySystemId.html">KeySystemId</a></code>,
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The <code><a href="../Protocols/Fullscreen.html">Fullscreen</a></code> api of theoplayer.</p>
+                        <p>The <code><a href="../Protocols/Fullscreen.html">Fullscreen</a></code> API of THEOplayer.</p>
 
                       </div>
                       <div class="declaration">

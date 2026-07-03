@@ -993,26 +993,28 @@
         <section class="section">
           <div class="section-content top-matter">
             <h1>SSAI</h1>
-            <h3 id='server-side-ad-insertion' class='heading'>Server Side ad Insertion</h3>
+            <h3 id='server-side-ad-insertion' class='heading'>Server Side Ad Insertion</h3>
 
-<p>THEOplayer Supports Yospace and Google DAI server side ad insertion.
-If you need to use Client Side Ad Insertion (CSAI), please consider checking its documentations <a href="./CSAI.html">here</a>.</p>
+<p>THEOplayer supports Google DAI, Yospace and Uplynk server side ad insertion.
+Google DAI requires the THEOplayer Google IMA Integration to be added to your project. For more information please refer <a href="https://optiview.dolby.com/docs/theoplayer/how-to-guides/ads/google-dai/#ios-sdk">here</a>
+Yospace and Uplynk are supported through the <a href="https://github.com/THEOplayer/iOS-Connector">iOS-Connector</a>.
+If you need to use Client Side Ad Insertion (CSAI), please consider checking its own documentation <a href="./CSAI.html">here</a>.</p>
 
 <hr>
-<h3 id='googleinteractivemediaads-framework' class='heading'>GoogleInteractiveMediaAds.framework</h3>
+<h3 id='googleinteractivemediaads-xcframework' class='heading'>GoogleInteractiveMediaAds.xcframework</h3>
 
-<p>The following is the supportMatrix for the GoogleInteractiveMediaAds SDK versions that THEOplayer is linked against.
-Although using a different version might work, we advise to use the exact same version that THEOplayer is using to avoid any compatibility issues.</p>
+<p>The following is the support matrix for the GoogleInteractiveMediaAds SDK versions that THEOplayer is linked against.
+Although using a different version might work, we advise using the same version that THEOplayer is using to avoid any compatibility issues.</p>
 
 <table><thead>
 <tr>
 <th>PlayerVersion</th>
-<th style="text-align: right">GoogleInteractiveMediaAds verions</th>
+<th style="text-align: right">GoogleInteractiveMediaAds versions</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>2.84.0+</td>
-<td style="text-align: right">iOS 3.14.1 - tvOS 4.4.1</td>
+<td>11.X</td>
+<td style="text-align: right">iOS 3.31.0 - tvOS 4.16.0</td>
 </tr>
 </tbody></table>
 
@@ -1182,7 +1184,7 @@ Although using a different version might work, we advise to use the exact same v
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a configuration for server-side ad insertion with the Google DAI pre-integration for vod streams.</p>
+                        <p>Represents a configuration for server-side ad insertion with the Google DAI pre-integration for VOD streams.</p>
 
                         <a href="Classes/GoogleDAIVodConfiguration.html" class="slightly-smaller">See more</a>
                       </div>
