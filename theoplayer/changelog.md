@@ -9,6 +9,14 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.5.1 (2026/07/03)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue when playing cached sources where the player could switch to audio/video renditions that were not cached.
+
 ## 🚀 11.5.0 (2026/06/16)
 
 ### General
