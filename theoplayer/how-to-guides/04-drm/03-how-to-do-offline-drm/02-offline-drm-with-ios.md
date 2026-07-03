@@ -4,13 +4,13 @@
 
 In order to do offline DRM on iOS, your license key must be downloadable and persistable. The SDK will not be able to decrypt your content once the persisted key expires.
 
-DRM on iOS SDK is configured through a **DRM connector** (a `ContentProtectionIntegration`) In order to do so, you need to:
+DRM on iOS SDK is configured through a **DRM integration** (a `ContentProtectionIntegration`) In order to do so, you need to:
 
 1. Implement a `ContentProtectionIntegration` and its `ContentProtectionIntegrationFactory`.
 2. Register the factory once at app startup with `THEOplayer.registerContentProtectionIntegration(...)`.
-3. Reference the connector from a `FairPlayDRMConfiguration` via its `customIntegrationId`.
+3. Reference the integration from a `FairPlayDRMConfiguration` via its `customIntegrationId`.
 
-For offline playback, you additionally need to request a persistent license (`licenseType: .persistent`) and make the connector's license request offline aware.
+For offline playback, you additionally need to request a persistent license (`licenseType: .persistent`) and make the DRM integration's license request offline aware.
 
 In order to cache without a player instance, a valid THEOplayer license must be present in your app's `Info.plist`.
 
@@ -22,20 +22,20 @@ In order to cache without a player instance, a valid THEOplayer license must be 
 
 ## Code example
 
-You can find code examples for the different calls below. For all the possible API calls, please take a look at [the API reference for iOS SDK](https://docs.optiview.dolby.com/theoplayer/v11/api-reference/ios/index.html).
+You can find code examples for the different calls below. For all the possible API calls, please take a look at [the API reference for iOS SDK](https://optiview.dolby.com/docs/theoplayer/v11/api-reference/ios/index.html).
 
-You can also find a full sample application with a FairPlay HLS asset and a working DRM connector [here](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Offline-Playback).
+You can also find a full sample application with a FairPlay HLS asset and a working DRM integration [here](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Offline-Playback).
 
-For ready-made connectors covering a range of DRM providers (along with a guide on how to integrate them), see the [sample DRM integrations repository](https://github.com/THEOplayer/samples-drm-integration/tree/master/ios).
+For ready-made integrations covering a range of DRM providers (along with a guide on how to integrate them), see the [sample DRM integrations repository](https://github.com/THEOplayer/samples-drm-integration/tree/master/ios).
 
-### Register a DRM connector
+### Register a DRM integration
 
-Before you can play or cache a protected stream, register your FairPlay connector once, for example in your `AppDelegate`. The connector is where you communicate with your DRM provider: fetching the certificate, extracting the FairPlay content ID, and exchanging the SPC for a CKC. For offline support, request a persistent license; for some providers this also means adding an `offline=true` flag to the license request.
+Before you can play or cache a protected stream, register your FairPlay integration once, for example in your `AppDelegate`. The integration is where you communicate with your DRM provider: fetching the certificate, extracting the FairPlay content ID, and exchanging the SPC for a CKC. For offline support, request a persistent license; for some providers this also means adding an `offline=true` flag to the license request.
 
 ```swift
 import THEOplayerSDK
 
-// A barebones FairPlay connector.
+// A barebones FairPlay integration.
 // Replace the placeholder logic with your DRM provider's requirements.
 class MyDRMIntegration: ContentProtectionIntegration {
     static let integrationID = "MyDRMIntegration"
@@ -109,16 +109,16 @@ func application(_ application: UIApplication,
 }
 ```
 
-For a complete, production-ready connector (including certificate/license headers, custom-data handling, and CKC unwrapping), see the `CastLabsDRMIntegration` in the [Offline-Playback sample app](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Offline-Playback), or the provider-specific connectors and integration guide in the [samples-drm-integration repository](https://github.com/THEOplayer/samples-drm-integration/tree/master/ios).
+For a complete, production-ready integration (including certificate/license headers, custom-data handling, and CKC unwrapping), see the `CastLabsDRMIntegration` in the [Offline-Playback sample app](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Offline-Playback), or the provider-specific integrations and integration guide in the [samples-drm-integration repository](https://github.com/THEOplayer/samples-drm-integration/tree/master/ios).
 
 ### Download
 
-The snippet below builds a `SourceDescription` that references the registered connector and downloads a FairPlay HLS asset. Note the use of `customIntegrationId` to bind the source to your connector, and `licenseType: .persistent` so the license can be stored for offline playback.
+The snippet below builds a `SourceDescription` that references the registered DRM integration and downloads a FairPlay HLS asset. Note the use of `customIntegrationId` to bind the source to your DRM integration, and `licenseType: .persistent` so the license can be stored for offline playback.
 
 ```swift
 import THEOplayerSDK
 
-// Example source referencing the registered DRM connector.
+// Example source referencing the registered DRM integration.
 var sourceToBeCached: SourceDescription {
     let drmConfig = FairPlayDRMConfiguration(
         customIntegrationId: MyDRMIntegration.integrationID,
@@ -126,7 +126,7 @@ var sourceToBeCached: SourceDescription {
         certificateURL: "<CERTIFICATE_URL>",
         licenseType: .persistent,
         integrationParameters: [
-            // Any provider-specific parameters your connector reads, e.g.:
+            // Any provider-specific parameters your DRM integration reads, e.g.:
             // "userId": "...", "sessionId": "...", "merchant": "..."
         ]
     )
@@ -262,7 +262,7 @@ func cleanCache() {
 
 ### Renew a DRM license
 
-The snippet below renews a stored (persistent) DRM license. You can renew with the original configuration, or provide an updated `FairPlayDRMConfiguration` that references the same connector.
+The snippet below renews a stored (persistent) DRM license. You can renew with the original configuration, or provide an updated `FairPlayDRMConfiguration` that references the same DRM integration.
 
 ```swift
 func renewLicense() {
@@ -295,7 +295,7 @@ let task = URLSession.shared.dataTask(with: url) { (_, response, _) in
     guard let redirectedURL = response?.url else { return }
     Streams.SAVED_REDIRECTED_URL = redirectedURL
 
-    // Rebuild the source against the redirected URL, still referencing the connector.
+    // Rebuild the source against the redirected URL, still referencing the DRM integration.
     let drmConfig = FairPlayDRMConfiguration(
         customIntegrationId: MyDRMIntegration.integrationID,
         licenseAcquisitionURL: "<LICENSE_ACQUISITION_URL>",
