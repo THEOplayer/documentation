@@ -4,7 +4,7 @@
 
 In order to do offline DRM on iOS, your license key must be downloadable and persistable. The SDK will not be able to decrypt your content once the persisted key expires.
 
-DRM on iOS SDK is configured through a **DRM integration** (a `ContentProtectionIntegration`) In order to do so, you need to:
+DRM on iOS SDK is configured through a **DRM integration** (a `ContentProtectionIntegration`) In order to use a DRM integration, you need to:
 
 1. Implement a `ContentProtectionIntegration` and its `ContentProtectionIntegrationFactory`.
 2. Register the factory once at app startup with `THEOplayer.registerContentProtectionIntegration(...)`.
@@ -18,7 +18,7 @@ In order to cache without a player instance, a valid THEOplayer license must be 
 
 1. If your manifest is redirected while caching, you need to save the redirected manifest URL (the one that is actually being cached) and provide that URL to the player when you want to play back from the cache.
 2. Only completely cached videos can be played offline. When the `CachingTask` status is `done`, the video is playable without any internet connection.
-3. HLS manifests can have a tag `#EXT-X-PLAYLIST-TYPE:VOD` ([see here for reference](https://developer.apple.com/documentation/http-live-streaming/video-on-demand-playlist-construction)). If this tag is not present in the playlist of the cached quality, The player will make an extra request for the playlist even if the video is completely cached. To avoid these extra requests, provide `#EXT-X-PLAYLIST-TYPE:VOD` in your playlists.
+3. HLS manifests can have a tag `#EXT-X-PLAYLIST-TYPE:VOD` ([see here for reference](https://developer.apple.com/documentation/http-live-streaming/video-on-demand-playlist-construction)). If this tag is not present in the playlist of the cached quality, the player will make an extra request for the playlist, even if the video is completely cached. To avoid these extra requests, provide `#EXT-X-PLAYLIST-TYPE:VOD` in your playlists.
 
 ## Code example
 
