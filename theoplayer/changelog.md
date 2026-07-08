@@ -9,6 +9,20 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.6.1 (2026/07/07)
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where a caching task would download all qualities instead of only the selected ones when the source had sideloaded text tracks.
+
+### iOS
+
+#### 🐛 Issues
+
+- Fix a bug on iOS 18 where playback could stall indefinitely after returning from an IMA ad.
+
 ## 🚀 11.6.0 (2026/07/03)
 
 ### General
