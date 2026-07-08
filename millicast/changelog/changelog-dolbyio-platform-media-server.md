@@ -10,8 +10,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 #### Fixes
 
-- Applied the latest security patches by updating the operating system kernel, Node.js packages, and third-party dependencies.
-- Improved connection stability by preventing idle internal connections from timing out unexpectedly.
+- Improved connection stability by preventing idle internal connections from timing out.
 
 ## 2026-07-03
 
