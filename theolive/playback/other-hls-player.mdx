@@ -87,26 +87,28 @@ Configure your player with the **license acquisition URL** that matches the encr
 - **Widevine** and **PlayReady** — for CENC-encrypted streams.
 - **FairPlay** — for CBCS-encrypted streams (Apple devices). FairPlay additionally requires a **certificate URL**.
 
-Retrieve the license acquisition URLs for a channel with the [Get EZDRM content protection configuration](https://api.theo.live/v2/api-docs/#/Channels/get-channel-drm-config-ezdrm) endpoint:
+Retrieve the license acquisition URLs for a channel with the [Get content protection configurations](https://api.theo.live/v2/api-docs/#/Channels/get-channel-drm-configs) endpoint:
 
-`GET https://api.theo.live/v2/channels/{channelId}/drm/config/ezdrm`
+`GET https://api.theo.live/v2/channels/{channelId}/drm/configs`
 
-The response contains the license acquisition URL — and, for FairPlay, the certificate URL — for each key system:
+The response contains an array with all available content protection configurations. Pick the one that matches your setup. Each configuration contains the license acquisition URL — and, for FairPlay, the certificate URL — for each key system:
 
 ```json
 {
-  "contentProtection": {
-    "integration": "ezdrm",
-    "widevine": {
-      "licenseUrl": "<widevine-license-url>"
-    },
-    "playready": {
-      "licenseUrl": "<playready-license-url>"
-    },
-    "fairplay": {
-      "licenseUrl": "<fairplay-license-url>",
-      "certificateUrl": "<fairplay-certificate-url>"
+  "contentProtections": [
+    {
+      "integration": "ezdrm",
+      "widevine": {
+        "licenseUrl": "<widevine-license-url>"
+      },
+      "playready": {
+        "licenseUrl": "<playready-license-url>"
+      },
+      "fairplay": {
+        "licenseUrl": "<fairplay-license-url>",
+        "certificateUrl": "<fairplay-certificate-url>"
+      }
     }
-  }
+  ]
 }
 ```
