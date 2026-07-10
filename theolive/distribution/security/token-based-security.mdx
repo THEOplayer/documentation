@@ -39,7 +39,11 @@ Additionally, the following standard optional claims are supported:
 | `sub` | string | Subject. If present, a SHA-256 hash of this value is used as the viewer identity. |
 | `iss` | string | Issuer. Identifies the system that created the token.                             |
 
-Requests without a valid token are rejected. If the distribution does not have token security enabled, the `Authorization` header is ignored.
+Requests without a valid token are rejected with an HTTP `403` response.
+
+::::caution Tokens are validated even when token security is disabled
+Disabling token security makes the token optional, but it does not make the CDN ignore it. Any JWT still included in a request — via the `Authorization` header or the `token` query parameter — is validated for well-formedness and expiry. In particular, an **expired** token is rejected with an HTTP `403`, even though the same request without a token would have been allowed. After disabling token security, make sure your players stop attaching (potentially stale) tokens.
+::::
 
 ## Custom claims
 
