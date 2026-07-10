@@ -1,4 +1,4 @@
-name: Auto-open PRs for THEOplayer releases
+name: Auto-open PRs for OptiView Player releases
 on:
   push:
     branches:
@@ -57,7 +57,7 @@ jobs:
           gh pr create \
             --base main \
             --head $GITHUB_REF \
-            --title "THEOplayer ${theoplayer_version}" \
-            --body "This PR contains the new documentation and API references for THEOplayer version ${theoplayer_version}"
+            --title "OptiView Player ${theoplayer_version}" \
+            --body "This PR contains the new documentation and API references for OptiView Player version ${theoplayer_version}"
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
