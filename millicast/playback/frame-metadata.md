@@ -48,12 +48,19 @@ When receiving metadata there is a `uuid` attribute that can be used to uniquely
 
 For **PIC_TIMING** SEI messages that are inserted by various encoders, there will not be a UUID assigned and included with the frame.
 
+### SEI Preservation
+
+SEI that is already embedded in the source H.264 bitstream — such as arbitrary user-data SEI, **pic_timing**, or any other SEI the source encoder baked into the elementary stream — is preserved differently depending on how the stream is processed:
+
+- **Passthrough layer**: SEI will remain available in the output stream, including ABR publishing.
+- **Cloud Transcoder**: Existing SEI from the source bitstream is **not** preserved in the transcoded output.
+
 ### Timecode Metadata
 
 There are several ways to send and receive timecode into the service which can be extracted in the player.
 
 1. Embed pic_timing (part of SEI metadata) in the `h264` video stream (this is automatically inserted with some encoders)
-1. Send RTMP with onFi (part of OnMetaData in AMF metadata). The service will read this value from the RTMP stream and insert it into the SEI metadata of the timecode (See [Metadata Source Identification](#metadata-source-identification))
+1. Send RTMP with onFi (part of OnMetaData in AMF metadata). The service will read this value from the RTMP stream and insert it into the SEI metadata of the timecode (See [Metadata Source Identification](#metadata-source-identification)). This works with both standard publishing and publishing through a cloud transcoder, including the passthrough layers of a cloud transcoder output.
 
 Here is an example of a frame's metadata that has pic_timing from the SEI in the `metadata` callback:
 
