@@ -2,6 +2,12 @@
 
 Updates to the Dolby.io Dashboard and Applications.
 
+## 2026-07-14 | Dashboard
+
+- Added new Analytics usage tabs for Clipping, Storage, and Transcoder. Each tab shows a time-series chart with a Day/Month view toggle and up to ~12 months of history. Clipping and Transcoder appear for accounts with those features enabled; Storage is available to all accounts.
+- The Bandwidth and DRM analytics tabs now show up to ~12 months of history. For date ranges longer than 90 days, usage is aggregated into a monthly view.
+- Fixed page navigation on the Live Monitoring stream list, where the pager listed every page instead of a compact range with ellipsis and clicking a page number had no effect.
+
 ## 2026-04-29 | Dashboard
 
 Updated the dashboard branding to Dolby OptiView, including a new logo.
