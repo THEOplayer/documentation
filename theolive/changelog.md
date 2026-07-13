@@ -1,5 +1,29 @@
 # Changelog
 
+## [11.7.0] - 2026-07-13
+
+- Added support for ingesting Dolby AC-4 audio, including Dolby Atmos content
+- Preferred Dolby Atmos over AAC HLS variants by giving them a higher `SCORE` and listing them first
+- Fixed HLS variants referencing a `CLOSED-CAPTIONS` group when no captions are configured
+- Fixed DVR playlists and init segments being cached too long, keeping players on stale content after updates such as
+  an ABR ladder change
+- Fixed S3 DVR restore exposing ABR layers with different playable windows after a restart with a changed ABR ladder
+- Added TTML subtitle renditions to the HLS VOD/DVR output on S3
+- Skipped the SDR-to-Vision LUT automatically for already-PQ (HDR10) ingest so native HDR10 sources produce Dolby Vision
+  without double-converting
+- Fixed Nvidia JPEG thumbnails (`nvjpegenc`) failing to register on CUDA 13 hosts
+- Added an optional `disableHardwareAcceleration` video quality flag (default false) to force software encoding
+- Added a `?live` query marker for `file://` ingest URLs that paces the file at real time and loops on end-of-stream
+- Fixed an issue where the engine would be stuck on large DTS jumps in the ingest.
+- Added MP4/MOV support to file ingest
+- Added Apple ProRes video decoding to ingest (CPU/libav)
+- Added an HLS `SCORE` attribute so players prefer H.265 renditions over H.264 when they can decode them
+- Added Dolby Atmos encoding
+- Added Dolby Vision Profile 8.1 output
+- Added BT.709 SDR to HDR10 conversion using Dolby SDR-to-Vision 3D LUTs, selected via the `video.vision` config
+- Added support for x86-64-v3 CPU baseline
+- Added support for DVB-TTML in SRT conversion to TTML subtitles in HLS (IMSC1 `stpp`)
+
 ## [11.5.2] - 2026-07-01
 
 - Fixed ingest failing to negotiate for high-bit-depth or 4:2:2 sources (e.g. H.264 High 4:2:2 10-bit) by converting decoded video to a supported pixel format
