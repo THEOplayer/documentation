@@ -1,5 +1,9 @@
 # Changelog
 
+## [11.7.1] - 2026-07-13
+
+- Fixed the S3 DVR and VOD root manifests being written without video codecs in `CODECS` at stream start
+
 ## [11.7.0] - 2026-07-13
 
 - Added support for ingesting Dolby AC-4 audio, including Dolby Atmos content
