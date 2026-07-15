@@ -35,9 +35,9 @@ To remove the WebRTC configuration from a distribution, set the `webRtc` field t
 
 In order to properly protect the viewing experience, you will want to use a single protection token for both the WebRTC and the HLS feeds. This JWT token will be based on the [subscribe tokens](/millicast/subscribe-tokens) of the OptiView Real-time Streaming platform. Here are the steps to achieve this.
 
-- Create a parent [subscribe token](/millicast/subscribe-tokens) that you will be using for generating [self-signed tokens](/millicast/subscribe-tokens#self-signing-subscribe-tokens).
-- In your channel distribution settings, go to the _JWT security_ section and add a new JWT security key. Provide a name that will help you remembering what OptiView Real-time Streaming subscribe token it comes from. Copy the token value for the key.
-- When a viewer is trying to access the feed, generate a self-sign subscribe token and provide it to the player before connecting to the feed.
+- Create a parent [subscribe token](/millicast/subscribe-tokens) that you will be using for generating self-signed tokens.
+- In your channel distribution settings, go to the _JWT security_ section and add a new JWT security key. Provide a name that will help you remembering what OptiView Real-time Streaming subscribe token it comes from (e.g. `Subscribe Token 1071141886`). Copy the token value for the key (e.g. `7f4a7f358e163d298a95b96b95e18cf677e43252d6c2387d64a26aa5ae5bcacc`).
+- When a viewer is trying to access the feed, generate a [self-sign subscribe token](/millicast/subscribe-tokens#self-signing-subscribe-tokens) and provide it to the player before connecting to the feed.
   ```javascript title="Web SDK example"
   player.theoLive.authToken = SUBSCRIBE_TOKEN;
   ```
