@@ -211,6 +211,16 @@ const config: Config = {
         routeBasePath: '/ads',
         sidebarPath: './sidebarsAds.ts',
         docItemComponent: '@theme/ApiItem',
+        lastVersion: 'current',
+        versions: {
+          current: {
+            label: 'v2',
+          },
+          v1: {
+            label: 'v1',
+            banner: 'none',
+          },
+        },
         async sidebarItemsGenerator(args) {
           const sidebarItems = await sidebarItemsGenerator(args);
           return removeDocIndexItems(sidebarItems);
@@ -332,8 +342,20 @@ const config: Config = {
         docsPluginId: 'ads',
         config: {
           signaling: {
+            version: 'v2',
+            label: 'v2',
             specPath: 'ads/api/ads-client.swagger.json',
             outputDir: 'ads/api/signaling',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+          signalingV1: {
+            version: 'v1',
+            label: 'v1',
+            specPath: 'ads_versioned_docs/version-v1/api/ads-client.swagger.json',
+            outputDir: 'ads_versioned_docs/version-v1/api/signaling',
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
@@ -411,6 +433,8 @@ const config: Config = {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
           } else if (existingPath.startsWith('/theolive/v1/api/')) {
             return [existingPath.replace('/theolive/v1/api/', '/theolive/api/')];
+          } else if (existingPath.startsWith('/ads/v1/')) {
+            return [existingPath.replace('/ads/v1/', '/ads/')];
           } else if (existingPath === '/theolive/channel/metadata-insertion') {
             return ['/theolive/contribution/sei-messages'];
           }
@@ -617,6 +641,11 @@ const config: Config = {
         {
           type: 'docsVersionDropdown',
           docsPluginId: 'theoplayer',
+          position: 'right',
+        },
+        {
+          type: 'docsVersionDropdown',
+          docsPluginId: 'ads',
           position: 'right',
         },
         {
