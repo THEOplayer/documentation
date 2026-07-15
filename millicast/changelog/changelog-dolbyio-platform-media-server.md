@@ -2,6 +2,33 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-07-08
+
+### Media Server
+
+<!-- 3.4.1 -->
+
+#### Fixes
+
+- Improved connection stability by preventing idle internal connections from timing out.
+
+## 2026-07-03
+
+### Media Server
+
+<!-- 3.4.0 -->
+
+#### Features
+
+- Added support for H265 (HEVC) video when [re-streaming](/millicast/distribution/re-streaming) over SRT.
+- RTMP re-streams now automatically generate silent audio when the source stream has no audio track, improving compatibility with destinations that require an audio track.
+
+#### Fixes
+
+- Improved [re-stream](/millicast/distribution/re-streaming) error messages to make issues easier to diagnose.
+- Fixed an issue where some media statistics were missing for re-streams.
+- General stability and reliability improvements.
+
 ## 2026-06-22
 
 ### Media Server
