@@ -51,6 +51,8 @@ const docsConfigBase = {
     // Ignore platform-specific docs from Flutter SDK
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk_*/**/*',
     'external/flutter-theoplayer-sdk/flutter_theoplayer_sdk/flutter_theoplayer_sdk_*/**/*',
+    // Ignore internal docs from Flutter SDK
+    'external/flutter-theoplayer-sdk/doc/architecture.md',
   ],
   editUrl: ({ versionDocsDirPath, docPath }) => {
     if (docPath.startsWith('external')) {
