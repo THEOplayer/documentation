@@ -1,0 +1,164 @@
+---
+sidebar_position: 2
+sidebar_label: Origins
+---
+
+# Origins
+
+import RebrandingNotice from '../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
+An origin is a manifest URL that a channel monitors for ad markers. When automatic marker detection is enabled, the worker fetches the channel's enabled origins and parses their manifests for markers. A channel can have multiple origins so that detection keeps working when one source goes offline.
+
+Origins are scoped to an organization and to a channel. API calls identify the organization with the `X-Org-ID` header and authenticate with an API key and secret using HTTP Basic authentication.
+
+## Dashboard path
+
+In the OptiView Unified Dashboard, open the channel and select **Origins** from the channel navigation. From there you can add an origin, edit it, delete it, set its priority, and use **Enable origin** / **Disable origin** to control whether detection considers it.
+
+## How multiple origins are used
+
+Only origins with `enabled: true` are considered for detection. Enabled origins are ordered by `priority` ascending, then by creation time. The worker walks that ordered list and uses the **first online origin**: the first one whose manifest is fetched and parsed successfully.
+
+- **Lowest `priority` value first.** `priority` is an integer; lower values are tried before higher ones. Negative values are allowed, so `-1` is tried before `0`.
+- **First online wins.** An origin counts as online when its manifest can be fetched and parsed. A manifest that is reachable but currently advertises no markers still counts as online and wins, so lower-priority origins are not consulted in the same cycle. If an origin cannot be fetched or parsed, detection falls back to the next enabled origin in priority order.
+
+:::note Supported origin types
+The API accepts `HLS`, `DASH`, and `HESP` for `type`, but automatic marker detection currently parses **HLS** manifests only. `DASH` and `HESP` origins can be stored and prioritized, but they are skipped by detection today. Use `HLS` for origins you expect to drive automatic breaks.
+:::
+
+## Configuration reference
+
+| Field      | Type                     | Default  | Description                                                                                                    |
+| ---------- | ------------------------ | -------- | -------------------------------------------------------------------------------------------------------------- |
+| `url`      | string                   | Required | Manifest URL to monitor. Must be a valid URL.                                                                  |
+| `type`     | `HLS`, `DASH`, or `HESP` | Required | Manifest format. Only `HLS` is parsed by detection today; `DASH` and `HESP` are accepted but not yet detected. |
+| `name`     | string                   | none     | Optional human-readable label shown in the Dashboard.                                                          |
+| `enabled`  | boolean                  | `false`  | Whether detection considers this origin. Change it with the enable/disable actions, not with an update.        |
+| `priority` | integer                  | `0`      | Selection order for detection. Lower values are tried first; negative values are allowed.                      |
+
+`enabled` cannot be changed through the update endpoint. Use the dedicated enable and disable actions instead.
+
+## Add an origin
+
+Dashboard: open the channel, then use **Origins → Add**.
+
+API:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "name": "Primary HLS origin",
+    "type": "HLS",
+    "url": "https://origin.example.com/live/sports-main/master.m3u8",
+    "enabled": true,
+    "priority": 0
+  }'
+```
+
+Example response:
+
+```json
+{
+  "id": "3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f",
+  "channelId": "sports-main",
+  "name": "Primary HLS origin",
+  "type": "HLS",
+  "url": "https://origin.example.com/live/sports-main/master.m3u8",
+  "enabled": true,
+  "priority": 0,
+  "createdAt": "2026-07-16T12:00:00.000Z"
+}
+```
+
+Add a lower-priority backup origin so detection can fall back if the primary source is unreachable:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "name": "Backup HLS origin",
+    "type": "HLS",
+    "url": "https://backup.example.com/live/sports-main/master.m3u8",
+    "enabled": true,
+    "priority": 1
+  }'
+```
+
+## Get an origin
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+## Update an origin
+
+The update endpoint accepts `url`, `type`, `name`, and `priority`. It does not accept `enabled`.
+
+```bash
+curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "name": "Primary HLS origin (HD)",
+    "priority": 0
+  }'
+```
+
+## Enable or disable an origin
+
+Dashboard: **Origins → Enable origin** / **Disable origin**.
+
+API:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f/enable' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f/disable' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+Disabling an origin removes it from detection immediately. The origin record is kept, so you can re-enable it later without recreating it.
+
+## List origins
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main/origins?page=1&pageSize=20&sort=priority' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+List endpoints use the shared pagination shape.
+
+| Query parameter | Default      | Description                                                                |
+| --------------- | ------------ | -------------------------------------------------------------------------- |
+| `page`          | `1`          | Page number.                                                               |
+| `pageSize`      | `20`         | Items per page. Maximum `100`.                                             |
+| `filter`        | none         | Optional RSQL filter expression.                                           |
+| `sort`          | `-createdAt` | Comma-separated sort fields. Prefix a field with `-` for descending order. |
+
+## Delete an origin
+
+```bash
+curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+## Next steps
+
+Origins supply the manifests; [marker detection](./marker-detection.mdx) decides which markers in those manifests become breaks. Configure at least one enabled `HLS` origin before enabling detection on the channel.
