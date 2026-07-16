@@ -1,0 +1,231 @@
+---
+sidebar_position: 2
+sidebar_label: Break Manifest
+---
+
+# Break Manifest
+
+import RebrandingNotice from '../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
+The Break Manifest is the canonical, machine-readable description of the ad breaks that are currently relevant for a [channel](/ads/concepts/channels). It is a small JSON document that the OptiView Player polls on a fixed cadence to learn which breaks to prepare and play.
+
+The Break Manifest is **side-loaded**: it is served from its own endpoint, separately from the media (HLS/DASH) manifest. The player fetches the media manifest from your CDN as usual and, in parallel, polls the Break Manifest to drive ad break scheduling. This is different from server-side ad insertion (SSAI), where ad cues are injected directly into the media manifest.
+
+## Side-loading versus SSAI cue injection
+
+OptiView Ads can deliver break timing to the player in two distinct ways. A channel can use either mechanism depending on how the workflow is integrated.
+
+| Delivery mechanism      | Where the break information lives                                             | Who consumes it                                                                 |
+| ----------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Side-loaded (this page) | A separate JSON Break Manifest served from a dedicated endpoint.              | The OptiView Player, which polls the endpoint and schedules breaks client-side. |
+| SSAI cue injection      | `#EXT-X-DATERANGE` cues rewritten inline into the proxied HLS media playlist. | Any player that reads the manifest; used for Google DAI server-guided pods.     |
+
+With **side-loading**, the media manifest is untouched: the player merges the break timeline it reads from the Break Manifest with the content timeline it reads from the media manifest. This keeps the media manifest cacheable and lets the player own the ad experience (layout, skip, snapback).
+
+With **SSAI cue injection**, OptiView Ads proxies the upstream HLS playlist and inserts `#EXT-X-DATERANGE` cues in place. Cue injection applies only to `wallclock` channels that have a Google DAI (`SSAI_DAI`) integration configured, because `#EXT-X-DATERANGE` requires a `START-DATE`, which has no `pts` equivalent.
+
+## Endpoint
+
+```text
+GET /manifest/v1/:orgId/channels/:channelId
+```
+
+| Path parameter | Description                             |
+| -------------- | --------------------------------------- |
+| `orgId`        | The organization that owns the channel. |
+| `channelId`    | The channel to read breaks for.         |
+
+The Break Manifest endpoint is a public read endpoint: it takes no authentication and is served with permissive CORS so that players and CDNs can fetch it directly. It differs from the [Channels](/ads/concepts/channels) management API, which is authenticated. Do not place secrets in the polling URL.
+
+```bash
+curl 'https://ads.example.com/manifest/v1/org_123/channels/sports-main'
+```
+
+### Responses
+
+| Status | Meaning                                                                                |
+| ------ | -------------------------------------------------------------------------------------- |
+| `200`  | The channel exists. Returns the Break Manifest JSON document described below.          |
+| `404`  | No channel with `channelId` exists in the organization. Returns a JSON error envelope. |
+
+### Caching
+
+The response carries a `Cache-Control` header so that players and CDNs poll at a rate the channel controls.
+
+| Case                | `Cache-Control`                    | Source                                                                                    |
+| ------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------- |
+| `200` (any channel) | `public, max-age=<active>`         | The channel's active polling interval (`pollingActiveSeconds`), in seconds.               |
+| `404` (not found)   | `public, max-age=<negative cache>` | A short negative-cache window (default `5` seconds) so a missing channel is not hammered. |
+
+The `max-age` on a successful response always uses the **active** polling interval, so that a cached copy is never held longer than the shortest polling cadence the channel advertises. Use the `polling` values inside the manifest body (see below) to decide how often to poll; use `Cache-Control` for CDN and HTTP cache behavior.
+
+## Manifest envelope
+
+The response body is the Break Manifest envelope. The following descriptions are written from the service `breakManifestSchema`.
+
+| Field            | Type                 | Description                                                                                                                 |
+| ---------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `version`        | string               | Break Manifest format version. Currently `1.0.0`. Use it to guard against future format changes.                            |
+| `timebase`       | `wallclock` or `pts` | The channel timebase. Determines how each break's `start` is expressed (see [Channels → Timebase](/ads/concepts/channels)). |
+| `polling`        | object               | Advertised polling cadence, in seconds. Contains `idle` and `active`.                                                       |
+| `polling.idle`   | integer              | Interval to poll at when no break is active (from the channel `pollingIdleSeconds`).                                        |
+| `polling.active` | integer              | Interval to poll at while a break is active (from the channel `pollingActiveSeconds`).                                      |
+| `breaks`         | array                | The breaks currently relevant for the channel. May be empty. Each entry is described in [Break entries](#break-entries).    |
+
+## Break entries
+
+Each element of `breaks` describes one ad break. The fields are written from the service break schema.
+
+| Field          | Type                        | Required | Description                                                                                                                                              |
+| -------------- | --------------------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`           | string                      |   Yes    | Stable identifier of the break, unique within the channel.                                                                                               |
+| `start`        | ISO 8601 string, or number  |   Yes    | Break start on the channel timebase. A UTC ISO 8601 timestamp when `timebase` is `wallclock`; a numeric presentation timestamp when `timebase` is `pts`. |
+| `duration`     | number (seconds)            |   Yes    | Length of the break, in seconds.                                                                                                                         |
+| `resumeOffset` | number (seconds)            |    No    | Where content playback resumes relative to the break, in seconds. Omitted when the break does not override the default resume behavior.                  |
+| `controls`     | object                      |    No    | Playback controls for the break. See [Controls](#controls).                                                                                              |
+| `variant`      | object, or array of objects |   Yes    | The ad experience(s) to render for the break. A single variant object, or a non-empty list of variants. See [Variants](#variants).                       |
+
+A break only appears once its timebase-specific start is known: `wallclock` breaks require a resolved start timestamp, and `pts` breaks require a numeric start. Breaks missing that value for the channel timebase are not included.
+
+### Controls
+
+When present, `controls` refines how the player treats the break.
+
+| Field        | Type             | Description                                                                       |
+| ------------ | ---------------- | --------------------------------------------------------------------------------- |
+| `skipOffset` | number (seconds) | How long into the break before it becomes skippable. Omit to make it unskippable. |
+| `snapback`   | boolean          | When `true`, the player snaps back to the break-in point after seeking past it.   |
+
+### Variants
+
+`variant` carries the ad experience. Each variant has a `format` and a set of `assets`; some formats add layout fields. Provide a single variant, or a list when the break offers more than one experience (for example, targeted by device type).
+
+| `format`         | Description                                                                       |
+| ---------------- | --------------------------------------------------------------------------------- |
+| `single`         | Full-screen ad insertion that replaces the content.                               |
+| `double`         | Double Box: content continues alongside the ad and a companion asset.             |
+| `lshape_ad`      | L-shape with the ad in the main area and a companion asset.                       |
+| `lshape_content` | L-shape with content scaled into the main area.                                   |
+| `overlay`        | Overlay ad positioned and sized over the content (`position`, `size`, `opacity`). |
+
+## Which breaks are included
+
+The Break Manifest reflects the breaks that are currently relevant for delivery, not the channel's entire break history. Selection is driven by two channel settings, [`dvrWindowMs` and `liveOffsetMs`](/ads/concepts/channels):
+
+- A cutoff time is computed as `now − liveOffsetMs − dvrWindowMs`.
+- A break is included when its end (its `start` plus `duration`) is at or after that cutoff. This keeps breaks whose window still overlaps the DVR buffer, and keeps upcoming breaks, while dropping breaks that ended before the DVR look-back.
+- Only breaks in the `READY` or `SIGNALED` [status](#break-lifecycle) are eligible. Breaks that are still `PREPARING` or `CUED`, or that have `ERROR`, are never exposed.
+
+`liveOffsetMs` lets a channel account for live latency by shifting the effective "now" backward, so breaks remain visible relative to the live playhead rather than raw server time. `dvrWindowMs` (default `300000`, i.e. 5 minutes) sets how far back the look-back extends.
+
+## Break lifecycle
+
+A break moves through a small set of statuses. Two of them are visible in the Break Manifest.
+
+| Status      | In manifest | Meaning                                                                     |
+| ----------- | :---------: | --------------------------------------------------------------------------- |
+| `PREPARING` |     No      | The break is being prepared (for example, awaiting a Google DAI pod asset). |
+| `CUED`      |     No      | The break is pre-decisioned and awaiting a confirmed start time.            |
+| `READY`     |     Yes     | The break is ready to be delivered and is eligible for the manifest.        |
+| `SIGNALED`  |     Yes     | The break has been served in the Break Manifest at least once.              |
+| `ERROR`     |     No      | The break failed to prepare and is not delivered.                           |
+
+### READY → SIGNALED
+
+Serving the Break Manifest is what advances a break from `READY` to `SIGNALED`. When a poll includes one or more `READY` breaks, the service returns them in the response **and** transitions them to `SIGNALED` as a side effect of that read. A break that is already `SIGNALED` continues to be returned (while it remains within the DVR window) without any further status change. This makes the first appearance of a break in the manifest the moment it is considered signaled to players.
+
+## Player polling
+
+The OptiView Player consumes the Break Manifest by polling the endpoint:
+
+1. Fetch the Break Manifest for the channel.
+2. Read `polling.idle` and `polling.active` (seconds) to set the next poll delay: poll at the `idle` cadence when no break is active, and at the `active` cadence while a break is active.
+3. Merge each `break` onto the content timeline using `start` (interpreted with `timebase`) and `duration`, and render the `variant`.
+4. Honor `controls` (`skipOffset`, `snapback`) and `resumeOffset` when playing the break and resuming content.
+
+Because the endpoint sets `Cache-Control` from the channel's active polling interval, a shared cache never serves a manifest older than the fastest advertised cadence.
+
+## Annotated examples
+
+### Wallclock channel
+
+For a channel created with `timebase: wallclock`, each break `start` is a UTC ISO 8601 timestamp.
+
+```json
+{
+  "version": "1.0.0",
+  "timebase": "wallclock",
+  "polling": {
+    "idle": 10,
+    "active": 1
+  },
+  "breaks": [
+    {
+      "id": "break-1",
+      "start": "2026-07-16T12:30:00.000Z", // UTC wallclock start of the break
+      "duration": 30, // seconds
+      "resumeOffset": 0, // resume content at the break-in point
+      "controls": {
+        "skipOffset": 5, // skippable 5s in
+        "snapback": true // snap back to the break if the viewer seeks past it
+      },
+      "variant": {
+        "format": "single",
+        "assets": [
+          {
+            "id": "a1",
+            "type": "static",
+            "mediaType": "video",
+            "uri": "https://cdn.example.com/ads/ad.m3u8"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+### PTS channel
+
+For a channel created with `timebase: pts`, each break `start` is a numeric presentation timestamp on the channel's media clock instead of a wallclock timestamp. The envelope and the rest of each break entry are otherwise identical.
+
+```json
+{
+  "version": "1.0.0",
+  "timebase": "pts",
+  "polling": {
+    "idle": 10,
+    "active": 1
+  },
+  "breaks": [
+    {
+      "id": "break-9",
+      "start": 5400000, // numeric PTS start on the channel media clock
+      "duration": 30, // seconds
+      "variant": [
+        {
+          "format": "single", // default full-screen experience
+          "assets": [{ "id": "a1", "type": "vast", "mediaType": "video", "uri": "https://ads.example.com/vast.xml" }]
+        },
+        {
+          "format": "overlay", // alternative overlay experience
+          "assets": [{ "id": "a2", "type": "static", "mediaType": "image", "uri": "https://cdn.example.com/ads/overlay.png" }],
+          "position": { "top": 0.05, "right": 0.05 },
+          "size": { "width": 0.3, "height": 0.2 },
+          "opacity": 0.9
+        }
+      ]
+    }
+  ]
+}
+```
+
+When `breaks` is empty, the envelope is still returned with the channel `timebase` and `polling` values, and the player keeps polling at the `idle` cadence.
+
+## Related resources
+
+- [Channels](/ads/concepts/channels) — the timebase, polling policy (`pollingIdleSeconds`, `pollingActiveSeconds`), and delivery window (`dvrWindowMs`, `liveOffsetMs`) that shape the Break Manifest.
+- [Scheduling breaks](/ads/how-to-guides/scheduling-breaks) — how breaks are created and signaled for a channel.
+- [Getting started](/ads/getting-started/) — integrating the OptiView Player that polls the Break Manifest.
