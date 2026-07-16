@@ -18,3 +18,22 @@ If you're looking to contribute to the developer documentation itself, see https
 1. `npm install` on first usage
 2. `git submodule update --init` to install submodules
 3. `npm start` to open in dev mode
+
+### Ads API reference
+
+The V2 Ads API reference is generated from the commit-pinned `openapi.json` in
+`Dolby-OptiView/optiview-ads`; the spec is fetched during
+`npm run gen-api-docs` and is not committed to this repository. Private GitHub
+fetches require `ADS_OPENAPI_TOKEN`, `GITHUB_TOKEN`, or `GH_TOKEN` with
+`contents:read` access to `optiview-ads`.
+
+To refresh the published contract, update `DEFAULT_SPEC_REF` in
+`scripts/fetch-ads-openapi.mjs`, then run:
+
+```bash
+npm run gen-api-docs
+npm run build
+```
+
+Use `ADS_OPENAPI_REF` to validate another remote commit or branch, or
+`ADS_OPENAPI_SPEC_URL=/path/to/openapi.json` for a local checkout.
