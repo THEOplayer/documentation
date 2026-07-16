@@ -1,0 +1,48 @@
+---
+sidebar_position: 4
+sidebar_label: ExoPlayer / Media3
+---
+
+# Integrate with ExoPlayer / Media3
+
+Media3 exposes HLS metadata through `Player.Listener.onMetadata`. Depending on the Media3 version and stream configuration, HLS interstitials can also be handled with `HlsInterstitialsAdsLoader`. See the [Media3 HLS guide](https://developer.android.com/media/media3/exoplayer/hls), [`Player.Listener`](https://developer.android.com/reference/androidx/media3/common/Player.Listener), and [`HlsInterstitialsAdsLoader`](https://developer.android.com/reference/androidx/media3/exoplayer/hls/HlsInterstitialsAdsLoader).
+
+## Read HLS metadata
+
+```kotlin
+class BreakMetadataListener(
+    private val onBreak: (id: String, durationSeconds: Double) -> Unit
+) : Player.Listener {
+    override fun onMetadata(metadata: Metadata) {
+        for (index in 0 until metadata.length()) {
+            val entry: Metadata.Entry = metadata[index]
+            // Inspect the entry's SCTE-35 or date-range representation for your
+            // Media3 version, then schedule a full-screen ad in application code.
+            onBreak(entry.toString(), 0.0)
+        }
+    }
+}
+
+val player = ExoPlayer.Builder(context).build()
+player.addListener(BreakMetadataListener(::scheduleFullScreenAd))
+player.setMediaItem(MediaItem.fromUri("https://ADS-HOST/channel/monetized/master.m3u8"))
+player.prepare()
+player.play()
+```
+
+Use `HlsInterstitialsAdsLoader` when your application wants Media3's HLS interstitial support rather than inspecting metadata entries directly. It still does not provide OptiView layout rendering or OptiView impression reporting.
+
+## Poll the Break Manifest instead
+
+```kotlin
+suspend fun loadBreakManifest(): BreakManifest {
+    val request = Request.Builder()
+        .url("https://ADS-HOST/manifest/v1/ORG-ID/channels/CHANNEL-ID")
+        .build()
+    val response = httpClient.newCall(request).execute()
+    if (!response.isSuccessful) error("Break Manifest HTTP ${response.code}")
+    return json.decodeFromString(response.body!!.string())
+}
+```
+
+Make the first request immediately, retry failures after 10 seconds, and use the response's `polling.idle` or `polling.active` value for continuous polling.

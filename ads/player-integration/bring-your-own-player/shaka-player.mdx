@@ -1,0 +1,35 @@
+---
+sidebar_position: 3
+sidebar_label: Shaka Player
+---
+
+# Integrate with Shaka Player
+
+Shaka Player parses HLS `EXT-X-DATERANGE` data into timeline regions. Listen for `timelineregionadded`, `timelineregionenter`, and `timelineregionexit`; the event detail is a `shaka.extern.TimelineRegionInfo` object. See the [Shaka `Player` event API](https://shaka-player-demo.appspot.com/docs/api/shaka.Player.html#event:timelineregionadded) and [`TimelineRegionInfo`](https://shaka-player-demo.appspot.com/docs/api/shaka.extern.html#TimelineRegionInfo).
+
+```javascript
+const player = new shaka.Player(video);
+
+player.addEventListener('timelineregionadded', (event) => {
+  const region = event.detail;
+  if (region.schemeIdUri === 'urn:scte:scte35:2013:bin') {
+    startFullScreenAd({
+      id: region.id,
+      start: region.startTime,
+      duration: region.endTime - region.startTime,
+    });
+  }
+});
+
+player.addEventListener('timelineregionenter', (event) => {
+  handleBreakStart(event.detail);
+});
+
+player.addEventListener('timelineregionexit', (event) => {
+  handleBreakEnd(event.detail);
+});
+
+await player.load('https://ADS-HOST/channel/monetized/master.m3u8');
+```
+
+Use the [Break Manifest endpoint](../../../concepts/channels) instead when you want to schedule breaks before their HLS cue reaches the player. Shaka does not provide OptiView layout rendering or OptiView impression reporting; those remain application responsibilities.

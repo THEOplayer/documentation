@@ -1,0 +1,77 @@
+---
+sidebar_position: 1
+sidebar_label: Bring your own player
+---
+
+# Bring your own player
+
+OptiView Ads does not require OptiView Player. Open-source and native players can integrate using either of these open contracts:
+
+1. **Break Manifest polling:** request `GET /manifest/v1/{orgId}/channels/{channelId}` directly and schedule the returned breaks.
+2. **SSAI cue consumption:** play the channel's proxied monetized HLS URL and consume the `EXT-X-DATERANGE` cues injected into its media playlist.
+
+OptiView provides no first-party ad adapter or plugin for these players. You are responsible for rendering ads, scheduling transitions, and implementing ad tracking.
+
+For channel polling configuration and channel-level SSAI DAI integrations, see [Channels](../../concepts/channels).
+
+## Break Manifest contract
+
+The endpoint supports CORS for `GET` and `OPTIONS`:
+
+```text
+GET /manifest/v1/{orgId}/channels/{channelId}
+```
+
+A response has this shape:
+
+```json
+{
+  "version": "1.0.0",
+  "timebase": "wallclock",
+  "polling": {
+    "idle": 10,
+    "active": 1
+  },
+  "breaks": [
+    {
+      "id": "break-123",
+      "start": "2026-01-01T12:00:00.000Z",
+      "duration": 30,
+      "controls": {
+        "skipOffset": 5,
+        "snapback": true
+      },
+      "variant": {
+        "format": "single",
+        "assets": []
+      }
+    }
+  ]
+}
+```
+
+`timebase` is `wallclock` or `pts`. A wallclock break uses an ISO-8601 `start`; a PTS break uses a numeric `start`. `variant` may be one variant object or an array. Each variant has a `format` of `single`, `double`, `lshape_ad`, `lshape_content`, or `overlay`.
+
+Consumers should accept any `1.x` manifest version. Make an immediate request when loading the stream. If a request fails, retry after 10 seconds. After a successful response, use `polling.idle` (default 10 seconds) when no break is active and `polling.active` (default 1 second) during an active break. The first successful response is sufficient for a minimal integration; continuous polling is what keeps upcoming breaks fresh.
+
+Successful responses are JSON and carry `Cache-Control: public, max-age=<active>`. A missing channel returns `404` with a short negative cache.
+
+## SSAI `EXT-X-DATERANGE` cues
+
+The SSAI path requires an `SSAI_DAI` channel integration. It carries Google DAI asset keys, and the service fans each signaled break out to Google DAI pod serving for those keys. Only wallclock channels receive injected cues; PTS channels do not.
+
+The proxy rewrites the media playlist and inserts two tags per break immediately before the segment whose wallclock window contains the cue:
+
+```text
+#EXT-X-DATERANGE:ID="<breakId>",START-DATE="<ISO>",PLANNED-DURATION=<seconds>,SCTE35-OUT=<hex>
+#EXT-X-DATERANGE:ID="<breakId>",START-DATE="<ISO>",END-DATE="<ISO>",DURATION=<seconds>,SCTE35-IN=<hex>
+```
+
+There is no `CLASS` attribute and no custom `X-` attribute. `SCTE35-OUT` and `SCTE35-IN` contain hexadecimal SCTE-35 payloads.
+
+The open-source player examples show both approaches:
+
+- [hls.js](./hls-js)
+- [Shaka Player](./shaka-player)
+- [ExoPlayer / Media3](./exoplayer-media3)
+- [AVPlayer](./avplayer)

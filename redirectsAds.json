@@ -65,15 +65,15 @@
   },
   {
     "from": "/theoads/getting-started/android/",
-    "to": "/ads/getting-started/android/"
+    "to": "/ads/player-integration/optiview-player/android/"
   },
   {
     "from": "/theoads/getting-started/ios/",
-    "to": "/ads/getting-started/ios/"
+    "to": "/ads/player-integration/optiview-player/ios/"
   },
   {
     "from": "/theoads/getting-started/react-native/",
-    "to": "/ads/getting-started/react-native/"
+    "to": "/ads/player-integration/optiview-player/react-native/"
   },
   {
     "from": "/theoads/getting-started/signaling-service/",
@@ -81,6 +81,26 @@
   },
   {
     "from": "/theoads/getting-started/web/",
-    "to": "/ads/getting-started/web/"
+    "to": "/ads/player-integration/optiview-player/web/"
+  },
+  {
+    "from": "/ads/getting-started/web/",
+    "to": "/ads/player-integration/optiview-player/web/"
+  },
+  {
+    "from": "/ads/getting-started/android/",
+    "to": "/ads/player-integration/optiview-player/android/"
+  },
+  {
+    "from": "/ads/getting-started/ios/",
+    "to": "/ads/player-integration/optiview-player/ios/"
+  },
+  {
+    "from": "/ads/getting-started/chromecast/",
+    "to": "/ads/player-integration/optiview-player/chromecast/"
+  },
+  {
+    "from": "/ads/getting-started/react-native/",
+    "to": "/ads/player-integration/optiview-player/react-native/"
   }
 ]
