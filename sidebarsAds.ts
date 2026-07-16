@@ -12,7 +12,15 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '📚',
       },
-      items: ['concepts/channels', 'concepts/breaks', 'concepts/templates', 'concepts/events', 'concepts/origins', 'concepts/marker-detection'],
+      items: [
+        'concepts/channels',
+        'concepts/breaks',
+        'concepts/templates',
+        'concepts/events',
+        'concepts/origins',
+        'concepts/marker-detection',
+        'concepts/break-manifest',
+      ],
     },
     {
       type: 'category',
