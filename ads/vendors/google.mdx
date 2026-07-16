@@ -1,0 +1,163 @@
+---
+sidebar_position: 2
+sidebar_label: Google Ad Manager
+---
+
+# Google Ad Manager 360
+
+import RebrandingNotice from '../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
+Google Ad Manager 360 (GAM 360) is the first supported OptiView Ads vendor. It requires a GAM 360 account with Dynamic Ad Insertion (DAI) and pod serving enabled.
+
+## Organization configuration
+
+Google configuration is organization-level and administrator-managed. A Dolby OptiView administrator or account team configures these values; they are not configured through the self-serve Basic API.
+
+| Field                            | Type             | Required                                                        | Effective service default when unset |
+| -------------------------------- | ---------------- | --------------------------------------------------------------- | ------------------------------------ |
+| `google.networkCode`             | string           | Optional in the organization schema; required for GAM signaling | None                                 |
+| `google.serviceAccountPath`      | string           | Optional in the organization schema; required for GAM signaling | None                                 |
+| `google.eabnLookForwardTimeMs`   | positive integer | Optional                                                        | `300000` ms                          |
+| `google.eabnDecisioningMarginMs` | positive integer | Optional                                                        | `5000` ms                            |
+
+The organization-level values override the service defaults. `networkCode` and `serviceAccountPath` must be present before EABN can signal a break.
+
+## SGAI pod serving
+
+SGAI is server-guided pod serving keyed by the channel's `customAssetKey`. A `customAssetKey` is unique within an organization when set. See [Channels](../../concepts/channels) for channel configuration.
+
+A GAM pod break uses a vendor asset with `vendorParameters.type` set to `"pod"`:
+
+```json
+{
+  "type": "vendor",
+  "vendor": "gam",
+  "uri": "placeholder",
+  "vendorParameters": {
+    "type": "pod"
+  }
+}
+```
+
+### EABN lifecycle
+
+1. A GAM pod break is created with status `PREPARING`.
+2. EABN waits until the look-forward window opens, then signals a Google DAI ad break through the channel's `customAssetKey`.
+3. Google returns a `podId`. The vendor asset's `uri` is set to that pod ID.
+4. The break becomes `READY` when it has a start time, or `CUED` when it has no start time.
+5. For a delivered HLS manifest, the proxy injects the cue and changes `READY` to `SIGNALED`.
+
+The player then requests the pod manifest using the vendor asset `uri`, which is the decisioned `podId`.
+
+`google.eabnLookForwardTimeMs` controls when EABN signals a scheduled break: signaling begins when the effective live point reaches `start - eabnLookForwardTimeMs`. Its effective default is `300000` ms.
+
+`google.eabnDecisioningMarginMs` is the minimum lead time required for decisioning. If `start - effectiveNow` falls below this margin, the break is missed instead of being signaled. Its effective default is `5000` ms.
+
+### Cue-punch
+
+A `CUED` break has no start time and waits for a punch before it plays. Punching changes the status from `CUED` to `READY`. A GAM pod break cannot be punched until EABN has decisioned it:
+
+```text
+Ad break '<id>' is not yet decisioned by EABN
+```
+
+## SSAI_DAI
+
+`SSAI_DAI` is a channel integration. It carries one or more Google DAI asset keys:
+
+```json
+{
+  "type": "SSAI_DAI",
+  "daiAssetKeys": ["sports-main-1", "sports-main-2"]
+}
+```
+
+Each DAI asset key can be used by at most one channel integration within an organization. Duplicate keys in one request are de-duplicated. A conflict with another channel integration returns HTTP `409`:
+
+```text
+One or more daiAssetKeys are already used by another channel integration
+```
+
+Create an integration with the self-serve API:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/integrations' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "type": "SSAI_DAI",
+    "daiAssetKeys": [
+      "sports-main-1",
+      "sports-main-2"
+    ]
+  }'
+```
+
+### Best-effort fan-out
+
+At signal time, EABN snapshots the channel integration keys onto the break and fans the break out to each `daiAssetKey` through Google's by-asset-key ad break endpoint. The signals are best-effort: a failure for one key is logged and does not affect the primary signal or the other keys. An SSAI-only break has no `customAssetKey`, is not lifecycle-tracked, and never receives a `podId`.
+
+### Proxy cue injection
+
+For an HLS wallclock channel with an `SSAI_DAI` integration, the proxy finds active wallclock GAM pod breaks within the DVR window and injects `EXT-X-DATERANGE` cues into the media playlist. The injected cues contain `SCTE35-OUT` and `SCTE35-IN` data. After injection, the proxy changes the affected breaks from `READY` to `SIGNALED`.
+
+PTS channels receive passthrough manifests with no cue injection. A channel without an `SSAI_DAI` integration also receives a passthrough manifest with no ad cue injection.
+
+## Ad targeting parameters
+
+In V2, a vendor asset's optional `assetParameters` carry ad-tag and targeting parameters. OptiView Ads forwards them to Google as custom parameters during decisioning.
+
+For the player-side SDK `adTagParameters` usage, see [Ad tag parameters](../../how-to-guides/ad-tag-parameters). The player automatically adds `theoads_slot`.
+
+## Custom GAM creatives
+
+Dynamic backdrops and overlays require custom creative templates configured in the GAM console. See [Custom GAM creatives](../../how-to-guides/gam-custom-creatives).
+
+## Troubleshooting
+
+### Break status `ERROR`
+
+A break can be stored with status `ERROR` and:
+
+```text
+Break passed its scheduling window before it could be signaled
+```
+
+This means the break missed its scheduling window because the remaining time fell below the decisioning margin, or the missed-break health check caught it. Schedule pod breaks at least the decisioning margin ahead of the live point and verify the EABN and Google configuration.
+
+### GAM configuration error
+
+Break creation returns HTTP `400` when the organization network code, service-account path, or channel custom asset key is missing:
+
+```text
+Vendor asset of type GAM requires organization.google.networkCode, organization.google.serviceAccountPath and channel.customAssetKey to be configured
+```
+
+Verify all three values:
+
+- `organization.google.networkCode`
+- `organization.google.serviceAccountPath`
+- `channel.customAssetKey`
+
+### Pod break too close to live
+
+Break creation returns HTTP `400` when a pod break starts too close to the live point:
+
+```text
+POD ad breaks must start at least <margin>ms after the live point to allow time for ad decisioning
+```
+
+The default `<margin>` is `5000`.
+
+### Break remains `PREPARING`
+
+If a break never leaves `PREPARING`, EABN may be skipping the signal because the organization is missing `networkCode` or `serviceAccountPath` at signal time. Check the organization Google configuration and confirm that the channel has the required delivery key: `customAssetKey` for SGAI, or an `SSAI_DAI` integration with `daiAssetKeys`.
+
+## Related resources
+
+- [Channels](../../concepts/channels)
+- [Scheduling breaks](../../how-to-guides/scheduling-breaks)
+- [API reference](/ads/api)
