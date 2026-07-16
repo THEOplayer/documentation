@@ -1,0 +1,303 @@
+---
+sidebar_position: 3
+sidebar_label: Break Detection
+---
+
+# Break Detection
+
+import RebrandingNotice from '../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
+Automatic marker detection turns ad markers found in an origin manifest into breaks by applying marker rules. Detection runs per channel when it is enabled. V2 detection currently supports HLS manifests only. See [Origins](./origins.mdx) for origin selection, priority ordering, and first-online behavior.
+
+Channels are scoped to an organization. API calls identify the organization with the `X-Org-ID` header and authenticate with an API key and secret using HTTP Basic authentication.
+
+## Dashboard path
+
+Open the channel and select **Break Detection**. Use this area to configure marker rules and review **Detection history**.
+
+Marker rules can be toggled with **Enable marker rule** and **Disable marker rule**. These Dashboard actions use the marker-rule update endpoint with the `enabled` field; there are no dedicated marker-rule enable or disable endpoints.
+
+## Detection lifecycle
+
+`detectionEnabled` is read-only on channel create and update requests. Toggle automatic detection with the dedicated channel actions:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/enable' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/disable' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+When detection is enabled, a scheduler polls the channel's enabled origins in priority order. The first online origin is selected for the cycle. The worker parses its markers, evaluates enabled marker rules, creates breaks for matching markers, and records the result in Detection history.
+
+## Supported markers
+
+V2 marker detection supports HLS only. It recognizes two marker kinds:
+
+| Marker rule type | HLS marker         | Detection behavior                                                                                |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------------------- |
+| `CUE`            | `#EXT-X-CUE-OUT`   | Parses a marker start and optional duration. `CUE-IN` and `CUE-SPAN` are ignored.                 |
+| `DATERANGE`      | `#EXT-X-DATERANGE` | Requires a valid `START-DATE`. Duration comes from `DURATION`, `PLANNED-DURATION`, or `END-DATE`. |
+
+`DATERANGE` is not limited to Apple interstitials. Any `#EXT-X-DATERANGE` tag with a valid start is considered and can be matched by its attributes.
+
+## Marker rules
+
+A marker rule turns a detected marker into a break created from a template. The rule's `type` must match the marker kind, and every configured condition must match the marker attributes. Attribute keys are compared case-insensitively.
+
+### Configuration reference
+
+| Field             | Type                             | Default  | Description                                                                                                                        |
+| ----------------- | -------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `streamType`      | enum                             | Required | Currently only `HLS` is supported.                                                                                                 |
+| `type`            | enum: `CUE` or `DATERANGE`       | Required | Marker kind this rule matches. The value must be valid for the selected `streamType`.                                              |
+| `conditions`      | object (map of string to string) | Required | Attribute key/value pairs that must all match on the marker for the rule to fire. An empty object matches any marker of that type. |
+| `templateId`      | string                           | Required | Non-empty ID of the break template to instantiate. The template must exist and be available to the channel.                        |
+| `assetParameters` | object (map of string to string) | none     | Optional parameters merged into the created break body, such as ad-targeting parameters passed downstream.                         |
+| `enabled`         | boolean                          | `true`   | Whether the rule participates in detection.                                                                                        |
+
+For example, this rule matches DATERANGE markers whose `CLASS` attribute is `com.example.ad`:
+
+```json
+{
+  "streamType": "HLS",
+  "type": "DATERANGE",
+  "conditions": { "CLASS": "com.example.ad" },
+  "templateId": "preroll-30s",
+  "assetParameters": { "adType": "midroll" },
+  "enabled": true
+}
+```
+
+There is no dedicated marker-rule enable or disable endpoint. The Dashboard **Enable marker rule** / **Disable marker rule** actions map to a normal update:
+
+```bash
+curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/markerRules/rule-123' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{ "enabled": false }'
+```
+
+## Marker rule endpoints
+
+All marker-rule endpoints are scoped to a channel:
+
+| Operation   | Method   | Path                                                    |
+| ----------- | -------- | ------------------------------------------------------- |
+| List        | `GET`    | `/api/v1/channels/:channelId/markerRules`               |
+| Get         | `GET`    | `/api/v1/channels/:channelId/markerRules/:markerRuleId` |
+| Create      | `POST`   | `/api/v1/channels/:channelId/markerRules`               |
+| Update      | `PATCH`  | `/api/v1/channels/:channelId/markerRules/:markerRuleId` |
+| Delete      | `DELETE` | `/api/v1/channels/:channelId/markerRules/:markerRuleId` |
+| Bulk delete | `DELETE` | `/api/v1/channels/:channelId/markerRules`               |
+
+### Create a marker rule
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/markerRules' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "streamType": "HLS",
+    "type": "DATERANGE",
+    "conditions": { "CLASS": "com.example.ad" },
+    "templateId": "preroll-30s",
+    "assetParameters": { "adType": "midroll" },
+    "enabled": true
+  }'
+```
+
+Example response:
+
+```json
+{
+  "id": "rule-123",
+  "streamType": "HLS",
+  "type": "DATERANGE",
+  "conditions": { "CLASS": "com.example.ad" },
+  "templateId": "preroll-30s",
+  "assetParameters": { "adType": "midroll" },
+  "enabled": true,
+  "createdAt": "2026-07-16T12:00:00.000Z"
+}
+```
+
+### Update a marker rule
+
+Use the same endpoint to change rule configuration or enable/disable participation:
+
+```bash
+curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/markerRules/rule-123' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "conditions": { "CLASS": "com.example.ad", "X-CAMPAIGN": "sports" },
+    "enabled": true
+  }'
+```
+
+### List marker rules
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main/markerRules?page=1&pageSize=20&sort=-createdAt' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+List endpoints use the shared pagination shape:
+
+| Query parameter | Default      | Description                                                                |
+| --------------- | ------------ | -------------------------------------------------------------------------- |
+| `page`          | `1`          | Page number.                                                               |
+| `pageSize`      | `20`         | Items per page. Maximum `100`.                                             |
+| `filter`        | none         | Optional RSQL filter expression.                                           |
+| `sort`          | `-createdAt` | Comma-separated sort fields. Prefix a field with `-` for descending order. |
+
+### Bulk delete marker rules
+
+```bash
+curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/markerRules' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{ "ids": ["rule-123", "rule-456"] }'
+```
+
+## Detection history
+
+Detection history is the audit trail of what automatic detection decided for each marker.
+
+| Operation | Method | Path                                                               |
+| --------- | ------ | ------------------------------------------------------------------ |
+| List      | `GET`  | `/api/v1/channels/:channelId/detection/history`                    |
+| Get       | `GET`  | `/api/v1/channels/:channelId/detection/history/:markerDetectionId` |
+
+### List detection history
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main/detection/history?page=1&pageSize=20&sort=-createdAt' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+### Detection history response fields
+
+| Field          | Type   | Description                                  |
+| -------------- | ------ | -------------------------------------------- |
+| `id`           | string | Detection-history record ID.                 |
+| `originId`     | string | Origin that supplied the marker.             |
+| `markerRuleId` | string | Present when an enabled marker rule matched. |
+| `breakId`      | string | Present when a break was created.            |
+| `action`       | enum   | `CREATED`, `SKIPPED`, or `FAILED`.           |
+| `marker`       | string | The raw manifest tag line.                   |
+| `reason`       | string | Optional machine-readable reason.            |
+| `createdAt`    | string | Creation timestamp.                          |
+
+Example response row:
+
+```json
+{
+  "id": "detection-789",
+  "originId": "origin-123",
+  "markerRuleId": "rule-123",
+  "breakId": "break-456",
+  "action": "CREATED",
+  "marker": "#EXT-X-DATERANGE:ID=\"ad-1\",CLASS=\"com.example.ad\",START-DATE=\"2026-07-16T12:00:00.000Z\",DURATION=30",
+  "createdAt": "2026-07-16T12:00:01.000Z"
+}
+```
+
+### Action values
+
+| Action    | Meaning                                                                                                                                                                                       |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CREATED` | A rule matched and a break was scheduled. `markerRuleId` and `breakId` are set.                                                                                                               |
+| `SKIPPED` | No fault: the marker was ineligible because it was unparseable or had no resolvable start; no rule matched; no rules were configured; or an expected scheduling condition prevented creation. |
+| `FAILED`  | An eligible, rule-matched marker could not be scheduled for an unexpected reason such as misconfiguration, invalid data, or infrastructure failure.                                           |
+
+Common `reason` values include:
+
+- `NO_RULES_CONFIGURED`
+- `NO_RULE_MATCHED`
+- `MARKER_MISSING_START`
+- `MARKER_MALFORMED`
+- Scheduling-rejection reasons such as `BREAK_START_IN_PAST`, `DECISIONING_MARGIN`, and `BREAK_OVERLAP`
+
+History is deduplicated per channel. Repeated polling of the same marker, including seeing it on another origin, does not create duplicate rows.
+
+## Troubleshooting
+
+| Symptom                                                | Checks                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| No breaks are created.                                 | Is detection enabled on the channel? Is there at least one enabled HLS origin? Is the origin reachable and returning a parseable manifest? Is there an enabled marker rule whose `type` and `conditions` match the marker? Does the rule's template exist? |
+| History contains `SKIPPED` with `NO_RULES_CONFIGURED`. | Create and enable a marker rule for the channel.                                                                                                                                                                                                           |
+| History contains `SKIPPED` with `NO_RULE_MATCHED`.     | Check the rule `type` and all `conditions` against the marker attributes. Attribute keys are matched case-insensitively, but values must match.                                                                                                            |
+| DASH or HESP origin is not producing breaks.           | DASH and HESP origins are accepted by the API but skipped by automatic detection. Use an enabled HLS origin.                                                                                                                                               |
+| History contains `SKIPPED` with a scheduling reason.   | The marker was recognized, but the break was not scheduled in this cycle. Check reasons such as `BREAK_START_IN_PAST`, `DECISIONING_MARGIN`, or `BREAK_OVERLAP`.                                                                                           |
+| History contains `FAILED`.                             | The rule matched, but an unexpected scheduling or configuration error prevented break creation. Inspect the `reason` and verify the template and break configuration.                                                                                      |
+
+## End-to-end example
+
+1. Add and enable an HLS origin for `sports-main`. See [Origins](./origins.mdx).
+
+   ```bash
+   curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+     -u "$ADS_API_KEY:$ADS_API_SECRET" \
+     -H 'Content-Type: application/json' \
+     -H 'X-Org-ID: org_123' \
+     -d '{
+       "name": "Primary HLS origin",
+       "type": "HLS",
+       "url": "https://origin.example.com/live/sports-main/master.m3u8",
+       "enabled": true,
+       "priority": 0
+     }'
+   ```
+
+2. Create a break template and note its ID, such as `preroll-30s`. The marker rule references this value as `templateId`.
+
+3. Create an enabled marker rule for a matching HLS marker:
+
+   ```bash
+   curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/markerRules' \
+     -u "$ADS_API_KEY:$ADS_API_SECRET" \
+     -H 'Content-Type: application/json' \
+     -H 'X-Org-ID: org_123' \
+     -d '{
+       "streamType": "HLS",
+       "type": "DATERANGE",
+       "conditions": { "CLASS": "com.example.ad" },
+       "templateId": "preroll-30s",
+       "enabled": true
+     }'
+   ```
+
+4. Enable detection on the channel:
+
+   ```bash
+   curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/enable' \
+     -u "$ADS_API_KEY:$ADS_API_SECRET" \
+     -H 'X-Org-ID: org_123'
+   ```
+
+5. When the selected origin manifest advertises a matching `#EXT-X-DATERANGE` or `#EXT-X-CUE-OUT` marker, the worker evaluates the rule and creates an automatic break.
+
+6. Confirm the result in Detection history:
+
+   ```bash
+   curl 'https://ads.example.com/api/v1/channels/sports-main/detection/history?page=1&pageSize=20&sort=-createdAt' \
+     -u "$ADS_API_KEY:$ADS_API_SECRET" \
+     -H 'X-Org-ID: org_123'
+   ```
+
+   A successful detection has `action: "CREATED"` and includes both `markerRuleId` and `breakId`.
