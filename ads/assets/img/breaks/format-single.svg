@@ -1,0 +1,5 @@
+<svg width="360" height="210" viewBox="0 0 360 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Single format: a full-screen ad replaces the content">
+  <rect x="20" y="15" width="320" height="180" rx="8" fill="#DD6B20" stroke="#1A202C" stroke-width="2"/>
+  <text x="180" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#FFFFFF">AD</text>
+  <text x="180" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#FFFFFF">full-screen replacement</text>
+</svg>
