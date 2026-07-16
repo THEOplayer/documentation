@@ -11,7 +11,7 @@ description: Add a WebRTC source to a distribution for sub-second real-time deli
 A distribution can be configured with a WebRTC source to enable sub-second, real-time delivery alongside the standard HESP and HLS output protocols. When WebRTC is enabled, the platform connects the distribution to an [OptiView Real-time Streaming](/millicast/getting-started/) source, allowing viewers to receive the stream over WebRTC for the lowest possible latency.
 
 :::warning Distribution-level security does not apply to WebRTC
-When viewers play back via the WebRTC source, traffic is served directly by OptiView Real-time Streaming and bypasses the distribution. As a result, distribution-level [token-based security](./security/token-based-security.mdx), [geo-blocking](./security/geo-blocking.md), [IP blocking](./security/ip-blocking.md), and [referrer blocking](./security/referrer-blocking.mdx) are **not enforced** for WebRTC playback. To protect a WebRTC stream, configure security directly on the OptiView Real-time Streaming source (for example, [subscribe tokens](/millicast/subscribe-tokens)).
+When viewers play back via the WebRTC source, traffic is served directly by OptiView Real-time Streaming and bypasses the distribution. As a result, distribution-level [token-based security](./security/token-based-security.mdx), [geo-blocking](./security/geo-blocking.md), [IP blocking](./security/ip-blocking.md), and [referrer blocking](./security/referrer-blocking.mdx) are **not enforced** for WebRTC playback. Read the [Secure viewing](#secure-viewing) section to learn how to access a protected stream.
 :::
 
 ## How it works
@@ -30,6 +30,17 @@ When a viewer connects to a distribution that has WebRTC configured, the player 
 | `src.apiUrl`    | `string` | Yes      | The OptiView Real-time Streaming Director API URL (for example, the subscribe endpoint).   |
 
 To remove the WebRTC configuration from a distribution, set the `webRtc` field to `null` when updating.
+
+## Secure viewing
+
+In order to properly protect the viewing experience, you will want to use a single protection token for both the WebRTC and the HLS feeds. This JWT token will be based on the [subscribe tokens](/millicast/subscribe-tokens) of the OptiView Real-time Streaming platform. Here are the steps to achieve this.
+
+- Create a parent [subscribe token](/millicast/subscribe-tokens) that you will be using for generating self-signed tokens.
+- In your channel distribution settings, go to the _JWT security_ section and add a new JWT security key. Provide a name that will help you remembering what OptiView Real-time Streaming subscribe token it comes from (e.g. `Subscribe Token 1071141886`). Copy the token value for the key (e.g. `7f4a7f358e163d298a95b96b95e18cf677e43252d6c2387d64a26aa5ae5bcacc`).
+- When a viewer is trying to access the feed, generate a [self-sign subscribe token](/millicast/subscribe-tokens#self-signing-subscribe-tokens) and provide it to the player before connecting to the feed.
+  ```javascript title="Web SDK example"
+  player.theoLive.authToken = SUBSCRIBE_TOKEN;
+  ```
 
 ## When to use WebRTC
 
