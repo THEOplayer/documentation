@@ -63,6 +63,15 @@ jobs:
       # https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments#using-environments-without-deployments
       deployment: false
     steps:
+      - name: Create Ads OpenAPI token
+        uses: actions/create-github-app-token@v3
+        id: ads-token
+        with:
+          client-id: ${{ vars.THEOPLAYER_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
+          owner: Dolby-OptiView
+          repositories: optiview-ads
+
       - name: Checkout 🛎️
         uses: actions/checkout@v7
         with:
@@ -96,6 +105,7 @@ jobs:
           DOCUSAURUS_NO_INDEX: ${{ inputs.docusaurus_no_index }}
           DOCUSAURUS_PR_NUMBER: ${{ inputs.docusaurus_pr_number }}
           DOCUSAURUS_PR_URL: ${{ inputs.docusaurus_pr_url }}
+          GITHUB_TOKEN: ${{ steps.ads-token.outputs.token }}
 
       - name: Upload Build ☁️
         uses: actions/upload-artifact@v7
