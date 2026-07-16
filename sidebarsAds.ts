@@ -6,6 +6,16 @@ const sidebars: SidebarsConfig = {
     'index',
     {
       type: 'category',
+      label: 'Core concepts',
+      description: 'Understand the resources that power OptiView Ads.',
+      collapsed: false,
+      customProps: {
+        icon: '📚',
+      },
+      items: ['concepts/channels'],
+    },
+    {
+      type: 'category',
       label: 'Getting started',
       description: 'Set up your first stream with OptiView Ads!',
       collapsed: false,
