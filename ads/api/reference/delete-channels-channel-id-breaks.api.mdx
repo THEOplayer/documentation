@@ -1,0 +1,61 @@
+---
+id: delete-channels-channel-id-breaks
+title: 'Delete /channels/{channelId}/breaks'
+description: 'Bulk delete breaks by IDs.'
+sidebar_label: 'Delete /channels/{channelId}/breaks'
+hide_title: true
+hide_table_of_contents: true
+api: eJyFVMFu2zAM/RWBpxZwlmXYybd0ySFYgRZdt0uQA2MzsRpbUiU6rRf43wfKjpOmW5dLbPmReo985AFyCpnXjrU1kMJNXe5UTiUxqbUn3AW1btRiFj5BAg49VsTkA6TLw0XkIifDeqPJK7tRXJDKCjSGSonUgnDIBSRgsCJIof+6yCEBT8+19pRDyr6mBEJWUIWQHoAbJ+DAXpsttO2qA1PgG5s3gsisYTIsj+hcqTMUQuOnIKwOZ6mct448awrypvP49y8N4SiiLwLbviqf1JRVSRhYWUNKB3UkH3UyVTFvpc0tmS0XkE6SSxWJfF500NNX9B4baNvzciwjz9WAsesnyhjatygpWjwIzprQ6fvy+et7fTPaYF2yeuiR8TapSqzZIocUOpWjvjthNLRp1FUCEmDcigHgpjtYJVARF/YUHa0i0mGMTo/3k/Ex3fgw5GvHQ8JAWe01N9FVaww6m9YSvlwlYP1WeC1X0voj8Ic0tdN5Br9UO71fqB016qoO5MV11wpNrgJlnlhdOQzhxfr8WhoXbSIVjvlgKHjB7KRhPY3LK+78Fo3+Hcun9OCewfIFYU7+ZPrXkfXbkc5PF6DT36lru1j24WTu+StWrqTBrMujf1atZN/YOB+aBQJ3jvUvTS9qmgc1vV9AAnvyoWO5n4gEZwNXGIeiZzPr5vw/3Xmj+GzePt4VvTymVx67ErURCrUv4yRGcyxFu/CcQHLcBnJfer4Z1oPHChtYgg6HNQb66cu2lePnmnzTWWWPXuNayiHLSQd5ziHdYBnoAxlXD/0gXasPd9hfFR27aBpRgmUtb5DAjpo3O66VpvVuEHrd928didGjZDnFv9tj7fmMzea388e51KbfgJXNJcrji6xSfOkY2Cg1zkg8O0CJZlvjVrBdVvn9AfxoDMU=
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/breaks'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/breaks'} context={'endpoint'}></MethodEndpoint>
+
+Bulk delete breaks by IDs.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            ids: {
+              description: 'Identifiers of the breaks to delete. At least one is required.',
+              items: { minLength: 1, type: 'string' },
+              minItems: 1,
+              type: 'array',
+            },
+          },
+          required: ['ids'],
+          type: 'object',
+        },
+      },
+    },
+    required: true,
+  }}
+></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

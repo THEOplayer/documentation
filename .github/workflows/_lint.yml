@@ -17,6 +17,9 @@ jobs:
   pr-lint:
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD:.github/workflows/_lint.yml
+      - name: Checkout 🛎️
+||||||| parent of ede0cc43 (ADS-119 make API builds self-contained):.github/workflows/lint.yml
       - name: Create Ads OpenAPI token
         uses: actions/create-github-app-token@v3
         id: ads-token
@@ -25,8 +28,10 @@ jobs:
           private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
           owner: Dolby-OptiView
           repositories: optiview-ads
-
-      - name: Checkout 🛎️
+      - name: Checkout
+=======
+      - name: Checkout
+>>>>>>> ede0cc43 (ADS-119 make API builds self-contained):.github/workflows/lint.yml
         uses: actions/checkout@v7
         with:
           fetch-depth: 1
@@ -51,8 +56,6 @@ jobs:
           npm ci
 
       - run: npm run gen-api-docs
-        env:
-          GITHUB_TOKEN: ${{ steps.ads-token.outputs.token }}
       - run: npm run check-format
       - run: npm run lint
       - run: npm run typecheck

@@ -1,0 +1,121 @@
+---
+id: get-channels-channel-id-integrations
+title: 'Get /channels/{channelId}/integrations'
+description: 'List all channel integrations for a channel with pagination, filtering, and sorting.'
+sidebar_label: 'Get /channels/{channelId}/integrations'
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV21v2zYQ/isHfnIAOba7bl1c5IPRFIXRbs2SdsAQGAstnSW2EqmSpziu4f8+HCVbsqy4SYsB/RRHJO+e5/jcC9ciQhdalZMyWozFO+UIZJpCmEitMQWlCWMrednBwliQu6WlogRyGSvtlwNYqJTQKh0HIHUEzlhSOj4VgcillRkSWifGN+uWz1F/Lh1GbApBF9kcLZABi1RYfQp/KK2yIoMRG1J84EuBdiUCoWWGYiz4nAiExS+FshiJ8UKmDgPhwgQzKcbsbyGLlMR4FIhM3rM5MT4bDl+Mzs6e/fr8xfPh2RkvlZ78NlrlbNvTRys2m6AN+88SqVmAIsxcDRlytJ5MAHOkJaKGkQ/IaDg8xuFafX0sj2fDBpHRcPhU7O/9D5nC1fVf76p7A7zPLTqnjIYe3zTeyyxPEW4dSSrc+fnV68nFPy+jopTDeUznvwxvT07htQwTsOhMYUNkM8ahA0UOzFKzmsyyn7KwzKLyJecpwkJhGjkfGZOjlWSseyg+5bHj0aloO2IJHmUdmiyTfYcsS8IIanAeERmvXZivXkJucaHuQZZrpeZv+7c+Fdg66kjpGIyN0J7CRXlB3oTGJTqChbKOoBdaZFcTapw6eYgte/9BrtMINamFKhVKCW7Tduczl5TULqvVabTnl2xx1O2MN7vcaIeO158Nh/wnNJpQE/+UeZ6q0Atm8MkxtHXDnowiVd7JpWUNkGI7Fdu88WktIklVDjRpfkiwrBtmwQrk2HuCnJFPdFBH4MDLg8EESpRr1kiYY2p0zAJgHK14BWIngw4qKkNHMsthmaDe89J0sJQOKisBSE4fmF6/h99/G44gkoSkMoTSYSeCSKqJc0hvceUOQbwxJk4RLiZTkLwLPuOqrPuMx6G9Q9t3KkLoXV9PpifAKtqL+IHD6oO0Vq74f9UR4I9afSm6+ao69px8SrfF/IDDtotXHbZ55ym8KqxFTekKjE5XcMvE/r2YTG+h1whHk7uMQGnH0jHaJzFqLr03YntUzA5wbZp5dcNRCPaSzm9vCqQ2YeafMKSuWNbd95ti34/G5e4gZEiSk2t3y2UegUPyrXsvSXyvPYxtGUHo6OSNGyo/VLDLbndgqd1UOWTouEZvm2qnQTIk046U4s/bkWJnM5MUJly0mayvvCBDa5zzgw/7cA87ueTlb3vyVkDeSZWWva6KrXfXYb2ljmqkaUwFJcM9EIcCaVnxJXNPJB1HNm1pVD0MrqrC7s2WDVoZzeVRxEj9SruuvxNxvzkrMlQZ87gnps3Ps0BkSImpzHh4lIixGMhcDe5Gg63dwXpneDNoWXYYFlbRyg+Tc+lUOCnYyM0sEMbGjPFmxs1pu/GaO055b43t7UucXE653kGvcGi5L56UcyyGFgl6uXRuaWzkM973MA6kt1dfaEKUs1gqGAcjiI2lVl/bpW3XlBOUkZ9zqrZ83zc27quodiBz9RZX/lKUXhhfchWlWM03fytcwiRyMLmcikDcoXWl57uRzzzjKJO+WlQe3iDBo4K+R6TR4/+vN0PFl/CeBnkqlWb8hU3LMuSvm4PBJEd1LWWk42ZdVS31JcYRH12vuVZ9tOlmw5/LCcw/TpTjlI26K2eT+FMeLp1sPuOqfr/cybTgLcIPc48G8d3PkG8gqurOd6L6qR8YR5jv3hk/yvtnemIc4Vu9NGq2M/7HKqb7xGzoXVWt5wSOPj460WyLm1410WxR1vm8mW2CbZFkeOX6JAwxb/I4eHVsmn3nzesPYrP5Dwzk4Q8=
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/integrations'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/integrations'} context={'endpoint'}></MethodEndpoint>
+
+List all channel integrations for a channel with pagination, filtering, and sorting.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      description: '1-based page number to return. Minimum 1.',
+      in: 'query',
+      name: 'page',
+      required: false,
+      schema: { default: 1, maximum: 9007199254740991, minimum: 1, type: 'integer' },
+    },
+    {
+      description: 'Number of items to return per page, between 1 and 100.',
+      in: 'query',
+      name: 'pageSize',
+      required: false,
+      schema: { default: 20, maximum: 100, minimum: 1, type: 'integer' },
+    },
+    {
+      description:
+        'Optional RSQL filter expression (for example `status==READY;duration=gt=30`). Each resource exposes its own allow-list of filterable fields and operators.',
+      in: 'query',
+      name: 'filter',
+      required: false,
+      schema: { type: 'string' },
+    },
+    {
+      description:
+        'Optional comma-separated list of fields to sort by; prefix a field with `-` for descending order. Defaults to newest first (createdAt descending).',
+      in: 'query',
+      name: 'sort',
+      required: false,
+      schema: { type: 'string' },
+    },
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              data: {
+                description: 'The page of results.',
+                items: {
+                  additionalProperties: false,
+                  properties: {
+                    channelId: { description: 'Identifier of the channel this integration belongs to.', type: 'string' },
+                    createdAt: { description: 'Timestamp when the channel integration was created, as an ISO 8601 datetime string.', type: 'string' },
+                    daiAssetKeys: { description: 'Google DAI asset keys for the server-side (SSAI) path.', items: { type: 'string' }, type: 'array' },
+                    id: { description: 'Unique channel integration identifier within the channel.', type: 'string' },
+                    type: {
+                      description: 'Channel integration type. Currently only `SSAI_DAI` (Google DAI server-side ad insertion).',
+                      enum: ['SSAI_DAI'],
+                      type: 'string',
+                    },
+                  },
+                  required: ['id', 'channelId', 'type', 'createdAt'],
+                  type: 'object',
+                },
+                type: 'array',
+              },
+              pagination: {
+                additionalProperties: false,
+                description: 'Pagination metadata for the result set.',
+                properties: {
+                  page: { description: 'Current 1-based page number.', type: 'number' },
+                  pageSize: { description: 'Number of items requested per page.', type: 'number' },
+                  total: { description: 'Total number of items matching the query across all pages.', type: 'number' },
+                  totalPages: { description: 'Total number of pages available for the query.', type: 'number' },
+                },
+                required: ['page', 'pageSize', 'total', 'totalPages'],
+                type: 'object',
+              },
+            },
+            required: ['data', 'pagination'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

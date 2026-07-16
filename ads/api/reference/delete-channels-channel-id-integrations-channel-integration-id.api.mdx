@@ -1,0 +1,43 @@
+---
+id: delete-channels-channel-id-integrations-channel-integration-id
+title: 'Delete /channels/{channelId}/integrations/{channelIntegrationId}'
+description: 'Delete a channel integration.'
+sidebar_label: 'Delete /channels/{channelId}/integrations/{channelIntegrationId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVEuP2jAQ/ivWnEAyTal6yg1pOaBW2tX2cUE5mGRIrA22156wm0b579WEEEJUIar2RPCMZ77HjBvIMKReO9LWQAwPWCKhUCItlDFYCm0Ic684/AEkOOXVAQl9gHjbTC5vMjSk9xq9sHtBBZ6r8E3NGU5RARKMOiDE0Ec3GUjw+FppjxnE5CuUENICDwriBqh2nBzIa5ND28q7207B34BwSfxLNAknB2dNwMDxTx8/889U1b2qShLPfSazAOtw6BhD1gm/6PGExaDNYkTicjzBSypnQ2B0HiCRcEAq7KV8ZyAVEEOknI6Oy+jcL2qGhm007ngJjFu2ICFgWnlNdTcIOxV0uqq49jaRYH3OrLYJ63NO/MYinlQapU+1Wj1txAvWYlYF9OzSXCiTiYCpRxIzp0J4sz6bs6GdLWxHV491OLlTEDloBxjTFo8+V0b/6rgIPUzPMCIFqgz9ZUjeF9bnC51dGiinv2Dd2ajN3naDoank0KMj/VPjm1hlQayeNiDhiD6cOh+XDMvZQAdl+FbfoV+7f7HjimIDqTWEhu5Y6Z4S4TtFrlTaMMTKl1zlNC1b5ss8liDPGxNAQjxe4DHKcexqUhMJhQ3EJZtmpwL+8GXb8vFrhb4+Dc9Rea12LCa/MDrwdwbxXpUBb/CcPfdLOxc3H6I/8j37amrmqcqK/4GEF6yvHqru9fmvkO6y4z54V1K3STva/4f11/X3NbTtbywOD80=
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/integrations/{channelIntegrationId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/integrations/{channelIntegrationId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete a channel integration.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the channel integration.', in: 'path', name: 'channelIntegrationId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>
