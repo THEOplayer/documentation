@@ -1,0 +1,8 @@
+<svg width="360" height="210" viewBox="0 0 360 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Double format: content and ad windows are shown side by side">
+  <rect x="20" y="15" width="320" height="180" rx="8" fill="#E2E8F0" stroke="#1A202C" stroke-width="2"/>
+  <rect x="28" y="23" width="148" height="164" rx="4" fill="#2B6CB0"/>
+  <rect x="184" y="23" width="148" height="164" rx="4" fill="#DD6B20"/>
+  <text x="102" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#FFFFFF">CONTENT</text>
+  <text x="258" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">AD</text>
+  <text x="180" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1A202C">side-by-side primary and companion windows</text>
+</svg>
