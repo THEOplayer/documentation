@@ -2,6 +2,32 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-07-16
+
+### Media Server
+
+<!-- 3.4.3 -->
+
+#### Features
+
+- Added a Download CSV button to the BWE stats viewer ([#563](https://github.com/millicast/media-server/pull/563)).
+- [OPTI-3423] Made BWE and probing constants configurable through ABR strategies and feature flags ([#583](https://github.com/millicast/media-server/pull/583)).
+- [OPTI-3490] Sequenced cascading state updates as part of making cdr-importer safe for JIT burst HA during node rotation ([#577](https://github.com/millicast/media-server/pull/577)).
+
+#### Fixes
+
+- [OPTI-3267, OPTI-2857] Handled RTMP `WriteData` back-pressure to prevent stream corruption ([#532](https://github.com/millicast/media-server/pull/532)).
+- (audio) [OPTI-3544] Clamped float-to-int16 conversion in `SetPCMData` to prevent wrap distortion ([#586](https://github.com/millicast/media-server/pull/586)).
+- (abr) [OPTI-3423] Added loss-free burst RTT resilience for transcoder I-frame bursts ([#576](https://github.com/millicast/media-server/pull/576)).
+- [OPTI-3455] Added `pingInterval` to all Redis clients to avoid gateway timeout reconnection ([#557](https://github.com/millicast/media-server/pull/557)).
+- [OPTI-3531] Prevented a viewer-count leak that wedges aggregated subscriber streams ([#579](https://github.com/millicast/media-server/pull/579)).
+- [OPTI-3541] Updated the base image to use libsrt 1.5.6 with the CVE fix ([#589](https://github.com/millicast/media-server/pull/589)).
+
+#### Chores
+
+- [OPTI-3543] Pinned `action-semantic-pull-request` to v5.5.3 ([#585](https://github.com/millicast/media-server/pull/585)).
+- [OPTI-3461] Upgraded `rts-cli` and added support for the ash shell ([#562](https://github.com/millicast/media-server/pull/562)).
+
 ## 2026-07-08
 
 ### Media Server
