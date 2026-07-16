@@ -38,6 +38,25 @@ if (spec.openapi !== '3.0.3' || !spec.paths || !spec.components) {
   throw new Error(`Fetched Ads OpenAPI spec from ${specUrl} is not the expected OpenAPI 3.0.3 document.`);
 }
 
+function removeExcludedFields(value) {
+  if (Array.isArray(value)) {
+    for (let index = value.length - 1; index >= 0; index -= 1) {
+      if (value[index] === 'adPrefetchMs') {
+        value.splice(index, 1);
+      }
+    }
+    value.forEach(removeExcludedFields);
+    return;
+  }
+
+  if (value && typeof value === 'object') {
+    delete value.adPrefetchMs;
+    Object.values(value).forEach(removeExcludedFields);
+  }
+}
+
+removeExcludedFields(spec);
+
 const httpMethods = new Set(['get', 'put', 'post', 'delete', 'patch', 'options', 'head', 'trace']);
 const titleCase = (value) =>
   value
