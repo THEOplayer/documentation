@@ -1,0 +1,40 @@
+---
+id: delete-templates-template-id
+title: 'Delete /templates/{templateId}'
+description: 'Delete a template.'
+sidebar_label: 'Delete /templates/{templateId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJx9U0tv2zAM/isCTwmgLMuwk28BmkOwAS26bpcgB9ZiYqG2pEp0Ws/Qfx/ovIO1Jz/4UfweVA+GUhltYOsdFHBHNTEpVExNqJHpC2gIGLEhppigWPU3HUtDju3GUlR+o7iiq1YrkIBcgQaHDUEBx/LSgIZIr62NZKDg2JKGVFbUIBQ9cBcEnThat4Wc1wJOwbtESerfvn6Xxy39DbY1q8cDEnLW4ANFFMDSQAFmUDg5skiTKz6MWxEJT8cyrDU0xJU/9w6OcAUFTDHY6W42PR027c+nZdCQqGyj5W7w7RmTLeetdK7WGnzcCqHVWqQdgb9E/17gBfxW5vxhqV6oU6M2URRbxwqdUYnKSKxGAVN689GMJYHBUXFyOE8k7o2tmAPkE43bEfdxi87+HXxT9pTxKdOK0FA8p/o+8XE7seY8AIP9Qd2QgHUbP2RquZbSfWD7x9Kbmpuk5g9L0LCjmPaTdzOhFXziBp10HSYcVvNjs68E9FB6x+T4o6U+sGR652mo0TqZ2sZaWvfxrkSCUJsJ/LQQGoqLlVlrqHxiQff9Myb6Heuc5fdrS7HbR73DaPFZpMv1sUneDRQbrBN9wnv0eLgdY/X5LfuvlmMMrhMNWLfyBRpeqLu+hXmdL3b8bvFz8bSAnP8Be7dmyA==
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /templates/{templateId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/templates/{templateId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete a template.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the template.', in: 'path', name: 'templateId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

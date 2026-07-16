@@ -1,0 +1,108 @@
+---
+id: get-channels-channel-id
+title: 'Get /channels/{channelId}'
+description: 'Get a channel by ID.'
+sidebar_label: 'Get /channels/{channelId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V9tuGzcQ/ZUBn2RgHUtp0tTqk1oHqdAGNuxcHgwDHi1HEmMuuSFnV1YN/Xsx5OpiSQnQBz9ptbydOXM4c/ZJaYplMDUb79RQfSAGhHKOzpGFyRLGF69UoWoMWBFTiGp4+7S3ZqzJsZkaCuCnwHNar5eVRmbUyHNVKIcVqaHqRsdaFSrQ98YE0mrIoaFCxXJOFarhk+JlLZMjB+NmarW6k8mx9i5SlPHX/b78lN4xOZZHrGtrShRUZ9+iQHva2Q+1NjKE9ir4mgIb2WeKNlKh6p1XMvUq0JS4nH9M/5+HO9JQd8OwME77BRgHlbHWRCq907EAQRW8tcbNYO4XMMUAOCfUwhDCJBA+QGQMDGwqSqTllyaCJmtaCqSBfRqpLS4pvIILmmJjOcr7Qb/f70Nv0Ifu0BNYzMmB8wyRWKinx9I20bT00ThTNdWa4wof89/zfv/d4Pz89ds37970z88HxZp045hmFNSqUGUgZNIjPiTik6koMlZ1Pnkn8bDACN3KAjACOhjfXMJvv/YHoJEpBZ1TK0j3cl2osonsq1GMxH/T8vDoD97PLMHFaAx5KqDMhQdaQhNJw9SHBChSaCmczhqjSUPv5sNofAIix1dw3UkvzW3JaR+g9jrnIR6FpYmpFAjvHU6sqHYf2Nc58ZwCYMO+QjZll9bNSgiNix08Ezc3Ba4J9al3dgneddQBOg1NLXz9DuxnErFhaA2m0LZbUkJzpk2UXyCna28cx+eKSVLfCWvivSV0Ka42fE1KPqb3iy/X0AskUj/5X4KfYPmw1i9PfajAev+Qg88kC6xO7fKYdb4H+5d+VvpbqIxrmF5K6OZINj87873ZqtpsCt1RdUgcl9NpJD5G4z+mJbDI5Mol+DRtn8bhhrrtrQfZNT2n8sEBjY0QCG2uHN7tCemPvdoSAQMBtWgbuY6AMzQuMji/SIzGvD4jek59H3rOdyMnEvJPCK3W1PePkZsr/z4lfzUVutNAqJNutYkSJ8jkzQXeaSUHhNdZcKOSTUs3mcPDUzIhFTozpcjQLQJBF1q0koSOf0DdSheIufR2cgTdyIFSwzCdlMW7V45fRpQd2LG2Lxhfh3zbgHKY+/3mZSIUiU4wHlGHtBeQRhvIlbQt69LSdZNi7KqId1vPMoT7BVpbWl8+3EPvoOucgA9wX3O8h55rKgqmlHYeyXFyDvnOSFdLiicngdyqzZ5ihjiquwM5rnbNzK2Uk53gjrSO3da63c1PvlHJarVK3eZZGc7JgOvOBKUTxbUk2GOthmpGfNrREE93XRbjTIyb+rMblAMr4rnvViWHx3M1VGdYm7N2cLbe5uxps89KFSpS2QTDy+QCJxhNOWpk3e1doXyYCYrbO7Fq64k34r+yq9qZfmCprsapdfeaSEGu/0nqfZHKQAy9GmNc+KBTRpKjS/1L9tuWhTlzLYLqYOwfcRlm6My/OcfPC3myqFJdKWxN6uOpD7PTnMV8ANZGvIjQbtzUJ49q2MrQZc3mi6EFjHSE0dVYFaqlEPPJ7SDf5MgVJk/anSBW+0c8P8O+Y3J/5M87iEyPfFZbNKmrN8HK4pzZW8EvuAaivLUOCjXc6uSuUHMfWeY+PYlsPwe7Wsnr7w2FZc5yi8GIgPN3QHYceuOjf4i7t3ZbJ/DTz4WjgawT4JYSANpG/qlCPYg13PmcWN2tinUiBV4eH5Ul1byz8uA7YbV7HT68/6RWq/8A4cGFhA==
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}'} context={'endpoint'}></MethodEndpoint>
+
+Get a channel by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              adPrefetchMs: {
+                description:
+                  'Ad prefetch window in milliseconds, controlling how far ahead of a break start time the break is delivered to the player. Defaults to 10000 (10 seconds) when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              createdAt: { description: 'Timestamp when the channel was created, as an ISO 8601 datetime string.', type: 'string' },
+              customAssetKey: {
+                description: 'Google DAI custom asset key used for the server-guided (SGAI) path. Required for vendor pod breaks.',
+                type: 'string',
+              },
+              detectionEnabled: {
+                description:
+                  'Whether automatic break detection runs for this channel. Read-only on create and update; toggle it via the detection enable/disable endpoints. Defaults to false.',
+                type: 'boolean',
+              },
+              dvrWindowMs: {
+                description:
+                  'DVR (rewind) window in milliseconds, controlling how far back the platform looks for breaks to deliver to players. Defaults to 300000 (5 minutes) when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              id: { description: 'Unique channel identifier.', type: 'string' },
+              liveOffsetMs: {
+                description:
+                  'Live latency offset in milliseconds: how far the player live playhead trails real time on this channel. Break start times are evaluated against now minus this offset. Defaults to 0 (no offset).',
+                maximum: 9007199254740991,
+                minimum: 0,
+                type: 'integer',
+              },
+              name: { description: 'Human-readable display name for the channel.', type: 'string' },
+              pollingActiveSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players during an active break. Defaults to 1 when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              pollingIdleSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players when no break is active. Defaults to 10 when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              timebase: {
+                description:
+                  'Time reference used for scheduling breaks on a channel: `wallclock` (ISO 8601 datetime) or `pts` (numeric presentation timestamp).',
+                enum: ['wallclock', 'pts'],
+                type: 'string',
+              },
+            },
+            required: ['id', 'timebase', 'detectionEnabled', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

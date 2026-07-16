@@ -1,0 +1,43 @@
+---
+id: delete-channels-channel-id-origins-origin-id
+title: 'Delete /channels/{channelId}/origins/{originId}'
+description: 'Delete an origin within a channel.'
+sidebar_label: 'Delete /channels/{channelId}/origins/{originId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVE1v2zAM/SsCTymgzOuwk28BmkOwAS26j0uQg2IzNlFHUiU6rWf4vw+0HScNtm4ddrIt0o/vPYpsIceYBfJMzkIKN1ghozJWuUAFWfVEXJJVRmWlsRard6DBm2D2yBgipOv2AmGVo2XaEQbldopLPP+TJMMbLkGDNXuEFMboKgcNAR9rCphDyqFGDTErcW8gbYEbL8mRA9kCuk7/uewg4DdVh+Abi24kOXpnI0aJf3j/UR6XDu5MXbG6HzOFLDiPwUjCKocU8t7k+ag8zicL5gOtOD+jx6YQm+F2CMFGwx65dCegviNcQgqJ8ZQcrpMjctJO0F0yYiftEbwDDRGzOhA3fSO3JlK2qAVqvdHgQiF01xsRfkz8Iu4M8s/SL01Y3K3UAzZqVkcMYvmVMjZXEbOArGbexPjkQn4l3en9Fp97PFE82F4ye+gmGpclbkNhLP3oXVU0dX/qd4kmx3Dq+PPchWJO+amA8fQJm74/ZHeu7zhxJaFbz/Sd8Ekt8qgWdyvQcMAQh8qHa6HlXeS9sfLXWGGcnTe4/0JRC5mzjJb/dgxHGYzPnPjKkBVadagEargQa9Eo3K9BHwctgob0fOhGZnI8XbuNhtJFFoS23ZqI30LVdXL8WGNohvtxMIHMVvySJUBR3nNId6aK+Iq22f04cFfq1V3xS3nH1tlGZJmqli/Q8IDNi13SL4j/Q+m0R/6B0eRot+nOBvdm+Xn5dQld9xOy1uEW
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/origins/{originId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/origins/{originId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete an origin within a channel.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the origin.', in: 'path', name: 'originId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

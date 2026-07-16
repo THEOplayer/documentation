@@ -32,14 +32,14 @@ The reference is generated at build time from the committed OpenAPI contract in 
 
 ```bash
 npm run fetch-ads-openapi
-npm run gen-api-docs
+npm run refresh-ads-api-docs
 ```
 
 For a local checkout or a newer remote ref, override the source:
 
 ```bash
-ADS_OPENAPI_SPEC_URL=/path/to/optiview-ads/openapi.json npm run gen-api-docs
-ADS_OPENAPI_REF=commit-or-branch npm run gen-api-docs
+ADS_OPENAPI_SPEC_URL=/path/to/optiview-ads/openapi.json npm run refresh-ads-api-docs
+ADS_OPENAPI_REF=commit-or-branch npm run refresh-ads-api-docs
 ```
 
-Private GitHub fetches use `ADS_OPENAPI_TOKEN`, `GITHUB_TOKEN`, or `GH_TOKEN`. Change the pinned commit in `scripts/fetch-ads-openapi.mjs` when intentionally refreshing the published contract, regenerate the pages, and review the generated reference.
+Private GitHub fetches use `ADS_OPENAPI_TOKEN`, `GITHUB_TOKEN`, or `GH_TOKEN`. Change the pinned commit in `scripts/fetch-ads-openapi.mjs` when intentionally refreshing the published contract, regenerate the pages, and commit the reviewed generated reference.
