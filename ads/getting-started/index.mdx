@@ -9,7 +9,140 @@ import RebrandingNotice from '../callouts/_rebranding_notice.md';
 
 <RebrandingNotice />
 
-These guides provide the steps required to get started with OptiView Ads. They cover the deployment and API integration of the Signaling Service into your existing workflow, as well as the integration of OptiView Ads into your application using various OptiView Player SDKs.
+This guide walks through the end-to-end path to monetize a live stream with Server-Guided Ad Insertion (SGAI): create a channel, attach and enable an origin, define a reusable break template, schedule a break, and play it in OptiView Player. Every step is available in the OptiView Unified Dashboard and through the REST API.
+
+## Prerequisites
+
+Before you begin, you need:
+
+- An OptiView organization, identified by the `X-Org-ID` header.
+- An API key and secret for HTTP Basic authentication.
+- Your OptiView Ads base URL. The examples use `https://ads.example.com`.
+- An OptiView Player license enabled for OptiView Ads.
+
+Set the credentials used by the examples in your shell:
+
+```bash
+export ADS_API_KEY='your-api-key'
+export ADS_API_SECRET='your-api-secret'
+```
+
+## 1. Create an Ads channel
+
+Dashboard: **Ads → Channels → New**.
+
+Create a channel for the live stream. The channel's timebase determines how scheduled break start times are interpreted.
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "id": "sports-main",
+    "name": "Sports main",
+    "timebase": "wallclock",
+    "dvrWindowMs": 300000,
+    "liveOffsetMs": 0,
+    "pollingIdleSeconds": 10,
+    "pollingActiveSeconds": 1,
+    "customAssetKey": "sports-main-custom-asset"
+  }'
+```
+
+See the [Channels concept](/ads/concepts/channels) for the channel model and the complete field reference.
+
+## 2. Add and enable an origin
+
+Dashboard: open the channel → **Overview → Origins** (add, then enable).
+
+Add the manifest origin with detection disabled initially, then enable it with the returned origin ID:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "id": "origin-primary",
+    "name": "Primary HLS origin",
+    "type": "HLS",
+    "url": "https://origin.example.com/live/sports-main/master.m3u8",
+    "enabled": false,
+    "priority": 0
+  }'
+```
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins/origin-primary/enable' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+See [Add an origin to a channel](/ads/concepts/channels#add-an-origin-to-a-channel) and [Marker detection lifecycle](/ads/concepts/channels#marker-detection-lifecycle).
+
+## 3. Define a break template
+
+Dashboard: **Ads → Templates → New**.
+
+Templates are reusable break definitions. This minimal template plays a single 30-second VAST asset:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/templates' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "id": "fullscreen-vast",
+    "name": "Full-screen VAST",
+    "duration": 30,
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "id": "asset-1",
+          "type": "vast",
+          "mediaType": "video",
+          "uri": "https://ads.example.com/vast.xml"
+        }
+      ]
+    }
+  }'
+```
+
+The supported break formats are `single`, `double`, `lshape_ad`, `lshape_content`, and `overlay`. For Google Ad Manager pod serving, use an asset with `type: "vendor"`, `vendor: "gam"`, and `vendorParameters` such as `{ "type": "pod" }`; this uses the channel's `customAssetKey`. See the [Ads API reference](/ads/api/signaling/theoads-api) for the complete template fields.
+
+## 4. Schedule a break
+
+Dashboard: open the channel → **Breaks → Schedule now**.
+
+Schedule a break from the template. For a `wallclock` channel, `start` is an ISO 8601 datetime; for a `pts` channel, it can be a numeric PTS value.
+
+```bash
+export BREAK_START="$(date -u -d '+5 minutes' '+%Y-%m-%dT%H:%M:%S.000Z')"
+
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d "{
+    \"templateId\": \"fullscreen-vast\",
+    \"start\": \"$BREAK_START\",
+    \"duration\": 30
+  }"
+```
+
+The response includes a status such as `PREPARING`, `CUED`, `READY`, `SIGNALED`, or `ERROR`. You can also use the `/breaks/{breakId}/punch` endpoint to schedule a `CUED` break, defaulting to now. See [Scheduling breaks](/ads/how-to-guides/scheduling-breaks).
+
+## 5. Play via OptiView Player
+
+Point OptiView Player at the channel's Break Manifest. The player polls this endpoint to discover active breaks and renders the configured ad experience. The Break Manifest is a public polling endpoint that identifies the organization and channel in the path, so it needs no authentication headers:
+
+```bash
+curl 'https://ads.example.com/manifest/v1/org_123/channels/sports-main'
+```
+
+Continue with the platform guides for [Web](./web), [Android](./android), [iOS](./ios), [React Native](./react-native), or [Chromecast CAF](./chromecast).
 
 import DocCardList from '@theme/DocCardList';
 
