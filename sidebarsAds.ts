@@ -16,6 +16,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Vendors',
+      description: 'Configure vendor integrations for server-guided and server-side ad insertion.',
+      customProps: {
+        icon: '🏷️',
+      },
+      link: { type: 'doc', id: 'vendors/index' },
+      items: ['vendors/google'],
+    },
+    {
+      type: 'category',
       label: 'Getting started',
       description: 'Set up your first stream with OptiView Ads!',
       collapsed: false,

@@ -1,0 +1,67 @@
+---
+sidebar_position: 1
+sidebar_label: Vendors
+---
+
+# Vendors
+
+import RebrandingNotice from '../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
+A vendor is the ad decisioning or serving integration that OptiView Ads signals breaks to. Google Ad Manager 360 is the first supported vendor.
+
+Vendors are not standalone REST resources in Ads V2. A break variant carries a **vendor asset**, while vendor configuration is applied at the organization and channel levels. Self-serve channel, break, and integration APIs use HTTP Basic authentication with an API key and secret, plus the `X-Org-ID` header. Organization-level Google configuration is administrator-managed; see [Google Ad Manager](./google).
+
+## Vendor assets
+
+An asset with `"type": "vendor"` represents a vendor-delivered ad. The current vendor enum contains only `"gam"`.
+
+| Field              | Type                     | Required/default            | Description                                                                                      |
+| ------------------ | ------------------------ | --------------------------- | ------------------------------------------------------------------------------------------------ |
+| `type`             | string literal           | Required: `"vendor"`        | Selects the vendor asset type. Other asset types are `"static"` and `"vast"`.                    |
+| `vendor`           | enum                     | Required: `"gam"`           | Identifies the ad vendor.                                                                        |
+| `uri`              | string                   | Defaults to `"placeholder"` | Holds the vendor result. For a decisioned GAM pod, it is replaced with the Google `podId`.       |
+| `vendorParameters` | `Record<string, string>` | Required                    | Vendor-specific parameters. GAM assets must include a `type` key whose current value is `"pod"`. |
+| `assetParameters`  | `Record<string, string>` | Optional                    | Ad-tag and targeting parameters forwarded during decisioning.                                    |
+
+Example GAM pod asset:
+
+```json
+{
+  "type": "vendor",
+  "vendor": "gam",
+  "uri": "placeholder",
+  "vendorParameters": {
+    "type": "pod"
+  }
+}
+```
+
+## Supported vendors
+
+| Vendor                            | Enum value | Delivery                              |
+| --------------------------------- | ---------- | ------------------------------------- |
+| [Google Ad Manager 360](./google) | `gam`      | SGAI pod serving and SSAI_DAI fan-out |
+
+The vendor model is extensible. When another vendor is supported, its documentation will be added as a separate page in this section and listed in the Vendors sidebar.
+
+## How vendors relate to the Ads V2 model
+
+| Resource                                     | Relationship                                                                                 |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| [Channels](../concepts/channels)             | Hold the channel-level `customAssetKey` used for Google server-guided pod serving.           |
+| [Breaks](../how-to-guides/scheduling-breaks) | Carry the vendor asset in a break variant.                                                   |
+| Templates                                    | Reusable break presets that can be scheduled on channels. See the [API reference](/ads/api). |
+| Integrations                                 | Configure channel-level delivery integrations such as `SSAI_DAI` and its `daiAssetKeys`.     |
+
+Vendor assets are validated as part of break and template requests. A GAM vendor asset must use:
+
+```json
+{
+  "vendor": "gam",
+  "vendorParameters": {
+    "type": "pod"
+  }
+}
+```
