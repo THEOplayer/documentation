@@ -1,0 +1,64 @@
+---
+sidebar_position: 2
+sidebar_label: hls.js
+---
+
+# Integrate with hls.js
+
+hls.js exposes parsed HLS date ranges on the active `LevelDetails.dateRanges` map. Use the `LEVEL_UPDATED` event to inspect refreshed media-playlist details. See the [hls.js `LevelDetails` API](https://hlsjs.video-dev.org/api-docs/hls.js.leveldetails) and [events API](https://hlsjs.video-dev.org/api-docs/hls.js.events).
+
+## Option 1: poll the Break Manifest
+
+The following example makes an immediate request, retries failures after 10 seconds, and changes the polling interval based on whether the response contains an active break. It treats the first successful response as sufficient for a minimal integration; remove the `oneShot` guard for continuous scheduling.
+
+```javascript
+const manifestUrl = 'https://ADS-HOST/manifest/v1/ORG-ID/channels/CHANNEL-ID';
+let timer;
+let oneShot = true;
+
+async function loadBreakManifest() {
+  try {
+    const response = await fetch(manifestUrl);
+    if (!response.ok) throw new Error(`Break Manifest HTTP ${response.status}`);
+
+    const manifest = await response.json();
+    scheduleBreaks(manifest.breaks);
+
+    if (oneShot) return;
+    const active = manifest.breaks.some((breakItem) => isActive(breakItem));
+    timer = setTimeout(loadBreakManifest, (active ? manifest.polling.active : manifest.polling.idle) * 1000);
+  } catch (error) {
+    console.error('Break Manifest request failed', error);
+    timer = setTimeout(loadBreakManifest, 10_000);
+  }
+}
+
+loadBreakManifest();
+```
+
+`scheduleBreaks` is application code: render the `single` full-screen experience at each break's `start` for its `duration`, and apply any supported `controls`.
+
+## Option 2: read injected DATERANGE cues
+
+```javascript
+const hls = new Hls();
+hls.loadSource('https://ADS-HOST/channel/monetized/master.m3u8');
+hls.attachMedia(video);
+
+hls.on(Hls.Events.LEVEL_UPDATED, (_event, data) => {
+  const dateRanges = data.details?.dateRanges ?? {};
+  for (const [id, dateRange] of Object.entries(dateRanges)) {
+    if (!dateRange) continue;
+    const start = dateRange.startDate;
+    const duration = dateRange.duration ?? dateRange.plannedDuration;
+    startFullScreenAd({ id, start, duration });
+  }
+});
+```
+
+The injected OUT and IN tags carry the break ID, wallclock dates, duration, and hexadecimal SCTE-35 attributes. hls.js does not render the ad experience for you; your application must coordinate the video element and ad UI.
+
+## More information
+
+- [hls.js `LevelDetails`](https://hlsjs.video-dev.org/api-docs/hls.js.leveldetails)
+- [hls.js `Events`](https://hlsjs.video-dev.org/api-docs/hls.js.events)

@@ -1,0 +1,75 @@
+---
+sidebar_position: 6
+sidebar_label: React Native
+sidebar_custom_props: { 'icon': 'react' }
+---
+
+# OptiView Ads on React Native
+
+The React Native integration is independently versioned. This guide targets `react-native-theoplayer` **11.4.0**, while the OptiView Player SDK root is 11.6.1.
+
+## Prerequisites
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+1. Obtain an OptiView Player license compatible with OptiView Ads from the [player portal](https://portal.theoplayer.com).
+2. Install `react-native-theoplayer` 11.4.0 and enable the THEOads platform feature.
+
+<Tabs queryString="platform">
+<TabItem value="android" label="Android & Android TV">
+
+Set `THEOplayer_extensionTHEOads = true` in `gradle.properties`.
+
+</TabItem>
+<TabItem value="ios" label="iOS & tvOS">
+
+Add the `THEOADS` feature flag to `react-native-theoplayer.json` (or `theoplayer-config.json`).
+
+</TabItem>
+<TabItem value="web" label="Web">
+
+```bash
+npm install react-native-theoplayer@11.4.0
+```
+
+Load the Google DAI library:
+
+```html
+<script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+```
+
+</TabItem>
+</Tabs>
+
+## Integration
+
+```javascript
+player.source = {
+  sources: {
+    src: 'CHANNEL-MONETIZED-HLS-URL',
+    type: 'application/x-mpegurl',
+    hlsDateRange: true,
+  },
+  ads: [
+    {
+      integration: 'theoads',
+      networkCode: 'NETWORK-CODE',
+      customAssetKey: 'CUSTOM-ASSET-KEY',
+      adTagParameters: { key: 'value' },
+    },
+  ],
+};
+```
+
+React Native supports `adTagParameters`, but does not expose `breakManifestUrl`. Use the platform's OptiView Player integration for Break Manifest handling and the channel's monetized HLS URL.
+
+## Verify
+
+Load the channel's monetized HLS source and start playback. Confirm that the platform integration schedules a break from the Break Manifest or SSAI cues, the ad renders, and the OptiView impression appears in the portal.
+
+## More information
+
+- [React Native player getting started](/theoplayer/getting-started/frameworks/react-native/getting-started/)
+- [Ad impression tracking](../../../how-to-guides/ad-impressions)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
