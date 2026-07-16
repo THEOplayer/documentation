@@ -9,14 +9,6 @@ jobs:
   pr-lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Ads OpenAPI token
-        uses: actions/create-github-app-token@v3
-        id: ads-token
-        with:
-          client-id: ${{ vars.THEOPLAYER_BOT_CLIENT_ID }}
-          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
-          owner: Dolby-OptiView
-          repositories: optiview-ads
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -29,8 +21,6 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run gen-api-docs
-        env:
-          GITHUB_TOKEN: ${{ steps.ads-token.outputs.token }}
       - run: npm run check-format
       - run: npm run lint
       - run: npm run typecheck

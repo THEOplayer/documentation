@@ -1,0 +1,108 @@
+---
+id: post-channels-channel-id-detection-disable
+title: 'Post /channels/{channelId}/detection/disable'
+description: 'Disable automatic ad-break detection for a channel. Stops the per-channel detection scheduler.'
+sidebar_label: 'Post /channels/{channelId}/detection/disable'
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V91vIjcQ/1dGfiLSEsj1rtfQJ6pUV9SeEiX38RBFymQ9gC9ee8+ehdCI/70ae4EN0FP7kCeW9ex8/mbm52elKZbB1Gy8UyN1YSI+WAJs2FfIpgTU/YdA+AiamEoRg6kPgFDO0Tmyp3DDvo7Ac4KaQr993RGP5Zx0YymcqkLVGLAiphDV6PZ5z/pEk2MzNRTAT5PGjRFVKCMSNfJcFcphRWqk2tOJVoUK9L0xgbQacWioUGK1QjV6VryqRThyMG6m1us7EY61d5GinL8ZDuWn9I7JsTxiXVtTong1+BbFteeOPtTayBHaq+BrCmxEzxRtpELVnVciehVoSlzOP6b/L8Mda6jbY1gap/0SjIPKWGsild7pWIB4Fby1xs1g7pcwxQA4J9SSIYRcmsgYGNhUlJKWX5oImqxZUCAN7HOBLK4onMIFTbGxHOX92XA4HELvbAit0RNYzsmB8wyRWFJPT6VtolnQR+NM1VSbHFf4lP+eD4fvz87P37x7+/7t8Pz8rNgk3TimGQW1LlQZCJn0mA8T8clUFBmrOlvuFB6WGKH9sgCMgA4mN5fwy8/DM9DIlILOpRVP92pdqLKJ7KtxjMR/0urQ9AfvZ5bgYjyBLAoosvBIK2gi6QR2cShSWFDozxqjSUPv5sN4cgICx1O4bqGXZBfktA9Qe53rEI+6te2O3530mz507OuceE6h04n7bRgaF1v3TNy14zWh7ntnV+BdmzpAp6GpJV+/AvuZRGwYFgZTaDuVlLwZ6HYKkNO1N47jS8QkqHfCevDeEroU1yJ8TUg+hveLL9fQCyRQP/lfgH/A8nGDX576UIH1/jEHn5MsbrVol8eM8z23fxpmpL+DyriG6bWAbo5U87Mz35sdqs120B1Fh8RxOZ1G4mNp/MssCCwyuXIFPontp3G0Td2u60G0puc0PjigsRECoc2Tw7s9IP22N1siYCCgBdpG2hFwhsZFBueXKaMxf589epn6IfScb09OJOQfJLTapH54LLl58u+n5I+mQtcPhDrhVpsocYIIbxu4s0oOEl5nwI1LNgu6yTk8tJITUqEzU4oM7Ucg3oUFWilCm39AvZAtEPPobeEIuhGDMsMwWcrg3RvHrwPK1tmJtq8YX+v5bgHlMPf3zetEKBB9wHgEHbJeQBZtIFfSbqy3xERibKeIdztiM4L7JVpbWl8+3kPvYOucgA9wX3O8h55rKgqmlHUeyXFiDrlnZKslxJOTQG7VVqeQIY7q7gCO6y6ZuZVx0gnuyOrortadNv/wjUpW63XaNi/GcC4GXLckKFkU1pLcnmihWT7yhsnF/pZm9be2++2KENdwJlxOXWzOxImKeO43mhLt47kaqQHWZrA4G2xUD563uteDrfLBTnmksgmGV4ksPmA05bgRTbd3hfJhJs7e3gmj2wjeCE3L5KsjfsC8riZpw/eaSEGmxElakZHKQAy9GmNc+qBT4RLxS2tO9O2mx5y5Fty1buybuAwzdObvDIWX8z4xWRnCFHZc9qnvw6yfi50NYG2Eskh1jJv6RGUNWzm6rNl8MbSEsY4wvpqoQi0oxGx5cZYbPnKFibq2Fq58ZPjvqX8RTocev/4doY2f6YkHtUWTmEUTrLiRgXQryZGgzwT9bUSqUKPujWCrXZ7bsO4KNRdEjm7V87M01Odg12t5/b2hsMrAWmAwSTrdUPKXesvw/zUvvQ0PPIEfXmSOhrepuVtJWGgb+acK9SiktXPRWd+tiw12xL18Pi5Lqrnz5cENZt1tyqvLm09qvf4H7VPcdw==
+sidebar_class_name: 'post api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Post /channels/{channelId}/detection/disable'}></Heading>
+
+<MethodEndpoint method={'post'} path={'/api/v1/channels/{channelId}/detection/disable'} context={'endpoint'}></MethodEndpoint>
+
+Disable automatic ad-break detection for a channel. Stops the per-channel detection scheduler.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              adPrefetchMs: {
+                description:
+                  'Ad prefetch window in milliseconds, controlling how far ahead of a break start time the break is delivered to the player. Defaults to 10000 (10 seconds) when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              createdAt: { description: 'Timestamp when the channel was created, as an ISO 8601 datetime string.', type: 'string' },
+              customAssetKey: {
+                description: 'Google DAI custom asset key used for the server-guided (SGAI) path. Required for vendor pod breaks.',
+                type: 'string',
+              },
+              detectionEnabled: {
+                description:
+                  'Whether automatic break detection runs for this channel. Read-only on create and update; toggle it via the detection enable/disable endpoints. Defaults to false.',
+                type: 'boolean',
+              },
+              dvrWindowMs: {
+                description:
+                  'DVR (rewind) window in milliseconds, controlling how far back the platform looks for breaks to deliver to players. Defaults to 300000 (5 minutes) when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              id: { description: 'Unique channel identifier.', type: 'string' },
+              liveOffsetMs: {
+                description:
+                  'Live latency offset in milliseconds: how far the player live playhead trails real time on this channel. Break start times are evaluated against now minus this offset. Defaults to 0 (no offset).',
+                maximum: 9007199254740991,
+                minimum: 0,
+                type: 'integer',
+              },
+              name: { description: 'Human-readable display name for the channel.', type: 'string' },
+              pollingActiveSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players during an active break. Defaults to 1 when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              pollingIdleSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players when no break is active. Defaults to 10 when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              timebase: {
+                description:
+                  'Time reference used for scheduling breaks on a channel: `wallclock` (ISO 8601 datetime) or `pts` (numeric presentation timestamp).',
+                enum: ['wallclock', 'pts'],
+                type: 'string',
+              },
+            },
+            required: ['id', 'timebase', 'detectionEnabled', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

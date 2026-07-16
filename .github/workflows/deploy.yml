@@ -16,14 +16,6 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - name: Create Ads OpenAPI token
-        uses: actions/create-github-app-token@v3
-        id: ads-token
-        with:
-          client-id: ${{ vars.THEOPLAYER_BOT_CLIENT_ID }}
-          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
-          owner: Dolby-OptiView
-          repositories: optiview-ads
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -40,7 +32,6 @@ jobs:
         env:
           THEOPLAYER_LICENSE: ${{ vars.THEOPLAYER_LICENSE }}
           DOCUSAURUS_BASE_URL: /docs/
-          GITHUB_TOKEN: ${{ steps.ads-token.outputs.token }}
       # Deploy to S3
       # See https://github.com/aws-actions/configure-aws-credentials
       - name: Configure AWS credentials

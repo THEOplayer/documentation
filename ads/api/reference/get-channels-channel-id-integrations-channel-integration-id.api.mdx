@@ -1,0 +1,69 @@
+---
+id: get-channels-channel-id-integrations-channel-integration-id
+title: 'Get /channels/{channelId}/integrations/{channelIntegrationId}'
+description: 'Get a channel integration by ID.'
+sidebar_label: 'Get /channels/{channelId}/integrations/{channelIntegrationId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v20YQ/SuLOdkAFdk5FAVvRFwYQg424qQXQWhG5EjchNyld4ZSWIH/vRjqayXLrYvkRHJ3+N6b7w0UxHmwjVjvIIV7EoMmL9E5qox1QsuAemfmnZncvYMEGgxYk1BgSKebs/8nBTmxC0vB+IWRkvZY+qdViwalhAQc1gQp7G4nBSQQ6Lm1gQpIJbSUAOcl1QjpBqRr1JglWLeEvk/eTBu78B8Sjob/U81Mjbnxjon1/v3NjT5y74Sc6Cs2TWXzAXv8jVXxJsLDorB6hdVj8A0FsYqzwIopgSY62kThSt8eAiktn6aSKu+WbMRrSM7cSSAPhEJFJi9JPtuaWLBuzLok91qgzRrZ7FASg2zQmcnTg/n9t5tbU6CQ2JrMlvCiggJtxkzykTp+KeLe+2VF5i6bGFQr8506NgsfBj1MYUVhxLYgc/X0lE2ujeZ7SL5QzRcyeFCAIWCn3/ZCgL84+9xe9tceY7+2Ulp3XvmvEJ5TfLiArZbvzIc2BHJSdca7qjNf1bG/7rLJV3MVhSP2HQtjHWvpeHetGsi1NaRT2P8Ksxe6+rjspxqF5KRDB/O4QI4Qfv6NcoFeMU6duqMFtpWYT7seGWi0qPe9lsKSZLTj4dGBcBSF4Xh81qaCS51DEJ2zyqpJSr/DHoaWlJDCGBs7Xt2O92TjzYGtH8d0x4uYr4cEmPI2WOmG4TdHtnnWKvZ0loAPS/VnOtOZsDd80kbftm9kfp767HGidWyuWqagk+naoCsMUx5IzFWDzGsfiiGTw+jQoA94x/IqRRotrp2Mc4qHsERn/z4v2cNYLAkLCsfB+GPkw3JkiyMBNvYjdUMCrVv4oZWsVHr10Ij909LaZAWb7HECCawo8JZ5dauyGs9S4zD8dgy6bX4mFyf+RRP3LWts55LQDxk3FVqnEttQKdC2Wqbqr/pxe2wDhgTSuCViofHdSZnOEig9i0JuNnNk+hKqvtfj55ZCty2eFQaLcw2mblXL+l4c9sCrrl592nXstfnX5XvR331eXad+YtXqFyTwnbqT5Txs3F8q6Xwx/4S8k1D3sz7ZV7IGcmua5Tk1EoG82Mh9PDPu//gMff8P0hMosw==
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/integrations/{channelIntegrationId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/integrations/{channelIntegrationId}'} context={'endpoint'}></MethodEndpoint>
+
+Get a channel integration by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the channel integration.', in: 'path', name: 'channelIntegrationId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              channelId: { description: 'Identifier of the channel this integration belongs to.', type: 'string' },
+              createdAt: { description: 'Timestamp when the channel integration was created, as an ISO 8601 datetime string.', type: 'string' },
+              daiAssetKeys: { description: 'Google DAI asset keys for the server-side (SSAI) path.', items: { type: 'string' }, type: 'array' },
+              id: { description: 'Unique channel integration identifier within the channel.', type: 'string' },
+              type: {
+                description: 'Channel integration type. Currently only `SSAI_DAI` (Google DAI server-side ad insertion).',
+                enum: ['SSAI_DAI'],
+                type: 'string',
+              },
+            },
+            required: ['id', 'channelId', 'type', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

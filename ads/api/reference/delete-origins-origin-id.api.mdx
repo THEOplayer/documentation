@@ -1,0 +1,40 @@
+---
+id: delete-origins-origin-id
+title: 'Delete /origins/{originId}'
+description: 'Delete an origin.'
+sidebar_label: 'Delete /origins/{originId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJx9U8uO2zAM/BWBpwRQ6qboybcAm0PQAllsH5fAB8VibGEdSSvR2XUN/XtB23k02O7JDw7JmSHZg8ZYBuPJOAs5PGCDhEJZ4YKpjP0EErwK6oiEIUK+6+8SNhotmYPBINxBUI03iYYBXlENEqw6IuQwBjcaJAR8aU1ADTmFFiXEssajgrwH6jxjIwVjK0ipYHD0zkaMHP/y+Ss/7pkfVNuQeJqQkJIE5zEoBmw05KAHcYuRQ1zccCFVsTjYjiEoJByRanfNGnygGnLIlDfZaZlNZbL+XCeBhIhlGwx1g1N7FU25ajlrV0hwoWIau4IFnYE/WPUo6wZ+L271uBHP2IlZGzGwlXOhrBYRy4AkZl7F+OqCnrPrg4/s31CPxY121kQe0oXGfYttqJQ1fwa3hLlM9TLHGpXGcJ3k28KFamH0tYHy5ht2g+/GHtwwSUMNh7aezG+Dr2Klo1g9bkDCCUMcO5+WTMu7SEdlOWvqMO3i+0b/Q76H0llCS//Z4Ikg4RtlvlHGcsM2NJw5TnXH7JnVEuS0pBEk5JcdKSTULhIj+36vIv4KTUr8+6XF0I0TPqlg1J4V852YyO8a8oNqIn5AefY0ncJcfHRO76o4e287Zq+alr9AwjN2t+eWinSz0g/r7+ufa0jpL3QjWzg=
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /origins/{originId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/origins/{originId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete an origin.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the origin.', in: 'path', name: 'originId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

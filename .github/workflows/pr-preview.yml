@@ -19,14 +19,6 @@ jobs:
         with:
           client-id: ${{ vars.THEOPLAYER_BOT_CLIENT_ID }}
           private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
-      - name: Create Ads OpenAPI token
-        uses: actions/create-github-app-token@v3
-        id: ads-token
-        with:
-          client-id: ${{ vars.THEOPLAYER_BOT_CLIENT_ID }}
-          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
-          owner: Dolby-OptiView
-          repositories: optiview-ads
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -55,7 +47,6 @@ jobs:
           # Add an announcement at the top to indicate that this is a preview
           DOCUSAURUS_PR_NUMBER: ${{ github.event.number }}
           DOCUSAURUS_PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ steps.ads-token.outputs.token }}
       # Deploy preview
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

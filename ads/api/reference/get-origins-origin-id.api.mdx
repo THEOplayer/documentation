@@ -1,0 +1,65 @@
+---
+id: get-origins-origin-id
+title: 'Get /origins/{originId}'
+description: 'Get an origin by ID.'
+sidebar_label: 'Get /origins/{originId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJyFVU1v4kgQ/SulOiWSGZI9rFbsCSnZAU1WQWGye0BIFHaBe2J3d7rLMCzyf1+V7SQOYWYuGLvr41W9qtdHzDimwXgxzuIIP7MAWXDBbI2F9QGmN58wQU+BShYOEUeL44nPNGMrZmM4gNuA5Ny5q6NRA0+SY4KWSsYRtofTDBMM/FyZwBmOJFScYExzLglHR5SDV9sowdgt1vVSjaN3NnLU89+urvSROitsRf+S94VJSTENv0UFduzFoywzekTFLDjPQYzG2VAROUHf+3TENCdruZhm+vKrSjtjkNzE165x4ew2gjjtwEklCaaBSTgby8f4X03JUaj0sM/Z9loJe4rQOSZAUTmazu/hj9+vriEjYTElQ5vjbFK2tC74TEn/5iw5h3cFeApiUuNJOIKxYCS+FroOTE+DjIVTjQAbMoXbcehlXTtXMFlNa85kfLTmuXotzLy29CzudmZOQ0yqkuwgMGVaFWQm+oIOoMawceFkBj8E9cG4YOTwMfBfXTXgQsYB9kZyY/tE/wmF23OAkslGyM1We/cS7xPc8IaqQpR7uOrltlW55qC52w+nef8mazYcRdGXJDpdpHQylV0hI1jdjOeTVQKryd18lYALsJrczmcrTcO2KnG0QDXBBCd3c/29nc9weab+KhQ/gfD4cAfeFQVnuv9ae8M5vHEeOexMymd6W/d3eqH0J719ajN3Tm8z2SOkvx1vyN36G6eCtYZ/D7rrNzx02tAg0GVudEBXGLcsg7aFcdCTHqGtahnet0earWTJXefSaJ7kOMIheTPcXQ+7GMPjS5AaE4ycVu0kLY64pmjScaVei2WCLmwVwGKp4vViOFdFanWmZ37KxXg2hSc+wEUVOehUXwLZDCKngQUuPMW4dyG7VAYajWvWTuO9UZKLeCW7g3Ga4j5syZr/mj6dLGGj2TlTxuFNtb8PXNgOGkK7BOTNFz40HTd24xrVNlLo0b0X84/hPYyzCOPZFBPccYht5t11s4MuSkmNSncZ9Oo53+V3yHui/6PbqgMo/F2GviBje0PfsrpQ9IrqGpPuQoqY4Oh1QJYJ5i6KWh6Pa4r8GIq61s/PFYdDy/COgtERbu9EEzuJ7W6VH6K+eOhW5BJ+dnWereKl91Z3ZUdFpW+Y4BMf+ldrvayTFwoVXHs8TlP20nP8cGfW/TX4fPsV6/p/ctzJGA==
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /origins/{originId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/origins/{originId}'} context={'endpoint'}></MethodEndpoint>
+
+Get an origin by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the origin.', in: 'path', name: 'originId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              channelId: { description: 'Identifier of the channel this origin belongs to.', type: 'string' },
+              createdAt: { description: 'Timestamp when the origin was created, as an ISO 8601 datetime string.', type: 'string' },
+              enabled: { description: 'Whether this origin participates in its channel break-detection failover.', type: 'boolean' },
+              id: { description: 'Unique origin identifier.', type: 'string' },
+              name: { description: 'Human-readable display name for the origin.', type: 'string' },
+              priority: { description: 'Failover order within the channel; lower means higher priority. Defaults to 0.', type: 'number' },
+              type: { description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.', enum: ['DASH', 'HLS', 'HESP'], type: 'string' },
+              url: { description: 'Manifest URL polled by the break detection service.', type: 'string' },
+            },
+            required: ['id', 'channelId', 'url', 'type', 'enabled', 'priority', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>
