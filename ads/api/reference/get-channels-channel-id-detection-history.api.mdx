@@ -1,0 +1,129 @@
+---
+id: get-channels-channel-id-detection-history
+title: 'Get /channels/{channelId}/detection/history'
+description: 'List detected ad-marker history for a channel with pagination, filtering, and sorting. Each entry records the detected marker and the action taken, plus (when applicable) the matched marker rule, the resulting break, and a reason for skipped/failed detections.'
+sidebar_label: 'Get /channels/{channelId}/detection/history'
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/detection/history'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/detection/history'} context={'endpoint'}></MethodEndpoint>
+
+List detected ad-marker history for a channel with pagination, filtering, and sorting. Each entry records the detected marker and the action taken, plus (when applicable) the matched marker rule, the resulting break, and a reason for skipped/failed detections.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      description: '1-based page number to return. Minimum 1.',
+      in: 'query',
+      name: 'page',
+      required: false,
+      schema: { default: 1, maximum: 9007199254740991, minimum: 1, type: 'integer' },
+    },
+    {
+      description: 'Number of items to return per page, between 1 and 100.',
+      in: 'query',
+      name: 'pageSize',
+      required: false,
+      schema: { default: 20, maximum: 100, minimum: 1, type: 'integer' },
+    },
+    {
+      description:
+        'Optional RSQL filter expression (for example `status==READY;duration=gt=30`). Each resource exposes its own allow-list of filterable fields and operators.',
+      in: 'query',
+      name: 'filter',
+      required: false,
+      schema: { type: 'string' },
+    },
+    {
+      description:
+        'Optional comma-separated list of fields to sort by; prefix a field with `-` for descending order. Defaults to newest first (createdAt descending).',
+      in: 'query',
+      name: 'sort',
+      required: false,
+      schema: { type: 'string' },
+    },
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              data: {
+                description: 'The page of results.',
+                items: {
+                  additionalProperties: false,
+                  properties: {
+                    action: {
+                      description:
+                        'Outcome recorded for a detected marker: `CREATED` (a break was scheduled), `SKIPPED` (no break scheduled), or `FAILED` (scheduling failed).',
+                      enum: ['CREATED', 'SKIPPED', 'FAILED'],
+                      type: 'string',
+                    },
+                    breakId: { description: 'Identifier of the break scheduled from this detection, if one was created.', type: 'string' },
+                    createdAt: { description: 'Timestamp when the marker was detected, as an ISO 8601 datetime string.', type: 'string' },
+                    id: { description: 'Unique marker detection identifier.', type: 'string' },
+                    marker: { description: 'The raw marker detected in the stream manifest.', type: 'string' },
+                    markerRuleId: { description: 'Identifier of the marker rule that matched the detected marker, if any.', type: 'string' },
+                    originId: { description: 'Identifier of the origin whose polling detected the marker.', type: 'string' },
+                    reason: {
+                      description:
+                        'Reason a detection was skipped or failed. Recent records use a typed detection reason; legacy records may carry a free-form string.',
+                      type: 'string',
+                    },
+                  },
+                  required: ['id', 'originId', 'action', 'marker', 'createdAt'],
+                  type: 'object',
+                },
+                type: 'array',
+              },
+              pagination: {
+                additionalProperties: false,
+                description: 'Pagination metadata for the result set.',
+                properties: {
+                  page: { description: 'Current 1-based page number.', type: 'number' },
+                  pageSize: { description: 'Number of items requested per page.', type: 'number' },
+                  total: { description: 'Total number of items matching the query across all pages.', type: 'number' },
+                  totalPages: { description: 'Total number of pages available for the query.', type: 'number' },
+                },
+                required: ['page', 'pageSize', 'total', 'totalPages'],
+                type: 'object',
+              },
+            },
+            required: ['data', 'pagination'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

@@ -1,0 +1,66 @@
+---
+id: get-channels-channel-id-events-event-id
+title: 'Get /channels/{channelId}/events/{eventId}'
+description: 'Get /channels/{channelId}/events/{eventId}'
+sidebar_label: 'Get /channels/{channelId}/events/{eventId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVUtv2zAM/isCTy2gLO0Ow5BbgO4R7NCie1yCHBiLibXasirRyTLD/32g7SSOs61rsVMckfo+Pj5SFXgMmBNTiDCZV2AoJsF6toWDCcwMObYrS0EVK8UpqSRF5yh7BRqseHjkFDQ4zAkm0FlnBjQEeixtIAMTDiVpiElKOcKkAt55cY4crFtDXeunaWlDjv9A2tieSbkQ5+gLFymK/fXVlfwkhWNyLJ/ofWYTlIjG36OEVfXw0BgrJszuQuEpsBWcFWaRNPjeUQVJIGQy0wb1NM8vNqfImHu1TckdE1VbjKq7pxVGhU7NPt+qt2+urpVBJrY5qTYZKcogO31KM2R9H4hGTD9Y9c7PCn2GSc7cINM53rsmZHJGSVgviteac9ivzj6W+4LYoyK2llPrhmI8g2zFMQT9WOboRoHQ4DIjZWz0Ge6UOKtVEZ4oQWQM/LciNA4vLUPdF/BcatJl0Sc+9kH3lLU4gBXL75Qw1PVQBXBDKywzVved7htCEWqj8ZmBCayJR11N4+gwy6OmIHF0nDPGtWyLNuko7KdUH4jVeA80rg5I9biFGlcdVg0acuK06NhBt7M9gTF6O95c/zNKpKQMlnfNEltitMm0FKD5QkMR1pLefCFjv3f8LLPcTmjPfdjW6d1MPdBOXZSRgjTjUqEzKlISiNWFxxi3RTCX0s5mO0gPGrxjf1NmL+rpwhhS3IY1Ovuz6UJP54dllxIaCsd192NUhPWoUUdHgN5+ol3TT+tWRbPvLGdiuvVsv1naqqmJano3Aw0bCrFl3lxLWL6InGOzJzqGZ7VvsGq6kGS9jH2G1glFGTKxta2dS7wSx7VIuGMBDZP+49ESyeledQsNaRFZ7lfVEiN9DVldy/FjSWHXdnqDwcpgt0+ZjfJtDnt5EOph2cPFfTd3l+qvL95vk9s3we0kKcxK+QcaHmh38iI2z9z/CWm4oZ4T0L6e9aLWe21JtVrrNEnIc+/e2TMoM3QY2Q/vvkBd/wLeBdaH
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/events/{eventId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/events/{eventId}'} context={'endpoint'}></MethodEndpoint>
+
+Get /channels/\{channelId\}/events/\{eventId\}
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the event.', in: 'path', name: 'eventId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              createdAt: { description: 'Timestamp when the event was created, as an ISO 8601 datetime string.', type: 'string' },
+              description: { description: 'Free-text description of the event.', type: 'string' },
+              endDate: { description: 'Event end time, as an ISO 8601 datetime string.', type: 'string' },
+              id: { description: 'Unique event identifier within the channel.', type: 'string' },
+              name: { description: 'Human-readable display name for the event.', type: 'string' },
+              startDate: { description: 'Event start time, as an ISO 8601 datetime string.', type: 'string' },
+            },
+            required: ['id', 'name', 'startDate', 'endDate', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

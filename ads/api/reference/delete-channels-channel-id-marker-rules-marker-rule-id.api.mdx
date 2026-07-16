@@ -1,0 +1,43 @@
+---
+id: delete-channels-channel-id-marker-rules-marker-rule-id
+title: 'Delete /channels/{channelId}/markerRules/{markerRuleId}'
+description: 'Delete a marker rule.'
+sidebar_label: 'Delete /channels/{channelId}/markerRules/{markerRuleId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVMlu2zAQ/RViTglAV03Rk24G4oPRFgnS5WL4MJHGFhGZYoYjJ6qgfy9GklcE7oKetPCRb5kZtpBTzNgFcZWHFG6pJCGDZoP8RGy4LukdWAjIuCEhjpAu2rNN85y8uJUjNtXKSEEmK9B7KnWnU0RAKcCCxw1BCuPqPAcLTM+1Y8ohFa7JQswK2iCkLUgTFByFnV9D19nf056JfoN6QDzUJf0l+1LBMVQ+UtT1D+8/6uM8vRXWpZiHEamqoQrEqIB5DinkfcCTMYI42WcxOUiLkzOZgmvNHb4M/noMLC1sSIrqcGpfJykghQSDS7Y3yY4mafc8XXJElLTHTB1YiJTV7KTpy/yI0WXTWo9cLC1UvFYPi6WmsQN+1ciGTI7g58lM7+fmiRpzVUdircW1QZ+bSBmTmKuAMb5UnF9r2foiaPj9eWp/qEUhEqDbyzinuOM1evezj9q4fW/sG6EgzIkPrfA6qXg9cfmBAIP7RE1fNOdXVd8GTkpdugvifjh6MdM8mun9HCxsiePAvL1RWaGKskGvu0aGcZj+oQonzlrIKi/k5cJ8jg6EXiUJJTqvimoudffQEwu1p7JvwO4mMIKF9Hgaj0Tp0kkbLi0UVRQ9qW0fMdJ3LrtOfz/XxM3QIltkh48amd4SLup7DukKy0gXbF09jIN4bS5eJm/a3FXPN2oPy1q/wMITNSeXTX+D/B9Jf5L+ZVkn0XbL7miYb2efZ99m0HW/AIhY7I4=
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/markerRules/{markerRuleId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/markerRules/{markerRuleId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete a marker rule.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the marker rule.', in: 'path', name: 'markerRuleId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

@@ -73,8 +73,6 @@ for (const [path, pathItem] of Object.entries(spec.paths)) {
 
 await mkdir(dirname(OUTPUT_PATH), { recursive: true });
 await rm('ads/api/reference', { recursive: true, force: true });
-await mkdir('ads/api/reference', { recursive: true });
-await writeFile('ads/api/reference/.gitignore', '*\n!.gitignore\n');
 await writeFile(OUTPUT_PATH, `${JSON.stringify(spec, null, 2)}\n`);
 
 console.log(`Fetched Ads OpenAPI spec from ${specUrl} into ${OUTPUT_PATH}`);
