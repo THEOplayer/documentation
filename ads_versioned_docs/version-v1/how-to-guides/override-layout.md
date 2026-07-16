@@ -11,7 +11,7 @@ OptiView Ads is able to insert ad breaks into your content via the signaling ser
 - `LSHAPE_AD`: Displays advertisements in a scaled window alongside a companion background.
 - `LSHAPE_CONTENT`: Displays the original content video in a scaled window alongside a companion background.
 
-When your signaling service is created, the default layout should be defined. Look at our [API references](/ads/api/signaling/create-monetized-stream/) for more information.
+When your signaling service is created, the default layout should be defined. Look at our [API references](/ads/v1/api/signaling/create-monetized-stream/) for more information.
 
 The rest of this page will go over how to override this initial chosen layout in the [signaling service](#override-layout-through-the-signaling-service) itself,
 or override it on the [player side](#override-the-layout-through-the-player).
@@ -22,7 +22,7 @@ There are two ways to update the layout in the signaling service.
 
 ### Setting a new default layout
 
-It is possible to update the default layout value on the signaling service. This can be done by making an [UpdateMonetizedStreamLayout](/ads/api/signaling/update-monetized-stream-layout/) API request to the signaling service with the new layout. The updated layout value will be the new default for all ad breaks.
+It is possible to update the default layout value on the signaling service. This can be done by making an [UpdateMonetizedStreamLayout](/ads/v1/api/signaling/update-monetized-stream-layout/) API request to the signaling service with the new layout. The updated layout value will be the new default for all ad breaks.
 
 ### Signaling an ad break through the API
 

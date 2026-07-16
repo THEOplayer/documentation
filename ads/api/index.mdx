@@ -1,0 +1,45 @@
+---
+title: Ads REST API
+sidebar_label: REST API
+---
+
+# Ads REST API
+
+The Ads REST API manages channels, origins, marker rules, breaks, events, templates, and integrations under `/api/v1`.
+
+## Authentication
+
+Every request requires both:
+
+- HTTP Basic authentication, with the API key as the username and API secret as the password.
+- The `X-Org-ID` header identifying the organization.
+
+```bash
+curl 'https://ads.example.com/api/v1/channels' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+Treat the secret like a password. The internal service authentication used between platform components is not a public API authentication method.
+
+## Reference
+
+Browse the [generated Ads REST API reference](/ads/api/reference/optiview-ads-api). Operations are grouped by resource.
+
+## Refresh the reference
+
+The reference is generated at build time from the committed OpenAPI contract in `Dolby-OptiView/optiview-ads`. The default URL is pinned to the ADS-109 contract commit so documentation builds remain reproducible without storing a second copy of `openapi.json`.
+
+```bash
+npm run fetch-ads-openapi
+npm run gen-api-docs
+```
+
+For a local checkout or a newer remote ref, override the source:
+
+```bash
+ADS_OPENAPI_SPEC_URL=/path/to/optiview-ads/openapi.json npm run gen-api-docs
+ADS_OPENAPI_REF=commit-or-branch npm run gen-api-docs
+```
+
+Private GitHub fetches use `ADS_OPENAPI_TOKEN`, `GITHUB_TOKEN`, or `GH_TOKEN`. Change the pinned commit in `scripts/fetch-ads-openapi.mjs` when intentionally refreshing the published contract, regenerate the pages, and review the generated reference.

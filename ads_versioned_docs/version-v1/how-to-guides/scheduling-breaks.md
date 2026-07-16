@@ -90,7 +90,7 @@ An example snippet for an `#EXT-OATCLS-SCTE35` tag can be found below:
 
 If the ad information won't be present in the provided manifest, it is possible to schedule one through the OptiView Ads service API.
 
-This can be done by a POST request to `{path}/break` where path is the usual url to interact with the OptiView Ads service for a specific monetized stream: `{optiview-ads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamBreak](/ads/api/signaling/create-monetized-stream-break/).
+This can be done by a POST request to `{path}/break` where path is the usual url to interact with the OptiView Ads service for a specific monetized stream: `{optiview-ads-host}/ads-client/api/v1/monetized-streams/:monetizedStreamId`. Please see [CreateMonetizedStreamBreak](/ads/v1/api/signaling/create-monetized-stream-break/).
 
 The body of the post request can have the following properties:
 
