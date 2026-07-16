@@ -110,7 +110,7 @@ curl -X POST 'https://ads.example.com/api/v1/templates' \
   }'
 ```
 
-The supported break formats are `single`, `double`, `lshape_ad`, `lshape_content`, and `overlay`. For Google Ad Manager pod serving, use an asset with `type: "vendor"`, `vendor: "gam"`, and `vendorParameters` such as `{ "type": "pod" }`; this uses the channel's `customAssetKey`. See the [Ads API reference](/ads/api/signaling/theoads-api) for the complete template fields.
+The supported break formats are `single`, `double`, `lshape_ad`, `lshape_content`, and `overlay`. For Google Ad Manager pod serving, use an asset with `type: "vendor"`, `vendor: "gam"`, and `vendorParameters` such as `{ "type": "pod" }`; this uses the channel's `customAssetKey`. See the [Ads API reference](/ads/api/reference/optiview-ads-api/) for the complete template fields.
 
 ## 4. Schedule a break
 
@@ -142,7 +142,7 @@ Point OptiView Player at the channel's Break Manifest. The player polls this end
 curl 'https://ads.example.com/manifest/v1/org_123/channels/sports-main'
 ```
 
-Continue with the platform guides for [Web](./web), [Android](./android), [iOS](./ios), [React Native](./react-native), or [Chromecast CAF](./chromecast).
+Continue with the platform guides for [Web](/ads/player-integration/optiview-player/web), [Android](/ads/player-integration/optiview-player/android), [iOS](/ads/player-integration/optiview-player/ios), [React Native](/ads/player-integration/optiview-player/react-native), or [Chromecast CAF](/ads/player-integration/optiview-player/chromecast).
 
 import DocCardList from '@theme/DocCardList';
 
