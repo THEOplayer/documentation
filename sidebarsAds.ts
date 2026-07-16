@@ -1,5 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import signalingApiSidebar from './ads/api/signaling/sidebar';
+import adsApiSidebar from './ads/api/reference/sidebar';
 
 const sidebars: SidebarsConfig = {
   ads: [
@@ -127,13 +127,13 @@ const sidebars: SidebarsConfig = {
       customProps: {
         icon: '*️⃣',
       },
-      link: { type: 'generated-index', slug: 'api' },
+      link: { type: 'doc', id: 'api/index' },
       items: [
         {
           type: 'link',
-          label: 'Signaling Service',
+          label: 'Ads REST API',
           customProps: { icon: '🛜' },
-          href: '/ads/api/signaling/theoads-api',
+          href: '/ads/api/reference/optiview-ads-api',
         },
         {
           type: 'link',
@@ -144,13 +144,13 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
-  signalingApi: [
+  adsApi: [
     {
       type: 'link',
       label: '« Back',
-      href: '/ads/',
+      href: '/ads/api/',
     },
-    ...signalingApiSidebar,
+    ...adsApiSidebar,
   ],
 };
 

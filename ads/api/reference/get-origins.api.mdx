@@ -1,0 +1,123 @@
+---
+id: get-origins
+title: 'Get /origins'
+description: 'List all origins with pagination, filtering, and sorting.'
+sidebar_label: 'Get /origins'
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV9tu20YQ/ZXBPjkAZUtp2tQK/CA0bmzUSVwraVEIBjQih+Im5C6zO5SsGPr3YpaURMuMEycvedGF3JkzZ+57qxLysdMla2vUUF1oz4B5DtbpuTYelpozKHGuDcqRCFKdMzlt5hGgScBbx9rMD1WkSnRYEJPzaji53VM86M3QUyKqCExVzMgBW3DElTOH8FobXVQFDESRFoFPFbmVipTBgtRQiZyKlKNPlXaUqGGKuadI+TijAtVQ8FKsclbDQaQKvBF1anjc7z8fHB8//fXZ82f942N5VSOFY7wqRbc2THNyar2O9s1+U1tqU9BMhd+ZDCW5QCaCGfGSyMAgOGTQ7z/EYaw/fyuPp/0WkUG//1jb34YfmMPV+O+LJm5AN6Uj77U1cJBa+Y9FmRNMPSNX/uTk6nT08r8XSeVCvE/mfPJLf/rkEE4xzsCRt5WLSdRYTx40e7BLIyljl71cssemDRbOcoJUU5744BlbkkO2zn/JP7XYw95paHuWFHyQdWyLAnueJC2ZEtgZFyxiG3IXZqsXUDpK9Q1g/a7O+WlvCuIg0U4m0WYO1iXkDuFlHaCgwtCSPEOqnWc4iB0J1IhbUk++xFbQH8f1Wk770hpPXt4/7fflK7aGybD8xLLMdRwid/TBiz9uW/owSXTtnEsnwWAtehrYsvXoViXITTK2ffsuo7qAbSqpIE4I7KQ0HgkQZ2gM5efJfZTzhAzrVNd1xxlBcxg4077pTDCj3Jq5BEFM2HNVpLah6GChC/KMRQnLjEwAaHQu0UMjGAFK1sL5+C38/lt/AAkysS4IaoxOUDKS8x2U/s2IM+l4LQIlOtaxLpGljkwopQ3RmSP82EuIKRYNkKLO7YJcC3VmbU5oBFZ3IL43+lO1Jaa3Lu20u87IfRVnVYGm5wiTUMmJ9mWOK5DDoTJ2jutUWjptnebVfcV/Nmzqggrlpk070C8gt0tyUBAaD5mei+82+u4WYL+FXY8Vwa4f7OO+RqPTUK7WFRiaAUo4CYuGyBCmL0fjs2kE07OL8TQC62B6djq+nAoMGem9EyVHVKTOLsbyeTq+VNcd/CuXP2DC+6sLKG2eUwKzVeAeYg67mHtyCx1Th2/X7a4xkfBHrXqqkRuhXU62AtKujp3ldvaBYt55T6FzuAqR3I7/rxb5XbaXW0EoiFGayjZz6v4BnjjsDneaQxj293z3R+UcGYaOVaIzCbbj9p6m/aku3iQvQ2Iz1buzyjJ2xPSdPN7sNFudBXKcydQQsqH1A8bOeh/WK8HwXwa5lNdfRwpaABeo83rYNr4NcB3a9xKn2alaa0nN8I4R9xNkT0sYFXeSpENkvZ8aTQ3DVTPQgtp6Q9DWyFhQc+Jes4aKSTiXvVK9bZ5cR6ogzmxzMljAmRqqIyz10WJwtBP1FFd1J5rcqhl6HY8qOTq5jpR1cwGbXMt03Rwcy8isA9A6vh+N0eU5fKQVHFSenHTFJ/VGTLEjhoMSvV9al4QFIAzh0LZF3y4yGXMpUW/MuLfMuDka/bkuobtNPKwUGWESNqZmp7jpWTfvhYawKeJS/0Wr4F1tUhvWCs05NZvSP5qWMEo8jC7PVaQW5HyNvBiEErKeCwxl3yC8IoaWa++Y21pFfugi0ZjOdMNHZY7atNppHeSJ8BJ7B0p8t82IzHqWt7e30iLeu3y9lsf15hUuJdo3I7qrYbUJPObC0mnwR1rt7i0LzCs5osLC+s1GfPf14ysWNeX+nVb91BeLB5hv7xc/yvtnulo8wLe5YezYXssfp4VuaHnRpoFIadQyozimsi1170qxbnfeV6fv1Hr9PzC9njk=
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /origins'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/origins'} context={'endpoint'}></MethodEndpoint>
+
+List all origins with pagination, filtering, and sorting.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      description: '1-based page number to return. Minimum 1.',
+      in: 'query',
+      name: 'page',
+      required: false,
+      schema: { default: 1, maximum: 9007199254740991, minimum: 1, type: 'integer' },
+    },
+    {
+      description: 'Number of items to return per page, between 1 and 100.',
+      in: 'query',
+      name: 'pageSize',
+      required: false,
+      schema: { default: 20, maximum: 100, minimum: 1, type: 'integer' },
+    },
+    {
+      description:
+        'Optional RSQL filter expression (for example `status==READY;duration=gt=30`). Each resource exposes its own allow-list of filterable fields and operators.',
+      in: 'query',
+      name: 'filter',
+      required: false,
+      schema: { type: 'string' },
+    },
+    {
+      description:
+        'Optional comma-separated list of fields to sort by; prefix a field with `-` for descending order. Defaults to newest first (createdAt descending).',
+      in: 'query',
+      name: 'sort',
+      required: false,
+      schema: { type: 'string' },
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              data: {
+                description: 'The page of results.',
+                items: {
+                  additionalProperties: false,
+                  properties: {
+                    channelId: { description: 'Identifier of the channel this origin belongs to.', type: 'string' },
+                    createdAt: { description: 'Timestamp when the origin was created, as an ISO 8601 datetime string.', type: 'string' },
+                    enabled: { description: 'Whether this origin participates in its channel break-detection failover.', type: 'boolean' },
+                    id: { description: 'Unique origin identifier.', type: 'string' },
+                    name: { description: 'Human-readable display name for the origin.', type: 'string' },
+                    priority: { description: 'Failover order within the channel; lower means higher priority. Defaults to 0.', type: 'number' },
+                    type: {
+                      description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.',
+                      enum: ['DASH', 'HLS', 'HESP'],
+                      type: 'string',
+                    },
+                    url: { description: 'Manifest URL polled by the break detection service.', type: 'string' },
+                  },
+                  required: ['id', 'channelId', 'url', 'type', 'enabled', 'priority', 'createdAt'],
+                  type: 'object',
+                },
+                type: 'array',
+              },
+              pagination: {
+                additionalProperties: false,
+                description: 'Pagination metadata for the result set.',
+                properties: {
+                  page: { description: 'Current 1-based page number.', type: 'number' },
+                  pageSize: { description: 'Number of items requested per page.', type: 'number' },
+                  total: { description: 'Total number of items matching the query across all pages.', type: 'number' },
+                  totalPages: { description: 'Total number of pages available for the query.', type: 'number' },
+                },
+                required: ['page', 'pageSize', 'total', 'totalPages'],
+                type: 'object',
+              },
+            },
+            required: ['data', 'pagination'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

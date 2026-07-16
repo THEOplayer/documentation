@@ -1,0 +1,152 @@
+---
+id: patch-channels-channel-id
+title: 'Patch /channels/{channelId}'
+description: 'Update a channel.'
+sidebar_label: 'Patch /channels/{channelId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJztWNtuGzcQ/ZUBnyRgFctp0tTqk3JBIrSFDTuXB8OAR8uRxJhLbshZyaqgfy+GXF0sKwH6EKBArafV7pCcc3jmQq6UplgGU7PxTg3Up1ojEyCUM3SO7DNVqBoDVsQUohpcrw4GjDQ5NhNDAfwEeEb7I41Y1MgzVSiHFamBar+OtCpUoG+NCaTVgENDhYrljCpUg5XiZS3GkYNxU7Ve32Rjivza66VYlN4xOZZHrGtrShSHTr5G8Wq1N1UdfE2BDcU0rInsq2GMxH9QmughnPfeTy3B2+EIsimg2MIdLaGJpGHiQ0IZKcwp9KaN0aShc/V+OOqCQH0Gly2sZDsnp32A2msYB8K7KLwcwCuUnocvxmm/+Cs+9unt50voBFoYp7uwSGZgHFTGWhOp9E7HAoSP4K01bgozv4AJBhhjeZecrS3yxIcKrPd3MfmVnQH2oMmaOQV5rC0uKcRn8JYm2FhO33/pyw86L6EyrmGKXVjMyIHzDJFY8NB9aZto5vSXcaZqqs2GVnif/571+69Oz86ev3zx6kX/7Ox0S4FxTFMKwoF4cT6ZROJjJPxp5gQWmVy5BJ/MDkkYbIG3mJcUQGZNzzNCDRzQ2AiB0AKbisA74JmJW9HCa+EFImPgZBEBAwHN0TbIpAGnaFxkcH6R+Ih5fPboIXF96DjffukKTT+go9oQ1z9GTY6dQ0o+NBW6XiDUOLYE2kTBCWK8leleMD4SXZ3lMizZzOkqc/h4lUxIhc5MKDK0g0C8C3O0sgkt/4B6LpEmYbITE+hGFgR0gGmlLL2HVJ3+HEm1zo60/Yn4Ws8zLDCxhXkAsP9zEIpExxiPqOOjyDvQhAK5knbJSzKjbhLGNgd4t8v3A7hdoLWl9eXdLXRGV+fw26/9U5CqIGt1wQe4rTneQsc1FQVTQh0okuOUgHPMMFZ1Ujw5AXKttnNKOeGobh7Jcb1948dfqWS1llcPK0R6EWvvYk7mz/v9f1UKUGsjn9Be7BWFCdpIxWGdCCThPuTjxCaEeUf3ogwWGKEdWQBG0fwjBiEjPhqR/9XqREyluPDOSabRjx37MiOeUQBs2FfIpmyjYTsSQuNi695+ur0k1D3v7FJUmKkDdBqa1If8DuyngtgwzA0maLspKXlzok1M+Y+crr1xfFC+0vbuwRp7bwndU9XNCcQc2c1Pznxrdqo22xbvqDqe6vZT3X6q2//jur0r0teSTvbAHSkdxV5pvTla8w/ScN4MuGwLf1pRKnVye6TzAbOc9VoiYm//hMk4lUOretN+lCUr4pnfjkvnW56pgTrB2pzMT082E52stjOtVaEilU0wvExn4DFGUw4bGXd9UygfpuLJ9Y0cVDeGV9J35G5iz/xwu4cXo1S+O02kICmgm+pfpDIQQ6fGGBc+6LQrqZNJNUzm26WGGXMtomrdOFziPEzRmb/zPj9M5umALhmWwu6Ift/zYdrLO5kXwNpIPyLUS1d1uTuKv7vHqrZ07Gi9kchBne0fVoz+duHtgOMZrn88MfT3o2lPsVLc3MSn6wTD4qM6r9l8NrSAoY4wvBipQs0pxEzT/DSnnsgVpsax9epCZALfk8UDqvd60aM3KS2dTPd8Uls0qQtpgk33FEmF18K1uHUqkbJRbaEGO1XfFGrmI4vtaiWoPwW7Xsvrbw2FZVbkHIORgMs3NrlD0tte97tOdzbdYRd+eLFzFMhGLG4pANA28k8V6i6pYQdgfbMuNqIT9/L3N9mJ3keZZTf+UUe/LjYjhmVJNf/Qdj/cL4Yf33xQhRq3N0iV1zIo4EKuonCRnfWJlRS16d1KWXTTBqdimyeV3z8csat4
+sidebar_class_name: 'patch api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Patch /channels/{channelId}'}></Heading>
+
+<MethodEndpoint method={'patch'} path={'/api/v1/channels/{channelId}'} context={'endpoint'}></MethodEndpoint>
+
+Update a channel.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            customAssetKey: {
+              description: 'Google DAI custom asset key used for the server-guided (SGAI) path. Required for vendor pod breaks.',
+              type: 'string',
+            },
+            dvrWindowMs: {
+              description:
+                'DVR (rewind) window in milliseconds, controlling how far back the platform looks for breaks to deliver to players. Defaults to 300000 (5 minutes) when not set.',
+              exclusiveMinimum: true,
+              maximum: 9007199254740991,
+              type: 'integer',
+            },
+            liveOffsetMs: {
+              description:
+                'Live latency offset in milliseconds: how far the player live playhead trails real time on this channel. Break start times are evaluated against now minus this offset. Defaults to 0 (no offset).',
+              maximum: 9007199254740991,
+              minimum: 0,
+              type: 'integer',
+            },
+            name: { description: 'Human-readable display name for the channel.', type: 'string' },
+            pollingActiveSeconds: {
+              description: 'Break manifest polling interval in seconds advertised to players during an active break. Defaults to 1 when not set.',
+              exclusiveMinimum: true,
+              maximum: 9007199254740991,
+              type: 'integer',
+            },
+            pollingIdleSeconds: {
+              description: 'Break manifest polling interval in seconds advertised to players when no break is active. Defaults to 10 when not set.',
+              exclusiveMinimum: true,
+              maximum: 9007199254740991,
+              type: 'integer',
+            },
+            timebase: {
+              description:
+                'Time reference used for scheduling breaks on a channel: `wallclock` (ISO 8601 datetime) or `pts` (numeric presentation timestamp).',
+              enum: ['wallclock', 'pts'],
+              type: 'string',
+            },
+          },
+          type: 'object',
+        },
+      },
+    },
+    required: true,
+  }}
+></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              createdAt: { description: 'Timestamp when the channel was created, as an ISO 8601 datetime string.', type: 'string' },
+              customAssetKey: {
+                description: 'Google DAI custom asset key used for the server-guided (SGAI) path. Required for vendor pod breaks.',
+                type: 'string',
+              },
+              detectionEnabled: {
+                description:
+                  'Whether automatic break detection runs for this channel. Read-only on create and update; toggle it via the detection enable/disable endpoints. Defaults to false.',
+                type: 'boolean',
+              },
+              dvrWindowMs: {
+                description:
+                  'DVR (rewind) window in milliseconds, controlling how far back the platform looks for breaks to deliver to players. Defaults to 300000 (5 minutes) when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              id: { description: 'Unique channel identifier.', type: 'string' },
+              liveOffsetMs: {
+                description:
+                  'Live latency offset in milliseconds: how far the player live playhead trails real time on this channel. Break start times are evaluated against now minus this offset. Defaults to 0 (no offset).',
+                maximum: 9007199254740991,
+                minimum: 0,
+                type: 'integer',
+              },
+              name: { description: 'Human-readable display name for the channel.', type: 'string' },
+              pollingActiveSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players during an active break. Defaults to 1 when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              pollingIdleSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players when no break is active. Defaults to 10 when not set.',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                type: 'integer',
+              },
+              timebase: {
+                description:
+                  'Time reference used for scheduling breaks on a channel: `wallclock` (ISO 8601 datetime) or `pts` (numeric presentation timestamp).',
+                enum: ['wallclock', 'pts'],
+                type: 'string',
+              },
+            },
+            required: ['id', 'timebase', 'detectionEnabled', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

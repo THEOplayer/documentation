@@ -1,0 +1,68 @@
+---
+id: get-channels-channel-id-origins-origin-id
+title: 'Get /channels/{channelId}/origins/{originId}'
+description: 'Get an origin by ID within a channel.'
+sidebar_label: 'Get /channels/{channelId}/origins/{originId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu2zgQ/ZUBnxJArpN9WCy8TwaSrY1mkSBudh8MAx5LY4uNRDLkyK5X0L8XI8m2fGm3Afrii0iec+Z2qFIlFGKvHWtr1EB9JAY0YL1eaQOLLYzvYKM51QYQ4hSNoeyDipRDjzkx+aAG0/IEZJyQYb3U5MEugVPqntSywyGnKlIGc1ID1a6OExUpT2+F9pSoAfuCIhXilHJUg1Lx1snmwF6blaqq6P9pmzC+w9osvpN0JpuDsyZQkPXfbm7kK7aGybD8ROcyHaNo6n8JIqzs4GGSaFnC7MlbR5614CwxCxQp13lUdrIy+OkEA6c67KtHmTWrAGwlAyeRRCr2hEzJkM/xP+ucAmPuYJOS6aQSNhigPRgBBumV8eQR/vj95hYSZGKdEzQcF0nJ4CKjCyH9mxKn5I8CcOhZx9ohUwBtQHPYB7rwhK+9hJhiQYAl6syuyXdYF9ZmhEZo9QXGF6Pfin1gep/Si7qbnjmFGBU5mp4nTCQqSHRwGW5BNsPS+pMePAN1XluveXsO/FcbDVifkN9NYKfQf0JmN+QhJzQBUr2S3O3wPsAdLbHIWGoPNx1uU+QL8sLdPDjl/RuNXlJgUZ8jS3ehlJMwbwMZwPxuOBnNI5iPHibzCKyH+eh+8jQXGjJFrgZTJVtUpEYPE/m8nzyp2YX4C5/9QMLL8wM4m2WUiA9J7HXN4VDzQH6tY7qQ26o701Mpf3TkMsLcHjr0ZKcg3ek4KLeLLxSzqgT+WHSbb3huvaFWIMNc+4CMsFoR91oJobfX0muyGnodN2Jciauqx2ZJBOTEqW1RavflVA1UH53ur2/7O9h+ucet+i1wv9whVypSgeKi6bhpqRYYdDwsBGo6i5T1KxE6nYnJ7TZOxLkaP+psP63Z8GkMr7SFqyKQl+6/BjQJBIo9MVw5DGFjfXItlaq9sB5PwTuULmV20hStjFOKR79Co/+r83kyrLW3p4QJ+YO7f+1Zv+rVhW8J0OlPtK0ro83S1u6uOZOlR8f6H00bGCYBhk9jFak1+dAwr2/rWbWBc6zdvGWQq/IdqT8Kp3Nj/PSV24bB9JX7LkNtOiPUNMRUYhTtt4d2DypSg27rt+Lk8b7nZpFKbWBBKMsFBnrxWVXJ47eC/LbpjzV6LYPSXPg6tEbe3l3fDe/quR3Ea/jhe8HF8HalMzKSa8wK+aci9Urbo/eG+mXg10g68+v3KNpntJpV0a4nJV/N8jCOyXHn4NnLQtUd9o/3n1VVfQMen08F
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/origins/{originId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/origins/{originId}'} context={'endpoint'}></MethodEndpoint>
+
+Get an origin by ID within a channel.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the origin.', in: 'path', name: 'originId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              channelId: { description: 'Identifier of the channel this origin belongs to.', type: 'string' },
+              createdAt: { description: 'Timestamp when the origin was created, as an ISO 8601 datetime string.', type: 'string' },
+              enabled: { description: 'Whether this origin participates in its channel break-detection failover.', type: 'boolean' },
+              id: { description: 'Unique origin identifier.', type: 'string' },
+              name: { description: 'Human-readable display name for the origin.', type: 'string' },
+              priority: { description: 'Failover order within the channel; lower means higher priority. Defaults to 0.', type: 'number' },
+              type: { description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.', enum: ['DASH', 'HLS', 'HESP'], type: 'string' },
+              url: { description: 'Manifest URL polled by the break detection service.', type: 'string' },
+            },
+            required: ['id', 'channelId', 'url', 'type', 'enabled', 'priority', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

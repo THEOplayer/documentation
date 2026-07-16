@@ -1,0 +1,43 @@
+---
+id: delete-channels-channel-id-events-event-id
+title: 'Delete /channels/{channelId}/events/{eventId}'
+description: 'Delete /channels/{channelId}/events/{eventId}'
+sidebar_label: 'Delete /channels/{channelId}/events/{eventId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVE1v2zAM/SsCTwkgz8uwk28BmkOwAS26j0uQg2oxsVBHUiU6rWf4vw/0V5K2++iwk22R5nt8j2IDXgV1QMIQIds0oDHmwXgyzkIGa42WzM5gEG4nqECRF8paLN+BBMMZXlEBEqw6IGQwRNcaJAR8qExADRmFCiXEvMCDgqwBqj0nRwrG7qFt5Z9h8YiWfgHaxd4IueXk6J2NGDn+4f1HflzSuMKdqkoSt0MmUwXnMShOWGvIQGOJhMnQd0wmAZKOVUxO5EjtWWJYdQHYyhdoXEqkY620mYq1aV8tbYZyLUg4IBXuxAFkL0sGqfImPS7+ulDEvAqG6s7/OxVNvqy40GYrwYU997nZsmJj4heWtdftLP25esubtbjHWsyqiIGtmgtltYiYByQx8yrGRxf0nF3tjGKDunosVu9XQeShnWg8h7gOe2XNj84OYaahmeakQKUxnCblKXFhnxh9AlDefMK6M9bYnetGxVDJoWtP5rvBR7HUUSxv1iDhiCH2yMcF0/Iu0kFZ/mtAeKuJF/1MY0r4RKkvlbGMUoWSY727G6bMVBYgx+sWQUJ2fvV6ID4dx28roXCR+P+muVMRv4Wybfn4ocJQ92YfVTDqjpvnRWAiv2vIdqqM+IJq7iyhJchgdjtcu7n47b54tbnRB1tzU6qs+Ask3GN9sU+6JfF/KE275B8IjXq22/bsBl6tPq++rqBtfwLVVNDK
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/events/{eventId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/events/{eventId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete /channels/\{channelId\}/events/\{eventId\}
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the event.', in: 'path', name: 'eventId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

@@ -344,8 +344,8 @@ const config: Config = {
           signaling: {
             version: 'v2',
             label: 'v2',
-            specPath: 'ads/api/ads-client.swagger.json',
-            outputDir: 'ads/api/signaling',
+            specPath: '.docusaurus/openapi/ads-v2/openapi.json',
+            outputDir: 'ads/api/reference',
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',

@@ -1,0 +1,77 @@
+---
+id: get-channels-channel-id-detection-history-marker-detection-id
+title: 'Get /channels/{channelId}/detection/history/{markerDetectionId}'
+description: 'Get a detected ad-marker history entry by ID.'
+sidebar_label: 'Get /channels/{channelId}/detection/history/{markerDetectionId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVktv40YM/ivEnBJAXic9FIV7Mpp0YWyBBE62F8NAaImyZiPNKDNUvKqh/15QGiuKraT76MmySPHjx/deJeRjp0vW1qiZ+kgMCAkxxUwJYDIp0D2Sg0x7tq4GMuxq2NSwuPqgIlWiw4KYnFez1f7I2CIhwzrV5MCmwBlBnKExlMuXWjRK5ExFymBBaqaCdJGoSDl6qrSjRM3YVRQpH2dUoJrtFdelKHt22mxV00T/DRs4dLS0NeAoti55w41O++qg/J3urEXZl9Z48iL/5eJCfmJrmAzLI5ZlrmMU29MvXlzeD+xhkmgRYX7rbEmOtdhJMfcUqXLwaq8w7hgfB+Cm4tgWFFhSAql1w6x2BGfw8Mfyen5/ffUAZwgbR/gIO/QgviRVTsl5BA93nxa3t62KsUFnKLcOHv6cL/5qNYJAmy2kqEVBIkymKtRspQKYilSwqSLVfarW0XEYI9ViLZJTdqfpPXILUmcL4Ez7l4xHoFOwhlqCsSNkatN/Ahtkcz4FvtcFecaihF1GZlhYYvQQ3QjQAxpY3N3Ab79eXEKCTKwLgg5kFFWP8Pxs9FM1Uru65z9qqtMf8T4jcLh7bY8S0B0Tz46wgAKNTsnzO6aXVU7flpcA5aqcgDNkKJAlSa3wqBrbBKGpR4Gt01ttvg2004VdZj1BafO2HHuwF7dGgRyhH+uoZfu+7yFJQ9spj7osKZEu6Ar+AywpJsOh9TxUngBBcJJX40fM/Q45bTGue+UCa4jRuRoQUkc0Sa0r3i6bZjiWVlJDg0hFh+nQV8Swtl8azm6+UMyqEWuvOV9RilXOsAzTrAWU8YNhKs7UlngShraf9NN70hOdhK0xGRupjFtZGqp/K14VxJkNptv1wpmaqSmWevp8OT1gTfc9WDPt0aYBbbo/gWtUpDzFldNct4tqg17H80qsr9YStq0QWq1lfB8U72Qmd5N2oH5cGvPbBTxSDWeVJycb5BzQJOApdsRwVqL3O+u6UdhOeYl6a+8loxlz2dX5dqzIb9wWjf4HR9q/XV8ZYdImOCywrxPrtpO2HgIAlvoT1W0GtUltu7c05yK6KVn/rWkH88TD/HahIvVMznfIz5fiVmk9F9i2RUCQM+HnsvGK4WA9fvcFEhgyfeVpmaM24nHlcrHalc9K6AutS+mB4LSK1Gx4b/R+q0gFJFE5Ldx1pDLrWczu9xv09NnlTSOvnypydVdPz+g0biS+chRpL89Jv8Xf5H62DP18Du/eTqOcD6k24vgz5pX8U5F6pPrVbdUeTP+PS+/cVT/g4mmsm3UTHapbItnpzeOYSh5YODmomuEk+Xh9r5rmX+zRx1c=
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/detection/history/{markerDetectionId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/detection/history/{markerDetectionId}'} context={'endpoint'}></MethodEndpoint>
+
+Get a detected ad-marker history entry by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the marker detection record.', in: 'path', name: 'markerDetectionId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              action: {
+                description:
+                  'Outcome recorded for a detected marker: `CREATED` (a break was scheduled), `SKIPPED` (no break scheduled), or `FAILED` (scheduling failed).',
+                enum: ['CREATED', 'SKIPPED', 'FAILED'],
+                type: 'string',
+              },
+              breakId: { description: 'Identifier of the break scheduled from this detection, if one was created.', type: 'string' },
+              createdAt: { description: 'Timestamp when the marker was detected, as an ISO 8601 datetime string.', type: 'string' },
+              id: { description: 'Unique marker detection identifier.', type: 'string' },
+              marker: { description: 'The raw marker detected in the stream manifest.', type: 'string' },
+              markerRuleId: { description: 'Identifier of the marker rule that matched the detected marker, if any.', type: 'string' },
+              originId: { description: 'Identifier of the origin whose polling detected the marker.', type: 'string' },
+              reason: {
+                description:
+                  'Reason a detection was skipped or failed. Recent records use a typed detection reason; legacy records may carry a free-form string.',
+                type: 'string',
+              },
+            },
+            required: ['id', 'originId', 'action', 'marker', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>
