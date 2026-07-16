@@ -1,0 +1,216 @@
+---
+sidebar_position: 1
+sidebar_label: Channels
+---
+
+# Channels
+
+import RebrandingNotice from '../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
+A channel is the top-level OptiView Ads resource for one live stream. It stores the stream timing model, the Break Manifest polling policy, optional Google DAI asset metadata, and the enablement state for automatic marker detection.
+
+Channels are scoped to an organization. API calls identify the organization with the `X-Org-ID` header and authenticate with an API key and secret using HTTP Basic authentication.
+
+## Dashboard path
+
+In the OptiView Unified Dashboard, open **Ads → Channels**. The channel list exposes **New**, **Edit**, **Delete**, and **Details** actions.
+
+After opening a channel, the current V2 navigation includes these areas:
+
+| Area              | Use it for                                             |
+| ----------------- | ------------------------------------------------------ |
+| Overview          | View channel settings and player/origin quick actions. |
+| Breaks            | Schedule, inspect, and delete breaks for the channel.  |
+| Events            | Manage event windows and event-scoped breaks.          |
+| Origins           | Add, enable, disable, and prioritize manifest origins. |
+| Break Detection   | Configure marker rules and review detection history.   |
+| Break Integration | Manage channel-level delivery integrations.            |
+
+## Channel identity
+
+Every channel has a customer-facing `id`. The API stores it together with the organization ID, so the unique identity is:
+
+```text
+organizationId + channelId
+```
+
+Use stable channel IDs that match your operational names, such as `sports-main` or `news-east`. If you omit `id` on creation, the API generates one.
+
+## Related resources
+
+A channel is the parent or lookup point for the rest of the Ads V2 model:
+
+| Resource          | Relationship                                                                 |
+| ----------------- | ---------------------------------------------------------------------------- |
+| Origins           | Manifest URLs monitored for ad markers. A channel can have multiple origins. |
+| Marker rules      | Rules that turn detected markers into breaks.                                |
+| Detection history | Audit records for marker detection decisions on the channel.                 |
+| Breaks            | Scheduled or detected ad opportunities for the channel.                      |
+| Events            | Time windows that group related breaks.                                      |
+| Templates         | Reusable break presets that can be scheduled on the channel.                 |
+| Integrations      | Channel-level delivery integrations, such as SSAI DAI cue fan-out.           |
+
+## Timebase
+
+The `timebase` determines how breaks are scheduled for the channel.
+
+| Timebase    | Break start field | Use when                                                                         |
+| ----------- | ----------------- | -------------------------------------------------------------------------------- |
+| `wallclock` | `startWallclock`  | The stream has UTC wallclock timing, usually from HLS `EXT-X-PROGRAM-DATE-TIME`. |
+| `pts`       | `startPts`        | The workflow schedules against a presentation timestamp timeline.                |
+
+Choose the timebase when creating the channel. Breaks created for that channel use the same timebase.
+
+## Timing configuration
+
+| Field                  | Type                 | Default  | Description                                                                                                                         |
+| ---------------------- | -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `timebase`             | `wallclock` or `pts` | Required | Selects whether breaks use `startWallclock` or `startPts`.                                                                          |
+| `dvrWindowMs`          | integer              | `300000` | DVR look-back window used when deciding which breaks are still relevant for delivery.                                               |
+| `liveOffsetMs`         | integer              | `0`      | Live latency offset. Wallclock break starts are evaluated against the live playhead rather than raw server time.                    |
+| `pollingIdleSeconds`   | integer              | `10`     | Break Manifest polling interval advertised when no break is active.                                                                 |
+| `pollingActiveSeconds` | integer              | `1`      | Break Manifest polling interval advertised during an active break; also used for active manifest caching.                           |
+| `customAssetKey`       | string               | none     | Google DAI custom asset key used for server-guided pod serving on this channel. It must be unique within the organization when set. |
+| `detectionEnabled`     | boolean              | `false`  | Read-only response field showing whether automatic marker detection is enabled.                                                     |
+
+## Marker detection lifecycle
+
+`detectionEnabled` is read-only on channel create and update requests. Toggle detection with the dedicated channel actions:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/enable' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/disable' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+When detection is enabled, the worker polls the enabled origins for the channel in priority order. The first online origin is used for marker evaluation. Marker rules decide whether a detected marker creates a break, and detection history records the action, reason, origin, marker rule, and break IDs.
+
+## Create a channel
+
+Dashboard: **Ads → Channels → New**.
+
+API:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "id": "sports-main",
+    "name": "Sports main",
+    "timebase": "wallclock",
+    "dvrWindowMs": 300000,
+    "liveOffsetMs": 0,
+    "pollingIdleSeconds": 10,
+    "pollingActiveSeconds": 1,
+    "customAssetKey": "sports-main-custom-asset"
+  }'
+```
+
+Example response:
+
+```json
+{
+  "id": "sports-main",
+  "name": "Sports main",
+  "timebase": "wallclock",
+  "dvrWindowMs": 300000,
+  "liveOffsetMs": 0,
+  "pollingIdleSeconds": 10,
+  "pollingActiveSeconds": 1,
+  "customAssetKey": "sports-main-custom-asset",
+  "detectionEnabled": false,
+  "createdAt": "2026-07-16T12:00:00.000Z"
+}
+```
+
+## Get a channel
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+## Update a channel
+
+```bash
+curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "name": "Sports main HD",
+    "pollingIdleSeconds": 15
+  }'
+```
+
+## List channels
+
+```bash
+curl 'https://ads.example.com/api/v1/channels?page=1&pageSize=20&sort=-createdAt' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+List endpoints use the same pagination shape. Channels can be filtered by `name` and sorted by `name` or `createdAt`.
+
+| Query parameter | Default      | Description                                                                |
+| --------------- | ------------ | -------------------------------------------------------------------------- |
+| `page`          | `1`          | Page number.                                                               |
+| `pageSize`      | `20`         | Items per page. Maximum `100`.                                             |
+| `filter`        | none         | Optional RSQL filter expression.                                           |
+| `sort`          | `-createdAt` | Comma-separated sort fields. Prefix a field with `-` for descending order. |
+
+Examples:
+
+```bash
+curl 'https://ads.example.com/api/v1/channels?filter=name=like=sports&pageSize=50' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+```bash
+curl 'https://ads.example.com/api/v1/channels?sort=name,-createdAt' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+## Delete a channel
+
+```bash
+curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+Delete a channel only after confirming that no active workflow still depends on its origins, marker rules, events, breaks, templates, or integrations.
+
+## Add an origin to a channel
+
+Dashboard: open the channel, then use **Origins** from the channel navigation.
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "name": "Primary HLS origin",
+    "type": "HLS",
+    "url": "https://origin.example.com/live/sports-main/master.m3u8",
+    "enabled": true,
+    "priority": 0
+  }'
+```
+
+Lower `priority` values are tried first when detection is enabled.
