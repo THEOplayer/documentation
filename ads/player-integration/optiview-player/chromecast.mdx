@@ -1,0 +1,48 @@
+---
+sidebar_position: 5
+sidebar_label: Chromecast CAF
+sidebar_custom_props: { 'icon': 'web' }
+---
+
+# OptiView Ads on Chromecast CAF
+
+:::note
+Chromecast CAF currently supports image overlays only from OptiView Ads.
+:::
+
+## Prerequisites
+
+1. Obtain an OptiView Player license compatible with OptiView Ads from the [player portal](https://portal.theoplayer.com).
+2. Install the sender and receiver packages:
+
+   ```bash
+   npm install @opentelly/theoplayer-chromecast-sdk @opentelly/theoplayer-chromecast-receiver
+   ```
+
+3. Have a Chromecast Developer account to deploy your custom CAF receiver.
+
+## Integration
+
+Use the receiver package with the CAF receiver framework and enable Shaka for HLS:
+
+```html
+<script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+<script src="node_modules/@opentelly/theoplayer-chromecast-receiver/dist/THEOplayer-chromecast-caf-receiver.js"></script>
+```
+
+```javascript
+const castReceiverOptions = new cast.framework.CastReceiverOptions();
+castReceiverOptions.useShakaForHls = true;
+cast.framework.CastReceiverContext.getInstance().start(castReceiverOptions);
+```
+
+Configure the sender with the OptiView Player Chromecast SDK and the channel's monetized playback URL. Chromecast CAF uses the sender/receiver integration; it does not expose `breakManifestUrl` as a direct SDK configuration field.
+
+## Verify
+
+Cast the channel's monetized HLS source and start playback. Confirm that the scheduled break renders its supported image overlay, then verify the receiver completes the ad experience.
+
+## More information
+
+- [Chromecast integration](https://optiview.dolby.com/docs/theoplayer/how-to-guides/cast/chromecast/introduction/)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)

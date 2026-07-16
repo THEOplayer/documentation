@@ -1,0 +1,37 @@
+---
+sidebar_position: 5
+sidebar_label: AVPlayer
+---
+
+# Integrate with AVPlayer
+
+AVFoundation provides HLS date-range metadata through `AVPlayerItemMetadataCollector` and `AVDateRangeMetadataGroup`. Apple also provides HLS interstitial APIs through `AVPlayerInterstitialEvent`, `AVPlayerInterstitialEventController`, and `AVPlayerInterstitialEventMonitor`. See the [AVPlayerItemMetadataCollector documentation](https://developer.apple.com/documentation/avfoundation/avplayeritemmetadatacollector), [AVDateRangeMetadataGroup](https://developer.apple.com/documentation/avfoundation/avdaterangemetadatagroup), and [AVPlayerInterstitialEvent](https://developer.apple.com/documentation/avfoundation/avplayerinterstitialevent).
+
+```swift
+let playerItem = AVPlayerItem(url: URL(string: "https://ADS-HOST/channel/monetized/master.m3u8")!)
+let collector = AVPlayerItemMetadataCollector()
+
+collector.setDelegate(self, queue: .main)
+playerItem.add(collector)
+
+func metadataCollector(
+    _ metadataCollector: AVPlayerItemMetadataCollector,
+    didCollect metadataGroups: [AVDateRangeMetadataGroup],
+    indexes: IndexSet,
+    for track: AVPlayerItemTrack
+) {
+    for group in metadataGroups {
+        scheduleFullScreenAd(
+            start: group.startDate,
+            duration: group.endDate.timeIntervalSince(group.startDate)
+        )
+    }
+}
+
+let player = AVPlayer(playerItem: playerItem)
+player.play()
+```
+
+For applications using Apple's interstitial flow, configure an `AVPlayerInterstitialEventController` with the HLS interstitial events and observe it with `AVPlayerInterstitialEventMonitor`. The Break Manifest remains an alternative: fetch `/manifest/v1/{orgId}/channels/{channelId}` immediately, retry failures after 10 seconds, and use its idle/active polling values.
+
+AVPlayer does not provide OptiView layout rendering or OptiView impression reporting; those remain application responsibilities.

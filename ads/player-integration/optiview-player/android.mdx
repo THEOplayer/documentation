@@ -1,0 +1,78 @@
+---
+sidebar_position: 3
+sidebar_label: Android
+sidebar_custom_props: { 'icon': 'android' }
+---
+
+# OptiView Ads on Android
+
+This guide configures OptiView Ads in the OptiView Player Android SDK 11.x.
+
+## Prerequisites
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+1. Obtain an OptiView Player license compatible with OptiView Ads from the [player portal](https://portal.theoplayer.com).
+2. Add the OptiView Player Android SDK by following the [Android getting started guide](/theoplayer/getting-started/sdks/android/getting-started).
+3. Add the integration in your module-level Gradle file.
+
+<Tabs queryString="lang">
+<TabItem value="groovy" label="Groovy">
+
+```groovy
+dependencies {
+    implementation "com.theoplayer.theoplayer-sdk-android:core:11.+"
+    implementation "com.theoplayer.theoplayer-sdk-android:integration-ads-theoads:11.+"
+}
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+dependencies {
+    implementation("com.theoplayer.theoplayer-sdk-android:core:11.+")
+    implementation("com.theoplayer.theoplayer-sdk-android:integration-ads-theoads:11.+")
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Integration
+
+```kotlin
+val theoAdsIntegration = TheoAdsIntegrationFactory.createTheoAdsIntegration(theoPlayerView)
+theoPlayerView.player.addIntegration(theoAdsIntegration)
+
+theoPlayerView.player.source = SourceDescription.Builder(
+    TypedSource.Builder("CHANNEL-MONETIZED-HLS-URL")
+        .type(SourceType.HLS)
+        .hlsDateRange(true)
+        .build()
+).ads(
+    TheoAdDescription(
+        networkCode = "NETWORK-CODE",
+        customAssetKey = "CUSTOM-ASSET-KEY",
+        breakManifestUrl = "https://ADS-HOST/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        adTagParameters = mapOf("key" to "value")
+    )
+).build()
+```
+
+`breakManifestUrl` points to the v2 Break Manifest. `hlsDateRange(true)` enables handling of the SSAI cues in the channel's monetized HLS media playlist.
+
+## Integrating with Open Video UI
+
+Create and add `TheoAdsIntegration` before creating your UI, then use the same `SourceDescription` configuration above with [Open Video UI for Android](/open-video-ui/android/).
+
+## Verify
+
+Load the channel's monetized HLS source and start playback. Confirm that the Break Manifest or SSAI cues schedule a break, the ad renders, and the OptiView impression appears in the portal.
+
+## More information
+
+- [Android `TheoAdDescription` API](https://optiview.dolby.com/docs/theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/theoads/TheoAdDescription.html)
+- [Ad impression tracking](../../../how-to-guides/ad-impressions)
+- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
