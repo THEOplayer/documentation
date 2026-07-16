@@ -8,25 +8,13 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 <!-- 3.4.3 -->
 
-#### Features
-
-- Added a Download CSV button to the BWE stats viewer ([#563](https://github.com/millicast/media-server/pull/563)).
-- [OPTI-3423] Made BWE and probing constants configurable through ABR strategies and feature flags ([#583](https://github.com/millicast/media-server/pull/583)).
-- [OPTI-3490] Sequenced cascading state updates as part of making cdr-importer safe for JIT burst HA during node rotation ([#577](https://github.com/millicast/media-server/pull/577)).
-
 #### Fixes
 
-- [OPTI-3267, OPTI-2857] Handled RTMP `WriteData` back-pressure to prevent stream corruption ([#532](https://github.com/millicast/media-server/pull/532)).
-- (audio) [OPTI-3544] Clamped float-to-int16 conversion in `SetPCMData` to prevent wrap distortion ([#586](https://github.com/millicast/media-server/pull/586)).
-- (abr) [OPTI-3423] Added loss-free burst RTT resilience for transcoder I-frame bursts ([#576](https://github.com/millicast/media-server/pull/576)).
-- [OPTI-3455] Added `pingInterval` to all Redis clients to avoid gateway timeout reconnection ([#557](https://github.com/millicast/media-server/pull/557)).
-- [OPTI-3531] Prevented a viewer-count leak that wedges aggregated subscriber streams ([#579](https://github.com/millicast/media-server/pull/579)).
-- [OPTI-3541] Updated the base image to use libsrt 1.5.6 with the CVE fix ([#589](https://github.com/millicast/media-server/pull/589)).
-
-#### Chores
-
-- [OPTI-3543] Pinned `action-semantic-pull-request` to v5.5.3 ([#585](https://github.com/millicast/media-server/pull/585)).
-- [OPTI-3461] Upgraded `rts-cli` and added support for the ash shell ([#562](https://github.com/millicast/media-server/pull/562)).
+- Improved RTMP re-stream reliability by handling output back-pressure to prevent stream corruption ([#532](https://github.com/millicast/media-server/pull/532)).
+- Fixed audio distortion that could occur with loud audio sources during WebRTC playback ([#586](https://github.com/millicast/media-server/pull/586)).
+- Improved Adaptive Bitrate (ABR) resilience on links with high RTT variation, preventing unnecessary switches to lower-quality layers ([#576](https://github.com/millicast/media-server/pull/576)).
+- Fixed an issue where abnormal viewer disconnections could prevent new viewers in a region from receiving media ([#579](https://github.com/millicast/media-server/pull/579)).
+- Updated the SRT library to version 1.5.6 to address a security vulnerability ([#589](https://github.com/millicast/media-server/pull/589)).
 
 ## 2026-07-08
 
