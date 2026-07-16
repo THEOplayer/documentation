@@ -45,6 +45,63 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Player integration',
+      description: 'Connect OptiView Ads to a player.',
+      collapsed: false,
+      customProps: {
+        icon: '▶️',
+      },
+      link: { type: 'doc', id: 'player-integration/index' },
+      items: [
+        {
+          type: 'category',
+          label: 'OptiView Player',
+          customProps: { icon: '🎬' },
+          link: { type: 'doc', id: 'player-integration/optiview-player/index' },
+          items: [
+            'player-integration/optiview-player/web',
+            'player-integration/optiview-player/android',
+            'player-integration/optiview-player/ios',
+            'player-integration/optiview-player/chromecast',
+            'player-integration/optiview-player/react-native',
+            {
+              type: 'link',
+              label: 'Web TheoAdDescription API',
+              href: 'https://optiview.dolby.com/docs/theoplayer/v11/api-reference/web/interfaces/TheoAdDescription.html',
+            },
+            {
+              type: 'link',
+              label: 'Android TheoAdDescription API',
+              href: 'https://optiview.dolby.com/docs/theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/theoads/TheoAdDescription.html',
+            },
+            {
+              type: 'link',
+              label: 'iOS THEOAdDescription API',
+              href: 'https://optiview.dolby.com/docs/theoplayer/v11/api-reference/ios/Structs/THEOAdDescription.html',
+            },
+            {
+              type: 'link',
+              label: 'React Native TheoAdDescription API',
+              href: 'https://theoplayer.github.io/react-native-theoplayer/api/interfaces/TheoAdDescription.html',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Bring your own player',
+          customProps: { icon: '🧩' },
+          link: { type: 'doc', id: 'player-integration/bring-your-own-player/index' },
+          items: [
+            'player-integration/bring-your-own-player/hls-js',
+            'player-integration/bring-your-own-player/shaka-player',
+            'player-integration/bring-your-own-player/exoplayer-media3',
+            'player-integration/bring-your-own-player/avplayer',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'How-to guides',
       description: 'Learn how to integrate OptiView Ads with your setup',
       customProps: {
@@ -82,19 +139,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Web',
           customProps: { icon: 'web' },
-          href: 'pathname:///theoplayer/v9/api-reference/web/interfaces/TheoAdDescription.html',
-        },
-        {
-          type: 'link',
-          label: 'Android',
-          customProps: { icon: 'android' },
-          href: 'pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html',
-        },
-        {
-          type: 'link',
-          label: 'React Native',
-          customProps: { icon: 'react' },
-          href: 'https://theoplayer.github.io/react-native-theoplayer/api/interfaces/TheoAdDescription.html',
+          href: 'https://optiview.dolby.com/docs/theoplayer/v11/api-reference/web/interfaces/TheoAdDescription.html',
         },
       ],
     },
