@@ -1,0 +1,272 @@
+---
+sidebar_position: 2
+sidebar_label: Events
+---
+
+# Events
+
+import RebrandingNotice from '../callouts/_rebranding_notice.md';
+
+<RebrandingNotice />
+
+An event is a channel-scoped time window that groups the ad breaks belonging to one scheduled occurrence, such as a live game, a show, or a tournament. It gives you a single handle for the breaks around that occurrence: the breaks share the event's window, and deleting the event removes them together.
+
+Events also anchor the operational cue/punch workflow. Ahead of a live occurrence you prepare vendor pod breaks under the event without a start time, and during the broadcast you fire them at the exact moment with the punch endpoint.
+
+Events are scoped to an organization and a channel. API calls identify the organization with the `X-Org-ID` header and authenticate with an API key and secret using HTTP Basic authentication.
+
+## Dashboard path
+
+In the OptiView Unified Dashboard, open **Ads → Channels**, open a channel, then select **Events** from the channel navigation. From there you can create, edit, and delete events, and inspect the breaks scheduled under each event.
+
+## Event identity
+
+Every event has an `id`. The API stores it together with the organization ID and the parent channel ID, so the unique identity is:
+
+```text
+organizationId + channelId + eventId
+```
+
+Because the identity includes the channel, the same `id` can exist under different channels. Use stable, descriptive event IDs that match your operational names, such as `finals-2026` or `week-1-home`. If you omit `id` on creation, the API generates one.
+
+## Time window
+
+An event is defined by a `startDate` and an `endDate`, both UTC ISO 8601 timestamps. `startDate` must be before `endDate`.
+
+The window is enforced on the breaks scheduled under the event. When you create a break with an explicit start on a `wallclock` channel and attach it to an event, the API validates that the **entire** break interval fits inside the window:
+
+- The break start must be at or after the event `startDate`.
+- The break end (`start` + `duration`) must be at or before the event `endDate`.
+
+If either check fails, the create request is rejected:
+
+| Condition                         | Response                                                                      |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| Break start is outside the window | `Break start must be within the event's date range (<startDate> - <endDate>)` |
+| Break end is outside the window   | `Break end time (start + duration) must be within the event's date range (…)` |
+
+The window validation applies to `wallclock` channels. On `pts` channels the event must still exist, but the break is not range-checked against the event dates. See [Channels](./channels.mdx) for the timebase model.
+
+A break created **without** a start time (a cued break, see below) is not range-checked at creation, because its start is not known yet. Its start is set when you punch it.
+
+## Relationship to breaks
+
+A break is attached to an event by setting `eventId` to the event's `id` on the break. `eventId` is optional: a break can exist on the channel without belonging to any event.
+
+:::warning Deleting an event deletes its breaks
+Deleting an event cascades to every break whose `eventId` matches it. The event and its member breaks are removed together in a single transaction. Bulk-deleting events removes the breaks of all deleted events. There is no confirmation step in the API — delete an event only after confirming that none of its breaks are still needed.
+:::
+
+To list only the breaks that belong to an event, use the event's breaks endpoint (see [API usage](#api-usage)).
+
+## Cue / punch workflow during an event
+
+For a live occurrence you usually do not know the exact break times in advance, but you want the ad decision ready so the break can fire instantly. Events are where this "prepare ahead, fire live" workflow lives. The full break state machine and the Google DAI (vendor pod) prerequisites are documented in the Breaks and Vendors / Google sections; the flow below focuses on running an event.
+
+### Ahead of the event: prepare cued breaks
+
+Create the vendor pod breaks under the event **without a `start`**. A vendor pod break with no start begins in `PREPARING`: OptiView Ads asks Google DAI to pre-decision the pod. Once the pod is decisioned, the break transitions to `CUED` and is ready to fire.
+
+A channel can hold **only one cued break at a time**. While a no-start break is `PREPARING` or `CUED` on a channel, creating another no-start break on the same channel is rejected:
+
+```text
+Channel <channelId> already has a CUED break
+```
+
+Punch (or delete) the outstanding break before cueing the next one.
+
+### During the event: punch the cued break
+
+When the moment arrives, fire the cued break with the punch endpoint:
+
+```text
+POST /api/v1/channels/:channelId/breaks/:breakId/punch
+```
+
+The request body is optional. It may contain a single `start` (UTC ISO 8601). If `start` is omitted it defaults to now, and a `start` in the past is clamped to now. A successful punch sets the break's start and transitions it from `CUED` to `READY`, after which it is delivered.
+
+Punching has these constraints:
+
+- **Wallclock only.** The channel must use the `wallclock` timebase. Punching a `pts` channel is rejected with `Only channels with a 'wallclock' timebase are allowed to punch breaks.`
+- **Must be cued.** The break must be in `CUED` status; otherwise the request fails with `Break '<id>' is not in CUED status`.
+- **Pod must be decisioned.** For a vendor pod break, the Google DAI pod decision must have completed (the break must have left `PREPARING`); otherwise the request fails with `Ad break '<id>' is not yet decisioned by EABN`.
+
+Because a punch clamps the start to the current time, punch a cued break only while the event is in progress. This keeps the break's start inside the event's `startDate`/`endDate` window.
+
+### Worked example: half-time break in a live game
+
+1. Create the event for the game with a window that covers kickoff through the final whistle.
+2. Ahead of kickoff, create a vendor pod break under the event with no `start`. It enters `PREPARING`, then `CUED` once Google DAI has pre-decisioned the pod.
+3. At half-time, punch the break with no body. Its start is set to now and it transitions to `READY`, so the pod is delivered immediately.
+4. To prepare the next in-game break, first punch or delete the current cued break, then cue the next one — a channel holds only one cued break at a time.
+
+## Relationship to templates
+
+Templates can be linked to one or more events through their `eventIds` array, so a reusable break preset can be surfaced for quick scheduling under those events. Listing templates for an event returns every template whose `eventIds` contains the event's `id`.
+
+## Configuration reference
+
+| Field         | Type            | Required | Description                                                 |
+| ------------- | --------------- | -------- | ----------------------------------------------------------- |
+| `id`          | string          | No       | Customer-facing event ID. Generated if omitted on creation. |
+| `name`        | string          | Yes      | Human-readable event name. Must be non-empty.               |
+| `description` | string          | No       | Optional free-text description.                             |
+| `startDate`   | ISO 8601 string | Yes      | Start of the event window. Must be before `endDate`.        |
+| `endDate`     | ISO 8601 string | Yes      | End of the event window.                                    |
+
+The event response returns `id`, `name`, `description`, `startDate`, `endDate`, and `createdAt`. The organization and channel IDs are taken from the request context and are not part of the response body.
+
+## API usage
+
+Events live under a channel. Replace `sports-main` with your channel ID.
+
+### Create an event
+
+Dashboard: open the channel, then **Events → New**.
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/events' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "id": "finals-2026",
+    "name": "Finals 2026",
+    "description": "Championship final",
+    "startDate": "2026-07-20T18:00:00.000Z",
+    "endDate": "2026-07-20T22:00:00.000Z"
+  }'
+```
+
+Example response:
+
+```json
+{
+  "id": "finals-2026",
+  "name": "Finals 2026",
+  "description": "Championship final",
+  "startDate": "2026-07-20T18:00:00.000Z",
+  "endDate": "2026-07-20T22:00:00.000Z",
+  "createdAt": "2026-07-16T12:00:00.000Z"
+}
+```
+
+### Get an event
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+### Update an event
+
+`id` cannot be changed. When you send `startDate` or `endDate`, the resulting window must still keep `startDate` before `endDate`.
+
+```bash
+curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "name": "Finals 2026 (delayed)",
+    "endDate": "2026-07-20T23:00:00.000Z"
+  }'
+```
+
+### List events
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main/events?page=1&pageSize=20&sort=-createdAt' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+List endpoints share the same pagination shape. Events can be filtered by `name`, `description`, `startDate`, and `endDate`, and sorted by `name`, `description`, `startDate`, `endDate`, or `createdAt`.
+
+| Query parameter | Default      | Description                                                                |
+| --------------- | ------------ | -------------------------------------------------------------------------- |
+| `page`          | `1`          | Page number.                                                               |
+| `pageSize`      | `20`         | Items per page. Maximum `100`.                                             |
+| `filter`        | none         | Optional RSQL filter expression.                                           |
+| `sort`          | `-createdAt` | Comma-separated sort fields. Prefix a field with `-` for descending order. |
+
+### List breaks for an event
+
+```bash
+curl 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026/breaks?pageSize=50' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+### Delete an event
+
+```bash
+curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+This also deletes every break attached to the event. To delete several events (and their breaks) at once, send their IDs to the collection endpoint:
+
+```bash
+curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/events' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{ "ids": ["finals-2026", "semifinal-2026"] }'
+```
+
+### Cue and punch a break in an event context
+
+Cue a vendor pod break under the event by omitting `start`:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "id": "halftime-1",
+    "eventId": "finals-2026",
+    "duration": 90,
+    "variant": {
+      "format": "single",
+      "assets": [
+        {
+          "type": "vendor",
+          "vendor": "gam",
+          "mediaType": "video",
+          "vendorParameters": { "type": "pod" }
+        }
+      ]
+    }
+  }'
+```
+
+At the right moment, punch it. With no body the start defaults to now:
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks/halftime-1/punch' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: org_123'
+```
+
+To punch with an explicit start (a past start is clamped to now):
+
+```bash
+curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks/halftime-1/punch' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{ "start": "2026-07-20T20:00:00.000Z" }'
+```
+
+## Related resources
+
+| Resource         | Relationship                                                                                    |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| Channels         | The parent of an event. An event always belongs to one channel. See [Channels](./channels.mdx). |
+| Breaks           | Attached to an event via `eventId`; the Breaks section documents the full status state machine. |
+| Templates        | Linked to events via `eventIds` for quick scheduling.                                           |
+| Vendors / Google | Provide the pod pre-decisioning that moves a cued vendor pod break from `PREPARING` to `CUED`.  |
