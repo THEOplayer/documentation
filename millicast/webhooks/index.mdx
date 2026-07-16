@@ -117,22 +117,20 @@ The platform will send a `POST` request to the _Webhook url_ specified when the 
 
 ### How-to verify the webhook
 
-A signature verification header, `X-Millicast-Signature`, is included in the callback request. This SHA1 signature uses the _Webhook secret_ so that you may verify the origin and data integrity.
+A signature verification header, `x-millicast-signature`, is included in the callback request. This SHA1 signature uses the _Webhook secret_ so that you may verify the origin and data integrity.
 
 Here is a code sample for how to use the signature to check the data.
 
-```Text title="Node.js"
+```javascript title="Node.js"
 const webhookSecretBuffer = Buffer.from(webhookSecret, 'base64');
-    const calculatedSignature = 'sha1=' + Crypto.createHmac('sha1', webhookSecretBuffer)
-    	.update(body)
-    	.digest('hex');
-    const headerSignature = request.get('X-Millicast-Signature');
+const calculatedSignature = 'sha1=' + Crypto.createHmac('sha1', webhookSecretBuffer).update(body).digest('hex');
+const headerSignature = request.get('x-millicast-signature');
 
-    if (calculatedSignature !== headerSignature) {
-      console.warn('Invalid signature sent to us, unsafe data');
-      res.status(400).send('BAD SIGNATURE');
-      return;
-    }
+if (calculatedSignature !== headerSignature) {
+  console.warn('Invalid signature sent to us, unsafe data');
+  res.status(400).send('BAD SIGNATURE');
+  return;
+}
 ```
 
 ### Webhook schema
