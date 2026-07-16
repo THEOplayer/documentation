@@ -10,11 +10,11 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 #### Fixes
 
-- Improved RTMP re-stream reliability by handling output back-pressure to prevent stream corruption ([#532](https://github.com/millicast/media-server/pull/532)).
-- Fixed audio distortion that could occur with loud audio sources during WebRTC playback ([#586](https://github.com/millicast/media-server/pull/586)).
-- Improved Adaptive Bitrate (ABR) resilience on links with high RTT variation, preventing unnecessary switches to lower-quality layers ([#576](https://github.com/millicast/media-server/pull/576)).
-- Fixed an issue where abnormal viewer disconnections could prevent new viewers in a region from receiving media ([#579](https://github.com/millicast/media-server/pull/579)).
-- Updated the SRT library to version 1.5.6 to address a security vulnerability ([#589](https://github.com/millicast/media-server/pull/589)).
+- Improved RTMP re-stream reliability by handling output back-pressure to prevent stream corruption.
+- Fixed audio distortion that could occur with loud audio sources during WebRTC playback.
+- Improved Adaptive Bitrate (ABR) resilience on links with high RTT variation, preventing unnecessary switches to lower-quality layers.
+- Fixed an issue where abnormal viewer disconnections could prevent new viewers in a region from receiving media.
+- Updated the SRT library to version 1.5.6 to address a security vulnerability.
 
 ## 2026-07-08
 
