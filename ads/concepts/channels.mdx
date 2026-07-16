@@ -63,17 +63,17 @@ The `timebase` determines how breaks are scheduled for the channel.
 
 Choose the timebase when creating the channel. Breaks created for that channel use the same timebase.
 
-## Timing configuration
+## Configuration reference
 
-| Field                  | Type                 | Default  | Description                                                                                                                         |
-| ---------------------- | -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `timebase`             | `wallclock` or `pts` | Required | Selects whether breaks use `startWallclock` or `startPts`.                                                                          |
-| `dvrWindowMs`          | integer              | `300000` | DVR look-back window used when deciding which breaks are still relevant for delivery.                                               |
-| `liveOffsetMs`         | integer              | `0`      | Live latency offset. Wallclock break starts are evaluated against the live playhead rather than raw server time.                    |
-| `pollingIdleSeconds`   | integer              | `10`     | Break Manifest polling interval advertised when no break is active.                                                                 |
-| `pollingActiveSeconds` | integer              | `1`      | Break Manifest polling interval advertised during an active break; also used for active manifest caching.                           |
-| `customAssetKey`       | string               | none     | Google DAI custom asset key used for server-guided pod serving on this channel. It must be unique within the organization when set. |
-| `detectionEnabled`     | boolean              | `false`  | Read-only response field showing whether automatic marker detection is enabled.                                                     |
+| Field                  | Type                 | Default                    | Description                                                                                                                         |
+| ---------------------- | -------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `timebase`             | `wallclock` or `pts` | Required                   | Selects whether breaks use `startWallclock` or `startPts`.                                                                          |
+| `dvrWindowMs`          | integer              | service fallback: `300000` | DVR look-back window used when deciding which breaks are still relevant for delivery.                                               |
+| `liveOffsetMs`         | integer              | `0`                        | Live latency offset. Wallclock break starts are evaluated against the live playhead rather than raw server time.                    |
+| `pollingIdleSeconds`   | integer              | service fallback: `10`     | Break Manifest polling interval advertised when no break is active.                                                                 |
+| `pollingActiveSeconds` | integer              | service fallback: `1`      | Break Manifest polling interval advertised during an active break; also used for active manifest caching.                           |
+| `customAssetKey`       | string               | none                       | Google DAI custom asset key used for server-guided pod serving on this channel. It must be unique within the organization when set. |
+| `detectionEnabled`     | boolean              | `false`                    | Read-only response field showing whether automatic marker detection is enabled.                                                     |
 
 ## Marker detection lifecycle
 
@@ -91,7 +91,7 @@ curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/disa
   -H 'X-Org-ID: org_123'
 ```
 
-When detection is enabled, the worker polls the enabled origins for the channel in priority order. The first online origin is used for marker evaluation. Marker rules decide whether a detected marker creates a break, and detection history records the action, reason, origin, marker rule, and break IDs.
+When detection is enabled, the worker polls the enabled origins for the channel in priority order. The first online origin is used for marker evaluation. Marker rules decide whether a detected marker creates a break, and detection history records the action, reason, origin, marker rule, and break ID.
 
 ## Create a channel
 
