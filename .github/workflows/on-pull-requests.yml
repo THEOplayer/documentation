@@ -1,0 +1,52 @@
+name: 'On Pull Requests'
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+jobs:
+  lint:
+    name: lint
+    if: ${{ github.event.action != 'closed' }}
+    uses: ./.github/workflows/_lint.yml
+    secrets: inherit
+
+  build:
+    name: build
+    # Run only on PRs from forks, or from Dependabot.
+    if: ${{ github.event.action != 'closed' && ( github.event.pull_request.head.repo.fork || github.triggering_actor == 'dependabot[bot]' ) }}
+    uses: ./.github/workflows/_build.yml
+    with:
+      environment_name: Preview
+      environment_deployment: false
+      # Preview URLs look like this: https://[storage-url]/pr-[number]/
+      docusaurus_base_url: '/pr-${{ github.event.number }}/'
+      # Prevent PR previews from being indexed by search engines
+      docusaurus_no_index: 1
+      # Add an announcement at the top to indicate if this is a preview
+      docusaurus_pr_number: ${{ github.event.number }}
+      docusaurus_pr_url: ${{ github.event.pull_request.html_url }}
+
+  deploy:
+    name: deploy
+    needs: [build]
+    # Do not run on PRs from forks or from Dependabot, since they don't have the permissions to deploy to our GitHub pages branch.
+    if: ${{ github.event.action != 'closed' && !github.event.pull_request.head.repo.fork && github.triggering_actor != 'dependabot[bot]' }}
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      environment_name: Preview
+      environment_url: '${{ vars.PREVIEW_CLOUDFRONT_URL }}/pr-${{ github.event.number }}/'
+      artifact_name: ${{ needs.build.outputs.artifact_name}}
+      s3_prefix: 'pr-${{ github.event.number }}'
+
+  undeploy:
+    name: undeploy
+    if: ${{ github.event.action == 'closed' && github.triggering_actor != 'dependabot[bot]' }}
+    uses: ./.github/workflows/_undeploy.yml
+    with:
+      environment_name: Preview
+      s3_prefix: 'pr-${{ github.event.number }}'

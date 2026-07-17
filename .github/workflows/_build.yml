@@ -1,0 +1,82 @@
+name: Build pull request
+
+on:
+  workflow_call:
+    inputs:
+      environment_name:
+        type: string
+        required: true
+      environment_deployment:
+        type: boolean
+        required: false
+        default: true
+      docusaurus_base_url:
+        description: 
+        required: true
+        type: string
+      docusaurus_no_index:
+        description: 
+        required: true
+        type: number
+        default: 0
+      docusaurus_pr_number:
+        description: 
+        required: false
+        type: number
+      docusaurus_pr_url:
+        description: 
+        required: false
+        type: string
+      artifact_path:
+        description: Define the artifact path.
+        required: false
+        type: string
+        default: './dist/'
+      artifact_name:
+        description: Define the artifact name.
+        required: false
+        type: string
+        default: 'dist.zip'
+      artifact_retention_day:
+        description: Define retention period in days.
+        required: false
+        type: number
+        default: 1
+    outputs:
+      artifact_name:
+        description: 'Return the name of the built artifact.'
+        value: ${{ inputs.artifact_name }}
+
+concurrency: build-${{ github.ref }}
+
+# Permissions needed to interact with GitHub's OIDC Token endpoint
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment_name }}
+      deployment: ${{ inputs.environment_deployment }}
+    steps:
+      - name: Initialize ⏲️
+        uses: ./github/actions/initialize
+
+      - name: Build 🔧
+        run: |
+          npm run build
+        env:
+          THEOPLAYER_LICENSE: ${{ vars.THEOPLAYER_LICENSE }}
+          DOCUSAURUS_BASE_URL: ${{ inputs.docusaurus_base_url }}
+          DOCUSAURUS_NO_INDEX: ${{ inputs.docusaurus_no_index }}
+          DOCUSAURUS_PR_NUMBER: ${{ inputs.docusaurus_pr_number }}
+          DOCUSAURUS_PR_URL: ${{ inputs.docusaurus_pr_url }}
+
+      - name: Upload Build ☁️
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ inputs.artifact_name}}
+          path: ${{ inputs.artifact_path }}
+          retention-days: ${{ inputs.artifact_retention_day }}

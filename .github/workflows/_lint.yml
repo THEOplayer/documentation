@@ -1,0 +1,16 @@
+name: Lint
+
+on:
+  workflow_call:
+
+jobs:
+  pr-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize ⏲️
+        uses: ./github/actions/initialize
+
+      - run: npm run gen-api-docs
+      - run: npm run check-format
+      - run: npm run lint
+      - run: npm run typecheck

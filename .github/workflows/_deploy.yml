@@ -1,0 +1,66 @@
+name: Deploy pull request preview
+
+on:
+  workflow_call:
+    inputs:
+      environment_name:
+        type: string
+        required: true
+      environment_deployment:
+        type: boolean
+        required: false
+        default: true
+      environment_url:
+        type: string
+        required: false
+        default: ''
+      artifact_name:
+        description: Name of the built artifact for deployment.
+        required: true
+        type: string
+      s3_prefix:
+        description: AWS S3 prefix where to store the build.
+        required: true
+        type: string
+
+concurrency: deploy-${{ github.ref }}
+
+jobs:
+  deploy-to-cloudfront:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment_name }}
+      deployment: ${{ inputs.environment_deployment }}
+      url: ${{ inputs.environment_url }}
+    steps:
+      - name: Download build artifact 🗃️
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ${{ github.workspace }}/${{ inputs.artifact_name }}
+
+      - name: Configure AWS credentials ☁️
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-region: ${{ vars.AWS_REGION }}
+          role-to-assume: ${{ vars.AWS_ROLE }}
+
+      - name: 'Sync to S3 [PR-${{ github.event.number }}] 💾'
+        run: |
+          echo "Copying artifact: ${ARTIFACT_PATH} to S3 bucket: ${S3_BUCKET}/${S3_PREFIX}"
+          aws s3 sync ${ARTIFACT_PATH}/ s3://${S3_BUCKET}/${S3_PREFIX}/ \
+            --only-show-errors \
+            --delete
+        env:
+          S3_BUCKET: ${{ vars.S3_BUCKET_NAME }}
+          S3_PREFIX: ${{ inputs.s3_prefix }}
+          ARTIFACT_PATH: ${{ github.workspace }}/${{ inputs.artifact_name }}
+
+      - name: Invalidate Amazon CloudFront 🧹
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${CF_DISTRIBUTION_ID} \
+            --paths '/${S3_PREFIX}/*'
+        env:
+          CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
+          S3_PREFIX: ${{ inputs.s3_prefix }}

@@ -1,0 +1,29 @@
+name: 'On Push to Main branch'
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    uses: ./.github/workflows/_build.yml
+    with:
+      environment_name: Production
+      docusaurus_base_url: '/docs/'
+      docusaurus_no_index: 0
+
+  deploy:
+    name: deploy
+    needs: [build]
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      environment_name: Production
+      artifact_name: ${{ needs.build.outputs.artifact_name}}
+      s3_prefix: 'docs'

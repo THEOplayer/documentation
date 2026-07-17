@@ -1,0 +1,36 @@
+name: Initialize
+description: Check out the source code, install Node.JS and the project dependencies
+
+inputs:
+  node_version:
+    description: Define the version of Node.JS to use.
+    required: false
+    type: string
+    default: '24'
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 1
+        submodules: true
+
+    - name: Setup Node.JS 🔧
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node_version }}
+        cache: 'npm'
+        cache-dependency-path: ./package-lock.json
+
+    - name: Print NPM version 🌎
+      shell: bash
+      run: |
+        npm --version
+
+    - name: Install dependencies 🔧
+      shell: bash
+      run: |
+        git config --global --add safe.directory ${GITHUB_WORKSPACE}
+        npm ci
