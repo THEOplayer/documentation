@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Initialize ⏲️
-        uses: ./github/actions/initialize
+        uses: ./.github/actions/initialize
 
       - run: npm run gen-api-docs
       - run: npm run check-format

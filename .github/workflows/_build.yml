@@ -62,7 +62,7 @@ jobs:
       deployment: ${{ inputs.environment_deployment }}
     steps:
       - name: Initialize ⏲️
-        uses: ./github/actions/initialize
+        uses: ./.github/actions/initialize
 
       - name: Build 🔧
         run: |
