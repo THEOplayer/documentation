@@ -3,6 +3,11 @@ name: Build pull request
 on:
   workflow_call:
     inputs:
+      node_version:
+        description: Define the version of Node.JS to use.
+        required: false
+        type: string
+        default: '24'
       environment_name:
         type: string
         required: true
@@ -61,8 +66,29 @@ jobs:
       name: ${{ inputs.environment_name }}
       deployment: ${{ inputs.environment_deployment }}
     steps:
-      - name: Initialize ⏲️
-        uses: ./.github/actions/initialize
+      - name: Checkout 🛎️
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          submodules: true
+
+      - name: Setup Node.JS 🔧
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ inputs.node_version }}
+          cache: 'npm'
+          cache-dependency-path: ./package-lock.json
+
+      - name: Print NPM version 🌎
+        shell: bash
+        run: |
+          npm --version
+
+      - name: Install dependencies 🔧
+        shell: bash
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          npm ci
 
       - name: Build 🔧
         run: |
