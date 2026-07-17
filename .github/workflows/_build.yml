@@ -48,7 +48,9 @@ on:
         description: 'Return the name of the built artifact.'
         value: ${{ inputs.artifact_name }}
 
-concurrency: build-${{ github.ref }}
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 # Permissions needed to interact with GitHub's OIDC Token endpoint
 permissions:
