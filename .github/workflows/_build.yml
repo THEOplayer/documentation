@@ -16,20 +16,16 @@ on:
         required: false
         default: true
       docusaurus_base_url:
-        description: 
         required: true
         type: string
       docusaurus_no_index:
-        description: 
         required: true
         type: number
         default: 0
       docusaurus_pr_number:
-        description: 
         required: false
         type: number
       docusaurus_pr_url:
-        description: 
         required: false
         type: string
       artifact_path:

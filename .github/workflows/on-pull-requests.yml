@@ -17,8 +17,7 @@ jobs:
 
   build:
     name: build
-    # Run only on PRs from forks, or from Dependabot.
-    if: ${{ github.event.action != 'closed' && ( github.event.pull_request.head.repo.fork || github.triggering_actor == 'dependabot[bot]' ) }}
+    if: ${{ github.event.action != 'closed' }}
     uses: ./.github/workflows/_build.yml
     with:
       environment_name: Preview
