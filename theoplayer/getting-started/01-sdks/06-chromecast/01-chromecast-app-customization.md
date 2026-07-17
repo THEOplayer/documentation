@@ -108,9 +108,9 @@ your application is buffering or paused.
 
 ### Default Receiver application
 
-If you are connected to THEOplayer's default Receiver application, you cannot modify its appearance.
+If you are connected to OptiView Player's default Receiver application, you cannot modify its appearance. It is an application with OptiView Player functionality that uses Shaka for media playback.
 
-If you want to change the UI, you need to [connect your sender application with a different Receiver application ID](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md).
+If you want to change the UI, you need to [connect your sender application with a different Receiver application ID](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md). Also if you need to use Google's legacy Media Player Library (MPL) for playback, you will need to change the Receiver application ID to `44BAE7D1`.
 
 ### Custom Receiver application with THEOplayer Chromecast SDK
 
