@@ -9,6 +9,49 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.7.0 (2026/07/15)
+
+### Web
+
+#### ✨ Features
+
+- Added support for the HLS `SUPPLEMENTAL-CODECS` attribute.
+
+#### 🐛 Issues
+
+- Fixed an issue where an HESP stream playing in iOS web views could appear frozen while the current time kept progressing. The player now detects this and recovers.
+- Fixed an issue where seeking immediately to the middle of an MPEG-DASH stream and then later seeking back to the start of the stream could stall the player indefinitely.
+- Fixed an issue where the distributed `.js` files were referencing internal `.js.map` files through a `//# sourceMappingURL` comment, which could raise warnings when bundling with e.g. webpack. These comments have been removed.
+- Fixed an issue where the `id` property of a `csai` ad contained the VAST creative ID instead. `Ad.id` now returns the ad's ID, while `Ad.creativeId` returns the creative's ID.
+- Fixed an issue where a PTS break would sometimes not be played when using the OptiView Ads manifest.
+- Fixed a regression that could break playback on legacy engines (such as Tizen 2.4) when using certain polyfills that define a `Symbol.iterator` getter on non-iterable objects.
+- Fixed an issue where the video track would report no active quality when playing an HLS stream that duplicates its variant streams across multiple audio codec groups, such as OptiView Live streams with both a Dolby and an AAC ladder. Qualities that only reference variant streams with unsupported codecs are now marked as unavailable.
+- Fixed an issue where ABR would switch to a variant stream with incompatible codecs when the network bandwidth was insufficient for all variant streams, causing an unnecessary playback interruption, e.g. leaving the Dolby Vision ladder of an HLS stream instead of selecting its lowest Dolby Vision variant stream.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where the OptiView Ads manifest could fail to load.
+- Fixed an issue where the `InterstitialEndEvent` was not dispatched in OptiView Ads.
+
+### iOS
+
+#### ✨ Features
+
+- Added support for the `contentprotectionerror` event, which is dispatched when the DRM flow fails.
+
+#### 🐛 Issues
+
+- Fixed an issue where the clickthrough info could not be updated through an `SSAIIntegration`.
+- Fixed an issue where the `readyState` would revert from `HAVE_ENOUGH_DATA` to `HAVE_CURRENT_DATA` when playing an MP4 stream with sideloaded VTT text tracks.
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where internal observers were not removed properly when the player was destroyed, which could cause a crash when rapidly creating and destroying the player.
+
 ## 🚀 11.6.1 (2026/07/07)
 
 ### Android

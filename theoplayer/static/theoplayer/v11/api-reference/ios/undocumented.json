@@ -44,49 +44,49 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
-      "line": 101,
+      "line": 100,
       "symbol": "CertificateRequestCallback.request(request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
-      "line": 108,
+      "line": 107,
       "symbol": "CertificateResponseCallback.respond(certificate:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
-      "line": 109,
+      "line": 108,
       "symbol": "CertificateResponseCallback.error(error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
-      "line": 116,
+      "line": 115,
       "symbol": "LicenseRequestCallback.request(request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
-      "line": 123,
+      "line": 122,
       "symbol": "LicenseResponseCallback.respond(license:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
-      "line": 124,
+      "line": 123,
       "symbol": "LicenseResponseCallback.error(error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/ExternalContentProtectionIntegration/ContentProtectionIntegration.swift",
-      "line": 127,
+      "line": 126,
       "symbol": "ExtractContentIdCallback",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
@@ -135,21 +135,21 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/Network_API.swift",
-      "line": 12,
+      "line": 11,
       "symbol": "HlsPlaylistType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/Network_API.swift",
-      "line": 114,
+      "line": 112,
       "symbol": "Network",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/API/SourceDescription_API.swift",
-      "line": 224,
+      "line": 223,
       "symbol": "SourceType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
@@ -254,21 +254,21 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Event/Network/NetworkEvents.swift",
-      "line": 40,
+      "line": 39,
       "symbol": "ExitBadNetworkModeEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Event/Network/NetworkEvents.swift",
-      "line": 49,
+      "line": 48,
       "symbol": "EnterBadNetworkModeEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Event/Network/NetworkEvents.swift",
-      "line": 58,
+      "line": 57,
       "symbol": "NetworkEvent",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
@@ -618,49 +618,49 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
-      "line": 161,
+      "line": 158,
       "symbol": "EventSource.urlSession(_:task:didCompleteWithError:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
-      "line": 165,
+      "line": 162,
       "symbol": "EventSource.urlSession(_:dataTask:didReceive:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
-      "line": 170,
+      "line": 167,
       "symbol": "EventSource.urlSession(_:dataTask:didReceive:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/ServerSentEvents/EventSource.swift",
-      "line": 229,
+      "line": 224,
       "symbol": "EventSource.networkConnectionDidChange(state:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
-      "line": 13,
+      "line": 12,
       "symbol": "Encodable.toJSON()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
-      "line": 17,
+      "line": 16,
       "symbol": "Encodable.toJSONString()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Core/Util/CodableExtensions.swift",
-      "line": 21,
+      "line": 20,
       "symbol": "Encodable.toJSONEncodableDictionary()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -723,14 +723,14 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
-      "line": 108,
+      "line": 107,
       "symbol": "TextTrackStyleRuleString.init(_:textSelector:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/API/TextTrackStyle_API.swift",
-      "line": 129,
+      "line": 128,
       "symbol": "TextTrackStyleRuleNumber.init(_:textSelector:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -758,49 +758,49 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CacheInternalNative.swift",
-      "line": 133,
+      "line": 131,
       "symbol": "CacheInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 298,
+      "line": 294,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 304,
+      "line": 300,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 366,
+      "line": 362,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/CachingTaskInternalNative.swift",
-      "line": 382,
+      "line": 378,
       "symbol": "CachingTaskInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 317,
+      "line": 313,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Cache/StreamCacher.swift",
-      "line": 512,
+      "line": 501,
       "symbol": "StreamCacher",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -856,35 +856,35 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/AVMediaItem.swift",
-      "line": 354,
+      "line": 353,
       "symbol": "AVMediaItem",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1526,
+      "line": 1531,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1573,
+      "line": 1583,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1635,
+      "line": 1645,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/AVPlayerContentPlayerNative.swift",
-      "line": 1749,
+      "line": 1757,
       "symbol": "AVPlayerContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -919,14 +919,14 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/ContentPlayerNative.swift",
-      "line": 651,
+      "line": 656,
       "symbol": "ContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/ContentPlayers/ContentPlayerNative.swift",
-      "line": 679,
+      "line": 684,
       "symbol": "ContentPlayerNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -947,7 +947,7 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/PlayerView/PlayerView.swift",
-      "line": 333,
+      "line": 331,
       "symbol": "PlayerView",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -961,63 +961,63 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 903,
+      "line": 899,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 914,
+      "line": 910,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 924,
+      "line": 920,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 948,
+      "line": 944,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 955,
+      "line": 951,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 993,
+      "line": 989,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1009,
+      "line": 1005,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1015,
+      "line": 1011,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/THEOplayerInternalNative.swift",
-      "line": 1033,
+      "line": 1029,
       "symbol": "THEOplayerInternalNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -1031,14 +1031,14 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/MediaTrackListImpl.swift",
-      "line": 92,
+      "line": 89,
       "symbol": "MediaTrackListImpl",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/TrackLists/MediaTrackListImpl.swift",
-      "line": 102,
+      "line": 99,
       "symbol": "MediaTrackListImpl",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -1066,14 +1066,14 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/Tracks/MediaTrackImpl.swift",
-      "line": 102,
+      "line": 101,
       "symbol": "MediaTrackImpl",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/Models/Player/Tracks/TextTrackImplNative.swift",
-      "line": 493,
+      "line": 492,
       "symbol": "TextTrackImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
@@ -1094,14 +1094,14 @@
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
-      "line": 76,
+      "line": 75,
       "symbol": "AirPlayImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/distiller/project/ios/THEOplayer_SDK/Native/iOS/Models/Cast/AirPlay/AirPlayImplNative.swift",
-      "line": 87,
+      "line": 85,
       "symbol": "AirPlayImplNative",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
