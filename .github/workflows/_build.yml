@@ -32,7 +32,7 @@ on:
         description: Define the artifact path.
         required: false
         type: string
-        default: './dist/'
+        default: './build/'
       artifact_name:
         description: Define the artifact name.
         required: false
