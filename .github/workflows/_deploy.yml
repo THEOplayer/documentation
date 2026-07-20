@@ -1,4 +1,4 @@
-name: Deploy pull request preview
+name: Deploy website
 
 on:
   workflow_call:
