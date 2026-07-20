@@ -40,7 +40,7 @@ jobs:
     with:
       environment_name: Preview
       environment_url: '${{ vars.PREVIEW_CLOUDFRONT_URL }}/pr-${{ github.event.number }}/'
-      artifact_name: ${{ needs.build.outputs.artifact_name}}
+      artifact_name: ${{ needs.build.outputs.artifact_name }}
       s3_prefix: 'pr-${{ github.event.number }}'
 
   undeploy:

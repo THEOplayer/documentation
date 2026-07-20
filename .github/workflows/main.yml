@@ -25,5 +25,5 @@ jobs:
     uses: ./.github/workflows/_deploy.yml
     with:
       environment_name: Production
-      artifact_name: ${{ needs.build.outputs.artifact_name}}
+      artifact_name: ${{ needs.build.outputs.artifact_name }}
       s3_prefix: 'docs'
