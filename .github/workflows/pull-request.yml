@@ -22,7 +22,6 @@ jobs:
     uses: ./.github/workflows/_build.yml
     with:
       environment_name: Preview
-      environment_deployment: false
       # Preview URLs look like this: https://[storage-url]/pr-[number]/
       docusaurus_base_url: '/pr-${{ github.event.number }}/'
       # Prevent PR previews from being indexed by search engines
