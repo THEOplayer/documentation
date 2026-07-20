@@ -45,7 +45,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_ROLE }}
 
-      - name: 'Sync to S3 [PR-${{ github.event.number }}] 💾'
+      - name: 'Sync to ${{ inputs.s3_prefix }} on S3 💾'
         run: |
           echo "Copying artifact: ${ARTIFACT_PATH} to S3 bucket: ${S3_BUCKET}/${S3_PREFIX}"
           aws s3 sync ${ARTIFACT_PATH}/ s3://${S3_BUCKET}/${S3_PREFIX}/ \

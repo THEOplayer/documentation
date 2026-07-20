@@ -26,7 +26,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-to-assume: ${{ vars.AWS_ROLE }}
 
-      - name: 'Delete [PR-${{ github.event.number }}] from S3 💾'
+      - name: 'Delete ${{ inputs.s3_prefix }} from S3 💾'
         run: |
           echo "Delete the files from S3 bucket: ${S3_BUCKET}/${S3_PREFIX}"
           aws s3 rm s3://${S3_BUCKET}/${S3_PREFIX} \
