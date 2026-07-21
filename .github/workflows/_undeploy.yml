@@ -19,6 +19,8 @@ jobs:
     environment:
       name: ${{ inputs.environment_name }}
       deployment: false
+    permissions:
+      id-token: write
     steps:
       - name: Configure AWS credentials ☁️
         uses: aws-actions/configure-aws-credentials@v6
