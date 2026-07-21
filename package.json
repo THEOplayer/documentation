@@ -46,7 +46,7 @@
     "@docusaurus/module-type-aliases": "^3.10.1",
     "@docusaurus/tsconfig": "^3.10.1",
     "@docusaurus/types": "^3.10.1",
-    "@eslint/js": "~9.39.4",
+    "@eslint/js": "~9.39.5",
     "@types/lodash": "^4.17.24",
     "dotenv": "^17.4.2",
     "eslint": "~9.39.4",
