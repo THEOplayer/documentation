@@ -42,7 +42,7 @@ jobs:
         run: |
           aws cloudfront create-invalidation \
             --distribution-id ${CF_DISTRIBUTION_ID} \
-            --paths '/${S3_PREFIX}/*'
+            --paths ${PATH_TO_INVALIDATE}
         env:
           CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
-          S3_PREFIX: ${{ inputs.s3_prefix }}
+          PATH_TO_INVALIDATE: '/${{ inputs.s3_prefix }}*'
