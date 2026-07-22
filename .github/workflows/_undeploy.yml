@@ -46,7 +46,7 @@ jobs:
         run: |
           aws cloudfront create-invalidation \
             --distribution-id ${CF_DISTRIBUTION_ID} \
-            --paths ${PATH_TO_INVALIDATE}
+            --paths "${PATH_TO_INVALIDATE}"
         env:
           CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
           PATH_TO_INVALIDATE: ${{ inputs.cf_invalidate_path }}
