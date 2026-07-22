@@ -537,15 +537,16 @@ const config: Config = {
     // image: 'img/opengraph.png',
 
     // announcement bar for PR preview only
-    announcementBar: PR_NUMBER > 0
-      ? {
-          id: 'pr_preview',
-          content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
-          backgroundColor: '#9cb9c9',
-          textColor: '#344a5e',
-          isCloseable: false,
-        }
-      : undefined,
+    announcementBar:
+      PR_NUMBER > 0
+        ? {
+            id: 'pr_preview',
+            content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
+            backgroundColor: '#9cb9c9',
+            textColor: '#344a5e',
+            isCloseable: false,
+          }
+        : undefined,
 
     navbar: {
       title: undefined,
