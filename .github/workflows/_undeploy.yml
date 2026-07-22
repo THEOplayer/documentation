@@ -14,7 +14,7 @@ on:
 concurrency: deploy-${{ github.ref }}
 
 jobs:
-  deploy-to-cloudfront:
+  undeploy-from-cloudfront:
     runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.environment_name }}
