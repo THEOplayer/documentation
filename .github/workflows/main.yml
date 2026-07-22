@@ -27,3 +27,4 @@ jobs:
       environment_name: production
       artifact_name: ${{ needs.build.outputs.artifact_name }}
       s3_prefix: 'docs'
+      cf_invalidate_path: '/*'
