@@ -1,0 +1,104 @@
+name: Build website
+
+on:
+  workflow_call:
+    inputs:
+      node_version:
+        description: Define the version of Node.JS to use.
+        required: false
+        type: string
+        default: '24'
+      environment_name:
+        type: string
+        required: true
+      docusaurus_base_url:
+        required: true
+        type: string
+      docusaurus_no_index:
+        required: true
+        type: number
+        default: 0
+      docusaurus_pr_number:
+        required: false
+        type: number
+      docusaurus_pr_url:
+        required: false
+        type: string
+      artifact_path:
+        description: Define the artifact path.
+        required: false
+        type: string
+        default: './build/'
+      artifact_name:
+        description: Define the artifact name.
+        required: false
+        type: string
+        default: 'dist.zip'
+      artifact_retention_day:
+        description: Define retention period in days.
+        required: false
+        type: number
+        default: 1
+    outputs:
+      artifact_name:
+        description: 'Return the name of the built artifact.'
+        value: ${{ inputs.artifact_name }}
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+# Permissions needed to interact with GitHub's OIDC Token endpoint
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment_name }}
+      # Use environment's secrets without creating a deployment object.
+      # https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments#using-environments-without-deployments
+      deployment: false
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          submodules: true
+
+      - name: Setup Node.JS 🔧
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ inputs.node_version }}
+          cache: 'npm'
+          cache-dependency-path: ./package-lock.json
+
+      - name: Print NPM version 🌎
+        shell: bash
+        run: |
+          npm --version
+
+      - name: Install dependencies 🔧
+        shell: bash
+        run: |
+          git config --global --add safe.directory ${GITHUB_WORKSPACE}
+          npm ci
+
+      - name: Build 🔧
+        run: |
+          npm run build
+        env:
+          THEOPLAYER_LICENSE: ${{ vars.THEOPLAYER_LICENSE }}
+          DOCUSAURUS_BASE_URL: ${{ inputs.docusaurus_base_url }}
+          DOCUSAURUS_NO_INDEX: ${{ inputs.docusaurus_no_index }}
+          DOCUSAURUS_PR_NUMBER: ${{ inputs.docusaurus_pr_number }}
+          DOCUSAURUS_PR_URL: ${{ inputs.docusaurus_pr_url }}
+
+      - name: Upload Build ☁️
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ${{ inputs.artifact_path }}
+          retention-days: ${{ inputs.artifact_retention_day }}
