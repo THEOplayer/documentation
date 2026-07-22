@@ -83,10 +83,10 @@ const docsConfigBase = {
 } satisfies DocsPlugin.Options;
 
 // Remove the index.md[x] from categories
-function removeDocIndexItems(items) {
+function removeDocIndexItems(items: any) {
   const result = items
-    .filter((item) => item.type !== 'doc' || !item.id.endsWith('/index'))
-    .map((item) => {
+    .filter((item: any) => item.type !== 'doc' || !item.id.endsWith('/index'))
+    .map((item: any) => {
       if (item.type === 'category') {
         return { ...item, items: removeDocIndexItems(item.items) };
       }
@@ -95,6 +95,8 @@ function removeDocIndexItems(items) {
 
   return result;
 }
+
+const PR_NUMBER = Number(process.env.DOCUSAURUS_PR_NUMBER ?? -1);
 
 const config: Config = {
   title: 'Dolby OptiView Documentation',
@@ -453,7 +455,7 @@ const config: Config = {
     parseFrontMatter: async (params) => {
       const result = await params.defaultParseFrontMatter(params);
       const { frontMatter } = result;
-      const parsedDocPath = parseDocPath(params.filePath);
+      const parsedDocPath = parseDocPath(params.filePath)!;
       const { docPluginId } = parsedDocPath;
       let { docPath } = parsedDocPath;
       if (!frontMatter.slug && docPath.startsWith('external/')) {
@@ -535,18 +537,19 @@ const config: Config = {
     // image: 'img/opengraph.png',
 
     // announcement bar for PR preview only
-    announcementBar: process.env.DOCUSAURUS_PR_NUMBER
-      ? {
-          id: 'pr_preview',
-          content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
-          backgroundColor: '#9cb9c9',
-          textColor: '#344a5e',
-          isCloseable: false,
-        }
-      : undefined,
+    announcementBar:
+      PR_NUMBER > 0
+        ? {
+            id: 'pr_preview',
+            content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
+            backgroundColor: '#9cb9c9',
+            textColor: '#344a5e',
+            isCloseable: false,
+          }
+        : undefined,
 
     navbar: {
-      title: null,
+      title: undefined,
       logo: {
         alt: 'Dolby OptiView',
         src: 'img/dolby-optiview-white.svg',

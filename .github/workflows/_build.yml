@@ -21,6 +21,7 @@ on:
       docusaurus_pr_number:
         required: false
         type: number
+        default: -1
       docusaurus_pr_url:
         required: false
         type: string

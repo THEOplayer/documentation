@@ -10,6 +10,10 @@ on:
         description: AWS S3 prefix where the build is located.
         required: true
         type: string
+      cf_invalidate_path:
+        description: Path to invalidate on CloudFront after deployment.
+        required: true
+        type: string
 
 concurrency: deploy-${{ github.ref }}
 
@@ -45,4 +49,4 @@ jobs:
             --paths ${PATH_TO_INVALIDATE}
         env:
           CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
-          PATH_TO_INVALIDATE: '/${{ inputs.s3_prefix }}*'
+          PATH_TO_INVALIDATE: ${{ inputs.cf_invalidate_path }}
