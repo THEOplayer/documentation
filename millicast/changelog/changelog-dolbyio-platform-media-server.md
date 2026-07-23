@@ -2,6 +2,21 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-07-16
+
+### Media Server
+
+<!-- 3.4.3 -->
+
+#### Fixes
+
+- Improved RTMP re-stream reliability by handling output back-pressure to prevent stream corruption.
+- Fixed audio distortion that could occur with loud audio sources during WebRTC playback.
+- Fixed an issue where recordings of simulcast WebRTC streams could be missing video.
+- Improved Adaptive Bitrate (ABR) resilience on links with high RTT variation, preventing unnecessary switches to lower-quality layers.
+- Fixed an issue where abnormal viewer disconnections could prevent new viewers in a region from receiving media.
+- Updated the SRT library to version 1.5.6 to address a security vulnerability.
+
 ## 2026-07-08
 
 ### Media Server
