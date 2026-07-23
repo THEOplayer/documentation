@@ -6,7 +6,6 @@
 
 ## [11.7.0] - 2026-07-13
 
-- Added Apple ProRes video decoding support
 - Added an HLS `SCORE` attribute so players prefer H.265 renditions over H.264 when they can decode them
 - Added support for DVB-TTML on ingests to generate captions for distribution
 - Added the ability to auto-generate captions and translations
