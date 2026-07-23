@@ -1,5 +1,10 @@
 # Changelog
 
+## [11.7.2] - 2026-07-22
+
+- Fixed MPEG-TS ingests failing when the initial PMT does not announce all tracks yet (e.g. audio only), which are
+  completed by a later PMT update
+
 ## [11.7.1] - 2026-07-13
 
 - Fixed the S3 DVR and VOD root manifests being written without video codecs in `CODECS` at stream start
