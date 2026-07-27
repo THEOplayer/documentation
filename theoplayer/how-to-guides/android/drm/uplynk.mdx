@@ -7,13 +7,10 @@ sidebar_label: Uplynk
 
 import Intro from '../../shared/drm/_uplynk-intro.mdx';
 import Resources from '../../shared/drm/_uplynk-resources.mdx';
-import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
-import IntegrationUnavailable from '../../shared/drm/_integration-unavailable.mdx';
 
 <Intro />
 
 **Important:** Uplynk customers should configure DRM through the [THEOplayer Uplynk connector for Android](../../../external/android-connector/connectors/uplynk/docs/preplay.md).
-More specifically, to configure DRM, developers should use the [`contentProtected`](../../../external/android-connector/connectors/uplynk/docs/preplay.md) flag.
 (The Uplynk connector provides an out-of-the-box integration with Uplynk's Preplay, Ping and Asset Info services,
 exposes additional APIs, and enhances your UI and UX.)
 
@@ -21,29 +18,10 @@ Head to our page on [DRM](./introduction.mdx) for more general information.
 
 ## Integration
 
-<IntegrationIntro />
-
-<IntegrationUnavailable />
-
-## Code example
-
-```java
-DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
-    .widevine(
-        new KeySystemConfiguration(
-            "<LICENSE_KEY_URL_WIDEVINE>"
-        )
-    )
-    .build();
-TypedSource typedSource = new TypedSource.Builder()
-    .src("<DASH_STREAM_URL>")
-    .drm(drmConfiguration)
-    .build();
-SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
-    .sources(typedSource)
-    .build();
-theoplayer.getPlayer().setSource(sourceDescription);
-```
+The [Uplynk connector for Android](../../../external/android-connector/connectors/uplynk/docs/preplay.md) takes care of
+the DRM configuration as part of its Preplay logic: when you request a content-protected asset with the
+[`contentProtected`](../../../external/android-connector/connectors/uplynk/docs/preplay.md) flag, the connector sets up
+the DRM configuration of the resulting source for you.
 
 ## Resources
 
