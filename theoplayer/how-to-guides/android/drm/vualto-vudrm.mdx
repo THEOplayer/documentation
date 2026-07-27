@@ -7,12 +7,22 @@ sidebar_label: Vualto VuDRM
 
 import Intro from '../../shared/drm/_vualto-vudrm-intro.mdx';
 import Resources from '../../shared/drm/_vualto-vudrm-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import PreIntegrationNote from '../../shared/drm/_pre-integration-note.mdx';
 
 <Intro />
 
 Head to our page on [DRM](./introduction.mdx) for more general information.
 
-## Code example
+## Integration
+
+<IntegrationIntro />
+
+The Vualto VuDRM integration can be found [here](https://github.com/THEOplayer/samples-drm-integration/tree/master/android/app/src/main/java/com/theoplayer/contentprotectionintegration/integration/vudrm).
+
+## Pre-integration
+
+<PreIntegrationNote />
 
 ```java
 DRMConfiguration drmConfiguration = new VudrmDRMConfiguration("<TOKEN>", null,

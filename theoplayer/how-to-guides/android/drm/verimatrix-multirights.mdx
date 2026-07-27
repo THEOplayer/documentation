@@ -7,10 +7,17 @@ sidebar_label: Verimatrix MultiRights
 
 import Intro from '../../shared/drm/_verimatrix-multirights-intro.mdx';
 import Resources from '../../shared/drm/_verimatrix-multirights-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
 
 <Intro />
 
 Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Integration
+
+<IntegrationIntro />
+
+The Verimatrix Core integration can be found [here](https://github.com/THEOplayer/samples-drm-integration/tree/master/android/app/src/main/java/com/theoplayer/contentprotectionintegration/integration/verimatrixcoredrm).
 
 ## Code example
 
@@ -31,13 +38,6 @@ SourceDescription sourceDescription = SourceDescription.Builder.sourceDescriptio
     .build();
 theoplayer.getPlayer().setSource(sourceDescription);
 ```
-
-## Connectors
-
-We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
-When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
-
-The Verimatrix DRM connector can be found in [this folder](https://github.com/THEOplayer/samples-drm-integration/tree/master/android/app/src/main/java/com/theoplayer/contentprotectionintegration/integration/verimatrixcoredrm).
 
 ## Resources
 

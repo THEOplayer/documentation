@@ -7,6 +7,8 @@ sidebar_label: Comcast
 
 import Intro from '../../shared/drm/_comcast-intro.mdx';
 import Resources from '../../shared/drm/_comcast-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import PreIntegrationNote from '../../shared/drm/_pre-integration-note.mdx';
 
 <Intro />
 
@@ -16,7 +18,15 @@ Head to our page on [DRM](./introduction.mdx) for more general information.
 Support for this DRM system has not been verified on the Chromecast SDK.
 :::
 
-## Code example
+## Integration
+
+<IntegrationIntro />
+
+The Comcast integration can be found [here](https://github.com/THEOplayer/samples-drm-integration/tree/master/web/src/integration/comcastdrm).
+
+## Pre-integration
+
+<PreIntegrationNote />
 
 ```js
 if (HLS) {
@@ -55,13 +65,6 @@ if (HLS) {
   };
 }
 ```
-
-## Connectors
-
-We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
-When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
-
-The Comcast DRM connector can be found in [this folder](https://github.com/THEOplayer/samples-drm-integration/tree/master/web/src/integration/comcastdrm).
 
 ## Resources
 

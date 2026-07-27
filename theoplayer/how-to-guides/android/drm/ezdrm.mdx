@@ -7,10 +7,18 @@ sidebar_label: EZDRM
 
 import Intro from '../../shared/drm/_ezdrm-intro.mdx';
 import Resources from '../../shared/drm/_ezdrm-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import IntegrationUnavailable from '../../shared/drm/_integration-unavailable.mdx';
 
 <Intro />
 
 Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Integration
+
+<IntegrationIntro />
+
+<IntegrationUnavailable />
 
 ## Code example
 
@@ -31,13 +39,6 @@ SourceDescription sourceDescription = SourceDescription.Builder.sourceDescriptio
     .build();
 theoplayer.getPlayer().setSource(sourceDescription);
 ```
-
-## Connectors
-
-We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
-When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
-
-Connectors are also the way forward for the current mobile SDKs. There currently is no ready-made connector for this DRM provider: you can choose to develop one based on the examples in the repository, or get in contact with us about making one.
 
 ## Resources
 

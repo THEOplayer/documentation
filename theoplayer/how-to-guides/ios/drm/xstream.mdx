@@ -6,6 +6,8 @@ sidebar_label: Xstream
 # Xstream on iOS
 
 import Intro from '../../shared/drm/_xstream-intro.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import IntegrationUnavailable from '../../shared/drm/_integration-unavailable.mdx';
 
 <Intro />
 
@@ -15,6 +17,16 @@ Head to our page on [DRM](./introduction.mdx) for more general information.
 Support for this DRM system has not been verified on the tvOS SDK.
 :::
 
+## Integration
+
+<IntegrationIntro />
+
+<IntegrationUnavailable />
+
+## Code example
+
+Please refer to [DRM](./introduction.mdx) (custom configuration).
+
 ## Related articles
 
 - [DoveRunner](./doverunner.mdx)
@@ -23,13 +35,3 @@ Support for this DRM system has not been verified on the tvOS SDK.
 - [Uplynk](./uplynk.mdx)
 - [Xstream](./xstream.mdx)
 - [Vualto VuDRM](./vualto-vudrm.mdx)
-
-## Code example
-
-Please refer to [DRM](./introduction.mdx) (custom configuration).
-
-## Connectors
-
-We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
-
-Connectors are also the way forward for the current mobile SDKs. There currently is no ready-made connector for this DRM provider: you can choose to develop one based on the examples in the repository, or get in contact with us about making one.

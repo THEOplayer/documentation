@@ -7,12 +7,22 @@ sidebar_label: EZDRM
 
 import Intro from '../../shared/drm/_ezdrm-intro.mdx';
 import Resources from '../../shared/drm/_ezdrm-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import PreIntegrationNote from '../../shared/drm/_pre-integration-note.mdx';
 
 <Intro />
 
 Head to our page on [DRM](./introduction.mdx) for more general information.
 
-## Code example
+## Integration
+
+<IntegrationIntro />
+
+The EZDRM integration can be found [here](https://github.com/THEOplayer/samples-drm-integration/tree/master/web/src/integration/ezdrm).
+
+## Pre-integration
+
+<PreIntegrationNote />
 
 ```js
 if (HLS) {
@@ -49,13 +59,6 @@ if (HLS) {
   };
 }
 ```
-
-## Connectors
-
-We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
-When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
-
-The EZDRM connector can be found in [this folder](https://github.com/THEOplayer/samples-drm-integration/tree/master/web/src/integration/ezdrm).
 
 ## Resources
 
