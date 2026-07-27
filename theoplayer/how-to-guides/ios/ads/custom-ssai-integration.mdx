@@ -121,7 +121,7 @@ Finally, when the playback of the ad is completed, `controller.endAd(ad:)` shoul
 
 ## CustomServerSideAdInsertionConfiguration
 
-To hold the configuration parameters specific to your integration, you can create a new class that conforms to `CustomServerSideAdInsertionConfiguration`.
+To hold the configuration parameters specific to your integration, you can create a new class that conforms to [`CustomServerSideAdInsertionConfiguration`](pathname:///theoplayer/v11/api-reference/ios/Protocols/CustomServerSideAdInsertionConfiguration.html).
 Its `customIntegration` property must equal your integration ID, so the player knows which integration should handle the source.
 This configuration can then be set on a `TypedSource` through its `ssai` property, and read back by the integration in its `setSource(source:)` handler.
 
