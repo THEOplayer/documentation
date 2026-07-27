@@ -6,7 +6,6 @@ sidebar_label: Google IMA
 # Google IMA on Web
 
 import Intro from '../../shared/ads/_google-ima-intro.mdx';
-import Remarks from '../../shared/ads/_google-ima-remarks.mdx';
 
 <Intro />
 
@@ -58,6 +57,7 @@ player.source = {
 
 ## Remarks
 
-<Remarks />
-
+- The release notes for the IMA SDK can be found on the [IMA HTML5 SDK release history](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/history) page.
+- THEOplayer internally supports IMA SDK up until a certain version across different SDKs. We regularly update the internal code to stay up to date with the latest version of IMA SDK. Later versions of IMA SDK should work as expected, however there could be cases where a fix for a breaking change or a newly introduced API is required. Please reach out to us if you require support for a more recent IMA SDK since we intend to rectify this limitation.
+- The limitations documented on the support and compatibility pages of the IMA SDK also apply to THEOplayer when the IMA integration is used. You can find the [support matrix of the IMA HTML5 SDK](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/compatibility) on their website.
 - You can try out the snippets mentioned here on our [samples app for Web SDK](https://github.com/THEOplayer/samples-html5-sdk).

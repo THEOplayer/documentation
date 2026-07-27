@@ -1,0 +1,145 @@
+---
+sidebar_position: 13
+sidebar_label: Custom SSAI integration
+---
+
+# Custom Server Side Ad Insertion on iOS
+
+import Intro from '../../shared/ads/_custom-ssai-integration-intro.mdx';
+
+<Intro />
+
+## Integration ID
+
+To make use of the custom server side ad insertion, first you need an integration ID which will identify the provided sources and ads to the specific ad provider.
+
+## ServerSideAdIntegrationFactory
+
+You would also need to register a `ServerSideAdIntegrationFactory` through
+[`player.ads.registerServerSideIntegration(integrationId:integrationFactory:)`](pathname:///theoplayer/v11/api-reference/ios/Protocols/Ads.html#/s:13THEOplayerSDK3AdsP29registerServerSideIntegration13integrationId0H7FactoryySS_AA0ef2AdG7Handler_pAA0efkG10Controller_pXEtF).
+The factory receives a `ServerSideAdIntegrationController`.
+The controller can be used to create the THEOplayer `AdBreak`/`Ad` objects using the `AdBreakInit`/`AdInit` data.
+Additionally, it can be used to keep the player's state up-to-date such as when an ad begins or ends.
+
+The factory requires an implementation of the `ServerSideAdIntegrationHandler` protocol.
+The handler provides a few callbacks that can be overridden which allows you to setup and clear the integration as needed.
+
+A concrete implementation can be found [in the Yospace Connector](https://github.com/THEOplayer/iOS-Connector/blob/main/Code/Yospace/Source/YospaceManager.swift).
+
+Meanwhile, an empty implementation would look like below. Details to follow.
+
+```swift
+class MyAdIntegration: THEOplayerSDK.ServerSideAdIntegrationHandler {
+    let controller: THEOplayerSDK.ServerSideAdIntegrationController
+
+    init(controller: THEOplayerSDK.ServerSideAdIntegrationController) {
+        self.controller = controller
+    }
+
+    func setSource(source: THEOplayerSDK.SourceDescription) -> Bool {
+        return false
+    }
+
+    func skipAd(ad: THEOplayerSDK.Ad) -> Bool {
+        return false
+    }
+
+    func resetSource() -> Bool {
+        return true
+    }
+
+    func destroy() {
+    }
+}
+
+player.ads.registerServerSideIntegration(integrationId: "integrationID") { controller in
+    return MyAdIntegration(controller: controller)
+}
+```
+
+### Setting a source
+
+When a new source is loaded into the player the `setSource(source:)` callback is triggered.
+It allows the integration to transform the source description, e.g. by calling an external service to replace the content URL (`TypedSource.src`),
+or by adding a fixed pre-roll linear ad to the list of ads (`SourceDescription.ads`).
+Return `true` if the integration handles this source, or `false` to let the player load the source as-is.
+
+### Skipping an ad
+
+When an ad is requested to be skipped, `skipAd(ad:)` is called.
+At this point the integration should call the controller's own `skipAd(ad:)` method.
+
+### Resetting a source
+
+Before a new source is loaded into the player, or before the player is destroyed, `resetSource()` is triggered.
+This allows the integration to clean up any source-specific resources, such as scheduled ads or pending HTTP requests.
+
+### Destroying the player
+
+When the player is destroyed, `destroy()` is called.
+This allows the integration to clean up any resources, such as UI views or event listeners.
+
+### Creating Ad objects
+
+When the advertisement provider reports an ad, an `AdBreak` and an `Ad` object should be created using
+`createAdBreak(params:)` and `createAd(params:adBreak:)` methods respectively from the controller.
+For example, for a pre-roll `AdBreak` containing 2 advertisements it would be:
+
+```swift
+let adBreak: THEOplayerSDK.AdBreak = controller.createAdBreak(
+    params: THEOplayerSDK.AdBreakInit(timeOffset: 0)
+)
+
+let firstAdInit = THEOplayerSDK.AdInit(
+    type: "linear",
+    id: "first_ad_id",
+    skipOffset: 5,
+    resourceURI: firstAdResourceURL,
+    duration: 10,
+    clickThrough: firstAdClickThroughURL
+)
+let firstAd: THEOplayerSDK.Ad = controller.createAd(params: firstAdInit, adBreak: adBreak)
+
+let secondAdInit = THEOplayerSDK.AdInit(
+    type: "linear",
+    id: "second_ad_id",
+    skipOffset: 5,
+    resourceURI: secondAdResourceURL,
+    duration: 10,
+    clickThrough: secondAdClickThroughURL
+)
+let secondAd: THEOplayerSDK.Ad = controller.createAd(params: secondAdInit, adBreak: adBreak)
+```
+
+### Playing an ad
+
+When an ad begins the playback, the integration must inform the player by calling `controller.beginAd(ad:)`, this will trigger the relevant ad break and ad events.
+
+Additionally, during the playback of the ad, calling `controller.updateAdProgress(ad:progress:)` is needed to keep the player in sync with the progress.
+
+Finally, when the playback of the ad is completed, `controller.endAd(ad:)` should be called to notify about it.
+
+## CustomServerSideAdInsertionConfiguration
+
+To hold the configuration parameters specific to your integration, you can create a new class that conforms to `CustomServerSideAdInsertionConfiguration`.
+Its `customIntegration` property must equal your integration ID, so the player knows which integration should handle the source.
+This configuration can then be set on a `TypedSource` through its `ssai` property, and read back by the integration in its `setSource(source:)` handler.
+
+Below is an example of a [Yospace integration](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Yospace)
+showing `YospaceServerSideAdInsertionConfiguration` conforming to `CustomServerSideAdInsertionConfiguration`:
+
+```swift
+public class YospaceServerSideAdInsertionConfiguration: NSObject, THEOplayerSDK.CustomServerSideAdInsertionConfiguration {
+    public let integration: THEOplayerSDK.SSAIIntegrationId = .CustomSSAIIntegrationID
+    public let customIntegration: String = "yospace"
+
+    public let streamType: YospaceStreamType
+    public let sessionProperties: YOSessionProperties
+
+    public init(streamType: YospaceStreamType = .live,
+                sessionProperties: YOSessionProperties = YOSessionProperties()) {
+        self.streamType = streamType
+        self.sessionProperties = sessionProperties
+    }
+}
+```

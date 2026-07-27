@@ -49,7 +49,7 @@
   },
   {
     "from": "/theoplayer/how-to-guides/ads/how-to-display-visual-cues/",
-    "to": "/theoplayer/how-to-guides/web/ads/display-visual-cues/"
+    "to": "/theoplayer/how-to-guides/web/ads/visual-cues-for-mid-rolls/"
   },
   {
     "from": "/theoplayer/how-to-guides/ads/freewheel/",
@@ -81,6 +81,6 @@
   },
   {
     "from": "/theoplayer/how-to-guides/ads/custom-ssai-integration/",
-    "to": "/theoplayer/how-to-guides/android/ads/custom-ssai-integration/"
+    "to": "/theoplayer/how-to-guides/web/ads/custom-ssai-integration/"
   }
 ]
