@@ -22,5 +22,61 @@
   {
     "from": "/theoplayer/how-to-guides/drm/pallycon/",
     "to": "/theoplayer/how-to-guides/drm/doverunner/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/introduction/",
+    "to": "/theoplayer/how-to-guides/web/ads/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/block-detection/",
+    "to": "/theoplayer/how-to-guides/web/ads/block-detection/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/customizing-the-ad-overlay-text/",
+    "to": "/theoplayer/how-to-guides/web/ads/customizing-the-ad-overlay-text/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/how-to-set-up-vast-and-vmap/",
+    "to": "/theoplayer/how-to-guides/web/ads/set-up-vast-and-vmap/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/yospace/",
+    "to": "/theoplayer/how-to-guides/web/ads/yospace/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/how-to-display-visual-cues/",
+    "to": "/theoplayer/how-to-guides/web/ads/visual-cues-for-mid-rolls/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/freewheel/",
+    "to": "/theoplayer/how-to-guides/web/ads/freewheel/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/spotx/",
+    "to": "/theoplayer/how-to-guides/web/ads/spotx/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/google-dai/",
+    "to": "/theoplayer/how-to-guides/web/ads/google-dai/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/prebidjs/",
+    "to": "/theoplayer/how-to-guides/web/ads/prebidjs/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/google-ima/",
+    "to": "/theoplayer/how-to-guides/web/ads/google-ima/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/how-to-subscribe-to-ad-events/",
+    "to": "/theoplayer/how-to-guides/web/ads/subscribe-to-ad-events/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/mediatailor/",
+    "to": "/theoplayer/how-to-guides/web/ads/mediatailor/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/custom-ssai-integration/",
+    "to": "/theoplayer/how-to-guides/web/ads/custom-ssai-integration/"
   }
 ]

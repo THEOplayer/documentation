@@ -99,28 +99,28 @@ The THEOplayer ad system is selected with the value 'theo'. As this ad system is
 
 - [Ads Reference API](pathname:///theoplayer/v11/api-reference/web/interfaces/Ad.html)
 
-- [How to set up VAST and VMAP ads](../../how-to-guides/01-ads/03-how-to-set-up-vast-and-vmap.md): this how-to guide contains information regarding this integration, including how to use this integration, requirements (if any) and code samples.
+- [How to set up VAST and VMAP ads](../../how-to-guides/web/ads/set-up-vast-and-vmap.mdx): this how-to guide contains information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 #### Google IMA
 
 Set the `integration` property to `'google-ima'` to use the Google IMA integration. More information can be found at:
 
 - [Reference API](pathname:///theoplayer/v11/api-reference/web/interfaces/IMAAdDescription.html)
-- [Google IMA](../../how-to-guides/01-ads/10-google-ima.md): this how-to guide contains information regarding this integration, including how to use this integration, requirements (if any) and code samples.
+- [Google IMA](../../how-to-guides/web/ads/google-ima.mdx): this how-to guide contains information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 #### SpotX
 
 Set the `integration property` to `'spotx'` to configure SpotX ads. More information can be found at:
 
 - [Reference API](pathname:///theoplayer/v11/api-reference/web/interfaces/SpotXAdDescription.html)
-- [SpotX](../../how-to-guides/01-ads/07-spotx.md): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
+- [SpotX](../../how-to-guides/web/ads/spotx.mdx): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 #### FreeWheel
 
 Set the `integration` property to `'freewheel'` to configure FreeWheel ads. Please note that, in this case, the adSource properties are different from those for other ad integrations (e.g.: theo integration). More information can be found at:
 
 - [Reference API](pathname:///theoplayer/v11/api-reference/web/interfaces/FreeWheelAdDescription.html)
-- [FreeWheel](../../how-to-guides/01-ads/06-freewheel.md): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
+- [FreeWheel](../../how-to-guides/web/ads/freewheel.mdx): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 ### Server Side Ad Insertion (SSAI)
 
@@ -139,7 +139,7 @@ To use the Google DAI integration you have to set the `integration` key to `'goo
 To use the Yospace integration you have to set the `integration` key to `'yospace'`.
 
 - [Reference API](pathname:///theoplayer/v11/api-reference/web/interfaces/Yospace.html)
-- [Yospace](../../how-to-guides/01-ads/04-yospace.md): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
+- [Yospace](../../how-to-guides/web/ads/yospace.mdx): this how-to guide contains more information regarding this integration, including how to use this integration, requirements (if any) and code samples.
 
 #### Verizon Media
 
@@ -151,7 +151,7 @@ You can refer to [our section on Verizon Media](../../how-to-guides/web/uplynk/0
 
 To use the MediaTailor integration you have to set the `integration` key to `'mediatailor'`.
 
-You can refer to [our MediaTailor guide](../../how-to-guides/01-ads/12-mediatailor.md) to learn more about SSAI with MediaTailor.
+You can refer to [our MediaTailor guide](../../how-to-guides/web/ads/mediatailor.mdx) to learn more about SSAI with MediaTailor.
 
 ## Ad Configuration
 

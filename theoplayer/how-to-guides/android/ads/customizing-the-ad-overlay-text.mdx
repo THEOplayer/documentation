@@ -1,0 +1,45 @@
+---
+sidebar_position: 2
+sidebar_label: Customizing the ad overlay text
+---
+
+# Customizing the ad overlay text on Android
+
+import Intro from '../../shared/ads/_customizing-the-ad-overlay-text-intro.mdx';
+import Remarks from '../../shared/ads/_customizing-the-ad-overlay-text-remarks.mdx';
+
+<Intro />
+
+## Google IMA/DAI
+
+With Google IMA/DAI, it is not possible to directly edit the default UI. You can pass a locale to IMA to completely localize the ad UI.
+
+### Changing or localizing the text
+
+You can pass [your preferred language](<https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/api/reference/com/google/ads/interactivemedia/v3/api/ImaSdkSettings.html#setLanguage(java.lang.String)>) while adding the Google IMA integration to the player:
+
+```kotlin
+private fun addGoogleImaIntegration() {
+    val settings = ImaSdkFactory.getInstance().createImaSdkSettings()
+    settings.language = "nl"
+
+    val imaIntegration = createGoogleImaIntegration(tpv!!, settings)
+
+    tpv?.player?.addIntegration(imaIntegration)
+}
+```
+
+You can find a list of locales supported by the IMA SDK on Android [here](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/localization#locale-codes).
+
+### Changing the styling
+
+Please refer to the relevant [Google IMA guide](https://developers.google.com/interactive-media-ads/docs/sdks/android/client-side/custom-ui) on how to disable the default UI and implement your own ad UI.
+
+## Remarks
+
+<Remarks />
+
+## Resources
+
+- [How to change the default UI language to other](../../11-ui/08-how-to-change-default-UI-language-to-other.md)
+- [THEOplayer advertisement tester](https://www.theoplayer.com/theoplayer-demo-advertisement-tester-vpaid-vast-vmap)
