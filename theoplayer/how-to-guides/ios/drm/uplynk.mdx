@@ -12,19 +12,12 @@ import Resources from '../../shared/drm/_uplynk-resources.mdx';
 
 Head to our page on [DRM](./introduction.mdx) for more general information.
 
-## Legacy iOS/tvOS SDK (4.12.x)
+## Connectors
 
-```swift
-// let headers = [["<KEY>": "<VALUE>"]]
-let drmConfiguration = UplynkDRMConfiguration(
-    licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
-    certificateURL: "<CERTIFICATE_URL>",
-    // , headers
-)
-let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
-let sourceDescription = SourceDescription(source: typedSource)
-theoplayer.source = sourceDescription
-```
+We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
+When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
+
+The Uplynk DRM connector can be found [here](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/ContentProtectionIntegration/integration/UplynkDRMIntegration.swift).
 
 ## Resources
 

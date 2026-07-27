@@ -12,21 +12,9 @@ import Resources from '../../../shared/drm/_castlabs-drmtoday-introduction-resou
 
 Head to our page on [DRM](../introduction.mdx) for more general information.
 
-## Legacy iOS/tvOS SDK (4.12.x)
+## Code example
 
-```swift
-let drmConfiguration = DRMTodayDRMConfiguration(
-    licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
-    certificateURL: "<CERTIFICATE_URL>",
-    merchant: "<MERCHANT>",
-    sessionId: "<SESSION_ID>",
-    token: "<TOKEN>",
-    userId: "<USER_ID>"
-)
-let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
-let sourceDescription = SourceDescription(source: typedSource)
-theoplayer.source = sourceDescription
-```
+This DRM system can be integrated through a [custom DRM integration](../introduction.mdx#custom-integration). The [DRM integration samples repository](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/README.md) explains how to build one for the iOS SDK.
 
 ## Resources
 

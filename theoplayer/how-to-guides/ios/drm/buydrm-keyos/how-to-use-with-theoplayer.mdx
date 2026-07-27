@@ -26,29 +26,7 @@ You will also need a valid THEOplayer set-up. If you have no experience with set
 
 Starting from the basic template above, you only need to add your BuyDRM token (=**customdata**) to your source configuration, and tell THEOplayer that you are using KeyOS.
 
-### Legacy iOS/tvOS SDK (4.12.x)
-
-A KeyOS DRM integration is added to the source configuration by adding the keyOsDrm() parameter to drm as such:
-
-```swift
-public static var buyDRMkeyOS: SourceDescription {
-    let licenseAcquisitionURL: String = "<LICENSE_KEY_URL_FAIRPLAY>"
-    let certificateURL: String = "<CERTIFICATE_URL_FAIRPLAY>"
-    let token: String = "<TOKEN_FAIRPLAY>"
-    let type: String = "application/x-mpegURL"
-    let src = "<HLS_STREAM_URL>"
-    let drm: KeyOSDRMConfiguration = KeyOSDRMConfiguration(licenseAcquisitionURL: licenseAcquisitionURL, certificateURL: certificateURL, customdata: token)
-    let typedSource: TypedSource = TypedSource(src: src, type: type, drm: drm)
-    let source: SourceDescription = SourceDescription(source: typedSource)
-    return source
-}
-
-// Configure the player's source to initilaise playback
-        THEOplayer.source = buyDRMkeyOS
-
-```
-
-Where `token` for customdata is the Authentication XML generated from their platform.
+A KeyOS DRM integration is implemented as a custom DRM integration, which passes the Authentication XML generated from the KeyOS platform as `customdata` on the license request. A ready-to-use sample is available in the [DRM integration samples repository](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/ContentProtectionIntegration/integration/KeyOsDRMIntegration.swift), together with a [step-by-step guide](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/README.md).
 
 ## Conclusion
 
