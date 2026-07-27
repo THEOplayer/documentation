@@ -25,11 +25,12 @@ It is worth mentioning that "m" works like the "this" keyword from other languag
 function setSource(streamFormat)
   if streamFormat = "hls" then
     drmParams = {
-      "integration": "Widevine",
-      "licenseUrl": "<LICENSE_KEY_URL_WIDEVINE>"
+      "widevine": {
+        "licenseAcquisitionURL": "<LICENSE_KEY_URL_WIDEVINE>"
+      }
     }
     m.player.source = {
-      "poster": "pooster.png",
+      "poster": "poster.png",
       "sources": [
         {
           "contentProtection": drmParams,
@@ -37,15 +38,19 @@ function setSource(streamFormat)
           "type": "application/x-mpegURL"
         }
       ]
-	}
+    }
   end if
   if streamFormat = "dash" then
     drmParams = {
-      "integration": "Widevine",
-      "licenseUrl": "<LICENSE_KEY_URL_WIDEVINE>"
+      "widevine": {
+        "licenseAcquisitionURL": "<LICENSE_KEY_URL_WIDEVINE>"
+      },
+      "playready": {
+        "licenseAcquisitionURL": "<LICENSE_KEY_URL_PLAYREADY>"
+      }
     }
     m.player.source = {
-        "poster": "pooster.png",
+        "poster": "poster.png",
         "sources": [
           {
             "contentProtection": drmParams,
@@ -57,6 +62,8 @@ function setSource(streamFormat)
   end if
 end function
 ```
+
+For more advanced configurations, consult the [content protection API documentation](/theoplayer/api-reference/roku#content-protection).
 
 ## Custom integration
 
