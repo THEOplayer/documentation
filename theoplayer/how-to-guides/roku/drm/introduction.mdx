@@ -15,6 +15,14 @@ import CustomIntegration from '../../shared/drm/_introduction-custom-integration
 
 <CustomConfigurationIntro />
 
+If you are integrating Widevine DRM, first make sure your Roku application's `manifest` file contains the following
+entries:
+
+```
+requires_widevine_drm=1
+requires_widevine_version=1.0
+```
+
 In order to play DRM protected resources, you will need to pass extra DRM parameters. To see what kind of DRM protection is supported by Roku devices, please visit [this page](https://developer.roku.com/en-gb/docs/specs/media/content-protection.md).
 
 In the following example, there is a function called "setSource", which sets the source of a THEOplayer instance ("m.player.source").
