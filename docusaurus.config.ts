@@ -22,7 +22,8 @@ import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
 fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplayerLicense);
 
-const isProductionDeployment = process.env.NODE_ENV === 'production' && !process.env.DOCUSAURUS_PR_NUMBER;
+const PR_NUMBER = Number(process.env.DOCUSAURUS_PR_NUMBER ?? -1);
+const isProductionDeployment = process.env.NODE_ENV === 'production' && PR_NUMBER <= 0;
 
 const docsConfigBase = {
   include: [
@@ -95,8 +96,6 @@ function removeDocIndexItems(items: any) {
 
   return result;
 }
-
-const PR_NUMBER = Number(process.env.DOCUSAURUS_PR_NUMBER ?? -1);
 
 const config: Config = {
   title: 'Dolby OptiView Documentation',
@@ -541,7 +540,7 @@ const config: Config = {
       PR_NUMBER > 0
         ? {
             id: 'pr_preview',
-            content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
+            content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${PR_NUMBER}</a>.`,
             backgroundColor: '#9cb9c9',
             textColor: '#344a5e',
             isCloseable: false,
