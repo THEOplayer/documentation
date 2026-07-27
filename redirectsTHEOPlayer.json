@@ -24,10 +24,6 @@
     "to": "/theoplayer/how-to-guides/drm/doverunner/"
   },
   {
-    "from": "/theoplayer/how-to-guides/ads/",
-    "to": "/theoplayer/how-to-guides/web/ads/introduction/"
-  },
-  {
     "from": "/theoplayer/how-to-guides/ads/introduction/",
     "to": "/theoplayer/how-to-guides/web/ads/introduction/"
   },
