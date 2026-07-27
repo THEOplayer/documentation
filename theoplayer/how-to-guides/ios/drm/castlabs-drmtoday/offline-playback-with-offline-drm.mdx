@@ -24,22 +24,28 @@ This feature only works on iOS 10.0 and above.
 
 ## Code example
 
+DRMToday is integrated through a custom DRM integration. The `CastLabsDRMIntegration` in the
+[Offline-Playback sample app](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Offline-Playback) is a
+ready-to-use implementation; register it as described in [Offline DRM](../offline-drm.mdx), and reference it from your
+source through `customIntegrationId`.
+
 Download a FairPlay HLS asset.
 
 ```swift
 //example source
 public static var sourceToBeCached: SourceDescription {
     let src = "https://source.m3u8"
-    let merchant = "merchant"
-    let userId = "userId"
-    let sessionId = "sessionId"
     let streamType = "application/x-mpegurl"
-    let drmConfig = DRMTodayDRMConfiguration(
+    let drmConfig = FairPlayDRMConfiguration(
+                        customIntegrationId: CastLabsDRMIntegration.integrationID,
                         licenseAcquisitionURL: "https://lic.staging.drmtoday.com/license-server-fairplay/",
                         certificateURL: "https://lic.staging.drmtoday.com/license-server-fairplay/cert/",
-                        userId: userId,
-                        sessionId: sessionId,
-                        merchant: merchant
+                        licenseType: .persistent,
+                        integrationParameters: [
+                            "userId": "userId",
+                            "sessionId": "sessionId",
+                            "merchant": "merchant"
+                        ]
                     )
     return SourceDescription(source: TypedSource(src: src, type: streamType, drm: drmConfig))
 }
@@ -84,12 +90,16 @@ Renew a DRM license with specific DRM configuration.
 
 ```swift
 func renewLicense() {
-    let newDrmConfig = DRMTodayDRMConfiguration(
+    let newDrmConfig = FairPlayDRMConfiguration(
+                            customIntegrationId: CastLabsDRMIntegration.integrationID,
                             licenseAcquisitionURL: "https://lic.staging.drmtoday.com/license-server-fairplay/",
                             certificateURL: "https://lic.staging.drmtoday.com/license-server-fairplay/cert/",
-                            userId: userId,
-                            sessionId: sessionId,
-                            merchant: merchant
+                            licenseType: .persistent,
+                            integrationParameters: [
+                                "userId": userId,
+                                "sessionId": sessionId,
+                                "merchant": merchant
+                            ]
                         )
 
     cachingTask.license.renew(newDrmConfig) // or we can renew it with the old drmConfig too: cachingTask.license.renew()
