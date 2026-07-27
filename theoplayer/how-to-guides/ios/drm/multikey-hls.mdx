@@ -1,0 +1,35 @@
+---
+sidebar_position: 17
+sidebar_label: Multi-key HLS
+---
+
+# Multi-key HLS on iOS
+
+import Intro from '../../shared/drm/_multikey-hls-intro.mdx';
+import Playlist from '../../shared/drm/_multikey-hls-playlist.mdx';
+
+<Intro />
+
+A multi-key HLS stream will play on all iOS and tvOS platforms, using the FairPlay key from the playlist.
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## The HLS playlist
+
+<Playlist />
+
+## Configuring THEOplayer
+
+The iOS and tvOS SDKs play the FairPlay key from the playlist, so only the FairPlay key system has to be configured:
+
+```swift
+let drmConfiguration = FairPlayDRMConfiguration(
+    licenseAcquisitionURL: "https://fairplay-server.com/license",
+    certificateURL: "https://fairplay-server.com/certificate"
+)
+let typedSource = TypedSource(src: "https://yourdomain.com/playlist.m3u8", type: "application/x-mpegurl", drm: drmConfiguration)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+The `#EXT-X-KEY` tags of the other key systems are ignored.
