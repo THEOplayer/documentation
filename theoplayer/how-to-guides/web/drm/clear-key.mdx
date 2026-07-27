@@ -1,0 +1,57 @@
+---
+sidebar_position: 15
+sidebar_label: Clear Key
+---
+
+# Clear Key on Web
+
+import Intro from '../../shared/drm/_clear-key-intro.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+With keys:
+
+```js
+player.source = {
+  sources: {
+    src: 'your-manifest-URL',
+    useCredentials: false,
+    contentProtection: {
+      clearkey: {
+        keys: [
+          {
+            id: 'id',
+            value: 'value',
+          },
+        ],
+      },
+    },
+  },
+};
+```
+
+With a license URL:
+
+```js
+player.source = {
+  sources: {
+    src: 'https://storage.googleapis.com/shaka-demo-assets/angel-one-clearkey/dash.mpd',
+    useCredentials: false,
+    contentProtection: {
+      clearkey: {
+        licenseAcquisitionURL: 'https://cwip-shaka-proxy.appspot.com/clearkey?_u3wDe7erb7v8Lqt8A3QDQ=ABEiM0RVZneImaq7zN3u_w',
+      },
+    },
+  },
+};
+```
+
+## Resources
+
+- [API Reference - ClearkeyDecryptionKey](pathname:///theoplayer/v11/api-reference/web/interfaces/ClearkeyDecryptionKey.html)
+- [Generate MPEG DASH content encrypted with MPEG CENC ClearKey](https://github.com/Dash-Industry-Forum/dash.js/wiki/Generate-MPEG-DASH-content-encrypted-with-MPEG-CENC-ClearKey): DASH IF on GitHub
+- [Clear Key license format](https://w3c.github.io/encrypted-media/#clear-key-license-format): W3C - Encrypted Media Extensions

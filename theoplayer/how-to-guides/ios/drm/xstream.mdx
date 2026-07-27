@@ -1,0 +1,39 @@
+---
+sidebar_position: 14
+sidebar_label: Xstream
+---
+
+# Xstream on iOS
+
+import Intro from '../../shared/drm/_xstream-intro.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+:::note
+Support for this DRM system has not been verified on the tvOS SDK.
+:::
+
+## Legacy iOS/tvOS SDK (4.12.x)
+
+```swift
+let drmConfiguration = XstreamDRMConfiguration(
+    licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
+    certificateURL: "<CERTIFICATE_URL>",
+    streamId: "<STREAM_ID>",
+    ticketAcquisitionURL: "<TICKET_ACQUISITION_URL>"
+)
+let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+## Related articles
+
+- [DoveRunner](./doverunner.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos/introduction.mdx)
+- [Arris Titanium](./arris-titanium.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Xstream](./xstream.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)

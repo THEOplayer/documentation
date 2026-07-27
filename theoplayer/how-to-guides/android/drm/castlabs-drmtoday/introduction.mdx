@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# castLabs DRMToday on Android
+
+import Intro from '../../../shared/drm/_castlabs-drmtoday-introduction-intro.mdx';
+import Resources from '../../../shared/drm/_castlabs-drmtoday-introduction-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](../introduction.mdx) for more general information.
+
+## Code example
+
+```java
+DRMConfiguration drmConfiguration = DRMTodayConfiguration.Builder
+    .drmToday(
+        new KeySystemConfiguration("<LICENSE_KEY_URL_WIDEVINE>")
+    )
+    .merchant("<MERCHANT>")
+    .sessionId("<SESSION_ID>")
+    .token("<TOKEN>")
+    .userId("<USER_ID>")
+    .build();
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Resources
+
+<Resources />

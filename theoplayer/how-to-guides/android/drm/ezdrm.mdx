@@ -1,0 +1,54 @@
+---
+sidebar_position: 5
+sidebar_label: EZDRM
+---
+
+# EZDRM on Android
+
+import Intro from '../../shared/drm/_ezdrm-intro.mdx';
+import Resources from '../../shared/drm/_ezdrm-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+```java
+DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
+    .widevine(
+        new KeySystemConfiguration(
+            "<LICENSE_KEY_URL_WIDEVINE>"
+        )
+    )
+    .build();
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Connectors
+
+We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
+When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
+
+Connectors are also the way forward for the current mobile SDKs. There currently is no ready-made connector for this DRM provider: you can choose to develop one based on the examples in the repository, or get in contact with us about making one.
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Uplynk](./uplynk.mdx)
+- [Xstream](./xstream.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
+- [Vimond](./vimond.mdx)
+- [Verimatrix MultiRights](./verimatrix-multirights.mdx)
+- [DoveRunner](./doverunner.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)

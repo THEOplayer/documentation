@@ -1,0 +1,47 @@
+---
+sidebar_position: 13
+sidebar_label: Uplynk
+---
+
+# Uplynk on Android
+
+import Intro from '../../shared/drm/_uplynk-intro.mdx';
+import Resources from '../../shared/drm/_uplynk-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+```java
+DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
+    .widevine(
+        new KeySystemConfiguration(
+            "<LICENSE_KEY_URL_WIDEVINE>"
+        )
+    )
+    .build();
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday/introduction.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)

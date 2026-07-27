@@ -1,0 +1,38 @@
+---
+sidebar_position: 16
+sidebar_label: DoveRunner
+---
+
+# DoveRunner on iOS
+
+import Intro from '../../shared/drm/_doverunner-intro.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+```swift
+let drmConfiguration = FairPlayDRMConfiguration(
+    licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
+    certificateURL: "<CERTIFICATE_URL>",
+    headers: [["<CUSTOM_HEADER_NAME>": "<CUSTOM_HEADER_VALUE>"]] // e.g. "pallycon-customdata-v2": "eyJkYXRhIjoibWJLV1NjSUNIU25WMjZQWFB4cGlDQUJVbnZsOGxCOWRNZDhHZ3dhbjZqRDFwNFZoQk51VlhQY2RMaG9nNTNYbngyTjFaalwvQ3BxZ3RUS2k5Rzd3MUZ3PT0iLCJzaXRlX2lkIjoiREVNTyIsImRybV90eXBlIjoiUGxheVJlYWR5In0="
+)
+let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+## Resources
+
+- https://doverunner.com/docs/content-security/multi-drm/
+- https://doverunner.com/docs/content-security/multi-drm/clients/fairplay-ios/
+
+## Related articles
+
+- [Uplynk](./uplynk.mdx)
+- [Xstream](./xstream.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
+- [Vimond](./vimond.mdx)
+- [Verimatrix MultiRights](./verimatrix-multirights.mdx)

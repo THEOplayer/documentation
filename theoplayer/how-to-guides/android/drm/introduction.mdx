@@ -1,0 +1,63 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# DRM on Android
+
+import Intro from '../../shared/drm/_introduction-intro.mdx';
+import PreIntegrationsIntro from '../../shared/drm/_introduction-pre-integrations-intro.mdx';
+import CustomConfigurationIntro from '../../shared/drm/_introduction-custom-configuration-intro.mdx';
+import CustomIntegration from '../../shared/drm/_introduction-custom-integration.mdx';
+
+<Intro />
+
+## Pre-integrations
+
+<PreIntegrationsIntro />
+
+- [Arris Titanium](./arris-titanium.mdx)
+- [Axinom](./axinom.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos/introduction.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday/introduction.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Verimatrix MultiRights](./verimatrix-multirights.mdx)
+- [Vimond](./vimond.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
+- [Xstream](./xstream.mdx)
+- [Clear Key](./clear-key.mdx)
+- [Offline DRM](./offline-drm.mdx)
+
+## Custom configuration
+
+<CustomConfigurationIntro />
+
+To configure DRM on the Android SDK, developers can put a DRMConfiguration inside a SourceDescription.
+
+```java
+// Map<String, String> headers =  new HashMap<String, String>();
+// headers.put("<KEY>", "<VALUE>");
+DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
+    .widevine(
+        new KeySystemConfiguration.Builder(
+            "<LICENSE_KEY_URL_WIDEVINE>"
+            )// , headers, <USE_CREDENTIALS>, <QUERY_PARAMETERS>
+            .build()
+        )
+        .build();
+TypedSource typedSource = new TypedSource.Builder("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Custom integration
+
+<CustomIntegration />

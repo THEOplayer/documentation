@@ -1,0 +1,47 @@
+---
+sidebar_position: 7
+sidebar_label: Irdeto
+---
+
+# Irdeto on iOS
+
+import Intro from '../../shared/drm/_irdeto-intro.mdx';
+import Resources from '../../shared/drm/_irdeto-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+:::note
+Support for this DRM system has not been verified on the tvOS SDK.
+:::
+
+## Legacy iOS/tvOS SDK (4.12.x)
+
+```swift
+let drmConfiguration = IrdetoDRMConfiguration(
+    licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
+    certificateURL: "<CERTIFICATE_URL>",
+    crmId: "<CRM_ID>",
+    accountId: "<ACCOUNT_ID>",
+    contentId: "<CONTENT_ID>",
+    keyId: "<KEY_ID>",
+    applicationId: "<APPLICATION_ID>"
+)
+let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday/introduction.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)

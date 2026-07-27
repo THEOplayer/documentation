@@ -1,0 +1,82 @@
+---
+sidebar_position: 2
+sidebar_label: Arris Titanium
+---
+
+# Arris Titanium on Web
+
+import Intro from '../../shared/drm/_arris-titanium-intro.mdx';
+import Resources from '../../shared/drm/_arris-titanium-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+```js
+if (HLS) {
+  let drmConfiguration = {
+    integration: 'titanium',
+    accountName: '<ACCOUNT_NAME>',
+    customerName: '<CUSTOMER_NAME>',
+    friendlyName: '<FRIENDLY_NAME>',
+    portalId: '<PORTAL_ID>',
+    authToken: '<AXINOM_TOKEN>',
+    fairplay: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+      certificateURL: 'CERTIFICATE_URL>',
+    },
+  };
+  player.source = {
+    sources: {
+      src: '<HLS_STREAM_URL>',
+      type: 'application/x-mpegurl',
+      contentProtection: drmConfiguration,
+    },
+  };
+} else if (DASH) {
+  let drmConfiguration = {
+    integration: 'titanium',
+    accountName: '<ACCOUNT_NAME>',
+    customerName: '<CUSTOMER_NAME>',
+    friendlyName: '<FRIENDLY_NAME>',
+    portalId: '<PORTAL_ID>',
+    authToken: '<AXINOM_TOKEN>',
+    playready: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
+    },
+    widevine: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+    },
+  };
+  player.source = {
+    sources: {
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
+  };
+}
+```
+
+## Connectors
+
+We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
+When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
+
+There currently is no ready-made connector for this DRM provider: you can choose to develop one based on the examples in the repository, or get in contact with us about making one.
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday/introduction.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)

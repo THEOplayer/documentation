@@ -1,0 +1,37 @@
+---
+sidebar_position: 15
+sidebar_label: Clear Key
+---
+
+# Clear Key on Android
+
+import Intro from '../../shared/drm/_clear-key-intro.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+```java
+SourceDescription.Builder clearKey = new SourceDescription.Builder(
+        new TypedSource.Builder("https://storage.googleapis.com/shaka-demo-assets/angel-one-clearkey/dash.mpd")
+                .drm(
+                        new DRMConfiguration.Builder()
+                                .clearkey(
+                                        new ClearkeyKeySystemConfiguration.Builder("https://cwip-shaka-proxy.appspot.com/clearkey?_u3wDe7erb7v8Lqt8A3QDQ=ABEiM0RVZneImaq7zN3u_w")
+                                                .useCredentials(false)
+                                                .build()
+                                )
+                                .build()
+                )
+                .build()
+);
+
+tpv.getPlayer().setSource(clearKey.build());
+```
+
+## Resources
+
+- [Generate MPEG DASH content encrypted with MPEG CENC ClearKey](https://github.com/Dash-Industry-Forum/dash.js/wiki/Generate-MPEG-DASH-content-encrypted-with-MPEG-CENC-ClearKey): DASH IF on GitHub
+- [Clear Key license format](https://w3c.github.io/encrypted-media/#clear-key-license-format): W3C - Encrypted Media Extensions

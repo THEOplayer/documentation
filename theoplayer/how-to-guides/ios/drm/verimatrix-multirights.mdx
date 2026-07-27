@@ -1,0 +1,49 @@
+---
+sidebar_position: 10
+sidebar_label: Verimatrix MultiRights
+---
+
+# Verimatrix MultiRights on iOS
+
+import Intro from '../../shared/drm/_verimatrix-multirights-intro.mdx';
+import Resources from '../../shared/drm/_verimatrix-multirights-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+:::note
+Support for this DRM system has not been verified on the tvOS SDK.
+:::
+
+## Legacy iOS/tvOS SDK (4.12.x)
+
+```swift
+let drmConfiguration = VerimatrixDRMConfiguration(
+        licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
+        certificateURL: "<CERTIFICATE_URL>"
+    )
+let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+## Connectors
+
+We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
+When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
+
+The Verimatrix DRM connector can be found [here](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/ContentProtectionIntegration/integration/VerimatrixCoreDRMIntegration.swift).
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [DoveRunner](./doverunner.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos/introduction.mdx)
+- [Arris Titanium](./arris-titanium.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Xstream](./xstream.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)

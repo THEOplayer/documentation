@@ -1,0 +1,45 @@
+---
+sidebar_position: 8
+sidebar_label: Microsoft Azure
+---
+
+# Microsoft Azure on Android
+
+import Intro from '../../shared/drm/_microsoft-azure-intro.mdx';
+import Resources from '../../shared/drm/_microsoft-azure-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+```java
+DRMConfiguration drmConfiguration = new AzureDRMConfiguration.Builder("<CERTIFICATE_URL", "<TOKEN>")
+    .widevine(
+        new KeySystemConfiguration("<LICENSE_KEY_URL_WIDEVINE>")
+    )
+    .build();
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [DoveRunner](./doverunner.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos/introduction.mdx)
+- [Arris Titanium](./arris-titanium.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Xstream](./xstream.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
+- [Azure Media Services - THEOplayer Implementation Sample](https://github.com/Azure-Samples/media-services-3rdparty-player-samples/tree/master/docs/THEOplayer)

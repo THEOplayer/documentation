@@ -1,0 +1,63 @@
+---
+sidebar_position: 2
+sidebar_label: How to use THEOplayer with KeyOS BuyDRM
+---
+
+# Using KeyOS BuyDRM on iOS
+
+import Intro from '../../../shared/drm/_buydrm-keyos-how-to-use-with-theoplayer-intro.mdx';
+import Conclusion from '../../../shared/drm/_buydrm-keyos-how-to-use-with-theoplayer-conclusion.mdx';
+
+<Intro />
+
+## Prerequisites
+
+This guide expects you to:
+
+1. Have a THEOplayer license. If you aren't using THEOplayer yet, you can start your free trial [here](https://portal.theoplayer.com).
+
+2. Be a client of KeyOS's BuyDRM, and that you are integrated with their streaming infrastructure. Information on BuyDRM can be found at [https://buydrm.com/multikey-demo/](https://buydrm.com/multikey-demo/).
+
+If you can place a checkmark next to these two fields, you are good to go.
+
+You will also need a valid THEOplayer set-up. If you have no experience with setting up our player, we have an excellent [getting started guide](../../../../getting-started/01-sdks/03-ios/00-getting-started.mdx).
+
+## Integrating KeyOS BuyDRM
+
+Starting from the basic template above, you only need to add your BuyDRM token (=**customdata**) to your source configuration, and tell THEOplayer that you are using KeyOS.
+
+### Legacy iOS/tvOS SDK (4.12.x)
+
+A KeyOS DRM integration is added to the source configuration by adding the keyOsDrm() parameter to drm as such:
+
+```swift
+public static var buyDRMkeyOS: SourceDescription {
+    let licenseAcquisitionURL: String = "<LICENSE_KEY_URL_FAIRPLAY>"
+    let certificateURL: String = "<CERTIFICATE_URL_FAIRPLAY>"
+    let token: String = "<TOKEN_FAIRPLAY>"
+    let type: String = "application/x-mpegURL"
+    let src = "<HLS_STREAM_URL>"
+    let drm: KeyOSDRMConfiguration = KeyOSDRMConfiguration(licenseAcquisitionURL: licenseAcquisitionURL, certificateURL: certificateURL, customdata: token)
+    let typedSource: TypedSource = TypedSource(src: src, type: type, drm: drm)
+    let source: SourceDescription = SourceDescription(source: typedSource)
+    return source
+}
+
+// Configure the player's source to initilaise playback
+        THEOplayer.source = buyDRMkeyOS
+
+```
+
+Where `token` for customdata is the Authentication XML generated from their platform.
+
+## Conclusion
+
+<Conclusion />
+
+## Extra resources
+
+1. [DRM Pre-Integration API](pathname:///theoplayer/v11/api-reference/web/interfaces/DRMConfiguration.html)
+
+2. [THEOplayer Getting Started Guide](../../../../getting-started/01-sdks/03-ios/00-getting-started.mdx)
+
+3. [KeyOS BuyDRM](https://www.buydrm.com/keyosplayer)

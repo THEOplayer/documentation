@@ -1,0 +1,70 @@
+---
+sidebar_position: 13
+sidebar_label: Uplynk
+---
+
+# Uplynk on Web
+
+import Intro from '../../shared/drm/_uplynk-intro.mdx';
+import Resources from '../../shared/drm/_uplynk-resources.mdx';
+
+<Intro />
+
+**Important:** Uplynk customers should configure DRM through the [THEOplayer Uplynk integration](../uplynk/01-preplay.md).
+More specifically, to configure DRM, developers should use the [`contentProtected`](../uplynk/01-preplay.md) flag.
+(The Uplynk integration provides a pre-integration with Uplynk's Preplay, Ping and Asset Info services,
+exposes additional APIs, and enhances your UI and UX.)
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Code example
+
+```js
+if (HLS) {
+  let drmConfiguration = {
+    integration: 'uplynk',
+    fairplay: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+      certificateURL: 'CERTIFICATE_URL>',
+    },
+  };
+  player.source = {
+    sources: {
+      src: '<HLS_STREAM_URL>',
+      type: 'application/x-mpegurl',
+      contentProtection: drmConfiguration,
+    },
+  };
+} else if (DASH) {
+  let drmConfiguration = {
+    integration: 'uplynk',
+    playready: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
+    },
+    widevine: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+    },
+  };
+  player.source = {
+    sources: {
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
+  };
+}
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday/introduction.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)

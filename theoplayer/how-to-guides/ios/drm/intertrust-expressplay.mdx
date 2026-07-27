@@ -1,0 +1,46 @@
+---
+sidebar_position: 6
+sidebar_label: Intertrust ExpressPlay
+---
+
+# Intertrust ExpressPlay on iOS
+
+import Intro from '../../shared/drm/_intertrust-expressplay-intro.mdx';
+import Resources from '../../shared/drm/_intertrust-expressplay-resources.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+:::note
+Support for this DRM system has not been verified on the iOS and tvOS SDKs.
+:::
+
+## Code example
+
+**Not verified.**
+
+```swift
+// let headers = [["<KEY>": "<VALUE>"]]
+let drmConfiguration = FairPlayDRMConfiguration(
+    licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
+    certificateURL: "<CERTIFICATE_URL>"
+        // , headers: headers, licenseType: <LICENSE_TYPE>
+)
+let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday/introduction.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
