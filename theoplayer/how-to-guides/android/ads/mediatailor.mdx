@@ -1,0 +1,78 @@
+---
+sidebar_position: 12
+sidebar_label: MediaTailor
+---
+
+# MediaTailor on Android
+
+import Intro from '../../shared/ads/_mediatailor-intro.mdx';
+
+<Intro />
+
+## Configuration
+
+To use a MediaTailor stream with THEOplayer on Android SDK, first import our MediaTailor module dependency in your `build.gradle` file.
+
+```groovy
+implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
+implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-mediatailor:+' // add MediaTailor dependency
+```
+
+Then, add the MediaTailor integration to the `Player`.
+
+:::tip
+
+If you're using [automatic integrations](../../../getting-started/01-sdks/02-android/01-features.md#adding-integrations-automatically), you can skip this step.
+
+:::
+
+```kotlin
+val theoplayerView = THEOplayerView(context)
+val mediaTailorIntegration = MediaTailorIntegrationFactory.createMediaTailorIntegration(theoPlayerView);
+theoplayerView.player.addIntegration(mediaTailorIntegration)
+```
+
+Finally, set a [`MediaTailorSource`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/mediatailor/MediaTailorSource.html) to play.
+
+```kotlin
+val mediaTailorSource = MediaTailorSource(src = "<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
+
+theoplayerView.player.source = SourceDescription(listOf(mediaTailorSource))
+
+// or using the Builder pattern
+
+val mediaTailorSource = MediaTailorSource
+    .Builder("<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
+    .build()
+
+theoplayerView.player.source = SourceDescription
+    .Builder(mediaTailorSource)
+    .build()
+```
+
+Optionally, you can pass parameters regarding e.g. session data and device type by using the `adsParams` property, as
+described in the [MediaTailor documentation](https://docs.aws.amazon.com/mediatailor/latest/ug/ad-reporting-client-side.html#ad-reporting-client-side-enabling).
+
+```kotlin
+val adsParams = emptyMap<String, String>().toMutableMap()
+adsParams["param1"] = "value1"
+adsParams["param2"] = "value 2"
+val mediaTailorSource = MediaTailorSource(
+    src = "<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>",
+    adParams = adsParams    // Note the deprecated parameter name
+)
+
+// or using the Builder pattern
+
+val mediaTailorSource = MediaTailorSource
+    .Builder("<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>")
+    .adsParams(adsParams)
+    .build()
+```
+
+:::note Deprecated
+
+The source definition currently still uses the deprecated `adParams` property. This will be
+replaced by the `adsParams` property in a future version.
+
+:::

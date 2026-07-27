@@ -1,0 +1,89 @@
+---
+sidebar_position: 8
+sidebar_label: Google DAI
+---
+
+# Google Dynamic Ad Insertion (DAI) on Android
+
+import Intro from '../../shared/ads/_google-dai-intro.mdx';
+import Resources from '../../shared/ads/_google-dai-resources.mdx';
+
+<Intro />
+
+Using Google DAI in the Android SDK consists of 3 steps.
+
+## Importing the Google DAI feature module
+
+Add `implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-dai:+'` to your module `build.gradle` file, as demonstrated below:
+
+```groovy
+dependencies {
+    // ...
+    implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
+    implementation 'com.theoplayer.theoplayer-sdk-android:integration-ads-dai:+'
+    // ...
+}
+```
+
+## Creating an instance of the Google DAI integration
+
+:::tip
+
+If you're using [automatic integrations](../../../getting-started/01-sdks/02-android/01-features.md#adding-integrations-automatically), you can skip this step.
+
+:::
+
+Create a `GoogleDaiIntegration` through the `GoogleDaiIntegrationFactory`, and add it to your player instance, as demonstrated below:
+
+```kotlin
+val theoplayerView = THEOplayerView(context)
+val daiIntegration = GoogleDaiIntegrationFactory.createGoogleDaiIntegration(theoplayerView)
+theoplayerView.player.addIntegration(daiIntegration)
+```
+
+## Using a Google DAI source
+
+Use a [GoogleDaiVodConfiguration](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiVodConfiguration.html)
+or [GoogleDaiLiveConfiguration](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/ssai/dai/GoogleDaiLiveConfiguration.html)
+to create a `GoogleDaiTypedSource` to request stream, as demonstrated below:
+
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiVodConfiguration.Builder("api_key", "content_source_id", "video_id")
+            .build()
+    )
+    .type(SourceType.DASH)
+    .build()
+).build()
+```
+
+or:
+
+```kotlin
+theoplayerView.player.source = SourceDescription.Builder(
+    GoogleDaiTypedSource.Builder(
+        GoogleDaiLiveConfiguration.Builder("api_key", "asset_key")
+            .build()
+    )
+    .type(SourceType.DASH)
+    .build()
+).build()
+```
+
+## Notes
+
+The Google DAI integration exposes events through the Ads API. More information is available at [How to subscribe to ad events](./subscribe-to-ad-events.mdx).
+
+The integration exposes a number of additional methods.
+These are available directly on the [`GoogleDaiIntegration`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html) object,
+or indirectly through `player.ads.dai` (only for Kotlin).
+For example:
+
+- [requestStream(StreamRequest, AdsRenderingSettings)](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#requestStream(StreamRequest,AdsRenderingSettings)>) can be used to request stream through the native Google DAI API.
+- [contentTimeForStreamTime(double)](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#contentTimeForStreamTime(double)>)
+  / [streamTimeForContentTime(double)](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/dai/GoogleDaiIntegration.html#streamTimeForContentTime(double)>) can be used to convert content time to stream time and vice versa.
+
+## Resources
+
+<Resources />

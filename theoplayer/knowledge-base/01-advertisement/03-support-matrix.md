@@ -36,4 +36,4 @@ A more in-depth advertisement guide can be found [here](../../knowledge-base/01-
 _Notes:_
 
 - Support for VPAID 1.0 (Flash) was dropped by Google IMA in May 2018.
-- THEOplayer also supports [SpotX](../../how-to-guides/01-ads/07-spotx.md).
+- THEOplayer also supports [SpotX](../../how-to-guides/web/ads/spotx.mdx).

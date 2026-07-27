@@ -32,4 +32,4 @@ For integration with THEOplayer iOS/tvOS SDK, please reach out to the NPAW team 
 
 - [Why does fullscreen not behave as expected on iOS browsers?](../../faq/04-why-does-fullscreen-not-behave-as-expected-on-ios.md)
 
-- [How to set up VAST and VMAP ads](../01-ads/03-how-to-set-up-vast-and-vmap.md)
+- [How to set up VAST and VMAP ads](../web/ads/set-up-vast-and-vmap.mdx)

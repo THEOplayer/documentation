@@ -1,5 +1,6 @@
 {
   "label": "Ads",
+  "position": 1,
   "customProps": {
     "icon": "💰"
   }

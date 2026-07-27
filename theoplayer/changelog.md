@@ -493,7 +493,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/android/ads/google-ima/) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.

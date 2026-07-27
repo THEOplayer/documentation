@@ -99,7 +99,7 @@ You can define a link in Markdown as follows:
 When linking to **another document**, use the **relative path**, including the file extension:
 
 ```markdown
-[a relative link](../how-to-guides/01-ads/02-customizing-the-ad-overlay-text.md)
+[a relative link](../how-to-guides/web/ads/customizing-the-ad-overlay-text.mdx)
 ```
 
 When linking to the **API reference**, use the **absolute path** along
