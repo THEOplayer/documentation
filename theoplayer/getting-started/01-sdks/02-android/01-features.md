@@ -92,15 +92,15 @@ without attaching it to a player will throw an error.
 
 With Android THEOplayer SDK we currently support the following feature integrations:
 
-| Feature         | Dependency                      | Release | Documentation                                                                                           |
-| :-------------- | :------------------------------ | :-----: | :------------------------------------------------------------------------------------------------------ |
-| Google IMA      | `integration-ads-ima:+`         | 3.1.0+  | [Google IMA Documentation](../../../how-to-guides/android/ads/google-ima.mdx)                           |
-| Chromecast      | `integration-cast:+`            | 3.4.0+  | [Chromecast Documentation](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md#android-sdk) |
-| AWS MediaTailor | `integration-ads-mediatailor:+` | 4.0.0+  | [AWS MediaTailor Documentation](../../../how-to-guides/android/ads/mediatailor.mdx)                     |
-| Google DAI      | `integration-ads-dai:+`         | 4.3.0+  | [Google DAI Documentation](../../../how-to-guides/android/ads/google-dai.mdx)                           |
-| Optiview Ads    | `integration-ads-theoads:+`     | 8.2.0+  | [Optiview Ads Documentation](/ads/getting-started/android/)                                             |
-| Millicast       | `integration-millicast:+`       | 8.2.0+  | [Millicast Documentation](pathname:///millicast/android-player/)                                        |
-| Jetpack Media3  | `integration-media3:+`          | 8.10.0+ | [Media3 Documentation](../../../how-to-guides/android/media3/getting-started.mdx)                       |
+| Feature         | Dependency                      | Release | Documentation                                                                               |
+| :-------------- | :------------------------------ | :-----: | :------------------------------------------------------------------------------------------ |
+| Google IMA      | `integration-ads-ima:+`         | 3.1.0+  | [Google IMA Documentation](../../../how-to-guides/android/ads/google-ima.mdx)               |
+| Chromecast      | `integration-cast:+`            | 3.4.0+  | [Chromecast Documentation](../../../how-to-guides/android/cast/chromecast/introduction.mdx) |
+| AWS MediaTailor | `integration-ads-mediatailor:+` | 4.0.0+  | [AWS MediaTailor Documentation](../../../how-to-guides/android/ads/mediatailor.mdx)         |
+| Google DAI      | `integration-ads-dai:+`         | 4.3.0+  | [Google DAI Documentation](../../../how-to-guides/android/ads/google-dai.mdx)               |
+| Optiview Ads    | `integration-ads-theoads:+`     | 8.2.0+  | [Optiview Ads Documentation](/ads/getting-started/android/)                                 |
+| Millicast       | `integration-millicast:+`       | 8.2.0+  | [Millicast Documentation](pathname:///millicast/android-player/)                            |
+| Jetpack Media3  | `integration-media3:+`          | 8.10.0+ | [Media3 Documentation](../../../how-to-guides/android/media3/getting-started.mdx)           |
 
 [`GoogleImaIntegrationFactory`]: pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/ima/GoogleImaIntegrationFactory.html
 [`CastIntegrationFactory`]: pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/CastIntegrationFactory.html

@@ -1,0 +1,50 @@
+---
+sidebar_position: 7
+sidebar_label: Enabling Chromecast on the Sender
+---
+
+# Enable Chromecast on the Sender on Web
+
+import Intro from '../../../shared/cast/_chromecast-enable-on-sender-intro.mdx';
+import CustomReceiverIntro from '../../../shared/cast/_chromecast-enable-on-sender-custom-receiver-intro.mdx';
+
+<Intro />
+
+## Prerequisites
+
+1. The Chromecast feature needs to be enabled for your THEOplayer SDK.
+   (THEOplayer is built in a modular fashion, and this feature might be disabled for your SDK.)
+2. You need to import the Chromecast Sender SDK.
+3. Your Sender device needs to be on the same Wi-Fi network as your Chromecast Receiver device.
+
+## Import Chromecast Sender SDK
+
+To allow Chromecast playback you need to include Google's Chromecast Sender SDK, which is a JavaScript file.
+The JavaScript snippet below illustrates how you include this Sender SDK. You can read more about it at [https://developers.google.com/cast/docs/web_sender](https://developers.google.com/cast/docs/web_sender).
+
+```javascript
+<script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+```
+
+Once this SDK is imported, OptiView Player will automatically add the Chromecast casting capability to your player (if you've enabled the Chromecast feature for your OptiView Player SDK). OptiView Player will use its default Chromecast receiver application if you do not specify an `appID` value on the configuration.
+
+## Connect with custom Chromecast Receiver application {#custom-receiver-app}
+
+<CustomReceiverIntro />
+
+If you have your own Receiver app, then you adjust the [PlayerConfiguration](pathname:///theoplayer/v11/api-reference/web/interfaces/CastConfiguration.html) to connect with a specific `appID` as demonstrated below.
+
+```javascript
+let customChromecastReceiverAppID = '8E80B9CE';
+let player = new THEOplayer.Player(element, {
+  libraryLocation: '...',
+  license: '...',
+  cast: {
+    chromecast: {
+      appID: customChromecastReceiverAppID,
+    },
+  },
+});
+```
+
+If you do not specify an `appID` value, the player will cast to the default OptiView Player Chromecast application. This is a Receiver application that has OptiView Player functionality integrated into it, but uses the Shaka player for media playback. If you require a Receiver application that uses Google's legacy Media Player Library (MPL), there is a Receiver application with OptiView Player functionality that uses MPL. Its `appID` is `44BAE7D1`. Note that the MPL receiver does not support HLS-CMAF streams.

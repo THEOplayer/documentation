@@ -1,0 +1,152 @@
+---
+sidebar_position: 2
+sidebar_label: Connecting from custom Sender applications
+---
+
+# Connecting from custom Sender applications on Android
+
+import Intro from '../../../shared/cast/_chromecast-connecting-from-custom-sender-applications-intro.mdx';
+
+<Intro />
+
+## Usage
+
+First, set up your `CastOptionsProvider`:
+
+```kotlin
+package com.yourcomp.chromecastSender
+
+import android.content.Context
+import com.google.android.gms.cast.framework.CastOptions
+import com.google.android.gms.cast.framework.OptionsProvider
+import com.google.android.gms.cast.framework.SessionProvider
+
+class THEOCastOptionsProvider : OptionsProvider {
+
+    override fun getCastOptions(context: Context): CastOptions =
+        CastOptions.Builder()
+            .setReceiverApplicationId(DEFAULT_APP_ID)
+            .build()
+
+    override fun getAdditionalSessionProviders(context: Context): List<SessionProvider>? = null
+
+    companion object {
+        const val DEFAULT_APP_ID = "8E80B9CE"
+    }
+}
+```
+
+And link to it in your `AndroidManifest.xml` file:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.yourcomp.chromecastSenderApp">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+    ...
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="com.yourcomp.chromecastSender.CastOptionsProvider" />
+    </application>
+
+</manifest>
+```
+
+Fill in the correct class name by replacing `com.yourcomp.chromecastSender.CastOptionsProvider`!
+You can change the `DEFAULT_APP_ID` to direct to your own Chromecast app. Next you can actually do the casting like the following:
+
+```kotlin
+package com.yourcomp.chromecastSender
+
+import android.app.Activity
+import androidx.mediarouter.app.MediaRouteChooserDialog
+import com.google.android.gms.cast.MediaInfo
+import com.google.android.gms.cast.MediaLoadOptions
+import com.google.android.gms.cast.framework.CastContext
+import com.google.android.gms.cast.framework.CastSession
+import com.google.android.gms.cast.framework.SessionManagerListener
+import org.json.JSONObject
+
+private const val SOURCE_URL =
+    "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)"
+
+class ChromecastSender {
+
+    fun sendSourceToChromecast(context: Activity) {
+        val castContext = CastContext.getSharedInstance(context)
+        showCastChooserDialog(context, castContext)
+
+        val sourceDescriptionJson = JSONObject(
+            """
+            {
+              "sourceDescription": {
+                "sources": [
+                  {
+                    "src": "$SOURCE_URL",
+                    "type": "application/dash+xml",
+                    "contentProtection": {
+                      "widevine": {
+                        "licenseAcquisitionURL": "https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+            """.trimIndent()
+        )
+        val mediaLoadOptions = MediaLoadOptions.Builder().setCustomData(sourceDescriptionJson).build()
+        val mediaInfo = MediaInfo.Builder(SOURCE_URL)
+            .setContentType("application/dash+xml")
+            .build()
+
+        castContext.sessionManager.addSessionManagerListener(
+            object : SessionManagerListener<CastSession> {
+                override fun onSessionStarting(castSession: CastSession) {}
+
+                override fun onSessionStarted(castSession: CastSession, sessionId: String) {
+                    castSession.remoteMediaClient?.load(mediaInfo, mediaLoadOptions)
+                }
+
+                override fun onSessionStartFailed(castSession: CastSession, error: Int) {}
+
+                override fun onSessionEnding(castSession: CastSession) {}
+
+                override fun onSessionEnded(castSession: CastSession, error: Int) {}
+
+                override fun onSessionResuming(castSession: CastSession, sessionId: String) {}
+
+                override fun onSessionResumed(castSession: CastSession, wasSuspended: Boolean) {}
+
+                override fun onSessionResumeFailed(castSession: CastSession, error: Int) {}
+
+                override fun onSessionSuspended(castSession: CastSession, reason: Int) {}
+            },
+            CastSession::class.java
+        )
+    }
+
+    private fun showCastChooserDialog(context: Activity, castContext: CastContext) {
+        MediaRouteChooserDialog(context).apply {
+            routeSelector = castContext.mergedSelector!!
+        }.show()
+    }
+}
+```
+
+Instantiate this class and then connect to a device.
+This will start casting the source listed in the class to the Chromecast receiver.
+
+## Related articles
+
+- [How can we track the first play(ing) event?](../../../09-player/03-how-can-we-track-the-first-playing-event.md)
+
+- [How to start with a specific quality?](../../../06-mediatrack/05-how-to-start-with-specific-quality.md)
+
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+
+- [How to know whether a live stream is playing?](../../../../faq/14-how-to-know-when-livestream-is-playing.md)
+
+- [Getting started on Chromecast](../../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)

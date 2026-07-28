@@ -1,0 +1,73 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# Chromecast on Web
+
+import Intro from '../../../shared/cast/_chromecast-introduction-intro.mdx';
+import ApiIntro from '../../../shared/cast/_chromecast-introduction-api-intro.mdx';
+import ReceiverApplications from '../../../shared/cast/_chromecast-introduction-receiver-applications.mdx';
+import Whitelisting from '../../../shared/cast/_chromecast-introduction-whitelisting.mdx';
+
+<Intro />
+
+## API
+
+<ApiIntro />
+
+For more information, see the API reference of [`Chromecast`](pathname:///theoplayer/v11/api-reference/web/interfaces/Chromecast.html), a sub-interface of [`Cast`](pathname:///theoplayer/v11/api-reference/web/interfaces/Cast.html) which inherits from [`VendorCast`](pathname:///theoplayer/v11/api-reference/web/interfaces/VendorCast.html).
+
+Use the API as demonstrated below:
+
+```javascript
+// const player = new THEOplayer.Player(...)
+const chromecastState = player.cast.chromecast.state;
+const isCasting = player.cast.chromecast.casting; // true or false
+// ...
+// if (want to start Chromecast)
+player.cast.chromecast.start();
+// ...
+// if (want to stop Chromecast)
+player.cast.chromecast.stop();
+// ...
+if (chromecastState != 'unavailable') {
+  // Chromecast is possible
+  player.cast.chromecast.addEventListener('statechange', function (event) {
+    switch (event.state) {
+      case 'connecting':
+        // show Chromecast trying-to-connect icon
+        break;
+      case 'available':
+        // show Chromecast available icon
+        break;
+      case 'connected':
+        // show Chromecast connected icon
+        break;
+      case 'unavailable':
+        // hide Chromecast icon
+        break;
+    }
+  });
+}
+```
+
+## Sender Applications vs Receiver Applications
+
+<ReceiverApplications />
+
+If you have implemented THEOplayer in your sender application, you can [enable Chromecast](./enable-chromecast-on-the-sender.mdx).
+Furthermore, you can also [specify the application ID](./enable-chromecast-on-the-sender.mdx#custom-receiver-app) in your sender application.
+
+## Whitelisting Receiver Applications
+
+<Whitelisting />
+
+## Related articles
+
+- [Connecting from custom Sender applications](./connecting-from-custom-sender-applications.mdx)
+- [Debugging](./debugging.mdx)
+- [How to configure a different stream to Chromecast](./how-to-configure-to-a-different-stream.mdx)
+- [Sending messages from/to Sender to/from Receiver](./sending-messages-from-to-sender-to-from-receiver.mdx)
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+- [Enable Chromecast on the Sender](./enable-chromecast-on-the-sender.mdx)

@@ -1,0 +1,117 @@
+---
+sidebar_position: 7
+sidebar_label: Enabling Chromecast on the Sender
+---
+
+# Enable Chromecast on the Sender on Android
+
+import Intro from '../../../shared/cast/_chromecast-enable-on-sender-intro.mdx';
+import CustomReceiverIntro from '../../../shared/cast/_chromecast-enable-on-sender-custom-receiver-intro.mdx';
+
+<Intro />
+
+:::note
+Chromecast support is not available for the Android TV and Fire TV SDKs.
+:::
+
+## Prerequisites
+
+1. Your Sender device needs to be on the same Wi-Fi network as your Chromecast Receiver device.
+
+## Add the Chromecast integration
+
+In order to enable Chromecast on the THEOplayer Android SDK, add the feature integration dependency in your `build.gradle` file.
+
+```groovy
+implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
+implementation 'com.theoplayer.theoplayer-sdk-android:integration-cast:+' // add cast dependency
+```
+
+## Set `CastOptionsProvider`
+
+To enable Chromecast on Android a `CastOptionsProvider` should be specified.
+This class contains the configuration for Chromecast on Android.
+A `DefaultCastOptionsProvider` is provided as part of the THEOplayer Android SDK.
+This `DefaultCastOptionsProvider` associates the default THEOplayer Chromecast receiver application with your Sender application.
+You will need to register this class in your `AndroidManifest.xml` file within a meta-data tag under your application node,
+as demonstrated at [https://github.com/THEOplayer/samples-android-sdk/blob/master/Google-Cast/app/src/main/AndroidManifest.xml#L17-L19](https://github.com/THEOplayer/samples-android-sdk/blob/master/Google-Cast/app/src/main/AndroidManifest.xml#L17-L19).
+
+```xml
+<meta-data
+    android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+    android:value="com.theoplayer.android.api.cast.chromecast.DefaultCastOptionsProvider"/>
+```
+
+## Optional: Add routing button to your app
+
+In order to get this button to appear in your application's Toolbar,
+the easiest way is to include it in the menu XML file for your Activity.
+
+1. In your `res` folder add a menu folder
+
+2. Add an `activity_main_menu.xml` file
+
+3. Add the following contents to this file:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+    android:id="@+id/media_route_menu_item"
+    android:title="Cast"
+    app:actionProviderClass="androidx.mediarouter.app.MediaRouteActionProvider"
+    app:showAsAction="always" />
+</menu>
+```
+
+4. Initialize this new `MenuItem` in the `onCreateOptionsMenu` method of your Activity.
+   (Make sure you have an `AppCompatActivity`).
+
+```kotlin
+override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    super.onCreateOptionsMenu(menu)
+    menuInflater.inflate(R.menu.activity_main_menu, menu)
+    CastButtonFactory.setUpMediaRouteButton(applicationContext, menu, R.id.media_route_menu_item)
+    return true
+}
+```
+
+## Optional: Add MiniController to your app
+
+In your main activity xml add the following fragment:
+
+```xml
+<fragment
+    android:id="@+id/castMiniController"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:visibility="gone"
+    class="com.google.android.gms.cast.framework.media.widget.MiniControllerFragment" />
+```
+
+## Optional: Set a `CastStrategy` to your THEOplayerConfig
+
+THEOplayer Android SDK support Chromecast CastStrategy to define the joining behavior.
+
+```kotlin
+THEOplayerConfig.Builder()
+    .castStrategy(CastStrategy.AUTO)
+    .build()
+```
+
+## Connect with custom Chromecast Receiver application {#custom-receiver-app}
+
+<CustomReceiverIntro />
+
+To connect with a custom Chromecast Receiver application, you can create your own `CastOptionsProvider` by subclassing `com.google.android.gms.cast.framework.OptionsProvider` and implementing the `getCastOptions` method.
+This approach is further demonstrated at [https://github.com/THEOplayer/samples-android-sdk/tree/master/Google-Cast/guides/howto-google-cast-integration#initializing-cast-context](https://github.com/THEOplayer/samples-android-sdk/tree/master/Google-Cast/guides/howto-google-cast-integration#initializing-cast-context),
+and in the snippet below.
+
+```kotlin
+override fun getCastOptions(context: Context): CastOptions =
+    CastOptions.Builder()
+        .setReceiverApplicationId(DEFAULT_APP_ID)
+        .build()
+```
