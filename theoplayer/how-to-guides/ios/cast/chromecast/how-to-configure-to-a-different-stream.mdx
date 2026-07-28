@@ -7,7 +7,6 @@ sidebar_label: Configuring a different stream
 
 import Intro from '../../../shared/cast/_chromecast-different-stream-intro.mdx';
 import ConnectionApiIntro from '../../../shared/cast/_chromecast-different-stream-connection-api-intro.mdx';
-import SourceApiIntro from '../../../shared/cast/_chromecast-different-stream-source-api-intro.mdx';
 
 <Intro />
 
@@ -112,22 +111,4 @@ class PlayerViewController: UIViewController {
 
 }
 ...
-```
-
-## Chromecast source API
-
-<SourceApiIntro />
-
-The [Chromecast API](pathname:///theoplayer/v11/api-reference/ios/Protocols/Chromecast.html) allows you to configure a different SourceDescription to be Chromecasted
-through the [`Cast`](pathname:///theoplayer/v11/api-reference/ios/Protocols/Cast.html) instance of your [`THEOplayer`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html) object.
-
-```swift
-var theoplayerChromecast = theoplayer.cast?.chromecast
-theoplayerChromecast?.source = SourceDescription(
-    source: TypedSource(
-        src: "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)",
-        type: "application/dash+xml",
-        drm: WidevineDRMConfiguration(licenseAcquisitionURL: "https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac")
-    )
-)
 ```

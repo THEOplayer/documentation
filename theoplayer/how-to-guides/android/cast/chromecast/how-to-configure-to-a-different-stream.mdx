@@ -7,7 +7,6 @@ sidebar_label: Configuring a different stream
 
 import Intro from '../../../shared/cast/_chromecast-different-stream-intro.mdx';
 import ConnectionApiIntro from '../../../shared/cast/_chromecast-different-stream-connection-api-intro.mdx';
-import SourceApiIntro from '../../../shared/cast/_chromecast-different-stream-source-api-intro.mdx';
 
 <Intro />
 
@@ -60,15 +59,3 @@ theoPlayerView.getCast().getChromecast().setConnectionCallback(new ChromecastCon
 ```
 
 The `onJoin` and `onLeave` implementations in the above snippet adhere to the default behavior.
-
-## Chromecast source API
-
-<SourceApiIntro />
-
-The [Chromecast API](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/chromecast/Chromecast.html) allows you to configure a different SourceDescription to be Chromecasted
-through the [`Cast`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/Cast.html) of your [`THEOplayerView'](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/THEOplayerView.html) object.
-
-```java
-SourceDescription source = new SourceDescription.Builder("//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8").build();
-theoPlayerView.getCast().getChromecast().setSource(source);
-```

@@ -2,9 +2,4 @@ Some streaming setups require you to cast a different stream to a Chromecast Rec
 For example, if your playing HLS + FairPlay DRM on your iOS application, you need to cast a different source with DASH + Widevine DRM to your Chromecast application,
 because Chromecast applications aren't able to support FairPlay.
 
-There are two approaches to achieve this use case:
-
-1. [ChromecastConnection API](#chromecastconnection-api) (available as of THEOplayer 2.90.0)
-2. [Chromecast source API](#chromecast-source-api) (deprecated as of THEOplayer 2.90.0)
-
-You should no longer use the second approach as of THEOplayer 2.90.0 because this API is no longer maintained (even though it _may_ be available).
+You can achieve this use case with the ChromecastConnection API.
