@@ -41,7 +41,8 @@ player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
   // assert track.kind === "metadata"
 
   track.addEventListener('entercue', function (enterCueEvent) {
-    console.log(enterCueEvent.cue.content);
+    // log entercue event
+    console.log(enterCueEvent);
   });
 });
 ```
