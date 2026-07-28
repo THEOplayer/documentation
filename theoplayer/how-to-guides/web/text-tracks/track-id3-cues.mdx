@@ -31,6 +31,25 @@ player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
 
 <EnterEventIntro />
 
+Listen for the [`entercue`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackEventMap.html#entercue)
+event of the track, which is fired for every cue of that track that becomes active.
+The entered cue is available as [`event.cue`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackEnterCueEvent.html#cue).
+
+```js
+player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
+  const track = addTrackEvent.track;
+  // assert track.kind === "metadata"
+
+  track.addEventListener('entercue', function (enterCueEvent) {
+    console.log(enterCueEvent.cue.content);
+  });
+});
+```
+
+Alternatively, you can listen for the [`enter`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackCueEventMap.html#enter)
+event on each individual cue. Note that you have to add a listener to every cue,
+including the cues that are added to the track later on.
+
 ```js
 function enterListener(event) {
   // log enter event
