@@ -16,25 +16,25 @@ import Whitelisting from '../../../shared/cast/_chromecast-introduction-whitelis
 
 <ApiIntro />
 
-For more information, see the API reference of [`Chromecast`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/chromecast/Chromecast.html).
+For more information, see the API reference of [`Chromecast`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/chromecast/Chromecast.html), which is exposed on the [`Cast`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/Cast.html) interface.
 
 Use the API as demonstrated below:
 
-```java
+```kotlin
 // Verify the Cast dependency is present in your build.gradle file.
 // Add Cast Integration to the player.
-CastIntegration castIntegration = CastIntegrationFactory.createCastIntegration(theoplayerView);
-theoplayerView.getPlayer().addIntegration(castIntegration);
+val castIntegration = CastIntegrationFactory.createCastIntegration(theoPlayerView)
+theoPlayerView.player.addIntegration(castIntegration)
 
 // For actions you can use both the THEOplayerView and the CastIntegration object.
-theoplayerView.getCast().getChromecast().start();
+theoPlayerView.cast.chromecast.start()
 // or
-castIntegration.start();
+castIntegration.start()
 
 // For listening to events nothing changed.
-theoplayerView.getCast().getChromecast().addEventListener(ChromecastEventTypes.STATECHANGE, event -> {
+theoPlayerView.cast.chromecast.addEventListener(ChromecastEventTypes.STATECHANGE) { event ->
     // Handle the state change.
-});
+}
 ```
 
 ## Sender Applications vs Receiver Applications

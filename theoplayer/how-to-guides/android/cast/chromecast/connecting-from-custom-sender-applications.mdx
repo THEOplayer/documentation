@@ -13,31 +13,25 @@ import Intro from '../../../shared/cast/_chromecast-connecting-from-custom-sende
 
 First, set up your `CastOptionsProvider`:
 
-```java
-package com.yourcomp.chromecastSender;
+```kotlin
+package com.yourcomp.chromecastSender
 
-import android.content.Context;
+import android.content.Context
+import com.google.android.gms.cast.framework.CastOptions
+import com.google.android.gms.cast.framework.OptionsProvider
+import com.google.android.gms.cast.framework.SessionProvider
 
-import com.google.android.gms.cast.framework.CastOptions;
-import com.google.android.gms.cast.framework.OptionsProvider;
-import com.google.android.gms.cast.framework.SessionProvider;
+class THEOCastOptionsProvider : OptionsProvider {
 
-import java.util.List;
+    override fun getCastOptions(context: Context): CastOptions =
+        CastOptions.Builder()
+            .setReceiverApplicationId(DEFAULT_APP_ID)
+            .build()
 
-public class THEOCastOptionsProvider implements OptionsProvider {
+    override fun getAdditionalSessionProviders(context: Context): List<SessionProvider>? = null
 
-    public static String DEFAULT_APP_ID = "8E80B9CE";
-
-    @Override
-    public CastOptions getCastOptions(Context context) {
-        return new CastOptions.Builder()
-                .setReceiverApplicationId(DEFAULT_APP_ID)
-                .build();
-    }
-
-    @Override
-    public List<SessionProvider> getAdditionalSessionProviders(Context context) {
-        return null;
+    companion object {
+        const val DEFAULT_APP_ID = "8E80B9CE"
     }
 }
 ```
@@ -63,89 +57,81 @@ And link to it in your `AndroidManifest.xml` file:
 Fill in the correct class name by replacing `com.yourcomp.chromecastSender.CastOptionsProvider`!
 You can change the `DEFAULT_APP_ID` to direct to your own Chromecast app. Next you can actually do the casting like the following:
 
-```java
-package com.yourcomp.chromecastSender;
+```kotlin
+package com.yourcomp.chromecastSender
 
-import android.app.Activity;
-import android.support.v7.app.MediaRouteChooserDialog;
+import android.app.Activity
+import androidx.mediarouter.app.MediaRouteChooserDialog
+import com.google.android.gms.cast.MediaInfo
+import com.google.android.gms.cast.MediaLoadOptions
+import com.google.android.gms.cast.framework.CastContext
+import com.google.android.gms.cast.framework.CastSession
+import com.google.android.gms.cast.framework.SessionManagerListener
+import org.json.JSONObject
 
-import com.google.android.gms.cast.MediaInfo;
-import com.google.android.gms.cast.MediaLoadOptions;
-import com.google.android.gms.cast.framework.CastContext;
-import com.google.android.gms.cast.framework.CastSession;
-import com.google.android.gms.cast.framework.SessionManagerListener;
+private const val SOURCE_URL =
+    "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)"
 
-import org.json.JSONException;
-import org.json.JSONObject;
+class ChromecastSender {
 
-public class ChromecastSender {
-    public ChromecastSender() {
+    fun sendSourceToChromecast(context: Activity) {
+        val castContext = CastContext.getSharedInstance(context)
+        showCastChooserDialog(context, castContext)
+
+        val sourceDescriptionJson = JSONObject(
+            """
+            {
+              "sourceDescription": {
+                "sources": [
+                  {
+                    "src": "$SOURCE_URL",
+                    "type": "application/dash+xml",
+                    "contentProtection": {
+                      "widevine": {
+                        "licenseAcquisitionURL": "https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+            """.trimIndent()
+        )
+        val mediaLoadOptions = MediaLoadOptions.Builder().setCustomData(sourceDescriptionJson).build()
+        val mediaInfo = MediaInfo.Builder(SOURCE_URL)
+            .setContentType("application/dash+xml")
+            .build()
+
+        castContext.sessionManager.addSessionManagerListener(
+            object : SessionManagerListener<CastSession> {
+                override fun onSessionStarting(castSession: CastSession) {}
+
+                override fun onSessionStarted(castSession: CastSession, sessionId: String) {
+                    castSession.remoteMediaClient?.load(mediaInfo, mediaLoadOptions)
+                }
+
+                override fun onSessionStartFailed(castSession: CastSession, error: Int) {}
+
+                override fun onSessionEnding(castSession: CastSession) {}
+
+                override fun onSessionEnded(castSession: CastSession, error: Int) {}
+
+                override fun onSessionResuming(castSession: CastSession, sessionId: String) {}
+
+                override fun onSessionResumed(castSession: CastSession, wasSuspended: Boolean) {}
+
+                override fun onSessionResumeFailed(castSession: CastSession, error: Int) {}
+
+                override fun onSessionSuspended(castSession: CastSession, reason: Int) {}
+            },
+            CastSession::class.java
+        )
     }
 
-    public void sendSourceToChromecast(Activity context) throws JSONException {
-        CastContext castContext = CastContext.getSharedInstance(context);
-        showCastChooserDialog(context, castContext);
-
-        JSONObject sourceDescriptionJson = new JSONObject("{"sourceDescription":{"sources":[{"src":"https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)","type":"application/dash+xml","contentProtection":{"widevine":{"licenseAcquisitionURL":"https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac"}}}]}}");
-        MediaLoadOptions mediaLoadOptions = new MediaLoadOptions.Builder().setCustomData(sourceDescriptionJson).build();
-        MediaInfo mediaInfo = new MediaInfo.Builder("https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)").setContentType("application/dash+xml")
-                .build();
-
-        castContext.getSessionManager().addSessionManagerListener(new SessionManagerListener<CastSession>() {
-            @Override
-            public void onSessionStarting(CastSession castSession) {
-
-            }
-
-            @Override
-            public void onSessionStarted(CastSession castSession, String s) {
-
-                castSession.getRemoteMediaClient().load(mediaInfo,mediaLoadOptions);
-            }
-
-            @Override
-            public void onSessionStartFailed(CastSession castSession, int i) {
-
-            }
-
-            @Override
-            public void onSessionEnding(CastSession castSession) {
-
-            }
-
-            @Override
-            public void onSessionEnded(CastSession castSession, int i) {
-
-            }
-
-            @Override
-            public void onSessionResuming(CastSession castSession, String s) {
-
-            }
-
-            @Override
-            public void onSessionResumed(CastSession castSession, boolean b) {
-
-            }
-
-            @Override
-            public void onSessionResumeFailed(CastSession castSession, int i) {
-
-            }
-
-            @Override
-            public void onSessionSuspended(CastSession castSession, int i) {
-
-            }
-        }, CastSession.class);
-
-
-    }
-
-    private void showCastChooserDialog(Activity context, CastContext castContext) {
-        MediaRouteChooserDialog mediaRouteChooserDialog = new MediaRouteChooserDialog(context);
-        mediaRouteChooserDialog.setRouteSelector(castContext.getMergedSelector());
-        mediaRouteChooserDialog.show();
+    private fun showCastChooserDialog(context: Activity, castContext: CastContext) {
+        MediaRouteChooserDialog(context).apply {
+            routeSelector = castContext.mergedSelector!!
+        }.show()
     }
 }
 ```

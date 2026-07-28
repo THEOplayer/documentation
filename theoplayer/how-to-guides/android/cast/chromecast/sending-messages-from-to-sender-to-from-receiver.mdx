@@ -16,11 +16,11 @@ import ReceiverSide from '../../../shared/cast/_chromecast-sending-messages-rece
 
 <SendToReceiverIntro />
 
-```java
+```kotlin
 // Retrieve the current cast session
-CastSession castSession = CastContext.getSharedInstance(this).getSessionManager().getCurrentCastSession();
+val castSession = CastContext.getSharedInstance(this).sessionManager.currentCastSession
 // Send message on defined namespace channel
-castSession.sendMessage("namespace", "message");
+castSession?.sendMessage("namespace", "message")
 ```
 
 Reference:
@@ -31,18 +31,15 @@ Reference:
 
 <ReceiveFromReceiverIntro />
 
-```java
+```kotlin
 // Retrieve the current cast session
-CastSession castSession = CastContext.getSharedInstance(this).getSessionManager().getCurrentCastSession();
+val castSession = CastContext.getSharedInstance(this).sessionManager.currentCastSession
 // Create callback handler
-Cast.MessageReceivedCallback callback = new Cast.MessageReceivedCallback() {
-    @Override
-    public void onMessageReceived(CastDevice castDevice, String namespace, String message) {
-        // Do something with the message
-    }
-};
+val callback = Cast.MessageReceivedCallback { castDevice, namespace, message ->
+    // Do something with the message
+}
 // Add the message listener to the current cast session
-castSession.setMessageReceivedCallbacks("namespace", callback);
+castSession?.setMessageReceivedCallbacks("namespace", callback)
 ```
 
 Reference:
