@@ -54,7 +54,8 @@ player.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK) { ad
 The implementation for timed metadata is identical to the one for subtitles and closed captions, except for three things.
 
 1. You do not necessarily use the `enter` event.
-   Some types of timed metadata, for example ID3 cues, only relate to one specific moment, and those types only have an `exit` trigger.
+   For cues that span a period of time, for example `EXT-X-DATERANGE` cues,
+   you might want to perform your action when the cue ends, so on the `exit` event instead.
 
 2. You might need to set the `mode` of the relevant text track to `hidden`,
    as documented in [how to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx).
