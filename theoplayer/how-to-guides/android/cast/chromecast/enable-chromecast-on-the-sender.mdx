@@ -14,11 +14,11 @@ import CustomReceiverIntro from '../../../shared/cast/_chromecast-enable-on-send
 Chromecast support is not available for the Android TV and Fire TV SDKs.
 :::
 
-## Import Chromecast Sender SDK
+## Add the Chromecast integration
 
 In order to enable Chromecast on the THEOplayer Android SDK, add the feature integration dependency in your `build.gradle` file.
 
-```java
+```groovy
 implementation 'com.theoplayer.theoplayer-sdk-android:core:+'
 implementation 'com.theoplayer.theoplayer-sdk-android:integration-cast:+' // add cast dependency
 ```
@@ -32,7 +32,7 @@ This `DefaultCastOptionsProvider` associates the default THEOplayer Chromecast r
 You will need to register this class in your `AndroidManifest.xml` file within a meta-data tag under your application node,
 as demonstrated at [https://github.com/THEOplayer/samples-android-sdk/blob/master/Google-Cast/app/src/main/AndroidManifest.xml#L17-L19](https://github.com/THEOplayer/samples-android-sdk/blob/master/Google-Cast/app/src/main/AndroidManifest.xml#L17-L19).
 
-```java
+```xml
 <meta-data
     android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
     android:value="com.theoplayer.android.api.cast.chromecast.DefaultCastOptionsProvider"/>
@@ -56,7 +56,7 @@ the easiest way is to include it in the menu XML file for your Activity.
     <item
     android:id="@+id/media_route_menu_item"
     android:title="Cast"
-    app:actionProviderClass="android.support.v7.app.MediaRouteActionProvider"
+    app:actionProviderClass="androidx.mediarouter.app.MediaRouteActionProvider"
     app:showAsAction="always" />
 </menu>
 ```
@@ -64,13 +64,12 @@ the easiest way is to include it in the menu XML file for your Activity.
 4. Initialize this new `MenuItem` in the `onCreateOptionsMenu` method of your Activity.
    (Make sure you have an `AppCompatActivity`).
 
-```java
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-    super.onCreateOptionsMenu(menu);
-    getMenuInflater().inflate(R.menu.activity_main_menu, menu);
-    CastButtonFactory.setUpMediaRouteButton(getApplicationContext(), menu, R.id.media_route_menu_item);
-    return true;
+```kotlin
+override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    super.onCreateOptionsMenu(menu)
+    menuInflater.inflate(R.menu.activity_main_menu, menu)
+    CastButtonFactory.setUpMediaRouteButton(applicationContext, menu, R.id.media_route_menu_item)
+    return true
 }
 ```
 
@@ -78,7 +77,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
 In your main activity xml add the following fragment:
 
-```java
+```xml
 <fragment
     android:id="@+id/castMiniController"
     android:layout_width="match_parent"
@@ -92,10 +91,10 @@ In your main activity xml add the following fragment:
 
 THEOplayer Android SDK support Chromecast CastStrategy to define the joining behavior.
 
-```java
-new THEOplayerConfig.Builder()
+```kotlin
+THEOplayerConfig.Builder()
     .castStrategy(CastStrategy.AUTO)
-    .build();
+    .build()
 ```
 
 ## Connect with custom Chromecast Receiver application {#custom-receiver-app}
@@ -106,11 +105,9 @@ To connect with a custom Chromecast Receiver application, you can create your ow
 This approach is further demonstrated at [https://github.com/THEOplayer/samples-android-sdk/tree/master/Google-Cast/guides/howto-google-cast-integration#initializing-cast-context](https://github.com/THEOplayer/samples-android-sdk/tree/master/Google-Cast/guides/howto-google-cast-integration#initializing-cast-context),
 and in the snippet below.
 
-```java
-@Override
-public CastOptions getCastOptions(Context context) {
-    return new CastOptions.Builder()
+```kotlin
+override fun getCastOptions(context: Context): CastOptions =
+    CastOptions.Builder()
         .setReceiverApplicationId(DEFAULT_APP_ID)
-        .build();
-}
+        .build()
 ```
