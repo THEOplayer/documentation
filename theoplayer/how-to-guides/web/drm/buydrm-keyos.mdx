@@ -1,0 +1,73 @@
+---
+sidebar_position: 4
+sidebar_label: BuyDRM KeyOS
+---
+
+# BuyDRM KeyOS on Web
+
+import Intro from '../../shared/drm/_buydrm-keyos-intro.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import PreIntegrationNote from '../../shared/drm/_pre-integration-note.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Integration
+
+<IntegrationIntro />
+
+The BuyDRM KeyOS integration can be found [here](https://github.com/THEOplayer/samples-drm-integration/tree/master/web/src/integration/keyos).
+
+## Pre-integration
+
+<PreIntegrationNote />
+
+Pass your BuyDRM token as `customdata`, and tell THEOplayer that you are using KeyOS. The token is the Authentication
+XML generated from the BuyDRM platform.
+
+```js
+if (HLS) {
+  let drmConfiguration = {
+    integration: 'keyos',
+    customdata: '<CUSTOMDATA>',
+    fairplay: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_FAIRPLAY>',
+      certificateURL: '<CERTIFICATE_URL>',
+    },
+  };
+  player.source = {
+    sources: {
+      src: '<HLS_STREAM_URL>',
+      type: 'application/x-mpegurl',
+      contentProtection: drmConfiguration,
+    },
+  };
+} else if (DASH) {
+  let drmConfiguration = {
+    integration: 'keyos',
+    customdata: '<CUSTOMDATA>',
+    playready: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_PLAYREADY>',
+    },
+    widevine: {
+      licenseAcquisitionURL: '<LICENSE_KEY_URL_WIDEVINE>',
+    },
+  };
+  player.source = {
+    sources: {
+      src: '<DASH_STREAM_URL>',
+      type: 'application/dash+xml',
+      contentProtection: drmConfiguration,
+    },
+  };
+}
+```
+
+## Resources
+
+<!-- - [https://www.buydrm.com/webinar/buydrm_theoplayer](https://www.buydrm.com/webinar/buydrm_theoplayer)-->
+
+- [https://test.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf](https://test.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf)
+- [KeyOS BuyDRM](https://www.buydrm.com/keyosplayer)
+- [DRMConfiguration API](pathname:///theoplayer/v11/api-reference/web/interfaces/DRMConfiguration.html)

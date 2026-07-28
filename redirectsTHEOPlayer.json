@@ -13,7 +13,7 @@
   },
   {
     "from": "/theoplayer/how-to-guides/drm/verizon-uplynk/",
-    "to": "/theoplayer/how-to-guides/drm/uplynk/"
+    "to": "/theoplayer/how-to-guides/web/drm/uplynk/"
   },
   {
     "from": "/theoplayer/faq/what-are-the-edgio-challenges/",
@@ -21,7 +21,7 @@
   },
   {
     "from": "/theoplayer/how-to-guides/drm/pallycon/",
-    "to": "/theoplayer/how-to-guides/drm/doverunner/"
+    "to": "/theoplayer/how-to-guides/web/drm/doverunner/"
   },
   {
     "from": "/theoplayer/how-to-guides/ads/introduction/",
@@ -78,5 +78,105 @@
   {
     "from": "/theoplayer/how-to-guides/ads/custom-ssai-integration/",
     "to": "/theoplayer/how-to-guides/web/ads/custom-ssai-integration/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/introduction/",
+    "to": "/theoplayer/how-to-guides/web/drm/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/arris-titanium/",
+    "to": "/theoplayer/how-to-guides/web/drm/arris-titanium/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/axinom/",
+    "to": "/theoplayer/how-to-guides/web/drm/axinom/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/comcast/",
+    "to": "/theoplayer/how-to-guides/web/drm/comcast/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/ezdrm/",
+    "to": "/theoplayer/how-to-guides/web/drm/ezdrm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/intertrust-expressplay/",
+    "to": "/theoplayer/how-to-guides/web/drm/intertrust-expressplay/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/irdeto/",
+    "to": "/theoplayer/how-to-guides/web/drm/irdeto/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/microsoft-azure/",
+    "to": "/theoplayer/how-to-guides/web/drm/microsoft-azure/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/nagra-conax-contego/",
+    "to": "/theoplayer/how-to-guides/web/drm/nagra-conax-contego/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/verimatrix-multirights/",
+    "to": "/theoplayer/how-to-guides/web/drm/verimatrix-multirights/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/vimond/",
+    "to": "/theoplayer/how-to-guides/web/drm/vimond/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/vualto-vudrm/",
+    "to": "/theoplayer/how-to-guides/web/drm/vualto-vudrm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/uplynk/",
+    "to": "/theoplayer/how-to-guides/web/drm/uplynk/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/xstream/",
+    "to": "/theoplayer/how-to-guides/web/drm/xstream/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-play-clear-key-protected-stream/",
+    "to": "/theoplayer/how-to-guides/web/drm/clear-key/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/doverunner/",
+    "to": "/theoplayer/how-to-guides/web/drm/doverunner/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/multikey-hls/",
+    "to": "/theoplayer/how-to-guides/web/drm/multikey-hls/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/buydrm-keyos/introduction/",
+    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/buydrm-keyos/how-to-use-with-theoplayer/",
+    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/castlabs-drmtoday/introduction/",
+    "to": "/theoplayer/how-to-guides/web/drm/castlabs-drmtoday/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/castlabs-drmtoday/offline-playback-with-offline-drm/",
+    "to": "/theoplayer/how-to-guides/ios/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/introduction/",
+    "to": "/theoplayer/how-to-guides/android/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/offline-drm-with-android/",
+    "to": "/theoplayer/how-to-guides/android/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/offline-drm-with-ios/",
+    "to": "/theoplayer/how-to-guides/ios/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/offline-drm-notifications-android/",
+    "to": "/theoplayer/how-to-guides/android/drm/offline-drm-notifications/"
   }
 ]

@@ -1,0 +1,51 @@
+---
+sidebar_position: 14
+sidebar_label: Vualto VuDRM
+---
+
+# Vualto VuDRM on Android
+
+import Intro from '../../shared/drm/_vualto-vudrm-intro.mdx';
+import Resources from '../../shared/drm/_vualto-vudrm-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import PreIntegrationNote from '../../shared/drm/_pre-integration-note.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Integration
+
+<IntegrationIntro />
+
+The Vualto VuDRM integration can be found [here](https://github.com/THEOplayer/samples-drm-integration/tree/master/android/app/src/main/java/com/theoplayer/contentprotectionintegration/integration/vudrm).
+
+## Pre-integration
+
+<PreIntegrationNote />
+
+```java
+DRMConfiguration drmConfiguration = new VudrmDRMConfiguration("<TOKEN>", null,
+                new KeySystemConfiguration("<LICENSE_KEY_URL>"));
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [DoveRunner](./doverunner.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos.mdx)
+- [Arris Titanium](./arris-titanium.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Xstream](./xstream.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)

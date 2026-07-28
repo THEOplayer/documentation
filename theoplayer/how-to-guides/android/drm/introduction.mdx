@@ -1,0 +1,79 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# DRM on Android
+
+import Intro from '../../shared/drm/_introduction-intro.mdx';
+import PreIntegrationsIntro from '../../shared/drm/_introduction-pre-integrations-intro.mdx';
+import IntegrationsIntro from '../../shared/drm/_introduction-integrations-intro.mdx';
+import CustomConfigurationIntro from '../../shared/drm/_introduction-custom-configuration-intro.mdx';
+import CustomIntegration from '../../shared/drm/_introduction-custom-integration.mdx';
+
+<Intro />
+
+## Integrations
+
+<IntegrationsIntro />
+
+- [Arris Titanium](./arris-titanium.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos.mdx)
+- [DoveRunner](./doverunner.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Verimatrix MultiRights](./verimatrix-multirights.mdx)
+- [Vimond](./vimond.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
+
+## Pre-integrations
+
+<PreIntegrationsIntro />
+
+- [Arris Titanium](./arris-titanium.mdx)
+- [Axinom](./axinom.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
+- [Xstream](./xstream.mdx)
+
+## Other guides
+
+- [Clear Key](./clear-key.mdx): how to play a Clear Key protected stream.
+- [Offline DRM](./offline-drm.mdx): how to implement playback of downloadable content-protected streams.
+- [Customizing offline DRM notifications](./offline-drm-notifications.mdx)
+- [Multi-key HLS](./multikey-hls.mdx): how to serve one HLS stream to all key systems.
+
+## Custom configuration
+
+<CustomConfigurationIntro />
+
+To configure DRM on the Android SDK, developers can put a DRMConfiguration inside a SourceDescription.
+
+```java
+// Map<String, String> headers =  new HashMap<String, String>();
+// headers.put("<KEY>", "<VALUE>");
+DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
+    .widevine(
+        new KeySystemConfiguration.Builder(
+            "<LICENSE_KEY_URL_WIDEVINE>"
+            )// , headers, <USE_CREDENTIALS>, <QUERY_PARAMETERS>
+            .build()
+        )
+        .build();
+TypedSource typedSource = new TypedSource.Builder("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Custom integration
+
+<CustomIntegration />

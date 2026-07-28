@@ -1,0 +1,53 @@
+---
+sidebar_position: 12
+sidebar_label: Verimatrix MultiRights
+---
+
+# Verimatrix MultiRights on Android
+
+import Intro from '../../shared/drm/_verimatrix-multirights-intro.mdx';
+import Resources from '../../shared/drm/_verimatrix-multirights-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Integration
+
+<IntegrationIntro />
+
+The Verimatrix Core integration can be found [here](https://github.com/THEOplayer/samples-drm-integration/tree/master/android/app/src/main/java/com/theoplayer/contentprotectionintegration/integration/verimatrixcoredrm).
+
+## Code example
+
+```java
+DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
+    .widevine(
+        new KeySystemConfiguration(
+            "<LICENSE_KEY_URL_WIDEVINE>"
+        )
+    )
+    .build();
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [DoveRunner](./doverunner.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos.mdx)
+- [Arris Titanium](./arris-titanium.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Xstream](./xstream.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
