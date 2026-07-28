@@ -18,23 +18,19 @@ This is all you have to do to make the desired text track visible.
 You can also change the visible text track during playback.
 
 ```brightscript
-function setCaptionsLanguage(language as String)
+sub setCaptionsLanguage(language as String)
   textTracks = m.player.textTracks
   for i = textTracks.count() - 1 to 0 step -1
-    if textTracks[i].kind = "captions" and textTracks[i].language = language then
-      if m.fullScreen then
-        textTracks[i].mode = "showing"
-      else
-        textTracks[i].mode = "hidden"
-      end if
+    if m.fullScreen and textTracks[i].kind = "captions" and textTracks[i].language = language then
+      textTracks[i].mode = "showing"
     else
-      textTracks[i].mode = "disabled"
+      textTracks[i].mode = "hidden"
     end if
   end for
-  'assignment of new roAssociativeArray is required because roku deep-copied roAssociativeArray through fields (pass-by-value)
-  'read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
+  ' Assignment of new roAssociativeArray is required, because Roku field values are copies, not references.
+  ' Read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
   m.player.textTracks = textTracks
-end function
+end sub
 ```
 
 ## Related articles

@@ -11,12 +11,12 @@ import Intro from '../../shared/media-tracks/_enable-disable-audio-tracks-intro.
 
 ## Usage
 
-To set a preferred audio track, you can write a function like `setAudioLanguage`.
-This function accepts `language` as a string parameter.
+To set a preferred audio track, you can write a subroutine like `setAudioLanguage`.
+This subroutine accepts `language` as a string parameter.
 It then searches for the specified language in the audio tracks, and enables the track if it has a matching language.
 
 ```brightscript
-function setAudioLanguage(language as String)
+sub setAudioLanguage(language as String)
   audioTracks = m.player.audioTracks
   for i = audioTracks.count() - 1 to 0 step -1
     if audioTracks[i].language = language then
@@ -25,10 +25,10 @@ function setAudioLanguage(language as String)
       audioTracks[i].enabled = false
     end if
   end for
-  'required because roku deep-copied roAssociativeArray through fields (pass-by-value)
-  'read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
+  ' Assignment of new roAssociativeArray is required, because Roku field values are copies, not references.
+  ' Read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
   m.player.audioTracks = audioTracks
-end function
+end sub
 ```
 
 ## Related articles

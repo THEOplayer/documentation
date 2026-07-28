@@ -17,18 +17,18 @@ import Conclusion from '../../shared/media-tracks/_reduce-data-usage-conclusion.
 
 <TargetBuffer />
 
-Use the [`targetBuffer`](pathname:///theoplayer/v11/api-reference/web/interfaces/ABRConfiguration.html#targetbuffer)
-property of the [ABR API](pathname:///theoplayer/v11/api-reference/web/interfaces/ABRConfiguration.html) to set it to 6 seconds:
+To set the target buffer length in seconds, use the [`targetBuffer`](pathname:///theoplayer/v11/api-reference/web/interfaces/ABRConfiguration.html#targetbuffer)
+property of the [ABR API](pathname:///theoplayer/v11/api-reference/web/interfaces/ABRConfiguration.html):
 
 ```js
 player.abr.targetBuffer = 6;
 ```
 
-If necessary, add a mobile check like this:
+If necessary to have a different target buffer length for mobile, add a check like this:
 
 ```js
 if (THEOplayer.videojs.browser.IS_ANDROID || THEOplayer.videojs.browser.IS_IOS) {
-  player.abr.targetBuffer = 6;
+  player.abr.targetBuffer = 8;
 }
 ```
 

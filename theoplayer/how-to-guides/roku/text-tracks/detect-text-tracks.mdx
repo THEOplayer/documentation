@@ -14,17 +14,16 @@ import Intro from '../../shared/text-tracks/_detect-text-tracks-intro.mdx';
 You can use the `addedtexttrack` event to programmatically detect all text tracks which are loaded with the stream.
 
 ```brightscript
-function Init()
+sub Init()
   ...
-  m.THEOplayer.callFunc("addEventListener", "addedtexttrack", "onEventTextTracksChanged")
+  m.THEOplayer.callFunc("addEventListener", "addedtexttrack", m.top, "onEventTextTracksChanged")
   ...
-end function
+end sub
 
-function onEventTextTracksChanged()
+sub onEventTextTracksChanged()
   textTracks = m.player.textTracks
-  ? "Text tracks changed."
-  ? textTracks
-end function
+  print "Text tracks changed. "; textTracks
+end sub
 ```
 
 ## Related articles

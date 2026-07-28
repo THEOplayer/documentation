@@ -16,17 +16,16 @@ In this example, we have used the `addedaudiotrack` event to propagate informati
 Basically, all you have to do is add an event listener.
 
 ```brightscript
-function Init()
+sub Init()
   ...
-  m.THEOplayer.callFunc("addEventListener", "addedaudiotrack", "onAudioTracksChanged")
+  m.THEOplayer.callFunc("addEventListener", "addedaudiotrack", m.top, "onAudioTracksChanged")
   ...
-end function
+end sub
 
-function onAudioTracksChanged()
+sub onAudioTracksChanged()
   audioTracks = m.player.audioTracks
-  ? "Audio tracks changed."
-  ? audioTracks
-end function
+  print "Audio tracks changed. "; audioTracks
+end sub
 ```
 
 ## Related articles

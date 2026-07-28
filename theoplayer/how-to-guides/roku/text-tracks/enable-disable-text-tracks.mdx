@@ -15,7 +15,7 @@ To disable all text tracks, iterate through all text tracks and set the `mode` f
 
 Note that in BrightScript and SceneGraph you have to assign a whole new associative array to the interface field
 in order to change the associative array exposed through the interface.
-Attempts to change fields of an associative array or elements of an array have no effect.
+Attempts to change fields of an associative array or elements of an array that are values of node fields have no effect.
 
 ```brightscript
 'disable all tracks
@@ -23,8 +23,8 @@ textTracks = m.player.textTracks
 for i = textTracks.count() - 1 to 0 step -1
   textTracks[i].mode = "disabled"
 end for
-'assignment of new roAssociativeArray is required because roku deep-copied roAssociativeArray through fields (pass-by-value)
-'read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
+' Assignment of new roAssociativeArray is required, because Roku field values are copies, not references.
+' Read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
 m.player.textTracks = textTracks
 
 'disable specific track
