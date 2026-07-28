@@ -1,0 +1,83 @@
+---
+sidebar_position: 2
+sidebar_label: Connecting from custom Sender applications
+---
+
+# Connecting from custom Sender applications on iOS
+
+import Intro from '../../../shared/cast/_chromecast-connecting-from-custom-sender-applications-intro.mdx';
+
+<Intro />
+
+## Usage
+
+When launching your application, start your Google Cast context using the following snippet:
+
+```swift
+let options = GCKCastOptions(receiverApplicationID: "8E80B9CE")
+GCKCastContext.setSharedInstanceWith(options)
+```
+
+Once this is done, it’s necessary to start a session.
+This is usually done by creating a cast button somewhere in your UI using `GCKUICastButton`, which when pressed opens up a dialog allowing you to select a device and start a session.
+
+Once a session is started, you can start playing back content.
+The THEOplayer Chromecast receiver is capable of playing back content easily using the default Google Cast APIs (with `GCKMediaInformationBuilder` and `LoadRequest`).
+However, to use the more advanced functionality, you will need to pass in custom data in the [`GCKMediaLoadOptions`](https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_media_load_options) object.
+
+This custom data follows the structure of `SourceDescription` as used in the web version of THEOplayer, except we have to use `NSDictionary` notation.
+
+```swift
+let metadata = GCKMediaMetadata()
+metadata.setString("Title", forKey: kGCKMetadataKeyTitle)
+metadata.setString("Subtitle", forKey: kGCKMetadataKeySubtitle)
+
+let contentURL = "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)"
+let contentID = "622b189f-ec39-43f2-93a2-201ac4e31ce1"
+
+let informationBuilder = GCKMediaInformationBuilder(contentURL: contentURL)
+informationBuilder.contentID = contentID
+informationBuilder.streamType = .unknown
+informationBuilder.contentType = "application/dash+xml"
+informationBuilder.streamDuration = 0.0
+informationBuilder.mediaTracks = nil
+informationBuilder.metadata = metadata
+let information = informationBuilder.build()
+
+let sourceDescription = [
+    "sources": [
+        [
+            "src": "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)",
+            "type": "application/dash+xml",
+            "contentProtection": [
+                "widevine": [
+                    "licenseAcquisitionURL": "https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac"
+                ]
+            ]
+        ]
+    ]
+]
+
+let loadOptions = GCKMediaLoadOptions()
+loadOptions.autoplay = true
+loadOptions.playPosition = 0.0
+loadOptions.customData = ["sourceDescription": sourceDescription]
+
+castSession!.remoteMediaClient?.loadMedia(mediaInfo, with: loadOptions)
+```
+
+Note that you should also adapt the contentID and contentType in the arguments for the `GCKMediaInformation` initializer.
+
+You have to use the Chromecast API to implement additional logic such as pausing the Chromecast Receiver application, fetching the video's progress, ...
+
+## Related articles
+
+- [How can we track the first play(ing) event?](../../../09-player/03-how-can-we-track-the-first-playing-event.md)
+
+- [How to start with a specific quality?](../../../06-mediatrack/05-how-to-start-with-specific-quality.md)
+
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+
+- [How to know whether a live stream is playing?](../../../../faq/14-how-to-know-when-livestream-is-playing.md)
+
+- [Getting started on Chromecast](../../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)

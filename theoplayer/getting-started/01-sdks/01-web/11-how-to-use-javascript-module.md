@@ -288,6 +288,6 @@ We're done! Here's the complete code again, which you can put on your web server
 
 Ready to learn more?
 
-- Go through our [how-to guides](../../../how-to-guides/index.mdx) to learn about [UI customization](../../../how-to-guides/11-ui/00-introduction.md), [advertising](../../../how-to-guides/web/ads/introduction.mdx), [DRM](../../../how-to-guides/web/drm/introduction.mdx), [casting](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md), [analytics](../../../how-to-guides/web/analytics/introduction.mdx) and other topics.
+- Go through our [how-to guides](../../../how-to-guides/index.mdx) to learn about [UI customization](../../../how-to-guides/11-ui/00-introduction.md), [advertising](../../../how-to-guides/web/ads/introduction.mdx), [DRM](../../../how-to-guides/web/drm/introduction.mdx), [casting](../../../how-to-guides/web/cast/chromecast/introduction.mdx), [analytics](../../../how-to-guides/web/analytics/introduction.mdx) and other topics.
 - Check out our [API reference](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html).
 - Try out samples from our [GitHub](https://github.com/THEOplayer).

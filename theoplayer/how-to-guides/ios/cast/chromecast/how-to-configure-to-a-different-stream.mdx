@@ -1,0 +1,133 @@
+---
+sidebar_position: 4
+sidebar_label: Configuring a different stream
+---
+
+# How to configure a different stream to Chromecast on iOS
+
+import Intro from '../../../shared/cast/_chromecast-different-stream-intro.mdx';
+import ConnectionApiIntro from '../../../shared/cast/_chromecast-different-stream-connection-api-intro.mdx';
+import SourceApiIntro from '../../../shared/cast/_chromecast-different-stream-source-api-intro.mdx';
+
+<Intro />
+
+## ChromecastConnection API
+
+<ConnectionApiIntro />
+
+To achieve this use case on the iOS SDK, you have to leverage the [`ChromecastConnectionDelegate`](<pathname:///theoplayer/v11/api-reference/ios/Protocols/Chromecast_Objc.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerChromecast(im)setConnectionDelegate:>)
+of your [`THEOplayer`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html) object.
+
+The snippet below is an example of how your `ChromecastConnectionDelegate` could look like.
+This particular snippet has two [sources](pathname:///theoplayer/v11/api-reference/ios/Classes/SourceDescription.html):
+
+1. `senderSource` is intended for playback on your sender device (i.e. your iOS app)
+2. `chromecastSource` is intended for playback on your Chromecast application
+
+The `ChromecastConnectionDelegate` is used to:
+
+1. Set the `chromecastSource` when Chromecast playback starts through the `onStart` callback.
+2. Revert to the `senderSource` when Chromecast playback stops through the `onStop` callback.
+
+```swift
+import UIKit
+import THEOplayerSDK
+
+class ChromecastController: ChromecastConnectionDelegate {
+
+    weak var theoplayer : THEOplayer?
+
+    private var senderSource: SourceDescription {
+        let typedSource = TypedSource(
+            src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8",
+            type: "application/x-mpegurl"
+        )
+        return SourceDescription(source: typedSource)
+    }
+
+    private var chromecastSource: SourceDescription {
+        let typedSource = TypedSource(
+            src: "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)",
+            type: "application/dash+xml",
+            drm: WidevineDRMConfiguration(licenseAcquisitionURL: "https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac")
+        )
+        return SourceDescription(source: typedSource)
+    }
+
+    init(theo : THEOplayer) {
+        self.theoplayer = theo
+        self.theoplayer?.cast?.chromecast?.setConnectionDelegate(self)
+    }
+
+    func onStart(sourceDescription: SourceDescription?) -> SourceDescription? {
+        return chromecastSource
+    }
+
+    func onStop(sourceDescription: SourceDescription?) -> SourceDescription? {
+        return senderSource
+    }
+
+    func onJoin(sourceDescription: SourceDescription?) -> SourceDescription? {
+        return sourceDescription
+    }
+
+    func onLeave(sourceDescription: SourceDescription?) -> SourceDescription? {
+        return sourceDescription
+    }
+
+}
+```
+
+The `onJoin` and `onLeave` implementations in the above snippet adhere to the default behavior.
+
+Once you've implemented your `ChromecastConnectionDelegate`, you have to initialize an instance of this near the code of your where
+you're setting your `player.source` (e.g. [https://github.com/THEOplayer/samples-ios-sdk/blob/master/Google-Cast/Google_Cast/PlayerViewController.swift](https://github.com/THEOplayer/samples-ios-sdk/blob/master/Google-Cast/Google_Cast/PlayerViewController.swift)).
+The snippet below demonstrates this concept:
+
+```swift
+...
+class PlayerViewController: UIViewController {
+
+    ...
+    var chromecastController : ChromecastController!
+    var senderSource: SourceDescription {
+        let typedSource = TypedSource(
+            src: "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8",
+            type: "application/x-mpegurl"
+        )
+        return SourceDescription(source: typedSource)
+    }
+    ...
+
+    override func viewDidLoad() {
+
+        ...
+        player.source = senderSource
+        chromecastController = ChromecastController(theo: theoplayer)
+        ...
+
+    }
+
+    ...
+
+}
+...
+```
+
+## Chromecast source API
+
+<SourceApiIntro />
+
+The [Chromecast API](pathname:///theoplayer/v11/api-reference/ios/Protocols/Chromecast.html) allows you to configure a different SourceDescription to be Chromecasted
+through the [`Cast`](pathname:///theoplayer/v11/api-reference/ios/Protocols/Cast.html) instance of your [`THEOplayer`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html) object.
+
+```swift
+var theoplayerChromecast = theoplayer.cast?.chromecast
+theoplayerChromecast?.source = SourceDescription(
+    source: TypedSource(
+        src: "https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)",
+        type: "application/dash+xml",
+        drm: WidevineDRMConfiguration(licenseAcquisitionURL: "https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac")
+    )
+)
+```

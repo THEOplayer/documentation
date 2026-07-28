@@ -1,0 +1,127 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# Chromecast on iOS
+
+import Intro from '../../../shared/cast/_chromecast-introduction-intro.mdx';
+import ApiIntro from '../../../shared/cast/_chromecast-introduction-api-intro.mdx';
+import ReceiverApplications from '../../../shared/cast/_chromecast-introduction-receiver-applications.mdx';
+import Whitelisting from '../../../shared/cast/_chromecast-introduction-whitelisting.mdx';
+
+<Intro />
+
+To use Google Cast, also known as Chromecast, with the THEOplayer iOS SDK, the **THEOplayer GoogleCast Integration** should be integrated.
+The integration is a lightweight module written in Swift, to enable casting playback from an iOS device to a receiver application.
+
+## Installation
+
+The THEOplayer GoogleCast integration is published on the following package managers:
+
+### Cocoapods
+
+Simply add the following to your project's Podfile:
+
+```ruby
+pod 'THEOplayer-Integration-GoogleCast'
+```
+
+The above entry automatically manages the fetching of the GoogleCast SDK dependency.
+
+In case where the integrator would want to manage fetching a specific version of the GoogleCast SDK, then replace the Podfile entry with:
+
+```ruby
+pod 'THEOplayer-Integration-GoogleIMA/Base'
+pod 'google-cast-sdk-dynamic-xcframework', '4.8.3' # specify the desired version
+```
+
+### Swift Package Manager
+
+Please check the [installation instruction found here](https://github.com/THEOplayer/theoplayer-sdk-apple/README.md#installation)
+
+:::warning
+This will not get the GoogleCast SDK, but only the THEOplayer GoogleCast integration. You need to manage fetching the GoogleCast SDK dependency.
+:::
+
+## Import
+
+Import the framework in the source files where it will be used:
+
+```swift
+import THEOplayerGoogleCastIntegration
+```
+
+You will also need the THEOplayer core SDK since the THEOplayer GoogleCast integration extends its functionality.
+
+<br />
+To import the THEOplayer core SDK framework add:
+
+```swift
+import THEOplayerSDK
+```
+
+## Usage
+
+First set the context in your `AppDelegate` file's `didFinishLaunchingWithOptions` method:
+
+```swift
+THEOplayerGoogleCastIntegration.CastIntegrationHelper.setGCKCastContextSharedInstanceWithDefaultCastOptions()
+```
+
+:::note
+The above method will set the options for `GCKCastContext` with a CAF receiver application. If a custom context must be set, instead of calling the `setGCKCastContextSharedInstanceWithDefaultCastOptions` method, the implementation should specify an `GCKDiscoveryCriteria` in the context with an `applicationID` parameter. You can find the default THEOplayer CAF V3 default application ID at `CastIntegrationHelper.defaultV3ReceiverApplicationID`.
+:::
+
+:::info
+The THEOplayer Google Cast integration only supports CAF receivers.
+:::
+
+Second, you will need to provide some privacy permissions and network discovery allowances. For more information on this, please check the [following documentation about permissions and discovery.](https://developers.google.com/cast/docs/ios_sender/permissions_and_discovery)
+
+After initializing your `THEOplayer` instance, initialize the integration and pass it to the `THEOplayer` instance:
+
+```swift
+let configBuilder = THEOplayerConfigurationBuilder()
+configBuilder.license = "your_theoplayer_license"
+let theoplayer = THEOplayer(configuration: configBuilder.build()
+
+let castConfiguration: CastConfiguration = CastConfiguration(strategy: .auto)
+let castIntegration: THEOplayerSDK.Integration = GoogleCastIntegrationFactory.createIntegration(on: theoplayer, with: castConfiguration)
+theoplayer.addIntegration(castIntegration)
+```
+
+:::info
+Additional APIs can be found on the `castIntegration` or `theoplayer.cast.chromecast` endpoints.
+:::
+
+<br />
+For more extensive example on how to implement GoogleCast with THEOplayer, please check [this sample
+app](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Native-GoogleCast).
+
+## API
+
+<ApiIntro />
+
+The API reference is available through the following link:
+
+- [Chromecast](pathname:///theoplayer/v11/api-reference/ios/Protocols/Chromecast.html)
+
+## Sender Applications vs Receiver Applications
+
+<ReceiverApplications />
+
+If you have implemented THEOplayer in your sender application, you can [enable Chromecast](./enable-chromecast-on-the-sender.mdx).
+Furthermore, you can also [specify the application ID](./enable-chromecast-on-the-sender.mdx#custom-receiver-app) in your sender application.
+
+## Whitelisting Receiver Applications
+
+<Whitelisting />
+
+## Related articles
+
+- [Connecting from custom Sender applications](./connecting-from-custom-sender-applications.mdx)
+- [How to configure a different stream to Chromecast](./how-to-configure-to-a-different-stream.mdx)
+- [Sending messages from/to Sender to/from Receiver](./sending-messages-from-to-sender-to-from-receiver.mdx)
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+- [Enable Chromecast on the Sender](./enable-chromecast-on-the-sender.mdx)

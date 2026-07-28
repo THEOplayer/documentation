@@ -230,5 +230,37 @@
   {
     "from": "/theoplayer/how-to-guides/analytics/segment/",
     "to": "/theoplayer/how-to-guides/web/analytics/segment/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/introduction/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/connecting-from-custom-sender-applications/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/connecting-from-custom-sender-applications/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/debugging/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/debugging/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/how-to-configure-to-a-different-stream/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/how-to-configure-to-a-different-stream/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/sending-messages-from-to-sender-to-from-receiver/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/sending-messages-from-to-sender-to-from-receiver/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/pass-subtitle-section-on-to-chromecast/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/pass-subtitle-section-on-to-chromecast/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/enable-chromecast-on-the-sender/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/enable-chromecast-on-the-sender/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/airplay/introduction/",
+    "to": "/theoplayer/how-to-guides/web/cast/airplay/introduction/"
   }
 ]

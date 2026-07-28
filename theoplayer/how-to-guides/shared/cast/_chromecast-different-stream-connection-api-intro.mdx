@@ -1,0 +1,6 @@
+The ChromecastConnection API allows you to implement callbacks related to Chromecast playback.
+To achieve the described use case you can use the `onStart` (i.e. the start of a Chromecast session) to set a new stream,
+and `onStop` (i.e. the end of a Chromecast session) to (re)set your previous stream.
+
+You may also be interested in `onJoin` (i.e. joining an existing Chromecast session with a new device) or
+`onLeave` (i.e. leaving an existing Chromecast session on a device).

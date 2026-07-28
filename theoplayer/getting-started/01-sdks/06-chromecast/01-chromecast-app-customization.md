@@ -35,7 +35,7 @@ The THEOplayer Chromecast Receiver SDK fits in the category of a "Custom Receive
 
 ### Sender application vs Receiver application
 
-When talking about customizing a Chromecast application, one needs to make a distinction between customizing [a Sender application versus a Receiver application](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md).
+When talking about customizing a Chromecast application, one needs to make a distinction between customizing [a Sender application versus a Receiver application](../../../how-to-guides/web/cast/chromecast/introduction.mdx).
 
 A **Chromecast Sender application** is the application on a "sender device" (e.g. smartphone, browser, ...) which initiates
 the Chromecast session. You use the Sender application to start (and stop) Chromecast playback, to pause the video or to mute it,
@@ -59,10 +59,10 @@ The UI of a Receiver application is typically quite simple:
 ## Customizing a Sender application
 
 _If you are using the THEOplayer Web, iOS or Android SDK in your Sender application, confirm that the `chromecast` [module is enabled](../../../faq/53-theoplayer-features-modules.md) for your SDK.
-This feature exposes a Chromecast API you can benefit from. Additionally, ensure that you [include the Chromecast library](../../../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md)._
+This feature exposes a Chromecast API you can benefit from. Additionally, ensure that you [include the Chromecast library](../../../how-to-guides/web/cast/chromecast/enable-chromecast-on-the-sender.mdx)._
 
 _Please refer to
-["Connecting from custom Sender applications"](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md)
+["Connecting from custom Sender applications"](../../../how-to-guides/web/cast/chromecast/connecting-from-custom-sender-applications.mdx)
 if you are not using THEOplayer's `chromecast` feature._
 
 Generally speaking, there are three types of user interfaces:
@@ -97,7 +97,7 @@ If you are using THEOplayer's default UI, but want to use your own button instea
 
 ## Customizing a Receiver application
 
-[Three Receiver application set-ups](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md) are common:
+[Three Receiver application set-ups](../../../how-to-guides/web/cast/chromecast/introduction.mdx) are common:
 
 1. You connect with THEOplayer's default Receiver application.
 2. You connect with a custom Receiver application powered by the THEOplayer Chromecast Receiver SDK.
@@ -110,7 +110,7 @@ your application is buffering or paused.
 
 If you are connected to OptiView Player's default Receiver application, you cannot modify its appearance. It is an application with OptiView Player functionality that uses Shaka for media playback.
 
-If you want to change the UI, you need to [connect your sender application with a different Receiver application ID](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md). Also if you need to use Google's legacy Media Player Library (MPL) for playback, you will need to change the Receiver application ID to `44BAE7D1`.
+If you want to change the UI, you need to [connect your sender application with a different Receiver application ID](../../../how-to-guides/web/cast/chromecast/connecting-from-custom-sender-applications.mdx). Also if you need to use Google's legacy Media Player Library (MPL) for playback, you will need to change the Receiver application ID to `44BAE7D1`.
 
 ### Custom Receiver application with THEOplayer Chromecast SDK
 
@@ -120,7 +120,7 @@ that the UI is similar to the default UI. However, through this approach, you ha
 
 ### Custom Receiver application without THEOplayer Chromecast SDK
 
-You can [connect your sender application with a custom Receiver application](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md) which does not use the THEOplayer Chromecast SDK.
+You can [connect your sender application with a custom Receiver application](../../../how-to-guides/web/cast/chromecast/connecting-from-custom-sender-applications.mdx) which does not use the THEOplayer Chromecast SDK.
 Naturally, you're responsible for the look and feel of this custom Receiver application.
 
 ## Conclusion
@@ -148,6 +148,6 @@ for your use-cases.
 
 - [Getting started on Chromecast](../../../getting-started/01-sdks/06-chromecast/00-getting-started.md). This article contains sample code. Note that the THEOplayer
   Chromecast SDK also contains a sample Receiver application.
-- [Enable Chromecast on the Sender](../../../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md)
-- [Chromecast Introduction](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md)
-- [How to configure a different stream to Chromecast](../../../how-to-guides/03-cast/01-chromecast/03-how-to-configure-to-a-different-stream.md)
+- [Enable Chromecast on the Sender](../../../how-to-guides/web/cast/chromecast/enable-chromecast-on-the-sender.mdx)
+- [Chromecast Introduction](../../../how-to-guides/web/cast/chromecast/introduction.mdx)
+- [How to configure a different stream to Chromecast](../../../how-to-guides/web/cast/chromecast/how-to-configure-to-a-different-stream.mdx)

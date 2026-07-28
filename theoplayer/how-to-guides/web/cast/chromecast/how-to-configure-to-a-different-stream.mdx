@@ -1,0 +1,77 @@
+---
+sidebar_position: 4
+sidebar_label: Configuring a different stream
+---
+
+# How to configure a different stream to Chromecast on Web
+
+import Intro from '../../../shared/cast/_chromecast-different-stream-intro.mdx';
+import ConnectionApiIntro from '../../../shared/cast/_chromecast-different-stream-connection-api-intro.mdx';
+import SourceApiIntro from '../../../shared/cast/_chromecast-different-stream-source-api-intro.mdx';
+
+<Intro />
+
+## ChromecastConnection API
+
+<ConnectionApiIntro />
+
+The snippet below has two [sources](pathname:///theoplayer/v11/api-reference/web/interfaces/SourceDescription.html):
+
+1. `senderSource` is intended for playback on your sender device (i.e. your browser)
+2. `chromecastSource` is intended for playback on your Chromecast application
+
+The [`ChromecastConnectionCallback`](pathname:///theoplayer/v11/api-reference/web/interfaces/ChromecastConnectionCallback.html) interface is used to:
+
+1. Set the `chromecastSource` when Chromecast playback starts through the `onStart` callback.
+2. Revert to the `senderSource` when Chromecast playback stops through the `onStop` callback.
+
+```js
+var senderSource = {
+  sources: {
+    src: 'https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8',
+    type: 'application/x-mpegurl',
+  },
+};
+var chromecastSource = {
+  sources: {
+    src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    type: 'application/x-mpegurl',
+  },
+};
+player.source = senderSource;
+player.cast.chromecast.connectionCallback = {
+  onStart: function (source) {
+    return chromecastSource;
+  },
+  onStop: function (source) {
+    return senderSource;
+  },
+  onJoin: function (source) {
+    return source;
+  },
+  onLeave: function (source) {
+    return source;
+  },
+};
+```
+
+The `onJoin` and `onLeave` implementations in the above snippet adhere to the default behavior.
+
+## Chromecast source API
+
+<SourceApiIntro />
+
+The [Chromecast API](pathname:///theoplayer/v11/api-reference/web/interfaces/Chromecast.html) allows you to configure a different source (i.e. [`SourceDescription`](pathname:///theoplayer/v11/api-reference/web/interfaces/SourceDescription.html)) to be Chromecasted.
+The snippet below demonstrates this API.
+
+```js
+const source = {
+  sources: [
+    {
+      src: '//cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
+};
+player.cast.chromecast.source = source;
+```

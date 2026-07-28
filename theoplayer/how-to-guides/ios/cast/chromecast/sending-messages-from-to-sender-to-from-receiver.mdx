@@ -1,0 +1,70 @@
+---
+sidebar_position: 5
+sidebar_label: Sending messages between Sender and Receiver
+---
+
+# Sending messages from/to Sender to/from Receiver on iOS
+
+import Intro from '../../../shared/cast/_chromecast-sending-messages-intro.mdx';
+import SendToReceiverIntro from '../../../shared/cast/_chromecast-sending-messages-send-to-receiver-intro.mdx';
+import ReceiveFromReceiverIntro from '../../../shared/cast/_chromecast-sending-messages-receive-from-receiver-intro.mdx';
+import ReceiverSide from '../../../shared/cast/_chromecast-sending-messages-receiver-side.mdx';
+
+<Intro />
+
+## Send data to the receiver
+
+<SendToReceiverIntro />
+
+On iOS, we need a component that implements the GCKGenericChannelDelegate protocol.
+
+```swift
+// Retrieve the current cast session
+let castSession = GCKCastContext.sharedInstance().sessionManager.currenCastSession
+// Create the defined namespace channel
+let channel = GCKGenericChannel(namespace: "namespace")
+// Set the delegate for the namespace channel (GCKGenericChannelDelegate)
+channel.delegate = self
+// Add the channel to the current cast session
+castSession?.add(channel)
+// Send message on channel (the error parameter is a pointer at which to store the error result, this may be nil)
+channel.sendTextMessage("message", error: nil)
+```
+
+Reference:
+
+- [https://developers.google.com/cast/docs/reference/ios/protocol_g_c_k_generic_channel_delegate-p](https://developers.google.com/cast/docs/reference/ios/protocol_g_c_k_generic_channel_delegate-p)
+- [https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_cast_session](https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_cast_session)
+- [https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_generic_channel](https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_generic_channel)
+- [https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_cast_session.html#a3514b6933a579d4255702375f542c16a](https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_cast_session.html#a3514b6933a579d4255702375f542c16a)
+- [https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_cast_channel.html#ab7f595487ce145f38b2e82e55126789b](https://developers.google.com/cast/docs/reference/ios/interface_g_c_k_cast_channel.html#ab7f595487ce145f38b2e82e55126789b)
+
+## Receive data from the receiver
+
+<ReceiveFromReceiverIntro />
+
+The delegate of the channel will handle the receiving of messages.
+
+```swift
+extension ChromecastController : GCKGenericChannelDelegate {
+    func cast(_ channel: GCKGenericChannel, didReceiveTextMessage message: String, withNamespace protocolNamespace: String) {
+        print("Channel didReceiveTextMessage", message)
+    }
+}
+```
+
+Reference:
+
+- [https://developers.google.com/cast/docs/reference/ios/protocol_g_c_k_generic_channel_delegate-p](https://developers.google.com/cast/docs/reference/ios/protocol_g_c_k_generic_channel_delegate-p)
+
+<ReceiverSide />
+
+## Related articles
+
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+
+- [Chromecast SDK Setup](../../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)
+
+- [How to configure a different stream to Chromecast](./how-to-configure-to-a-different-stream.mdx)
+
+- [Connecting from custom Sender applications](./connecting-from-custom-sender-applications.mdx)

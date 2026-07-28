@@ -1,0 +1,87 @@
+---
+sidebar_position: 2
+sidebar_label: Connecting from custom Sender applications
+---
+
+# Connecting from custom Sender applications on Web
+
+import Intro from '../../../shared/cast/_chromecast-connecting-from-custom-sender-applications-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The following web page should suffice:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+    <script>
+      window['__onGCastApiAvailable'] = function (isAvailable) {
+        if (isAvailable) {
+          cast.framework.CastContext.getInstance().setOptions({
+            receiverApplicationId: '$YOUR_APP_ID', // Adapt this
+            autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED, // And this if you want to
+          });
+        }
+      };
+    </script>
+    <script>
+      function startCasting(sourceDescription) {
+        var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
+        var mediaInfo = new chrome.cast.media.MediaInfo(sourceDescription.sources[0].src, sourceDescription.sources[0].type);
+        var request = new chrome.cast.media.LoadRequest(mediaInfo);
+        request.customData = { sourceDescription: sourceDescription };
+        castSession.loadMedia(request).then(
+          function () {
+            console.log('Load succeed');
+          },
+          function (errorCode) {
+            console.log('Error code: ' + errorCode);
+          }
+        );
+        var player = new cast.framework.RemotePlayer();
+        var playerController = new cast.framework.RemotePlayerController(player);
+        return playerController;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
+```
+
+Load this in Google Chrome, connect to a Chromecast device, and then you can do the following:
+
+```js
+startCasting({
+  sources: [
+    {
+      src: 'https://amssamples.streaming.mediaservices.windows.net/622b189f-ec39-43f2-93a2-201ac4e31ce1/BigBuckBunny.ism/manifest(format=mpd-time-csf)',
+      type: 'application/dash+xml',
+      contentProtection: {
+        widevine: {
+          licenseAcquisitionURL: 'https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac',
+        },
+      },
+    },
+  ],
+});
+```
+
+This will start playback.
+
+## Related articles
+
+- [How can we track the first play(ing) event?](../../../09-player/03-how-can-we-track-the-first-playing-event.md)
+
+- [How to start with a specific quality?](../../../06-mediatrack/05-how-to-start-with-specific-quality.md)
+
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+
+- [How to know whether a live stream is playing?](../../../../faq/14-how-to-know-when-livestream-is-playing.md)
+
+- [Getting started on Chromecast](../../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)

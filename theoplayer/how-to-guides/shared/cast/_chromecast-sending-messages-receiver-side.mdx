@@ -1,0 +1,46 @@
+## Receive data on the receiver
+
+_This example is for receiver version 2._
+
+The general idea is to retrieve the receiver manager and add a message listener for the specific namespace. **This needs to be done before a THEOplayer instance is created. THEOplayer will call the start method of the receiverManager on initialization.**
+
+```js
+// Retrieve the cast receiver manager
+var castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+// Retrieve the message bus from the cast receiver manager
+var messageBus = castReceiverManager.getCastMessageBus('namespace');
+// Add message listener to the message bus
+messageBus.onMessage = function (event) {
+  console.log(event);
+};
+```
+
+Reference:
+
+- [https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus](https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus)
+- [https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#onMessage](https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#onMessage)
+- [https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus.Event](https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus.Event)
+
+## Send data from the receiver
+
+_This example is for receiver version 2._
+
+There are multiple possibilities to send data from the receiver:
+
+1. When a message is received on the receiver, you can answer the sender
+
+2. Broadcast to all connected senders
+
+```js
+// 1.
+messageBus.onMessage = function (event) {
+  messageBus.send(event.senderId, 'message');
+};
+// 2.
+messageBus.broadcast('message');
+```
+
+Reference:
+
+- [https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#broadcast](https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#broadcast)
+- [https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#send](https://developers.google.com/cast/docs/reference/receiver/cast.receiver.CastMessageBus#send)

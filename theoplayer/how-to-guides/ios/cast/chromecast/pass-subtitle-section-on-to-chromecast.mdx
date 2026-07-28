@@ -1,0 +1,41 @@
+---
+sidebar_position: 6
+sidebar_label: Passing the subtitle selection to Chromecast
+---
+
+# Pass subtitle selection on to Chromecast on iOS
+
+import Intro from '../../../shared/cast/_chromecast-pass-subtitle-selection-intro.mdx';
+
+<Intro />
+
+## Solution
+
+Here is how you pass the current active subtitle track to the Chromecast session:
+
+```swift
+var currentTextTrack: TextTrack?
+
+    self.theoplayer.textTracks.addEventListener(type: TextTrackListEventTypes.CHANGE) { (result) in
+        for i in 0..<self.theoplayer.textTracks.count {
+        if self.theoplayer.textTracks[i].mode == .showing {
+            currentTextTrack = self.theoplayer.textTracks[i]
+        }
+        }
+    }
+
+    self.theoplayer.cast?.chromecast?.addEventListener(type: ChromecastEventTypes.STATE_CHANGE, listener: { (result) in
+    if result.state == .connected {
+            self.theoplayer.addEventListener(type: PlayerEventTypes.PLAYING) { (result) in
+                for i in 0..<self.theoplayer.textTracks.count {
+                    var tt = self.theoplayer.textTracks[i]
+                        if tt.id == currentTextTrack?.id {
+                        tt.mode = .showing
+                        }
+                    }
+                }
+            }
+
+        })
+}
+```

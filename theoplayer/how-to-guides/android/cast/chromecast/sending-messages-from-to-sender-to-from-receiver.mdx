@@ -1,0 +1,62 @@
+---
+sidebar_position: 5
+sidebar_label: Sending messages between Sender and Receiver
+---
+
+# Sending messages from/to Sender to/from Receiver on Android
+
+import Intro from '../../../shared/cast/_chromecast-sending-messages-intro.mdx';
+import SendToReceiverIntro from '../../../shared/cast/_chromecast-sending-messages-send-to-receiver-intro.mdx';
+import ReceiveFromReceiverIntro from '../../../shared/cast/_chromecast-sending-messages-receive-from-receiver-intro.mdx';
+import ReceiverSide from '../../../shared/cast/_chromecast-sending-messages-receiver-side.mdx';
+
+<Intro />
+
+## Send data to the receiver
+
+<SendToReceiverIntro />
+
+```java
+// Retrieve the current cast session
+CastSession castSession = CastContext.getSharedInstance(this).getSessionManager().getCurrentCastSession();
+// Send message on defined namespace channel
+castSession.sendMessage("namespace", "message");
+```
+
+Reference:
+
+- [https://developers.google.com/android/reference/com/google/android/gms/cast/framework/CastSession](https://developers.google.com/android/reference/com/google/android/gms/cast/framework/CastSession)
+
+## Receive data from the receiver
+
+<ReceiveFromReceiverIntro />
+
+```java
+// Retrieve the current cast session
+CastSession castSession = CastContext.getSharedInstance(this).getSessionManager().getCurrentCastSession();
+// Create callback handler
+Cast.MessageReceivedCallback callback = new Cast.MessageReceivedCallback() {
+    @Override
+    public void onMessageReceived(CastDevice castDevice, String namespace, String message) {
+        // Do something with the message
+    }
+};
+// Add the message listener to the current cast session
+castSession.setMessageReceivedCallbacks("namespace", callback);
+```
+
+Reference:
+
+- [https://developers.google.com/android/reference/com/google/android/gms/cast/framework/CastSession.html#setMessageReceivedCallbacks(java.lang.String,%20com.google.android.gms.cast.Cast.MessageReceivedCallback)](<https://developers.google.com/android/reference/com/google/android/gms/cast/framework/CastSession.html#setMessageReceivedCallbacks(java.lang.String,%20com.google.android.gms.cast.Cast.MessageReceivedCallback)>)
+
+<ReceiverSide />
+
+## Related articles
+
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+
+- [Chromecast SDK Setup](../../../../getting-started/01-sdks/06-chromecast/00-getting-started.md)
+
+- [How to configure a different stream to Chromecast](./how-to-configure-to-a-different-stream.mdx)
+
+- [Connecting from custom Sender applications](./connecting-from-custom-sender-applications.mdx)

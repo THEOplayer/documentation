@@ -8,7 +8,7 @@ The purpose of this article is to group common challenges application developers
 
 ## Why does Chromecast or AirPlay not work?
 
-If you've [correctly enabled Chromecast](../how-to-guides/03-cast/01-chromecast/06-enable-chromecast-on-the-sender.md) or AirPlay,
+If you've [correctly enabled Chromecast](../how-to-guides/web/cast/chromecast/enable-chromecast-on-the-sender.mdx) or AirPlay,
 but you are not getting any playback on your Chromecast or AirPlay device,
 then a likely cause is your [tokenization](../how-to-guides/web/uplynk/01-preplay.md#using-tokens) approach.
 

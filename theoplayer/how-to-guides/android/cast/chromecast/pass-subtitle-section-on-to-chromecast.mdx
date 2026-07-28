@@ -1,0 +1,39 @@
+---
+sidebar_position: 6
+sidebar_label: Passing the subtitle selection to Chromecast
+---
+
+# Pass subtitle selection on to Chromecast on Android
+
+import Intro from '../../../shared/cast/_chromecast-pass-subtitle-selection-intro.mdx';
+
+<Intro />
+
+## Solution
+
+Here is how you pass the current active subtitle track to the Chromecast session:
+
+```java
+final TextTrack[] currentTextTrack = new TextTrack[1];
+final Player player = theoPlayerView.getPlayer();
+
+player.getTextTracks().addEventListener(TextTrackListEventTypes.TRACKLISTCHANGE, trackListChangeEvent -> {
+    for (TextTrack textTrack : player.getTextTracks()) {
+        if (textTrack.getMode() == TextTrackMode.SHOWING) {
+            currentTextTrack[0] = textTrack;
+        }
+    }
+});
+
+theoPlayerView.getCast().getChromecast().addEventListener(ChromecastEventTypes.STATECHANGE, stateChangeEvent -> {
+    if (theoPlayerView.getCast().getChromecast().getState() == PlayerCastState.CONNECTED) {
+        player.addEventListener(PlayerEventTypes.PLAYING, playingEvent -> {
+            for (TextTrack textTrack : player.getTextTracks()) {
+                if (textTrack.getId() == currentTextTrack[0].getId()) {
+                    textTrack.setMode(TextTrackMode.SHOWING);
+                }
+            }
+        });
+    }
+});
+```
