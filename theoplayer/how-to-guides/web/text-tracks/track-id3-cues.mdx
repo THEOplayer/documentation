@@ -19,6 +19,9 @@ event of a [`TextTrack`](pathname:///theoplayer/v11/api-reference/web/interfaces
 ```js
 player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
   const track = addTrackEvent.track;
+  if (track.kind !== 'metadata') {
+    return;
+  }
 
   track.addEventListener('cuechange', function (cueChangeEvent) {
     // here you can access the cues of the track, and display the metadata to the outside
@@ -37,6 +40,9 @@ The entered cue is available as [`event.cue`](pathname:///theoplayer/v11/api-ref
 ```js
 player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
   const track = addTrackEvent.track;
+  if (track.kind !== 'metadata') {
+    return;
+  }
 
   track.addEventListener('entercue', function (enterCueEvent) {
     // log entercue event
@@ -55,12 +61,17 @@ function enterListener(event) {
   console.log(event);
 }
 function handleTrackCreation(addTrackEvent) {
-  addTrackEvent.track.cues.forEach(function (cue) {
+  const track = addTrackEvent.track;
+  if (track.kind !== 'metadata') {
+    return;
+  }
+
+  track.cues.forEach(function (cue) {
     cue.addEventListener('enter', enterListener);
   });
 
   // detect cues being added to the track
-  addTrackEvent.track.addEventListener('addcue', function (addCueEvent) {
+  track.addEventListener('addcue', function (addCueEvent) {
     // detect a cue being shown from a track
     addCueEvent.cue.addEventListener('enter', enterListener);
   });
