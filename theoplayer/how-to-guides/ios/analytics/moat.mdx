@@ -1,0 +1,52 @@
+---
+sidebar_position: 2
+sidebar_label: Moat
+---
+
+# Moat on iOS
+
+import Intro from '../../shared/analytics/_moat-intro.mdx';
+
+<Intro />
+
+:::note
+Moat is not supported on tvOS.
+:::
+
+## Prerequisites
+
+THEOplayer supports Moat Analytics integration from Moat SDK version 3.6.0+. This integration is only available upon request.
+
+Once you've received a build which has THEOplayer's Moat integration, you have to import the Moat framework:
+
+```swift
+import DMSMoatMobileAppKit
+```
+
+## Configuration
+
+Enable Google IMA in your THEOplayer instance:
+
+```swift
+let config = THEOplayerConfiguration(defaultCSS: true, googleIMA: true)
+let theoplayer = THEOplayer(configuration: config)
+```
+
+Configure a Google IMA source with Moat Analytics enabled:
+
+```swift
+public static var moatPreroll : SourceDescription {
+    let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl")
+    return SourceDescription(
+        source : typedSource,
+        ads: [
+            GoogleImaAdDescription(src: "<AD_TAG_URL>")],
+        analytics: [MoatOptions(partnerCode: "<PARTNER_CODE>", debugLoggingEnabled: true)]
+    )
+}
+```
+
+## Related links
+
+- Demo page: [https://demo.theoplayer.com/moat-analytics-pre-integration](https://demo.theoplayer.com/moat-analytics-pre-integration)
+- [Analytics API](<pathname:///theoplayer/v11/api-reference/ios/Analytics.html#/c:@M@THEOplayerSDK@objc(pl)THEOplayerAnalyticsDescription>)

@@ -1,0 +1,72 @@
+---
+sidebar_position: 7
+sidebar_label: Custom Analytics Integration
+---
+
+# Custom Analytics Integration on iOS
+
+import Intro from '../../shared/analytics/_custom-analytics-integration-intro.mdx';
+import Metrics from '../../shared/analytics/_custom-analytics-integration-metrics.mdx';
+import SessionManagement from '../../shared/analytics/_custom-analytics-integration-session-management.mdx';
+import Conclusion from '../../shared/analytics/_custom-analytics-integration-conclusion.mdx';
+
+<Intro />
+
+## Prerequisites
+
+There are two prerequisites in order to continue with this guide:
+
+1. You have a THEOplayer license. You can grab a license at [https://portal.theoplayer.com](https://portal.theoplayer.com).
+2. You have some basic knowledge on how to use THEOplayer, and can navigate comfortably through [the API](pathname:///theoplayer/v11/api-reference/ios/) to find relevant events.
+
+Refer to our [getting started guide](../../../getting-started/01-sdks/03-ios/00-getting-started.mdx) before advancing to the code samples.
+
+## API
+
+You can access the video data through the THEOplayer API. Through the API, you can subscribe to events, and attach a callback.
+For example, when the `ended` event is triggered (meaning: someone completely watched the video),
+your callback could be that when this happens, you do a request to a remote video analytics service.
+
+Events are organized across interfaces and subinterfaces, as illustrated by the image below. For example, the player
+contains general video player events like `play`, `pause` and `ended`.
+The ads interface contains events related to advertisements, like `adbreakbegin` and `adend`.
+
+![THEOplayer API Interfaces and Events](../../../assets/img/analytics-events.png 'THEOplayer API Interfaces and Events')
+
+When creating a custom analytics implementation, you must familiarize yourself with the relevant interfaces and events.
+Below is an (incomplete) list of some common interfaces and their event maps.
+
+- [Player](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html): general video events, like a play, a pause, and so on.
+- [Ads](pathname:///theoplayer/v11/api-reference/ios/Ads%20Events.html): to detect when an ad starts and stops.
+- [AudioTrackList](pathname:///theoplayer/v11/api-reference/ios/Structs/AudioTrackListEventTypes.html): to detect when a new audio track is added, or when another audio track becomes active.
+- [TextTrackList](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackListEventTypes.html): comparable to AudioTrackList, but for subtitles, closed captions and metadata (e.g. id3, emsg, EventStream, EXT-X-DATERANGE).
+- Cast: [AirPlay](pathname:///theoplayer/v11/api-reference/ios/Structs/AirPlayEventTypes.html) and [Chromecast](pathname:///theoplayer/v11/api-reference/ios/Structs/ChromecastEventTypes.html) events.
+
+Video quality events are unavailable on iOS due to Apple limitations.
+
+Note that maintaining the above list manually is unfortunately a no-go because our interfaces evolve.
+This means that you should research your events through our [API reference](pathname:///theoplayer/v11/api-reference/ios/).
+
+When doing a custom analytics integration, you should also check our articles on [error handling](../../07-miscellaneous/04-error/00-introduction.md).
+
+### Video analytics metrics and events
+
+<Metrics />
+
+### Session management
+
+<SessionManagement />
+
+## Integrating Google Analytics
+
+Refer to Google Analytics' documentation at https://developers.google.com/analytics/solutions/mobile if you're interested in integrating Google Analytics.
+Similar to the Web SDK, developers would subscribe to events and properties emitted by THEOplayer and create a custom mapping to the Google Analytics library.
+
+## Conclusion
+
+<Conclusion />
+
+Extra resources:
+
+1. [THEOplayer API](pathname:///theoplayer/v11/api-reference/ios/)
+2. [THEOplayer Getting Started Guide](../../../getting-started/01-sdks/03-ios/00-getting-started.mdx)

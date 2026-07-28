@@ -1,0 +1,85 @@
+---
+sidebar_position: 6
+sidebar_label: Conviva
+---
+
+# Conviva on iOS
+
+import Intro from '../../shared/analytics/_conviva-intro.mdx';
+import Resources from '../../shared/analytics/_conviva-resources.mdx';
+
+<Intro />
+
+## Prerequisites
+
+1. The THEOplayer iOS SDK Conviva Connector requires the application to import the THEOplayer iOS SDK since the connector relies on its public APIs. For more details, check out our [Getting started on iOS](../../../getting-started/01-sdks/03-ios/00-getting-started.mdx) guide.
+2. For setting up a valid Conviva session, you must have access to a Conviva developer account with access to a debug or production key.
+
+## Installation
+
+### [Swift Package Manager](https://swift.org/package-manager/)
+
+1. In Xcode, install the Conviva libraries by navigating to **File > Add Packages**
+2. In the prompt that appears, select the iOS-Connector GitHub repository: `https://github.com/THEOplayer/iOS-Connector`
+3. Select the version you want to use.
+4. Choose the Connector libraries you want to include in your app.
+
+### [Cocoapods](https://guides.cocoapods.org/using/getting-started.html#getting-started)
+
+1. Create a Podfile if you don't already have one. From the root of your project directory, run the following command: `pod init`
+2. To your Podfile, add the Conviva connector pods that you want to use in your app: `pod 'THEOplayer-Connector-Conviva'`
+3. Install the pods using `pod install`, then open your `.xcworkspace` file to see the project in Xcode.
+
+## Usage
+
+Import the `THEOplayerConnectorConviva` module:
+
+```swift
+import THEOplayerConnectorConviva
+```
+
+Create a `ConvivaConfiguration` that contains the info on how to connect to your conviva endpoint:
+
+```swift
+let configuration = ConvivaConfiguration(
+    customerKey: "put your customer key here",
+    gatewayURL: " put your  gateway URL here ",
+    logLevel: .LOGLEVEL_FUNC
+)
+```
+
+Create a `ConvivaConnector` that uses this `configuration` and your `THEOplayer` instance:
+
+```swift
+let connector = ConvivaConnector(
+    configuration: configuration,
+    player: yourTHEOplayer
+)
+```
+
+For each asset you play, the **asset name** needs to be reported to Conviva which you can do by providing the asset name as a `title` field inside your `SourceDescription's metadata`:
+
+```swift
+let mySource = SourceDescription(source: source, metadata: MetadataDescription(metadataKeys: ["title": "your_asset_name"]))
+```
+
+Alternatively, the asset name can be provided as contentInfo (`CIS_SSDK_METADATA_ASSET_NAME`) using the `setContentInfo` method, along with other metadata. For example to report the viewer's ID:
+
+```swift
+let contentInfo = [
+   CIS_SSDK_METADATA_VIEWER_ID: "your_viewer_id"
+]
+connector.setContentInfo(contentInfo)
+```
+
+**Important note**: setting a new source on the player will reset previously set `contentInfo`. Make sure to use the `setContentInfo` method after receiving the `SOURCE_CHANGE` event.
+
+### Lifecycle
+
+Hold a reference to your connector. Once the connector is released from memory it will clean up itself and stop reporting to Conviva.
+
+## Related links
+
+- [iOS SDK connector on GitHub](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva)
+
+<Resources />

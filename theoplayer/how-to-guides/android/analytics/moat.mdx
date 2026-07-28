@@ -1,0 +1,70 @@
+---
+sidebar_position: 2
+sidebar_label: Moat
+---
+
+# Moat on Android
+
+import Intro from '../../shared/analytics/_moat-intro.mdx';
+
+<Intro />
+
+## Prerequisites
+
+The THEOplayer Android SDK supports Moat analytics (version 2.4.3+) out-of-the-box. Below you can find the steps to enable Moat tracking.
+
+1. Include the Moat native Android SDK in the gradle file:
+
+```java
+repositories {
+    flatDir {
+    dirs 'libs'
+    }
+}
+
+dependencies {
+    compile (name: 'moat-mobile-app-kit', ext:'aar')
+}
+```
+
+2. (Optional for Moat 2.4.2+) Ensure Google Play Ads dependencies are included.
+   If this is omitted, this functionality will be limited.
+
+```java
+dependencies {
+    compile 'com.google.android.gms:play-services-ads:+'
+    compile 'com.android.support:support-v4:+'
+}
+```
+
+3. Set your application for THEOplayer when the Application is created:
+
+```java
+import android.app.Application;
+import com.moat.analytics.mobile.moatnamespace.MoatAnalytics;
+
+public class MyApplication extends Application {
+    @Overridepublic void onCreate() {
+    super.onCreate();
+    THEOplayerGlobal.getSharedInstance(this).setApplicationInstance(this);
+    }
+}
+```
+
+## Configuration
+
+Configure the Moat **partner code** and **namespace** and enable Google IMA.
+
+```java
+new THEOplayerConfig.Builder()
+    .googleIma(true)
+    .analytics(new MoatOptions.Builder("NAMESPACE", "<PARTNER_CODE>").loggingEnabled(true).build())
+    .build();
+```
+
+When you want to make use of Moat for tracking advertisements, you should make use of the [GoogleImaAdDescription](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.html).
+
+## Related links
+
+- Demo page: [https://demo.theoplayer.com/moat-analytics-pre-integration](https://demo.theoplayer.com/moat-analytics-pre-integration)
+- [Analytics API](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/analytics/package-summary.html)

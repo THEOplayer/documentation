@@ -1,0 +1,37 @@
+Let's discuss some popular metrics, and how you could track them with video player events.
+
+Plays (or Impressions). This metric represents the amount of plays.
+You can calculate this event by identifying the first `playing` event after every `sourcechange` event.
+
+Video Startup Time (or Time-to-First-Frame or Join Latency). This metric represents the time it takes your video to start.
+You can calculate this event by calculating the difference between the timestamps of the first `playing` and the first `play` event after every `sourcechange` event.
+
+Seek Time (or Seek Latency). This metric represents the time it takes for your video to resume when you scrub to another position.
+You can calculate this event by calculating the difference between the timestamps of the `seeking` and the `seeked` event.
+
+Watch Time. This metric represents how much time is spent watching content by your viewers.
+You calculate this value by tracking the `playing` event, and halting it when the `waiting`, `pause`, `ended` or `error` event occurs.
+
+Rebuffer Ratio (or Stalls). This metric represents how often the viewer is watching the "spinner icon" versus the actual video.
+This metric is closely related to the Watch Time.
+You can calculate this event by tracking the `waiting` event, which is triggered when the video starts to stall, and the `playing` event.
+
+Average Bitrate. This metric represents the average video quality that your viewers are watching.
+You can calculate this metric by tracking the `activequalitychanged` event of the active video track.
+
+Average % Complete (or Watched Ratio). This metric represents the relative completion rate of your videos.
+This metric is related to the Watch Time, and related in a similar fashion.
+You could also use the player's `duration` to determine the length of the asset.
+
+Exit Before Video Start. This metric represents how often your viewers aren't able to start the video, even though they had the intent to watch it.
+You can calculate this metric by tracking the first `play` event, and it never getting to the `playing` event.
+
+Video Playback Failure. This metric represents how often your viewers have a problem with playback once a video starts.
+You can calculate this metric by tracking the `error` event after the first `playing` event.
+
+Note that these proposed calculations are only loosely formulated to help you understand the relationship between video metrics and a video player API.
+
+When talking about metrics, you often apply dimensions or filters to a metric.
+For example, when talking about the "Plays" metric (see above), the base metric would apply to all logs throughout all time.
+When analyzing your data, you might want to apply a filter (or dimension), such time (to consider all "Plays" for a specific period of time), asset (to research a specific asset), user (to check a specific user's activity), and so on.
+It is up to you (or your commercial analytics service) to associate certain dimensions with a raw video player event.

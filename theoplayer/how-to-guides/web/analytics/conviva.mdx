@@ -1,0 +1,126 @@
+---
+sidebar_position: 6
+sidebar_label: Conviva
+---
+
+# Conviva on Web
+
+import Intro from '../../shared/analytics/_conviva-intro.mdx';
+import Resources from '../../shared/analytics/_conviva-resources.mdx';
+
+<Intro />
+
+## Prerequisites
+
+1. A THEOplayer build with a valid license is required. You can
+   - either install the [THEOplayer SDK through NPM](https://www.npmjs.com/package/theoplayer),
+   - or generate your custom THEOplayer SDK through the [THEOportal](https://portal.theoplayer.com/login) (this includes also a license).
+2. Follow the [Getting started on Web](../../../getting-started/01-sdks/01-web/00-getting-started.mdx) guide to include your player on a simple HTML page.
+3. For setting up a valid Conviva session, you must have access to a Conviva developer account with access to a debug or production key.
+
+## Installation
+
+Install using your favorite package manager for Node (such as npm or yarn):
+
+**Install via npm**
+
+`npm install @theoplayer/conviva-connector-web`
+
+**Install via yarn**
+
+`yarn add @theoplayer/conviva-connector-web`
+
+## Usage
+
+### Step 1
+
+Define the Conviva metadata and configuration:
+
+```javascript
+const convivaMetadata = {
+  ['Conviva.assetName']: 'ASSET_NAME_GOES_HERE',
+  ['Conviva.streamUrl']: 'CUSTOMER_STREAM_URL_GOES_HERE',
+  ['Conviva.streamType']: 'STREAM_TYPE_GOES_HERE', // VOD or LIVE
+  ['Conviva.applicationName']: 'APPLICATION_NAME_GOES_HERE',
+  ['Conviva.viewerId']: 'VIEWER_ID_GOES_HERE',
+};
+
+const convivaConfig = {
+  debug: false,
+  gatewayUrl: 'CUSTOMER_GATEWAY_GOES_HERE',
+  customerKey: 'CUSTOMER_KEY_GOES_HERE', // Can be a test or production key.
+};
+```
+
+### Step 2
+
+Using these configs you can create the Conviva connector with THEOplayer. Alternatives:
+
+- Add as a regular script:
+
+```javascript
+<script type="text/javascript" src="path/to/conviva-connector.umd.js"></script>
+<script type="text/javascript">
+  const player = new THEOplayer.Player(element, configuration);
+  const convivaIntegration = new THEOplayerConvivaConnector.ConvivaConnector(
+    player,
+    convivaMetadata,
+    convivaConfig
+  );
+</script>
+```
+
+- Add as an ES2015 module:
+
+```javascript
+<script type="module">
+  import {ConvivaConnector} from "path/to/conviva-connector.esm.js"; const player = new THEOplayer.Player(element, configuration); const
+  convivaIntegration = new ConvivaConnector( player, convivaMetadata, convivaConfig );
+</script>
+```
+
+The Conviva connector is now ready to start a session once THEOplayer starts playing a source.
+
+### Notes
+
+- You can download the latest Conviva library from [Conviva Developer Community](https://community.conviva.com/site/global/home/p_home.gsp).
+- You can use any version of Conviva library supporting Video and Ads Analytics.
+- The THEOplayer instance (variable `player`) needs to be initialized before Conviva connector.
+- `convivaConfig` contains the details of the Conviva configuration and `convivaMetadata` is used to add manually metadata associated to that content.
+
+### Usage with Yospace connector
+
+If you have a Yospace SSAI stream and want to also report ad related events to Conviva, you can use this connector in combination with the Yospace connector: [@theoplayer/yospace-connector-web](https://www.npmjs.com/package/@theoplayer/yospace-connector-web)
+
+After configuring the Yospace connector, you can link it to the Conviva connector:
+
+```javascript
+async function setupYospaceConnector(player) {
+  const source = {
+    sources: [
+      {
+        src: 'https://csm-e-sdk-validation.bln1.yospace.com/csm/extlive/yospace02,hlssample42.m3u8?yo.br=true&yo.av=4',
+        ssai: {
+          integration: 'yospace',
+        },
+      },
+    ],
+  };
+
+  // Create the connectors.
+  const yospace = new THEOplayerYospaceConnector.YospaceConnector(player);
+  const conviva = new THEOplayerConvivaConnector.ConvivaConnector(player, convivaMetadata, convivaConfig);
+
+  // Link ConvivaConnector with the YospaceConnector.
+  conviva.connect(yospace);
+
+  // Set the source.
+  await yospace.setupYospaceSession(source);
+}
+```
+
+## Related links
+
+- [Web SDK connector on GitHub](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)
+
+<Resources />

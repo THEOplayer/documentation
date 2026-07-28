@@ -178,5 +178,57 @@
   {
     "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/offline-drm-notifications-android/",
     "to": "/theoplayer/how-to-guides/android/drm/offline-drm-notifications/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/introduction/",
+    "to": "/theoplayer/how-to-guides/web/analytics/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/moat/",
+    "to": "/theoplayer/how-to-guides/web/analytics/moat/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/mux/",
+    "to": "/theoplayer/how-to-guides/web/analytics/mux/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/youbora/",
+    "to": "/theoplayer/how-to-guides/web/analytics/youbora/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/agama/",
+    "to": "/theoplayer/how-to-guides/web/analytics/agama/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/conviva/introduction/",
+    "to": "/theoplayer/how-to-guides/web/analytics/conviva/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/conviva/conviva-connector/",
+    "to": "/theoplayer/how-to-guides/web/analytics/conviva/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/custom-analytics-integration/",
+    "to": "/theoplayer/how-to-guides/web/analytics/custom-analytics-integration/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/adobe-analytics/",
+    "to": "/theoplayer/how-to-guides/web/analytics/adobe-analytics/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/mediamelon-smartsight/",
+    "to": "/theoplayer/how-to-guides/web/analytics/mediamelon-smartsight/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/wicket-labs/",
+    "to": "/theoplayer/how-to-guides/web/analytics/wicket-labs/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/tealium/",
+    "to": "/theoplayer/how-to-guides/web/analytics/tealium/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/segment/",
+    "to": "/theoplayer/how-to-guides/web/analytics/segment/"
   }
 ]
