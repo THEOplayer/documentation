@@ -3,3 +3,7 @@ or how you can set a default language.
 
 This article assumes that you are using text tracks that are loaded with the manifest.
 If you add the text track separately, you can also mark it as the default track when you configure your source.
+
+The examples below match tracks on their `language` property, which contains the ISO language code of the track.
+If that is not sufficient for your use case, for example when a stream contains multiple tracks with the same language,
+you can match on the track's `label` instead, which contains the human-readable name shown in your UI.

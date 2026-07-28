@@ -13,13 +13,11 @@ import Intro from '../../shared/text-tracks/_change-visible-captions-intro.mdx';
 
 The function below disables all text tracks which are currently active,
 and then enables the text track with the requested language.
-Note that this example matches on the track's `label`.
-Alternatively, you can match on the track's `language`, which contains the ISO language code.
 
 ```kotlin
 fun setLanguage(player: Player, language: String) {
     for (textTrack in player.textTracks) {
-        textTrack.mode = if (textTrack.label == language) {
+        textTrack.mode = if (textTrack.language == language) {
             TextTrackMode.SHOWING
         } else {
             TextTrackMode.DISABLED

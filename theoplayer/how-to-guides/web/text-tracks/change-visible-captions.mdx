@@ -13,8 +13,6 @@ import Intro from '../../shared/text-tracks/_change-visible-captions-intro.mdx';
 
 The function below disables all text tracks which are currently active,
 and then enables the text track with the requested language.
-Note that this example matches on the track's `label`.
-Alternatively, you can match on the track's `language`, which contains the ISO language code.
 
 ```js
 function setLanguage(player, language) {
@@ -28,7 +26,7 @@ function setLanguage(player, language) {
     });
   // Enable the text track for a specific language
   const requestedTrack = player.textTracks.find(function (track) {
-    return track.label === language;
+    return track.language === language;
   });
   if (requestedTrack) {
     requestedTrack.mode = 'showing';

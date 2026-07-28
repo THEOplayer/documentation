@@ -12,15 +12,13 @@ import Intro from '../../shared/text-tracks/_change-visible-captions-intro.mdx';
 ## Usage
 
 The function below enables the text track with the requested language.
-Note that this example matches on the track's `label`.
-Alternatively, you can match on the track's `language`, which contains the ISO language code.
 
 ```swift
 private func setLanguage(player: THEOplayer, language: String) {
     let list: TextTrackList = player.textTracks
     for i in 0..<list.count {
         let textTrack: TextTrack = list[i]
-        textTrack.mode = textTrack.label == language ? .showing : .disabled
+        textTrack.mode = textTrack.language == language ? .showing : .disabled
     }
 }
 ```
