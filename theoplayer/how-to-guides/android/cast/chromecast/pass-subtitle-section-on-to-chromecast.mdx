@@ -25,7 +25,8 @@ player.textTracks.addEventListener(TextTrackListEventTypes.TRACKLISTCHANGE) {
 chromecast.addEventListener(ChromecastEventTypes.STATECHANGE) {
     if (chromecast.state == PlayerCastState.CONNECTED) {
         player.addEventListener(PlayerEventTypes.PLAYING) {
-            player.textTracks.firstOrNull { it.id == currentTextTrack?.id }?.mode = TextTrackMode.SHOWING
+            val tt = player.textTracks.firstOrNull { it.id == currentTextTrack?.id }
+            tt?.mode = TextTrackMode.SHOWING
         }
     }
 }
