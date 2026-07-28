@@ -1,0 +1,11 @@
+An integration with Wicket Labs can be integrated on top of THEOplayer.
+
+1. As a customer of Wicket Labs, you need to verify that Wicket Labs can ingest data from your selected database solution (e.g. Firebase).
+   _(It should be noted that Wicket Labs does not provide its own database service to store playback events.
+   Instead, Wicket Labs plugs into your database service.)_
+2. As a customer of Wicket Labs and THEOplayer, you need to emit the playback events ([as defined per Wicket Labs](https://www.wicketlabs.com/resources/knowledge-base/how-to-setup-firebase-for-ott-video-services/)) to your database service.
+   In other words, you need to hook into certain events emitted by THEOplayer, reformat them, and re-emit them to your database service.
+
+- To facilitate the implementation of Wicket Labs [related to THEOplayer], Wicket Labs and THEOplayer collaborate on publicly available code samples. These code samples are published as Git repositories on https://github.com/THEOplayer.
+- Developers are free to do their custom integration of Wicket Labs and THEOplayer, or may modify the publicly available code samples.
+  - Wicket Labs' article on [How to Setup Firebase for OTT Video Services](https://www.wicketlabs.com/resources/knowledge-base/how-to-setup-firebase-for-ott-video-services/) is a great starting point if you're interested in customizing.
