@@ -38,10 +38,10 @@
     "docusaurus-plugin-openapi-docs": "^5.1.2",
     "docusaurus-theme-openapi-docs": "^5.1.2",
     "prism-react-renderer": "^2.4.1",
-    "react": "^19.2.7",
+    "react": "^19.2.8",
     "react-ace": "^14.0.1",
     "react-aria-components": "^1.19.0",
-    "react-dom": "^19.2.7",
+    "react-dom": "^19.2.8",
     "url": "^0.11.4"
   },
   "devDependencies": {
