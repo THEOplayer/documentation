@@ -15,17 +15,16 @@ Set the [`targetQuality`](pathname:///theoplayer/v11/api-reference/web/interface
 of a [`MediaTrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/MediaTrack.html) to a single quality, to an array of qualities, or to `null`.
 
 ```js
+const videoTrack = player.videoTracks[0];
+
 // enable a specific video track quality
-player.videoTracks[0].targetQuality = player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality];
+videoTrack.targetQuality = videoTrack.qualities[indexOfRequestedVideoTrackQuality];
 
 // do ABR on a set of qualities
-player.videoTracks[0].targetQuality = [
-  player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality1],
-  player.videoTracks[0].qualities[indexOfRequestedVideoTrackQuality2],
-];
+videoTrack.targetQuality = [videoTrack.qualities[indexOfRequestedVideoTrackQuality1], videoTrack.qualities[indexOfRequestedVideoTrackQuality2]];
 
 // set to default ABR algorithm
-player.videoTracks[0].targetQuality = null;
+videoTrack.targetQuality = null;
 ```
 
 ## Related articles
