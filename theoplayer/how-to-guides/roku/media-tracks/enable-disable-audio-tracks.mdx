@@ -1,0 +1,36 @@
+---
+sidebar_position: 1
+sidebar_label: Enable or disable audio tracks
+---
+
+# How to programmatically enable or disable audio tracks on Roku
+
+import Intro from '../../shared/media-tracks/_enable-disable-audio-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+To set a preferred audio track, you can write a function like `setAudioLanguage`.
+This function accepts `language` as a string parameter.
+It then searches for the specified language in the audio tracks, and enables the track if it has a matching language.
+
+```brightscript
+function setAudioLanguage(language as String)
+  audioTracks = m.player.audioTracks
+  for i = audioTracks.count() - 1 to 0 step -1
+    if audioTracks[i].language = language then
+      audioTracks[i].enabled = true
+    else
+      audioTracks[i].enabled = false
+    end if
+  end for
+  'required because roku deep-copied roAssociativeArray through fields (pass-by-value)
+  'read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
+  m.player.audioTracks = audioTracks
+end function
+```
+
+## Related articles
+
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)

@@ -1,0 +1,39 @@
+---
+sidebar_position: 3
+sidebar_label: Enable or disable text tracks
+---
+
+# How to programmatically enable or disable text tracks on Roku
+
+import Intro from '../../shared/text-tracks/_enable-disable-text-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+To disable all text tracks, iterate through all text tracks and set the `mode` field to `disabled` for each of them.
+
+Note that in BrightScript and SceneGraph you have to assign a whole new associative array to the interface field
+in order to change the associative array exposed through the interface.
+Attempts to change fields of an associative array or elements of an array have no effect.
+
+```brightscript
+'disable all tracks
+textTracks = m.player.textTracks
+for i = textTracks.count() - 1 to 0 step -1
+  textTracks[i].mode = "disabled"
+end for
+'assignment of new roAssociativeArray is required because roku deep-copied roAssociativeArray through fields (pass-by-value)
+'read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
+m.player.textTracks = textTracks
+
+'disable specific track
+textTracks = m.player.textTracks
+textTracks[indexOfRequestedTextTrack].mode = "disabled"
+m.player.textTracks = textTracks
+```
+
+## Related articles
+
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)

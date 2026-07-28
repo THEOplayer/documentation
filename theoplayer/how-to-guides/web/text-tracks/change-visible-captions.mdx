@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+sidebar_label: Change the visible captions
+---
+
+# How to dynamically change the visible captions on Web
+
+import Intro from '../../shared/text-tracks/_change-visible-captions-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The function below disables all text tracks which are currently active,
+and then enables the text track with the requested language.
+Note that this example matches on the track's `label`.
+Alternatively, you can match on the track's `language`, which contains the ISO language code.
+
+```js
+function setLanguage(player, language) {
+  // Disable all text tracks that are currently active
+  player.textTracks
+    .filter(function (track) {
+      return track.mode !== 'disabled';
+    })
+    .forEach(function (track) {
+      track.mode = 'disabled';
+    });
+  // Enable the text track for a specific language
+  const requestedTrack = player.textTracks.find(function (track) {
+    return track.label === language;
+  });
+  if (requestedTrack) {
+    requestedTrack.mode = 'showing';
+  }
+}
+```
+
+## Related articles
+
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to insert subtitles](./insert-subtitles.mdx)

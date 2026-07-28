@@ -1,0 +1,31 @@
+---
+sidebar_position: 1
+sidebar_label: Enable or disable audio tracks
+---
+
+# How to programmatically enable or disable audio tracks on Android
+
+import Intro from '../../shared/media-tracks/_enable-disable-audio-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The Android SDK exposes the audio tracks through [`player.getAudioTracks()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getAudioTracks()>),
+which contains [`MediaTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html) objects with a
+[`setEnabled`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html#setEnabled(boolean)>) method.
+
+```kotlin
+// disable all audio tracks
+for (audioTrack in player.audioTracks) {
+    audioTrack.isEnabled = false
+}
+// enable a specific audio track
+player.audioTracks.getItem(indexOfRequestedAudioTrack).isEnabled = true
+```
+
+## Related articles
+
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)
+- [How to programmatically detect audio track changes](./detect-audio-track-changes.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

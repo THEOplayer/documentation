@@ -1,0 +1,29 @@
+---
+sidebar_position: 2
+sidebar_label: Detect audio tracks
+---
+
+# How to programmatically detect audio tracks on Android
+
+import Intro from '../../shared/media-tracks/_detect-audio-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Listen for the [`ADDTRACK`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html#ADDTRACK)
+event on [`player.getAudioTracks()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getAudioTracks()>)
+to detect every [`MediaTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html) that is added to the player.
+
+```kotlin
+player.audioTracks.addEventListener(AudioTrackListEventTypes.ADDTRACK) { addTrackEvent ->
+    val audioTrack = addTrackEvent.track
+}
+```
+
+## Related articles
+
+- [How to programmatically enable or disable audio tracks](./enable-disable-audio-tracks.mdx)
+- [How to programmatically detect audio track changes](./detect-audio-track-changes.mdx)
+- [How to programmatically detect video track qualities](./detect-video-track-qualities.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

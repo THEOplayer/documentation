@@ -1,0 +1,33 @@
+---
+sidebar_position: 2
+sidebar_label: Detect text tracks
+---
+
+# How to programmatically detect text tracks on Roku
+
+import Intro from '../../shared/text-tracks/_detect-text-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+You can use the `addedtexttrack` event to programmatically detect all text tracks which are loaded with the stream.
+
+```brightscript
+function Init()
+  ...
+  m.THEOplayer.callFunc("addEventListener", "addedtexttrack", "onEventTextTracksChanged")
+  ...
+end function
+
+function onEventTextTracksChanged()
+  textTracks = m.player.textTracks
+  ? "Text tracks changed."
+  ? textTracks
+end function
+```
+
+## Related articles
+
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)

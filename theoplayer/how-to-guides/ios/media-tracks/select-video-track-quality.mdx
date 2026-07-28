@@ -1,0 +1,46 @@
+---
+sidebar_position: 3
+sidebar_label: Select a video track quality
+---
+
+# How to programmatically select a video track quality on iOS
+
+import Intro from '../../shared/media-tracks/_select-video-track-quality-intro.mdx';
+
+<Intro />
+
+## Usage for HESP streams
+
+For HESP streams, set the `targetQualities` of a [`MediaTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/MediaTrack.html).
+
+```swift
+let videoTrack = player.videoTracks[0]
+videoTrack.targetQualities = [videoTrack.qualities[indexOfRequestedVideoTrackQuality]]
+// or
+videoTrack.targetQualities = [videoTrack.qualities[0], videoTrack.qualities[1]]
+```
+
+## Usage for HLS streams
+
+For HLS streams, the iOS SDK leverages the [ABR API](pathname:///theoplayer/v11/api-reference/ios/Protocols/ABRConfiguration.html).
+The underlying AVFoundation stack, which THEOplayer has to use,
+brings along the technical limitation that you cannot select a specific video quality.
+Instead, you can set a maximum resolution or bitrate.
+
+```swift
+// set preferred peak bitrate
+self.theoplayer.abr.preferredPeakBitRate = 200000
+
+// self.theoplayer.abr.preferredPeakBitRate = nil // removes any bitrate limitation
+
+// preferredMaximumResolution supported starting from iOS 11 and above
+// self.theoplayer.abr.preferredMaximumResolution = CGSize(width: 1280, height: 720)
+// self.theoplayer.abr.preferredMaximumResolution = CGSize.zero // removes any resolution limitation
+```
+
+## Related articles
+
+- [How to programmatically detect video track qualities](./detect-video-track-qualities.mdx)
+- [How to programmatically detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to reduce data usage on mobile devices](./reduce-data-usage.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

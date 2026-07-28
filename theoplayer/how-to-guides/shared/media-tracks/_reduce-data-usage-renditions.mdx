@@ -1,0 +1,6 @@
+On mobile devices, THEOplayer by default takes into account the player size for ABR:
+this lets it avoid selecting renditions too big to be appreciated on the current device, thus avoiding wasting data.
+
+Leveraging the target quality of the MediaTrack API, you can refine the rendition choice further
+and indicate yourself to the player which qualities should be considered for ABR.
+For example, you could configure that THEOplayer should only do ABR on the lowest 3 qualities of a stream containing 5.

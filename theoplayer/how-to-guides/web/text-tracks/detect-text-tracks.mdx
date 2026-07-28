@@ -1,0 +1,29 @@
+---
+sidebar_position: 2
+sidebar_label: Detect text tracks
+---
+
+# How to programmatically detect text tracks on Web
+
+import Intro from '../../shared/text-tracks/_detect-text-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Listen for the [`addtrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackListEventMap.html#addtrack) event
+on [`player.textTracks`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#texttracks)
+to detect every [`TextTrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html) that is added to the player.
+
+```js
+function handleAddTrackEvent(addTrackEvent) {
+  const textTrack = addTrackEvent.track;
+}
+player.textTracks.addEventListener('addtrack', handleAddTrackEvent);
+```
+
+## Related articles
+
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to programmatically detect text track changes](./detect-text-track-changes.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

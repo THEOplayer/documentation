@@ -1,0 +1,41 @@
+---
+sidebar_position: 4
+sidebar_label: Insert subtitles
+---
+
+# How to insert subtitles on iOS
+
+import Intro from '../../shared/text-tracks/_insert-subtitles-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Each text track is described by a `TextTrackDescription`.
+
+```swift
+var sampleSource: SourceDescription {
+    let textTrack1 = TextTrackDescription(src: "https://your.webvtt", srclang: "en", isDefault: true, kind: .subtitles, label: "English", format: .WebVTT)
+    let textTrack2 = TextTrackDescription(src: "https://your.webvtt", srclang: "ar", isDefault: false, kind: .subtitles, label: "Arabic", format: .WebVTT)
+
+    return SourceDescription(
+        source: TypedSource(
+            src: "https://your.m3u8",
+            type: "application/x-mpegurl"
+        ),
+        textTracks: [textTrack1, textTrack2]
+    )
+}
+```
+
+Then set the source on the player:
+
+```swift
+self.theoplayer.source = sampleSource
+```
+
+## Related articles
+
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to implement preview thumbnails](./preview-thumbnails.mdx)

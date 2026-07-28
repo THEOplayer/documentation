@@ -1,0 +1,28 @@
+---
+sidebar_position: 2
+sidebar_label: Detect text tracks
+---
+
+# How to programmatically detect text tracks on iOS
+
+import Intro from '../../shared/text-tracks/_detect-text-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Listen for the [`ADD_TRACK`](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackListEventTypes.html) event
+on [`player.textTracks`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C10textTracksAA13TextTrackList_pvp)
+to detect every [`TextTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/TextTrack.html) that is added to the player.
+
+```swift
+self.player.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: { addTrackEvent in
+    let textTrack = addTrackEvent.track
+})
+```
+
+## Related articles
+
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to programmatically detect text track changes](./detect-text-track-changes.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

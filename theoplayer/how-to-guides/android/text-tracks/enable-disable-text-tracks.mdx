@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+sidebar_label: Enable or disable text tracks
+---
+
+# How to programmatically enable or disable text tracks on Android
+
+import Intro from '../../shared/text-tracks/_enable-disable-text-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Set the [`mode`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html#setMode(com.theoplayer.android.api.player.track.texttrack.TextTrackMode)>)
+of a [`TextTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html).
+
+```kotlin
+// disable all text tracks
+for (textTrack in player.textTracks) {
+    textTrack.mode = TextTrackMode.DISABLED
+}
+// enable a specific text track
+player.textTracks.getItem(indexOfRequestedTextTrack).mode = TextTrackMode.SHOWING
+```
+
+## Related articles
+
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

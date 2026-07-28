@@ -1,0 +1,36 @@
+---
+sidebar_position: 4
+sidebar_label: Detect video track qualities
+---
+
+# How to programmatically detect video track qualities on iOS
+
+import Intro from '../../shared/media-tracks/_detect-video-track-qualities-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The qualities of a video track are available as soon as the track is added to
+[`player.videoTracks`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C11videoTracksAA14VideoTrackList_pvp).
+
+```swift
+player.videoTracks.addEventListener(type: VideoTrackListEventTypes.ADD_TRACK, listener: { addTrackEvent in
+    guard let videoTrack = addTrackEvent.track as? VideoTrack else { return }
+    for i in 0..<videoTrack.qualities.count {
+        let quality = videoTrack.qualities[i]
+        var msg = "Quality added: bandwidth = \(quality.bandwidth)"
+        if let videoQuality = quality as? VideoQuality {
+            msg.append(", width = \(videoQuality.width), height = \(videoQuality.height)")
+        }
+        print(msg)
+    }
+})
+```
+
+## Related articles
+
+- [How to programmatically select a video track quality](./select-video-track-quality.mdx)
+- [How to programmatically detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

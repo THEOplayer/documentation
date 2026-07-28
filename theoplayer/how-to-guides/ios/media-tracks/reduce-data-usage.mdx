@@ -1,0 +1,46 @@
+---
+sidebar_position: 6
+sidebar_label: Reduce data usage
+---
+
+# How to reduce data usage on mobile devices on iOS
+
+import Intro from '../../shared/media-tracks/_reduce-data-usage-intro.mdx';
+import TargetBuffer from '../../shared/media-tracks/_reduce-data-usage-target-buffer.mdx';
+import Preloading from '../../shared/media-tracks/_reduce-data-usage-preloading.mdx';
+import Renditions from '../../shared/media-tracks/_reduce-data-usage-renditions.mdx';
+import Conclusion from '../../shared/media-tracks/_reduce-data-usage-conclusion.mdx';
+
+<Intro />
+
+## 1. Lower the target buffer
+
+<TargetBuffer />
+
+The iOS SDK does not allow you to change the target buffer.
+Its [ABR API](pathname:///theoplayer/v11/api-reference/ios/Protocols/ABRConfiguration.html) only allows you to change the ABR strategy,
+and to limit the bitrate and resolution of the renditions considered for ABR.
+
+## 2. Manage preloading
+
+<Preloading />
+
+```swift
+theoplayer.setPreload(.auto)
+```
+
+## 3. Choose the renditions considered for ABR
+
+<Renditions />
+
+See [how to programmatically select a video track quality](./select-video-track-quality.mdx)
+to learn how to limit the qualities considered for ABR.
+
+## Conclusion
+
+<Conclusion />
+
+## Related articles
+
+- [How to programmatically select a video track quality](./select-video-track-quality.mdx)
+- [Preloading](../../07-miscellaneous/09-preloading.md)

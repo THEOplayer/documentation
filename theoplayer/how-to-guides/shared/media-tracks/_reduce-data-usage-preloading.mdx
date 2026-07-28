@@ -1,0 +1,8 @@
+Preloading is a powerful feature when trying to reduce the join time.
+It is more effective in some situations than others, and managing it correctly helps you reduce the data usage:
+
+- preloading a live stream may entail appending information in the buffer that will never be played, if the user waits long enough before clicking "Play";
+- in those situations when a user is not yet likely to be playing a stream (e.g. the player is not yet in view),
+  preloading may also mean downloading information that the user will not consume.
+
+So, based on your use case, you might decide whether to enable preloading.

@@ -1,0 +1,28 @@
+---
+sidebar_position: 4
+sidebar_label: Detect video track qualities
+---
+
+# How to programmatically detect video track qualities on Android
+
+import Intro from '../../shared/media-tracks/_detect-video-track-qualities-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The [`qualities`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html#getQualities()>)
+of a video track are available as soon as the track is added to [`player.getVideoTracks()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getVideoTracks()>).
+
+```kotlin
+player.videoTracks.addEventListener(VideoTrackListEventTypes.ADDTRACK) { addTrackEvent ->
+    val videoTrackQualities = addTrackEvent.track.qualities
+}
+```
+
+## Related articles
+
+- [How to programmatically select a video track quality](./select-video-track-quality.mdx)
+- [How to programmatically detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

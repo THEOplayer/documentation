@@ -1,0 +1,50 @@
+---
+sidebar_position: 7
+sidebar_label: Detect text track changes
+---
+
+# How to programmatically detect text track changes on Android
+
+import Intro from '../../shared/text-tracks/_detect-text-track-changes-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The implementation of the Android SDK applies to all Android-based platforms, including Android TV and Fire TV.
+
+The Android SDK exposes the TextTrack API through [`player.getTextTracks()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getTextTracks()>).
+This `getTextTracks()` method returns a [`TextTrackList`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/TrackList.html).
+This `TrackList` dispatches the events from the [`TextTrackListEventTypes`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html).
+The `TextTrackListEventTypes` contains the [`TRACKLISTCHANGE`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html#TRACKLISTCHANGE) event, as well as the `ADDTRACK` and `REMOVETRACK` event.
+
+The code below allows you to detect text track changes.
+
+```kotlin
+player.textTracks.addEventListener(TextTrackListEventTypes.TRACKLISTCHANGE) { event ->
+    val track = event.track
+    val isEnabled = track.mode == TextTrackMode.SHOWING
+    println("${track.label}, ${track.kind}, ${track.type}, $isEnabled")
+}
+```
+
+The properties of a text `track` (e.g. `mode`, `kind`) are described in the [`TextTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html) and [`Track`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/Track.html) API references.
+
+## Related articles
+
+Are you reading this article because you are interested in subtitles and closed captions? Continue reading below.
+
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to insert subtitles](./insert-subtitles.mdx)
+
+Refer to [how to track ID3 cues](./track-id3-cues.mdx) if you are interested in timed metadata
+(ID3, emsg, EventStream, `EXT-X-DATERANGE`, ...).
+
+Are you reading this article because you are implementing a custom UI?
+Then you will find the following articles interesting:
+
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)
+- [How to detect video track quality changes](../media-tracks/detect-video-track-quality-changes.mdx)
+- [How to detect audio track changes](../media-tracks/detect-audio-track-changes.mdx)
