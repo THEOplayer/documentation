@@ -1,17 +1,17 @@
 ---
-sidebar_position: 1
-sidebar_label: Introduction
+sidebar_position: 4
+sidebar_label: BuyDRM KeyOS
 ---
 
 # BuyDRM KeyOS on Web
 
-import Intro from '../../../shared/drm/_buydrm-keyos-introduction-intro.mdx';
-import IntegrationIntro from '../../../shared/drm/_integration-intro.mdx';
-import PreIntegrationNote from '../../../shared/drm/_pre-integration-note.mdx';
+import Intro from '../../shared/drm/_buydrm-keyos-intro.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import PreIntegrationNote from '../../shared/drm/_pre-integration-note.mdx';
 
 <Intro />
 
-Head to our page on [DRM](../introduction.mdx) for more general information.
+Head to our page on [DRM](./introduction.mdx) for more general information.
 
 ## Integration
 
@@ -22,6 +22,9 @@ The BuyDRM KeyOS integration can be found [here](https://github.com/THEOplayer/s
 ## Pre-integration
 
 <PreIntegrationNote />
+
+Pass your BuyDRM token as `customdata`, and tell THEOplayer that you are using KeyOS. The token is the Authentication
+XML generated from the BuyDRM platform.
 
 ```js
 if (HLS) {
@@ -66,4 +69,5 @@ if (HLS) {
 <!-- - [https://www.buydrm.com/webinar/buydrm_theoplayer](https://www.buydrm.com/webinar/buydrm_theoplayer)-->
 
 - [https://test.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf](https://test.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf)
-- [How to use THEOplayer with KeyOS BuyDRM](./how-to-use-with-theoplayer.mdx)
+- [KeyOS BuyDRM](https://www.buydrm.com/keyosplayer)
+- [DRMConfiguration API](pathname:///theoplayer/v11/api-reference/web/interfaces/DRMConfiguration.html)

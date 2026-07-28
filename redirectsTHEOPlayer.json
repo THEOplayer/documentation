@@ -149,19 +149,19 @@
   },
   {
     "from": "/theoplayer/how-to-guides/drm/buydrm-keyos/introduction/",
-    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/introduction/"
+    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/"
   },
   {
     "from": "/theoplayer/how-to-guides/drm/buydrm-keyos/how-to-use-with-theoplayer/",
-    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/how-to-use-with-theoplayer/"
+    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/"
   },
   {
     "from": "/theoplayer/how-to-guides/drm/castlabs-drmtoday/introduction/",
-    "to": "/theoplayer/how-to-guides/web/drm/castlabs-drmtoday/introduction/"
+    "to": "/theoplayer/how-to-guides/web/drm/castlabs-drmtoday/"
   },
   {
     "from": "/theoplayer/how-to-guides/drm/castlabs-drmtoday/offline-playback-with-offline-drm/",
-    "to": "/theoplayer/how-to-guides/ios/drm/castlabs-drmtoday/offline-playback-with-offline-drm/"
+    "to": "/theoplayer/how-to-guides/ios/drm/offline-drm/"
   },
   {
     "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/introduction/",
