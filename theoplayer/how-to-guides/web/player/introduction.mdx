@@ -1,28 +1,21 @@
-# Introduction
+---
+sidebar_position: 0
+sidebar_label: Introduction
+---
 
-The Player API is the top-level API. This API exposes:
+# Player on Web
 
-- basic functions to manipulate video playback, such as start and pause;
-- properties to check states and values, such as the playhead position;
-- events to track changes.
+import Intro from '../../shared/player/_introduction-intro.mdx';
+import Events from '../../shared/player/_introduction-events.mdx';
 
-The list below overviews how-to articles related to the Player API.
-
-- [How do you know when a stream or an advertisement is playing?](../../how-to-guides/09-player/01-how-do-you-know-when-a-stream-or-ad-is-playing.md)
-- [How to measure time-to-first-frame](../../how-to-guides/09-player/02-how-to-measure-time-to-first-frame.md)
-- [How can we track the first play(ing) event?](../../how-to-guides/09-player/03-how-can-we-track-the-first-playing-event.md)
-- [How to track player states](04-how-to-track-player-states.md)
+<Intro />
 
 ## Events
 
-As a developer, you can programmatically attach event listeners to different APIs.
-Event listeners are often used to [implement a custom UI](../../how-to-guides/11-ui/06-how-to-build-chromeless-ui.mdx) or
-to [implement a custom analytics integration](../web/analytics/custom-analytics-integration.mdx).
+<Events />
 
-The THEOplayer API exposes many events across different interfaces, as can be seen in the graphic below.
-Furthermore, most events exist in all SDKs (Web, iOS-based, Android-based and Roku).
-
-![THEOplayer API Interfaces and Events](../../assets/img/analytics-events.png 'THEOplayer API Interfaces and Events')
+On Web, event listeners are for example used to [build a chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx),
+or to [implement a custom analytics integration](../analytics/custom-analytics-integration.mdx).
 
 The table below gives an overview of a subset of the available events per interface in the THEOplayer Web SDK.
 
@@ -129,8 +122,11 @@ The table below gives an overview of a subset of the available events per interf
 | Uplynk Ad                                                                                                      | [adthirdquartile](pathname:///theoplayer/v11/api-reference/web/interfaces/UplynkAdEventMap.html#adthirdquartile)                   | Fired when the ad reaches the third quartile.                                                                                                 |
 
 Our APIs are continuously evolving, and so is our list of events.
-Refer to our API references of our SDKs to go through the latest sets of events:
+Refer to [the Web SDK API reference](pathname:///theoplayer/v11/api-reference/web/) to go through the latest set of events.
 
-- [Web SDK](pathname:///theoplayer/v11/api-reference/web/)
-- [iOS SDK](pathname:///theoplayer/v11/api-reference/ios/)
-- [Android SDK](pathname:///theoplayer/v11/api-reference/android/)
+## Related articles
+
+- [How do you know when a stream or an advertisement is playing?](./detect-stream-or-ad-playing.mdx)
+- [How to measure the time-to-first-frame](./measure-time-to-first-frame.mdx)
+- [How to track the first play(ing) event](./track-first-playing-event.mdx)
+- [How to track player states](./track-player-states.mdx)

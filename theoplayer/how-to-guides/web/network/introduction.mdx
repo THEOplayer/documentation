@@ -1,0 +1,35 @@
+---
+sidebar_position: 0
+sidebar_label: Introduction
+---
+
+# Network on Web
+
+import Intro from '../../shared/network/_introduction-intro.mdx';
+
+<Intro />
+
+The Web SDK exposes this API through [`player.network`](pathname:///theoplayer/v11/api-reference/web/interfaces/Network.html).
+
+On iOS and iPadOS browsers, the Network API can only be used to intercept and alter DRM-related requests and responses.
+
+## Online and offline events
+
+The Network API dispatches an [`online`](pathname:///theoplayer/v11/api-reference/web/interfaces/NetworkEventMap.html#online)
+event and an [`offline`](pathname:///theoplayer/v11/api-reference/web/interfaces/NetworkEventMap.html#offline) event,
+so you can react to the player losing and regaining its connection:
+
+```js
+player.network.addEventListener('online', handleOnlineEvent);
+```
+
+Event listeners can be removed similarly:
+
+```js
+player.network.removeEventListener('online', handleOnlineEvent);
+```
+
+## Related articles
+
+- [How to add and remove request and response interceptors](./request-response-interceptors.mdx)
+- [Why does the Network API not work on iOS devices?](../../../faq/05-why-does-network-api-not-work-on-ios-devices.md)

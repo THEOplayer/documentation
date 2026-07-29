@@ -1,0 +1,33 @@
+---
+sidebar_position: 3
+sidebar_label: Track the first play(ing) event
+---
+
+# How to track the first play(ing) event on Android
+
+import Intro from '../../shared/player/_track-first-playing-event-intro.mdx';
+
+<Intro />
+
+## Usage
+
+```kotlin
+val firstPlayingListener = object : EventListener<PlayingEvent> {
+    override fun handleEvent(event: PlayingEvent) {
+        player.removeEventListener(PlayerEventTypes.PLAYING, this)
+        println("First playing event!")
+    }
+}
+
+player.addEventListener(PlayerEventTypes.SOURCECHANGE) {
+    player.removeEventListener(PlayerEventTypes.PLAYING, firstPlayingListener)
+    player.addEventListener(PlayerEventTypes.PLAYING, firstPlayingListener)
+}
+```
+
+Instead of `SOURCECHANGE`, you can also listen for `LOADEDMETADATA`, which is dispatched once the player
+has loaded the metadata of the new stream.
+
+## Related articles
+
+- [How do you know when a stream or an advertisement is playing?](./detect-stream-or-ad-playing.mdx)

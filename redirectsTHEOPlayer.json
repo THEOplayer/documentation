@@ -334,5 +334,49 @@
   {
     "from": "/theoplayer/how-to-guides/texttrack/how-to-detect-active-text-track-cues/",
     "to": "/theoplayer/how-to-guides/web/text-tracks/detect-active-text-track-cues/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/",
+    "to": "/theoplayer/how-to-guides/web/network/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/introduction/",
+    "to": "/theoplayer/how-to-guides/web/network/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/request-response-interceptors/",
+    "to": "/theoplayer/how-to-guides/web/network/request-response-interceptors/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/android-network-interceptor/",
+    "to": "/theoplayer/how-to-guides/android/network/request-response-interceptors/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/",
+    "to": "/theoplayer/how-to-guides/ios/network/request-response-interceptors/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/",
+    "to": "/theoplayer/how-to-guides/web/player/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/introduction/",
+    "to": "/theoplayer/how-to-guides/web/player/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-do-you-know-when-a-stream-or-ad-is-playing/",
+    "to": "/theoplayer/how-to-guides/web/player/detect-stream-or-ad-playing/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-to-measure-time-to-first-frame/",
+    "to": "/theoplayer/how-to-guides/web/player/measure-time-to-first-frame/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-can-we-track-the-first-playing-event/",
+    "to": "/theoplayer/how-to-guides/web/player/track-first-playing-event/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-to-track-player-states/",
+    "to": "/theoplayer/how-to-guides/web/player/track-player-states/"
   }
 ]

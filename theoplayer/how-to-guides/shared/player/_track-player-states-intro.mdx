@@ -1,5 +1,3 @@
-# How to track player states
-
 A video player has states. As a developer, you should understand these states,
 as each state grants you access to different data, and might imply a re-render of your UI.
 For example, if your video player is in the "Paused" state, you want to show a play-button instead of a pause-button.
@@ -9,7 +7,7 @@ The objective of this guide is to define some video player states, and how to tr
 Although there's no official list of video player states,
 we'll define 11 states for learning purposes. These 11 states are visualized in the state diagram below.
 
-![Video Player States](../../assets/img/player-video-player-states.png 'Video Player States')
+![Video Player States](../../../assets/img/player-video-player-states.png 'Video Player States')
 
 The table below provides the definitions of these 11 states.
 
@@ -57,86 +55,3 @@ The table below explains what triggers each of the 26 transitions between states
 | 24         | `player.currentTime = X` and there is no media data at the target time.                                    | `seeking`, `readystatechange`                                                                                                                             |
 | 25         | An error occurred.                                                                                         | `error`                                                                                                                                                   |
 | 26         | `player.source = null`                                                                                     | `emptied`                                                                                                                                                 |
-
-### Implementation
-
-The following code samples demonstrate how you track some of the 18 events related to the state transitions across different SDKs.
-
-- `sourcechange`
-- `currentsourcechange`
-- `play`
-- `loadstart`
-- `pause`
-- `readystatechange`
-- `loadedmetadata`
-- `durationchange`
-- `loadeddata`
-- `progress`
-- `canplay`
-- `canplaythrough`
-- `playing`
-- `waiting`
-- `seeking`
-- `ended`
-- `error`
-- `emptied`
-
-All 18 events are dispatched by the `Player` interface.
-
-- Web SDK: [interface](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html) and [events](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html)
-- Android SDK: [interface](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html) and [events](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html)
-- iOS SDK: [interface](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html) and [events](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html)
-- Roku SDK
-
-#### Web SDK
-
-The snippet below demonstrates how you can track some of the related events through the THEOplayer Web SDK.
-All other events can be tracked similarly. You can find the event names in [the `PlayerEventMap` API reference](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html).
-This approach is valid for all web-based platforms, including Tizen and webOS.
-
-```javascript
-player.addEventListener('sourcechange', (event) => {
-  console.log(event);
-});
-// ...
-player.addEventListener('ended', (event) => {
-  console.log(event);
-});
-```
-
-#### Android SDK
-
-The snippet below demonstrates how you can track some of the related events through the THEOplayer Android SDK.
-All other events can be tracked similarly. You can find the event names in [the `PlayerEventTypes` API reference](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html).
-This approach is valid for all Android-based platforms, including Android TV and Fire TV.
-
-```java
-player.addEventListener(PlayerEventTypes.SOURCECHANGE, event -> {
-    System.out.println(event);
-});
-// ...
-player.addEventListener(PlayerEventTypes.ENDED, event -> {
-    System.out.println(event);
-});
-```
-
-#### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
-
-The snippet below demonstrates how you can track some of the related events through the THEOplayer iOS SDK.
-All other events can be tracked similarly. You can find the event names in [the `PlayerEventTypes` API reference](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html).
-This approach is valid for all iOS-based platforms, including iPadOS and tvOS.
-
-```swift
-player?.addEventListener(type: PlayerEventTypes.SOURCE_CHANGE, listener: { (event) in
-    print(event)
-})
-// ...
-player?.addEventListener(type: PlayerEventTypes.ENDED, listener: { (event) in
-    print(event)
-})
-
-```
-
-#### Roku SDK
-
-_This subsection is in maintenance. Reach out to our team if you require help._

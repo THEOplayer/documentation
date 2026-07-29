@@ -1,0 +1,180 @@
+---
+sidebar_position: 1
+sidebar_label: Request and response interceptors
+---
+
+# How to add and remove request and response interceptors on Web
+
+import Intro from '../../shared/network/_request-response-interceptors-intro.mdx';
+
+<Intro />
+
+Interceptors are kept in a stack: the interceptor which was added last is the first one to intercept.
+
+## Prerequisites
+
+This guide assumes that you already have a THEOplayer instance in your page.
+If not, start with our [getting started guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx).
+
+## Adding and removing request interceptors
+
+A [`RequestInterceptor`](pathname:///theoplayer/v11/api-reference/web/types/RequestInterceptor.html) receives the
+intercepted request, and can modify it with the
+[`redirect`](pathname:///theoplayer/v11/api-reference/web/interfaces/InterceptableRequest.html#redirect) or
+[`respondWith`](pathname:///theoplayer/v11/api-reference/web/interfaces/InterceptableRequest.html#respondWith) method.
+
+```js
+const interceptor = (request) => {
+  if (request.type === 'manifest') {
+    request.redirect({
+      url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/x-mpegurl',
+      },
+    });
+  }
+};
+```
+
+The code sample above intercepts manifest requests made by the player, and redirects them to the given URL.
+If properties of the given [`RequestInit`](pathname:///theoplayer/v11/api-reference/web/interfaces/RequestInit.html)
+object are missing, the API uses the values of the original request.
+
+Instead of redirecting the request, you can also respond to it yourself:
+
+```js
+const interceptor = (request) => {
+  if (request.type === 'manifest') {
+    request.respondWith({
+      body: '#EXTM3U\n#EXTINF:6,\nhttps://cdn.theoplayer.com/video/elephants-dream/448/media_w370587926_b688000_vo_slen_t64TWFpbg==_0.ts\n#EXT-X-ENDLIST',
+      status: 200,
+      statusText: 'OK',
+    });
+  }
+};
+```
+
+The code sample above intercepts manifest requests made by the player, and responds with a manifest which
+contains a single segment.
+
+Add the interceptor to the player as follows:
+
+```js
+player.network.addRequestInterceptor(interceptor);
+```
+
+Interceptors can be removed similarly:
+
+```js
+player.network.removeRequestInterceptor(interceptor);
+```
+
+## Adding and removing response interceptors
+
+A [`ResponseInterceptor`](pathname:///theoplayer/v11/api-reference/web/types/ResponseInterceptor.html) receives the
+intercepted response, and can modify it with the
+[`respondWith`](pathname:///theoplayer/v11/api-reference/web/interfaces/InterceptableResponse.html#respondWith) method,
+which accepts a [`ResponseInit`](pathname:///theoplayer/v11/api-reference/web/interfaces/ResponseInit.html) object.
+
+```js
+const interceptor = (response) => {
+  response.respondWith({
+    body: '#EXTM3U\n#EXTINF:6,\nhttps://cdn.theoplayer.com/video/elephants-dream/448/media_w370587926_b688000_vo_slen_t64TWFpbg==_0.ts\n#EXT-X-ENDLIST',
+    status: 200,
+    statusText: 'OK',
+  });
+};
+```
+
+The code sample above intercepts responses received by the player, and responds with a manifest which contains
+a single segment.
+
+Add the interceptor to the player as follows:
+
+```js
+player.network.addResponseInterceptor(interceptor);
+```
+
+Interceptors can be removed similarly:
+
+```js
+player.network.removeResponseInterceptor(interceptor);
+```
+
+## Waiting for asynchronous work
+
+The `waitUntil` method allows you to run asynchronous work before the request or the response is closed.
+It throws an error if the request or the response was already closed by the same interceptor.
+
+It accepts a done callback, a function which returns a promise, or a promise.
+
+### Done callback
+
+When you pass a done callback, the request or the response is only closed once you call `done`.
+Failing to call it means that the request or the response is never delivered.
+
+```js
+const interceptor = (request) => {
+  request.waitUntil((done) => {
+    setTimeout(() => {
+      request.redirect({
+        url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+        method: 'GET',
+        headers: modifyRequestHeaders(request.headers),
+      });
+      done();
+    }, 100);
+  });
+};
+```
+
+The code sample above waits for 100 milliseconds, redirects to another URL, and then closes the request.
+
+### Function which returns a promise
+
+When you pass a function which returns a promise, the request or the response is only closed once that
+promise resolves.
+
+```js
+const interceptor = (request) => {
+  request.waitUntil(() =>
+    delay(100).then(() => {
+      request.redirect({
+        url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+        method: 'GET',
+        headers: modifyRequestHeaders(request.headers),
+      });
+    })
+  );
+};
+```
+
+### Promise
+
+You can also pass a promise directly. The request or the response is closed once that promise resolves.
+
+```js
+const interceptor = (request) => {
+  const promise = delay(100).then(() => {
+    request.redirect({
+      url: 'https://cdn.theoplayer.com/video/elephants-dream/448/chunklist_w370587926_b688000_vo_slen_t64TWFpbg==.m3u8',
+      method: 'GET',
+      headers: modifyRequestHeaders(request.headers),
+    });
+  });
+  request.waitUntil(promise);
+};
+```
+
+## HTTP errors
+
+If the status code is set to a code between 200 and 299, the player treats the response as successful.
+In any other case, the player reports an HTTP error.
+
+An interceptor can turn an HTTP error into a successful response, and vice versa.
+
+## Related articles
+
+- [Network introduction](./introduction.mdx)
+- [Why does the Network API not work on iOS devices?](../../../faq/05-why-does-network-api-not-work-on-ios-devices.md)

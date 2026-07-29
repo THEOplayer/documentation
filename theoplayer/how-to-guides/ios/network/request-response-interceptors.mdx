@@ -1,12 +1,20 @@
-# iOS HLS Media Playlist Interceptor
+---
+sidebar_position: 1
+sidebar_label: Request and response interceptors
+---
 
-THEOplayer iOS SDK makes a number of network requests and receives responses while playing video. These requests and responses can be intercepted to make a new or modified request, or respond with a new response to the HLS playlist requests.
+# How to add and remove request and response interceptors on iOS
 
-This guide explains how you set up THEOplayer iOS SDK to add and remove request/response interceptors.
+import Intro from '../../shared/network/_request-response-interceptors-intro.mdx';
 
-We will use a simple UIKit UIViewController for this guide.
+<Intro />
+
+On iOS, you intercept the requests and responses of HLS playlists with a `MediaPlaylistInterceptor`.
+This guide uses a simple UIKit `UIViewController`.
 
 ## Set up THEOplayer
+
+Add your interceptor to the Network API after creating the player:
 
 ```swift
 class ViewController: UIViewController {
@@ -23,10 +31,10 @@ class ViewController: UIViewController {
 }
 ```
 
-## Intercepting the requests and/or responses
+## Intercepting the requests and responses
 
-Use the `type` parameter on each method below to filter for HLS playlist types ie. master, video, subtitles, etc...
-The rest of the usage is explained in comments in the code snippet below.
+Use the `type` parameter of each method below to filter for HLS playlist types, such as the master playlist,
+a video playlist or a subtitles playlist.
 
 ```swift
 extension ViewController: MediaPlaylistInterceptor {
@@ -41,7 +49,6 @@ extension ViewController: MediaPlaylistInterceptor {
         var modifiedRequest = request
         // modify
         // ...
-        //...
         return modifiedRequest
     }
 
@@ -49,7 +56,6 @@ extension ViewController: MediaPlaylistInterceptor {
     func didInterceptPlaylistResponse(type: THEOplayerSDK.HlsPlaylistType, url: URL, response: URLResponse, data: Data) async throws -> Data {
         var modifiedResponseData = ""
         // customize the data string that you would like to return, should be a valid HLS playlist file
-        // ...
         // ...
         let customDataResponse = modifiedResponseData.data(using: .utf8)
         return customDataResponse ?? data // `customDataResponse` is empty so playback will fail in this demo; return `data` to play
@@ -62,4 +68,9 @@ extension ViewController: MediaPlaylistInterceptor {
 
 ## DRM request interception
 
-The `MediaPlaylistInterceptor` API does not intercept DRM requests. To interecept fairplay DRM requests, take a look at the following solution: https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/README.md
+The `MediaPlaylistInterceptor` API does not intercept DRM requests. To intercept FairPlay DRM requests,
+take a look at [our DRM integration sample](https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/README.md).
+
+## Related articles
+
+- [Network introduction](./introduction.mdx)
