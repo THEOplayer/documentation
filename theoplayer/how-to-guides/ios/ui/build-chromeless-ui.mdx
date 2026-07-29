@@ -1,0 +1,279 @@
+---
+sidebar_position: 1
+sidebar_label: Build a chromeless UI
+---
+
+# How to build a chromeless UI on iOS
+
+import Intro from '../../shared/ui/_build-chromeless-ui-intro.mdx';
+import UXEnhancements from '../../shared/ui/_build-chromeless-ui-ux-enhancements.mdx';
+
+<Intro />
+
+## Creating a chromeless player instance
+
+The iOS SDK does not ship a default UI. A
+[`THEOplayer`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html)
+instance only renders the video itself, so every UI on top of it is a UI of your own making.
+
+```swift
+let config = THEOplayerConfiguration(license: "your_license_string")
+let player = THEOplayer(configuration: config)
+```
+
+The rest of this article refers to this `player` variable.
+
+## Tracking transitions between states
+
+Refer to the article on ["How to track player states"](../player/track-player-states.mdx) to advance your understanding
+on video player states. Understanding the video player lifecycle is a vital part of building a chromeless UI.
+
+![Video Player States](../../../assets/img/player-video-player-states.png 'Video Player States')
+
+This article explains how to track the start of a video and its end, but also how to detect buffering, errors and much more.
+You'll need to implement (some of) these transitions in your chromeless UI in order to render the appropriate components.
+
+## Mapping components
+
+A video player UI can be dissected into different components (or controls).
+A component offers context, and it may also offer an action. The "play button" is an example of an action component,
+but the "current time text" (X in the screenshot below) is a context component.
+
+As a developer, you should understand which controls are out there, and which video player APIs are relevant.
+
+This section addresses the following components:
+
+1. Play button
+2. Pause button
+3. Volume mute button
+4. Volume change button
+5. Current time text
+6. Duration text
+7. Scrub bar
+8. Buffered blocks
+9. Live button
+10. Audio change component
+11. Subtitle change component
+12. Video quality change component
+13. Fullscreen and inline button
+14. Picture-in-picture button
+15. Chromecast button
+16. AirPlay button
+
+Additionally, we'll discuss the following overlays:
+
+1. Subtitle cues
+2. Advertisement metadata
+
+![Chromeless UI Layout](../../../assets/img/chromeless-ui-layout.png 'Chromeless UI Layout')
+
+Instead of providing inline code on this article, we'll refer to other articles as much as possible,
+because linking the THEOplayer API to your custom components is an application of many of the existing how-to guides
+for a specific use-case.
+
+If you know how to navigate our API references, you don't even need this section.
+The graphic below (originally referenced in ["custom analytics integration"](../analytics/custom-analytics-integration.mdx)) gives
+a basic overview of many of the relevant interfaces and events.
+
+![THEOplayer API Interfaces and Events](../../../assets/img/analytics-events.png 'THEOplayer API Interfaces and Events')
+
+### Play button
+
+You should show your play button when you are in a paused state, as described in ["how to track player states"](../player/track-player-states.mdx).
+If a viewer clicks your play button, you should call the `play()` on your `player` instance as documented in our
+[API reference](<pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)play>).
+
+### Pause button
+
+You should show your pause button when you are in a playing state, as described in ["how to track player states"](../player/track-player-states.mdx).
+If a viewer clicks your pause button, you should call the `pause()` on your `player` instance as documented in our
+[API reference](<pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/c:@M@THEOplayerSDK@objc(cs)THEOplayer(im)pause>).
+
+### Volume mute button
+
+You can check whether your volume is muted through the `muted` property (or method) on your `player` instance as documented in
+our [API reference](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C5mutedSbvp).
+You should consider showing a different button depending on whether `muted` returns `true` or `false`.
+If a viewer clicks your mute button, you should set `muted` to `!muted`.
+
+### Volume change button
+
+You can get and set your volume level through the `volume` property (or method) on your `player` instance as documented in
+our [API reference](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C6volumeSfvp).
+You should consider showing a different button depending on the volume level.
+
+Note that you cannot control the volume level on iOS, as this is delegated to the hardware buttons.
+You can only toggle the muted state.
+
+### Current time text
+
+You can get the current time through the `currentTime` property (or method) on your `player` instance as documented in
+our [requestCurrentTime()](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C18requestCurrentTime17completionHandleryySdSg_s5Error_pSgtc_tF) and [setCurrentTime()](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C14setCurrentTime_17completionHandlerySd_yypSg_s5Error_pSgtcSgtF).
+
+Note that `currentTime` returns a relative value in seconds.
+If you are dealing with live streams, you might want to use `currentProgramDateTime` instead, as this returns an absolute value like `"2022-04-01T13:37:42.666Z"`.
+This property (or method) is especially useful when implementing an [EPG](https://en.wikipedia.org/wiki/Electronic_program_guide) experience.
+
+### Duration text
+
+You can get the duration of a stream through the `duration` property (or method) on your `player` instance as documented in our
+[API reference](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C8durationSdSgvp).
+
+The `duration` will return the duration in seconds for VOD streams, and `Infinity` for live streams.
+
+You can calculate the remaining duration by subtracting the `currentTime` from the `duration`.
+
+### Scrub bar
+
+Related to the subsection on "Current time text",
+you can seek to a different playhead position through the `currentTime` property (or `setCurrentTime()` method) on your `player` instance.
+Alternatively, for live streams, you may also use `currentProgramDateTime` to seek to absolute playhead positions.
+
+You can only seek to a playhead position that is within any of the time ranges of your `seekable` property (or method) of your `player` instance as documented in our
+[API reference](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C15requestSeekable17completionHandleryySayAA9TimeRangeCGSg_s5Error_pSgtc_tF).
+
+You subscribe to the `timeupdate` event to periodically update your scrub bar bullet.
+This event is dispatched every ~200ms during playback.
+Refer to our [API reference](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV11TIME_UPDATEAA0D4TypeCyAA010TimeUpdateD0CGvpZ) for more info on this event.
+
+A `seek` event is dispatched when you set a new value for `currentTime` or `currentProgramDateTime`.
+A `seeked` event is dispatched when the seek was successful.
+Refer to our [API reference](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV7SEEKINGAA0D4TypeCyAA07SeekingD0CGvpZ) for more info on these events.
+You should consider displaying a "stalling icon" between these two events.
+
+#### Buffered blocks
+
+You may also want to annotate parts of the scrub bar that have already been buffered.
+When the viewer seeks to a buffered block playback immediately starts.
+
+You can track information on what's being buffered through the `progress` event.
+Refer to our [API reference](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV8PROGRESSAA0D4TypeCyAA08ProgressD0CGvpZ) for more info on this event.
+In the callback of the `progress` event,
+you will want to query the `buffered` property (or method) to iterate through the available buffered time ranges.
+The `buffered` property (or method) is described in our [API reference](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C15requestBuffered17completionHandleryySayAA9TimeRangeCGSg_s5Error_pSgtc_tF).
+
+### Live button
+
+A stream is a live stream when your `duration` property (or method) returns `Infinity`.
+If you want to implement a button that takes you to the "most live point" when clicked,
+then you set `currentTime` to the maximum `seekable` `end` time.
+
+### Audio change component
+
+Refer to the article on ["how to detect audio tracks"](../media-tracks/detect-audio-tracks.mdx)
+to know how to detect the available audio tracks. You'll need this article to know which audio tracks are part of your stream.
+
+Refer to the article on ["how to enable and disable audio tracks"](../media-tracks/enable-disable-audio-tracks.mdx)
+to know how to enable or disable another audio track. You'll need this article to enable another audio track.
+
+Refer to the article on ["how to detect audio track changes"](../media-tracks/detect-audio-track-changes.mdx)
+to know how to detect when an audio track has been enabled or disabled. You'll need this article to correctly annotate your UI.
+
+### Subtitle change component
+
+Refer to the article on ["how to detect text tracks"](../text-tracks/detect-text-tracks.mdx)
+to know how to detect the available text tracks. You'll need this article to know which subtitles and closed captions are part of your stream.
+
+Refer to the article on ["how to enable and disable text tracks"](../text-tracks/enable-disable-text-tracks.mdx)
+to know how to enable or disable another text track.
+
+Refer to the article on ["how to detect text track changes"](../text-tracks/detect-text-track-changes.mdx)
+to know how to detect when a text track has been enabled or disabled. You'll need this article to correctly annotate your UI.
+
+### Video quality change component
+
+Refer to the article on ["how to detect video track qualities"](../media-tracks/detect-video-track-qualities.mdx)
+to know how to detect the available video track qualities. You'll need this article to know which video qualities are part of your stream.
+
+Refer to the article on ["how to select video track quality"](../media-tracks/select-video-track-quality.mdx)
+to know how to enable another video track quality.
+
+Refer to the article on ["how to detect video track quality changes"](../media-tracks/detect-video-track-quality-changes.mdx)
+to know how to detect when a specific video track quality has become active. You'll need this article to correctly annotate your UI.
+
+### Fullscreen and inline button
+
+You may use the [`presentationMode`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C16presentationModeAA012PresentationD0Ovp) property of the `player` instance, as demonstrated in the snippet below.
+
+```swift
+if (player.presentationMode == PresentationMode.fullscreen) {
+    player.presentationMode = PresentationMode.inline
+} else {
+    player.presentationMode = PresentationMode.fullscreen
+}
+```
+
+You may also use [`fullscreenOrientationCoupling`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C29fullscreenOrientationCouplingSbvp)
+to automatically enter fullscreen when the viewer goes into landscape mode.
+
+Forcing the video player to rotate into landscape when you hit the fullscreen button in portrait mode is something
+that you need to implement on top of THEOplayer. (For example through a combination of [`UIDevice`](https://developer.apple.com/documentation/uikit/uidevice) and [`UIInterfaceOrientation`](https://developer.apple.com/documentation/uikit/uiinterfaceorientation).)
+
+Do note that when you leverage our `presentationMode` you must add your custom components as subviews of the `THEOplayerView`,
+because your components won't remain visible otherwise.
+In other words, you'll have to identify the appropriate subview X of the view Y to which you have (indirectly) added your `player` instance as a subview X.
+(You do this by querying the subviews of view Y.)
+
+You may also implement fullscreen management on top of THEOplayer.
+This is worth considering if you want more control and flexibility.
+
+### Picture-in-picture button
+
+You should implement your Picture-in-Picture UI and UX independently of THEOplayer,
+regardless of whether you're considering "in-app" picture-in-picture or "out-of-app" picture-in-picture.
+The [THEOplayer Picture-in-Picture API](../../07-miscellaneous/07-picture-in-picture.md) is not available for chromeless players.
+
+Related resources:
+
+- [https://developers.google.com/web/updates/2017/09/picture-in-picture](https://developers.google.com/web/updates/2017/09/picture-in-picture)
+- [https://developer.apple.com/documentation/webkitjs/adding_picture_in_picture_to_your_safari_media_controls](https://developer.apple.com/documentation/webkitjs/adding_picture_in_picture_to_your_safari_media_controls)
+- [https://developer.android.com/guide/topics/ui/picture-in-picture](https://developer.android.com/guide/topics/ui/picture-in-picture)
+- [https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player](https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player)
+
+Note that it might not be possible to implement out-of-app Picture-in-Picture on the THEOplayer iOS SDK.
+
+### Chromecast button
+
+Refer to our [introduction on Chromecast](../cast/chromecast/introduction.mdx) to know how to track the availability of Chromecast,
+and how to start and stop a Chromecast session.
+
+### AirPlay button
+
+Refer to our [introduction on AirPlay](../cast/airplay/introduction.mdx) to know how to track the availability of AirPlay,
+and how to start and stop an AirPlay session.
+
+### Subtitle cues
+
+You may still leverage THEOplayer's default rendering of subtitles (and closed captions) in your chromeless UI.
+
+So what's the alternative? Instead of using THEOplayer's default rendering,
+you can programmatically detect when a subtitle (and closed captions) cue should appear and disappear,
+as explained in ["how to detect active text track cues"](../text-tracks/detect-active-text-track-cues.mdx).
+You could insert the cue when it should appear, and remove it when it should disappear.
+This alternative makes you fully responsible for the rendering and styling, and gives you total control over it.
+
+### Advertisement metadata
+
+When playing back advertisements, you might want to overlay a countdown, show a skip button after some seconds,
+insert ad markers in the scrub bar, and achieve other use cases.
+
+If you use [Google IMA](../ads/google-ima.mdx) for client-side ad-insertion,
+then this integration might already take care of some default UI customization.
+
+If you are using THEOplayer's [default ad integration](../ads/set-up-vast-and-vmap.mdx) for client-side ad-insertion,
+then you need to [subscribe to the appropriate ad events](../ads/subscribe-to-ad-events.mdx),
+and apply your UI and UX in the callbacks of these events.
+
+Similarly, if you're doing server-side ad-insertion, you also need to apply your UI and UX in the callbacks of your ad events.
+
+## Sample code
+
+The Github project at [https://github.com/THEOplayer/samples-ios-sdk/tree/master/Custom-UI](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Custom-UI)
+provides a basic implementation of a chromeless UI on the iOS SDK.
+
+<UXEnhancements />
+
+## Error handling
+
+A UI should also be capable of handling errors and informing the viewer.
+Refer to our [introduction on errors](../../07-miscellaneous/04-error/00-introduction.md) to further explore this topic.

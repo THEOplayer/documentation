@@ -1,12 +1,11 @@
-# UI Skinning
+---
+sidebar_position: 2
+sidebar_label: UI skinning
+---
 
-THEOplayer allows you to style the player to your own needs. This guide will give an in-depth explanation of which colors can be changed and which parts of the player are affected. First it will explain how to change the skin of your player using 6 custom CSS classes. Afterwards, an overview follows explaining which parts of the players are affected by each class. If you don't already have an up-and-running version of THEOplayer, take a look at our [getting started guide](https://support.theoplayer.com/hc/en-us/articles/115001933305-Getting-Started-with-THEOplayer-2-X).
+# UI skinning on Web
 
-## SDKs
-
-| Web SDK | Android SDK | iOS SDK | tvOS SDK | Android TV SDK | Chromecast SDK |
-| :-----: | :---------: | :-----: | :------: | :------------: | :------------: |
-|   Yes   |     Yes     |   Yes   |    No    |       No       |       No       |
+THEOplayer allows you to style the player to your own needs. This guide will give an in-depth explanation of which colors can be changed and which parts of the player are affected. First it will explain how to change the skin of your player using 6 custom CSS classes. Afterwards, an overview follows explaining which parts of the players are affected by each class. If you don't already have an up-and-running version of THEOplayer, take a look at our [getting started guide](../../../getting-started/01-sdks/01-web/00-getting-started.mdx).
 
 ## CSS properties to override
 
@@ -78,51 +77,3 @@ After this tutorial, you should be able to style your THEOplayer to your own nee
 | Secondary background |           Social sharing close button           |
 |    Tertiary color    |             Control bar background              |
 | Tertiary background  |             Menu content background             |
-
-## Mobile
-
-Our mobile player uses the same class naming as our web version, so this is applicable to mobile as well. The CSS changes are to be gathered in a custom .CSS file, added to your project and then loaded into the PlayerConfiguration. More information on [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) .
-
-##### Legacy iOS/tvOS SDK (4.12.x)
-
-```swift
-let cssPath = Bundle.main.path(forResource: "style", ofType: "css")!
-let theoConfig = THEOplayerConfiguration(cssPaths: [cssPath])
-let theoplayer = THEOplayer(with: //frame, configuration: theoConfig)
-```
-
-##### Legacy Android SDK (4.12.x)
-
-You can do this either by XML:
-
-```java
-<com.theoplayer.android.api.THEOplayerView
-    android:id="@+id/theo_player_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:defaultCss="true"
-    app:cssPaths="path/to/style1.css"/>
-```
-
-Or directly in the player config in Java:
-
-```java
-THEOplayerConfig playerConfig = new THEOplayerConfig.Builder()
-        .chromeless(false)
-        .defaultCss(true)
-        .cssPaths("path/to/style1.css","path/to/style2.css") // Path is relative to the location of the assets directory
-        .build();
-THEOplayerView tpv = new THEOplayerView(this, playerConfig);
-```
-
-It is also possible to change certain parts of the UI by editing the xml resources directly.
-E.g. colors.xml:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#E361FF</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-</resources>
-```

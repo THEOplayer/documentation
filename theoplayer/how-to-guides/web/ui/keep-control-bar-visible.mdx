@@ -1,0 +1,18 @@
+---
+sidebar_position: 6
+sidebar_label: Keep the control bar visible
+---
+
+# How to keep the control bar always visible on Web
+
+The question above is typically asked by developers who want to be able to see the control bar at all times without having to continuously move the cursor over it (or tap the screen).
+
+## Implementation
+
+The following CSS line is aimed at overwriting the opacity transition and have the control bar always visible.
+
+```css
+.theo-secondary-color.vjs-control-bar {
+  opacity: 1 !important;
+}
+```

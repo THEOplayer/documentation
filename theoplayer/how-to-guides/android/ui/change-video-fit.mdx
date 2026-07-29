@@ -1,0 +1,26 @@
+---
+sidebar_position: 2
+sidebar_label: Change how a video fits inside a container
+---
+
+# How to change how a video should fit inside a container on Android
+
+import Intro from '../../shared/ui/_change-video-fit-intro.mdx';
+
+<Intro />
+
+## Implementation
+
+Use [`Player.setAspectRatio`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#setAspectRatio(AspectRatio)>)
+to change how the video is fitted inside the player, using one of the
+[`AspectRatio`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/AspectRatio.html) values:
+
+- `FIT`: fit the video inside the player, preserving its aspect ratio. This is the default.
+- `FILL`: fill the player with the video, deforming the video if needed.
+- `ASPECT_FILL`: fill the player with the video, preserving its aspect ratio and cropping the video if needed.
+
+The snippet below demonstrates how you could use this API:
+
+```kotlin
+theoPlayerView.player.aspectRatio = AspectRatio.ASPECT_FILL
+```

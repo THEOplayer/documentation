@@ -1,0 +1,97 @@
+---
+sidebar_position: 10
+sidebar_label: Change the UI language
+---
+
+# How to change the UI language on Web
+
+This article describes how to change the default UI language to other.
+
+The [`UIConfiguration`](pathname:///theoplayer/v11/api-reference/web/interfaces/UIConfiguration.html) object has a
+`language` and a `languages` property to change the default UI language, i.e. English, to any other language.
+Both properties are optional, but when `language` is defined, its language code must have a matching language
+dictionary in the `languages` configuration.
+
+When this configuration is set, the labels and tooltips in the UI will be replaced by their translated version from the language. If no translation is found for a label or tooltip, the original English version will be used instead.
+
+## Prerequisites
+
+- A valid THEOplayer license for the Web SDK.
+- The language dictionary that you want to add to your project.
+
+**Language JSON Links**
+
+Arabic : [http://cdn.theoplayer.com/demos/theoplayer/lang/ar.js](http://cdn.theoplayer.com/demos/theoplayer/lang/ar.js)
+
+Bashkir: [http://cdn.theoplayer.com/demos/theoplayer/lang/ba.js](http://cdn.theoplayer.com/demos/theoplayer/lang/ba.js)
+
+Bulgarian: [http://cdn.theoplayer.com/demos/theoplayer/lang/bg.js](http://cdn.theoplayer.com/demos/theoplayer/lang/bg.js)
+
+Catalan: [http://cdn.theoplayer.com/demos/theoplayer/lang/ca.js](http://cdn.theoplayer.com/demos/theoplayer/lang/ca.js)
+
+Czech: [http://cdn.theoplayer.com/demos/theoplayer/lang/cs.js](http://cdn.theoplayer.com/demos/theoplayer/lang/cs.js)
+
+Danish: [http://cdn.theoplayer.com/demos/theoplayer/lang/da.js](http://cdn.theoplayer.com/demos/theoplayer/lang/da.js)
+
+German: [http://cdn.theoplayer.com/demos/theoplayer/lang/de.js](http://cdn.theoplayer.com/demos/theoplayer/lang/de.js)
+
+Greek: [http://cdn.theoplayer.com/demos/theoplayer/lang/el.js](http://cdn.theoplayer.com/demos/theoplayer/lang/el.js)
+
+Spanish: [http://cdn.theoplayer.com/demos/theoplayer/lang/es.js](http://cdn.theoplayer.com/demos/theoplayer/lang/es.js)
+
+Persian: [http://cdn.theoplayer.com/demos/theoplayer/lang/fa.js](http://cdn.theoplayer.com/demos/theoplayer/lang/fa.js)
+
+Finnish: [http://cdn.theoplayer.com/demos/theoplayer/lang/fi.js](http://cdn.theoplayer.com/demos/theoplayer/lang/fi.js)
+
+French: [http://cdn.theoplayer.com/demos/theoplayer/lang/fr.js](http://cdn.theoplayer.com/demos/theoplayer/lang/fr.js)
+
+Croatian: [http://cdn.theoplayer.com/demos/theoplayer/lang/hr.js](http://cdn.theoplayer.com/demos/theoplayer/lang/hr.js)
+
+Hungarian: [http://cdn.theoplayer.com/demos/theoplayer/lang/hu.js](http://cdn.theoplayer.com/demos/theoplayer/lang/hu.js)
+
+Italian: [http://cdn.theoplayer.com/demos/theoplayer/lang/it.js](http://cdn.theoplayer.com/demos/theoplayer/lang/it.js)
+
+Japanese: [http://cdn.theoplayer.com/demos/theoplayer/lang/ja.js](http://cdn.theoplayer.com/demos/theoplayer/lang/ja.js)
+
+Korean: [http://cdn.theoplayer.com/demos/theoplayer/lang/ko.js](http://cdn.theoplayer.com/demos/theoplayer/lang/ko.js)
+
+Dutch: [http://cdn.theoplayer.com/demos/theoplayer/lang/nl.js](http://cdn.theoplayer.com/demos/theoplayer/lang/nl.js)
+
+Polish: [http://cdn.theoplayer.com/demos/theoplayer/lang/pl.js](http://cdn.theoplayer.com/demos/theoplayer/lang/pl.js)
+
+Portuguese: [http://cdn.theoplayer.com/demos/theoplayer/lang/pt-BR.js](http://cdn.theoplayer.com/demos/theoplayer/lang/pt-BR.js)
+
+Russian: [http://cdn.theoplayer.com/demos/theoplayer/lang/ru.js](http://cdn.theoplayer.com/demos/theoplayer/lang/ru.js)
+
+Serbian: [http://cdn.theoplayer.com/demos/theoplayer/lang/sr.js](http://cdn.theoplayer.com/demos/theoplayer/lang/sr.js)
+
+Swedish: [http://cdn.theoplayer.com/demos/theoplayer/lang/sv.js](http://cdn.theoplayer.com/demos/theoplayer/lang/sv.js)
+
+Turkish: [http://cdn.theoplayer.com/demos/theoplayer/lang/tr.js](http://cdn.theoplayer.com/demos/theoplayer/lang/tr.js)
+
+Ukrainian: [http://cdn.theoplayer.com/demos/theoplayer/lang/uk.js](http://cdn.theoplayer.com/demos/theoplayer/lang/uk.js)
+
+Vietnamese: [http://cdn.theoplayer.com/demos/theoplayer/lang/vi.js](http://cdn.theoplayer.com/demos/theoplayer/lang/vi.js)
+
+Chinese: [http://cdn.theoplayer.com/demos/theoplayer/lang/zh-CN.js](http://cdn.theoplayer.com/demos/theoplayer/lang/zh-CN.js) | [http://cdn.theoplayer.com/demos/theoplayer/lang/zh-TW.js](http://cdn.theoplayer.com/demos/theoplayer/lang/zh-TW.js)
+
+## Implementation
+
+```js
+player = new THEOplayer.Player(playerElement, {
+  libraryLocation: 'path/to/theoplayer/',
+  license: 'your-license-here',
+  ui: {
+    language: 'esp',
+    languages: {
+      esp: {
+        Play: 'Reproducir',
+        Pause: 'Pausa',
+        'Current Time': 'Tiempo actual',
+        'Duration Time': 'Duración',
+        'Remaining Time': 'Tiempo restante',
+      },
+    },
+  },
+});
+```
