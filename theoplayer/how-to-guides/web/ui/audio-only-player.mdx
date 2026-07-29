@@ -1,25 +1,24 @@
-# How to make an audio-only player
+---
+sidebar_position: 14
+sidebar_label: Make an audio-only player
+---
 
-This article will tell you how to manipulate THEOplayer (Web) to make an audio-only interface, using only CSS and JavaScript. This applies also to mobile SDKs, where CSS and javascript can be injected (see _Resources_).
+# How to make an audio-only player on Web
+
+This article tells you how to manipulate THEOplayer to make an audio-only interface, using only CSS and JavaScript.
 
 Going from this
-![Audio Only](../../assets/img/audio-only-1.png 'Audio Only')
+![Audio Only](../../../assets/img/audio-only-1.png 'Audio Only')
 
 to this
 
-![Audio Only](../../assets/img/audio-only-2.png 'Audio Only')
-
-## SDKs
-
-| Web SDK |                    Android SDK                    |                      iOS SDK                      | tvOS SDK |                  Android TV SDK                   | Chromecast SDK |
-| :-----: | :-----------------------------------------------: | :-----------------------------------------------: | :------: | :-----------------------------------------------: | :------------: |
-|   Yes   | Unverified / Through CSS and JavaScript injection | Unverified / Through CSS and JavaScript injection |    No    | Unverified / Through CSS and JavaScript injection |      N/A       |
+![Audio Only](../../../assets/img/audio-only-2.png 'Audio Only')
 
 ## Making the audio player from the video player
 
 This section explains how to alter the default video player UI into the UI shown in the picture below, thus transforming a default THEOplayer instance in an audio player. This can, of course, be further customized to your liking to adapt to the rest of your implementation.
 
-![Audio Only](../../assets/img/audio-only-3.png 'Audio Only')
+![Audio Only](../../../assets/img/audio-only-3.png 'Audio Only')
 
 The alteration involves 8 steps:
 
@@ -35,8 +34,6 @@ The alteration involves 8 steps:
 In the following, you can find a description and a code example for each step.
 
 ## Code examples
-
-##### Web SDK
 
 ### 1 - Add a new class to 2 HTML elements in the player
 
@@ -157,7 +154,7 @@ Should we stop here, the audio player would show 0:00 / 0:00 as time information
 }
 ```
 
-Note: if you preload the source (see _Resources_), hiding the time information before the player starts playing may not be needed, as the duration will be already available.
+Note: if you preload the source, hiding the time information before the player starts playing may not be needed, as the duration will be already available.
 
 ### 8 - (Optional) Add the audioOnly flag
 
@@ -175,24 +172,12 @@ const player = new THEOplayer.Player(element, {
 
 You should end up with a player that looks like this:
 
-![Audio Only](../../assets/img/audio-only-4.png 'Audio Only')
+![Audio Only](../../../assets/img/audio-only-4.png 'Audio Only')
 
 You can further modify the audio player that you have at this point to better fit in your implementation.
-
-##### Legacy Android SDK (4.12.x)
-
-The Web SDK code should be included in your Android (TV) project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md)explains how you can add CSS and JavaScript files to your project.
-
-##### Legacy iOS/tvOS SDK (4.12.x)
-
-The Web SDK code should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
 
 ## Sample application
 
 The demo below illustrates the transformation from video player to audio player.
 
 - Demo: [http://cdn.theoplayer.com/demos/nus/audio-only.html](http://cdn.theoplayer.com/demos/nus/audio-only.html)
-
-## Resources
-
-- [How to add CSS or JavaScript files to an Android/iOS project](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md): How-to guide

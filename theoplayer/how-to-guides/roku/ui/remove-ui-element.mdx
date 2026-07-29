@@ -1,0 +1,61 @@
+---
+sidebar_position: 2
+sidebar_label: Remove an element from the UI
+---
+
+# How to remove an element from the UI on Roku
+
+import Intro from '../../shared/ui/_remove-ui-element-intro.mdx';
+
+<Intro />
+
+## Implementation
+
+What UI elements should be visible for Chromefull THEOplayer on Roku? Currently, Chromefull THEOplayer uses Roku native player and that one has e.g. a clock UI element while paused.
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="TestScene" extends="Scene">
+    <interface>
+    </interface>
+
+    <script type = "text/brightscript" >
+
+        <![CDATA[
+
+        sub Init()
+            m.player = m.top.findNode("TestPlayer")
+            m.player.configuration = {
+              "license": "" ' put the THEOplayer license between apostrophes
+            }
+            ' remove the clock UI node
+            m.player.getChildren(-1, 0)[0].getChildren(-1, 0)[1].removeChildIndex(11)
+
+            setSource()
+            m.player.setFocus(true)
+            m.player.callFunc("play")
+        end sub
+
+        sub setSource()
+            sourceDescription = {
+                "sources": [
+                    {
+                        "src": "http://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
+                        "type": "application/x-mpegURL"
+                    }
+                ]
+            }
+            m.player.source = sourceDescription
+            m.player.source.Live = false
+            m.player.source.LiveBoundsPauseBehavior = "pause"
+        end sub
+
+        ]]>
+
+    </script>
+
+    <children>
+	    <THEOsdk:THEOplayer id="TestPlayer"/>
+    </children>
+</component>
+```

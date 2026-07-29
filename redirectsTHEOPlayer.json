@@ -378,5 +378,73 @@
   {
     "from": "/theoplayer/how-to-guides/player/how-to-track-player-states/",
     "to": "/theoplayer/how-to-guides/web/player/track-player-states/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/",
+    "to": "/theoplayer/how-to-guides/web/ui/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/introduction/",
+    "to": "/theoplayer/how-to-guides/web/ui/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/is-it-possible-to-remove-an-element/",
+    "to": "/theoplayer/how-to-guides/web/ui/remove-ui-element/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-align-timeline-in-the-middle/",
+    "to": "/theoplayer/how-to-guides/web/ui/align-timeline/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-change-big-play-button/",
+    "to": "/theoplayer/how-to-guides/web/ui/change-big-play-button/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-make-control-keys-always-visible/",
+    "to": "/theoplayer/how-to-guides/web/ui/keep-control-bar-visible/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/is-it-possible-to-hide-googla-ima/",
+    "to": "/theoplayer/how-to-guides/web/ui/hide-google-ima-ui/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-build-chromeless-ui/",
+    "to": "/theoplayer/how-to-guides/web/ui/build-chromeless-ui/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-insert-a-button/",
+    "to": "/theoplayer/how-to-guides/web/ui/insert-a-button/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-change-default-UI-language-to-other/",
+    "to": "/theoplayer/how-to-guides/web/ui/change-ui-language/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/customize-ui-during-playback/",
+    "to": "/theoplayer/how-to-guides/web/ui/customize-ui-during-ad-playback/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-change-how-a-video-should-fit-inside-a-container/",
+    "to": "/theoplayer/how-to-guides/web/ui/change-video-fit/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-make-audio-only-player/",
+    "to": "/theoplayer/how-to-guides/web/ui/audio-only-player/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/customising-vertical-volume-slider/",
+    "to": "/theoplayer/how-to-guides/web/ui/vertical-volume-slider/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/ui-skinning/",
+    "to": "/theoplayer/how-to-guides/web/ui/ui-skinning/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-detect-visibility-default-control-bar/",
+    "to": "/theoplayer/how-to-guides/web/ui/detect-control-bar-visibility/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-disable-click-to-pause/",
+    "to": "/theoplayer/how-to-guides/web/ui/disable-click-to-pause/"
   }
 ]

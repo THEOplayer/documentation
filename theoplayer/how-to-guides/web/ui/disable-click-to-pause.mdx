@@ -1,0 +1,39 @@
+---
+sidebar_position: 15
+sidebar_label: Disable click to pause
+---
+
+# How to disable click to pause on Web
+
+When you use the default UI of THEOplayer you can pause (and resume) the video by clicking anywhere on the video (except in the control bar).
+You can confirm this behavior at [https://optiview.dolby.com/resources/demos/test-stream/](https://optiview.dolby.com/resources/demos/test-stream/).
+
+You might be interested in disabling this behavior because your functional requirements don't allow you to pause the video.
+
+You can disable this default UX behavior through CSS. We'll also discuss some related APIs.
+
+The following CSS snippet disables pause to click by no longer catching the pointer event.
+
+```css
+.video-js .vjs-tech {
+  pointer-events: none;
+}
+```
+
+The following JavaScript snippet automatically resumes a video when someone tries to pause it by leveraging the [`pause`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#pause) event and the [`play()`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#play) method.
+
+```javascript
+player.addEventListener('pause', () => {
+  player.play();
+});
+```
+
+The following CSS snippet hides the play and pause button.
+
+```css
+.video-js .vjs-play-control {
+  display: none;
+}
+```
+
+Interested in autoplay behavior? You might find ["How to combat autoplay policies"](../../../faq/02-how-to-combat-autoplay-policies.md) an interesting read.
