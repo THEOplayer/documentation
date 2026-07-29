@@ -13,20 +13,25 @@ The Web SDK exposes this API through [`player.network`](pathname:///theoplayer/v
 
 On iOS and iPadOS browsers, the Network API can only be used to intercept and alter DRM-related requests and responses.
 
-## Online and offline events
+## Detecting a lost connection
 
-The Network API dispatches an [`online`](pathname:///theoplayer/v11/api-reference/web/interfaces/NetworkEventMap.html#online)
-event and an [`offline`](pathname:///theoplayer/v11/api-reference/web/interfaces/NetworkEventMap.html#offline) event,
-so you can react to the player losing and regaining its connection:
+To detect that the player lost its connection, listen for the
+[`manifesterror`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#manifesterror)
+and [`segmenterror`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#segmenterror) events,
+which are dispatched when the player fails to load the manifest or a segment.
+The [`manifestupdate`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#manifestupdate)
+event indicates that the player successfully loaded the manifest again, so the connection is back:
 
 ```js
-player.network.addEventListener('online', handleOnlineEvent);
+player.addEventListener('manifesterror', handleConnectionLost);
+player.addEventListener('segmenterror', handleConnectionLost);
+player.addEventListener('manifestupdate', handleConnectionRestored);
 ```
 
 Event listeners can be removed similarly:
 
 ```js
-player.network.removeEventListener('online', handleOnlineEvent);
+player.removeEventListener('manifesterror', handleConnectionLost);
 ```
 
 ## Related articles
