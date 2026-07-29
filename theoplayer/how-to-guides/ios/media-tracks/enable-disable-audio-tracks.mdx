@@ -15,10 +15,6 @@ The iOS SDK exposes the audio tracks through [`player.audioTracks`](pathname:///
 which contains [`MediaTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/MediaTrack.html) objects with an `enabled` property.
 
 ```swift
-// disable all audio tracks
-for i in 0..<self.player.audioTracks.count {
-    self.player.audioTracks[i].enabled = false
-}
 // enable a specific audio track
 self.player.audioTracks[indexOfRequestedAudioTrack].enabled = true
 ```

@@ -2,4 +2,5 @@ This article describes how you can use the AudioTrack API, a sub-API of the Medi
 Implementing this functionality is a common use-case for developers who want to build their own UI to toggle audio languages on and off.
 
 Once you have programmatically selected a track, you can set its `enabled` property (or method) to `true` or `false`.
-It is advised to disable the audio tracks which you do not want to play, in order to avoid issues with overlapping audio.
+Because only one audio track can play at a time, enabling an audio track automatically disables all other audio tracks.
+Note that this does not apply to text tracks: multiple text tracks can be active at the same time.

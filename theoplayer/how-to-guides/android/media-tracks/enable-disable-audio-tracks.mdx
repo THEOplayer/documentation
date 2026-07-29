@@ -16,10 +16,6 @@ which contains [`MediaTrack`](pathname:///theoplayer/v11/api-reference/android/c
 [`setEnabled`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html#setEnabled(boolean)>) method.
 
 ```kotlin
-// disable all audio tracks
-for (audioTrack in player.audioTracks) {
-    audioTrack.isEnabled = false
-}
 // enable a specific audio track
 player.audioTracks.getItem(indexOfRequestedAudioTrack).isEnabled = true
 ```
