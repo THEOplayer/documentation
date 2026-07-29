@@ -16,8 +16,8 @@ If not, start with our [getting started guide](../../../getting-started/01-sdks/
 
 ## Adding and removing an interceptor
 
-The Android SDK provides the `HTTPInterceptor` interface, which contains two methods that you can implement
-depending on your use case:
+The Android SDK provides the [`HTTPInterceptor`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/HTTPInterceptor.html)
+interface, which contains two methods that you can implement depending on your use case:
 
 - `suspend fun onRequest(request: InterceptableHTTPRequest)`: intercepts an HTTP request before opening the connection.
 - `suspend fun onResponse(response: InterceptableHTTPResponse)`: intercepts an HTTP response before consuming the response body.
@@ -36,7 +36,8 @@ theoPlayerView.player.network.removeHTTPInterceptor(httpInterceptor)
 
 ## Intercepting a request
 
-The `request` parameter of `onRequest` allows you to read and write properties of the request,
+The [`request`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/InterceptableHTTPRequest.html)
+parameter of `onRequest` allows you to read and write properties of the request,
 or to interrupt the request by responding to it directly.
 
 The snippet below shows some common use cases.
@@ -76,7 +77,8 @@ override suspend fun onRequest(request: InterceptableHTTPRequest) {
 
 ## Intercepting a response
 
-The `response` parameter of `onResponse` allows you to read and write properties of the received response.
+The [`response`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/InterceptableHTTPResponse.html)
+parameter of `onResponse` allows you to read and write properties of the received response.
 
 The snippet below shows some common use cases.
 
