@@ -1,0 +1,71 @@
+---
+sidebar_position: 8
+sidebar_label: Detect active text track cues
+---
+
+# How to detect active text track cues on Web
+
+import Intro from '../../shared/text-tracks/_detect-active-text-track-cues-intro.mdx';
+import SubtitlesIntro from '../../shared/text-tracks/_detect-active-text-track-cues-subtitles-intro.mdx';
+import ListenersRemark from '../../shared/text-tracks/_detect-active-text-track-cues-listeners-remark.mdx';
+
+<Intro />
+
+## Implementation for subtitles and closed captions
+
+<SubtitlesIntro />
+
+The Web SDK exposes the TextTrack API through [`player.textTracks`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#texttracks). This `textTracks` property is a [`TextTrackList`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTracksList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackList.html). This `TrackList` dispatches the events from the [`TrackListEventMap`](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackListEventMap.html). This `TrackListEventMap` contains the [`addtrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackListEventMap.html#change) event, as well as the `change` and `removetrack` event.
+
+In the callback of your `addtrack` event, you want to track the [`addcue`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackEventMap.html#addcue) event through the [`TextTrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html) interface. Then, in the callback of your `addcue` event, you want to track the [`enter`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackCueEventMap.html#enter) and [`exit`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackCueEventMap.html#exit) events through the [`TextTrackCue`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackCue.html) interface. The `enter` event is dispatched when a cue becomes active and the `exit` event is dispatched when a cue becomes inactive. You can fetch the actual content in the callback of your `enter` event through its [`content`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackCue.html#content) property.
+
+Alternatively, in the callback of your `addtrack` event, you could track the [`cuechange`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackEventMap.html#cuechange) event through the `TextTrack` interface. Then, in the callback of your `cuechange` event, you want to iterate over the active cues. For each active cue, you could also query its `content` property.
+
+The code below allows you to detect the active text track cues.
+
+```js
+player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
+  const track = addTrackEvent.track;
+  track.addEventListener('addcue', function (addCueEvent) {
+    const cue = addCueEvent.cue;
+    cue.addEventListener('enter', function (enterEvent) {
+      console.log(enterEvent, enterEvent.cue.content);
+    });
+    cue.addEventListener('exit', console.log);
+  });
+  track.addEventListener('cuechange', function (cueChangeEvent) {
+    const cues = cueChangeEvent.track.activeCues;
+    for (let i = 0; i < cues.length; i++) {
+      console.log('cuechange active cue', i, cues[i]);
+    }
+  });
+});
+// ...
+// player.source = ...
+```
+
+<ListenersRemark />
+
+## Implementation for timed metadata
+
+The implementation for timed metadata is identical to the one for subtitles and closed captions, except for three things.
+
+1. You do not necessarily use the `enter` event.
+   For cues that span a period of time, for example `EXT-X-DATERANGE` cues,
+   you might want to perform your action when the cue ends, so on the `exit` event instead.
+
+2. You might need to set the `mode` of the relevant text track to `hidden`,
+   as documented in [how to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx).
+   Some types of timed metadata, for example `EXT-X-DATERANGE` and EventStream, are `disabled` by default.
+   You should add a condition to your `addtrack` callback to decide whether you want to set your track to `hidden`.
+
+3. You should set [`hlsDateRange`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerConfiguration.html#hlsDateRange) to `true` in your player configuration or stream configuration,
+   if you want to detect `EXT-X-DATERANGE` tags in an HLS stream.
+
+The article on [how to track ID3 cues](./track-id3-cues.mdx) might be useful to learn more about detecting ID3 tags specifically.
+
+## Related articles
+
+- [How to programmatically detect text track changes](./detect-text-track-changes.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to track ID3 cues](./track-id3-cues.mdx)

@@ -1,0 +1,26 @@
+---
+sidebar_position: 1
+sidebar_label: Enable or disable audio tracks
+---
+
+# How to programmatically enable or disable audio tracks on iOS
+
+import Intro from '../../shared/media-tracks/_enable-disable-audio-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The iOS SDK exposes the audio tracks through [`player.audioTracks`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C11audioTracksAA14AudioTrackList_pvp),
+which contains [`MediaTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/MediaTrack.html) objects with an `enabled` property.
+
+```swift
+// enable a specific audio track
+self.player.audioTracks[indexOfRequestedAudioTrack].enabled = true
+```
+
+## Related articles
+
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)
+- [How to programmatically detect audio track changes](./detect-audio-track-changes.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

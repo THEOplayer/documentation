@@ -1,0 +1,44 @@
+---
+sidebar_position: 8
+sidebar_label: Detect audio track changes
+---
+
+# How to programmatically detect audio track changes on Android
+
+import Intro from '../../shared/media-tracks/_detect-audio-track-changes-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The implementation of the Android SDK applies to all Android-based platforms, including Android TV and Fire TV.
+
+The Android SDK exposes the AudioTrack API through [`player.getAudioTracks()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getAudioTracks()>).
+This `getAudioTracks()` method returns a [`MediaTrackList`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrackList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/TrackList.html).
+This `TrackList` dispatches the events from the [`AudioTrackListEventTypes`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html).
+The `AudioTrackListEventTypes` contains the [`TRACKLISTCHANGE`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/mediatrack/audio/list/AudioTrackListEventTypes.html#TRACKLISTCHANGE) event, as well as the `ADDTRACK` and `REMOVETRACK` event.
+
+The code below allows you to detect audio track changes.
+
+```kotlin
+player.audioTracks.addEventListener(AudioTrackListEventTypes.TRACKLISTCHANGE) { event ->
+    val track = event.track
+    println("${track.label}, ${track.language}, ${track.isEnabled}")
+}
+```
+
+The properties of a media `track` (e.g. `enabled`, `language`) are described in the [`MediaTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html) and [`Track`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/Track.html) API references.
+
+## Related articles
+
+Are you reading this article because you are interested in audio tracks? Continue reading below.
+
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)
+- [How to programmatically enable or disable audio tracks](./enable-disable-audio-tracks.mdx)
+
+Are you reading this article because you are implementing a custom UI?
+Then you will find the following articles interesting:
+
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)
+- [How to detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to detect text track changes](../text-tracks/detect-text-track-changes.mdx)

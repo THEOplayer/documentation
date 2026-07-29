@@ -1,0 +1,33 @@
+---
+sidebar_position: 4
+sidebar_label: Insert subtitles
+---
+
+# How to insert subtitles on Android
+
+import Intro from '../../shared/text-tracks/_insert-subtitles-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Each text track is described by a [`TextTrackDescription`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/TextTrackDescription.html).
+
+```kotlin
+val sourceWithSubs = SourceDescription.Builder("//path/to/your-manifest.m3u8")
+    .textTracks(
+        TextTrackDescription.Builder("path/to/your-subs-track1.vtt")
+            .isDefault(true)
+            .kind(TextTrackKind.SUBTITLES)
+            .srclang("en")
+            .label("English subs")
+            .build()
+    )
+    .build()
+```
+
+## Related articles
+
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to implement preview thumbnails](./preview-thumbnails.mdx)

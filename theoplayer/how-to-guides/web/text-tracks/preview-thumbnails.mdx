@@ -1,0 +1,37 @@
+---
+sidebar_position: 5
+sidebar_label: Preview thumbnails
+---
+
+# How to implement preview thumbnails on Web
+
+import Intro from '../../shared/text-tracks/_preview-thumbnails-intro.mdx';
+
+<Intro />
+
+## Usage
+
+```js
+player.source = {
+  sources: {
+    type: 'application/x-mpegurl',
+    src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8',
+  },
+  textTracks: [
+    {
+      default: true,
+      src: 'https://cdn.theoplayer.com/dash/theoplayer/thumbnails/big_buck_bunny_thumbnails.vtt',
+      label: 'thumbnails',
+      kind: 'metadata',
+    },
+  ],
+};
+```
+
+If you use the [Open Video UI for Web](/open-video-ui/web/)
+or [THEOplayer's default UI](../../11-ui/00-introduction.md),
+the thumbnails are shown automatically when hovering or scrubbing the seek bar.
+
+## Related articles
+
+- [How to insert subtitles](./insert-subtitles.mdx)

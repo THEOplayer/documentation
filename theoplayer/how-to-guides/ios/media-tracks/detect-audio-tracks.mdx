@@ -1,0 +1,29 @@
+---
+sidebar_position: 2
+sidebar_label: Detect audio tracks
+---
+
+# How to programmatically detect audio tracks on iOS
+
+import Intro from '../../shared/media-tracks/_detect-audio-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Listen for the [`ADD_TRACK`](pathname:///theoplayer/v11/api-reference/ios/Structs/AudioTrackListEventTypes.html) event
+on [`player.audioTracks`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C11audioTracksAA14AudioTrackList_pvp)
+to detect every [`MediaTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/MediaTrack.html) that is added to the player.
+
+```swift
+self.player.audioTracks.addEventListener(type: AudioTrackListEventTypes.ADD_TRACK, listener: { addTrackEvent in
+    let audioTrack = addTrackEvent.track
+})
+```
+
+## Related articles
+
+- [How to programmatically enable or disable audio tracks](./enable-disable-audio-tracks.mdx)
+- [How to programmatically detect audio track changes](./detect-audio-track-changes.mdx)
+- [How to programmatically detect video track qualities](./detect-video-track-qualities.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

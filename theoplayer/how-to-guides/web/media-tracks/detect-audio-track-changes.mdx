@@ -1,0 +1,44 @@
+---
+sidebar_position: 8
+sidebar_label: Detect audio track changes
+---
+
+# How to programmatically detect audio track changes on Web
+
+import Intro from '../../shared/media-tracks/_detect-audio-track-changes-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The implementation of the Web SDK applies to all web-based platforms, including Tizen and webOS.
+
+The Web SDK exposes the AudioTrack API through [`player.audioTracks`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#audiotracks).
+This `audioTracks` property is a [`MediaTrackList`](pathname:///theoplayer/v11/api-reference/web/interfaces/MediaTrackList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackList.html).
+This `TrackList` dispatches the events from the [`TrackListEventMap`](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackListEventMap.html).
+This `TrackListEventMap` contains the [`change`](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackListEventMap.html#change) event, as well as the `addtrack` and `removetrack` event.
+
+The code below allows you to detect audio track changes.
+
+```js
+player.audioTracks.addEventListener('change', function (event) {
+  const track = event.track;
+  console.log(track, track.label, track.language, track.enabled);
+});
+```
+
+The properties of a media `track` (e.g. `enabled`, `language`) are described in [the `MediaTrack` API reference](pathname:///theoplayer/v11/api-reference/web/interfaces/MediaTrack.html).
+
+## Related articles
+
+Are you reading this article because you are interested in audio tracks? Continue reading below.
+
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)
+- [How to programmatically enable or disable audio tracks](./enable-disable-audio-tracks.mdx)
+
+Are you reading this article because you are implementing a custom UI?
+Then you will find the following articles interesting:
+
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)
+- [How to detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to detect text track changes](../text-tracks/detect-text-track-changes.mdx)

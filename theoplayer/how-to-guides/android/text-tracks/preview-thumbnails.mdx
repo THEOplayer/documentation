@@ -1,0 +1,32 @@
+---
+sidebar_position: 5
+sidebar_label: Preview thumbnails
+---
+
+# How to implement preview thumbnails on Android
+
+import Intro from '../../shared/text-tracks/_preview-thumbnails-intro.mdx';
+
+<Intro />
+
+## Usage
+
+You can add or edit your source description as follows.
+
+```kotlin
+val sourceWithThumbnails =
+    SourceDescription.Builder("https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8")
+        .textTracks(
+            TextTrackDescription.Builder("https://cdn.theoplayer.com/dash/theoplayer/thumbnails/big_buck_bunny_thumbnails.vtt")
+                .isDefault(true)
+                .kind(TextTrackKind.METADATA)
+                .srclang("en")
+                .label("thumbnails")
+                .build()
+        )
+        .build()
+```
+
+## Related articles
+
+- [How to insert subtitles](./insert-subtitles.mdx)

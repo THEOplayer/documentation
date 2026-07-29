@@ -10,7 +10,7 @@ Apart from specifying the WebVTT file in the track element, THEOplayer has suppo
 
 ### Sideloading WebVTT
 
-[This page](../../../how-to-guides/10-texttrack/04-how-to-insert-subtitles.md) explains how you can insert WebVTT files.
+[This page](../../../how-to-guides/web/text-tracks/insert-subtitles.mdx) explains how you can insert WebVTT files.
 
 ### HTTP Live Streaming Manifest with embedded WebVTT subtitles
 

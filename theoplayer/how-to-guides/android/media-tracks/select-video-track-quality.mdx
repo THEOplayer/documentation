@@ -1,0 +1,40 @@
+---
+sidebar_position: 3
+sidebar_label: Select a video track quality
+---
+
+# How to programmatically select a video track quality on Android
+
+import Intro from '../../shared/media-tracks/_select-video-track-quality-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Set the [`targetQuality`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html#setTargetQuality(Q)>)
+or [`targetQualities`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html#setTargetQualities(java.util.List)>)
+of a [`MediaTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html).
+
+```kotlin
+val videoTrack = player.videoTracks.getItem(0)
+
+// enable a specific video track quality
+videoTrack.targetQuality = videoTrack.qualities.getItem(indexOfRequestedVideoTrackQuality)
+
+// do ABR on a set of qualities:
+// the ABR algorithm only selects qualities belonging to the given list
+videoTrack.targetQualities = listOf(
+    videoTrack.qualities.getItem(0),
+    videoTrack.qualities.getItem(1),
+)
+
+// set to default ABR algorithm
+videoTrack.targetQualities = emptyList()
+```
+
+## Related articles
+
+- [How to programmatically detect video track qualities](./detect-video-track-qualities.mdx)
+- [How to programmatically detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to reduce data usage on mobile devices](./reduce-data-usage.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

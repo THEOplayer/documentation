@@ -1,0 +1,12 @@
+[ID3](https://en.wikipedia.org/wiki/ID3) is a type of metadata which can be inserted in HTTP live streams.
+Once an ID3 cue is inserted, it is added to a THEOplayer text track.
+
+Developers commonly track ID3 cues because they want to introduce a certain behavior depending on the metadata contained by the ID3 cues, for example:
+
+- to schedule advertisements dynamically by using information passed on by the ID3 metadata;
+- to overlay certain text on top of the player (e.g. the score of a football match).
+
+The demo at [https://demo.theoplayer.com/audio-id3-metadata](https://demo.theoplayer.com/audio-id3-metadata) demonstrates a usage of ID3 metadata.
+Just before the song changes, an `enter` event is dispatched. The song information (title, album, etc.) is contained within this `enter` event, and can be used to update the UI.
+
+This article describes how you can listen for timed metadata events, and how you can track the `enter` event.

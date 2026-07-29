@@ -1,0 +1,33 @@
+---
+sidebar_position: 2
+sidebar_label: Detect audio tracks
+---
+
+# How to programmatically detect audio tracks on Roku
+
+import Intro from '../../shared/media-tracks/_detect-audio-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The snippet below allows you to detect added audio tracks.
+In this example, we have used the `addedaudiotrack` event to propagate information about audio tracks.
+Basically, all you have to do is add an event listener.
+
+```brightscript
+sub Init()
+  ...
+  m.THEOplayer.callFunc("addEventListener", "addedaudiotrack", m.top, "onAudioTracksChanged")
+  ...
+end sub
+
+sub onAudioTracksChanged()
+  audioTracks = m.player.audioTracks
+  print "Audio tracks changed. "; audioTracks
+end sub
+```
+
+## Related articles
+
+- [How to programmatically enable or disable audio tracks](./enable-disable-audio-tracks.mdx)

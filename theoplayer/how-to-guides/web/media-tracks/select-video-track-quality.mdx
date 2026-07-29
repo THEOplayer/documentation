@@ -1,0 +1,35 @@
+---
+sidebar_position: 3
+sidebar_label: Select a video track quality
+---
+
+# How to programmatically select a video track quality on Web
+
+import Intro from '../../shared/media-tracks/_select-video-track-quality-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Set the [`targetQuality`](pathname:///theoplayer/v11/api-reference/web/interfaces/MediaTrack.html#targetquality) property
+of a [`MediaTrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/MediaTrack.html) to a single quality, to an array of qualities, or to `null`.
+
+```js
+const videoTrack = player.videoTracks[0];
+
+// enable a specific video track quality
+videoTrack.targetQuality = videoTrack.qualities[indexOfRequestedVideoTrackQuality];
+
+// do ABR on a set of qualities
+videoTrack.targetQuality = [videoTrack.qualities[indexOfRequestedVideoTrackQuality1], videoTrack.qualities[indexOfRequestedVideoTrackQuality2]];
+
+// set to default ABR algorithm
+videoTrack.targetQuality = null;
+```
+
+## Related articles
+
+- [How to programmatically detect video track qualities](./detect-video-track-qualities.mdx)
+- [How to programmatically detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to reduce data usage on mobile devices](./reduce-data-usage.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

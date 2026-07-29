@@ -262,5 +262,77 @@
   {
     "from": "/theoplayer/how-to-guides/cast/airplay/introduction/",
     "to": "/theoplayer/how-to-guides/web/cast/airplay/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/introduction/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-enable-disable-audio-tracks/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/enable-disable-audio-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-audio-tracks/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-audio-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-select-video-track-quality/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/select-video-track-quality/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-video-track-qualities/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-video-track-qualities/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-start-with-specific-quality/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/start-with-specific-quality/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-reduce-data-usage-on-mobile-devices/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/reduce-data-usage/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-video-track-quality-changes/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-video-track-quality-changes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-audio-track-changes/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-audio-track-changes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/introduction/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-dynamically-change-the-visible-captions/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/change-visible-captions/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-programmatically-detect-text-tracks/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/detect-text-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-programmatically-disable-text-tracks/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/enable-disable-text-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-insert-subtitles/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/insert-subtitles/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-implement-preview-thumbnails/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/preview-thumbnails/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-track-id3-cues-tags/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/track-id3-cues/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-detect-text-track-changes/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/detect-text-track-changes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-detect-active-text-track-cues/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/detect-active-text-track-cues/"
   }
 ]

@@ -1,0 +1,36 @@
+---
+sidebar_position: 7
+sidebar_label: Detect video track quality changes
+---
+
+# How to programmatically detect video track quality changes on iOS
+
+import Intro from '../../shared/media-tracks/_detect-video-track-quality-changes-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Listen for the [`ACTIVE_QUALITY_CHANGED`](pathname:///theoplayer/v11/api-reference/ios/Structs/MediaTrackEventTypes.html)
+event of a [`MediaTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/MediaTrack.html).
+
+```swift
+player.videoTracks.addEventListener(type: VideoTrackListEventTypes.ADD_TRACK, listener: { addTrackEvent in
+    guard let videoTrack = addTrackEvent.track as? VideoTrack else { return }
+    videoTrack.addEventListener(type: MediaTrackEventTypes.ACTIVE_QUALITY_CHANGED, listener: { qualityChangeEvent in
+        let quality = qualityChangeEvent.quality
+        var msg = "Quality changed: bandwidth = \(quality.bandwidth)"
+        if let videoQuality = quality as? VideoQuality {
+            msg.append(", width = \(videoQuality.width), height = \(videoQuality.height)")
+        }
+        print(msg)
+    })
+})
+```
+
+## Related articles
+
+- [How to programmatically detect video track qualities](./detect-video-track-qualities.mdx)
+- [How to programmatically select a video track quality](./select-video-track-quality.mdx)
+- [How to programmatically detect audio track changes](./detect-audio-track-changes.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

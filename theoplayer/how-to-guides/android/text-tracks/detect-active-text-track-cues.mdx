@@ -1,0 +1,73 @@
+---
+sidebar_position: 8
+sidebar_label: Detect active text track cues
+---
+
+# How to detect active text track cues on Android
+
+import Intro from '../../shared/text-tracks/_detect-active-text-track-cues-intro.mdx';
+import SubtitlesIntro from '../../shared/text-tracks/_detect-active-text-track-cues-subtitles-intro.mdx';
+import ListenersRemark from '../../shared/text-tracks/_detect-active-text-track-cues-listeners-remark.mdx';
+
+<Intro />
+
+## Implementation for subtitles and closed captions
+
+<SubtitlesIntro />
+
+The Android SDK exposes the TextTrack API through [`player.getTextTracks()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getTextTracks()>). This `getTextTracks()` method returns a [`TextTrackList`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrackList.html) that inherits from the [`TrackList`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/TrackList.html). This `TrackList` dispatches the events from the [`TextTrackListEventTypes`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html). The `TextTrackListEventTypes` contains the [`ADDTRACK`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/list/TextTrackListEventTypes.html#ADDTRACK) event, as well as the `TRACKLISTCHANGE` and `REMOVETRACK` event.
+
+In the callback of your `ADDTRACK` event, you want to track the [`ADDCUE`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/TextTrackEventTypes.html#ADDCUE) event through the [`TextTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html) interface. Then, in the callback of your `ADDCUE` event, you want to track the [`ENTER`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/texttrackcue/TextTrackCueEventTypes.html#ENTER) and [`EXIT`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/texttrackcue/TextTrackCueEventTypes.html#EXIT) events through the [`TextTrackCue`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/cue/TextTrackCue.html) interface. The `ENTER` event is dispatched when a cue becomes active and the `EXIT` event is dispatched when a cue becomes inactive. You can fetch the actual content in the callback of your `ENTER` event through its [`getContent()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/cue/TextTrackCue.html#getContent()>) method.
+
+Alternatively, in the callback of your `ADDTRACK` event, you could track the [`CUECHANGE`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/TextTrackEventTypes.html#CUECHANGE) event through the `TextTrack` interface. Then, in the callback of your `CUECHANGE` event, you want to iterate over the active cues. For each active cue, you could also query its `content` property.
+
+The code below allows you to detect the active text track cues.
+
+```kotlin
+player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRACK) { addTrackEvent ->
+    val track = addTrackEvent.track
+    track.addEventListener(TextTrackEventTypes.ADDCUE) { addCueEvent ->
+        val cue = addCueEvent.cue
+        cue.addEventListener(TextTrackCueEventTypes.ENTER) { enterEvent ->
+            println("$enterEvent ${enterEvent.cue.content}")
+        }
+        cue.addEventListener(TextTrackCueEventTypes.EXIT) { exitEvent ->
+            println(exitEvent)
+        }
+    }
+    track.addEventListener(TextTrackEventTypes.CUECHANGE) { cueChangeEvent ->
+        val cues = cueChangeEvent.textTrack.activeCues
+        for (i in 0 until cues.length()) {
+            println("cuechange active cue $i ${cues.getItem(i)}")
+        }
+    }
+}
+// ...
+// player.source = ...
+```
+
+<ListenersRemark />
+
+## Implementation for timed metadata
+
+The implementation for timed metadata is identical to the one for subtitles and closed captions, except for three things.
+
+1. You do not necessarily use the `enter` event.
+   For cues that span a period of time, for example `EXT-X-DATERANGE` cues,
+   you might want to perform your action when the cue ends, so on the `exit` event instead.
+
+2. You might need to set the `mode` of the relevant text track to `hidden`,
+   as documented in [how to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx).
+   Some types of timed metadata, for example `EXT-X-DATERANGE` and EventStream, are `disabled` by default.
+   You should add a condition to your `addtrack` callback to decide whether you want to set your track to `hidden`.
+
+3. You should set [`hlsDateRange`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/THEOplayerConfig.Builder.html#hlsDateRange(boolean)>) to `true` in your player configuration or stream configuration,
+   if you want to detect `EXT-X-DATERANGE` tags in an HLS stream.
+
+The article on [how to track ID3 cues](./track-id3-cues.mdx) might be useful to learn more about detecting ID3 tags specifically.
+
+## Related articles
+
+- [How to programmatically detect text track changes](./detect-text-track-changes.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to track ID3 cues](./track-id3-cues.mdx)

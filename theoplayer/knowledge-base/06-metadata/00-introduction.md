@@ -200,7 +200,7 @@ THEOplayer offers features which might implement your desired use-case out-of-th
 ## Resources
 
 - THEOplayer
-  - [How to track ID3 cues/tags?](../../how-to-guides/10-texttrack/06-how-to-track-id3-cues-tags.md)
+  - [How to track ID3 cues/tags?](../../how-to-guides/web/text-tracks/track-id3-cues.mdx)
   - [TextTrack Types](pathname:///theoplayer/v11/api-reference/web/types/TextTrackType.html)
   - [ID3 Audio Player Demo](https://demo.theoplayer.com/audio-id3-metadata)
 - External

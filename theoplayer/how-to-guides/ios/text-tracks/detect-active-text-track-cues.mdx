@@ -1,0 +1,74 @@
+---
+sidebar_position: 8
+sidebar_label: Detect active text track cues
+---
+
+# How to detect active text track cues on iOS
+
+import Intro from '../../shared/text-tracks/_detect-active-text-track-cues-intro.mdx';
+import SubtitlesIntro from '../../shared/text-tracks/_detect-active-text-track-cues-subtitles-intro.mdx';
+import ListenersRemark from '../../shared/text-tracks/_detect-active-text-track-cues-listeners-remark.mdx';
+
+<Intro />
+
+## Implementation for subtitles and closed captions
+
+<SubtitlesIntro />
+
+The iOS SDK exposes the TextTrack API through [`player.textTracks`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C10textTracksAA13TextTrackList_pvp). This `textTracks` property is a [`TextTrackList`](pathname:///theoplayer/v11/api-reference/ios/Protocols/TextTrackList.html). This `TextTrackList` dispatches the events from the [`TextTrackListEventTypes`](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackListEventTypes.html). The `TextTrackListEventTypes` contains the [`ADD_TRACK`](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackListEventTypes.html#/s:13THEOplayerSDK23TextTrackListEventTypesV9ADD_TRACKAA0F4TypeCyAA03AdddF0CGvpZ) event, as well as the `CHANGE` and `REMOVE_TRACK` event.
+
+In the callback of your `ADD_TRACK` event, you want to track the [`ADD_CUE`](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackEventTypes.html#/s:13THEOplayerSDK19TextTrackEventTypesV7ADD_CUEAA0E4TypeCyAA06AddCueE0CGvpZ) event through the [`TextTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/TextTrack.html) interface. Then, in the callback of your `ADD_CUE` event, you want to track the [`ENTER`](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackCueEventTypes.html#/s:13THEOplayerSDK22TextTrackCueEventTypesV5ENTERAA0F4TypeCyAA0e5EnterF0CGvpZ) and [`EXIT`](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackCueEventTypes.html#/s:13THEOplayerSDK22TextTrackCueEventTypesV4EXITAA0F4TypeCyAA0e4ExitF0CGvpZ) events through the [`TextTrackCue`](pathname:///theoplayer/v11/api-reference/ios/Protocols/TextTrackCue.html) interface. The `ENTER` event is dispatched when a cue becomes active and the `EXIT` event is dispatched when a cue becomes inactive.
+You can fetch the actual content in the callback of your `ENTER` event through its [`content`](pathname:///theoplayer/v11/api-reference/ios/Protocols/TextTrackCue.html#/s:13THEOplayerSDK12TextTrackCueP7contentypSgvp) property.
+
+Alternatively, in the callback of your `ADD_TRACK` event, you could track the [`CUE_CHANGE`](pathname:///theoplayer/v11/api-reference/ios/Structs/TextTrackEventTypes.html#/s:13THEOplayerSDK19TextTrackEventTypesV10CUE_CHANGEAA0E4TypeCyAA09CueChangeE0CGvpZ) event through the `TextTrack` interface. Then, in the callback of your `CUE_CHANGE` event, you want to iterate over the active cues. For each active cue, you could also query its `content` property.
+
+The code below allows you to detect the active text track cues.
+
+```swift
+player.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK) { addTrackEvent in
+    let track: TextTrack = addTrackEvent.track as! TextTrack
+    track.addEventListener(type: TextTrackEventTypes.ADD_CUE) { addCueEvent in
+        let cue = addCueEvent.cue
+        cue.addEventListener(type: TextTrackCueEventTypes.ENTER) { enterEvent in
+            print(enterEvent, enterEvent.cue.content)
+        }
+        cue.addEventListener(type: TextTrackCueEventTypes.EXIT) { exitEvent in
+            print(exitEvent)
+        }
+    }
+    track.addEventListener(type: TextTrackEventTypes.CUE_CHANGE) { cueChangeEvent in
+        let textTrack: TextTrack = cueChangeEvent.track as! TextTrack
+        textTrack.activeCues.forEach { cue in
+            print("cuechange active cue", cue)
+        }
+    }
+}
+// ...
+// player.source = ...
+```
+
+<ListenersRemark />
+
+## Implementation for timed metadata
+
+The implementation for timed metadata is identical to the one for subtitles and closed captions, except for three things.
+
+1. You do not necessarily use the `enter` event.
+   For cues that span a period of time, for example `EXT-X-DATERANGE` cues,
+   you might want to perform your action when the cue ends, so on the `exit` event instead.
+
+2. You might need to set the `mode` of the relevant text track to `hidden`,
+   as documented in [how to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx).
+   Some types of timed metadata, for example `EXT-X-DATERANGE` and EventStream, are `disabled` by default.
+   You should add a condition to your `addtrack` callback to decide whether you want to set your track to `hidden`.
+
+3. You should set [`hlsDateRange`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayerConfiguration.html) to `true` in your player configuration or stream configuration,
+   if you want to detect `EXT-X-DATERANGE` tags in an HLS stream.
+
+The article on [how to track ID3 cues](./track-id3-cues.mdx) might be useful to learn more about detecting ID3 tags specifically.
+
+## Related articles
+
+- [How to programmatically detect text track changes](./detect-text-track-changes.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to track ID3 cues](./track-id3-cues.mdx)

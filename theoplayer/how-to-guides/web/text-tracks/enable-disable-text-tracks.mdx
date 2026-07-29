@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+sidebar_label: Enable or disable text tracks
+---
+
+# How to programmatically enable or disable text tracks on Web
+
+import Intro from '../../shared/text-tracks/_enable-disable-text-tracks-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Set the [`mode`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html#mode) of a
+[`TextTrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html).
+
+```js
+// disable all text tracks
+player.textTracks.forEach(function (track) {
+  track.mode = 'disabled';
+});
+// enable a specific text track
+player.textTracks[indexOfRequestedTextTrack].mode = 'showing';
+```
+
+## Related articles
+
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)

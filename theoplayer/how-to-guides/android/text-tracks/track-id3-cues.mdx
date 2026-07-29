@@ -1,0 +1,46 @@
+---
+sidebar_position: 6
+sidebar_label: Track ID3 cues
+---
+
+# How to track ID3 cues and tags on Android
+
+import Intro from '../../shared/text-tracks/_id3-cues-intro.mdx';
+import EnterEventIntro from '../../shared/text-tracks/_id3-cues-enter-event-intro.mdx';
+import Resources from '../../shared/text-tracks/_id3-cues-resources.mdx';
+
+<Intro />
+
+## Listening for timed metadata events
+
+Listen for the [`CUECHANGE`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/track/texttrack/TextTrackEventTypes.html#CUECHANGE)
+event of a [`TextTrack`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/texttrack/TextTrack.html).
+
+```kotlin
+player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRACK) { addTrackEvent ->
+    addTrackEvent.track.addEventListener(TextTrackEventTypes.CUECHANGE) { cueChangeEvent ->
+        val cues = cueChangeEvent.textTrack.cues
+    }
+}
+```
+
+## Tracking the enter event
+
+<EnterEventIntro />
+
+```kotlin
+player.textTracks.addEventListener(TextTrackListEventTypes.ADDTRACK) { addTrackEvent ->
+    addTrackEvent.track.addEventListener(TextTrackEventTypes.ENTERCUE) { enterCueEvent ->
+        println("enterCueEvent: ${enterCueEvent.cue.content}")
+    }
+}
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [How to detect active text track cues](./detect-active-text-track-cues.mdx)
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)

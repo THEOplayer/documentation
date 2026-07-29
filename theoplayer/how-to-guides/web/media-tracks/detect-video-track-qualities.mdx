@@ -1,0 +1,29 @@
+---
+sidebar_position: 4
+sidebar_label: Detect video track qualities
+---
+
+# How to programmatically detect video track qualities on Web
+
+import Intro from '../../shared/media-tracks/_detect-video-track-qualities-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The [`qualities`](pathname:///theoplayer/v11/api-reference/web/interfaces/MediaTrack.html#qualities) of a video track
+are available as soon as the track is added to [`player.videoTracks`](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html#videotracks).
+
+```js
+function handleAddTrackEvent(addTrackEvent) {
+  const videoTrackQualities = addTrackEvent.track.qualities;
+}
+player.videoTracks.addEventListener('addtrack', handleAddTrackEvent);
+```
+
+## Related articles
+
+- [How to programmatically select a video track quality](./select-video-track-quality.mdx)
+- [How to programmatically detect video track quality changes](./detect-video-track-quality-changes.mdx)
+- [How to programmatically detect audio tracks](./detect-audio-tracks.mdx)
+- [How to build a Chromeless UI](../../11-ui/06-how-to-build-chromeless-ui.mdx)
