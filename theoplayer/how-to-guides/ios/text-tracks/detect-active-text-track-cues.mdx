@@ -62,12 +62,10 @@ The implementation for timed metadata is identical to the one for subtitles and 
    Some types of timed metadata, for example `EXT-X-DATERANGE` and EventStream, are `disabled` by default.
    You should add a condition to your `addtrack` callback to decide whether you want to set your track to `hidden`.
 
-3. You should set `hlsDateRange` to `true` in your player configuration or stream configuration,
+3. You should set [`hlsDateRange`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayerConfiguration.html) to `true` in your player configuration or stream configuration,
    if you want to detect `EXT-X-DATERANGE` tags in an HLS stream.
 
 The article on [how to track ID3 cues](./track-id3-cues.mdx) might be useful to learn more about detecting ID3 tags specifically.
-
-You can set `hlsDateRange` in your [player configuration](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayerConfiguration.html).
 
 ## Related articles
 
