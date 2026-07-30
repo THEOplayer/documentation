@@ -31,3 +31,14 @@ sub onPlaying()
   print "Time-to-first-frame: "; m.timespan.TotalMilliseconds()
 end sub
 ```
+
+If you use autoplay, start the measurement on the `sourcechange` event instead of the `play` event.
+Otherwise you miss the start-up time between setting the source and the player calling `play()`:
+
+```brightscript
+m.THEOplayer.callFunc("addEventListener", "sourcechange", m.top, "onSourceChange")
+
+sub onSourceChange()
+  m.timespan.Mark()
+end sub
+```
