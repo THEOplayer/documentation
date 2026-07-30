@@ -1,7 +1,7 @@
 ---
 name: prepare-major-version
 description: Prepare the THEOplayer documentation for a new major version (snapshot current docs as a versioned copy, prepare /theoplayer for the next major)
-argument-hint: "[new major version, e.g. v12]"
+argument-hint: '[new major version, e.g. v12]'
 triggers:
   - user
   - model
@@ -53,14 +53,14 @@ The versioning command does **not** copy the `external/` submodules. Add new
 entries to `.gitmodules` for each submodule under `theoplayer/external/`,
 following the exact pattern of the existing `-v<OLD-1>` entries:
 
-| Submodule name | Path under `theoplayer_versioned_docs/version-v<OLD>/external/` | Branch |
-| --- | --- | --- |
-| `react-native-v<OLD>` | `react-native-theoplayer` | `<OLD>.x` |
-| `flutter-v<OLD>` | `flutter-theoplayer-sdk` | `<OLD>.x` |
-| `web-connectors-v<OLD>` | `web-connectors` | `main` |
-| `android-connector-v<OLD>` | `android-connector` | `<OLD>.x` |
-| `ios-connector-v<OLD>` | `iOS-Connector` | `<OLD>.x` |
-| `react-native-connectors-v<OLD>` | `react-native-connectors` | `main` |
+| Submodule name                   | Path under `theoplayer_versioned_docs/version-v<OLD>/external/` | Branch    |
+| -------------------------------- | --------------------------------------------------------------- | --------- |
+| `react-native-v<OLD>`            | `react-native-theoplayer`                                       | `<OLD>.x` |
+| `flutter-v<OLD>`                 | `flutter-theoplayer-sdk`                                        | `<OLD>.x` |
+| `web-connectors-v<OLD>`          | `web-connectors`                                                | `main`    |
+| `android-connector-v<OLD>`       | `android-connector`                                             | `<OLD>.x` |
+| `ios-connector-v<OLD>`           | `iOS-Connector`                                                 | `<OLD>.x` |
+| `react-native-connectors-v<OLD>` | `react-native-connectors`                                       | `main`    |
 
 All new entries must have `shallow = true`. Use the same URL as the
 corresponding current-version submodule. Verify the `<OLD>.x` branches actually
@@ -159,7 +159,7 @@ The versioned docs (`version-v<OLD>/examples/`) keep pointing at the v<OLD> exam
 
 ## Step 7: Fix links to versioned docs
 
-In `theoplayer_versioned_docs/version-v<OLD>/`, links into *other* versioned
+In `theoplayer_versioned_docs/version-v<OLD>/`, links into _other_ versioned
 docs that were written from the perspective of `theoplayer/` no longer resolve.
 Rewrite paths like:
 

@@ -29,7 +29,7 @@ autonomously when relevant.
 ---
 name: my-skill
 description: One-line summary shown in the skill list
-argument-hint: "[optional arguments hint]"
+argument-hint: '[optional arguments hint]'
 allowed-tools:
   - read
   - grep
@@ -46,13 +46,13 @@ for the agent to follow when this skill is invoked.
 
 ## Frontmatter reference
 
-| Field | Default | Description |
-| --- | --- | --- |
-| `name` | directory name | Display name of the skill |
-| `description` | none | Short summary shown in the skill list |
-| `argument-hint` | none | Hint describing expected arguments (e.g. `[filename]`) |
-| `allowed-tools` | all tools | Restrict which tools the skill can use |
-| `triggers` | `[user, model]` | `user` = explicit invocation, `model` = agent auto-invoke |
+| Field           | Default         | Description                                               |
+| --------------- | --------------- | --------------------------------------------------------- |
+| `name`          | directory name  | Display name of the skill                                 |
+| `description`   | none            | Short summary shown in the skill list                     |
+| `argument-hint` | none            | Hint describing expected arguments (e.g. `[filename]`)    |
+| `allowed-tools` | all tools       | Restrict which tools the skill can use                    |
+| `triggers`      | `[user, model]` | `user` = explicit invocation, `model` = agent auto-invoke |
 
 All frontmatter is optional — a plain markdown file with just prompt content is
 a valid skill. Set `triggers: [user]` to prevent the agent from invoking a
