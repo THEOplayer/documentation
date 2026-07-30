@@ -83,10 +83,11 @@ jobs:
         with:
           github-token: ${{ steps.app-token.outputs.token }}
           script: |
-            const body = `:---:
-            | :rocket: View preview at <br> ${{ inputs.environment_url }} <br><br>
-            | <h6>Deployed on ${new Date(Date.now()).toGMTString()}</h6>
-            <!-- Sticky Pull Request comment-pr-preview -->`
+            const body = `| |
+            |---|
+            | :rocket: View preview at: ${{ inputs.environment_url }} |
+            | <h6>Deployed on ${new Date(Date.now()).toGMTString()}</h6> |
+            <!-- Sticky Pull Request comment-pr-preview -->`;
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
