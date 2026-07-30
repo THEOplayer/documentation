@@ -36,6 +36,7 @@ jobs:
     # Do not run on PRs from Dependabot, since they should not need it.
     if: ${{ github.event.action != 'closed' && github.triggering_actor != 'dependabot[bot]' }}
     uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
     with:
       environment_name: preview
       environment_url: '${{ vars.PREVIEW_CLOUDFRONT_URL }}/pr-${{ github.event.number }}/'
