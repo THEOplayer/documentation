@@ -5,10 +5,6 @@ sidebar_label: Break Manifest
 
 # Break Manifest
 
-import RebrandingNotice from '../callouts/_rebranding_notice.md';
-
-<RebrandingNotice />
-
 The Break Manifest is the canonical, machine-readable description of the ad breaks that are currently relevant for a [channel](/ads/concepts/channels). It is a small JSON document that the OptiView Player polls on a fixed cadence to learn which breaks to prepare and play.
 
 The Break Manifest is **side-loaded**: it is served from its own endpoint, separately from the media (HLS/DASH) manifest. The player fetches the media manifest from your CDN as usual and, in parallel, polls the Break Manifest to drive ad break scheduling. This is different from server-side ad insertion (SSAI), where ad cues are injected directly into the media manifest.

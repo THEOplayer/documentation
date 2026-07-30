@@ -5,10 +5,6 @@ sidebar_label: Origins
 
 # Origins
 
-import RebrandingNotice from '../callouts/_rebranding_notice.md';
-
-<RebrandingNotice />
-
 An origin is a manifest URL that a channel monitors for ad markers. When automatic marker detection is enabled, the worker fetches the channel's enabled origins and parses their manifests for markers. A channel can have multiple origins so that detection keeps working when one source goes offline.
 
 Origins are scoped to an organization and to a channel. API calls identify the organization with the `X-Org-ID` header and authenticate with an API key and secret using HTTP Basic authentication.
