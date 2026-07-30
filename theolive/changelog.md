@@ -1,5 +1,14 @@
 # Changelog
 
+## [11.8.0] - 2026-07-29
+
+- Added Dolby Atmos encoding
+- Added Dolby Vision Profile 8.1 output
+- Fixed language tags in HLS manifests not following the standard (e.g. `en` should be used instead of `eng`)
+- Fixed HLS SDR variants missing the video range declaration that players require when HDR variants are also offered
+- Changed an ingest that connects but sends no data to be treated the same as an ingest that does not connect: the
+  channel stays in the waiting state instead of showing an error, and stops after the ingest timeout
+
 ## [11.7.2] - 2026-07-22
 
 - Fixed MPEG-TS ingests failing when the initial PMT does not announce all tracks yet (e.g. audio only), which are
