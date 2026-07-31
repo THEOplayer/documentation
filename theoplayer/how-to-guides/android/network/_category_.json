@@ -1,5 +1,6 @@
 {
   "label": "Network",
+  "position": 8,
   "customProps": {
     "icon": "📡"
   }

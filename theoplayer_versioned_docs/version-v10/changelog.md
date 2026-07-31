@@ -478,7 +478,7 @@
 
 #### 👎 Deprecations
 
-- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to [our documentation](/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/).
+- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to [our documentation](./how-to-guides/08-network/03-ios-hls-media-playlist-interceptor.md).
 
 ### Roku
 

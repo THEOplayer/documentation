@@ -1,36 +1,34 @@
-# Android Network Request/Response Interceptor
+---
+sidebar_position: 1
+sidebar_label: Request and response interceptors
+---
 
-THEOplayer Android SDK makes a number of network requests and receives responses while playing video. These requests and responses can be intercepted to make a new or modified request or respond with a new response.
+# How to add and remove request and response interceptors on Android
 
-The Network API thus allows easy access to handle the network efficiently.
+import Intro from '../../shared/network/_request-response-interceptors-intro.mdx';
 
-This guide explains how you set up THEOplayer Android SDK to add and remove request/response interceptors.
+<Intro />
 
 ## Prerequisites
 
-- This guide expects that you have a THEOplayer license. If you aren't using THEOplayer yet, you can start by registering at THEOportal [here](https://portal.theoplayer.com) to get access to THEOplayer.
-
-- You need to be using at least THEOplayer Android SDK version 5.11.0.
-
-## Set up THEOplayer in your app
-
-To set up THEOplayer Android SDK in your app follow the steps in our [Getting started on Android](../../getting-started/01-sdks/02-android/00-getting-started.mdx) guide.
+This guide assumes that you already have THEOplayer set up in your app.
+If not, start with our [getting started guide](../../../getting-started/01-sdks/02-android/00-getting-started.mdx).
 
 ## Adding and removing an interceptor
 
-The THEOplayer Android SDK provides the `HTTPInterceptor` interface which contains 2 methods (`onRequest`, `onResponse`)
-where each can be optionally implemented based on the use-case.
+The Android SDK provides the [`HTTPInterceptor`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/HTTPInterceptor.html)
+interface, which contains two methods that you can implement depending on your use case:
 
-- `suspend fun onRequest(request: InterceptableHTTPRequest)`: Intercepts an HTTP request before opening the connection.
-- `suspend fun onResponse(response: InterceptableHTTPResponse)`: Intercepts an HTTP response before consuming the response body.
+- `suspend fun onRequest(request: InterceptableHTTPRequest)`: intercepts an HTTP request before opening the connection.
+- `suspend fun onResponse(response: InterceptableHTTPResponse)`: intercepts an HTTP response before consuming the response body.
 
-To start intercepting HTTP requests, add the interceptor to our Network API:
+To start intercepting HTTP requests, add the interceptor to the Network API:
 
 ```kotlin
 theoPlayerView.player.network.addHTTPInterceptor(httpInterceptor)
 ```
 
-To stop intercepting HTTP requests, remove the interceptor from our Network API:
+To stop intercepting HTTP requests, remove the interceptor again:
 
 ```kotlin
 theoPlayerView.player.network.removeHTTPInterceptor(httpInterceptor)
@@ -38,9 +36,11 @@ theoPlayerView.player.network.removeHTTPInterceptor(httpInterceptor)
 
 ## Intercepting a request
 
-The `suspend fun onRequest(request: InterceptableHTTPRequest)` provides a `request` parameter that can be used to read/write properties or to interrupt the request providing a direct response.
+The [`request`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/InterceptableHTTPRequest.html)
+parameter of `onRequest` allows you to read and write properties of the request,
+or to interrupt the request by responding to it directly.
 
-In the below snippet, we show some common use-cases.
+The snippet below shows some common use cases.
 
 ```kotlin
 override suspend fun onRequest(request: InterceptableHTTPRequest) {
@@ -77,9 +77,10 @@ override suspend fun onRequest(request: InterceptableHTTPRequest) {
 
 ## Intercepting a response
 
-The `suspend fun onResponse(response: InterceptableHTTPResponse)` provides a `response` parameter that can be used to read and write properties from the received response.
+The [`response`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/InterceptableHTTPResponse.html)
+parameter of `onResponse` allows you to read and write properties of the received response.
 
-In the below snippet we show some common use-cases.
+The snippet below shows some common use cases.
 
 ```kotlin
 override suspend fun onResponse(response: InterceptableHTTPResponse) {
@@ -118,3 +119,7 @@ override suspend fun onResponse(response: InterceptableHTTPResponse) {
     }
 }
 ```
+
+## Related articles
+
+- [Network introduction](./introduction.mdx)

@@ -1,5 +1,6 @@
 {
   "label": "Player",
+  "position": 9,
   "customProps": {
     "icon": "▶️"
   }

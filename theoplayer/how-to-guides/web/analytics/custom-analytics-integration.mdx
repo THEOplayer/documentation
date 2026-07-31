@@ -42,7 +42,7 @@ Below is an (incomplete) list of some common interfaces and their event maps.
 - [VideoTrack](pathname:///theoplayer/v11/api-reference/web/interfaces/MediaTrackEventMap.html): to detect when another video quality becomes active.
 - [TextTrackList](pathname:///theoplayer/v11/api-reference/web/interfaces/TrackListEventMap.html): comparable to AudioTrackList, but for subtitles, closed captions and metadata (e.g. id3, emsg, EventStream, EXT-X-DATERANGE).
 - [Cast](pathname:///theoplayer/v11/api-reference/web/interfaces/VendorCastEventMap.html): to detect events related to Chromecast and AirPlay.
-- [Network](../../08-network/00-introduction.md): to intercept HTTP(S) requests and responses. You should only use this API when you can't use [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) to accomplish the same.
+- [Network](../network/introduction.mdx): to intercept HTTP(S) requests and responses. You should only use this API when you can't use [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) to accomplish the same.
 
 Note that maintaining the above list manually is unfortunately a no-go because our interfaces evolve.
 This means that you should research your events through our [API reference](pathname:///theoplayer/v11/api-reference/web/).
@@ -122,7 +122,7 @@ player.addEventListener('play', function (event) {
 
 (Keep in mind that you should reset `firstplay` to `true` when you configure another video.)
 
-Another useful "fake" event that you could track is the "video startup time", as discussed at [How to measure time-to-first-frame?](../../09-player/03-how-can-we-track-the-first-playing-event.md).
+Another useful "fake" event that you could track is the "video startup time", as discussed at [How to measure time-to-first-frame?](../player/track-first-playing-event.mdx).
 
 Remember that not every event is accessible through the `Player` interface which is accessible through the `player` property.
 For example, if you want to notify GA of a video quality change event, you have to subscribe to the correct video track,

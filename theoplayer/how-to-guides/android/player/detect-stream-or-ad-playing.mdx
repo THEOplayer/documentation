@@ -1,0 +1,26 @@
+---
+sidebar_position: 1
+sidebar_label: Detect a stream or ad playing
+---
+
+# How do you know when a stream or an advertisement is playing on Android?
+
+import Intro from '../../shared/player/_detect-stream-or-ad-playing-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The Android SDK exposes whether an advertisement is playing through
+[`player.ads.isPlaying()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/ads/Ads.html#isPlaying()>).
+
+```kotlin
+player.addEventListener(PlayerEventTypes.PLAYING) { event ->
+    val adIsPlaying = player.ads.isPlaying
+    println("PLAYING " + if (adIsPlaying) "Advertisement" else "Content")
+}
+```
+
+## Related articles
+
+- [How to track the first play(ing) event](./track-first-playing-event.mdx)

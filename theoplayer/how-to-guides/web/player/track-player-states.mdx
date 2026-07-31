@@ -1,0 +1,32 @@
+---
+sidebar_position: 4
+sidebar_label: Track player states
+---
+
+# How to track player states on Web
+
+import Intro from '../../shared/player/_track-player-states-intro.mdx';
+import Events from '../../shared/player/_track-player-states-events.mdx';
+
+<Intro />
+
+## Implementation
+
+<Events />
+
+The snippet below demonstrates how you can track some of the related events through the Web SDK.
+All other events can be tracked similarly. You can find the event names in
+[the `PlayerEventMap` API reference](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html),
+and the properties of the player in
+[the `ChromelessPlayer` API reference](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html).
+This approach is valid for all web-based platforms, including Tizen and webOS.
+
+```js
+player.addEventListener('sourcechange', (event) => {
+  console.log(event);
+});
+// ...
+player.addEventListener('ended', (event) => {
+  console.log(event);
+});
+```

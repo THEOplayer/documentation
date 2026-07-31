@@ -1,0 +1,44 @@
+---
+sidebar_position: 2
+sidebar_label: Measure the time-to-first-frame
+---
+
+# How to measure the time-to-first-frame on Roku
+
+import Intro from '../../shared/player/_measure-time-to-first-frame-intro.mdx';
+
+<Intro />
+
+## Usage
+
+On Roku, you measure the elapsed time with a
+[`roTimespan`](https://developer.roku.com/docs/references/brightscript/interfaces/iftimespan.md).
+
+```brightscript
+sub Init()
+  ...
+  m.timespan = CreateObject("roTimespan")
+  m.THEOplayer.callFunc("addEventListener", "play", m.top, "onPlay")
+  m.THEOplayer.callFunc("addEventListener", "playing", m.top, "onPlaying")
+  ...
+end sub
+
+sub onPlay()
+  m.timespan.Mark()
+end sub
+
+sub onPlaying()
+  print "Time-to-first-frame: "; m.timespan.TotalMilliseconds()
+end sub
+```
+
+If you use autoplay, start the measurement on the `sourcechange` event instead of the `play` event.
+Otherwise you miss the start-up time between setting the source and the player calling `play()`:
+
+```brightscript
+m.THEOplayer.callFunc("addEventListener", "sourcechange", m.top, "onSourceChange")
+
+sub onSourceChange()
+  m.timespan.Mark()
+end sub
+```

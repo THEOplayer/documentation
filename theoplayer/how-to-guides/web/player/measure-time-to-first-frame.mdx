@@ -1,0 +1,30 @@
+---
+sidebar_position: 2
+sidebar_label: Measure the time-to-first-frame
+---
+
+# How to measure the time-to-first-frame on Web
+
+import Intro from '../../shared/player/_measure-time-to-first-frame-intro.mdx';
+
+<Intro />
+
+## Usage
+
+```js
+let playEventRegisteredAt;
+
+function playEventHandler() {
+  player.removeEventListener('play', playEventHandler);
+  playEventRegisteredAt = Date.now();
+}
+
+function playingEventHandler() {
+  player.removeEventListener('playing', playingEventHandler);
+  const timeToFirstFrame = Date.now() - playEventRegisteredAt;
+  console.log('Time-to-first-frame:', timeToFirstFrame);
+}
+
+player.addEventListener('play', playEventHandler);
+player.addEventListener('playing', playingEventHandler);
+```

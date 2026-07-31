@@ -1,0 +1,27 @@
+---
+sidebar_position: 1
+sidebar_label: Detect a stream or ad playing
+---
+
+# How do you know when a stream or an advertisement is playing on iOS?
+
+import Intro from '../../shared/player/_detect-stream-or-ad-playing-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The iOS SDK exposes whether an advertisement is playing through
+[`player.ads.playing`](pathname:///theoplayer/v11/api-reference/ios/Protocols/Ads.html#/s:13THEOplayerSDK3AdsP7playingSbvp).
+
+```swift
+playingListener = player.addEventListener(type: PlayerEventTypes.PLAYING) { [weak self] event in
+    guard let self else { return }
+    let adIsPlaying = self.player.ads.playing
+    print("PLAYING", adIsPlaying ? "Advertisement" : "Content", event)
+}
+```
+
+## Related articles
+
+- [How to track the first play(ing) event](./track-first-playing-event.mdx)
