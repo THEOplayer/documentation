@@ -1,0 +1,105 @@
+---
+sidebar_position: 1
+sidebar_label: Channels
+---
+
+# Channels
+
+A channel represents one live stream in OptiView Ads. It is the place where you decide how ads behave for that stream: how break start times are interpreted, which breaks are announced to players and when, and whether ad markers in the stream are detected automatically.
+
+Everything else in OptiView Ads hangs off a channel. Origins, marker rules, breaks, events, templates, and integrations are all created for — or looked up through — a channel.
+
+Channels are scoped to an organization. In the OptiView Unified Dashboard, open **Ads → Channels** to create and manage them.
+
+In the Dashboard, opening a channel gives you access to each of these tabs:
+
+| Tab                                        | Use it for                                             |
+| ------------------------------------------ | ------------------------------------------------------ |
+| Overview                                   | View channel settings and player/origin quick actions. |
+| [Breaks](./breaks.mdx)                     | Schedule, inspect, and delete breaks for the channel.  |
+| [Events](./events.mdx)                     | Manage event windows and event-scoped breaks.          |
+| [Origins](./origins.mdx)                   | Add, enable, disable, and prioritize manifest origins. |
+| [Break Detection](./marker-detection.mdx)  | Configure marker rules and review detection history.   |
+| [Break Integration](../vendors/google.mdx) | Manage channel-level delivery integrations.            |
+
+## Channel identity
+
+Every channel has a customer-facing `id`. Together with the organization, it forms the unique identity of the channel:
+
+```text
+organizationId + channelId
+```
+
+We recommend using a UUID as the channel `id` and the `name` property when you want a human-readable name. If you omit `id` on creation, one is generated for you.
+
+## Timing and delivery settings
+
+These channel settings determine how break start times are interpreted and how breaks are delivered to players through the [Break Manifest](./break-manifest.mdx).
+
+### Timebase
+
+The `timebase` determines which timeline break start times are expressed on:
+
+- **`wallclock`** — breaks are scheduled with UTC wallclock timestamps (`startWallclock`). Use this when the stream carries wallclock timing: in HLS this comes from `EXT-X-PROGRAM-DATE-TIME` tags, in DASH from the MPD's `availabilityStartTime` combined with the segment timeline (optionally synchronized through a `UTCTiming` element).
+- **`pts`** — breaks are scheduled against the encoder's presentation timestamp timeline (`startPts`). The player needs to retrieve the PTS value from the media segments to know where it is on that timeline. Use this when your workflow schedules breaks against encoder PTS values rather than wallclock time.
+
+Choose the timebase when creating the channel; all breaks on the channel use the same timebase.
+
+### DVR window
+
+_Default: `300000` ms (5 minutes)_
+
+`dvrWindowMs` describes how far behind live a viewer can be while watching the channel — the time-shifted (DVR) window of the stream.
+
+It directly impacts the Break Manifest: a break is included in the manifest as long as it is still relevant for a viewer anywhere inside the DVR window. With a larger DVR window, breaks remain in the manifest for longer so that time-shifted viewers still receive them; with a small window, only breaks near the live edge are returned to the player.
+
+### Live offset
+
+_Default: `0` ms_
+
+`liveOffsetMs` describes how far the player's playhead is behind live. Players never play exactly at the live edge — they buffer a few seconds behind it.
+
+OptiView Ads uses this offset when evaluating wallclock break start times: instead of comparing against raw server time, break timing is evaluated against the position viewers are actually watching, so breaks activate when the playhead reaches them. This is required because breaks cannot be scheduled in the past — without the offset, a break aimed at the viewer's playhead position would already lie behind the raw server time.
+
+### Polling intervals
+
+The Break Manifest response tells players how often to poll for updates. Two channel settings control this cadence:
+
+- **`pollingIdleSeconds`** — the polling interval advertised when no break is active. A slower cadence keeps request load low while nothing is happening. Default: `10` seconds.
+- **`pollingActiveSeconds`** — the polling interval advertised while a break is active. A faster cadence lets players catch break transitions quickly. Default: `1` second.
+
+### Ad prefetch window
+
+_Default: `10000` ms (10 seconds)_
+
+`adPrefetchMs` defines how far ahead of a break's start time the break is announced to the player through the Break Manifest.
+
+With the default of `10000` (10 seconds), a break whose start time is within the next 10 seconds is included in the manifest. This lead time gives players room to prepare and prefetch the ad content before the break actually starts.
+
+## Google Ad Manager (pod serving) integration
+
+A channel can be connected to Google Ad Manager for server-guided pod serving: Google decisions the ad pods for the stream, and OptiView Ads announces the resulting breaks to players. See [Vendors → Google Ad Manager](../vendors/google.mdx) for the full setup.
+
+On the channel itself you configure the `customAssetKey`: the Google DAI custom asset key that identifies this live stream in Google Ad Manager. It must be unique within your organization. Set it when the channel uses Google DAI pod serving; leave it unset otherwise.
+
+## Marker detection
+
+A channel can automatically detect ad markers (such as SCTE-35 cues or `EXT-X-DATERANGE` tags) in its origin manifests and turn them into breaks. Detection is enabled or disabled per channel, in the Dashboard under **Break Detection**.
+
+See [Break detection](./marker-detection.mdx) for how origins are polled, how marker rules turn detected markers into breaks, and how detection history records every decision.
+
+For creating, updating, listing, and deleting channels programmatically, see the Ads API reference.
+
+## Related resources
+
+A channel is the parent or lookup point for the rest of the OptiView Ads model:
+
+| Resource                                  | Relationship                                                                           |
+| ----------------------------------------- | -------------------------------------------------------------------------------------- |
+| [Breaks](./breaks.mdx)                    | Scheduled or detected ad opportunities for the channel.                                |
+| [Templates](./templates.mdx)              | Reusable break presets that can be scheduled on the channel.                           |
+| [Events](./events.mdx)                    | Time windows that group related breaks.                                                |
+| [Origins](./origins.mdx)                  | Manifest URLs monitored for ad markers. A channel can have multiple origins.           |
+| [Break detection](./marker-detection.mdx) | Rules that turn detected markers into breaks, and the audit history of every decision. |
+| [Break Manifest](./break-manifest.mdx)    | The endpoint that announces the channel's breaks to players.                           |
+| [Integrations](../vendors/google.mdx)     | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |

@@ -1,0 +1,8 @@
+<svg width="360" height="210" viewBox="0 0 360 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-shape content format: a live content window sits over a companion backdrop">
+  <rect x="20" y="15" width="320" height="180" rx="8" fill="#E2E8F0" stroke="#1A202C" stroke-width="2"/>
+  <rect x="28" y="23" width="132" height="92" rx="4" fill="#2B6CB0" stroke="#1A202C" stroke-width="1"/>
+  <text x="94" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">CONTENT</text>
+  <text x="220" y="117" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#1A202C">companion</text>
+  <text x="220" y="139" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#1A202C">backdrop</text>
+  <text x="180" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1A202C">live content window with companion backdrop</text>
+</svg>
