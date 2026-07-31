@@ -94,12 +94,12 @@ For creating, updating, listing, and deleting channels programmatically, see the
 
 A channel is the parent or lookup point for the rest of the OptiView Ads model:
 
-| Resource                                    | Relationship                                                                           |
-| ------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [Origins](./origins.mdx)                    | Manifest URLs monitored for ad markers. A channel can have multiple origins.           |
-| [Marker rules](./marker-detection.mdx)      | Rules that turn detected markers into breaks.                                          |
-| [Detection history](./marker-detection.mdx) | Audit records for marker detection decisions on the channel.                           |
-| [Breaks](./breaks.mdx)                      | Scheduled or detected ad opportunities for the channel.                                |
-| [Events](./events.mdx)                      | Time windows that group related breaks.                                                |
-| [Templates](./templates.mdx)                | Reusable break presets that can be scheduled on the channel.                           |
-| [Integrations](../vendors/google.mdx)       | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |
+| Resource                                  | Relationship                                                                           |
+| ----------------------------------------- | -------------------------------------------------------------------------------------- |
+| [Breaks](./breaks.mdx)                    | Scheduled or detected ad opportunities for the channel.                                |
+| [Templates](./templates.mdx)              | Reusable break presets that can be scheduled on the channel.                           |
+| [Events](./events.mdx)                    | Time windows that group related breaks.                                                |
+| [Origins](./origins.mdx)                  | Manifest URLs monitored for ad markers. A channel can have multiple origins.           |
+| [Break detection](./marker-detection.mdx) | Rules that turn detected markers into breaks, and the audit history of every decision. |
+| [Break Manifest](./break-manifest.mdx)    | The endpoint that announces the channel's breaks to players.                           |
+| [Integrations](../vendors/google.mdx)     | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |
