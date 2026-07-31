@@ -1,0 +1,84 @@
+---
+id: patch-channels-channel-id-events-event-id
+title: 'Patch /channels/{channelId}/events/{eventId}'
+description: 'Patch /channels/{channelId}/events/{eventId}'
+sidebar_label: 'Patch /channels/{channelId}/events/{eventId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVk1v4zYQ/SsETwkgr+MeisI37xfWaIEY2Wwvhg9jcWxxI5EMOYrjGvrvxZCyLctu2qQLrE8yOXwzb+ZxhjvpwEOFhD7I8XwnFYbca0faGjmWU4WG9EqjF3YlqECRF2AMlu9kJjVbOKBCZtJAhXIs292pkpn0+Fhrj0qOydeYyZAXWIEc7yRtHRsH8tqsZdNk/+4Wn9DQPziNe690uUjGGOi9VVu2yK0hNMSf4Fypc+Bght8DR7TrQDlvHXrSGPjfSeB9Hp894oDwmURn/YxSL7ZMolEfgfAc7xMfEWiUIF3hO/HeIzwEURuFXlChQwIVVR1ILFFw0KouUQkgYb1Y4sp6TJYRgb2lLPZdfakrMAOPoGBZolA6uBK2go3FyvpTBpU2f6BZUyHHowt8AoGnlxhFgzdyghXtDVtKzSEEu/yOOcmGl061EReCsyakMv5yc/MqEYBSmregnHXksIIyYNZTSO4RCNWEztnf6woDQeXEpkBzzKnYQBDtuUxAEGDE9Out+O3Xm5FQQMhMRUrwRQX9RFW+KV6tzmG/Gf1Y7xOijx1ho6nQpt+MziB/gKz/j5DfkIYTkc45Jy2LruNjHbKOshYXJX8a4UdcQV2SuGt1Hx2yUKPGpyr11bwYtFkNg0M3H8SUhMGx0xKseV4k2oH9nzqbMZIY7qGGuwNWM0xgw12L1nADQSrsIQKZpQ4/lkNwevg0+s84AfPaa9rGUbaEoPNJzUDzRSatXzPJ+YKb/97wK9/odE875v3iTmZT8YBbcVUH9FySawFGiYC5RxJXDkLYWK+uuaixR3AlIt6xygWRYw21YfRd3Po1GP1XrEVH7YeRVyAo9Meh9zywfj2IGmkdgNO/4zZWlfvV3XG8fXqGypUXRNsq7wDauZBmZePc1MQH5a0j/afGjZioICazqczkE/qQYJ5GfMTZQBXEftPCvVIEvabV0uJGNXQlaMNOal/GGRzlMWfOHMmIL0PrRWZy3H2GJEe8ulfvIpOFDcTnd7slBPzmy6bh5cca/Tap5Qm85haRHkU68Lc6dPheqIexIa/u2ht8LV58O10kty+k2TIpKGv+JzP5gNuTt1V8MP2YkPq97jUB7fPZLJpsr0/OVtr9kAIY3DPG8fTZWGUy6cQkz9HRi7aLTquYTe4/fJGZXLYPuMoqPuRhwy9B2KRQbcxIvOBxbSdLMOsa1mybQPn3N1kX0BU=
+sidebar_class_name: 'patch api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Patch /channels/{channelId}/events/{eventId}'}></Heading>
+
+<MethodEndpoint method={'patch'} path={'/api/v1/channels/{channelId}/events/{eventId}'} context={'endpoint'}></MethodEndpoint>
+
+Patch /channels/\{channelId\}/events/\{eventId\}
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+    { description: 'Identifier of the event.', in: 'path', name: 'eventId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            description: { description: 'Free-text description of the event.', type: 'string' },
+            endDate: { description: 'Event end time. Breaks under this event must be scheduled at or before this time.' },
+            name: { description: 'Human-readable display name for the event.', minLength: 1, type: 'string' },
+            startDate: { description: 'Event start time. Breaks under this event must be scheduled at or after this time.' },
+          },
+          type: 'object',
+        },
+      },
+    },
+    required: true,
+  }}
+></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              createdAt: { description: 'Timestamp when the event was created, as an ISO 8601 datetime string.', type: 'string' },
+              description: { description: 'Free-text description of the event.', type: 'string' },
+              endDate: { description: 'Event end time, as an ISO 8601 datetime string.', type: 'string' },
+              id: { description: 'Unique event identifier within the channel.', type: 'string' },
+              name: { description: 'Human-readable display name for the event.', type: 'string' },
+              startDate: { description: 'Event start time, as an ISO 8601 datetime string.', type: 'string' },
+            },
+            required: ['id', 'name', 'startDate', 'endDate', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

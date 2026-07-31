@@ -1,0 +1,98 @@
+---
+id: post-channels-channel-id-origins
+title: 'Post /channels/{channelId}/origins'
+description: 'Create a new origin within a channel. The channel is taken from the path.'
+sidebar_label: 'Post /channels/{channelId}/origins'
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV01v20gM/SvEnBJAju2i+xH35G27SLApYsTp7sEIENpDS9NIM+oMZcdr+L8vOJJt2XFbFPtx2BySSOKQj3zkE7VWmsLMm5KNs2qg3npCJkCwtATnTWosLA1nxgLCLENrKb+A+4y2F2ACMD6Rhbl3BXBGUCJnFypRJXosiMkHNZisjwJda7Js5oY8uHk8tvWuEmXEQtyoRFksSA1U8/Raq0R5+lwZT1oN2FeUqDDLqEA1WCtelWIc2Bubqs3moTamwL84vRKLmbNMluVfLMvczFAAdT8FQbVuuSq9K8mzoSBXZHGaS0TJY45VzmowxzxQcpTXHxlxRh44M2FbwBI9m5kpkSmAsWA47Mo39YRPHU1MM/EAczS5W5C/gDFxrIuxhg3msMC8InAWZpGjN4BzJr9ErwOwS9OcwDAsDMZTNeCuNkH+AlldOmM5wNloeP/2CrSjANZxBJLK0fMLeFenJv4gZidkNDWdOpcTWrVJlGnq0M77ozWfBV6dsdmxewEj7xZGk4bpqua5CuwK4d0DVuw6KVnyyKRhmZEFVxhm0hK6MPaGbMqZGvSTY3K3rXGM5Koq0HY8oY6ZaxPKHFcgxjB3PmKoYbay2zstvXHe8OqA6t4xzb82NIHzmvx2RFptPIgXe15z50pgbyg01OgGRKgHJ3dLCiyFz0yayb9bIIBWQxUoRI9z48UsQwZPoXRWhwu4cUvyUBDaUB/3u9NvwFKKbBYUAD0B5hJJH3Ldi8XGZ1NUhRpc9no/9S8vX/3w+qfXvcvLfuShftR5+awpoLFMKXmpYH3nmJYPaM1c8po7XyDL1CME9oRFU4kBPL4bjq8eE3i8uhk/JtIgj1fvx6NHgUdWAEyUmKhEXd2M5ff78Ug9nGCx8vlXIHy8u4HS5fm+KeMYtugK5BdmRhfwoQoMU1HEBeZGy1FBUyehBqry5mUXbdoaNYlgGps9Vjf9RDNWm0NjEbR4Q6gNtfa86vW/S7lQayOPMB+1NKxRq0NZ26vqi2J9UaAPpG1KubOpNNHJYaqlSg/5pf97U1BgLMp66vdTCUsMjcbpBDAAWrge38LPP/b6oJGJTUFQxzgZ9ECr/xVt/vuqeAr3fyBn3yVhb6IofUFXTghIE9tWxfT/JwTfHHIjm0l7S2lN/b4nW4S0p+O0LByCbuoNd402RAQyzFEHZIRV6QJ3GgyhswPTad40AgdT2cbUbXPnIVEFcea2p+PaJu9b1cXSdBf97tZdd73zt+nuHQaaVXV/TdZqisHMhpWcnzwkyvlUYE0eZA/bGo5Fp2r1aZkfMzQcXcMTreCsCuSl18/jazDQzBPDWYkhLJ3X58JLVL44jOJvT1TGXEoLNDCOQ9z6FK35M1bvaDTj/pkRavL7DfS543zaiTQ3AbA0v9Eq8iAqfLffNN8/Y1HmdLA5NgIsMrHtoZ3v3fV+XHu7ME2jx05udbaxcxd3XsMSSd2WbH43tIShDjAcXatELciHOtlFP4qBC1xgfF00gUcuMHyL44O6tV5E/+jXQpMs0zN3yxyNbU1v3ZITKbhk1d9PmsAbtKfO7Rs7k34eTNR6PcVAH32+2cjtzxX5Vd2gC/RG2Km/T+pVWZ9e7Ntpn901c38OX/2MOZnStnesKEDc6dVAqUQ90ergM2fzsEm2PSjw6udvaxCd+1pWtudfLASbZHtiOJtRyV+1bYvA6HZ8rxI1bT6XCqfljMelfHfhssbqYlHiDMd7a5WjTStMxbb2KT9/AQf48pM=
+sidebar_class_name: 'post api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Post /channels/{channelId}/origins'}></Heading>
+
+<MethodEndpoint method={'post'} path={'/api/v1/channels/{channelId}/origins'} context={'endpoint'}></MethodEndpoint>
+
+Create a new origin within a channel. The channel is taken from the path.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            enabled: {
+              default: false,
+              description:
+                'Whether this origin participates in its channel break-detection failover. Set the initial value on create; afterwards toggle it via the enable/disable endpoints (PATCH does not change it). Defaults to false.',
+              type: 'boolean',
+            },
+            id: { description: 'Unique origin identifier. Provided by the customer or auto-generated when omitted.', minLength: 1, type: 'string' },
+            name: { description: 'Human-readable display name for the origin.', type: 'string' },
+            priority: {
+              default: 0,
+              description:
+                'Failover order within the channel: the detection loop tries enabled origins from lowest to highest priority and uses the first that responds. Lower means higher priority; negatives are allowed. Defaults to 0.',
+              maximum: 9007199254740991,
+              minimum: -9007199254740991,
+              type: 'integer',
+            },
+            type: { description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.', enum: ['DASH', 'HLS', 'HESP'], type: 'string' },
+            url: { description: 'Manifest URL polled by the break detection service. Must be a valid URL.', format: 'uri', type: 'string' },
+          },
+          required: ['url', 'type'],
+          type: 'object',
+        },
+      },
+    },
+    required: true,
+  }}
+></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '201': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              channelId: { description: 'Identifier of the channel this origin belongs to.', type: 'string' },
+              createdAt: { description: 'Timestamp when the origin was created, as an ISO 8601 datetime string.', type: 'string' },
+              enabled: { description: 'Whether this origin participates in its channel break-detection failover.', type: 'boolean' },
+              id: { description: 'Unique origin identifier.', type: 'string' },
+              name: { description: 'Human-readable display name for the origin.', type: 'string' },
+              priority: { description: 'Failover order within the channel; lower means higher priority. Defaults to 0.', type: 'number' },
+              type: { description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.', enum: ['DASH', 'HLS', 'HESP'], type: 'string' },
+              url: { description: 'Manifest URL polled by the break detection service.', type: 'string' },
+            },
+            required: ['id', 'channelId', 'url', 'type', 'enabled', 'priority', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

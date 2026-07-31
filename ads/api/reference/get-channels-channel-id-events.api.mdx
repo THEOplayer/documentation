@@ -1,0 +1,118 @@
+---
+id: get-channels-channel-id-events
+title: 'Get /channels/{channelId}/events'
+description: 'List all events for a channel with pagination, filtering, and sorting.'
+sidebar_label: 'Get /channels/{channelId}/events'
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV99v2zYQ/lcOfEoAOba7bl1c5MFYsy5Yu2ZJO2AIAuQsnS22EqmSpziu4f99OFK2Fdt1mnQPfYpDkd993/F+ca4y8qnTFWtr1EC90Z4BiwLolgx7GFsHCGmOxlABU805VDjRBmV/AmNdMDltJgmgycBbx9pMjlSiKnRYEpPzanA137DS74zQUyZQBKYuR+SALTji2pkjeKuNLusS+gKk5cDnmtxMJcpgSWqg5JxKlKPPtXaUqcEYC0+J8mlOJaqB2BtjXbAa9BNV4p3AqcFxr/eif3z87OfnL573jo/lU7QUtvGsEmxtmCbk1GKRbNL+KzK1Y9BMpV9ThopcEJPAiHhKZKAfHNLv9fZpuNRfvlXHs15LSL/Xeyz3d+EHFnBx+feb5t6A7ipH3mtr4EBumu6wrAqCG8/ItT85uTgdvvr3ZVa7cN8nEz75qXdzeASnmObgyNvapSQw1pMHzR7s1Ej82GmnkFCy48YWjgqCsaYi88EztiKHbJ3/mn/isf3eaWR7lhDcqzq1ZYkdTxKWTBmsyQVGbEPswmj2EipHY30HGL/FmL/p3IRUEHQymTYTsC4jdwSv4gUFCENT8gxj7TzDQepITA25derwa2rF+ndqPcvIsB7rGKGc0zJtVzYr5Hxtsvl6lt2zy67ea/ZaNvvKGk9evj/r9eRPag2TYfmJVVXoNARM96MXavMWHmaZjndy7iQGWAtOo7ZqLc1VhtzkQFvm+5xi3bBjiUDxfRAoGflIA6sb2mFFl+QZywqmOZngzVARYYoemnMJoMQynF2+g19/6fUhQybWJUH0ltDacF9y38ym1d8dUYfpLoZMs768zWB/JyaZ7BUybeOdBspkMhBaT+Krs23YD0Z/rpcO0euwk1TRZjP0tiBj/G2C/lGXaDqOMAulItO+KnAGsjmk3n4XeEbH+5wQNjzVDYt2hlyJTxoVbcPre0hakXW9ArOjj5SykG0W0Dmcyf/rjvpgAN+Xdr46CCUxSsKsfBVzAzwFh90P/NA/txz1W+2cuGpHd275JC40tGMH20LabJTiPPJSd5eNcicgW8ZiRy7K8nJMWGGWyGkuhVjEhmoKmDrrfRhfxIb/upFz+fywpYACeIu6iP2r8W0wtwN9I06aMaXV6aPCeyS2A2QDJZTBe0Gy48hmZVFNX4KLplgH2Nh0tTVnmRqoCXGnyVPfWXWDTpz8hCROZHiLCRSIlsS5bY4GSpyrgepipbu3/e4SqztfgS26KzRPae00z8I4OEKv02Etx6+uE2XdRBhdXUt7WW68lJ4Rb6m1ffPKhudn8IlmcFB7cpKTh3ESpdQRw0GF3k+ty0LjDV1I3Bbw1teXM1cSGg2NrSHCTdDoLzHP1uVu1VZzwixMKk1jvetYN+mEIrHM9Er/SbNwBdqMbeirmgtqJpR/NE1hmHkYnp+pRN2S89HybT/kmfVcYqgNjYXXxPCAuzf6zKo//38TfqNN2lW3KlAb4Vq7IhaYcLUiXAT1pSQ2dFWiBu3Rg1bRlVvPcmg+l/rzwRWLhSzHSSk8IrSXNMx2V8O2yMc8MHbq+ESz9TvjFotatqgwdH0ziSc/Fx5g1NSSJ7L6oR8Ce5Sv3gPfq/tHegrs0du8CNZqr+Ufp0XuI7Ph4KJpJ4ew95Gwk82yhJlZm82S5TqTF9eLZFkKhV78PkxTqto6tl4Hi3ZfeX36Xi0W/wEBCbiD
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/events'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/events'} context={'endpoint'}></MethodEndpoint>
+
+List all events for a channel with pagination, filtering, and sorting.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      description: '1-based page number to return. Minimum 1.',
+      in: 'query',
+      name: 'page',
+      required: false,
+      schema: { default: 1, maximum: 9007199254740991, minimum: 1, type: 'integer' },
+    },
+    {
+      description: 'Number of items to return per page, between 1 and 100.',
+      in: 'query',
+      name: 'pageSize',
+      required: false,
+      schema: { default: 20, maximum: 100, minimum: 1, type: 'integer' },
+    },
+    {
+      description:
+        'Optional RSQL filter expression (for example `status==READY;duration=gt=30`). Each resource exposes its own allow-list of filterable fields and operators.',
+      in: 'query',
+      name: 'filter',
+      required: false,
+      schema: { type: 'string' },
+    },
+    {
+      description:
+        'Optional comma-separated list of fields to sort by; prefix a field with `-` for descending order. Defaults to newest first (createdAt descending).',
+      in: 'query',
+      name: 'sort',
+      required: false,
+      schema: { type: 'string' },
+    },
+    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              data: {
+                description: 'The page of results.',
+                items: {
+                  additionalProperties: false,
+                  properties: {
+                    createdAt: { description: 'Timestamp when the event was created, as an ISO 8601 datetime string.', type: 'string' },
+                    description: { description: 'Free-text description of the event.', type: 'string' },
+                    endDate: { description: 'Event end time, as an ISO 8601 datetime string.', type: 'string' },
+                    id: { description: 'Unique event identifier within the channel.', type: 'string' },
+                    name: { description: 'Human-readable display name for the event.', type: 'string' },
+                    startDate: { description: 'Event start time, as an ISO 8601 datetime string.', type: 'string' },
+                  },
+                  required: ['id', 'name', 'startDate', 'endDate', 'createdAt'],
+                  type: 'object',
+                },
+                type: 'array',
+              },
+              pagination: {
+                additionalProperties: false,
+                description: 'Pagination metadata for the result set.',
+                properties: {
+                  page: { description: 'Current 1-based page number.', type: 'number' },
+                  pageSize: { description: 'Number of items requested per page.', type: 'number' },
+                  total: { description: 'Total number of items matching the query across all pages.', type: 'number' },
+                  totalPages: { description: 'Total number of pages available for the query.', type: 'number' },
+                },
+                required: ['page', 'pageSize', 'total', 'totalPages'],
+                type: 'object',
+              },
+            },
+            required: ['data', 'pagination'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>

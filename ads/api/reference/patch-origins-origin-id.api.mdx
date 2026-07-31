@@ -1,0 +1,88 @@
+---
+id: patch-origins-origin-id
+title: 'Patch /origins/{originId}'
+description: 'Update an origin.'
+sidebar_label: 'Patch /origins/{originId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVt9v4kYQ/ldG+3SRTIDTtdfQJ3qXKlFzCgpJ+4CQGOzBnou9u9ldQzjE/16NbcABGqmPbR6ixDs/vp35vtnZqIR87NgGNloN1JNNMBCgBuM4ZX2pImXRYUGBnFeDyebI4TYhHXjB5MAsIGTUcmQxsBgyFSmNBamBqg9vExUpRy8lO0rUILiSIuXjjApUg40Kayu2PjjWqdpup7Ux+fCbSdZiERsdSAf5E63NOUaB0/3uBdOmFco6Y8kFJi//1SCOr3BTFqg7jjDBeU6QsLc5rkGMYWHc0aWOwEXKOjaOw/o08O/IuVlKZVxCDlYcMtZVuDhDrSn/FXKzIgcFofaQcZqRg128CFAnoCnFwEvygI4Ac3FIBEeBr1yUhRpc9Xqf+1dXH3/69PlT7+qqH6mCdX3UOT1r4LMOlJIT/PWXY+zfUPOCfJAKFBikuQg+OMKiKcYAZl+H45tZBLObu/EsAuNgdnM9Hs0EHmkBMFFioiJ1czeW39fjkZqeqWHp8ncgPD3cgTV5TgnM11X95o7wGRIKFIsxeHJLjukSvpU+wJwAYYk5J+IqaOpLqIEqHZ/2cF8EZebfKQ5qK5/e8rP64K3RvqbSx17vXxERk4TlCPNRi5ILzD1FRyxtyHGbnJbkVG2NMYSMfdMYmFNudOohmLOEjR1hoGQYTuM/ckE+YGFhlZFuMR9W6KFxjAC9TIjb8T388nOvDzIyAhcEdY6zSUmLuM5c6a+MgtC+fQGLLnDMFgN5YA0c/P6iVes7h9YvGpG1ss6NyQm1pOUzGZ80v5T7i/G+pGdx/6dGxiV8pQWWeZDeQ6+VW5fF/P8n97NSPuh2Iu2PWnqqMzdOB062GtJWx/TsWHgLuqk3PDSzoUIgYq7mgEhYHsA469RF9J3WAxgwlRdV3ddHkq+gkJm9U/X2hkwNVBctd5f9bhOlu9mF2apIeYrLmk2TjZqj53hYitdkGinjUgExmcojujMcy1SqZ03L/Lgfw9EtPNMaPpSenDD7onqQPMWOAnyw6P3KuORCulDNuUp6Eu/QliwEKw1vYBynuHcpav5R1epIiNXukBEm5A7bw2vHuLRTNbVJgJb/oHVVdZm5D4c14foVC5vT4dnfcaQtv94+UEPcipktprJemGol4SCx1L0N/CfTCoaJh+HoVkVqSc7X11n2K3EbHwrUrcQjaSacb96bgrTek7ObWIM10Gvo2hxZt8RUM2UiFRFQfRU1y5ZXkRrsaTeNVGZ8EMvNZo6enly+3crnl5LcumbNEh2LNOp9j30zupvX6h8hf3hopHcB762FZ2+x66cWDS4xL+U/FalnWrfXxu10G+1oIeDq4y81hM5jreud+8mLvI12HsM4JhvetW3LcTR8/CL0mDf7Z2EScXK4kkUWVzVWU9Wk0lX1baNy1GmJqdjWQeXnb2oM6YM=
+sidebar_class_name: 'patch api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Patch /origins/{originId}'}></Heading>
+
+<MethodEndpoint method={'patch'} path={'/api/v1/origins/{originId}'} context={'endpoint'}></MethodEndpoint>
+
+Update an origin.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ description: 'Identifier of the origin.', in: 'path', name: 'originId', required: true, schema: { type: 'string' } }]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    content: {
+      'application/json': {
+        schema: {
+          properties: {
+            name: { description: 'Human-readable display name for the origin.', type: 'string' },
+            priority: {
+              description: 'Failover order within the channel; lower means higher priority, and negatives are allowed.',
+              maximum: 9007199254740991,
+              minimum: -9007199254740991,
+              type: 'integer',
+            },
+            type: { description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.', enum: ['DASH', 'HLS', 'HESP'], type: 'string' },
+            url: { description: 'Manifest URL polled by the break detection service. Must be a valid URL.', format: 'uri', type: 'string' },
+          },
+          type: 'object',
+        },
+      },
+    },
+    required: true,
+  }}
+></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      content: {
+        'application/json': {
+          schema: {
+            additionalProperties: false,
+            properties: {
+              channelId: { description: 'Identifier of the channel this origin belongs to.', type: 'string' },
+              createdAt: { description: 'Timestamp when the origin was created, as an ISO 8601 datetime string.', type: 'string' },
+              enabled: { description: 'Whether this origin participates in its channel break-detection failover.', type: 'boolean' },
+              id: { description: 'Unique origin identifier.', type: 'string' },
+              name: { description: 'Human-readable display name for the origin.', type: 'string' },
+              priority: { description: 'Failover order within the channel; lower means higher priority. Defaults to 0.', type: 'number' },
+              type: { description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.', enum: ['DASH', 'HLS', 'HESP'], type: 'string' },
+              url: { description: 'Manifest URL polled by the break detection service.', type: 'string' },
+            },
+            required: ['id', 'channelId', 'url', 'type', 'enabled', 'priority', 'createdAt'],
+            type: 'object',
+          },
+        },
+      },
+      description: 'Default Response',
+    },
+  }}
+></StatusCodes>
