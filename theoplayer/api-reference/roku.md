@@ -394,7 +394,7 @@ The PlayerConfiguration object is passed to the configure method. It is an assoc
 
 #### CMCD Configuration
 
-The CMCD configuration enables Common Media Client Data reporting. It can be set at the player level (in `PlayerConfiguration.cmcd`) or at the source level (in `SourceDescription.cmcd`). CMCDv1 will be used for all streams. CMCDv2 events will also be used if `eventEndpoints` is set.
+The CMCD configuration enables Common Media Client Data reporting. It can be set at the player level (in `PlayerConfiguration.cmcd`) or at the source level (in `SourceDescription.cmcd`). Request mode (CMCD headers on media requests) will be used for all OptiView Live (THEOlive) streams. CMCDv2 events will also be used if `eventEndpoints` is set.
 
 **CmcdConfiguration** (player-level):
 
@@ -408,7 +408,7 @@ The CMCD configuration enables Common Media Client Data reporting. It can be set
 
 | Property          | Type                                 | Description                                                                                                                         |
 | ----------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| externalSessionId | string                               | Optional. External session identifier for CMCD. This is recommended to use to join CMCDv1 and CMCDv2 sessions together.             |
+| externalSessionId | string                               | Optional. External session identifier for CMCD. This is recommended to use to join request mode and event mode sessions together.   |
 | userId            | string                               | Optional. User identifier for CMCD reporting.                                                                                       |
 | eventEndpoints    | roArray of CmcdEndpointConfiguration | Optional. Array of endpoints to send CMCD events to.                                                                                |
 | sessionId         | string                               | Optional. Session identifier for this source. Only used for CMCDv2 event mode. A Roku-generated ID is used for CMCDv1 request mode. |
