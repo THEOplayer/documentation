@@ -1,0 +1,46 @@
+---
+sidebar_position: 1
+sidebar_label: Player integration
+---
+
+# Player integration
+
+OptiView Ads is designed to work with the [OptiView Player](./optiview-player/), but you are not required to use it. The [Break Manifest](./bring-your-own-player/) and SSAI `EXT-X-DATERANGE` cue injection are open contracts that you can integrate with your own player.
+
+## Choose an integration path
+
+- **[OptiView Player](./optiview-player/)** is the recommended path. The Web, Android, and iOS SDKs handle Break Manifest polling, ad scheduling, Google IMA/DAI integration, and OptiView impression reporting. Chromecast CAF and React Native have platform-specific capabilities described in their guides.
+- **[Bring your own player](./bring-your-own-player/)** is for open-source and native players. Poll the Break Manifest yourself, or consume the SSAI cues injected into a proxied media playlist. OptiView does not provide first-party adapters for these players.
+
+## Capability matrix
+
+| Capability                         | OptiView Player Web / Android / iOS                               | Chromecast CAF                  | React Native             | hls.js                | Shaka Player             | ExoPlayer / Media3                  | AVPlayer                                         |
+| ---------------------------------- | ----------------------------------------------------------------- | ------------------------------- | ------------------------ | --------------------- | ------------------------ | ----------------------------------- | ------------------------------------------------ |
+| Automatic Break Manifest handling  | Yes                                                               | Via sender/receiver integration | Platform-dependent       | No                    | No                       | No                                  | No                                               |
+| `breakManifestUrl` support         | Yes                                                               | No                              | No                       | N/A                   | N/A                      | N/A                                 | N/A                                              |
+| SSAI `EXT-X-DATERANGE` consumption | Yes                                                               | Receiver handles supported cues | Platform-dependent       | Yes, application code | Yes, as timeline regions | Yes, via metadata/interstitial APIs | Yes, via AVFoundation metadata/interstitial APIs |
+| Single (full-screen) ad            | Yes                                                               | Yes                             | Yes                      | Application code      | Application code         | Application code                    | Application code                                 |
+| Double box                         | Defined in schema; not currently selected by current schedulers\* | No                              | Not currently selected\* | Application code      | Application code         | Application code                    | Application code                                 |
+| L-shape                            | Defined in schema; not currently selected by current schedulers\* | No                              | Not currently selected\* | Application code      | Application code         | Application code                    | Application code                                 |
+| Overlay                            | Defined in schema; not currently selected by current schedulers\* | Image overlays only             | Not currently selected\* | Application code      | Application code         | Application code                    | Application code                                 |
+| Google IMA / DAI integration       | Built in                                                          | Built in for supported CAF flow | Platform-dependent       | Application code      | Application code         | Application code                    | Application code                                 |
+| OptiView impression reporting      | Yes                                                               | No                              | No                       | No                    | No                       | No                                  | No                                               |
+
+The Break Manifest schema defines `single`, `double`, `lshape_ad`, `lshape_content`, and `overlay`. The current Web, Android, and iOS OptiView Player schedulers select the `single` layout only. Chromecast CAF currently supports image overlays only.
+
+## How ads are delivered and tracked
+
+OptiView Ads uses **server-guided ad insertion (SGAI)**:
+
+1. A channel's Break Manifest, or injected HLS cues, signals when an ad break occurs.
+2. Google DAI / Pod Serving performs server-side ad decisioning and stitching. The OptiView Player configuration identifies the Google account with `networkCode` and `customAssetKey`.
+3. The client-side Google IMA SDK handles the ad request and tracking. On Web this is the `ima3_dai.js` library; on iOS it is the `GoogleInteractiveMediaAds` SDK.
+
+Google IMA and Google DAI are related but different: IMA is the client-side library, while DAI / Pod Serving is the server-side ad-decisioning and stitching service.
+
+There are two impression types:
+
+- **OptiView impression beacon:** sent by OptiView Player once per ad experience with the player's `adbreakbegin` event. It is linked to the player license, contains no viewer data, and is visible in the portal. See [Ad impression tracking](../how-to-guides/ad-impressions.md).
+- **Google ad-server impressions:** the standard IMA/DAI creative impression and tracking pings sent to Google Ad Manager.
+
+BYO players do not emit the OptiView impression beacon. They can still generate Google impressions if they implement the applicable IMA or ad-tracking integration.

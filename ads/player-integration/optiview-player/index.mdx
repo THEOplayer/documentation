@@ -1,0 +1,25 @@
+---
+sidebar_position: 1
+sidebar_label: OptiView Player
+---
+
+# OptiView Player
+
+OptiView Player is the recommended integration path for OptiView Ads. Its platform SDKs handle the Break Manifest and HLS cue details so your application can focus on playback and presentation.
+
+Built-in capabilities include:
+
+- Automatic Break Manifest polling through `breakManifestUrl` on Web, Android, and iOS.
+- Google IMA / DAI integration using `networkCode`, `customAssetKey`, and optional `adTagParameters`.
+- HLS `EXT-X-DATERANGE` handling for the channel's monetized playback URL.
+- OptiView impression reporting on supported OptiView Player integrations.
+
+The Break Manifest schema defines five formats: `single`, `double`, `lshape_ad`, `lshape_content`, and `overlay`. The current Web, Android, and iOS schedulers select `single` only; the other formats are schema capabilities and are not currently selected by those schedulers. Chromecast CAF currently supports image overlays only.
+
+Choose a platform:
+
+- [Web](./web)
+- [Android](./android)
+- [iOS](./ios)
+- [Chromecast CAF](./chromecast)
+- [React Native](./react-native)
