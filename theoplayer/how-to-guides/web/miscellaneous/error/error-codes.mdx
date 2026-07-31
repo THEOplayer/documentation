@@ -1,0 +1,33 @@
+---
+sidebar_position: 2
+sidebar_label: Error codes
+---
+
+# Error codes on Web
+
+import Intro from '../../../shared/miscellaneous/_error-codes-intro.mdx';
+
+<Intro />
+
+Refer to "[How to do error handling](./error-handling.mdx)" to learn how to detect the "generic player error event".
+
+## Requesting categories and codes
+
+You can programmatically request the list of available error categories through `THEOplayer.ErrorCategory`,
+as illustrated by the screenshot below.
+
+![ErrorCategory](../../../../assets/img/error-code-ErrorCategory.png 'ErrorCategory')
+
+You can also request the category of an error code through `THEOplayer.ErrorCategory.fromCode(<errorCode>)`.
+Meaning: `THEOplayer.ErrorCategory.fromCode(11000)` returns `11`.
+
+Similarly, you can request the list of all available error codes through `THEOplayer.ErrorCode`,
+as illustrated by the screenshot below.
+
+![ErrorCode](../../../../assets/img/error-code-ErrorCode.png 'ErrorCode')
+
+## API references
+
+- [`ErrorCategory`](pathname:///theoplayer/v11/api-reference/web/enums/ErrorCategory.html)
+- [`ErrorCategory.fromCode()`](pathname:///theoplayer/v11/api-reference/web/functions/ErrorCategory.fromCode.html)
+- [`ErrorCode`](pathname:///theoplayer/v11/api-reference/web/enums/ErrorCode.html)

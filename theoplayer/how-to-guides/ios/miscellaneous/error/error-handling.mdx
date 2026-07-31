@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+sidebar_label: Do error handling
+---
+
+# How to do error handling on iOS
+
+import Intro from '../../../shared/miscellaneous/_error-handling-intro.mdx';
+
+<Intro />
+
+## Event listener
+
+Subscribe to the [`ERROR`](pathname:///theoplayer/v11/api-reference/ios/Structs/PlayerEventTypes.html#/s:13THEOplayerSDK16PlayerEventTypesV5ERRORAA0D4TypeCyAA05ErrorD0CGvpZ)
+event of the player, and attach a listener which implements the error handling.
+The [`ErrorEvent`](pathname:///theoplayer/v11/api-reference/ios/Classes/ErrorEvent.html) exposes both
+a textual representation of the error, and a more descriptive
+[`THEOError`](pathname:///theoplayer/v11/api-reference/ios/Protocols/THEOError.html).
+
+```swift
+let listener = theoplayer.addEventListener(type: PlayerEventTypes.ERROR) { event in
+    print(event.error)
+    print(event.errorObject)
+}
+```
+
+## Getter
+
+You can query the last encountered player error through
+[`player.error`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C5errorSSSgvp).
+
+```swift
+print(theoplayer.error)
+```
+
+## Types of errors
+
+"[Which error related events does the player expose](../../../../faq/15-which-error-related-events-does-player-expose.md)"
+lists which types of errors there are. Note that generally speaking only the "generic error event" is fatal.
+Other events, like the "Chromecast error event" and the "ad error event", are considered non-fatal
+because some type of playback can still continue.
+
+"[Error codes](./error-codes.mdx)" lists which error codes are available for the "generic error event".

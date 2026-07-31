@@ -31,7 +31,7 @@ The title of the article should be:
 
 **Examples**
 
-- [Up Next](/theoplayer/how-to-guides/miscellaneous/up-next)
+- [Up Next](/theoplayer/how-to-guides/web/miscellaneous/up-next)
 - [How to programmatically detect audio tracks](/theoplayer/how-to-guides/web/media-tracks/detect-audio-tracks)
 
 ### Body of the Article
@@ -125,7 +125,7 @@ Markdown Template available [here](../templates/how-to-guides.md).
 
 **Examples**
 
-- [Up Next](/theoplayer/how-to-guides/miscellaneous/up-next)
+- [Up Next](/theoplayer/how-to-guides/web/miscellaneous/up-next)
 - [How to programmatically detect audio tracks](/theoplayer/how-to-guides/web/media-tracks/detect-audio-tracks)
 
 ### Remarks

@@ -1,0 +1,46 @@
+---
+sidebar_position: 8
+sidebar_label: Clipping
+---
+
+# Clipping on Web
+
+THEOplayer supports playing only a selected part of a video-on-demand stream, rather than playing it from start to finish.
+This can be used for example to watch a single game-changing event from a sports match,
+highlight an important part of a long video presentation, or skip straight to the best part of a music video.
+
+## Usage
+
+The clip API helps you configure a clip within your content, through a `startTime` and an `endTime`, expressed in seconds.
+These properties are optional, and you don't need to specify both.
+For example, you can set just `startTime = 30` to have the video start at 30 seconds and play the rest of the video normally.
+
+The following example shows a video clipped to start at 30 seconds and end at 60 seconds.
+
+```js
+player.source = {
+  sources: [
+    {
+      src: '//cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
+};
+
+// The clipping is applied in an event listener to make sure it isn't called before the source is set
+player.addEventListener('durationchange', function () {
+  player.clip.startTime = 30;
+  player.clip.endTime = 60;
+});
+```
+
+## Remarks
+
+- The event listener in the code sample is not strictly necessary, but it ensures that the clipping is applied
+  after the source is set. If your source has not been set, or is being set but the process is not complete,
+  clipping does not have any effect.
+
+## Resources
+
+- [Clip API](pathname:///theoplayer/v11/api-reference/web/interfaces/Clip.html)
+- [Frame accurate clipping in HLS](https://www.theoplayer.com/blog/frame-accurate-clipping-in-hls)

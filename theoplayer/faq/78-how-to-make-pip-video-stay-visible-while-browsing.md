@@ -5,7 +5,7 @@ The following gives a short general description of the most commonly used option
 
 ## THEOplayer PiP
 
-[This guide](../how-to-guides/07-miscellaneous/07-picture-in-picture.md) will help you get started with THEOplayer PiP in your implementation.  
+[This guide](../how-to-guides/web/miscellaneous/picture-in-picture.mdx) will help you get started with THEOplayer PiP in your implementation.  
 Highlights:
 
 - <u>Pros</u>: easily configured within the playerConfig; it will automatically trigger when the visible video portion is below the declared threshold; the pause/resume behaviour with a click on any part of the video is maintained; CSAI ads and subtitles are correctly rendered in the floating window

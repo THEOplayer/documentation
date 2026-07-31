@@ -9,7 +9,7 @@
   },
   {
     "from": "/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/",
-    "to": "/theoplayer/how-to-guides/miscellaneous/vr/"
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/vr/"
   },
   {
     "from": "/theoplayer/how-to-guides/drm/verizon-uplynk/",
@@ -446,5 +446,85 @@
   {
     "from": "/theoplayer/how-to-guides/ui/how-to-disable-click-to-pause/",
     "to": "/theoplayer/how-to-guides/web/ui/disable-click-to-pause/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/introduction/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/introduction/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/how-to-disable-right-click/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/disable-right-click/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/how-to-change-context-menu/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/change-context-menu/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/related-content/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/related-content/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/social-sharing/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/social-sharing/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/up-next/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/up-next/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/introduction/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/how-to-do-error-handling/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/error-handling/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/error-codes/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/error-codes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/vr/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/vr/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/webaudio/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/web-audio/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/clipping/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/clipping/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/picture-in-picture/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/picture-in-picture/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/using-hlsdaterange-property/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/hls-date-range/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/preloading/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/preloading/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/saving-cachingtask-progress-ios/",
+    "to": "/theoplayer/how-to-guides/ios/miscellaneous/save-caching-task-progress/"
   }
 ]

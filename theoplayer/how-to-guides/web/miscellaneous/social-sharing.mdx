@@ -1,0 +1,51 @@
+---
+sidebar_position: 3
+sidebar_label: Social sharing
+---
+
+# Social sharing on Web
+
+The social sharing feature adds a component to the default UI which enables viewers to share the page across media,
+for example through X (formerly Twitter) and Facebook.
+The social sharing API allows you to configure the URLs and (social) channels.
+
+![Social sharing](../../../assets/img/social-sharing.png 'Social sharing')
+
+Since it is a feature of the default UI, social sharing is only available on the Web SDK.
+Make sure your Web SDK includes the `social` feature.
+
+## Usage
+
+```js
+player.social.url = 'https://demo.theoplayer.com/social-sharing';
+player.social.items = [
+  {
+    label: 'Facebook',
+    icon: 'https://example.com/facebook.png',
+    src: 'https://www.facebook.com/sharer/sharer.php?u=<URL>',
+  },
+  {
+    label: 'X',
+    icon: 'https://example.com/x.png',
+    src: 'https://x.com/intent/tweet?url=<URL>',
+  },
+  {
+    label: 'Reddit',
+    icon: 'https://example.com/reddit.png',
+    src: 'https://www.reddit.com/submit?url=<URL>',
+  },
+  {
+    label: 'Direct link',
+    src: 'https://demo.theoplayer.com/social-sharing',
+  },
+  {
+    label: 'Embed',
+    text: '<iframe width="640" height="360" src="https://demo.theoplayer.com/social-sharing" frameborder="0" allowfullscreen>\n</iframe>',
+  },
+];
+```
+
+## Resources
+
+- [Social sharing API](pathname:///theoplayer/v11/api-reference/web/interfaces/SocialSharing.html)
+- [Online demo](https://demo.theoplayer.com/social-sharing)

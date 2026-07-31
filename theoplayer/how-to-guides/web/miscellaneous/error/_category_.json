@@ -1,0 +1,7 @@
+{
+  "label": "Error",
+  "position": 5,
+  "customProps": {
+    "icon": "⚠️"
+  }
+}

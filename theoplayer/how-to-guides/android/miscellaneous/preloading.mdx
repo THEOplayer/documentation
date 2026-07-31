@@ -1,0 +1,30 @@
+---
+sidebar_position: 11
+sidebar_label: Preloading
+---
+
+# Preloading on Android
+
+import Intro from '../../shared/miscellaneous/_preloading-intro.mdx';
+import Remarks from '../../shared/miscellaneous/_preloading-remarks.mdx';
+
+<Intro />
+
+## Usage
+
+In this example, we are preloading metadata only.
+
+```kotlin
+import com.theoplayer.android.api.player.PreloadType
+
+theoPlayerView.player.preload = PreloadType.METADATA
+```
+
+## Remarks
+
+<Remarks />
+
+## Resources
+
+- [What are the benefits of preloading?](../../../faq/38-what-are-the-benefits-of-preloading.md)
+- [PreloadType API](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/PreloadType.html)

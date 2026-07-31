@@ -47,4 +47,4 @@ The following resources provide more information:
 - [Demo page - Adding buttons and text to the default UI](http://demo.theoplayer.com/adding-buttons-text-overlay-to-theoplayer)
 - [How to change text in THEOplayer](41-how-to-change-text-in-theoplayer.md)
 - [Which error related events does the player expose?](15-which-error-related-events-does-player-expose.md)
-- [How to do error handling](../how-to-guides/07-miscellaneous/04-error/01-how-to-do-error-handling.md)
+- [How to do error handling](../how-to-guides/web/miscellaneous/error/error-handling.mdx)
