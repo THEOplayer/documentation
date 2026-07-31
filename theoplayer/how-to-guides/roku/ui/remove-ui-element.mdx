@@ -1,0 +1,83 @@
+---
+sidebar_position: 2
+sidebar_label: Remove an element from the UI
+---
+
+# How to remove an element from the UI on Roku
+
+import Intro from '../../shared/ui/_remove-ui-element-intro.mdx';
+
+<Intro />
+
+## Implementation
+
+By default, THEOplayer on Roku uses the Roku native player and its controls.
+To remove an element from these controls, you can remove that element manually.
+For example, the default controls show a clock UI element while paused. To remove it, follow the code below:
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="TestScene" extends="Scene">
+    <interface>
+    </interface>
+
+    <script type = "text/brightscript" >
+
+        <![CDATA[
+
+        sub Init()
+            m.player = m.top.findNode("TestPlayer")
+            m.player.configuration = {
+              "license": "<YOUR_LICENSE_STRING>"
+            }
+            ' remove the clock UI node
+            m.player.getChildren(-1, 0)[0].getChildren(-1, 0)[1].removeChildIndex(11)
+
+            setSource()
+            m.player.setFocus(true)
+            m.player.callFunc("play")
+        end sub
+
+        sub setSource()
+            sourceDescription = {
+                "sources": [
+                    {
+                        "src": "http://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8",
+                        "live": true,
+                        "type": "application/x-mpegURL"
+                    }
+                ]
+            }
+            m.player.source = sourceDescription
+        end sub
+
+        ]]>
+
+    </script>
+
+    <children>
+	    <THEOsdk:THEOplayer id="TestPlayer"/>
+    </children>
+</component>
+```
+
+## Removing all default controls
+
+Instead of removing individual elements, you can turn off the default UI altogether
+by setting the player's `controls` field to `false`:
+
+```xml
+<THEOsdk:THEOplayer id="TestPlayer" controls="false"/>
+```
+
+You can also do this from BrightScript:
+
+```brightscript
+sub Init()
+    m.player = m.top.findNode("TestPlayer")
+    m.player.controls = false
+end sub
+```
+
+From there on, you are responsible for the entire UI.
+See [How to build a chromeless UI](./build-chromeless-ui.mdx) for a walkthrough.

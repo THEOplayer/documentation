@@ -93,7 +93,7 @@ Familiarize yourself with the above APIs if you want to change the appearance of
 
 ### Altering Default UI
 
-If you are using THEOplayer's default UI, but want to use your own button instead, then you can hide THEO's default button, and [insert a new one](../../../how-to-guides/11-ui/07-how-to-insert-a-button.md) instead. You also need to use our Cast API described in the above "Chromeless UI" section.
+If you are using THEOplayer's default UI, but want to use your own button instead, then you can hide THEO's default button, and [insert a new one](../../../how-to-guides/web/ui/insert-a-button.mdx) instead. You also need to use our Cast API described in the above "Chromeless UI" section.
 
 ## Customizing a Receiver application
 

@@ -1,0 +1,16 @@
+---
+sidebar_position: 12
+sidebar_label: Hide the Google IMA UI
+---
+
+# How to hide the Google IMA UI on Web
+
+You may want to know which controls are visible to the viewer during ads, so you can use your own UI elements instead.
+
+Unfortunately Google IMA provides very limited control over the UI. The only thing that you can change or hide from THEOplayer is the countdown: to do so, set `showCountdown` to `false` in your
+[`AdsConfiguration`](pathname:///theoplayer/v11/api-reference/web/interfaces/AdsConfiguration.html#showCountdown).
+
+Using other methods, like CSS or JavaScript, to modify the Google IMA UI elements styles will also not work due to:
+
+- the usual higher specificity of the _iframe_ CSS
+- the security restrictions on XSS.

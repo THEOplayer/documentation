@@ -1,18 +1,15 @@
-# How to change the Big Play Button?
+---
+sidebar_position: 5
+sidebar_label: Change the big play button
+---
+
+# How to change the big play button on Web
 
 The question above is typically asked by developers who want to increase/decrease the size, set a different image instead, or introduce on-hover behavior.
-
-## SDKs
-
-| Web SDK |      Android SDK      |        iOS SDK        | tvOS SDK | Android TV SDK | Chromecast SDK | Roku SDK |
-| :-----: | :-------------------: | :-------------------: | :------: | :------------: | :------------: | :------: |
-|   Yes   | Through CSS injection | Through CSS injection |   N/A    |      N/A       |      N/A       |   N/A    |
 
 ## Code example
 
 The snippet below demonstrates how you could set another image instead of the default big play button. Additionally, the button becomes bigger when you hover it.
-
-##### Web SDK
 
 ```css
 /* Increase button size when hovering */
@@ -44,30 +41,6 @@ The snippet below demonstrates how you could set another image instead of the de
 }
 ```
 
-##### Legacy Android SDK (4.12.x)
-
-To achieve the same result on Android SDK, the same CSS need to be passed to your app.
-
-**Step 1**
-
-To learn how to inject CSS into your Android project, follow the guide [Android SDK Customization - Custom CSS and JavaScript files](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
-
-**Step 2**
-
-In the CSS file you created, add the code reported above in the Web SDK section.
-
-##### Legacy iOS/tvOS SDK (4.12.x)
-
-To achieve the same result on iOS SDK, the same CSS need to be passed to your app.
-
-**Step 1**
-
-To learn how to inject CSS into your iOS project, follow the guide [iOS SDK Customization - Custom CSS and JavaScript files](../../../theoplayer_versioned_docs/version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
-
-**Step 2**
-
-In the CSS file you created, add the code reported above in the Web SDK section.
-
 The snippet above also removes some default behavior, such as the shadow-effect when hovering the big play button.
 
-![Big Play Button](../../assets/img/big-play-button.png 'Big Play Button')
+![Big Play Button](../../../assets/img/big-play-button.png 'Big Play Button')
