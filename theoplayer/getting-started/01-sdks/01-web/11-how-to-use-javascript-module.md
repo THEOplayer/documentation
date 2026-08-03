@@ -224,7 +224,7 @@ var player = new THEOplayer.Player(element, {
 ```
 
 You can read more about configuring the `license` at
-the [License section](../../../how-to-guides/12-license/00-introduction.md).
+the [License section](../../../how-to-guides/web/license/introduction.mdx).
 
 #### Configure video stream
 

@@ -69,5 +69,5 @@ Here's an example on how to dynamically generate such a cachebuster variable in 
 ## Related articles
 
 - [How to update an SDK](../01-how-to-update-a-sdk.md)
-- [License](../../../how-to-guides/12-license/00-introduction.md)
+- [License](../../../how-to-guides/web/license/introduction.mdx)
 - [How to reduce data usage on mobile devices on mobile web](../../../how-to-guides/web/media-tracks/reduce-data-usage.mdx)

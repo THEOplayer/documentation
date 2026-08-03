@@ -1,6 +1,7 @@
 {
   "label": "Integrations",
+  "position": 5,
   "customProps": {
-    "icon": "🔌"
+    "icon": "\ud83d\udd0c"
   }
 }

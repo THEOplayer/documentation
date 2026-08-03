@@ -1,0 +1,25 @@
+---
+sidebar_position: 0
+sidebar_label: Introduction
+---
+
+# License on Roku
+
+import Intro from '../../shared/license/_introduction-intro.mdx';
+import Faq from '../../shared/license/_faq.mdx';
+
+<Intro />
+
+## Passing the license through the player configuration
+
+Pass the license to the `configure` function of the player:
+
+```brightscript
+m.THEOplayer.callFunc("configure", { license: "your_license_here" })
+```
+
+If no valid license can be found, the player will throw a license error.
+
+## FAQ
+
+<Faq />

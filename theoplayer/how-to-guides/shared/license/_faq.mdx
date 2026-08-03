@@ -1,0 +1,66 @@
+### Why do I have to configure a license?
+
+In order to provide THEOplayer insights if a stream can be played, it needs to have access to an active license.
+You can choose to either configure this license, or configure a URL where this license can be retrieved.
+We recommend everyone to configure an active license or a license URL.
+
+### How do I avoid introducing any dependencies on THEOplayer servers?
+
+There are two important aspects which can introduce a dependency on THEOplayer servers:
+
+1. **Loading a THEOplayer SDK from the THEOplayer CDN.** This issue is only relevant for the Web SDK.
+   In order to avoid this dependency, we recommend to self-host your THEOplayer SDK.
+   The easiest approach is to load the player through npm, or download the player SDK as a zip file
+   from the developer portal.
+   More information on how to self-host your player can be found in
+   "[Self-hosting THEOplayer](/theoplayer/faq/self-hosting-theoplayer/)".
+2. **Loading a THEOplayer license from the THEOplayer license system.**
+   In order to avoid this dependency, it is important to always keep your license up to date,
+   either by configuring an updated license or by configuring your own license URL.
+   When your THEOplayer license expires, a new player instance will actively check against THEOplayer's license system
+   if there is an updated license available.
+   This system should however only serve as a fallback for applications which cannot be updated.
+
+### Should I pass a license string or a license URL?
+
+We recommend our customers to use the license string whenever possible.
+
+In special cases it is possible to use the license URL instead.
+Use cases include contractual or legal (for example privacy) requirements.
+For more information, please contact support@theoplayer.com.
+
+If the player is configured with both a license string and a license URL, it will first try to validate the license
+string. If the license string is either not configured or expired, the player will attempt to request the license URL
+instead. If no license URL is defined, then a default license URL will be used. If neither is defined, the player will
+default to the built-in license in the SDK. If no valid license can be found, the player will throw a license error.
+
+### Should I update my application upon license renewal?
+
+Yes. After renewing your license, you should make sure to include the new THEOplayer license in your next app update.
+
+### What happens if I don't timely update the license in my application?
+
+The player will attempt to update the license up to 72 hours before expiration.
+For this, the player will request a new license either from the configured license URL,
+or as a fallback (when there is no license URL configured) from `validate.theoplayer.com`.
+Either way, if the request is successful, the player will store the license locally.
+We highly recommend you to self-host the license using the license URL in the player configuration.
+
+For self-hosting, the license file with the latest license string for your application should be hosted.
+The full URL to this file should then be configured as the license URL in the player configuration.
+
+### Will I still be able to play offline content with my THEOplayer SDK if my license expires?
+
+When your license expires, THEOplayer will attempt to load an updated license.
+If an updated license is available, offline playback will still function.
+If no valid license is available, and no license server can be reached (due to the client being offline),
+the player will throw an error and stop playback.
+For this reason, it is important to always keep your license up to date.
+
+### What should I do to protect my license?
+
+The THEOplayer license you get from THEOportal is already an obfuscated string.
+If you want to protect your license, you need to make sure to configure your
+[page and source domains](/theoplayer/faq/page-and-source-domains/)
+to guarantee that your license string cannot be used anywhere other than the specified pages
+and/or with those source domains.

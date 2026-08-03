@@ -1,6 +1,7 @@
 {
   "label": "License",
+  "position": 12,
   "customProps": {
-    "icon": "🔑"
+    "icon": "\ud83d\udd11"
   }
 }

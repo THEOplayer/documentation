@@ -526,5 +526,33 @@
   {
     "from": "/theoplayer/how-to-guides/miscellaneous/saving-cachingtask-progress-ios/",
     "to": "/theoplayer/how-to-guides/ios/miscellaneous/save-caching-task-progress/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/",
+    "to": "/theoplayer/how-to-guides/web/integrations/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/introduction/",
+    "to": "/theoplayer/how-to-guides/web/integrations/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/iris-tv/",
+    "to": "/theoplayer/how-to-guides/web/integrations/iris-tv/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/wowza-streaming-engine-with-secure-token-version-2/",
+    "to": "/theoplayer/how-to-guides/web/integrations/wowza-streaming-engine/secure-token/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/deliver-low-latency-hls-live-streams-with-wowza-streaming-engine/",
+    "to": "/theoplayer/how-to-guides/web/integrations/wowza-streaming-engine/low-latency-hls/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/license/",
+    "to": "/theoplayer/how-to-guides/web/license/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/license/introduction/",
+    "to": "/theoplayer/how-to-guides/web/license/introduction/"
   }
 ]
