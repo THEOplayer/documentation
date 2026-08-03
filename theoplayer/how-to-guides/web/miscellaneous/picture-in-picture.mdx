@@ -1,0 +1,56 @@
+---
+sidebar_position: 9
+sidebar_label: Picture-in-Picture
+---
+
+# Picture-in-Picture on Web
+
+import Intro from '../../shared/miscellaneous/_picture-in-picture-intro.mdx';
+
+<Intro />
+
+The Web SDK supports in-app Picture-in-Picture. Out-of-app Picture-in-Picture is not supported.
+
+## Usage
+
+Picture-in-Picture is enabled as soon as the player configuration contains a `pip` configuration,
+so there is no need for any additional code to enable it.
+
+![Picture-in-Picture](../../../assets/img/picture-in-picture.png 'Picture-in-Picture')
+
+The PiP configuration has three properties:
+
+- `position`: (optional, possible values: `"top-left"`, `"top-right"`, `"bottom-left"`, `"bottom-right"`)  
+  The corner in which the player should be shown while in PiP mode. Defaults to the bottom right corner.
+
+- `visibility`: (optional, a number from 0 to 1)  
+  The maximum percentage of the original player position that should be visible to enable PiP automatically.
+  If not configured, PiP can only be turned on by setting
+  [presentationMode](pathname:///theoplayer/v11/api-reference/web/types/PresentationMode.html) to `"picture-in-picture"`.
+
+- `retainPresentationModeOnSourceChange`: (optional, `true` or `false`)  
+  If set to `true`, the previous [presentationMode](pathname:///theoplayer/v11/api-reference/web/types/PresentationMode.html)
+  is retained even as the source changes. It is set to `false` by default.
+
+```js
+const playerConfig = {
+  /* ... */
+  pip: {
+    visibility: 0.7,
+    position: 'bottom-left',
+    retainPresentationModeOnSourceChange: true,
+  },
+};
+```
+
+## Remarks
+
+- Support for native Picture-in-Picture (i.e. where the player is draggable) is experimental.
+  While support is widely adopted, the feature is most notably not supported by Firefox.
+
+## Resources
+
+- [PiPConfiguration API](pathname:///theoplayer/v11/api-reference/web/interfaces/PiPConfiguration.html)
+- [PlayerConfiguration API](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerConfiguration.html)
+- [PresentationMode API](pathname:///theoplayer/v11/api-reference/web/types/PresentationMode.html)
+- [Online demo](https://demo.theoplayer.com/picture-in-picture): start the video and scroll down on the page to see PiP in action.

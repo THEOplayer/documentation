@@ -1,0 +1,16 @@
+The aim of preloading is to improve the user experience by loading parts of the video
+before the play button is hit, when the user is likely to play the video.
+
+Choosing to preload your video content reduces the start-up time of your videos.
+It also makes some data regarding the current source (video duration, timeline thumbnails, etc.)
+available before the user initiates playback.
+On the other hand, when the video is less likely to be played, or when it is less beneficial
+(live video, autoplay), you can configure the player to not preload it and save bandwidth.
+
+## Preloading settings
+
+| Value      | Description                                                                                                                                                                                                                                                                                                                                                                            |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`     | Do not preload anything. After setting the source, the player does not load the manifest nor any media files until the play method is invoked on the player.                                                                                                                                                                                                                           |
+| `metadata` | Preload the metadata of the video. After setting the source, the player automatically loads the manifest file and waits for loading media files until the play method is invoked on the player. For static videos (e.g. MP4 files), this translates to preloading data from the start of the video in order to acquire e.g. the video's width and height and the initial video frames. |
+| `auto`     | Preload enough data to allow for smooth initial playback. After setting the source, the player loads both the manifest files and enough media files until a sufficient playback buffer has been obtained.                                                                                                                                                                              |

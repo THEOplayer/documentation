@@ -1,0 +1,93 @@
+---
+sidebar_position: 9
+sidebar_label: Picture-in-Picture
+---
+
+# Picture-in-Picture on iOS
+
+import Intro from '../../shared/miscellaneous/_picture-in-picture-intro.mdx';
+
+<Intro />
+
+iOS supports both in-app and out-of-app Picture-in-Picture. tvOS only supports in-app Picture-in-Picture.
+
+## Enabling Picture-in-Picture
+
+Instantiate the player with a `PiPConfiguration`, passed in the `THEOplayerConfiguration`.
+This configuration lets you configure whether the player should retain its presentation mode upon source change,
+and whether to make use of out-of-app PiP (`nativePictureInPicture`).
+Note that the minimum required iOS version for out-of-app PiP is 14.0.
+
+```swift
+/* Configure whether presentation mode should be retained on source changes and whether to use native PiP */
+let pipConfig = PiPConfiguration(retainPresentationModeOnSourceChange: true, nativePictureInPicture: true)
+let playerConfig = THEOplayerConfiguration(pip: pipConfig)
+let theoplayer = THEOplayer(configuration: playerConfig)
+```
+
+Once Picture-in-Picture is enabled, the player's `pip` property can be accessed.
+
+While using **in-app** PiP, you can use the `configure(movable:defaultCorner:)` method of the player's `pip` property
+to configure whether the PiP view is movable (defaults to `true`),
+and in which corner the PiP view is shown by default (defaults to the bottom right corner).
+
+```swift
+theoplayer.pip!.configure(movable: false, defaultCorner: .bottomLeft)
+```
+
+Notes:
+
+- `configure` is only available when using in-app PiP.
+- tvOS only supports in-app PiP, which is **enabled by default** if the OS version supports it (minimum tvOS 14.0).
+- iPadOS 14.0 (and above) also supports in-app PiP.
+
+## Observing in-app Picture-in-Picture
+
+Using the notification center, you can listen to the `PictureInPictureMoved` notification.
+This notification is pushed every time the Picture-in-Picture view moves to a different corner.
+
+In the callback, you can retrieve the previous and the new corner in the `userInfo` dictionary,
+respectively with the `PictureInPictureOldCornerUserInfoKey` and the `PictureInPictureNewCornerUserInfoKey` keys.
+
+```swift
+NotificationCenter.default.addObserver(self, selector: #selector(onPiPMoved), name: Notification.Name.PictureInPictureMoved, object: nil)
+
+@objc func onPiPMoved(notif: Notification) {
+    let userInfo = notif.userInfo as! [String: Any]
+    let oldCorner: PictureInPictureCorner = userInfo[PictureInPictureOldCornerUserInfoKey]! as! PictureInPictureCorner
+    let newCorner: PictureInPictureCorner = userInfo[PictureInPictureNewCornerUserInfoKey]! as! PictureInPictureCorner
+    print("PiP has moved from \(oldCorner) to \(newCorner)")
+}
+```
+
+## Observing out-of-app Picture-in-Picture
+
+By implementing your own [AVPictureInPictureControllerDelegate](https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate),
+you are able to listen to a number of events. These contain, but are not limited to,
+when the player will enter or exit PiP, and when it has entered or exited PiP.
+To achieve this, set your implementation of the delegate as the one of the
+[PictureInPicture](pathname:///theoplayer/v11/api-reference/ios/Protocols/PictureInPicture.html) controller.
+
+```swift
+class CustomPiPDelegate: NSObject, AVPictureInPictureControllerDelegate {
+    func pictureInPictureControllerDidStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        // Custom action when picture in picture started
+    }
+    // ... Others here.
+}
+
+let customDelegate = CustomPiPDelegate()
+let theoPiP = theoplayer.pip
+theoPiP?.nativePictureInPictureDelegate = customDelegate
+```
+
+## Known limitations
+
+- VR360 is not supported in combination with Picture-in-Picture.
+- Only server-side ad insertion is supported, no client-side ad insertion.
+- Sideloaded text tracks are not supported.
+
+## Resources
+
+- [PiPConfiguration API](pathname:///theoplayer/v11/api-reference/ios/Classes/PiPConfiguration.html)
+- [PictureInPicture API](pathname:///theoplayer/v11/api-reference/ios/Protocols/PictureInPicture.html)

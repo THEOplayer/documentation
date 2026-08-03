@@ -1,0 +1,38 @@
+---
+sidebar_position: 10
+sidebar_label: HLS date ranges
+---
+
+# HLS date ranges on iOS
+
+import Intro from '../../shared/miscellaneous/_hls-date-range-intro.mdx';
+
+<Intro />
+
+## Enabling date ranges
+
+```swift
+// in the player configuration
+let configBuilder = THEOplayerConfigurationBuilder()
+configBuilder.setHlsDateRange(true)
+let theoplayer = THEOplayer(configuration: configBuilder.build())
+
+// or in the source description
+let source = SourceDescription(
+    source: TypedSource(
+        src: "https://example.com/example-stream.m3u8",
+        type: "application/x-mpegurl",
+        hlsDateRange: true
+    )
+)
+```
+
+## Reading date range cues
+
+Date ranges are exposed as cues on a metadata text track.
+See "[How to detect active text track cues](../text-tracks/detect-active-text-track-cues.mdx)"
+to learn how to listen for those cues.
+
+## Resources
+
+- [HLS specification: EXT-X-DATERANGE](https://datatracker.ietf.org/doc/html/rfc8216#section-4.3.2.7)

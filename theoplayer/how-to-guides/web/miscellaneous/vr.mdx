@@ -1,0 +1,157 @@
+---
+sidebar_position: 6
+sidebar_label: VR and 360°
+---
+
+# VR and 360° video on Web
+
+360-degree video is a type of video where every angle from a single viewpoint is recorded and can be played back.
+It offers a great sense of immersion for panoramic imagery or simulation purposes.
+The input should be a video source in an equirectangular format,
+and the output is a container where viewers can navigate around the scene.
+
+Next to spherical or 360° video playback, THEOplayer also offers integration with VR devices
+through a stereoscopic view, dubbed "stereo mode".
+
+VR is only available on the Web SDK.
+Make sure your Web SDK includes the `vr` feature.
+
+## Initialization
+
+The Web SDK uses the [WebXR API](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API) for virtual reality playback.
+For platforms that do not natively support WebXR, you can add the [WebXR polyfill](https://github.com/immersive-web/webxr-polyfill) to your web page.
+
+:::warning Bug in official polyfill
+
+The official polyfill has a bug in its rendering, see [issue 167](https://github.com/immersive-web/webxr-polyfill/issues/167).
+Our team has already [proposed and submitted a fix](https://github.com/immersive-web/webxr-polyfill/pull/168),
+but this fix has not yet been published in a new release of the polyfill.
+
+In the meantime, you can use a patched build from our CDN.
+We highly recommend you to download and host this build on your own web server,
+since it will no longer be available once the official polyfill has been fixed.
+
+:::
+
+Add the polyfill to your page:
+
+```html
+<script src="//cdn.theoplayer.com/webxr/webxr-polyfill-patched.js"></script>
+```
+
+And enable it:
+
+```js
+const POLYFILL_CONFIG = {
+  allowCardboardOnDesktop: true,
+};
+new WebXRPolyfill(POLYFILL_CONFIG);
+```
+
+To indicate that your stream contains 360° content, pass a valid `VRConfiguration` as `vr` property when setting `player.source`.
+
+```js
+const element = document.querySelector('.theoplayer');
+const player = new THEOplayer.Player(element, {
+  fluid: true,
+});
+
+player.vr.useDeviceMotionControls = true;
+
+player.source = {
+  sources: {
+    type: 'application/x-mpegurl',
+    src: 'https://example.com/example-stream.m3u8',
+  },
+  vr: {
+    360: true,
+  },
+};
+```
+
+## Manipulating the viewing direction
+
+Below you can find an example querying the VR viewing direction and one setting the viewing direction.
+
+```js
+/* reading the current position */
+const currentViewingDirection = player.vr.direction; // e.g. {pitch: 0, yaw: 0, roll: 0}
+
+/* setting the position */
+player.vr.direction = { pitch: 0, yaw: 180, roll: 0 };
+
+/* example of how you can update only one direction property */
+const newViewingDirection = player.vr.direction; /* e.g. {pitch: 0, yaw: 30, roll: 0} */
+newViewingDirection.pitch = 180; /* {pitch: 180, yaw: 30, roll: 0} */
+player.vr.direction = newViewingDirection;
+```
+
+## Setting the stereo mode
+
+The snippet below enables stereo mode by setting the `stereoMode` property to `horizontal` or `vertical`.
+
+```js
+player.source = {
+  sources: [
+    {
+      src: 'https://example.com/example-stream.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
+  vr: {
+    360: true,
+    stereoMode: 'horizontal', // or 'vertical'
+  },
+};
+```
+
+Note that the device must have the automatic rotation feature enabled for stereo mode to work.
+
+## Listening to VR related events
+
+The following code sample listens to the `stereochange` and `directionchange` events thrown by THEOplayer.
+
+```js
+player.vr.addEventListener('stereochange', () => {
+  const isStereoEnabled = player.vr.stereo; // (boolean)
+  // do something with it
+});
+
+player.vr.addEventListener('directionchange', () => {
+  const { yaw, roll, pitch } = player.vr.direction; // (object)
+  // do something with it
+});
+```
+
+## Requesting permissions
+
+Since iOS 13, access to device orientation and motion data is disabled by default.
+You need to request the necessary permission, triggered by a user action.
+
+```js
+function requestPermissions() {
+  DeviceMotionEvent.requestPermission()
+    .then((response) => {
+      if (response == 'granted') {
+        window.addEventListener('devicemotion', (e) => {
+          console.log('Device motion permissions granted');
+        });
+      }
+    })
+    .catch(console.error);
+  DeviceOrientationEvent.requestPermission()
+    .then((response) => {
+      if (response == 'granted') {
+        window.addEventListener('deviceorientation', (e) => {
+          console.log('Device orientation permissions granted');
+        });
+      }
+    })
+    .catch(console.error);
+}
+```
+
+## Resources
+
+- [VR API](pathname:///theoplayer/v11/api-reference/web/interfaces/VR.html)
+- [Online demo](https://www.theoplayer.com/theoplayer-demo-virtual-reality-360-degree-view)

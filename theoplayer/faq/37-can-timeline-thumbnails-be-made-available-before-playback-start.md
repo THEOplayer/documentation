@@ -10,6 +10,6 @@ In case your timeline is not visible before playback start, however, using prelo
 
 The following resources provide more information:
 
-- [Preloading - How to](../how-to-guides/07-miscellaneous/09-preloading.md)
+- [Preloading - How to](../how-to-guides/web/miscellaneous/preloading.mdx)
 - [What are the benefits of preloading?](38-what-are-the-benefits-of-preloading.md)
 - [PreloadType API reference](pathname:///theoplayer/v11/api-reference/web/types/PreloadType.html)
