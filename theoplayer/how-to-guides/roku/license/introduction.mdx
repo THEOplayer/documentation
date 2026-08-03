@@ -12,10 +12,17 @@ import Faq from '../../shared/license/_faq.mdx';
 
 ## Passing the license through the player configuration
 
-Pass the license to the `configure` function of the player:
+Pass the license to the `configure` function of the player,
+either as a license string or as a URL from which the license can be loaded:
 
 ```brightscript
+' passing the license as a string
 m.THEOplayer.callFunc("configure", { license: "your_license_here" })
+```
+
+```brightscript
+' passing the license as a URL
+m.THEOplayer.callFunc("configure", { licenseUrl: "your_licenseUrl_here" })
 ```
 
 If no valid license can be found, the player will throw a license error.
