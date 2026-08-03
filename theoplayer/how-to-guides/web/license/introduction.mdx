@@ -35,7 +35,9 @@ const player = new THEOplayer.Player(element, {
 If the player is configured with either `license` or `licenseUrl`, the player will first validate the `license`
 string. If the license is either undefined or expired, the player will attempt to request the `licenseUrl` instead.
 If no `licenseUrl` is defined, then a default license URL will be used.
-If neither of these options is provided, the player will default to the built-in license in the SDK.
+If neither of these options is provided, the player will default to the built-in license in the SDK
+if it was built on THEOportal. If the player is [from npm](https://www.npmjs.com/package/theoplayer),
+it will throw a license error.
 
 If no valid license can be found, the player will throw a license error.
 
