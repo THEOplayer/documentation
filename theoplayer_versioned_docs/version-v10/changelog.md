@@ -478,7 +478,7 @@
 
 #### 👎 Deprecations
 
-- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to [our documentation](./how-to-guides/08-network/03-ios-hls-media-playlist-interceptor.md).
+- Deprecated `DeveloperSettings` & `ManifestInterceptor` in favor of `NetworkAPI`. You can access the network API from `player.network` or `cachingTask.network`. For a comprehensive guide, please refer to [our documentation](/theoplayer/v10/how-to-guides/network/ios-hls-media-playlist-interceptor/).
 
 ### Roku
 
@@ -1080,7 +1080,7 @@ We are happy to announce the tenth major version of THEOplayer, releasing all th
 
 THEOplayer 10.0 includes **some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
 
-- On Android, THEOplayer now always uses the Media3 pipeline for all playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices! Check out our [Media3 guide](/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
+- On Android, THEOplayer now always uses the Media3 pipeline for all playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices! Check out our [Media3 guide](/theoplayer/v10/how-to-guides/android/media3/getting-started/) for more information.
 
 - The Android SDK will now automatically use modern network stacks with HTTP/2 and HTTP/3 support when available, optimizing media delivery to your viewers.
 
