@@ -1,0 +1,68 @@
+---
+sidebar_position: 1
+sidebar_label: IRIS.TV
+---
+
+# IRIS.TV on Web
+
+import Intro from '../../shared/integrations/_iris-tv-intro.mdx';
+
+<Intro />
+
+This guide describes how to do a
+[custom Iris.TV integration](https://iristv.atlassian.net/wiki/spaces/API/pages/38567965/Custom+Adaptive+Plug-in+Integrations)
+in THEOplayer.
+
+## Prerequisites
+
+1. You have a THEOplayer license and library.
+   If you don't have THEOplayer yet, you can start your free trial [here](https://portal.theoplayer.com/),
+   or contact your account manager.
+2. You have a working THEOplayer setup.
+   See "[Getting started on Web](../../../getting-started/01-sdks/01-web/00-getting-started.mdx)".
+
+## Include the Iris.TV SDK
+
+Include the Iris.TV JavaScript library right before where you include the THEOplayer library:
+
+```html
+<script type="text/javascript" src="https://ovp.iris.tv/libs/adaptive/iris.adaptive.js"></script>
+```
+
+## Include the custom integration
+
+Include the script tag referencing the file with the custom integration code
+right after where you include the THEOplayer library:
+
+```html
+<script type="text/javascript" src="https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.js"></script>
+```
+
+You can also add extra styling on top of the Iris.TV UI:
+
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.theoplayer.com/demos/iristv/THEOplayer.iristv.css" />
+```
+
+## Initialize THEOplayerIrisTv
+
+To start displaying the Iris.TV UI, call `THEOplayerIrisTv()` (from `THEOplayer.iristv.js`),
+and pass along the THEOplayer instance and your Iris.TV configuration. For example:
+
+```js
+const irisOptions = {
+  client_token: '51afa098ah',
+  platform_id: '5798d994ef995e0d18000176',
+};
+
+THEOplayerIrisTv(player, irisOptions);
+```
+
+## Sample application
+
+A live demo can be viewed at [https://cdn.theoplayer.com/demos/iristv/iristv.html](https://cdn.theoplayer.com/demos/iristv/iristv.html).
+
+## Resources
+
+- [Iris.TV documentation: THEO adaptive plugin](https://iristv.atlassian.net/wiki/spaces/API/pages/263258113/THEO+Adaptive+Plugin)
+- [Iris.TV documentation: Custom adaptive plugin](https://iristv.atlassian.net/wiki/spaces/API/pages/38567965/Custom+Adaptive+Plugin)

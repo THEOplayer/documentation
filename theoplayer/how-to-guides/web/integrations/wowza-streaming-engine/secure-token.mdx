@@ -1,50 +1,41 @@
-# Wowza streaming engine with secure token version 2
+---
+sidebar_position: 1
+sidebar_label: SecureToken version 2
+---
 
-This guide explains how to set up THEOplayer with Wowza Streaming Engine™, using their SecureToken version 2 module, that provides playback protection via a security token that is exchanged between the server and clients. The SecureToken is a challenge/response system that helps to protect content against spoofing threats. Each connection is protected by a random key and a password (shared secret).
+# Wowza Streaming Engine SecureToken version 2 on Web
 
-An important aspect when generating the hash, is that the client web server should generate the hash when it generates the client webpage. The **client webpage should not** use JavaScript code to generate the hash, as the code is visible in the webpage source and would pose a potential security risk. As a result, our implementation is based on a node/express application to generate the hash.
+import Intro from '../../../shared/integrations/_wowza-secure-token-intro.mdx';
 
-## SDKs
+<Intro />
 
-| Web SDK |                  Android SDK                  |                    iOS SDK                    | tvOS SDK |                Android TV SDK                 | Chromecast SDK |
-| :-----: | :-------------------------------------------: | :-------------------------------------------: | :------: | :-------------------------------------------: | :------------: |
-|   Yes   | Unverified through CSS/JavaScript injection\* | Unverified through CSS/JavaScript injection\* |    No    | Unverified through CSS/JavaScript injection\* |      N/A       |
+An important aspect when generating the hash is that the client web server should generate the hash
+when it generates the client webpage.
+The **client webpage should not** use JavaScript code to generate the hash,
+as the code is visible in the webpage source and would pose a potential security risk.
+As a result, the implementation below is based on a Node/Express application to generate the hash.
 
-\*CSS/JavaScript injection in the project is only possible with the legacy mobile SDKs (up to 4.12.X).
+## Prerequisites
 
-## How to set up THEOplayer with Wowza Streaming Engine
+1. You have a THEOplayer license. If you are not using THEOplayer yet, you can start your free trial
+   [here](https://portal.theoplayer.com/).
+2. You are a Wowza Streaming Engine client and are integrated with their streaming infrastructure.
+   Information on Wowza Streaming Engine can be found
+   [here](https://www.wowza.com/docs/wowza-streaming-engine-product-articles/),
+   and information on how to protect your streams using SecureToken can be found
+   [here](https://www.wowza.com/docs/how-to-protect-streaming-using-securetoken-in-wowza-streaming-engine).
+3. For the purposes of this example, we created a VOD application (this example would also work for live applications)
+   in the Wowza Streaming Engine manager, configured with the following settings in the **Playback Security** tab:
+   - SecureToken: **Protect all protocols using hash (SecureToken version 2)**
+   - Shared Secret: **53a0a16b7cde230b**
+   - Hash Algorithm: **SHA-256**
+   - Include client IP address in hash generation: **Ticked (yes)**
+   - Hash Query Parameter Prefix: **wowzatoken**
+   - Client Restrictions: **No client restrictions**
 
-### Prerequisites
+   The application was saved and restarted.
 
-There are three prerequisites in order to continue with this guide:
-
-1. You have a THEOplayer license. If you are not using THEOplayer yet, you can start your free trial [here](https://portal.theoplayer.com/).
-
-2. You are a Wowza Streaming Engine client and are integrated with their streaming infrastructure. Information on Wowza Streaming Engine can be found [here](https://www.wowza.com/docs/wowza-streaming-engine-product-articles/) and information on how to protect your streams, using SecureToken, can be found [here](https://www.wowza.com/docs/how-to-protect-streaming-using-securetoken-in-wowza-streaming-engine).
-
-3. For the purposes of this example, we created a VOD application (this example would also work for live applications), in the Wowza Streaming Engine manager. We then configured our Wowza stream using the below settings in the Playback Security tab:
-
-   i) SecureToken: **Protect all protocols using hash (SecureToken version 2)**
-
-   ii) Shared Secret: **53a0a16b7cde230b**
-
-   iii) Hash Algorithm: **SHA-256**
-
-   iv) Include client IP address in hash generation: **Ticked (yes)**
-
-   v) Hash Query Parameter Prefix: **wowzatoken**
-
-   vi) Client Restrictions: **No client restrictions**
-
-The application was saved and restarted.
-
-### Integrating THEOplayer with Wowza Streaming Engine
-
-##### Web SDK
-
-[Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
-
-#### Server-side hash generation code
+## Server-side hash generation code
 
 The below code makes reference to the above configuration settings specified in the Wowza Streaming Engine manager.
 
@@ -153,7 +144,7 @@ app.listen(port);
 
 Save this JavaScript file as wowzasecuretoken.js and then run it with `node wowzasecuretoken.js`
 
-#### Client-side hash generation code
+## Client-side hash generation code
 
 ```html
 <!doctype html>
@@ -223,16 +214,8 @@ Save this JavaScript file as wowzasecuretoken.js and then run it with `node wowz
 
 Save this HTML file as `index.html` and then view it in your browser window.
 
-## Conclusion
-
-THEOplayer partnered with Wowza Streaming Engine to fully integrate their SecureToken version 2 module.
-
-In summary, to integrate Wowza Streaming Engine SecureToken version 2 module, in THEOplayer, you have to implement a client/server side solution using custom code.
-
 ## Resources
 
-- [Getting Started on Web](../../getting-started/01-sdks/01-web/00-getting-started.mdx)
-
+- [Getting started on Web](../../../../getting-started/01-sdks/01-web/00-getting-started.mdx)
 - [Getting Started with Wowza Streaming Engine](https://www.wowza.com/docs/wowza-streaming-engine-product-articles/)
-
 - [Protect your streams using SecureToken in Wowza Streaming Engine](https://www.wowza.com/docs/how-to-protect-streaming-using-securetoken-in-wowza-streaming-engine)
