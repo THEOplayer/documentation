@@ -119,7 +119,9 @@ This is supported for **RTMP and SRT H.264 ingest only** — it does not apply t
 
 The platform only inserts a UTC timestamp on frames that do **not** already carry a sender time. An existing `onFi`/AMF timestamp is never overwritten.
 
-When more than one of these is set, the URL parameter takes precedence over the publishing-token setting, which in turn overrides the account-level default.
+When more than one method is used to configure the `enableUTCInsertion` flag, the URL parameter takes precedence over the publishing-token setting, which in turn overrides the account-level default.
+
+It is generally recommended to configure the flag at the **publishing-token** or **account** level rather than via the URL parameter. This keeps the setting controllable and visible through the dashboard. The URL parameter is best reserved for quick testing, not for permanent ingest configurations.
 
 :::warning
 Enable this only on streams that do not already carry `onFi`/AMF metadata. If an encoder supplies a sender time on only some frames, the delivered timecode will alternate between the encoder clock and the server clock.
