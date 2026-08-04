@@ -109,6 +109,31 @@ millicastView.on('metadata', (metadata) => {
 });
 ```
 
+### Server-Inserted UTC Timecode
+
+Some contribution encoders do not embed a timecode (they send neither `pic_timing` SEI nor `onFi`/AMF metadata). For these streams you can have the platform stamp each H.264 frame with the server's **UTC receive time** by enabling the [`enableUTCInsertion`](/millicast/broadcast/publishing-parameters.md) parameter (available as a URL parameter, a publishing-token setting, and an account-level default).
+
+When enabled, the server inserts an unregistered SEI message carrying the receive time as **Unix epoch milliseconds**. It reuses the same UUID as `onFi` (`9a21f3be-31f0-4b78-b0be-c7f7dbb97250`), so players receive and parse it exactly like an `onFi` timecode — the `metadata` callback delivers the same `uuid` and `timecode` fields shown in the [onFi example above](#timecode-metadata). No player-side changes are required.
+
+The platform only inserts a UTC timestamp on frames that do **not** already carry a sender time. An existing `onFi`/AMF timestamp is never overwritten.
+
+:::warning
+Enable this only on streams that do not already carry `onFi`/AMF metadata. If an encoder supplies a sender time on only some frames, the delivered timecode will alternate between the encoder clock and the server clock.
+:::
+
+#### Behavior across processing modes
+
+`enableUTCInsertion` is supported for all three ways an H.264 stream can be processed. In every case the timestamp is a fresh, per-frame value (the server receive time of that frame), not a single value frozen at the keyframe.
+
+1. **Passthrough (no transcoding):** the SEI is inserted into the passthrough output. It honors [`seiKeyFrameOnly`](/millicast/broadcast/publishing-parameters.md) — by default (`false`) it is inserted on every frame; when `seiKeyFrameOnly` is set it is inserted on keyframes only.
+1. **Transcoding enabled:** each transcoded output layer carries the SEI, inserted on **every frame** (this is independent of `seiKeyFrameOnly`). Note that although source SEI is otherwise [not preserved through the transcoder](#sei-preservation), this UTC timecode is inserted by the platform into each transcoded layer, so it is present on transcoded output.
+1. **Transcoding enabled with a passthrough layer:** a mix of the two above — the passthrough layer follows the `seiKeyFrameOnly` rule from case 1, while the transcoded layers carry the SEI on every frame as in case 2. All layers share the same source receive time.
+
+| Processing mode   | Default (`seiKeyFrameOnly=false`) | `seiKeyFrameOnly=true`               |
+| :---------------- | :-------------------------------- | :----------------------------------- |
+| Passthrough layer | Every frame                       | Keyframes only                       |
+| Transcoded layer  | Every frame                       | Every frame (setting does not apply) |
+
 ## Web SDK
 
 When using the [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
