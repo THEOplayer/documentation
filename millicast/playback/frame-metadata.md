@@ -136,6 +136,65 @@ Enable this only on streams that do not already carry `onFi`/AMF metadata. If an
 | Passthrough layer | Every frame                       | Keyframes only                       |
 | Transcoded layer  | Every frame                       | Every frame (setting does not apply) |
 
+#### Enabling UTC insertion
+
+There are three ways to turn on `enableUTCInsertion`. When more than one applies, the URL parameter takes precedence over the publishing-token setting, which in turn overrides the account-level default:
+
+1. **Per broadcast (URL parameter)** — append it to the publish URL as described in [Publishing Parameters](/millicast/broadcast/publishing-parameters.md). Applies to a single ingest connection.
+1. **Per publishing token (Token API)** — set it when you [create](/millicast/streaming-dashboard/token-api.mdx#creating-publishing-tokens) or [update](/millicast/api/publish-token-v-1-update-token.api.mdx) a publish token. Applies to every stream published with that token.
+1. **Account-wide default (dashboard)** — a single toggle under **Settings → Broadcast** that sets the default for every token on the account.
+
+##### Set it on a publishing token with the Token API
+
+On a publish token `enableUTCInsertion` is a **tri-state** boolean, so an individual token can override the account-level default:
+
+| Value   | Behavior                                                                           |
+| :------ | :--------------------------------------------------------------------------------- |
+| `true`  | Always insert the UTC timestamp for streams published with this token.             |
+| `false` | Never insert it — even when the account-level default is on.                       |
+| `null`  | Inherit the account-level default. This is the behavior when the field is omitted. |
+
+See the [Token API](/millicast/streaming-dashboard/token-api.mdx) guide for how to acquire an API Secret. Create a publish token with UTC insertion enabled:
+
+```curl title="Create a token with enableUTCInsertion"
+curl --request POST \
+     --url https://api.millicast.com/api/publish_token \
+     --header 'accept: application/json' \
+     --header 'authorization: Bearer YOUR_API_SECRET' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "streams": [
+    {
+      "streamName": "MainCam",
+      "isRegex": false
+    }
+  ],
+  "label": "UtcToken",
+  "enableUTCInsertion": true
+}
+'
+```
+
+Update an existing token — set an explicit `true`/`false`, or send `null` to fall back to the account default:
+
+```curl title="Update a token"
+curl --request PUT \
+     --url https://api.millicast.com/api/publish_token/YOUR_TOKEN_ID \
+     --header 'accept: application/json' \
+     --header 'authorization: Bearer YOUR_API_SECRET' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "enableUTCInsertion": null
+}
+'
+```
+
+##### Set the account-wide default in the dashboard
+
+To change the default for every publish token on the account, open the OptiView Real-time Streaming dashboard, go to **Settings → Broadcast**, and toggle **Insert UTC timestamp**. When it is on, every publish token on the account inserts the UTC timestamp by default; an individual token can still override this with an explicit `true` or `false` (see the table above).
+
 ## Web SDK
 
 When using the [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) to set and get frame metadata, you must include the `metadata` option to the `connect()` method on both [Publish](https://millicast.github.io/millicast-sdk/Publish.html#connect) and [View](https://millicast.github.io/millicast-sdk/View.html#connect) connections..
