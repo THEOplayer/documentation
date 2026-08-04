@@ -115,6 +115,8 @@ Some contribution encoders do not embed a timecode (they send neither `pic_timin
 
 When enabled, the server inserts an unregistered SEI message carrying the receive time as **Unix epoch milliseconds**. It reuses the same UUID as `onFi` (`9a21f3be-31f0-4b78-b0be-c7f7dbb97250`), so players receive and parse it exactly like an `onFi` timecode — the `metadata` callback delivers the same `uuid` and `timecode` fields shown in the [onFi example above](#timecode-metadata). No player-side changes are required.
 
+This is supported for **RTMP and SRT H.264 ingest only** — it does not apply to WebRTC (WHIP) ingest passthrough, and it does not apply to H.265.
+
 The platform only inserts a UTC timestamp on frames that do **not** already carry a sender time. An existing `onFi`/AMF timestamp is never overwritten.
 
 When more than one of these is set, the URL parameter takes precedence over the publishing-token setting, which in turn overrides the account-level default.
