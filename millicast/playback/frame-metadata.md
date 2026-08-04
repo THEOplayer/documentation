@@ -150,6 +150,8 @@ There are three ways to turn on `enableUTCInsertion`. When more than one applies
 
 ##### Set it on a publishing token with the Token API
 
+If you create and manage tokens manually, you can also set this per-token value directly in the dashboard — open the token's details and use the **Insert UTC timestamp** control (Default / On / Off), which maps to the same tri-state described below.
+
 On a publish token `enableUTCInsertion` is a **tri-state** boolean, so an individual token can override the account-level default:
 
 | Value   | Behavior                                                                           |
