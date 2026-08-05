@@ -150,8 +150,8 @@
 
 #### 👎 Deprecations
 
-- Deprecated the Conviva pre-integration in favor of the new [Conviva web connector](/theoplayer/connectors/web/conviva/).
-- Deprecated the Yospace pre-integration in favor of the new [Yospace web connector](/theoplayer/connectors/web/yospace/).
+- Deprecated the Conviva pre-integration in favor of the new [Conviva web connector](/theoplayer/v7/connectors/web/conviva/).
+- Deprecated the Yospace pre-integration in favor of the new [Yospace web connector](/theoplayer/v7/connectors/web/yospace/).
 
 ### Android
 
