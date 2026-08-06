@@ -9,6 +9,31 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.8.1 (2026/08/05)
+
+### Android
+
+#### ✨ Features
+
+- Added `DRMConfiguration.preferredKeySystems` to control the key system selection order.
+- Added `SourceAbrConfiguration.preferredVideoCodecs` and `SourceAbrConfiguration.preferredAudioCodecs` to prefer specific codecs (e.g. Dolby Vision) during track selection.
+
+#### ⚡ Improvements
+
+- Content protection errors now name the selected key system, and a clear error is reported when none of the configured key systems are supported by the device instead of failing with an unrelated Widevine error.
+- The player now prefers Dolby Vision and HEVC variants over other codecs by default on streams with a mixed-codec ladder, when the platform supports them. Set `SourceAbrConfiguration.preferredVideoCodecs` to an empty list to disable this preference.
+- Playback errors during THEOlive playback now report their own error code instead of `THEO_LIVE_UNKNOWN_ERROR`, so content protection failures can be told apart from stalls and manifest errors.
+- Added the `CONTENT_PROTECTION_PROVISIONING_ERROR` and `CONTENT_PROTECTION_DEVICE_REVOKED` error codes. A Widevine provisioning failure and a revoked device are now reported with their own code instead of the generic `CONTENT_PROTECTION_ERROR`.
+- Added the `MEDIA_INTERNAL_ERROR` error code. An unexpected internal failure is now reported with its own code instead of `MEDIA_DECODE_ERROR`.
+
+#### 🐛 Issues
+
+- Fixed an issue where playback of a DRM-protected stream with a mixed-codec ladder (e.g. HEVC and AVC) could fail on devices that lack a secure decoder for one of the codecs. The player now excludes formats that require an unavailable secure decoder from track selection, so playback continues on a supported codec.
+- Fixed an issue where the first playback of a DRM-protected stream could fail on a device that had not played DRM-protected content before, and would keep failing when retried.
+- Fixed an issue where a playback error could be reported with an unrelated error code, hiding what actually went wrong.
+- Fixed an issue where variant streams that the device cannot decode could be selected for playback, for example when `VideoTrack.targetQualities` includes a quality with an unsupported codec. This also applies to qualities that exceed the advertised decoder capabilities, which are now only used when no other quality is supported.
+- Fixed an issue where playback failed with a fatal `Decoder failed` error when a decoder could not handle the selected variant stream despite claiming support for it. The player now excludes the failing codec from track selection, so playback continues on another codec when the stream provides one.
+
 ## 🚀 11.8.0 (2026/07/31)
 
 ### Web
