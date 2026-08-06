@@ -1,0 +1,73 @@
+---
+sidebar_label: API reference
+sidebar_custom_props: { icon: '*️⃣' }
+---
+
+# MediaKind Connector API
+
+The attributes, methods and events for the THEOMediaKindConnector.
+
+## Attributes
+
+| Name | Type   | Default | Access Permission | Description         |
+| ---- | ------ | ------- | ----------------- | ------------------- |
+| id   | string |         | read,write        | The id of the node. |
+
+## Methods
+
+| Method     | Params                                      | Description                                                  |
+| ---------- | ------------------------------------------- | ------------------------------------------------------------ |
+| configure  | player: THEOplayer, config: MediaKindConfig | Add a player for playback and a configuration for MediaKind. |
+| setSession | session: MediaKindSession                   | Sets the configuration for a MediaKind session.              |
+| destroy    | none                                        | Destroy the connector.                                       |
+
+### MediaKindConfig
+
+The configuration for the MediaKind connector is the THEOMediaKindConfig interface.
+
+| Name               | Type    | Default | Description                                                                                                |
+| ------------------ | ------- | ------- | ---------------------------------------------------------------------------------------------------------- |
+| requestBaseUrl     | string  |         | Base URL for Azuki API requests. For example, `https://ottapp-appgw-amp.prodb.nfl.tv3cloud.com/v1/client`. |
+| AuthorizationToken | string  |         | Authorization token used for STS requests.                                                                 |
+| AzukiIMC           | string  |         | Azuki IMC version.                                                                                         |
+| DeviceProfile      | string  |         | Base64-encoded information about the client device.                                                        |
+| key_id             | string  |         | DRM key identifier.                                                                                        |
+| debug              | boolean | false   | Log debug info.                                                                                            |
+
+### MediaKindSession
+
+The configuration for a MediaKind session. This is meant to be the means to pass the response of the MediaKind roll call to the THEOMediaKindConnector.
+
+#### Required fields
+
+| Name             | Type   | Description                                                                                  |
+| ---------------- | ------ | -------------------------------------------------------------------------------------------- |
+| mediaId          | string | Media identifier.                                                                            |
+| ApplicationToken | string | Service-specific token. Required for Live, Catchup, and Recording playback, but not for VOD. |
+| sessionId        | string | A unique session identifier.                                                                 |
+| ownerUid         | string | Unique identifier of the owner of the asset being played.                                    |
+
+#### Optional fields
+
+| Name           | Type    | Default | Description                                                                                                     |
+| -------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| manifest_uri   | string  |         | URI of the manifest.                                                                                            |
+| cdns           | CDN[]   |         | CDN endpoints available for this session.                                                                       |
+| drm_type       | string  |         | DRM method used for playback. Valid values are `widevine` or `playready`.                                       |
+| platform       | string  |         | A descriptive platform string.                                                                                  |
+| personal_info  | string  |         | Base64-encoded JSON containing geographic and personal details.                                                 |
+| beaconInterval | integer | 30      | The interval at which beacon requests should be executed, in seconds.                                           |
+| live           | boolean | false   | Whether the content is live. This property is used in the payload for beacons requests.                         |
+| inHome         | boolean | false   | Whether the client is streaming from a home network. This property is used in the payload for beacons requests. |
+
+### CDN
+
+A CDN endpoint for playback of a session.
+
+| Name           | Type    | Default | Description                                       |
+| -------------- | ------- | ------- | ------------------------------------------------- |
+| name           | string  |         | Name of the CDN.                                  |
+| retrieval_type | string  |         | Retrieval type of the CDN. For example, `static`. |
+| base_uri       | string  |         | Base URI for the CDN.                             |
+| priority       | integer |         | Priority of the CDN.                              |
+| threshold      | integer |         | Threshold of the CDN.                             |
