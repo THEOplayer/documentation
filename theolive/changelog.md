@@ -1,5 +1,9 @@
 # Changelog
 
+## [11.8.1] - 2026-08-06
+
+- Fixed RTMP ingest failing with "stream not found" against servers that only offer the stream as live
+
 ## [11.8.0] - 2026-07-29
 
 - Added Dolby Atmos encoding
