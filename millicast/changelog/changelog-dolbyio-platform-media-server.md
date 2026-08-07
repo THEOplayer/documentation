@@ -2,6 +2,22 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-08-06
+
+### Media Server
+
+<!-- 3.5.0 -->
+
+#### Features
+
+- Added UTC timestamp insertion for H.264 broadcasts. When enabled, the platform stamps each video frame with the server's UTC receive time as frame metadata (an unregistered SEI message, in Unix-epoch milliseconds), so players and downstream tools can measure end-to-end latency, align multiple feeds, or correlate media with external events. It is available for RTMP, RTMPS, and SRT contribution, applies to both passthrough and transcoded layers, and does not re-encode passthrough video. Enable it on a publish token, or for an individual broadcast with the `enableUTCInsertion` publishing parameter. Frames that already carry an `onFi`/AMF sender timestamp are never overwritten, so this is intended for sources that do not already send timecodes.
+
+#### Fixes
+
+- Fixed an issue where a broadcast that stopped immediately after it started could continue to be reported as active, so the stream appeared to still be publishing after it had ended.
+- Applied operating system and dependency security updates to the media server images.
+- General stability and reliability improvements.
+
 ## 2026-07-16
 
 ### Media Server
