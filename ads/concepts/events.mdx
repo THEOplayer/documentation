@@ -57,7 +57,7 @@ To list only the breaks that belong to an event, use the event's breaks endpoint
 
 ## Cue / punch workflow during an event
 
-For a live occurrence you usually do not know the exact break times in advance, but you want the ad decision ready so the break can fire instantly. Events are where this "prepare ahead, fire live" workflow lives. The full break state machine and the Google DAI (vendor pod) prerequisites are documented in the Breaks and Vendors / Google sections; the flow below focuses on running an event.
+For a live occurrence you usually do not know the exact break times in advance, but you want the ad decision ready so the break can fire instantly. Events are where this "prepare ahead, fire live" workflow lives. The full break state machine and the Google DAI (vendor pod) prerequisites are documented in the Breaks and Integrations / Google sections; the flow below focuses on running an event.
 
 ### Ahead of the event: prepare cued breaks
 
@@ -260,9 +260,9 @@ curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks/halftim
 
 ## Related resources
 
-| Resource         | Relationship                                                                                    |
-| ---------------- | ----------------------------------------------------------------------------------------------- |
-| Channels         | The parent of an event. An event always belongs to one channel. See [Channels](./channels.mdx). |
-| Breaks           | Attached to an event via `eventId`; the Breaks section documents the full status state machine. |
-| Templates        | Linked to events via `eventIds` for quick scheduling.                                           |
-| Vendors / Google | Provide the pod pre-decisioning that moves a cued vendor pod break from `PREPARING` to `CUED`.  |
+| Resource              | Relationship                                                                                    |
+| --------------------- | ----------------------------------------------------------------------------------------------- |
+| Channels              | The parent of an event. An event always belongs to one channel. See [Channels](./channels.mdx). |
+| Breaks                | Attached to an event via `eventId`; the Breaks section documents the full status state machine. |
+| Templates             | Linked to events via `eventIds` for quick scheduling.                                           |
+| Integrations / Google | Provide the pod pre-decisioning that moves a cued vendor pod break from `PREPARING` to `CUED`.  |

@@ -57,6 +57,15 @@ The response carries a `Cache-Control` header so that players and CDNs poll at a
 
 The `max-age` on a successful response always uses the **active** polling interval, so that a cached copy is never held longer than the shortest polling cadence the channel advertises. Use the `polling` values inside the manifest body (see below) to decide how often to poll; use `Cache-Control` for CDN and HTTP cache behavior.
 
+## Polling intervals
+
+The Break Manifest response tells players how often to poll for updates. Two channel settings control this cadence:
+
+- **`pollingIdleSeconds`** — the polling interval advertised when no break is active. A slower cadence keeps request load low while nothing is happening. Default: `10` seconds.
+- **`pollingActiveSeconds`** — the polling interval advertised while a break is active. A faster cadence lets players catch break transitions quickly. Default: `1` second.
+
+These values are advertised to players through the `polling` object in the manifest envelope (see below).
+
 ## Manifest envelope
 
 The response body is the Break Manifest envelope. The following descriptions are written from the service `breakManifestSchema`.
@@ -222,6 +231,6 @@ When `breaks` is empty, the envelope is still returned with the channel `timebas
 
 ## Related resources
 
-- [Channels](/ads/concepts/channels) — the timebase, polling policy (`pollingIdleSeconds`, `pollingActiveSeconds`), and delivery window (`dvrWindowMs`, `liveOffsetMs`) that shape the Break Manifest.
+- [Channels](/ads/concepts/channels) — the timebase and delivery window (`dvrWindowMs`, `liveOffsetMs`) that shape the Break Manifest.
 - [Scheduling breaks](/ads/how-to-guides/scheduling-breaks) — how breaks are created and signaled for a channel.
 - [Getting started](/ads/getting-started/) — integrating the OptiView Player that polls the Break Manifest.

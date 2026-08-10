@@ -22,7 +22,9 @@ The organization-level values override the service defaults. `networkCode` and `
 
 ## SGAI pod serving
 
-SGAI is server-guided pod serving keyed by the channel's `customAssetKey`. A `customAssetKey` is unique within an organization when set. See [Channels](../../concepts/channels) for channel configuration.
+SGAI is server-guided pod serving keyed by the channel's `customAssetKey`: Google decisions the ad pods for the stream, and OptiView Ads announces the resulting breaks to players.
+
+On the [channel](../../concepts/channels) you configure the `customAssetKey`: the Google DAI custom asset key that identifies this live stream in Google Ad Manager. It must be unique within your organization. Set it when the channel uses Google DAI pod serving; leave it unset otherwise.
 
 A GAM pod break uses a vendor asset with `vendorParameters.type` set to `"pod"`:
 
