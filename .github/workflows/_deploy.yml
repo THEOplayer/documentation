@@ -37,6 +37,7 @@ jobs:
       url: ${{ inputs.environment_url }}
     permissions:
       id-token: write
+      pull-requests: write
     steps:
       - name: Create app token
         uses: actions/create-github-app-token@v3
@@ -77,21 +78,19 @@ jobs:
           CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
           PATH_TO_INVALIDATE: ${{ inputs.cf_invalidate_path }}
 
+      - name: Get deployment timestamp 🕰️
+        id: timestamp
+        if: ${{ inputs.environment_name == 'preview' }}
+        run: echo "time=$(date -u '+%Y-%m-%d %H:%M %Z')" >> "$GITHUB_OUTPUT"
+
       - name: Add comment to Pull Request with link to preview 🕸️
-        uses: actions/github-script@v9
+        uses: marocchino/sticky-pull-request-comment@v2
         if: ${{ inputs.environment_name == 'preview' }}
         with:
-          github-token: ${{ steps.app-token.outputs.token }}
-          script: |
-            const body = `| Preview |
-            |---|
-            | :rocket: View preview at: ${{ inputs.environment_url }} |
-            | <h6>Deployed on ${new Date(Date.now()).toGMTString()}</h6> |
-            <!-- Sticky Pull Request comment-pr-preview -->`;
-
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: body
-            })
+          header: pr-preview
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          message: |
+            Documentation preview
+            :---:
+            | :rocket: View preview at <br> ${{ inputs.environment_url }} <br><br>
+            | <h6>Deployed from commit ${{ github.event.pull_request.head.sha }} at ${{ steps.timestamp.outputs.time }}. <br> Preview will be ready once the [deployment](${{ github.server_url }}/${{ github.repository }}/deployments/${{ inputs.environment_name }}) is complete. <br><br> </h6>
