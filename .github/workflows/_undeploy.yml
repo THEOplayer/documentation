@@ -25,7 +25,15 @@ jobs:
       deployment: false
     permissions:
       id-token: write
+      pull-requests: write
     steps:
+      - name: Create app token
+        uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
+
       - name: Configure AWS credentials ☁️
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -50,3 +58,28 @@ jobs:
         env:
           CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
           PATH_TO_INVALIDATE: ${{ inputs.cf_invalidate_path }}
+
+      - name: Get undeployment timestamp 🕰️
+        id: timestamp
+        if: ${{ inputs.environment_name == 'preview' }}
+        run: echo "time=$(date -u '+%Y-%m-%d %H:%M %Z')" >> "$GITHUB_OUTPUT"
+
+      - name: Update comment on Pull Request 🕸️
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: ${{ inputs.environment_name == 'preview' }}
+        with:
+          header: pr-preview
+          only_update: true
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          message: |
+            Documentation preview
+            :---:
+            | <h6>Preview removed at ${{ steps.timestamp.outputs.time }} because the pull request was closed.</h6>
+
+      - name: Hide comment on Pull Request 🙈
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: ${{ inputs.environment_name == 'preview' }}
+        with:
+          header: pr-preview
+          hide: true
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
