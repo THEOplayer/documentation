@@ -38,6 +38,13 @@ jobs:
     permissions:
       id-token: write
     steps:
+      - name: Create app token
+        uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
+
       - name: Download build artifact 🗃️
         uses: actions/download-artifact@v8
         with:
@@ -69,3 +76,22 @@ jobs:
         env:
           CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
           PATH_TO_INVALIDATE: ${{ inputs.cf_invalidate_path }}
+
+      - name: Add comment to Pull Request with link to preview 🕸️
+        uses: actions/github-script@v9
+        if: ${{ inputs.environment_name == 'preview' }}
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const body = `| Preview |
+            |---|
+            | :rocket: View preview at: ${{ inputs.environment_url }} |
+            | <h6>Deployed on ${new Date(Date.now()).toGMTString()}</h6> |
+            <!-- Sticky Pull Request comment-pr-preview -->`;
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            })
