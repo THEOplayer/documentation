@@ -93,4 +93,4 @@ jobs:
             Documentation preview
             :---:
             | :rocket: View preview at <br> ${{ inputs.environment_url }} <br><br>
-            | <h6>Deployed from commit ${{ github.event.pull_request.head.sha }} at ${{ steps.timestamp.outputs.time }}. <br> Preview will be ready once the [deployment](${{ github.server_url }}/${{ github.repository }}/deployments/${{ inputs.environment_name }}) is complete. <br><br> </h6>
+            | <h6>Deployed from commit ${{ github.event.pull_request.head.sha }} at ${{ steps.timestamp.outputs.time }}.</h6>
