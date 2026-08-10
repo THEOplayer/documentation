@@ -48,6 +48,7 @@ jobs:
     name: undeploy
     if: ${{ github.event.action == 'closed' && github.triggering_actor != 'dependabot[bot]' }}
     uses: ./.github/workflows/_undeploy.yml
+    secrets: inherit
     with:
       environment_name: preview
       s3_prefix: 'pr-${{ github.event.number }}'
