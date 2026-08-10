@@ -235,6 +235,14 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 - Fixed an issue where during fallback on an OptiView Live stream the wrong endpoint was selected.
 
+## 🚀 11.5.2 (2026/08/10)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where legacy `CachingTask`s encoded without `bytes` and `bytesCached` properties would fail to restore.
+
 ## 🚀 11.5.1 (2026/07/03)
 
 ### iOS
