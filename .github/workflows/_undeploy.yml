@@ -30,6 +30,7 @@ jobs:
       - name: Create app token
         uses: actions/create-github-app-token@v3
         id: app-token
+        if: ${{ inputs.environment_name == 'preview' }}
         with:
           client-id: ${{ vars.THEOPLAYER_BOT_APP_ID }}
           private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
