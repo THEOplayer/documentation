@@ -85,7 +85,7 @@ jobs:
         run: echo "time=$(date -u '+%Y-%m-%d %H:%M %Z')" >> "$GITHUB_OUTPUT"
 
       - name: Add comment to Pull Request with link to preview 🕸️
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         if: ${{ inputs.environment_name == 'preview' }}
         with:
           header: pr-preview
