@@ -9,6 +9,81 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.9.0 (2026/08/12)
+
+### Web
+
+#### ✨ Features
+
+- Added support to the OptiView Ads break manifest for `double`, `lshape_ad`, `lshape_content` and `overlay` formats as well as device type support.
+- Added the `adclicked` event, for the `csai`and `google-ima` CSAI ads  integrations, for Google DAI ads (SSAI) and OptiView Ads (SGAI). It  is dispatched when the user clicks on an ad clickthrough element.
+- Added `network.useStreamingFetch` to the `PlayerConfiguration` API to explicitly disable consuming fetch responses as streams on devices with a broken streaming fetch implementation.
+- Added CMCD reporting of whether the platform can decode Dolby Vision and Dolby Digital Plus (EC-3), and of the video and audio codecs which are actually being decoded.
+
+#### ⚡ Improvements
+
+- Ads preloading for Google IMA now works consistently for both VMAP ad schedules and individually scheduled VAST ads. When preloading is enabled (using `AdsConfiguration.preload`), VAST midrolls are fetched 8 seconds before their scheduled start time.
+
+#### 🐛 Issues
+
+- Fixed an issue where completed SGAI interstitials could be re-added and emit repeated interstitial events on live streams.
+- Fixed an issue where PlayReady HLS key formats specified as a `urn:uuid:` were not recognized.
+- Fixed an issue where playback would fail for Google DAI sources because CMCD headers on manifest requests would trigger CORS errors. CMCD now operates in event mode only for Google DAI sources.
+- Fixed an issue where an ad scheduled after a non-linear Google IMA ad would never start, because Google IMA does not fire any events after LOADED when a non-linear ad is the last ad of its ads manager.
+- Fixed an issue where the player could get stuck when starting playback of a new source with a Google IMA pre-roll ad, if the previous source also had a Google IMA pre-roll ad.
+- Fixed an issue where a Google IMA pre-roll ad of a new source could start loading and playing immediately after changing the source, even when autoplay was disabled and the player was paused.
+
+### Android
+
+#### ✨ Features
+
+- Added support to the OptiView Ads break manifest for `double`, `lshape_ad`, `lshape_content` and `overlay` formats as well as device type support.
+- Added CMCD reporting of whether the device can decode Dolby Vision and Dolby Digital Plus (EC-3), and of the codecs of the video and audio formats fed to the decoders.
+- Added `TheoLive.switchToHesp()`, which allows switching an OptiView Live stream back to HESP playback after it has fallen back to another format.
+- Added `Player.getCurrentSource()`, which returns the `TypedSource` that is  currently being played. The source is the same as expected in  the existing `CurrentSourceChangeEvent`.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `overrideLayout` property would incorrectly override the `lshape_content` layout of an OptiView Ads ad break.
+- Fixed an issue where OptiView Ads PTS breaks might not play.
+- Fixed an issue where the first playback of a DRM-protected stream could fail on a device that had not played DRM-protected content before, and would keep failing when retried.
+
+### iOS
+
+#### ✨ Features
+
+- Added support to the OptiView Ads break manifest for `double`, `lshape_ad`, `lshape_content` and `overlay` formats as well as device type support.
+- Added `currentBandwidthEstimate` to the player's `metrics` API, reporting the estimated available bandwidth in bits per second for HESP streams.
+- Added Dolby Vision and EC-3 capability reporting (`com.dolby.optiview-cap-dvc`, `com.dolby.optiview-cap-ec3`) to the CMCD session data, and active video and audio codec reporting (`com.dolby.optiview-vc`, `com.dolby.optiview-ac`) to the CMCD status data.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would exit fullscreen presentation mode when setting a new source.
+- Fixed an issue where OptiView Ads PTS breaks might not be played.
+- Fixed an issue that caused OptiView Ads to end abruptly.
+- Fixed an issue where skipping OptiView Ads would cause playback failure.
+- Fixed an issue where seeking into a range of an interstitial would cause playback failure.
+- Fixed an issue where legacy `CachingTask`s encoded without `bytes` and `bytesCached` properties would fail to restore.
+
+### tvOS
+
+#### ✨ Features
+
+- Added display criteria matching: when enabled through the new `THEOplayer.manageContentMatching` property (disabled by default), and while in fullscreen presentation mode, the player matches the display mode (frame rate and dynamic range) of the TV with the content before playback starts.
+- The player will now set its preferred video format when a new source is loading. This allows tvOS to change the format on the fly when a user enables content matching in "Settings" > "Video and Audio" > "Match Content".
+- Added Dolby Vision and EC-3 capability reporting (`com.dolby.optiview-cap-dvc`, `com.dolby.optiview-cap-ec3`) to the CMCD session data, and active video and audio codec reporting (`com.dolby.optiview-vc`, `com.dolby.optiview-ac`) to the CMCD status data.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would exit fullscreen presentation mode when setting a new source.
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where the CMCD-States payload could grow unbounded during repeated playback errors. The payload now contains at most the 20 newest states, and CMCD values are serialized strictly according to the CMCD specification (CTA-5004), matching the other platforms.
+- Fixed issue where streams would fail to start playback on less powerful devices.
+
 ## 🚀 11.8.1 (2026/08/05)
 
 ### Android
@@ -235,6 +310,14 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 - Fixed an issue where during fallback on an OptiView Live stream the wrong endpoint was selected.
 
+## 🚀 11.5.3 (2026/08/13)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where `bytesCached` and `bytes` properties would return 0 for cached sources pre 10.12.0.
+
 ## 🚀 11.5.2 (2026/08/10)
 
 ### iOS
@@ -417,7 +500,7 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 
 #### ✨ Features
 
-- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
+- Added support for OptiView Live Streams with JWT token security on iOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session. For short-lived tokens, we recommend [using a service worker](https://optiview.dolby.com/docs/theoplayer/how-to-guides/web/theolive/token-based-security/#short-lived-tokens-using-service-worker).
 - Added support for DRM-protected OptiView Live Streams with JWT token security on macOS Safari. Note that this requires a long-lived token that remains valid for the entire playback session.
 
 #### 🐛 Issues
@@ -584,7 +667,7 @@ THEOplayer 11.0 includes **some breaking changes per SDK**. Please review them c
 - On Android, the Google IMA integration has been updated to support version 3.39.0 of the Google IMA SDK.
   This requires core library desugaring to be enabled in your app.
 
-For more info on navigating our breaking changes, take a look at our migration guides for [Web](/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
+For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/web/migrating-to-theoplayer-11/), [Android](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/android/migrating-to-theoplayer-11/), [iOS](https://optiview.dolby.com/docs/theoplayer/getting-started/sdks/ios/migrating-to-theoplayer-11/) and [React Native](https://optiview.dolby.com/docs/theoplayer/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-11/).
 
 ### Web
 
@@ -597,7 +680,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](https://optiview.dolby.com/docs/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.
