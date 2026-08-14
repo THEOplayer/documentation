@@ -2,6 +2,23 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-08-14
+
+### Media Server
+
+<!-- 3.5.1 -->
+
+#### Features
+
+- Added an optional compatibility mode for contribution from Adobe Media Server, which can stop sending media once approximately 4 GB of data has been ingested on a single RTMP connection. It is disabled by default and can be enabled per account on request, and does not change behavior for any other publisher. Please contact your Dolby OptiView account representative if you are affected.
+- Improved RTMP diagnostics for RTMP contribution, RTMP pull, and RTMP re-streams, so intermittent connection issues can be investigated faster.
+
+#### Fixes
+
+- Fixed a bug where RTMP contribution could intermittently disconnect 30 seconds after the broadcast started, even though media was still being received.
+- Fixed an issue where a viewer could connect to a live stream successfully but receive no media.
+- General stability and reliability improvements.
+
 ## 2026-07-16
 
 ### Media Server
