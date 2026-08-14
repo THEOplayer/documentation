@@ -5,264 +5,64 @@ sidebar_label: Templates
 
 # Templates
 
-A template is a reusable break preset for OptiView Ads. It stores a break payload once so you can schedule consistent breaks quickly, either manually from the dashboard and API or automatically through marker rules.
-
-Templates are scoped to an organization. API calls identify the organization with the `X-Org-ID` header and authenticate with an API key and secret using HTTP Basic authentication.
-
-## Dashboard path
-
-In the OptiView Unified Dashboard, templates are available in two places:
-
-| Path                                                   | Use it for                                            |
-| ------------------------------------------------------ | ----------------------------------------------------- |
-| `/{organizationId}/ads/templates`                      | Manage every template in the organization.            |
-| `/{organizationId}/ads/channels/{channelId}/templates` | Manage the templates surfaced for a specific channel. |
-
-Both lists expose **New**, **Edit**, and **Delete** actions, plus a **Schedule now** action that immediately schedules a break on the channel from the selected template.
+A template is a reusable break preset for OptiView Ads. It stores a break configuration once so you can schedule consistent breaks quickly, either manually from the dashboard and API or automatically through marker rules.
 
 ## Template identity
 
-Every template has a customer-facing `id`. The API stores it together with the organization ID, so the unique identity is:
-
-```text
-organizationId + templateId
-```
-
-Use stable template IDs that match your operational names, such as `midroll-30s` or `sponsor-lshape`. If you omit `id` on creation, the API generates one.
+Every template has an `id` that is unique within your organization. The `id` is optional when creating a template: if you omit it, OptiView Ads generates one for you. When you supply your own, we recommend using a UUID. For a human-readable label, use the `name` property instead — it is shown in the dashboard.
 
 ## What a template contains
 
-A template holds the same payload as a break's `data`, so anything you can express on a break you can preset on a template:
+A template holds the same configuration as a break: anything you can express on a break you can preset on a template. See [Break configuration](./breaks.mdx#break-configuration) for the full description of `variant`, `resumeOffset`, and `controls`.
 
-- `variant` — one variant, or a list of variants with device `targeting`, using the same variant formats (`single`, `double`, `lshape_ad`, `lshape_content`, `overlay`) and typed assets as a break.
-- `resumeOffset` and `controls` (skip offset, snapback) — optional playback behaviour.
-- `duration` — optional on a template (it is required on a break). When set, it is copied onto breaks scheduled from the template.
+A few properties differ from a break:
 
-The **Breaks** section is the canonical reference for variant formats, layouts, typed assets, and device targeting. This section cross-links there instead of repeating those details.
-
-Templates can also record associations that make them easier to organize and surface:
-
-| Field        | Relationship                                                                               |
-| ------------ | ------------------------------------------------------------------------------------------ |
-| `channelIds` | Channels the template is associated with (for example, in the per-channel dashboard list). |
-| `eventIds`   | **Events** the template is associated with.                                                |
+| Property     | Difference                                                                                                                        |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | A human-readable display name for the template, shown in the dashboard.                                                           |
+| `duration`   | Optional on a template (it is required on a break). When set, it is the default duration for breaks scheduled from the template.  |
+| `channelIds` | Channels the template is linked to, so it is surfaced when scheduling breaks on those channels.                                   |
+| `eventIds`   | [Events](./events.mdx) the template is linked to.                                                                                 |
+| `start`      | A template has no `start`: a template is not scheduled itself. The start is supplied when a break is scheduled from the template. |
 
 ## Snapshot semantics
 
 A template is a preset, not a live link. When a break is scheduled from a template:
 
-1. The template's payload is **copied onto the new break** at creation.
+1. The template's configuration is **copied onto the new break** at creation.
 2. The break records the source `templateId` as provenance.
-3. There is **no synchronization afterwards**. Editing or deleting the template later does not change breaks that were already created from it — they keep their copied payload.
-
-Templates are **hard-deleted**. Deleting a template removes it permanently; there is no soft-delete or archival state. Breaks previously created from the template are unaffected and still report their historical `templateId`, but that `templateId` no longer resolves to a template, and listing breaks by a deleted template returns a not-found error.
+3. There is **no synchronization afterwards**. Editing or deleting the template later does not change breaks that were already created from it — they keep their copied configuration.
 
 ## Scheduling a break from a template
 
-You can schedule a break from a template in three ways:
+Templates are used throughout the system to schedule breaks:
 
-- **Dashboard** — use the **Schedule now** action on a template in either template list to create a break on the channel immediately.
-- **API** — create a break on a channel and reference the template with `templateId` (see [Schedule a break from a template](#schedule-a-break-from-a-template) below).
-- **Marker rules** — each marker rule targets a template through its `templateId`. When automatic detection matches a marker, the worker schedules a break from that template. See the **Marker Detection** section for how rules are configured and evaluated.
+- **API** — create a break on a channel and reference the template with `templateId`. The template configuration is snapshotted onto the break at creation.
+- **Dashboard** — use the **Schedule now** action on a template to create a break on the channel immediately.
+- **Marker rules** — when an in-stream ad marker is matched against a [marker rule](./marker-detection.mdx), a break is scheduled from the template that the rule references.
 
-In every case the template payload is snapshotted onto the resulting break, as described in [Snapshot semantics](#snapshot-semantics).
-
-## Configuration reference
-
-| Field          | Type                 | Default   | Description                                                                         |
-| -------------- | -------------------- | --------- | ----------------------------------------------------------------------------------- |
-| `id`           | string               | generated | Customer-facing template ID, unique within the organization.                        |
-| `name`         | string               | none      | Human-readable label shown in the dashboard.                                        |
-| `channelIds`   | string[]             | none      | Channels the template is associated with.                                           |
-| `eventIds`     | string[]             | none      | Events the template is associated with.                                             |
-| `duration`     | integer              | none      | Optional break duration in seconds, copied onto breaks scheduled from the template. |
-| `variant`      | variant or variant[] | Required  | Break variant(s). See the **Breaks** section for formats, assets, and targeting.    |
-| `resumeOffset` | integer              | none      | Optional resume offset applied to breaks scheduled from the template.               |
-| `controls`     | object               | none      | Optional playback controls: `skipOffset` and `snapback`.                            |
-
-## Create a template
-
-Dashboard: **Ads → Templates → New**.
-
-API:
+An API example:
 
 ```bash
-curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/templates' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a56-b1d4-3f8a2c9d6e01/breaks' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
   -d '{
-    "id": "midroll-30s",
-    "name": "Mid-roll 30s",
-    "channelIds": ["sports-main"],
-    "duration": 30,
-    "variant": {
-      "format": "single",
-      "assets": [
-        {
-          "type": "vast",
-          "mediaType": "video",
-          "uri": "https://adserver.example.com/vast/midroll.xml"
-        }
-      ]
-    }
-  }'
-```
-
-Example response:
-
-```json
-{
-  "id": "midroll-30s",
-  "name": "Mid-roll 30s",
-  "channelIds": ["sports-main"],
-  "duration": 30,
-  "variant": {
-    "format": "single",
-    "assets": [
-      {
-        "type": "vast",
-        "mediaType": "video",
-        "uri": "https://adserver.example.com/vast/midroll.xml"
-      }
-    ]
-  },
-  "createdAt": "2026-07-16T12:00:00.000Z"
-}
-```
-
-## Get a template
-
-```bash
-curl 'https://us.ads.optiview.dolby.com/api/v1/templates/midroll-30s' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'X-Org-ID: org_123'
-```
-
-## Update a template
-
-```bash
-curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/templates/midroll-30s' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'Content-Type: application/json' \
-  -H 'X-Org-ID: org_123' \
-  -d '{
-    "name": "Mid-roll 30s (VAST)",
-    "duration": 30
-  }'
-```
-
-Updating a template does not change breaks already scheduled from it — see [Snapshot semantics](#snapshot-semantics).
-
-## List templates
-
-```bash
-curl 'https://us.ads.optiview.dolby.com/api/v1/templates?page=1&pageSize=20&sort=-createdAt' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'X-Org-ID: org_123'
-```
-
-List endpoints use the same pagination shape as the rest of the API. Templates can be sorted by `name`, `duration`, or `createdAt`.
-
-| Query parameter | Default      | Description                                                                |
-| --------------- | ------------ | -------------------------------------------------------------------------- |
-| `page`          | `1`          | Page number.                                                               |
-| `pageSize`      | `20`         | Items per page. Maximum `100`.                                             |
-| `filter`        | none         | Optional RSQL filter expression.                                           |
-| `sort`          | `-createdAt` | Comma-separated sort fields. Prefix a field with `-` for descending order. |
-
-Templates maintain denormalized fields derived from their payload so you can filter without inspecting the full `variant`. The `filter` expression accepts these selectors:
-
-| Filter selector | Matches on                              | Operators                                  |
-| --------------- | --------------------------------------- | ------------------------------------------ |
-| `name`          | Template name                           | `==`, `!=`, `=like=`, `=in=`               |
-| `duration`      | Template duration                       | `==`, `!=`, `=gt=`, `=ge=`, `=lt=`, `=le=` |
-| `format`        | Variant formats present on the template | `==`, `!=`, `=like=`, `=in=`               |
-| `assetType`     | Asset types present on the template     | `==`, `!=`, `=like=`, `=in=`               |
-| `vendor`        | Vendors present on the template         | `==`, `!=`, `=like=`, `=in=`               |
-
-Examples:
-
-```bash
-# Overlay templates only
-curl 'https://us.ads.optiview.dolby.com/api/v1/templates?filter=format==overlay' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'X-Org-ID: org_123'
-```
-
-```bash
-# Short VAST templates (30s or less), sorted by duration
-curl 'https://us.ads.optiview.dolby.com/api/v1/templates?filter=duration=le=30;assetType==vast&sort=duration' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'X-Org-ID: org_123'
-```
-
-```bash
-# Templates that use a vendor asset (for example, Google Ad Manager pods)
-curl 'https://us.ads.optiview.dolby.com/api/v1/templates?filter=vendor==gam' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'X-Org-ID: org_123'
-```
-
-Combine multiple conditions with `;`.
-
-## Delete a template
-
-```bash
-curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/templates/midroll-30s' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'X-Org-ID: org_123'
-```
-
-Delete multiple templates in one request:
-
-```bash
-curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/templates' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'Content-Type: application/json' \
-  -H 'X-Org-ID: org_123' \
-  -d '{ "ids": ["midroll-30s", "sponsor-lshape"] }'
-```
-
-Deletes are permanent (hard delete). Existing breaks scheduled from the template are not affected — see [Snapshot semantics](#snapshot-semantics).
-
-## Schedule a break from a template
-
-Create a break on a channel and reference the template with `templateId`. The template payload is snapshotted onto the break at creation.
-
-```bash
-curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/breaks' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'Content-Type: application/json' \
-  -H 'X-Org-ID: org_123' \
-  -d '{
-    "templateId": "midroll-30s",
+    "templateId": "3b8e5f0a-7c2d-4e91-a6b3-9d4f1c8e2a70",
     "start": "2026-07-16T13:00:00.000Z"
   }'
 ```
 
-`templateId` is the only required field. You can override the snapshotted payload per break with optional fields — `start`, `duration`, `variant`, `assetParameters`, `eventId`, and `id`. Start semantics depend on the channel timebase; see the **Channels** and **Breaks** sections for scheduling and lifecycle details.
+`templateId` is the only required field. You can override the snapshotted configuration per break with optional fields — `start`, `duration`, `variant`, `eventId`, and `id`. For templates that contain [vendor assets](./breaks.mdx#vendor-assets), you can additionally pass `assetParameters` (a string map) with the request; these are merged into the vendor assets of the snapshot, and on duplicate keys the values you provide win.
 
-The created break records the source `templateId` alongside its own copied payload:
+Start semantics depend on the channel timebase; see [Timebase-based scheduling](./breaks.mdx#timebase-based-scheduling).
 
-```json
-{
-  "id": "b_9f2c",
-  "channelId": "sports-main",
-  "templateId": "midroll-30s",
-  "status": "PREPARING",
-  "start": "2026-07-16T13:00:00.000Z",
-  "duration": 30,
-  "variant": {
-    "format": "single",
-    "assets": [
-      {
-        "type": "vast",
-        "mediaType": "video",
-        "uri": "https://adserver.example.com/vast/midroll.xml"
-      }
-    ]
-  },
-  "createdAt": "2026-07-16T12:30:00.000Z"
-}
-```
+## Related resources
+
+| Resource                                  | Relationship                                                                          |
+| ----------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)                | Breaks scheduled from a template are created on a channel.                            |
+| [Breaks](./breaks.mdx)                    | The result of scheduling a template: a break with the template's snapshotted content. |
+| [Events](./events.mdx)                    | An event on your channel for which you want to prepare breaks.                        |
+| [Break detection](./marker-detection.mdx) | Configure marker rules to turn ad markers in your stream into breaks.                 |
