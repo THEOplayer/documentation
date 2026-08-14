@@ -49,7 +49,9 @@ For example, this rule matches `DATERANGE` markers whose `CLASS` attribute is `c
 
 ## Detection history
 
-Detection history is the audit trail of what automatic detection decided for each marker. Every processed marker is recorded with one of three outcomes:
+Detection history is the audit trail of what automatic detection decided for each marker. Once an origin is enabled, every marker found in the stream is recorded — even when no marker rule exists yet. This lets you review the markers appearing in your stream and identify which ones you want to turn into breaks before configuring your rules.
+
+Every processed marker is recorded with one of three outcomes:
 
 | Action    | Meaning                                                                                                                                         |
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -64,7 +66,7 @@ Each record includes the raw manifest tag line, the origin that supplied the mar
 | Symptom                                                | Checks                                                                                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | No breaks are created.                                 | Is detection enabled on the channel? Is there at least one enabled HLS origin? Is the origin reachable and returning a parseable manifest? Is there an enabled marker rule whose `type` and `conditions` match the marker? Does the rule's template exist? |
-| History contains `SKIPPED` with `NO_RULES_CONFIGURED`. | Create and enable a marker rule for the channel.                                                                                                                                                                                                           |
+| History contains `SKIPPED` with `NO_RULES_CONFIGURED`. | An enabled origin is already being polled and markers are being detected, but the channel has no marker rules yet. Use these records to identify the markers you want to act on, then create and enable a matching marker rule.                            |
 | History contains `SKIPPED` with `NO_RULE_MATCHED`.     | Check the rule `type` and all `conditions` against the marker attributes. Attribute keys are matched case-insensitively, but values must match.                                                                                                            |
 | DASH or HESP origin is not producing breaks.           | DASH and HESP origins are accepted but skipped by automatic detection. Use an enabled HLS origin.                                                                                                                                                          |
 | History contains `SKIPPED` with a scheduling reason.   | The marker was recognized, but the break was not scheduled — for example because its start would lie in the past or it would overlap another break. See [Scheduling constraints](./breaks.mdx#scheduling-constraints).                                     |

@@ -11,11 +11,15 @@ An origin is a manifest URL that a channel monitors for ad markers. When [break 
 
 Every origin has an `id` that is unique within its channel. The `id` is optional when creating an origin: if you omit it, OptiView Ads generates one for you. When you supply your own, we recommend using a UUID. For a human-readable label, use the `name` property instead — it is shown in the dashboard.
 
+## Enabling and disabling origins
+
+An origin can be enabled or disabled at any time. Disabling an origin removes it from detection immediately; the origin itself is kept, so you can re-enable it later without recreating it.
+
 ## How multiple origins are used
 
 Only enabled origins are considered for detection. Enabled origins are ordered by `priority`, and detection uses the **first online origin**: the first one whose manifest is fetched and parsed successfully.
 
-- **Lowest `priority` value first.** `priority` is an integer; lower values are tried before higher ones.
+- **Lowest `priority` value first.**
 - **First online wins.** An origin counts as online when its manifest can be fetched and parsed. A manifest that is reachable but currently advertises no markers still counts as online, so lower-priority origins are not consulted. If an origin cannot be fetched or parsed, detection falls back to the next enabled origin in priority order.
 
 This lets you configure a primary origin and one or more lower-priority backups: when the primary source is unreachable, detection automatically falls back to a backup.
@@ -23,10 +27,6 @@ This lets you configure a primary origin and one or more lower-priority backups:
 :::note Supported origin types
 Origins can be `HLS`, `DASH`, or `HESP`, but automatic break detection currently parses **HLS** manifests only. Use `HLS` for origins you expect to drive automatic breaks.
 :::
-
-## Enabling and disabling origins
-
-An origin can be enabled or disabled at any time. Disabling an origin removes it from detection immediately; the origin itself is kept, so you can re-enable it later without recreating it.
 
 ## Related resources
 
