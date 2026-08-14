@@ -121,7 +121,7 @@ Events live under a channel. Replace `sports-main` with your channel ID.
 Dashboard: open the channel, then **Events → New**.
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/events' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/events' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -150,7 +150,7 @@ Example response:
 ### Get an event
 
 ```bash
-curl 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/events/finals-2026' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -160,7 +160,7 @@ curl 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026' \
 `id` cannot be changed. When you send `startDate` or `endDate`, the resulting window must still keep `startDate` before `endDate`.
 
 ```bash
-curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026' \
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/events/finals-2026' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -173,7 +173,7 @@ curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/events/finals
 ### List events
 
 ```bash
-curl 'https://ads.example.com/api/v1/channels/sports-main/events?page=1&pageSize=20&sort=-createdAt' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/events?page=1&pageSize=20&sort=-createdAt' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -190,7 +190,7 @@ List endpoints share the same pagination shape. Events can be filtered by `name`
 ### List breaks for an event
 
 ```bash
-curl 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026/breaks?pageSize=50' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/events/finals-2026/breaks?pageSize=50' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -198,7 +198,7 @@ curl 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026/bre
 ### Delete an event
 
 ```bash
-curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/events/finals-2026' \
+curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/events/finals-2026' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -206,7 +206,7 @@ curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/events/final
 This also deletes every break attached to the event. To delete several events (and their breaks) at once, send their IDs to the collection endpoint:
 
 ```bash
-curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/events' \
+curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/events' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -218,7 +218,7 @@ curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/events' \
 Cue a vendor pod break under the event by omitting `start`:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/breaks' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -243,7 +243,7 @@ curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks' \
 At the right moment, punch it. With no body the start defaults to now:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks/halftime-1/punch' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/breaks/halftime-1/punch' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -251,7 +251,7 @@ curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks/halftim
 To punch with an explicit start (a past start is clamped to now):
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks/halftime-1/punch' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/breaks/halftime-1/punch' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -260,9 +260,9 @@ curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks/halftim
 
 ## Related resources
 
-| Resource              | Relationship                                                                                    |
-| --------------------- | ----------------------------------------------------------------------------------------------- |
-| Channels              | The parent of an event. An event always belongs to one channel. See [Channels](./channels.mdx). |
-| Breaks                | Attached to an event via `eventId`; the Breaks section documents the full status state machine. |
-| Templates             | Linked to events via `eventIds` for quick scheduling.                                           |
-| Integrations / Google | Provide the pod pre-decisioning that moves a cued vendor pod break from `PREPARING` to `CUED`.  |
+| Resource                                   | Relationship                                                                           |
+| ------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)                 | The parent of an event. An event always belongs to one channel.                        |
+| [Breaks](./breaks.mdx)                     | Prepared under an event via `eventId` and scheduled within the event's window.         |
+| [Templates](./templates.mdx)               | Reusable break presets that can be linked to events for quick scheduling.              |
+| [Integrations](../integrations/google.mdx) | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |

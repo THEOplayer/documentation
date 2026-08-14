@@ -87,7 +87,7 @@ Dashboard: **Ads → Templates → New**.
 API:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/templates' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/templates' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -102,7 +102,7 @@ curl -X POST 'https://ads.example.com/api/v1/templates' \
         {
           "type": "vast",
           "mediaType": "video",
-          "uri": "https://ads.example.com/vast/midroll.xml"
+          "uri": "https://adserver.example.com/vast/midroll.xml"
         }
       ]
     }
@@ -123,7 +123,7 @@ Example response:
       {
         "type": "vast",
         "mediaType": "video",
-        "uri": "https://ads.example.com/vast/midroll.xml"
+        "uri": "https://adserver.example.com/vast/midroll.xml"
       }
     ]
   },
@@ -134,7 +134,7 @@ Example response:
 ## Get a template
 
 ```bash
-curl 'https://ads.example.com/api/v1/templates/midroll-30s' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/templates/midroll-30s' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -142,7 +142,7 @@ curl 'https://ads.example.com/api/v1/templates/midroll-30s' \
 ## Update a template
 
 ```bash
-curl -X PATCH 'https://ads.example.com/api/v1/templates/midroll-30s' \
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/templates/midroll-30s' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -157,7 +157,7 @@ Updating a template does not change breaks already scheduled from it — see [Sn
 ## List templates
 
 ```bash
-curl 'https://ads.example.com/api/v1/templates?page=1&pageSize=20&sort=-createdAt' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/templates?page=1&pageSize=20&sort=-createdAt' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -185,21 +185,21 @@ Examples:
 
 ```bash
 # Overlay templates only
-curl 'https://ads.example.com/api/v1/templates?filter=format==overlay' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/templates?filter=format==overlay' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
 
 ```bash
 # Short VAST templates (30s or less), sorted by duration
-curl 'https://ads.example.com/api/v1/templates?filter=duration=le=30;assetType==vast&sort=duration' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/templates?filter=duration=le=30;assetType==vast&sort=duration' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
 
 ```bash
 # Templates that use a vendor asset (for example, Google Ad Manager pods)
-curl 'https://ads.example.com/api/v1/templates?filter=vendor==gam' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/templates?filter=vendor==gam' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -209,7 +209,7 @@ Combine multiple conditions with `;`.
 ## Delete a template
 
 ```bash
-curl -X DELETE 'https://ads.example.com/api/v1/templates/midroll-30s' \
+curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/templates/midroll-30s' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -217,7 +217,7 @@ curl -X DELETE 'https://ads.example.com/api/v1/templates/midroll-30s' \
 Delete multiple templates in one request:
 
 ```bash
-curl -X DELETE 'https://ads.example.com/api/v1/templates' \
+curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/templates' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -231,7 +231,7 @@ Deletes are permanent (hard delete). Existing breaks scheduled from the template
 Create a break on a channel and reference the template with `templateId`. The template payload is snapshotted onto the break at creation.
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/breaks' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -259,7 +259,7 @@ The created break records the source `templateId` alongside its own copied paylo
       {
         "type": "vast",
         "mediaType": "video",
-        "uri": "https://ads.example.com/vast/midroll.xml"
+        "uri": "https://adserver.example.com/vast/midroll.xml"
       }
     ]
   },

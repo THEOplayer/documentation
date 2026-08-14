@@ -34,8 +34,8 @@ These channel settings determine how break start times are interpreted and how b
 
 The `timebase` determines which timeline break start times are expressed on:
 
-- **`wallclock`** — breaks are scheduled based on the stream's wallclock timing: the break's start (`startWallclock`, a UTC timestamp) is matched against the wallclock timeline carried by the stream itself. Use this when the stream carries wallclock timing: in HLS this comes from `EXT-X-PROGRAM-DATE-TIME` tags, in DASH from the MPD's `availabilityStartTime` combined with the segment timeline (optionally synchronized through a `UTCTiming` element).
-- **`pts`** — breaks are scheduled against the encoder's presentation timestamp timeline (`startPts`). The player needs to retrieve the PTS value from the media segments to know where it is on that timeline. Use this when your workflow schedules breaks against encoder PTS values rather than wallclock time.
+- **`wallclock`** — breaks are scheduled with a UTC timestamp that is matched against the wallclock timeline carried by the stream itself. Use this when the stream carries wallclock timing: in HLS this comes from `EXT-X-PROGRAM-DATE-TIME` tags, in DASH from the MPD's `availabilityStartTime` combined with the segment timeline (optionally synchronized through a `UTCTiming` element).
+- **`pts`** — breaks are scheduled with a presentation timestamp (PTS) on the encoder's timeline. The player retrieves the PTS value from the media segments to know where it is on that timeline. Use this when your workflow schedules breaks against encoder PTS values rather than wallclock time.
 
 Choose the timebase when creating the channel; all breaks on the channel use the same timebase.
 
@@ -73,8 +73,8 @@ A channel is the parent or lookup point for the rest of the OptiView Ads model:
 | ------------------------------------------ | -------------------------------------------------------------------------------------- |
 | [Breaks](./breaks.mdx)                     | Scheduled or detected ad opportunities for the channel.                                |
 | [Templates](./templates.mdx)               | Reusable break presets that can be scheduled on the channel.                           |
-| [Events](./events.mdx)                     | Prepare breaks for an event on your live stream.                                       |
+| [Events](./events.mdx)                     | An event on your channel for which you want to prepare breaks.                         |
 | [Origins](./origins.mdx)                   | Manifest URLs monitored for ad markers. A channel can have multiple origins.           |
 | [Break detection](./marker-detection.mdx)  | Configure marker rules to turn ad markers in your stream into breaks.                  |
-| [Break Manifest](./break-manifest.mdx)     | The endpoint that announces the channel's breaks to players.                           |
+| [Break Manifest](./break-manifest.mdx)     | The manifest that announces the channel's breaks to players.                           |
 | [Integrations](../integrations/google.mdx) | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |

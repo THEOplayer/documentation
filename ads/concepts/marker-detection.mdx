@@ -20,13 +20,13 @@ Marker rules can be toggled with **Enable marker rule** and **Disable marker rul
 `detectionEnabled` is read-only on channel create and update requests. Toggle automatic detection with the dedicated channel actions:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/enable' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/detection/enable' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/disable' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/detection/disable' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -75,7 +75,7 @@ For example, this rule matches DATERANGE markers whose `CLASS` attribute is `com
 There is no dedicated marker-rule enable or disable endpoint. The Dashboard **Enable marker rule** / **Disable marker rule** actions map to a normal update:
 
 ```bash
-curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/markerRules/rule-123' \
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/markerRules/rule-123' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -98,7 +98,7 @@ All marker-rule endpoints are scoped to a channel:
 ### Create a marker rule
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/markerRules' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/markerRules' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -132,7 +132,7 @@ Example response:
 Use the same endpoint to change rule configuration or enable/disable participation:
 
 ```bash
-curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/markerRules/rule-123' \
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/markerRules/rule-123' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -145,7 +145,7 @@ curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/markerRules/r
 ### List marker rules
 
 ```bash
-curl 'https://ads.example.com/api/v1/channels/sports-main/markerRules?page=1&pageSize=20&sort=-createdAt' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/markerRules?page=1&pageSize=20&sort=-createdAt' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -162,7 +162,7 @@ List endpoints use the shared pagination shape:
 ### Bulk delete marker rules
 
 ```bash
-curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/markerRules' \
+curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/markerRules' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -181,7 +181,7 @@ Detection history is the audit trail of what automatic detection decided for eac
 ### List detection history
 
 ```bash
-curl 'https://ads.example.com/api/v1/channels/sports-main/detection/history?page=1&pageSize=20&sort=-createdAt' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/detection/history?page=1&pageSize=20&sort=-createdAt' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -247,7 +247,7 @@ History is deduplicated per channel. Repeated polling of the same marker, includ
 1. Add and enable an HLS origin for `sports-main`. See [Origins](./origins.mdx).
 
    ```bash
-   curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+   curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins' \
      -u "$ADS_API_KEY:$ADS_API_SECRET" \
      -H 'Content-Type: application/json' \
      -H 'X-Org-ID: org_123' \
@@ -265,7 +265,7 @@ History is deduplicated per channel. Repeated polling of the same marker, includ
 3. Create an enabled marker rule for a matching HLS marker:
 
    ```bash
-   curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/markerRules' \
+   curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/markerRules' \
      -u "$ADS_API_KEY:$ADS_API_SECRET" \
      -H 'Content-Type: application/json' \
      -H 'X-Org-ID: org_123' \
@@ -281,7 +281,7 @@ History is deduplicated per channel. Repeated polling of the same marker, includ
 4. Enable detection on the channel:
 
    ```bash
-   curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/detection/enable' \
+   curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/detection/enable' \
      -u "$ADS_API_KEY:$ADS_API_SECRET" \
      -H 'X-Org-ID: org_123'
    ```
@@ -291,7 +291,7 @@ History is deduplicated per channel. Repeated polling of the same marker, includ
 6. Confirm the result in Detection history:
 
    ```bash
-   curl 'https://ads.example.com/api/v1/channels/sports-main/detection/history?page=1&pageSize=20&sort=-createdAt' \
+   curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/detection/history?page=1&pageSize=20&sort=-createdAt' \
      -u "$ADS_API_KEY:$ADS_API_SECRET" \
      -H 'X-Org-ID: org_123'
    ```

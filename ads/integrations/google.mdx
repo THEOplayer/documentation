@@ -81,7 +81,7 @@ One or more daiAssetKeys are already used by another channel integration
 Create an integration with the self-serve API:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/integrations' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/integrations' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -156,6 +156,9 @@ If a break never leaves `PREPARING`, EABN may be skipping the signal because the
 
 ## Related resources
 
-- [Channels](../../concepts/channels)
-- [Scheduling breaks](../../how-to-guides/scheduling-breaks)
-- [API reference](/ads/api)
+| Resource                                         | Relationship                                                               |
+| ------------------------------------------------ | -------------------------------------------------------------------------- |
+| [Channels](../concepts/channels.mdx)             | Hold the `customAssetKey` used for Google server-guided pod serving.       |
+| [Breaks](../concepts/breaks.mdx)                 | Carry the vendor asset that Google decisions.                              |
+| [Break Manifest](../concepts/break-manifest.mdx) | The manifest that announces the channel's breaks to players.               |
+| [API reference](/ads/api)                        | Creating and managing channels, breaks, and integrations programmatically. |

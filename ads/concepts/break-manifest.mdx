@@ -36,8 +36,12 @@ GET /manifest/v1/:orgId/channels/:channelId
 The Break Manifest endpoint is a public read endpoint: it takes no authentication and is served with permissive CORS so that players and CDNs can fetch it directly. It differs from the [Channels](/ads/concepts/channels) management API, which is authenticated. Do not place secrets in the polling URL.
 
 ```bash
-curl 'https://ads.example.com/manifest/v1/org_123/channels/sports-main'
+curl 'https://us.markers.optiview.dolby.com/manifest/v1/org_123/channels/1f7f3a5a-9c2e-4a56-b1d4-3f8a2c9d6e01'
 ```
+
+:::note Regional domains
+The example uses the US region (`https://us.markers.optiview.dolby.com`). For the EU region, replace `us.` with `eu.` (`https://eu.markers.optiview.dolby.com`).
+:::
 
 ### Responses
 
@@ -212,7 +216,7 @@ For a channel created with `timebase: pts`, each break `start` is a numeric pres
       "variant": [
         {
           "format": "single", // default full-screen experience
-          "assets": [{ "id": "a1", "type": "vast", "mediaType": "video", "uri": "https://ads.example.com/vast.xml" }]
+          "assets": [{ "id": "a1", "type": "vast", "mediaType": "video", "uri": "https://adserver.example.com/vast.xml" }]
         },
         {
           "format": "overlay", // alternative overlay experience
@@ -231,6 +235,9 @@ When `breaks` is empty, the envelope is still returned with the channel `timebas
 
 ## Related resources
 
-- [Channels](/ads/concepts/channels) — the timebase and delivery window (`dvrWindowMs`, `liveOffsetMs`) that shape the Break Manifest.
-- [Scheduling breaks](/ads/how-to-guides/scheduling-breaks) — how breaks are created and signaled for a channel.
-- [Getting started](/ads/getting-started/) — integrating the OptiView Player that polls the Break Manifest.
+| Resource                                   | Relationship                                                                                        |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)                 | The parent of the Break Manifest. The timebase and delivery window shape which breaks are included. |
+| [Breaks](./breaks.mdx)                     | Scheduled or detected ad opportunities announced through the manifest.                              |
+| [Integrations](../integrations/google.mdx) | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI.              |
+| [Getting started](/ads/getting-started/)   | Integrating the OptiView Player that polls the Break Manifest.                                      |

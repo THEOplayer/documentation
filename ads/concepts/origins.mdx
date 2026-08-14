@@ -43,7 +43,7 @@ Dashboard: open the channel, then use **Origins → Add**.
 API:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -74,7 +74,7 @@ Example response:
 Add a lower-priority backup origin so detection can fall back if the primary source is unreachable:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -90,7 +90,7 @@ curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
 ## Get an origin
 
 ```bash
-curl 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -100,7 +100,7 @@ curl 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-
 The update endpoint accepts `url`, `type`, `name`, and `priority`. It does not accept `enabled`.
 
 ```bash
-curl -X PATCH 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
+curl -X PATCH 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
@@ -117,13 +117,13 @@ Dashboard: **Origins → Enable origin** / **Disable origin**.
 API:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f/enable' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f/enable' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f/disable' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f/disable' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -133,7 +133,7 @@ Disabling an origin removes it from detection immediately. The origin record is 
 ## List origins
 
 ```bash
-curl 'https://ads.example.com/api/v1/channels/sports-main/origins?page=1&pageSize=20&sort=priority' \
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins?page=1&pageSize=20&sort=priority' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
@@ -150,7 +150,7 @@ List endpoints use the shared pagination shape.
 ## Delete an origin
 
 ```bash
-curl -X DELETE 'https://ads.example.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
+curl -X DELETE 'https://us.ads.optiview.dolby.com/api/v1/channels/sports-main/origins/3f9c0f8e-1a2b-4c3d-8e9f-0a1b2c3d4e5f' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'X-Org-ID: org_123'
 ```
