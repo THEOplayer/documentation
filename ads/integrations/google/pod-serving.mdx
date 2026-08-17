@@ -32,16 +32,6 @@ Google Ad Manager organizes campaigns in three levels:
 - **Line item** — a concrete delivery commitment within an order: which ad unit(s) to target, the flight dates, how many impressions to deliver, and at which priority.
 - **Creative** — the actual ad media (the video file) served when a line item is selected. Creatives are attached to line items.
 
-### Targeting and tiers
-
-Line item types define priority tiers, which control which ads win when multiple line items target the same ad unit. Typical tiers are:
-
-- **Sponsorship** — highest priority, for exclusive or takeover deals; delivers a percentage of matching requests.
-- **Standard (premium)** — guaranteed impression goals with high priority.
-- **Standard (normal) and lower tiers** — non-guaranteed inventory such as price priority, network, or house line items that fill remaining requests.
-
-By targeting your live stream's ad unit from line items in different tiers, you control which advertiser fills each break.
-
 ### Live streams
 
 A live stream in Google Ad Manager connects your linear stream to Google's dynamic ad insertion. Create one under **Video &gt; Live streams &gt; New live stream** and select **pod serving** as the ad serving type, with an HLS pod serving manifest. The live stream carries two values that matter to OptiView Ads:
@@ -87,7 +77,7 @@ Google performs the decisioning, so no asset URI is needed: once Google has deci
 
 The optional `assetParameters` map contains the [Google ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`) for the break. OptiView Ads forwards them to Google when the break is announced, and delivers them to the player through the Break Manifest so they are included on the pod request.
 
-Players can extend these parameters: the OptiView player SDKs accept `adTagParameters` on the ad description (`TheoAdDescription`), and the player automatically adds parameters such as `theoads_slot`. When the same parameter is set both on the break and on the player, the player-side value wins. See [Ad tag parameters](../../how-to-guides/ad-tag-parameters.md) for the player-side API on each platform.
+Players can extend these parameters: the OptiView player SDKs accept `adTagParameters` on the ad description (`TheoAdDescription`). When the same parameter is set both on the break and on the player, the player-side value wins. See [Ad tag parameters](../../how-to-guides/ad-tag-parameters.md) for the player-side API on each platform.
 
 As a rule of thumb:
 
