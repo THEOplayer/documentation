@@ -6,27 +6,27 @@ sidebar_custom_props: { 'icon': 'web' }
 
 # OptiView Ads on Web
 
-This guide configures OptiView Ads in the OptiView Player Web SDK 11.x.
+This guide configures OptiView Ads in the OptiView Player Web SDK. Version **11.9.x or later** is required.
 
 ## Prerequisites
 
 1. Obtain an OptiView Player license compatible with OptiView Ads from the [player portal](https://portal.theoplayer.com).
-2. Use the channel's monetized HLS playback URL (proxy/CDN).
+2. Retrieve the Break Manifest URL for your channel. See the [Break Manifest endpoint](../../concepts/break-manifest.mdx#endpoint).
 3. Install the Web SDK:
 
    ```bash
-   npm install @opentelly/theoplayer
+   npm install theoplayer
    ```
 
-## Integration
+4. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), load the Google DAI library:
 
-Load the Google DAI library:
+   ```html
+   <script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+   ```
 
-```html
-<script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
-```
+## Step 1 — Enable OptiView Ads
 
-Configure the player and source:
+Enable `theoads` in the player configuration:
 
 ```javascript
 const player = new THEOplayer.Player(element, {
@@ -34,39 +34,39 @@ const player = new THEOplayer.Player(element, {
   license: 'YOUR-LICENSE-WITH-OPTIVIEW-ADS',
   ads: { theoads: true },
 });
+```
 
+## Step 2 — Configure the OptiView Ads source
+
+Set a source that combines your media stream with a `theoads` ad description:
+
+```javascript
 player.source = {
   sources: {
-    src: 'CHANNEL-MONETIZED-HLS-URL',
+    src: 'YOUR-STREAM-URL',
     type: 'application/x-mpegurl',
-    hlsDateRange: true,
   },
   ads: [
     {
       integration: 'theoads',
+      breakManifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
       networkCode: 'NETWORK-CODE',
       customAssetKey: 'CUSTOM-ASSET-KEY',
-      breakManifestUrl: 'https://ADS-HOST/manifest/v1/ORG-ID/channels/CHANNEL-ID',
       adTagParameters: { key: 'value' },
     },
   ],
 };
 ```
 
-`breakManifestUrl` is the v2 Break Manifest endpoint. `hlsDateRange: true` enables handling of the SSAI cues in the monetized HLS media playlist.
+The media source itself is not important to OptiView Ads: it only needs to carry timing information (such as `EXT-X-PROGRAM-DATE-TIME`) that the player can schedule breaks against.
 
-## Integrating with Open Video UI
+The ad description properties:
 
-OptiView Ads works with [Open Video UI for Web](/open-video-ui/web/). Pass the same source and ad description to the UI's `source` property.
+- `breakManifestUrl` — the channel's [Break Manifest](../../concepts/break-manifest.mdx) URL. This is the most important part: it is where the player learns about the channel's breaks.
+- `networkCode` — your Google Ad Manager network code, for [Google Pod Serving](../../integrations/google/pod-serving.mdx). See the [Google Ad Manager prerequisites](../../integrations/google/index.mdx).
+- `customAssetKey` — the channel's custom asset key, for [Google Pod Serving](../../integrations/google/pod-serving.mdx).
+- `adTagParameters` — player-side [ad tag parameters](../../integrations/google/pod-serving.mdx#ad-tag-parameters) for Google Pod Serving. Use these for values that are only known on the device, such as device identifiers; they override the break's `assetParameters` on duplicate keys.
 
-![Screenshot of Open Video UI playing an OptiView Ads stream](../../assets/img/web-ui.png)
+## Step 3 — Verify playback
 
-## Verify
-
-Load the channel's monetized HLS source and start playback. Confirm that a break is scheduled from the Break Manifest or SSAI cues, the ad renders, and the OptiView impression appears in the portal.
-
-## More information
-
-- [Web `TheoAdDescription` API](https://optiview.dolby.com/docs/theoplayer/v11/api-reference/web/interfaces/TheoAdDescription.html)
-- [Ad impression tracking](../../../how-to-guides/ad-impressions)
-- [What is OptiView Ads?](https://optiview.dolby.com/products/server-guided-ad-insertion/)
+Start playback, then schedule a break through the API or dashboard and confirm that the ad plays out.

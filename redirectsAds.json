@@ -97,7 +97,7 @@
   },
   {
     "from": "/ads/getting-started/chromecast/",
-    "to": "/ads/player-integration/optiview-player/chromecast/"
+    "to": "/ads/player-integration/optiview-player/"
   },
   {
     "from": "/ads/getting-started/react-native/",

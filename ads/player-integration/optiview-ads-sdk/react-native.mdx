@@ -1,0 +1,57 @@
+---
+sidebar_position: 5
+sidebar_label: React Native
+---
+
+# OptiView Ads SDK on React Native
+
+On React Native, the OptiView Ads SDK bridges the native Android and iOS SDKs behind a typed JavaScript API. All timing-sensitive break scheduling runs natively, so playback stays smooth regardless of the JavaScript thread's load.
+
+## Prerequisites
+
+1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
+2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
+3. Add the OptiView Ads SDK for React Native to your project. Contact us for access to the SDK artifacts.
+
+## Integration
+
+Attach the SDK to your host player once it is ready, then start a session with the channel's Break Manifest URL:
+
+```tsx
+import { THEOplayerView } from 'react-native-theoplayer';
+import { createOptiViewAds } from '@optiview-ads/react-native';
+
+const onPlayerReady = async (player) => {
+  player.source = { sources: [{ src: CONTENT_URL, type: 'application/x-mpegurl' }] };
+  const ads = createOptiViewAds({ nativeHandle: player.nativeHandle });
+  await ads.startSession({
+    manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+    customAssetKey: 'CUSTOM-ASSET-KEY',
+  });
+};
+
+<THEOplayerView config={{ license: THEOPLAYER_LICENSE }} onPlayerReady={onPlayerReady} />;
+```
+
+From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
+
+## Supported players
+
+### react-native-theoplayer
+
+The SDK attaches to a `THEOplayerView` through its native player handle.
+
+**Limitations:**
+
+- Requires the React Native new architecture (TurboModules / Fabric).
+- Wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.
+
+### react-native-video
+
+The SDK attaches to a `react-native-video` player through its native player handle.
+
+**Limitations:**
+
+- Requires `react-native-video` v6.
+- Requires the React Native new architecture (TurboModules / Fabric).
+- Wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.

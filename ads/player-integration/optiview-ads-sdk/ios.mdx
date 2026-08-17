@@ -1,0 +1,49 @@
+---
+sidebar_position: 4
+sidebar_label: iOS
+---
+
+# OptiView Ads SDK on iOS
+
+On iOS and tvOS, the OptiView Ads SDK is a native Swift library that works with **AVPlayer** through a player adapter, and with any other player through a custom adapter.
+
+## Prerequisites
+
+1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
+2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
+3. Add the OptiView Ads SDK for iOS to your project. Contact us for access to the SDK artifacts.
+
+## Integration
+
+Create the SDK with an adapter around your AVPlayer instance, then start a session with the channel's Break Manifest URL:
+
+```swift
+let sdk = OptiViewAds(
+    config: OptiViewAdsConfig(player: AVPlayerAdapter(player: avPlayer)),
+    renderer: OverlayAdRenderer(container: adContainer)
+)
+
+try await sdk.startSession(
+    SessionConfig(
+        manifestUrl: "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        customAssetKey: "CUSTOM-ASSET-KEY"
+    )
+)
+```
+
+From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
+
+## Supported players
+
+### AVPlayer
+
+The `AVPlayerAdapter` wraps an `AVPlayer` instance. Ads are rendered in an overlay view stacked above your content player view.
+
+**Limitations:**
+
+- Requires iOS 15 / tvOS 15 or later.
+- Wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.
+
+### Custom players
+
+Any other player can be integrated by implementing the SDK's `PlayerAdapter` interface, which exposes playback position, timing information, and basic playback controls. Contact us for the adapter interface reference.
