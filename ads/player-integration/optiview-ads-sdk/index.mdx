@@ -49,14 +49,11 @@ The SDK also exposes optional presentation settings — such as ad preloading, b
 - **Break Manifest URL (`manifestUrl`):** every channel exposes its Break Manifest on a public endpoint. The URL follows the pattern `https://us.markers.optiview.dolby.com/manifest/v1/{orgId}/channels/{channelId}` (replace `us.` with `eu.` for the EU region), using your organization ID and the channel's ID. See the [Break Manifest endpoint](../../concepts/break-manifest.mdx#endpoint) for details.
 - **Google `networkCode` and `customAssetKey`:** these come from your Google Ad Manager setup. See the [Google Ad Manager prerequisites](../../integrations/google/index.mdx) and [Google Pod Serving](../../integrations/google/pod-serving.mdx).
 
-## Supported players
+## Choose a platform
 
-| Platform                           | Supported players                                                                       |
-| ---------------------------------- | --------------------------------------------------------------------------------------- |
-| [Web](./web.mdx)                   | HLS.js, Shaka Player, THEOplayer, native `<video>` (Safari), or a custom player adapter |
-| [Android](./android.mdx)           | Media3 / ExoPlayer, or a custom player adapter                                          |
-| [iOS](./ios.mdx)                   | AVPlayer, or a custom player adapter                                                    |
-| [React Native](./react-native.mdx) | `react-native-theoplayer`, `react-native-video` (v6)                                    |
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
 
 ## Related resources
 

@@ -5,7 +5,7 @@ sidebar_label: Web
 
 # OptiView Ads SDK on Web
 
-On Web, the OptiView Ads SDK works with any HLS-capable player through a player adapter. Ready-made adapters are available for **HLS.js**, **Shaka Player**, **THEOplayer**, and the browser's **native `<video>` element**, and you can implement a custom adapter for any other player.
+On Web, the OptiView Ads SDK works with any HLS-capable player through a player adapter. Ready-made adapters are available for the **OptiView Player (THEOplayer)**, **HLS.js**, **Shaka Player**, and the browser's **native `<video>` element**, and you can implement a custom adapter for any other player.
 
 ## Prerequisites
 
@@ -15,14 +15,14 @@ On Web, the OptiView Ads SDK works with any HLS-capable player through a player 
 
 ## Integration
 
-Create the SDK with your player's adapter, then start a session with the channel's Break Manifest URL:
+Create the SDK with your player's adapter, then start a session with the channel's Break Manifest URL. The example below uses the OptiView Player (THEOplayer) adapter; the other adapters work the same way:
 
 ```typescript
-import { OptiViewAds } from '@optiview-ads/sdk';
-import { HlsJsAdapter } from '@optiview-ads/adapter-hlsjs';
+import { OptiViewAds } from '@dolby-optiview/ads-sdk';
+import { THEOplayerAdapter } from '@dolby-optiview/ads-adapter-theoplayer';
 
 const sdk = new OptiViewAds({
-  player: new HlsJsAdapter(hls, video),
+  player: new THEOplayerAdapter(player, container),
   container: document.getElementById('container'),
   gam: { networkCode: 'NETWORK-CODE' },
 });
@@ -37,12 +37,27 @@ From this point the SDK polls the [Break Manifest](../../concepts/break-manifest
 
 ## Supported players
 
+### OptiView Player (THEOplayer)
+
+Install the THEOplayer adapter alongside the SDK:
+
+```bash
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-theoplayer theoplayer
+```
+
+Wrap the `ChromelessPlayer` instance in a `THEOplayerAdapter`. THEOplayer manages its own `<video>` element inside a container `<div>`.
+
+**Limitations:**
+
+- Requires THEOplayer v9 or later and a valid THEOplayer license.
+- Set `mutedAutoplay: 'all'` in the player configuration; without it, ad playback can be blocked by browser autoplay policies.
+
 ### HLS.js
 
 Install the HLS.js adapter alongside the SDK:
 
 ```bash
-npm install @optiview-ads/sdk @optiview-ads/adapter-hlsjs hls.js
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-hlsjs hls.js
 ```
 
 Wrap your `Hls` instance and content `<video>` element in an `HlsJsAdapter` and pass it as the `player`.
@@ -56,7 +71,7 @@ Wrap your `Hls` instance and content `<video>` element in an `HlsJsAdapter` and 
 Install the Shaka adapter alongside the SDK:
 
 ```bash
-npm install @optiview-ads/sdk @optiview-ads/adapter-shaka shaka-player
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-shaka shaka-player
 ```
 
 Call `shaka.polyfill.installAll()` once before creating any `shaka.Player` instance, then wrap the player and `<video>` element in a `ShakaAdapter`.
@@ -65,25 +80,6 @@ Call `shaka.polyfill.installAll()` once before creating any `shaka.Player` insta
 
 - Requires Shaka Player 4.x or 5.x.
 - Wallclock scheduling requires a live stream with absolute time references (such as `EXT-X-PROGRAM-DATE-TIME`); it is not available for VOD content.
-
-### THEOplayer
-
-Install the THEOplayer adapter alongside the SDK:
-
-```bash
-npm install @optiview-ads/sdk @optiview-ads/adapter-theoplayer theoplayer
-```
-
-Wrap the `ChromelessPlayer` instance in a `THEOplayerAdapter`. THEOplayer manages its own `<video>` element inside a container `<div>`.
-
-**Limitations:**
-
-- Requires THEOplayer v9 or later and a valid THEOplayer license.
-- Set `mutedAutoplay: 'all'` in the player configuration; without it, ad playback can be blocked by browser autoplay policies.
-
-:::note
-If you are integrating THEOplayer, also consider the built-in [OptiView Player integration](../optiview-player/index.mdx), which does not require the OptiView Ads SDK.
-:::
 
 ### Native video (Safari and iOS browsers)
 

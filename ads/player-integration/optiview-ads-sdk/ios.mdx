@@ -5,7 +5,7 @@ sidebar_label: iOS
 
 # OptiView Ads SDK on iOS
 
-On iOS and tvOS, the OptiView Ads SDK is a native Swift library that works with **AVPlayer** through a player adapter, and with any other player through a custom adapter.
+On iOS and tvOS, the OptiView Ads SDK is a native Swift library that works with the **OptiView Player (THEOplayer)** and **AVPlayer** through player adapters, and with any other player through a custom adapter.
 
 ## Prerequisites
 
@@ -15,11 +15,11 @@ On iOS and tvOS, the OptiView Ads SDK is a native Swift library that works with 
 
 ## Integration
 
-Create the SDK with an adapter around your AVPlayer instance, then start a session with the channel's Break Manifest URL:
+Create the SDK with an adapter around your player, then start a session with the channel's Break Manifest URL. The example below uses the OptiView Player (THEOplayer) adapter; the other adapters work the same way:
 
 ```swift
 let sdk = OptiViewAds(
-    config: OptiViewAdsConfig(player: AVPlayerAdapter(player: avPlayer)),
+    config: OptiViewAdsConfig(player: THEOplayerAdapter(player: theoplayer)),
     renderer: OverlayAdRenderer(container: adContainer)
 )
 
@@ -34,6 +34,15 @@ try await sdk.startSession(
 From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
 
 ## Supported players
+
+### OptiView Player (THEOplayer)
+
+The `THEOplayerAdapter` wraps a `THEOplayer` instance. Ads are rendered in an overlay view stacked above your content player view.
+
+**Limitations:**
+
+- Requires a valid THEOplayer license.
+- Wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.
 
 ### AVPlayer
 

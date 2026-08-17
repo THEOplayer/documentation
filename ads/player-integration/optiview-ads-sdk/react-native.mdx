@@ -15,11 +15,11 @@ On React Native, the OptiView Ads SDK bridges the native Android and iOS SDKs be
 
 ## Integration
 
-Attach the SDK to your host player once it is ready, then start a session with the channel's Break Manifest URL:
+Attach the SDK to your host player once it is ready, then start a session with the channel's Break Manifest URL. The example below uses the OptiView Player (`react-native-theoplayer`):
 
 ```tsx
 import { THEOplayerView } from 'react-native-theoplayer';
-import { createOptiViewAds } from '@optiview-ads/react-native';
+import { createOptiViewAds } from '@dolby-optiview/ads-react-native';
 
 const onPlayerReady = async (player) => {
   player.source = { sources: [{ src: CONTENT_URL, type: 'application/x-mpegurl' }] };
@@ -37,7 +37,7 @@ From this point the SDK polls the [Break Manifest](../../concepts/break-manifest
 
 ## Supported players
 
-### react-native-theoplayer
+### OptiView Player (react-native-theoplayer)
 
 The SDK attaches to a `THEOplayerView` through its native player handle.
 
