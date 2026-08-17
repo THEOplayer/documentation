@@ -107,7 +107,7 @@ OptiView Ads enforces a few constraints when scheduling breaks. Each one protect
 
 - **Breaks cannot overlap.** A scheduled break cannot overlap another break on the same channel. Players render one break at a time; overlapping breaks would make the ad timeline ambiguous for your viewers.
 - **The start cannot lie in the past.** A break must start ahead of the current live position of the channel. Players need to receive the break through the [Break Manifest](./break-manifest.mdx) before its start time; a break scheduled behind the live position would never be seen.
-- **Ad decisioning needs lead time.** Breaks delivered through an ad server integration such as [Google Ad Manager](../integrations/google.mdx) need a small extra margin before their start, so the ad decisioning can complete before the break begins. Scheduling closer than that margin is rejected rather than risking an empty break.
+- **Ad decisioning needs lead time.** Breaks delivered through an ad server integration such as [Google Ad Manager](../integrations/google/index.mdx) need a small extra margin before their start, so the ad decisioning can complete before the break begins. Scheduling closer than that margin is rejected rather than risking an empty break.
 - **Event boundaries are respected.** A break attached to an event must fit entirely inside the event's date window, so all of an event's breaks stay within the occurrence they belong to.
 - **One cued break at a time.** A channel holds at most one [cued break](#cued-breaks). The cued break is "the next break to fire" — allowing several at once would make it ambiguous which break a punch applies to.
 
@@ -118,7 +118,7 @@ A break moves through a small set of states:
 - **`PREPARING`** — the break is being prepared with the ad vendor (for example, waiting for Google Ad Manager to decision the ad pod). Breaks that use a vendor asset always begin in this state.
 - **`CUED`** — the break is prepared but has no start time yet. It waits for you to [punch](#break-punching) it. A break created without a `start` enters this state (after preparation completes, or immediately when no vendor preparation is needed).
 - **`READY`** — the break has a start time and is ready to be announced to players. A break created with a `start` and no vendor preparation begins in this state.
-- **`SIGNALED`** — the break has been announced to players through the [Break Manifest](./break-manifest.mdx) or through [SSAI cue injection](../integrations/google.mdx).
+- **`SIGNALED`** — the break has been announced to players through the [Break Manifest](./break-manifest.mdx) or through [SSAI cue injection](../integrations/google/dai.mdx).
 - **`ERROR`** — the break could not be delivered, for example because it passed its scheduling window before preparation completed.
 
 ![Break lifecycle diagram](../assets/img/breaks/break-lifecycle.svg)
@@ -433,7 +433,7 @@ A `vendor` asset is delivered through an [ad vendor integration](../integrations
 }
 ```
 
-`vendorParameters` carries the parameters required to retrieve the asset from the vendor, and the optional `assetParameters` carry ad targeting parameters forwarded to the vendor. See [Google Ad Manager](../integrations/google.mdx) for the supported values.
+`vendorParameters` carries the parameters required to retrieve the asset from the vendor, and the optional `assetParameters` carry ad targeting parameters forwarded to the vendor. See [Google Pod Serving](../integrations/google/pod-serving.mdx) for the supported values.
 
 #### Asset URI targeting
 
@@ -455,12 +455,12 @@ The selection rules match [Variants](#variants): an entry without `targeting` is
 
 ## Related resources
 
-| Resource                                   | Relationship                                                                           |
-| ------------------------------------------ | -------------------------------------------------------------------------------------- |
-| [Channels](./channels.mdx)                 | The parent of a break. The channel's timebase defines how breaks are scheduled.        |
-| [Templates](./templates.mdx)               | Reusable break presets that can be scheduled on the channel.                           |
-| [Events](./events.mdx)                     | An event on your channel for which you want to prepare breaks.                         |
-| [Origins](./origins.mdx)                   | Manifest URLs monitored for ad markers. A channel can have multiple origins.           |
-| [Break detection](./marker-detection.mdx)  | Configure marker rules to turn ad markers in your stream into breaks.                  |
-| [Break Manifest](./break-manifest.mdx)     | The manifest that announces the channel's breaks to players.                           |
-| [Integrations](../integrations/google.mdx) | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |
+| Resource                                         | Relationship                                                                           |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)                       | The parent of a break. The channel's timebase defines how breaks are scheduled.        |
+| [Templates](./templates.mdx)                     | Reusable break presets that can be scheduled on the channel.                           |
+| [Events](./events.mdx)                           | An event on your channel for which you want to prepare breaks.                         |
+| [Origins](./origins.mdx)                         | Manifest URLs monitored for ad markers. A channel can have multiple origins.           |
+| [Break detection](./marker-detection.mdx)        | Configure marker rules to turn ad markers in your stream into breaks.                  |
+| [Break Manifest](./break-manifest.mdx)           | The manifest that announces the channel's breaks to players.                           |
+| [Integrations](../integrations/google/index.mdx) | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |

@@ -5,21 +5,21 @@ sidebar_label: Integrations
 
 # Integrations
 
-An integration connects OptiView Ads to an ad decisioning or "pod" serving vendor. Vendors are supported by providing [assets of type Vendor](../concepts/breaks.mdx#vendor-assets) in a break variant: the vendor makes the ad decisions, and OptiView Ads delivers the result to players. [Google Ad Manager 360](./google) is the first supported integration.
+An integration connects OptiView Ads to an ad decisioning or "pod" serving vendor. Vendors are supported by providing [assets of type Vendor](../concepts/breaks.mdx#vendor-assets) in a break variant: the vendor makes the ad decisions, and OptiView Ads delivers the result to players. [Google Ad Manager 360](./google/index.mdx) is the first supported integration.
 
 ## Supported vendors
 
-| Vendor                            | Enum value | Delivery                      |
-| --------------------------------- | ---------- | ----------------------------- |
-| [Google Ad Manager 360](./google) | `gam`      | SGAI pod serving and SSAI DAI |
+| Vendor                                      | Enum value | Delivery                                                                                        |
+| ------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------- |
+| [Google Ad Manager 360](./google/index.mdx) | `gam`      | [Google Pod Serving](./google/pod-serving.mdx) (SGAI) and [Google DAI](./google/dai.mdx) (SSAI) |
 
 The vendor model is extensible. When another vendor is supported, its documentation will be added as a separate page in this section and listed in the Integrations sidebar.
 
 ## Related resources
 
-| Resource                               | Relationship                                                                         |
-| -------------------------------------- | ------------------------------------------------------------------------------------ |
-| [Channels](../concepts/channels.mdx)   | Hold the channel-level `customAssetKey` used for Google server-guided pod serving.   |
-| [Breaks](../concepts/breaks.mdx)       | Carry the vendor asset in a break variant.                                           |
-| [Templates](../concepts/templates.mdx) | Reusable break presets that can include vendor assets.                               |
-| [Google Ad Manager](./google.mdx)      | The first supported vendor: SGAI pod serving and the `SSAI_DAI` channel integration. |
+| Resource                                | Relationship                                                                       |
+| --------------------------------------- | ---------------------------------------------------------------------------------- |
+| [Channels](../concepts/channels.mdx)    | Hold the channel-level `customAssetKey` used for Google server-guided pod serving. |
+| [Breaks](../concepts/breaks.mdx)        | Carry the vendor asset in a break variant.                                         |
+| [Templates](../concepts/templates.mdx)  | Reusable break presets that can include vendor assets.                             |
+| [Google Ad Manager](./google/index.mdx) | The first supported vendor: Google Pod Serving (SGAI) and Google DAI (SSAI).       |
