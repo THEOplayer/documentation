@@ -9,145 +9,127 @@ import RebrandingNotice from '../callouts/_rebranding_notice.md';
 
 <RebrandingNotice />
 
-This guide walks through the end-to-end path to monetize a live stream with Server-Guided Ad Insertion (SGAI): create a channel, attach and enable an origin, define a reusable break template, schedule a break, and play it in OptiView Player. Every step is available in the OptiView Unified Dashboard and through the REST API.
+OptiView Ads monetizes your live stream with Server-Guided Ad Insertion (SGAI): you schedule ad breaks on a channel, and the player renders them on top of your content — without touching your media stream. This guide takes you from an empty organization to seeing your first ad break play out on your device.
+
+The examples use the US region (`https://us.ads.optiview.dolby.com` and `https://us.markers.optiview.dolby.com`). For the EU region, replace `us.` with `eu.`.
 
 ## Prerequisites
 
-Before you begin, you need:
+Before you begin, make sure you have:
 
-- An OptiView organization, identified by the `X-Org-ID` header.
-- An API key and secret for HTTP Basic authentication.
-- Your OptiView Ads base URL. The examples use `https://ads.example.com`.
-- An OptiView Player license enabled for OptiView Ads.
-
-Set the credentials used by the examples in your shell:
+- **An organization with the Ads product enabled.** Your organization is created in the OptiView Unified Dashboard and identifies you across all API calls (the `X-Org-ID` header). If the Ads product is not enabled for your organization yet, contact us.
+- **An API key and secret.** Create an API key/secret pair in the dashboard. The pair authenticates the API calls in this guide through HTTP Basic authentication:
 
 ```bash
 export ADS_API_KEY='your-api-key'
 export ADS_API_SECRET='your-api-secret'
 ```
 
-## 1. Create an Ads channel
+## 1. Create a channel
 
-Dashboard: **Ads → Channels → New**.
+A [channel](/ads/concepts/channels) represents the live stream you want to monetize. Everything else — breaks, templates, origins — lives under a channel, so this is the first thing to create.
 
-Create a channel for the live stream. The channel's timebase determines how scheduled break start times are interpreted.
+The only property you must choose is the **timebase**, which defines how break start times are expressed on this channel:
+
+- `wallclock`: breaks are scheduled at real-world times (ISO 8601 datetimes). Use this when your stream carries absolute time metadata such as `EXT-X-PROGRAM-DATE-TIME`.
+- `pts`: breaks are scheduled at presentation timestamps within the stream itself.
+
+We also recommend setting a `name` so you can recognize the channel in the dashboard. All other properties have sensible defaults, and the channel `id` is generated for you as a UUID when you omit it.
+
+Dashboard: **Ads → Channels → New**. Or via the API:
 
 ```bash
-curl -X POST 'https://ads.example.com/api/v1/channels' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
   -d '{
-    "id": "sports-main",
     "name": "Sports main",
-    "timebase": "wallclock",
-    "dvrWindowMs": 300000,
-    "liveOffsetMs": 0,
-    "pollingIdleSeconds": 10,
-    "pollingActiveSeconds": 1,
-    "customAssetKey": "sports-main-custom-asset"
+    "timebase": "wallclock"
   }'
 ```
 
-See the [Channels concept](/ads/concepts/channels) for the channel model and the complete field reference.
+The response contains the generated channel `id` — you will use it in the next steps.
 
-## 2. Add and enable an origin
+## 2. Retrieve the Break Manifest URL
 
-Dashboard: open the channel → **Overview → Origins** (add, then enable).
+The [Break Manifest](/ads/concepts/break-manifest) is how your channel announces its breaks to the player: the player polls this endpoint and schedules the announced breaks against your stream. It is a public endpoint that identifies your organization and channel in the path, so it needs no authentication:
 
-Add the manifest origin with detection disabled initially, then enable it with the returned origin ID:
-
-```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'Content-Type: application/json' \
-  -H 'X-Org-ID: org_123' \
-  -d '{
-    "id": "origin-primary",
-    "name": "Primary HLS origin",
-    "type": "HLS",
-    "url": "https://origin.example.com/live/sports-main/master.m3u8",
-    "enabled": false,
-    "priority": 0
-  }'
+```text
+https://us.markers.optiview.dolby.com/manifest/v1/{orgId}/channels/{channelId}
 ```
 
-```bash
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/origins/origin-primary/enable' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'X-Org-ID: org_123'
+Fill in your organization ID and the channel ID from step 1, and keep this URL at hand — it is the one value the player integration needs.
+
+## 3. Configure the OptiView Ads SDK with your player
+
+The [OptiView Ads SDK](/ads/player-integration/optiview-ads-sdk/) connects your player to OptiView Ads: it polls the Break Manifest, schedules the breaks against your player's timeline, plays the ads, and reports impressions. It is player-agnostic — you keep your own player and wrap it in a small adapter.
+
+Create the SDK with your player's adapter and start a session with the Break Manifest URL from step 2. On Web, for example:
+
+```typescript
+import { OptiViewAds } from '@dolby-optiview/ads-sdk';
+import { THEOplayerAdapter } from '@dolby-optiview/ads-adapter-theoplayer';
+
+const sdk = new OptiViewAds({
+  player: new THEOplayerAdapter(player, container),
+  container: document.getElementById('container'),
+});
+
+await sdk.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/org_123/channels/CHANNEL-ID',
+});
 ```
 
-See [Origins](/ads/concepts/origins) and [Break Detection](/ads/concepts/marker-detection).
-
-## 3. Define a break template
-
-Dashboard: **Ads → Templates → New**.
-
-Templates are reusable break definitions. This minimal template plays a single 30-second VAST asset:
-
-```bash
-curl -X POST 'https://ads.example.com/api/v1/templates' \
-  -u "$ADS_API_KEY:$ADS_API_SECRET" \
-  -H 'Content-Type: application/json' \
-  -H 'X-Org-ID: org_123' \
-  -d '{
-    "id": "fullscreen-vast",
-    "name": "Full-screen VAST",
-    "duration": 30,
-    "variant": {
-      "format": "single",
-      "assets": [
-        {
-          "id": "asset-1",
-          "type": "vast",
-          "mediaType": "video",
-          "uri": "https://ads.example.com/vast.xml"
-        }
-      ]
-    }
-  }'
-```
-
-The supported break formats are `single`, `double`, `lshape_ad`, `lshape_content`, and `overlay`. For Google Ad Manager pod serving, use an asset with `type: "vendor"`, `vendor: "gam"`, and `vendorParameters` such as `{ "type": "pod" }`; this uses the channel's `customAssetKey`. See [Templates](/ads/concepts/templates/) for the complete template field model.
+Follow the platform guide for [Web](/ads/player-integration/optiview-ads-sdk/web), [Android](/ads/player-integration/optiview-ads-sdk/android), [iOS](/ads/player-integration/optiview-ads-sdk/ios), or [React Native](/ads/player-integration/optiview-ads-sdk/react-native). If you use the OptiView Player, the legacy [OptiView Player integration](/ads/player-integration/optiview-player/) is also available.
 
 ## 4. Schedule a break
 
-Dashboard: open the channel → **Breaks → Schedule now**.
+A [break](/ads/concepts/breaks) describes an ad opportunity: when it starts, how long it lasts, and which ad experience plays. The simplest break plays a single full-screen ad from a VAST tag.
 
-Schedule a break from the template. For a `wallclock` channel, `start` is an ISO 8601 datetime; for a `pts` channel, it can be a numeric PTS value.
+Dashboard: open the channel → **Breaks → Schedule now**. Or via the API, scheduling a 30-second break a few minutes from now:
 
 ```bash
 export BREAK_START="$(date -u -d '+5 minutes' '+%Y-%m-%dT%H:%M:%S.000Z')"
 
-curl -X POST 'https://ads.example.com/api/v1/channels/sports-main/breaks' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/CHANNEL-ID/breaks' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: org_123' \
   -d "{
-    \"templateId\": \"fullscreen-vast\",
     \"start\": \"$BREAK_START\",
-    \"duration\": 30
+    \"duration\": 30,
+    \"variant\": {
+      \"format\": \"single\",
+      \"assets\": [
+        {
+          \"type\": \"vast\",
+          \"mediaType\": \"video\",
+          \"uri\": \"https://cdn.example.com/vast.xml\"
+        }
+      ]
+    }
   }"
 ```
 
-The response includes a status such as `PREPARING`, `CUED`, `READY`, `SIGNALED`, or `ERROR`. You can also use the `/breaks/{breakId}/punch` endpoint to schedule a `CUED` break, defaulting to now. See [Scheduling breaks](/ads/how-to-guides/scheduling-breaks).
+Once you schedule breaks regularly, [templates](/ads/concepts/templates) let you preconfigure the break payload so scheduling becomes a one-liner.
 
-## 5. Play via OptiView Player
+## 5. See the break play out
 
-Point OptiView Player at the channel's Break Manifest. The player polls this endpoint to discover active breaks and renders the configured ad experience. The Break Manifest is a public polling endpoint that identifies the organization and channel in the path, so it needs no authentication headers:
+Start playback of your stream on your device. Shortly before the scheduled start time, the break appears in the Break Manifest and the SDK prepares it; at the start time, the ad takes over the player.
 
-```bash
-curl 'https://ads.example.com/manifest/v1/org_123/channels/sports-main'
-```
+You can follow along on both sides:
 
-Continue with the platform guides for [Web](/ads/player-integration/optiview-player/web), [Android](/ads/player-integration/optiview-player/android), [iOS](/ads/player-integration/optiview-player/ios), or [React Native](/ads/player-integration/optiview-player/react-native).
+- **In the dashboard or API:** the break's [lifecycle status](/ads/concepts/breaks#break-lifecycle) moves from `PREPARING` to `READY`, and to `SIGNALED` once it is announced to players.
+- **In the player:** the ad plays at the scheduled time and your content resumes afterwards.
 
-import DocCardList from '@theme/DocCardList';
+If the break does not play, verify that the Break Manifest URL from step 2 returns the break, and that your stream carries the time metadata required by the channel's timebase.
 
-<DocCardList />
+## Next steps
 
-## Integrate a player
-
-Choose an integration path in the [Player integration](/ads/player-integration/) section. The recommended OptiView Ads SDK lets you bring your own player, while the legacy OptiView Player guides cover Web, Android, iOS, and React Native.
+| Resource                                                      | Description                                                       |
+| ------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [Player integration](/ads/player-integration/)                | The full integration guides for the SDK and the OptiView Player.  |
+| [Breaks](/ads/concepts/breaks)                                | Everything a break can do: layouts, variants, controls, punching. |
+| [Origins and Break Detection](/ads/concepts/marker-detection) | Turn the ad markers in your stream into breaks automatically.     |
+| [Google Ad Manager](/ads/integrations/google/)                | Let Google Ad Manager decision the ads that fill your breaks.     |
