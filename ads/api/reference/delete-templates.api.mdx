@@ -5,7 +5,7 @@ description: 'Bulk delete templates by IDs.'
 sidebar_label: 'Delete /templates'
 hide_title: true
 hide_table_of_contents: true
-api: eJyFVE1v2zAM/SsCTy3gNMuwk2/ZkkOwAi26bhcjB8ZmbLW2pEp0Us/wfx8oe/noDssltvhEvkc+uoeCQu61Y20NpPC1rV9VQTUxKabG1cgU1K5Tm1W4gwQ8vbUU+KstOkh7yK1hMiyP6Fytc5Q885cgyXoIeUUNypPz1pFnTUHedBH/rktvCjKs95p8UHavuLpkwHZidaeWrGrCwMoaUjoooaQ9FUJPMzUxdaPNPZmSK0gXCXDnCFII7LUpYUgkvBmh5yh6jx0MwyhSMkKaRarbE8buXihnGK5R7FuKB8FZE0aJnz99+VfiivbY1qyeJmSsJo2JbdsUkMKocnZSDgkwlkGoPJ/Otgk0xJU9X4AEHIpamKPT88NifpkhUN56zR2kWQ87DDpftgLOtglYX0rhbDtsz8AfMrhRyAX8o5zl40a9Uqdu2kDeYEO3Ck2hAuWeWN04DOFofXErk4lWkBbGfHDqaMXsZCITjY8lHnyJRv+O/VH65JA4a4lXhAV5SEDKQwrvM+vLmS7OBdDp7zTOVWz5dDbw+h0bV9PJkNlfg2wHyb63EmHNAoEHx/qXpqNaFkEtHzeQwIF8GFkeFiLB2cANRuNPbFbjIl3N4krfxQb9d/UmPUzvPHc1aiM1W1/H9Yqzz0SsEFsI/NItlQ0s8b7fYaCfvh4GOX5ryXejDQ7oNe5Eaibyp76KX16pgxS+jTxnz8JC4HU7dvfD1g+X3lyt79fPa0hgN30vGlvILY9H+ZbgEVIA2QC5H90Wz3qo0ZQtloIds8rvD96qmKw=
+api: eJyFVMFu2zAM/RWBpxZQkmXYybd0ySFYgRZdt4uRA2MzjlpbUiU6qWf43wfaiZN2h+XiWHok3yMf3UJOMQvGs3EWEriry1eVU0lMiqnyJTJFtW3UehmnoCHQW02R71zeQNL2ryZQDgmHmjRkzjJZliv0vjQZSt7ZS5TkLcRsTxXKP248QQJu+0IZgwYfnKfAhqLcmrx/VMaumaoIyVyfIzAEbECDGS7GTJGDsQVoCbonW/AeknmnP8lb52TZ7AyFqNxO8f5aJbuT8qlasCoJIytnSZmozjqn0HX6SnXaU9103XAcvbNxkPD1yzd5fCy/pB3WJaunE7LPJsL7Nq1zSGBgMBlZgQbGIkqp5/Fso6Ei3rtLgLQQRTPM0JvZYT67zhApq4PhBpK0hS1Gky1qAacbDS4UUjjddJsL8KcMahByBR+bvWf2krZHQTJg4HOzF49r9UqNuqkjBYsV3Sq0uYqUBWJ14zHGowv57RS6kcZYAr35Qf2gJdWeMKcAGiQNJPA+caGYmPyfmg+hQGv+9P1UZpz2MDex4dPFwKt3rHxJo+HSs4k2nZTduZ6OYYHAg2fz29BRLfKoFo9r0HCgEIeqh7lI8C5yhb3RTzSXwyJ9mMUHvu1lY/67eqfGML3zzJdorNSsQylZhtmn0jUhNhf4tVv2LrLct+0WI/0KZdfJ8VtNoRlscMBgcCtSU5F/arj45ZUaSOD7wHPyLCwEXtbDmD5teXftzeXqfvW8Ag3b0/eicrlEBTzKtwSPkADIBkh877b+rIUSbVFjIdghq/z+ApR9mKw=
 sidebar_class_name: 'delete api-method'
 info_path: ads/api/reference/optiview-ads-api
 custom_edit_url: null
@@ -36,23 +36,23 @@ Bulk delete templates by IDs.
 <RequestSchema
   title={'Body'}
   body={{
+    required: true,
     content: {
       'application/json': {
         schema: {
+          type: 'object',
           properties: {
             ids: {
-              description: 'Identifiers of the templates to delete. At least one is required.',
-              items: { minLength: 1, type: 'string' },
               minItems: 1,
               type: 'array',
+              items: { type: 'string', minLength: 1 },
+              description: 'Identifiers of the templates to delete. At least one is required.',
             },
           },
           required: ['ids'],
-          type: 'object',
         },
       },
     },
-    required: true,
   }}
 ></RequestSchema>
 

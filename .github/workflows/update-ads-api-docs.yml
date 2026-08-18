@@ -1,18 +1,10 @@
 name: Update Ads API reference
 on:
   # Triggered from the Ads service repository whenever its OpenAPI contract changes:
-  #   gh api repos/THEOplayer/documentation/dispatches \
-  #     -f event_type=update-ads-api-docs \
-  #     -f 'client_payload[ref]=<git-ref-of-the-contract>'
+  #   gh api repos/THEOplayer/documentation/dispatches -f event_type=update-ads-api-docs
   repository_dispatch:
     types: [update-ads-api-docs]
   workflow_dispatch:
-    inputs:
-      ref:
-        description: Git ref of the Ads OpenAPI contract to publish
-        required: false
-        default: main
-        type: string
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -23,7 +15,6 @@ jobs:
       # The branch that will receive the regenerated API reference (will be created if it doesn't exist)
       # Will automatically open a new PR (if no PR exists yet)
       UPDATE_BRANCH: update-ads-api-docs
-      ADS_OPENAPI_REF: ${{ github.event.client_payload.ref || inputs.ref || 'main' }}
     steps:
       - name: Create app token
         uses: actions/create-github-app-token@v3
@@ -58,8 +49,6 @@ jobs:
         run: npm ci
       - name: Regenerate Ads API reference
         run: npm run refresh-ads-api-docs
-        env:
-          ADS_OPENAPI_TOKEN: ${{ secrets.ADS_OPENAPI_TOKEN }}
       - name: Check for changes
         id: check_changes
         # language=bash
@@ -74,7 +63,7 @@ jobs:
         # language=bash
         run: |
           git add ads/api/reference
-          git commit -m "Update Ads API reference ($ADS_OPENAPI_REF)"
+          git commit -m 'Update Ads API reference'
           git push --force origin HEAD:$UPDATE_BRANCH
       - name: Check if pull request already exists
         if: ${{ steps.check_changes.outputs.changed }}
