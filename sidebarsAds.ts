@@ -17,6 +17,42 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Player integration',
+      description: 'Connect OptiView Ads to a player.',
+      collapsed: false,
+      customProps: {
+        icon: '▶️',
+      },
+      link: { type: 'doc', id: 'player-integration/index' },
+      items: [
+        {
+          type: 'category',
+          label: 'OptiView Ads SDK',
+          customProps: { icon: '🧩' },
+          link: { type: 'doc', id: 'player-integration/optiview-ads-sdk/index' },
+          items: [
+            'player-integration/optiview-ads-sdk/web',
+            'player-integration/optiview-ads-sdk/android',
+            'player-integration/optiview-ads-sdk/ios',
+            'player-integration/optiview-ads-sdk/react-native',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OptiView Player',
+          customProps: { icon: '🎬' },
+          link: { type: 'doc', id: 'player-integration/optiview-player/index' },
+          items: [
+            'player-integration/optiview-player/web',
+            'player-integration/optiview-player/android',
+            'player-integration/optiview-player/ios',
+            'player-integration/optiview-player/react-native',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Core concepts',
       description: 'Understand the resources that power OptiView Ads.',
       collapsed: false,
@@ -74,19 +110,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Web',
           customProps: { icon: 'web' },
-          href: 'pathname:///theoplayer/v9/api-reference/web/interfaces/TheoAdDescription.html',
-        },
-        {
-          type: 'link',
-          label: 'Android',
-          customProps: { icon: 'android' },
-          href: 'pathname:///theoplayer/v9/api-reference/android/com/theoplayer/android/api/ads/theoads/package-summary.html',
-        },
-        {
-          type: 'link',
-          label: 'React Native',
-          customProps: { icon: 'react' },
-          href: 'https://theoplayer.github.io/react-native-theoplayer/api/interfaces/TheoAdDescription.html',
+          href: 'https://optiview.dolby.com/docs/theoplayer/v11/api-reference/web/interfaces/TheoAdDescription.html',
         },
       ],
     },
