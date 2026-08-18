@@ -19,14 +19,17 @@ Create the SDK with an adapter around your player, then start a session with the
 
 ```kotlin
 val sdk = OptiViewAds(
-    config = OptiViewAdsConfig(player = THEOplayerAdapter(theoPlayerView.player)),
+    config = OptiViewAdsConfig(
+        player = THEOplayerAdapter(theoPlayerView.player),
+        gam = GamConfig(networkCode = "NETWORK-CODE"), // optional: only for Google Pod Serving
+    ),
     renderer = OverlayAdRenderer(adContainer),
 )
 
 sdk.startSession(
     SessionConfig(
         manifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
-        customAssetKey = "CUSTOM-ASSET-KEY",
+        customAssetKey = "CUSTOM-ASSET-KEY", // optional: only for Google Pod Serving
     )
 )
 ```
@@ -42,7 +45,6 @@ The `THEOplayerAdapter` wraps the `Player` of a `THEOplayerView`. Ads are render
 **Limitations:**
 
 - Requires a valid THEOplayer license.
-- Wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.
 
 ### Media3 / ExoPlayer
 
@@ -51,7 +53,6 @@ The `ExoPlayerAdapter` wraps a Media3 `ExoPlayer` instance. Ads are rendered in 
 **Limitations:**
 
 - Requires Media3 / ExoPlayer 1.4 or later and Android 5.0 (API level 21) or later.
-- Wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.
 
 ### Custom players
 

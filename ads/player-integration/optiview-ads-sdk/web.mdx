@@ -62,10 +62,6 @@ npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-hlsjs hls.js
 
 Wrap your `Hls` instance and content `<video>` element in an `HlsJsAdapter` and pass it as the `player`.
 
-**Limitations:**
-
-- Wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.
-
 ### Shaka Player
 
 Install the Shaka adapter alongside the SDK:
@@ -79,7 +75,6 @@ Call `shaka.polyfill.installAll()` once before creating any `shaka.Player` insta
 **Limitations:**
 
 - Requires Shaka Player 4.x or 5.x.
-- Wallclock scheduling requires a live stream with absolute time references (such as `EXT-X-PROGRAM-DATE-TIME`); it is not available for VOD content.
 
 ### Native video (Safari and iOS browsers)
 
