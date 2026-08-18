@@ -48,6 +48,26 @@ function removeExcludedFields(value) {
 
 removeExcludedFields(spec);
 
+// The API generates random UUID defaults on every request; pin them so regeneration is deterministic.
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const PLACEHOLDER_UUID = '00000000-0000-0000-0000-000000000000';
+
+function pinRandomUuidDefaults(value) {
+  if (Array.isArray(value)) {
+    value.forEach(pinRandomUuidDefaults);
+    return;
+  }
+
+  if (value && typeof value === 'object') {
+    if (typeof value.default === 'string' && UUID_PATTERN.test(value.default)) {
+      value.default = PLACEHOLDER_UUID;
+    }
+    Object.values(value).forEach(pinRandomUuidDefaults);
+  }
+}
+
+pinRandomUuidDefaults(spec);
+
 const httpMethods = new Set(['get', 'put', 'post', 'delete', 'patch', 'options', 'head', 'trace']);
 const titleCase = (value) =>
   value
