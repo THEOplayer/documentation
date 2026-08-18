@@ -17,6 +17,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 - Fixed a bug where RTMP contribution could intermittently disconnect 30 seconds after the broadcast started, even though media was still being received.
 - Fixed an issue where a viewer could connect to a live stream successfully but receive no media.
+- Fixed a memory leak on RTMP contribution nodes, where connections that ended immediately after being accepted were not cleaned up.
 - General stability and reliability improvements.
 
 ## 2026-07-16
