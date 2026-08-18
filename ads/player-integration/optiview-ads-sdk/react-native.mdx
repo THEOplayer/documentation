@@ -26,7 +26,6 @@ const onPlayerReady = async (player) => {
   const ads = createOptiViewAds({ nativeHandle: player.nativeHandle });
   await ads.startSession({
     manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
-    customAssetKey: 'CUSTOM-ASSET-KEY',
   });
 };
 
