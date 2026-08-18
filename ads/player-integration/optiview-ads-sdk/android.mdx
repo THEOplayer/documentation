@@ -19,17 +19,14 @@ Create the SDK with an adapter around your player, then start a session with the
 
 ```kotlin
 val sdk = OptiViewAds(
-    config = OptiViewAdsConfig(
-        player = THEOplayerAdapter(theoPlayerView.player),
-        gam = GamConfig(networkCode = "NETWORK-CODE"), // optional: only for Google Pod Serving
-    ),
+    config = OptiViewAdsConfig(player = THEOplayerAdapter(theoPlayerView.player)),
     renderer = OverlayAdRenderer(adContainer),
 )
 
 sdk.startSession(
     SessionConfig(
         manifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
-        customAssetKey = "CUSTOM-ASSET-KEY", // optional: only for Google Pod Serving
+        customAssetKey = "CUSTOM-ASSET-KEY",
     )
 )
 ```

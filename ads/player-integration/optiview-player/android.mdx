@@ -61,8 +61,8 @@ theoPlayerView.player.source = SourceDescription.Builder(
 ).ads(
     TheoAdDescription(
         breakManifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
-        networkCode = "NETWORK-CODE",
-        customAssetKey = "CUSTOM-ASSET-KEY",
+        networkCode = "NETWORK-CODE", // optional: only for Google Pod Serving
+        customAssetKey = "CUSTOM-ASSET-KEY", // optional: only for Google Pod Serving
         adTagParameters = mapOf("key" to "value")
     )
 ).build()
