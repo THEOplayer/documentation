@@ -10,7 +10,6 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 #### Features
 
-- Added an optional compatibility mode for contribution from Adobe Media Server. Adobe Media Server can stop sending media once approximately 4 GB of data has been ingested on a single RTMP connection, and this mode works around that behavior. It is disabled by default, can be enabled per account or per publish token on request, and does not change behavior for any other publisher. Please contact your Dolby OptiView account representative if you are affected.
 - Improved RTMP diagnostics for RTMP contribution, RTMP pull, and RTMP re-streams, so intermittent connection issues can be investigated faster.
 
 #### Fixes
