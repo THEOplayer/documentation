@@ -1,0 +1,157 @@
+---
+sidebar_position: 1
+sidebar_label: Google Pod Serving
+---
+
+# Google Pod Serving
+
+Google Pod Serving is the server-guided (SGAI) delivery mode for Google Ad Manager. Google decisions the ad pods server-side, and the player inserts them client-side, guided by the [Break Manifest](../../concepts/break-manifest.mdx).
+
+## What is pod serving?
+
+With pod serving, Google assembles a complete ad break — a "pod" of one or more ads — server-side and exposes it as a single stream that the player stitches in at the right moment. This combines the best of both worlds:
+
+- **Server-side ad decisioning and stitching.** Google selects, transcodes, and stitches the ads into a pod that matches your stream's renditions, so playback transitions are seamless and ads are resistant to ad blockers.
+- **Client-side insertion.** The media stream itself is never modified. The player inserts the pod guided by the Break Manifest, which keeps advanced [layouts](../../concepts/breaks.mdx#layouts) such as double box and L-shape possible and keeps OptiView Ads out of your stream's critical path.
+
+Before you start, make sure the [Google Ad Manager prerequisites](./index.mdx) are configured for your organization.
+
+## Configure Google Ad Manager
+
+Pod serving is configured in the Google Ad Manager dashboard with the building blocks below.
+
+### Ad units
+
+An ad unit represents a place where ads can be served — for pod serving, it represents your live stream's ad breaks. You create ad units under **Inventory &gt; Ad units**. The ad unit is linked to your OptiView channel through the live stream's master ad tag (see below): the ad tag references the ad unit, and the live stream references your channel through its custom asset key.
+
+### Orders, line items, and creatives
+
+Google Ad Manager organizes campaigns in three levels:
+
+- **Order** — the agreement with an advertiser or buyer. An order groups one or more line items.
+- **Line item** — a concrete delivery commitment within an order: which ad unit(s) to target, the flight dates, how many impressions to deliver, and at which priority.
+- **Creative** — the actual ad media (the video file) served when a line item is selected. Creatives are attached to line items.
+
+### Live streams
+
+A live stream in Google Ad Manager connects your linear stream to Google's dynamic ad insertion. Create one under **Video &gt; Live streams &gt; New live stream** and select **pod serving** as the ad serving type, with an HLS pod serving manifest. The live stream carries two values that matter to OptiView Ads:
+
+- the **custom asset key**, and
+- the **master ad tag**.
+
+### Custom asset key
+
+The custom asset key is an identifier you choose when creating the live stream. It uniquely identifies the live stream event in Google Ad Manager, and it is the key OptiView Ads uses to tell Google which stream a break belongs to when announcing upcoming breaks.
+
+### Master ad tag
+
+The master ad tag is the ad tag URL configured on the live stream. It ties the setup together: it references your network code and the ad unit, so when Google decisions a pod for the live stream, it knows which line items and creatives are eligible. Ad tag parameters added to pod requests extend this master ad tag.
+
+## Configure your channel
+
+Enable Google Pod Serving on your [channel](../../concepts/channels.mdx) by configuring the custom asset key from your Google live stream on it. A custom asset key can only be used on one channel within your organization.
+
+Once configured, the Break Manifest for the channel carries the Google session configuration (network code and custom asset key), so players can set up their pod serving session automatically.
+
+## Schedule a pod break
+
+A Google pod break is a regular [break](../../concepts/breaks.mdx) whose variant carries a [vendor asset](../../concepts/breaks.mdx#vendor-assets) with `vendorParameters.type` set to `"pod"`:
+
+```json
+{
+  "type": "vendor",
+  "vendor": "gam",
+  "vendorParameters": {
+    "type": "pod"
+  },
+  "assetParameters": {
+    "description_url": "https://www.example.com/sports/live.html",
+    "plcmt": "1"
+  }
+}
+```
+
+Google performs the decisioning, so no asset URI is needed: once Google has decisioned the break, the resulting pod identifier is stored as the asset's URI.
+
+### Ad tag parameters
+
+The optional `assetParameters` map contains the [Google ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`) for the break. OptiView Ads forwards them to Google when the break is announced, and delivers them to the player through the Break Manifest so they are included on the pod request.
+
+Players can extend these parameters: the OptiView player SDKs accept `adTagParameters` on the ad description (`TheoAdDescription`). When the same parameter is set both on the break and on the player, the player-side value wins. See [Ad tag parameters](../../how-to-guides/ad-tag-parameters.md) for the player-side API on each platform.
+
+As a rule of thumb:
+
+- **Provide through the backend (`assetParameters`)** the values that describe your content and are the same for every viewer, such as `description_url` and custom targeting parameters.
+- **Provide through the player (`adTagParameters`)** the values that depend on the playback environment or the device, such as `vpa`, `vpmute`, and — for apps — the device and app identity parameters.
+
+### Required Google parameters
+
+Google requires a number of ad tag parameters for ad serving and programmatic monetization. Missing or malformed values reduce fill or block programmatic demand entirely.
+
+| Parameter         | What it is                                                                                          | Required                                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `description_url` | A URL to a crawlable page that describes the video being played — not your top-level domain.        | Required for ad serving on web and in apps.              |
+| `plcmt`           | Declares the inventory placement: `1` for in-stream, `2` for accompanying content.                  | Required for programmatic monetization on all platforms. |
+| `vpa`             | Whether playback starts automatically (`auto`) or on user action (`click`). Leave unset if unknown. | Required for programmatic monetization on all platforms. |
+| `vpmute`          | Whether playback starts muted: `1` for muted, `0` for unmuted.                                      | Required for programmatic monetization on all platforms. |
+
+:::caution Encode `description_url` exactly once
+In the final ad request, the `description_url` value must be URL-encoded exactly once on web and CTV (and not encoded at all in mobile apps). Double encoding is a common mistake and makes the value invalid.
+
+Correct: `description_url=https%3A%2F%2Fwww.example.com%2Fsports%2Flive.html`
+Incorrect (double-encoded): `description_url=https%253A%252F%252Fwww.example.com%252Fsports%252Flive.html`
+
+Supply the plain, unencoded URL in `assetParameters`, and verify in the final ad request that the value appears encoded exactly once.
+:::
+
+### Additional parameters for app inventory
+
+For requests from mobile apps and connected TV devices, programmatic buyers additionally require device and app identity parameters. These are playback-environment values, so supply them from the player side through `adTagParameters`.
+
+| Parameter | What it is                                                                           |
+| --------- | ------------------------------------------------------------------------------------ |
+| `rdid`    | The resettable device identifier (identifier for advertising) of the device.         |
+| `idtype`  | The type of the device identifier (for example `adid` for Android, `idfa` for iOS).  |
+| `is_lat`  | Whether the user has limited ad tracking: `0` for tracking allowed, `1` for limited. |
+| `an`      | The human-readable name of your app.                                                 |
+| `msid`    | The app ID (bundle or package name, for example `com.publisher.app`).                |
+
+### Recommended: `wta`
+
+The "Why this ad?" parameter (`wta`) declares whether the player renders Google's ad badging (the AdChoices icon): `wta=1` when it is rendered, `wta=0` when it is not. It is not required, but it is highly recommended: `wta=0` traffic is not eligible for certain types of personalization from Google demand, and ads served in the European Economic Area have regulatory requirements around ad badging.
+
+## How pod decisioning works
+
+1. A Google pod break is created and starts in the `PREPARING` state.
+2. Ahead of the break's start (within the [look-forward time](./index.mdx#look-forward-time)), OptiView Ads announces the break to Google using the channel's custom asset key.
+3. Google decisions the ad pod and returns a pod identifier, which is stored as the vendor asset's URI. The break becomes `READY` when it has a start time, or `CUED` when it is waiting to be [punched](../../concepts/breaks.mdx#break-punching).
+4. When the break is announced to players through the [Break Manifest](../../concepts/break-manifest.mdx), it becomes `SIGNALED`. The player requests the pod from Google using the pod identifier.
+
+A Google pod break can only be punched after Google has decisioned it — that is, once it has left the `PREPARING` state.
+
+## Troubleshooting
+
+A break that fails ends up in the `ERROR` state with an `errorReason` explaining what went wrong:
+
+| `errorReason`                | What it means                                                                                                                                               |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CUSTOM_ASSET_KEY_NOT_FOUND` | The channel's custom asset key is not registered in Google Ad Manager. Register the key as a live stream in GAM, or correct the channel's custom asset key. |
+| `UNKNOWN_DAI_API_ERROR`      | Google returned an error that could not be mapped to a more specific reason. Verify your Google Ad Manager configuration, or contact your account team.     |
+| `SCHEDULING_WINDOW_MISSED`   | The break passed its scheduling window before it could be announced to Google. Schedule pod breaks further ahead of their start time.                       |
+| `UNKNOWN`                    | An unexpected error occurred. Contact your account team.                                                                                                    |
+
+Additionally, creating a pod break that starts too close to the live point is rejected up front with the reason `DECISIONING_MARGIN`: pod breaks must start at least the [decisioning margin](./index.mdx#decisioning-margin) after the live point, so Google has time to decision the ads.
+
+## Related resources
+
+| Resource                                                        | Relationship                                                             |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [Google Ad Manager](./index.mdx)                                | The prerequisites shared by both Google delivery modes.                  |
+| [Google DAI](./dai.mdx)                                         | Server-side (SSAI) delivery for platforms without server-guided support. |
+| [Channels](../../concepts/channels.mdx)                         | Hold the custom asset key used for Google Pod Serving.                   |
+| [Breaks](../../concepts/breaks.mdx)                             | Carry the vendor asset that Google uses to make ad decisions.            |
+| [Break Manifest](../../concepts/break-manifest.mdx)             | The manifest that announces the channel's breaks to players.             |
+| [Ad tag parameters](../../how-to-guides/ad-tag-parameters.md)   | Passing ad tag parameters from the player.                               |
+| [Getting started on Web](../../getting-started/web.mdx)         | Set up an OptiView player with pod serving on web.                       |
+| [Getting started on iOS](../../getting-started/ios.mdx)         | Set up an OptiView player with pod serving on iOS.                       |
+| [Getting started on Android](../../getting-started/android.mdx) | Set up an OptiView player with pod serving on Android.                   |
