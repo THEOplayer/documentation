@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
-const DEFAULT_SPEC_REF = '76b8e3996237ea4b7b4c2297caeb2f5e8514a3c7';
+const DEFAULT_SPEC_REF = 'main';
 const OUTPUT_PATH = resolve('.docusaurus/openapi/ads-v2/openapi.json');
 
 const specRef = process.env.ADS_OPENAPI_REF ?? DEFAULT_SPEC_REF;
