@@ -5,7 +5,7 @@ description: 'Bulk delete marker rules by IDs.'
 sidebar_label: 'Delete /channels/{channelId}/markerRules'
 hide_title: true
 hide_table_of_contents: true
-api: eJyNVE1v2zAM/SsCTy3gLMuwk2/pkkOwDi2ybpcgB8ZmbDW2pEpyUi/wfx8oOZ/divpiW6Ko9x4fuYecXGal8VIrSOGuqTYip4o8iRrthqywTUVOrFoxm7hPkIBBizV5sg7Sxf7q/Cwn5eVakhV6LXxJIitRKar4pOQIg76EBBTWBCn0u7McErD00khLOaTeNpSAy0qqEdI9+NZwsPNWqgK6bhmDyfk7nbcckWnlSXn+RGMqmSEDGj47RrU/S2WsNmS9JMd/Mg+v/3FwBxIXUnjdK/RJjL2oCJ0XWpGQThwoBLae6pC9luqeVOFLSEfJNZeEt2cx9LSL1mILXXcuyiKgXR5j9OqZMg/dZRRLFxac0cpFll8+f33LckJrbCov5n1kuI21CcrNckghshz0NXKDY7EGUY85ywEJeCzYC/AjqhSXlwnU5Et9ShS8wyrAEI0cbkfDQ+bh/pi6G17mdpQ1Vvo2eG2FTmbjhnMslgloWzDOxZINcQj8yaWOvM/Cr9mPH2diQ624aRxZ9uKtQJULR5klL24MOrfTNr/lQgbzsOIhHxwLUHpvuIA9jOsrHmyBSv4Jcgp59NSxEUrCnOypFV4H2hYDmZ8uQCO/U7QBG3l+svz0FWtT0dHCi4Oflh1nX+vQNdJzCDwYL39L2olx7sT4cQYJbMm6iHI7YgpGO19jaJUezSTOgI+U6IL2WSt+ZJj0TD29+qGpUCpG09gqtGowy4JlYMgjSA7jgm9Nz0fHOaBlAqV2nk/u9yt09MtWXcfLLw3ZNlpni1biiuXhESYdf+eQrrFy9A6jm3nfaLfi3Un3T1qHqqqW6WDV8B8ksKH2YhJ2XMTeHQwv7n+LIAZPnOV0/s20684bbzK9nz5NIYFVPydrnfMpizseuLiLCHSgGnomrO2hQlU0WHBszMrPX1V1Hk0=
+api: eJyNVE1v2zAM/SsCTy2gJMuwk2/Z0kOwDi2ybpcgB8ZmYjW2pEpy0szwfx9o2fnqOtQX2xL59N4jqRoy8qlTNiijIYGvVbEVGRUUSJTotuSEqwryYnUQs6kfggRHLxX58NVkB0jq9lc5yiAJriIJqdGBdOAttLZQKTL06Nkzfg0+zalE/goHS5CAWT1TGkCCdcaSC4o876qsfZVKzwKVHpKx7DPQOTyABBU3jkg+OKU3IDnpnvQm5JCMG3mlcJaRDmqtyHlh1iLkV0KD6fQPxSSIgtAHYTQJ5UUvdQhNI8+EL1q2y6bhZYsOSwrkPCSLf+jtWDYSFNOxGHKQoLHkzTRHramYZSDfGPuejF5FlzuEZsnJ3hrto5efP33h1yXAlNZYFUHMu8hWE1egrdcsgwSiD4MO2A+O7AbRsTkbBhICblgs/Ig+xuWlhJJCbk5AXGNWm8AIrRrtxqMeeVQfoZvRJbantHIqHFozV+hVOqkYY7GUYNyGeS6WrLgP/MmGR91n4Uf78xAsw7ZRkMQYuHZ38jgTWzqIm8qT49rcCtSZ8JQ6CuLGovd747LbIdexo3E8Aq36Tm2DMlROmJE7lfh1YNxmoLI3Zz64DWr1p7VfqGN5Y7Px+MxPg3f3iqUt6Dgoi76tlm1frU1LRwUOgQcb1G9FezHJvJg8zkDCjpyPp+7GLMEaH0psB7SjOY13wEdKdCGjPl0AH7lMOssCvYaRLVBpZlO5goFisyzYT6Y8BtnPB5+anM/KOaGlhNz4wJl1vUJPv1zRNLz8UpE7xNbZoVO4YnsWNWTK83cGyRoLfz1q54pu5t1Q3or/DOA7svr20NwbOywq/gMJWzpcjH7DRezahunF/W+RxOCJUU75b+7Y5nzwpnf3d093IGHV3dalyTjL4Z5vGNxHBqaV2s5Mu1ZDgXpT4YZjIyo/fwH4eh5N
 sidebar_class_name: 'delete api-method'
 info_path: ads/api/reference/optiview-ads-api
 custom_edit_url: null
@@ -32,29 +32,29 @@ Bulk delete marker rules by IDs.
 </Heading>
 
 <ParamsDetails
-  parameters={[{ description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } }]}
+  parameters={[{ schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' }]}
 ></ParamsDetails>
 
 <RequestSchema
   title={'Body'}
   body={{
+    required: true,
     content: {
       'application/json': {
         schema: {
+          type: 'object',
           properties: {
             ids: {
-              description: 'Identifiers of the marker rules to delete. At least one is required.',
-              items: { minLength: 1, type: 'string' },
               minItems: 1,
               type: 'array',
+              items: { type: 'string', minLength: 1 },
+              description: 'Identifiers of the marker rules to delete. At least one is required.',
             },
           },
           required: ['ids'],
-          type: 'object',
         },
       },
     },
-    required: true,
   }}
 ></RequestSchema>
 

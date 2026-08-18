@@ -5,7 +5,7 @@ description: 'Bulk delete breaks by IDs.'
 sidebar_label: 'Delete /channels/{channelId}/breaks'
 hide_title: true
 hide_table_of_contents: true
-api: eJyFVMFu2zAM/RWBpxZwlmXYybd0ySFYgRZdt0uQA2MzsRpbUiU6rRf43wfKjpOmW5dLbPmReo985AFyCpnXjrU1kMJNXe5UTiUxqbUn3AW1btRiFj5BAg49VsTkA6TLw0XkIifDeqPJK7tRXJDKCjSGSonUgnDIBSRgsCJIof+6yCEBT8+19pRDyr6mBEJWUIWQHoAbJ+DAXpsttO2qA1PgG5s3gsisYTIsj+hcqTMUQuOnIKwOZ6mct448awrypvP49y8N4SiiLwLbviqf1JRVSRhYWUNKB3UkH3UyVTFvpc0tmS0XkE6SSxWJfF500NNX9B4baNvzciwjz9WAsesnyhjatygpWjwIzprQ6fvy+et7fTPaYF2yeuiR8TapSqzZIocUOpWjvjthNLRp1FUCEmDcigHgpjtYJVARF/YUHa0i0mGMTo/3k/Ex3fgw5GvHQ8JAWe01N9FVaww6m9YSvlwlYP1WeC1X0voj8Ic0tdN5Br9UO71fqB016qoO5MV11wpNrgJlnlhdOQzhxfr8WhoXbSIVjvlgKHjB7KRhPY3LK+78Fo3+Hcun9OCewfIFYU7+ZPrXkfXbkc5PF6DT36lru1j24WTu+StWrqTBrMujf1atZN/YOB+aBQJ3jvUvTS9qmgc1vV9AAnvyoWO5n4gEZwNXGIeiZzPr5vw/3Xmj+GzePt4VvTymVx67ErURCrUv4yRGcyxFu/CcQHLcBnJfer4Z1oPHChtYgg6HNQb66cu2lePnmnzTWWWPXuNayiHLSQd5ziHdYBnoAxlXD/0gXasPd9hfFR27aBpRgmUtb5DAjpo3O66VpvVuEHrd928didGjZDnFv9tj7fmMzea388e51KbfgJXNJcrji6xSfOkY2Cg1zkg8O0CJZlvjVrBdVvn9AfxoDMU=
+api: eJyFVE1v2zAM/SsCTy2gJMuwk2/pkkOwAi26bpcgB8ZmbDW2pEpyUs/wfx/or6Tt2vliWyKp9x75VENCPnbKBmU0RHBT5geRUE6BxM4RHrzYVWK99FOQ4Oi5JB9uTFJBVLe/ylECUXAlSYiNDqQDb6G1uYqRi86ePFeuwccZFchfobIEEZjdE8UBJFhnLLmgyPOuStpXofQ6UOEhmsshA53DCiSobmOs5INTOgXJSbek05BBNG/kG27rhHRQe0XOC7MXIRspBtNznopFEDmhD8JoEsqLgeQUmkZeUN60OLdNw8sWHRYUyHmINv9g2uNrJCgGYjFkIEFjwZtxhlpTvk5AvpP0IwID/j53Cs2Wk7012ncqfv3yjV+vCyxpj2UexEMf2XJi7dtOrROIoNNh0hf2kxHdpNMKJARMmSfcdAtbCQWFzJyzuaVMMYIZWjU7zmdDuVk91mtmY0FPcelUqFrxduhVvCg5fbOVYFzKuDZbZjgE/mSBO54X4aPcWQiWy7ZREHUx8FbNxf1aHKgSV6Unx724FqgT4Sl2FMSVRe9PxiXXU+5bD2M8Aq36Qe0ocqmMMCF3bunLxLh0opJ3Z965FLX608ot1NjObrjYKA9ni61esLA5jZbYDGO0bedob1o4KnAI3Nmgfis6iUXixeJ+DRKO5Hx36nHOFKzxocDWij3MZefz/3TnFYP67PLP74pep0AvYWZzVJohlC7nEt1wbFhExjkHOZiAz4suDbEbZywzPnBSXe/Q0y+XNw0vP5fkqm5UjugU7liOTQ2J8vydQLTH3L+10iWNq4fedNfiE4N9wGgYB82zcMS85D+QcKDqlbUbblo/Jgyv2//egZg8cpVz/rvbs7n02HJ1u3pcsTb9PVyYhLMcnvgGwVOHwLRUW4+0azXkqNMSU47tqvLzF5xeDMU=
 sidebar_class_name: 'delete api-method'
 info_path: ads/api/reference/optiview-ads-api
 custom_edit_url: null
@@ -32,29 +32,29 @@ Bulk delete breaks by IDs.
 </Heading>
 
 <ParamsDetails
-  parameters={[{ description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } }]}
+  parameters={[{ schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' }]}
 ></ParamsDetails>
 
 <RequestSchema
   title={'Body'}
   body={{
+    required: true,
     content: {
       'application/json': {
         schema: {
+          type: 'object',
           properties: {
             ids: {
-              description: 'Identifiers of the breaks to delete. At least one is required.',
-              items: { minLength: 1, type: 'string' },
               minItems: 1,
               type: 'array',
+              items: { type: 'string', minLength: 1 },
+              description: 'Identifiers of the breaks to delete. At least one is required.',
             },
           },
           required: ['ids'],
-          type: 'object',
         },
       },
     },
-    required: true,
   }}
 ></RequestSchema>
 

@@ -1,34 +1,25 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
-const DEFAULT_SPEC_REF = 'main';
+const DEFAULT_SPEC_URL = 'https://us.ads.optiview.dolby.com/api/v1/docs/json';
 const OUTPUT_PATH = resolve('.docusaurus/openapi/ads-v2/openapi.json');
 
-const specRef = process.env.ADS_OPENAPI_REF ?? DEFAULT_SPEC_REF;
-const rawUrl = `https://raw.githubusercontent.com/Dolby-OptiView/optiview-ads/${specRef}/openapi.json`;
-const apiUrl = `https://api.github.com/repos/Dolby-OptiView/optiview-ads/contents/openapi.json?ref=${encodeURIComponent(specRef)}`;
-const specUrl = process.env.ADS_OPENAPI_SPEC_URL ?? rawUrl;
-const token = process.env.ADS_OPENAPI_TOKEN ?? process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
+const specUrl = process.env.ADS_OPENAPI_SPEC_URL ?? DEFAULT_SPEC_URL;
 
 const headers = {
-  Accept: 'application/vnd.github.raw+json',
+  Accept: 'application/json',
   'User-Agent': 'optiview-docs-openapi-fetcher',
 };
-
-if (token) {
-  headers.Authorization = `Bearer ${token}`;
-}
 
 const source = specUrl.startsWith('file://') || specUrl.startsWith('/') ? await readFile(specUrl.replace(/^file:\/\//, ''), 'utf8') : undefined;
 
 const spec = source
   ? JSON.parse(source)
   : await (async () => {
-      const remoteUrl = token && !process.env.ADS_OPENAPI_SPEC_URL ? apiUrl : specUrl;
-      const response = await fetch(remoteUrl, { headers });
+      const response = await fetch(specUrl, { headers });
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch Ads OpenAPI spec from ${remoteUrl}: ${response.status} ${response.statusText}`);
+        throw new Error(`Failed to fetch Ads OpenAPI spec from ${specUrl}: ${response.status} ${response.statusText}`);
       }
 
       return response.json();

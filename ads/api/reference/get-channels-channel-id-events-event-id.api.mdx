@@ -5,7 +5,7 @@ description: 'Get /channels/{channelId}/events/{eventId}'
 sidebar_label: 'Get /channels/{channelId}/events/{eventId}'
 hide_title: true
 hide_table_of_contents: true
-api: eJytVUtv2zAM/isCTy2gLO0Ow5BbgO4R7NCie1yCHBiLibXasirRyTLD/32g7SSOs61rsVMckfo+Pj5SFXgMmBNTiDCZV2AoJsF6toWDCcwMObYrS0EVK8UpqSRF5yh7BRqseHjkFDQ4zAkm0FlnBjQEeixtIAMTDiVpiElKOcKkAt55cY4crFtDXeunaWlDjv9A2tieSbkQ5+gLFymK/fXVlfwkhWNyLJ/ofWYTlIjG36OEVfXw0BgrJszuQuEpsBWcFWaRNPjeUQVJIGQy0wb1NM8vNqfImHu1TckdE1VbjKq7pxVGhU7NPt+qt2+urpVBJrY5qTYZKcogO31KM2R9H4hGTD9Y9c7PCn2GSc7cINM53rsmZHJGSVgviteac9ivzj6W+4LYoyK2llPrhmI8g2zFMQT9WOboRoHQ4DIjZWz0Ge6UOKtVEZ4oQWQM/LciNA4vLUPdF/BcatJl0Sc+9kH3lLU4gBXL75Qw1PVQBXBDKywzVved7htCEWqj8ZmBCayJR11N4+gwy6OmIHF0nDPGtWyLNuko7KdUH4jVeA80rg5I9biFGlcdVg0acuK06NhBt7M9gTF6O95c/zNKpKQMlnfNEltitMm0FKD5QkMR1pLefCFjv3f8LLPcTmjPfdjW6d1MPdBOXZSRgjTjUqEzKlISiNWFxxi3RTCX0s5mO0gPGrxjf1NmL+rpwhhS3IY1Ovuz6UJP54dllxIaCsd192NUhPWoUUdHgN5+ol3TT+tWRbPvLGdiuvVsv1naqqmJano3Aw0bCrFl3lxLWL6InGOzJzqGZ7VvsGq6kGS9jH2G1glFGTKxta2dS7wSx7VIuGMBDZP+49ESyeledQsNaRFZ7lfVEiN9DVldy/FjSWHXdnqDwcpgt0+ZjfJtDnt5EOph2cPFfTd3l+qvL95vk9s3we0kKcxK+QcaHmh38iI2z9z/CWm4oZ4T0L6e9aLWe21JtVrrNEnIc+/e2TMoM3QY2Q/vvkBd/wLeBdaH
+api: eJytVU1v2kAQ/SurOSXSEkIPVeUbUtoU9ZCobXpBHAbvgLe115vdMZQi//dqbAMGqiZU5QLszrz35nO34DFgQUwhQjLdQkwzKhCSLfDGEyQQOVi3hFqDdZCAR85Ag8NCLtMMnaN8YkBDoOfKBjKQcKhIg6GYBuvZluI3MeTYLiwFVS4UZ6Q63xuo9aW0tCLH/0TaeN5APRPX6EsXKQrrm9tb+Tp2v6MFVjmrz50laEhLx+RYbNH73KYotsPvURz+EEY5/04pgwYfSk+BbUtnzXmop+KfnH2uOsXKHiJZW86sO01hl5qXQD9WBbpBIDQ4z0kZG32OGyXOalGGoxyd+J5m50MgGjD9ZNU7P8mzPi9nZAx8h/wKse+b0BsHxbYgrTAqdGry5UG9e3s7UgaZ5EK1AI1mcuYSdHLm9dhpIGQyY34Z/astKDIWXq0zcoecqDVG1eG8grPut/hU+qardD+Rh6D7Emca0BgrejB/7LXfAvNItXw0yGnTwhMDCSyJB11PxcF+tgeN8Dg4TB3jUrZFm8IoTMfB3xOr4Q5ouN0j1cMWarjtsGrQUBBnZccugyKTnsAQvR2uRq9GiZRWwfKmWWJzjDYdVwI0nWkow1LCm85k7HeGX2RU22nsme/LmjF7gW2sIGltzqo8fpyoH7RRV1WkIHW5VuiMipQGYnXlMcZ1Gcx10z2djD0FevuJNtBtuIzQUDjsuJ+DMiwHTcGPOR/CEp391VSttxfaZrFuUTYUlnNBefBsv1laq7GJavw4AQ0rCrFFWo1Eli8jF9gMeEd9UflOdkQXm+yFoc/ROqGoQi53bWmnErjoGEm7diygIek/Ji2RnO66bqYhKyOL/3Y7x0hPIa9rOX6uKGzaSq8wWFlsTRcYG+W36Tr+TOp+l8PV527GrtVf3in95+B21XRSyhXmlfwDDT9oc/RCyjP3nySdbtdLBO3yWc9qvWs6yVZ7O05T8tzzO3vlZIb2I3v//ivU9W/IU9aH
 sidebar_class_name: 'get api-method'
 info_path: ads/api/reference/optiview-ads-api
 custom_edit_url: null
@@ -33,8 +33,8 @@ Get /channels/\{channelId\}/events/\{eventId\}
 
 <ParamsDetails
   parameters={[
-    { description: 'Identifier of the channel.', in: 'path', name: 'channelId', required: true, schema: { type: 'string' } },
-    { description: 'Identifier of the event.', in: 'path', name: 'eventId', required: true, schema: { type: 'string' } },
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'eventId', required: true, description: 'Identifier of the event.' },
   ]}
 ></ParamsDetails>
 
@@ -43,24 +43,24 @@ Get /channels/\{channelId\}/events/\{eventId\}
 <StatusCodes
   responses={{
     '200': {
+      description: 'Default Response',
       content: {
         'application/json': {
           schema: {
-            additionalProperties: false,
+            type: 'object',
             properties: {
-              createdAt: { description: 'Timestamp when the event was created, as an ISO 8601 datetime string.', type: 'string' },
+              id: { type: 'string', description: 'Unique event identifier within the channel.' },
+              name: { type: 'string', description: 'Human-readable display name for the event.' },
               description: { description: 'Free-text description of the event.', type: 'string' },
-              endDate: { description: 'Event end time, as an ISO 8601 datetime string.', type: 'string' },
-              id: { description: 'Unique event identifier within the channel.', type: 'string' },
-              name: { description: 'Human-readable display name for the event.', type: 'string' },
-              startDate: { description: 'Event start time, as an ISO 8601 datetime string.', type: 'string' },
+              startDate: { type: 'string', description: 'Event start time, as an ISO 8601 datetime string.' },
+              endDate: { type: 'string', description: 'Event end time, as an ISO 8601 datetime string.' },
+              createdAt: { type: 'string', description: 'Timestamp when the event was created, as an ISO 8601 datetime string.' },
             },
             required: ['id', 'name', 'startDate', 'endDate', 'createdAt'],
-            type: 'object',
+            additionalProperties: false,
           },
         },
       },
-      description: 'Default Response',
     },
   }}
 ></StatusCodes>
