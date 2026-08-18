@@ -42,7 +42,7 @@ Dashboard: **Ads → Channels → New**. Or via the API:
 curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
-  -H 'X-Org-ID: org_123' \
+  -H 'X-Org-ID: <org-id>' \
   -d '{
     "name": "Sports main",
     "timebase": "wallclock"
@@ -77,7 +77,7 @@ const sdk = new OptiViewAds({
 });
 
 await sdk.startSession({
-  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/org_123/channels/CHANNEL-ID',
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/<org-id>/channels/<channel-id>',
 });
 ```
 
@@ -92,10 +92,10 @@ Dashboard: open the channel → **Breaks → Schedule now**. Or via the API, sch
 ```bash
 export BREAK_START="$(date -u -d '+5 minutes' '+%Y-%m-%dT%H:%M:%S.000Z')"
 
-curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/CHANNEL-ID/breaks' \
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
-  -H 'X-Org-ID: org_123' \
+  -H 'X-Org-ID: <org-id>' \
   -d "{
     \"start\": \"$BREAK_START\",
     \"duration\": 30,
