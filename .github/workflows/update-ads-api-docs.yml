@@ -1,0 +1,100 @@
+name: Update Ads API reference
+on:
+  # Triggered from the Ads service repository whenever its OpenAPI contract changes:
+  #   gh api repos/THEOplayer/documentation/dispatches \
+  #     -f event_type=update-ads-api-docs \
+  #     -f 'client_payload[ref]=<git-ref-of-the-contract>'
+  repository_dispatch:
+    types: [update-ads-api-docs]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref of the Ads OpenAPI contract to publish
+        required: false
+        default: main
+        type: string
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      # The branch that will receive the regenerated API reference (will be created if it doesn't exist)
+      # Will automatically open a new PR (if no PR exists yet)
+      UPDATE_BRANCH: update-ads-api-docs
+      ADS_OPENAPI_REF: ${{ github.event.client_payload.ref || inputs.ref || 'main' }}
+    steps:
+      - name: Create app token
+        uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ vars.THEOPLAYER_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.THEOPLAYER_BOT_PRIVATE_KEY }}
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          fetch-depth: 1
+      - name: Configure Git user
+        run: |
+          git config user.name 'theoplayer-bot[bot]'
+          git config user.email '873105+theoplayer-bot[bot]@users.noreply.github.com'
+      - name: Create or checkout update branch
+        # language=bash
+        run: |
+          if git fetch --depth 1 origin refs/heads/$UPDATE_BRANCH ; then
+            git checkout -b $UPDATE_BRANCH FETCH_HEAD
+          else
+            git checkout -b $UPDATE_BRANCH HEAD
+          fi
+      - name: Setup Node.JS
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: ./package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Regenerate Ads API reference
+        run: npm run refresh-ads-api-docs
+        env:
+          ADS_OPENAPI_TOKEN: ${{ secrets.ADS_OPENAPI_TOKEN }}
+      - name: Check for changes
+        id: check_changes
+        # language=bash
+        run: |
+          if [[ -z "$(git status --porcelain ads/api/reference)" ]]; then
+            echo "No API reference changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit and push changes
+        if: ${{ steps.check_changes.outputs.changed }}
+        # language=bash
+        run: |
+          git add ads/api/reference
+          git commit -m "Update Ads API reference ($ADS_OPENAPI_REF)"
+          git push --force origin HEAD:$UPDATE_BRANCH
+      - name: Check if pull request already exists
+        if: ${{ steps.check_changes.outputs.changed }}
+        id: check_pr_exists
+        # language=bash
+        run: |
+          pr_count=$(gh pr list --base main --head "$UPDATE_BRANCH" --state open --limit 1 --json number --jq length)
+          if ((pr_count > 0)); then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+      - name: Create pull request
+        if: ${{ steps.check_changes.outputs.changed && !steps.check_pr_exists.outputs.exists }}
+        # language=bash
+        run: |
+          gh pr create \
+            --base main \
+            --head "$UPDATE_BRANCH" \
+            --title "Update Ads API reference" \
+            --body "This PR regenerates the OptiView Ads API reference from the latest OpenAPI contract."
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}

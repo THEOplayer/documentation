@@ -21,18 +21,24 @@ If you're looking to contribute to the developer documentation itself, see https
 
 ### Ads API reference
 
-The V2 Ads API reference is generated from the commit-pinned `openapi.json` in
-`Dolby-OptiView/optiview-ads`. The generated MDX pages are committed, but the
-fetched spec is not. Private GitHub fetches require `ADS_OPENAPI_TOKEN`,
-`GITHUB_TOKEN`, or `GH_TOKEN` with `contents:read` access to `optiview-ads`.
+The V2 Ads API reference is generated from the Ads service's `openapi.json`
+(see `scripts/fetch-ads-openapi.mjs` for the source location). The generated
+MDX pages are committed, but the fetched spec is not. Private GitHub fetches
+require `ADS_OPENAPI_TOKEN`, `GITHUB_TOKEN`, or `GH_TOKEN` with
+`contents:read` access to the source repository.
 
-To refresh the published contract, update `DEFAULT_SPEC_REF` in
-`scripts/fetch-ads-openapi.mjs`, then run:
+The reference is kept in sync by the `update-ads-api-docs` workflow: the Ads
+service repository triggers a `repository_dispatch` event (type
+`update-ads-api-docs`, optionally with `client_payload.ref`) whenever its
+contract changes, and the workflow regenerates the pages and opens a PR. It
+can also be run manually from the Actions tab.
+
+To refresh locally:
 
 ```bash
 npm run refresh-ads-api-docs
 npm run build
 ```
 
-Use `ADS_OPENAPI_REF` to validate another remote commit or branch, or
+Use `ADS_OPENAPI_REF` to validate a specific remote commit or branch, or
 `ADS_OPENAPI_SPEC_URL=/path/to/openapi.json` for a local checkout.
