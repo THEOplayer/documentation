@@ -28,7 +28,7 @@ It is possible to update the default layout value on the signaling service. This
 
 When scheduling ad breaks through the signaling service API it is possible to choose the layout of the ad break. The passed layout will be used, unless it is left `undefined`. In this case the default layout is still used.
 
-For more information on the scheduling API refer to the following section: [Scheduling breaks through the signaling service](/ads/how-to-guides/scheduling-breaks/#using-the-optiview-ads-service-rest-api).
+For more information on the scheduling API refer to the following section: [Scheduling breaks through the signaling service](/ads/v1/how-to-guides/scheduling-breaks/#using-the-optiview-ads-service-rest-api).
 
 ## Override the layout through the player
 

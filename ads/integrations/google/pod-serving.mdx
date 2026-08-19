@@ -77,7 +77,7 @@ Google performs the decisioning, so no asset URI is needed: once Google has deci
 
 The optional `assetParameters` map contains the [Google ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`) for the break. OptiView Ads forwards them to Google when the break is announced, and delivers them to the player through the Break Manifest so they are included on the pod request.
 
-Players can extend these parameters: the OptiView player SDKs accept `adTagParameters` on the ad description (`TheoAdDescription`). When the same parameter is set both on the break and on the player, the player-side value wins. See [Ad tag parameters](../../how-to-guides/ad-tag-parameters.md) for the player-side API on each platform.
+Players can extend these parameters: the OptiView player SDKs accept `adTagParameters` on the ad description (`TheoAdDescription`). When the same parameter is set both on the break and on the player, the player-side value wins. See [Ad tag parameters](../../how-to-guides/ad-tag-parameters.mdx) for the player-side API on each platform.
 
 As a rule of thumb:
 
@@ -144,12 +144,12 @@ Additionally, creating a pod break that starts too close to the live point is re
 
 ## Related resources
 
-| Resource                                                      | Relationship                                                             |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [Google Ad Manager](./index.mdx)                              | The prerequisites shared by both Google delivery modes.                  |
-| [Google DAI](./dai.mdx)                                       | Server-side (SSAI) delivery for platforms without server-guided support. |
-| [Channels](../../concepts/channels.mdx)                       | Hold the custom asset key used for Google Pod Serving.                   |
-| [Breaks](../../concepts/breaks.mdx)                           | Carry the vendor asset that Google uses to make ad decisions.            |
-| [Break Manifest](../../concepts/break-manifest.mdx)           | The manifest that announces the channel's breaks to players.             |
-| [Ad tag parameters](../../how-to-guides/ad-tag-parameters.md) | Passing ad tag parameters from the player.                               |
-| [Player integration](../../player-integration/index.mdx)      | Set up a player with pod serving.                                        |
+| Resource                                                       | Relationship                                                             |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [Google Ad Manager](./index.mdx)                               | The prerequisites shared by both Google delivery modes.                  |
+| [Google DAI](./dai.mdx)                                        | Server-side (SSAI) delivery for platforms without server-guided support. |
+| [Channels](../../concepts/channels.mdx)                        | Hold the custom asset key used for Google Pod Serving.                   |
+| [Breaks](../../concepts/breaks.mdx)                            | Carry the vendor asset that Google uses to make ad decisions.            |
+| [Break Manifest](../../concepts/break-manifest.mdx)            | The manifest that announces the channel's breaks to players.             |
+| [Ad tag parameters](../../how-to-guides/ad-tag-parameters.mdx) | Passing ad tag parameters from the player.                               |
+| [Player integration](../../player-integration/index.mdx)       | Set up a player with pod serving.                                        |

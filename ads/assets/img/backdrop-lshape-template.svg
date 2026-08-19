@@ -1,0 +1,38 @@
+<svg width="1160" height="720" viewBox="0 0 1160 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-shape backdrop template: a 1920 by 1080 pixel backdrop with the video window scaled towards the top-left corner, keeping a 5 percent margin and leaving a 30 percent band on the right and bottom">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4800c4"/>
+    </marker>
+  </defs>
+  <style>
+    .dim { stroke: #4800c4; stroke-width: 1.5; marker-start: url(#arrow); marker-end: url(#arrow); }
+    .leader { stroke: #4800c4; stroke-width: 1.5; fill: none; }
+    .label { font-family: Arial, sans-serif; font-size: 20px; fill: #4800c4; }
+    .win { font-family: Arial, sans-serif; font-weight: bold; fill: #FFFFFF; }
+  </style>
+
+  <!-- Backdrop -->
+  <rect x="120" y="90" width="960" height="540" rx="6" fill="#cfd0ff" stroke="#4800c4" stroke-width="2"/>
+
+  <!-- Video window (top-left, 16:9) -->
+  <rect x="168" y="117" width="624" height="351" fill="#2D3748"/>
+  <text x="480" y="292" text-anchor="middle" class="win" font-size="24">VIDEO</text>
+  <text x="480" y="322" text-anchor="middle" class="win" font-size="17" font-weight="normal">16:9</text>
+
+  <!-- Overall dimensions -->
+  <line x1="120" y1="62" x2="1080" y2="62" class="dim"/>
+  <text x="600" y="48" text-anchor="middle" class="label">1920 px</text>
+  <line x1="92" y1="90" x2="92" y2="630" class="dim"/>
+  <text x="78" y="365" text-anchor="middle" class="label" transform="rotate(-90 78 365)">1080 px</text>
+
+  <!-- 5% margins -->
+  <line x1="120" y1="103" x2="168" y2="103" class="dim"/>
+  <path d="M 144 103 L 144 660 L 200 690" class="leader"/>
+  <text x="210" y="696" class="label">5% margin</text>
+
+  <!-- 30% bands -->
+  <line x1="792" y1="292" x2="1080" y2="292" class="dim"/>
+  <text x="936" y="278" text-anchor="middle" class="label">30%</text>
+  <line x1="456" y1="468" x2="456" y2="630" class="dim"/>
+  <text x="470" y="556" class="label">30%</text>
+</svg>
