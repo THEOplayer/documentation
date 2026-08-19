@@ -1,0 +1,88 @@
+<svg width="940" height="520" viewBox="0 0 940 520" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif" role="img" aria-label="OptiView Ads layouts: Single, Double Box, L-Shape Ad, L-Shape Content, and Overlay">
+  <defs>
+    <linearGradient id="dg-content" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="dg-ad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#5B21B6"/>
+    </linearGradient>
+    <linearGradient id="dg-companion" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3730A3"/>
+      <stop offset="1" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <filter id="dg-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <g id="dg-play">
+      <circle r="17" fill="#FFFFFF" fill-opacity="0.22"/>
+      <path d="M-5 -8 L9 0 L-5 8 z" fill="#FFFFFF" fill-opacity="0.9"/>
+    </g>
+  </defs>
+
+  <!-- Row 1 -->
+  <!-- Single -->
+  <g transform="translate(20,30)">
+    <rect width="260" height="146" rx="10" fill="url(#dg-ad)" stroke="#475569" stroke-width="1.5" filter="url(#dg-shadow)"/>
+    <text x="130" y="70" text-anchor="middle" font-size="24" font-weight="700" fill="#FFFFFF" letter-spacing="2">AD</text>
+    <rect x="18" y="120" width="224" height="4" rx="2" fill="#FFFFFF" fill-opacity="0.25"/>
+    <rect x="18" y="120" width="90" height="4" rx="2" fill="#FFFFFF" fill-opacity="0.85"/>
+    <text x="130" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#E2E8F0">Single</text>
+    <text x="130" y="194" text-anchor="middle" font-size="11" fill="#94A3B8">full-screen ad</text>
+  </g>
+
+  <!-- Double Box -->
+  <g transform="translate(340,30)">
+    <rect width="260" height="146" rx="10" fill="url(#dg-companion)" stroke="#475569" stroke-width="1.5" filter="url(#dg-shadow)"/>
+    <rect x="12" y="12" width="115" height="122" rx="6" fill="url(#dg-content)"/>
+    <use href="#dg-play" x="69.5" y="73"/>
+    <rect x="133" y="12" width="115" height="122" rx="6" fill="url(#dg-ad)"/>
+    <text x="190.5" y="79" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="2">AD</text>
+    <text x="130" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#E2E8F0">Double Box</text>
+    <text x="130" y="194" text-anchor="middle" font-size="11" fill="#94A3B8">content and ad side by side</text>
+  </g>
+
+  <!-- L-Shape Ad -->
+  <g transform="translate(660,30)">
+    <rect width="260" height="146" rx="10" fill="url(#dg-companion)" stroke="#475569" stroke-width="1.5" filter="url(#dg-shadow)"/>
+    <rect x="12" y="12" width="165" height="92" rx="6" fill="url(#dg-ad)"/>
+    <text x="94.5" y="64" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="2">AD</text>
+    <text x="218" y="64" text-anchor="middle" font-size="10" fill="#C7D2FE">companion</text>
+    <text x="130" y="126" text-anchor="middle" font-size="10" fill="#C7D2FE">companion backdrop</text>
+    <text x="130" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#E2E8F0">L-Shape Ad</text>
+    <text x="130" y="194" text-anchor="middle" font-size="11" fill="#94A3B8">ad window with companion backdrop</text>
+  </g>
+
+  <!-- Row 2 -->
+  <!-- L-Shape Content -->
+  <g transform="translate(180,270)">
+    <rect width="260" height="146" rx="10" fill="url(#dg-ad)" stroke="#475569" stroke-width="1.5" filter="url(#dg-shadow)"/>
+    <rect x="12" y="12" width="165" height="92" rx="6" fill="url(#dg-content)"/>
+    <use href="#dg-play" x="94.5" y="58"/>
+    <text x="218" y="64" text-anchor="middle" font-size="10" fill="#FFFFFF" fill-opacity="0.85">ad</text>
+    <text x="130" y="126" text-anchor="middle" font-size="10" fill="#FFFFFF" fill-opacity="0.85">ad backdrop</text>
+    <text x="130" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#E2E8F0">L-Shape Content</text>
+    <text x="130" y="194" text-anchor="middle" font-size="11" fill="#94A3B8">content window with ad backdrop</text>
+  </g>
+
+  <!-- Overlay -->
+  <g transform="translate(500,270)">
+    <rect width="260" height="146" rx="10" fill="url(#dg-content)" stroke="#475569" stroke-width="1.5" filter="url(#dg-shadow)"/>
+    <use href="#dg-play" x="110" y="66"/>
+    <rect x="152" y="88" width="94" height="44" rx="6" fill="url(#dg-ad)" fill-opacity="0.92" stroke="#FFFFFF" stroke-opacity="0.35"/>
+    <text x="199" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF" letter-spacing="1">AD</text>
+    <text x="130" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#E2E8F0">Overlay</text>
+    <text x="130" y="194" text-anchor="middle" font-size="11" fill="#94A3B8">ad on top of playing content</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(276,486)">
+    <rect x="0" y="0" width="16" height="16" rx="4" fill="url(#dg-content)" stroke="#475569"/>
+    <text x="24" y="12.5" font-size="12" fill="#E2E8F0">Content</text>
+    <rect x="102" y="0" width="16" height="16" rx="4" fill="url(#dg-ad)"/>
+    <text x="126" y="12.5" font-size="12" fill="#E2E8F0">Ad</text>
+    <rect x="170" y="0" width="16" height="16" rx="4" fill="url(#dg-companion)" stroke="#475569"/>
+    <text x="194" y="12.5" font-size="12" fill="#E2E8F0">Companion backdrop</text>
+  </g>
+</svg>
