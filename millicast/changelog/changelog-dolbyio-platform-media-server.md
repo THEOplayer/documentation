@@ -2,6 +2,23 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-08-17
+
+### Media Server
+
+<!-- 3.5.1 -->
+
+#### Features
+
+- Improved RTMP diagnostics for RTMP contribution, RTMP pull, and RTMP re-streams, so intermittent connection issues can be investigated faster.
+
+#### Fixes
+
+- Fixed a bug where RTMP contribution could intermittently disconnect 30 seconds after the broadcast started, even though media was still being received.
+- Fixed an issue where a viewer could connect to a live stream successfully but receive no media.
+- Fixed a memory leak on RTMP contribution nodes, where connections that ended immediately after being accepted were not cleaned up.
+- General stability and reliability improvements.
+
 ## 2026-08-13
 
 ### Media Server
