@@ -51,17 +51,45 @@ Disabling token security makes the token optional, but it does not make the CDN 
 
 The JWT token supports a custom `optiview` claim that enables fine-grained access control. When present, the claim restricts token usage based on channel, geography, or device type.
 
-| Property | Type       | Description                                                                                                                                                                                                                                                                                                                                     |
-| -------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ch`     | `string[]` | Channel ID(s). If present, the token can exclusively be used for a channel in this list.                                                                                                                                                                                                                                                        |
-| `cc`     | `string[]` | Country code(s) in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) format (e.g. `"US"`, `"BE"`). If present, the token can exclusively be used for a country in this list.                                                                                                                                                       |
-| `rgn`    | `string[]` | Region code(s) using the subdivision codes defined in [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2), only supported for the United States and Canada regions (e.g. `"US-CA"`, `"US-NY"`). If present, the token can exclusively be used for a region in this list. If the viewer's region cannot be determined, the request is denied. |
-| `dma`    | `number[]` | DMA (Designated Market Area) code(s), only supported for the United States and Canada (e.g. `501`, `803`). If present, the token can exclusively be used for a DMA region in this list.                                                                                                                                                         |
-| `hw`     | `string[]` | Device type(s). If present, the token can exclusively be used by a device type in this list. Possible values: `"desktop"`, `"mobile"`, `"tv"`. If the viewer's device type cannot be determined, this restriction is skipped.                                                                                                                   |
-| `tid`    | string     | Tracking ID. A group identifier string used to correlate viewers.                                                                                                                                                                                                                                                                               |
-| `cvd`    | string     | Custom viewer data. Arbitrary string attached to the session, e.g. an individual identifier to uniquely identify a viewer.                                                                                                                                                                                                                      |
+| Property | Type       | Description                                                                                                                                                                                                                   |
+| -------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ch`     | `string[]` | Channel ID(s). If present, the token can exclusively be used for a channel in this list.                                                                                                                                      |
+| `geo`    | `object`   | Geographic restrictions (country, region, DMA), combined into a single allow-list. See [Geo restrictions](#geo-restrictions).                                                                                                 |
+| `hw`     | `string[]` | Device type(s). If present, the token can exclusively be used by a device type in this list. Possible values: `"desktop"`, `"mobile"`, `"tv"`. If the viewer's device type cannot be determined, this restriction is skipped. |
+| `tid`    | string     | Tracking ID. A group identifier string used to correlate viewers.                                                                                                                                                             |
+| `cvd`    | string     | Custom viewer data. Arbitrary string attached to the session, e.g. an individual identifier to uniquely identify a viewer.                                                                                                    |
+| `cc`     | `string[]` | **Deprecated** — use `geo.cc` instead. Country code(s), evaluated as part of the [geo restrictions](#geo-restrictions).                                                                                                       |
+| `rgn`    | `string[]` | **Deprecated** — use `geo.rgn` instead. Region code(s), evaluated as part of the [geo restrictions](#geo-restrictions).                                                                                                       |
+| `dma`    | `number[]` | **Deprecated** — use `geo.dma` instead. DMA code(s), evaluated as part of the [geo restrictions](#geo-restrictions).                                                                                                          |
 
-All properties are optional. When a property is omitted, no restriction is applied for that dimension.
+All properties are optional. When a property is omitted, no restriction is applied for that dimension. Every property that is present must be satisfied: a token restricted to a channel _and_ a device type only works for that channel on that device type.
+
+#### Geo restrictions
+
+The `geo` object groups the geographic restrictions:
+
+| Property | Type       | Description                                                                                                                                                                                |
+| -------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cc`     | `string[]` | Country code(s) in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) format (e.g. `"US"`, `"BE"`).                                                                            |
+| `rgn`    | `string[]` | Region code(s) using the subdivision codes defined in [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2), only supported for the United States and Canada (e.g. `"US-CA"`, `"US-NY"`). |
+| `dma`    | `number[]` | DMA (Designated Market Area) code(s), only supported for the United States and Canada (e.g. `501`, `803`).                                                                                 |
+
+Together, the properties of `geo` form a single allow-list with OR semantics: the request is allowed when the viewer's country, region, **or** DMA code matches any of the listed values, and denied only when none of them do. An omitted property simply contributes no matches. For example:
+
+```json
+"geo": {
+  "cc": ["CA", "GB"],
+  "rgn": ["US-AK", "US-AL"]
+}
+```
+
+allows viewers in Canada, in Great Britain, and in the US states of Alaska and Alabama; viewers anywhere else — including all other US states — are denied. To restrict playback to specific US states, list those states in `rgn` and do not list `"US"` in `cc`.
+
+If the viewer's region or DMA code cannot be determined, those values simply don't match; the request is denied unless another `geo` property matches.
+
+::::caution Deprecated top-level geo claims
+The top-level `cc`, `rgn` and `dma` properties are deprecated in favor of the `geo` object. They keep working, but are now evaluated with the same OR semantics as the properties of a `geo` object — previously each was an independent restriction that all had to be satisfied. When a `geo` object is present, the top-level `cc`/`rgn`/`dma` properties are ignored entirely, so do not combine both. New integrations should use `geo`.
+::::
 
 #### Device type mapping
 
@@ -82,9 +110,10 @@ The `hw` device types are derived from the viewer's `User-Agent` header:
   "exp": 1672531200,
   "optiview": {
     "ch": ["channel_1", "channel_2"],
-    "cc": ["US"],
-    "rgn": ["US-CA", "US-NY"],
-    "dma": [807, 501],
+    "geo": {
+      "cc": ["CA", "GB"],
+      "rgn": ["US-AK", "US-AL"]
+    },
     "hw": ["mobile", "tv"],
     "tid": "group-abc",
     "cvd": "viewer-98765"
