@@ -9,7 +9,7 @@
   <!-- Origins -->
   <rect x="24" y="176" width="168" height="78" rx="10" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.5"/>
   <text x="108" y="205" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A8A">Live origin(s)</text>
-  <text x="108" y="226" text-anchor="middle" font-size="11" fill="#334155">HLS / DASH / HESP</text>
+  <text x="108" y="226" text-anchor="middle" font-size="11" fill="#334155">HLS / DASH</text>
   <text x="108" y="241" text-anchor="middle" font-size="11" fill="#334155">manifest + markers</text>
 
   <!-- Channel -->

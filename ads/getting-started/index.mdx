@@ -91,27 +91,27 @@ A [break](/ads/concepts/breaks) describes an ad opportunity: when it starts, how
 Dashboard: open the channel → **Breaks → Schedule now**. Or via the API, scheduling a 30-second break a few minutes from now:
 
 ```bash
-export BREAK_START="$(date -u -d '+5 minutes' '+%Y-%m-%dT%H:%M:%S.000Z')"
-
 curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/<channel-id>/breaks' \
   -u "$ADS_API_KEY:$ADS_API_SECRET" \
   -H 'Content-Type: application/json' \
   -H 'X-Org-ID: <org-id>' \
-  -d "{
-    \"start\": \"$BREAK_START\",
-    \"duration\": 30,
-    \"variant\": {
-      \"format\": \"single\",
-      \"assets\": [
+  -d '{
+    "start": "<start-time>",
+    "duration": 30,
+    "variant": {
+      "format": "single",
+      "assets": [
         {
-          \"type\": \"vast\",
-          \"mediaType\": \"video\",
-          \"uri\": \"https://cdn.example.com/vast.xml\"
+          "type": "vast",
+          "mediaType": "video",
+          "uri": "https://cdn.example.com/vast.xml"
         }
       ]
     }
-  }"
+  }'
 ```
+
+Replace `<start-time>` with an ISO 8601 UTC timestamp a few minutes in the future, for example `2026-01-01T12:00:00.000Z`.
 
 Once you schedule breaks regularly, [templates](/ads/concepts/templates) let you preconfigure the break payload so scheduling becomes a one-liner.
 
