@@ -102,12 +102,6 @@ const sidebars: SidebarsConfig = {
           label: 'SDK events',
           customProps: { icon: '🔔' },
         },
-        {
-          type: 'link',
-          label: 'Web',
-          customProps: { icon: 'web' },
-          href: 'https://optiview.dolby.com/docs/theoplayer/v11/api-reference/web/interfaces/TheoAdDescription.html',
-        },
       ],
     },
   ],
