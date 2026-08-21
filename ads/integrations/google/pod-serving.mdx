@@ -133,12 +133,15 @@ A Google pod break can only be punched after Google has decisioned it — that i
 
 A break that fails ends up in the `ERROR` state with an `errorReason` explaining what went wrong:
 
-| `errorReason`                | What it means                                                                                                                                               |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CUSTOM_ASSET_KEY_NOT_FOUND` | The channel's custom asset key is not registered in Google Ad Manager. Register the key as a live stream in GAM, or correct the channel's custom asset key. |
-| `UNKNOWN_DAI_API_ERROR`      | Google returned an error that could not be mapped to a more specific reason. Verify your Google Ad Manager configuration, or contact your account team.     |
-| `SCHEDULING_WINDOW_MISSED`   | The break passed its scheduling window before it could be announced to Google. Schedule pod breaks further ahead of their start time.                       |
-| `UNKNOWN`                    | An unexpected error occurred. Contact your account team.                                                                                                    |
+| `errorReason`                             | What it means                                                                                                                                                      |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `CUSTOM_ASSET_KEY_NOT_FOUND`              | The channel's custom asset key is not registered in Google Ad Manager. Register the key as a live stream in GAM, or correct the channel's custom asset key.        |
+| `UNKNOWN_DAI_API_ERROR`                   | Google returned an error that could not be mapped to a more specific reason. Verify your Google Ad Manager configuration, or contact your account team.            |
+| `INVALID_SERVICE_ACCOUNT_CREDENTIALS`     | Your organization's Google service account credentials are invalid or malformed. Verify the configured service account key.                                        |
+| `SERVICE_ACCOUNT_CREDENTIALS_UNAVAILABLE` | Your organization's Google service account credentials could not be found. Verify your organization's Google integration.                                          |
+| `SERVICE_ACCOUNT_CREDENTIALS_REJECTED`    | Google rejected your organization's service account credentials — the key may have been revoked or the service account disabled. Upload a new service account key. |
+| `SCHEDULING_WINDOW_MISSED`                | The break passed its scheduling window before it could be announced to Google. Schedule pod breaks further ahead of their start time.                              |
+| `UNKNOWN`                                 | An unexpected error occurred. Contact your account team.                                                                                                           |
 
 Additionally, creating a pod break that starts too close to the live point is rejected up front with the reason `DECISIONING_MARGIN`: pod breaks must start at least the [decisioning margin](./index.mdx#decisioning-margin) after the live point, so Google has time to decision the ads.
 
