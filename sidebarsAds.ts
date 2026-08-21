@@ -96,7 +96,6 @@ const sidebars: SidebarsConfig = {
           customProps: { icon: '🛜' },
           href: '/ads/api/reference/optiview-ads-api',
         },
-
       ],
     },
   ],
