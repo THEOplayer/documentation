@@ -1,11 +1,11 @@
 ---
 id: post-organizations-integrations-organization-integration-id-verify
 title: 'Post /organizations/integrations/{organizationIntegrationId}/verify'
-description: "Verify the credentials of an organization integration: resolves the organization's stored service account credentials, parses them, and exchanges them with Google for an OAuth access token. Returns `204` when the credentials verify and `422` when they do not. The outcome is not persisted: nothing transitions `state` yet."
+description: "Verify the organization's stored service account credentials with the ad system: `204` when they verify, `422` with the reason when they do not, `502` when the check itself could not complete. The outcome is not persisted."
 sidebar_label: 'Post /organizations/integrations/{organizationIntegrationId}/verify'
 hide_title: true
 hide_table_of_contents: true
-api: eJztVMFu2zAM/RWCl7WAk7RBT74FGDAEOyRou12CAFFtJhbqSK5IO/UM//tAJ02cFC0wbMedLMkUH/neExtMiZNgC7HeYYw/Kdh1DZIRJIFScmJNzuDXYBz4sDHO/jIaC9YJbUK3jiEQ+7wi7i72w74wsPhAKTCFyiYEJkl86aSfPoLCBN7f3kZgXAr0mmTGbQ5nsLOSwTfvNznB2gctZjYpJdNsxAzin8kN4Z6kDI5hNb65W8EuI/euk2rfoGKs7sbjU1QNqQfnZQiP2kMpid8SWNYzKCiwZaE01m1m3QYkGMdWe2RYsRihFdQkQ4ywMMFsSSgwxosGOcloazBuUOqCMEaWYN0G2witcl4YyTBCZ7b6s8/e9MTxNMUIA72UNlCKsYSSogvtpl2Ta0tB9bpUoi/YENulZuPCOybW0sY3d/o5z/iV1qbMBe4Pkdi2EfqCjiXFWHiWQR+HBz0gHnzYzmCvBEYoZqNE4ayfBZcRbkky/wbS8SoZxjgyhR1Vt6Mz1FEfddR8CNuOjrhMSRms1J1IT4ZtopbCeLGMVAVtb7FUot4CH1TIPV298KOsmUihabsojPcxeKnSZD6FZ6rhqmQKqvl1Z0amJJDAVWGYdz6k10P1x6GMI4Qp7HfS2jvjZGRSCifrvCrbA5u+w5yd+eBok2Gnp3Vr30FYyTXLrBD709IOJinDZD7FCCu1f5eputWyVI+tcXrrAD33LPDXipxV3WDinZCT/2Pp34ylg4eEXmVU5MY6lbIMuVK9f1oLNZjqfYvR2SDiznInOTHC+LNBdVB0GWGmTzdeYNM8GaYfIW9bPX4pKdT7p1aZYM2TWm/RYGpZ1ynGa5Pz5YjrW+Lq/jAMr+FPBt8HNLy9L6c2rExe6g4jfKb605ncLtvenJrPHh6xbX8DgQ6fKg==
+api: eJzlVE1v2kAQ/SujuTSRFkhQevENqZeoB1CS5oKQ2NgDXsXedXbGEGr5v1djCJhEiVT12JPXno83+97zNJgRp9FV4oLHBB8putUOJCcIcW29+2018o2BJUTKgCluXEpg0zTUXiCNlJEXZwuGrZO8K7UZ8I6FygSW46ubJWxz8hrZwaYDMLC8GY+Xp4pIloPv5WUBfBADy+9X41M9pDmlz+CEqVhBGuoi0zRIQ1kVJDSEB528ljSUBI67YEWRHQtlQzRY2WhLEoqMybxBTnMqLSYNyq4iTJAlOr/G1qBTPiorORr0ttRgn5JbL7SO+2OGBiO91C5ShonEmsw7Xm87klaOIoTVB3rBnZoNsV1oN66CZ2IdbXx1o4/zjj9oZetC4O6QiW1rMFR0HCnBKrAM+jg86AHx4NPrDPYqoUGxayUKp/0uuDBYkuThDaTjVXJMcGQrN9pcj85QR33UUfMpbDs64jKldXSy60R6suzSSa0A84VRFfR684US9ZZ4r0Lu6eqlH2XNRSpt22Vhss/B9ypNZrfwTDu4qJmian4J1qvn00gCF5Vl3oaYXQ7VH4cxjhC2cj9JZ++Mk5PNKJ6s86psD1z2AXN65oOjTYadns6vQgfhpNAu00rco6MtTDKGyewWDW7U3V2nzbWOpXqU1mvVAXoWWOCfFTmbusE0eCEv/8PKOOgr9CqjqrDOK811LJSGve3nKr5qcY3mbElwZ4cT1Wgw+WqJHNheGMz1t0rm2DRPlulXLNpWP7/UFHf732Bjo7NPaot5g5ljPWeYrGzB79dPX66Lu8OiuoS/WUqf0PDmfa8W2dii1jc0+Ey7L/dlu2h7O2Q2vX/Atv0DwVFSIg==
 sidebar_class_name: 'post api-method'
 info_path: ads/api/reference/optiview-ads-api
 custom_edit_url: null
@@ -25,7 +25,7 @@ import Translate from '@docusaurus/Translate';
 
 <MethodEndpoint method={'post'} path={'/api/v1/organizations/integrations/{organizationIntegrationId}/verify'} context={'endpoint'}></MethodEndpoint>
 
-Verify the credentials of an organization integration: resolves the organization's stored service account credentials, parses them, and exchanges them with Google for an OAuth access token. Returns `204` when the credentials verify and `422` when they do not. The outcome is not persisted: nothing transitions `state` yet.
+Verify the organization's stored service account credentials with the ad system: `204` when they verify, `422` with the reason when they do not, `502` when the check itself could not complete. The outcome is not persisted.
 
 <Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
   <Translate id="theme.openapi.request.title">Request</Translate>
