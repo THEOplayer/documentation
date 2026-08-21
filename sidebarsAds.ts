@@ -96,12 +96,7 @@ const sidebars: SidebarsConfig = {
           customProps: { icon: '🛜' },
           href: '/ads/api/reference/optiview-ads-api',
         },
-        {
-          type: 'doc',
-          id: 'api/sdk-events',
-          label: 'SDK events',
-          customProps: { icon: '🔔' },
-        },
+
       ],
     },
   ],
