@@ -24,6 +24,7 @@ fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplay
 
 const PR_NUMBER = Number(process.env.DOCUSAURUS_PR_NUMBER ?? -1);
 const isProductionDeployment = process.env.NODE_ENV === 'production' && PR_NUMBER <= 0;
+const NO_INDEX = ['1', 'true'].includes((process.env.DOCUSAURUS_NO_INDEX ?? '').trim().toLowerCase());
 
 const docsConfigBase = {
   include: [
@@ -108,7 +109,7 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.DOCUSAURUS_BASE_URL || '/docs/',
   trailingSlash: true,
-  noIndex: !!process.env.DOCUSAURUS_NO_INDEX,
+  noIndex: NO_INDEX,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
