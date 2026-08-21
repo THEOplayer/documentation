@@ -1,0 +1,73 @@
+---
+id: get-channels-channel-id-detection-history-marker-detection-id
+title: 'Get /channels/{channelId}/detection/history/{markerDetectionId}'
+description: 'Get a detected ad-marker history entry by ID.'
+sidebar_label: 'Get /channels/{channelId}/detection/history/{markerDetectionId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVk1v20YQ/SuDOckAZdk9FAVvQuQGQgrYsJ1eBAEacUfixuQuvbu0ogr878WQK5q2nMRJq4uo1XDemzdfe0DFPnO6CtoaTPEjByBQHDgLrIDUuCT3wA5y7YN1e2AT3B7We5jPzjHBihyVHNh5TBcH9FnOJWF6wLCvGFP0wWmzxSZBLe4rCjkmaKiUP7OcjOFirjBBx4+1dqwwDa7m5BWtuWIT9EazA7uBkDPEd8+xSX4Wtoto1saorfkl+KiKOjoBx5l16hybpTjzlTWevTD67eJCvl46nPGG6iLAbbTEBDNrApsgtlRVhc5IbCdfvLzwRoh2/YWzIClwtmIXdAen1akMr8P5bPRj/UYMug9TZEXr9FaLPD90eKpP9y7scusZKlsU2myfy+pZwRaoe7ytC+7A3im+qwuGkFOAkkKWR789SGeVgN4Amb0U60lxrB3Tw/swW1OQLKi6YAUbZ0sIufbP+rVQ1jDsyEPmmAKrN2Ep62BOZWVTl5gu8MPt1fT+aoYJ3n2a39y0T39O539dzXD5WvzrOmS25FiBQs26YQ93OqSwik5XMKIYjhDtQzpLYBXRVjAy9nXIZwlYB6uOxgpG8Q9J7Ia0GAyS+eOauc8ZHO1eViEr0KbV2wfHVEJJRm/Yh9a1Y4rd8NLVbXvexyyl3Eb2oKuKlbDuCL6ZjJioaXgHZV2yD1RWsMvZDEtR4I4RJEAeyMD87hr++P3iEhQFDrpsY9Jme45NMxw4C+nZQbf19dFrOSS5TJCU0mJAxc2g9TdUeG7kk6CcUpxtKW45jOO49ON+5o57scZxto/fGoyBtjLasT8VBiWH3EbX7RIIOaY4oUpPni4nR6zJoQdrJj3aJKJNDidwDSboOaudDvt2nazJ62xai/fFUiTaSkCLpQzZo+GdDMZu9g3M+1TmIVTitrXCtLM5yez0Zg4PvIdR7dnJmjgDMgo8Z44DjCryfmddrPBIo4egSn/iPcZdkzOpNmdx23wdW7cdtyl+1bduS0b/Q6ejt11bG9tC6FCIl+sq6L8172CqPExv5pjgEzvfeXq6FFqV9aGktj0itCzz/5aNF4wPzzvqp+8JUarAX8OkKkgbYVy7Qrx25bMQHSWsS6n3SBoTTIe3hJ43JhiRxOS0cJcJ5tYHcXs4rMnzZ1c0jRw/1uz2XT09kdO0Fn0XB1Tay7OKnfSd2Ee3sXfP4Dv3km/EfKwZI8SfqKjlFyb4wPsXNyK51vxPlL55V/kliqdaN8smOZa9KNnZTbOMqzDwcHKraYaT5OPVPTbNv16KpnY=
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/detection/history/{markerDetectionId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/detection/history/{markerDetectionId}'} context={'endpoint'}></MethodEndpoint>
+
+Get a detected ad-marker history entry by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'markerDetectionId', required: true, description: 'Identifier of the marker detection record.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique marker detection identifier.' },
+              originId: { type: 'string', description: 'Identifier of the origin whose polling detected the marker.' },
+              markerRuleId: { description: 'Identifier of the marker rule that matched the detected marker, if any.', type: 'string' },
+              breakId: { description: 'Identifier of the break scheduled from this detection, if one was created.', type: 'string' },
+              action: {
+                type: 'string',
+                enum: ['CREATED', 'SKIPPED', 'FAILED'],
+                description:
+                  'Outcome recorded for a detected marker: `CREATED` (a break was scheduled), `SKIPPED` (no break scheduled), or `FAILED` (scheduling failed).',
+              },
+              marker: { type: 'string', description: 'The raw marker detected in the stream manifest.' },
+              reason: { description: 'Reason a detection was skipped or failed.', type: 'string' },
+              createdAt: { type: 'string', description: 'Timestamp when the marker was detected, as an ISO 8601 datetime string.' },
+            },
+            required: ['id', 'originId', 'action', 'marker', 'createdAt'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

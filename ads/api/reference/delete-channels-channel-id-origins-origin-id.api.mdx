@@ -1,0 +1,43 @@
+---
+id: delete-channels-channel-id-origins-origin-id
+title: 'Delete /channels/{channelId}/origins/{originId}'
+description: 'Delete an origin within a channel.'
+sidebar_label: 'Delete /channels/{channelId}/origins/{originId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVMtu2zAQ/BViTwlAW3XRk24GkoPRAg7Sx8XwgRbXFhGZZMiVHVfgvxerlx0XLZqgJ72Ws7MzO2pAYyyC8WSchRzusEJCoaxwweyMFUdDpbFCiaJU1mI1BQleBbVHwhAhXzUQixL3CvIG6OQRcogUjN1BkmAY0ysqQYJVe/7Y4yw0SAj4XJuAGnIKNcorLguNlszWYBBuK6jEM4ck39q2G+ddXbujU0hrPhu9sxEj9/344RNfrhXcqroi8dhXQkoSnMeguGChIQfdijzpp4mTUZJJ1ypOLtiS2rHMsOw+wVrCHql0Z6DWESohh0x5kx1m2YCcNSN0ynrsrBnAE0iIWNTB0Kk1cqOiKeY1Q63WElzYMd3VmgcfCr+y6t34F+WjByWRZ9i2CvKuBq41nj8sxBOexE0dMbBBt0JZLSIWAUnceBXj0QV9y0YPNMYWypvPeILe5RKVxnD2+WXiwm5i9G89l2GnrPnZuiDMaPK09cfYrWtbGKoYZenJ/DB4FHMdxfxhARIOGGKHdJgxLe8i7ZXlU33rPjtvUP8VwwYKZwkt/WsMez0IXyjzlTKWadWhYqhuIVYsFnOfgRyCF0FCfhnCnhm/HtduLaF0kRihaTYq4vdQpcSvn2sMp24/DioYtWG9Vg1oE/leQ75VVbxO1eVsN499/m7FXxL+h/GGHbC8AAdV1fwEEp7w9Orfwj+I/0RpiP+7GI2KpnW6CO7d/Zf7b/eQ0i/HYeEW
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/origins/{originId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/origins/{originId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete an origin within a channel.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'originId', required: true, description: 'Identifier of the origin.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

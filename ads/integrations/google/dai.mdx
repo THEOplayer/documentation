@@ -1,0 +1,92 @@
+---
+sidebar_position: 2
+sidebar_label: Google DAI
+---
+
+# Google DAI
+
+Google DAI (Dynamic Ad Insertion) is the server-side (SSAI) delivery mode for Google Ad Manager: Google stitches the ads directly into the media stream that players receive.
+
+## What is Google DAI?
+
+With server-side ad insertion, the ad content is inserted into the video stream itself before it reaches the player. The player plays one continuous stream and needs no ad-insertion logic of its own.
+
+Use Google DAI for platforms that cannot run the server-guided [Google Pod Serving](./pod-serving.mdx) flow — such as Roku and older connected TV devices. On platforms that support pod serving, prefer pod serving: it keeps the media stream untouched and enables the advanced break [layouts](../../concepts/breaks.mdx#layouts).
+
+Before you start, make sure the [Google Ad Manager prerequisites](./index.mdx) are configured for your organization.
+
+## Configure Google Ad Manager
+
+### Live streams
+
+A live stream in Google Ad Manager connects your linear stream to Google's dynamic ad insertion. Create one under **Video &gt; Live streams &gt; New live stream** and select **Linear** as the type. The live stream provides the **DAI asset key** that identifies it, and it carries the **content stream URL** and the **master ad tag**.
+
+### Content stream URL and the Dolby Ads Proxy
+
+Google DAI needs to see the ad break cues inside the stream to know where to insert ads. Because OptiView Ads schedules breaks without modifying your origin's stream, the **Dolby Ads Proxy** sits between your CDN and Google DAI: it passes your HLS stream through unchanged and inserts the ad break cue metadata (`EXT-X-DATERANGE` tags) for upcoming breaks.
+
+```text
+Customer origin ──▶ Customer CDN ──▶ Dolby Ads Proxy ──▶ Google DAI
+```
+
+Use the Dolby Ads Proxy URL for your channel's origin as the live stream's content stream URL:
+
+```text
+https://us.ads.optiview.dolby.com/proxy/v1/{organization-id}/origins/{origin-id}/google/index.m3u8
+```
+
+For the EU region, use `https://eu.ads.optiview.dolby.com/proxy/v1/`. Your account team can help you determine the exact URL for your setup.
+
+### Master ad tag
+
+The master ad tag is the ad tag URL configured on the live stream. It references your network code and the ad unit to target, so when Google inserts an ad break it knows which line items and creatives are eligible. See [Configure Google Ad Manager](./pod-serving.mdx#configure-google-ad-manager) on the Google Pod Serving page for how ad units, orders, line items, and creatives fit together — the same campaign setup applies to Google DAI.
+
+## Configure your channel
+
+Enable Google DAI on your [channel](../../concepts/channels.mdx) by creating a channel integration with the DAI asset key(s) from your Google live stream(s):
+
+```json
+{
+  "type": "SSAI",
+  "vendor": "GOOGLE",
+  "daiAssetKeys": ["si2XCsdWTB-Cz9zWftSCoQ"]
+}
+```
+
+The DAI asset key identifies the Google live stream that ad breaks are announced to. A DAI asset key can only be used on one channel within your organization.
+
+## Schedule a break
+
+Scheduling works exactly like the pod serving flow: create a [break](../../concepts/breaks.mdx) with a vendor asset and optional `assetParameters`. See [Schedule a pod break](./pod-serving.mdx#schedule-a-pod-break) — including the [required Google parameters](./pod-serving.mdx#required-google-parameters).
+
+## How the Google DAI flow works
+
+1. A break is created and, ahead of its start (within the [look-forward time](./index.mdx#look-forward-time)), OptiView Ads announces it to Google using the integration's DAI asset key.
+2. When the break's start approaches, the Dolby Ads Proxy inserts the break's cue metadata (`EXT-X-DATERANGE` tags carrying the SCTE-35 markers) into the stream served to Google DAI. The break becomes `SIGNALED` once its cue is inserted into the stream.
+3. Google DAI detects the cue, matches it with the announced break, and stitches the decisioned ads into the stream delivered to players.
+
+### Validate your stream
+
+You can validate the end-to-end setup with Google's [DAI SDK for HTML5 Video Suite Inspector](https://googleads.github.io/googleads-ima-html5-dai/vsi/). Enter your network code and DAI asset key to play your live stream through Google DAI and inspect the inserted ad breaks and the ad requests Google makes.
+
+## Troubleshooting
+
+A break that fails ends up in the `ERROR` state with an `errorReason` — see [Troubleshooting](./pod-serving.mdx#troubleshooting) on the Google Pod Serving page for the possible reasons.
+
+Common Google DAI-specific issues relate to the ad tag parameters on the ad requests:
+
+- **Missing required parameters.** Google requires `description_url` for ad serving, and `plcmt`, `vpa`, and `vpmute` for programmatic monetization. For app inventory, `rdid`, `is_lat`, `idtype`, `an`, and `msid` are also required, and `wta` is highly recommended. See [Required Google parameters](./pod-serving.mdx#required-google-parameters).
+- **Invalid `description_url` format.** The value must be URL-encoded exactly once — a double-encoded value (for example `https%253A%252F%252F...`) is invalid. Supply the plain URL and verify the encoding in the final ad request.
+
+Use the [Video Suite Inspector](#validate-your-stream) to inspect the ad requests and confirm the parameters Google receives.
+
+## Related resources
+
+| Resource                                | Relationship                                                               |
+| --------------------------------------- | -------------------------------------------------------------------------- |
+| [Google Ad Manager](./index.mdx)        | The prerequisites shared by both Google delivery modes.                    |
+| [Google Pod Serving](./pod-serving.mdx) | Server-guided (SGAI) delivery, preferred where supported.                  |
+| [Channels](../../concepts/channels.mdx) | Hold the Google DAI channel integration.                                   |
+| [Origins](../../concepts/origins.mdx)   | The stream origins proxied by the Dolby Ads Proxy.                         |
+| [Breaks](../../concepts/breaks.mdx)     | Carry the vendor asset that Google uses to make ad decisions.              |
+| [API reference](/ads/api)               | Creating and managing channels, breaks, and integrations programmatically. |

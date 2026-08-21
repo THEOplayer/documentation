@@ -1,0 +1,61 @@
+---
+id: delete-channels-channel-id-events
+title: 'Delete /channels/{channelId}/events'
+description: 'Delete /channels/{channelId}/events'
+sidebar_label: 'Delete /channels/{channelId}/events'
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVMlu2zAQ/RViTglA23XRk25u44PRAAnS5WL4QItji4lEMuTIjivo34uhFmfrooskcubxvXkzbCDgY42RPjt9gqxJvyaghoxCjRJyZwkt8ZbyvjS5IuPs7D46y2sxL7BS/EUnj5CB295jTiDBB+cxkMHIu0anV2XsirCKkM3lkKFCUCeQYLqNESlSMHYPkpOu0e6pgGzeStAY82A804AMVhotmZ3BEIXbCSpQ4AEtRUFOaCyRcCoWJEpUkYSzKEwUg8gptK18JnmdeG7alpe9CqpCwhAhW7+jtOfXSjBMxCsqQIJVFW/mhbIWy5UG+aakfxIw8O9zp9BuODl6Z2NXxY8fPvHrJcAV7lRdkrjrI5Mmrn1yaqUhg64Okx44TkZ2k65WIIHUnnXCslvYvKZ5lSDEbMCYNSNIOxtRKqTCnU/kNuCyZDBT3swO83+kR8zrYOiUCr5V0eSLmtPXGwku7FnLesNVGQK/sSldbZ6FjxYVRJ5hUxRkXQy8lra4XYkHPImLOmJg/y6FslpEzAOSuPAqxqML+nLKXvc0xiOUN18xtS9DFag0hnMbPE1c2E+MfnPmTdgra34li4QZW6BrSB6uu/NYLp9U5Uscx2g9tN4m9d7OJTqGOARuPJmfBo9ioaNY3K5AwgFD7E49zFmCd5Eqlca3p/l/5r5QMBaA8IlmvlTGMnYdSt7rXF9zdZjAHOQwEQyUPZ8OHBuucJE4qWm2KuKPULYtLz/WGE5dDxxUMGrLOtcNaBP5W0O2U2V8PVfN+eaCi7t+Ai/FX6ZNvq9o8NmyyQdV1vwHEh7w9GLOW3aj95/pdftfOhKT74xyzn9zlXJTj8Nztbxefl+ChG1/KVdOc1ZQR75O1LFj4JLU1PxprYFS2X2t9hzbofLzG4ItBOU=
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/events'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/events'} context={'endpoint'}></MethodEndpoint>
+
+Delete /channels/\{channelId\}/events
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' }]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            ids: {
+              minItems: 1,
+              type: 'array',
+              items: { type: 'string', minLength: 1 },
+              description: 'Identifiers of the events to delete. At least one is required.',
+            },
+          },
+          required: ['ids'],
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

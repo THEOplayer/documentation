@@ -1,0 +1,68 @@
+---
+id: get-channels-channel-id-origins-origin-id
+title: 'Get /channels/{channelId}/origins/{originId}'
+description: 'Get an origin by ID within a channel.'
+sidebar_label: 'Get /channels/{channelId}/origins/{originId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVl1P60YQ/SujeQJpQ6APVZU+ReL2gkoFIpf2IYrExJ7Ee7F3ze44uWnk/341thMcUi6lKg8g7Nlz5uPMWW8x5ZgEW4r1Dkf4mQXIgQ92aR3MN3B9CWsrmXVAkGTkHOdnaLCkQAULh4ij6RZjknFBONqibErGEUYJ1i2xNmgVtiTJ0KCjQl92ONcpGgz8XNnAKY4kVGxepXOdshO7sBzAL0AyfsmhNh+lbYv6T6zt0TOsZ3o2lt5Fjsr70/m5/jk8f8kLqnKB+y4SDSbeCTvRWCrL3CakscOvUQ/8QyF+/pUT0UYHX3IQ29LZ9LjY19k/OPtc7VIGu69FW9Zr/bs4b/YeJLNxLxHOvVtGEN/gVyF/H/kPcnbBUeDh/gZKn+ecqtSUYh6YniBl4USDIXJY2YQb7Bb0GJxdVeBoipfjyRUavLqZ6O9Pkzucvcm88KEg0cIIogSmoitoBI+K82jg8epm8mjAB3hUsMcmh1ZKrwd+VRXkBoEppXnOkNpY5rQBDVamAwmZY62y02P9kcy9z5ncUef+ylgyDgcTKCmITWxJwhF04hL3k2raOXhp54Js7ledFspgfbCy6fG6qphzOKL9rTsGPqQcdobQk8SvkPs1ByiYXITMLjXJHf4ZdAuhKoHzVoeBSTgdy/tq+WILjkJFCeuMXa+XsKYIHZABimpc15Nb+OXn8wtISVhswdCinmFd99d+qqtkDpxIpdsN52UkvS71k54ZpDS1miHld70VXVAeudYfg/q0WXPdNlyyDDq6ONjzDtpS4qBnTkJLdVW8bV8pWcGS+Q6lcV/JcIRDKu1wdTHcwQ63e9x62AEPtzvkGg1GTqp25NMtzinaZFwp1HRm0IelJjqdqcntAidqTK339ML3I8tESoVtolS3GnM0wfHdNTzxBk6qyEGX4hTIpRA5CSxwUlKMax/S00YZXRp7Cirt76zdbxw9Y0obgXae/m3gw3LQzPKQ8zYsydm/m/4fmmBzOSx8Q2ElV5TbUuyfltcwTiOM767R4IpDbJFWF82y+CgFNWbdUetV+YHWH6S3fbkQ/vWV2/VD+JsMy5ys6/ltK4ipNktzv3iRdkSDo77Mu+T08V5zM4OZj6II2+2cIj+EvK718XPFYdPqY0XB6lI02klt7DyrUfwPyju575buFH5wm79R3k4DTgWworzS/9DgE28OviP0Y+B/SunIpz+S0b6j9aw2O7Fqv9rX4yThUnoHj74F6v6yf/70Bev6Ow8iTwU=
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/origins/{originId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/origins/{originId}'} context={'endpoint'}></MethodEndpoint>
+
+Get an origin by ID within a channel.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'originId', required: true, description: 'Identifier of the origin.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique origin identifier.' },
+              channelId: { type: 'string', description: 'Identifier of the channel this origin belongs to.' },
+              url: { type: 'string', description: 'Manifest URL polled by the break detection service.' },
+              type: { type: 'string', enum: ['DASH', 'HLS', 'HESP'], description: 'Manifest format of a stream origin: `DASH`, `HLS`, or `HESP`.' },
+              name: { description: 'Human-readable display name for the origin.', type: 'string' },
+              enabled: { type: 'boolean', description: 'Whether this origin participates in its channel break-detection failover.' },
+              priority: { type: 'number', description: 'Failover order within the channel; lower means higher priority. Defaults to 0.' },
+              createdAt: { type: 'string', description: 'Timestamp when the origin was created, as an ISO 8601 datetime string.' },
+            },
+            required: ['id', 'channelId', 'url', 'type', 'enabled', 'priority', 'createdAt'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

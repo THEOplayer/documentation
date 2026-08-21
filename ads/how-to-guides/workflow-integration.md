@@ -4,29 +4,54 @@ sidebar_position: 1
 
 # Workflow integration
 
-For implementing OptiView Ads, the Signaling Service must be integrated within your existing video workflow. This service acts as an intermediary between the media origin and the CDN, enabling ad insertion and metadata enrichment.
+OptiView Ads is designed to integrate with your existing video workflow with minimal changes. There is no proxy or manifest manipulation service to place between your origin and your CDN: your content keeps flowing from your origin, through your CDN, to your players exactly as it does today.
 
-## Existing Video Workflow
+Integrating OptiView Ads comes down to two things:
 
-In a typical video delivery workflow, the CDN fetches the manifest directly from the media origin, and all subsequent requests for video segments are also routed from the CDN to the origin.
+1. **Provide a publicly accessible origin** so OptiView Ads can detect the ad breaks in your stream.
+2. **Integrate the OptiView Ads SDK** with your content player so it can render the breaks.
 
-![Video workflow before](../assets/img/workflow-optiview-ads-before.png).
+## Your media delivery path stays untouched
 
-## Integrating the Signaling Service
+OptiView Ads works with a side-loaded [Break Manifest](../concepts/break-manifest.mdx): a small document, served separately from your media manifest, that describes the upcoming ad breaks for a channel. Because the ad instructions travel next to your stream instead of inside it, OptiView Ads never sits in the critical path of your content delivery — your playback performance and availability are unaffected, even if you stop using the product tomorrow.
 
-By introducing the Signaling Service, the manifest requests from the CDN are intercepted before reaching the origin. The Signaling Service augments the manifest with ad break signals and any necessary metadata. Notably, video segment requests bypass the Signaling Service and continue to be fetched directly from the CDN to the origin, ensuring minimal impact on content delivery performance.
+## Provide a publicly accessible origin
 
-![Video workflow after](../assets/img/workflow-optiview-ads-after.png).
+When you create a [channel](../concepts/channels.mdx), you point it at your [origin](../concepts/origins.mdx): the publicly accessible URL of your stream. OptiView Ads reads the stream from that URL to:
 
-## Configuring the Signaling Service
+- detect ad break markers (such as SCTE-35 signals) through [marker detection](../concepts/marker-detection.mdx), and
+- read the timing metadata it needs to schedule breaks against your stream's timeline.
 
-To integrate the Signaling Service with your workflow, the properties origin and segmentOrigin are crucial when setting up a new monetized stream:
+The only requirement is that the origin is reachable over the public internet. If your origin is locked down, expose a publicly accessible endpoint for it (for example through your CDN).
 
-- `origin`: This property specifies where the original manifest should be fetched from. It points to the media origin that provides the main content.
-- `segmentOrigin`: This property ensures that the segment URLs within the augmented manifest are absolute. It defines the path from which the segments should be requested, typically directly from the origin or CDN.
-  By configuring these properties, the Signaling Service seamlessly inserts ad breaks without affecting the video segment delivery flow.
+## Integrate the OptiView Ads SDK
 
-## More information
+On the playback side, you add the [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) to your application. The SDK is player-agnostic — you bring your own player — and handles everything ad-related:
 
-- [Getting Started](/ads/getting-started/index.mdx)
-- [API reference](/ads/api/signaling/theoads-api/)
+- it polls the channel's Break Manifest,
+- schedules the breaks against your player's timeline,
+- plays the ads and renders the [layouts](../concepts/breaks.mdx#layouts), and
+- reports the [ad impressions](./ad-impressions.md).
+
+Ready-made adapters are available for the OptiView Player (THEOplayer), HLS.js, Shaka Player, ExoPlayer, AVPlayer, and more — see the platform guides for [Web](../player-integration/optiview-ads-sdk/web.mdx), [Android](../player-integration/optiview-ads-sdk/android.mdx), [iOS](../player-integration/optiview-ads-sdk/ios.mdx), and [React Native](../player-integration/optiview-ads-sdk/react-native.mdx).
+
+## How the pieces fit together
+
+1. Your origin serves your stream, publicly accessible.
+2. OptiView Ads reads the stream, detects the markers, and publishes the breaks in the channel's Break Manifest.
+3. The OptiView Ads SDK polls the Break Manifest and renders the breaks in your player.
+
+That is the whole integration for server-guided ad insertion (SGAI). For platforms where a client-side SDK is not an option — such as Roku or older connected TV devices — OptiView Ads also supports server-side ad insertion (SSAI) through [Google DAI](../integrations/google/dai.mdx).
+
+For an end-to-end walkthrough — from creating a channel to seeing a break play out — follow the [Getting started](../getting-started/index.mdx) guide.
+
+## Related resources
+
+| Resource                                              | Description                                              |
+| ----------------------------------------------------- | -------------------------------------------------------- |
+| [Getting started](../getting-started/index.mdx)       | End-to-end walkthrough of setting up OptiView Ads.       |
+| [Origins](../concepts/origins.mdx)                    | How OptiView Ads connects to your stream.                |
+| [Marker detection](../concepts/marker-detection.mdx)  | How ad break markers in your stream are detected.        |
+| [Break Manifest](../concepts/break-manifest.mdx)      | The side-loaded contract between the backend and player. |
+| [Player integration](../player-integration/index.mdx) | Integrating the OptiView Ads SDK or the OptiView Player. |
+| [Google Ad Manager](../integrations/google/index.mdx) | Monetizing breaks through Google Pod Serving or DAI.     |

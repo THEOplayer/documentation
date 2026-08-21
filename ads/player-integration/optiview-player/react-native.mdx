@@ -1,0 +1,79 @@
+---
+sidebar_position: 5
+sidebar_label: React Native
+sidebar_custom_props: { 'icon': 'react' }
+---
+
+# OptiView Ads on React Native
+
+This guide configures OptiView Ads in `react-native-theoplayer`. The underlying OptiView Player SDK version must be **11.9.x or later**.
+
+## Prerequisites
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+1. Obtain an OptiView Player license compatible with OptiView Ads from the [player portal](https://portal.theoplayer.com).
+2. Retrieve the Break Manifest URL for your channel. See the [Break Manifest endpoint](../../concepts/break-manifest.mdx#endpoint).
+3. Install `react-native-theoplayer` by following the [React Native getting started guide](/theoplayer/getting-started/frameworks/react-native/getting-started/) and enable the OptiView Ads platform feature:
+
+<Tabs queryString="platform">
+<TabItem value="android" label="Android & Android TV">
+
+Set `THEOplayer_extensionTHEOads = true` in `gradle.properties`.
+
+</TabItem>
+<TabItem value="ios" label="iOS & tvOS">
+
+Add the `THEOADS` feature flag to `react-native-theoplayer.json` (or `theoplayer-config.json`).
+
+</TabItem>
+<TabItem value="web" label="Web">
+
+Load the Google DAI library:
+
+```html
+<script src="https://imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+```
+
+</TabItem>
+</Tabs>
+
+## Step 1 — Enable OptiView Ads
+
+The platform feature flags from the prerequisites enable the OptiView Ads integration in the native player builds.
+
+## Step 2 — Configure the OptiView Ads source
+
+Set a source that combines your media stream with a `theoads` ad description:
+
+```javascript
+player.source = {
+  sources: {
+    src: 'YOUR-STREAM-URL',
+    type: 'application/x-mpegurl',
+  },
+  ads: [
+    {
+      integration: 'theoads',
+      breakManifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+      networkCode: 'NETWORK-CODE',
+      customAssetKey: 'CUSTOM-ASSET-KEY',
+      adTagParameters: { key: 'value' },
+    },
+  ],
+};
+```
+
+The media source itself is not important to OptiView Ads: it only needs to carry timing information (such as `EXT-X-PROGRAM-DATE-TIME`) that the player can schedule breaks against.
+
+The ad description properties:
+
+- `breakManifestUrl` — the channel's [Break Manifest](../../concepts/break-manifest.mdx) URL. This is the most important part: it is where the player learns about the channel's breaks.
+- `networkCode` — your Google Ad Manager network code, for [Google Pod Serving](../../integrations/google/pod-serving.mdx). See the [Google Ad Manager prerequisites](../../integrations/google/index.mdx).
+- `customAssetKey` — the channel's custom asset key, for [Google Pod Serving](../../integrations/google/pod-serving.mdx).
+- `adTagParameters` — player-side [ad tag parameters](../../integrations/google/pod-serving.mdx#ad-tag-parameters) for Google Pod Serving. Use these for values that are only known on the device, such as device identifiers; they override the break's `assetParameters` on duplicate keys.
+
+## Step 3 — Verify playback
+
+Start playback, then schedule a break through the API or dashboard and confirm that the ad plays out.

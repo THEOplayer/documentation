@@ -17,6 +17,7 @@ theoplayer_versioned_docs/*/changelog.md
 theoplayer_versioned_docs/*/static/theoplayer/*/api-reference
 ads/api/ads-client.swagger.json
 ads/api/signaling/
+ads_versioned_docs/*/api/
 adengine/static/ad-engine.yaml
 adengine/reference/
 millicast/api/
