@@ -1,0 +1,22 @@
+---
+sidebar_position: 1
+sidebar_label: Player integration
+---
+
+# Player integration
+
+To play the ad breaks you schedule with OptiView Ads, your application needs a player integration that consumes the channel's [Break Manifest](../concepts/break-manifest.mdx). There are two integration paths:
+
+## OptiView Ads SDK (recommended)
+
+The [OptiView Ads SDK](./optiview-ads-sdk/index.mdx) lets you **bring your own player**. It handles the Break Manifest logic and ad tracking/analytics for you, while your application keeps full control over content playback. It is available for Web, Android, iOS, and React Native, with ready-made adapters for popular players.
+
+This is the recommended path for any new integration.
+
+## OptiView Player (legacy)
+
+The [OptiView Player](./optiview-player/index.mdx) SDKs ship with a built-in OptiView Ads integration that handles the Break Manifest logic, the Google IMA/DAI integrations, and OptiView Ads impressions. Use this path if your application is already built on OptiView Player.
+
+:::note Stream requirement
+Whichever integration path you choose, wallclock-scheduled breaks require the stream to carry `EXT-X-PROGRAM-DATE-TIME` tags. Without them, wallclock breaks cannot be matched.
+:::

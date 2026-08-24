@@ -1,0 +1,60 @@
+---
+sidebar_position: 4
+sidebar_label: Events
+---
+
+# Events
+
+An event is a channel-scoped time window that groups the ad breaks belonging to one scheduled occurrence, such as a live game, a show, or a tournament. It gives you a single handle for the breaks around that occurrence: the breaks share the event's window, and deleting the event removes them together.
+
+Events also anchor the [break punching](./breaks.mdx#break-punching) workflow: ahead of a live occurrence you prepare breaks under the event without a start time, and during the broadcast you fire them at the exact moment.
+
+## Event identity
+
+Every event has an `id` that is unique within its channel. The `id` is optional when creating an event: if you omit it, OptiView Ads generates one for you. When you supply your own, we recommend using a UUID. For a human-readable label, use the `name` property instead — it is shown in the dashboard.
+
+## Time window
+
+An event is defined by a `startDate` and an `endDate`, both UTC ISO 8601 timestamps. `startDate` must be before `endDate`.
+
+Preparing breaks under an event is supported on **wallclock** channels. The window is enforced on the breaks scheduled under the event: the **entire** break must fit inside the window.
+
+- The break start must be at or after the event `startDate`.
+- The break end (`start` + `duration`) must be at or before the event `endDate`.
+
+A break created **without** a start time (a [cued break](./breaks.mdx#cued-breaks)) is not range-checked at creation, because its start is not known yet. Its start is set when you punch it.
+
+## Breaks under an event
+
+A break is attached to an event by setting `eventId` to the event's `id` on the break. `eventId` is optional: a break can exist on the channel without belonging to any event.
+
+:::warning Deleting an event deletes its breaks
+Deleting an event also removes every break attached to it. Delete an event only after confirming that none of its breaks are still needed.
+:::
+
+## Templates for an event
+
+[Templates](./templates.mdx) can be linked to one or more events through their `eventIds`, so a reusable break preset can be surfaced for quick scheduling under those events. Instead of creating your breaks before the event, prepare templates ahead of time and schedule breaks from them during the event.
+
+## Break punching during an event
+
+For a live occurrence you usually do not know the exact break times in advance, but you want the break fully prepared so it can fire instantly. This is what [break punching](./breaks.mdx#break-punching) is for:
+
+1. Create the event with a window that covers the occurrence, for example kickoff through the final whistle.
+2. Ahead of the occurrence, create the [templates](./templates.mdx) describing the breaks you want to run.
+3. During the event, create a cued break from a template under the event, without a `start`. OptiView Ads prepares it (including any ad decisioning) and it waits in the `CUED` state.
+4. Punch the break whenever it needs to go — for example, at half-time. Its start is set and it is announced to players right away.
+5. Repeat for the next break: cue it from a template, then punch it at the right moment.
+
+A channel holds only one cued break at a time, so punch the current cued break before cueing the next one. Do not delete a cued break unless you have cued the wrong one.
+
+Because a punch uses the current time as the break's start, punch a cued break only while the event is in progress: this keeps the break inside the event's window.
+
+## Related resources
+
+| Resource                                         | Relationship                                                                           |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)                       | The parent of an event. An event always belongs to one channel.                        |
+| [Breaks](./breaks.mdx)                           | Prepared under an event via `eventId` and scheduled within the event's window.         |
+| [Templates](./templates.mdx)                     | Reusable break presets that can be linked to events for quick scheduling.              |
+| [Integrations](../integrations/google/index.mdx) | Channel-level delivery integrations, such as Server-Side Ad Insertion with Google DAI. |

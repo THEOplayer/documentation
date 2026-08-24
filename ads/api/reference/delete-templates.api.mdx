@@ -1,0 +1,59 @@
+---
+id: delete-templates
+title: 'Delete /templates'
+description: 'Bulk delete templates by IDs.'
+sidebar_label: 'Delete /templates'
+hide_title: true
+hide_table_of_contents: true
+api: eJyFVMFu2zAM/RWBpxZQkmXYybd0ySFYgRZdt4uRA2MzjlpbUiU6qWf43wfaiZN2h+XiWHok3yMf3UJOMQvGs3EWEriry1eVU0lMiqnyJTJFtW3UehmnoCHQW02R71zeQNL2ryZQDgmHmjRkzjJZliv0vjQZSt7ZS5TkLcRsTxXKP248QQJu+0IZgwYfnKfAhqLcmrx/VMaumaoIyVyfIzAEbECDGS7GTJGDsQVoCbonW/AeknmnP8lb52TZ7AyFqNxO8f5aJbuT8qlasCoJIytnSZmozjqn0HX6SnXaU9103XAcvbNxkPD1yzd5fCy/pB3WJaunE7LPJsL7Nq1zSGBgMBlZgQbGIkqp5/Fso6Ei3rtLgLQQRTPM0JvZYT67zhApq4PhBpK0hS1Gky1qAacbDS4UUjjddJsL8KcMahByBR+bvWf2krZHQTJg4HOzF49r9UqNuqkjBYsV3Sq0uYqUBWJ14zHGowv57RS6kcZYAr35Qf2gJdWeMKcAGiQNJPA+caGYmPyfmg+hQGv+9P1UZpz2MDex4dPFwKt3rHxJo+HSs4k2nZTduZ6OYYHAg2fz29BRLfKoFo9r0HCgEIeqh7lI8C5yhb3RTzSXwyJ9mMUHvu1lY/67eqfGML3zzJdorNSsQylZhtmn0jUhNhf4tVv2LrLct+0WI/0KZdfJ8VtNoRlscMBgcCtSU5F/arj45ZUaSOD7wHPyLCwEXtbDmD5teXftzeXqfvW8Ag3b0/eicrlEBTzKtwSPkADIBkh877b+rIUSbVFjIdghq/z+ApR9mKw=
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /templates'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/templates'} context={'endpoint'}></MethodEndpoint>
+
+Bulk delete templates by IDs.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            ids: {
+              minItems: 1,
+              type: 'array',
+              items: { type: 'string', minLength: 1 },
+              description: 'Identifiers of the templates to delete. At least one is required.',
+            },
+          },
+          required: ['ids'],
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

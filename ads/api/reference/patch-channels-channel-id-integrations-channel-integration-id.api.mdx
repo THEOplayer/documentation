@@ -1,0 +1,102 @@
+---
+id: patch-channels-channel-id-integrations-channel-integration-id
+title: 'Patch /channels/{channelId}/integrations/{channelIntegrationId}'
+description: 'Update a channel integration.'
+sidebar_label: 'Patch /channels/{channelId}/integrations/{channelIntegrationId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V11v4jgU/StXfqJSgLIPq1X2KdtWs2hGatV29gUh9RJfiKeJndoONIvy30c3CSRAv3Znpn0B+/rcz3NstkKSi63KvTJahOJrLtETIMQJak0pKO1pZZG3RyIQlp4Kcv4vI0sRbuuvypIUobcFBSI22pP2vIV5nqq4Pjj+5hh8K1ycUIb8yWi6Xopw1v/ky5xEKMziG8VeBCK3JifrFTk+0ezurZy3Sq9EIEgXmQhn4u4umop5cJTPxWkawAggFZtlSqM3dgQPfPwhBEd2TXbolCRACUo7joBzrwKxJi2NfSuIT9fXn75cnYYR9aCggRnBQ2P9EMInY1YpwWU0hcFlqTFTMUQSprsjZ7V7iSpyjvxnKuuKHLroYSBbwSOVDpbGgk/oIK8B53oGOfpkBJGHlNB5MJpAOdh19E+QRdNAapDQEljKzJrkCK4wTngZMixhgfEjoIfMtDAvzA5slE+UBtRg7Aq1+nc/UpnSU0+ZE+Ek2BUWrcVSBEI1G6cFz5T+QnrlExFOqqoKepM4a4z37Toq3Lzi//pMjhYz8mRdPX/ddB56qwKhuMJcMBEIjRlvtklOpQhOaHDYmakk7dVSkQWzrLvRnuWu/l+3XWl/JIJDeldzBnK50a7h3G/n56eDdklLLFIPt62l+A+0f5viSr7U6iOB0uqpeHnEVJdlO21Hte717F0/r5fMJ8od+F1QavTKgTe1k58rVCO4KKwl7dMSjE7LVqlg8JpSnf0KqTqOoVUuGHSq8+s0SnxUFpjTsSX0JCP/fovvVUbOY5bDJiH9Gi1ggw5a1ADQsYRN767hj9/PJ8CXpVcZQeNiJI6lSDE5+1JxrE1dvPNAoJSKfWJ60yPGElNHVSNZvLpjfS0NcTJs4d1w72fYi79bPpIMjyvWPdFbdxxERj4xe3QmKQtQKMaYq/F6Mt65G2/3/qpx32G30fdYiUA4igurfFnL7QKdiqOCsWfzQBi74pxmc1ahneEdK0cjDj3zfWMT73OGra1E2Nic9Dm6mdZ31aBwZFlGzwC1BEexJQ+DHJ3bGCubAW7D2LvAXH2meuYYKiGUZDs1fh4auxrWTT70ed275HrC1AwI6+Jt95C6esYsT/uaUUtER+IdV4/pNdtN9ry+K5amhlCescR17tU/ijYQSQfRTYNnXRPeesK55sb5DGuJbvO54ZbDj7T4oAzb7mZ492XZpu7p2Y/zFJXmCAubMkozgTNuBqcx6TjlRCDCPr/6Ufb3DoZ/HojEOM+Q2+0CHX21aVXx8lNBtmwGco1W4YJrOdsKqRx/li0b38hzcNvS/wzeuPhfyXc3dJonbo1pwd9EIB6pPHhy8Lvh54b0oXZ8LLyDUlc8my1tuJCN6UUT2/C+VcMW6uTxwHk2J6I4pty/advXrpvo/uJvEYhF+0MlM5IPWdzwYwk3Tdwmb+aEf8nw2lakqFcFrti2AeW/79EsjPo=
+sidebar_class_name: 'patch api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Patch /channels/{channelId}/integrations/{channelIntegrationId}'}></Heading>
+
+<MethodEndpoint method={'patch'} path={'/api/v1/channels/{channelId}/integrations/{channelIntegrationId}'} context={'endpoint'}></MethodEndpoint>
+
+Update a channel integration.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'channelIntegrationId', required: true, description: 'Identifier of the channel integration.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          oneOf: [
+            {
+              oneOf: [
+                {
+                  type: 'object',
+                  properties: {
+                    type: {
+                      type: 'string',
+                      enum: ['SSAI'],
+                      description: 'Channel integration type discriminator. `SSAI`: server-side ad insertion.',
+                    },
+                    vendor: { type: 'string', enum: ['GOOGLE'], description: 'Ad insertion vendor. `GOOGLE`: Google DAI (Dynamic Ad Insertion).' },
+                    daiAssetKeys: {
+                      description:
+                        'Google DAI asset keys for the server-side (SSAI) path. At least one is required; duplicate keys are removed. Each key may back at most one channel integration within an organization.',
+                      minItems: 1,
+                      type: 'array',
+                      items: { type: 'string', minLength: 1 },
+                    },
+                  },
+                  required: ['type', 'vendor', 'daiAssetKeys'],
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique channel integration identifier within the channel.' },
+              channelId: { type: 'string', description: 'Identifier of the channel this integration belongs to.' },
+              type: { type: 'string', enum: ['SSAI'], description: 'Channel integration type. Currently only `SSAI` (server-side ad insertion).' },
+              vendor: { type: 'string', enum: ['GOOGLE'], description: 'Ad insertion vendor. Currently only `GOOGLE` (Google DAI).' },
+              daiAssetKeys: { description: 'Google DAI asset keys for the server-side (SSAI) path.', type: 'array', items: { type: 'string' } },
+              createdAt: { type: 'string', description: 'Timestamp when the channel integration was created, as an ISO 8601 datetime string.' },
+            },
+            required: ['id', 'channelId', 'type', 'vendor', 'createdAt'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

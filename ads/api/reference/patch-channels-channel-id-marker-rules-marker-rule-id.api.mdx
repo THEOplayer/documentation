@@ -1,0 +1,104 @@
+---
+id: patch-channels-channel-id-marker-rules-marker-rule-id
+title: 'Patch /channels/{channelId}/markerRules/{markerRuleId}'
+description: 'Update a marker rule.'
+sidebar_label: 'Patch /channels/{channelId}/markerRules/{markerRuleId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJztV11v6kYQ/SurfWkiGUj6UFV+owlq0E1vopC0V0JIDPaA98bedXbHcCniv1eza8AmX+1V+nZ5Anv2zJmvM8tGpugSq0pSRstYPpQpEAoQBdhHtMJWOXZlJC0+VejoN5OuZbzxP5XFVMZkK4xkYjShJn4FZZmrBBiv99Ux6Ea6JMMC+ButS5SxNLOvmJCMZGlNiZYUOm9HFqG49zZ7W0dW6YWMJOqqkPFYXl2P5CQ6Ij7yRwWfabMXnhA6QaYrLiprUVO+FkbnazG9uh5Nu3Ib1b5e93nxMJCRvOzfD+76n38fPPd/dT3aefUcyIgCKMliMb14GEzFyXTw5b7zpeN/ECzcqTBWTPeIB4vGI2/n+SVGp4pduZeyCGl4CfltK5/taLbHnD/hurOEvEJxgA+sMRUJOOwo7VA7RWqJ+VrAApR2JChDkSJhQpjWQf/kBBBZNasIXVf087yFWTkKwOKk//nyVMyN9Si+QGQEWbVYoA2lwKLMgXCYvlSQQulr1AvKZHx+HM8wRU1qrtAKM/f4O6y6CVKxylALypQLrkOwzvtFDbMcvdMU51DltOvutpe/MqSMy7xHUU4g5xE4H2nFTMXMIjzWWVJGd8VlwHQh3MpPVR3czJgcQcut/0SyBAsFElon4/EL03Oop2JCJVAmI6mh4JdJBlpjPkzrqW2O6Xvpqs9yOv6r29AGd1WO3+W5JTfbCQO40mgX+vjns7NQliZInVBxV1vKD5Mh9WLnHQmlVk9Vi7dQh6hWijKlj3P6Q99+6Nt7+vY/KdqR0nyMpvnCWWSTPr0fzL0q0BEU5Y5ze3xW4ESNFglwArQYjm7Er7+cnQu+lJAqUATormSZPGjMmEe2NV51x7caq5X6Q3aaMUxe67U55A5reeanXli4giyDSdapp9x19vLbOSii6xypI/c9s/4jhO9t2HeBlJk9KOsSa2wse1Cq3vK8t/PS2+zdbHsNP71N09GWU4JJZRWt/SKZgVNJv2LI8SSSxi44gvGE9XZnOGKNDNPVMN+XNiMqGdZbcUOxzbNK92+H4hHX4qRyaHlBnArQqXCYWCRxUoJzK2PTMPo1jb0LKNUnXMt6y2QIKdrDnvnWMXbR8eVu+7yxC9Dqb1+YhhSHVuENcHe4wg6+QVHmeHzl9Mq738pBElvCdDS9TRmtJ423nV+Qc+NDUsRu5E1J6k+FK9FPnejfDmUkl2hdYL485zSUxlEBfk/Vod56QfmOorcSszlsxVdv93XEhN+oV+agNBOqbM6nQwuOuSzM+pxzUjOSkYyb140GKX7VavpJJDPjiJE2mxk4fLD5dsuPnyq069CRS7CKE+m7NVWuTqofvjfCOrmrleBUvHGneSXMXddpbjm/LWQsZSQfcd26TfGV6IMo/Zvsv02rldrtZBvt5oQTF0wuApdOLYc7iGf3Io4rnOgnCZb0pm1To2779xdXMpKz+j9hYVI+ZGHF9z9YBb6m3G91/2wjc9CLChZsG0D58w+uRgP9
+sidebar_class_name: 'patch api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Patch /channels/{channelId}/markerRules/{markerRuleId}'}></Heading>
+
+<MethodEndpoint method={'patch'} path={'/api/v1/channels/{channelId}/markerRules/{markerRuleId}'} context={'endpoint'}></MethodEndpoint>
+
+Update a marker rule.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'markerRuleId', required: true, description: 'Identifier of the marker rule.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            streamType: { type: 'string', enum: ['HLS'], description: 'Stream type a marker rule applies to. Currently only `HLS`.' },
+            type: {
+              type: 'string',
+              enum: ['CUE', 'DATERANGE'],
+              description: 'HLS marker type to match: `CUE` (`EXT-X-CUE` tags) or `DATERANGE` (`EXT-X-DATERANGE` tags).',
+            },
+            conditions: {
+              type: 'object',
+              additionalProperties: { type: 'string' },
+              description:
+                "Key-value conditions matched case-insensitively against the detected marker's attributes. All conditions must match (AND) for the rule to trigger.",
+            },
+            templateId: { type: 'string', minLength: 1, description: 'Identifier of the template applied when this rule matches.' },
+            enabled: { default: true, description: 'Whether this rule is evaluated during break detection. Defaults to true.', type: 'boolean' },
+          },
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique marker rule identifier within the channel.' },
+              streamType: { type: 'string', enum: ['HLS'], description: 'Stream type a marker rule applies to. Currently only `HLS`.' },
+              type: {
+                type: 'string',
+                enum: ['CUE', 'DATERANGE'],
+                description: 'HLS marker type to match: `CUE` (`EXT-X-CUE` tags) or `DATERANGE` (`EXT-X-DATERANGE` tags).',
+              },
+              conditions: {
+                type: 'object',
+                additionalProperties: { type: 'string' },
+                description:
+                  "Key-value conditions matched case-insensitively against the detected marker's attributes. All conditions must match (AND) for the rule to trigger.",
+              },
+              templateId: { type: 'string', description: 'Identifier of the template applied when this rule matches.' },
+              enabled: { type: 'boolean', description: 'Whether this rule is evaluated during break detection.' },
+              createdAt: { type: 'string', description: 'Timestamp when the marker rule was created, as an ISO 8601 datetime string.' },
+            },
+            required: ['id', 'streamType', 'type', 'conditions', 'templateId', 'enabled', 'createdAt'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

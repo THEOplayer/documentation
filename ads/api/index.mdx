@@ -1,0 +1,27 @@
+---
+title: Ads REST API
+sidebar_label: REST API
+---
+
+# Ads REST API
+
+The Ads REST API manages channels, origins, marker rules, breaks, events, templates, and integrations under `/api/v1`.
+
+## Authentication
+
+Every request requires both:
+
+- HTTP Basic authentication, with the API key as the username and API secret as the password.
+- The `X-Org-ID` header identifying the organization.
+
+```bash
+curl 'https://us.ads.optiview.dolby.com/api/v1/channels' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'X-Org-ID: <org-id>'
+```
+
+Treat the secret like a password. The internal service authentication used between platform components is not a public API authentication method.
+
+## Reference
+
+Browse the [generated Ads REST API reference](/ads/api/reference/optiview-ads-api). Operations are grouped by resource.
