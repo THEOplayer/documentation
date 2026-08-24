@@ -354,7 +354,7 @@ const config: Config = {
               groupPathsBy: 'tag',
             },
           },
-          signalingV1: {
+          signaling: {
             version: 'v1',
             label: 'v1',
             specPath: 'ads_versioned_docs/version-v1/api/ads-client.swagger.json',
