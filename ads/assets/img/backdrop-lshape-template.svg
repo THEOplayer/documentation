@@ -1,4 +1,5 @@
 <svg width="1160" height="720" viewBox="0 0 1160 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L-shape backdrop template: a 1920 by 1080 pixel backdrop with the video window scaled towards the top-left corner, keeping a 5 percent margin and leaving a 30 percent band on the right and bottom">
+  <rect x="0" y="0" width="100%" height="100%" rx="8" fill="#f4f4fb"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#4800c4"/>

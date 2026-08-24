@@ -1,4 +1,5 @@
 <svg width="360" height="210" viewBox="0 0 360 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Double Box format: content and ad windows are shown side by side over a companion backdrop">
+  <rect x="0" y="0" width="100%" height="100%" rx="8" fill="#f4f4fb"/>
   <rect x="20" y="15" width="320" height="180" rx="8" fill="#cfd0ff" stroke="#4800c4" stroke-width="2"/>
   <rect x="28" y="23" width="148" height="164" rx="4" fill="#2D3748"/>
   <rect x="184" y="23" width="148" height="164" rx="4" fill="#6d19ff"/>
