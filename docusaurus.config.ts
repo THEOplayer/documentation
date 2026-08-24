@@ -344,7 +344,7 @@ const config: Config = {
         id: 'ads-api',
         docsPluginId: 'ads',
         config: {
-          signaling: {
+          ads: {
             version: 'v2',
             label: 'v2',
             specPath: '.docusaurus/openapi/ads-v2/openapi.json',
