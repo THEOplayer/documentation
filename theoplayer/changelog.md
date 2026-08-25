@@ -9,6 +9,20 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.9.1 (2026/08/22)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved the content protection error when the CDM reports an output protection (HDCP) violation: instead of error 7012 with the generic 'Unknown CDM error' message, the player now reports error 7011 (CONTENT_PROTECTION_OUTPUT_RESTRICTED) explaining that the required HDCP level cannot be guaranteed, e.g. because AirPlay screen mirroring, screen recording, screen sharing or a non-HDCP display is active. The error now also exposes the CDM's `systemCode`.
+
+#### 🐛 Issues
+
+- Fixed an issue where playback with Google IMA could stall indefinitely when a VMAP ad break resolved to an empty VAST response (VAST error 303). The player now dispatches a non-fatal `aderror` event and resumes content playback.
+- Fixed an issue where playback of PlayReady-protected Dolby Vision content could fail on Microsoft Edge on Windows.
+- Fixed an issue where a content protection error on a OptiView channel triggered several endpoint fallback attempts before surfacing a generic error. Content protection errors are now treated as non-recoverable and are surfaced immediately.
+
 ## 🚀 11.9.0 (2026/08/12)
 
 ### Web
