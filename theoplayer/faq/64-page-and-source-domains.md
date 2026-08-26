@@ -14,9 +14,13 @@ Your page domains are included on your player [license](/theoplayer/how-to-guide
 
 ## Source domains
 
-Source domains specify from which domains the player is allowed to play streams. When the Source domains are configured to `example.com` the player will only play streams from this domain. If the player attempts to play a stream from `other.com`, it will result in an error stating that the license is invalid.
+Source domains specify from which domains the player is allowed to play streams. When the source domains are configured to `example.com` the player will only play streams from this domain. If the player attempts to play a stream from `other.com`, it will result in an error stating that the license is invalid.
 
-Similar to Page domains, whitelisting `example.com` will also whitelist all its subdomains such as `a.example.com` or `a.b.example.com` so you don't have to enter each of them one by one. Please note that whitelisting `*.example.com` <u>will not</u> whitelist the subdomains.
+Similar to page domains, whitelisting `example.com` will also whitelist all its subdomains such as `a.example.com` or `a.b.example.com` so you don't have to enter each of them one by one. Please note that whitelisting `*.example.com` <u>will not</u> whitelist the subdomains.
+
+For sources with `type: 'millicast'`, you can restrict playback to specific streaming accounts by adding `millicast://<streamAccountId>` entries to the source domains (for example: `millicast://example123`). When the license contains one or more such entries, the source's `streamAccountId` must match one of them. A license without `millicast://` entries allows sources from all streaming accounts.
+
+THEOlive-resolved endpoints are subject to the same source domain check as other sources. THEO-hosted endpoints on `theo.live` or `dolby.com`, including their subdomains, are implicitly allowed. Endpoints on other domains, such as customer-configured delivery domains, must be included in the license's source domains. An empty source domains list or the “Allow all” option continues to allow all sources.
 
 Your source domains are included on your player [license](/theoplayer/how-to-guides/web/license/introduction/). If you make any changes on your source domain configuration, you should update the license on your application/website.
 
