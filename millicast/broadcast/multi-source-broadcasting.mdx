@@ -133,9 +133,9 @@ srt://srt-phx-1.millicast.com:10000?streamid=myStreamName%253Ft%253D4xd-...vvRrY
 ```
 
 :::warning Declare the bitrate of each multi-bitrate layer
-RTMP and SRT contributions do not signal their encoder bitrate to the platform, so without `videoTargetBitrate` the service has no way of knowing how the quality layers of a `simulcastId` rank against each other until it has measured them at playback time. In that case a viewer can start on an arbitrary layer, and the [ABR](/millicast/distribution/using-webrtc-simulcast) logic only converges on the appropriate quality after it has observed traffic on the layers, which is visible as a stream that starts at a low quality and climbs to the expected one.
+An RTMP or SRT encoder may declare its bitrate inside the contribution stream itself, but that information travels in the media path, so it only reaches the platform once media has started flowing. It is therefore not available at the moment a viewer subscribes and an initial quality layer has to be chosen. Until the layers of a `simulcastId` can be ranked, a viewer can start on an arbitrary layer and the [ABR](/millicast/distribution/using-webrtc-simulcast) logic only converges on the appropriate quality afterwards, which is visible as a stream that starts at a low quality and climbs to the expected one.
 
-Add `&videoTargetBitrate=<kbps>` to every layer of a multi-bitrate contribution so the platform can order the layers immediately and start viewers on the correct one.
+Add `&videoTargetBitrate=<kbps>` to every layer of a multi-bitrate contribution so the platform knows the ordering of the layers up front and can start viewers on the correct one.
 :::
 
 :::warning Multi-bitrate and Recordings
@@ -262,7 +262,7 @@ There are multiple ways to playback and consume a multi-view feed:
 
 - There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multi-view.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
 - If broadcasting with Multi-Bitrate RTMP or SRT and recording is enabled, each quality rendition that you send into the service will be recorded unless you append the `&record=false` flag to your publishing endpoint.
-- If broadcasting with Multi-Bitrate RTMP or SRT, set `&videoTargetBitrate=<kbps>` on each layer to match your encoder configuration. Layers without a declared target bitrate cannot be ranked by the platform until their bitrate has been measured, which can make playback start on an unexpected quality layer and ramp up to the expected one.
+- If broadcasting with Multi-Bitrate RTMP or SRT, set `&videoTargetBitrate=<kbps>` on each layer to match your encoder configuration. Any bitrate signalled inside the contribution stream only reaches the platform once media flows, which is too late for choosing the initial layer, so playback can start on an unexpected quality layer and ramp up to the expected one.
 - If broadcasting with Multi-Bitrate RTMP or SRT, do not send duplicate audio to each layer. If you are unable to send video-only, you can add the `&videoOnly` parameter to have the service ignore the audio.
 
 ### Playback best practices
