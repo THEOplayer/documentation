@@ -29,7 +29,7 @@ The token can be provided in one of two ways:
 
 The token payload must include:
 
-- **`exp`** — expiration time in epoch format. The token is rejected after this time.
+- **`exp`** — expiration time in epoch format. Requests carrying the token are rejected after this time. Note that playback already in progress may continue past the token's expiry.
 - **`nbf`** _(optional)_ — "not before" time in epoch format. The token is rejected before this time.
 
 Additionally, the following standard optional claims are supported:
@@ -41,8 +41,9 @@ Additionally, the following standard optional claims are supported:
 
 Requests without a valid token are rejected with an HTTP `403` response.
 
-::::caution Tokens are validated even when token security is disabled
-Disabling token security makes the token optional, but it does not make the CDN ignore it. Any JWT still included in a request — via the `Authorization` header or the `token` query parameter — is validated for well-formedness and expiry. In particular, an **expired** token is rejected with an HTTP `403`, even though the same request without a token would have been allowed. After disabling token security, make sure your players stop attaching (potentially stale) tokens.
+::::caution A token you send is still checked even when token security is disabled
+Disabling token security makes the token optional — it does not make the CDN ignore a token you do send. Any request that carries a JWT, via the `Authorization` header or the `token` query parameter, is checked: if the token is malformed or **expired**, that request is rejected with an HTTP `403`, even though the same request without a token would have been allowed. After disabling token security, make sure your players stop attaching (potentially stale) tokens.
+
 ::::
 
 ## Custom claims
