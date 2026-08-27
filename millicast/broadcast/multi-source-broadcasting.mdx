@@ -81,7 +81,7 @@ Steps to build a broadcast URL suitable for RTMP encoders:
 | :------------------------------------------ | :-------- | :------------------------ |
 | rtmps://rtmp-phx-1.millicast.com:443/v2/pub | /         | myStreamName?token=abc123 |
 
-3. Configure your _main_ source. Typically, this will be your highest-quality input in the case of MBR or or the source you want to be presented initially in multi-view. You will add the `sourceId` parameter and the `simulcastId` parameter. For the main source, the simulcastId will not have a value. When the source is one of several multi-bitrate quality layers, also add the [`videoTargetBitrate`](/millicast/broadcast/publishing-parameters.md) parameter set to the bitrate your encoder is configured to send, in kbps.
+3. Configure your _main_ source. Typically, this will be your highest-quality input in the case of MBR or or the source you want to be presented initially in multi-view. You will add the `sourceId` parameter and the `simulcastId` parameter. For the main source, the simulcastId will not have a value. When the source is one of several multi-bitrate quality layers, also add the [`videoTargetBitrate`](/millicast/broadcast/publishing-parameters.md) parameter set to the bitrate your encoder is configured to send, this informs the service to make more accurate bandwidth estimations.
 
 | RTMP publish stream name  | Separator | Source and Simulcast Parameters                |
 | :------------------------ | :-------- | :--------------------------------------------- |
