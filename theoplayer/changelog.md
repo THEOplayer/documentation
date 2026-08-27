@@ -9,6 +9,55 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.10.0 (2026/08/27)
+
+### Web
+
+#### ✨ Features
+
+- Added a 'c2pametadata' player event exposing raw C2PA metadata from ISOBMFF 'uuid' boxes in HLS and DASH streams, enabled through the 'c2paMetadata' source property.
+- Added support for configuring `google.ima.AdsRenderingSettings.useStyledNonLinearAds` and `useStyledLinearAds` via `player.ads.googleIma.useStyledNonLinearAds` and `player.ads.googleIma.useStyledLinearAds`. When left `undefined`, the Google IMA SDK default is used.
+
+#### 🐛 Issues
+
+- Fixed an issue for DASH streams with no `SegmentTimeline` where the manifest would sometimes fail to load if the `Period` duration was an exact multiple of the segment duration.
+- Fixed an issue where a scheduled Google IMA VAST ad would be requested twice, causing the ad server to return an empty VAST response (IMA error 303) for the second ad break.
+- Fixed an issue where the content would briefly appear and play between consecutive Google IMA ad breaks scheduled at the same time offset.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where removing a caching task before its initialization completed, for example right after the cache reported INITIALISED, would mark the task as EVICTED but leave the cached Media3 files and download entry on the device.
+- Fixed an issue where an expired caching task would not clean up its offline DRM license data, and where removing a caching task could remove offline DRM sessions still used by another task caching the same content.
+- Fixed an issue where playback of a fully cached source could select a rendition that was not cached, causing a source error or endless waiting during offline playback.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved error reporting specifically when playback fails to play to end time. In this case the `ErrorEvent` will ensure to contain an `errorObject`.
+
+#### 🐛 Issues
+
+- Fixed an issue where `bytesCached` and `bytes` properties would return 0 for cached sources pre 10.12.0
+- Fixed an issue where the player would not exit `lShape` layout when an ad error was thrown. Note: the issue was observed specifically for `LSHAPE_CONTENT` and not `LSHAPE_AD`.
+- Fixed an issue where the player would pause without dispatching a `PauseEvent` when pressing on "Learn more" during an ad break. This would result in unexpected state management when designing a player controls UI.
+
+### Roku
+
+#### ✨ Features
+
+- Updated the AEP SDK to 1.3.1. This adds in the ability to set user consent for data collection and also the ability to set custom identities.
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Live analytics reported uninterrupted playback sessions as never having started. The playing state is now reported throughout a session instead of only when playback changes state, matching the other platforms.
+- Fixed an issue where the CMCD measured throughput was reported as zero before any throughput had actually been measured. The field is now omitted until a real measurement is available, matching the other platforms.
+- Made live stall errors not report as fatal for Mux analytics. Also fixed an issue where a live stall would be incorrectly reported on a repeated timestamp.
+- Fixed an issue where fatal playback errors were reported to OptiView analytics without an error code or message.
+- Fixed issue where CMCD event mode would not activate for Google IMA SSAI streams.
+
 ## 🚀 11.9.1 (2026/08/22)
 
 ### Web
