@@ -1,0 +1,103 @@
+---
+sidebar_position: 12
+sidebar_label: C2PA metadata
+---
+
+# C2PA metadata on Web
+
+[C2PA](https://c2pa.org/) (Coalition for Content Provenance and Authenticity) defines a standard for cryptographically signed provenance metadata,
+allowing viewers to verify the origin and integrity of media content.
+Live streams signed according to the [C2PA specification](https://spec.c2pa.org/) carry this metadata inside the stream itself:
+
+- **ISOBMFF `uuid` boxes** (usertype `d8fec3d6-1b0e-483c-9297-5828877ec481`) in fMP4/CMAF segments:
+  - the initialization segment carries the C2PA manifest store (purpose `manifest`),
+  - each media segment can carry per-segment integrity data such as Merkle tree data (purpose `merkle`).
+- **`emsg` (event message) boxes** in media segments, carrying timed metadata.
+
+THEOplayer exposes this metadata to your application for both HLS and MPEG-DASH streams,
+so you can validate it with a C2PA-compatible library of your choice.
+
+:::note
+THEOplayer does **not** validate C2PA signatures, evaluate trust lists, or make any trust decisions.
+It only exposes the raw metadata to your application.
+:::
+
+:::note
+C2PA `uuid` box extraction is only available for fMP4/CMAF content played through THEOplayer's own HLS and MPEG-DASH pipelines
+(using Media Source Extensions). No `c2pametadata` events are dispatched for native HLS playback (e.g. on Safari with
+`useNativePlayback`), MPEG-TS content, or HESP/THEOlive streams.
+:::
+
+## Enabling C2PA metadata extraction
+
+C2PA `uuid` box extraction is disabled by default and must be enabled per source with the `c2paMetadata` source property.
+C2PA presence is not advertised in the HLS or DASH manifest, so the player cannot detect it up front — enable it explicitly
+when you intend to validate the stream:
+
+```js
+player.source = {
+  sources: [
+    {
+      src: 'https://example.com/signed-stream/master.m3u8',
+      c2paMetadata: true,
+    },
+  ],
+};
+```
+
+## Listening for C2PA `uuid` box metadata
+
+Whenever the player appends a segment containing a C2PA `uuid` box, it fires a `c2pametadata` event with the raw box contents:
+
+```js
+player.addEventListener('c2pametadata', (event) => {
+  console.log(event.purpose); // 'manifest' (initialization segment) or 'merkle' (media segment)
+  console.log(event.segmentType); // 'initialization' or 'media'
+  console.log(event.mediaType); // 'video' or 'audio': the type of media track in which the box was found
+  console.log(event.startTime, event.endTime); // segment time range, or undefined for initialization segments
+  console.log(event.data); // Uint8Array with the raw box payload (e.g. a JUMBF-serialized C2PA manifest store)
+
+  // Forward the raw data to a C2PA-compatible validation library of your choice.
+  myC2paValidator.addSegmentData(event.purpose, event.data);
+});
+```
+
+For initialization segments, `startTime` and `endTime` are `undefined`.
+For media segments, the segment's time range is available in `startTime` and `endTime`.
+
+When audio and video are carried in separate tracks, each track is a separate C2PA-signed stream
+with its own manifest and Merkle data. Use `event.mediaType` to associate each event with the correct track,
+for example to validate the audio and video streams independently.
+
+The player dispatches every C2PA `uuid` box it encounters, without deduplication.
+Your application may receive events with identical contents more than once,
+for example when the same initialization segment is buffered again after a quality switch or a seek.
+Deduplicate in your application if needed.
+
+## Listening for C2PA `emsg` metadata
+
+Timed C2PA metadata carried in `emsg` boxes is exposed through the player's generic
+[metadata text track](../text-tracks/detect-active-text-track-cues.mdx) support.
+The player creates a metadata text track of type `emsg`, and each `emsg` box becomes a cue with the raw message data as its content:
+
+```js
+player.textTracks.addEventListener('addtrack', (event) => {
+  const track = event.track;
+  if (track.kind === 'metadata' && track.type === 'emsg') {
+    track.mode = 'hidden';
+    track.addEventListener('addcue', (event) => {
+      const cue = event.cue;
+      console.log(cue.schemeIDURI); // e.g. 'https://c2pa.org/streaming'
+      console.log(cue.startTime, cue.endTime);
+      console.log(cue.content); // Uint8Array with the raw emsg message data
+    });
+  }
+});
+```
+
+## Validating the metadata
+
+The exposed data is the raw, unmodified payload from the stream.
+To verify the provenance of the content, pass it to a C2PA-compatible library
+(for example, [c2pa-js](https://github.com/contentauth/c2pa-js)) together with the downloaded segment data,
+and apply your own trust policy to the validation result.
