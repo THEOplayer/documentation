@@ -81,21 +81,21 @@ Steps to build a broadcast URL suitable for RTMP encoders:
 | :------------------------------------------ | :-------- | :------------------------ |
 | rtmps://rtmp-phx-1.millicast.com:443/v2/pub | /         | myStreamName?token=abc123 |
 
-3. Configure your _main_ source. Typically, this will be your highest-quality input in the case of MBR or or the source you want to be presented initially in multi-view. You will add the `sourceId` parameter and the `simulcastId` parameter. For the main source, the simulcastId will not have a value.
+3. Configure your _main_ source. Typically, this will be your highest-quality input in the case of MBR or or the source you want to be presented initially in multi-view. You will add the `sourceId` parameter and the `simulcastId` parameter. For the main source, the simulcastId will not have a value. When the source is one of several multi-bitrate quality layers, also add the [`videoTargetBitrate`](/millicast/broadcast/publishing-parameters.md) parameter set to the bitrate your encoder is configured to send, this informs the service to make more accurate bandwidth estimations.
 
-| RTMP publish stream name  | Separator | Source and Simulcast Parameters |
-| :------------------------ | :-------- | :------------------------------ |
-| myStreamName?token=abc123 | &         | sourceId=1&simulcastId          |
+| RTMP publish stream name  | Separator | Source and Simulcast Parameters                |
+| :------------------------ | :-------- | :--------------------------------------------- |
+| myStreamName?token=abc123 | &         | sourceId=1&simulcastId&videoTargetBitrate=4000 |
 
 4. For each additional source, you'll use a unique `sourceId` and `simulcastId` to distinguish between the various encoders.
 
 In the hosted player, the `simulcastId` is used to set the video source's on-screen label.
 
-| Encoder | Source Id   | Simulcast Id (label) |
-| :------ | :---------- | :------------------- |
-| 1       | &sourceId=1 | &simulcastId         |
-| 2       | &sourceId=2 | &simulcastId=source2 |
-| 3       | &sourceId=3 | &simulcastId=source3 |
+| Encoder | Source Id   | Simulcast Id (label) | Target bitrate           |
+| :------ | :---------- | :------------------- | :----------------------- |
+| 1       | &sourceId=1 | &simulcastId         | &videoTargetBitrate=4000 |
+| 2       | &sourceId=2 | &simulcastId=source2 | &videoTargetBitrate=2000 |
+| 3       | &sourceId=3 | &simulcastId=source3 | &videoTargetBitrate=1000 |
 
 #### Multi-source SRT
 
@@ -110,27 +110,31 @@ Steps to build a broadcast URL suitable for SRT encoders:
 
 There is also a combined **SRT publish URL**. The SRT stream ID includes a compressed token and uses the `t` as the parameter.
 
-3. Configure your _main_ source. Typically, this will be your highest-quality input in the case of MBR or or the source you want to be presented initially in multi-view. You will add the `sourceId` parameter and the `simulcastId` parameter. For the main source, the simulcastId will not have a value.
+3. Configure your _main_ source. Typically, this will be your highest-quality input in the case of MBR or or the source you want to be presented initially in multi-view. You will add the `sourceId` parameter and the `simulcastId` parameter. For the main source, the simulcastId will not have a value. When the source is one of several multi-bitrate quality layers, also add the [`videoTargetBitrate`](/millicast/broadcast/publishing-parameters.md) parameter set to the bitrate your encoder is configured to send, this informs the service to make more accurate bandwidth estimations.
 
-| SRT publish stream name | Separator | Source and Simulcast Parameters |
-| :---------------------- | :-------- | :------------------------------ |
-| myStreamName?t=abc123   | &         | sourceId=1&simulcastId          |
+| SRT publish stream name | Separator | Source and Simulcast Parameters                |
+| :---------------------- | :-------- | :--------------------------------------------- |
+| myStreamName?t=abc123   | &         | sourceId=1&simulcastId&videoTargetBitrate=4000 |
 
 4. For each additional source, you'll use a unique `sourceId` and `simulcastId` to distinguish between the various encoders.
 
 In the hosted player, the `simulcastId` is used to set the video source's on-screen label.
 
-| Encoder | Source Id   | Simulcast Id (label) |
-| :------ | :---------- | :------------------- |
-| 1       | &sourceId=1 | &simulcastId         |
-| 2       | &sourceId=2 | &simulcastId=source2 |
-| 3       | &sourceId=3 | &simulcastId=source3 |
+| Encoder | Source Id   | Simulcast Id (label) | Target bitrate           |
+| :------ | :---------- | :------------------- | :----------------------- |
+| 1       | &sourceId=1 | &simulcastId         | &videoTargetBitrate=4000 |
+| 2       | &sourceId=2 | &simulcastId=source2 | &videoTargetBitrate=2000 |
+| 3       | &sourceId=3 | &simulcastId=source3 | &videoTargetBitrate=1000 |
 
 5. Finally, with SRT you will need to make sure all of the parameters together are URL escaped. This is distinct to SRT workflows. The full combined URL might look similar to:
 
 ```
 srt://srt-phx-1.millicast.com:10000?streamid=myStreamName%253Ft%253D4xd-...vvRrYTeftQPvsCSE%2526sourceId%253D3%2526simulcastId%253DSRT
 ```
+
+:::warning Declare the bitrate of each multi-bitrate layer
+Add `&videoTargetBitrate=<kbps>` to every layer of a multi-bitrate contribution. The target bitrate lets the platform order the quality layers of a `simulcastId` before playback begins, so a viewer starts on the appropriate layer instead of an arbitrary one and then having [ABR](/millicast/distribution/using-webrtc-simulcast) climb to the expected quality.
+:::
 
 :::warning Multi-bitrate and Recordings
 If you are sending multi-bitrate contributions, you can further optimize your parameters by only sending video and disabling any recordings for the additional layers.
@@ -256,6 +260,7 @@ There are multiple ways to playback and consume a multi-view feed:
 
 - There is a 12Mbps total connection limit on the playback side. If you are using high-bitrate source feeds, we recommend sending at least a high-quality and a low-quality version of each source so that in a multi-view playback, the large image can be high-bitrate and the small thumbnail tiles can be set to the low-bitrate. For more information, see [Limitations of Multi-view](/millicast/playback/multi-view.md#limitations-of-multi-view). This is primarily for broadcasting with RTMP or SRT. If you are using WebRTC to publish and your publishing client supports Simulcast (such as our hosted broadcaster), this is handled automatically.
 - If broadcasting with Multi-Bitrate RTMP or SRT and recording is enabled, each quality rendition that you send into the service will be recorded unless you append the `&record=false` flag to your publishing endpoint.
+- If broadcasting with Multi-Bitrate RTMP or SRT, set `&videoTargetBitrate=<kbps>` on each layer to match your encoder configuration, so that the layers can be ordered and playback starts on the appropriate quality layer instead of ramping up to it.
 - If broadcasting with Multi-Bitrate RTMP or SRT, do not send duplicate audio to each layer. If you are unable to send video-only, you can add the `&videoOnly` parameter to have the service ignore the audio.
 
 ### Playback best practices
