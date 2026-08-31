@@ -9,6 +9,14 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.10.1 (2026/08/28)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue with OptiView Ads where only the first ad of an ad pod would play when the player was in native fullscreen or native picture-in-picture on iOS Safari.
+
 ## 🚀 11.10.0 (2026/08/27)
 
 ### Web
