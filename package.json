@@ -51,7 +51,7 @@
     "@docusaurus/tsconfig": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
     "@eslint/js": "~9.39.5",
-    "@types/lodash": "^4.17.24",
+    "@types/lodash": "^4.17.25",
     "dotenv": "^17.4.2",
     "eslint": "~9.39.5",
     "eslint-plugin-react": "^7.37.5",
