@@ -12,6 +12,7 @@ import { version as webUiVersion } from './open-video-ui/external/web-ui/package
 import sidebarItemsGenerator from './src/plugin/sidebarItemsGenerator';
 import remarkLinkRewrite from './src/plugin/remarkLinkRewrite';
 import openApiLinkRewrite from './src/plugin/openApiLinkRewrite';
+import llmsTxt, { type Options as LlmsTxtOptions } from './src/plugin/llmsTxt';
 import path from 'path';
 import fs from 'fs';
 import redirectsMillicast from './redirectsMillicast.json';
@@ -445,6 +446,71 @@ const config: Config = {
           return undefined;
         },
       } satisfies ClientRedirectsPlugin.Options,
+    ],
+    [
+      llmsTxt,
+      {
+        // Generates /llms.txt, /llms-full.txt, /<product>/llms.txt, /<product>/llms-full.txt and a .md twin of every page
+        llmsTxt: {
+          siteTitle: 'Dolby OptiView Documentation',
+          siteDescription: 'Developer documentation for Dolby OptiView Player, Open Video UI, Live, Real-time, Ads and Ad Engine.',
+          content: {
+            enableMarkdownFiles: true,
+            relativePaths: false,
+            includeBlog: false,
+            includePages: false,
+            includeGeneratedIndex: false,
+            excludeRoutes: [
+              // Unmaintained Player versions
+              '**/theoplayer/v{4,5,6,7,8,9}/**',
+              '**/contributing/**',
+              '**/search/**',
+              '**/404*',
+            ],
+            // OpenAPI pages render with `@theme/ApiItem`, which uses `.theme-api-markdown`
+            contentSelectors: ['.theme-doc-markdown', '.theme-api-markdown', 'main'],
+          },
+          onRouteError: 'warn',
+        },
+        products: [
+          {
+            slug: 'theoplayer',
+            title: 'Dolby OptiView Player',
+            description:
+              'Dolby OptiView Player (formerly THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.',
+          },
+          {
+            slug: 'open-video-ui',
+            title: 'Open Video UI',
+            description:
+              'The Open Video UI provides component libraries for building a world-class video player experience powered by the OptiView Player SDK, with dedicated libraries for web, Android and React Native.',
+          },
+          {
+            slug: 'theolive',
+            title: 'Dolby OptiView Live',
+            description:
+              "Dolby OptiView's Live-streaming solution enables you to stream with consistency to any audience size with the best quality of experience, whether it's for a large live broadcast event, sports betting, or interactive entertainment.",
+          },
+          {
+            slug: 'millicast',
+            title: 'Dolby OptiView Real-time Streaming',
+            description:
+              "Dolby OptiView's Real-time Streaming (formerly Millicast) makes it easier to globally stream your high-value content with broadcast-quality picture and sound to massive audiences all with subsecond latency.",
+          },
+          {
+            slug: 'ads',
+            title: 'Dolby OptiView Ads',
+            description:
+              'Dolby OptiView Ads enables you to deliver a seamless, less intrusive ad experience, designed to boost viewer engagement and maximize ad revenue.',
+          },
+          {
+            slug: 'ad-engine',
+            title: 'Dolby OptiView Ad Engine',
+            description:
+              'The Dolby OptiView Ad Engine is a just-in-time, serverless conformance service that transforms ads from their original master format into a streaming format that matches the primary content stream.',
+          },
+        ],
+      } satisfies LlmsTxtOptions,
     ],
     [
       (_context, options: { webpack: (isServer: boolean) => WebpackConfiguration }) => ({
