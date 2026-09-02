@@ -26,15 +26,35 @@ interface Entry {
 }
 
 const ENTRY_LINE = /^- \[(.+?)\]\((\S+?)\)(?:: (.*))?$/;
+const MAX_DESCRIPTION_LENGTH = 200;
+
+/**
+ * Descriptions come from each page's `<meta name="description">`. Pages without a `description` front matter field
+ * get a Docusaurus excerpt instead, which may be a heading (`# Introduction`), the page title, a markup fragment
+ * (`<DocCardList`) or a whole paragraph; keep only what reads as a short summary.
+ */
+function cleanDescription(title: string, description: string | undefined): string | undefined {
+  if (!description || description.startsWith('#') || description.startsWith('<')) return undefined;
+  const text = description.replace(/<[^>]+>/g, '').trim();
+  if (text === '' || text.toLowerCase() === title.toLowerCase()) return undefined;
+  if (text.length <= MAX_DESCRIPTION_LENGTH) return text;
+  const sentenceEnd = text.lastIndexOf('. ', MAX_DESCRIPTION_LENGTH);
+  if (sentenceEnd >= MAX_DESCRIPTION_LENGTH / 4) return text.slice(0, sentenceEnd + 1);
+  const wordEnd = text.lastIndexOf(' ', MAX_DESCRIPTION_LENGTH);
+  return `${text.slice(0, wordEnd > 0 ? wordEnd : MAX_DESCRIPTION_LENGTH).replace(/[,;:]$/, '')}…`;
+}
 
 function parseEntries(llmsTxt: string, siteUrl: string): Entry[] {
   const entries: Entry[] = [];
   for (const line of llmsTxt.split('\n')) {
     const match = ENTRY_LINE.exec(line);
     if (!match || !match[2].startsWith(siteUrl)) continue;
-    // Pages without a description end up with a fragment of their first MDX component (e.g. `<DocCardList`)
-    const description = match[3]?.startsWith('<') ? undefined : match[3];
-    entries.push({ title: match[1], url: match[2], description, markdownPath: match[2].slice(siteUrl.length) });
+    entries.push({
+      title: match[1],
+      url: match[2],
+      description: cleanDescription(match[1], match[3]),
+      markdownPath: match[2].slice(siteUrl.length),
+    });
   }
   return entries;
 }
@@ -47,19 +67,31 @@ function header(title: string, description: string | undefined): string {
   return description ? `# ${title}\n\n> ${description}\n\n` : `# ${title}\n\n`;
 }
 
+const OVERVIEW_SECTION = 'Overview';
+
+function isVersionSection(section: string): boolean {
+  return /^v\d+$/.test(section);
+}
+
+function compareSections(a: string, b: string): number {
+  if (a === OVERVIEW_SECTION || b === OVERVIEW_SECTION) return a === OVERVIEW_SECTION ? -1 : 1;
+  if (isVersionSection(a) !== isVersionSection(b)) return isVersionSection(a) ? 1 : -1;
+  return a.localeCompare(b);
+}
+
 /**
  * Groups the product's pages by their first sub-directory (e.g. `getting-started`, `how-to-guides`).
- * Pages directly below the product go into an "Overview" section.
+ * Pages directly below the product go into an "Overview" section first; older versions (`v10`, `v1`) go last.
  */
 function productIndex(product: Product, entries: Entry[]): string {
   const sections = new Map<string, Entry[]>();
   for (const entry of entries) {
     const segments = entry.markdownPath.split('/');
-    const section = segments.length > 2 ? segments[1] : 'Overview';
+    const section = segments.length > 2 ? segments[1] : OVERVIEW_SECTION;
     sections.set(section, [...(sections.get(section) ?? []), entry]);
   }
   let content = header(product.title, product.description);
-  for (const [section, sectionEntries] of sections) {
+  for (const [section, sectionEntries] of [...sections].sort(([a], [b]) => compareSections(a, b))) {
     content += `## ${section}\n\n${sectionEntries.map(formatEntry).join('')}\n`;
   }
   return content;
