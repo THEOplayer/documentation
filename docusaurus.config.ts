@@ -468,10 +468,9 @@ const config: Config = {
 
   markdown: {
     mdx1Compat: {
-      // TODO Migrate to strict MDX
       comments: false,
       admonitions: false,
-      headingIds: true,
+      headingIds: false,
     },
     hooks: {
       onBrokenMarkdownLinks: 'throw',
