@@ -76,7 +76,7 @@ npm install theoplayer@7.0.0
 Different THEOplayer packages are available on npm with their own included features. Choose the package which best fits your requirements.
 In the rest of the guide we reference `SDK-LIBRARY-LOCATION` which should become the path to the installed theoplayer package in your node modules, similar to: `path/to/node_modules/theoplayer/`.
 
-:::info Custom Web SDK
+:::info[Custom Web SDK]
 
 We do recommend downloading the THEOplayer Web SDK through npm, but if you need a custom SDK with a different combination of features it is possible to create one on [the Portal](https://portal.theoplayer.com/login).
 Skip to [Create an SDK through Portal](#create-an-sdk-through-portal) for a detailed explanation.
@@ -211,7 +211,7 @@ Next, we’ll include the THEOplayer SDK.
 To access the THEOplayer API and default UI, you must first include the THEOplayer library files.
 The JavaScript library exposes the THEOplayer API and the CSS library contains the default UI.
 
-:::tip Open Video UI
+:::tip[Open Video UI]
 
 The Open Video UI is our new Web UI. It provides component libraries for building a world-class video player experience powered by the THEOplayer SDK.
 [See our Getting Started guide to start using the Open Video UI.](/open-video-ui/web/getting-started/)
@@ -247,7 +247,7 @@ Now we'll include it in our HTML file. There are two options for this:
   import * as THEOplayer from 'theoplayer/chromeless';
   ```
 
-  :::warning Legacy browser support
+  :::warning[Legacy browser support]
 
   Starting with THEOplayer 6.0, this will import a JavaScript module targeting modern browsers, using modern JavaScript syntax such as [`async/await`](https://caniuse.com/async-functions).
   If you need to support older browsers (such as older smart TVs), then you'll need to use option 1 instead as this creates a global `THEOplayer` variable that exposes the full API.
@@ -436,7 +436,7 @@ such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Vi
 you may need some additional configuration to make your bundler copy all files needed by the THEOplayer Web SDK
 and set your `libraryLocation` correctly.
 
-:::tip Just give me the code!
+:::tip[Just give me the code!]
 
 If you prefer starting from a fully working example rather than copy-pasting these snippets into your code,
 check out [our examples on GitHub](https://github.com/THEOplayer/samples-npm-html5-sdk)!

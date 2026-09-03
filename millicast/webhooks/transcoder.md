@@ -4,7 +4,7 @@ title: Transcoder Hooks
 
 The **transcoder** _type_ of [webhook](/millicast/webhooks/index.mdx) allows you to receive a state transition notification for platform events such as when a [transcoder](/millicast/distribution/cloud-transcoder.mdx) starts, stops, or is deleted.
 
-:::tip Setting up Webhooks
+:::tip[Setting up Webhooks]
 Review the [Webhooks](/millicast/webhooks/index.mdx) guide for additional details on creating and receiving webhooks.
 :::
 

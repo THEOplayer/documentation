@@ -41,7 +41,7 @@ Additionally, the following standard optional claims are supported:
 
 Requests without a valid token are rejected with an HTTP `403` response.
 
-::::caution Tokens are validated even when token security is disabled
+::::caution[Tokens are validated even when token security is disabled]
 Disabling token security makes the token optional, but it does not make the CDN ignore it. Any JWT still included in a request — via the `Authorization` header or the `token` query parameter — is validated for well-formedness and expiry. In particular, an **expired** token is rejected with an HTTP `403`, even though the same request without a token would have been allowed. After disabling token security, make sure your players stop attaching (potentially stale) tokens.
 ::::
 
@@ -87,7 +87,7 @@ allows viewers in Canada, in Great Britain, and in the US states of Alaska and A
 
 If the viewer's region or DMA code cannot be determined, those values simply don't match; the request is denied unless another `geo` property matches.
 
-::::caution Deprecated top-level geo claims
+::::caution[Deprecated top-level geo claims]
 The top-level `cc`, `rgn` and `dma` properties are deprecated in favor of the `geo` object. They keep working, but are now evaluated with the same OR semantics as the properties of a `geo` object — previously each was an independent restriction that all had to be satisfied. When a `geo` object is present, the top-level `cc`/`rgn`/`dma` properties are ignored entirely, so do not combine both. New integrations should use `geo`.
 ::::
 

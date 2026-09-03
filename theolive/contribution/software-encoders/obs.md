@@ -45,7 +45,7 @@ Lastly, go to the _Video_ tab and set the frame rate to the same value you have 
 
 ![Defining output settings](../../assets/img/obsfps.png)
 
-:::info 🚧 Upload bandwidth
+:::info[🚧 Upload bandwidth]
 Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the channel.
 :::
 

@@ -59,7 +59,7 @@ import Img3 from '../assets/img/25a57ae-image.png';
   <img src={Img3} width="600" />
 </div>
 
-:::caution Subscribe token exposed in the URL
+:::caution[Subscribe token exposed in the URL]
 For both the Embedded Viewer and the Hosted Viewer the Subscribe token is exposed in the URL. Unless your are using [IP filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters), users can share the URL and by extension the stream itself. To prevent this, each user should be served a Subscribe token unique to them. To learn about how to accomplish this continue to [Preventing Stream Sharing with Subscribe Tokens](/millicast/playback/securing-stream-playback.md#preventing-stream-sharing-with-subscribe-tokens).
 :::
 
@@ -94,7 +94,7 @@ To learn more about other access control features you can enable for your Subscr
 
 ### Viewing secure streams with your own viewer app
 
-:::tip Building with the OptiView Real-time SDKs for the first time?
+:::tip[Building with the OptiView Real-time SDKs for the first time?]
 Check out the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial for a quick and easy introduction to using the OptiView Real-time SDKs and platform.
 :::
 
@@ -144,7 +144,7 @@ const tokenGenerator = () =>
 
 Using code from the [2. Create a Streaming Web App](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) tutorial, we can put everything together to create a very basic web app that uses a Subscribe token to view a secure stream.
 
-:::danger API Secret
+:::danger[API Secret]
 The below example **is for demonstration purposes only** and should not be used in production. You **should never expose your API secret publicly**, and should instead set up a token sever to create and manage tokens rather than the client side example below.
 :::
 

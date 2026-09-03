@@ -12,7 +12,7 @@ import LiveBroadcast from '../assets/img/live-broadcast.png';
   <img src={LiveBroadcast} width="600" />
 </div>
 
-:::tip Getting Started
+:::tip[Getting Started]
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast.
 
 You can follow the steps in [Part 1](/millicast/getting-started/using-the-dashboard.mdx) to learn how to use the [Live Broadcast](/millicast/streaming-dashboard/how-to-broadcast-in-dashboard.mdx) and [Hosted Viewer](/millicast/playback/hosted-player/index.md).
@@ -100,7 +100,7 @@ It allows you to manipulate camera quality, capture size, frame rate and aspect 
 
 ### Media settings
 
-:::danger Disabled Settings Cannot Be Changed
+:::danger[Disabled Settings Cannot Be Changed]
 Some settings must be set before beginning to publish your broadcast. If the item is _greyed_ out and disabled it is because the publish token may not have the feature enabled or a broadcast is already live and can no longer be changed such as: Codec, Simulcast, Absolute Capture Time, Stream Type, Audio, and Echo Cancellation.
 :::
 
@@ -141,7 +141,7 @@ import SimulcastImg from '../assets/img/25536e3-Capture_decran_2023-07-29_a_4.55
 
 Inside the Media settings, there is the option to activate the Simulcast feature, which will tell the system to make available three alternative quality streams for users that require lower bandwidth settings to gain speed and fluidity.
 
-:::tip Chrome
+:::tip[Chrome]
 Currently, our browser-based [simulcast](/millicast/distribution/using-webrtc-simulcast) feature is supported only when publishing via **Chrome**, however, the stream can be viewed with any browser. Only the broadcaster is required to be using Chrome.
 :::
 
@@ -159,7 +159,7 @@ Set the priority of the feed when publishing multiple backup feeds. For more inf
 
 #### Resolution
 
-:::caution Unsupported Camera Dimensions
+:::caution[Unsupported Camera Dimensions]
 Some capture settings like width and height can disable your camera if the camera cannot support the requested dimensions. The browser will throw an over-constrained error. To learn more see [Mozilla Docs - OverconstrainedError](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError) or [W3C Docs - Overconstrained Object](https://w3c.github.io/mediacapture-main/getusermedia.html#overconstrainederror-object).
 :::
 

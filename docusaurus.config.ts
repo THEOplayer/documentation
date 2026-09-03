@@ -470,7 +470,7 @@ const config: Config = {
     mdx1Compat: {
       // TODO Migrate to strict MDX
       comments: false,
-      admonitions: true,
+      admonitions: false,
       headingIds: true,
     },
     hooks: {

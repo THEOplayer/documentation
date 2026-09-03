@@ -7,7 +7,7 @@ When having a stream, it is possible to set up a loading screen before your even
 
 ## How to add a stream preview to your event
 
-:::tip Getting Started
+:::tip[Getting Started]
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 :::
 

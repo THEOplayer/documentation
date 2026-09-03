@@ -2,7 +2,7 @@
 
 Updates to the [Native SDK](https://github.com/millicast/millicast-native-sdk) for Android, iOS, macOS, Linux, and Windows applications.
 
-:::tip Release History
+:::tip[Release History]
 You can find the full history of previous releases with downloadable assets from the [millicast/millicast-native-sdk](https://github.com/millicast/millicast-native-sdk/releases) repository.
 :::
 

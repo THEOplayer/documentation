@@ -5,7 +5,7 @@ sidebar_position: 1
 
 Stream security is a priority for the OptiView Real-time platform. Along with stream protocol encryption, OptiView Real-time Streaming provides a number of different server-side features to help protect both broadcasting (_Publishing_) a stream and viewing (_Subscribing_) to a stream, all managed via their respective tokens.
 
-:::tip Looking for Dolby.io Account Access Management?
+:::tip[Looking for Dolby.io Account Access Management?]
 To manage access for your team to share the same OptiView Real-time account, visit the [Dolby.io support portal FAQ section](https://support.dolby.io/hc/en-au/articles/4411755046159-FAQs-Account-Management) to learn more.
 :::
 
@@ -33,7 +33,7 @@ During the Subscribe token creation process, you can further limit access in a f
 - [IP Filtering](/millicast/distribution/access-control/allowed-origins.md#ip-filters): With IP Address Filters, you can impose restrictions that limit access to a stream by specifying specific IP network addresses.
 - [Geo-Blocking](/millicast/distribution/access-control/geo-blocking.mdx): Geo-blocking refers to restricting access to certain content based on the geographic location of the user. It can be filtered by "allowed" and "denied" countries. With geo-blocking, providers can adhere to specific licensing agreements and distribution rights, protect copyrighted material, or service another layer of privacy when working on classified content.
 
-:::tip Tracking bandwidth consumption can help detect stream sharing
+:::tip[Tracking bandwidth consumption can help detect stream sharing]
 The **Tracking ID** lets you create an alphanumeric ID that can be used to track and associate streaming statistics, such as bandwidth consumption, to various viewers on a stream. This can be useful for detecting token sharing and disabling misused tokens. For more information, see [Syndication](/millicast/distribution/syndication#creating-a-subscribe-token-with-tracking-id).
 :::
 

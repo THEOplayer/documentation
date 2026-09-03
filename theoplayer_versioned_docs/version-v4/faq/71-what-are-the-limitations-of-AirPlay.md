@@ -19,7 +19,7 @@ Some of these limitations include, but are not limited to, the following:
   This means authentication cookies will not be available to retrieve playlists, encryption keys, ...
   There is also no way to intercept these requests from the initiating device (other than DRM license requests).
 
-:::info Does native Safari support it?
+:::info[Does native Safari support it?]
 
 When you want to know whether the native AirPlay video player supports a certain feature, you can compare the experience with the native Safari video player.
 

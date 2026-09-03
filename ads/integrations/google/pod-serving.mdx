@@ -95,7 +95,7 @@ Google requires a number of ad tag parameters for ad serving and programmatic mo
 | `vpa`             | Whether playback starts automatically (`auto`) or on user action (`click`). Leave unset if unknown. | Required for programmatic monetization on all platforms. |
 | `vpmute`          | Whether playback starts muted: `1` for muted, `0` for unmuted.                                      | Required for programmatic monetization on all platforms. |
 
-:::caution Encode `description_url` exactly once
+:::caution[Encode `description_url` exactly once]
 In the final ad request, the `description_url` value must be URL-encoded exactly once on web and CTV (and not encoded at all in mobile apps). Double encoding is a common mistake and makes the value invalid.
 
 Correct: `description_url=https%3A%2F%2Fwww.example.com%2Fsports%2Flive.html`
