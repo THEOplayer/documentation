@@ -467,11 +467,6 @@ const config: Config = {
   themes: ['docusaurus-theme-openapi-docs'],
 
   markdown: {
-    mdx1Compat: {
-      comments: false,
-      admonitions: false,
-      headingIds: false,
-    },
     hooks: {
       onBrokenMarkdownLinks: 'throw',
     },
