@@ -469,7 +469,7 @@ const config: Config = {
   markdown: {
     mdx1Compat: {
       // TODO Migrate to strict MDX
-      comments: true,
+      comments: false,
       admonitions: true,
       headingIds: true,
     },

@@ -236,8 +236,9 @@ let stream = SourceDescription(source: typedSource, ads: [GoogleImaAdDescription
 player.source = stream;
 ```
 
-<!-- * on iOS, the THEOplayer iOS SDK is compatible up to version 3.11.4 when targeting iOS 10 and above. Using version 3.11.3 allows you to target lower iOS versions. Versions 3.12.0 and above are not supported.
-* on tvOS, the THEOplayer tvOS SDK is compatible up to version 4.2.3 when targeting iOS 10 and above. Using version 4.2.1 allows you to target lower iOS versions. Versions 4.3.1 and above are not supported. -->
+{/* * on iOS, the THEOplayer iOS SDK is compatible up to version 3.11.4 when targeting iOS 10 and above. Using version 3.11.3 allows you to target lower iOS versions. Versions 3.12.0 and above are not supported.
+
+- on tvOS, the THEOplayer tvOS SDK is compatible up to version 4.2.3 when targeting iOS 10 and above. Using version 4.2.1 allows you to target lower iOS versions. Versions 4.3.1 and above are not supported. */}
 
 ## Remarks
 
