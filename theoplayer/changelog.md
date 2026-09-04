@@ -9,6 +9,16 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.10.2 (2026/09/03)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where an unnecessary FairPlay license request was sent on every quality switch when playing HESP content on Safari.
+- Fixed an issue where an OptiView Live stream could get stuck while starting up, showing a black screen for 15 seconds before falling back to its HLS stream.
+- Fixed an issue where an OptiView Live stream continued without audio after it fell back to its HLS stream.
+
 ## 🚀 11.10.1 (2026/08/28)
 
 ### Web
