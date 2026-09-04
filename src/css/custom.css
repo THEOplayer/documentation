@@ -159,6 +159,9 @@
   /* Search box */
   --docsearch-searchbox-background: var(--ifm-background-color);
   --docsearch-searchbox-focus-background: var(--ifm-color-black);
+  /* The adapter maps these to --ifm-color-secondary, which stays light in dark mode */
+  --docsearch-background-color: var(--ifm-color-emphasis-200);
+  --docsearch-hit-focus-background: var(--ifm-color-emphasis-200);
 }
 
 a:hover {

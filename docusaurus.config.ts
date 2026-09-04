@@ -3,6 +3,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
+import type { ThemeConfig as DocSearchThemeConfig } from '@docsearch/docusaurus-adapter';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
 import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/src/types';
@@ -462,6 +463,7 @@ const config: Config = {
         }),
       },
     ],
+    '@docsearch/docusaurus-adapter',
   ],
 
   themes: ['docusaurus-theme-openapi-docs'],
@@ -673,10 +675,10 @@ const config: Config = {
       darkTheme: prismThemes.oneDark,
       additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff', 'json', 'ruby'],
     },
-    algolia: {
+    docsearch: {
       appId: '7HRS9V6FEL',
       apiKey: '415e178afdd1c3ea819b42fb9a6a1c99',
-      indexName: 'theoplayer',
+      indices: [{ name: 'theoplayer' }],
       contextualSearch: true,
       replaceSearchResultPathname: {
         from: '/docs/',
@@ -697,7 +699,7 @@ const config: Config = {
         // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
       },
     },
-  } satisfies Preset.ThemeConfig,
+  } satisfies Preset.ThemeConfig & DocSearchThemeConfig,
 };
 
 function parseDocPath(filePath: string):
