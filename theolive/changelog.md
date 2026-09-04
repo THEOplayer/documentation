@@ -1,21 +1,5 @@
 # Changelog
 
-## [11.9.0] - 2026-09-03
-
-- Sorted media playlists in HLS multivariant playlists by descending preference score
-- Fixed brief gaps between contiguous DVB-TTML subtitles when cue durations differ from packet timing
-- Fixed HLS multivariant playlists not declaring `CLOSED-CAPTIONS=NONE` on variants when no closed
-  captions are configured, as the specification requires
-- Removed the `EXT-X-INDEPENDENT-SEGMENTS` tag from HLS media playlists; it stays declared once in the
-  multivariant playlist, matching Apple's validation guidance
-- Improved the quality of GPU-encoded H.264 renditions at 720p and above, which were encoded with the
-  H.264 Main profile while CPU-encoded renditions of the same rung used High. All renditions at 720p and
-  above now use High at the same bitrate, worth around 1 VMAF point at a 1080p 6.5 Mbps rung and more at
-  lower bitrates. Renditions below 720p stay on Main for decoder compatibility, and the `CODECS`
-  attribute in HLS manifests changes accordingly for the affected renditions
-- Fixed H.265 and H.264 ingests the GPU decoder cannot handle (such as 4:2:2 chroma subsampling)
-  leaving the channel stuck in a reconnect loop; those streams now fall back to software decoding
-
 ## [11.8.1] - 2026-08-06
 
 - Fixed RTMP ingest failing with "stream not found" against servers that only offer the stream as live
