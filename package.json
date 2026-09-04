@@ -67,9 +67,6 @@
     "unist-util-visit": "^5.1.0"
   },
   "overrides": {
-    "@docusaurus/theme-search-algolia": {
-      "@docsearch/react": "5.0.5"
-    },
     "@docusaurus/utils": {
       "gray-matter": "npm:@gr2m/gray-matter@4.0.3-with-pr-137"
     },
