@@ -13,7 +13,7 @@ This guide outlines the following:
 3. [Deleting a Publish Token](#deleting-a-token)
 4. [Using the Token REST API](#using-the-token-api)
 
-:::info Subscribe Tokens
+:::info[Subscribe Tokens]
 To restrict who may _view_ a stream, you would use a separate [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.mdx) after enabling the **Secure Viewer** setting.
 :::
 
@@ -47,7 +47,7 @@ Let's go over each section in a bit more detail:
   - **Create random stream names** will generate a stream name dynamically to insure uniqueness, such as _"hl7iqst"_.
   - **Allow any stream name** gives your token the ability to use ANY arbitrary stream name in the publishing path. The only rule to note here is that anyone using their own viewer must know what stream name the broadcaster is using in order to view the stream correctly.
 
-:::caution Stream names are required to broadcast
+:::caution[Stream names are required to broadcast]
 To publish a stream, a _stream name_ is required. Unless the Publish Token is set to **Allow any stream name**, the stream name must be equal to one of the created or generated stream names.
 :::
 
@@ -60,7 +60,7 @@ import ExpireDate from '../assets/img/expiredate.jpg';
   <img src={ExpireDate} width="400" />
 </div>
 
-:::info Temporary Publish tokens are recommended
+:::info[Temporary Publish tokens are recommended]
 Having an expiration date can prevent old or exposed tokens from becoming a long term vulnerability by limiting the duration they are valid. Tokens can always be deleted manually but if you know you only need the token for a set period of time it is more secure to create a token that is only valid for that duration.
 :::
 
@@ -126,7 +126,7 @@ import PublishTokenDetails from '../assets/img/publish-token-details.png';
   <img src={PublishTokenDetails} width="600" />
 </div>
 
-:::tip Renew your token
+:::tip[Renew your token]
 If your token has been compromised you can renew it by clicking the **renew button** under the _"Publishing token"_ string.
 :::
 

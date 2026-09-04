@@ -16,7 +16,7 @@ Multi-source can ingest contribution streams from sources such as RTMP and SRT. 
 
 Multi-source broadcasting is accomplished by enabling a token for multi-source and then publishing multiple quality layers or contributing sources using the same **publishing token** and **stream name**, but each with a unique **source id** and **simulcast id**. If you do not provide a source id, a second feed will overwrite the previous stream, which is common when trying to setup a [Redundant Ingest ](/millicast/broadcast/redundant-ingest/index.mdx) in case of an encoder failure.
 
-:::tip Enable Multi-source
+:::tip[Enable Multi-source]
 To use Multi-source, a [publish Token](/millicast/streaming-dashboard/managing-your-tokens.mdx) must have [multi-source](/millicast/streaming-dashboard/managing-your-tokens.mdx#advanced-settings) enabled in the token settings. This can be done with the REST API or by editing the token from the dashboard.
 
 Additionally, [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) is required when publishing to multiple regions for [Multi-view](/millicast/playback/multi-view.md) or [Redundant Ingest](/millicast/broadcast/redundant-ingest/index.mdx).
@@ -64,7 +64,7 @@ To configure a multi-source broadcast, you will need to construct a unique URL t
 
 See [Publish Parameters](/millicast/broadcast/index.mdx#publish-parameters) for descriptions of the supported broadcast parameters for each protocol.
 
-:::tip Use Multi-Source Builder
+:::tip[Use Multi-Source Builder]
 The Streaming Dashboard includes a multi-source builder tab to help with constructing multi-source URLs. With this tool, you can generate the proper URLs to use for your broadcast encoders. The methodology is described below for more complex workflows and automation.
 
 Learn more about how to use the [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.mdx).
@@ -132,11 +132,11 @@ In the hosted player, the `simulcastId` is used to set the video source's on-scr
 srt://srt-phx-1.millicast.com:10000?streamid=myStreamName%253Ft%253D4xd-...vvRrYTeftQPvsCSE%2526sourceId%253D3%2526simulcastId%253DSRT
 ```
 
-:::warning Declare the bitrate of each multi-bitrate layer
+:::warning[Declare the bitrate of each multi-bitrate layer]
 Add `&videoTargetBitrate=<kbps>` to every layer of a multi-bitrate contribution. The target bitrate lets the platform order the quality layers of a `simulcastId` before playback begins, so a viewer starts on the appropriate layer instead of an arbitrary one and then having [ABR](/millicast/distribution/using-webrtc-simulcast) climb to the expected quality.
 :::
 
-:::warning Multi-bitrate and Recordings
+:::warning[Multi-bitrate and Recordings]
 If you are sending multi-bitrate contributions, you can further optimize your parameters by only sending video and disabling any recordings for the additional layers.
 
 `&videoOnly&record=false`

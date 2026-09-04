@@ -60,7 +60,7 @@ import RecPlayer1 from '../../assets/img/rec-player_1.png';
   <img src={RecPlayer1} width="500" />
 </div>
 
-:::danger Audio Missing?
+:::danger[Audio Missing?]
 The downloaded recording will use the Opus audio codec. Playback on various media players may not support Opus and audio may not be heard. You can use [VLC](https://www.videolan.org/) for playback and converting sound to AAC.
 :::
 
@@ -84,7 +84,7 @@ import RecSelectAll2 from '../../assets/img/rec-select-all2.png';
   <img src={RecSelectAll2} width="500" />
 </div>
 
-:::danger Deletion is Permanent
+:::danger[Deletion is Permanent]
 If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 :::
 
@@ -146,7 +146,7 @@ curl --request DELETE \
 
 To remove everything from your account you can use the [Delete All Media Assets](/millicast/api/media-assets-delete-media-assets-2.api.mdx) REST endpoint. This operation works on one `type` at a time so will be called to remove `recording`, `clip`, and `timeline` independently.
 
-:::danger Deletion is Permanent
+:::danger[Deletion is Permanent]
 If you delete a recording or clip it is immediate and permanent. We are unable to recover a recording once it has been deleted and removed from the cloud servers.
 :::
 

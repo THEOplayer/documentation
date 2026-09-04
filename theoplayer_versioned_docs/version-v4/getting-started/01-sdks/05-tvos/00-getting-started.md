@@ -4,7 +4,7 @@ The THEOplayer tvOS SDK can be used from within both a client-server app project
 
 A sample traditional app project is located at [https://github.com/THEOplayer/samples-tvos-sdk/](https://github.com/THEOplayer/samples-tvos-sdk/).
 
-:::info Cocoapods
+:::info[Cocoapods]
 
 THEOplayer v2.83.0 and above can be managed through Cocoapods. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-ios" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-ios</a> for more information.
 

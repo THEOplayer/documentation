@@ -134,14 +134,14 @@ When using anchor links: the link will look like `#title-of-section`. **Anchor l
 ...
 ```
 
-You can customize a header's anchor ID by adding `{#anchor-name}` at the
+You can customize a header's anchor ID by adding `{/* #anchor-name */}` at the
 end ([documentation](https://docusaurus.io/docs/markdown-features/toc#heading-ids)).
 This can be useful if the heading is very long, or if the heading contains special characters.
 
 ```markdown
 [Anchor link to connect with custom receiver application](#custom-receiver-app)
 
-## Connect with custom Chromecast Receiver application {#custom-receiver-app}
+## Connect with custom Chromecast Receiver application {/* #custom-receiver-app */}
 
 ...
 ```

@@ -7,11 +7,11 @@ slug: /web/hosted-player
 
 Dolby hosts a special version of the OptiView video player for use with customers intended to be used for `<iframe>` embedding. This version of the player is configurable with query parameters to make it easy to setup and configure.
 
-:::caution Hosted Player Under Construction
+:::caution[Hosted Player Under Construction]
 This version of the player is under development.
 :::
 
-:::caution Player Updates
+:::caution[Player Updates]
 This version of the player will automatically be updated when new releases are published.
 :::
 

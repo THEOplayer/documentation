@@ -25,7 +25,7 @@ If you've reviewed the [Multi-source Broadcasting](/millicast/broadcast/multi-so
 
 To get started using Audio Multiplexing, you first need to create a Publishing token with [Multisource](/millicast/broadcast/multi-source-broadcasting.mdx) and have multiple audio sources ready to test, each assigned a unique `sourceID` at the publisher.
 
-:::info Not familiar with our JavaScript SDK?
+:::info[Not familiar with our JavaScript SDK?]
 Audio Multiplexing is a complex feature made available through our [Client SDKs](/millicast/playback/players-sdks/index.mdx).
 :::
 
@@ -79,7 +79,7 @@ viewer.on('broadcastEvent', async (event) => {
 });
 ```
 
-:::caution Viewer on "track" events
+:::caution[Viewer on "track" events]
 The OptiView Real-time SDKs offer `.on("track",async (event) =>{})` functionality for triggering events as tracks are added. When using Audio Multiplexing this event will trigger a number of times equal to the `multiplexedAudioTracks` value, regardless of if those tracks actually contain data.
 
 This means that if `multiplexedAudioTracks` is set to `5` it will trigger once for the first track and five additional times for each multiplexed audio track, regardless of whether there are only two tracks broadcasting or twenty.

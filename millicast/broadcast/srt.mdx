@@ -7,7 +7,7 @@ sidebar_position: 4
 
 This document will guide you on how to [broadcast](/millicast/broadcast/index.mdx) an SRT Stream to OptiView Real-time Streaming with SRT-capable software or hardware.
 
-:::tip Getting Started
+:::tip[Getting Started]
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You will need to create a publish token to generate the necessary SRT details.
 :::
 
@@ -44,7 +44,7 @@ The settings you use will be dependent on the specific encoder being configured.
 - For some encoders, a _single_ target URL parameter is all that is required. For this you use the combined **SRT publish URL** as the configured endpoint.
 - For other encoders, it is a _multi part_ setting comprised of a Hostname (or URL) and a separate Stream ID entry. For this you use the **SRT publish path** and **SRT stream ID** separately. Some encoders will also distinguish the **port** separately from the publish path as a third configurable setting.
 
-:::tip Compressed SRT Token
+:::tip[Compressed SRT Token]
 You may note that these publish settings include your embedded _Publishing token_ that has been further compressed. You can find instructions for how this is done in the section below for using the REST APIs if you are trying to automate generation of the SRT stream ID.
 :::
 

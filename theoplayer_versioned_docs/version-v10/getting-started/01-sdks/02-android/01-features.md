@@ -22,7 +22,7 @@ implementation 'com.theoplayer.theoplayer-sdk-android:integration-cast:8.0.0'
 
 As shown in the previous section, importing additional integration modules can be done by simply adding the dependency in the `build.gradle` file of the module using THEOplayer.
 
-:::info Important
+:::info[Important]
 
 It is required to keep the Android base SDK and all the required integration modules on the **same** version number.
 For example one should **not** import `core:8.1.0` and `integration-cast:8.2.0` in the same project.

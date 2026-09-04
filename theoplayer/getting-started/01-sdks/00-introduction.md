@@ -30,7 +30,7 @@ Dolby OptiView Player offers the following SDKs. (Clicking the link takes you to
 
 Want to update an existing SDK instead? Follow [this guide](./01-how-to-update-a-sdk.md).
 
-:::tip Looking for the Legacy Android and iOS/tvOS (4.12.x) SDKs?
+:::tip[Looking for the Legacy Android and iOS/tvOS (4.12.x) SDKs?]
 
 The legacy Android and iOS/tvOS SDKs (version 4.12.x) are no longer supported.
 However, you can still access their documentation through the following links:

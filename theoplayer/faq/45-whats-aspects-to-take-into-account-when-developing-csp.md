@@ -11,7 +11,7 @@ When configuring CSP on your pages including THEOplayer, you will need to allow:
 - script-src: 'self' and 'inline'
 - any domains hosting the libraries related to the features of THEOplayer that you are using. For example, Google IMA, Chromecast, FreeWheel, Youbora, Conviva, etc.
 
-<!-- Note: In old 2.X versions the script-src 'unsafe-eval' also needed adding. As of 2.48.0, this is no longer needed.-->
+{/* Note: In old 2.X versions the script-src 'unsafe-eval' also needed adding. As of 2.48.0, this is no longer needed.*/}
 
 ## Resources
 

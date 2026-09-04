@@ -86,7 +86,7 @@ When you select **Project** view, you can see a lot more files and directories. 
 
 ## Add THEOplayer library to your application ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/1ec4834a5de05115d81994aef4f24b7cd781ce0e?diff=unified))
 
-:::info Gradle / Maven / Jitpack
+:::info[Gradle / Maven / Jitpack]
 
 THEOplayer v2.83.0 and above can be managed through Jitpack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.
 

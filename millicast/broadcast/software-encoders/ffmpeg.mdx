@@ -26,7 +26,7 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-f flv           | Package flash video                              |
 | \-preset veryfast | Video encoding speed to compression ratio preset |
 
-:::warning -re flag
+:::warning[-re flag]
 Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
 :::
 
@@ -104,7 +104,7 @@ AV1 encoding can be quite processor-intensive and usually requires GPU-enabled h
 -speed 10  -qp 63 -g 120 -keyint_min 120 -tile-columns 4 -tile-rows 2
 ```
 
-:::caution AV1 Encoder Required
+:::caution[AV1 Encoder Required]
 FFmpeg doesn't include an AV1 encoder with standard installs. You must install one separately by following FFmpeg's official [AV1 installation guide](https://trac.ffmpeg.org/wiki/Encode/AV1).
 :::
 

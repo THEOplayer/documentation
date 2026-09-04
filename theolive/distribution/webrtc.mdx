@@ -10,7 +10,7 @@ description: Add a WebRTC source to a distribution for sub-second real-time deli
 
 A distribution can be configured with a WebRTC source to enable sub-second, real-time delivery alongside the standard HESP and HLS output protocols. When WebRTC is enabled, the platform connects the distribution to an [OptiView Real-time Streaming](/millicast/getting-started/) source, allowing viewers to receive the stream over WebRTC for the lowest possible latency.
 
-:::warning Distribution-level security does not apply to WebRTC
+:::warning[Distribution-level security does not apply to WebRTC]
 When viewers play back via the WebRTC source, traffic is served directly by OptiView Real-time Streaming and bypasses the distribution. As a result, distribution-level [token-based security](./security/token-based-security.mdx), [geo-blocking](./security/geo-blocking.md), [IP blocking](./security/ip-blocking.md), and [referrer blocking](./security/referrer-blocking.mdx) are **not enforced** for WebRTC playback. Read the [Secure viewing](#secure-viewing) section to learn how to access a protected stream.
 :::
 

@@ -17,7 +17,7 @@ This bitrate adaptation is available for [RTMP](/millicast/broadcast/rtmp-and-rt
 
 Simulcast provides flexibility that allows viewers to adjust their individual experience for specific circumstances. For _multicast_ use cases of distributing to multiple destinations, review the [Syndication](/millicast/distribution/syndication) guide.
 
-:::tip Getting Started
+:::tip[Getting Started]
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast.
 :::
 
@@ -34,7 +34,7 @@ Before broadcasting content using Simulcast, make sure you:
 - Disabled b-frames for better results
 - Have adequate bandwidth at the broadcast source to send multiple contribution sources
 
-:::caution Bandwidth Usage
+:::caution[Bandwidth Usage]
 Simulcast is included with plans at no additional cost when enabled. However, since multiple streams will be published, there will be more bits sent to the platform which counts as a bandwidth increase. Conversely, viewers may receive a resolution and bitrate at a lower level which may decrease bandwidth consumption overall.
 :::
 
@@ -110,7 +110,7 @@ For example you can have a WebRTC broadcast with four qualities, 1080p, 720p, 48
 - 480p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=2` + publishing token
 - 360p stream URL: `https://director.millicast.com/api/whip/myStreamName?simulcastId&sourceId=3` + publishing token
 
-:::tip Multi-Source Builder
+:::tip[Multi-Source Builder]
 The [Multi-source Builder](/millicast/streaming-dashboard/multi-source-builder.mdx) tool within the dashboard can assist with constructing these target endpoints. When using RTMP, SRT, and WHIP contributions you will use a separate publish url for each source. The _Multi-source Builder_ will help construct these URLs which you can export and download the configuration as a reference while setting up each device you will be broadcasting from.
 :::
 
@@ -189,7 +189,7 @@ import Screenshot4 from '../assets/img/Screenshot_2023-11-02_at_10.19.42.png';
   <img src={Screenshot4} width="500" />
 </div>
 
-:::tip Building Your Own Custom Player To Support Multi-bitrate Streams
+:::tip[Building Your Own Custom Player To Support Multi-bitrate Streams]
 If you are using the Millicast [Web SDK](/millicast/playback/players-sdks/web/sdk/index.mdx) to build your own playback experience and want to support Simulcast, see the [Multisource Playback](/millicast/playback/source-and-layer-selection.md) guide for details on handling events and layer selection.
 :::
 
