@@ -20,7 +20,6 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 - Fixed an issue where an RTMP re-stream could stay in a "connected" state forever, without sending any media, if the destination accepted the connection but never answered the publish request. The re-stream now fails after 10 seconds, so it can be reported and restarted.
 - Fixed an issue where ABR bandwidth estimation on Firefox counted bandwidth probes as packet loss, which could pin the estimate far below the available bandwidth and cause freezes in multiview playback.
-- Applied operating system and dependency security updates to the media server images.
 - General stability and reliability improvements.
 
 ## 2026-08-17
