@@ -478,12 +478,27 @@ const config: Config = {
             title: 'Dolby OptiView Player',
             description:
               'Dolby OptiView Player (formerly THEOplayer) enables you to deploy cutting-edge video playback experiences, efficiently and on any device, including on web, mobile, smart TVs, set-top-boxes and gaming consoles.',
+            platformSidebars: {
+              web: 'Web SDK',
+              android: 'Android SDK',
+              ios: 'iOS & tvOS SDK',
+              'react-native': 'React Native SDK',
+              flutter: 'Flutter SDK',
+              chromecast: 'Chromecast SDK',
+              roku: 'Roku SDK',
+            },
           },
           {
             slug: 'open-video-ui',
             title: 'Open Video UI',
             description:
               'The Open Video UI provides component libraries for building a world-class video player experience powered by the OptiView Player SDK, with dedicated libraries for web, Android and React Native.',
+            platformSidebars: {
+              web: 'Web',
+              android: 'Android',
+              react: 'React',
+              'react-native': 'React Native',
+            },
           },
           {
             slug: 'theolive',

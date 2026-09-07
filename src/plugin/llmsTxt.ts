@@ -4,12 +4,19 @@ import type { LoadContext, Plugin } from '@docusaurus/types';
 import { normalizeUrl } from '@docusaurus/utils';
 import llmsTxtPlugin, { type PluginOptions as LlmsTxtPluginOptions } from '@signalwire/docusaurus-plugin-llms-txt';
 import { rehypeDocusaurusMarkdown, remarkAbsoluteLinks } from './llmsTxtMarkdown';
+import { locateDocs, type DocLocation } from './llmsTxtSidebars';
 
 export interface Product {
   /** First path segment of the product's docs, e.g. `theoplayer` for `/docs/theoplayer/**`. */
   slug: string;
   title: string;
   description: string;
+  /**
+   * Titles of the sidebars that each document a single platform, keyed by sidebar ID.
+   * Pages that appear in exactly one of these sidebars are listed under that title;
+   * pages shared between sidebars are listed under their sidebar category only.
+   */
+  platformSidebars?: Record<string, string>;
 }
 
 export interface Options {
@@ -25,6 +32,13 @@ interface Entry {
   markdownPath: string;
 }
 
+interface Section {
+  title: string;
+  rank: number;
+  order: number;
+  entries: Entry[];
+}
+
 const ENTRY_LINE = /^- \[(.+?)\]\((\S+?)\)(?:: (.*))?$/;
 const MAX_DESCRIPTION_LENGTH = 200;
 
@@ -35,7 +49,10 @@ const MAX_DESCRIPTION_LENGTH = 200;
  */
 function cleanDescription(title: string, description: string | undefined): string | undefined {
   if (!description || description.startsWith('#') || description.startsWith('<')) return undefined;
-  const text = description.replace(/<[^>]+>/g, '').trim();
+  const text = description
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s*``/g, '')
+    .trim();
   if (text === '' || text.toLowerCase() === title.toLowerCase()) return undefined;
   if (text.length <= MAX_DESCRIPTION_LENGTH) return text;
   const sentenceEnd = text.lastIndexOf('. ', MAX_DESCRIPTION_LENGTH);
@@ -69,40 +86,68 @@ function header(title: string, description: string | undefined): string {
 
 const OVERVIEW_SECTION = 'Overview';
 
-function isVersionSection(section: string): boolean {
-  return /^v\d+$/.test(section);
-}
-
-function compareSections(a: string, b: string): number {
-  if (a === OVERVIEW_SECTION || b === OVERVIEW_SECTION) return a === OVERVIEW_SECTION ? -1 : 1;
-  if (isVersionSection(a) !== isVersionSection(b)) return isVersionSection(a) ? 1 : -1;
-  return a.localeCompare(b);
+/**
+ * Section of the product index for a page, based on where the page appears in the sidebars.
+ * Ranks order the sections: overview, one platform, shared between platforms; older versions last.
+ */
+function sectionFor(product: Product, location: DocLocation | undefined): Pick<Section, 'title' | 'rank' | 'order'> {
+  if (!location) return { title: OVERVIEW_SECTION, rank: 0, order: Infinity };
+  const { version, placements } = location;
+  const versionSuffix = version.isLast ? '' : ` (${version.label})`;
+  const versionRank = version.isLast ? 0 : 3;
+  const [first] = placements;
+  if (!first) return { title: OVERVIEW_SECTION + versionSuffix, rank: versionRank, order: Infinity };
+  const shared = placements.length > 1;
+  const platform = shared ? undefined : product.platformSidebars?.[first.sidebarId];
+  const title = platform ? `${platform}: ${first.category ?? OVERVIEW_SECTION}` : (first.category ?? OVERVIEW_SECTION);
+  return { title: title + versionSuffix, rank: versionRank + (shared ? 2 : 1), order: first.order };
 }
 
 /**
- * Groups the product's pages by their first sub-directory (e.g. `getting-started`, `how-to-guides`).
- * Pages directly below the product go into an "Overview" section first; older versions (`v10`, `v1`) go last.
+ * Groups the product's pages like the sidebars do: one section per top-level sidebar category, prefixed with the
+ * platform for per-platform sidebars. Pages that are not in any sidebar go into the "Overview" section, after the
+ * product's landing page. Within a section, pages keep their sidebar order.
  */
-function productIndex(product: Product, entries: Entry[]): string {
-  const sections = new Map<string, Entry[]>();
+function productSections(product: Product, entries: Entry[], locations: Map<string, DocLocation>): Section[] {
+  const sections = new Map<string, Section>();
+  const entryOrder = new Map<Entry, number>();
   for (const entry of entries) {
-    const segments = entry.markdownPath.split('/');
-    const section = segments.length > 2 ? segments[1] : OVERVIEW_SECTION;
-    sections.set(section, [...(sections.get(section) ?? []), entry]);
+    const routePath = entry.markdownPath.replace(/\.md$/, '');
+    const { title, rank, order } = sectionFor(product, locations.get(routePath));
+    entryOrder.set(entry, routePath === product.slug ? -1 : order);
+    const section = sections.get(title) ?? { title, rank, order, entries: [] };
+    section.rank = Math.min(section.rank, rank);
+    section.order = Math.min(section.order, order);
+    section.entries.push(entry);
+    sections.set(title, section);
   }
+  for (const section of sections.values()) {
+    section.entries.sort((a, b) => entryOrder.get(a)! - entryOrder.get(b)!);
+  }
+  return [...sections.values()].sort((a, b) => a.rank - b.rank || a.order - b.order);
+}
+
+function productIndex(product: Product, sections: Section[]): string {
   let content = header(product.title, product.description);
-  for (const [section, sectionEntries] of [...sections].sort(([a], [b]) => compareSections(a, b))) {
-    content += `## ${section}\n\n${sectionEntries.map(formatEntry).join('')}\n`;
+  for (const section of sections) {
+    content += `## ${section.title}\n\n${section.entries.map(formatEntry).join('')}\n`;
   }
   return content;
 }
 
-async function productContent(outDir: string, entries: Entry[]): Promise<string> {
+async function productContent(outDir: string, sections: Section[]): Promise<string> {
+  const entries = sections.flatMap((section) => section.entries);
   const pages = await Promise.all(entries.map((entry) => fs.readFile(path.join(outDir, entry.markdownPath), 'utf8')));
   return pages.map((page) => `${page.trim()}\n\n---\n\n`).join('');
 }
 
-async function writeProductFiles(outDir: string, siteUrl: string, { llmsTxt, products }: Options, siteConfig: LoadContext['siteConfig']) {
+async function writeProductFiles(
+  outDir: string,
+  siteUrl: string,
+  { llmsTxt, products }: Options,
+  siteConfig: LoadContext['siteConfig'],
+  locations: Map<string, DocLocation>
+) {
   const rootLlmsTxtPath = path.join(outDir, 'llms.txt');
   const entries = parseEntries(await fs.readFile(rootLlmsTxtPath, 'utf8'), siteUrl);
   const slugs = new Set(entries.map((entry) => entry.markdownPath.split('/')[0].replace(/\.md$/, '')));
@@ -118,10 +163,11 @@ async function writeProductFiles(outDir: string, siteUrl: string, { llmsTxt, pro
     const productEntries = entries.filter(({ markdownPath }) => markdownPath === `${product.slug}.md` || markdownPath.startsWith(`${product.slug}/`));
     if (productEntries.length === 0) continue;
 
-    const content = await productContent(outDir, productEntries);
+    const sections = productSections(product, productEntries, locations);
+    const content = await productContent(outDir, sections);
     const productUrl = normalizeUrl([siteUrl, product.slug]);
     await fs.mkdir(path.join(outDir, product.slug), { recursive: true });
-    await fs.writeFile(path.join(outDir, product.slug, 'llms.txt'), productIndex(product, productEntries));
+    await fs.writeFile(path.join(outDir, product.slug, 'llms.txt'), productIndex(product, sections));
     await fs.writeFile(path.join(outDir, product.slug, 'llms-full.txt'), header(product.title, product.description) + content);
 
     rootIndex += `## ${product.title}\n\n${product.description}\n\n`;
@@ -159,7 +205,8 @@ export default function llmsTxt(context: LoadContext, options: Options): Plugin<
     name: 'llms-txt',
     async postBuild(props) {
       await inner.postBuild?.(props);
-      await writeProductFiles(props.outDir, siteUrl, options, siteConfig);
+      const locations = locateDocs(props.plugins, siteConfig.baseUrl);
+      await writeProductFiles(props.outDir, siteUrl, options, siteConfig, locations);
     },
   };
 }
