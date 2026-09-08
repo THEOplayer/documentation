@@ -9,7 +9,7 @@ This page is a step-by-step guide on how to get THEOplayer iOS SDK running on iO
 
 This example uses Xcode version 12.0.1 (12A7300) and macOS Catalina version 10.15.7.
 
-:::info Cocoapods
+:::info[Cocoapods]
 
 THEOplayer v2.83.0 and above can be managed through Cocoapods. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-ios" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-ios</a> for more information.
 

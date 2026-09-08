@@ -1,6 +1,6 @@
 # Getting started on Fire TV Legacy (4.12.x)
 
-:::info Fire TV
+:::info[Fire TV]
 
 The latest THEOplayer Android SDK (5.0.0+) is compatible both with Android mobile and Fire TV. We do not have a separate SDK for each platform.
 

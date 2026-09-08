@@ -29,11 +29,11 @@ ffmpeg -re -stream_loop -1 -i /path/to/file.mp4 \
 | \-c:a copy       | Copy the audio codec from the input                           |
 | \-f flv          | Package flash video                                           |
 
-:::warning -re flag
+:::warning[-re flag]
 Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
 :::
 
-:::info Upload bandwidth
+:::info[Upload bandwidth]
 Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the OptiView Live channel.
 :::
 

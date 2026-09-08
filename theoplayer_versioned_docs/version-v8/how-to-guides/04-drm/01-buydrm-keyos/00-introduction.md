@@ -89,7 +89,7 @@ public static var buyDRMkeyOS: SourceDescription {
 
 ## Resources
 
-<!-- - [https://www.buydrm.com/webinar/buydrm_theoplayer](https://www.buydrm.com/webinar/buydrm_theoplayer)-->
+{/* - [https://www.buydrm.com/webinar/buydrm_theoplayer](https://www.buydrm.com/webinar/buydrm_theoplayer)*/}
 
 - [https://test.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf](https://test.buydrm.com/sites/default/files/pdf/webinar/050217_DeployingKeyOSMulti-DRM_withTHEOPLayer_Webinar.pdf)
 - [How to use THEOplayer with KeyOS BuyDRM](../../../how-to-guides/04-drm/01-buydrm-keyos/01-how-to-use-with-theoplayer.md)

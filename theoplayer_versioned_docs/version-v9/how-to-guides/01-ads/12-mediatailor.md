@@ -118,7 +118,7 @@ val mediaTailorSource = MediaTailorSource
     .build()
 ```
 
-:::note Deprecated
+:::note[Deprecated]
 
 The source definition currently still uses the deprecated `adParams` property. This will be
 replaced by the `adsParams` property in a future version.

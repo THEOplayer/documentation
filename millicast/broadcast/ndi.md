@@ -14,7 +14,7 @@ This guide will outline four options for NDI delivery:
 
 ## NDI publishing
 
-:::tip Getting Started
+:::tip[Getting Started]
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You'll need your _publish token_ and _stream name_ for the steps described below.
 :::
 

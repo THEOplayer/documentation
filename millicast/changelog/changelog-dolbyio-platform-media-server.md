@@ -26,7 +26,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.5.1 -->
+{/* 3.5.1 */}
 
 #### Features
 
@@ -43,7 +43,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.5.0 -->
+{/* 3.5.0 */}
 
 #### Features
 
@@ -59,7 +59,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.4.3 -->
+{/* 3.4.3 */}
 
 #### Fixes
 
@@ -74,7 +74,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.4.1 -->
+{/* 3.4.1 */}
 
 #### Fixes
 
@@ -84,7 +84,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.4.0 -->
+{/* 3.4.0 */}
 
 #### Features
 
@@ -101,7 +101,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.3.4 -->
+{/* 3.3.4 */}
 
 #### Fixes
 
@@ -111,7 +111,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.3.1  -->
+{/* 3.3.1 */}
 
 #### Features
 
@@ -122,7 +122,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.1.2  -->
+{/* 3.1.2 */}
 
 #### Features
 
@@ -143,7 +143,7 @@ As this is a new feature, we welcome customer feedback. For even more informatio
 
 ### Media Server
 
-<!-- 3.1.0 -->
+{/* 3.1.0 */}
 
 #### Features
 
@@ -159,7 +159,7 @@ As this is a new feature, we welcome customer feedback. For even more informatio
 
 ### Media Server
 
-<!-- 3.0.2 -->
+{/* 3.0.2 */}
 
 #### Features
 
@@ -173,7 +173,7 @@ As this is a new feature, we welcome customer feedback. For even more informatio
 
 ### Media Server
 
-<!-- 3.0.1 -->
+{/* 3.0.1 */}
 
 #### Features
 

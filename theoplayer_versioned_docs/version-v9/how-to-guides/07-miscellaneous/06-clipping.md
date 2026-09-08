@@ -48,13 +48,14 @@ This is currently possible through JavaScript injection in your Android project.
 
 This is currently possible through JavaScript injection in your iOS project. Find out more about this in the article [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md).
 
-<!--
+{/*
+
 ## Sample application
 
 The demo below illustrates the Up Next API in production.
 
 - Demo: [https://support.theoplayer.com/hc/en-us/articles/206773139-Video-Clipping-in-2-X](https://support.theoplayer.com/hc/en-us/articles/206773139-Video-Clipping-in-2-X)
--->
+  */}
 
 ## Remarks
 

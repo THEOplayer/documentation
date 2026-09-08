@@ -17,61 +17,61 @@ import TabItem from '@theme/TabItem';
 2.  You need a correctly deployed [OptiView Ads signaling service](signaling-service.mdx).
 3.  Add the OptiView Player iOS SDK to your project by following our [Getting started](/theoplayer/getting-started/sdks/ios/getting-started) guide. Make sure to [set up an OptiView Ads-compatible license](/theoplayer/getting-started/sdks/ios/getting-started/#theoplayer-license) in your app.
 4.  Add the OptiView Ads integration as a dependency to your project:
-    <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
-    <TabItem value="cocoapods" label="CocoaPods">
-        1. Add the `THEOplayer-Integration-THEOads` pod to your Podfile:
-        ```sh
-        pod 'THEOplayer-Integration-THEOads', '~> <YOUR_INTEGRATION_VERSION>'
-        ```
-        2. Install the new pod:
-        ```sh
-        pod install
-        ```
-    </TabItem>
-    <TabItem value="swiftpm" label="SwiftPM">
-         1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
-         ![Screenshot of Xcode file menu](../assets/img/ios-xcode-file-menu.png)
+{/* prettier-ignore */}
+<Tabs queryString="lang">
+<TabItem value="cocoapods" label="CocoaPods">
+    1. Add the `THEOplayer-Integration-THEOads` pod to your Podfile:
+    ```sh
+    pod 'THEOplayer-Integration-THEOads', '~> <YOUR_INTEGRATION_VERSION>'
+    ```
+    2. Install the new pod:
+    ```sh
+    pod install
+    ```
+</TabItem>
+<TabItem value="swiftpm" label="SwiftPM">
+     1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
-         2. Add `theoplayer-sdk-apple` package by entering the following url:
-         ```sh
-         https://github.com/THEOplayer/theoplayer-sdk-apple
-         ```
-         ![Screenshot of SwiftPM menu](../assets/img/ios-swiftpm-menu.png)
+     ![Screenshot of Xcode file menu](../assets/img/ios-xcode-file-menu.png)
 
-         3. Select `THEOplayerTHEOadsIntegration` from the package products list and add it to your target.
+     2. Add `theoplayer-sdk-apple` package by entering the following url:
+     ```sh
+     https://github.com/THEOplayer/theoplayer-sdk-apple
+     ```
+     ![Screenshot of SwiftPM menu](../assets/img/ios-swiftpm-menu.png)
 
-         ![Screenshot of SwiftPM  product selection](../assets/img/ios-swiftpm-product-selection.png)
+     3. Select `THEOplayerTHEOadsIntegration` from the package products list and add it to your target.
 
-    </TabItem>
-    <!-- prettier-ignore-end -->
-    </Tabs>
+     ![Screenshot of SwiftPM  product selection](../assets/img/ios-swiftpm-product-selection.png)
+
+</TabItem>
+</Tabs>
 
 5.  Add Google IMA SDK as a dependency to your project:
-    <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
-    <TabItem value="cocoapods" label="CocoaPods">
-        1. The `THEOplayer-Integration-THEOads` pod has a dependency on `GoogleAds-IMA-iOS-SDK` which should be installed automatically.
-    </TabItem>
-    <TabItem value="swiftpm" label="SwiftPM">
-         1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
-         ![Screenshot of Xcode file menu](../assets/img/ios-xcode-file-menu.png)
+{/* prettier-ignore */}
+<Tabs queryString="lang">
+<TabItem value="cocoapods" label="CocoaPods">
+    1. The `THEOplayer-Integration-THEOads` pod has a dependency on `GoogleAds-IMA-iOS-SDK` which should be installed automatically.
+</TabItem>
+<TabItem value="swiftpm" label="SwiftPM">
+     1. Open your Xcode project and navigate to File > Add Package Dependencies...
 
-         2. Add `swift-package-manager-google-interactive-media-ads-ios` package by entering the following url:
-         ```sh
-         https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios
-         ```
-         ![Screenshot of SwiftPM menu](../assets/img/ios-swiftpm-menu-google.png)
+     ![Screenshot of Xcode file menu](../assets/img/ios-xcode-file-menu.png)
 
-         3. Select `GoogleInteractiveMediaAds` from the package products list and add it to your target.
+     2. Add `swift-package-manager-google-interactive-media-ads-ios` package by entering the following url:
+     ```sh
+     https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios
+     ```
+     ![Screenshot of SwiftPM menu](../assets/img/ios-swiftpm-menu-google.png)
 
-         ![Screenshot of SwiftPM  product selection](../assets/img/ios-swiftpm-product-selection-google.png)
+     3. Select `GoogleInteractiveMediaAds` from the package products list and add it to your target.
 
-    </TabItem>
-    <!-- prettier-ignore-end -->
-    </Tabs>
+     ![Screenshot of SwiftPM  product selection](../assets/img/ios-swiftpm-product-selection-google.png)
+
+</TabItem>
+</Tabs>
 
 ## Integration
 
