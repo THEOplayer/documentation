@@ -43,7 +43,7 @@
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.8",
     "react-ace": "^15.0.0",
-    "react-aria-components": "^1.20.0",
+    "react-aria-components": "^1.21.0",
     "react-dom": "^19.2.8",
     "url": "^0.11.4"
   },
