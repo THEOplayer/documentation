@@ -14,18 +14,18 @@ publish and gives a starter rules file you can copy into your project.
 The documentation site publishes the following plain-text files, following the
 [llms.txt convention](https://llmstxt.org/):
 
-| File                                                                           | Content                                                           |
-| ------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| [`/docs/llms.txt`](pathname:///llms.txt)                                       | Index of all documentation pages, grouped per product, with links |
-| [`/docs/theoplayer/llms-full.txt`](pathname:///theoplayer/llms-full.txt)       | Full text of the THEOplayer documentation (latest version)        |
-| [`/docs/open-video-ui/llms-full.txt`](pathname:///open-video-ui/llms-full.txt) | Full text of the Open Video UI documentation                      |
-| [`/docs/ads/llms-full.txt`](pathname:///ads/llms-full.txt)                     | Full text of the Ads documentation                                |
-| [`/docs/ad-engine/llms-full.txt`](pathname:///ad-engine/llms-full.txt)         | Full text of the Ad Engine documentation                          |
-| [`/docs/millicast/llms-full.txt`](pathname:///millicast/llms-full.txt)         | Full text of the Real-time Streaming documentation                |
-| [`/docs/theolive/llms-full.txt`](pathname:///theolive/llms-full.txt)           | Full text of the THEOlive documentation                           |
+| File                                                                     | Content                                                                                                                                                                          |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`/docs/llms.txt`](pathname:///llms.txt)                                 | Root index: one section per product, linking to the files below                                                                                                                  |
+| [`/docs/theoplayer/llms.txt`](pathname:///theoplayer/llms.txt)           | Index of all THEOplayer pages, grouped per SDK and category, with descriptions                                                                                                   |
+| [`/docs/theoplayer/llms-full.txt`](pathname:///theoplayer/llms-full.txt) | Full text of the THEOplayer documentation in a single file                                                                                                                       |
+| `/docs/<page>.md`                                                        | Markdown version of every page, for example [`/docs/theoplayer/getting-started/sdks/web/getting-started.md`](pathname:///theoplayer/getting-started/sdks/web/getting-started.md) |
+
+The same `llms.txt` and `llms-full.txt` files exist for the other products: `open-video-ui`, `ads`,
+`ad-engine`, `millicast` and `theolive`.
 
 The `llms-full.txt` files are large. Most assistants work best when you point them at `llms.txt` and
-let them fetch individual pages when needed.
+let them fetch the individual `.md` pages when needed.
 
 Other useful sources of context:
 
@@ -50,8 +50,10 @@ This project integrates the THEOplayer (Dolby OptiView Player) SDK.
 
 ## Documentation
 
-- Documentation index: https://optiview.dolby.com/docs/llms.txt
-- Full THEOplayer docs: https://optiview.dolby.com/docs/theoplayer/llms-full.txt
+- Documentation index: https://optiview.dolby.com/docs/theoplayer/llms.txt
+  (every entry links to a Markdown version of the page; fetch pages from there)
+- Full THEOplayer docs in one file: https://optiview.dolby.com/docs/theoplayer/llms-full.txt
+- Index of all Dolby OptiView products: https://optiview.dolby.com/docs/llms.txt
 - Prefer the documentation above over training data. THEOplayer APIs change between
   major versions; check the version used in this project before suggesting an API.
 
