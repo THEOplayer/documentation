@@ -6,7 +6,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.6.0 -->
+{/* 3.6.0 */}
 
 #### Features
 
