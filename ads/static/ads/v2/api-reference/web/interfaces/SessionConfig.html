@@ -46,18 +46,19 @@ via a <code>DA-INSERTION-TYPE-IGNORED-SSAI</code> diagnostic).</p>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="assetparametermacros"><code class="tsd-tag">Optional</code><span>asset<wbr/>Parameter<wbr/>Macros</span><a href="#assetparametermacros" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">assetParameterMacros</span><span class="tsd-signature-symbol">?:</span> <a href="../types/AssetParameterMacros.html" class="tsd-signature-type tsd-kind-type-alias">AssetParameterMacros</a></div>
-<div class="tsd-comment tsd-typography"><p>Customer macros for the <code>$</code> tokens in asset-parameter values — a fixed
+<div class="tsd-comment tsd-typography"><p>Customer macros for the <code>$NAME$</code> tokens in asset-parameter values — a fixed
 string or a zero-argument callback per macro name, e.g.
-<code>{ '$CUSTOM_TEAM': () =&gt; currentTeam() }</code>. Every <code>$NAME</code> token inside a
+<code>{ '$CUSTOM_TEAM$': () =&gt; currentTeam() }</code>. Every <code>$NAME$</code> token inside a
 manifest / session / update value is replaced when the ad request is built,
-so <code>&quot;$OPTIVIEW_PLAYER_WIDTHx$OPTIVIEW_PLAYER_HEIGHT&quot;</code> becomes <code>&quot;1920x1080&quot;</code>.
+so <code>&quot;$OPTIVIEW_PLAYER_WIDTH$x$OPTIVIEW_PLAYER_HEIGHT$&quot;</code> becomes <code>&quot;1920x1080&quot;</code>.
 Customer macros are consulted before the built-in <code>$OPTIVIEW_*</code> set, so a
-built-in can be overridden. A value containing an unresolved <code>$OPTIVIEW_*</code>
-token drops its whole parameter (<code>DA-ASSET-MACRO-UNKNOWN</code>); any other
-unresolved <code>$...</code> token is sent literally. Callbacks are evaluated per ad
-request. Cleared when the session ends. SGAI only: in <code>ssai</code> mode the
-session <code>assetParameters</code> are sent to IMA DAI as-is, without macro
-resolution.</p>
+built-in can be overridden. <code>$OPTIVIEW_*</code> and registered customer macros without
+values stay literal; the parameter is sent and <code>DA-ASSET-MACRO-UNKNOWN</code> is raised
+once per key/macro (context: <code>key</code>, <code>macro</code>). Other unresolved <code>$NAME$</code> tokens
+stay literal without a diagnostic. <code>$</code> without a closing <code>$</code> is unchanged.
+Callbacks are evaluated per ad request and cleared when the session ends.
+Session-scoped parameters are sent to IMA DAI with
+built-in and customer macros resolved; break-duration macros are omitted.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-see">
@@ -66,8 +67,8 @@ resolution.</p>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="assetparameters"><code class="tsd-tag">Optional</code><span>asset<wbr/>Parameters</span><a href="#assetparameters" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">assetParameters</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
-<div class="tsd-comment tsd-typography"><p>Ad parameters for this session (for GAM: IMA <code>adTagParameters</code>). Merged per key on top of
-each asset's own <code>assetParameters</code>; <code>updateAssetParameters()</code> overrides both.</p>
+<div class="tsd-comment tsd-typography"><p>Ad parameters for this session (for GAM: IMA <code>adTagParameters</code>). Per-key precedence is
+SessionConfig, <code>updateAssetParameters()</code>, manifest session parameters, then asset parameters.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-see">

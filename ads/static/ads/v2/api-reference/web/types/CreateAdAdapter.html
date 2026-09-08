@@ -11,10 +11,10 @@
 <li><a href="" aria-current="page">CreateAdAdapter</a></li></ul>
 <h1>Type Alias CreateAdAdapter</h1></div>
 <div class="tsd-signature"><span class="tsd-kind-type-alias">CreateAdAdapter</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">container</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">video</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span> <span class="tsd-signature-symbol">=&gt;</span> <a href="../interfaces/PlayerAdapter.html" class="tsd-signature-type tsd-kind-interface">PlayerAdapter</a></div>
-<div class="tsd-comment tsd-typography"><p>Factory the SDK calls during initialize(): create the media element(s) inside the given
-container and return a PlayerAdapter wrapping them. <code>video</code>, when present, is the content
-player's own <code>&lt;video&gt;</code> the ad must play through (shared-element path: PiP / OS-native
-fullscreen). A factory that ignores it is detected and the SDK falls back to the content player.</p>
+<div class="tsd-comment tsd-typography"><p>Factory for a custom ad player: create media elements inside the supplied container
+and return a <a href="../interfaces/PlayerAdapter.html" class="tsd-kind-interface">PlayerAdapter</a>. When <code>video</code> is provided, use that existing content
+video element so ads remain visible in picture-in-picture or native fullscreen.
+If the factory ignores it, the SDK falls back to the content player.</p>
 </div>
 <div class="tsd-type-declaration">
 <h4>Type Declaration</h4>

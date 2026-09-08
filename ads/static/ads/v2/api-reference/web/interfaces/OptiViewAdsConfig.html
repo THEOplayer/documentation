@@ -139,9 +139,9 @@ optional <code>setVideoQuality</code> operation constrains background bandwidth 
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="createadadapter"><code class="tsd-tag">Optional</code><span>create<wbr/>Ad<wbr/>Adapter</span><a href="#createadadapter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">createAdAdapter</span><span class="tsd-signature-symbol">?:</span> <a href="../types/CreateAdAdapter.html" class="tsd-signature-type tsd-kind-type-alias">CreateAdAdapter</a></div>
-<div class="tsd-comment tsd-typography"><p>Factory called once during initialize() with an SDK-created container. Optional with the
-<code>@dolby-optiview/ads-sdk</code> entry package (default HLS.js ad player, native <code>&lt;video&gt;</code> fallback);
-the bare <code>@dolby-optiview/ads-sdk-core</code> package throws if it is omitted.</p>
+<div class="tsd-comment tsd-typography"><p>Factory for a custom ad player, given an SDK-created container. Optional with
+<code>@dolby-optiview/ads-sdk</code>, which includes a default player for progressive video and HLS.
+Required when using the bare <code>@dolby-optiview/ads-sdk-core</code> package.</p>
 </div>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-example">

@@ -17,7 +17,7 @@ per-session on <a href="../interfaces/SessionConfig.html#adinsertiontype" class=
 <ul>
 <li><code>replacement</code> (DAR): the break replaces a window of content; after
 the break, content resumes at <code>breakStart + (resumeOffset ?? duration)</code> — the
-replaced window is skipped. Preserves the historical behaviour.</li>
+replaced window is skipped.</li>
 <li><code>insertion</code> (DAI): the break is inserted and content resumes at the exact
 pre-break position (<code>breakStart + (resumeOffset ?? 0)</code>); the content timeline
 is not consumed. Primarily for VOD (PTS timebase).</li>

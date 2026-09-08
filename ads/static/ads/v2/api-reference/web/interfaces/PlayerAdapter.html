@@ -72,54 +72,42 @@ through this interface; each player gets its own adapter package.</p>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="islive"><code class="tsd-tag">Optional</code> <code class="tsd-tag">Readonly</code><span>is<wbr/>Live</span><a href="#islive" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">isLive</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></div>
-<div class="tsd-comment tsd-typography"><p>Whether the content is LIVE, as the engine itself understands it.</p>
-<p>Exists because <code>!Number.isFinite(duration)</code> — the obvious proxy, and what the SDK used
-everywhere before this — is simply WRONG on hls.js. hls.js only sets the media duration
-to Infinity for live when <code>liveDurationInfinity</code> is configured, and that defaults to
-<strong>false</strong>; otherwise a live stream reports a finite duration equal to the playlist edge.
-Measured on the NFL Channel feed 2026-08-24: a genuinely live hls.js session was refused
-as <code>not-live</code>, and the legacy continuous-playout mode never engaged for a whole break.</p>
-<p><code>maxLiveSeekPosition</code> is not a substitute either — hls.js derives it from
-<code>latestLevelDetails</code>, which exists on VOD too, so it is non-null there.</p>
-<p>Every engine knows the answer authoritatively, so ask it rather than infer:</p>
+<div class="tsd-comment tsd-typography"><p>Whether the content is live, as reported by the player engine. Return <code>null</code> or omit
+this property when unknown; the SDK then falls back to checking for an infinite duration.
+A finite duration does not reliably identify VOD: HLS.js can report a finite live playlist.</p>
 <table>
 <thead>
 <tr>
-<th>engine</th>
-<th>source</th>
+<th>Player</th>
+<th>Live status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>hls.js</td>
-<td><code>hls.latestLevelDetails.live</code> (no EXT-X-ENDLIST)</td>
+<td>HLS.js</td>
+<td><code>hls.latestLevelDetails.live</code></td>
 </tr>
 <tr>
-<td>shaka</td>
+<td>Shaka</td>
 <td><code>player.isLive()</code></td>
 </tr>
 <tr>
 <td>THEOplayer</td>
-<td><code>duration === Infinity</code> — it really does report that for live</td>
+<td><code>duration === Infinity</code></td>
 </tr>
 </tbody>
 </table>
-<p><code>null</code> means the adapter cannot say, and callers fall back to the duration proxy — which
-keeps older adapters working exactly as they did, bug included, rather than silently
-flipping their behaviour. Same convention as <a href="#maxliveseekposition" class="tsd-kind-property">maxLiveSeekPosition</a>: null is a real
-answer, not a gap.</p>
+<p>Do not infer live status from <a href="#maxliveseekposition" class="tsd-kind-property">maxLiveSeekPosition</a>; a seek range can exist for VOD too.</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="maxliveseekposition"><code class="tsd-tag">Optional</code> <code class="tsd-tag">Readonly</code><span>max<wbr/>Live<wbr/>Seek<wbr/>Position</span><a href="#maxliveseekposition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">maxLiveSeekPosition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></div>
-<div class="tsd-comment tsd-typography"><p>The furthest position a seek will actually STICK on live content (seconds on this
-timeline) — the engine quietly pulls back anything closer to the live edge — or <code>null</code>
-when unknown or not live. Return <code>null</code> when unsure: the SDK then does NOT clamp, and a
-guessed holdback can place content worse than no clamp. Computed engine-side as
-<code>currentTime + currentLiveOffset - minimumOffset</code> (hls.js <code>liveSyncPosition</code>; THEOplayer
-<code>latencyManager.currentLatency</code> / <code>minimumOffset</code>; shaka <code>seekRange().end - currentTime</code> /
-<code>safeSeekEndOffset</code>; ExoPlayer <code>getCurrentLiveOffset()</code> / <code>minOffsetMs</code>; AVPlayer
-<code>seekableTimeRanges</code> / <code>configuredTimeOffsetFromLive</code>).</p>
+<div class="tsd-comment tsd-typography"><p>Latest live playback position the player can seek to without moving back to maintain
+its minimum live offset, in seconds. Return <code>null</code> when unknown or not live; the SDK
+then leaves the seek target unclamped. Use the player engine's seek limit rather than
+guessing an offset: HLS.js exposes <code>liveSyncPosition</code>, THEOplayer exposes
+<code>latencyManager.currentLatency</code> / <code>minimumOffset</code>, and Shaka exposes
+<code>seekRange()</code> / <code>safeSeekEndOffset</code>.</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="muted"><span>muted</span><a href="#muted" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
@@ -134,11 +122,10 @@ guessed holdback can place content worse than no clamp. Computed engine-side as
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="playbackrate"><code class="tsd-tag">Optional</code><span>playback<wbr/>Rate</span><a href="#playbackrate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">playbackRate</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
-<div class="tsd-comment tsd-typography"><p>Playback rate (<code>1</code> = normal). Optional, settable. Used to take drift out of content playing
-HIDDEN behind an ad (<code>continueContentDuringBreak</code>), where a forward seek would be clipped at
-<code>seekable.end</code>. MUST report what the ENGINE has, not the last write: live engines run their
-own latency controller on this property (hls.js <code>maxLiveSyncPlaybackRate</code>, THEOplayer,
-Shaka <code>liveSync</code>) and the SDK detects being overridden by comparing. Undefined: drift is reported, not corrected.</p>
+<div class="tsd-comment tsd-typography"><p>Playback rate (<code>1</code> = normal). Used to correct drift while content continues behind an
+ad with <code>continueContentDuringBreak</code>. Report the engine's current rate, not just the last
+assigned value, so the SDK can detect changes made by the player's live-latency controller.
+If omitted, drift is reported but not corrected.</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="programdatetime"><code class="tsd-tag">Readonly</code><span>program<wbr/>Date<wbr/>Time</span><a href="#programdatetime" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
@@ -148,20 +135,20 @@ Shaka <code>liveSync</code>) and the SDK detects being overridden by comparing. 
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="seekableend"><code class="tsd-tag">Optional</code> <code class="tsd-tag">Readonly</code><span>seekable<wbr/>End</span><a href="#seekableend" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">seekableEnd</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></div>
-<div class="tsd-comment tsd-typography"><p>Where the media ENDS (seconds), or <code>null</code>; distinct from <a href="#maxliveseekposition" class="tsd-kind-property">maxLiveSeekPosition</a> by the
-engine's holdback. The <code>&lt;video&gt;</code> element is unreliable: THEOplayer reports
-<code>seekable.end()</code> as Number.MAX_SAFE_INTEGER while <code>player.seekable</code> has the real DVR window,
-so a guard reading the element passed every target. If undefined the core falls back to
-<code>videoElement.seekable</code> and rejects sentinel values.</p>
+<div class="tsd-comment tsd-typography"><p>End of the available media in seconds, or <code>null</code> when unknown. This differs from
+<a href="#maxliveseekposition" class="tsd-kind-property">maxLiveSeekPosition</a>, which includes the player's minimum live offset.
+Read the engine's seek range if the video element reports an unbounded sentinel value
+instead of the actual DVR window. If omitted, the SDK uses <code>videoElement.seekable</code>
+and rejects sentinel values.</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="sourceurl"><code class="tsd-tag">Optional</code> <code class="tsd-tag">Readonly</code><span>source<wbr/>Url</span><a href="#sourceurl" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">sourceUrl</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></div>
-<div class="tsd-comment tsd-typography"><p>Optional: the MANIFEST URL this adapter is playing (not the element's <code>src</code>, which is a
-<code>blob:</code> on MSE engines). Lets the SDK lend the media element to an ad and give it back
-(<code>shared-element</code> path: the only way into a Safari PiP window, and how iOS reaches its
-<code>AVPlayerLayer</code>). Read it from the ENGINE, not from the last <code>load()</code> argument: applications
-may load through the engine directly. <code>null</code> opts out (<code>DA-SHARED-ELEMENT-UNSUPPORTED</code>).</p>
+<div class="tsd-comment tsd-typography"><p>Current content manifest URL, used to restore content after a shared-element ad.
+Read it from the player engine, not the element's <code>src</code> (which can be a <code>blob:</code> URL)
+or the last <code>load()</code> argument, since applications may load sources directly.
+Return <code>null</code> when unavailable; shared-element insertion is then unsupported
+(<code>DA-SHARED-ELEMENT-UNSUPPORTED</code>).</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="supportsparallelbuffering"><code class="tsd-tag">Optional</code> <code class="tsd-tag">Readonly</code><span>supports<wbr/>Parallel<wbr/>Buffering</span><a href="#supportsparallelbuffering" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
@@ -271,10 +258,10 @@ call attachMedia(). Leave undefined if unsupported; the SDK loads on demand at b
 <li class="">
 <div class="tsd-signature tsd-anchor-link" id="releasemediaelement-1"><span class="tsd-kind-call-signature">releaseMediaElement</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#releasemediaelement-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Optional: stop driving the <code>&lt;video&gt;</code> element without giving it up. Shared-element path only:
-the SDK plays the ad through the CONTENT element, and two engines holding it fought over the
-MediaSource on Safari + Shaka (ad aborted or looped on ~half of breaks). Must NOT tear down:
-the SDK hands the element back with <code>load()</code> at break end. hls.js swaps in place and may leave it undefined.</p>
+<div class="tsd-comment tsd-typography"><p>Release control of the content video element so a shared-element ad can use it.
+Resolve only when the element is free; do not destroy the adapter. The SDK restores
+content with <code>load()</code> when the break ends. Omit this method if your player supports
+sharing the element without an explicit release, as HLS.js does.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4></div></li></ul></section>
 <section class="tsd-panel tsd-member">
@@ -312,10 +299,9 @@ passing <code>null</code> restores the exact prior selection.</p>
 <li class="">
 <div class="tsd-signature tsd-anchor-link" id="unload-1"><span class="tsd-kind-call-signature">unload</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#unload-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Optional: release the held media (detach MediaSource / clear the source) without destroying
-the adapter; the next <code>load()</code> re-attaches. Called on single-decoder TVs when a break ends,
-BEFORE content resumes: a still-attached MediaSource keeps the only hardware decoder and
-content dies with MEDIA_ERR_DECODE. Parallel-preload platforms are never asked.</p>
+<div class="tsd-comment tsd-typography"><p>Release the held media without destroying the adapter; the next <code>load()</code> must reattach it.
+Called on single-decoder TVs at break end, before content resumes, to free the hardware
+decoder and avoid <code>MEDIA_ERR_DECODE</code>. Not called in parallel-preload mode.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></div></li></ul></section></section></details></div>
 <div class="col-sidebar">

@@ -74,11 +74,10 @@
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="phase"><code class="tsd-tag">Optional</code><span>phase</span><a href="#phase" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">phase</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">&quot;parsed&quot;</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;presented&quot;</span></div>
-<div class="tsd-comment tsd-typography"><p>WHEN this delivery happened relative to <code>startTime</code>. <code>parsed</code>: the segment was demuxed —
-arrives early by the buffer-ahead (20-30s measured on hls.js), enabling scheduling and
-preload. <code>presented</code>: the playhead reached the cue (frame-accurate; ExoPlayer <code>onMetadata</code>
-and AVPlayer metadata output deliver here). Omitted means unknown: an adapter that cannot
-tell must leave it undefined, since labelling <code>parsed</code> as <code>presented</code> would fire breaks 20-30s early.</p>
+<div class="tsd-comment tsd-typography"><p>When the cue was delivered relative to <code>startTime</code>. <code>parsed</code> means the segment was
+parsed before playback reached the cue; <code>presented</code> means the playhead reached it.
+Omit this property when the adapter cannot distinguish the two. Marking an early
+parsed cue as <code>presented</code> can cause an ad break to start before its scheduled time.</p>
 </div></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="raw"><code class="tsd-tag">Optional</code><span>raw</span><a href="#raw" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>

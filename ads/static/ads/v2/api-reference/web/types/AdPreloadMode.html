@@ -17,11 +17,11 @@
 simultaneous MediaSources — safe on desktop and modern Smart TVs.</li>
 <li><code>single-decoder</code>: cache warming + detached prefetch only; attach/decode at break start.
 Safe on single-decoder TVs (Tizen, webOS, VIZIO SmartCast).</li>
-<li><code>none</code>: no pre-break activity at all; the cold-start baseline for <code>DA-BREAK-TRANSITION</code>.</li>
+<li><code>none</code>: disable preloading; load the ad when the break starts.</li>
 <li><code>auto</code> (default): User-Agent based — single-decoder TVs → <code>single-decoder</code>, else <code>parallel</code>.</li>
 </ul>
-<p>No mode pre-buffers into a second MediaSource on single-decoder TVs: a second ATTACHED
-MediaSource wedges their pipeline, and MSE has no detached pre-fill (see docs/ctv-preload-findings.md).</p>
+<p>On single-decoder TVs, preloading avoids attaching a second MediaSource so the
+content player can continue using the device's decoder until the break starts.</p>
 </div></div>
 <div class="col-sidebar">
 <div class="page-menu">
