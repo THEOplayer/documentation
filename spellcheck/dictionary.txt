@@ -969,6 +969,7 @@ wc
 WCAG
 WCAG's
 web-webrtc-stats
+web-ui
 WebAssembly
 webhook
 webhooks
