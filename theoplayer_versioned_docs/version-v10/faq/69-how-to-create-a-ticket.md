@@ -44,7 +44,7 @@ A great ticket is **C.R.U.S.P.** (= Collaborative, Reproducible, Use Case, Speci
 **Reproducible** | Provide simple & reliable reproduction steps and resources.
 
 - Don't send us the link to your website. Instead, set up a simple reproduction page on https://codepen.io or https://replit.com.
-- Don't send us your .apk or App Store URL. Don't send us complex code bases. Instead, fork our Github reference apps (e.g. [Basic Playback for iOS](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Basic-Playback)),
+- Don't send us your .apk or App Store URL. Don't send us complex code bases. Instead, fork our GitHub reference apps (e.g. [Basic Playback for iOS](https://github.com/THEOplayer/samples-ios-sdk/tree/master/Basic-Playback)),
   include your code that allows us to reproduce the issue, and forward it to us.
 - Don't send us obfuscated, minimized or transformed (e.g. Webpack) code. Use simple code in simple environments.
 - Ensure that your streams are reliable. Streams that can expire

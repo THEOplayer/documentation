@@ -192,7 +192,7 @@ To support custom feature builds of THEOplayerSDK perform the following steps:
    1. Choose `File` > `Packages` > `Reset Package Caches` from the menu bar.
    2. If it is still not working, make sure to remove any `THEOplayerSDK.xcframework` inclusions that you manually installed before installing this THEOplayer-Connector-Conviva package.
 
-#### Cocoapods
+#### CocoaPods
 
 1. Create a Podfile if you don't already have one. From the root of your project directory, run the following command: `pod init`
 2. To your Podfile, add the Conviva connector pods that you want to use in your app: `pod 'THEOplayer-Connector-Conviva'`
@@ -247,9 +247,9 @@ Hold a reference to your connector. Once the connector is released from memory i
 ## Related links:
 
 - Demo page: [Conviva Analytics Test Page](https://cdn.theoplayer.com/conviva/conviva_test.html)
-- [Web SDK connector on Github](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)
-- [Android SDK connector on Github](https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva)
-- [iOS SDK connector on Github](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva)
+- [Web SDK connector on GitHub](https://github.com/THEOplayer/sample-conviva-analytics-html5-sdk)
+- [Android SDK connector on GitHub](https://github.com/THEOplayer/android-connector/tree/master/connectors/analytics/conviva)
+- [iOS SDK connector on GitHub](https://github.com/THEOplayer/iOS-Connector/tree/main/Code/Conviva)
 - [Conviva SDK Documentation](https://cdn.theoplayer.com/conviva/Conviva_Documentation_4.0.14/index.html)
 - More Information about [Conviva Video Experience](https://www.conviva.com/experience-insights/)
 - More Information about [Conviva Ad Insights](https://www.conviva.com/ad-insights/)

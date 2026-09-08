@@ -59,4 +59,4 @@ If you're using [THEOplayer through NPM](https://www.npmjs.com/package/theoplaye
 
 Updating the iOS SDK, Android SDK and Roku SDK is similar with regards to self-hosting the SDK.
 
-The iOS SDK and Android SDK can also be managed through Cocoapods and Maven respectively. You cannot "cloud host" these SDKs.
+The iOS SDK and Android SDK can also be managed through CocoaPods and Maven respectively. You cannot "cloud host" these SDKs.

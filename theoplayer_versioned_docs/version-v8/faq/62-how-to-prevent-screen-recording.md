@@ -16,7 +16,7 @@ Most popular providers employ strategies to counter screen recordings, or to red
 Creating a screen recording doesn't have to be difficult.
 
 - The camera of a smartphone can be aimed at a screen. Your screen wouldn't know that a smartphone is recording it.
-- The record function of Apple's Quicktime Player (or Window's Xbox Game Bar) can be used to record video content playing on Chrome on Windows, macOS and Linux.
+- The record function of Apple's QuickTime Player (or Window's Xbox Game Bar) can be used to record video content playing on Chrome on Windows, macOS and Linux.
   Chrome on Windows, macOS and Linux doesn't offer a native mechanism to prevent screen recording, even when DRM protects the content.
 
 The quality (and bitrate) of a video stream degrades through a screen recording, which is a useful property when the recording leaks.
@@ -26,7 +26,7 @@ The quality (and bitrate) of a video stream degrades through a screen recording,
 We do not define "screen recording" as the malpractice of illegally downloading and/or decrypting the original video streams on the website or application of a content provider.
 * For example, if a pirate (i.e. a user with the intention to steal and/or illegally redistribute content) downloads the source files of an HLS stream (and perhaps removes the encryption),
 then they are not doing "screen recording".
-* On the other hand, if a "pirate"  uses Quicktime Player to record their screen (which is playing a video in Chrome),
+* On the other hand, if a "pirate"  uses QuickTime Player to record their screen (which is playing a video in Chrome),
 then they are doing "screen recording".
 </details>
 

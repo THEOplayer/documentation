@@ -9,14 +9,14 @@ This guide explains to you how to set up vMix correctly so it can be used to str
 
 ## 1. Set up sources
 
-Make sure all your sources are set up and in order. As an example, you could add simple colour bars as a source by left-clicking the _up arrow_ next to _Add Input_, which you can find at the left bottom of the vMIX screen, and select _Colour Bars_. Similarly, you could add other input e.g. your webcam by selecting _Camera_ or a stream by selecting _Stream/SRT_. In order to see these options, you'll have to select _More_ in the _Add Input_ menu.
+Make sure all your sources are set up and in order. As an example, you could add simple color bars as a source by left-clicking the _up arrow_ next to _Add Input_, which you can find at the left bottom of the vMIX screen, and select _Color Bars_. Similarly, you could add other input e.g. your webcam by selecting _Camera_ or a stream by selecting _Stream/SRT_. In order to see these options, you'll have to select _More_ in the _Add Input_ menu.
 
 ![vMix setup example](../../assets/img/bcb0dde-vmix0.png)
 
-**Note:** The colour bars input are only an example. You can stream whatever input you like.
+**Note:** The color bars input are only an example. You can stream whatever input you like.
 
 :::info[📘 How to burn in a clock]
-If you want to burn in a clock you can follow the steps documented by vMix. You can create a _Production clock_ input and burn it into the colour bars input by configuring _Multiview_  
+If you want to burn in a clock you can follow the steps documented by vMix. You can create a _Production clock_ input and burn it into the color bars input by configuring _Multiview_  
 [Production clock documentation](https://www.vmix.com/help23/index.htm?ProductionClocks.html)  
 [Multiview documentation](https://www.vmix.com/help23/index.htm?InputSettingsMultiView.html)
 :::
@@ -39,7 +39,7 @@ If you want to burn in a clock you can follow the steps documented by vMix. You 
 
 ![vMix quality settings](../../assets/img/73abc63-vmix3.png)
 
-**Note:** If you have the hardware available: it's always a good idea to enable the _Hardware Ecoder_ setting.
+**Note:** If you have the hardware available: it's always a good idea to enable the _Hardware Encoder_ setting.
 
 - In the _Streaming Quality_ menu you can make some more advanced changes to your stream settings. Please use the settings that are highlighted in yellow in the following image to achieve optimal performance when streaming to THEOlive. You are free to change the _Video Bit Rates_ and _Encode Size_ settings depending on your use case.
 

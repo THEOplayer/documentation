@@ -91,7 +91,7 @@ The Web SDK code should be included in your Android (TV) project. The article at
 
 ##### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
-TheWeb SDKcode should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
+TheWeb SDK code should be included in your iOS project. The article at [How to add CSS or JavaScript files to an Android/iOS project](../../../version-v4/faq/01-how-to-add-css-or-javascript-files-to-android-ios.md) explains how you can add CSS and JavaScript files to your project.
 
 ## Remarks
 

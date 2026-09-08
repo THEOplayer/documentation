@@ -12,7 +12,7 @@ Here's how to get started integrating the Comscore Connector with the THEOplayer
 In order to set up the Comscore Connector in your Roku application, you'll need the following:
 
 - Your Comscore publisher ID and publisher secret (available in your Comscore Direct dashboard under Mobile Apps > Get Tag).
-- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
+- An app with the THEOplayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
 
 ## Integration
 
@@ -22,7 +22,7 @@ In order to set up the Comscore Connector in your Roku application, you'll need 
 <ComponentLibrary id="THEOComscoreConnector" uri="https://cdn.myth.theoplayer.com/roku/{SDK_VERSION}/THEOComscoreConnector.pkg" />
 ```
 
-2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+2. Then in the BrightScript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
 
 ```brightscript
 sub Init()
@@ -45,7 +45,7 @@ sub onLibraryLoadStatusChanged(event as object)
 end sub
 ```
 
-3. Add the THEOComscoreConnector component to the SceneGraph file where your THEOPlayer is defined
+3. Add the THEOComscoreConnector component to the SceneGraph file where your THEOplayer is defined
 
 ```xml
 <THEOsdk:THEOplayer id="THEOplayer" controls="true" />

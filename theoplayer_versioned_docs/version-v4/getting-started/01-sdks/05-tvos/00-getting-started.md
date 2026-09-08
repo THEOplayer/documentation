@@ -4,15 +4,15 @@ The THEOplayer tvOS SDK can be used from within both a client-server app project
 
 A sample traditional app project is located at [https://github.com/THEOplayer/samples-tvos-sdk/](https://github.com/THEOplayer/samples-tvos-sdk/).
 
-:::info[Cocoapods]
+:::info[CocoaPods]
 
-THEOplayer v2.83.0 and above can be managed through Cocoapods. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-ios" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-ios</a> for more information.
+THEOplayer v2.83.0 and above can be managed through CocoaPods. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-ios" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-ios</a> for more information.
 
 :::
 
 ## Prerequisites
 
-- Download and install XCode.
+- Download and install Xcode.
 - Obtain a THEOplayer tvOS SDK through the THEOplayer Developer Portal at [https://portal.theoplayer.com](https://portal.theoplayer.com/login).
   - And have the license string handy, as depicted in the screenshot below, because you'll need it when configuring your video player to swap out `your_license_string`.
     ![](https://cdn.theoplayer.com/images/git/theoplayer-ios-sdk-license-string.png)

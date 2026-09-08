@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
 ## Intercepting the requests and/or responses
 
-Use the `type` parameter on each method below to filter for HLS playlist types ie. master, video, subtitles, etc...
+Use the `type` parameter on each method below to filter for HLS playlist types i.e. master, video, subtitles, etc...
 The rest of the usage is explained in comments in the code snippet below.
 
 ```swift
@@ -62,4 +62,4 @@ extension ViewController: MediaPlaylistInterceptor {
 
 ## DRM request interception
 
-The `MediaPlaylistInterceptor` API does not intercept DRM requests. To interecept fairplay DRM requests, take a look at the following solution: https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/README.md
+The `MediaPlaylistInterceptor` API does not intercept DRM requests. To intercept FairPlay DRM requests, take a look at the following solution: https://github.com/THEOplayer/samples-drm-integration/blob/master/ios/README.md

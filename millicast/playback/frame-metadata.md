@@ -250,7 +250,7 @@ _It is important to correctly encode and decode frames or you may experience neg
 
 With the method demonstrated here for non-SEI codec support:
 
-- The data is transported as raw bytes so it can be implemented as any arbitrary format (ie. string, XML, JSON, etc...).
+- The data is transported as raw bytes so it can be implemented as any arbitrary format (i.e. string, XML, JSON, etc...).
 - The amount of data you can publish is not limited, but it increases the bandwidth and latency requirements so publishing small payloads is recommended.
 - If you add extra bits to the encoded video stream, you must remove them on the viewer side for the video decoder to understand the stream and be able to display it on the screen.
 

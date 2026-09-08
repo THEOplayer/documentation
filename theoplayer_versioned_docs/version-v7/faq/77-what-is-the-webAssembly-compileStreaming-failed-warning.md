@@ -10,6 +10,6 @@ In other words, _wasm_ allows for better overall performance and the player will
 
 :::important
 
-The _wasm_ file must be served with the correct MIME type ('application/wasm'), otherwise the player will not recognise it properly and fall back onto the alternative (in this case, the warning will also be shown). If the file is served with the wrong MIME type (e.g.: text/html), this must be corrected on the server side.
+The _wasm_ file must be served with the correct MIME type ('application/wasm'), otherwise the player will not recognize it properly and fall back onto the alternative (in this case, the warning will also be shown). If the file is served with the wrong MIME type (e.g.: text/html), this must be corrected on the server side.
 
 :::

@@ -21,7 +21,7 @@ The `VerizonMedia` Interface is exposed through your THEOplayer instance (e.g.: 
 
 If you're looking for more information on how to query the available advertisements and how to subscribe to ad events, then refer to [Verizon Media Ads](02-ads.md).
 
-The examples below provide a basic demonstration of how to use the `VerizonMedia` interface. The Github projects linked at [Verizon Media - Introduction](../../../how-to-guides/07-miscellaneous/02-verizon-media/00-introduction.md) provide more code samples.
+The examples below provide a basic demonstration of how to use the `VerizonMedia` interface. The GitHub projects linked at [Verizon Media - Introduction](../../../how-to-guides/07-miscellaneous/02-verizon-media/00-introduction.md) provide more code samples.
 
 ##### Web SDK
 

@@ -9,9 +9,9 @@ This page is a step-by-step guide on how to get THEOplayer iOS SDK running on iO
 
 This example uses Xcode version 12.0.1 (12A7300) and macOS Catalina version 10.15.7.
 
-:::info[Cocoapods]
+:::info[CocoaPods]
 
-THEOplayer v2.83.0 and above can be managed through Cocoapods. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-ios" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-ios</a> for more information.
+THEOplayer v2.83.0 and above can be managed through CocoaPods. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-ios" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-ios</a> for more information.
 
 :::
 
@@ -42,7 +42,7 @@ After selecting the directory location, you should see something similar to the 
 
 ## Configure THEOplayer SDK framework
 
-You can manually load and configure the THEOplayer SDK if you're not using [Cocoapods](https://github.com/THEOplayer/theoplayer-sdk-ios/).
+You can manually load and configure the THEOplayer SDK if you're not using [CocoaPods](https://github.com/THEOplayer/theoplayer-sdk-ios/).
 First, download your THEOplayer iOS SDK from [https://portal.theoplayer.com](https://portal.theoplayer.com/login).
 
 Open "Finder" and drag your THEOplayerSDK.framework into to the project directory.

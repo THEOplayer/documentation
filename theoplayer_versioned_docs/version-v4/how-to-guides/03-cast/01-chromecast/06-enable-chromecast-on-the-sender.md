@@ -158,7 +158,7 @@ In order to enable Chromecast on the iOS SDK:
    Therefore, using a Dynamic Framework ensures that there are no symbol clashes.
    More info can be found in this article: https://medium.com/onfido-tech/reusing-code-and-resources-with-swift-static-libraries-and-resource-bundles-d070e82d3b3d
 
-   **Cocoapods setup**
+   **CocoaPods setup**
 
    Supported until version '4.3.0', pending further investigation for versions above '4.3.0'.
 

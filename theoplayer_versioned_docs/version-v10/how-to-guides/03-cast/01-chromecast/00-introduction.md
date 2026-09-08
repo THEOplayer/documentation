@@ -78,7 +78,7 @@ To use Google Cast, also known as Chromecast, with the THEOplayer iOS SDK, the *
 
 The THEOplayer GoogleCast integration is published on the following package managers:
 
-##### Cocoapods
+##### CocoaPods
 
 Simply add the following to your project's Podfile:
 

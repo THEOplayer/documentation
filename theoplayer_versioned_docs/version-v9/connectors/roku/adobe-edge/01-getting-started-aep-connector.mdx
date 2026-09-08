@@ -12,7 +12,7 @@ Here's how to get started integrating the Adobe Edge Connector with the THEOplay
 In order to set up the Adobe Edge Connector in your Roku application, you'll need the following:
 
 - Your Adobe Edge domain and config ID (also known as data stream ID)
-- An app with the THEOPlayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
+- An app with the THEOplayer SDK for Roku already integrated, see our [Getting Started guide](https://www.theoplayer.com/docs/theoplayer/getting-started/sdks/roku/getting-started/).
 
 ## Integration
 
@@ -22,7 +22,7 @@ In order to set up the Adobe Edge Connector in your Roku application, you'll nee
 <ComponentLibrary id="THEOAEPConnector" uri="https://cdn.myth.theoplayer.com/roku/9.1.0/THEOAEPConnector.pkg" />
 ```
 
-2. Then in the Brightscript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
+2. Then in the BrightScript file for your MainScene, listen for the loading of the ComponentLibrary to complete by observing the `loadStatus` field.
 
 ```brightscript
 sub Init()
@@ -45,14 +45,14 @@ sub onLibraryLoadStatusChanged(event as object)
 end sub
 ```
 
-3. Add the THEOAEPConnector component to the SceneGraph file where your THEOPlayer is defined
+3. Add the THEOAEPConnector component to the SceneGraph file where your THEOplayer is defined
 
 ```xml
 <THEOsdk:THEOplayer id="THEOplayer" controls="true" />
 <THEOAEPConnector:THEOAEPConnector id="THEOAEPConnector" />
 ```
 
-4. Then in the Brightscript file, configure the connector by calling the configure method, passing the player instance and your Adobe Edge configuration.
+4. Then in the BrightScript file, configure the connector by calling the configure method, passing the player instance and your Adobe Edge configuration.
 
 ```brightscript
 m.player = m.top.findNode("THEOPlayer")

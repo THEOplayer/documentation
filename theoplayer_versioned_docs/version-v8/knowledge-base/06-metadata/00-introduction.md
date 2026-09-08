@@ -58,7 +58,7 @@ This hyperlink (and its start and stop time) was indicated through timed metadat
 You can get very creative with timed metadata.
 
 - You can use it to schedule client-side advertisements.
-- You can use it to make certain areas of your video frame clickable at certain times, and clicking it will bring you to a webshop.
+- You can use it to make certain areas of your video frame clickable at certain times, and clicking it will bring you to a web shop.
 - ...
 
 If you have a use-case where a certain behavior can be associated with a certain moment in time, you can probably tackle it through timed metadata.

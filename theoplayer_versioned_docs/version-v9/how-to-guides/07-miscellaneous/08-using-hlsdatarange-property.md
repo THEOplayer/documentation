@@ -63,7 +63,7 @@ SourceDescription(
 )
 ```
 
-##### Android SDk
+##### Android SDK
 
 ```java
 //in playerConfiguration

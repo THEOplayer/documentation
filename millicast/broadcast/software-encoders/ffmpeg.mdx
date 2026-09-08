@@ -3,7 +3,7 @@ title: FFmpeg
 slug: /software-encoders/ffmpeg
 ---
 
-**FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. It is common practice to use Ffmpeg in production workflows when broadcasting from a media file on disk.
+**FFmpeg** is a free open-source software project with command-line tools for handling video, audio, and other multimedia. It is common practice to use FFmpeg in production workflows when broadcasting from a media file on disk.
 
 Broadcasts are started using the `ffmpeg` command-line to forward a source using either [RTMP](/millicast/broadcast/rtmp-and-rtmps.mdx) or [SRT](/millicast/broadcast/srt.mdx) broadcast contribution protocols which are then streamed as [WebRTC](/millicast/broadcast/webrtc-and-whip.mdx) for global real-time distribution.
 
@@ -157,7 +157,7 @@ The output should show that `--enable-libsrt` is present.
 
 ### How-to Simulcast a Redundant Ingest SRT Video Stream
 
-This example demonstrates [redundant ingest](/millicast/broadcast/redundant-ingest/index.mdx) where a second publishing source is used to recover from a failed broadcast source. The `&priority=100` [publishing parameter](/millicast/broadcast/publishing-parameters.md) is used to indicate which is the primary and which is the backup feed. **The SRT URL must be URLencoded.**
+This example demonstrates [redundant ingest](/millicast/broadcast/redundant-ingest/index.mdx) where a second publishing source is used to recover from a failed broadcast source. The `&priority=100` [publishing parameter](/millicast/broadcast/publishing-parameters.md) is used to indicate which is the primary and which is the backup feed. **The SRT URL must be URL-encoded.**
 
 ```shell
 ffmpeg -nostdin -fflags +genpts -re -stream_loop -1 -i demo.mp4 \

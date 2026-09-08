@@ -55,7 +55,7 @@ Furthermore, if you're using frameworks like React Native and Flutter, modifying
 Our default UI is not optimized for big screen devices like Samsung Tizen, LG webOS and Android TV.
 If you're targeting those (and similar devices), you should consider implementing a Chromeless UI,
 as demonstrated on our [Tizen](https://github.com/THEOplayer/samples-tizen) and [webOS](https://github.com/THEOplayer/samples-webos)
-Github repositories.
+GitHub repositories.
 
 Our default UI for Apple TV (i.e. tvOS SDK) is similar to the default Apple TV video player.
 You should consider a Chromeless UI for this platform should you want to divert from this design.

@@ -108,7 +108,7 @@ On the other hand, if you want to track the start of an ad break with the Legacy
 player.getAds().addEventListener(AdsEventTypes.AD_BREAK_BEGIN, event -> Log.i(TAG, "Event: AD_BEGIN, ad=" + event.getAdBreak()));
 ```
 
-Note: code samples are available on our [samples-android-sdk](https://github.com/THEOplayer/samples-android-sdk/blob/master/Basic-Ads/app/src/main/java/com/theoplayer/sample/ads/basic/PlayerActivity.java) Github repository.
+Note: code samples are available on our [samples-android-sdk](https://github.com/THEOplayer/samples-android-sdk/blob/master/Basic-Ads/app/src/main/java/com/theoplayer/sample/ads/basic/PlayerActivity.java) GitHub repository.
 
 #### iOS/tvOS SDK and Legacy iOS/tvOS SDK (4.12.x)
 
@@ -128,7 +128,7 @@ player.ads.addEventListener(type: AdsEventTypes.AD_BREAK_BEGIN) { (event) in
 }
 ```
 
-Note: code samples are available on our [samples-ios-sdk](https://github.com/THEOplayer/samples-ios-sdk/blob/master/Basic-Ads/Basic_Ads/PlayerViewController.swift) Github repository.
+Note: code samples are available on our [samples-ios-sdk](https://github.com/THEOplayer/samples-ios-sdk/blob/master/Basic-Ads/Basic_Ads/PlayerViewController.swift) GitHub repository.
 
 ### Server-side ads
 
