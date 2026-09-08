@@ -6,7 +6,7 @@ To generate these insights, a video player emits playback events to a third-part
 Wicket Labs provides [guidelines](https://www.wicketlabs.com/resources/knowledge-base/how-to-setup-firebase-for-ott-video-services/) on how to format these playback events.
 Wicket Labs then pulls the data from the selected third-party database service, and integrates it into their platform.
 
-THEOplayer and Wicket Labs publish [sample integrations on Github](https://github.com/THEOplayer/samples-wicket-labs-html5-sdk) to bootstrap developers.
+THEOplayer and Wicket Labs publish [sample integrations on GitHub](https://github.com/THEOplayer/samples-wicket-labs-html5-sdk) to bootstrap developers.
 
 ## SDKs
 
@@ -33,7 +33,7 @@ The technologies offered by THEOplayer and Wicket Labs can be combined on all [T
 
 ### Web SDK
 
-THEOplayer and Wicket Labs host a Github repository at [https://github.com/THEOplayer/samples-wicket-labs-html5-sdk](https://github.com/THEOplayer/samples-wicket-labs-html5-sdk).
+THEOplayer and Wicket Labs host a GitHub repository at [https://github.com/THEOplayer/samples-wicket-labs-html5-sdk](https://github.com/THEOplayer/samples-wicket-labs-html5-sdk).
 This repository provides a sample implementation for the THEOplayer Web SDK with Firebase as the database service.
 
 This repository may also be useful if you're using another database service, because the repository demonstrates the correct order of hooking into the playback events related to Wicket Labs,
@@ -41,19 +41,19 @@ and how to format them. In other words: if you're using another database service
 
 ### Android (TV) SDK
 
-THEOplayer and Wicket Labs currently do not host a sample implementation for Android-based platforms on Github.
+THEOplayer and Wicket Labs currently do not host a sample implementation for Android-based platforms on GitHub.
 
 Developers are encouraged to use https://github.com/THEOplayer/samples-wicket-labs-html5-sdk and https://www.wicketlabs.com/resources/knowledge-base/how-to-setup-firebase-for-ott-video-services/ as a starting point.
 Additionally, developers are encouraged to reach out to their contacts at THEOplayer and/or Wicket Labs if they need assistance,
-which could prompt THEOplayer and Wicket Labs into publishing a sample implementation on Github.
+which could prompt THEOplayer and Wicket Labs into publishing a sample implementation on GitHub.
 
 ### iOS (/tvOS) SDK
 
-THEOplayer and Wicket Labs currently do not host a sample implementation for iOS or tvOS on Github.
+THEOplayer and Wicket Labs currently do not host a sample implementation for iOS or tvOS on GitHub.
 
 Developers are encouraged to use https://github.com/THEOplayer/samples-wicket-labs-html5-sdk and https://www.wicketlabs.com/resources/knowledge-base/how-to-setup-firebase-for-ott-video-services/ as a starting point.
 Additionally, developers are encouraged to reach out to their contacts at THEOplayer and/or Wicket Labs if they need assistance,
-which could prompt THEOplayer and Wicket Labs into publishing a sample implementation on Github.
+which could prompt THEOplayer and Wicket Labs into publishing a sample implementation on GitHub.
 
 ## Related links
 

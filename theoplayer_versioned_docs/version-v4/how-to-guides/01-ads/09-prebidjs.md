@@ -49,6 +49,6 @@ The following resources provide more information:
 - https://prebid.org/overview/intro.html: What is Prebid?
 - https://prebid.org/prebid-video/video-overview.html: Prebid.js for Video Overview
 - https://prebid.org/prebid-video/video-getting-started.html: Getting started with Prebid.js for Video
-- https://github.com/prebid/Prebid.js/tree/57c666626c269cdabb9aac6944a889f2b944f0c0/modules: Adapters on Github.
+- https://github.com/prebid/Prebid.js/tree/57c666626c269cdabb9aac6944a889f2b944f0c0/modules: Adapters on GitHub.
 - https://github.com/prebid/Prebid.js/tree/master/modules: Information on how to connect with different bidders.
 - Some adapters might provide test data. (e.g. https://github.com/prebid/Prebid.js/blob/57c666626c269cdabb9aac6944a889f2b944f0c0/modules/spotxBidAdapter.md)

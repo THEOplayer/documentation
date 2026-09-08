@@ -7,9 +7,9 @@ The Analytics APIs allow you to query your usage independent of the OptiView Rea
 
 To access the analytics APIs you must have an API token. To learn more on how to get your API token, please read the following article [Acquiring Your API Token](/millicast/streaming-dashboard/token-api.mdx).
 
-Another thing to note is that analytics API calls will not work directly from the Browser, there is no CORS support. To successfully call the API you must use Curl or a back end solution like Nodejs, Java, or anything outside the browser that can do HTTPS requests.
+Another thing to note is that analytics API calls will not work directly from the Browser, there is no CORS support. To successfully call the API you must use Curl or a back end solution like Node.js, Java, or anything outside the browser that can do HTTPS requests.
 
-All requests made to the analytics APIs require that you provide a **start** and **stop** date range. The date must be structured in a UTC format containing the year, month, day and hour (eg 2020-01-01T00:00:00Z). Note that `stopDate` is **exclusive**: data is returned for the period starting from `startDate` up to but not including `stopDate`. These series based requests require you to set an analytics formatting resolution value of "Month", "Day" or "Hour", the resulting data will follow the specified format accordingly. The time part of your date string is optional and used only if you're querying the API for hourly information.
+All requests made to the analytics APIs require that you provide a **start** and **stop** date range. The date must be structured in a UTC format containing the year, month, day and hour (e.g. 2020-01-01T00:00:00Z). Note that `stopDate` is **exclusive**: data is returned for the period starting from `startDate` up to but not including `stopDate`. These series based requests require you to set an analytics formatting resolution value of "Month", "Day" or "Hour", the resulting data will follow the specified format accordingly. The time part of your date string is optional and used only if you're querying the API for hourly information.
 
 ## Access restrictions
 
@@ -33,15 +33,15 @@ In this example we want to query the API to get usage information for our entire
 
 **Account Total** will give you the total bandwidth usage in bytes for your overall account based on a specified date range. **Account Geo** will do the same but will provide the totals based on the geographic region of the viewers. Similar to Geo, the **Account Series** will also breakdown the totals based on your specified resolution. For example if you chose "monthly" as your resolution format, the data would be broken down by month and so on. You can save this data into your own database for your own querying later, or you can plug this data into data visualizers like Google Charts to visually display the results of your usage.
 
-## Example tutorial: JS / Nodejs
+## Example tutorial: JS / Node.js
 
 In the following example, we will use the Analytics APIs to query an OptiView Real-time Streaming account for a date range of usage and display it in a graph using Google Charts (see: https://developers.google.com/chart/interactive/docs/gallery/areachart)
 
-Before proceeding we assume you are familiar with Nodejs and have some familiarity with Google Charts. For this example we used a Nodejs server version 12.19 (the latest stable version as of February 2021).
+Before proceeding we assume you are familiar with Node.js and have some familiarity with Google Charts. For this example we used a Node.js server version 12.19 (the latest stable version as of February 2021).
 
 As with all API calls to our platform you must have your API token ready, you can find this in your OptiView Real-time Streaming Dashboard.
 
-Let's start by creating a new Nodejs project:
+Let's start by creating a new Node.js project:
 
 ```
 npm init
@@ -107,7 +107,7 @@ https.createServer({ key: fs.readFileSync('ssl/key.pem'), cert: fs.readFileSync(
 console.log('running! see port https://localhost:' + port + '/usage');
 ```
 
-In this example we use the standard Express module along with the built in HTTPS module to handle secure requests coming from the client HTML side and for calls going out to the OptiView Real-time Streaming from the server. This example uses openssl self-signed certificates to satisfy the key and conf requirement in the HTTPS module on Nodejs. We are testing locally so we run a simple local web server from the Visual Studio Code editor to do the calls over HTTPS locally (https://localhost:8443/). In this case, you would only need to bypass the browser warning that comes up to access your HTML file.
+In this example we use the standard Express module along with the built in HTTPS module to handle secure requests coming from the client HTML side and for calls going out to the OptiView Real-time Streaming from the server. This example uses openssl self-signed certificates to satisfy the key and conf requirement in the HTTPS module on Node.js. We are testing locally so we run a simple local web server from the Visual Studio Code editor to do the calls over HTTPS locally (https://localhost:8443/). In this case, you would only need to bypass the browser warning that comes up to access your HTML file.
 
 The express **"get"** method handles the request call to the API when the HTML user makes calls via the "/usage" path specified in the method. The path here is an arbitrary label, feel free to use whatever path name you prefer, just remember the call on the HTML counterpart has to match the path.
 
@@ -140,7 +140,7 @@ The **GET** call will run a HTTPS request to query the API for the account usage
 
 If you wanted to do a quick test without the client counterpart you can run your node server (node app.js) and your webserver, then browse to **"https://localhost:8443/usage"** (again, bypass the security message if you are using a self-signed cert) to see the results.
 
-Next, we can create our client html code that will do the actual call to our nodejs server using Javascript and the built in **"fetch"** call.
+Next, we can create our client html code that will do the actual call to our Node.js server using Javascript and the built in **"fetch"** call.
 
 First open your editor and create a blank html file, save it as index.html. In your editor add the following bit of code into your index.html file.
 
@@ -209,7 +209,7 @@ On the client end, there is only a simple button to fetch the data using the dat
 
 ![](../assets/img/analytics-accnt-call-btn.png)
 
-A simple click on the button will call our Nodejs server counterpart using the **"fetch"** command. Once the data from the API is received on the client JavaScript, we convert the data back into JSON and then sort it in a table that Google Charts can understand and display.
+A simple click on the button will call our Node.js server counterpart using the **"fetch"** command. Once the data from the API is received on the client JavaScript, we convert the data back into JSON and then sort it in a table that Google Charts can understand and display.
 
 Remember the data is in UTC format which a simple Date object can accept, however, calling "getMonth" from the date object will result in a date that is based on your local time, in the case above we’ve kept it UTC time so that there is no confusion.
 
@@ -217,7 +217,7 @@ Once the data is sorted and the chart is created, you can push the table data to
 
 ![](../assets/img/analytics-goog-graph1.png)
 
-You can add the other API calls in the Nodejs side to load more information about your usage. You could also provide a HTML form to allow the user to specify query dates to send up to Nodejs, just remember to format the date information to UTC before you query it.
+You can add the other API calls in the Node.js side to load more information about your usage. You could also provide a HTML form to allow the user to specify query dates to send up to Node.js, just remember to format the date information to UTC before you query it.
 
 See more API calls here: [Account Analytics](/millicast/api/analytics-account-total.api.mdx)
 
@@ -486,7 +486,7 @@ Below is a sample of the new client index.html code.
 </html>
 ```
 
-The new index.html file has been modified to be more dynamic and add more interactivity than the original one. In this example, we’ve added some rudimentary forms for each call to send the dates and stream names to the server. Remember to write your dates in UTC format (2021-02-01) so that our Nodejs server counterpart can send them successfully.
+The new index.html file has been modified to be more dynamic and add more interactivity than the original one. In this example, we’ve added some rudimentary forms for each call to send the dates and stream names to the server. Remember to write your dates in UTC format (2021-02-01) so that our Node.js server counterpart can send them successfully.
 
 If you noticed in the new method "drawStrmBWChart", the sorting procedure is different than the one for account bandwidth. The data is similar but formatted to separate not just the dates but the streams as well. Here, we also use a "Day" format for daily breakdown instead of a monthly one. This format breaks down the data for daily totals instead of monthly.
 

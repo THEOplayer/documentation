@@ -113,14 +113,14 @@ private void checkStorageRequirements(CachingTask unstartedTask) {
 
 ## Listing and restarting caching tasks
 
-An important side note when calling previously cached tasks is that you need to initialize the cache first. Initializing happens asynchronously, so calling upon the cache immediately after initializing may result in an empty list as it is still initialising. (You could initialise the cache as soon as your app opens, such that you can access it later in other pages in the app).
+An important side note when calling previously cached tasks is that you need to initialize the cache first. Initializing happens asynchronously, so calling upon the cache immediately after initializing may result in an empty list as it is still initializing. (You could initialize the cache as soon as your app opens, such that you can access it later in other pages in the app).
 To initialize the cache, you need to run the following command:
 
 ```java
 Cache cache = THEOplayerGlobal.getSharedInstance(this).getCache();
 ```
 
-If you only want to initialize it at the moment that you need it, you can use an eventListener to see when it's initialised, e.g.
+If you only want to initialize it at the moment that you need it, you can use an eventListener to see when it's initialized, e.g.
 
 ```java
 Cache cache = THEOplayerGlobal.getSharedInstance(this).getCache();

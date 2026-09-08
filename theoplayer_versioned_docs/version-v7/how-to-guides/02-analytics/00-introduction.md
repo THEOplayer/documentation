@@ -68,8 +68,8 @@ or how to implement a connector, or how to achieve a custom implementation with 
 - [Tealium](10-tealium.md)
 - [Segment](11-segment.md)
 
-A connector is an open-source integration that is listed on our Github at [https://github.com/THEOplayer](https://github.com/THEOplayer).
-There might be connectors on our Github that are missing from the list above.
+A connector is an open-source integration that is listed on our GitHub at [https://github.com/THEOplayer](https://github.com/THEOplayer).
+There might be connectors on our GitHub that are missing from the list above.
 
 Alternatively, if you are not able to locate documentation on a specific vendor, then reach out to this vendor,
 because they might be the maintainer of an integration related to THEOplayer.

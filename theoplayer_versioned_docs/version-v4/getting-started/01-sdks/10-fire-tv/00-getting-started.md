@@ -92,7 +92,7 @@ Additionally, you can import the sources jar to be able to immediately see the A
 1. In the Projects Overview, set the view to the project view. You should now see “External Libraries”
 2. Under “External Libraries” you should be able to find the theoplayer-android-tv SDK library, right click and select “Library Properties”.
 3. In the top left corner of the Library Properties window, click the first green plus sign.
-4. Find and select the theoplayer-android-tv SDK jar file and click ok.
+4. Find and select the theoplayer-android-tv SDK jar file and click OK.
 
 ## Using the THEOplayerView
 

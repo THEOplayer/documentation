@@ -8,7 +8,7 @@ THEOplayer makes use of CORS for downloading manifests, video files and encrypti
 
 ## Content Delivery Network Support
 
-From our experience and cooperations, the following CDNs have support for honoring or even adding CORS headers to requests they handle. If you are aware of a CDN that has support for CORS and is not on the list, make sure to contact us.
+From our experience and collaborations, the following CDNs have support for honoring or even adding CORS headers to requests they handle. If you are aware of a CDN that has support for CORS and is not on the list, make sure to contact us.
 
 | Name       | Support |
 | ---------- | ------- |

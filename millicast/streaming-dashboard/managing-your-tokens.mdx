@@ -166,7 +166,7 @@ The Distribution tab includes settings that can modify how the CDN distributes t
 
 ### 5\. Playback
 
-The Playback tab includes all relevant information for playing back a live stream. OptiView Real-time Streaming provides an [out-of-the-box hosted player experience](https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true), which can be viewed at the **Hoster player path** URL or by embedding the **Hosted embedded player** as an `<iframe>` into your webpage.
+The Playback tab includes all relevant information for playing back a live stream. OptiView Real-time Streaming provides an [out-of-the-box hosted player experience](https://viewer.millicast.com/?streamId=k9Mwad/multiview&multisource=true), which can be viewed at the **Hosted player path** URL or by embedding the **Hosted embedded player** as an `<iframe>` into your webpage.
 
 From this tab, you can customize the player by altering settings such as the inclusion of the "Volume button" or if the stream is "Muted on start". To learn more about the hosted player or how you can build or use your own player, explore the [Playback](/millicast/playback/index.mdx) guide.
 
@@ -195,7 +195,7 @@ To learn more about recording, visit the [Recordings guide](/millicast/distribut
 The API tab includes information needed to publish a stream with the [Client SDKs](/millicast/playback/players-sdks/index.mdx) or from a [third-party software or hardware source](/millicast/broadcast/index.mdx). The tab includes details in a few sections:
 
 - **Publish token**:
-  - **Publishing token**: The Publishing token is a unique string that is required for authenticating a request to publish via the Dolbyio servers. This string should be protected and **if exposed, should be cycled immediately** to prevent unwanted broadcasts and charges.
+  - **Publishing token**: The Publishing token is a unique string that is required for authenticating a request to publish via the Dolby.io servers. This string should be protected and **if exposed, should be cycled immediately** to prevent unwanted broadcasts and charges.
   - **Stream ID**: The Stream ID is a combination of your _Account ID_ and _Stream name_ used for [publishing](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) or viewing the stream. If your stream** is not secured** with a [subscribe token](/millicast/streaming-dashboard/subscribe-tokens.mdx), you'll be able to view it at `https://viewer.millicast.com?streamId=[Account ID]/[Stream name]` when it is live.
   - **Stream name**: Your Stream name is used to manage and distinguish streams using the same token. You can edit the Stream name in the "[Token streams](/millicast/streaming-dashboard/managing-your-tokens.mdx#2-token-streams)" tab.
   - **Account ID**: The Account ID is a unique account identifier used for [publishing](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) and viewing streams.

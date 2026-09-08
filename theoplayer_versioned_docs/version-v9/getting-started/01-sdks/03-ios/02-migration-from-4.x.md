@@ -12,7 +12,7 @@ The THEOplayer iOS/tvOS SDK 5.0+ moves towards more modularized features, which 
 This approach gives more flexibility and results in a reduced application size, since non-required parts are not included in the build of the application.
 You can read more about this [here](../02-what-is-new-in-theoplayer-5.md).
 
-Lastly, the THEOplayer iOS/tvOS SDK 5.0+ is released only on package managers (Cocoapods, and Swift packages later) which allow developers to easily fetch and implement the latest player into their app.
+Lastly, the THEOplayer iOS/tvOS SDK 5.0+ is released only on package managers (CocoaPods, and Swift packages later) which allow developers to easily fetch and implement the latest player into their app.
 
 ## When to migrate?
 
@@ -23,7 +23,7 @@ However, the 5.0 SDK is built from the ground up so from day 1 it will be not in
 What features are covered already in THEOplayer iOS/tvOS SDK 5.0?
 
 - Basic playback (HLS, MP4) with playback events
-- Fairplay DRM playback
+- FairPlay DRM playback
 - [Custom content protection integrations](https://github.com/THEOplayer/samples-drm-integration)
 - Google IMA integration
 - Google Cast (Chromecast) integration
@@ -43,7 +43,7 @@ Some features, like:
 
 - DRM pre-integrations
 - Analytics pre-integrations: Agama, Moat, Conviva, Youbora
-- Advertisement pre-integrations: OptiView Ads, Spotx
+- Advertisement pre-integrations: OptiView Ads, SpotX
 - Server-side ad insertion: Google DAI (coming soon), Yospace, MediaTailor, Verizon Media
 - VR
 
@@ -71,17 +71,17 @@ For these ones please consult with our [changelog](../../../changelog.md)
 
 You can read more about the new architecture [here](../02-what-is-new-in-theoplayer-5.md)
 
-Use the latest THEOplayer iOS/tvOS SDK Cocoapod in your Podfile.
+Use the latest THEOplayer iOS/tvOS SDK CocoaPod in your Podfile.
 
 ```ruby
 pod 'THEOplayerSDK-core', '~> 5.0'
 ```
 
-If you rely on Google IMA advertisement or Google Cast (Chromecast) features, you need to intialized the relevant integrations accordingly before you try to use them.
+If you rely on Google IMA advertisement or Google Cast (Chromecast) features, you need to initialized the relevant integrations accordingly before you try to use them.
 
 **For Google IMA:**
 
-Pull the integration from Cocoapods:
+Pull the integration from CocoaPods:
 
 ```ruby
 pod 'THEOplayerSDK-Integration-GoogleIMA', '~> 5.0'
@@ -100,7 +100,7 @@ self.theoplayer.addIntegration(imaIntegration)
 
 **For Google Cast:**
 
-Pull the integration from Cocoapods:
+Pull the integration from CocoaPods:
 
 ```ruby
 pod 'THEOplayerSDK-Integration-GoogleIMA', '~> 5.0'

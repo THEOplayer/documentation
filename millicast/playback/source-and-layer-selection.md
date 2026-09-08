@@ -67,7 +67,7 @@ An active [broadcastEvent](https://millicast.github.io/millicast-sdk/Signaling.h
 
 ## Projecting feeds
 
-Once a feed has been published to the stream, you can project it using the viewer. The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to map a feed onto the track, signalling to the CDN you are ready to receive data via a peer connection. Once a feed is mapped to a track, it can be rendered natively or in a browser.
+Once a feed has been published to the stream, you can project it using the viewer. The [project](https://millicast.github.io/millicast-sdk/View.html#project) function allows you to map a feed onto the track, signaling to the CDN you are ready to receive data via a peer connection. Once a feed is mapped to a track, it can be rendered natively or in a browser.
 
 ```javascript title="Projecting a source"
 viewer.project('uniqueSourceID', [

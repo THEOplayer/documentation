@@ -57,7 +57,7 @@ The following parameters can be provided used to configure the hosted player. _N
 - `poster`: a publicly accessible poster frame image to show when the stream is offline
 - `playerColor`: _(default `4D5963`)_ a hex color code value to set the play button and scrub bar. _Note that the value is an integer and should NOT contain the `#` at the beginning._
 
-### Optional Parameters (realtime only configurations)
+### Optional Parameters (real-time only configurations)
 
 The following parameters are only valid with Dolby OptiView real-time streaming and will be ignored with other `sourceTypes`.
 

@@ -150,7 +150,7 @@ class MCLoggerOSLog: NSObject, MCLoggerDelegate {
 Enrichments made to data that can be valuable for troubleshooting issues such as poor network conditions:
 
 - Exposed stats information for: [freeze_count](https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-freezecount) , [pause_count](https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-pausecount), [total_freezes_duration](https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalfreezesduration) , and [total_pauses_duration](https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-totalpausesduration).
-- For debugging and analytic purposes the Stats object now contains StreamDetails vartiant which holds either StreamViewDetails/StreamPublishDetails based on if you are viewing/publishing a stream.  
+- For debugging and analytic purposes the Stats object now contains StreamDetails variant which holds either StreamViewDetails/StreamPublishDetails based on if you are viewing/publishing a stream.  
   The StreamViewDetails object contains strings describing stream ID, cluster ID, stream viewer ID, subscriber ID.  
   The StreamPublishDetails object contains strings describing stream ID, cluster ID, uuid, feed ID, publisher ID.
 
@@ -235,7 +235,7 @@ using StreamDetails = std::variant<StreamViewDetails, StreamPublishDetails>;
   - It will also request permissions if not previously requested.
 - Improve certain public API naming in ObjC/Swift APIs.
 - Added layer event members target fps/height/width/bitrate.
-- Obj-C enums are changed to utilise NS_ENUM rather than being global C based  
+- Obj-C enums are changed to utilize NS_ENUM rather than being global C based  
   enums
 - Removing OpenGL as an option in favor of using Metal.
 - Enabling the Metal Video renderer on macOS. Now,
@@ -247,7 +247,7 @@ using StreamDetails = std::variant<StreamViewDetails, StreamPublishDetails>;
 #### Fixes
 
 - Fixed a bug where invalid metadata information was placed when creating debian packages. The `Architecture` field would always default to amd64. This caused issues when unpacking the `debian11-armv8a` packages.
-- Introduced a new method to ObjC SDK to allow setting the log levels for the Sdk/Webrtc/Websocket components
+- Introduced a new method to ObjC SDK to allow setting the log levels for the SDK/WebRTC/Websocket components
 
 ```
 + (void)setLogLevelWithSdk:(MCLogLevel)sdkLogLevel
@@ -669,7 +669,7 @@ data class Layers(
 
 ##### The auto reconnect property removal
 
-The auto reconnect property is removed from publisher and subscriber options in favour of using connection options. Use **ConnectionOptions** to set the **autoReconnect** ([Android](https://millicast.github.io/doc/latest/android/android/com.millicast.clients/-connection-options/auto-reconnect.html?query=val%20autoReconnect:%20Boolean), [iOS](https://millicast.github.io/doc/latest/cpp/interface_m_c_connection_options.html#af9e0ed6b2affd725634db6d158ea7ab3), [Desktop](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_client_connection_options.html#a78e72d74ccdbb7df4e85725a067b83e1)) property:
+The auto reconnect property is removed from publisher and subscriber options in favor of using connection options. Use **ConnectionOptions** to set the **autoReconnect** ([Android](https://millicast.github.io/doc/latest/android/android/com.millicast.clients/-connection-options/auto-reconnect.html?query=val%20autoReconnect:%20Boolean), [iOS](https://millicast.github.io/doc/latest/cpp/interface_m_c_connection_options.html#af9e0ed6b2affd725634db6d158ea7ab3), [Desktop](https://millicast.github.io/doc/latest/cpp/structmillicast_1_1_client_connection_options.html#a78e72d74ccdbb7df4e85725a067b83e1)) property:
 
 ```cpp
 //file: millicast-sdk/client.h

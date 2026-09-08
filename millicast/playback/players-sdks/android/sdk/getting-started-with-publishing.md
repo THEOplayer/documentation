@@ -282,7 +282,7 @@ publisher.connect(connectionOption)
 
 ## 8. Error handling
 
-To listen to the errors emitted by the publisher, listen to the connectionState of the publisher.state as described in section 5.1. In addition to that there are additional two state events that can be monitored for errors. Publisher also provides notification for any signalling error in publisher.signalingError.
+To listen to the errors emitted by the publisher, listen to the connectionState of the publisher.state as described in section 5.1. In addition to that there are additional two state events that can be monitored for errors. Publisher also provides notification for any signaling error in publisher.signalingError.
 
 ```kotlin
 publisher.state.map { it.peerConnectionState }.distinctUntilChanged().collect {}

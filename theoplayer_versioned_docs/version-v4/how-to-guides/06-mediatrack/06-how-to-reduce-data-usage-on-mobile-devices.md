@@ -71,7 +71,7 @@ theoplayer.setPreload(.auto)
 
 ### 3. Choose the renditions considered for ABR
 
-On mobile devices, THEOplayer by default takes into account the player size for ABR: this lets it avoid selecting renditions too big to be appreciated on the current device, thus avoiding wasting data. As of THEOplayer 5.7, it is also possible to configure the SourceAbrConfiguration property `restrictToPlayerSize` which also replicates this behaviour on laptop/desktop browsers.
+On mobile devices, THEOplayer by default takes into account the player size for ABR: this lets it avoid selecting renditions too big to be appreciated on the current device, thus avoiding wasting data. As of THEOplayer 5.7, it is also possible to configure the SourceAbrConfiguration property `restrictToPlayerSize` which also replicates this behavior on laptop/desktop browsers.
 
 Leveraging the `targetQuality` property of the MediaTrack API, you can refine the rendition choice further and indicate yourself to the player which qualities should be considered for ABR. For example, you could configure that THEOplayer should only do ABR on the lowest 3 qualities of a stream containing 5.
 
@@ -80,7 +80,7 @@ For further information about both strategies, please check the documentation li
 ## Conclusion
 
 There are several actions that can be taken to drastically reduce data usage on mobile devices, both in the player and at other levels.
-As far as the player is concerned, by leveraging its API as described you can filter different use cases and handle several aspects related to media download for each use case. This enables you to manage the precise behaviour in each case and optimize data usage.
+As far as the player is concerned, by leveraging its API as described you can filter different use cases and handle several aspects related to media download for each use case. This enables you to manage the precise behavior in each case and optimize data usage.
 
 ## Related articles
 

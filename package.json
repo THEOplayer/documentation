@@ -21,7 +21,8 @@
     "check-format": "prettier --check .",
     "format": "prettier --write .",
     "lint": "eslint docusaurus.config.ts \"sidebars*.ts\" src",
-    "fix-lint": "npm run lint -- --fix"
+    "fix-lint": "npm run lint -- --fix",
+    "spellcheck": "mdxlint . -e md,mdx --quiet --frail"
   },
   "dependencies": {
     "@docsearch/docusaurus-adapter": "^5.0.5",
@@ -53,18 +54,28 @@
     "@docusaurus/types": "^3.10.2",
     "@eslint/js": "~9.39.5",
     "@types/lodash": "^4.17.25",
+    "dictionary-en": "^4.0.0",
     "dotenv": "^17.4.2",
     "eslint": "~9.39.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.11.0",
     "lodash": "^4.18.1",
+    "mdxlint": "^1.0.0",
     "prettier": "^3.9.6",
     "raw-loader": "^4.0.2",
     "remark": "^15.0.1",
+    "remark-directive": "^4.0.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-retext": "^6.0.1",
+    "retext-english": "^5.0.0",
+    "retext-spell": "^6.1.0",
+    "retext-syntax-urls": "^4.0.0",
     "serve-handler": "^6.1.7",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.68.0",
+    "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0"
   },
   "overrides": {

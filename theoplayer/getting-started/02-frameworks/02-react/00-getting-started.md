@@ -1,6 +1,6 @@
 # Getting started with React
 
-There is a sample app using THEOplayer as a React component available [on our Github](https://github.com/THEOplayer/samples-react-js).
+There is a sample app using THEOplayer as a React component available [on our GitHub](https://github.com/THEOplayer/samples-react-js).
 
 ## Project setup
 

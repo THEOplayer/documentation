@@ -14,8 +14,8 @@ When this configuration is set, the labels and tooltips in the UI will be replac
 
 ## Prerequisites
 
-- THEOplayer valid licence SDK for respective platform (Web, iOS & Android)
-- Download the specific language JSONS to add into your project
+- THEOplayer valid license SDK for respective platform (Web, iOS & Android)
+- Download the specific language JSONs to add into your project
 
 **Language JSON Links**
 

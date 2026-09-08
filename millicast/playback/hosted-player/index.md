@@ -34,7 +34,7 @@ https://viewer.millicast.com?streamId={Account ID}/{Stream Name}
 
 ### How-to embed the hosted player in a web site
 
-You can embed the player in any website or application by using the HTML `<iframe>` element. This solution is compatible whether using a CMS like Drupal or Wordpress or more complex custom JavaScript web applications built with frameworks like React, VueJS, or Angular.
+You can embed the player in any website or application by using the HTML `<iframe>` element. This solution is compatible whether using a CMS like Drupal or WordPress or more complex custom JavaScript web applications built with frameworks like React, VueJS, or Angular.
 
 The code would be something similar to this with your own stream name and account identifiers:
 
