@@ -21,7 +21,7 @@ The signaling service will recognize this information and will translate it so t
 
 There are several options for achieving this:
 
-### DATERANGE (Manifest) {#daterange}
+### DATERANGE (Manifest) {/* #daterange */}
 
 The `#EXT-X-DATERANGE` tag is the recommended approach to signal an ad break due to its standardization.
 OptiView Ads will recognize any `#EXT-X-DATERANGE` tag as long as the `CLASS` attribute is undefined.
@@ -43,7 +43,7 @@ An example snippet can be found below:
 2.ts
 ```
 
-### CUE-OUT (Manifest) {#cue-out}
+### CUE-OUT (Manifest) {/* #cue-out */}
 
 Inside the manifest the ad break start can be signaled by adding an `#EXT-X-CUE-OUT` tag. The duration of the ad break should be specified after it. The end of the ad break and start of content would be signaled by an `#EXT-X-CUE-IN` tag. The `CUE-OUT` tag can be accompanied by a [daterange](#daterange). This is relevant if the ad break start does not correspond with the start of a new segment.
 
@@ -71,7 +71,7 @@ An example manifest with these tags can be found below:
 5.ts
 ```
 
-### OATCLS-SCTE35 (Manifest) {#oatcls-scte35}
+### OATCLS-SCTE35 (Manifest) {/* #oatcls-scte35 */}
 
 The `#EXT-OATCLS-SCTE35` tag is a non-standard tag which contains a SCTE marker.
 The Signaling Service will parse the information in the SCTE marker such as the duration and ID.

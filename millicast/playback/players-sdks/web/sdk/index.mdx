@@ -3,7 +3,7 @@ title: Millicast Web SDK
 sidebar_position: 2
 ---
 
-:::caution Player vs SDK
+:::caution[Player vs SDK]
 **Dolby OptiView Player** (formerly THEOplayer) now supports real-time streaming (formerly Millicast). Unless directed by your onboarding team, please use the [Dolby OptiView Player](../player/index.mdx) and not the Millicast SDKs.
 :::
 
@@ -45,7 +45,7 @@ import ThreeCardList from '@site/src/components/ThreeCardList';
 
 ## Getting Started
 
-:::tip Getting Started with Web SDK
+:::tip[Getting Started with Web SDK]
 If you haven't already, begin by following the [Getting Started](/millicast/getting-started/creating-real-time-streaming-web-app.mdx) tutorial to become familiar with the concepts to create an application that can publish and/or subscribe using the Web SDK.
 :::
 
@@ -58,7 +58,7 @@ To use the SDK in your web applications you have options:
 - include a hosted version from the [JSDELIVR CDN](https://www.jsdelivr.com/package/npm/@millicast/sdk) CDN
 - add a dependency with [npm](https://www.npmjs.com/package/@millicast/sdk)
 
-:::danger Versioning of the Millicast SDK
+:::danger[Versioning of the Millicast SDK]
 When installing and importing the SDK you may automatically be updated to the latest version. This is fine for development, but it is _strongly recommended_ to pin to a specific version release in order to increase stability when you move to production.
 :::
 
@@ -487,7 +487,7 @@ More information and examples here:
 
 Stream stats can be accessed by both Publish and View instances. In order to capture them, you have to initialize the stats and then listen for the event through the `webRTCPeer` attribute.
 
-:::caution Stats Variations
+:::caution[Stats Variations]
 Keep in mind that the stats that are collected may differ from browser to browser, between browser versions, and may depend on the type of media that is being transferred.
 :::
 

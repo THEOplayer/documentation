@@ -2,11 +2,31 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-09-07
+
+### Media Server
+
+{/* 3.6.0 */}
+
+#### Features
+
+- Improved Adaptive Bitrate (ABR) bandwidth allocation for multiview playback. The available bandwidth is now shared across views by priority: audio first, then layers pinned by the client, then the main view, and finally the remaining views, weighted by their size on screen. Views are no longer starved when the main view takes the full bandwidth budget.
+- Non-main views in a multiview stream now start on their lowest layer instead of their highest layer, so the link is not overloaded when playback starts. ABR then ramps each view up as bandwidth allows.
+- Added an option to keep forwarding layers pinned by the client even when the pinned layers together exceed the estimated bandwidth, instead of muting them. When a pinned layer is muted because of bandwidth, the viewer can now receive a `trackMuted` event that explains why.
+- Added an opt-in fix for RTMP re-streams from WebRTC contribution. Some RTMP destinations, such as YouTube, showed glitches when the WebRTC source changed resolution during the broadcast. When enabled on the account, the media server now opens a new connection to the destination on a video configuration change, and hands over without a gap. Contact support to enable this option.
+- Added per-track logging of the encoding to bitrate and resolution mapping to make multiview layer selection easier to diagnose.
+
+#### Fixes
+
+- Fixed an issue where an RTMP re-stream could stay in a "connected" state forever, without sending any media, if the destination accepted the connection but never answered the publish request. The re-stream now fails after 10 seconds, so it can be reported and restarted.
+- Fixed an issue where ABR bandwidth estimation on Firefox counted bandwidth probes as packet loss, which could pin the estimate far below the available bandwidth and cause freezes in multiview playback.
+- General stability and reliability improvements.
+
 ## 2026-08-17
 
 ### Media Server
 
-<!-- 3.5.1 -->
+{/* 3.5.1 */}
 
 #### Features
 
@@ -23,7 +43,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.5.0 -->
+{/* 3.5.0 */}
 
 #### Features
 
@@ -39,7 +59,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.4.3 -->
+{/* 3.4.3 */}
 
 #### Fixes
 
@@ -54,7 +74,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.4.1 -->
+{/* 3.4.1 */}
 
 #### Fixes
 
@@ -64,7 +84,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.4.0 -->
+{/* 3.4.0 */}
 
 #### Features
 
@@ -81,7 +101,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.3.4 -->
+{/* 3.3.4 */}
 
 #### Fixes
 
@@ -91,7 +111,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.3.1  -->
+{/* 3.3.1 */}
 
 #### Features
 
@@ -102,7 +122,7 @@ Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
 ### Media Server
 
-<!-- 3.1.2  -->
+{/* 3.1.2 */}
 
 #### Features
 
@@ -123,7 +143,7 @@ As this is a new feature, we welcome customer feedback. For even more informatio
 
 ### Media Server
 
-<!-- 3.1.0 -->
+{/* 3.1.0 */}
 
 #### Features
 
@@ -139,7 +159,7 @@ As this is a new feature, we welcome customer feedback. For even more informatio
 
 ### Media Server
 
-<!-- 3.0.2 -->
+{/* 3.0.2 */}
 
 #### Features
 
@@ -153,7 +173,7 @@ As this is a new feature, we welcome customer feedback. For even more informatio
 
 ### Media Server
 
-<!-- 3.0.1 -->
+{/* 3.0.1 */}
 
 #### Features
 

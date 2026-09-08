@@ -509,7 +509,7 @@ To ingest raw frames, you first must download and install the appropriate [Milli
 
 Similar to the core API, we should begin by implementing the `VideoFrame` interface and create a wrapper class for `AudioFrame`:
 
-:::caution The Java API uses short to store the audio data.
+:::caution[The Java API uses short to store the audio data.]
 In generating the sine values, which range between [0-1], we are required to scale the value to a larger range. Therefore, we use an amplitude of 2^15, which is essentially the size of a signed short.
 :::
 

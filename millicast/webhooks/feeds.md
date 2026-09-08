@@ -4,7 +4,7 @@ title: Feeds Hooks
 
 The **feeds** _type_ of [webhook](/millicast/webhooks/index.mdx) allows you to receive an activity feed for platform events such as when a stream has started or stopped publishing.
 
-:::tip Setting up Webhooks
+:::tip[Setting up Webhooks]
 Review the [Webhooks](/millicast/webhooks/index.mdx) guide for additional details on creating and receiving webhooks.
 :::
 

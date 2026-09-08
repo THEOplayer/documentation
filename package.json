@@ -24,6 +24,7 @@
     "fix-lint": "npm run lint -- --fix"
   },
   "dependencies": {
+    "@docsearch/docusaurus-adapter": "^5.0.5",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/faster": "^3.10.2",
     "@docusaurus/plugin-client-redirects": "^3.10.2",
@@ -32,7 +33,6 @@
     "@docusaurus/plugin-google-tag-manager": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
     "@docusaurus/theme-classic": "^3.10.2",
-    "@docusaurus/theme-search-algolia": "^3.10.2",
     "@mdx-js/react": "^3.1.1",
     "@signalwire/docusaurus-plugin-llms-txt": "^1.2.2",
     "ace-builds": "^1.44.0",
@@ -64,7 +64,7 @@
     "remark": "^15.0.1",
     "serve-handler": "^6.1.7",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.67.0",
+    "typescript-eslint": "^8.68.0",
     "unist-util-visit": "^5.1.0"
   },
   "overrides": {

@@ -2,7 +2,7 @@
 
 THEOplayer and Verizon Media are partners in the streaming industry. The [Verizon Media Platform](https://www.verizondigitalmedia.com/) offers services like encoding, transcoding, server-side ad-insertion, a CDN and more.
 
-:::info Edgio
+:::info[Edgio]
 
 Verizon Media is now called <a href="https://edg.io/" target="_blank"><strong>Edgio</strong></a>.
 We continue to refer to Edgio as Verizon Media for the time being, but expect to update our API and documentation to reflect this change at some point.
