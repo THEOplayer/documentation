@@ -17,9 +17,9 @@ This guide will help you to integrate the THEOplayer Android SDK into your proje
 
 The THEOplayer Android SDK can be used for Android TV devices using Android 5.0+ (minSdkVersion 21).
 
-:::info[Maven / Gradle / Jitpack]
+:::info[Maven / Gradle / JitPack]
 
-THEOplayer v2.83.0 and above can be managed through Jitpack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.
+THEOplayer v2.83.0 and above can be managed through JitPack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.
 
 :::
 
@@ -45,7 +45,7 @@ Additionally, you can import the sources jar to be able to immediately see the A
 1. In the Projects Overview, set the view to the project view. You should now see “External Libraries”
 2. Under “External Libraries” you should be able to find the theoplayer-android-tv SDK library, right click and select “Library Properties”.
 3. In the top left corner of the Library Properties window, click the first green plus sign.
-4. Find and select the theoplayer-android-tv SDK jar file and click ok.
+4. Find and select the theoplayer-android-tv SDK jar file and click OK.
 
 ## Using the THEOplayerView
 

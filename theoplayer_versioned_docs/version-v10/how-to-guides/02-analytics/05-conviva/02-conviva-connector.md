@@ -218,7 +218,7 @@ After destroying a Conviva Connector instance, it can no longer be used. If need
 3. Select the version you want to use.
 4. Choose the Connector libraries you want to include in your app.
 
-#### [Cocoapods](https://guides.cocoapods.org/using/getting-started.html#getting-started)
+#### [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#getting-started)
 
 1. Create a Podfile if you don't already have one. From the root of your project directory, run the following command: `pod init`
 2. To your Podfile, add the Conviva connector pods that you want to use in your app: `pod 'THEOplayer-Connector-Conviva'`

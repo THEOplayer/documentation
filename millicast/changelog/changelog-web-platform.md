@@ -40,7 +40,7 @@ This release includes some minor updates:
 - Updated stats to v1.0.4.
 - Added metadata event to the documentation.
 - Updated DRM SDK which disabled debug logs by default.
-- Updated docs links to Dolby Optiview.
+- Updated docs links to Dolby OptiView.
 - Added forcePlayoutDelay to TypeScript definition.
 
 🐛 **Issues**

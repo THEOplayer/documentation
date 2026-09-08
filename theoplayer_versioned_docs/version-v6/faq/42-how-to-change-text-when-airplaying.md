@@ -1,4 +1,4 @@
-# Change text when Airplaying
+# Change text when AirPlaying
 
 You will need to add the 'metadata' parameter to the SourceDescription with the 'title' property filled with the title to be displayed.
 

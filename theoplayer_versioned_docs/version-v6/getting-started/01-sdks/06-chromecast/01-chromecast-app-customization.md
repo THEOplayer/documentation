@@ -121,7 +121,7 @@ that the UI is similar to the default UI. However, through this approach, you ha
 ### Custom Receiver application without THEOplayer Chromecast SDK
 
 You can [connect your sender application with a custom Receiver application](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md) which does not use the THEOplayer Chromecast SDK.
-Naturally, you're responsibile for the look and feel of this custom Receiver application.
+Naturally, you're responsible for the look and feel of this custom Receiver application.
 
 ## Conclusion
 
@@ -137,7 +137,7 @@ for your use-cases.
 
 ## Notes
 
-- Google describes their Chromecast UX guideliness at https://developers.google.com/cast/docs/ux_guidelines/.
+- Google describes their Chromecast UX guidelines at https://developers.google.com/cast/docs/ux_guidelines/.
 - This article is currently categorized under the "Getting Started" guides of our Chromecast SDK, which is also known as our Chromecast Receiver SDK.
   Naturally: you leverage a Chromecast Receiver SDK in a Chromecast Receiver application. In result, this categorization might be confusing to some readers,
   because we have discussed concepts and APIs which relate to a Sender application.

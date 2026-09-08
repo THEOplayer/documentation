@@ -66,7 +66,7 @@ Legacy SDK (4.12.X): The Web SDK code should be included in your iOS (TV) projec
 
 ## Connectors
 
-We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
+We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this GitHub repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
 When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
 
 **Web**
@@ -77,12 +77,12 @@ Connectors are also the way forward for the current mobile SDKs. There currently
 
 ## Remarks
 
-- Legacy Mobile SDKs (4.12.X): having this work through JavaScript injection has several limitations (e.g.: this will not work with Exoplayer on Android).
+- Legacy Mobile SDKs (4.12.X): having this work through JavaScript injection has several limitations (e.g.: this will not work with ExoPlayer on Android).
 
 ## Resources
 
 - [https://docs.theplatform.com/help/ent-license-web-services-api-reference](https://docs.theplatform.com/help/ent-license-web-services-api-reference)
-- [THEOplayer Github Samples DRM Integration repository](https://github.com/THEOplayer/samples-drm-integration)
+- [THEOplayer GitHub Samples DRM Integration repository](https://github.com/THEOplayer/samples-drm-integration)
 
 ## Related articles
 

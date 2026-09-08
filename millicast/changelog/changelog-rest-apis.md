@@ -83,7 +83,7 @@ Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/
 
 ### Fixes
 
-- Update publish token deletion behaviour to trigger immediate termination of all associated live streams. Previously, live streams from deleted tokens may continue to run until disconnection of publishing client.
+- Update publish token deletion behavior to trigger immediate termination of all associated live streams. Previously, live streams from deleted tokens may continue to run until disconnection of publishing client.
 
 ## 2025-04-10 | REST APIs
 
@@ -99,7 +99,7 @@ Updates to [REST APIs](/millicast/api/analytics-account-total), and [Webhooks](/
 
 ### Fixes
 
-- Fixed an issue where `lowLatencyRtmp` was defaulting to `false` instead of `true` on [Create Publish Token](/millicast/api/publish-token-v-1-create-token) . This API now matches the previously documented behaviour. This will take effect for new tokens created with the API. There are no changes to the tokens created in the dashboard.
+- Fixed an issue where `lowLatencyRtmp` was defaulting to `false` instead of `true` on [Create Publish Token](/millicast/api/publish-token-v-1-create-token) . This API now matches the previously documented behavior. This will take effect for new tokens created with the API. There are no changes to the tokens created in the dashboard.
 
 ## 2024-10-15 | REST APIs & Webhooks
 

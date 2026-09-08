@@ -126,7 +126,7 @@ launch {
 
 ### 6.2 Listen to Active/Inactive state of tracks
 
-For each RemoteTrack, listen to its active and inactive state by moniting its `onState` stateFlow. This will receive a RemoteVideoTrackState object with an `isActive` field, which signals if that track is available for playback or not.
+For each RemoteTrack, listen to its active and inactive state by monitoring its `onState` stateFlow. This will receive a RemoteVideoTrackState object with an `isActive` field, which signals if that track is available for playback or not.
 Note: A video track receives video frames only when its enabled.
 
 ```kotlin

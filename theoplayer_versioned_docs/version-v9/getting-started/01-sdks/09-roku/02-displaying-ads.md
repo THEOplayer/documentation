@@ -8,9 +8,9 @@ This article will provide the steps needed to play video ads with your content u
 - Include the RAF advertising library in your application's manifest file by adding this line:
   `bs_libs_required=roku_ads_lib`
 
-## Clientside Ad Insertion
+## Client-side Ad Insertion
 
-The THEOplayer Roku SDK currently only supports Clientside Ad Insertion (CSAI) for VOD assets. It does not yet support Clientside Ad Stitching (CSAS), Serverside Ad Insertion (SSAI), Server Guided Ad Insertion (SGAI) or live ads. It supports CSAI by using the Roku Advertising Framework (RAF), which is provided by Roku. It supports VMAP and VAST ad tags. For more information about specific features of VAST or VMAP supported by RAF, please visit their [support page](https://developer.roku.com/docs/developer-program/advertising/roku-advertising-framework.md).
+The THEOplayer Roku SDK currently only supports Client-side Ad Insertion (CSAI) for VOD assets. It does not yet support Client-side Ad Stitching (CSAS), Server-side Ad Insertion (SSAI), Server Guided Ad Insertion (SGAI) or live ads. It supports CSAI by using the Roku Advertising Framework (RAF), which is provided by Roku. It supports VMAP and VAST ad tags. For more information about specific features of VAST or VMAP supported by RAF, please visit their [support page](https://developer.roku.com/docs/developer-program/advertising/roku-advertising-framework.md).
 
 ### Create your ad descriptions
 

@@ -13,7 +13,7 @@ We encourage you to go through these steps before creating a ticket, and to docu
 - The reported 'Current behavior' can be easily understood.
   - Illustrations, screenshots or screen recordings are provided to further elaborate on the issue.
 - The reported 'Expected behavior' can be easily understood.
-  - The affected SDK(s) are correctly labelled.
+  - The affected SDK(s) are correctly labeled.
   - (The affected browsers are correctly labelled.)
 - A reliable and simple reproduction page, stream or application has been shared.
   - Customer-specific application logic has been stripped when a reproduction page or application has been shared.

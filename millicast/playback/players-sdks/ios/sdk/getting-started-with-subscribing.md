@@ -314,7 +314,7 @@ subscriber.httpErrorPublisher()
   }
 ```
 
-To listen to the signalling errors emitted by the subscriber or publisher instance, use the [signalingError()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/signalingerror) or it's equivalent combine publisher - [signalingErrorPublisher()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/signalingerrorpublisher)
+To listen to the signaling errors emitted by the subscriber or publisher instance, use the [signalingError()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/signalingerror) or it's equivalent combine publisher - [signalingErrorPublisher()](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsubscriber/signalingerrorpublisher)
 
 The emitted error will be of type [MCSignalingError](https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcsignalingerror)
 
@@ -335,7 +335,7 @@ subscriber.signalingErrorPublisher()
   }
 ```
 
-The delegate methods to receive http and signalling errors are [client(\_:didreceivehttpconnectionerror:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivehttpconnectionerror:)>) and [client(\_:didreceivesignalingerror:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivesignalingerror:)>)
+The delegate methods to receive http and signaling errors are [client(\_:didreceivehttpconnectionerror:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivehttpconnectionerror:)>) and [client(\_:didreceivesignalingerror:)](<https://millicast.github.io/doc/latest/apple/documentation/millicastsdk/mcdelegate/client(_:didreceivesignalingerror:)>)
 
 ## 11\. Unsubscribe the session
 

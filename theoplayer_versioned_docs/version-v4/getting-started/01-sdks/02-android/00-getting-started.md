@@ -9,7 +9,7 @@ It will cover
 3. [adding THEOplayer to your activity](#add-theoplayer-view-to-your-application-source),
 4. [interacting with the THEOplayer API](#use-theoplayer-api-in-your-application).
 
-You can follow the guide step-by-step, or for each step you will find a link to the corresponding commit in our [Android Github](https://github.com/THEOplayer/android-sdk-starter-project) repository.
+You can follow the guide step-by-step, or for each step you will find a link to the corresponding commit in our [Android GitHub](https://github.com/THEOplayer/android-sdk-starter-project) repository.
 We also provide a full project for [Android TV](https://github.com/THEOplayer/android-tv-sdk-starter-project) and for [both](https://github.com/THEOplayer/android-and-android-tv-sdk-starter-project) together.
 
 ## Prerequisites
@@ -86,9 +86,9 @@ When you select **Project** view, you can see a lot more files and directories. 
 
 ## Add THEOplayer library to your application ([source](https://github.com/THEOplayer/android-sdk-starter-project/commit/1ec4834a5de05115d81994aef4f24b7cd781ce0e?diff=unified))
 
-:::info[Gradle / Maven / Jitpack]
+:::info[Gradle / Maven / JitPack]
 
-THEOplayer v2.83.0 and above can be managed through Jitpack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.
+THEOplayer v2.83.0 and above can be managed through JitPack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.
 
 :::
 

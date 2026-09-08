@@ -119,7 +119,7 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>
           Evergreen<br />
@@ -130,7 +130,7 @@ description: List of supported platforms for the different THEOplayer SDKs
           Evergreen<br />
           (last 3 major versions)
         </td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th colspan="7">
@@ -196,12 +196,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>N/A [^na]</td>
         <td>N/A</td>
         <td>iOS 14+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th colspan="7">
@@ -333,13 +333,13 @@ description: List of supported platforms for the different THEOplayer SDKs
           PS5<br />
           <a href="https://optiview.dolby.com/contact/">Contact us</a>
         </td>
-        <td>Playready DRM</td>
+        <td>PlayReady DRM</td>
         <td>
           PS4<br />
           PS5<br />
           <a href="https://optiview.dolby.com/contact/">Contact us</a>
         </td>
-        <td>Playready DRM</td>
+        <td>PlayReady DRM</td>
         <td><a href="https://optiview.dolby.com/contact/">Contact us</a></td>
         <td><a href="https://optiview.dolby.com/contact/">Contact us</a></td>
       </tr>
@@ -356,7 +356,7 @@ description: List of supported platforms for the different THEOplayer SDKs
           WebKit 537.3+<br />
           <a href="https://optiview.dolby.com/contact/">Contact us</a>
         </td>
-        <td>Playready DRM</td>
+        <td>PlayReady DRM</td>
         <td>
           Chromium 38+<br />
           WebKit 537.3+<br />
@@ -394,12 +394,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>N/A</td>
         <td>N/A</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th>iPadOS</th>
@@ -407,12 +407,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>13+</td>
         <td>ClearKey</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th>tvOS</th>
@@ -420,12 +420,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>13+</td>
         <td>ClearKey</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
   </tbody>
 </table>
@@ -575,7 +575,7 @@ description: List of supported platforms for the different THEOplayer SDKs
           Safari<br />
           iOS & iPadOS
         </td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
         <td>N/A</td>
         <td>N/A</td>
         <td>N/A</td>
@@ -727,7 +727,7 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>
           Evergreen<br />
@@ -738,7 +738,7 @@ description: List of supported platforms for the different THEOplayer SDKs
           Evergreen<br />
           (last 3 major versions)
         </td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th colspan="7">
@@ -804,12 +804,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>N/A</td>
         <td>N/A</td>
         <td>iOS 14+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th colspan="7">
@@ -894,12 +894,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>N/A</td>
         <td>N/A</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th>iPadOS</th>
@@ -907,12 +907,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>13+</td>
         <td>ClearKey</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th>tvOS</th>
@@ -920,12 +920,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>13+</td>
         <td>ClearKey</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th>Android</th>
@@ -1010,7 +1010,7 @@ description: List of supported platforms for the different THEOplayer SDKs
           Safari<br />
           iOS & iPadOS
         </td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
         <td>N/A</td>
         <td>N/A</td>
         <td>N/A</td>
@@ -1162,7 +1162,7 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>
           Evergreen<br />
@@ -1173,7 +1173,7 @@ description: List of supported platforms for the different THEOplayer SDKs
           Evergreen<br />
           (last 3 major versions)
         </td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th colspan="7">
@@ -1239,12 +1239,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>N/A</td>
         <td>N/A</td>
         <td>iOS 14+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th colspan="7">
@@ -1257,12 +1257,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>N/A</td>
         <td>N/A</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th>iPadOS</th>
@@ -1270,12 +1270,12 @@ description: List of supported platforms for the different THEOplayer SDKs
         <td>
           AES-128<br />
           SAMPLE-AES<br />
-          Fairplay DRM
+          FairPlay DRM
         </td>
         <td>13+</td>
         <td>ClearKey</td>
         <td>13+</td>
-        <td>Fairplay DRM</td>
+        <td>FairPlay DRM</td>
       </tr>
       <tr>
         <th>Android</th>
@@ -1356,4 +1356,4 @@ description: List of supported platforms for the different THEOplayer SDKs
 
 [^na]: N/A: Not available due to platform limitations.
 
-[^hesp]: HESP support is not standardly available in THEOplayer. Contact our team for more information.
+[^hesp]: HESP support is not available by default in THEOplayer. Contact our team for more information.

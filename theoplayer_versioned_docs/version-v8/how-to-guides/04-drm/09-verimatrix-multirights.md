@@ -83,7 +83,7 @@ theoplayer.source = sourceDescription
 
 ## Connectors
 
-We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this Github repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
+We are developing open-source DRM connectors that can more easily be maintained and to allow for a modular approach. You can find them in [this GitHub repo](https://github.com/THEOplayer/samples-drm-integration), alongside with guides on how to integrate and use them.
 When integrating DRM for the first time or updating your integration, the connectors are to be preferred over the pre-integrations.
 
 **Web**
@@ -97,7 +97,7 @@ The Verimatrix DRM connector can be found [here](https://github.com/THEOplayer/s
 
 ## Resources
 
-- [THEOplayer Github Samples DRM Integration repository](https://github.com/THEOplayer/samples-drm-integration)
+- [THEOplayer GitHub Samples DRM Integration repository](https://github.com/THEOplayer/samples-drm-integration)
 
 ## Related articles
 

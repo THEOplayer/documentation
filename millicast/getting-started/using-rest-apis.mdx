@@ -18,7 +18,7 @@ In this tutorial we will build a very rudimentary example for calling the API se
 
 First we need to setup our secure server layer which is our Node.js server. Download Node.js from [https://nodejs.org](https://nodejs.org/) and follow the setup process to install it (note: At the time this was written it was Node.js 11.6.0).
 
-Begin by creating a new Node.js project, then create a **server.js** file in the root of that project. In addition create two folders labeled **"certs"** and **"public"** respectfully in the same root directory. The _certs_ folder will house SSL certificates that we will need, and public will house the html files. For this example we are going to run our server locally, but you can run it on any Nodejs supported service you would like.
+Begin by creating a new Node.js project, then create a **server.js** file in the root of that project. In addition create two folders labeled **"certs"** and **"public"** respectfully in the same root directory. The _certs_ folder will house SSL certificates that we will need, and public will house the html files. For this example we are going to run our server locally, but you can run it on any Node.js supported service you would like.
 
 WebRTC requires HTTPS in order to securely grab the users media. That said, we are going to use a self-signed certificate and key in our HTTPS server so it is setup for whatever WebRTC application you decide to build. For an example on how to create a self-signed certificate you can refer to [this tutorial](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate.html).
 
@@ -165,7 +165,7 @@ Now open your index.html file in the text editor, copy this code and save it:
 
 This small sample creates an HTTPS server and listens to a call from the client html to request a new token from the API. The server app then proxies the call securely and sends the result back down to the client for processing. This is a simple solution which will keep your API credentials private from the client.
 
-Now that you have your files save, lets run our Nodejs server. Go to your DOS, TERMINAL, or if you're using a service use their tools to run your Node project. Now, type in **`node server`** in your Terminal or DOS command line to run the server.js script. For simplicity’s sake, this example is running on the localhost.
+Now that you have your files save, lets run our Node.js server. Go to your DOS, TERMINAL, or if you're using a service use their tools to run your Node project. Now, type in **`node server`** in your Terminal or DOS command line to run the server.js script. For simplicity’s sake, this example is running on the localhost.
 
 The server will initiate and display the port that it is listening to. In this case, we are using 8084, so the path to the file in the browser will be https://localhost:8084/. You should see a simple UI for getting a new token and that's it. To test, first open your browser's developer console, then on the UI enter an arbitrary name for the stream we want to use and click the button. The server will proxy your request to OptiView Real-time Streaming where the service generates your new token and returns the results down to you. You should see the results in the developer console window.
 
@@ -179,7 +179,7 @@ In addition, if you log into your OptiView Real-time Streaming Dashboard, you sh
 
 ## The code in detail
 
-Let us go over the code above with a little more detail to understand what is happening. Again, we’re assuming you have a basic understanding of Nodejs so this will focus more on the API calls than on the server.
+Let us go over the code above with a little more detail to understand what is happening. Again, we’re assuming you have a basic understanding of Node.js so this will focus more on the API calls than on the server.
 
 If you look at your **server.js** code you can see that at the top we are importing a few requirements for the app like our **HTTPS** server for the calls and **express** for serving our files.
 

@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+# Production
+build/
+# Generated files
+.docusaurus/
+theoplayer/changelog.md
+theoplayer_versioned_docs/*/changelog.md
+ads/api/reference/
+ads/api/signaling/
+ads_versioned_docs/*/api/
+adengine/reference/
+millicast/api/
+theolive/api/
+theolive_versioned_docs/*/api/
+# Submodules
+theoplayer/external/
+theoplayer_versioned_docs/*/external/
+open-video-ui/external/
+open-video-ui_versioned_docs/*/external/
+# Not part of the site
+.agents/

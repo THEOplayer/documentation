@@ -26,7 +26,7 @@ On top of the IAB suite, THEOplayer comes with additional tools to improve adver
 
 The Digital Video Ad Serving Template (VAST) specification is a description for video ads that standardizes communication requirements between video players and ad server. It gives instructions to the video player on how ads should be handled and displayed. It can define how and how long the ad should be displayed, if and when it can be skipped and how to give tracking information to the ad servers. VAST also specifies ad pods. These are groups of advertisements which should be played back-to-back.
 
-THEOplayer offers support for the delivery of video ads with VAST 4.0. Support is available for linear ads (pre-rolls, mid-rolls, pos-trolls and ad breaks), non-linear ads (overlay banners) and companion banners, all of which are discussed in the next section.
+THEOplayer offers support for the delivery of video ads with VAST 4.0. Support is available for linear ads (pre-rolls, mid-rolls, post-rolls and ad breaks), non-linear ads (overlay banners) and companion banners, all of which are discussed in the next section.
 
 #### Digital Video Multiple Ad Playlist (VMAP)
 

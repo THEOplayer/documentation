@@ -1,6 +1,6 @@
 # Is it possible to hide/disable the Google IMA UI?
 
-You may ask this question if you are trying to determine what controls are visible to the user during ands and want therefore to use your own UI elements.
+You may ask this question if you are trying to determine what controls are visible to the user during ads and want therefore to use your own UI elements.
 
 Unfortunately Google IMA provides very limited control over the UI. The only thing that is possible to change/hide from THEOplayer is the countdown: to do so, you can configure as `*showCountdown: false*` in the AdsConfiguration ([related documentation](pathname:///theoplayer/v4/api-reference/web/classes/Player.html)).
 
