@@ -34,6 +34,8 @@ await sdk.startSession({
 
 From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
 
+All configuration options, session settings, and ad events are documented in the [Web API reference](pathname:///ads/v2/api-reference/web/), starting from the [`OptiViewAds`](pathname:///ads/v2/api-reference/web/classes/OptiViewAds.html) class.
+
 ## Supported players
 
 ### OptiView Player (THEOplayer)
@@ -85,4 +87,4 @@ The SDK ships a native `<video>` adapter for platforms without Media Source Exte
 
 ### Custom players
 
-Any other player can be integrated by implementing the SDK's `PlayerAdapter` interface, which exposes playback position, timing information, and basic playback controls. Contact us for the adapter interface reference.
+Any other player can be integrated by implementing the SDK's [`PlayerAdapter`](pathname:///ads/v2/api-reference/web/interfaces/PlayerAdapter.html) interface, which exposes playback position, timing information, and basic playback controls.

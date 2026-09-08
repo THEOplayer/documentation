@@ -1,13 +1,17 @@
 ---
-title: Ads REST API
-sidebar_label: REST API
+title: API references
+sidebar_label: API references
 ---
 
-# Ads REST API
+# API references
+
+OptiView Ads exposes two APIs: the **Ads REST API** to manage your channels and breaks, and the **OptiView Ads SDK** to play the resulting ads in your player.
+
+## Ads REST API
 
 The Ads REST API manages channels, origins, marker rules, breaks, events, templates, and integrations under `/api/v1`.
 
-## Authentication
+### Authentication
 
 Every request requires both:
 
@@ -22,6 +26,18 @@ curl 'https://us.ads.optiview.dolby.com/api/v1/channels' \
 
 Treat the secret like a password. The internal service authentication used between platform components is not a public API authentication method.
 
-## Reference
+### Reference
 
 Browse the [generated Ads REST API reference](/ads/api/reference/optiview-ads-api). Operations are grouped by resource.
+
+## OptiView Ads SDK
+
+The [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) ships a generated API reference that documents the `OptiViewAds` entry point, its configuration and session types, the `PlayerAdapter` interface for custom players, and the ad events you can subscribe to.
+
+:::info[Beta]
+The OptiView Ads SDK is in beta. Its API can still change before the first stable release, and the reference is regenerated with every SDK release.
+:::
+
+- [Web API reference](pathname:///ads/v2/api-reference/web/) for the `@dolby-optiview/ads-sdk` package.
+
+References for the Android, iOS, and React Native SDKs will follow.

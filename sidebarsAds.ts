@@ -96,6 +96,12 @@ const sidebars: SidebarsConfig = {
           customProps: { icon: '🛜' },
           href: '/ads/api/reference/optiview-ads-api',
         },
+        {
+          type: 'link',
+          label: 'Ads SDK Web API (beta)',
+          customProps: { icon: '🧩' },
+          href: 'pathname:///ads/v2/api-reference/web/',
+        },
       ],
     },
   ],
