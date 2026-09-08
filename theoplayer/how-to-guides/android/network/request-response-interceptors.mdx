@@ -1,0 +1,125 @@
+---
+sidebar_position: 1
+sidebar_label: Request and response interceptors
+---
+
+# How to add and remove request and response interceptors on Android
+
+import Intro from '../../shared/network/_request-response-interceptors-intro.mdx';
+
+<Intro />
+
+## Prerequisites
+
+This guide assumes that you already have THEOplayer set up in your app.
+If not, start with our [getting started guide](../../../getting-started/01-sdks/02-android/00-getting-started.mdx).
+
+## Adding and removing an interceptor
+
+The Android SDK provides the [`HTTPInterceptor`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/HTTPInterceptor.html)
+interface, which contains two methods that you can implement depending on your use case:
+
+- `suspend fun onRequest(request: InterceptableHTTPRequest)`: intercepts an HTTP request before opening the connection.
+- `suspend fun onResponse(response: InterceptableHTTPResponse)`: intercepts an HTTP response before consuming the response body.
+
+To start intercepting HTTP requests, add the interceptor to the Network API:
+
+```kotlin
+theoPlayerView.player.network.addHTTPInterceptor(httpInterceptor)
+```
+
+To stop intercepting HTTP requests, remove the interceptor again:
+
+```kotlin
+theoPlayerView.player.network.removeHTTPInterceptor(httpInterceptor)
+```
+
+## Intercepting a request
+
+The [`request`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/InterceptableHTTPRequest.html)
+parameter of `onRequest` allows you to read and write properties of the request,
+or to interrupt the request by responding to it directly.
+
+The snippet below shows some common use cases.
+
+```kotlin
+override suspend fun onRequest(request: InterceptableHTTPRequest) {
+    // Read request properties
+    Log.d("Interceptor", "onRequest - url: ${request.url}")
+
+    // Add/override request headers
+    request.headers["newKey"] = "newValue"
+
+    // Replace properties
+    request.method = "GET|POST|.."
+    request.url = URL("new_url")
+    request.headers = HashMap()
+
+    // Replace POST/PUT request body
+    request.body = "new post body".toByteArray()
+
+    // Perform another async computation
+    delay(1000) // simulating an async call
+
+    // Interrupt the request and respond with a CompleteHTTPResponse
+    request.respondWith(
+        CompleteHTTPResponse(
+            request,
+            request.url,
+            request.headers,
+            200,
+            "OK",
+            "new post body".toByteArray()
+        )
+    )
+}
+```
+
+## Intercepting a response
+
+The [`response`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/network/http/InterceptableHTTPResponse.html)
+parameter of `onResponse` allows you to read and write properties of the received response.
+
+The snippet below shows some common use cases.
+
+```kotlin
+override suspend fun onResponse(response: InterceptableHTTPResponse) {
+    // Read response properties
+    Log.d("Interceptor", "onResponse - headers: ${response.headers}")
+
+    // Add/override response headers
+    response.headers["newKey"] = "newValue"
+
+    // Replace properties
+    response.url = URL("new_url")
+    response.headers = HashMap()
+    response.status = 200
+    response.statusText = "OK"
+
+    // Get the chunks of the response body as they are read from the HTTP connection
+    response.onChunk { chunk: ByteArray ->
+        Log.d("Interceptor", "onResponse - onChunk: ${chunk.size}")
+        delay(100)
+        chunk
+    }
+
+    // Read the complete response body
+    response.onBody { body: ByteArray ->
+        Log.d("Interceptor", "onResponse - onBody: ${body.size}")
+
+        // Read response body
+        val string = body.decodeToString()
+        val json = JSONObject(string)
+
+        // Perform another async computation
+        delay(1000) // simulating an async call
+
+        // Replace response body
+        "new response body".toByteArray()
+    }
+}
+```
+
+## Related articles
+
+- [Network introduction](./introduction.mdx)

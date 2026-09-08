@@ -1,0 +1,53 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# AirPlay on iOS
+
+import Intro from '../../../shared/cast/_airplay-introduction-intro.mdx';
+import Enable from '../../../shared/cast/_airplay-introduction-enable.mdx';
+import ApiIntro from '../../../shared/cast/_airplay-introduction-api-intro.mdx';
+
+<Intro />
+
+## How to enable AirPlay
+
+<Enable />
+
+## API
+
+<ApiIntro />
+
+For more information, see the API reference of [`AirPlay`](pathname:///theoplayer/v11/api-reference/ios/Protocols/AirPlay.html), a sub-protocol of [`Cast`](pathname:///theoplayer/v11/api-reference/ios/Protocols/Cast.html).
+
+Use the API as demonstrated below:
+
+```swift
+private func setupTheoplayer() {
+    // player = THEOplayer(...)
+    let airPlayState = theoplayer.cast?.airPlay?.state
+    let isCasting = theoplayer.cast?.airPlay?.casting
+    // ...
+    // if (want to start AirPlay)
+        theoplayer.cast?.airPlay?.start()
+    // if (want to stop AirPlay)
+        theoplayer.cast?.airPlay?.stop()
+    // ...
+    theoplayer.cast?.airPlay?.addEventListener(type: AirPlayEventTypes.STATE_CHANGE, listener: onStateChange)
+}
+
+private func onStateChange(event: AirPlayStateChangeEvent) {
+    if (event.state == PlayerCastState.available) {
+        // show AirPlay available icon
+    } else if (event.state == PlayerCastState.connected) {
+        // show AirPlay connected icon
+    }
+    print(event.state)
+    print(self.player.cast?.airPlay?.casting)
+}
+```
+
+## Remarks
+
+- [Chromecast](../chromecast/introduction.mdx) and AirPlay are comparable technologies.

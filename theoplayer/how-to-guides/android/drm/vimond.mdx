@@ -1,0 +1,59 @@
+---
+sidebar_position: 13
+sidebar_label: Vimond
+---
+
+# Vimond on Android
+
+import Intro from '../../shared/drm/_vimond-intro.mdx';
+import Resources from '../../shared/drm/_vimond-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import IntegrationUnavailable from '../../shared/drm/_integration-unavailable.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+:::note
+Support for this DRM system has not been verified on the Android SDK.
+:::
+
+## Integration
+
+<IntegrationIntro />
+
+<IntegrationUnavailable />
+
+## Code example
+
+```java
+DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
+    .widevine(
+        new KeySystemConfiguration(
+            "<LICENSE_KEY_URL_WIDEVINE>"
+        )
+    )
+    .build();
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)

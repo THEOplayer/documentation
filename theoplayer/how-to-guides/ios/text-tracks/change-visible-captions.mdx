@@ -1,0 +1,30 @@
+---
+sidebar_position: 1
+sidebar_label: Change the visible captions
+---
+
+# How to dynamically change the visible captions on iOS
+
+import Intro from '../../shared/text-tracks/_change-visible-captions-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The function below enables the text track with the requested language.
+
+```swift
+private func setLanguage(player: THEOplayer, language: String) {
+    let list: TextTrackList = player.textTracks
+    for i in 0..<list.count {
+        let textTrack: TextTrack = list[i]
+        textTrack.mode = textTrack.language == language ? .showing : .disabled
+    }
+}
+```
+
+## Related articles
+
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to insert subtitles](./insert-subtitles.mdx)

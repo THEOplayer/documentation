@@ -1,0 +1,42 @@
+---
+sidebar_position: 1
+sidebar_label: How to do error handling
+---
+
+# How to do error handling on Android
+
+import Intro from '../../../shared/miscellaneous/_error-handling-intro.mdx';
+
+<Intro />
+
+## Event listener
+
+Subscribe to the [`ERROR`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html#ERROR)
+event of the player, and attach a listener which implements the error handling.
+The [`THEOplayerException`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/error/THEOplayerException.html)
+causing the error is available through
+[`getErrorObject()`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/player/ErrorEvent.html#getErrorObject()>).
+
+```kotlin
+theoPlayerView.player.addEventListener(PlayerEventTypes.ERROR) { event ->
+    println(event.errorObject)
+}
+```
+
+## Getter
+
+You can query the last error that occurred for the current source through
+[`player.error`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html#getError()>).
+
+```kotlin
+println(theoPlayerView.player.error)
+```
+
+## Types of errors
+
+"[Which error related events does the player expose](../../../../faq/15-which-error-related-events-does-player-expose.md)"
+lists which types of errors there are. Note that generally speaking only the "generic error event" is fatal.
+Other events, like the "Chromecast error event" and the "ad error event", are considered non-fatal
+because some type of playback can still continue.
+
+"[Error codes](./error-codes.mdx)" lists which error codes are available for the "generic error event".

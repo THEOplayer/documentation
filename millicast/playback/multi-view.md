@@ -51,7 +51,7 @@ Before getting started building a multi-view application it is worth understandi
 
 ### Store and track incoming Multisource feeds
 
-:::info Not building a Web App?
+:::info[Not building a Web App?]
 All OptiView Real-time [Client SDKs](/millicast/playback/players-sdks/index.mdx) support building Multi-view applications. Although the below example is using JavaScript the principles are the same for each SDK.
 :::
 

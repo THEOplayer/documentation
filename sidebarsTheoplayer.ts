@@ -463,6 +463,30 @@ function webConnectorItems(): SidebarItemConfig[] {
   return [
     {
       type: 'category',
+      label: 'Adscript',
+      description: 'Integrate with Adscript analytics.',
+      customProps: {
+        icon: 'nielsen',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Adscript Connector for Web',
+        slug: 'connectors/web/adscript',
+      },
+      items: [
+        'external/web-connectors/adscript/README',
+        'external/web-connectors/adscript/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Adscript connector for Web.',
+          href: 'https://theoplayer.github.io/web-connectors/api/modules/AdScript_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/web-connectors/tree/main/adscript',
+        }),
+      ],
+    },
+    {
+      type: 'category',
       label: 'CMCD',
       description: 'Integrate with Common Media Client Data (CMCD) for server-side analytics.',
       customProps: {
@@ -530,6 +554,30 @@ function webConnectorItems(): SidebarItemConfig[] {
         }),
         githubLink({
           href: 'https://github.com/THEOplayer/web-connectors/tree/main/conviva',
+        }),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Gemius',
+      description: 'Integrate with Gemius analytics.',
+      customProps: {
+        icon: 'gemius',
+      },
+      link: {
+        type: 'generated-index',
+        title: 'Gemius Connector for Web',
+        slug: 'connectors/web/gemius',
+      },
+      items: [
+        'external/web-connectors/gemius/README',
+        'external/web-connectors/gemius/CHANGELOG',
+        apiReferencesLink({
+          description: 'Discover all functions provided by the Gemius connector for Web.',
+          href: 'https://theoplayer.github.io/web-connectors/api/modules/Gemius_Connector.html',
+        }),
+        githubLink({
+          href: 'https://github.com/THEOplayer/web-connectors/tree/main/gemius',
         }),
       ],
     },

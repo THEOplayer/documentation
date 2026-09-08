@@ -3,6 +3,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import { GlobExcludeDefault } from '@docusaurus/utils';
 import type * as Preset from '@docusaurus/preset-classic';
+import type { ThemeConfig as DocSearchThemeConfig } from '@docsearch/docusaurus-adapter';
 import type * as DocsPlugin from '@docusaurus/plugin-content-docs';
 import type * as ClientRedirectsPlugin from '@docusaurus/plugin-client-redirects';
 import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs/src/types';
@@ -22,7 +23,9 @@ import redirectsTHEOPlayer from './redirectsTHEOPlayer.json';
 const theoplayerLicense = process.env.THEOPLAYER_LICENSE || '';
 fs.writeFileSync(path.join(__dirname, 'static/theoplayer-license.txt'), theoplayerLicense);
 
-const isProductionDeployment = process.env.NODE_ENV === 'production' && !process.env.DOCUSAURUS_PR_NUMBER;
+const PR_NUMBER = Number(process.env.DOCUSAURUS_PR_NUMBER ?? -1);
+const isProductionDeployment = process.env.NODE_ENV === 'production' && PR_NUMBER <= 0;
+const NO_INDEX = ['1', 'true'].includes((process.env.DOCUSAURUS_NO_INDEX ?? '').trim().toLowerCase());
 
 const docsConfigBase = {
   include: [
@@ -96,8 +99,6 @@ function removeDocIndexItems(items: any) {
   return result;
 }
 
-const PR_NUMBER = Number(process.env.DOCUSAURUS_PR_NUMBER ?? -1);
-
 const config: Config = {
   title: 'Dolby OptiView Documentation',
   tagline: 'Discover the latest developer documentation and samples for OptiView products',
@@ -109,7 +110,7 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.DOCUSAURUS_BASE_URL || '/docs/',
   trailingSlash: true,
-  noIndex: !!process.env.DOCUSAURUS_NO_INDEX,
+  noIndex: NO_INDEX,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -215,6 +216,16 @@ const config: Config = {
         routeBasePath: '/ads',
         sidebarPath: './sidebarsAds.ts',
         docItemComponent: '@theme/ApiItem',
+        lastVersion: 'current',
+        versions: {
+          current: {
+            label: 'v2',
+          },
+          v1: {
+            label: 'v1',
+            banner: 'none',
+          },
+        },
         async sidebarItemsGenerator(args) {
           const sidebarItems = await sidebarItemsGenerator(args);
           return removeDocIndexItems(sidebarItems);
@@ -335,9 +346,21 @@ const config: Config = {
         id: 'ads-api',
         docsPluginId: 'ads',
         config: {
+          ads: {
+            version: 'v2',
+            label: 'v2',
+            specPath: '.docusaurus/openapi/ads-v2/openapi.json',
+            outputDir: 'ads/api/reference',
+            hideSendButton: true,
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
           signaling: {
-            specPath: 'ads/api/ads-client.swagger.json',
-            outputDir: 'ads/api/signaling',
+            version: 'v1',
+            label: 'v1',
+            specPath: 'ads_versioned_docs/version-v1/api/ads-client.swagger.json',
+            outputDir: 'ads_versioned_docs/version-v1/api/signaling',
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: 'tag',
@@ -415,6 +438,8 @@ const config: Config = {
             return [existingPath.replace('/theoplayer/how-to-guides/web/uplynk/', '/theoplayer/how-to-guides/miscellaneous/verizon-media/')];
           } else if (existingPath.startsWith('/theolive/v1/api/')) {
             return [existingPath.replace('/theolive/v1/api/', '/theolive/api/')];
+          } else if (existingPath.startsWith('/ads/v1/')) {
+            return [existingPath.replace('/ads/v1/', '/ads/')];
           } else if (existingPath === '/theolive/channel/metadata-insertion') {
             return ['/theolive/contribution/sei-messages'];
           }
@@ -438,17 +463,12 @@ const config: Config = {
         }),
       },
     ],
+    '@docsearch/docusaurus-adapter',
   ],
 
   themes: ['docusaurus-theme-openapi-docs'],
 
   markdown: {
-    mdx1Compat: {
-      // TODO Migrate to strict MDX
-      comments: true,
-      admonitions: true,
-      headingIds: true,
-    },
     hooks: {
       onBrokenMarkdownLinks: 'throw',
     },
@@ -541,7 +561,7 @@ const config: Config = {
       PR_NUMBER > 0
         ? {
             id: 'pr_preview',
-            content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${process.env.DOCUSAURUS_PR_NUMBER}</a>.`,
+            content: `This is a preview of the documentation website from <a target="_blank" rel="noopener noreferrer" href="${process.env.DOCUSAURUS_PR_URL}">pull request #${PR_NUMBER}</a>.`,
             backgroundColor: '#9cb9c9',
             textColor: '#344a5e',
             isCloseable: false,
@@ -626,6 +646,11 @@ const config: Config = {
         },
         {
           type: 'docsVersionDropdown',
+          docsPluginId: 'ads',
+          position: 'right',
+        },
+        {
+          type: 'docsVersionDropdown',
           docsPluginId: 'theolive',
           position: 'right',
         },
@@ -644,10 +669,10 @@ const config: Config = {
       darkTheme: prismThemes.oneDark,
       additionalLanguages: ['java', 'groovy', 'objectivec', 'brightscript', 'dart', 'bash', 'diff', 'json', 'ruby'],
     },
-    algolia: {
+    docsearch: {
       appId: '7HRS9V6FEL',
       apiKey: '415e178afdd1c3ea819b42fb9a6a1c99',
-      indexName: 'theoplayer',
+      indices: [{ name: 'theoplayer' }],
       contextualSearch: true,
       replaceSearchResultPathname: {
         from: '/docs/',
@@ -668,7 +693,7 @@ const config: Config = {
         // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
       },
     },
-  } satisfies Preset.ThemeConfig,
+  } satisfies Preset.ThemeConfig & DocSearchThemeConfig,
 };
 
 function parseDocPath(filePath: string):

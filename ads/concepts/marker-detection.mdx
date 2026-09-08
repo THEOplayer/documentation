@@ -1,0 +1,82 @@
+---
+sidebar_position: 6
+sidebar_label: Break Detection
+---
+
+# Break Detection
+
+A channel can automatically detect ad markers (such as SCTE-35 cues or `EXT-X-DATERANGE` tags) in its origin manifests and turn them into breaks by applying marker rules. Detection is enabled or disabled per channel. Automatic detection currently supports HLS manifests only. See [Origins](./origins.mdx) for origin selection, priority ordering, and first-online behavior.
+
+## How detection works
+
+When detection is enabled, OptiView Ads polls the channel's enabled [origins](./origins.mdx) in priority order and selects the first online origin. It parses the manifest's markers, evaluates the enabled marker rules, creates breaks for matching markers, and records the result in [detection history](#detection-history).
+
+## Supported markers
+
+Detection recognizes two marker kinds in HLS manifests:
+
+| Marker rule type | HLS marker         | Detection behavior                                                                                |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------------------- |
+| `CUE`            | `#EXT-X-CUE-OUT`   | Parses a marker start and optional duration.                                                      |
+| `DATERANGE`      | `#EXT-X-DATERANGE` | Requires a valid `START-DATE`. Duration comes from `DURATION`, `PLANNED-DURATION`, or `END-DATE`. |
+
+`DATERANGE` is not limited to Apple interstitials. Any `#EXT-X-DATERANGE` tag with a valid start is considered and can be matched by its attributes.
+
+## Marker rules
+
+A marker rule turns a detected marker into a break created from a [template](./templates.mdx). The rule's `type` must match the marker kind, and every configured condition must match the marker attributes. Attribute keys are compared case-insensitively.
+
+Every marker rule has an `id` that is unique within its channel. The `id` is optional when creating a rule: if you omit it, OptiView Ads generates one for you. When you supply your own, we recommend using a UUID.
+
+| Property     | Description                                                                                                                        |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `type`       | The marker kind this rule matches: `CUE` or `DATERANGE`.                                                                           |
+| `conditions` | Attribute key/value pairs that must all match on the marker for the rule to fire. An empty object matches any marker of that type. |
+| `templateId` | The [template](./templates.mdx) to schedule the break from when the rule matches.                                                  |
+| `enabled`    | Whether the rule participates in detection.                                                                                        |
+
+For example, this rule matches `DATERANGE` markers whose `CLASS` attribute is `com.example.ad`:
+
+```json
+{
+  "streamType": "HLS",
+  "type": "DATERANGE",
+  "conditions": { "CLASS": "com.example.ad" },
+  "templateId": "3b8e5f0a-7c2d-4e91-a6b3-9d4f1c8e2a70",
+  "enabled": true
+}
+```
+
+## Detection history
+
+Detection history is the audit trail of what automatic detection decided for each marker. Once an origin is enabled, every marker found in the stream is recorded — even when no marker rule exists yet. This lets you review the markers appearing in your stream and identify which ones you want to turn into breaks before configuring your rules.
+
+Every processed marker is recorded with one of three outcomes:
+
+| Action    | Meaning                                                                                                                                         |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CREATED` | A rule matched and a break was scheduled. The record links to the matched rule and the created break.                                           |
+| `SKIPPED` | No fault: the marker was ineligible (unparseable or without a resolvable start), no rule matched, or a scheduling condition prevented creation. |
+| `FAILED`  | An eligible, rule-matched marker could not be scheduled for an unexpected reason.                                                               |
+
+Each record includes the raw manifest tag line, the origin that supplied the marker, and a `reason` explaining skips and failures. History is deduplicated per channel: repeated polling of the same marker, including seeing it on another origin, does not create duplicate records.
+
+## Troubleshooting
+
+| Symptom                                                | Checks                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| No breaks are created.                                 | Is detection enabled on the channel? Is there at least one enabled HLS origin? Is the origin reachable and returning a parseable manifest? Is there an enabled marker rule whose `type` and `conditions` match the marker? Does the rule's template exist? |
+| History contains `SKIPPED` with `NO_RULES_CONFIGURED`. | An enabled origin is already being polled and markers are being detected, but the channel has no marker rules yet. Use these records to identify the markers you want to act on, then create and enable a matching marker rule.                            |
+| History contains `SKIPPED` with `NO_RULE_MATCHED`.     | Check the rule `type` and all `conditions` against the marker attributes. Attribute keys are matched case-insensitively, but values must match.                                                                                                            |
+| DASH or HESP origin is not producing breaks.           | DASH and HESP origins are accepted but skipped by automatic detection. Use an enabled HLS origin.                                                                                                                                                          |
+| History contains `SKIPPED` with a scheduling reason.   | The marker was recognized, but the break was not scheduled — for example because its start would lie in the past or it would overlap another break. See [Scheduling constraints](./breaks.mdx#scheduling-constraints).                                     |
+| History contains `FAILED`.                             | The rule matched, but an unexpected scheduling or configuration error prevented break creation. Inspect the `reason` and verify the template and break configuration.                                                                                      |
+
+## Related resources
+
+| Resource                     | Relationship                                                                 |
+| ---------------------------- | ---------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)   | Detection is enabled or disabled per channel.                                |
+| [Origins](./origins.mdx)     | Manifest URLs monitored for ad markers. A channel can have multiple origins. |
+| [Templates](./templates.mdx) | Reusable break presets that marker rules schedule when a marker matches.     |
+| [Breaks](./breaks.mdx)       | The breaks created when detection matches a marker against a marker rule.    |

@@ -1,0 +1,101 @@
+---
+id: get-channels-channel-id
+title: 'Get /channels/{channelId}'
+description: 'Get a channel by ID.'
+sidebar_label: 'Get /channels/{channelId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vk1zGzcM/SsYnqSZtSWlSVOrJ7XJuJo2Y4+dj4NHM4aWkMSYS25I7MqqRv+9A+5K1lfSU3SxJYLAw8MjgLXSFPNgSjbeqaG6JgaEfIHOkYXpCsbvLlWmSgxYEFOIaviwVjFfUIFquFa8KkkNVeRg3FxtMmXES4m8UJlyWMhh622sVaYCfatMIK2GHCrKjqKPNTk2M0MB/Ax4QVskl2ozkcux9C5SlMiv+n35c+jgHc2wsgx3raXKVO4dk2OxxbK0Jkex7X2NcuFMKn76lXKWnIMvKbBpwhl9mu4x/E/OfKt2mMHssrkUZho2jhH/VRXoLgKhxqkl0CaWFlcgxjDz4ZCE7JRvNgVNMdI5dOSqQg0f1BKtza3PnyQrjmpyDPyjKQgCzSiQywmqSDoFF3J0ZY2bwzQQPkXw7kUeQ3jceX6Ezvj+Bn77tT8AjUwCqws+wGPJ8RE6rioomBzKQJEcpxqAGEXGouwmgnQdvhin/fJDPFPZz3fQCbQ0TndhmczAOCiMtSZS7p2OGUitg7cJ8MIvYYYBppg/JRZLizzzoQDr/VNM+bVJsQdN1tQU5F/hn0K8hFZM6fyXvnyg8wYK4yqm2IXlghw4zxCJ90pjHNOcgtD/nNsqmpo+GGcKKUWj+QKfm69X/f7bwdXVqzev377uX10NNpkSFDezWSQ+R8I/piawyOTyFfhkdkzCcJd4m/OKAojX9P+CUAMHNDZCILSpBFJUXpi40xn8IbxAZAzcFAkwEFCNtkImDThH4yKD88vER2zuN4gOietDx/n2pHuWpmLLTv/H1ORVZF+MYiT+m1an5Fx7P7cE70ZjaEwBxRaeaPWiaCElUqgpXMwro0lD5/56NO6CtKxLuGvbU7KtyWkfoPS6FcrZB1g2ehtrS/dNCU6hNXwW6MyMIkN7BYSDUKOVGrblA9S1NB3B+6LFrdYaHGAiYM6mpkOqB/2fo8kW7iiF/Hk56kooBXRtck2yRyn+nAw1MeWSx3snXXi/1U+9t4TupNd/WRAvKABW7Atkk7e12bmCULnYam7/bd0R6gvv7EqeXR4ImQCdhqqUvvk7sJ+LjA1DbTDp9cUlJXg9bWIaFuR06Y3jo141QxspddTGvR7x/8+uj9te3DC8N3ZgibEFqjPAKBU66fXQuL1Um83+kH+Qubk3pM5QvY9ykinU2sgx2tu9+ZtS2sgnU/Jrmh9jrYZqTnzRAo0X+5sG41yWFfVneyjOC+KFb2+lrYYXaqh6WJpePeht3fTWOz8blalIeRUMr9LmM8Vo8lEl9x4mmfJhLigeJrKebA3vZaVotoY9810BFsyluE1WojCxOanH6HacOlenihRkG+gmlUTKAzF0Soxx6YNuJmcLYxcCSyMtst3GpOmnp9HuY88XPswvUmEOY96EOTrzbzOcD7aXtNjNfAph2IqXm5LNZ0NLGOkIo9uxylRNITae6kHTGiMXmNasNrSsl9/j+QDL+mVv+95O2ubK9My90qJxErIKVi43lX0QIgTXQFS21UGmhi86mWRq4SOL7XotEv0U7GYjP3+rKKyaKtcYjIg1KaB9fLoV5Q9wd7bTpAs/WGy/k8i2kk7KKINXvqlMPcno21upN5NNtq2wwGvOR3lOJe/dPFl9N/vP4fr9R7XZ/Ad2uSnj
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}'} context={'endpoint'}></MethodEndpoint>
+
+Get a channel by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique channel identifier.' },
+              name: { description: 'Human-readable display name for the channel.', type: 'string' },
+              timebase: {
+                type: 'string',
+                enum: ['wallclock', 'pts'],
+                description:
+                  'Time reference used for scheduling breaks on a channel: `wallclock` (ISO 8601 datetime) or `pts` (numeric presentation timestamp).',
+              },
+              dvrWindowMs: {
+                description:
+                  'DVR (rewind) window in milliseconds, controlling how far back the platform looks for breaks to deliver to players. Defaults to 300000 (5 minutes) when not set.',
+                type: 'integer',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+              },
+              liveOffsetMs: {
+                description:
+                  'Live latency offset in milliseconds: how far the player live playhead trails real time on this channel. Break start times are evaluated against now minus this offset. Defaults to 0 (no offset).',
+                type: 'integer',
+                minimum: 0,
+                maximum: 9007199254740991,
+              },
+              customAssetKey: {
+                description: 'Google DAI custom asset key used for the server-guided (SGAI) path. Required for vendor pod breaks.',
+                type: 'string',
+              },
+              pollingIdleSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players when no break is active. Defaults to 10 when not set.',
+                type: 'integer',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+              },
+              pollingActiveSeconds: {
+                description: 'Break manifest polling interval in seconds advertised to players during an active break. Defaults to 1 when not set.',
+                type: 'integer',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+              },
+              detectionEnabled: {
+                type: 'boolean',
+                description:
+                  'Whether automatic break detection runs for this channel. Read-only on create and update; toggle it via the detection enable/disable endpoints. Defaults to false.',
+              },
+              createdAt: { type: 'string', description: 'Timestamp when the channel was created, as an ISO 8601 datetime string.' },
+            },
+            required: ['id', 'timebase', 'detectionEnabled', 'createdAt'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

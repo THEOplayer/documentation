@@ -1,0 +1,22 @@
+Video analytics provide tremendous insights into your user's QoE, bring extra business intelligence and enhance decision-making.
+There are a wide selection of analytics systems in the current landscape (e.g. Google Analytics, Conviva, ...), often with their own focus, expertise and value.
+
+What most video analytics systems have in common is that their insights (partly) originate from video events:
+
+- `play` event: a user clicks the play button, or resumes playback after a pause
+- `fullscreen` event: a user goes fullscreen on their device
+- `quality` change event: the video quality switches from a lower resolution to a higher one
+- `waiting` event: the video is stalled and unable to continue playback for some time
+- ...
+
+To access these video events, and forward them to a video analytics system, an application developer must hook into
+the video player API.
+
+This guide explains the role of the THEOplayer API.
+Additionally, it explains how to do a custom integration with an analytics system, with Google Analytics as a sample case.
+This guide should be useful when THEOplayer doesn't have an existing sample integration with a specific (commercial) video analytics service,
+or when you want to fully control the data flow.
+
+Keep in mind that Google Analytics is not the only analytics system out there. The APIs and concepts that we'll discuss are relevant for all analytics systems.
+For example, you can easily swap out the Google Analytics example with something like [Nielsen](https://www.nielsen.com/solutions/audience-measurement/)
+or [Youbora](https://npaw.com/) (NPAW), or even your own custom analytics back-end.

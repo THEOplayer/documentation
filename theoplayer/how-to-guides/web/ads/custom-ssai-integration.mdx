@@ -1,0 +1,130 @@
+---
+sidebar_position: 13
+sidebar_label: Custom SSAI integration
+---
+
+# Custom Server Side Ad Insertion on Web
+
+import Intro from '../../shared/ads/_custom-ssai-integration-intro.mdx';
+
+<Intro />
+
+## Integration ID
+
+To make use of the custom server side ad insertion, first you need an integration ID which will identify the provided sources and ads to the specific ad provider.
+
+## ServerSideAdIntegrationFactory
+
+You would also need to register a [`ServerSideAdIntegrationFactory`](pathname:///theoplayer/v11/api-reference/web/types/ServerSideAdIntegrationFactory.html)
+through [`player.ads.registerServerSideIntegration()`](pathname:///theoplayer/v11/api-reference/web/interfaces/Ads.html#registerServerSideIntegration).
+The factory receives a [`ServerSideAdIntegrationController`](pathname:///theoplayer/v11/api-reference/web/interfaces/ServerSideAdIntegrationController.html),
+which can be used to create the THEOplayer `AdBreak`/`Ad` objects using the `AdBreakInit`/`AdInit` data.
+Additionally, it can be used to keep the player's state up-to-date such as when an ad begins or ends.
+
+The factory must return an implementation of the [`ServerSideAdIntegrationHandler`](pathname:///theoplayer/v11/api-reference/web/interfaces/ServerSideAdIntegrationHandler.html) interface.
+The handler provides a few optional callbacks which allow you to set up and clear the integration as needed.
+
+A concrete implementation can be found [in the Yospace Connector](https://github.com/THEOplayer/web-connectors/blob/main/yospace/src/integration/YospaceManager.ts).
+
+Meanwhile, an empty implementation would look like below. Details to follow.
+
+```js
+player.ads.registerServerSideIntegration('integrationID', (controller) => {
+  return {
+    async setSource(source) {
+      return source;
+    },
+    skipAd(ad) {
+      controller.skipAd(ad);
+    },
+    async resetSource() {
+      // Clean up any source-specific resources.
+    },
+    async destroy() {
+      // Clean up any remaining resources.
+    },
+  };
+});
+```
+
+### Setting a source
+
+When a new source is loaded into the player the `setSource(source)` callback is triggered.
+It allows the integration to transform the source description, e.g. by calling an external service to replace the content URL (`TypedSource.src`),
+or by adding a fixed pre-roll linear ad to the list of ads (`SourceDescription.ads`).
+
+### Skipping an ad
+
+When an ad is requested to be skipped, `skipAd(ad)` is called.
+At this point the integration should call the controller's own `skipAd()` method.
+
+### Resetting a source
+
+Before a new source is loaded into the player, or before the player is destroyed, `resetSource()` is triggered.
+This allows the integration to clean up any source-specific resources, such as scheduled ads or pending HTTP requests.
+
+### Destroying the player
+
+When the player is destroyed, `destroy()` is called.
+This allows the integration to clean up any resources, such as UI elements or event listeners.
+
+### Creating Ad objects
+
+When the advertisement provider reports an ad, an `AdBreak` and an `Ad` object should be created using
+the controller's `createAdBreak(init)` and `createAd(init, adBreak)` methods respectively.
+For example, for a pre-roll `AdBreak` containing 2 advertisements it would be:
+
+```js
+const adBreak = controller.createAdBreak({ timeOffset: 0 });
+
+const firstAd = controller.createAd(
+  {
+    type: 'linear',
+    skipOffset: 5,
+    id: 'first_ad_id',
+    duration: 10,
+    clickThrough: firstAdClickThroughUrl,
+    resourceURI: firstAdResourceUrl,
+  },
+  adBreak
+);
+
+const secondAd = controller.createAd(
+  {
+    type: 'linear',
+    skipOffset: 5,
+    id: 'second_ad_id',
+    duration: 10,
+    clickThrough: secondAdClickThroughUrl,
+    resourceURI: secondAdResourceUrl,
+  },
+  adBreak
+);
+```
+
+### Playing an ad
+
+When an ad begins playback, the integration must inform the player by calling `controller.beginAd(ad)`, this will trigger the relevant ad break and ad events.
+
+Additionally, during the playback of the ad, calling `controller.updateAdProgress(ad, progress)` is needed to keep the player in sync with the progress.
+
+Finally, when the playback of the ad is completed, `controller.endAd(ad)` should be called to notify about it.
+
+## Configuring the source
+
+To hold the configuration parameters specific to your integration, set an [`ssai`](pathname:///theoplayer/v11/api-reference/web/interfaces/TypedSource.html#ssai)
+configuration on a `TypedSource`, whose `integration` property equals your integration ID.
+The integration can then read this configuration in its `setSource()` handler.
+
+```js
+player.source = {
+  sources: {
+    src: 'https://example.com/stream.m3u8',
+    type: 'application/x-mpegurl',
+    ssai: {
+      integration: 'integrationID',
+      // Any other properties needed by your integration.
+    },
+  },
+};
+```

@@ -1,0 +1,8 @@
+If you've read our [Advertising User Guide](../../../knowledge-base/01-advertisement/01-user-guide.md#dynamic-ad-scheduling), you might have picked up that you can also dynamically schedule VAST advertisements in THEOplayer.
+All previous samples in this article use static, pre-defined scheduling; you schedule the ads whenever you schedule the stream. With dynamic scheduling, you schedule ads at runtime.
+
+You use the `Ads` interface to schedule an ad description at runtime. More specifically, you invoke the `schedule` function when your video is already playing.
+
+Note that specifying the `timeOffset` is optional, and that this value is an absolute value. For example, let's consider that your current playhead position is at the 20 seconds mark,
+and that you want to schedule an ad at the 30 seconds mark. To achieve this, you would set `timeOffset: "00:00:30"`,
+and not `timeOffset: "00:00:10"`, because this would be 10 seconds in the past, and the ad would instantly start playing.

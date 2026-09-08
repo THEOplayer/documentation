@@ -1,0 +1,88 @@
+---
+sidebar_position: 2
+sidebar_label: Web
+---
+
+# OptiView Ads SDK on Web
+
+On Web, the OptiView Ads SDK works with any HLS-capable player through a player adapter. Ready-made adapters are available for the **OptiView Player (THEOplayer)**, **HLS.js**, **Shaka Player**, and the browser's **native `<video>` element**, and you can implement a custom adapter for any other player.
+
+## Prerequisites
+
+1. Retrieve the channel's Break Manifest URL. See [Retrieving the required values](./index.mdx#retrieving-the-required-values).
+2. For [Google Pod Serving](../../integrations/google/pod-serving.mdx), have your Google Ad Manager `networkCode` and the channel's `customAssetKey` at hand.
+3. Install the SDK together with the adapter for your player (see the player sections below).
+
+## Integration
+
+Create the SDK with your player's adapter, then start a session with the channel's Break Manifest URL. The example below uses the OptiView Player (THEOplayer) adapter; the other adapters work the same way:
+
+```typescript
+import { OptiViewAds } from '@dolby-optiview/ads-sdk';
+import { THEOplayerAdapter } from '@dolby-optiview/ads-adapter-theoplayer';
+
+const sdk = new OptiViewAds({
+  player: new THEOplayerAdapter(player, container),
+  container: document.getElementById('container'),
+  gam: { networkCode: 'NETWORK-CODE' },
+});
+
+await sdk.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+});
+```
+
+From this point the SDK polls the [Break Manifest](../../concepts/break-manifest.mdx), schedules the breaks against your player's timeline, plays the ads, and reports the impressions. To verify the integration, schedule a break through the API or dashboard and confirm that it plays out.
+
+## Supported players
+
+### OptiView Player (THEOplayer)
+
+Install the THEOplayer adapter alongside the SDK:
+
+```bash
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-theoplayer theoplayer
+```
+
+Wrap the `ChromelessPlayer` instance in a `THEOplayerAdapter`. THEOplayer manages its own `<video>` element inside a container `<div>`.
+
+**Limitations:**
+
+- Requires THEOplayer v9 or later and a valid THEOplayer license.
+- Set `mutedAutoplay: 'all'` in the player configuration; without it, ad playback can be blocked by browser autoplay policies.
+
+### HLS.js
+
+Install the HLS.js adapter alongside the SDK:
+
+```bash
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-hlsjs hls.js
+```
+
+Wrap your `Hls` instance and content `<video>` element in an `HlsJsAdapter` and pass it as the `player`.
+
+### Shaka Player
+
+Install the Shaka adapter alongside the SDK:
+
+```bash
+npm install @dolby-optiview/ads-sdk @dolby-optiview/ads-adapter-shaka shaka-player
+```
+
+Call `shaka.polyfill.installAll()` once before creating any `shaka.Player` instance, then wrap the player and `<video>` element in a `ShakaAdapter`.
+
+**Limitations:**
+
+- Requires Shaka Player 4.x or 5.x.
+
+### Native video (Safari and iOS browsers)
+
+The SDK ships a native `<video>` adapter for platforms without Media Source Extensions, such as Safari on older iOS versions, where HLS plays natively through `video.src`. The SDK selects the appropriate playback technology per ad automatically.
+
+**Limitations:**
+
+- On iOS versions older than 17.1, ads play through the content video element: advanced [layouts](../../concepts/breaks.mdx#layouts) are downgraded to a single fullscreen ad.
+
+### Custom players
+
+Any other player can be integrated by implementing the SDK's `PlayerAdapter` interface, which exposes playback position, timing information, and basic playback controls. Contact us for the adapter interface reference.

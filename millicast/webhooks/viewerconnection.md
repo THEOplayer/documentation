@@ -4,7 +4,7 @@ title: ViewerConnection Hooks
 
 The **viewerConnection** _type_ of [webhook](/millicast/webhooks/index.mdx) allows you to receive a series of notifications for when a viewer attempts to connect to a stream or alert when there are no longer viewers watching the stream. This can be helpful for when you want to automate starting and stopping your encoder when a viewer connects.
 
-:::tip Setting up Webhooks
+:::tip[Setting up Webhooks]
 Review the [Webhooks](/millicast/webhooks/index.mdx) guide for additional details on creating and receiving webhooks.
 :::
 

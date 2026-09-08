@@ -273,9 +273,45 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:29THEOplayerTHEOliveIntegration0B13ConfigurationV17externalSessionId12discoveryUrl0H4UrlsACSSSg_AGSaySSGtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(externalSessionId:discoveryUrl:discoveryUrls:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration0B13ConfigurationV17externalSessionId12discoveryUrl0H4UrlsACSSSg_AGSaySSGtcfc">init(externalSessionId:<wbr>discoveryUrl:<wbr>discoveryUrls:<wbr>)</a>
+                    <a name="/s:29THEOplayerTHEOliveIntegration0B13ConfigurationV20hespFallbackCooldownSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/hespFallbackCooldown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration0B13ConfigurationV20hespFallbackCooldownSdSgvp">hespFallbackCooldown</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Override (in seconds) for how long HESP is not offered after a HESP source failure/fallback.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <ul>
+<li>When set, this takes precedence over any value supplied by discovery.</li>
+<li>A value of <code>nil</code> means no override (discovery decides); a non-positive value disables the cooldown.</li>
+<li>Intended for testing and validation.</li>
+</ul>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">hespFallbackCooldown</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:29THEOplayerTHEOliveIntegration0B13ConfigurationV17externalSessionId12discoveryUrl0H4Urls20hespFallbackCooldownACSSSg_AHSaySSGSdSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(externalSessionId:discoveryUrl:discoveryUrls:hespFallbackCooldown:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:29THEOplayerTHEOliveIntegration0B13ConfigurationV17externalSessionId12discoveryUrl0H4Urls20hespFallbackCooldownACSSSg_AHSaySSGSdSgtcfc">init(externalSessionId:<wbr>discoveryUrl:<wbr>discoveryUrls:<wbr>hespFallbackCooldown:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -290,7 +326,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">externalSessionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">discoveryUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">discoveryUrls</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">externalSessionId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">discoveryUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">discoveryUrls</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">hespFallbackCooldown</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -331,6 +367,18 @@
                               <td>
                                 <div>
                                   <p>An optional custom discovery endpoint URL list for THEOlive, defaults to [].</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hespFallbackCooldown</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An optional override (in seconds) for the HESP-after-fallback cooldown, defaults to nil (discovery decides).</p>
                                 </div>
                               </td>
                             </tr>

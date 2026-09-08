@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+sidebar_label: Change the visible captions
+---
+
+# How to dynamically change the visible captions on Roku
+
+import Intro from '../../shared/text-tracks/_change-visible-captions-intro.mdx';
+
+<Intro />
+
+## Usage
+
+In the following example we iterate through all available text tracks.
+Once we find a track with the desired language, we set its mode to `showing`.
+After that, we assign the `textTracks` object back to the THEOplayer attribute.
+This is all you have to do to make the desired text track visible.
+You can also change the visible text track during playback.
+
+```brightscript
+sub setCaptionsLanguage(language as String)
+  textTracks = m.player.textTracks
+  for i = textTracks.count() - 1 to 0 step -1
+    if m.fullScreen and textTracks[i].kind = "captions" and textTracks[i].language = language then
+      textTracks[i].mode = "showing"
+    else
+      textTracks[i].mode = "hidden"
+    end if
+  end for
+  ' Assignment of new roAssociativeArray is required, because Roku field values are copies, not references.
+  ' Read more: https://developer.roku.com/en-gb/docs/developer-program/performance-guide/optimization-techniques.md#OptimizationTechniques-DataFlow
+  m.player.textTracks = textTracks
+end sub
+```
+
+## Related articles
+
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)

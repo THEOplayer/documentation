@@ -1,0 +1,121 @@
+---
+sidebar_position: 9
+sidebar_label: Picture-in-Picture
+---
+
+# Picture-in-Picture on Android
+
+import Intro from '../../shared/miscellaneous/_picture-in-picture-intro.mdx';
+
+<Intro />
+
+On Android and Fire TV, there is no API to explicitly only allow in-app Picture-in-Picture:
+the [PiP API](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/pip/package-summary.html)
+always activates out-of-app Picture-in-Picture as well.
+Note that the minimum required Android version for out-of-app PiP is Oreo (API level 26).
+
+## Enabling Picture-in-Picture
+
+Instantiate the player with a `PipConfiguration`, passed in the `THEOplayerConfig`.
+
+```kotlin
+val playerConfig = THEOplayerConfig.Builder()
+    .pipConfiguration(PipConfiguration.Builder().build())
+    .build()
+
+val theoPlayerView = THEOplayerView(context, playerConfig)
+```
+
+Once Picture-in-Picture is enabled, you can enter it through the PiP manager of your `THEOplayerView`.
+
+```kotlin
+theoPlayerView.piPManager?.enterPiP(PiPType.ACTIVITY)
+```
+
+THEOplayer supports three PiP types:
+
+- **ACTIVITY**: this mode generates a separate Android activity that functions as the PiP window.
+- **DIALOG**: in this mode, a dialog window is used as the PiP window. The video content is displayed within the dialog.
+- **CUSTOM**: unlike the predefined PiP types, `CUSTOM` allows you to design and implement your own PiP window.
+  For details on implementing a custom PiP window, explore this
+  [Android documentation](https://developer.android.com/develop/ui/views/picture-in-picture).
+
+## Observing Picture-in-Picture
+
+Listen for the `PRESENTATIONMODECHANGE` event, or read the presentation mode of the player,
+to find out what the presentation mode is at a given moment or to detect a change.
+
+```kotlin
+theoPlayerView.player.addEventListener(PlayerEventTypes.PRESENTATIONMODECHANGE) { event ->
+    if (event.presentationMode == PresentationMode.PICTURE_IN_PICTURE) {
+        // Currently in PiP
+    }
+}
+
+// The listener above is triggered by one of:
+theoPlayerView.piPManager?.enterPiP(PiPType.ACTIVITY)
+theoPlayerView.piPManager?.exitPiP()
+```
+
+## Returning from Picture-in-Picture
+
+### ACTIVITY PiP type
+
+When your app uses the `ACTIVITY` PiP type and the user closes the PiP window,
+playback is automatically paused, provided that `theoPlayerView.settings.setAllowBackgroundPlayback(false)`
+is set to `false` (which is the default setting).
+
+To resume playback, check whether your app's activity is in the foreground.
+If it is, call the `play()` method on the player instance.
+
+```kotlin
+theoPlayerView.player.addEventListener(PlayerEventTypes.PRESENTATIONMODECHANGE) { event ->
+    if (event.presentationMode == PresentationMode.INLINE) {
+        // Playback pauses after closing the PiP window
+        if (lifecycle.currentState == Lifecycle.State.STARTED) {
+            theoPlayerView.player.play()
+        }
+    }
+}
+```
+
+### DIALOG PiP type
+
+For the `DIALOG` PiP type, in order to correctly exit the PiP window,
+you should override `onPictureInPictureModeChanged` and call `piPManager.exitPiP()`.
+
+```kotlin
+override fun onPictureInPictureModeChanged(
+    isInPictureInPictureMode: Boolean,
+    newConfig: Configuration
+) {
+    super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
+
+    if (!isInPictureInPictureMode) {
+        theoPlayerView.piPManager?.exitPiP()
+    }
+}
+```
+
+This example ensures that playback pauses if the activity that holds THEOplayer is in the background
+and background playback is not allowed, providing a smoother transition for users returning from PiP mode.
+
+### CUSTOM PiP type
+
+For the `CUSTOM` PiP type, you are responsible for implementing your own PiP window
+and handling the necessary tasks for entering and exiting PiP mode.
+Managing playback after returning from PiP mode is in your hands as a developer.
+You can use the code snippet for the `ACTIVITY` type as a starting point,
+and adapt it to match your app's unique design and logic.
+
+## Known limitations
+
+- Android TV: when the player is showing a native Google IMA advertisement while being in Picture-in-Picture mode,
+  and the user triggers something which moves the PiP window (such as opening the keyboard),
+  then the view showing the advertisement might be misaligned. This is a limitation of the Android framework.
+
+## Resources
+
+- [PipConfiguration API](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/pip/PipConfiguration.Builder.html)
+- [PiPManager API](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/pip/PiPManager.html)
+- [Sample application](https://github.com/THEOplayer/samples-android-sdk/tree/master/pip-handling)

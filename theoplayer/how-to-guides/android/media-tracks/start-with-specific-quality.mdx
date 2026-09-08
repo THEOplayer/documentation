@@ -1,0 +1,41 @@
+---
+sidebar_position: 5
+sidebar_label: Start with a specific quality
+---
+
+# How to start with a specific quality on Android
+
+import Intro from '../../shared/media-tracks/_start-with-specific-quality-intro.mdx';
+
+<Intro />
+
+## Usage
+
+When the `ADDTRACK` event is dispatched, THEOplayer has not started buffering yet, so you can still adjust the
+[`targetQuality`](<pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/track/mediatrack/MediaTrack.html#setTargetQuality(Q)>).
+You reset the ABR selection by setting `targetQuality` to `null`.
+
+```kotlin
+val progressListener = object : EventListener<ProgressEvent> {
+    override fun handleEvent(event: ProgressEvent) {
+        val buffered = player.buffered
+        // switch to normal ABR when THEOplayer buffered beyond 10 seconds
+        if (buffered.length() > 0 && buffered.getEnd(buffered.length() - 1) > 10) {
+            player.videoTracks.getItem(0).targetQuality = null
+            player.removeEventListener(PlayerEventTypes.PROGRESS, this)
+        }
+    }
+}
+
+player.videoTracks.addEventListener(VideoTrackListEventTypes.ADDTRACK) {
+    val videoTrack = player.videoTracks.getItem(0)
+    // start with a specific quality
+    videoTrack.targetQuality = videoTrack.qualities.getItem(0)
+    player.addEventListener(PlayerEventTypes.PROGRESS, progressListener)
+}
+```
+
+## Related articles
+
+- [How to programmatically select a video track quality](./select-video-track-quality.mdx)
+- [How to reduce data usage on mobile devices](./reduce-data-usage.mdx)

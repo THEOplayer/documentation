@@ -25,7 +25,7 @@ See the official [ffmpeg.org](https://ffmpeg.org/) documentation for installatio
 | \-tune zerolatency | Good for fast encoding and low-latency streaming |
 | \-vprofile main    | H264 video profile                               |
 
-:::warning -re flag
+:::warning[-re flag]
 Do not use the `-re` flag when the input is an actual capture device or a live stream as it may cause packet loss and higher latency.
 :::
 
@@ -53,6 +53,6 @@ ffmpeg -re -stream_loop -1 -i $VIDEO_FILE_PATH \
   -rtmp_live live $RTMP_PUBLISH_URL
 ```
 
-:::info Upload bandwidth
+:::info[Upload bandwidth]
 Make sure that your encoder has a stable connection and enough upload bandwidth. This will ensure all data is correctly sent to the THEOlive channel.
 :::

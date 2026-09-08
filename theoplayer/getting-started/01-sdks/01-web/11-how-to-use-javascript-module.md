@@ -224,7 +224,7 @@ var player = new THEOplayer.Player(element, {
 ```
 
 You can read more about configuring the `license` at
-the [License section](../../../how-to-guides/12-license/00-introduction.md).
+the [License section](../../../how-to-guides/web/license/introduction.mdx).
 
 #### Configure video stream
 
@@ -288,6 +288,6 @@ We're done! Here's the complete code again, which you can put on your web server
 
 Ready to learn more?
 
-- Go through our [how-to guides](../../../how-to-guides/index.mdx) to learn about [UI customization](../../../how-to-guides/11-ui/00-introduction.md), [advertising](../../../how-to-guides/01-ads/00-introduction.md), [DRM](../../../how-to-guides/04-drm/00-introduction.md), [casting](../../../how-to-guides/03-cast/01-chromecast/00-introduction.md), [analytics](../../../how-to-guides/02-analytics/00-introduction.md) and other topics.
+- Go through our [how-to guides](../../../how-to-guides/index.mdx) to learn about [UI customization](../../../how-to-guides/web/ui/introduction.mdx), [advertising](../../../how-to-guides/web/ads/introduction.mdx), [DRM](../../../how-to-guides/web/drm/introduction.mdx), [casting](../../../how-to-guides/web/cast/chromecast/introduction.mdx), [analytics](../../../how-to-guides/web/analytics/introduction.mdx) and other topics.
 - Check out our [API reference](pathname:///theoplayer/v11/api-reference/web/classes/ChromelessPlayer.html).
 - Try out samples from our [GitHub](https://github.com/THEOplayer).

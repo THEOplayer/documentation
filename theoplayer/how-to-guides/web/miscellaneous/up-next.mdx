@@ -1,0 +1,35 @@
+---
+sidebar_position: 4
+sidebar_label: Up next
+---
+
+# Up next on Web
+
+The up next feature adds a component to the default UI which enables viewers to navigate to the upcoming asset,
+and also loads this asset automatically. This can be useful if you want to increase the engagement
+and consumption of your users.
+
+![Up next](../../../assets/img/up-next.png 'Up next')
+
+The up next feature loads new web pages (rather than just changing the video source),
+so it is only available on the Web SDK.
+Make sure your Web SDK includes the `upnext` feature.
+
+## Usage
+
+The snippet below demonstrates how you configure the up next API.
+
+```js
+player.upnext.source = {
+  image: '//cdn.theoplayer.com/video/vr/poster.jpg',
+  title: '360/VR in THEOplayer',
+  duration: '2:14',
+  link: '//demo.theoplayer.com/vr-and-360',
+};
+player.upnext.bar.offset = 106;
+```
+
+## Resources
+
+- [Up next API](pathname:///theoplayer/v11/api-reference/web/classes/Player.html#upnext)
+- [Online demo](https://www.theoplayer.com/theoplayer-demo-up-next)

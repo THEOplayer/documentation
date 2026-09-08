@@ -1,0 +1,46 @@
+---
+sidebar_position: 19
+sidebar_label: Multi-key HLS
+---
+
+# Multi-key HLS on Web
+
+import Intro from '../../shared/drm/_multikey-hls-intro.mdx';
+import Playlist from '../../shared/drm/_multikey-hls-playlist.mdx';
+
+<Intro />
+
+A multi-key HLS stream will play in all web platforms that support MSE and either Widevine, PlayReady or FairPlay.
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## The HLS playlist
+
+<Playlist />
+
+## Configuring THEOplayer
+
+A corresponding player configuration looks like:
+
+```javascript
+player.source = {
+  sources: [
+    {
+      src: 'https://yourdomain.com/playlist.m3u8',
+      type: 'application/x-mpegurl',
+      contentProtection: {
+        widevine: {
+          licenseAcquisitionURL: 'https://widevine-server.com/license',
+        },
+        playready: {
+          licenseAcquisitionURL: 'https://playready-server.com/license',
+        },
+        fairplay: {
+          certificateURL: 'https://fairplay-server.com/certificate',
+          licenseAcquisitionURL: 'https://fairplay-server.com/license',
+        },
+      },
+    },
+  ],
+};
+```

@@ -1,0 +1,38 @@
+---
+sidebar_position: 15
+sidebar_label: Uplynk
+---
+
+# Uplynk on Android
+
+import Intro from '../../shared/drm/_uplynk-intro.mdx';
+import Resources from '../../shared/drm/_uplynk-resources.mdx';
+
+<Intro />
+
+**Important:** Uplynk customers should configure DRM through the [THEOplayer Uplynk connector for Android](../../../external/android-connector/connectors/uplynk/docs/preplay.md).
+(The Uplynk connector provides an out-of-the-box integration with Uplynk's Preplay, Ping and Asset Info services,
+exposes additional APIs, and enhances your UI and UX.)
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Integration
+
+The [Uplynk connector for Android](../../../external/android-connector/connectors/uplynk/docs/preplay.md) takes care of
+the DRM configuration as part of its Preplay logic: when you request a content-protected asset with the
+[`contentProtected`](../../../external/android-connector/connectors/uplynk/docs/preplay.md) flag, the connector sets up
+the DRM configuration of the resulting source for you.
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)

@@ -1,0 +1,26 @@
+---
+sidebar_position: 2
+sidebar_label: Change how a video fits inside a container
+---
+
+# How to change how a video should fit inside a container on iOS
+
+import Intro from '../../shared/ui/_change-video-fit-intro.mdx';
+
+<Intro />
+
+## Implementation
+
+Use the [`aspectRatio`](pathname:///theoplayer/v11/api-reference/ios/Classes/THEOplayer.html#/s:13THEOplayerSDK0A0C11aspectRatioAA06AspectD0Ovp)
+property to change how the video is fitted inside the player, using one of the
+[`AspectRatio`](pathname:///theoplayer/v11/api-reference/ios/Enums/AspectRatio.html) values:
+
+- `fit`: fit the video inside the player, preserving its aspect ratio. This is the default.
+- `fill`: fill the player with the video, deforming the video if needed.
+- `aspectFill`: fill the player with the video, preserving its aspect ratio and cropping the video if needed.
+
+The snippet below demonstrates how you could use this API:
+
+```swift
+player.aspectRatio = .aspectFill
+```

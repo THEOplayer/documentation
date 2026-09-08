@@ -1,0 +1,10 @@
+The `#EXT-X-DATERANGE` tag associates a date range (i.e. a range of time defined by a starting and ending date)
+with a set of attribute/value pairs. It is a way of providing timed metadata in an HLS manifest.
+A possible use case is defining timed metadata for interstitial regions such as advertisements,
+but it can be used for any timed metadata needed by your stream.
+
+Date ranges are not parsed by default. To enable them, set `hlsDateRange` to `true`,
+either on the player configuration (for all sources) or on an individual source.
+
+Once enabled, the player exposes the date ranges as cues on a metadata text track,
+which you can consume through the text tracks API.

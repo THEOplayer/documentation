@@ -1,0 +1,34 @@
+---
+sidebar_position: 2
+sidebar_label: Measure the time-to-first-frame
+---
+
+# How to measure the time-to-first-frame on Android
+
+import Intro from '../../shared/player/_measure-time-to-first-frame-intro.mdx';
+
+<Intro />
+
+## Usage
+
+```kotlin
+var playEventRegisteredAt = 0L
+
+val playListener = object : EventListener<PlayEvent> {
+    override fun handleEvent(event: PlayEvent) {
+        player.removeEventListener(PlayerEventTypes.PLAY, this)
+        playEventRegisteredAt = System.currentTimeMillis()
+    }
+}
+
+val playingListener = object : EventListener<PlayingEvent> {
+    override fun handleEvent(event: PlayingEvent) {
+        player.removeEventListener(PlayerEventTypes.PLAYING, this)
+        val timeToFirstFrame = System.currentTimeMillis() - playEventRegisteredAt
+        println("Time-to-first-frame: $timeToFirstFrame")
+    }
+}
+
+player.addEventListener(PlayerEventTypes.PLAY, playListener)
+player.addEventListener(PlayerEventTypes.PLAYING, playingListener)
+```

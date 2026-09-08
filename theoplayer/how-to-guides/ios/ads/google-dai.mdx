@@ -1,0 +1,42 @@
+---
+sidebar_position: 8
+sidebar_label: Google DAI
+---
+
+# Google Dynamic Ad Insertion (DAI) on iOS
+
+import Intro from '../../shared/ads/_google-dai-intro.mdx';
+
+<Intro />
+
+## Prerequisites
+
+To use Google DAI with the THEOplayer iOS SDK, the **THEOplayer GoogleIMA Integration** should be integrated.
+For instructions on installation, importing and adding the integration, [please refer to this guide](./google-ima.mdx).
+
+## Usage
+
+Define a `GoogleDAITypedSource` and a `GoogleDAIVodConfiguration` to pass to theoplayer's source:
+
+```swift
+let daiConfig = GoogleDAIVodConfiguration(videoID: "tears-of-steel", contentSourceID: "2548831", apiKey: "", authToken: nil, streamActivityMonitorID: nil, adTagParameters: nil)
+let typedSource = GoogleDAITypedSource(ssai: daiConfig)
+theoplayer.source = SourceDescription(source: typedSource)
+```
+
+or
+
+```swift
+let daiConfig = GoogleDAILiveConfiguration(assetKey: "c-rArva4ShKVIAkNfy6HUQ", apiKey: "", authToken: nil, streamActivityMonitorID: nil, adTagParameters: nil)
+let typedSource = GoogleDAITypedSource(ssai: daiConfig)
+theoplayer.source = SourceDescription(source: typedSource)
+```
+
+And THEOplayer will take care of the rest.
+
+Additional DAI APIs can be found on the `imaIntegration.dai` endpoint.
+
+## Resources
+
+- [Google DAI website](https://developers.google.com/interactive-media-ads)
+- [Google DAI iOS Reference](https://developers.google.com/interactive-media-ads/docs/sdks/ios/dai)

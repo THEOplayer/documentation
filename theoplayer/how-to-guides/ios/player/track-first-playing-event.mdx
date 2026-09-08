@@ -1,0 +1,42 @@
+---
+sidebar_position: 3
+sidebar_label: Track the first play(ing) event
+---
+
+# How to track the first play(ing) event on iOS
+
+import Intro from '../../shared/player/_track-first-playing-event-intro.mdx';
+
+<Intro />
+
+## Usage
+
+```swift
+var firstPlayingListener: EventListener?
+
+func addFirstPlayingListener() {
+    firstPlayingListener = player.addEventListener(type: PlayerEventTypes.PLAYING) { [weak self] _ in
+        self?.removeFirstPlayingListener()
+        print("First playing event!")
+    }
+}
+
+func removeFirstPlayingListener() {
+    if let firstPlayingListener {
+        player.removeEventListener(type: PlayerEventTypes.PLAYING, listener: firstPlayingListener)
+        self.firstPlayingListener = nil
+    }
+}
+
+player.addEventListener(type: PlayerEventTypes.SOURCE_CHANGE) { [weak self] _ in
+    self?.removeFirstPlayingListener()
+    self?.addFirstPlayingListener()
+}
+```
+
+Instead of `SOURCE_CHANGE`, you can also listen for `LOADED_META_DATA`, which is dispatched once the player
+has loaded the metadata of the new stream.
+
+## Related articles
+
+- [How do you know when a stream or an advertisement is playing?](./detect-stream-or-ad-playing.mdx)

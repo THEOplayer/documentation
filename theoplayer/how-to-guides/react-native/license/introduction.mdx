@@ -1,0 +1,40 @@
+---
+sidebar_position: 0
+sidebar_label: Introduction
+---
+
+# License on React Native
+
+import Intro from '../../shared/license/_introduction-intro.mdx';
+import Faq from '../../shared/license/_faq.mdx';
+
+<Intro />
+
+## Passing the license through the player configuration
+
+Include the license in the player configuration, either by passing the license as a string
+or by passing a license URL:
+
+```typescript
+const config: PlayerConfiguration = {
+  license: 'your_license_here',
+};
+```
+
+```typescript
+const config: PlayerConfiguration = {
+  licenseUrl: 'your_licenseUrl_here',
+};
+```
+
+Pass this configuration to the `<THEOplayerView>` component:
+
+```tsx
+<THEOplayerView config={config} />
+```
+
+If no valid license can be found, the player will throw a license error.
+
+## FAQ
+
+<Faq />

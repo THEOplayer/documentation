@@ -1,0 +1,44 @@
+---
+sidebar_position: 19
+sidebar_label: Multi-key HLS
+---
+
+# Multi-key HLS on Android
+
+import Intro from '../../shared/drm/_multikey-hls-intro.mdx';
+import Playlist from '../../shared/drm/_multikey-hls-playlist.mdx';
+
+<Intro />
+
+A multi-key HLS stream will play on all Android platforms, using either the Widevine or the PlayReady key from the playlist.
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## The HLS playlist
+
+<Playlist />
+
+## Configuring THEOplayer
+
+The Android SDK plays the key system that is available on the device: Widevine on all Android devices, and PlayReady
+on devices which support it (such as Android TV). Configure a license acquisition URL for each of these key systems:
+
+```java
+DRMConfiguration drmConfiguration = new DRMConfiguration.Builder()
+    .widevine(
+        new KeySystemConfiguration.Builder("https://widevine-server.com/license").build()
+    )
+    .playready(
+        new KeySystemConfiguration.Builder("https://playready-server.com/license").build()
+    )
+    .build();
+TypedSource typedSource = new TypedSource.Builder("https://yourdomain.com/playlist.m3u8")
+    .type(SourceType.HLS)
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = new SourceDescription.Builder(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+The `#EXT-X-KEY` tags of the other key systems are ignored.

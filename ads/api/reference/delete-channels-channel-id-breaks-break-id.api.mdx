@@ -1,0 +1,43 @@
+---
+id: delete-channels-channel-id-breaks-break-id
+title: 'Delete /channels/{channelId}/breaks/{breakId}'
+description: 'Delete a break.'
+sidebar_label: 'Delete /channels/{channelId}/breaks/{breakId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVMtu2zAQ/BViTw5AW03Rk24u4oPRAgnSx8XwYS2uLSIyxZArJ67Afy9WlmzHaYO26Emv3ZnZGS1bMBSLYD3b2kEON1QRk0K1CoQPE9DgMeCWmEKEfNFCLEraIuQt8N4T5BA5WLeBpMEKgEcuQYPDrXwsSnSOqrkBDYEeGxvIQM6hIX1BPDfk2K4tBVWvFZek+t4JJP23tJ34fyLtx05LaY2+dpGisL5/90Eul2atsalY3feVkJKG2lNAKZgbyMF0fo77WeL4aMi4Y4rjk1TGjVgMH7sPsNSwJS7rE0oXBpeQQ4beZrvrbIDN2iNuyg7AWdsjJ9AQqWiC5X2X4AqjLaaNAC2WGuqwEaWLpcw8FH4Ruw+Tn5UfzS+ZvcB2VeK31MClu9O7uXqgvRo1kYIkc6XQGRWpCMRq5DHGpzqYK0l4kHGkQG8/0R76eEtCQ+EU8PO4DpuxNa84b8MGnf3RBaDsMd5JF41167qjsFwJyq1n+93Sk5qaqKZ3c9CwoxAPSLtrkeXryFt00tVT9xvyx96/0NdCUTsmx79ctX50pmfOfIXWiYImVNJ3SH4hvojMa9DDckXQkJ8v2kGEvB1+rqWGso4s/W27wkjfQpWSvH5sKOwPP8IOg8WVGLNowdgo9wbyNVbxcnHOxxjd9yt2pd7Y4d8MN4TtJOkdVo08gYYH2r84PeQI+E+S3nb7bUGDn2mZzrbzZvZ59nUGKf0ECTXMMw==
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/breaks/{breakId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/breaks/{breakId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete a break.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'breakId', required: true, description: 'Identifier of the break.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

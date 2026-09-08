@@ -1,0 +1,89 @@
+---
+sidebar_position: 6
+sidebar_label: Track ID3 cues
+---
+
+# How to track ID3 cues and tags on Web
+
+import Intro from '../../shared/text-tracks/_id3-cues-intro.mdx';
+import EnterEventIntro from '../../shared/text-tracks/_id3-cues-enter-event-intro.mdx';
+import Resources from '../../shared/text-tracks/_id3-cues-resources.mdx';
+
+<Intro />
+
+## Listening for timed metadata events
+
+Listen for the [`cuechange`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackEventMap.html#cuechange)
+event of a [`TextTrack`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrack.html).
+
+```js
+player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
+  const track = addTrackEvent.track;
+  if (track.kind !== 'metadata') {
+    return;
+  }
+
+  track.addEventListener('cuechange', function (cueChangeEvent) {
+    // here you can access the cues of the track, and display the metadata to the outside
+  });
+});
+```
+
+## Tracking the enter event
+
+<EnterEventIntro />
+
+Listen for the [`entercue`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackEventMap.html#entercue)
+event of the track, which is fired for every cue of that track that becomes active.
+The entered cue is available as [`event.cue`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackEnterCueEvent.html#cue).
+
+```js
+player.textTracks.addEventListener('addtrack', function (addTrackEvent) {
+  const track = addTrackEvent.track;
+  if (track.kind !== 'metadata') {
+    return;
+  }
+
+  track.addEventListener('entercue', function (enterCueEvent) {
+    // log entercue event
+    console.log(enterCueEvent);
+  });
+});
+```
+
+Alternatively, you can listen for the [`enter`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackCueEventMap.html#enter)
+event on each individual cue. Note that you have to add a listener to every cue,
+including the cues that are added to the track later on.
+
+```js
+function enterListener(event) {
+  // log enter event
+  console.log(event);
+}
+function handleTrackCreation(addTrackEvent) {
+  const track = addTrackEvent.track;
+  if (track.kind !== 'metadata') {
+    return;
+  }
+
+  track.cues.forEach(function (cue) {
+    cue.addEventListener('enter', enterListener);
+  });
+
+  // detect cues being added to the track
+  track.addEventListener('addcue', function (addCueEvent) {
+    // detect a cue being shown from a track
+    addCueEvent.cue.addEventListener('enter', enterListener);
+  });
+}
+player.textTracks.addEventListener('addtrack', handleTrackCreation);
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [How to detect active text track cues](./detect-active-text-track-cues.mdx)
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)

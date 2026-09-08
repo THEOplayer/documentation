@@ -1,0 +1,28 @@
+---
+sidebar_position: 2
+sidebar_label: Moat
+---
+
+# Moat on Web
+
+import Intro from '../../shared/analytics/_moat-intro.mdx';
+
+<Intro />
+
+## Configuration
+
+Configure the Moat partner code on the player configuration.
+
+```js
+new THEOplayer.Player(containerElement, {
+  libraryLocation: 'https://cdn.theoplayer.com/dash/theoplayer/',
+  analytics: [
+    {
+      integration: 'moat',
+      partnerCode: '<PARTNER_CODE>',
+    },
+  ],
+});
+```
+
+When you want to make use of Moat for tracking advertisements, you should make use of the [`IMAAdDescription`](pathname:///theoplayer/v11/api-reference/web/interfaces/IMAAdDescription.html).

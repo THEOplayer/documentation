@@ -9,11 +9,11 @@
   },
   {
     "from": "/theoplayer/getting-started/sdks/web/how-to-use-vr-using-webxr/",
-    "to": "/theoplayer/how-to-guides/miscellaneous/vr/"
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/vr/"
   },
   {
     "from": "/theoplayer/how-to-guides/drm/verizon-uplynk/",
-    "to": "/theoplayer/how-to-guides/drm/uplynk/"
+    "to": "/theoplayer/how-to-guides/web/drm/uplynk/"
   },
   {
     "from": "/theoplayer/faq/what-are-the-edgio-challenges/",
@@ -21,6 +21,538 @@
   },
   {
     "from": "/theoplayer/how-to-guides/drm/pallycon/",
-    "to": "/theoplayer/how-to-guides/drm/doverunner/"
+    "to": "/theoplayer/how-to-guides/web/drm/doverunner/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/introduction/",
+    "to": "/theoplayer/how-to-guides/web/ads/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/block-detection/",
+    "to": "/theoplayer/how-to-guides/web/ads/block-detection/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/customizing-the-ad-overlay-text/",
+    "to": "/theoplayer/how-to-guides/web/ads/customizing-the-ad-overlay-text/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/how-to-set-up-vast-and-vmap/",
+    "to": "/theoplayer/how-to-guides/web/ads/set-up-vast-and-vmap/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/yospace/",
+    "to": "/theoplayer/how-to-guides/web/ads/yospace/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/how-to-display-visual-cues/",
+    "to": "/theoplayer/how-to-guides/web/ads/visual-cues-for-mid-rolls/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/freewheel/",
+    "to": "/theoplayer/how-to-guides/web/ads/freewheel/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/spotx/",
+    "to": "/theoplayer/how-to-guides/web/ads/spotx/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/google-dai/",
+    "to": "/theoplayer/how-to-guides/web/ads/google-dai/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/prebidjs/",
+    "to": "/theoplayer/how-to-guides/web/ads/prebidjs/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/google-ima/",
+    "to": "/theoplayer/how-to-guides/web/ads/google-ima/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/how-to-subscribe-to-ad-events/",
+    "to": "/theoplayer/how-to-guides/web/ads/subscribe-to-ad-events/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/mediatailor/",
+    "to": "/theoplayer/how-to-guides/web/ads/mediatailor/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ads/custom-ssai-integration/",
+    "to": "/theoplayer/how-to-guides/web/ads/custom-ssai-integration/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/introduction/",
+    "to": "/theoplayer/how-to-guides/web/drm/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/arris-titanium/",
+    "to": "/theoplayer/how-to-guides/web/drm/arris-titanium/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/axinom/",
+    "to": "/theoplayer/how-to-guides/web/drm/axinom/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/comcast/",
+    "to": "/theoplayer/how-to-guides/web/drm/comcast/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/ezdrm/",
+    "to": "/theoplayer/how-to-guides/web/drm/ezdrm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/intertrust-expressplay/",
+    "to": "/theoplayer/how-to-guides/web/drm/intertrust-expressplay/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/irdeto/",
+    "to": "/theoplayer/how-to-guides/web/drm/irdeto/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/microsoft-azure/",
+    "to": "/theoplayer/how-to-guides/web/drm/microsoft-azure/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/nagra-conax-contego/",
+    "to": "/theoplayer/how-to-guides/web/drm/nagra-conax-contego/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/verimatrix-multirights/",
+    "to": "/theoplayer/how-to-guides/web/drm/verimatrix-multirights/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/vimond/",
+    "to": "/theoplayer/how-to-guides/web/drm/vimond/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/vualto-vudrm/",
+    "to": "/theoplayer/how-to-guides/web/drm/vualto-vudrm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/uplynk/",
+    "to": "/theoplayer/how-to-guides/web/drm/uplynk/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/xstream/",
+    "to": "/theoplayer/how-to-guides/web/drm/xstream/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-play-clear-key-protected-stream/",
+    "to": "/theoplayer/how-to-guides/web/drm/clear-key/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/doverunner/",
+    "to": "/theoplayer/how-to-guides/web/drm/doverunner/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/multikey-hls/",
+    "to": "/theoplayer/how-to-guides/web/drm/multikey-hls/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/buydrm-keyos/introduction/",
+    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/buydrm-keyos/how-to-use-with-theoplayer/",
+    "to": "/theoplayer/how-to-guides/web/drm/buydrm-keyos/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/castlabs-drmtoday/introduction/",
+    "to": "/theoplayer/how-to-guides/web/drm/castlabs-drmtoday/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/castlabs-drmtoday/offline-playback-with-offline-drm/",
+    "to": "/theoplayer/how-to-guides/ios/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/introduction/",
+    "to": "/theoplayer/how-to-guides/android/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/offline-drm-with-android/",
+    "to": "/theoplayer/how-to-guides/android/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/offline-drm-with-ios/",
+    "to": "/theoplayer/how-to-guides/ios/drm/offline-drm/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/drm/how-to-do-offline-drm/offline-drm-notifications-android/",
+    "to": "/theoplayer/how-to-guides/android/drm/offline-drm-notifications/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/introduction/",
+    "to": "/theoplayer/how-to-guides/web/analytics/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/moat/",
+    "to": "/theoplayer/how-to-guides/web/analytics/moat/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/mux/",
+    "to": "/theoplayer/how-to-guides/web/analytics/mux/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/youbora/",
+    "to": "/theoplayer/how-to-guides/web/analytics/youbora/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/agama/",
+    "to": "/theoplayer/how-to-guides/web/analytics/agama/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/conviva/introduction/",
+    "to": "/theoplayer/how-to-guides/web/analytics/conviva/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/conviva/conviva-connector/",
+    "to": "/theoplayer/how-to-guides/web/analytics/conviva/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/custom-analytics-integration/",
+    "to": "/theoplayer/how-to-guides/web/analytics/custom-analytics-integration/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/adobe-analytics/",
+    "to": "/theoplayer/how-to-guides/web/analytics/adobe-analytics/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/mediamelon-smartsight/",
+    "to": "/theoplayer/how-to-guides/web/analytics/mediamelon-smartsight/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/wicket-labs/",
+    "to": "/theoplayer/how-to-guides/web/analytics/wicket-labs/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/tealium/",
+    "to": "/theoplayer/how-to-guides/web/analytics/tealium/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/analytics/segment/",
+    "to": "/theoplayer/how-to-guides/web/analytics/segment/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/introduction/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/connecting-from-custom-sender-applications/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/connecting-from-custom-sender-applications/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/debugging/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/debugging/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/how-to-configure-to-a-different-stream/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/how-to-configure-to-a-different-stream/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/sending-messages-from-to-sender-to-from-receiver/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/sending-messages-from-to-sender-to-from-receiver/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/pass-subtitle-section-on-to-chromecast/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/pass-subtitle-section-on-to-chromecast/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/chromecast/enable-chromecast-on-the-sender/",
+    "to": "/theoplayer/how-to-guides/web/cast/chromecast/enable-chromecast-on-the-sender/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/cast/airplay/introduction/",
+    "to": "/theoplayer/how-to-guides/web/cast/airplay/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/introduction/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-enable-disable-audio-tracks/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/enable-disable-audio-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-audio-tracks/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-audio-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-select-video-track-quality/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/select-video-track-quality/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-video-track-qualities/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-video-track-qualities/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-start-with-specific-quality/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/start-with-specific-quality/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-reduce-data-usage-on-mobile-devices/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/reduce-data-usage/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-video-track-quality-changes/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-video-track-quality-changes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/mediatrack/how-to-detect-audio-track-changes/",
+    "to": "/theoplayer/how-to-guides/web/media-tracks/detect-audio-track-changes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/introduction/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-dynamically-change-the-visible-captions/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/change-visible-captions/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-programmatically-detect-text-tracks/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/detect-text-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-programmatically-disable-text-tracks/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/enable-disable-text-tracks/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-insert-subtitles/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/insert-subtitles/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-implement-preview-thumbnails/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/preview-thumbnails/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-track-id3-cues-tags/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/track-id3-cues/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-detect-text-track-changes/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/detect-text-track-changes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/texttrack/how-to-detect-active-text-track-cues/",
+    "to": "/theoplayer/how-to-guides/web/text-tracks/detect-active-text-track-cues/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/",
+    "to": "/theoplayer/how-to-guides/web/network/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/introduction/",
+    "to": "/theoplayer/how-to-guides/web/network/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/request-response-interceptors/",
+    "to": "/theoplayer/how-to-guides/web/network/request-response-interceptors/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/android-network-interceptor/",
+    "to": "/theoplayer/how-to-guides/android/network/request-response-interceptors/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/network/ios-hls-media-playlist-interceptor/",
+    "to": "/theoplayer/how-to-guides/ios/network/request-response-interceptors/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/",
+    "to": "/theoplayer/how-to-guides/web/player/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/introduction/",
+    "to": "/theoplayer/how-to-guides/web/player/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-do-you-know-when-a-stream-or-ad-is-playing/",
+    "to": "/theoplayer/how-to-guides/web/player/detect-stream-or-ad-playing/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-to-measure-time-to-first-frame/",
+    "to": "/theoplayer/how-to-guides/web/player/measure-time-to-first-frame/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-can-we-track-the-first-playing-event/",
+    "to": "/theoplayer/how-to-guides/web/player/track-first-playing-event/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/player/how-to-track-player-states/",
+    "to": "/theoplayer/how-to-guides/web/player/track-player-states/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/",
+    "to": "/theoplayer/how-to-guides/web/ui/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/introduction/",
+    "to": "/theoplayer/how-to-guides/web/ui/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/is-it-possible-to-remove-an-element/",
+    "to": "/theoplayer/how-to-guides/web/ui/remove-ui-element/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-align-timeline-in-the-middle/",
+    "to": "/theoplayer/how-to-guides/web/ui/align-timeline/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-change-big-play-button/",
+    "to": "/theoplayer/how-to-guides/web/ui/change-big-play-button/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-make-control-keys-always-visible/",
+    "to": "/theoplayer/how-to-guides/web/ui/keep-control-bar-visible/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/is-it-possible-to-hide-googla-ima/",
+    "to": "/theoplayer/how-to-guides/web/ui/hide-google-ima-ui/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-build-chromeless-ui/",
+    "to": "/theoplayer/how-to-guides/web/ui/build-chromeless-ui/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-insert-a-button/",
+    "to": "/theoplayer/how-to-guides/web/ui/insert-a-button/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-change-default-UI-language-to-other/",
+    "to": "/theoplayer/how-to-guides/web/ui/change-ui-language/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/customize-ui-during-playback/",
+    "to": "/theoplayer/how-to-guides/web/ui/customize-ui-during-ad-playback/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-change-how-a-video-should-fit-inside-a-container/",
+    "to": "/theoplayer/how-to-guides/web/ui/change-video-fit/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-make-audio-only-player/",
+    "to": "/theoplayer/how-to-guides/web/ui/audio-only-player/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/customising-vertical-volume-slider/",
+    "to": "/theoplayer/how-to-guides/web/ui/vertical-volume-slider/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/ui-skinning/",
+    "to": "/theoplayer/how-to-guides/web/ui/ui-skinning/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-detect-visibility-default-control-bar/",
+    "to": "/theoplayer/how-to-guides/web/ui/detect-control-bar-visibility/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/ui/how-to-disable-click-to-pause/",
+    "to": "/theoplayer/how-to-guides/web/ui/disable-click-to-pause/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/introduction/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/introduction/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/how-to-disable-right-click/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/disable-right-click/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/context-menu/how-to-change-context-menu/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/context-menu/change-context-menu/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/related-content/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/related-content/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/social-sharing/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/social-sharing/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/up-next/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/up-next/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/introduction/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/how-to-do-error-handling/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/error-handling/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/error/error-codes/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/error/error-codes/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/vr/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/vr/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/webaudio/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/web-audio/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/clipping/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/clipping/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/picture-in-picture/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/picture-in-picture/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/using-hlsdaterange-property/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/hls-date-range/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/preloading/",
+    "to": "/theoplayer/how-to-guides/web/miscellaneous/preloading/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/miscellaneous/saving-cachingtask-progress-ios/",
+    "to": "/theoplayer/how-to-guides/ios/miscellaneous/save-caching-task-progress/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/",
+    "to": "/theoplayer/how-to-guides/web/integrations/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/introduction/",
+    "to": "/theoplayer/how-to-guides/web/integrations/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/iris-tv/",
+    "to": "/theoplayer/how-to-guides/web/integrations/iris-tv/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/wowza-streaming-engine-with-secure-token-version-2/",
+    "to": "/theoplayer/how-to-guides/web/integrations/wowza-streaming-engine/secure-token/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/integrations/deliver-low-latency-hls-live-streams-with-wowza-streaming-engine/",
+    "to": "/theoplayer/how-to-guides/web/integrations/wowza-streaming-engine/low-latency-hls/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/license/",
+    "to": "/theoplayer/how-to-guides/web/license/introduction/"
+  },
+  {
+    "from": "/theoplayer/how-to-guides/license/introduction/",
+    "to": "/theoplayer/how-to-guides/web/license/introduction/"
   }
 ]

@@ -134,7 +134,7 @@
 
 - Added support for caching sources using the Media3 integration by setting `CachingParameters.storageType` to `CacheStorageType.MEDIA3`. Sources cached with this method will only be playable using the Media3 integration.
 - Added `TextTrackCue.getTrack()` getter.
-- Added support for CMCD in THEOplayer. This is only supported with the Media3 integration. Read more about it [on our Android CMCD docs](/theoplayer/how-to-guides/android/cmcd/getting-started/).
+- Added support for CMCD in THEOplayer. This is only supported with the Media3 integration. Read more about it [on our Android CMCD docs](/theoplayer/v8/how-to-guides/android/cmcd/getting-started/).
 - Added support for automatically adding all available integrations to a new `THEOplayerView` instance. This can be enabled with `THEOplayerConfig.Builder.autoIntegrations()`, and will be enabled by default starting with THEOplayer version 9.0.
 - Added support for the Latency Manager API (`player.latency`) in the Media3 integration.
 - Added support for THEOlive and HESP streams with the Media3 integration.
@@ -165,7 +165,7 @@
 
 #### ✨ Features
 
-- Added support for CMCD in THEOplayer. This is only supported on iOS 18.0+. Read more about it [on our iOS CMCD docs](/theoplayer/how-to-guides/ios/cmcd/getting-started/).
+- Added support for CMCD in THEOplayer. This is only supported on iOS 18.0+. Read more about it [on our iOS CMCD docs](/theoplayer/v8/how-to-guides/ios/cmcd/getting-started/).
 - Added `player.theoLive` API for THEOlive-specific features
 
 #### 🐛 Issues
@@ -259,7 +259,7 @@
 
 #### 💥 Breaking Changes
 
-- Updated the LCEVC integration compatibility for the new LCEVCdecJS SDK version 1.2.0. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](/theoplayer/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
+- Updated the LCEVC integration compatibility for the new LCEVCdecJS SDK version 1.2.0. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](/theoplayer/v8/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
 
 #### ✨ Features
 
@@ -951,7 +951,7 @@ THEOplayer 8.0 is **backwards compatible for most features but includes some bre
 
 - THEOplayer 8.0 is the first official release with support for [THEOads](https://www.theoplayer.com/product/theoads), our new product for delivering seamless and novel ad experiences through Server Guided Ad Insertion.  
 
-- The Custom Server Side Ad Insertion API allows custom SSAI integrations to control the player Ad API, and forms the basis for our new Yospace connectors for [Web](/theoplayer/connectors/web/yospace/), [Android](/theoplayer/connectors/android/yospace/) and [iOS](/theoplayer/connectors/ios/yospace/) as well as our upcoming Edgio Uplynk connectors.
+- The Custom Server Side Ad Insertion API allows custom SSAI integrations to control the player Ad API, and forms the basis for our new Yospace connectors for [Web](/theoplayer/v8/connectors/web/yospace/), [Android](/theoplayer/v8/connectors/android/yospace/) and [iOS](/theoplayer/v8/connectors/ios/yospace/) as well as our upcoming Edgio Uplynk connectors.
 
 - The Latency Manager API allows fine-tuned control over live and low-latency playback for DASH, HLS and HESP, available on Web and Android.
 
@@ -967,8 +967,8 @@ For more info on navigating our breaking changes, take a look at our migration g
 
 #### 💥 Breaking Changes
 
-- Removed the Yospace pre-integration in favor of the new [Yospace web connector](/theoplayer/connectors/web/yospace/).
-- Removed the Conviva pre-integration in favor of the new [Conviva web connector](/theoplayer/connectors/web/conviva/).
+- Removed the Yospace pre-integration in favor of the new [Yospace web connector](/theoplayer/v8/connectors/web/yospace/).
+- Removed the Conviva pre-integration in favor of the new [Conviva web connector](/theoplayer/v8/connectors/web/conviva/).
 - Removed the empty `player.analytics` API.
 - Renamed the default integration for client-side VAST and VMAP ads from `'theo'` to `'csai'`. Ad descriptions that don't specify an [integration](https://optiview.dolby.com/docs/theoplayer/v8/api-reference/web/interfaces/AdDescription.html#integration) or use the old name will continue to work, but will have their integration replaced with `'csai'` in the API. The new name was chosen to avoid confusion with our new THEOads solution for server-guided ad insertion.
 

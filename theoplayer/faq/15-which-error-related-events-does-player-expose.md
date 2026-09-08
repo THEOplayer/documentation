@@ -4,7 +4,7 @@ sidebar_custom_props: { 'faqCategory': 'Error handling' }
 
 # Which error related events does the player expose
 
-THEOplayer exposes different types of errors. Refer to "[How to do error handling](../how-to-guides/07-miscellaneous/04-error/01-how-to-do-error-handling.md)"
+THEOplayer exposes different types of errors. Refer to "[How to do error handling](../how-to-guides/web/miscellaneous/error/error-handling.mdx)"
 for information on how to programmatically detect an `error` event through an event listener.
 
 Note that only the `error` events in the "Player API" are fatal.

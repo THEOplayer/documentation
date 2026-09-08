@@ -1,0 +1,120 @@
+---
+sidebar_position: 3
+sidebar_label: VAST and VMAP
+---
+
+# How to set up VAST and VMAP ads on Android
+
+import Intro from '../../shared/ads/_set-up-vast-and-vmap-intro.mdx';
+import VastIntro from '../../shared/ads/_set-up-vast-and-vmap-vast-intro.mdx';
+import VmapIntro from '../../shared/ads/_set-up-vast-and-vmap-vmap-intro.mdx';
+import DynamicSchedulingIntro from '../../shared/ads/_set-up-vast-and-vmap-dynamic-scheduling-intro.mdx';
+
+<Intro />
+
+On Android, client-side advertisements are scheduled through the [Google IMA](./google-ima.mdx) ad integration,
+so [make sure to set it up](./google-ima.mdx) before starting.
+
+## VAST
+
+<VastIntro />
+
+Let's consider the following common use-cases:
+
+1. [Scheduling a single pre-roll](#scheduling-a-single-pre-roll)
+2. [Scheduling two pre-rolls, two mid-rolls and one post-roll](#scheduling-two-pre-rolls-two-mid-rolls-and-one-post-roll)
+
+### Scheduling a single pre-roll
+
+You configure a [GoogleImaAdDescription](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html) in the `ads` property of your [`SourceDescription`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/SourceDescription.Builder.html#ads-com.theoplayer.android.api.source.addescription.AdDescription...-).
+
+In this `GoogleImaAdDescription`,
+
+- You set an ad tag URL.
+- You set the value of [`timeOffset`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/source/addescription/GoogleImaAdDescription.Builder.html#timeOffset-java.lang.String-) to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
+
+```kotlin
+theoPlayer.source = SourceDescription.Builder(
+    TypedSource.Builder("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8").build())
+    .ads(
+        GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/dfp-linear-inline-no-skip.xml")
+            .timeOffset("start")
+            .build())
+    .build()
+```
+
+If you wanted to schedule a post-roll instead of a pre-roll, you set the value of `timeOffset` to `"end"`.
+
+If you want to schedule a mid-roll instead of a pre-roll, you set the value of `timeOffset` to the `HH:MM:SS` format.
+
+For example, to schedule an advertisement at the 15s mark, you set the value of `timeOffset` to `"00:00:15"`.
+
+### Scheduling two pre-rolls, two mid-rolls and one post-roll
+
+Scheduling multiple VAST ads is only slightly different from scheduling a single VAST ad. Instead of passing along one ad description, you pass along multiple ad descriptions.
+
+```kotlin
+val typedSource = TypedSource.Builder("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
+val sourceDescription = SourceDescription.Builder(typedSource.build())
+
+sourceDescription.ads(
+    GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
+        .timeOffset("start")
+        .build(),
+    GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
+        .timeOffset("start")
+        .build(),
+    GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
+        .timeOffset("00:00:15")
+        .build(),
+    GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
+        .timeOffset("00:00:15")
+        .build(),
+    GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
+        .timeOffset("end")
+        .build()
+)
+
+theoPlayer.source = sourceDescription.build()
+```
+
+### Skippable ads
+
+To allow viewers to skip an ad, leverage the `skipOffset` property in your VAST (or VMAP) file,
+and adhere to the [VAST standard](https://iabtechlab.com/standards/vast/),
+because this offers the widest support across ad integrations and platforms.
+
+## VMAP
+
+<VmapIntro />
+
+The snippet below demonstrates how to configure a VMAP advertisement.
+
+```kotlin
+val typedSource = TypedSource.Builder("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
+val sourceDescription = SourceDescription.Builder(typedSource.build())
+
+sourceDescription.ads(
+    GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vmap/single-pre-mid-post-no-skip.xml")
+        .build()
+)
+
+theoPlayer.source = sourceDescription.build()
+```
+
+## Dynamic scheduling
+
+<DynamicSchedulingIntro />
+
+Invoking the following example function when the video is already playing will instantly schedule the VAST ad to be played:
+
+```kotlin
+theoPlayer.ads.schedule(
+    GoogleImaAdDescription.Builder("https://cdn.theoplayer.com/demos/ads/vast/vast.xml")
+        .build()
+)
+```
+
+## Resources
+
+- [Samples for Android SDK](https://github.com/THEOplayer/samples-android-sdk)

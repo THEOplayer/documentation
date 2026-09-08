@@ -1,0 +1,9 @@
+Sometimes you want to know when a new stream starts playing for the first time, for example to forward a
+`firstplay` event to an analytics back-end. THEOplayer does not expose such an event, but you can implement
+it yourself, which gives you more control over its logic.
+
+The implementation below listens for the first `playing` event after every source change.
+If the viewer pauses and resumes the stream, the event is not dispatched again. If the viewer switches to
+another stream, it is dispatched once more.
+
+You can swap out the `playing` event for a `play` event, or for any other event for that matter.

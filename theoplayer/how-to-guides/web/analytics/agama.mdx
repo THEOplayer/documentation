@@ -1,0 +1,51 @@
+---
+sidebar_position: 5
+sidebar_label: Agama
+---
+
+# Agama on Web
+
+import Intro from '../../shared/analytics/_agama-intro.mdx';
+
+<Intro />
+
+## Prerequisites
+
+Agama requires you to load the Agama library and configure it through JavaScript. Agama needs to be configured through the player configuration and through the source configuration. The following section describes how this can be done.
+
+## Configuration
+
+The player configuration should include the [AgamaPlayerConfiguration](pathname:///theoplayer/v11/api-reference/web/interfaces/AgamaPlayerConfiguration.html) object.
+
+```js
+var player = new THEOplayer.Player(element, {
+  libraryLocation: '/path/to/your-theoplayer-folder/',
+  analytics: [
+    {
+      integration: 'agama',
+      config: 'emp_service=http://127.0.0.1:8191/report;report_interval=60;id_report_interval=240;operator_id=fooSoo',
+    },
+  ],
+});
+```
+
+Once a player is configured, an Agama EMP client instance is created.
+
+The player's source configuration should include the [AgamaSourceConfiguration](pathname:///theoplayer/v11/api-reference/web/interfaces/AgamaSourceConfiguration.html) object.
+
+```js
+player.source = {
+    [...]
+    analytics : [{
+        integration : 'agama',
+        asset : 'Asset Name',
+        streamType : 'vod'
+    }]
+};
+```
+
+Once the player's source is set, a dynamic streaming session is started, and Agama EMP is ready to monitor the usage and quality of the video.
+
+## Related resources
+
+- [Custom Analytics Integration](./custom-analytics-integration.mdx)

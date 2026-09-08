@@ -1,0 +1,33 @@
+---
+sidebar_position: 6
+sidebar_label: Passing the subtitle selection to Chromecast
+---
+
+# Pass subtitle selection on to Chromecast on Android
+
+import Intro from '../../../shared/cast/_chromecast-pass-subtitle-selection-intro.mdx';
+
+<Intro />
+
+## Solution
+
+Here is how you pass the current active subtitle track to the Chromecast session:
+
+```kotlin
+var currentTextTrack: TextTrack? = null
+val player = theoPlayerView.player
+val chromecast = theoPlayerView.cast.chromecast
+
+player.textTracks.addEventListener(TextTrackListEventTypes.TRACKLISTCHANGE) {
+    currentTextTrack = player.textTracks.firstOrNull { it.mode == TextTrackMode.SHOWING }
+}
+
+chromecast.addEventListener(ChromecastEventTypes.STATECHANGE) {
+    if (chromecast.state == PlayerCastState.CONNECTED) {
+        player.addEventListener(PlayerEventTypes.PLAYING) {
+            val tt = player.textTracks.firstOrNull { it.id == currentTextTrack?.id }
+            tt?.mode = TextTrackMode.SHOWING
+        }
+    }
+}
+```

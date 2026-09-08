@@ -1,0 +1,9 @@
+This article explains how you can connect THEOplayer with Prebid.js. Prebid.js is an open-source header bidding solution.
+On the client-side, you can request bids from multiple ad networks, take a winning bid and select its associated advertisement.
+You want to configure and play this selected advertisement in THEOplayer.
+
+Because Prebid.js is a separate library, you can connect it with THEOplayer on any platform that supports both Prebid.js and THEOplayer.
+
+Prebid.js allows you to request bids. This request will respond with bids through a callback function.
+In this callback function, you have to select a winning bid and extract the ad tag URL.
+You can configure this URL as THEOplayer's ad source.

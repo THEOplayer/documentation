@@ -1,6 +1,6 @@
 # Getting started on Android TV Legacy (4.12.x)
 
-:::info Android TV
+:::info[Android TV]
 
 The latest THEOplayer Android SDK (5.0.0+) is compatible both with Android mobile and Android TV. We do not have a separate SDK for each platform.
 
@@ -17,7 +17,7 @@ This guide will help you to integrate the THEOplayer Android SDK into your proje
 
 The THEOplayer Android SDK can be used for Android TV devices using Android 5.0+ (minSdkVersion 21).
 
-:::info Maven / Gradle / Jitpack
+:::info[Maven / Gradle / Jitpack]
 
 THEOplayer v2.83.0 and above can be managed through Jitpack. Refer to <a href="https://github.com/THEOplayer/theoplayer-sdk-android" target="_blank">https://github.com/THEOplayer/theoplayer-sdk-android</a> for more information.
 

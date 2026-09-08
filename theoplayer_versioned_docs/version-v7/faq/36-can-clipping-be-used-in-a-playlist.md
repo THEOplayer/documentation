@@ -89,6 +89,6 @@ The following resources provide more information:
 
 API reference - [Clip API](pathname:///theoplayer/v7/api-reference/web/interfaces/Clip.html)
 
-<!-- https://demo.theoplayer.com/playlist: Demo page - Playlist -->
+{/* https://demo.theoplayer.com/playlist: Demo page - Playlist */}
 
 Clipping - [How-to guide](../how-to-guides/07-miscellaneous/06-clipping.md)

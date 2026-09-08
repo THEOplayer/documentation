@@ -1,0 +1,91 @@
+---
+id: get-organizations-integrations-organization-integration-id
+title: 'Get /organizations/integrations/{organizationIntegrationId}'
+description: 'Get an organization integration by ID.'
+sidebar_label: 'Get /organizations/integrations/{organizationIntegrationId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vm1v4kYQ/iuj/ZRITiCna+/CN3pJU9RLichdpQohZfAO9h72rm9nDaHI/70a20kMCfRFKl/AZvd5mZ2X3SpNHHtTBOOsGqgbCoAWnE/Qmj9R3oKxgRLf/J5vYHR1riJVoMecAnlWg+lWcZxSjmqwVWFTkBooDt7YRFWRMoJbYEhVpCzm8mcXfvSCPtIqUp6+l8aTVoPgS4r29I002WAWhjy4BYSUDko9V9VM0LhwlolF2rt+X752Ea9ogWUWYNKuVJGKnQ1kg6zFoshMXAP2vrFseMOrm3+jOEhQvCvIB9PQGf06Hvt+vlrzvTxsAsyL37UJqbGvPJ9LjBuS12Rky1wNpupmPL75fK1m+/TjQ7wCdA6fSu/JhmwDzmYbeGhgHuDkxrkkI7gZ3kLs7MIkZbPvtFZjKaydX35y+k1RexnXQA013KLFhDy02yF2mqBk0rBOyQKbxGJmbAKoYe4Jl1yzEc7tZ+eWPzu/Rq+/mJxuucNb2yIv0XiMs5LNim6NNblEpkmxHB+bx8t+/8PF5eW7H95/eN+/vLzY1/qLW8MCPWBKqOHEWMhNlhmm2FnNp1AWsct3FAJ6gsy5JWkoi9bIxsaySA4UWvvXw59+e3ZzRbFh46yxyS36xNj/y0+7D/Ka5Q1Dc1o4T4CNG+CAPjAsnO/qBv2it/bAAcPRdJxcD6/+UJG6nkzGk9dZeU9+Rf4sr/NBQw33VO7dCocRc0ncBHLvzwi4jFNABmNXmBkNsae6mDDjCGIsmcAECA7mshEeajEPEaxTE6fgSxtMTpLeXObkGXhpim5JYLbGDcNDbeZhANZJfSYQPFo2ooGFYEOhDkrsCQPpYfj7kpAU5oB5my/HuhyskaGFjsQtWhjdj+Hjj/0L0BioNtHwnKuq6vbXqXSotnfsFu3TEXZVzyKFWte+MLvrNLoFZkyVfCIlb59a+UAlFM66wvmso5zPjk2BgIkMlp0GxaIhp5C6FrweQyFVA9XDwvRWF70dtl6Xrbc9SFeJX4pLb8KmHmZzZBMPS0GeziKZVmJnOpOB8rTwXoZA0+c7y59PNg2hENh6lRo0a14d9PBuBEvawEnJ5GU2ngJaDUyxpwAnBTKvnddNV21lPFNgYX6ljWoHrHSkuim0I/ZRwntWH/Cxlv88XprkMHbhagoTMkEZF8H8bmgNQ80wvBupSK3Ic4O0uhBZheOQYz0YW2q5Q/z3k9hRu32Zxf/8atLGJ9Bj6BUZGisyS58JXJMvUwmeeLlQ0c5lhOtwvmhVkRocTtNZpFLHQfC22zkyffVZVcnr7yX5TZM9K/QG5xLN6VZpw/Jbt1VzxO3JpK3TU/g3d54D7p9Sxkq+rDAr5UlFakmbo9exalZFT6kl+pv1wzimInSQXt2Sqm6l3lx/UVX1F/nLqDM=
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /organizations/integrations/{organizationIntegrationId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/organizations/integrations/{organizationIntegrationId}'} context={'endpoint'}></MethodEndpoint>
+
+Get an organization integration by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      schema: { type: 'string' },
+      in: 'path',
+      name: 'organizationIntegrationId',
+      required: true,
+      description: 'Identifier of the organization integration.',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique organization integration identifier within the organization.' },
+              type: {
+                type: 'string',
+                enum: ['GOOGLE'],
+                description: 'Organization integration type. Currently only `GOOGLE` (Google GAM configuration).',
+              },
+              networkCode: { type: 'string', description: 'Google Ad Manager network code used when signaling ad breaks.' },
+              eabnLookForwardTimeMs: {
+                type: 'integer',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                description: 'How far ahead (in milliseconds) upcoming ad breaks are looked up when syncing with Google EABN.',
+              },
+              eabnDecisioningMarginMs: {
+                type: 'integer',
+                exclusiveMinimum: true,
+                maximum: 9007199254740991,
+                description: 'Minimum margin (in milliseconds) before a break starts for Google EABN decisioning.',
+              },
+              state: {
+                type: 'string',
+                enum: ['READY', 'ERROR'],
+                description:
+                  'Server-managed state of the integration. Issues with the integration, such as invalid credentials, cause it to be in `ERROR`, which runtime consumers skip. Currently always `READY`: nothing transitions it yet.',
+              },
+              createdAt: { type: 'string', description: 'Timestamp when the organization integration was created, as an ISO 8601 datetime string.' },
+            },
+            required: ['id', 'type', 'networkCode', 'state', 'createdAt'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

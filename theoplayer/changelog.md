@@ -9,6 +9,258 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 - [Version 5.x and 6.x](https://optiview.dolby.com/docs/theoplayer/v6/changelog/)
 - [Version 2.x, 3.x and 4.x](https://optiview.dolby.com/docs/theoplayer/v4/changelog/)
 
+## 🚀 11.10.2 (2026/09/03)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue where an unnecessary FairPlay license request was sent on every quality switch when playing HESP content on Safari.
+- Fixed an issue where an OptiView Live stream could get stuck while starting up, showing a black screen for 15 seconds before falling back to its HLS stream.
+- Fixed an issue where an OptiView Live stream continued without audio after it fell back to its HLS stream.
+
+## 🚀 11.10.1 (2026/08/28)
+
+### Web
+
+#### 🐛 Issues
+
+- Fixed an issue with OptiView Ads where only the first ad of an ad pod would play when the player was in native fullscreen or native picture-in-picture on iOS Safari.
+
+## 🚀 11.10.0 (2026/08/27)
+
+### Web
+
+#### ✨ Features
+
+- Added a 'c2pametadata' player event exposing raw C2PA metadata from ISOBMFF 'uuid' boxes in HLS and DASH streams, enabled through the 'c2paMetadata' source property.
+- Added support for configuring `google.ima.AdsRenderingSettings.useStyledNonLinearAds` and `useStyledLinearAds` via `player.ads.googleIma.useStyledNonLinearAds` and `player.ads.googleIma.useStyledLinearAds`. When left `undefined`, the Google IMA SDK default is used.
+
+#### 🐛 Issues
+
+- Fixed an issue for DASH streams with no `SegmentTimeline` where the manifest would sometimes fail to load if the `Period` duration was an exact multiple of the segment duration.
+- Fixed an issue where a scheduled Google IMA VAST ad would be requested twice, causing the ad server to return an empty VAST response (IMA error 303) for the second ad break.
+- Fixed an issue where the content would briefly appear and play between consecutive Google IMA ad breaks scheduled at the same time offset.
+
+### Android
+
+#### 🐛 Issues
+
+- Fixed an issue where removing a caching task before its initialization completed, for example right after the cache reported INITIALISED, would mark the task as EVICTED but leave the cached Media3 files and download entry on the device.
+- Fixed an issue where an expired caching task would not clean up its offline DRM license data, and where removing a caching task could remove offline DRM sessions still used by another task caching the same content.
+- Fixed an issue where playback of a fully cached source could select a rendition that was not cached, causing a source error or endless waiting during offline playback.
+
+### iOS
+
+#### ⚡ Improvements
+
+- Improved error reporting specifically when playback fails to play to end time. In this case the `ErrorEvent` will ensure to contain an `errorObject`.
+
+#### 🐛 Issues
+
+- Fixed an issue where `bytesCached` and `bytes` properties would return 0 for cached sources pre 10.12.0
+- Fixed an issue where the player would not exit `lShape` layout when an ad error was thrown. Note: the issue was observed specifically for `LSHAPE_CONTENT` and not `LSHAPE_AD`.
+- Fixed an issue where the player would pause without dispatching a `PauseEvent` when pressing on "Learn more" during an ad break. This would result in unexpected state management when designing a player controls UI.
+
+### Roku
+
+#### ✨ Features
+
+- Updated the AEP SDK to 1.3.1. This adds in the ability to set user consent for data collection and also the ability to set custom identities.
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Live analytics reported uninterrupted playback sessions as never having started. The playing state is now reported throughout a session instead of only when playback changes state, matching the other platforms.
+- Fixed an issue where the CMCD measured throughput was reported as zero before any throughput had actually been measured. The field is now omitted until a real measurement is available, matching the other platforms.
+- Made live stall errors not report as fatal for Mux analytics. Also fixed an issue where a live stall would be incorrectly reported on a repeated timestamp.
+- Fixed an issue where fatal playback errors were reported to OptiView analytics without an error code or message.
+- Fixed issue where CMCD event mode would not activate for Google IMA SSAI streams.
+
+## 🚀 11.9.1 (2026/08/22)
+
+### Web
+
+#### ⚡ Improvements
+
+- Improved the content protection error when the CDM reports an output protection (HDCP) violation: instead of error 7012 with the generic 'Unknown CDM error' message, the player now reports error 7011 (CONTENT_PROTECTION_OUTPUT_RESTRICTED) explaining that the required HDCP level cannot be guaranteed, e.g. because AirPlay screen mirroring, screen recording, screen sharing or a non-HDCP display is active. The error now also exposes the CDM's `systemCode`.
+
+#### 🐛 Issues
+
+- Fixed an issue where playback with Google IMA could stall indefinitely when a VMAP ad break resolved to an empty VAST response (VAST error 303). The player now dispatches a non-fatal `aderror` event and resumes content playback.
+- Fixed an issue where playback of PlayReady-protected Dolby Vision content could fail on Microsoft Edge on Windows.
+- Fixed an issue where a content protection error on a OptiView channel triggered several endpoint fallback attempts before surfacing a generic error. Content protection errors are now treated as non-recoverable and are surfaced immediately.
+
+## 🚀 11.9.0 (2026/08/12)
+
+### Web
+
+#### ✨ Features
+
+- Added support to the OptiView Ads break manifest for `double`, `lshape_ad`, `lshape_content` and `overlay` formats as well as device type support.
+- Added the `adclicked` event, for the `csai`and `google-ima` CSAI ads  integrations, for Google DAI ads (SSAI) and OptiView Ads (SGAI). It  is dispatched when the user clicks on an ad clickthrough element.
+- Added `network.useStreamingFetch` to the `PlayerConfiguration` API to explicitly disable consuming fetch responses as streams on devices with a broken streaming fetch implementation.
+- Added CMCD reporting of whether the platform can decode Dolby Vision and Dolby Digital Plus (EC-3), and of the video and audio codecs which are actually being decoded.
+
+#### ⚡ Improvements
+
+- Ads preloading for Google IMA now works consistently for both VMAP ad schedules and individually scheduled VAST ads. When preloading is enabled (using `AdsConfiguration.preload`), VAST midrolls are fetched 8 seconds before their scheduled start time.
+
+#### 🐛 Issues
+
+- Fixed an issue where completed SGAI interstitials could be re-added and emit repeated interstitial events on live streams.
+- Fixed an issue where PlayReady HLS key formats specified as a `urn:uuid:` were not recognized.
+- Fixed an issue where playback would fail for Google DAI sources because CMCD headers on manifest requests would trigger CORS errors. CMCD now operates in event mode only for Google DAI sources.
+- Fixed an issue where an ad scheduled after a non-linear Google IMA ad would never start, because Google IMA does not fire any events after LOADED when a non-linear ad is the last ad of its ads manager.
+- Fixed an issue where the player could get stuck when starting playback of a new source with a Google IMA pre-roll ad, if the previous source also had a Google IMA pre-roll ad.
+- Fixed an issue where a Google IMA pre-roll ad of a new source could start loading and playing immediately after changing the source, even when autoplay was disabled and the player was paused.
+
+### Android
+
+#### ✨ Features
+
+- Added support to the OptiView Ads break manifest for `double`, `lshape_ad`, `lshape_content` and `overlay` formats as well as device type support.
+- Added CMCD reporting of whether the device can decode Dolby Vision and Dolby Digital Plus (EC-3), and of the codecs of the video and audio formats fed to the decoders.
+- Added `TheoLive.switchToHesp()`, which allows switching an OptiView Live stream back to HESP playback after it has fallen back to another format.
+- Added `Player.getCurrentSource()`, which returns the `TypedSource` that is  currently being played. The source is the same as expected in  the existing `CurrentSourceChangeEvent`.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `overrideLayout` property would incorrectly override the `lshape_content` layout of an OptiView Ads ad break.
+- Fixed an issue where OptiView Ads PTS breaks might not play.
+- Fixed an issue where the first playback of a DRM-protected stream could fail on a device that had not played DRM-protected content before, and would keep failing when retried.
+
+### iOS
+
+#### ✨ Features
+
+- Added support to the OptiView Ads break manifest for `double`, `lshape_ad`, `lshape_content` and `overlay` formats as well as device type support.
+- Added `currentBandwidthEstimate` to the player's `metrics` API, reporting the estimated available bandwidth in bits per second for HESP streams.
+- Added Dolby Vision and EC-3 capability reporting (`com.dolby.optiview-cap-dvc`, `com.dolby.optiview-cap-ec3`) to the CMCD session data, and active video and audio codec reporting (`com.dolby.optiview-vc`, `com.dolby.optiview-ac`) to the CMCD status data.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would exit fullscreen presentation mode when setting a new source.
+- Fixed an issue where OptiView Ads PTS breaks might not be played.
+- Fixed an issue that caused OptiView Ads to end abruptly.
+- Fixed an issue where skipping OptiView Ads would cause playback failure.
+- Fixed an issue where seeking into a range of an interstitial would cause playback failure.
+- Fixed an issue where legacy `CachingTask`s encoded without `bytes` and `bytesCached` properties would fail to restore.
+
+### tvOS
+
+#### ✨ Features
+
+- Added display criteria matching: when enabled through the new `THEOplayer.manageContentMatching` property (disabled by default), and while in fullscreen presentation mode, the player matches the display mode (frame rate and dynamic range) of the TV with the content before playback starts.
+- The player will now set its preferred video format when a new source is loading. This allows tvOS to change the format on the fly when a user enables content matching in "Settings" > "Video and Audio" > "Match Content".
+- Added Dolby Vision and EC-3 capability reporting (`com.dolby.optiview-cap-dvc`, `com.dolby.optiview-cap-ec3`) to the CMCD session data, and active video and audio codec reporting (`com.dolby.optiview-vc`, `com.dolby.optiview-ac`) to the CMCD status data.
+
+#### 🐛 Issues
+
+- Fixed an issue where the player would exit fullscreen presentation mode when setting a new source.
+
+### Roku
+
+#### 🐛 Issues
+
+- Fixed an issue where the CMCD-States payload could grow unbounded during repeated playback errors. The payload now contains at most the 20 newest states, and CMCD values are serialized strictly according to the CMCD specification (CTA-5004), matching the other platforms.
+- Fixed issue where streams would fail to start playback on less powerful devices.
+
+## 🚀 11.8.1 (2026/08/05)
+
+### Android
+
+#### ✨ Features
+
+- Added `DRMConfiguration.preferredKeySystems` to control the key system selection order.
+- Added `SourceAbrConfiguration.preferredVideoCodecs` and `SourceAbrConfiguration.preferredAudioCodecs` to prefer specific codecs (e.g. Dolby Vision) during track selection.
+
+#### ⚡ Improvements
+
+- Content protection errors now name the selected key system, and a clear error is reported when none of the configured key systems are supported by the device instead of failing with an unrelated Widevine error.
+- The player now prefers Dolby Vision and HEVC variants over other codecs by default on streams with a mixed-codec ladder, when the platform supports them. Set `SourceAbrConfiguration.preferredVideoCodecs` to an empty list to disable this preference.
+- Playback errors during THEOlive playback now report their own error code instead of `THEO_LIVE_UNKNOWN_ERROR`, so content protection failures can be told apart from stalls and manifest errors.
+- Added the `CONTENT_PROTECTION_PROVISIONING_ERROR` and `CONTENT_PROTECTION_DEVICE_REVOKED` error codes. A Widevine provisioning failure and a revoked device are now reported with their own code instead of the generic `CONTENT_PROTECTION_ERROR`.
+- Added the `MEDIA_INTERNAL_ERROR` error code. An unexpected internal failure is now reported with its own code instead of `MEDIA_DECODE_ERROR`.
+
+#### 🐛 Issues
+
+- Fixed an issue where playback of a DRM-protected stream with a mixed-codec ladder (e.g. HEVC and AVC) could fail on devices that lack a secure decoder for one of the codecs. The player now excludes formats that require an unavailable secure decoder from track selection, so playback continues on a supported codec.
+- Fixed an issue where the first playback of a DRM-protected stream could fail on a device that had not played DRM-protected content before, and would keep failing when retried.
+- Fixed an issue where a playback error could be reported with an unrelated error code, hiding what actually went wrong.
+- Fixed an issue where variant streams that the device cannot decode could be selected for playback, for example when `VideoTrack.targetQualities` includes a quality with an unsupported codec. This also applies to qualities that exceed the advertised decoder capabilities, which are now only used when no other quality is supported.
+- Fixed an issue where playback failed with a fatal `Decoder failed` error when a decoder could not handle the selected variant stream despite claiming support for it. The player now excludes the failing codec from track selection, so playback continues on another codec when the stream provides one.
+
+## 🚀 11.8.0 (2026/07/31)
+
+### Web
+
+#### 💥 Breaking Changes
+
+- Removed the deprecated Service Worker-based playback pipeline for HESP sources on iOS Safari. HESP playback on iOS Safari now requires the `ManagedMediaSource` API, which is available on iOS 17.1 and higher. On older iOS versions, OptiView Streaming (THEOlive) sources fall back to their HLS endpoint instead. The `theoplayer.sw.js` file is still shipped as an intentionally empty file so that existing build pipelines keep working, and it is safe to stop serving it.
+
+#### ✨ Features
+
+- Added `PlayerConfiguration.overrideAutoplayCapability` to override the player's automatic detection of the platform's autoplay capabilities. This is an advanced API that can be used on platforms where the auto-detection is known to be slow or to fail, such as lower-end smart TVs and set-top boxes.
+- Added the `title` property to the `Ad` interface for the `csai` integration. The title is parsed from the VAST `<AdTitle>` element.
+- Added support for `loadVideoTimeout` and `bitrate` in the `csai` ad configuration.
+
+#### ⚡ Improvements
+
+- Improved transitions between Google IMA ads when scheduling multiple VAST ads back-to-back using `player.ads.schedule()`.
+- The player now prefers Dolby Vision and HEVC variant streams over other codecs during the initial variant stream selection for HLS streams when the platform supports them. Set `SourceAbrConfiguration.preferredVideoCodecs` to an empty list to disable this preference.
+
+#### 🐛 Issues
+
+- Fixed an issue where the live stream latency (`ltc`) in CMCD reports could sometimes contain an incorrect or impossibly large value. The field is now omitted when no valid latency measurement is available.
+- Fixed several CMCD reporting issues: VOD sessions now correctly report stream type as `st=v`, the startup flag (`su`) is no longer incorrectly reported as `false`, and bitrate fields are no longer reported when no valid value is available.
+- Fixed an issue where requesting picture-in-picture could hang indefinitely on iOS/iPadOS Safari 26+ when another player was already in picture-in-picture, causing the player state to become incorrect.
+- Fixed an issue where the `adTagParameters` from the ad source configuration were not reported in the CMCD interstitial events for OptiView Ads ad breaks.
+- Fixed an issue where the THEOads DOUBLE/L-shape layout animation would still activate even when both the backdrop and the ad failed to load during preloading (e.g. due to a DNS blocker). The player now correctly skips the layout transition when a preload error has already been reported.
+- Fixed an issue where the player did not always correctly switch back to the content after playing a Google IMA ad on iOS Safari with `allowNativeFullscreen` enabled.
+- Fixed an issue for OptiView Streaming (THEOlive) where HESP endpoints would be attempted on platforms that cannot play HESP, such as iOS Safari without `ManagedMediaSource` support, resulting in a delayed fallback to HLS.
+- Fixed an issue where captions could be rendered twice while in native picture-in-picture on Chromium-based browsers.
+- Fixed an issue where playback of a DRM-protected HLS stream with a mixed-codec ladder (e.g. HEVC and AVC) failed on platforms that support only some of those codecs for encrypted playback.
+- Fixed an issue where CEA-608 closed captions were not shown when playing an HLS stream with HEVC video.
+- Fixed an issue where the player would not select a variant stream whose codecs are supported by the browser when using a DRM pipeline, even though those codecs worked in a clear pipeline. This enables Dolby Vision with PlayReady to play on Windows Edge, which otherwise does not support clear Dolby Vision.
+- Fixed an issue where `DRMConfiguration.preferredKeySystems` entries using key system aliases such as `widevine` or `playready` were not honored for HLS streams. Previously only full key system URNs were matched.
+
+### Android
+
+#### ✨ Features
+
+- OptiView Ads can now be used with any valid player license, and no longer needs to be enabled specifically for your license.
+
+#### 🐛 Issues
+
+- Fixed an issue where the `adTagParameters` from the ad source configuration were not reported in the CMCD interstitial events for OptiView Ads ad breaks.
+- Fixed an issue where playback might stall on low-performance devices after a reboot.
+- Fixed an issue where loading an OptiView Live V3 distribution without a CMCD configuration would cause a crash.
+
+### iOS
+
+#### ✨ Features
+
+- OptiView Ads can now be used with any valid player license, and no longer needs to be enabled specifically for your license.
+
+#### 🐛 Issues
+
+- Fixed several CMCD reporting issues: the live stream latency (`ltc`) could sometimes be reported as an impossibly large value, unmeasured fields such as `ltc`, `bl` and `mtp` were incorrectly reported as zero rather than being omitted, and the buffer length reported in CMCD states was always zero.
+- Fixed an issue where the `AD_BREAK_END` event was sometimes not dispatched.
+- Fixed an issue where the `adTagParameters` from the ad source configuration were not reported in the CMCD interstitial events for OptiView Ads ad breaks.
+- Fixed a bug on iOS 15 where playback could stall indefinitely after returning from an IMA ad.
+- Fixed an issue where recovering an OptiView Live stream after a failover or restart could fail to reload the stream.
+
+### Roku
+
+#### ✨ Features
+
+- Added the ability to set the ad system and provider from OptiView Live.
+
+#### 🐛 Issues
+
+- Fixed an issue where OptiView Live streams wouldn't autoplay after failing over to a new endpoint.
+- Fixed an issue where the player would sometimes not start playing when repeatedly changing sources and calling `play()`.
+
 ## 🚀 11.7.0 (2026/07/15)
 
 ### Web
@@ -138,6 +390,22 @@ These are the release notes for THEOplayer 11.0.0 and higher. For older versions
 #### 🐛 Issues
 
 - Fixed an issue where during fallback on an OptiView Live stream the wrong endpoint was selected.
+
+## 🚀 11.5.3 (2026/08/13)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where `bytesCached` and `bytes` properties would return 0 for cached sources pre 10.12.0.
+
+## 🚀 11.5.2 (2026/08/10)
+
+### iOS
+
+#### 🐛 Issues
+
+- Fixed an issue where legacy `CachingTask`s encoded without `bytes` and `bytesCached` properties would fail to restore.
 
 ## 🚀 11.5.1 (2026/07/03)
 
@@ -493,7 +761,7 @@ For more info on navigating our breaking changes, take a look at our migration g
 #### 💥 Breaking Changes
 
 - All methods on `Player` and `THEOplayerView` must only be called from the main thread and are annotated with `@MainThread`. Calling these methods from a different thread will throw an `IllegalStateException`.
-- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/ads/google-ima/#android-sdk) for instructions.
+- The Google IMA SDK integration now requires [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) to be enabled. See [our updated guide for Google IMA](/theoplayer/how-to-guides/android/ads/google-ima/#updating-the-google-ima-sdk) for instructions.
 - Removed `preloadChannels` in THEOlive API.
 - Changed `MediaTailorAdAvail.id` to return a `String` instead of an `Int`, to align with `AdBreak.id`.
 - Removed `TheoAdsErrorEvent`, use `AdErrorEvent` instead.

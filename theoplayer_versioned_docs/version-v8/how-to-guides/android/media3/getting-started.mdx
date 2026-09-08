@@ -18,8 +18,8 @@ Note that the integration is still under active development, see [the Known limi
 
 Add the Media3 integration as a dependency in your module-level `build.gradle` file:
 
+{/* prettier-ignore */}
 <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
     <TabItem value="groovy" label="Groovy">
         ```groovy
         dependencies {
@@ -38,15 +38,14 @@ Add the Media3 integration as a dependency in your module-level `build.gradle` f
         }
         ```
     </TabItem>
-    <!-- prettier-ignore-end -->
 </Tabs>
 
 ### Add the Media3 integration to the player
 
 To make use of the Media3 integration, create and add the `Media3Integration` to your `THEOplayerView`:
 
+{/* prettier-ignore */}
 <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val media3Integration = Media3IntegrationFactory.createMedia3Integration()
@@ -59,13 +58,12 @@ To make use of the Media3 integration, create and add the `Media3Integration` to
         theoplayerView.getPlayer().addIntegration(media3Integration);
         ```
     </TabItem>
-    <!-- prettier-ignore-end -->
 </Tabs>
 
 Once the Media3Integration is added to the player, all subsequent sources set on the player will use the Media3 pipeline.
 
+{/* prettier-ignore */}
 <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val typedSource = TypedSource
@@ -94,7 +92,6 @@ Once the Media3Integration is added to the player, all subsequent sources set on
         theoPlayerView.getPlayer().setSource(sourceDescription);
         ```
     </TabItem>
-    <!-- prettier-ignore-end -->
 
 </Tabs>
 
@@ -103,8 +100,8 @@ You can opt in or opt out of this behavior by setting [`TypedSource.playbackPipe
 to either `PlaybackPipeline.MEDIA3` (to _always_ use the Media3 integration)
 or `PlaybackPipeline.LEGACY` (to _never_ use the Media3 integration).
 
+{/* prettier-ignore */}
 <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val typedSource = TypedSource
@@ -137,7 +134,6 @@ or `PlaybackPipeline.LEGACY` (to _never_ use the Media3 integration).
         theoPlayerView.getPlayer().setSource(sourceDescription);
         ```
     </TabItem>
-    <!-- prettier-ignore-end -->
 
 </Tabs>
 
@@ -149,8 +145,8 @@ allowing it to more optimally read and write files from the cache.
 
 To use Media3 for caching, create and add the `Media3Integration` to the global [`Cache`] API:
 
+{/* prettier-ignore */}
 <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val cache = THEOplayerGlobal.getSharedInstance(context).cache
@@ -165,7 +161,6 @@ To use Media3 for caching, create and add the `Media3Integration` to the global 
         cache.addIntegration(media3Integration);
         ```
     </TabItem>
-    <!-- prettier-ignore-end -->
 </Tabs>
 
 :::note
@@ -177,8 +172,8 @@ it's okay to create a different one.
 
 Then, set [`CachingParameters.storageType`] to `CacheStorageType.MEDIA3` when creating your caching task:
 
+{/* prettier-ignore */}
 <Tabs queryString="lang">
-    <!-- prettier-ignore-start -->
     <TabItem value="kotlin" label="Kotlin">
         ```kotlin
         val cache = THEOplayerGlobal.getSharedInstance(context).cache
@@ -211,7 +206,6 @@ Then, set [`CachingParameters.storageType`] to `CacheStorageType.MEDIA3` when cr
         cachingTask.start();
         ```
     </TabItem>
-    <!-- prettier-ignore-end -->
 </Tabs>
 
 ## Known limitations

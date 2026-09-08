@@ -1,0 +1,35 @@
+---
+sidebar_position: 10
+sidebar_label: HLS date ranges
+---
+
+# HLS date ranges on Android
+
+import Intro from '../../shared/miscellaneous/_hls-date-range-intro.mdx';
+
+<Intro />
+
+## Enabling date ranges
+
+```kotlin
+// in the player configuration
+val playerConfig = THEOplayerConfig.Builder()
+    .hlsDateRange(true)
+    .build()
+val theoPlayerView = THEOplayerView(this, playerConfig)
+
+// or in the source description
+val typedSource = TypedSource.Builder("https://example.com/example-stream.m3u8")
+    .hlsDateRange(true)
+    .build()
+```
+
+## Reading date range cues
+
+Date ranges are exposed as cues on a metadata text track.
+See "[How to detect active text track cues](../text-tracks/detect-active-text-track-cues.mdx)"
+to learn how to listen for those cues.
+
+## Resources
+
+- [HLS specification: EXT-X-DATERANGE](https://datatracker.ietf.org/doc/html/rfc8216#section-4.3.2.7)

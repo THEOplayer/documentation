@@ -1,0 +1,128 @@
+---
+id: get-channels-channel-id-marker-rules
+title: 'Get /channels/{channelId}/markerRules'
+description: 'List all marker rules for a channel with pagination, filtering, and sorting.'
+sidebar_label: 'Get /channels/{channelId}/markerRules'
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV1FTGzcQ/is7einMnI2dpk1xhgdPYBKmNKEY2nQYz1i+W98p3EkXaQ/jMP7vnZXO3BkDhrQP4cnY0u73ab9dfboVCbrYqpKU0WIgTpQjkHkOhbRXaMFWOTqYGQsS4kxqjTnMFWVQylRpybsimKmc0CqdRiB1As5YUjrtikiU0soCCa0Tg8tb4eIMCykGtyLBmaxyEoN+JGhRohgIpQlTtCIShdKqqAr/YyFvwuf9Xu9Nf3//1S+v37zu7e/3l5FQjPhrhXYhIqFlwVFKmaKIhMWvlbKYiMFM5g6jezRPZYqgq2KKFsiARaqs7sJ5hjBT1hHTQ1AO+l2xjB4E/qr3XOT9Xu8JsCP17RmAPwasZgaKsHANaCjRerQRTJHmiBr6vgr9Xu8+9hquI66VeARTKOZ2RJ/8B5nD2ejPk1oCgDelReeU0bDDosEbWZQ5wsSRpModHJwdDQ//eZtU1kvnIKWDn3uT3S4cyTgDi85UNkYOYxw6UOTAzDUL0sw7OWvTzOpccppzsTBPnOdrSrSSjHXfxZo1+wLOsSkK2XHI+iZMoIHm8ZDxTQDTxVsoLc7UDcjwW2ieSWfie4qjo06UTsHYBG0XDoO8fAiNc3RUC3IntsiphtTatfs8rqWkrKFat/FxssaXbLVB9zhBTWqmgvAow9UI6IrlmDe70miHjjO/6vVCe7QD1GzgrF4pIhEbTaiJ18qyzFXshbD3xfGGB6iY6ReMuTSl5QqTCukSSe1V0lrJ1fTNsX23SjYP6z75C62+Vtieg6Ca8+AyKn3vTCKOhbI494E3E6DmcXApPpyMxPh+vpHfCrwH5Fpaf07IkujCu8pa1JQvwOh8AZMPJ6OJz0xbcr67OBKROByeH50NP74/2sz/4WS0yuoxkIFCUpwNYPLu4mgCO5Ojz+edzx3/D8nU7YKxMLmL2KxofeXXeXyx0YniVA+WRybhR5mfrhVqQ8/rmH/HReda5hVCEz6gxgRi6bCjtEPtFKlrzBcgU6m0I1+2BAlj7t1A+icHksiqaUXoujDM87WYlaMQGHaGHw93ffdyFF8gMkBWpSnaUAosylwSHj9DZZstttpdlz2BeYYsNOVCskDPTzmBmqdgO83UmByl3sjzd4aUcWnv4igHyGfn51dSMTqYWpRX9ckoo0PhVnNnO5lzVaAjWZQrzOvtM5cO6mgRSJ7acDz6BL/92utDIglJFQghdFcsl+3pdMktu9ZeteLXhLV29M3ptDmMH9Oan/cbAmND4K2AmfHtxJPZH0rjfrYPG+9ImlXBdWycXduReCVwnXxGcEiPWpPGQmzNcN9C8Omi4+qvLERQryGZb492zstagENML05WEtfeX7EgY2uc856Sc7gmCVN2L8/ko4C8lioPHqBuRZ9uUzi1IWxZrcBwDcTTsnigVnX1oUCSfBc1A6Gp2QYUf2mtiWeLHPkvEsHZKKN5oIgUqVNfOa5zd5d3QqOdsV1najJlxy3+CO0Xvh5HokDKTB3FI6FMDMSeLNXedX9vFXbv9i7ucm89sMO4sooW3s5PpVPxsOIYl+NIGJsywssxm4PVwhFf6KHMreV3Nc+ISg7rV/H84jUbEhieHsMVLmCncmjZxuyGhwbGFgl2Sunc3Ngk3DQ1jMYblOp39OaAQ2UoEy+y2g3ddIxNO3663PN6NpVafQtlbm7+UFWlZ8anUJRjbQz/UjiHYeJgeHosInGN1oVI133fqMZRIf28qFO/R4LnnPkartvGQf3fj7X6vAhvaK/MpdIMu7J5GGK+ynyYzK3PQ7VGLiIxaHvKNvhxJDLjiHfe3k6lwwubL5f8dfDfrKJEufoWe6jZ2nxf8mp7hM4VLppHorcOYiC8iX4+jO98i21FVI+n70T1A7/HnmR+9978r7x/nDfZk3zrl2bDdsz/WMV0X9gPO2f15bILTzzVHkGzmo560UazQtk09HK8jFZTk+GF34dxjGWbx8Zjbtm+bt4fnYvl8l/nWV4r
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/markerRules'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/markerRules'} context={'endpoint'}></MethodEndpoint>
+
+List all marker rules for a channel with pagination, filtering, and sorting.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      schema: { default: 1, type: 'integer', minimum: 1, maximum: 9007199254740991 },
+      in: 'query',
+      name: 'page',
+      required: false,
+      description: 'Page number to return. The first page is 1.',
+    },
+    {
+      schema: { default: 20, type: 'integer', minimum: 1, maximum: 100 },
+      in: 'query',
+      name: 'pageSize',
+      required: false,
+      description: 'Number of items to return per page, between 1 and 100.',
+    },
+    {
+      schema: { type: 'string' },
+      in: 'query',
+      name: 'filter',
+      required: false,
+      description:
+        'Optional RSQL filter expression (for example `status==READY;duration=gt=30`). Each resource exposes its own allow-list of filterable fields and operators.',
+    },
+    {
+      schema: { type: 'string' },
+      in: 'query',
+      name: 'sort',
+      required: false,
+      description:
+        'Optional comma-separated list of fields to sort by; prefix a field with `-` for descending order. Defaults to newest first (createdAt descending).',
+    },
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              data: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    id: { type: 'string', description: 'Unique marker rule identifier within the channel.' },
+                    streamType: { type: 'string', enum: ['HLS'], description: 'Stream type a marker rule applies to. Currently only `HLS`.' },
+                    type: {
+                      type: 'string',
+                      enum: ['CUE', 'DATERANGE'],
+                      description: 'HLS marker type to match: `CUE` (`EXT-X-CUE` tags) or `DATERANGE` (`EXT-X-DATERANGE` tags).',
+                    },
+                    conditions: {
+                      type: 'object',
+                      additionalProperties: { type: 'string' },
+                      description:
+                        "Key-value conditions matched case-insensitively against the detected marker's attributes. All conditions must match (AND) for the rule to trigger.",
+                    },
+                    templateId: { type: 'string', description: 'Identifier of the template applied when this rule matches.' },
+                    enabled: { type: 'boolean', description: 'Whether this rule is evaluated during break detection.' },
+                    createdAt: { type: 'string', description: 'Timestamp when the marker rule was created, as an ISO 8601 datetime string.' },
+                  },
+                  required: ['id', 'streamType', 'type', 'conditions', 'templateId', 'enabled', 'createdAt'],
+                  additionalProperties: false,
+                },
+                description: 'The page of results.',
+              },
+              pagination: {
+                type: 'object',
+                properties: {
+                  page: { type: 'number', description: 'Page number of this result set. The first page is 1.' },
+                  pageSize: { type: 'number', description: 'Number of items requested per page.' },
+                  total: { type: 'number', description: 'Total number of items matching the query across all pages.' },
+                  totalPages: { type: 'number', description: 'Total number of pages available for the query.' },
+                },
+                required: ['page', 'pageSize', 'total', 'totalPages'],
+                additionalProperties: false,
+                description: 'Pagination metadata for the result set.',
+              },
+            },
+            required: ['data', 'pagination'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

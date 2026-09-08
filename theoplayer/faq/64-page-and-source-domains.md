@@ -10,7 +10,7 @@ Imagine your website has the following domain: `example.com`, you have configure
 
 Whitelisting `example.com` will also whitelist all its subdomains such as `a.example.com` or `a.b.example.com` so you don't have to enter each of them one by one. Please note that whitelisting `*.example.com` <u>will not</u> whitelist the subdomains.
 
-Your page domains are included on your player [license](https://www.theoplayer.com/docs/theoplayer/how-to-guides/license/introduction/). If you make any changes on your page domain configuration, you should update the license on your website.
+Your page domains are included on your player [license](/theoplayer/how-to-guides/web/license/introduction/). If you make any changes on your page domain configuration, you should update the license on your website.
 
 ## Source domains
 
@@ -18,7 +18,7 @@ Source domains specify from which domains the player is allowed to play streams.
 
 Similar to Page domains, whitelisting `example.com` will also whitelist all its subdomains such as `a.example.com` or `a.b.example.com` so you don't have to enter each of them one by one. Please note that whitelisting `*.example.com` <u>will not</u> whitelist the subdomains.
 
-Your source domains are included on your player [license](https://www.theoplayer.com/docs/theoplayer/how-to-guides/license/introduction/). If you make any changes on your source domain configuration, you should update the license on your application/website.
+Your source domains are included on your player [license](/theoplayer/how-to-guides/web/license/introduction/). If you make any changes on your source domain configuration, you should update the license on your application/website.
 
 ## How to configure Page and Source domains
 

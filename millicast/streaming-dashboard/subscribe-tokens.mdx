@@ -18,7 +18,7 @@ This guide outlines the following:
 
 ## Creating a subscribe token
 
-:::tip Enable Secure Viewer
+:::tip[Enable Secure Viewer]
 Before we can create a Subscribe token, we must first have a stream that requires a Subscribe token. These streams are referred to as **Secure streams** and need to be enabled within a Publish token by enabling "**Secure viewer**". To learn where to enable "Secure viewer", [check out this guide on creating a Publish token](/millicast/streaming-dashboard/managing-your-tokens.mdx).
 :::
 
@@ -103,7 +103,7 @@ Of note in the manage screen is the **string of the Subscribe token itself**. Th
 https://viewer.millicast.com?streamId=[Account ID]/[Stream Name]&token=[Subscribe Token]
 ```
 
-:::caution Insecure URL
+:::caution[Insecure URL]
 The above example exposes the subscribe token in the URL. To prevent URL or token sharing, serve each viewer a unique subscribe token with the [BindsIPAddressOnUsage](#advanced-settings) parameter enabled to bind the token to the user.
 :::
 
@@ -177,7 +177,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHJlYW1pbmciOnsidG9rZW5JZCI6MTIzNDUsInR
 
 To see the validation tool validate the token, insert the random token used to sign the JWT: `d2e166fdda89824a6c493d8a2af7a0754199eff9e38c579cba8783767a44039c`.
 
-:::info Code Examples
+:::info[Code Examples]
 Examples of self-singing a token can be found at this [GitHub repository](https://github.com/millicast/selfsign-jwt-reference).
 :::
 
@@ -192,7 +192,7 @@ Examples of self-singing a token can be found at this [GitHub repository](https:
 
 ## Using the Token API
 
-:::info Self-sign your Subscribe tokens!
+:::info[Self-sign your Subscribe tokens!]
 Using the Token API is great for producing a few tokens, but for true scalability and speed you should [self-sign your tokens](#self-signing-subscribe-tokens).
 :::
 

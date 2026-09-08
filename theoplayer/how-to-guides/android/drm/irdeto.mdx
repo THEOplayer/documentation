@@ -1,0 +1,53 @@
+---
+sidebar_position: 9
+sidebar_label: Irdeto
+---
+
+# Irdeto on Android
+
+import Intro from '../../shared/drm/_irdeto-intro.mdx';
+import Resources from '../../shared/drm/_irdeto-resources.mdx';
+import IntegrationIntro from '../../shared/drm/_integration-intro.mdx';
+import IntegrationUnavailable from '../../shared/drm/_integration-unavailable.mdx';
+import PreIntegrationNote from '../../shared/drm/_pre-integration-note.mdx';
+
+<Intro />
+
+Head to our page on [DRM](./introduction.mdx) for more general information.
+
+## Integration
+
+<IntegrationIntro />
+
+<IntegrationUnavailable />
+
+## Pre-integration
+
+<PreIntegrationNote />
+
+```java
+DRMConfiguration drmConfiguration = new IrdetoConfiguration("<CRM_ID>", "<ACCOUNT_ID>", "<CONTENT_ID>",
+                "<SESSION_ID>", "<TICKET>", new KeySystemConfiguration("<LICENSE_KEY_URL_WIDEVINE"));
+TypedSource typedSource = new TypedSource.Builder()
+    .src("<DASH_STREAM_URL>")
+    .drm(drmConfiguration)
+    .build();
+SourceDescription sourceDescription = SourceDescription.Builder.sourceDescription()
+    .sources(typedSource)
+    .build();
+theoplayer.getPlayer().setSource(sourceDescription);
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [Axinom](./axinom.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Nagra Conax Contego](./nagra-conax-contego.mdx)

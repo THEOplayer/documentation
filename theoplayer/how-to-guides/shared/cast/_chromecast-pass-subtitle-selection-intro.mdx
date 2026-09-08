@@ -1,0 +1,5 @@
+Currently, it is intended behavior that when you start casting the player to a Chromecast device the subtitle selection setting isn't carried over. A new player is generated with the `SourceConfiguration` of the sender, but not any adjustments.
+
+You can work around the default behavior by adding event listeners to the player.
+
+The code adds an event on textTracks `change`. Whenever the subtitles change, this event is called and stores the current active textTrack in `currentTextTrack` by iterating over the textTracks array and checking whether `.mode` is `showing`. Once a Chromecast session is created, the code will check if the ID of the textTracks in the new player corresponds with the ID of the stored currentTextTrack. If so, it will activate that textTrack.

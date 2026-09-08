@@ -1,0 +1,125 @@
+---
+sidebar_position: 3
+---
+
+# Ad targeting parameters
+
+When an ad server such as Google Ad Manager decisions a break, you can pass key-value parameters with the request to personalize the ads — for example the content genre, the placement type, or custom targeting values. In OptiView Ads, these parameters are called **`assetParameters`**. For Google, they map directly to the [ad tag parameters](https://support.google.com/admanager/answer/10678356) (`adTagParameters`) on the ad request.
+
+You can set `assetParameters` in two places: on the break in the **backend**, and in the **OptiView Ads SDK** on the client. Client-side values overwrite the backend values when the same key is set in both.
+
+## Asset parameters in the backend
+
+When you [schedule a break](../concepts/breaks.mdx#scheduling) with a vendor asset, you can add an `assetParameters` map to the asset:
+
+```json
+{
+  "type": "vendor",
+  "vendor": "gam",
+  "vendorParameters": {
+    "type": "pod"
+  },
+  "assetParameters": {
+    "description_url": "https://www.example.com/sports/live.html",
+    "cust_params": "genre=sports"
+  }
+}
+```
+
+OptiView Ads forwards these parameters to the ad server when the break is announced, and also delivers them to the player through the [Break Manifest](../concepts/break-manifest.mdx) so they are included on the ad request. See [Google Pod Serving](../integrations/google/pod-serving.mdx#required-google-parameters) for the parameters Google requires.
+
+## Overwriting from the OptiView Ads SDK
+
+The OptiView Ads SDK can supply its own `assetParameters` and overwrite the backend values. There are two client-side layers:
+
+- **Session parameters** — passed to `startSession()`, they apply to every break in the session.
+- **Live updates** — passed to `updateAssetParameters()` during an active session, for values that change while the viewer is watching.
+
+The three layers are merged **per key**, from lowest to highest precedence:
+
+1. The break's `assetParameters` from the backend.
+2. The session's `assetParameters` from `startSession()`.
+3. The latest `updateAssetParameters()` call.
+
+Overwriting one key never discards the others, and live updates apply to **future** breaks only: a break whose ad request has already been sent cannot be retargeted.
+
+## Backend or client?
+
+As a rule of thumb:
+
+- **Set through the backend** the values that describe the break or the content and are the same for every viewer — such as `description_url`, the placement declaration, and campaign or content targeting that is known when the break is scheduled.
+- **Set through the SDK** the values that depend on the viewer, the device, or the moment of playback — such as device identifiers, consent state, autoplay/mute state (`vpa`, `vpmute`), or audience context that changes during the session.
+
+## Platform examples
+
+The examples below start a session with session-level `assetParameters` and update them mid-session. See the [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) documentation for the full integration.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="platform" queryString>
+  <TabItem value="web" label="Web">
+
+```typescript
+await sdk.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  assetParameters: { cust_params: 'genre=sports' },
+});
+
+// Update targeting mid-session — applies to future breaks, no restart needed
+sdk.updateAssetParameters({ cust_params: 'sport=basketball' });
+```
+
+  </TabItem>
+  <TabItem value="android" label="Android">
+
+```kotlin
+sdk.startSession(
+    SessionConfig(
+        manifestUrl = "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        assetParameters = mapOf("cust_params" to "genre=sports"),
+    )
+)
+
+// Update targeting mid-session — applies to future breaks, no restart needed
+sdk.updateAssetParameters(mapOf("cust_params" to "sport=basketball"))
+```
+
+  </TabItem>
+  <TabItem value="ios" label="iOS">
+
+```swift
+try await sdk.startSession(
+    SessionConfig(
+        manifestUrl: "https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID",
+        assetParameters: ["cust_params": "genre=sports"]
+    )
+)
+
+// Update targeting mid-session — applies to future breaks, no restart needed
+sdk.updateAssetParameters(["cust_params": "sport=basketball"])
+```
+
+  </TabItem>
+  <TabItem value="react-native" label="React Native">
+
+```typescript
+await ads.startSession({
+  manifestUrl: 'https://us.markers.optiview.dolby.com/manifest/v1/ORG-ID/channels/CHANNEL-ID',
+  assetParameters: { cust_params: 'genre=sports' },
+});
+
+// Update targeting mid-session — applies to future breaks, no restart needed
+ads.updateAssetParameters({ cust_params: 'sport=basketball' });
+```
+
+  </TabItem>
+</Tabs>
+
+## Related resources
+
+| Resource                                                             | Description                                     |
+| -------------------------------------------------------------------- | ----------------------------------------------- |
+| [Google Pod Serving](../integrations/google/pod-serving.mdx)         | Required Google parameters and pod decisioning. |
+| [Breaks](../concepts/breaks.mdx)                                     | Scheduling breaks with vendor assets.           |
+| [OptiView Ads SDK](../player-integration/optiview-ads-sdk/index.mdx) | Integrating the SDK with your player.           |

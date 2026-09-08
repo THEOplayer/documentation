@@ -16,5 +16,5 @@ You can disable the context menu in the style sheet like this:
 
 ## Related articles
 
-- [How can we disable the right click?](../how-to-guides/07-miscellaneous/01-context-menu/01-how-to-disable-right-click.md)
-- [How to change the Context Menu?](../how-to-guides/07-miscellaneous/01-context-menu/02-how-to-change-context-menu.md)
+- [How can we disable the right click?](../how-to-guides/web/miscellaneous/context-menu/disable-right-click.mdx)
+- [How to change the Context Menu?](../how-to-guides/web/miscellaneous/context-menu/change-context-menu.mdx)

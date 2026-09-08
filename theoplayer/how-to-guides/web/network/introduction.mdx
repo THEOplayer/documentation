@@ -1,0 +1,40 @@
+---
+sidebar_position: 0
+sidebar_label: Introduction
+---
+
+# Network on Web
+
+import Intro from '../../shared/network/_introduction-intro.mdx';
+
+<Intro />
+
+The Web SDK exposes this API through [`player.network`](pathname:///theoplayer/v11/api-reference/web/interfaces/Network.html).
+
+On iOS and iPadOS browsers, the Network API can only be used to intercept and alter DRM-related requests and responses.
+
+## Detecting a lost connection
+
+To detect that the player lost its connection, listen for the
+[`manifesterror`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#manifesterror)
+and [`segmenterror`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#segmenterror) events,
+which are dispatched when the player fails to load the manifest or a segment.
+The [`manifestupdate`](pathname:///theoplayer/v11/api-reference/web/interfaces/PlayerEventMap.html#manifestupdate)
+event indicates that the player successfully loaded the manifest again, so the connection is back:
+
+```js
+player.addEventListener('manifesterror', handleConnectionLost);
+player.addEventListener('segmenterror', handleConnectionLost);
+player.addEventListener('manifestupdate', handleConnectionRestored);
+```
+
+Event listeners can be removed similarly:
+
+```js
+player.removeEventListener('manifesterror', handleConnectionLost);
+```
+
+## Related articles
+
+- [How to add and remove request and response interceptors](./request-response-interceptors.mdx)
+- [Why does the Network API not work on iOS devices?](../../../faq/05-why-does-network-api-not-work-on-ios-devices.md)

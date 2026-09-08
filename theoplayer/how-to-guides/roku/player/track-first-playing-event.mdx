@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+sidebar_label: Track the first play(ing) event
+---
+
+# How to track the first play(ing) event on Roku
+
+import Intro from '../../shared/player/_track-first-playing-event-intro.mdx';
+
+<Intro />
+
+## Usage
+
+```brightscript
+sub Init()
+  ...
+  m.THEOplayer.callFunc("addEventListener", "sourcechange", m.top, "onSourceChange")
+  ...
+end sub
+
+sub onSourceChange()
+  m.THEOplayer.callFunc("removeEventListener", "playing", m.top, "onFirstPlaying")
+  m.THEOplayer.callFunc("addEventListener", "playing", m.top, "onFirstPlaying")
+end sub
+
+sub onFirstPlaying(params)
+  m.THEOplayer.callFunc("removeEventListener", "playing", m.top, "onFirstPlaying")
+  print "First playing event! "; params
+end sub
+```

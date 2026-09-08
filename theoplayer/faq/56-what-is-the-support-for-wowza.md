@@ -13,7 +13,8 @@ In this set-up, THEOplayer can play out the streams hosted by Wowza.
 
 ## Related Articles
 
-- [Integrate Wowza with THEOplayer](../how-to-guides/05-integrations/03-wowza-streaming-engine-with-secure-token-version-2.md)
+- [Wowza Streaming Engine SecureToken version 2 on Web](../how-to-guides/web/integrations/wowza-streaming-engine/secure-token.mdx)
+- [Deliver Low-Latency HLS live streams with Wowza Streaming Engine on Web](../how-to-guides/web/integrations/wowza-streaming-engine/low-latency-hls.mdx)
 
 ## Demo application
 

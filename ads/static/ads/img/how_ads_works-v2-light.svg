@@ -1,0 +1,76 @@
+<svg width="960" height="510" viewBox="0 0 960 510" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow-light" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 L9 4.5 L0 9 z" fill="#4B5563"/>
+    </marker>
+  </defs>
+
+  <!-- Boxes -->
+  <!-- Origins -->
+  <rect x="24" y="176" width="168" height="78" rx="10" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="108" y="205" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A8A">Live origin(s)</text>
+  <text x="108" y="226" text-anchor="middle" font-size="11" fill="#334155">HLS / DASH</text>
+  <text x="108" y="241" text-anchor="middle" font-size="11" fill="#334155">manifest + markers</text>
+
+  <!-- Channel -->
+  <rect x="286" y="160" width="212" height="110" rx="10" fill="#FFF3D4" stroke="#D97706" stroke-width="1.5"/>
+  <text x="392" y="192" text-anchor="middle" font-size="14" font-weight="700" fill="#92400E">OptiView Ads channel</text>
+  <text x="392" y="214" text-anchor="middle" font-size="11" fill="#334155">Origins &amp; marker detection</text>
+  <text x="392" y="231" text-anchor="middle" font-size="11" fill="#334155">Templates &amp; break scheduling</text>
+  <text x="392" y="248" text-anchor="middle" font-size="11" fill="#334155">Break Manifest generation</text>
+
+  <!-- Google Ad Manager (optional) -->
+  <rect x="592" y="40" width="180" height="78" rx="10" fill="#E7F6EA" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="682" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="#166534">Google Ad Manager</text>
+  <text x="682" y="90" text-anchor="middle" font-size="11" fill="#334155">Ad decisioning</text>
+  <text x="682" y="105" text-anchor="middle" font-size="11" fill="#334155">(optional)</text>
+
+  <!-- Break Manifest -->
+  <rect x="560" y="176" width="150" height="78" rx="10" fill="#FDECEC" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="635" y="209" text-anchor="middle" font-size="13" font-weight="700" fill="#991B1B">Break Manifest</text>
+  <text x="635" y="230" text-anchor="middle" font-size="11" fill="#334155">polled by the SDK</text>
+
+  <!-- OptiView Ads SDK -->
+  <rect x="774" y="176" width="162" height="78" rx="10" fill="#FFF3D4" stroke="#D97706" stroke-width="1.5"/>
+  <text x="855" y="209" text-anchor="middle" font-size="14" font-weight="700" fill="#92400E">OptiView Ads SDK</text>
+  <text x="855" y="230" text-anchor="middle" font-size="11" fill="#334155">SGAI playback</text>
+
+  <!-- Content Player -->
+  <rect x="774" y="304" width="162" height="78" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="855" y="333" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">Content Player</text>
+  <text x="855" y="353" text-anchor="middle" font-size="11" fill="#334155">OptiView Player or</text>
+  <text x="855" y="368" text-anchor="middle" font-size="11" fill="#334155">your own player</text>
+
+  <!-- Viewer -->
+  <rect x="774" y="426" width="162" height="56" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+  <text x="855" y="460" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">Viewer</text>
+
+  <!-- Arrows -->
+  <!-- Origin -> Channel -->
+  <line x1="192" y1="215" x2="284" y2="215" stroke="#4B5563" stroke-width="1.6" marker-end="url(#arrow-light)"/>
+  <text x="238" y="207" text-anchor="middle" font-size="10" fill="#475569">monitor</text>
+
+  <!-- Channel -> GAM (early ad break notification, optional) -->
+  <path d="M470 160 C520 120, 560 100, 590 95" stroke="#4B5563" stroke-width="1.6" fill="none" stroke-dasharray="6 4" marker-end="url(#arrow-light)"/>
+  <text x="548" y="162" text-anchor="middle" font-size="10" fill="#475569">early ad break notification</text>
+
+  <!-- Channel -> Break Manifest -->
+  <line x1="498" y1="215" x2="558" y2="215" stroke="#4B5563" stroke-width="1.6" marker-end="url(#arrow-light)"/>
+  <text x="528" y="207" text-anchor="middle" font-size="10" fill="#475569">signal</text>
+
+  <!-- SDK -> Break Manifest (poll) -->
+  <line x1="772" y1="215" x2="712" y2="215" stroke="#4B5563" stroke-width="1.6" marker-end="url(#arrow-light)"/>
+  <text x="741" y="207" text-anchor="middle" font-size="10" fill="#475569">poll</text>
+
+  <!-- SDK -> GAM (pod request, optional) -->
+  <path d="M855 176 C855 140, 780 110, 774 92" stroke="#4B5563" stroke-width="1.6" fill="none" stroke-dasharray="6 4" marker-end="url(#arrow-light)"/>
+  <text x="902" y="140" text-anchor="middle" font-size="10" fill="#475569">pod request / ads</text>
+
+  <!-- SDK -> Content Player -->
+  <line x1="855" y1="254" x2="855" y2="302" stroke="#4B5563" stroke-width="1.6" marker-end="url(#arrow-light)"/>
+  <text x="893" y="282" text-anchor="middle" font-size="10" fill="#475569">renders ads</text>
+
+  <!-- Content Player -> Viewer -->
+  <line x1="855" y1="382" x2="855" y2="424" stroke="#4B5563" stroke-width="1.6" marker-end="url(#arrow-light)"/>
+  <text x="890" y="407" text-anchor="middle" font-size="10" fill="#475569">playback</text>
+</svg>

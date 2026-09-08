@@ -1,0 +1,7 @@
+{
+  "label": "Cast",
+  "position": 3,
+  "customProps": {
+    "icon": "chromecast"
+  }
+}

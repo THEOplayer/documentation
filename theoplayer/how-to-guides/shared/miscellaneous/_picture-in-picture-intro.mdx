@@ -1,0 +1,17 @@
+The Picture-in-Picture (PiP) feature allows you to create a floating player.
+This is commonly used to let the video remain playing on screen even if:
+
+- The user scrolls to another section of the page (causing the original player to no longer be visible).
+- The user sends the application to the background.
+- The user opens a new page within the same application.
+
+THEOplayer distinguishes two flavors of Picture-in-Picture:
+
+- With **in-app** Picture-in-Picture, the visibility of the PiP window is contained to the inside of the app.
+  In other words, it goes to background and foreground together with the application.
+- With **out-of-app** Picture-in-Picture, the visibility of the PiP window is not contained to the inside of the app.
+  It can remain visible while the user navigates to other views, pages or apps.
+
+Picture-in-Picture is a presentation mode of the player.
+As such, you can listen for a `presentationmodechange` event, or read the player's presentation mode,
+to find out what the presentation mode is at a given moment or to detect a change.

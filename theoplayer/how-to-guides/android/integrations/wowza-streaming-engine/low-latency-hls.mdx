@@ -1,0 +1,34 @@
+---
+sidebar_position: 2
+sidebar_label: Low-Latency HLS
+---
+
+# Deliver Low-Latency HLS live streams with Wowza Streaming Engine on Android
+
+import Intro from '../../../shared/integrations/_wowza-low-latency-hls-intro.mdx';
+import Setup from '../../../shared/integrations/_wowza-low-latency-hls-setup.mdx';
+
+<Intro />
+
+<Setup />
+
+## Configure THEOplayer to play your LL-HLS stream
+
+1. Set up a basic app with THEOplayer.
+   See "[Getting started on Android](/theoplayer/getting-started/sdks/android/getting-started/)".
+2. Specify the LL-HLS stream generated above as the `src` of your typed source.
+3. Set `lowLatency` to `true` on that source.
+
+```kotlin
+val typedSource = TypedSource.Builder("https://5d6e17f1ca731.streamlock.net/LowLatencyBBB/myStream/playlist.m3u8")
+    .type(SourceType.HLS)
+    .lowLatency(true)
+    .build()
+
+theoPlayerView.player.source = SourceDescription.Builder(typedSource).build()
+```
+
+## Resources
+
+- [Getting Started with Wowza Streaming Engine](https://www.wowza.com/docs/wowza-streaming-engine-product-articles/)
+- [Deliver Apple Low-Latency HLS live streams using Wowza Streaming Engine](https://www.wowza.com/docs/deliver-apple-low-latency-hls-live-streams-using-wowza-streaming-engine)

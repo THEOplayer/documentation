@@ -1,0 +1,66 @@
+---
+id: get-channels-channel-id-integrations-channel-integration-id
+title: 'Get /channels/{channelId}/integrations/{channelIntegrationId}'
+description: 'Get a channel integration by ID.'
+sidebar_label: 'Get /channels/{channelId}/integrations/{channelIntegrationId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJytVlFv2kgQ/iujeSKSgeQeTie/WU2FUCsRNe29IKQs9mBva+86u2OoD/m/n8Y2YCBJT5fyErIef983M9/MsseEfOx0ydoaDHFGDAriTBlDOWjDlDolz2Bdw/x+ggGWyqmCmJzHcLlHH2dUKAz3yHVJGKJnp02KTYBaEEvFGQZoVCEPe+R5ggE6eq60owRDdhUFF0rmCRnWG00O7AY4o4OqCTbB/6U95fMeBcO6TLBZCZAvrfHkRdAft7fy5xzsnjaqyhm+9JEYYGwNk2GJVWWZ67gFnH738sILGdr1d4pZOuBsSY51R6eT6ypcpvLN6OfqRf2gT1nuNGfaXNZ60LNf8rxeMs60P/cT5dakHti2JB3uNT6ZqsBwiY+P0RxXl3wfXkhIECbwoXKODOc1WJPX8CTvP8HIk9uSG3udEKgEtPFSSGtuWhFbMol1b8mYLRazzx+vhUQDLOhgrjV0Lz/BaGZtmhPcR/OON1E68p74E9X+2jqnaFASBT+o9rCxri3wMKORZHkD4n2Z1D4J5ZyqMUDNVPgXJkZa7EgxJRH/usVfdUGeVVHCLiPz2ljATnnoUQNQHpSB+eMC/vrz9g4SxcS6IOgoJq2E0ywuxdLB2apoJR37M9S7ClAliRZOlT8MBmOjck+NfAKU08PUh5gSj3twPz6yjAfqT8cXC4NVKlsPB+deJBTEme2x2xXJGYY4VaWebu+mB7Lp/sjWTId0pwdDvgYD9BRXTnPdrtq18jqOKsFergK0LpV8livZQIfAR9ka3WIYhB+bmjGXAttGYdjFXPU4epiLyWBUeXKyQm9AmQQ8xY4YRqXyfmdd0pm3l3GkUKX+RK3fBCojlZA7beKfY+vScdvgc86FS5XR/1wupc4c2mxsS6E5F5RFyfpvTTuIEg/Rw7z1hvMd0vZOZJXWc6HaTdpTy932nl6c6d2f1vd/uTT72jD95GmZK21EYuVyAercspTCSR53J+97DDAczsFQ6PDZmU1XAWbWs0Du92vl6ZvLm0aOnytydWeerXJaraWYyz0m2sv3pJ+aN1IdfenH9AbeuKBfyfdgECPu2Kq8kv8wwB9Un/00kPv990o6v7HfJe+s1M2qCQ4Wl0J2oVEcU8kDkKvrvRnujNnHr9g0/wIDxk2u
+sidebar_class_name: 'get api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Get /channels/{channelId}/integrations/{channelIntegrationId}'}></Heading>
+
+<MethodEndpoint method={'get'} path={'/api/v1/channels/{channelId}/integrations/{channelIntegrationId}'} context={'endpoint'}></MethodEndpoint>
+
+Get a channel integration by ID.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    { schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' },
+    { schema: { type: 'string' }, in: 'path', name: 'channelIntegrationId', required: true, description: 'Identifier of the channel integration.' },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes
+  responses={{
+    '200': {
+      description: 'Default Response',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Unique channel integration identifier within the channel.' },
+              channelId: { type: 'string', description: 'Identifier of the channel this integration belongs to.' },
+              type: { type: 'string', enum: ['SSAI'], description: 'Channel integration type. Currently only `SSAI` (server-side ad insertion).' },
+              vendor: { type: 'string', enum: ['GOOGLE'], description: 'Ad insertion vendor. Currently only `GOOGLE` (Google DAI).' },
+              daiAssetKeys: { description: 'Google DAI asset keys for the server-side (SSAI) path.', type: 'array', items: { type: 'string' } },
+              createdAt: { type: 'string', description: 'Timestamp when the channel integration was created, as an ISO 8601 datetime string.' },
+            },
+            required: ['id', 'channelId', 'type', 'vendor', 'createdAt'],
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

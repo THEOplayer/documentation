@@ -1,0 +1,60 @@
+---
+sidebar_position: 10
+sidebar_label: HLS date ranges
+---
+
+# HLS date ranges on Web
+
+import Intro from '../../shared/miscellaneous/_hls-date-range-intro.mdx';
+
+<Intro />
+
+## Enabling date ranges
+
+```js
+// in the player configuration
+const element = document.querySelector('.theoplayer-container');
+
+const player = new THEOplayer.Player(element, {
+  libraryLocation: libraryLocation,
+  license: 'your-license-here',
+  hlsDateRange: true,
+});
+
+// or in the source description
+player.source = {
+  sources: {
+    src: 'https://example.com/example-stream.m3u8',
+    type: 'application/x-mpegurl',
+    hlsDateRange: true,
+  },
+};
+```
+
+## Reading date range cues
+
+Date ranges are exposed as cues on a metadata text track.
+Listen for the metadata track being added, and for its cues, to interact with the date range attributes.
+
+```js
+player.textTracks.addEventListener('addtrack', (event) => {
+  const track = event.track;
+  if (track.kind !== 'metadata') {
+    return;
+  }
+  // By default, metadata tracks are disabled and do not expose cues
+  track.mode = 'hidden';
+  track.addEventListener('entercue', (enterCueEvent) => {
+    console.log('Date range started', enterCueEvent.cue.content);
+  });
+  track.addEventListener('exitcue', (exitCueEvent) => {
+    console.log('Date range ended', exitCueEvent.cue.content);
+  });
+});
+```
+
+See "[How to detect active text track cues](../text-tracks/detect-active-text-track-cues.mdx)" for more information.
+
+## Resources
+
+- [HLS specification: EXT-X-DATERANGE](https://datatracker.ietf.org/doc/html/rfc8216#section-4.3.2.7)

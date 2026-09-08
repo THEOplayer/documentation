@@ -1,0 +1,40 @@
+---
+id: delete-channels-channel-id
+title: 'Delete /channels/{channelId}'
+description: 'Delete a channel.'
+sidebar_label: 'Delete /channels/{channelId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJx9U8tu2zAQ/BViTzZA23XRk25G44PRAgnSx8XQYS2uLSIyyZArJ6qgfy9Wlh9x4Z704O7M7MyyBUOpiDaw9Q4yeKCKmBSqokTnqJqChoAR98QUE2TrFlJR0h4ha4GbQJBB4mjdDjoNViACcgkaHO7lcMBZGdAQ6bW2kQxkHGvSN9QrQ47t1lJUfqu4pIuGLpfmFLxLlIT586cv8rjVvsW6YvU8VELXafCBIkrBykAGph9vMgCnybU6xp0MCF+HQ8g17IlLf2nszeASMphhsLPDfHZCmrVnqA40JCrqaLnpDdtgssWilr51rsHHnWhZ5zLVqfCHmHqc7ar8bHHJHAS2r4LsWAO3Di6eVuqFGjWqE0Xxf6zQGZWoiMRqFDClNx/NeCpZDTLOFBjsN2pgCLEkNBQvMb5PfNxNrPmH8zHu0Nk/vcXKniOc9uZbt/U9heVKUB4D29+W3tTCJLV4WoGGA8V0RDrMRVbwiffopGugHlbyntUf5LRQeMfk+M4qD7MyvfMsVGidUNaxks5jsmsxQnTNQZ+WN4GG7LIquYbSJ5batt1gol+x6jr5/VpTbI4pHzBa3MjU6xaMTfJuINtilW43/1r06Hm4I2P1n/twZ5BTkk5iPGBVyxdoeKHmw03s8u5qtR+W35c/l9B1fwFRAF8b
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete a channel.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' }]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

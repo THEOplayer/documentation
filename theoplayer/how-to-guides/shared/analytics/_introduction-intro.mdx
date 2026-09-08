@@ -1,0 +1,37 @@
+Video analytics offer all sorts of insights, ranging from the behavior of your viewers,
+to the performance of your video players.
+
+There are different approaches to collect these insights.
+
+- You can use a commercial video analytics vendor (e.g. Conviva, Mux, Wicket Labs, Youbora, ...).
+- You can implement a custom analytics service that you created.
+- You can leverage back-end and CDN logs.
+
+Insights are deducted from metrics. Metrics are calculated from raw video data.
+For example,
+
+1. INSIGHT: "the videos on my website start faster than the industry average (e.g. 4.71s)"
+2. METRIC: "because the average video startup time was 1.7s on my website last month"
+3. DATA: "that I calculated by measuring the video startup time of 1 million unique video sessions on my website"
+
+The online video streaming industry often talks about Quality of Service (QoS) and Quality of Experience (QoE).
+When talking about metrics, you'll often hear terms like Startup Time, Buffer Rate,
+Error Rate, Seek Time, Exit Before Video Start.
+When talking about raw data, you might hear terms like heartbeat (or ping) events, buffer events, play events, seek events and error events.
+
+## Analytics and video players
+
+As an application developer, you want your video player to expose an API that allows you to track video events and query
+video states. With this API, a developer can implement an integration with a commercial analytics service,
+or implement a connection with their custom analytics service.
+
+With a video player, you want to be able to access the raw video data.
+A video player typically doesn't calculate metrics or insights, because it doesn't have access to historical data.
+
+As an app developer,
+
+1. you want to track raw video data with the assistance of your video player API,
+2. do some (optional) processing at runtime,
+3. and forward the (processed) data to a remote analytics service.
+
+Then, someone on the back-end, 4. would manage & manipulate this data on this remote analytics service, 5. to convert this raw data into metrics, and the metrics into insights.

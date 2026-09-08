@@ -1,0 +1,26 @@
+---
+sidebar_position: 1
+sidebar_label: Detect a stream or ad playing
+---
+
+# How do you know when a stream or an advertisement is playing on Web?
+
+import Intro from '../../shared/player/_detect-stream-or-ad-playing-intro.mdx';
+
+<Intro />
+
+## Usage
+
+The Web SDK exposes whether an advertisement is playing through
+[`player.ads.playing`](pathname:///theoplayer/v11/api-reference/web/interfaces/Ads.html#playing).
+
+```js
+player.addEventListener('playing', (event) => {
+  const adIsPlaying = player.ads.playing;
+  console.log('PLAYING', adIsPlaying ? 'Advertisement' : 'Content', event);
+});
+```
+
+## Related articles
+
+- [How to track the first play(ing) event](./track-first-playing-event.mdx)

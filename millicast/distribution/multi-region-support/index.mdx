@@ -14,7 +14,7 @@ This guide covers a few examples:
 - [How-to Get Available Cluster Regions with the REST API](#how-to-get-the-available-cluster-regions)
 - [How-to Set the Cluster Region for a Publish Token with the REST API](#how-to-set-the-cluster-region-for-a-publish-token)
 
-:::tip Geo-Cascading
+:::tip[Geo-Cascading]
 If you want to learn how to customize how traffic flows across regions, review the [Geo-cascading](/millicast/distribution/multi-region-support/geo-cascading.mdx) streaming guide.
 :::
 
@@ -41,7 +41,7 @@ When creating a publishing token, selecting the region that is closest to the [b
 
 ### Europe
 
-:::danger AMS Region Traffic
+:::danger[AMS Region Traffic]
 The `ams-1` region will be discontinued after _September 30, 2024_. For any active publish tokens, you should update them to use either the **lon-1** or **fra-1** regions. If you currently are using **auto** any streaming traffic will be re-routed automatically.
 :::
 
@@ -62,11 +62,11 @@ The `ams-1` region will be discontinued after _September 30, 2024_. For any acti
 
 You can manage cluster regions by changing settings from user interface of the [Streaming Dashboard](/millicast/streaming-dashboard/index.mdx).
 
-:::tip Getting Started
+:::tip[Getting Started]
 If you haven't already, begin by following the [Getting Started](/millicast/introduction-to-streaming-apis.mdx) tutorial to create an OptiView Real-time application and start your first broadcast. You will need to have a publishing token. See [Managing Your Tokens](/millicast/streaming-dashboard/managing-your-tokens.mdx) for more details about tokens.
 :::
 
-:::tip Blocking Regional Access
+:::tip[Blocking Regional Access]
 If you are looking to stop streaming traffic in a particular geographic region, see the [Geo-blocking](/millicast/distribution/access-control/geo-blocking.mdx) streaming guide for details on how to restrict access of content distribution.
 :::
 
@@ -105,7 +105,7 @@ When working with clusters you can automate workflows using available REST APIs.
 - The [/api/cluster](/millicast/api/cluster-get-clusters-info.api.mdx) endpoint allows you to query available cluster regions or change the default cluster for your account
 - The [/api/publish_token](/millicast/api/publish-token-v-1-update-token.api.mdx) endpoint allows you to update the cluster for an existing publish token or to define a value when creating a new token
 
-:::tip Using the REST APIs
+:::tip[Using the REST APIs]
 Review the [REST API](/millicast/getting-started/using-rest-apis.mdx) platform guide for more details on generating an API secret for authentication. You will need an _API Secret_ from the dashboard in order to make requests.
 :::
 
@@ -213,7 +213,7 @@ curl --request POST \
     }'
 ```
 
-:::caution Enable Multisource on your Stream Token
+:::caution[Enable Multisource on your Stream Token]
 For using multi-source streams, your account must be allowed to use the multi-source feature and the Publish Token must have the `multisource` flag enabled. The default cluster region must not be set to auto, and must be set to the region from which you want to stream. Multi-source will not work if you publish the stream from two different locations that do not fall under same cluster/region coverage and the current default setting has not been modified. For more information, see [Multisource Broadcasting](/millicast/broadcast/multi-source-broadcasting.mdx).
 :::
 

@@ -99,7 +99,7 @@ You can define a link in Markdown as follows:
 When linking to **another document**, use the **relative path**, including the file extension:
 
 ```markdown
-[a relative link](../how-to-guides/01-ads/02-customizing-the-ad-overlay-text.md)
+[a relative link](../how-to-guides/web/ads/customizing-the-ad-overlay-text.mdx)
 ```
 
 When linking to the **API reference**, use the **absolute path** along
@@ -134,14 +134,14 @@ When using anchor links: the link will look like `#title-of-section`. **Anchor l
 ...
 ```
 
-You can customize a header's anchor ID by adding `{#anchor-name}` at the
+You can customize a header's anchor ID by adding `{/* #anchor-name */}` at the
 end ([documentation](https://docusaurus.io/docs/markdown-features/toc#heading-ids)).
 This can be useful if the heading is very long, or if the heading contains special characters.
 
 ```markdown
 [Anchor link to connect with custom receiver application](#custom-receiver-app)
 
-## Connect with custom Chromecast Receiver application {#custom-receiver-app}
+## Connect with custom Chromecast Receiver application {/* #custom-receiver-app */}
 
 ...
 ```

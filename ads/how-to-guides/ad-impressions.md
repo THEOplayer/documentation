@@ -4,19 +4,26 @@ sidebar_position: 2
 
 # Ad impression tracking
 
-When inserting an ad experience using OptiView Ads, the player sends a beacon to OptiView's server to track the ad impression usage. An ad impression refers to each ad experience inserted into the content and presented to the viewer using OptiView Ads, counted from the first presentation of the experience.
+An ad impression is counted for every ad break that is presented to a viewer with OptiView Ads. The impression is recorded when the break starts playing — the moment the player fires its **ad break begin** event — so a break that is scheduled but never shown to a viewer does not count as an impression.
 
-:::note
-The ad impression is beaconed simultaneously with the firing of the player's `adbreakbegin` event.
-:::
+## How impressions are tracked
 
-## Information tracked
+When a break begins, the OptiView Ads SDK reports the impression through CMCD (Common Media Client Data) events. These events carry the **channel information** and the **break ID**, which is how OptiView Ads identifies that a specific break on a specific channel was presented to a viewer.
 
-The information passed only contains an identifier of the OptiView Player license build so the impressions are linked to the customer. It also includes the ad experience type.
-No information about the viewers is passed along.
+No personal information about your viewers is collected for impression tracking — only the identifiers needed to attribute the impression to your channel and break.
 
-## View my impression usage
+## View your impression usage
 
-You can view your ad impressions on the portal dashboard underneath the OptiView Player license impressions.
+You can view your impression usage in the OptiView unified dashboard under the **Impressions** tab. There you can see:
 
-![Portal dashboard](../assets/img/impressions.png)
+- your total number of ad impressions over a selected time range,
+- how impressions trend over time, so you can correlate spikes with your programming,
+- a breakdown per channel, showing which channels drive your impression volume.
+
+## Related resources
+
+| Resource                                              | Description                                        |
+| ----------------------------------------------------- | -------------------------------------------------- |
+| [Breaks](../concepts/breaks.mdx)                      | The break lifecycle and configuration.             |
+| [Events](../concepts/events.mdx)                      | Grouping breaks under an event.                    |
+| [Player integration](../player-integration/index.mdx) | Integrating the OptiView Ads SDK with your player. |

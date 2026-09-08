@@ -1,0 +1,115 @@
+---
+sidebar_position: 3
+sidebar_label: VAST and VMAP
+---
+
+# How to set up VAST and VMAP ads on iOS
+
+import Intro from '../../shared/ads/_set-up-vast-and-vmap-intro.mdx';
+import VastIntro from '../../shared/ads/_set-up-vast-and-vmap-vast-intro.mdx';
+import VmapIntro from '../../shared/ads/_set-up-vast-and-vmap-vmap-intro.mdx';
+import DynamicSchedulingIntro from '../../shared/ads/_set-up-vast-and-vmap-dynamic-scheduling-intro.mdx';
+
+<Intro />
+
+On iOS and tvOS, client-side advertisements are scheduled through the [Google IMA](./google-ima.mdx) ad integration,
+so [make sure to set it up](./google-ima.mdx) before starting.
+
+## VAST
+
+<VastIntro />
+
+Let's consider the following common use-cases:
+
+1. [Scheduling a single pre-roll](#scheduling-a-single-pre-roll)
+2. [Scheduling two pre-rolls, two mid-rolls and one post-roll](#scheduling-two-pre-rolls-two-mid-rolls-and-one-post-roll)
+
+### Scheduling a single pre-roll
+
+You configure a [GoogleImaAdDescription](pathname:///theoplayer/v11/api-reference/ios/Classes/GoogleImaAdDescription.html) in the `ads` property of your [`SourceDescription`](pathname:///theoplayer/v11/api-reference/ios/Classes/SourceDescription.html#/s:13THEOplayerSDK17SourceDescriptionC3adsSayAA02AdD0_pGSgvp).
+
+In this `GoogleImaAdDescription`,
+
+- You set an ad tag URL.
+- You set the value of [`timeOffset`](<pathname:///theoplayer/v11/api-reference/ios/Classes/THEOAdDescription.html#/c:@M@THEOplayerSDK@objc(cs)THEOAdDescription(py)timeOffset>) to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
+
+```swift
+private var source: SourceDescription {
+    // Declare a TypedSource object with a stream URL and its type
+    let typedSource = TypedSource(
+        src: videoUrl,
+        type: mimeType
+    )
+
+    // The AdDescription object that defines the IMA ad to be played.
+    let offset = "start",
+    let adDescription: GoogleImaAdDescription = GoogleImaAdDescription(src: adTagUrl, timeOffset: offset)
+
+    // Returns a computed SourceDescription object
+    return SourceDescription(
+        source: typedSource,
+        ads: [adDescription],
+        poster: posterUrl
+    )
+}
+```
+
+If you wanted to schedule a post-roll instead of a pre-roll, you set the value of `timeOffset` to `"end"`.
+
+If you want to schedule a mid-roll instead of a pre-roll, you set the value of `timeOffset` to the `HH:MM:SS` format.
+
+For example, to schedule an advertisement at the 15s mark, you set the value of `timeOffset` to `"00:00:15"`.
+
+### Scheduling two pre-rolls, two mid-rolls and one post-roll
+
+Scheduling multiple VAST ads is only slightly different from scheduling a single VAST ad. Instead of passing along one ad description to your array, you pass along multiple ad descriptions to the array.
+
+```swift
+let typedSource = TypedSource(src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8", type: "application/x-mpegurl")
+
+let vastAdTag = "https://cdn.theoplayer.com/demos/ads/vast/vast.xml"
+let ad1 = GoogleImaAdDescription(src : vastAdTag, timeOffset: "start")
+let ad2 = GoogleImaAdDescription(src : vastAdTag, timeOffset: "start")
+let ad3 = GoogleImaAdDescription(src : vastAdTag, timeOffset: "00:00:15")
+let ad4 = GoogleImaAdDescription(src : vastAdTag, timeOffset: "00:00:15")
+let ad5 = GoogleImaAdDescription(src : vastAdTag, timeOffset: "end")
+let source = SourceDescription(source : typedSource, ads: [ad1, ad2, ad3, ad4, ad5])
+
+theoplayer.source = source
+```
+
+### Skippable ads
+
+To allow viewers to skip an ad, leverage the `skipOffset` property in your VAST (or VMAP) file,
+and adhere to the [VAST standard](https://iabtechlab.com/standards/vast/),
+because this offers the widest support across ad integrations and platforms.
+
+## VMAP
+
+<VmapIntro />
+
+The snippet below demonstrates how to configure a VMAP advertisement.
+
+```swift
+let typedSource = TypedSource(src: "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8", type: "application/x-mpegurl")
+
+let vmapSource = "https://cdn.theoplayer.com/demos/ads/vmap/single-pre-mid-post-no-skip.xml"
+let ad = GoogleImaAdDescription(src : vmapSource)
+
+let source = SourceDescription(source : typedSource, ads: [ad])
+theoplayer.source = source
+```
+
+## Dynamic scheduling
+
+<DynamicSchedulingIntro />
+
+Invoking the following example function when the video is already playing will instantly schedule the VAST ad to be played:
+
+```swift
+theoplayer.ads.schedule(adDescription: GoogleImaAdDescription(src: "https://cdn.theoplayer.com/demos/ads/vast/vast.xml"))
+```
+
+## Resources
+
+- [Samples for iOS SDK](https://github.com/THEOplayer/samples-ios-sdk)

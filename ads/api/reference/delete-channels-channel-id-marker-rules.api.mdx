@@ -1,0 +1,61 @@
+---
+id: delete-channels-channel-id-marker-rules
+title: 'Delete /channels/{channelId}/markerRules'
+description: 'Bulk delete marker rules by IDs.'
+sidebar_label: 'Delete /channels/{channelId}/markerRules'
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVE1v2zAM/SsCTy2gJMuwk2/Z0kOwDi2ybpcgB8ZmYjW2pEpy0szwfx9o2fnqOtQX2xL59N4jqRoy8qlTNiijIYGvVbEVGRUUSJTotuSEqwryYnUQs6kfggRHLxX58NVkB0jq9lc5yiAJriIJqdGBdOAttLZQKTL06Nkzfg0+zalE/goHS5CAWT1TGkCCdcaSC4o876qsfZVKzwKVHpKx7DPQOTyABBU3jkg+OKU3IDnpnvQm5JCMG3mlcJaRDmqtyHlh1iLkV0KD6fQPxSSIgtAHYTQJ5UUvdQhNI8+EL1q2y6bhZYsOSwrkPCSLf+jtWDYSFNOxGHKQoLHkzTRHramYZSDfGPuejF5FlzuEZsnJ3hrto5efP33h1yXAlNZYFUHMu8hWE1egrdcsgwSiD4MO2A+O7AbRsTkbBhICblgs/Ig+xuWlhJJCbk5AXGNWm8AIrRrtxqMeeVQfoZvRJbantHIqHFozV+hVOqkYY7GUYNyGeS6WrLgP/MmGR91n4Uf78xAsw7ZRkMQYuHZ38jgTWzqIm8qT49rcCtSZ8JQ6CuLGovd747LbIdexo3E8Aq36Tm2DMlROmJE7lfh1YNxmoLI3Zz64DWr1p7VfqGN5Y7Px+MxPg3f3iqUt6Dgoi76tlm1frU1LRwUOgQcb1G9FezHJvJg8zkDCjpyPp+7GLMEaH0psB7SjOY13wEdKdCGjPl0AH7lMOssCvYaRLVBpZlO5goFisyzYT6Y8BtnPB5+anM/KOaGlhNz4wJl1vUJPv1zRNLz8UpE7xNbZoVO4YnsWNWTK83cGyRoLfz1q54pu5t1Q3or/DOA7svr20NwbOywq/gMJWzpcjH7DRezahunF/W+RxOCJUU75b+7Y5nzwpnf3d093IGHV3dalyTjL4Z5vGNxHBqaV2s5Mu1ZDgXpT4YZjIyo/fwH4eh5N
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /channels/{channelId}/markerRules'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/channels/{channelId}/markerRules'} context={'endpoint'}></MethodEndpoint>
+
+Bulk delete marker rules by IDs.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{ schema: { type: 'string' }, in: 'path', name: 'channelId', required: true, description: 'Identifier of the channel.' }]}
+></ParamsDetails>
+
+<RequestSchema
+  title={'Body'}
+  body={{
+    required: true,
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            ids: {
+              minItems: 1,
+              type: 'array',
+              items: { type: 'string', minLength: 1 },
+              description: 'Identifiers of the marker rules to delete. At least one is required.',
+            },
+          },
+          required: ['ids'],
+        },
+      },
+    },
+  }}
+></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

@@ -1,0 +1,47 @@
+---
+sidebar_position: 2
+sidebar_label: Change the context menu
+---
+
+# How to change the context menu on Web
+
+You may want to change the logo in the context menu, change the default text, or add some items.
+The snippet below does exactly that.
+
+```js
+function customizeContextMenu(container) {
+  const contextMenu = container.querySelector('.theo-context-menu');
+
+  // change context menu text
+  const contextMenuFirstItem = contextMenu.querySelector('.theo-context-version');
+  contextMenuFirstItem.innerText = 'Brand X';
+
+  // change mini logo
+  const contextLogo = contextMenu.querySelector('.theo-0logo');
+  contextLogo.style.backgroundImage = "url('https://example.com/logo.png')";
+  contextLogo.style.backgroundSize = 'cover';
+  contextLogo.querySelector('svg').style.visibility = 'hidden';
+
+  // add a line
+  const contextMenuSecondItem = document.createElement('li');
+  contextMenuSecondItem.innerText = '24/07/2018';
+  contextMenu.appendChild(contextMenuSecondItem);
+}
+
+const element = document.querySelector('.video-container');
+const player = new THEOplayer.Player(element, playerConfig);
+customizeContextMenu(element);
+```
+
+Note that `customizeContextMenu` is called immediately after initializing a THEOplayer instance.
+
+The context menu can also be removed altogether, since it is one of the feature flags you can toggle
+when building your Web SDK. To verify whether the feature is enabled, you can execute the query below.
+
+```js
+const contextMenuEnabled = THEOplayer.features.indexOf('contextmenu') > -1;
+```
+
+## Related articles
+
+- [How to disable the right click](./disable-right-click.mdx)

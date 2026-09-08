@@ -880,7 +880,7 @@
 
 - Added `suppressCaptions` functionality based on `textTracks` `mode` field.  Captions are automatically suppressed when `textTracks` `mode` is `"disabled"`.
 - Added the `muted` API to control the video node's mute state.
-- Added support for Client Side Ad Insertion using the player `Ads` API. Check out the [getting started with ads on Roku](/theoplayer/getting-started/sdks/roku/displaying-ads/) docs for more information.
+- Added support for Client Side Ad Insertion using the player `Ads` API. Check out the [getting started with ads on Roku](/theoplayer/v9/getting-started/sdks/roku/displaying-ads/) docs for more information.
 
 #### 🐛 Issues
 
@@ -892,7 +892,7 @@
 
 #### 💥 Breaking Changes
 
-- Updated the LCEVC integration compatibility to LCEVCdecJS SDK version 1.2.1. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](/theoplayer/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
+- Updated the LCEVC integration compatibility to LCEVCdecJS SDK version 1.2.1. This breaks compatibility with prior versions. For more info check our [LCEVC doc page](/theoplayer/v9/getting-started/sdks/web/how-to-play-an-lcevc-source-with-theoplayer/).
 
 #### ✨ Features
 
@@ -1008,13 +1008,13 @@ Introducing a major version bump to THEOplayer 9.0. This version officially rele
 
 THEOplayer 9.0 is **backwards compatible for most features but includes some breaking changes per SDK**. Please review them carefully in the respective changelog for your SDK.
 
-- Starting from THEOplayer 9.0, the new Media3 Playback pipeline is now the default for all Android SDK playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices for the Android SDK! Check out our [Getting started with Media3 guide](/theoplayer/how-to-guides/android/media3/getting-started/) for more information.
+- Starting from THEOplayer 9.0, the new Media3 Playback pipeline is now the default for all Android SDK playback, bringing bug fixes, performance improvements and increased stability across a wider range of devices for the Android SDK! Check out our [Getting started with Media3 guide](/theoplayer/v9/how-to-guides/android/media3/getting-started/) for more information.
 
-- THEOplayer 9.0 supports playback of Dolby's real time streaming solution Millicast across all of our major SDKs, including React Native! Check out our Getting started with Millicast guides for [Web](https://optiview.dolby.com/docs/millicast/playback/players-sdks/web/player/), [Android](https://optiview.dolby.com/docs/millicast/playback/players-sdks/android/player/), [iOS](https://optiview.dolby.com/docs/millicast/playback/players-sdks/ios/player/) and [React Native](/theoplayer/getting-started/frameworks/react-native/millicast/) for more information. 
+- THEOplayer 9.0 supports playback of Dolby's real time streaming solution Millicast across all of our major SDKs, including React Native! Check out our Getting started with Millicast guides for [Web](https://optiview.dolby.com/docs/millicast/playback/players-sdks/web/player/), [Android](https://optiview.dolby.com/docs/millicast/playback/players-sdks/android/player/), [iOS](https://optiview.dolby.com/docs/millicast/playback/players-sdks/ios/player/) and [React Native](/theoplayer/v9/getting-started/frameworks/react-native/millicast/) for more information. 
 
-- With THEOplayer 9.0 we are also bumping and upgrading our THEOplayer Roku SDK to 9.0, bringing API and stability improvements along with new connectors for Conviva and Comscore, with more new feature development and connectors to follow! Check out our [Roku docs](/theoplayer/roku/) for more information.
+- With THEOplayer 9.0 we are also bumping and upgrading our THEOplayer Roku SDK to 9.0, bringing API and stability improvements along with new connectors for Conviva and Comscore, with more new feature development and connectors to follow! Check out our [Roku docs](/theoplayer/v9/roku/) for more information.
 
-- THEOplayer 9.0 now comes with cross platform support for CMCD! We've added CMCD support for our Media3 pipeline as well as for iOS 18+, and made it available cross-platform through React Native too! Check out our CMCD docs for [Web](/theoplayer/connectors/web/cmcd/getting-started), [Android](/theoplayer/how-to-guides/android/cmcd/getting-started/), [iOS](/theoplayer/how-to-guides/android/cmcd/getting-started/) and [React Native](/theoplayer/getting-started/frameworks/react-native/cmcd/) for more information.
+- THEOplayer 9.0 now comes with cross platform support for CMCD! We've added CMCD support for our Media3 pipeline as well as for iOS 18+, and made it available cross-platform through React Native too! Check out our CMCD docs for [Web](/theoplayer/v9/connectors/web/cmcd/getting-started), [Android](/theoplayer/v9/how-to-guides/android/cmcd/getting-started/), [iOS](/theoplayer/v9/how-to-guides/ios/cmcd/getting-started/) and [React Native](/theoplayer/v9/getting-started/frameworks/react-native/cmcd/) for more information.
 
 For more info on navigating our breaking changes, take a look at our migration guides for [Web](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/sdks/web/migrating-to-theoplayer-9/), [Android](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/sdks/android/migrating-to-theoplayer-9/), [iOS](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/sdks/ios/migrating-to-theoplayer-9/) and [React Native](https://optiview.dolby.com/docs/theoplayer/v9/getting-started/frameworks/react-native/migrating-to-react-native-theoplayer-9).
 

@@ -15,7 +15,7 @@ To get started building multi-stream experiences it's important to understand ho
 
 ## Managing source selection
 
-:::info Multi-source broadcasting
+:::info[Multi-source broadcasting]
 To manage multiple sources, you first must have a [Multi-source Stream](/millicast/broadcast/multi-source-broadcasting.mdx) broadcasting.
 :::
 
@@ -94,7 +94,7 @@ viewer.unproject([videoTransceiver.mid]);
 
 ## Media layer forwarding
 
-:::tip Simulcast or SVC layer forwarding
+:::tip[Simulcast or SVC layer forwarding]
 By default, the OptiView Real-time Streaming server chooses the best Simulcast or SVC layer to forward to the viewer based on the bandwidth estimation calculated by the server.
 :::
 
@@ -131,7 +131,7 @@ millicastView.select({ encodingId: '1' });
 
 Where `millicastView` is the instance of the [View](https://millicast.github.io/millicast-sdk/View.html) class and `encodingId` is the field of the layer that you wan to force.
 
-:::info Track limits for viewer
+:::info[Track limits for viewer]
 OptiView Real-time Streaming does not limit the number of tracks that a viewer can receive; it limits the maximum bitrate per viewer to a maximum of 12 Mbps across all media tracks. You should configure the Simulcast or SVC bitrate of all the sources carefully within your applications so they can receive the desired amount of video tracks in the viewer session.
 :::
 

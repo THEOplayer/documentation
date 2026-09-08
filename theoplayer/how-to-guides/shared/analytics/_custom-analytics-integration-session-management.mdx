@@ -1,0 +1,7 @@
+It's important to note that THEOplayer doesn't associate a user ID or session ID with an event.
+(This is pretty normal, because THEOplayer is a client-side video player library.
+It's not aware of your "back-end" "CMS", "users" or "sessions".)
+
+When you are implementing an analytics service, you usually want to associate a session or user with an event
+when forwarding the event to your remote analytics database. As an app developer, it is your responsibility
+to do this association.

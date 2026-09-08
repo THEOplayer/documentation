@@ -45,7 +45,7 @@ dependencies {
 }
 ```
 
-See [our updated guide for Google IMA](../../../how-to-guides/01-ads/10-google-ima.md#android-sdk) for more information.
+See [our updated guide for Google IMA](../../../how-to-guides/android/ads/google-ima.mdx) for more information.
 
 ## Replace or remove usages of deprecated APIs
 

@@ -1,0 +1,57 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# Chromecast on Android
+
+import Intro from '../../../shared/cast/_chromecast-introduction-intro.mdx';
+import ApiIntro from '../../../shared/cast/_chromecast-introduction-api-intro.mdx';
+import ReceiverApplications from '../../../shared/cast/_chromecast-introduction-receiver-applications.mdx';
+import Whitelisting from '../../../shared/cast/_chromecast-introduction-whitelisting.mdx';
+
+<Intro />
+
+## API
+
+<ApiIntro />
+
+For more information, see the API reference of [`Chromecast`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/chromecast/Chromecast.html), which is exposed on the [`Cast`](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/cast/Cast.html) interface.
+
+Use the API as demonstrated below:
+
+```kotlin
+// Verify the Cast dependency is present in your build.gradle file.
+// Add Cast Integration to the player.
+val castIntegration = CastIntegrationFactory.createCastIntegration(theoPlayerView)
+theoPlayerView.player.addIntegration(castIntegration)
+
+// For actions you can use both the THEOplayerView and the CastIntegration object.
+theoPlayerView.cast.chromecast.start()
+// or
+castIntegration.start()
+
+// For listening to events nothing changed.
+theoPlayerView.cast.chromecast.addEventListener(ChromecastEventTypes.STATECHANGE) { event ->
+    // Handle the state change.
+}
+```
+
+## Sender Applications vs Receiver Applications
+
+<ReceiverApplications />
+
+If you have implemented THEOplayer in your sender application, you can [enable Chromecast](./enable-chromecast-on-the-sender.mdx).
+Furthermore, you can also [specify the application ID](./enable-chromecast-on-the-sender.mdx#custom-receiver-app) in your sender application.
+
+## Whitelisting Receiver Applications
+
+<Whitelisting />
+
+## Related articles
+
+- [Connecting from custom Sender applications](./connecting-from-custom-sender-applications.mdx)
+- [How to configure a different stream to Chromecast](./how-to-configure-to-a-different-stream.mdx)
+- [Sending messages from/to Sender to/from Receiver](./sending-messages-from-to-sender-to-from-receiver.mdx)
+- [Pass subtitle selection on to Chromecast](./pass-subtitle-section-on-to-chromecast.mdx)
+- [Enable Chromecast on the Sender](./enable-chromecast-on-the-sender.mdx)

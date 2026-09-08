@@ -1,0 +1,41 @@
+---
+sidebar_position: 3
+sidebar_label: Remove an element from the UI
+---
+
+# How to remove an element from the UI on Web
+
+import Intro from '../../shared/ui/_remove-ui-element-intro.mdx';
+
+<Intro />
+
+## Code examples
+
+You can hide an element through CSS, or remove it through JavaScript.
+For this example we will consider the Speed menu option (control bar > Settings > Speed) as the element to remove from the page. The following methods may of course be used for other elements.
+
+**Hide the element with CSS**
+
+We identify the element and hide it. Since In this specific case there is no id or class to identify this element specifically, we make use of its aria attribute. Of course, should it change, this line of code should be adapted accordingly.
+
+```css
+.theoplayer-skin li[aria-label='Open the video speed settings menu'] {
+  display: none !important;
+}
+```
+
+**Remove the element through JavaScript**
+
+In alternative to CSS, it is also possible to achieve the same result with JavaScript, in the following way.
+
+```js
+function firstplay(event) {
+  player.removeEventListener('playing', firstplay);
+  var speed = document.querySelector('.theoplayer-skin li[aria-label="Open the video speed settings menu"]');
+  speed.parentNode.removeChild(speed);
+}
+player.addEventListener('sourcechange', function () {
+  player.removeEventListener('playing', firstplay);
+  player.addEventListener('playing', firstplay);
+});
+```

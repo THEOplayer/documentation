@@ -1,0 +1,32 @@
+---
+sidebar_position: 4
+sidebar_label: Track player states
+---
+
+# How to track player states on Android
+
+import Intro from '../../shared/player/_track-player-states-intro.mdx';
+import Events from '../../shared/player/_track-player-states-events.mdx';
+
+<Intro />
+
+## Implementation
+
+<Events />
+
+The snippet below demonstrates how you can track some of the related events through the Android SDK.
+All other events can be tracked similarly. You can find the event names in
+[the `PlayerEventTypes` API reference](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/event/player/PlayerEventTypes.html),
+and the properties of the player in
+[the `Player` API reference](pathname:///theoplayer/v11/api-reference/android/com/theoplayer/android/api/player/Player.html).
+This approach is valid for all Android-based platforms, including Android TV and Fire TV.
+
+```kotlin
+player.addEventListener(PlayerEventTypes.SOURCECHANGE) { event ->
+    println(event)
+}
+// ...
+player.addEventListener(PlayerEventTypes.ENDED) { event ->
+    println(event)
+}
+```

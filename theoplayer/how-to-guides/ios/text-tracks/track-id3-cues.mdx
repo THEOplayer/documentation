@@ -1,0 +1,57 @@
+---
+sidebar_position: 6
+sidebar_label: Track ID3 cues
+---
+
+# How to track ID3 cues and tags on iOS
+
+import Intro from '../../shared/text-tracks/_id3-cues-intro.mdx';
+import EnterEventIntro from '../../shared/text-tracks/_id3-cues-enter-event-intro.mdx';
+import Resources from '../../shared/text-tracks/_id3-cues-resources.mdx';
+
+<Intro />
+
+## Listening for timed metadata events
+
+Listen for the `CUE_CHANGE` event of a [`TextTrack`](pathname:///theoplayer/v11/api-reference/ios/Protocols/TextTrack.html).
+
+```swift
+let cueChangeListener = { (event: CueChangeEvent) in
+    // do something with the cues
+}
+
+let handleTrackCreation = { (event: AddTrackEvent) in
+    if let textTrack = event.track as? TextTrack {
+        _ = textTrack.addEventListener(type: TextTrackEventTypes.CUE_CHANGE, listener: cueChangeListener)
+    }
+}
+
+_ = player.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: handleTrackCreation)
+```
+
+## Tracking the enter event
+
+<EnterEventIntro />
+
+```swift
+let enterListener = { (event: EnterCueEvent) in
+    // do something with the cue
+}
+
+let handleTrackCreation = { (event: AddTrackEvent) in
+    if let textTrack = event.track as? TextTrack {
+        _ = textTrack.addEventListener(type: TextTrackEventTypes.ENTER_CUE, listener: enterListener)
+    }
+}
+
+_ = player.textTracks.addEventListener(type: TextTrackListEventTypes.ADD_TRACK, listener: handleTrackCreation)
+```
+
+## Resources
+
+<Resources />
+
+## Related articles
+
+- [How to detect active text track cues](./detect-active-text-track-cues.mdx)
+- [How to programmatically detect text tracks](./detect-text-tracks.mdx)

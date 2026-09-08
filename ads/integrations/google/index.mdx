@@ -1,0 +1,70 @@
+---
+sidebar_position: 2
+sidebar_label: Google Ad Manager
+---
+
+# Google Ad Manager 360
+
+Google Ad Manager 360 (GAM 360) is the first supported OptiView Ads vendor. It requires a GAM 360 account with Dynamic Ad Insertion (DAI) enabled.
+
+OptiView Ads supports two Google delivery modes:
+
+- **[Google Pod Serving](./pod-serving.mdx)** — server-guided (SGAI): Google decisions the ad pods, and the player inserts them guided by the [Break Manifest](../../concepts/break-manifest.mdx). This is the preferred mode and enables the advanced break [layouts](../../concepts/breaks.mdx#layouts).
+- **[Google DAI](./dai.mdx)** — server-side (SSAI): Google stitches the ads directly into the media stream. Use this for platforms that cannot run the server-guided flow, such as Roku and older connected TV devices.
+
+Before you can use either mode, the prerequisites below must be in place.
+
+## What we need from you
+
+Google configuration is organization-level and set up by your Dolby OptiView account team. To get started, provide your account team with your **network code** and a **service account** with access to the Google Ad Manager API.
+
+### Network code
+
+The network code is the unique numeric identifier of your Google Ad Manager network. OptiView Ads uses it in every interaction with Google — when announcing upcoming breaks, and in the pod URLs that players request.
+
+You can find it in the Google Ad Manager dashboard under **Admin &gt; Global settings &gt; Network settings**, in the **Network code** field. It is also visible in the URL of your Google Ad Manager dashboard: `https://admanager.google.com/<network-code>`.
+
+### Service account
+
+A service account is a non-human Google account that lets OptiView Ads call the Google Ad Manager API on behalf of your network — for example, to announce upcoming ad breaks so Google can decision them in time.
+
+To configure it:
+
+1. Create a service account in the [Google Cloud console](https://console.cloud.google.com/iam-admin/serviceaccounts) and generate a JSON key for it.
+2. In Google Ad Manager, make sure API access is enabled under **Admin &gt; Global settings &gt; Network settings**.
+3. Add the service account's email address as a user in Google Ad Manager under **Admin &gt; Access &amp; authorization &gt; Users**, with a role that grants API access.
+4. Share the JSON key securely with your Dolby OptiView account team.
+
+See Google's [service account documentation](https://support.google.com/admanager/answer/6078734) for details.
+
+### Look-forward time
+
+The look-forward time is how far ahead of a break's scheduled start OptiView Ads announces the break to Google. Google needs this lead time to decision the ads for the break — selecting the ads takes time, so announcing the break early ensures the ads are ready when the break starts.
+
+By default, breaks are announced **5 minutes** before their scheduled start. If you want a different look-forward time, contact your Dolby OptiView account team.
+
+### Decisioning margin
+
+The decisioning margin is the minimum time between the moment a break is scheduled and its start. It protects against breaks that Google cannot decision in time: if a break is scheduled closer to its start than the margin allows, the request is rejected instead of risking an empty break.
+
+The default margin is **5 seconds**. If you want a different margin, contact your Dolby OptiView account team.
+
+## Next steps
+
+Once the prerequisites are configured, continue with the delivery mode that fits your platform:
+
+| Delivery mode                           | When to use it                                                                                         |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [Google Pod Serving](./pod-serving.mdx) | Server-guided insertion on platforms running an OptiView player: web, iOS, Android, and most CTV apps. |
+| [Google DAI](./dai.mdx)                 | Server-side insertion for platforms without server-guided support, such as Roku and older CTV devices. |
+
+## Related resources
+
+| Resource                                            | Relationship                                                               |
+| --------------------------------------------------- | -------------------------------------------------------------------------- |
+| [Google Pod Serving](./pod-serving.mdx)             | Server-guided (SGAI) delivery through Google pod serving.                  |
+| [Google DAI](./dai.mdx)                             | Server-side (SSAI) delivery through Google Dynamic Ad Insertion.           |
+| [Channels](../../concepts/channels.mdx)             | Hold the Google delivery configuration for a stream.                       |
+| [Breaks](../../concepts/breaks.mdx)                 | Carry the vendor asset that Google uses to make ad decisions.              |
+| [Break Manifest](../../concepts/break-manifest.mdx) | The manifest that announces the channel's breaks to players.               |
+| [API reference](/ads/api)                           | Creating and managing channels, breaks, and integrations programmatically. |

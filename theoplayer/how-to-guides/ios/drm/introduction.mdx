@@ -1,0 +1,59 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
+# DRM on iOS
+
+import Intro from '../../shared/drm/_introduction-intro.mdx';
+import IntegrationsIntro from '../../shared/drm/_introduction-integrations-intro.mdx';
+import CustomConfigurationIntro from '../../shared/drm/_introduction-custom-configuration-intro.mdx';
+import CustomIntegration from '../../shared/drm/_introduction-custom-integration.mdx';
+
+<Intro />
+
+## Integrations
+
+<IntegrationsIntro />
+
+- [Arris Titanium](./arris-titanium.mdx)
+- [Axinom](./axinom.mdx)
+- [BuyDRM KeyOS](./buydrm-keyos.mdx)
+- [castLabs DRMToday](./castlabs-drmtoday.mdx)
+- [DoveRunner](./doverunner.mdx)
+- [EZDRM](./ezdrm.mdx)
+- [Intertrust ExpressPlay](./intertrust-expressplay.mdx)
+- [Irdeto](./irdeto.mdx)
+- [Microsoft Azure](./microsoft-azure.mdx)
+- [Uplynk](./uplynk.mdx)
+- [Verimatrix MultiRights](./verimatrix-multirights.mdx)
+- [Vimond](./vimond.mdx)
+- [Vualto VuDRM](./vualto-vudrm.mdx)
+- [Xstream](./xstream.mdx)
+
+## Other guides
+
+- [Offline DRM](./offline-drm.mdx): how to implement playback of downloadable content-protected streams.
+- [Multi-key HLS](./multikey-hls.mdx): how to serve one HLS stream to all key systems.
+
+## Custom configuration
+
+<CustomConfigurationIntro />
+
+To configure DRM on the iOS SDK, developers can put a FairPlayDRMConfiguration inside a SourceDescription.
+
+```swift
+// let headers = [["<KEY>": "<VALUE>"]]
+let drmConfiguration = FairPlayDRMConfiguration(
+    licenseAcquisitionURL: "<LICENSE_KEY_URL_FAIRPLAY>",
+    certificateURL: "<CERTIFICATE_URL>"
+        // , headers: headers, licenseType: <LICENSE_TYPE>
+)
+let typedSource = TypedSource(src: "<HLS_STREAM_URL>", type: "application/x-mpegurl", drm: drmConfiguration)
+let sourceDescription = SourceDescription(source: typedSource)
+theoplayer.source = sourceDescription
+```
+
+## Custom integration
+
+<CustomIntegration />

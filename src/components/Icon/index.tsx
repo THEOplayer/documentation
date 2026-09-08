@@ -11,7 +11,6 @@ import BitmovinIcon from '@site/static/img/bitmovin.svg';
 import ComscoreIcon from '@site/static/img/comscore.svg';
 import ChromecastIcon from '@site/static/img/chromecast.svg';
 import FlutterIcon from '@site/static/img/flutter.svg';
-import GemiusIcon from '@site/static/img/gemius.svg';
 import GoogleIcon from '@site/static/img/google.svg';
 import LinuxIcon from '@site/static/img/linux.svg';
 import MuxIcon from '@site/static/img/mux.png';
@@ -88,7 +87,15 @@ export default function Icon({ icon, defaultIcon, className }: IconProps): JSX.E
     case 'flutter':
       return <FlutterIcon className={clsx(styles.icon, className)} />;
     case 'gemius':
-      return <GemiusIcon className={clsx(styles.icon, className)} />;
+      return (
+        <ThemedImageWithBaseUrl
+          sources={{
+            light: '/img/gemius.svg',
+            dark: '/img/gemius_dark.svg',
+          }}
+          className={clsx(styles.icon, className)}
+        />
+      );
     case 'google':
       return <GoogleIcon className={clsx(styles.icon, className)} />;
     case 'github':

@@ -1,0 +1,176 @@
+---
+sidebar_position: 3
+sidebar_label: VAST and VMAP
+---
+
+# How to set up VAST and VMAP ads on Web
+
+import Intro from '../../shared/ads/_set-up-vast-and-vmap-intro.mdx';
+import VastIntro from '../../shared/ads/_set-up-vast-and-vmap-vast-intro.mdx';
+import VmapIntro from '../../shared/ads/_set-up-vast-and-vmap-vmap-intro.mdx';
+import DynamicSchedulingIntro from '../../shared/ads/_set-up-vast-and-vmap-dynamic-scheduling-intro.mdx';
+
+<Intro />
+
+The Web SDK currently supports 4 types of client-side ad integrations:
+
+1. CSAI
+2. [Google IMA](./google-ima.mdx)
+3. [SpotX](./spotx.mdx)
+4. [FreeWheel](./freewheel.mdx)
+
+## VAST
+
+<VastIntro />
+
+Additionally, when using the default, `csai` ad integration, you can also specify after how many seconds a VAST ad may be skipped.
+If you are using Google IMA, the skip offset should be set inside the ad tag instead.
+
+Let's consider the following common use-cases:
+
+1. [Scheduling a single pre-roll](#scheduling-a-single-pre-roll)
+2. [Scheduling two pre-rolls, two mid-rolls and one post-roll](#scheduling-two-pre-rolls-two-mid-rolls-and-one-post-roll)
+3. [Scheduling a skippable mid-roll](#scheduling-a-skippable-mid-roll)
+
+### Scheduling a single pre-roll
+
+You configure an [AdDescription](pathname:///theoplayer/v11/api-reference/web/interfaces/AdDescription.html) in the `ads` property of your [SourceConfiguration](pathname:///theoplayer/v11/api-reference/web/interfaces/SourceConfiguration.html).
+
+In this `AdDescription`,
+
+- You set the value of `sources` to your ad tag URL.
+- You set the value of `timeOffset` to `"start"` (or `00:00:00` or `0%`) to indicate that it's a pre-roll.
+- You set its `type` to `"vast"`. When this isn't provided, the player will still try to figure out its `type` after making the ad request.
+
+```js
+player.source = {
+  sources: [
+    {
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
+  ],
+  ads: [
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+      type: 'vast',
+      integration: 'csai', // When no integration is provided, the player defaults to `csai`.
+    },
+  ],
+};
+```
+
+If you wanted to schedule a post-roll instead of a pre-roll, you set the value of `timeOffset` to `"end"`.
+
+If you want to schedule a mid-roll instead of a pre-roll, you set the value of `timeOffset` to the `HH:MM:SS` format.
+
+For example, to schedule an advertisement at the 15s mark, you set the value of `timeOffset` to `"00:00:15"`.
+
+If you wanted to use Google IMA as an example, you would replace `integration: "csai"` with `integration: "google-ima"`. Before doing so, make sure you have [set up Google IMA](./google-ima.mdx) correctly.
+
+### Scheduling two pre-rolls, two mid-rolls and one post-roll
+
+Scheduling multiple VAST ads is only slightly different from scheduling a single VAST ad. Instead of passing along one ad description to your array, you pass along multiple ad descriptions to the array.
+
+The following snippet demonstrates how you would configure two pre-rolls, two mid-rolls and one post-roll through the usage of VAST ads.
+
+```js
+player.source = {
+  sources: [
+    {
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
+  ],
+  ads: [
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+    },
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+    },
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: '00:00:15',
+    },
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: '00:00:30',
+    },
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'end',
+    },
+  ],
+};
+```
+
+### Scheduling a skippable mid-roll
+
+When using the `csai` ad integration, you can define when a VAST ad can be skipped through the `skipOffset` property.
+
+However, it is recommended to leverage the `skipOffset` property in your VAST (or VMAP) file instead, and adhere to the [VAST standard](https://iabtechlab.com/standards/vast/),
+because this offers the widest support across ad integrations and platforms.
+
+The following snippet demonstrates how to allow viewers to skip a mid-roll after 5 seconds.
+
+Note that the `skipOffset` property is not supported when using other ad integrations, such as Google IMA, SpotX and FreeWheel because we are dependent on third-party APIs.
+
+```javascript
+player.source = {
+  sources: [
+    {
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
+  ],
+  ads: [
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      type: 'vast',
+      timeOffset: '00:00:15',
+      skipOffset: '5',
+    },
+  ],
+};
+```
+
+## VMAP
+
+<VmapIntro />
+
+The snippet below demonstrates how to configure a VMAP advertisement.
+
+```js
+// Declare a VMAP ad source. No timeOffset here, because the VMAP itself arranges this.
+player.source = {
+  sources: [
+    {
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
+  ],
+  ads: [
+    {
+      sources: 'https://cdn.theoplayer.com/demos/ads/vmap/single-pre-mid-post-no-skip.xml',
+      type: 'vmap',
+      integration: 'csai', // When no integration is provided, the player defaults to `csai`.
+    },
+  ],
+};
+```
+
+## Dynamic scheduling
+
+<DynamicSchedulingIntro />
+
+Invoking the following example function when the video is already playing will instantly schedule the VAST ad to be played:
+
+```javascript
+player.ads.schedule({
+  sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+});
+```
+
+## Resources
+
+- [Samples for Web SDK](https://github.com/THEOplayer/samples-html5-sdk)

@@ -1,0 +1,8 @@
+This guide explains how to determine programmatically when the player is playing, and whether it is playing
+a stream or a client-side advertisement. This is useful when you want different behavior, or a different UI,
+for content and for advertisements.
+
+The `playing` event tells you when content or an advertisement starts playing. Its event handler is the right
+place to check whether an advertisement is playing.
+
+This approach only works for client-side advertisements, not for server-side advertisements.

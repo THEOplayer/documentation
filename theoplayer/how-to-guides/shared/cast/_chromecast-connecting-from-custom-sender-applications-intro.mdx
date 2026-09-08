@@ -1,0 +1,6 @@
+In general, the following flow should be followed:
+
+1. Set up Google Cast context with correct receiver application ID.
+2. Connect to Chromecast device.
+3. Set up Google Cast MediaInfo object with correct contentID and contentType.
+4. Send Google Cast LoadRequest with a serialized THEOplayer SourceDescription object as a key in the customData of the LoadRequest. So something like `{sourceDescription: ${SourceDescription you want to cast}}`.

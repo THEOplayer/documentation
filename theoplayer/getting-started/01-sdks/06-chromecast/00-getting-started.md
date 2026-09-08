@@ -161,7 +161,7 @@ Once your application is published, you can start casting from your THEOplayer W
 
 ## Related articles
 
-- [Pass subtitle selection on to Chromecast](../../../how-to-guides/03-cast/01-chromecast/05-pass-subtitle-section-on-to-chromecast.md)
-- [How to configure a different stream to Chromecast](../../../how-to-guides/03-cast/01-chromecast/03-how-to-configure-to-a-different-stream.md)
+- [Pass subtitle selection on to Chromecast](../../../how-to-guides/web/cast/chromecast/pass-subtitle-section-on-to-chromecast.mdx)
+- [How to configure a different stream to Chromecast](../../../how-to-guides/web/cast/chromecast/how-to-configure-to-a-different-stream.mdx)
 - [Chromecast on my webplayer does not work any longer despite no change in my implementation](../../../faq/54-chromecast-on-weblayer-does-not-longer-work.md)
-- [Connecting from custom Sender applications](../../../how-to-guides/03-cast/01-chromecast/01-connecting-from-custom-sender-applications.md)
+- [Connecting from custom Sender applications](../../../how-to-guides/web/cast/chromecast/connecting-from-custom-sender-applications.mdx)

@@ -1,0 +1,68 @@
+---
+sidebar_position: 3
+sidebar_label: Templates
+---
+
+# Templates
+
+A template is a reusable break preset for OptiView Ads. It stores a break configuration once so you can schedule consistent breaks quickly, either manually from the dashboard and API or automatically through marker rules.
+
+## Template identity
+
+Every template has an `id` that is unique within your organization. The `id` is optional when creating a template: if you omit it, OptiView Ads generates one for you. When you supply your own, we recommend using a UUID. For a human-readable label, use the `name` property instead — it is shown in the dashboard.
+
+## What a template contains
+
+A template holds the same configuration as a break: anything you can express on a break you can preset on a template. See [Break configuration](./breaks.mdx#break-configuration) for the full description of `variant`, `resumeOffset`, and `controls`.
+
+A few properties differ from a break:
+
+| Property     | Difference                                                                                                                        |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | A human-readable display name for the template, shown in the dashboard.                                                           |
+| `duration`   | Optional on a template (it is required on a break). When set, it is the default duration for breaks scheduled from the template.  |
+| `channelIds` | Channels the template is linked to, so it is surfaced when scheduling breaks on those channels.                                   |
+| `eventIds`   | [Events](./events.mdx) the template is linked to.                                                                                 |
+| `start`      | A template has no `start`: a template is not scheduled itself. The start is supplied when a break is scheduled from the template. |
+
+## Snapshot semantics
+
+A template is a preset, not a live link. When a break is scheduled from a template:
+
+1. The template's configuration is **copied onto the new break** at creation.
+2. The break records the source `templateId` as provenance.
+3. There is **no synchronization afterwards**. Editing or deleting the template later does not change breaks that were already created from it — they keep their copied configuration.
+
+## Scheduling a break from a template
+
+Templates are used throughout the system to schedule breaks:
+
+- **API** — create a break on a channel and reference the template with `templateId`. The template configuration is snapshotted onto the break at creation.
+- **Dashboard** — use the **Schedule now** action on a template to create a break on the channel immediately.
+- **Marker rules** — when an in-stream ad marker is matched against a [marker rule](./marker-detection.mdx), a break is scheduled from the template that the rule references.
+
+An API example:
+
+```bash
+curl -X POST 'https://us.ads.optiview.dolby.com/api/v1/channels/1f7f3a5a-9c2e-4a56-b1d4-3f8a2c9d6e01/breaks' \
+  -u "$ADS_API_KEY:$ADS_API_SECRET" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Org-ID: org_123' \
+  -d '{
+    "templateId": "3b8e5f0a-7c2d-4e91-a6b3-9d4f1c8e2a70",
+    "start": "2026-07-16T13:00:00.000Z"
+  }'
+```
+
+`templateId` is the only required field. You can override the snapshotted configuration per break with optional fields — `start`, `duration`, `variant`, `eventId`, and `id`. For templates that contain [vendor assets](./breaks.mdx#vendor-assets), you can additionally pass `assetParameters` (a string map) with the request; these are merged into the vendor assets of the snapshot, and on duplicate keys the values you provide win.
+
+Start semantics depend on the channel timebase; see [Timebase-based scheduling](./breaks.mdx#timebase-based-scheduling).
+
+## Related resources
+
+| Resource                                  | Relationship                                                                          |
+| ----------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Channels](./channels.mdx)                | Breaks scheduled from a template are created on a channel.                            |
+| [Breaks](./breaks.mdx)                    | The result of scheduling a template: a break with the template's snapshotted content. |
+| [Events](./events.mdx)                    | An event on your channel for which you want to prepare breaks.                        |
+| [Break detection](./marker-detection.mdx) | Configure marker rules to turn ad markers in your stream into breaks.                 |

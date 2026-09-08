@@ -1,0 +1,42 @@
+---
+sidebar_position: 13
+sidebar_label: Change how a video fits inside a container
+---
+
+# How to change how a video should fit inside a container on Web
+
+import Intro from '../../shared/ui/_change-video-fit-intro.mdx';
+
+<Intro />
+
+## Implementation
+
+The CSS [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) property serves this use-case.
+
+```css
+.theoplayer-skin video {
+  object-fit: contain; /* default */
+  /* object-fit: cover; // content outside of the container, hence some content might be missing from the container */
+  /* object-fit: fill; // all content inside of the container, but the content might be deformed to be fitted inside of it */
+}
+
+/*
+// if you are doing object-fit: cover, and you don't want to show the content outside of the container, then do:
+.theoplayer-skin {
+    overflow-y: hidden;
+}
+// additionally, the object-position CSS property can help position the content, e.g.
+.theoplayer-skin video {
+    object-position: top;
+}
+*/
+```
+
+Alternatively, if you cannot use CSS for some reason, you could try to achieve the same through JavaScript.
+
+```javascript
+const videos = document.querySelectorAll('.theoplayer-skin video');
+for (let i = 0; i < videos.length; i++) {
+  videos[i].style.objectFit = 'cover';
+}
+```

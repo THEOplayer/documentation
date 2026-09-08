@@ -1,0 +1,48 @@
+---
+id: delete-organizations-integrations-organization-integration-id
+title: 'Delete /organizations/integrations/{organizationIntegrationId}'
+description: 'Delete an organization integration.'
+sidebar_label: 'Delete /organizations/integrations/{organizationIntegrationId}'
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE2P2jAQ/SvWnEAypFQ95Ya0HFArsdp+XFAOJh6ItcHx2hN208j/vZqQhcAK1PYUJ5m89+bNm7SgMeTeODKVhRQesERCoayo/E5Z81vxC2Es4c535ylIcMqrPRL6AOm6hZAXuFeQtkCNQ0ghkDd2B1GCYVCnqAAJVu355RB4ecZdapDg8aU2HjWk5GuUV+KWGi2ZrUEvqq2gAu+IjBmjBVfZgIGlff70hS/X7W5VXZJ46ishRgmVw5OkFHTnyGTIFCYDqjC51xCpHXsEq+HnkEnYIxXVGb8zlQpIIVHOJIdZckGYDAmT9iZjBAkB89obarrRbFQw+bxm5HUm2Xtuap2xPe+F33l8R5MG5adhFkSOYbsqSI81cD2b+eNSPGMjRnVAz5MeC2W1CJh7JDFyKoTXyuvxlFPRyzhRKGe+YgN9XApUGv05MG/s8MToD5yri+mfwjHtpmjstuooDJWMsnJkfhl8FXMdxPxxCRIO6MMR6TBjWa4KtFeWv+qp+3X4/2FcCG4hryyhpb9etN4fwjdKXKmMZZm1LxnrmJc1m8e9zEBerFbo7DwLBQnp7aRmEooqEOO17UYF/OnLGPnxS42+OabnoLxRG3Zz3YI2gc8a0q0qw/WuDlsdPfVbPRb/ssE3un+PjOW8HFRZ8x1IeMbm7s8lZnGwdQ+Lb4sfC4jxDzQzxPo=
+sidebar_class_name: 'delete api-method'
+info_path: ads/api/reference/optiview-ads-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';
+import ParamsDetails from '@theme/ParamsDetails';
+import RequestSchema from '@theme/RequestSchema';
+import StatusCodes from '@theme/StatusCodes';
+import OperationTabs from '@theme/OperationTabs';
+import TabItem from '@theme/TabItem';
+import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
+
+<Heading as={'h1'} className={'openapi__heading'} children={'Delete /organizations/integrations/{organizationIntegrationId}'}></Heading>
+
+<MethodEndpoint method={'delete'} path={'/api/v1/organizations/integrations/{organizationIntegrationId}'} context={'endpoint'}></MethodEndpoint>
+
+Delete an organization integration.
+
+<Heading id={'request'} as={'h2'} className={'openapi-tabs__heading'}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      schema: { type: 'string' },
+      in: 'path',
+      name: 'organizationIntegrationId',
+      required: true,
+      description: 'Identifier of the organization integration.',
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={'Body'}></RequestSchema>
+
+<StatusCodes responses={{ '204': { description: 'Default Response' } }}></StatusCodes>

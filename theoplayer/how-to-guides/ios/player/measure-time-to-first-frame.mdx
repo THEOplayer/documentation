@@ -1,0 +1,31 @@
+---
+sidebar_position: 2
+sidebar_label: Measure the time-to-first-frame
+---
+
+# How to measure the time-to-first-frame on iOS
+
+import Intro from '../../shared/player/_measure-time-to-first-frame-intro.mdx';
+
+<Intro />
+
+## Usage
+
+```swift
+var playEventRegisteredAt: Date?
+var playListener: EventListener?
+var playingListener: EventListener?
+
+playListener = player.addEventListener(type: PlayerEventTypes.PLAY) { [weak self] _ in
+    guard let self, let playListener = self.playListener else { return }
+    self.player.removeEventListener(type: PlayerEventTypes.PLAY, listener: playListener)
+    self.playEventRegisteredAt = Date()
+}
+
+playingListener = player.addEventListener(type: PlayerEventTypes.PLAYING) { [weak self] _ in
+    guard let self, let playingListener = self.playingListener, let playEventRegisteredAt = self.playEventRegisteredAt else { return }
+    self.player.removeEventListener(type: PlayerEventTypes.PLAYING, listener: playingListener)
+    let timeToFirstFrame = Date().timeIntervalSince(playEventRegisteredAt)
+    print("Time-to-first-frame:", timeToFirstFrame, "second(s)")
+}
+```

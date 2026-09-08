@@ -1,0 +1,18 @@
+As a developer, you could be interested in error handling for any of the following reasons:
+
+- You want to render human-friendly error messages inside the video player. Reading this error message,
+  - the user can either remediate the issue by themselves (e.g. by refreshing the page, by checking again in some time, ...),
+  - or contact a support service with this error code.
+- You want to send error-data to an analytics service. (And this service helps you to identify frequent issues.)
+- You want to self-remediate the issue. For example, if a stream is unavailable, you want to retry to load the stream, or load a different stream.
+- ...
+
+THEOplayer exposes different types of errors, and you can interact with them in two ways:
+
+1. Through an event listener, and attaching an event handler to this listener.
+2. Through a getter, which holds data when an error has occurred.
+
+The sections below describe the "top-level", "generic", "player" `error` event.
+This event is fatal and prevents playback.
+There are also other `error` events, for example the one dispatched by the Chromecast API.
+You handle those `error` events in the same fashion.

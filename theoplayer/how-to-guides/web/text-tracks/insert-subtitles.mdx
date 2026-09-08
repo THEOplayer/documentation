@@ -1,0 +1,45 @@
+---
+sidebar_position: 4
+sidebar_label: Insert subtitles
+---
+
+# How to insert subtitles on Web
+
+import Intro from '../../shared/text-tracks/_insert-subtitles-intro.mdx';
+
+<Intro />
+
+## Usage
+
+Each text track is described by a [`TextTrackDescription`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackDescription.html).
+
+```js
+player.source = {
+  sources: [
+    {
+      src: '//path/to/your-manifest.m3u8',
+      type: 'application/x-mpegurl',
+    },
+  ],
+  textTracks: [
+    {
+      default: true, // optional
+      kind: 'subtitles', // optional
+      label: 'English subs', // optional - this appears in your UI
+      src: 'path/to/your-subs-track1.vtt',
+      srclang: 'en',
+    },
+  ],
+};
+```
+
+## Subtitle styling
+
+To style your subtitles, look into the player's
+[`textTrackStyle`](pathname:///theoplayer/v11/api-reference/web/interfaces/TextTrackStyle.html) property.
+
+## Related articles
+
+- [How to dynamically change the visible captions](./change-visible-captions.mdx)
+- [How to programmatically enable or disable text tracks](./enable-disable-text-tracks.mdx)
+- [How to implement preview thumbnails](./preview-thumbnails.mdx)

@@ -1,0 +1,61 @@
+---
+sidebar_position: 12
+sidebar_label: MediaTailor
+---
+
+# MediaTailor on Web
+
+import Intro from '../../shared/ads/_mediatailor-intro.mdx';
+
+<Intro />
+
+## Configuration
+
+There are three requirements to use a MediaTailor stream with THEOplayer:
+
+- Have a THEOplayer build with the `mediatailor` feature flag set.
+- The `src` is set to the session initialization URL.
+- The integration parameter is set with the value `mediatailor`.
+
+If everything is set up correctly, THEOplayer will play the stream and send the necessary tracking beacons.
+
+```js
+const player = new THEOplayer.Player(element, {
+    libraryLocation: 'path/to/theoplayer',
+    license: 'your-license-here',
+    ...
+});
+
+player.source = {
+    sources: [
+        {
+            src: '<mediatailorURL>/v1/session/<hashed-account-id>/<origin-id>/<asset-id>',
+            integration: 'mediatailor'
+        }
+    ]
+}
+```
+
+Optionally, you can pass parameters regarding e.g. session data and device type by using the `adsParams` property, as
+described in the [MediaTailor documentation](https://docs.aws.amazon.com/mediatailor/latest/ug/ad-reporting-client-side.html#ad-reporting-client-side-enabling).
+
+```js
+player.source = {
+  sources: [
+    {
+      src: '...',
+      integration: 'mediatailor',
+      adsParams: {
+        param1: 'value1', // key is not case sensitive
+        param2: 'value2', // Values can contain spaces. For example, 'value 2' is an allowed value.
+      },
+    },
+  ],
+};
+```
+
+## Limitations
+
+The scope of the MediaTailor integration for now is limited to sending the tracking beacons. This encapsulates only the events that can be sent with the default implementation of THEOplayer. For example skipping an ad is not yet supported so the events that correspond to skipping an ad will never occur.
+
+Seeking is only disabled during an ad, no logic is in place for playing an ad if the user _seeked_ past it.

@@ -1,0 +1,63 @@
+---
+sidebar_position: 10
+sidebar_label: Google IMA
+---
+
+# Google IMA on Web
+
+import Intro from '../../shared/ads/_google-ima-intro.mdx';
+
+<Intro />
+
+You're advised to read through [How to set up VAST and VMAP ads](./set-up-vast-and-vmap.mdx) first.
+
+To use Google IMA in the Web SDK,
+
+1. You need to include the Google IMA SDK,
+2. You need to specify `integration: "google-ima"` in your `AdDescription`.
+
+## Include the IMA SDK
+
+Google IMA has a dependency on the IMA SDK. Hence, this library needs to be included. The following snippet demonstrates how the IMA SDK can be included:
+
+```html
+<script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+```
+
+Alternatively, you can include the debug version of the IMA SDK for troubleshooting, which will provide extra logs from IMA on console:
+
+```html
+<script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js"></script>
+```
+
+## Specify the integration
+
+You need to set integration to `"google-ima"`, as demonstrated by the snippet below which configures a pre-roll VAST ad.
+
+```javascript
+player.source = {
+  sources: [
+    {
+      src: 'https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny_metadata.m3u8',
+    },
+  ],
+  ads: [
+    {
+      integration: 'google-ima',
+      sources: 'https://cdn.theoplayer.com/demos/ads/vast/vast.xml',
+      timeOffset: 'start',
+    },
+  ],
+};
+```
+
+## Limitations
+
+- There's a known issue within the IMA HTML5 SDK where it does not work well with multiple VPAID ads in a VMAP. More specifically when the `ImaSdkSetting` `vpaidMode` is set to `enabled` and the `AdsRenderingSetting` `enablePreloading` is set to `true`, it will not manage to play all ads (these are the default configurations when using the Google IMA integration in THEOplayer). The production IMA SDK doesn't throw any error in this scenario, the [debug SDK](https://imasdk.googleapis.com/js/sdkloader/ima3_debug.js), however, prints `Vpaid Error: VPAID ad called play on video element before start was called on VPAID manager` in the console in this case. This can be resolved by either using `vpaidMode` `insecure` or by disabling preloading. Both can be achieved by specifying your preference in the [AdsConfiguration](pathname:///theoplayer/v11/api-reference/web/interfaces/AdsConfiguration.html).
+
+## Remarks
+
+- The release notes for the IMA SDK can be found on the [IMA HTML5 SDK release history](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/history) page.
+- THEOplayer internally supports IMA SDK up until a certain version across different SDKs. We regularly update the internal code to stay up to date with the latest version of IMA SDK. Later versions of IMA SDK should work as expected, however there could be cases where a fix for a breaking change or a newly introduced API is required. Please reach out to us if you require support for a more recent IMA SDK since we intend to rectify this limitation.
+- The limitations documented on the support and compatibility pages of the IMA SDK also apply to THEOplayer when the IMA integration is used. You can find the [support matrix of the IMA HTML5 SDK](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/compatibility) on their website.
+- You can try out the snippets mentioned here on our [samples app for Web SDK](https://github.com/THEOplayer/samples-html5-sdk).
