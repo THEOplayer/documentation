@@ -2,6 +2,17 @@
 
 Updates to Dolby OptiView's Real-time Streaming Platform and Media Server.
 
+## 2026-09-09
+
+### Media Server
+
+{/* 3.6.1 */}
+
+#### Fixes
+
+- Fixed an issue where H.264 streams with multiple slices per picture could freeze on iOS native subscribers. The media server now sends at most one video slice per RTP packet when it aggregates H.264 NAL units (STAP-A), so the receiver can always detect the start of a frame. Single-slice streams are not affected.
+- Fixed an issue where an RTMP contribution that sent an unsupported enhanced RTMP video tag (for example, an unknown codec FourCC or packet type) could cause a connection thread on the ingest node to spin at 100% CPU until the process was restarted. Unsupported tags are now logged and ignored.
+
 ## 2026-09-07
 
 ### Media Server

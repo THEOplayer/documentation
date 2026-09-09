@@ -548,6 +548,7 @@ Multiviewer
 Mux
 MYSQL
 Nagra
+NAL
 NameError
 namespace
 namespaces
@@ -730,6 +731,7 @@ RTMP
 rtmp
 rtmps
 RTMPS
+RTP
 RTSP
 RTSReport
 RTT
