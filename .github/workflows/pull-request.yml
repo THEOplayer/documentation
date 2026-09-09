@@ -23,6 +23,7 @@ jobs:
     with:
       environment_name: preview
       # Preview URLs look like this: https://[storage-url]/pr-[number]/
+      docusaurus_url: ${{ vars.PREVIEW_CLOUDFRONT_URL }}
       docusaurus_base_url: '/pr-${{ github.event.number }}/'
       # Prevent PR previews from being indexed by search engines
       docusaurus_no_index: 1

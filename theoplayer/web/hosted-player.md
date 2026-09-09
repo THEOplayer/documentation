@@ -1,6 +1,7 @@
 ---
 title: OptiView Hosted Player
 slug: /web/hosted-player
+description: Dolby hosts a version of the OptiView video player that is configured with query parameters, for embedding in an iframe without hosting the player yourself.
 ---
 
 # OptiView Hosted Player

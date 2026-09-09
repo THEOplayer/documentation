@@ -11,6 +11,10 @@ on:
       environment_name:
         type: string
         required: true
+      docusaurus_url:
+        description: Origin the site is served from; defaults to the production URL.
+        required: false
+        type: string
       docusaurus_base_url:
         required: true
         type: string
@@ -92,6 +96,7 @@ jobs:
           npm run build
         env:
           THEOPLAYER_LICENSE: ${{ vars.THEOPLAYER_LICENSE }}
+          DOCUSAURUS_URL: ${{ inputs.docusaurus_url }}
           DOCUSAURUS_BASE_URL: ${{ inputs.docusaurus_base_url }}
           DOCUSAURUS_NO_INDEX: ${{ inputs.docusaurus_no_index }}
           DOCUSAURUS_PR_NUMBER: ${{ inputs.docusaurus_pr_number }}
