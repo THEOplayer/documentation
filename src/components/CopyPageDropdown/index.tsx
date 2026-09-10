@@ -58,7 +58,7 @@ export default function CopyPageDropdown({ markdownUrl, className }: CopyPageDro
   return (
     <MenuTrigger>
       <Button className={clsx(styles.button, className)}>{copied ? 'Copied' : 'Copy page'}</Button>
-      <Popover className={styles.popover}>
+      <Popover className={styles.popover} placement="bottom end" offset={4}>
         <Menu className={styles.menu}>
           <MenuItem
             href={markdownUrl}
