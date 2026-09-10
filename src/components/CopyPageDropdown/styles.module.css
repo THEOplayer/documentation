@@ -1,0 +1,97 @@
+.button {
+  appearance: none;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  color: var(--ifm-font-color-base);
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+}
+
+.button:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+.button::after {
+  display: inline;
+  content: '';
+  border-color: currentColor transparent;
+  border-style: solid;
+  border-width: 0.35em 0.35em 0;
+  margin-left: 0.6em;
+}
+
+.popover {
+  background-color: var(--ifm-dropdown-background-color);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+  list-style: none;
+  max-height: 80vh;
+  min-width: 16rem;
+  max-width: min(25rem, 90vw);
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.popover[data-placement='top'] {
+  --origin: translateY(0.625rem);
+}
+
+.popover[data-placement='bottom'] {
+  --origin: translateY(-0.625rem);
+}
+
+.popover[data-entering],
+.popover[data-exiting] {
+  animation-name: popover-slide;
+  animation-duration: var(--ifm-transition-fast);
+  animation-timing-function: var(--ifm-transition-timing-default);
+}
+
+.popover[data-exiting] {
+  animation-direction: reverse;
+}
+
+@keyframes popover-slide {
+  from {
+    transform: var(--origin);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.icon {
+  flex: 0 0 auto;
+  height: 16px;
+  margin-top: 0.1rem;
+  width: 16px;
+}
+
+.itemText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.itemText [data-slot='description'] {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.75rem;
+}

@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
+import Head from '@docusaurus/Head';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useActiveDocContext, useActivePlugin, useSidebarBreadcrumbs } from '@docusaurus/plugin-content-docs/client';
 import type { PropSidebarBreadcrumbsItem, PropSidebarItemLink } from '@docusaurus/plugin-content-docs/lib/sidebars/types.js';
@@ -9,6 +10,8 @@ import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
 import HomeBreadcrumbItem from '@theme/DocBreadcrumbs/Items/Home';
 import DocBreadcrumbsStructuredData from '@theme/DocBreadcrumbs/StructuredData';
+import CopyPageDropdown from '@site/src/components/CopyPageDropdown';
+import { useMarkdownUrl } from '@site/src/plugin/llmsTxtClient';
 
 import styles from './styles.module.css';
 
@@ -81,37 +84,48 @@ function useSidebarBreadcrumbsWithMainDoc(): PropSidebarBreadcrumbsItem[] | null
 export default function DocBreadcrumbs(): ReactNode {
   const breadcrumbs = useSidebarBreadcrumbsWithMainDoc();
   const homePageRoute = useHomePageRoute();
+  const markdownUrl = useMarkdownUrl();
 
-  if (!breadcrumbs) {
+  if (!breadcrumbs && !markdownUrl) {
     return null;
   }
 
   return (
     <>
-      <DocBreadcrumbsStructuredData breadcrumbs={breadcrumbs} />
-      <nav
-        className={clsx(ThemeClassNames.docs.docBreadcrumbs, styles.breadcrumbsContainer)}
-        aria-label={translate({
-          id: 'theme.docs.breadcrumbs.navAriaLabel',
-          message: 'Breadcrumbs',
-          description: 'The ARIA label for the breadcrumbs',
-        })}
-      >
-        <ul className="breadcrumbs">
-          {homePageRoute && <HomeBreadcrumbItem />}
-          {breadcrumbs.map((item, idx) => {
-            const isLast = idx === breadcrumbs.length - 1;
-            const href = item.type === 'category' && item.linkUnlisted ? undefined : item.href;
-            return (
-              <BreadcrumbsItem key={idx} active={isLast}>
-                <BreadcrumbsItemLink href={href} isLast={isLast}>
-                  {item.label}
-                </BreadcrumbsItemLink>
-              </BreadcrumbsItem>
-            );
-          })}
-        </ul>
-      </nav>
+      {markdownUrl && (
+        <Head>
+          <link rel="alternate" type="text/markdown" href={markdownUrl} />
+        </Head>
+      )}
+      {breadcrumbs && <DocBreadcrumbsStructuredData breadcrumbs={breadcrumbs} />}
+      <div className={styles.breadcrumbsRow}>
+        {breadcrumbs && (
+          <nav
+            className={clsx(ThemeClassNames.docs.docBreadcrumbs, styles.breadcrumbsContainer)}
+            aria-label={translate({
+              id: 'theme.docs.breadcrumbs.navAriaLabel',
+              message: 'Breadcrumbs',
+              description: 'The ARIA label for the breadcrumbs',
+            })}
+          >
+            <ul className="breadcrumbs">
+              {homePageRoute && <HomeBreadcrumbItem />}
+              {breadcrumbs.map((item, idx) => {
+                const isLast = idx === breadcrumbs.length - 1;
+                const href = item.type === 'category' && item.linkUnlisted ? undefined : item.href;
+                return (
+                  <BreadcrumbsItem key={idx} active={isLast}>
+                    <BreadcrumbsItemLink href={href} isLast={isLast}>
+                      {item.label}
+                    </BreadcrumbsItemLink>
+                  </BreadcrumbsItem>
+                );
+              })}
+            </ul>
+          </nav>
+        )}
+        {markdownUrl && <CopyPageDropdown markdownUrl={markdownUrl} />}
+      </div>
     </>
   );
 }
